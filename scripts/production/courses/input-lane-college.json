@@ -1,0 +1,2200 @@
+{
+    "all_stats": {
+        "num_courses": 399, 
+        "num_departments": 28
+    }, 
+    "departments": [
+        {
+            "abbr": "ACT", 
+            "courses": [
+                {
+                    "code": "ACT 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ACT/131", 
+                    "name": "Principles of Accounting I"
+                }, 
+                {
+                    "code": "ACT 132", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ACT/132", 
+                    "name": "Principles of Accounting II"
+                }, 
+                {
+                    "code": "ACT 231", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ACT/231", 
+                    "name": "Intermediate Accounting I"
+                }, 
+                {
+                    "code": "ACT 232", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ACT/232", 
+                    "name": "Intermediate Accounting II"
+                }, 
+                {
+                    "code": "ACT 233", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ACT/233", 
+                    "name": "Cost Accounting I"
+                }, 
+                {
+                    "code": "ACT 331", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ACT/331", 
+                    "name": "Federal Tax I"
+                }, 
+                {
+                    "code": "ACT 332", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ACT/332", 
+                    "name": "Federal Tax II"
+                }, 
+                {
+                    "code": "ACT 333", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ACT/333", 
+                    "name": "Managerial Accounting II"
+                }, 
+                {
+                    "code": "ACT 334", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ACT/334", 
+                    "name": "Computer Application in Accounting"
+                }, 
+                {
+                    "code": "ACT 431", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ACT/431", 
+                    "name": "Auditing Theory and Practice"
+                }, 
+                {
+                    "code": "ACT 432", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ACT/432", 
+                    "name": "Advanced Accounting"
+                }, 
+                {
+                    "code": "ACT 434", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ACT/434", 
+                    "name": "Governmental and Not-for-Profit Accounting"
+                }, 
+                {
+                    "code": "ACT 435", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ACT/435", 
+                    "name": "Accounting Internship"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/lanecollege/ACT"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 120", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ART/120", 
+                    "name": "Art Appreciation"
+                }, 
+                {
+                    "code": "ART 130", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ART/130", 
+                    "name": "Beginning Drawing"
+                }, 
+                {
+                    "code": "ART 230", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ART/230", 
+                    "name": "Intermediate Drawing"
+                }, 
+                {
+                    "code": "ART 232", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ART/232", 
+                    "name": "Beginning Painting"
+                }, 
+                {
+                    "code": "ART 330", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ART/330", 
+                    "name": "Advanced Drawing"
+                }, 
+                {
+                    "code": "ART 332", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ART/332", 
+                    "name": "Intermediate Painting"
+                }, 
+                {
+                    "code": "ART 333", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ART/333", 
+                    "name": "Art Survey"
+                }, 
+                {
+                    "code": "ART 334", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ART/334", 
+                    "name": "Basic Design"
+                }, 
+                {
+                    "code": "ART 433", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ART/433", 
+                    "name": "Special Art Topics"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/lanecollege/ART"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/131", 
+                    "name": "Biological Science"
+                }, 
+                {
+                    "code": "BIO 241", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/241", 
+                    "name": "Comparative Vertebrate Anatomy"
+                }, 
+                {
+                    "code": "BIO 242", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/242", 
+                    "name": "Vertebrate Embryology"
+                }, 
+                {
+                    "code": "BIO 315", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/315", 
+                    "name": "Biology Seminar I-IV"
+                }, 
+                {
+                    "code": "BIO 316", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/316", 
+                    "name": "Biology Seminar I-IV"
+                }, 
+                {
+                    "code": "BIO 330", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/330", 
+                    "name": "Teaching Elementary Science"
+                }, 
+                {
+                    "code": "BIO 331", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/331", 
+                    "name": "Methods of Teaching Natural Science"
+                }, 
+                {
+                    "code": "BIO 341", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/341", 
+                    "name": "Ecology and Environmental Biology"
+                }, 
+                {
+                    "code": "BIO 342", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/342", 
+                    "name": "Histology and Histo-Technique"
+                }, 
+                {
+                    "code": "BIO 343", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/343", 
+                    "name": "Genetics"
+                }, 
+                {
+                    "code": "BIO 344", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/344", 
+                    "name": "and BIO 345:Human Anatomy and Physiology I and II"
+                }, 
+                {
+                    "code": "BIO 346", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/346", 
+                    "name": "Parasitology"
+                }, 
+                {
+                    "code": "BIO 347", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/347", 
+                    "name": "General Microbiology"
+                }, 
+                {
+                    "code": "BIO 415", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/415", 
+                    "name": "Biology Seminar I-IV"
+                }, 
+                {
+                    "code": "BIO 416", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/416", 
+                    "name": "Biology Seminar I-IV"
+                }, 
+                {
+                    "code": "BIO 442", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/442", 
+                    "name": "Cell Physiology"
+                }, 
+                {
+                    "code": "BIO 443", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/443", 
+                    "name": "Biochemistry"
+                }, 
+                {
+                    "code": "BIO 444", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BIO/444", 
+                    "name": "Contemporary Issues in Experimental Biology"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/lanecollege/BIO"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BUS/131", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "BUS 133", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BUS/133", 
+                    "name": "Quantitative Methods"
+                }, 
+                {
+                    "code": "BUS 134", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BUS/134", 
+                    "name": "Business Communications"
+                }, 
+                {
+                    "code": "BUS 232", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BUS/232", 
+                    "name": "Production and Operations Management"
+                }, 
+                {
+                    "code": "BUS 300", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BUS/300", 
+                    "name": "Managemt Information Systems"
+                }, 
+                {
+                    "code": "BUS 330", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BUS/330", 
+                    "name": "Methods of Teaching Business"
+                }, 
+                {
+                    "code": "BUS 331", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BUS/331", 
+                    "name": "Business Policy"
+                }, 
+                {
+                    "code": "BUS 332", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BUS/332", 
+                    "name": "Human Resource Management"
+                }, 
+                {
+                    "code": "BUS 334", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/BUS/334", 
+                    "name": "Business Law"
+                }
+            ], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/lanecollege/BUS"
+        }, 
+        {
+            "abbr": "CHE", 
+            "courses": [
+                {
+                    "code": "CHE 243", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CHE/243", 
+                    "name": "and CHE 244:Organic Chemistry I and II"
+                }, 
+                {
+                    "code": "CHE 311", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CHE/311", 
+                    "name": "and CHE 412:Chemistry Seminars I-IV"
+                }, 
+                {
+                    "code": "CHE 312", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CHE/312", 
+                    "name": "and CHE 412:Chemistry Seminars I-IV"
+                }, 
+                {
+                    "code": "CHE 320", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CHE/320", 
+                    "name": "Undergraduate Research in Chemistry I"
+                }, 
+                {
+                    "code": "CHE 345", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CHE/345", 
+                    "name": "Quantitative Analysis I"
+                }, 
+                {
+                    "code": "CHE 346", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CHE/346", 
+                    "name": "Quantitative Analysis II"
+                }, 
+                {
+                    "code": "CHE 411", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CHE/411", 
+                    "name": "and CHE 412:Chemistry Seminars I-IV"
+                }, 
+                {
+                    "code": "CHE 420", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CHE/420", 
+                    "name": "Undergraduate Research in Chemistry II"
+                }, 
+                {
+                    "code": "CHE 440", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CHE/440", 
+                    "name": "Instrumental Methods of Analysis"
+                }, 
+                {
+                    "code": "CHE 445", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CHE/445", 
+                    "name": "Advanced Organic Chemistry"
+                }, 
+                {
+                    "code": "CHE 446", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CHE/446", 
+                    "name": "Advanced Inorganic Chemistry"
+                }, 
+                {
+                    "code": "CHE 447", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CHE/447", 
+                    "name": "and CHE 448:Physical Chemistry I and II"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/lanecollege/CHE"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/131", 
+                    "name": "Introduction to Mass Communication"
+                }, 
+                {
+                    "code": "COM 135", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/135", 
+                    "name": "Introduction to Media Writing"
+                }, 
+                {
+                    "code": "COM 210", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/210", 
+                    "name": "Practical Journalistic Experience I"
+                }, 
+                {
+                    "code": "COM 212", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/212", 
+                    "name": "Introduction to Broadcast and Cable TV Production"
+                }, 
+                {
+                    "code": "COM 233", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/233", 
+                    "name": "Editorial Writing and Interpreting Public Issues"
+                }, 
+                {
+                    "code": "COM 235", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/235", 
+                    "name": "Newspaper Layout and Editing"
+                }, 
+                {
+                    "code": "COM 236", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/236", 
+                    "name": "Online Journalism for News Reporting"
+                }, 
+                {
+                    "code": "COM 310", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/310", 
+                    "name": "Mass Media Internship I"
+                }, 
+                {
+                    "code": "COM 330", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/330", 
+                    "name": "Writing for the Print Media"
+                }, 
+                {
+                    "code": "COM 331", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/331", 
+                    "name": "Photojournalism"
+                }, 
+                {
+                    "code": "COM 332", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/332", 
+                    "name": "Principles of Public Relations"
+                }, 
+                {
+                    "code": "COM 333", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/333", 
+                    "name": "Special Topics in Mass Communication"
+                }, 
+                {
+                    "code": "COM 335", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/335", 
+                    "name": "Writing for Public Relations"
+                }, 
+                {
+                    "code": "COM 337", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/337", 
+                    "name": "Media Law and Ethics"
+                }, 
+                {
+                    "code": "COM 410", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/410", 
+                    "name": "Mass Media Internship II"
+                }, 
+                {
+                    "code": "COM 430", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/430", 
+                    "name": "Advanced News Reporting and Writing"
+                }, 
+                {
+                    "code": "COM 431", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/431", 
+                    "name": "Feature and Magazine Writing"
+                }, 
+                {
+                    "code": "COM 432", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/432", 
+                    "name": "Writing for the Broadcast Media"
+                }, 
+                {
+                    "code": "COM 433", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/433", 
+                    "name": "Radio and Television Announcing"
+                }, 
+                {
+                    "code": "COM 435", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/435", 
+                    "name": "Broadcast Production"
+                }, 
+                {
+                    "code": "COM 437", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/437", 
+                    "name": "Public Relations Strategies and Campaigns"
+                }, 
+                {
+                    "code": "COM 439", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/COM/439", 
+                    "name": "Survey of Communication Technologies"
+                }
+            ], 
+            "name": "Communication", 
+            "url": "http://www.chegg.com/courses/lanecollege/COM"
+        }, 
+        {
+            "abbr": "CRJ", 
+            "courses": [
+                {
+                    "code": "CRJ 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/131", 
+                    "name": "Introduction to Criminal Justice"
+                }, 
+                {
+                    "code": "CRJ 231", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/231", 
+                    "name": "Police Administration and Management"
+                }, 
+                {
+                    "code": "CRJ 234", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/234", 
+                    "name": "Issues in Juvenile Justice"
+                }, 
+                {
+                    "code": "CRJ 321", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/321", 
+                    "name": "and CRJ 322:Criminal Justice Internship I and II"
+                }, 
+                {
+                    "code": "CRJ 330", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/330", 
+                    "name": "Constitutional Law"
+                }, 
+                {
+                    "code": "CRJ 331", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/331", 
+                    "name": "Criminal Investigation"
+                }, 
+                {
+                    "code": "CRJ 332", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/332", 
+                    "name": "Criminology"
+                }, 
+                {
+                    "code": "CRJ 335", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/335", 
+                    "name": "Corrections"
+                }, 
+                {
+                    "code": "CRJ 336", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/336", 
+                    "name": "Basic Criminal Procedures"
+                }, 
+                {
+                    "code": "CRJ 337", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/337", 
+                    "name": "Methods of Criminal Justice Research"
+                }, 
+                {
+                    "code": "CRJ 338", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/338", 
+                    "name": "Ethics in Criminal Justice"
+                }, 
+                {
+                    "code": "CRJ 340", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/340", 
+                    "name": "Comparative Law Enforcement"
+                }, 
+                {
+                    "code": "CRJ 341", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/341", 
+                    "name": "Introduction to Criminalistics"
+                }, 
+                {
+                    "code": "CRJ 343", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/343", 
+                    "name": "Forensic Science"
+                }, 
+                {
+                    "code": "CRJ 345", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/345", 
+                    "name": "Security Administration"
+                }, 
+                {
+                    "code": "CRJ 347", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/347", 
+                    "name": "Security Law"
+                }, 
+                {
+                    "code": "CRJ 410", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/410", 
+                    "name": "Court and Judicial Process"
+                }, 
+                {
+                    "code": "CRJ 420", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/420", 
+                    "name": "Seminar in Criminal Justice"
+                }, 
+                {
+                    "code": "CRJ 433", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CRJ/433", 
+                    "name": "Criminal Law"
+                }
+            ], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/lanecollege/CRJ"
+        }, 
+        {
+            "abbr": "CSC", 
+            "courses": [
+                {
+                    "code": "CSC 110", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/110", 
+                    "name": "Personal Computer Systems Repair"
+                }, 
+                {
+                    "code": "CSC 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/131", 
+                    "name": "Introduction to Computers"
+                }, 
+                {
+                    "code": "CSC 132", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/132", 
+                    "name": "Foundation of Computing"
+                }, 
+                {
+                    "code": "CSC 133", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/133", 
+                    "name": "Programming I"
+                }, 
+                {
+                    "code": "CSC 136", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/136", 
+                    "name": "Programming II"
+                }, 
+                {
+                    "code": "CSC 233", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/233", 
+                    "name": "Data Communications and Computer Networks"
+                }, 
+                {
+                    "code": "CSC 236", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/236", 
+                    "name": "Introduction to Digital Computer Design"
+                }, 
+                {
+                    "code": "CSC 237", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/237", 
+                    "name": "Introduction to Computer Systems and Assembly Language"
+                }, 
+                {
+                    "code": "CSC 239", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/239", 
+                    "name": "Visual Programming"
+                }, 
+                {
+                    "code": "CSC 332", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/332", 
+                    "name": "Data Structures and Algorithms"
+                }, 
+                {
+                    "code": "CSC 333", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/333", 
+                    "name": "Computer Graphics"
+                }, 
+                {
+                    "code": "CSC 334", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/334", 
+                    "name": "Information Systems and Design"
+                }, 
+                {
+                    "code": "CSC 336", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/336", 
+                    "name": "Software Engineering and Project Management"
+                }, 
+                {
+                    "code": "CSC 339", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/339", 
+                    "name": "Database Management Systems"
+                }, 
+                {
+                    "code": "CSC 340", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/340", 
+                    "name": "Database Management Systems II"
+                }, 
+                {
+                    "code": "CSC 431", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/431", 
+                    "name": "Computer Organization and Architecture"
+                }, 
+                {
+                    "code": "CSC 433", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/433", 
+                    "name": "Operating Systems I"
+                }, 
+                {
+                    "code": "CSC 434", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/434", 
+                    "name": "Operating Systems II"
+                }, 
+                {
+                    "code": "CSC 435", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/435", 
+                    "name": "Survey of Programming Languages"
+                }, 
+                {
+                    "code": "CSC 439", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/CSC/439", 
+                    "name": "Senior Project"
+                }
+            ], 
+            "name": "Computer Science", 
+            "url": "http://www.chegg.com/courses/lanecollege/CSC"
+        }, 
+        {
+            "abbr": "ECO", 
+            "courses": [
+                {
+                    "code": "ECO 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ECO/131", 
+                    "name": "Principles of Macro Economics"
+                }, 
+                {
+                    "code": "ECO 132", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ECO/132", 
+                    "name": "Principles of Micro Economics"
+                }, 
+                {
+                    "code": "ECO 231", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ECO/231", 
+                    "name": "Money and Banking"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/lanecollege/ECO"
+        }, 
+        {
+            "abbr": "EDU", 
+            "courses": [
+                {
+                    "code": "EDU 310", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/EDU/310", 
+                    "name": "Skills Seminar"
+                }, 
+                {
+                    "code": "EDU 330", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/EDU/330", 
+                    "name": "Advanced junior status) Classroom Management("
+                }, 
+                {
+                    "code": "EDU 332", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/EDU/332", 
+                    "name": "Tests and Measurements"
+                }, 
+                {
+                    "code": "EDU 336", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/EDU/336", 
+                    "name": "Teaching in Middle Schools"
+                }, 
+                {
+                    "code": "EDU 401", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/EDU/401", 
+                    "name": "Field Experience I"
+                }, 
+                {
+                    "code": "EDU 402", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/EDU/402", 
+                    "name": "Field Experience II"
+                }, 
+                {
+                    "code": "EDU 420", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/EDU/420", 
+                    "name": "Education Seminar"
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/lanecollege/EDU"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 132", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/132", 
+                    "name": "Composition II"
+                }, 
+                {
+                    "code": "ENG 221", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/221", 
+                    "name": "Introduction to Literature"
+                }, 
+                {
+                    "code": "ENG 222", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/222", 
+                    "name": "World Literature"
+                }, 
+                {
+                    "code": "ENG 231", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/231", 
+                    "name": "American Literature I"
+                }, 
+                {
+                    "code": "ENG 232", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/232", 
+                    "name": "American Literature II"
+                }, 
+                {
+                    "code": "ENG 234", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/234", 
+                    "name": "Advanced Grammar"
+                }, 
+                {
+                    "code": "ENG 235", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/235", 
+                    "name": "Advanced Composition"
+                }, 
+                {
+                    "code": "ENG 236", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/236", 
+                    "name": "Adolescent Literature"
+                }, 
+                {
+                    "code": "ENG 237", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/237", 
+                    "name": "Children ' s Literature"
+                }, 
+                {
+                    "code": "ENG 238", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/238", 
+                    "name": "Greek and Roman Drama"
+                }, 
+                {
+                    "code": "ENG 239", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/239", 
+                    "name": "Survey of Modern Drama"
+                }, 
+                {
+                    "code": "ENG 240", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/240", 
+                    "name": "Oral Interpretation of Literature"
+                }, 
+                {
+                    "code": "ENG 241", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/241", 
+                    "name": "Discussion and Debate"
+                }, 
+                {
+                    "code": "ENG 331", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/331", 
+                    "name": "British Literature I"
+                }, 
+                {
+                    "code": "ENG 332", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/332", 
+                    "name": "British Literature II"
+                }, 
+                {
+                    "code": "ENG 333", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/333", 
+                    "name": "Literary Criticism"
+                }, 
+                {
+                    "code": "ENG 334", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/334", 
+                    "name": "Introduction to Phonetics"
+                }, 
+                {
+                    "code": "ENG 335", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/335", 
+                    "name": "Shakespeare"
+                }, 
+                {
+                    "code": "ENG 336", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/336", 
+                    "name": "The Novel"
+                }, 
+                {
+                    "code": "ENG 337", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/337", 
+                    "name": "The Short Story"
+                }, 
+                {
+                    "code": "ENG 338", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/338", 
+                    "name": "Creative Writing"
+                }, 
+                {
+                    "code": "ENG 339", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/339", 
+                    "name": "Teaching Language Arts"
+                }, 
+                {
+                    "code": "ENG 430", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/430", 
+                    "name": "African American Literature"
+                }, 
+                {
+                    "code": "ENG 431", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/431", 
+                    "name": "Contemporary Literature"
+                }, 
+                {
+                    "code": "ENG 432", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/432", 
+                    "name": "Mythology"
+                }, 
+                {
+                    "code": "ENG 433", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/433", 
+                    "name": "Special Topics in English"
+                }, 
+                {
+                    "code": "ENG 440", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/ENG/440", 
+                    "name": "Methods of Teaching Secondary English"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/lanecollege/ENG"
+        }, 
+        {
+            "abbr": "FIN", 
+            "courses": [
+                {
+                    "code": "FIN 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FIN/131", 
+                    "name": "Principles of Business Finance"
+                }, 
+                {
+                    "code": "FIN 231", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FIN/231", 
+                    "name": "Principles of Investment"
+                }, 
+                {
+                    "code": "FIN 330", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FIN/330", 
+                    "name": "Financial Institutions and Markets"
+                }, 
+                {
+                    "code": "FIN 332", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FIN/332", 
+                    "name": "Financial Management"
+                }, 
+                {
+                    "code": "FIN 333", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FIN/333", 
+                    "name": "Financial Assets Management"
+                }, 
+                {
+                    "code": "FIN 334", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FIN/334", 
+                    "name": "Bank Management"
+                }, 
+                {
+                    "code": "FIN 335", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FIN/335", 
+                    "name": "International Corporate Finance"
+                }, 
+                {
+                    "code": "FIN 336", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FIN/336", 
+                    "name": "Financial Planning Seminars and Applications"
+                }
+            ], 
+            "name": "Finance", 
+            "url": "http://www.chegg.com/courses/lanecollege/FIN"
+        }, 
+        {
+            "abbr": "FRE", 
+            "courses": [
+                {
+                    "code": "FRE 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/131", 
+                    "name": "and FRE 132:Elementary French I and II"
+                }, 
+                {
+                    "code": "FRE 231", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/231", 
+                    "name": "and FRE 232:Intermediate French I and II"
+                }, 
+                {
+                    "code": "FRE 311", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/311", 
+                    "name": "Phonetics and Pronunciation"
+                }, 
+                {
+                    "code": "FRE 312", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/312", 
+                    "name": "Intensive Readings in French Literature"
+                }, 
+                {
+                    "code": "FRE 322", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/322", 
+                    "name": "Conversation and Oral Grammar"
+                }, 
+                {
+                    "code": "FRE 323", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/323", 
+                    "name": "Advanced French Grammar,Composition and Conversation"
+                }, 
+                {
+                    "code": "FRE 331", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/331", 
+                    "name": "French Literature I"
+                }, 
+                {
+                    "code": "FRE 332", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/332", 
+                    "name": "French Literature II"
+                }, 
+                {
+                    "code": "FRE 333", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/333", 
+                    "name": "French for Business"
+                }, 
+                {
+                    "code": "FRE 431", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/431", 
+                    "name": "French Civilization"
+                }, 
+                {
+                    "code": "FRE 432", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/432", 
+                    "name": "Francophone Literature and Culture"
+                }, 
+                {
+                    "code": "FRE 433", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/433", 
+                    "name": "Afro-French Novel"
+                }, 
+                {
+                    "code": "FRE 434", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/434", 
+                    "name": "Afro-French Literature"
+                }, 
+                {
+                    "code": "FRE 435", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/435", 
+                    "name": "Poetry of Negritude"
+                }, 
+                {
+                    "code": "FRE 461", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/461", 
+                    "name": "Methods and Materials for Teaching French, 7"
+                }, 
+                {
+                    "code": "FRE 471", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/471", 
+                    "name": "Introduction to Linguistics"
+                }, 
+                {
+                    "code": "FRE 480", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/480", 
+                    "name": "Senior Seminar"
+                }, 
+                {
+                    "code": "FRE 481", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/FRE/481", 
+                    "name": "Study Abroad"
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/lanecollege/FRE"
+        }, 
+        {
+            "abbr": "GEO", 
+            "courses": [
+                {
+                    "code": "GEO 231", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/GEO/231", 
+                    "name": "World Geography"
+                }
+            ], 
+            "name": "Geography", 
+            "url": "http://www.chegg.com/courses/lanecollege/GEO"
+        }, 
+        {
+            "abbr": "HIS", 
+            "courses": [
+                {
+                    "code": "HIS 111,211,311,411", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/111%2C211%2C311%2C411", 
+                    "name": "Special Topics in History"
+                }, 
+                {
+                    "code": "HIS 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/131", 
+                    "name": "U.S.History I"
+                }, 
+                {
+                    "code": "HIS 132", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/132", 
+                    "name": "U.S.History II"
+                }, 
+                {
+                    "code": "HIS 230", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/230", 
+                    "name": "Tennessee History"
+                }, 
+                {
+                    "code": "HIS 231", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/231", 
+                    "name": "World History I"
+                }, 
+                {
+                    "code": "HIS 232", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/232", 
+                    "name": "World History II"
+                }, 
+                {
+                    "code": "HIS 233", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/233", 
+                    "name": "Topics in American History I,II,and III"
+                }, 
+                {
+                    "code": "HIS 234", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/234", 
+                    "name": "Topics in World History I,II,and III"
+                }, 
+                {
+                    "code": "HIS 331", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/331", 
+                    "name": "and HIS 332:Black History I and II"
+                }, 
+                {
+                    "code": "HIS 333", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/333", 
+                    "name": "Topics in American History I,II,and III"
+                }, 
+                {
+                    "code": "HIS 334", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/334", 
+                    "name": "Topics in World History I,II,and III"
+                }, 
+                {
+                    "code": "HIS 335", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/335", 
+                    "name": "African History"
+                }, 
+                {
+                    "code": "HIS 336", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/336", 
+                    "name": "Methods of Teaching Social Sciences"
+                }, 
+                {
+                    "code": "HIS 337", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/337", 
+                    "name": "Twentieth Century Europe"
+                }, 
+                {
+                    "code": "HIS 338", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/338", 
+                    "name": "Twentieth Century Asia"
+                }, 
+                {
+                    "code": "HIS 430", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/430", 
+                    "name": "Research Seminar"
+                }, 
+                {
+                    "code": "HIS 431", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/431", 
+                    "name": "History of England I"
+                }, 
+                {
+                    "code": "HIS 432", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/432", 
+                    "name": "History of England II"
+                }, 
+                {
+                    "code": "HIS 433", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/433", 
+                    "name": "Topics in American History I,II,and III"
+                }, 
+                {
+                    "code": "HIS 434", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/HIS/434", 
+                    "name": "Topics in World History I,II,and III"
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/lanecollege/HIS"
+        }, 
+        {
+            "abbr": "INT", 
+            "courses": [
+                {
+                    "code": "INT 460", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/INT/460", 
+                    "name": "Study Abroad"
+                }
+            ], 
+            "name": "Interdisciplinary", 
+            "url": "http://www.chegg.com/courses/lanecollege/INT"
+        }, 
+        {
+            "abbr": "MAT", 
+            "courses": [
+                {
+                    "code": "MAT 140", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/140", 
+                    "name": "College Trigonometry"
+                }, 
+                {
+                    "code": "MAT 230", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/230", 
+                    "name": "Discrete Mathematics"
+                }, 
+                {
+                    "code": "MAT 233", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/233", 
+                    "name": "Probability and Statistics"
+                }, 
+                {
+                    "code": "MAT 240", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/240", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MAT 241", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/241", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MAT 242", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/242", 
+                    "name": "Linear Algebra"
+                }, 
+                {
+                    "code": "MAT 310", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/310", 
+                    "name": "and MAT 411:Mathematics Seminars I-IV"
+                }, 
+                {
+                    "code": "MAT 311", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/311", 
+                    "name": "and MAT 411:Mathematics Seminars I-IV"
+                }, 
+                {
+                    "code": "MAT 330", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/330", 
+                    "name": "Teaching Elementary Mathematics"
+                }, 
+                {
+                    "code": "MAT 331", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/331", 
+                    "name": "Methods of Teaching Secondary Math"
+                }, 
+                {
+                    "code": "MAT 333", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/333", 
+                    "name": "Modern Geometry"
+                }, 
+                {
+                    "code": "MAT 335", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/335", 
+                    "name": "Abstract Algebra"
+                }, 
+                {
+                    "code": "MAT 340", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/340", 
+                    "name": "Calculus III"
+                }, 
+                {
+                    "code": "MAT 341", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/341", 
+                    "name": "Differential Equations"
+                }, 
+                {
+                    "code": "MAT 410", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/410", 
+                    "name": "and MAT 411:Mathematics Seminars I-IV"
+                }, 
+                {
+                    "code": "MAT 430", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/430", 
+                    "name": "Advanced Calculus I"
+                }, 
+                {
+                    "code": "MAT 431", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MAT/431", 
+                    "name": "Advanced Calculus II"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/lanecollege/MAT"
+        }, 
+        {
+            "abbr": "MKT", 
+            "courses": [
+                {
+                    "code": "MKT 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MKT/131", 
+                    "name": "Principles of Marketing"
+                }, 
+                {
+                    "code": "MKT 231", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MKT/231", 
+                    "name": "Consumer Behavior"
+                }, 
+                {
+                    "code": "MKT 232", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MKT/232", 
+                    "name": "Promotion and Advertising"
+                }, 
+                {
+                    "code": "MKT 233", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MKT/233", 
+                    "name": "International Marketing"
+                }, 
+                {
+                    "code": "MKT 331", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MKT/331", 
+                    "name": "Professional Selling"
+                }, 
+                {
+                    "code": "MKT 332", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MKT/332", 
+                    "name": "Marketing Research"
+                }, 
+                {
+                    "code": "MKT 333", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MKT/333", 
+                    "name": "Marketing Management Seminar"
+                }, 
+                {
+                    "code": "MKT 334", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MKT/334", 
+                    "name": "Sport Marketing"
+                }
+            ], 
+            "name": "Marketing", 
+            "url": "http://www.chegg.com/courses/lanecollege/MKT"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 031", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/031", 
+                    "name": "Fundamentals of Music Theory"
+                }, 
+                {
+                    "code": "MUS 100", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/100", 
+                    "name": "Class Voice I"
+                }, 
+                {
+                    "code": "MUS 103", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/103", 
+                    "name": "Elective Class Piano I-IV"
+                }, 
+                {
+                    "code": "MUS 110", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/110", 
+                    "name": "Band Techniques"
+                }, 
+                {
+                    "code": "MUS 111", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/111", 
+                    "name": "Marching Band I-IV"
+                }, 
+                {
+                    "code": "MUS 112", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/112", 
+                    "name": "Concert Band I-IV"
+                }, 
+                {
+                    "code": "MUS 118", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/118", 
+                    "name": "Class Piano I"
+                }, 
+                {
+                    "code": "MUS 124", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/124", 
+                    "name": "Elective Voice I"
+                }, 
+                {
+                    "code": "MUS 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/131", 
+                    "name": "Music Theory I"
+                }, 
+                {
+                    "code": "MUS 132", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/132", 
+                    "name": "Music Theory II"
+                }, 
+                {
+                    "code": "MUS 200", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/200", 
+                    "name": "AND MUS 400:Class Voice II,III,and IV"
+                }, 
+                {
+                    "code": "MUS 203", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/203", 
+                    "name": "Elective Class Piano I-IV"
+                }, 
+                {
+                    "code": "MUS 211", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/211", 
+                    "name": "Marching Band I-IV"
+                }, 
+                {
+                    "code": "MUS 212", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/212", 
+                    "name": "Concert Band I-IV"
+                }, 
+                {
+                    "code": "MUS 218", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/218", 
+                    "name": "Class Piano II"
+                }, 
+                {
+                    "code": "MUS 231", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/231", 
+                    "name": "Music Theory III"
+                }, 
+                {
+                    "code": "MUS 232", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/232", 
+                    "name": "Music Theory IV"
+                }, 
+                {
+                    "code": "MUS 235", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/235", 
+                    "name": "Fundamentals of Music"
+                }, 
+                {
+                    "code": "MUS 241", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/241", 
+                    "name": "African American Music"
+                }, 
+                {
+                    "code": "MUS 300", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/300", 
+                    "name": "AND MUS 400:Class Voice II,III,and IV"
+                }, 
+                {
+                    "code": "MUS 303", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/303", 
+                    "name": "Elective Class Piano I-IV"
+                }, 
+                {
+                    "code": "MUS 311", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/311", 
+                    "name": "Marching Band I-IV"
+                }, 
+                {
+                    "code": "MUS 312", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/312", 
+                    "name": "Concert Band I-IV"
+                }, 
+                {
+                    "code": "MUS 318", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/318", 
+                    "name": "Class Piano III"
+                }, 
+                {
+                    "code": "MUS 321", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/321", 
+                    "name": "Instruments I"
+                }, 
+                {
+                    "code": "MUS 322", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/322", 
+                    "name": "Instruments II"
+                }, 
+                {
+                    "code": "MUS 323", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/323", 
+                    "name": "Conducting I"
+                }, 
+                {
+                    "code": "MUS 331", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/331", 
+                    "name": "Music History & Literature I"
+                }, 
+                {
+                    "code": "MUS 332", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/332", 
+                    "name": "Music History & Literature II"
+                }, 
+                {
+                    "code": "MUS 333", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/333", 
+                    "name": "Form and Analysis"
+                }, 
+                {
+                    "code": "MUS 403", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/403", 
+                    "name": "Elective Class Piano I-IV"
+                }, 
+                {
+                    "code": "MUS 411", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/411", 
+                    "name": "Marching Band I-IV"
+                }, 
+                {
+                    "code": "MUS 412", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/412", 
+                    "name": "Concert Band I-IV"
+                }, 
+                {
+                    "code": "MUS 415", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/415", 
+                    "name": "Stage Band"
+                }, 
+                {
+                    "code": "MUS 418", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/418", 
+                    "name": "Class Piano IV"
+                }, 
+                {
+                    "code": "MUS 421", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/421", 
+                    "name": "Orchestration"
+                }, 
+                {
+                    "code": "MUS 422", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/422", 
+                    "name": "Counterpoint"
+                }, 
+                {
+                    "code": "MUS 423", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/423", 
+                    "name": "Conducting II"
+                }, 
+                {
+                    "code": "MUS 430", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/430", 
+                    "name": "General Music Methods and Materials"
+                }, 
+                {
+                    "code": "MUS 431", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/431", 
+                    "name": "Vocal Music Methods and Materials"
+                }, 
+                {
+                    "code": "MUS 432", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/432", 
+                    "name": "Instrumental Methods and Materials"
+                }, 
+                {
+                    "code": "MUS 465", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/MUS/465", 
+                    "name": "Special Topics in Music"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/lanecollege/MUS"
+        }, 
+        {
+            "abbr": "PER", 
+            "courses": [
+                {
+                    "code": "PER 110", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/110", 
+                    "name": "Volleyball-Basketball"
+                }, 
+                {
+                    "code": "PER 111", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/111", 
+                    "name": "Bowling"
+                }, 
+                {
+                    "code": "PER 112", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/112", 
+                    "name": "Power Walking"
+                }, 
+                {
+                    "code": "PER 113", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/113", 
+                    "name": "Golf"
+                }, 
+                {
+                    "code": "PER 114", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/114", 
+                    "name": "Aerobics"
+                }, 
+                {
+                    "code": "PER 115", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/115", 
+                    "name": "Beginning Swimming"
+                }, 
+                {
+                    "code": "PER 116", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/116", 
+                    "name": "Tennis-Table Tennis"
+                }, 
+                {
+                    "code": "PER 118", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/118", 
+                    "name": "Flag Football"
+                }, 
+                {
+                    "code": "PER 119", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/119", 
+                    "name": "Soccer"
+                }, 
+                {
+                    "code": "PER 120", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/120", 
+                    "name": "Intercollegiate Football I-IV"
+                }, 
+                {
+                    "code": "PER 121", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/121", 
+                    "name": "Modern/Dance/Jazz Dance"
+                }, 
+                {
+                    "code": "PER 130", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/130", 
+                    "name": "Basic Weight Training"
+                }, 
+                {
+                    "code": "PER 141", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/141", 
+                    "name": "Intercollegiate Basketball I-IV"
+                }, 
+                {
+                    "code": "PER 142", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/142", 
+                    "name": "Intercollegiate Tennis I-IV"
+                }, 
+                {
+                    "code": "PER 143", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/143", 
+                    "name": "Intercollegiate Track and Cross Country I-IV"
+                }, 
+                {
+                    "code": "PER 144", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/144", 
+                    "name": "Intercollegiate Baseball I-IV"
+                }, 
+                {
+                    "code": "PER 145", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/145", 
+                    "name": "Intercollegiate Softball I-IV"
+                }, 
+                {
+                    "code": "PER 147", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/147", 
+                    "name": "Cheerleading I-IV"
+                }, 
+                {
+                    "code": "PER 150", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/150", 
+                    "name": "Karate/Self-Defense"
+                }, 
+                {
+                    "code": "PER 215", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/215", 
+                    "name": "Intermediate Swimming"
+                }, 
+                {
+                    "code": "PER 220", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/220", 
+                    "name": "Intercollegiate Football I-IV"
+                }, 
+                {
+                    "code": "PER 221", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/221", 
+                    "name": "Social and Contemporary Dance"
+                }, 
+                {
+                    "code": "PER 222", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/222", 
+                    "name": "Conditioning Exercise"
+                }, 
+                {
+                    "code": "PER 223", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/223", 
+                    "name": "Elementary Games"
+                }, 
+                {
+                    "code": "PER 231", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/231", 
+                    "name": "Introduction to Physical Education"
+                }, 
+                {
+                    "code": "PER 233", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/233", 
+                    "name": "Individual and Team Sports"
+                }, 
+                {
+                    "code": "PER 236", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/236", 
+                    "name": "Nutrition"
+                }, 
+                {
+                    "code": "PER 241", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/241", 
+                    "name": "Intercollegiate Basketball I-IV"
+                }, 
+                {
+                    "code": "PER 242", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/242", 
+                    "name": "Intercollegiate Tennis I-IV"
+                }, 
+                {
+                    "code": "PER 243", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/243", 
+                    "name": "Intercollegiate Track and Cross Country I-IV"
+                }, 
+                {
+                    "code": "PER 244", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/244", 
+                    "name": "Intercollegiate Baseball I-IV"
+                }, 
+                {
+                    "code": "PER 245", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/245", 
+                    "name": "Intercollegiate Softball I-IV"
+                }, 
+                {
+                    "code": "PER 247", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/247", 
+                    "name": "Cheerleading I-IV"
+                }, 
+                {
+                    "code": "PER 250", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/250", 
+                    "name": "Intermediate Karate/Self-Defense"
+                }, 
+                {
+                    "code": "PER 260", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/260", 
+                    "name": "Fitness for Life"
+                }, 
+                {
+                    "code": "PER 320", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/320", 
+                    "name": "Intercollegiate Football I-IV"
+                }, 
+                {
+                    "code": "PER 322", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/322", 
+                    "name": "Stunts and Tumbling"
+                }, 
+                {
+                    "code": "PER 323", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/323", 
+                    "name": "Advanced Swimming"
+                }, 
+                {
+                    "code": "PER 324", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/324", 
+                    "name": "Sports Officiating"
+                }, 
+                {
+                    "code": "PER 325", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/325", 
+                    "name": "Adapted Physical Education"
+                }, 
+                {
+                    "code": "PER 326", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/326", 
+                    "name": "First Aid and Safety"
+                }, 
+                {
+                    "code": "PER 330", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/330", 
+                    "name": "Coach/Officiating Athletic and Intramural Sports"
+                }, 
+                {
+                    "code": "PER 331", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/331", 
+                    "name": "Kinesiology"
+                }, 
+                {
+                    "code": "PER 333", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/333", 
+                    "name": "Organization of Festivals Playgrounds,and Recreation"
+                }, 
+                {
+                    "code": "PER 334", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/334", 
+                    "name": "Personal and Community Hygiene"
+                }, 
+                {
+                    "code": "PER 335", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/335", 
+                    "name": "School Health and Nutrition"
+                }, 
+                {
+                    "code": "PER 337", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/337", 
+                    "name": "Organization and Administration of Recreation"
+                }, 
+                {
+                    "code": "PER 338", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/338", 
+                    "name": "Introduction to Recreation"
+                }, 
+                {
+                    "code": "PER 339", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/339", 
+                    "name": "Methods of Teaching Physical Education"
+                }, 
+                {
+                    "code": "PER 340", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/340", 
+                    "name": "Physiology of Exercise"
+                }, 
+                {
+                    "code": "PER 341", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/341", 
+                    "name": "Intercollegiate Basketball I-IV"
+                }, 
+                {
+                    "code": "PER 342", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/342", 
+                    "name": "Intercollegiate Tennis I-IV"
+                }, 
+                {
+                    "code": "PER 343", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/343", 
+                    "name": "Intercollegiate Track and Cross Country I-IV"
+                }, 
+                {
+                    "code": "PER 344", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/344", 
+                    "name": "Intercollegiate Baseball I-IV"
+                }, 
+                {
+                    "code": "PER 345", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/345", 
+                    "name": "Intercollegiate Softball I-IV"
+                }, 
+                {
+                    "code": "PER 347", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/347", 
+                    "name": "Cheerleading I-IV"
+                }, 
+                {
+                    "code": "PER 420", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/420", 
+                    "name": "Intercollegiate Football I-IV"
+                }, 
+                {
+                    "code": "PER 421", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/421", 
+                    "name": "Outdoor Recreation and Camping"
+                }, 
+                {
+                    "code": "PER 422", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/422", 
+                    "name": "Supervision in Recreation"
+                }, 
+                {
+                    "code": "PER 430", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/430", 
+                    "name": "Program Leadership in Recreation"
+                }, 
+                {
+                    "code": "PER 437", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/437", 
+                    "name": "Teaching Physical Education in the Public Schools"
+                }, 
+                {
+                    "code": "PER 439", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/439", 
+                    "name": "Facilities Equipment Areas in Recreation"
+                }, 
+                {
+                    "code": "PER 441", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/441", 
+                    "name": "Intercollegiate Basketball I-IV"
+                }, 
+                {
+                    "code": "PER 442", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/442", 
+                    "name": "Intercollegiate Tennis I-IV"
+                }, 
+                {
+                    "code": "PER 443", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/443", 
+                    "name": "Intercollegiate Track and Cross Country I-IV"
+                }, 
+                {
+                    "code": "PER 444", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/444", 
+                    "name": "Intercollegiate Baseball I-IV"
+                }, 
+                {
+                    "code": "PER 445", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/445", 
+                    "name": "Intercollegiate Softball I-IV"
+                }, 
+                {
+                    "code": "PER 447", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/447", 
+                    "name": "Cheerleading I-IV"
+                }, 
+                {
+                    "code": "PER 460", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PER/460", 
+                    "name": "Recreation Internship"
+                }
+            ], 
+            "name": "Physical Ed & Rec", 
+            "url": "http://www.chegg.com/courses/lanecollege/PER"
+        }, 
+        {
+            "abbr": "PHL", 
+            "courses": [
+                {
+                    "code": "PHL 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHL/131", 
+                    "name": "Introduction to Philosophy"
+                }, 
+                {
+                    "code": "PHL 132", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHL/132", 
+                    "name": "Principles of Ethics"
+                }, 
+                {
+                    "code": "PHL 133", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHL/133", 
+                    "name": "Logic"
+                }, 
+                {
+                    "code": "PHL 331", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHL/331", 
+                    "name": "Critical Thinking and Problem Solving"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/lanecollege/PHL"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHY/131", 
+                    "name": "Physical Science"
+                }, 
+                {
+                    "code": "PHY 241", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHY/241", 
+                    "name": "College Physics I"
+                }, 
+                {
+                    "code": "PHY 242", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHY/242", 
+                    "name": "College Physics II"
+                }, 
+                {
+                    "code": "PHY 251", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHY/251", 
+                    "name": "Modern Physics"
+                }, 
+                {
+                    "code": "PHY 301", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHY/301", 
+                    "name": "Math Methods of Physics"
+                }, 
+                {
+                    "code": "PHY 311,312,411,412", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHY/311%2C312%2C411%2C412", 
+                    "name": "Physics Seminar I,II,III,IV"
+                }, 
+                {
+                    "code": "PHY 331", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHY/331", 
+                    "name": "Classical Mechanics"
+                }, 
+                {
+                    "code": "PHY 333", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHY/333", 
+                    "name": "Electronics"
+                }, 
+                {
+                    "code": "PHY 335", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHY/335", 
+                    "name": "Thermal Physics"
+                }, 
+                {
+                    "code": "PHY 345", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHY/345", 
+                    "name": "Electromagnetism"
+                }, 
+                {
+                    "code": "PHY 435", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHY/435", 
+                    "name": "Optics"
+                }, 
+                {
+                    "code": "PHY 445", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHY/445", 
+                    "name": "Solid State Physics"
+                }, 
+                {
+                    "code": "PHY 455", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PHY/455", 
+                    "name": "Quantum Mechanics"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/lanecollege/PHY"
+        }, 
+        {
+            "abbr": "PSC", 
+            "courses": [
+                {
+                    "code": "PSC 231", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PSC/231", 
+                    "name": "American Government"
+                }, 
+                {
+                    "code": "PSC 232", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PSC/232", 
+                    "name": "American City Government"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/lanecollege/PSC"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PSY/131", 
+                    "name": "Educational Psychology"
+                }, 
+                {
+                    "code": "PSY 230", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PSY/230", 
+                    "name": "Human Growth and Development"
+                }, 
+                {
+                    "code": "PSY 330", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/PSY/330", 
+                    "name": "The Exceptional Learner"
+                }
+            ], 
+            "name": "Clinical Counseling", 
+            "url": "http://www.chegg.com/courses/lanecollege/PSY"
+        }, 
+        {
+            "abbr": "REL", 
+            "courses": [
+                {
+                    "code": "REL 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/REL/131", 
+                    "name": "Old Testament"
+                }, 
+                {
+                    "code": "REL 132", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/REL/132", 
+                    "name": "New Testament"
+                }, 
+                {
+                    "code": "REL 231", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/REL/231", 
+                    "name": "History of the Black Church"
+                }, 
+                {
+                    "code": "REL 232", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/REL/232", 
+                    "name": "The Psychology of Religion"
+                }, 
+                {
+                    "code": "REL 233", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/REL/233", 
+                    "name": "Christian Ethics"
+                }, 
+                {
+                    "code": "REL 234", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/REL/234", 
+                    "name": "Church History"
+                }, 
+                {
+                    "code": "REL 310", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/REL/310", 
+                    "name": "Seminar in Religion I"
+                }, 
+                {
+                    "code": "REL 336", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/REL/336", 
+                    "name": "African Religious Traditions"
+                }, 
+                {
+                    "code": "REL 410", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/REL/410", 
+                    "name": "Seminar in Religion II"
+                }, 
+                {
+                    "code": "REL 431", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/REL/431", 
+                    "name": "Blacks in the Bible"
+                }, 
+                {
+                    "code": "REL 432", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/REL/432", 
+                    "name": "Homiletics-From Slavery to the 20 th Century Pulpit"
+                }, 
+                {
+                    "code": "REL 434", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/REL/434", 
+                    "name": "Independent Studies in Religion"
+                }
+            ], 
+            "name": "Religion", 
+            "url": "http://www.chegg.com/courses/lanecollege/REL"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 131", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SOC/131", 
+                    "name": "Introduction to Sociology"
+                }, 
+                {
+                    "code": "SOC 132", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SOC/132", 
+                    "name": "Social Stratification and Inequality"
+                }, 
+                {
+                    "code": "SOC 136", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SOC/136", 
+                    "name": "Social Problems & Change"
+                }, 
+                {
+                    "code": "SOC 231", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SOC/231", 
+                    "name": "Social Deviance and Control"
+                }, 
+                {
+                    "code": "SOC 232", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SOC/232", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "SOC 234", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SOC/234", 
+                    "name": "Introduction to Anthropology"
+                }, 
+                {
+                    "code": "SOC 248", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SOC/248", 
+                    "name": "Social Organizations"
+                }, 
+                {
+                    "code": "SOC 330", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SOC/330", 
+                    "name": "Special Topics in Sociology"
+                }, 
+                {
+                    "code": "SOC 331", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SOC/331", 
+                    "name": "Feminist Theories and Women ' s Studies"
+                }, 
+                {
+                    "code": "SOC 338", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SOC/338", 
+                    "name": "Race and Ethnicity"
+                }, 
+                {
+                    "code": "SOC 344", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SOC/344", 
+                    "name": "The Family"
+                }, 
+                {
+                    "code": "SOC 345", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SOC/345", 
+                    "name": "Introduction to Demography and Ecology"
+                }, 
+                {
+                    "code": "SOC 353", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SOC/353", 
+                    "name": "Sociology of the Global System"
+                }, 
+                {
+                    "code": "SOC 430", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SOC/430", 
+                    "name": "Social Research Methods"
+                }, 
+                {
+                    "code": "SOC 432", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SOC/432", 
+                    "name": "Social Theory"
+                }, 
+                {
+                    "code": "SOC 436", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SOC/436", 
+                    "name": "Social Movements,Conflicts and Change"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/lanecollege/SOC"
+        }, 
+        {
+            "abbr": "SPC", 
+            "courses": [
+                {
+                    "code": "SPC 230", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SPC/230", 
+                    "name": "Foundations of Speech"
+                }
+            ], 
+            "name": "Speech Communication - Spc", 
+            "url": "http://www.chegg.com/courses/lanecollege/SPC"
+        }, 
+        {
+            "abbr": "SPN", 
+            "courses": [
+                {
+                    "code": "SPN 231", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SPN/231", 
+                    "name": "and SPN 232:Intermediate Spanish I and II"
+                }, 
+                {
+                    "code": "SPN 331", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SPN/331", 
+                    "name": "Spanish Literature"
+                }, 
+                {
+                    "code": "SPN 332", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SPN/332", 
+                    "name": "Spanish Literature II"
+                }, 
+                {
+                    "code": "SPN 333", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SPN/333", 
+                    "name": "Spanish Composition and Conversation"
+                }, 
+                {
+                    "code": "SPN 334", 
+                    "course_url": "http://www.chegg.com/courses/lanecollege/SPN/334", 
+                    "name": "Survey of Spanish Culture"
+                }
+            ], 
+            "name": "Spanish", 
+            "url": "http://www.chegg.com/courses/lanecollege/SPN"
+        }
+    ], 
+    "name": "lanecollege"
+}

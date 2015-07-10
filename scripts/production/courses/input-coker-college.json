@@ -1,0 +1,1650 @@
+{
+    "all_stats": {
+        "num_courses": 282, 
+        "num_departments": 34
+    }, 
+    "departments": [
+        {
+            "abbr": "AAS", 
+            "courses": [], 
+            "name": "AAS", 
+            "url": "http://www.chegg.com/courses/coker/AAS"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 101", 
+                    "course_url": "http://www.chegg.com/courses/coker/ART/101", 
+                    "name": "Two-Dimensional Design"
+                }, 
+                {
+                    "code": "ART 170", 
+                    "course_url": "http://www.chegg.com/courses/coker/ART/170", 
+                    "name": "Intro to Computer Graphics"
+                }, 
+                {
+                    "code": "ART 180", 
+                    "course_url": "http://www.chegg.com/courses/coker/ART/180", 
+                    "name": "Understanding Art"
+                }, 
+                {
+                    "code": "ART 210", 
+                    "course_url": "http://www.chegg.com/courses/coker/ART/210", 
+                    "name": "Graphic Design I"
+                }, 
+                {
+                    "code": "ART 220", 
+                    "course_url": "http://www.chegg.com/courses/coker/ART/220", 
+                    "name": "Oil Painting I"
+                }, 
+                {
+                    "code": "ART 230", 
+                    "course_url": "http://www.chegg.com/courses/coker/ART/230", 
+                    "name": "Photography II"
+                }, 
+                {
+                    "code": "ART 290", 
+                    "course_url": "http://www.chegg.com/courses/coker/ART/290", 
+                    "name": "Art in Public Sch"
+                }, 
+                {
+                    "code": "ART 320", 
+                    "course_url": "http://www.chegg.com/courses/coker/ART/320", 
+                    "name": "Painting II"
+                }, 
+                {
+                    "code": "ART 330", 
+                    "course_url": "http://www.chegg.com/courses/coker/ART/330", 
+                    "name": "Photography III"
+                }, 
+                {
+                    "code": "ART 370", 
+                    "course_url": "http://www.chegg.com/courses/coker/ART/370", 
+                    "name": "Web Design I"
+                }, 
+                {
+                    "code": "ART 371", 
+                    "course_url": "http://www.chegg.com/courses/coker/ART/371", 
+                    "name": "Web Design II"
+                }, 
+                {
+                    "code": "ART 388", 
+                    "course_url": "http://www.chegg.com/courses/coker/ART/388", 
+                    "name": "Contemp Critical Theory"
+                }, 
+                {
+                    "code": "ART 389", 
+                    "course_url": "http://www.chegg.com/courses/coker/ART/389", 
+                    "name": "World Art Seminar"
+                }, 
+                {
+                    "code": "ART 410", 
+                    "course_url": "http://www.chegg.com/courses/coker/ART/410", 
+                    "name": "Graph Design Sr Studio"
+                }, 
+                {
+                    "code": "ART 430", 
+                    "course_url": "http://www.chegg.com/courses/coker/ART/430", 
+                    "name": "Photography Sr Studio"
+                }, 
+                {
+                    "code": "ART 470", 
+                    "course_url": "http://www.chegg.com/courses/coker/ART/470", 
+                    "name": "Fine Art Senior Studio"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/ART"
+        }, 
+        {
+            "abbr": "BA", 
+            "courses": [
+                {
+                    "code": "BA 101", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/101", 
+                    "name": "Introduction to Business"
+                }, 
+                {
+                    "code": "BA 199", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/199", 
+                    "name": "St Management Information Syst"
+                }, 
+                {
+                    "code": "BA 200", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/200", 
+                    "name": "Bus Appl Software"
+                }, 
+                {
+                    "code": "BA 212", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/212", 
+                    "name": "Financial Accounting"
+                }, 
+                {
+                    "code": "BA 213", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/213", 
+                    "name": "Managerial Accounting"
+                }, 
+                {
+                    "code": "BA 222", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/222", 
+                    "name": "Macroeconomic Concepts"
+                }, 
+                {
+                    "code": "BA 223", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/223", 
+                    "name": "Microeconomic Concepts"
+                }, 
+                {
+                    "code": "BA 303", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/303", 
+                    "name": "Personal Finance"
+                }, 
+                {
+                    "code": "BA 320", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/320", 
+                    "name": "Financial Management"
+                }, 
+                {
+                    "code": "BA 330", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/330", 
+                    "name": "Princ of Marketing"
+                }, 
+                {
+                    "code": "BA 333", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/333", 
+                    "name": "Consumer Behavior"
+                }, 
+                {
+                    "code": "BA 335", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/335", 
+                    "name": "U S Business History"
+                }, 
+                {
+                    "code": "BA 340", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/340", 
+                    "name": "Princ of Management"
+                }, 
+                {
+                    "code": "BA 341", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/341", 
+                    "name": "Legal Environ in Bus"
+                }, 
+                {
+                    "code": "BA 342", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/342", 
+                    "name": "Mgmt Human Resources"
+                }, 
+                {
+                    "code": "BA 344", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/344", 
+                    "name": "Manag Prod/Operatns"
+                }, 
+                {
+                    "code": "BA 345", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/345", 
+                    "name": "International Business"
+                }, 
+                {
+                    "code": "BA 440", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/440", 
+                    "name": "Entrepreneurial Studies"
+                }, 
+                {
+                    "code": "BA 447", 
+                    "course_url": "http://www.chegg.com/courses/coker/BA/447", 
+                    "name": "Business Ethics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/BA"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 101", 
+                    "course_url": "http://www.chegg.com/courses/coker/BIO/101", 
+                    "name": "Principles of Biology"
+                }, 
+                {
+                    "code": "BIO 101L", 
+                    "course_url": "http://www.chegg.com/courses/coker/BIO/101L", 
+                    "name": "Princ Biology Lab"
+                }, 
+                {
+                    "code": "BIO 102", 
+                    "course_url": "http://www.chegg.com/courses/coker/BIO/102", 
+                    "name": "Gen Bio of Whole Org"
+                }, 
+                {
+                    "code": "BIO 102L", 
+                    "course_url": "http://www.chegg.com/courses/coker/BIO/102L", 
+                    "name": "Whole Organisms Lab"
+                }, 
+                {
+                    "code": "BIO 110", 
+                    "course_url": "http://www.chegg.com/courses/coker/BIO/110", 
+                    "name": "Cell/Molecular Biology"
+                }, 
+                {
+                    "code": "BIO 110L", 
+                    "course_url": "http://www.chegg.com/courses/coker/BIO/110L", 
+                    "name": "Cell/Molecular Biology Lab"
+                }, 
+                {
+                    "code": "BIO 210", 
+                    "course_url": "http://www.chegg.com/courses/coker/BIO/210", 
+                    "name": "Ecology and Evolution"
+                }, 
+                {
+                    "code": "BIO 227", 
+                    "course_url": "http://www.chegg.com/courses/coker/BIO/227", 
+                    "name": "Hum Anat/Physio of Mot Syst"
+                }, 
+                {
+                    "code": "BIO 327", 
+                    "course_url": "http://www.chegg.com/courses/coker/BIO/327", 
+                    "name": "Human Anatomy & Physiology I"
+                }, 
+                {
+                    "code": "BIO 370", 
+                    "course_url": "http://www.chegg.com/courses/coker/BIO/370", 
+                    "name": "Behavioral Ecology"
+                }, 
+                {
+                    "code": "BIO 391", 
+                    "course_url": "http://www.chegg.com/courses/coker/BIO/391", 
+                    "name": "Biology Seminar I"
+                }, 
+                {
+                    "code": "BIO 399", 
+                    "course_url": "http://www.chegg.com/courses/coker/BIO/399", 
+                    "name": "Human Anatomy & Physiology I"
+                }, 
+                {
+                    "code": "BIO 461", 
+                    "course_url": "http://www.chegg.com/courses/coker/BIO/461", 
+                    "name": "Intro Biochemistry"
+                }, 
+                {
+                    "code": "BIO 490", 
+                    "course_url": "http://www.chegg.com/courses/coker/BIO/490", 
+                    "name": "Research in Biology"
+                }, 
+                {
+                    "code": "BIO 491", 
+                    "course_url": "http://www.chegg.com/courses/coker/BIO/491", 
+                    "name": "Biology Seminar III"
+                }, 
+                {
+                    "code": "BIO 499", 
+                    "course_url": "http://www.chegg.com/courses/coker/BIO/499", 
+                    "name": "ST: Tch Exper in Human A&P"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/BIO"
+        }, 
+        {
+            "abbr": "CC", 
+            "courses": [
+                {
+                    "code": "CC 101", 
+                    "course_url": "http://www.chegg.com/courses/coker/CC/101", 
+                    "name": "The First Year Experience"
+                }, 
+                {
+                    "code": "CC 120", 
+                    "course_url": "http://www.chegg.com/courses/coker/CC/120", 
+                    "name": "ALPHA Success"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/CC"
+        }, 
+        {
+            "abbr": "CHE", 
+            "courses": [
+                {
+                    "code": "CHE 101", 
+                    "course_url": "http://www.chegg.com/courses/coker/CHE/101", 
+                    "name": "General Chemistry I"
+                }, 
+                {
+                    "code": "CHE 101L", 
+                    "course_url": "http://www.chegg.com/courses/coker/CHE/101L", 
+                    "name": "Gen Chemistry I Lab"
+                }, 
+                {
+                    "code": "CHE 351", 
+                    "course_url": "http://www.chegg.com/courses/coker/CHE/351", 
+                    "name": "Organic Chemistry I"
+                }, 
+                {
+                    "code": "CHE 351L", 
+                    "course_url": "http://www.chegg.com/courses/coker/CHE/351L", 
+                    "name": "Organic Chem I Lab"
+                }, 
+                {
+                    "code": "CHE 402", 
+                    "course_url": "http://www.chegg.com/courses/coker/CHE/402", 
+                    "name": "Adv Inorganic Chemistry"
+                }, 
+                {
+                    "code": "CHE 461", 
+                    "course_url": "http://www.chegg.com/courses/coker/CHE/461", 
+                    "name": "Intro Biochemistry"
+                }, 
+                {
+                    "code": "CHE 490", 
+                    "course_url": "http://www.chegg.com/courses/coker/CHE/490", 
+                    "name": "Research in Chemistry"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/CHE"
+        }, 
+        {
+            "abbr": "CHI", 
+            "courses": [
+                {
+                    "code": "CHI 1012", 
+                    "course_url": "http://www.chegg.com/courses/coker/CHI/1012", 
+                    "name": "Intensive Elementary Chinese"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/CHI"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 101", 
+                    "course_url": "http://www.chegg.com/courses/coker/COM/101", 
+                    "name": "Speech Comm Skills"
+                }, 
+                {
+                    "code": "COM 150", 
+                    "course_url": "http://www.chegg.com/courses/coker/COM/150", 
+                    "name": "Intro Mass Communication"
+                }, 
+                {
+                    "code": "COM 289", 
+                    "course_url": "http://www.chegg.com/courses/coker/COM/289", 
+                    "name": "Film Criticism"
+                }, 
+                {
+                    "code": "COM 330", 
+                    "course_url": "http://www.chegg.com/courses/coker/COM/330", 
+                    "name": "Communication Theory"
+                }, 
+                {
+                    "code": "COM 350", 
+                    "course_url": "http://www.chegg.com/courses/coker/COM/350", 
+                    "name": "B'way/H'wood Musicals"
+                }, 
+                {
+                    "code": "COM 375", 
+                    "course_url": "http://www.chegg.com/courses/coker/COM/375", 
+                    "name": "Script Writing R/TV/F"
+                }, 
+                {
+                    "code": "COM 390", 
+                    "course_url": "http://www.chegg.com/courses/coker/COM/390", 
+                    "name": "Internship"
+                }, 
+                {
+                    "code": "COM 399", 
+                    "course_url": "http://www.chegg.com/courses/coker/COM/399", 
+                    "name": "St: Crisis Comm & Media Relat."
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/COM"
+        }, 
+        {
+            "abbr": "CRIM", 
+            "courses": [
+                {
+                    "code": "CRIM 200", 
+                    "course_url": "http://www.chegg.com/courses/coker/CRIM/200", 
+                    "name": "Intro to Criminology"
+                }, 
+                {
+                    "code": "CRIM 350", 
+                    "course_url": "http://www.chegg.com/courses/coker/CRIM/350", 
+                    "name": "Juvenile Delinquency"
+                }, 
+                {
+                    "code": "CRIM 352", 
+                    "course_url": "http://www.chegg.com/courses/coker/CRIM/352", 
+                    "name": "Soc Control/Corrections"
+                }, 
+                {
+                    "code": "CRIM 355", 
+                    "course_url": "http://www.chegg.com/courses/coker/CRIM/355", 
+                    "name": "White Collar Crime"
+                }, 
+                {
+                    "code": "CRIM 357", 
+                    "course_url": "http://www.chegg.com/courses/coker/CRIM/357", 
+                    "name": "Women/Crime/Crim Just"
+                }, 
+                {
+                    "code": "CRIM 358", 
+                    "course_url": "http://www.chegg.com/courses/coker/CRIM/358", 
+                    "name": "Race, Class and Crim Just"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/CRIM"
+        }, 
+        {
+            "abbr": "CS", 
+            "courses": [
+                {
+                    "code": "CS 110", 
+                    "course_url": "http://www.chegg.com/courses/coker/CS/110", 
+                    "name": "Computer Science I"
+                }, 
+                {
+                    "code": "CS 220", 
+                    "course_url": "http://www.chegg.com/courses/coker/CS/220", 
+                    "name": "Intro to Database"
+                }, 
+                {
+                    "code": "CS 399", 
+                    "course_url": "http://www.chegg.com/courses/coker/CS/399", 
+                    "name": "ST: Intro to IT"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/CS"
+        }, 
+        {
+            "abbr": "DNC", 
+            "courses": [
+                {
+                    "code": "DNC 100", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/100", 
+                    "name": "Beginning Modern Dance"
+                }, 
+                {
+                    "code": "DNC 101", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/101", 
+                    "name": "Beginning Tap"
+                }, 
+                {
+                    "code": "DNC 105", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/105", 
+                    "name": "Ballet Technique I"
+                }, 
+                {
+                    "code": "DNC 106", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/106", 
+                    "name": "Jazz Technique I"
+                }, 
+                {
+                    "code": "DNC 150", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/150", 
+                    "name": "Intro to Dance Production"
+                }, 
+                {
+                    "code": "DNC 155", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/155", 
+                    "name": "Dance Seminar I"
+                }, 
+                {
+                    "code": "DNC 160", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/160", 
+                    "name": "Practicum in Dance"
+                }, 
+                {
+                    "code": "DNC 200", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/200", 
+                    "name": "Intermed Modern Dance"
+                }, 
+                {
+                    "code": "DNC 205", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/205", 
+                    "name": "Ballet Technique II"
+                }, 
+                {
+                    "code": "DNC 240", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/240", 
+                    "name": "Dance History"
+                }, 
+                {
+                    "code": "DNC 250", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/250", 
+                    "name": "Rhythmic Analysis"
+                }, 
+                {
+                    "code": "DNC 255", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/255", 
+                    "name": "Dance Seminar II"
+                }, 
+                {
+                    "code": "DNC 260", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/260", 
+                    "name": "Practicum in Dance"
+                }, 
+                {
+                    "code": "DNC 305", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/305", 
+                    "name": "Ballet Technique III"
+                }, 
+                {
+                    "code": "DNC 325", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/325", 
+                    "name": "Intro to Dance/Mvmt Therapy"
+                }, 
+                {
+                    "code": "DNC 330", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/330", 
+                    "name": "Repertory Dance Company"
+                }, 
+                {
+                    "code": "DNC 355", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/355", 
+                    "name": "Dance Seminar III"
+                }, 
+                {
+                    "code": "DNC 360", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/360", 
+                    "name": "Practicum in Dance"
+                }, 
+                {
+                    "code": "DNC 371", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/371", 
+                    "name": "Dance Composition II"
+                }, 
+                {
+                    "code": "DNC 390", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/390", 
+                    "name": "Mod Tech/Repertory III"
+                }, 
+                {
+                    "code": "DNC 405", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/405", 
+                    "name": "Ballet Technique IV"
+                }, 
+                {
+                    "code": "DNC 460", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/460", 
+                    "name": "Practicum in Dance"
+                }, 
+                {
+                    "code": "DNC 490", 
+                    "course_url": "http://www.chegg.com/courses/coker/DNC/490", 
+                    "name": "Mod Tech/Repertory IV"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/DNC"
+        }, 
+        {
+            "abbr": "EDU", 
+            "courses": [
+                {
+                    "code": "EDU 102", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/102", 
+                    "name": "Intro to Education"
+                }, 
+                {
+                    "code": "EDU 200", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/200", 
+                    "name": "Hum Dev:Cptn-Puberty"
+                }, 
+                {
+                    "code": "EDU 208", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/208", 
+                    "name": "Handwriting"
+                }, 
+                {
+                    "code": "EDU 211", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/211", 
+                    "name": "Language Arts Methods"
+                }, 
+                {
+                    "code": "EDU 301", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/301", 
+                    "name": "Home/School/Community"
+                }, 
+                {
+                    "code": "EDU 302", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/302", 
+                    "name": "E Child Org/Curric"
+                }, 
+                {
+                    "code": "EDU 306", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/306", 
+                    "name": "Reading Methods I"
+                }, 
+                {
+                    "code": "EDU 307", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/307", 
+                    "name": "Reading Methods II"
+                }, 
+                {
+                    "code": "EDU 320", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/320", 
+                    "name": "Tch Secondary Soc Stu"
+                }, 
+                {
+                    "code": "EDU 326", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/326", 
+                    "name": "Teach Prim/Elem Sch Math I"
+                }, 
+                {
+                    "code": "EDU 327", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/327", 
+                    "name": "Teach Prim/Elem Sch Math II"
+                }, 
+                {
+                    "code": "EDU 345", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/345", 
+                    "name": "Soc Studies Meth for Tchrs"
+                }, 
+                {
+                    "code": "EDU 350", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/350", 
+                    "name": "Science Meth for Tchrs"
+                }, 
+                {
+                    "code": "EDU 385", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/385", 
+                    "name": "Psych Applied to Tchg"
+                }, 
+                {
+                    "code": "EDU 399", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/399", 
+                    "name": "St Role of Play in Early Child"
+                }, 
+                {
+                    "code": "EDU 402", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/402", 
+                    "name": "Mat/Meth E Child Tchr"
+                }, 
+                {
+                    "code": "EDU 405", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/405", 
+                    "name": "Classroom Pragmatics"
+                }, 
+                {
+                    "code": "EDU 410", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/410", 
+                    "name": "Intern: Early Child"
+                }, 
+                {
+                    "code": "EDU 415", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/415", 
+                    "name": "Seminar:Student Tchg"
+                }, 
+                {
+                    "code": "EDU 430", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/430", 
+                    "name": "Intern: Elementary"
+                }, 
+                {
+                    "code": "EDU 499", 
+                    "course_url": "http://www.chegg.com/courses/coker/EDU/499", 
+                    "name": "ST: Meth & Mat EC & Elem Edu"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/EDU"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 100", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/100", 
+                    "name": "Introduction to Composition"
+                }, 
+                {
+                    "code": "ENG 101", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/101", 
+                    "name": "English Comp/Rhet I"
+                }, 
+                {
+                    "code": "ENG 102", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/102", 
+                    "name": "English Comp/Rhet II"
+                }, 
+                {
+                    "code": "ENG 201", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/201", 
+                    "name": "World Literature I"
+                }, 
+                {
+                    "code": "ENG 202", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/202", 
+                    "name": "World Literature II"
+                }, 
+                {
+                    "code": "ENG 210", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/210", 
+                    "name": "Hon Eng Comp/Rhet II"
+                }, 
+                {
+                    "code": "ENG 232", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/232", 
+                    "name": "American Literature II"
+                }, 
+                {
+                    "code": "ENG 250", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/250", 
+                    "name": "Literary Criticism/Scholarship"
+                }, 
+                {
+                    "code": "ENG 251", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/251", 
+                    "name": "Children's Literature"
+                }, 
+                {
+                    "code": "ENG 325", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/325", 
+                    "name": "The Victorian Age"
+                }, 
+                {
+                    "code": "ENG 345", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/345", 
+                    "name": "Modern Poetry"
+                }, 
+                {
+                    "code": "ENG 347", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/347", 
+                    "name": "Postcolonial Literature"
+                }, 
+                {
+                    "code": "ENG 350", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/350", 
+                    "name": "B'way/H'wood Musicals"
+                }, 
+                {
+                    "code": "ENG 361", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/361", 
+                    "name": "Adolescent Literature"
+                }, 
+                {
+                    "code": "ENG 363", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/363", 
+                    "name": "Seminar in Tutoring & Writing"
+                }, 
+                {
+                    "code": "ENG 365", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/365", 
+                    "name": "English Methods"
+                }, 
+                {
+                    "code": "ENG 371", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/371", 
+                    "name": "Writing for the Workplace"
+                }, 
+                {
+                    "code": "ENG 399", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/399", 
+                    "name": "St: Gender & Sexulity Med Lit"
+                }, 
+                {
+                    "code": "ENG 400", 
+                    "course_url": "http://www.chegg.com/courses/coker/ENG/400", 
+                    "name": "Senior Seminar"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/ENG"
+        }, 
+        {
+            "abbr": "ES", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/ES"
+        }, 
+        {
+            "abbr": "FRE", 
+            "courses": [], 
+            "name": "FRE", 
+            "url": "http://www.chegg.com/courses/coker/FRE"
+        }, 
+        {
+            "abbr": "GEO", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/GEO"
+        }, 
+        {
+            "abbr": "GPY", 
+            "courses": [], 
+            "name": "GPY", 
+            "url": "http://www.chegg.com/courses/coker/GPY"
+        }, 
+        {
+            "abbr": "HIS", 
+            "courses": [
+                {
+                    "code": "HIS 201", 
+                    "course_url": "http://www.chegg.com/courses/coker/HIS/201", 
+                    "name": "U S to 1865"
+                }, 
+                {
+                    "code": "HIS 202", 
+                    "course_url": "http://www.chegg.com/courses/coker/HIS/202", 
+                    "name": "U S since 1865"
+                }, 
+                {
+                    "code": "HIS 210", 
+                    "course_url": "http://www.chegg.com/courses/coker/HIS/210", 
+                    "name": "West Civilization I"
+                }, 
+                {
+                    "code": "HIS 211", 
+                    "course_url": "http://www.chegg.com/courses/coker/HIS/211", 
+                    "name": "West Civilization II"
+                }, 
+                {
+                    "code": "HIS 355", 
+                    "course_url": "http://www.chegg.com/courses/coker/HIS/355", 
+                    "name": "Modern Russia"
+                }, 
+                {
+                    "code": "HIS 360", 
+                    "course_url": "http://www.chegg.com/courses/coker/HIS/360", 
+                    "name": "Latin America"
+                }, 
+                {
+                    "code": "HIS 411", 
+                    "course_url": "http://www.chegg.com/courses/coker/HIS/411", 
+                    "name": "Contemporary U S"
+                }, 
+                {
+                    "code": "HIS 455", 
+                    "course_url": "http://www.chegg.com/courses/coker/HIS/455", 
+                    "name": "Holocaust & Modern Memory"
+                }, 
+                {
+                    "code": "HIS 491", 
+                    "course_url": "http://www.chegg.com/courses/coker/HIS/491", 
+                    "name": "Practicing Historian's Craft"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/HIS"
+        }, 
+        {
+            "abbr": "IDS", 
+            "courses": [
+                {
+                    "code": "IDS 199", 
+                    "course_url": "http://www.chegg.com/courses/coker/IDS/199", 
+                    "name": "Ids:intro to Women's Studies"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/IDS"
+        }, 
+        {
+            "abbr": "LIB", 
+            "courses": [
+                {
+                    "code": "LIB 101", 
+                    "course_url": "http://www.chegg.com/courses/coker/LIB/101", 
+                    "name": "Intro to Acad Research Skills"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/LIB"
+        }, 
+        {
+            "abbr": "MAT", 
+            "courses": [
+                {
+                    "code": "MAT 100", 
+                    "course_url": "http://www.chegg.com/courses/coker/MAT/100", 
+                    "name": "Basic Algebra"
+                }, 
+                {
+                    "code": "MAT 101", 
+                    "course_url": "http://www.chegg.com/courses/coker/MAT/101", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MAT 203", 
+                    "course_url": "http://www.chegg.com/courses/coker/MAT/203", 
+                    "name": "Intro to Statistics"
+                }, 
+                {
+                    "code": "MAT 210", 
+                    "course_url": "http://www.chegg.com/courses/coker/MAT/210", 
+                    "name": "College Alg & Trig"
+                }, 
+                {
+                    "code": "MAT 222", 
+                    "course_url": "http://www.chegg.com/courses/coker/MAT/222", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MAT 224", 
+                    "course_url": "http://www.chegg.com/courses/coker/MAT/224", 
+                    "name": "Calculus III"
+                }, 
+                {
+                    "code": "MAT 316", 
+                    "course_url": "http://www.chegg.com/courses/coker/MAT/316", 
+                    "name": "Differential Equations"
+                }, 
+                {
+                    "code": "MAT 452", 
+                    "course_url": "http://www.chegg.com/courses/coker/MAT/452", 
+                    "name": "Real Analysis"
+                }, 
+                {
+                    "code": "MAT 491", 
+                    "course_url": "http://www.chegg.com/courses/coker/MAT/491", 
+                    "name": "Seminar I"
+                }, 
+                {
+                    "code": "MAT 492", 
+                    "course_url": "http://www.chegg.com/courses/coker/MAT/492", 
+                    "name": "Seminar II"
+                }, 
+                {
+                    "code": "MAT 493", 
+                    "course_url": "http://www.chegg.com/courses/coker/MAT/493", 
+                    "name": "Seminar III"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/MAT"
+        }, 
+        {
+            "abbr": "MSS", 
+            "courses": [], 
+            "name": "MSS", 
+            "url": "http://www.chegg.com/courses/coker/MSS"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 101P", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/101P", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUS 101T", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/101T", 
+                    "name": "Appl Mus Theat:Voice"
+                }, 
+                {
+                    "code": "MUS 101V", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/101V", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUS 102P", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/102P", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUS 102T", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/102T", 
+                    "name": "Appl Mus Theat:Voice"
+                }, 
+                {
+                    "code": "MUS 102V", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/102V", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUS 103", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/103", 
+                    "name": "Class Piano I"
+                }, 
+                {
+                    "code": "MUS 104", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/104", 
+                    "name": "Class Piano II"
+                }, 
+                {
+                    "code": "MUS 105", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/105", 
+                    "name": "Class Voice"
+                }, 
+                {
+                    "code": "MUS 111V", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/111V", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUS 120", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/120", 
+                    "name": "Found Music Skills"
+                }, 
+                {
+                    "code": "MUS 122", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/122", 
+                    "name": "Music Theory II"
+                }, 
+                {
+                    "code": "MUS 151", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/151", 
+                    "name": "Collaborative Piano"
+                }, 
+                {
+                    "code": "MUS 152", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/152", 
+                    "name": "Coker Singers"
+                }, 
+                {
+                    "code": "MUS 153", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/153", 
+                    "name": "Opera Workshop"
+                }, 
+                {
+                    "code": "MUS 154", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/154", 
+                    "name": "Music Theater Wkshop"
+                }, 
+                {
+                    "code": "MUS 182", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/182", 
+                    "name": "Brass & Percussion"
+                }, 
+                {
+                    "code": "MUS 183", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/183", 
+                    "name": "Woodwinds"
+                }, 
+                {
+                    "code": "MUS 199", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/199", 
+                    "name": "St: Men's Ensemble"
+                }, 
+                {
+                    "code": "MUS 211P", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/211P", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUS 211V", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/211V", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUS 230", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/230", 
+                    "name": "Music Appreciation"
+                }, 
+                {
+                    "code": "MUS 235", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/235", 
+                    "name": "Intro to World Music"
+                }, 
+                {
+                    "code": "MUS 301P", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/301P", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUS 301T", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/301T", 
+                    "name": "Appl Mus Theat:Voice"
+                }, 
+                {
+                    "code": "MUS 301V", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/301V", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUS 302P", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/302P", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUS 302T", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/302T", 
+                    "name": "Appl Mus Theat:Voice"
+                }, 
+                {
+                    "code": "MUS 302V", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/302V", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUS 311P", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/311P", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUS 311V", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/311V", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUS 312V", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/312V", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUS 322", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/322", 
+                    "name": "Orchestration"
+                }, 
+                {
+                    "code": "MUS 350", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/350", 
+                    "name": "B'way/H'wood Musicals"
+                }, 
+                {
+                    "code": "MUS 355", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/355", 
+                    "name": "Coker Chamber Singers"
+                }, 
+                {
+                    "code": "MUS 362", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/362", 
+                    "name": "Elem Music Meth/Mat"
+                }, 
+                {
+                    "code": "MUS 369", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/369", 
+                    "name": "Song Literature"
+                }, 
+                {
+                    "code": "MUS 411P", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/411P", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUS 411V", 
+                    "course_url": "http://www.chegg.com/courses/coker/MUS/411V", 
+                    "name": "Applied Voice"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/MUS"
+        }, 
+        {
+            "abbr": "PE", 
+            "courses": [
+                {
+                    "code": "PE 108", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/108", 
+                    "name": "Racquet Sports"
+                }, 
+                {
+                    "code": "PE 111", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/111", 
+                    "name": "Swimming: Intermediate"
+                }, 
+                {
+                    "code": "PE 114", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/114", 
+                    "name": "Golf"
+                }, 
+                {
+                    "code": "PE 120", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/120", 
+                    "name": "Lifetime Fitness"
+                }, 
+                {
+                    "code": "PE 199", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/199", 
+                    "name": "ST: Lacrosse/Strnght & Cond"
+                }, 
+                {
+                    "code": "PE 205", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/205", 
+                    "name": "P E and Sport Studies"
+                }, 
+                {
+                    "code": "PE 215", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/215", 
+                    "name": "Personal/Comm Health"
+                }, 
+                {
+                    "code": "PE 220", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/220", 
+                    "name": "Sport in Society"
+                }, 
+                {
+                    "code": "PE 250", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/250", 
+                    "name": "Lifetime/Team Activities"
+                }, 
+                {
+                    "code": "PE 260", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/260", 
+                    "name": "Motor Learning"
+                }, 
+                {
+                    "code": "PE 320", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/320", 
+                    "name": "Kinesiology"
+                }, 
+                {
+                    "code": "PE 326", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/326", 
+                    "name": "Prev/Care Ath Injuries"
+                }, 
+                {
+                    "code": "PE 335", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/335", 
+                    "name": "School Health Methods"
+                }, 
+                {
+                    "code": "PE 356", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/356", 
+                    "name": "Legal Issues in Sports"
+                }, 
+                {
+                    "code": "PE 410", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/410", 
+                    "name": "Measure/Eval in P E"
+                }, 
+                {
+                    "code": "PE 411", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/411", 
+                    "name": "Organiz/Admin of P E"
+                }, 
+                {
+                    "code": "PE 415", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/415", 
+                    "name": "Physiology of Exercise"
+                }, 
+                {
+                    "code": "PE 450", 
+                    "course_url": "http://www.chegg.com/courses/coker/PE/450", 
+                    "name": "Phys Educ Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/PE"
+        }, 
+        {
+            "abbr": "PHI", 
+            "courses": [
+                {
+                    "code": "PHI 205", 
+                    "course_url": "http://www.chegg.com/courses/coker/PHI/205", 
+                    "name": "Western Philosophy"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/PHI"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 101", 
+                    "course_url": "http://www.chegg.com/courses/coker/PHY/101", 
+                    "name": "Physical Science"
+                }, 
+                {
+                    "code": "PHY 101L", 
+                    "course_url": "http://www.chegg.com/courses/coker/PHY/101L", 
+                    "name": "Physical Science Lab"
+                }, 
+                {
+                    "code": "PHY 201", 
+                    "course_url": "http://www.chegg.com/courses/coker/PHY/201", 
+                    "name": "General Physics I"
+                }, 
+                {
+                    "code": "PHY 201L", 
+                    "course_url": "http://www.chegg.com/courses/coker/PHY/201L", 
+                    "name": "Gen Physics I Lab"
+                }, 
+                {
+                    "code": "PHY 203", 
+                    "course_url": "http://www.chegg.com/courses/coker/PHY/203", 
+                    "name": "Calculus Physics I"
+                }, 
+                {
+                    "code": "PHY 203L", 
+                    "course_url": "http://www.chegg.com/courses/coker/PHY/203L", 
+                    "name": "Calculus Physics I Lab"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/PHY"
+        }, 
+        {
+            "abbr": "PLS", 
+            "courses": [], 
+            "name": "PLS", 
+            "url": "http://www.chegg.com/courses/coker/PLS"
+        }, 
+        {
+            "abbr": "POL", 
+            "courses": [
+                {
+                    "code": "POL 101", 
+                    "course_url": "http://www.chegg.com/courses/coker/POL/101", 
+                    "name": "Intro Political Science"
+                }, 
+                {
+                    "code": "POL 280", 
+                    "course_url": "http://www.chegg.com/courses/coker/POL/280", 
+                    "name": "Constitutional Law"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/POL"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 101", 
+                    "course_url": "http://www.chegg.com/courses/coker/PSY/101", 
+                    "name": "General Psychology"
+                }, 
+                {
+                    "code": "PSY 200", 
+                    "course_url": "http://www.chegg.com/courses/coker/PSY/200", 
+                    "name": "Hum Dev:Cptn-Puberty"
+                }, 
+                {
+                    "code": "PSY 201", 
+                    "course_url": "http://www.chegg.com/courses/coker/PSY/201", 
+                    "name": "Hum Dev:Puberty-Death"
+                }, 
+                {
+                    "code": "PSY 210", 
+                    "course_url": "http://www.chegg.com/courses/coker/PSY/210", 
+                    "name": "Psychology of Gender"
+                }, 
+                {
+                    "code": "PSY 306", 
+                    "course_url": "http://www.chegg.com/courses/coker/PSY/306", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSY 309", 
+                    "course_url": "http://www.chegg.com/courses/coker/PSY/309", 
+                    "name": "Intro Psy Rsch & Behav Statist"
+                }, 
+                {
+                    "code": "PSY 340", 
+                    "course_url": "http://www.chegg.com/courses/coker/PSY/340", 
+                    "name": "Theories of Counseling"
+                }, 
+                {
+                    "code": "PSY 345", 
+                    "course_url": "http://www.chegg.com/courses/coker/PSY/345", 
+                    "name": "Crisis Intervention"
+                }, 
+                {
+                    "code": "PSY 402", 
+                    "course_url": "http://www.chegg.com/courses/coker/PSY/402", 
+                    "name": "Cognitive Psychology"
+                }, 
+                {
+                    "code": "PSY 405", 
+                    "course_url": "http://www.chegg.com/courses/coker/PSY/405", 
+                    "name": "Personality"
+                }, 
+                {
+                    "code": "PSY 490", 
+                    "course_url": "http://www.chegg.com/courses/coker/PSY/490", 
+                    "name": "Intern:Psych/Counseling"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/PSY"
+        }, 
+        {
+            "abbr": "REL", 
+            "courses": [
+                {
+                    "code": "REL 204", 
+                    "course_url": "http://www.chegg.com/courses/coker/REL/204", 
+                    "name": "Religions of the World"
+                }, 
+                {
+                    "code": "REL 205", 
+                    "course_url": "http://www.chegg.com/courses/coker/REL/205", 
+                    "name": "Religions of the World"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/REL"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 101", 
+                    "course_url": "http://www.chegg.com/courses/coker/SOC/101", 
+                    "name": "Intro to Sociology"
+                }, 
+                {
+                    "code": "SOC 102", 
+                    "course_url": "http://www.chegg.com/courses/coker/SOC/102", 
+                    "name": "American Social Problems"
+                }, 
+                {
+                    "code": "SOC 308", 
+                    "course_url": "http://www.chegg.com/courses/coker/SOC/308", 
+                    "name": "Intro Social Research"
+                }, 
+                {
+                    "code": "SOC 312", 
+                    "course_url": "http://www.chegg.com/courses/coker/SOC/312", 
+                    "name": "Moderniz/Social Change"
+                }, 
+                {
+                    "code": "SOC 353", 
+                    "course_url": "http://www.chegg.com/courses/coker/SOC/353", 
+                    "name": "Soc Law Enforcement"
+                }, 
+                {
+                    "code": "SOC 361", 
+                    "course_url": "http://www.chegg.com/courses/coker/SOC/361", 
+                    "name": "Modern Revolutions"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/SOC"
+        }, 
+        {
+            "abbr": "SPA", 
+            "courses": [
+                {
+                    "code": "SPA 101", 
+                    "course_url": "http://www.chegg.com/courses/coker/SPA/101", 
+                    "name": "Elementary Spanish I"
+                }, 
+                {
+                    "code": "SPA 102", 
+                    "course_url": "http://www.chegg.com/courses/coker/SPA/102", 
+                    "name": "Elementary Spanish II"
+                }, 
+                {
+                    "code": "SPA 245", 
+                    "course_url": "http://www.chegg.com/courses/coker/SPA/245", 
+                    "name": "US Latinos: Culture/Civ"
+                }, 
+                {
+                    "code": "SPA 260", 
+                    "course_url": "http://www.chegg.com/courses/coker/SPA/260", 
+                    "name": "Spanish/Lat-Amer Lit (Trans)"
+                }, 
+                {
+                    "code": "SPA 305", 
+                    "course_url": "http://www.chegg.com/courses/coker/SPA/305", 
+                    "name": "Practicum in Spanish"
+                }, 
+                {
+                    "code": "SPA 1012", 
+                    "course_url": "http://www.chegg.com/courses/coker/SPA/1012", 
+                    "name": "Intensive Elem Spanish"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/SPA"
+        }, 
+        {
+            "abbr": "SWK", 
+            "courses": [
+                {
+                    "code": "SWK 121", 
+                    "course_url": "http://www.chegg.com/courses/coker/SWK/121", 
+                    "name": "Intro to Social Services"
+                }, 
+                {
+                    "code": "SWK 202", 
+                    "course_url": "http://www.chegg.com/courses/coker/SWK/202", 
+                    "name": "Family and Adult Development"
+                }, 
+                {
+                    "code": "SWK 204", 
+                    "course_url": "http://www.chegg.com/courses/coker/SWK/204", 
+                    "name": "Human Behav Macro Env"
+                }, 
+                {
+                    "code": "SWK 222", 
+                    "course_url": "http://www.chegg.com/courses/coker/SWK/222", 
+                    "name": "Social Welfare Policy"
+                }, 
+                {
+                    "code": "SWK 306", 
+                    "course_url": "http://www.chegg.com/courses/coker/SWK/306", 
+                    "name": "Poverty in America"
+                }, 
+                {
+                    "code": "SWK 309", 
+                    "course_url": "http://www.chegg.com/courses/coker/SWK/309", 
+                    "name": "Intro to Social Work Research"
+                }, 
+                {
+                    "code": "SWK 337", 
+                    "course_url": "http://www.chegg.com/courses/coker/SWK/337", 
+                    "name": "Social Services in Rural Comm"
+                }, 
+                {
+                    "code": "SWK 341", 
+                    "course_url": "http://www.chegg.com/courses/coker/SWK/341", 
+                    "name": "Child Abuse and Neglect"
+                }, 
+                {
+                    "code": "SWK 342", 
+                    "course_url": "http://www.chegg.com/courses/coker/SWK/342", 
+                    "name": "Intervent w/Individuals"
+                }, 
+                {
+                    "code": "SWK 343", 
+                    "course_url": "http://www.chegg.com/courses/coker/SWK/343", 
+                    "name": "Intervent w/Fam & Gps"
+                }, 
+                {
+                    "code": "SWK 344", 
+                    "course_url": "http://www.chegg.com/courses/coker/SWK/344", 
+                    "name": "Intervent w/Communities"
+                }, 
+                {
+                    "code": "SWK 399", 
+                    "course_url": "http://www.chegg.com/courses/coker/SWK/399", 
+                    "name": "St: Intro to the DSM-IV TR"
+                }, 
+                {
+                    "code": "SWK 409", 
+                    "course_url": "http://www.chegg.com/courses/coker/SWK/409", 
+                    "name": "Advanced Social Work Research"
+                }, 
+                {
+                    "code": "SWK 442", 
+                    "course_url": "http://www.chegg.com/courses/coker/SWK/442", 
+                    "name": "Practicum One"
+                }, 
+                {
+                    "code": "SWK 443", 
+                    "course_url": "http://www.chegg.com/courses/coker/SWK/443", 
+                    "name": "Practicum Two"
+                }, 
+                {
+                    "code": "SWK 444", 
+                    "course_url": "http://www.chegg.com/courses/coker/SWK/444", 
+                    "name": "Practicum Three"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/SWK"
+        }, 
+        {
+            "abbr": "THE", 
+            "courses": [
+                {
+                    "code": "THE 100", 
+                    "course_url": "http://www.chegg.com/courses/coker/THE/100", 
+                    "name": "History of Theater I"
+                }, 
+                {
+                    "code": "THE 150", 
+                    "course_url": "http://www.chegg.com/courses/coker/THE/150", 
+                    "name": "Theater Production"
+                }, 
+                {
+                    "code": "THE 156", 
+                    "course_url": "http://www.chegg.com/courses/coker/THE/156", 
+                    "name": "Acting I"
+                }, 
+                {
+                    "code": "THE 199", 
+                    "course_url": "http://www.chegg.com/courses/coker/THE/199", 
+                    "name": "ST: Stage Movement"
+                }, 
+                {
+                    "code": "THE 201", 
+                    "course_url": "http://www.chegg.com/courses/coker/THE/201", 
+                    "name": "World Dramatic Lit"
+                }, 
+                {
+                    "code": "THE 263", 
+                    "course_url": "http://www.chegg.com/courses/coker/THE/263", 
+                    "name": "Stage Makeup"
+                }, 
+                {
+                    "code": "THE 350", 
+                    "course_url": "http://www.chegg.com/courses/coker/THE/350", 
+                    "name": "B'way/H'wood Musicals"
+                }, 
+                {
+                    "code": "THE 356", 
+                    "course_url": "http://www.chegg.com/courses/coker/THE/356", 
+                    "name": "Acting II"
+                }, 
+                {
+                    "code": "THE 371", 
+                    "course_url": "http://www.chegg.com/courses/coker/THE/371", 
+                    "name": "Practicum:Stage Mgmt"
+                }, 
+                {
+                    "code": "THE 372", 
+                    "course_url": "http://www.chegg.com/courses/coker/THE/372", 
+                    "name": "Practicum in Acting"
+                }, 
+                {
+                    "code": "THE 373", 
+                    "course_url": "http://www.chegg.com/courses/coker/THE/373", 
+                    "name": "Practicum:Tech Theater"
+                }, 
+                {
+                    "code": "THE 499", 
+                    "course_url": "http://www.chegg.com/courses/coker/THE/499", 
+                    "name": "St Theater Thesis"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/coker/THE"
+        }
+    ], 
+    "name": "coker"
+}

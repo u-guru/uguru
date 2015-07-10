@@ -234,7 +234,7 @@ if __name__ == '__main__':
 	try:
 		with open('school-data.json') as data_file:
 			SCHOOLS = json.load(data_file)
-		print("Loaded school data from file")
+		print("Loaded school data from file"), len(SCHOOLS)
 	except IOError:
 		SCHOOLS = get_school_information()
 		with open('school-data.json', 'w') as outfile:
@@ -243,7 +243,7 @@ if __name__ == '__main__':
 
 	# Iterates through chegg courses
 	index = 0
-	for school in SCHOOLS[0:100]:
+	for school in SCHOOLS:
 		index += 1
 		print(str(index) + " Attempting to load course information for " + school["name"])
 
@@ -325,10 +325,26 @@ if __name__ == '__main__':
 		# print("Getting teacher ratings from RateMyProfessor for " + school["name"])
 		# popular_courses = 0
 		# rmp_only = 0
+		
+		
+		# try:
+		# 	with open("results/final-" + school["name"] + ".json") as outfile:
+		# 		processed_data = json.load(outfile)
+		# 		if processed_data and len(processed_data.keys()) > 0:
+		# 			print 'already processed', school['name'], 'moving along'
+		# 			continue
+		# 		else:
+		# 			print 'another thread is already working on this'
+		# 			continue
+		# except:
+		# 	with open("results/final-" + school["name"] + ".json", "w") as outfile:
+		# 		print 'creating empty file so other threads dont intrude'
+		# 		json.dump(obj={}, fp=outfile, indent=4, sort_keys=True)
+
 		# for teacher in teacher_ids:
 		# 	url = get_teacher_url(teacher)
 		# 	from time import sleep
-		# 	sleep(0.25)
+			
 		# 	response = json.loads(tor_client.get(url).text)["ratings"]
 		# 	from pprint import pprint
 		# 	# print len(response), 'ratings found'
@@ -348,6 +364,10 @@ if __name__ == '__main__':
 		# 			continue
 
 		# 		class_name = format_class_name(class_name)
+
+		# 		if len(class_name.split(' ')) < 2:
+		# 			print class_name, 'does not have two words'
+		# 			continue
 
 		# 		is_linked = link_rmp_with_chegg(class_name, university_info, index)
 
@@ -464,3 +484,6 @@ if __name__ == '__main__':
 		# # 			class_information[class_name]["frequency"] = frequency
 
 		# # print("Information dumped to output-" + school["name"] + ".json")
+
+		# # ## check list
+		# # ## 100-300

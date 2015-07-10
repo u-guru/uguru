@@ -1,0 +1,3445 @@
+{
+    "all_stats": {
+        "num_courses": 620, 
+        "num_departments": 48
+    }, 
+    "departments": [
+        {
+            "abbr": "AC", 
+            "courses": [
+                {
+                    "code": "AC 0201", 
+                    "course_url": "http://www.chegg.com/courses/labette/AC/0201", 
+                    "name": "Financial Accounting"
+                }, 
+                {
+                    "code": "AC 0202", 
+                    "course_url": "http://www.chegg.com/courses/labette/AC/0202", 
+                    "name": "Managerial Accounting Lab"
+                }, 
+                {
+                    "code": "AC 0503", 
+                    "course_url": "http://www.chegg.com/courses/labette/AC/0503", 
+                    "name": "Managerial Accounting"
+                }, 
+                {
+                    "code": "AC 0508", 
+                    "course_url": "http://www.chegg.com/courses/labette/AC/0508", 
+                    "name": "Financial Accounting Lab"
+                }, 
+                {
+                    "code": "AC 0516", 
+                    "course_url": "http://www.chegg.com/courses/labette/AC/0516", 
+                    "name": "Computer Accounting"
+                }, 
+                {
+                    "code": "AC 2020", 
+                    "course_url": "http://www.chegg.com/courses/labette/AC/2020", 
+                    "name": "Introduction to Computer Accounting"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/labette/AC"
+        }, 
+        {
+            "abbr": "AG", 
+            "courses": [
+                {
+                    "code": "AG 0113", 
+                    "course_url": "http://www.chegg.com/courses/labette/AG/0113", 
+                    "name": "Residential Landscaping"
+                }, 
+                {
+                    "code": "AG 0114", 
+                    "course_url": "http://www.chegg.com/courses/labette/AG/0114", 
+                    "name": "Landscaping"
+                }, 
+                {
+                    "code": "AG 0115", 
+                    "course_url": "http://www.chegg.com/courses/labette/AG/0115", 
+                    "name": "Home Horticulture"
+                }, 
+                {
+                    "code": "AG 0122", 
+                    "course_url": "http://www.chegg.com/courses/labette/AG/0122", 
+                    "name": "Principles of Animal Science"
+                }, 
+                {
+                    "code": "AG 5422", 
+                    "course_url": "http://www.chegg.com/courses/labette/AG/5422", 
+                    "name": "Principles of Livestock Feeding"
+                }
+            ], 
+            "name": "Agriculture", 
+            "url": "http://www.chegg.com/courses/labette/AG"
+        }, 
+        {
+            "abbr": "AM", 
+            "courses": [
+                {
+                    "code": "AM 5360", 
+                    "course_url": "http://www.chegg.com/courses/labette/AM/5360", 
+                    "name": "Personal Auto Maintenance"
+                }, 
+                {
+                    "code": "AM 5361", 
+                    "course_url": "http://www.chegg.com/courses/labette/AM/5361", 
+                    "name": "Introduction to Auto Maintenance"
+                }, 
+                {
+                    "code": "AM 5363", 
+                    "course_url": "http://www.chegg.com/courses/labette/AM/5363", 
+                    "name": "Introduction to Garage Practice"
+                }, 
+                {
+                    "code": "AM 5364", 
+                    "course_url": "http://www.chegg.com/courses/labette/AM/5364", 
+                    "name": "Intermediate Garage Practice"
+                }, 
+                {
+                    "code": "AM 5365", 
+                    "course_url": "http://www.chegg.com/courses/labette/AM/5365", 
+                    "name": "Advanced Garage Practice"
+                }
+            ], 
+            "name": "Am", 
+            "url": "http://www.chegg.com/courses/labette/AM"
+        }, 
+        {
+            "abbr": "AR", 
+            "courses": [
+                {
+                    "code": "AR 1010", 
+                    "course_url": "http://www.chegg.com/courses/labette/AR/1010", 
+                    "name": "Ceramics II"
+                }, 
+                {
+                    "code": "AR 1011", 
+                    "course_url": "http://www.chegg.com/courses/labette/AR/1011", 
+                    "name": "Art Appreciation"
+                }, 
+                {
+                    "code": "AR 1012", 
+                    "course_url": "http://www.chegg.com/courses/labette/AR/1012", 
+                    "name": "Beginning Photography I"
+                }, 
+                {
+                    "code": "AR 1013", 
+                    "course_url": "http://www.chegg.com/courses/labette/AR/1013", 
+                    "name": "Beginning Photography II"
+                }, 
+                {
+                    "code": "AR 1018", 
+                    "course_url": "http://www.chegg.com/courses/labette/AR/1018", 
+                    "name": "Printmaking I"
+                }, 
+                {
+                    "code": "AR 1019", 
+                    "course_url": "http://www.chegg.com/courses/labette/AR/1019", 
+                    "name": "Crafts I"
+                }, 
+                {
+                    "code": "AR 1021", 
+                    "course_url": "http://www.chegg.com/courses/labette/AR/1021", 
+                    "name": "Painting I"
+                }, 
+                {
+                    "code": "AR 1022", 
+                    "course_url": "http://www.chegg.com/courses/labette/AR/1022", 
+                    "name": "Painting II"
+                }, 
+                {
+                    "code": "AR 1024", 
+                    "course_url": "http://www.chegg.com/courses/labette/AR/1024", 
+                    "name": "Design I"
+                }, 
+                {
+                    "code": "AR 1028", 
+                    "course_url": "http://www.chegg.com/courses/labette/AR/1028", 
+                    "name": "Art History I"
+                }, 
+                {
+                    "code": "AR 1029", 
+                    "course_url": "http://www.chegg.com/courses/labette/AR/1029", 
+                    "name": "Ceramics I"
+                }, 
+                {
+                    "code": "AR 1030", 
+                    "course_url": "http://www.chegg.com/courses/labette/AR/1030", 
+                    "name": "Sculpture"
+                }, 
+                {
+                    "code": "AR 1034", 
+                    "course_url": "http://www.chegg.com/courses/labette/AR/1034", 
+                    "name": "Drawing I"
+                }, 
+                {
+                    "code": "AR 1035", 
+                    "course_url": "http://www.chegg.com/courses/labette/AR/1035", 
+                    "name": "Drawing II"
+                }, 
+                {
+                    "code": "AR 1037", 
+                    "course_url": "http://www.chegg.com/courses/labette/AR/1037", 
+                    "name": "Watercolor"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/labette/AR"
+        }, 
+        {
+            "abbr": "BA", 
+            "courses": [
+                {
+                    "code": "BA 0501", 
+                    "course_url": "http://www.chegg.com/courses/labette/BA/0501", 
+                    "name": "Introduction to Business"
+                }, 
+                {
+                    "code": "BA 0505", 
+                    "course_url": "http://www.chegg.com/courses/labette/BA/0505", 
+                    "name": "Business Law I"
+                }, 
+                {
+                    "code": "BA 0506", 
+                    "course_url": "http://www.chegg.com/courses/labette/BA/0506", 
+                    "name": "Business Law II"
+                }, 
+                {
+                    "code": "BA 0545", 
+                    "course_url": "http://www.chegg.com/courses/labette/BA/0545", 
+                    "name": "Business Communications"
+                }
+            ], 
+            "name": "Business Administration", 
+            "url": "http://www.chegg.com/courses/labette/BA"
+        }, 
+        {
+            "abbr": "BI", 
+            "courses": [
+                {
+                    "code": "BI 0401", 
+                    "course_url": "http://www.chegg.com/courses/labette/BI/0401", 
+                    "name": "Biology"
+                }, 
+                {
+                    "code": "BI 0402", 
+                    "course_url": "http://www.chegg.com/courses/labette/BI/0402", 
+                    "name": "General Botany"
+                }, 
+                {
+                    "code": "BI 0404", 
+                    "course_url": "http://www.chegg.com/courses/labette/BI/0404", 
+                    "name": "Environmental Life Science w/Lab"
+                }, 
+                {
+                    "code": "BI 0407", 
+                    "course_url": "http://www.chegg.com/courses/labette/BI/0407", 
+                    "name": "General Zoology"
+                }, 
+                {
+                    "code": "BI 0411", 
+                    "course_url": "http://www.chegg.com/courses/labette/BI/0411", 
+                    "name": "Microbiology"
+                }, 
+                {
+                    "code": "BI 0412", 
+                    "course_url": "http://www.chegg.com/courses/labette/BI/0412", 
+                    "name": "Anatomy and Physiology"
+                }, 
+                {
+                    "code": "BI 0413", 
+                    "course_url": "http://www.chegg.com/courses/labette/BI/0413", 
+                    "name": "Case Histories in Anatomy and Physiology"
+                }, 
+                {
+                    "code": "BI 0422", 
+                    "course_url": "http://www.chegg.com/courses/labette/BI/0422", 
+                    "name": "Principles and Concepts of Genetics"
+                }, 
+                {
+                    "code": "BI 0431", 
+                    "course_url": "http://www.chegg.com/courses/labette/BI/0431", 
+                    "name": "Biology"
+                }, 
+                {
+                    "code": "BI 0436", 
+                    "course_url": "http://www.chegg.com/courses/labette/BI/0436", 
+                    "name": "Independent Study in Biology"
+                }
+            ], 
+            "name": "Bible", 
+            "url": "http://www.chegg.com/courses/labette/BI"
+        }, 
+        {
+            "abbr": "BS", 
+            "courses": [
+                {
+                    "code": "BS 5329", 
+                    "course_url": "http://www.chegg.com/courses/labette/BS/5329", 
+                    "name": "Leadership Training Techniques I"
+                }, 
+                {
+                    "code": "BS 5350", 
+                    "course_url": "http://www.chegg.com/courses/labette/BS/5350", 
+                    "name": "Supervision I"
+                }, 
+                {
+                    "code": "BS 5455", 
+                    "course_url": "http://www.chegg.com/courses/labette/BS/5455", 
+                    "name": "Quality Assurance for Supervisors"
+                }, 
+                {
+                    "code": "BS 5456", 
+                    "course_url": "http://www.chegg.com/courses/labette/BS/5456", 
+                    "name": "Business & Industry Safety for Supervisors"
+                }
+            ], 
+            "name": "Biological Sciences", 
+            "url": "http://www.chegg.com/courses/labette/BS"
+        }, 
+        {
+            "abbr": "CG", 
+            "courses": [
+                {
+                    "code": "CG 7000", 
+                    "course_url": "http://www.chegg.com/courses/labette/CG/7000", 
+                    "name": "Casino Dealer-Poker"
+                }, 
+                {
+                    "code": "CG 7001", 
+                    "course_url": "http://www.chegg.com/courses/labette/CG/7001", 
+                    "name": "Casino Dealer-Blackjack"
+                }, 
+                {
+                    "code": "CG 7002", 
+                    "course_url": "http://www.chegg.com/courses/labette/CG/7002", 
+                    "name": "Casino Dealer-Dice"
+                }, 
+                {
+                    "code": "CG 7003", 
+                    "course_url": "http://www.chegg.com/courses/labette/CG/7003", 
+                    "name": "Casino Dealer-Roulette"
+                }, 
+                {
+                    "code": "CG 7004", 
+                    "course_url": "http://www.chegg.com/courses/labette/CG/7004", 
+                    "name": "Probability Studies"
+                }
+            ], 
+            "name": "Cg-Computer Graphics", 
+            "url": "http://www.chegg.com/courses/labette/CG"
+        }, 
+        {
+            "abbr": "CH", 
+            "courses": [
+                {
+                    "code": "CH 1947", 
+                    "course_url": "http://www.chegg.com/courses/labette/CH/1947", 
+                    "name": "Basic Chemistry I"
+                }, 
+                {
+                    "code": "CH 1948", 
+                    "course_url": "http://www.chegg.com/courses/labette/CH/1948", 
+                    "name": "Basic Chemistry II"
+                }, 
+                {
+                    "code": "CH 1949", 
+                    "course_url": "http://www.chegg.com/courses/labette/CH/1949", 
+                    "name": "Basic Chemistry III"
+                }, 
+                {
+                    "code": "CH 1951", 
+                    "course_url": "http://www.chegg.com/courses/labette/CH/1951", 
+                    "name": "Introduction to Chemistry"
+                }, 
+                {
+                    "code": "CH 1955", 
+                    "course_url": "http://www.chegg.com/courses/labette/CH/1955", 
+                    "name": "Preparation for Science"
+                }, 
+                {
+                    "code": "CH 1961", 
+                    "course_url": "http://www.chegg.com/courses/labette/CH/1961", 
+                    "name": "College Chemistry I"
+                }, 
+                {
+                    "code": "CH 1962", 
+                    "course_url": "http://www.chegg.com/courses/labette/CH/1962", 
+                    "name": "College Chemistry II"
+                }, 
+                {
+                    "code": "CH 1972", 
+                    "course_url": "http://www.chegg.com/courses/labette/CH/1972", 
+                    "name": "Organic Chemistry I"
+                }, 
+                {
+                    "code": "CH 1974", 
+                    "course_url": "http://www.chegg.com/courses/labette/CH/1974", 
+                    "name": "Independent Study Chemistry"
+                }, 
+                {
+                    "code": "CH 1995", 
+                    "course_url": "http://www.chegg.com/courses/labette/CH/1995", 
+                    "name": "Organic Chemistry II"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/labette/CH"
+        }, 
+        {
+            "abbr": "CJ", 
+            "courses": [
+                {
+                    "code": "CJ 5550", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5550", 
+                    "name": "Interview and Report Writing"
+                }, 
+                {
+                    "code": "CJ 5551", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5551", 
+                    "name": "Introduction to Administration of Justice"
+                }, 
+                {
+                    "code": "CJ 5553", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5553", 
+                    "name": "Community Policing"
+                }, 
+                {
+                    "code": "CJ 5554", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5554", 
+                    "name": "Criminal Investigation and Interrogation Techniques"
+                }, 
+                {
+                    "code": "CJ 5555", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5555", 
+                    "name": "Rape Victimology"
+                }, 
+                {
+                    "code": "CJ 5556", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5556", 
+                    "name": "Seminar in Police Science"
+                }, 
+                {
+                    "code": "CJ 5557", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5557", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CJ 5559", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5559", 
+                    "name": "Probation and Parole"
+                }, 
+                {
+                    "code": "CJ 5561", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5561", 
+                    "name": "Correctional Treatment Programs"
+                }, 
+                {
+                    "code": "CJ 5563", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5563", 
+                    "name": "Juveniles in the Criminal Justice System"
+                }, 
+                {
+                    "code": "CJ 5564", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5564", 
+                    "name": "Industrial and Business Security"
+                }, 
+                {
+                    "code": "CJ 5565", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5565", 
+                    "name": "Criminal Procedures I"
+                }, 
+                {
+                    "code": "CJ 5567", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5567", 
+                    "name": "Patrol Procedure"
+                }, 
+                {
+                    "code": "CJ 5568", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5568", 
+                    "name": "Introduction to Corrections"
+                }, 
+                {
+                    "code": "CJ 5570", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5570", 
+                    "name": "Police Defense Tactics"
+                }, 
+                {
+                    "code": "CJ 5572", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5572", 
+                    "name": "Internship in Criminal Justice"
+                }, 
+                {
+                    "code": "CJ 5573", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5573", 
+                    "name": "Corrections Internship"
+                }, 
+                {
+                    "code": "CJ 5574", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5574", 
+                    "name": "Accident Investigation"
+                }, 
+                {
+                    "code": "CJ 5578", 
+                    "course_url": "http://www.chegg.com/courses/labette/CJ/5578", 
+                    "name": "Courtroom Testimony"
+                }
+            ], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/labette/CJ"
+        }, 
+        {
+            "abbr": "CO", 
+            "courses": [
+                {
+                    "code": "CO 0620", 
+                    "course_url": "http://www.chegg.com/courses/labette/CO/0620", 
+                    "name": "Introduction to Mass Media"
+                }, 
+                {
+                    "code": "CO 0635", 
+                    "course_url": "http://www.chegg.com/courses/labette/CO/0635", 
+                    "name": "Introduction to Advertising"
+                }, 
+                {
+                    "code": "CO 0637", 
+                    "course_url": "http://www.chegg.com/courses/labette/CO/0637", 
+                    "name": "Introduction to Public Relations"
+                }, 
+                {
+                    "code": "CO 0645", 
+                    "course_url": "http://www.chegg.com/courses/labette/CO/0645", 
+                    "name": "Debate I"
+                }, 
+                {
+                    "code": "CO 0646", 
+                    "course_url": "http://www.chegg.com/courses/labette/CO/0646", 
+                    "name": "Debate II"
+                }, 
+                {
+                    "code": "CO 0647", 
+                    "course_url": "http://www.chegg.com/courses/labette/CO/0647", 
+                    "name": "Forensics I"
+                }, 
+                {
+                    "code": "CO 0648", 
+                    "course_url": "http://www.chegg.com/courses/labette/CO/0648", 
+                    "name": "Forensics II"
+                }, 
+                {
+                    "code": "CO 0649", 
+                    "course_url": "http://www.chegg.com/courses/labette/CO/0649", 
+                    "name": "Forensics III"
+                }, 
+                {
+                    "code": "CO 0651", 
+                    "course_url": "http://www.chegg.com/courses/labette/CO/0651", 
+                    "name": "Forensics IV"
+                }, 
+                {
+                    "code": "CO 0652", 
+                    "course_url": "http://www.chegg.com/courses/labette/CO/0652", 
+                    "name": "Debate III"
+                }, 
+                {
+                    "code": "CO 1560", 
+                    "course_url": "http://www.chegg.com/courses/labette/CO/1560", 
+                    "name": "Fundamentals of Speech"
+                }, 
+                {
+                    "code": "CO 1563", 
+                    "course_url": "http://www.chegg.com/courses/labette/CO/1563", 
+                    "name": "Critical Thinking and Argumentation"
+                }
+            ], 
+            "name": "Communication And Theatre Arts", 
+            "url": "http://www.chegg.com/courses/labette/CO"
+        }, 
+        {
+            "abbr": "CS", 
+            "courses": [
+                {
+                    "code": "CS 0535", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/0535", 
+                    "name": "Word Processing Concepts and Applications"
+                }, 
+                {
+                    "code": "CS 0709", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/0709", 
+                    "name": "Unix/Linux Administration"
+                }, 
+                {
+                    "code": "CS 0715", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/0715", 
+                    "name": "Computer Concepts and Applications"
+                }, 
+                {
+                    "code": "CS 0717", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/0717", 
+                    "name": "Computer Information Systems"
+                }, 
+                {
+                    "code": "CS 0718", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/0718", 
+                    "name": "PC Troubleshooting"
+                }, 
+                {
+                    "code": "CS 0719", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/0719", 
+                    "name": "Cisco Internetworking"
+                }, 
+                {
+                    "code": "CS 0720", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/0720", 
+                    "name": "Fundamentals of Network Security"
+                }, 
+                {
+                    "code": "CS 0721", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/0721", 
+                    "name": "Database Programming"
+                }, 
+                {
+                    "code": "CS 0724", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/0724", 
+                    "name": "Internet Programming"
+                }, 
+                {
+                    "code": "CS 0729", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/0729", 
+                    "name": "Database Concepts and Applications"
+                }, 
+                {
+                    "code": "CS 0730", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/0730", 
+                    "name": "Visual Basic Programming"
+                }, 
+                {
+                    "code": "CS 0732", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/0732", 
+                    "name": "Advanced Programming Techniques"
+                }, 
+                {
+                    "code": "CS 0733", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/0733", 
+                    "name": "Spreadsheet Concepts and Applications"
+                }, 
+                {
+                    "code": "CS 0736", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/0736", 
+                    "name": "Introduction to Programming"
+                }, 
+                {
+                    "code": "CS 0737", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/0737", 
+                    "name": "Pascal"
+                }, 
+                {
+                    "code": "CS 5508", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/5508", 
+                    "name": "Principles of Software Design"
+                }, 
+                {
+                    "code": "CS 5509", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/5509", 
+                    "name": "Concepts of Computer Systems"
+                }, 
+                {
+                    "code": "CS 5510", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/5510", 
+                    "name": "Introduction to Networking"
+                }, 
+                {
+                    "code": "CS 5511", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/5511", 
+                    "name": "Network Administration I"
+                }, 
+                {
+                    "code": "CS 5512", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/5512", 
+                    "name": "Network Administration II"
+                }, 
+                {
+                    "code": "CS 5516", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/5516", 
+                    "name": "C++ Programming"
+                }, 
+                {
+                    "code": "CS 5518", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/5518", 
+                    "name": "Java Programming"
+                }, 
+                {
+                    "code": "CS 5519", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/5519", 
+                    "name": "Special Topics in Computing"
+                }, 
+                {
+                    "code": "CS 5520", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/5520", 
+                    "name": "Network Administration III"
+                }, 
+                {
+                    "code": "CS 5521", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/5521", 
+                    "name": "PC Troubleshooting Lab"
+                }, 
+                {
+                    "code": "CS 5525", 
+                    "course_url": "http://www.chegg.com/courses/labette/CS/5525", 
+                    "name": "Web Page Design Technology"
+                }
+            ], 
+            "name": "Computer Science", 
+            "url": "http://www.chegg.com/courses/labette/CS"
+        }, 
+        {
+            "abbr": "CU", 
+            "courses": [
+                {
+                    "code": "CU 3000", 
+                    "course_url": "http://www.chegg.com/courses/labette/CU/3000", 
+                    "name": "Perspectives of Hospitality Management"
+                }, 
+                {
+                    "code": "CU 3001", 
+                    "course_url": "http://www.chegg.com/courses/labette/CU/3001", 
+                    "name": "Food Service Sanitation"
+                }, 
+                {
+                    "code": "CU 3002", 
+                    "course_url": "http://www.chegg.com/courses/labette/CU/3002", 
+                    "name": "Supervisory Management"
+                }, 
+                {
+                    "code": "CU 3003", 
+                    "course_url": "http://www.chegg.com/courses/labette/CU/3003", 
+                    "name": "Professional Cooking I"
+                }, 
+                {
+                    "code": "CU 3004", 
+                    "course_url": "http://www.chegg.com/courses/labette/CU/3004", 
+                    "name": "Professional Cooking II"
+                }, 
+                {
+                    "code": "CU 3005", 
+                    "course_url": "http://www.chegg.com/courses/labette/CU/3005", 
+                    "name": "Menu Design and Planning"
+                }, 
+                {
+                    "code": "CU 3006", 
+                    "course_url": "http://www.chegg.com/courses/labette/CU/3006", 
+                    "name": "Hospitality Management:Purchasing"
+                }, 
+                {
+                    "code": "CU 3007", 
+                    "course_url": "http://www.chegg.com/courses/labette/CU/3007", 
+                    "name": "Nutrition and Meal Planning"
+                }, 
+                {
+                    "code": "CU 3008", 
+                    "course_url": "http://www.chegg.com/courses/labette/CU/3008", 
+                    "name": "Human Resource Management"
+                }, 
+                {
+                    "code": "CU 3009", 
+                    "course_url": "http://www.chegg.com/courses/labette/CU/3009", 
+                    "name": "Food Management"
+                }, 
+                {
+                    "code": "CU 3010", 
+                    "course_url": "http://www.chegg.com/courses/labette/CU/3010", 
+                    "name": "Food Service Sales and Marketing"
+                }, 
+                {
+                    "code": "CU 3011", 
+                    "course_url": "http://www.chegg.com/courses/labette/CU/3011", 
+                    "name": "Baking Principles"
+                }, 
+                {
+                    "code": "CU 3012", 
+                    "course_url": "http://www.chegg.com/courses/labette/CU/3012", 
+                    "name": "Introduction to Catering"
+                }, 
+                {
+                    "code": "CU 3013", 
+                    "course_url": "http://www.chegg.com/courses/labette/CU/3013", 
+                    "name": "Culinary Arts Internship I"
+                }, 
+                {
+                    "code": "CU 3014", 
+                    "course_url": "http://www.chegg.com/courses/labette/CU/3014", 
+                    "name": "Culinary Arts Internship II"
+                }
+            ], 
+            "name": "Computer User", 
+            "url": "http://www.chegg.com/courses/labette/CU"
+        }, 
+        {
+            "abbr": "DR", 
+            "courses": [
+                {
+                    "code": "DR 5303", 
+                    "course_url": "http://www.chegg.com/courses/labette/DR/5303", 
+                    "name": "Engineering Graphics I"
+                }, 
+                {
+                    "code": "DR 5304", 
+                    "course_url": "http://www.chegg.com/courses/labette/DR/5304", 
+                    "name": "Engineering Graphics II"
+                }, 
+                {
+                    "code": "DR 5309", 
+                    "course_url": "http://www.chegg.com/courses/labette/DR/5309", 
+                    "name": "Computer Aided Drafting I"
+                }, 
+                {
+                    "code": "DR 5730", 
+                    "course_url": "http://www.chegg.com/courses/labette/DR/5730", 
+                    "name": "Computer Aided Drafting II"
+                }
+            ], 
+            "name": "Drama", 
+            "url": "http://www.chegg.com/courses/labette/DR"
+        }, 
+        {
+            "abbr": "EC", 
+            "courses": [
+                {
+                    "code": "EC 2241", 
+                    "course_url": "http://www.chegg.com/courses/labette/EC/2241", 
+                    "name": "Macroeconomics"
+                }, 
+                {
+                    "code": "EC 2242", 
+                    "course_url": "http://www.chegg.com/courses/labette/EC/2242", 
+                    "name": "Microeconomics"
+                }, 
+                {
+                    "code": "EC 2243", 
+                    "course_url": "http://www.chegg.com/courses/labette/EC/2243", 
+                    "name": "Free Enterprise I"
+                }, 
+                {
+                    "code": "EC 2244", 
+                    "course_url": "http://www.chegg.com/courses/labette/EC/2244", 
+                    "name": "Free Enterprise II"
+                }, 
+                {
+                    "code": "EC 2245", 
+                    "course_url": "http://www.chegg.com/courses/labette/EC/2245", 
+                    "name": "Free Enterprise III"
+                }, 
+                {
+                    "code": "EC 2246", 
+                    "course_url": "http://www.chegg.com/courses/labette/EC/2246", 
+                    "name": "Free Enterprise IV"
+                }, 
+                {
+                    "code": "EC 2249", 
+                    "course_url": "http://www.chegg.com/courses/labette/EC/2249", 
+                    "name": "Issues in Today's Economy"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/labette/EC"
+        }, 
+        {
+            "abbr": "ED", 
+            "courses": [
+                {
+                    "code": "ED 0806", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/0806", 
+                    "name": "Caring for Children with Handicaps"
+                }, 
+                {
+                    "code": "ED 0819", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/0819", 
+                    "name": "Introduction to Teaching"
+                }, 
+                {
+                    "code": "ED 0820", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/0820", 
+                    "name": "Children's Literature"
+                }, 
+                {
+                    "code": "ED 0821", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/0821", 
+                    "name": "Early Childhood Education"
+                }, 
+                {
+                    "code": "ED 0822", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/0822", 
+                    "name": "Children's Music"
+                }, 
+                {
+                    "code": "ED 0823", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/0823", 
+                    "name": "Administration & Organization of Child Care Programs"
+                }, 
+                {
+                    "code": "ED 0831", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/0831", 
+                    "name": "Art Education"
+                }, 
+                {
+                    "code": "ED 0839", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/0839", 
+                    "name": "Family Day Care"
+                }, 
+                {
+                    "code": "ED 0840", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/0840", 
+                    "name": "Student Leadership Training"
+                }, 
+                {
+                    "code": "ED 0842", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/0842", 
+                    "name": "Preprofessional Lab"
+                }, 
+                {
+                    "code": "ED 0911", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/0911", 
+                    "name": "World Regional Geography"
+                }, 
+                {
+                    "code": "ED 0931", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/0931", 
+                    "name": "Infant and Toddler"
+                }, 
+                {
+                    "code": "ED 0932", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/0932", 
+                    "name": "Infant and Toddler Lab"
+                }, 
+                {
+                    "code": "ED 0933", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/0933", 
+                    "name": "Understanding Children's Temperament s"
+                }, 
+                {
+                    "code": "ED 1308", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/1308", 
+                    "name": "Preschool Child"
+                }, 
+                {
+                    "code": "ED 1309", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/1309", 
+                    "name": "Preschool Child Lab"
+                }, 
+                {
+                    "code": "ED 1314", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/1314", 
+                    "name": "Child Abuse/Neglect:Recognition and Reporting"
+                }, 
+                {
+                    "code": "ED 1315", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/1315", 
+                    "name": "Understanding Multiple Intelligences and Children's Learning Styles"
+                }, 
+                {
+                    "code": "ED 1316", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/1316", 
+                    "name": "Creating Positive Settings for Children and Families"
+                }, 
+                {
+                    "code": "ED 1319", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/1319", 
+                    "name": "Cultural Competency"
+                }, 
+                {
+                    "code": "ED 1351", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/1351", 
+                    "name": "Child Development:Day Care and Preschool"
+                }, 
+                {
+                    "code": "ED 1352", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/1352", 
+                    "name": "Child Development:Social and Emotional Development"
+                }, 
+                {
+                    "code": "ED 1353", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/1353", 
+                    "name": "Child Development:Curriculum for Learning"
+                }, 
+                {
+                    "code": "ED 1355", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/1355", 
+                    "name": "Positive Behavior Support for Young Children"
+                }, 
+                {
+                    "code": "ED 1601", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/1601", 
+                    "name": "Information Literacy"
+                }, 
+                {
+                    "code": "ED 5275", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/5275", 
+                    "name": "Child Development"
+                }, 
+                {
+                    "code": "ED 5920", 
+                    "course_url": "http://www.chegg.com/courses/labette/ED/5920", 
+                    "name": "Introduction to Online Teaching"
+                }
+            ], 
+            "name": "Ed", 
+            "url": "http://www.chegg.com/courses/labette/ED"
+        }, 
+        {
+            "abbr": "EG", 
+            "courses": [
+                {
+                    "code": "EG 1513", 
+                    "course_url": "http://www.chegg.com/courses/labette/EG/1513", 
+                    "name": "English Composition I"
+                }, 
+                {
+                    "code": "EG 1514", 
+                    "course_url": "http://www.chegg.com/courses/labette/EG/1514", 
+                    "name": "English Composition II"
+                }, 
+                {
+                    "code": "EG 1520", 
+                    "course_url": "http://www.chegg.com/courses/labette/EG/1520", 
+                    "name": "Introduction to Western Literature"
+                }, 
+                {
+                    "code": "EG 1523", 
+                    "course_url": "http://www.chegg.com/courses/labette/EG/1523", 
+                    "name": "Introduction to Literature I:Poetry and Drama"
+                }, 
+                {
+                    "code": "EG 1524", 
+                    "course_url": "http://www.chegg.com/courses/labette/EG/1524", 
+                    "name": "Introduction to Literature II:Prose and Fiction"
+                }, 
+                {
+                    "code": "EG 1525", 
+                    "course_url": "http://www.chegg.com/courses/labette/EG/1525", 
+                    "name": "Explorations in Literature"
+                }, 
+                {
+                    "code": "EG 1526", 
+                    "course_url": "http://www.chegg.com/courses/labette/EG/1526", 
+                    "name": "General Literature"
+                }, 
+                {
+                    "code": "EG 1539", 
+                    "course_url": "http://www.chegg.com/courses/labette/EG/1539", 
+                    "name": "Science Fiction"
+                }, 
+                {
+                    "code": "EG 1540", 
+                    "course_url": "http://www.chegg.com/courses/labette/EG/1540", 
+                    "name": "The Novel"
+                }, 
+                {
+                    "code": "EG 1541", 
+                    "course_url": "http://www.chegg.com/courses/labette/EG/1541", 
+                    "name": "Film Appreciation"
+                }, 
+                {
+                    "code": "EG 1543", 
+                    "course_url": "http://www.chegg.com/courses/labette/EG/1543", 
+                    "name": "Basic Writing II"
+                }, 
+                {
+                    "code": "EG 1554", 
+                    "course_url": "http://www.chegg.com/courses/labette/EG/1554", 
+                    "name": "Basic Writing I"
+                }, 
+                {
+                    "code": "EG 1570", 
+                    "course_url": "http://www.chegg.com/courses/labette/EG/1570", 
+                    "name": "Creative Writing"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/labette/EG"
+        }, 
+        {
+            "abbr": "FI", 
+            "courses": [
+                {
+                    "code": "FI 0295", 
+                    "course_url": "http://www.chegg.com/courses/labette/FI/0295", 
+                    "name": "Professional Selling for Financial Service Agents"
+                }, 
+                {
+                    "code": "FI 0296", 
+                    "course_url": "http://www.chegg.com/courses/labette/FI/0296", 
+                    "name": "Money and Banking"
+                }, 
+                {
+                    "code": "FI 0297", 
+                    "course_url": "http://www.chegg.com/courses/labette/FI/0297", 
+                    "name": "Introduction to Financial Planning"
+                }, 
+                {
+                    "code": "FI 0298", 
+                    "course_url": "http://www.chegg.com/courses/labette/FI/0298", 
+                    "name": "Financial Management"
+                }, 
+                {
+                    "code": "FI 0299", 
+                    "course_url": "http://www.chegg.com/courses/labette/FI/0299", 
+                    "name": "Life,Accident,and Health Insurance"
+                }, 
+                {
+                    "code": "FI 0300", 
+                    "course_url": "http://www.chegg.com/courses/labette/FI/0300", 
+                    "name": "Introduction to Investments"
+                }, 
+                {
+                    "code": "FI 0303", 
+                    "course_url": "http://www.chegg.com/courses/labette/FI/0303", 
+                    "name": "General Securities Registered Representative Pre- Licensing Series"
+                }, 
+                {
+                    "code": "FI 0306", 
+                    "course_url": "http://www.chegg.com/courses/labette/FI/0306", 
+                    "name": "Pre-Licensing Series 6 Limited Representative"
+                }, 
+                {
+                    "code": "FI 0540", 
+                    "course_url": "http://www.chegg.com/courses/labette/FI/0540", 
+                    "name": "AIB:Principles of Banking"
+                }, 
+                {
+                    "code": "FI 0577", 
+                    "course_url": "http://www.chegg.com/courses/labette/FI/0577", 
+                    "name": "Principles of Real Estate"
+                }, 
+                {
+                    "code": "FI 0591", 
+                    "course_url": "http://www.chegg.com/courses/labette/FI/0591", 
+                    "name": "Basic Marketing"
+                }
+            ], 
+            "name": "Finance", 
+            "url": "http://www.chegg.com/courses/labette/FI"
+        }, 
+        {
+            "abbr": "FL", 
+            "courses": [
+                {
+                    "code": "FL 1121", 
+                    "course_url": "http://www.chegg.com/courses/labette/FL/1121", 
+                    "name": "French I"
+                }, 
+                {
+                    "code": "FL 1122", 
+                    "course_url": "http://www.chegg.com/courses/labette/FL/1122", 
+                    "name": "French II"
+                }, 
+                {
+                    "code": "FL 1131", 
+                    "course_url": "http://www.chegg.com/courses/labette/FL/1131", 
+                    "name": "German I"
+                }, 
+                {
+                    "code": "FL 1132", 
+                    "course_url": "http://www.chegg.com/courses/labette/FL/1132", 
+                    "name": "German II"
+                }, 
+                {
+                    "code": "FL 1152", 
+                    "course_url": "http://www.chegg.com/courses/labette/FL/1152", 
+                    "name": "Spanish I"
+                }, 
+                {
+                    "code": "FL 1153", 
+                    "course_url": "http://www.chegg.com/courses/labette/FL/1153", 
+                    "name": "Spanish II"
+                }, 
+                {
+                    "code": "FL 1161", 
+                    "course_url": "http://www.chegg.com/courses/labette/FL/1161", 
+                    "name": "Russian I"
+                }, 
+                {
+                    "code": "FL 1162", 
+                    "course_url": "http://www.chegg.com/courses/labette/FL/1162", 
+                    "name": "Russian II"
+                }
+            ], 
+            "name": "Modern Language & Literatures", 
+            "url": "http://www.chegg.com/courses/labette/FL"
+        }, 
+        {
+            "abbr": "FS", 
+            "courses": [
+                {
+                    "code": "FS 5650", 
+                    "course_url": "http://www.chegg.com/courses/labette/FS/5650", 
+                    "name": "Essentials of Fire Fighting"
+                }, 
+                {
+                    "code": "FS 5651", 
+                    "course_url": "http://www.chegg.com/courses/labette/FS/5651", 
+                    "name": "Introduction to Fire Science"
+                }, 
+                {
+                    "code": "FS 5658", 
+                    "course_url": "http://www.chegg.com/courses/labette/FS/5658", 
+                    "name": "Fundamentals of Fire Prevention"
+                }, 
+                {
+                    "code": "FS 5659", 
+                    "course_url": "http://www.chegg.com/courses/labette/FS/5659", 
+                    "name": "Fire Investigation"
+                }, 
+                {
+                    "code": "FS 5660", 
+                    "course_url": "http://www.chegg.com/courses/labette/FS/5660", 
+                    "name": "Fire Apparatus and Equipment"
+                }, 
+                {
+                    "code": "FS 5665", 
+                    "course_url": "http://www.chegg.com/courses/labette/FS/5665", 
+                    "name": "Seminar in Fire Science"
+                }
+            ], 
+            "name": "Food Science", 
+            "url": "http://www.chegg.com/courses/labette/FS"
+        }, 
+        {
+            "abbr": "GD", 
+            "courses": [
+                {
+                    "code": "GD 1096", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1096", 
+                    "name": "Drawing Fundamentals"
+                }, 
+                {
+                    "code": "GD 1097", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1097", 
+                    "name": "Digital Animation"
+                }, 
+                {
+                    "code": "GD 1098", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1098", 
+                    "name": "Color Theory"
+                }, 
+                {
+                    "code": "GD 1099", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1099", 
+                    "name": "Introduction to Desktop Publishing"
+                }, 
+                {
+                    "code": "GD 1111", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1111", 
+                    "name": "Professional Preparation"
+                }, 
+                {
+                    "code": "GD 1112", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1112", 
+                    "name": "Illustration Techniques"
+                }, 
+                {
+                    "code": "GD 1113", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1113", 
+                    "name": "Cartooning"
+                }, 
+                {
+                    "code": "GD 1114", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1114", 
+                    "name": "Graphic Communication Internship"
+                }, 
+                {
+                    "code": "GD 1117", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1117", 
+                    "name": "Typography"
+                }, 
+                {
+                    "code": "GD 1135", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1135", 
+                    "name": "Two-Dimensional Design"
+                }, 
+                {
+                    "code": "GD 1136", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1136", 
+                    "name": "Three-Dimensional Design"
+                }, 
+                {
+                    "code": "GD 1137", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1137", 
+                    "name": "Digital Illustration"
+                }, 
+                {
+                    "code": "GD 1138", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1138", 
+                    "name": "Production Art"
+                }, 
+                {
+                    "code": "GD 1139", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1139", 
+                    "name": "Website Design Software"
+                }, 
+                {
+                    "code": "GD 1140", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1140", 
+                    "name": "Photo Editing Software"
+                }, 
+                {
+                    "code": "GD 1141", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1141", 
+                    "name": "Digital Photography"
+                }, 
+                {
+                    "code": "GD 1143", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1143", 
+                    "name": "Digital Page Layout"
+                }, 
+                {
+                    "code": "GD 1144", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1144", 
+                    "name": "Mixed Media"
+                }, 
+                {
+                    "code": "GD 1145", 
+                    "course_url": "http://www.chegg.com/courses/labette/GD/1145", 
+                    "name": "Graphic Communication"
+                }
+            ], 
+            "name": "Graphic Design", 
+            "url": "http://www.chegg.com/courses/labette/GD"
+        }, 
+        {
+            "abbr": "HC", 
+            "courses": [
+                {
+                    "code": "HC 1365", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/1365", 
+                    "name": "Basic Nutrition"
+                }, 
+                {
+                    "code": "HC 1366", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/1366", 
+                    "name": "Paid Nutrition Assistant"
+                }, 
+                {
+                    "code": "HC 1853", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/1853", 
+                    "name": "Home Health Aide"
+                }, 
+                {
+                    "code": "HC 2278", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/2278", 
+                    "name": "Activity Director Certification"
+                }, 
+                {
+                    "code": "HC 2279", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/2279", 
+                    "name": "Social Service Designee Certification"
+                }, 
+                {
+                    "code": "HC 5099", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5099", 
+                    "name": "First Responder to EMT-Basic Bridge"
+                }, 
+                {
+                    "code": "HC 5100", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5100", 
+                    "name": "Certified Nurse Aide Bridge Course"
+                }, 
+                {
+                    "code": "HC 5190", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5190", 
+                    "name": "Preparation for Pharmacy Technician Certification"
+                }, 
+                {
+                    "code": "HC 5197", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5197", 
+                    "name": "Policy and Performance Skills"
+                }, 
+                {
+                    "code": "HC 5198", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5198", 
+                    "name": "Psychology of the Aging Process"
+                }, 
+                {
+                    "code": "HC 5200", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5200", 
+                    "name": "First Responder"
+                }, 
+                {
+                    "code": "HC 5211", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5211", 
+                    "name": "Nurse Aide:Geriatric"
+                }, 
+                {
+                    "code": "HC 5212", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5212", 
+                    "name": "Medication Aide"
+                }, 
+                {
+                    "code": "HC 5213", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5213", 
+                    "name": "Emergency Medical Technician- Basic"
+                }, 
+                {
+                    "code": "HC 5214", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5214", 
+                    "name": "Emergency Medical Technician Refresher Seminar I"
+                }, 
+                {
+                    "code": "HC 5221", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5221", 
+                    "name": "Medication Aide Recertification"
+                }, 
+                {
+                    "code": "HC 5223", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5223", 
+                    "name": "Emergency Medical Training-Intermediate"
+                }, 
+                {
+                    "code": "HC 5277", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5277", 
+                    "name": "Restorative Aide"
+                }, 
+                {
+                    "code": "HC 5280", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5280", 
+                    "name": "Cardiopulmonary Resuscitation"
+                }, 
+                {
+                    "code": "HC 5377", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5377", 
+                    "name": "Topics in Long Term Care"
+                }, 
+                {
+                    "code": "HC 5465", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5465", 
+                    "name": "Adult Care Home Operator"
+                }, 
+                {
+                    "code": "HC 5475", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5475", 
+                    "name": "Therapeutic Nutrition"
+                }, 
+                {
+                    "code": "HC 5488", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5488", 
+                    "name": "CPR/First Aid"
+                }, 
+                {
+                    "code": "HC 5819", 
+                    "course_url": "http://www.chegg.com/courses/labette/HC/5819", 
+                    "name": "Advanced Cardiac Life Support"
+                }
+            ], 
+            "name": "Honors College", 
+            "url": "http://www.chegg.com/courses/labette/HC"
+        }, 
+        {
+            "abbr": "HE", 
+            "courses": [
+                {
+                    "code": "HE 1300", 
+                    "course_url": "http://www.chegg.com/courses/labette/HE/1300", 
+                    "name": "Interior Design"
+                }, 
+                {
+                    "code": "HE 1304", 
+                    "course_url": "http://www.chegg.com/courses/labette/HE/1304", 
+                    "name": "Consumer Education"
+                }, 
+                {
+                    "code": "HE 1305", 
+                    "course_url": "http://www.chegg.com/courses/labette/HE/1305", 
+                    "name": "Foods for Today"
+                }, 
+                {
+                    "code": "HE 1354", 
+                    "course_url": "http://www.chegg.com/courses/labette/HE/1354", 
+                    "name": "Family Law"
+                }, 
+                {
+                    "code": "HE 1360", 
+                    "course_url": "http://www.chegg.com/courses/labette/HE/1360", 
+                    "name": "Food for Man"
+                }, 
+                {
+                    "code": "HE 5201", 
+                    "course_url": "http://www.chegg.com/courses/labette/HE/5201", 
+                    "name": "Foster Parent Training"
+                }
+            ], 
+            "name": "Health Education", 
+            "url": "http://www.chegg.com/courses/labette/HE"
+        }, 
+        {
+            "abbr": "HM", 
+            "courses": [
+                {
+                    "code": "HM 4000", 
+                    "course_url": "http://www.chegg.com/courses/labette/HM/4000", 
+                    "name": "Advanced Hospitality Management"
+                }, 
+                {
+                    "code": "HM 4001", 
+                    "course_url": "http://www.chegg.com/courses/labette/HM/4001", 
+                    "name": "Design and Facilities Management"
+                }, 
+                {
+                    "code": "HM 4002", 
+                    "course_url": "http://www.chegg.com/courses/labette/HM/4002", 
+                    "name": "Front Office Management"
+                }, 
+                {
+                    "code": "HM 4003", 
+                    "course_url": "http://www.chegg.com/courses/labette/HM/4003", 
+                    "name": "Hospitality Management Internship"
+                }, 
+                {
+                    "code": "HM 4004", 
+                    "course_url": "http://www.chegg.com/courses/labette/HM/4004", 
+                    "name": "Hotel Sales and Marketing"
+                }, 
+                {
+                    "code": "HM 4005", 
+                    "course_url": "http://www.chegg.com/courses/labette/HM/4005", 
+                    "name": "Housekeeping Operations"
+                }, 
+                {
+                    "code": "HM 4006", 
+                    "course_url": "http://www.chegg.com/courses/labette/HM/4006", 
+                    "name": "Risk Management and Loss Prevention"
+                }
+            ], 
+            "name": "Hospitality Management", 
+            "url": "http://www.chegg.com/courses/labette/HM"
+        }, 
+        {
+            "abbr": "HS", 
+            "courses": [
+                {
+                    "code": "HS 2210", 
+                    "course_url": "http://www.chegg.com/courses/labette/HS/2210", 
+                    "name": "Current World Affairs"
+                }, 
+                {
+                    "code": "HS 2251", 
+                    "course_url": "http://www.chegg.com/courses/labette/HS/2251", 
+                    "name": "American History To 1877"
+                }, 
+                {
+                    "code": "HS 2252", 
+                    "course_url": "http://www.chegg.com/courses/labette/HS/2252", 
+                    "name": "American History Since 1877"
+                }, 
+                {
+                    "code": "HS 2253", 
+                    "course_url": "http://www.chegg.com/courses/labette/HS/2253", 
+                    "name": "World Civilizations To 1500"
+                }, 
+                {
+                    "code": "HS 2254", 
+                    "course_url": "http://www.chegg.com/courses/labette/HS/2254", 
+                    "name": "World Civilizations Since 1500"
+                }, 
+                {
+                    "code": "HS 2260", 
+                    "course_url": "http://www.chegg.com/courses/labette/HS/2260", 
+                    "name": "Kansas History"
+                }, 
+                {
+                    "code": "HS 2262", 
+                    "course_url": "http://www.chegg.com/courses/labette/HS/2262", 
+                    "name": "Explorations in History"
+                }
+            ], 
+            "name": "The Heller School For Social Policy And Management", 
+            "url": "http://www.chegg.com/courses/labette/HS"
+        }, 
+        {
+            "abbr": "HU", 
+            "courses": [
+                {
+                    "code": "HU 5921", 
+                    "course_url": "http://www.chegg.com/courses/labette/HU/5921", 
+                    "name": "Introduction to the Humanities"
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/labette/HU"
+        }, 
+        {
+            "abbr": "IT", 
+            "courses": [
+                {
+                    "code": "IT 5311", 
+                    "course_url": "http://www.chegg.com/courses/labette/IT/5311", 
+                    "name": "Fundamentals of Electronics I"
+                }
+            ], 
+            "name": "Industrial Technology", 
+            "url": "http://www.chegg.com/courses/labette/IT"
+        }, 
+        {
+            "abbr": "LC", 
+            "courses": [
+                {
+                    "code": "LC 0586", 
+                    "course_url": "http://www.chegg.com/courses/labette/LC/0586", 
+                    "name": "Personal and Career Development"
+                }, 
+                {
+                    "code": "LC 0808", 
+                    "course_url": "http://www.chegg.com/courses/labette/LC/0808", 
+                    "name": "Vocabulary Expansion II"
+                }, 
+                {
+                    "code": "LC 0812", 
+                    "course_url": "http://www.chegg.com/courses/labette/LC/0812", 
+                    "name": "Spelling/Writing Vocabulary Refresher"
+                }, 
+                {
+                    "code": "LC 0815", 
+                    "course_url": "http://www.chegg.com/courses/labette/LC/0815", 
+                    "name": "Vocabulary Expansion I"
+                }, 
+                {
+                    "code": "LC 0817", 
+                    "course_url": "http://www.chegg.com/courses/labette/LC/0817", 
+                    "name": "Study Skills"
+                }, 
+                {
+                    "code": "LC 0828", 
+                    "course_url": "http://www.chegg.com/courses/labette/LC/0828", 
+                    "name": "Orientation"
+                }, 
+                {
+                    "code": "LC 1311", 
+                    "course_url": "http://www.chegg.com/courses/labette/LC/1311", 
+                    "name": "Parenting"
+                }, 
+                {
+                    "code": "LC 1516", 
+                    "course_url": "http://www.chegg.com/courses/labette/LC/1516", 
+                    "name": "Grammar and Reading in Context for Non- Native Speakers of English"
+                }, 
+                {
+                    "code": "LC 1517", 
+                    "course_url": "http://www.chegg.com/courses/labette/LC/1517", 
+                    "name": "Understanding Spoken English in the Academic Setting"
+                }, 
+                {
+                    "code": "LC 1553", 
+                    "course_url": "http://www.chegg.com/courses/labette/LC/1553", 
+                    "name": "Basic Reading I"
+                }, 
+                {
+                    "code": "LC 1555", 
+                    "course_url": "http://www.chegg.com/courses/labette/LC/1555", 
+                    "name": "Basic Reading II"
+                }, 
+                {
+                    "code": "LC 1556", 
+                    "course_url": "http://www.chegg.com/courses/labette/LC/1556", 
+                    "name": "Advanced College Reading"
+                }
+            ], 
+            "name": "Learning Community", 
+            "url": "http://www.chegg.com/courses/labette/LC"
+        }, 
+        {
+            "abbr": "MA", 
+            "courses": [
+                {
+                    "code": "MA 0811", 
+                    "course_url": "http://www.chegg.com/courses/labette/MA/0811", 
+                    "name": "Foundations of Math"
+                }, 
+                {
+                    "code": "MA 1707", 
+                    "course_url": "http://www.chegg.com/courses/labette/MA/1707", 
+                    "name": "Applied Mathematics"
+                }, 
+                {
+                    "code": "MA 1713", 
+                    "course_url": "http://www.chegg.com/courses/labette/MA/1713", 
+                    "name": "Mathematics for Education"
+                }, 
+                {
+                    "code": "MA 1717", 
+                    "course_url": "http://www.chegg.com/courses/labette/MA/1717", 
+                    "name": "Beginning Algebra"
+                }, 
+                {
+                    "code": "MA 1718", 
+                    "course_url": "http://www.chegg.com/courses/labette/MA/1718", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MA 1719", 
+                    "course_url": "http://www.chegg.com/courses/labette/MA/1719", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MA 1720", 
+                    "course_url": "http://www.chegg.com/courses/labette/MA/1720", 
+                    "name": "Elementary Statistics"
+                }, 
+                {
+                    "code": "MA 1722", 
+                    "course_url": "http://www.chegg.com/courses/labette/MA/1722", 
+                    "name": "Introduction to Analytical Processes"
+                }, 
+                {
+                    "code": "MA 1730", 
+                    "course_url": "http://www.chegg.com/courses/labette/MA/1730", 
+                    "name": "Trigonometry"
+                }, 
+                {
+                    "code": "MA 1740", 
+                    "course_url": "http://www.chegg.com/courses/labette/MA/1740", 
+                    "name": "Differential Equations"
+                }, 
+                {
+                    "code": "MA 1746", 
+                    "course_url": "http://www.chegg.com/courses/labette/MA/1746", 
+                    "name": "Business Calculus"
+                }, 
+                {
+                    "code": "MA 1751", 
+                    "course_url": "http://www.chegg.com/courses/labette/MA/1751", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MA 1752", 
+                    "course_url": "http://www.chegg.com/courses/labette/MA/1752", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MA 1753", 
+                    "course_url": "http://www.chegg.com/courses/labette/MA/1753", 
+                    "name": "Calculus III"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/labette/MA"
+        }, 
+        {
+            "abbr": "ME", 
+            "courses": [
+                {
+                    "code": "ME 0305", 
+                    "course_url": "http://www.chegg.com/courses/labette/ME/0305", 
+                    "name": "Business Planning & Budgeting"
+                }, 
+                {
+                    "code": "ME 0308", 
+                    "course_url": "http://www.chegg.com/courses/labette/ME/0308", 
+                    "name": "Management Seminar"
+                }, 
+                {
+                    "code": "ME 0560", 
+                    "course_url": "http://www.chegg.com/courses/labette/ME/0560", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "ME 0584", 
+                    "course_url": "http://www.chegg.com/courses/labette/ME/0584", 
+                    "name": "Personnel Management"
+                }
+            ], 
+            "name": "Mechanical Engineering", 
+            "url": "http://www.chegg.com/courses/labette/ME"
+        }, 
+        {
+            "abbr": "MF", 
+            "courses": [
+                {
+                    "code": "MF 0807", 
+                    "course_url": "http://www.chegg.com/courses/labette/MF/0807", 
+                    "name": "Introduction to Quality Control I"
+                }, 
+                {
+                    "code": "MF 5316", 
+                    "course_url": "http://www.chegg.com/courses/labette/MF/5316", 
+                    "name": "Blueprint Reading"
+                }, 
+                {
+                    "code": "MF 5700", 
+                    "course_url": "http://www.chegg.com/courses/labette/MF/5700", 
+                    "name": "Welding I"
+                }, 
+                {
+                    "code": "MF 5701", 
+                    "course_url": "http://www.chegg.com/courses/labette/MF/5701", 
+                    "name": "Welding II"
+                }
+            ], 
+            "name": "Manufacturing Technology", 
+            "url": "http://www.chegg.com/courses/labette/MF"
+        }, 
+        {
+            "abbr": "MU", 
+            "courses": [
+                {
+                    "code": "MU 0921", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/0921", 
+                    "name": "Private Piano I"
+                }, 
+                {
+                    "code": "MU 0922", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/0922", 
+                    "name": "Private Piano II"
+                }, 
+                {
+                    "code": "MU 0923", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/0923", 
+                    "name": "Private Piano III"
+                }, 
+                {
+                    "code": "MU 0924", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/0924", 
+                    "name": "Private Piano IV"
+                }, 
+                {
+                    "code": "MU 1026", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1026", 
+                    "name": "Fundamentals of Music"
+                }, 
+                {
+                    "code": "MU 1027", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1027", 
+                    "name": "Opera/Musical Theatre Workshop"
+                }, 
+                {
+                    "code": "MU 1036", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1036", 
+                    "name": "Folk Instrument Ensemble"
+                }, 
+                {
+                    "code": "MU 1039", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1039", 
+                    "name": "Music Theory IV"
+                }, 
+                {
+                    "code": "MU 1040", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1040", 
+                    "name": "College Choir I"
+                }, 
+                {
+                    "code": "MU 1044", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1044", 
+                    "name": "Community Band"
+                }, 
+                {
+                    "code": "MU 1045", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1045", 
+                    "name": "Community Chorus"
+                }, 
+                {
+                    "code": "MU 1046", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1046", 
+                    "name": "College Orchestra I"
+                }, 
+                {
+                    "code": "MU 1051", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1051", 
+                    "name": "Music Appreciation"
+                }, 
+                {
+                    "code": "MU 1053", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1053", 
+                    "name": "Music Theory I"
+                }, 
+                {
+                    "code": "MU 1054", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1054", 
+                    "name": "Music Theory II"
+                }, 
+                {
+                    "code": "MU 1055", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1055", 
+                    "name": "Music Theory III"
+                }, 
+                {
+                    "code": "MU 1057", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1057", 
+                    "name": "Private Woodwind I"
+                }, 
+                {
+                    "code": "MU 1058", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1058", 
+                    "name": "Private Brass I"
+                }, 
+                {
+                    "code": "MU 1059", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1059", 
+                    "name": "Private Percussion I"
+                }, 
+                {
+                    "code": "MU 1063", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1063", 
+                    "name": "Music Literature"
+                }, 
+                {
+                    "code": "MU 1069", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1069", 
+                    "name": "Private Strings I"
+                }, 
+                {
+                    "code": "MU 1077", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1077", 
+                    "name": "College Orchestra II"
+                }, 
+                {
+                    "code": "MU 1078", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1078", 
+                    "name": "College Orchestra III"
+                }, 
+                {
+                    "code": "MU 1079", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1079", 
+                    "name": "College Orchestra IV"
+                }, 
+                {
+                    "code": "MU 1084", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1084", 
+                    "name": "Private Guitar"
+                }, 
+                {
+                    "code": "MU 1087", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1087", 
+                    "name": "College Choir II"
+                }, 
+                {
+                    "code": "MU 1088", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1088", 
+                    "name": "College Choir III"
+                }, 
+                {
+                    "code": "MU 1089", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1089", 
+                    "name": "College Choir IV"
+                }, 
+                {
+                    "code": "MU 1090", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1090", 
+                    "name": "Pep Band"
+                }, 
+                {
+                    "code": "MU 1092", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1092", 
+                    "name": "History of Jazz and Rock"
+                }, 
+                {
+                    "code": "MU 1093", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1093", 
+                    "name": "Community Orchestra"
+                }, 
+                {
+                    "code": "MU 1095", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1095", 
+                    "name": "Explorations in Music"
+                }, 
+                {
+                    "code": "MU 1129", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1129", 
+                    "name": "Percussion Ensemble"
+                }, 
+                {
+                    "code": "MU 1163", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1163", 
+                    "name": "Recorder Ensemble"
+                }, 
+                {
+                    "code": "MU 1164", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1164", 
+                    "name": "College Band I"
+                }, 
+                {
+                    "code": "MU 1165", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1165", 
+                    "name": "College Band II"
+                }, 
+                {
+                    "code": "MU 1166", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1166", 
+                    "name": "College Band III"
+                }, 
+                {
+                    "code": "MU 1167", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1167", 
+                    "name": "College Band IV"
+                }, 
+                {
+                    "code": "MU 1168", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1168", 
+                    "name": "Private Brass II"
+                }, 
+                {
+                    "code": "MU 1169", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1169", 
+                    "name": "Private Brass III"
+                }, 
+                {
+                    "code": "MU 1170", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1170", 
+                    "name": "Private Brass IV"
+                }, 
+                {
+                    "code": "MU 1172", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1172", 
+                    "name": "Private Percussion II"
+                }, 
+                {
+                    "code": "MU 1173", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1173", 
+                    "name": "Private Percussion III"
+                }, 
+                {
+                    "code": "MU 1174", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1174", 
+                    "name": "Private Percussion IV"
+                }, 
+                {
+                    "code": "MU 1176", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1176", 
+                    "name": "Private Strings II"
+                }, 
+                {
+                    "code": "MU 1177", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1177", 
+                    "name": "Private Strings III"
+                }, 
+                {
+                    "code": "MU 1178", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1178", 
+                    "name": "Private Strings IV"
+                }, 
+                {
+                    "code": "MU 1180", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1180", 
+                    "name": "Private Woodwind II"
+                }, 
+                {
+                    "code": "MU 1181", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1181", 
+                    "name": "Private Woodwind III"
+                }, 
+                {
+                    "code": "MU 1182", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1182", 
+                    "name": "Private Woodwind IV"
+                }, 
+                {
+                    "code": "MU 1320", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1320", 
+                    "name": "Ear Training and Sight Singing I"
+                }, 
+                {
+                    "code": "MU 1321", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1321", 
+                    "name": "Ear Training and Sight Singing II"
+                }, 
+                {
+                    "code": "MU 1322", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1322", 
+                    "name": "Ear Training and Sight Singing III"
+                }, 
+                {
+                    "code": "MU 1323", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1323", 
+                    "name": "Ear Training and Sight Singing IV"
+                }, 
+                {
+                    "code": "MU 1993", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1993", 
+                    "name": "Private Voice I"
+                }, 
+                {
+                    "code": "MU 1994", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1994", 
+                    "name": "Private Voice II"
+                }, 
+                {
+                    "code": "MU 1996", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1996", 
+                    "name": "Private Voice III"
+                }, 
+                {
+                    "code": "MU 1997", 
+                    "course_url": "http://www.chegg.com/courses/labette/MU/1997", 
+                    "name": "Private Voice IV"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/labette/MU"
+        }, 
+        {
+            "abbr": "NR", 
+            "courses": [
+                {
+                    "code": "NR 5287", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5287", 
+                    "name": "Licensed Practical Nurse Bridge Course"
+                }, 
+                {
+                    "code": "NR 5291", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5291", 
+                    "name": "Fundamentals of Nursing"
+                }, 
+                {
+                    "code": "NR 5294", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5294", 
+                    "name": "Family Nursing I"
+                }, 
+                {
+                    "code": "NR 5295", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5295", 
+                    "name": "Medical-Surgical Nursing"
+                }, 
+                {
+                    "code": "NR 5296", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5296", 
+                    "name": "Mental Health Nursing"
+                }, 
+                {
+                    "code": "NR 5297", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5297", 
+                    "name": "Advanced Medical-Surgical Nursing"
+                }, 
+                {
+                    "code": "NR 5298", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5298", 
+                    "name": "Family Nursing II"
+                }, 
+                {
+                    "code": "NR 5476", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5476", 
+                    "name": "Principles of Nursing Leadership & Management"
+                }, 
+                {
+                    "code": "NR 5478", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5478", 
+                    "name": "Critical Thinking"
+                }, 
+                {
+                    "code": "NR 5479", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5479", 
+                    "name": "Legal Issues for Nursing Credit Hours"
+                }, 
+                {
+                    "code": "NR 5480", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5480", 
+                    "name": "Human Relations for Nurse Managers"
+                }, 
+                {
+                    "code": "NR 5481", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5481", 
+                    "name": "Funding and Keeping Nurses"
+                }, 
+                {
+                    "code": "NR 5482", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5482", 
+                    "name": "NCLEX-RN Review/Preparation"
+                }, 
+                {
+                    "code": "NR 5483", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5483", 
+                    "name": "Surviving Nursing School"
+                }, 
+                {
+                    "code": "NR 5484", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5484", 
+                    "name": "Pathophysiology"
+                }, 
+                {
+                    "code": "NR 5485", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5485", 
+                    "name": "Physical Assessment"
+                }, 
+                {
+                    "code": "NR 5486", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5486", 
+                    "name": "Phlebotomy"
+                }, 
+                {
+                    "code": "NR 5489", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5489", 
+                    "name": "Topics in Health Care"
+                }, 
+                {
+                    "code": "NR 5490", 
+                    "course_url": "http://www.chegg.com/courses/labette/NR/5490", 
+                    "name": "IV Therapy for LPNs"
+                }
+            ], 
+            "name": "Natural Resources", 
+            "url": "http://www.chegg.com/courses/labette/NR"
+        }, 
+        {
+            "abbr": "OE", 
+            "courses": [
+                {
+                    "code": "OE 0002", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0002", 
+                    "name": "Medical Document Formatting"
+                }, 
+                {
+                    "code": "OE 0003", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0003", 
+                    "name": "Advanced Medical Transcription"
+                }, 
+                {
+                    "code": "OE 0004", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0004", 
+                    "name": "Career Portfolio"
+                }, 
+                {
+                    "code": "OE 0502", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0502", 
+                    "name": "Human Relations in Business"
+                }, 
+                {
+                    "code": "OE 0507", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0507", 
+                    "name": "Business English"
+                }, 
+                {
+                    "code": "OE 0523", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0523", 
+                    "name": "Business Accounting"
+                }, 
+                {
+                    "code": "OE 0530", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0530", 
+                    "name": "Business Math"
+                }, 
+                {
+                    "code": "OE 0533", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0533", 
+                    "name": "Keyboarding"
+                }, 
+                {
+                    "code": "OE 0536", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0536", 
+                    "name": "Coordinated Office Training I"
+                }, 
+                {
+                    "code": "OE 0537", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0537", 
+                    "name": "Coordinated Office Training II"
+                }, 
+                {
+                    "code": "OE 0551", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0551", 
+                    "name": "Records Management"
+                }, 
+                {
+                    "code": "OE 0557", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0557", 
+                    "name": "Office Procedures"
+                }, 
+                {
+                    "code": "OE 0565", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0565", 
+                    "name": "Office Applications-Clerical Assistant"
+                }, 
+                {
+                    "code": "OE 0574", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0574", 
+                    "name": "Office Applications-Administrative Assistant"
+                }, 
+                {
+                    "code": "OE 0575", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0575", 
+                    "name": "Office Applications-Legal"
+                }, 
+                {
+                    "code": "OE 0576", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0576", 
+                    "name": "Office Application-Medical"
+                }, 
+                {
+                    "code": "OE 0587", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0587", 
+                    "name": "College Keyboarding"
+                }, 
+                {
+                    "code": "OE 0588", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0588", 
+                    "name": "Formatting"
+                }, 
+                {
+                    "code": "OE 0604", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0604", 
+                    "name": "Office Machines(10 Key)"
+                }, 
+                {
+                    "code": "OE 0605", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0605", 
+                    "name": "Legal Transcription"
+                }, 
+                {
+                    "code": "OE 0606", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0606", 
+                    "name": "Transcription Skills"
+                }, 
+                {
+                    "code": "OE 0607", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0607", 
+                    "name": "Medical Transcription"
+                }, 
+                {
+                    "code": "OE 0608", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0608", 
+                    "name": "Word Processing Transcription"
+                }, 
+                {
+                    "code": "OE 0609", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0609", 
+                    "name": "Medical Coding"
+                }, 
+                {
+                    "code": "OE 0610", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0610", 
+                    "name": "Medical Coding II"
+                }, 
+                {
+                    "code": "OE 0613", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0613", 
+                    "name": "Pharmacology & Laboratory Medicine for Medical Transcription"
+                }, 
+                {
+                    "code": "OE 0739", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0739", 
+                    "name": "Microcomputer Applications I"
+                }, 
+                {
+                    "code": "OE 0740", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/0740", 
+                    "name": "Microcomputer Applications II"
+                }, 
+                {
+                    "code": "OE 5231", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/5231", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "OE 5232", 
+                    "course_url": "http://www.chegg.com/courses/labette/OE/5232", 
+                    "name": "Advanced Medical Terminology"
+                }
+            ], 
+            "name": "Ocean Engineering", 
+            "url": "http://www.chegg.com/courses/labette/OE"
+        }, 
+        {
+            "abbr": "OT", 
+            "courses": [
+                {
+                    "code": "OT 1155", 
+                    "course_url": "http://www.chegg.com/courses/labette/OT/1155", 
+                    "name": "Travel Seminar"
+                }, 
+                {
+                    "code": "OT 2292", 
+                    "course_url": "http://www.chegg.com/courses/labette/OT/2292", 
+                    "name": "Topics in Lifelong Learning"
+                }
+            ], 
+            "name": "Occupational Therapy", 
+            "url": "http://www.chegg.com/courses/labette/OT"
+        }, 
+        {
+            "abbr": "PE", 
+            "courses": [
+                {
+                    "code": "PE 0770", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0770", 
+                    "name": "Athletic Training Practicum II"
+                }, 
+                {
+                    "code": "PE 0771", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0771", 
+                    "name": "Care and Prevention of Athletic Injuries"
+                }, 
+                {
+                    "code": "PE 0772", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0772", 
+                    "name": "Athletic Training Practicum I"
+                }, 
+                {
+                    "code": "PE 0773", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0773", 
+                    "name": "Lifetime Fitness Concepts"
+                }, 
+                {
+                    "code": "PE 0774", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0774", 
+                    "name": "Beginning Golf"
+                }, 
+                {
+                    "code": "PE 0775", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0775", 
+                    "name": "Advanced Golf"
+                }, 
+                {
+                    "code": "PE 0780", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0780", 
+                    "name": "Varsity Volleyball I"
+                }, 
+                {
+                    "code": "PE 0781", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0781", 
+                    "name": "Varsity Volleyball II"
+                }, 
+                {
+                    "code": "PE 0784", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0784", 
+                    "name": "Varsity Baseball I"
+                }, 
+                {
+                    "code": "PE 0785", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0785", 
+                    "name": "Varsity Baseball II"
+                }, 
+                {
+                    "code": "PE 0786", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0786", 
+                    "name": "Varsity Baseball III"
+                }, 
+                {
+                    "code": "PE 0787", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0787", 
+                    "name": "Varsity Baseball IV"
+                }, 
+                {
+                    "code": "PE 0789", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0789", 
+                    "name": "Varsity Softball I"
+                }, 
+                {
+                    "code": "PE 0790", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0790", 
+                    "name": "Varsity Softball II"
+                }, 
+                {
+                    "code": "PE 0791", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0791", 
+                    "name": "Varsity Softball III"
+                }, 
+                {
+                    "code": "PE 0792", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0792", 
+                    "name": "Varsity Softball IV"
+                }, 
+                {
+                    "code": "PE 0799", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0799", 
+                    "name": "Control and Exercise Weight Reduction"
+                }, 
+                {
+                    "code": "PE 0800", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0800", 
+                    "name": "Dance Works"
+                }, 
+                {
+                    "code": "PE 0801", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0801", 
+                    "name": "Varsity Basketball I"
+                }, 
+                {
+                    "code": "PE 0802", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0802", 
+                    "name": "Varsity Basketball II"
+                }, 
+                {
+                    "code": "PE 0803", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0803", 
+                    "name": "Varsity Basketball III"
+                }, 
+                {
+                    "code": "PE 0804", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0804", 
+                    "name": "Varsity Basketball IV"
+                }, 
+                {
+                    "code": "PE 0809", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0809", 
+                    "name": "Lifesaving"
+                }, 
+                {
+                    "code": "PE 0814", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0814", 
+                    "name": "Community Recreation"
+                }, 
+                {
+                    "code": "PE 0824", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0824", 
+                    "name": "Varsity Wrestling I"
+                }, 
+                {
+                    "code": "PE 0825", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0825", 
+                    "name": "Varsity Wrestling II"
+                }, 
+                {
+                    "code": "PE 0826", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0826", 
+                    "name": "Varsity Wrestling III"
+                }, 
+                {
+                    "code": "PE 0827", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0827", 
+                    "name": "Varsity Wrestling IV"
+                }, 
+                {
+                    "code": "PE 0829", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0829", 
+                    "name": "Theory of Coaching Baseball"
+                }, 
+                {
+                    "code": "PE 0830", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0830", 
+                    "name": "Slimnastics"
+                }, 
+                {
+                    "code": "PE 0832", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0832", 
+                    "name": "Recreational Activities"
+                }, 
+                {
+                    "code": "PE 0833", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0833", 
+                    "name": "Introduction to Physical Education"
+                }, 
+                {
+                    "code": "PE 0835", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0835", 
+                    "name": "Jazz Dancing"
+                }, 
+                {
+                    "code": "PE 0837", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0837", 
+                    "name": "Personal and Community Health"
+                }, 
+                {
+                    "code": "PE 0845", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0845", 
+                    "name": "Aerobic Dance"
+                }, 
+                {
+                    "code": "PE 0846", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0846", 
+                    "name": "Figure Improvement"
+                }, 
+                {
+                    "code": "PE 0851", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0851", 
+                    "name": "Exercise"
+                }, 
+                {
+                    "code": "PE 0852", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0852", 
+                    "name": "Beginning Ballet"
+                }, 
+                {
+                    "code": "PE 0853", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0853", 
+                    "name": "Rules and Officiating"
+                }, 
+                {
+                    "code": "PE 0854", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0854", 
+                    "name": "Bowling"
+                }, 
+                {
+                    "code": "PE 0855", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0855", 
+                    "name": "Beginning Swimming"
+                }, 
+                {
+                    "code": "PE 0860", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0860", 
+                    "name": "Weight Lifting"
+                }, 
+                {
+                    "code": "PE 0861", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0861", 
+                    "name": "Karate I"
+                }, 
+                {
+                    "code": "PE 0862", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0862", 
+                    "name": "Karate II"
+                }, 
+                {
+                    "code": "PE 0863", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0863", 
+                    "name": "Social Dance I"
+                }, 
+                {
+                    "code": "PE 0864", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0864", 
+                    "name": "Social Dance II"
+                }, 
+                {
+                    "code": "PE 0867", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0867", 
+                    "name": "Beginning Tennis"
+                }, 
+                {
+                    "code": "PE 0870", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0870", 
+                    "name": "Advanced Tennis"
+                }, 
+                {
+                    "code": "PE 0873", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0873", 
+                    "name": "Jogging"
+                }, 
+                {
+                    "code": "PE 0883", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0883", 
+                    "name": "Racquetball I"
+                }, 
+                {
+                    "code": "PE 0884", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0884", 
+                    "name": "Racquetball II"
+                }, 
+                {
+                    "code": "PE 0892", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0892", 
+                    "name": "First Aid"
+                }, 
+                {
+                    "code": "PE 0894", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0894", 
+                    "name": "Theory of Coaching Wrestling"
+                }, 
+                {
+                    "code": "PE 0908", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0908", 
+                    "name": "Intermediate Swimming"
+                }, 
+                {
+                    "code": "PE 0909", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0909", 
+                    "name": "Advanced Swimming"
+                }, 
+                {
+                    "code": "PE 0915", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0915", 
+                    "name": "Varsity Tennis I"
+                }, 
+                {
+                    "code": "PE 0916", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0916", 
+                    "name": "Varsity Tennis II"
+                }, 
+                {
+                    "code": "PE 0917", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0917", 
+                    "name": "Varsity Tennis III"
+                }, 
+                {
+                    "code": "PE 0918", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0918", 
+                    "name": "Varsity Tennis IV"
+                }, 
+                {
+                    "code": "PE 0920", 
+                    "course_url": "http://www.chegg.com/courses/labette/PE/0920", 
+                    "name": "Theory of Coaching Basketball"
+                }
+            ], 
+            "name": "Physical Education", 
+            "url": "http://www.chegg.com/courses/labette/PE"
+        }, 
+        {
+            "abbr": "PH", 
+            "courses": [
+                {
+                    "code": "PH 0901", 
+                    "course_url": "http://www.chegg.com/courses/labette/PH/0901", 
+                    "name": "Engineering Physics"
+                }, 
+                {
+                    "code": "PH 0902", 
+                    "course_url": "http://www.chegg.com/courses/labette/PH/0902", 
+                    "name": "Engineering Physics II"
+                }, 
+                {
+                    "code": "PH 0903", 
+                    "course_url": "http://www.chegg.com/courses/labette/PH/0903", 
+                    "name": "Statics"
+                }, 
+                {
+                    "code": "PH 0907", 
+                    "course_url": "http://www.chegg.com/courses/labette/PH/0907", 
+                    "name": "Independent Study in College Engineering Physics"
+                }, 
+                {
+                    "code": "PH 1931", 
+                    "course_url": "http://www.chegg.com/courses/labette/PH/1931", 
+                    "name": "College Physics I"
+                }, 
+                {
+                    "code": "PH 1932", 
+                    "course_url": "http://www.chegg.com/courses/labette/PH/1932", 
+                    "name": "College Physics II"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/labette/PH"
+        }, 
+        {
+            "abbr": "PL", 
+            "courses": [
+                {
+                    "code": "PL 2270", 
+                    "course_url": "http://www.chegg.com/courses/labette/PL/2270", 
+                    "name": "American Government"
+                }, 
+                {
+                    "code": "PL 2271", 
+                    "course_url": "http://www.chegg.com/courses/labette/PL/2271", 
+                    "name": "State and Local Government"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/labette/PL"
+        }, 
+        {
+            "abbr": "PP", 
+            "courses": [
+                {
+                    "code": "PP 1550", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/1550", 
+                    "name": "Beginning Sign Language"
+                }, 
+                {
+                    "code": "PP 1551", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/1551", 
+                    "name": "Intermediate Sign Language"
+                }, 
+                {
+                    "code": "PP 1552", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/1552", 
+                    "name": "Advanced Sign Language"
+                }, 
+                {
+                    "code": "PP 5526", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/5526", 
+                    "name": "Paraeducator I"
+                }, 
+                {
+                    "code": "PP 5527", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/5527", 
+                    "name": "Paraeducator II"
+                }, 
+                {
+                    "code": "PP 5530", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/5530", 
+                    "name": "Workshop in Special Education"
+                }, 
+                {
+                    "code": "PP 5532", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/5532", 
+                    "name": "Laboratory in Behavior Supports Principles"
+                }, 
+                {
+                    "code": "PP 5533", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/5533", 
+                    "name": "Behavior Supports Principles"
+                }, 
+                {
+                    "code": "PP 5534", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/5534", 
+                    "name": "Behavior Support Principles II"
+                }, 
+                {
+                    "code": "PP 5535", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/5535", 
+                    "name": "Laboratory Behavior Support II"
+                }, 
+                {
+                    "code": "PP 5536", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/5536", 
+                    "name": "Language Development for the Exceptional Individual"
+                }, 
+                {
+                    "code": "PP 5537", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/5537", 
+                    "name": "Emergency Health and Safety"
+                }, 
+                {
+                    "code": "PP 5538", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/5538", 
+                    "name": "Respite Care for Exceptional Individuals"
+                }, 
+                {
+                    "code": "PP 5579", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/5579", 
+                    "name": "Paraeducator III"
+                }, 
+                {
+                    "code": "PP 5580", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/5580", 
+                    "name": "Paraeducator IV"
+                }, 
+                {
+                    "code": "PP 5581", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/5581", 
+                    "name": "Paraeducator V"
+                }, 
+                {
+                    "code": "PP 5582", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/5582", 
+                    "name": "Paraeducator VI"
+                }, 
+                {
+                    "code": "PP 5583", 
+                    "course_url": "http://www.chegg.com/courses/labette/PP/5583", 
+                    "name": "Paraeducator VII"
+                }
+            ], 
+            "name": "Plant Pathology", 
+            "url": "http://www.chegg.com/courses/labette/PP"
+        }, 
+        {
+            "abbr": "PR", 
+            "courses": [
+                {
+                    "code": "PR 1591", 
+                    "course_url": "http://www.chegg.com/courses/labette/PR/1591", 
+                    "name": "Philosophy I"
+                }, 
+                {
+                    "code": "PR 1592", 
+                    "course_url": "http://www.chegg.com/courses/labette/PR/1592", 
+                    "name": "Philosophy II"
+                }, 
+                {
+                    "code": "PR 1593", 
+                    "course_url": "http://www.chegg.com/courses/labette/PR/1593", 
+                    "name": "Introduction to Logic"
+                }, 
+                {
+                    "code": "PR 1596", 
+                    "course_url": "http://www.chegg.com/courses/labette/PR/1596", 
+                    "name": "Medical Ethics"
+                }
+            ], 
+            "name": "Physical Recreation", 
+            "url": "http://www.chegg.com/courses/labette/PR"
+        }, 
+        {
+            "abbr": "PS", 
+            "courses": [
+                {
+                    "code": "PS 1910", 
+                    "course_url": "http://www.chegg.com/courses/labette/PS/1910", 
+                    "name": "Introduction to Astronomy"
+                }, 
+                {
+                    "code": "PS 1911", 
+                    "course_url": "http://www.chegg.com/courses/labette/PS/1911", 
+                    "name": "Physical Science"
+                }, 
+                {
+                    "code": "PS 1941", 
+                    "course_url": "http://www.chegg.com/courses/labette/PS/1941", 
+                    "name": "Principles of Geology"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/labette/PS"
+        }, 
+        {
+            "abbr": "PY", 
+            "courses": [
+                {
+                    "code": "PY 2010", 
+                    "course_url": "http://www.chegg.com/courses/labette/PY/2010", 
+                    "name": "General Psychology"
+                }, 
+                {
+                    "code": "PY 2090", 
+                    "course_url": "http://www.chegg.com/courses/labette/PY/2090", 
+                    "name": "Developmental Psychology"
+                }, 
+                {
+                    "code": "PY 2091", 
+                    "course_url": "http://www.chegg.com/courses/labette/PY/2091", 
+                    "name": "Psychology of Adjustment"
+                }
+            ], 
+            "name": "Psychology", 
+            "url": "http://www.chegg.com/courses/labette/PY"
+        }, 
+        {
+            "abbr": "RA", 
+            "courses": [
+                {
+                    "code": "RA 5102", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5102", 
+                    "name": "Technical Analysis & Quality Assurance"
+                }, 
+                {
+                    "code": "RA 5103", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5103", 
+                    "name": "Radiographic Equipment Operation"
+                }, 
+                {
+                    "code": "RA 5104", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5104", 
+                    "name": "Digital Image Acquisition & Quality Assurance"
+                }, 
+                {
+                    "code": "RA 5105", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5105", 
+                    "name": "Image Analysis"
+                }, 
+                {
+                    "code": "RA 5106", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5106", 
+                    "name": "Situation Judgment Analysis"
+                }, 
+                {
+                    "code": "RA 5107", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5107", 
+                    "name": "Computed Tomography Procedures"
+                }, 
+                {
+                    "code": "RA 5195", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5195", 
+                    "name": "Medical Terminology for Radiography s"
+                }, 
+                {
+                    "code": "RA 5229", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5229", 
+                    "name": "Simulations in Radiography II"
+                }, 
+                {
+                    "code": "RA 5233", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5233", 
+                    "name": "Introduction to Radiography,Ethics and Law"
+                }, 
+                {
+                    "code": "RA 5234", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5234", 
+                    "name": "Radiographic Procedures I"
+                }, 
+                {
+                    "code": "RA 5235", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5235", 
+                    "name": "Radiographic Procedures II"
+                }, 
+                {
+                    "code": "RA 5236", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5236", 
+                    "name": "Radiographic Procedures III"
+                }, 
+                {
+                    "code": "RA 5237", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5237", 
+                    "name": "Radiographic Image Processing"
+                }, 
+                {
+                    "code": "RA 5238", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5238", 
+                    "name": "Patient Care in Radiography"
+                }, 
+                {
+                    "code": "RA 5239", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5239", 
+                    "name": "Film/Screen Image Acquisition"
+                }, 
+                {
+                    "code": "RA 5240", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5240", 
+                    "name": "Simulations in Radiography I"
+                }, 
+                {
+                    "code": "RA 5241", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5241", 
+                    "name": "Radiation Protection"
+                }, 
+                {
+                    "code": "RA 5242", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5242", 
+                    "name": "Skull Radiography"
+                }, 
+                {
+                    "code": "RA 5243", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5243", 
+                    "name": "Principles of Radiation Physics"
+                }, 
+                {
+                    "code": "RA 5247", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5247", 
+                    "name": "Radiographic Pathophysiology"
+                }, 
+                {
+                    "code": "RA 5248", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5248", 
+                    "name": "Imaging Modalities"
+                }, 
+                {
+                    "code": "RA 5265", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5265", 
+                    "name": "Contrast Studies"
+                }, 
+                {
+                    "code": "RA 5268", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5268", 
+                    "name": "Introduction to Computed Tomography & Cross Sectional Anatomy"
+                }, 
+                {
+                    "code": "RA 5270", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5270", 
+                    "name": "Special Radiographic Procedures"
+                }, 
+                {
+                    "code": "RA 5286", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5286", 
+                    "name": "Clinical Training I"
+                }, 
+                {
+                    "code": "RA 5370", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5370", 
+                    "name": "Clinical Training II"
+                }, 
+                {
+                    "code": "RA 5371", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5371", 
+                    "name": "Clinical Training III"
+                }, 
+                {
+                    "code": "RA 5372", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5372", 
+                    "name": "Clinical Training IV"
+                }, 
+                {
+                    "code": "RA 5373", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5373", 
+                    "name": "Clinical Training V"
+                }, 
+                {
+                    "code": "RA 5470", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5470", 
+                    "name": "Advanced Procedures"
+                }, 
+                {
+                    "code": "RA 5472", 
+                    "course_url": "http://www.chegg.com/courses/labette/RA/5472", 
+                    "name": "Pharmacology and Drug Administration"
+                }
+            ], 
+            "name": "Radiology", 
+            "url": "http://www.chegg.com/courses/labette/RA"
+        }, 
+        {
+            "abbr": "RC", 
+            "courses": [
+                {
+                    "code": "RC 5189", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5189", 
+                    "name": "Care Planning for Common Respiratory Diseases"
+                }, 
+                {
+                    "code": "RC 5193", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5193", 
+                    "name": "Clinical Practice Internship"
+                }, 
+                {
+                    "code": "RC 5250", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5250", 
+                    "name": "Respiratory Care Pharmacology"
+                }, 
+                {
+                    "code": "RC 5252", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5252", 
+                    "name": "Respiratory Care Topics and Procedures I"
+                }, 
+                {
+                    "code": "RC 5254", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5254", 
+                    "name": "Respiratory Care Topics and Procedures II"
+                }, 
+                {
+                    "code": "RC 5255", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5255", 
+                    "name": "Clinical Practice I"
+                }, 
+                {
+                    "code": "RC 5258", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5258", 
+                    "name": "Clinical Practice II"
+                }, 
+                {
+                    "code": "RC 5262", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5262", 
+                    "name": "Clinical Practice IV s"
+                }, 
+                {
+                    "code": "RC 5283", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5283", 
+                    "name": "Respiratory Care Seminar"
+                }, 
+                {
+                    "code": "RC 5800", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5800", 
+                    "name": "Fundamentals of Respiratory Care I"
+                }, 
+                {
+                    "code": "RC 5802", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5802", 
+                    "name": "Cardiopulmonary Anatomy and Physiology"
+                }, 
+                {
+                    "code": "RC 5803", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5803", 
+                    "name": "Fundamentals of Respiratory Care II"
+                }, 
+                {
+                    "code": "RC 5805", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5805", 
+                    "name": "Fundamentals of Respiratory Care III"
+                }, 
+                {
+                    "code": "RC 5806", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5806", 
+                    "name": "Respiratory Diseases"
+                }, 
+                {
+                    "code": "RC 5809", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5809", 
+                    "name": "Pediatric Respiratory Care"
+                }, 
+                {
+                    "code": "RC 5810", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5810", 
+                    "name": "Critical Care Medicine"
+                }, 
+                {
+                    "code": "RC 5812", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5812", 
+                    "name": "Comprehensive Respiratory Care"
+                }, 
+                {
+                    "code": "RC 5813", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5813", 
+                    "name": "Clinical Practice III"
+                }, 
+                {
+                    "code": "RC 5816", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5816", 
+                    "name": "Math for Respiratory Care Practitioner"
+                }, 
+                {
+                    "code": "RC 5817", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5817", 
+                    "name": "Advanced Ventilators"
+                }, 
+                {
+                    "code": "RC 5820", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5820", 
+                    "name": "Entry-Level Review"
+                }, 
+                {
+                    "code": "RC 5821", 
+                    "course_url": "http://www.chegg.com/courses/labette/RC/5821", 
+                    "name": "Introduction to Mechanical Ventilation"
+                }
+            ], 
+            "name": "Recreation", 
+            "url": "http://www.chegg.com/courses/labette/RC"
+        }, 
+        {
+            "abbr": "RE", 
+            "courses": [
+                {
+                    "code": "RE 1510", 
+                    "course_url": "http://www.chegg.com/courses/labette/RE/1510", 
+                    "name": "Comparative World Religions"
+                }, 
+                {
+                    "code": "RE 1512", 
+                    "course_url": "http://www.chegg.com/courses/labette/RE/1512", 
+                    "name": "Old Testament Survey"
+                }, 
+                {
+                    "code": "RE 1564", 
+                    "course_url": "http://www.chegg.com/courses/labette/RE/1564", 
+                    "name": "New Testament Survey"
+                }
+            ], 
+            "name": "Recreation", 
+            "url": "http://www.chegg.com/courses/labette/RE"
+        }, 
+        {
+            "abbr": "RT", 
+            "courses": [
+                {
+                    "code": "RT 1200", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1200", 
+                    "name": "Commercial Music Ear Training and Sight Singing I"
+                }, 
+                {
+                    "code": "RT 1201", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1201", 
+                    "name": "Commercial Music Ear Training and Sight Singing II"
+                }, 
+                {
+                    "code": "RT 1204", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1204", 
+                    "name": "Recording Arts Internship"
+                }, 
+                {
+                    "code": "RT 1207", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1207", 
+                    "name": "Commercial Music Songwriting"
+                }, 
+                {
+                    "code": "RT 1208", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1208", 
+                    "name": "Improvisation Ensembles I"
+                }, 
+                {
+                    "code": "RT 1209", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1209", 
+                    "name": "Improvisation Ensembles II"
+                }, 
+                {
+                    "code": "RT 1213", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1213", 
+                    "name": "Audio Recording I"
+                }, 
+                {
+                    "code": "RT 1214", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1214", 
+                    "name": "Audio Recording II"
+                }, 
+                {
+                    "code": "RT 1216", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1216", 
+                    "name": "Audio for Video"
+                }, 
+                {
+                    "code": "RT 1217", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1217", 
+                    "name": "Lighting Technology"
+                }, 
+                {
+                    "code": "RT 1218", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1218", 
+                    "name": "Music Business"
+                }, 
+                {
+                    "code": "RT 1219", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1219", 
+                    "name": "Commercial Music Business"
+                }, 
+                {
+                    "code": "RT 1220", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1220", 
+                    "name": "Sound Reinforcement"
+                }, 
+                {
+                    "code": "RT 1221", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1221", 
+                    "name": "MIDI Production"
+                }, 
+                {
+                    "code": "RT 1224", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1224", 
+                    "name": "Recording Arts Theory"
+                }, 
+                {
+                    "code": "RT 1225", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1225", 
+                    "name": "Commercial Music Theory II"
+                }, 
+                {
+                    "code": "RT 1228", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1228", 
+                    "name": "Performing Ensemble I"
+                }, 
+                {
+                    "code": "RT 1229", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1229", 
+                    "name": "Performing Ensemble II"
+                }, 
+                {
+                    "code": "RT 1230", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1230", 
+                    "name": "Performing Ensemble III"
+                }, 
+                {
+                    "code": "RT 1231", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1231", 
+                    "name": "Performing Ensemble IV"
+                }, 
+                {
+                    "code": "RT 1234", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1234", 
+                    "name": "Commercial Music Business Internship"
+                }, 
+                {
+                    "code": "RT 1244", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1244", 
+                    "name": "Recording Arts Piano"
+                }, 
+                {
+                    "code": "RT 1245", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1245", 
+                    "name": "Commercial Music Piano Class II"
+                }, 
+                {
+                    "code": "RT 1260", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1260", 
+                    "name": "Arranging for Songwriters"
+                }, 
+                {
+                    "code": "RT 1261", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1261", 
+                    "name": "Commercial Music Private Music Lessons I"
+                }, 
+                {
+                    "code": "RT 1262", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1262", 
+                    "name": "Commercial Music Private Music Lessons II"
+                }, 
+                {
+                    "code": "RT 1263", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1263", 
+                    "name": "Commercial Music Private Music Lessons III"
+                }, 
+                {
+                    "code": "RT 1264", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1264", 
+                    "name": "Commercial Music Private Music Lessons IV"
+                }, 
+                {
+                    "code": "RT 1265", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1265", 
+                    "name": "Audio Recording III"
+                }, 
+                {
+                    "code": "RT 1266", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1266", 
+                    "name": "Audio Recording IV"
+                }, 
+                {
+                    "code": "RT 1270", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1270", 
+                    "name": "Thesis Project-Performance"
+                }, 
+                {
+                    "code": "RT 1271", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1271", 
+                    "name": "Recording Arts Thesis"
+                }, 
+                {
+                    "code": "RT 1274", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1274", 
+                    "name": "Digital Video"
+                }, 
+                {
+                    "code": "RT 1275", 
+                    "course_url": "http://www.chegg.com/courses/labette/RT/1275", 
+                    "name": "Mixing and Mastering Techniques"
+                }
+            ], 
+            "name": "Radio-Television", 
+            "url": "http://www.chegg.com/courses/labette/RT"
+        }, 
+        {
+            "abbr": "SO", 
+            "courses": [
+                {
+                    "code": "SO 1350", 
+                    "course_url": "http://www.chegg.com/courses/labette/SO/1350", 
+                    "name": "Marriage and Family"
+                }, 
+                {
+                    "code": "SO 2220", 
+                    "course_url": "http://www.chegg.com/courses/labette/SO/2220", 
+                    "name": "Anthropology"
+                }, 
+                {
+                    "code": "SO 2280", 
+                    "course_url": "http://www.chegg.com/courses/labette/SO/2280", 
+                    "name": "Sociology"
+                }, 
+                {
+                    "code": "SO 2282", 
+                    "course_url": "http://www.chegg.com/courses/labette/SO/2282", 
+                    "name": "Introduction to Social Work"
+                }, 
+                {
+                    "code": "SO 2283", 
+                    "course_url": "http://www.chegg.com/courses/labette/SO/2283", 
+                    "name": "Social Problems"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/labette/SO"
+        }, 
+        {
+            "abbr": "TH", 
+            "courses": [
+                {
+                    "code": "TH 1000", 
+                    "course_url": "http://www.chegg.com/courses/labette/TH/1000", 
+                    "name": "Repertory Theatre II"
+                }, 
+                {
+                    "code": "TH 1001", 
+                    "course_url": "http://www.chegg.com/courses/labette/TH/1001", 
+                    "name": "Repertory Theatre III"
+                }, 
+                {
+                    "code": "TH 1002", 
+                    "course_url": "http://www.chegg.com/courses/labette/TH/1002", 
+                    "name": "Repertory Theatre IV"
+                }, 
+                {
+                    "code": "TH 1005", 
+                    "course_url": "http://www.chegg.com/courses/labette/TH/1005", 
+                    "name": "Projects in Technical Theatre II"
+                }, 
+                {
+                    "code": "TH 1006", 
+                    "course_url": "http://www.chegg.com/courses/labette/TH/1006", 
+                    "name": "Projects in Technical Theatre III"
+                }, 
+                {
+                    "code": "TH 1007", 
+                    "course_url": "http://www.chegg.com/courses/labette/TH/1007", 
+                    "name": "Projects in Technical Theatre IV"
+                }, 
+                {
+                    "code": "TH 1072", 
+                    "course_url": "http://www.chegg.com/courses/labette/TH/1072", 
+                    "name": "Theatre Appreciation"
+                }, 
+                {
+                    "code": "TH 1073", 
+                    "course_url": "http://www.chegg.com/courses/labette/TH/1073", 
+                    "name": "Repertory Theatre I"
+                }, 
+                {
+                    "code": "TH 1074", 
+                    "course_url": "http://www.chegg.com/courses/labette/TH/1074", 
+                    "name": "Projects in Technical Theatre I"
+                }
+            ], 
+            "name": "Theatre", 
+            "url": "http://www.chegg.com/courses/labette/TH"
+        }
+    ], 
+    "name": "labette"
+}

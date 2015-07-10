@@ -1,0 +1,4391 @@
+{
+    "all_stats": {
+        "num_courses": 772, 
+        "num_departments": 76
+    }, 
+    "departments": [
+        {
+            "abbr": "ACCT", 
+            "courses": [
+                {
+                    "code": "ACCT 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ACCT/201", 
+                    "name": "Principles of Accounting I"
+                }, 
+                {
+                    "code": "ACCT 202", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ACCT/202", 
+                    "name": "Principles of Accounting II"
+                }, 
+                {
+                    "code": "ACCT 301", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ACCT/301", 
+                    "name": "Intermediate Accounting I"
+                }, 
+                {
+                    "code": "ACCT 303", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ACCT/303", 
+                    "name": "Cost Accounting"
+                }, 
+                {
+                    "code": "ACCT 320", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ACCT/320", 
+                    "name": "Financial Statement Analysis"
+                }, 
+                {
+                    "code": "ACCT 401", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ACCT/401", 
+                    "name": "Auditing"
+                }, 
+                {
+                    "code": "ACCT 409", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ACCT/409", 
+                    "name": "Income Taxation"
+                }, 
+                {
+                    "code": "ACCT 609", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ACCT/609", 
+                    "name": "Information Technology Assurance and Audit"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/manhattan/ACCT"
+        }, 
+        {
+            "abbr": "ADCP", 
+            "courses": [], 
+            "name": "Adult Degree Completion", 
+            "url": "http://www.chegg.com/courses/manhattan/ADCP"
+        }, 
+        {
+            "abbr": "AHS", 
+            "courses": [
+                {
+                    "code": "AHS 420", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/AHS/420", 
+                    "name": "Ethics in Health Care"
+                }, 
+                {
+                    "code": "AHS 425", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/AHS/425", 
+                    "name": "Practicum in Allied Health"
+                }
+            ], 
+            "name": "Allied Health", 
+            "url": "http://www.chegg.com/courses/manhattan/AHS"
+        }, 
+        {
+            "abbr": "ARAB", 
+            "courses": [
+                {
+                    "code": "ARAB 101", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ARAB/101", 
+                    "name": "Arabic for Beginners I"
+                }, 
+                {
+                    "code": "ARAB 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ARAB/201", 
+                    "name": "Intermediate Arabic I"
+                }, 
+                {
+                    "code": "ARAB 301", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ARAB/301", 
+                    "name": "Advanced Arabic I"
+                }, 
+                {
+                    "code": "ARAB 302", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ARAB/302", 
+                    "name": "Advanced Arabic II"
+                }
+            ], 
+            "name": "Arabic", 
+            "url": "http://www.chegg.com/courses/manhattan/ARAB"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 090", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ART/090", 
+                    "name": "Fine Arts Elective"
+                }, 
+                {
+                    "code": "ART 90", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ART/90", 
+                    "name": "Abroad:Fine Arts Eltv-Madrid"
+                }, 
+                {
+                    "code": "ART 150", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ART/150", 
+                    "name": "Roots: Art"
+                }, 
+                {
+                    "code": "ART 212", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ART/212", 
+                    "name": "Art of Digital Photography"
+                }, 
+                {
+                    "code": "ART 213", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ART/213", 
+                    "name": "Digital Drawing"
+                }, 
+                {
+                    "code": "ART 214", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ART/214", 
+                    "name": "Introduction to Graphic Design"
+                }, 
+                {
+                    "code": "ART 218", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ART/218", 
+                    "name": "Introduction to World Art"
+                }, 
+                {
+                    "code": "ART 260", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ART/260", 
+                    "name": "Monasticism and the Arts"
+                }, 
+                {
+                    "code": "ART 322", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ART/322", 
+                    "name": "Renaissance Art"
+                }, 
+                {
+                    "code": "ART 340", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ART/340", 
+                    "name": "History of Fashion"
+                }, 
+                {
+                    "code": "ART 360", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ART/360", 
+                    "name": "New York City Architecture, Urbanism and Design"
+                }, 
+                {
+                    "code": "ART 370", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ART/370", 
+                    "name": "Current Trends"
+                }, 
+                {
+                    "code": "ART 380", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ART/380", 
+                    "name": "Digital Video Art: Editing and Production"
+                }, 
+                {
+                    "code": "ART 390", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ART/390", 
+                    "name": "Digital Audio Recording and Editing"
+                }, 
+                {
+                    "code": "ART 402", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ART/402", 
+                    "name": "Spl Tpc: Mod Architec & Enviro"
+                }, 
+                {
+                    "code": "ART 405", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ART/405", 
+                    "name": "Senior Seminar: in Art History"
+                }
+            ], 
+            "name": "Fine Arts", 
+            "url": "http://www.chegg.com/courses/manhattan/ART"
+        }, 
+        {
+            "abbr": "BIOL", 
+            "courses": [
+                {
+                    "code": "BIOL 103", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/103", 
+                    "name": "Introduction to Biology"
+                }, 
+                {
+                    "code": "BIOL 111", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/111", 
+                    "name": "General Biology I"
+                }, 
+                {
+                    "code": "BIOL 112", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/112", 
+                    "name": "General Biology II"
+                }, 
+                {
+                    "code": "BIOL 113", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/113", 
+                    "name": "General Biology Laboratory I"
+                }, 
+                {
+                    "code": "BIOL 114", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/114", 
+                    "name": "General Biology Laboratory II"
+                }, 
+                {
+                    "code": "BIOL 115", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/115", 
+                    "name": "Principles of Biology I"
+                }, 
+                {
+                    "code": "BIOL 117", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/117", 
+                    "name": "Principles of Biology Laboratory I"
+                }, 
+                {
+                    "code": "BIOL 207", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/207", 
+                    "name": "Anatomy and Physiology I"
+                }, 
+                {
+                    "code": "BIOL 209", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/209", 
+                    "name": "Anatomy And Physiology Lab I"
+                }, 
+                {
+                    "code": "BIOL 217", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/217", 
+                    "name": "Genetics"
+                }, 
+                {
+                    "code": "BIOL 218", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/218", 
+                    "name": "Genetics - Lab"
+                }, 
+                {
+                    "code": "BIOL 220", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/220", 
+                    "name": "Ecology Lab"
+                }, 
+                {
+                    "code": "BIOL 221", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/221", 
+                    "name": "Introductory Nutrition"
+                }, 
+                {
+                    "code": "BIOL 222", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/222", 
+                    "name": "Biology for Engineers"
+                }, 
+                {
+                    "code": "BIOL 223", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/223", 
+                    "name": "Ecology"
+                }, 
+                {
+                    "code": "BIOL 224", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/224", 
+                    "name": "BiologyForEngineers Laboratory"
+                }, 
+                {
+                    "code": "BIOL 301", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/301", 
+                    "name": "Comparative Chordate Anatomy"
+                }, 
+                {
+                    "code": "BIOL 302", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/302", 
+                    "name": "DEVELOPMNTL BIOLOGY (WE)"
+                }, 
+                {
+                    "code": "BIOL 303", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/303", 
+                    "name": "Plant Biology Laboratory"
+                }, 
+                {
+                    "code": "BIOL 305", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/305", 
+                    "name": "Plant Biology"
+                }, 
+                {
+                    "code": "BIOL 306", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/306", 
+                    "name": "Physiology of Exercise"
+                }, 
+                {
+                    "code": "BIOL 307", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/307", 
+                    "name": "Physiology Of Exercise Lab"
+                }, 
+                {
+                    "code": "BIOL 310", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/310", 
+                    "name": "Research in Biology for Juniors"
+                }, 
+                {
+                    "code": "BIOL 313", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/313", 
+                    "name": "Compar Chordate Anatomy-Lab"
+                }, 
+                {
+                    "code": "BIOL 319", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/319", 
+                    "name": "Cellular BioChemistry/Physiology"
+                }, 
+                {
+                    "code": "BIOL 323", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/323", 
+                    "name": "Cellular Biochemistry/Physiology Laboratory"
+                }, 
+                {
+                    "code": "BIOL 360", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/360", 
+                    "name": "Independent Study in Biology for Juniors"
+                }, 
+                {
+                    "code": "BIOL 375", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/375", 
+                    "name": "Internship for Juniors"
+                }, 
+                {
+                    "code": "BIOL 406", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/406", 
+                    "name": "Spl Tpc: Cellular Signaling"
+                }, 
+                {
+                    "code": "BIOL 410", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/410", 
+                    "name": "Research in Biology for Seniors"
+                }, 
+                {
+                    "code": "BIOL 445", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/BIOL/445", 
+                    "name": "Therapeutic, Prescriptions, Exercises, and Modalities"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/manhattan/BIOL"
+        }, 
+        {
+            "abbr": "BUSN", 
+            "courses": [], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/manhattan/BUSN"
+        }, 
+        {
+            "abbr": "CEEN", 
+            "courses": [
+                {
+                    "code": "CEEN 303", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CEEN/303", 
+                    "name": "Fluid Mechanics"
+                }, 
+                {
+                    "code": "CEEN 304", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CEEN/304", 
+                    "name": "Fluid Mechanics Laboratory"
+                }, 
+                {
+                    "code": "CEEN 305", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CEEN/305", 
+                    "name": "Environmental Engineering Principles II"
+                }, 
+                {
+                    "code": "CEEN 308", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CEEN/308", 
+                    "name": "Reliability Analysis in Civil and Environmental Engineering"
+                }, 
+                {
+                    "code": "CEEN 401", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CEEN/401", 
+                    "name": "Sustainable Water Resource Engineering"
+                }
+            ], 
+            "name": "Civil / Environmental Engineer", 
+            "url": "http://www.chegg.com/courses/manhattan/CEEN"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 100", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/100", 
+                    "name": "Foundations of Chemistry"
+                }, 
+                {
+                    "code": "CHEM 101", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/101", 
+                    "name": "General Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 102", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/102", 
+                    "name": "General Chemistry II"
+                }, 
+                {
+                    "code": "CHEM 103", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/103", 
+                    "name": "General Chemistry Laboratory I"
+                }, 
+                {
+                    "code": "CHEM 104", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/104", 
+                    "name": "General Chemistry Laboratory II"
+                }, 
+                {
+                    "code": "CHEM 302", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/302", 
+                    "name": "Analytical Chemistry"
+                }, 
+                {
+                    "code": "CHEM 309", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/309", 
+                    "name": "Physical Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 310", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/310", 
+                    "name": "Physical Chemistry II"
+                }, 
+                {
+                    "code": "CHEM 319", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/319", 
+                    "name": "Organic Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 320", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/320", 
+                    "name": "Organic Chemistry II"
+                }, 
+                {
+                    "code": "CHEM 323", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/323", 
+                    "name": "Organic Chemistry Laboratory I"
+                }, 
+                {
+                    "code": "CHEM 410", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/410", 
+                    "name": "Physical Chemistry Laboratory II"
+                }, 
+                {
+                    "code": "CHEM 433", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/433", 
+                    "name": "Biochemistry I"
+                }, 
+                {
+                    "code": "CHEM 435", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/435", 
+                    "name": "Advanced Inorganic Chemistry"
+                }, 
+                {
+                    "code": "CHEM 437", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/437", 
+                    "name": "Computers, Structure and Bonding"
+                }, 
+                {
+                    "code": "CHEM 457", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/457", 
+                    "name": "BioChemistry III"
+                }, 
+                {
+                    "code": "CHEM 460", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/460", 
+                    "name": "Chemical Research"
+                }, 
+                {
+                    "code": "CHEM 461", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHEM/461", 
+                    "name": "Chemical Research"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/manhattan/CHEM"
+        }, 
+        {
+            "abbr": "CHIN", 
+            "courses": [
+                {
+                    "code": "CHIN 101", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHIN/101", 
+                    "name": "Introduction to Study of Chinese I"
+                }, 
+                {
+                    "code": "CHIN 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHIN/201", 
+                    "name": "Intermediate Chinese I"
+                }
+            ], 
+            "name": "Chinese", 
+            "url": "http://www.chegg.com/courses/manhattan/CHIN"
+        }, 
+        {
+            "abbr": "CHMG", 
+            "courses": [
+                {
+                    "code": "CHMG 511", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHMG/511", 
+                    "name": "Transport Phenomena"
+                }, 
+                {
+                    "code": "CHMG 710", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHMG/710", 
+                    "name": "Advanced Transport Phenomena"
+                }, 
+                {
+                    "code": "CHMG 713", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHMG/713", 
+                    "name": "Chemical Reactor Design"
+                }, 
+                {
+                    "code": "CHMG 739", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHMG/739", 
+                    "name": "Introduction to Design Project"
+                }, 
+                {
+                    "code": "CHMG 748", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHMG/748", 
+                    "name": "Petroleum Refinery Process I"
+                }, 
+                {
+                    "code": "CHMG 749", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHMG/749", 
+                    "name": "Natural Gas Processing I"
+                }, 
+                {
+                    "code": "CHMG 750", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHMG/750", 
+                    "name": "Emulsion Technology"
+                }, 
+                {
+                    "code": "CHMG 751", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHMG/751", 
+                    "name": "Industrial Regulations and Quality"
+                }, 
+                {
+                    "code": "CHMG 752", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHMG/752", 
+                    "name": "Advanced Processing Theory"
+                }
+            ], 
+            "name": "Chemical Engr./Graduate", 
+            "url": "http://www.chegg.com/courses/manhattan/CHMG"
+        }, 
+        {
+            "abbr": "CHML", 
+            "courses": [
+                {
+                    "code": "CHML 205", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHML/205", 
+                    "name": "Introductory Thermodynamics"
+                }, 
+                {
+                    "code": "CHML 207", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHML/207", 
+                    "name": "Process Calculations"
+                }, 
+                {
+                    "code": "CHML 305", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHML/305", 
+                    "name": "Chemical Engineering Principles II"
+                }, 
+                {
+                    "code": "CHML 306", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHML/306", 
+                    "name": "Separation Process Design I"
+                }, 
+                {
+                    "code": "CHML 403", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHML/403", 
+                    "name": "Chemical Engineering Laboratory I"
+                }, 
+                {
+                    "code": "CHML 405", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHML/405", 
+                    "name": "Process and Plant Design I"
+                }, 
+                {
+                    "code": "CHML 411", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHML/411", 
+                    "name": "Transport Phenomena"
+                }, 
+                {
+                    "code": "CHML 423", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHML/423", 
+                    "name": "Process Control"
+                }, 
+                {
+                    "code": "CHML 428", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHML/428", 
+                    "name": "Petroleum Refinery Processing I"
+                }, 
+                {
+                    "code": "CHML 429", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHML/429", 
+                    "name": "Natural Gas Processing I"
+                }, 
+                {
+                    "code": "CHML 434", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHML/434", 
+                    "name": "Chemical Engineering Economics"
+                }, 
+                {
+                    "code": "CHML 440", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHML/440", 
+                    "name": "Communication  Skills for Practicing Chemical Engineers I"
+                }, 
+                {
+                    "code": "CHML 442", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHML/442", 
+                    "name": "Communication Skills for Chemical Engineers III"
+                }, 
+                {
+                    "code": "CHML 444", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHML/444", 
+                    "name": "Communication Skills for Chemical Engineers V"
+                }, 
+                {
+                    "code": "CHML 574", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CHML/574", 
+                    "name": "Green Engineering Design"
+                }
+            ], 
+            "name": "Chemical Engineering", 
+            "url": "http://www.chegg.com/courses/manhattan/CHML"
+        }, 
+        {
+            "abbr": "CIS", 
+            "courses": [
+                {
+                    "code": "CIS 110", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIS/110", 
+                    "name": "Introduction to Information Systems"
+                }, 
+                {
+                    "code": "CIS 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIS/201", 
+                    "name": "Computer Hardware & Software"
+                }, 
+                {
+                    "code": "CIS 227", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIS/227", 
+                    "name": "Business Statistics"
+                }, 
+                {
+                    "code": "CIS 305", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIS/305", 
+                    "name": "Computer Hardware and Software"
+                }, 
+                {
+                    "code": "CIS 310", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIS/310", 
+                    "name": "Business Data and Information Management"
+                }, 
+                {
+                    "code": "CIS 316", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIS/316", 
+                    "name": "E-Commerce & Web Development"
+                }, 
+                {
+                    "code": "CIS 326", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIS/326", 
+                    "name": "Networks, Telecommunications and Global Communications"
+                }
+            ], 
+            "name": "Computer Information System", 
+            "url": "http://www.chegg.com/courses/manhattan/CIS"
+        }, 
+        {
+            "abbr": "CIVG", 
+            "courses": [
+                {
+                    "code": "CIVG 501", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVG/501", 
+                    "name": "Introduction to Geoenvironmental Engineering"
+                }, 
+                {
+                    "code": "CIVG 507", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVG/507", 
+                    "name": "Introduction to Engineering Investigations/Forensic Engineering"
+                }, 
+                {
+                    "code": "CIVG 508", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVG/508", 
+                    "name": "Structural Renovation"
+                }, 
+                {
+                    "code": "CIVG 777", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVG/777", 
+                    "name": "Advanced Structural Analysis I"
+                }, 
+                {
+                    "code": "CIVG 779", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVG/779", 
+                    "name": "Design Steel Structures"
+                }, 
+                {
+                    "code": "CIVG 797", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVG/797", 
+                    "name": "Advanced Geomechanics"
+                }, 
+                {
+                    "code": "CIVG 798", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVG/798", 
+                    "name": "Site Characterization and Design"
+                }
+            ], 
+            "name": "Civil Engr./Graduate", 
+            "url": "http://www.chegg.com/courses/manhattan/CIVG"
+        }, 
+        {
+            "abbr": "CIVL", 
+            "courses": [
+                {
+                    "code": "CIVL 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/201", 
+                    "name": "Introduction to Civil Engineering"
+                }, 
+                {
+                    "code": "CIVL 202", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/202", 
+                    "name": "Transportation"
+                }, 
+                {
+                    "code": "CIVL 301", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/301", 
+                    "name": "TRANSPORTATION"
+                }, 
+                {
+                    "code": "CIVL 302", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/302", 
+                    "name": "Structural Analysis I"
+                }, 
+                {
+                    "code": "CIVL 305", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/305", 
+                    "name": "Computer Solutions of Civil Engineering Problems"
+                }, 
+                {
+                    "code": "CIVL 306", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/306", 
+                    "name": "Civil Engineering Materials"
+                }, 
+                {
+                    "code": "CIVL 309", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/309", 
+                    "name": "Steel Design"
+                }, 
+                {
+                    "code": "CIVL 310", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/310", 
+                    "name": "Introductory Geomechanics"
+                }, 
+                {
+                    "code": "CIVL 311", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/311", 
+                    "name": "Soil Mechanics Laboratory"
+                }, 
+                {
+                    "code": "CIVL 398", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/398", 
+                    "name": "Intro to Prof Dev:Seminar 1"
+                }, 
+                {
+                    "code": "CIVL 403", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/403", 
+                    "name": "Civil Engineering Economy and Law"
+                }, 
+                {
+                    "code": "CIVL 404", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/404", 
+                    "name": "GEOLOGY"
+                }, 
+                {
+                    "code": "CIVL 405", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/405", 
+                    "name": "Rock Mechanics"
+                }, 
+                {
+                    "code": "CIVL 406", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/406", 
+                    "name": "Structural Analysis III"
+                }, 
+                {
+                    "code": "CIVL 409", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/409", 
+                    "name": "Reinforced Concrete"
+                }, 
+                {
+                    "code": "CIVL 410", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/410", 
+                    "name": "Introduction to Geotechnical Applications"
+                }, 
+                {
+                    "code": "CIVL 412", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/412", 
+                    "name": "Highway Design"
+                }, 
+                {
+                    "code": "CIVL 415", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CIVL/415", 
+                    "name": "Civil Engineering Projects"
+                }
+            ], 
+            "name": "Civil Engineering", 
+            "url": "http://www.chegg.com/courses/manhattan/CIVL"
+        }, 
+        {
+            "abbr": "CMPE", 
+            "courses": [
+                {
+                    "code": "CMPE 202", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPE/202", 
+                    "name": "INTRO TO CMPT PROGRAMMING"
+                }, 
+                {
+                    "code": "CMPE 410", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPE/410", 
+                    "name": "Computer Engineering Design I"
+                }, 
+                {
+                    "code": "CMPE 470", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPE/470", 
+                    "name": "Electromagnetics for Computer Engineers"
+                }
+            ], 
+            "name": "Computer Engineering", 
+            "url": "http://www.chegg.com/courses/manhattan/CMPE"
+        }, 
+        {
+            "abbr": "CMPT", 
+            "courses": [
+                {
+                    "code": "CMPT 101", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/101", 
+                    "name": "Computer Science I"
+                }, 
+                {
+                    "code": "CMPT 102", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/102", 
+                    "name": "Computer Science II"
+                }, 
+                {
+                    "code": "CMPT 121", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/121", 
+                    "name": "Computer Applications for Life Sciences"
+                }, 
+                {
+                    "code": "CMPT 155", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/155", 
+                    "name": "Computer Applications for Life Sciences"
+                }, 
+                {
+                    "code": "CMPT 214", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/214", 
+                    "name": "Teaching and Learning with Technology"
+                }, 
+                {
+                    "code": "CMPT 238", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/238", 
+                    "name": "Data Structure"
+                }, 
+                {
+                    "code": "CMPT 258", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/258", 
+                    "name": "Database Systems I"
+                }, 
+                {
+                    "code": "CMPT 335", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/335", 
+                    "name": "Discrete Structures"
+                }, 
+                {
+                    "code": "CMPT 336", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/336", 
+                    "name": "Simulation and Modeling"
+                }, 
+                {
+                    "code": "CMPT 353", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/353", 
+                    "name": "Systems Programming"
+                }, 
+                {
+                    "code": "CMPT 375", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/375", 
+                    "name": "Internship for Juniors"
+                }, 
+                {
+                    "code": "CMPT 420", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/420", 
+                    "name": "Artificial Intelligence"
+                }, 
+                {
+                    "code": "CMPT 438", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/438", 
+                    "name": "Algorithms"
+                }, 
+                {
+                    "code": "CMPT 443", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/443", 
+                    "name": "Computability Theory"
+                }, 
+                {
+                    "code": "CMPT 463", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/463", 
+                    "name": "Tpc In Cmpt:Mobile Computing"
+                }, 
+                {
+                    "code": "CMPT 464", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/464", 
+                    "name": "Spl Tpc:Computer Security"
+                }, 
+                {
+                    "code": "CMPT 469", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/CMPT/469", 
+                    "name": "Indp Sty:Simulation/Modeling 2"
+                }
+            ], 
+            "name": "Computer Science", 
+            "url": "http://www.chegg.com/courses/manhattan/CMPT"
+        }, 
+        {
+            "abbr": "COMG", 
+            "courses": [
+                {
+                    "code": "COMG 602", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMG/602", 
+                    "name": "Introduction to Construction Management"
+                }, 
+                {
+                    "code": "COMG 605", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMG/605", 
+                    "name": "Construction Planning and Scheduling"
+                }, 
+                {
+                    "code": "COMG 606", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMG/606", 
+                    "name": "Building System Design"
+                }, 
+                {
+                    "code": "COMG 611", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMG/611", 
+                    "name": "Environmental Impact Assessment for Construction Projects"
+                }, 
+                {
+                    "code": "COMG 612", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMG/612", 
+                    "name": "Marketing and Finance of Engineering Projects"
+                }, 
+                {
+                    "code": "COMG 614", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMG/614", 
+                    "name": "Contracts and Specifications"
+                }, 
+                {
+                    "code": "COMG 615", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMG/615", 
+                    "name": "Project Controls"
+                }, 
+                {
+                    "code": "COMG 618", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMG/618", 
+                    "name": "Safety and Environmental Issues in Construction for Engineers"
+                }, 
+                {
+                    "code": "COMG 619", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMG/619", 
+                    "name": "Temporary Works in Heavy Construction"
+                }, 
+                {
+                    "code": "COMG 620", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMG/620", 
+                    "name": "Construction Project Delivery"
+                }, 
+                {
+                    "code": "COMG 622", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMG/622", 
+                    "name": "Construction Accounting and Finance for Development"
+                }, 
+                {
+                    "code": "COMG 624", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMG/624", 
+                    "name": "Leadership in Civil Engineering"
+                }
+            ], 
+            "name": "Construction Management", 
+            "url": "http://www.chegg.com/courses/manhattan/COMG"
+        }, 
+        {
+            "abbr": "COMM", 
+            "courses": [
+                {
+                    "code": "COMM 100", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/100", 
+                    "name": "Television Production Company"
+                }, 
+                {
+                    "code": "COMM 101", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/101", 
+                    "name": "Introduction to Mass Communications"
+                }, 
+                {
+                    "code": "COMM 102", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/102", 
+                    "name": "Quadrangle I"
+                }, 
+                {
+                    "code": "COMM 104", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/104", 
+                    "name": "Quadrangle 3"
+                }, 
+                {
+                    "code": "COMM 110", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/110", 
+                    "name": "Public Speaking and Presentation"
+                }, 
+                {
+                    "code": "COMM 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/201", 
+                    "name": "Ethics in Mass Communication"
+                }, 
+                {
+                    "code": "COMM 209", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/209", 
+                    "name": "Introduction to Journalism"
+                }, 
+                {
+                    "code": "COMM 214", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/214", 
+                    "name": "MAGAZINE WRITING"
+                }, 
+                {
+                    "code": "COMM 216", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/216", 
+                    "name": "Introduction to Advertising"
+                }, 
+                {
+                    "code": "COMM 217", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/217", 
+                    "name": "Introduction to Public Relations"
+                }, 
+                {
+                    "code": "COMM 223", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/223", 
+                    "name": "Introduction to Broadcasting"
+                }, 
+                {
+                    "code": "COMM 271", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/271", 
+                    "name": "International Mass Communication"
+                }, 
+                {
+                    "code": "COMM 305", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/305", 
+                    "name": "Digital Print Design"
+                }, 
+                {
+                    "code": "COMM 306", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/306", 
+                    "name": "Web Design"
+                }, 
+                {
+                    "code": "COMM 315", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/315", 
+                    "name": "Media Planning and Buying"
+                }, 
+                {
+                    "code": "COMM 316", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/316", 
+                    "name": "Scriptwriting"
+                }, 
+                {
+                    "code": "COMM 318", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/318", 
+                    "name": "Advanced Reporting/Newswriting"
+                }, 
+                {
+                    "code": "COMM 320", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/320", 
+                    "name": "Strategic Planning in Public Relations"
+                }, 
+                {
+                    "code": "COMM 335", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/335", 
+                    "name": "ELECTRONIC JOURNALISM"
+                }, 
+                {
+                    "code": "COMM 336", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/336", 
+                    "name": "Sports Reporting and Writing"
+                }, 
+                {
+                    "code": "COMM 338", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/338", 
+                    "name": "Feature Writing"
+                }, 
+                {
+                    "code": "COMM 350", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/350", 
+                    "name": "Field and Post-Production"
+                }, 
+                {
+                    "code": "COMM 375", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/375", 
+                    "name": "Internship for Juniors"
+                }, 
+                {
+                    "code": "COMM 409", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/409", 
+                    "name": "Senior Seminar"
+                }, 
+                {
+                    "code": "COMM 420", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/420", 
+                    "name": "Advanced Public Relations"
+                }, 
+                {
+                    "code": "COMM 422", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/422", 
+                    "name": "Organizational Communication"
+                }, 
+                {
+                    "code": "COMM 461", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/461", 
+                    "name": "Independent Study in Communication"
+                }, 
+                {
+                    "code": "COMM 475", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/COMM/475", 
+                    "name": "Internship for Seniors"
+                }
+            ], 
+            "name": "Communication", 
+            "url": "http://www.chegg.com/courses/manhattan/COMM"
+        }, 
+        {
+            "abbr": "COOP", 
+            "courses": [], 
+            "name": "Cooperative Education", 
+            "url": "http://www.chegg.com/courses/manhattan/COOP"
+        }, 
+        {
+            "abbr": "ECEG", 
+            "courses": [
+                {
+                    "code": "ECEG 520", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECEG/520", 
+                    "name": "Computer Architecture I"
+                }, 
+                {
+                    "code": "ECEG 548", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECEG/548", 
+                    "name": "Fiber Optics Communication"
+                }, 
+                {
+                    "code": "ECEG 591", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECEG/591", 
+                    "name": "Adv Spl Tpc: In Power Systems"
+                }, 
+                {
+                    "code": "ECEG 702", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECEG/702", 
+                    "name": "Linear Systems II"
+                }, 
+                {
+                    "code": "ECEG 710", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECEG/710", 
+                    "name": "Probability and Stochastic Processes"
+                }, 
+                {
+                    "code": "ECEG 721", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECEG/721", 
+                    "name": "Embedded Systems"
+                }, 
+                {
+                    "code": "ECEG 723", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECEG/723", 
+                    "name": "Software Engineering"
+                }, 
+                {
+                    "code": "ECEG 733", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECEG/733", 
+                    "name": "Digital Control System Analysis and Design"
+                }, 
+                {
+                    "code": "ECEG 762", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECEG/762", 
+                    "name": "Modeling and Simulation"
+                }, 
+                {
+                    "code": "ECEG 796", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECEG/796", 
+                    "name": "Spl Tpc:Pwr Des Green Building"
+                }
+            ], 
+            "name": "Electrical & Computer Engineer", 
+            "url": "http://www.chegg.com/courses/manhattan/ECEG"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 150", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECON/150", 
+                    "name": "Roots: Economics"
+                }, 
+                {
+                    "code": "ECON 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECON/201", 
+                    "name": "Principles and Policies I: Macroeconomics"
+                }, 
+                {
+                    "code": "ECON 202", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECON/202", 
+                    "name": "Principles and Policies II: Microeconomics"
+                }, 
+                {
+                    "code": "ECON 203", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECON/203", 
+                    "name": "Microeconomics"
+                }, 
+                {
+                    "code": "ECON 204", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECON/204", 
+                    "name": "Macroeconomics"
+                }, 
+                {
+                    "code": "ECON 301", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECON/301", 
+                    "name": "Intermediate Price Analysis"
+                }, 
+                {
+                    "code": "ECON 305", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECON/305", 
+                    "name": "Money and Banking"
+                }, 
+                {
+                    "code": "ECON 334", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECON/334", 
+                    "name": "International Economics"
+                }, 
+                {
+                    "code": "ECON 402", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECON/402", 
+                    "name": "Seminar in MacroEconomics and Financial Markets"
+                }, 
+                {
+                    "code": "ECON 412", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECON/412", 
+                    "name": "Economic Growth and Development"
+                }, 
+                {
+                    "code": "ECON 433", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECON/433", 
+                    "name": "Econometrics"
+                }, 
+                {
+                    "code": "ECON 441", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECON/441", 
+                    "name": "Economics Seminar"
+                }, 
+                {
+                    "code": "ECON 444", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ECON/444", 
+                    "name": "SPL TPC:ECO OF FIN CRISES"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/manhattan/ECON"
+        }, 
+        {
+            "abbr": "EDAP", 
+            "courses": [], 
+            "name": "Education Advance Placement", 
+            "url": "http://www.chegg.com/courses/manhattan/EDAP"
+        }, 
+        {
+            "abbr": "EDUC", 
+            "courses": [
+                {
+                    "code": "EDUC 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/201", 
+                    "name": "Principles and Practices of Education"
+                }, 
+                {
+                    "code": "EDUC 202", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/202", 
+                    "name": "Psychology of Education"
+                }, 
+                {
+                    "code": "EDUC 205", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/205", 
+                    "name": "Theory and Practice"
+                }, 
+                {
+                    "code": "EDUC 206", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/206", 
+                    "name": "Assessment"
+                }, 
+                {
+                    "code": "EDUC 214", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/214", 
+                    "name": "Education of the Young Child"
+                }, 
+                {
+                    "code": "EDUC 301", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/301", 
+                    "name": "Nature and Needs (Disabled)"
+                }, 
+                {
+                    "code": "EDUC 303", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/303", 
+                    "name": "Child and Adolescent Development"
+                }, 
+                {
+                    "code": "EDUC 318", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/318", 
+                    "name": "Curriculum and Pedagogy in the Elementary Classroom"
+                }, 
+                {
+                    "code": "EDUC 353", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/353", 
+                    "name": "Integrated Learning Grades 1-3"
+                }, 
+                {
+                    "code": "EDUC 354", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/354", 
+                    "name": "Integrated Learning Grade 4-6"
+                }, 
+                {
+                    "code": "EDUC 355", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/355", 
+                    "name": "Assessment of Learning and Behavior"
+                }, 
+                {
+                    "code": "EDUC 357", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/357", 
+                    "name": "Curriculum Adaptation"
+                }, 
+                {
+                    "code": "EDUC 360", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/360", 
+                    "name": "Language and Literacy"
+                }, 
+                {
+                    "code": "EDUC 375", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/375", 
+                    "name": "Theoretical Foundation of Teaching and Learning in the Middle School"
+                }, 
+                {
+                    "code": "EDUC 376", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/376", 
+                    "name": "Curriculum and Methods of Teaching English Grades 7-12"
+                }, 
+                {
+                    "code": "EDUC 377", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/377", 
+                    "name": "Curriculum and Methods of Teaching Social Studies Grades 7-12"
+                }, 
+                {
+                    "code": "EDUC 379", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/379", 
+                    "name": "Curriculum and Methods of Teaching Foreign Language Grades 7-12"
+                }, 
+                {
+                    "code": "EDUC 400", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/400", 
+                    "name": "Spl Tpc:Dls Life,Ideas,Sprtual"
+                }, 
+                {
+                    "code": "EDUC 401", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/401", 
+                    "name": "Principles and Practices of Reading in Elementary School"
+                }, 
+                {
+                    "code": "EDUC 402", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/402", 
+                    "name": "Reading in Content Area"
+                }, 
+                {
+                    "code": "EDUC 403", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/403", 
+                    "name": "Reading in Content Area Secondary Education"
+                }, 
+                {
+                    "code": "EDUC 406", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/406", 
+                    "name": "Human Relations in the Educational Process"
+                }, 
+                {
+                    "code": "EDUC 408", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/408", 
+                    "name": "Management of Behavior and Learning for At-Risk and Disabled"
+                }, 
+                {
+                    "code": "EDUC 418", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/418", 
+                    "name": "Seminar, Observation and Student Teaching in Elementary School, Grades 1-3"
+                }, 
+                {
+                    "code": "EDUC 438", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/438", 
+                    "name": "Seminar, Observation and Student Teaching in Elementary School, Grades 4-6"
+                }, 
+                {
+                    "code": "EDUC 444", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/444", 
+                    "name": "Seminar, Observation and Student Teaching in Special Education"
+                }, 
+                {
+                    "code": "EDUC 446", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/446", 
+                    "name": "Seminar, Observation and Student Teaching in Special Education, Grades 4-6"
+                }, 
+                {
+                    "code": "EDUC 453", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/453", 
+                    "name": "Seminar, Observation and Student Teaching Grades 7-9"
+                }, 
+                {
+                    "code": "EDUC 454", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUC/454", 
+                    "name": "Seminar, Observation and Student Teaching Grades 10-12"
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/manhattan/EDUC"
+        }, 
+        {
+            "abbr": "EDUG", 
+            "courses": [
+                {
+                    "code": "EDUG 600", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/600", 
+                    "name": "Orientation to School Building Leadership"
+                }, 
+                {
+                    "code": "EDUG 706", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/706", 
+                    "name": "Alcohol and Substance Abuse: Evaluation, Treatment Planning and Case Management"
+                }, 
+                {
+                    "code": "EDUG 713", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/713", 
+                    "name": "Methods of Educational and Psychological Research"
+                }, 
+                {
+                    "code": "EDUG 714", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/714", 
+                    "name": "Psychology of Career Counseling"
+                }, 
+                {
+                    "code": "EDUG 721", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/721", 
+                    "name": "Introduction to Counseling Practices and Theories"
+                }, 
+                {
+                    "code": "EDUG 722", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/722", 
+                    "name": "Techniques in Counseling the Individual"
+                }, 
+                {
+                    "code": "EDUG 723", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/723", 
+                    "name": "Life Span Development"
+                }, 
+                {
+                    "code": "EDUG 725", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/725", 
+                    "name": "Practicum in Groups"
+                }, 
+                {
+                    "code": "EDUG 726", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/726", 
+                    "name": "Foundations of Mental Health Counseling"
+                }, 
+                {
+                    "code": "EDUG 727", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/727", 
+                    "name": "Organization and Administration of the Guidance Program"
+                }, 
+                {
+                    "code": "EDUG 729", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/729", 
+                    "name": "Professional Writing"
+                }, 
+                {
+                    "code": "EDUG 732", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/732", 
+                    "name": "Practicum in Counseling"
+                }, 
+                {
+                    "code": "EDUG 735", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/735", 
+                    "name": "Educational Leadership, Decison-Making, and Change"
+                }, 
+                {
+                    "code": "EDUG 736", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/736", 
+                    "name": "Issues in Educational Administration and Curriculum"
+                }, 
+                {
+                    "code": "EDUG 744", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/744", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUG 745", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/745", 
+                    "name": "Curriculum Development and Adaptation"
+                }, 
+                {
+                    "code": "EDUG 747", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/747", 
+                    "name": "Supervision for the Improvement of Instruction"
+                }, 
+                {
+                    "code": "EDUG 748", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/748", 
+                    "name": "Internship/Seminar I in School Building Leadership"
+                }, 
+                {
+                    "code": "EDUG 768", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/768", 
+                    "name": "Integrated Curriculum: Math, Science & Technology I for the At Risk, ELL and Disabled Student K-8"
+                }, 
+                {
+                    "code": "EDUG 778", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/778", 
+                    "name": "Nature and Needs of the Exceptional Individual"
+                }, 
+                {
+                    "code": "EDUG 781", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/781", 
+                    "name": "Management Techniques and Curriculum for the At Risk and Behaviorally Disordered"
+                }, 
+                {
+                    "code": "EDUG 785", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/785", 
+                    "name": "Life Science for At Risk, English Language Learner (ELL) and Disabled Student (Grades K-8)"
+                }, 
+                {
+                    "code": "EDUG 787", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/787", 
+                    "name": "Psycho-Educational Assessment for the At Risk and Disabled Student"
+                }, 
+                {
+                    "code": "EDUG 789", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/789", 
+                    "name": "Methods of Teaching the At Risk and Disabled Student (Grades K-8)"
+                }, 
+                {
+                    "code": "EDUG 805", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/805", 
+                    "name": "Integrated Learning I: Social Studies and Language Arts Instruction for the At Risk/Disabled Student"
+                }, 
+                {
+                    "code": "EDUG 807", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/807", 
+                    "name": "Measurement and Assessment for Counselors"
+                }, 
+                {
+                    "code": "EDUG 810", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/810", 
+                    "name": "Bilingual and Multicultural Assessment of Linguistically and Culturally Diverse Students"
+                }, 
+                {
+                    "code": "EDUG 813", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/813", 
+                    "name": "Curriculum, Methods, and Materials in Core Subjects for Billingual, General, & Special Education"
+                }, 
+                {
+                    "code": "EDUG 814", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/814", 
+                    "name": "Curriculum, Assessment and Methods of Teaching Native Language Arts in Gen & Spec Education"
+                }, 
+                {
+                    "code": "EDUG 815", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/815", 
+                    "name": "Curriculum, Assessment and Methods of Teaching English as a Second Language in Gen and Spe Ed"
+                }, 
+                {
+                    "code": "EDUG 818", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/818", 
+                    "name": "Internship: Bilingual Counseling"
+                }, 
+                {
+                    "code": "EDUG 819", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/819", 
+                    "name": "Internship in MHC Counseling I"
+                }, 
+                {
+                    "code": "EDUG 851", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/851", 
+                    "name": "Data Analysis and Report Writing in Educational & Psychological Research"
+                }, 
+                {
+                    "code": "EDUG 852", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/852", 
+                    "name": "Internship in Counseling I"
+                }, 
+                {
+                    "code": "EDUG 853", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/853", 
+                    "name": "Counseling the College Applicant"
+                }, 
+                {
+                    "code": "EDUG 858", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/858", 
+                    "name": "Seminar, Observation and Internship in Special Education (5 year Program)"
+                }, 
+                {
+                    "code": "EDUG 862", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/862", 
+                    "name": "Seminar/Practicum in Teaching: The Student with Disabilities 1-6"
+                }, 
+                {
+                    "code": "EDUG 863", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/863", 
+                    "name": "Seminar/Internship in Teaching:General and Special Education"
+                }, 
+                {
+                    "code": "EDUG 867", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/867", 
+                    "name": "Professional Orientation to Counseling:Standards, Law, Ethics, and Evaluation"
+                }, 
+                {
+                    "code": "EDUG 880", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/880", 
+                    "name": "Nature and Needs of Students with Autism Spectrum Disorder"
+                }, 
+                {
+                    "code": "EDUG 881", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/881", 
+                    "name": "Psychoeducational Assessment of Autism Spectrum Disorder"
+                }, 
+                {
+                    "code": "EDUG 885", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/885", 
+                    "name": "Internship: Teaching Students with Autism Spectrum Disorder"
+                }, 
+                {
+                    "code": "EDUG 887", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/887", 
+                    "name": "Mentored Research"
+                }, 
+                {
+                    "code": "EDUG 888", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/888", 
+                    "name": "Independent Study in Research"
+                }, 
+                {
+                    "code": "EDUG 889", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/889", 
+                    "name": "Internship/Seminar II in School Building Leadership"
+                }, 
+                {
+                    "code": "EDUG 893", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/893", 
+                    "name": "Internship/Seminar III"
+                }, 
+                {
+                    "code": "EDUG 896", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/896", 
+                    "name": "Concepts of Wellness"
+                }, 
+                {
+                    "code": "EDUG 897", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EDUG/897", 
+                    "name": "Principles and Practices of Education"
+                }
+            ], 
+            "name": "Education/Graduate", 
+            "url": "http://www.chegg.com/courses/manhattan/EDUG"
+        }, 
+        {
+            "abbr": "EECE", 
+            "courses": [
+                {
+                    "code": "EECE 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/201", 
+                    "name": "Fundamentals of Electrical System Analysis"
+                }, 
+                {
+                    "code": "EECE 202", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/202", 
+                    "name": "Intro To Computer Programming"
+                }, 
+                {
+                    "code": "EECE 229", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/229", 
+                    "name": "Introduction to Digital Systems"
+                }, 
+                {
+                    "code": "EECE 303", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/303", 
+                    "name": "Signals and Systems I"
+                }, 
+                {
+                    "code": "EECE 305", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/305", 
+                    "name": "Electronic Systems I"
+                }, 
+                {
+                    "code": "EECE 307", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/307", 
+                    "name": "Mathematical Methods"
+                }, 
+                {
+                    "code": "EECE 315", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/315", 
+                    "name": "Probability and Statistics"
+                }, 
+                {
+                    "code": "EECE 317", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/317", 
+                    "name": "E.E. Laboratory I"
+                }, 
+                {
+                    "code": "EECE 321", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/321", 
+                    "name": "Embedded Systems Design"
+                }, 
+                {
+                    "code": "EECE 410", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/410", 
+                    "name": "Capstone Design I"
+                }, 
+                {
+                    "code": "EECE 412", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/412", 
+                    "name": "EE Concentration Course #1+Lab"
+                }, 
+                {
+                    "code": "EECE 414", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/414", 
+                    "name": "CE Concentration Course #1+Lab"
+                }, 
+                {
+                    "code": "EECE 425", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/425", 
+                    "name": "Control Systems Design"
+                }, 
+                {
+                    "code": "EECE 433", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/433", 
+                    "name": "Photonics"
+                }, 
+                {
+                    "code": "EECE 520", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/520", 
+                    "name": "Computer Architecture I"
+                }, 
+                {
+                    "code": "EECE 530", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/530", 
+                    "name": "Wireless Technology"
+                }, 
+                {
+                    "code": "EECE 548", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/548", 
+                    "name": "Fiber Optics Communication"
+                }, 
+                {
+                    "code": "EECE 591", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/EECE/591", 
+                    "name": "Adv Spl Tpc: Power Electronics"
+                }
+            ], 
+            "name": "Electrical / Computer Engineer", 
+            "url": "http://www.chegg.com/courses/manhattan/EECE"
+        }, 
+        {
+            "abbr": "ELEC", 
+            "courses": [
+                {
+                    "code": "ELEC 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ELEC/201", 
+                    "name": "ELECTRICAL ENGR I"
+                }, 
+                {
+                    "code": "ELEC 305", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ELEC/305", 
+                    "name": "ELECTRONICS I"
+                }, 
+                {
+                    "code": "ELEC 307", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ELEC/307", 
+                    "name": "Mathematical Methods"
+                }, 
+                {
+                    "code": "ELEC 409", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ELEC/409", 
+                    "name": "Electrical Engineering Design"
+                }, 
+                {
+                    "code": "ELEC 417", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ELEC/417", 
+                    "name": "E.E. Laboratory III"
+                }, 
+                {
+                    "code": "ELEC 419", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ELEC/419", 
+                    "name": "Senior Project"
+                }, 
+                {
+                    "code": "ELEC 433", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ELEC/433", 
+                    "name": "Photonics"
+                }, 
+                {
+                    "code": "ELEC 456", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ELEC/456", 
+                    "name": "Communication Systems"
+                }, 
+                {
+                    "code": "ELEC 466", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ELEC/466", 
+                    "name": "Energy Sources"
+                }, 
+                {
+                    "code": "ELEC 591", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ELEC/591", 
+                    "name": "SLCTD TPC IN POWER SYSTEMS"
+                }
+            ], 
+            "name": "Electrical Engineering", 
+            "url": "http://www.chegg.com/courses/manhattan/ELEC"
+        }, 
+        {
+            "abbr": "ELEG", 
+            "courses": [
+                {
+                    "code": "ELEG 733", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ELEG/733", 
+                    "name": "DGTL CNTRL SYS ANAL&DES"
+                }, 
+                {
+                    "code": "ELEG 762", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ELEG/762", 
+                    "name": "MODELING & SIMULATION"
+                }
+            ], 
+            "name": "Electrical Engr./Graduate", 
+            "url": "http://www.chegg.com/courses/manhattan/ELEG"
+        }, 
+        {
+            "abbr": "ENGD", 
+            "courses": [], 
+            "name": "Engineering Design", 
+            "url": "http://www.chegg.com/courses/manhattan/ENGD"
+        }, 
+        {
+            "abbr": "ENGG", 
+            "courses": [
+                {
+                    "code": "ENGG 620", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGG/620", 
+                    "name": "Applications of Instrumentation and Data Acquisition"
+                }, 
+                {
+                    "code": "ENGG 650", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGG/650", 
+                    "name": "Engineering Economics"
+                }, 
+                {
+                    "code": "ENGG 652", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGG/652", 
+                    "name": "Project Management"
+                }, 
+                {
+                    "code": "ENGG 674", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGG/674", 
+                    "name": "Green Engineering Design"
+                }, 
+                {
+                    "code": "ENGG 682", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGG/682", 
+                    "name": "Applied Heat Transfer"
+                }
+            ], 
+            "name": "Engineering Graduate", 
+            "url": "http://www.chegg.com/courses/manhattan/ENGG"
+        }, 
+        {
+            "abbr": "ENGL", 
+            "courses": [
+                {
+                    "code": "ENGL 095", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/095", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 106", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/106", 
+                    "name": "Fundamentals of English"
+                }, 
+                {
+                    "code": "ENGL 110", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/110", 
+                    "name": "College Writing"
+                }, 
+                {
+                    "code": "ENGL 150", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/150", 
+                    "name": "Roots: Literature"
+                }, 
+                {
+                    "code": "ENGL 210", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/210", 
+                    "name": "Exposition and Argumentation"
+                }, 
+                {
+                    "code": "ENGL 211", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/211", 
+                    "name": "Written Communication"
+                }, 
+                {
+                    "code": "ENGL 240", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/240", 
+                    "name": "Introduction to Creative Writing"
+                }, 
+                {
+                    "code": "ENGL 245", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/245", 
+                    "name": "Introduction to Shakespeare"
+                }, 
+                {
+                    "code": "ENGL 248", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/248", 
+                    "name": "Masterworks of British Literature"
+                }, 
+                {
+                    "code": "ENGL 253", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/253", 
+                    "name": "MASTERWORKS OF AMERICAN LIT"
+                }, 
+                {
+                    "code": "ENGL 255", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/255", 
+                    "name": "Elements of the Film"
+                }, 
+                {
+                    "code": "ENGL 256", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/256", 
+                    "name": "Types of Film Experience"
+                }, 
+                {
+                    "code": "ENGL 260", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/260", 
+                    "name": "Comedy and Tragedy"
+                }, 
+                {
+                    "code": "ENGL 262", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/262", 
+                    "name": "Gender and Literature"
+                }, 
+                {
+                    "code": "ENGL 274", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/274", 
+                    "name": "Reading Poetry"
+                }, 
+                {
+                    "code": "ENGL 275", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/275", 
+                    "name": "The Short Story"
+                }, 
+                {
+                    "code": "ENGL 276", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/276", 
+                    "name": "Introduction to Drama"
+                }, 
+                {
+                    "code": "ENGL 280", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/280", 
+                    "name": "Irish Literary Revival"
+                }, 
+                {
+                    "code": "ENGL 306", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/306", 
+                    "name": "Introduction to Literary Study"
+                }, 
+                {
+                    "code": "ENGL 309", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/309", 
+                    "name": "British Literature: Beowulf to the Augustan Age"
+                }, 
+                {
+                    "code": "ENGL 310", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/310", 
+                    "name": "British Literature II: The Romantics through the 20th Century"
+                }, 
+                {
+                    "code": "ENGL 323", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/323", 
+                    "name": "Studies in Eighteenth-Century British Literature"
+                }, 
+                {
+                    "code": "ENGL 326", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/326", 
+                    "name": "Advanced Composition"
+                }, 
+                {
+                    "code": "ENGL 330", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/330", 
+                    "name": "Shakespeare II"
+                }, 
+                {
+                    "code": "ENGL 334", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/334", 
+                    "name": "Studies in British Romanticism"
+                }, 
+                {
+                    "code": "ENGL 345", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/345", 
+                    "name": "Environmental Literature and Ecocriticism"
+                }, 
+                {
+                    "code": "ENGL 348", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/348", 
+                    "name": "Postcolonial Literature"
+                }, 
+                {
+                    "code": "ENGL 370", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/370", 
+                    "name": "MILTON"
+                }, 
+                {
+                    "code": "ENGL 372", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/372", 
+                    "name": "American Literature to 1914"
+                }, 
+                {
+                    "code": "ENGL 379", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/379", 
+                    "name": "Contemporary American Literature"
+                }, 
+                {
+                    "code": "ENGL 380", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/380", 
+                    "name": "Ethnic American Literature"
+                }, 
+                {
+                    "code": "ENGL 395", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/395", 
+                    "name": "Senior Seminar"
+                }, 
+                {
+                    "code": "ENGL 399", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/399", 
+                    "name": "Independent Study"
+                }, 
+                {
+                    "code": "ENGL 400", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/400", 
+                    "name": "The Theater and the City"
+                }, 
+                {
+                    "code": "ENGL 405", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGL/405", 
+                    "name": "Peer Tutor Training"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/manhattan/ENGL"
+        }, 
+        {
+            "abbr": "ENGS", 
+            "courses": [
+                {
+                    "code": "ENGS 115", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGS/115", 
+                    "name": "Introduction to Engineering"
+                }, 
+                {
+                    "code": "ENGS 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGS/201", 
+                    "name": "Materials Science"
+                }, 
+                {
+                    "code": "ENGS 202", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGS/202", 
+                    "name": "Materials Science Laboratory"
+                }, 
+                {
+                    "code": "ENGS 204", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGS/204", 
+                    "name": "Environmental Engineering Principles I"
+                }, 
+                {
+                    "code": "ENGS 205", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGS/205", 
+                    "name": "Introductory Thermodynamics"
+                }, 
+                {
+                    "code": "ENGS 206", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGS/206", 
+                    "name": "Statics"
+                }, 
+                {
+                    "code": "ENGS 220", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGS/220", 
+                    "name": "DYNAMICS"
+                }, 
+                {
+                    "code": "ENGS 230", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENGS/230", 
+                    "name": "Introduction Solid Mechanics"
+                }
+            ], 
+            "name": "Engineering Science", 
+            "url": "http://www.chegg.com/courses/manhattan/ENGS"
+        }, 
+        {
+            "abbr": "ENVG", 
+            "courses": [
+                {
+                    "code": "ENVG 505", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENVG/505", 
+                    "name": "Surface Water Quality Modeling"
+                }, 
+                {
+                    "code": "ENVG 506", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENVG/506", 
+                    "name": "Water and Wastewater Treatment Processes"
+                }, 
+                {
+                    "code": "ENVG 507", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENVG/507", 
+                    "name": "Groundwater"
+                }, 
+                {
+                    "code": "ENVG 702", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENVG/702", 
+                    "name": "Air Quality Models"
+                }, 
+                {
+                    "code": "ENVG 703", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENVG/703", 
+                    "name": "Environmental Fate and Effects of Toxic Contaminants"
+                }, 
+                {
+                    "code": "ENVG 712", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENVG/712", 
+                    "name": "Advanced Geohydrology"
+                }, 
+                {
+                    "code": "ENVG 721", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENVG/721", 
+                    "name": "Environmental Sustainability: Water Reuse & Resource Recovery"
+                }, 
+                {
+                    "code": "ENVG 731", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENVG/731", 
+                    "name": "Special Topics"
+                }, 
+                {
+                    "code": "ENVG 732", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENVG/732", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENVG 736", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENVG/736", 
+                    "name": "Advanced Unit Operations"
+                }
+            ], 
+            "name": "Environmental Engr./Graduate", 
+            "url": "http://www.chegg.com/courses/manhattan/ENVG"
+        }, 
+        {
+            "abbr": "ENVL", 
+            "courses": [
+                {
+                    "code": "ENVL 507", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ENVL/507", 
+                    "name": "Groundwater"
+                }
+            ], 
+            "name": "Environmental Engineering", 
+            "url": "http://www.chegg.com/courses/manhattan/ENVL"
+        }, 
+        {
+            "abbr": "FIN", 
+            "courses": [
+                {
+                    "code": "FIN 301", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FIN/301", 
+                    "name": "Principles of Business Finance I"
+                }, 
+                {
+                    "code": "FIN 302", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FIN/302", 
+                    "name": "Principles of Business Finance II"
+                }, 
+                {
+                    "code": "FIN 303", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FIN/303", 
+                    "name": "Quantitative Finance&Economics"
+                }, 
+                {
+                    "code": "FIN 308", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FIN/308", 
+                    "name": "Investments"
+                }, 
+                {
+                    "code": "FIN 320", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FIN/320", 
+                    "name": "Financial Statement Analysis"
+                }, 
+                {
+                    "code": "FIN 340", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FIN/340", 
+                    "name": "Corp Structure & Financing"
+                }, 
+                {
+                    "code": "FIN 402", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FIN/402", 
+                    "name": "Seminar in Macroeconomics and Financial Markets"
+                }, 
+                {
+                    "code": "FIN 416", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FIN/416", 
+                    "name": "Options and Futures Markets"
+                }, 
+                {
+                    "code": "FIN 420", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FIN/420", 
+                    "name": "Corporate Structure and Financing"
+                }, 
+                {
+                    "code": "FIN 436", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FIN/436", 
+                    "name": "Multinational Finance"
+                }, 
+                {
+                    "code": "FIN 440", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FIN/440", 
+                    "name": "Advanced Topic in Finance"
+                }, 
+                {
+                    "code": "FIN 441", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FIN/441", 
+                    "name": "Finance Seminar"
+                }
+            ], 
+            "name": "Finance", 
+            "url": "http://www.chegg.com/courses/manhattan/FIN"
+        }, 
+        {
+            "abbr": "FREN", 
+            "courses": [
+                {
+                    "code": "FREN 101", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FREN/101", 
+                    "name": "French for Beginners I"
+                }, 
+                {
+                    "code": "FREN 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FREN/201", 
+                    "name": "French for Communication I"
+                }, 
+                {
+                    "code": "FREN 209", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FREN/209", 
+                    "name": "Speaking French"
+                }, 
+                {
+                    "code": "FREN 219", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FREN/219", 
+                    "name": "Keeping French Alive"
+                }, 
+                {
+                    "code": "FREN 301", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FREN/301", 
+                    "name": "Advanced French Conversation and Phonetics"
+                }, 
+                {
+                    "code": "FREN 303", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FREN/303", 
+                    "name": "FRENCH CULT THROUGH FILM"
+                }, 
+                {
+                    "code": "FREN 307", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FREN/307", 
+                    "name": "Advanced Grammar and Composition"
+                }, 
+                {
+                    "code": "FREN 308", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FREN/308", 
+                    "name": "French Translation"
+                }, 
+                {
+                    "code": "FREN 320", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FREN/320", 
+                    "name": "Spl Tpc:Dipl Hist Eur1815-1914"
+                }, 
+                {
+                    "code": "FREN 350", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FREN/350", 
+                    "name": "Introduction to French Literary Study"
+                }, 
+                {
+                    "code": "FREN 445", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/FREN/445", 
+                    "name": "Baudelaire and Modern Poetry"
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/manhattan/FREN"
+        }, 
+        {
+            "abbr": "GERM", 
+            "courses": [
+                {
+                    "code": "GERM 101", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GERM/101", 
+                    "name": "German for Beginners I"
+                }
+            ], 
+            "name": "German", 
+            "url": "http://www.chegg.com/courses/manhattan/GERM"
+        }, 
+        {
+            "abbr": "GLBL", 
+            "courses": [
+                {
+                    "code": "GLBL 470", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GLBL/470", 
+                    "name": "Independent Study: International Business"
+                }
+            ], 
+            "name": "Global Business Studies", 
+            "url": "http://www.chegg.com/courses/manhattan/GLBL"
+        }, 
+        {
+            "abbr": "GOVT", 
+            "courses": [
+                {
+                    "code": "GOVT 150", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/150", 
+                    "name": "Roots:America Now!"
+                }, 
+                {
+                    "code": "GOVT 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/201", 
+                    "name": "Introduction to Govenment and Politics"
+                }, 
+                {
+                    "code": "GOVT 203", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/203", 
+                    "name": "United States Government and Politics"
+                }, 
+                {
+                    "code": "GOVT 207", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/207", 
+                    "name": "Introduction to Peace Studies"
+                }, 
+                {
+                    "code": "GOVT 222", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/222", 
+                    "name": "Power in the City"
+                }, 
+                {
+                    "code": "GOVT 251", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/251", 
+                    "name": "Global Issues"
+                }, 
+                {
+                    "code": "GOVT 309", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/309", 
+                    "name": "Comparative Politics"
+                }, 
+                {
+                    "code": "GOVT 319", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/319", 
+                    "name": ""
+                }, 
+                {
+                    "code": "GOVT 325", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/325", 
+                    "name": "Urban/Rural Political Conflict"
+                }, 
+                {
+                    "code": "GOVT 330", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/330", 
+                    "name": "Western Europe Politics"
+                }, 
+                {
+                    "code": "GOVT 340", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/340", 
+                    "name": "Government and Politics of Asia"
+                }, 
+                {
+                    "code": "GOVT 350", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/350", 
+                    "name": "National Security Policy"
+                }, 
+                {
+                    "code": "GOVT 352", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/352", 
+                    "name": "International Organizations"
+                }, 
+                {
+                    "code": "GOVT 353", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/353", 
+                    "name": "Technology and Society"
+                }, 
+                {
+                    "code": "GOVT 412", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/412", 
+                    "name": "Senior Seminar: Women in Politics"
+                }, 
+                {
+                    "code": "GOVT 490", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/490", 
+                    "name": "Albany Session Internship"
+                }, 
+                {
+                    "code": "GOVT 491", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/491", 
+                    "name": "Washington Center Course"
+                }, 
+                {
+                    "code": "GOVT 494", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/GOVT/494", 
+                    "name": "American University Seminar Program"
+                }
+            ], 
+            "name": "Government & Politics", 
+            "url": "http://www.chegg.com/courses/manhattan/GOVT"
+        }, 
+        {
+            "abbr": "HEBW", 
+            "courses": [
+                {
+                    "code": "HEBW 101", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HEBW/101", 
+                    "name": "Elementary Hebrew I"
+                }
+            ], 
+            "name": "Hebrew", 
+            "url": "http://www.chegg.com/courses/manhattan/HEBW"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 150", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/150", 
+                    "name": "Roots:Nationalism & Empire"
+                }, 
+                {
+                    "code": "HIST 200", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/200", 
+                    "name": "Introduction to the Study of History"
+                }, 
+                {
+                    "code": "HIST 206", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/206", 
+                    "name": "United States Through 1876"
+                }, 
+                {
+                    "code": "HIST 207", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/207", 
+                    "name": "United States Since 1876"
+                }, 
+                {
+                    "code": "HIST 210", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/210", 
+                    "name": "Great Issues American History"
+                }, 
+                {
+                    "code": "HIST 217", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/217", 
+                    "name": "World History to 1600"
+                }, 
+                {
+                    "code": "HIST 218", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/218", 
+                    "name": "World History Since 1600"
+                }, 
+                {
+                    "code": "HIST 225", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/225", 
+                    "name": "Hispanic America"
+                }, 
+                {
+                    "code": "HIST 230", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/230", 
+                    "name": "History of the American Economy"
+                }, 
+                {
+                    "code": "HIST 308", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/308", 
+                    "name": "European Women to 1500"
+                }, 
+                {
+                    "code": "HIST 319", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/319", 
+                    "name": "The Crusades"
+                }, 
+                {
+                    "code": "HIST 321", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/321", 
+                    "name": "Spl Tpc:Pol Econ Glbl Migraton"
+                }, 
+                {
+                    "code": "HIST 326", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/326", 
+                    "name": "Diplomatic History of Europe 1815-1914"
+                }, 
+                {
+                    "code": "HIST 362", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/362", 
+                    "name": "US Foreign Relations, 1900 to the Present"
+                }, 
+                {
+                    "code": "HIST 385", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/385", 
+                    "name": "MODERN AMERICA, 1930 TO PRESEN"
+                }, 
+                {
+                    "code": "HIST 387", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/387", 
+                    "name": "New York City and the American Urban Experience"
+                }, 
+                {
+                    "code": "HIST 390", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/390", 
+                    "name": "Terror and Terrorism"
+                }, 
+                {
+                    "code": "HIST 498", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/HIST/498", 
+                    "name": "Ind. Study: Hist. of Queenship"
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/manhattan/HIST"
+        }, 
+        {
+            "abbr": "HLTH", 
+            "courses": [], 
+            "name": "Health Education", 
+            "url": "http://www.chegg.com/courses/manhattan/HLTH"
+        }, 
+        {
+            "abbr": "INED", 
+            "courses": [], 
+            "name": "International Education", 
+            "url": "http://www.chegg.com/courses/manhattan/INED"
+        }, 
+        {
+            "abbr": "INTL", 
+            "courses": [
+                {
+                    "code": "INTL 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/INTL/201", 
+                    "name": "Global Issues"
+                }, 
+                {
+                    "code": "INTL 300", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/INTL/300", 
+                    "name": "Study Abroad"
+                }, 
+                {
+                    "code": "INTL 310", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/INTL/310", 
+                    "name": "Technology and Society"
+                }, 
+                {
+                    "code": "INTL 312", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/INTL/312", 
+                    "name": "Ethnicity in the Modern World"
+                }, 
+                {
+                    "code": "INTL 315", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/INTL/315", 
+                    "name": "National Security Policy"
+                }
+            ], 
+            "name": "International Studies", 
+            "url": "http://www.chegg.com/courses/manhattan/INTL"
+        }, 
+        {
+            "abbr": "IRI", 
+            "courses": [
+                {
+                    "code": "IRI 103", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/IRI/103", 
+                    "name": "Elementary Irish I"
+                }
+            ], 
+            "name": "Irish", 
+            "url": "http://www.chegg.com/courses/manhattan/IRI"
+        }, 
+        {
+            "abbr": "ITAL", 
+            "courses": [
+                {
+                    "code": "ITAL 101", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ITAL/101", 
+                    "name": "Italian for Beginners I"
+                }, 
+                {
+                    "code": "ITAL 102", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ITAL/102", 
+                    "name": "Italian for Beginners II"
+                }, 
+                {
+                    "code": "ITAL 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ITAL/201", 
+                    "name": "Italian for Communication"
+                }, 
+                {
+                    "code": "ITAL 209", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ITAL/209", 
+                    "name": "Speaking Italian"
+                }, 
+                {
+                    "code": "ITAL 303", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ITAL/303", 
+                    "name": "Italian Through Film"
+                }, 
+                {
+                    "code": "ITAL 420", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ITAL/420", 
+                    "name": "Spl Tpc:Love&Warinmod Ital Nvl"
+                }, 
+                {
+                    "code": "ITAL 460", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ITAL/460", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Italian", 
+            "url": "http://www.chegg.com/courses/manhattan/ITAL"
+        }, 
+        {
+            "abbr": "JAPN", 
+            "courses": [
+                {
+                    "code": "JAPN 101", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/JAPN/101", 
+                    "name": "Elementary Japanese I"
+                }, 
+                {
+                    "code": "JAPN 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/JAPN/201", 
+                    "name": "Intermediate Japanese I"
+                }, 
+                {
+                    "code": "JAPN 301", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/JAPN/301", 
+                    "name": "Advanced Japanese I"
+                }, 
+                {
+                    "code": "JAPN 381", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/JAPN/381", 
+                    "name": "Tutorial"
+                }
+            ], 
+            "name": "Japanese", 
+            "url": "http://www.chegg.com/courses/manhattan/JAPN"
+        }, 
+        {
+            "abbr": "LABR", 
+            "courses": [
+                {
+                    "code": "LABR 301", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/LABR/301", 
+                    "name": "Field Work"
+                }
+            ], 
+            "name": "Labor Studies", 
+            "url": "http://www.chegg.com/courses/manhattan/LABR"
+        }, 
+        {
+            "abbr": "LATN", 
+            "courses": [
+                {
+                    "code": "LATN 101", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/LATN/101", 
+                    "name": "Introduction to Latin"
+                }
+            ], 
+            "name": "Latin", 
+            "url": "http://www.chegg.com/courses/manhattan/LATN"
+        }, 
+        {
+            "abbr": "LAW", 
+            "courses": [
+                {
+                    "code": "LAW 203", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/LAW/203", 
+                    "name": "Business Law I"
+                }, 
+                {
+                    "code": "LAW 304", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/LAW/304", 
+                    "name": "Business Law II"
+                }
+            ], 
+            "name": "Law", 
+            "url": "http://www.chegg.com/courses/manhattan/LAW"
+        }, 
+        {
+            "abbr": "LLRN", 
+            "courses": [
+                {
+                    "code": "LLRN 102", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/LLRN/102", 
+                    "name": "Classical Origins:WestCult-FYS"
+                }
+            ], 
+            "name": "Liberal Learning", 
+            "url": "http://www.chegg.com/courses/manhattan/LLRN"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 100", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/100", 
+                    "name": "Pre-Calculus Mathematics"
+                }, 
+                {
+                    "code": "MATH 102", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/102", 
+                    "name": "Modern Mathematics"
+                }, 
+                {
+                    "code": "MATH 103", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/103", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MATH 104", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/104", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MATH 105", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/105", 
+                    "name": "Linear Math Analysis"
+                }, 
+                {
+                    "code": "MATH 106", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/106", 
+                    "name": "Calculus Business Decisions"
+                }, 
+                {
+                    "code": "MATH 111", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/111", 
+                    "name": "Pre-Calculus for Business Students"
+                }, 
+                {
+                    "code": "MATH 121", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/121", 
+                    "name": "Calculus for the Life Sciences I"
+                }, 
+                {
+                    "code": "MATH 122", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/122", 
+                    "name": "Calculus for the Life Sciences II"
+                }, 
+                {
+                    "code": "MATH 151", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/151", 
+                    "name": "Modern Math"
+                }, 
+                {
+                    "code": "MATH 153", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/153", 
+                    "name": "Linear Mathematical Analysis"
+                }, 
+                {
+                    "code": "MATH 154", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/154", 
+                    "name": "Calculus for Business Decisions"
+                }, 
+                {
+                    "code": "MATH 155", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/155", 
+                    "name": "Calculus for the Life Sciences I"
+                }, 
+                {
+                    "code": "MATH 156", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/156", 
+                    "name": "Calculus for the Life Sciences II"
+                }, 
+                {
+                    "code": "MATH 185", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/185", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MATH 186", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/186", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MATH 187", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/187", 
+                    "name": "Honors Calculus I"
+                }, 
+                {
+                    "code": "MATH 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/201", 
+                    "name": "Calculus III"
+                }, 
+                {
+                    "code": "MATH 203", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/203", 
+                    "name": "Differential Equations"
+                }, 
+                {
+                    "code": "MATH 209", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/209", 
+                    "name": "HONORS CALCULUS III"
+                }, 
+                {
+                    "code": "MATH 211", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/211", 
+                    "name": "Elementary Statistics"
+                }, 
+                {
+                    "code": "MATH 213", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/213", 
+                    "name": "Foundations for Higher Mathematics"
+                }, 
+                {
+                    "code": "MATH 221", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/221", 
+                    "name": "Mathematics for the Elementary School Teachers I"
+                }, 
+                {
+                    "code": "MATH 230", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/230", 
+                    "name": "Elementary Statistics"
+                }, 
+                {
+                    "code": "MATH 243", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/243", 
+                    "name": "Foundations for Higher Mathematics"
+                }, 
+                {
+                    "code": "MATH 285", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/285", 
+                    "name": "Calculus III"
+                }, 
+                {
+                    "code": "MATH 286", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/286", 
+                    "name": "Differential Equations"
+                }, 
+                {
+                    "code": "MATH 287", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/287", 
+                    "name": "Honors Calculus III"
+                }, 
+                {
+                    "code": "MATH 308", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/308", 
+                    "name": "Partial Differential Equations"
+                }, 
+                {
+                    "code": "MATH 314", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/314", 
+                    "name": "ANALYSIS II"
+                }, 
+                {
+                    "code": "MATH 315", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/315", 
+                    "name": "Algebra I"
+                }, 
+                {
+                    "code": "MATH 325", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/325", 
+                    "name": "Linear Algebra II"
+                }, 
+                {
+                    "code": "MATH 331", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/331", 
+                    "name": "Probability"
+                }, 
+                {
+                    "code": "MATH 377", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/377", 
+                    "name": "Algebra I"
+                }, 
+                {
+                    "code": "MATH 386", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/386", 
+                    "name": "Partial Differential Equations"
+                }, 
+                {
+                    "code": "MATH 420", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/420", 
+                    "name": "Probability"
+                }, 
+                {
+                    "code": "MATH 460", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/460", 
+                    "name": "Problem Seminar"
+                }, 
+                {
+                    "code": "MATH 461", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/461", 
+                    "name": "Spl Tpc:Financial Math I"
+                }, 
+                {
+                    "code": "MATH 469", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/469", 
+                    "name": "Independent Study"
+                }, 
+                {
+                    "code": "MATH 471", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/471", 
+                    "name": "Linear Algebra II"
+                }, 
+                {
+                    "code": "MATH 489", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/489", 
+                    "name": "Problem Seminar"
+                }, 
+                {
+                    "code": "MATH 491", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MATH/491", 
+                    "name": "Spl Tpc:Applied Network Theory"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/manhattan/MATH"
+        }, 
+        {
+            "abbr": "MBAC", 
+            "courses": [
+                {
+                    "code": "MBAC 612", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MBAC/612", 
+                    "name": "Supply Chain Analysis"
+                }, 
+                {
+                    "code": "MBAC 614", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MBAC/614", 
+                    "name": "MANAGERIAL ECONOMICS"
+                }, 
+                {
+                    "code": "MBAC 621", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MBAC/621", 
+                    "name": "Reading/Cases in Financial Reporting"
+                }, 
+                {
+                    "code": "MBAC 622", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MBAC/622", 
+                    "name": "Leadership and Organizational Behavior"
+                }, 
+                {
+                    "code": "MBAC 623", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MBAC/623", 
+                    "name": "Designing and Operating Sustainable Business"
+                }, 
+                {
+                    "code": "MBAC 633", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MBAC/633", 
+                    "name": "Managing/Marketing Service Business"
+                }, 
+                {
+                    "code": "MBAC 634", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MBAC/634", 
+                    "name": "Global Economic Environment"
+                }
+            ], 
+            "name": "Master Business Admin Core", 
+            "url": "http://www.chegg.com/courses/manhattan/MBAC"
+        }, 
+        {
+            "abbr": "MBAE", 
+            "courses": [], 
+            "name": "Master Business Admin Exprtial", 
+            "url": "http://www.chegg.com/courses/manhattan/MBAE"
+        }, 
+        {
+            "abbr": "MBAP", 
+            "courses": [
+                {
+                    "code": "MBAP 710", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MBAP/710", 
+                    "name": "Professional Ethics"
+                }
+            ], 
+            "name": "Master Business Admin Capstone", 
+            "url": "http://www.chegg.com/courses/manhattan/MBAP"
+        }, 
+        {
+            "abbr": "MECG", 
+            "courses": [
+                {
+                    "code": "MECG 513", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECG/513", 
+                    "name": "Introduction to Nuclear Power Plant systems"
+                }, 
+                {
+                    "code": "MECG 515", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECG/515", 
+                    "name": "Energy Dynamics of Green Building I"
+                }, 
+                {
+                    "code": "MECG 525", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECG/525", 
+                    "name": "Analysis and Design Hvac Systems"
+                }, 
+                {
+                    "code": "MECG 612", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECG/612", 
+                    "name": "Alternative Energy Systems"
+                }, 
+                {
+                    "code": "MECG 630", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECG/630", 
+                    "name": "Control Sys Theor&Applictions"
+                }, 
+                {
+                    "code": "MECG 702", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECG/702", 
+                    "name": "Compressible Flow"
+                }, 
+                {
+                    "code": "MECG 741", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECG/741", 
+                    "name": "Spl Tpc:Biomechanics"
+                }, 
+                {
+                    "code": "MECG 742", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECG/742", 
+                    "name": "Advanced Study: Mechanical Engineering"
+                }, 
+                {
+                    "code": "MECG 746", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECG/746", 
+                    "name": "Research Project in Mechanical Engineering"
+                }, 
+                {
+                    "code": "MECG 748", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECG/748", 
+                    "name": "Thesis in Mechanical Engineering"
+                }
+            ], 
+            "name": "Mechanical Engr./Graduate", 
+            "url": "http://www.chegg.com/courses/manhattan/MECG"
+        }, 
+        {
+            "abbr": "MECH", 
+            "courses": [
+                {
+                    "code": "MECH 211", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECH/211", 
+                    "name": "Technical and Graphical Communication"
+                }, 
+                {
+                    "code": "MECH 302", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECH/302", 
+                    "name": "Applied Thermodynamics"
+                }, 
+                {
+                    "code": "MECH 314", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECH/314", 
+                    "name": "Engineering Analysis and Numerical Methods"
+                }, 
+                {
+                    "code": "MECH 318", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECH/318", 
+                    "name": "Fluid Mechanics I"
+                }, 
+                {
+                    "code": "MECH 323", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECH/323", 
+                    "name": "Machine Design"
+                }, 
+                {
+                    "code": "MECH 325", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECH/325", 
+                    "name": "Heat Transfer"
+                }, 
+                {
+                    "code": "MECH 401", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECH/401", 
+                    "name": "Mechancial Engineering Design I"
+                }, 
+                {
+                    "code": "MECH 405", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECH/405", 
+                    "name": "Thermal/Fluids Laboratory"
+                }, 
+                {
+                    "code": "MECH 411", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECH/411", 
+                    "name": "Mechanical Vibrations"
+                }, 
+                {
+                    "code": "MECH 414", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MECH/414", 
+                    "name": "Engineering Economy & Project Management"
+                }
+            ], 
+            "name": "Mechanical Engineering", 
+            "url": "http://www.chegg.com/courses/manhattan/MECH"
+        }, 
+        {
+            "abbr": "MFL", 
+            "courses": [], 
+            "name": "Modern Foreign Languages", 
+            "url": "http://www.chegg.com/courses/manhattan/MFL"
+        }, 
+        {
+            "abbr": "MGMT", 
+            "courses": [
+                {
+                    "code": "MGMT 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MGMT/201", 
+                    "name": "Introduction to Management"
+                }, 
+                {
+                    "code": "MGMT 305", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MGMT/305", 
+                    "name": "Managerial Planning and Decision Making"
+                }, 
+                {
+                    "code": "MGMT 307", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MGMT/307", 
+                    "name": "Operations and Quality Management"
+                }, 
+                {
+                    "code": "MGMT 309", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MGMT/309", 
+                    "name": "Management of International Business"
+                }, 
+                {
+                    "code": "MGMT 315", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MGMT/315", 
+                    "name": "Human Behavior in the Organization"
+                }, 
+                {
+                    "code": "MGMT 320", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MGMT/320", 
+                    "name": "Human Resource Management"
+                }, 
+                {
+                    "code": "MGMT 405", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MGMT/405", 
+                    "name": "Going Global: Business in BRIC (Brazil, Russia, India, and China) Economy"
+                }, 
+                {
+                    "code": "MGMT 406", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MGMT/406", 
+                    "name": "Strategic Management"
+                }, 
+                {
+                    "code": "MGMT 430", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MGMT/430", 
+                    "name": "Business, Government, and Society"
+                }, 
+                {
+                    "code": "MGMT 441", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MGMT/441", 
+                    "name": "SMALL BUSN MGMT SEM"
+                }, 
+                {
+                    "code": "MGMT 450", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MGMT/450", 
+                    "name": "Negotiation & Conflict Mgmt"
+                }, 
+                {
+                    "code": "MGMT 461", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MGMT/461", 
+                    "name": "Entrepreneurship"
+                }, 
+                {
+                    "code": "MGMT 462", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MGMT/462", 
+                    "name": "Managing a Diverse Workforce"
+                }
+            ], 
+            "name": "Management", 
+            "url": "http://www.chegg.com/courses/manhattan/MGMT"
+        }, 
+        {
+            "abbr": "MKTG", 
+            "courses": [
+                {
+                    "code": "MKTG 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MKTG/201", 
+                    "name": "Essentials of Marketing"
+                }, 
+                {
+                    "code": "MKTG 303", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MKTG/303", 
+                    "name": "Marketing Research"
+                }, 
+                {
+                    "code": "MKTG 307", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MKTG/307", 
+                    "name": "Consumer Behavior"
+                }, 
+                {
+                    "code": "MKTG 315", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MKTG/315", 
+                    "name": "Retail Management"
+                }, 
+                {
+                    "code": "MKTG 403", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MKTG/403", 
+                    "name": "Marketing Management"
+                }, 
+                {
+                    "code": "MKTG 404", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MKTG/404", 
+                    "name": "Advertising and Communication Management"
+                }, 
+                {
+                    "code": "MKTG 412", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MKTG/412", 
+                    "name": "International Marketing"
+                }, 
+                {
+                    "code": "MKTG 413", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MKTG/413", 
+                    "name": "Marketing Honors Seminar"
+                }, 
+                {
+                    "code": "MKTG 421", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MKTG/421", 
+                    "name": "Sports Marketing"
+                }
+            ], 
+            "name": "Marketing", 
+            "url": "http://www.chegg.com/courses/manhattan/MKTG"
+        }, 
+        {
+            "abbr": "MLL", 
+            "courses": [
+                {
+                    "code": "MLL 095", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MLL/095", 
+                    "name": "Ind Sty:Advanced Chinese I"
+                }, 
+                {
+                    "code": "MLL 096", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MLL/096", 
+                    "name": "IND STUDY:ADVANCED CHINESE"
+                }, 
+                {
+                    "code": "MLL 96", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MLL/96", 
+                    "name": "Ind Study:Advanced Chinese"
+                }, 
+                {
+                    "code": "MLL 099", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MLL/099", 
+                    "name": "FILI:Aspects of Filipino Cult"
+                }
+            ], 
+            "name": "Modern Language and Literature", 
+            "url": "http://www.chegg.com/courses/manhattan/MLL"
+        }, 
+        {
+            "abbr": "MUSC", 
+            "courses": [
+                {
+                    "code": "MUSC 129", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MUSC/129", 
+                    "name": "Beginning Vocal Instruction"
+                }, 
+                {
+                    "code": "MUSC 130", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MUSC/130", 
+                    "name": "Advanced Vocal Instruction"
+                }, 
+                {
+                    "code": "MUSC 131", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MUSC/131", 
+                    "name": "Manhattan College Singers"
+                }, 
+                {
+                    "code": "MUSC 132", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MUSC/132", 
+                    "name": "Manhattan College Orchestra"
+                }, 
+                {
+                    "code": "MUSC 133", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MUSC/133", 
+                    "name": "Manhattan College Jazz Band"
+                }, 
+                {
+                    "code": "MUSC 150", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MUSC/150", 
+                    "name": "Roots: Music"
+                }, 
+                {
+                    "code": "MUSC 208", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MUSC/208", 
+                    "name": "Piano Skills and Techniques"
+                }, 
+                {
+                    "code": "MUSC 209", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MUSC/209", 
+                    "name": "Guitar Skills and Techniques"
+                }, 
+                {
+                    "code": "MUSC 220", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MUSC/220", 
+                    "name": "Fundamentals of Music Theory"
+                }, 
+                {
+                    "code": "MUSC 300", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MUSC/300", 
+                    "name": "History of Rock and Roll"
+                }, 
+                {
+                    "code": "MUSC 310", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MUSC/310", 
+                    "name": "History of the Broadway Musical"
+                }, 
+                {
+                    "code": "MUSC 323", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MUSC/323", 
+                    "name": "Music & Romanticism"
+                }, 
+                {
+                    "code": "MUSC 400", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MUSC/400", 
+                    "name": "Spl Tpc:Contemp Dance &Thought"
+                }, 
+                {
+                    "code": "MUSC 410", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/MUSC/410", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/manhattan/MUSC"
+        }, 
+        {
+            "abbr": "PEAC", 
+            "courses": [
+                {
+                    "code": "PEAC 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PEAC/201", 
+                    "name": "Introduction to Peace Studies"
+                }
+            ], 
+            "name": "Peace Studies", 
+            "url": "http://www.chegg.com/courses/manhattan/PEAC"
+        }, 
+        {
+            "abbr": "PHED", 
+            "courses": [
+                {
+                    "code": "PHED 100", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/100", 
+                    "name": "Introduction to Teaching Physical Education"
+                }, 
+                {
+                    "code": "PHED 102", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/102", 
+                    "name": "Introduction to Exercise Science"
+                }, 
+                {
+                    "code": "PHED 103", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/103", 
+                    "name": "Beginner Swimming"
+                }, 
+                {
+                    "code": "PHED 104", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/104", 
+                    "name": "Intermediate Swimming"
+                }, 
+                {
+                    "code": "PHED 110", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/110", 
+                    "name": "Personal Wellness"
+                }, 
+                {
+                    "code": "PHED 113", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/113", 
+                    "name": "Team Sports II"
+                }, 
+                {
+                    "code": "PHED 209", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/209", 
+                    "name": "1st Aid/Emergencies/Cpr"
+                }, 
+                {
+                    "code": "PHED 213", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/213", 
+                    "name": "Quality Physical Education for Elementary School"
+                }, 
+                {
+                    "code": "PHED 231", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/231", 
+                    "name": "Anaerobic Training"
+                }, 
+                {
+                    "code": "PHED 237", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/237", 
+                    "name": "Hiking"
+                }, 
+                {
+                    "code": "PHED 245", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/245", 
+                    "name": "Yoga"
+                }, 
+                {
+                    "code": "PHED 246", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/246", 
+                    "name": "Aerobic Conditioning"
+                }, 
+                {
+                    "code": "PHED 303", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/303", 
+                    "name": "Sports Psychology"
+                }, 
+                {
+                    "code": "PHED 305", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/305", 
+                    "name": "Quality Physical Education for Secondary Schools"
+                }, 
+                {
+                    "code": "PHED 318", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/318", 
+                    "name": "Care and Prevention"
+                }, 
+                {
+                    "code": "PHED 331", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/331", 
+                    "name": "Contemporary Activities"
+                }, 
+                {
+                    "code": "PHED 337", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/337", 
+                    "name": "Track and Field and Cross Country"
+                }, 
+                {
+                    "code": "PHED 350", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/350", 
+                    "name": "Independent Study"
+                }, 
+                {
+                    "code": "PHED 401", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/401", 
+                    "name": "Lifeguard Training"
+                }, 
+                {
+                    "code": "PHED 403", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/403", 
+                    "name": "Introduction to Alcohol and Substance Abuse"
+                }, 
+                {
+                    "code": "PHED 404", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/404", 
+                    "name": "History, Theory, Pracatice of Dance"
+                }, 
+                {
+                    "code": "PHED 405", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/405", 
+                    "name": "Research Seminar"
+                }, 
+                {
+                    "code": "PHED 415", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/415", 
+                    "name": "Supervised Practice Teaching in Secondary Schools"
+                }, 
+                {
+                    "code": "PHED 416", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/416", 
+                    "name": "Supervised Practiced Teaching in Elemenatary Schools"
+                }, 
+                {
+                    "code": "PHED 418", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/418", 
+                    "name": "Biomechanics of Human Movement"
+                }, 
+                {
+                    "code": "PHED 421", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/421", 
+                    "name": "Therapeutic Recreation"
+                }, 
+                {
+                    "code": "PHED 423", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/423", 
+                    "name": "Adapted Physical Activity"
+                }, 
+                {
+                    "code": "PHED 428", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/428", 
+                    "name": "Professional Practicum I"
+                }, 
+                {
+                    "code": "PHED 430", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHED/430", 
+                    "name": "Stress Management"
+                }
+            ], 
+            "name": "Physical Education", 
+            "url": "http://www.chegg.com/courses/manhattan/PHED"
+        }, 
+        {
+            "abbr": "PHIL", 
+            "courses": [
+                {
+                    "code": "PHIL 150", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHIL/150", 
+                    "name": "Roots: Philosophy"
+                }, 
+                {
+                    "code": "PHIL 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHIL/201", 
+                    "name": "Ethics"
+                }, 
+                {
+                    "code": "PHIL 213", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHIL/213", 
+                    "name": "Introduction to Logic"
+                }, 
+                {
+                    "code": "PHIL 215", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHIL/215", 
+                    "name": "Ancient Greek Philosophy"
+                }, 
+                {
+                    "code": "PHIL 238", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHIL/238", 
+                    "name": "Philosophies of War and Peace"
+                }, 
+                {
+                    "code": "PHIL 313", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHIL/313", 
+                    "name": "Dante"
+                }, 
+                {
+                    "code": "PHIL 334", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHIL/334", 
+                    "name": "Existentialism"
+                }, 
+                {
+                    "code": "PHIL 350", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHIL/350", 
+                    "name": "PHIL ON RACE,CLASS&GENDER"
+                }, 
+                {
+                    "code": "PHIL 352", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHIL/352", 
+                    "name": "Philosophers on Sexuality, Love, and Friendship"
+                }, 
+                {
+                    "code": "PHIL 399", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHIL/399", 
+                    "name": "Spl Tpc:Metaphysics"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/manhattan/PHIL"
+        }, 
+        {
+            "abbr": "PHYS", 
+            "courses": [
+                {
+                    "code": "PHYS 101", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHYS/101", 
+                    "name": "Physics I"
+                }, 
+                {
+                    "code": "PHYS 102", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHYS/102", 
+                    "name": "Physics II"
+                }, 
+                {
+                    "code": "PHYS 105", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHYS/105", 
+                    "name": "Principles of Physics I"
+                }, 
+                {
+                    "code": "PHYS 107", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHYS/107", 
+                    "name": "Introduction Physics I"
+                }, 
+                {
+                    "code": "PHYS 191", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHYS/191", 
+                    "name": "Physics I Lab"
+                }, 
+                {
+                    "code": "PHYS 192", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHYS/192", 
+                    "name": "Physics II Laboratory"
+                }, 
+                {
+                    "code": "PHYS 195", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHYS/195", 
+                    "name": "Principles of Physics I Lab"
+                }, 
+                {
+                    "code": "PHYS 197", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHYS/197", 
+                    "name": "Introductory Physics I Lab"
+                }, 
+                {
+                    "code": "PHYS 214", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHYS/214", 
+                    "name": "Electricity and Magnetism"
+                }, 
+                {
+                    "code": "PHYS 223", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHYS/223", 
+                    "name": "Physics III"
+                }, 
+                {
+                    "code": "PHYS 250", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHYS/250", 
+                    "name": "Optics"
+                }, 
+                {
+                    "code": "PHYS 309", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHYS/309", 
+                    "name": "Mechanics I"
+                }, 
+                {
+                    "code": "PHYS 311", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHYS/311", 
+                    "name": "Atomic and Nuclear Physics"
+                }, 
+                {
+                    "code": "PHYS 351", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PHYS/351", 
+                    "name": "Modern Physics Laboratory I"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/manhattan/PHYS"
+        }, 
+        {
+            "abbr": "PSYC", 
+            "courses": [
+                {
+                    "code": "PSYC 150", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/150", 
+                    "name": "Roots: Psychology"
+                }, 
+                {
+                    "code": "PSYC 203", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/203", 
+                    "name": "Introduction to Psychology I"
+                }, 
+                {
+                    "code": "PSYC 205", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/205", 
+                    "name": "Statistics"
+                }, 
+                {
+                    "code": "PSYC 209", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/209", 
+                    "name": "Introduction to Psychology II"
+                }, 
+                {
+                    "code": "PSYC 257", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/257", 
+                    "name": "Forensic Psychology"
+                }, 
+                {
+                    "code": "PSYC 302", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/302", 
+                    "name": "Psychological Testing"
+                }, 
+                {
+                    "code": "PSYC 310", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/310", 
+                    "name": "Psychology of Developmental Disorders and Delays"
+                }, 
+                {
+                    "code": "PSYC 315", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/315", 
+                    "name": "Research Methods I"
+                }, 
+                {
+                    "code": "PSYC 320", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/320", 
+                    "name": "Adulthood and Aging"
+                }, 
+                {
+                    "code": "PSYC 321", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/321", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "PSYC 327", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/327", 
+                    "name": "Interviewing and Counseling"
+                }, 
+                {
+                    "code": "PSYC 330", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/330", 
+                    "name": "Spl Tpc:Human Sexuality"
+                }, 
+                {
+                    "code": "PSYC 333", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/333", 
+                    "name": "Motivation and Emotion"
+                }, 
+                {
+                    "code": "PSYC 340", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/340", 
+                    "name": "Cognition and Learning"
+                }, 
+                {
+                    "code": "PSYC 345", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/345", 
+                    "name": "Psychology of Childhood"
+                }, 
+                {
+                    "code": "PSYC 346", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/346", 
+                    "name": "Psychology of Adolescence"
+                }, 
+                {
+                    "code": "PSYC 347", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/347", 
+                    "name": "Theories of Personality"
+                }, 
+                {
+                    "code": "PSYC 367", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/367", 
+                    "name": "Sensation and Perception"
+                }, 
+                {
+                    "code": "PSYC 374", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/374", 
+                    "name": "Organizational Psychology"
+                }, 
+                {
+                    "code": "PSYC 375", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/375", 
+                    "name": "Internship"
+                }, 
+                {
+                    "code": "PSYC 421", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/421", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSYC 429", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/429", 
+                    "name": "Research in Psychology"
+                }, 
+                {
+                    "code": "PSYC 435", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/435", 
+                    "name": "Physiological Psychology"
+                }, 
+                {
+                    "code": "PSYC 437", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/PSYC/437", 
+                    "name": "Contemporary Psychotherapy"
+                }
+            ], 
+            "name": "Psychology", 
+            "url": "http://www.chegg.com/courses/manhattan/PSYC"
+        }, 
+        {
+            "abbr": "RELS", 
+            "courses": [
+                {
+                    "code": "RELS 110", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/110", 
+                    "name": "The Nature and Experience of Religion"
+                }, 
+                {
+                    "code": "RELS 200", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/200", 
+                    "name": "Spl Tpc:Images of God"
+                }, 
+                {
+                    "code": "RELS 202", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/202", 
+                    "name": "U.S. Latino/A Catholicism"
+                }, 
+                {
+                    "code": "RELS 205", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/205", 
+                    "name": "Urban America and Catholic Social Teaching"
+                }, 
+                {
+                    "code": "RELS 206", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/206", 
+                    "name": "Understanding the Bible"
+                }, 
+                {
+                    "code": "RELS 210", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/210", 
+                    "name": "Jesus"
+                }, 
+                {
+                    "code": "RELS 213", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/213", 
+                    "name": "Catholic Thought"
+                }, 
+                {
+                    "code": "RELS 221", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/221", 
+                    "name": "The Psalms & Catholic Worship"
+                }, 
+                {
+                    "code": "RELS 225", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/225", 
+                    "name": "Contemporary Catholicism"
+                }, 
+                {
+                    "code": "RELS 233", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/233", 
+                    "name": "Contemporary Christian Ethics"
+                }, 
+                {
+                    "code": "RELS 243", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/243", 
+                    "name": "Early Christian Thought"
+                }, 
+                {
+                    "code": "RELS 245", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/245", 
+                    "name": "Medieval Christian Thought"
+                }, 
+                {
+                    "code": "RELS 254", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/254", 
+                    "name": "Catholic Social Teaching"
+                }, 
+                {
+                    "code": "RELS 300", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/300", 
+                    "name": "Abroad:Spl Tpc:Madrid Spain"
+                }, 
+                {
+                    "code": "RELS 305", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/305", 
+                    "name": "Understanding the Bible"
+                }, 
+                {
+                    "code": "RELS 331", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/331", 
+                    "name": "Eastern Christianity"
+                }, 
+                {
+                    "code": "RELS 336", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/336", 
+                    "name": "Native American Religions"
+                }, 
+                {
+                    "code": "RELS 355", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/355", 
+                    "name": "Islam"
+                }, 
+                {
+                    "code": "RELS 362", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/362", 
+                    "name": "Ethics in the Workplace"
+                }, 
+                {
+                    "code": "RELS 372", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/372", 
+                    "name": "Religion and Science"
+                }, 
+                {
+                    "code": "RELS 373", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/373", 
+                    "name": "Death as a Fact of Life"
+                }, 
+                {
+                    "code": "RELS 375", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/375", 
+                    "name": "Religion and the Body"
+                }, 
+                {
+                    "code": "RELS 376", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/376", 
+                    "name": "Religion and the Media"
+                }, 
+                {
+                    "code": "RELS 377", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/377", 
+                    "name": "Religion and Environmentalism"
+                }, 
+                {
+                    "code": "RELS 381", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/381", 
+                    "name": "Religious Dimensions of Peace"
+                }, 
+                {
+                    "code": "RELS 399", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/399", 
+                    "name": "Criminal Justice Ethics"
+                }, 
+                {
+                    "code": "RELS 400", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RELS/400", 
+                    "name": "Abroad: Spcl Tpc- Madrid Spain"
+                }
+            ], 
+            "name": "Religious Studies", 
+            "url": "http://www.chegg.com/courses/manhattan/RELS"
+        }, 
+        {
+            "abbr": "RHS", 
+            "courses": [
+                {
+                    "code": "RHS 205", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/205", 
+                    "name": "Concepts Allied Health"
+                }, 
+                {
+                    "code": "RHS 275", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/275", 
+                    "name": "Patient Care and Nursing Procedure"
+                }, 
+                {
+                    "code": "RHS 315", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/315", 
+                    "name": "Radiation Physics"
+                }, 
+                {
+                    "code": "RHS 317", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/317", 
+                    "name": "Radiation Biology"
+                }, 
+                {
+                    "code": "RHS 326", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/326", 
+                    "name": "Cross-Sectional Anatomy"
+                }, 
+                {
+                    "code": "RHS 331", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/331", 
+                    "name": "Nuclear Medicine I"
+                }, 
+                {
+                    "code": "RHS 355", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/355", 
+                    "name": "Radiation Therapy II"
+                }, 
+                {
+                    "code": "RHS 357", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/357", 
+                    "name": "Radiation Therapy Instrumentation"
+                }, 
+                {
+                    "code": "RHS 360", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/360", 
+                    "name": "Radiation Therapy Internship II"
+                }, 
+                {
+                    "code": "RHS 435", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/435", 
+                    "name": "Radition Therapy Internship V"
+                }, 
+                {
+                    "code": "RHS 436", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/436", 
+                    "name": "Radiation Therapy Internship VI"
+                }, 
+                {
+                    "code": "RHS 440", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/440", 
+                    "name": "Radiation Therapy Colloquium"
+                }, 
+                {
+                    "code": "RHS 442", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/442", 
+                    "name": "Nuclear Medicine III"
+                }, 
+                {
+                    "code": "RHS 450", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/450", 
+                    "name": "Nuclear Medicine Internship III"
+                }, 
+                {
+                    "code": "RHS 451", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/451", 
+                    "name": "Nuclear Medicine Internship IV"
+                }, 
+                {
+                    "code": "RHS 460", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/460", 
+                    "name": "Nuclear Medicine Colloquium"
+                }, 
+                {
+                    "code": "RHS 470", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/470", 
+                    "name": "Hospital Accounting"
+                }, 
+                {
+                    "code": "RHS 471", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/471", 
+                    "name": "Hospital Organization and Management"
+                }, 
+                {
+                    "code": "RHS 480", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/RHS/480", 
+                    "name": "Planning for Health Care Services"
+                }
+            ], 
+            "name": "Radiological/Health Sci.", 
+            "url": "http://www.chegg.com/courses/manhattan/RHS"
+        }, 
+        {
+            "abbr": "ROTC", 
+            "courses": [
+                {
+                    "code": "ROTC 100", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ROTC/100", 
+                    "name": "Leadership Laboratory"
+                }, 
+                {
+                    "code": "ROTC 101", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ROTC/101", 
+                    "name": "Foundations of the US Air Force"
+                }, 
+                {
+                    "code": "ROTC 200", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ROTC/200", 
+                    "name": "Leadership Laboratory"
+                }, 
+                {
+                    "code": "ROTC 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ROTC/201", 
+                    "name": "Evolution of USAF Air and Space Power"
+                }, 
+                {
+                    "code": "ROTC 300", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ROTC/300", 
+                    "name": "Leadership Laboratory"
+                }, 
+                {
+                    "code": "ROTC 301", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ROTC/301", 
+                    "name": "Leadership Studies"
+                }, 
+                {
+                    "code": "ROTC 400", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ROTC/400", 
+                    "name": "Leadership Laboratory"
+                }, 
+                {
+                    "code": "ROTC 401", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/ROTC/401", 
+                    "name": "National Security Affairs"
+                }
+            ], 
+            "name": "Aerospace Studies", 
+            "url": "http://www.chegg.com/courses/manhattan/ROTC"
+        }, 
+        {
+            "abbr": "RUSS", 
+            "courses": [], 
+            "name": "Russian", 
+            "url": "http://www.chegg.com/courses/manhattan/RUSS"
+        }, 
+        {
+            "abbr": "SCI", 
+            "courses": [
+                {
+                    "code": "SCI 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SCI/201", 
+                    "name": "Introduction Astronomy"
+                }, 
+                {
+                    "code": "SCI 202", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SCI/202", 
+                    "name": "Introduction Geology"
+                }, 
+                {
+                    "code": "SCI 203", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SCI/203", 
+                    "name": "Topics in Science I"
+                }, 
+                {
+                    "code": "SCI 204", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SCI/204", 
+                    "name": "Topics in Science II"
+                }, 
+                {
+                    "code": "SCI 205", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SCI/205", 
+                    "name": "Lasers, Light, and Optical Devices"
+                }, 
+                {
+                    "code": "SCI 210", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SCI/210", 
+                    "name": "Introductory Oceanography"
+                }, 
+                {
+                    "code": "SCI 221", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SCI/221", 
+                    "name": "Introduction Meteorology"
+                }, 
+                {
+                    "code": "SCI 230", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SCI/230", 
+                    "name": "Great Ideas in Physics"
+                }, 
+                {
+                    "code": "SCI 240", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SCI/240", 
+                    "name": "Fundamentals of Science I"
+                }, 
+                {
+                    "code": "SCI 241", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SCI/241", 
+                    "name": "Fundamentals of Life Science"
+                }, 
+                {
+                    "code": "SCI 242", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SCI/242", 
+                    "name": "Fundamentals of Physical Science"
+                }, 
+                {
+                    "code": "SCI 301", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SCI/301", 
+                    "name": "Earth Science for Engineers"
+                }, 
+                {
+                    "code": "SCI 321", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SCI/321", 
+                    "name": "Astronomy"
+                }
+            ], 
+            "name": "Science", 
+            "url": "http://www.chegg.com/courses/manhattan/SCI"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 150", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/150", 
+                    "name": "Roots: Sociology"
+                }, 
+                {
+                    "code": "SOC 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/201", 
+                    "name": "Introduction to Sociology"
+                }, 
+                {
+                    "code": "SOC 202", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/202", 
+                    "name": "Introduction to Cultural Anthropology"
+                }, 
+                {
+                    "code": "SOC 205", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/205", 
+                    "name": "Urban Environments"
+                }, 
+                {
+                    "code": "SOC 210", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/210", 
+                    "name": "Introduction to Social Services"
+                }, 
+                {
+                    "code": "SOC 211", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/211", 
+                    "name": "Mass Media and Popular Culture"
+                }, 
+                {
+                    "code": "SOC 301", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/301", 
+                    "name": "Social Problems"
+                }, 
+                {
+                    "code": "SOC 302", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/302", 
+                    "name": "Race and Ethnicity"
+                }, 
+                {
+                    "code": "SOC 307", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/307", 
+                    "name": "Research Methods"
+                }, 
+                {
+                    "code": "SOC 308", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/308", 
+                    "name": "Juvenile Justice"
+                }, 
+                {
+                    "code": "SOC 309", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/309", 
+                    "name": "Criminology"
+                }, 
+                {
+                    "code": "SOC 312", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/312", 
+                    "name": "Social Service Practice"
+                }, 
+                {
+                    "code": "SOC 324", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/324", 
+                    "name": "Sociological Theories"
+                }, 
+                {
+                    "code": "SOC 328", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/328", 
+                    "name": "Societies and Cultures of Latin America"
+                }, 
+                {
+                    "code": "SOC 329", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/329", 
+                    "name": "Political Economy of Global Migration"
+                }, 
+                {
+                    "code": "SOC 330", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/330", 
+                    "name": "The Modern Metropolis"
+                }, 
+                {
+                    "code": "SOC 331", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/331", 
+                    "name": "Workers and the Workplace"
+                }, 
+                {
+                    "code": "SOC 335", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/335", 
+                    "name": "Culture, Health, and Illness"
+                }, 
+                {
+                    "code": "SOC 345", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/345", 
+                    "name": "New York City Ethnic Communities"
+                }, 
+                {
+                    "code": "SOC 362", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/362", 
+                    "name": "Organized Crime"
+                }, 
+                {
+                    "code": "SOC 364", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/364", 
+                    "name": "Law and Society"
+                }, 
+                {
+                    "code": "SOC 399", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SOC/399", 
+                    "name": "Sociology of Gender"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/manhattan/SOC"
+        }, 
+        {
+            "abbr": "SPAN", 
+            "courses": [
+                {
+                    "code": "SPAN 1", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPAN/1", 
+                    "name": "Madrid, Spain"
+                }, 
+                {
+                    "code": "SPAN 101", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPAN/101", 
+                    "name": "Spanish for Beginners I"
+                }, 
+                {
+                    "code": "SPAN 201", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPAN/201", 
+                    "name": "Spanish for Communication I"
+                }, 
+                {
+                    "code": "SPAN 209", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPAN/209", 
+                    "name": "Speaking Spanish"
+                }, 
+                {
+                    "code": "SPAN 210", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPAN/210", 
+                    "name": "Writing Spanish"
+                }, 
+                {
+                    "code": "SPAN 217", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPAN/217", 
+                    "name": "Spanish for Heritage Speakers I"
+                }, 
+                {
+                    "code": "SPAN 219", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPAN/219", 
+                    "name": "Keeping Spanish Alive"
+                }, 
+                {
+                    "code": "SPAN 300", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPAN/300", 
+                    "name": "Hispanic Musical Heritage"
+                }, 
+                {
+                    "code": "SPAN 303", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPAN/303", 
+                    "name": "Spanish Culture Through Film"
+                }, 
+                {
+                    "code": "SPAN 307", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPAN/307", 
+                    "name": "Advanced Grammar and Composition"
+                }, 
+                {
+                    "code": "SPAN 320", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPAN/320", 
+                    "name": "Spl Tpc:NYC in Hisp Lit & Film"
+                }, 
+                {
+                    "code": "SPAN 340", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPAN/340", 
+                    "name": "Spanish Civilization"
+                }, 
+                {
+                    "code": "SPAN 341", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPAN/341", 
+                    "name": "Spanish American Civilization"
+                }, 
+                {
+                    "code": "SPAN 350", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPAN/350", 
+                    "name": "Masterworks in Spanish I"
+                }, 
+                {
+                    "code": "SPAN 420", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPAN/420", 
+                    "name": "Spansem:Novels Ofvargas Llosa"
+                }, 
+                {
+                    "code": "SPAN 424", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPAN/424", 
+                    "name": "The Modern Novel in Spain and Spanish America"
+                }
+            ], 
+            "name": "Spanish", 
+            "url": "http://www.chegg.com/courses/manhattan/SPAN"
+        }, 
+        {
+            "abbr": "SPCH", 
+            "courses": [
+                {
+                    "code": "SPCH 204", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/SPCH/204", 
+                    "name": "Fundamentals of Speech"
+                }
+            ], 
+            "name": "Speech", 
+            "url": "http://www.chegg.com/courses/manhattan/SPCH"
+        }, 
+        {
+            "abbr": "URBN", 
+            "courses": [
+                {
+                    "code": "URBN 202", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/URBN/202", 
+                    "name": "Urban Environments: An Introduction"
+                }, 
+                {
+                    "code": "URBN 205", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/URBN/205", 
+                    "name": "Urban America and Catholic Social Teaching"
+                }, 
+                {
+                    "code": "URBN 301", 
+                    "course_url": "http://www.chegg.com/courses/manhattan/URBN/301", 
+                    "name": "Urban/Rural Political Conflict"
+                }
+            ], 
+            "name": "Urban Affairs", 
+            "url": "http://www.chegg.com/courses/manhattan/URBN"
+        }
+    ], 
+    "name": "manhattan"
+}

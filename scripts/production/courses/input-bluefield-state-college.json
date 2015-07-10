@@ -1,0 +1,2179 @@
+{
+    "all_stats": {
+        "num_courses": 336, 
+        "num_departments": 73
+    }, 
+    "departments": [
+        {
+            "abbr": "ACCT", 
+            "courses": [
+                {
+                    "code": "ACCT 201", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ACCT/201", 
+                    "name": "Principles of Accounting I"
+                }, 
+                {
+                    "code": "ACCT 202", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ACCT/202", 
+                    "name": "Principles of Accounting II"
+                }, 
+                {
+                    "code": "ACCT 301", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ACCT/301", 
+                    "name": "Intermediate Accounting I"
+                }, 
+                {
+                    "code": "ACCT 305", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ACCT/305", 
+                    "name": "Managerial Accounting"
+                }, 
+                {
+                    "code": "ACCT 325", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ACCT/325", 
+                    "name": "Tax for Per & Bus Decision Mak"
+                }, 
+                {
+                    "code": "ACCT 424", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ACCT/424", 
+                    "name": "Accounting Information Systems"
+                }, 
+                {
+                    "code": "ACCT 430", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ACCT/430", 
+                    "name": "Advanced Accounting"
+                }, 
+                {
+                    "code": "ACCT 431", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ACCT/431", 
+                    "name": "Auditing Principles"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/ACCT"
+        }, 
+        {
+            "abbr": "ARET", 
+            "courses": [
+                {
+                    "code": "ARET 101", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ARET/101", 
+                    "name": "Architectural Graphics"
+                }, 
+                {
+                    "code": "ARET 205", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ARET/205", 
+                    "name": "History of Architecture"
+                }, 
+                {
+                    "code": "ARET 301", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ARET/301", 
+                    "name": "Institutional Design"
+                }, 
+                {
+                    "code": "ARET 313", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ARET/313", 
+                    "name": "Applied Project Management"
+                }, 
+                {
+                    "code": "ARET 413", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ARET/413", 
+                    "name": "Construction Documents"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/ARET"
+        }, 
+        {
+            "abbr": "ARSC", 
+            "courses": [
+                {
+                    "code": "ARSC 431", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ARSC/431", 
+                    "name": "MethodTeachingArts&Sci:Science"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/ARSC"
+        }, 
+        {
+            "abbr": "ARTS", 
+            "courses": [
+                {
+                    "code": "ARTS 105", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ARTS/105", 
+                    "name": "Creative Expression"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/ARTS"
+        }, 
+        {
+            "abbr": "BANK", 
+            "courses": [], 
+            "name": "Banking", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/BANK"
+        }, 
+        {
+            "abbr": "BCON", 
+            "courses": [], 
+            "name": "Building Construction", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/BCON"
+        }, 
+        {
+            "abbr": "BICO", 
+            "courses": [], 
+            "name": "Billing Insurance & Coding", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/BICO"
+        }, 
+        {
+            "abbr": "BINS", 
+            "courses": [
+                {
+                    "code": "BINS 130", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BINS/130", 
+                    "name": "Intro to Busn Informa Systems"
+                }, 
+                {
+                    "code": "BINS 220", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BINS/220", 
+                    "name": "Enterprise Resource Planning"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/BINS"
+        }, 
+        {
+            "abbr": "BIOL", 
+            "courses": [
+                {
+                    "code": "BIOL 101", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BIOL/101", 
+                    "name": "General Biology I"
+                }, 
+                {
+                    "code": "BIOL 102", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BIOL/102", 
+                    "name": "General Biology II"
+                }, 
+                {
+                    "code": "BIOL 103L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BIOL/103L", 
+                    "name": "Lab for General Biology I"
+                }, 
+                {
+                    "code": "BIOL 104L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BIOL/104L", 
+                    "name": "Lab for General Biology II"
+                }, 
+                {
+                    "code": "BIOL 202", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BIOL/202", 
+                    "name": "Microbiology"
+                }, 
+                {
+                    "code": "BIOL 204L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BIOL/204L", 
+                    "name": "Microbiology Laboratory"
+                }, 
+                {
+                    "code": "BIOL 210", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BIOL/210", 
+                    "name": "Human Anatomy & Physiology I"
+                }, 
+                {
+                    "code": "BIOL 211L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BIOL/211L", 
+                    "name": "Human Anatomy&Physiology I Lab"
+                }, 
+                {
+                    "code": "BIOL 212", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BIOL/212", 
+                    "name": "Human Anatomy & Physiology II"
+                }, 
+                {
+                    "code": "BIOL 213L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BIOL/213L", 
+                    "name": "HumanAnatomy&Physiology II Lab"
+                }, 
+                {
+                    "code": "BIOL 301", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BIOL/301", 
+                    "name": "Introduction to Genetics"
+                }, 
+                {
+                    "code": "BIOL 306", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BIOL/306", 
+                    "name": "Botany"
+                }, 
+                {
+                    "code": "BIOL 400", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BIOL/400", 
+                    "name": "Pharmacology"
+                }, 
+                {
+                    "code": "BIOL 401", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BIOL/401", 
+                    "name": "Pathogenic Micro"
+                }, 
+                {
+                    "code": "BIOL 402", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BIOL/402", 
+                    "name": "Immunology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/BIOL"
+        }, 
+        {
+            "abbr": "BSCS", 
+            "courses": [
+                {
+                    "code": "BSCS 100", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BSCS/100", 
+                    "name": "BuildingSuccessfulCollegeSkill"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/BSCS"
+        }, 
+        {
+            "abbr": "BUSN", 
+            "courses": [
+                {
+                    "code": "BUSN 130", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BUSN/130", 
+                    "name": "Microsoft Word & Presentations"
+                }, 
+                {
+                    "code": "BUSN 232", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BUSN/232", 
+                    "name": "Busn & Electronic Comm"
+                }, 
+                {
+                    "code": "BUSN 240", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BUSN/240", 
+                    "name": "Microsoft Excel"
+                }, 
+                {
+                    "code": "BUSN 250", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BUSN/250", 
+                    "name": "Quantitative Tech in Business"
+                }, 
+                {
+                    "code": "BUSN 260", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BUSN/260", 
+                    "name": "Microsoft Access"
+                }, 
+                {
+                    "code": "BUSN 301", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BUSN/301", 
+                    "name": "BusinessLaw & LegalEnvironment"
+                }, 
+                {
+                    "code": "BUSN 310", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BUSN/310", 
+                    "name": "Applied Business Statistics"
+                }, 
+                {
+                    "code": "BUSN 350", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BUSN/350", 
+                    "name": "Financial Management"
+                }, 
+                {
+                    "code": "BUSN 375", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BUSN/375", 
+                    "name": "International Business"
+                }, 
+                {
+                    "code": "BUSN 380", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BUSN/380", 
+                    "name": "Production/Operations Mgmt."
+                }, 
+                {
+                    "code": "BUSN 398", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BUSN/398", 
+                    "name": "Business Internship"
+                }, 
+                {
+                    "code": "BUSN 490", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BUSN/490", 
+                    "name": "ST: Business/Entrepreneurship"
+                }, 
+                {
+                    "code": "BUSN 494", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/BUSN/494", 
+                    "name": "Business Strategy"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/BUSN"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 100", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CHEM/100", 
+                    "name": "Introduction to Chemistry"
+                }, 
+                {
+                    "code": "CHEM 101", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CHEM/101", 
+                    "name": "General Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 103L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CHEM/103L", 
+                    "name": "Lab for General Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 301", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CHEM/301", 
+                    "name": "Organic Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 302", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CHEM/302", 
+                    "name": "Organic Chemistry II"
+                }, 
+                {
+                    "code": "CHEM 410", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CHEM/410", 
+                    "name": "Instrumental Analysis"
+                }, 
+                {
+                    "code": "CHEM 430", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CHEM/430", 
+                    "name": "Biochemistry"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/CHEM"
+        }, 
+        {
+            "abbr": "CIET", 
+            "courses": [
+                {
+                    "code": "CIET 101", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CIET/101", 
+                    "name": "Construction Materials"
+                }, 
+                {
+                    "code": "CIET 101L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CIET/101L", 
+                    "name": "Construction Materials Lab"
+                }, 
+                {
+                    "code": "CIET 110", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CIET/110", 
+                    "name": "Plane Surveying and Mapping"
+                }, 
+                {
+                    "code": "CIET 203", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CIET/203", 
+                    "name": "Statics & Strength of Material"
+                }, 
+                {
+                    "code": "CIET 203L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CIET/203L", 
+                    "name": "Statics &Strength of Mat Lab"
+                }, 
+                {
+                    "code": "CIET 207", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CIET/207", 
+                    "name": "Geotechnics"
+                }, 
+                {
+                    "code": "CIET 207L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CIET/207L", 
+                    "name": "Geotechnics Lab"
+                }, 
+                {
+                    "code": "CIET 211", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CIET/211", 
+                    "name": "Control Surveying"
+                }, 
+                {
+                    "code": "CIET 211L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CIET/211L", 
+                    "name": "Control Surveying Lab"
+                }, 
+                {
+                    "code": "CIET 301", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CIET/301", 
+                    "name": "Environmental Systems"
+                }, 
+                {
+                    "code": "CIET 305", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CIET/305", 
+                    "name": "Hydro Systems"
+                }, 
+                {
+                    "code": "CIET 401", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CIET/401", 
+                    "name": "Structural Analysis"
+                }, 
+                {
+                    "code": "CIET 415", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CIET/415", 
+                    "name": "Transportation Projects"
+                }, 
+                {
+                    "code": "CIET 431", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CIET/431", 
+                    "name": "LegalAspects-BoundarySurveying"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/CIET"
+        }, 
+        {
+            "abbr": "CNED", 
+            "courses": [
+                {
+                    "code": "CNED 100", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CNED/100", 
+                    "name": "Water Aerobics"
+                }, 
+                {
+                    "code": "CNED 105", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CNED/105", 
+                    "name": "Zumba"
+                }, 
+                {
+                    "code": "CNED 106", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CNED/106", 
+                    "name": "Zumba Toning"
+                }, 
+                {
+                    "code": "CNED 110", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CNED/110", 
+                    "name": "Zumba"
+                }, 
+                {
+                    "code": "CNED 200", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CNED/200", 
+                    "name": "Introduction to Cinematography"
+                }, 
+                {
+                    "code": "CNED 201", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CNED/201", 
+                    "name": "Film Production"
+                }, 
+                {
+                    "code": "CNED 250", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CNED/250", 
+                    "name": "American Sign Language II"
+                }, 
+                {
+                    "code": "CNED 290", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CNED/290", 
+                    "name": "Digital Illustration"
+                }, 
+                {
+                    "code": "CNED 300", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CNED/300", 
+                    "name": "Brazillian Jiu-Jitsu"
+                }, 
+                {
+                    "code": "CNED 307", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CNED/307", 
+                    "name": "Photography"
+                }, 
+                {
+                    "code": "CNED 351", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CNED/351", 
+                    "name": "Mixed Martial Arts"
+                }, 
+                {
+                    "code": "CNED 352", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CNED/352", 
+                    "name": "Advanced Mixed Martial Arts"
+                }, 
+                {
+                    "code": "CNED 407", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CNED/407", 
+                    "name": "Advanced Photography"
+                }, 
+                {
+                    "code": "CNED 490", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CNED/490", 
+                    "name": "American Christianity"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/CNED"
+        }, 
+        {
+            "abbr": "COMM", 
+            "courses": [
+                {
+                    "code": "COMM 208", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/COMM/208", 
+                    "name": "Fundamentals of Speech"
+                }, 
+                {
+                    "code": "COMM 240", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/COMM/240", 
+                    "name": "Foundations of Layout & Design"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/COMM"
+        }, 
+        {
+            "abbr": "COSC", 
+            "courses": [
+                {
+                    "code": "COSC 102", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/COSC/102", 
+                    "name": "Computers and Society"
+                }, 
+                {
+                    "code": "COSC 131", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/COSC/131", 
+                    "name": "Computer Programming I"
+                }, 
+                {
+                    "code": "COSC 131L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/COSC/131L", 
+                    "name": "Computer Programming I Lab"
+                }, 
+                {
+                    "code": "COSC 201", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/COSC/201", 
+                    "name": "PC Software Applications"
+                }, 
+                {
+                    "code": "COSC 209", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/COSC/209", 
+                    "name": "Java"
+                }, 
+                {
+                    "code": "COSC 210", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/COSC/210", 
+                    "name": "Visual Basic"
+                }, 
+                {
+                    "code": "COSC 224", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/COSC/224", 
+                    "name": "Web Programming"
+                }, 
+                {
+                    "code": "COSC 241", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/COSC/241", 
+                    "name": "Introduction to Linux/UNIX"
+                }, 
+                {
+                    "code": "COSC 261", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/COSC/261", 
+                    "name": "Data Structures"
+                }, 
+                {
+                    "code": "COSC 290", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/COSC/290", 
+                    "name": "Intro to Parallel Programming"
+                }, 
+                {
+                    "code": "COSC 327", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/COSC/327", 
+                    "name": "Analysis of Algorithms"
+                }, 
+                {
+                    "code": "COSC 330", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/COSC/330", 
+                    "name": "Programming Languages"
+                }, 
+                {
+                    "code": "COSC 347", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/COSC/347", 
+                    "name": "Theory of Computation"
+                }, 
+                {
+                    "code": "COSC 422", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/COSC/422", 
+                    "name": "Software Engineering"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/COSC"
+        }, 
+        {
+            "abbr": "CRMJ", 
+            "courses": [
+                {
+                    "code": "CRMJ 132", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CRMJ/132", 
+                    "name": "C.J. Writing & Commun"
+                }, 
+                {
+                    "code": "CRMJ 151", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CRMJ/151", 
+                    "name": "Intro to Criminal Justice"
+                }, 
+                {
+                    "code": "CRMJ 163", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CRMJ/163", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CRMJ 208", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CRMJ/208", 
+                    "name": "Criminology"
+                }, 
+                {
+                    "code": "CRMJ 215", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CRMJ/215", 
+                    "name": "Criminal Investigation"
+                }, 
+                {
+                    "code": "CRMJ 221", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CRMJ/221", 
+                    "name": "American Correctional Systems"
+                }, 
+                {
+                    "code": "CRMJ 301", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CRMJ/301", 
+                    "name": "Probation Parole & Com Corr"
+                }, 
+                {
+                    "code": "CRMJ 320", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CRMJ/320", 
+                    "name": "Correctional Counseling"
+                }, 
+                {
+                    "code": "CRMJ 331", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CRMJ/331", 
+                    "name": "Ethics in Criminal Justice"
+                }, 
+                {
+                    "code": "CRMJ 341", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CRMJ/341", 
+                    "name": "Contemp Issues in Crim Justice"
+                }, 
+                {
+                    "code": "CRMJ 492", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CRMJ/492", 
+                    "name": "Terrorism"
+                }, 
+                {
+                    "code": "CRMJ 495", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CRMJ/495", 
+                    "name": "Sp Tp: Victimology"
+                }, 
+                {
+                    "code": "CRMJ 498", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/CRMJ/498", 
+                    "name": "Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/CRMJ"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 211", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ECON/211", 
+                    "name": "Prin of Econ I(Macroeconomics)"
+                }, 
+                {
+                    "code": "ECON 212", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ECON/212", 
+                    "name": "Prin of Econ II(Microeconomic)"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/ECON"
+        }, 
+        {
+            "abbr": "EDUC", 
+            "courses": [
+                {
+                    "code": "EDUC 100", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/EDUC/100", 
+                    "name": "Basic Skill Development"
+                }, 
+                {
+                    "code": "EDUC 110", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/EDUC/110", 
+                    "name": "Foundations of Education"
+                }, 
+                {
+                    "code": "EDUC 160", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/EDUC/160", 
+                    "name": "Diversity and Education"
+                }, 
+                {
+                    "code": "EDUC 200", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/EDUC/200", 
+                    "name": "Child/Adol Growth & Develop"
+                }, 
+                {
+                    "code": "EDUC 280", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/EDUC/280", 
+                    "name": "General Methods"
+                }, 
+                {
+                    "code": "EDUC 321", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/EDUC/321", 
+                    "name": "Instruction and Technology"
+                }, 
+                {
+                    "code": "EDUC 322", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/EDUC/322", 
+                    "name": "StandardsPlanning & Assessment"
+                }, 
+                {
+                    "code": "EDUC 330", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/EDUC/330", 
+                    "name": "Teaching and Learning"
+                }, 
+                {
+                    "code": "EDUC 333", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/EDUC/333", 
+                    "name": "Teaching Science&SocialStudies"
+                }, 
+                {
+                    "code": "EDUC 420", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/EDUC/420", 
+                    "name": "Middle Education Methods"
+                }, 
+                {
+                    "code": "EDUC 450", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/EDUC/450", 
+                    "name": "Classroom Management"
+                }, 
+                {
+                    "code": "EDUC 475", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/EDUC/475", 
+                    "name": "Student Teaching"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/EDUC"
+        }, 
+        {
+            "abbr": "ELET", 
+            "courses": [
+                {
+                    "code": "ELET 201", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ELET/201", 
+                    "name": "Solid State Electronics"
+                }, 
+                {
+                    "code": "ELET 201L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ELET/201L", 
+                    "name": "Solid State Lab"
+                }, 
+                {
+                    "code": "ELET 205", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ELET/205", 
+                    "name": "AC-DC Machinery"
+                }, 
+                {
+                    "code": "ELET 205L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ELET/205L", 
+                    "name": "AC-DC Machinery Lab"
+                }, 
+                {
+                    "code": "ELET 209", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ELET/209", 
+                    "name": "Power Systems"
+                }, 
+                {
+                    "code": "ELET 218", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ELET/218", 
+                    "name": "Fundamentals of Digital Comput"
+                }, 
+                {
+                    "code": "ELET 218L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ELET/218L", 
+                    "name": "Fundamentals Digital Comp Lab"
+                }, 
+                {
+                    "code": "ELET 290", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ELET/290", 
+                    "name": "ST: Unmanned Vehicles"
+                }, 
+                {
+                    "code": "ELET 305", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ELET/305", 
+                    "name": "Microprocessors"
+                }, 
+                {
+                    "code": "ELET 305L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ELET/305L", 
+                    "name": "Microprocessors Lab"
+                }, 
+                {
+                    "code": "ELET 307", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ELET/307", 
+                    "name": "Circuit Analysis II"
+                }, 
+                {
+                    "code": "ELET 490", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ELET/490", 
+                    "name": "Alternative Energy Research"
+                }, 
+                {
+                    "code": "ELET 492", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ELET/492", 
+                    "name": "Senior Projects"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/ELET"
+        }, 
+        {
+            "abbr": "EMGT", 
+            "courses": [], 
+            "name": "Emergency Management", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/EMGT"
+        }, 
+        {
+            "abbr": "ENGL", 
+            "courses": [
+                {
+                    "code": "ENGL 97", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/97", 
+                    "name": "Basic Grammar"
+                }, 
+                {
+                    "code": "ENGL 098", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/098", 
+                    "name": "Developmental Reading"
+                }, 
+                {
+                    "code": "ENGL 98", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/98", 
+                    "name": "Developmental Reading"
+                }, 
+                {
+                    "code": "ENGL 099", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/099", 
+                    "name": "Developmental English"
+                }, 
+                {
+                    "code": "ENGL 99", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/99", 
+                    "name": "Developmental English"
+                }, 
+                {
+                    "code": "ENGL 101", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/101", 
+                    "name": "Composition I"
+                }, 
+                {
+                    "code": "ENGL 102", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/102", 
+                    "name": "Composition II"
+                }, 
+                {
+                    "code": "ENGL 201", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/201", 
+                    "name": "Humanistic Tradition"
+                }, 
+                {
+                    "code": "ENGL 205", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/205", 
+                    "name": "The Modern Tradition"
+                }, 
+                {
+                    "code": "ENGL 235", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/235", 
+                    "name": "Applied Study in Language Arts"
+                }, 
+                {
+                    "code": "ENGL 301", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/301", 
+                    "name": "English Grammar"
+                }, 
+                {
+                    "code": "ENGL 302", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/302", 
+                    "name": "Major British Authors"
+                }, 
+                {
+                    "code": "ENGL 308", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/308", 
+                    "name": "Linguistics"
+                }, 
+                {
+                    "code": "ENGL 309", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/309", 
+                    "name": "Advanced Research"
+                }, 
+                {
+                    "code": "ENGL 310", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/310", 
+                    "name": "Children's Literature"
+                }, 
+                {
+                    "code": "ENGL 322", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/322", 
+                    "name": "The Teaching of Composition"
+                }, 
+                {
+                    "code": "ENGL 390", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/390", 
+                    "name": "ST: Literature & Human Spirit"
+                }, 
+                {
+                    "code": "ENGL 490", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/490", 
+                    "name": "ST: Edgar Allan Poe"
+                }, 
+                {
+                    "code": "ENGL 495", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGL/495", 
+                    "name": "Political Thought - Literature"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/ENGL"
+        }, 
+        {
+            "abbr": "ENGR", 
+            "courses": [
+                {
+                    "code": "ENGR 313", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGR/313", 
+                    "name": "Engineering Mechanics I"
+                }, 
+                {
+                    "code": "ENGR 315", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENGR/315", 
+                    "name": "Engineering Economics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/ENGR"
+        }, 
+        {
+            "abbr": "ENSC", 
+            "courses": [
+                {
+                    "code": "ENSC 201", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENSC/201", 
+                    "name": "Environmental Science I"
+                }, 
+                {
+                    "code": "ENSC 203L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/ENSC/203L", 
+                    "name": "Environmental Science I Lab"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/ENSC"
+        }, 
+        {
+            "abbr": "ENVR", 
+            "courses": [], 
+            "name": "Environmental Science", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/ENVR"
+        }, 
+        {
+            "abbr": "FINW", 
+            "courses": [], 
+            "name": "Fine Woodworking", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/FINW"
+        }, 
+        {
+            "abbr": "FREN", 
+            "courses": [
+                {
+                    "code": "FREN 101", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/FREN/101", 
+                    "name": "Elementary French I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/FREN"
+        }, 
+        {
+            "abbr": "GEOG", 
+            "courses": [
+                {
+                    "code": "GEOG 150", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/GEOG/150", 
+                    "name": "Introduction to Geography"
+                }, 
+                {
+                    "code": "GEOG 301", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/GEOG/301", 
+                    "name": "World Physical Geography"
+                }, 
+                {
+                    "code": "GEOG 402", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/GEOG/402", 
+                    "name": "Urban Geography"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/GEOG"
+        }, 
+        {
+            "abbr": "GNED", 
+            "courses": [], 
+            "name": "General Education", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/GNED"
+        }, 
+        {
+            "abbr": "GNET", 
+            "courses": [
+                {
+                    "code": "GNET 098", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/GNET/098", 
+                    "name": "Pre-Technical Mathematics"
+                }, 
+                {
+                    "code": "GNET 98", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/GNET/98", 
+                    "name": "Pre-Technical Mathematics"
+                }, 
+                {
+                    "code": "GNET 101", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/GNET/101", 
+                    "name": "Technical Physics I"
+                }, 
+                {
+                    "code": "GNET 101L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/GNET/101L", 
+                    "name": "Technical Physics I Lab"
+                }, 
+                {
+                    "code": "GNET 102", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/GNET/102", 
+                    "name": "Technical Physics II & Lab"
+                }, 
+                {
+                    "code": "GNET 102L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/GNET/102L", 
+                    "name": "Technical Physics II Lab"
+                }, 
+                {
+                    "code": "GNET 115", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/GNET/115", 
+                    "name": "Technical Mathematics I"
+                }, 
+                {
+                    "code": "GNET 116", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/GNET/116", 
+                    "name": "Technical Mathematics II"
+                }, 
+                {
+                    "code": "GNET 490", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/GNET/490", 
+                    "name": "ST: Undergraduate Research"
+                }, 
+                {
+                    "code": "GNET 499", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/GNET/499", 
+                    "name": "Proj. in Engineer Tech/Lights"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/GNET"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 101", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HIST/101", 
+                    "name": "World Civilization I"
+                }, 
+                {
+                    "code": "HIST 102", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HIST/102", 
+                    "name": "World Civilization II"
+                }, 
+                {
+                    "code": "HIST 105", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HIST/105", 
+                    "name": "American History I"
+                }, 
+                {
+                    "code": "HIST 106", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HIST/106", 
+                    "name": "American History II"
+                }, 
+                {
+                    "code": "HIST 300", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HIST/300", 
+                    "name": "African-American History I"
+                }, 
+                {
+                    "code": "HIST 301", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HIST/301", 
+                    "name": "African American Hist & Cult I"
+                }, 
+                {
+                    "code": "HIST 302", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HIST/302", 
+                    "name": "History Geography Gov of WV"
+                }, 
+                {
+                    "code": "HIST 308", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HIST/308", 
+                    "name": "American Colonial History"
+                }, 
+                {
+                    "code": "HIST 400", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HIST/400", 
+                    "name": "Recent American History"
+                }, 
+                {
+                    "code": "HIST 401", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HIST/401", 
+                    "name": "Diplomatic History of U.S."
+                }, 
+                {
+                    "code": "HIST 405", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HIST/405", 
+                    "name": "African History and Culture I"
+                }, 
+                {
+                    "code": "HIST 408", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HIST/408", 
+                    "name": "History of Latin Amer Civiliza"
+                }, 
+                {
+                    "code": "HIST 490", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HIST/490", 
+                    "name": "The Construction of Race"
+                }, 
+                {
+                    "code": "HIST 495", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HIST/495", 
+                    "name": "African Amer Roles - Civil War"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/HIST"
+        }, 
+        {
+            "abbr": "HLTH", 
+            "courses": [
+                {
+                    "code": "HLTH 100", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HLTH/100", 
+                    "name": "Allied Health Pre-Readiness"
+                }, 
+                {
+                    "code": "HLTH 201", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HLTH/201", 
+                    "name": "Safety and First Aid"
+                }, 
+                {
+                    "code": "HLTH 310", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HLTH/310", 
+                    "name": "Health Promotion & Protection"
+                }, 
+                {
+                    "code": "HLTH 333", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HLTH/333", 
+                    "name": "Health and Safety in Schools"
+                }, 
+                {
+                    "code": "HLTH 490", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HLTH/490", 
+                    "name": "ST: Epidemiology & Infect. Dis"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/HLTH"
+        }, 
+        {
+            "abbr": "HONR", 
+            "courses": [
+                {
+                    "code": "HONR 300", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HONR/300", 
+                    "name": "Academic Honors Seminar"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/HONR"
+        }, 
+        {
+            "abbr": "HOSP", 
+            "courses": [], 
+            "name": "Hospitality", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/HOSP"
+        }, 
+        {
+            "abbr": "HSMT", 
+            "courses": [
+                {
+                    "code": "HSMT 201", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HSMT/201", 
+                    "name": "Intro to Health Services Mgmt."
+                }, 
+                {
+                    "code": "HSMT 301", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HSMT/301", 
+                    "name": "The U.S. Healthcare System"
+                }, 
+                {
+                    "code": "HSMT 302", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HSMT/302", 
+                    "name": "Healthcare Organization Mgmt."
+                }, 
+                {
+                    "code": "HSMT 400", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HSMT/400", 
+                    "name": "HSMT Internship"
+                }, 
+                {
+                    "code": "HSMT 401", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HSMT/401", 
+                    "name": "QualityImpr.&QuantitativeTech."
+                }, 
+                {
+                    "code": "HSMT 403", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HSMT/403", 
+                    "name": "Healthcare Finance & Economics"
+                }, 
+                {
+                    "code": "HSMT 405", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HSMT/405", 
+                    "name": "Healthcare Law and Ethics"
+                }, 
+                {
+                    "code": "HSMT 407", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HSMT/407", 
+                    "name": "Health Care Strat & Mark"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/HSMT"
+        }, 
+        {
+            "abbr": "HUMN", 
+            "courses": [
+                {
+                    "code": "HUMN 150", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HUMN/150", 
+                    "name": "Introduction to Fine Arts"
+                }, 
+                {
+                    "code": "HUMN 222", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HUMN/222", 
+                    "name": "Philosophy"
+                }, 
+                {
+                    "code": "HUMN 303", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HUMN/303", 
+                    "name": "Comparative Religion"
+                }, 
+                {
+                    "code": "HUMN 333", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HUMN/333", 
+                    "name": "Fine Arts Methods for K-6"
+                }, 
+                {
+                    "code": "HUMN 490", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/HUMN/490", 
+                    "name": "ST: Theories of Leadership"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/HUMN"
+        }, 
+        {
+            "abbr": "ITEC", 
+            "courses": [], 
+            "name": "Information Technology", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/ITEC"
+        }, 
+        {
+            "abbr": "JOUR", 
+            "courses": [], 
+            "name": "Journalism", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/JOUR"
+        }, 
+        {
+            "abbr": "LANG", 
+            "courses": [
+                {
+                    "code": "LANG 190", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/LANG/190", 
+                    "name": "Elementary Portuguese I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/LANG"
+        }, 
+        {
+            "abbr": "LAST", 
+            "courses": [], 
+            "name": "Legal Assistant", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/LAST"
+        }, 
+        {
+            "abbr": "LEAD", 
+            "courses": [
+                {
+                    "code": "LEAD 400", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/LEAD/400", 
+                    "name": "Theories of Leadership"
+                }, 
+                {
+                    "code": "LEAD 450", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/LEAD/450", 
+                    "name": "Ethical Leadership"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/LEAD"
+        }, 
+        {
+            "abbr": "LPNU", 
+            "courses": [], 
+            "name": "License Practical Nursing", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/LPNU"
+        }, 
+        {
+            "abbr": "MAST", 
+            "courses": [], 
+            "name": "Medical Assisting", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/MAST"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 098", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MATH/098", 
+                    "name": "Developmental Arithmetic"
+                }, 
+                {
+                    "code": "MATH 98", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MATH/98", 
+                    "name": "Developmental Arithmetic"
+                }, 
+                {
+                    "code": "MATH 099", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MATH/099", 
+                    "name": "Developmental Algebra"
+                }, 
+                {
+                    "code": "MATH 99", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MATH/99", 
+                    "name": "Developmental Algebra"
+                }, 
+                {
+                    "code": "MATH 101", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MATH/101", 
+                    "name": "General Mathematics"
+                }, 
+                {
+                    "code": "MATH 106", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MATH/106", 
+                    "name": "Math for Early/Mid Grade Teach"
+                }, 
+                {
+                    "code": "MATH 109", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MATH/109", 
+                    "name": "Algebra"
+                }, 
+                {
+                    "code": "MATH 210", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MATH/210", 
+                    "name": "Elementary Statistics"
+                }, 
+                {
+                    "code": "MATH 211", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MATH/211", 
+                    "name": "Informal Geometry"
+                }, 
+                {
+                    "code": "MATH 220", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MATH/220", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MATH 230", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MATH/230", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MATH 250", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MATH/250", 
+                    "name": "Discrete Mathematics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/MATH"
+        }, 
+        {
+            "abbr": "MATT", 
+            "courses": [], 
+            "name": "Machine Tool Technology", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/MATT"
+        }, 
+        {
+            "abbr": "MDST", 
+            "courses": [], 
+            "name": "Medical Studies", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/MDST"
+        }, 
+        {
+            "abbr": "MEET", 
+            "courses": [
+                {
+                    "code": "MEET 101", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MEET/101", 
+                    "name": "Industrial Materials"
+                }, 
+                {
+                    "code": "MEET 101L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MEET/101L", 
+                    "name": "Industrial Materials Lab"
+                }, 
+                {
+                    "code": "MEET 111", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MEET/111", 
+                    "name": "Engineering Drafting"
+                }, 
+                {
+                    "code": "MEET 112", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MEET/112", 
+                    "name": "Computer Aided Drafting"
+                }, 
+                {
+                    "code": "MEET 201", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MEET/201", 
+                    "name": "Manufacturing Processes"
+                }, 
+                {
+                    "code": "MEET 201L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MEET/201L", 
+                    "name": "Manufacturing Processes Lab"
+                }, 
+                {
+                    "code": "MEET 205", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MEET/205", 
+                    "name": "Applied Thermodynamics"
+                }, 
+                {
+                    "code": "MEET 205L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MEET/205L", 
+                    "name": "Applied Thermodynamics Lab"
+                }, 
+                {
+                    "code": "MEET 301", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MEET/301", 
+                    "name": "Computer Aided Manufacturing"
+                }, 
+                {
+                    "code": "MEET 301L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MEET/301L", 
+                    "name": "Computer Aid Manufacturing Lab"
+                }, 
+                {
+                    "code": "MEET 401", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MEET/401", 
+                    "name": "Mechanical Design I"
+                }, 
+                {
+                    "code": "MEET 403", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MEET/403", 
+                    "name": "Kinematics and Mechanisms"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/MEET"
+        }, 
+        {
+            "abbr": "MGMT", 
+            "courses": [
+                {
+                    "code": "MGMT 210", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MGMT/210", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "MGMT 326", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MGMT/326", 
+                    "name": "Human Resources"
+                }, 
+                {
+                    "code": "MGMT 330", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MGMT/330", 
+                    "name": "Organizational Behavior"
+                }, 
+                {
+                    "code": "MGMT 375", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MGMT/375", 
+                    "name": "International Management"
+                }, 
+                {
+                    "code": "MGMT 482", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MGMT/482", 
+                    "name": "Collective Bargain & Labor Rel"
+                }, 
+                {
+                    "code": "MGMT 488", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MGMT/488", 
+                    "name": "Current Iss in MGMT:HR Law"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/MGMT"
+        }, 
+        {
+            "abbr": "MIET", 
+            "courses": [
+                {
+                    "code": "MIET 300", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MIET/300", 
+                    "name": "Intro to Mining Engr Tech"
+                }, 
+                {
+                    "code": "MIET 402", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MIET/402", 
+                    "name": "Mine Surveying & Mapping"
+                }, 
+                {
+                    "code": "MIET 404", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MIET/404", 
+                    "name": "Ground Control"
+                }, 
+                {
+                    "code": "MIET 408", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MIET/408", 
+                    "name": "Coal Preparation &Analysis"
+                }, 
+                {
+                    "code": "MIET 490", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MIET/490", 
+                    "name": "Topics in Mining Engr. Tech."
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/MIET"
+        }, 
+        {
+            "abbr": "MRKT", 
+            "courses": [
+                {
+                    "code": "MRKT 210", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MRKT/210", 
+                    "name": "Principles of Marketing"
+                }, 
+                {
+                    "code": "MRKT 331", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MRKT/331", 
+                    "name": "Retailing"
+                }, 
+                {
+                    "code": "MRKT 352", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MRKT/352", 
+                    "name": "Integrated Marketing Communica"
+                }, 
+                {
+                    "code": "MRKT 372", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MRKT/372", 
+                    "name": "Selling/Sales Management"
+                }, 
+                {
+                    "code": "MRKT 381", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MRKT/381", 
+                    "name": "Consumer Behavior"
+                }, 
+                {
+                    "code": "MRKT 442", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MRKT/442", 
+                    "name": "Marketing Research"
+                }, 
+                {
+                    "code": "MRKT 450", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MRKT/450", 
+                    "name": "Marketing Management"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/MRKT"
+        }, 
+        {
+            "abbr": "MUSC", 
+            "courses": [
+                {
+                    "code": "MUSC 130", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MUSC/130", 
+                    "name": "Music Skills for Classroom Tea"
+                }, 
+                {
+                    "code": "MUSC 220", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/MUSC/220", 
+                    "name": "Choir"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/MUSC"
+        }, 
+        {
+            "abbr": "NASC", 
+            "courses": [
+                {
+                    "code": "NASC 301", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NASC/301", 
+                    "name": "Integrated Science I"
+                }, 
+                {
+                    "code": "NASC 498", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NASC/498", 
+                    "name": "Research/Planning"
+                }, 
+                {
+                    "code": "NASC 499", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NASC/499", 
+                    "name": "Research/Projects"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/NASC"
+        }, 
+        {
+            "abbr": "NURS", 
+            "courses": [
+                {
+                    "code": "NURS 105", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/105", 
+                    "name": "Nursing Process"
+                }, 
+                {
+                    "code": "NURS 107", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/107", 
+                    "name": "Basic Concepts of Nursing"
+                }, 
+                {
+                    "code": "NURS 109L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/109L", 
+                    "name": "Basic Concepts of Nursing Lab"
+                }, 
+                {
+                    "code": "NURS 113", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/113", 
+                    "name": "Diagnostics for Nurses"
+                }, 
+                {
+                    "code": "NURS 115", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/115", 
+                    "name": "Nursing Care of Older Adult"
+                }, 
+                {
+                    "code": "NURS 117L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/117L", 
+                    "name": "Older Adult Practicum"
+                }, 
+                {
+                    "code": "NURS 207", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/207", 
+                    "name": "Psychosocial Nursing"
+                }, 
+                {
+                    "code": "NURS 209", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/209", 
+                    "name": "Nursing Care of Adults II"
+                }, 
+                {
+                    "code": "NURS 211L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/211L", 
+                    "name": "Practicum/Adv Nurs Skills Lab"
+                }, 
+                {
+                    "code": "NURS 213", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/213", 
+                    "name": "Pharmacology in Nursing II"
+                }, 
+                {
+                    "code": "NURS 215", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/215", 
+                    "name": "Maternity Nursing"
+                }, 
+                {
+                    "code": "NURS 222", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/222", 
+                    "name": "Intro Mgmt & Iss in Nurs II"
+                }, 
+                {
+                    "code": "NURS 300", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/300", 
+                    "name": "Concepts of Prof Nursing"
+                }, 
+                {
+                    "code": "NURS 301", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/301", 
+                    "name": "Health Assessment"
+                }, 
+                {
+                    "code": "NURS 310", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/310", 
+                    "name": "Transition Course"
+                }, 
+                {
+                    "code": "NURS 400", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/400", 
+                    "name": "Community Nursing II"
+                }, 
+                {
+                    "code": "NURS 403", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/403", 
+                    "name": "Gerontological Hlth Care Issue"
+                }, 
+                {
+                    "code": "NURS 405", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/405", 
+                    "name": "Nursing Research"
+                }, 
+                {
+                    "code": "NURS 410L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/NURS/410L", 
+                    "name": "Community Nursing Practicum"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/NURS"
+        }, 
+        {
+            "abbr": "PHED", 
+            "courses": [
+                {
+                    "code": "PHED 104", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PHED/104", 
+                    "name": "Aerobics"
+                }, 
+                {
+                    "code": "PHED 106", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PHED/106", 
+                    "name": "Tennis and Racquetball"
+                }, 
+                {
+                    "code": "PHED 261", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PHED/261", 
+                    "name": "Strength Training I"
+                }, 
+                {
+                    "code": "PHED 333", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PHED/333", 
+                    "name": "Physical Educ in K-6 Grades"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/PHED"
+        }, 
+        {
+            "abbr": "PHSC", 
+            "courses": [
+                {
+                    "code": "PHSC 101", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PHSC/101", 
+                    "name": "Physical Science Survey I"
+                }, 
+                {
+                    "code": "PHSC 103L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PHSC/103L", 
+                    "name": "Lab for Physical Sci. Survey I"
+                }, 
+                {
+                    "code": "PHSC 314", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PHSC/314", 
+                    "name": "Physical Geology and Lab"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/PHSC"
+        }, 
+        {
+            "abbr": "PHYS", 
+            "courses": [
+                {
+                    "code": "PHYS 201", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PHYS/201", 
+                    "name": "Gen. Physics I & Lab-Alg Based"
+                }, 
+                {
+                    "code": "PHYS 202", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PHYS/202", 
+                    "name": "Gen Physics II & Lab-Alg Based"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/PHYS"
+        }, 
+        {
+            "abbr": "PMED", 
+            "courses": [], 
+            "name": "Paramedic", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/PMED"
+        }, 
+        {
+            "abbr": "POSC", 
+            "courses": [
+                {
+                    "code": "POSC 200", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/POSC/200", 
+                    "name": "American National Government"
+                }, 
+                {
+                    "code": "POSC 300", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/POSC/300", 
+                    "name": "Political Thought"
+                }, 
+                {
+                    "code": "POSC 325", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/POSC/325", 
+                    "name": "Judicial Process"
+                }, 
+                {
+                    "code": "POSC 350", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/POSC/350", 
+                    "name": "Public Administration"
+                }, 
+                {
+                    "code": "POSC 404", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/POSC/404", 
+                    "name": "Political Parties"
+                }, 
+                {
+                    "code": "POSC 490", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/POSC/490", 
+                    "name": "Global Politics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/POSC"
+        }, 
+        {
+            "abbr": "POST", 
+            "courses": [], 
+            "name": "Professional Off Systems Tech", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/POST"
+        }, 
+        {
+            "abbr": "PSYC", 
+            "courses": [
+                {
+                    "code": "PSYC 103", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PSYC/103", 
+                    "name": "General Psychology"
+                }, 
+                {
+                    "code": "PSYC 210", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PSYC/210", 
+                    "name": "Life Span Human Development"
+                }, 
+                {
+                    "code": "PSYC 300", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PSYC/300", 
+                    "name": "Introduction to Counseling"
+                }, 
+                {
+                    "code": "PSYC 312", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PSYC/312", 
+                    "name": "PsychologyGender&Communication"
+                }, 
+                {
+                    "code": "PSYC 328", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PSYC/328", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "PSYC 401", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PSYC/401", 
+                    "name": "Theories of Personality"
+                }, 
+                {
+                    "code": "PSYC 402", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PSYC/402", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSYC 490", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/PSYC/490", 
+                    "name": "Human Rel in Organizations"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/PSYC"
+        }, 
+        {
+            "abbr": "RADS", 
+            "courses": [
+                {
+                    "code": "RADS 300", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADS/300", 
+                    "name": "Patient Assessment Mgmt Edu"
+                }, 
+                {
+                    "code": "RADS 310", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADS/310", 
+                    "name": "Quality in Imaging"
+                }, 
+                {
+                    "code": "RADS 420", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADS/420", 
+                    "name": "Trends in Imaging"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/RADS"
+        }, 
+        {
+            "abbr": "RADT", 
+            "courses": [
+                {
+                    "code": "RADT 109", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADT/109", 
+                    "name": "Intro Radiology & Patient Care"
+                }, 
+                {
+                    "code": "RADT 109L", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADT/109L", 
+                    "name": "Intro-Radiography& Pt Care Lab"
+                }, 
+                {
+                    "code": "RADT 110", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADT/110", 
+                    "name": "Radiographic Anatomy & Termino"
+                }, 
+                {
+                    "code": "RADT 112", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADT/112", 
+                    "name": "Introduction to Clinical Radio"
+                }, 
+                {
+                    "code": "RADT 115", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADT/115", 
+                    "name": "Radiographic Procedures I"
+                }, 
+                {
+                    "code": "RADT 116", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADT/116", 
+                    "name": "Radiographic Procedures I Lab"
+                }, 
+                {
+                    "code": "RADT 117", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADT/117", 
+                    "name": "Clinical Radiography I"
+                }, 
+                {
+                    "code": "RADT 118", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADT/118", 
+                    "name": "ImagingEquipment&Acquisition I"
+                }, 
+                {
+                    "code": "RADT 201", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADT/201", 
+                    "name": "Ethics&LawInRadiologicSciences"
+                }, 
+                {
+                    "code": "RADT 211", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADT/211", 
+                    "name": "Radiographic Procedures III"
+                }, 
+                {
+                    "code": "RADT 212", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADT/212", 
+                    "name": "RadiographicPath. & Image Anal"
+                }, 
+                {
+                    "code": "RADT 216", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADT/216", 
+                    "name": "Clinical Radiography III"
+                }, 
+                {
+                    "code": "RADT 220", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADT/220", 
+                    "name": "ImagingEquip.& Acquisition III"
+                }, 
+                {
+                    "code": "RADT 225", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADT/225", 
+                    "name": "Radiation Biology & Protection"
+                }, 
+                {
+                    "code": "RADT 226", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/RADT/226", 
+                    "name": "Clinical Radiography IV"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/RADT"
+        }, 
+        {
+            "abbr": "READ", 
+            "courses": [
+                {
+                    "code": "READ 360", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/READ/360", 
+                    "name": "Reading in the Content Area"
+                }, 
+                {
+                    "code": "READ 371", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/READ/371", 
+                    "name": "Teaching Reading &Language Art"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/READ"
+        }, 
+        {
+            "abbr": "SOCI", 
+            "courses": [
+                {
+                    "code": "SOCI 210", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/SOCI/210", 
+                    "name": "Principles of Sociology"
+                }, 
+                {
+                    "code": "SOCI 300", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/SOCI/300", 
+                    "name": "Social Research Methods"
+                }, 
+                {
+                    "code": "SOCI 303", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/SOCI/303", 
+                    "name": "Comparative Religions"
+                }, 
+                {
+                    "code": "SOCI 310", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/SOCI/310", 
+                    "name": "Criminal Behavior"
+                }, 
+                {
+                    "code": "SOCI 324", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/SOCI/324", 
+                    "name": "Marriage and Family Relations"
+                }, 
+                {
+                    "code": "SOCI 376", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/SOCI/376", 
+                    "name": "Evolution of Science and Tech."
+                }, 
+                {
+                    "code": "SOCI 490", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/SOCI/490", 
+                    "name": "Topics: Mass Media and Society"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/SOCI"
+        }, 
+        {
+            "abbr": "SOSC", 
+            "courses": [
+                {
+                    "code": "SOSC 340", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/SOSC/340", 
+                    "name": "Model United Nations"
+                }, 
+                {
+                    "code": "SOSC 490", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/SOSC/490", 
+                    "name": "Seminar in Social Science"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/SOSC"
+        }, 
+        {
+            "abbr": "SPAN", 
+            "courses": [
+                {
+                    "code": "SPAN 101", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/SPAN/101", 
+                    "name": "Elementary Spanish I"
+                }, 
+                {
+                    "code": "SPAN 102", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/SPAN/102", 
+                    "name": "Elementary Spanish II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/SPAN"
+        }, 
+        {
+            "abbr": "SPCH", 
+            "courses": [
+                {
+                    "code": "SPCH 208", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/SPCH/208", 
+                    "name": "Fundamentals of Speech"
+                }, 
+                {
+                    "code": "SPCH 310", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/SPCH/310", 
+                    "name": "Oral Interpretation-Literature"
+                }, 
+                {
+                    "code": "SPCH 325", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/SPCH/325", 
+                    "name": "Advanced Public Speaking"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/SPCH"
+        }, 
+        {
+            "abbr": "SPED", 
+            "courses": [
+                {
+                    "code": "SPED 310", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/SPED/310", 
+                    "name": "Intro. to Special Education"
+                }, 
+                {
+                    "code": "SPED 311", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/SPED/311", 
+                    "name": "TeachSpec.NeedsStu.-InclC-Room"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/SPED"
+        }, 
+        {
+            "abbr": "SSMG", 
+            "courses": [], 
+            "name": "Social Services Management", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/SSMG"
+        }, 
+        {
+            "abbr": "THEA", 
+            "courses": [
+                {
+                    "code": "THEA 200", 
+                    "course_url": "http://www.chegg.com/courses/bluefieldstate/THEA/200", 
+                    "name": "Introduction to Theatre"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/THEA"
+        }, 
+        {
+            "abbr": "WAST", 
+            "courses": [], 
+            "name": "Wastewater Treatment", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/WAST"
+        }, 
+        {
+            "abbr": "WORK", 
+            "courses": [], 
+            "name": "Workplace Skills", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/WORK"
+        }, 
+        {
+            "abbr": "WSDO", 
+            "courses": [], 
+            "name": "Water Supply Distribution Oper", 
+            "url": "http://www.chegg.com/courses/bluefieldstate/WSDO"
+        }
+    ], 
+    "name": "bluefieldstate"
+}

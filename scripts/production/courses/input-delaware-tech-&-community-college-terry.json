@@ -1,0 +1,4228 @@
+{
+    "all_stats": {
+        "num_courses": 701, 
+        "num_departments": 102
+    }, 
+    "departments": [
+        {
+            "abbr": "ACC", 
+            "courses": [
+                {
+                    "code": "ACC 100", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACC/100", 
+                    "name": "Introduction to Accounting"
+                }, 
+                {
+                    "code": "ACC 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACC/101", 
+                    "name": "Accounting I"
+                }, 
+                {
+                    "code": "ACC 112", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACC/112", 
+                    "name": "Accounting II"
+                }, 
+                {
+                    "code": "ACC 211", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACC/211", 
+                    "name": "Tax Accounting I"
+                }, 
+                {
+                    "code": "ACC 212", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACC/212", 
+                    "name": "Tax Accounting II"
+                }, 
+                {
+                    "code": "ACC 213", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACC/213", 
+                    "name": "Managerial Accounting"
+                }, 
+                {
+                    "code": "ACC 221", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACC/221", 
+                    "name": "Cost Accounting I"
+                }, 
+                {
+                    "code": "ACC 231", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACC/231", 
+                    "name": "Intermediate Accounting I"
+                }, 
+                {
+                    "code": "ACC 232", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACC/232", 
+                    "name": "Intermediate Accounting II"
+                }, 
+                {
+                    "code": "ACC 251", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACC/251", 
+                    "name": "Auditing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/ACC"
+        }, 
+        {
+            "abbr": "ACE", 
+            "courses": [
+                {
+                    "code": "ACE 021", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACE/021", 
+                    "name": "Oral Communications"
+                }, 
+                {
+                    "code": "ACE 21", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACE/21", 
+                    "name": "Oral Communications"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/ACE"
+        }, 
+        {
+            "abbr": "ACM", 
+            "courses": [
+                {
+                    "code": "ACM 31", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACM/31", 
+                    "name": "Probability and Statistics"
+                }, 
+                {
+                    "code": "ACM 032", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACM/032", 
+                    "name": "Pre-Calculus"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/ACM"
+        }, 
+        {
+            "abbr": "ACR", 
+            "courses": [
+                {
+                    "code": "ACR 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACR/101", 
+                    "name": "HVAC Electricity"
+                }, 
+                {
+                    "code": "ACR 102", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACR/102", 
+                    "name": "Fundamentals of Refrigeration"
+                }, 
+                {
+                    "code": "ACR 105", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACR/105", 
+                    "name": "Residential Heating I"
+                }, 
+                {
+                    "code": "ACR 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACR/120", 
+                    "name": "Employee Development Seminar"
+                }, 
+                {
+                    "code": "ACR 150", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACR/150", 
+                    "name": "Industry Competency Exam I"
+                }, 
+                {
+                    "code": "ACR 202", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACR/202", 
+                    "name": "Commercial Refrigeration"
+                }, 
+                {
+                    "code": "ACR 204", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACR/204", 
+                    "name": "Residential Heating II"
+                }, 
+                {
+                    "code": "ACR 250", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACR/250", 
+                    "name": "Industry Competency Exam III"
+                }, 
+                {
+                    "code": "ACR 251", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ACR/251", 
+                    "name": "Industry Competency Exam II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/ACR"
+        }, 
+        {
+            "abbr": "AET", 
+            "courses": [
+                {
+                    "code": "AET 111", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AET/111", 
+                    "name": "Constr Blueprint Reading"
+                }, 
+                {
+                    "code": "AET 121", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AET/121", 
+                    "name": "Intro to Arch Drafting"
+                }, 
+                {
+                    "code": "AET 123", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AET/123", 
+                    "name": "Drafting/Design"
+                }, 
+                {
+                    "code": "AET 125", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AET/125", 
+                    "name": "Arch Drafting/Design"
+                }, 
+                {
+                    "code": "AET 135", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AET/135", 
+                    "name": "Construction Materials and Met"
+                }, 
+                {
+                    "code": "AET 150", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AET/150", 
+                    "name": "Engineering Constr Drafting"
+                }, 
+                {
+                    "code": "AET 170", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AET/170", 
+                    "name": "Graphics for Arch Dsgn"
+                }, 
+                {
+                    "code": "AET 232", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AET/232", 
+                    "name": "Contracts/Specifications"
+                }, 
+                {
+                    "code": "AET 234", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AET/234", 
+                    "name": "Cost Estimating/Planning"
+                }, 
+                {
+                    "code": "AET 235", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AET/235", 
+                    "name": "Adv Cost Estimating/Planning"
+                }, 
+                {
+                    "code": "AET 236", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AET/236", 
+                    "name": "Building Service System"
+                }, 
+                {
+                    "code": "AET 250", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AET/250", 
+                    "name": "Structural Drafting/Design"
+                }, 
+                {
+                    "code": "AET 264", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AET/264", 
+                    "name": "Architectural CAD Applications"
+                }, 
+                {
+                    "code": "AET 270", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AET/270", 
+                    "name": "Arch Design Studio"
+                }, 
+                {
+                    "code": "AET 275", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AET/275", 
+                    "name": "Arch Dsgn:Foundation Studies I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/AET"
+        }, 
+        {
+            "abbr": "AGS", 
+            "courses": [
+                {
+                    "code": "AGS 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AGS/101", 
+                    "name": "Soil Science"
+                }, 
+                {
+                    "code": "AGS 102", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AGS/102", 
+                    "name": "Agricultural Science"
+                }, 
+                {
+                    "code": "AGS 103", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AGS/103", 
+                    "name": "Greenhouse Mgt"
+                }, 
+                {
+                    "code": "AGS 104", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AGS/104", 
+                    "name": "Intro to Agribusiness Managemt"
+                }, 
+                {
+                    "code": "AGS 105", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AGS/105", 
+                    "name": "Prin of Plant Growth"
+                }, 
+                {
+                    "code": "AGS 122", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AGS/122", 
+                    "name": "Concept of Turf Mgt"
+                }, 
+                {
+                    "code": "AGS 135", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AGS/135", 
+                    "name": "Turf & Landscape Irrigation"
+                }, 
+                {
+                    "code": "AGS 204", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AGS/204", 
+                    "name": "Animal Science"
+                }, 
+                {
+                    "code": "AGS 209", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AGS/209", 
+                    "name": "Farm Records & Accounts"
+                }, 
+                {
+                    "code": "AGS 212", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AGS/212", 
+                    "name": "Intro to Agribusiness Marketng"
+                }, 
+                {
+                    "code": "AGS 213", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AGS/213", 
+                    "name": "Landscape Plans"
+                }, 
+                {
+                    "code": "AGS 215", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AGS/215", 
+                    "name": "Agriculture Leadership"
+                }, 
+                {
+                    "code": "AGS 223", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AGS/223", 
+                    "name": "Applied Ecology"
+                }, 
+                {
+                    "code": "AGS 230", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AGS/230", 
+                    "name": "Production Agriculture Co-op"
+                }, 
+                {
+                    "code": "AGS 231", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AGS/231", 
+                    "name": "Turfgrss Mgt. Co-op Education"
+                }, 
+                {
+                    "code": "AGS 232", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AGS/232", 
+                    "name": "Horticulture Cooperative"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/AGS"
+        }, 
+        {
+            "abbr": "AID", 
+            "courses": [
+                {
+                    "code": "AID 151", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AID/151", 
+                    "name": "Interior Detailing"
+                }, 
+                {
+                    "code": "AID 170", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AID/170", 
+                    "name": "Presentation Drawing/Rendering"
+                }, 
+                {
+                    "code": "AID 241", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AID/241", 
+                    "name": "Residential Design Studio"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/AID"
+        }, 
+        {
+            "abbr": "AMT", 
+            "courses": [
+                {
+                    "code": "AMT 110", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AMT/110", 
+                    "name": "Airframe Maintenance General"
+                }, 
+                {
+                    "code": "AMT 210", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AMT/210", 
+                    "name": "Airframe Maintenance - AF II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/AMT"
+        }, 
+        {
+            "abbr": "ASL", 
+            "courses": [
+                {
+                    "code": "ASL 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ASL/101", 
+                    "name": "American Sign Language I"
+                }, 
+                {
+                    "code": "ASL 102", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ASL/102", 
+                    "name": "American Sign Language II"
+                }, 
+                {
+                    "code": "ASL 103", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ASL/103", 
+                    "name": "Fingerspelling/Nmbr use in ASL"
+                }, 
+                {
+                    "code": "ASL 201", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ASL/201", 
+                    "name": "American Sign Language III"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/ASL"
+        }, 
+        {
+            "abbr": "AUT", 
+            "courses": [
+                {
+                    "code": "AUT 114", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AUT/114", 
+                    "name": "Intro to Automotive Technology"
+                }, 
+                {
+                    "code": "AUT 116", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AUT/116", 
+                    "name": "Automotive Electrical"
+                }, 
+                {
+                    "code": "AUT 118", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AUT/118", 
+                    "name": "Auto Steering & Suspen/Align"
+                }, 
+                {
+                    "code": "AUT 119", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AUT/119", 
+                    "name": "Automotive Brake Systems"
+                }, 
+                {
+                    "code": "AUT 122", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AUT/122", 
+                    "name": "Auto Air Conditioning/Heating"
+                }, 
+                {
+                    "code": "AUT 123", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AUT/123", 
+                    "name": "Co-Op Work Experience I"
+                }, 
+                {
+                    "code": "AUT 202", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AUT/202", 
+                    "name": "Automotive Engine Repair"
+                }, 
+                {
+                    "code": "AUT 203", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AUT/203", 
+                    "name": "Automotive Engine Performance"
+                }, 
+                {
+                    "code": "AUT 205", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AUT/205", 
+                    "name": "Manual Transmissions/Transaxle"
+                }, 
+                {
+                    "code": "AUT 208", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AUT/208", 
+                    "name": "Automatic Transmission"
+                }, 
+                {
+                    "code": "AUT 223", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/AUT/223", 
+                    "name": "Co-Op Work Experience II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/AUT"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 100", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIO/100", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "BIO 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIO/101", 
+                    "name": "Advanced Medical Terminology"
+                }, 
+                {
+                    "code": "BIO 106", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIO/106", 
+                    "name": "Basic Nutrition Concepts"
+                }, 
+                {
+                    "code": "BIO 108", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIO/108", 
+                    "name": "Basic Pharmacology"
+                }, 
+                {
+                    "code": "BIO 110", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIO/110", 
+                    "name": "Essentls-Anatomy & Physiology"
+                }, 
+                {
+                    "code": "BIO 115", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIO/115", 
+                    "name": "Nutrition"
+                }, 
+                {
+                    "code": "BIO 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIO/120", 
+                    "name": "Anatomy and Physiology I"
+                }, 
+                {
+                    "code": "BIO 121", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIO/121", 
+                    "name": "Anatomy and Physiology II"
+                }, 
+                {
+                    "code": "BIO 124", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIO/124", 
+                    "name": "Review of Physiology"
+                }, 
+                {
+                    "code": "BIO 125", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIO/125", 
+                    "name": "Introductory Microbiology"
+                }, 
+                {
+                    "code": "BIO 130", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIO/130", 
+                    "name": "Disease Proc/Pathophysiology"
+                }, 
+                {
+                    "code": "BIO 140", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIO/140", 
+                    "name": "General Biology"
+                }, 
+                {
+                    "code": "BIO 150", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIO/150", 
+                    "name": "Biology I"
+                }, 
+                {
+                    "code": "BIO 151", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIO/151", 
+                    "name": "Biology II"
+                }, 
+                {
+                    "code": "BIO 250", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIO/250", 
+                    "name": "Principles of Microbiology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/BIO"
+        }, 
+        {
+            "abbr": "BIT", 
+            "courses": [
+                {
+                    "code": "BIT 260", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIT/260", 
+                    "name": "Biotechnology I"
+                }, 
+                {
+                    "code": "BIT 270", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BIT/270", 
+                    "name": "Honors Biotechnlgy Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/BIT"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BUS/101", 
+                    "name": "Introduction to Business"
+                }, 
+                {
+                    "code": "BUS 203", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BUS/203", 
+                    "name": "Business Law"
+                }, 
+                {
+                    "code": "BUS 211", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BUS/211", 
+                    "name": "Business Co-Op I"
+                }, 
+                {
+                    "code": "BUS 213", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/BUS/213", 
+                    "name": "Small Business Management"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/BUS"
+        }, 
+        {
+            "abbr": "CEN", 
+            "courses": [
+                {
+                    "code": "CEN 100", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CEN/100", 
+                    "name": "Intro-Computer & Elec Eng Tech"
+                }, 
+                {
+                    "code": "CEN 105", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CEN/105", 
+                    "name": "Programming for Technology"
+                }, 
+                {
+                    "code": "CEN 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CEN/120", 
+                    "name": "PC Telecommunications"
+                }, 
+                {
+                    "code": "CEN 150", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CEN/150", 
+                    "name": "Computer Assembly/Maint"
+                }, 
+                {
+                    "code": "CEN 220", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CEN/220", 
+                    "name": "Digital Data Comm w/ Networks"
+                }, 
+                {
+                    "code": "CEN 223", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CEN/223", 
+                    "name": "Unix Opertng System & Networks"
+                }, 
+                {
+                    "code": "CEN 224", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CEN/224", 
+                    "name": "Computer Networks"
+                }, 
+                {
+                    "code": "CEN 225", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CEN/225", 
+                    "name": "Intro to Network Security"
+                }, 
+                {
+                    "code": "CEN 290", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CEN/290", 
+                    "name": "Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/CEN"
+        }, 
+        {
+            "abbr": "CET", 
+            "courses": [
+                {
+                    "code": "CET 125", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CET/125", 
+                    "name": "Civil Drafting and Design"
+                }, 
+                {
+                    "code": "CET 144", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CET/144", 
+                    "name": "Surveying Principles"
+                }, 
+                {
+                    "code": "CET 225", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CET/225", 
+                    "name": "CAD Appl for Site Development"
+                }, 
+                {
+                    "code": "CET 236", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CET/236", 
+                    "name": "Soils"
+                }, 
+                {
+                    "code": "CET 238", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CET/238", 
+                    "name": "Concrete and Asphalt"
+                }, 
+                {
+                    "code": "CET 240", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CET/240", 
+                    "name": "Hydraulics and Hydrology"
+                }, 
+                {
+                    "code": "CET 247", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CET/247", 
+                    "name": "Route Surveying and Design"
+                }, 
+                {
+                    "code": "CET 248", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CET/248", 
+                    "name": "Boundary Surveying and Law"
+                }, 
+                {
+                    "code": "CET 251", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CET/251", 
+                    "name": "Topographic Drafting"
+                }, 
+                {
+                    "code": "CET 256", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CET/256", 
+                    "name": "Static & Strength of Materials"
+                }, 
+                {
+                    "code": "CET 271", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CET/271", 
+                    "name": "Structural Design I"
+                }, 
+                {
+                    "code": "CET 272", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CET/272", 
+                    "name": "Structural Design II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/CET"
+        }, 
+        {
+            "abbr": "CHM", 
+            "courses": [
+                {
+                    "code": "CHM 100", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CHM/100", 
+                    "name": "Basic Chemistry"
+                }, 
+                {
+                    "code": "CHM 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CHM/101", 
+                    "name": "Introduction to Chemistry"
+                }, 
+                {
+                    "code": "CHM 110", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CHM/110", 
+                    "name": "General Chemistry"
+                }, 
+                {
+                    "code": "CHM 111", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CHM/111", 
+                    "name": "Intro to Organic & Biochemstry"
+                }, 
+                {
+                    "code": "CHM 130", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CHM/130", 
+                    "name": "Environmental Chemistry"
+                }, 
+                {
+                    "code": "CHM 150", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CHM/150", 
+                    "name": "Chemical Principles I"
+                }, 
+                {
+                    "code": "CHM 151", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CHM/151", 
+                    "name": "Chemical Principles II"
+                }, 
+                {
+                    "code": "CHM 240", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CHM/240", 
+                    "name": "Organic Chemistry I"
+                }, 
+                {
+                    "code": "CHM 241", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CHM/241", 
+                    "name": "Organic Chemistry II"
+                }, 
+                {
+                    "code": "CHM 250", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CHM/250", 
+                    "name": "Analytical Chemistry I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/CHM"
+        }, 
+        {
+            "abbr": "CIS", 
+            "courses": [
+                {
+                    "code": "CIS 107", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/107", 
+                    "name": "Intro to Computers/Application"
+                }, 
+                {
+                    "code": "CIS 111", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/111", 
+                    "name": "Ethics and the Information Age"
+                }, 
+                {
+                    "code": "CIS 112", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/112", 
+                    "name": "Spreadsheet/Graphics Proc"
+                }, 
+                {
+                    "code": "CIS 118", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/118", 
+                    "name": "Intro to Relational Databases"
+                }, 
+                {
+                    "code": "CIS 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/120", 
+                    "name": "Intro to Programming"
+                }, 
+                {
+                    "code": "CIS 125", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/125", 
+                    "name": "Window Based Operating Systems"
+                }, 
+                {
+                    "code": "CIS 130", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/130", 
+                    "name": "Computer Organization"
+                }, 
+                {
+                    "code": "CIS 141", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/141", 
+                    "name": "Operating Systems I"
+                }, 
+                {
+                    "code": "CIS 143", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/143", 
+                    "name": "Intro to Information Security"
+                }, 
+                {
+                    "code": "CIS 146", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/146", 
+                    "name": "Computer Networking I"
+                }, 
+                {
+                    "code": "CIS 150", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/150", 
+                    "name": "C/C++ Programming Language"
+                }, 
+                {
+                    "code": "CIS 160", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/160", 
+                    "name": "Internet/Web Construction"
+                }, 
+                {
+                    "code": "CIS 170", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/170", 
+                    "name": "Internet/Web Multimedia"
+                }, 
+                {
+                    "code": "CIS 190", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/190", 
+                    "name": "Network Inst/Maintenance"
+                }, 
+                {
+                    "code": "CIS 195", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/195", 
+                    "name": "Network Administration"
+                }, 
+                {
+                    "code": "CIS 196", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/196", 
+                    "name": "Computer Networking II"
+                }, 
+                {
+                    "code": "CIS 197", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/197", 
+                    "name": "Network Adv Admin (MS)"
+                }, 
+                {
+                    "code": "CIS 201", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/201", 
+                    "name": "Microdatabase Programming"
+                }, 
+                {
+                    "code": "CIS 205", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/205", 
+                    "name": "Intro Object Orient Programmng"
+                }, 
+                {
+                    "code": "CIS 207", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/207", 
+                    "name": "Visual Programming"
+                }, 
+                {
+                    "code": "CIS 210", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/210", 
+                    "name": "Data Comms/Networking"
+                }, 
+                {
+                    "code": "CIS 211", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/211", 
+                    "name": "Data Structures"
+                }, 
+                {
+                    "code": "CIS 222", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/222", 
+                    "name": "CL for Midrange Computing"
+                }, 
+                {
+                    "code": "CIS 230", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/230", 
+                    "name": "RPG"
+                }, 
+                {
+                    "code": "CIS 231", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/231", 
+                    "name": "Advanced RPG"
+                }, 
+                {
+                    "code": "CIS 238", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/238", 
+                    "name": "Database Design & Programming"
+                }, 
+                {
+                    "code": "CIS 240", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/240", 
+                    "name": "Systems Analysis & Design"
+                }, 
+                {
+                    "code": "CIS 243", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/243", 
+                    "name": "Information & Network Security"
+                }, 
+                {
+                    "code": "CIS 253", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/253", 
+                    "name": "Open Source Software"
+                }, 
+                {
+                    "code": "CIS 282", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CIS/282", 
+                    "name": "Topics in Programming Language"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/CIS"
+        }, 
+        {
+            "abbr": "CLT", 
+            "courses": [
+                {
+                    "code": "CLT 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CLT/101", 
+                    "name": "American Deaf Culture"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/CLT"
+        }, 
+        {
+            "abbr": "CMT", 
+            "courses": [
+                {
+                    "code": "CMT 125", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CMT/125", 
+                    "name": "Construction Project Admin."
+                }, 
+                {
+                    "code": "CMT 242", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CMT/242", 
+                    "name": "Computer Appl for Construction"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/CMT"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 011", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/COM/011", 
+                    "name": "Intro to Human Communication"
+                }, 
+                {
+                    "code": "COM 11", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/COM/11", 
+                    "name": "Intro to Human Communication"
+                }, 
+                {
+                    "code": "COM 110", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/COM/110", 
+                    "name": "Intro. to Video Production"
+                }, 
+                {
+                    "code": "COM 111", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/COM/111", 
+                    "name": "Human Communications"
+                }, 
+                {
+                    "code": "COM 140", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/COM/140", 
+                    "name": "Newswriting I"
+                }, 
+                {
+                    "code": "COM 150", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/COM/150", 
+                    "name": "Intro to Electronic Media"
+                }, 
+                {
+                    "code": "COM 222", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/COM/222", 
+                    "name": "Intercultural Communication"
+                }, 
+                {
+                    "code": "COM 240", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/COM/240", 
+                    "name": "Mass Media Law"
+                }, 
+                {
+                    "code": "COM 242", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/COM/242", 
+                    "name": "Newswriting II"
+                }, 
+                {
+                    "code": "COM 250", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/COM/250", 
+                    "name": "Photography"
+                }, 
+                {
+                    "code": "COM 293", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/COM/293", 
+                    "name": "Internship with Seminar"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/COM"
+        }, 
+        {
+            "abbr": "CPO", 
+            "courses": [
+                {
+                    "code": "CPO 100", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CPO/100", 
+                    "name": "Intro to Chem Proc Oper Tech"
+                }, 
+                {
+                    "code": "CPO 151", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CPO/151", 
+                    "name": "Chem Proc Tech I-Systems"
+                }, 
+                {
+                    "code": "CPO 252", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CPO/252", 
+                    "name": "Chem Proc Tech II-Operations"
+                }, 
+                {
+                    "code": "CPO 260", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CPO/260", 
+                    "name": "Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/CPO"
+        }, 
+        {
+            "abbr": "CRJ", 
+            "courses": [
+                {
+                    "code": "CRJ 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CRJ/101", 
+                    "name": "Intro to Criminal Justice"
+                }, 
+                {
+                    "code": "CRJ 102", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CRJ/102", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CRJ 104", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CRJ/104", 
+                    "name": "Drugs Society/Human Behavior"
+                }, 
+                {
+                    "code": "CRJ 105", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CRJ/105", 
+                    "name": "Computer Appl in Crim./Justice"
+                }, 
+                {
+                    "code": "CRJ 110", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CRJ/110", 
+                    "name": "Issues in Law Enforcement"
+                }, 
+                {
+                    "code": "CRJ 115", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CRJ/115", 
+                    "name": "Essntls of Intrvwng/Counslng"
+                }, 
+                {
+                    "code": "CRJ 118", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CRJ/118", 
+                    "name": "Corrections in America"
+                }, 
+                {
+                    "code": "CRJ 152", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CRJ/152", 
+                    "name": "Collct/Analysis Crme Scne Evid"
+                }, 
+                {
+                    "code": "CRJ 220", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CRJ/220", 
+                    "name": "Criminal Judiciary"
+                }, 
+                {
+                    "code": "CRJ 222", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CRJ/222", 
+                    "name": "Constitutional Law"
+                }, 
+                {
+                    "code": "CRJ 223", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CRJ/223", 
+                    "name": "Criminology"
+                }, 
+                {
+                    "code": "CRJ 224", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CRJ/224", 
+                    "name": "Juvenile Justice"
+                }, 
+                {
+                    "code": "CRJ 225", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CRJ/225", 
+                    "name": "Group & Individual Counseling"
+                }, 
+                {
+                    "code": "CRJ 226", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CRJ/226", 
+                    "name": "Crisis Intervention"
+                }, 
+                {
+                    "code": "CRJ 235", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CRJ/235", 
+                    "name": "Internship"
+                }, 
+                {
+                    "code": "CRJ 299", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CRJ/299", 
+                    "name": "Special Seminars"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/CRJ"
+        }, 
+        {
+            "abbr": "CSM", 
+            "courses": [
+                {
+                    "code": "CSM 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CSM/101", 
+                    "name": "Intro to Customer Service"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/CSM"
+        }, 
+        {
+            "abbr": "CTS", 
+            "courses": [
+                {
+                    "code": "CTS 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CTS/101", 
+                    "name": "Fundmentals-Motor Fleet Safety"
+                }, 
+                {
+                    "code": "CTS 102", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CTS/102", 
+                    "name": "Vehicle Sys/Report Malfunction"
+                }, 
+                {
+                    "code": "CTS 103", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CTS/103", 
+                    "name": "Tractor Trailer Operations"
+                }, 
+                {
+                    "code": "CTS 104", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CTS/104", 
+                    "name": "Road Driving Practices"
+                }, 
+                {
+                    "code": "CTS 105", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CTS/105", 
+                    "name": "Range Driving Practices"
+                }, 
+                {
+                    "code": "CTS 106", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CTS/106", 
+                    "name": "Advanced Driving Operations"
+                }, 
+                {
+                    "code": "CTS 107", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CTS/107", 
+                    "name": "Advanced Driving Practices"
+                }, 
+                {
+                    "code": "CTS 108", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CTS/108", 
+                    "name": "Professional Driver Developmnt"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/CTS"
+        }, 
+        {
+            "abbr": "CUL", 
+            "courses": [
+                {
+                    "code": "CUL 112", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CUL/112", 
+                    "name": "Cake Decorating"
+                }, 
+                {
+                    "code": "CUL 119", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CUL/119", 
+                    "name": "Sanitation"
+                }, 
+                {
+                    "code": "CUL 121", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CUL/121", 
+                    "name": "Food Prep I"
+                }, 
+                {
+                    "code": "CUL 141", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CUL/141", 
+                    "name": "Nutrition"
+                }, 
+                {
+                    "code": "CUL 156", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CUL/156", 
+                    "name": "Practicum"
+                }, 
+                {
+                    "code": "CUL 241", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CUL/241", 
+                    "name": "Planning Food Service Sys"
+                }, 
+                {
+                    "code": "CUL 245", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CUL/245", 
+                    "name": "Applied Hospitality"
+                }, 
+                {
+                    "code": "CUL 248", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CUL/248", 
+                    "name": "Culinary Supervisory Develop."
+                }, 
+                {
+                    "code": "CUL 251", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CUL/251", 
+                    "name": "Cost Control/Menu Plan/Purch"
+                }, 
+                {
+                    "code": "CUL 261", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CUL/261", 
+                    "name": "Baking"
+                }, 
+                {
+                    "code": "CUL 262", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CUL/262", 
+                    "name": "Pastry"
+                }, 
+                {
+                    "code": "CUL 285", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/CUL/285", 
+                    "name": "International Cuisine"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/CUL"
+        }, 
+        {
+            "abbr": "DAC", 
+            "courses": [
+                {
+                    "code": "DAC 141", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DAC/141", 
+                    "name": "Intro Drug&Alcohol Counseling"
+                }, 
+                {
+                    "code": "DAC 225", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DAC/225", 
+                    "name": "Drug&Alcohol Counseling II"
+                }, 
+                {
+                    "code": "DAC 230", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DAC/230", 
+                    "name": "Assessmnt/Trtmnt/D&A Counslng"
+                }, 
+                {
+                    "code": "DAC 240", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DAC/240", 
+                    "name": "Families & Addiction"
+                }, 
+                {
+                    "code": "DAC 244", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DAC/244", 
+                    "name": "Dir Practice II-Drug/Alcohol"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/DAC"
+        }, 
+        {
+            "abbr": "DHY", 
+            "courses": [
+                {
+                    "code": "DHY 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DHY/101", 
+                    "name": "Clinical Dental Hygiene I"
+                }, 
+                {
+                    "code": "DHY 111", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DHY/111", 
+                    "name": "Dental Hygiene Fundamtls I"
+                }, 
+                {
+                    "code": "DHY 121", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DHY/121", 
+                    "name": "Oral Histology/Embryology"
+                }, 
+                {
+                    "code": "DHY 132", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DHY/132", 
+                    "name": "Dental Anatomy"
+                }, 
+                {
+                    "code": "DHY 133", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DHY/133", 
+                    "name": "Head and Neck Anatomy"
+                }, 
+                {
+                    "code": "DHY 204", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DHY/204", 
+                    "name": "Clinical Dental Hygiene IV"
+                }, 
+                {
+                    "code": "DHY 212", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DHY/212", 
+                    "name": "The Compromised Dental Patient"
+                }, 
+                {
+                    "code": "DHY 213", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DHY/213", 
+                    "name": "Adv Clinical Techniques"
+                }, 
+                {
+                    "code": "DHY 214", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DHY/214", 
+                    "name": "Nutrition for Dental Care"
+                }, 
+                {
+                    "code": "DHY 290", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DHY/290", 
+                    "name": "Community Dental Health"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/DHY"
+        }, 
+        {
+            "abbr": "DMS", 
+            "courses": [
+                {
+                    "code": "DMS 107", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DMS/107", 
+                    "name": "Essentials in Pt. Care/Sono"
+                }, 
+                {
+                    "code": "DMS 108", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DMS/108", 
+                    "name": "Intro to Clin Internship I"
+                }, 
+                {
+                    "code": "DMS 112", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DMS/112", 
+                    "name": "OB/GYN Sonography I"
+                }, 
+                {
+                    "code": "DMS 113", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DMS/113", 
+                    "name": "Gynecological Sonography"
+                }, 
+                {
+                    "code": "DMS 121", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DMS/121", 
+                    "name": "Abdominal Sonography I"
+                }, 
+                {
+                    "code": "DMS 131", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DMS/131", 
+                    "name": "Abd/Small Parts Sono. I"
+                }, 
+                {
+                    "code": "DMS 202", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DMS/202", 
+                    "name": "Clinical Internship II"
+                }, 
+                {
+                    "code": "DMS 212", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DMS/212", 
+                    "name": "Vascular Sonography"
+                }, 
+                {
+                    "code": "DMS 214", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DMS/214", 
+                    "name": "Essentials in Vascular U/S"
+                }, 
+                {
+                    "code": "DMS 235", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DMS/235", 
+                    "name": "Pediatric Sonography"
+                }, 
+                {
+                    "code": "DMS 242", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/DMS/242", 
+                    "name": "Clinical Sonography III"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/DMS"
+        }, 
+        {
+            "abbr": "EBZ", 
+            "courses": [
+                {
+                    "code": "EBZ 220", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EBZ/220", 
+                    "name": "Fundamentals of E-Commerce"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/EBZ"
+        }, 
+        {
+            "abbr": "ECE", 
+            "courses": [
+                {
+                    "code": "ECE 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECE/101", 
+                    "name": "Childhood Health"
+                }, 
+                {
+                    "code": "ECE 104", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECE/104", 
+                    "name": "History/Professionalism in ECE"
+                }, 
+                {
+                    "code": "ECE 107", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECE/107", 
+                    "name": "Child Development: Pre-Birth"
+                }, 
+                {
+                    "code": "ECE 111", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECE/111", 
+                    "name": "Childhd Nutrition/Safety"
+                }, 
+                {
+                    "code": "ECE 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECE/120", 
+                    "name": "Comtemp Issues in Erly Childhd"
+                }, 
+                {
+                    "code": "ECE 121", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECE/121", 
+                    "name": "Infant & Toddler Methods & Lab"
+                }, 
+                {
+                    "code": "ECE 123", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECE/123", 
+                    "name": "Early Childhd Methods I & Lab"
+                }, 
+                {
+                    "code": "ECE 125", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECE/125", 
+                    "name": "Early Childhd Methods II & Lab"
+                }, 
+                {
+                    "code": "ECE 127", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECE/127", 
+                    "name": "Childhood Classroom Mgt"
+                }, 
+                {
+                    "code": "ECE 222", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECE/222", 
+                    "name": "Program Planning/Evaluation"
+                }, 
+                {
+                    "code": "ECE 226", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECE/226", 
+                    "name": "Assessment of Young Children"
+                }, 
+                {
+                    "code": "ECE 233", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECE/233", 
+                    "name": "Exceptional Child"
+                }, 
+                {
+                    "code": "ECE 244", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECE/244", 
+                    "name": "Fld Work - Teaching Practicum"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/ECE"
+        }, 
+        {
+            "abbr": "ECH", 
+            "courses": [
+                {
+                    "code": "ECH 111", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECH/111", 
+                    "name": "Echocardiography Techniques I"
+                }, 
+                {
+                    "code": "ECH 202", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECH/202", 
+                    "name": "Clinical Internship II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/ECH"
+        }, 
+        {
+            "abbr": "ECO", 
+            "courses": [
+                {
+                    "code": "ECO 111", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECO/111", 
+                    "name": "Macroeconomics"
+                }, 
+                {
+                    "code": "ECO 122", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ECO/122", 
+                    "name": "Microeconomics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/ECO"
+        }, 
+        {
+            "abbr": "EDC", 
+            "courses": [
+                {
+                    "code": "EDC 100", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDC/100", 
+                    "name": "Professional Prep: Praxis I"
+                }, 
+                {
+                    "code": "EDC 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDC/101", 
+                    "name": "Intro to Paraeducator Issues"
+                }, 
+                {
+                    "code": "EDC 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDC/120", 
+                    "name": "Foundations of Literacy"
+                }, 
+                {
+                    "code": "EDC 150", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDC/150", 
+                    "name": "Issues in Elementary Education"
+                }, 
+                {
+                    "code": "EDC 211", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDC/211", 
+                    "name": "Classroom Management"
+                }, 
+                {
+                    "code": "EDC 212", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDC/212", 
+                    "name": "Instructional Strategies"
+                }, 
+                {
+                    "code": "EDC 220", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDC/220", 
+                    "name": "Parent/Family/School Interact"
+                }, 
+                {
+                    "code": "EDC 230", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDC/230", 
+                    "name": "Children's Literature"
+                }, 
+                {
+                    "code": "EDC 260", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDC/260", 
+                    "name": "Educational Psychology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/EDC"
+        }, 
+        {
+            "abbr": "EDD", 
+            "courses": [
+                {
+                    "code": "EDD 110", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDD/110", 
+                    "name": "Introduction to Engineering"
+                }, 
+                {
+                    "code": "EDD 141", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDD/141", 
+                    "name": "Engr Drafting & Design I"
+                }, 
+                {
+                    "code": "EDD 142", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDD/142", 
+                    "name": "Engr Drafting & Design II"
+                }, 
+                {
+                    "code": "EDD 171", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDD/171", 
+                    "name": "Intro to Cad Using AutoCad"
+                }, 
+                {
+                    "code": "EDD 234", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDD/234", 
+                    "name": "Eng. Drafting - Piping"
+                }, 
+                {
+                    "code": "EDD 246", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDD/246", 
+                    "name": "Eng. Drafting - Structural"
+                }, 
+                {
+                    "code": "EDD 271", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDD/271", 
+                    "name": "Advanced Cad Using AutoCad"
+                }, 
+                {
+                    "code": "EDD 272", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDD/272", 
+                    "name": "Solid Modeling"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/EDD"
+        }, 
+        {
+            "abbr": "EDT", 
+            "courses": [
+                {
+                    "code": "EDT 128", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDT/128", 
+                    "name": "Machine Trades Blueprnt Rding"
+                }, 
+                {
+                    "code": "EDT 152", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDT/152", 
+                    "name": "Engineering Design I"
+                }, 
+                {
+                    "code": "EDT 252", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDT/252", 
+                    "name": "Engineering Design II"
+                }, 
+                {
+                    "code": "EDT 273", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EDT/273", 
+                    "name": "Engineering Design Project"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/EDT"
+        }, 
+        {
+            "abbr": "ELC", 
+            "courses": [
+                {
+                    "code": "ELC 110", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/110", 
+                    "name": "Technical Computer Application"
+                }, 
+                {
+                    "code": "ELC 118", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/118", 
+                    "name": "Intro to Electricity"
+                }, 
+                {
+                    "code": "ELC 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/120", 
+                    "name": "Intro to Circuit Analysis"
+                }, 
+                {
+                    "code": "ELC 121", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/121", 
+                    "name": "Network Analysis"
+                }, 
+                {
+                    "code": "ELC 122", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/122", 
+                    "name": "Electronic Devices/Circuits I"
+                }, 
+                {
+                    "code": "ELC 130", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/130", 
+                    "name": "Digital Electronics I"
+                }, 
+                {
+                    "code": "ELC 131", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/131", 
+                    "name": "Digital Electronics II"
+                }, 
+                {
+                    "code": "ELC 132", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/132", 
+                    "name": "Microcomputer Service & Repair"
+                }, 
+                {
+                    "code": "ELC 215", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/215", 
+                    "name": "Programmable Logic Controllers"
+                }, 
+                {
+                    "code": "ELC 220", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/220", 
+                    "name": "Analog Electronics I"
+                }, 
+                {
+                    "code": "ELC 221", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/221", 
+                    "name": "Analog Electronics II"
+                }, 
+                {
+                    "code": "ELC 222", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/222", 
+                    "name": "Network Theorems & Analysis"
+                }, 
+                {
+                    "code": "ELC 230", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/230", 
+                    "name": "Industrial Electronics"
+                }, 
+                {
+                    "code": "ELC 232", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/232", 
+                    "name": "Intro to Microprocessors"
+                }, 
+                {
+                    "code": "ELC 233", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/233", 
+                    "name": "Microprocessor Applications"
+                }, 
+                {
+                    "code": "ELC 260", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/260", 
+                    "name": "Biomedical Instrumentation"
+                }, 
+                {
+                    "code": "ELC 270", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/270", 
+                    "name": "Process Instrumentation I"
+                }, 
+                {
+                    "code": "ELC 290", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/290", 
+                    "name": "Internship"
+                }, 
+                {
+                    "code": "ELC 291", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELC/291", 
+                    "name": "Biomed Electronics Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/ELC"
+        }, 
+        {
+            "abbr": "ELM", 
+            "courses": [
+                {
+                    "code": "ELM 110", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELM/110", 
+                    "name": "Intro To Computers & Tech."
+                }, 
+                {
+                    "code": "ELM 290", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ELM/290", 
+                    "name": "Electromechanicl Eng Tech Ints"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/ELM"
+        }, 
+        {
+            "abbr": "EMT", 
+            "courses": [
+                {
+                    "code": "EMT 202", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EMT/202", 
+                    "name": "Medical Emergencies I"
+                }, 
+                {
+                    "code": "EMT 203", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EMT/203", 
+                    "name": "ALS Skills Lab I"
+                }, 
+                {
+                    "code": "EMT 211", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EMT/211", 
+                    "name": "Cardiology"
+                }, 
+                {
+                    "code": "EMT 217", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EMT/217", 
+                    "name": "Paramedic Practicum II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/EMT"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 005", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENG/005", 
+                    "name": "Basic Writing"
+                }, 
+                {
+                    "code": "ENG 5", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENG/5", 
+                    "name": "Basic Writing"
+                }, 
+                {
+                    "code": "ENG 006", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENG/006", 
+                    "name": "Integrated Rdg Wrtg & Grammar"
+                }, 
+                {
+                    "code": "ENG 6", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENG/6", 
+                    "name": "Integrated Rdg Wrtg & Grammar-"
+                }, 
+                {
+                    "code": "ENG 051", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENG/051", 
+                    "name": "Pre-Tech Writing"
+                }, 
+                {
+                    "code": "ENG 51", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENG/51", 
+                    "name": "Pre-Tech Writing"
+                }, 
+                {
+                    "code": "ENG 099", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENG/099", 
+                    "name": "Analytical Thkg, Rdg, & Wrtg"
+                }, 
+                {
+                    "code": "ENG 99", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENG/99", 
+                    "name": "Analytical Thkg, Rdg, & Wrtg"
+                }, 
+                {
+                    "code": "ENG 121", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENG/121", 
+                    "name": "Composition"
+                }, 
+                {
+                    "code": "ENG 122", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENG/122", 
+                    "name": "Technical Writing-Comm"
+                }, 
+                {
+                    "code": "ENG 124", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENG/124", 
+                    "name": "Oral Communications"
+                }, 
+                {
+                    "code": "ENG 125", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENG/125", 
+                    "name": "Honors Composition"
+                }, 
+                {
+                    "code": "ENG 126", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENG/126", 
+                    "name": "Pre-Industrial Literature"
+                }, 
+                {
+                    "code": "ENG 127", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENG/127", 
+                    "name": "Post-Industrial Literature"
+                }, 
+                {
+                    "code": "ENG 128", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENG/128", 
+                    "name": "Black American Literature"
+                }, 
+                {
+                    "code": "ENG 129", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENG/129", 
+                    "name": "Creative Writing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/ENG"
+        }, 
+        {
+            "abbr": "ENT", 
+            "courses": [
+                {
+                    "code": "ENT 103", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENT/103", 
+                    "name": "Legal Issues for ENT"
+                }, 
+                {
+                    "code": "ENT 210", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENT/210", 
+                    "name": "ENT Business Process"
+                }, 
+                {
+                    "code": "ENT 220", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENT/220", 
+                    "name": "Leadership"
+                }, 
+                {
+                    "code": "ENT 225", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENT/225", 
+                    "name": "Entrepreneurial Experience"
+                }, 
+                {
+                    "code": "ENT 240", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENT/240", 
+                    "name": "Funding & Finance for ENT"
+                }, 
+                {
+                    "code": "ENT 285", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENT/285", 
+                    "name": "Business Plan Development"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/ENT"
+        }, 
+        {
+            "abbr": "ENV", 
+            "courses": [
+                {
+                    "code": "ENV 110", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENV/110", 
+                    "name": "Intro to Environmental Issues"
+                }, 
+                {
+                    "code": "ENV 190", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENV/190", 
+                    "name": "Intro Environmental Sci&Tech"
+                }, 
+                {
+                    "code": "ENV 256", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENV/256", 
+                    "name": "Process Control"
+                }, 
+                {
+                    "code": "ENV 264", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENV/264", 
+                    "name": "Water Sources"
+                }, 
+                {
+                    "code": "ENV 267", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENV/267", 
+                    "name": "Water Treatment"
+                }, 
+                {
+                    "code": "ENV 271", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENV/271", 
+                    "name": "Environmental Site Assessment"
+                }, 
+                {
+                    "code": "ENV 273", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ENV/273", 
+                    "name": "Air Pollution Control"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/ENV"
+        }, 
+        {
+            "abbr": "ERM", 
+            "courses": [
+                {
+                    "code": "ERM 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ERM/101", 
+                    "name": "Intro to Energy Technologies"
+                }, 
+                {
+                    "code": "ERM 102", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ERM/102", 
+                    "name": "Renewable Energy Sources"
+                }, 
+                {
+                    "code": "ERM 103", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ERM/103", 
+                    "name": "Electrical Lighting and Motors"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/ERM"
+        }, 
+        {
+            "abbr": "ESL", 
+            "courses": [
+                {
+                    "code": "ESL 022", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/022", 
+                    "name": "Beginning ESL Reading/Vocab"
+                }, 
+                {
+                    "code": "ESL 22", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/22", 
+                    "name": "Beginning ESL Reading/Vocab"
+                }, 
+                {
+                    "code": "ESL 024", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/024", 
+                    "name": "Beginning ESL Writing"
+                }, 
+                {
+                    "code": "ESL 24", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/24", 
+                    "name": "Beginning ESL Writing"
+                }, 
+                {
+                    "code": "ESL 026", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/026", 
+                    "name": "Beg.ESL Grammar/Communication"
+                }, 
+                {
+                    "code": "ESL 26", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/26", 
+                    "name": "Beg.ESL Grammar/Communication"
+                }, 
+                {
+                    "code": "ESL 028", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/028", 
+                    "name": "Beginning ESL Listenng/Speakng"
+                }, 
+                {
+                    "code": "ESL 28", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/28", 
+                    "name": "Beginning ESL Listenng/Speakng"
+                }, 
+                {
+                    "code": "ESL 032", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/032", 
+                    "name": "Intermediate ESL Reading/Vocab"
+                }, 
+                {
+                    "code": "ESL 32", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/32", 
+                    "name": "Intermediate ESL Reading/Vocab"
+                }, 
+                {
+                    "code": "ESL 034", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/034", 
+                    "name": "Intermediate ESL Writing"
+                }, 
+                {
+                    "code": "ESL 34", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/34", 
+                    "name": "Intermediate ESL Writing"
+                }, 
+                {
+                    "code": "ESL 036", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/036", 
+                    "name": "Intermediate ESL Grammar/Comm"
+                }, 
+                {
+                    "code": "ESL 36", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/36", 
+                    "name": "Intermediate ESL Grammar/Comm"
+                }, 
+                {
+                    "code": "ESL 038", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/038", 
+                    "name": "Intermediate Listening/Speakng"
+                }, 
+                {
+                    "code": "ESL 38", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/38", 
+                    "name": "Intermediate Listening/Speakng"
+                }, 
+                {
+                    "code": "ESL 042", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/042", 
+                    "name": "Advanced ESL Reading"
+                }, 
+                {
+                    "code": "ESL 42", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/42", 
+                    "name": "Advanced ESL Reading"
+                }, 
+                {
+                    "code": "ESL 044", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/044", 
+                    "name": "Advanced ESL Writing"
+                }, 
+                {
+                    "code": "ESL 44", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/44", 
+                    "name": "Advanced ESL Writing"
+                }, 
+                {
+                    "code": "ESL 046", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/046", 
+                    "name": "Adv ESL Grammar/Communication"
+                }, 
+                {
+                    "code": "ESL 46", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/46", 
+                    "name": "Adv ESL Grammar/Communication"
+                }, 
+                {
+                    "code": "ESL 048", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/048", 
+                    "name": "Adv ESL Listening/Speaking"
+                }, 
+                {
+                    "code": "ESL 48", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/48", 
+                    "name": "Adv ESL Listening/Speaking"
+                }, 
+                {
+                    "code": "ESL 100", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/ESL/100", 
+                    "name": "ESL for Degree Programs"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/ESL"
+        }, 
+        {
+            "abbr": "EXS", 
+            "courses": [
+                {
+                    "code": "EXS 100", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EXS/100", 
+                    "name": "Introduction to Exercise Scien"
+                }, 
+                {
+                    "code": "EXS 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EXS/101", 
+                    "name": "Functional Kinesiology"
+                }, 
+                {
+                    "code": "EXS 135", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EXS/135", 
+                    "name": "Exercise Science Internship I"
+                }, 
+                {
+                    "code": "EXS 200", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EXS/200", 
+                    "name": "Nutrition for Sport & Exercise"
+                }, 
+                {
+                    "code": "EXS 205", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EXS/205", 
+                    "name": "Fitness for Special Populatns"
+                }, 
+                {
+                    "code": "EXS 225", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EXS/225", 
+                    "name": "Advanced Exercise Testing"
+                }, 
+                {
+                    "code": "EXS 230", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/EXS/230", 
+                    "name": "Health Fitness Instruction"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/EXS"
+        }, 
+        {
+            "abbr": "FET", 
+            "courses": [
+                {
+                    "code": "FET 111", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/FET/111", 
+                    "name": "Intro to Fire Protec Eng Tech"
+                }, 
+                {
+                    "code": "FET 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/FET/120", 
+                    "name": "Intro to Fire Protection Dsgn"
+                }, 
+                {
+                    "code": "FET 150", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/FET/150", 
+                    "name": "Water Supply Analys/Hydraulics"
+                }, 
+                {
+                    "code": "FET 172", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/FET/172", 
+                    "name": "Fire Alarm Design I"
+                }, 
+                {
+                    "code": "FET 200", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/FET/200", 
+                    "name": "Industrial Fire Hazards"
+                }, 
+                {
+                    "code": "FET 210", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/FET/210", 
+                    "name": "Presentation Techniques"
+                }, 
+                {
+                    "code": "FET 221", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/FET/221", 
+                    "name": "Fire Protection Dsgn I"
+                }, 
+                {
+                    "code": "FET 240", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/FET/240", 
+                    "name": "Fire Service Administration"
+                }, 
+                {
+                    "code": "FET 261", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/FET/261", 
+                    "name": "Inspections"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/FET"
+        }, 
+        {
+            "abbr": "FIN", 
+            "courses": [
+                {
+                    "code": "FIN 221", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/FIN/221", 
+                    "name": "Money and Banking"
+                }, 
+                {
+                    "code": "FIN 241", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/FIN/241", 
+                    "name": "Finance"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/FIN"
+        }, 
+        {
+            "abbr": "FIY", 
+            "courses": [
+                {
+                    "code": "FIY 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/FIY/101", 
+                    "name": "First Year Seminar"
+                }
+            ], 
+            "name": "First Year Experience", 
+            "url": "http://www.chegg.com/courses/dtcc/FIY"
+        }, 
+        {
+            "abbr": "FSM", 
+            "courses": [
+                {
+                    "code": "FSM 151", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/FSM/151", 
+                    "name": "Field Experience I"
+                }, 
+                {
+                    "code": "FSM 152", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/FSM/152", 
+                    "name": "Field Experience II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/FSM"
+        }, 
+        {
+            "abbr": "FSY", 
+            "courses": [
+                {
+                    "code": "FSY 100", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/FSY/100", 
+                    "name": "Intro to Food Science"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/FSY"
+        }, 
+        {
+            "abbr": "HDM", 
+            "courses": [
+                {
+                    "code": "HDM 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HDM/101", 
+                    "name": "Intro Hmlnd Defns/Emrgncy Mngt"
+                }, 
+                {
+                    "code": "HDM 102", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HDM/102", 
+                    "name": "National Incident Mngt System"
+                }, 
+                {
+                    "code": "HDM 204", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HDM/204", 
+                    "name": "All Hzrds/Infra/Protection"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/HDM"
+        }, 
+        {
+            "abbr": "HIS", 
+            "courses": [
+                {
+                    "code": "HIS 111", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HIS/111", 
+                    "name": "U. S. History: Pre-Civil War"
+                }, 
+                {
+                    "code": "HIS 112", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HIS/112", 
+                    "name": "U. S. History: Post-Civil War"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/HIS"
+        }, 
+        {
+            "abbr": "HIT", 
+            "courses": [
+                {
+                    "code": "HIT 100", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HIT/100", 
+                    "name": "Intro to Health Information"
+                }, 
+                {
+                    "code": "HIT 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HIT/120", 
+                    "name": "Inpatient Coding/Reimburse"
+                }, 
+                {
+                    "code": "HIT 170", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HIT/170", 
+                    "name": "Medical Coding Practicum"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/HIT"
+        }, 
+        {
+            "abbr": "HLH", 
+            "courses": [
+                {
+                    "code": "HLH 100", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HLH/100", 
+                    "name": "Intro To Health Careers"
+                }, 
+                {
+                    "code": "HLH 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HLH/101", 
+                    "name": "Intro To Patient Care"
+                }, 
+                {
+                    "code": "HLH 102", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HLH/102", 
+                    "name": "Physical Activity for Health"
+                }, 
+                {
+                    "code": "HLH 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HLH/120", 
+                    "name": "Pharmacology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/HLH"
+        }, 
+        {
+            "abbr": "HMS", 
+            "courses": [
+                {
+                    "code": "HMS 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HMS/120", 
+                    "name": "Direct Support/Cmnty Services"
+                }, 
+                {
+                    "code": "HMS 121", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HMS/121", 
+                    "name": "Intro To Human Services"
+                }, 
+                {
+                    "code": "HMS 122", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HMS/122", 
+                    "name": "Theories of Counseling"
+                }, 
+                {
+                    "code": "HMS 123", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HMS/123", 
+                    "name": "Dynamics/Group Communication I"
+                }, 
+                {
+                    "code": "HMS 211", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HMS/211", 
+                    "name": "Marriage and the Family"
+                }, 
+                {
+                    "code": "HMS 221", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HMS/221", 
+                    "name": "Ethical Problems and Issues"
+                }, 
+                {
+                    "code": "HMS 223", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HMS/223", 
+                    "name": "Social Policy/Program Planning"
+                }, 
+                {
+                    "code": "HMS 225", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HMS/225", 
+                    "name": "Interviewing/Counseling Skills"
+                }, 
+                {
+                    "code": "HMS 226", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HMS/226", 
+                    "name": "Techniques Behavioral Change"
+                }, 
+                {
+                    "code": "HMS 229", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HMS/229", 
+                    "name": "Adult Development & Aging"
+                }, 
+                {
+                    "code": "HMS 243", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HMS/243", 
+                    "name": "Directed Practice I"
+                }, 
+                {
+                    "code": "HMS 244", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HMS/244", 
+                    "name": "Directed Practice II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/HMS"
+        }, 
+        {
+            "abbr": "HRI", 
+            "courses": [
+                {
+                    "code": "HRI 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HRI/101", 
+                    "name": "Introduction to Hospitality"
+                }, 
+                {
+                    "code": "HRI 210", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HRI/210", 
+                    "name": "Beverage Management"
+                }, 
+                {
+                    "code": "HRI 212", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HRI/212", 
+                    "name": "Food/Beverage Cost Control"
+                }, 
+                {
+                    "code": "HRI 215", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HRI/215", 
+                    "name": "Lodging Operations Management"
+                }, 
+                {
+                    "code": "HRI 216", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HRI/216", 
+                    "name": "Property Management"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/HRI"
+        }, 
+        {
+            "abbr": "HTT", 
+            "courses": [
+                {
+                    "code": "HTT 201", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HTT/201", 
+                    "name": "Histology"
+                }, 
+                {
+                    "code": "HTT 211", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HTT/211", 
+                    "name": "Histotechnology Procedures I"
+                }, 
+                {
+                    "code": "HTT 220", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/HTT/220", 
+                    "name": "Histochemistry I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/HTT"
+        }, 
+        {
+            "abbr": "IDT", 
+            "courses": [
+                {
+                    "code": "IDT G21", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/IDT/G21", 
+                    "name": "Instructional Design"
+                }, 
+                {
+                    "code": "IDT G22", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/IDT/G22", 
+                    "name": "Foundational Technologies"
+                }, 
+                {
+                    "code": "IDT G31", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/IDT/G31", 
+                    "name": "Teaching with Technology"
+                }, 
+                {
+                    "code": "IDT G63", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/IDT/G63", 
+                    "name": "ePortfolio Design"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/IDT"
+        }, 
+        {
+            "abbr": "IET", 
+            "courses": [
+                {
+                    "code": "IET 150", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/IET/150", 
+                    "name": "Computer Applications"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/IET"
+        }, 
+        {
+            "abbr": "LAS", 
+            "courses": [
+                {
+                    "code": "LAS 271", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/LAS/271", 
+                    "name": "Intro to Lasers"
+                }, 
+                {
+                    "code": "LAS 272", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/LAS/272", 
+                    "name": "Geometrical Optics & Lasers"
+                }, 
+                {
+                    "code": "LAS 273", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/LAS/273", 
+                    "name": "Wave Optics & Lasers"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/LAS"
+        }, 
+        {
+            "abbr": "MAT", 
+            "courses": [
+                {
+                    "code": "MAT 005", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/005", 
+                    "name": "Basic Math"
+                }, 
+                {
+                    "code": "MAT 5", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/5", 
+                    "name": "Basic Math"
+                }, 
+                {
+                    "code": "MAT 012", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/012", 
+                    "name": "Review of Math Fundamentals"
+                }, 
+                {
+                    "code": "MAT 12", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/12", 
+                    "name": "Review of Math Fundamentals"
+                }, 
+                {
+                    "code": "MAT 015", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/015", 
+                    "name": "Elementary Algebra"
+                }, 
+                {
+                    "code": "MAT 15", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/15", 
+                    "name": "Elementary Algebra"
+                }, 
+                {
+                    "code": "MAT 075", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/075", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MAT 75", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/75", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MAT 090", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/090", 
+                    "name": "Elem/Int Combined Algebra"
+                }, 
+                {
+                    "code": "MAT 119", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/119", 
+                    "name": "Applied Clinical Mathematics"
+                }, 
+                {
+                    "code": "MAT 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/120", 
+                    "name": "Math for Behavioral Sciences"
+                }, 
+                {
+                    "code": "MAT 125", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/125", 
+                    "name": "Math for the Trades"
+                }, 
+                {
+                    "code": "MAT 130", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/130", 
+                    "name": "Algebra for Allied Health"
+                }, 
+                {
+                    "code": "MAT 135", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/135", 
+                    "name": "Biomedical Statistics"
+                }, 
+                {
+                    "code": "MAT 140", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/140", 
+                    "name": "Essentials of College Algebra"
+                }, 
+                {
+                    "code": "MAT 143", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/143", 
+                    "name": "College Geometry"
+                }, 
+                {
+                    "code": "MAT 150", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/150", 
+                    "name": "Business Mathematics"
+                }, 
+                {
+                    "code": "MAT 153", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/153", 
+                    "name": "College Math and Statistics"
+                }, 
+                {
+                    "code": "MAT 155", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/155", 
+                    "name": "Mathematics of Finance"
+                }, 
+                {
+                    "code": "MAT 181", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/181", 
+                    "name": "Algebra and Trigonometry I"
+                }, 
+                {
+                    "code": "MAT 182", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/182", 
+                    "name": "Algebra and Trigonometry II"
+                }, 
+                {
+                    "code": "MAT 185", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/185", 
+                    "name": "Precalculus"
+                }, 
+                {
+                    "code": "MAT 201", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/201", 
+                    "name": "Mathematics for Teachers I"
+                }, 
+                {
+                    "code": "MAT 202", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/202", 
+                    "name": "Mathematics for Teachers II"
+                }, 
+                {
+                    "code": "MAT 203", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/203", 
+                    "name": "Math for Teachers III"
+                }, 
+                {
+                    "code": "MAT 251", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/251", 
+                    "name": "Finite Math"
+                }, 
+                {
+                    "code": "MAT 253", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/253", 
+                    "name": "Discrete Math"
+                }, 
+                {
+                    "code": "MAT 255", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/255", 
+                    "name": "Business Statistics I"
+                }, 
+                {
+                    "code": "MAT 261", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/261", 
+                    "name": "Business Calculus I"
+                }, 
+                {
+                    "code": "MAT 263", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/263", 
+                    "name": "Principles of Discrete Math"
+                }, 
+                {
+                    "code": "MAT 281", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/281", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MAT 282", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/282", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MAT 283", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/283", 
+                    "name": "Calculus III"
+                }, 
+                {
+                    "code": "MAT 288", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/288", 
+                    "name": "Linear Algebra"
+                }, 
+                {
+                    "code": "MAT 291", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MAT/291", 
+                    "name": "Ordinary Differential Equation"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/MAT"
+        }, 
+        {
+            "abbr": "MEA", 
+            "courses": [
+                {
+                    "code": "MEA 100", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MEA/100", 
+                    "name": "Intro to Medical Assisting"
+                }, 
+                {
+                    "code": "MEA 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MEA/120", 
+                    "name": "Medical Office Procedures I"
+                }, 
+                {
+                    "code": "MEA 121", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MEA/121", 
+                    "name": "Basic EHR"
+                }, 
+                {
+                    "code": "MEA 150", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MEA/150", 
+                    "name": "Medical Lab Procedures I"
+                }, 
+                {
+                    "code": "MEA 255", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MEA/255", 
+                    "name": "Comprehensive Med Transcript"
+                }, 
+                {
+                    "code": "MEA 290", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MEA/290", 
+                    "name": "Medical Assistant Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/MEA"
+        }, 
+        {
+            "abbr": "MET", 
+            "courses": [
+                {
+                    "code": "MET 115", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MET/115", 
+                    "name": "Intro Mechanical Engr Tech"
+                }, 
+                {
+                    "code": "MET 123", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MET/123", 
+                    "name": "Modern MFG Techniques"
+                }, 
+                {
+                    "code": "MET 125", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MET/125", 
+                    "name": "Adv Manufacturing Techniques"
+                }, 
+                {
+                    "code": "MET 131", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MET/131", 
+                    "name": "Engineering Graphics/CAD"
+                }, 
+                {
+                    "code": "MET 132", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MET/132", 
+                    "name": "Statics"
+                }, 
+                {
+                    "code": "MET 150", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MET/150", 
+                    "name": "Basic Mechical Systems"
+                }, 
+                {
+                    "code": "MET 241", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MET/241", 
+                    "name": "Fluid Mechanics"
+                }, 
+                {
+                    "code": "MET 242", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MET/242", 
+                    "name": "Strength of Materials"
+                }, 
+                {
+                    "code": "MET 243", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MET/243", 
+                    "name": "Dynamics"
+                }, 
+                {
+                    "code": "MET 248", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MET/248", 
+                    "name": "Electromechanical Systems"
+                }, 
+                {
+                    "code": "MET 252", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MET/252", 
+                    "name": "Fluid Power"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/MET"
+        }, 
+        {
+            "abbr": "MGT", 
+            "courses": [
+                {
+                    "code": "MGT 212", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MGT/212", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "MGT 231", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MGT/231", 
+                    "name": "Human Resource Management"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/MGT"
+        }, 
+        {
+            "abbr": "MIS", 
+            "courses": [
+                {
+                    "code": "MIS 220", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MIS/220", 
+                    "name": "Management Information Systems"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/MIS"
+        }, 
+        {
+            "abbr": "MKT", 
+            "courses": [
+                {
+                    "code": "MKT 212", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MKT/212", 
+                    "name": "Principles of Marketing"
+                }, 
+                {
+                    "code": "MKT 213", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MKT/213", 
+                    "name": "Problems in Marketing"
+                }, 
+                {
+                    "code": "MKT 215", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MKT/215", 
+                    "name": "Consumer Behavior"
+                }, 
+                {
+                    "code": "MKT 219", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MKT/219", 
+                    "name": "Sales & Sales Management"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/MKT"
+        }, 
+        {
+            "abbr": "MLT", 
+            "courses": [
+                {
+                    "code": "MLT 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MLT/120", 
+                    "name": "Hematology I"
+                }, 
+                {
+                    "code": "MLT 220", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MLT/220", 
+                    "name": "Clinical Chemistry I"
+                }, 
+                {
+                    "code": "MLT 260", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MLT/260", 
+                    "name": "Immunology"
+                }, 
+                {
+                    "code": "MLT 291", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MLT/291", 
+                    "name": "Clinical Practicum"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/MLT"
+        }, 
+        {
+            "abbr": "MTS", 
+            "courses": [
+                {
+                    "code": "MTS 291", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/MTS/291", 
+                    "name": "Medical Trans. Practicum"
+                }
+            ], 
+            "name": "Medical Transcription", 
+            "url": "http://www.chegg.com/courses/dtcc/MTS"
+        }, 
+        {
+            "abbr": "NCJ", 
+            "courses": [
+                {
+                    "code": "NCJ 130", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCJ/130", 
+                    "name": "Introduction to Research"
+                }
+            ], 
+            "name": "Non-Cur Credit Crs Jnt Campus", 
+            "url": "http://www.chegg.com/courses/dtcc/NCJ"
+        }, 
+        {
+            "abbr": "NCN", 
+            "courses": [
+                {
+                    "code": "NCN 104", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCN/104", 
+                    "name": "Geometric Dimension/Tolerance"
+                }, 
+                {
+                    "code": "NCN 105", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCN/105", 
+                    "name": "Machine Shop Practicum I"
+                }, 
+                {
+                    "code": "NCN 106", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCN/106", 
+                    "name": "Machine Shop Practicum II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/NCN"
+        }, 
+        {
+            "abbr": "NCS", 
+            "courses": [
+                {
+                    "code": "NCS 012", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCS/012", 
+                    "name": "Math Fundmnt'ls Review Lecture"
+                }, 
+                {
+                    "code": "NCS 12", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCS/12", 
+                    "name": "Math Fundmnt'ls Review Lecture"
+                }, 
+                {
+                    "code": "NCS 051", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCS/051", 
+                    "name": "Pre-Tech Writing Review"
+                }, 
+                {
+                    "code": "NCS 51", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCS/51", 
+                    "name": "Pre-Tech Writing Review"
+                }, 
+                {
+                    "code": "NCS 052", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCS/052", 
+                    "name": "Pre Tech Reading Review"
+                }, 
+                {
+                    "code": "NCS 52", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCS/52", 
+                    "name": "Pre Tech Reading Review"
+                }, 
+                {
+                    "code": "NCS 112", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCS/112", 
+                    "name": "Science Crs-Success Strategy"
+                }, 
+                {
+                    "code": "NCS 115", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCS/115", 
+                    "name": "Topics in Health Care"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/NCS"
+        }, 
+        {
+            "abbr": "NCW", 
+            "courses": [
+                {
+                    "code": "NCW 045", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCW/045", 
+                    "name": "Integrated Elem Algebra & Chem"
+                }, 
+                {
+                    "code": "NCW 45", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCW/45", 
+                    "name": "Integrated Elem Algebra & Chem"
+                }, 
+                {
+                    "code": "NCW 090", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCW/090", 
+                    "name": "Intro to College Rhetoric"
+                }, 
+                {
+                    "code": "NCW 90", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCW/90", 
+                    "name": "Intro to College Rhetoric"
+                }, 
+                {
+                    "code": "NCW 091", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCW/091", 
+                    "name": "Intro to Textual Analysis"
+                }, 
+                {
+                    "code": "NCW 91", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NCW/91", 
+                    "name": "Intro to Textual Analysis"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/NCW"
+        }, 
+        {
+            "abbr": "NMT", 
+            "courses": [
+                {
+                    "code": "NMT 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NMT/101", 
+                    "name": "Patient Care for the NMT"
+                }, 
+                {
+                    "code": "NMT 202", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NMT/202", 
+                    "name": "Nuclear Medicine II"
+                }, 
+                {
+                    "code": "NMT 211", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NMT/211", 
+                    "name": "Scan Reading I"
+                }, 
+                {
+                    "code": "NMT 212", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NMT/212", 
+                    "name": "Scan Reading II"
+                }, 
+                {
+                    "code": "NMT 223", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NMT/223", 
+                    "name": "Nuclear Med Instrumentation"
+                }, 
+                {
+                    "code": "NMT 224", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NMT/224", 
+                    "name": "Radiopharmacy"
+                }, 
+                {
+                    "code": "NMT 296", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NMT/296", 
+                    "name": "Clinical Internship II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/NMT"
+        }, 
+        {
+            "abbr": "NRG", 
+            "courses": [
+                {
+                    "code": "NRG 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NRG/101", 
+                    "name": "Intro to Energy Management"
+                }, 
+                {
+                    "code": "NRG 103", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NRG/103", 
+                    "name": "Sustainability"
+                }, 
+                {
+                    "code": "NRG 122", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NRG/122", 
+                    "name": "Commercl A/C Systems Analysis"
+                }, 
+                {
+                    "code": "NRG 132", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NRG/132", 
+                    "name": "Lighting Application"
+                }, 
+                {
+                    "code": "NRG 141", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NRG/141", 
+                    "name": "Energy Investment Analysis"
+                }, 
+                {
+                    "code": "NRG 206", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NRG/206", 
+                    "name": "Co-op Ed: Energy Management"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/NRG"
+        }, 
+        {
+            "abbr": "NUR", 
+            "courses": [
+                {
+                    "code": "NUR 111", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/111", 
+                    "name": "Cultural Competency & Health"
+                }, 
+                {
+                    "code": "NUR 114", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/114", 
+                    "name": "Pharmacology for Nurses"
+                }, 
+                {
+                    "code": "NUR 121", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/121", 
+                    "name": "Human Needs in H/I I"
+                }, 
+                {
+                    "code": "NUR 122", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/122", 
+                    "name": "Human Needs in H/I II"
+                }, 
+                {
+                    "code": "NUR 123", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/123", 
+                    "name": "Special Needs H/I"
+                }, 
+                {
+                    "code": "NUR 124", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/124", 
+                    "name": "Basic Concepts of Human Needs"
+                }, 
+                {
+                    "code": "NUR 125", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/125", 
+                    "name": "Concepts of Human Needs I"
+                }, 
+                {
+                    "code": "NUR 126", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/126", 
+                    "name": "Concepts of Human Needs II"
+                }, 
+                {
+                    "code": "NUR 131", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/131", 
+                    "name": "Fundamentals of Nursing"
+                }, 
+                {
+                    "code": "NUR 132", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/132", 
+                    "name": "Medical-Surgical Nursing I"
+                }, 
+                {
+                    "code": "NUR 141", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/141", 
+                    "name": "Nursing Care I-A"
+                }, 
+                {
+                    "code": "NUR 142", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/142", 
+                    "name": "Nursing Care I-B"
+                }, 
+                {
+                    "code": "NUR 143", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/143", 
+                    "name": "Nursing Care II-A"
+                }, 
+                {
+                    "code": "NUR 144", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/144", 
+                    "name": "Nursing Care II-B"
+                }, 
+                {
+                    "code": "NUR 145", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/145", 
+                    "name": "LPN to RN Role Transition"
+                }, 
+                {
+                    "code": "NUR 171", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/171", 
+                    "name": "Nursing Care of Adults I"
+                }, 
+                {
+                    "code": "NUR 172", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/172", 
+                    "name": "Nursing Care of Adults II"
+                }, 
+                {
+                    "code": "NUR 173", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/173", 
+                    "name": "Nursing Care of Adults III"
+                }, 
+                {
+                    "code": "NUR 174", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/174", 
+                    "name": "Mental Health Nursing"
+                }, 
+                {
+                    "code": "NUR 175", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/175", 
+                    "name": "Maternal/Newborn Nursing I"
+                }, 
+                {
+                    "code": "NUR 176", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/176", 
+                    "name": "Nursing Care of Children I"
+                }, 
+                {
+                    "code": "NUR 177", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/177", 
+                    "name": "Nursing Perspectives I"
+                }, 
+                {
+                    "code": "NUR 178", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/178", 
+                    "name": "Transition:Professionl Nursing"
+                }, 
+                {
+                    "code": "NUR 179", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/179", 
+                    "name": "Paramedic Bridge Course"
+                }, 
+                {
+                    "code": "NUR 221", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/221", 
+                    "name": "Human Needs in H/I III"
+                }, 
+                {
+                    "code": "NUR 222", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/222", 
+                    "name": "Human Needs in H/I IV"
+                }, 
+                {
+                    "code": "NUR 223", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/223", 
+                    "name": "Human Needs in H/I V"
+                }, 
+                {
+                    "code": "NUR 224", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/224", 
+                    "name": "Hmn Needs in Matrnl-Newbrn Nur"
+                }, 
+                {
+                    "code": "NUR 225", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/225", 
+                    "name": "Hmn Needs in Pediatric Nursing"
+                }, 
+                {
+                    "code": "NUR 226", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/226", 
+                    "name": "Hmn Needs in Psychiatric Nur"
+                }, 
+                {
+                    "code": "NUR 241", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/241", 
+                    "name": "Nursing Care III-A"
+                }, 
+                {
+                    "code": "NUR 242", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/242", 
+                    "name": "Nursing Care III-B"
+                }, 
+                {
+                    "code": "NUR 243", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/243", 
+                    "name": "Nursing Care IV-A"
+                }, 
+                {
+                    "code": "NUR 244", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/244", 
+                    "name": "Nursing Care IV-B"
+                }, 
+                {
+                    "code": "NUR 271", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/271", 
+                    "name": "Nursing Care of Adults IV"
+                }, 
+                {
+                    "code": "NUR 272", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/272", 
+                    "name": "Nursing Care of Adults V"
+                }, 
+                {
+                    "code": "NUR 274", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/274", 
+                    "name": "Community Mental Hlth Nursing"
+                }, 
+                {
+                    "code": "NUR 275", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/275", 
+                    "name": "Maternal/Newborn Nursing II"
+                }, 
+                {
+                    "code": "NUR 276", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/276", 
+                    "name": "Nursing Care of Children II"
+                }, 
+                {
+                    "code": "NUR 277", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/NUR/277", 
+                    "name": "Nursing Perspectives II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/NUR"
+        }, 
+        {
+            "abbr": "OAT", 
+            "courses": [
+                {
+                    "code": "OAT 110", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/110", 
+                    "name": "Basic Keyboarding"
+                }, 
+                {
+                    "code": "OAT 121", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/121", 
+                    "name": "Keyboarding"
+                }, 
+                {
+                    "code": "OAT 122", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/122", 
+                    "name": "Keyboarding Applications"
+                }, 
+                {
+                    "code": "OAT 131", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/131", 
+                    "name": "Office Systems & Procedures"
+                }, 
+                {
+                    "code": "OAT 132", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/132", 
+                    "name": "Referencing and Transcription"
+                }, 
+                {
+                    "code": "OAT 151", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/151", 
+                    "name": "Access Level I"
+                }, 
+                {
+                    "code": "OAT 152", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/152", 
+                    "name": "Excel Level I"
+                }, 
+                {
+                    "code": "OAT 155", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/155", 
+                    "name": "Excel Level II"
+                }, 
+                {
+                    "code": "OAT 157", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/157", 
+                    "name": "Word Level I"
+                }, 
+                {
+                    "code": "OAT 158", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/158", 
+                    "name": "Word Level II"
+                }, 
+                {
+                    "code": "OAT 159", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/159", 
+                    "name": "PowerPoint"
+                }, 
+                {
+                    "code": "OAT 160", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/160", 
+                    "name": "Family Law"
+                }, 
+                {
+                    "code": "OAT 170", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/170", 
+                    "name": "Intro to the Legal System"
+                }, 
+                {
+                    "code": "OAT 173", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/173", 
+                    "name": "Civil Procedure & Tort"
+                }, 
+                {
+                    "code": "OAT 175", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/175", 
+                    "name": "Estate Admin & Probate"
+                }, 
+                {
+                    "code": "OAT 240", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/240", 
+                    "name": "Integrated Business Applicatns"
+                }, 
+                {
+                    "code": "OAT 242", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/242", 
+                    "name": "Desktop Publishing"
+                }, 
+                {
+                    "code": "OAT 270", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/270", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "OAT 271", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/271", 
+                    "name": "Real Property Law"
+                }, 
+                {
+                    "code": "OAT 276", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/276", 
+                    "name": "Corporations & Commercial Law"
+                }, 
+                {
+                    "code": "OAT 280", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/280", 
+                    "name": "Legal Research & Writing"
+                }, 
+                {
+                    "code": "OAT 290", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OAT/290", 
+                    "name": "Intern Program"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/OAT"
+        }, 
+        {
+            "abbr": "OMT", 
+            "courses": [
+                {
+                    "code": "OMT 210", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OMT/210", 
+                    "name": "Project Based Accounting"
+                }, 
+                {
+                    "code": "OMT 220", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OMT/220", 
+                    "name": "Process Analysis & Control"
+                }, 
+                {
+                    "code": "OMT 230", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OMT/230", 
+                    "name": "Project Management"
+                }, 
+                {
+                    "code": "OMT 250", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OMT/250", 
+                    "name": "Statistical Process Control"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/OMT"
+        }, 
+        {
+            "abbr": "OTA", 
+            "courses": [
+                {
+                    "code": "OTA 110", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OTA/110", 
+                    "name": "Intro To Occupational Therapy"
+                }, 
+                {
+                    "code": "OTA 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OTA/120", 
+                    "name": "Activity Analysis"
+                }, 
+                {
+                    "code": "OTA 221", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OTA/221", 
+                    "name": "Adult & Geriatric Health Cond"
+                }, 
+                {
+                    "code": "OTA 223", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OTA/223", 
+                    "name": "Adult & Geriatric Intervention"
+                }, 
+                {
+                    "code": "OTA 224", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OTA/224", 
+                    "name": "Psychosocial Conditions"
+                }, 
+                {
+                    "code": "OTA 226", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OTA/226", 
+                    "name": "Clinical Fieldwork Level I-B"
+                }, 
+                {
+                    "code": "OTA 227", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OTA/227", 
+                    "name": "Group Process"
+                }, 
+                {
+                    "code": "OTA 229", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/OTA/229", 
+                    "name": "Professional Seminar"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/OTA"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 110", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PHY/110", 
+                    "name": "Physics Physical Therapy Assnt"
+                }, 
+                {
+                    "code": "PHY 111", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PHY/111", 
+                    "name": "Conceptual Physics"
+                }, 
+                {
+                    "code": "PHY 112", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PHY/112", 
+                    "name": "Physics for Allied Health"
+                }, 
+                {
+                    "code": "PHY 171", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PHY/171", 
+                    "name": "Physics I"
+                }, 
+                {
+                    "code": "PHY 172", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PHY/172", 
+                    "name": "Physics II"
+                }, 
+                {
+                    "code": "PHY 205", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PHY/205", 
+                    "name": "General Physics I"
+                }, 
+                {
+                    "code": "PHY 271", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PHY/271", 
+                    "name": "Electricity and Magnetism"
+                }, 
+                {
+                    "code": "PHY 281", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PHY/281", 
+                    "name": "Physics I with Calculus"
+                }, 
+                {
+                    "code": "PHY 282", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PHY/282", 
+                    "name": "Physics II with Calculus"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/PHY"
+        }, 
+        {
+            "abbr": "POL", 
+            "courses": [
+                {
+                    "code": "POL 111", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/POL/111", 
+                    "name": "Political Science"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/POL"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 100", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PSY/100", 
+                    "name": "Human Relations"
+                }, 
+                {
+                    "code": "PSY 121", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PSY/121", 
+                    "name": "General Psychology"
+                }, 
+                {
+                    "code": "PSY 123", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PSY/123", 
+                    "name": "Industrial Psychology"
+                }, 
+                {
+                    "code": "PSY 125", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PSY/125", 
+                    "name": "Child Development"
+                }, 
+                {
+                    "code": "PSY 126", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PSY/126", 
+                    "name": "Child/Adolescent Development"
+                }, 
+                {
+                    "code": "PSY 127", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PSY/127", 
+                    "name": "Human Development"
+                }, 
+                {
+                    "code": "PSY 219", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PSY/219", 
+                    "name": "Organizational Behavior"
+                }, 
+                {
+                    "code": "PSY 223", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PSY/223", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSY 224", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PSY/224", 
+                    "name": "Human Sexuality"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/PSY"
+        }, 
+        {
+            "abbr": "PTA", 
+            "courses": [
+                {
+                    "code": "PTA 100", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PTA/100", 
+                    "name": "Introduction to PTA"
+                }, 
+                {
+                    "code": "PTA 205", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PTA/205", 
+                    "name": "Path.Treatmnt Orthopedic Conds"
+                }, 
+                {
+                    "code": "PTA 206", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PTA/206", 
+                    "name": "Path/Treat Neurolgcl Conds."
+                }, 
+                {
+                    "code": "PTA 211", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/PTA/211", 
+                    "name": "Clinical Practice I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/PTA"
+        }, 
+        {
+            "abbr": "RAD", 
+            "courses": [
+                {
+                    "code": "RAD 105", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/105", 
+                    "name": "Intro Patient Care/Radiography"
+                }, 
+                {
+                    "code": "RAD 106", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/106", 
+                    "name": "Intro to Radiography"
+                }, 
+                {
+                    "code": "RAD 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/120", 
+                    "name": "Image Critique/Positioning I"
+                }, 
+                {
+                    "code": "RAD 130", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/130", 
+                    "name": "Radiographic Procedures I"
+                }, 
+                {
+                    "code": "RAD 131", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/131", 
+                    "name": "Radiographic Procedures II"
+                }, 
+                {
+                    "code": "RAD 140", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/140", 
+                    "name": "Prin Radiographic Imaging I"
+                }, 
+                {
+                    "code": "RAD 141", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/141", 
+                    "name": "Prin Radiographic Imaging II"
+                }, 
+                {
+                    "code": "RAD 150", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/150", 
+                    "name": "Radiation Protection/Biology"
+                }, 
+                {
+                    "code": "RAD 160", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/160", 
+                    "name": "Clinical Radiography I"
+                }, 
+                {
+                    "code": "RAD 161", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/161", 
+                    "name": "Clinical Radiography II"
+                }, 
+                {
+                    "code": "RAD 220", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/220", 
+                    "name": "Image Critique/Positioning III"
+                }, 
+                {
+                    "code": "RAD 230", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/230", 
+                    "name": "Radiographic Procedures III"
+                }, 
+                {
+                    "code": "RAD 231", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/231", 
+                    "name": "Radiographic Procedures IV"
+                }, 
+                {
+                    "code": "RAD 240", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/240", 
+                    "name": "Radiographic Imaging Equipment"
+                }, 
+                {
+                    "code": "RAD 250", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/250", 
+                    "name": "Radiographic Pathology"
+                }, 
+                {
+                    "code": "RAD 260", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/260", 
+                    "name": "Clinical Radiography IV"
+                }, 
+                {
+                    "code": "RAD 261", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/261", 
+                    "name": "Clinical Radiography V"
+                }, 
+                {
+                    "code": "RAD 270", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RAD/270", 
+                    "name": "Digital Image Acquistn/Display"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/RAD"
+        }, 
+        {
+            "abbr": "RCT", 
+            "courses": [
+                {
+                    "code": "RCT 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RCT/120", 
+                    "name": "Pharm for Respiratory Care"
+                }, 
+                {
+                    "code": "RCT 140", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RCT/140", 
+                    "name": "Pulmonary Physiology"
+                }, 
+                {
+                    "code": "RCT 210", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RCT/210", 
+                    "name": "Neonatal/Ped Respiratory Care"
+                }, 
+                {
+                    "code": "RCT 232", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RCT/232", 
+                    "name": "Respiratory Care Procedures II"
+                }, 
+                {
+                    "code": "RCT 242", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RCT/242", 
+                    "name": "Pulmonary Pathophysiology II"
+                }, 
+                {
+                    "code": "RCT 252", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RCT/252", 
+                    "name": "Clinical Respiratory Care II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/RCT"
+        }, 
+        {
+            "abbr": "RDG", 
+            "courses": [
+                {
+                    "code": "RDG 005", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RDG/005", 
+                    "name": "Basic Reading"
+                }, 
+                {
+                    "code": "RDG 5", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RDG/5", 
+                    "name": "Basic Reading"
+                }, 
+                {
+                    "code": "RDG 051", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RDG/051", 
+                    "name": "Pre-Tech Reading"
+                }, 
+                {
+                    "code": "RDG 51", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RDG/51", 
+                    "name": "Pre-Tech Reading"
+                }, 
+                {
+                    "code": "RDG 120", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/RDG/120", 
+                    "name": "Critical Reading & Thinking"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/RDG"
+        }, 
+        {
+            "abbr": "SCI", 
+            "courses": [
+                {
+                    "code": "SCI 130", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SCI/130", 
+                    "name": "Introduction to Research"
+                }, 
+                {
+                    "code": "SCI 230", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SCI/230", 
+                    "name": "Research Methodology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/SCI"
+        }, 
+        {
+            "abbr": "SMT", 
+            "courses": [
+                {
+                    "code": "SMT 110", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SMT/110", 
+                    "name": "Occupational Safety/Health Act"
+                }, 
+                {
+                    "code": "SMT 221", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SMT/221", 
+                    "name": "Industrial Hygiene II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/SMT"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 111", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SOC/111", 
+                    "name": "Sociology I"
+                }, 
+                {
+                    "code": "SOC 213", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SOC/213", 
+                    "name": "Ethical Issues in Health Care"
+                }, 
+                {
+                    "code": "SOC 215", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SOC/215", 
+                    "name": "Business Ethics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/SOC"
+        }, 
+        {
+            "abbr": "SPA", 
+            "courses": [
+                {
+                    "code": "SPA 133", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SPA/133", 
+                    "name": "Using Beginning Spanish"
+                }, 
+                {
+                    "code": "SPA 135", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SPA/135", 
+                    "name": "Spanish for Health Care Worker"
+                }, 
+                {
+                    "code": "SPA 136", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SPA/136", 
+                    "name": "Spanish Communication I"
+                }, 
+                {
+                    "code": "SPA 137", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SPA/137", 
+                    "name": "Spanish Communication II"
+                }, 
+                {
+                    "code": "SPA 138", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SPA/138", 
+                    "name": "Spanish Communication III"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/SPA"
+        }, 
+        {
+            "abbr": "SSC", 
+            "courses": [
+                {
+                    "code": "SSC 100", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SSC/100", 
+                    "name": "First Year Seminar"
+                }, 
+                {
+                    "code": "SSC 110", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SSC/110", 
+                    "name": "Math Course Success Strategies"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/SSC"
+        }, 
+        {
+            "abbr": "SSS", 
+            "courses": [
+                {
+                    "code": "SSS 100", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SSS/100", 
+                    "name": "Career & Life Planning Seminar"
+                }, 
+                {
+                    "code": "SSS 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SSS/101", 
+                    "name": "Mastering College Life"
+                }, 
+                {
+                    "code": "SSS 102", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SSS/102", 
+                    "name": "Personal/Career Development"
+                }, 
+                {
+                    "code": "SSS 103", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SSS/103", 
+                    "name": "Adult Learner Success Strategy"
+                }, 
+                {
+                    "code": "SSS 105", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SSS/105", 
+                    "name": "A College & Life Skills Course"
+                }, 
+                {
+                    "code": "SSS 106", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SSS/106", 
+                    "name": "Becoming a Peer Helper"
+                }, 
+                {
+                    "code": "SSS 108", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/SSS/108", 
+                    "name": "Blackboard/Learning Concepts"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/SSS"
+        }, 
+        {
+            "abbr": "TAH", 
+            "courses": [
+                {
+                    "code": "TAH 99", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/TAH/99", 
+                    "name": "Allied Health Tech Seminar"
+                }
+            ], 
+            "name": "Terry Seminar - AHT", 
+            "url": "http://www.chegg.com/courses/dtcc/TAH"
+        }, 
+        {
+            "abbr": "TBU", 
+            "courses": [
+                {
+                    "code": "TBU 99", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/TBU/99", 
+                    "name": "Business Technology Seminar"
+                }
+            ], 
+            "name": "Terry Seminar - BUS", 
+            "url": "http://www.chegg.com/courses/dtcc/TBU"
+        }, 
+        {
+            "abbr": "TCA", 
+            "courses": [
+                {
+                    "code": "TCA 99", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/TCA/99", 
+                    "name": "CUl Technology Seminar"
+                }
+            ], 
+            "name": "Terry Seminar - CUL", 
+            "url": "http://www.chegg.com/courses/dtcc/TCA"
+        }, 
+        {
+            "abbr": "TCJ", 
+            "courses": [
+                {
+                    "code": "TCJ 99", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/TCJ/99", 
+                    "name": "CRJ Technology Seminar"
+                }
+            ], 
+            "name": "Terry Seminar - CRJ", 
+            "url": "http://www.chegg.com/courses/dtcc/TCJ"
+        }, 
+        {
+            "abbr": "TCS", 
+            "courses": [
+                {
+                    "code": "TCS 099", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/TCS/099", 
+                    "name": "CIS Technology Seminar"
+                }, 
+                {
+                    "code": "TCS 99", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/TCS/99", 
+                    "name": "CIS Technology Seminar"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/TCS"
+        }, 
+        {
+            "abbr": "TEC", 
+            "courses": [
+                {
+                    "code": "TEC 99", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/TEC/99", 
+                    "name": "ECE Technology Seminar"
+                }
+            ], 
+            "name": "Terry Seminar - ECE", 
+            "url": "http://www.chegg.com/courses/dtcc/TEC"
+        }, 
+        {
+            "abbr": "THS", 
+            "courses": [
+                {
+                    "code": "THS 99", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/THS/99", 
+                    "name": "H.S. Technology Seminar"
+                }
+            ], 
+            "name": "Terry Seminar - HST", 
+            "url": "http://www.chegg.com/courses/dtcc/THS"
+        }, 
+        {
+            "abbr": "TNU", 
+            "courses": [
+                {
+                    "code": "TNU 99", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/TNU/99", 
+                    "name": "Nursing Technology Seminar"
+                }
+            ], 
+            "name": "Terry Seminar - NUR", 
+            "url": "http://www.chegg.com/courses/dtcc/TNU"
+        }, 
+        {
+            "abbr": "TVS", 
+            "courses": [
+                {
+                    "code": "TVS 99", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/TVS/99", 
+                    "name": "Visual Design Tech Seminar"
+                }
+            ], 
+            "name": "Terry Seminar - VSC", 
+            "url": "http://www.chegg.com/courses/dtcc/TVS"
+        }, 
+        {
+            "abbr": "VAS", 
+            "courses": [
+                {
+                    "code": "VAS 111", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VAS/111", 
+                    "name": "Vascular Techniques I"
+                }, 
+                {
+                    "code": "VAS 202", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VAS/202", 
+                    "name": "Clinical Internship II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/VAS"
+        }, 
+        {
+            "abbr": "VET", 
+            "courses": [
+                {
+                    "code": "VET 101", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VET/101", 
+                    "name": "Intro to Veterinary Technology"
+                }, 
+                {
+                    "code": "VET 102", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VET/102", 
+                    "name": "Veterinary Anatomy"
+                }, 
+                {
+                    "code": "VET 205", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VET/205", 
+                    "name": "Small Animal Health & Disease"
+                }, 
+                {
+                    "code": "VET 210", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VET/210", 
+                    "name": "Veterinary Clinical Pathology"
+                }, 
+                {
+                    "code": "VET 221", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VET/221", 
+                    "name": "Veterinary Nursing I"
+                }, 
+                {
+                    "code": "VET 289", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VET/289", 
+                    "name": "Approved Technical Elective"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/VET"
+        }, 
+        {
+            "abbr": "VSC", 
+            "courses": [
+                {
+                    "code": "VSC 109", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/109", 
+                    "name": "Drawing I"
+                }, 
+                {
+                    "code": "VSC 115", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/115", 
+                    "name": "Intro To Design"
+                }, 
+                {
+                    "code": "VSC 125", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/125", 
+                    "name": "Color And Composition"
+                }, 
+                {
+                    "code": "VSC 131", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/131", 
+                    "name": "Art History I"
+                }, 
+                {
+                    "code": "VSC 132", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/132", 
+                    "name": "Art History II"
+                }, 
+                {
+                    "code": "VSC 133", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/133", 
+                    "name": "History of Graphic Design"
+                }, 
+                {
+                    "code": "VSC 155", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/155", 
+                    "name": "Typography And Layout"
+                }, 
+                {
+                    "code": "VSC 160", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/160", 
+                    "name": "Computer Graphics I"
+                }, 
+                {
+                    "code": "VSC 161", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/161", 
+                    "name": "Computer Graphics II"
+                }, 
+                {
+                    "code": "VSC 165", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/165", 
+                    "name": "Photography I"
+                }, 
+                {
+                    "code": "VSC 166", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/166", 
+                    "name": "Photography II"
+                }, 
+                {
+                    "code": "VSC 175", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/175", 
+                    "name": "Print Production Processes"
+                }, 
+                {
+                    "code": "VSC 190", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/190", 
+                    "name": "Intro To Videography"
+                }, 
+                {
+                    "code": "VSC 251", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/251", 
+                    "name": "Portfolio Workshop"
+                }, 
+                {
+                    "code": "VSC 262", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/262", 
+                    "name": "Computer Graphics III"
+                }, 
+                {
+                    "code": "VSC 267", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/267", 
+                    "name": "Color Photography"
+                }, 
+                {
+                    "code": "VSC 270", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/270", 
+                    "name": "Project Management"
+                }, 
+                {
+                    "code": "VSC 271", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/271", 
+                    "name": "Illustration"
+                }, 
+                {
+                    "code": "VSC 275", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/275", 
+                    "name": "Self Promotion"
+                }, 
+                {
+                    "code": "VSC 281", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/281", 
+                    "name": "Project Elective"
+                }, 
+                {
+                    "code": "VSC 285", 
+                    "course_url": "http://www.chegg.com/courses/dtcc/VSC/285", 
+                    "name": "Advanced Project Elective"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dtcc/VSC"
+        }
+    ], 
+    "name": "dtcc"
+}

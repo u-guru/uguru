@@ -1,0 +1,3012 @@
+{
+    "all_stats": {
+        "num_courses": 539, 
+        "num_departments": 44
+    }, 
+    "departments": [
+        {
+            "abbr": "ACT", 
+            "courses": [
+                {
+                    "code": "ACT 4013", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ACT/4013", 
+                    "name": "Computerized Accounting"
+                }, 
+                {
+                    "code": "ACT 4040", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ACT/4040", 
+                    "name": "Financial Accounting"
+                }, 
+                {
+                    "code": "ACT 4050", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ACT/4050", 
+                    "name": "Managerial Accounting"
+                }, 
+                {
+                    "code": "ACT 4051", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ACT/4051", 
+                    "name": "Intermediate Accounting I"
+                }, 
+                {
+                    "code": "ACT 4052", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ACT/4052", 
+                    "name": "Intermediate Accounting II"
+                }, 
+                {
+                    "code": "ACT 4053", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ACT/4053", 
+                    "name": "Cost Accounting"
+                }, 
+                {
+                    "code": "ACT 4064", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ACT/4064", 
+                    "name": "Advanced Accounting"
+                }, 
+                {
+                    "code": "ACT 4065", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ACT/4065", 
+                    "name": "Tax Accounting"
+                }, 
+                {
+                    "code": "ACT 4067", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ACT/4067", 
+                    "name": "Auditing"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/ncu/ACT"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 3000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/3000", 
+                    "name": "Introduction to Business"
+                }, 
+                {
+                    "code": "BUS 3001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/3001", 
+                    "name": "Basic Business Law"
+                }, 
+                {
+                    "code": "BUS 3002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/3002", 
+                    "name": "Practical Business Accounting"
+                }, 
+                {
+                    "code": "BUS 3003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/3003", 
+                    "name": "Computer Information Systems"
+                }, 
+                {
+                    "code": "BUS 3004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/3004", 
+                    "name": "Economics"
+                }, 
+                {
+                    "code": "BUS 4000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/4000", 
+                    "name": "Essentials of Marketing"
+                }, 
+                {
+                    "code": "BUS 4001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/4001", 
+                    "name": "Small Business Management"
+                }, 
+                {
+                    "code": "BUS 4002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/4002", 
+                    "name": "Essentials of Human Resources Management"
+                }, 
+                {
+                    "code": "BUS 4003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/4003", 
+                    "name": "Money,Banking and Business Finance"
+                }, 
+                {
+                    "code": "BUS 4004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/4004", 
+                    "name": "Supervisory Management"
+                }, 
+                {
+                    "code": "BUS 4005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/4005", 
+                    "name": "Career Management and Personal Marketing"
+                }, 
+                {
+                    "code": "BUS 4006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/4006", 
+                    "name": "Advertising"
+                }, 
+                {
+                    "code": "BUS 4007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/4007", 
+                    "name": "Retail Management"
+                }, 
+                {
+                    "code": "BUS 4008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/4008", 
+                    "name": "Sales"
+                }, 
+                {
+                    "code": "BUS 4009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/4009", 
+                    "name": "Administrative Office Management"
+                }, 
+                {
+                    "code": "BUS 4010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/4010", 
+                    "name": "Manufacturing Systems"
+                }, 
+                {
+                    "code": "BUS 4099", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/4099", 
+                    "name": "Professional Studies Application Project"
+                }, 
+                {
+                    "code": "BUS 6011", 
+                    "course_url": "http://www.chegg.com/courses/ncu/BUS/6011", 
+                    "name": "Special Topics in Business & Technology Management"
+                }
+            ], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/ncu/BUS"
+        }, 
+        {
+            "abbr": "CIS", 
+            "courses": [
+                {
+                    "code": "CIS 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CIS/5000", 
+                    "name": "Introduction to Computer Security"
+                }, 
+                {
+                    "code": "CIS 5001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CIS/5001", 
+                    "name": "Advanced Computer Security Technology"
+                }, 
+                {
+                    "code": "CIS 5003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CIS/5003", 
+                    "name": "Cyber Forensics:Collecting,Examining,and Preserving Evidence of Computer and Information Crimes"
+                }, 
+                {
+                    "code": "CIS 5005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CIS/5005", 
+                    "name": "Cyberterrorism,Information Warfare,and Critical Infrastructure Protection"
+                }, 
+                {
+                    "code": "CIS 5007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CIS/5007", 
+                    "name": "Outsourcing and Computer and Information Security"
+                }
+            ], 
+            "name": "Computer Information Systems", 
+            "url": "http://www.chegg.com/courses/ncu/CIS"
+        }, 
+        {
+            "abbr": "CJ", 
+            "courses": [
+                {
+                    "code": "CJ 4000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/4000", 
+                    "name": "Introduction to Criminal Justice"
+                }, 
+                {
+                    "code": "CJ 4001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/4001", 
+                    "name": "Introduction to Law Enforcement"
+                }, 
+                {
+                    "code": "CJ 4002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/4002", 
+                    "name": "Criminology"
+                }, 
+                {
+                    "code": "CJ 4006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/4006", 
+                    "name": "Corrections"
+                }, 
+                {
+                    "code": "CJ 4010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/4010", 
+                    "name": "Law Enforcement and the Community"
+                }, 
+                {
+                    "code": "CJ 4011", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/4011", 
+                    "name": "Research Methods for Criminal Justice"
+                }, 
+                {
+                    "code": "CJ 4013", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/4013", 
+                    "name": "Introduction to Criminal Law"
+                }, 
+                {
+                    "code": "CJ 4014", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/4014", 
+                    "name": "Criminal Court Process"
+                }, 
+                {
+                    "code": "CJ 4015", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/4015", 
+                    "name": "Law Enforcement and Management"
+                }, 
+                {
+                    "code": "CJ 4017", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/4017", 
+                    "name": "Introduction to Corporate/Private Security"
+                }, 
+                {
+                    "code": "CJ 5002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/5002", 
+                    "name": "Juvenile Offender"
+                }, 
+                {
+                    "code": "CJ 5004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/5004", 
+                    "name": "Organized Crime"
+                }, 
+                {
+                    "code": "CJ 5006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/5006", 
+                    "name": "Drugs,Values and Society"
+                }, 
+                {
+                    "code": "CJ 5007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/5007", 
+                    "name": "Current Issues in Law Enforcement"
+                }, 
+                {
+                    "code": "CJ 5008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/5008", 
+                    "name": "Violence and Society"
+                }, 
+                {
+                    "code": "CJ 5009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/5009", 
+                    "name": "White Collar Crime"
+                }, 
+                {
+                    "code": "CJ 5010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/5010", 
+                    "name": "Forensic Scientific Evidence"
+                }, 
+                {
+                    "code": "CJ 5011", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/5011", 
+                    "name": "Survey of Forensic Sciences"
+                }, 
+                {
+                    "code": "CJ 6010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CJ/6010", 
+                    "name": "Criminal Justice Research Project"
+                }
+            ], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/ncu/CJ"
+        }, 
+        {
+            "abbr": "CMP", 
+            "courses": [
+                {
+                    "code": "CMP 8091B", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CMP/8091B", 
+                    "name": "Doctoral Comprehensive"
+                }, 
+                {
+                    "code": "CMP 8091DBA", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CMP/8091DBA", 
+                    "name": "Doctoral Comprehensive Review"
+                }, 
+                {
+                    "code": "CMP 8091E", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CMP/8091E", 
+                    "name": "Doctoral Comprehensive Course"
+                }, 
+                {
+                    "code": "CMP 8091MFT", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CMP/8091MFT", 
+                    "name": "Doctoral Comprehensive in Marriage and Family Therapy"
+                }, 
+                {
+                    "code": "CMP 8091P", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CMP/8091P", 
+                    "name": "Doctoral Comprehensive"
+                }
+            ], 
+            "name": "Motion Pictures", 
+            "url": "http://www.chegg.com/courses/ncu/CMP"
+        }, 
+        {
+            "abbr": "CS", 
+            "courses": [
+                {
+                    "code": "CS 4000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/4000", 
+                    "name": "Introduction to Computers and Information Systems"
+                }, 
+                {
+                    "code": "CS 4001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/4001", 
+                    "name": "Computer Operating Systems"
+                }, 
+                {
+                    "code": "CS 4006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/4006", 
+                    "name": "Professional and Technical Writing"
+                }, 
+                {
+                    "code": "CS 4009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/4009", 
+                    "name": "The Internet"
+                }, 
+                {
+                    "code": "CS 4010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/4010", 
+                    "name": "Inside LAN Networks"
+                }, 
+                {
+                    "code": "CS 4011", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/4011", 
+                    "name": "Network Administration"
+                }, 
+                {
+                    "code": "CS 4012", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/4012", 
+                    "name": "Presentation Software"
+                }, 
+                {
+                    "code": "CS 4016", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/4016", 
+                    "name": "Computers in Business"
+                }, 
+                {
+                    "code": "CS 4017", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/4017", 
+                    "name": "Web Technology and Development"
+                }, 
+                {
+                    "code": "CS 4018", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/4018", 
+                    "name": "Computer Systems Architecture"
+                }, 
+                {
+                    "code": "CS 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/5000", 
+                    "name": "Decision Support and Expert Systems"
+                }, 
+                {
+                    "code": "CS 5001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/5001", 
+                    "name": "C# Programming"
+                }, 
+                {
+                    "code": "CS 5002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/5002", 
+                    "name": "C++ Programming"
+                }, 
+                {
+                    "code": "CS 5003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/5003", 
+                    "name": "Computer Graphics"
+                }, 
+                {
+                    "code": "CS 5005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/5005", 
+                    "name": "Database Management"
+                }, 
+                {
+                    "code": "CS 5006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/5006", 
+                    "name": "Networking Technologies"
+                }, 
+                {
+                    "code": "CS 5008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/5008", 
+                    "name": "Client Server Relationships"
+                }, 
+                {
+                    "code": "CS 5009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/5009", 
+                    "name": "Computerized Systems for Business and Management"
+                }, 
+                {
+                    "code": "CS 5010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/5010", 
+                    "name": "Managing Communication"
+                }, 
+                {
+                    "code": "CS 5012", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/5012", 
+                    "name": "Operating Systems"
+                }, 
+                {
+                    "code": "CS 5013", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/5013", 
+                    "name": "Programming Language"
+                }, 
+                {
+                    "code": "CS 5014", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/5014", 
+                    "name": "Software Engineering"
+                }, 
+                {
+                    "code": "CS 5015", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/5015", 
+                    "name": "Distributed Computing"
+                }, 
+                {
+                    "code": "CS 6010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CS/6010", 
+                    "name": "Applied Computer Science Research Project"
+                }
+            ], 
+            "name": "Computer Science", 
+            "url": "http://www.chegg.com/courses/ncu/CS"
+        }, 
+        {
+            "abbr": "CT", 
+            "courses": [
+                {
+                    "code": "CT 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CT/5000", 
+                    "name": "Curriculum and Instructional Strategies"
+                }, 
+                {
+                    "code": "CT 5001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CT/5001", 
+                    "name": "The Teacher as Reflective Practitioner"
+                }, 
+                {
+                    "code": "CT 5002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CT/5002", 
+                    "name": "Learning Styles and Teaching Styles"
+                }, 
+                {
+                    "code": "CT 5003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CT/5003", 
+                    "name": "Principles of Teaching & Learning"
+                }, 
+                {
+                    "code": "CT 5004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CT/5004", 
+                    "name": "Foundations of Language & Literacy Education"
+                }, 
+                {
+                    "code": "CT 5005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CT/5005", 
+                    "name": "Literacy Teaching and Learning"
+                }, 
+                {
+                    "code": "CT 5006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CT/5006", 
+                    "name": "Multiple Intelligences and Ways of Learning"
+                }, 
+                {
+                    "code": "CT 5007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CT/5007", 
+                    "name": "The Classroom:Managing and Organizing for Student Achievement"
+                }, 
+                {
+                    "code": "CT 5008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/CT/5008", 
+                    "name": "High Stakes Testing:Implications for Teaching and Learning"
+                }
+            ], 
+            "name": "Construction Technology", 
+            "url": "http://www.chegg.com/courses/ncu/CT"
+        }, 
+        {
+            "abbr": "DIS", 
+            "courses": [
+                {
+                    "code": "DIS 9007B", 
+                    "course_url": "http://www.chegg.com/courses/ncu/DIS/9007B", 
+                    "name": "Doctoral Dissertation Proposal"
+                }, 
+                {
+                    "code": "DIS 9007DBA", 
+                    "course_url": "http://www.chegg.com/courses/ncu/DIS/9007DBA", 
+                    "name": "Doctoral Dissertation Proposal"
+                }, 
+                {
+                    "code": "DIS 9007E", 
+                    "course_url": "http://www.chegg.com/courses/ncu/DIS/9007E", 
+                    "name": "Doctoral Dissertation"
+                }, 
+                {
+                    "code": "DIS 9007MFT", 
+                    "course_url": "http://www.chegg.com/courses/ncu/DIS/9007MFT", 
+                    "name": "Doctoral Dissertation Proposal"
+                }, 
+                {
+                    "code": "DIS 9007P", 
+                    "course_url": "http://www.chegg.com/courses/ncu/DIS/9007P", 
+                    "name": "Doctoral Dissertation Proposal"
+                }, 
+                {
+                    "code": "DIS 9017B", 
+                    "course_url": "http://www.chegg.com/courses/ncu/DIS/9017B", 
+                    "name": "Doctoral Dissertation Data"
+                }, 
+                {
+                    "code": "DIS 9017DBA", 
+                    "course_url": "http://www.chegg.com/courses/ncu/DIS/9017DBA", 
+                    "name": "Doctoral Dissertation Data"
+                }, 
+                {
+                    "code": "DIS 9017E", 
+                    "course_url": "http://www.chegg.com/courses/ncu/DIS/9017E", 
+                    "name": "Doctoral Dissertation Proposal"
+                }, 
+                {
+                    "code": "DIS 9017MFT", 
+                    "course_url": "http://www.chegg.com/courses/ncu/DIS/9017MFT", 
+                    "name": "Doctoral Dissertation Data"
+                }, 
+                {
+                    "code": "DIS 9017P", 
+                    "course_url": "http://www.chegg.com/courses/ncu/DIS/9017P", 
+                    "name": "Doctoral Dissertation Data"
+                }, 
+                {
+                    "code": "DIS 9027B", 
+                    "course_url": "http://www.chegg.com/courses/ncu/DIS/9027B", 
+                    "name": "Doctoral Dissertation Defense"
+                }, 
+                {
+                    "code": "DIS 9027DBA", 
+                    "course_url": "http://www.chegg.com/courses/ncu/DIS/9027DBA", 
+                    "name": "Doctoral Dissertation Final Review"
+                }, 
+                {
+                    "code": "DIS 9027E", 
+                    "course_url": "http://www.chegg.com/courses/ncu/DIS/9027E", 
+                    "name": "Doctoral Dissertation Report and Defense"
+                }, 
+                {
+                    "code": "DIS 9027MFT", 
+                    "course_url": "http://www.chegg.com/courses/ncu/DIS/9027MFT", 
+                    "name": "Doctoral Dissertation Manuscript and Defense"
+                }, 
+                {
+                    "code": "DIS 9027P", 
+                    "course_url": "http://www.chegg.com/courses/ncu/DIS/9027P", 
+                    "name": "Doctoral Dissertation Defense"
+                }
+            ], 
+            "name": "DenmarkS International Study Program", 
+            "url": "http://www.chegg.com/courses/ncu/DIS"
+        }, 
+        {
+            "abbr": "ECM", 
+            "courses": [
+                {
+                    "code": "ECM 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ECM/5000", 
+                    "name": "Introduction to E Commerce"
+                }, 
+                {
+                    "code": "ECM 5001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ECM/5001", 
+                    "name": "E Commerce for Entrepreneurs"
+                }, 
+                {
+                    "code": "ECM 5002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ECM/5002", 
+                    "name": "Web Based Applications"
+                }, 
+                {
+                    "code": "ECM 5003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ECM/5003", 
+                    "name": "Graphic Designs for Electronic Commerce Applications"
+                }, 
+                {
+                    "code": "ECM 5004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ECM/5004", 
+                    "name": "Managerial Electronic Commerce"
+                }, 
+                {
+                    "code": "ECM 5005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ECM/5005", 
+                    "name": "Electronic Payment Systems"
+                }, 
+                {
+                    "code": "ECM 5006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ECM/5006", 
+                    "name": "Integrated Supply Chain Management"
+                }, 
+                {
+                    "code": "ECM 5007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ECM/5007", 
+                    "name": "E Commerce Marketing for the Internet"
+                }, 
+                {
+                    "code": "ECM 6010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ECM/6010", 
+                    "name": "Electronic Commerce Research Project"
+                }
+            ], 
+            "name": "Economic Crime Mgmt", 
+            "url": "http://www.chegg.com/courses/ncu/ECM"
+        }, 
+        {
+            "abbr": "ED", 
+            "courses": [
+                {
+                    "code": "ED 5001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5001", 
+                    "name": "Contemporary Issues in Education"
+                }, 
+                {
+                    "code": "ED 5003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5003", 
+                    "name": "Philosophy of Education"
+                }, 
+                {
+                    "code": "ED 5004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5004", 
+                    "name": "School Law"
+                }, 
+                {
+                    "code": "ED 5005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5005", 
+                    "name": "Reading and Language Arts:Methods and Strategies"
+                }, 
+                {
+                    "code": "ED 5006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5006", 
+                    "name": "Mathematics Methods and Strategies:Teaching for Success"
+                }, 
+                {
+                    "code": "ED 5007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5007", 
+                    "name": "Science and Social Studies:Methods and Strategies"
+                }, 
+                {
+                    "code": "ED 5011", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5011", 
+                    "name": "Leading and Developing Human Capital"
+                }, 
+                {
+                    "code": "ED 5012", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5012", 
+                    "name": "Leadership in Educational Organizations"
+                }, 
+                {
+                    "code": "ED 5013", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5013", 
+                    "name": "School Finance"
+                }, 
+                {
+                    "code": "ED 5014", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5014", 
+                    "name": "School Organization"
+                }, 
+                {
+                    "code": "ED 5015", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5015", 
+                    "name": "School Safety"
+                }, 
+                {
+                    "code": "ED 5016", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5016", 
+                    "name": "Instructional Supervision and Leadership"
+                }, 
+                {
+                    "code": "ED 5017", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5017", 
+                    "name": "Systemic Leadership:Systems Thinking and Systems Dynamics"
+                }, 
+                {
+                    "code": "ED 5020", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5020", 
+                    "name": "Applied Statistics"
+                }, 
+                {
+                    "code": "ED 5022", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5022", 
+                    "name": "Educational Policies and Practices"
+                }, 
+                {
+                    "code": "ED 5023", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5023", 
+                    "name": "Multicultural Relationships in Educational Organizations"
+                }, 
+                {
+                    "code": "ED 5025", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5025", 
+                    "name": "Education for Social Change"
+                }, 
+                {
+                    "code": "ED 5026", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5026", 
+                    "name": "Cognition,Emotion and Motivation"
+                }, 
+                {
+                    "code": "ED 5027", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5027", 
+                    "name": "School Counseling and Support Services"
+                }, 
+                {
+                    "code": "ED 5029", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5029", 
+                    "name": "Measurement and Assessment in Education"
+                }, 
+                {
+                    "code": "ED 5030", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5030", 
+                    "name": "Organizational Development"
+                }, 
+                {
+                    "code": "ED 5031", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5031", 
+                    "name": "Policy and Politics in the Administration of Education"
+                }, 
+                {
+                    "code": "ED 5033", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5033", 
+                    "name": "School Based Leadership"
+                }, 
+                {
+                    "code": "ED 5034", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5034", 
+                    "name": "School Community Relations"
+                }, 
+                {
+                    "code": "ED 5035", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5035", 
+                    "name": "Supervision of Curriculum"
+                }, 
+                {
+                    "code": "ED 5036", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5036", 
+                    "name": "Innovation and Change"
+                }, 
+                {
+                    "code": "ED 5038", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/5038", 
+                    "name": "The Art and Science of Adult Education"
+                }, 
+                {
+                    "code": "ED 6001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/6001", 
+                    "name": "Action Research for the Education Practitioner"
+                }, 
+                {
+                    "code": "ED 6002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/6002", 
+                    "name": "Action Research Project Capstone"
+                }, 
+                {
+                    "code": "ED 9005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/9005", 
+                    "name": "Doctoral Dissertation Concept Paper"
+                }, 
+                {
+                    "code": "ED 9019", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/9019", 
+                    "name": "Doctoral Proposal"
+                }, 
+                {
+                    "code": "ED 9029", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ED/9029", 
+                    "name": "Doctoral Dissertation"
+                }
+            ], 
+            "name": "Ed", 
+            "url": "http://www.chegg.com/courses/ncu/ED"
+        }, 
+        {
+            "abbr": "EDR", 
+            "courses": [
+                {
+                    "code": "EDR 7000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/EDR/7000", 
+                    "name": "Educational Research Strategies"
+                }
+            ], 
+            "name": "Rosemont Elementary Education", 
+            "url": "http://www.chegg.com/courses/ncu/EDR"
+        }, 
+        {
+            "abbr": "ELT", 
+            "courses": [
+                {
+                    "code": "ELT 7001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ELT/7001", 
+                    "name": "Principles and Practices in E Learning"
+                }, 
+                {
+                    "code": "ELT 7002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ELT/7002", 
+                    "name": "E Learning Instructional Strategies"
+                }, 
+                {
+                    "code": "ELT 7003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ELT/7003", 
+                    "name": "Instructional Design and Engaging E Learning Activities"
+                }, 
+                {
+                    "code": "ELT 7004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ELT/7004", 
+                    "name": "The Online Learner"
+                }, 
+                {
+                    "code": "ELT 7005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ELT/7005", 
+                    "name": "Testing and Assessment Online"
+                }, 
+                {
+                    "code": "ELT 7006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ELT/7006", 
+                    "name": "Facilitating Adult Learning Online"
+                }, 
+                {
+                    "code": "ELT 7007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ELT/7007", 
+                    "name": "Ethical and Legal Issues in an Online Course"
+                }, 
+                {
+                    "code": "ELT 7008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ELT/7008", 
+                    "name": "Online Learning Communities in an Online Course"
+                }, 
+                {
+                    "code": "ELT 7009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ELT/7009", 
+                    "name": "E Learning in Higher Education and Corporate Training"
+                }, 
+                {
+                    "code": "ELT 7010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ELT/7010", 
+                    "name": "Online Learning for the K Students"
+                }
+            ], 
+            "name": "Electronics Technology", 
+            "url": "http://www.chegg.com/courses/ncu/ELT"
+        }, 
+        {
+            "abbr": "ESE", 
+            "courses": [
+                {
+                    "code": "ESE 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ESE/5000", 
+                    "name": "Introduction to Special Education"
+                }, 
+                {
+                    "code": "ESE 5001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ESE/5001", 
+                    "name": "Exceptional Student Assessment"
+                }, 
+                {
+                    "code": "ESE 5002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ESE/5002", 
+                    "name": "Characteristics of Learning Disabled Students"
+                }, 
+                {
+                    "code": "ESE 5003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ESE/5003", 
+                    "name": "Characteristics of Emotionally Disabled Students"
+                }, 
+                {
+                    "code": "ESE 5004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ESE/5004", 
+                    "name": "Teaching Methods for the Mentally Disabled"
+                }, 
+                {
+                    "code": "ESE 5005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ESE/5005", 
+                    "name": "Special Education Law"
+                }, 
+                {
+                    "code": "ESE 5006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ESE/5006", 
+                    "name": "Teaching Strategies for Learning Disabled and Behavioral Disorders"
+                }, 
+                {
+                    "code": "ESE 5007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ESE/5007", 
+                    "name": "Exceptional Student Management"
+                }, 
+                {
+                    "code": "ESE 5008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ESE/5008", 
+                    "name": "Language Disabilities"
+                }, 
+                {
+                    "code": "ESE 5009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/ESE/5009", 
+                    "name": "Transition Programs for Exceptional Students"
+                }
+            ], 
+            "name": "Electrical & Systems Engineering", 
+            "url": "http://www.chegg.com/courses/ncu/ESE"
+        }, 
+        {
+            "abbr": "FIN", 
+            "courses": [
+                {
+                    "code": "FIN 5013", 
+                    "course_url": "http://www.chegg.com/courses/ncu/FIN/5013", 
+                    "name": "Investment Management"
+                }, 
+                {
+                    "code": "FIN 5014", 
+                    "course_url": "http://www.chegg.com/courses/ncu/FIN/5014", 
+                    "name": "Financial Institutions"
+                }, 
+                {
+                    "code": "FIN 5015", 
+                    "course_url": "http://www.chegg.com/courses/ncu/FIN/5015", 
+                    "name": "Financial Statement Analysis"
+                }, 
+                {
+                    "code": "FIN 5016", 
+                    "course_url": "http://www.chegg.com/courses/ncu/FIN/5016", 
+                    "name": "International Finance"
+                }, 
+                {
+                    "code": "FIN 5017", 
+                    "course_url": "http://www.chegg.com/courses/ncu/FIN/5017", 
+                    "name": "Quality Concepts in Financial Management"
+                }, 
+                {
+                    "code": "FIN 5018", 
+                    "course_url": "http://www.chegg.com/courses/ncu/FIN/5018", 
+                    "name": "Accounting for Nonprofit Organizations"
+                }, 
+                {
+                    "code": "FIN 6010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/FIN/6010", 
+                    "name": "Financial Management Research Project"
+                }
+            ], 
+            "name": "Finance", 
+            "url": "http://www.chegg.com/courses/ncu/FIN"
+        }, 
+        {
+            "abbr": "GTE", 
+            "courses": [
+                {
+                    "code": "GTE 6000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/GTE/6000", 
+                    "name": "Research and Practical Applications in Gifted and Talented Education"
+                }, 
+                {
+                    "code": "GTE 6001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/GTE/6001", 
+                    "name": "Designing Services,Curriculum,and Programs For Gifted Education"
+                }, 
+                {
+                    "code": "GTE 6002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/GTE/6002", 
+                    "name": "Evaluation and Improvement of Gifted and Talented Education Programs"
+                }, 
+                {
+                    "code": "GTE 6003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/GTE/6003", 
+                    "name": "Advocacy for the Gifted and Talented and Diverse Populations"
+                }, 
+                {
+                    "code": "GTE 6004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/GTE/6004", 
+                    "name": "Using Media and Technology with Gifted and Talented Learners"
+                }, 
+                {
+                    "code": "GTE 6005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/GTE/6005", 
+                    "name": "Instructional Methods and Materials for Teaching Gifted and Talented"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ncu/GTE"
+        }, 
+        {
+            "abbr": "HBM", 
+            "courses": [
+                {
+                    "code": "HBM 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HBM/5000", 
+                    "name": "Health Psychology"
+                }, 
+                {
+                    "code": "HBM 6000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HBM/6000", 
+                    "name": "Graduate Research Project in Health Psychology/Behavioral Medicine"
+                }, 
+                {
+                    "code": "HBM 6006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HBM/6006", 
+                    "name": "Psychology of Chronic Illness"
+                }, 
+                {
+                    "code": "HBM 6007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HBM/6007", 
+                    "name": "Behavioral Medicine I"
+                }, 
+                {
+                    "code": "HBM 6008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HBM/6008", 
+                    "name": "Behavioral Medicine II"
+                }, 
+                {
+                    "code": "HBM 6009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HBM/6009", 
+                    "name": "Pain Management"
+                }, 
+                {
+                    "code": "HBM 6012", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HBM/6012", 
+                    "name": "Psychopharmacology"
+                }, 
+                {
+                    "code": "HBM 7004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HBM/7004", 
+                    "name": "Health Psychology/Behavioral Medicine Practicum"
+                }, 
+                {
+                    "code": "HBM 7010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HBM/7010", 
+                    "name": "Applied Health Psychology/Behavioral Medicine Project"
+                }
+            ], 
+            "name": "Hospitality Business Management", 
+            "url": "http://www.chegg.com/courses/ncu/HBM"
+        }, 
+        {
+            "abbr": "HCA", 
+            "courses": [
+                {
+                    "code": "HCA 5012", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HCA/5012", 
+                    "name": "Heath Care Financial Management"
+                }, 
+                {
+                    "code": "HCA 5013", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HCA/5013", 
+                    "name": "Health Care Legal and Ethical Issues"
+                }, 
+                {
+                    "code": "HCA 5014", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HCA/5014", 
+                    "name": "Health Care Policy Analysis and Development"
+                }, 
+                {
+                    "code": "HCA 5015", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HCA/5015", 
+                    "name": "Health Care Administration Principles and Practices"
+                }, 
+                {
+                    "code": "HCA 5016", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HCA/5016", 
+                    "name": "Health Care Grantsmanship"
+                }, 
+                {
+                    "code": "HCA 5017", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HCA/5017", 
+                    "name": "Total Quality Management in Health Care"
+                }, 
+                {
+                    "code": "HCA 5018", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HCA/5018", 
+                    "name": "Health Care Marketing"
+                }, 
+                {
+                    "code": "HCA 5019", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HCA/5019", 
+                    "name": "Managed Health Care Systems"
+                }, 
+                {
+                    "code": "HCA 5020", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HCA/5020", 
+                    "name": "Survey Research in Health Care Planning and Administration"
+                }, 
+                {
+                    "code": "HCA 5021", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HCA/5021", 
+                    "name": "Comparative Health Care Systems"
+                }, 
+                {
+                    "code": "HCA 5022", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HCA/5022", 
+                    "name": "Strategic Planning in Health Care"
+                }, 
+                {
+                    "code": "HCA 6010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HCA/6010", 
+                    "name": "Health Care Administration Research Project"
+                }
+            ], 
+            "name": "Health Care Administration", 
+            "url": "http://www.chegg.com/courses/ncu/HCA"
+        }, 
+        {
+            "abbr": "HRM", 
+            "courses": [
+                {
+                    "code": "HRM 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HRM/5000", 
+                    "name": "Human Resources Management"
+                }, 
+                {
+                    "code": "HRM 5001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HRM/5001", 
+                    "name": "Recruitment and Human Resources Information Systems"
+                }, 
+                {
+                    "code": "HRM 5002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HRM/5002", 
+                    "name": "Compensation Issues in Human Resources Management"
+                }, 
+                {
+                    "code": "HRM 5003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HRM/5003", 
+                    "name": "Labor Relations"
+                }, 
+                {
+                    "code": "HRM 5004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HRM/5004", 
+                    "name": "Supervisory Concepts and Practices"
+                }, 
+                {
+                    "code": "HRM 5005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HRM/5005", 
+                    "name": "Quality Concepts in Human Resources"
+                }, 
+                {
+                    "code": "HRM 5006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HRM/5006", 
+                    "name": "Managing Human Resources for Innovation and Change"
+                }, 
+                {
+                    "code": "HRM 5007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HRM/5007", 
+                    "name": "Human and Cultural Issues in Technology Management"
+                }, 
+                {
+                    "code": "HRM 5008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HRM/5008", 
+                    "name": "Legal Issues in Human Resources Management"
+                }, 
+                {
+                    "code": "HRM 6010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HRM/6010", 
+                    "name": "Human Resources Management Research Project"
+                }
+            ], 
+            "name": "Hotel & Restaurant Mgmt", 
+            "url": "http://www.chegg.com/courses/ncu/HRM"
+        }, 
+        {
+            "abbr": "HS", 
+            "courses": [
+                {
+                    "code": "HS 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HS/5000", 
+                    "name": "Terrorism and Countermeasures/Executive Protection"
+                }, 
+                {
+                    "code": "HS 5001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HS/5001", 
+                    "name": "Homeland Security Transportation"
+                }, 
+                {
+                    "code": "HS 5002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HS/5002", 
+                    "name": "International crime and Terrorism"
+                }, 
+                {
+                    "code": "HS 5003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HS/5003", 
+                    "name": "Homeland Security Risk Management"
+                }, 
+                {
+                    "code": "HS 5004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HS/5004", 
+                    "name": "Computer Security,Forensics and Cyberterrorism"
+                }, 
+                {
+                    "code": "HS 5005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HS/5005", 
+                    "name": "Strategy and Intelligence"
+                }, 
+                {
+                    "code": "HS 6010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HS/6010", 
+                    "name": "Homeland Security Research Project"
+                }
+            ], 
+            "name": "The Heller School For Social Policy And Management", 
+            "url": "http://www.chegg.com/courses/ncu/HS"
+        }, 
+        {
+            "abbr": "HU", 
+            "courses": [
+                {
+                    "code": "HU 1001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HU/1001", 
+                    "name": "American Literature"
+                }, 
+                {
+                    "code": "HU 1002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HU/1002", 
+                    "name": "Introduction to African American Studies"
+                }, 
+                {
+                    "code": "HU 1003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HU/1003", 
+                    "name": "Appreciating the Visual Arts"
+                }, 
+                {
+                    "code": "HU 1004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HU/1004", 
+                    "name": "The Art of Wondering and Philosophy"
+                }, 
+                {
+                    "code": "HU 1006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HU/1006", 
+                    "name": "Concert Music-The Fine Art of Listening"
+                }, 
+                {
+                    "code": "HU 1007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HU/1007", 
+                    "name": "My Community's History"
+                }, 
+                {
+                    "code": "HU 1008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HU/1008", 
+                    "name": "Exploring Cinema"
+                }, 
+                {
+                    "code": "HU 1009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HU/1009", 
+                    "name": "Culture and Religion"
+                }, 
+                {
+                    "code": "HU 1010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/HU/1010", 
+                    "name": "The Short Story"
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/ncu/HU"
+        }, 
+        {
+            "abbr": "IB", 
+            "courses": [
+                {
+                    "code": "IB 5012", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IB/5012", 
+                    "name": "International Economics"
+                }, 
+                {
+                    "code": "IB 5013", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IB/5013", 
+                    "name": "International Marketing"
+                }, 
+                {
+                    "code": "IB 5014", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IB/5014", 
+                    "name": "Cultural Environment of International Business"
+                }, 
+                {
+                    "code": "IB 5016", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IB/5016", 
+                    "name": "Global Business Strategic Management"
+                }, 
+                {
+                    "code": "IB 5017", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IB/5017", 
+                    "name": "International Business Law"
+                }, 
+                {
+                    "code": "IB 5018", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IB/5018", 
+                    "name": "Total Quality Management in International Business"
+                }, 
+                {
+                    "code": "IB 6002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IB/6002", 
+                    "name": "International Business Research"
+                }, 
+                {
+                    "code": "IB 6003A", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IB/6003A", 
+                    "name": "International Business Consumer Behavior"
+                }, 
+                {
+                    "code": "IB 6003B", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IB/6003B", 
+                    "name": "Advanced International Business Consumer Behavior"
+                }, 
+                {
+                    "code": "IB 6004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IB/6004", 
+                    "name": "International Business Marketing and Export Management"
+                }, 
+                {
+                    "code": "IB 6005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IB/6005", 
+                    "name": "SME International Business Perspective Small Medium Size Enterprise"
+                }, 
+                {
+                    "code": "IB 6006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IB/6006", 
+                    "name": "Cases International Business"
+                }, 
+                {
+                    "code": "IB 6008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IB/6008", 
+                    "name": "Advertising Perspectives in International Business"
+                }, 
+                {
+                    "code": "IB 6009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IB/6009", 
+                    "name": "Case Studies and Readings in Business Ethics"
+                }, 
+                {
+                    "code": "IB 6010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IB/6010", 
+                    "name": "International Business Administration Research Project"
+                }
+            ], 
+            "name": "Integrative Biology", 
+            "url": "http://www.chegg.com/courses/ncu/IB"
+        }, 
+        {
+            "abbr": "IDS", 
+            "courses": [
+                {
+                    "code": "IDS 3001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IDS/3001", 
+                    "name": "Critical Thinking in a Diverse Society Upper Division"
+                }
+            ], 
+            "name": "Interdisciplinary Studies", 
+            "url": "http://www.chegg.com/courses/ncu/IDS"
+        }, 
+        {
+            "abbr": "IL", 
+            "courses": [
+                {
+                    "code": "IL 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IL/5000", 
+                    "name": "Instructional Leader as Creator of Learning Culture"
+                }, 
+                {
+                    "code": "IL 5001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IL/5001", 
+                    "name": "Instructional Leader as Advocate and Decisioner"
+                }, 
+                {
+                    "code": "IL 5002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IL/5002", 
+                    "name": "Instructional Leader as Community Conduit"
+                }
+            ], 
+            "name": "Il-Illustration", 
+            "url": "http://www.chegg.com/courses/ncu/IL"
+        }, 
+        {
+            "abbr": "IOP", 
+            "courses": [
+                {
+                    "code": "IOP 6000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IOP/6000", 
+                    "name": "Graduate Research Project in I/O Psychology"
+                }, 
+                {
+                    "code": "IOP 6005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IOP/6005", 
+                    "name": "Psychological Tests and Measurements"
+                }, 
+                {
+                    "code": "IOP 6006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IOP/6006", 
+                    "name": "Organizational/Industrial Psychology"
+                }, 
+                {
+                    "code": "IOP 6007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IOP/6007", 
+                    "name": "Consulting in Business,Education and Mental Health"
+                }, 
+                {
+                    "code": "IOP 6008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IOP/6008", 
+                    "name": "Survey Research Methods"
+                }, 
+                {
+                    "code": "IOP 7004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IOP/7004", 
+                    "name": "I/O Psychology Practicum"
+                }, 
+                {
+                    "code": "IOP 7010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IOP/7010", 
+                    "name": "Applied I/O Psychology Project"
+                }, 
+                {
+                    "code": "IOP 8015", 
+                    "course_url": "http://www.chegg.com/courses/ncu/IOP/8015", 
+                    "name": "Multivariate Statistics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ncu/IOP"
+        }, 
+        {
+            "abbr": "LAC", 
+            "courses": [
+                {
+                    "code": "LAC 6001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LAC/6001", 
+                    "name": "Leadership Academy Capstone"
+                }
+            ], 
+            "name": "Latin American & The Caribbean", 
+            "url": "http://www.chegg.com/courses/ncu/LAC"
+        }, 
+        {
+            "abbr": "LHE", 
+            "courses": [
+                {
+                    "code": "LHE 7004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LHE/7004", 
+                    "name": "Organization and Governance of Higher Education"
+                }, 
+                {
+                    "code": "LHE 7005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LHE/7005", 
+                    "name": "Legal Issues in Higher Education"
+                }, 
+                {
+                    "code": "LHE 7006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LHE/7006", 
+                    "name": "Student Affairs Leadership"
+                }, 
+                {
+                    "code": "LHE 7007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LHE/7007", 
+                    "name": "Strategic Enrollment Leadership"
+                }, 
+                {
+                    "code": "LHE 7008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LHE/7008", 
+                    "name": "Higher Education Finance"
+                }, 
+                {
+                    "code": "LHE 7009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LHE/7009", 
+                    "name": "Development of Higher Education in American Society"
+                }, 
+                {
+                    "code": "LHE 7010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LHE/7010", 
+                    "name": "Current Trends and Topics in Higher Education"
+                }, 
+                {
+                    "code": "LHE 7011", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LHE/7011", 
+                    "name": "Foundations of Higher Education Leadership"
+                }, 
+                {
+                    "code": "LHE 7012", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LHE/7012", 
+                    "name": "Strategic Planning & Institutional Effectiveness in Higher Education"
+                }, 
+                {
+                    "code": "LHE 7013", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LHE/7013", 
+                    "name": "Community College Curriculum and Program Development"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ncu/LHE"
+        }, 
+        {
+            "abbr": "LS", 
+            "courses": [
+                {
+                    "code": "LS 0090", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/0090", 
+                    "name": "Basic Writing"
+                }, 
+                {
+                    "code": "LS 1002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/1002", 
+                    "name": "English Composition I"
+                }, 
+                {
+                    "code": "LS 1003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/1003", 
+                    "name": "Understanding Media"
+                }, 
+                {
+                    "code": "LS 1004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/1004", 
+                    "name": "Introduction to Statistics"
+                }, 
+                {
+                    "code": "LS 1005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/1005", 
+                    "name": "Business Math"
+                }, 
+                {
+                    "code": "LS 1006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/1006", 
+                    "name": "Problem Solving With Logic"
+                }, 
+                {
+                    "code": "LS 1008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/1008", 
+                    "name": "Mathematics"
+                }, 
+                {
+                    "code": "LS 1009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/1009", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "LS 1010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/1010", 
+                    "name": "Search Strategies"
+                }, 
+                {
+                    "code": "LS 2002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/2002", 
+                    "name": "English Composition II"
+                }, 
+                {
+                    "code": "LS 2003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/2003", 
+                    "name": "Advanced English Composition"
+                }, 
+                {
+                    "code": "LS 2005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/2005", 
+                    "name": "Personal Finance"
+                }, 
+                {
+                    "code": "LS 5001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/5001", 
+                    "name": "Research Writing"
+                }, 
+                {
+                    "code": "LS 5050", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/5050", 
+                    "name": "Graduate Writing Review"
+                }, 
+                {
+                    "code": "LS 6010B", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/6010B", 
+                    "name": "Information Research Strategies"
+                }, 
+                {
+                    "code": "LS 6010E", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/6010E", 
+                    "name": "Information Research Strategies"
+                }, 
+                {
+                    "code": "LS 6010P", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LS/6010P", 
+                    "name": "Information Research Strategies"
+                }
+            ], 
+            "name": "Leadership Studies", 
+            "url": "http://www.chegg.com/courses/ncu/LS"
+        }, 
+        {
+            "abbr": "LTM", 
+            "courses": [
+                {
+                    "code": "LTM 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LTM/5000", 
+                    "name": "Educational Applications of the Internet"
+                }, 
+                {
+                    "code": "LTM 5001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LTM/5001", 
+                    "name": "Instructional Design"
+                }, 
+                {
+                    "code": "LTM 5002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LTM/5002", 
+                    "name": "Educational Technology Management"
+                }, 
+                {
+                    "code": "LTM 5003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LTM/5003", 
+                    "name": "Educational Applications of Educational Media"
+                }, 
+                {
+                    "code": "LTM 5005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LTM/5005", 
+                    "name": "The Connected Classroom:Curriculum Development and Technology"
+                }, 
+                {
+                    "code": "LTM 5006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LTM/5006", 
+                    "name": "Designing Instructional Materials for the WWW"
+                }, 
+                {
+                    "code": "LTM 5007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LTM/5007", 
+                    "name": "Multimedia Production Management"
+                }, 
+                {
+                    "code": "LTM 5008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LTM/5008", 
+                    "name": "Assessment Strategies for Technology Management in Education"
+                }, 
+                {
+                    "code": "LTM 5009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LTM/5009", 
+                    "name": "Telecommunications Applications for Education"
+                }, 
+                {
+                    "code": "LTM 5010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LTM/5010", 
+                    "name": "E Learning:Theory and Process"
+                }, 
+                {
+                    "code": "LTM 5011", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LTM/5011", 
+                    "name": "Visual Literacy in the Digital World"
+                }, 
+                {
+                    "code": "LTM 5012", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LTM/5012", 
+                    "name": "Leadership in Educational Technology"
+                }, 
+                {
+                    "code": "LTM 50004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/LTM/50004", 
+                    "name": "Computer Applications Management"
+                }
+            ], 
+            "name": "Landscape Turfgrass Mgt", 
+            "url": "http://www.chegg.com/courses/ncu/LTM"
+        }, 
+        {
+            "abbr": "MET", 
+            "courses": [
+                {
+                    "code": "MET 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MET/5000", 
+                    "name": "Principles of Productivity"
+                }, 
+                {
+                    "code": "MET 5002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MET/5002", 
+                    "name": "Applied Systems Theory"
+                }, 
+                {
+                    "code": "MET 5003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MET/5003", 
+                    "name": "Applied Decision Theory"
+                }, 
+                {
+                    "code": "MET 5006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MET/5006", 
+                    "name": "Operations Research"
+                }, 
+                {
+                    "code": "MET 5010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MET/5010", 
+                    "name": "Quality Management"
+                }, 
+                {
+                    "code": "MET 5011", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MET/5011", 
+                    "name": "Environmental Systems Management"
+                }, 
+                {
+                    "code": "MET 5015", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MET/5015", 
+                    "name": "The Process and Impact of Technology"
+                }, 
+                {
+                    "code": "MET 5016", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MET/5016", 
+                    "name": "Improving Productivity Through Technology"
+                }, 
+                {
+                    "code": "MET 5017", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MET/5017", 
+                    "name": "Emerging Technologies"
+                }, 
+                {
+                    "code": "MET 5018", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MET/5018", 
+                    "name": "Industrial Management"
+                }, 
+                {
+                    "code": "MET 5020", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MET/5020", 
+                    "name": "Management of Technology"
+                }, 
+                {
+                    "code": "MET 5023", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MET/5023", 
+                    "name": "Managing the Research and Development Organization"
+                }, 
+                {
+                    "code": "MET 5029", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MET/5029", 
+                    "name": "Project Management"
+                }, 
+                {
+                    "code": "MET 6010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MET/6010", 
+                    "name": "Management of Engineering and Technology Management Research Project"
+                }
+            ], 
+            "name": "Met-Mechanical Engr Tech", 
+            "url": "http://www.chegg.com/courses/ncu/MET"
+        }, 
+        {
+            "abbr": "MFT", 
+            "courses": [
+                {
+                    "code": "MFT 5310", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/5310", 
+                    "name": "Introduction to Marriage and Family Therapy"
+                }, 
+                {
+                    "code": "MFT 5311", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/5311", 
+                    "name": "Intergenerational Family Therapy Models"
+                }, 
+                {
+                    "code": "MFT 5312", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/5312", 
+                    "name": "Traditional Marriage and Family Therapy Models"
+                }, 
+                {
+                    "code": "MFT 5313", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/5313", 
+                    "name": "Contemporary Models of Marriage and Family Therapy"
+                }, 
+                {
+                    "code": "MFT 5321", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/5321", 
+                    "name": "Family Therapy with Children"
+                }, 
+                {
+                    "code": "MFT 5322", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/5322", 
+                    "name": "Couple and Sex Therapy"
+                }, 
+                {
+                    "code": "MFT 5323", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/5323", 
+                    "name": "Psychopathology & Marriage and Family Therapy"
+                }, 
+                {
+                    "code": "MFT 5324", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/5324", 
+                    "name": "Families in Crisis"
+                }, 
+                {
+                    "code": "MFT 5325", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/5325", 
+                    "name": "Gender and Diversity"
+                }, 
+                {
+                    "code": "MFT 5330", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/5330", 
+                    "name": "Lifespan Individual and Family Development"
+                }, 
+                {
+                    "code": "MFT 5340", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/5340", 
+                    "name": "Ethics and Professional Development"
+                }, 
+                {
+                    "code": "MFT 5350", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/5350", 
+                    "name": "Basic Research Methods in Marriage and Family Therapy"
+                }, 
+                {
+                    "code": "MFT 5491 3", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/5491%203", 
+                    "name": "Practicum in Marriage and Family Therapy"
+                }, 
+                {
+                    "code": "MFT 5500", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/5500", 
+                    "name": "Internship in Marriage and Family Therapy"
+                }, 
+                {
+                    "code": "MFT 6310", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6310", 
+                    "name": "Advanced Theories in Marriage and Family Therapy"
+                }, 
+                {
+                    "code": "MFT 6321", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6321", 
+                    "name": "Family Therapy with Adolescents"
+                }, 
+                {
+                    "code": "MFT 6330", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6330", 
+                    "name": "Dynamics of Family Interaction"
+                }, 
+                {
+                    "code": "MFT 6340", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6340", 
+                    "name": "Domestic Violence"
+                }, 
+                {
+                    "code": "MFT 6341", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6341", 
+                    "name": "Premarital Education and Therapy"
+                }, 
+                {
+                    "code": "MFT 6342", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6342", 
+                    "name": "Parenting Strategies"
+                }, 
+                {
+                    "code": "MFT 6343", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6343", 
+                    "name": "Family Life Education"
+                }, 
+                {
+                    "code": "MFT 6344", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6344", 
+                    "name": "Business Strategies for Marriage and Family Therapists"
+                }, 
+                {
+                    "code": "MFT 6345", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6345", 
+                    "name": "Employee Assistance Programs"
+                }, 
+                {
+                    "code": "MFT 6346", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6346", 
+                    "name": "Medical Family Therapy"
+                }, 
+                {
+                    "code": "MFT 6347", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6347", 
+                    "name": "Teaching Marriage and Family Therapy"
+                }, 
+                {
+                    "code": "MFT 6348", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6348", 
+                    "name": "Death,Dying,Loss,and Grief"
+                }, 
+                {
+                    "code": "MFT 6349", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6349", 
+                    "name": "Family Systems Approaches to Addiction"
+                }, 
+                {
+                    "code": "MFT 6350", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6350", 
+                    "name": "Quantitative Research Methods in MFT"
+                }, 
+                {
+                    "code": "MFT 6351", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6351", 
+                    "name": "Qualitative Research Methods in Marriage and Family Therapy"
+                }, 
+                {
+                    "code": "MFT 6352", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6352", 
+                    "name": "ANOVA and Regression"
+                }, 
+                {
+                    "code": "MFT 6353", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6353", 
+                    "name": "Advanced Statistical Methods"
+                }, 
+                {
+                    "code": "MFT 6354", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6354", 
+                    "name": "Writing for Publication in Marriage and Family Therapy"
+                }, 
+                {
+                    "code": "MFT 6355", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6355", 
+                    "name": "Grant Writing"
+                }, 
+                {
+                    "code": "MFT 6491", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6491", 
+                    "name": "Practicum in Marriage and Family Therapy"
+                }, 
+                {
+                    "code": "MFT 6500", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6500", 
+                    "name": "Internship in Marriage and Family Therapy"
+                }, 
+                {
+                    "code": "MFT 6900", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6900", 
+                    "name": "Systematic Supervision"
+                }, 
+                {
+                    "code": "MFT 6990", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MFT/6990", 
+                    "name": "Supervision Practicum"
+                }
+            ], 
+            "name": "Marriage And Family Therapy", 
+            "url": "http://www.chegg.com/courses/ncu/MFT"
+        }, 
+        {
+            "abbr": "MGT", 
+            "courses": [
+                {
+                    "code": "MGT 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5000", 
+                    "name": "Business Organization and Management"
+                }, 
+                {
+                    "code": "MGT 5001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5001", 
+                    "name": "Economics and the Modern Manager"
+                }, 
+                {
+                    "code": "MGT 5002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5002", 
+                    "name": "Marketing Management"
+                }, 
+                {
+                    "code": "MGT 5005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5005", 
+                    "name": "Management Finance and Control"
+                }, 
+                {
+                    "code": "MGT 5006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5006", 
+                    "name": "Organizational Behavior"
+                }, 
+                {
+                    "code": "MGT 5007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5007", 
+                    "name": "Strategic Management"
+                }, 
+                {
+                    "code": "MGT 5008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5008", 
+                    "name": "Production and Operations Management"
+                }, 
+                {
+                    "code": "MGT 5009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5009", 
+                    "name": "International Business"
+                }, 
+                {
+                    "code": "MGT 5010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5010", 
+                    "name": "Leadership in Organizations"
+                }, 
+                {
+                    "code": "MGT 5011", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5011", 
+                    "name": "Managerial Women:Strategies and Skills"
+                }, 
+                {
+                    "code": "MGT 5012", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5012", 
+                    "name": "Managerial Accounting for Decision Making"
+                }, 
+                {
+                    "code": "MGT 5013", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5013", 
+                    "name": "Entrepreneurship"
+                }, 
+                {
+                    "code": "MGT 5014", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5014", 
+                    "name": "Business and Management Consulting"
+                }, 
+                {
+                    "code": "MGT 5015", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5015", 
+                    "name": "Interpersonal Dynamics"
+                }, 
+                {
+                    "code": "MGT 5016", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5016", 
+                    "name": "Managing Change"
+                }, 
+                {
+                    "code": "MGT 5017", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5017", 
+                    "name": "Contemporary Policy Issues in Business"
+                }, 
+                {
+                    "code": "MGT 5018", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5018", 
+                    "name": "Operational Management"
+                }, 
+                {
+                    "code": "MGT 5019", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5019", 
+                    "name": "Ethics in Business"
+                }, 
+                {
+                    "code": "MGT 5021", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5021", 
+                    "name": "Managing Creativity in the Organization"
+                }, 
+                {
+                    "code": "MGT 5022", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5022", 
+                    "name": "Organizational Development"
+                }, 
+                {
+                    "code": "MGT 5023", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5023", 
+                    "name": "Crisis Management"
+                }, 
+                {
+                    "code": "MGT 5025", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5025", 
+                    "name": "Total Quality Perspectives in Management"
+                }, 
+                {
+                    "code": "MGT 5026", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5026", 
+                    "name": "Effective Managerial Communications"
+                }, 
+                {
+                    "code": "MGT 5027", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5027", 
+                    "name": "Legal Implications in Management"
+                }, 
+                {
+                    "code": "MGT 5028", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5028", 
+                    "name": "Business Statistics"
+                }, 
+                {
+                    "code": "MGT 5029", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5029", 
+                    "name": "Strategic Leadership"
+                }, 
+                {
+                    "code": "MGT 5030", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5030", 
+                    "name": "Environmental Compliance in Business"
+                }, 
+                {
+                    "code": "MGT 5031", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5031", 
+                    "name": "The History of Management Theory"
+                }, 
+                {
+                    "code": "MGT 5050", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/5050", 
+                    "name": "Management in the Cinema"
+                }, 
+                {
+                    "code": "MGT 6010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/6010", 
+                    "name": "Business Administration Research Project"
+                }, 
+                {
+                    "code": "MGT 7010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MGT/7010", 
+                    "name": "Applied Management Project"
+                }
+            ], 
+            "name": "Management", 
+            "url": "http://www.chegg.com/courses/ncu/MGT"
+        }, 
+        {
+            "abbr": "MIS", 
+            "courses": [
+                {
+                    "code": "MIS 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MIS/5000", 
+                    "name": "Management Information Systems"
+                }, 
+                {
+                    "code": "MIS 5001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MIS/5001", 
+                    "name": "Information Systems Development"
+                }, 
+                {
+                    "code": "MIS 5002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MIS/5002", 
+                    "name": "Database Management Systems"
+                }, 
+                {
+                    "code": "MIS 5003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MIS/5003", 
+                    "name": "Information Support Systems"
+                }, 
+                {
+                    "code": "MIS 5004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MIS/5004", 
+                    "name": "Telecommunications Management"
+                }, 
+                {
+                    "code": "MIS 5005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MIS/5005", 
+                    "name": "Local Area Networks"
+                }, 
+                {
+                    "code": "MIS 5006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MIS/5006", 
+                    "name": "Total Quality Management in MIS"
+                }, 
+                {
+                    "code": "MIS 5007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MIS/5007", 
+                    "name": "Wide Area Networks"
+                }, 
+                {
+                    "code": "MIS 5011", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MIS/5011", 
+                    "name": "Computer Management Consulting"
+                }, 
+                {
+                    "code": "MIS 6010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MIS/6010", 
+                    "name": "Management Information Systems Research Project"
+                }
+            ], 
+            "name": "Management And Info Systems", 
+            "url": "http://www.chegg.com/courses/ncu/MIS"
+        }, 
+        {
+            "abbr": "MKT", 
+            "courses": [
+                {
+                    "code": "MKT 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MKT/5000", 
+                    "name": "Service Marketing"
+                }, 
+                {
+                    "code": "MKT 5001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MKT/5001", 
+                    "name": "Sales Force Management"
+                }, 
+                {
+                    "code": "MKT 5002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MKT/5002", 
+                    "name": "Customer Relationship Management"
+                }, 
+                {
+                    "code": "MKT 5003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MKT/5003", 
+                    "name": "Advertising and Promotion"
+                }, 
+                {
+                    "code": "MKT 6000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MKT/6000", 
+                    "name": "Consumer Behavior"
+                }, 
+                {
+                    "code": "MKT 6001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MKT/6001", 
+                    "name": "Product Management"
+                }, 
+                {
+                    "code": "MKT 6002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MKT/6002", 
+                    "name": "International Marketing Research"
+                }, 
+                {
+                    "code": "MKT 6003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MKT/6003", 
+                    "name": "International Marketing Consumer Behavior"
+                }, 
+                {
+                    "code": "MKT 6004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MKT/6004", 
+                    "name": "Ethical and Legal Issues in Marketing"
+                }, 
+                {
+                    "code": "MKT 6005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MKT/6005", 
+                    "name": "Marketing Research I"
+                }, 
+                {
+                    "code": "MKT 6006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MKT/6006", 
+                    "name": "Marketing Research II"
+                }, 
+                {
+                    "code": "MKT 6007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/MKT/6007", 
+                    "name": "Strategic Marketing Planning"
+                }
+            ], 
+            "name": "Marketing", 
+            "url": "http://www.chegg.com/courses/ncu/MKT"
+        }, 
+        {
+            "abbr": "NS", 
+            "courses": [
+                {
+                    "code": "NS 1002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/NS/1002", 
+                    "name": "Introduction to Meteorology"
+                }, 
+                {
+                    "code": "NS 1003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/NS/1003", 
+                    "name": "Introduction to Geology"
+                }, 
+                {
+                    "code": "NS 1004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/NS/1004", 
+                    "name": "Controversial Environmental Issues"
+                }, 
+                {
+                    "code": "NS 1005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/NS/1005", 
+                    "name": "General Biology"
+                }, 
+                {
+                    "code": "NS 1006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/NS/1006", 
+                    "name": "Health & Nutrition"
+                }
+            ], 
+            "name": "Nutritional Science", 
+            "url": "http://www.chegg.com/courses/ncu/NS"
+        }, 
+        {
+            "abbr": "OL", 
+            "courses": [
+                {
+                    "code": "OL 7001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/OL/7001", 
+                    "name": "Conflict Resolution and Mediation"
+                }, 
+                {
+                    "code": "OL 7002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/OL/7002", 
+                    "name": "Building Organizational Capacity"
+                }, 
+                {
+                    "code": "OL 7003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/OL/7003", 
+                    "name": "Leadership for Excellence"
+                }, 
+                {
+                    "code": "OL 7004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/OL/7004", 
+                    "name": "Theory and Practice of Organizational Leadership"
+                }, 
+                {
+                    "code": "OL 7005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/OL/7005", 
+                    "name": "Ethical Leadership"
+                }, 
+                {
+                    "code": "OL 7006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/OL/7006", 
+                    "name": "Leading Learning for Organizational Sustainability"
+                }, 
+                {
+                    "code": "OL 7007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/OL/7007", 
+                    "name": "Leader as Coach"
+                }, 
+                {
+                    "code": "OL 7008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/OL/7008", 
+                    "name": "Executive Leadership in Nonprofit Organizations"
+                }, 
+                {
+                    "code": "OL 7009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/OL/7009", 
+                    "name": "Strategic Planning for Leaders"
+                }
+            ], 
+            "name": "Organizatnl Leadership", 
+            "url": "http://www.chegg.com/courses/ncu/OL"
+        }, 
+        {
+            "abbr": "OM", 
+            "courses": [
+                {
+                    "code": "OM 7015", 
+                    "course_url": "http://www.chegg.com/courses/ncu/OM/7015", 
+                    "name": "Personnel Management and Organizational Behavior"
+                }
+            ], 
+            "name": "Operations Management", 
+            "url": "http://www.chegg.com/courses/ncu/OM"
+        }, 
+        {
+            "abbr": "PS", 
+            "courses": [
+                {
+                    "code": "PS 1001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PS/1001", 
+                    "name": "American History"
+                }, 
+                {
+                    "code": "PS 1002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PS/1002", 
+                    "name": "U.S.Government"
+                }, 
+                {
+                    "code": "PS 1008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PS/1008", 
+                    "name": "Western Civilization"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/ncu/PS"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 3000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/3000", 
+                    "name": "Introduction to Psychology"
+                }, 
+                {
+                    "code": "PSY 3001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/3001", 
+                    "name": "Theories and Techniques of Counseling and Psychotherapy"
+                }, 
+                {
+                    "code": "PSY 3002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/3002", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSY 3003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/3003", 
+                    "name": "Human Development"
+                }, 
+                {
+                    "code": "PSY 3004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/3004", 
+                    "name": "Fundamentals of Research Methodology"
+                }, 
+                {
+                    "code": "PSY 3010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/3010", 
+                    "name": "Human Relations"
+                }, 
+                {
+                    "code": "PSY 4000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/4000", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "PSY 4001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/4001", 
+                    "name": "Human Sexual Behavior"
+                }, 
+                {
+                    "code": "PSY 4002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/4002", 
+                    "name": "Theories and Techniques of Group Counseling"
+                }, 
+                {
+                    "code": "PSY 4003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/4003", 
+                    "name": "Ethical and Professional Issues"
+                }, 
+                {
+                    "code": "PSY 4004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/4004", 
+                    "name": "Crisis Intervention"
+                }, 
+                {
+                    "code": "PSY 4006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/4006", 
+                    "name": "Psychology of Communication"
+                }, 
+                {
+                    "code": "PSY 4007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/4007", 
+                    "name": "Intercultural Psychology"
+                }, 
+                {
+                    "code": "PSY 4008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/4008", 
+                    "name": "Psychology and Health"
+                }, 
+                {
+                    "code": "PSY 4099", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/4099", 
+                    "name": "Research Project"
+                }, 
+                {
+                    "code": "PSY 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5000", 
+                    "name": "Theories of Personality"
+                }, 
+                {
+                    "code": "PSY 5001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5001", 
+                    "name": "Human Communication:Interviewing Skills"
+                }, 
+                {
+                    "code": "PSY 5002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5002", 
+                    "name": "Theories of Psychotherapy and Counseling"
+                }, 
+                {
+                    "code": "PSY 5003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5003", 
+                    "name": "History and Systems of Psychology"
+                }, 
+                {
+                    "code": "PSY 5004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5004", 
+                    "name": "Professional Ethics,Law and Psychology"
+                }, 
+                {
+                    "code": "PSY 5005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5005", 
+                    "name": "Theories of Human Development and Functioning"
+                }, 
+                {
+                    "code": "PSY 5006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5006", 
+                    "name": "Psychopathology"
+                }, 
+                {
+                    "code": "PSY 5007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5007", 
+                    "name": "Sexual Issues:Sexuality,Sex Problems,and Sex Therapy"
+                }, 
+                {
+                    "code": "PSY 5008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5008", 
+                    "name": "Gender and Cultural Diversity"
+                }, 
+                {
+                    "code": "PSY 5009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5009", 
+                    "name": "Family Systems Theory"
+                }, 
+                {
+                    "code": "PSY 5010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5010", 
+                    "name": "Child and Adolescent Psychology/Child Abuse Assessment and Reporting"
+                }, 
+                {
+                    "code": "PSY 5011", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5011", 
+                    "name": "Clinical Survey of Substance Abuse and Dependence"
+                }, 
+                {
+                    "code": "PSY 5012", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5012", 
+                    "name": "Group Therapy"
+                }, 
+                {
+                    "code": "PSY 5014", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5014", 
+                    "name": "Brief Therapy"
+                }, 
+                {
+                    "code": "PSY 5015", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5015", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "PSY 5016", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5016", 
+                    "name": "Psychology of Women"
+                }, 
+                {
+                    "code": "PSY 5017", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5017", 
+                    "name": "Psychology of Aging"
+                }, 
+                {
+                    "code": "PSY 5018", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5018", 
+                    "name": "Foundations of Hypnosis"
+                }, 
+                {
+                    "code": "PSY 5019", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5019", 
+                    "name": "Psychology of Trauma"
+                }, 
+                {
+                    "code": "PSY 5020", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5020", 
+                    "name": "Psychology of Prejudice & Discrimination"
+                }, 
+                {
+                    "code": "PSY 5023", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5023", 
+                    "name": "Psychology of Learning"
+                }, 
+                {
+                    "code": "PSY 5024", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5024", 
+                    "name": "Cognition,Emotion and Motivation"
+                }, 
+                {
+                    "code": "PSY 5025", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5025", 
+                    "name": "Foundations of Play Therapy"
+                }, 
+                {
+                    "code": "PSY 5027", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5027", 
+                    "name": "Psychology of Stress & Stress Related Disorders:Theory,Assessment,& Intervention"
+                }, 
+                {
+                    "code": "PSY 5032", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5032", 
+                    "name": "The Psychology of Gender"
+                }, 
+                {
+                    "code": "PSY 5033", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5033", 
+                    "name": "Death and Dying"
+                }, 
+                {
+                    "code": "PSY 5034", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5034", 
+                    "name": "Co occurring Disorders:Detection,Intervention,and Treatment of Coexisting Mental Illness and Substance Related Disorders"
+                }, 
+                {
+                    "code": "PSY 5035", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5035", 
+                    "name": "Attention Deficit/Hyperactivity Disorder:Diagnosis and Treatment"
+                }, 
+                {
+                    "code": "PSY 5036", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5036", 
+                    "name": "Advanced Cognitive Therapy"
+                }, 
+                {
+                    "code": "PSY 5038", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5038", 
+                    "name": "The Psychology of Addiction and Compulsive Behaviors"
+                }, 
+                {
+                    "code": "PSY 5039", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5039", 
+                    "name": "Research Design"
+                }, 
+                {
+                    "code": "PSY 5040", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5040", 
+                    "name": "Applied Statistics"
+                }, 
+                {
+                    "code": "PSY 5041", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5041", 
+                    "name": "Qualitative Research Methods"
+                }, 
+                {
+                    "code": "PSY 5050", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5050", 
+                    "name": "Career and Lifestyle Development"
+                }, 
+                {
+                    "code": "PSY 5051", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5051", 
+                    "name": "Positive Psychology"
+                }, 
+                {
+                    "code": "PSY 5052", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5052", 
+                    "name": "Community Psychology"
+                }, 
+                {
+                    "code": "PSY 5053", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5053", 
+                    "name": "Evolutionary Psychology"
+                }, 
+                {
+                    "code": "PSY 5054", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5054", 
+                    "name": "Eating Disorders and Obesity"
+                }, 
+                {
+                    "code": "PSY 5062", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5062", 
+                    "name": "Advanced Topics in Sexuality and Gender:Psychotherapy With Gender Variant Clients"
+                }, 
+                {
+                    "code": "PSY 5080", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5080", 
+                    "name": "Physiological Psychology"
+                }, 
+                {
+                    "code": "PSY 5162", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5162", 
+                    "name": "Advanced Topics in Sexuality and Gender:Psychotherapy with Gay,Lesbian & Bisexual Clients"
+                }, 
+                {
+                    "code": "PSY 5171", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/5171", 
+                    "name": "Applied Animal Learning"
+                }, 
+                {
+                    "code": "PSY 6000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/6000", 
+                    "name": "Research Project in Psychology"
+                }, 
+                {
+                    "code": "PSY 6005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/6005", 
+                    "name": "Psychological Tests and Measurements"
+                }, 
+                {
+                    "code": "PSY 7004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/7004", 
+                    "name": "Practicum I"
+                }, 
+                {
+                    "code": "PSY 7005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/7005", 
+                    "name": "Practicum II"
+                }, 
+                {
+                    "code": "PSY 7010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/7010", 
+                    "name": "Applied Psychology Project"
+                }, 
+                {
+                    "code": "PSY 8005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PSY/8005", 
+                    "name": "Pre Doctoral Internship"
+                }
+            ], 
+            "name": "Clinical Counseling", 
+            "url": "http://www.chegg.com/courses/ncu/PSY"
+        }, 
+        {
+            "abbr": "PUB", 
+            "courses": [
+                {
+                    "code": "PUB 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PUB/5000", 
+                    "name": "Introduction to Public Administration"
+                }, 
+                {
+                    "code": "PUB 5002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PUB/5002", 
+                    "name": "Public/Government Relations"
+                }, 
+                {
+                    "code": "PUB 5003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PUB/5003", 
+                    "name": "Public/Urban Politics"
+                }, 
+                {
+                    "code": "PUB 5004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PUB/5004", 
+                    "name": "Urban and Regional Planning"
+                }, 
+                {
+                    "code": "PUB 5005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PUB/5005", 
+                    "name": "Public Budgeting and Finance"
+                }, 
+                {
+                    "code": "PUB 5006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PUB/5006", 
+                    "name": "Public Health Administration"
+                }, 
+                {
+                    "code": "PUB 5007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PUB/5007", 
+                    "name": "Quality Management in Public Administration"
+                }, 
+                {
+                    "code": "PUB 5009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PUB/5009", 
+                    "name": "Public Program Evaluation"
+                }, 
+                {
+                    "code": "PUB 5010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PUB/5010", 
+                    "name": "Complex Public Organizations"
+                }, 
+                {
+                    "code": "PUB 5011", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PUB/5011", 
+                    "name": "Terrorism"
+                }, 
+                {
+                    "code": "PUB 5012", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PUB/5012", 
+                    "name": "Environmental Compliance in Public Administration"
+                }, 
+                {
+                    "code": "PUB 5013", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PUB/5013", 
+                    "name": "County and Rural Government"
+                }, 
+                {
+                    "code": "PUB 5014", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PUB/5014", 
+                    "name": "The U.S.Federal Government"
+                }, 
+                {
+                    "code": "PUB 5015", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PUB/5015", 
+                    "name": "Grant Writing"
+                }, 
+                {
+                    "code": "PUB 6010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/PUB/6010", 
+                    "name": "Public Administration Research Project"
+                }
+            ], 
+            "name": "Public Administration", 
+            "url": "http://www.chegg.com/courses/ncu/PUB"
+        }, 
+        {
+            "abbr": "RSH", 
+            "courses": [
+                {
+                    "code": "RSH 930", 
+                    "course_url": "http://www.chegg.com/courses/ncu/RSH/930", 
+                    "name": "Research Publication"
+                }, 
+                {
+                    "code": "RSH 1000E", 
+                    "course_url": "http://www.chegg.com/courses/ncu/RSH/1000E", 
+                    "name": "Education Research Design I"
+                }, 
+                {
+                    "code": "RSH 2000E", 
+                    "course_url": "http://www.chegg.com/courses/ncu/RSH/2000E", 
+                    "name": "Educational Research Design II"
+                }, 
+                {
+                    "code": "RSH 3000E", 
+                    "course_url": "http://www.chegg.com/courses/ncu/RSH/3000E", 
+                    "name": "Educational Research Design III"
+                }, 
+                {
+                    "code": "RSH 4000E", 
+                    "course_url": "http://www.chegg.com/courses/ncu/RSH/4000E", 
+                    "name": "Educational Research Design IV"
+                }, 
+                {
+                    "code": "RSH 8910B", 
+                    "course_url": "http://www.chegg.com/courses/ncu/RSH/8910B", 
+                    "name": "Phenomenological Qualitative Research"
+                }, 
+                {
+                    "code": "RSH 8951", 
+                    "course_url": "http://www.chegg.com/courses/ncu/RSH/8951", 
+                    "name": "B Research Questions,Constructs and Design"
+                }, 
+                {
+                    "code": "RSH 8951MFT", 
+                    "course_url": "http://www.chegg.com/courses/ncu/RSH/8951MFT", 
+                    "name": "Research Questions,Constructs and Design"
+                }, 
+                {
+                    "code": "RSH 8952", 
+                    "course_url": "http://www.chegg.com/courses/ncu/RSH/8952", 
+                    "name": "B Measurement of Constructs and Concept Paper"
+                }, 
+                {
+                    "code": "RSH 8952MFT", 
+                    "course_url": "http://www.chegg.com/courses/ncu/RSH/8952MFT", 
+                    "name": "Measurement of Constructs and Concept Paper"
+                }, 
+                {
+                    "code": "RSH 8953", 
+                    "course_url": "http://www.chegg.com/courses/ncu/RSH/8953", 
+                    "name": "B-Design,Statistics and Data Analysis"
+                }, 
+                {
+                    "code": "RSH 8953MFT", 
+                    "course_url": "http://www.chegg.com/courses/ncu/RSH/8953MFT", 
+                    "name": "Design,Statistics and Data Analysis"
+                }, 
+                {
+                    "code": "RSH 8954", 
+                    "course_url": "http://www.chegg.com/courses/ncu/RSH/8954", 
+                    "name": "B-Research Ethics and Proposal"
+                }, 
+                {
+                    "code": "RSH 8954MFT", 
+                    "course_url": "http://www.chegg.com/courses/ncu/RSH/8954MFT", 
+                    "name": "Research Ethics and Dissertation Proposal Draft"
+                }, 
+                {
+                    "code": "RSH 9030", 
+                    "course_url": "http://www.chegg.com/courses/ncu/RSH/9030", 
+                    "name": "Research Publication"
+                }, 
+                {
+                    "code": "RSH 9900B", 
+                    "course_url": "http://www.chegg.com/courses/ncu/RSH/9900B", 
+                    "name": "Historical Research Methodology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ncu/RSH"
+        }, 
+        {
+            "abbr": "SML", 
+            "courses": [
+                {
+                    "code": "SML 7000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SML/7000", 
+                    "name": "The Pre Game Warm up to Sports Management"
+                }, 
+                {
+                    "code": "SML 7001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SML/7001", 
+                    "name": "Leadership in Collegiate Athletics"
+                }, 
+                {
+                    "code": "SML 7002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SML/7002", 
+                    "name": "Leadership and the Professional World of Sports"
+                }, 
+                {
+                    "code": "SML 7003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SML/7003", 
+                    "name": "Sports Leadership and Ethics"
+                }, 
+                {
+                    "code": "SML 7004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SML/7004", 
+                    "name": "Advising the Student Athlete"
+                }, 
+                {
+                    "code": "SML 7005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SML/7005", 
+                    "name": "Sports Revenue Management and Leadership"
+                }, 
+                {
+                    "code": "SML 7006", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SML/7006", 
+                    "name": "The High School AD:Leading in a Time of Change"
+                }, 
+                {
+                    "code": "SML 7007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SML/7007", 
+                    "name": "Level the Playing Field:Diversity in Sports"
+                }, 
+                {
+                    "code": "SML 7008", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SML/7008", 
+                    "name": "Leadership and the International Sports Organization"
+                }, 
+                {
+                    "code": "SML 7009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SML/7009", 
+                    "name": "Sports Broadcasting"
+                }, 
+                {
+                    "code": "SML 7010", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SML/7010", 
+                    "name": "Leading a Professional Baseball Organization"
+                }, 
+                {
+                    "code": "SML 7011", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SML/7011", 
+                    "name": "Salary Capology"
+                }, 
+                {
+                    "code": "SML 7012", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SML/7012", 
+                    "name": "The Essentials of the Law in Sports"
+                }, 
+                {
+                    "code": "SML 7013", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SML/7013", 
+                    "name": "The Economics of Sports"
+                }, 
+                {
+                    "code": "SML 7014", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SML/7014", 
+                    "name": "Fiscal Responsibility and Sports Stewardship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ncu/SML"
+        }, 
+        {
+            "abbr": "SS", 
+            "courses": [
+                {
+                    "code": "SS 1003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SS/1003", 
+                    "name": "Marriage and Family"
+                }, 
+                {
+                    "code": "SS 1004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SS/1004", 
+                    "name": "Sociology"
+                }, 
+                {
+                    "code": "SS 1005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SS/1005", 
+                    "name": "Psychology of Adjustment"
+                }, 
+                {
+                    "code": "SS 1007", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SS/1007", 
+                    "name": "Psychology in Business"
+                }, 
+                {
+                    "code": "SS 1009", 
+                    "course_url": "http://www.chegg.com/courses/ncu/SS/1009", 
+                    "name": "Introduction to Cultures"
+                }
+            ], 
+            "name": "Social Science", 
+            "url": "http://www.chegg.com/courses/ncu/SS"
+        }, 
+        {
+            "abbr": "TDL", 
+            "courses": [
+                {
+                    "code": "TDL 7000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/TDL/7000", 
+                    "name": "Human Performance:Paradigms and Possibilities"
+                }, 
+                {
+                    "code": "TDL 7001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/TDL/7001", 
+                    "name": "Workplace/workforce:Creating Common Ground"
+                }, 
+                {
+                    "code": "TDL 7002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/TDL/7002", 
+                    "name": "Strategic Links for Successful Training"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ncu/TDL"
+        }, 
+        {
+            "abbr": "TL", 
+            "courses": [
+                {
+                    "code": "TL 5000", 
+                    "course_url": "http://www.chegg.com/courses/ncu/TL/5000", 
+                    "name": "Teacher Leadership:The Teacher as Leader"
+                }, 
+                {
+                    "code": "TL 5001", 
+                    "course_url": "http://www.chegg.com/courses/ncu/TL/5001", 
+                    "name": "Teacher Leadership:The Teacher as Mentor"
+                }, 
+                {
+                    "code": "TL 5002", 
+                    "course_url": "http://www.chegg.com/courses/ncu/TL/5002", 
+                    "name": "Teacher Leadership:The Teacher as Change Agent"
+                }, 
+                {
+                    "code": "TL 5003", 
+                    "course_url": "http://www.chegg.com/courses/ncu/TL/5003", 
+                    "name": "Teacher Leadership:The Teacher as Trainer"
+                }, 
+                {
+                    "code": "TL 5004", 
+                    "course_url": "http://www.chegg.com/courses/ncu/TL/5004", 
+                    "name": "Teacher Leadership:Standards and Best Practices"
+                }, 
+                {
+                    "code": "TL 5005", 
+                    "course_url": "http://www.chegg.com/courses/ncu/TL/5005", 
+                    "name": "Teacher Leadership:Technology for Teacher Leadership"
+                }
+            ], 
+            "name": "T E S O L", 
+            "url": "http://www.chegg.com/courses/ncu/TL"
+        }
+    ], 
+    "name": "ncu"
+}

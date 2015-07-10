@@ -1,0 +1,4120 @@
+{
+    "all_stats": {
+        "num_courses": 734, 
+        "num_departments": 63
+    }, 
+    "departments": [
+        {
+            "abbr": "ACC", 
+            "courses": [
+                {
+                    "code": "ACC 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ACC/111", 
+                    "name": "Principles of Accounting I"
+                }, 
+                {
+                    "code": "ACC 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ACC/112", 
+                    "name": "Principles of Accounting II"
+                }, 
+                {
+                    "code": "ACC 113", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ACC/113", 
+                    "name": "Principles of Accounting III"
+                }, 
+                {
+                    "code": "ACC 120", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ACC/120", 
+                    "name": "Microcomputer Accounting Systems"
+                }, 
+                {
+                    "code": "ACC 205", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ACC/205", 
+                    "name": "Spreadsheet Accounting"
+                }, 
+                {
+                    "code": "ACC 211", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ACC/211", 
+                    "name": "Intermediate Accounting I"
+                }, 
+                {
+                    "code": "ACC 212", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ACC/212", 
+                    "name": "Intermediate Accounting II"
+                }, 
+                {
+                    "code": "ACC 213", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ACC/213", 
+                    "name": "Intermediate Accounting III"
+                }, 
+                {
+                    "code": "ACC 221", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ACC/221", 
+                    "name": "Tax Accounting I"
+                }, 
+                {
+                    "code": "ACC 222", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ACC/222", 
+                    "name": "Tax Accounting II"
+                }, 
+                {
+                    "code": "ACC 233", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ACC/233", 
+                    "name": "Cost Accounting"
+                }, 
+                {
+                    "code": "ACC 250", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ACC/250", 
+                    "name": "Government and Nonprofit Accounting"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/clarkstate/ACC"
+        }, 
+        {
+            "abbr": "AGR", 
+            "courses": [
+                {
+                    "code": "AGR 19", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/19", 
+                    "name": "BAgricultural business"
+                }, 
+                {
+                    "code": "AGR 19E", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/19E", 
+                    "name": "Agricultural Engineering Co-op Experience I"
+                }, 
+                {
+                    "code": "AGR 19G", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/19G", 
+                    "name": "Golf Course Co-op Experience I"
+                }, 
+                {
+                    "code": "AGR 19L", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/19L", 
+                    "name": "Landscape Design Co-op Experience I"
+                }, 
+                {
+                    "code": "AGR 19N", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/19N", 
+                    "name": "Nursery Operations Co-op Experience I"
+                }, 
+                {
+                    "code": "AGR 19P", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/19P", 
+                    "name": "Parks and Recreation Co-op Experience I"
+                }, 
+                {
+                    "code": "AGR 19T", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/19T", 
+                    "name": "Turf and Landscape operations Co-op Experience I"
+                }, 
+                {
+                    "code": "AGR 29E", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/29E", 
+                    "name": "Agricultural Engineering Co-op Experience II"
+                }, 
+                {
+                    "code": "AGR 29G", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/29G", 
+                    "name": "Golf Course Co-op Experience II"
+                }, 
+                {
+                    "code": "AGR 29L", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/29L", 
+                    "name": "Landscape Design Co-op Experience II"
+                }, 
+                {
+                    "code": "AGR 29N", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/29N", 
+                    "name": "Nursery operations Co-op Experience II"
+                }, 
+                {
+                    "code": "AGR 29P", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/29P", 
+                    "name": "Parks and Recreation Co-op Experience II"
+                }, 
+                {
+                    "code": "AGR 29T", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/29T", 
+                    "name": "Turf and Landscape operations Co-op Experience I"
+                }, 
+                {
+                    "code": "AGR 29b", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/29b", 
+                    "name": "Agribusiness Co-op Experience II"
+                }, 
+                {
+                    "code": "AGR 104", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/104", 
+                    "name": "Agricultural Survey and Employment Skills"
+                }, 
+                {
+                    "code": "AGR 105", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/105", 
+                    "name": "Principles of Ag Sales I"
+                }, 
+                {
+                    "code": "AGR 106", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/106", 
+                    "name": "Principles of Ag Sales II"
+                }, 
+                {
+                    "code": "AGR 108", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/108", 
+                    "name": "Technical Math for Agriculture"
+                }, 
+                {
+                    "code": "AGR 109", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/109", 
+                    "name": "Animal Agriculture"
+                }, 
+                {
+                    "code": "AGR 115", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/115", 
+                    "name": "Welding"
+                }, 
+                {
+                    "code": "AGR 122", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/122", 
+                    "name": "Plant Pests"
+                }, 
+                {
+                    "code": "AGR 133", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/133", 
+                    "name": "Turf Science"
+                }, 
+                {
+                    "code": "AGR 143", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/143", 
+                    "name": "Landscape Plant Materials"
+                }, 
+                {
+                    "code": "AGR 145", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/145", 
+                    "name": "Herbaceous Plant Materials"
+                }, 
+                {
+                    "code": "AGR 150", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/150", 
+                    "name": "Soil Science"
+                }, 
+                {
+                    "code": "AGR 151", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/151", 
+                    "name": "Soil Fertility"
+                }, 
+                {
+                    "code": "AGR 174", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/174", 
+                    "name": "Agribusiness Principles"
+                }, 
+                {
+                    "code": "AGR 187", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/187", 
+                    "name": "Small Gas Engines"
+                }, 
+                {
+                    "code": "AGR 189", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/189", 
+                    "name": "Applied Practices in Agriculture I"
+                }, 
+                {
+                    "code": "AGR 206", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/206", 
+                    "name": "Agribusiness Marketing"
+                }, 
+                {
+                    "code": "AGR 214", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/214", 
+                    "name": "Crop Production"
+                }, 
+                {
+                    "code": "AGR 219", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/219", 
+                    "name": "Landscape Construction"
+                }, 
+                {
+                    "code": "AGR 224", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/224", 
+                    "name": "Irrigation Systems"
+                }, 
+                {
+                    "code": "AGR 225", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/225", 
+                    "name": "Landscape Maintenance"
+                }, 
+                {
+                    "code": "AGR 226", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/226", 
+                    "name": "Landscape Design"
+                }, 
+                {
+                    "code": "AGR 231", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/231", 
+                    "name": "Plant Propagation"
+                }, 
+                {
+                    "code": "AGR 236", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/236", 
+                    "name": "Turfgrass Management"
+                }, 
+                {
+                    "code": "AGR 245", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/245", 
+                    "name": "Advanced Welding"
+                }, 
+                {
+                    "code": "AGR 252", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/252", 
+                    "name": "Equipment Maintenance and"
+                }, 
+                {
+                    "code": "AGR 253", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/253", 
+                    "name": "Pest Management"
+                }, 
+                {
+                    "code": "AGR 262", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/262", 
+                    "name": "International Ag Trade"
+                }, 
+                {
+                    "code": "AGR 284", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/284", 
+                    "name": "Agribusiness Management"
+                }, 
+                {
+                    "code": "AGR 287", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/287", 
+                    "name": "Computer Aided Landscape Design"
+                }, 
+                {
+                    "code": "AGR 289", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/289", 
+                    "name": "Applied Practices in Agriculture II"
+                }, 
+                {
+                    "code": "AGR 295", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/295", 
+                    "name": "Agriculture Capstone Seminar"
+                }, 
+                {
+                    "code": "AGR 297", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/297", 
+                    "name": "Landscape Design II"
+                }, 
+                {
+                    "code": "AGR 298", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/AGR/298", 
+                    "name": "Applied Practices in Agriculture III"
+                }
+            ], 
+            "name": "Agr Agriculture", 
+            "url": "http://www.chegg.com/courses/clarkstate/AGR"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ART/111", 
+                    "name": "Drawing I"
+                }, 
+                {
+                    "code": "ART 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ART/112", 
+                    "name": "Drawing II"
+                }, 
+                {
+                    "code": "ART 113", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ART/113", 
+                    "name": "Drawing III"
+                }, 
+                {
+                    "code": "ART 114", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ART/114", 
+                    "name": "Drawing IV"
+                }, 
+                {
+                    "code": "ART 130", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ART/130", 
+                    "name": "Appreciation of the Arts"
+                }, 
+                {
+                    "code": "ART 133", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ART/133", 
+                    "name": "Art History I"
+                }, 
+                {
+                    "code": "ART 134", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ART/134", 
+                    "name": "Art History II"
+                }, 
+                {
+                    "code": "ART 135", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ART/135", 
+                    "name": "Art History III"
+                }, 
+                {
+                    "code": "ART 213", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ART/213", 
+                    "name": "Painting I"
+                }, 
+                {
+                    "code": "ART 214", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ART/214", 
+                    "name": "Painting II"
+                }, 
+                {
+                    "code": "ART 215", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ART/215", 
+                    "name": "Painting III"
+                }, 
+                {
+                    "code": "ART 216", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ART/216", 
+                    "name": "Painting IV"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/clarkstate/ART"
+        }, 
+        {
+            "abbr": "ATI", 
+            "courses": [
+                {
+                    "code": "ATI 101", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ATI/101", 
+                    "name": "Introduction to the Intelligence Community"
+                }, 
+                {
+                    "code": "ATI 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ATI/110", 
+                    "name": "Fundamentals of Remote Sensing in Intelligence"
+                }, 
+                {
+                    "code": "ATI 210", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ATI/210", 
+                    "name": "Introduction to Spectral Sensing w/Applications in Intelligence"
+                }, 
+                {
+                    "code": "ATI 215", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ATI/215", 
+                    "name": "Introduction to Radar for MASINT"
+                }, 
+                {
+                    "code": "ATI 220", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ATI/220", 
+                    "name": "Introduction to overhead Non-Imaging Infrared"
+                }, 
+                {
+                    "code": "ATI 225", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ATI/225", 
+                    "name": "MASINT Fundamentals"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/clarkstate/ATI"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 105", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/BIO/105", 
+                    "name": "Fundamentals of Anatomy and Physiology"
+                }, 
+                {
+                    "code": "BIO 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/BIO/110", 
+                    "name": "Fundamentals of Human biology"
+                }, 
+                {
+                    "code": "BIO 118", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/BIO/118", 
+                    "name": "Muscle Function"
+                }, 
+                {
+                    "code": "BIO 121", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/BIO/121", 
+                    "name": "Anatomy and Physiology I"
+                }, 
+                {
+                    "code": "BIO 122", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/BIO/122", 
+                    "name": "Anatomy and Physiology II"
+                }, 
+                {
+                    "code": "BIO 123", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/BIO/123", 
+                    "name": "Anatomy and Physiology III"
+                }, 
+                {
+                    "code": "BIO 131", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/BIO/131", 
+                    "name": "Microbiology I"
+                }, 
+                {
+                    "code": "BIO 140", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/BIO/140", 
+                    "name": "Plant Science"
+                }, 
+                {
+                    "code": "BIO 141", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/BIO/141", 
+                    "name": "Evolution,Diversity and Ecology"
+                }, 
+                {
+                    "code": "BIO 142", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/BIO/142", 
+                    "name": "The Human organism ()"
+                }, 
+                {
+                    "code": "BIO 143", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/BIO/143", 
+                    "name": "Cell Biology/Genetics"
+                }, 
+                {
+                    "code": "BIO 151", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/BIO/151", 
+                    "name": "Evolution and Ecology"
+                }, 
+                {
+                    "code": "BIO 152", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/BIO/152", 
+                    "name": "Human and Animal Anatomy"
+                }, 
+                {
+                    "code": "BIO 153", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/BIO/153", 
+                    "name": "Cellular Biology and Genetics"
+                }, 
+                {
+                    "code": "BIO 230", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/BIO/230", 
+                    "name": "Biomechanics"
+                }, 
+                {
+                    "code": "BIO 295", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/BIO/295", 
+                    "name": "Special Topics in biology:Field Experience"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/clarkstate/BIO"
+        }, 
+        {
+            "abbr": "CHM", 
+            "courses": [
+                {
+                    "code": "CHM 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CHM/110", 
+                    "name": "Fundamentals of Chemistry"
+                }, 
+                {
+                    "code": "CHM 114", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CHM/114", 
+                    "name": "Introduction to General Chemistry Review"
+                }, 
+                {
+                    "code": "CHM 115", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CHM/115", 
+                    "name": "Introduction to General Chemistry"
+                }, 
+                {
+                    "code": "CHM 116", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CHM/116", 
+                    "name": "Introduction to organic and biological Chemistry"
+                }, 
+                {
+                    "code": "CHM 121", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CHM/121", 
+                    "name": "General Chemistry I"
+                }, 
+                {
+                    "code": "CHM 122", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CHM/122", 
+                    "name": "General Chemistry II"
+                }, 
+                {
+                    "code": "CHM 123", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CHM/123", 
+                    "name": "General Chemistry III"
+                }, 
+                {
+                    "code": "CHM 211", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CHM/211", 
+                    "name": "organic Chemistry I"
+                }, 
+                {
+                    "code": "CHM 212", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CHM/212", 
+                    "name": "Chemistry II"
+                }, 
+                {
+                    "code": "CHM 213", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CHM/213", 
+                    "name": "Chemistry III"
+                }
+            ], 
+            "name": "Chm-Chemistry", 
+            "url": "http://www.chegg.com/courses/clarkstate/CHM"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/COM/111", 
+                    "name": "Interpersonal Communication"
+                }, 
+                {
+                    "code": "COM 121", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/COM/121", 
+                    "name": "Public Speaking I"
+                }, 
+                {
+                    "code": "COM 131", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/COM/131", 
+                    "name": "Introduction to Mass Communication"
+                }, 
+                {
+                    "code": "COM 200", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/COM/200", 
+                    "name": "basic Reporting and News Writing"
+                }, 
+                {
+                    "code": "COM 221", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/COM/221", 
+                    "name": "Public Speaking II"
+                }, 
+                {
+                    "code": "COM 270", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/COM/270", 
+                    "name": "Communication Internship"
+                }
+            ], 
+            "name": "Communication", 
+            "url": "http://www.chegg.com/courses/clarkstate/COM"
+        }, 
+        {
+            "abbr": "COR", 
+            "courses": [
+                {
+                    "code": "COR 100", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/COR/100", 
+                    "name": "Introduction to Corrections"
+                }, 
+                {
+                    "code": "COR 105", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/COR/105", 
+                    "name": "Probation and Parole"
+                }, 
+                {
+                    "code": "COR 130", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/COR/130", 
+                    "name": "Adult/juvenile Corrections"
+                }, 
+                {
+                    "code": "COR 280", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/COR/280", 
+                    "name": "Jail Practicum"
+                }, 
+                {
+                    "code": "COR 281", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/COR/281", 
+                    "name": "juvenile Institutions Practicum"
+                }, 
+                {
+                    "code": "COR 282", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/COR/282", 
+                    "name": "Adult Institutions Practicum"
+                }
+            ], 
+            "name": "Cor Correct & Juv Jus Studies", 
+            "url": "http://www.chegg.com/courses/clarkstate/COR"
+        }, 
+        {
+            "abbr": "CPE", 
+            "courses": [
+                {
+                    "code": "CPE 061", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CPE/061", 
+                    "name": "Reading Comprehension I"
+                }, 
+                {
+                    "code": "CPE 062", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CPE/062", 
+                    "name": "Reading Comprehension II"
+                }, 
+                {
+                    "code": "CPE 071", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CPE/071", 
+                    "name": "Writing Fundamentals"
+                }, 
+                {
+                    "code": "CPE 072", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CPE/072", 
+                    "name": "Writing Fundamentals II"
+                }, 
+                {
+                    "code": "CPE 091", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CPE/091", 
+                    "name": "Math Fundamentals"
+                }, 
+                {
+                    "code": "CPE 101", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CPE/101", 
+                    "name": "Introductory Algebra I"
+                }, 
+                {
+                    "code": "CPE 102", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CPE/102", 
+                    "name": "Introductory Algebra II"
+                }, 
+                {
+                    "code": "CPE 103", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CPE/103", 
+                    "name": "Introductory Algebra III"
+                }
+            ], 
+            "name": "Chemical & Paper Engineering", 
+            "url": "http://www.chegg.com/courses/clarkstate/CPE"
+        }, 
+        {
+            "abbr": "CRJ", 
+            "courses": [
+                {
+                    "code": "CRJ 100", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/100", 
+                    "name": "Introduction to Criminal justice"
+                }, 
+                {
+                    "code": "CRJ 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/112", 
+                    "name": "Traffic Management"
+                }, 
+                {
+                    "code": "CRJ 116", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/116", 
+                    "name": "Systems Approach to Computer Technology"
+                }, 
+                {
+                    "code": "CRJ 118", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/118", 
+                    "name": "Forensic Photography"
+                }, 
+                {
+                    "code": "CRJ 120", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/120", 
+                    "name": "Juvenile Procedures"
+                }, 
+                {
+                    "code": "CRJ 123", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/123", 
+                    "name": "Patrol operations"
+                }, 
+                {
+                    "code": "CRJ 125", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/125", 
+                    "name": "Community Policing"
+                }, 
+                {
+                    "code": "CRJ 201", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/201", 
+                    "name": "Police Administration"
+                }, 
+                {
+                    "code": "CRJ 216", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/216", 
+                    "name": "Community Relations"
+                }, 
+                {
+                    "code": "CRJ 221", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/221", 
+                    "name": "Forensic Science I"
+                }, 
+                {
+                    "code": "CRJ 223", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/223", 
+                    "name": "Forensic Science II"
+                }, 
+                {
+                    "code": "CRJ 226", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/226", 
+                    "name": "Interview and Interrogation"
+                }, 
+                {
+                    "code": "CRJ 228", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/228", 
+                    "name": "Criminal Investigation"
+                }, 
+                {
+                    "code": "CRJ 230", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/230", 
+                    "name": "Social justice"
+                }, 
+                {
+                    "code": "CRJ 231", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/231", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CRJ 232", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/232", 
+                    "name": "Ohio Criminal Code"
+                }, 
+                {
+                    "code": "CRJ 250", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/250", 
+                    "name": "Community Resources"
+                }, 
+                {
+                    "code": "CRJ 280", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/280", 
+                    "name": "Practicum"
+                }, 
+                {
+                    "code": "CRJ 287", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/287", 
+                    "name": "Basic Law Enforcement I"
+                }, 
+                {
+                    "code": "CRJ 289", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CRJ/289", 
+                    "name": "Basic Law Enforcement II"
+                }
+            ], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/clarkstate/CRJ"
+        }, 
+        {
+            "abbr": "CSD", 
+            "courses": [
+                {
+                    "code": "CSD 105", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/105", 
+                    "name": "Programming Fundamentals"
+                }, 
+                {
+                    "code": "CSD 106", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/106", 
+                    "name": "Introduction to Scripting Languages"
+                }, 
+                {
+                    "code": "CSD 121", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/121", 
+                    "name": "Visual Basic Programming I"
+                }, 
+                {
+                    "code": "CSD 122", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/122", 
+                    "name": "Visual Basic Programming II"
+                }, 
+                {
+                    "code": "CSD 140", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/140", 
+                    "name": "Database Design and Implementation"
+                }, 
+                {
+                    "code": "CSD 145", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/145", 
+                    "name": "Unix Concepts"
+                }, 
+                {
+                    "code": "CSD 150", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/150", 
+                    "name": "Database Administration"
+                }, 
+                {
+                    "code": "CSD 160", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/160", 
+                    "name": "Database Design"
+                }, 
+                {
+                    "code": "CSD 201", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/201", 
+                    "name": "oracle Database Development I"
+                }, 
+                {
+                    "code": "CSD 202", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/202", 
+                    "name": "oracle Database Development II"
+                }, 
+                {
+                    "code": "CSD 214", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/214", 
+                    "name": "C# Concepts I"
+                }, 
+                {
+                    "code": "CSD 215", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/215", 
+                    "name": "C# Concepts II"
+                }, 
+                {
+                    "code": "CSD 220", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/220", 
+                    "name": "Systems Analysis"
+                }, 
+                {
+                    "code": "CSD 222", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/222", 
+                    "name": "Systems Design"
+                }, 
+                {
+                    "code": "CSD 224", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/224", 
+                    "name": "Java Concepts I"
+                }, 
+                {
+                    "code": "CSD 225", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/225", 
+                    "name": "Java Concepts II"
+                }, 
+                {
+                    "code": "CSD 270", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/CSD/270", 
+                    "name": "Creating and Publishing Web Sites"
+                }
+            ], 
+            "name": "Comm Sci & Disorders", 
+            "url": "http://www.chegg.com/courses/clarkstate/CSD"
+        }, 
+        {
+            "abbr": "DAN", 
+            "courses": [
+                {
+                    "code": "DAN 100", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DAN/100", 
+                    "name": "Beginning Dance"
+                }, 
+                {
+                    "code": "DAN 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DAN/111", 
+                    "name": "Ballet I"
+                }, 
+                {
+                    "code": "DAN 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DAN/112", 
+                    "name": "Ballet II"
+                }, 
+                {
+                    "code": "DAN 113", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DAN/113", 
+                    "name": "Advanced Intermediate ballet"
+                }, 
+                {
+                    "code": "DAN 120", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DAN/120", 
+                    "name": "Modern Dance I"
+                }, 
+                {
+                    "code": "DAN 131", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DAN/131", 
+                    "name": "Dance II"
+                }, 
+                {
+                    "code": "DAN 132", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DAN/132", 
+                    "name": "Jazz Dance III"
+                }, 
+                {
+                    "code": "DAN 135", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DAN/135", 
+                    "name": "Tap Dance I"
+                }, 
+                {
+                    "code": "DAN 136", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DAN/136", 
+                    "name": "Tap Dance II"
+                }, 
+                {
+                    "code": "DAN 137", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DAN/137", 
+                    "name": "Tap Dance III"
+                }, 
+                {
+                    "code": "DAN 150", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DAN/150", 
+                    "name": "Composition I"
+                }, 
+                {
+                    "code": "DAN 160", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DAN/160", 
+                    "name": "Dance History"
+                }, 
+                {
+                    "code": "DAN 215", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DAN/215", 
+                    "name": "Pointe Technique I"
+                }
+            ], 
+            "name": "Dance", 
+            "url": "http://www.chegg.com/courses/clarkstate/DAN"
+        }, 
+        {
+            "abbr": "DFT", 
+            "courses": [
+                {
+                    "code": "DFT 101", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DFT/101", 
+                    "name": "Drafting I"
+                }, 
+                {
+                    "code": "DFT 102", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DFT/102", 
+                    "name": "Drafting II"
+                }, 
+                {
+                    "code": "DFT 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DFT/111", 
+                    "name": "Architecture I"
+                }, 
+                {
+                    "code": "DFT 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DFT/112", 
+                    "name": "Architecture II"
+                }, 
+                {
+                    "code": "DFT 203", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DFT/203", 
+                    "name": "Technical Publication"
+                }, 
+                {
+                    "code": "DFT 211", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DFT/211", 
+                    "name": "Computer-Aided Design I"
+                }, 
+                {
+                    "code": "DFT 212", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DFT/212", 
+                    "name": "Computer-Aided Design II"
+                }, 
+                {
+                    "code": "DFT 214", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DFT/214", 
+                    "name": "Solid Modeling"
+                }, 
+                {
+                    "code": "DFT 215", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/DFT/215", 
+                    "name": "Advanced Solid Modeling"
+                }
+            ], 
+            "name": "Drafting Technology", 
+            "url": "http://www.chegg.com/courses/clarkstate/DFT"
+        }, 
+        {
+            "abbr": "EBE", 
+            "courses": [
+                {
+                    "code": "EBE 100", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EBE/100", 
+                    "name": "Employability Skills"
+                }, 
+                {
+                    "code": "EBE 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EBE/110", 
+                    "name": "Prior Learning Portfolio Development"
+                }, 
+                {
+                    "code": "EBE 282", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EBE/282", 
+                    "name": "Co-op Education I"
+                }, 
+                {
+                    "code": "EBE 283", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EBE/283", 
+                    "name": "Co-op Education I"
+                }, 
+                {
+                    "code": "EBE 284", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EBE/284", 
+                    "name": "Co-op Education I"
+                }, 
+                {
+                    "code": "EBE 292", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EBE/292", 
+                    "name": "Co-Op Education II"
+                }, 
+                {
+                    "code": "EBE 293", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EBE/293", 
+                    "name": "Co-Op Education II"
+                }, 
+                {
+                    "code": "EBE 294", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EBE/294", 
+                    "name": "Co-Op Education II"
+                }
+            ], 
+            "name": "English/Essential Basic Skills", 
+            "url": "http://www.chegg.com/courses/clarkstate/EBE"
+        }, 
+        {
+            "abbr": "ECE", 
+            "courses": [
+                {
+                    "code": "ECE 101", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/101", 
+                    "name": "Professional Development for Educators"
+                }, 
+                {
+                    "code": "ECE 102", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/102", 
+                    "name": "Introduction to Early Childhood Education"
+                }, 
+                {
+                    "code": "ECE 108", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/108", 
+                    "name": "observing and Assessing Young Children"
+                }, 
+                {
+                    "code": "ECE 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/110", 
+                    "name": "Infant/Toddler Education"
+                }, 
+                {
+                    "code": "ECE 114", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/114", 
+                    "name": "Art,Music and the Child"
+                }, 
+                {
+                    "code": "ECE 115", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/115", 
+                    "name": "Resources in Early Childhood Education"
+                }, 
+                {
+                    "code": "ECE 120", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/120", 
+                    "name": "Language Development and the Child"
+                }, 
+                {
+                    "code": "ECE 210", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/210", 
+                    "name": "Children's Literature"
+                }, 
+                {
+                    "code": "ECE 211", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/211", 
+                    "name": "Sensory Motor Skills"
+                }, 
+                {
+                    "code": "ECE 213", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/213", 
+                    "name": "Health,Safety and Nutrition"
+                }, 
+                {
+                    "code": "ECE 215", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/215", 
+                    "name": "Math/Science Activities"
+                }, 
+                {
+                    "code": "ECE 220", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/220", 
+                    "name": "Early Literacy-A:Literacy-Rich Environments,Play & Language"
+                }, 
+                {
+                    "code": "ECE 221", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/221", 
+                    "name": "Early Literacy-b:Reading,Writing,& Phonics"
+                }, 
+                {
+                    "code": "ECE 222", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/222", 
+                    "name": "Early Literacy-C:Literacy Curriculum & Assessment"
+                }, 
+                {
+                    "code": "ECE 223", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/223", 
+                    "name": "Curriculum and Instruction in Early Childhood Education"
+                }, 
+                {
+                    "code": "ECE 224", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/224", 
+                    "name": "School-Age Curriculum"
+                }, 
+                {
+                    "code": "ECE 225", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/225", 
+                    "name": "Professional Legal Ethical Issues"
+                }, 
+                {
+                    "code": "ECE 230", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/230", 
+                    "name": "organizational Management"
+                }, 
+                {
+                    "code": "ECE 250", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/250", 
+                    "name": "Positive Guidance in Early Childhood"
+                }, 
+                {
+                    "code": "ECE 271", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/271", 
+                    "name": "ECE Practicum I"
+                }, 
+                {
+                    "code": "ECE 272", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/272", 
+                    "name": "ECE Practicum II"
+                }, 
+                {
+                    "code": "ECE 275", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/275", 
+                    "name": "Leadership and Mentoring in Early Childhood Programs"
+                }, 
+                {
+                    "code": "ECE 283", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/283", 
+                    "name": "Child Care Practicum-Administration"
+                }, 
+                {
+                    "code": "ECE 291", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/291", 
+                    "name": "Child Care Seminar I"
+                }, 
+                {
+                    "code": "ECE 292", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/292", 
+                    "name": "Child Care Seminar II"
+                }, 
+                {
+                    "code": "ECE 293", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECE/293", 
+                    "name": "Child Care Seminar-Administration"
+                }
+            ], 
+            "name": "Electrical & Computer Engr", 
+            "url": "http://www.chegg.com/courses/clarkstate/ECE"
+        }, 
+        {
+            "abbr": "ECO", 
+            "courses": [
+                {
+                    "code": "ECO 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECO/110", 
+                    "name": "General Economics"
+                }, 
+                {
+                    "code": "ECO 221", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECO/221", 
+                    "name": "Principles of Macroeconomics"
+                }, 
+                {
+                    "code": "ECO 222", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ECO/222", 
+                    "name": "Principles of Microeconomics"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/clarkstate/ECO"
+        }, 
+        {
+            "abbr": "EDU", 
+            "courses": [
+                {
+                    "code": "EDU 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EDU/110", 
+                    "name": "Introduction to Education"
+                }, 
+                {
+                    "code": "EDU 216", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EDU/216", 
+                    "name": "Technology for Educators"
+                }, 
+                {
+                    "code": "EDU 217", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EDU/217", 
+                    "name": "Individuals with Exceptionalities"
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/clarkstate/EDU"
+        }, 
+        {
+            "abbr": "EEP", 
+            "courses": [
+                {
+                    "code": "EEP 122", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EEP/122", 
+                    "name": "Diversity in Education"
+                }, 
+                {
+                    "code": "EEP 200", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EEP/200", 
+                    "name": "Educational Teaming:Working with Parents"
+                }, 
+                {
+                    "code": "EEP 228", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EEP/228", 
+                    "name": "Tutoring and Small Group Instruction"
+                }
+            ], 
+            "name": "Environmntl Econ & Policy", 
+            "url": "http://www.chegg.com/courses/clarkstate/EEP"
+        }, 
+        {
+            "abbr": "EMS", 
+            "courses": [
+                {
+                    "code": "EMS 100", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/100", 
+                    "name": "EMT-basic Theory and Practice"
+                }, 
+                {
+                    "code": "EMS 107", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/107", 
+                    "name": "EMT Intermediate Theory/Practice I"
+                }, 
+                {
+                    "code": "EMS 108", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/108", 
+                    "name": "EMT Intermediate Theory/Practice II"
+                }, 
+                {
+                    "code": "EMS 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/110", 
+                    "name": "Health and Health Emergencies"
+                }, 
+                {
+                    "code": "EMS 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/112", 
+                    "name": "Paramedic Hospital Practice I"
+                }, 
+                {
+                    "code": "EMS 113", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/113", 
+                    "name": "EMT Intermediate Hospital Field Practice"
+                }, 
+                {
+                    "code": "EMS 114", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/114", 
+                    "name": "Paramedic Hospital Practice II"
+                }, 
+                {
+                    "code": "EMS 116", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/116", 
+                    "name": "Paramedic Hospital Practice III"
+                }, 
+                {
+                    "code": "EMS 118", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/118", 
+                    "name": "Paramedic Field Practice I"
+                }, 
+                {
+                    "code": "EMS 120", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/120", 
+                    "name": "Paramedic Field Practice II"
+                }, 
+                {
+                    "code": "EMS 122", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/122", 
+                    "name": "Paramedic Field Practice III"
+                }, 
+                {
+                    "code": "EMS 131", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/131", 
+                    "name": "Paramedic Theory I"
+                }, 
+                {
+                    "code": "EMS 132", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/132", 
+                    "name": "Paramedic Practical Skills Lab I"
+                }, 
+                {
+                    "code": "EMS 133", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/133", 
+                    "name": "Paramedic Theory II"
+                }, 
+                {
+                    "code": "EMS 134", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/134", 
+                    "name": "Paramedic Practical Skills Lab II"
+                }, 
+                {
+                    "code": "EMS 135", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/135", 
+                    "name": "Paramedic Theory III"
+                }, 
+                {
+                    "code": "EMS 136", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/136", 
+                    "name": "Paramedic Practical Skills Lab III"
+                }, 
+                {
+                    "code": "EMS 171", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/171", 
+                    "name": "Basic Life Support:CPR"
+                }, 
+                {
+                    "code": "EMS 220", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/220", 
+                    "name": "EMS Pharmacology"
+                }, 
+                {
+                    "code": "EMS 225", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/225", 
+                    "name": "Advanced Patient Assessment"
+                }, 
+                {
+                    "code": "EMS 240", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/240", 
+                    "name": "Hazardous Material/Disaster Management"
+                }, 
+                {
+                    "code": "EMS 250", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/250", 
+                    "name": "EMS Legal Insights"
+                }, 
+                {
+                    "code": "EMS 288", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/EMS/288", 
+                    "name": "Paramedic Theory/RNs"
+                }
+            ], 
+            "name": "Early Modern Studies", 
+            "url": "http://www.chegg.com/courses/clarkstate/EMS"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENG/111", 
+                    "name": "English I"
+                }, 
+                {
+                    "code": "ENG 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENG/112", 
+                    "name": "English II"
+                }, 
+                {
+                    "code": "ENG 130", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENG/130", 
+                    "name": "Introduction to Literature"
+                }, 
+                {
+                    "code": "ENG 135", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENG/135", 
+                    "name": "Business Report Writing"
+                }, 
+                {
+                    "code": "ENG 221", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENG/221", 
+                    "name": "Business Communication"
+                }, 
+                {
+                    "code": "ENG 223", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENG/223", 
+                    "name": "Technical Report Writing"
+                }, 
+                {
+                    "code": "ENG 225", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENG/225", 
+                    "name": "Creative Writing"
+                }, 
+                {
+                    "code": "ENG 230", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENG/230", 
+                    "name": "Great books:World Literature"
+                }, 
+                {
+                    "code": "ENG 231", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENG/231", 
+                    "name": "Great books of World Literature:Honors"
+                }, 
+                {
+                    "code": "ENG 241", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENG/241", 
+                    "name": "Poetry"
+                }, 
+                {
+                    "code": "ENG 243", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENG/243", 
+                    "name": "Fiction"
+                }, 
+                {
+                    "code": "ENG 245", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENG/245", 
+                    "name": "Drama"
+                }, 
+                {
+                    "code": "ENG 250", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENG/250", 
+                    "name": "American Literature"
+                }, 
+                {
+                    "code": "ENG 261", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENG/261", 
+                    "name": "British Literature to 1700"
+                }, 
+                {
+                    "code": "ENG 262", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENG/262", 
+                    "name": "Present"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/clarkstate/ENG"
+        }, 
+        {
+            "abbr": "ENT", 
+            "courses": [
+                {
+                    "code": "ENT 25", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/25", 
+                    "name": "Circuits and Machines"
+                }, 
+                {
+                    "code": "ENT 100", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/100", 
+                    "name": "World Class Manufacturing"
+                }, 
+                {
+                    "code": "ENT 101", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/101", 
+                    "name": "Engineering Methods"
+                }, 
+                {
+                    "code": "ENT 109", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/109", 
+                    "name": "Manufacturing Laboratory"
+                }, 
+                {
+                    "code": "ENT 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/110", 
+                    "name": "Manufacturing Processes"
+                }, 
+                {
+                    "code": "ENT 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/111", 
+                    "name": "Engineering Materials"
+                }, 
+                {
+                    "code": "ENT 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/112", 
+                    "name": "Metal Fabrication"
+                }, 
+                {
+                    "code": "ENT 121", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/121", 
+                    "name": "Computer Basics for Applied Technology"
+                }, 
+                {
+                    "code": "ENT 125", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/125", 
+                    "name": "Computerized Maintenance Management Systems"
+                }, 
+                {
+                    "code": "ENT 207", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/207", 
+                    "name": "HVAC-Refrigeration"
+                }, 
+                {
+                    "code": "ENT 210", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/210", 
+                    "name": "Engineering Statistics"
+                }, 
+                {
+                    "code": "ENT 211", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/211", 
+                    "name": "Statics"
+                }, 
+                {
+                    "code": "ENT 212", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/212", 
+                    "name": "Finite Element Modeling"
+                }, 
+                {
+                    "code": "ENT 213", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/213", 
+                    "name": "Strength of Materials"
+                }, 
+                {
+                    "code": "ENT 221", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/221", 
+                    "name": "Computer Numerical Control"
+                }, 
+                {
+                    "code": "ENT 222", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/222", 
+                    "name": "Computer-Aided Manufacturing"
+                }, 
+                {
+                    "code": "ENT 261", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/261", 
+                    "name": "Engineering Mechanics I"
+                }, 
+                {
+                    "code": "ENT 262", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ENT/262", 
+                    "name": "Engineering Mechanics II"
+                }
+            ], 
+            "name": "Entrepreneurship", 
+            "url": "http://www.chegg.com/courses/clarkstate/ENT"
+        }, 
+        {
+            "abbr": "FRN", 
+            "courses": [
+                {
+                    "code": "FRN 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/FRN/111", 
+                    "name": "French I"
+                }, 
+                {
+                    "code": "FRN 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/FRN/112", 
+                    "name": "French II"
+                }, 
+                {
+                    "code": "FRN 113", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/FRN/113", 
+                    "name": "French III"
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/clarkstate/FRN"
+        }, 
+        {
+            "abbr": "GEO", 
+            "courses": [
+                {
+                    "code": "GEO 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GEO/110", 
+                    "name": "World Human Geography"
+                }, 
+                {
+                    "code": "GEO 220", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GEO/220", 
+                    "name": "World Regional Geography"
+                }
+            ], 
+            "name": "Geography", 
+            "url": "http://www.chegg.com/courses/clarkstate/GEO"
+        }, 
+        {
+            "abbr": "GER", 
+            "courses": [
+                {
+                    "code": "GER 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GER/111", 
+                    "name": "German I"
+                }
+            ], 
+            "name": "German", 
+            "url": "http://www.chegg.com/courses/clarkstate/GER"
+        }, 
+        {
+            "abbr": "GLG", 
+            "courses": [
+                {
+                    "code": "GLG 114", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GLG/114", 
+                    "name": "Ohio Field Geology"
+                }, 
+                {
+                    "code": "GLG 129", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GLG/129", 
+                    "name": "Survey of Earth Science"
+                }, 
+                {
+                    "code": "GLG 130", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GLG/130", 
+                    "name": "Earth and Space Science"
+                }, 
+                {
+                    "code": "GLG 131", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GLG/131", 
+                    "name": "Physical Geology"
+                }, 
+                {
+                    "code": "GLG 132", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GLG/132", 
+                    "name": "Historical Geology"
+                }, 
+                {
+                    "code": "GLG 133", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GLG/133", 
+                    "name": "Environmental Geology"
+                }
+            ], 
+            "name": "Geology", 
+            "url": "http://www.chegg.com/courses/clarkstate/GLG"
+        }, 
+        {
+            "abbr": "GPH", 
+            "courses": [
+                {
+                    "code": "GPH 100", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GPH/100", 
+                    "name": "Introduction to Graphic Design"
+                }, 
+                {
+                    "code": "GPH 105", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GPH/105", 
+                    "name": "Design Fundamentals"
+                }, 
+                {
+                    "code": "GPH 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GPH/110", 
+                    "name": "Digital Illustration"
+                }, 
+                {
+                    "code": "GPH 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GPH/112", 
+                    "name": "Digital Typography I"
+                }, 
+                {
+                    "code": "GPH 114", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GPH/114", 
+                    "name": "Digital Typography II"
+                }, 
+                {
+                    "code": "GPH 120", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GPH/120", 
+                    "name": "Logo,Symbol,Corporate ID"
+                }, 
+                {
+                    "code": "GPH 201", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GPH/201", 
+                    "name": "Electronic Imagery I"
+                }, 
+                {
+                    "code": "GPH 202", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GPH/202", 
+                    "name": "Electronic Imagery II"
+                }, 
+                {
+                    "code": "GPH 203", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GPH/203", 
+                    "name": "Electronic Imagery III"
+                }, 
+                {
+                    "code": "GPH 205", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GPH/205", 
+                    "name": "Advertising Layout"
+                }, 
+                {
+                    "code": "GPH 211", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GPH/211", 
+                    "name": "Computer Layout I"
+                }, 
+                {
+                    "code": "GPH 212", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GPH/212", 
+                    "name": "Computer Layout II"
+                }, 
+                {
+                    "code": "GPH 220", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GPH/220", 
+                    "name": "Illustration Techniques"
+                }, 
+                {
+                    "code": "GPH 251", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GPH/251", 
+                    "name": "Professional Development I"
+                }, 
+                {
+                    "code": "GPH 252", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GPH/252", 
+                    "name": "Professional Development II"
+                }, 
+                {
+                    "code": "GPH 285", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/GPH/285", 
+                    "name": "Graphic Design Internship"
+                }
+            ], 
+            "name": "Physical Geography", 
+            "url": "http://www.chegg.com/courses/clarkstate/GPH"
+        }, 
+        {
+            "abbr": "HON", 
+            "courses": [
+                {
+                    "code": "HON 291", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HON/291", 
+                    "name": "Science and Religion"
+                }, 
+                {
+                    "code": "HON 292", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HON/292", 
+                    "name": "Literature,Gender & Humanism"
+                }, 
+                {
+                    "code": "HON 294", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HON/294", 
+                    "name": "Science,Humanity and Technology"
+                }
+            ], 
+            "name": "Honors", 
+            "url": "http://www.chegg.com/courses/clarkstate/HON"
+        }, 
+        {
+            "abbr": "HRM", 
+            "courses": [
+                {
+                    "code": "HRM 225", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HRM/225", 
+                    "name": "Human Resource Management"
+                }, 
+                {
+                    "code": "HRM 230", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HRM/230", 
+                    "name": "Training and Development"
+                }, 
+                {
+                    "code": "HRM 235", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HRM/235", 
+                    "name": "Employment Law"
+                }, 
+                {
+                    "code": "HRM 240", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HRM/240", 
+                    "name": "Staffing"
+                }, 
+                {
+                    "code": "HRM 245", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HRM/245", 
+                    "name": "Compensation and Benefits"
+                }, 
+                {
+                    "code": "HRM 270", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HRM/270", 
+                    "name": "Human Resource Management Trends"
+                }
+            ], 
+            "name": "Hotel & Restaurant Mgmt", 
+            "url": "http://www.chegg.com/courses/clarkstate/HRM"
+        }, 
+        {
+            "abbr": "HST", 
+            "courses": [
+                {
+                    "code": "HST 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HST/111", 
+                    "name": "Western Civilization To the 14th Century"
+                }, 
+                {
+                    "code": "HST 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HST/112", 
+                    "name": "Western Civilization from the 14th through 18th Centuries"
+                }, 
+                {
+                    "code": "HST 113", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HST/113", 
+                    "name": "Western Civilization from 19th Century to the Present"
+                }, 
+                {
+                    "code": "HST 114", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HST/114", 
+                    "name": "Western Civilization To The 14th Century:Honors"
+                }, 
+                {
+                    "code": "HST 121", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HST/121", 
+                    "name": "American History to 1810"
+                }, 
+                {
+                    "code": "HST 122", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HST/122", 
+                    "name": "American History"
+                }, 
+                {
+                    "code": "HST 123", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HST/123", 
+                    "name": "American History 1900-Present"
+                }, 
+                {
+                    "code": "HST 220", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HST/220", 
+                    "name": "Topics in African-American History and Culture"
+                }
+            ], 
+            "name": "History - Cps", 
+            "url": "http://www.chegg.com/courses/clarkstate/HST"
+        }, 
+        {
+            "abbr": "HUM", 
+            "courses": [
+                {
+                    "code": "HUM 299", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/HUM/299", 
+                    "name": "Capstone Seminar"
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/clarkstate/HUM"
+        }, 
+        {
+            "abbr": "INT", 
+            "courses": [
+                {
+                    "code": "INT 100", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/100", 
+                    "name": "Mechanical Skills/Precision Measurement"
+                }, 
+                {
+                    "code": "INT 101", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/101", 
+                    "name": "Metrology I"
+                }, 
+                {
+                    "code": "INT 105", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/105", 
+                    "name": "Blueprint Reading & Schematics"
+                }, 
+                {
+                    "code": "INT 115", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/115", 
+                    "name": "Industrial Calculations"
+                }, 
+                {
+                    "code": "INT 120", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/120", 
+                    "name": "Hydraulics/Pneumatics I"
+                }, 
+                {
+                    "code": "INT 125", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/125", 
+                    "name": "Hydraulics/Pneumatics II"
+                }, 
+                {
+                    "code": "INT 126", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/126", 
+                    "name": "Piping Systems"
+                }, 
+                {
+                    "code": "INT 140", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/140", 
+                    "name": "Industrial Safety"
+                }, 
+                {
+                    "code": "INT 150", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/150", 
+                    "name": "Electrical Systems"
+                }, 
+                {
+                    "code": "INT 155", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/155", 
+                    "name": "Motors and Motor Controls"
+                }, 
+                {
+                    "code": "INT 158", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/158", 
+                    "name": "Electrical Distribution I"
+                }, 
+                {
+                    "code": "INT 159", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/159", 
+                    "name": "Electrical Distribution II"
+                }, 
+                {
+                    "code": "INT 170", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/170", 
+                    "name": "Mechanical Maintenance"
+                }, 
+                {
+                    "code": "INT 175", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/175", 
+                    "name": "Foundations of Digital Control"
+                }, 
+                {
+                    "code": "INT 200", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/200", 
+                    "name": "Robotics"
+                }, 
+                {
+                    "code": "INT 212", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/212", 
+                    "name": "Electronic Systems"
+                }, 
+                {
+                    "code": "INT 215", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/215", 
+                    "name": "Statistical Process Control"
+                }, 
+                {
+                    "code": "INT 225", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/225", 
+                    "name": "Industrial Electronics"
+                }, 
+                {
+                    "code": "INT 226", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/226", 
+                    "name": "Hydraulic Troubleshooting"
+                }, 
+                {
+                    "code": "INT 227", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/227", 
+                    "name": "Pneumatic Troubleshooting"
+                }, 
+                {
+                    "code": "INT 228", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/228", 
+                    "name": "Pump Systems"
+                }, 
+                {
+                    "code": "INT 230", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/230", 
+                    "name": "AC Electronic Motor Drives"
+                }, 
+                {
+                    "code": "INT 231", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/231", 
+                    "name": "DC Electronic Motor Drives"
+                }, 
+                {
+                    "code": "INT 249", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/249", 
+                    "name": "Programmable Logic Controllers"
+                }, 
+                {
+                    "code": "INT 251", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/251", 
+                    "name": "Programmable Logic Controllers"
+                }, 
+                {
+                    "code": "INT 252", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/252", 
+                    "name": "Automated Systems"
+                }, 
+                {
+                    "code": "INT 255", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/255", 
+                    "name": "Electrical Troubleshooting"
+                }, 
+                {
+                    "code": "INT 260", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/260", 
+                    "name": "Electrical Distribution III"
+                }, 
+                {
+                    "code": "INT 270", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/270", 
+                    "name": "Industrial Machine Maintenance"
+                }, 
+                {
+                    "code": "INT 271", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/271", 
+                    "name": "Vibration Analysis"
+                }, 
+                {
+                    "code": "INT 272", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/272", 
+                    "name": "Mechanical Systems"
+                }, 
+                {
+                    "code": "INT 280", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/INT/280", 
+                    "name": "Industrial Technology Projects"
+                }
+            ], 
+            "name": "Interdisciplinary", 
+            "url": "http://www.chegg.com/courses/clarkstate/INT"
+        }, 
+        {
+            "abbr": "ITS", 
+            "courses": [
+                {
+                    "code": "ITS 12A", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/12A", 
+                    "name": "Windows Concepts"
+                }, 
+                {
+                    "code": "ITS 12D", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/12D", 
+                    "name": "Beginning Database"
+                }, 
+                {
+                    "code": "ITS 12P", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/12P", 
+                    "name": "beginning Presentation Graphics"
+                }, 
+                {
+                    "code": "ITS 12S", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/12S", 
+                    "name": "Beginning Spreadsheet"
+                }, 
+                {
+                    "code": "ITS 12W", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/12W", 
+                    "name": "Beginning Word Processing"
+                }, 
+                {
+                    "code": "ITS 12k", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/12k", 
+                    "name": "keyboarding/Word Processing"
+                }, 
+                {
+                    "code": "ITS 14D", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/14D", 
+                    "name": "Intermediate Database"
+                }, 
+                {
+                    "code": "ITS 14S", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/14S", 
+                    "name": "Intermediate Spreadsheet"
+                }, 
+                {
+                    "code": "ITS 14W", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/14W", 
+                    "name": "Intermediate Word Processing"
+                }, 
+                {
+                    "code": "ITS 080", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/080", 
+                    "name": "Computer FUNdamentals"
+                }, 
+                {
+                    "code": "ITS 103", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/103", 
+                    "name": "Information Technology basics"
+                }, 
+                {
+                    "code": "ITS 107", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/107", 
+                    "name": "HTML Fundamentals"
+                }, 
+                {
+                    "code": "ITS 108", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/108", 
+                    "name": "XML Web Services"
+                }, 
+                {
+                    "code": "ITS 115", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/115", 
+                    "name": "HTML and xHTML"
+                }, 
+                {
+                    "code": "ITS 118", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/118", 
+                    "name": "xML Web Services"
+                }, 
+                {
+                    "code": "ITS 230", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/230", 
+                    "name": "Introduction to Web Design"
+                }, 
+                {
+                    "code": "ITS 231", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/ITS/231", 
+                    "name": "Web Page Multimedia"
+                }
+            ], 
+            "name": "Information And Telecommunication Systems", 
+            "url": "http://www.chegg.com/courses/clarkstate/ITS"
+        }, 
+        {
+            "abbr": "LPN", 
+            "courses": [
+                {
+                    "code": "LPN 108", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/LPN/108", 
+                    "name": "basic Nutrition and Diet Therapy"
+                }, 
+                {
+                    "code": "LPN 125", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/LPN/125", 
+                    "name": "Introduction to Disease Processes"
+                }, 
+                {
+                    "code": "LPN 130", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/LPN/130", 
+                    "name": "Nursing Trends I"
+                }, 
+                {
+                    "code": "LPN 146", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/LPN/146", 
+                    "name": "Pharmacology for Practical Nurses"
+                }, 
+                {
+                    "code": "LPN 151", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/LPN/151", 
+                    "name": "Pediatric Nursing"
+                }, 
+                {
+                    "code": "LPN 160", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/LPN/160", 
+                    "name": "Fundamentals of Nursing I"
+                }, 
+                {
+                    "code": "LPN 171", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/LPN/171", 
+                    "name": "Fundamentals of Nursing II"
+                }, 
+                {
+                    "code": "LPN 182", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/LPN/182", 
+                    "name": "Women's Health and Obstetric Nursing"
+                }, 
+                {
+                    "code": "LPN 190", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/LPN/190", 
+                    "name": "Medical-Surgical Nursing"
+                }
+            ], 
+            "name": "Licensed Practical Nurse", 
+            "url": "http://www.chegg.com/courses/clarkstate/LPN"
+        }, 
+        {
+            "abbr": "LSC", 
+            "courses": [
+                {
+                    "code": "LSC 120", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/LSC/120", 
+                    "name": "Truck Driver Training 176"
+                }, 
+                {
+                    "code": "LSC 210", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/LSC/210", 
+                    "name": "Purchasing & Supply Management"
+                }, 
+                {
+                    "code": "LSC 220", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/LSC/220", 
+                    "name": "Logistics & Physical Distribution"
+                }, 
+                {
+                    "code": "LSC 272", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/LSC/272", 
+                    "name": "operations & Supply Chain Management"
+                }, 
+                {
+                    "code": "LSC 275", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/LSC/275", 
+                    "name": "Inventory & Materials Management"
+                }
+            ], 
+            "name": "Life Sciences", 
+            "url": "http://www.chegg.com/courses/clarkstate/LSC"
+        }, 
+        {
+            "abbr": "Literature", 
+            "courses": [
+                {
+                    "code": "Literature 1700", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/Literature/1700", 
+                    "name": "Present"
+                }
+            ], 
+            "name": "Literature", 
+            "url": "http://www.chegg.com/courses/clarkstate/Literature"
+        }, 
+        {
+            "abbr": "MAS", 
+            "courses": [
+                {
+                    "code": "MAS 102", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MAS/102", 
+                    "name": "Medical Law and Ethics"
+                }, 
+                {
+                    "code": "MAS 103", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MAS/103", 
+                    "name": "Medical Administrative office I"
+                }, 
+                {
+                    "code": "MAS 104", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MAS/104", 
+                    "name": "Exam Room Procedures I"
+                }, 
+                {
+                    "code": "MAS 113", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MAS/113", 
+                    "name": "Medical Administrative office II"
+                }, 
+                {
+                    "code": "MAS 114", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MAS/114", 
+                    "name": "Exam Room Procedures II"
+                }, 
+                {
+                    "code": "MAS 115", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MAS/115", 
+                    "name": "Laboratory Procedures for the Medical office"
+                }, 
+                {
+                    "code": "MAS 116", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MAS/116", 
+                    "name": "Pharmacology for the Medical office"
+                }, 
+                {
+                    "code": "MAS 117", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MAS/117", 
+                    "name": "Clinical Directed Practice"
+                }, 
+                {
+                    "code": "MAS 118", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MAS/118", 
+                    "name": "Clinical Perspectives Seminar"
+                }, 
+                {
+                    "code": "MAS 210", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MAS/210", 
+                    "name": "Medical Assisting Exam Review"
+                }, 
+                {
+                    "code": "MAS 211", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MAS/211", 
+                    "name": "Advanced Clinical Skills"
+                }, 
+                {
+                    "code": "MAS 212", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MAS/212", 
+                    "name": "Leadership and Management in the Medical Office"
+                }, 
+                {
+                    "code": "MAS 213", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MAS/213", 
+                    "name": "Leadership and Management Directed Practice"
+                }, 
+                {
+                    "code": "MAS 214", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MAS/214", 
+                    "name": "Advanced Insurance and billing Practices"
+                }
+            ], 
+            "name": "Mexican American Studies", 
+            "url": "http://www.chegg.com/courses/clarkstate/MAS"
+        }, 
+        {
+            "abbr": "MGT", 
+            "courses": [
+                {
+                    "code": "MGT 100", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MGT/100", 
+                    "name": "Personal Finance"
+                }, 
+                {
+                    "code": "MGT 105", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MGT/105", 
+                    "name": "Contemporary American business"
+                }, 
+                {
+                    "code": "MGT 106", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MGT/106", 
+                    "name": "organizational behavior"
+                }, 
+                {
+                    "code": "MGT 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MGT/112", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "MGT 115", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MGT/115", 
+                    "name": "Customer Relations"
+                }, 
+                {
+                    "code": "MGT 200", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MGT/200", 
+                    "name": "Introduction to Project Management"
+                }, 
+                {
+                    "code": "MGT 202", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MGT/202", 
+                    "name": "Quality Management"
+                }, 
+                {
+                    "code": "MGT 211", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MGT/211", 
+                    "name": "CyberSecurity Management I"
+                }, 
+                {
+                    "code": "MGT 212", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MGT/212", 
+                    "name": "CyberSecurity Management II"
+                }, 
+                {
+                    "code": "MGT 214", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MGT/214", 
+                    "name": "Small Business Theory and Practice"
+                }, 
+                {
+                    "code": "MGT 250", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MGT/250", 
+                    "name": "Leadership in organizations"
+                }, 
+                {
+                    "code": "MGT 260", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MGT/260", 
+                    "name": "Legal Environment of business"
+                }, 
+                {
+                    "code": "MGT 265", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MGT/265", 
+                    "name": "Negotiation Skills"
+                }, 
+                {
+                    "code": "MGT 268", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MGT/268", 
+                    "name": "Introduction to International business"
+                }, 
+                {
+                    "code": "MGT 270", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MGT/270", 
+                    "name": "Finance"
+                }, 
+                {
+                    "code": "MGT 290", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MGT/290", 
+                    "name": "business Strategy and Policy Seminar"
+                }
+            ], 
+            "name": "Management", 
+            "url": "http://www.chegg.com/courses/clarkstate/MGT"
+        }, 
+        {
+            "abbr": "MKT", 
+            "courses": [
+                {
+                    "code": "MKT 200", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MKT/200", 
+                    "name": "Principles of Marketing"
+                }, 
+                {
+                    "code": "MKT 210", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MKT/210", 
+                    "name": "Pricing Strategies"
+                }, 
+                {
+                    "code": "MKT 215", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MKT/215", 
+                    "name": "Product Management"
+                }, 
+                {
+                    "code": "MKT 240", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MKT/240", 
+                    "name": "Electronic Applications"
+                }, 
+                {
+                    "code": "MKT 245", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MKT/245", 
+                    "name": "Sales and Sales Management"
+                }, 
+                {
+                    "code": "MKT 255", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MKT/255", 
+                    "name": "Promotion Strategies"
+                }
+            ], 
+            "name": "Marketing", 
+            "url": "http://www.chegg.com/courses/clarkstate/MKT"
+        }, 
+        {
+            "abbr": "MLT", 
+            "courses": [
+                {
+                    "code": "MLT 101", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/101", 
+                    "name": "Medical Laboratory orientation"
+                }, 
+                {
+                    "code": "MLT 102", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/102", 
+                    "name": "Medical Laboratory orientation Laboratory"
+                }, 
+                {
+                    "code": "MLT 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/111", 
+                    "name": "Chemistry for Technicians"
+                }, 
+                {
+                    "code": "MLT 116", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/116", 
+                    "name": "Phlebotomy"
+                }, 
+                {
+                    "code": "MLT 117", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/117", 
+                    "name": "Phlebotomy Laboratory"
+                }, 
+                {
+                    "code": "MLT 123", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/123", 
+                    "name": "Medical Microbiology I"
+                }, 
+                {
+                    "code": "MLT 124", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/124", 
+                    "name": "Medical Microbiology I Laboratory"
+                }, 
+                {
+                    "code": "MLT 125", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/125", 
+                    "name": "Hematology I"
+                }, 
+                {
+                    "code": "MLT 126", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/126", 
+                    "name": "Hematology I Laboratory"
+                }, 
+                {
+                    "code": "MLT 131", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/131", 
+                    "name": "Clinical Chemistry"
+                }, 
+                {
+                    "code": "MLT 132", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/132", 
+                    "name": "Clinical Chemistry Laboratory"
+                }, 
+                {
+                    "code": "MLT 135", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/135", 
+                    "name": "Urinalysis and body Fluids"
+                }, 
+                {
+                    "code": "MLT 136", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/136", 
+                    "name": "Urinalysis and Body Fluids Laboratory"
+                }, 
+                {
+                    "code": "MLT 211", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/211", 
+                    "name": "Immunology"
+                }, 
+                {
+                    "code": "MLT 212", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/212", 
+                    "name": "Immunology Laboratory"
+                }, 
+                {
+                    "code": "MLT 213", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/213", 
+                    "name": "Medical Microbiology II"
+                }, 
+                {
+                    "code": "MLT 214", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/214", 
+                    "name": "Medical Microbiology II Laboratory"
+                }, 
+                {
+                    "code": "MLT 223", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/223", 
+                    "name": "Hematology II"
+                }, 
+                {
+                    "code": "MLT 224", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/224", 
+                    "name": "Hematology II Laboratory"
+                }, 
+                {
+                    "code": "MLT 226", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/226", 
+                    "name": "Immunohematology"
+                }, 
+                {
+                    "code": "MLT 227", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/227", 
+                    "name": "Immunohematology Laboratory"
+                }, 
+                {
+                    "code": "MLT 270", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/270", 
+                    "name": "MLT Review & Update"
+                }, 
+                {
+                    "code": "MLT 280", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/280", 
+                    "name": "Directed Practice"
+                }, 
+                {
+                    "code": "MLT 290", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MLT/290", 
+                    "name": "MLT Seminar"
+                }
+            ], 
+            "name": "Medical Laboratory Technology", 
+            "url": "http://www.chegg.com/courses/clarkstate/MLT"
+        }, 
+        {
+            "abbr": "MST", 
+            "courses": [
+                {
+                    "code": "MST 101", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MST/101", 
+                    "name": "Introduction to Health Care Delivery"
+                }, 
+                {
+                    "code": "MST 104", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MST/104", 
+                    "name": "Foundations of Client Care"
+                }, 
+                {
+                    "code": "MST 105", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MST/105", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "MST 171", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MST/171", 
+                    "name": "Introduction to Electrocardiography"
+                }, 
+                {
+                    "code": "MST 181", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MST/181", 
+                    "name": "Nurse Aide Training"
+                }, 
+                {
+                    "code": "MST 182", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MST/182", 
+                    "name": "Patient Care Technician"
+                }
+            ], 
+            "name": "Museum Studies", 
+            "url": "http://www.chegg.com/courses/clarkstate/MST"
+        }, 
+        {
+            "abbr": "MTH", 
+            "courses": [
+                {
+                    "code": "MTH 101", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MTH/101", 
+                    "name": "Technical Mathematics Applications A"
+                }, 
+                {
+                    "code": "MTH 105", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MTH/105", 
+                    "name": "Mathematics and Today's World"
+                }, 
+                {
+                    "code": "MTH 106", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MTH/106", 
+                    "name": "Business Mathematics"
+                }, 
+                {
+                    "code": "MTH 107", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MTH/107", 
+                    "name": "Technical Mathematics Applications b"
+                }, 
+                {
+                    "code": "MTH 108", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MTH/108", 
+                    "name": "Technical Mathematics Applications C"
+                }, 
+                {
+                    "code": "MTH 120", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MTH/120", 
+                    "name": "College Algebra IA"
+                }, 
+                {
+                    "code": "MTH 121", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MTH/121", 
+                    "name": "College Algebra I"
+                }, 
+                {
+                    "code": "MTH 122", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MTH/122", 
+                    "name": "College Algebra II"
+                }, 
+                {
+                    "code": "MTH 140", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MTH/140", 
+                    "name": "Trigonometry"
+                }, 
+                {
+                    "code": "MTH 220", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MTH/220", 
+                    "name": "Calculus for the Management,Life and Social Sciences"
+                }, 
+                {
+                    "code": "MTH 221", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MTH/221", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MTH 222", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MTH/222", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MTH 223", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MTH/223", 
+                    "name": "Calculus III"
+                }, 
+                {
+                    "code": "MTH 224", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MTH/224", 
+                    "name": "Calculus IV/Multivariate Calculus"
+                }, 
+                {
+                    "code": "MTH 230", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MTH/230", 
+                    "name": "Differential Equations"
+                }, 
+                {
+                    "code": "MTH 240", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MTH/240", 
+                    "name": "Linear Algebra"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/clarkstate/MTH"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 100", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MUS/100", 
+                    "name": "Fundamentals of Piano"
+                }, 
+                {
+                    "code": "MUS 130", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MUS/130", 
+                    "name": "Music Appreciation"
+                }, 
+                {
+                    "code": "MUS 141", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MUS/141", 
+                    "name": "Fundamentals of Piano"
+                }, 
+                {
+                    "code": "MUS 150", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MUS/150", 
+                    "name": "Clark State Choir"
+                }, 
+                {
+                    "code": "MUS 151", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MUS/151", 
+                    "name": "Applied Music I"
+                }, 
+                {
+                    "code": "MUS 152", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MUS/152", 
+                    "name": "Applied Music II"
+                }, 
+                {
+                    "code": "MUS 160", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MUS/160", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUS 170", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MUS/170", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUS 292", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MUS/292", 
+                    "name": "Applied Percussion"
+                }, 
+                {
+                    "code": "MUS 293", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/MUS/293", 
+                    "name": "Applied Percussion"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/clarkstate/MUS"
+        }, 
+        {
+            "abbr": "NTK", 
+            "courses": [
+                {
+                    "code": "NTK 176", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/176", 
+                    "name": "PC/Network Essentials I"
+                }, 
+                {
+                    "code": "NTK 178", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/178", 
+                    "name": "PC/Network Essentials II"
+                }, 
+                {
+                    "code": "NTK 179", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/179", 
+                    "name": "PC/Network Essentials III"
+                }, 
+                {
+                    "code": "NTK 201", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/201", 
+                    "name": "Cisco Associate I"
+                }, 
+                {
+                    "code": "NTK 202", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/202", 
+                    "name": "Cisco Associate II"
+                }, 
+                {
+                    "code": "NTK 203", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/203", 
+                    "name": "Cisco Associate III"
+                }, 
+                {
+                    "code": "NTK 225", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/225", 
+                    "name": "Wireless Networking I"
+                }, 
+                {
+                    "code": "NTK 240", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/240", 
+                    "name": "Unix/Linux Administration I"
+                }, 
+                {
+                    "code": "NTK 245", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/245", 
+                    "name": "CyberSecurity-oS and Networks"
+                }, 
+                {
+                    "code": "NTK 246", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/246", 
+                    "name": "CyberSecurity-Firewall Technologies"
+                }, 
+                {
+                    "code": "NTK 247", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/247", 
+                    "name": "CyberSecurity-Forensic Analysis"
+                }, 
+                {
+                    "code": "NTK 255", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/255", 
+                    "name": "Introduction to oracle"
+                }, 
+                {
+                    "code": "NTK 256", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/256", 
+                    "name": "Oracle Administration I"
+                }, 
+                {
+                    "code": "NTK 257", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/257", 
+                    "name": "Oracle Data Mining & Warehousing"
+                }, 
+                {
+                    "code": "NTK 270", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/270", 
+                    "name": "Administering Microsoft Professional"
+                }, 
+                {
+                    "code": "NTK 272", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/272", 
+                    "name": "Administering Microsoft Server"
+                }, 
+                {
+                    "code": "NTK 288", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NTK/288", 
+                    "name": "Advanced Networking Topics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/clarkstate/NTK"
+        }, 
+        {
+            "abbr": "NUR", 
+            "courses": [
+                {
+                    "code": "NUR 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/110", 
+                    "name": "Nursing Academic Success Seminar"
+                }, 
+                {
+                    "code": "NUR 114", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/114", 
+                    "name": "Dosage Calculations I"
+                }, 
+                {
+                    "code": "NUR 120", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/120", 
+                    "name": "Pharmacology"
+                }, 
+                {
+                    "code": "NUR 170", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/170", 
+                    "name": "Nursing I"
+                }, 
+                {
+                    "code": "NUR 171", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/171", 
+                    "name": "Nursing II"
+                }, 
+                {
+                    "code": "NUR 172", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/172", 
+                    "name": "Nursing III"
+                }, 
+                {
+                    "code": "NUR 175", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/175", 
+                    "name": "Transition to Registered Nursing"
+                }, 
+                {
+                    "code": "NUR 200", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/200", 
+                    "name": "Service Learning Project"
+                }, 
+                {
+                    "code": "NUR 265", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/265", 
+                    "name": "Nursing VIII"
+                }, 
+                {
+                    "code": "NUR 266", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/266", 
+                    "name": "Directed Nursing Practice"
+                }, 
+                {
+                    "code": "NUR 267", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/267", 
+                    "name": "Nursing VII"
+                }, 
+                {
+                    "code": "NUR 268", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/268", 
+                    "name": "Nursing VIII"
+                }, 
+                {
+                    "code": "NUR 269", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/269", 
+                    "name": "Nursing Ix"
+                }, 
+                {
+                    "code": "NUR 274", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/274", 
+                    "name": "Nursing IV"
+                }, 
+                {
+                    "code": "NUR 275", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/275", 
+                    "name": "Nursing V"
+                }, 
+                {
+                    "code": "NUR 276", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/276", 
+                    "name": "Nursing VI"
+                }, 
+                {
+                    "code": "NUR 280", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/280", 
+                    "name": "Nursing Seminar"
+                }, 
+                {
+                    "code": "NUR 281", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/NUR/281", 
+                    "name": "Nursing Comprehensive Review Seminar"
+                }
+            ], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/clarkstate/NUR"
+        }, 
+        {
+            "abbr": "OAD", 
+            "courses": [
+                {
+                    "code": "OAD 101", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/101", 
+                    "name": "Document Production I"
+                }, 
+                {
+                    "code": "OAD 102", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/102", 
+                    "name": "Document Production II"
+                }, 
+                {
+                    "code": "OAD 103", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/103", 
+                    "name": "Document Production III"
+                }, 
+                {
+                    "code": "OAD 105", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/105", 
+                    "name": "Business English"
+                }, 
+                {
+                    "code": "OAD 130", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/130", 
+                    "name": "Advanced Grammar & Proofreading"
+                }, 
+                {
+                    "code": "OAD 135", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/135", 
+                    "name": "Office Procedures"
+                }, 
+                {
+                    "code": "OAD 140", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/140", 
+                    "name": "Records Management"
+                }, 
+                {
+                    "code": "OAD 245", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/245", 
+                    "name": "Machine Transcription"
+                }, 
+                {
+                    "code": "OAD 246", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/246", 
+                    "name": "Advanced Machine Transcription"
+                }, 
+                {
+                    "code": "OAD 248", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/248", 
+                    "name": "basic Medical Machine Transcription"
+                }, 
+                {
+                    "code": "OAD 249", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/249", 
+                    "name": "Advanced Medical Machine Transcription"
+                }, 
+                {
+                    "code": "OAD 256", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/256", 
+                    "name": "Medical Office Management"
+                }, 
+                {
+                    "code": "OAD 260", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/260", 
+                    "name": "Simulation"
+                }, 
+                {
+                    "code": "OAD 270", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/270", 
+                    "name": "CPT-Coding"
+                }, 
+                {
+                    "code": "OAD 275", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/275", 
+                    "name": "Medical Coding Trends & Issues"
+                }, 
+                {
+                    "code": "OAD 276", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/276", 
+                    "name": "Advanced Medical Coding"
+                }, 
+                {
+                    "code": "OAD 285", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/OAD/285", 
+                    "name": "Co-op Education/Internship"
+                }
+            ], 
+            "name": "Office Administration", 
+            "url": "http://www.chegg.com/courses/clarkstate/OAD"
+        }, 
+        {
+            "abbr": "PED", 
+            "courses": [
+                {
+                    "code": "PED 101", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PED/101", 
+                    "name": "Step Aerobics"
+                }, 
+                {
+                    "code": "PED 102", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PED/102", 
+                    "name": "Pilates Mat Science"
+                }, 
+                {
+                    "code": "PED 104", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PED/104", 
+                    "name": "Beginning Karate"
+                }, 
+                {
+                    "code": "PED 105", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PED/105", 
+                    "name": "Intermediate karate"
+                }, 
+                {
+                    "code": "PED 117", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PED/117", 
+                    "name": "Beginning Weight Training"
+                }, 
+                {
+                    "code": "PED 118", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PED/118", 
+                    "name": "Intermediate Weight Training"
+                }, 
+                {
+                    "code": "PED 144", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PED/144", 
+                    "name": "Beginning Tennis"
+                }, 
+                {
+                    "code": "PED 145", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PED/145", 
+                    "name": "Intermediate Tennis"
+                }, 
+                {
+                    "code": "PED 151", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PED/151", 
+                    "name": "General Physical Conditioning"
+                }, 
+                {
+                    "code": "PED 153", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PED/153", 
+                    "name": "yoga for beginners"
+                }, 
+                {
+                    "code": "PED 154", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PED/154", 
+                    "name": "Yoga II"
+                }, 
+                {
+                    "code": "PED 160", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PED/160", 
+                    "name": "Beginning Basketball"
+                }, 
+                {
+                    "code": "PED 162", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PED/162", 
+                    "name": "Intermediate"
+                }, 
+                {
+                    "code": "PED 171", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PED/171", 
+                    "name": "Golf"
+                }, 
+                {
+                    "code": "PED 172", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PED/172", 
+                    "name": "Intermediate Golf"
+                }, 
+                {
+                    "code": "PED 295", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PED/295", 
+                    "name": "Introduction to Baseball/Softball officiating"
+                }
+            ], 
+            "name": "Physical Ed", 
+            "url": "http://www.chegg.com/courses/clarkstate/PED"
+        }, 
+        {
+            "abbr": "PGR", 
+            "courses": [
+                {
+                    "code": "PGR 101", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PGR/101", 
+                    "name": "Introduction to College Success"
+                }, 
+                {
+                    "code": "PGR 150", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PGR/150", 
+                    "name": "Personal Growth"
+                }, 
+                {
+                    "code": "PGR 153", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PGR/153", 
+                    "name": "College Survival Skills"
+                }, 
+                {
+                    "code": "PGR 154", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PGR/154", 
+                    "name": "Reading for Speed and Comprehension"
+                }, 
+                {
+                    "code": "PGR 191", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PGR/191", 
+                    "name": "Study Skills"
+                }, 
+                {
+                    "code": "PGR 192", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PGR/192", 
+                    "name": "Career Directions"
+                }, 
+                {
+                    "code": "PGR 194", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PGR/194", 
+                    "name": "Stress Management"
+                }, 
+                {
+                    "code": "PGR 195", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PGR/195", 
+                    "name": "Campus Leadership"
+                }, 
+                {
+                    "code": "PGR 196", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PGR/196", 
+                    "name": "Effective Parenting"
+                }, 
+                {
+                    "code": "PGR 197", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PGR/197", 
+                    "name": "building Positive Personal Relationships"
+                }, 
+                {
+                    "code": "PGR 250", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PGR/250", 
+                    "name": "Exploring Our Sexualities"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/clarkstate/PGR"
+        }, 
+        {
+            "abbr": "PHL", 
+            "courses": [
+                {
+                    "code": "PHL 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHL/110", 
+                    "name": "Problems in Philosophy"
+                }, 
+                {
+                    "code": "PHL 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHL/111", 
+                    "name": "Problems in Philosophy:Honors"
+                }, 
+                {
+                    "code": "PHL 200", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHL/200", 
+                    "name": "Critical Thinking"
+                }, 
+                {
+                    "code": "PHL 205", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHL/205", 
+                    "name": "Deductive Logic"
+                }, 
+                {
+                    "code": "PHL 210", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHL/210", 
+                    "name": "Ethics"
+                }, 
+                {
+                    "code": "PHL 220", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHL/220", 
+                    "name": "Business Ethics"
+                }, 
+                {
+                    "code": "PHL 230", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHL/230", 
+                    "name": "Medical Ethics"
+                }, 
+                {
+                    "code": "PHL 240", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHL/240", 
+                    "name": "Philosophy of World Religions"
+                }, 
+                {
+                    "code": "PHL 250", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHL/250", 
+                    "name": "Great books:Philosophy"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/clarkstate/PHL"
+        }, 
+        {
+            "abbr": "PHO", 
+            "courses": [
+                {
+                    "code": "PHO 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHO/111", 
+                    "name": "Photography I"
+                }, 
+                {
+                    "code": "PHO 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHO/112", 
+                    "name": "Photography II"
+                }, 
+                {
+                    "code": "PHO 121", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHO/121", 
+                    "name": "Color Photography I"
+                }, 
+                {
+                    "code": "PHO 122", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHO/122", 
+                    "name": "Color Photography II"
+                }, 
+                {
+                    "code": "PHO 124", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHO/124", 
+                    "name": "Photography Portfolio"
+                }, 
+                {
+                    "code": "PHO 130", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHO/130", 
+                    "name": "Digital Photography I"
+                }, 
+                {
+                    "code": "PHO 131", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHO/131", 
+                    "name": "Digital Photography II"
+                }, 
+                {
+                    "code": "PHO 132", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHO/132", 
+                    "name": "Digital Photography III"
+                }, 
+                {
+                    "code": "PHO 180", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHO/180", 
+                    "name": "Photography Practicum"
+                }
+            ], 
+            "name": "Photography", 
+            "url": "http://www.chegg.com/courses/clarkstate/PHO"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 105", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHY/105", 
+                    "name": "Fundamentals of Scientific Methods and Problem Solving"
+                }, 
+                {
+                    "code": "PHY 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHY/110", 
+                    "name": "Fundamentals of Physics"
+                }, 
+                {
+                    "code": "PHY 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHY/111", 
+                    "name": "Physics I"
+                }, 
+                {
+                    "code": "PHY 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHY/112", 
+                    "name": "Physics II"
+                }, 
+                {
+                    "code": "PHY 113", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHY/113", 
+                    "name": "Physics III"
+                }, 
+                {
+                    "code": "PHY 120", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHY/120", 
+                    "name": "Astronomy"
+                }, 
+                {
+                    "code": "PHY 250", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHY/250", 
+                    "name": "General Physics I"
+                }, 
+                {
+                    "code": "PHY 251", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHY/251", 
+                    "name": "General Physics II"
+                }, 
+                {
+                    "code": "PHY 252", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PHY/252", 
+                    "name": "General Physics III"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/clarkstate/PHY"
+        }, 
+        {
+            "abbr": "PLS", 
+            "courses": [
+                {
+                    "code": "PLS 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PLS/110", 
+                    "name": "American National Government"
+                }, 
+                {
+                    "code": "PLS 120", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PLS/120", 
+                    "name": "American Issues"
+                }, 
+                {
+                    "code": "PLS 130", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PLS/130", 
+                    "name": "Political Issues"
+                }, 
+                {
+                    "code": "PLS 220", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PLS/220", 
+                    "name": "Constitutional Law"
+                }, 
+                {
+                    "code": "PLS 230", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PLS/230", 
+                    "name": "International Politics"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/clarkstate/PLS"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PSY/111", 
+                    "name": "Psychology I"
+                }, 
+                {
+                    "code": "PSY 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PSY/112", 
+                    "name": "Psychology II"
+                }, 
+                {
+                    "code": "PSY 221", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PSY/221", 
+                    "name": "Human Growth and Development I"
+                }, 
+                {
+                    "code": "PSY 222", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PSY/222", 
+                    "name": "Human Growth and Development II"
+                }, 
+                {
+                    "code": "PSY 223", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PSY/223", 
+                    "name": "Lifespan Human Growth and Development"
+                }, 
+                {
+                    "code": "PSY 230", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PSY/230", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSY 299", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PSY/299", 
+                    "name": "Special Topics:Lifespan Human Growth & Development"
+                }
+            ], 
+            "name": "Clinical Counseling", 
+            "url": "http://www.chegg.com/courses/clarkstate/PSY"
+        }, 
+        {
+            "abbr": "PTA", 
+            "courses": [
+                {
+                    "code": "PTA 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PTA/110", 
+                    "name": "PTA Survey"
+                }, 
+                {
+                    "code": "PTA 120", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PTA/120", 
+                    "name": "Introduction to Patient Management"
+                }, 
+                {
+                    "code": "PTA 145", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PTA/145", 
+                    "name": "PTA Procedures I"
+                }, 
+                {
+                    "code": "PTA 146", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PTA/146", 
+                    "name": "PTA Procedures II"
+                }, 
+                {
+                    "code": "PTA 160", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PTA/160", 
+                    "name": "PTA Rehabilitation I"
+                }, 
+                {
+                    "code": "PTA 241", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PTA/241", 
+                    "name": "PTA Procedures III"
+                }, 
+                {
+                    "code": "PTA 245", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PTA/245", 
+                    "name": "PTA First-year Capstone"
+                }, 
+                {
+                    "code": "PTA 260", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PTA/260", 
+                    "name": "PTA Rehabilitation II"
+                }, 
+                {
+                    "code": "PTA 265", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PTA/265", 
+                    "name": "PTA Rehabilitation III"
+                }, 
+                {
+                    "code": "PTA 270", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PTA/270", 
+                    "name": "PTA Trends and Issues"
+                }, 
+                {
+                    "code": "PTA 281", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PTA/281", 
+                    "name": "Directed Practice I"
+                }, 
+                {
+                    "code": "PTA 282", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PTA/282", 
+                    "name": "Directed Practice II"
+                }, 
+                {
+                    "code": "PTA 283", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PTA/283", 
+                    "name": "Directed Practice III"
+                }, 
+                {
+                    "code": "PTA 291", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PTA/291", 
+                    "name": "Seminar I"
+                }, 
+                {
+                    "code": "PTA 292", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PTA/292", 
+                    "name": "Seminar II"
+                }, 
+                {
+                    "code": "PTA 293", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/PTA/293", 
+                    "name": "Seminar III"
+                }
+            ], 
+            "name": "Building Construction", 
+            "url": "http://www.chegg.com/courses/clarkstate/PTA"
+        }, 
+        {
+            "abbr": "RCC", 
+            "courses": [
+                {
+                    "code": "RCC 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RCC/110", 
+                    "name": "Introduction to the Deaf Community"
+                }, 
+                {
+                    "code": "RCC 221", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RCC/221", 
+                    "name": "Captioning/CART I"
+                }, 
+                {
+                    "code": "RCC 222", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RCC/222", 
+                    "name": "Captioning/CART II"
+                }, 
+                {
+                    "code": "RCC 223", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RCC/223", 
+                    "name": "Captioning/CART III"
+                }, 
+                {
+                    "code": "RCC 231", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RCC/231", 
+                    "name": "Captioning/CART Speed building I"
+                }, 
+                {
+                    "code": "RCC 232", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RCC/232", 
+                    "name": "Captioning/CART Speed building II"
+                }, 
+                {
+                    "code": "RCC 233", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RCC/233", 
+                    "name": "Captioning/CART Speed Building III"
+                }, 
+                {
+                    "code": "RCC 245", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RCC/245", 
+                    "name": "Business Practices"
+                }, 
+                {
+                    "code": "RCC 280", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RCC/280", 
+                    "name": "Captioning:The Professional Experience"
+                }, 
+                {
+                    "code": "RCC 281", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RCC/281", 
+                    "name": "CART:The Professional Experience"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/clarkstate/RCC"
+        }, 
+        {
+            "abbr": "RES", 
+            "courses": [
+                {
+                    "code": "RES 232", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RES/232", 
+                    "name": "Real Estate Principles"
+                }, 
+                {
+                    "code": "RES 235", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RES/235", 
+                    "name": "Real Estate Law"
+                }, 
+                {
+                    "code": "RES 240", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RES/240", 
+                    "name": "Real Estate Appraisal"
+                }, 
+                {
+                    "code": "RES 245", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RES/245", 
+                    "name": "Real Estate Finance"
+                }
+            ], 
+            "name": "Religious Studies", 
+            "url": "http://www.chegg.com/courses/clarkstate/RES"
+        }, 
+        {
+            "abbr": "RJR", 
+            "courses": [
+                {
+                    "code": "RJR 211", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RJR/211", 
+                    "name": "Advanced Testimony I"
+                }, 
+                {
+                    "code": "RJR 212", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RJR/212", 
+                    "name": "Advanced Testimony II"
+                }, 
+                {
+                    "code": "RJR 213", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RJR/213", 
+                    "name": "Advanced Testimony III"
+                }, 
+                {
+                    "code": "RJR 231", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RJR/231", 
+                    "name": "Jury Charge I"
+                }, 
+                {
+                    "code": "RJR 232", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RJR/232", 
+                    "name": "Jury Charge II"
+                }, 
+                {
+                    "code": "RJR 233", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RJR/233", 
+                    "name": "Jury Charge III"
+                }, 
+                {
+                    "code": "RJR 245", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RJR/245", 
+                    "name": "Office Management"
+                }, 
+                {
+                    "code": "RJR 280", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RJR/280", 
+                    "name": "judicial Reporting:The Professional Experience"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/clarkstate/RJR"
+        }, 
+        {
+            "abbr": "RST", 
+            "courses": [
+                {
+                    "code": "RST 260", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RST/260", 
+                    "name": "Regional Studies of Asia-China"
+                }, 
+                {
+                    "code": "RST 262", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RST/262", 
+                    "name": "Regional Studies North India"
+                }, 
+                {
+                    "code": "RST 270", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RST/270", 
+                    "name": "Regional Studies of Africa"
+                }, 
+                {
+                    "code": "RST 280", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RST/280", 
+                    "name": "Regional Studies of Latin America"
+                }
+            ], 
+            "name": "Religious Studies - Rst", 
+            "url": "http://www.chegg.com/courses/clarkstate/RST"
+        }, 
+        {
+            "abbr": "RTR", 
+            "courses": [
+                {
+                    "code": "RTR 105", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/105", 
+                    "name": "Realtime Theory"
+                }, 
+                {
+                    "code": "RTR 106", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/106", 
+                    "name": "Realtime Theory Reinforcement"
+                }, 
+                {
+                    "code": "RTR 107", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/107", 
+                    "name": "Beginning Speed building I"
+                }, 
+                {
+                    "code": "RTR 108", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/108", 
+                    "name": "Beginning Speed building II"
+                }, 
+                {
+                    "code": "RTR 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/110", 
+                    "name": "Survey of Realtime Reporting"
+                }, 
+                {
+                    "code": "RTR 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/111", 
+                    "name": "Beginning Testimony I"
+                }, 
+                {
+                    "code": "RTR 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/112", 
+                    "name": "Beginning Testimony II"
+                }, 
+                {
+                    "code": "RTR 120", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/120", 
+                    "name": "Law and Legal Terminology"
+                }, 
+                {
+                    "code": "RTR 125", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/125", 
+                    "name": "Vocabulary/Reference Use"
+                }, 
+                {
+                    "code": "RTR 131", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/131", 
+                    "name": "Beginning Computer Assisted Transcription"
+                }, 
+                {
+                    "code": "RTR 132", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/132", 
+                    "name": "Advanced Computer Assisted Transcription"
+                }, 
+                {
+                    "code": "RTR 150", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/150", 
+                    "name": "Realtime Transcription"
+                }, 
+                {
+                    "code": "RTR 151", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/151", 
+                    "name": "Realtime Transcription"
+                }, 
+                {
+                    "code": "RTR 152", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/152", 
+                    "name": "Realtime Transcription"
+                }, 
+                {
+                    "code": "RTR 153", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/153", 
+                    "name": "Realtime Transcription"
+                }, 
+                {
+                    "code": "RTR 160", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/160", 
+                    "name": "Realtime Skill building"
+                }, 
+                {
+                    "code": "RTR 161", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/161", 
+                    "name": "Realtime Skill building"
+                }, 
+                {
+                    "code": "RTR 162", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/162", 
+                    "name": "Realtime Skill building"
+                }, 
+                {
+                    "code": "RTR 163", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/163", 
+                    "name": "Realtime Skill building"
+                }, 
+                {
+                    "code": "RTR 201", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/201", 
+                    "name": "Advanced Speed building I"
+                }, 
+                {
+                    "code": "RTR 202", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/202", 
+                    "name": "Advanced Speed Building II"
+                }, 
+                {
+                    "code": "RTR 203", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/RTR/203", 
+                    "name": "Advanced Speed building III"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/clarkstate/RTR"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 110", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SOC/110", 
+                    "name": "Sociology"
+                }, 
+                {
+                    "code": "SOC 140", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SOC/140", 
+                    "name": "Marriage and the Family"
+                }, 
+                {
+                    "code": "SOC 220", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SOC/220", 
+                    "name": "Comparing Cultures"
+                }, 
+                {
+                    "code": "SOC 230", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SOC/230", 
+                    "name": "Social Problems"
+                }, 
+                {
+                    "code": "SOC 240", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SOC/240", 
+                    "name": "Racial and Cultural Minorities"
+                }, 
+                {
+                    "code": "SOC 250", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SOC/250", 
+                    "name": "Sociology of Poverty:Feminization of Poverty"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/clarkstate/SOC"
+        }, 
+        {
+            "abbr": "SPN", 
+            "courses": [
+                {
+                    "code": "SPN 100", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SPN/100", 
+                    "name": "Survival Spanish I"
+                }, 
+                {
+                    "code": "SPN 102", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SPN/102", 
+                    "name": "Survival Spanish II"
+                }, 
+                {
+                    "code": "SPN 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SPN/111", 
+                    "name": "Spanish I"
+                }, 
+                {
+                    "code": "SPN 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SPN/112", 
+                    "name": "Spanish II"
+                }, 
+                {
+                    "code": "SPN 113", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SPN/113", 
+                    "name": "Spanish III"
+                }, 
+                {
+                    "code": "SPN 120", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SPN/120", 
+                    "name": "Review of Beginning Spanish"
+                }, 
+                {
+                    "code": "SPN 211", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SPN/211", 
+                    "name": "Spanish IV"
+                }, 
+                {
+                    "code": "SPN 212", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SPN/212", 
+                    "name": "Spanish V"
+                }
+            ], 
+            "name": "Spanish", 
+            "url": "http://www.chegg.com/courses/clarkstate/SPN"
+        }, 
+        {
+            "abbr": "STT", 
+            "courses": [
+                {
+                    "code": "STT 264", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/STT/264", 
+                    "name": "Statistics I"
+                }, 
+                {
+                    "code": "STT 265", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/STT/265", 
+                    "name": "Statistics II"
+                }, 
+                {
+                    "code": "STT 275", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/STT/275", 
+                    "name": "Business Statistics"
+                }
+            ], 
+            "name": "Clinical Experiences In Teacher Education", 
+            "url": "http://www.chegg.com/courses/clarkstate/STT"
+        }, 
+        {
+            "abbr": "SWK", 
+            "courses": [
+                {
+                    "code": "SWK 100", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/100", 
+                    "name": "Introduction to Social Welfare and Social Work"
+                }, 
+                {
+                    "code": "SWK 105", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/105", 
+                    "name": "Chemical Dependency I:Pharm/Physiology of Psychoactive Substances"
+                }, 
+                {
+                    "code": "SWK 121", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/121", 
+                    "name": "Social Work Methods and Procedures"
+                }, 
+                {
+                    "code": "SWK 130", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/130", 
+                    "name": "Social Policy and Services"
+                }, 
+                {
+                    "code": "SWK 131", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/131", 
+                    "name": "Social Policy and Services for Assoc.of Arts/Pre-SWk Majors"
+                }, 
+                {
+                    "code": "SWK 136", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/136", 
+                    "name": "Affective Education"
+                }, 
+                {
+                    "code": "SWK 205", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/205", 
+                    "name": "Chemical Dependency II:Counseling Techniques"
+                }, 
+                {
+                    "code": "SWK 217", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/217", 
+                    "name": "Chemical Dependency III:Special Populations"
+                }, 
+                {
+                    "code": "SWK 218", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/218", 
+                    "name": "Social Work and Mental Health"
+                }, 
+                {
+                    "code": "SWK 220", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/220", 
+                    "name": "Social Service to Individuals with MR/DD"
+                }, 
+                {
+                    "code": "SWK 231", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/231", 
+                    "name": "Generalist Practice/Crisis Intervention"
+                }, 
+                {
+                    "code": "SWK 232", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/232", 
+                    "name": "Generalist Practice with Family"
+                }, 
+                {
+                    "code": "SWK 236", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/236", 
+                    "name": "Case Management"
+                }, 
+                {
+                    "code": "SWK 238", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/238", 
+                    "name": "Social Work and Group Work"
+                }, 
+                {
+                    "code": "SWK 271", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/271", 
+                    "name": "Social Services Practicum I"
+                }, 
+                {
+                    "code": "SWK 272", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/272", 
+                    "name": "Social Service Practicum II"
+                }, 
+                {
+                    "code": "SWK 273", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/273", 
+                    "name": "Social Service Practicum III"
+                }, 
+                {
+                    "code": "SWK 291", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/291", 
+                    "name": "Social Service Seminar I"
+                }, 
+                {
+                    "code": "SWK 292", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/292", 
+                    "name": "Social Work Seminar II"
+                }, 
+                {
+                    "code": "SWK 293", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/293", 
+                    "name": "Social Work Seminar III"
+                }, 
+                {
+                    "code": "SWK 297", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/SWK/297", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Social Work", 
+            "url": "http://www.chegg.com/courses/clarkstate/SWK"
+        }, 
+        {
+            "abbr": "THE", 
+            "courses": [
+                {
+                    "code": "THE 105", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/105", 
+                    "name": "oral Interpretation of Literature"
+                }, 
+                {
+                    "code": "THE 107", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/107", 
+                    "name": "Speech & Voice for Actor"
+                }, 
+                {
+                    "code": "THE 111", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/111", 
+                    "name": "Stagecraft I"
+                }, 
+                {
+                    "code": "THE 112", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/112", 
+                    "name": "Stagecraft II"
+                }, 
+                {
+                    "code": "THE 115", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/115", 
+                    "name": "Props,Wardrobe,Stage Makeup"
+                }, 
+                {
+                    "code": "THE 130", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/130", 
+                    "name": "Introduction to Theatre"
+                }, 
+                {
+                    "code": "THE 133", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/133", 
+                    "name": "Script Analysis"
+                }, 
+                {
+                    "code": "THE 140", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/140", 
+                    "name": "Movement for Actors"
+                }, 
+                {
+                    "code": "THE 150", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/150", 
+                    "name": "Theatre Laboratory I"
+                }, 
+                {
+                    "code": "THE 151", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/151", 
+                    "name": "Theatre Laboratory II"
+                }, 
+                {
+                    "code": "THE 152", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/152", 
+                    "name": "Theatre Laboratory III"
+                }, 
+                {
+                    "code": "THE 160", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/160", 
+                    "name": "Acting for the Non-major"
+                }, 
+                {
+                    "code": "THE 166", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/166", 
+                    "name": "Theatre Arts Tour"
+                }, 
+                {
+                    "code": "THE 202", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/202", 
+                    "name": "Acting I"
+                }, 
+                {
+                    "code": "THE 203", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/203", 
+                    "name": "Acting II"
+                }, 
+                {
+                    "code": "THE 204", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/204", 
+                    "name": "Acting III"
+                }, 
+                {
+                    "code": "THE 210", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/210", 
+                    "name": "Lighting I"
+                }, 
+                {
+                    "code": "THE 211", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/211", 
+                    "name": "Lighting II"
+                }, 
+                {
+                    "code": "THE 220", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/220", 
+                    "name": "Sound I"
+                }, 
+                {
+                    "code": "THE 221", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/221", 
+                    "name": "Sound II"
+                }, 
+                {
+                    "code": "THE 230", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/230", 
+                    "name": "Theatre Management"
+                }, 
+                {
+                    "code": "THE 235", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/235", 
+                    "name": "Stage Management"
+                }, 
+                {
+                    "code": "THE 240", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/240", 
+                    "name": "basics of Theatre Design"
+                }, 
+                {
+                    "code": "THE 241", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/241", 
+                    "name": "Theatre History I"
+                }, 
+                {
+                    "code": "THE 242", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/242", 
+                    "name": "Theatre History II"
+                }, 
+                {
+                    "code": "THE 243", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/243", 
+                    "name": "Theatre History III"
+                }, 
+                {
+                    "code": "THE 280", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/280", 
+                    "name": "Directing I"
+                }, 
+                {
+                    "code": "THE 285", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/285", 
+                    "name": "Co-op Education I"
+                }, 
+                {
+                    "code": "THE 287", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/287", 
+                    "name": "Co-op Education III"
+                }, 
+                {
+                    "code": "THE 288", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/288", 
+                    "name": "Co-op Education IV"
+                }, 
+                {
+                    "code": "THE 289", 
+                    "course_url": "http://www.chegg.com/courses/clarkstate/THE/289", 
+                    "name": "Co-op Education V"
+                }
+            ], 
+            "name": "Theatre", 
+            "url": "http://www.chegg.com/courses/clarkstate/THE"
+        }
+    ], 
+    "name": "clarkstate"
+}

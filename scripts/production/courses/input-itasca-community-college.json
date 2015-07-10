@@ -1,0 +1,1746 @@
+{
+    "all_stats": {
+        "num_courses": 297, 
+        "num_departments": 36
+    }, 
+    "departments": [
+        {
+            "abbr": "ACCT", 
+            "courses": [
+                {
+                    "code": "ACCT 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ACCT/1101", 
+                    "name": "Accounting Essentials"
+                }, 
+                {
+                    "code": "ACCT 1123", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ACCT/1123", 
+                    "name": "Financial Accounting"
+                }, 
+                {
+                    "code": "ACCT 1124", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ACCT/1124", 
+                    "name": "Managerial Accounting"
+                }, 
+                {
+                    "code": "ACCT 1128", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ACCT/1128", 
+                    "name": "Accounting Software Applications"
+                }, 
+                {
+                    "code": "ACCT 1131", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ACCT/1131", 
+                    "name": "Payroll Accounting"
+                }, 
+                {
+                    "code": "ACCT 1132", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ACCT/1132", 
+                    "name": "Income Tax Accounting"
+                }, 
+                {
+                    "code": "ACCT 2123", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ACCT/2123", 
+                    "name": "Intermediate Accounting"
+                }, 
+                {
+                    "code": "ACCT 2131", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ACCT/2131", 
+                    "name": "Accounting for Government and Not-For-Profit Organizations"
+                }, 
+                {
+                    "code": "ACCT 2201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ACCT/2201", 
+                    "name": "Accounting Internship"
+                }
+            ], 
+            "name": "Accountancy", 
+            "url": "http://www.chegg.com/courses/1576234/ACCT"
+        }, 
+        {
+            "abbr": "ANSH", 
+            "courses": [
+                {
+                    "code": "ANSH 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ANSH/1101", 
+                    "name": "Ojibwe Language I"
+                }, 
+                {
+                    "code": "ANSH 1102", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ANSH/1102", 
+                    "name": "Ojibwe Language II"
+                }, 
+                {
+                    "code": "ANSH 2101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ANSH/2101", 
+                    "name": "Ojibwe Language III"
+                }, 
+                {
+                    "code": "ANSH 2102", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ANSH/2102", 
+                    "name": "Ojibwe Language IV"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/1576234/ANSH"
+        }, 
+        {
+            "abbr": "ANTH", 
+            "courses": [
+                {
+                    "code": "ANTH 1100", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ANTH/1100", 
+                    "name": "Introduction to Anthropology"
+                }, 
+                {
+                    "code": "ANTH 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ANTH/1101", 
+                    "name": "Introduction to Physical Anthropology"
+                }, 
+                {
+                    "code": "ANTH 1102", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ANTH/1102", 
+                    "name": "Introduction to Cultural Anthropology"
+                }
+            ], 
+            "name": "Anthropology", 
+            "url": "http://www.chegg.com/courses/1576234/ANTH"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ART/1101", 
+                    "name": "Art Appreciation"
+                }, 
+                {
+                    "code": "ART 1111", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ART/1111", 
+                    "name": "Art History I"
+                }, 
+                {
+                    "code": "ART 1112", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ART/1112", 
+                    "name": "Art History II"
+                }, 
+                {
+                    "code": "ART 1115", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ART/1115", 
+                    "name": "American Indian Art"
+                }, 
+                {
+                    "code": "ART 1201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ART/1201", 
+                    "name": "Introduction to Art and Design"
+                }, 
+                {
+                    "code": "ART 1202", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ART/1202", 
+                    "name": "Drawing"
+                }, 
+                {
+                    "code": "ART 1203", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ART/1203", 
+                    "name": "Painting"
+                }, 
+                {
+                    "code": "ART 1204", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ART/1204", 
+                    "name": "Watercolor"
+                }, 
+                {
+                    "code": "ART 1205", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ART/1205", 
+                    "name": "Ceramics"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/1576234/ART"
+        }, 
+        {
+            "abbr": "BIOL", 
+            "courses": [
+                {
+                    "code": "BIOL 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BIOL/1101", 
+                    "name": "Human Biology"
+                }, 
+                {
+                    "code": "BIOL 1111", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BIOL/1111", 
+                    "name": "Microbiology"
+                }, 
+                {
+                    "code": "BIOL 1131", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BIOL/1131", 
+                    "name": "Plant Taxonomy"
+                }, 
+                {
+                    "code": "BIOL 1201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BIOL/1201", 
+                    "name": "General Biology I"
+                }, 
+                {
+                    "code": "BIOL 1202", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BIOL/1202", 
+                    "name": "General Biology II"
+                }, 
+                {
+                    "code": "BIOL 2101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BIOL/2101", 
+                    "name": "Human Anatomy and Physiology I"
+                }, 
+                {
+                    "code": "BIOL 2102", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BIOL/2102", 
+                    "name": "Human Anatomy and Physiology II"
+                }, 
+                {
+                    "code": "BIOL 2131", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BIOL/2131", 
+                    "name": "Forest Ecology"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/1576234/BIOL"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 1110", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BUS/1110", 
+                    "name": "Business Communication"
+                }, 
+                {
+                    "code": "BUS 1129", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BUS/1129", 
+                    "name": "Electronic Calculator Applications"
+                }, 
+                {
+                    "code": "BUS 1201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BUS/1201", 
+                    "name": "Introduction to Business"
+                }, 
+                {
+                    "code": "BUS 1202", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BUS/1202", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "BUS 1206", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BUS/1206", 
+                    "name": "Human Resource Management"
+                }, 
+                {
+                    "code": "BUS 1208", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BUS/1208", 
+                    "name": "Principles of Marketing"
+                }, 
+                {
+                    "code": "BUS 1212", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BUS/1212", 
+                    "name": "Small Business Management"
+                }, 
+                {
+                    "code": "BUS 1215", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BUS/1215", 
+                    "name": "Business Law"
+                }, 
+                {
+                    "code": "BUS 1226", 
+                    "course_url": "http://www.chegg.com/courses/1576234/BUS/1226", 
+                    "name": "International Business"
+                }
+            ], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/1576234/BUS"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CHEM/1101", 
+                    "name": "Fundamentals of Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 1201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CHEM/1201", 
+                    "name": "General Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 1202", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CHEM/1202", 
+                    "name": "General Chemistry II"
+                }, 
+                {
+                    "code": "CHEM 2201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CHEM/2201", 
+                    "name": "Organic Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 2202", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CHEM/2202", 
+                    "name": "Organic Chemistry II"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/1576234/CHEM"
+        }, 
+        {
+            "abbr": "COOP", 
+            "courses": [
+                {
+                    "code": "COOP 1001", 
+                    "course_url": "http://www.chegg.com/courses/1576234/COOP/1001", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "Cooperative Education", 
+            "url": "http://www.chegg.com/courses/1576234/COOP"
+        }, 
+        {
+            "abbr": "CSCI", 
+            "courses": [
+                {
+                    "code": "CSCI 1120", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CSCI/1120", 
+                    "name": "Introduction to Computers"
+                }, 
+                {
+                    "code": "CSCI 1123", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CSCI/1123", 
+                    "name": "Computer Databases"
+                }, 
+                {
+                    "code": "CSCI 1127", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CSCI/1127", 
+                    "name": "Introduction to Multimedia"
+                }, 
+                {
+                    "code": "CSCI 1130", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CSCI/1130", 
+                    "name": "Computer Spreadsheets"
+                }, 
+                {
+                    "code": "CSCI 1133", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CSCI/1133", 
+                    "name": "Introduction to Internet Technologies"
+                }, 
+                {
+                    "code": "CSCI 1134", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CSCI/1134", 
+                    "name": "Educational Computing"
+                }, 
+                {
+                    "code": "CSCI 1135", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CSCI/1135", 
+                    "name": "Web Page Design"
+                }, 
+                {
+                    "code": "CSCI 1150", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CSCI/1150", 
+                    "name": "Foundations of Technology"
+                }, 
+                {
+                    "code": "CSCI 1201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CSCI/1201", 
+                    "name": "Visual Basic Programming"
+                }, 
+                {
+                    "code": "CSCI 1205", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CSCI/1205", 
+                    "name": "C++ Programming"
+                }, 
+                {
+                    "code": "CSCI 1210", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CSCI/1210", 
+                    "name": "Introduction to Computers for Forestry"
+                }, 
+                {
+                    "code": "CSCI 1211", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CSCI/1211", 
+                    "name": "Fundamentals of Computer Science I"
+                }, 
+                {
+                    "code": "CSCI 1212", 
+                    "course_url": "http://www.chegg.com/courses/1576234/CSCI/1212", 
+                    "name": "Fundamentals of Computer Science II"
+                }
+            ], 
+            "name": "Computer Science", 
+            "url": "http://www.chegg.com/courses/1576234/CSCI"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ECON/1101", 
+                    "name": "Introduction to Economics"
+                }, 
+                {
+                    "code": "ECON 2101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ECON/2101", 
+                    "name": "Macroeconomics"
+                }, 
+                {
+                    "code": "ECON 2102", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ECON/2102", 
+                    "name": "Microeconomics"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/1576234/ECON"
+        }, 
+        {
+            "abbr": "EDUC", 
+            "courses": [
+                {
+                    "code": "EDUC 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/EDUC/1101", 
+                    "name": "Class Act Seminar I"
+                }, 
+                {
+                    "code": "EDUC 1102", 
+                    "course_url": "http://www.chegg.com/courses/1576234/EDUC/1102", 
+                    "name": "Class Act Seminar II"
+                }, 
+                {
+                    "code": "EDUC 1103", 
+                    "course_url": "http://www.chegg.com/courses/1576234/EDUC/1103", 
+                    "name": "Class Act Seminar III"
+                }, 
+                {
+                    "code": "EDUC 1104", 
+                    "course_url": "http://www.chegg.com/courses/1576234/EDUC/1104", 
+                    "name": "Class Act Seminar IV"
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/1576234/EDUC"
+        }, 
+        {
+            "abbr": "ENGL", 
+            "courses": [
+                {
+                    "code": "ENGL 0091", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/0091", 
+                    "name": "Fundamentals of Written English"
+                }, 
+                {
+                    "code": "ENGL 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/1101", 
+                    "name": "Expository Writing"
+                }, 
+                {
+                    "code": "ENGL 1105", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/1105", 
+                    "name": "Technical Writing"
+                }, 
+                {
+                    "code": "ENGL 1109", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/1109", 
+                    "name": "Writing about Literature"
+                }, 
+                {
+                    "code": "ENGL 1113", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/1113", 
+                    "name": "Research Writing"
+                }, 
+                {
+                    "code": "ENGL 2100", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/2100", 
+                    "name": "Introduction to Literature"
+                }, 
+                {
+                    "code": "ENGL 2101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/2101", 
+                    "name": "Survey of American Literature I"
+                }, 
+                {
+                    "code": "ENGL 2102", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/2102", 
+                    "name": "Survey of American Literature II"
+                }, 
+                {
+                    "code": "ENGL 2106", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/2106", 
+                    "name": "Creative Writing:Prose"
+                }, 
+                {
+                    "code": "ENGL 2110", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/2110", 
+                    "name": "Masterpieces of World Literature"
+                }, 
+                {
+                    "code": "ENGL 2131", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/2131", 
+                    "name": "Modern Novel"
+                }, 
+                {
+                    "code": "ENGL 2132", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/2132", 
+                    "name": "Modern Drama"
+                }, 
+                {
+                    "code": "ENGL 2133", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/2133", 
+                    "name": "Modern Poetry"
+                }, 
+                {
+                    "code": "ENGL 2134", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/2134", 
+                    "name": "Modern Short Story"
+                }, 
+                {
+                    "code": "ENGL 2135", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/2135", 
+                    "name": "American Indian Literature"
+                }, 
+                {
+                    "code": "ENGL 2136", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/2136", 
+                    "name": "Mythology"
+                }, 
+                {
+                    "code": "ENGL 2137", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGL/2137", 
+                    "name": "Women Writers on Women"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/1576234/ENGL"
+        }, 
+        {
+            "abbr": "ENGR", 
+            "courses": [
+                {
+                    "code": "ENGR 1115", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGR/1115", 
+                    "name": "Digital Logic"
+                }, 
+                {
+                    "code": "ENGR 1201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGR/1201", 
+                    "name": "Introduction to Surveying Methods"
+                }, 
+                {
+                    "code": "ENGR 1220", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGR/1220", 
+                    "name": "Introduction to Engineering"
+                }, 
+                {
+                    "code": "ENGR 1221", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGR/1221", 
+                    "name": "Engineering and Professional Development I"
+                }, 
+                {
+                    "code": "ENGR 1222", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGR/1222", 
+                    "name": "Engineering and Professional Development II"
+                }, 
+                {
+                    "code": "ENGR 2002", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGR/2002", 
+                    "name": "Fundamentals of Graphical Communication"
+                }, 
+                {
+                    "code": "ENGR 2101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGR/2101", 
+                    "name": "Statics"
+                }, 
+                {
+                    "code": "ENGR 2102", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGR/2102", 
+                    "name": "Dynamics"
+                }, 
+                {
+                    "code": "ENGR 2103", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGR/2103", 
+                    "name": "Mechanics of Materials"
+                }, 
+                {
+                    "code": "ENGR 2104", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGR/2104", 
+                    "name": "Fluid Mechnics"
+                }, 
+                {
+                    "code": "ENGR 2105", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGR/2105", 
+                    "name": "Thermodynamics"
+                }, 
+                {
+                    "code": "ENGR 2106", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGR/2106", 
+                    "name": "Circuits I"
+                }, 
+                {
+                    "code": "ENGR 2107", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGR/2107", 
+                    "name": "Circuits II"
+                }, 
+                {
+                    "code": "ENGR 2223", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGR/2223", 
+                    "name": "Engineering and Professional Development III"
+                }, 
+                {
+                    "code": "ENGR 2224", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGR/2224", 
+                    "name": "Engineering and Professional Development IV"
+                }
+            ], 
+            "name": "Engineering", 
+            "url": "http://www.chegg.com/courses/1576234/ENGR"
+        }, 
+        {
+            "abbr": "ENGT", 
+            "courses": [
+                {
+                    "code": "ENGT 1000", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGT/1000", 
+                    "name": "Industrial Safety"
+                }, 
+                {
+                    "code": "ENGT 1002", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGT/1002", 
+                    "name": "Introduction to Pulp and Paper Technology"
+                }, 
+                {
+                    "code": "ENGT 1005", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGT/1005", 
+                    "name": "Statistical Process Control"
+                }, 
+                {
+                    "code": "ENGT 1007", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGT/1007", 
+                    "name": "Wood & Fiber Science"
+                }, 
+                {
+                    "code": "ENGT 1009", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGT/1009", 
+                    "name": "Process Technology"
+                }, 
+                {
+                    "code": "ENGT 1020", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGT/1020", 
+                    "name": "Paper & Chemical Processes"
+                }, 
+                {
+                    "code": "ENGT 1023", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGT/1023", 
+                    "name": "Rotating Machinery"
+                }, 
+                {
+                    "code": "ENGT 1025", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGT/1025", 
+                    "name": "Unit Operations"
+                }, 
+                {
+                    "code": "ENGT 1028", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGT/1028", 
+                    "name": "Fluid Power Systems"
+                }, 
+                {
+                    "code": "ENGT 1041", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGT/1041", 
+                    "name": "Process Control"
+                }, 
+                {
+                    "code": "ENGT 1045", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGT/1045", 
+                    "name": "Industrial Electricity"
+                }, 
+                {
+                    "code": "ENGT 2201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/ENGT/2201", 
+                    "name": "Internship"
+                }
+            ], 
+            "name": "Engineering Technology", 
+            "url": "http://www.chegg.com/courses/1576234/ENGT"
+        }, 
+        {
+            "abbr": "FORT", 
+            "courses": [
+                {
+                    "code": "FORT 1201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1201", 
+                    "name": "Introduction to Natural Resources"
+                }, 
+                {
+                    "code": "FORT 1202", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1202", 
+                    "name": "Natural Resource Careers"
+                }, 
+                {
+                    "code": "FORT 1205", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1205", 
+                    "name": "Forestry Math"
+                }, 
+                {
+                    "code": "FORT 1206", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1206", 
+                    "name": "Forest Protection"
+                }, 
+                {
+                    "code": "FORT 1207", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1207", 
+                    "name": "Woods Safety"
+                }, 
+                {
+                    "code": "FORT 1208", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1208", 
+                    "name": "Introduction to Water and Soil Resources"
+                }, 
+                {
+                    "code": "FORT 1210", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1210", 
+                    "name": "Computers in Forestry I"
+                }, 
+                {
+                    "code": "FORT 1211", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1211", 
+                    "name": "Spreadsheet Applications in Natural Resources"
+                }, 
+                {
+                    "code": "FORT 1301", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1301", 
+                    "name": "Wildland Fire Training"
+                }, 
+                {
+                    "code": "FORT 1302", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1302", 
+                    "name": "Fire Safety"
+                }, 
+                {
+                    "code": "FORT 1310", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1310", 
+                    "name": "Portable Pumps and Water"
+                }, 
+                {
+                    "code": "FORT 1312", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1312", 
+                    "name": "Fire Behavior and Effects"
+                }, 
+                {
+                    "code": "FORT 1314", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1314", 
+                    "name": "Prescribed Burning"
+                }, 
+                {
+                    "code": "FORT 1315", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1315", 
+                    "name": "Compass and Mapping"
+                }, 
+                {
+                    "code": "FORT 1320", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1320", 
+                    "name": "Wildland Fire Internship"
+                }, 
+                {
+                    "code": "FORT 1398", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1398", 
+                    "name": "Wildland Fire Training"
+                }, 
+                {
+                    "code": "FORT 1399", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1399", 
+                    "name": "Wildland Firefighting"
+                }, 
+                {
+                    "code": "FORT 1401", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1401", 
+                    "name": "Vegetation Management"
+                }, 
+                {
+                    "code": "FORT 1402", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/1402", 
+                    "name": "Arboriculture"
+                }, 
+                {
+                    "code": "FORT 2101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/2101", 
+                    "name": "Silviculture"
+                }, 
+                {
+                    "code": "FORT 2102", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/2102", 
+                    "name": "Forest Inventory"
+                }, 
+                {
+                    "code": "FORT 2105", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/2105", 
+                    "name": "Forest Products"
+                }, 
+                {
+                    "code": "FORT 2106", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/2106", 
+                    "name": "Logging"
+                }, 
+                {
+                    "code": "FORT 2121", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/2121", 
+                    "name": "Ecosystem Management"
+                }, 
+                {
+                    "code": "FORT 2201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/FORT/2201", 
+                    "name": "Natural Resources Internship"
+                }
+            ], 
+            "name": "Forest Technology", 
+            "url": "http://www.chegg.com/courses/1576234/FORT"
+        }, 
+        {
+            "abbr": "GENL", 
+            "courses": [
+                {
+                    "code": "GENL 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/GENL/1101", 
+                    "name": "Freshman Year Experience"
+                }, 
+                {
+                    "code": "GENL 1111", 
+                    "course_url": "http://www.chegg.com/courses/1576234/GENL/1111", 
+                    "name": "Career Planning"
+                }, 
+                {
+                    "code": "GENL 1112", 
+                    "course_url": "http://www.chegg.com/courses/1576234/GENL/1112", 
+                    "name": "Job Readiness"
+                }, 
+                {
+                    "code": "GENL 1140", 
+                    "course_url": "http://www.chegg.com/courses/1576234/GENL/1140", 
+                    "name": "Leadership Enhancement"
+                }
+            ], 
+            "name": "General Studies", 
+            "url": "http://www.chegg.com/courses/1576234/GENL"
+        }, 
+        {
+            "abbr": "GEOG", 
+            "courses": [
+                {
+                    "code": "GEOG 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/GEOG/1101", 
+                    "name": "Physical Geography"
+                }, 
+                {
+                    "code": "GEOG 1104", 
+                    "course_url": "http://www.chegg.com/courses/1576234/GEOG/1104", 
+                    "name": "World Regional Geography"
+                }, 
+                {
+                    "code": "GEOG 1108", 
+                    "course_url": "http://www.chegg.com/courses/1576234/GEOG/1108", 
+                    "name": "Cultural Geography"
+                }, 
+                {
+                    "code": "GEOG 1201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/GEOG/1201", 
+                    "name": "Map Use,Analysis and Interpretation"
+                }, 
+                {
+                    "code": "GEOG 1204", 
+                    "course_url": "http://www.chegg.com/courses/1576234/GEOG/1204", 
+                    "name": "Principles of Geographic Information Science"
+                }, 
+                {
+                    "code": "GEOG 1206", 
+                    "course_url": "http://www.chegg.com/courses/1576234/GEOG/1206", 
+                    "name": "Cartography"
+                }, 
+                {
+                    "code": "GEOG 1300", 
+                    "course_url": "http://www.chegg.com/courses/1576234/GEOG/1300", 
+                    "name": "Meteorology"
+                }, 
+                {
+                    "code": "GEOG 2101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/GEOG/2101", 
+                    "name": "Data Acquisition and Database Development in Geographic Information Science"
+                }, 
+                {
+                    "code": "GEOG 2104", 
+                    "course_url": "http://www.chegg.com/courses/1576234/GEOG/2104", 
+                    "name": "Modeling Techniques in Geographic Information Science"
+                }, 
+                {
+                    "code": "GEOG 2107", 
+                    "course_url": "http://www.chegg.com/courses/1576234/GEOG/2107", 
+                    "name": "Remote Sensing and Image Interpretation"
+                }, 
+                {
+                    "code": "GEOG 2201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/GEOG/2201", 
+                    "name": "Geographic Information Systems Internship"
+                }
+            ], 
+            "name": "Geography", 
+            "url": "http://www.chegg.com/courses/1576234/GEOG"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 1111", 
+                    "course_url": "http://www.chegg.com/courses/1576234/HIST/1111", 
+                    "name": "European History I"
+                }, 
+                {
+                    "code": "HIST 1112", 
+                    "course_url": "http://www.chegg.com/courses/1576234/HIST/1112", 
+                    "name": "European History II"
+                }, 
+                {
+                    "code": "HIST 1131", 
+                    "course_url": "http://www.chegg.com/courses/1576234/HIST/1131", 
+                    "name": "American History through the Civil War"
+                }, 
+                {
+                    "code": "HIST 1132", 
+                    "course_url": "http://www.chegg.com/courses/1576234/HIST/1132", 
+                    "name": "American History since the Civil War"
+                }, 
+                {
+                    "code": "HIST 1142", 
+                    "course_url": "http://www.chegg.com/courses/1576234/HIST/1142", 
+                    "name": "Native American History"
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/1576234/HIST"
+        }, 
+        {
+            "abbr": "HLTH", 
+            "courses": [
+                {
+                    "code": "HLTH 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/HLTH/1101", 
+                    "name": "First Aid"
+                }, 
+                {
+                    "code": "HLTH 1131", 
+                    "course_url": "http://www.chegg.com/courses/1576234/HLTH/1131", 
+                    "name": "First Responder"
+                }, 
+                {
+                    "code": "HLTH 1140", 
+                    "course_url": "http://www.chegg.com/courses/1576234/HLTH/1140", 
+                    "name": "Women's Health"
+                }, 
+                {
+                    "code": "HLTH 1201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/HLTH/1201", 
+                    "name": "Healthy Relationships"
+                }, 
+                {
+                    "code": "HLTH 1202", 
+                    "course_url": "http://www.chegg.com/courses/1576234/HLTH/1202", 
+                    "name": "Nutrition"
+                }, 
+                {
+                    "code": "HLTH 2101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/HLTH/2101", 
+                    "name": "CPR/First Aid for Healthcare Professionals"
+                }
+            ], 
+            "name": "Health", 
+            "url": "http://www.chegg.com/courses/1576234/HLTH"
+        }, 
+        {
+            "abbr": "HUM", 
+            "courses": [
+                {
+                    "code": "HUM 1111", 
+                    "course_url": "http://www.chegg.com/courses/1576234/HUM/1111", 
+                    "name": "War and Propaganda"
+                }, 
+                {
+                    "code": "HUM 1208", 
+                    "course_url": "http://www.chegg.com/courses/1576234/HUM/1208", 
+                    "name": "International Study Experience"
+                }, 
+                {
+                    "code": "HUM 1301", 
+                    "course_url": "http://www.chegg.com/courses/1576234/HUM/1301", 
+                    "name": "World Religions"
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/1576234/HUM"
+        }, 
+        {
+            "abbr": "LSKL", 
+            "courses": [
+                {
+                    "code": "LSKL 0091", 
+                    "course_url": "http://www.chegg.com/courses/1576234/LSKL/0091", 
+                    "name": "and 0092"
+                }, 
+                {
+                    "code": "LSKL 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/LSKL/1101", 
+                    "name": "Applied Study Skills"
+                }, 
+                {
+                    "code": "LSKL 1104", 
+                    "course_url": "http://www.chegg.com/courses/1576234/LSKL/1104", 
+                    "name": "Edge of Success"
+                }, 
+                {
+                    "code": "LSKL 1105", 
+                    "course_url": "http://www.chegg.com/courses/1576234/LSKL/1105", 
+                    "name": "Tutor Training"
+                }, 
+                {
+                    "code": "LSKL 1111", 
+                    "course_url": "http://www.chegg.com/courses/1576234/LSKL/1111", 
+                    "name": "Transition to College"
+                }
+            ], 
+            "name": "Lskl", 
+            "url": "http://www.chegg.com/courses/1576234/LSKL"
+        }, 
+        {
+            "abbr": "MASC", 
+            "courses": [
+                {
+                    "code": "MASC 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MASC/1101", 
+                    "name": "Introduction to Mass Communications"
+                }, 
+                {
+                    "code": "MASC 1105", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MASC/1105", 
+                    "name": "Introduction to Digital Photography"
+                }, 
+                {
+                    "code": "MASC 1201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MASC/1201", 
+                    "name": "Introduction to Media Writing"
+                }, 
+                {
+                    "code": "MASC 2201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MASC/2201", 
+                    "name": "Internship:Video,Radio,Print,Photography"
+                }, 
+                {
+                    "code": "MASC 2202", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MASC/2202", 
+                    "name": "Journalism Practicum:Literary Magazine"
+                }
+            ], 
+            "name": "Mass Communications", 
+            "url": "http://www.chegg.com/courses/1576234/MASC"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 0091", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MATH/0091", 
+                    "name": "Pre-Algebra"
+                }, 
+                {
+                    "code": "MATH 0092", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MATH/0092", 
+                    "name": "Elementary Algebra"
+                }, 
+                {
+                    "code": "MATH 0093", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MATH/0093", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MATH 0094", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MATH/0094", 
+                    "name": "Functions I"
+                }, 
+                {
+                    "code": "MATH 1100", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MATH/1100", 
+                    "name": "Math for Elementary Teachers"
+                }, 
+                {
+                    "code": "MATH 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MATH/1101", 
+                    "name": "Contemporary Mathematics"
+                }, 
+                {
+                    "code": "MATH 1105", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MATH/1105", 
+                    "name": "Elementary Statistics"
+                }, 
+                {
+                    "code": "MATH 1111", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MATH/1111", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MATH 1120", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MATH/1120", 
+                    "name": "Functions II"
+                }, 
+                {
+                    "code": "MATH 1121", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MATH/1121", 
+                    "name": "Pre-Calculus"
+                }, 
+                {
+                    "code": "MATH 1122", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MATH/1122", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MATH 1123", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MATH/1123", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MATH 2102", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MATH/2102", 
+                    "name": "Multivariable Calculus"
+                }, 
+                {
+                    "code": "MATH 2104", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MATH/2104", 
+                    "name": "Differential Equations and Linear Algebra"
+                }, 
+                {
+                    "code": "MATH 2106", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MATH/2106", 
+                    "name": "Probability and Statistics"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/1576234/MATH"
+        }, 
+        {
+            "abbr": "MCS", 
+            "courses": [
+                {
+                    "code": "MCS 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MCS/1101", 
+                    "name": "Introduction to Indian Studies"
+                }, 
+                {
+                    "code": "MCS 1103", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MCS/1103", 
+                    "name": "Special Projects in Multicultural Studies"
+                }, 
+                {
+                    "code": "MCS 1111", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MCS/1111", 
+                    "name": "Minority Studies"
+                }
+            ], 
+            "name": "Media And Cultural Studies", 
+            "url": "http://www.chegg.com/courses/1576234/MCS"
+        }, 
+        {
+            "abbr": "MUSC", 
+            "courses": [
+                {
+                    "code": "MUSC 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MUSC/1101", 
+                    "name": "Fundamentals of Music"
+                }, 
+                {
+                    "code": "MUSC 1111", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MUSC/1111", 
+                    "name": "Music Appreciation"
+                }, 
+                {
+                    "code": "MUSC 1115", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MUSC/1115", 
+                    "name": "American Popular Music"
+                }, 
+                {
+                    "code": "MUSC 1191", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MUSC/1191", 
+                    "name": "and 1192"
+                }, 
+                {
+                    "code": "MUSC 2191", 
+                    "course_url": "http://www.chegg.com/courses/1576234/MUSC/2191", 
+                    "name": "and 2192"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/1576234/MUSC"
+        }, 
+        {
+            "abbr": "NSCI", 
+            "courses": [
+                {
+                    "code": "NSCI 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/NSCI/1101", 
+                    "name": "Environmental Science"
+                }, 
+                {
+                    "code": "NSCI 1121", 
+                    "course_url": "http://www.chegg.com/courses/1576234/NSCI/1121", 
+                    "name": "Earth Science"
+                }, 
+                {
+                    "code": "NSCI 1131", 
+                    "course_url": "http://www.chegg.com/courses/1576234/NSCI/1131", 
+                    "name": "Principles of Wildlife Management"
+                }, 
+                {
+                    "code": "NSCI 1135", 
+                    "course_url": "http://www.chegg.com/courses/1576234/NSCI/1135", 
+                    "name": "Field Bird Identification"
+                }, 
+                {
+                    "code": "NSCI 1138", 
+                    "course_url": "http://www.chegg.com/courses/1576234/NSCI/1138", 
+                    "name": "Natural Resource Law Enforcement"
+                }, 
+                {
+                    "code": "NSCI 1145", 
+                    "course_url": "http://www.chegg.com/courses/1576234/NSCI/1145", 
+                    "name": "Ecological Principles of Lakes and Streams"
+                }, 
+                {
+                    "code": "NSCI 1199", 
+                    "course_url": "http://www.chegg.com/courses/1576234/NSCI/1199", 
+                    "name": "Natural Resource Series"
+                }
+            ], 
+            "name": "Natural Science", 
+            "url": "http://www.chegg.com/courses/1576234/NSCI"
+        }, 
+        {
+            "abbr": "PE", 
+            "courses": [
+                {
+                    "code": "PE 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1101", 
+                    "name": "Cross-Country Skiing"
+                }, 
+                {
+                    "code": "PE 1102", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1102", 
+                    "name": "Downhill Skiing"
+                }, 
+                {
+                    "code": "PE 1105", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1105", 
+                    "name": "Bowling and Curling"
+                }, 
+                {
+                    "code": "PE 1108", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1108", 
+                    "name": "Softball and Volleyball"
+                }, 
+                {
+                    "code": "PE 1111", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1111", 
+                    "name": "Touch Football and Basketball"
+                }, 
+                {
+                    "code": "PE 1114", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1114", 
+                    "name": "Archery"
+                }, 
+                {
+                    "code": "PE 1117", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1117", 
+                    "name": "Baseball"
+                }, 
+                {
+                    "code": "PE 1121", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1121", 
+                    "name": "Golf"
+                }, 
+                {
+                    "code": "PE 1124", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1124", 
+                    "name": "Fitness Walking"
+                }, 
+                {
+                    "code": "PE 1125", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1125", 
+                    "name": "Flexibility and Core Training"
+                }, 
+                {
+                    "code": "PE 1127", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1127", 
+                    "name": "Aerobics"
+                }, 
+                {
+                    "code": "PE 1130", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1130", 
+                    "name": "Outdoor Adventure"
+                }, 
+                {
+                    "code": "PE 1131", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1131", 
+                    "name": "Camping Skills"
+                }, 
+                {
+                    "code": "PE 1133", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1133", 
+                    "name": "Racquet Sports"
+                }, 
+                {
+                    "code": "PE 1136", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1136", 
+                    "name": "Weight Training"
+                }, 
+                {
+                    "code": "PE 1137", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1137", 
+                    "name": "Fitness Training for Wildland Firefighters"
+                }, 
+                {
+                    "code": "PE 1139", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1139", 
+                    "name": "Yoga and Relaxation"
+                }, 
+                {
+                    "code": "PE 1161", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1161", 
+                    "name": "Competitive Football"
+                }, 
+                {
+                    "code": "PE 1162", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1162", 
+                    "name": "Competitive Volleyball"
+                }, 
+                {
+                    "code": "PE 1163", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1163", 
+                    "name": "Competitive Women's Basketball"
+                }, 
+                {
+                    "code": "PE 1164", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1164", 
+                    "name": "Competitive Wrestling"
+                }, 
+                {
+                    "code": "PE 1166", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1166", 
+                    "name": "Competitive Baseball"
+                }, 
+                {
+                    "code": "PE 1167", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1167", 
+                    "name": "Competitive Softball"
+                }, 
+                {
+                    "code": "PE 1168", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1168", 
+                    "name": "Competitive Men's Basketball"
+                }, 
+                {
+                    "code": "PE 1201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1201", 
+                    "name": "Wellness"
+                }, 
+                {
+                    "code": "PE 1204", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1204", 
+                    "name": "Activities for Stress Management"
+                }, 
+                {
+                    "code": "PE 1211", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1211", 
+                    "name": "Care and Prevention of Injuries"
+                }, 
+                {
+                    "code": "PE 1215", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1215", 
+                    "name": "Sports Officiating:Football"
+                }, 
+                {
+                    "code": "PE 1216", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1216", 
+                    "name": "Sports Officiating:Basketball"
+                }, 
+                {
+                    "code": "PE 1218", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/1218", 
+                    "name": "Sports Officiating:Baseball/Softball"
+                }, 
+                {
+                    "code": "PE 2101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PE/2101", 
+                    "name": "Recreational Leadership"
+                }
+            ], 
+            "name": "Physical Education", 
+            "url": "http://www.chegg.com/courses/1576234/PE"
+        }, 
+        {
+            "abbr": "PHIL", 
+            "courses": [
+                {
+                    "code": "PHIL 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PHIL/1101", 
+                    "name": "Introduction to Philosophy"
+                }, 
+                {
+                    "code": "PHIL 1111", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PHIL/1111", 
+                    "name": "Ethics"
+                }, 
+                {
+                    "code": "PHIL 1121", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PHIL/1121", 
+                    "name": "American Indian Philosophy"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/1576234/PHIL"
+        }, 
+        {
+            "abbr": "PHYS", 
+            "courses": [
+                {
+                    "code": "PHYS 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PHYS/1101", 
+                    "name": "Fundamentals of Physics I"
+                }, 
+                {
+                    "code": "PHYS 1102", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PHYS/1102", 
+                    "name": "Fundamentals of Physics II"
+                }, 
+                {
+                    "code": "PHYS 1201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PHYS/1201", 
+                    "name": "General Physics I"
+                }, 
+                {
+                    "code": "PHYS 1202", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PHYS/1202", 
+                    "name": "General Physics II"
+                }
+            ], 
+            "name": "Phys-Physics", 
+            "url": "http://www.chegg.com/courses/1576234/PHYS"
+        }, 
+        {
+            "abbr": "POLS", 
+            "courses": [
+                {
+                    "code": "POLS 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/POLS/1101", 
+                    "name": "American Politics and Government"
+                }, 
+                {
+                    "code": "POLS 1111", 
+                    "course_url": "http://www.chegg.com/courses/1576234/POLS/1111", 
+                    "name": "Federal Law and Tribal Government"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/1576234/POLS"
+        }, 
+        {
+            "abbr": "PRNU", 
+            "courses": [
+                {
+                    "code": "PRNU 1100", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/1100", 
+                    "name": "Computing for PN Students"
+                }, 
+                {
+                    "code": "PRNU 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/1101", 
+                    "name": "Nursing Assistant"
+                }, 
+                {
+                    "code": "PRNU 1102", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/1102", 
+                    "name": "Advanced Nursing Assistant"
+                }, 
+                {
+                    "code": "PRNU 1103", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/1103", 
+                    "name": "Home Health Aide"
+                }, 
+                {
+                    "code": "PRNU 1201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/1201", 
+                    "name": "Integrated Science"
+                }, 
+                {
+                    "code": "PRNU 1202", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/1202", 
+                    "name": "Medical Terminology OR Medical Terminology for PN Students"
+                }, 
+                {
+                    "code": "PRNU 1203", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/1203", 
+                    "name": "Nutrition and Diet Therapy"
+                }, 
+                {
+                    "code": "PRNU 1206", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/1206", 
+                    "name": "Health Needs for All Ages I"
+                }, 
+                {
+                    "code": "PRNU 1207", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/1207", 
+                    "name": "Pharmacology"
+                }, 
+                {
+                    "code": "PRNU 1208", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/1208", 
+                    "name": "Maternal/Child Health Nursing"
+                }, 
+                {
+                    "code": "PRNU 1209", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/1209", 
+                    "name": "Gerontological Nursing"
+                }, 
+                {
+                    "code": "PRNU 1210", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/1210", 
+                    "name": "Nursing Skills I"
+                }, 
+                {
+                    "code": "PRNU 1211", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/1211", 
+                    "name": "Clinical I"
+                }, 
+                {
+                    "code": "PRNU 2206", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/2206", 
+                    "name": "Health Needs for All Ages II"
+                }, 
+                {
+                    "code": "PRNU 2207", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/2207", 
+                    "name": "Psychosocial Aspects of Nursing"
+                }, 
+                {
+                    "code": "PRNU 2208", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/2208", 
+                    "name": "PN Role in Home Care"
+                }, 
+                {
+                    "code": "PRNU 2209", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/2209", 
+                    "name": "Role Transition"
+                }, 
+                {
+                    "code": "PRNU 2210", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/2210", 
+                    "name": "Nursing Skills II"
+                }, 
+                {
+                    "code": "PRNU 2211", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/2211", 
+                    "name": "Clinical II"
+                }, 
+                {
+                    "code": "PRNU 2221", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PRNU/2221", 
+                    "name": "Integrated Practicum"
+                }
+            ], 
+            "name": "Professional Nursing", 
+            "url": "http://www.chegg.com/courses/1576234/PRNU"
+        }, 
+        {
+            "abbr": "PSYC", 
+            "courses": [
+                {
+                    "code": "PSYC 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/1101", 
+                    "name": "General Psychology"
+                }, 
+                {
+                    "code": "PSYC 1105", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/1105", 
+                    "name": "Introduction to Human Services and Community Resources"
+                }, 
+                {
+                    "code": "PSYC 1106", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/1106", 
+                    "name": "Early Childhood Practicum"
+                }, 
+                {
+                    "code": "PSYC 1110", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/1110", 
+                    "name": "Introduction to Chemical Dependency"
+                }, 
+                {
+                    "code": "PSYC 1201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/1201", 
+                    "name": "Human Growth and Development"
+                }, 
+                {
+                    "code": "PSYC 1202", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/1202", 
+                    "name": "Child Development and Learning"
+                }, 
+                {
+                    "code": "PSYC 1205", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/1205", 
+                    "name": "Relations and Management in Early Childhood"
+                }, 
+                {
+                    "code": "PSYC 1206", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/1206", 
+                    "name": "Parent and Professional Relations"
+                }, 
+                {
+                    "code": "PSYC 1207", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/1207", 
+                    "name": "Children's Health,Safety and Nutrition"
+                }, 
+                {
+                    "code": "PSYC 2100", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/2100", 
+                    "name": "Group Processes"
+                }, 
+                {
+                    "code": "PSYC 2102", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/2102", 
+                    "name": "Learning & Cognition"
+                }, 
+                {
+                    "code": "PSYC 2106", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/2106", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSYC 2110", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/2110", 
+                    "name": "Human Sexuality"
+                }, 
+                {
+                    "code": "PSYC 2120", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/2120", 
+                    "name": "Behavioral and Cognitive Intervention"
+                }, 
+                {
+                    "code": "PSYC 2123", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/2123", 
+                    "name": "Basic Interviewing and Helping Skills"
+                }, 
+                {
+                    "code": "PSYC 2130", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/2130", 
+                    "name": "Infants and Toddlers"
+                }, 
+                {
+                    "code": "PSYC 2201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/2201", 
+                    "name": "Applied Psychology Practicum"
+                }, 
+                {
+                    "code": "PSYC 2202", 
+                    "course_url": "http://www.chegg.com/courses/1576234/PSYC/2202", 
+                    "name": "Preschool Internship"
+                }
+            ], 
+            "name": "Psychology", 
+            "url": "http://www.chegg.com/courses/1576234/PSYC"
+        }, 
+        {
+            "abbr": "READ", 
+            "courses": [
+                {
+                    "code": "READ 0092", 
+                    "course_url": "http://www.chegg.com/courses/1576234/READ/0092", 
+                    "name": "Analytical College Reading"
+                }
+            ], 
+            "name": "Reading", 
+            "url": "http://www.chegg.com/courses/1576234/READ"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/SOC/1101", 
+                    "name": "Introduction to Sociology"
+                }, 
+                {
+                    "code": "SOC 1201", 
+                    "course_url": "http://www.chegg.com/courses/1576234/SOC/1201", 
+                    "name": "Social Problems"
+                }, 
+                {
+                    "code": "SOC 2101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/SOC/2101", 
+                    "name": "Contemporary Indian Concerns"
+                }, 
+                {
+                    "code": "SOC 2120", 
+                    "course_url": "http://www.chegg.com/courses/1576234/SOC/2120", 
+                    "name": "Introduction to Criminal Justice"
+                }, 
+                {
+                    "code": "SOC 2130", 
+                    "course_url": "http://www.chegg.com/courses/1576234/SOC/2130", 
+                    "name": "Introduction to Women's Studies"
+                }, 
+                {
+                    "code": "SOC 2140", 
+                    "course_url": "http://www.chegg.com/courses/1576234/SOC/2140", 
+                    "name": "Society and Family Dynamics"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/1576234/SOC"
+        }, 
+        {
+            "abbr": "SPCH", 
+            "courses": [
+                {
+                    "code": "SPCH 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/SPCH/1101", 
+                    "name": "Introduction to Speech Communication"
+                }, 
+                {
+                    "code": "SPCH 1105", 
+                    "course_url": "http://www.chegg.com/courses/1576234/SPCH/1105", 
+                    "name": "Fundamentals of Public Speaking"
+                }, 
+                {
+                    "code": "SPCH 1111", 
+                    "course_url": "http://www.chegg.com/courses/1576234/SPCH/1111", 
+                    "name": "Interpersonal Communications"
+                }, 
+                {
+                    "code": "SPCH 1121", 
+                    "course_url": "http://www.chegg.com/courses/1576234/SPCH/1121", 
+                    "name": "Intercultural Communications"
+                }
+            ], 
+            "name": "Speech", 
+            "url": "http://www.chegg.com/courses/1576234/SPCH"
+        }, 
+        {
+            "abbr": "THTR", 
+            "courses": [
+                {
+                    "code": "THTR 1101", 
+                    "course_url": "http://www.chegg.com/courses/1576234/THTR/1101", 
+                    "name": "Introduction to Theatre Arts"
+                }, 
+                {
+                    "code": "THTR 1121", 
+                    "course_url": "http://www.chegg.com/courses/1576234/THTR/1121", 
+                    "name": "Beginning Acting"
+                }
+            ], 
+            "name": "Theatre", 
+            "url": "http://www.chegg.com/courses/1576234/THTR"
+        }
+    ], 
+    "name": "1576234"
+}

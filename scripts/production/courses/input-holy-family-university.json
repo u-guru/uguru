@@ -1,0 +1,3823 @@
+{
+    "all_stats": {
+        "num_courses": 704, 
+        "num_departments": 42
+    }, 
+    "departments": [
+        {
+            "abbr": "ACCT", 
+            "courses": [
+                {
+                    "code": "ACCT 205", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ACCT/205", 
+                    "name": "Prin of Fin Acct"
+                }, 
+                {
+                    "code": "ACCT 206", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ACCT/206", 
+                    "name": "Prin of Mgr Acct"
+                }, 
+                {
+                    "code": "ACCT 307", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ACCT/307", 
+                    "name": "Interm Acct I"
+                }, 
+                {
+                    "code": "ACCT 308", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ACCT/308", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACCT 315", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ACCT/315", 
+                    "name": "Cost Accounting"
+                }, 
+                {
+                    "code": "ACCT 330", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ACCT/330", 
+                    "name": "Financial Statement Analysis"
+                }, 
+                {
+                    "code": "ACCT 404", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ACCT/404", 
+                    "name": "Auditing"
+                }, 
+                {
+                    "code": "ACCT 409", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ACCT/409", 
+                    "name": "Advanced Accounting I"
+                }, 
+                {
+                    "code": "ACCT 410", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ACCT/410", 
+                    "name": "Advanced Accounting II"
+                }, 
+                {
+                    "code": "ACCT 413", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ACCT/413", 
+                    "name": "Intro to Taxation"
+                }, 
+                {
+                    "code": "ACCT 414", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ACCT/414", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACCT 415", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ACCT/415", 
+                    "name": "Advanced Accounting"
+                }, 
+                {
+                    "code": "ACCT 430", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ACCT/430", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACCT 439", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ACCT/439", 
+                    "name": "Senior Seminar in Accounting"
+                }
+            ], 
+            "name": "Accountancy", 
+            "url": "http://www.chegg.com/courses/holyfamily/ACCT"
+        }, 
+        {
+            "abbr": "ANTH", 
+            "courses": [
+                {
+                    "code": "ANTH 101", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ANTH/101", 
+                    "name": "Cult'l Anthropology"
+                }, 
+                {
+                    "code": "ANTH 201", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ANTH/201", 
+                    "name": "The Development of Civilization"
+                }
+            ], 
+            "name": "Anthropology", 
+            "url": "http://www.chegg.com/courses/holyfamily/ANTH"
+        }, 
+        {
+            "abbr": "ARTS", 
+            "courses": [
+                {
+                    "code": "ARTS 102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/102", 
+                    "name": "Art Appreciation"
+                }, 
+                {
+                    "code": "ARTS 210,211", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/210%2C211", 
+                    "name": "Watercolor I,II"
+                }, 
+                {
+                    "code": "ARTS 213", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/213", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ARTS 214", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/214", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ARTS 217", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/217", 
+                    "name": "Sculpture I"
+                }, 
+                {
+                    "code": "ARTS 217,218", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/217%2C218", 
+                    "name": "Sculpture I,II"
+                }, 
+                {
+                    "code": "ARTS 218", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/218", 
+                    "name": "Sculpture II"
+                }, 
+                {
+                    "code": "ARTS 221", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/221", 
+                    "name": "Art Therapy"
+                }, 
+                {
+                    "code": "ARTS 223", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/223", 
+                    "name": "Two Dimension Dsgn"
+                }, 
+                {
+                    "code": "ARTS 224", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/224", 
+                    "name": "Three-Dimensional Design"
+                }, 
+                {
+                    "code": "ARTS 225", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/225", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ARTS 226", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/226", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ARTS 230", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/230", 
+                    "name": "Elements of Typography"
+                }, 
+                {
+                    "code": "ARTS 310", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ARTS 311", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/311", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ARTS 315", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/315", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ARTS 316", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/316", 
+                    "name": "Digital Photo"
+                }, 
+                {
+                    "code": "ARTS 317", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/317", 
+                    "name": "Computer Illustration"
+                }, 
+                {
+                    "code": "ARTS 319", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/319", 
+                    "name": "Painting I"
+                }, 
+                {
+                    "code": "ARTS 319,320", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/319%2C320", 
+                    "name": "Painting I,II"
+                }, 
+                {
+                    "code": "ARTS 320", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/320", 
+                    "name": "Painting II"
+                }, 
+                {
+                    "code": "ARTS 321", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/321", 
+                    "name": "Ceramics I"
+                }, 
+                {
+                    "code": "ARTS 321,322", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/321%2C322", 
+                    "name": "Ceramics I,II"
+                }, 
+                {
+                    "code": "ARTS 322", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/322", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ARTS 323", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/323", 
+                    "name": "Printmaking I"
+                }, 
+                {
+                    "code": "ARTS 323,324", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/323%2C324", 
+                    "name": "Printmaking I,II"
+                }, 
+                {
+                    "code": "ARTS 324", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/324", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ARTS 325", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/325", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ARTS 325,326", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/325%2C326", 
+                    "name": "Seminars in Art History"
+                }, 
+                {
+                    "code": "ARTS 327", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/327", 
+                    "name": "Adv Studio Art III"
+                }, 
+                {
+                    "code": "ARTS 350,351", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/350%2C351", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "ARTS 427", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/427", 
+                    "name": "Rsrch Seminar"
+                }, 
+                {
+                    "code": "ARTS 428", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/428", 
+                    "name": "Ind't Proj"
+                }, 
+                {
+                    "code": "ARTS 431-499", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ARTS/431-499", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Art Studio", 
+            "url": "http://www.chegg.com/courses/holyfamily/ARTS"
+        }, 
+        {
+            "abbr": "BIOL", 
+            "courses": [
+                {
+                    "code": "BIOL 110", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/110", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIOL 120", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/120", 
+                    "name": "Biological Prin I"
+                }, 
+                {
+                    "code": "BIOL 120,120L;121,121L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/120%2C120L%3B121%2C121L", 
+                    "name": "Biological Principles I,II"
+                }, 
+                {
+                    "code": "BIOL 121", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/121", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIOL 206", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/206", 
+                    "name": "Microbiology"
+                }, 
+                {
+                    "code": "BIOL 206,206L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/206%2C206L", 
+                    "name": "Microbiology"
+                }, 
+                {
+                    "code": "BIOL 207", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/207", 
+                    "name": "Anat & Physiol I"
+                }, 
+                {
+                    "code": "BIOL 207,207L;208,208L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/207%2C207L%3B208%2C208L", 
+                    "name": "Anatomy and Physiology I,II"
+                }, 
+                {
+                    "code": "BIOL 208", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/208", 
+                    "name": "Anat & Physiol II"
+                }, 
+                {
+                    "code": "BIOL 209", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/209", 
+                    "name": "Cell Biology"
+                }, 
+                {
+                    "code": "BIOL 210", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIOL 210,210L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/210%2C210L", 
+                    "name": "Introduction to Scientific Techniques"
+                }, 
+                {
+                    "code": "BIOL 304", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/304", 
+                    "name": "Prin of Genetics"
+                }, 
+                {
+                    "code": "BIOL 312", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/312", 
+                    "name": "Cell-Cell Interaction"
+                }, 
+                {
+                    "code": "BIOL 325", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/325", 
+                    "name": "Jr Sem:Scient'c Lit"
+                }, 
+                {
+                    "code": "BIOL 326", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/326", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIOL 330", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/330", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIOL 331", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/331", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIOL 407", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/407", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIOL 408,408L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/408%2C408L", 
+                    "name": "Cell and Molecular Techniques"
+                }, 
+                {
+                    "code": "BIOL 411", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/411", 
+                    "name": "Microtechniques"
+                }, 
+                {
+                    "code": "BIOL 415", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/415", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIOL 415,416", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/415%2C416", 
+                    "name": "Modern Concepts in Biochemistry I,II"
+                }, 
+                {
+                    "code": "BIOL 427", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/427", 
+                    "name": "Research Internship"
+                }, 
+                {
+                    "code": "BIOL 427,428", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BIOL/427%2C428", 
+                    "name": "Research/Internship"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/holyfamily/BIOL"
+        }, 
+        {
+            "abbr": "BUSA", 
+            "courses": [
+                {
+                    "code": "BUSA 100", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSA/100", 
+                    "name": "Intro to Business"
+                }, 
+                {
+                    "code": "BUSA 101", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSA/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSA/102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 302", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSA/302", 
+                    "name": "Financial Management for the Consumer"
+                }, 
+                {
+                    "code": "BUSA 303", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSA/303", 
+                    "name": "Money and Banking"
+                }, 
+                {
+                    "code": "BUSA 311", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSA/311", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 320", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSA/320", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 350", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSA/350", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "BUSA 350,351", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSA/350%2C351", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "BUSA 402", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSA/402", 
+                    "name": "Labor Law"
+                }, 
+                {
+                    "code": "BUSA 435", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSA/435", 
+                    "name": "Sr Sem:Business Policy"
+                }
+            ], 
+            "name": "Business Administration", 
+            "url": "http://www.chegg.com/courses/holyfamily/BUSA"
+        }, 
+        {
+            "abbr": "BUSI", 
+            "courses": [
+                {
+                    "code": "BUSI 353", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSI/353", 
+                    "name": "Internat. Bus. Pract. & Cult"
+                }, 
+                {
+                    "code": "BUSI 403", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSI/403", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSI 404", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSI/404", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSI 416", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSI/416", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSI 432", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSI/432", 
+                    "name": "Int'l Marketing"
+                }, 
+                {
+                    "code": "BUSI 439", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/BUSI/439", 
+                    "name": ""
+                }
+            ], 
+            "name": "Business Administration", 
+            "url": "http://www.chegg.com/courses/holyfamily/BUSI"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 120", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/120", 
+                    "name": "Chemistry Prin I"
+                }, 
+                {
+                    "code": "CHEM 120,120L;121,121L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/120%2C120L%3B121%2C121L", 
+                    "name": "Chemistry Principles I,II"
+                }, 
+                {
+                    "code": "CHEM 121", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/121", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHEM 203,203L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/203%2C203L", 
+                    "name": "Analytical Chemistry"
+                }, 
+                {
+                    "code": "CHEM 207", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/207", 
+                    "name": "Organic Chem I"
+                }, 
+                {
+                    "code": "CHEM 207,207L;208,208L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/207%2C207L%3B208%2C208L", 
+                    "name": "Organic Chemistry I,II"
+                }, 
+                {
+                    "code": "CHEM 208", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/208", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHEM 299", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/299", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHEM 301", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/301", 
+                    "name": "Physical Chem I"
+                }, 
+                {
+                    "code": "CHEM 301,301L;302,302L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/301%2C301L%3B302%2C302L", 
+                    "name": "Physical Chemistry I,II"
+                }, 
+                {
+                    "code": "CHEM 302", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/302", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHEM 305", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/305", 
+                    "name": "Organic Structure Analysis"
+                }, 
+                {
+                    "code": "CHEM 307", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/307", 
+                    "name": "Advanced Inorganic Chemistry"
+                }, 
+                {
+                    "code": "CHEM 325", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/325", 
+                    "name": "Junior Seminar:Chemical Literature"
+                }, 
+                {
+                    "code": "CHEM 401,401L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/401%2C401L", 
+                    "name": "Instrumental Analysis"
+                }, 
+                {
+                    "code": "CHEM 415", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/415", 
+                    "name": "Mod Conc Biochem I"
+                }, 
+                {
+                    "code": "CHEM 415,416", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/415%2C416", 
+                    "name": "Modern Concepts in Biochemistry I,II"
+                }, 
+                {
+                    "code": "CHEM 425,426", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CHEM/425%2C426", 
+                    "name": "Senior Research Seminar"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/holyfamily/CHEM"
+        }, 
+        {
+            "abbr": "CMIS", 
+            "courses": [
+                {
+                    "code": "CMIS 101", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CMIS 102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/102", 
+                    "name": "Introduction to Computers"
+                }, 
+                {
+                    "code": "CMIS 103", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/103", 
+                    "name": "Computer Applications"
+                }, 
+                {
+                    "code": "CMIS 107", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/107", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CMIS 108", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/108", 
+                    "name": "Intermediate Programming"
+                }, 
+                {
+                    "code": "CMIS 210", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/210", 
+                    "name": "Web Design and E-Commerce"
+                }, 
+                {
+                    "code": "CMIS 220", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/220", 
+                    "name": "MIS"
+                }, 
+                {
+                    "code": "CMIS 231", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/231", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CMIS 232", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/232", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CMIS 303", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/303", 
+                    "name": "Data Comm. & Networks"
+                }, 
+                {
+                    "code": "CMIS 305", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/305", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CMIS 307", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/307", 
+                    "name": "Sys Anal & Design"
+                }, 
+                {
+                    "code": "CMIS 308", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/308", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CMIS 321", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/321", 
+                    "name": "ITHardware & Software"
+                }, 
+                {
+                    "code": "CMIS 331", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/331", 
+                    "name": "Graphical User Interface Programming"
+                }, 
+                {
+                    "code": "CMIS 335", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/335", 
+                    "name": "Digital Forensics"
+                }, 
+                {
+                    "code": "CMIS 412", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/412", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CMIS 415", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/415", 
+                    "name": "Data Communications"
+                }, 
+                {
+                    "code": "CMIS 416", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/416", 
+                    "name": "Computer Networks"
+                }, 
+                {
+                    "code": "CMIS 417", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/417", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CMIS 418", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/418", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CMIS 420", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/420", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CMIS 439", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CMIS/439", 
+                    "name": ""
+                }
+            ], 
+            "name": "Computer Mgmt. & Info. Systems", 
+            "url": "http://www.chegg.com/courses/holyfamily/CMIS"
+        }, 
+        {
+            "abbr": "COMM", 
+            "courses": [
+                {
+                    "code": "COMM 110", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/110", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COMM 218", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/218", 
+                    "name": "Desktop Publishing"
+                }, 
+                {
+                    "code": "COMM 220", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/220", 
+                    "name": "Comm & Culture"
+                }, 
+                {
+                    "code": "COMM 223", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/223", 
+                    "name": "Two Dimension Dsgn"
+                }, 
+                {
+                    "code": "COMM 226", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/226", 
+                    "name": "Writing for the Media"
+                }, 
+                {
+                    "code": "COMM 230", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/230", 
+                    "name": "Journalism I"
+                }, 
+                {
+                    "code": "COMM 233", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/233", 
+                    "name": "Television & Elec Media I"
+                }, 
+                {
+                    "code": "COMM 235", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/235", 
+                    "name": "Public Relations"
+                }, 
+                {
+                    "code": "COMM 256", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/256", 
+                    "name": "Law and Ethics in Media"
+                }, 
+                {
+                    "code": "COMM 310", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COMM 311", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/311", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COMM 312", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/312", 
+                    "name": "Prin of Marketing"
+                }, 
+                {
+                    "code": "COMM 314", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/314", 
+                    "name": "Editing"
+                }, 
+                {
+                    "code": "COMM 316", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/316", 
+                    "name": "Technical Writing"
+                }, 
+                {
+                    "code": "COMM 317", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/317", 
+                    "name": "Computer Illustration"
+                }, 
+                {
+                    "code": "COMM 320", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/320", 
+                    "name": "Video I"
+                }, 
+                {
+                    "code": "COMM 321", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/321", 
+                    "name": "Digital Photography"
+                }, 
+                {
+                    "code": "COMM 322-334", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/322-334", 
+                    "name": "Special Topics in Communications"
+                }, 
+                {
+                    "code": "COMM 335", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/335", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COMM 360", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/360", 
+                    "name": "Practicum/Seminar"
+                }, 
+                {
+                    "code": "COMM 405", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/405", 
+                    "name": "Prin of Advertising"
+                }, 
+                {
+                    "code": "COMM 412", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/412", 
+                    "name": "Investigative Reporting"
+                }, 
+                {
+                    "code": "COMM 415", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/415", 
+                    "name": "Photojournalism"
+                }, 
+                {
+                    "code": "COMM 421", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/421", 
+                    "name": "Video II"
+                }, 
+                {
+                    "code": "COMM 425", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/425", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COMM 450", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/450", 
+                    "name": "Coop Educ I"
+                }, 
+                {
+                    "code": "COMM 451", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/COMM/451", 
+                    "name": "Cooperative Education II"
+                }
+            ], 
+            "name": "Communication", 
+            "url": "http://www.chegg.com/courses/holyfamily/COMM"
+        }, 
+        {
+            "abbr": "CRJU", 
+            "courses": [
+                {
+                    "code": "CRJU 101", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/101", 
+                    "name": "Intro Crim Just Sys"
+                }, 
+                {
+                    "code": "CRJU 200", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/200", 
+                    "name": "Intro to Criminology"
+                }, 
+                {
+                    "code": "CRJU 202", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/202", 
+                    "name": "Comparative Criminal Justice Systems"
+                }, 
+                {
+                    "code": "CRJU 210", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/210", 
+                    "name": "Law Enforcement"
+                }, 
+                {
+                    "code": "CRJU 212", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/212", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CRJU 217", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/217", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CRJU 219", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/219", 
+                    "name": "Victimology"
+                }, 
+                {
+                    "code": "CRJU 222", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/222", 
+                    "name": "Women & Crim Just Sys"
+                }, 
+                {
+                    "code": "CRJU 299", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/299", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CRJU 300", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/300", 
+                    "name": "Corrections"
+                }, 
+                {
+                    "code": "CRJU 308", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/308", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CRJU 310", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CRJU 317", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/317", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CRJU 318", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/318", 
+                    "name": "Court Sys & Procedure"
+                }, 
+                {
+                    "code": "CRJU 323", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/323", 
+                    "name": "Research Methods for Criminal Justice-A Comparative Analysis"
+                }, 
+                {
+                    "code": "CRJU 330", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/330", 
+                    "name": "Jr Sem in Soc Sci"
+                }, 
+                {
+                    "code": "CRJU 350,351", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/350%2C351", 
+                    "name": "Internship"
+                }, 
+                {
+                    "code": "CRJU 351", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/351", 
+                    "name": "Internship"
+                }, 
+                {
+                    "code": "CRJU 403", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/403", 
+                    "name": "Probation & Parole"
+                }, 
+                {
+                    "code": "CRJU 405", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/405", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CRJU 423", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/423", 
+                    "name": "Adv Res Meth in CRJU"
+                }, 
+                {
+                    "code": "CRJU 427", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/427", 
+                    "name": "Seminar:Issues in the Criminal Justice System"
+                }, 
+                {
+                    "code": "CRJU 430", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/CRJU/430", 
+                    "name": "Sr Sem in Soc Sci"
+                }
+            ], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/holyfamily/CRJU"
+        }, 
+        {
+            "abbr": "EACN", 
+            "courses": [
+                {
+                    "code": "EACN 202", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EACN/202", 
+                    "name": "Introduction to Early Childhood Education"
+                }, 
+                {
+                    "code": "EACN 301", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EACN/301", 
+                    "name": "Infant/Toddler Curriculum"
+                }, 
+                {
+                    "code": "EACN 302", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EACN/302", 
+                    "name": "Preschool Curriculum"
+                }, 
+                {
+                    "code": "EACN 401", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EACN/401", 
+                    "name": "Inclusion in Early Childhood"
+                }, 
+                {
+                    "code": "EACN 402", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EACN/402", 
+                    "name": "Student Teaching-ELED/EACN"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/holyfamily/EACN"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 103", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ECON/103", 
+                    "name": "Introduction to Economics"
+                }, 
+                {
+                    "code": "ECON 201", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ECON/201", 
+                    "name": "Economic Theory-Macro Theory"
+                }, 
+                {
+                    "code": "ECON 202", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ECON/202", 
+                    "name": "Economic Theory-Micro Theory"
+                }, 
+                {
+                    "code": "ECON 203", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ECON/203", 
+                    "name": "Econ Theory-Micro"
+                }, 
+                {
+                    "code": "ECON 303", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ECON/303", 
+                    "name": "Money & Banking"
+                }, 
+                {
+                    "code": "ECON 310", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ECON/310", 
+                    "name": "Econ of Sport"
+                }, 
+                {
+                    "code": "ECON 421", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ECON/421", 
+                    "name": ""
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/holyfamily/ECON"
+        }, 
+        {
+            "abbr": "EDUC", 
+            "courses": [
+                {
+                    "code": "EDUC 205", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/205", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 501", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/501", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 502", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/502", 
+                    "name": "Intro Stat's Beh Sci"
+                }, 
+                {
+                    "code": "EDUC 503", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/503", 
+                    "name": "Psyc. of Learning/Instruction"
+                }, 
+                {
+                    "code": "EDUC 504", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/504", 
+                    "name": "Comp's & Tech'y"
+                }, 
+                {
+                    "code": "EDUC 505", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/505", 
+                    "name": "Rsrch & Eval in Educ"
+                }, 
+                {
+                    "code": "EDUC 506", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/506", 
+                    "name": "Mgmt Lrng Environment"
+                }, 
+                {
+                    "code": "EDUC 507", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/507", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 511", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/511", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 513", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/513", 
+                    "name": "Tch Mathematics Methods"
+                }, 
+                {
+                    "code": "EDUC 515", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/515", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 516", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/516", 
+                    "name": "Tchng Rdg & Wrtng ESL"
+                }, 
+                {
+                    "code": "EDUC 517", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/517", 
+                    "name": "Tch Reading Methods"
+                }, 
+                {
+                    "code": "EDUC 519", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/519", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 520", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/520", 
+                    "name": "Spvsd Fld Exp"
+                }, 
+                {
+                    "code": "EDUC 521", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/521", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 523", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/523", 
+                    "name": "Socio'l Issues in Educ"
+                }, 
+                {
+                    "code": "EDUC 524", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/524", 
+                    "name": "Teachers & the Law"
+                }, 
+                {
+                    "code": "EDUC 525", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/525", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 527", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/527", 
+                    "name": "Proc & Ped'gy of Comm"
+                }, 
+                {
+                    "code": "EDUC 531", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/531", 
+                    "name": "Classroom Mgmnt"
+                }, 
+                {
+                    "code": "EDUC 534", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/534", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 538", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/538", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 539", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/539", 
+                    "name": "Linguistics for Lang. Teachers"
+                }, 
+                {
+                    "code": "EDUC 543", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/543", 
+                    "name": "Tch Science/Social Studies Mth"
+                }, 
+                {
+                    "code": "EDUC 546", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/546", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 547", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/547", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 548", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/548", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 556", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/556", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 571", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/571", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 573", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/573", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 578", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/578", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 580", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/580", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 582", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/582", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 583", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/583", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 589", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/589", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 602", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/602", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 603", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/603", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 604", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/604", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 605", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/605", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 606", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/606", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 607", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/607", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 610", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/610", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 615", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/615", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 620", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/620", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 629", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/629", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 631", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUC/631", 
+                    "name": ""
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/holyfamily/EDUC"
+        }, 
+        {
+            "abbr": "EDUN", 
+            "courses": [
+                {
+                    "code": "EDUN 105", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/105", 
+                    "name": "Introduction to Teaching in a Diverse Society"
+                }, 
+                {
+                    "code": "EDUN 201", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/201", 
+                    "name": "Educ Psyc"
+                }, 
+                {
+                    "code": "EDUN 202", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/202", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUN 203", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/203", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUN 204", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/204", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUN 210", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/210", 
+                    "name": "Observation I"
+                }, 
+                {
+                    "code": "EDUN 211", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/211", 
+                    "name": "Observation II"
+                }, 
+                {
+                    "code": "EDUN 303", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/303", 
+                    "name": "Meeting Needs ELL"
+                }, 
+                {
+                    "code": "EDUN 315", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/315", 
+                    "name": "Practicum I"
+                }, 
+                {
+                    "code": "EDUN 316", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/316", 
+                    "name": "Practicum II"
+                }, 
+                {
+                    "code": "EDUN 320", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/320", 
+                    "name": "Classroom Management"
+                }, 
+                {
+                    "code": "EDUN 321", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/321", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUN 322", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/322", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUN 323", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/323", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUN 324", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/324", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUN 331", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/331", 
+                    "name": "Sec Meth/Techn'y"
+                }, 
+                {
+                    "code": "EDUN 332", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/332", 
+                    "name": "Secondary Education Curriculum in the Content Area"
+                }, 
+                {
+                    "code": "EDUN 402", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/402", 
+                    "name": "Student Teaching-ELED"
+                }, 
+                {
+                    "code": "EDUN 404", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/404", 
+                    "name": "Senior Seminar"
+                }, 
+                {
+                    "code": "EDUN 412", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/412", 
+                    "name": "Student Tchg-Sec Ed"
+                }, 
+                {
+                    "code": "EDUN 414", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/EDUN/414", 
+                    "name": "Senior Seminar-SEC ED"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/holyfamily/EDUN"
+        }, 
+        {
+            "abbr": "ENGL", 
+            "courses": [
+                {
+                    "code": "ENGL 101", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/101", 
+                    "name": "Writing I"
+                }, 
+                {
+                    "code": "ENGL 102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/102", 
+                    "name": "Writing II"
+                }, 
+                {
+                    "code": "ENGL 103", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/103", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 104", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/104", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 115", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/115", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 201", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/201", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 202", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/202", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 203", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/203", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 204", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/204", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 205", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/205", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 206", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/206", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 208", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/208", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 235", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/235", 
+                    "name": "Understanding Movies"
+                }, 
+                {
+                    "code": "ENGL 241-299", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/241-299", 
+                    "name": "Readings in Literature"
+                }, 
+                {
+                    "code": "ENGL 242", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/242", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 245", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/245", 
+                    "name": "Modern American Novel"
+                }, 
+                {
+                    "code": "ENGL 247", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/247", 
+                    "name": "Irish Literature"
+                }, 
+                {
+                    "code": "ENGL 248", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/248", 
+                    "name": "Modern Drama"
+                }, 
+                {
+                    "code": "ENGL 256", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/256", 
+                    "name": "American Tales of Terror"
+                }, 
+                {
+                    "code": "ENGL 257", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/257", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 259", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/259", 
+                    "name": "Medicine in American Literature"
+                }, 
+                {
+                    "code": "ENGL 263", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/263", 
+                    "name": "Honors American Studies"
+                }, 
+                {
+                    "code": "ENGL 264", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/264", 
+                    "name": "Readings in Christian Spirituality"
+                }, 
+                {
+                    "code": "ENGL 265", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/265", 
+                    "name": "Contemporary Fiction"
+                }, 
+                {
+                    "code": "ENGL 266", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/266", 
+                    "name": "Love in Modern Fiction"
+                }, 
+                {
+                    "code": "ENGL 299", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/299", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 301", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/301", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 302", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/302", 
+                    "name": "Shakespeare"
+                }, 
+                {
+                    "code": "ENGL 304", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/304", 
+                    "name": "Renaissance Literature"
+                }, 
+                {
+                    "code": "ENGL 305", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/305", 
+                    "name": "Seventeenth-Century Literature"
+                }, 
+                {
+                    "code": "ENGL 306", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/306", 
+                    "name": "Eighteenth-Century Literature"
+                }, 
+                {
+                    "code": "ENGL 309", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/309", 
+                    "name": "Creative Writing"
+                }, 
+                {
+                    "code": "ENGL 310", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/310", 
+                    "name": "Mythology"
+                }, 
+                {
+                    "code": "ENGL 327", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/327", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 335", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/335", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 350", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/350", 
+                    "name": "Cooperative Education Option I"
+                }, 
+                {
+                    "code": "ENGL 351", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/351", 
+                    "name": "Cooperative Education Option II"
+                }, 
+                {
+                    "code": "ENGL 400", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/400", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 401", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/401", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 402", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/402", 
+                    "name": "The Victorian Period"
+                }, 
+                {
+                    "code": "ENGL 403", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/403", 
+                    "name": "Twentieth-Century Poetry and Drama"
+                }, 
+                {
+                    "code": "ENGL 404", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/404", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 410", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/410", 
+                    "name": "Advanced Writing Workshop"
+                }, 
+                {
+                    "code": "ENGL 425", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/425", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 426", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ENGL/426", 
+                    "name": "Senior Project"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/holyfamily/ENGL"
+        }, 
+        {
+            "abbr": "FEXP", 
+            "courses": [
+                {
+                    "code": "FEXP 100", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FEXP/100", 
+                    "name": "First Year College Success"
+                }
+            ], 
+            "name": "Field Experience", 
+            "url": "http://www.chegg.com/courses/holyfamily/FEXP"
+        }, 
+        {
+            "abbr": "FINC", 
+            "courses": [
+                {
+                    "code": "FINC 301", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FINC/301", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FINC 302", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FINC/302", 
+                    "name": "Financial Management II"
+                }, 
+                {
+                    "code": "FINC 303", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FINC/303", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FINC 305", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FINC/305", 
+                    "name": "Mergers and Acquisitions"
+                }, 
+                {
+                    "code": "FINC 401", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FINC/401", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FINC 403", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FINC/403", 
+                    "name": "Asset Management"
+                }, 
+                {
+                    "code": "FINC 415", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FINC/415", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FINC 420", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FINC/420", 
+                    "name": "Invest. Anlys & Portfolio Mgnt"
+                }, 
+                {
+                    "code": "FINC 425", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FINC/425", 
+                    "name": "Risk Management"
+                }, 
+                {
+                    "code": "FINC 430", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FINC/430", 
+                    "name": "Treasury Management"
+                }, 
+                {
+                    "code": "FINC 439", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FINC/439", 
+                    "name": "Senior Seminar Finance"
+                }, 
+                {
+                    "code": "FINC 510", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FINC/510", 
+                    "name": ""
+                }
+            ], 
+            "name": "Finance", 
+            "url": "http://www.chegg.com/courses/holyfamily/FINC"
+        }, 
+        {
+            "abbr": "FREN", 
+            "courses": [
+                {
+                    "code": "FREN 101", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FREN/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FREN 101,102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FREN/101%2C102", 
+                    "name": "Introductory French I,II"
+                }, 
+                {
+                    "code": "FREN 102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FREN/102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FREN 103", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FREN/103", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FREN 103,104", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FREN/103%2C104", 
+                    "name": "Intermediate French I,II"
+                }, 
+                {
+                    "code": "FREN 104", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FREN/104", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FREN 201,202", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FREN/201%2C202", 
+                    "name": "Grammar and Conversation I,II"
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/holyfamily/FREN"
+        }, 
+        {
+            "abbr": "FSPS", 
+            "courses": [
+                {
+                    "code": "FSPS 325", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FSPS/325", 
+                    "name": "Emer Serv Admin"
+                }, 
+                {
+                    "code": "FSPS 330", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FSPS/330", 
+                    "name": "Major Incident Analysis"
+                }, 
+                {
+                    "code": "FSPS 331", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FSPS/331", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FSPS 425", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FSPS/425", 
+                    "name": "Seminar:Emergency Services Administration"
+                }, 
+                {
+                    "code": "FSPS 426", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/FSPS/426", 
+                    "name": "Seminar:Contemporary Public Safety Issues"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/holyfamily/FSPS"
+        }, 
+        {
+            "abbr": "GERM", 
+            "courses": [
+                {
+                    "code": "GERM 101", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/GERM/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "GERM 101,102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/GERM/101%2C102", 
+                    "name": "Introductory German I,II"
+                }, 
+                {
+                    "code": "GERM 102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/GERM/102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "GERM 103,104", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/GERM/103%2C104", 
+                    "name": "Intermediate German I,II"
+                }, 
+                {
+                    "code": "GERM 201,202", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/GERM/201%2C202", 
+                    "name": "Grammar and Conversation I,II"
+                }
+            ], 
+            "name": "German", 
+            "url": "http://www.chegg.com/courses/holyfamily/GERM"
+        }, 
+        {
+            "abbr": "GSCI", 
+            "courses": [
+                {
+                    "code": "GSCI 104", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/GSCI/104", 
+                    "name": ""
+                }, 
+                {
+                    "code": "GSCI 105", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/GSCI/105", 
+                    "name": ""
+                }, 
+                {
+                    "code": "GSCI 106", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/GSCI/106", 
+                    "name": ""
+                }, 
+                {
+                    "code": "GSCI 107", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/GSCI/107", 
+                    "name": ""
+                }, 
+                {
+                    "code": "GSCI 108", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/GSCI/108", 
+                    "name": ""
+                }, 
+                {
+                    "code": "GSCI 110", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/GSCI/110", 
+                    "name": ""
+                }
+            ], 
+            "name": "Geosciences", 
+            "url": "http://www.chegg.com/courses/holyfamily/GSCI"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 108", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/108", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIST 109", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/109", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIST 203", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/203", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIST 204", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/204", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIST 205", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/205", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIST 208", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/208", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIST 211", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/211", 
+                    "name": "China in the Twentieth Century"
+                }, 
+                {
+                    "code": "HIST 212", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/212", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIST 263", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/263", 
+                    "name": "Honors American Studies"
+                }, 
+                {
+                    "code": "HIST 299", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/299", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIST 301", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/301", 
+                    "name": "Medieval Life and Thought"
+                }, 
+                {
+                    "code": "HIST 304", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/304", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIST 309", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/309", 
+                    "name": "Renaissance and Reformation"
+                }, 
+                {
+                    "code": "HIST 310", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/310", 
+                    "name": "Early Modern Europe"
+                }, 
+                {
+                    "code": "HIST 311", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/311", 
+                    "name": "Nineteenth-Century Europe"
+                }, 
+                {
+                    "code": "HIST 312", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/312", 
+                    "name": "American Immigration History"
+                }, 
+                {
+                    "code": "HIST 313", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/313", 
+                    "name": "Women in America"
+                }, 
+                {
+                    "code": "HIST 315", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/315", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIST 316", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/316", 
+                    "name": "American Foreign Policy"
+                }, 
+                {
+                    "code": "HIST 317", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/317", 
+                    "name": "Revolutionary America"
+                }, 
+                {
+                    "code": "HIST 318", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/318", 
+                    "name": "Atlantic Worlds"
+                }, 
+                {
+                    "code": "HIST 351", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/351", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIST 400-449", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/400-449", 
+                    "name": "Special Topics"
+                }, 
+                {
+                    "code": "HIST 401", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/401", 
+                    "name": "Modern European Thought"
+                }, 
+                {
+                    "code": "HIST 402", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/402", 
+                    "name": "Social Movements in History"
+                }, 
+                {
+                    "code": "HIST 404", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/404", 
+                    "name": "History of Latin America"
+                }, 
+                {
+                    "code": "HIST 405", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/405", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIST 423,424", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/423%2C424", 
+                    "name": "Independent Study"
+                }, 
+                {
+                    "code": "HIST 428,429", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/428%2C429", 
+                    "name": "Cooperative Education Option I,II"
+                }, 
+                {
+                    "code": "HIST 451", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/HIST/451", 
+                    "name": ""
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/holyfamily/HIST"
+        }, 
+        {
+            "abbr": "ITAL", 
+            "courses": [
+                {
+                    "code": "ITAL 101", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ITAL/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ITAL 101,102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ITAL/101%2C102", 
+                    "name": "Introductory Italian I,II"
+                }, 
+                {
+                    "code": "ITAL 102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ITAL/102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ITAL 103", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ITAL/103", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ITAL 103,104", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ITAL/103%2C104", 
+                    "name": "Intermediate Italian I,II"
+                }, 
+                {
+                    "code": "ITAL 104", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ITAL/104", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ITAL 201,202", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/ITAL/201%2C202", 
+                    "name": "Grammar and Conversation I,II"
+                }
+            ], 
+            "name": "Italian", 
+            "url": "http://www.chegg.com/courses/holyfamily/ITAL"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 106", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/106", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 107", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/107", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 121", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/121", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 122", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/122", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 130", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/130", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 150", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/150", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 211", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/211", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 212", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/212", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 213", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/213", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 220", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/220", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 221", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/221", 
+                    "name": "Ordinary Differential Equations"
+                }, 
+                {
+                    "code": "MATH 250", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/250", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 303", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/303", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 305", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/305", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 308", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/308", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 309", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/309", 
+                    "name": "Graph Theory"
+                }, 
+                {
+                    "code": "MATH 316", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/316", 
+                    "name": "Modern Algebra I"
+                }, 
+                {
+                    "code": "MATH 317", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/317", 
+                    "name": "Modern Algebra II"
+                }, 
+                {
+                    "code": "MATH 327", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/327", 
+                    "name": "Junior Seminar-History of Mathematics"
+                }, 
+                {
+                    "code": "MATH 401", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/401", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 403", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/403", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 404", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/404", 
+                    "name": "Introduction to Complex Variables"
+                }, 
+                {
+                    "code": "MATH 405", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/405", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 410", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/410", 
+                    "name": "Operations Research"
+                }, 
+                {
+                    "code": "MATH 427", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/427", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "MATH 430", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MATH/430", 
+                    "name": "Senior Seminar"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/holyfamily/MATH"
+        }, 
+        {
+            "abbr": "MEDT", 
+            "courses": [
+                {
+                    "code": "MEDT 413", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MEDT/413", 
+                    "name": "Clinical Hematology/Coagulation"
+                }, 
+                {
+                    "code": "MEDT 414", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MEDT/414", 
+                    "name": "Clinical Immunohematology"
+                }, 
+                {
+                    "code": "MEDT 416", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MEDT/416", 
+                    "name": "Clinical Chemistry"
+                }, 
+                {
+                    "code": "MEDT 417", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MEDT/417", 
+                    "name": "Clinical MicroBiology"
+                }, 
+                {
+                    "code": "MEDT 418", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MEDT/418", 
+                    "name": "Clinical Immunology/Serology"
+                }, 
+                {
+                    "code": "MEDT 420", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MEDT/420", 
+                    "name": "Clinical Seminar"
+                }
+            ], 
+            "name": "Medical Technology", 
+            "url": "http://www.chegg.com/courses/holyfamily/MEDT"
+        }, 
+        {
+            "abbr": "MNMK", 
+            "courses": [
+                {
+                    "code": "MNMK 305", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MNMK/305", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MNMK 306", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MNMK/306", 
+                    "name": "Industrial and Organizational Psychology"
+                }, 
+                {
+                    "code": "MNMK 312", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MNMK/312", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MNMK 315", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MNMK/315", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MNMK 355", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MNMK/355", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MNMK 403", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MNMK/403", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MNMK 405", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MNMK/405", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MNMK 406", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MNMK/406", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MNMK 407", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MNMK/407", 
+                    "name": "Principles of Marketing Research"
+                }, 
+                {
+                    "code": "MNMK 410", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MNMK/410", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MNMK 413", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MNMK/413", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MNMK 421", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MNMK/421", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MNMK 439", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MNMK/439", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/holyfamily/MNMK"
+        }, 
+        {
+            "abbr": "MUSC", 
+            "courses": [
+                {
+                    "code": "MUSC 102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MUSC/102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUSC 204", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/MUSC/204", 
+                    "name": "Interpretation of the Opera"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/holyfamily/MUSC"
+        }, 
+        {
+            "abbr": "NUR", 
+            "courses": [
+                {
+                    "code": "NUR 302", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NUR/302", 
+                    "name": "Women's Health Issues"
+                }, 
+                {
+                    "code": "NUR 303", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NUR/303", 
+                    "name": "End of Life Care Issues"
+                }, 
+                {
+                    "code": "NUR 352", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NUR/352", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NUR 354", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NUR/354", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NUR 356", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NUR/356", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NUR 401", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NUR/401", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NUR 401/401L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NUR/401%2F401L", 
+                    "name": "Community Health I:Basis for Practice"
+                }, 
+                {
+                    "code": "NUR 402", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NUR/402", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NUR 402/402L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NUR/402%2F402L", 
+                    "name": "Community Health II:Planning for Aggregates"
+                }, 
+                {
+                    "code": "NUR 450", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NUR/450", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NUR 452", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NUR/452", 
+                    "name": ""
+                }
+            ], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/holyfamily/NUR"
+        }, 
+        {
+            "abbr": "NURS", 
+            "courses": [
+                {
+                    "code": "NURS 102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 150", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/150", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 210", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 210,210L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/210%2C210L", 
+                    "name": "Essential Elements of Nursing Practice"
+                }, 
+                {
+                    "code": "NURS 214", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/214", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 316", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/316", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 316,316L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/316%2C316L", 
+                    "name": "Nursing and Older Adult Health"
+                }, 
+                {
+                    "code": "NURS 317", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/317", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 318", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/318", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 318,318L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/318%2C318L", 
+                    "name": "Nursing and The Childbearing Family"
+                }, 
+                {
+                    "code": "NURS 323", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/323", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 323,323L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/323%2C323L", 
+                    "name": "Nursing and Child Health"
+                }, 
+                {
+                    "code": "NURS 338", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/338", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 338,338L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/338%2C338L", 
+                    "name": "Nursing and Middle Adult Health"
+                }, 
+                {
+                    "code": "NURS 354", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/354", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 358", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/358", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 410", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/410", 
+                    "name": "Independent Study"
+                }, 
+                {
+                    "code": "NURS 436", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/436", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 436,436L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/436%2C436L", 
+                    "name": "Psychiatric Nursing in the Middle Years"
+                }, 
+                {
+                    "code": "NURS 438", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/438", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 438,438L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/438%2C438L", 
+                    "name": "Nursing Care and Adolescent/Young Adult Health"
+                }, 
+                {
+                    "code": "NURS 440", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/440", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 440,440L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/440%2C440L", 
+                    "name": "Nursing and Aggregate-Based Care"
+                }, 
+                {
+                    "code": "NURS 445", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/445", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 445,445L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/445%2C445L", 
+                    "name": "Nursing Leadership"
+                }, 
+                {
+                    "code": "NURS 501", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/501", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 505", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/505", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 506", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/506", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 507", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/507", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 508", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/508", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 524", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/524", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 543", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/543", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 544", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/544", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 561", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/561", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 562", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/562", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 563", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/563", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 564", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/564", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 571", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/571", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 572", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/572", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 573", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/573", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 574", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/NURS/574", 
+                    "name": ""
+                }
+            ], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/holyfamily/NURS"
+        }, 
+        {
+            "abbr": "PHIL", 
+            "courses": [
+                {
+                    "code": "PHIL 101", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHIL 103", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/103", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHIL 201", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/201", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHIL 202", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/202", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHIL 203", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/203", 
+                    "name": "History of Philosophy I"
+                }, 
+                {
+                    "code": "PHIL 204", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/204", 
+                    "name": "History of Philosophy II"
+                }, 
+                {
+                    "code": "PHIL 205", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/205", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHIL 207", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/207", 
+                    "name": "Philosophy of Religion"
+                }, 
+                {
+                    "code": "PHIL 208", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/208", 
+                    "name": "Business Ethics"
+                }, 
+                {
+                    "code": "PHIL 256", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/256", 
+                    "name": "Law and Ethics in Media"
+                }, 
+                {
+                    "code": "PHIL 301", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/301", 
+                    "name": "Ethics"
+                }, 
+                {
+                    "code": "PHIL 302", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/302", 
+                    "name": "Theory of Knowledge"
+                }, 
+                {
+                    "code": "PHIL 303", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/303", 
+                    "name": "Philosophy of Art"
+                }, 
+                {
+                    "code": "PHIL 305", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/305", 
+                    "name": "World Views"
+                }, 
+                {
+                    "code": "PHIL 307", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/307", 
+                    "name": "Social Ethics"
+                }, 
+                {
+                    "code": "PHIL 325", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/325", 
+                    "name": "Junior Seminar"
+                }, 
+                {
+                    "code": "PHIL 425", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/425", 
+                    "name": "Senior Seminar"
+                }, 
+                {
+                    "code": "PHIL 426", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/426", 
+                    "name": "Independent Study"
+                }, 
+                {
+                    "code": "PHIL 431-499", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/431-499", 
+                    "name": "Special Topics"
+                }, 
+                {
+                    "code": "PHIL 433", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/433", 
+                    "name": "Philosophy of Justice"
+                }, 
+                {
+                    "code": "PHIL 434", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/434", 
+                    "name": "Philosophy And Literature"
+                }, 
+                {
+                    "code": "PHIL 435", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHIL/435", 
+                    "name": "Philosophy of Evil"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/holyfamily/PHIL"
+        }, 
+        {
+            "abbr": "PHYS", 
+            "courses": [
+                {
+                    "code": "PHYS 102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHYS/102", 
+                    "name": "The Science of Physics"
+                }, 
+                {
+                    "code": "PHYS 201", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHYS/201", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHYS 201,201L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHYS/201%2C201L", 
+                    "name": "General Physics I"
+                }, 
+                {
+                    "code": "PHYS 202", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHYS/202", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHYS 202,202L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PHYS/202%2C202L", 
+                    "name": "General Physics II"
+                }
+            ], 
+            "name": "Phys-Physics", 
+            "url": "http://www.chegg.com/courses/holyfamily/PHYS"
+        }, 
+        {
+            "abbr": "PLSH", 
+            "courses": [
+                {
+                    "code": "PLSH 101,102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PLSH/101%2C102", 
+                    "name": "Introductory Polish I,II"
+                }, 
+                {
+                    "code": "PLSH 103,104", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PLSH/103%2C104", 
+                    "name": "Intermediate Polish I,II"
+                }, 
+                {
+                    "code": "PLSH 201,202", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PLSH/201%2C202", 
+                    "name": "Grammar and Conversation I,II"
+                }
+            ], 
+            "name": "Polish", 
+            "url": "http://www.chegg.com/courses/holyfamily/PLSH"
+        }, 
+        {
+            "abbr": "POLS", 
+            "courses": [
+                {
+                    "code": "POLS 103", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/POLS/103", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POLS 204", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/POLS/204", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POLS 206", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/POLS/206", 
+                    "name": "The Presidency"
+                }, 
+                {
+                    "code": "POLS 210", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/POLS/210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POLS 299,399,499", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/POLS/299%2C399%2C499", 
+                    "name": "Special Topics"
+                }, 
+                {
+                    "code": "POLS 308", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/POLS/308", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POLS 315", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/POLS/315", 
+                    "name": "Political Thought"
+                }, 
+                {
+                    "code": "POLS 316", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/POLS/316", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POLS 319", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/POLS/319", 
+                    "name": "Women,Law and Politics in the United States"
+                }, 
+                {
+                    "code": "POLS 321", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/POLS/321", 
+                    "name": "Comparative Political Systems"
+                }, 
+                {
+                    "code": "POLS 335", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/POLS/335", 
+                    "name": "Issues in Contemporary American Foreign Policy"
+                }, 
+                {
+                    "code": "POLS 365", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/POLS/365", 
+                    "name": ""
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/holyfamily/POLS"
+        }, 
+        {
+            "abbr": "PSYC", 
+            "courses": [
+                {
+                    "code": "PSYC 101", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 203", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/203", 
+                    "name": "Consumer Behavior"
+                }, 
+                {
+                    "code": "PSYC 205", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/205", 
+                    "name": "Principles of Interviewing"
+                }, 
+                {
+                    "code": "PSYC 206", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/206", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 207", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/207", 
+                    "name": "Adult Development and Aging"
+                }, 
+                {
+                    "code": "PSYC 208", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/208", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 209", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/209", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 210", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 211", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/211", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 212", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/212", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 215", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/215", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 220", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/220", 
+                    "name": "Addictions-A Lifespan Perspective"
+                }, 
+                {
+                    "code": "PSYC 275", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/275", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 305", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/305", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 308", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/308", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 309", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/309", 
+                    "name": "The Psychology of Creativity"
+                }, 
+                {
+                    "code": "PSYC 311", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/311", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 318", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/318", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 322", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/322", 
+                    "name": "Research Methods for the Social and Behavioral Sciences"
+                }, 
+                {
+                    "code": "PSYC 323", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/323", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 324", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/324", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 331", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/331", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 332", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/332", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 333", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/333", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 341", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/341", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 342", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/342", 
+                    "name": "Loss and Grief"
+                }, 
+                {
+                    "code": "PSYC 343", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/343", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 344", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/344", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 345", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/345", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 346", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/346", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 350", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/350", 
+                    "name": "Internship I"
+                }, 
+                {
+                    "code": "PSYC 351", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/351", 
+                    "name": "Internship II"
+                }, 
+                {
+                    "code": "PSYC 352", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/352", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 405", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/405", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 425", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/425", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 431", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/431", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 433", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/433", 
+                    "name": "Advanced Research in Psychology"
+                }, 
+                {
+                    "code": "PSYC 435-440", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/PSYC/435-440", 
+                    "name": "Topics in Psychology"
+                }
+            ], 
+            "name": "Psychology", 
+            "url": "http://www.chegg.com/courses/holyfamily/PSYC"
+        }, 
+        {
+            "abbr": "RADS", 
+            "courses": [
+                {
+                    "code": "RADS 102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RADS 104", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/104", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RADS 104,104L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/104%2C104L", 
+                    "name": "Radiographic Imaging I"
+                }, 
+                {
+                    "code": "RADS 106", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/106", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RADS 106,106L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/106%2C106L", 
+                    "name": "Radiographic Procedures I"
+                }, 
+                {
+                    "code": "RADS 108,108L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/108%2C108L", 
+                    "name": "Radiographic Procedures II"
+                }, 
+                {
+                    "code": "RADS 114,114L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/114%2C114L", 
+                    "name": "Radiographic Procedures III"
+                }, 
+                {
+                    "code": "RADS 120", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/120", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RADS 122", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/122", 
+                    "name": "Clinical Education II"
+                }, 
+                {
+                    "code": "RADS 200", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/200", 
+                    "name": "Clinical Education III"
+                }, 
+                {
+                    "code": "RADS 204", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/204", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RADS 204,204L", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/204%2C204L", 
+                    "name": "Radiographic Imaging II"
+                }, 
+                {
+                    "code": "RADS 205", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/205", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RADS 206", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/206", 
+                    "name": "Advanced Imaging I"
+                }, 
+                {
+                    "code": "RADS 207", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/207", 
+                    "name": "Introduction to Computed Tomography"
+                }, 
+                {
+                    "code": "RADS 215", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/215", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RADS 216", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/216", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RADS 217", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/217", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RADS 218", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/218", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RADS 222", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/222", 
+                    "name": "Clinical Education IV"
+                }, 
+                {
+                    "code": "RADS 232", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/232", 
+                    "name": "Clinical Education V"
+                }, 
+                {
+                    "code": "RADS 316", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/316", 
+                    "name": "Evaluation of Medical Images"
+                }, 
+                {
+                    "code": "RADS 401", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/401", 
+                    "name": "Sectional Anatomy in Medical Imaging"
+                }, 
+                {
+                    "code": "RADS 402", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/402", 
+                    "name": "Procedures and Principles of Computed Tomography"
+                }, 
+                {
+                    "code": "RADS 403", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/403", 
+                    "name": "Concepts of Breast Imaging"
+                }, 
+                {
+                    "code": "RADS 404", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/404", 
+                    "name": "Quality Management/MQSA"
+                }, 
+                {
+                    "code": "RADS 405", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/405", 
+                    "name": "Advanced Radiation Health Physics"
+                }, 
+                {
+                    "code": "RADS 406", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/406", 
+                    "name": "Mammography Imaging Principles"
+                }, 
+                {
+                    "code": "RADS 407", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/407", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RADS 412", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/412", 
+                    "name": "Physics Applications in Computed Tomography"
+                }, 
+                {
+                    "code": "RADS 413", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/413", 
+                    "name": "Mammography QA Regulatory Issues"
+                }, 
+                {
+                    "code": "RADS 414", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/414", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RADS 415", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/415", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RADS 416", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/416", 
+                    "name": "Clinical Education in Mammography I"
+                }, 
+                {
+                    "code": "RADS 422", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/422", 
+                    "name": "Advanced Modality Clinical Education I"
+                }, 
+                {
+                    "code": "RADS 423", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/423", 
+                    "name": "Advanced Modality Clinical Education II"
+                }, 
+                {
+                    "code": "RADS 424", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/424", 
+                    "name": "Clinical Education in Computed Tomography I"
+                }, 
+                {
+                    "code": "RADS 425", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/425", 
+                    "name": "Clinical Education in Cardiovascular and Interventional Radiology"
+                }, 
+                {
+                    "code": "RADS 427", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/427", 
+                    "name": "Clinical Education in Magnetic Resonance Imaging"
+                }, 
+                {
+                    "code": "RADS 428", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/428", 
+                    "name": "Clinical Education in Quality Management"
+                }, 
+                {
+                    "code": "RADS 434", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/434", 
+                    "name": "Clinical Education in Computed Tomography II"
+                }, 
+                {
+                    "code": "RADS 436", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/436", 
+                    "name": "Clinical Education in Mammography II"
+                }, 
+                {
+                    "code": "RADS 450", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RADS/450", 
+                    "name": ""
+                }
+            ], 
+            "name": "Rads - Radiologic Sciences", 
+            "url": "http://www.chegg.com/courses/holyfamily/RADS"
+        }, 
+        {
+            "abbr": "RELS", 
+            "courses": [
+                {
+                    "code": "RELS 104", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/104", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RELS 105", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/105", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RELS 106", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/106", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RELS 107", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/107", 
+                    "name": "The Gospel According to Mark"
+                }, 
+                {
+                    "code": "RELS 108", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/108", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RELS 109", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/109", 
+                    "name": "The Gospel According to Matthew"
+                }, 
+                {
+                    "code": "RELS 110", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/110", 
+                    "name": "The Gospel According to Luke"
+                }, 
+                {
+                    "code": "RELS 112", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/112", 
+                    "name": "History of Christianity I"
+                }, 
+                {
+                    "code": "RELS 113", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/113", 
+                    "name": "The Sacraments"
+                }, 
+                {
+                    "code": "RELS 202", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/202", 
+                    "name": "Methods in Religious Education"
+                }, 
+                {
+                    "code": "RELS 203", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/203", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RELS 205", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/205", 
+                    "name": "Prophets of Israel"
+                }, 
+                {
+                    "code": "RELS 206", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/206", 
+                    "name": "Women and Religion"
+                }, 
+                {
+                    "code": "RELS 207", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/207", 
+                    "name": "Introduction to Saint Paul"
+                }, 
+                {
+                    "code": "RELS 210", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RELS 212", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/212", 
+                    "name": "History of Christianity II"
+                }, 
+                {
+                    "code": "RELS 213", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/213", 
+                    "name": "History of the Catholic Church in the United States"
+                }, 
+                {
+                    "code": "RELS 215", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/215", 
+                    "name": "Religion in America"
+                }, 
+                {
+                    "code": "RELS 301", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/301", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RELS 310", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/310", 
+                    "name": "Christian Marriage in the Modern World"
+                }, 
+                {
+                    "code": "RELS 315", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/315", 
+                    "name": "The Gospel of Peace and Justice"
+                }, 
+                {
+                    "code": "RELS 325", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/325", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RELS 325-330", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/325-330", 
+                    "name": "Junior Seminar"
+                }, 
+                {
+                    "code": "RELS 350,351", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/350%2C351", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "RELS 405", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/405", 
+                    "name": "Life and Death:Christian Decision-Making"
+                }, 
+                {
+                    "code": "RELS 408", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/408", 
+                    "name": "The Church in the Modern World"
+                }, 
+                {
+                    "code": "RELS 409", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/409", 
+                    "name": "Christian Mysticism"
+                }, 
+                {
+                    "code": "RELS 410", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/410", 
+                    "name": "Dante's Divine Comedy"
+                }, 
+                {
+                    "code": "RELS 425", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/425", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RELS 431-499", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/431-499", 
+                    "name": "Special Topics"
+                }, 
+                {
+                    "code": "RELS 434", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/RELS/434", 
+                    "name": ""
+                }
+            ], 
+            "name": "Religious Studies", 
+            "url": "http://www.chegg.com/courses/holyfamily/RELS"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 303", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOC/303", 
+                    "name": "End of Life Care Issues"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/holyfamily/SOC"
+        }, 
+        {
+            "abbr": "SOCO", 
+            "courses": [
+                {
+                    "code": "SOCO 101", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 201", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/201", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 202", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/202", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 203", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/203", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 205", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/205", 
+                    "name": "Principles of Interviewing"
+                }, 
+                {
+                    "code": "SOCO 206", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/206", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 207", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/207", 
+                    "name": "Adult Development and Aging"
+                }, 
+                {
+                    "code": "SOCO 208", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/208", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 210", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 211", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/211", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 212", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/212", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 219", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/219", 
+                    "name": "Victimology"
+                }, 
+                {
+                    "code": "SOCO 250-265", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/250-265", 
+                    "name": "Special Topics"
+                }, 
+                {
+                    "code": "SOCO 275", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/275", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 305", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/305", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 306", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/306", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 310", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 311", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/311", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 315", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/315", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 318", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/318", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 322", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/322", 
+                    "name": "Research Methods for the Social and Behavioral Sciences"
+                }, 
+                {
+                    "code": "SOCO 323", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/323", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 324", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/324", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 330", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/330", 
+                    "name": "Contemporary Issues in the Social Sciences"
+                }, 
+                {
+                    "code": "SOCO 340", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/340", 
+                    "name": "Addictions:A Lifespan Perspective"
+                }, 
+                {
+                    "code": "SOCO 341", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/341", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 342", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/342", 
+                    "name": "Loss and Grief"
+                }, 
+                {
+                    "code": "SOCO 343", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/343", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 350,351", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/350%2C351", 
+                    "name": "Internship"
+                }, 
+                {
+                    "code": "SOCO 401", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/401", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCO 430", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/430", 
+                    "name": "Senior Seminar in the Social Sciences"
+                }, 
+                {
+                    "code": "SOCO 435", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SOCO/435", 
+                    "name": "Empirical Research"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/holyfamily/SOCO"
+        }, 
+        {
+            "abbr": "SPAN", 
+            "courses": [
+                {
+                    "code": "SPAN 101", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPAN 101,102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/101%2C102", 
+                    "name": "Introductory Spanish I,II"
+                }, 
+                {
+                    "code": "SPAN 102", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPAN 103", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/103", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPAN 103,104", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/103%2C104", 
+                    "name": "Intermediate Spanish I,II"
+                }, 
+                {
+                    "code": "SPAN 104", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/104", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPAN 201", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/201", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPAN 201,202", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/201%2C202", 
+                    "name": "Advanced Grammar and Conversation I,II"
+                }, 
+                {
+                    "code": "SPAN 202", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/202", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPAN 204", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/204", 
+                    "name": "Spanish-American Civilization"
+                }, 
+                {
+                    "code": "SPAN 302", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/302", 
+                    "name": "Hispanic Influences in the United States"
+                }, 
+                {
+                    "code": "SPAN 308", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/308", 
+                    "name": "Applied Linguistics"
+                }, 
+                {
+                    "code": "SPAN 309", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/309", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPAN 309,310", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/309%2C310", 
+                    "name": "Conversation and Language Activities I,II"
+                }, 
+                {
+                    "code": "SPAN 311", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/311", 
+                    "name": "Spanish Non-Fiction"
+                }, 
+                {
+                    "code": "SPAN 315", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/315", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPAN 449", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPAN/449", 
+                    "name": "Special Topics:Reading in Spanish"
+                }
+            ], 
+            "name": "Spanish", 
+            "url": "http://www.chegg.com/courses/holyfamily/SPAN"
+        }, 
+        {
+            "abbr": "SPEN", 
+            "courses": [
+                {
+                    "code": "SPEN 202", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPEN/202", 
+                    "name": "Issues in Special Education"
+                }, 
+                {
+                    "code": "SPEN 203", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPEN/203", 
+                    "name": "Foundations in Inclusive Education for All Learners"
+                }, 
+                {
+                    "code": "SPEN 301", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPEN/301", 
+                    "name": "Assessment,Evaluation,and Instruction I"
+                }, 
+                {
+                    "code": "SPEN 302", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPEN/302", 
+                    "name": "Assessment,Evaluation,and Instruction II"
+                }, 
+                {
+                    "code": "SPEN 303", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPEN/303", 
+                    "name": "Collaboration and Assessment Practices to Meet the Needs of All Learners"
+                }, 
+                {
+                    "code": "SPEN 304", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPEN/304", 
+                    "name": "Collaboration and Best Practice Designs to Meet the Needs of all Learners"
+                }, 
+                {
+                    "code": "SPEN 401", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPEN/401", 
+                    "name": "Teaching People with Severe and Profound Disabilities"
+                }, 
+                {
+                    "code": "SPEN 402", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPEN/402", 
+                    "name": "Management Strategies for Special Educators"
+                }, 
+                {
+                    "code": "SPEN 403", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPEN/403", 
+                    "name": "Student Teaching-ELED/SPED"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/holyfamily/SPEN"
+        }, 
+        {
+            "abbr": "SPMM", 
+            "courses": [
+                {
+                    "code": "SPMM 275", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPMM/275", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPMM 280", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPMM/280", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPMM 310", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPMM/310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPMM 320", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPMM/320", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPMM 410", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPMM/410", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPMM 420", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPMM/420", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPMM 430", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPMM/430", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPMM 439", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/SPMM/439", 
+                    "name": ""
+                }
+            ], 
+            "name": "Sport Management & Media", 
+            "url": "http://www.chegg.com/courses/holyfamily/SPMM"
+        }, 
+        {
+            "abbr": "THEA", 
+            "courses": [
+                {
+                    "code": "THEA 201", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/THEA/201", 
+                    "name": "Acting"
+                }, 
+                {
+                    "code": "THEA 203", 
+                    "course_url": "http://www.chegg.com/courses/holyfamily/THEA/203", 
+                    "name": "Theater Workshop"
+                }
+            ], 
+            "name": "Theatre", 
+            "url": "http://www.chegg.com/courses/holyfamily/THEA"
+        }
+    ], 
+    "name": "holyfamily"
+}

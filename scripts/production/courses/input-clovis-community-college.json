@@ -1,0 +1,4331 @@
+{
+    "all_stats": {
+        "num_courses": 779, 
+        "num_departments": 61
+    }, 
+    "departments": [
+        {
+            "abbr": "ACCT", 
+            "courses": [
+                {
+                    "code": "ACCT 150", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ACCT/150", 
+                    "name": "Personal Income Tax"
+                }, 
+                {
+                    "code": "ACCT 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ACCT/201", 
+                    "name": "Introductory Accounting I"
+                }, 
+                {
+                    "code": "ACCT 202", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ACCT/202", 
+                    "name": "Introductory Accounting II"
+                }, 
+                {
+                    "code": "ACCT 206", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ACCT/206", 
+                    "name": "Computerized Accounting"
+                }, 
+                {
+                    "code": "ACCT 211", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ACCT/211", 
+                    "name": "Cost Accounting"
+                }, 
+                {
+                    "code": "ACCT 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ACCT/268", 
+                    "name": "Workshop in Accounting"
+                }, 
+                {
+                    "code": "ACCT 290", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ACCT/290", 
+                    "name": "Co-op in Accounting"
+                }, 
+                {
+                    "code": "ACCT 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ACCT/293", 
+                    "name": "Topics in Accounting"
+                }
+            ], 
+            "name": "Accountancy", 
+            "url": "http://www.chegg.com/courses/clovis/ACCT"
+        }, 
+        {
+            "abbr": "ACS", 
+            "courses": [
+                {
+                    "code": "ACS 100", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ACS/100", 
+                    "name": "College Study Skills"
+                }, 
+                {
+                    "code": "ACS 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ACS/102", 
+                    "name": "Freshman Seminar"
+                }, 
+                {
+                    "code": "ACS 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ACS/268", 
+                    "name": "Workshop in Academic Career Studies"
+                }, 
+                {
+                    "code": "ACS 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ACS/293", 
+                    "name": "Topics in Academic Career Studies"
+                }
+            ], 
+            "name": "American Culture Studies", 
+            "url": "http://www.chegg.com/courses/clovis/ACS"
+        }, 
+        {
+            "abbr": "AG", 
+            "courses": [
+                {
+                    "code": "AG 100", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AG/100", 
+                    "name": "Introductory Agricultural Economics and Business"
+                }, 
+                {
+                    "code": "AG 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AG/101", 
+                    "name": "Introductory Animal Science"
+                }
+            ], 
+            "name": "Agriculture", 
+            "url": "http://www.chegg.com/courses/clovis/AG"
+        }, 
+        {
+            "abbr": "ANTH", 
+            "courses": [
+                {
+                    "code": "ANTH 103", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ANTH/103", 
+                    "name": "Humans and Their Environments"
+                }, 
+                {
+                    "code": "ANTH 111", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ANTH/111", 
+                    "name": "The Dawn of Humanity"
+                }, 
+                {
+                    "code": "ANTH 123", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ANTH/123", 
+                    "name": "New Mexico:Enchanted Lands and Diverse Cultures"
+                }, 
+                {
+                    "code": "ANTH 233", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ANTH/233", 
+                    "name": "People and Cultures of the World"
+                }, 
+                {
+                    "code": "ANTH 243", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ANTH/243", 
+                    "name": "Introduction to Cultural Anthropology"
+                }, 
+                {
+                    "code": "ANTH 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ANTH/268", 
+                    "name": "Workshop in Anthropology"
+                }, 
+                {
+                    "code": "ANTH 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ANTH/293", 
+                    "name": "Topics in Anthropology"
+                }
+            ], 
+            "name": "Anthropology", 
+            "url": "http://www.chegg.com/courses/clovis/ANTH"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/101", 
+                    "name": "Drawing I"
+                }, 
+                {
+                    "code": "ART 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/102", 
+                    "name": "Drawing II"
+                }, 
+                {
+                    "code": "ART 106", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/106", 
+                    "name": "Design I"
+                }, 
+                {
+                    "code": "ART 107", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/107", 
+                    "name": "Design II"
+                }, 
+                {
+                    "code": "ART 131", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/131", 
+                    "name": "Art Appreciation"
+                }, 
+                {
+                    "code": "ART 183", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/183", 
+                    "name": "Applications-Based Web Design"
+                }, 
+                {
+                    "code": "ART 203", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/203", 
+                    "name": "Figure Drawing I"
+                }, 
+                {
+                    "code": "ART 204", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/204", 
+                    "name": "Figure Drawing II"
+                }, 
+                {
+                    "code": "ART 205", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/205", 
+                    "name": "Computer Animation I"
+                }, 
+                {
+                    "code": "ART 206", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/206", 
+                    "name": "Computer Animation II"
+                }, 
+                {
+                    "code": "ART 209", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/209", 
+                    "name": "Desktop Graphics"
+                }, 
+                {
+                    "code": "ART 210", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/210", 
+                    "name": "Photography I"
+                }, 
+                {
+                    "code": "ART 211", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/211", 
+                    "name": "Exploring Digital Photography"
+                }, 
+                {
+                    "code": "ART 214", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/214", 
+                    "name": "Photography II"
+                }, 
+                {
+                    "code": "ART 215", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/215", 
+                    "name": "Color Photography"
+                }, 
+                {
+                    "code": "ART 216", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/216", 
+                    "name": "Large Format Photography"
+                }, 
+                {
+                    "code": "ART 217", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/217", 
+                    "name": "Digital Photography"
+                }, 
+                {
+                    "code": "ART 218", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/218", 
+                    "name": "Advanced Digital Photography"
+                }, 
+                {
+                    "code": "ART 221", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/221", 
+                    "name": "Painting I"
+                }, 
+                {
+                    "code": "ART 222", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/222", 
+                    "name": "Painting II"
+                }, 
+                {
+                    "code": "ART 224", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/224", 
+                    "name": "Advanced Painting"
+                }, 
+                {
+                    "code": "ART 231", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/231", 
+                    "name": "Pottery I"
+                }, 
+                {
+                    "code": "ART 232", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/232", 
+                    "name": "Pottery II"
+                }, 
+                {
+                    "code": "ART 233", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/233", 
+                    "name": "Raku Pottery"
+                }, 
+                {
+                    "code": "ART 234", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/234", 
+                    "name": "Southwest Pottery"
+                }, 
+                {
+                    "code": "ART 235", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/235", 
+                    "name": "Wheelthrown Pottery"
+                }, 
+                {
+                    "code": "ART 236", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/236", 
+                    "name": "Clay Tilemaking"
+                }, 
+                {
+                    "code": "ART 241", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/241", 
+                    "name": "Sculpture I"
+                }, 
+                {
+                    "code": "ART 242", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/242", 
+                    "name": "Sculpture II"
+                }, 
+                {
+                    "code": "ART 247", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/247", 
+                    "name": "Printmaking I"
+                }, 
+                {
+                    "code": "ART 248", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/248", 
+                    "name": "Printmaking II"
+                }, 
+                {
+                    "code": "ART 251", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/251", 
+                    "name": "Calligraphy"
+                }, 
+                {
+                    "code": "ART 255", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/255", 
+                    "name": "Graphic Design I"
+                }, 
+                {
+                    "code": "ART 256", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/256", 
+                    "name": "Graphic Design and Digital Production"
+                }, 
+                {
+                    "code": "ART 258", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/258", 
+                    "name": "Digital Photo Imaging"
+                }, 
+                {
+                    "code": "ART 261", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/261", 
+                    "name": "Art History I"
+                }, 
+                {
+                    "code": "ART 262", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/262", 
+                    "name": "Art History II"
+                }, 
+                {
+                    "code": "ART 265", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/265", 
+                    "name": "Desktop Publishing"
+                }, 
+                {
+                    "code": "ART 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/268", 
+                    "name": "Workshop in Art"
+                }, 
+                {
+                    "code": "ART 271", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/271", 
+                    "name": "Jewelry I"
+                }, 
+                {
+                    "code": "ART 272", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/272", 
+                    "name": "Jewelry II"
+                }, 
+                {
+                    "code": "ART 273", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/273", 
+                    "name": "Hot Glassblowing"
+                }, 
+                {
+                    "code": "ART 274", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/274", 
+                    "name": "Hot Glass Beadmaking"
+                }, 
+                {
+                    "code": "ART 275", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/275", 
+                    "name": "Multimedia Design"
+                }, 
+                {
+                    "code": "ART 276", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/276", 
+                    "name": "Media Production I"
+                }, 
+                {
+                    "code": "ART 277", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/277", 
+                    "name": "Media Production II"
+                }, 
+                {
+                    "code": "ART 281", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/281", 
+                    "name": "Arts and Crafts for Elementary Teachers"
+                }, 
+                {
+                    "code": "ART 282", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/282", 
+                    "name": "Advanced Arts and Crafts for Elementary Teachers"
+                }, 
+                {
+                    "code": "ART 290", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/290", 
+                    "name": "Co-op in Art"
+                }, 
+                {
+                    "code": "ART 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/293", 
+                    "name": "Topics in Art"
+                }, 
+                {
+                    "code": "ART 295", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/295", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "ART 297", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ART/297", 
+                    "name": "Art Internship"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/clovis/ART"
+        }, 
+        {
+            "abbr": "AT", 
+            "courses": [
+                {
+                    "code": "AT 100", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/100", 
+                    "name": "Introduction to Automotive Electronics"
+                }, 
+                {
+                    "code": "AT 111", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/111", 
+                    "name": "Engine Repair Theory"
+                }, 
+                {
+                    "code": "AT 111L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/111L", 
+                    "name": "Engine Repair Lab"
+                }, 
+                {
+                    "code": "AT 112", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/112", 
+                    "name": "Automatic Transmissions and Transaxle Theory"
+                }, 
+                {
+                    "code": "AT 112L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/112L", 
+                    "name": "Automatic Transmissions and Transaxle Lab"
+                }, 
+                {
+                    "code": "AT 113", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/113", 
+                    "name": "Manual Transmissions Theory"
+                }, 
+                {
+                    "code": "AT 113L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/113L", 
+                    "name": "Manual Transmissions Lab"
+                }, 
+                {
+                    "code": "AT 114", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/114", 
+                    "name": "Suspension and Steering Theory"
+                }, 
+                {
+                    "code": "AT 114L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/114L", 
+                    "name": "Suspension and Steering Lab"
+                }, 
+                {
+                    "code": "AT 115", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/115", 
+                    "name": "Brake Systems Theory"
+                }, 
+                {
+                    "code": "AT 115L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/115L", 
+                    "name": "Brake Systems Lab"
+                }, 
+                {
+                    "code": "AT 120", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/120", 
+                    "name": "Arc Welding for Automotive Technology"
+                }, 
+                {
+                    "code": "AT 121", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/121", 
+                    "name": "Engine Repair Diagnostics"
+                }, 
+                {
+                    "code": "AT 122", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/122", 
+                    "name": "Electronic Transmission Diagnostics"
+                }, 
+                {
+                    "code": "AT 124", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/124", 
+                    "name": "Fundamentals of Electronic Steering Systems"
+                }, 
+                {
+                    "code": "AT 125", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/125", 
+                    "name": "Fundamentals of Antilock Brake Systems"
+                }, 
+                {
+                    "code": "AT 208", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/208", 
+                    "name": "Engine Performance Theory I"
+                }, 
+                {
+                    "code": "AT 208L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/208L", 
+                    "name": "Engine Performance Lab I"
+                }, 
+                {
+                    "code": "AT 216", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/216", 
+                    "name": "Automotive Electronics Theory"
+                }, 
+                {
+                    "code": "AT 216L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/216L", 
+                    "name": "Automotive Electronics Lab"
+                }, 
+                {
+                    "code": "AT 217", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/217", 
+                    "name": "Automotive HVAC Theory"
+                }, 
+                {
+                    "code": "AT 217L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/217L", 
+                    "name": "Automotive HVAC Lab"
+                }, 
+                {
+                    "code": "AT 218", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/218", 
+                    "name": "Engine Performance Theory II"
+                }, 
+                {
+                    "code": "AT 218L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/218L", 
+                    "name": "Engine Performance Lab II"
+                }, 
+                {
+                    "code": "AT 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/268", 
+                    "name": "Workshop in Automotive Technology"
+                }, 
+                {
+                    "code": "AT 290", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/290", 
+                    "name": "Co-op in Automotive Technology"
+                }, 
+                {
+                    "code": "AT 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AT/293", 
+                    "name": "Topics in Automotive Technology"
+                }
+            ], 
+            "name": "At-Aviation Technology", 
+            "url": "http://www.chegg.com/courses/clovis/AT"
+        }, 
+        {
+            "abbr": "AVS", 
+            "courses": [
+                {
+                    "code": "AVS 151", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AVS/151", 
+                    "name": "Private Pilot Ground Instruction"
+                }, 
+                {
+                    "code": "AVS 153", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AVS/153", 
+                    "name": "Instrument Ground Instruction"
+                }, 
+                {
+                    "code": "AVS 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AVS/268", 
+                    "name": "Workshop in Aviation Science"
+                }, 
+                {
+                    "code": "AVS 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/AVS/293", 
+                    "name": "Topics in Aviation Science"
+                }
+            ], 
+            "name": "Animal & Veterinary Sciences", 
+            "url": "http://www.chegg.com/courses/clovis/AVS"
+        }, 
+        {
+            "abbr": "BAD", 
+            "courses": [
+                {
+                    "code": "BAD 151", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BAD/151", 
+                    "name": "Introduction to Business"
+                }, 
+                {
+                    "code": "BAD 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BAD/201", 
+                    "name": "Business Communication"
+                }, 
+                {
+                    "code": "BAD 215", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BAD/215", 
+                    "name": "Business Law I"
+                }, 
+                {
+                    "code": "BAD 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BAD/268", 
+                    "name": "Workshop in Business Administration"
+                }, 
+                {
+                    "code": "BAD 277", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BAD/277", 
+                    "name": "Integrated Business Concepts"
+                }, 
+                {
+                    "code": "BAD 290", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BAD/290", 
+                    "name": "Co-op in Business Administration"
+                }, 
+                {
+                    "code": "BAD 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BAD/293", 
+                    "name": "Topics in Business Administration"
+                }, 
+                {
+                    "code": "BAD 295", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BAD/295", 
+                    "name": "BAD Directed Study"
+                }
+            ], 
+            "name": "Business Administration", 
+            "url": "http://www.chegg.com/courses/clovis/BAD"
+        }, 
+        {
+            "abbr": "BIOL", 
+            "courses": [
+                {
+                    "code": "BIOL 113", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BIOL/113", 
+                    "name": "Biology for General Education and Lab"
+                }, 
+                {
+                    "code": "BIOL 115", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BIOL/115", 
+                    "name": "Human Biology and Lab"
+                }, 
+                {
+                    "code": "BIOL 211", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BIOL/211", 
+                    "name": "Human Anatomy and Physiology I and Lab"
+                }, 
+                {
+                    "code": "BIOL 212", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BIOL/212", 
+                    "name": "Human Anatomy and Physiology II and Lab"
+                }, 
+                {
+                    "code": "BIOL 222", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BIOL/222", 
+                    "name": "Microbiology and Lab"
+                }, 
+                {
+                    "code": "BIOL 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BIOL/268", 
+                    "name": "Workshop in Biology"
+                }, 
+                {
+                    "code": "BIOL 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BIOL/293", 
+                    "name": "Topics in Biology"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/clovis/BIOL"
+        }, 
+        {
+            "abbr": "BLED", 
+            "courses": [
+                {
+                    "code": "BLED 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BLED/201", 
+                    "name": "Introduction to Bilingual Education"
+                }, 
+                {
+                    "code": "BLED 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BLED/268", 
+                    "name": "Workshop in Bilingual Education"
+                }, 
+                {
+                    "code": "BLED 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BLED/293", 
+                    "name": "Topics in Bilingual Education"
+                }
+            ], 
+            "name": "Bilingual Education", 
+            "url": "http://www.chegg.com/courses/clovis/BLED"
+        }, 
+        {
+            "abbr": "BOFT", 
+            "courses": [
+                {
+                    "code": "BOFT 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BOFT/101", 
+                    "name": "Personal Keyboarding"
+                }, 
+                {
+                    "code": "BOFT 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BOFT/102", 
+                    "name": "Key Operations"
+                }, 
+                {
+                    "code": "BOFT 111", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BOFT/111", 
+                    "name": "Keyboarding Applications I"
+                }, 
+                {
+                    "code": "BOFT 115", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BOFT/115", 
+                    "name": "Employment Strategies"
+                }, 
+                {
+                    "code": "BOFT 130", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BOFT/130", 
+                    "name": "Business English I"
+                }, 
+                {
+                    "code": "BOFT 131", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BOFT/131", 
+                    "name": "Keyboarding Applications II"
+                }, 
+                {
+                    "code": "BOFT 241", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BOFT/241", 
+                    "name": "Business Mathematics"
+                }, 
+                {
+                    "code": "BOFT 252", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BOFT/252", 
+                    "name": "Offi ce Dictation and Composition"
+                }, 
+                {
+                    "code": "BOFT 254", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BOFT/254", 
+                    "name": "Offi ce Technology and Procedures"
+                }, 
+                {
+                    "code": "BOFT 263", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BOFT/263", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "BOFT 265", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BOFT/265", 
+                    "name": "Medical Transcription"
+                }, 
+                {
+                    "code": "BOFT 266", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BOFT/266", 
+                    "name": "Medical Diagnostic Coding"
+                }, 
+                {
+                    "code": "BOFT 267", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BOFT/267", 
+                    "name": "Medical Offi ce Simulation"
+                }, 
+                {
+                    "code": "BOFT 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BOFT/268", 
+                    "name": "Workshop in Business and Offi ce Technology"
+                }, 
+                {
+                    "code": "BOFT 290", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BOFT/290", 
+                    "name": "Co-op in Business and Offi ce Technology"
+                }, 
+                {
+                    "code": "BOFT 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/BOFT/293", 
+                    "name": "Topics in Business Offi ce Technology"
+                }
+            ], 
+            "name": "Business And Office Technology", 
+            "url": "http://www.chegg.com/courses/clovis/BOFT"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 113", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CHEM/113", 
+                    "name": "Chemistry for General Education and Lab"
+                }, 
+                {
+                    "code": "CHEM 151", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CHEM/151", 
+                    "name": "General Chemistry I and Lab"
+                }, 
+                {
+                    "code": "CHEM 152", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CHEM/152", 
+                    "name": "General Chemistry II and Lab"
+                }, 
+                {
+                    "code": "CHEM 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CHEM/268", 
+                    "name": "Workshop in Chemistry"
+                }, 
+                {
+                    "code": "CHEM 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CHEM/293", 
+                    "name": "Topics in Chemistry"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/clovis/CHEM"
+        }, 
+        {
+            "abbr": "CIS", 
+            "courses": [
+                {
+                    "code": "CIS 090", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/090", 
+                    "name": "Basic Computer Skills"
+                }, 
+                {
+                    "code": "CIS 095", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/095", 
+                    "name": "Using Your Home Computer I"
+                }, 
+                {
+                    "code": "CIS 096", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/096", 
+                    "name": "Using Your Home Computer II"
+                }, 
+                {
+                    "code": "CIS 100", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/100", 
+                    "name": "Using Personal Computers"
+                }, 
+                {
+                    "code": "CIS 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/101", 
+                    "name": "Fundamentals of Computer Systems"
+                }, 
+                {
+                    "code": "CIS 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/102", 
+                    "name": "Networking Concepts"
+                }, 
+                {
+                    "code": "CIS 103", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/103", 
+                    "name": "Confi guring Cisco Routers for Internetworking Routing"
+                }, 
+                {
+                    "code": "CIS 106", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/106", 
+                    "name": "Windows Fundamentals"
+                }, 
+                {
+                    "code": "CIS 107", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/107", 
+                    "name": "Internet Fundamentals"
+                }, 
+                {
+                    "code": "CIS 108", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/108", 
+                    "name": "Computer Maintenance and Troubleshooting"
+                }, 
+                {
+                    "code": "CIS 116", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/116", 
+                    "name": "Fundamentals of Wireless LANS"
+                }, 
+                {
+                    "code": "CIS 120", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/120", 
+                    "name": "Introduction to Applications Software"
+                }, 
+                {
+                    "code": "CIS 125", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/125", 
+                    "name": "Introduction to Object-Oriented Programming Concepts"
+                }, 
+                {
+                    "code": "CIS 128", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/128", 
+                    "name": "Java Programming"
+                }, 
+                {
+                    "code": "CIS 132", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/132", 
+                    "name": "Microcomputer Hardware"
+                }, 
+                {
+                    "code": "CIS 133", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/133", 
+                    "name": "Operating Systems and Client Administration"
+                }, 
+                {
+                    "code": "CIS 134", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/134", 
+                    "name": "Microcomputer Hardware and Software"
+                }, 
+                {
+                    "code": "CIS 134L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/134L", 
+                    "name": "Microcomputer Hardware and Software lab"
+                }, 
+                {
+                    "code": "CIS 135", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/135", 
+                    "name": "Network Fundamentals for Network+"
+                }, 
+                {
+                    "code": "CIS 140", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/140", 
+                    "name": "Introduction to Word Processing"
+                }, 
+                {
+                    "code": "CIS 150", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/150", 
+                    "name": "Introduction to Spreadsheets"
+                }, 
+                {
+                    "code": "CIS 160", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/160", 
+                    "name": "Database Design and Development Using Access"
+                }, 
+                {
+                    "code": "CIS 170", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/170", 
+                    "name": "PowerPoint Presentations"
+                }, 
+                {
+                    "code": "CIS 175", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/175", 
+                    "name": "Introduction to Microsoft Publisher"
+                }, 
+                {
+                    "code": "CIS 180", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/180", 
+                    "name": "Web Authoring Using HTML"
+                }, 
+                {
+                    "code": "CIS 183", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/183", 
+                    "name": "Applications-Based Web Design"
+                }, 
+                {
+                    "code": "CIS 185", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/185", 
+                    "name": "Professional Web Site Design and Scripting"
+                }, 
+                {
+                    "code": "CIS 202", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/202", 
+                    "name": "Network Traffi c Management"
+                }, 
+                {
+                    "code": "CIS 203", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/203", 
+                    "name": "Confi guring WAN Connection Services"
+                }, 
+                {
+                    "code": "CIS 209", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/209", 
+                    "name": "Desktop Graphics"
+                }, 
+                {
+                    "code": "CIS 232", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/232", 
+                    "name": "Server Administration Using Microsoft Windows Server"
+                }, 
+                {
+                    "code": "CIS 235", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/235", 
+                    "name": "Fundamentals of Network Security"
+                }, 
+                {
+                    "code": "CIS 258", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/258", 
+                    "name": "Photoshop"
+                }, 
+                {
+                    "code": "CIS 265", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/265", 
+                    "name": "Desktop Publishing"
+                }, 
+                {
+                    "code": "CIS 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/268", 
+                    "name": "Workshop in Computer Information Systems"
+                }, 
+                {
+                    "code": "CIS 275", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/275", 
+                    "name": "Multimedia Web Design"
+                }, 
+                {
+                    "code": "CIS 290", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/290", 
+                    "name": "Co-op in Computer Information Systems"
+                }, 
+                {
+                    "code": "CIS 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/293", 
+                    "name": "Topics in Computer Information Systems"
+                }, 
+                {
+                    "code": "CIS 295", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CIS/295", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "Computer Information Systems", 
+            "url": "http://www.chegg.com/courses/clovis/CIS"
+        }, 
+        {
+            "abbr": "COMM", 
+            "courses": [
+                {
+                    "code": "COMM 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COMM/101", 
+                    "name": "Interpersonal Communication"
+                }, 
+                {
+                    "code": "COMM 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COMM/102", 
+                    "name": "Public Speaking"
+                }, 
+                {
+                    "code": "COMM 125", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COMM/125", 
+                    "name": "Intercultural Communication"
+                }, 
+                {
+                    "code": "COMM 203", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COMM/203", 
+                    "name": "Introduction to American Sign Language"
+                }, 
+                {
+                    "code": "COMM 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COMM/268", 
+                    "name": "Workshop in Communication"
+                }, 
+                {
+                    "code": "COMM 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COMM/293", 
+                    "name": "Topics in Communication"
+                }
+            ], 
+            "name": "Communication", 
+            "url": "http://www.chegg.com/courses/clovis/COMM"
+        }, 
+        {
+            "abbr": "COS", 
+            "courses": [
+                {
+                    "code": "COS 100", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/100", 
+                    "name": "Introduction to Cosmetology I"
+                }, 
+                {
+                    "code": "COS 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/101", 
+                    "name": "Introduction to Cosmetology II"
+                }, 
+                {
+                    "code": "COS 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/102", 
+                    "name": "Nail Tech Theory I"
+                }, 
+                {
+                    "code": "COS 103", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/103", 
+                    "name": "Nail Tech Sterilization and Sanitation"
+                }, 
+                {
+                    "code": "COS 104", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/104", 
+                    "name": "Nail Tech Manicuring/Pedicuring"
+                }, 
+                {
+                    "code": "COS 105", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/105", 
+                    "name": "Nail Tech Clinic Floor"
+                }, 
+                {
+                    "code": "COS 106", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/106", 
+                    "name": "Salon Business/Retail for Nail Technician"
+                }, 
+                {
+                    "code": "COS 112", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/112", 
+                    "name": "Cosmetology Theory I"
+                }, 
+                {
+                    "code": "COS 113", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/113", 
+                    "name": "Facials"
+                }, 
+                {
+                    "code": "COS 114", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/114", 
+                    "name": "Chemical Rearranging/Perms I"
+                }, 
+                {
+                    "code": "COS 117", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/117", 
+                    "name": "Cosmetology Manicuring/Pedicuring"
+                }, 
+                {
+                    "code": "COS 122", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/122", 
+                    "name": "Cosmetology Theory II"
+                }, 
+                {
+                    "code": "COS 126", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/126", 
+                    "name": "Women's Hair Cutting and Hair Styling"
+                }, 
+                {
+                    "code": "COS 132", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/132", 
+                    "name": "Cosmetology Sterilization and Sanitation"
+                }, 
+                {
+                    "code": "COS 136", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/136", 
+                    "name": "Men's Hair Cutting and Hair Styling"
+                }, 
+                {
+                    "code": "COS 142", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/142", 
+                    "name": "Shampoo,Rinses,and Scalp Treatments"
+                }, 
+                {
+                    "code": "COS 151", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/151", 
+                    "name": "Esthetic Theory I"
+                }, 
+                {
+                    "code": "COS 152", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/152", 
+                    "name": "Esthetic Facials I"
+                }, 
+                {
+                    "code": "COS 153", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/153", 
+                    "name": "Esthetic Sterilization and Sanitation"
+                }, 
+                {
+                    "code": "COS 154", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/154", 
+                    "name": "Esthetic Spa Practice I"
+                }, 
+                {
+                    "code": "COS 155", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/155", 
+                    "name": "Esthetic Salon Business/Retail"
+                }, 
+                {
+                    "code": "COS 212", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/212", 
+                    "name": "Cosmetology Theory III"
+                }, 
+                {
+                    "code": "COS 214", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/214", 
+                    "name": "Chemical Rearranging/Perms II"
+                }, 
+                {
+                    "code": "COS 216", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/216", 
+                    "name": "Cosmetology Clinic Practice I"
+                }, 
+                {
+                    "code": "COS 217", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/217", 
+                    "name": "Nail Enhancements"
+                }, 
+                {
+                    "code": "COS 222", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/222", 
+                    "name": "Hair Coloring"
+                }, 
+                {
+                    "code": "COS 223", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/223", 
+                    "name": "Practical Cosmetology"
+                }, 
+                {
+                    "code": "COS 226", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/226", 
+                    "name": "Advanced Hair Styling"
+                }, 
+                {
+                    "code": "COS 227", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/227", 
+                    "name": "Cosmetology Clinic Practice II"
+                }, 
+                {
+                    "code": "COS 232", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/232", 
+                    "name": "Cosmetology Salon Business and Retail"
+                }, 
+                {
+                    "code": "COS 252", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/252", 
+                    "name": "Esthetic Facials II"
+                }, 
+                {
+                    "code": "COS 254", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/254", 
+                    "name": "Esthetic Spa Practice II"
+                }, 
+                {
+                    "code": "COS 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/268", 
+                    "name": "Workshop in Cosmetology"
+                }, 
+                {
+                    "code": "COS 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/COS/293", 
+                    "name": "Topics in Cosmetology"
+                }
+            ], 
+            "name": "Computer Science", 
+            "url": "http://www.chegg.com/courses/clovis/COS"
+        }, 
+        {
+            "abbr": "CRJU", 
+            "courses": [
+                {
+                    "code": "CRJU 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/102", 
+                    "name": "Introduction to Criminal Justice"
+                }, 
+                {
+                    "code": "CRJU 103", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/103", 
+                    "name": "Introduction to Policing"
+                }, 
+                {
+                    "code": "CRJU 110", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/110", 
+                    "name": "Introduction to the Correctional System"
+                }, 
+                {
+                    "code": "CRJU 141", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/141", 
+                    "name": "Criminal Investigation"
+                }, 
+                {
+                    "code": "CRJU 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/201", 
+                    "name": "Criminology"
+                }, 
+                {
+                    "code": "CRJU 203", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/203", 
+                    "name": "Probation and Parole"
+                }, 
+                {
+                    "code": "CRJU 213", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/213", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CRJU 214", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/214", 
+                    "name": "Criminal Procedures"
+                }, 
+                {
+                    "code": "CRJU 241", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/241", 
+                    "name": "Police and Community Relations"
+                }, 
+                {
+                    "code": "CRJU 242", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/242", 
+                    "name": "Victimology"
+                }, 
+                {
+                    "code": "CRJU 243", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/243", 
+                    "name": "Juvenile Justice"
+                }, 
+                {
+                    "code": "CRJU 245", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/245", 
+                    "name": "Crime and the Media"
+                }, 
+                {
+                    "code": "CRJU 246", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/246", 
+                    "name": "Understanding Gangs"
+                }, 
+                {
+                    "code": "CRJU 260", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/260", 
+                    "name": "Organized Crime"
+                }, 
+                {
+                    "code": "CRJU 262", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/262", 
+                    "name": "Terrorism"
+                }, 
+                {
+                    "code": "CRJU 264", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/264", 
+                    "name": "Criminal Justice and the Courts"
+                }, 
+                {
+                    "code": "CRJU 265", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/265", 
+                    "name": "Multicultural Law Enforcement"
+                }, 
+                {
+                    "code": "CRJU 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/268", 
+                    "name": "Workshop in Criminal Justice"
+                }, 
+                {
+                    "code": "CRJU 290", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/290", 
+                    "name": "Co-op in Criminal Justice"
+                }, 
+                {
+                    "code": "CRJU 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/293", 
+                    "name": "Topics in Criminal Justice"
+                }, 
+                {
+                    "code": "CRJU 297", 
+                    "course_url": "http://www.chegg.com/courses/clovis/CRJU/297", 
+                    "name": "Criminal Justice Internship"
+                }
+            ], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/clovis/CRJU"
+        }, 
+        {
+            "abbr": "Computerized", 
+            "courses": [
+                {
+                    "code": "Computerized 10", 
+                    "course_url": "http://www.chegg.com/courses/clovis/Computerized/10", 
+                    "name": "Key Operations"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/clovis/Computerized"
+        }, 
+        {
+            "abbr": "DNC", 
+            "courses": [
+                {
+                    "code": "DNC 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/DNC/101", 
+                    "name": "Introduction to Dance"
+                }, 
+                {
+                    "code": "DNC 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/DNC/268", 
+                    "name": "Workshop in Dance"
+                }, 
+                {
+                    "code": "DNC 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/DNC/293", 
+                    "name": "Topics in Dance"
+                }
+            ], 
+            "name": "Dance", 
+            "url": "http://www.chegg.com/courses/clovis/DNC"
+        }, 
+        {
+            "abbr": "ECE", 
+            "courses": [
+                {
+                    "code": "ECE 132", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/132", 
+                    "name": "Child Growth/Development and Learning"
+                }, 
+                {
+                    "code": "ECE 133", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/133", 
+                    "name": "Health,Safety,and Nutrition"
+                }, 
+                {
+                    "code": "ECE 135", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/135", 
+                    "name": "Curriculum Development and Implementation I"
+                }, 
+                {
+                    "code": "ECE 135L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/135L", 
+                    "name": "Curriculum Development and Implementation I Lab"
+                }, 
+                {
+                    "code": "ECE 135P", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/135P", 
+                    "name": "Curriculum Development and Implementation Practicum I"
+                }, 
+                {
+                    "code": "ECE 136", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/136", 
+                    "name": "Introduction to Reading and Literacy Development"
+                }, 
+                {
+                    "code": "ECE 233", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/233", 
+                    "name": "Family and Community Collaboration"
+                }, 
+                {
+                    "code": "ECE 234", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/234", 
+                    "name": "Guiding Young Children"
+                }, 
+                {
+                    "code": "ECE 236", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/236", 
+                    "name": "Assessment of Children and Evaluation of Programs"
+                }, 
+                {
+                    "code": "ECE 239", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/239", 
+                    "name": "Child Development Associate Assessment Preparation"
+                }, 
+                {
+                    "code": "ECE 240", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/240", 
+                    "name": "Curriculum Development and Implementation II"
+                }, 
+                {
+                    "code": "ECE 240L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/240L", 
+                    "name": "Curriculum Development and Implementation II Lab"
+                }, 
+                {
+                    "code": "ECE 240P", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/240P", 
+                    "name": "Curriculum Development and Implementation Practicum II"
+                }, 
+                {
+                    "code": "ECE 241", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/241", 
+                    "name": "Professionalism"
+                }, 
+                {
+                    "code": "ECE 246", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/246", 
+                    "name": "Teaching Children Games and Fitness"
+                }, 
+                {
+                    "code": "ECE 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/268", 
+                    "name": "Workshop in Early Childhood Education"
+                }, 
+                {
+                    "code": "ECE 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/293", 
+                    "name": "Topics in Early Childhood Education"
+                }, 
+                {
+                    "code": "ECE 295", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECE/295", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "Electrical & Computer Engr", 
+            "url": "http://www.chegg.com/courses/clovis/ECE"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 221", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECON/221", 
+                    "name": "Principles of Macro Economics"
+                }, 
+                {
+                    "code": "ECON 222", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECON/222", 
+                    "name": "Principles of Micro Economics"
+                }, 
+                {
+                    "code": "ECON 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECON/268", 
+                    "name": "Workshop in Economics"
+                }, 
+                {
+                    "code": "ECON 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ECON/293", 
+                    "name": "Topics in Economics"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/clovis/ECON"
+        }, 
+        {
+            "abbr": "EDF", 
+            "courses": [
+                {
+                    "code": "EDF 200", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/200", 
+                    "name": "Effective Online Instruction"
+                }, 
+                {
+                    "code": "EDF 204", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/204", 
+                    "name": "Developing ESP! Engaging Strategies for Performance"
+                }, 
+                {
+                    "code": "EDF 205", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/205", 
+                    "name": "From Learning to Read to Rading to Learn"
+                }, 
+                {
+                    "code": "EDF 206", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/206", 
+                    "name": "The Cornerstone"
+                }, 
+                {
+                    "code": "EDF 208", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/208", 
+                    "name": "Circle of Infl uence"
+                }, 
+                {
+                    "code": "EDF 210", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/210", 
+                    "name": "The Brain-Compatible Curriculum and Assessment"
+                }, 
+                {
+                    "code": "EDF 211", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/211", 
+                    "name": "Learner/Centered Teaching"
+                }, 
+                {
+                    "code": "EDF 212", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/212", 
+                    "name": "Developing Successful Workplace Education Curricula"
+                }, 
+                {
+                    "code": "EDF 214", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/214", 
+                    "name": "The Engaging Classroom"
+                }, 
+                {
+                    "code": "EDF 216", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/216", 
+                    "name": "Essential Foundations of Reading"
+                }, 
+                {
+                    "code": "EDF 218", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/218", 
+                    "name": "Reading and Writing Across the Curriculum"
+                }, 
+                {
+                    "code": "EDF 219", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/219", 
+                    "name": "Building Bridges to Literacy"
+                }, 
+                {
+                    "code": "EDF 220", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/220", 
+                    "name": "Special Needs Learners"
+                }, 
+                {
+                    "code": "EDF 221", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/221", 
+                    "name": "Learning by Design"
+                }, 
+                {
+                    "code": "EDF 222", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/222", 
+                    "name": "Structured Observations of Teaching"
+                }, 
+                {
+                    "code": "EDF 223", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/223", 
+                    "name": "The Capstone"
+                }, 
+                {
+                    "code": "EDF 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/268", 
+                    "name": "Workshop in Education Foundations"
+                }, 
+                {
+                    "code": "EDF 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EDF/293", 
+                    "name": "Topics in Education Foundations"
+                }
+            ], 
+            "name": "Educational Foundations", 
+            "url": "http://www.chegg.com/courses/clovis/EDF"
+        }, 
+        {
+            "abbr": "ELED", 
+            "courses": [
+                {
+                    "code": "ELED 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ELED/268", 
+                    "name": "Workshop in Elementary Education"
+                }, 
+                {
+                    "code": "ELED 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ELED/293", 
+                    "name": "Topics in Elementary Education"
+                }
+            ], 
+            "name": "Elementary Education", 
+            "url": "http://www.chegg.com/courses/clovis/ELED"
+        }, 
+        {
+            "abbr": "EMS", 
+            "courses": [
+                {
+                    "code": "EMS 100", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/100", 
+                    "name": "Math for Nursing and Allied Health"
+                }, 
+                {
+                    "code": "EMS 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/101", 
+                    "name": "First Responder"
+                }, 
+                {
+                    "code": "EMS 109", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/109", 
+                    "name": "Pharmacology I"
+                }, 
+                {
+                    "code": "EMS 115", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/115", 
+                    "name": "Anatomy and Physiology for EMS Professionals"
+                }, 
+                {
+                    "code": "EMS 120", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/120", 
+                    "name": "Emergency Medical Technician-Basic"
+                }, 
+                {
+                    "code": "EMS 122", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/122", 
+                    "name": "Emergency Medical Technician-Intermediate"
+                }, 
+                {
+                    "code": "EMS 122L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/122L", 
+                    "name": "Emergency Medical Technician-Intermediate Lab"
+                }, 
+                {
+                    "code": "EMS 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/201", 
+                    "name": "Emergency Medical Technician-Paramedic I"
+                }, 
+                {
+                    "code": "EMS 201L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/201L", 
+                    "name": "Emergency Medical Technician-Paramedic I Lab"
+                }, 
+                {
+                    "code": "EMS 202", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/202", 
+                    "name": "Emergency Medical Technician-Paramedic II"
+                }, 
+                {
+                    "code": "EMS 202L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/202L", 
+                    "name": "Emergency Medical Technician-Paramedic II Lab"
+                }, 
+                {
+                    "code": "EMS 203", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/203", 
+                    "name": "Emergency Medical Technician-Paramedic III"
+                }, 
+                {
+                    "code": "EMS 203L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/203L", 
+                    "name": "Emergency Medical Technician-Paramedic III Lab"
+                }, 
+                {
+                    "code": "EMS 204L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/204L", 
+                    "name": "Emergency Medical Technician-Paramedic IV Lab"
+                }, 
+                {
+                    "code": "EMS 205L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/205L", 
+                    "name": "Emergency Medical Technician-Paramedic Field Experience"
+                }, 
+                {
+                    "code": "EMS 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/268", 
+                    "name": "Workshop in Emergency Medical Services"
+                }, 
+                {
+                    "code": "EMS 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/EMS/293", 
+                    "name": "Topics in Emergency Medical Services"
+                }
+            ], 
+            "name": "Early Modern Studies", 
+            "url": "http://www.chegg.com/courses/clovis/EMS"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 093", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/093", 
+                    "name": "Transitional Writing"
+                }, 
+                {
+                    "code": "ENG 095", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/095", 
+                    "name": "Basic Writing Skills I"
+                }, 
+                {
+                    "code": "ENG 097", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/097", 
+                    "name": "Basic Writing Skills II"
+                }, 
+                {
+                    "code": "ENG 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/102", 
+                    "name": "English Composition"
+                }, 
+                {
+                    "code": "ENG 104", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/104", 
+                    "name": "English Composition and Research"
+                }, 
+                {
+                    "code": "ENG 202", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/202", 
+                    "name": "Types of Literature/Short Story"
+                }, 
+                {
+                    "code": "ENG 203", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/203", 
+                    "name": "Types of Literature/Novel"
+                }, 
+                {
+                    "code": "ENG 204", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/204", 
+                    "name": "Types of Literature/Drama"
+                }, 
+                {
+                    "code": "ENG 205", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/205", 
+                    "name": "Types of Literature/Poetry"
+                }, 
+                {
+                    "code": "ENG 211", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/211", 
+                    "name": "Introduction to Literature"
+                }, 
+                {
+                    "code": "ENG 221", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/221", 
+                    "name": "Survey of English Literature I"
+                }, 
+                {
+                    "code": "ENG 222", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/222", 
+                    "name": "Survey of English Literature II"
+                }, 
+                {
+                    "code": "ENG 223", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/223", 
+                    "name": "Survey of American Literature I"
+                }, 
+                {
+                    "code": "ENG 224", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/224", 
+                    "name": "Survey of American Literature II"
+                }, 
+                {
+                    "code": "ENG 233", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/233", 
+                    "name": "Technical and Professional Writing I"
+                }, 
+                {
+                    "code": "ENG 234", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/234", 
+                    "name": "Technical and Professional Writing II"
+                }, 
+                {
+                    "code": "ENG 236", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/236", 
+                    "name": "Technical Editing and Document Design"
+                }, 
+                {
+                    "code": "ENG 241", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/241", 
+                    "name": "Introduction to Creative Writing-Fiction"
+                }, 
+                {
+                    "code": "ENG 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/268", 
+                    "name": "Workshop in English"
+                }, 
+                {
+                    "code": "ENG 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/ENG/293", 
+                    "name": "Topics in English"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/clovis/ENG"
+        }, 
+        {
+            "abbr": "FCS", 
+            "courses": [
+                {
+                    "code": "FCS 112", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FCS/112", 
+                    "name": "Introduction to Nutrition"
+                }, 
+                {
+                    "code": "FCS 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FCS/268", 
+                    "name": "Workshop in Family and Consumer Science"
+                }, 
+                {
+                    "code": "FCS 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FCS/293", 
+                    "name": "Topics in Family and Consumer Science"
+                }
+            ], 
+            "name": "Family Consumer Science", 
+            "url": "http://www.chegg.com/courses/clovis/FCS"
+        }, 
+        {
+            "abbr": "FIN", 
+            "courses": [
+                {
+                    "code": "FIN 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FIN/201", 
+                    "name": "Principles of Finance"
+                }, 
+                {
+                    "code": "FIN 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FIN/268", 
+                    "name": "Workshop in Finance"
+                }, 
+                {
+                    "code": "FIN 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FIN/293", 
+                    "name": "Topics in Finance"
+                }, 
+                {
+                    "code": "FIN 295", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FIN/295", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "Finance", 
+            "url": "http://www.chegg.com/courses/clovis/FIN"
+        }, 
+        {
+            "abbr": "FR", 
+            "courses": [
+                {
+                    "code": "FR 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FR/101", 
+                    "name": "Beginning French I"
+                }, 
+                {
+                    "code": "FR 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FR/102", 
+                    "name": "Beginning French II"
+                }, 
+                {
+                    "code": "FR 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FR/201", 
+                    "name": "Intermediate French I"
+                }, 
+                {
+                    "code": "FR 202", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FR/202", 
+                    "name": "Intermediate French II"
+                }, 
+                {
+                    "code": "FR 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FR/268", 
+                    "name": "Workshop in French"
+                }, 
+                {
+                    "code": "FR 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FR/293", 
+                    "name": "Topics in French"
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/clovis/FR"
+        }, 
+        {
+            "abbr": "FST", 
+            "courses": [
+                {
+                    "code": "FST 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/101", 
+                    "name": "Introduction to Fire Science Technology"
+                }, 
+                {
+                    "code": "FST 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/102", 
+                    "name": "Firefighter I"
+                }, 
+                {
+                    "code": "FST 102L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/102L", 
+                    "name": "Firefighter I Lab"
+                }, 
+                {
+                    "code": "FST 104", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/104", 
+                    "name": "Firefighter II"
+                }, 
+                {
+                    "code": "FST 104L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/104L", 
+                    "name": "Firefighter II Lab"
+                }, 
+                {
+                    "code": "FST 106", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/106", 
+                    "name": "Firefighter Health and Safety"
+                }, 
+                {
+                    "code": "FST 108", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/108", 
+                    "name": "Aircraft Rescue / Firefighting"
+                }, 
+                {
+                    "code": "FST 110", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/110", 
+                    "name": "Fire Protection Systems"
+                }, 
+                {
+                    "code": "FST 112", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/112", 
+                    "name": "Fire Instructor I"
+                }, 
+                {
+                    "code": "FST 114", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/114", 
+                    "name": "Fire Officer I"
+                }, 
+                {
+                    "code": "FST 202", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/202", 
+                    "name": "Fire and Arson Investigation"
+                }, 
+                {
+                    "code": "FST 204", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/204", 
+                    "name": "Bldg Codes and Inspection"
+                }, 
+                {
+                    "code": "FST 206", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/206", 
+                    "name": "Fire Protection Hydraulics and Water Supply"
+                }, 
+                {
+                    "code": "FST 208", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/208", 
+                    "name": "Firefighting Strategy and Tactics"
+                }, 
+                {
+                    "code": "FST 214", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/214", 
+                    "name": "Fire Office II"
+                }, 
+                {
+                    "code": "FST 216", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/216", 
+                    "name": "Legal Considerations for Fire and Emergency Services"
+                }, 
+                {
+                    "code": "FST 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/268", 
+                    "name": "Workshop in Fire Science Technology"
+                }, 
+                {
+                    "code": "FST 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/FST/293", 
+                    "name": "Topics in Fire Science Technology"
+                }
+            ], 
+            "name": "Fire Science Technology", 
+            "url": "http://www.chegg.com/courses/clovis/FST"
+        }, 
+        {
+            "abbr": "GEOL", 
+            "courses": [
+                {
+                    "code": "GEOL 113", 
+                    "course_url": "http://www.chegg.com/courses/clovis/GEOL/113", 
+                    "name": "Physical Geology and Lab"
+                }, 
+                {
+                    "code": "GEOL 114", 
+                    "course_url": "http://www.chegg.com/courses/clovis/GEOL/114", 
+                    "name": "Historical Geology and Lab"
+                }, 
+                {
+                    "code": "GEOL 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/GEOL/268", 
+                    "name": "Workshop in Geology"
+                }, 
+                {
+                    "code": "GEOL 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/GEOL/293", 
+                    "name": "Topics in Geology"
+                }
+            ], 
+            "name": "Geology", 
+            "url": "http://www.chegg.com/courses/clovis/GEOL"
+        }, 
+        {
+            "abbr": "GER", 
+            "courses": [
+                {
+                    "code": "GER 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/GER/101", 
+                    "name": "Beginning German I"
+                }, 
+                {
+                    "code": "GER 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/GER/102", 
+                    "name": "Beginning German II"
+                }, 
+                {
+                    "code": "GER 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/GER/201", 
+                    "name": "Intermediate German I"
+                }
+            ], 
+            "name": "German", 
+            "url": "http://www.chegg.com/courses/clovis/GER"
+        }, 
+        {
+            "abbr": "HCA", 
+            "courses": [
+                {
+                    "code": "HCA 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HCA/101", 
+                    "name": "Health Care Assistant"
+                }, 
+                {
+                    "code": "HCA 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HCA/268", 
+                    "name": "Workshop in Health Care Assistant"
+                }, 
+                {
+                    "code": "HCA 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HCA/293", 
+                    "name": "Topics in Health Care Assistant"
+                }
+            ], 
+            "name": "Health Care Administration", 
+            "url": "http://www.chegg.com/courses/clovis/HCA"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIST/101", 
+                    "name": "Survey of American History to 1865"
+                }, 
+                {
+                    "code": "HIST 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIST/102", 
+                    "name": "Survey of American History Since 1865"
+                }, 
+                {
+                    "code": "HIST 121", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIST/121", 
+                    "name": "World Civilization I"
+                }, 
+                {
+                    "code": "HIST 122", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIST/122", 
+                    "name": "World Civilization II"
+                }, 
+                {
+                    "code": "HIST 203", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIST/203", 
+                    "name": "New Mexico History"
+                }, 
+                {
+                    "code": "HIST 230", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIST/230", 
+                    "name": "Ancient Near East / Biblical World"
+                }, 
+                {
+                    "code": "HIST 232", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIST/232", 
+                    "name": "Islam: Hist, Rel, and Culture"
+                }, 
+                {
+                    "code": "HIST 234", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIST/234", 
+                    "name": "Ancient Greek Religion, History and Culture"
+                }, 
+                {
+                    "code": "HIST 236", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIST/236", 
+                    "name": "Ancient Egyptian Religion, History, and Culture"
+                }, 
+                {
+                    "code": "HIST 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIST/268", 
+                    "name": "Workshop in History"
+                }, 
+                {
+                    "code": "HIST 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIST/293", 
+                    "name": "Topics in History"
+                }, 
+                {
+                    "code": "HIST 295", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIST/295", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/clovis/HIST"
+        }, 
+        {
+            "abbr": "HIT", 
+            "courses": [
+                {
+                    "code": "HIT 110", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIT/110", 
+                    "name": "Introduction to Health Care"
+                }, 
+                {
+                    "code": "HIT 115", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIT/115", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "HIT 120", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIT/120", 
+                    "name": "Principles of Human Disease"
+                }, 
+                {
+                    "code": "HIT 125", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIT/125", 
+                    "name": "Health Care Law and Ethics"
+                }, 
+                {
+                    "code": "HIT 130", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIT/130", 
+                    "name": "Pharmacology for Health Professions"
+                }, 
+                {
+                    "code": "HIT 190", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIT/190", 
+                    "name": "Medical Transcription I"
+                }, 
+                {
+                    "code": "HIT 200", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIT/200", 
+                    "name": "Medical Transcription II"
+                }, 
+                {
+                    "code": "HIT 205", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIT/205", 
+                    "name": "Health Information Management"
+                }, 
+                {
+                    "code": "HIT 210", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIT/210", 
+                    "name": "ICD-9-CM Coding"
+                }, 
+                {
+                    "code": "HIT 220", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIT/220", 
+                    "name": "CPT and HCPCS Procedural Coding"
+                }, 
+                {
+                    "code": "HIT 225", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIT/225", 
+                    "name": "Health Care Reimbursement Systems"
+                }, 
+                {
+                    "code": "HIT 230", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HIT/230", 
+                    "name": "Medical Practice Managment"
+                }
+            ], 
+            "name": "Hit-Health Information Tech", 
+            "url": "http://www.chegg.com/courses/clovis/HIT"
+        }, 
+        {
+            "abbr": "HPE", 
+            "courses": [
+                {
+                    "code": "HPE 103", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/103", 
+                    "name": "Beginning Racquetball"
+                }, 
+                {
+                    "code": "HPE 104", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/104", 
+                    "name": "Advanced Racquetball"
+                }, 
+                {
+                    "code": "HPE 108", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/108", 
+                    "name": "Water Walking"
+                }, 
+                {
+                    "code": "HPE 109", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/109", 
+                    "name": "Aqua Aerobics"
+                }, 
+                {
+                    "code": "HPE 111", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/111", 
+                    "name": "Jogging"
+                }, 
+                {
+                    "code": "HPE 112", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/112", 
+                    "name": "Aquatics Fitness"
+                }, 
+                {
+                    "code": "HPE 113", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/113", 
+                    "name": "Yoga"
+                }, 
+                {
+                    "code": "HPE 114", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/114", 
+                    "name": "Pilates"
+                }, 
+                {
+                    "code": "HPE 115", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/115", 
+                    "name": "Personal Defense"
+                }, 
+                {
+                    "code": "HPE 116", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/116", 
+                    "name": "Cardio Cycling"
+                }, 
+                {
+                    "code": "HPE 117", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/117", 
+                    "name": "Beginning Basketball"
+                }, 
+                {
+                    "code": "HPE 118", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/118", 
+                    "name": "Yoga-Hatha Flow"
+                }, 
+                {
+                    "code": "HPE 119", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/119", 
+                    "name": "Yoga-Yogini"
+                }, 
+                {
+                    "code": "HPE 120", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/120", 
+                    "name": "Core Training"
+                }, 
+                {
+                    "code": "HPE 121", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/121", 
+                    "name": "Personal Health"
+                }, 
+                {
+                    "code": "HPE 122", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/122", 
+                    "name": "Weight Control,Fitness and Nutrition"
+                }, 
+                {
+                    "code": "HPE 123", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/123", 
+                    "name": "Basic Line Dancing"
+                }, 
+                {
+                    "code": "HPE 124", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/124", 
+                    "name": "Walking and Conditioning"
+                }, 
+                {
+                    "code": "HPE 125", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/125", 
+                    "name": "Body Sculpting"
+                }, 
+                {
+                    "code": "HPE 126", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/126", 
+                    "name": "Aerobic Body Sculpting"
+                }, 
+                {
+                    "code": "HPE 127", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/127", 
+                    "name": "Hi/Lo Aerobics"
+                }, 
+                {
+                    "code": "HPE 128", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/128", 
+                    "name": "Individualized Health and Conditioning"
+                }, 
+                {
+                    "code": "HPE 129", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/129", 
+                    "name": "Belly Dance"
+                }, 
+                {
+                    "code": "HPE 130", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/130", 
+                    "name": "Social Dance"
+                }, 
+                {
+                    "code": "HPE 131", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/131", 
+                    "name": "Step Aerobics"
+                }, 
+                {
+                    "code": "HPE 132", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/132", 
+                    "name": "Advanced Step Aerobics"
+                }, 
+                {
+                    "code": "HPE 133", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/133", 
+                    "name": "Cardio Kickboxing"
+                }, 
+                {
+                    "code": "HPE 134", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/134", 
+                    "name": "World Dance"
+                }, 
+                {
+                    "code": "HPE 142", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/142", 
+                    "name": "Fundamentals of Physical Well-Being"
+                }, 
+                {
+                    "code": "HPE 145", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/145", 
+                    "name": "History and Concepts in Physical Education"
+                }, 
+                {
+                    "code": "HPE 147", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/147", 
+                    "name": "Introduction to Care and Prevention of Athletic Injuries"
+                }, 
+                {
+                    "code": "HPE 200", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/200", 
+                    "name": "Wallyball"
+                }, 
+                {
+                    "code": "HPE 205", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/205", 
+                    "name": "Volleyball"
+                }, 
+                {
+                    "code": "HPE 206", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/206", 
+                    "name": "Advanced Volleyball"
+                }, 
+                {
+                    "code": "HPE 207", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/207", 
+                    "name": "Challenge Volleyball"
+                }, 
+                {
+                    "code": "HPE 210", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/210", 
+                    "name": "Observation in Health and Physical Education"
+                }, 
+                {
+                    "code": "HPE 219", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/219", 
+                    "name": "Beginning Swimming"
+                }, 
+                {
+                    "code": "HPE 220", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/220", 
+                    "name": "First Aid and CPR"
+                }, 
+                {
+                    "code": "HPE 221", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/221", 
+                    "name": "Weight Training"
+                }, 
+                {
+                    "code": "HPE 222", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/222", 
+                    "name": "Circuit Weight Training"
+                }, 
+                {
+                    "code": "HPE 223", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/223", 
+                    "name": "Advanced Weight Training"
+                }, 
+                {
+                    "code": "HPE 224", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/224", 
+                    "name": "Beginning Golf"
+                }, 
+                {
+                    "code": "HPE 225", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/225", 
+                    "name": "Advanced Golf"
+                }, 
+                {
+                    "code": "HPE 226", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/226", 
+                    "name": "Cross Training for Advanced Fitness"
+                }, 
+                {
+                    "code": "HPE 233", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/233", 
+                    "name": "Intermediate Swimming"
+                }, 
+                {
+                    "code": "HPE 234", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/234", 
+                    "name": "Lifeguard Training"
+                }, 
+                {
+                    "code": "HPE 239", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/239", 
+                    "name": "Water Safety Instructor"
+                }, 
+                {
+                    "code": "HPE 240", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/240", 
+                    "name": "Drugs and Health"
+                }, 
+                {
+                    "code": "HPE 243", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/243", 
+                    "name": "Beginning Tennis"
+                }, 
+                {
+                    "code": "HPE 244", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/244", 
+                    "name": "Advanced Tennis"
+                }, 
+                {
+                    "code": "HPE 245", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/245", 
+                    "name": "Challenge Tennis"
+                }, 
+                {
+                    "code": "HPE 246", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/246", 
+                    "name": "Teaching Children Games and Fitness"
+                }, 
+                {
+                    "code": "HPE 259", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/259", 
+                    "name": "Bowling"
+                }, 
+                {
+                    "code": "HPE 262", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/262", 
+                    "name": "Advanced Bowling"
+                }, 
+                {
+                    "code": "HPE 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/268", 
+                    "name": "Workshop in Health and Physical Education"
+                }, 
+                {
+                    "code": "HPE 270", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/270", 
+                    "name": "Challenge Racquetball"
+                }, 
+                {
+                    "code": "HPE 275", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/275", 
+                    "name": "Challenge Ropes Course"
+                }, 
+                {
+                    "code": "HPE 280", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/280", 
+                    "name": "Individual Wellness"
+                }, 
+                {
+                    "code": "HPE 290", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/290", 
+                    "name": "Co-op in Health and Physical Education"
+                }, 
+                {
+                    "code": "HPE 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/293", 
+                    "name": "Topics in Health and Physical Education"
+                }, 
+                {
+                    "code": "HPE 295", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/295", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "HPE 297", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HPE/297", 
+                    "name": "Health and Physical Education Internship"
+                }
+            ], 
+            "name": "Health & Physical Education", 
+            "url": "http://www.chegg.com/courses/clovis/HPE"
+        }, 
+        {
+            "abbr": "HS", 
+            "courses": [
+                {
+                    "code": "HS 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HS/101", 
+                    "name": "Introduction to Human Services"
+                }, 
+                {
+                    "code": "HS 105", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HS/105", 
+                    "name": "Medication Awareness for Paraprofessionals"
+                }, 
+                {
+                    "code": "HS 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HS/201", 
+                    "name": "Aging and Its Related Problems"
+                }, 
+                {
+                    "code": "HS 202", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HS/202", 
+                    "name": "Working with Individuals with Disabilities"
+                }, 
+                {
+                    "code": "HS 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HS/268", 
+                    "name": "Workshop in Human Services"
+                }, 
+                {
+                    "code": "HS 290", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HS/290", 
+                    "name": "Co-op in Human Services"
+                }, 
+                {
+                    "code": "HS 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HS/293", 
+                    "name": "Topics in Human Services"
+                }, 
+                {
+                    "code": "HS 297", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HS/297", 
+                    "name": "Human Services Internship"
+                }
+            ], 
+            "name": "The Heller School For Social Policy And Management", 
+            "url": "http://www.chegg.com/courses/clovis/HS"
+        }, 
+        {
+            "abbr": "HUM", 
+            "courses": [
+                {
+                    "code": "HUM 221", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HUM/221", 
+                    "name": "Introduction to Humanities I"
+                }, 
+                {
+                    "code": "HUM 222", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HUM/222", 
+                    "name": "Introduction to Humanities II"
+                }, 
+                {
+                    "code": "HUM 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HUM/268", 
+                    "name": "Workshop in Humanities"
+                }, 
+                {
+                    "code": "HUM 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HUM/293", 
+                    "name": "Topics in Humanities"
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/clovis/HUM"
+        }, 
+        {
+            "abbr": "HVAC", 
+            "courses": [
+                {
+                    "code": "HVAC 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/101", 
+                    "name": "Fundamentals of Refrigeration"
+                }, 
+                {
+                    "code": "HVAC 101L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/101L", 
+                    "name": "Fundamentals of Refrigeration Lab"
+                }, 
+                {
+                    "code": "HVAC 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/102", 
+                    "name": "Fundamentals of Electricity"
+                }, 
+                {
+                    "code": "HVAC 102L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/102L", 
+                    "name": "Fundamentals of Electricity Lab"
+                }, 
+                {
+                    "code": "HVAC 105", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/105", 
+                    "name": "Applied Math"
+                }, 
+                {
+                    "code": "HVAC 106", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/106", 
+                    "name": "Domestic Refrigeration"
+                }, 
+                {
+                    "code": "HVAC 107", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/107", 
+                    "name": "Residential Air Conditioning"
+                }, 
+                {
+                    "code": "HVAC 108", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/108", 
+                    "name": "Residential Heating"
+                }, 
+                {
+                    "code": "HVAC 109", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/109", 
+                    "name": "Heat Pump Systems"
+                }, 
+                {
+                    "code": "HVAC 121", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/121", 
+                    "name": "Solar and Electrical Systems Interpretation and Troubleshooting"
+                }, 
+                {
+                    "code": "HVAC 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/201", 
+                    "name": "HVAC Plant Maintenance"
+                }, 
+                {
+                    "code": "HVAC 202", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/202", 
+                    "name": "Systems Design Maintenance"
+                }, 
+                {
+                    "code": "HVAC 203", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/203", 
+                    "name": "Refrigerant Transition and Recovery Certifi cation"
+                }, 
+                {
+                    "code": "HVAC 204", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/204", 
+                    "name": "Commercial Air Conditioning"
+                }, 
+                {
+                    "code": "HVAC 205", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/205", 
+                    "name": "Commercial Refrigeration I"
+                }, 
+                {
+                    "code": "HVAC 206", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/206", 
+                    "name": "Commercial Refrigeration II"
+                }, 
+                {
+                    "code": "HVAC 207", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/207", 
+                    "name": "Advanced Control Systems"
+                }, 
+                {
+                    "code": "HVAC 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/268", 
+                    "name": "Workshop in HVAC"
+                }, 
+                {
+                    "code": "HVAC 290", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/290", 
+                    "name": "Co- op in HVAC"
+                }, 
+                {
+                    "code": "HVAC 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/HVAC/293", 
+                    "name": "Topics in HVAC"
+                }
+            ], 
+            "name": "Heating / Air Conditioning", 
+            "url": "http://www.chegg.com/courses/clovis/HVAC"
+        }, 
+        {
+            "abbr": "INDT", 
+            "courses": [
+                {
+                    "code": "INDT 100", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/100", 
+                    "name": "Introduction to Industrial Technology"
+                }, 
+                {
+                    "code": "INDT 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/101", 
+                    "name": "Mathematics for Industrial Technology"
+                }, 
+                {
+                    "code": "INDT 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/102", 
+                    "name": "Quality Systems"
+                }, 
+                {
+                    "code": "INDT 103", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/103", 
+                    "name": "Principles of Electricity"
+                }, 
+                {
+                    "code": "INDT 104", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/104", 
+                    "name": "Drawings and Schematics"
+                }, 
+                {
+                    "code": "INDT 106", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/106", 
+                    "name": "Introduction to Robotics"
+                }, 
+                {
+                    "code": "INDT 108", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/108", 
+                    "name": "Introduction to Wind Energy"
+                }, 
+                {
+                    "code": "INDT 110", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/110", 
+                    "name": "Environmental Health and Safety"
+                }, 
+                {
+                    "code": "INDT 111", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/111", 
+                    "name": "Hand and Machine Tools I"
+                }, 
+                {
+                    "code": "INDT 112", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/112", 
+                    "name": "Fundamentals of Materials and Design"
+                }, 
+                {
+                    "code": "INDT 113", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/113", 
+                    "name": "Principles of Electronics"
+                }, 
+                {
+                    "code": "INDT 200", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/200", 
+                    "name": "Welding Basics and Fabrication"
+                }, 
+                {
+                    "code": "INDT 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/201", 
+                    "name": "Hand and Machine Tools II"
+                }, 
+                {
+                    "code": "INDT 202", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/202", 
+                    "name": "Introduction to Preventative Maintenance"
+                }, 
+                {
+                    "code": "INDT 203", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/203", 
+                    "name": "Electric Motors and Motor Control"
+                }, 
+                {
+                    "code": "INDT 204", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/204", 
+                    "name": "Fluid Flow and Pneumatics"
+                }, 
+                {
+                    "code": "INDT 206", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/206", 
+                    "name": "Industrial Robotics"
+                }, 
+                {
+                    "code": "INDT 208", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/208", 
+                    "name": "Wind Turbine Materials and Electrical/Mechanical Equipment"
+                }, 
+                {
+                    "code": "INDT 210", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/210", 
+                    "name": "Process Control"
+                }, 
+                {
+                    "code": "INDT 211", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/211", 
+                    "name": "Mechanical Equipment"
+                }, 
+                {
+                    "code": "INDT 212", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/212", 
+                    "name": "Mechanical Drives"
+                }, 
+                {
+                    "code": "INDT 213", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/213", 
+                    "name": "Power Generation Systems"
+                }, 
+                {
+                    "code": "INDT 218", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/218", 
+                    "name": "Wind Turbine Troubleshooting and Repair"
+                }, 
+                {
+                    "code": "INDT 251", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/251", 
+                    "name": "Practicum Experience"
+                }, 
+                {
+                    "code": "INDT 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/268", 
+                    "name": "Workshop in Industrial Technology"
+                }, 
+                {
+                    "code": "INDT 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/INDT/293", 
+                    "name": "Topics in Industrial Technology"
+                }
+            ], 
+            "name": "Industrial Technology", 
+            "url": "http://www.chegg.com/courses/clovis/INDT"
+        }, 
+        {
+            "abbr": "LEST", 
+            "courses": [
+                {
+                    "code": "LEST 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/102", 
+                    "name": "Introduction to Legal Assistant Studies"
+                }, 
+                {
+                    "code": "LEST 104", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/104", 
+                    "name": "Torts,Practice and Procedure"
+                }, 
+                {
+                    "code": "LEST 105", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/105", 
+                    "name": "Legal Writing,Terminology,and Research I"
+                }, 
+                {
+                    "code": "LEST 106", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/106", 
+                    "name": "Legal Writing,Terminology,and Research II"
+                }, 
+                {
+                    "code": "LEST 107", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/107", 
+                    "name": "Bankruptcy"
+                }, 
+                {
+                    "code": "LEST 108", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/108", 
+                    "name": "Administrative Law"
+                }, 
+                {
+                    "code": "LEST 123", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/123", 
+                    "name": "Litigation"
+                }, 
+                {
+                    "code": "LEST 213", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/213", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "LEST 214", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/214", 
+                    "name": "Criminal Procedures"
+                }, 
+                {
+                    "code": "LEST 220", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/220", 
+                    "name": "Family Law"
+                }, 
+                {
+                    "code": "LEST 221", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/221", 
+                    "name": "Wills and Estates"
+                }, 
+                {
+                    "code": "LEST 227", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/227", 
+                    "name": "Law Offi ce Practice and Procedures"
+                }, 
+                {
+                    "code": "LEST 228", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/228", 
+                    "name": "Corporate Law"
+                }, 
+                {
+                    "code": "LEST 229", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/229", 
+                    "name": "Contract Law"
+                }, 
+                {
+                    "code": "LEST 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/268", 
+                    "name": "Workshop in Legal Studies"
+                }, 
+                {
+                    "code": "LEST 281", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/281", 
+                    "name": "Real Estate Law"
+                }, 
+                {
+                    "code": "LEST 290", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/290", 
+                    "name": "Co-op in Legal Studies"
+                }, 
+                {
+                    "code": "LEST 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/293", 
+                    "name": "Topics in Legal Studies"
+                }, 
+                {
+                    "code": "LEST 295", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/295", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "LEST 297", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LEST/297", 
+                    "name": "Legal Studies Internship"
+                }
+            ], 
+            "name": "Legal Studies", 
+            "url": "http://www.chegg.com/courses/clovis/LEST"
+        }, 
+        {
+            "abbr": "LT", 
+            "courses": [
+                {
+                    "code": "LT 110", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LT/110", 
+                    "name": "Introduction to Library Resources and Services for Paraprofessionals"
+                }, 
+                {
+                    "code": "LT 111", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LT/111", 
+                    "name": "Developing Library Collections"
+                }, 
+                {
+                    "code": "LT 120", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LT/120", 
+                    "name": "Library Public Services"
+                }, 
+                {
+                    "code": "LT 121", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LT/121", 
+                    "name": "Library Services for Children and Young Adults"
+                }, 
+                {
+                    "code": "LT 210", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LT/210", 
+                    "name": "Introduction to Reference and Information Services"
+                }, 
+                {
+                    "code": "LT 211", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LT/211", 
+                    "name": "Cataloging and Classifi cation"
+                }, 
+                {
+                    "code": "LT 220", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LT/220", 
+                    "name": "Media Resources and Technologies"
+                }, 
+                {
+                    "code": "LT 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LT/268", 
+                    "name": "Workshop in Library Technology"
+                }, 
+                {
+                    "code": "LT 290", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LT/290", 
+                    "name": "Co-op in Library Technology"
+                }, 
+                {
+                    "code": "LT 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LT/293", 
+                    "name": "Topics in Library Technology"
+                }, 
+                {
+                    "code": "LT 297", 
+                    "course_url": "http://www.chegg.com/courses/clovis/LT/297", 
+                    "name": "Library Internship"
+                }
+            ], 
+            "name": "Latin Language", 
+            "url": "http://www.chegg.com/courses/clovis/LT"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 094", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MATH/094", 
+                    "name": "Basic Mathematical Skills with Geometry"
+                }, 
+                {
+                    "code": "MATH 096", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MATH/096", 
+                    "name": "Basic Algebra I"
+                }, 
+                {
+                    "code": "MATH 098", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MATH/098", 
+                    "name": "Basic Algebra II"
+                }, 
+                {
+                    "code": "MATH 107", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MATH/107", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MATH 110", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MATH/110", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MATH 111", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MATH/111", 
+                    "name": "Plane Trigonometry"
+                }, 
+                {
+                    "code": "MATH 113", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MATH/113", 
+                    "name": "Mathematics for General Education"
+                }, 
+                {
+                    "code": "MATH 123", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MATH/123", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MATH 131", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MATH/131", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MATH 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MATH/201", 
+                    "name": "Calculus III"
+                }, 
+                {
+                    "code": "MATH 261", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MATH/261", 
+                    "name": "Mathematical Concepts I"
+                }, 
+                {
+                    "code": "MATH 262", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MATH/262", 
+                    "name": "Mathematical Concepts for Elementary Teachers II"
+                }, 
+                {
+                    "code": "MATH 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MATH/268", 
+                    "name": "Workshop in Mathematics"
+                }, 
+                {
+                    "code": "MATH 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MATH/293", 
+                    "name": "Topics in Mathematics"
+                }, 
+                {
+                    "code": "MATH 295", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MATH/295", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/clovis/MATH"
+        }, 
+        {
+            "abbr": "MGT", 
+            "courses": [
+                {
+                    "code": "MGT 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MGT/201", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "MGT 231", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MGT/231", 
+                    "name": "Small Business Management"
+                }, 
+                {
+                    "code": "MGT 241", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MGT/241", 
+                    "name": "Organizational Behavior Theory"
+                }, 
+                {
+                    "code": "MGT 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MGT/268", 
+                    "name": "Workshop in Management"
+                }, 
+                {
+                    "code": "MGT 290", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MGT/290", 
+                    "name": "Co-op in Management"
+                }, 
+                {
+                    "code": "MGT 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MGT/293", 
+                    "name": "Topics in Management"
+                }
+            ], 
+            "name": "Management", 
+            "url": "http://www.chegg.com/courses/clovis/MGT"
+        }, 
+        {
+            "abbr": "MKT", 
+            "courses": [
+                {
+                    "code": "MKT 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MKT/201", 
+                    "name": "Principles of Marketing"
+                }, 
+                {
+                    "code": "MKT 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MKT/268", 
+                    "name": "Workshop in Marketing"
+                }, 
+                {
+                    "code": "MKT 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MKT/293", 
+                    "name": "Topics in Marketing"
+                }
+            ], 
+            "name": "Marketing", 
+            "url": "http://www.chegg.com/courses/clovis/MKT"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MUS/101", 
+                    "name": "Fundamentals of Music I"
+                }, 
+                {
+                    "code": "MUS 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MUS/102", 
+                    "name": "Fundamentals of Music II"
+                }, 
+                {
+                    "code": "MUS 104", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MUS/104", 
+                    "name": "Singing Technique I"
+                }, 
+                {
+                    "code": "MUS 105", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MUS/105", 
+                    "name": "Singing Technique II"
+                }, 
+                {
+                    "code": "MUS 106", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MUS/106", 
+                    "name": "Choral Ensemble"
+                }, 
+                {
+                    "code": "MUS 107", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MUS/107", 
+                    "name": "Piano I"
+                }, 
+                {
+                    "code": "MUS 108", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MUS/108", 
+                    "name": "Piano II"
+                }, 
+                {
+                    "code": "MUS 110", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MUS/110", 
+                    "name": "Jazz/Blues Band"
+                }, 
+                {
+                    "code": "MUS 111", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MUS/111", 
+                    "name": "Rock and Roll Band"
+                }, 
+                {
+                    "code": "MUS 113", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MUS/113", 
+                    "name": "Music Appreciation"
+                }, 
+                {
+                    "code": "MUS 115", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MUS/115", 
+                    "name": "Guitar I"
+                }, 
+                {
+                    "code": "MUS 116", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MUS/116", 
+                    "name": "Guitar II"
+                }, 
+                {
+                    "code": "MUS 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MUS/268", 
+                    "name": "Workshop in Music"
+                }, 
+                {
+                    "code": "MUS 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MUS/293", 
+                    "name": "Topics in Music"
+                }, 
+                {
+                    "code": "MUS 295", 
+                    "course_url": "http://www.chegg.com/courses/clovis/MUS/295", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/clovis/MUS"
+        }, 
+        {
+            "abbr": "NSG", 
+            "courses": [
+                {
+                    "code": "NSG 099", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/099", 
+                    "name": "Nursing Success"
+                }, 
+                {
+                    "code": "NSG 100", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/100", 
+                    "name": "Math for Nurses"
+                }, 
+                {
+                    "code": "NSG 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/101", 
+                    "name": "Nursing Basics"
+                }, 
+                {
+                    "code": "NSG 101L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/101L", 
+                    "name": "Nursing Basics Lab"
+                }, 
+                {
+                    "code": "NSG 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/102", 
+                    "name": "Nursing I"
+                }, 
+                {
+                    "code": "NSG 102L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/102L", 
+                    "name": "Clinical Nursing I"
+                }, 
+                {
+                    "code": "NSG 103", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/103", 
+                    "name": "Nursing Success"
+                }, 
+                {
+                    "code": "NSG 109", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/109", 
+                    "name": "Pharmacology I"
+                }, 
+                {
+                    "code": "NSG 110", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/110", 
+                    "name": "Nursing I"
+                }, 
+                {
+                    "code": "NSG 110L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/110L", 
+                    "name": "Clinical Nursing I"
+                }, 
+                {
+                    "code": "NSG 124", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/124", 
+                    "name": "Nursing II"
+                }, 
+                {
+                    "code": "NSG 124L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/124L", 
+                    "name": "Clinical Nursing II"
+                }, 
+                {
+                    "code": "NSG 129", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/129", 
+                    "name": "Pharmacology II"
+                }, 
+                {
+                    "code": "NSG 202", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/202", 
+                    "name": "Nursing III"
+                }, 
+                {
+                    "code": "NSG 202L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/202L", 
+                    "name": "Clinical Nursing III"
+                }, 
+                {
+                    "code": "NSG 209", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/209", 
+                    "name": "Pharmacology III"
+                }, 
+                {
+                    "code": "NSG 222", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/222", 
+                    "name": "Nursing IV"
+                }, 
+                {
+                    "code": "NSG 222L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/222L", 
+                    "name": "Clinical Nursing IV"
+                }, 
+                {
+                    "code": "NSG 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/268", 
+                    "name": "Workshop in Nursing"
+                }, 
+                {
+                    "code": "NSG 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/293", 
+                    "name": "Topics in Nursing"
+                }, 
+                {
+                    "code": "NSG 295", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/295", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "NSG 297", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NSG/297", 
+                    "name": "Clinical Nursing Internship"
+                }
+            ], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/clovis/NSG"
+        }, 
+        {
+            "abbr": "NT", 
+            "courses": [
+                {
+                    "code": "NT 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NT/101", 
+                    "name": "Nurse Tech I"
+                }, 
+                {
+                    "code": "NT 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NT/102", 
+                    "name": "Nurse Tech II"
+                }, 
+                {
+                    "code": "NT 103", 
+                    "course_url": "http://www.chegg.com/courses/clovis/NT/103", 
+                    "name": "Nurse Tech Practicum"
+                }
+            ], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/clovis/NT"
+        }, 
+        {
+            "abbr": "OT", 
+            "courses": [
+                {
+                    "code": "OT 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/101", 
+                    "name": "Carpentry I"
+                }, 
+                {
+                    "code": "OT 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/102", 
+                    "name": "Carpentry II"
+                }, 
+                {
+                    "code": "OT 103", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/103", 
+                    "name": "Carpentry III"
+                }, 
+                {
+                    "code": "OT 104", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/104", 
+                    "name": "Carpentry IV"
+                }, 
+                {
+                    "code": "OT 113", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/113", 
+                    "name": "Arc Welding Basics"
+                }, 
+                {
+                    "code": "OT 115", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/115", 
+                    "name": "Mig Welding Basics"
+                }, 
+                {
+                    "code": "OT 117", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/117", 
+                    "name": "Tig Welding Basics"
+                }, 
+                {
+                    "code": "OT 122", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/122", 
+                    "name": "Woodworking I"
+                }, 
+                {
+                    "code": "OT 123", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/123", 
+                    "name": "Woodworking II"
+                }, 
+                {
+                    "code": "OT 124", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/124", 
+                    "name": "Cabinet Making I"
+                }, 
+                {
+                    "code": "OT 125", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/125", 
+                    "name": "Cabinet Making II"
+                }, 
+                {
+                    "code": "OT 151", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/151", 
+                    "name": "Electrical Apprenticeship I"
+                }, 
+                {
+                    "code": "OT 152", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/152", 
+                    "name": "Electrical Apprenticeship II"
+                }, 
+                {
+                    "code": "OT 153", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/153", 
+                    "name": "Electrical Apprenticeship III"
+                }, 
+                {
+                    "code": "OT 154", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/154", 
+                    "name": "Electrical Apprenticeship IV"
+                }, 
+                {
+                    "code": "OT 251", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/251", 
+                    "name": "Electrical Apprenticeship V"
+                }, 
+                {
+                    "code": "OT 252", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/252", 
+                    "name": "Electrical Apprenticeship VI"
+                }, 
+                {
+                    "code": "OT 253", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/253", 
+                    "name": "Electrical Apprenticeship VII"
+                }, 
+                {
+                    "code": "OT 254", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/254", 
+                    "name": "Electrical Apprenticeship VIII"
+                }, 
+                {
+                    "code": "OT 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/268", 
+                    "name": "Workshop in Occupational Technology"
+                }, 
+                {
+                    "code": "OT 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/OT/293", 
+                    "name": "Topics in Occupational Technology"
+                }
+            ], 
+            "name": "Occupational Therapy", 
+            "url": "http://www.chegg.com/courses/clovis/OT"
+        }, 
+        {
+            "abbr": "PHIL", 
+            "courses": [
+                {
+                    "code": "PHIL 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PHIL/201", 
+                    "name": "Introduction to Philosophy"
+                }, 
+                {
+                    "code": "PHIL 202", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PHIL/202", 
+                    "name": "Introduction to Logic"
+                }, 
+                {
+                    "code": "PHIL 211", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PHIL/211", 
+                    "name": "Ethics"
+                }, 
+                {
+                    "code": "PHIL 212", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PHIL/212", 
+                    "name": "Philosophy of Religion"
+                }, 
+                {
+                    "code": "PHIL 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PHIL/268", 
+                    "name": "Workshop in Philosophy"
+                }, 
+                {
+                    "code": "PHIL 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PHIL/293", 
+                    "name": "Topics in Philosophy"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/clovis/PHIL"
+        }, 
+        {
+            "abbr": "PHYS", 
+            "courses": [
+                {
+                    "code": "PHYS 113", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PHYS/113", 
+                    "name": "Survey of Physics and Lab"
+                }, 
+                {
+                    "code": "PHYS 151", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PHYS/151", 
+                    "name": "General Physics I and Lab"
+                }, 
+                {
+                    "code": "PHYS 152", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PHYS/152", 
+                    "name": "General Physics II and Lab"
+                }, 
+                {
+                    "code": "PHYS 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PHYS/201", 
+                    "name": "Physics I and Lab"
+                }, 
+                {
+                    "code": "PHYS 202", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PHYS/202", 
+                    "name": "Physics II and Lab"
+                }, 
+                {
+                    "code": "PHYS 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PHYS/268", 
+                    "name": "Workshop in Physics"
+                }, 
+                {
+                    "code": "PHYS 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PHYS/293", 
+                    "name": "Topics in Physics"
+                }
+            ], 
+            "name": "Phys-Physics", 
+            "url": "http://www.chegg.com/courses/clovis/PHYS"
+        }, 
+        {
+            "abbr": "PSCI", 
+            "courses": [
+                {
+                    "code": "PSCI 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSCI/102", 
+                    "name": "American National Government"
+                }, 
+                {
+                    "code": "PSCI 202", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSCI/202", 
+                    "name": "Introduction to State and Local Government"
+                }, 
+                {
+                    "code": "PSCI 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSCI/268", 
+                    "name": "Workshop in Political Science"
+                }, 
+                {
+                    "code": "PSCI 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSCI/293", 
+                    "name": "Topics in Political Science"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/clovis/PSCI"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSY/101", 
+                    "name": "Introductory Psychology"
+                }, 
+                {
+                    "code": "PSY 106", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSY/106", 
+                    "name": "Human Growth and Development"
+                }, 
+                {
+                    "code": "PSY 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSY/201", 
+                    "name": "Child Psychology"
+                }, 
+                {
+                    "code": "PSY 202", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSY/202", 
+                    "name": "Adolescent Development"
+                }, 
+                {
+                    "code": "PSY 204", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSY/204", 
+                    "name": "Human Sexuality"
+                }, 
+                {
+                    "code": "PSY 206", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSY/206", 
+                    "name": "Life,Living,Death and Dying"
+                }, 
+                {
+                    "code": "PSY 207", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSY/207", 
+                    "name": "Parenting Skills"
+                }, 
+                {
+                    "code": "PSY 210", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSY/210", 
+                    "name": "Paraprofessional Counseling Skills"
+                }, 
+                {
+                    "code": "PSY 212", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSY/212", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSY 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSY/268", 
+                    "name": "Workshop in Psychology"
+                }, 
+                {
+                    "code": "PSY 290", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSY/290", 
+                    "name": "Co-op in Psychology"
+                }, 
+                {
+                    "code": "PSY 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSY/293", 
+                    "name": "Topics in Psychology"
+                }, 
+                {
+                    "code": "PSY 295", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSY/295", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "PSY 297", 
+                    "course_url": "http://www.chegg.com/courses/clovis/PSY/297", 
+                    "name": "Psychology Internship"
+                }
+            ], 
+            "name": "Clinical Counseling", 
+            "url": "http://www.chegg.com/courses/clovis/PSY"
+        }, 
+        {
+            "abbr": "RADT", 
+            "courses": [
+                {
+                    "code": "RADT 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/101", 
+                    "name": "Introduction to Radiologic Technology"
+                }, 
+                {
+                    "code": "RADT 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/102", 
+                    "name": "The Profession of Radiologic Technology"
+                }, 
+                {
+                    "code": "RADT 104", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/104", 
+                    "name": "Fundamentals of Radiography I"
+                }, 
+                {
+                    "code": "RADT 105", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/105", 
+                    "name": "Radiographic Positioning I"
+                }, 
+                {
+                    "code": "RADT 105L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/105L", 
+                    "name": "Radiographic Positioning I Lab"
+                }, 
+                {
+                    "code": "RADT 107", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/107", 
+                    "name": "Clinical Education I"
+                }, 
+                {
+                    "code": "RADT 111", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/111", 
+                    "name": "Fundamentals of Radiography II"
+                }, 
+                {
+                    "code": "RADT 112", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/112", 
+                    "name": "Patient Care in Radiography"
+                }, 
+                {
+                    "code": "RADT 114", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/114", 
+                    "name": "Radiographic Positioning II"
+                }, 
+                {
+                    "code": "RADT 114L", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/114L", 
+                    "name": "Radiographic Positioning II Lab"
+                }, 
+                {
+                    "code": "RADT 116", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/116", 
+                    "name": "Clinical Education II"
+                }, 
+                {
+                    "code": "RADT 120", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/120", 
+                    "name": "Radiobiology"
+                }, 
+                {
+                    "code": "RADT 122", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/122", 
+                    "name": "Radiation Protection"
+                }, 
+                {
+                    "code": "RADT 130", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/130", 
+                    "name": "Clinical Education III"
+                }, 
+                {
+                    "code": "RADT 140", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/140", 
+                    "name": "Radiographic Pathology I"
+                }, 
+                {
+                    "code": "RADT 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/201", 
+                    "name": "Radiographic Physics"
+                }, 
+                {
+                    "code": "RADT 203", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/203", 
+                    "name": "Special Radiographic Procedures"
+                }, 
+                {
+                    "code": "RADT 205", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/205", 
+                    "name": "Clinical Education IV"
+                }, 
+                {
+                    "code": "RADT 207", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/207", 
+                    "name": "Radiographic Pathology II"
+                }, 
+                {
+                    "code": "RADT 212", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/212", 
+                    "name": "Radiographic Imaging"
+                }, 
+                {
+                    "code": "RADT 214", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/214", 
+                    "name": "Clinical Education V"
+                }, 
+                {
+                    "code": "RADT 216", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/216", 
+                    "name": "Radiographic Pathology III"
+                }, 
+                {
+                    "code": "RADT 220", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/220", 
+                    "name": "Seminar in Radiologic Technology"
+                }, 
+                {
+                    "code": "RADT 230", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/230", 
+                    "name": "Clinical Education VI"
+                }, 
+                {
+                    "code": "RADT 240", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/240", 
+                    "name": "Radiographic Pathology IV"
+                }, 
+                {
+                    "code": "RADT 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/268", 
+                    "name": "Workshop in Radiologic Technology"
+                }, 
+                {
+                    "code": "RADT 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/293", 
+                    "name": "Topics in Radiologic Technology"
+                }, 
+                {
+                    "code": "RADT 295", 
+                    "course_url": "http://www.chegg.com/courses/clovis/RADT/295", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "Radiological Technology", 
+            "url": "http://www.chegg.com/courses/clovis/RADT"
+        }, 
+        {
+            "abbr": "READ", 
+            "courses": [
+                {
+                    "code": "READ 093", 
+                    "course_url": "http://www.chegg.com/courses/clovis/READ/093", 
+                    "name": "Transitional Reading"
+                }, 
+                {
+                    "code": "READ 095", 
+                    "course_url": "http://www.chegg.com/courses/clovis/READ/095", 
+                    "name": "Basic Reading Skills"
+                }, 
+                {
+                    "code": "READ 097", 
+                    "course_url": "http://www.chegg.com/courses/clovis/READ/097", 
+                    "name": "College Reading"
+                }, 
+                {
+                    "code": "READ 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/READ/268", 
+                    "name": "Workshop in Reading"
+                }, 
+                {
+                    "code": "READ 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/READ/293", 
+                    "name": "Topics in Reading"
+                }
+            ], 
+            "name": "Reading", 
+            "url": "http://www.chegg.com/courses/clovis/READ"
+        }, 
+        {
+            "abbr": "REL", 
+            "courses": [
+                {
+                    "code": "REL 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/REL/101", 
+                    "name": "Old Testament"
+                }, 
+                {
+                    "code": "REL 103", 
+                    "course_url": "http://www.chegg.com/courses/clovis/REL/103", 
+                    "name": "New Testament"
+                }, 
+                {
+                    "code": "REL 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/REL/201", 
+                    "name": "Life of Christ"
+                }, 
+                {
+                    "code": "REL 202", 
+                    "course_url": "http://www.chegg.com/courses/clovis/REL/202", 
+                    "name": "Women of the Bible"
+                }, 
+                {
+                    "code": "REL 203", 
+                    "course_url": "http://www.chegg.com/courses/clovis/REL/203", 
+                    "name": "The Prophets"
+                }, 
+                {
+                    "code": "REL 204", 
+                    "course_url": "http://www.chegg.com/courses/clovis/REL/204", 
+                    "name": "Men of the Bible"
+                }, 
+                {
+                    "code": "REL 211", 
+                    "course_url": "http://www.chegg.com/courses/clovis/REL/211", 
+                    "name": "The Book of Acts"
+                }, 
+                {
+                    "code": "REL 212", 
+                    "course_url": "http://www.chegg.com/courses/clovis/REL/212", 
+                    "name": "Philosophy of Religion"
+                }, 
+                {
+                    "code": "REL 230", 
+                    "course_url": "http://www.chegg.com/courses/clovis/REL/230", 
+                    "name": "Ancient Near East / Biblical World"
+                }, 
+                {
+                    "code": "REL 231", 
+                    "course_url": "http://www.chegg.com/courses/clovis/REL/231", 
+                    "name": "History of the Christian Church"
+                }, 
+                {
+                    "code": "REL 232", 
+                    "course_url": "http://www.chegg.com/courses/clovis/REL/232", 
+                    "name": "Islam: Hist, Rel and Culture"
+                }, 
+                {
+                    "code": "REL 234", 
+                    "course_url": "http://www.chegg.com/courses/clovis/REL/234", 
+                    "name": "Ancient Greek Religion, History, and Culture"
+                }, 
+                {
+                    "code": "REL 236", 
+                    "course_url": "http://www.chegg.com/courses/clovis/REL/236", 
+                    "name": "Ancient Egyp Rel Hist Culture"
+                }, 
+                {
+                    "code": "REL 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/REL/268", 
+                    "name": "Workshop in Religion"
+                }, 
+                {
+                    "code": "REL 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/REL/293", 
+                    "name": "Topics in Religion"
+                }
+            ], 
+            "name": "Religion", 
+            "url": "http://www.chegg.com/courses/clovis/REL"
+        }, 
+        {
+            "abbr": "SIGN", 
+            "courses": [
+                {
+                    "code": "SIGN 203", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SIGN/203", 
+                    "name": "Introduction to American Sign Language"
+                }, 
+                {
+                    "code": "SIGN 205", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SIGN/205", 
+                    "name": "American Sign Language I and Lab"
+                }, 
+                {
+                    "code": "SIGN 206", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SIGN/206", 
+                    "name": "American Sign Language II and Lab"
+                }, 
+                {
+                    "code": "SIGN 208", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SIGN/208", 
+                    "name": "American Sign Language III and Lab"
+                }, 
+                {
+                    "code": "SIGN 209", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SIGN/209", 
+                    "name": "American Sign Language IV"
+                }, 
+                {
+                    "code": "SIGN 210", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SIGN/210", 
+                    "name": "Fingerspelling and Numbers"
+                }, 
+                {
+                    "code": "SIGN 211", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SIGN/211", 
+                    "name": "American Sign Language V"
+                }, 
+                {
+                    "code": "SIGN 212", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SIGN/212", 
+                    "name": "Deaf Culture"
+                }, 
+                {
+                    "code": "SIGN 216", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SIGN/216", 
+                    "name": "Transliterating"
+                }, 
+                {
+                    "code": "SIGN 221", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SIGN/221", 
+                    "name": "Sign-to-Voice Interpreting"
+                }, 
+                {
+                    "code": "SIGN 222", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SIGN/222", 
+                    "name": "Interpreting I"
+                }, 
+                {
+                    "code": "SIGN 224", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SIGN/224", 
+                    "name": "Interpreting II"
+                }, 
+                {
+                    "code": "SIGN 226", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SIGN/226", 
+                    "name": "Practicum I"
+                }, 
+                {
+                    "code": "SIGN 227", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SIGN/227", 
+                    "name": "Practicum II"
+                }, 
+                {
+                    "code": "SIGN 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SIGN/293", 
+                    "name": "Topics in Sign"
+                }, 
+                {
+                    "code": "SIGN 295", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SIGN/295", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "Sign Language", 
+            "url": "http://www.chegg.com/courses/clovis/SIGN"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SOC/101", 
+                    "name": "Introductory Sociology"
+                }, 
+                {
+                    "code": "SOC 212", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SOC/212", 
+                    "name": "Contemporary Social Issues"
+                }, 
+                {
+                    "code": "SOC 215", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SOC/215", 
+                    "name": "Child,Family,and Community"
+                }, 
+                {
+                    "code": "SOC 242", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SOC/242", 
+                    "name": "Victimology"
+                }, 
+                {
+                    "code": "SOC 243", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SOC/243", 
+                    "name": "Juvenile Justice"
+                }, 
+                {
+                    "code": "SOC 245", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SOC/245", 
+                    "name": "Crime and the Media"
+                }, 
+                {
+                    "code": "SOC 246", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SOC/246", 
+                    "name": "Understanding Gangs"
+                }, 
+                {
+                    "code": "SOC 260", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SOC/260", 
+                    "name": "Organized Crime"
+                }, 
+                {
+                    "code": "SOC 262", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SOC/262", 
+                    "name": "Terrorism"
+                }, 
+                {
+                    "code": "SOC 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SOC/268", 
+                    "name": "Workshop in Sociology"
+                }, 
+                {
+                    "code": "SOC 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SOC/293", 
+                    "name": "Topics in Sociology"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/clovis/SOC"
+        }, 
+        {
+            "abbr": "SPAN", 
+            "courses": [
+                {
+                    "code": "SPAN 100", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SPAN/100", 
+                    "name": "Introduction to Spanish"
+                }, 
+                {
+                    "code": "SPAN 101", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SPAN/101", 
+                    "name": "Beginning Spanish I"
+                }, 
+                {
+                    "code": "SPAN 102", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SPAN/102", 
+                    "name": "Beginning Spanish II"
+                }, 
+                {
+                    "code": "SPAN 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SPAN/201", 
+                    "name": "Intermediate Spanish I"
+                }, 
+                {
+                    "code": "SPAN 202", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SPAN/202", 
+                    "name": "Intermediate Spanish II"
+                }, 
+                {
+                    "code": "SPAN 204", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SPAN/204", 
+                    "name": "Conversational Spanish"
+                }, 
+                {
+                    "code": "SPAN 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SPAN/268", 
+                    "name": "Workshop in Spanish"
+                }, 
+                {
+                    "code": "SPAN 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SPAN/293", 
+                    "name": "Topics in Spanish"
+                }
+            ], 
+            "name": "Spanish", 
+            "url": "http://www.chegg.com/courses/clovis/SPAN"
+        }, 
+        {
+            "abbr": "SPED", 
+            "courses": [
+                {
+                    "code": "SPED 201", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SPED/201", 
+                    "name": "Introduction to Special Education"
+                }, 
+                {
+                    "code": "SPED 203", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SPED/203", 
+                    "name": "Learning Disabilities:Assessment and Curriculum"
+                }, 
+                {
+                    "code": "SPED 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SPED/268", 
+                    "name": "Workshop in Special Education"
+                }, 
+                {
+                    "code": "SPED 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/SPED/293", 
+                    "name": "Topics in Special Education"
+                }
+            ], 
+            "name": "Special Education", 
+            "url": "http://www.chegg.com/courses/clovis/SPED"
+        }, 
+        {
+            "abbr": "STAT", 
+            "courses": [
+                {
+                    "code": "STAT 213", 
+                    "course_url": "http://www.chegg.com/courses/clovis/STAT/213", 
+                    "name": "Statistical Methods I"
+                }, 
+                {
+                    "code": "STAT 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/STAT/268", 
+                    "name": "Workshop in Statistics"
+                }, 
+                {
+                    "code": "STAT 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/STAT/293", 
+                    "name": "Topics in Statistics"
+                }
+            ], 
+            "name": "Statistics", 
+            "url": "http://www.chegg.com/courses/clovis/STAT"
+        }, 
+        {
+            "abbr": "THTR", 
+            "courses": [
+                {
+                    "code": "THTR 111", 
+                    "course_url": "http://www.chegg.com/courses/clovis/THTR/111", 
+                    "name": "Introduction to Theatre Arts"
+                }, 
+                {
+                    "code": "THTR 121", 
+                    "course_url": "http://www.chegg.com/courses/clovis/THTR/121", 
+                    "name": "Beginning Acting"
+                }, 
+                {
+                    "code": "THTR 225", 
+                    "course_url": "http://www.chegg.com/courses/clovis/THTR/225", 
+                    "name": "Introduction to Comedy"
+                }, 
+                {
+                    "code": "THTR 227", 
+                    "course_url": "http://www.chegg.com/courses/clovis/THTR/227", 
+                    "name": "Advanced Acting"
+                }, 
+                {
+                    "code": "THTR 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/THTR/268", 
+                    "name": "Workshop in Theatre"
+                }, 
+                {
+                    "code": "THTR 275", 
+                    "course_url": "http://www.chegg.com/courses/clovis/THTR/275", 
+                    "name": "The Motion Picture"
+                }, 
+                {
+                    "code": "THTR 290", 
+                    "course_url": "http://www.chegg.com/courses/clovis/THTR/290", 
+                    "name": "Co-op in Theatre"
+                }, 
+                {
+                    "code": "THTR 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/THTR/293", 
+                    "name": "Topics in Theatre"
+                }
+            ], 
+            "name": "Theatre", 
+            "url": "http://www.chegg.com/courses/clovis/THTR"
+        }, 
+        {
+            "abbr": "WELD", 
+            "courses": [
+                {
+                    "code": "WELD 130", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/130", 
+                    "name": "Welding Occupational Orientation"
+                }, 
+                {
+                    "code": "WELD 131", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/131", 
+                    "name": "Welding Inspection and Testing Principles I"
+                }, 
+                {
+                    "code": "WELD 133", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/133", 
+                    "name": "Drawing and Welding Symbol Interpretation"
+                }, 
+                {
+                    "code": "WELD 135", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/135", 
+                    "name": "Oxy-Fuel Gas Cutting Principles and Practices"
+                }, 
+                {
+                    "code": "WELD 137", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/137", 
+                    "name": "Air Carbon Arc Cutting"
+                }, 
+                {
+                    "code": "WELD 138", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/138", 
+                    "name": "Welding Principles and Practices I"
+                }, 
+                {
+                    "code": "WELD 139", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/139", 
+                    "name": "Welding Principles and Practices II"
+                }, 
+                {
+                    "code": "WELD 240", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/240", 
+                    "name": "Welding Inspection and Testing"
+                }, 
+                {
+                    "code": "WELD 241", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/241", 
+                    "name": "Welding Inspection and Testing Principles II"
+                }, 
+                {
+                    "code": "WELD 243", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/243", 
+                    "name": "Welding Metallurgy I"
+                }, 
+                {
+                    "code": "WELD 245", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/245", 
+                    "name": "Documents Governing Welding and Welding Inspection I"
+                }, 
+                {
+                    "code": "WELD 247", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/247", 
+                    "name": "Welding Layout and Fitup"
+                }, 
+                {
+                    "code": "WELD 249", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/249", 
+                    "name": "Welding Principles and Practices III"
+                }, 
+                {
+                    "code": "WELD 250", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/250", 
+                    "name": "Welding Safety and Health"
+                }, 
+                {
+                    "code": "WELD 251", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/251", 
+                    "name": "Welded Metal Fabrication"
+                }, 
+                {
+                    "code": "WELD 253", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/253", 
+                    "name": "Welding Metallurgy II"
+                }, 
+                {
+                    "code": "WELD 255", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/255", 
+                    "name": "Documents Governing Welding and Welding Inspection II"
+                }, 
+                {
+                    "code": "WELD 257", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/257", 
+                    "name": "Welding Supervision and Management"
+                }, 
+                {
+                    "code": "WELD 259", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/259", 
+                    "name": "Welding Principles and Practices IV"
+                }, 
+                {
+                    "code": "WELD 268", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/268", 
+                    "name": "Workshop in WELD"
+                }, 
+                {
+                    "code": "WELD 270", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/270", 
+                    "name": "Specialized Business/Industry Welding"
+                }, 
+                {
+                    "code": "WELD 290", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/290", 
+                    "name": "Co-op in Welding"
+                }, 
+                {
+                    "code": "WELD 293", 
+                    "course_url": "http://www.chegg.com/courses/clovis/WELD/293", 
+                    "name": "Topics in Welding"
+                }
+            ], 
+            "name": "Welding Technology", 
+            "url": "http://www.chegg.com/courses/clovis/WELD"
+        }
+    ], 
+    "name": "clovis"
+}

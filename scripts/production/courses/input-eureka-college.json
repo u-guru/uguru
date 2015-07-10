@@ -1,0 +1,2890 @@
+{
+    "all_stats": {
+        "num_courses": 519, 
+        "num_departments": 41
+    }, 
+    "departments": [
+        {
+            "abbr": "ACC", 
+            "courses": [
+                {
+                    "code": "ACC 111", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ACC/111", 
+                    "name": "PRINCIPLES OF ACCT I"
+                }, 
+                {
+                    "code": "ACC 112", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ACC/112", 
+                    "name": "PRINCIPLES OF ACCT II"
+                }, 
+                {
+                    "code": "ACC 201", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ACC/201", 
+                    "name": "INTERM ACCT I"
+                }, 
+                {
+                    "code": "ACC 202", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ACC/202", 
+                    "name": "INTERM ACCT II"
+                }, 
+                {
+                    "code": "ACC 203", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ACC/203", 
+                    "name": "Intermediate Accounting III"
+                }, 
+                {
+                    "code": "ACC 221", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ACC/221", 
+                    "name": "TAX ACCOUNTING I"
+                }, 
+                {
+                    "code": "ACC 222", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ACC/222", 
+                    "name": "Tax Accounting II"
+                }, 
+                {
+                    "code": "ACC 302", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ACC/302", 
+                    "name": "Cost Accounting"
+                }, 
+                {
+                    "code": "ACC 303", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ACC/303", 
+                    "name": "ADVANCED ACCOUNTING"
+                }, 
+                {
+                    "code": "ACC 331W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ACC/331W", 
+                    "name": "Auditing I"
+                }, 
+                {
+                    "code": "ACC 332", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ACC/332", 
+                    "name": "AUDITING II"
+                }, 
+                {
+                    "code": "ACC 360", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ACC/360", 
+                    "name": "Fund Accounting"
+                }, 
+                {
+                    "code": "ACC 450", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ACC/450", 
+                    "name": "Advanced Professional Accounting Problems"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/ACC"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 101W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/101W", 
+                    "name": "ART APPRECIATION"
+                }, 
+                {
+                    "code": "ART 106", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/106", 
+                    "name": "DESIGN FUNDAMENTALS"
+                }, 
+                {
+                    "code": "ART 110", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/110", 
+                    "name": "DRAWING FUNDAMENTALS"
+                }, 
+                {
+                    "code": "ART 111", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/111", 
+                    "name": "PAINTING FUNDAMENTALS"
+                }, 
+                {
+                    "code": "ART 206", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/206", 
+                    "name": "DIGITAL IMAG - DESIGN"
+                }, 
+                {
+                    "code": "ART 210", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/210", 
+                    "name": "FIGURE DRAWING"
+                }, 
+                {
+                    "code": "ART 211", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/211", 
+                    "name": "PAINTING FOR ARTISTS"
+                }, 
+                {
+                    "code": "ART 212", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/212", 
+                    "name": "SCULPTRE & MIXD MEDIA"
+                }, 
+                {
+                    "code": "ART 219W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/219W", 
+                    "name": "Ancient Art (T)"
+                }, 
+                {
+                    "code": "ART 224W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/224W", 
+                    "name": "Medieval Art (T)"
+                }, 
+                {
+                    "code": "ART 229W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/229W", 
+                    "name": "REN & BAROQUE ART"
+                }, 
+                {
+                    "code": "ART 234W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/234W", 
+                    "name": "MODERN ART"
+                }, 
+                {
+                    "code": "ART 241", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/241", 
+                    "name": "Darkroom Photography Fundamentals (A)"
+                }, 
+                {
+                    "code": "ART 245", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/245", 
+                    "name": "DIGITAL FUNDAMENTALS"
+                }, 
+                {
+                    "code": "ART 260", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/260", 
+                    "name": "CERAMICS FUNDAMENTALS"
+                }, 
+                {
+                    "code": "ART 306", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/306", 
+                    "name": "Advanced Digital Imaging for Design (A)"
+                }, 
+                {
+                    "code": "ART 310", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/310", 
+                    "name": "Illustrating for the Literary Market (A)"
+                }, 
+                {
+                    "code": "ART 315", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/315", 
+                    "name": "INTRO ART THERAPY"
+                }, 
+                {
+                    "code": "ART 345", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/345", 
+                    "name": "ADV DIGTL & PHOTOSHOP"
+                }, 
+                {
+                    "code": "ART 350", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/350", 
+                    "name": "STUDIO TOPICS"
+                }, 
+                {
+                    "code": "ART 360", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/360", 
+                    "name": "ADV CERAMICS & POTTRY"
+                }, 
+                {
+                    "code": "ART 380W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/380W", 
+                    "name": "Seminar in Visual Culture (T)"
+                }, 
+                {
+                    "code": "ART 390", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/390", 
+                    "name": "MUSM & GALLRY STDY"
+                }, 
+                {
+                    "code": "ART 410", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ART/410", 
+                    "name": "Exhibit and Portfolio Preparation (A)"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/ART"
+        }, 
+        {
+            "abbr": "ATH", 
+            "courses": [
+                {
+                    "code": "ATH 39", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ATH/39", 
+                    "name": "MEN'S TRACK TEAM"
+                }, 
+                {
+                    "code": "ATH 40", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ATH/40", 
+                    "name": "WOMEN'S TRACK TEAM"
+                }, 
+                {
+                    "code": "ATH 41", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ATH/41", 
+                    "name": "MEN'S GOLF TEAM"
+                }, 
+                {
+                    "code": "ATH 43", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ATH/43", 
+                    "name": "MEN'S TENNIS TEAM"
+                }, 
+                {
+                    "code": "ATH 44", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ATH/44", 
+                    "name": "WOMEN'S TENNIS TEAM"
+                }, 
+                {
+                    "code": "ATH 140", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ATH/140", 
+                    "name": "WOMEN'S TRACK TEAM"
+                }, 
+                {
+                    "code": "ATH 141", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ATH/141", 
+                    "name": "MEN'S GOLF TEAM"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/ATH"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 30W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/30W", 
+                    "name": "Ecolgy"
+                }, 
+                {
+                    "code": "BIO 130", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/130", 
+                    "name": "GENERAL BIOLOGY"
+                }, 
+                {
+                    "code": "BIO 130L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/130L", 
+                    "name": "BIO 130 LAB"
+                }, 
+                {
+                    "code": "BIO 136", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/136", 
+                    "name": "EVOLUTION FOR EVERYONE"
+                }, 
+                {
+                    "code": "BIO 136L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/136L", 
+                    "name": "BIO 136 LAB"
+                }, 
+                {
+                    "code": "BIO 141L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/141L", 
+                    "name": "BIO 141 LAB"
+                }, 
+                {
+                    "code": "BIO 141W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/141W", 
+                    "name": "PRINCIPLES OF BIO I"
+                }, 
+                {
+                    "code": "BIO 142", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/142", 
+                    "name": "PRINCIPLES OF BIO II"
+                }, 
+                {
+                    "code": "BIO 142L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/142L", 
+                    "name": "BIO 142 LAB"
+                }, 
+                {
+                    "code": "BIO 163", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/163", 
+                    "name": "HUMAN ANAT & PHY I"
+                }, 
+                {
+                    "code": "BIO 163L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/163L", 
+                    "name": "BIO 163 LAB"
+                }, 
+                {
+                    "code": "BIO 241", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/241", 
+                    "name": "Introduction to Botany"
+                }, 
+                {
+                    "code": "BIO 242", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/242", 
+                    "name": "Introduction to Zoology"
+                }, 
+                {
+                    "code": "BIO 264", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/264", 
+                    "name": "HUMAN ANAT & PHY II"
+                }, 
+                {
+                    "code": "BIO 264L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/264L", 
+                    "name": "BIO 264 LAB"
+                }, 
+                {
+                    "code": "BIO 281", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/281", 
+                    "name": "Animal Behavior"
+                }, 
+                {
+                    "code": "BIO 299", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/299", 
+                    "name": "PARASITOLOGY"
+                }, 
+                {
+                    "code": "BIO 299L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/299L", 
+                    "name": "BIO 299 LAB"
+                }, 
+                {
+                    "code": "BIO 300L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/300L", 
+                    "name": "BIO 300 LAB"
+                }, 
+                {
+                    "code": "BIO 300W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/300W", 
+                    "name": "ECOLOGY"
+                }, 
+                {
+                    "code": "BIO 320", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/320", 
+                    "name": "MICROBIOLOGY"
+                }, 
+                {
+                    "code": "BIO 320L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/320L", 
+                    "name": "BIO 320 LAB"
+                }, 
+                {
+                    "code": "BIO 325", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/325", 
+                    "name": "Immunology"
+                }, 
+                {
+                    "code": "BIO 330W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/330W", 
+                    "name": "Developmental Biology"
+                }, 
+                {
+                    "code": "BIO 342", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/342", 
+                    "name": "Comparative Vertebrate Anatomy"
+                }, 
+                {
+                    "code": "BIO 360L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/360L", 
+                    "name": "BIO 360 LAB"
+                }, 
+                {
+                    "code": "BIO 360W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/360W", 
+                    "name": "GENETICS"
+                }, 
+                {
+                    "code": "BIO 370", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/370", 
+                    "name": "Physiology"
+                }, 
+                {
+                    "code": "BIO 370L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/370L", 
+                    "name": "BIO 370 LAB"
+                }, 
+                {
+                    "code": "BIO 466", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BIO/466", 
+                    "name": "EVOLUTION"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/BIO"
+        }, 
+        {
+            "abbr": "BUA", 
+            "courses": [
+                {
+                    "code": "BUA 211", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/211", 
+                    "name": "PERSONAL FINANCE"
+                }, 
+                {
+                    "code": "BUA 220", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/220", 
+                    "name": "MANAGEMENT"
+                }, 
+                {
+                    "code": "BUA 222W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/222W", 
+                    "name": "ORG MANAGEMENT"
+                }, 
+                {
+                    "code": "BUA 230", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/230", 
+                    "name": "MARKETING"
+                }, 
+                {
+                    "code": "BUA 310", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/310", 
+                    "name": "INTERNATIONAL BUS"
+                }, 
+                {
+                    "code": "BUA 311", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/311", 
+                    "name": "ENTREPRENEURSHIP"
+                }, 
+                {
+                    "code": "BUA 312", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/312", 
+                    "name": "ETHICS & SOCIAL RESP"
+                }, 
+                {
+                    "code": "BUA 321W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/321W", 
+                    "name": "HUMAN RESOURCE MGMNT"
+                }, 
+                {
+                    "code": "BUA 324", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/324", 
+                    "name": "THEORY OF CONSTRAINTS"
+                }, 
+                {
+                    "code": "BUA 331", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/331", 
+                    "name": "Consumer Behavior"
+                }, 
+                {
+                    "code": "BUA 332", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/332", 
+                    "name": "Marketing Research"
+                }, 
+                {
+                    "code": "BUA 333", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/333", 
+                    "name": "RETAILING"
+                }, 
+                {
+                    "code": "BUA 334", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/334", 
+                    "name": "ADVERTISING"
+                }, 
+                {
+                    "code": "BUA 340", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/340", 
+                    "name": "BUSINESS LAW"
+                }, 
+                {
+                    "code": "BUA 360", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/360", 
+                    "name": "BUSINESS FINANCE"
+                }, 
+                {
+                    "code": "BUA 361", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/361", 
+                    "name": "International Financial Markets and Institutions"
+                }, 
+                {
+                    "code": "BUA 362", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/362", 
+                    "name": "SECURITIES & INVEST"
+                }, 
+                {
+                    "code": "BUA 410W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/410W", 
+                    "name": "STRATEGY & POLICY"
+                }, 
+                {
+                    "code": "BUA 495", 
+                    "course_url": "http://www.chegg.com/courses/eureka/BUA/495", 
+                    "name": "BUA INTERNSHIP"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/BUA"
+        }, 
+        {
+            "abbr": "CHM", 
+            "courses": [
+                {
+                    "code": "CHM 121", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/121", 
+                    "name": "SURVEY OF CHEMISTRY"
+                }, 
+                {
+                    "code": "CHM 121L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/121L", 
+                    "name": "CHM 121 LAB"
+                }, 
+                {
+                    "code": "CHM 131", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/131", 
+                    "name": "GENERAL CHEM I"
+                }, 
+                {
+                    "code": "CHM 131L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/131L", 
+                    "name": "CHM 131 LAB"
+                }, 
+                {
+                    "code": "CHM 132", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/132", 
+                    "name": "GENERAL CHEM II"
+                }, 
+                {
+                    "code": "CHM 132L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/132L", 
+                    "name": "CHM 132 LAB"
+                }, 
+                {
+                    "code": "CHM 220", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/220", 
+                    "name": "ORGANIC CHEM I"
+                }, 
+                {
+                    "code": "CHM 220L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/220L", 
+                    "name": "CHM 220 LAB"
+                }, 
+                {
+                    "code": "CHM 221", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/221", 
+                    "name": "ORGANIC CHEM II"
+                }, 
+                {
+                    "code": "CHM 221L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/221L", 
+                    "name": "CHM 221 LAB"
+                }, 
+                {
+                    "code": "CHM 250", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/250", 
+                    "name": "QUANT ANALYSIS"
+                }, 
+                {
+                    "code": "CHM 250L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/250L", 
+                    "name": "CHM 250 LAB"
+                }, 
+                {
+                    "code": "CHM 310", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/310", 
+                    "name": "MEDICINAL CHEMISTRY"
+                }, 
+                {
+                    "code": "CHM 322", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/322", 
+                    "name": "Biochemistry"
+                }, 
+                {
+                    "code": "CHM 335W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/335W", 
+                    "name": "Thermodynamics and Kinetics"
+                }, 
+                {
+                    "code": "CHM 336", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/336", 
+                    "name": "QUANT CHEM & SPECT"
+                }, 
+                {
+                    "code": "CHM 350", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/350", 
+                    "name": "Environmental Chemistry"
+                }, 
+                {
+                    "code": "CHM 440", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CHM/440", 
+                    "name": "INORGANIC CHEMISTRY"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/CHM"
+        }, 
+        {
+            "abbr": "CJS", 
+            "courses": [
+                {
+                    "code": "CJS 101", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CJS/101", 
+                    "name": "INTRO TO CRIM JUST"
+                }, 
+                {
+                    "code": "CJS 205", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CJS/205", 
+                    "name": "POLICING & INVESTIG"
+                }, 
+                {
+                    "code": "CJS 210W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CJS/210W", 
+                    "name": "JUV DEL AND JUSTICE"
+                }, 
+                {
+                    "code": "CJS 215", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CJS/215", 
+                    "name": "CORRECTIONS"
+                }, 
+                {
+                    "code": "CJS 315", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CJS/315", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CJS 320", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CJS/320", 
+                    "name": "CRIMINAL PROCEDURE"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/CJS"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 110", 
+                    "course_url": "http://www.chegg.com/courses/eureka/COM/110", 
+                    "name": "INTRO TO PUBLIC SPK"
+                }, 
+                {
+                    "code": "COM 200", 
+                    "course_url": "http://www.chegg.com/courses/eureka/COM/200", 
+                    "name": "INTERPERSONAL COM"
+                }, 
+                {
+                    "code": "COM 210", 
+                    "course_url": "http://www.chegg.com/courses/eureka/COM/210", 
+                    "name": "SMALL GROUP COM"
+                }, 
+                {
+                    "code": "COM 230", 
+                    "course_url": "http://www.chegg.com/courses/eureka/COM/230", 
+                    "name": "MASS MEDIA"
+                }, 
+                {
+                    "code": "COM 265W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/COM/265W", 
+                    "name": "WRITING - MASS MEDIA"
+                }, 
+                {
+                    "code": "COM 299", 
+                    "course_url": "http://www.chegg.com/courses/eureka/COM/299", 
+                    "name": "TECHNICAL COMMUNICATN"
+                }, 
+                {
+                    "code": "COM 311W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/COM/311W", 
+                    "name": "MESSAGES & MEANING"
+                }, 
+                {
+                    "code": "COM 330", 
+                    "course_url": "http://www.chegg.com/courses/eureka/COM/330", 
+                    "name": "INTERCULTURAL COM"
+                }, 
+                {
+                    "code": "COM 351", 
+                    "course_url": "http://www.chegg.com/courses/eureka/COM/351", 
+                    "name": "ORGANIZATIONAL COM"
+                }, 
+                {
+                    "code": "COM 355", 
+                    "course_url": "http://www.chegg.com/courses/eureka/COM/355", 
+                    "name": "PUBLIC REL TCHNQ"
+                }, 
+                {
+                    "code": "COM 360", 
+                    "course_url": "http://www.chegg.com/courses/eureka/COM/360", 
+                    "name": "Communication Law and Ethics"
+                }, 
+                {
+                    "code": "COM 410W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/COM/410W", 
+                    "name": "COM THEORY"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/COM"
+        }, 
+        {
+            "abbr": "CSC", 
+            "courses": [
+                {
+                    "code": "CSC 110", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CSC/110", 
+                    "name": "Designing Web Sites"
+                }, 
+                {
+                    "code": "CSC 115", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CSC/115", 
+                    "name": "INTRO DBASE & REPRTS"
+                }, 
+                {
+                    "code": "CSC 135", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CSC/135", 
+                    "name": "COMPUTER SCI I"
+                }, 
+                {
+                    "code": "CSC 165", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CSC/165", 
+                    "name": "COMPUTER SCI II"
+                }, 
+                {
+                    "code": "CSC 225", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CSC/225", 
+                    "name": "Computer Programming - COBOL"
+                }, 
+                {
+                    "code": "CSC 240", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CSC/240", 
+                    "name": "Computer Organization and Assembly Language"
+                }, 
+                {
+                    "code": "CSC 265", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CSC/265", 
+                    "name": "DATA STRUCTURES"
+                }, 
+                {
+                    "code": "CSC 280", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CSC/280", 
+                    "name": "Discrete Mathematics"
+                }, 
+                {
+                    "code": "CSC 286", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CSC/286", 
+                    "name": "Programming in Visual Basic"
+                }, 
+                {
+                    "code": "CSC 301W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CSC/301W", 
+                    "name": "SYSTEMS & DESIGN"
+                }, 
+                {
+                    "code": "CSC 302", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CSC/302", 
+                    "name": "Database Systems"
+                }, 
+                {
+                    "code": "CSC 325", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CSC/325", 
+                    "name": "COMPUTER NETWORKS"
+                }, 
+                {
+                    "code": "CSC 355", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CSC/355", 
+                    "name": "Computer Architecture"
+                }, 
+                {
+                    "code": "CSC 399", 
+                    "course_url": "http://www.chegg.com/courses/eureka/CSC/399", 
+                    "name": "GAME DESIGN"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/CSC"
+        }, 
+        {
+            "abbr": "ECO", 
+            "courses": [
+                {
+                    "code": "ECO 111", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ECO/111", 
+                    "name": "PRIN OF MACROECON"
+                }, 
+                {
+                    "code": "ECO 112", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ECO/112", 
+                    "name": "PRIN OF MICROECON"
+                }, 
+                {
+                    "code": "ECO 211", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ECO/211", 
+                    "name": "INTERM MACRO THEORY"
+                }, 
+                {
+                    "code": "ECO 212", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ECO/212", 
+                    "name": "INTERM MICRO THEORY"
+                }, 
+                {
+                    "code": "ECO 310", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ECO/310", 
+                    "name": "Managerial Economics"
+                }, 
+                {
+                    "code": "ECO 330W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ECO/330W", 
+                    "name": "HEALTH ECONOMICS"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/ECO"
+        }, 
+        {
+            "abbr": "EDU", 
+            "courses": [
+                {
+                    "code": "EDU 185W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/185W", 
+                    "name": "FOUND AMER ED"
+                }, 
+                {
+                    "code": "EDU 200", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/200", 
+                    "name": "TEACH MATH - EL ED"
+                }, 
+                {
+                    "code": "EDU 227", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/227", 
+                    "name": "EDUCATIONAL PSYCH"
+                }, 
+                {
+                    "code": "EDU 228L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/228L", 
+                    "name": "ED PSYCH FLD EXP"
+                }, 
+                {
+                    "code": "EDU 229", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/229", 
+                    "name": "EXCEPTIONAL CHILD"
+                }, 
+                {
+                    "code": "EDU 230", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/230", 
+                    "name": "CHILDREN'S LIT"
+                }, 
+                {
+                    "code": "EDU 300A", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/300A", 
+                    "name": "FLD EXP - INNER CITY"
+                }, 
+                {
+                    "code": "EDU 300B", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/300B", 
+                    "name": "FLD EXP - PRIMARY"
+                }, 
+                {
+                    "code": "EDU 301C", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/301C", 
+                    "name": "FLD EXP - MDL SCH"
+                }, 
+                {
+                    "code": "EDU 301D", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/301D", 
+                    "name": "FLD EXP - SPCL EL ED"
+                }, 
+                {
+                    "code": "EDU 302A", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/302A", 
+                    "name": "FLD EXP - MUS - INNR"
+                }, 
+                {
+                    "code": "EDU 302B", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/302B", 
+                    "name": "FLD EXP - MU - K-12"
+                }, 
+                {
+                    "code": "EDU 303", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/303", 
+                    "name": "Educating the Gifted Child"
+                }, 
+                {
+                    "code": "EDU 320A", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/320A", 
+                    "name": "FLD EXP - INNR - SEC"
+                }, 
+                {
+                    "code": "EDU 320B", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/320B", 
+                    "name": "FLD EXP - SEC - SUBJ"
+                }, 
+                {
+                    "code": "EDU 360", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/360", 
+                    "name": "MTHDS - EL MAT & SCI"
+                }, 
+                {
+                    "code": "EDU 376", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/376", 
+                    "name": "MTHDS - EL ED"
+                }, 
+                {
+                    "code": "EDU 380", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/380", 
+                    "name": "MTHDS - MDL SCH"
+                }, 
+                {
+                    "code": "EDU 390", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/390", 
+                    "name": "EDU TECHNOLOGY"
+                }, 
+                {
+                    "code": "EDU 410", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/410", 
+                    "name": "STRAT CLASS MGMT"
+                }, 
+                {
+                    "code": "EDU 430W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/430W", 
+                    "name": "EL READ & LANG ARTS"
+                }, 
+                {
+                    "code": "EDU 435", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/435", 
+                    "name": "FLD EXP - SEC ST TCH"
+                }, 
+                {
+                    "code": "EDU 440", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/440", 
+                    "name": "MTHDS - ENG - SEC"
+                }, 
+                {
+                    "code": "EDU 441", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/441", 
+                    "name": "MTHDS - SOC ST - SEC"
+                }, 
+                {
+                    "code": "EDU 442", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/442", 
+                    "name": "MTHDS - MATH - SEC"
+                }, 
+                {
+                    "code": "EDU 444", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/444", 
+                    "name": "MTHDS - SCI - SEC"
+                }, 
+                {
+                    "code": "EDU 445", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/445", 
+                    "name": "MTHDS - MUSIC - EL"
+                }, 
+                {
+                    "code": "EDU 446", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/446", 
+                    "name": "Teaching Secondary Vocal Music"
+                }, 
+                {
+                    "code": "EDU 464", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/464", 
+                    "name": "ST TCH - MUSIC"
+                }, 
+                {
+                    "code": "EDU 465", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/465", 
+                    "name": "ST TCH - ELEMENTARY"
+                }, 
+                {
+                    "code": "EDU 466", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/466", 
+                    "name": "ST TCH - SECONDARY"
+                }, 
+                {
+                    "code": "EDU 467", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EDU/467", 
+                    "name": "ST TCH - PHYS EDU"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/EDU"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 095R", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/095R", 
+                    "name": "DEVELOPMENTAL WRITING"
+                }, 
+                {
+                    "code": "ENG 103W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/103W", 
+                    "name": "ACAD WRITNG & RESRCH"
+                }, 
+                {
+                    "code": "ENG 103WH", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/103WH", 
+                    "name": "ACAD WRIT & RSRCH-HON"
+                }, 
+                {
+                    "code": "ENG 115", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/115", 
+                    "name": "APPRECIATION OF LIT"
+                }, 
+                {
+                    "code": "ENG 120", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/120", 
+                    "name": "INTRO CREATIVE WRTNG"
+                }, 
+                {
+                    "code": "ENG 125", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/125", 
+                    "name": "INTRO - LIT STUDY"
+                }, 
+                {
+                    "code": "ENG 202W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/202W", 
+                    "name": "Professional Writing"
+                }, 
+                {
+                    "code": "ENG 221", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/221", 
+                    "name": "AMERICAN LIT I"
+                }, 
+                {
+                    "code": "ENG 222", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/222", 
+                    "name": "AMERICAN LIT II"
+                }, 
+                {
+                    "code": "ENG 231", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/231", 
+                    "name": "BRITISH LIT I"
+                }, 
+                {
+                    "code": "ENG 233", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/233", 
+                    "name": "BRITISH LIT II"
+                }, 
+                {
+                    "code": "ENG 261", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/261", 
+                    "name": "CRTVE WRTG - POETRY"
+                }, 
+                {
+                    "code": "ENG 262", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/262", 
+                    "name": "Creative Writing: Fiction"
+                }, 
+                {
+                    "code": "ENG 265W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/265W", 
+                    "name": "Writing for the Mass Media"
+                }, 
+                {
+                    "code": "ENG 272", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/272", 
+                    "name": "NON-WESTERN LIT"
+                }, 
+                {
+                    "code": "ENG 301W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/301W", 
+                    "name": "ADV ACAD WRITNG & RESRCH"
+                }, 
+                {
+                    "code": "ENG 310", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/310", 
+                    "name": "Classical Literature"
+                }, 
+                {
+                    "code": "ENG 314W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/314W", 
+                    "name": "Technical Writing"
+                }, 
+                {
+                    "code": "ENG 316W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/316W", 
+                    "name": "Rhetoric and Scholarship"
+                }, 
+                {
+                    "code": "ENG 320", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/320", 
+                    "name": "SEMINAR IN AMER LIT"
+                }, 
+                {
+                    "code": "ENG 330W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/330W", 
+                    "name": "Seminar in British Literature"
+                }, 
+                {
+                    "code": "ENG 350W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/350W", 
+                    "name": "SEM IN CONT EURO LIT"
+                }, 
+                {
+                    "code": "ENG 361W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/361W", 
+                    "name": "Poetry Workshop"
+                }, 
+                {
+                    "code": "ENG 362", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/362", 
+                    "name": "FICTION WORKSHOP"
+                }, 
+                {
+                    "code": "ENG 363W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/363W", 
+                    "name": "Creative Nonfiction Workshop"
+                }, 
+                {
+                    "code": "ENG 373", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/373", 
+                    "name": "Seminar in Contemporary Literature"
+                }, 
+                {
+                    "code": "ENG 390", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/390", 
+                    "name": "INTRO TO LINGUISTICS"
+                }, 
+                {
+                    "code": "ENG 392", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/392", 
+                    "name": "SPECIAL TOPICS - WRITNG"
+                }, 
+                {
+                    "code": "ENG 395", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/395", 
+                    "name": "Publishing Workshop"
+                }, 
+                {
+                    "code": "ENG 411W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/411W", 
+                    "name": "SEMINAR IN WRITING"
+                }, 
+                {
+                    "code": "ENG 425W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/425W", 
+                    "name": "ENGLISH SEMINAR"
+                }, 
+                {
+                    "code": "ENG 495", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ENG/495", 
+                    "name": "ENG INTERNSHIP"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/ENG"
+        }, 
+        {
+            "abbr": "EVS", 
+            "courses": [
+                {
+                    "code": "EVS 151", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EVS/151", 
+                    "name": "INTRO ENVIRNMNTL SCI"
+                }, 
+                {
+                    "code": "EVS 151L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EVS/151L", 
+                    "name": "EVS 151 LAB"
+                }, 
+                {
+                    "code": "EVS 286", 
+                    "course_url": "http://www.chegg.com/courses/eureka/EVS/286", 
+                    "name": "RSRCH MTHDS ENV STUD"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/EVS"
+        }, 
+        {
+            "abbr": "FPA", 
+            "courses": [
+                {
+                    "code": "FPA 301", 
+                    "course_url": "http://www.chegg.com/courses/eureka/FPA/301", 
+                    "name": "Arts Administration"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/FPA"
+        }, 
+        {
+            "abbr": "FRE", 
+            "courses": [
+                {
+                    "code": "FRE 115", 
+                    "course_url": "http://www.chegg.com/courses/eureka/FRE/115", 
+                    "name": "FRE 115 PROFICIENCIED"
+                }, 
+                {
+                    "code": "FRE 120", 
+                    "course_url": "http://www.chegg.com/courses/eureka/FRE/120", 
+                    "name": "FRE 120 PROFICIENCIED"
+                }, 
+                {
+                    "code": "FRE 240", 
+                    "course_url": "http://www.chegg.com/courses/eureka/FRE/240", 
+                    "name": "INTERMEDIATE FRENCH I"
+                }, 
+                {
+                    "code": "FRE 260", 
+                    "course_url": "http://www.chegg.com/courses/eureka/FRE/260", 
+                    "name": "INTERMEDIATE FRENCH II"
+                }, 
+                {
+                    "code": "FRE 301", 
+                    "course_url": "http://www.chegg.com/courses/eureka/FRE/301", 
+                    "name": "FRENCH COMPOSITION"
+                }, 
+                {
+                    "code": "FRE 302", 
+                    "course_url": "http://www.chegg.com/courses/eureka/FRE/302", 
+                    "name": "CONVERSATION"
+                }, 
+                {
+                    "code": "FRE 304", 
+                    "course_url": "http://www.chegg.com/courses/eureka/FRE/304", 
+                    "name": "FRENCH LITERATURE"
+                }, 
+                {
+                    "code": "FRE 305", 
+                    "course_url": "http://www.chegg.com/courses/eureka/FRE/305", 
+                    "name": "Topics in Francophone Literature"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/FRE"
+        }, 
+        {
+            "abbr": "FST", 
+            "courses": [
+                {
+                    "code": "FST 361", 
+                    "course_url": "http://www.chegg.com/courses/eureka/FST/361", 
+                    "name": "FOREIGN STUDY"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/FST"
+        }, 
+        {
+            "abbr": "GEO", 
+            "courses": [
+                {
+                    "code": "GEO 105", 
+                    "course_url": "http://www.chegg.com/courses/eureka/GEO/105", 
+                    "name": "WORLD GEOGRAPHY"
+                }, 
+                {
+                    "code": "GEO 110", 
+                    "course_url": "http://www.chegg.com/courses/eureka/GEO/110", 
+                    "name": "CULTURAL GEOGRAPHY"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/GEO"
+        }, 
+        {
+            "abbr": "GRK", 
+            "courses": [
+                {
+                    "code": "GRK 224", 
+                    "course_url": "http://www.chegg.com/courses/eureka/GRK/224", 
+                    "name": "ANCIENT GREEK I"
+                }, 
+                {
+                    "code": "GRK 225", 
+                    "course_url": "http://www.chegg.com/courses/eureka/GRK/225", 
+                    "name": "ANCIENT GREEK II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/GRK"
+        }, 
+        {
+            "abbr": "HED", 
+            "courses": [
+                {
+                    "code": "HED 170", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HED/170", 
+                    "name": "WELLNESS"
+                }, 
+                {
+                    "code": "HED 179", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HED/179", 
+                    "name": "FIRST AID, CPR"
+                }, 
+                {
+                    "code": "HED 204", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HED/204", 
+                    "name": "Human Sexuality and Family Life"
+                }, 
+                {
+                    "code": "HED 254", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HED/254", 
+                    "name": "Community Health"
+                }, 
+                {
+                    "code": "HED 264", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HED/264", 
+                    "name": "Programs in School Health"
+                }, 
+                {
+                    "code": "HED 274", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HED/274", 
+                    "name": "DRUG EDUCATION"
+                }, 
+                {
+                    "code": "HED 284", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HED/284", 
+                    "name": "NUTRITION"
+                }, 
+                {
+                    "code": "HED 310", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HED/310", 
+                    "name": "Concepts and Theories of Health Education"
+                }, 
+                {
+                    "code": "HED 410", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HED/410", 
+                    "name": "Curriculum Development and Evaluation"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/HED"
+        }, 
+        {
+            "abbr": "HIS", 
+            "courses": [
+                {
+                    "code": "HIS 113", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/113", 
+                    "name": "SURVEY EUROPE TO 1660"
+                }, 
+                {
+                    "code": "HIS 114", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/114", 
+                    "name": "SURVEY EUR SINCE 1660"
+                }, 
+                {
+                    "code": "HIS 200", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/200", 
+                    "name": "HISTORICAL SKILLS"
+                }, 
+                {
+                    "code": "HIS 201", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/201", 
+                    "name": "Oral History"
+                }, 
+                {
+                    "code": "HIS 202", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/202", 
+                    "name": "HISTORIC PRESERVATION"
+                }, 
+                {
+                    "code": "HIS 250", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/250", 
+                    "name": "HISTORY OF US TO 1865"
+                }, 
+                {
+                    "code": "HIS 251", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/251", 
+                    "name": "HIST OF US SINCE 1865"
+                }, 
+                {
+                    "code": "HIS 304", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/304", 
+                    "name": "United States Urban History"
+                }, 
+                {
+                    "code": "HIS 306W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/306W", 
+                    "name": "United States Social/Intellectual History"
+                }, 
+                {
+                    "code": "HIS 309", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/309", 
+                    "name": "BLACKS IN THE U.S."
+                }, 
+                {
+                    "code": "HIS 311", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/311", 
+                    "name": "England to 1688"
+                }, 
+                {
+                    "code": "HIS 312", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/312", 
+                    "name": "England Since 1688"
+                }, 
+                {
+                    "code": "HIS 333", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/333", 
+                    "name": "The Reformation Era"
+                }, 
+                {
+                    "code": "HIS 336", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/336", 
+                    "name": "Age of Absolutism and Enlightenment"
+                }, 
+                {
+                    "code": "HIS 337", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/337", 
+                    "name": "FRENCH REVOLUTION"
+                }, 
+                {
+                    "code": "HIS 341", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/341", 
+                    "name": "-344 Regional History"
+                }, 
+                {
+                    "code": "HIS 343", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/343", 
+                    "name": "SUB-SAHARAN AFRICA"
+                }, 
+                {
+                    "code": "HIS 362W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/362W", 
+                    "name": "American Foreign Policy"
+                }, 
+                {
+                    "code": "HIS 375", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/375", 
+                    "name": "Russia: The Soviet Union and After"
+                }, 
+                {
+                    "code": "HIS 377W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/377W", 
+                    "name": "Europe 1870-1939"
+                }, 
+                {
+                    "code": "HIS 378W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/378W", 
+                    "name": "Europe 1939 to the Present"
+                }, 
+                {
+                    "code": "HIS 380W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/380W", 
+                    "name": "EUROPE 1870-1914"
+                }, 
+                {
+                    "code": "HIS 381W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/381W", 
+                    "name": "EUROPE 1914-1945"
+                }, 
+                {
+                    "code": "HIS 385", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HIS/385", 
+                    "name": "EASTERN EUROPE"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/HIS"
+        }, 
+        {
+            "abbr": "HON", 
+            "courses": [
+                {
+                    "code": "HON 200", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HON/200", 
+                    "name": "HONORS SEMINAR"
+                }, 
+                {
+                    "code": "HON 301", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HON/301", 
+                    "name": "PROSPECTUS PREP"
+                }, 
+                {
+                    "code": "HON 410W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HON/410W", 
+                    "name": "THESIS PREPARATION"
+                }, 
+                {
+                    "code": "HON 420W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/HON/420W", 
+                    "name": "THESIS PRESENTATION"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/HON"
+        }, 
+        {
+            "abbr": "IDS", 
+            "courses": [
+                {
+                    "code": "IDS 101", 
+                    "course_url": "http://www.chegg.com/courses/eureka/IDS/101", 
+                    "name": "FIRST YEAR SEMINAR"
+                }, 
+                {
+                    "code": "IDS 101H", 
+                    "course_url": "http://www.chegg.com/courses/eureka/IDS/101H", 
+                    "name": "FIRST YEAR SEM - HON"
+                }, 
+                {
+                    "code": "IDS 261W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/IDS/261W", 
+                    "name": "WESTERN CIV I"
+                }, 
+                {
+                    "code": "IDS 261WH", 
+                    "course_url": "http://www.chegg.com/courses/eureka/IDS/261WH", 
+                    "name": "WESTERN CIV I - HON"
+                }, 
+                {
+                    "code": "IDS 262", 
+                    "course_url": "http://www.chegg.com/courses/eureka/IDS/262", 
+                    "name": "WESTERN CIV II"
+                }, 
+                {
+                    "code": "IDS 262H", 
+                    "course_url": "http://www.chegg.com/courses/eureka/IDS/262H", 
+                    "name": "WESTERN CIV II - HON"
+                }, 
+                {
+                    "code": "IDS 490W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/IDS/490W", 
+                    "name": "SENIOR SEMINAR"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/IDS"
+        }, 
+        {
+            "abbr": "KIN", 
+            "courses": [
+                {
+                    "code": "KIN 180", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/180", 
+                    "name": "INTRO TO KINESIOLOGY"
+                }, 
+                {
+                    "code": "KIN 191", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/191", 
+                    "name": "EXRCISE SCI PRACTICM"
+                }, 
+                {
+                    "code": "KIN 255", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/255", 
+                    "name": "PSY/SOC ASPECTS-KINES"
+                }, 
+                {
+                    "code": "KIN 256", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/256", 
+                    "name": "MTHDS TEACH TEAM ACT"
+                }, 
+                {
+                    "code": "KIN 260", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/260", 
+                    "name": "MTHDS TEACH FIT ACT"
+                }, 
+                {
+                    "code": "KIN 261", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/261", 
+                    "name": "MTHDS ELEM RHY DANCE"
+                }, 
+                {
+                    "code": "KIN 265", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/265", 
+                    "name": "TESTS & MEASUREMENTS"
+                }, 
+                {
+                    "code": "KIN 281", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/281", 
+                    "name": "PRINCIPLES ATH TRN"
+                }, 
+                {
+                    "code": "KIN 290", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/290", 
+                    "name": "ATH TRN PRACTICUM"
+                }, 
+                {
+                    "code": "KIN 291", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/291", 
+                    "name": "EXRCISE SCI PRACTICM"
+                }, 
+                {
+                    "code": "KIN 293", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/293", 
+                    "name": "INJURY ASSESSMENT"
+                }, 
+                {
+                    "code": "KIN 380W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/380W", 
+                    "name": "BIOMECHANICS"
+                }, 
+                {
+                    "code": "KIN 382", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/382", 
+                    "name": "EXERCISE PHYSIOLOGY I"
+                }, 
+                {
+                    "code": "KIN 383", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/383", 
+                    "name": "ADAPTED PE"
+                }, 
+                {
+                    "code": "KIN 385", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/385", 
+                    "name": "ORG & ADM OF PE & SP"
+                }, 
+                {
+                    "code": "KIN 388", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/388", 
+                    "name": "BODY COMP ANALYSIS"
+                }, 
+                {
+                    "code": "KIN 388W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/388W", 
+                    "name": "BODY COMP ANALYSIS"
+                }, 
+                {
+                    "code": "KIN 390", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/390", 
+                    "name": "ATH TRN PRACTICUM"
+                }, 
+                {
+                    "code": "KIN 391", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/391", 
+                    "name": "EXRCISE SCI PRACTICM"
+                }, 
+                {
+                    "code": "KIN 392", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/392", 
+                    "name": "ADVANCED ATH TRN"
+                }, 
+                {
+                    "code": "KIN 393", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/393", 
+                    "name": "THERAP MODALITIES"
+                }, 
+                {
+                    "code": "KIN 410", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/410", 
+                    "name": "PROG & CURRIC ISSUES"
+                }, 
+                {
+                    "code": "KIN 490", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/490", 
+                    "name": "ATH TRN PRACTICUM"
+                }, 
+                {
+                    "code": "KIN 491", 
+                    "course_url": "http://www.chegg.com/courses/eureka/KIN/491", 
+                    "name": "EXRCISE SCI PRACTICM"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/KIN"
+        }, 
+        {
+            "abbr": "LAS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/LAS"
+        }, 
+        {
+            "abbr": "LDR", 
+            "courses": [
+                {
+                    "code": "LDR 110", 
+                    "course_url": "http://www.chegg.com/courses/eureka/LDR/110", 
+                    "name": "INTRO TO LEADERSHIP"
+                }, 
+                {
+                    "code": "LDR 191", 
+                    "course_url": "http://www.chegg.com/courses/eureka/LDR/191", 
+                    "name": "LDRSHP PRACTICUM"
+                }, 
+                {
+                    "code": "LDR 220", 
+                    "course_url": "http://www.chegg.com/courses/eureka/LDR/220", 
+                    "name": "ORG BEHAVIOR & LDR"
+                }, 
+                {
+                    "code": "LDR 240", 
+                    "course_url": "http://www.chegg.com/courses/eureka/LDR/240", 
+                    "name": "PHIL OF LEADERSHIP"
+                }, 
+                {
+                    "code": "LDR 280", 
+                    "course_url": "http://www.chegg.com/courses/eureka/LDR/280", 
+                    "name": "ORG RESEARCH MTHDS"
+                }, 
+                {
+                    "code": "LDR 291", 
+                    "course_url": "http://www.chegg.com/courses/eureka/LDR/291", 
+                    "name": "LDRSHP PRACTICUM"
+                }, 
+                {
+                    "code": "LDR 310", 
+                    "course_url": "http://www.chegg.com/courses/eureka/LDR/310", 
+                    "name": "PRACTICE OF LDRSHP"
+                }, 
+                {
+                    "code": "LDR 391W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/LDR/391W", 
+                    "name": "LDRSHP PRACTICUM"
+                }, 
+                {
+                    "code": "LDR 399", 
+                    "course_url": "http://www.chegg.com/courses/eureka/LDR/399", 
+                    "name": "SP TOPICS LEADRSHP"
+                }, 
+                {
+                    "code": "LDR 491", 
+                    "course_url": "http://www.chegg.com/courses/eureka/LDR/491", 
+                    "name": "LDRSHP PRACTICUM"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/LDR"
+        }, 
+        {
+            "abbr": "M", 
+            "courses": [
+                {
+                    "code": "M 286", 
+                    "course_url": "http://www.chegg.com/courses/eureka/M/286", 
+                    "name": "PROB SOLV SCI & MAT"
+                }, 
+                {
+                    "code": "M 286L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/M/286L", 
+                    "name": "S&M 286 LAB"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/M"
+        }, 
+        {
+            "abbr": "MAT", 
+            "courses": [
+                {
+                    "code": "MAT 098R", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/098R", 
+                    "name": "ELEMENTARY ALGEBRA"
+                }, 
+                {
+                    "code": "MAT 099R", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/099R", 
+                    "name": "INTERMEDIATE ALGEBRA"
+                }, 
+                {
+                    "code": "MAT 121", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/121", 
+                    "name": "PRECALCULUS"
+                }, 
+                {
+                    "code": "MAT 125", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/125", 
+                    "name": "Mathematics for Life and Art"
+                }, 
+                {
+                    "code": "MAT 161", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/161", 
+                    "name": "FINITE & STATS BUS"
+                }, 
+                {
+                    "code": "MAT 162", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/162", 
+                    "name": "APLD FUNCT & BU CALC"
+                }, 
+                {
+                    "code": "MAT 171", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/171", 
+                    "name": "CALC ANALYTIC GEOM I"
+                }, 
+                {
+                    "code": "MAT 260", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/260", 
+                    "name": "STATISTICS"
+                }, 
+                {
+                    "code": "MAT 264W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/264W", 
+                    "name": "NATURE OF MATH"
+                }, 
+                {
+                    "code": "MAT 265", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/265", 
+                    "name": "QUANTITATIVE MTHDS I"
+                }, 
+                {
+                    "code": "MAT 271", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/271", 
+                    "name": "CALC ANALYTIC GEOM II"
+                }, 
+                {
+                    "code": "MAT 272", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/272", 
+                    "name": "Calculus with Analytic Geometry III"
+                }, 
+                {
+                    "code": "MAT 275", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/275", 
+                    "name": "Differential Equations"
+                }, 
+                {
+                    "code": "MAT 280", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/280", 
+                    "name": "DISCRETE MATH"
+                }, 
+                {
+                    "code": "MAT 310", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/310", 
+                    "name": "PROBABILITY & STATS"
+                }, 
+                {
+                    "code": "MAT 315", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/315", 
+                    "name": "LINEAR ALGEBRA"
+                }, 
+                {
+                    "code": "MAT 320", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/320", 
+                    "name": "Abstract Algebra"
+                }, 
+                {
+                    "code": "MAT 340W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/340W", 
+                    "name": "FOUND - GEOMETRY"
+                }, 
+                {
+                    "code": "MAT 415", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MAT/415", 
+                    "name": "REAL ANALYSIS"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/MAT"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 80", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/80", 
+                    "name": "Community Chorale"
+                }, 
+                {
+                    "code": "MUS 81", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/81", 
+                    "name": "CHORALE"
+                }, 
+                {
+                    "code": "MUS 82", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/82", 
+                    "name": "CHAMBER SINGERS"
+                }, 
+                {
+                    "code": "MUS 98", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/98", 
+                    "name": "JUNIOR RECITAL"
+                }, 
+                {
+                    "code": "MUS 99", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/99", 
+                    "name": "SENIOR RECITAL"
+                }, 
+                {
+                    "code": "MUS 133", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/133", 
+                    "name": "CLASS PIANO ADLT BEG"
+                }, 
+                {
+                    "code": "MUS 134", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/134", 
+                    "name": "Class Instruction in Voice (A)"
+                }, 
+                {
+                    "code": "MUS 150", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/150", 
+                    "name": "MUSIC CULTURES US"
+                }, 
+                {
+                    "code": "MUS 151", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/151", 
+                    "name": "INTRO MUSIC HIST"
+                }, 
+                {
+                    "code": "MUS 180", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/180", 
+                    "name": "Community Chorale"
+                }, 
+                {
+                    "code": "MUS 210", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/210", 
+                    "name": "INTRO TO MUSIC THEORY"
+                }, 
+                {
+                    "code": "MUS 220", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/220", 
+                    "name": "MUSIC THEORY II"
+                }, 
+                {
+                    "code": "MUS 231", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/231", 
+                    "name": "CHORAL CONDUCTING"
+                }, 
+                {
+                    "code": "MUS 235", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/235", 
+                    "name": "Musical Theatre"
+                }, 
+                {
+                    "code": "MUS 250", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/250", 
+                    "name": "Introduction to Music Education"
+                }, 
+                {
+                    "code": "MUS 281", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/281", 
+                    "name": "CHORALE"
+                }, 
+                {
+                    "code": "MUS 285", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/285", 
+                    "name": "Foreign Language Diction for Singers"
+                }, 
+                {
+                    "code": "MUS 308", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/308", 
+                    "name": "MUSIC-HIST PERSP I"
+                }, 
+                {
+                    "code": "MUS 318W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/318W", 
+                    "name": "MUSIC-HIST PERSP II"
+                }, 
+                {
+                    "code": "MUS 320", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/320", 
+                    "name": "Music Theory III"
+                }, 
+                {
+                    "code": "MUS 330", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/330", 
+                    "name": "Music Theory IV"
+                }, 
+                {
+                    "code": "MUS 331", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/331", 
+                    "name": "ADV CHORAL CONDUCTNG"
+                }, 
+                {
+                    "code": "MUS 333", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/333", 
+                    "name": "PRIV INST - PIANO"
+                }, 
+                {
+                    "code": "MUS 334", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/334", 
+                    "name": "PRIV INSTR - VOICE"
+                }, 
+                {
+                    "code": "MUS 382", 
+                    "course_url": "http://www.chegg.com/courses/eureka/MUS/382", 
+                    "name": "CHAMBER SINGERS"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/MUS"
+        }, 
+        {
+            "abbr": "PED", 
+            "courses": [
+                {
+                    "code": "PED 161", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/161", 
+                    "name": "Lifeguarding"
+                }, 
+                {
+                    "code": "PED 162", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/162", 
+                    "name": "Water Safety Instructor"
+                }, 
+                {
+                    "code": "PED 180W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/180W", 
+                    "name": "Introduction to Physical Education"
+                }, 
+                {
+                    "code": "PED 191", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/191", 
+                    "name": "Fitness Leadership Practicum"
+                }, 
+                {
+                    "code": "PED 210", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/210", 
+                    "name": "Recreation"
+                }, 
+                {
+                    "code": "PED 211", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/211", 
+                    "name": "Camp Leadership and Management"
+                }, 
+                {
+                    "code": "PED 241", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/241", 
+                    "name": "Techniques of Sport Coaching"
+                }, 
+                {
+                    "code": "PED 256", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/256", 
+                    "name": "Methods of Teaching Team Activities"
+                }, 
+                {
+                    "code": "PED 257", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/257", 
+                    "name": "Methods of Teaching Individual and Dual Activities"
+                }, 
+                {
+                    "code": "PED 260", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/260", 
+                    "name": "Methods of Teaching Fitness Activities"
+                }, 
+                {
+                    "code": "PED 261", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/261", 
+                    "name": "Methods of Teaching Elementary Rhythms and Dance"
+                }, 
+                {
+                    "code": "PED 281", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/281", 
+                    "name": "Principles of Athletic Training"
+                }, 
+                {
+                    "code": "PED 290", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/290", 
+                    "name": "Athletic Training Practicum"
+                }, 
+                {
+                    "code": "PED 291", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/291", 
+                    "name": "Fitness Leadership Practicum"
+                }, 
+                {
+                    "code": "PED 293", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/293", 
+                    "name": "Athletic Injury Assessment"
+                }, 
+                {
+                    "code": "PED 300", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/300", 
+                    "name": "Tests and Measurements in Physical Education"
+                }, 
+                {
+                    "code": "PED 304", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/304", 
+                    "name": "Theory and Techniques of Coaching Football"
+                }, 
+                {
+                    "code": "PED 305", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/305", 
+                    "name": "Theory and Techniques of Coaching Basketball"
+                }, 
+                {
+                    "code": "PED 306", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/306", 
+                    "name": "Theory and Techniques of Coaching Baseball"
+                }, 
+                {
+                    "code": "PED 310", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/310", 
+                    "name": "Theory and Techniques of Coaching Volleyball"
+                }, 
+                {
+                    "code": "PED 341", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/341", 
+                    "name": "Techniques of Officiating Basketball/Volleyball"
+                }, 
+                {
+                    "code": "PED 380W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/380W", 
+                    "name": "Kinesiology"
+                }, 
+                {
+                    "code": "PED 382", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/382", 
+                    "name": "Physiology of Exercise"
+                }, 
+                {
+                    "code": "PED 383", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/383", 
+                    "name": "Adapted Physical Education"
+                }, 
+                {
+                    "code": "PED 386W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/386W", 
+                    "name": "Exercise Science"
+                }, 
+                {
+                    "code": "PED 388W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/388W", 
+                    "name": "Body Composition Analysis"
+                }, 
+                {
+                    "code": "PED 390", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/390", 
+                    "name": "Practicum in Athletic Training"
+                }, 
+                {
+                    "code": "PED 391", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/391", 
+                    "name": "Fitness Leadership Practicum"
+                }, 
+                {
+                    "code": "PED 392", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/392", 
+                    "name": "Advanced Athletic Training"
+                }, 
+                {
+                    "code": "PED 393", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/393", 
+                    "name": "Therapeutic Modalities"
+                }, 
+                {
+                    "code": "PED 394", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/394", 
+                    "name": "Motor Learning and Behavior"
+                }, 
+                {
+                    "code": "PED 410", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/410", 
+                    "name": "Program and Curricular Issues"
+                }, 
+                {
+                    "code": "PED 490", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PED/490", 
+                    "name": "Practicum in Athletic Training"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/PED"
+        }, 
+        {
+            "abbr": "PHI", 
+            "courses": [
+                {
+                    "code": "PHI 110", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHI/110", 
+                    "name": "INTRO-PHILOSOPHY"
+                }, 
+                {
+                    "code": "PHI 140", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHI/140", 
+                    "name": "Logic"
+                }, 
+                {
+                    "code": "PHI 220", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHI/220", 
+                    "name": "Moral Philosophy"
+                }, 
+                {
+                    "code": "PHI 250", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHI/250", 
+                    "name": "Ancient Philosophy"
+                }, 
+                {
+                    "code": "PHI 260", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHI/260", 
+                    "name": "MODERN PHILOSOPHY"
+                }, 
+                {
+                    "code": "PHI 270", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHI/270", 
+                    "name": "CONTEMPORARY PHIL"
+                }, 
+                {
+                    "code": "PHI 320W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHI/320W", 
+                    "name": "Political and Social Philosophy"
+                }, 
+                {
+                    "code": "PHI 330", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHI/330", 
+                    "name": "Metaphysics"
+                }, 
+                {
+                    "code": "PHI 340", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHI/340", 
+                    "name": "Theory of Knowledge"
+                }, 
+                {
+                    "code": "PHI 340W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHI/340W", 
+                    "name": "THEORY OF KNOWLEDGE"
+                }, 
+                {
+                    "code": "PHI 350", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHI/350", 
+                    "name": "Philosophic Figures"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/PHI"
+        }, 
+        {
+            "abbr": "PHS", 
+            "courses": [
+                {
+                    "code": "PHS 110", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHS/110", 
+                    "name": "INTRO PHYSICAL SCI"
+                }, 
+                {
+                    "code": "PHS 110L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHS/110L", 
+                    "name": "PHS 110 LAB"
+                }, 
+                {
+                    "code": "PHS 111", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHS/111", 
+                    "name": "INTRO EARTH SCIENCE"
+                }, 
+                {
+                    "code": "PHS 111L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHS/111L", 
+                    "name": "PHS 111 LAB"
+                }, 
+                {
+                    "code": "PHS 112", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHS/112", 
+                    "name": "ASTRONOMY"
+                }, 
+                {
+                    "code": "PHS 112L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHS/112L", 
+                    "name": "PHS 112 LAB"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/PHS"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 220", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHY/220", 
+                    "name": "GENERAL PHYSICS I"
+                }, 
+                {
+                    "code": "PHY 220L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHY/220L", 
+                    "name": "PHY 220 LAB"
+                }, 
+                {
+                    "code": "PHY 230", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHY/230", 
+                    "name": "GENERAL PHYSICS II"
+                }, 
+                {
+                    "code": "PHY 230L", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHY/230L", 
+                    "name": "PHY 230 LAB"
+                }, 
+                {
+                    "code": "PHY 335W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHY/335W", 
+                    "name": "Thermodynamics"
+                }, 
+                {
+                    "code": "PHY 336", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PHY/336", 
+                    "name": "Quantum Chemistry and Spectroscopy"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/PHY"
+        }, 
+        {
+            "abbr": "PSC", 
+            "courses": [
+                {
+                    "code": "PSC 150", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSC/150", 
+                    "name": "AMERICAN GOVERNMENT"
+                }, 
+                {
+                    "code": "PSC 200", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSC/200", 
+                    "name": "Logical Reasoning"
+                }, 
+                {
+                    "code": "PSC 250", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSC/250", 
+                    "name": "American Government (State and Local)"
+                }, 
+                {
+                    "code": "PSC 261", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSC/261", 
+                    "name": "COMPARATIVE GOVT"
+                }, 
+                {
+                    "code": "PSC 263", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSC/263", 
+                    "name": "International Relations"
+                }, 
+                {
+                    "code": "PSC 299", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSC/299", 
+                    "name": "INTRO TO PUBLIC ADMIN"
+                }, 
+                {
+                    "code": "PSC 301", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSC/301", 
+                    "name": "PRESIDENCY"
+                }, 
+                {
+                    "code": "PSC 310W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSC/310W", 
+                    "name": "The American Congress"
+                }, 
+                {
+                    "code": "PSC 315", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSC/315", 
+                    "name": "CONSTITUTIONAL LAW"
+                }, 
+                {
+                    "code": "PSC 316", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSC/316", 
+                    "name": "CIVIL LIBERTIES"
+                }, 
+                {
+                    "code": "PSC 320W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSC/320W", 
+                    "name": "Political and Social Philosophy"
+                }, 
+                {
+                    "code": "PSC 362W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSC/362W", 
+                    "name": "AMERICAN FOREIGN POLICY"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/PSC"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 101", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/101", 
+                    "name": "GENERAL PSYCH"
+                }, 
+                {
+                    "code": "PSY 203", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/203", 
+                    "name": "SOCIAL PSYCHOLOGY"
+                }, 
+                {
+                    "code": "PSY 205", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/205", 
+                    "name": "CHILD THRU ADOLES"
+                }, 
+                {
+                    "code": "PSY 208", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/208", 
+                    "name": "Adulthood and Aging Psychology"
+                }, 
+                {
+                    "code": "PSY 225", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/225", 
+                    "name": "Industrial-Organizational Psychology"
+                }, 
+                {
+                    "code": "PSY 270", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/270", 
+                    "name": "STATISTICS II"
+                }, 
+                {
+                    "code": "PSY 285", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/285", 
+                    "name": "Psychology of Learning"
+                }, 
+                {
+                    "code": "PSY 286", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/286", 
+                    "name": "PERCEPTION"
+                }, 
+                {
+                    "code": "PSY 290", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/290", 
+                    "name": "TESTS & MEASUREMENTS"
+                }, 
+                {
+                    "code": "PSY 305", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/305", 
+                    "name": "COGNITIVE PSYCHOLOGY"
+                }, 
+                {
+                    "code": "PSY 314", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/314", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSY 314W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/314W", 
+                    "name": "ABNORMAL PSYCHOLOGY"
+                }, 
+                {
+                    "code": "PSY 360", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/360", 
+                    "name": "Biological Psychology"
+                }, 
+                {
+                    "code": "PSY 370", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/370", 
+                    "name": "Personality Theory"
+                }, 
+                {
+                    "code": "PSY 370W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/370W", 
+                    "name": "PERSONALITY THEORY"
+                }, 
+                {
+                    "code": "PSY 372", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/372", 
+                    "name": "COUNSELING PSYCH"
+                }, 
+                {
+                    "code": "PSY 374", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/374", 
+                    "name": "HISTORY OF PSYCH"
+                }, 
+                {
+                    "code": "PSY 380W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/380W", 
+                    "name": "RESEARCH METHODS"
+                }, 
+                {
+                    "code": "PSY 385", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/385", 
+                    "name": "Seminar in Psychology"
+                }, 
+                {
+                    "code": "PSY 495", 
+                    "course_url": "http://www.chegg.com/courses/eureka/PSY/495", 
+                    "name": "PSY INTERNSHIP"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/PSY"
+        }, 
+        {
+            "abbr": "REL", 
+            "courses": [
+                {
+                    "code": "REL 13", 
+                    "course_url": "http://www.chegg.com/courses/eureka/REL/13", 
+                    "name": "Asian Religons"
+                }, 
+                {
+                    "code": "REL 129", 
+                    "course_url": "http://www.chegg.com/courses/eureka/REL/129", 
+                    "name": "WESTERN RELIGIONS"
+                }, 
+                {
+                    "code": "REL 131", 
+                    "course_url": "http://www.chegg.com/courses/eureka/REL/131", 
+                    "name": "ASIAN RELIGIONS"
+                }, 
+                {
+                    "code": "REL 217", 
+                    "course_url": "http://www.chegg.com/courses/eureka/REL/217", 
+                    "name": "HEBREW SCRIPTURES"
+                }, 
+                {
+                    "code": "REL 219", 
+                    "course_url": "http://www.chegg.com/courses/eureka/REL/219", 
+                    "name": "Introduction to the New Testament"
+                }, 
+                {
+                    "code": "REL 295", 
+                    "course_url": "http://www.chegg.com/courses/eureka/REL/295", 
+                    "name": "RELIGION INTERNSHIP"
+                }, 
+                {
+                    "code": "REL 321", 
+                    "course_url": "http://www.chegg.com/courses/eureka/REL/321", 
+                    "name": "W Seminar: Classical Christian Thought"
+                }, 
+                {
+                    "code": "REL 331", 
+                    "course_url": "http://www.chegg.com/courses/eureka/REL/331", 
+                    "name": "W Seminar: Reformation Theology"
+                }, 
+                {
+                    "code": "REL 331W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/REL/331W", 
+                    "name": "REFORMATION THEOLOGY"
+                }, 
+                {
+                    "code": "REL 341", 
+                    "course_url": "http://www.chegg.com/courses/eureka/REL/341", 
+                    "name": "History of Religion in America"
+                }, 
+                {
+                    "code": "REL 351W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/REL/351W", 
+                    "name": "CONTEMPORARY THINKER"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/REL"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 102", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SOC/102", 
+                    "name": "PRIN OF SOCIOLOGY"
+                }, 
+                {
+                    "code": "SOC 105", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SOC/105", 
+                    "name": "CULTRL ANTHROPOLOGY"
+                }, 
+                {
+                    "code": "SOC 201", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SOC/201", 
+                    "name": "CRIMINOLOGY"
+                }, 
+                {
+                    "code": "SOC 210", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SOC/210", 
+                    "name": "Alcohol, Alcoholism, and Society"
+                }, 
+                {
+                    "code": "SOC 250", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SOC/250", 
+                    "name": "Social Stratification"
+                }, 
+                {
+                    "code": "SOC 306", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SOC/306", 
+                    "name": "MINORITY PEOPLES"
+                }, 
+                {
+                    "code": "SOC 311", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SOC/311", 
+                    "name": "DEVIANCE & CONTROL"
+                }, 
+                {
+                    "code": "SOC 370", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SOC/370", 
+                    "name": "SOCIOLOGICAL THEORY"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/SOC"
+        }, 
+        {
+            "abbr": "SPA", 
+            "courses": [
+                {
+                    "code": "SPA 115", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPA/115", 
+                    "name": "SPA115 PROFICIENCIED"
+                }, 
+                {
+                    "code": "SPA 120", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPA/120", 
+                    "name": "SPA120 PROFICIENCIED"
+                }, 
+                {
+                    "code": "SPA 240", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPA/240", 
+                    "name": "SPA240 PROFICIENCIED"
+                }, 
+                {
+                    "code": "SPA 260", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPA/260", 
+                    "name": "SPA260 PROFICIENCIED"
+                }, 
+                {
+                    "code": "SPA 301", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPA/301", 
+                    "name": "Conversation and Composition"
+                }, 
+                {
+                    "code": "SPA 303", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPA/303", 
+                    "name": "Spanish and Spanish American Literature"
+                }, 
+                {
+                    "code": "SPA 304", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPA/304", 
+                    "name": "SP CULTURE & CIV I"
+                }, 
+                {
+                    "code": "SPA 305", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPA/305", 
+                    "name": "SP CULTURE & CIV II"
+                }, 
+                {
+                    "code": "SPA 400", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPA/400", 
+                    "name": "SPA IND STUDY"
+                }, 
+                {
+                    "code": "SPA 430", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPA/430", 
+                    "name": "Methods of Teaching in a Secondary School"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/SPA"
+        }, 
+        {
+            "abbr": "SPE", 
+            "courses": [
+                {
+                    "code": "SPE 301W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/301W", 
+                    "name": "FOUND SP ED"
+                }, 
+                {
+                    "code": "SPE 302", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/302", 
+                    "name": "FLD EXP - SP ED"
+                }, 
+                {
+                    "code": "SPE 308", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/308", 
+                    "name": "Professional Conduct and Leadership"
+                }, 
+                {
+                    "code": "SPE 313", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/313", 
+                    "name": "CORRECTIVE RDG"
+                }, 
+                {
+                    "code": "SPE 314", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/314", 
+                    "name": "FLD EXP - SP ED"
+                }, 
+                {
+                    "code": "SPE 326", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/326", 
+                    "name": "CHAR/ADAP PHYS ISS"
+                }, 
+                {
+                    "code": "SPE 329", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/329", 
+                    "name": "Field Work"
+                }, 
+                {
+                    "code": "SPE 331", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/331", 
+                    "name": "Diagnosis and Evaluation of Students with Disabilities"
+                }, 
+                {
+                    "code": "SPE 336", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/336", 
+                    "name": "CHARACTR MILD DISAB"
+                }, 
+                {
+                    "code": "SPE 346", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/346", 
+                    "name": "LANG DISOR - DIV CL"
+                }, 
+                {
+                    "code": "SPE 356", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/356", 
+                    "name": "INST DELIV K-6"
+                }, 
+                {
+                    "code": "SPE 357", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/357", 
+                    "name": "FLD EXP - SP ED"
+                }, 
+                {
+                    "code": "SPE 361", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/361", 
+                    "name": "Instructional Delivery for Secondary Students"
+                }, 
+                {
+                    "code": "SPE 362", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/362", 
+                    "name": "Field Work"
+                }, 
+                {
+                    "code": "SPE 366", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/366", 
+                    "name": "Special Education Law and Process"
+                }, 
+                {
+                    "code": "SPE 499", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/499", 
+                    "name": "ST TCH - SP ED"
+                }, 
+                {
+                    "code": "SPE 501", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/501", 
+                    "name": "CHARACTR MILD DISAB"
+                }, 
+                {
+                    "code": "SPE 502", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/502", 
+                    "name": "INST DELIV PRE-K/6"
+                }, 
+                {
+                    "code": "SPE 502A", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/502A", 
+                    "name": "FLD EXP INST DEL PRE-K/6"
+                }, 
+                {
+                    "code": "SPE 503", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/503", 
+                    "name": "INST DEL SECONDARY"
+                }, 
+                {
+                    "code": "SPE 503B", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/503B", 
+                    "name": "FLD EXP INST DEL SEC"
+                }, 
+                {
+                    "code": "SPE 504", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SPE/504", 
+                    "name": "Diagnosis and Evaluation of Students with Disabilities"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/SPE"
+        }, 
+        {
+            "abbr": "SSC", 
+            "courses": [
+                {
+                    "code": "SSC 270", 
+                    "course_url": "http://www.chegg.com/courses/eureka/SSC/270", 
+                    "name": "Statistics II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/SSC"
+        }, 
+        {
+            "abbr": "THA", 
+            "courses": [
+                {
+                    "code": "THA 100", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/100", 
+                    "name": "THEATRE PRODUCTION"
+                }, 
+                {
+                    "code": "THA 110", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/110", 
+                    "name": "INTRO TO THEATRE"
+                }, 
+                {
+                    "code": "THA 130", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/130", 
+                    "name": "ACTING I"
+                }, 
+                {
+                    "code": "THA 220", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/220", 
+                    "name": "MOVEMENT"
+                }, 
+                {
+                    "code": "THA 221", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/221", 
+                    "name": "Stage Makeup (A)"
+                }, 
+                {
+                    "code": "THA 222", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/222", 
+                    "name": "Auditioning for Stage and Screen (A)"
+                }, 
+                {
+                    "code": "THA 235", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/235", 
+                    "name": "Musical Theatre"
+                }, 
+                {
+                    "code": "THA 260", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/260", 
+                    "name": "STAGECRAFT"
+                }, 
+                {
+                    "code": "THA 261", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/261", 
+                    "name": "Stage Design (A)"
+                }, 
+                {
+                    "code": "THA 262", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/262", 
+                    "name": "STAGE LIGHTING"
+                }, 
+                {
+                    "code": "THA 282W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/282W", 
+                    "name": "Dramatic Literature I (T)"
+                }, 
+                {
+                    "code": "THA 283W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/283W", 
+                    "name": "DRAMATIC LIT II"
+                }, 
+                {
+                    "code": "THA 290W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/290W", 
+                    "name": "Playwriting (A)"
+                }, 
+                {
+                    "code": "THA 312", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/312", 
+                    "name": "SHKSPRE AS LIT & PERF"
+                }, 
+                {
+                    "code": "THA 312W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/312W", 
+                    "name": "Shakespeare as Literature and Performance"
+                }, 
+                {
+                    "code": "THA 320", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/320", 
+                    "name": "Stage Combat I (A)"
+                }, 
+                {
+                    "code": "THA 321", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/321", 
+                    "name": "Stage Combat II (A)"
+                }, 
+                {
+                    "code": "THA 326", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/326", 
+                    "name": "Problem Solving in Theatre Design (A)"
+                }, 
+                {
+                    "code": "THA 330", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/330", 
+                    "name": "DIRECTION"
+                }, 
+                {
+                    "code": "THA 341W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/341W", 
+                    "name": "World Theatre History and Theory I (T)"
+                }, 
+                {
+                    "code": "THA 342W", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/342W", 
+                    "name": "WORLD THA HISTRY II"
+                }, 
+                {
+                    "code": "THA 343", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/343", 
+                    "name": "American Theatre History (T)"
+                }, 
+                {
+                    "code": "THA 345", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/345", 
+                    "name": "IND CAPSTONE PROJECT"
+                }, 
+                {
+                    "code": "THA 360", 
+                    "course_url": "http://www.chegg.com/courses/eureka/THA/360", 
+                    "name": "Theatre Pedagogy (T)"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/THA"
+        }, 
+        {
+            "abbr": "ZZZ", 
+            "courses": [
+                {
+                    "code": "ZZZ 100", 
+                    "course_url": "http://www.chegg.com/courses/eureka/ZZZ/100", 
+                    "name": "FAKE COURSE FOR FULL-TIME BILLING"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eureka/ZZZ"
+        }
+    ], 
+    "name": "eureka"
+}

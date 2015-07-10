@@ -1,0 +1,2525 @@
+{
+    "all_stats": {
+        "num_courses": 450, 
+        "num_departments": 38
+    }, 
+    "departments": [
+        {
+            "abbr": "ACC", 
+            "courses": [
+                {
+                    "code": "ACC 103", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ACC/103", 
+                    "name": "Accounting Principles I"
+                }, 
+                {
+                    "code": "ACC 104", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ACC/104", 
+                    "name": "Accounting Principles II"
+                }, 
+                {
+                    "code": "ACC 110", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ACC/110", 
+                    "name": "Automated Accounting"
+                }, 
+                {
+                    "code": "ACC 208", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ACC/208", 
+                    "name": "Intermediate Accounting I"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/linnstate/ACC"
+        }, 
+        {
+            "abbr": "ACT", 
+            "courses": [
+                {
+                    "code": "ACT 105", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ACT/105", 
+                    "name": "Non-Structural Analysis and Damage Repair"
+                }, 
+                {
+                    "code": "ACT 106", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ACT/106", 
+                    "name": "Refinishing Techniques I"
+                }, 
+                {
+                    "code": "ACT 107", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ACT/107", 
+                    "name": "Auto Plastic Repair"
+                }, 
+                {
+                    "code": "ACT 108", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ACT/108", 
+                    "name": "Refinishing Techniques II"
+                }, 
+                {
+                    "code": "ACT 205", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ACT/205", 
+                    "name": "Structural Analysis I"
+                }, 
+                {
+                    "code": "ACT 206", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ACT/206", 
+                    "name": "Structural Analysis II"
+                }, 
+                {
+                    "code": "ACT 209", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ACT/209", 
+                    "name": "Non-Structural Repair Applications"
+                }, 
+                {
+                    "code": "ACT 210", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ACT/210", 
+                    "name": "Structural Repair Applications"
+                }, 
+                {
+                    "code": "ACT 220", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ACT/220", 
+                    "name": "Body Repair and Painting"
+                }, 
+                {
+                    "code": "ACT 225", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ACT/225", 
+                    "name": "Collision Repair Internship"
+                }, 
+                {
+                    "code": "ACT 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ACT/299", 
+                    "name": "Special Topics in Automotive Collision Technology"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/linnstate/ACT"
+        }, 
+        {
+            "abbr": "AMT", 
+            "courses": [
+                {
+                    "code": "AMT 101", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/AMT/101", 
+                    "name": "Automotive Electrical/Electronics I"
+                }, 
+                {
+                    "code": "AMT 120", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/AMT/120", 
+                    "name": "Project Management"
+                }, 
+                {
+                    "code": "AMT 134", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/AMT/134", 
+                    "name": "Automotive Engine Performance"
+                }, 
+                {
+                    "code": "AMT 145", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/AMT/145", 
+                    "name": "Automotive Engine Mechanical"
+                }, 
+                {
+                    "code": "AMT 154", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/AMT/154", 
+                    "name": "Automotive Electrical Systems"
+                }, 
+                {
+                    "code": "AMT 191", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/AMT/191", 
+                    "name": "Internship"
+                }, 
+                {
+                    "code": "AMT 203", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/AMT/203", 
+                    "name": "Automotive Electrical/Electronics III"
+                }, 
+                {
+                    "code": "AMT 205", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/AMT/205", 
+                    "name": "Automotive Brake Systems"
+                }, 
+                {
+                    "code": "AMT 206", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/AMT/206", 
+                    "name": "Automotive Suspension and Steering"
+                }, 
+                {
+                    "code": "AMT 207", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/AMT/207", 
+                    "name": "Heating/Air Conditioning"
+                }, 
+                {
+                    "code": "AMT 242", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/AMT/242", 
+                    "name": "Light-Duty Diesel Engine Control Systems"
+                }, 
+                {
+                    "code": "AMT 252", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/AMT/252", 
+                    "name": "Automotive Drivetrains and Axles"
+                }, 
+                {
+                    "code": "AMT 267", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/AMT/267", 
+                    "name": "Mechanical Systems and Power Accessories"
+                }, 
+                {
+                    "code": "AMT 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/AMT/299", 
+                    "name": "Special Topics in Automotive Technology"
+                }
+            ], 
+            "name": "Aeronautics/Aviation Science", 
+            "url": "http://www.chegg.com/courses/linnstate/AMT"
+        }, 
+        {
+            "abbr": "ASC", 
+            "courses": [
+                {
+                    "code": "ASC 101", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ASC/101", 
+                    "name": "Human Anatomy and Physiology w/Lab"
+                }
+            ], 
+            "name": "Animal Sciences", 
+            "url": "http://www.chegg.com/courses/linnstate/ASC"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 125", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/BUS/125", 
+                    "name": "Job Search Strategies"
+                }, 
+                {
+                    "code": "BUS 171", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/BUS/171", 
+                    "name": "Economics"
+                }, 
+                {
+                    "code": "BUS 176", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/BUS/176", 
+                    "name": "Marketing"
+                }, 
+                {
+                    "code": "BUS 211", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/BUS/211", 
+                    "name": "Management"
+                }, 
+                {
+                    "code": "BUS 235", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/BUS/235", 
+                    "name": "Information Design and Presentation"
+                }
+            ], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/linnstate/BUS"
+        }, 
+        {
+            "abbr": "CAT", 
+            "courses": [
+                {
+                    "code": "CAT 110", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/110", 
+                    "name": "CAT Engine Fundamentals"
+                }, 
+                {
+                    "code": "CAT 111", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/111", 
+                    "name": "Introduction to CAT Service Industry"
+                }, 
+                {
+                    "code": "CAT 112", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/112", 
+                    "name": "Fundamentals of Hydraulics"
+                }, 
+                {
+                    "code": "CAT 113", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/113", 
+                    "name": "CAT Engine Fuel Systems"
+                }, 
+                {
+                    "code": "CAT 114", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/114", 
+                    "name": "Fundamentals of Electrical Systems"
+                }, 
+                {
+                    "code": "CAT 115", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/115", 
+                    "name": "Air Conditioning"
+                }, 
+                {
+                    "code": "CAT 116", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/116", 
+                    "name": "Fundamentals of Transmissions & Torque Converters"
+                }, 
+                {
+                    "code": "CAT 117", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/117", 
+                    "name": "Machine Hydraulic Systems"
+                }, 
+                {
+                    "code": "CAT 150", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/150", 
+                    "name": "Internship I"
+                }, 
+                {
+                    "code": "CAT 151", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/151", 
+                    "name": "Internship II"
+                }, 
+                {
+                    "code": "CAT 200", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/200", 
+                    "name": "Undercarriage and Final Drive"
+                }, 
+                {
+                    "code": "CAT 201", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/201", 
+                    "name": "Machine Electronic Systems"
+                }, 
+                {
+                    "code": "CAT 202", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/202", 
+                    "name": "CAT Engine Performance"
+                }, 
+                {
+                    "code": "CAT 203", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/203", 
+                    "name": "Diagnostic Testing"
+                }, 
+                {
+                    "code": "CAT 204", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/204", 
+                    "name": "Machine Specific Systems"
+                }, 
+                {
+                    "code": "CAT 250", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/250", 
+                    "name": "Internship III"
+                }, 
+                {
+                    "code": "CAT 251", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CAT/251", 
+                    "name": "Internship IV"
+                }
+            ], 
+            "name": "Computer Applications/Office", 
+            "url": "http://www.chegg.com/courses/linnstate/CAT"
+        }, 
+        {
+            "abbr": "CCT", 
+            "courses": [
+                {
+                    "code": "CCT 105", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CCT/105", 
+                    "name": "Construction Mathematics"
+                }, 
+                {
+                    "code": "CCT 135", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CCT/135", 
+                    "name": "Engineering Documents"
+                }, 
+                {
+                    "code": "CCT 140", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CCT/140", 
+                    "name": "Surveying I w/Lab"
+                }, 
+                {
+                    "code": "CCT 145", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CCT/145", 
+                    "name": "Fundamentals of Land Surveying"
+                }, 
+                {
+                    "code": "CCT 147", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CCT/147", 
+                    "name": "Construction Techniques and Codes"
+                }, 
+                {
+                    "code": "CCT 191", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CCT/191", 
+                    "name": "Civil/Construction Internship"
+                }, 
+                {
+                    "code": "CCT 195", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CCT/195", 
+                    "name": "Construction Safety"
+                }, 
+                {
+                    "code": "CCT 202", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CCT/202", 
+                    "name": "Construction Materials Testing w/Lab"
+                }, 
+                {
+                    "code": "CCT 208", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CCT/208", 
+                    "name": "Construction Estimating w/Lab"
+                }, 
+                {
+                    "code": "CCT 220", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CCT/220", 
+                    "name": "Contract Administration/Contract Law"
+                }, 
+                {
+                    "code": "CCT 230", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CCT/230", 
+                    "name": "Surveying II w/Lab"
+                }, 
+                {
+                    "code": "CCT 235", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CCT/235", 
+                    "name": "Legal Aspects of Boundary Surveying"
+                }, 
+                {
+                    "code": "CCT 271", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CCT/271", 
+                    "name": "Construction Management"
+                }, 
+                {
+                    "code": "CCT 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CCT/299", 
+                    "name": "Special Topics in Construction & Civil Technology"
+                }
+            ], 
+            "name": "Cct Corp Communication & Tech", 
+            "url": "http://www.chegg.com/courses/linnstate/CCT"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 030", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/030", 
+                    "name": "Introductory English as a Second Language"
+                }, 
+                {
+                    "code": "COM 035", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/035", 
+                    "name": "Intermediate English as a Second Language"
+                }, 
+                {
+                    "code": "COM 070", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/070", 
+                    "name": "Reading Improvement"
+                }, 
+                {
+                    "code": "COM 096", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/096", 
+                    "name": "Introduction to Writing"
+                }, 
+                {
+                    "code": "COM 101", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/101", 
+                    "name": "English Composition"
+                }, 
+                {
+                    "code": "COM 110", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/110", 
+                    "name": "Honors Composition"
+                }, 
+                {
+                    "code": "COM 111", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/111", 
+                    "name": "Oral Communications"
+                }, 
+                {
+                    "code": "COM 121", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/121", 
+                    "name": "Public Speaking"
+                }, 
+                {
+                    "code": "COM 130", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/130", 
+                    "name": "Fundamentals of Effective Reading"
+                }, 
+                {
+                    "code": "COM 134", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/134", 
+                    "name": "Effective and Critical Reading"
+                }, 
+                {
+                    "code": "COM 190", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/190", 
+                    "name": "Writing for the World Wide Web"
+                }, 
+                {
+                    "code": "COM 201", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/201", 
+                    "name": "Occupational Communication"
+                }, 
+                {
+                    "code": "COM 211", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/211", 
+                    "name": "Technical Writing"
+                }, 
+                {
+                    "code": "COM 289", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/289", 
+                    "name": "Research Methods in Physical Therapy"
+                }, 
+                {
+                    "code": "COM 290", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/290", 
+                    "name": "Introduction to Theatre"
+                }, 
+                {
+                    "code": "COM 292", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/292", 
+                    "name": "Introduction to Theatre II"
+                }, 
+                {
+                    "code": "COM 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/COM/299", 
+                    "name": "Special Topics in Communications"
+                }
+            ], 
+            "name": "Communication", 
+            "url": "http://www.chegg.com/courses/linnstate/COM"
+        }, 
+        {
+            "abbr": "CPP", 
+            "courses": [
+                {
+                    "code": "CPP 101", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/101", 
+                    "name": "Introduction to Microcomputer Usage"
+                }, 
+                {
+                    "code": "CPP 102", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/102", 
+                    "name": "Advanced Microcomputer Usage"
+                }, 
+                {
+                    "code": "CPP 104", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/104", 
+                    "name": "Microsoft Access"
+                }, 
+                {
+                    "code": "CPP 106", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/106", 
+                    "name": "Microsoft PowerPoint"
+                }, 
+                {
+                    "code": "CPP 108", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/108", 
+                    "name": "Microsoft Publisher"
+                }, 
+                {
+                    "code": "CPP 110", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/110", 
+                    "name": "Microsoft Outlook"
+                }, 
+                {
+                    "code": "CPP 112", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/112", 
+                    "name": "Computer Concepts"
+                }, 
+                {
+                    "code": "CPP 114", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/114", 
+                    "name": "Microsoft Word"
+                }, 
+                {
+                    "code": "CPP 116", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/116", 
+                    "name": "Graphic Design"
+                }, 
+                {
+                    "code": "CPP 118", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/118", 
+                    "name": "Microsoft Excel"
+                }, 
+                {
+                    "code": "CPP 120", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/120", 
+                    "name": "Introduction to Computer Programming"
+                }, 
+                {
+                    "code": "CPP 122", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/122", 
+                    "name": "Visual Basic Programming"
+                }, 
+                {
+                    "code": "CPP 125", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/125", 
+                    "name": "COBOL Programming Language"
+                }, 
+                {
+                    "code": "CPP 126", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/126", 
+                    "name": "RPG Programming Language"
+                }, 
+                {
+                    "code": "CPP 127", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/127", 
+                    "name": "Lotus Notes"
+                }, 
+                {
+                    "code": "CPP 133", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/133", 
+                    "name": "Operating Platforms"
+                }, 
+                {
+                    "code": "CPP 140", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/140", 
+                    "name": "Internship I"
+                }, 
+                {
+                    "code": "CPP 141", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/141", 
+                    "name": "Internship II"
+                }, 
+                {
+                    "code": "CPP 212", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/212", 
+                    "name": "Visual Basic Programming II"
+                }, 
+                {
+                    "code": "CPP 215", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/215", 
+                    "name": "Java Programming"
+                }, 
+                {
+                    "code": "CPP 218", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/218", 
+                    "name": "Internet Programming II"
+                }, 
+                {
+                    "code": "CPP 222", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/222", 
+                    "name": "Database Systems Management and Design"
+                }, 
+                {
+                    "code": "CPP 223", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/223", 
+                    "name": "Advanced Database Systems Management and Design"
+                }, 
+                {
+                    "code": "CPP 225", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/225", 
+                    "name": "Control Language Programming"
+                }, 
+                {
+                    "code": "CPP 230", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/230", 
+                    "name": "C++ Programming Language I"
+                }, 
+                {
+                    "code": "CPP 231", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/231", 
+                    "name": "Advanced COBOL Programming Language"
+                }, 
+                {
+                    "code": "CPP 232", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/232", 
+                    "name": "GIS Database Systems"
+                }, 
+                {
+                    "code": "CPP 237", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/237", 
+                    "name": "Internet Programming"
+                }, 
+                {
+                    "code": "CPP 239", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/239", 
+                    "name": "Perl Programming"
+                }, 
+                {
+                    "code": "CPP 240", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/240", 
+                    "name": "C++ Programming Language II"
+                }, 
+                {
+                    "code": "CPP 245", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/245", 
+                    "name": "C# Programming"
+                }, 
+                {
+                    "code": "CPP 250", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/250", 
+                    "name": "CL Programming-AS400"
+                }, 
+                {
+                    "code": "CPP 260", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/260", 
+                    "name": "System Analysis and Design"
+                }, 
+                {
+                    "code": "CPP 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CPP/299", 
+                    "name": "Special Topics in Computer Programming"
+                }
+            ], 
+            "name": "Clinical Pharmacy Practice", 
+            "url": "http://www.chegg.com/courses/linnstate/CPP"
+        }, 
+        {
+            "abbr": "CTG", 
+            "courses": [
+                {
+                    "code": "CTG 105", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/105", 
+                    "name": "Missouri Pesticide Application"
+                }, 
+                {
+                    "code": "CTG 106", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/106", 
+                    "name": "Fundamentals of Turf and Grounds"
+                }, 
+                {
+                    "code": "CTG 107", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/107", 
+                    "name": "Turfgrass Management I"
+                }, 
+                {
+                    "code": "CTG 109", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/109", 
+                    "name": "Equipment Operations and Maintenance"
+                }, 
+                {
+                    "code": "CTG 110", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/110", 
+                    "name": "Soils and Fertilizers"
+                }, 
+                {
+                    "code": "CTG 116", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/116", 
+                    "name": "Plant Propagation"
+                }, 
+                {
+                    "code": "CTG 117", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/117", 
+                    "name": "Commercial Site Contracting"
+                }, 
+                {
+                    "code": "CTG 120", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/120", 
+                    "name": "Commercial Turf and Grounds Internship"
+                }, 
+                {
+                    "code": "CTG 201", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/201", 
+                    "name": "Weeds and Diseases"
+                }, 
+                {
+                    "code": "CTG 204", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/204", 
+                    "name": "Insects and Pests"
+                }, 
+                {
+                    "code": "CTG 206", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/206", 
+                    "name": "Irrigation and Drainage"
+                }, 
+                {
+                    "code": "CTG 207", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/207", 
+                    "name": "Turfgrass Management II"
+                }, 
+                {
+                    "code": "CTG 209", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/209", 
+                    "name": "Landscape Design and Installation"
+                }, 
+                {
+                    "code": "CTG 210", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/210", 
+                    "name": "Computer Aided Landscape Design"
+                }, 
+                {
+                    "code": "CTG 216", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/216", 
+                    "name": "Woody Plant Identification"
+                }, 
+                {
+                    "code": "CTG 217", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/217", 
+                    "name": "Herbaceous Plant Identification"
+                }, 
+                {
+                    "code": "CTG 220", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/220", 
+                    "name": "Basic Shop for Horticulture"
+                }, 
+                {
+                    "code": "CTG 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/CTG/299", 
+                    "name": "Special Topics in Commercial Turf & Grounds Management"
+                }
+            ], 
+            "name": "Conducting", 
+            "url": "http://www.chegg.com/courses/linnstate/CTG"
+        }, 
+        {
+            "abbr": "DDT", 
+            "courses": [
+                {
+                    "code": "DDT 111", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/DDT/111", 
+                    "name": "Civil Drafting"
+                }, 
+                {
+                    "code": "DDT 130", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/DDT/130", 
+                    "name": "Practical Drafting for the HVAC Trades"
+                }, 
+                {
+                    "code": "DDT 135", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/DDT/135", 
+                    "name": "Introductory Drafting Fundamentals"
+                }, 
+                {
+                    "code": "DDT 150", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/DDT/150", 
+                    "name": "Fundamentals of Drafting"
+                }, 
+                {
+                    "code": "DDT 151", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/DDT/151", 
+                    "name": "Mechanical Drafting with Dimensioning and Tolerancing"
+                }, 
+                {
+                    "code": "DDT 153", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/DDT/153", 
+                    "name": "Industrial Graphics"
+                }, 
+                {
+                    "code": "DDT 154", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/DDT/154", 
+                    "name": "Industrial Design"
+                }, 
+                {
+                    "code": "DDT 163", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/DDT/163", 
+                    "name": "Design Drafting Internship"
+                }, 
+                {
+                    "code": "DDT 183", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/DDT/183", 
+                    "name": "Fundamentals of Computer Aided Drafting"
+                }, 
+                {
+                    "code": "DDT 184", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/DDT/184", 
+                    "name": "Advanced Applications of Computer Aided Drafting and Design"
+                }, 
+                {
+                    "code": "DDT 250", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/DDT/250", 
+                    "name": "Residential Architectural Drafting"
+                }, 
+                {
+                    "code": "DDT 252", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/DDT/252", 
+                    "name": "Structural Steel Drafting"
+                }, 
+                {
+                    "code": "DDT 253", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/DDT/253", 
+                    "name": "Residential Architectural Detailing and Design"
+                }, 
+                {
+                    "code": "DDT 254", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/DDT/254", 
+                    "name": "Structural Detailing and Design"
+                }, 
+                {
+                    "code": "DDT 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/DDT/299", 
+                    "name": "Special Topics in Design Drafting Technology"
+                }
+            ], 
+            "name": "Drafting", 
+            "url": "http://www.chegg.com/courses/linnstate/DDT"
+        }, 
+        {
+            "abbr": "EDS", 
+            "courses": [
+                {
+                    "code": "EDS 105", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EDS/105", 
+                    "name": "Electrical Distribution Systems"
+                }, 
+                {
+                    "code": "EDS 202", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EDS/202", 
+                    "name": "Safety and Accident Prevention"
+                }, 
+                {
+                    "code": "EDS 205", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EDS/205", 
+                    "name": "Climbing Skills"
+                }, 
+                {
+                    "code": "EDS 210", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EDS/210", 
+                    "name": "Pole Framing and Construction Specifications"
+                }, 
+                {
+                    "code": "EDS 220", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EDS/220", 
+                    "name": "Equipment Operation"
+                }, 
+                {
+                    "code": "EDS 225", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EDS/225", 
+                    "name": "Setting and Replacing Poles"
+                }, 
+                {
+                    "code": "EDS 235", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EDS/235", 
+                    "name": "Utility Internship"
+                }, 
+                {
+                    "code": "EDS 237", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EDS/237", 
+                    "name": "Transformer Theory and Installation"
+                }, 
+                {
+                    "code": "EDS 241", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EDS/241", 
+                    "name": "Conductor Installation,Service and Metering"
+                }, 
+                {
+                    "code": "EDS 251", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EDS/251", 
+                    "name": "Rubber Gloving and Underground Distribution"
+                }, 
+                {
+                    "code": "EDS 271", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EDS/271", 
+                    "name": "Fusing,Substation and Voltage Regulation"
+                }, 
+                {
+                    "code": "EDS 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EDS/299", 
+                    "name": "Special Topics in Electrical Distribution Systems"
+                }
+            ], 
+            "name": "Sp Ed, Rhb, Sch Psy & Deaf Std", 
+            "url": "http://www.chegg.com/courses/linnstate/EDS"
+        }, 
+        {
+            "abbr": "EET", 
+            "courses": [
+                {
+                    "code": "EET 105", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/105", 
+                    "name": "Human Anatomy and Physiology as applied to Biomedical Instrumentation"
+                }, 
+                {
+                    "code": "EET 110", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/110", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "EET 120", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/120", 
+                    "name": "Basic Electricity and Electronics"
+                }, 
+                {
+                    "code": "EET 122", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/122", 
+                    "name": "DC/AC Circuit Analysis w/Lab"
+                }, 
+                {
+                    "code": "EET 123", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/123", 
+                    "name": "Semiconductor Devices and Analog Circuits w/Lab"
+                }, 
+                {
+                    "code": "EET 125", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/125", 
+                    "name": "Digital Electronics w/Lab"
+                }, 
+                {
+                    "code": "EET 133", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/133", 
+                    "name": "Biomedical Instrumentation I"
+                }, 
+                {
+                    "code": "EET 163", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/163", 
+                    "name": "Software Development and Assembly Language Programming w/Lab"
+                }, 
+                {
+                    "code": "EET 170", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/170", 
+                    "name": "Biomedical Engineering Technology Internship"
+                }, 
+                {
+                    "code": "EET 210", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/210", 
+                    "name": "Industrial Electronics w/Lab"
+                }, 
+                {
+                    "code": "EET 214", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/214", 
+                    "name": "Programmable Controllers"
+                }, 
+                {
+                    "code": "EET 215", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/215", 
+                    "name": "Microcomputer Hardware,Operation,Repair,and Interfacing"
+                }, 
+                {
+                    "code": "EET 222", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/222", 
+                    "name": "Biomedical Instrumentation II"
+                }, 
+                {
+                    "code": "EET 225", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/225", 
+                    "name": "Diagnostic Imaging"
+                }, 
+                {
+                    "code": "EET 237", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/237", 
+                    "name": "Electronic Telecommunications w/Lab"
+                }, 
+                {
+                    "code": "EET 240", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/240", 
+                    "name": "Computer Integrated Manufacturing w/Lab"
+                }, 
+                {
+                    "code": "EET 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EET/299", 
+                    "name": "Special Topics in Electronics Engineering Technology"
+                }
+            ], 
+            "name": "Electronics Engineering Techn", 
+            "url": "http://www.chegg.com/courses/linnstate/EET"
+        }, 
+        {
+            "abbr": "EMS", 
+            "courses": [
+                {
+                    "code": "EMS 101", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EMS/101", 
+                    "name": "Statistical Process Control"
+                }, 
+                {
+                    "code": "EMS 111", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EMS/111", 
+                    "name": "Industrial and Shop Math"
+                }, 
+                {
+                    "code": "EMS 112", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EMS/112", 
+                    "name": "Trigonometry for Machine Tool"
+                }, 
+                {
+                    "code": "EMS 113", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EMS/113", 
+                    "name": "Industrial Science"
+                }, 
+                {
+                    "code": "EMS 116", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EMS/116", 
+                    "name": "General Algebra"
+                }, 
+                {
+                    "code": "EMS 120", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EMS/120", 
+                    "name": "Trigonometry for Industrial Electricity"
+                }, 
+                {
+                    "code": "EMS 220", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EMS/220", 
+                    "name": "Properties of Materials"
+                }, 
+                {
+                    "code": "EMS 246", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EMS/246", 
+                    "name": "Statics"
+                }, 
+                {
+                    "code": "EMS 247", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EMS/247", 
+                    "name": "Strength of Materials"
+                }
+            ], 
+            "name": "Early Modern Studies", 
+            "url": "http://www.chegg.com/courses/linnstate/EMS"
+        }, 
+        {
+            "abbr": "ENT", 
+            "courses": [
+                {
+                    "code": "ENT 100", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/ENT/100", 
+                    "name": "Essentials of Entrepreneurship"
+                }
+            ], 
+            "name": "Entrepreneurship", 
+            "url": "http://www.chegg.com/courses/linnstate/ENT"
+        }, 
+        {
+            "abbr": "EPG", 
+            "courses": [
+                {
+                    "code": "EPG 130", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EPG/130", 
+                    "name": "Generators and Alternators"
+                }, 
+                {
+                    "code": "EPG 150", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EPG/150", 
+                    "name": "Governors"
+                }, 
+                {
+                    "code": "EPG 200", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EPG/200", 
+                    "name": "Internship"
+                }, 
+                {
+                    "code": "EPG 210", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EPG/210", 
+                    "name": "Engine/Generator Instruments and Controls"
+                }, 
+                {
+                    "code": "EPG 220", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EPG/220", 
+                    "name": "Generators and Prime Mover Protection"
+                }, 
+                {
+                    "code": "EPG 230", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EPG/230", 
+                    "name": "Electric Power Generator Application & Installation"
+                }, 
+                {
+                    "code": "EPG 270", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EPG/270", 
+                    "name": "Troubleshooting Prime Movers and Generators"
+                }, 
+                {
+                    "code": "EPG 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/EPG/299", 
+                    "name": "Special Topics in Electric Power Generation Technology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/linnstate/EPG"
+        }, 
+        {
+            "abbr": "HEO", 
+            "courses": [
+                {
+                    "code": "HEO 100", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/100", 
+                    "name": "First Aid and Safety"
+                }, 
+                {
+                    "code": "HEO 102", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/102", 
+                    "name": "Basics of Heavy Equipment Operation"
+                }, 
+                {
+                    "code": "HEO 105", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/105", 
+                    "name": "Orientation to the Trade"
+                }, 
+                {
+                    "code": "HEO 106", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/106", 
+                    "name": "Introduction to Heavy Equipment Operations"
+                }, 
+                {
+                    "code": "HEO 112", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/112", 
+                    "name": "Applied Measurement in Construction"
+                }, 
+                {
+                    "code": "HEO 115", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/115", 
+                    "name": "Welding"
+                }, 
+                {
+                    "code": "HEO 131", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/131", 
+                    "name": "Heavy Equipment Operations Internship"
+                }, 
+                {
+                    "code": "HEO 132", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/132", 
+                    "name": "Soils"
+                }, 
+                {
+                    "code": "HEO 135", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/135", 
+                    "name": "Advanced Safety"
+                }, 
+                {
+                    "code": "HEO 137", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/137", 
+                    "name": "Finishing and Grading"
+                }, 
+                {
+                    "code": "HEO 139", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/139", 
+                    "name": "Grade Operations"
+                }, 
+                {
+                    "code": "HEO 146", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/146", 
+                    "name": "Backhoe and Excavator"
+                }, 
+                {
+                    "code": "HEO 147", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/147", 
+                    "name": "Dozer and Scraper"
+                }, 
+                {
+                    "code": "HEO 148", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/148", 
+                    "name": "Loader"
+                }, 
+                {
+                    "code": "HEO 149", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/149", 
+                    "name": "Motor Grader and Skid Steer"
+                }, 
+                {
+                    "code": "HEO 150", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/150", 
+                    "name": "Commercial Driver License"
+                }, 
+                {
+                    "code": "HEO 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HEO/299", 
+                    "name": "Special Topics in Heavy Equipment Operations"
+                }
+            ], 
+            "name": "Heavy Equipment Operation (Heo)", 
+            "url": "http://www.chegg.com/courses/linnstate/HEO"
+        }, 
+        {
+            "abbr": "HET", 
+            "courses": [
+                {
+                    "code": "HET 140", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HET/140", 
+                    "name": "Introduction to Equipment Tracks,Tires and U/C"
+                }, 
+                {
+                    "code": "HET 141", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HET/141", 
+                    "name": "Fluids and Filtration"
+                }, 
+                {
+                    "code": "HET 145", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HET/145", 
+                    "name": "Engines I"
+                }, 
+                {
+                    "code": "HET 191", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HET/191", 
+                    "name": "Internship I"
+                }, 
+                {
+                    "code": "HET 242", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HET/242", 
+                    "name": "Electrical Systems I"
+                }, 
+                {
+                    "code": "HET 243", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HET/243", 
+                    "name": "Electrical Systems II"
+                }, 
+                {
+                    "code": "HET 244", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HET/244", 
+                    "name": "Hydraulics I"
+                }, 
+                {
+                    "code": "HET 245", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HET/245", 
+                    "name": "Hydraulics II"
+                }, 
+                {
+                    "code": "HET 246", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HET/246", 
+                    "name": "Power Train I"
+                }, 
+                {
+                    "code": "HET 247", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HET/247", 
+                    "name": "Power Train II"
+                }, 
+                {
+                    "code": "HET 250", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HET/250", 
+                    "name": "Failure Analysis"
+                }, 
+                {
+                    "code": "HET 255", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HET/255", 
+                    "name": "Engines II"
+                }, 
+                {
+                    "code": "HET 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HET/299", 
+                    "name": "Special Topics in Heavy Equipment Technology"
+                }
+            ], 
+            "name": "Heavy Equipment Maintenance", 
+            "url": "http://www.chegg.com/courses/linnstate/HET"
+        }, 
+        {
+            "abbr": "HST", 
+            "courses": [
+                {
+                    "code": "HST 105", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HST/105", 
+                    "name": "American History to 1877"
+                }, 
+                {
+                    "code": "HST 110", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HST/110", 
+                    "name": "American History from 1877 to the Present"
+                }, 
+                {
+                    "code": "HST 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HST/299", 
+                    "name": "Special Topics in History"
+                }
+            ], 
+            "name": "History - Cps", 
+            "url": "http://www.chegg.com/courses/linnstate/HST"
+        }, 
+        {
+            "abbr": "HVT", 
+            "courses": [
+                {
+                    "code": "HVT 123", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HVT/123", 
+                    "name": "Electrical Wiring"
+                }, 
+                {
+                    "code": "HVT 124", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HVT/124", 
+                    "name": "Electrical Wiring"
+                }, 
+                {
+                    "code": "HVT 151", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HVT/151", 
+                    "name": "Fundamentals of Refrigeration,Air Conditioning and Introduction to DomesticRefrigeration"
+                }, 
+                {
+                    "code": "HVT 152", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HVT/152", 
+                    "name": "Domestic and Commercial Refrigeration w/Lab"
+                }, 
+                {
+                    "code": "HVT 161", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HVT/161", 
+                    "name": "Electricity Fundamentals"
+                }, 
+                {
+                    "code": "HVT 252", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HVT/252", 
+                    "name": "Residential and Commercial Heating and A/C w/Lab"
+                }, 
+                {
+                    "code": "HVT 255", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HVT/255", 
+                    "name": "Internship"
+                }, 
+                {
+                    "code": "HVT 262", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HVT/262", 
+                    "name": "Systems Diagnosis & Repair"
+                }, 
+                {
+                    "code": "HVT 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/HVT/299", 
+                    "name": "Special Topics in Heating,Ventilation,& Air Conditioning Technology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/linnstate/HVT"
+        }, 
+        {
+            "abbr": "IEL", 
+            "courses": [
+                {
+                    "code": "IEL 102", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/102", 
+                    "name": "Safety and Accident Prevention"
+                }, 
+                {
+                    "code": "IEL 106", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/106", 
+                    "name": "Electrical Blueprint Reading"
+                }, 
+                {
+                    "code": "IEL 115", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/115", 
+                    "name": "Basic Motor Controls"
+                }, 
+                {
+                    "code": "IEL 117", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/117", 
+                    "name": "Circuitry Fundamentals with Lab"
+                }, 
+                {
+                    "code": "IEL 122", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/122", 
+                    "name": "Power Regulation"
+                }, 
+                {
+                    "code": "IEL 128", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/128", 
+                    "name": "National Electrical Code"
+                }, 
+                {
+                    "code": "IEL 201", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/201", 
+                    "name": "Industrial Wiring I"
+                }, 
+                {
+                    "code": "IEL 208", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/208", 
+                    "name": "Integrated Mechanical Systems"
+                }, 
+                {
+                    "code": "IEL 211", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/211", 
+                    "name": "Transformers"
+                }, 
+                {
+                    "code": "IEL 217", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/217", 
+                    "name": "Advanced Motor Controls"
+                }, 
+                {
+                    "code": "IEL 221", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/221", 
+                    "name": "Frequency Drives"
+                }, 
+                {
+                    "code": "IEL 230", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/230", 
+                    "name": "Industrial Electricity Internship I"
+                }, 
+                {
+                    "code": "IEL 251", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/251", 
+                    "name": "Industrial Wiring II"
+                }, 
+                {
+                    "code": "IEL 255", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/255", 
+                    "name": "Basic Programmable Logic Controllers"
+                }, 
+                {
+                    "code": "IEL 257", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/257", 
+                    "name": "Power Distribution"
+                }, 
+                {
+                    "code": "IEL 260", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/260", 
+                    "name": "Motors"
+                }, 
+                {
+                    "code": "IEL 272", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/272", 
+                    "name": "Topics in Electrical System Design"
+                }, 
+                {
+                    "code": "IEL 275", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/275", 
+                    "name": "Advanced Programmable Controllers"
+                }, 
+                {
+                    "code": "IEL 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/IEL/299", 
+                    "name": "Special Topics in Industrial Electricity"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/linnstate/IEL"
+        }, 
+        {
+            "abbr": "MAR", 
+            "courses": [
+                {
+                    "code": "MAR 101", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/101", 
+                    "name": "Introduction to Electricity"
+                }, 
+                {
+                    "code": "MAR 103", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/103", 
+                    "name": "Introduction to Photonics"
+                }, 
+                {
+                    "code": "MAR 105", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/105", 
+                    "name": "Data Collection,Analysis and Reporting"
+                }, 
+                {
+                    "code": "MAR 111", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/111", 
+                    "name": "Mechanical and Fluid Power Transmission"
+                }, 
+                {
+                    "code": "MAR 118", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/118", 
+                    "name": "Industrial Motors and their Controls"
+                }, 
+                {
+                    "code": "MAR 121", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/121", 
+                    "name": "Geometric Optics"
+                }, 
+                {
+                    "code": "MAR 123", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/123", 
+                    "name": "Wave Optics"
+                }, 
+                {
+                    "code": "MAR 125", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/125", 
+                    "name": "Applied Electronics"
+                }, 
+                {
+                    "code": "MAR 150", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/150", 
+                    "name": "Machine Shop Fundamentals"
+                }, 
+                {
+                    "code": "MAR 175", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/175", 
+                    "name": "Machine Tool Programming"
+                }, 
+                {
+                    "code": "MAR 190", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/190", 
+                    "name": "Internship I"
+                }, 
+                {
+                    "code": "MAR 191", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/191", 
+                    "name": "Machine Tool Operations"
+                }, 
+                {
+                    "code": "MAR 202", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/202", 
+                    "name": "Laser System Design"
+                }, 
+                {
+                    "code": "MAR 204", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/204", 
+                    "name": "PLC Programming"
+                }, 
+                {
+                    "code": "MAR 205", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/205", 
+                    "name": "Photonics Applications"
+                }, 
+                {
+                    "code": "MAR 206", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/206", 
+                    "name": "Industrial Robotics"
+                }, 
+                {
+                    "code": "MAR 208", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/208", 
+                    "name": "Computer Aided Machining"
+                }, 
+                {
+                    "code": "MAR 210", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/210", 
+                    "name": "Materials Processing with Lasers"
+                }, 
+                {
+                    "code": "MAR 211", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/211", 
+                    "name": "Theory of Industrial Automation"
+                }, 
+                {
+                    "code": "MAR 215", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/215", 
+                    "name": "Introduction to Quality Control"
+                }, 
+                {
+                    "code": "MAR 220", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/220", 
+                    "name": "Laser System Troubleshooting"
+                }, 
+                {
+                    "code": "MAR 221", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/221", 
+                    "name": "Mechanical and Electronic Device Troubleshooting"
+                }, 
+                {
+                    "code": "MAR 231", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/231", 
+                    "name": "CIM Applications"
+                }, 
+                {
+                    "code": "MAR 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAR/299", 
+                    "name": "Special Topics in Automation & Robotics Technology"
+                }
+            ], 
+            "name": "Marketing", 
+            "url": "http://www.chegg.com/courses/linnstate/MAR"
+        }, 
+        {
+            "abbr": "MAT", 
+            "courses": [
+                {
+                    "code": "MAT 030", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAT/030", 
+                    "name": "Preparatory Mathematics"
+                }, 
+                {
+                    "code": "MAT 050", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAT/050", 
+                    "name": "Introductory Algebra"
+                }, 
+                {
+                    "code": "MAT 070", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAT/070", 
+                    "name": "Intermediate Algebra with Lab"
+                }, 
+                {
+                    "code": "MAT 111", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAT/111", 
+                    "name": "Trigonometry"
+                }, 
+                {
+                    "code": "MAT 115", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAT/115", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MAT 116", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAT/116", 
+                    "name": "College Algebra Using Mathematical Modeling"
+                }, 
+                {
+                    "code": "MAT 118", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAT/118", 
+                    "name": "Survey of College Mathematics"
+                }, 
+                {
+                    "code": "MAT 120", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAT/120", 
+                    "name": "Pre-Calculus"
+                }, 
+                {
+                    "code": "MAT 121", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAT/121", 
+                    "name": "Trigonometry"
+                }, 
+                {
+                    "code": "MAT 122", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAT/122", 
+                    "name": "Elements of Calculus"
+                }, 
+                {
+                    "code": "MAT 123", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MAT/123", 
+                    "name": "Calculus I"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/linnstate/MAT"
+        }, 
+        {
+            "abbr": "MHT", 
+            "courses": [
+                {
+                    "code": "MHT 102", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MHT/102", 
+                    "name": "Internship"
+                }, 
+                {
+                    "code": "MHT 130", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MHT/130", 
+                    "name": "Electrical and Electronic Systems"
+                }, 
+                {
+                    "code": "MHT 145", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MHT/145", 
+                    "name": "Engines I"
+                }, 
+                {
+                    "code": "MHT 160", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MHT/160", 
+                    "name": "Preventative Maintenance Inspection"
+                }, 
+                {
+                    "code": "MHT 170", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MHT/170", 
+                    "name": "Electrical and Electronic Systems II"
+                }, 
+                {
+                    "code": "MHT 180", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MHT/180", 
+                    "name": "Truck Welding"
+                }, 
+                {
+                    "code": "MHT 200", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MHT/200", 
+                    "name": "Suspension and Steering"
+                }, 
+                {
+                    "code": "MHT 210", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MHT/210", 
+                    "name": "Brakes"
+                }, 
+                {
+                    "code": "MHT 220", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MHT/220", 
+                    "name": "Job Estimating,Diagnostics,Field Repair"
+                }, 
+                {
+                    "code": "MHT 240", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MHT/240", 
+                    "name": "Drive Train"
+                }, 
+                {
+                    "code": "MHT 255", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MHT/255", 
+                    "name": "Engines II"
+                }, 
+                {
+                    "code": "MHT 260", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MHT/260", 
+                    "name": "Commercial Drivers License"
+                }, 
+                {
+                    "code": "MHT 280", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MHT/280", 
+                    "name": "Heating and Air Conditioning"
+                }, 
+                {
+                    "code": "MHT 290", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MHT/290", 
+                    "name": "Basic Truck/Automotive Shop Management"
+                }, 
+                {
+                    "code": "MHT 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MHT/299", 
+                    "name": "Special Topics in Medium/Heavy Truck Technology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/linnstate/MHT"
+        }, 
+        {
+            "abbr": "MNT", 
+            "courses": [
+                {
+                    "code": "MNT 101", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/101", 
+                    "name": "Time Management"
+                }, 
+                {
+                    "code": "MNT 105", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/105", 
+                    "name": "Basic Nuclear Math and Theory"
+                }, 
+                {
+                    "code": "MNT 114", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/114", 
+                    "name": "Introduction to Radiation Safety"
+                }, 
+                {
+                    "code": "MNT 185", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/185", 
+                    "name": "Reactor Plant Components"
+                }, 
+                {
+                    "code": "MNT 195", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/195", 
+                    "name": "Basic Reactor Safety,Theory,and Operations"
+                }, 
+                {
+                    "code": "MNT 211", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/211", 
+                    "name": "Piping and Instrumentation Drawings"
+                }, 
+                {
+                    "code": "MNT 223", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/223", 
+                    "name": "Radiation Detection"
+                }, 
+                {
+                    "code": "MNT 233", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/233", 
+                    "name": "Radiation Dosimetry"
+                }, 
+                {
+                    "code": "MNT 249", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/249", 
+                    "name": "Radiation Protection"
+                }, 
+                {
+                    "code": "MNT 260", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/260", 
+                    "name": "Nuclear and Special Process Instrumentation"
+                }, 
+                {
+                    "code": "MNT 264", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/264", 
+                    "name": "Hydraulic and Pneumatic Measurement and Control Systems"
+                }, 
+                {
+                    "code": "MNT 268", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/268", 
+                    "name": "Monitoring Systems and Troubleshooting"
+                }, 
+                {
+                    "code": "MNT 270", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/270", 
+                    "name": "Thermodynamics,Fluid Flow,and Advanced Reactor Theory"
+                }, 
+                {
+                    "code": "MNT 274", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/274", 
+                    "name": "Reactor Plant Systems"
+                }, 
+                {
+                    "code": "MNT 278", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/278", 
+                    "name": "Reactor Plant Operations"
+                }, 
+                {
+                    "code": "MNT 280", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/280", 
+                    "name": "Blueprint Reading,Metrology and Calibration"
+                }, 
+                {
+                    "code": "MNT 282", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/282", 
+                    "name": "Codes,Standards and Regulations"
+                }, 
+                {
+                    "code": "MNT 284", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/284", 
+                    "name": "Preventive and Corrective Actions"
+                }, 
+                {
+                    "code": "MNT 286", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/286", 
+                    "name": "Advanced Measurement,Testing and Materials"
+                }, 
+                {
+                    "code": "MNT 288", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/288", 
+                    "name": "Quality Audits"
+                }, 
+                {
+                    "code": "MNT 290", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/290", 
+                    "name": "Internship"
+                }, 
+                {
+                    "code": "MNT 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MNT/299", 
+                    "name": "Special Topics in Nuclear Technology"
+                }
+            ], 
+            "name": "Materials And Nanotechnology", 
+            "url": "http://www.chegg.com/courses/linnstate/MNT"
+        }, 
+        {
+            "abbr": "MPT", 
+            "courses": [
+                {
+                    "code": "MPT 151", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MPT/151", 
+                    "name": "Shop Skills"
+                }
+            ], 
+            "name": "Physical Therapy (Mpt)", 
+            "url": "http://www.chegg.com/courses/linnstate/MPT"
+        }, 
+        {
+            "abbr": "MSC", 
+            "courses": [
+                {
+                    "code": "MSC 101", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MSC/101", 
+                    "name": "Military Science Course I"
+                }, 
+                {
+                    "code": "MSC 102", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MSC/102", 
+                    "name": "Military Science Course II"
+                }, 
+                {
+                    "code": "MSC 201", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MSC/201", 
+                    "name": "Military Science Course III"
+                }, 
+                {
+                    "code": "MSC 202", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MSC/202", 
+                    "name": "Military Science Course IV"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/linnstate/MSC"
+        }, 
+        {
+            "abbr": "MTT", 
+            "courses": [
+                {
+                    "code": "MTT 100", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MTT/100", 
+                    "name": "Precision Machining Practices I"
+                }, 
+                {
+                    "code": "MTT 110", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MTT/110", 
+                    "name": "Precision Machining Practices II"
+                }, 
+                {
+                    "code": "MTT 120", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MTT/120", 
+                    "name": "CNC Programming-Milling"
+                }, 
+                {
+                    "code": "MTT 190", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MTT/190", 
+                    "name": "Machine Tool Technology Internship"
+                }, 
+                {
+                    "code": "MTT 195", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MTT/195", 
+                    "name": "Automotive Machining Essentials"
+                }, 
+                {
+                    "code": "MTT 200", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MTT/200", 
+                    "name": "Grinding Technology"
+                }, 
+                {
+                    "code": "MTT 210", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MTT/210", 
+                    "name": "Fundamentals of CAD/CAM"
+                }, 
+                {
+                    "code": "MTT 220", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MTT/220", 
+                    "name": "CNC Programming-Turning and Wire EDM"
+                }, 
+                {
+                    "code": "MTT 230", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MTT/230", 
+                    "name": "Advanced CAD/CAM"
+                }, 
+                {
+                    "code": "MTT 240", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MTT/240", 
+                    "name": "Solid Modeling Essentials"
+                }, 
+                {
+                    "code": "MTT 290", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MTT/290", 
+                    "name": "Precision Machining Capstone Course"
+                }, 
+                {
+                    "code": "MTT 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/MTT/299", 
+                    "name": "Special Topics in Machine Tool Technology"
+                }
+            ], 
+            "name": "Machine Tool", 
+            "url": "http://www.chegg.com/courses/linnstate/MTT"
+        }, 
+        {
+            "abbr": "NST", 
+            "courses": [
+                {
+                    "code": "NST 101", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/101", 
+                    "name": "Network Fundamentals"
+                }, 
+                {
+                    "code": "NST 103", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/103", 
+                    "name": "Fundamentals of Voice and Data Cabling"
+                }, 
+                {
+                    "code": "NST 105", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/105", 
+                    "name": "System Maintenance"
+                }, 
+                {
+                    "code": "NST 114", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/114", 
+                    "name": "Telecommunications Convergence Technologies"
+                }, 
+                {
+                    "code": "NST 115", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/115", 
+                    "name": "Operating Platforms"
+                }, 
+                {
+                    "code": "NST 121", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/121", 
+                    "name": "Routing Protocols and Concepts"
+                }, 
+                {
+                    "code": "NST 123", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/123", 
+                    "name": "Telecommunications Concepts"
+                }, 
+                {
+                    "code": "NST 180", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/180", 
+                    "name": "Networking Internship I"
+                }, 
+                {
+                    "code": "NST 185", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/185", 
+                    "name": "Networking Internship II"
+                }, 
+                {
+                    "code": "NST 190", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/190", 
+                    "name": "Telephony Internship I"
+                }, 
+                {
+                    "code": "NST 195", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/195", 
+                    "name": "Telephony Internship II"
+                }, 
+                {
+                    "code": "NST 197", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/197", 
+                    "name": "Networking Internship III"
+                }, 
+                {
+                    "code": "NST 202", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/202", 
+                    "name": "Local Area Network Switching and Wireless"
+                }, 
+                {
+                    "code": "NST 205", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/205", 
+                    "name": "Linux Administration and Installation"
+                }, 
+                {
+                    "code": "NST 207", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/207", 
+                    "name": "Networking Internship IV"
+                }, 
+                {
+                    "code": "NST 210", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/210", 
+                    "name": "Microsoft Network Administration"
+                }, 
+                {
+                    "code": "NST 219", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/219", 
+                    "name": "Accessing the Wide Area Network"
+                }, 
+                {
+                    "code": "NST 225", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/225", 
+                    "name": "Building Scalable Internetworks"
+                }, 
+                {
+                    "code": "NST 226", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/226", 
+                    "name": "Building Multilayer Switched Networks"
+                }, 
+                {
+                    "code": "NST 227", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/227", 
+                    "name": "Implementing Secure Converged Wide Area Networks"
+                }, 
+                {
+                    "code": "NST 228", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/228", 
+                    "name": "Optimizing Converged Networks"
+                }, 
+                {
+                    "code": "NST 235", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/235", 
+                    "name": "Fiber Optic Technology"
+                }, 
+                {
+                    "code": "NST 252", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/252", 
+                    "name": "CompTIA Network+"
+                }, 
+                {
+                    "code": "NST 267", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/267", 
+                    "name": "Advanced Customer Provided Equipment Installation & Repair"
+                }, 
+                {
+                    "code": "NST 271", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/271", 
+                    "name": "Digital Switching I"
+                }, 
+                {
+                    "code": "NST 280", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/280", 
+                    "name": "T1 Networking I"
+                }, 
+                {
+                    "code": "NST 285", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/285", 
+                    "name": "T1 Networking II"
+                }, 
+                {
+                    "code": "NST 292", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/292", 
+                    "name": "Fundamentals of Network Security"
+                }, 
+                {
+                    "code": "NST 295", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/295", 
+                    "name": "Networking Systems Capstone Project"
+                }, 
+                {
+                    "code": "NST 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/NST/299", 
+                    "name": "Special Topics in Networking Systems Technology"
+                }
+            ], 
+            "name": "Network Security Technology", 
+            "url": "http://www.chegg.com/courses/linnstate/NST"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 100", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PHY/100", 
+                    "name": "Physical Science"
+                }, 
+                {
+                    "code": "PHY 101", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PHY/101", 
+                    "name": "College Physics"
+                }, 
+                {
+                    "code": "PHY 102", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PHY/102", 
+                    "name": "College Physics Lab"
+                }, 
+                {
+                    "code": "PHY 103", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PHY/103", 
+                    "name": "Environmental Science"
+                }, 
+                {
+                    "code": "PHY 104", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PHY/104", 
+                    "name": "Environmental Science Lab"
+                }, 
+                {
+                    "code": "PHY 121", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PHY/121", 
+                    "name": "General Chemistry I"
+                }, 
+                {
+                    "code": "PHY 201", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PHY/201", 
+                    "name": "General Physics"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/linnstate/PHY"
+        }, 
+        {
+            "abbr": "PSC", 
+            "courses": [
+                {
+                    "code": "PSC 100", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PSC/100", 
+                    "name": "Missouri Government and Constitution"
+                }, 
+                {
+                    "code": "PSC 101", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PSC/101", 
+                    "name": "American Government"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/linnstate/PSC"
+        }, 
+        {
+            "abbr": "PST", 
+            "courses": [
+                {
+                    "code": "PST 100", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/100", 
+                    "name": "Introduction to Powersports Technology"
+                }, 
+                {
+                    "code": "PST 110", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/110", 
+                    "name": "Preventive Maintenance & Inspection"
+                }, 
+                {
+                    "code": "PST 120", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/120", 
+                    "name": "Electrical I"
+                }, 
+                {
+                    "code": "PST 140", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/140", 
+                    "name": "Wheels,Tires,& Brakes"
+                }, 
+                {
+                    "code": "PST 145", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/145", 
+                    "name": "Frame & Suspension Systems"
+                }, 
+                {
+                    "code": "PST 150", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/150", 
+                    "name": "Engine I"
+                }, 
+                {
+                    "code": "PST 175", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/175", 
+                    "name": "Engine II"
+                }, 
+                {
+                    "code": "PST 190", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/190", 
+                    "name": "Internship I"
+                }, 
+                {
+                    "code": "PST 210", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/210", 
+                    "name": "Power Transmission Systems"
+                }, 
+                {
+                    "code": "PST 220", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/220", 
+                    "name": "Electrical II & Electronics"
+                }, 
+                {
+                    "code": "PST 230", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/230", 
+                    "name": "Job Estimating,Troubleshooting,& Diagnostics"
+                }, 
+                {
+                    "code": "PST 240", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/240", 
+                    "name": "The Business of Powersports"
+                }, 
+                {
+                    "code": "PST 250", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/250", 
+                    "name": "Engine III"
+                }, 
+                {
+                    "code": "PST 270", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/270", 
+                    "name": "Internship II"
+                }, 
+                {
+                    "code": "PST 280", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/280", 
+                    "name": "Internship III"
+                }, 
+                {
+                    "code": "PST 290", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/290", 
+                    "name": "Internship IV"
+                }, 
+                {
+                    "code": "PST 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PST/299", 
+                    "name": "Special Topics in Powersports Technology"
+                }
+            ], 
+            "name": "Public Safety Telecom (Pst)", 
+            "url": "http://www.chegg.com/courses/linnstate/PST"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 161", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PSY/161", 
+                    "name": "Health Psychology"
+                }
+            ], 
+            "name": "Clinical Counseling", 
+            "url": "http://www.chegg.com/courses/linnstate/PSY"
+        }, 
+        {
+            "abbr": "PTA", 
+            "courses": [
+                {
+                    "code": "PTA 110", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/110", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "PTA 113", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/113", 
+                    "name": "Health and Disease I"
+                }, 
+                {
+                    "code": "PTA 114", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/114", 
+                    "name": "Basic Patient Care"
+                }, 
+                {
+                    "code": "PTA 115", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/115", 
+                    "name": "Basic Patient Care Lab"
+                }, 
+                {
+                    "code": "PTA 118", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/118", 
+                    "name": "Functional Anatomy and Kinesiology"
+                }, 
+                {
+                    "code": "PTA 119", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/119", 
+                    "name": "Functional Anatomy and Kinesiology Lab"
+                }, 
+                {
+                    "code": "PTA 122", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/122", 
+                    "name": "Physical Agents and Modalities"
+                }, 
+                {
+                    "code": "PTA 124", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/124", 
+                    "name": "Physical Agents and Modalities Lab"
+                }, 
+                {
+                    "code": "PTA 126", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/126", 
+                    "name": "Clinical Practice I"
+                }, 
+                {
+                    "code": "PTA 207", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/207", 
+                    "name": "PTA as a Profession"
+                }, 
+                {
+                    "code": "PTA 212", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/212", 
+                    "name": "Orthopedic Therapeutic Exercise"
+                }, 
+                {
+                    "code": "PTA 213", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/213", 
+                    "name": "Orthopedic Therapeutic Exercise Lab"
+                }, 
+                {
+                    "code": "PTA 214", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/214", 
+                    "name": "Health and Disease II"
+                }, 
+                {
+                    "code": "PTA 216", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/216", 
+                    "name": "Trends and Issues in Physical Therapy"
+                }, 
+                {
+                    "code": "PTA 223", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/223", 
+                    "name": "Neurological Therapeutic Exercise"
+                }, 
+                {
+                    "code": "PTA 224", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/224", 
+                    "name": "Neurological Therapeutic Exercise Lab"
+                }, 
+                {
+                    "code": "PTA 226", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/226", 
+                    "name": "Clinical Practice II"
+                }, 
+                {
+                    "code": "PTA 236", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/236", 
+                    "name": "Clinical Practice III"
+                }, 
+                {
+                    "code": "PTA 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/PTA/299", 
+                    "name": "Special Topics in Physical Therapist Assistant"
+                }
+            ], 
+            "name": "Building Construction", 
+            "url": "http://www.chegg.com/courses/linnstate/PTA"
+        }, 
+        {
+            "abbr": "SEM", 
+            "courses": [
+                {
+                    "code": "SEM 105", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/SEM/105", 
+                    "name": "Career Services Seminar"
+                }, 
+                {
+                    "code": "SEM 110", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/SEM/110", 
+                    "name": "Spanish Language and Hispanic Culture"
+                }, 
+                {
+                    "code": "SEM 135", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/SEM/135", 
+                    "name": "Ford Maintenance & Light Repair Service Training Seminar"
+                }
+            ], 
+            "name": "Science And Engineering Of Materials", 
+            "url": "http://www.chegg.com/courses/linnstate/SEM"
+        }, 
+        {
+            "abbr": "SPM", 
+            "courses": [
+                {
+                    "code": "SPM 030", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/SPM/030", 
+                    "name": "Self-paced Preparatory Mathematics"
+                }, 
+                {
+                    "code": "SPM 050", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/SPM/050", 
+                    "name": "Self-paced Introductory Algebra"
+                }, 
+                {
+                    "code": "SPM 070", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/SPM/070", 
+                    "name": "Self-paced Intermediate Algebra"
+                }
+            ], 
+            "name": "Social And Preventive Medicine", 
+            "url": "http://www.chegg.com/courses/linnstate/SPM"
+        }, 
+        {
+            "abbr": "TAM", 
+            "courses": [
+                {
+                    "code": "TAM 107", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/107", 
+                    "name": "Federal Regulations for Aviation Technicians"
+                }, 
+                {
+                    "code": "TAM 109", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/109", 
+                    "name": "Aircraft Structural Materials and Corrosion Control"
+                }, 
+                {
+                    "code": "TAM 113", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/113", 
+                    "name": "General Mechanics"
+                }, 
+                {
+                    "code": "TAM 125", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/125", 
+                    "name": "Basic Electricity"
+                }, 
+                {
+                    "code": "TAM 127", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/127", 
+                    "name": "Reciprocating Engines and Lubrication Systems"
+                }, 
+                {
+                    "code": "TAM 131", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/131", 
+                    "name": "Propeller Systems"
+                }, 
+                {
+                    "code": "TAM 134", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/134", 
+                    "name": "Turbine Engines and Accessory Systems"
+                }, 
+                {
+                    "code": "TAM 136", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/136", 
+                    "name": "Powerplant Fuel Systems"
+                }, 
+                {
+                    "code": "TAM 139", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/139", 
+                    "name": "Powerplant Electrical Systems"
+                }, 
+                {
+                    "code": "TAM 200", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/200", 
+                    "name": "Auxiliary Systems and Inspections for Powerplants"
+                }, 
+                {
+                    "code": "TAM 208", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/208", 
+                    "name": "Introduction to Aircraft Welding"
+                }, 
+                {
+                    "code": "TAM 211", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/211", 
+                    "name": "Assembly and Rigging"
+                }, 
+                {
+                    "code": "TAM 213", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/213", 
+                    "name": "Sheetmetal and Non-metallic Structures"
+                }, 
+                {
+                    "code": "TAM 215", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/215", 
+                    "name": "Physics for Aviation Maintenance Technicians"
+                }, 
+                {
+                    "code": "TAM 217", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/217", 
+                    "name": "Aircraft Fluid Power Systems"
+                }, 
+                {
+                    "code": "TAM 220", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/220", 
+                    "name": "Aircraft Covering,Finishes and Woods"
+                }, 
+                {
+                    "code": "TAM 224", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/224", 
+                    "name": "Aircraft Instrumentation and Avionics Systems"
+                }, 
+                {
+                    "code": "TAM 226", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/226", 
+                    "name": "Aircraft Electrical Systems"
+                }, 
+                {
+                    "code": "TAM 228", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/228", 
+                    "name": "Airframe Systems and Inspections"
+                }, 
+                {
+                    "code": "TAM 299", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/TAM/299", 
+                    "name": "Special Topics in Aviation Maintenance"
+                }
+            ], 
+            "name": "Theoretical And Applied Mechanics", 
+            "url": "http://www.chegg.com/courses/linnstate/TAM"
+        }, 
+        {
+            "abbr": "WLD", 
+            "courses": [
+                {
+                    "code": "WLD 120", 
+                    "course_url": "http://www.chegg.com/courses/linnstate/WLD/120", 
+                    "name": "CAT Welding"
+                }
+            ], 
+            "name": "Welding", 
+            "url": "http://www.chegg.com/courses/linnstate/WLD"
+        }
+    ], 
+    "name": "linnstate"
+}

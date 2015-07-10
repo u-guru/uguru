@@ -1,0 +1,3731 @@
+{
+    "all_stats": {
+        "num_courses": 652, 
+        "num_departments": 66
+    }, 
+    "departments": [
+        {
+            "abbr": "ACC", 
+            "courses": [
+                {
+                    "code": "ACC 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/101", 
+                    "name": "Principles of Accounting I"
+                }, 
+                {
+                    "code": "ACC 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/102", 
+                    "name": "Principles of Accounting II"
+                }, 
+                {
+                    "code": "ACC 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/103", 
+                    "name": "Principles of Accounting III"
+                }, 
+                {
+                    "code": "ACC 104", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/104", 
+                    "name": "Computerized Accounting"
+                }, 
+                {
+                    "code": "ACC 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/106", 
+                    "name": "Accounting Spreadsheet Fundamentals"
+                }, 
+                {
+                    "code": "ACC 107", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/107", 
+                    "name": "Fulltime Accounting Internship"
+                }, 
+                {
+                    "code": "ACC 108", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/108", 
+                    "name": "Halftime Accounting Internship"
+                }, 
+                {
+                    "code": "ACC 122", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/122", 
+                    "name": "Introduction to Governmental and Nonprofit Accounting"
+                }, 
+                {
+                    "code": "ACC 150", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/150", 
+                    "name": "Cost Accounting"
+                }, 
+                {
+                    "code": "ACC 151", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/151", 
+                    "name": "Individual Tax Accounting"
+                }, 
+                {
+                    "code": "ACC 152", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/152", 
+                    "name": "Payroll Accounting"
+                }, 
+                {
+                    "code": "ACC 154", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/154", 
+                    "name": "Personal Finance"
+                }, 
+                {
+                    "code": "ACC 155", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/155", 
+                    "name": "Legal Environment of Business"
+                }, 
+                {
+                    "code": "ACC 156", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/156", 
+                    "name": "Business Tax Accounting"
+                }, 
+                {
+                    "code": "ACC 157", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/157", 
+                    "name": "Integrated Accounting Management Systems"
+                }, 
+                {
+                    "code": "ACC 158", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/158", 
+                    "name": "Managerial Accounting"
+                }, 
+                {
+                    "code": "ACC 159", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/159", 
+                    "name": "Accounting Simulation"
+                }, 
+                {
+                    "code": "ACC 160", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/160", 
+                    "name": "Advanced Accounting Spreadsheet Applications"
+                }, 
+                {
+                    "code": "ACC 165", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACC/165", 
+                    "name": "Capstone Review Course of Accounting Principles"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/columbustech/ACC"
+        }, 
+        {
+            "abbr": "ACR", 
+            "courses": [
+                {
+                    "code": "ACR 1-2-1", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/1-2-1", 
+                    "name": "Unibody Identification and Damage Analysis"
+                }, 
+                {
+                    "code": "ACR 100", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/100", 
+                    "name": "Safety"
+                }, 
+                {
+                    "code": "ACR 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/101", 
+                    "name": "Automobile Components Identification"
+                }, 
+                {
+                    "code": "ACR 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/102", 
+                    "name": "Equipment and Hand Tools Identification"
+                }, 
+                {
+                    "code": "ACR 104", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/104", 
+                    "name": "Mechanical and Electrical Systems"
+                }, 
+                {
+                    "code": "ACR 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/105", 
+                    "name": "Body Fiberglass,Plastic,and Rubber Repair Techniques"
+                }, 
+                {
+                    "code": "ACR 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/106", 
+                    "name": "Welding and Cutting"
+                }, 
+                {
+                    "code": "ACR 107", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/107", 
+                    "name": "Trim,Accessories,and Glass"
+                }, 
+                {
+                    "code": "ACR 109", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/109", 
+                    "name": "Damage Identification and Assessment"
+                }, 
+                {
+                    "code": "ACR 110", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/110", 
+                    "name": "Minor Collision Repair"
+                }, 
+                {
+                    "code": "ACR 120", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/120", 
+                    "name": "Conventional Frame Repair"
+                }, 
+                {
+                    "code": "ACR 122", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/122", 
+                    "name": "Unibody Measuring and Fixturing Systems"
+                }, 
+                {
+                    "code": "ACR 123", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/123", 
+                    "name": "Unibody Straightening Systems and Techniques"
+                }, 
+                {
+                    "code": "ACR 124", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/124", 
+                    "name": "Unibody Welding Techniques"
+                }, 
+                {
+                    "code": "ACR 125", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/125", 
+                    "name": "Unibody Structural Panel Repair and Replacement"
+                }, 
+                {
+                    "code": "ACR 126", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/126", 
+                    "name": "Conventional Body Structural Panel Repair"
+                }, 
+                {
+                    "code": "ACR 127", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/127", 
+                    "name": "Unibody Suspension and Steering Systems"
+                }, 
+                {
+                    "code": "ACR 128", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/128", 
+                    "name": "BoltOn Body Panel Removal and Replacement"
+                }, 
+                {
+                    "code": "ACR 129", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/129", 
+                    "name": "Major Collision Repair Internship/Practicum"
+                }, 
+                {
+                    "code": "ACR 130", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/130", 
+                    "name": "Sanding,Priming,and Paint Preparation"
+                }, 
+                {
+                    "code": "ACR 132", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/132", 
+                    "name": "Special Refinishing Application"
+                }, 
+                {
+                    "code": "ACR 134", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/134", 
+                    "name": "Urethane Enamels Refinishing Application"
+                }, 
+                {
+                    "code": "ACR 135", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/135", 
+                    "name": "Tint and Match Colors"
+                }, 
+                {
+                    "code": "ACR 136", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/136", 
+                    "name": "Detailing"
+                }, 
+                {
+                    "code": "ACR 137", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACR/137", 
+                    "name": "Paint and Refinishing Internship"
+                }
+            ], 
+            "name": "Comm Ag Rec & Res Studies", 
+            "url": "http://www.chegg.com/courses/columbustech/ACR"
+        }, 
+        {
+            "abbr": "ACT", 
+            "courses": [
+                {
+                    "code": "ACT 100", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACT/100", 
+                    "name": "Refrigeration Fundamentals"
+                }, 
+                {
+                    "code": "ACT 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACT/101", 
+                    "name": "Principles and Practices of Refrigeration"
+                }, 
+                {
+                    "code": "ACT 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACT/102", 
+                    "name": "Refrigeration Systems Components"
+                }, 
+                {
+                    "code": "ACT 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACT/103", 
+                    "name": "Electrical Fundamentals"
+                }, 
+                {
+                    "code": "ACT 104", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACT/104", 
+                    "name": "Electric Motors"
+                }, 
+                {
+                    "code": "ACT 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACT/105", 
+                    "name": "Electrical Components"
+                }, 
+                {
+                    "code": "ACT 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACT/106", 
+                    "name": "Electric Control Systems and Installation"
+                }, 
+                {
+                    "code": "ACT 107", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACT/107", 
+                    "name": "Air Conditioning Principles"
+                }, 
+                {
+                    "code": "ACT 108", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACT/108", 
+                    "name": "Air Conditioning Systems and Installation"
+                }, 
+                {
+                    "code": "ACT 109", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACT/109", 
+                    "name": "Troubleshooting Air Conditioning Systems"
+                }, 
+                {
+                    "code": "ACT 110", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACT/110", 
+                    "name": "Gas Heating Systems"
+                }, 
+                {
+                    "code": "ACT 111", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ACT/111", 
+                    "name": "Heat Pumps and Related Systems"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/columbustech/ACT"
+        }, 
+        {
+            "abbr": "AHS", 
+            "courses": [
+                {
+                    "code": "AHS 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AHS/101", 
+                    "name": "Anatomy and Physiology"
+                }, 
+                {
+                    "code": "AHS 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AHS/102", 
+                    "name": "Drug Calculation and Administration"
+                }, 
+                {
+                    "code": "AHS 104", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AHS/104", 
+                    "name": "Introduction to Health Care"
+                }, 
+                {
+                    "code": "AHS 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AHS/105", 
+                    "name": "Basic Inorganic Chemistry"
+                }, 
+                {
+                    "code": "AHS 155", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AHS/155", 
+                    "name": "Epidemiology"
+                }
+            ], 
+            "name": "Art History", 
+            "url": "http://www.chegg.com/courses/columbustech/AHS"
+        }, 
+        {
+            "abbr": "AMF", 
+            "courses": [
+                {
+                    "code": "AMF 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AMF/103", 
+                    "name": "Manufacturing Processes Survey"
+                }, 
+                {
+                    "code": "AMF 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AMF/106", 
+                    "name": "Introduction to Robotics"
+                }, 
+                {
+                    "code": "AMF 108", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AMF/108", 
+                    "name": "Applied Hydraulics,Pneumatics and Mechanisms"
+                }, 
+                {
+                    "code": "AMF 152", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AMF/152", 
+                    "name": "Manufacturing Organizational Principals"
+                }, 
+                {
+                    "code": "AMF 154", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AMF/154", 
+                    "name": "Manufacturing Workplace Skills"
+                }, 
+                {
+                    "code": "AMF 156", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AMF/156", 
+                    "name": "Manufacturing Production Requirements"
+                }, 
+                {
+                    "code": "AMF 158", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AMF/158", 
+                    "name": "Automated Manufacturing Skills"
+                }, 
+                {
+                    "code": "AMF 160", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AMF/160", 
+                    "name": "Representative Manufacturing Skills"
+                }
+            ], 
+            "name": "Amf", 
+            "url": "http://www.chegg.com/courses/columbustech/AMF"
+        }, 
+        {
+            "abbr": "APS", 
+            "courses": [
+                {
+                    "code": "APS 100", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/APS/100", 
+                    "name": "Appliance Controls Fundamentals"
+                }, 
+                {
+                    "code": "APS 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/APS/101", 
+                    "name": "Laundry Appliances I"
+                }, 
+                {
+                    "code": "APS 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/APS/102", 
+                    "name": "Laundry Appliances II"
+                }, 
+                {
+                    "code": "APS 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/APS/103", 
+                    "name": "Kitchen Appliances I"
+                }, 
+                {
+                    "code": "APS 104", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/APS/104", 
+                    "name": "Kitchen Appliances II"
+                }, 
+                {
+                    "code": "APS 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/APS/105", 
+                    "name": "Refrigeration Appliances I"
+                }, 
+                {
+                    "code": "APS 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/APS/106", 
+                    "name": "Refrigeration Appliances II"
+                }, 
+                {
+                    "code": "APS 107", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/APS/107", 
+                    "name": "Microwave Ovens"
+                }, 
+                {
+                    "code": "APS 108", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/APS/108", 
+                    "name": "Household Appliance Servicing OccupationBased Instruction I"
+                }, 
+                {
+                    "code": "APS 110", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/APS/110", 
+                    "name": "Appliance Motors"
+                }
+            ], 
+            "name": "Atmospheric And Planetary Sci", 
+            "url": "http://www.chegg.com/courses/columbustech/APS"
+        }, 
+        {
+            "abbr": "AUT", 
+            "courses": [
+                {
+                    "code": "AUT 2-1-2", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/2-1-2", 
+                    "name": "Advanced Electronic Transmission Diagnosis"
+                }, 
+                {
+                    "code": "AUT 120", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/120", 
+                    "name": "Introduction to Automotive Technology"
+                }, 
+                {
+                    "code": "AUT 122", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/122", 
+                    "name": "Electrical And Electronic Systems"
+                }, 
+                {
+                    "code": "AUT 124", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/124", 
+                    "name": "Battery,Starting And Charging Systems"
+                }, 
+                {
+                    "code": "AUT 126", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/126", 
+                    "name": "Engine Principles Of Operation And Repair"
+                }, 
+                {
+                    "code": "AUT 128", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/128", 
+                    "name": "Fuel,Ignition,and Emission Systems"
+                }, 
+                {
+                    "code": "AUT 130", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/130", 
+                    "name": "Automotive Brake Systems"
+                }, 
+                {
+                    "code": "AUT 132", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/132", 
+                    "name": "Suspension And Steering Systems"
+                }, 
+                {
+                    "code": "AUT 134", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/134", 
+                    "name": "Drivelines"
+                }, 
+                {
+                    "code": "AUT 138", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/138", 
+                    "name": "Manual Transmission/Transaxle"
+                }, 
+                {
+                    "code": "AUT 140", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/140", 
+                    "name": "Electronic Engine Control Systems"
+                }, 
+                {
+                    "code": "AUT 142", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/142", 
+                    "name": "Climate Control Systems"
+                }, 
+                {
+                    "code": "AUT 144", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/144", 
+                    "name": "Introduction To Automatic Transmissions"
+                }, 
+                {
+                    "code": "AUT 210", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/210", 
+                    "name": "Automatic Transmission Repair"
+                }, 
+                {
+                    "code": "AUT 214", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/214", 
+                    "name": "Advanced Electronic Controlled Brake System Diagnosis"
+                }, 
+                {
+                    "code": "AUT 216", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/216", 
+                    "name": "Advanced Electronic Controlled Suspension and Steering Systems"
+                }, 
+                {
+                    "code": "AUT 218", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/218", 
+                    "name": "Advanced Electronic Engine Control Systems"
+                }, 
+                {
+                    "code": "AUT 220", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/AUT/220", 
+                    "name": "Automotive Technology Internship"
+                }
+            ], 
+            "name": "Automotive Technology", 
+            "url": "http://www.chegg.com/courses/columbustech/AUT"
+        }, 
+        {
+            "abbr": "Acct", 
+            "courses": [
+                {
+                    "code": "Acct 1101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/Acct/1101", 
+                    "name": "Financial Accounting 1"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/columbustech/Acct"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 191", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BIO/191", 
+                    "name": "Biology I"
+                }, 
+                {
+                    "code": "BIO 194", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BIO/194", 
+                    "name": "Anatomy and Physiology II"
+                }, 
+                {
+                    "code": "BIO 197", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BIO/197", 
+                    "name": "Introductory Microbiology"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/columbustech/BIO"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 2-1-2", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/2-1-2", 
+                    "name": "Anatomy and Terminology"
+                }, 
+                {
+                    "code": "BUS 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/101", 
+                    "name": "Beginning Document Processing"
+                }, 
+                {
+                    "code": "BUS 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/102", 
+                    "name": "Intermediate Document Processing"
+                }, 
+                {
+                    "code": "BUS 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/103", 
+                    "name": "Advanced Document Processing"
+                }, 
+                {
+                    "code": "BUS 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/105", 
+                    "name": "Database Fundamentals"
+                }, 
+                {
+                    "code": "BUS 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/106", 
+                    "name": "Office Procedures"
+                }, 
+                {
+                    "code": "BUS 107", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/107", 
+                    "name": "Machine Transcription"
+                }, 
+                {
+                    "code": "BUS 108", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/108", 
+                    "name": "Word Processing"
+                }, 
+                {
+                    "code": "BUS 109", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/109", 
+                    "name": "Applied Office Procedures"
+                }, 
+                {
+                    "code": "BUS 141", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/141", 
+                    "name": "Insurance and Business Environment"
+                }, 
+                {
+                    "code": "BUS 142", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/142", 
+                    "name": "Information Processing"
+                }, 
+                {
+                    "code": "BUS 143", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/143", 
+                    "name": "Business Software Applications"
+                }, 
+                {
+                    "code": "BUS 144", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/144", 
+                    "name": "Business Interaction Skills"
+                }, 
+                {
+                    "code": "BUS 145", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/145", 
+                    "name": "Managing Customer Relationships"
+                }, 
+                {
+                    "code": "BUS 146", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/146", 
+                    "name": "Personal Effectiveness"
+                }, 
+                {
+                    "code": "BUS 147", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/147", 
+                    "name": "Financial Services Environment"
+                }, 
+                {
+                    "code": "BUS 157", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/157", 
+                    "name": "Electronic Calculators"
+                }, 
+                {
+                    "code": "BUS 158", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/158", 
+                    "name": "Legal Terminology"
+                }, 
+                {
+                    "code": "BUS 160", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/160", 
+                    "name": "Electronic Communications"
+                }, 
+                {
+                    "code": "BUS 201", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/201", 
+                    "name": "Advanced Word Processing"
+                }, 
+                {
+                    "code": "BUS 202", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/202", 
+                    "name": "Spreadsheet Fundamentals"
+                }, 
+                {
+                    "code": "BUS 204", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/204", 
+                    "name": "Halftime Business Office Specialist Internship"
+                }, 
+                {
+                    "code": "BUS 208", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/208", 
+                    "name": "Office Accounting"
+                }, 
+                {
+                    "code": "BUS 211", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/211", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "BUS 213", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/213", 
+                    "name": "Medical Document Processing/Transcription"
+                }, 
+                {
+                    "code": "BUS 216", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/216", 
+                    "name": "Medical Office Procedures"
+                }, 
+                {
+                    "code": "BUS 217", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/217", 
+                    "name": "Legal Office Procedures I"
+                }, 
+                {
+                    "code": "BUS 218", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/218", 
+                    "name": "Legal Procedures II"
+                }, 
+                {
+                    "code": "BUS 226", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/226", 
+                    "name": "Medical Office Billing/Coding/Insurance"
+                }, 
+                {
+                    "code": "BUS 227", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/227", 
+                    "name": "Legal Document Processing/Transcription"
+                }, 
+                {
+                    "code": "BUS 263", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/BUS/263", 
+                    "name": "Electronic Mail Fundamentals"
+                }
+            ], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/columbustech/BUS"
+        }, 
+        {
+            "abbr": "CAB", 
+            "courses": [
+                {
+                    "code": "CAB 108", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/108", 
+                    "name": "Cabinet Design and Layout"
+                }, 
+                {
+                    "code": "CAB 110", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/110", 
+                    "name": "Wood Joints"
+                }, 
+                {
+                    "code": "CAB 112", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/112", 
+                    "name": "Fastening Methods"
+                }, 
+                {
+                    "code": "CAB 114", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/114", 
+                    "name": "Cutting Cabinet Components"
+                }, 
+                {
+                    "code": "CAB 116", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/116", 
+                    "name": "Cabinet Assembly I"
+                }, 
+                {
+                    "code": "CAB 118", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/118", 
+                    "name": "Door,Drawer,and Hardware Installation"
+                }, 
+                {
+                    "code": "CAB 120", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/120", 
+                    "name": "Plastic Laminates and Wood Veneers"
+                }, 
+                {
+                    "code": "CAB 122", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/122", 
+                    "name": "Cabinet Finishing and Installation"
+                }, 
+                {
+                    "code": "CAB 130", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/130", 
+                    "name": "Cabinet Assembly II"
+                }, 
+                {
+                    "code": "CAB 131", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/131", 
+                    "name": "Cabinet Assembly III"
+                }, 
+                {
+                    "code": "CAB 132", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/132", 
+                    "name": "Cabinet Assembly Internship/Practicum"
+                }, 
+                {
+                    "code": "CAB 133", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/133", 
+                    "name": "Cabinetmaking Internship/Practicum"
+                }, 
+                {
+                    "code": "CAB 134", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/134", 
+                    "name": "CNC Woodworking Equipment I"
+                }, 
+                {
+                    "code": "CAB 135", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/135", 
+                    "name": "CNC Woodworking Equipment II"
+                }, 
+                {
+                    "code": "CAB 136", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/136", 
+                    "name": "Construction"
+                }, 
+                {
+                    "code": "CAB 137", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/137", 
+                    "name": "Shop Management"
+                }, 
+                {
+                    "code": "CAB 138", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAB/138", 
+                    "name": "Furniture Fabrication"
+                }
+            ], 
+            "name": "Cab", 
+            "url": "http://www.chegg.com/courses/columbustech/CAB"
+        }, 
+        {
+            "abbr": "CAR", 
+            "courses": [
+                {
+                    "code": "CAR 1-2-1", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/1-2-1", 
+                    "name": "Cornice and Soffit"
+                }, 
+                {
+                    "code": "CAR 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/101", 
+                    "name": "Safe Use of Hand and Power Tools"
+                }, 
+                {
+                    "code": "CAR 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/103", 
+                    "name": "Materials"
+                }, 
+                {
+                    "code": "CAR 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/105", 
+                    "name": "Print Reading"
+                }, 
+                {
+                    "code": "CAR 107", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/107", 
+                    "name": "Site Layout,Footings,and Foundations"
+                }, 
+                {
+                    "code": "CAR 110", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/110", 
+                    "name": "Floor Framing"
+                }, 
+                {
+                    "code": "CAR 111", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/111", 
+                    "name": "Wall Framing"
+                }, 
+                {
+                    "code": "CAR 112", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/112", 
+                    "name": "Ceiling and Roof Framing"
+                }, 
+                {
+                    "code": "CAR 114", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/114", 
+                    "name": "Roof Coverings"
+                }, 
+                {
+                    "code": "CAR 115", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/115", 
+                    "name": "Exterior Finishes and Trim"
+                }, 
+                {
+                    "code": "CAR 117", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/117", 
+                    "name": "Interior Finishes I"
+                }, 
+                {
+                    "code": "CAR 118", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/118", 
+                    "name": "Interior Finishes II"
+                }, 
+                {
+                    "code": "CAR 119", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/119", 
+                    "name": "Interior Finishes III"
+                }, 
+                {
+                    "code": "CAR 126", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/126", 
+                    "name": "Stairs"
+                }, 
+                {
+                    "code": "CAR 127", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/127", 
+                    "name": "Residential Carpentry Internship"
+                }, 
+                {
+                    "code": "CAR 130", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/130", 
+                    "name": "Doors and Door Hardware"
+                }, 
+                {
+                    "code": "CAR 131", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/131", 
+                    "name": "Concrete Forming"
+                }, 
+                {
+                    "code": "CAR 132", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/132", 
+                    "name": "Site Development"
+                }, 
+                {
+                    "code": "CAR 134", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/134", 
+                    "name": "Commercial Carpentry Internship"
+                }, 
+                {
+                    "code": "CAR 135", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CAR/135", 
+                    "name": "Steel Rigging and Reinforcing"
+                }
+            ], 
+            "name": "Carpentry", 
+            "url": "http://www.chegg.com/courses/columbustech/CAR"
+        }, 
+        {
+            "abbr": "CFC", 
+            "courses": [
+                {
+                    "code": "CFC 100", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CFC/100", 
+                    "name": "Safety"
+                }, 
+                {
+                    "code": "CFC 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CFC/101", 
+                    "name": "Introduction to Construction"
+                }
+            ], 
+            "name": "Cfc", 
+            "url": "http://www.chegg.com/courses/columbustech/CFC"
+        }, 
+        {
+            "abbr": "CHM", 
+            "courses": [
+                {
+                    "code": "CHM 191", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CHM/191", 
+                    "name": "Chemistry I"
+                }
+            ], 
+            "name": "Chm-Chemistry", 
+            "url": "http://www.chegg.com/courses/columbustech/CHM"
+        }, 
+        {
+            "abbr": "CIS", 
+            "courses": [
+                {
+                    "code": "CIS 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/105", 
+                    "name": "Program Design and Development"
+                }, 
+                {
+                    "code": "CIS 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/106", 
+                    "name": "Computer Concepts"
+                }, 
+                {
+                    "code": "CIS 122", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/122", 
+                    "name": "Microcomputer Installation and Maintenance"
+                }, 
+                {
+                    "code": "CIS 127", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/127", 
+                    "name": "Advanced Word Processing and Desktop Publishing Techniques"
+                }, 
+                {
+                    "code": "CIS 142", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/142", 
+                    "name": "Multiple Networks and WANs"
+                }, 
+                {
+                    "code": "CIS 157", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/157", 
+                    "name": "Introduction to Windows Programming Using Microsoft Visual Basic"
+                }, 
+                {
+                    "code": "CIS 173", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/173", 
+                    "name": "PC Operating Systems Concepts"
+                }, 
+                {
+                    "code": "CIS 224", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/224", 
+                    "name": "Microsoft Office Specialist CertificationPowerPoint"
+                }, 
+                {
+                    "code": "CIS 258", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/258", 
+                    "name": "Introduction to Data Communications"
+                }, 
+                {
+                    "code": "CIS 276", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/276", 
+                    "name": "Advanced Routers and Switches"
+                }, 
+                {
+                    "code": "CIS 277", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/277", 
+                    "name": "WAN Design"
+                }, 
+                {
+                    "code": "CIS 1104", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/1104", 
+                    "name": "Web Graphics using Adobe Photoshop"
+                }, 
+                {
+                    "code": "CIS 1108", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/1108", 
+                    "name": "Web Graphics using JASC Paint Shop"
+                }, 
+                {
+                    "code": "CIS 1114", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/1114", 
+                    "name": "Fundamentals of Wireless LANs"
+                }, 
+                {
+                    "code": "CIS 1118", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/1118", 
+                    "name": "Implementing Network Security"
+                }, 
+                {
+                    "code": "CIS 1119", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/1119", 
+                    "name": "Implementing Internet/Intranet Firewalls"
+                }, 
+                {
+                    "code": "CIS 1123", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/1123", 
+                    "name": "Web Graphics & Animation using Adobe Flash"
+                }, 
+                {
+                    "code": "CIS 1124", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/1124", 
+                    "name": "Web Graphics & Animation using Adobe Illustrator and Adobe LiveMotion"
+                }, 
+                {
+                    "code": "CIS 1140", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/1140", 
+                    "name": "Networking Fundamentals"
+                }, 
+                {
+                    "code": "CIS 2005", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2005", 
+                    "name": "Advanced Web Graphics using Adobe Photoshop"
+                }, 
+                {
+                    "code": "CIS 2102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2102", 
+                    "name": "Advanced Web Graphics and Multimedia using Adobe Premiere"
+                }, 
+                {
+                    "code": "CIS 2104", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2104", 
+                    "name": "Advanced Web Graphics and Multimedia using Adobe Director"
+                }, 
+                {
+                    "code": "CIS 2105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2105", 
+                    "name": "Advanced Web Graphics using Adobe Flash"
+                }, 
+                {
+                    "code": "CIS 2149", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2149", 
+                    "name": "Implementing Microsoft Windows Professional"
+                }, 
+                {
+                    "code": "CIS 2150", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2150", 
+                    "name": "Implementing Microsoft Windows Server"
+                }, 
+                {
+                    "code": "CIS 2153", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2153", 
+                    "name": "Implementing Microsoft Windows Networking Infrastructure"
+                }, 
+                {
+                    "code": "CIS 2154", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2154", 
+                    "name": "Implementing Microsoft Windows Network Directory"
+                }, 
+                {
+                    "code": "CIS 2191", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2191", 
+                    "name": "Internet Business Fundamentals"
+                }, 
+                {
+                    "code": "CIS 2201", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2201", 
+                    "name": "HTML Fundamentals"
+                }, 
+                {
+                    "code": "CIS 2202", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2202", 
+                    "name": "XHTML Fundamentals"
+                }, 
+                {
+                    "code": "CIS 2211", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2211", 
+                    "name": "Web Site Design Tools"
+                }, 
+                {
+                    "code": "CIS 2221", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2221", 
+                    "name": "Web Graphics and Multimedia"
+                }, 
+                {
+                    "code": "CIS 2228", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2228", 
+                    "name": "Advanced Spreadsheets Techniques"
+                }, 
+                {
+                    "code": "CIS 2229", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2229", 
+                    "name": "Advanced Database Techniques"
+                }, 
+                {
+                    "code": "CIS 2231", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2231", 
+                    "name": "Design Methodology"
+                }, 
+                {
+                    "code": "CIS 2261", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2261", 
+                    "name": "JavaScript Fundamentals"
+                }, 
+                {
+                    "code": "CIS 2271", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2271", 
+                    "name": "Fundamentals of CGI Programming using PERL"
+                }, 
+                {
+                    "code": "CIS 2281", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2281", 
+                    "name": "Database Connectivity"
+                }, 
+                {
+                    "code": "CIS 2321", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2321", 
+                    "name": "Introduction to LAN and WAN"
+                }, 
+                {
+                    "code": "CIS 2322", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CIS/2322", 
+                    "name": "Introduction to WANs and Routing"
+                }
+            ], 
+            "name": "Computer Information Systems", 
+            "url": "http://www.chegg.com/courses/columbustech/CIS"
+        }, 
+        {
+            "abbr": "COS", 
+            "courses": [
+                {
+                    "code": "COS 100", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/100", 
+                    "name": "Introduction to Cosmetology Theory"
+                }, 
+                {
+                    "code": "COS 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/101", 
+                    "name": "Introduction to Permanent Waving and Relaxing"
+                }, 
+                {
+                    "code": "COS 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/103", 
+                    "name": "Basic Creative Treatment of Hair,Scalp,and Skin"
+                }, 
+                {
+                    "code": "COS 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/105", 
+                    "name": "Introduction to Shampooing and Styling"
+                }, 
+                {
+                    "code": "COS 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/106", 
+                    "name": "Introduction to Haircutting"
+                }, 
+                {
+                    "code": "COS 107", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/107", 
+                    "name": "Advanced Haircutting"
+                }, 
+                {
+                    "code": "COS 108", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/108", 
+                    "name": "Permanent Waving and Relaxing"
+                }, 
+                {
+                    "code": "COS 109", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/109", 
+                    "name": "Hair Color"
+                }, 
+                {
+                    "code": "COS 110", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/110", 
+                    "name": "Skin,Scalp,and Hair"
+                }, 
+                {
+                    "code": "COS 111", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/111", 
+                    "name": "Styling"
+                }, 
+                {
+                    "code": "COS 112", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/112", 
+                    "name": "Manicuring and Pedicuring"
+                }, 
+                {
+                    "code": "COS 113", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/113", 
+                    "name": "Practicum I"
+                }, 
+                {
+                    "code": "COS 114", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/114", 
+                    "name": "Practicum II"
+                }, 
+                {
+                    "code": "COS 115", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/115", 
+                    "name": "Practicum/Internship III"
+                }, 
+                {
+                    "code": "COS 116", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/116", 
+                    "name": "Practicum/Internship IV"
+                }, 
+                {
+                    "code": "COS 117", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/117", 
+                    "name": "Salon Management"
+                }, 
+                {
+                    "code": "COS 118", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/118", 
+                    "name": "Nail Care I"
+                }, 
+                {
+                    "code": "COS 119", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/COS/119", 
+                    "name": "Nail Care II"
+                }
+            ], 
+            "name": "Computer Science", 
+            "url": "http://www.chegg.com/courses/columbustech/COS"
+        }, 
+        {
+            "abbr": "CRJ", 
+            "courses": [
+                {
+                    "code": "CRJ 2-1-2", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CRJ/2-1-2", 
+                    "name": "Ethics in Criminal Justice"
+                }, 
+                {
+                    "code": "CRJ 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CRJ/101", 
+                    "name": "Introduction to Criminal Justice Technology"
+                }, 
+                {
+                    "code": "CRJ 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CRJ/103", 
+                    "name": "Corrections"
+                }, 
+                {
+                    "code": "CRJ 104", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CRJ/104", 
+                    "name": "Principles of Law Enforcement"
+                }, 
+                {
+                    "code": "CRJ 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CRJ/105", 
+                    "name": "Criminal Procedure"
+                }, 
+                {
+                    "code": "CRJ 143", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CRJ/143", 
+                    "name": "Probation and Parole"
+                }, 
+                {
+                    "code": "CRJ 150", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CRJ/150", 
+                    "name": "Police Patrol Operations"
+                }, 
+                {
+                    "code": "CRJ 154", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CRJ/154", 
+                    "name": "Police Officer Survival"
+                }, 
+                {
+                    "code": "CRJ 162", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CRJ/162", 
+                    "name": "Methods of Criminal Investigation"
+                }, 
+                {
+                    "code": "CRJ 163", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CRJ/163", 
+                    "name": "Investigation and Presentation of Evidence"
+                }, 
+                {
+                    "code": "CRJ 168", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CRJ/168", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CRJ 175", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CRJ/175", 
+                    "name": "Report Writing in Criminal Justice"
+                }, 
+                {
+                    "code": "CRJ 202", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CRJ/202", 
+                    "name": "Constitutional Law"
+                }, 
+                {
+                    "code": "CRJ 206", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CRJ/206", 
+                    "name": "Criminology"
+                }, 
+                {
+                    "code": "CRJ 207", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CRJ/207", 
+                    "name": "Juvenile Justice"
+                }, 
+                {
+                    "code": "CRJ 209", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CRJ/209", 
+                    "name": "Juvenile Justice"
+                }
+            ], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/columbustech/CRJ"
+        }, 
+        {
+            "abbr": "CSP", 
+            "courses": [
+                {
+                    "code": "CSP 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CSP/101", 
+                    "name": "Central Sterile Supply Technician"
+                }
+            ], 
+            "name": "Clinical And Social Sciences In Psychology", 
+            "url": "http://www.chegg.com/courses/columbustech/CSP"
+        }, 
+        {
+            "abbr": "CTD", 
+            "courses": [
+                {
+                    "code": "CTD 111", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CTD/111", 
+                    "name": "Fundamentals of Automotive Logistics"
+                }, 
+                {
+                    "code": "CTD 115", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CTD/115", 
+                    "name": "Advanced Automotive Logistics"
+                }, 
+                {
+                    "code": "CTD 119", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CTD/119", 
+                    "name": "Automotive Logistics Internship"
+                }
+            ], 
+            "name": "Cloth Textile Interior Des", 
+            "url": "http://www.chegg.com/courses/columbustech/CTD"
+        }, 
+        {
+            "abbr": "CUL", 
+            "courses": [
+                {
+                    "code": "CUL 110", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CUL/110", 
+                    "name": "Safety,Sanitation,and Equipment"
+                }, 
+                {
+                    "code": "CUL 112", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CUL/112", 
+                    "name": "Principles of Cooking"
+                }, 
+                {
+                    "code": "CUL 117", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/CUL/117", 
+                    "name": "Introduction to Culinary Nutrition"
+                }
+            ], 
+            "name": "Cul (Culinary Arts)", 
+            "url": "http://www.chegg.com/courses/columbustech/CUL"
+        }, 
+        {
+            "abbr": "DDF", 
+            "courses": [
+                {
+                    "code": "DDF 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DDF/101", 
+                    "name": "Introduction to Drafting"
+                }, 
+                {
+                    "code": "DDF 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DDF/102", 
+                    "name": "Size and Shape Description I"
+                }, 
+                {
+                    "code": "DDF 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DDF/103", 
+                    "name": "Size and Shape Description II"
+                }, 
+                {
+                    "code": "DDF 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DDF/105", 
+                    "name": "Auxiliary Views"
+                }, 
+                {
+                    "code": "DDF 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DDF/106", 
+                    "name": "Fasteners"
+                }, 
+                {
+                    "code": "DDF 107", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DDF/107", 
+                    "name": "Introduction to CAD"
+                }, 
+                {
+                    "code": "DDF 108", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DDF/108", 
+                    "name": "Intersections and Development"
+                }, 
+                {
+                    "code": "DDF 109", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DDF/109", 
+                    "name": "Assembly Drawings I"
+                }, 
+                {
+                    "code": "DDF 111", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DDF/111", 
+                    "name": "Intermediate CAD"
+                }, 
+                {
+                    "code": "DDF 112", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DDF/112", 
+                    "name": "3D Drawing and Modeling"
+                }, 
+                {
+                    "code": "DDF 191", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DDF/191", 
+                    "name": "Engineering Graphics I"
+                }
+            ], 
+            "name": "Ddf", 
+            "url": "http://www.chegg.com/courses/columbustech/DDF"
+        }, 
+        {
+            "abbr": "DDS", 
+            "courses": [
+                {
+                    "code": "DDS 208", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DDS/208", 
+                    "name": "Residential Architectural Drawing II"
+                }, 
+                {
+                    "code": "DDS 226", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DDS/226", 
+                    "name": "Manufacturing Processes"
+                }
+            ], 
+            "name": "Dds", 
+            "url": "http://www.chegg.com/courses/columbustech/DDS"
+        }, 
+        {
+            "abbr": "DEN", 
+            "courses": [
+                {
+                    "code": "DEN 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/101", 
+                    "name": "Basic Human Biology"
+                }, 
+                {
+                    "code": "DEN 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/102", 
+                    "name": "Head And Neck Anatomy"
+                }, 
+                {
+                    "code": "DEN 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/103", 
+                    "name": "Preventive Dentistry"
+                }, 
+                {
+                    "code": "DEN 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/105", 
+                    "name": "Microbiology and Infection Control"
+                }, 
+                {
+                    "code": "DEN 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/106", 
+                    "name": "Oral Anatomy"
+                }, 
+                {
+                    "code": "DEN 107", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/107", 
+                    "name": "Oral Pathology And Therapeutics"
+                }, 
+                {
+                    "code": "DEN 109", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/109", 
+                    "name": "Dental Assisting National Board Examination Preparation"
+                }, 
+                {
+                    "code": "DEN 134", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/134", 
+                    "name": "Dental Assisting I"
+                }, 
+                {
+                    "code": "DEN 135", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/135", 
+                    "name": "Dental Assisting II"
+                }, 
+                {
+                    "code": "DEN 136", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/136", 
+                    "name": "Dental Assisting III"
+                }, 
+                {
+                    "code": "DEN 137", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/137", 
+                    "name": "Dental Assisting Expanded Functions"
+                }, 
+                {
+                    "code": "DEN 138", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/138", 
+                    "name": "Scopes of Professional Practice"
+                }, 
+                {
+                    "code": "DEN 139", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/139", 
+                    "name": "Dental Radiology"
+                }, 
+                {
+                    "code": "DEN 140", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/140", 
+                    "name": "Dental Practice Management"
+                }, 
+                {
+                    "code": "DEN 146", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/146", 
+                    "name": "Dental Practicum I"
+                }, 
+                {
+                    "code": "DEN 147", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/147", 
+                    "name": "Dental Practicum II"
+                }, 
+                {
+                    "code": "DEN 148", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DEN/148", 
+                    "name": "Dental Practicum III"
+                }
+            ], 
+            "name": "Dental Hygiene", 
+            "url": "http://www.chegg.com/courses/columbustech/DEN"
+        }, 
+        {
+            "abbr": "DHY", 
+            "courses": [
+                {
+                    "code": "DHY 100", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/100", 
+                    "name": "Tooth Anatomy and Root Morphology"
+                }, 
+                {
+                    "code": "DHY 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/101", 
+                    "name": "Oral Embryology and Histology"
+                }, 
+                {
+                    "code": "DHY 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/102", 
+                    "name": "Head and Neck Anatomy"
+                }, 
+                {
+                    "code": "DHY 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/103", 
+                    "name": "Dental Materials"
+                }, 
+                {
+                    "code": "DHY 104", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/104", 
+                    "name": "Preclinical Dental Hygiene Lecture"
+                }, 
+                {
+                    "code": "DHY 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/105", 
+                    "name": "Preclinical Dental Hygiene Lab"
+                }, 
+                {
+                    "code": "DHY 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/106", 
+                    "name": "Introduction to Dental Hygiene"
+                }, 
+                {
+                    "code": "DHY 107", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/107", 
+                    "name": "Radiology Lecture"
+                }, 
+                {
+                    "code": "DHY 109", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/109", 
+                    "name": "Radiology Lab"
+                }, 
+                {
+                    "code": "DHY 110", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/110", 
+                    "name": "Clinical Dental Hygiene I Lecture"
+                }, 
+                {
+                    "code": "DHY 111", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/111", 
+                    "name": "Clinical Dental Hygiene I Lab"
+                }, 
+                {
+                    "code": "DHY 113", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/113", 
+                    "name": "Microbiology and Infection Control in the Dental Profession"
+                }, 
+                {
+                    "code": "DHY 200", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/200", 
+                    "name": "Periodontology"
+                }, 
+                {
+                    "code": "DHY 201", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/201", 
+                    "name": "Clinical Dental Hygiene II Lecture"
+                }, 
+                {
+                    "code": "DHY 202", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/202", 
+                    "name": "Clinical Dental Hygiene II LAB"
+                }, 
+                {
+                    "code": "DHY 205", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/205", 
+                    "name": "Oral Pathology"
+                }, 
+                {
+                    "code": "DHY 206", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/206", 
+                    "name": "Pharmacology and Pain Control"
+                }, 
+                {
+                    "code": "DHY 207", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/207", 
+                    "name": "Community Dental Health"
+                }, 
+                {
+                    "code": "DHY 208", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/208", 
+                    "name": "Clinical Dental Hygiene III Lecture"
+                }, 
+                {
+                    "code": "DHY 209", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/209", 
+                    "name": "Clinical Dental Hygiene III Lab"
+                }, 
+                {
+                    "code": "DHY 211", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/211", 
+                    "name": "Biochemistry and Nutrition Fundamentals for Dental Hygienists"
+                }, 
+                {
+                    "code": "DHY 213", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/213", 
+                    "name": "Clinical Dental Hygiene IV Lecture"
+                }, 
+                {
+                    "code": "DHY 214", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/214", 
+                    "name": "Clinical Dental Hygiene IV Lab"
+                }, 
+                {
+                    "code": "DHY 220", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/220", 
+                    "name": "Clinical Dental Hygiene V Lecture"
+                }, 
+                {
+                    "code": "DHY 221", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DHY/221", 
+                    "name": "Clinical Dental Hygiene V Lab"
+                }
+            ], 
+            "name": "Dental Hygiene", 
+            "url": "http://www.chegg.com/courses/columbustech/DHY"
+        }, 
+        {
+            "abbr": "DIS", 
+            "courses": [
+                {
+                    "code": "DIS 1504", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DIS/1504", 
+                    "name": "Orientation and College Success"
+                }, 
+                {
+                    "code": "DIS 1505", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DIS/1505", 
+                    "name": "Preparing for Learning in an Online Environment"
+                }
+            ], 
+            "name": "DenmarkS International Study Program", 
+            "url": "http://www.chegg.com/courses/columbustech/DIS"
+        }, 
+        {
+            "abbr": "DMM", 
+            "courses": [
+                {
+                    "code": "DMM 154", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMM/154", 
+                    "name": "Working in a Warehouse Environment"
+                }, 
+                {
+                    "code": "DMM 156", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMM/156", 
+                    "name": "Warehousing Workforce Skills"
+                }, 
+                {
+                    "code": "DMM 158", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMM/158", 
+                    "name": "Working in a Warehouse Environment"
+                }, 
+                {
+                    "code": "DMM 160", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMM/160", 
+                    "name": "Warehousing Technology Skills"
+                }, 
+                {
+                    "code": "DMM 162", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMM/162", 
+                    "name": "Representative Warehousing Skills"
+                }
+            ], 
+            "name": "Dmm", 
+            "url": "http://www.chegg.com/courses/columbustech/DMM"
+        }, 
+        {
+            "abbr": "DMS", 
+            "courses": [
+                {
+                    "code": "DMS 2-1-2", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/2-1-2", 
+                    "name": "Comprehensive Abdomen Registry Review"
+                }, 
+                {
+                    "code": "DMS 131", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/131", 
+                    "name": "Foundations of Sonography"
+                }, 
+                {
+                    "code": "DMS 132", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/132", 
+                    "name": "Sonographic Appearance of Normal Anatomy"
+                }, 
+                {
+                    "code": "DMS 133", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/133", 
+                    "name": "Cross Sectional Anatomy Lab"
+                }, 
+                {
+                    "code": "DMS 134", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/134", 
+                    "name": "Pelvic Sonography and Pathology"
+                }, 
+                {
+                    "code": "DMS 135", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/135", 
+                    "name": "Abdominal Sonography and Pathology"
+                }, 
+                {
+                    "code": "DMS 136", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/136", 
+                    "name": "Sonographic Physics I"
+                }, 
+                {
+                    "code": "DMS 137", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/137", 
+                    "name": "Clinical Sonography I"
+                }, 
+                {
+                    "code": "DMS 201", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/201", 
+                    "name": "Normal Obstetrics"
+                }, 
+                {
+                    "code": "DMS 202", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/202", 
+                    "name": "Sonographic Physics II"
+                }, 
+                {
+                    "code": "DMS 203", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/203", 
+                    "name": "High Resolution Sonography"
+                }, 
+                {
+                    "code": "DMS 204", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/204", 
+                    "name": "Clinical Sonography II"
+                }, 
+                {
+                    "code": "DMS 205", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/205", 
+                    "name": "Interventional Sonography"
+                }, 
+                {
+                    "code": "DMS 206", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/206", 
+                    "name": "Pediatric Sonography"
+                }, 
+                {
+                    "code": "DMS 207", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/207", 
+                    "name": "Abnormal Obstetrics Sonography"
+                }, 
+                {
+                    "code": "DMS 208", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/208", 
+                    "name": "Introduction to Vascular Sonography"
+                }, 
+                {
+                    "code": "DMS 209", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/209", 
+                    "name": "Clinical Sonography III"
+                }, 
+                {
+                    "code": "DMS 210", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/210", 
+                    "name": "Comprehensive Physics Registry Review"
+                }, 
+                {
+                    "code": "DMS 211", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/211", 
+                    "name": "Clinical Sonography IV"
+                }, 
+                {
+                    "code": "DMS 213", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/213", 
+                    "name": "Comprehensive Obstetric and Gynecology Registry Review"
+                }, 
+                {
+                    "code": "DMS 214", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/DMS/214", 
+                    "name": "Clinical Sonography V"
+                }
+            ], 
+            "name": "Media Study", 
+            "url": "http://www.chegg.com/courses/columbustech/DMS"
+        }, 
+        {
+            "abbr": "ECE", 
+            "courses": [
+                {
+                    "code": "ECE 1-2-1", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/1-2-1", 
+                    "name": "Early Childhood Care and Education Practicum I"
+                }, 
+                {
+                    "code": "ECE 2-1-2", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/2-1-2", 
+                    "name": "Professional Practices and Classroom Management"
+                }, 
+                {
+                    "code": "ECE 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/101", 
+                    "name": "Introduction to Early Childhood Care and Education"
+                }, 
+                {
+                    "code": "ECE 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/103", 
+                    "name": "Human Growth and Development I"
+                }, 
+                {
+                    "code": "ECE 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/105", 
+                    "name": "Health,Safety,and Nutrition"
+                }, 
+                {
+                    "code": "ECE 112", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/112", 
+                    "name": "Curriculum Development"
+                }, 
+                {
+                    "code": "ECE 113", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/113", 
+                    "name": "Art for Children"
+                }, 
+                {
+                    "code": "ECE 114", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/114", 
+                    "name": "Music and Movement"
+                }, 
+                {
+                    "code": "ECE 115", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/115", 
+                    "name": "Language Arts and Literature"
+                }, 
+                {
+                    "code": "ECE 116", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/116", 
+                    "name": "Math and Science"
+                }, 
+                {
+                    "code": "ECE 122", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/122", 
+                    "name": "Early Childhood Care and Education Practicum II"
+                }, 
+                {
+                    "code": "ECE 125", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/125", 
+                    "name": "Professionalism through CDA Certificate Preparation"
+                }, 
+                {
+                    "code": "ECE 126", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/126", 
+                    "name": "CDA Certificate Assessment Preparation"
+                }, 
+                {
+                    "code": "ECE 201", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/201", 
+                    "name": "Exceptionalities"
+                }, 
+                {
+                    "code": "ECE 202", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/202", 
+                    "name": "Social Issues and Family Involvement"
+                }, 
+                {
+                    "code": "ECE 203", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/203", 
+                    "name": "Human Growth and Development II"
+                }, 
+                {
+                    "code": "ECE 211", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/211", 
+                    "name": "Methods and Materials"
+                }, 
+                {
+                    "code": "ECE 217", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/217", 
+                    "name": "Program Administration"
+                }, 
+                {
+                    "code": "ECE 221", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/221", 
+                    "name": "Facility Management"
+                }, 
+                {
+                    "code": "ECE 222", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/222", 
+                    "name": "Personnel Management"
+                }, 
+                {
+                    "code": "ECE 224", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECE/224", 
+                    "name": "Early Childhood Care and Education Internship"
+                }
+            ], 
+            "name": "Electrical & Computer Engr", 
+            "url": "http://www.chegg.com/courses/columbustech/ECE"
+        }, 
+        {
+            "abbr": "ECO", 
+            "courses": [
+                {
+                    "code": "ECO 191", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECO/191", 
+                    "name": "Principles of Economics"
+                }, 
+                {
+                    "code": "ECO 192", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECO/192", 
+                    "name": "Microeconomics"
+                }, 
+                {
+                    "code": "ECO 193", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ECO/193", 
+                    "name": "Macroeconomics"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/columbustech/ECO"
+        }, 
+        {
+            "abbr": "EET", 
+            "courses": [
+                {
+                    "code": "EET 100", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EET/100", 
+                    "name": "Fundamentals of Electrical Engineering Technology"
+                }, 
+                {
+                    "code": "EET 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EET/101", 
+                    "name": "D.C.Circuit Analyses"
+                }, 
+                {
+                    "code": "EET 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EET/102", 
+                    "name": "A.C.Circuit Analysis I"
+                }, 
+                {
+                    "code": "EET 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EET/103", 
+                    "name": "A.C.Circuit Analysis II"
+                }, 
+                {
+                    "code": "EET 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EET/105", 
+                    "name": "Electronic Devices"
+                }, 
+                {
+                    "code": "EET 191", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EET/191", 
+                    "name": "Computer Programming Fundamentals"
+                }, 
+                {
+                    "code": "EET 201", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EET/201", 
+                    "name": "Digital Fundamentals"
+                }, 
+                {
+                    "code": "EET 203", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EET/203", 
+                    "name": "Microcomputer Fundamentals"
+                }, 
+                {
+                    "code": "EET 204", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EET/204", 
+                    "name": "Linear Integrated Circuits"
+                }, 
+                {
+                    "code": "EET 206", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EET/206", 
+                    "name": "Computer Systems and Applications"
+                }, 
+                {
+                    "code": "EET 249", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EET/249", 
+                    "name": "Computer System Maintenance"
+                }, 
+                {
+                    "code": "EET 251", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EET/251", 
+                    "name": "Networking Systems"
+                }, 
+                {
+                    "code": "EET 256", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EET/256", 
+                    "name": "Advanced Networking Applications"
+                }, 
+                {
+                    "code": "EET 257", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EET/257", 
+                    "name": "Network System Design"
+                }
+            ], 
+            "name": "Electronics Engineering Techn", 
+            "url": "http://www.chegg.com/courses/columbustech/EET"
+        }, 
+        {
+            "abbr": "EHO", 
+            "courses": [
+                {
+                    "code": "EHO 100", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/100", 
+                    "name": "Horticulture Science"
+                }, 
+                {
+                    "code": "EHO 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/101", 
+                    "name": "Woody Ornamental Plant Identification"
+                }, 
+                {
+                    "code": "EHO 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/102", 
+                    "name": "Herbaceous Plant Identification"
+                }, 
+                {
+                    "code": "EHO 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/103", 
+                    "name": "Greenhouse Operations"
+                }, 
+                {
+                    "code": "EHO 104", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/104", 
+                    "name": "Horticulture Construction"
+                }, 
+                {
+                    "code": "EHO 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/105", 
+                    "name": "Nursery Production"
+                }, 
+                {
+                    "code": "EHO 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/106", 
+                    "name": "Landscape Design"
+                }, 
+                {
+                    "code": "EHO 107", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/107", 
+                    "name": "Landscape Installation"
+                }, 
+                {
+                    "code": "EHO 108", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/108", 
+                    "name": "Pest Management"
+                }, 
+                {
+                    "code": "EHO 112", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/112", 
+                    "name": "Landscape Management"
+                }, 
+                {
+                    "code": "EHO 114", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/114", 
+                    "name": "Garden Center Management"
+                }, 
+                {
+                    "code": "EHO 115", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/115", 
+                    "name": "Environmental Horticulture Internship"
+                }, 
+                {
+                    "code": "EHO 116", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/116", 
+                    "name": "Landscape Contracting"
+                }, 
+                {
+                    "code": "EHO 120", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/120", 
+                    "name": "Arboriculture Science"
+                }, 
+                {
+                    "code": "EHO 123", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/123", 
+                    "name": "Greenhouse Production"
+                }, 
+                {
+                    "code": "EHO 125", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/125", 
+                    "name": "Plant Propagation"
+                }, 
+                {
+                    "code": "EHO 131", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/131", 
+                    "name": "Irrigation"
+                }, 
+                {
+                    "code": "EHO 133", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/133", 
+                    "name": "Turfgrass Management"
+                }, 
+                {
+                    "code": "EHO 137", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/137", 
+                    "name": "Pest Identification"
+                }, 
+                {
+                    "code": "EHO 141", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/141", 
+                    "name": "Soils"
+                }, 
+                {
+                    "code": "EHO 143", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/143", 
+                    "name": "Garden Design"
+                }, 
+                {
+                    "code": "EHO 156", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/156", 
+                    "name": "Computer Aided Landscape Design"
+                }, 
+                {
+                    "code": "EHO 165", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/165", 
+                    "name": "Special Problems in Horticulture"
+                }, 
+                {
+                    "code": "EHO 168", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/168", 
+                    "name": "Woody Ornamental Plant Identification II"
+                }, 
+                {
+                    "code": "EHO 169", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/169", 
+                    "name": "Horiculture Spanish"
+                }, 
+                {
+                    "code": "EHO 172", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/172", 
+                    "name": "Floral Design"
+                }, 
+                {
+                    "code": "EHO 173", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/173", 
+                    "name": "Floral Design II"
+                }, 
+                {
+                    "code": "EHO 175", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EHO/175", 
+                    "name": "Interiorscaping"
+                }
+            ], 
+            "name": "Environmental Horticulture", 
+            "url": "http://www.chegg.com/courses/columbustech/EHO"
+        }, 
+        {
+            "abbr": "ELT", 
+            "courses": [
+                {
+                    "code": "ELT 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ELT/106", 
+                    "name": "Electrical Prints,Schematics,and Symbols"
+                }
+            ], 
+            "name": "Electronics Technology", 
+            "url": "http://www.chegg.com/courses/columbustech/ELT"
+        }, 
+        {
+            "abbr": "EMP", 
+            "courses": [
+                {
+                    "code": "EMP 100", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMP/100", 
+                    "name": "B Interpersonal Relations and Professional Development"
+                }
+            ], 
+            "name": "Emergency Med Tech Technician", 
+            "url": "http://www.chegg.com/courses/columbustech/EMP"
+        }, 
+        {
+            "abbr": "EMS", 
+            "courses": [
+                {
+                    "code": "EMS 1-2-1", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/1-2-1", 
+                    "name": "Emergency Medical Technology II"
+                }, 
+                {
+                    "code": "EMS 120", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/120", 
+                    "name": "Emergency Medical Technology Basic-I"
+                }, 
+                {
+                    "code": "EMS 122", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/122", 
+                    "name": "Emergency Medical Technology-Intermediate"
+                }, 
+                {
+                    "code": "EMS 126", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/126", 
+                    "name": "Introduction to the Paramedic Profession"
+                }, 
+                {
+                    "code": "EMS 127", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/127", 
+                    "name": "Patient Assessment"
+                }, 
+                {
+                    "code": "EMS 128", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/128", 
+                    "name": "Applied Physiology and Pathophysiology"
+                }, 
+                {
+                    "code": "EMS 129", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/129", 
+                    "name": "Pharmacology"
+                }, 
+                {
+                    "code": "EMS 130", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/130", 
+                    "name": "Respiratory Emergencies"
+                }, 
+                {
+                    "code": "EMS 131", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/131", 
+                    "name": "Trauma"
+                }, 
+                {
+                    "code": "EMS 132", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/132", 
+                    "name": "Cardiology I"
+                }, 
+                {
+                    "code": "EMS 133", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/133", 
+                    "name": "Cardiology II"
+                }, 
+                {
+                    "code": "EMS 134", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/134", 
+                    "name": "Medical Emergencies"
+                }, 
+                {
+                    "code": "EMS 135", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/135", 
+                    "name": "Maternal/Pediatric"
+                }, 
+                {
+                    "code": "EMS 136", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/136", 
+                    "name": "Special Patients"
+                }, 
+                {
+                    "code": "EMS 200A", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/200A", 
+                    "name": "Clinical Application of Advanced Emergency Care I"
+                }, 
+                {
+                    "code": "EMS 200B", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/200B", 
+                    "name": "Clinical Application of Advanced Emergency Care II"
+                }, 
+                {
+                    "code": "EMS 200C", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/200C", 
+                    "name": "Clinical Application of Advanced Emergency Care III"
+                }, 
+                {
+                    "code": "EMS 200D", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/200D", 
+                    "name": "Clinical Application of Advanced Emergency Care IV"
+                }, 
+                {
+                    "code": "EMS 201", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/EMS/201", 
+                    "name": "Summative Evaluation"
+                }
+            ], 
+            "name": "Early Modern Studies", 
+            "url": "http://www.chegg.com/courses/columbustech/EMS"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 097", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ENG/097", 
+                    "name": "English III"
+                }, 
+                {
+                    "code": "ENG 098", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ENG/098", 
+                    "name": "English IV"
+                }, 
+                {
+                    "code": "ENG 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ENG/101", 
+                    "name": "English"
+                }, 
+                {
+                    "code": "ENG 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ENG/102", 
+                    "name": "Technical Writing"
+                }, 
+                {
+                    "code": "ENG 111", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ENG/111", 
+                    "name": "Business English"
+                }, 
+                {
+                    "code": "ENG 112", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ENG/112", 
+                    "name": "Business Communications"
+                }, 
+                {
+                    "code": "ENG 191", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ENG/191", 
+                    "name": "Composition and Rhetoric"
+                }, 
+                {
+                    "code": "ENG 193", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ENG/193", 
+                    "name": "Literature and Composition"
+                }, 
+                {
+                    "code": "ENG 195", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/ENG/195", 
+                    "name": "Technical Communications"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/columbustech/ENG"
+        }, 
+        {
+            "abbr": "European", 
+            "courses": [
+                {
+                    "code": "European 32mm", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/European/32mm", 
+                    "name": "Construction"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbustech/European"
+        }, 
+        {
+            "abbr": "FIN", 
+            "courses": [
+                {
+                    "code": "FIN 191", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/FIN/191", 
+                    "name": "Introduction to Finance"
+                }
+            ], 
+            "name": "Finance", 
+            "url": "http://www.chegg.com/courses/columbustech/FIN"
+        }, 
+        {
+            "abbr": "HCMT", 
+            "courses": [
+                {
+                    "code": "HCMT 203", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HCMT/203", 
+                    "name": "Healthcare Supervision"
+                }
+            ], 
+            "name": "Health Care Management", 
+            "url": "http://www.chegg.com/courses/columbustech/HCMT"
+        }, 
+        {
+            "abbr": "HIT", 
+            "courses": [
+                {
+                    "code": "HIT 191", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HIT/191", 
+                    "name": "Introduction to Health Information Technology"
+                }, 
+                {
+                    "code": "HIT 192", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HIT/192", 
+                    "name": "Legal Aspects of Health Information"
+                }, 
+                {
+                    "code": "HIT 193", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HIT/193", 
+                    "name": "Health Data Content and Structure"
+                }, 
+                {
+                    "code": "HIT 194", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HIT/194", 
+                    "name": "Healthcare Delivery Systems"
+                }, 
+                {
+                    "code": "HIT 196", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HIT/196", 
+                    "name": "Computers in Health Care"
+                }, 
+                {
+                    "code": "HIT 197", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HIT/197", 
+                    "name": "Health Care Statistics"
+                }, 
+                {
+                    "code": "HIT 204", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HIT/204", 
+                    "name": "Comparative Records for Health Information Management"
+                }, 
+                {
+                    "code": "HIT 206", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HIT/206", 
+                    "name": "Health Information Technology Seminar"
+                }, 
+                {
+                    "code": "HIT 207", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HIT/207", 
+                    "name": "Health Information Technology Practicum II"
+                }, 
+                {
+                    "code": "HIT 208", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HIT/208", 
+                    "name": "Health Information Technology Practicum III"
+                }, 
+                {
+                    "code": "HIT 210", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HIT/210", 
+                    "name": "Performance Improvement"
+                }, 
+                {
+                    "code": "HIT 215", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HIT/215", 
+                    "name": "Coding and Classification I"
+                }, 
+                {
+                    "code": "HIT 216", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HIT/216", 
+                    "name": "Coding and Classification II"
+                }, 
+                {
+                    "code": "HIT 217", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HIT/217", 
+                    "name": "Coding and Classification III"
+                }
+            ], 
+            "name": "Hit-Health Information Tech", 
+            "url": "http://www.chegg.com/courses/columbustech/HIT"
+        }, 
+        {
+            "abbr": "HRT", 
+            "courses": [
+                {
+                    "code": "HRT 130", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HRT/130", 
+                    "name": "Hospitality Environment"
+                }, 
+                {
+                    "code": "HRT 132", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HRT/132", 
+                    "name": "Customer Service Skills"
+                }, 
+                {
+                    "code": "HRT 136", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HRT/136", 
+                    "name": "Technology of Service"
+                }, 
+                {
+                    "code": "HRT 140", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HRT/140", 
+                    "name": "Food Safety"
+                }, 
+                {
+                    "code": "HRT 145", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HRT/145", 
+                    "name": "Personal Effectiveness"
+                }
+            ], 
+            "name": "Horticulture", 
+            "url": "http://www.chegg.com/courses/columbustech/HRT"
+        }, 
+        {
+            "abbr": "HUM", 
+            "courses": [
+                {
+                    "code": "HUM 191", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/HUM/191", 
+                    "name": "Introduction to Humanities"
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/columbustech/HUM"
+        }, 
+        {
+            "abbr": "IDS", 
+            "courses": [
+                {
+                    "code": "IDS 1-2-1", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IDS/1-2-1", 
+                    "name": "Advanced Motor Controls"
+                }, 
+                {
+                    "code": "IDS 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IDS/101", 
+                    "name": "Industrial Computer Applications"
+                }, 
+                {
+                    "code": "IDS 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IDS/102", 
+                    "name": "Print Reading and Problem Solving"
+                }, 
+                {
+                    "code": "IDS 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IDS/103", 
+                    "name": "Industrial Wiring"
+                }, 
+                {
+                    "code": "IDS 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IDS/105", 
+                    "name": "DC and AC Motors"
+                }, 
+                {
+                    "code": "IDS 110", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IDS/110", 
+                    "name": "Fundamentals of Motor Controls"
+                }, 
+                {
+                    "code": "IDS 113", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IDS/113", 
+                    "name": "Magnetic Starters and Braking"
+                }, 
+                {
+                    "code": "IDS 115", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IDS/115", 
+                    "name": "TwoWire Control Circuits"
+                }, 
+                {
+                    "code": "IDS 131", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IDS/131", 
+                    "name": "Variable Speed Motor Control"
+                }, 
+                {
+                    "code": "IDS 141", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IDS/141", 
+                    "name": "Basic Industrial PLCs"
+                }, 
+                {
+                    "code": "IDS 142", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IDS/142", 
+                    "name": "Industrial PLC's II"
+                }, 
+                {
+                    "code": "IDS 209", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IDS/209", 
+                    "name": "Industrial Instrumentation"
+                }, 
+                {
+                    "code": "IDS 215", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IDS/215", 
+                    "name": "Industrial Mechanics"
+                }, 
+                {
+                    "code": "IDS 221", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IDS/221", 
+                    "name": "Industrial Fluidpower"
+                }, 
+                {
+                    "code": "IDS 231", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IDS/231", 
+                    "name": "Pumps and Piping Systems"
+                }
+            ], 
+            "name": "Interdisciplinary Studies", 
+            "url": "http://www.chegg.com/courses/columbustech/IDS"
+        }, 
+        {
+            "abbr": "IFC", 
+            "courses": [
+                {
+                    "code": "IFC 100", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IFC/100", 
+                    "name": "Industrial Safety Procedures"
+                }, 
+                {
+                    "code": "IFC 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IFC/101", 
+                    "name": "Direct Current Circuits I"
+                }, 
+                {
+                    "code": "IFC 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IFC/102", 
+                    "name": "Alternating Current I"
+                }, 
+                {
+                    "code": "IFC 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/IFC/103", 
+                    "name": "Solid State Devices I"
+                }
+            ], 
+            "name": "Electricity", 
+            "url": "http://www.chegg.com/courses/columbustech/IFC"
+        }, 
+        {
+            "abbr": "MAS", 
+            "courses": [
+                {
+                    "code": "MAS 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAS/101", 
+                    "name": "Legal Aspects of the Medical Office"
+                }, 
+                {
+                    "code": "MAS 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAS/103", 
+                    "name": "Pharmacology"
+                }, 
+                {
+                    "code": "MAS 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAS/106", 
+                    "name": "Medical Office Procedures"
+                }, 
+                {
+                    "code": "MAS 108", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAS/108", 
+                    "name": "Medical Assisting Skills I"
+                }, 
+                {
+                    "code": "MAS 109", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAS/109", 
+                    "name": "Medical Assisting Skills II"
+                }, 
+                {
+                    "code": "MAS 110", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAS/110", 
+                    "name": "Medical Insurance Management"
+                }, 
+                {
+                    "code": "MAS 111", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAS/111", 
+                    "name": "Administrative Practice Management"
+                }, 
+                {
+                    "code": "MAS 112", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAS/112", 
+                    "name": "Human Diseases"
+                }, 
+                {
+                    "code": "MAS 117", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAS/117", 
+                    "name": "Medical Assisting Externship"
+                }, 
+                {
+                    "code": "MAS 118", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAS/118", 
+                    "name": "Medical Assisting Seminar"
+                }, 
+                {
+                    "code": "MAS 151", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAS/151", 
+                    "name": "Medical Procedures Coding I"
+                }, 
+                {
+                    "code": "MAS 152", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAS/152", 
+                    "name": "Medical Procedures Coding II"
+                }, 
+                {
+                    "code": "MAS 153", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAS/153", 
+                    "name": "Physician's Procedural Coding"
+                }
+            ], 
+            "name": "Mexican American Studies", 
+            "url": "http://www.chegg.com/courses/columbustech/MAS"
+        }, 
+        {
+            "abbr": "MAT", 
+            "courses": [
+                {
+                    "code": "MAT 097", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAT/097", 
+                    "name": "Math III"
+                }, 
+                {
+                    "code": "MAT 098", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAT/098", 
+                    "name": "PreAlgebra"
+                }, 
+                {
+                    "code": "MAT 099/152", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAT/099%2F152", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MAT 104", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAT/104", 
+                    "name": "Geometry and Trigonometry"
+                }, 
+                {
+                    "code": "MAT 111", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAT/111", 
+                    "name": "Business Math"
+                }, 
+                {
+                    "code": "MAT 191", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAT/191", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MAT 193", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAT/193", 
+                    "name": "College Trigonometry"
+                }, 
+                {
+                    "code": "MAT 194", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAT/194", 
+                    "name": "Precalculus"
+                }, 
+                {
+                    "code": "MAT 195", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MAT/195", 
+                    "name": "Differential Calculus"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/columbustech/MAT"
+        }, 
+        {
+            "abbr": "MCA", 
+            "courses": [
+                {
+                    "code": "MCA 211", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCA/211", 
+                    "name": "CNC Fundamentals"
+                }, 
+                {
+                    "code": "MCA 213", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCA/213", 
+                    "name": "CNC Mill Manual Programming"
+                }, 
+                {
+                    "code": "MCA 215", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCA/215", 
+                    "name": "CNC Lathe Manual Programming"
+                }, 
+                {
+                    "code": "MCA 217", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCA/217", 
+                    "name": "CNC Practical Applications"
+                }, 
+                {
+                    "code": "MCA 219", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCA/219", 
+                    "name": "CAD/CAM Programming"
+                }
+            ], 
+            "name": "Media And Communication Arts", 
+            "url": "http://www.chegg.com/courses/columbustech/MCA"
+        }, 
+        {
+            "abbr": "MCH", 
+            "courses": [
+                {
+                    "code": "MCH 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCH/101", 
+                    "name": "Introduction to Machine Tool"
+                }, 
+                {
+                    "code": "MCH 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCH/102", 
+                    "name": "Blueprint Reading for Machine Tool"
+                }, 
+                {
+                    "code": "MCH 104", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCH/104", 
+                    "name": "Machine Tool Math I"
+                }, 
+                {
+                    "code": "MCH 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCH/105", 
+                    "name": "Machine Tool Math II"
+                }, 
+                {
+                    "code": "MCH 107", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCH/107", 
+                    "name": "Characteristics of Metals/Heat Treatment I"
+                }, 
+                {
+                    "code": "MCH 109", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCH/109", 
+                    "name": "Lathe Operations I"
+                }, 
+                {
+                    "code": "MCH 110", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCH/110", 
+                    "name": "Lathe Operations II"
+                }, 
+                {
+                    "code": "MCH 112", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCH/112", 
+                    "name": "Surface Grinder Operations"
+                }, 
+                {
+                    "code": "MCH 114", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCH/114", 
+                    "name": "Blueprint Reading II"
+                }, 
+                {
+                    "code": "MCH 115", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCH/115", 
+                    "name": "Mill Operations I"
+                }, 
+                {
+                    "code": "MCH 116", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCH/116", 
+                    "name": "Mill Operations II"
+                }, 
+                {
+                    "code": "MCH 152", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MCH/152", 
+                    "name": "Industrial Machine Applications"
+                }
+            ], 
+            "name": "Machine Manufacturing Tech", 
+            "url": "http://www.chegg.com/courses/columbustech/MCH"
+        }, 
+        {
+            "abbr": "MKT", 
+            "courses": [
+                {
+                    "code": "MKT 161", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MKT/161", 
+                    "name": "Service Industry Business Environment"
+                }, 
+                {
+                    "code": "MKT 162", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MKT/162", 
+                    "name": "Customer Contact Skills"
+                }, 
+                {
+                    "code": "MKT 163", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MKT/163", 
+                    "name": "Computer Skills for Customer Service"
+                }, 
+                {
+                    "code": "MKT 164", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MKT/164", 
+                    "name": "Business Skills for the Customer Service Environment"
+                }, 
+                {
+                    "code": "MKT 165", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MKT/165", 
+                    "name": "Personal Effectiveness in Customer Service"
+                }
+            ], 
+            "name": "Marketing", 
+            "url": "http://www.chegg.com/courses/columbustech/MKT"
+        }, 
+        {
+            "abbr": "MSD", 
+            "courses": [
+                {
+                    "code": "MSD 100", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/100", 
+                    "name": "Management Principles"
+                }, 
+                {
+                    "code": "MSD 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/101", 
+                    "name": "Organizational Behavior"
+                }, 
+                {
+                    "code": "MSD 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/102", 
+                    "name": "Employment Law"
+                }, 
+                {
+                    "code": "MSD 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/103", 
+                    "name": "Leadership"
+                }, 
+                {
+                    "code": "MSD 104", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/104", 
+                    "name": "Human Resource Management"
+                }, 
+                {
+                    "code": "MSD 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/105", 
+                    "name": "Labor Law and Labor Relations"
+                }, 
+                {
+                    "code": "MSD 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/106", 
+                    "name": "Performance Management"
+                }, 
+                {
+                    "code": "MSD 107", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/107", 
+                    "name": "Employee Training and Development"
+                }, 
+                {
+                    "code": "MSD 109", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/109", 
+                    "name": "Managerial Accounting & Finance"
+                }, 
+                {
+                    "code": "MSD 112", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/112", 
+                    "name": "Introduction to Business & Economics"
+                }, 
+                {
+                    "code": "MSD 113", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/113", 
+                    "name": "Business Ethics"
+                }, 
+                {
+                    "code": "MSD 114", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/114", 
+                    "name": "Organizational Communications and Information Technology"
+                }, 
+                {
+                    "code": "MSD 115", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/115", 
+                    "name": "Retail Management"
+                }, 
+                {
+                    "code": "MSD 116", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/116", 
+                    "name": "Business Plan Development"
+                }, 
+                {
+                    "code": "MSD 117", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/117", 
+                    "name": "Small Business Management"
+                }, 
+                {
+                    "code": "MSD 120", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/120", 
+                    "name": "Employee Compensation & Benefits"
+                }, 
+                {
+                    "code": "MSD 175", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/175", 
+                    "name": "Business Spanish"
+                }, 
+                {
+                    "code": "MSD 205", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/205", 
+                    "name": "Service Sector Management"
+                }, 
+                {
+                    "code": "MSD 206", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/206", 
+                    "name": "Project Management"
+                }, 
+                {
+                    "code": "MSD 210", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/210", 
+                    "name": "Team Project"
+                }, 
+                {
+                    "code": "MSD 220", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/MSD/220", 
+                    "name": "Management and Supervision OccupationBased Instruction"
+                }
+            ], 
+            "name": "Management & Supervisory Devl", 
+            "url": "http://www.chegg.com/courses/columbustech/MSD"
+        }, 
+        {
+            "abbr": "NPT", 
+            "courses": [
+                {
+                    "code": "NPT 2-1-2", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NPT/2-1-2", 
+                    "name": "Pediatric Nursing Practicum"
+                }, 
+                {
+                    "code": "NPT 112", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NPT/112", 
+                    "name": "Medical Surgical Nursing Practicum I"
+                }, 
+                {
+                    "code": "NPT 113", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NPT/113", 
+                    "name": "Medical Surgical Nursing Practicum II"
+                }, 
+                {
+                    "code": "NPT 213", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NPT/213", 
+                    "name": "Obstetrical Nursing Practicum"
+                }, 
+                {
+                    "code": "NPT 215", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NPT/215", 
+                    "name": "Nursing Leadership Practicum"
+                }
+            ], 
+            "name": "Nursing Rn Part-Time", 
+            "url": "http://www.chegg.com/courses/columbustech/NPT"
+        }, 
+        {
+            "abbr": "NSG", 
+            "courses": [
+                {
+                    "code": "NSG 2-1-2", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NSG/2-1-2", 
+                    "name": "Pediatric Nursing"
+                }, 
+                {
+                    "code": "NSG 110", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NSG/110", 
+                    "name": "Nursing Fundamentals"
+                }, 
+                {
+                    "code": "NSG 112", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NSG/112", 
+                    "name": "Medical Surgical Nursing I"
+                }, 
+                {
+                    "code": "NSG 113", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NSG/113", 
+                    "name": "Medical Surgical Nursing II"
+                }, 
+                {
+                    "code": "NSG 213", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NSG/213", 
+                    "name": "Obstetrical Nursing"
+                }, 
+                {
+                    "code": "NSG 215", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NSG/215", 
+                    "name": "Nursing Leadership"
+                }
+            ], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/columbustech/NSG"
+        }, 
+        {
+            "abbr": "NUR", 
+            "courses": [
+                {
+                    "code": "NUR 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NUR/101", 
+                    "name": "Professional Practice I"
+                }, 
+                {
+                    "code": "NUR 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NUR/102", 
+                    "name": "Professional Practice II"
+                }, 
+                {
+                    "code": "NUR 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NUR/103", 
+                    "name": "Professional Practice III"
+                }, 
+                {
+                    "code": "NUR 104", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NUR/104", 
+                    "name": "Pharmacology and Dosage Calculation"
+                }, 
+                {
+                    "code": "NUR 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NUR/105", 
+                    "name": "Professional Practice IV"
+                }, 
+                {
+                    "code": "NUR 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NUR/106", 
+                    "name": "Foundations of Professional Nursing"
+                }, 
+                {
+                    "code": "NUR 201", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NUR/201", 
+                    "name": "Professional Practice V"
+                }, 
+                {
+                    "code": "NUR 202", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NUR/202", 
+                    "name": "Professional Practice VI"
+                }, 
+                {
+                    "code": "NUR 203", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NUR/203", 
+                    "name": "Professional Practice VII"
+                }, 
+                {
+                    "code": "NUR 204", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NUR/204", 
+                    "name": "Professional Practice VIII"
+                }, 
+                {
+                    "code": "NUR 205", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NUR/205", 
+                    "name": "Professional Practice IX"
+                }, 
+                {
+                    "code": "NUR 206", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/NUR/206", 
+                    "name": "Professional Practice X"
+                }
+            ], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/columbustech/NUR"
+        }, 
+        {
+            "abbr": "PHL", 
+            "courses": [
+                {
+                    "code": "PHL 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PHL/103", 
+                    "name": "Introduction to Venipuncture"
+                }, 
+                {
+                    "code": "PHL 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PHL/105", 
+                    "name": "Clinical Practice"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/columbustech/PHL"
+        }, 
+        {
+            "abbr": "PHR", 
+            "courses": [
+                {
+                    "code": "PHR 100", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PHR/100", 
+                    "name": "Pharmaceutical Calculations"
+                }, 
+                {
+                    "code": "PHR 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PHR/101", 
+                    "name": "Pharmacy Technology Fundamentals"
+                }, 
+                {
+                    "code": "PHR 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PHR/102", 
+                    "name": "Principles of Dispensing Medications"
+                }, 
+                {
+                    "code": "PHR 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PHR/103", 
+                    "name": "Principles of Sterile Medication Preparation"
+                }, 
+                {
+                    "code": "PHR 104", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PHR/104", 
+                    "name": "Pharmacy Technology Pharmacology"
+                }, 
+                {
+                    "code": "PHR 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PHR/105", 
+                    "name": "Pharmacy Technology Practicum"
+                }, 
+                {
+                    "code": "PHR 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PHR/106", 
+                    "name": "Advanced Pharmacy Technology Principles"
+                }, 
+                {
+                    "code": "PHR 107", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PHR/107", 
+                    "name": "Advanced Pharmacy Technology Practicum"
+                }
+            ], 
+            "name": "Pharmacy", 
+            "url": "http://www.chegg.com/courses/columbustech/PHR"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 190", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PHY/190", 
+                    "name": "Introductory Physics"
+                }, 
+                {
+                    "code": "PHY 191", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PHY/191", 
+                    "name": "Mechanics"
+                }, 
+                {
+                    "code": "PHY 192", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PHY/192", 
+                    "name": "Electricity and Magnetism"
+                }, 
+                {
+                    "code": "PHY 291", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PHY/291", 
+                    "name": "Fluids,Heat,Sound,and Light"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/columbustech/PHY"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 191", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PSY/191", 
+                    "name": "Introductory Psychology"
+                }, 
+                {
+                    "code": "PSY 192", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PSY/192", 
+                    "name": "Industrial Organizational Psychology"
+                }, 
+                {
+                    "code": "PSY 291", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/PSY/291", 
+                    "name": "Human Growth and Development"
+                }
+            ], 
+            "name": "Clinical Counseling", 
+            "url": "http://www.chegg.com/courses/columbustech/PSY"
+        }, 
+        {
+            "abbr": "QCT", 
+            "courses": [
+                {
+                    "code": "QCT 114", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/QCT/114", 
+                    "name": "Statistical Process Control"
+                }
+            ], 
+            "name": "Quality Assurance", 
+            "url": "http://www.chegg.com/courses/columbustech/QCT"
+        }, 
+        {
+            "abbr": "RAD", 
+            "courses": [
+                {
+                    "code": "RAD 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/101", 
+                    "name": "Introduction to Radiography"
+                }, 
+                {
+                    "code": "RAD 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/103", 
+                    "name": "Body Trunk and Upper Extremity Procedures"
+                }, 
+                {
+                    "code": "RAD 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/106", 
+                    "name": "Lower Extremity and Spine Procedures"
+                }, 
+                {
+                    "code": "RAD 107", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/107", 
+                    "name": "Principles of Radiographic Exposure I"
+                }, 
+                {
+                    "code": "RAD 109", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/109", 
+                    "name": "Contrast Procedures"
+                }, 
+                {
+                    "code": "RAD 113", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/113", 
+                    "name": "Cranium Procedures"
+                }, 
+                {
+                    "code": "RAD 116", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/116", 
+                    "name": "Principles of Radiographic Exposure II"
+                }, 
+                {
+                    "code": "RAD 117", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/117", 
+                    "name": "Radiographic Imaging Equipment"
+                }, 
+                {
+                    "code": "RAD 119", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/119", 
+                    "name": "Radiographic Pathology and Medical Terminology"
+                }, 
+                {
+                    "code": "RAD 120", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/120", 
+                    "name": "Principles of Radiation Biology and Protection"
+                }, 
+                {
+                    "code": "RAD 123", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/123", 
+                    "name": "Radiologic Science"
+                }, 
+                {
+                    "code": "RAD 126", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/126", 
+                    "name": "Radiologic Technology Review"
+                }, 
+                {
+                    "code": "RAD 132", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/132", 
+                    "name": "Clinical Radiography I"
+                }, 
+                {
+                    "code": "RAD 133", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/133", 
+                    "name": "Clinical Radiography II"
+                }, 
+                {
+                    "code": "RAD 134", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/134", 
+                    "name": "Clinical Radiography III"
+                }, 
+                {
+                    "code": "RAD 135", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/135", 
+                    "name": "Clinical Radiography IV"
+                }, 
+                {
+                    "code": "RAD 136", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/136", 
+                    "name": "Clinical Radiography V"
+                }, 
+                {
+                    "code": "RAD 137", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/137", 
+                    "name": "Clinical Radiography VI"
+                }, 
+                {
+                    "code": "RAD 138", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RAD/138", 
+                    "name": "Clinical Radiography VII"
+                }
+            ], 
+            "name": "Radiologic Sciences", 
+            "url": "http://www.chegg.com/courses/columbustech/RAD"
+        }, 
+        {
+            "abbr": "RDG", 
+            "courses": [
+                {
+                    "code": "RDG 097", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RDG/097", 
+                    "name": "Reading III"
+                }, 
+                {
+                    "code": "RDG 098", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RDG/098", 
+                    "name": "Reading IV"
+                }
+            ], 
+            "name": "Reading", 
+            "url": "http://www.chegg.com/courses/columbustech/RDG"
+        }, 
+        {
+            "abbr": "RTT", 
+            "courses": [
+                {
+                    "code": "RTT 2-1-2", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/2-1-2", 
+                    "name": "Critical Respiratory Care"
+                }, 
+                {
+                    "code": "RTT 111", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/111", 
+                    "name": "Pharmacology"
+                }, 
+                {
+                    "code": "RTT 112", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/112", 
+                    "name": "Introduction to Respiratory Therapy"
+                }, 
+                {
+                    "code": "RTT 113", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/113", 
+                    "name": "Respiratory Therapy Lab I"
+                }, 
+                {
+                    "code": "RTT 193", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/193", 
+                    "name": "Cardiopulmonary Anatomy and Physiology"
+                }, 
+                {
+                    "code": "RTT 209", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/209", 
+                    "name": "Clinical Practice I"
+                }, 
+                {
+                    "code": "RTT 210", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/210", 
+                    "name": "Clinical Practice II"
+                }, 
+                {
+                    "code": "RTT 211", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/211", 
+                    "name": "Pulmonary Disease"
+                }, 
+                {
+                    "code": "RTT 213", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/213", 
+                    "name": "Mechanical Ventilation Equipment and Airway Care"
+                }, 
+                {
+                    "code": "RTT 214", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/214", 
+                    "name": "Advanced Critical Care Monitoring"
+                }, 
+                {
+                    "code": "RTT 215", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/215", 
+                    "name": "Pulmonary Function Testing"
+                }, 
+                {
+                    "code": "RTT 216", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/216", 
+                    "name": "Pediatric and Neonatal Respiratory Care"
+                }, 
+                {
+                    "code": "RTT 217", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/217", 
+                    "name": "Advanced Respiratory Care Seminar"
+                }, 
+                {
+                    "code": "RTT 218", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/218", 
+                    "name": "Clinical Practice III"
+                }, 
+                {
+                    "code": "RTT 219", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/219", 
+                    "name": "Clinical Practice IV"
+                }, 
+                {
+                    "code": "RTT 220", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/220", 
+                    "name": "Clinical Practice V"
+                }, 
+                {
+                    "code": "RTT 222", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/222", 
+                    "name": "Clinical Practice VI"
+                }, 
+                {
+                    "code": "RTT 227", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/RTT/227", 
+                    "name": "Rehabilitation and Home Care"
+                }
+            ], 
+            "name": "Radiation Therapy", 
+            "url": "http://www.chegg.com/courses/columbustech/RTT"
+        }, 
+        {
+            "abbr": "SCT", 
+            "courses": [
+                {
+                    "code": "SCT 100", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/SCT/100", 
+                    "name": "Introduction to Microcomputers"
+                }
+            ], 
+            "name": "Physical Therapy", 
+            "url": "http://www.chegg.com/courses/columbustech/SCT"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 191", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/SOC/191", 
+                    "name": "Introduction to Sociology"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/columbustech/SOC"
+        }, 
+        {
+            "abbr": "SPC", 
+            "courses": [
+                {
+                    "code": "SPC 191", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/SPC/191", 
+                    "name": "Fundamentals of Speech"
+                }
+            ], 
+            "name": "Speech Communication - Spc", 
+            "url": "http://www.chegg.com/courses/columbustech/SPC"
+        }, 
+        {
+            "abbr": "SUR", 
+            "courses": [
+                {
+                    "code": "SUR 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/SUR/101", 
+                    "name": "Introduction to Surgical Technology"
+                }, 
+                {
+                    "code": "SUR 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/SUR/102", 
+                    "name": "Principles of Surgical Technology"
+                }, 
+                {
+                    "code": "SUR 108", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/SUR/108", 
+                    "name": "Surgical Microbiology"
+                }, 
+                {
+                    "code": "SUR 109", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/SUR/109", 
+                    "name": "Surgical Patient Care"
+                }, 
+                {
+                    "code": "SUR 110", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/SUR/110", 
+                    "name": "Surgical Pharmacology"
+                }, 
+                {
+                    "code": "SUR 112", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/SUR/112", 
+                    "name": "Introductory Surgical Practicum"
+                }, 
+                {
+                    "code": "SUR 203", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/SUR/203", 
+                    "name": "Surgical Procedures I"
+                }, 
+                {
+                    "code": "SUR 204", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/SUR/204", 
+                    "name": "Surgical Procedures II"
+                }, 
+                {
+                    "code": "SUR 213", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/SUR/213", 
+                    "name": "Specialty Surgical Practicum"
+                }, 
+                {
+                    "code": "SUR 214", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/SUR/214", 
+                    "name": "Advanced Specialty Surgical Practicum"
+                }, 
+                {
+                    "code": "SUR 224", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/SUR/224", 
+                    "name": "Seminar in Surgical Technology"
+                }
+            ], 
+            "name": "Surgery", 
+            "url": "http://www.chegg.com/courses/columbustech/SUR"
+        }, 
+        {
+            "abbr": "TEL", 
+            "courses": [
+                {
+                    "code": "TEL 110", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/TEL/110", 
+                    "name": "Network Transmission Concepts"
+                }, 
+                {
+                    "code": "TEL 116", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/TEL/116", 
+                    "name": "Fiber Optics Transmission Systems"
+                }
+            ], 
+            "name": "Telecommunications", 
+            "url": "http://www.chegg.com/courses/columbustech/TEL"
+        }, 
+        {
+            "abbr": "WLD", 
+            "courses": [
+                {
+                    "code": "WLD 100", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/100", 
+                    "name": "Introduction to Welding Technology"
+                }, 
+                {
+                    "code": "WLD 101", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/101", 
+                    "name": "Oxyfuel Cutting"
+                }, 
+                {
+                    "code": "WLD 102", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/102", 
+                    "name": "Oxyacetylene Welding"
+                }, 
+                {
+                    "code": "WLD 103", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/103", 
+                    "name": "Blueprint Reading I"
+                }, 
+                {
+                    "code": "WLD 104", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/104", 
+                    "name": "Shielded Metal Arc Welding I"
+                }, 
+                {
+                    "code": "WLD 105", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/105", 
+                    "name": "Shielded Metal Arc Welding II"
+                }, 
+                {
+                    "code": "WLD 106", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/106", 
+                    "name": "Shielded Metal Arc Welding III"
+                }, 
+                {
+                    "code": "WLD 107", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/107", 
+                    "name": "Shielded Metal Arc Welding IV"
+                }, 
+                {
+                    "code": "WLD 108", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/108", 
+                    "name": "Blueprint Reading II"
+                }, 
+                {
+                    "code": "WLD 109", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/109", 
+                    "name": "Gas Metal Arc Welding"
+                }, 
+                {
+                    "code": "WLD 110", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/110", 
+                    "name": "Gas Tungsten Arc Welding"
+                }, 
+                {
+                    "code": "WLD 112", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/112", 
+                    "name": "Preparation for Industrial Qualification"
+                }, 
+                {
+                    "code": "WLD 133", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/133", 
+                    "name": "Metal Welding and Cutting Techniques"
+                }, 
+                {
+                    "code": "WLD 150", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/150", 
+                    "name": "Advanced Gas Tungsten Arc Welding"
+                }, 
+                {
+                    "code": "WLD 151", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/151", 
+                    "name": "Fabrication Practices"
+                }, 
+                {
+                    "code": "WLD 154", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/154", 
+                    "name": "Plasma Cutting"
+                }, 
+                {
+                    "code": "WLD 160", 
+                    "course_url": "http://www.chegg.com/courses/columbustech/WLD/160", 
+                    "name": "Welding and Joining Technology HalfTime Internship"
+                }
+            ], 
+            "name": "Welding", 
+            "url": "http://www.chegg.com/courses/columbustech/WLD"
+        }
+    ], 
+    "name": "columbustech"
+}

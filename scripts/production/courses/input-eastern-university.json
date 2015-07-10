@@ -1,0 +1,4799 @@
+{
+    "all_stats": {
+        "num_courses": 874, 
+        "num_departments": 60
+    }, 
+    "departments": [
+        {
+            "abbr": "ACCT", 
+            "courses": [
+                {
+                    "code": "ACCT 106", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ACCT/106", 
+                    "name": "Accounting for Decision Makers"
+                }, 
+                {
+                    "code": "ACCT 107,108", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ACCT/107%2C108", 
+                    "name": "Accounting Principles I,II"
+                }, 
+                {
+                    "code": "ACCT 108", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ACCT/108", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACCT 309", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ACCT/309", 
+                    "name": "Nonprofit Accounting"
+                }, 
+                {
+                    "code": "ACCT 361,362", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ACCT/361%2C362", 
+                    "name": "Intermediate Financial Accounting"
+                }, 
+                {
+                    "code": "ACCT 381", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ACCT/381", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACCT 420", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ACCT/420", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACCT 421", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ACCT/421", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACCT 470", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ACCT/470", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACCT 495", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ACCT/495", 
+                    "name": ""
+                }
+            ], 
+            "name": "Accountancy", 
+            "url": "http://www.chegg.com/courses/eastern/ACCT"
+        }, 
+        {
+            "abbr": "ANTH", 
+            "courses": [
+                {
+                    "code": "ANTH 101", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ANTH/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ANTH 102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ANTH/102", 
+                    "name": "Introduction to Archeology"
+                }, 
+                {
+                    "code": "ANTH 103", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ANTH/103", 
+                    "name": "Physical Anthropology"
+                }, 
+                {
+                    "code": "ANTH 201", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ANTH/201", 
+                    "name": "People in Places"
+                }, 
+                {
+                    "code": "ANTH 210", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ANTH/210", 
+                    "name": "Race and Ethnicity"
+                }, 
+                {
+                    "code": "ANTH 251", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ANTH/251", 
+                    "name": "The Discovery of Foreign Worlds"
+                }, 
+                {
+                    "code": "ANTH 251W", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ANTH/251W", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ANTH 301", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ANTH/301", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ANTH 310", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ANTH/310", 
+                    "name": "Comparative Religions"
+                }, 
+                {
+                    "code": "ANTH 320", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ANTH/320", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ANTH 401", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ANTH/401", 
+                    "name": ""
+                }
+            ], 
+            "name": "Anthropology", 
+            "url": "http://www.chegg.com/courses/eastern/ANTH"
+        }, 
+        {
+            "abbr": "ATR", 
+            "courses": [
+                {
+                    "code": "ATR 175", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/175", 
+                    "name": "Sports Nutrition and Conditioning"
+                }, 
+                {
+                    "code": "ATR 195", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/195", 
+                    "name": "Introduction to Athletic Training"
+                }, 
+                {
+                    "code": "ATR 220", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/220", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ATR 221", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/221", 
+                    "name": "Athletic Training Practicum II"
+                }, 
+                {
+                    "code": "ATR 250", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/250", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ATR 280", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/280", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ATR 301", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/301", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ATR 320", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/320", 
+                    "name": "Athletic Training Practicum III"
+                }, 
+                {
+                    "code": "ATR 321", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/321", 
+                    "name": "Athletic Training Practicum IV"
+                }, 
+                {
+                    "code": "ATR 370", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/370", 
+                    "name": "Therapeutic Exercise"
+                }, 
+                {
+                    "code": "ATR 371", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/371", 
+                    "name": "Lower Extremity Evaluation"
+                }, 
+                {
+                    "code": "ATR 372", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/372", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ATR 375", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/375", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ATR 420", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/420", 
+                    "name": "Athletic Training Practicum V"
+                }, 
+                {
+                    "code": "ATR 421", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/421", 
+                    "name": "Athletic Training Practicum VI"
+                }, 
+                {
+                    "code": "ATR 425", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/425", 
+                    "name": "Medical Aspects of Physical Activity"
+                }, 
+                {
+                    "code": "ATR 450", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/450", 
+                    "name": "Senior Seminar"
+                }, 
+                {
+                    "code": "ATR 451", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/451", 
+                    "name": "Administration in Athletic Training"
+                }, 
+                {
+                    "code": "ATR 475", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ATR/475", 
+                    "name": ""
+                }
+            ], 
+            "name": "Athletic Training", 
+            "url": "http://www.chegg.com/courses/eastern/ATR"
+        }, 
+        {
+            "abbr": "BIB", 
+            "courses": [
+                {
+                    "code": "BIB 100", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/100", 
+                    "name": "BIBLICAL LITERATURE IN CONTEMPORARY CONTEXT"
+                }, 
+                {
+                    "code": "BIB 101", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIB 101H", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/101H", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIB 102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIB 102H", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/102H", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIB 201", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/201", 
+                    "name": "Research Methods in Biblical Studies"
+                }, 
+                {
+                    "code": "BIB 201W", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/201W", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIB 216", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/216", 
+                    "name": "Praise and Lament in the Psalms"
+                }, 
+                {
+                    "code": "BIB 220 1", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/220%201", 
+                    "name": "and 2 Corinthians"
+                }, 
+                {
+                    "code": "BIB 265", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/265", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIB 308", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/308", 
+                    "name": "Genres of the Hebrew Bible"
+                }, 
+                {
+                    "code": "BIB 310", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIB 312", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/312", 
+                    "name": "The Hebrew Prophets"
+                }, 
+                {
+                    "code": "BIB 314", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/314", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIB 320", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/320", 
+                    "name": "Jesus and the Gospels"
+                }, 
+                {
+                    "code": "BIB 322", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/322", 
+                    "name": "Paul:His Life,Letters and Theology"
+                }, 
+                {
+                    "code": "BIB 324", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/324", 
+                    "name": "The Gospel and Letters of John"
+                }, 
+                {
+                    "code": "BIB 325", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/325", 
+                    "name": "Women in Scripture"
+                }, 
+                {
+                    "code": "BIB 330E", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/330E", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIB 330L", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/330L", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIB 335", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/335", 
+                    "name": "Early Judaism and the New Testament"
+                }, 
+                {
+                    "code": "BIB 350", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/350", 
+                    "name": "Wisdom Literature"
+                }, 
+                {
+                    "code": "BIB 360", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/360", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIB 370", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/370", 
+                    "name": "The Dead Sea Scrolls"
+                }, 
+                {
+                    "code": "BIB 380", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/380", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIB 390", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/390", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIB 440", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/440", 
+                    "name": "Senior Seminar"
+                }, 
+                {
+                    "code": "BIB 460", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/460", 
+                    "name": "Biblical Texts in Context"
+                }, 
+                {
+                    "code": "BIB 461", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/461", 
+                    "name": "Genesis in Context"
+                }, 
+                {
+                    "code": "BIB 463", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIB/463", 
+                    "name": "Romans in Context"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eastern/BIB"
+        }, 
+        {
+            "abbr": "BIBLE", 
+            "courses": [
+                {
+                    "code": "BIBLE 101", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIBLE/101", 
+                    "name": "Nature and Meaning of the Old Testament"
+                }, 
+                {
+                    "code": "BIBLE 102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIBLE/102", 
+                    "name": "Nature and Meaning of the New Testament"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eastern/BIBLE"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 103", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/103", 
+                    "name": "EARTHKEEPING"
+                }, 
+                {
+                    "code": "BIO 104", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/104", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 151", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/151", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 152", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/152", 
+                    "name": "General Biology II"
+                }, 
+                {
+                    "code": "BIO 205", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/205", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 206", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/206", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 215", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/215", 
+                    "name": "Studies in Botany"
+                }, 
+                {
+                    "code": "BIO 216", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/216", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 233", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/233", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 234", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/234", 
+                    "name": "Human Physiology & Anatomy II"
+                }, 
+                {
+                    "code": "BIO 290", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/290", 
+                    "name": "Tropical Biology"
+                }, 
+                {
+                    "code": "BIO 309", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/309", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 310", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 310L", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/310L", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 311", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/311", 
+                    "name": "Cell Biology"
+                }, 
+                {
+                    "code": "BIO 312", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/312", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 313", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/313", 
+                    "name": "Embryology"
+                }, 
+                {
+                    "code": "BIO 315", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/315", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 316", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/316", 
+                    "name": "Techniques in Biotechnology"
+                }, 
+                {
+                    "code": "BIO 320", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/320", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 330D", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/330D", 
+                    "name": "Special Topics:Parasitology"
+                }, 
+                {
+                    "code": "BIO 340", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/340", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 344", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/344", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 345", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/345", 
+                    "name": "Molecular Biology Laboratory"
+                }, 
+                {
+                    "code": "BIO 350A", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/350A", 
+                    "name": "Classification and Application-Invertebrate Zoology:Entomology"
+                }, 
+                {
+                    "code": "BIO 350B", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/350B", 
+                    "name": "Classification and Application-Vertebrate Zoology"
+                }, 
+                {
+                    "code": "BIO 350C", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/350C", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 417", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/417", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 420", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/420", 
+                    "name": "Environmental Regulations and Policy"
+                }, 
+                {
+                    "code": "BIO 425", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/425", 
+                    "name": "Senior Thesis Literature Review"
+                }, 
+                {
+                    "code": "BIO 426,427", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/426%2C427", 
+                    "name": "Senior Thesis Directed Research I, II"
+                }, 
+                {
+                    "code": "BIO 495", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIO/495", 
+                    "name": "Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eastern/BIO"
+        }, 
+        {
+            "abbr": "BIOLOGY", 
+            "courses": [
+                {
+                    "code": "BIOLOGY 104", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BIOLOGY/104", 
+                    "name": "Human Biology"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/eastern/BIOLOGY"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 104", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUS/104", 
+                    "name": "BUSINESS COMMUNICATIONS"
+                }, 
+                {
+                    "code": "BUS 110", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUS/110", 
+                    "name": "ACCOUNTING FUNDAMENTALS"
+                }, 
+                {
+                    "code": "BUS 120", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUS/120", 
+                    "name": "MACROECONOMICS"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eastern/BUS"
+        }, 
+        {
+            "abbr": "BUSA", 
+            "courses": [
+                {
+                    "code": "BUSA 102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/102", 
+                    "name": "Business as a Profession"
+                }, 
+                {
+                    "code": "BUSA 202", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/202", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 206", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/206", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 212", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/212", 
+                    "name": "IT Applications in E-Commerce"
+                }, 
+                {
+                    "code": "BUSA 221", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/221", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 240", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/240", 
+                    "name": "Strategic Marketing for Nonprofit Organizations"
+                }, 
+                {
+                    "code": "BUSA 270", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/270", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 280", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/280", 
+                    "name": "Labor-Management Relations"
+                }, 
+                {
+                    "code": "BUSA 290", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/290", 
+                    "name": "Real Estate Practices and Fundamentals"
+                }, 
+                {
+                    "code": "BUSA 302", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/302", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 303", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/303", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 305", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/305", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 306", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/306", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 308", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/308", 
+                    "name": "Entrepreneurship"
+                }, 
+                {
+                    "code": "BUSA 310", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/310", 
+                    "name": "Leadership"
+                }, 
+                {
+                    "code": "BUSA 311", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/311", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 314", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/314", 
+                    "name": "Community Organizing"
+                }, 
+                {
+                    "code": "BUSA 315", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/315", 
+                    "name": "Housing and Economic Development"
+                }, 
+                {
+                    "code": "BUSA 316", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/316", 
+                    "name": "Nonprofit Organization Development and Management"
+                }, 
+                {
+                    "code": "BUSA 321", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/321", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 340", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/340", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 350", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/350", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 390", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/390", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 403", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/403", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 405", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/405", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 430", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/430", 
+                    "name": "Investment Management"
+                }, 
+                {
+                    "code": "BUSA 470", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/470", 
+                    "name": "Management Information Systems"
+                }, 
+                {
+                    "code": "BUSA 480", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/480", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 491,492", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/491%2C492", 
+                    "name": "Integrative Practices"
+                }, 
+                {
+                    "code": "BUSA 495", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/495", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 550", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/550", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 603", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/603", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUSA 651", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSA/651", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eastern/BUSA"
+        }, 
+        {
+            "abbr": "BUSINESS", 
+            "courses": [
+                {
+                    "code": "BUSINESS 202", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSINESS/202", 
+                    "name": "Principles of Marketing"
+                }, 
+                {
+                    "code": "BUSINESS 206", 
+                    "course_url": "http://www.chegg.com/courses/eastern/BUSINESS/206", 
+                    "name": "Principles of Management and Leadership"
+                }
+            ], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/eastern/BUSINESS"
+        }, 
+        {
+            "abbr": "CDEV", 
+            "courses": [
+                {
+                    "code": "CDEV 525", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CDEV/525", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CDEV 545", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CDEV/545", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CDEV 575", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CDEV/575", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CDEV 670", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CDEV/670", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CDEV 695", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CDEV/695", 
+                    "name": ""
+                }
+            ], 
+            "name": "CDEV", 
+            "url": "http://www.chegg.com/courses/eastern/CDEV"
+        }, 
+        {
+            "abbr": "CHE", 
+            "courses": [
+                {
+                    "code": "CHE 111", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/111", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 112", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/112", 
+                    "name": "Introductory Organic and Biochemistry"
+                }, 
+                {
+                    "code": "CHE 113", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/113", 
+                    "name": "Applied Chemistry Lab"
+                }, 
+                {
+                    "code": "CHE 114", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/114", 
+                    "name": "Introductory Organic and Biochemistry Lab"
+                }, 
+                {
+                    "code": "CHE 115", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/115", 
+                    "name": "Hands-On Chemistry for Children"
+                }, 
+                {
+                    "code": "CHE 121", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/121", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 122", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/122", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 123,124", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/123%2C124", 
+                    "name": "General Chemistry Laboratory I, II"
+                }, 
+                {
+                    "code": "CHE 211", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/211", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 212", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/212", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 213", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/213", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 214", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/214", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 231", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/231", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 304", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/304", 
+                    "name": "Chemistry Laboratory Management"
+                }, 
+                {
+                    "code": "CHE 312", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/312", 
+                    "name": "Thermodynamics and Kinetics"
+                }, 
+                {
+                    "code": "CHE 320", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/320", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 321", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/321", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 322", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/322", 
+                    "name": "Biochemistry Laboratory"
+                }, 
+                {
+                    "code": "CHE 332", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/332", 
+                    "name": "Environmental Chemistry"
+                }, 
+                {
+                    "code": "CHE 350", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/350", 
+                    "name": "Advanced Inorganic Chemistry"
+                }, 
+                {
+                    "code": "CHE 360", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/360", 
+                    "name": "Advanced Organic Chemistry"
+                }, 
+                {
+                    "code": "CHE 405", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/405", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 408", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/408", 
+                    "name": "Industrial Chemistry"
+                }, 
+                {
+                    "code": "CHE 411", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/411", 
+                    "name": "Introductory Quantum Chemistry"
+                }, 
+                {
+                    "code": "CHE 420", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/420", 
+                    "name": "Chemical Research"
+                }, 
+                {
+                    "code": "CHE 425", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/425", 
+                    "name": "Project Presentation"
+                }, 
+                {
+                    "code": "CHE 495", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CHE/495", 
+                    "name": "Internship"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/eastern/CHE"
+        }, 
+        {
+            "abbr": "CNSL", 
+            "courses": [
+                {
+                    "code": "CNSL 500", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/500", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 503", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/503", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 507", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/507", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 511", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/511", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 513", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/513", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 514", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/514", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 518", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/518", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 519", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/519", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 520", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/520", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 540", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/540", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 545", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/545", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 552", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/552", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 575", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/575", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 590", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/590", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 601", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/601", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 602", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/602", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 609", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/609", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 611", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/611", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 612", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/612", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 614", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/614", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 615", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/615", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 616", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/616", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 617", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/617", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 623", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/623", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 625", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/625", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 628", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/628", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 629", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/629", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 630K", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/630K", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 630L", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/630L", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 634", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/634", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 675", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/675", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 676", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/676", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CNSL 680", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CNSL/680", 
+                    "name": ""
+                }
+            ], 
+            "name": "Counseling", 
+            "url": "http://www.chegg.com/courses/eastern/CNSL"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 101", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/101", 
+                    "name": "Introduction to Communication"
+                }, 
+                {
+                    "code": "COM 104", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/104", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 105", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/105", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 120", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/120", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 120H", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/120H", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 201", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/201", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 203", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/203", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 206", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/206", 
+                    "name": "Listening and Nonverbal Communication"
+                }, 
+                {
+                    "code": "COM 212", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/212", 
+                    "name": "Business Communication"
+                }, 
+                {
+                    "code": "COM 215", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/215", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 220", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/220", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 221", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/221", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 222", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/222", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 237", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/237", 
+                    "name": "Introduction to Documentary Production"
+                }, 
+                {
+                    "code": "COM 240", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/240", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 255", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/255", 
+                    "name": "Communication and Technology"
+                }, 
+                {
+                    "code": "COM 260", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/260", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 280", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/280", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 285", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/285", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 300", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/300", 
+                    "name": "Rhetorical Criticism"
+                }, 
+                {
+                    "code": "COM 303", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/303", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 304", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/304", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 305", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/305", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 315", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/315", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 321", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/321", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 322", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/322", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 325", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/325", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 340", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/340", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 350", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/350", 
+                    "name": "Communication Across Difference:Gender and Generation"
+                }, 
+                {
+                    "code": "COM 370", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/370", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM 380", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/380", 
+                    "name": "Research Methods"
+                }, 
+                {
+                    "code": "COM 399", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/399", 
+                    "name": "OE Composition and Rhetoric"
+                }, 
+                {
+                    "code": "COM 405", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/405", 
+                    "name": "Media Theory and Criticism"
+                }, 
+                {
+                    "code": "COM 410", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/410", 
+                    "name": "Communication Theory"
+                }, 
+                {
+                    "code": "COM 411", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/411", 
+                    "name": "Senior Seminar"
+                }, 
+                {
+                    "code": "COM 495", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COM/495", 
+                    "name": ""
+                }
+            ], 
+            "name": "Communication", 
+            "url": "http://www.chegg.com/courses/eastern/COM"
+        }, 
+        {
+            "abbr": "COMMUNICATION STUDIES", 
+            "courses": [
+                {
+                    "code": "COMMUNICATION STUDIES 120", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COMMUNICATION%20STUDIES/120", 
+                    "name": "Public Speaking"
+                }, 
+                {
+                    "code": "COMMUNICATION STUDIES 201", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COMMUNICATION%20STUDIES/201", 
+                    "name": "Interpersonal Communication"
+                }, 
+                {
+                    "code": "COMMUNICATION STUDIES 203", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COMMUNICATION%20STUDIES/203", 
+                    "name": "Group Communication and Leadership"
+                }, 
+                {
+                    "code": "COMMUNICATION STUDIES 206", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COMMUNICATION%20STUDIES/206", 
+                    "name": "Listening and Nonverbal Communication"
+                }, 
+                {
+                    "code": "COMMUNICATION STUDIES 212", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COMMUNICATION%20STUDIES/212", 
+                    "name": "Business Communication"
+                }, 
+                {
+                    "code": "COMMUNICATION STUDIES 260", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COMMUNICATION%20STUDIES/260", 
+                    "name": "Communication Across Cultures"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eastern/COMMUNICATION%20STUDIES"
+        }, 
+        {
+            "abbr": "COMPUTER SCIENCE", 
+            "courses": [
+                {
+                    "code": "COMPUTER SCIENCE 110", 
+                    "course_url": "http://www.chegg.com/courses/eastern/COMPUTER%20SCIENCE/110", 
+                    "name": "Computer Literacy"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eastern/COMPUTER%20SCIENCE"
+        }, 
+        {
+            "abbr": "CSC", 
+            "courses": [
+                {
+                    "code": "CSC 150", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CSC/150", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CSC 200", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CSC/200", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CSC 210", 
+                    "course_url": "http://www.chegg.com/courses/eastern/CSC/210", 
+                    "name": "CONTEMPORARY APPLICATIONS IN COMPUTERS"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eastern/CSC"
+        }, 
+        {
+            "abbr": "DAN", 
+            "courses": [
+                {
+                    "code": "DAN 103", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/103", 
+                    "name": "Movement and Rhythms for Children"
+                }, 
+                {
+                    "code": "DAN 122", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/122", 
+                    "name": "Global Dance Forms"
+                }, 
+                {
+                    "code": "DAN 122X", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/122X", 
+                    "name": "Global Dance Practice"
+                }, 
+                {
+                    "code": "DAN 140", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/140", 
+                    "name": ""
+                }, 
+                {
+                    "code": "DAN 231", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/231", 
+                    "name": "Intermediate Modern Dance:Theory and Technique"
+                }, 
+                {
+                    "code": "DAN 231X", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/231X", 
+                    "name": "Practice in Modern Dance"
+                }, 
+                {
+                    "code": "DAN 232", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/232", 
+                    "name": "Intermediate Jazz Dance:Theory and Technique"
+                }, 
+                {
+                    "code": "DAN 232X", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/232X", 
+                    "name": "Practice in Jazz Dance"
+                }, 
+                {
+                    "code": "DAN 233", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/233", 
+                    "name": "Liturgical Dance History and Practice"
+                }, 
+                {
+                    "code": "DAN 234", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/234", 
+                    "name": ""
+                }, 
+                {
+                    "code": "DAN 234X", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/234X", 
+                    "name": "Practice in Ballet Dance"
+                }, 
+                {
+                    "code": "DAN 250", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/250", 
+                    "name": "Modern Dance History"
+                }, 
+                {
+                    "code": "DAN 250W", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/250W", 
+                    "name": ""
+                }, 
+                {
+                    "code": "DAN 260", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/260", 
+                    "name": "Classical Ballet History"
+                }, 
+                {
+                    "code": "DAN 310", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/310", 
+                    "name": "Dance Anatomy and Kinesiology"
+                }, 
+                {
+                    "code": "DAN 330A", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/330A", 
+                    "name": ""
+                }, 
+                {
+                    "code": "DAN 331", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/331", 
+                    "name": "Advanced Modern Dance:Theory and Technique"
+                }, 
+                {
+                    "code": "DAN 331X", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/331X", 
+                    "name": "Advanced Modern Dance Practice"
+                }, 
+                {
+                    "code": "DAN 332", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/332", 
+                    "name": "Advanced Jazz Dance:Theory and Technique"
+                }, 
+                {
+                    "code": "DAN 332X", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/332X", 
+                    "name": "Advanced Jazz Dance Practice"
+                }, 
+                {
+                    "code": "DAN 334", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/334", 
+                    "name": ""
+                }, 
+                {
+                    "code": "DAN 334X", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/334X", 
+                    "name": "Advanced Ballet Practice"
+                }, 
+                {
+                    "code": "DAN 340", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/340", 
+                    "name": "Dance Repertory"
+                }, 
+                {
+                    "code": "DAN 345", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/345", 
+                    "name": "Methods and Techniques of Dance Instruction"
+                }, 
+                {
+                    "code": "DAN 355", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/355", 
+                    "name": "Methods of Teaching Beginning and Intermediate Pointe"
+                }, 
+                {
+                    "code": "DAN 365", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/365", 
+                    "name": ""
+                }, 
+                {
+                    "code": "DAN 375", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/375", 
+                    "name": ""
+                }, 
+                {
+                    "code": "DAN 385", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/385", 
+                    "name": "Dance Improvisation"
+                }, 
+                {
+                    "code": "DAN 386", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/386", 
+                    "name": "Dance Composition"
+                }, 
+                {
+                    "code": "DAN 395", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/395", 
+                    "name": "Field Experience"
+                }, 
+                {
+                    "code": "DAN 410", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/410", 
+                    "name": ""
+                }, 
+                {
+                    "code": "DAN 435", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/435", 
+                    "name": ""
+                }, 
+                {
+                    "code": "DAN 495", 
+                    "course_url": "http://www.chegg.com/courses/eastern/DAN/495", 
+                    "name": "Internship"
+                }
+            ], 
+            "name": "Dance", 
+            "url": "http://www.chegg.com/courses/eastern/DAN"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 203", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ECON/203", 
+                    "name": "Principles of Economics-Introductory Macroeconomics"
+                }, 
+                {
+                    "code": "ECON 204", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ECON/204", 
+                    "name": "Principles of Economics:Micro"
+                }, 
+                {
+                    "code": "ECON 205", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ECON/205", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ECON 220", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ECON/220", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ECON 240", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ECON/240", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ECON 241", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ECON/241", 
+                    "name": "Environmental Economics"
+                }, 
+                {
+                    "code": "ECON 305W", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ECON/305W", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ECON 315W", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ECON/315W", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ECON 330A", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ECON/330A", 
+                    "name": "Economic Reasoning Seminar"
+                }, 
+                {
+                    "code": "ECON 480", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ECON/480", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ECON 495", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ECON/495", 
+                    "name": "Internship"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/eastern/ECON"
+        }, 
+        {
+            "abbr": "ECONOMICS", 
+            "courses": [
+                {
+                    "code": "ECONOMICS 200", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ECONOMICS/200", 
+                    "name": "Personal Stewardsip"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/eastern/ECONOMICS"
+        }, 
+        {
+            "abbr": "EDEV", 
+            "courses": [
+                {
+                    "code": "EDEV 520", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDEV/520", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDEV 640", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDEV/640", 
+                    "name": ""
+                }
+            ], 
+            "name": "Economic Development", 
+            "url": "http://www.chegg.com/courses/eastern/EDEV"
+        }, 
+        {
+            "abbr": "EDU", 
+            "courses": [
+                {
+                    "code": "EDU 200", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/200", 
+                    "name": "FOUNDATIONS OF EDUCATION"
+                }, 
+                {
+                    "code": "EDU 201", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/201", 
+                    "name": "INTRODUCTION TO SPECIAL EDUCATION"
+                }, 
+                {
+                    "code": "EDU 205", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/205", 
+                    "name": "THE DEVELOPING CHILD"
+                }, 
+                {
+                    "code": "EDU 207", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/207", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 209", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/209", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 211", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/211", 
+                    "name": "EDUCATIONAL PSYCHOLOGY"
+                }, 
+                {
+                    "code": "EDU 231", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/231", 
+                    "name": "COMPUTERS IN THE CLASSROOM"
+                }, 
+                {
+                    "code": "EDU 235", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/235", 
+                    "name": "Urban Education"
+                }, 
+                {
+                    "code": "EDU 250", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/250", 
+                    "name": "FIELD EXPERIENCE"
+                }, 
+                {
+                    "code": "EDU 300", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/300", 
+                    "name": "Arts Integration in the Classroom"
+                }, 
+                {
+                    "code": "EDU 301", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/301", 
+                    "name": "EVALUATION AND ASSESSMENT OF CHILDREN IN INCLUSIVE CLASSROOMS"
+                }, 
+                {
+                    "code": "EDU 302", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/302", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 303", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/303", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 304", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/304", 
+                    "name": "Music for Children"
+                }, 
+                {
+                    "code": "EDU 306", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/306", 
+                    "name": "SCIENCE AND HEALTH FOR CHILDREN"
+                }, 
+                {
+                    "code": "EDU 308", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/308", 
+                    "name": "SOCIAL STUDIES AND ARTS FOR CHILDREN"
+                }, 
+                {
+                    "code": "EDU 310", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/310", 
+                    "name": "MATH FOR THE TEACHER OF CHILDREN"
+                }, 
+                {
+                    "code": "EDU 328", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/328", 
+                    "name": "EARLY CHILDHOOD: PRINCIPLES AND PRACTICES"
+                }, 
+                {
+                    "code": "EDU 329", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/329", 
+                    "name": "EARLY CHILDHOOD: CURRICULUM AND ASSESSMENT"
+                }, 
+                {
+                    "code": "EDU 340", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/340", 
+                    "name": "Teaching in the Christian School"
+                }, 
+                {
+                    "code": "EDU 370", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/370", 
+                    "name": "Literature for Children and Adolescents"
+                }, 
+                {
+                    "code": "EDU 371", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/371", 
+                    "name": "Teaching Math,Science and Health"
+                }, 
+                {
+                    "code": "EDU 372", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/372", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 380", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/380", 
+                    "name": "COMMUNICATION ARTS FOR CHILDREN"
+                }, 
+                {
+                    "code": "EDU 381", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/381", 
+                    "name": "Methods of Nonverbal Communication"
+                }, 
+                {
+                    "code": "EDU 382", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/382", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 383", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/383", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 384", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/384", 
+                    "name": "INCLUSIVE EDUCATION"
+                }, 
+                {
+                    "code": "EDU 385", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/385", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 386", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/386", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 400", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/400", 
+                    "name": "LITERACY FOUNDATIONS FOR THE PRIMARY GRADES"
+                }, 
+                {
+                    "code": "EDU 401", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/401", 
+                    "name": "LITERACY FOUNDATIONS FOR INTERMEDIATE GRADES"
+                }, 
+                {
+                    "code": "EDU 402", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/402", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 403", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/403", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 405", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/405", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 409", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/409", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 410", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/410", 
+                    "name": "Student Teaching"
+                }, 
+                {
+                    "code": "EDU 412", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/412", 
+                    "name": "TEACHING ENGLISH AS A SECOND LANGUAGE"
+                }, 
+                {
+                    "code": "EDU 413", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/413", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 415", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/415", 
+                    "name": "Art for the Teacher"
+                }, 
+                {
+                    "code": "EDU 417", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/417", 
+                    "name": "MULTICULTURAL EDUCATION"
+                }, 
+                {
+                    "code": "EDU 418", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/418", 
+                    "name": "FAMILY AND COMMUNITY COLLABORATION"
+                }, 
+                {
+                    "code": "EDU 420", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/420", 
+                    "name": "Practicum"
+                }, 
+                {
+                    "code": "EDU 500", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/500", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 501", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/501", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 503", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/503", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 507", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/507", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 509", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/509", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 512", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/512", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 513", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/513", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 514", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/514", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 517", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/517", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 521", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/521", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 522", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/522", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 529", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/529", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 535", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/535", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 545", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/545", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 572", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/572", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 582", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/582", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 583", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/583", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 588", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/588", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 589", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/589", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 590", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/590", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 591", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/591", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 598", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/598", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 600", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/600", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 601", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/601", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 602", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/602", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 603", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/603", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 604", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/604", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 606", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/606", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 612", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/612", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 617", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/617", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 635", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/635", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 640", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/640", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 684", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/684", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 687", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDU/687", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eastern/EDU"
+        }, 
+        {
+            "abbr": "EDUCATION", 
+            "courses": [
+                {
+                    "code": "EDUCATION 201", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDUCATION/201", 
+                    "name": "Introduction to Special Education"
+                }, 
+                {
+                    "code": "EDUCATION 207", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDUCATION/207", 
+                    "name": "Child,Adolescent and Educational Development"
+                }, 
+                {
+                    "code": "EDUCATION 250", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDUCATION/250", 
+                    "name": "Field Experience"
+                }, 
+                {
+                    "code": "EDUCATION 328", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDUCATION/328", 
+                    "name": "Early Childhood Education:Principles and Procedures"
+                }, 
+                {
+                    "code": "EDUCATION 329", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDUCATION/329", 
+                    "name": "Early Childhood Education:Curriculum and Assessment"
+                }, 
+                {
+                    "code": "EDUCATION 382", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDUCATION/382", 
+                    "name": "Methods of Classroom Management"
+                }, 
+                {
+                    "code": "EDUCATION 400", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EDUCATION/400", 
+                    "name": "Literacy Foundations for Primary Grades"
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/eastern/EDUCATION"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 090", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/090", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 90", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/90", 
+                    "name": "Reading Improvement"
+                }, 
+                {
+                    "code": "ENG 091", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/091", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 91", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/91", 
+                    "name": "Fundamentals of Writing"
+                }, 
+                {
+                    "code": "ENG 102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 103", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/103", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 164", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/164", 
+                    "name": "CONTEMPORARY GRAMMAR"
+                }, 
+                {
+                    "code": "ENG 200", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/200", 
+                    "name": "Applied Journalism"
+                }, 
+                {
+                    "code": "ENG 200W", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/200W", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 203,204", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/203%2C204", 
+                    "name": "Masterpieces of European Literature"
+                }, 
+                {
+                    "code": "ENG 205", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/205", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 205,206", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/205%2C206", 
+                    "name": "Survey of British Literature"
+                }, 
+                {
+                    "code": "ENG 207", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/207", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 208", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/208", 
+                    "name": "Studies in Poetry"
+                }, 
+                {
+                    "code": "ENG 208W", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/208W", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 210", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/210", 
+                    "name": "The Literature of Women"
+                }, 
+                {
+                    "code": "ENG 220", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/220", 
+                    "name": "STUDIES IN THE NOVEL AND SHORT FICTION"
+                }, 
+                {
+                    "code": "ENG 220W", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/220W", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 225", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/225", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 240", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/240", 
+                    "name": "College Newspaper Practicum"
+                }, 
+                {
+                    "code": "ENG 250", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/250", 
+                    "name": "Writing Assistant Training Seminar"
+                }, 
+                {
+                    "code": "ENG 301", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/301", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 301,302", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/301%2C302", 
+                    "name": "American Literature"
+                }, 
+                {
+                    "code": "ENG 302", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/302", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 310", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 312", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/312", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 314", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/314", 
+                    "name": "Chaucer and Medieval Literature"
+                }, 
+                {
+                    "code": "ENG 326", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/326", 
+                    "name": "Renaissance Studies"
+                }, 
+                {
+                    "code": "ENG 327", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/327", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 328", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/328", 
+                    "name": "English Literature of the Restoration and Eighteenth Century"
+                }, 
+                {
+                    "code": "ENG 330B", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/330B", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 330C", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/330C", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 330D", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/330D", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 340", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/340", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 341", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/341", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 342", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/342", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 343", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/343", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 344", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/344", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 345", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/345", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 403", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/403", 
+                    "name": "The Romantic Movement"
+                }, 
+                {
+                    "code": "ENG 405", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/405", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 410", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/410", 
+                    "name": "The Teaching of English"
+                }, 
+                {
+                    "code": "ENG 412", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/412", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 415", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/415", 
+                    "name": "Twentieth Century British Literature"
+                }, 
+                {
+                    "code": "ENG 422", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/422", 
+                    "name": "Research Seminar"
+                }, 
+                {
+                    "code": "ENG 423", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/423", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 495", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENG/495", 
+                    "name": "Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eastern/ENG"
+        }, 
+        {
+            "abbr": "ENGLISH", 
+            "courses": [
+                {
+                    "code": "ENGLISH 101", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENGLISH/101", 
+                    "name": "Introduction to Academic English"
+                }, 
+                {
+                    "code": "ENGLISH 102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENGLISH/102", 
+                    "name": "College Writing"
+                }, 
+                {
+                    "code": "ENGLISH 163", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENGLISH/163", 
+                    "name": "Rhetorical Patterns in Writing"
+                }, 
+                {
+                    "code": "ENGLISH 220", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENGLISH/220", 
+                    "name": "Studies in the Novel and Short Fiction"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/eastern/ENGLISH"
+        }, 
+        {
+            "abbr": "ENTR", 
+            "courses": [
+                {
+                    "code": "ENTR 202", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENTR/202", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENTR 206", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENTR/206", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENTR 310", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENTR/310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENTR 320", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENTR/320", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENTR 415", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENTR/415", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENTR 480", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENTR/480", 
+                    "name": "Strategies for Entrepreneurial Ventures"
+                }, 
+                {
+                    "code": "ENTR 495", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ENTR/495", 
+                    "name": ""
+                }
+            ], 
+            "name": "Entrepreneurship", 
+            "url": "http://www.chegg.com/courses/eastern/ENTR"
+        }, 
+        {
+            "abbr": "EXSC", 
+            "courses": [
+                {
+                    "code": "EXSC 140", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/140", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EXSC 200", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/200", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EXSC 201", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/201", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EXSC 204", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/204", 
+                    "name": "Principles of Coaching Sport"
+                }, 
+                {
+                    "code": "EXSC 210", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/210", 
+                    "name": "Foundations of Biokinetic Sciences"
+                }, 
+                {
+                    "code": "EXSC 220", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/220", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EXSC 240", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/240", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EXSC 250W", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/250W", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EXSC 310", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/310", 
+                    "name": "Aging,Health,and Physical Activity"
+                }, 
+                {
+                    "code": "EXSC 350", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/350", 
+                    "name": "Research Methods in Biokinetics"
+                }, 
+                {
+                    "code": "EXSC 351", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/351", 
+                    "name": "Kinesiology"
+                }, 
+                {
+                    "code": "EXSC 352", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/352", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EXSC 353", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/353", 
+                    "name": "Exercise Prescription and Cardiac Rehabilitation"
+                }, 
+                {
+                    "code": "EXSC 360", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/360", 
+                    "name": "Sports Psychology"
+                }, 
+                {
+                    "code": "EXSC 365", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/365", 
+                    "name": "Exercise for Special Health Populations"
+                }, 
+                {
+                    "code": "EXSC 395", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/395", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EXSC 398", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/398", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EXSC 411", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/411", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EXSC 416", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/416", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EXSC 450", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/450", 
+                    "name": "Administration in Exercise Science"
+                }, 
+                {
+                    "code": "EXSC 451", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/451", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EXSC 453", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/453", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EXSC 495", 
+                    "course_url": "http://www.chegg.com/courses/eastern/EXSC/495", 
+                    "name": "Internship"
+                }
+            ], 
+            "name": "Exercise Science", 
+            "url": "http://www.chegg.com/courses/eastern/EXSC"
+        }, 
+        {
+            "abbr": "FA", 
+            "courses": [
+                {
+                    "code": "FA 110", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FA/110", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FA 120", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FA/120", 
+                    "name": "History and Appreciation of Art"
+                }, 
+                {
+                    "code": "FA 140", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FA/140", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FA 160", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FA/160", 
+                    "name": "Computer Graphics"
+                }, 
+                {
+                    "code": "FA 300", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FA/300", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FA 300W", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FA/300W", 
+                    "name": ""
+                }
+            ], 
+            "name": "Fine Arts", 
+            "url": "http://www.chegg.com/courses/eastern/FA"
+        }, 
+        {
+            "abbr": "FIN", 
+            "courses": [
+                {
+                    "code": "FIN 360", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FIN/360", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FIN 424", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FIN/424", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FIN 460", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FIN/460", 
+                    "name": ""
+                }
+            ], 
+            "name": "Finance", 
+            "url": "http://www.chegg.com/courses/eastern/FIN"
+        }, 
+        {
+            "abbr": "FRE", 
+            "courses": [
+                {
+                    "code": "FRE 101", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FRE/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FRE 101-102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FRE/101-102", 
+                    "name": "Elementary French"
+                }, 
+                {
+                    "code": "FRE 102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FRE/102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FRE 201,202", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FRE/201%2C202", 
+                    "name": "Intermediate French"
+                }, 
+                {
+                    "code": "FRE 301,302", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FRE/301%2C302", 
+                    "name": "Conversation and Composition"
+                }, 
+                {
+                    "code": "FRE 305", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FRE/305", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FRE 310", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FRE/310", 
+                    "name": "French Phonetics and Phonology"
+                }, 
+                {
+                    "code": "FRE 405", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FRE/405", 
+                    "name": "Francophone Literature"
+                }, 
+                {
+                    "code": "FRE 408", 
+                    "course_url": "http://www.chegg.com/courses/eastern/FRE/408", 
+                    "name": "Advanced Grammar and Conversation"
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/eastern/FRE"
+        }, 
+        {
+            "abbr": "GEOG", 
+            "courses": [
+                {
+                    "code": "GEOG 201", 
+                    "course_url": "http://www.chegg.com/courses/eastern/GEOG/201", 
+                    "name": ""
+                }
+            ], 
+            "name": "Geography", 
+            "url": "http://www.chegg.com/courses/eastern/GEOG"
+        }, 
+        {
+            "abbr": "GER", 
+            "courses": [
+                {
+                    "code": "GER 101", 
+                    "course_url": "http://www.chegg.com/courses/eastern/GER/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "GER 101-102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/GER/101-102", 
+                    "name": "Elementary German"
+                }, 
+                {
+                    "code": "GER 201,202", 
+                    "course_url": "http://www.chegg.com/courses/eastern/GER/201%2C202", 
+                    "name": "Intermediate German"
+                }
+            ], 
+            "name": "German", 
+            "url": "http://www.chegg.com/courses/eastern/GER"
+        }, 
+        {
+            "abbr": "GRE", 
+            "courses": [
+                {
+                    "code": "GRE 101-102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/GRE/101-102", 
+                    "name": "Biblical Greek"
+                }, 
+                {
+                    "code": "GRE 201", 
+                    "course_url": "http://www.chegg.com/courses/eastern/GRE/201", 
+                    "name": ""
+                }, 
+                {
+                    "code": "GRE 301", 
+                    "course_url": "http://www.chegg.com/courses/eastern/GRE/301", 
+                    "name": "Greek Exegesis"
+                }
+            ], 
+            "name": "Greek", 
+            "url": "http://www.chegg.com/courses/eastern/GRE"
+        }, 
+        {
+            "abbr": "HEB", 
+            "courses": [
+                {
+                    "code": "HEB 101-102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HEB/101-102", 
+                    "name": "Biblical Hebrew"
+                }, 
+                {
+                    "code": "HEB 201", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HEB/201", 
+                    "name": "Intermediate Hebrew"
+                }, 
+                {
+                    "code": "HEB 301", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HEB/301", 
+                    "name": "Hebrew Exegesis"
+                }
+            ], 
+            "name": "Hebrew", 
+            "url": "http://www.chegg.com/courses/eastern/HEB"
+        }, 
+        {
+            "abbr": "HIS", 
+            "courses": [
+                {
+                    "code": "HIS 201", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/201", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 202", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/202", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 210", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/210", 
+                    "name": "Historiography"
+                }, 
+                {
+                    "code": "HIS 210W", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/210W", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 315", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/315", 
+                    "name": "Ancient,Classical,and Hellenistic Greece"
+                }, 
+                {
+                    "code": "HIS 316", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/316", 
+                    "name": "Roman Republic and Empire"
+                }, 
+                {
+                    "code": "HIS 317", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/317", 
+                    "name": "Early Middle Ages"
+                }, 
+                {
+                    "code": "HIS 318", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/318", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 319", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/319", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 320", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/320", 
+                    "name": "The Age of the Reformation"
+                }, 
+                {
+                    "code": "HIS 321", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/321", 
+                    "name": "The Age of Reason"
+                }, 
+                {
+                    "code": "HIS 322", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/322", 
+                    "name": "The Age of Revolution"
+                }, 
+                {
+                    "code": "HIS 323", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/323", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 324", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/324", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 325", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/325", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 330F", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/330F", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 333", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/333", 
+                    "name": "Medieval and Renaissance England"
+                }, 
+                {
+                    "code": "HIS 334", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/334", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 335", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/335", 
+                    "name": "The World Since World War II"
+                }, 
+                {
+                    "code": "HIS 341", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/341", 
+                    "name": "The History of Women"
+                }, 
+                {
+                    "code": "HIS 342", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/342", 
+                    "name": "Topics in the History of Science"
+                }, 
+                {
+                    "code": "HIS 350", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/350", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 352", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/352", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 353", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/353", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 354", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/354", 
+                    "name": "History of Latin America"
+                }, 
+                {
+                    "code": "HIS 370", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/370", 
+                    "name": "History of Economic Thought"
+                }, 
+                {
+                    "code": "HIS 371", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/371", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 372", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/372", 
+                    "name": "Eastern Orthodox History and Theology"
+                }, 
+                {
+                    "code": "HIS 414", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/414", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 416", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/416", 
+                    "name": "Senior Seminar in History"
+                }, 
+                {
+                    "code": "HIS 420", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/420", 
+                    "name": "European Intellectual History"
+                }, 
+                {
+                    "code": "HIS 435", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/435", 
+                    "name": "United States Legal History"
+                }, 
+                {
+                    "code": "HIS 440", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/440", 
+                    "name": "The Black Church in America"
+                }, 
+                {
+                    "code": "HIS 450", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/450", 
+                    "name": "Colonial and Revolutionary America"
+                }, 
+                {
+                    "code": "HIS 460", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/460", 
+                    "name": "The Early American Republic"
+                }, 
+                {
+                    "code": "HIS 470", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/470", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 480", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/480", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 485", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/485", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 490", 
+                    "course_url": "http://www.chegg.com/courses/eastern/HIS/490", 
+                    "name": ""
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/eastern/HIS"
+        }, 
+        {
+            "abbr": "INFO", 
+            "courses": [
+                {
+                    "code": "INFO 100", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INFO/100", 
+                    "name": "Web Development Fundamentals"
+                }, 
+                {
+                    "code": "INFO 120", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INFO/120", 
+                    "name": "Database Management Systems"
+                }, 
+                {
+                    "code": "INFO 150", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INFO/150", 
+                    "name": "Networking Fundamentals"
+                }, 
+                {
+                    "code": "INFO 200", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INFO/200", 
+                    "name": "Introduction to Programming Using Java"
+                }, 
+                {
+                    "code": "INFO 320", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INFO/320", 
+                    "name": "Emerging Technologies for Managers"
+                }
+            ], 
+            "name": "Information Systems", 
+            "url": "http://www.chegg.com/courses/eastern/INFO"
+        }, 
+        {
+            "abbr": "INST", 
+            "courses": [
+                {
+                    "code": "INST 100", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/100", 
+                    "name": ""
+                }, 
+                {
+                    "code": "INST 150", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/150", 
+                    "name": ""
+                }, 
+                {
+                    "code": "INST 160", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/160", 
+                    "name": ""
+                }, 
+                {
+                    "code": "INST 160H", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/160H", 
+                    "name": ""
+                }, 
+                {
+                    "code": "INST 161", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/161", 
+                    "name": ""
+                }, 
+                {
+                    "code": "INST 161H", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/161H", 
+                    "name": ""
+                }, 
+                {
+                    "code": "INST 201", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/201", 
+                    "name": "The Creative Process"
+                }, 
+                {
+                    "code": "INST 213", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/213", 
+                    "name": ""
+                }, 
+                {
+                    "code": "INST 214", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/214", 
+                    "name": ""
+                }, 
+                {
+                    "code": "INST 215", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/215", 
+                    "name": "Heritage of Native North American Peoples"
+                }, 
+                {
+                    "code": "INST 216", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/216", 
+                    "name": "The Heritage of"
+                }, 
+                {
+                    "code": "INST 218", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/218", 
+                    "name": ""
+                }, 
+                {
+                    "code": "INST 250", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/250", 
+                    "name": "Science,Technology and Values"
+                }, 
+                {
+                    "code": "INST 270", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/270", 
+                    "name": ""
+                }, 
+                {
+                    "code": "INST 300", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/300", 
+                    "name": "Leadership Development Practicum"
+                }, 
+                {
+                    "code": "INST 500", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/500", 
+                    "name": ""
+                }, 
+                {
+                    "code": "INST 662", 
+                    "course_url": "http://www.chegg.com/courses/eastern/INST/662", 
+                    "name": ""
+                }
+            ], 
+            "name": "Instructional Technology", 
+            "url": "http://www.chegg.com/courses/eastern/INST"
+        }, 
+        {
+            "abbr": "ITA", 
+            "courses": [
+                {
+                    "code": "ITA 101-102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/ITA/101-102", 
+                    "name": "Elementary Italian"
+                }
+            ], 
+            "name": "Italian", 
+            "url": "http://www.chegg.com/courses/eastern/ITA"
+        }, 
+        {
+            "abbr": "JPN", 
+            "courses": [
+                {
+                    "code": "JPN 101-102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/JPN/101-102", 
+                    "name": "Elementary Japanese"
+                }
+            ], 
+            "name": "Japanese Language & Literature", 
+            "url": "http://www.chegg.com/courses/eastern/JPN"
+        }, 
+        {
+            "abbr": "LAN", 
+            "courses": [
+                {
+                    "code": "LAN 310", 
+                    "course_url": "http://www.chegg.com/courses/eastern/LAN/310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LAN 350", 
+                    "course_url": "http://www.chegg.com/courses/eastern/LAN/350", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LAN 495", 
+                    "course_url": "http://www.chegg.com/courses/eastern/LAN/495", 
+                    "name": "Internship"
+                }, 
+                {
+                    "code": "LAN 510", 
+                    "course_url": "http://www.chegg.com/courses/eastern/LAN/510", 
+                    "name": ""
+                }
+            ], 
+            "name": "Language", 
+            "url": "http://www.chegg.com/courses/eastern/LAN"
+        }, 
+        {
+            "abbr": "LANGUAGE", 
+            "courses": [
+                {
+                    "code": "LANGUAGE 146", 
+                    "course_url": "http://www.chegg.com/courses/eastern/LANGUAGE/146", 
+                    "name": "Language Practicum"
+                }, 
+                {
+                    "code": "LANGUAGE 147,157,167", 
+                    "course_url": "http://www.chegg.com/courses/eastern/LANGUAGE/147%2C157%2C167", 
+                    "name": "Language Practicum"
+                }, 
+                {
+                    "code": "LANGUAGE 149,159,169", 
+                    "course_url": "http://www.chegg.com/courses/eastern/LANGUAGE/149%2C159%2C169", 
+                    "name": "Language Practicum"
+                }, 
+                {
+                    "code": "LANGUAGE 150,160,170", 
+                    "course_url": "http://www.chegg.com/courses/eastern/LANGUAGE/150%2C160%2C170", 
+                    "name": "Language Practicum"
+                }, 
+                {
+                    "code": "LANGUAGE 158,168", 
+                    "course_url": "http://www.chegg.com/courses/eastern/LANGUAGE/158%2C168", 
+                    "name": "Language Practicum"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eastern/LANGUAGE"
+        }, 
+        {
+            "abbr": "LDEV", 
+            "courses": [
+                {
+                    "code": "LDEV 660", 
+                    "course_url": "http://www.chegg.com/courses/eastern/LDEV/660", 
+                    "name": ""
+                }
+            ], 
+            "name": "LDEV", 
+            "url": "http://www.chegg.com/courses/eastern/LDEV"
+        }, 
+        {
+            "abbr": "LEAD", 
+            "courses": [
+                {
+                    "code": "LEAD 540", 
+                    "course_url": "http://www.chegg.com/courses/eastern/LEAD/540", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LEAD 541", 
+                    "course_url": "http://www.chegg.com/courses/eastern/LEAD/541", 
+                    "name": ""
+                }
+            ], 
+            "name": "LEAD", 
+            "url": "http://www.chegg.com/courses/eastern/LEAD"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 103", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/103", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 107", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/107", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 150", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/150", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 212", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/212", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 213", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/213", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 214", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/214", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 220", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/220", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 240", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/240", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 244", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/244", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 300", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/300", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 324", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/324", 
+                    "name": "Linear Algebra"
+                }, 
+                {
+                    "code": "MATH 330D", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/330D", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 330E", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/330E", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 350", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/350", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 402", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/402", 
+                    "name": "History of Mathematics"
+                }, 
+                {
+                    "code": "MATH 404", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/404", 
+                    "name": "Real Analysis"
+                }, 
+                {
+                    "code": "MATH 407", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/407", 
+                    "name": "Geometry"
+                }, 
+                {
+                    "code": "MATH 410", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/410", 
+                    "name": "Teaching of Mathematics-Secondary Level"
+                }, 
+                {
+                    "code": "MATH 414", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/414", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 415", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/415", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 422", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MATH/422", 
+                    "name": ""
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/eastern/MATH"
+        }, 
+        {
+            "abbr": "MIS", 
+            "courses": [
+                {
+                    "code": "MIS 100", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MIS/100", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MIS 200", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MIS/200", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MIS 220", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MIS/220", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MIS 310", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MIS/310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MIS 395", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MIS/395", 
+                    "name": "Field Experience"
+                }, 
+                {
+                    "code": "MIS 401", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MIS/401", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MIS 420", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MIS/420", 
+                    "name": ""
+                }
+            ], 
+            "name": "Management And Info Systems", 
+            "url": "http://www.chegg.com/courses/eastern/MIS"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 101", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/101", 
+                    "name": "Music Skills"
+                }, 
+                {
+                    "code": "MUS 104", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/104", 
+                    "name": "Musicianship I"
+                }, 
+                {
+                    "code": "MUS 105", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/105", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 106", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/106", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 125", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/125", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 125,126", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/125%2C126", 
+                    "name": "Voice Class I, II"
+                }, 
+                {
+                    "code": "MUS 126", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/126", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 137", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/137", 
+                    "name": "Vocal Diction:Italian"
+                }, 
+                {
+                    "code": "MUS 138", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/138", 
+                    "name": "Vocal Diction:Latin and English"
+                }, 
+                {
+                    "code": "MUS 145", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/145", 
+                    "name": "Electronic Music"
+                }, 
+                {
+                    "code": "MUS 155", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/155", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 157,158", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/157%2C158", 
+                    "name": "Chamber Music"
+                }, 
+                {
+                    "code": "MUS 165,166", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/165%2C166", 
+                    "name": "Vocal Ensembles"
+                }, 
+                {
+                    "code": "MUS 168", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/168", 
+                    "name": "Touring Choir"
+                }, 
+                {
+                    "code": "MUS 173,173L", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/173%2C173L", 
+                    "name": "String Instruments I"
+                }, 
+                {
+                    "code": "MUS 174,174L", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/174%2C174L", 
+                    "name": "String Instruments II"
+                }, 
+                {
+                    "code": "MUS 191,192", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/191%2C192", 
+                    "name": "Instrumental Ensembles"
+                }, 
+                {
+                    "code": "MUS 195,196", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/195%2C196", 
+                    "name": "Private Lessons 1,2 or"
+                }, 
+                {
+                    "code": "MUS 203", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/203", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 203L", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/203L", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 204", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/204", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 223,224", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/223%2C224", 
+                    "name": "Composition I, II"
+                }, 
+                {
+                    "code": "MUS 237", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/237", 
+                    "name": "Vocal Diction:German"
+                }, 
+                {
+                    "code": "MUS 238", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/238", 
+                    "name": "Vocal Diction:French"
+                }, 
+                {
+                    "code": "MUS 250", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/250", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 255", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/255", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 273,273L", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/273%2C273L", 
+                    "name": "Woodwind Instruments"
+                }, 
+                {
+                    "code": "MUS 274,274L", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/274%2C274L", 
+                    "name": "Woodwind Instruments II"
+                }, 
+                {
+                    "code": "MUS 302", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/302", 
+                    "name": "Introduction to Composition,Orchestration and Arranging"
+                }, 
+                {
+                    "code": "MUS 304", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/304", 
+                    "name": "Musicianship IV"
+                }, 
+                {
+                    "code": "MUS 305", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/305", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 306", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/306", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 323,324", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/323%2C324", 
+                    "name": "Composition III, IV"
+                }, 
+                {
+                    "code": "MUS 333", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/333", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 334", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/334", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 340", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/340", 
+                    "name": "Junior Recital"
+                }, 
+                {
+                    "code": "MUS 351", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/351", 
+                    "name": "Church Music Repertoire"
+                }, 
+                {
+                    "code": "MUS 352", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/352", 
+                    "name": "The Philosophy and Administration of Music Ministry"
+                }, 
+                {
+                    "code": "MUS 371,371L", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/371%2C371L", 
+                    "name": "Brass Instruments I"
+                }, 
+                {
+                    "code": "MUS 372,372L", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/372%2C372L", 
+                    "name": "Brass Instruments II"
+                }, 
+                {
+                    "code": "MUS 381", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/381", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 382", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/382", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 405", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/405", 
+                    "name": "Music Connections III"
+                }, 
+                {
+                    "code": "MUS 411", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/411", 
+                    "name": "The History and Practice of Christian Worship"
+                }, 
+                {
+                    "code": "MUS 412", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/412", 
+                    "name": "Hymnology"
+                }, 
+                {
+                    "code": "MUS 415", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/415", 
+                    "name": "Graded Choir Methods and Materials"
+                }, 
+                {
+                    "code": "MUS 423,424", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/423%2C424", 
+                    "name": "Composition V, VI"
+                }, 
+                {
+                    "code": "MUS 434", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/434", 
+                    "name": "Writing for Instruments"
+                }, 
+                {
+                    "code": "MUS 437", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/437", 
+                    "name": "Pedagogy and Literature"
+                }, 
+                {
+                    "code": "MUS 438", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/438", 
+                    "name": "Music Career Management"
+                }, 
+                {
+                    "code": "MUS 440", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/440", 
+                    "name": "Senior Recital"
+                }, 
+                {
+                    "code": "MUS 441,442", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/441%2C442", 
+                    "name": "Church Music Internship I, II"
+                }, 
+                {
+                    "code": "MUS 461,462", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/461%2C462", 
+                    "name": "Apprenticeship I, II"
+                }, 
+                {
+                    "code": "MUS 473,473L", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/473%2C473L", 
+                    "name": "Percussion Instruments"
+                }, 
+                {
+                    "code": "MUS 999", 
+                    "course_url": "http://www.chegg.com/courses/eastern/MUS/999", 
+                    "name": "Music Recital and Repertory"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/eastern/MUS"
+        }, 
+        {
+            "abbr": "PHI", 
+            "courses": [
+                {
+                    "code": "PHI 100", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/100", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHI 200", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/200", 
+                    "name": "Introduction to Philosophy"
+                }, 
+                {
+                    "code": "PHI 210", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/210", 
+                    "name": "CHRISTIAN ETHICS, MEDICAL ISSUES"
+                }, 
+                {
+                    "code": "PHI 211", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/211", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHI 220", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/220", 
+                    "name": "Introduction to Logic"
+                }, 
+                {
+                    "code": "PHI 222", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/222", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHI 225", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/225", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHI 301", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/301", 
+                    "name": "Ancient and Medieval Philosophy"
+                }, 
+                {
+                    "code": "PHI 302", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/302", 
+                    "name": "Modern Philosophy"
+                }, 
+                {
+                    "code": "PHI 303", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/303", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHI 304", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/304", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHI 320", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/320", 
+                    "name": "Philosophy of Natural Science"
+                }, 
+                {
+                    "code": "PHI 321", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/321", 
+                    "name": "Symbolic Logic"
+                }, 
+                {
+                    "code": "PHI 322", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/322", 
+                    "name": "Philosophy of Social Science"
+                }, 
+                {
+                    "code": "PHI 323", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/323", 
+                    "name": "Agustine of Hippo"
+                }, 
+                {
+                    "code": "PHI 340", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/340", 
+                    "name": "Philosophy of Gender"
+                }, 
+                {
+                    "code": "PHI 350", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/350", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHI 360", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/360", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHI 410", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/410", 
+                    "name": "Ethics"
+                }, 
+                {
+                    "code": "PHI 424", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/424", 
+                    "name": "Thomas Aquinas"
+                }, 
+                {
+                    "code": "PHI 440", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHI/440", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eastern/PHI"
+        }, 
+        {
+            "abbr": "PHYS", 
+            "courses": [
+                {
+                    "code": "PHYS 101", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHYS/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHYS 101,102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHYS/101%2C102", 
+                    "name": "Introduction to Physics"
+                }, 
+                {
+                    "code": "PHYS 102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHYS/102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHYS 111", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHYS/111", 
+                    "name": "The Solar System"
+                }, 
+                {
+                    "code": "PHYS 112", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHYS/112", 
+                    "name": "Exploration of the Universe"
+                }, 
+                {
+                    "code": "PHYS 205", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHYS/205", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHYS 316", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PHYS/316", 
+                    "name": "Field Geology"
+                }
+            ], 
+            "name": "Phys-Physics", 
+            "url": "http://www.chegg.com/courses/eastern/PHYS"
+        }, 
+        {
+            "abbr": "POS", 
+            "courses": [
+                {
+                    "code": "POS 103", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/103", 
+                    "name": "AMERICAN GOVERNMENT"
+                }, 
+                {
+                    "code": "POS 104", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/104", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POS 200", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/200", 
+                    "name": "Comparative Government"
+                }, 
+                {
+                    "code": "POS 200W", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/200W", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POS 205", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/205", 
+                    "name": "Model United Nations"
+                }, 
+                {
+                    "code": "POS 212", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/212", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POS 214", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/214", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POS 310", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/310", 
+                    "name": "Government and Politics in Western Europe"
+                }, 
+                {
+                    "code": "POS 316", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/316", 
+                    "name": "Women and Politics"
+                }, 
+                {
+                    "code": "POS 317", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/317", 
+                    "name": "Urban Politics"
+                }, 
+                {
+                    "code": "POS 318", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/318", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POS 320", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/320", 
+                    "name": "Environmental Issues"
+                }, 
+                {
+                    "code": "POS 330H", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/330H", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POS 330I", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/330I", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POS 330J", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/330J", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POS 330K", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/330K", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POS 331", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/331", 
+                    "name": "Politics,Parties and Interest Groups"
+                }, 
+                {
+                    "code": "POS 332", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/332", 
+                    "name": "The American Presidency"
+                }, 
+                {
+                    "code": "POS 342", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/342", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POS 380", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/380", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POS 382", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/382", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POS 495", 
+                    "course_url": "http://www.chegg.com/courses/eastern/POS/495", 
+                    "name": "Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eastern/POS"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 100", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/100", 
+                    "name": "GENERAL PSYCHOLOGY"
+                }, 
+                {
+                    "code": "PSY 110", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/110", 
+                    "name": "The Dynamics of Individual and Group Development"
+                }, 
+                {
+                    "code": "PSY 201", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/201", 
+                    "name": "Industrial and Organizational Psychology"
+                }, 
+                {
+                    "code": "PSY 205", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/205", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 206", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/206", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 207", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/207", 
+                    "name": "LIFESPAN DEVELOPMENT"
+                }, 
+                {
+                    "code": "PSY 220", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/220", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 221", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/221", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 240", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/240", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 250", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/250", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 300", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/300", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 301", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/301", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 302", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/302", 
+                    "name": "Experimental Psychology and Laboratory"
+                }, 
+                {
+                    "code": "PSY 303", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/303", 
+                    "name": "Sensation and Perception"
+                }, 
+                {
+                    "code": "PSY 304", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/304", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 307", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/307", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 308", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/308", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 318", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/318", 
+                    "name": "Learning and Cognition"
+                }, 
+                {
+                    "code": "PSY 320", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/320", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 322", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/322", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 324", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/324", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 341", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/341", 
+                    "name": "Research Methods"
+                }, 
+                {
+                    "code": "PSY 341W", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/341W", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 415", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/415", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 417", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/417", 
+                    "name": "Physiological Psychology"
+                }, 
+                {
+                    "code": "PSY 443", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/443", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 495", 
+                    "course_url": "http://www.chegg.com/courses/eastern/PSY/495", 
+                    "name": "Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eastern/PSY"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 100", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/100", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 105", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/105", 
+                    "name": "Contemporary Social Problems"
+                }, 
+                {
+                    "code": "SOC 220", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/220", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 245", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/245", 
+                    "name": "Socialization and Group Relations"
+                }, 
+                {
+                    "code": "SOC 305", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/305", 
+                    "name": "Collective Behaviors"
+                }, 
+                {
+                    "code": "SOC 310", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/310", 
+                    "name": "The Family"
+                }, 
+                {
+                    "code": "SOC 312", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/312", 
+                    "name": "Majority/Minority Relations"
+                }, 
+                {
+                    "code": "SOC 315", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/315", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 318", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/318", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 320", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/320", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 321", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/321", 
+                    "name": "Crime and Delinquency"
+                }, 
+                {
+                    "code": "SOC 322", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/322", 
+                    "name": "Criminal Justice"
+                }, 
+                {
+                    "code": "SOC 330F", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/330F", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 340", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/340", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 350", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/350", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 355", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/355", 
+                    "name": "Sociology of the New Testament:Jesus and His Social Environment"
+                }, 
+                {
+                    "code": "SOC 370", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/370", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 372", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/372", 
+                    "name": "Community Development in Developing Nations"
+                }, 
+                {
+                    "code": "SOC 402", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/402", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 403", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/403", 
+                    "name": "Contemporary Sociology Theory"
+                }, 
+                {
+                    "code": "SOC 404", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/404", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 405", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/405", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 408", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/408", 
+                    "name": "Social Institutions and Justice"
+                }, 
+                {
+                    "code": "SOC 410", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/410", 
+                    "name": "Social Change and Globalization"
+                }, 
+                {
+                    "code": "SOC 416", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/416", 
+                    "name": "Research and Data Analysis"
+                }, 
+                {
+                    "code": "SOC 417", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/417", 
+                    "name": "Senior Thesis"
+                }, 
+                {
+                    "code": "SOC 418", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/418", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 495", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOC/495", 
+                    "name": "Sociology Internship"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/eastern/SOC"
+        }, 
+        {
+            "abbr": "SOCIOLOGY", 
+            "courses": [
+                {
+                    "code": "SOCIOLOGY 100", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SOCIOLOGY/100", 
+                    "name": "Introduction to Sociology"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/eastern/SOCIOLOGY"
+        }, 
+        {
+            "abbr": "SPA", 
+            "courses": [
+                {
+                    "code": "SPA 101", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPA/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPA 101-102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPA/101-102", 
+                    "name": "Elementary Spanish"
+                }, 
+                {
+                    "code": "SPA 201,202", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPA/201%2C202", 
+                    "name": "Intermediate Spanish"
+                }, 
+                {
+                    "code": "SPA 202", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPA/202", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPA 301", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPA/301", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPA 301,302", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPA/301%2C302", 
+                    "name": "Conversation and Composition"
+                }, 
+                {
+                    "code": "SPA 310", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPA/310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPA 401", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPA/401", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPA 402", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPA/402", 
+                    "name": "Latin American Culture and Civilization"
+                }, 
+                {
+                    "code": "SPA 403,404", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPA/403%2C404", 
+                    "name": "Survey of Spanish Literature"
+                }, 
+                {
+                    "code": "SPA 404", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPA/404", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPA 408", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPA/408", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPA 409", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPA/409", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPA 410", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPA/410", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPA 420", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPA/420", 
+                    "name": "Spanish Senior Thesis"
+                }
+            ], 
+            "name": "Speech Pathology And Audiology", 
+            "url": "http://www.chegg.com/courses/eastern/SPA"
+        }, 
+        {
+            "abbr": "SPANISH", 
+            "courses": [
+                {
+                    "code": "SPANISH 101-102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPANISH/101-102", 
+                    "name": "Elementary Spanish"
+                }, 
+                {
+                    "code": "SPANISH 103", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPANISH/103", 
+                    "name": "Accelerated Elementary Spanish"
+                }, 
+                {
+                    "code": "SPANISH 150", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SPANISH/150", 
+                    "name": "Spanish Grammar and Conversation for Native Speakers"
+                }
+            ], 
+            "name": "Spanish", 
+            "url": "http://www.chegg.com/courses/eastern/SPANISH"
+        }, 
+        {
+            "abbr": "SWK", 
+            "courses": [
+                {
+                    "code": "SWK 105", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/105", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SWK 110", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/110", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SWK 205", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/205", 
+                    "name": "Human Need and Social Response"
+                }, 
+                {
+                    "code": "SWK 205W", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/205W", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SWK 230E", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/230E", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SWK 230G", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/230G", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SWK 251", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/251", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SWK 254", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/254", 
+                    "name": "Services to the Aging"
+                }, 
+                {
+                    "code": "SWK 256", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/256", 
+                    "name": "Health and Social Welfare"
+                }, 
+                {
+                    "code": "SWK 258", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/258", 
+                    "name": "Women's Issues and Services"
+                }, 
+                {
+                    "code": "SWK 340", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/340", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SWK 360", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/360", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SWK 370", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/370", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SWK 420", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/420", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SWK 440", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/440", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SWK 461", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/461", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SWK 461-462", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/461-462", 
+                    "name": "Social Work Practice II"
+                }, 
+                {
+                    "code": "SWK 471", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/471", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SWK 471-472", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/471-472", 
+                    "name": "Social Work Field Practicum II"
+                }, 
+                {
+                    "code": "SWK 481", 
+                    "course_url": "http://www.chegg.com/courses/eastern/SWK/481", 
+                    "name": "Social Work Research"
+                }
+            ], 
+            "name": "Social Work", 
+            "url": "http://www.chegg.com/courses/eastern/SWK"
+        }, 
+        {
+            "abbr": "THEO", 
+            "courses": [
+                {
+                    "code": "THEO 210", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/210", 
+                    "name": "Foundations of Christian Spirituality"
+                }, 
+                {
+                    "code": "THEO 240", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/240", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THEO 251", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/251", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THEO 252", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/252", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THEO 260", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/260", 
+                    "name": "Introduction to Christian Ethics"
+                }, 
+                {
+                    "code": "THEO 300", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/300", 
+                    "name": "The World of Early Christianity"
+                }, 
+                {
+                    "code": "THEO 310", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/310", 
+                    "name": "Spirituality in the Christian Tradition"
+                }, 
+                {
+                    "code": "THEO 315", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/315", 
+                    "name": "Theological Foundations of World Religions"
+                }, 
+                {
+                    "code": "THEO 316", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/316", 
+                    "name": "Theology and the Body"
+                }, 
+                {
+                    "code": "THEO 325", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/325", 
+                    "name": "Martin Luther"
+                }, 
+                {
+                    "code": "THEO 326", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/326", 
+                    "name": "Calvin and Calvinism"
+                }, 
+                {
+                    "code": "THEO 328", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/328", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THEO 329", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/329", 
+                    "name": "c"
+                }, 
+                {
+                    "code": "THEO 331", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/331", 
+                    "name": "Theological Foundations of World Religions"
+                }, 
+                {
+                    "code": "THEO 335", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/335", 
+                    "name": "Global Christianity"
+                }, 
+                {
+                    "code": "THEO 337", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/337", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THEO 341", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/341", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THEO 342", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/342", 
+                    "name": "Jesus Christ:Savior and Lord"
+                }, 
+                {
+                    "code": "THEO 343", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/343", 
+                    "name": "On Being Human"
+                }, 
+                {
+                    "code": "THEO 344", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/344", 
+                    "name": "The Spirit,the Church and the Word"
+                }, 
+                {
+                    "code": "THEO 360", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/360", 
+                    "name": "Theological Themes in Children's Literature"
+                }, 
+                {
+                    "code": "THEO 370", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/370", 
+                    "name": "Catholics and Protestants in Conversation"
+                }, 
+                {
+                    "code": "THEO 435", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/435", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THEO 436", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/436", 
+                    "name": "Postmodernism and Pluralism"
+                }, 
+                {
+                    "code": "THEO 437", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/437", 
+                    "name": "20th Century Women Spiritual Writers"
+                }, 
+                {
+                    "code": "THEO 440", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEO/440", 
+                    "name": "Senior Seminar"
+                }
+            ], 
+            "name": "Theology", 
+            "url": "http://www.chegg.com/courses/eastern/THEO"
+        }, 
+        {
+            "abbr": "THEOLOGY", 
+            "courses": [
+                {
+                    "code": "THEOLOGY 210", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THEOLOGY/210", 
+                    "name": "Foundations of Christian Spirituality"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eastern/THEOLOGY"
+        }, 
+        {
+            "abbr": "THR", 
+            "courses": [
+                {
+                    "code": "THR 100", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THR/100", 
+                    "name": "Actor's Lab"
+                }, 
+                {
+                    "code": "THR 135", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THR/135", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THR 150", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THR/150", 
+                    "name": "Performance Production I"
+                }, 
+                {
+                    "code": "THR 151", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THR/151", 
+                    "name": "Basic Stage Craft and Design"
+                }, 
+                {
+                    "code": "THR 195", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THR/195", 
+                    "name": "Communicating Gospel Through Performance"
+                }, 
+                {
+                    "code": "THR 202", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THR/202", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THR 204", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THR/204", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THR 250", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THR/250", 
+                    "name": "Performance Production II"
+                }, 
+                {
+                    "code": "THR 308", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THR/308", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THR 318", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THR/318", 
+                    "name": "Advanced Acting/Directing"
+                }, 
+                {
+                    "code": "THR 335", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THR/335", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THR 351", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THR/351", 
+                    "name": "Advanced Stage Craft and Design"
+                }, 
+                {
+                    "code": "THR 411", 
+                    "course_url": "http://www.chegg.com/courses/eastern/THR/411", 
+                    "name": ""
+                }
+            ], 
+            "name": "Theatre", 
+            "url": "http://www.chegg.com/courses/eastern/THR"
+        }, 
+        {
+            "abbr": "URBN", 
+            "courses": [
+                {
+                    "code": "URBN 100", 
+                    "course_url": "http://www.chegg.com/courses/eastern/URBN/100", 
+                    "name": "Introduction to the City"
+                }, 
+                {
+                    "code": "URBN 300", 
+                    "course_url": "http://www.chegg.com/courses/eastern/URBN/300", 
+                    "name": "Urban Prophets and Artistic Expression"
+                }, 
+                {
+                    "code": "URBN 312", 
+                    "course_url": "http://www.chegg.com/courses/eastern/URBN/312", 
+                    "name": "Urban Planning and Strategies"
+                }, 
+                {
+                    "code": "URBN 380", 
+                    "course_url": "http://www.chegg.com/courses/eastern/URBN/380", 
+                    "name": "Neighborhood Economic Development"
+                }, 
+                {
+                    "code": "URBN 401", 
+                    "course_url": "http://www.chegg.com/courses/eastern/URBN/401", 
+                    "name": "Urban Issues in a Global Context"
+                }, 
+                {
+                    "code": "URBN 501", 
+                    "course_url": "http://www.chegg.com/courses/eastern/URBN/501", 
+                    "name": ""
+                }, 
+                {
+                    "code": "URBN 510", 
+                    "course_url": "http://www.chegg.com/courses/eastern/URBN/510", 
+                    "name": ""
+                }, 
+                {
+                    "code": "URBN 515", 
+                    "course_url": "http://www.chegg.com/courses/eastern/URBN/515", 
+                    "name": ""
+                }, 
+                {
+                    "code": "URBN 520", 
+                    "course_url": "http://www.chegg.com/courses/eastern/URBN/520", 
+                    "name": ""
+                }, 
+                {
+                    "code": "URBN 535", 
+                    "course_url": "http://www.chegg.com/courses/eastern/URBN/535", 
+                    "name": ""
+                }, 
+                {
+                    "code": "URBN 540", 
+                    "course_url": "http://www.chegg.com/courses/eastern/URBN/540", 
+                    "name": ""
+                }, 
+                {
+                    "code": "URBN 555", 
+                    "course_url": "http://www.chegg.com/courses/eastern/URBN/555", 
+                    "name": ""
+                }, 
+                {
+                    "code": "URBN 570", 
+                    "course_url": "http://www.chegg.com/courses/eastern/URBN/570", 
+                    "name": ""
+                }, 
+                {
+                    "code": "URBN 575", 
+                    "course_url": "http://www.chegg.com/courses/eastern/URBN/575", 
+                    "name": ""
+                }
+            ], 
+            "name": "Urbn", 
+            "url": "http://www.chegg.com/courses/eastern/URBN"
+        }, 
+        {
+            "abbr": "YMIN", 
+            "courses": [
+                {
+                    "code": "YMIN 101", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "YMIN 102", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "YMIN 201", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/201", 
+                    "name": "Communicating the Gospel to Youth"
+                }, 
+                {
+                    "code": "YMIN 202", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/202", 
+                    "name": "Youth Ministry and Evangelistic Strategy"
+                }, 
+                {
+                    "code": "YMIN 202W", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/202W", 
+                    "name": ""
+                }, 
+                {
+                    "code": "YMIN 203", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/203", 
+                    "name": "Youth Ministry in the Wilderness"
+                }, 
+                {
+                    "code": "YMIN 205", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/205", 
+                    "name": ""
+                }, 
+                {
+                    "code": "YMIN 207", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/207", 
+                    "name": ""
+                }, 
+                {
+                    "code": "YMIN 211", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/211", 
+                    "name": ""
+                }, 
+                {
+                    "code": "YMIN 211-212", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/211-212", 
+                    "name": "Seminar in Campus Ministry I, II"
+                }, 
+                {
+                    "code": "YMIN 217", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/217", 
+                    "name": "Youth Ministry Teaching Lab"
+                }, 
+                {
+                    "code": "YMIN 303", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/303", 
+                    "name": ""
+                }, 
+                {
+                    "code": "YMIN 304", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/304", 
+                    "name": "Issues in Urban Youth Ministry"
+                }, 
+                {
+                    "code": "YMIN 305", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/305", 
+                    "name": "Youth Ministry Administration"
+                }, 
+                {
+                    "code": "YMIN 313,314", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/313%2C314", 
+                    "name": "Field Placement I"
+                }, 
+                {
+                    "code": "YMIN 315", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/315", 
+                    "name": "Summer Field Placement I 1 or"
+                }, 
+                {
+                    "code": "YMIN 316", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/316", 
+                    "name": "Practicum:International Youth Ministry"
+                }, 
+                {
+                    "code": "YMIN 317", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/317", 
+                    "name": ""
+                }, 
+                {
+                    "code": "YMIN 340", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/340", 
+                    "name": "Practicum:Ministry with Troubled Teenagers"
+                }, 
+                {
+                    "code": "YMIN 402", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/402", 
+                    "name": "Discipling Youth"
+                }, 
+                {
+                    "code": "YMIN 404", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/404", 
+                    "name": "Senior Seminar"
+                }, 
+                {
+                    "code": "YMIN 406", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/406", 
+                    "name": "Youth Ministry Skills Clinic"
+                }, 
+                {
+                    "code": "YMIN 413,414", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/413%2C414", 
+                    "name": "Field Placement II"
+                }, 
+                {
+                    "code": "YMIN 415", 
+                    "course_url": "http://www.chegg.com/courses/eastern/YMIN/415", 
+                    "name": "Summer Field Placement II 1 or"
+                }
+            ], 
+            "name": "Youth Ministry", 
+            "url": "http://www.chegg.com/courses/eastern/YMIN"
+        }
+    ], 
+    "name": "eastern"
+}

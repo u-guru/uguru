@@ -1,0 +1,4340 @@
+{
+    "all_stats": {
+        "num_courses": 792, 
+        "num_departments": 53
+    }, 
+    "departments": [
+        {
+            "abbr": "ABCT", 
+            "courses": [
+                {
+                    "code": "ABCT 1111", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ABCT/1111", 
+                    "name": "Collision Repair Welding I"
+                }, 
+                {
+                    "code": "ABCT 1120", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ABCT/1120", 
+                    "name": "Sheet Metal Repair"
+                }, 
+                {
+                    "code": "ABCT 1130", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ABCT/1130", 
+                    "name": "Refinishing Preparation I"
+                }, 
+                {
+                    "code": "ABCT 1142", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ABCT/1142", 
+                    "name": "Glass,Trim,and Hardware"
+                }, 
+                {
+                    "code": "ABCT 1150", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ABCT/1150", 
+                    "name": "Reconditioning and Detailing"
+                }, 
+                {
+                    "code": "ABCT 1212", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ABCT/1212", 
+                    "name": "Collision Repair Welding II"
+                }, 
+                {
+                    "code": "ABCT 1214", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ABCT/1214", 
+                    "name": "Refinishing Preparation II"
+                }, 
+                {
+                    "code": "ABCT 1216", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ABCT/1216", 
+                    "name": "Refinishing Application"
+                }, 
+                {
+                    "code": "ABCT 1230", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ABCT/1230", 
+                    "name": "Auto Body Plastic Repair"
+                }, 
+                {
+                    "code": "ABCT 2100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ABCT/2100", 
+                    "name": "Body Electrical"
+                }, 
+                {
+                    "code": "ABCT 2102", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ABCT/2102", 
+                    "name": "Shop Management and Estimating"
+                }, 
+                {
+                    "code": "ABCT 2106", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ABCT/2106", 
+                    "name": "Collision Damage Repair/Replacement"
+                }, 
+                {
+                    "code": "ABCT 2108", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ABCT/2108", 
+                    "name": "Unibody/Frame/Wheel Alignment I"
+                }, 
+                {
+                    "code": "ABCT 2212", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ABCT/2212", 
+                    "name": "Unibody/Frame/Wheel Alignment II"
+                }, 
+                {
+                    "code": "ABCT 2230", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ABCT/2230", 
+                    "name": "Body Mechanical and Air Conditioning"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/ABCT"
+        }, 
+        {
+            "abbr": "ACCT", 
+            "courses": [
+                {
+                    "code": "ACCT 1000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/1000", 
+                    "name": "Principles of Accounting I"
+                }, 
+                {
+                    "code": "ACCT 1003", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/1003", 
+                    "name": "Principles of Accounting II"
+                }, 
+                {
+                    "code": "ACCT 1005", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/1005", 
+                    "name": "Principles of Bookkeeping"
+                }, 
+                {
+                    "code": "ACCT 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/1100", 
+                    "name": "Business Law and Ethics"
+                }, 
+                {
+                    "code": "ACCT 1106", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/1106", 
+                    "name": "Accounting Mathematics"
+                }, 
+                {
+                    "code": "ACCT 1226", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/1226", 
+                    "name": "Payroll Accounting"
+                }, 
+                {
+                    "code": "ACCT 1236", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/1236", 
+                    "name": "Business Payroll"
+                }, 
+                {
+                    "code": "ACCT 1306", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/1306", 
+                    "name": "Spreadsheets"
+                }, 
+                {
+                    "code": "ACCT 1406", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/1406", 
+                    "name": "Income Tax"
+                }, 
+                {
+                    "code": "ACCT 2000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/2000", 
+                    "name": "Intermediate Accounting I"
+                }, 
+                {
+                    "code": "ACCT 2003", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/2003", 
+                    "name": "Intermediate Accounting II"
+                }, 
+                {
+                    "code": "ACCT 2100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/2100", 
+                    "name": "Cost Accounting I"
+                }, 
+                {
+                    "code": "ACCT 2103", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/2103", 
+                    "name": "Cost Accounting II"
+                }, 
+                {
+                    "code": "ACCT 2200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/2200", 
+                    "name": "Accounting Computer Applications I"
+                }, 
+                {
+                    "code": "ACCT 2203", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/2203", 
+                    "name": "Accounting Computer Applications II"
+                }, 
+                {
+                    "code": "ACCT 2206", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/2206", 
+                    "name": "Fund/Nonprofit Accounting"
+                }, 
+                {
+                    "code": "ACCT 2306", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/2306", 
+                    "name": "Auditing"
+                }, 
+                {
+                    "code": "ACCT 2400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/2400", 
+                    "name": "Personal Financial Management"
+                }, 
+                {
+                    "code": "ACCT 2980", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ACCT/2980", 
+                    "name": "Special Topics:  Accounting Careers"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/ACCT"
+        }, 
+        {
+            "abbr": "ARCT", 
+            "courses": [
+                {
+                    "code": "ARCT 1101", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARCT/1101", 
+                    "name": "Architectural Studio 1A"
+                }, 
+                {
+                    "code": "ARCT 1102", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARCT/1102", 
+                    "name": "Architectural Studio 1B"
+                }, 
+                {
+                    "code": "ARCT 1103", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARCT/1103", 
+                    "name": "Building Technology I"
+                }, 
+                {
+                    "code": "ARCT 1107", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARCT/1107", 
+                    "name": "Cad I"
+                }, 
+                {
+                    "code": "ARCT 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARCT/1200", 
+                    "name": "Architectural Studio II"
+                }, 
+                {
+                    "code": "ARCT 1203", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARCT/1203", 
+                    "name": "Building Technology II"
+                }, 
+                {
+                    "code": "ARCT 1207", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARCT/1207", 
+                    "name": "Cad II"
+                }, 
+                {
+                    "code": "ARCT 1300", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARCT/1300", 
+                    "name": "Introduction to SketchUp Modeling Software"
+                }, 
+                {
+                    "code": "ARCT 1400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARCT/1400", 
+                    "name": "Residential Planning and Design"
+                }, 
+                {
+                    "code": "ARCT 1425", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARCT/1425", 
+                    "name": "Architectural Drawings and Methods"
+                }, 
+                {
+                    "code": "ARCT 1450", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARCT/1450", 
+                    "name": "Wood Frame Building Technologies"
+                }, 
+                {
+                    "code": "ARCT 1475", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARCT/1475", 
+                    "name": "Residential Construction and Costs"
+                }, 
+                {
+                    "code": "ARCT 2100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARCT/2100", 
+                    "name": "Architectural Studio III"
+                }, 
+                {
+                    "code": "ARCT 2103", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARCT/2103", 
+                    "name": "Building Technology III"
+                }, 
+                {
+                    "code": "ARCT 2107", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARCT/2107", 
+                    "name": "Cad III"
+                }, 
+                {
+                    "code": "ARCT 2200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARCT/2200", 
+                    "name": "Architectural Studio IV"
+                }
+            ], 
+            "name": "Architecture", 
+            "url": "http://www.chegg.com/courses/dakotatc/ARCT"
+        }, 
+        {
+            "abbr": "ARES", 
+            "courses": [
+                {
+                    "code": "ARES 1000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARES/1000", 
+                    "name": "Intro to Auto Restoration Welding/Sheet Metal"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/ARES"
+        }, 
+        {
+            "abbr": "ARTS", 
+            "courses": [
+                {
+                    "code": "ARTS 1000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARTS/1000", 
+                    "name": "Visual Communications"
+                }, 
+                {
+                    "code": "ARTS 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARTS/1100", 
+                    "name": "History of Photography"
+                }, 
+                {
+                    "code": "ARTS 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARTS/1200", 
+                    "name": "The Creative Process"
+                }, 
+                {
+                    "code": "ARTS 1300", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ARTS/1300", 
+                    "name": "History of Architecture"
+                }
+            ], 
+            "name": "Art Studio", 
+            "url": "http://www.chegg.com/courses/dakotatc/ARTS"
+        }, 
+        {
+            "abbr": "ASEP", 
+            "courses": [
+                {
+                    "code": "ASEP 1101", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ASEP/1101", 
+                    "name": "Automotive Fundamentals"
+                }, 
+                {
+                    "code": "ASEP 1102", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ASEP/1102", 
+                    "name": "Electrical and Fuel Systems"
+                }, 
+                {
+                    "code": "ASEP 1103", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ASEP/1103", 
+                    "name": "Driveability"
+                }, 
+                {
+                    "code": "ASEP 1104", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ASEP/1104", 
+                    "name": "Body Electronics"
+                }, 
+                {
+                    "code": "ASEP 1105", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ASEP/1105", 
+                    "name": "Heating And Air Conditioning"
+                }, 
+                {
+                    "code": "ASEP 1108", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ASEP/1108", 
+                    "name": "Brake Systems"
+                }, 
+                {
+                    "code": "ASEP 1212", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ASEP/1212", 
+                    "name": "Advanced Diagnostics/New Model Update"
+                }, 
+                {
+                    "code": "ASEP 2107", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ASEP/2107", 
+                    "name": "Steering and Suspension"
+                }, 
+                {
+                    "code": "ASEP 2110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ASEP/2110", 
+                    "name": "Automatic Transmissions"
+                }, 
+                {
+                    "code": "ASEP 2111", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ASEP/2111", 
+                    "name": "Engines"
+                }, 
+                {
+                    "code": "ASEP 2209", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ASEP/2209", 
+                    "name": "Driveline and Four Wheel Drive"
+                }
+            ], 
+            "name": "Anesthesiol, Surg & Envtl Phys", 
+            "url": "http://www.chegg.com/courses/dakotatc/ASEP"
+        }, 
+        {
+            "abbr": "AUTM", 
+            "courses": [
+                {
+                    "code": "AUTM 2000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/AUTM/2000", 
+                    "name": "Basic Electrical and Battery"
+                }, 
+                {
+                    "code": "AUTM 2001", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/AUTM/2001", 
+                    "name": "Know Your Car"
+                }, 
+                {
+                    "code": "AUTM 2010", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/AUTM/2010", 
+                    "name": "Suspension,Steering and Alignment"
+                }, 
+                {
+                    "code": "AUTM 2020", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/AUTM/2020", 
+                    "name": "Brakes"
+                }, 
+                {
+                    "code": "AUTM 2031", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/AUTM/2031", 
+                    "name": "Differential and Four Wheel Drive"
+                }, 
+                {
+                    "code": "AUTM 2120", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/AUTM/2120", 
+                    "name": "Engine Overhaul Theory,Diagnosis,and Repair"
+                }, 
+                {
+                    "code": "AUTM 2136", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/AUTM/2136", 
+                    "name": "Heating,Ventilation and Air Conditioning"
+                }, 
+                {
+                    "code": "AUTM 2140", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/AUTM/2140", 
+                    "name": "General Automotive Service"
+                }, 
+                {
+                    "code": "AUTM 2200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/AUTM/2200", 
+                    "name": "Manual Transmission/Transaxle and Clutches"
+                }, 
+                {
+                    "code": "AUTM 2210", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/AUTM/2210", 
+                    "name": "Basic Automatic Transmission/Transaxle"
+                }, 
+                {
+                    "code": "AUTM 2220", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/AUTM/2220", 
+                    "name": "Advanced Automatic Transmission/Transaxle"
+                }, 
+                {
+                    "code": "AUTM 2300", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/AUTM/2300", 
+                    "name": "Driveability and Emissions"
+                }, 
+                {
+                    "code": "AUTM 2310", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/AUTM/2310", 
+                    "name": "Body and Engine Electrical Systems"
+                }, 
+                {
+                    "code": "AUTM 2320", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/AUTM/2320", 
+                    "name": "Automobile Computers and Fuel Injection"
+                }
+            ], 
+            "name": "Automotive Mechanics", 
+            "url": "http://www.chegg.com/courses/dakotatc/AUTM"
+        }, 
+        {
+            "abbr": "BIOL", 
+            "courses": [
+                {
+                    "code": "BIOL 1110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BIOL/1110", 
+                    "name": "Environmental Science"
+                }, 
+                {
+                    "code": "BIOL 1120", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BIOL/1120", 
+                    "name": "Minnesota Nature Study"
+                }, 
+                {
+                    "code": "BIOL 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BIOL/1200", 
+                    "name": "Biology and Society"
+                }, 
+                {
+                    "code": "BIOL 1300", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BIOL/1300", 
+                    "name": "Introduction to Physiological Anatomy"
+                }, 
+                {
+                    "code": "BIOL 1310", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BIOL/1310", 
+                    "name": "Introduction to Anatomy and Physiology"
+                }, 
+                {
+                    "code": "BIOL 1400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BIOL/1400", 
+                    "name": "Ecology Field Studies"
+                }, 
+                {
+                    "code": "BIOL 1500", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BIOL/1500", 
+                    "name": "General Biology"
+                }, 
+                {
+                    "code": "BIOL 1600", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BIOL/1600", 
+                    "name": "Microbiology"
+                }, 
+                {
+                    "code": "BIOL 2000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BIOL/2000", 
+                    "name": "Anatomy and Physiology I"
+                }, 
+                {
+                    "code": "BIOL 2010", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BIOL/2010", 
+                    "name": "Anatomy and Physiology II"
+                }, 
+                {
+                    "code": "BIOL 2020", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BIOL/2020", 
+                    "name": "Microbiology"
+                }, 
+                {
+                    "code": "BIOL 2990", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BIOL/2990", 
+                    "name": "INDEPENDENT STUDY:  Biology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/BIOL"
+        }, 
+        {
+            "abbr": "BMET", 
+            "courses": [
+                {
+                    "code": "BMET 1110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BMET/1110", 
+                    "name": "Introduction to Biomedical Technology"
+                }, 
+                {
+                    "code": "BMET 1112", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BMET/1112", 
+                    "name": "DC Electricity"
+                }, 
+                {
+                    "code": "BMET 1116", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BMET/1116", 
+                    "name": "Solid State Electronics"
+                }, 
+                {
+                    "code": "BMET 1121", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BMET/1121", 
+                    "name": "Administrative Functions"
+                }, 
+                {
+                    "code": "BMET 1123", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BMET/1123", 
+                    "name": "A.C.Electricity"
+                }, 
+                {
+                    "code": "BMET 1136", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BMET/1136", 
+                    "name": "Managing Customer Satisfaction"
+                }, 
+                {
+                    "code": "BMET 1221", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BMET/1221", 
+                    "name": "Biomedical Instrumentation I"
+                }, 
+                {
+                    "code": "BMET 1231", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BMET/1231", 
+                    "name": "Biomedical Instrumentation II"
+                }, 
+                {
+                    "code": "BMET 1241", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BMET/1241", 
+                    "name": "Mechanical Systems"
+                }, 
+                {
+                    "code": "BMET 1530", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/BMET/1530", 
+                    "name": "Digital and Micro Processor"
+                }
+            ], 
+            "name": "Biometeorology", 
+            "url": "http://www.chegg.com/courses/dakotatc/BMET"
+        }, 
+        {
+            "abbr": "CDEV", 
+            "courses": [
+                {
+                    "code": "CDEV 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/1200", 
+                    "name": "Professional Relations in"
+                }, 
+                {
+                    "code": "CDEV 1201", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/1201", 
+                    "name": "Professional Relations in Special Education"
+                }, 
+                {
+                    "code": "CDEV 1210", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/1210", 
+                    "name": "Foundations of Child Development I"
+                }, 
+                {
+                    "code": "CDEV 1220", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/1220", 
+                    "name": "Child Safety,Health,and Nutrition"
+                }, 
+                {
+                    "code": "CDEV 1230", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/1230", 
+                    "name": "Guidance and the Early Childhood Environment"
+                }, 
+                {
+                    "code": "CDEV 1320", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/1320", 
+                    "name": "Foundations of Child Development II"
+                }, 
+                {
+                    "code": "CDEV 1340", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/1340", 
+                    "name": "Planning and Implementing Curriculum"
+                }, 
+                {
+                    "code": "CDEV 2320", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2320", 
+                    "name": "Profiles of the Exceptional Child"
+                }, 
+                {
+                    "code": "CDEV 2330", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2330", 
+                    "name": "Advanced Child Guidance"
+                }, 
+                {
+                    "code": "CDEV 2500", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2500", 
+                    "name": "Shadow Study"
+                }, 
+                {
+                    "code": "CDEV 2540", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2540", 
+                    "name": "Sensory/Motor Learning Experiences"
+                }, 
+                {
+                    "code": "CDEV 2550", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2550", 
+                    "name": "Cognitive/Multimedia Learning Experiences"
+                }, 
+                {
+                    "code": "CDEV 2560", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2560", 
+                    "name": "Language and Literature Learning Experiences"
+                }, 
+                {
+                    "code": "CDEV 2570", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2570", 
+                    "name": "Multicultural Learning Experiences"
+                }, 
+                {
+                    "code": "CDEV 2574", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2574", 
+                    "name": "Contemporary Issues in Child Care"
+                }, 
+                {
+                    "code": "CDEV 2580", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2580", 
+                    "name": "Creative Development Learning Experiences"
+                }, 
+                {
+                    "code": "CDEV 2590", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2590", 
+                    "name": "Social/Emotional Learning Experiences"
+                }, 
+                {
+                    "code": "CDEV 2600", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2600", 
+                    "name": "Professional Leadership"
+                }, 
+                {
+                    "code": "CDEV 2640", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2640", 
+                    "name": "Program Planning"
+                }, 
+                {
+                    "code": "CDEV 2700", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2700", 
+                    "name": "Project Exceptional I"
+                }, 
+                {
+                    "code": "CDEV 2701", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2701", 
+                    "name": "Project Exceptional II"
+                }, 
+                {
+                    "code": "CDEV 2702", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2702", 
+                    "name": "Project Exceptional:Examining Behavior"
+                }, 
+                {
+                    "code": "CDEV 2703", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2703", 
+                    "name": "Project Exceptional: First Signs, Red Flags and Referrals for Autism"
+                }, 
+                {
+                    "code": "CDEV 2704", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2704", 
+                    "name": "Transforming the Difficult Child: The Nurtured Hearth Approach"
+                }, 
+                {
+                    "code": "CDEV 2710", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2710", 
+                    "name": "Infant Toddler Social Emotional"
+                }, 
+                {
+                    "code": "CDEV 2711", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2711", 
+                    "name": "Infant Toddler Routines and Environments"
+                }, 
+                {
+                    "code": "CDEV 2712", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2712", 
+                    "name": "Infant Toddler Language and"
+                }, 
+                {
+                    "code": "CDEV 2713", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2713", 
+                    "name": "Culture,Family,and Providers"
+                }, 
+                {
+                    "code": "CDEV 2715", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2715", 
+                    "name": "Sign Language in Early Childhood"
+                }, 
+                {
+                    "code": "CDEV 2720", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2720", 
+                    "name": "Supporting the School-Age Learner in Math"
+                }, 
+                {
+                    "code": "CDEV 2721", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2721", 
+                    "name": "Supporting the School-age Learner in Writing"
+                }, 
+                {
+                    "code": "CDEV 2722", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2722", 
+                    "name": "Supporting the School-age Learner in Reading"
+                }, 
+                {
+                    "code": "CDEV 2723", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2723", 
+                    "name": "Choices:Keys to Quality for"
+                }, 
+                {
+                    "code": "CDEV 2724", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2724", 
+                    "name": "Child Guidance for School- Agers: Nurture & Growth"
+                }, 
+                {
+                    "code": "CDEV 2730", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CDEV/2730", 
+                    "name": "Learning To Use the Ounce Scale"
+                }
+            ], 
+            "name": "Child Development And Family Studies", 
+            "url": "http://www.chegg.com/courses/dakotatc/CDEV"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 1500", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CHEM/1500", 
+                    "name": "Introduction to Chemistry"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/CHEM"
+        }, 
+        {
+            "abbr": "COML", 
+            "courses": [
+                {
+                    "code": "COML 1400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/COML/1400", 
+                    "name": "Introduction to Computers"
+                }
+            ], 
+            "name": "Comparative Literature", 
+            "url": "http://www.chegg.com/courses/dakotatc/COML"
+        }, 
+        {
+            "abbr": "COMM", 
+            "courses": [
+                {
+                    "code": "COMM 1221", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/COMM/1221", 
+                    "name": "American Sign Language-Level I"
+                }, 
+                {
+                    "code": "COMM 1223", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/COMM/1223", 
+                    "name": "American Sign Language-Level II"
+                }
+            ], 
+            "name": "Communication", 
+            "url": "http://www.chegg.com/courses/dakotatc/COMM"
+        }, 
+        {
+            "abbr": "CONC", 
+            "courses": [
+                {
+                    "code": "CONC 1600", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CONC/1600", 
+                    "name": "Shop Theory"
+                }, 
+                {
+                    "code": "CONC 1601", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CONC/1601", 
+                    "name": "Shop I:Site Preparation for Construction"
+                }, 
+                {
+                    "code": "CONC 1602", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CONC/1602", 
+                    "name": "Shop II:Brick and Block Construction"
+                }, 
+                {
+                    "code": "CONC 1604", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CONC/1604", 
+                    "name": "Foundations,Concrete and Safety for Masons"
+                }, 
+                {
+                    "code": "CONC 1605", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CONC/1605", 
+                    "name": "Math for Masons"
+                }, 
+                {
+                    "code": "CONC 1606", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CONC/1606", 
+                    "name": "Properties and Testing of Mortar and Concrete"
+                }, 
+                {
+                    "code": "CONC 1610", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CONC/1610", 
+                    "name": "Concrete Problems: Diagnosis, Prevention and Resolution"
+                }, 
+                {
+                    "code": "CONC 1613", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CONC/1613", 
+                    "name": "Shop III:Advanced Brick and Block Construction"
+                }, 
+                {
+                    "code": "CONC 1614", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CONC/1614", 
+                    "name": "Shop IV:Integrated Concrete Systems"
+                }, 
+                {
+                    "code": "CONC 1615", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/CONC/1615", 
+                    "name": "Blueprint Reading Estimating"
+                }
+            ], 
+            "name": "Construction Technology", 
+            "url": "http://www.chegg.com/courses/dakotatc/CONC"
+        }, 
+        {
+            "abbr": "DENT", 
+            "courses": [
+                {
+                    "code": "DENT 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/DENT/1100", 
+                    "name": "Dental Science"
+                }, 
+                {
+                    "code": "DENT 1110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/DENT/1110", 
+                    "name": "Pre-Clinical Dental Assisting"
+                }, 
+                {
+                    "code": "DENT 1120", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/DENT/1120", 
+                    "name": "Dental Health"
+                }, 
+                {
+                    "code": "DENT 1130", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/DENT/1130", 
+                    "name": "Chairside Assisting I"
+                }, 
+                {
+                    "code": "DENT 1140", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/DENT/1140", 
+                    "name": "Dental Materials"
+                }, 
+                {
+                    "code": "DENT 1250", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/DENT/1250", 
+                    "name": "Radiology"
+                }, 
+                {
+                    "code": "DENT 1260", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/DENT/1260", 
+                    "name": "Expanded Functions"
+                }, 
+                {
+                    "code": "DENT 1270", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/DENT/1270", 
+                    "name": "Chairside Assisting II"
+                }, 
+                {
+                    "code": "DENT 1280", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/DENT/1280", 
+                    "name": "Dental Practice Management"
+                }
+            ], 
+            "name": "Dentistry", 
+            "url": "http://www.chegg.com/courses/dakotatc/DENT"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ECON/1100", 
+                    "name": "Microeconomics"
+                }, 
+                {
+                    "code": "ECON 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ECON/1200", 
+                    "name": "Principles of Macroeconomics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/ECON"
+        }, 
+        {
+            "abbr": "ELEC", 
+            "courses": [
+                {
+                    "code": "ELEC 1110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/1110", 
+                    "name": "D.C.Electricity Theory and Lab"
+                }, 
+                {
+                    "code": "ELEC 1120", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/1120", 
+                    "name": "A.C.Electricity Theory and Lab"
+                }, 
+                {
+                    "code": "ELEC 1130", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/1130", 
+                    "name": "National Electrical Code I"
+                }, 
+                {
+                    "code": "ELEC 1140", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/1140", 
+                    "name": "Blueprint Reading for Technicians"
+                }, 
+                {
+                    "code": "ELEC 1210", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/1210", 
+                    "name": "Analog/Digital Electronics Theory"
+                }, 
+                {
+                    "code": "ELEC 1220", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/1220", 
+                    "name": "Analog/Digital Electronics Lab"
+                }, 
+                {
+                    "code": "ELEC 1230", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/1230", 
+                    "name": "Construction Skills and Intro to Wiring Theory"
+                }, 
+                {
+                    "code": "ELEC 1240", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/1240", 
+                    "name": "Construction Skills and"
+                }, 
+                {
+                    "code": "ELEC 2110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/2110", 
+                    "name": "Electrical Apparatus Theory"
+                }, 
+                {
+                    "code": "ELEC 2120", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/2120", 
+                    "name": "Electrical Apparatus Lab"
+                }, 
+                {
+                    "code": "ELEC 2131", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/2131", 
+                    "name": "Programmable Logic Controllers Theory"
+                }, 
+                {
+                    "code": "ELEC 2141", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/2141", 
+                    "name": "Programmable Logic Controllers Lab"
+                }, 
+                {
+                    "code": "ELEC 2210", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/2210", 
+                    "name": "National Electrical Code II"
+                }, 
+                {
+                    "code": "ELEC 2220", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/2220", 
+                    "name": "Electrical/Electronic"
+                }, 
+                {
+                    "code": "ELEC 2230", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/2230", 
+                    "name": "Electrical/Electronic Controls and Systems Lab"
+                }, 
+                {
+                    "code": "ELEC 2241", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/2241", 
+                    "name": "Industrial & Maintenance Wiring Theory & Lab"
+                }, 
+                {
+                    "code": "ELEC 2251", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/2251", 
+                    "name": "Commercial & Maintenance Wiring Theory & Lab"
+                }, 
+                {
+                    "code": "ELEC 2260", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELEC/2260", 
+                    "name": "Heating,Ventilation,and Air Conditioning Wiring"
+                }
+            ], 
+            "name": "Electrical Engineering", 
+            "url": "http://www.chegg.com/courses/dakotatc/ELEC"
+        }, 
+        {
+            "abbr": "ELLW", 
+            "courses": [
+                {
+                    "code": "ELLW 0098", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELLW/0098", 
+                    "name": "Introduction to Climbing"
+                }, 
+                {
+                    "code": "ELLW 1110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELLW/1110", 
+                    "name": "Distribution I"
+                }, 
+                {
+                    "code": "ELLW 1120", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELLW/1120", 
+                    "name": "Utility Equipment and Tools"
+                }, 
+                {
+                    "code": "ELLW 1130", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELLW/1130", 
+                    "name": "Basic Electricity"
+                }, 
+                {
+                    "code": "ELLW 1140", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELLW/1140", 
+                    "name": "Distribution IIA"
+                }, 
+                {
+                    "code": "ELLW 1141", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELLW/1141", 
+                    "name": "Distribution IIB"
+                }, 
+                {
+                    "code": "ELLW 1150", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELLW/1150", 
+                    "name": "Construction Planning and Practices"
+                }, 
+                {
+                    "code": "ELLW 1160", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELLW/1160", 
+                    "name": "Transformers I"
+                }, 
+                {
+                    "code": "ELLW 1162", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELLW/1162", 
+                    "name": "Transformers II"
+                }, 
+                {
+                    "code": "ELLW 1170", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELLW/1170", 
+                    "name": "Line Construction and Maintenance A"
+                }, 
+                {
+                    "code": "ELLW 1172", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELLW/1172", 
+                    "name": "Line Construction and Maintenance B"
+                }, 
+                {
+                    "code": "ELLW 1180", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELLW/1180", 
+                    "name": "Underground Cable and Fault Locating"
+                }, 
+                {
+                    "code": "ELLW 1185", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ELLW/1185", 
+                    "name": "Electrical Industry Search Skills"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/ELLW"
+        }, 
+        {
+            "abbr": "ENGL", 
+            "courses": [
+                {
+                    "code": "ENGL 0100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/0100", 
+                    "name": "ESL Skills I"
+                }, 
+                {
+                    "code": "ENGL 0103", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/0103", 
+                    "name": "ESL Grammar and Spelling I"
+                }, 
+                {
+                    "code": "ENGL 0106", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/0106", 
+                    "name": "ESL Reading I"
+                }, 
+                {
+                    "code": "ENGL 0113", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/0113", 
+                    "name": "ESL Oral and Written Communications I"
+                }, 
+                {
+                    "code": "ENGL 0114", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/0114", 
+                    "name": "College Reading I"
+                }, 
+                {
+                    "code": "ENGL 114", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/114", 
+                    "name": "College Reading I"
+                }, 
+                {
+                    "code": "ENGL 0118", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/0118", 
+                    "name": "Basic English and Writing Review"
+                }, 
+                {
+                    "code": "ENGL 118", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/118", 
+                    "name": "Basic English and Writing Review"
+                }, 
+                {
+                    "code": "ENGL 0123", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/0123", 
+                    "name": "Medical Reading and Study Skills"
+                }, 
+                {
+                    "code": "ENGL 123", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/123", 
+                    "name": "Medical Reading and Study Skills"
+                }, 
+                {
+                    "code": "ENGL 0130", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/0130", 
+                    "name": "English Essentials"
+                }, 
+                {
+                    "code": "ENGL 130", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/130", 
+                    "name": "English Essentials"
+                }, 
+                {
+                    "code": "ENGL 0200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/0200", 
+                    "name": "ESL Skills II"
+                }, 
+                {
+                    "code": "ENGL 0203", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/0203", 
+                    "name": "ESL Grammar II"
+                }, 
+                {
+                    "code": "ENGL 0206", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/0206", 
+                    "name": "ESL Reading II"
+                }, 
+                {
+                    "code": "ENGL 0213", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/0213", 
+                    "name": "ESL Oral and Written Communication II"
+                }, 
+                {
+                    "code": "ENGL 0215", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/0215", 
+                    "name": "College Reading II"
+                }, 
+                {
+                    "code": "ENGL 215", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/215", 
+                    "name": "College Reading II"
+                }, 
+                {
+                    "code": "ENGL 0234", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/0234", 
+                    "name": "Medical Reading Skills"
+                }, 
+                {
+                    "code": "ENGL 1000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1000", 
+                    "name": "Applied Business Writing"
+                }, 
+                {
+                    "code": "ENGL 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1100", 
+                    "name": "Writing and Research Skills"
+                }, 
+                {
+                    "code": "ENGL 1102", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1102", 
+                    "name": "Technical Written Communications"
+                }, 
+                {
+                    "code": "ENGL 1150", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1150", 
+                    "name": "Composition I"
+                }, 
+                {
+                    "code": "ENGL 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1200", 
+                    "name": "Technical Writing"
+                }, 
+                {
+                    "code": "ENGL 1300", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1300", 
+                    "name": "Introduction to Creative Writing"
+                }, 
+                {
+                    "code": "ENGL 1350", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1350", 
+                    "name": "Writing and Academic Inquiry"
+                }, 
+                {
+                    "code": "ENGL 1355", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1355", 
+                    "name": "Critical Reading and Writing"
+                }, 
+                {
+                    "code": "ENGL 1400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1400", 
+                    "name": "American Short Story"
+                }, 
+                {
+                    "code": "ENGL 1550", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1550", 
+                    "name": "Introduction to Literature"
+                }, 
+                {
+                    "code": "ENGL 1570", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1570", 
+                    "name": "The Literature of Nature"
+                }, 
+                {
+                    "code": "ENGL 1575", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1575", 
+                    "name": "The Natural World in Literature"
+                }, 
+                {
+                    "code": "ENGL 1625", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1625", 
+                    "name": "Film Studies"
+                }, 
+                {
+                    "code": "ENGL 1630", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1630", 
+                    "name": "Genre Film"
+                }, 
+                {
+                    "code": "ENGL 1650", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1650", 
+                    "name": "Greek Mythology"
+                }, 
+                {
+                    "code": "ENGL 1750", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1750", 
+                    "name": "Fantasy and Science Fiction Literature"
+                }, 
+                {
+                    "code": "ENGL 1800", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/1800", 
+                    "name": "Mystery and Detective Literature"
+                }, 
+                {
+                    "code": "ENGL 2000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENGL/2000", 
+                    "name": "Composition II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/ENGL"
+        }, 
+        {
+            "abbr": "ENTR", 
+            "courses": [
+                {
+                    "code": "ENTR 1150", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENTR/1150", 
+                    "name": "The Successful Entrepreneur"
+                }, 
+                {
+                    "code": "ENTR 1400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENTR/1400", 
+                    "name": "Advertising Strategies"
+                }, 
+                {
+                    "code": "ENTR 1430", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENTR/1430", 
+                    "name": "Marketing Strategies for Small Business"
+                }, 
+                {
+                    "code": "ENTR 1440", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENTR/1440", 
+                    "name": "Successful Marketing Strategies for"
+                }, 
+                {
+                    "code": "ENTR 1600", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENTR/1600", 
+                    "name": "Professional Presentations"
+                }, 
+                {
+                    "code": "ENTR 1650", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENTR/1650", 
+                    "name": "Selling Strategies for the Entrepreneur"
+                }, 
+                {
+                    "code": "ENTR 1850", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENTR/1850", 
+                    "name": "Strategic Planning"
+                }, 
+                {
+                    "code": "ENTR 1860", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENTR/1860", 
+                    "name": "Business Plan Development"
+                }, 
+                {
+                    "code": "ENTR 1900", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENTR/1900", 
+                    "name": "Capitalizing a Small Business"
+                }, 
+                {
+                    "code": "ENTR 1925", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENTR/1925", 
+                    "name": "Innovative Problem Solving"
+                }, 
+                {
+                    "code": "ENTR 1945", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENTR/1945", 
+                    "name": "Business Finance and Cash Flow Analysis"
+                }, 
+                {
+                    "code": "ENTR 1965", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ENTR/1965", 
+                    "name": "Building a Successful Internet Business"
+                }
+            ], 
+            "name": "Entrepreneurship", 
+            "url": "http://www.chegg.com/courses/dakotatc/ENTR"
+        }, 
+        {
+            "abbr": "ESOL", 
+            "courses": [
+                {
+                    "code": "ESOL 0030", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ESOL/0030", 
+                    "name": "ESOL Listening and Speaking I"
+                }, 
+                {
+                    "code": "ESOL 30", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ESOL/30", 
+                    "name": "ESOL Listening and Speaking I"
+                }, 
+                {
+                    "code": "ESOL 0032", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ESOL/0032", 
+                    "name": "ESOL Reading I"
+                }, 
+                {
+                    "code": "ESOL 32", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ESOL/32", 
+                    "name": "ESOL Reading I"
+                }, 
+                {
+                    "code": "ESOL 0035", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ESOL/0035", 
+                    "name": "ESOL Writing and Grammar I"
+                }, 
+                {
+                    "code": "ESOL 35", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ESOL/35", 
+                    "name": "ESOL Writing and Grammar I"
+                }, 
+                {
+                    "code": "ESOL 1106", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ESOL/1106", 
+                    "name": "First Aid/CPR/AED"
+                }, 
+                {
+                    "code": "ESOL 1350", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ESOL/1350", 
+                    "name": "Nursing Assistant Test"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/ESOL"
+        }, 
+        {
+            "abbr": "EXER", 
+            "courses": [
+                {
+                    "code": "EXER 1000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/1000", 
+                    "name": "Intro to Human Performance Studies"
+                }, 
+                {
+                    "code": "EXER 1015", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/1015", 
+                    "name": "Personal Health and Wellness"
+                }, 
+                {
+                    "code": "EXER 1020", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/1020", 
+                    "name": "Strength Training"
+                }, 
+                {
+                    "code": "EXER 1025", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/1025", 
+                    "name": "Physical Conditioning"
+                }, 
+                {
+                    "code": "EXER 1027", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/1027", 
+                    "name": "Olympic and Explosive Weightlifting"
+                }, 
+                {
+                    "code": "EXER 1045", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/1045", 
+                    "name": "Organization and Management of Sport"
+                }, 
+                {
+                    "code": "EXER 1050", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/1050", 
+                    "name": "Nutrition for Health and Human Performance"
+                }, 
+                {
+                    "code": "EXER 1065", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/1065", 
+                    "name": "Psychology of Sport and Performance"
+                }, 
+                {
+                    "code": "EXER 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/1200", 
+                    "name": "Team and Individual Games"
+                }, 
+                {
+                    "code": "EXER 2020", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/2020", 
+                    "name": "Personal Training I"
+                }, 
+                {
+                    "code": "EXER 2030", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/2030", 
+                    "name": "Weight Management"
+                }, 
+                {
+                    "code": "EXER 2060", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/2060", 
+                    "name": "Personal Training II"
+                }, 
+                {
+                    "code": "EXER 2090", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/2090", 
+                    "name": "Exercise for Special Populations"
+                }, 
+                {
+                    "code": "EXER 2115", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/2115", 
+                    "name": "Applied Exercise Physiology"
+                }, 
+                {
+                    "code": "EXER 2125", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/2125", 
+                    "name": "Applied Biomechanics and Movement Anatomy"
+                }, 
+                {
+                    "code": "EXER 2130", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/2130", 
+                    "name": "Foundations of Sport Science"
+                }, 
+                {
+                    "code": "EXER 2225", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/2225", 
+                    "name": "Theory of Coaching"
+                }, 
+                {
+                    "code": "EXER 2235", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/2235", 
+                    "name": "Intro to Athletic Training"
+                }, 
+                {
+                    "code": "EXER 2240", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/2240", 
+                    "name": "Corporate Wellness/Health Promotion"
+                }, 
+                {
+                    "code": "EXER 2250", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/2250", 
+                    "name": "Group Fitness Instruction"
+                }, 
+                {
+                    "code": "EXER 2270", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/2270", 
+                    "name": "Recreation Sports"
+                }, 
+                {
+                    "code": "EXER 2280", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/2280", 
+                    "name": "Health and Aging"
+                }, 
+                {
+                    "code": "EXER 2290", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/2290", 
+                    "name": "Legal Aspects of Sport"
+                }, 
+                {
+                    "code": "EXER 2295", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/EXER/2295", 
+                    "name": "Social and Ethical Aspects of Sport"
+                }
+            ], 
+            "name": "Exercise Science", 
+            "url": "http://www.chegg.com/courses/dakotatc/EXER"
+        }, 
+        {
+            "abbr": "HCEM", 
+            "courses": [
+                {
+                    "code": "HCEM 1101", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/1101", 
+                    "name": "General Shop Mechanics-Introduction"
+                }, 
+                {
+                    "code": "HCEM 1110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/1110", 
+                    "name": "Welding and Flame Cutting"
+                }, 
+                {
+                    "code": "HCEM 1132", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/1132", 
+                    "name": "Heavy Duty Electrical"
+                }, 
+                {
+                    "code": "HCEM 1140", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/1140", 
+                    "name": "Diesel Engine Overhaul I"
+                }, 
+                {
+                    "code": "HCEM 1160", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/1160", 
+                    "name": "Specialized Lab I"
+                }, 
+                {
+                    "code": "HCEM 1234", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/1234", 
+                    "name": "Heavy Duty Electronics"
+                }, 
+                {
+                    "code": "HCEM 1246", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/1246", 
+                    "name": "Diesel Engine Overhaul II"
+                }, 
+                {
+                    "code": "HCEM 1250", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/1250", 
+                    "name": "Brakes"
+                }, 
+                {
+                    "code": "HCEM 1256", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/1256", 
+                    "name": "Diesel Engine Tune-up"
+                }, 
+                {
+                    "code": "HCEM 1260", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/1260", 
+                    "name": "Specialized Lab II"
+                }, 
+                {
+                    "code": "HCEM 1261", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/1261", 
+                    "name": "Specialized Lab II-AAS"
+                }, 
+                {
+                    "code": "HCEM 2115", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/2115", 
+                    "name": "Transmissions"
+                }, 
+                {
+                    "code": "HCEM 2135", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/2135", 
+                    "name": "Hydraulics I"
+                }, 
+                {
+                    "code": "HCEM 2145", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/2145", 
+                    "name": "Hydrostatic Systems"
+                }, 
+                {
+                    "code": "HCEM 2175", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/2175", 
+                    "name": "Specialized Lab III"
+                }, 
+                {
+                    "code": "HCEM 2176", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/2176", 
+                    "name": "Specialized Lab III-AAS"
+                }, 
+                {
+                    "code": "HCEM 2225", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/2225", 
+                    "name": "Track Drive Systems"
+                }, 
+                {
+                    "code": "HCEM 2238", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/2238", 
+                    "name": "Hydraulics II"
+                }, 
+                {
+                    "code": "HCEM 2255", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/2255", 
+                    "name": "Steering Systems"
+                }, 
+                {
+                    "code": "HCEM 2265", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/2265", 
+                    "name": "Differentials"
+                }, 
+                {
+                    "code": "HCEM 2279", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/2279", 
+                    "name": "Specialized Lab IV Section II"
+                }, 
+                {
+                    "code": "HCEM 2280", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HCEM/2280", 
+                    "name": "Climate Control"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/HCEM"
+        }, 
+        {
+            "abbr": "HDTT", 
+            "courses": [
+                {
+                    "code": "HDTT 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HDTT/1100", 
+                    "name": "Truck Technology Fundamentals"
+                }, 
+                {
+                    "code": "HDTT 1103", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HDTT/1103", 
+                    "name": "Air Brake Systems"
+                }, 
+                {
+                    "code": "HDTT 1106", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HDTT/1106", 
+                    "name": "Welding Procedures"
+                }, 
+                {
+                    "code": "HDTT 1109", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HDTT/1109", 
+                    "name": "Fluid Power Systems"
+                }, 
+                {
+                    "code": "HDTT 1212", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HDTT/1212", 
+                    "name": "Preventive Maintenance"
+                }, 
+                {
+                    "code": "HDTT 1215", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HDTT/1215", 
+                    "name": "Suspensions and Steering Systems"
+                }, 
+                {
+                    "code": "HDTT 1218", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HDTT/1218", 
+                    "name": "Electrical Systems"
+                }, 
+                {
+                    "code": "HDTT 1222", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HDTT/1222", 
+                    "name": "Truck A/C"
+                }, 
+                {
+                    "code": "HDTT 2101", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HDTT/2101", 
+                    "name": "Drive Train I"
+                }, 
+                {
+                    "code": "HDTT 2104", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HDTT/2104", 
+                    "name": "Drive Train II"
+                }, 
+                {
+                    "code": "HDTT 2107", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HDTT/2107", 
+                    "name": "Diesel Fundamentals"
+                }, 
+                {
+                    "code": "HDTT 2110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HDTT/2110", 
+                    "name": "Diesel Fuel Systems"
+                }, 
+                {
+                    "code": "HDTT 2213", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HDTT/2213", 
+                    "name": "Diesel Engine Fundamentals"
+                }, 
+                {
+                    "code": "HDTT 2216", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HDTT/2216", 
+                    "name": "Diesel Electronics"
+                }, 
+                {
+                    "code": "HDTT 2222", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HDTT/2222", 
+                    "name": "Diesel Engine Lab"
+                }, 
+                {
+                    "code": "HDTT 2228", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HDTT/2228", 
+                    "name": "D. O. T. Certification"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/HDTT"
+        }, 
+        {
+            "abbr": "HEAL", 
+            "courses": [
+                {
+                    "code": "HEAL 1000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HEAL/1000", 
+                    "name": "First Aid/CPR"
+                }, 
+                {
+                    "code": "HEAL 1010", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HEAL/1010", 
+                    "name": "CPR For the Professional Rescuer"
+                }, 
+                {
+                    "code": "HEAL 1012", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HEAL/1012", 
+                    "name": "Workplace Training Standard First Aid"
+                }, 
+                {
+                    "code": "HEAL 1020", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HEAL/1020", 
+                    "name": "Advanced First Aid"
+                }, 
+                {
+                    "code": "HEAL 1030", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HEAL/1030", 
+                    "name": "Emergency Care Technical Trades"
+                }, 
+                {
+                    "code": "HEAL 1055", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HEAL/1055", 
+                    "name": "Nursing Assistant/Home Health Aid"
+                }, 
+                {
+                    "code": "HEAL 1070", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HEAL/1070", 
+                    "name": "Trained Medication Aide"
+                }, 
+                {
+                    "code": "HEAL 1101", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HEAL/1101", 
+                    "name": "Anatomy and Physiology"
+                }, 
+                {
+                    "code": "HEAL 1150", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HEAL/1150", 
+                    "name": "Health Career Mathematics"
+                }, 
+                {
+                    "code": "HEAL 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HEAL/1200", 
+                    "name": "Phlebotomy"
+                }, 
+                {
+                    "code": "HEAL 1400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HEAL/1400", 
+                    "name": "Nutrition and Diet Therapy"
+                }, 
+                {
+                    "code": "HEAL 1502", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HEAL/1502", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "HEAL 1702", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HEAL/1702", 
+                    "name": "Pharmacology Basics"
+                }, 
+                {
+                    "code": "HEAL 1800", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HEAL/1800", 
+                    "name": "First Aid/CPR for the Allied Health Care provider"
+                }
+            ], 
+            "name": "Health Education", 
+            "url": "http://www.chegg.com/courses/dakotatc/HEAL"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HIST/1100", 
+                    "name": "History of the United States to 1877"
+                }, 
+                {
+                    "code": "HIST 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HIST/1200", 
+                    "name": "History of the U.S.from 1877 to the Present"
+                }, 
+                {
+                    "code": "HIST 1250", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HIST/1250", 
+                    "name": "Women in America 1490-Present"
+                }, 
+                {
+                    "code": "HIST 1300", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HIST/1300", 
+                    "name": "World History"
+                }, 
+                {
+                    "code": "HIST 1400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HIST/1400", 
+                    "name": "American Environmental History"
+                }, 
+                {
+                    "code": "HIST 1450", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HIST/1450", 
+                    "name": "The History of Minnesota"
+                }, 
+                {
+                    "code": "HIST 1500", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HIST/1500", 
+                    "name": "History of Western Civilization"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/HIST"
+        }, 
+        {
+            "abbr": "HLTH", 
+            "courses": [
+                {
+                    "code": "HLTH 490", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HLTH/490", 
+                    "name": "China/Mongolia Business Trip"
+                }, 
+                {
+                    "code": "HLTH 1106", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HLTH/1106", 
+                    "name": "First Aid/CPR/AED"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/HLTH"
+        }, 
+        {
+            "abbr": "HLTW", 
+            "courses": [
+                {
+                    "code": "HLTW 1000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HLTW/1000", 
+                    "name": "First Aid/CPR"
+                }, 
+                {
+                    "code": "HLTW 1020", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HLTW/1020", 
+                    "name": "Advanced First Aid"
+                }, 
+                {
+                    "code": "HLTW 1035", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HLTW/1035", 
+                    "name": "Wilderness First Aid:Emergency"
+                }, 
+                {
+                    "code": "HLTW 1040", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HLTW/1040", 
+                    "name": "Emergency Care on the Job"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/HLTW"
+        }, 
+        {
+            "abbr": "HUMA", 
+            "courses": [
+                {
+                    "code": "HUMA 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/HUMA/1100", 
+                    "name": "Introduction to Humanities"
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/dakotatc/HUMA"
+        }, 
+        {
+            "abbr": "IDES", 
+            "courses": [
+                {
+                    "code": "IDES 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/IDES/1100", 
+                    "name": "Design Fundamentals"
+                }, 
+                {
+                    "code": "IDES 1110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/IDES/1110", 
+                    "name": "Drafting for Interiors"
+                }, 
+                {
+                    "code": "IDES 1120", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/IDES/1120", 
+                    "name": "Critical Thinking and Programming"
+                }, 
+                {
+                    "code": "IDES 1135", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/IDES/1135", 
+                    "name": "Verbal and Visual Presentation"
+                }, 
+                {
+                    "code": "IDES 1206", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/IDES/1206", 
+                    "name": "Residential Studio I"
+                }, 
+                {
+                    "code": "IDES 1217", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/IDES/1217", 
+                    "name": "Commercial Studio I"
+                }, 
+                {
+                    "code": "IDES 1225", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/IDES/1225", 
+                    "name": "Computer Aided Drafting"
+                }, 
+                {
+                    "code": "IDES 1230", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/IDES/1230", 
+                    "name": "History of Art,Architecture and Interiors"
+                }, 
+                {
+                    "code": "IDES 1235", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/IDES/1235", 
+                    "name": "Advanced Visual Presentation Techniques"
+                }, 
+                {
+                    "code": "IDES 2100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/IDES/2100", 
+                    "name": "Interior Design Career Directions"
+                }, 
+                {
+                    "code": "IDES 2106", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/IDES/2106", 
+                    "name": "Color and Light"
+                }, 
+                {
+                    "code": "IDES 2110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/IDES/2110", 
+                    "name": "Materials,Estimating and Specifications"
+                }, 
+                {
+                    "code": "IDES 2136", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/IDES/2136", 
+                    "name": "Commercial Studio II"
+                }, 
+                {
+                    "code": "IDES 2146", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/IDES/2146", 
+                    "name": "Residential Studio II"
+                }, 
+                {
+                    "code": "IDES 2200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/IDES/2200", 
+                    "name": "Professional Business Practices and Sales"
+                }, 
+                {
+                    "code": "IDES 2210", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/IDES/2210", 
+                    "name": "Senior Studio"
+                }
+            ], 
+            "name": "Interior Design", 
+            "url": "http://www.chegg.com/courses/dakotatc/IDES"
+        }, 
+        {
+            "abbr": "INTS", 
+            "courses": [
+                {
+                    "code": "INTS 1000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/INTS/1000", 
+                    "name": "College Success Strategies"
+                }, 
+                {
+                    "code": "INTS 1010", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/INTS/1010", 
+                    "name": "Job Search Skills"
+                }, 
+                {
+                    "code": "INTS 1040", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/INTS/1040", 
+                    "name": "Sharing Your Culture"
+                }, 
+                {
+                    "code": "INTS 2955", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/INTS/2955", 
+                    "name": "Community Development through"
+                }
+            ], 
+            "name": "International Studies", 
+            "url": "http://www.chegg.com/courses/dakotatc/INTS"
+        }, 
+        {
+            "abbr": "ISTC", 
+            "courses": [
+                {
+                    "code": "ISTC 1000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/1000", 
+                    "name": "Introduction to Information Systems Management"
+                }, 
+                {
+                    "code": "ISTC 1010", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/1010", 
+                    "name": "Microcomputer Maintenance"
+                }, 
+                {
+                    "code": "ISTC 1030", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/1030", 
+                    "name": "Operating Systems I"
+                }, 
+                {
+                    "code": "ISTC 1033", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/1033", 
+                    "name": "Operating Systems II"
+                }, 
+                {
+                    "code": "ISTC 1040", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/1040", 
+                    "name": "Network Systems I"
+                }, 
+                {
+                    "code": "ISTC 1050", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/1050", 
+                    "name": "Database Systems"
+                }, 
+                {
+                    "code": "ISTC 1060", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/1060", 
+                    "name": "Security I"
+                }, 
+                {
+                    "code": "ISTC 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/1100", 
+                    "name": "Business Communications"
+                }, 
+                {
+                    "code": "ISTC 1205", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/1205", 
+                    "name": "Web Client Programming"
+                }, 
+                {
+                    "code": "ISTC 1210", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/1210", 
+                    "name": "Web Server Programming"
+                }, 
+                {
+                    "code": "ISTC 1230", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/1230", 
+                    "name": "Systems Analysis and Design"
+                }, 
+                {
+                    "code": "ISTC 1300", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/1300", 
+                    "name": "Introduction to Programming"
+                }, 
+                {
+                    "code": "ISTC 1400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/1400", 
+                    "name": "Wireless Systems"
+                }, 
+                {
+                    "code": "ISTC 2005", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/2005", 
+                    "name": "Network Systems II"
+                }, 
+                {
+                    "code": "ISTC 2010", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/2010", 
+                    "name": "Network Systems III"
+                }, 
+                {
+                    "code": "ISTC 2015", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/2015", 
+                    "name": "Network Systems IV"
+                }, 
+                {
+                    "code": "ISTC 2035", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/2035", 
+                    "name": "Operating Systems III"
+                }, 
+                {
+                    "code": "ISTC 2040", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/2040", 
+                    "name": "Database Management"
+                }, 
+                {
+                    "code": "ISTC 2050", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/2050", 
+                    "name": "Data Structures"
+                }, 
+                {
+                    "code": "ISTC 2065", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/2065", 
+                    "name": "Security II:Firewalls"
+                }, 
+                {
+                    "code": "ISTC 2070", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/2070", 
+                    "name": "Security III:Forensics"
+                }, 
+                {
+                    "code": "ISTC 2100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/2100", 
+                    "name": "Project Management"
+                }, 
+                {
+                    "code": "ISTC 2120", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/2120", 
+                    "name": "Financial Accounting for Information Systems"
+                }, 
+                {
+                    "code": "ISTC 2140", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/2140", 
+                    "name": "Digital Convergence"
+                }, 
+                {
+                    "code": "ISTC 2310", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/2310", 
+                    "name": "Java I"
+                }, 
+                {
+                    "code": "ISTC 2315", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/2315", 
+                    "name": "Java II"
+                }, 
+                {
+                    "code": "ISTC 2320", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/2320", 
+                    "name": "Net I"
+                }, 
+                {
+                    "code": "ISTC 2325", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/ISTC/2325", 
+                    "name": "Net II"
+                }
+            ], 
+            "name": "Instructional Technology", 
+            "url": "http://www.chegg.com/courses/dakotatc/ISTC"
+        }, 
+        {
+            "abbr": "LAHT", 
+            "courses": [
+                {
+                    "code": "LAHT 1000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/1000", 
+                    "name": "Plant Science"
+                }, 
+                {
+                    "code": "LAHT 1010", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/1010", 
+                    "name": "Soil Science"
+                }, 
+                {
+                    "code": "LAHT 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/1100", 
+                    "name": "Woody Plant Materials I"
+                }, 
+                {
+                    "code": "LAHT 1110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/1110", 
+                    "name": "Woody Plant Materials II"
+                }, 
+                {
+                    "code": "LAHT 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/1200", 
+                    "name": "Plant Pests"
+                }, 
+                {
+                    "code": "LAHT 1300", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/1300", 
+                    "name": "Landscape Construction I"
+                }, 
+                {
+                    "code": "LAHT 1310", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/1310", 
+                    "name": "Plant Maintenance"
+                }, 
+                {
+                    "code": "LAHT 1320", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/1320", 
+                    "name": "Turf Management"
+                }, 
+                {
+                    "code": "LAHT 1400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/1400", 
+                    "name": "Greenhouse Operations"
+                }, 
+                {
+                    "code": "LAHT 1410", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/1410", 
+                    "name": "Nursery Operations"
+                }, 
+                {
+                    "code": "LAHT 1502", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/1502", 
+                    "name": "Safety and Equipment"
+                }, 
+                {
+                    "code": "LAHT 1510", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/1510", 
+                    "name": "Landscape Mathematics"
+                }, 
+                {
+                    "code": "LAHT 1600", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/1600", 
+                    "name": "Landscape Design I"
+                }, 
+                {
+                    "code": "LAHT 2000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2000", 
+                    "name": "Herbaceous Plant Materials"
+                }, 
+                {
+                    "code": "LAHT 2010", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2010", 
+                    "name": "Indoor Landscaping"
+                }, 
+                {
+                    "code": "LAHT 2100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2100", 
+                    "name": "Landscape Construction II"
+                }, 
+                {
+                    "code": "LAHT 2110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2110", 
+                    "name": "Irrigation and Lighting"
+                }, 
+                {
+                    "code": "LAHT 2120", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2120", 
+                    "name": "Landscape Surveying"
+                }, 
+                {
+                    "code": "LAHT 2202", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2202", 
+                    "name": "Landscape Design II"
+                }, 
+                {
+                    "code": "LAHT 2210", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2210", 
+                    "name": "Design Problems"
+                }, 
+                {
+                    "code": "LAHT 2230", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2230", 
+                    "name": "Landscape Computer Aided Design I"
+                }, 
+                {
+                    "code": "LAHT 2232", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2232", 
+                    "name": "Landscape Computer Aided Design II"
+                }, 
+                {
+                    "code": "LAHT 2300", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2300", 
+                    "name": "Plant Propagation"
+                }, 
+                {
+                    "code": "LAHT 2312", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2312", 
+                    "name": "Nursery and Greenhouse Operations I"
+                }, 
+                {
+                    "code": "LAHT 2320", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2320", 
+                    "name": "Nursery and Greenhouse Operations II"
+                }, 
+                {
+                    "code": "LAHT 2400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2400", 
+                    "name": "Pest Management"
+                }, 
+                {
+                    "code": "LAHT 2410", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2410", 
+                    "name": "Special Pruning Methods"
+                }, 
+                {
+                    "code": "LAHT 2500", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2500", 
+                    "name": "Landscape Business Management"
+                }, 
+                {
+                    "code": "LAHT 2510", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2510", 
+                    "name": "Landscape Estimating"
+                }, 
+                {
+                    "code": "LAHT 2600", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2600", 
+                    "name": "Landscaping with Native Plants"
+                }, 
+                {
+                    "code": "LAHT 2610", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2610", 
+                    "name": "Professional Certification"
+                }, 
+                {
+                    "code": "LAHT 2620", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/LAHT/2620", 
+                    "name": "Water Gardening"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/LAHT"
+        }, 
+        {
+            "abbr": "MATS", 
+            "courses": [
+                {
+                    "code": "MATS 0200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MATS/0200", 
+                    "name": "Basic Mathematics"
+                }, 
+                {
+                    "code": "MATS 0305", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MATS/0305", 
+                    "name": "Introduction to Algebra"
+                }, 
+                {
+                    "code": "MATS 0400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MATS/0400", 
+                    "name": "Introduction to Geometry"
+                }, 
+                {
+                    "code": "MATS 0500", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MATS/0500", 
+                    "name": "Introduction to Trigonometry"
+                }, 
+                {
+                    "code": "MATS 0600", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MATS/0600", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MATS 1205", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MATS/1205", 
+                    "name": "Math for Electricians"
+                }, 
+                {
+                    "code": "MATS 1225", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MATS/1225", 
+                    "name": "Concepts of Mathematics for"
+                }, 
+                {
+                    "code": "MATS 1251", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MATS/1251", 
+                    "name": "Statistics"
+                }, 
+                {
+                    "code": "MATS 1300", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MATS/1300", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MATS 1320", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MATS/1320", 
+                    "name": "College Trigonometry"
+                }, 
+                {
+                    "code": "MATS 1350", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MATS/1350", 
+                    "name": "Math for Liberal Arts"
+                }, 
+                {
+                    "code": "MATS 1480", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MATS/1480", 
+                    "name": "Technical Calculus"
+                }, 
+                {
+                    "code": "MATS 1500", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MATS/1500", 
+                    "name": "Beginning Calculus w/Trigonometry"
+                }
+            ], 
+            "name": "Materials Science", 
+            "url": "http://www.chegg.com/courses/dakotatc/MATS"
+        }, 
+        {
+            "abbr": "MDAS", 
+            "courses": [
+                {
+                    "code": "MDAS 1122", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MDAS/1122", 
+                    "name": "Laboratory Skills I"
+                }, 
+                {
+                    "code": "MDAS 1130", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MDAS/1130", 
+                    "name": "Clinical Procedures I"
+                }, 
+                {
+                    "code": "MDAS 1140", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MDAS/1140", 
+                    "name": "Phlebotomy"
+                }, 
+                {
+                    "code": "MDAS 1210", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MDAS/1210", 
+                    "name": "Disease/Medical Treatment,Including Nutrition"
+                }, 
+                {
+                    "code": "MDAS 1222", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MDAS/1222", 
+                    "name": "Laboratory Skills II"
+                }, 
+                {
+                    "code": "MDAS 1230", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MDAS/1230", 
+                    "name": "Clinical Procedures II"
+                }, 
+                {
+                    "code": "MDAS 1250", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MDAS/1250", 
+                    "name": "Fundamentals of Radiographic Imaging"
+                }, 
+                {
+                    "code": "MDAS 1260", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MDAS/1260", 
+                    "name": "Medical Assistant Certification Review"
+                }, 
+                {
+                    "code": "MDAS 1270", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MDAS/1270", 
+                    "name": "Administrative Procedures"
+                }, 
+                {
+                    "code": "MDAS 1700", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MDAS/1700", 
+                    "name": "Pharmacology for Medical Assistants"
+                }
+            ], 
+            "name": "Medical Assisting", 
+            "url": "http://www.chegg.com/courses/dakotatc/MDAS"
+        }, 
+        {
+            "abbr": "MKTC", 
+            "courses": [
+                {
+                    "code": "MKTC 1000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/1000", 
+                    "name": "Principles of Marketing"
+                }, 
+                {
+                    "code": "MKTC 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/1100", 
+                    "name": "Fundamentals of Sales"
+                }, 
+                {
+                    "code": "MKTC 1150", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/1150", 
+                    "name": "Consumer and Professional Buying Behavior"
+                }, 
+                {
+                    "code": "MKTC 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/1200", 
+                    "name": "Professional Sales"
+                }, 
+                {
+                    "code": "MKTC 2000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/2000", 
+                    "name": "Advertising Practices and Procedures"
+                }, 
+                {
+                    "code": "MKTC 2010", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/2010", 
+                    "name": "Advertising Campaign Management"
+                }, 
+                {
+                    "code": "MKTC 2050", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/2050", 
+                    "name": "Direct Marketing"
+                }, 
+                {
+                    "code": "MKTC 2060", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/2060", 
+                    "name": "Proposal Writing"
+                }, 
+                {
+                    "code": "MKTC 2105", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/2105", 
+                    "name": "Marketing Communications Writing"
+                }, 
+                {
+                    "code": "MKTC 2215", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/2215", 
+                    "name": "Marketing Promotions"
+                }, 
+                {
+                    "code": "MKTC 2300", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/2300", 
+                    "name": "Public Relations and Promotions"
+                }, 
+                {
+                    "code": "MKTC 2310", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/2310", 
+                    "name": "Public Relations"
+                }, 
+                {
+                    "code": "MKTC 2410", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/2410", 
+                    "name": "Marketing Visual Communications"
+                }, 
+                {
+                    "code": "MKTC 2505", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/2505", 
+                    "name": "E-Marketing"
+                }, 
+                {
+                    "code": "MKTC 2550", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/2550", 
+                    "name": "International Marketing"
+                }, 
+                {
+                    "code": "MKTC 2600", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/2600", 
+                    "name": "Marketing Research"
+                }, 
+                {
+                    "code": "MKTC 2815", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/2815", 
+                    "name": "Business Law"
+                }, 
+                {
+                    "code": "MKTC 2900", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/MKTC/2900", 
+                    "name": "Portfolio and Interviewing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/MKTC"
+        }, 
+        {
+            "abbr": "NANO", 
+            "courses": [
+                {
+                    "code": "NANO 1001", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/NANO/1001", 
+                    "name": "Nano Technology Concepts"
+                }, 
+                {
+                    "code": "NANO 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/NANO/1100", 
+                    "name": "Fundamentals of Nanotechnology I"
+                }, 
+                {
+                    "code": "NANO 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/NANO/1200", 
+                    "name": "Fundamentals of Nanotechnology II"
+                }, 
+                {
+                    "code": "NANO 1210", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/NANO/1210", 
+                    "name": "Computer Simulation"
+                }, 
+                {
+                    "code": "NANO 2101", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/NANO/2101", 
+                    "name": "Nanoelectronics"
+                }, 
+                {
+                    "code": "NANO 2111", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/NANO/2111", 
+                    "name": "Nanobiotechnology/Agriculture"
+                }, 
+                {
+                    "code": "NANO 2121", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/NANO/2121", 
+                    "name": "Nanomaterials"
+                }, 
+                {
+                    "code": "NANO 2131", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/NANO/2131", 
+                    "name": "Manufacturing Quality Assurance"
+                }, 
+                {
+                    "code": "NANO 2140", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/NANO/2140", 
+                    "name": "Interdisciplinary Lab"
+                }, 
+                {
+                    "code": "NANO 2151", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/NANO/2151", 
+                    "name": "Career Planning and Industry Tours"
+                }
+            ], 
+            "name": "Nanoscience & Nanoengineering", 
+            "url": "http://www.chegg.com/courses/dakotatc/NANO"
+        }, 
+        {
+            "abbr": "OFFC", 
+            "courses": [
+                {
+                    "code": "OFFC 1000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1000", 
+                    "name": "Basic Keyboarding"
+                }, 
+                {
+                    "code": "OFFC 1005", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1005", 
+                    "name": "Keyboarding/Formatting"
+                }, 
+                {
+                    "code": "OFFC 1007", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1007", 
+                    "name": "Keyboarding for Advancement"
+                }, 
+                {
+                    "code": "OFFC 1010", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1010", 
+                    "name": "Business English Skills"
+                }, 
+                {
+                    "code": "OFFC 1017", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1017", 
+                    "name": "Technology for the Business Professional"
+                }, 
+                {
+                    "code": "OFFC 1019", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1019", 
+                    "name": "Receptionist Skills"
+                }, 
+                {
+                    "code": "OFFC 1020", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1020", 
+                    "name": "Office Procedures"
+                }, 
+                {
+                    "code": "OFFC 1023", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1023", 
+                    "name": "Leadership for Administrative Professionals"
+                }, 
+                {
+                    "code": "OFFC 1024", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1024", 
+                    "name": "Meeting Planning for the"
+                }, 
+                {
+                    "code": "OFFC 1030", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1030", 
+                    "name": "Word Processing"
+                }, 
+                {
+                    "code": "OFFC 1040", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1040", 
+                    "name": "Integrated Office Skills"
+                }, 
+                {
+                    "code": "OFFC 1045", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1045", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "OFFC 1052", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1052", 
+                    "name": "Medical Transcription I"
+                }, 
+                {
+                    "code": "OFFC 1053", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1053", 
+                    "name": "Medical Transcription II"
+                }, 
+                {
+                    "code": "OFFC 1054", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1054", 
+                    "name": "Speech Recognition Transcription"
+                }, 
+                {
+                    "code": "OFFC 1057", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1057", 
+                    "name": "Medical Office Procedures"
+                }, 
+                {
+                    "code": "OFFC 1060", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1060", 
+                    "name": "Medical Receptionist Skills"
+                }, 
+                {
+                    "code": "OFFC 1130", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1130", 
+                    "name": "MS Word I"
+                }, 
+                {
+                    "code": "OFFC 1135", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1135", 
+                    "name": "MS Excel I"
+                }, 
+                {
+                    "code": "OFFC 1140", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1140", 
+                    "name": "MS Access I"
+                }, 
+                {
+                    "code": "OFFC 1145", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1145", 
+                    "name": "MS PowerPoint"
+                }, 
+                {
+                    "code": "OFFC 1150", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1150", 
+                    "name": "MS Word II"
+                }, 
+                {
+                    "code": "OFFC 1155", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1155", 
+                    "name": "MS Excel II"
+                }, 
+                {
+                    "code": "OFFC 1157", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1157", 
+                    "name": "MS Works"
+                }, 
+                {
+                    "code": "OFFC 1160", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1160", 
+                    "name": "Basic Internet"
+                }, 
+                {
+                    "code": "OFFC 1165", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1165", 
+                    "name": "WordPerfect I"
+                }, 
+                {
+                    "code": "OFFC 1170", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1170", 
+                    "name": "WordPerfect II"
+                }, 
+                {
+                    "code": "OFFC 1175", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1175", 
+                    "name": "Lotus I"
+                }, 
+                {
+                    "code": "OFFC 1180", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1180", 
+                    "name": "Lotus II"
+                }, 
+                {
+                    "code": "OFFC 1190", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1190", 
+                    "name": "Calculators"
+                }, 
+                {
+                    "code": "OFFC 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1200", 
+                    "name": "MS Access II"
+                }, 
+                {
+                    "code": "OFFC 1204", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1204", 
+                    "name": "Data Entry"
+                }, 
+                {
+                    "code": "OFFC 1210", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1210", 
+                    "name": "Adobe PageMaker for the PC"
+                }, 
+                {
+                    "code": "OFFC 1215", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1215", 
+                    "name": "Quicken Basics"
+                }, 
+                {
+                    "code": "OFFC 1220", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1220", 
+                    "name": "Basic Web Page for Personal Use"
+                }, 
+                {
+                    "code": "OFFC 1225", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1225", 
+                    "name": "Help Desk Support"
+                }, 
+                {
+                    "code": "OFFC 1230", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1230", 
+                    "name": "MS Publisher"
+                }, 
+                {
+                    "code": "OFFC 1235", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1235", 
+                    "name": "MS PhotoDraw"
+                }, 
+                {
+                    "code": "OFFC 1240", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1240", 
+                    "name": "QuickBooks I"
+                }, 
+                {
+                    "code": "OFFC 1245", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1245", 
+                    "name": "QuickBooks II"
+                }, 
+                {
+                    "code": "OFFC 1250", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1250", 
+                    "name": "Introduction to Microsoft Windows XP"
+                }, 
+                {
+                    "code": "OFFC 1255", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1255", 
+                    "name": "MS Project"
+                }, 
+                {
+                    "code": "OFFC 1260", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1260", 
+                    "name": "Certification Basics-Word"
+                }, 
+                {
+                    "code": "OFFC 1265", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1265", 
+                    "name": "Certification Basics-Excel"
+                }, 
+                {
+                    "code": "OFFC 1270", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1270", 
+                    "name": "Certification Basics-Access"
+                }, 
+                {
+                    "code": "OFFC 1275", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1275", 
+                    "name": "Certification Basics-PowerPoint"
+                }, 
+                {
+                    "code": "OFFC 1280", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1280", 
+                    "name": "Certification Basics-Outlook"
+                }, 
+                {
+                    "code": "OFFC 1285", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1285", 
+                    "name": "Oral Business Communications and"
+                }, 
+                {
+                    "code": "OFFC 1290", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/OFFC/1290", 
+                    "name": "Written Business Communication"
+                }
+            ], 
+            "name": "Social Sciences", 
+            "url": "http://www.chegg.com/courses/dakotatc/OFFC"
+        }, 
+        {
+            "abbr": "PHIL", 
+            "courses": [
+                {
+                    "code": "PHIL 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PHIL/1100", 
+                    "name": "Ethics"
+                }, 
+                {
+                    "code": "PHIL 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PHIL/1200", 
+                    "name": "Critical Thinking"
+                }, 
+                {
+                    "code": "PHIL 1300", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PHIL/1300", 
+                    "name": "Introduction to Philosphy"
+                }, 
+                {
+                    "code": "PHIL 1350", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PHIL/1350", 
+                    "name": "Medical Ethics"
+                }, 
+                {
+                    "code": "PHIL 1400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PHIL/1400", 
+                    "name": "World Religions"
+                }, 
+                {
+                    "code": "PHIL 1450", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PHIL/1450", 
+                    "name": "Philosophy of the Arts"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/PHIL"
+        }, 
+        {
+            "abbr": "PHYS", 
+            "courses": [
+                {
+                    "code": "PHYS 1050", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PHYS/1050", 
+                    "name": "Introduction to Physics"
+                }, 
+                {
+                    "code": "PHYS 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PHYS/1100", 
+                    "name": "College Physics I"
+                }, 
+                {
+                    "code": "PHYS 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PHYS/1200", 
+                    "name": "College Physics II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/PHYS"
+        }, 
+        {
+            "abbr": "PMGT", 
+            "courses": [
+                {
+                    "code": "PMGT 1101", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1101", 
+                    "name": "Real Estate I"
+                }, 
+                {
+                    "code": "PMGT 1102", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1102", 
+                    "name": "Real Estate II"
+                }, 
+                {
+                    "code": "PMGT 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1200", 
+                    "name": "Introduction to Property Management"
+                }, 
+                {
+                    "code": "PMGT 1204", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1204", 
+                    "name": "Real Estate Law"
+                }, 
+                {
+                    "code": "PMGT 1205", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1205", 
+                    "name": "Loan Application/Processing"
+                }, 
+                {
+                    "code": "PMGT 1207", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1207", 
+                    "name": "Financing Instruments"
+                }, 
+                {
+                    "code": "PMGT 1208", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1208", 
+                    "name": "Introduction to Appraisal"
+                }, 
+                {
+                    "code": "PMGT 1210", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1210", 
+                    "name": "Appraisal Process"
+                }, 
+                {
+                    "code": "PMGT 1211", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1211", 
+                    "name": "Appraisal,Rules and Standards of Practice"
+                }, 
+                {
+                    "code": "PMGT 1212", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1212", 
+                    "name": "Residential Appraisal Workshop"
+                }, 
+                {
+                    "code": "PMGT 1213", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1213", 
+                    "name": "Managing Residential Property"
+                }, 
+                {
+                    "code": "PMGT 1214", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1214", 
+                    "name": "Life and Safety Issues"
+                }, 
+                {
+                    "code": "PMGT 1216", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1216", 
+                    "name": "Managing Commercial/Industrial Properties"
+                }, 
+                {
+                    "code": "PMGT 1218", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1218", 
+                    "name": "Maintenance Management and Insurance"
+                }, 
+                {
+                    "code": "PMGT 1220", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1220", 
+                    "name": "Leases"
+                }, 
+                {
+                    "code": "PMGT 1224", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1224", 
+                    "name": "Income Capitalization Analysis"
+                }, 
+                {
+                    "code": "PMGT 1226", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1226", 
+                    "name": "Construction and Blue Print Reading"
+                }, 
+                {
+                    "code": "PMGT 1228", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1228", 
+                    "name": "Community Association Management"
+                }, 
+                {
+                    "code": "PMGT 1230", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1230", 
+                    "name": "Income Property Marketing"
+                }, 
+                {
+                    "code": "PMGT 1232", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1232", 
+                    "name": "Cash Flow Analysis"
+                }, 
+                {
+                    "code": "PMGT 1302", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1302", 
+                    "name": "Planning and Operating a Small Business"
+                }, 
+                {
+                    "code": "PMGT 1303", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1303", 
+                    "name": "Introduction to Entrepreneurship"
+                }, 
+                {
+                    "code": "PMGT 1304", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1304", 
+                    "name": "Marketing Strategies for Small Business"
+                }, 
+                {
+                    "code": "PMGT 1401", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/1401", 
+                    "name": "Real Estate Math and Calculator Basics"
+                }, 
+                {
+                    "code": "PMGT 2020", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PMGT/2020", 
+                    "name": "Negotiating for Agreement"
+                }
+            ], 
+            "name": "Project Management", 
+            "url": "http://www.chegg.com/courses/dakotatc/PMGT"
+        }, 
+        {
+            "abbr": "PNSG", 
+            "courses": [
+                {
+                    "code": "PNSG 1000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PNSG/1000", 
+                    "name": "Foundations of Nursing Practice I"
+                }, 
+                {
+                    "code": "PNSG 1050", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PNSG/1050", 
+                    "name": "Clinical Refresher I"
+                }, 
+                {
+                    "code": "PNSG 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PNSG/1100", 
+                    "name": "Foundations of Nursing Practice II"
+                }, 
+                {
+                    "code": "PNSG 1350", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PNSG/1350", 
+                    "name": "Pharmacology"
+                }, 
+                {
+                    "code": "PNSG 1400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PNSG/1400", 
+                    "name": "Adult Health Nursing I"
+                }, 
+                {
+                    "code": "PNSG 1500", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PNSG/1500", 
+                    "name": "Adult Health Nursing II"
+                }, 
+                {
+                    "code": "PNSG 1530", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PNSG/1530", 
+                    "name": "Beginning Clinical"
+                }, 
+                {
+                    "code": "PNSG 1540", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PNSG/1540", 
+                    "name": "Clinical I"
+                }, 
+                {
+                    "code": "PNSG 1560", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PNSG/1560", 
+                    "name": "Clinical Practice II"
+                }, 
+                {
+                    "code": "PNSG 1570", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PNSG/1570", 
+                    "name": "Clinical Practice III"
+                }, 
+                {
+                    "code": "PNSG 1580", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PNSG/1580", 
+                    "name": "Clinical IV"
+                }, 
+                {
+                    "code": "PNSG 1650", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PNSG/1650", 
+                    "name": "Clinical Refresher II"
+                }, 
+                {
+                    "code": "PNSG 1700", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PNSG/1700", 
+                    "name": "Mental Health/Transcultural Nursing"
+                }, 
+                {
+                    "code": "PNSG 1800", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PNSG/1800", 
+                    "name": "Family and Community Nursing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/PNSG"
+        }, 
+        {
+            "abbr": "POLS", 
+            "courses": [
+                {
+                    "code": "POLS 1000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/POLS/1000", 
+                    "name": "Introduction to Political Science"
+                }, 
+                {
+                    "code": "POLS 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/POLS/1100", 
+                    "name": "The American Political System"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/POLS"
+        }, 
+        {
+            "abbr": "PSYC", 
+            "courses": [
+                {
+                    "code": "PSYC 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PSYC/1100", 
+                    "name": "General Psychology"
+                }, 
+                {
+                    "code": "PSYC 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PSYC/1200", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSYC 1300", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PSYC/1300", 
+                    "name": "Child and Adolescent Psychology"
+                }, 
+                {
+                    "code": "PSYC 1350", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PSYC/1350", 
+                    "name": "Lifespan Development"
+                }, 
+                {
+                    "code": "PSYC 1400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PSYC/1400", 
+                    "name": "Adult and Geriatric Psychology"
+                }, 
+                {
+                    "code": "PSYC 1450", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PSYC/1450", 
+                    "name": "Death and Dying"
+                }, 
+                {
+                    "code": "PSYC 1600", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/PSYC/1600", 
+                    "name": "Human Sexuality"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/PSYC"
+        }, 
+        {
+            "abbr": "RRCC", 
+            "courses": [
+                {
+                    "code": "RRCC 1110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/RRCC/1110", 
+                    "name": "Orientation"
+                }, 
+                {
+                    "code": "RRCC 1120", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/RRCC/1120", 
+                    "name": "Introduction to Conductor Service"
+                }, 
+                {
+                    "code": "RRCC 1130", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/RRCC/1130", 
+                    "name": "General Code of Operating Rules"
+                }, 
+                {
+                    "code": "RRCC 1140", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/RRCC/1140", 
+                    "name": "Mechanical Operations"
+                }, 
+                {
+                    "code": "RRCC 1150", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/RRCC/1150", 
+                    "name": "Conductor Duties"
+                }, 
+                {
+                    "code": "RRCC 1160", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/RRCC/1160", 
+                    "name": "Utilization of Railroad Equipment"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/RRCC"
+        }, 
+        {
+            "abbr": "SMGT", 
+            "courses": [
+                {
+                    "code": "SMGT 1000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1000", 
+                    "name": "Principles of Supervision"
+                }, 
+                {
+                    "code": "SMGT 1010", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1010", 
+                    "name": "Interpersonal Skills"
+                }, 
+                {
+                    "code": "SMGT 1022", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1022", 
+                    "name": "Leadership"
+                }, 
+                {
+                    "code": "SMGT 1023", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1023", 
+                    "name": "Leadership for Administrative Professionals"
+                }, 
+                {
+                    "code": "SMGT 1028", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1028", 
+                    "name": "Management Effectiveness"
+                }, 
+                {
+                    "code": "SMGT 1030", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1030", 
+                    "name": "Ethics in the Workplace"
+                }, 
+                {
+                    "code": "SMGT 1033", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1033", 
+                    "name": "Business Law and Ethics"
+                }, 
+                {
+                    "code": "SMGT 1050", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1050", 
+                    "name": "Resolving Conflict"
+                }, 
+                {
+                    "code": "SMGT 1060", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1060", 
+                    "name": "Habits for Personal Effectiveness"
+                }, 
+                {
+                    "code": "SMGT 1070", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1070", 
+                    "name": "Time Management"
+                }, 
+                {
+                    "code": "SMGT 1080", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1080", 
+                    "name": "Introduction to Distribution Careers"
+                }, 
+                {
+                    "code": "SMGT 1081", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1081", 
+                    "name": "Business Principles"
+                }, 
+                {
+                    "code": "SMGT 1082", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1082", 
+                    "name": "Distribution,Operations & Logistics"
+                }, 
+                {
+                    "code": "SMGT 1160", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1160", 
+                    "name": "Fundamentals of Meeting, Conference and Event Management"
+                }, 
+                {
+                    "code": "SMGT 1161", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1161", 
+                    "name": "Advanced Meeting,Conference"
+                }, 
+                {
+                    "code": "SMGT 1162", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1162", 
+                    "name": "Special Event Coordination and Management"
+                }, 
+                {
+                    "code": "SMGT 1163", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1163", 
+                    "name": "Event Promotion"
+                }, 
+                {
+                    "code": "SMGT 1164", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1164", 
+                    "name": "Meeting & Event Risk Management"
+                }, 
+                {
+                    "code": "SMGT 1166", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1166", 
+                    "name": "Event Design"
+                }, 
+                {
+                    "code": "SMGT 1167", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1167", 
+                    "name": "Meeting and Event Sponsorship"
+                }, 
+                {
+                    "code": "SMGT 1168", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1168", 
+                    "name": "Trade Show Management"
+                }, 
+                {
+                    "code": "SMGT 1169", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1169", 
+                    "name": "International Meeting Management"
+                }, 
+                {
+                    "code": "SMGT 1170", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1170", 
+                    "name": "Meeting Planning for the"
+                }, 
+                {
+                    "code": "SMGT 1205", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1205", 
+                    "name": "Total Quality Management"
+                }, 
+                {
+                    "code": "SMGT 1210", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1210", 
+                    "name": "Problem Solving"
+                }, 
+                {
+                    "code": "SMGT 1220", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1220", 
+                    "name": "Work Teams"
+                }, 
+                {
+                    "code": "SMGT 1231", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1231", 
+                    "name": "Planning and Project Management"
+                }, 
+                {
+                    "code": "SMGT 1232", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1232", 
+                    "name": "Problem Solving and Decision Making"
+                }, 
+                {
+                    "code": "SMGT 1242", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1242", 
+                    "name": "Effective Business Communication"
+                }, 
+                {
+                    "code": "SMGT 1250", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1250", 
+                    "name": "Managing Customer Service"
+                }, 
+                {
+                    "code": "SMGT 1260", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1260", 
+                    "name": "Managing Teams"
+                }, 
+                {
+                    "code": "SMGT 1405", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1405", 
+                    "name": "Managing Performance"
+                }, 
+                {
+                    "code": "SMGT 1410", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1410", 
+                    "name": "Coaching"
+                }, 
+                {
+                    "code": "SMGT 1415", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1415", 
+                    "name": "How to Delegate Effectively"
+                }, 
+                {
+                    "code": "SMGT 1420", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1420", 
+                    "name": "Managing a Diverse Workforce"
+                }, 
+                {
+                    "code": "SMGT 1422", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1422", 
+                    "name": "Intro to Supervision for Individuals"
+                }, 
+                {
+                    "code": "SMGT 1440", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1440", 
+                    "name": "Employee Selection"
+                }, 
+                {
+                    "code": "SMGT 1441", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1441", 
+                    "name": "Introduction to Human Resource Management"
+                }, 
+                {
+                    "code": "SMGT 1450", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1450", 
+                    "name": "Employee Training"
+                }, 
+                {
+                    "code": "SMGT 1463", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1463", 
+                    "name": "Managing a 24/7 Workforce"
+                }, 
+                {
+                    "code": "SMGT 1470", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1470", 
+                    "name": "Safety and Compliance Management"
+                }, 
+                {
+                    "code": "SMGT 1480", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1480", 
+                    "name": "Career Development"
+                }, 
+                {
+                    "code": "SMGT 1601", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1601", 
+                    "name": "Financial Management"
+                }, 
+                {
+                    "code": "SMGT 1605", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1605", 
+                    "name": "Graduation Project"
+                }, 
+                {
+                    "code": "SMGT 1660", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1660", 
+                    "name": "Introduction to Tourism and Hospitality"
+                }, 
+                {
+                    "code": "SMGT 1665", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1665", 
+                    "name": "Lodging Operations"
+                }, 
+                {
+                    "code": "SMGT 1670", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1670", 
+                    "name": "Lodging Systems and Technology"
+                }, 
+                {
+                    "code": "SMGT 1675", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1675", 
+                    "name": "Hotel Front Office Management"
+                }, 
+                {
+                    "code": "SMGT 1680", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1680", 
+                    "name": "Hospitality Space and Logistics Management"
+                }, 
+                {
+                    "code": "SMGT 1685", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1685", 
+                    "name": "Hospitality and Tourism Guest Services"
+                }, 
+                {
+                    "code": "SMGT 1690", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1690", 
+                    "name": "Successful Sales and Closing Strategies"
+                }, 
+                {
+                    "code": "SMGT 1695", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1695", 
+                    "name": "Hospitality Risk Management"
+                }, 
+                {
+                    "code": "SMGT 1705", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1705", 
+                    "name": "Thinking and Learning"
+                }, 
+                {
+                    "code": "SMGT 1776", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1776", 
+                    "name": "Organizational Behavior"
+                }, 
+                {
+                    "code": "SMGT 1815", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1815", 
+                    "name": "Team Building"
+                }, 
+                {
+                    "code": "SMGT 1825", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1825", 
+                    "name": "Interpersonal Effectiveness"
+                }, 
+                {
+                    "code": "SMGT 1875", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1875", 
+                    "name": "Training and Developing Employees"
+                }, 
+                {
+                    "code": "SMGT 1950", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1950", 
+                    "name": "Mentoring"
+                }, 
+                {
+                    "code": "SMGT 1970", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1970", 
+                    "name": "Casino Operations"
+                }, 
+                {
+                    "code": "SMGT 1975", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/1975", 
+                    "name": "Casino Products:Protections and Probabilities"
+                }, 
+                {
+                    "code": "SMGT 2001", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2001", 
+                    "name": "Management Skills I, Foundations in Management"
+                }, 
+                {
+                    "code": "SMGT 2002", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2002", 
+                    "name": "Management Skills II,Planning & Organizing"
+                }, 
+                {
+                    "code": "SMGT 2003", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2003", 
+                    "name": "Management Skills III,Leading & Controlling"
+                }, 
+                {
+                    "code": "SMGT 2015", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2015", 
+                    "name": "Accelerate Your Learning Potential"
+                }, 
+                {
+                    "code": "SMGT 2020", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2020", 
+                    "name": "Negotiation Skills"
+                }, 
+                {
+                    "code": "SMGT 2030", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2030", 
+                    "name": "Motivation in the Workplace"
+                }, 
+                {
+                    "code": "SMGT 2046", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2046", 
+                    "name": "Fundamentals of Management & Diversity"
+                }, 
+                {
+                    "code": "SMGT 2050", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2050", 
+                    "name": "Statistical Process Control I"
+                }, 
+                {
+                    "code": "SMGT 2051", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2051", 
+                    "name": "Statistical Process Control II"
+                }, 
+                {
+                    "code": "SMGT 2070", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2070", 
+                    "name": "Organizational Dynamics"
+                }, 
+                {
+                    "code": "SMGT 2080", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2080", 
+                    "name": "Labor Relations"
+                }, 
+                {
+                    "code": "SMGT 2090", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2090", 
+                    "name": "Managing Problem Performance"
+                }, 
+                {
+                    "code": "SMGT 2105", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2105", 
+                    "name": "Managing Diversity"
+                }, 
+                {
+                    "code": "SMGT 2110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2110", 
+                    "name": "Leading a Multicultural Workforce"
+                }, 
+                {
+                    "code": "SMGT 2115", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2115", 
+                    "name": "Multicultural Mentorship I"
+                }, 
+                {
+                    "code": "SMGT 2116", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2116", 
+                    "name": "Multicultural Mentorship II"
+                }, 
+                {
+                    "code": "SMGT 2120", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2120", 
+                    "name": "Multicultural Conflict Resolution"
+                }, 
+                {
+                    "code": "SMGT 2125", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2125", 
+                    "name": "International Business"
+                }, 
+                {
+                    "code": "SMGT 2130", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2130", 
+                    "name": "Creativity and Problem Solving"
+                }, 
+                {
+                    "code": "SMGT 2150", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2150", 
+                    "name": "Appreciating Differences in the Workplace"
+                }, 
+                {
+                    "code": "SMGT 2415", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2415", 
+                    "name": "Advanced Sales Strategies"
+                }, 
+                {
+                    "code": "SMGT 2755", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2755", 
+                    "name": "Operational Workplace Safety"
+                }, 
+                {
+                    "code": "SMGT 2950", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SMGT/2950", 
+                    "name": "Prior Experiential Learning"
+                }
+            ], 
+            "name": "Sport Management", 
+            "url": "http://www.chegg.com/courses/dakotatc/SMGT"
+        }, 
+        {
+            "abbr": "SOCY", 
+            "courses": [
+                {
+                    "code": "SOCY 1010", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SOCY/1010", 
+                    "name": "Marriage and the Family"
+                }, 
+                {
+                    "code": "SOCY 1110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SOCY/1110", 
+                    "name": "Introduction to Sociology"
+                }, 
+                {
+                    "code": "SOCY 1150", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SOCY/1150", 
+                    "name": "Race and Gender"
+                }, 
+                {
+                    "code": "SOCY 1210", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SOCY/1210", 
+                    "name": "Social Issues Changing World"
+                }, 
+                {
+                    "code": "SOCY 1250", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SOCY/1250", 
+                    "name": "Juvenile Delinquency"
+                }, 
+                {
+                    "code": "SOCY 1300", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SOCY/1300", 
+                    "name": "Introduction to Anthropology"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/dakotatc/SOCY"
+        }, 
+        {
+            "abbr": "SPAN", 
+            "courses": [
+                {
+                    "code": "SPAN 1000", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SPAN/1000", 
+                    "name": "Occupational Spanish"
+                }, 
+                {
+                    "code": "SPAN 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SPAN/1100", 
+                    "name": "Beginning Spanish I"
+                }, 
+                {
+                    "code": "SPAN 1200", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SPAN/1200", 
+                    "name": "Beginning Spanish II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/dakotatc/SPAN"
+        }, 
+        {
+            "abbr": "SPEE", 
+            "courses": [
+                {
+                    "code": "SPEE 1015", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SPEE/1015", 
+                    "name": "Fundamentals of Public Speaking"
+                }, 
+                {
+                    "code": "SPEE 1020", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SPEE/1020", 
+                    "name": "Interpersonal Communication"
+                }, 
+                {
+                    "code": "SPEE 1030", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SPEE/1030", 
+                    "name": "Intercultural Communications"
+                }, 
+                {
+                    "code": "SPEE 1042", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SPEE/1042", 
+                    "name": "Small Group Communication"
+                }, 
+                {
+                    "code": "SPEE 1050", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/SPEE/1050", 
+                    "name": "Nonverbal Communication"
+                }
+            ], 
+            "name": "Speech", 
+            "url": "http://www.chegg.com/courses/dakotatc/SPEE"
+        }, 
+        {
+            "abbr": "TRVL", 
+            "courses": [
+                {
+                    "code": "TRVL 1305", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/TRVL/1305", 
+                    "name": "Travel Information Systems"
+                }, 
+                {
+                    "code": "TRVL 1310", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/TRVL/1310", 
+                    "name": "Global Tourism"
+                }, 
+                {
+                    "code": "TRVL 1315", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/TRVL/1315", 
+                    "name": "Tourism and Travel Resources"
+                }
+            ], 
+            "name": "Travel And Tourism", 
+            "url": "http://www.chegg.com/courses/dakotatc/TRVL"
+        }, 
+        {
+            "abbr": "VCOM", 
+            "courses": [
+                {
+                    "code": "VCOM 1001", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1001", 
+                    "name": "Intro Visual Communications"
+                }, 
+                {
+                    "code": "VCOM 1006", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1006", 
+                    "name": "Color Theory and Applications"
+                }, 
+                {
+                    "code": "VCOM 1010", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1010", 
+                    "name": "Intro Photoshop"
+                }, 
+                {
+                    "code": "VCOM 1015", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1015", 
+                    "name": "Layout I"
+                }, 
+                {
+                    "code": "VCOM 1021", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1021", 
+                    "name": "Intro Photography"
+                }, 
+                {
+                    "code": "VCOM 1025", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1025", 
+                    "name": "Law and Ethics for Visual Communications"
+                }, 
+                {
+                    "code": "VCOM 1030", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1030", 
+                    "name": "Visual Design Fundamentals"
+                }, 
+                {
+                    "code": "VCOM 1032", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1032", 
+                    "name": "Interactive Design Fundamentals"
+                }, 
+                {
+                    "code": "VCOM 1040", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1040", 
+                    "name": "Basic Drawing"
+                }, 
+                {
+                    "code": "VCOM 1051", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1051", 
+                    "name": "Scale and Perspective Drawing"
+                }, 
+                {
+                    "code": "VCOM 1060", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1060", 
+                    "name": "Creative Problem Solving"
+                }, 
+                {
+                    "code": "VCOM 1080", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1080", 
+                    "name": "Photo Styling"
+                }, 
+                {
+                    "code": "VCOM 1095", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1095", 
+                    "name": "Illustration Fundamentals"
+                }, 
+                {
+                    "code": "VCOM 1310", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1310", 
+                    "name": "Printing Lab I"
+                }, 
+                {
+                    "code": "VCOM 1320", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1320", 
+                    "name": "Printing Lab II"
+                }, 
+                {
+                    "code": "VCOM 1330", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1330", 
+                    "name": "Color Printing Lab I"
+                }, 
+                {
+                    "code": "VCOM 1340", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1340", 
+                    "name": "Color Printing Lab II"
+                }, 
+                {
+                    "code": "VCOM 1370", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1370", 
+                    "name": "North Shore Photography Workshop"
+                }, 
+                {
+                    "code": "VCOM 1380", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1380", 
+                    "name": "Basic Photography"
+                }, 
+                {
+                    "code": "VCOM 1400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1400", 
+                    "name": "Intro QuarkXPress"
+                }, 
+                {
+                    "code": "VCOM 1410", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1410", 
+                    "name": "Intro Illustrator"
+                }, 
+                {
+                    "code": "VCOM 1415", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1415", 
+                    "name": "Typography Fundamentals"
+                }, 
+                {
+                    "code": "VCOM 1422", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1422", 
+                    "name": "Print Process I"
+                }, 
+                {
+                    "code": "VCOM 1430", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1430", 
+                    "name": "Intro InDesign"
+                }, 
+                {
+                    "code": "VCOM 1435", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1435", 
+                    "name": "Proofreading Fundamentals"
+                }, 
+                {
+                    "code": "VCOM 1440", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1440", 
+                    "name": "Vinyl Signage"
+                }, 
+                {
+                    "code": "VCOM 1515", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1515", 
+                    "name": "Photo Lighting Techniques"
+                }, 
+                {
+                    "code": "VCOM 1520", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1520", 
+                    "name": "Basic Processing & Monitoring"
+                }, 
+                {
+                    "code": "VCOM 1525", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1525", 
+                    "name": "Basic Darkroom Techniques"
+                }, 
+                {
+                    "code": "VCOM 1530", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1530", 
+                    "name": "Copy and Restoration"
+                }, 
+                {
+                    "code": "VCOM 1541", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1541", 
+                    "name": "Introduction to Custom Printing"
+                }, 
+                {
+                    "code": "VCOM 1550", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1550", 
+                    "name": "Machine Printing Systems"
+                }, 
+                {
+                    "code": "VCOM 1561", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1561", 
+                    "name": "Custom Color Printing"
+                }, 
+                {
+                    "code": "VCOM 1565", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1565", 
+                    "name": "Color Printing Systems"
+                }, 
+                {
+                    "code": "VCOM 1570", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1570", 
+                    "name": "Portrait Photography"
+                }, 
+                {
+                    "code": "VCOM 1580", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1580", 
+                    "name": "Intro Digital Imaging"
+                }, 
+                {
+                    "code": "VCOM 1710", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1710", 
+                    "name": "Reporting"
+                }, 
+                {
+                    "code": "VCOM 1720", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1720", 
+                    "name": "Photojournalism"
+                }, 
+                {
+                    "code": "VCOM 1730", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1730", 
+                    "name": "Advanced Photo Lighting Techniques"
+                }, 
+                {
+                    "code": "VCOM 1740", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/1740", 
+                    "name": "Macro Photography"
+                }, 
+                {
+                    "code": "VCOM 2035", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2035", 
+                    "name": "Layout II"
+                }, 
+                {
+                    "code": "VCOM 2085", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2085", 
+                    "name": "Drawing for Illustration"
+                }, 
+                {
+                    "code": "VCOM 2095", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2095", 
+                    "name": "Painting for Illustration"
+                }, 
+                {
+                    "code": "VCOM 2400", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2400", 
+                    "name": "Advanced Photoshop"
+                }, 
+                {
+                    "code": "VCOM 2415", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2415", 
+                    "name": "Advanced Electronic Publishing"
+                }, 
+                {
+                    "code": "VCOM 2420", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2420", 
+                    "name": "Advanced Computer Illustration"
+                }, 
+                {
+                    "code": "VCOM 2422", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2422", 
+                    "name": "Print Processes II"
+                }, 
+                {
+                    "code": "VCOM 2423", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2423", 
+                    "name": "Print Management"
+                }, 
+                {
+                    "code": "VCOM 2510", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2510", 
+                    "name": "Commercial Photography"
+                }, 
+                {
+                    "code": "VCOM 2520", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2520", 
+                    "name": "Digital Photography"
+                }, 
+                {
+                    "code": "VCOM 2530", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2530", 
+                    "name": "Advanced Photojournalism"
+                }, 
+                {
+                    "code": "VCOM 2540", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2540", 
+                    "name": "The Business of Photography"
+                }, 
+                {
+                    "code": "VCOM 2551", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2551", 
+                    "name": "Digital Studio Workflow"
+                }, 
+                {
+                    "code": "VCOM 2552", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2552", 
+                    "name": "Digital Studio Workflow"
+                }, 
+                {
+                    "code": "VCOM 2555", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2555", 
+                    "name": "Alternative Light Sources"
+                }, 
+                {
+                    "code": "VCOM 2565", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2565", 
+                    "name": "Crime Scene/Forensic Photography"
+                }, 
+                {
+                    "code": "VCOM 2575", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2575", 
+                    "name": "Medical Photography"
+                }, 
+                {
+                    "code": "VCOM 2581", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2581", 
+                    "name": "Photo Portfolio"
+                }, 
+                {
+                    "code": "VCOM 2582", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2582", 
+                    "name": "Portfolio Development"
+                }, 
+                {
+                    "code": "VCOM 2584", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2584", 
+                    "name": "Portfolio Development"
+                }, 
+                {
+                    "code": "VCOM 2586", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2586", 
+                    "name": "Portfolio Development"
+                }, 
+                {
+                    "code": "VCOM 2605", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2605", 
+                    "name": "Audio/Video for Presentations"
+                }, 
+                {
+                    "code": "VCOM 2650", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2650", 
+                    "name": "Multimedia Project Management"
+                }, 
+                {
+                    "code": "VCOM 2655", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2655", 
+                    "name": "Intro Director"
+                }, 
+                {
+                    "code": "VCOM 2660", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2660", 
+                    "name": "3D Modeling and Animation"
+                }, 
+                {
+                    "code": "VCOM 2670", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2670", 
+                    "name": "Introduction to Authorware"
+                }, 
+                {
+                    "code": "VCOM 2680", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2680", 
+                    "name": "Introduction to Flash"
+                }, 
+                {
+                    "code": "VCOM 2685", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2685", 
+                    "name": "Web Page Construction I"
+                }, 
+                {
+                    "code": "VCOM 2690", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2690", 
+                    "name": "Web Page Construction II"
+                }, 
+                {
+                    "code": "VCOM 2694", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2694", 
+                    "name": "Advanced Multimedia Production"
+                }, 
+                {
+                    "code": "VCOM 2700", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2700", 
+                    "name": "Advanced Flash Animation"
+                }, 
+                {
+                    "code": "VCOM 2721", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2721", 
+                    "name": "Portfolio for Graphic Design"
+                }, 
+                {
+                    "code": "VCOM 2722", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2722", 
+                    "name": "Portfolio for Multimedia and Web Development"
+                }, 
+                {
+                    "code": "VCOM 2724", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2724", 
+                    "name": "Portfolio for Applied Visual Arts"
+                }, 
+                {
+                    "code": "VCOM 2730", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2730", 
+                    "name": "Career Research Skills"
+                }, 
+                {
+                    "code": "VCOM 2800", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2800", 
+                    "name": "Advanced 3D Modeling and Animation"
+                }, 
+                {
+                    "code": "VCOM 2810", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2810", 
+                    "name": "3D Modeling and Animation Capstone"
+                }, 
+                {
+                    "code": "VCOM 2820", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/VCOM/2820", 
+                    "name": "Advanced Typography"
+                }
+            ], 
+            "name": "Visual Communication", 
+            "url": "http://www.chegg.com/courses/dakotatc/VCOM"
+        }, 
+        {
+            "abbr": "WELD", 
+            "courses": [
+                {
+                    "code": "WELD 1010", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WELD/1010", 
+                    "name": "Oxy Fuel and Stick Welding"
+                }, 
+                {
+                    "code": "WELD 1012", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WELD/1012", 
+                    "name": "Mig and Tig Welding"
+                }, 
+                {
+                    "code": "WELD 1100", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WELD/1100", 
+                    "name": "Welding Safety and Theory"
+                }, 
+                {
+                    "code": "WELD 1102", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WELD/1102", 
+                    "name": "Shielded Metal Arc Welding I"
+                }, 
+                {
+                    "code": "WELD 1104", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WELD/1104", 
+                    "name": "Semi Automatic Arc Welding I"
+                }, 
+                {
+                    "code": "WELD 1106", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WELD/1106", 
+                    "name": "Gas Tungsten Arc Welding I"
+                }, 
+                {
+                    "code": "WELD 1108", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WELD/1108", 
+                    "name": "Blueprint Reading"
+                }, 
+                {
+                    "code": "WELD 1110", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WELD/1110", 
+                    "name": "Layout"
+                }, 
+                {
+                    "code": "WELD 1112", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WELD/1112", 
+                    "name": "Welding Fabrication/Qualification"
+                }, 
+                {
+                    "code": "WELD 1114", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WELD/1114", 
+                    "name": "Shielded Metal Arc Welding II"
+                }, 
+                {
+                    "code": "WELD 1116", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WELD/1116", 
+                    "name": "Semi Automatic Arc Welding II"
+                }, 
+                {
+                    "code": "WELD 1118", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WELD/1118", 
+                    "name": "Gas Tungsten Arc Welding II"
+                }
+            ], 
+            "name": "Welding Technology", 
+            "url": "http://www.chegg.com/courses/dakotatc/WELD"
+        }, 
+        {
+            "abbr": "WOOD", 
+            "courses": [
+                {
+                    "code": "WOOD 1001", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1001", 
+                    "name": "Wood Technology"
+                }, 
+                {
+                    "code": "WOOD 1004", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1004", 
+                    "name": "Woodworking"
+                }, 
+                {
+                    "code": "WOOD 1007", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1007", 
+                    "name": "Methods of Fastening"
+                }, 
+                {
+                    "code": "WOOD 1009", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1009", 
+                    "name": "Selection and Application of Finishes"
+                }, 
+                {
+                    "code": "WOOD 1010", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1010", 
+                    "name": "Wood and Finishing Technology"
+                }, 
+                {
+                    "code": "WOOD 1012", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1012", 
+                    "name": "Color Theory"
+                }, 
+                {
+                    "code": "WOOD 1015", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1015", 
+                    "name": "Spot Repair I"
+                }, 
+                {
+                    "code": "WOOD 1019", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1019", 
+                    "name": "Advanced Spot Repair"
+                }, 
+                {
+                    "code": "WOOD 1021", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1021", 
+                    "name": "Wood Refinishing"
+                }, 
+                {
+                    "code": "WOOD 1024", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1024", 
+                    "name": "Advanced Finishing/Refinishing"
+                }, 
+                {
+                    "code": "WOOD 1026", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1026", 
+                    "name": "Advanced Finishing Techniques"
+                }, 
+                {
+                    "code": "WOOD 1032", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1032", 
+                    "name": "Antique Furniture Conservation"
+                }, 
+                {
+                    "code": "WOOD 1500", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1500", 
+                    "name": "Color Matching"
+                }, 
+                {
+                    "code": "WOOD 1505", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1505", 
+                    "name": "Advanced Finishing"
+                }, 
+                {
+                    "code": "WOOD 1510", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1510", 
+                    "name": "Shellac"
+                }, 
+                {
+                    "code": "WOOD 1515", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1515", 
+                    "name": "Achieving a Closed Pore Piano Finish"
+                }, 
+                {
+                    "code": "WOOD 1520", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1520", 
+                    "name": "Spraying Equipment and Techniques"
+                }, 
+                {
+                    "code": "WOOD 1525", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1525", 
+                    "name": "Spot Repair"
+                }, 
+                {
+                    "code": "WOOD 1530", 
+                    "course_url": "http://www.chegg.com/courses/dakotatc/WOOD/1530", 
+                    "name": "Finishing New Wood"
+                }
+            ], 
+            "name": "Wood Technologies", 
+            "url": "http://www.chegg.com/courses/dakotatc/WOOD"
+        }
+    ], 
+    "name": "dakotatc"
+}

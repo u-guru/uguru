@@ -1,0 +1,3849 @@
+{
+    "all_stats": {
+        "num_courses": 642, 
+        "num_departments": 90
+    }, 
+    "departments": [
+        {
+            "abbr": "ACC", 
+            "courses": [
+                {
+                    "code": "ACC 1104", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ACC/1104", 
+                    "name": "Principles of Accounting I"
+                }, 
+                {
+                    "code": "ACC 1105", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ACC/1105", 
+                    "name": "Principles of Accounting II"
+                }
+            ], 
+            "name": "Accounting, RODP (ACC)", 
+            "url": "http://www.chegg.com/courses/columbiastate/ACC"
+        }, 
+        {
+            "abbr": "ACCT", 
+            "courses": [
+                {
+                    "code": "ACCT 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ACCT/1010", 
+                    "name": "Principles of Accounting I"
+                }, 
+                {
+                    "code": "ACCT 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ACCT/1020", 
+                    "name": "Principles of Accounting II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/ACCT"
+        }, 
+        {
+            "abbr": "AGR", 
+            "courses": [
+                {
+                    "code": "AGR 130", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGR/130", 
+                    "name": "Intro Animal Science"
+                }
+            ], 
+            "name": "Agriculture, RODP (AGR)", 
+            "url": "http://www.chegg.com/courses/columbiastate/AGR"
+        }, 
+        {
+            "abbr": "AGRI", 
+            "courses": [
+                {
+                    "code": "AGRI 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGRI/1010", 
+                    "name": "Intro to Agricultural Business"
+                }, 
+                {
+                    "code": "AGRI 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGRI/1020", 
+                    "name": "Intro to Animal Sciences"
+                }, 
+                {
+                    "code": "AGRI 1025", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGRI/1025", 
+                    "name": "Livestock Management"
+                }, 
+                {
+                    "code": "AGRI 1030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGRI/1030", 
+                    "name": "Intro to Plant Sciences"
+                }, 
+                {
+                    "code": "AGRI 1040", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGRI/1040", 
+                    "name": "Intro to Agric Engineering"
+                }, 
+                {
+                    "code": "AGRI 1050", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGRI/1050", 
+                    "name": "Intro to Soil Science"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/AGRI"
+        }, 
+        {
+            "abbr": "AGT", 
+            "courses": [
+                {
+                    "code": "AGT 101", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGT/101", 
+                    "name": "Intro Agri Business & Lab"
+                }, 
+                {
+                    "code": "AGT 111", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGT/111", 
+                    "name": "Introduction to the Animal Sciences"
+                }, 
+                {
+                    "code": "AGT 121", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGT/121", 
+                    "name": "Intro to Plant Science & Lab"
+                }, 
+                {
+                    "code": "AGT 141", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGT/141", 
+                    "name": "Intro to Agric Engineering"
+                }, 
+                {
+                    "code": "AGT 202", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGT/202", 
+                    "name": "Horticulture Technology Practicum I"
+                }, 
+                {
+                    "code": "AGT 204", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGT/204", 
+                    "name": "Horticulture Technology Practicum II"
+                }, 
+                {
+                    "code": "AGT 214", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGT/214", 
+                    "name": "Livestock Management & Lab"
+                }, 
+                {
+                    "code": "AGT 224", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGT/224", 
+                    "name": "Introduction to Ornamental Horticulture"
+                }, 
+                {
+                    "code": "AGT 226", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGT/226", 
+                    "name": "Horticultural Pest Mgmt & Lab"
+                }, 
+                {
+                    "code": "AGT 227", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGT/227", 
+                    "name": "Grounds Equipment Mgmt"
+                }, 
+                {
+                    "code": "AGT 228", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGT/228", 
+                    "name": "Irrigation Design"
+                }, 
+                {
+                    "code": "AGT 231", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGT/231", 
+                    "name": "Introduction to Soil Science"
+                }, 
+                {
+                    "code": "AGT 246", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGT/246", 
+                    "name": "Introduction to Turfgrass Management"
+                }, 
+                {
+                    "code": "AGT 247", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGT/247", 
+                    "name": "Athletic Field/Golf Crse Mgmt"
+                }, 
+                {
+                    "code": "AGT 248", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AGT/248", 
+                    "name": "Master Gardener"
+                }
+            ], 
+            "name": "Agriculture (AGT)", 
+            "url": "http://www.chegg.com/courses/columbiastate/AGT"
+        }, 
+        {
+            "abbr": "AIT", 
+            "courses": [
+                {
+                    "code": "AIT 1001", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AIT/1001", 
+                    "name": "Basic Electricity"
+                }, 
+                {
+                    "code": "AIT 1002", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AIT/1002", 
+                    "name": "Power Development"
+                }, 
+                {
+                    "code": "AIT 1003", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AIT/1003", 
+                    "name": "Hydraulic/Pneumatic Fundmntls"
+                }, 
+                {
+                    "code": "AIT 1600", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/AIT/1600", 
+                    "name": "Workplace Safety"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/AIT"
+        }, 
+        {
+            "abbr": "ALH", 
+            "courses": [
+                {
+                    "code": "ALH 1000", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ALH/1000", 
+                    "name": "Careers in Healthcare"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/ALH"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/1010", 
+                    "name": "Art History Survey I"
+                }, 
+                {
+                    "code": "ART 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/1020", 
+                    "name": "Art History Survey II"
+                }, 
+                {
+                    "code": "ART 1030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/1030", 
+                    "name": "Intro to Visual Arts"
+                }, 
+                {
+                    "code": "ART 1110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/1110", 
+                    "name": "Basic Design I"
+                }, 
+                {
+                    "code": "ART 1120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/1120", 
+                    "name": "Basic Design II"
+                }, 
+                {
+                    "code": "ART 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/2010", 
+                    "name": "Art History Survey I"
+                }, 
+                {
+                    "code": "ART 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/2020", 
+                    "name": "Art History Survey II"
+                }, 
+                {
+                    "code": "ART 2110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/2110", 
+                    "name": "Drawing I"
+                }, 
+                {
+                    "code": "ART 2120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/2120", 
+                    "name": "Drawing II"
+                }, 
+                {
+                    "code": "ART 2220", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/2220", 
+                    "name": "Art Activities and Appreciation"
+                }, 
+                {
+                    "code": "ART 2510", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/2510", 
+                    "name": "Painting I"
+                }, 
+                {
+                    "code": "ART 2520", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/2520", 
+                    "name": "Painting II"
+                }, 
+                {
+                    "code": "ART 2610", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/2610", 
+                    "name": "Photography I"
+                }, 
+                {
+                    "code": "ART 2620", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/2620", 
+                    "name": "Digital Photography"
+                }, 
+                {
+                    "code": "ART 2630", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/2630", 
+                    "name": "Intro Digital Graphic Arts"
+                }, 
+                {
+                    "code": "ART 2710", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/2710", 
+                    "name": "Printmaking I"
+                }, 
+                {
+                    "code": "ART 2720", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ART/2720", 
+                    "name": "Printmaking II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/ART"
+        }, 
+        {
+            "abbr": "ARTH", 
+            "courses": [
+                {
+                    "code": "ARTH 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ARTH/2010", 
+                    "name": "Survey of Art History I"
+                }, 
+                {
+                    "code": "ARTH 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ARTH/2020", 
+                    "name": "Survey of Art History II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/ARTH"
+        }, 
+        {
+            "abbr": "ARTP", 
+            "courses": [
+                {
+                    "code": "ARTP 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ARTP/1010", 
+                    "name": "Drawing I"
+                }, 
+                {
+                    "code": "ARTP 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ARTP/1020", 
+                    "name": "Drawing II"
+                }, 
+                {
+                    "code": "ARTP 1110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ARTP/1110", 
+                    "name": "Two Dimensional Design"
+                }, 
+                {
+                    "code": "ARTP 1120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ARTP/1120", 
+                    "name": "Three Dimensional Design"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/ARTP"
+        }, 
+        {
+            "abbr": "ASTR", 
+            "courses": [
+                {
+                    "code": "ASTR 1030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ASTR/1030", 
+                    "name": "Astronomy & Lab"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/ASTR"
+        }, 
+        {
+            "abbr": "BIOL", 
+            "courses": [
+                {
+                    "code": "BIOL 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BIOL/1010", 
+                    "name": "Biology I and Lab"
+                }, 
+                {
+                    "code": "BIOL 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BIOL/1020", 
+                    "name": "Biology II and Lab"
+                }, 
+                {
+                    "code": "BIOL 1030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BIOL/1030", 
+                    "name": "Intro to Biology & Lab"
+                }, 
+                {
+                    "code": "BIOL 1110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BIOL/1110", 
+                    "name": "General Biology I & Lab"
+                }, 
+                {
+                    "code": "BIOL 1120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BIOL/1120", 
+                    "name": "General Biology II & Lab"
+                }, 
+                {
+                    "code": "BIOL 1430", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BIOL/1430", 
+                    "name": "Nutrition"
+                }, 
+                {
+                    "code": "BIOL 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BIOL/2010", 
+                    "name": "Human Anat & Phys I & Lab"
+                }, 
+                {
+                    "code": "BIOL 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BIOL/2020", 
+                    "name": "Human Anatomy & Phys II & Lab"
+                }, 
+                {
+                    "code": "BIOL 2230", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BIOL/2230", 
+                    "name": "Intro to Microbiology with Lab"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/BIOL"
+        }, 
+        {
+            "abbr": "BIT", 
+            "courses": [
+                {
+                    "code": "BIT 120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BIT/120", 
+                    "name": "Career Success"
+                }, 
+                {
+                    "code": "BIT 210", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BIT/210", 
+                    "name": "Event Management"
+                }, 
+                {
+                    "code": "BIT 223", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BIT/223", 
+                    "name": "Accounting Applications Software"
+                }, 
+                {
+                    "code": "BIT 240", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BIT/240", 
+                    "name": "Spreadsheet Applications"
+                }, 
+                {
+                    "code": "BIT 291", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BIT/291", 
+                    "name": "Current Topics in Business Information Tech"
+                }, 
+                {
+                    "code": "BIT 299", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BIT/299", 
+                    "name": "Project Integration Capstone"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/BIT"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 101", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/101", 
+                    "name": "Introduction to Business"
+                }, 
+                {
+                    "code": "BUS 110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/110", 
+                    "name": "Business Ethics"
+                }, 
+                {
+                    "code": "BUS 111", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/111", 
+                    "name": "Business Writing"
+                }, 
+                {
+                    "code": "BUS 120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/120", 
+                    "name": "Career Success"
+                }, 
+                {
+                    "code": "BUS 121", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/121", 
+                    "name": "Principles of Accounting I"
+                }, 
+                {
+                    "code": "BUS 122", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/122", 
+                    "name": "Principles of Accounting II"
+                }, 
+                {
+                    "code": "BUS 181", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/181", 
+                    "name": "Business Calculations"
+                }, 
+                {
+                    "code": "BUS 185", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/185", 
+                    "name": "Marketing & E-Commerce"
+                }, 
+                {
+                    "code": "BUS 205", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/205", 
+                    "name": "Business Statistics"
+                }, 
+                {
+                    "code": "BUS 231", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/231", 
+                    "name": "Federal Income Tax"
+                }, 
+                {
+                    "code": "BUS 235", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/235", 
+                    "name": "Cost Accounting"
+                }, 
+                {
+                    "code": "BUS 240", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/240", 
+                    "name": "Legal Issues in the Workplace"
+                }, 
+                {
+                    "code": "BUS 241", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/241", 
+                    "name": "Fundamentals of Sales/Service"
+                }, 
+                {
+                    "code": "BUS 242", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/242", 
+                    "name": "Principles of Supervision"
+                }, 
+                {
+                    "code": "BUS 243", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/243", 
+                    "name": "Entrepreneurship"
+                }, 
+                {
+                    "code": "BUS 250", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/250", 
+                    "name": "Mgmnt and Human Resources"
+                }, 
+                {
+                    "code": "BUS 251", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/251", 
+                    "name": "Business Law"
+                }, 
+                {
+                    "code": "BUS 263", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/263", 
+                    "name": "Current Topics in Business Management"
+                }, 
+                {
+                    "code": "BUS 264", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/264", 
+                    "name": "Current Topics in Business Management"
+                }, 
+                {
+                    "code": "BUS 265", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/265", 
+                    "name": "Current Topics in Business Management"
+                }, 
+                {
+                    "code": "BUS 271", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/271", 
+                    "name": "Personal Finance"
+                }, 
+                {
+                    "code": "BUS 299", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/299", 
+                    "name": "Business Management Capstone"
+                }, 
+                {
+                    "code": "BUS 1050", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/1050", 
+                    "name": "Legal Issues for the Web"
+                }, 
+                {
+                    "code": "BUS 1300", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/BUS/1300", 
+                    "name": "Personal Money Management"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/BUS"
+        }, 
+        {
+            "abbr": "CEN", 
+            "courses": [
+                {
+                    "code": "CEN 101", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/101", 
+                    "name": "Dance Combination"
+                }, 
+                {
+                    "code": "CEN 102", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/102", 
+                    "name": "Dance Perf and Production Lab"
+                }, 
+                {
+                    "code": "CEN 107", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/107", 
+                    "name": "Ballet Technique (Adv)"
+                }, 
+                {
+                    "code": "CEN 109", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/109", 
+                    "name": "Tap Technique (Adv)"
+                }, 
+                {
+                    "code": "CEN 111", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/111", 
+                    "name": "Jazz Technique (Adv)"
+                }, 
+                {
+                    "code": "CEN 125", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/125", 
+                    "name": "Princ and Tech Dance Prfrmnce"
+                }, 
+                {
+                    "code": "CEN 135", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/135", 
+                    "name": "Commercial Songwriting"
+                }, 
+                {
+                    "code": "CEN 136", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/136", 
+                    "name": "Commercial Songwriting II"
+                }, 
+                {
+                    "code": "CEN 200", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/200", 
+                    "name": "Audition/Showcase Techniques"
+                }, 
+                {
+                    "code": "CEN 203", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/203", 
+                    "name": "Choreography I"
+                }, 
+                {
+                    "code": "CEN 204", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/204", 
+                    "name": "Choreography II"
+                }, 
+                {
+                    "code": "CEN 205", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/205", 
+                    "name": "Basic Construction/Stagecraft"
+                }, 
+                {
+                    "code": "CEN 207", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/207", 
+                    "name": "Entertainment Business"
+                }, 
+                {
+                    "code": "CEN 209", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/209", 
+                    "name": "Dance Pedagogy"
+                }, 
+                {
+                    "code": "CEN 216", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/216", 
+                    "name": "Professional Audition"
+                }, 
+                {
+                    "code": "CEN 217", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/217", 
+                    "name": "Dance Studio Practicum"
+                }, 
+                {
+                    "code": "CEN 230", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/230", 
+                    "name": "Digital Video Editing"
+                }, 
+                {
+                    "code": "CEN 1012", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/1012", 
+                    "name": "Intro Entertainment Technology"
+                }, 
+                {
+                    "code": "CEN 1013", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/1013", 
+                    "name": "Stage and Set Etiquette"
+                }, 
+                {
+                    "code": "CEN 1014", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/1014", 
+                    "name": "Stage and Set Safety"
+                }, 
+                {
+                    "code": "CEN 1210", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/1210", 
+                    "name": "Fundamentals of Lighting Techn"
+                }, 
+                {
+                    "code": "CEN 1211", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CEN/1211", 
+                    "name": "Fundamentals of Electricity"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/CEN"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CHEM/1010", 
+                    "name": "Intro to Chemistry I and Lab"
+                }, 
+                {
+                    "code": "CHEM 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CHEM/1020", 
+                    "name": "Intro to Chemistry II and Lab"
+                }, 
+                {
+                    "code": "CHEM 1040", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CHEM/1040", 
+                    "name": "Intro to General Chemistry"
+                }, 
+                {
+                    "code": "CHEM 1110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CHEM/1110", 
+                    "name": "General Chemistry I & Lab"
+                }, 
+                {
+                    "code": "CHEM 1120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CHEM/1120", 
+                    "name": "General Chemistry II & Lab"
+                }, 
+                {
+                    "code": "CHEM 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CHEM/2010", 
+                    "name": "Organic Chemistry I & Lab"
+                }, 
+                {
+                    "code": "CHEM 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CHEM/2020", 
+                    "name": "Organic Chemistry II and Lab"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/CHEM"
+        }, 
+        {
+            "abbr": "CIS", 
+            "courses": [
+                {
+                    "code": "CIS 109", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/109", 
+                    "name": "Computer Applications"
+                }, 
+                {
+                    "code": "CIS 113", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/113", 
+                    "name": "Visual Basic Programming"
+                }, 
+                {
+                    "code": "CIS 116", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/116", 
+                    "name": "Introduction to the Internet"
+                }, 
+                {
+                    "code": "CIS 131", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/131", 
+                    "name": "Commercial Software Applications"
+                }, 
+                {
+                    "code": "CIS 132", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/132", 
+                    "name": "Commercial Software Applications"
+                }, 
+                {
+                    "code": "CIS 150", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/150", 
+                    "name": "Computer System Essentials"
+                }, 
+                {
+                    "code": "CIS 170", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/170", 
+                    "name": "Programming I"
+                }, 
+                {
+                    "code": "CIS 173", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/173", 
+                    "name": "Programming in C#"
+                }, 
+                {
+                    "code": "CIS 175", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/175", 
+                    "name": "Computer Networking I"
+                }, 
+                {
+                    "code": "CIS 186", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/186", 
+                    "name": "Database Programming"
+                }, 
+                {
+                    "code": "CIS 191", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/191", 
+                    "name": "A+ Hardware Certifctn Training"
+                }, 
+                {
+                    "code": "CIS 192", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/192", 
+                    "name": "A+ Software Certifctn Training"
+                }, 
+                {
+                    "code": "CIS 193", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/193", 
+                    "name": "Intro to Linux"
+                }, 
+                {
+                    "code": "CIS 209", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/209", 
+                    "name": "Database Applications"
+                }, 
+                {
+                    "code": "CIS 263", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/263", 
+                    "name": "Web Design"
+                }, 
+                {
+                    "code": "CIS 264", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/264", 
+                    "name": "Web Page Applications"
+                }, 
+                {
+                    "code": "CIS 270", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/270", 
+                    "name": "Programming II"
+                }, 
+                {
+                    "code": "CIS 275", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/275", 
+                    "name": "Computer Networking II"
+                }, 
+                {
+                    "code": "CIS 280", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/280", 
+                    "name": "Database Development"
+                }, 
+                {
+                    "code": "CIS 281", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/281", 
+                    "name": "Computer Security"
+                }, 
+                {
+                    "code": "CIS 285", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/285", 
+                    "name": "Computer Networking III"
+                }, 
+                {
+                    "code": "CIS 1100", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/1100", 
+                    "name": "Technology for Teachers"
+                }, 
+                {
+                    "code": "CIS 1610", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CIS/1610", 
+                    "name": "Programming in C++"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/CIS"
+        }, 
+        {
+            "abbr": "CISP", 
+            "courses": [
+                {
+                    "code": "CISP 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CISP/1010", 
+                    "name": "Computer Science I"
+                }, 
+                {
+                    "code": "CISP 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CISP/1020", 
+                    "name": "Computer Science II"
+                }, 
+                {
+                    "code": "CISP 1610", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CISP/1610", 
+                    "name": "Programming in C++"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/CISP"
+        }, 
+        {
+            "abbr": "CJA", 
+            "courses": [
+                {
+                    "code": "CJA 1100", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJA/1100", 
+                    "name": "Intro Criminal Justice Admin"
+                }, 
+                {
+                    "code": "CJA 2600", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJA/2600", 
+                    "name": "Corrections"
+                }
+            ], 
+            "name": "Criminal Justice, RODP (CJA)", 
+            "url": "http://www.chegg.com/courses/columbiastate/CJA"
+        }, 
+        {
+            "abbr": "CJT", 
+            "courses": [
+                {
+                    "code": "CJT 105", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/105", 
+                    "name": "Introduction to Criminology"
+                }, 
+                {
+                    "code": "CJT 106", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/106", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CJT 110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/110", 
+                    "name": "Investigation Procedures"
+                }, 
+                {
+                    "code": "CJT 120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/120", 
+                    "name": "Supervision and Management in Criminal Justice"
+                }, 
+                {
+                    "code": "CJT 200", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/200", 
+                    "name": "Criminal Evidence"
+                }, 
+                {
+                    "code": "CJT 201", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/201", 
+                    "name": "Constitutional Rights of Prisoners"
+                }, 
+                {
+                    "code": "CJT 202", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/202", 
+                    "name": "Correctional Security Administration"
+                }, 
+                {
+                    "code": "CJT 204", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/204", 
+                    "name": "Juvenile Justice"
+                }, 
+                {
+                    "code": "CJT 205", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/205", 
+                    "name": "Introduction to Corrections"
+                }, 
+                {
+                    "code": "CJT 206", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/206", 
+                    "name": "Theory and Practice of Law Enforcement"
+                }, 
+                {
+                    "code": "CJT 207", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/207", 
+                    "name": "Laws of Arrest,Search and Seizure"
+                }, 
+                {
+                    "code": "CJT 210", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/210", 
+                    "name": "Corrections Counseling"
+                }, 
+                {
+                    "code": "CJT 220", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/220", 
+                    "name": "Spec Prob: Law Enf"
+                }, 
+                {
+                    "code": "CJT 230", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/230", 
+                    "name": "Special Problems:Corrections"
+                }, 
+                {
+                    "code": "CJT 241", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/241", 
+                    "name": "Introduction to Cyber Security"
+                }, 
+                {
+                    "code": "CJT 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/1010", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CJT 1015", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/1015", 
+                    "name": "Criminal Procedure"
+                }, 
+                {
+                    "code": "CJT 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/1020", 
+                    "name": "Criminal Evidence"
+                }, 
+                {
+                    "code": "CJT 1030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/1030", 
+                    "name": "Intro to Criminology"
+                }, 
+                {
+                    "code": "CJT 1040", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/1040", 
+                    "name": "Juvenile Justice"
+                }, 
+                {
+                    "code": "CJT 1110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/1110", 
+                    "name": "Supervision & Mgt Law Enfrcmnt"
+                }, 
+                {
+                    "code": "CJT 1210", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/1210", 
+                    "name": "Supervision/Mgt in Corrections"
+                }, 
+                {
+                    "code": "CJT 2000", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/2000", 
+                    "name": "Investigation Procedures"
+                }, 
+                {
+                    "code": "CJT 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/2020", 
+                    "name": "Terrorism Counterterroism"
+                }, 
+                {
+                    "code": "CJT 2999", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CJT/2999", 
+                    "name": "Effective Comm Skills CJ Prfns"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/CJT"
+        }, 
+        {
+            "abbr": "CMT", 
+            "courses": [
+                {
+                    "code": "CMT 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CMT/1010", 
+                    "name": "Networking & PC Communications"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/CMT"
+        }, 
+        {
+            "abbr": "COL", 
+            "courses": [
+                {
+                    "code": "COL 101", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COL/101", 
+                    "name": "College Experience Online"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/COL"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COM/110", 
+                    "name": "Survey Mass Communications"
+                }, 
+                {
+                    "code": "COM 1000", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COM/1000", 
+                    "name": "Beginning HTML"
+                }, 
+                {
+                    "code": "COM 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COM/1010", 
+                    "name": "Basic Web Design"
+                }, 
+                {
+                    "code": "COM 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COM/1020", 
+                    "name": "Basic Web Graphics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/COM"
+        }, 
+        {
+            "abbr": "COMM", 
+            "courses": [
+                {
+                    "code": "COMM 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COMM/1010", 
+                    "name": "Survey of Mass Communication"
+                }, 
+                {
+                    "code": "COMM 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COMM/1020", 
+                    "name": "Media Writing"
+                }, 
+                {
+                    "code": "COMM 1030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COMM/1030", 
+                    "name": "Intro To Electronic Media"
+                }, 
+                {
+                    "code": "COMM 1100", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COMM/1100", 
+                    "name": "Interpersonal Communication"
+                }, 
+                {
+                    "code": "COMM 1120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COMM/1120", 
+                    "name": "Intro to Communication"
+                }, 
+                {
+                    "code": "COMM 1210", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COMM/1210", 
+                    "name": "Intro to Mass Communication"
+                }, 
+                {
+                    "code": "COMM 1240", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COMM/1240", 
+                    "name": "Intro to Broadcasting"
+                }, 
+                {
+                    "code": "COMM 1250", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COMM/1250", 
+                    "name": "Survey New Media Communication"
+                }, 
+                {
+                    "code": "COMM 1400", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COMM/1400", 
+                    "name": "Screenwriting"
+                }, 
+                {
+                    "code": "COMM 2100", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COMM/2100", 
+                    "name": "Argumentation & Debate"
+                }, 
+                {
+                    "code": "COMM 2230", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COMM/2230", 
+                    "name": "Media Writing"
+                }, 
+                {
+                    "code": "COMM 2450", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COMM/2450", 
+                    "name": "Intro to Public Relations"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/COMM"
+        }, 
+        {
+            "abbr": "COP", 
+            "courses": [
+                {
+                    "code": "COP 201", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COP/201", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "COP 201-206", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COP/201-206", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "COP 202", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COP/202", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "COP 203", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COP/203", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "COP 204", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COP/204", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "COP 205", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COP/205", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "COP 206", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/COP/206", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/COP"
+        }, 
+        {
+            "abbr": "CRMJ", 
+            "courses": [
+                {
+                    "code": "CRMJ 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CRMJ/1010", 
+                    "name": "Intro to Criminal Justice"
+                }, 
+                {
+                    "code": "CRMJ 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CRMJ/1020", 
+                    "name": "Intro to the Legal Process"
+                }, 
+                {
+                    "code": "CRMJ 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CRMJ/2010", 
+                    "name": "Intro to Law Enforcement"
+                }, 
+                {
+                    "code": "CRMJ 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CRMJ/2020", 
+                    "name": "Intro to Corrections"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/CRMJ"
+        }, 
+        {
+            "abbr": "CSCI", 
+            "courses": [
+                {
+                    "code": "CSCI 2300", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CSCI/2300", 
+                    "name": "Essentials of Info Security"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/CSCI"
+        }, 
+        {
+            "abbr": "CST", 
+            "courses": [
+                {
+                    "code": "CST 203", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CST/203", 
+                    "name": "Data Structures"
+                }, 
+                {
+                    "code": "CST 209", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CST/209", 
+                    "name": "Java Programming I"
+                }, 
+                {
+                    "code": "CST 218", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/CST/218", 
+                    "name": "Java Programming II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/CST"
+        }, 
+        {
+            "abbr": "DSPM", 
+            "courses": [
+                {
+                    "code": "DSPM 0700", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPM/0700", 
+                    "name": ""
+                }, 
+                {
+                    "code": "DSPM 700", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPM/700", 
+                    "name": "Basic Math"
+                }, 
+                {
+                    "code": "DSPM 0800", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPM/0800", 
+                    "name": "Elementary Algebra"
+                }, 
+                {
+                    "code": "DSPM 800", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPM/800", 
+                    "name": "Elementary Algebra"
+                }, 
+                {
+                    "code": "DSPM 0850", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPM/0850", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "DSPM 850", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPM/850", 
+                    "name": "Intermediate Algebra"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/DSPM"
+        }, 
+        {
+            "abbr": "DSPR", 
+            "courses": [
+                {
+                    "code": "DSPR 0700", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPR/0700", 
+                    "name": "Basic Reading"
+                }, 
+                {
+                    "code": "DSPR 700", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPR/700", 
+                    "name": "Reading I"
+                }, 
+                {
+                    "code": "DSPR 0800", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPR/0800", 
+                    "name": "Developmental Reading"
+                }, 
+                {
+                    "code": "DSPR 800", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPR/800", 
+                    "name": "Developmental Reading"
+                }, 
+                {
+                    "code": "DSPR 0801", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPR/0801", 
+                    "name": "Vocabulary"
+                }, 
+                {
+                    "code": "DSPR 0802", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPR/0802", 
+                    "name": "Comprehension"
+                }, 
+                {
+                    "code": "DSPR 0803", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPR/0803", 
+                    "name": "Advanced Comprehension"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/DSPR"
+        }, 
+        {
+            "abbr": "DSPS", 
+            "courses": [
+                {
+                    "code": "DSPS 0800", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPS/0800", 
+                    "name": "Study Skills"
+                }, 
+                {
+                    "code": "DSPS 800", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPS/800", 
+                    "name": "Study Skills"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/DSPS"
+        }, 
+        {
+            "abbr": "DSPW", 
+            "courses": [
+                {
+                    "code": "DSPW 0700", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPW/0700", 
+                    "name": "Basic Writing"
+                }, 
+                {
+                    "code": "DSPW 700", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPW/700", 
+                    "name": "Basic Writing"
+                }, 
+                {
+                    "code": "DSPW 0725", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPW/0725", 
+                    "name": "Basic Reading/Basic Writing"
+                }, 
+                {
+                    "code": "DSPW 0800", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPW/0800", 
+                    "name": "Developmental Writing"
+                }, 
+                {
+                    "code": "DSPW 800", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPW/800", 
+                    "name": "Developmental Writing"
+                }, 
+                {
+                    "code": "DSPW 0801", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPW/0801", 
+                    "name": "Punctuation and Mechanics"
+                }, 
+                {
+                    "code": "DSPW 0802", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPW/0802", 
+                    "name": "Grammar and Usage"
+                }, 
+                {
+                    "code": "DSPW 0803", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPW/0803", 
+                    "name": "Paragraph Writing"
+                }, 
+                {
+                    "code": "DSPW 0804", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/DSPW/0804", 
+                    "name": "Introduction to Essay Writing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/DSPW"
+        }, 
+        {
+            "abbr": "ECED", 
+            "courses": [
+                {
+                    "code": "ECED 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/1010", 
+                    "name": "Intro Early Childhood Educ"
+                }, 
+                {
+                    "code": "ECED 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2010", 
+                    "name": "Safe, Healthy Learning Environ"
+                }, 
+                {
+                    "code": "ECED 2015", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2015", 
+                    "name": "Early Childhood Curriculum"
+                }, 
+                {
+                    "code": "ECED 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2020", 
+                    "name": "Infant, Toddler, Child Develop"
+                }, 
+                {
+                    "code": "ECED 2030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2030", 
+                    "name": "Infant and Toddler Care"
+                }, 
+                {
+                    "code": "ECED 2040", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2040", 
+                    "name": "Family Dynamics & Comm Inv"
+                }, 
+                {
+                    "code": "ECED 2050", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2050", 
+                    "name": "Psychomotor Development"
+                }, 
+                {
+                    "code": "ECED 2060", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2060", 
+                    "name": "Devlpmnt Exceptional Children"
+                }, 
+                {
+                    "code": "ECED 2070", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2070", 
+                    "name": "Developmental Assessment"
+                }, 
+                {
+                    "code": "ECED 2080", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2080", 
+                    "name": "Lang & Literacy Early Child"
+                }, 
+                {
+                    "code": "ECED 2085", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2085", 
+                    "name": "Math & Sci Early Childhood"
+                }, 
+                {
+                    "code": "ECED 2090", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2090", 
+                    "name": "Creative Development"
+                }, 
+                {
+                    "code": "ECED 2100", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2100", 
+                    "name": "The Mentoring Teacher"
+                }, 
+                {
+                    "code": "ECED 2110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2110", 
+                    "name": "Advanced Learning Environments"
+                }, 
+                {
+                    "code": "ECED 2120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2120", 
+                    "name": "Admin of Child Care Centers"
+                }, 
+                {
+                    "code": "ECED 2130", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2130", 
+                    "name": "Clinical Practicum I"
+                }, 
+                {
+                    "code": "ECED 2140", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2140", 
+                    "name": "Clinical Practicum II"
+                }, 
+                {
+                    "code": "ECED 2150", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECED/2150", 
+                    "name": "Clinical Practicum III"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/ECED"
+        }, 
+        {
+            "abbr": "ECO", 
+            "courses": [
+                {
+                    "code": "ECO 201", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECO/201", 
+                    "name": "Principles of Macroeconomics"
+                }, 
+                {
+                    "code": "ECO 202", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECO/202", 
+                    "name": "Principles of Microeconomics"
+                }
+            ], 
+            "name": "Economics (ECO)", 
+            "url": "http://www.chegg.com/courses/columbiastate/ECO"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECON/2010", 
+                    "name": "Macroeconomics"
+                }, 
+                {
+                    "code": "ECON 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ECON/2020", 
+                    "name": "Microeconomics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/ECON"
+        }, 
+        {
+            "abbr": "EDU", 
+            "courses": [
+                {
+                    "code": "EDU 100", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EDU/100", 
+                    "name": "Creating College Success"
+                }, 
+                {
+                    "code": "EDU 201", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EDU/201", 
+                    "name": "Introduction to Education"
+                }, 
+                {
+                    "code": "EDU 221", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EDU/221", 
+                    "name": "Educational Psychology"
+                }, 
+                {
+                    "code": "EDU 222", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EDU/222", 
+                    "name": "Education of Exceptional Lrnrs"
+                }, 
+                {
+                    "code": "EDU 250", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EDU/250", 
+                    "name": "Instructional Tech in Educ"
+                }, 
+                {
+                    "code": "EDU 1100", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EDU/1100", 
+                    "name": "Technology for Teachers"
+                }, 
+                {
+                    "code": "EDU 1120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EDU/1120", 
+                    "name": "Intro to Teaching"
+                }, 
+                {
+                    "code": "EDU 2050", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EDU/2050", 
+                    "name": "Classroom Management"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/EDU"
+        }, 
+        {
+            "abbr": "EDUC", 
+            "courses": [
+                {
+                    "code": "EDUC 2120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EDUC/2120", 
+                    "name": "Intro to Special Education"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/EDUC"
+        }, 
+        {
+            "abbr": "EET", 
+            "courses": [
+                {
+                    "code": "EET 120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EET/120", 
+                    "name": "DC Circuit Analysis"
+                }, 
+                {
+                    "code": "EET 121", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EET/121", 
+                    "name": "Electronics I"
+                }, 
+                {
+                    "code": "EET 122", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EET/122", 
+                    "name": "Electronics II"
+                }, 
+                {
+                    "code": "EET 130", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EET/130", 
+                    "name": "AC Circuit Analysis"
+                }, 
+                {
+                    "code": "EET 150", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EET/150", 
+                    "name": "National Electrical Code"
+                }, 
+                {
+                    "code": "EET 180", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EET/180", 
+                    "name": "Digital Logic Fundamentals"
+                }, 
+                {
+                    "code": "EET 214", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EET/214", 
+                    "name": "Principles of Programmable Controllers"
+                }, 
+                {
+                    "code": "EET 231", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EET/231", 
+                    "name": "Microprocessors"
+                }, 
+                {
+                    "code": "EET 241", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EET/241", 
+                    "name": "Introduction to Telecommunications Technology"
+                }, 
+                {
+                    "code": "EET 242", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EET/242", 
+                    "name": "Telecommunications Systems Analysis"
+                }, 
+                {
+                    "code": "EET 251", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EET/251", 
+                    "name": "Industrial Electronics"
+                }, 
+                {
+                    "code": "EET 252", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EET/252", 
+                    "name": "Introduction to Robotics"
+                }, 
+                {
+                    "code": "EET 291", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EET/291", 
+                    "name": "Adv.Topics in Electronics Engineering Technology"
+                }
+            ], 
+            "name": "Electronics Engineering Techn", 
+            "url": "http://www.chegg.com/courses/columbiastate/EET"
+        }, 
+        {
+            "abbr": "EMT", 
+            "courses": [
+                {
+                    "code": "EMT 116", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EMT/116", 
+                    "name": "Basic EMT-IV Clinical Practice"
+                }, 
+                {
+                    "code": "EMT 118", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EMT/118", 
+                    "name": "Basic EMT Intravenous Therapy(IV)"
+                }, 
+                {
+                    "code": "EMT 210", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EMT/210", 
+                    "name": "Paramedic Theories I"
+                }, 
+                {
+                    "code": "EMT 211", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EMT/211", 
+                    "name": "Fund Paramedic Practice I"
+                }, 
+                {
+                    "code": "EMT 212", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EMT/212", 
+                    "name": "Pre-Hosp Emergency Pharm"
+                }, 
+                {
+                    "code": "EMT 213", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EMT/213", 
+                    "name": "Advanced Cardiac Care"
+                }, 
+                {
+                    "code": "EMT 214", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EMT/214", 
+                    "name": "Clinical Practice I"
+                }, 
+                {
+                    "code": "EMT 215", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EMT/215", 
+                    "name": "Paramedic Theories II"
+                }, 
+                {
+                    "code": "EMT 216", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EMT/216", 
+                    "name": "Fund of Paramedic Practice II"
+                }, 
+                {
+                    "code": "EMT 217", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EMT/217", 
+                    "name": "Pediatric and OB Emergencies"
+                }, 
+                {
+                    "code": "EMT 218", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EMT/218", 
+                    "name": "Advanced Trauma Life Support"
+                }, 
+                {
+                    "code": "EMT 219", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EMT/219", 
+                    "name": "Clinical Practice II"
+                }, 
+                {
+                    "code": "EMT 220", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EMT/220", 
+                    "name": "Field Internship"
+                }, 
+                {
+                    "code": "EMT 221", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EMT/221", 
+                    "name": "Fund Paramedic Practice III"
+                }, 
+                {
+                    "code": "EMT 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EMT/1010", 
+                    "name": "Basic EMT Intravenous Therapy"
+                }, 
+                {
+                    "code": "EMT 1050", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/EMT/1050", 
+                    "name": "Basic EMT Clinical Practice"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/EMT"
+        }, 
+        {
+            "abbr": "ENGL", 
+            "courses": [
+                {
+                    "code": "ENGL 000", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/000", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 0001", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/0001", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 0002", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/0002", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 230", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/230", 
+                    "name": "Creative Writing"
+                }, 
+                {
+                    "code": "ENGL 0800", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/0800", 
+                    "name": "Learning Support Writing I"
+                }, 
+                {
+                    "code": "ENGL 800", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/800", 
+                    "name": "Learning Support Writing I"
+                }, 
+                {
+                    "code": "ENGL 0802", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/0802", 
+                    "name": "Learning Support Writing II"
+                }, 
+                {
+                    "code": "ENGL 1001", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/1001", 
+                    "name": "English As A 2nd Language I"
+                }, 
+                {
+                    "code": "ENGL 1002", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/1002", 
+                    "name": "English As A 2nd Language II"
+                }, 
+                {
+                    "code": "ENGL 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/1010", 
+                    "name": "Composition I"
+                }, 
+                {
+                    "code": "ENGL 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/1020", 
+                    "name": "Composition II"
+                }, 
+                {
+                    "code": "ENGL 1070", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/1070", 
+                    "name": "Technical Writing"
+                }, 
+                {
+                    "code": "ENGL 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/2010", 
+                    "name": "Intro to Literature 1:Fiction"
+                }, 
+                {
+                    "code": "ENGL 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/2020", 
+                    "name": "Major Themes in Literature"
+                }, 
+                {
+                    "code": "ENGL 2110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/2110", 
+                    "name": "American Literature I"
+                }, 
+                {
+                    "code": "ENGL 2116", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/2116", 
+                    "name": "Writing for the Web"
+                }, 
+                {
+                    "code": "ENGL 2120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/2120", 
+                    "name": "American Literature II"
+                }, 
+                {
+                    "code": "ENGL 2130", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/2130", 
+                    "name": "Survey of American Literature"
+                }, 
+                {
+                    "code": "ENGL 2210", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/2210", 
+                    "name": "English Literature I"
+                }, 
+                {
+                    "code": "ENGL 2220", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/2220", 
+                    "name": "English Literature II"
+                }, 
+                {
+                    "code": "ENGL 2230", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/2230", 
+                    "name": "Survey of British Literature"
+                }, 
+                {
+                    "code": "ENGL 2300", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/2300", 
+                    "name": "Creative Writing"
+                }, 
+                {
+                    "code": "ENGL 2330", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/2330", 
+                    "name": "Survey of World Literature"
+                }, 
+                {
+                    "code": "ENGL 2410", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/2410", 
+                    "name": "Western World Literature I"
+                }, 
+                {
+                    "code": "ENGL 2420", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/2420", 
+                    "name": "Western World Literature II"
+                }, 
+                {
+                    "code": "ENGL 2630", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/2630", 
+                    "name": "Literature for Children"
+                }, 
+                {
+                    "code": "ENGL 2910", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGL/2910", 
+                    "name": "Creative Writing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/ENGL"
+        }, 
+        {
+            "abbr": "ENGR", 
+            "courses": [
+                {
+                    "code": "ENGR 2110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGR/2110", 
+                    "name": "Statics"
+                }, 
+                {
+                    "code": "ENGR 2120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ENGR/2120", 
+                    "name": "Dynamics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/ENGR"
+        }, 
+        {
+            "abbr": "ERG", 
+            "courses": [
+                {
+                    "code": "ERG 101", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ERG/101", 
+                    "name": "Engineering Graphics"
+                }, 
+                {
+                    "code": "ERG 103", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ERG/103", 
+                    "name": "Solid Modeling with CAD"
+                }, 
+                {
+                    "code": "ERG 127", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ERG/127", 
+                    "name": "Geometric Dimensioning and Tolerancing"
+                }, 
+                {
+                    "code": "ERG 151", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ERG/151", 
+                    "name": "Computer Assisted Design/Drafting"
+                }
+            ], 
+            "name": "Erg-Engineering Technology", 
+            "url": "http://www.chegg.com/courses/columbiastate/ERG"
+        }, 
+        {
+            "abbr": "ESC", 
+            "courses": [
+                {
+                    "code": "ESC 1110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ESC/1110", 
+                    "name": "Intro Environmental Studies I"
+                }, 
+                {
+                    "code": "ESC 1120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/ESC/1120", 
+                    "name": "Intro Environmental Studies II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/ESC"
+        }, 
+        {
+            "abbr": "FCT", 
+            "courses": [
+                {
+                    "code": "FCT 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FCT/1010", 
+                    "name": "Set Equipment & Machinery"
+                }, 
+                {
+                    "code": "FCT 1012", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FCT/1012", 
+                    "name": "Intro Entertainment Technology"
+                }, 
+                {
+                    "code": "FCT 1013", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FCT/1013", 
+                    "name": "State & Set Etiquette"
+                }, 
+                {
+                    "code": "FCT 1014", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FCT/1014", 
+                    "name": "Stage & Set Safety"
+                }, 
+                {
+                    "code": "FCT 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FCT/1020", 
+                    "name": "Basic Grip"
+                }, 
+                {
+                    "code": "FCT 1210", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FCT/1210", 
+                    "name": "Fundamentals Lighting Techn"
+                }, 
+                {
+                    "code": "FCT 1211", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FCT/1211", 
+                    "name": "Fundamentals of Electricity"
+                }, 
+                {
+                    "code": "FCT 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FCT/2010", 
+                    "name": "Set Construction Laboratory"
+                }, 
+                {
+                    "code": "FCT 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FCT/2020", 
+                    "name": "Advanced Grip"
+                }, 
+                {
+                    "code": "FCT 2025", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FCT/2025", 
+                    "name": "Motion Picture Sound Recording"
+                }, 
+                {
+                    "code": "FCT 2030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FCT/2030", 
+                    "name": "Film and Video Lighting"
+                }, 
+                {
+                    "code": "FCT 2040", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FCT/2040", 
+                    "name": "Advanced Electric"
+                }, 
+                {
+                    "code": "FCT 2050", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FCT/2050", 
+                    "name": "Film Production Laboratory"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/FCT"
+        }, 
+        {
+            "abbr": "FREN", 
+            "courses": [
+                {
+                    "code": "FREN 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FREN/1010", 
+                    "name": "Beginning French I"
+                }, 
+                {
+                    "code": "FREN 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FREN/1020", 
+                    "name": "Beginning French II"
+                }, 
+                {
+                    "code": "FREN 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FREN/2010", 
+                    "name": "Intermediate French I"
+                }, 
+                {
+                    "code": "FREN 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/FREN/2020", 
+                    "name": "Intermediate French II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/FREN"
+        }, 
+        {
+            "abbr": "GENT", 
+            "courses": [
+                {
+                    "code": "GENT 291", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/GENT/291", 
+                    "name": "General Technology Capstone"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/GENT"
+        }, 
+        {
+            "abbr": "GEOG", 
+            "courses": [
+                {
+                    "code": "GEOG 105", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/GEOG/105", 
+                    "name": "World Regional Geography"
+                }, 
+                {
+                    "code": "GEOG 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/GEOG/1010", 
+                    "name": "Physical Geography I"
+                }, 
+                {
+                    "code": "GEOG 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/GEOG/1020", 
+                    "name": "Physical Geography II"
+                }, 
+                {
+                    "code": "GEOG 1210", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/GEOG/1210", 
+                    "name": "World Regional Geography I"
+                }, 
+                {
+                    "code": "GEOG 1220", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/GEOG/1220", 
+                    "name": "World Regional Geography II"
+                }, 
+                {
+                    "code": "GEOG 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/GEOG/2010", 
+                    "name": "World Regional Geography"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/GEOG"
+        }, 
+        {
+            "abbr": "GERM", 
+            "courses": [
+                {
+                    "code": "GERM 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/GERM/1010", 
+                    "name": "Elementary German I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/GERM"
+        }, 
+        {
+            "abbr": "HED", 
+            "courses": [
+                {
+                    "code": "HED 221", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HED/221", 
+                    "name": "Personal Health"
+                }, 
+                {
+                    "code": "HED 231", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HED/231", 
+                    "name": "Safety and First Aid"
+                }, 
+                {
+                    "code": "HED 241", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HED/241", 
+                    "name": "Principles of Nutrition"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/HED"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 220", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HIST/220", 
+                    "name": "African American History"
+                }, 
+                {
+                    "code": "HIST 1110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HIST/1110", 
+                    "name": "Survey of World History I"
+                }, 
+                {
+                    "code": "HIST 1120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HIST/1120", 
+                    "name": "Survey World History II"
+                }, 
+                {
+                    "code": "HIST 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HIST/2010", 
+                    "name": "Survey of US History I"
+                }, 
+                {
+                    "code": "HIST 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HIST/2020", 
+                    "name": "Survey of US History II"
+                }, 
+                {
+                    "code": "HIST 2030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HIST/2030", 
+                    "name": "Tennessee History"
+                }, 
+                {
+                    "code": "HIST 2050", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HIST/2050", 
+                    "name": "Appalachian History"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/HIST"
+        }, 
+        {
+            "abbr": "HIT", 
+            "courses": [
+                {
+                    "code": "HIT 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HIT/1010", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "HIT 1011", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HIT/1011", 
+                    "name": "Introduction to HIT"
+                }, 
+                {
+                    "code": "HIT 1110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HIT/1110", 
+                    "name": "Legal Aspects of HIT"
+                }, 
+                {
+                    "code": "HIT 1111", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HIT/1111", 
+                    "name": "Legal Aspects of HIT"
+                }, 
+                {
+                    "code": "HIT 1120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HIT/1120", 
+                    "name": "Fund of Disease Processes"
+                }, 
+                {
+                    "code": "HIT 1131", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HIT/1131", 
+                    "name": "ICD-10-CM Coding System"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/HIT"
+        }, 
+        {
+            "abbr": "HPRO", 
+            "courses": [
+                {
+                    "code": "HPRO 2100", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HPRO/2100", 
+                    "name": "Wellness Conc and Practices"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/HPRO"
+        }, 
+        {
+            "abbr": "HSC", 
+            "courses": [
+                {
+                    "code": "HSC 190", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HSC/190", 
+                    "name": "Intro Human Pathophysiology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/HSC"
+        }, 
+        {
+            "abbr": "HTL", 
+            "courses": [
+                {
+                    "code": "HTL 110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HTL/110", 
+                    "name": "Intro Hospitality Ind"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/HTL"
+        }, 
+        {
+            "abbr": "HUM", 
+            "courses": [
+                {
+                    "code": "HUM 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HUM/1010", 
+                    "name": "Intro Humanities I"
+                }, 
+                {
+                    "code": "HUM 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HUM/1020", 
+                    "name": "Intro to Humanities II"
+                }, 
+                {
+                    "code": "HUM 1130", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HUM/1130", 
+                    "name": "Arts and Culture I"
+                }, 
+                {
+                    "code": "HUM 1131", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HUM/1131", 
+                    "name": "Arts and Culture II"
+                }, 
+                {
+                    "code": "HUM 2210", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/HUM/2210", 
+                    "name": "Introduction to Film Studies"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/HUM"
+        }, 
+        {
+            "abbr": "INFS", 
+            "courses": [
+                {
+                    "code": "INFS 113", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INFS/113", 
+                    "name": "Visual Basic"
+                }, 
+                {
+                    "code": "INFS 173", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INFS/173", 
+                    "name": "Programming in C#"
+                }, 
+                {
+                    "code": "INFS 186", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INFS/186", 
+                    "name": "Database Programming"
+                }, 
+                {
+                    "code": "INFS 191", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INFS/191", 
+                    "name": "A+ Certification Hardware Trng"
+                }, 
+                {
+                    "code": "INFS 192", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INFS/192", 
+                    "name": "A+Software Certification Trng"
+                }, 
+                {
+                    "code": "INFS 193", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INFS/193", 
+                    "name": "Introduction to Linux"
+                }, 
+                {
+                    "code": "INFS 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INFS/1010", 
+                    "name": "Computer Applications"
+                }, 
+                {
+                    "code": "INFS 1100", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INFS/1100", 
+                    "name": "Technology for Teachers"
+                }, 
+                {
+                    "code": "INFS 1150", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INFS/1150", 
+                    "name": "Intro to Microcomputers"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/INFS"
+        }, 
+        {
+            "abbr": "INT", 
+            "courses": [
+                {
+                    "code": "INT 122", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/122", 
+                    "name": "Fundamentals of Work Teams"
+                }, 
+                {
+                    "code": "INT 124", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/124", 
+                    "name": "Hydraulic and Pneumatic Systems"
+                }, 
+                {
+                    "code": "INT 126", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/126", 
+                    "name": "Numerical Control Concepts"
+                }, 
+                {
+                    "code": "INT 127", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/127", 
+                    "name": "Vibration Analysis and Predictive Maintenance"
+                }, 
+                {
+                    "code": "INT 128", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/128", 
+                    "name": "Advanced Hydraulics/Pneumatics"
+                }, 
+                {
+                    "code": "INT 134", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/134", 
+                    "name": "Machinery Handbook"
+                }, 
+                {
+                    "code": "INT 135", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/135", 
+                    "name": "Tool and Die Design"
+                }, 
+                {
+                    "code": "INT 136", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/136", 
+                    "name": "Tool and Die Technology"
+                }, 
+                {
+                    "code": "INT 137", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/137", 
+                    "name": "Mechanical Power Transmission"
+                }, 
+                {
+                    "code": "INT 141", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/141", 
+                    "name": "Blueprint Reading"
+                }, 
+                {
+                    "code": "INT 152", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/152", 
+                    "name": "Process Control"
+                }, 
+                {
+                    "code": "INT 210", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/210", 
+                    "name": "Engineering Economy"
+                }, 
+                {
+                    "code": "INT 212", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/212", 
+                    "name": "Plant Layout and Materials Handling"
+                }, 
+                {
+                    "code": "INT 213", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/213", 
+                    "name": "Operations Management"
+                }, 
+                {
+                    "code": "INT 226", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/226", 
+                    "name": "Numerical Control Concepts II"
+                }, 
+                {
+                    "code": "INT 231", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/231", 
+                    "name": "Time and Motion Study"
+                }, 
+                {
+                    "code": "INT 251", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INT/251", 
+                    "name": "Statistical Quality Control"
+                }
+            ], 
+            "name": "Interdisciplinary", 
+            "url": "http://www.chegg.com/courses/columbiastate/INT"
+        }, 
+        {
+            "abbr": "INTC", 
+            "courses": [
+                {
+                    "code": "INTC 1050", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/INTC/1050", 
+                    "name": "Computer Graphics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/INTC"
+        }, 
+        {
+            "abbr": "IST", 
+            "courses": [
+                {
+                    "code": "IST 2800", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/IST/2800", 
+                    "name": "Database Development"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/IST"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 0001", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/0001", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 0800", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/0800", 
+                    "name": "Learning Support Math I"
+                }, 
+                {
+                    "code": "MATH 800", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/800", 
+                    "name": "Learning Support Math I"
+                }, 
+                {
+                    "code": "MATH 0802", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/0802", 
+                    "name": "Learning Support Math II"
+                }, 
+                {
+                    "code": "MATH 0900", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/0900", 
+                    "name": "Elementary Geometry"
+                }, 
+                {
+                    "code": "MATH 1000", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/1000", 
+                    "name": "Essentials of Algebra"
+                }, 
+                {
+                    "code": "MATH 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/1010", 
+                    "name": "Math for the Liberal Arts"
+                }, 
+                {
+                    "code": "MATH 1130", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/1130", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MATH 1410", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/1410", 
+                    "name": "College Math"
+                }, 
+                {
+                    "code": "MATH 1420", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/1420", 
+                    "name": "Geometry for Elem Education"
+                }, 
+                {
+                    "code": "MATH 1530", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/1530", 
+                    "name": "Elementary Statistics"
+                }, 
+                {
+                    "code": "MATH 1630", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/1630", 
+                    "name": "Finite Mathematics"
+                }, 
+                {
+                    "code": "MATH 1710", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/1710", 
+                    "name": "Precalculus Algebra"
+                }, 
+                {
+                    "code": "MATH 1720", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/1720", 
+                    "name": "Precalculus II/Trigonometry"
+                }, 
+                {
+                    "code": "MATH 1830", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/1830", 
+                    "name": "Applied Calculus"
+                }, 
+                {
+                    "code": "MATH 1910", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/1910", 
+                    "name": "Calculus & Analytic Geom I"
+                }, 
+                {
+                    "code": "MATH 1920", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/1920", 
+                    "name": "Calculus & Analytic Geom II"
+                }, 
+                {
+                    "code": "MATH 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/2010", 
+                    "name": "Linear Algebra"
+                }, 
+                {
+                    "code": "MATH 2050", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/2050", 
+                    "name": "Calculus-Based Prblty & Stats"
+                }, 
+                {
+                    "code": "MATH 2110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/2110", 
+                    "name": "Calculus & Analytic Geom III"
+                }, 
+                {
+                    "code": "MATH 2120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/2120", 
+                    "name": "Differential Equations"
+                }, 
+                {
+                    "code": "MATH 2810", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MATH/2810", 
+                    "name": "Discrete Structure and Reason"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/MATH"
+        }, 
+        {
+            "abbr": "MDT", 
+            "courses": [
+                {
+                    "code": "MDT 2100", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MDT/2100", 
+                    "name": "Photoshop Essentials"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/MDT"
+        }, 
+        {
+            "abbr": "MKT", 
+            "courses": [
+                {
+                    "code": "MKT 101", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MKT/101", 
+                    "name": "Principles of Marketing"
+                }, 
+                {
+                    "code": "MKT 204", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MKT/204", 
+                    "name": "Principles of Retail Management"
+                }, 
+                {
+                    "code": "MKT 2450", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MKT/2450", 
+                    "name": "E-Commerce"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/MKT"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 1030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1030", 
+                    "name": "Music Appreciation"
+                }, 
+                {
+                    "code": "MUS 1110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1110", 
+                    "name": "Beginning Theory I"
+                }, 
+                {
+                    "code": "MUS 1111", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1111", 
+                    "name": "Aural Skills 1"
+                }, 
+                {
+                    "code": "MUS 1120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1120", 
+                    "name": "Beginning Theory II"
+                }, 
+                {
+                    "code": "MUS 1121", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1121", 
+                    "name": "Aural Skills II"
+                }, 
+                {
+                    "code": "MUS 1130", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1130", 
+                    "name": "Instrumental Perfmnce Ensemble"
+                }, 
+                {
+                    "code": "MUS 1410", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1410", 
+                    "name": "College Chorus"
+                }, 
+                {
+                    "code": "MUS 1510", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1510", 
+                    "name": "Class Voice I"
+                }, 
+                {
+                    "code": "MUS 1520", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1520", 
+                    "name": "Class Voice II"
+                }, 
+                {
+                    "code": "MUS 1610", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1610", 
+                    "name": "Class Piano I"
+                }, 
+                {
+                    "code": "MUS 1620", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1620", 
+                    "name": "Class Piano II"
+                }, 
+                {
+                    "code": "MUS 1800", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1800", 
+                    "name": "Choral Lab"
+                }, 
+                {
+                    "code": "MUS 1810", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1810", 
+                    "name": "Fundamentals of Music I"
+                }, 
+                {
+                    "code": "MUS 1820", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1820", 
+                    "name": "Fundamentals of Music II"
+                }, 
+                {
+                    "code": "MUS 1850", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1850", 
+                    "name": "Musical Keyboarding I"
+                }, 
+                {
+                    "code": "MUS 1860", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1860", 
+                    "name": "Musical Keyboarding II"
+                }, 
+                {
+                    "code": "MUS 1910", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1910", 
+                    "name": "Individual Piano I"
+                }, 
+                {
+                    "code": "MUS 1920", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1920", 
+                    "name": "Individual Piano II"
+                }, 
+                {
+                    "code": "MUS 1930", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1930", 
+                    "name": "Individual Voice I"
+                }, 
+                {
+                    "code": "MUS 1940", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1940", 
+                    "name": "Individual Voice II"
+                }, 
+                {
+                    "code": "MUS 1950", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1950", 
+                    "name": "Individual Guitar I"
+                }, 
+                {
+                    "code": "MUS 1960", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/1960", 
+                    "name": "Individual Guitar II"
+                }, 
+                {
+                    "code": "MUS 2110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/2110", 
+                    "name": "Music Theory III"
+                }, 
+                {
+                    "code": "MUS 2120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/2120", 
+                    "name": "Advanced Theory II"
+                }, 
+                {
+                    "code": "MUS 2140", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/2140", 
+                    "name": "Advanced Private Instruction"
+                }, 
+                {
+                    "code": "MUS 2200", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/2200", 
+                    "name": "History of Musical Theatre"
+                }, 
+                {
+                    "code": "MUS 2210", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/2210", 
+                    "name": "Survey of Music Literature"
+                }, 
+                {
+                    "code": "MUS 2330", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/2330", 
+                    "name": "Electronic Music I"
+                }, 
+                {
+                    "code": "MUS 2350", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/2350", 
+                    "name": "Digital Audio Recording"
+                }, 
+                {
+                    "code": "MUS 2360", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/2360", 
+                    "name": "Digital Music Production"
+                }, 
+                {
+                    "code": "MUS 2910", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/2910", 
+                    "name": "Individual Piano III"
+                }, 
+                {
+                    "code": "MUS 2920", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/2920", 
+                    "name": "Individual Piano IV"
+                }, 
+                {
+                    "code": "MUS 2930", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/2930", 
+                    "name": "Individual Voice III"
+                }, 
+                {
+                    "code": "MUS 2940", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/2940", 
+                    "name": "Individual Voice IV"
+                }, 
+                {
+                    "code": "MUS 2950", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/2950", 
+                    "name": "Individual Guitar III"
+                }, 
+                {
+                    "code": "MUS 2960", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/MUS/2960", 
+                    "name": "Individual Guitar IV"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/MUS"
+        }, 
+        {
+            "abbr": "NUR", 
+            "courses": [
+                {
+                    "code": "NUR 0000", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/0000", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NUR 0001", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/0001", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NUR 101", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/101", 
+                    "name": "ADN Role Transition"
+                }, 
+                {
+                    "code": "NUR 121", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/121", 
+                    "name": "Math Applications for Nursing"
+                }, 
+                {
+                    "code": "NUR 122", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/122", 
+                    "name": "Pharmacology"
+                }, 
+                {
+                    "code": "NUR 294", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/294", 
+                    "name": "Coordinated Cooperative Student Externship"
+                }, 
+                {
+                    "code": "NUR 1115", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/1115", 
+                    "name": "Nursing Foundations"
+                }, 
+                {
+                    "code": "NUR 1118", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/1118", 
+                    "name": "Nursing I Clncl and Skill Lab"
+                }, 
+                {
+                    "code": "NUR 1126", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/1126", 
+                    "name": "Basic Medical Surgical Nursing"
+                }, 
+                {
+                    "code": "NUR 1127", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/1127", 
+                    "name": "Health of Women & Infants"
+                }, 
+                {
+                    "code": "NUR 1128", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/1128", 
+                    "name": "Nursing II Clinical"
+                }, 
+                {
+                    "code": "NUR 2116", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/2116", 
+                    "name": "Intermediate Med-Surg Nursing"
+                }, 
+                {
+                    "code": "NUR 2117", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/2117", 
+                    "name": "Psych/Mental Health Nursing"
+                }, 
+                {
+                    "code": "NUR 2118", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/2118", 
+                    "name": "Nursing III Clinical"
+                }, 
+                {
+                    "code": "NUR 2125", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/2125", 
+                    "name": "Advanced Med-Surg Nursing"
+                }, 
+                {
+                    "code": "NUR 2128", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/2128", 
+                    "name": "Nursing IV Clinical"
+                }, 
+                {
+                    "code": "NUR 2188", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/2188", 
+                    "name": "Applying Surgical Concepts"
+                }, 
+                {
+                    "code": "NUR 2189", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/2189", 
+                    "name": "Applying Psychiatric Concepts"
+                }, 
+                {
+                    "code": "NUR 2198", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/2198", 
+                    "name": "Applying Pediatric Concepts"
+                }, 
+                {
+                    "code": "NUR 2199", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/NUR/2199", 
+                    "name": "Applying Medical Concepts"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/NUR"
+        }, 
+        {
+            "abbr": "OFA", 
+            "courses": [
+                {
+                    "code": "OFA 101", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/OFA/101", 
+                    "name": "Intro to Word Processing"
+                }, 
+                {
+                    "code": "OFA 103", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/OFA/103", 
+                    "name": "Keyboarding"
+                }, 
+                {
+                    "code": "OFA 132", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/OFA/132", 
+                    "name": "Records Management"
+                }, 
+                {
+                    "code": "OFA 205", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/OFA/205", 
+                    "name": "Business Docmnts & Publishing"
+                }, 
+                {
+                    "code": "OFA 240", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/OFA/240", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "OFA 242", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/OFA/242", 
+                    "name": "Medical Transcription"
+                }, 
+                {
+                    "code": "OFA 245", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/OFA/245", 
+                    "name": "Legal Terminology"
+                }, 
+                {
+                    "code": "OFA 246", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/OFA/246", 
+                    "name": "Legal Transcription"
+                }, 
+                {
+                    "code": "OFA 281", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/OFA/281", 
+                    "name": "Medical Office Assistant"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/OFA"
+        }, 
+        {
+            "abbr": "PHED", 
+            "courses": [
+                {
+                    "code": "PHED 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/1010", 
+                    "name": "Golf"
+                }, 
+                {
+                    "code": "PHED 1110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/1110", 
+                    "name": "Tennis I"
+                }, 
+                {
+                    "code": "PHED 1120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/1120", 
+                    "name": "Tennis II"
+                }, 
+                {
+                    "code": "PHED 1140", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/1140", 
+                    "name": "Walking for Fitness"
+                }, 
+                {
+                    "code": "PHED 1210", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/1210", 
+                    "name": "Physical Conditioning"
+                }, 
+                {
+                    "code": "PHED 1310", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/1310", 
+                    "name": "Racquetball"
+                }, 
+                {
+                    "code": "PHED 1510", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/1510", 
+                    "name": "Softball"
+                }, 
+                {
+                    "code": "PHED 1610", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/1610", 
+                    "name": "Volleyball"
+                }, 
+                {
+                    "code": "PHED 1710", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/1710", 
+                    "name": "Badminton"
+                }, 
+                {
+                    "code": "PHED 1810", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/1810", 
+                    "name": "Soccer"
+                }, 
+                {
+                    "code": "PHED 1910", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/1910", 
+                    "name": "Touch Football"
+                }, 
+                {
+                    "code": "PHED 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/2010", 
+                    "name": "Weight Training"
+                }, 
+                {
+                    "code": "PHED 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/2020", 
+                    "name": "Intro to PE, Rec & Sports Mgt"
+                }, 
+                {
+                    "code": "PHED 2120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/2120", 
+                    "name": "Essential Lifetime Wellness"
+                }, 
+                {
+                    "code": "PHED 2220", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/2220", 
+                    "name": "Intro to Exercise Science"
+                }, 
+                {
+                    "code": "PHED 2320", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/2320", 
+                    "name": "Care Prvntn Athletic Injuries"
+                }, 
+                {
+                    "code": "PHED 2610", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/2610", 
+                    "name": "Archer y"
+                }, 
+                {
+                    "code": "PHED 2710", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHED/2710", 
+                    "name": "Basketball"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/PHED"
+        }, 
+        {
+            "abbr": "PHIL", 
+            "courses": [
+                {
+                    "code": "PHIL 121", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHIL/121", 
+                    "name": "Elementary Ethics"
+                }, 
+                {
+                    "code": "PHIL 201", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHIL/201", 
+                    "name": "Intro to World Religions"
+                }, 
+                {
+                    "code": "PHIL 1030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHIL/1030", 
+                    "name": "Intro to Philosophy"
+                }, 
+                {
+                    "code": "PHIL 1033", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHIL/1033", 
+                    "name": "Introduction to Logic and Critical Thinking"
+                }, 
+                {
+                    "code": "PHIL 2030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHIL/2030", 
+                    "name": "Intro to Ethics"
+                }, 
+                {
+                    "code": "PHIL 2033", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHIL/2033", 
+                    "name": "Major World Religions"
+                }, 
+                {
+                    "code": "PHIL 2430", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHIL/2430", 
+                    "name": "Philosophy of Religion"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/PHIL"
+        }, 
+        {
+            "abbr": "PHYS", 
+            "courses": [
+                {
+                    "code": "PHYS 1030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHYS/1030", 
+                    "name": "Concepts of Physics and Lab"
+                }, 
+                {
+                    "code": "PHYS 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHYS/2010", 
+                    "name": "General Physics I & Lab"
+                }, 
+                {
+                    "code": "PHYS 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHYS/2020", 
+                    "name": "General Physics II & Lab"
+                }, 
+                {
+                    "code": "PHYS 2110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHYS/2110", 
+                    "name": "Physics I & Lab"
+                }, 
+                {
+                    "code": "PHYS 2120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHYS/2120", 
+                    "name": "Physics II"
+                }, 
+                {
+                    "code": "PHYS 2550", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHYS/2550", 
+                    "name": "Engineering Statics"
+                }, 
+                {
+                    "code": "PHYS 2560", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PHYS/2560", 
+                    "name": "Engineering Dynamics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/PHYS"
+        }, 
+        {
+            "abbr": "POL", 
+            "courses": [
+                {
+                    "code": "POL 111", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/POL/111", 
+                    "name": "Esntl Amer Govt and Politics"
+                }, 
+                {
+                    "code": "POL 113", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/POL/113", 
+                    "name": "State and Local Government"
+                }, 
+                {
+                    "code": "POL 201", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/POL/201", 
+                    "name": "Intro to Politics & Government"
+                }, 
+                {
+                    "code": "POL 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/POL/1010", 
+                    "name": "U S Government and Politics"
+                }, 
+                {
+                    "code": "POL 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/POL/1020", 
+                    "name": "Intro to Political Science"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/POL"
+        }, 
+        {
+            "abbr": "POLS", 
+            "courses": [
+                {
+                    "code": "POLS 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/POLS/1020", 
+                    "name": "Intro to Political Science"
+                }, 
+                {
+                    "code": "POLS 1030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/POLS/1030", 
+                    "name": "American Government"
+                }, 
+                {
+                    "code": "POLS 1501", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/POLS/1501", 
+                    "name": "Intro International Relations"
+                }, 
+                {
+                    "code": "POLS 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/POLS/2010", 
+                    "name": "State and Local Government"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/POLS"
+        }, 
+        {
+            "abbr": "PS", 
+            "courses": [
+                {
+                    "code": "PS 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PS/2020", 
+                    "name": "State and Local Government"
+                }
+            ], 
+            "name": "Political Science, RODP (PS)", 
+            "url": "http://www.chegg.com/courses/columbiastate/PS"
+        }, 
+        {
+            "abbr": "PSCI", 
+            "courses": [
+                {
+                    "code": "PSCI 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PSCI/1010", 
+                    "name": "Survey Physical Science I"
+                }, 
+                {
+                    "code": "PSCI 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PSCI/1020", 
+                    "name": "Survey of Physical Science II"
+                }, 
+                {
+                    "code": "PSCI 1030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PSCI/1030", 
+                    "name": "Physical Science & Lab"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/PSCI"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 101", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PSY/101", 
+                    "name": "General Psychology"
+                }, 
+                {
+                    "code": "PSY 203", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PSY/203", 
+                    "name": "Intro to Psychology"
+                }, 
+                {
+                    "code": "PSY 204", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PSY/204", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "PSY 205", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PSY/205", 
+                    "name": "Psychology of Adjustment"
+                }, 
+                {
+                    "code": "PSY 206", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PSY/206", 
+                    "name": "Developmental Psych:Lifespan"
+                }
+            ], 
+            "name": "Psychology (PSY)", 
+            "url": "http://www.chegg.com/courses/columbiastate/PSY"
+        }, 
+        {
+            "abbr": "PSYC", 
+            "courses": [
+                {
+                    "code": "PSYC 223", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PSYC/223", 
+                    "name": "Psychology of Aging"
+                }, 
+                {
+                    "code": "PSYC 1030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PSYC/1030", 
+                    "name": "General Psychology"
+                }, 
+                {
+                    "code": "PSYC 2110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PSYC/2110", 
+                    "name": "Psychology of Adjustment"
+                }, 
+                {
+                    "code": "PSYC 2111", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PSYC/2111", 
+                    "name": "Psychology Human Growth Dvlp"
+                }, 
+                {
+                    "code": "PSYC 2120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PSYC/2120", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "PSYC 2130", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PSYC/2130", 
+                    "name": "Life Span Psychology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/PSYC"
+        }, 
+        {
+            "abbr": "PY", 
+            "courses": [
+                {
+                    "code": "PY 151", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PY/151", 
+                    "name": "Psych of Personal Adjustment"
+                }, 
+                {
+                    "code": "PY 215", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PY/215", 
+                    "name": "Child Growth and Development"
+                }, 
+                {
+                    "code": "PY 223", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/PY/223", 
+                    "name": "Psychology of Aging"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/PY"
+        }, 
+        {
+            "abbr": "RAD", 
+            "courses": [
+                {
+                    "code": "RAD 101", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RAD/101", 
+                    "name": "Intro to Radiography"
+                }, 
+                {
+                    "code": "RAD 106", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RAD/106", 
+                    "name": "Radiation Physics"
+                }, 
+                {
+                    "code": "RAD 112", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RAD/112", 
+                    "name": "Image Production I"
+                }, 
+                {
+                    "code": "RAD 113", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RAD/113", 
+                    "name": "Image Production II"
+                }, 
+                {
+                    "code": "RAD 121", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RAD/121", 
+                    "name": "Radiographic Positioning I Lab"
+                }, 
+                {
+                    "code": "RAD 122", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RAD/122", 
+                    "name": "Radiographic Positioning Lab"
+                }, 
+                {
+                    "code": "RAD 123", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RAD/123", 
+                    "name": "Contrast Media Procedures"
+                }, 
+                {
+                    "code": "RAD 190", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RAD/190", 
+                    "name": "Radiologic Practicum I"
+                }, 
+                {
+                    "code": "RAD 241", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RAD/241", 
+                    "name": "Radiographic Special Procedure"
+                }, 
+                {
+                    "code": "RAD 251", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RAD/251", 
+                    "name": "Srvy Medical/Surgical Disease"
+                }, 
+                {
+                    "code": "RAD 281", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RAD/281", 
+                    "name": "Rad Protection and Rad Seminar"
+                }, 
+                {
+                    "code": "RAD 291", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RAD/291", 
+                    "name": "Radiologic Practicum II"
+                }, 
+                {
+                    "code": "RAD 292", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RAD/292", 
+                    "name": "Adv Rad Phys and Radiobiology"
+                }, 
+                {
+                    "code": "RAD 294", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RAD/294", 
+                    "name": "Radiologic Practicum III"
+                }, 
+                {
+                    "code": "RAD 295", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RAD/295", 
+                    "name": "Radiologic Practicum IV"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/RAD"
+        }, 
+        {
+            "abbr": "RCT", 
+            "courses": [
+                {
+                    "code": "RCT 101", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RCT/101", 
+                    "name": "Fund Respiratory Care I Lab"
+                }, 
+                {
+                    "code": "RCT 102", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RCT/102", 
+                    "name": "Fund Respiratory Care Lab"
+                }, 
+                {
+                    "code": "RCT 120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RCT/120", 
+                    "name": "Resp Care Pharmacology"
+                }, 
+                {
+                    "code": "RCT 130", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RCT/130", 
+                    "name": "Intensive Care Monitoring/Lab"
+                }, 
+                {
+                    "code": "RCT 150", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RCT/150", 
+                    "name": "Arterial Blood Gases & Lab"
+                }, 
+                {
+                    "code": "RCT 191", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RCT/191", 
+                    "name": "Clinical Practice I"
+                }, 
+                {
+                    "code": "RCT 192", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RCT/192", 
+                    "name": "Clinical Practice II"
+                }, 
+                {
+                    "code": "RCT 212", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RCT/212", 
+                    "name": "Pulmonary Functions/Sem. & Lab"
+                }, 
+                {
+                    "code": "RCT 221", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RCT/221", 
+                    "name": "Mechanical Ventilation Lab"
+                }, 
+                {
+                    "code": "RCT 242", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RCT/242", 
+                    "name": "Respiratory Pathophysiology"
+                }, 
+                {
+                    "code": "RCT 252", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RCT/252", 
+                    "name": "Neonatal/Ped Resp Care & Lab"
+                }, 
+                {
+                    "code": "RCT 293", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RCT/293", 
+                    "name": "Clinical Practice III"
+                }, 
+                {
+                    "code": "RCT 294", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/RCT/294", 
+                    "name": "Clinical Practice IV"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/RCT"
+        }, 
+        {
+            "abbr": "READ", 
+            "courses": [
+                {
+                    "code": "READ 0800", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/READ/0800", 
+                    "name": "Learning Support Reading I"
+                }, 
+                {
+                    "code": "READ 800", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/READ/800", 
+                    "name": "Learning Support Reading I"
+                }, 
+                {
+                    "code": "READ 0802", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/READ/0802", 
+                    "name": "Learning Support Reading II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/READ"
+        }, 
+        {
+            "abbr": "SCT", 
+            "courses": [
+                {
+                    "code": "SCT 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SCT/1010", 
+                    "name": "Rigging and Fly Systems"
+                }, 
+                {
+                    "code": "SCT 1030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SCT/1030", 
+                    "name": "Sound for Stage Productions"
+                }, 
+                {
+                    "code": "SCT 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SCT/2010", 
+                    "name": "Advanced Stagecraft Laboratory"
+                }, 
+                {
+                    "code": "SCT 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SCT/2020", 
+                    "name": "Scenic Techniques Laboratory"
+                }, 
+                {
+                    "code": "SCT 2030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SCT/2030", 
+                    "name": "Stage Lighting"
+                }, 
+                {
+                    "code": "SCT 2040", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SCT/2040", 
+                    "name": "Stage Production Laboratory"
+                }
+            ], 
+            "name": "Physical Therapy", 
+            "url": "http://www.chegg.com/courses/columbiastate/SCT"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 201", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SOC/201", 
+                    "name": "Intro to Sociology"
+                }, 
+                {
+                    "code": "SOC 203", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SOC/203", 
+                    "name": "Social Problems"
+                }, 
+                {
+                    "code": "SOC 208", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SOC/208", 
+                    "name": "Introduction to Social Work"
+                }, 
+                {
+                    "code": "SOC 210", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SOC/210", 
+                    "name": "Cultural Anthropology"
+                }, 
+                {
+                    "code": "SOC 212", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SOC/212", 
+                    "name": "Marriage and Family"
+                }, 
+                {
+                    "code": "SOC 217", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SOC/217", 
+                    "name": "Sociology of Aging"
+                }, 
+                {
+                    "code": "SOC 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SOC/1010", 
+                    "name": "Intro to Sociology"
+                }, 
+                {
+                    "code": "SOC 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SOC/1020", 
+                    "name": "Social Problems"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/SOC"
+        }, 
+        {
+            "abbr": "SOCI", 
+            "courses": [
+                {
+                    "code": "SOCI 217", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SOCI/217", 
+                    "name": "Sociology of Aging"
+                }, 
+                {
+                    "code": "SOCI 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SOCI/1010", 
+                    "name": "Intro to Sociology"
+                }, 
+                {
+                    "code": "SOCI 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SOCI/1020", 
+                    "name": "Social Problems"
+                }, 
+                {
+                    "code": "SOCI 1120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SOCI/1120", 
+                    "name": "Intro Cultural Anthropology"
+                }, 
+                {
+                    "code": "SOCI 2000", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SOCI/2000", 
+                    "name": "Marriage and Family"
+                }, 
+                {
+                    "code": "SOCI 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SOCI/2010", 
+                    "name": "Marriage and Family"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/SOCI"
+        }, 
+        {
+            "abbr": "SP", 
+            "courses": [
+                {
+                    "code": "SP 110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SP/110", 
+                    "name": "Fnd of Public Speaking"
+                }
+            ], 
+            "name": "Speech, RODP (SP)", 
+            "url": "http://www.chegg.com/courses/columbiastate/SP"
+        }, 
+        {
+            "abbr": "SPAN", 
+            "courses": [
+                {
+                    "code": "SPAN 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SPAN/1010", 
+                    "name": "Beginning Spanish I"
+                }, 
+                {
+                    "code": "SPAN 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SPAN/1020", 
+                    "name": "Beginning Spanish II"
+                }, 
+                {
+                    "code": "SPAN 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SPAN/2010", 
+                    "name": "Intermediate Spanish I"
+                }, 
+                {
+                    "code": "SPAN 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SPAN/2020", 
+                    "name": "Intermediate Spanish II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/SPAN"
+        }, 
+        {
+            "abbr": "SPCH", 
+            "courses": [
+                {
+                    "code": "SPCH 1010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SPCH/1010", 
+                    "name": "Fund Speech Communication"
+                }, 
+                {
+                    "code": "SPCH 2020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SPCH/2020", 
+                    "name": "Organizational Communication"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/SPCH"
+        }, 
+        {
+            "abbr": "SWRK", 
+            "courses": [
+                {
+                    "code": "SWRK 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/SWRK/2010", 
+                    "name": "Intro to Social Work"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/SWRK"
+        }, 
+        {
+            "abbr": "TELC", 
+            "courses": [
+                {
+                    "code": "TELC 2007", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/TELC/2007", 
+                    "name": "Adolescent Learners"
+                }, 
+                {
+                    "code": "TELC 2008", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/TELC/2008", 
+                    "name": "Facilitating Lrng Asment/ Eval"
+                }, 
+                {
+                    "code": "TELC 2009", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/TELC/2009", 
+                    "name": "Managing Learning Environment"
+                }, 
+                {
+                    "code": "TELC 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/TELC/2010", 
+                    "name": "Survey Excpt & Diversity"
+                }, 
+                {
+                    "code": "TELC 2011", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/TELC/2011", 
+                    "name": "Teaching and Technology"
+                }, 
+                {
+                    "code": "TELC 2012", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/TELC/2012", 
+                    "name": "Teachers as Agents of Change"
+                }, 
+                {
+                    "code": "TELC 2014", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/TELC/2014", 
+                    "name": "Managing Lrn Evrn PSec Setting"
+                }, 
+                {
+                    "code": "TELC 2015", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/TELC/2015", 
+                    "name": "Svy Exctp Dvrsty P-Sec School"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/TELC"
+        }, 
+        {
+            "abbr": "THEA", 
+            "courses": [
+                {
+                    "code": "THEA 1020", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/THEA/1020", 
+                    "name": "Acting"
+                }, 
+                {
+                    "code": "THEA 1030", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/THEA/1030", 
+                    "name": "Introduction to Theatre"
+                }, 
+                {
+                    "code": "THEA 1430", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/THEA/1430", 
+                    "name": "Acting II"
+                }, 
+                {
+                    "code": "THEA 2430", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/THEA/2430", 
+                    "name": "Musical Drama and Speech"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/THEA"
+        }, 
+        {
+            "abbr": "VET", 
+            "courses": [
+                {
+                    "code": "VET 102", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/VET/102", 
+                    "name": "Animal Anatomy Lab"
+                }, 
+                {
+                    "code": "VET 112", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/VET/112", 
+                    "name": "Vet Tech Orientation I Lab"
+                }, 
+                {
+                    "code": "VET 113", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/VET/113", 
+                    "name": "Vet Tech Orientation II Lab"
+                }, 
+                {
+                    "code": "VET 191", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/VET/191", 
+                    "name": "Clinical Practicum I"
+                }, 
+                {
+                    "code": "VET 192", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/VET/192", 
+                    "name": "Clinical Practicum II"
+                }, 
+                {
+                    "code": "VET 193", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/VET/193", 
+                    "name": "Clinical Practicum III"
+                }, 
+                {
+                    "code": "VET 201", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/VET/201", 
+                    "name": "Vet Lab Procedures I (lab)"
+                }, 
+                {
+                    "code": "VET 202", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/VET/202", 
+                    "name": "Vet Lab Procedures II lab"
+                }, 
+                {
+                    "code": "VET 203", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/VET/203", 
+                    "name": "Vet Lab Procedures III Lab"
+                }, 
+                {
+                    "code": "VET 251", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/VET/251", 
+                    "name": "Pharmacology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/VET"
+        }, 
+        {
+            "abbr": "WEB", 
+            "courses": [
+                {
+                    "code": "WEB 2110", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/WEB/2110", 
+                    "name": "Flash"
+                }, 
+                {
+                    "code": "WEB 2120", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/WEB/2120", 
+                    "name": "Audio/Video for the Web"
+                }, 
+                {
+                    "code": "WEB 2400", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/WEB/2400", 
+                    "name": "Project Mgt for the Web"
+                }, 
+                {
+                    "code": "WEB 2811", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/WEB/2811", 
+                    "name": "Advanced Computer Graphics"
+                }, 
+                {
+                    "code": "WEB 2812", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/WEB/2812", 
+                    "name": "Advanced Web Page Site Design"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/WEB"
+        }, 
+        {
+            "abbr": "WMST", 
+            "courses": [
+                {
+                    "code": "WMST 2010", 
+                    "course_url": "http://www.chegg.com/courses/columbiastate/WMST/2010", 
+                    "name": "Intro Women's Studies"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/columbiastate/WMST"
+        }
+    ], 
+    "name": "columbiastate"
+}

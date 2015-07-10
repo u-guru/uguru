@@ -1,0 +1,2204 @@
+{
+    "all_stats": {
+        "num_courses": 390, 
+        "num_departments": 35
+    }, 
+    "departments": [
+        {
+            "abbr": "AC", 
+            "courses": [
+                {
+                    "code": "AC 104", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/AC/104", 
+                    "name": "Principles of Managerial Accounting"
+                }, 
+                {
+                    "code": "AC 203", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/AC/203", 
+                    "name": "Intermediate Accounting"
+                }, 
+                {
+                    "code": "AC 204", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/AC/204", 
+                    "name": "Intermediate Accounting II"
+                }, 
+                {
+                    "code": "AC 301", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/AC/301", 
+                    "name": "Cost Acctounting"
+                }, 
+                {
+                    "code": "AC 302", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/AC/302", 
+                    "name": "Accounting Information Systems"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/mitchell/AC"
+        }, 
+        {
+            "abbr": "AR", 
+            "courses": [
+                {
+                    "code": "AR 101", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/AR/101", 
+                    "name": "History and Appreciation of Art I"
+                }, 
+                {
+                    "code": "AR 102", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/AR/102", 
+                    "name": "History and Appreciation of Art II"
+                }, 
+                {
+                    "code": "AR 199", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/AR/199", 
+                    "name": "Special Topics in Art"
+                }, 
+                {
+                    "code": "AR 206", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/AR/206", 
+                    "name": "Advanced Painting:Oil"
+                }, 
+                {
+                    "code": "AR 225", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/AR/225", 
+                    "name": "The Baroque:Parallels in Art and Music"
+                }, 
+                {
+                    "code": "AR 310", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/AR/310", 
+                    "name": "Art History:Modernism to Post-Modernism"
+                }, 
+                {
+                    "code": "AR 399", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/AR/399", 
+                    "name": "Special Topics in Art History"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/mitchell/AR"
+        }, 
+        {
+            "abbr": "BI", 
+            "courses": [
+                {
+                    "code": "BI 105", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BI/105", 
+                    "name": "Biology I"
+                }, 
+                {
+                    "code": "BI 106", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BI/106", 
+                    "name": "Biology II"
+                }, 
+                {
+                    "code": "BI 120", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BI/120", 
+                    "name": "Fundamentals of Ecology"
+                }, 
+                {
+                    "code": "BI 143", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BI/143", 
+                    "name": "Fundamentals of Life Science except during summer sessions"
+                }, 
+                {
+                    "code": "BI 145", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BI/145", 
+                    "name": "Marine Ecology"
+                }, 
+                {
+                    "code": "BI 201", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BI/201", 
+                    "name": "Fundamentals of Ecology Social Responsibility Course("
+                }, 
+                {
+                    "code": "BI 221", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BI/221", 
+                    "name": "Anatomy and Physiology I"
+                }, 
+                {
+                    "code": "BI 222", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BI/222", 
+                    "name": "Anatomy and Physiology II"
+                }, 
+                {
+                    "code": "BI 239", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BI/239", 
+                    "name": "Microbiology"
+                }, 
+                {
+                    "code": "BI 245", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BI/245", 
+                    "name": "Marine Ecology Social Responsibility Course("
+                }, 
+                {
+                    "code": "BI 251", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BI/251", 
+                    "name": "Genetics"
+                }, 
+                {
+                    "code": "BI 290", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BI/290", 
+                    "name": "Life Science/Pre-Allied Health Internship"
+                }, 
+                {
+                    "code": "BI 301", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BI/301", 
+                    "name": "The Ecology of Long Island Sound"
+                }
+            ], 
+            "name": "Bible", 
+            "url": "http://www.chegg.com/courses/mitchell/BI"
+        }, 
+        {
+            "abbr": "BU", 
+            "courses": [
+                {
+                    "code": "BU 110", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/110", 
+                    "name": "Business Law"
+                }, 
+                {
+                    "code": "BU 123", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/123", 
+                    "name": "Introduction to Business"
+                }, 
+                {
+                    "code": "BU 126", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/126", 
+                    "name": "Managing Interpersonal Skills"
+                }, 
+                {
+                    "code": "BU 214", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/214", 
+                    "name": "Business Administration Internship"
+                }, 
+                {
+                    "code": "BU 218", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/218", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "BU 220", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/220", 
+                    "name": "Group Dynamics and Decision Making"
+                }, 
+                {
+                    "code": "BU 310", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/310", 
+                    "name": "Marketing Research"
+                }, 
+                {
+                    "code": "BU 311", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/311", 
+                    "name": "Principles of Entrepreneurship"
+                }, 
+                {
+                    "code": "BU 313", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/313", 
+                    "name": "Strategic Product Development and Management"
+                }, 
+                {
+                    "code": "BU 314", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/314", 
+                    "name": "Small Business Management"
+                }, 
+                {
+                    "code": "BU 315", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/315", 
+                    "name": "Global Business Communications"
+                }, 
+                {
+                    "code": "BU 316", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/316", 
+                    "name": "Public Speaking and Presentation Development"
+                }, 
+                {
+                    "code": "BU 318", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/318", 
+                    "name": "Customer Relationship Management and Customer Service"
+                }, 
+                {
+                    "code": "BU 321", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/321", 
+                    "name": "Human Resource Management"
+                }, 
+                {
+                    "code": "BU 322", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/322", 
+                    "name": "International Business"
+                }, 
+                {
+                    "code": "BU 323", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/323", 
+                    "name": "Organizational Behavior"
+                }, 
+                {
+                    "code": "BU 324", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/324", 
+                    "name": "Financial Management in Early Childhood Education"
+                }, 
+                {
+                    "code": "BU 325", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/325", 
+                    "name": "Financial Management"
+                }, 
+                {
+                    "code": "BU 326", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/326", 
+                    "name": "Entrepreneurial Creativity"
+                }, 
+                {
+                    "code": "BU 332", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/332", 
+                    "name": "Advertising"
+                }, 
+                {
+                    "code": "BU 340", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/340", 
+                    "name": "Business Ethics"
+                }, 
+                {
+                    "code": "BU 399", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/399", 
+                    "name": "Special Topics in Business"
+                }, 
+                {
+                    "code": "BU 411", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/411", 
+                    "name": "Accounting and Funding for Small Business"
+                }, 
+                {
+                    "code": "BU 412", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/412", 
+                    "name": "Small Business Studies Practicum"
+                }, 
+                {
+                    "code": "BU 413", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/413", 
+                    "name": "Small Business Marketing and Communication"
+                }, 
+                {
+                    "code": "BU 415", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/415", 
+                    "name": "Professional Selling and Sales Techniques"
+                }, 
+                {
+                    "code": "BU 416", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/416", 
+                    "name": "Negotiation"
+                }, 
+                {
+                    "code": "BU 420", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/420", 
+                    "name": "Small Business Internship for Early Childhood Education"
+                }, 
+                {
+                    "code": "BU 425", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/425", 
+                    "name": "Small Business Internship I"
+                }, 
+                {
+                    "code": "BU 426", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/426", 
+                    "name": "Small Business Internship II"
+                }, 
+                {
+                    "code": "BU 427", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/427", 
+                    "name": "Exploring Career Options"
+                }, 
+                {
+                    "code": "BU 428", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/428", 
+                    "name": "Business Plan Development"
+                }, 
+                {
+                    "code": "BU 429", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/BU/429", 
+                    "name": "Marketing and Design Internship"
+                }
+            ], 
+            "name": "School Of Business", 
+            "url": "http://www.chegg.com/courses/mitchell/BU"
+        }, 
+        {
+            "abbr": "CH", 
+            "courses": [
+                {
+                    "code": "CH 110", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CH/110", 
+                    "name": "The Chemistry of Everyday Life"
+                }, 
+                {
+                    "code": "CH 111", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CH/111", 
+                    "name": "General College Chemistry I"
+                }, 
+                {
+                    "code": "CH 112", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CH/112", 
+                    "name": "General College Chemistry II"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/mitchell/CH"
+        }, 
+        {
+            "abbr": "CJ", 
+            "courses": [
+                {
+                    "code": "CJ 4XX", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/4XX", 
+                    "name": "International Law and International Organizations"
+                }, 
+                {
+                    "code": "CJ 245", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/245", 
+                    "name": "Criminology"
+                }, 
+                {
+                    "code": "CJ 247", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/247", 
+                    "name": "Introduction to Criminal Justice"
+                }, 
+                {
+                    "code": "CJ 249", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/249", 
+                    "name": "Corrections in Society"
+                }, 
+                {
+                    "code": "CJ 251", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/251", 
+                    "name": "Juvenile Delinquency and the Juvenile Justice System"
+                }, 
+                {
+                    "code": "CJ 257", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/257", 
+                    "name": "Drugs,Law and Society"
+                }, 
+                {
+                    "code": "CJ 259", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/259", 
+                    "name": "Introduction to Security"
+                }, 
+                {
+                    "code": "CJ 261", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/261", 
+                    "name": "Substantive Criminal Law"
+                }, 
+                {
+                    "code": "CJ 262", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/262", 
+                    "name": "Criminal Justice Internship"
+                }, 
+                {
+                    "code": "CJ 264", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/264", 
+                    "name": "Forensic Psychology"
+                }, 
+                {
+                    "code": "CJ 265", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/265", 
+                    "name": "Probation and Parole"
+                }, 
+                {
+                    "code": "CJ 267", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/267", 
+                    "name": "Criminal Justice Summer Internship"
+                }, 
+                {
+                    "code": "CJ 301", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/301", 
+                    "name": "Comparative Legal Systems"
+                }, 
+                {
+                    "code": "CJ 312", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/312", 
+                    "name": "Organized Crime"
+                }, 
+                {
+                    "code": "CJ 313", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/313", 
+                    "name": "Criminal Justice,Crime,and Public Policy"
+                }, 
+                {
+                    "code": "CJ 314", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/314", 
+                    "name": "Victimology"
+                }, 
+                {
+                    "code": "CJ 315", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/315", 
+                    "name": "Foundations of Public Administration"
+                }, 
+                {
+                    "code": "CJ 319", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/319", 
+                    "name": "White Collar Crime"
+                }, 
+                {
+                    "code": "CJ 320", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/320", 
+                    "name": "Constitutional Criminal Procedure"
+                }, 
+                {
+                    "code": "CJ 322", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/322", 
+                    "name": "Policing in a Free Society"
+                }, 
+                {
+                    "code": "CJ 325", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/325", 
+                    "name": "Law in Society"
+                }, 
+                {
+                    "code": "CJ 399", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/399", 
+                    "name": "Special Topics in Criminal Justice"
+                }, 
+                {
+                    "code": "CJ 411", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/411", 
+                    "name": "Research Methods for Criminal Justice"
+                }, 
+                {
+                    "code": "CJ 440", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/440", 
+                    "name": "Independent Study in Criminal Justice"
+                }, 
+                {
+                    "code": "CJ 441", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/441", 
+                    "name": "Senior Seminar in Criminal Justice"
+                }, 
+                {
+                    "code": "CJ 442", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/442", 
+                    "name": "Senior Criminal Justice Internship"
+                }, 
+                {
+                    "code": "CJ 445", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CJ/445", 
+                    "name": "Ethical and Philosophical Foundations in Criminal Justice"
+                }
+            ], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/mitchell/CJ"
+        }, 
+        {
+            "abbr": "CO", 
+            "courses": [
+                {
+                    "code": "CO 101", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/101", 
+                    "name": "Introduction to Communication"
+                }, 
+                {
+                    "code": "CO 105", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/105", 
+                    "name": "Mass Communication"
+                }, 
+                {
+                    "code": "CO 107", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/107", 
+                    "name": "Communication and Technology"
+                }, 
+                {
+                    "code": "CO 126", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/126", 
+                    "name": "Interpersonal Communication"
+                }, 
+                {
+                    "code": "CO 140", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/140", 
+                    "name": "Video Production I"
+                }, 
+                {
+                    "code": "CO 202", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/202", 
+                    "name": "Communication and Society"
+                }, 
+                {
+                    "code": "CO 205", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/205", 
+                    "name": "Information Technology and the Future"
+                }, 
+                {
+                    "code": "CO 210", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/210", 
+                    "name": "Audio and Radio Production"
+                }, 
+                {
+                    "code": "CO 220", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/220", 
+                    "name": "Communicating in Groups"
+                }, 
+                {
+                    "code": "CO 233", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/233", 
+                    "name": "Communication Research"
+                }, 
+                {
+                    "code": "CO 240", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/240", 
+                    "name": "Video Production II"
+                }, 
+                {
+                    "code": "CO 245", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/245", 
+                    "name": "Persuasion"
+                }, 
+                {
+                    "code": "CO 300", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/300", 
+                    "name": "Music and Entertainment on the Internet"
+                }, 
+                {
+                    "code": "CO 304", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/304", 
+                    "name": "Advanced Radio Production"
+                }, 
+                {
+                    "code": "CO 305", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/305", 
+                    "name": "Advanced Video Production"
+                }, 
+                {
+                    "code": "CO 307", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/307", 
+                    "name": "Conflict and Communication"
+                }, 
+                {
+                    "code": "CO 310", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/310", 
+                    "name": "Gender Communication"
+                }, 
+                {
+                    "code": "CO 312", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/312", 
+                    "name": "Relationship Maintenance"
+                }, 
+                {
+                    "code": "CO 314", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/314", 
+                    "name": "Interviewing"
+                }, 
+                {
+                    "code": "CO 320", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/320", 
+                    "name": "Organizational Communication"
+                }, 
+                {
+                    "code": "CO 325", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/325", 
+                    "name": "Strategic Business Communication"
+                }, 
+                {
+                    "code": "CO 333", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/333", 
+                    "name": "Communication,Performance and the Media"
+                }, 
+                {
+                    "code": "CO 340", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/340", 
+                    "name": "Communication Career Seminar"
+                }, 
+                {
+                    "code": "CO 345", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/345", 
+                    "name": "Video Post Production"
+                }, 
+                {
+                    "code": "CO 399", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/399", 
+                    "name": "Special Topics in Communication"
+                }, 
+                {
+                    "code": "CO 400", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/400", 
+                    "name": "Effective Teambuilding"
+                }, 
+                {
+                    "code": "CO 410", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/410", 
+                    "name": "Advanced Video Post Production"
+                }, 
+                {
+                    "code": "CO 412", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/412", 
+                    "name": "Family Communication"
+                }, 
+                {
+                    "code": "CO 425", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/425", 
+                    "name": "Culture and Communication"
+                }, 
+                {
+                    "code": "CO 430", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/430", 
+                    "name": "Communication Law and Ethics"
+                }, 
+                {
+                    "code": "CO 440", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/440", 
+                    "name": "Independent Study in Communication"
+                }, 
+                {
+                    "code": "CO 441", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/441", 
+                    "name": "Communication Fieldwork I"
+                }, 
+                {
+                    "code": "CO 442", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/442", 
+                    "name": "Communication Fieldwork II"
+                }, 
+                {
+                    "code": "CO 450", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/450", 
+                    "name": "Communication Capstone Course"
+                }, 
+                {
+                    "code": "CO 499", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/CO/499", 
+                    "name": "Special Topics in Communication"
+                }
+            ], 
+            "name": "Communication And Theatre Arts", 
+            "url": "http://www.chegg.com/courses/mitchell/CO"
+        }, 
+        {
+            "abbr": "EC", 
+            "courses": [
+                {
+                    "code": "EC 3XX", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EC/3XX", 
+                    "name": "International Economics"
+                }, 
+                {
+                    "code": "EC 4XX", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EC/4XX", 
+                    "name": "Economic Issues in the Developing World"
+                }, 
+                {
+                    "code": "EC 132", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EC/132", 
+                    "name": "Microeconomics"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/mitchell/EC"
+        }, 
+        {
+            "abbr": "ED", 
+            "courses": [
+                {
+                    "code": "ED 110", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/110", 
+                    "name": "Introduction to Early Childhood Education"
+                }, 
+                {
+                    "code": "ED 206", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/206", 
+                    "name": "Mathematics,Science and Technology in Early Childhood Education"
+                }, 
+                {
+                    "code": "ED 222", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/222", 
+                    "name": "Methods & Techniques in Early Childhood Education"
+                }, 
+                {
+                    "code": "ED 261", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/261", 
+                    "name": "Introduction to Children with Special Needs"
+                }, 
+                {
+                    "code": "ED 274", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/274", 
+                    "name": "Literacy Development in Early Childhood Education"
+                }, 
+                {
+                    "code": "ED 275", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/275", 
+                    "name": "Music,Art and Aesthetics for the Young Child"
+                }, 
+                {
+                    "code": "ED 280", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/280", 
+                    "name": "Observation and Practicum"
+                }, 
+                {
+                    "code": "ED 281", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/281", 
+                    "name": "Associate's Seminar in Early Childhood Education"
+                }, 
+                {
+                    "code": "ED 302", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/302", 
+                    "name": "Social Studies in Early Childhood Education"
+                }, 
+                {
+                    "code": "ED 311", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/311", 
+                    "name": "Play in Early Childhood:Theory,Research and Practice"
+                }, 
+                {
+                    "code": "ED 312", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/312", 
+                    "name": "Infant and Toddler Curriculum"
+                }, 
+                {
+                    "code": "ED 313", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/313", 
+                    "name": "Parent and Family Involvement in Early Childhood Programs"
+                }, 
+                {
+                    "code": "ED 315", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/315", 
+                    "name": "Schools and Societies"
+                }, 
+                {
+                    "code": "ED 325", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/325", 
+                    "name": "Reading and Language Arts in Early Childhood"
+                }, 
+                {
+                    "code": "ED 399", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/399", 
+                    "name": "Special Topics in Early Childhood Education"
+                }, 
+                {
+                    "code": "ED 400", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/400", 
+                    "name": "Integrated Curriculum in Early Childhood Programs"
+                }, 
+                {
+                    "code": "ED 414", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/414", 
+                    "name": "Administration of Early Childhood Programs"
+                }, 
+                {
+                    "code": "ED 415", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/415", 
+                    "name": "Educational Evaluation and Assessment"
+                }, 
+                {
+                    "code": "ED 431", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/431", 
+                    "name": "Observation and Student Teaching"
+                }, 
+                {
+                    "code": "ED 432", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ED/432", 
+                    "name": "Senior Seminar in Early Childhood Education"
+                }
+            ], 
+            "name": "Ed", 
+            "url": "http://www.chegg.com/courses/mitchell/ED"
+        }, 
+        {
+            "abbr": "EL", 
+            "courses": [
+                {
+                    "code": "EL 100", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/100", 
+                    "name": "English for Second Language Students"
+                }, 
+                {
+                    "code": "EL 101", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/101", 
+                    "name": "Introduction to College Writing"
+                }, 
+                {
+                    "code": "EL 102", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/102", 
+                    "name": "College Writing and Research"
+                }, 
+                {
+                    "code": "EL 109", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/109", 
+                    "name": "Journalism I"
+                }, 
+                {
+                    "code": "EL 110", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/110", 
+                    "name": "Journalism II"
+                }, 
+                {
+                    "code": "EL 199", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/199", 
+                    "name": "Special Topics in English"
+                }, 
+                {
+                    "code": "EL 205", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/205", 
+                    "name": "World Literature I"
+                }, 
+                {
+                    "code": "EL 206", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/206", 
+                    "name": "World Literature II"
+                }, 
+                {
+                    "code": "EL 215", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/215", 
+                    "name": "American Literature I"
+                }, 
+                {
+                    "code": "EL 216", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/216", 
+                    "name": "American Literature II"
+                }, 
+                {
+                    "code": "EL 217", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/217", 
+                    "name": "The Short Story"
+                }, 
+                {
+                    "code": "EL 218", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/218", 
+                    "name": "Popular Literature"
+                }, 
+                {
+                    "code": "EL 221", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/221", 
+                    "name": "Introduction to Drama and Theatre"
+                }, 
+                {
+                    "code": "EL 230", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/230", 
+                    "name": "Effective Speech and Communication"
+                }, 
+                {
+                    "code": "EL 301", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/301", 
+                    "name": "Difference and Disability in American Culture"
+                }, 
+                {
+                    "code": "EL 307", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/307", 
+                    "name": "British Literature I"
+                }, 
+                {
+                    "code": "EL 308", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/308", 
+                    "name": "British Literature II"
+                }, 
+                {
+                    "code": "EL 309", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/309", 
+                    "name": "African-American Literature"
+                }, 
+                {
+                    "code": "EL 320", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/320", 
+                    "name": "Eugene O'Neill"
+                }, 
+                {
+                    "code": "EL 325", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/325", 
+                    "name": "Studies in Literature and Society"
+                }, 
+                {
+                    "code": "EL 330", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/330", 
+                    "name": "American Dream"
+                }, 
+                {
+                    "code": "EL 399", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/399", 
+                    "name": "Special Topics in Literature"
+                }, 
+                {
+                    "code": "EL 401", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/EL/401", 
+                    "name": "Advanced Expository Writing"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/mitchell/EL"
+        }, 
+        {
+            "abbr": "ES", 
+            "courses": [
+                {
+                    "code": "ES 101", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ES/101", 
+                    "name": "Environmental Studies"
+                }, 
+                {
+                    "code": "ES 120", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ES/120", 
+                    "name": "Scientific Writing"
+                }, 
+                {
+                    "code": "ES 150", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ES/150", 
+                    "name": "Career Seminar-Career Options"
+                }, 
+                {
+                    "code": "ES 210", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ES/210", 
+                    "name": "Environmental Instrumentation"
+                }, 
+                {
+                    "code": "ES 315", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ES/315", 
+                    "name": "Environmental Economics"
+                }, 
+                {
+                    "code": "ES 320", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ES/320", 
+                    "name": "Classic Writings on the EL320 Environment"
+                }, 
+                {
+                    "code": "ES 330", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ES/330", 
+                    "name": "Human Health and the Environment"
+                }, 
+                {
+                    "code": "ES 340", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ES/340", 
+                    "name": "Science and Public Policy"
+                }, 
+                {
+                    "code": "ES 350", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ES/350", 
+                    "name": "Societal Impact of Global Climate Change"
+                }, 
+                {
+                    "code": "ES 360", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ES/360", 
+                    "name": "Environmental Law"
+                }, 
+                {
+                    "code": "ES 490/491", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/ES/490%2F491", 
+                    "name": "Senior Capstone/Internship"
+                }
+            ], 
+            "name": "Es Exercise Science", 
+            "url": "http://www.chegg.com/courses/mitchell/ES"
+        }, 
+        {
+            "abbr": "FR", 
+            "courses": [
+                {
+                    "code": "FR 101", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/FR/101", 
+                    "name": "Beginning French I"
+                }, 
+                {
+                    "code": "FR 102", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/FR/102", 
+                    "name": "Beginning French II"
+                }, 
+                {
+                    "code": "FR 201", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/FR/201", 
+                    "name": "Intermediate French I"
+                }, 
+                {
+                    "code": "FR 202", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/FR/202", 
+                    "name": "Intermediate French II"
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/mitchell/FR"
+        }, 
+        {
+            "abbr": "FS", 
+            "courses": [
+                {
+                    "code": "FS 101", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/FS/101", 
+                    "name": "First Year Seminar"
+                }
+            ], 
+            "name": "Food Science", 
+            "url": "http://www.chegg.com/courses/mitchell/FS"
+        }, 
+        {
+            "abbr": "GD", 
+            "courses": [
+                {
+                    "code": "GD 101", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GD/101", 
+                    "name": "Color Concept and Design"
+                }, 
+                {
+                    "code": "GD 105", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GD/105", 
+                    "name": "Computer Graphics"
+                }, 
+                {
+                    "code": "GD 110", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GD/110", 
+                    "name": "Graphic Design I"
+                }, 
+                {
+                    "code": "GD 199", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GD/199", 
+                    "name": "Special Topics in Graphic Design"
+                }, 
+                {
+                    "code": "GD 210", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GD/210", 
+                    "name": "Graphic Design II"
+                }, 
+                {
+                    "code": "GD 260", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GD/260", 
+                    "name": "Graphic Design III"
+                }, 
+                {
+                    "code": "GD 265", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GD/265", 
+                    "name": "Materials and Techniques"
+                }, 
+                {
+                    "code": "GD 275", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GD/275", 
+                    "name": "Introduction to Digital Filmmaking"
+                }, 
+                {
+                    "code": "GD 280", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GD/280", 
+                    "name": "Digital Photography"
+                }, 
+                {
+                    "code": "GD 290", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GD/290", 
+                    "name": "Introduction to 3 Dimensional Animation"
+                }, 
+                {
+                    "code": "GD 299", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GD/299", 
+                    "name": "Graphic Design Internship"
+                }, 
+                {
+                    "code": "GD 399", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GD/399", 
+                    "name": "Special Topics in Graphic Design"
+                }, 
+                {
+                    "code": "GD 410", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GD/410", 
+                    "name": "Graphic Design IV"
+                }, 
+                {
+                    "code": "GD 411", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GD/411", 
+                    "name": "Graphic Design V"
+                }
+            ], 
+            "name": "Graphic Design", 
+            "url": "http://www.chegg.com/courses/mitchell/GD"
+        }, 
+        {
+            "abbr": "GS", 
+            "courses": [
+                {
+                    "code": "GS 3XX", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GS/3XX", 
+                    "name": "History,Society and Culture in the Middle East"
+                }, 
+                {
+                    "code": "GS 466", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GS/466", 
+                    "name": "Internship in Global Studies"
+                }, 
+                {
+                    "code": "GS 490", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GS/490", 
+                    "name": "Senior Project in Global Studies"
+                }
+            ], 
+            "name": "Global Studies", 
+            "url": "http://www.chegg.com/courses/mitchell/GS"
+        }, 
+        {
+            "abbr": "GV", 
+            "courses": [
+                {
+                    "code": "GV 4XX", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GV/4XX", 
+                    "name": "International Issues"
+                }, 
+                {
+                    "code": "GV 210", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GV/210", 
+                    "name": "Geography and International Relations"
+                }, 
+                {
+                    "code": "GV 232", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GV/232", 
+                    "name": "Political Science Internship"
+                }, 
+                {
+                    "code": "GV 301", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GV/301", 
+                    "name": "The American Presidency"
+                }, 
+                {
+                    "code": "GV 315", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/GV/315", 
+                    "name": "Foundations of Public Administration"
+                }
+            ], 
+            "name": "Government", 
+            "url": "http://www.chegg.com/courses/mitchell/GV"
+        }, 
+        {
+            "abbr": "HD", 
+            "courses": [
+                {
+                    "code": "HD 108", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/108", 
+                    "name": "Introduction to Human Development"
+                }, 
+                {
+                    "code": "HD 110", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/110", 
+                    "name": "Introduction to Race,Ethnicity,and Culture"
+                }, 
+                {
+                    "code": "HD 209", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/209", 
+                    "name": "Child Development"
+                }, 
+                {
+                    "code": "HD 210", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/210", 
+                    "name": "Adolescent Development"
+                }, 
+                {
+                    "code": "HD 211", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/211", 
+                    "name": "Adult Development"
+                }, 
+                {
+                    "code": "HD 220", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/220", 
+                    "name": "Career Concepts in Human Development and Family Studies"
+                }, 
+                {
+                    "code": "HD 305", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/305", 
+                    "name": "Ethics,Character and Moral Development"
+                }, 
+                {
+                    "code": "HD 310", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/310", 
+                    "name": "Development of the Young Child:Birth-Primary Grades"
+                }, 
+                {
+                    "code": "HD 330", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/330", 
+                    "name": "Behavioral Statistics"
+                }, 
+                {
+                    "code": "HD 331", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/331", 
+                    "name": "Research Methods in Human Development and Family Studies I"
+                }, 
+                {
+                    "code": "HD 335", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/335", 
+                    "name": "Family Services Programming"
+                }, 
+                {
+                    "code": "HD 339", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/339", 
+                    "name": "Systems and Theories of Family Development"
+                }, 
+                {
+                    "code": "HD 340", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/340", 
+                    "name": "Human Development and Family Studies Internship I"
+                }, 
+                {
+                    "code": "HD 399", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/399", 
+                    "name": "Special Topics in Human Development and Family Studies"
+                }, 
+                {
+                    "code": "HD 440", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/440", 
+                    "name": "Human Development and Family Studies Internship II"
+                }, 
+                {
+                    "code": "HD 441", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/441", 
+                    "name": "Gender Issues in Human Development and Family Studies"
+                }, 
+                {
+                    "code": "HD 443", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/443", 
+                    "name": "Research Methods in Human Development and Family Studies II"
+                }, 
+                {
+                    "code": "HD 445", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/445", 
+                    "name": "Health Issues in Human Development and Family Studies"
+                }, 
+                {
+                    "code": "HD 446", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/446", 
+                    "name": "Perspectives on Cross-Cultural Development"
+                }, 
+                {
+                    "code": "HD 451", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/451", 
+                    "name": "Families in Crisis"
+                }, 
+                {
+                    "code": "HD 498", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HD/498", 
+                    "name": "Capstone Seminar in Human Development and Family Studies"
+                }
+            ], 
+            "name": "Human Developmt Family Stdy", 
+            "url": "http://www.chegg.com/courses/mitchell/HD"
+        }, 
+        {
+            "abbr": "HF", 
+            "courses": [
+                {
+                    "code": "HF 227", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HF/227", 
+                    "name": "Health Fitness Practicum"
+                }
+            ], 
+            "name": "Health And Fitness", 
+            "url": "http://www.chegg.com/courses/mitchell/HF"
+        }, 
+        {
+            "abbr": "HI", 
+            "courses": [
+                {
+                    "code": "HI 3XX", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HI/3XX", 
+                    "name": "World Civilizations Since 1500"
+                }, 
+                {
+                    "code": "HI 116", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HI/116", 
+                    "name": "Development of Western Civilization II"
+                }, 
+                {
+                    "code": "HI 199", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HI/199", 
+                    "name": "Special Topics in History"
+                }, 
+                {
+                    "code": "HI 245", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HI/245", 
+                    "name": "Recent United States History(AI)"
+                }, 
+                {
+                    "code": "HI 246", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HI/246", 
+                    "name": "The World in the Twentieth Century"
+                }, 
+                {
+                    "code": "HI 295", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HI/295", 
+                    "name": "History Through Film"
+                }, 
+                {
+                    "code": "HI 297", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HI/297", 
+                    "name": "Women in United States History(AI)(D)"
+                }, 
+                {
+                    "code": "HI 399", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HI/399", 
+                    "name": "Special Topics in History"
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/mitchell/HI"
+        }, 
+        {
+            "abbr": "HO", 
+            "courses": [
+                {
+                    "code": "HO 101", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HO/101", 
+                    "name": "Introduction to Homeland Security"
+                }, 
+                {
+                    "code": "HO 301", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HO/301", 
+                    "name": "Legal Issues in Homeland Security"
+                }, 
+                {
+                    "code": "HO 305", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HO/305", 
+                    "name": "Homeland Security Management"
+                }, 
+                {
+                    "code": "HO 410", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HO/410", 
+                    "name": "Terrorism"
+                }
+            ], 
+            "name": "Horticulture", 
+            "url": "http://www.chegg.com/courses/mitchell/HO"
+        }, 
+        {
+            "abbr": "HS", 
+            "courses": [
+                {
+                    "code": "HS 115", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HS/115", 
+                    "name": "Introduction to Human Services and Social Welfare"
+                }, 
+                {
+                    "code": "HS 226", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HS/226", 
+                    "name": "Human Service Internship"
+                }, 
+                {
+                    "code": "HS 315", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HS/315", 
+                    "name": "Foundations of Public Administration"
+                }
+            ], 
+            "name": "The Heller School For Social Policy And Management", 
+            "url": "http://www.chegg.com/courses/mitchell/HS"
+        }, 
+        {
+            "abbr": "HT", 
+            "courses": [
+                {
+                    "code": "HT 2XX", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HT/2XX", 
+                    "name": "Tourism Management"
+                }, 
+                {
+                    "code": "HT 101", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HT/101", 
+                    "name": "Introduction to Hospitality Management"
+                }, 
+                {
+                    "code": "HT 110", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HT/110", 
+                    "name": "Introduction to Food Service"
+                }, 
+                {
+                    "code": "HT 201", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HT/201", 
+                    "name": "Hospitality & Tourism Marketing"
+                }, 
+                {
+                    "code": "HT 250", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HT/250", 
+                    "name": "Hospitality Internship"
+                }, 
+                {
+                    "code": "HT 301", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HT/301", 
+                    "name": "Hospitality Property Management"
+                }, 
+                {
+                    "code": "HT 303", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HT/303", 
+                    "name": "Hospitality Financial Analysis"
+                }, 
+                {
+                    "code": "HT 310", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HT/310", 
+                    "name": "Restaurant Management"
+                }, 
+                {
+                    "code": "HT 330", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HT/330", 
+                    "name": "Event Planning"
+                }, 
+                {
+                    "code": "HT 340", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HT/340", 
+                    "name": "Customer Relations Management"
+                }, 
+                {
+                    "code": "HT 405", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HT/405", 
+                    "name": "Business and Hospitality Law"
+                }, 
+                {
+                    "code": "HT 450", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HT/450", 
+                    "name": "Co-op Experience I"
+                }, 
+                {
+                    "code": "HT 451", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HT/451", 
+                    "name": "Co-op Experience II"
+                }
+            ], 
+            "name": "Horticulture Technology", 
+            "url": "http://www.chegg.com/courses/mitchell/HT"
+        }, 
+        {
+            "abbr": "HU", 
+            "courses": [
+                {
+                    "code": "HU 101", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HU/101", 
+                    "name": "Discovering The Human Adventure"
+                }, 
+                {
+                    "code": "HU 102", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HU/102", 
+                    "name": "Profiles in Human Excellence"
+                }, 
+                {
+                    "code": "HU 199", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HU/199", 
+                    "name": "Special Topics in Humanities"
+                }, 
+                {
+                    "code": "HU 201", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HU/201", 
+                    "name": "Survey of The Human Adventure"
+                }, 
+                {
+                    "code": "HU 210", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HU/210", 
+                    "name": "Creating in the Caf\u00c3\u0192\u00c2\u00a9:Artists of Romanticism"
+                }, 
+                {
+                    "code": "HU 225", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HU/225", 
+                    "name": "The Baroque:Parallels in Art and Music"
+                }, 
+                {
+                    "code": "HU 250", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HU/250", 
+                    "name": "Life Writing and Social Change(W)"
+                }, 
+                {
+                    "code": "HU 301", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HU/301", 
+                    "name": "Difference and Disability in American Culture"
+                }, 
+                {
+                    "code": "HU 305", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HU/305", 
+                    "name": "African Experience Across the World"
+                }, 
+                {
+                    "code": "HU 310", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HU/310", 
+                    "name": "Holocaust:Its Implications and Contexts(D)"
+                }, 
+                {
+                    "code": "HU 320", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HU/320", 
+                    "name": "Eugene O'Neill"
+                }, 
+                {
+                    "code": "HU 330", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HU/330", 
+                    "name": "American Dream"
+                }, 
+                {
+                    "code": "HU 399", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HU/399", 
+                    "name": "Special Topics in Humanities"
+                }, 
+                {
+                    "code": "HU 401", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/HU/401", 
+                    "name": "Senior Seminar"
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/mitchell/HU"
+        }, 
+        {
+            "abbr": "IS", 
+            "courses": [
+                {
+                    "code": "IS 120", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/IS/120", 
+                    "name": "Fundamentals of Information Systems"
+                }, 
+                {
+                    "code": "IS 199", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/IS/199", 
+                    "name": "Special Topics In Computer and Information Systems"
+                }, 
+                {
+                    "code": "IS 282", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/IS/282", 
+                    "name": "System Analysis and Design"
+                }, 
+                {
+                    "code": "IS 284", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/IS/284", 
+                    "name": "Digital Publishing and Multimedia"
+                }, 
+                {
+                    "code": "IS 310", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/IS/310", 
+                    "name": "E-Business Systems"
+                }, 
+                {
+                    "code": "IS 312", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/IS/312", 
+                    "name": "Web Design and Development"
+                }, 
+                {
+                    "code": "IS 314", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/IS/314", 
+                    "name": "Ethics and Technology"
+                }, 
+                {
+                    "code": "IS 315", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/IS/315", 
+                    "name": "Computer Applications in Business"
+                }, 
+                {
+                    "code": "IS 410", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/IS/410", 
+                    "name": "Management Information Systems"
+                }
+            ], 
+            "name": "Information Systems", 
+            "url": "http://www.chegg.com/courses/mitchell/IS"
+        }, 
+        {
+            "abbr": "LS", 
+            "courses": [
+                {
+                    "code": "LS 350", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/LS/350", 
+                    "name": "Liberal Studies Career Seminar"
+                }, 
+                {
+                    "code": "LS 399", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/LS/399", 
+                    "name": "Special Topics in Liberal Studies"
+                }, 
+                {
+                    "code": "LS 401", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/LS/401", 
+                    "name": "Advanced Expository Writing"
+                }, 
+                {
+                    "code": "LS 450", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/LS/450", 
+                    "name": "Liberal Studies Practicum I"
+                }, 
+                {
+                    "code": "LS 451", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/LS/451", 
+                    "name": "Liberal Studies Practicum II"
+                }, 
+                {
+                    "code": "LS 460", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/LS/460", 
+                    "name": "Liberal Studies Senior Seminar"
+                }
+            ], 
+            "name": "Leadership Studies", 
+            "url": "http://www.chegg.com/courses/mitchell/LS"
+        }, 
+        {
+            "abbr": "MA", 
+            "courses": [
+                {
+                    "code": "MA 101", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MA/101", 
+                    "name": "Essential Mathematics and Applications"
+                }, 
+                {
+                    "code": "MA 102", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MA/102", 
+                    "name": "Fundamentals of Algebra"
+                }, 
+                {
+                    "code": "MA 103", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MA/103", 
+                    "name": "Intermediate College Algebra"
+                }, 
+                {
+                    "code": "MA 104", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MA/104", 
+                    "name": "Mathematics for Liberal Arts"
+                }, 
+                {
+                    "code": "MA 105", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MA/105", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MA 110", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MA/110", 
+                    "name": "General Calculus"
+                }, 
+                {
+                    "code": "MA 111", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MA/111", 
+                    "name": "Introduction to Statistical Analysis"
+                }, 
+                {
+                    "code": "MA 114", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MA/114", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MA 115", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MA/115", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MA 217", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MA/217", 
+                    "name": "Calculus III"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/mitchell/MA"
+        }, 
+        {
+            "abbr": "MU", 
+            "courses": [
+                {
+                    "code": "MU 110", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MU/110", 
+                    "name": "Contemporary Music:Blues,Jazz and Rock"
+                }, 
+                {
+                    "code": "MU 119", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MU/119", 
+                    "name": "Concert Choir"
+                }, 
+                {
+                    "code": "MU 120", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MU/120", 
+                    "name": "Concert Choir"
+                }, 
+                {
+                    "code": "MU 121", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MU/121", 
+                    "name": "Concert Choir"
+                }, 
+                {
+                    "code": "MU 122", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MU/122", 
+                    "name": "Concert Choir"
+                }, 
+                {
+                    "code": "MU 201", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MU/201", 
+                    "name": "History and Appreciation of Music I"
+                }, 
+                {
+                    "code": "MU 202", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MU/202", 
+                    "name": "History and Appreciation of Music II"
+                }, 
+                {
+                    "code": "MU 225", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MU/225", 
+                    "name": "The Baroque:Parallels in Art and Music"
+                }, 
+                {
+                    "code": "MU 310", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MU/310", 
+                    "name": "Music of the Hispanic Culture"
+                }, 
+                {
+                    "code": "MU 311", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/MU/311", 
+                    "name": "Music of the African Culture"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/mitchell/MU"
+        }, 
+        {
+            "abbr": "PE", 
+            "courses": [
+                {
+                    "code": "PE 101", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/101", 
+                    "name": "Fitness and Wellness Concepts II"
+                }, 
+                {
+                    "code": "PE 105", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/105", 
+                    "name": "Sailing"
+                }, 
+                {
+                    "code": "PE 106", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/106", 
+                    "name": "Soccer"
+                }, 
+                {
+                    "code": "PE 107", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/107", 
+                    "name": "Softball"
+                }, 
+                {
+                    "code": "PE 108", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/108", 
+                    "name": "Golf"
+                }, 
+                {
+                    "code": "PE 110", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/110", 
+                    "name": "Tennis"
+                }, 
+                {
+                    "code": "PE 112", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/112", 
+                    "name": "Volleyball"
+                }, 
+                {
+                    "code": "PE 114", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/114", 
+                    "name": "Physical Education Activities for Children"
+                }, 
+                {
+                    "code": "PE 117", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/117", 
+                    "name": "Badminton"
+                }, 
+                {
+                    "code": "PE 118", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/118", 
+                    "name": "Basketball"
+                }, 
+                {
+                    "code": "PE 120", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/120", 
+                    "name": "Nutrition,Health and Safety for Teachers of Young Children"
+                }, 
+                {
+                    "code": "PE 121", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/121", 
+                    "name": "First Aid and Safety"
+                }, 
+                {
+                    "code": "PE 123", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/123", 
+                    "name": "Foundations of Physical Education"
+                }, 
+                {
+                    "code": "PE 125", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/125", 
+                    "name": "Conditioning and Fitness"
+                }, 
+                {
+                    "code": "PE 222", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/222", 
+                    "name": "Personal and Community Health"
+                }, 
+                {
+                    "code": "PE 226", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/226", 
+                    "name": "Nutrition"
+                }, 
+                {
+                    "code": "PE 228", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/228", 
+                    "name": "Principles and Practices of Coaching"
+                }, 
+                {
+                    "code": "PE 231", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PE/231", 
+                    "name": "Prevention and Care of Athletic Injuries"
+                }
+            ], 
+            "name": "Physical Education", 
+            "url": "http://www.chegg.com/courses/mitchell/PE"
+        }, 
+        {
+            "abbr": "PH", 
+            "courses": [
+                {
+                    "code": "PH 3XX", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PH/3XX", 
+                    "name": "Ethics and International Relations"
+                }, 
+                {
+                    "code": "PH 120", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PH/120", 
+                    "name": "Philosophy of Popular Culture"
+                }, 
+                {
+                    "code": "PH 219", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PH/219", 
+                    "name": "History of Philosophy:Ancient,Medieval"
+                }, 
+                {
+                    "code": "PH 220", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PH/220", 
+                    "name": "History of Philosophy:Modern Thought"
+                }, 
+                {
+                    "code": "PH 221", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PH/221", 
+                    "name": "History of Western Philosophy(W)"
+                }, 
+                {
+                    "code": "PH 223", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PH/223", 
+                    "name": "Comparative World Religions(E)"
+                }, 
+                {
+                    "code": "PH 304", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PH/304", 
+                    "name": "Issues in Ethics"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/mitchell/PH"
+        }, 
+        {
+            "abbr": "PS", 
+            "courses": [
+                {
+                    "code": "PS 130", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PS/130", 
+                    "name": "Physics I"
+                }, 
+                {
+                    "code": "PS 131", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PS/131", 
+                    "name": "Physics II"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/mitchell/PS"
+        }, 
+        {
+            "abbr": "PY", 
+            "courses": [
+                {
+                    "code": "PY 106", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/106", 
+                    "name": "General Psychology II"
+                }, 
+                {
+                    "code": "PY 108", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/108", 
+                    "name": "Introduction to Human Development"
+                }, 
+                {
+                    "code": "PY 199", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/199", 
+                    "name": "Special Topics in Psychology"
+                }, 
+                {
+                    "code": "PY 209", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/209", 
+                    "name": "Child Development"
+                }, 
+                {
+                    "code": "PY 210", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/210", 
+                    "name": "Adolescent Development"
+                }, 
+                {
+                    "code": "PY 211", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/211", 
+                    "name": "Adult Development"
+                }, 
+                {
+                    "code": "PY 215", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/215", 
+                    "name": "Educational Psychology"
+                }, 
+                {
+                    "code": "PY 264", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/264", 
+                    "name": "Forensic Psychology"
+                }, 
+                {
+                    "code": "PY 270", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/270", 
+                    "name": "Psychology of Learning and Memory"
+                }, 
+                {
+                    "code": "PY 300", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/300", 
+                    "name": "Brain and Behavior"
+                }, 
+                {
+                    "code": "PY 303", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/303", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "PY 310", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/310", 
+                    "name": "Development of the Young Child:Birth-Primary Grades"
+                }, 
+                {
+                    "code": "PY 311", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/311", 
+                    "name": "Community Psychology"
+                }, 
+                {
+                    "code": "PY 312", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/312", 
+                    "name": "Industrial Psychology"
+                }, 
+                {
+                    "code": "PY 313", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/313", 
+                    "name": "Death and Dying"
+                }, 
+                {
+                    "code": "PY 320", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/320", 
+                    "name": "Theories of Personality"
+                }, 
+                {
+                    "code": "PY 325", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/325", 
+                    "name": "Psychology of Aging"
+                }, 
+                {
+                    "code": "PY 330", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/330", 
+                    "name": "Behavioral Statistics"
+                }, 
+                {
+                    "code": "PY 331", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/331", 
+                    "name": "Research Methods in Psychology I"
+                }, 
+                {
+                    "code": "PY 332", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/332", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PY 340", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/340", 
+                    "name": "Psychology Internship I"
+                }, 
+                {
+                    "code": "PY 350", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/350", 
+                    "name": "Psychology of Creativity"
+                }, 
+                {
+                    "code": "PY 375", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/375", 
+                    "name": "History and Systems of Psychology"
+                }, 
+                {
+                    "code": "PY 392", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/392", 
+                    "name": "Counseling Theory"
+                }, 
+                {
+                    "code": "PY 395", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/395", 
+                    "name": "Psychology of Drugs and Behavior"
+                }, 
+                {
+                    "code": "PY 399", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/399", 
+                    "name": "Special Topics in Psychology"
+                }, 
+                {
+                    "code": "PY 440", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/440", 
+                    "name": "Psychology Internship II"
+                }, 
+                {
+                    "code": "PY 443", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/443", 
+                    "name": "Research Methods in Psychology II"
+                }, 
+                {
+                    "code": "PY 451", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/451", 
+                    "name": "Families in Crisis"
+                }, 
+                {
+                    "code": "PY 498", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/PY/498", 
+                    "name": "Capstone Seminar in Psychology"
+                }
+            ], 
+            "name": "Psychology", 
+            "url": "http://www.chegg.com/courses/mitchell/PY"
+        }, 
+        {
+            "abbr": "SM", 
+            "courses": [
+                {
+                    "code": "SM 110", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SM/110", 
+                    "name": "Introduction to Sport Management"
+                }, 
+                {
+                    "code": "SM 207", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SM/207", 
+                    "name": "Sport Marketing"
+                }, 
+                {
+                    "code": "SM 209", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SM/209", 
+                    "name": "Athletic Administration"
+                }, 
+                {
+                    "code": "SM 210", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SM/210", 
+                    "name": "Sport Management Practicum"
+                }, 
+                {
+                    "code": "SM 303", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SM/303", 
+                    "name": "Legal Issues in Sport"
+                }, 
+                {
+                    "code": "SM 309", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SM/309", 
+                    "name": "Sport Promotion and Media"
+                }, 
+                {
+                    "code": "SM 325", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SM/325", 
+                    "name": "Sports Psychology"
+                }, 
+                {
+                    "code": "SM 399", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SM/399", 
+                    "name": "Special Topics in Sports Management"
+                }, 
+                {
+                    "code": "SM 401", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SM/401", 
+                    "name": "Ethics in Sport"
+                }, 
+                {
+                    "code": "SM 403", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SM/403", 
+                    "name": "Sport Business and Finance"
+                }, 
+                {
+                    "code": "SM 430", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SM/430", 
+                    "name": "Senior Seminar in Sport Management"
+                }, 
+                {
+                    "code": "SM 450", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SM/450", 
+                    "name": "Sport Management Internship"
+                }, 
+                {
+                    "code": "SM 452", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SM/452", 
+                    "name": "Sport Management Senior Research Project"
+                }
+            ], 
+            "name": "Sports Management", 
+            "url": "http://www.chegg.com/courses/mitchell/SM"
+        }, 
+        {
+            "abbr": "SO", 
+            "courses": [
+                {
+                    "code": "SO 104", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SO/104", 
+                    "name": "Social Issues"
+                }, 
+                {
+                    "code": "SO 110", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SO/110", 
+                    "name": "Introduction to Cultural Anthropology"
+                }, 
+                {
+                    "code": "SO 199", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SO/199", 
+                    "name": "Selected Topics in Sociology"
+                }, 
+                {
+                    "code": "SO 207", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SO/207", 
+                    "name": "Marriage and Family"
+                }, 
+                {
+                    "code": "SO 227", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SO/227", 
+                    "name": "Human Sexuality"
+                }, 
+                {
+                    "code": "SO 310", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SO/310", 
+                    "name": "Leadership and Group Processes"
+                }, 
+                {
+                    "code": "SO 315", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SO/315", 
+                    "name": "Schools and Societies"
+                }, 
+                {
+                    "code": "SO 399", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SO/399", 
+                    "name": "Special Topics in Sociology"
+                }, 
+                {
+                    "code": "SO 410", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SO/410", 
+                    "name": "Urban Sociology"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/mitchell/SO"
+        }, 
+        {
+            "abbr": "SP", 
+            "courses": [
+                {
+                    "code": "SP 121", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SP/121", 
+                    "name": "Beginning Spanish I"
+                }, 
+                {
+                    "code": "SP 122", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SP/122", 
+                    "name": "Beginning Spanish II"
+                }, 
+                {
+                    "code": "SP 223", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SP/223", 
+                    "name": "Intermediate Spanish I"
+                }, 
+                {
+                    "code": "SP 224", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/SP/224", 
+                    "name": "Intermediate Spanish II"
+                }
+            ], 
+            "name": "Spanish", 
+            "url": "http://www.chegg.com/courses/mitchell/SP"
+        }, 
+        {
+            "abbr": "TOUR", 
+            "courses": [
+                {
+                    "code": "TOUR AC103", 
+                    "course_url": "http://www.chegg.com/courses/mitchell/TOUR/AC103", 
+                    "name": "Principles of Financial Accounting"
+                }
+            ], 
+            "name": "Tourism And Events Management", 
+            "url": "http://www.chegg.com/courses/mitchell/TOUR"
+        }
+    ], 
+    "name": "mitchell"
+}

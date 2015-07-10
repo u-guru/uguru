@@ -1,0 +1,2629 @@
+{
+    "all_stats": {
+        "num_courses": 461, 
+        "num_departments": 45
+    }, 
+    "departments": [
+        {
+            "abbr": "ACC", 
+            "courses": [
+                {
+                    "code": "ACC 105", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ACC/105", 
+                    "name": "General Accounting"
+                }, 
+                {
+                    "code": "ACC 111", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ACC/111", 
+                    "name": "Accounting I"
+                }, 
+                {
+                    "code": "ACC 112", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ACC/112", 
+                    "name": "Accounting II"
+                }, 
+                {
+                    "code": "ACC 113", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ACC/113", 
+                    "name": "Accounting III"
+                }, 
+                {
+                    "code": "ACC 130", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ACC/130", 
+                    "name": "Payroll Accounting"
+                }, 
+                {
+                    "code": "ACC 214", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ACC/214", 
+                    "name": "Accounting IV"
+                }, 
+                {
+                    "code": "ACC 215", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ACC/215", 
+                    "name": "Accounting V"
+                }, 
+                {
+                    "code": "ACC 225", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ACC/225", 
+                    "name": "Computerized Accounting with Quickbooks"
+                }, 
+                {
+                    "code": "ACC 235", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ACC/235", 
+                    "name": "Tax Accounting"
+                }, 
+                {
+                    "code": "ACC 241", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ACC/241", 
+                    "name": "Cost Accounting I"
+                }, 
+                {
+                    "code": "ACC 242", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ACC/242", 
+                    "name": "Cost Accounting II"
+                }, 
+                {
+                    "code": "ACC 261", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ACC/261", 
+                    "name": "Government Accounting"
+                }, 
+                {
+                    "code": "ACC 265", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ACC/265", 
+                    "name": "Auditing"
+                }, 
+                {
+                    "code": "ACC 283", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ACC/283", 
+                    "name": "Accounting Capstone"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/1584724/ACC"
+        }, 
+        {
+            "abbr": "ADM", 
+            "courses": [
+                {
+                    "code": "ADM 111", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADM/111", 
+                    "name": "Keyboarding I"
+                }, 
+                {
+                    "code": "ADM 112", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADM/112", 
+                    "name": "Keyboarding II"
+                }, 
+                {
+                    "code": "ADM 113", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADM/113", 
+                    "name": "Keyboarding III"
+                }
+            ], 
+            "name": "Administrative Assistant", 
+            "url": "http://www.chegg.com/courses/1584724/ADM"
+        }, 
+        {
+            "abbr": "ADN", 
+            "courses": [
+                {
+                    "code": "ADN 100", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/100", 
+                    "name": "Introduction to Health Professions"
+                }, 
+                {
+                    "code": "ADN 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/101", 
+                    "name": "Pathophysiology"
+                }, 
+                {
+                    "code": "ADN 104", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/104", 
+                    "name": "Paramedic Transitional Nursing"
+                }, 
+                {
+                    "code": "ADN 105", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/105", 
+                    "name": "Transitional Nursing"
+                }, 
+                {
+                    "code": "ADN 106", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/106", 
+                    "name": "Advanced Pharmacology"
+                }, 
+                {
+                    "code": "ADN 111", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/111", 
+                    "name": "Nursing I"
+                }, 
+                {
+                    "code": "ADN 121", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/121", 
+                    "name": "Nursing II"
+                }, 
+                {
+                    "code": "ADN 131", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/131", 
+                    "name": "Nursing III"
+                }, 
+                {
+                    "code": "ADN 140", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/140", 
+                    "name": "Nursing Externship"
+                }, 
+                {
+                    "code": "ADN 241", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/241", 
+                    "name": "Nursing IV"
+                }, 
+                {
+                    "code": "ADN 245", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/245", 
+                    "name": "Community Nursing Through the Lifespan"
+                }, 
+                {
+                    "code": "ADN 251", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/251", 
+                    "name": "Nursing V"
+                }, 
+                {
+                    "code": "ADN 255", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/255", 
+                    "name": "Nursing Seminar"
+                }, 
+                {
+                    "code": "ADN 261", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/261", 
+                    "name": "Nursing VI"
+                }, 
+                {
+                    "code": "ADN 271", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/271", 
+                    "name": "Nursing VII"
+                }, 
+                {
+                    "code": "ADN 281", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/281", 
+                    "name": "Nursing VIII"
+                }, 
+                {
+                    "code": "ADN 285", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ADN/285", 
+                    "name": "Current Health Issues"
+                }
+            ], 
+            "name": "Art And Design", 
+            "url": "http://www.chegg.com/courses/1584724/ADN"
+        }, 
+        {
+            "abbr": "ANP", 
+            "courses": [
+                {
+                    "code": "ANP 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ANP/101", 
+                    "name": "Anatomy & Physiology I"
+                }, 
+                {
+                    "code": "ANP 102", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ANP/102", 
+                    "name": "Anatomy & Physiology II"
+                }
+            ], 
+            "name": "Anthropology", 
+            "url": "http://www.chegg.com/courses/1584724/ANP"
+        }, 
+        {
+            "abbr": "ANT", 
+            "courses": [
+                {
+                    "code": "ANT 223", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ANT/223", 
+                    "name": "Cultural/ Social Anthropology"
+                }
+            ], 
+            "name": "Anthropology", 
+            "url": "http://www.chegg.com/courses/1584724/ANT"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ART/101", 
+                    "name": "Art Appreciation"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/1584724/ART"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 100", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BIO/100", 
+                    "name": "Principles of Biology"
+                }, 
+                {
+                    "code": "BIO 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BIO/101", 
+                    "name": "Human Biology I"
+                }, 
+                {
+                    "code": "BIO 102", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BIO/102", 
+                    "name": "Human Biology II"
+                }, 
+                {
+                    "code": "BIO 103", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BIO/103", 
+                    "name": "Microbiology"
+                }, 
+                {
+                    "code": "BIO 104", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BIO/104", 
+                    "name": "Advanced Physiology"
+                }, 
+                {
+                    "code": "BIO 105", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BIO/105", 
+                    "name": "Basic Pathophysiology"
+                }, 
+                {
+                    "code": "BIO 198", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BIO/198", 
+                    "name": "Special Topics- Biology"
+                }, 
+                {
+                    "code": "BIO 220", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BIO/220", 
+                    "name": "Physiological Psychology"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/1584724/BIO"
+        }, 
+        {
+            "abbr": "BPR", 
+            "courses": [
+                {
+                    "code": "BPR 099", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/099", 
+                    "name": "Shop and Safety Procedures Workshop"
+                }, 
+                {
+                    "code": "BPR 111", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/111", 
+                    "name": "Preservation History and Theory"
+                }, 
+                {
+                    "code": "BPR 112", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/112", 
+                    "name": "Architectural Drawing"
+                }, 
+                {
+                    "code": "BPR 116", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/116", 
+                    "name": "Fundamentals of Design"
+                }, 
+                {
+                    "code": "BPR 117", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/117", 
+                    "name": "Advanced Design"
+                }, 
+                {
+                    "code": "BPR 121", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/121", 
+                    "name": "Historic Research"
+                }, 
+                {
+                    "code": "BPR 122", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/122", 
+                    "name": "Documentation and Field Techniques"
+                }, 
+                {
+                    "code": "BPR 130", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/130", 
+                    "name": "Introduction to Building Construction"
+                }, 
+                {
+                    "code": "BPR 132", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/132", 
+                    "name": "Building Interiors"
+                }, 
+                {
+                    "code": "BPR 135", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/135", 
+                    "name": "Building Pathology"
+                }, 
+                {
+                    "code": "BPR 140", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/140", 
+                    "name": "Mechanical Systems"
+                }, 
+                {
+                    "code": "BPR 142", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/142", 
+                    "name": "Windows and Doors"
+                }, 
+                {
+                    "code": "BPR 143", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/143", 
+                    "name": "Roofing Fundamentals"
+                }, 
+                {
+                    "code": "BPR 144", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/144", 
+                    "name": "History and Preservation of Architectural Landscapes"
+                }, 
+                {
+                    "code": "BPR 145", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/145", 
+                    "name": "Theory of Structures"
+                }, 
+                {
+                    "code": "BPR 150", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/150", 
+                    "name": "Construction Management and Estimating"
+                }, 
+                {
+                    "code": "BPR 151", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/151", 
+                    "name": "Model and Mold Making"
+                }, 
+                {
+                    "code": "BPR 152", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/152", 
+                    "name": "Paints and Clear Finishes"
+                }, 
+                {
+                    "code": "BPR 155", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/155", 
+                    "name": "Building Carpentry"
+                }, 
+                {
+                    "code": "BPR 160-169", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/160-169", 
+                    "name": "Field Lab- Morristown"
+                }, 
+                {
+                    "code": "BPR 198", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/198", 
+                    "name": "Special Problems I"
+                }, 
+                {
+                    "code": "BPR 199", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/199", 
+                    "name": "Directed Study I"
+                }, 
+                {
+                    "code": "BPR 207", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/207", 
+                    "name": "Real Estate Appraisal"
+                }, 
+                {
+                    "code": "BPR 211", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/211", 
+                    "name": "Real Estate Law"
+                }, 
+                {
+                    "code": "BPR 213", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/213", 
+                    "name": "Real Estate Principles and Practices"
+                }, 
+                {
+                    "code": "BPR 215", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/215", 
+                    "name": "Real Estate Finance"
+                }, 
+                {
+                    "code": "BPR 231", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/231", 
+                    "name": "Material Science: Graining and Marbling"
+                }, 
+                {
+                    "code": "BPR 232", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/232", 
+                    "name": "Material Science: Wood"
+                }, 
+                {
+                    "code": "BPR 233", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/233", 
+                    "name": "Material Science: Masonry"
+                }, 
+                {
+                    "code": "BPR 234", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/234", 
+                    "name": "Material Science: Plaster"
+                }, 
+                {
+                    "code": "BPR 235", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/235", 
+                    "name": "Material Science: Metals"
+                }, 
+                {
+                    "code": "BPR 236", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/236", 
+                    "name": "Material Science: Wall Finishes"
+                }, 
+                {
+                    "code": "BPR 237", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/237", 
+                    "name": "Material Science: Stained Glass"
+                }, 
+                {
+                    "code": "BPR 238", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/238", 
+                    "name": "Material Science: Ceramics"
+                }, 
+                {
+                    "code": "BPR 239", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/239", 
+                    "name": "Material Science:Gilding and Composition"
+                }, 
+                {
+                    "code": "BPR 250", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/250", 
+                    "name": "Advanced Material Science"
+                }, 
+                {
+                    "code": "BPR 271", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/271", 
+                    "name": "Preservation Seminar"
+                }, 
+                {
+                    "code": "BPR 275", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/275", 
+                    "name": "Preservation Capstone"
+                }, 
+                {
+                    "code": "BPR 276", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BPR/276", 
+                    "name": "Preservation Internship"
+                }
+            ], 
+            "name": "Rp Biophysics", 
+            "url": "http://www.chegg.com/courses/1584724/BPR"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 105", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/105", 
+                    "name": "Money and Banking"
+                }, 
+                {
+                    "code": "BUS 116", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/116", 
+                    "name": "Business Ethics"
+                }, 
+                {
+                    "code": "BUS 121", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/121", 
+                    "name": "Introduction to Marketing"
+                }, 
+                {
+                    "code": "BUS 122", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/122", 
+                    "name": "Web Marketing"
+                }, 
+                {
+                    "code": "BUS 125", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/125", 
+                    "name": "Principles of Supervision and Management"
+                }, 
+                {
+                    "code": "BUS 135", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/135", 
+                    "name": "Insurance and Risk"
+                }, 
+                {
+                    "code": "BUS 141", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/141", 
+                    "name": "Small Business Management/Entrepreneurship"
+                }, 
+                {
+                    "code": "BUS 151", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/151", 
+                    "name": "Personal Selling"
+                }, 
+                {
+                    "code": "BUS 155", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/155", 
+                    "name": "Consumer Behavior"
+                }, 
+                {
+                    "code": "BUS 205", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/205", 
+                    "name": "Business Finance"
+                }, 
+                {
+                    "code": "BUS 206", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/206", 
+                    "name": "Small Business Development"
+                }, 
+                {
+                    "code": "BUS 210", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/210", 
+                    "name": "Personal Finance"
+                }, 
+                {
+                    "code": "BUS 216", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/216", 
+                    "name": "Leadership"
+                }, 
+                {
+                    "code": "BUS 221", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/221", 
+                    "name": "Labor Relations"
+                }, 
+                {
+                    "code": "BUS 225", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/225", 
+                    "name": "Public Relations"
+                }, 
+                {
+                    "code": "BUS 241", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/241", 
+                    "name": "Business Law"
+                }, 
+                {
+                    "code": "BUS 245", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/245", 
+                    "name": "Advertising"
+                }, 
+                {
+                    "code": "BUS 260", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/260", 
+                    "name": "International Business"
+                }, 
+                {
+                    "code": "BUS 280", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/280", 
+                    "name": "Business Decision Making"
+                }, 
+                {
+                    "code": "BUS 282", 
+                    "course_url": "http://www.chegg.com/courses/1584724/BUS/282", 
+                    "name": "Business Plan Preparation"
+                }
+            ], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/1584724/BUS"
+        }, 
+        {
+            "abbr": "CDT", 
+            "courses": [
+                {
+                    "code": "CDT 111", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CDT/111", 
+                    "name": "Introduction to Early Childhood Education"
+                }, 
+                {
+                    "code": "CDT 125", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CDT/125", 
+                    "name": "Child Development I"
+                }, 
+                {
+                    "code": "CDT 131", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CDT/131", 
+                    "name": "Child Health, Safety and Nutrition"
+                }, 
+                {
+                    "code": "CDT 135", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CDT/135", 
+                    "name": "Activities with Children"
+                }, 
+                {
+                    "code": "CDT 145", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CDT/145", 
+                    "name": "Introduction to Montessori Philosophy and Methods"
+                }, 
+                {
+                    "code": "CDT 225", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CDT/225", 
+                    "name": "Child Development II"
+                }, 
+                {
+                    "code": "CDT 232", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CDT/232", 
+                    "name": "Psychology of Adolescence"
+                }, 
+                {
+                    "code": "CDT 235", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CDT/235", 
+                    "name": "Exceptional Children"
+                }, 
+                {
+                    "code": "CDT 239", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CDT/239", 
+                    "name": "Administration of Child Care Centers"
+                }, 
+                {
+                    "code": "CDT 262", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CDT/262", 
+                    "name": "Child Development Practicum I"
+                }, 
+                {
+                    "code": "CDT 265", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CDT/265", 
+                    "name": "Seminar I"
+                }, 
+                {
+                    "code": "CDT 272", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CDT/272", 
+                    "name": "Child Development Practicum II"
+                }, 
+                {
+                    "code": "CDT 275", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CDT/275", 
+                    "name": "Seminar II"
+                }, 
+                {
+                    "code": "CDT 282", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CDT/282", 
+                    "name": "Child Development Practicum III"
+                }, 
+                {
+                    "code": "CDT 285", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CDT/285", 
+                    "name": "Seminar III"
+                }
+            ], 
+            "name": "Drafting", 
+            "url": "http://www.chegg.com/courses/1584724/CDT"
+        }, 
+        {
+            "abbr": "CET", 
+            "courses": [
+                {
+                    "code": "CET 117", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CET/117", 
+                    "name": "Computing for Engineers"
+                }, 
+                {
+                    "code": "CET 119", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CET/119", 
+                    "name": "Introduction to Civil Engineering"
+                }, 
+                {
+                    "code": "CET 121", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CET/121", 
+                    "name": "Surveying I"
+                }, 
+                {
+                    "code": "CET 122", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CET/122", 
+                    "name": "Surveying II"
+                }, 
+                {
+                    "code": "CET 161", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CET/161", 
+                    "name": "Hydraulics and Hydrology"
+                }, 
+                {
+                    "code": "CET 221", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CET/221", 
+                    "name": "Strength of Materials"
+                }, 
+                {
+                    "code": "CET 233", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CET/233", 
+                    "name": "Reinforced Concrete Design"
+                }, 
+                {
+                    "code": "CET 237", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CET/237", 
+                    "name": "Highway Design and Site Development"
+                }, 
+                {
+                    "code": "CET 241", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CET/241", 
+                    "name": "Soil Mechanics I"
+                }, 
+                {
+                    "code": "CET 251", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CET/251", 
+                    "name": "Construction Estimating"
+                }, 
+                {
+                    "code": "CET 261", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CET/261", 
+                    "name": "Environmental Science"
+                }, 
+                {
+                    "code": "CET 275", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CET/275", 
+                    "name": "Civil Engineering Project"
+                }
+            ], 
+            "name": "Civil Engineering Te", 
+            "url": "http://www.chegg.com/courses/1584724/CET"
+        }, 
+        {
+            "abbr": "CHM", 
+            "courses": [
+                {
+                    "code": "CHM 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CHM/101", 
+                    "name": "Chemistry Principles I"
+                }, 
+                {
+                    "code": "CHM 102", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CHM/102", 
+                    "name": "Chemistry Principles II"
+                }, 
+                {
+                    "code": "CHM 104", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CHM/104", 
+                    "name": "Engineering Chemistry"
+                }, 
+                {
+                    "code": "CHM 105", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CHM/105", 
+                    "name": "Chemistry for Conservators"
+                }
+            ], 
+            "name": "Chm-Chemistry", 
+            "url": "http://www.chegg.com/courses/1584724/CHM"
+        }, 
+        {
+            "abbr": "CJT", 
+            "courses": [
+                {
+                    "code": "CJT 100", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/100", 
+                    "name": "Corrections Transitional Course"
+                }, 
+                {
+                    "code": "CJT 111", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/111", 
+                    "name": "Introduction to Criminal Justice"
+                }, 
+                {
+                    "code": "CJT 121", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/121", 
+                    "name": "Institutional Corrections"
+                }, 
+                {
+                    "code": "CJT 122", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/122", 
+                    "name": "Unarmed Self- Defense"
+                }, 
+                {
+                    "code": "CJT 123", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/123", 
+                    "name": "Firearms Handling and the Law"
+                }, 
+                {
+                    "code": "CJT 125", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/125", 
+                    "name": "Interview and Interrogation"
+                }, 
+                {
+                    "code": "CJT 131", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/131", 
+                    "name": "Community Corrections"
+                }, 
+                {
+                    "code": "CJT 135", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/135", 
+                    "name": "Introduction to Law Enforcement"
+                }, 
+                {
+                    "code": "CJT 141", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/141", 
+                    "name": "Substance Abuse"
+                }, 
+                {
+                    "code": "CJT 151", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/151", 
+                    "name": "Introduction to Criminal Law"
+                }, 
+                {
+                    "code": "CJT 152", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/152", 
+                    "name": "Ohio Criminal Code"
+                }, 
+                {
+                    "code": "CJT 153", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/153", 
+                    "name": "Ohio Vehicle Code"
+                }, 
+                {
+                    "code": "CJT 193", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/193", 
+                    "name": "Criminal Justice Transfer Elective"
+                }, 
+                {
+                    "code": "CJT 241", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/241", 
+                    "name": "Criminal Investigation"
+                }, 
+                {
+                    "code": "CJT 242", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/242", 
+                    "name": "Forensics"
+                }, 
+                {
+                    "code": "CJT 252", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/252", 
+                    "name": "Correctional Law"
+                }, 
+                {
+                    "code": "CJT 254", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/254", 
+                    "name": "Criminal Procedure"
+                }, 
+                {
+                    "code": "CJT 256", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/256", 
+                    "name": "American Court Systems"
+                }, 
+                {
+                    "code": "CJT 258", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/258", 
+                    "name": "Introduction to Private Security"
+                }, 
+                {
+                    "code": "CJT 261", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/261", 
+                    "name": "Ethics in Criminal Justice"
+                }, 
+                {
+                    "code": "CJT 271", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/271", 
+                    "name": "Criminal Justice Practicum"
+                }, 
+                {
+                    "code": "CJT 272", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/272", 
+                    "name": "Criminal Justice Practicum Elective"
+                }, 
+                {
+                    "code": "CJT 281", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/281", 
+                    "name": "Criminal Justice Seminar"
+                }, 
+                {
+                    "code": "CJT 291", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/291", 
+                    "name": "Current Issues in Criminal Justice"
+                }, 
+                {
+                    "code": "CJT 293", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/293", 
+                    "name": "Criminal Justice Transfer Elective"
+                }, 
+                {
+                    "code": "CJT 299", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CJT/299", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Communic, Journ, & Telecomm", 
+            "url": "http://www.chegg.com/courses/1584724/CJT"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 103", 
+                    "course_url": "http://www.chegg.com/courses/1584724/COM/103", 
+                    "name": "Interpersonal Communications"
+                }, 
+                {
+                    "code": "COM 105", 
+                    "course_url": "http://www.chegg.com/courses/1584724/COM/105", 
+                    "name": "Speech"
+                }, 
+                {
+                    "code": "COM 106", 
+                    "course_url": "http://www.chegg.com/courses/1584724/COM/106", 
+                    "name": "Personal and Interpersonal Communications"
+                }, 
+                {
+                    "code": "COM 112", 
+                    "course_url": "http://www.chegg.com/courses/1584724/COM/112", 
+                    "name": "Public Speaking"
+                }
+            ], 
+            "name": "Communication", 
+            "url": "http://www.chegg.com/courses/1584724/COM"
+        }, 
+        {
+            "abbr": "CPT", 
+            "courses": [
+                {
+                    "code": "CPT 111", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/111", 
+                    "name": "Introduction to Computers"
+                }, 
+                {
+                    "code": "CPT 114", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/114", 
+                    "name": "Programming Logic"
+                }, 
+                {
+                    "code": "CPT 117", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/117", 
+                    "name": "Visual Basic Programming"
+                }, 
+                {
+                    "code": "CPT 119", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/119", 
+                    "name": "Multimedia and Design"
+                }, 
+                {
+                    "code": "CPT 125", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/125", 
+                    "name": "Windows"
+                }, 
+                {
+                    "code": "CPT 126", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/126", 
+                    "name": "Operating Systems"
+                }, 
+                {
+                    "code": "CPT 127", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/127", 
+                    "name": "Applied Word Processing"
+                }, 
+                {
+                    "code": "CPT 128", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/128", 
+                    "name": "Advanced Applied Word Processing"
+                }, 
+                {
+                    "code": "CPT 131", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/131", 
+                    "name": "Computerized Spreadsheet Applications"
+                }, 
+                {
+                    "code": "CPT 133", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/133", 
+                    "name": "Advanced Spreadsheet Applications"
+                }, 
+                {
+                    "code": "CPT 135", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/135", 
+                    "name": "Database Management"
+                }, 
+                {
+                    "code": "CPT 137", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/137", 
+                    "name": "Advanced Database Management"
+                }, 
+                {
+                    "code": "CPT 141", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/141", 
+                    "name": "Integrated Software"
+                }, 
+                {
+                    "code": "CPT 144", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/144", 
+                    "name": "Desktop Publishing"
+                }, 
+                {
+                    "code": "CPT 161", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/161", 
+                    "name": "Internet Access/ Basic HTML"
+                }, 
+                {
+                    "code": "CPT 163", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/163", 
+                    "name": "HTML/ Web Page Design"
+                }, 
+                {
+                    "code": "CPT 231", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/231", 
+                    "name": "Telecommunications"
+                }, 
+                {
+                    "code": "CPT 232", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/232", 
+                    "name": "Introduction to Network and Telecommunication Concepts"
+                }, 
+                {
+                    "code": "CPT 234", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/234", 
+                    "name": "Presentation Graphics"
+                }, 
+                {
+                    "code": "CPT 238", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/238", 
+                    "name": "Advanced Visual Basic"
+                }, 
+                {
+                    "code": "CPT 239", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/239", 
+                    "name": "Multimedia"
+                }, 
+                {
+                    "code": "CPT 240", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/240", 
+                    "name": "Video Editing"
+                }, 
+                {
+                    "code": "CPT 247", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/247", 
+                    "name": "C++ Programming"
+                }, 
+                {
+                    "code": "CPT 248", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/248", 
+                    "name": "Advanced C++ Programming"
+                }, 
+                {
+                    "code": "CPT 251", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/251", 
+                    "name": "Systems Development and Design"
+                }, 
+                {
+                    "code": "CPT 260", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/260", 
+                    "name": "Data- Driven Web Sites"
+                }, 
+                {
+                    "code": "CPT 263", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/263", 
+                    "name": "Computer- Generated Images"
+                }, 
+                {
+                    "code": "CPT 265 2", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/265%202", 
+                    "name": "D Animation and 3- D Modeling"
+                }, 
+                {
+                    "code": "CPT 280", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/280", 
+                    "name": "Computer Seminar and Project"
+                }, 
+                {
+                    "code": "CPT 283", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/283", 
+                    "name": "Computer Capstone"
+                }, 
+                {
+                    "code": "CPT 300", 
+                    "course_url": "http://www.chegg.com/courses/1584724/CPT/300", 
+                    "name": "Structured Query Language"
+                }
+            ], 
+            "name": "Computer Programming", 
+            "url": "http://www.chegg.com/courses/1584724/CPT"
+        }, 
+        {
+            "abbr": "ECN", 
+            "courses": [
+                {
+                    "code": "ECN 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ECN/101", 
+                    "name": "Macroeconomics"
+                }, 
+                {
+                    "code": "ECN 102", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ECN/102", 
+                    "name": "Microeconomics"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/1584724/ECN"
+        }, 
+        {
+            "abbr": "EET", 
+            "courses": [
+                {
+                    "code": "EET 127", 
+                    "course_url": "http://www.chegg.com/courses/1584724/EET/127", 
+                    "name": "Print Reading and Wiring Diagrams"
+                }
+            ], 
+            "name": "Electronics Engineering Techn", 
+            "url": "http://www.chegg.com/courses/1584724/EET"
+        }, 
+        {
+            "abbr": "ELT", 
+            "courses": [
+                {
+                    "code": "ELT 203", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ELT/203", 
+                    "name": "Estimating and Electrical Specifications"
+                }, 
+                {
+                    "code": "ELT 221", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ELT/221", 
+                    "name": "Motor Theory"
+                }
+            ], 
+            "name": "Electronics Technology", 
+            "url": "http://www.chegg.com/courses/1584724/ELT"
+        }, 
+        {
+            "abbr": "EMT", 
+            "courses": [
+                {
+                    "code": "EMT 100", 
+                    "course_url": "http://www.chegg.com/courses/1584724/EMT/100", 
+                    "name": "Ohio Basic EMT"
+                }, 
+                {
+                    "code": "EMT 107", 
+                    "course_url": "http://www.chegg.com/courses/1584724/EMT/107", 
+                    "name": "EMT Basic Refresher"
+                }, 
+                {
+                    "code": "EMT 108", 
+                    "course_url": "http://www.chegg.com/courses/1584724/EMT/108", 
+                    "name": "First Responder"
+                }, 
+                {
+                    "code": "EMT 110", 
+                    "course_url": "http://www.chegg.com/courses/1584724/EMT/110", 
+                    "name": "EMT Intermediate"
+                }, 
+                {
+                    "code": "EMT 120", 
+                    "course_url": "http://www.chegg.com/courses/1584724/EMT/120", 
+                    "name": "Cardiovascular Care"
+                }, 
+                {
+                    "code": "EMT 130", 
+                    "course_url": "http://www.chegg.com/courses/1584724/EMT/130", 
+                    "name": "Medical Emergencies and Childbirth"
+                }, 
+                {
+                    "code": "EMT 240", 
+                    "course_url": "http://www.chegg.com/courses/1584724/EMT/240", 
+                    "name": "Trauma and Burns"
+                }, 
+                {
+                    "code": "EMT 266", 
+                    "course_url": "http://www.chegg.com/courses/1584724/EMT/266", 
+                    "name": "Paramedic Practicum"
+                }
+            ], 
+            "name": "Emergency Med. Technology", 
+            "url": "http://www.chegg.com/courses/1584724/EMT"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 061", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/061", 
+                    "name": "Orientation Seminar"
+                }, 
+                {
+                    "code": "ENG 081", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/081", 
+                    "name": "Reading I"
+                }, 
+                {
+                    "code": "ENG 082", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/082", 
+                    "name": "Reading II"
+                }, 
+                {
+                    "code": "ENG 083", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/083", 
+                    "name": "Textbook Comprehension"
+                }, 
+                {
+                    "code": "ENG 093", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/093", 
+                    "name": "Sentence Writing and Grammar Review"
+                }, 
+                {
+                    "code": "ENG 094", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/094", 
+                    "name": "Paragraph Writing"
+                }, 
+                {
+                    "code": "ENG 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/101", 
+                    "name": "Composition I"
+                }, 
+                {
+                    "code": "ENG 102", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/102", 
+                    "name": "Composition II"
+                }, 
+                {
+                    "code": "ENG 103", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/103", 
+                    "name": "Business Communications"
+                }, 
+                {
+                    "code": "ENG 104", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/104", 
+                    "name": "Technical Writing"
+                }, 
+                {
+                    "code": "ENG 105", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/105", 
+                    "name": "Writing About Literature"
+                }, 
+                {
+                    "code": "ENG 200", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/200", 
+                    "name": "Introduction to Literature"
+                }, 
+                {
+                    "code": "ENG 201", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/201", 
+                    "name": "Survey of British Literature"
+                }, 
+                {
+                    "code": "ENG 202", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/202", 
+                    "name": "Survey of American Literature"
+                }, 
+                {
+                    "code": "ENG 203", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/203", 
+                    "name": "Fantasy Worlds"
+                }, 
+                {
+                    "code": "ENG 204", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/204", 
+                    "name": "The Novel"
+                }, 
+                {
+                    "code": "ENG 205", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/205", 
+                    "name": "Classics of World Literature I"
+                }, 
+                {
+                    "code": "ENG 206", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ENG/206", 
+                    "name": "Classics of World Literature II"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/1584724/ENG"
+        }, 
+        {
+            "abbr": "ETC", 
+            "courses": [
+                {
+                    "code": "ETC 111", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ETC/111", 
+                    "name": "Electrical Fundamentals I"
+                }, 
+                {
+                    "code": "ETC 112", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ETC/112", 
+                    "name": "Electrical Fundamentals II"
+                }, 
+                {
+                    "code": "ETC 113", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ETC/113", 
+                    "name": "Electrical Fundamentals III"
+                }, 
+                {
+                    "code": "ETC 121", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ETC/121", 
+                    "name": "Digital Electronics I"
+                }, 
+                {
+                    "code": "ETC 122", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ETC/122", 
+                    "name": "Digital Electronics II"
+                }, 
+                {
+                    "code": "ETC 199", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ETC/199", 
+                    "name": "Special Problems I"
+                }, 
+                {
+                    "code": "ETC 214", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ETC/214", 
+                    "name": "Semiconductor Devices"
+                }, 
+                {
+                    "code": "ETC 215", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ETC/215", 
+                    "name": "Linear Integrated Circuits"
+                }, 
+                {
+                    "code": "ETC 216", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ETC/216", 
+                    "name": "Industrial Electronics"
+                }, 
+                {
+                    "code": "ETC 217", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ETC/217", 
+                    "name": "Conduit Bending"
+                }, 
+                {
+                    "code": "ETC 218", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ETC/218", 
+                    "name": "Bonding and Grounding"
+                }, 
+                {
+                    "code": "ETC 219", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ETC/219", 
+                    "name": "Residential and Commercial Wiring"
+                }, 
+                {
+                    "code": "ETC 226", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ETC/226", 
+                    "name": "Fiber Optic Communications"
+                }, 
+                {
+                    "code": "ETC 231", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ETC/231", 
+                    "name": "National Electrical Code I"
+                }, 
+                {
+                    "code": "ETC 232", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ETC/232", 
+                    "name": "National Electrical Code II"
+                }, 
+                {
+                    "code": "ETC 286", 
+                    "course_url": "http://www.chegg.com/courses/1584724/ETC/286", 
+                    "name": "Electronics Capstone"
+                }
+            ], 
+            "name": "Engineering Techn Civil", 
+            "url": "http://www.chegg.com/courses/1584724/ETC"
+        }, 
+        {
+            "abbr": "EXS", 
+            "courses": [
+                {
+                    "code": "EXS 127", 
+                    "course_url": "http://www.chegg.com/courses/1584724/EXS/127", 
+                    "name": "Speed Writing I"
+                }, 
+                {
+                    "code": "EXS 135", 
+                    "course_url": "http://www.chegg.com/courses/1584724/EXS/135", 
+                    "name": "Records Management"
+                }, 
+                {
+                    "code": "EXS 136", 
+                    "course_url": "http://www.chegg.com/courses/1584724/EXS/136", 
+                    "name": "Machine Transcription"
+                }, 
+                {
+                    "code": "EXS 140", 
+                    "course_url": "http://www.chegg.com/courses/1584724/EXS/140", 
+                    "name": "Office and Computer Applications"
+                }, 
+                {
+                    "code": "EXS 151", 
+                    "course_url": "http://www.chegg.com/courses/1584724/EXS/151", 
+                    "name": "Medical Office Procedures I"
+                }, 
+                {
+                    "code": "EXS 152", 
+                    "course_url": "http://www.chegg.com/courses/1584724/EXS/152", 
+                    "name": "Medical Office Procedures II"
+                }, 
+                {
+                    "code": "EXS 251", 
+                    "course_url": "http://www.chegg.com/courses/1584724/EXS/251", 
+                    "name": "Executive Office Practice"
+                }
+            ], 
+            "name": "Exercise Science", 
+            "url": "http://www.chegg.com/courses/1584724/EXS"
+        }, 
+        {
+            "abbr": "FST", 
+            "courses": [
+                {
+                    "code": "FST 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/FST/101", 
+                    "name": "Ohio Volunteer Firefighter"
+                }, 
+                {
+                    "code": "FST 128", 
+                    "course_url": "http://www.chegg.com/courses/1584724/FST/128", 
+                    "name": "Ohio Firefighter I Transition Course"
+                }, 
+                {
+                    "code": "FST 166", 
+                    "course_url": "http://www.chegg.com/courses/1584724/FST/166", 
+                    "name": "Ohio Firefighter I"
+                }, 
+                {
+                    "code": "FST 168", 
+                    "course_url": "http://www.chegg.com/courses/1584724/FST/168", 
+                    "name": "Ohio Firefighter"
+                }, 
+                {
+                    "code": "FST 174", 
+                    "course_url": "http://www.chegg.com/courses/1584724/FST/174", 
+                    "name": "Ohio Firefighter Level 1"
+                }
+            ], 
+            "name": "Fire Science Technology", 
+            "url": "http://www.chegg.com/courses/1584724/FST"
+        }, 
+        {
+            "abbr": "HAC", 
+            "courses": [
+                {
+                    "code": "HAC 105", 
+                    "course_url": "http://www.chegg.com/courses/1584724/HAC/105", 
+                    "name": "Applied Service Fundamentals I"
+                }, 
+                {
+                    "code": "HAC 106", 
+                    "course_url": "http://www.chegg.com/courses/1584724/HAC/106", 
+                    "name": "Applied Service Fundamentals II"
+                }, 
+                {
+                    "code": "HAC 111", 
+                    "course_url": "http://www.chegg.com/courses/1584724/HAC/111", 
+                    "name": "Basic Refrigeration I"
+                }, 
+                {
+                    "code": "HAC 121", 
+                    "course_url": "http://www.chegg.com/courses/1584724/HAC/121", 
+                    "name": "Refrigeration Control Systems I"
+                }, 
+                {
+                    "code": "HAC 122", 
+                    "course_url": "http://www.chegg.com/courses/1584724/HAC/122", 
+                    "name": "Refrigeration Control Systems II"
+                }, 
+                {
+                    "code": "HAC 131", 
+                    "course_url": "http://www.chegg.com/courses/1584724/HAC/131", 
+                    "name": "Electricity"
+                }, 
+                {
+                    "code": "HAC 231", 
+                    "course_url": "http://www.chegg.com/courses/1584724/HAC/231", 
+                    "name": "Heating Systems"
+                }
+            ], 
+            "name": "Heat, Vent & Air Cond Tech", 
+            "url": "http://www.chegg.com/courses/1584724/HAC"
+        }, 
+        {
+            "abbr": "HIS", 
+            "courses": [
+                {
+                    "code": "HIS 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/HIS/101", 
+                    "name": "Western Civilization I"
+                }, 
+                {
+                    "code": "HIS 102", 
+                    "course_url": "http://www.chegg.com/courses/1584724/HIS/102", 
+                    "name": "Western Civilization II"
+                }, 
+                {
+                    "code": "HIS 103", 
+                    "course_url": "http://www.chegg.com/courses/1584724/HIS/103", 
+                    "name": "Eastern Civilization I"
+                }, 
+                {
+                    "code": "HIS 104", 
+                    "course_url": "http://www.chegg.com/courses/1584724/HIS/104", 
+                    "name": "Eastern Civilization II"
+                }, 
+                {
+                    "code": "HIS 105", 
+                    "course_url": "http://www.chegg.com/courses/1584724/HIS/105", 
+                    "name": "History of American Architecture I: Native American to 1865"
+                }, 
+                {
+                    "code": "HIS 110", 
+                    "course_url": "http://www.chegg.com/courses/1584724/HIS/110", 
+                    "name": "History of American Architecture II: 1865 to Present"
+                }, 
+                {
+                    "code": "HIS 201", 
+                    "course_url": "http://www.chegg.com/courses/1584724/HIS/201", 
+                    "name": "American History I"
+                }, 
+                {
+                    "code": "HIS 202", 
+                    "course_url": "http://www.chegg.com/courses/1584724/HIS/202", 
+                    "name": "American History II"
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/1584724/HIS"
+        }, 
+        {
+            "abbr": "HUM", 
+            "courses": [
+                {
+                    "code": "HUM 105", 
+                    "course_url": "http://www.chegg.com/courses/1584724/HUM/105", 
+                    "name": "Great Books"
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/1584724/HUM"
+        }, 
+        {
+            "abbr": "IET", 
+            "courses": [
+                {
+                    "code": "IET 251", 
+                    "course_url": "http://www.chegg.com/courses/1584724/IET/251", 
+                    "name": "Programmable Controllers I"
+                }, 
+                {
+                    "code": "IET 252", 
+                    "course_url": "http://www.chegg.com/courses/1584724/IET/252", 
+                    "name": "Programmable Controllers II"
+                }, 
+                {
+                    "code": "IET 261", 
+                    "course_url": "http://www.chegg.com/courses/1584724/IET/261", 
+                    "name": "Automatic Control Principles"
+                }, 
+                {
+                    "code": "IET 262", 
+                    "course_url": "http://www.chegg.com/courses/1584724/IET/262", 
+                    "name": "Enhanced Instrumentation I"
+                }, 
+                {
+                    "code": "IET 271", 
+                    "course_url": "http://www.chegg.com/courses/1584724/IET/271", 
+                    "name": "DC & AC Machinery"
+                }, 
+                {
+                    "code": "IET 272", 
+                    "course_url": "http://www.chegg.com/courses/1584724/IET/272", 
+                    "name": "Power Distribution I"
+                }, 
+                {
+                    "code": "IET 273", 
+                    "course_url": "http://www.chegg.com/courses/1584724/IET/273", 
+                    "name": "Power Distribution II"
+                }
+            ], 
+            "name": "Industrial Engineering And Technology", 
+            "url": "http://www.chegg.com/courses/1584724/IET"
+        }, 
+        {
+            "abbr": "INF", 
+            "courses": [
+                {
+                    "code": "INF 100", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/100", 
+                    "name": "Introduction to Learning Literacy"
+                }, 
+                {
+                    "code": "INF 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/101", 
+                    "name": "Introduction to Learning Entrepreneurship"
+                }, 
+                {
+                    "code": "INF 102", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/102", 
+                    "name": "Copyright and Intellectual Property"
+                }, 
+                {
+                    "code": "INF 105", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/105", 
+                    "name": "Fundamentals of Information and Communication"
+                }, 
+                {
+                    "code": "INF 107", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/107", 
+                    "name": "The Basics of Reference Service"
+                }, 
+                {
+                    "code": "INF 108", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/108", 
+                    "name": "Communicating Professionally"
+                }, 
+                {
+                    "code": "INF 109", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/109", 
+                    "name": "Basic Web Page Development"
+                }, 
+                {
+                    "code": "INF 203", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/203", 
+                    "name": "Information Structure and Sources"
+                }, 
+                {
+                    "code": "INF 204", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/204", 
+                    "name": "Introduction to Customer, Public, and Information Services"
+                }, 
+                {
+                    "code": "INF 220", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/220", 
+                    "name": "Information Services Special Topic Course: Purchasing and Using a Digital Camera"
+                }, 
+                {
+                    "code": "INF 221", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/221", 
+                    "name": "Information Services Special Topic Course: Business Resources on the Internet"
+                }, 
+                {
+                    "code": "INF 223", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/223", 
+                    "name": "Information Services Special Topic Course: Government Resources on the Internet"
+                }, 
+                {
+                    "code": "INF 224", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/224", 
+                    "name": "Information Services Special Topic Course: Medical Resources on the Internet"
+                }, 
+                {
+                    "code": "INF 225", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/225", 
+                    "name": "Information Services Special Topic Course: Developing A Financial Recordkeeping System Using Computer Spreadsheet Software"
+                }, 
+                {
+                    "code": "INF 227", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/227", 
+                    "name": "Information Services Special Topic Course: Introduction to Privacy and Intellectual Freedom"
+                }, 
+                {
+                    "code": "INF 228", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/228", 
+                    "name": "Information Services Special Topic Course: An Introduction to Basic Technical Services in Libraries"
+                }, 
+                {
+                    "code": "INF 229", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/229", 
+                    "name": "Information Services Special Topic Course: History and Genealogy Resources on the Internet"
+                }, 
+                {
+                    "code": "INF 230", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/230", 
+                    "name": "Information Services Special Topic Course: Overview of American Women's Literature"
+                }, 
+                {
+                    "code": "INF 232", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/232", 
+                    "name": "Information Services Special Topic Course: Overview of Communication"
+                }, 
+                {
+                    "code": "INF 236", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/236", 
+                    "name": "Special Topics: Literature Services for Children"
+                }, 
+                {
+                    "code": "INF 271", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/271", 
+                    "name": "Information Services Cooperative Work Experience I"
+                }, 
+                {
+                    "code": "INF 272", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/272", 
+                    "name": "Information Services Cooperative Work Experience II"
+                }, 
+                {
+                    "code": "INF 280", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/280", 
+                    "name": "Information Services Seminar"
+                }, 
+                {
+                    "code": "INF 282", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/282", 
+                    "name": "Information Services Capstone and Project"
+                }, 
+                {
+                    "code": "INF 291", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/291", 
+                    "name": "Information Services Practicum I"
+                }, 
+                {
+                    "code": "INF 292", 
+                    "course_url": "http://www.chegg.com/courses/1584724/INF/292", 
+                    "name": "Information Services Practicum II"
+                }
+            ], 
+            "name": "Information Technology", 
+            "url": "http://www.chegg.com/courses/1584724/INF"
+        }, 
+        {
+            "abbr": "LIB", 
+            "courses": [
+                {
+                    "code": "LIB 103", 
+                    "course_url": "http://www.chegg.com/courses/1584724/LIB/103", 
+                    "name": "Library Operations and Issues I"
+                }, 
+                {
+                    "code": "LIB 105", 
+                    "course_url": "http://www.chegg.com/courses/1584724/LIB/105", 
+                    "name": "Copy Cataloging and Classification Procedures"
+                }, 
+                {
+                    "code": "LIB 204", 
+                    "course_url": "http://www.chegg.com/courses/1584724/LIB/204", 
+                    "name": "Library Operations and Issues II"
+                }
+            ], 
+            "name": "Library", 
+            "url": "http://www.chegg.com/courses/1584724/LIB"
+        }, 
+        {
+            "abbr": "MAT", 
+            "courses": [
+                {
+                    "code": "MAT 079", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/079", 
+                    "name": "Mathematics Review and Test Preparation"
+                }, 
+                {
+                    "code": "MAT 094", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/094", 
+                    "name": "Prealgebra"
+                }, 
+                {
+                    "code": "MAT 095", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/095", 
+                    "name": "Elementary Algebra I"
+                }, 
+                {
+                    "code": "MAT 097", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/097", 
+                    "name": "Elementary Algebra II"
+                }, 
+                {
+                    "code": "MAT 102", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/102", 
+                    "name": "Manufacturing Math I"
+                }, 
+                {
+                    "code": "MAT 104", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/104", 
+                    "name": "Manufacturing Math II"
+                }, 
+                {
+                    "code": "MAT 112", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/112", 
+                    "name": "Allied Health Math"
+                }, 
+                {
+                    "code": "MAT 114", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/114", 
+                    "name": "College Business Math"
+                }, 
+                {
+                    "code": "MAT 116", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/116", 
+                    "name": "Statistics I"
+                }, 
+                {
+                    "code": "MAT 118", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/118", 
+                    "name": "Statistics II"
+                }, 
+                {
+                    "code": "MAT 121", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/121", 
+                    "name": "Technical Mathematics I"
+                }, 
+                {
+                    "code": "MAT 131", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/131", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MAT 132", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/132", 
+                    "name": "Algebra and Trigonometry"
+                }, 
+                {
+                    "code": "MAT 133", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/133", 
+                    "name": "Mathematical Applications"
+                }, 
+                {
+                    "code": "MAT 199", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/199", 
+                    "name": "Advanced Health Math"
+                }, 
+                {
+                    "code": "MAT 221", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/221", 
+                    "name": "Calculus and Analytical Geometry I"
+                }, 
+                {
+                    "code": "MAT 222", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/222", 
+                    "name": "Calculus and Analytical Geometry II"
+                }, 
+                {
+                    "code": "MAT 223", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/223", 
+                    "name": "Calculus and Analytical Geometry III"
+                }, 
+                {
+                    "code": "MAT 231", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/231", 
+                    "name": "Linear Algebra"
+                }, 
+                {
+                    "code": "MAT 241", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MAT/241", 
+                    "name": "Finite Mathematics"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/1584724/MAT"
+        }, 
+        {
+            "abbr": "MED", 
+            "courses": [
+                {
+                    "code": "MED 105", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/105", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "MED 111", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/111", 
+                    "name": "Medical Assisting I"
+                }, 
+                {
+                    "code": "MED 121", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/121", 
+                    "name": "Medical Assisting II"
+                }, 
+                {
+                    "code": "MED 131", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/131", 
+                    "name": "Medical Assisting III"
+                }, 
+                {
+                    "code": "MED 136", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/136", 
+                    "name": "Medical Transcription Fundamentals"
+                }, 
+                {
+                    "code": "MED 142", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/142", 
+                    "name": "Basic Phlebotomy"
+                }, 
+                {
+                    "code": "MED 146", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/146", 
+                    "name": "Medical Machine Transcription"
+                }, 
+                {
+                    "code": "MED 205", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/205", 
+                    "name": "Special Medical Terminology"
+                }, 
+                {
+                    "code": "MED 235", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/235", 
+                    "name": "Medical Office Practices"
+                }, 
+                {
+                    "code": "MED 241", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/241", 
+                    "name": "Medical Assisting IV"
+                }, 
+                {
+                    "code": "MED 245", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/245", 
+                    "name": "Medical Law and Ethics"
+                }, 
+                {
+                    "code": "MED 247", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/247", 
+                    "name": "First Aid and CPR"
+                }, 
+                {
+                    "code": "MED 251", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/251", 
+                    "name": "Medical Assisting V"
+                }, 
+                {
+                    "code": "MED 256", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/256", 
+                    "name": "Introduction to Coding Systems"
+                }, 
+                {
+                    "code": "MED 258", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/258", 
+                    "name": "Introduction to ICD- 9- CM Coding"
+                }, 
+                {
+                    "code": "MED 261", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/261", 
+                    "name": "Advanced Medical Transcription"
+                }, 
+                {
+                    "code": "MED 265", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/265", 
+                    "name": "Introduction to CPT- 4 Coding"
+                }, 
+                {
+                    "code": "MED 268", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/268", 
+                    "name": "Intermediate ICD- 9- CM & CPT- 4 Coding"
+                }, 
+                {
+                    "code": "MED 271", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/271", 
+                    "name": "Medical Practicum"
+                }, 
+                {
+                    "code": "MED 281", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MED/281", 
+                    "name": "Medical Seminar"
+                }
+            ], 
+            "name": "Medicine", 
+            "url": "http://www.chegg.com/courses/1584724/MED"
+        }, 
+        {
+            "abbr": "MET", 
+            "courses": [
+                {
+                    "code": "MET 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/101", 
+                    "name": "Machine Tool I"
+                }, 
+                {
+                    "code": "MET 102", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/102", 
+                    "name": "Machine Tool II"
+                }, 
+                {
+                    "code": "MET 103", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/103", 
+                    "name": "Advanced Machine Tool III"
+                }, 
+                {
+                    "code": "MET 110", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/110", 
+                    "name": "Machine Tool Blueprint Reading I"
+                }, 
+                {
+                    "code": "MET 111", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/111", 
+                    "name": "Mechanical Drawing I"
+                }, 
+                {
+                    "code": "MET 112", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/112", 
+                    "name": "Mechanical Drawing II"
+                }, 
+                {
+                    "code": "MET 113", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/113", 
+                    "name": "Jig and Fixtures"
+                }, 
+                {
+                    "code": "MET 114", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/114", 
+                    "name": "Machine Tool Blueprint Reading II"
+                }, 
+                {
+                    "code": "MET 121", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/121", 
+                    "name": "Computer Aided Drafting I"
+                }, 
+                {
+                    "code": "MET 122", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/122", 
+                    "name": "Computer Aided Drafting II"
+                }, 
+                {
+                    "code": "MET 131", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/131", 
+                    "name": "Hydraulics and Pneumatics I"
+                }, 
+                {
+                    "code": "MET 132", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/132", 
+                    "name": "Hydraulics and Pneumatics II"
+                }, 
+                {
+                    "code": "MET 216", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/216", 
+                    "name": "Statics"
+                }, 
+                {
+                    "code": "MET 225", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/225", 
+                    "name": "Engineering Materials"
+                }, 
+                {
+                    "code": "MET 231", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/231", 
+                    "name": "Manufacturing Processes I"
+                }, 
+                {
+                    "code": "MET 241", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/241", 
+                    "name": "Quality Assurance/ Quality Control"
+                }, 
+                {
+                    "code": "MET 251", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/251", 
+                    "name": "Production Machining and Inspection"
+                }, 
+                {
+                    "code": "MET 261", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/261", 
+                    "name": "Machine Tool IV"
+                }, 
+                {
+                    "code": "MET 263", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MET/263", 
+                    "name": "NC/ CNC Programming"
+                }
+            ], 
+            "name": "Met-Mechanical Engr Tech", 
+            "url": "http://www.chegg.com/courses/1584724/MET"
+        }, 
+        {
+            "abbr": "MFG", 
+            "courses": [
+                {
+                    "code": "MFG 121", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MFG/121", 
+                    "name": "Osha"
+                }, 
+                {
+                    "code": "MFG 122", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MFG/122", 
+                    "name": "Tooling & Manufacturing Metrology"
+                }, 
+                {
+                    "code": "MFG 124", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MFG/124", 
+                    "name": "Fundamentals of Tooling & Manufacturing Processes"
+                }, 
+                {
+                    "code": "MFG 140", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MFG/140", 
+                    "name": "Introduction to Machine Trades Materials"
+                }
+            ], 
+            "name": "Manufacturing Systems", 
+            "url": "http://www.chegg.com/courses/1584724/MFG"
+        }, 
+        {
+            "abbr": "MHT", 
+            "courses": [
+                {
+                    "code": "MHT 111", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/111", 
+                    "name": "Introduction to Human Services"
+                }, 
+                {
+                    "code": "MHT 121", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/121", 
+                    "name": "Introduction to Casework"
+                }, 
+                {
+                    "code": "MHT 125", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/125", 
+                    "name": "Interviewing Techniques"
+                }, 
+                {
+                    "code": "MHT 131", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/131", 
+                    "name": "Counseling Techniques"
+                }, 
+                {
+                    "code": "MHT 139", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/139", 
+                    "name": "Activity Therapy I"
+                }, 
+                {
+                    "code": "MHT 141", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/141", 
+                    "name": "Activity Therapy II"
+                }, 
+                {
+                    "code": "MHT 225", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/225", 
+                    "name": "Counseling with Special Populations"
+                }, 
+                {
+                    "code": "MHT 231", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/231", 
+                    "name": "Addictive Theory I"
+                }, 
+                {
+                    "code": "MHT 232", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/232", 
+                    "name": "Addictive Theory II"
+                }, 
+                {
+                    "code": "MHT 251", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/251", 
+                    "name": "Group Dynamics I"
+                }, 
+                {
+                    "code": "MHT 252", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/252", 
+                    "name": "Group Dynamics II"
+                }, 
+                {
+                    "code": "MHT 253", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/253", 
+                    "name": "Group Dynamics III"
+                }, 
+                {
+                    "code": "MHT 262", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/262", 
+                    "name": "Mental Health Practicum I"
+                }, 
+                {
+                    "code": "MHT 265", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/265", 
+                    "name": "Seminar I"
+                }, 
+                {
+                    "code": "MHT 272", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/272", 
+                    "name": "Mental Health Practicum II"
+                }, 
+                {
+                    "code": "MHT 275", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/275", 
+                    "name": "Seminar II"
+                }, 
+                {
+                    "code": "MHT 282", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/282", 
+                    "name": "Mental Health Practicum III"
+                }, 
+                {
+                    "code": "MHT 285", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MHT/285", 
+                    "name": "Seminar III"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/1584724/MHT"
+        }, 
+        {
+            "abbr": "MIN", 
+            "courses": [
+                {
+                    "code": "MIN 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MIN/101", 
+                    "name": "Introduction to Mining"
+                }, 
+                {
+                    "code": "MIN 211", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MIN/211", 
+                    "name": "Mining Law and Safety"
+                }
+            ], 
+            "name": "Mining Engineering", 
+            "url": "http://www.chegg.com/courses/1584724/MIN"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/MUS/101", 
+                    "name": "Music Appreciation"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/1584724/MUS"
+        }, 
+        {
+            "abbr": "NET", 
+            "courses": [
+                {
+                    "code": "NET 123", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/123", 
+                    "name": "Introduction to Web Programming"
+                }, 
+                {
+                    "code": "NET 141", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/141", 
+                    "name": "PC Hardware"
+                }, 
+                {
+                    "code": "NET 142", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/142", 
+                    "name": "PC Operating Systems"
+                }, 
+                {
+                    "code": "NET 143", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/143", 
+                    "name": "Fundamentals of UNIX"
+                }, 
+                {
+                    "code": "NET 150", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/150", 
+                    "name": "Voice and Data Cabling"
+                }, 
+                {
+                    "code": "NET 151", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/151", 
+                    "name": "Networking Basics"
+                }, 
+                {
+                    "code": "NET 152", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/152", 
+                    "name": "Routers and Routing"
+                }, 
+                {
+                    "code": "NET 153", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/153", 
+                    "name": "Switching Basics"
+                }, 
+                {
+                    "code": "NET 154", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/154", 
+                    "name": "WAN Technologies"
+                }, 
+                {
+                    "code": "NET 156", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/156", 
+                    "name": "Wireless LANs"
+                }, 
+                {
+                    "code": "NET 157", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/157", 
+                    "name": "Network Security I"
+                }, 
+                {
+                    "code": "NET 158", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/158", 
+                    "name": "Network Security II"
+                }, 
+                {
+                    "code": "NET 160", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/160", 
+                    "name": "Introduction to Networking"
+                }, 
+                {
+                    "code": "NET 161", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/161", 
+                    "name": "Microsoft Windows Professional"
+                }, 
+                {
+                    "code": "NET 162", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/162", 
+                    "name": "Microsoft Windows Server"
+                }, 
+                {
+                    "code": "NET 163", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/163", 
+                    "name": "Implementing Microsoft Windows Network Infrastructure"
+                }, 
+                {
+                    "code": "NET 222", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/222", 
+                    "name": "Fundamentals of JAVA II"
+                }, 
+                {
+                    "code": "NET 251", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/251", 
+                    "name": "Advanced Routing Configuration"
+                }, 
+                {
+                    "code": "NET 252", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/252", 
+                    "name": "Building Remote Access Networks"
+                }, 
+                {
+                    "code": "NET 253", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/253", 
+                    "name": "Configuring LAN Switches"
+                }, 
+                {
+                    "code": "NET 254", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/254", 
+                    "name": "Internetwork Troubleshooting"
+                }, 
+                {
+                    "code": "NET 264", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/264", 
+                    "name": "Microsoft Windows Directory Services"
+                }, 
+                {
+                    "code": "NET 265", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/265", 
+                    "name": "Microsoft Windows Directory Services Infrastructure"
+                }, 
+                {
+                    "code": "NET 266", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/266", 
+                    "name": "Microsoft? Windows? Network Security"
+                }, 
+                {
+                    "code": "NET 267", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NET/267", 
+                    "name": "Designing Microsoft Windows Network Infrastructure"
+                }
+            ], 
+            "name": "Information Tech Network Admin", 
+            "url": "http://www.chegg.com/courses/1584724/NET"
+        }, 
+        {
+            "abbr": "NSC", 
+            "courses": [
+                {
+                    "code": "NSC 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NSC/101", 
+                    "name": "Physical Science I"
+                }, 
+                {
+                    "code": "NSC 102", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NSC/102", 
+                    "name": "Physical Science II"
+                }, 
+                {
+                    "code": "NSC 104", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NSC/104", 
+                    "name": "The Science of Energy"
+                }
+            ], 
+            "name": "Nsc Bac Or Grad Nursing", 
+            "url": "http://www.chegg.com/courses/1584724/NSC"
+        }, 
+        {
+            "abbr": "NUT", 
+            "courses": [
+                {
+                    "code": "NUT 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/NUT/101", 
+                    "name": "Normal Nutrition"
+                }
+            ], 
+            "name": "Nutrition", 
+            "url": "http://www.chegg.com/courses/1584724/NUT"
+        }, 
+        {
+            "abbr": "PHL", 
+            "courses": [
+                {
+                    "code": "PHL 210", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PHL/210", 
+                    "name": "Philosophy"
+                }, 
+                {
+                    "code": "PHL 212", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PHL/212", 
+                    "name": "Ethics"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/1584724/PHL"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PHY/101", 
+                    "name": "Physics I"
+                }, 
+                {
+                    "code": "PHY 102", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PHY/102", 
+                    "name": "Physics II"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/1584724/PHY"
+        }, 
+        {
+            "abbr": "PNP", 
+            "courses": [
+                {
+                    "code": "PNP 100", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PNP/100", 
+                    "name": "Practical Nursing I"
+                }, 
+                {
+                    "code": "PNP 110", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PNP/110", 
+                    "name": "Practical Nursing II"
+                }, 
+                {
+                    "code": "PNP 200", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PNP/200", 
+                    "name": "Gerontology"
+                }, 
+                {
+                    "code": "PNP 205", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PNP/205", 
+                    "name": "Growth and Development"
+                }, 
+                {
+                    "code": "PNP 210", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PNP/210", 
+                    "name": "Practical Nursing III"
+                }, 
+                {
+                    "code": "PNP 214", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PNP/214", 
+                    "name": "Practical Nursing IV"
+                }, 
+                {
+                    "code": "PNP 216", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PNP/216", 
+                    "name": "Practical Nursing V"
+                }, 
+                {
+                    "code": "PNP 220", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PNP/220", 
+                    "name": "Pharmacology"
+                }, 
+                {
+                    "code": "PNP 222", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PNP/222", 
+                    "name": "Practical Nursing VI"
+                }, 
+                {
+                    "code": "PNP 230", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PNP/230", 
+                    "name": "Practical Nursing Seminar"
+                }
+            ], 
+            "name": "Philosophy-Neuroscience-Psychology", 
+            "url": "http://www.chegg.com/courses/1584724/PNP"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 100", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PSY/100", 
+                    "name": "Personal Development"
+                }, 
+                {
+                    "code": "PSY 104", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PSY/104", 
+                    "name": "Student Learning and Success"
+                }, 
+                {
+                    "code": "PSY 105", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PSY/105", 
+                    "name": "General Psychology"
+                }, 
+                {
+                    "code": "PSY 110", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PSY/110", 
+                    "name": "Human Development"
+                }, 
+                {
+                    "code": "PSY 113", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PSY/113", 
+                    "name": "Theories of Personality"
+                }, 
+                {
+                    "code": "PSY 205", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PSY/205", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSY 241", 
+                    "course_url": "http://www.chegg.com/courses/1584724/PSY/241", 
+                    "name": "Mental Health and the Family"
+                }
+            ], 
+            "name": "Clinical Counseling", 
+            "url": "http://www.chegg.com/courses/1584724/PSY"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 101", 
+                    "course_url": "http://www.chegg.com/courses/1584724/SOC/101", 
+                    "name": "Sociology"
+                }, 
+                {
+                    "code": "SOC 121", 
+                    "course_url": "http://www.chegg.com/courses/1584724/SOC/121", 
+                    "name": "Social Problems"
+                }, 
+                {
+                    "code": "SOC 221", 
+                    "course_url": "http://www.chegg.com/courses/1584724/SOC/221", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "SOC 231", 
+                    "course_url": "http://www.chegg.com/courses/1584724/SOC/231", 
+                    "name": "Criminology"
+                }, 
+                {
+                    "code": "SOC 245", 
+                    "course_url": "http://www.chegg.com/courses/1584724/SOC/245", 
+                    "name": "Juvenile Delinquency"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/1584724/SOC"
+        }, 
+        {
+            "abbr": "WAF", 
+            "courses": [
+                {
+                    "code": "WAF 105", 
+                    "course_url": "http://www.chegg.com/courses/1584724/WAF/105", 
+                    "name": "Welding Practices"
+                }, 
+                {
+                    "code": "WAF 111", 
+                    "course_url": "http://www.chegg.com/courses/1584724/WAF/111", 
+                    "name": "Oxyacetylene Practices I"
+                }, 
+                {
+                    "code": "WAF 112", 
+                    "course_url": "http://www.chegg.com/courses/1584724/WAF/112", 
+                    "name": "Oxyacetylene Practices II"
+                }, 
+                {
+                    "code": "WAF 121", 
+                    "course_url": "http://www.chegg.com/courses/1584724/WAF/121", 
+                    "name": "Shielded Metal Arc I"
+                }, 
+                {
+                    "code": "WAF 122", 
+                    "course_url": "http://www.chegg.com/courses/1584724/WAF/122", 
+                    "name": "Shielded Metal Arc II"
+                }, 
+                {
+                    "code": "WAF 123", 
+                    "course_url": "http://www.chegg.com/courses/1584724/WAF/123", 
+                    "name": "Shielded Metal Arc III"
+                }, 
+                {
+                    "code": "WAF 124", 
+                    "course_url": "http://www.chegg.com/courses/1584724/WAF/124", 
+                    "name": "Shielded Metal Arc IV"
+                }, 
+                {
+                    "code": "WAF 125", 
+                    "course_url": "http://www.chegg.com/courses/1584724/WAF/125", 
+                    "name": "Shielded Metal Arc V"
+                }, 
+                {
+                    "code": "WAF 131", 
+                    "course_url": "http://www.chegg.com/courses/1584724/WAF/131", 
+                    "name": "Welding Symbols and Terms"
+                }, 
+                {
+                    "code": "WAF 221", 
+                    "course_url": "http://www.chegg.com/courses/1584724/WAF/221", 
+                    "name": "Weld Testing I"
+                }, 
+                {
+                    "code": "WAF 241", 
+                    "course_url": "http://www.chegg.com/courses/1584724/WAF/241", 
+                    "name": "Metallic Inert Gas Welding- MIG"
+                }, 
+                {
+                    "code": "WAF 245", 
+                    "course_url": "http://www.chegg.com/courses/1584724/WAF/245", 
+                    "name": "Tungsten Inert Gas Welding- TIG"
+                }, 
+                {
+                    "code": "WAF 251", 
+                    "course_url": "http://www.chegg.com/courses/1584724/WAF/251", 
+                    "name": "Welding Fabrication"
+                }, 
+                {
+                    "code": "WAF 261", 
+                    "course_url": "http://www.chegg.com/courses/1584724/WAF/261", 
+                    "name": "Weldment Problems/ Solutions"
+                }
+            ], 
+            "name": "Welding & Fabrication", 
+            "url": "http://www.chegg.com/courses/1584724/WAF"
+        }
+    ], 
+    "name": "1584724"
+}

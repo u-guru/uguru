@@ -1,0 +1,4029 @@
+{
+    "all_stats": {
+        "num_courses": 720, 
+        "num_departments": 60
+    }, 
+    "departments": [
+        {
+            "abbr": "ACCO", 
+            "courses": [
+                {
+                    "code": "ACCO 101", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ACCO/101", 
+                    "name": "General Accounting"
+                }, 
+                {
+                    "code": "ACCO 102", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ACCO/102", 
+                    "name": "General Accounting"
+                }, 
+                {
+                    "code": "ACCO 205", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ACCO/205", 
+                    "name": "Computerized Accounting"
+                }, 
+                {
+                    "code": "ACCO 211", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ACCO/211", 
+                    "name": "Intermediate Accounting"
+                }, 
+                {
+                    "code": "ACCO 251", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ACCO/251", 
+                    "name": "Cost Accounting"
+                }, 
+                {
+                    "code": "ACCO 252", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ACCO/252", 
+                    "name": "Income Taxation"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/kellog/ACCO"
+        }, 
+        {
+            "abbr": "AN IM", 
+            "courses": [
+                {
+                    "code": "AN IM 235E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/AN%20IM/235E", 
+                    "name": "Intermediate Animation"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/kellog/AN%20IM"
+        }, 
+        {
+            "abbr": "ANIM", 
+            "courses": [
+                {
+                    "code": "ANIM 103", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ANIM/103", 
+                    "name": "Introduction to Video Art"
+                }, 
+                {
+                    "code": "ANIM 104", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ANIM/104", 
+                    "name": "Introduction to Sound,Recording,and Editing"
+                }, 
+                {
+                    "code": "ANIM 233", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ANIM/233", 
+                    "name": "Introduction to 2-D Animation Techniques"
+                }, 
+                {
+                    "code": "ANIM 233E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ANIM/233E", 
+                    "name": "Introduction to 2-D Animation Techniques"
+                }, 
+                {
+                    "code": "ANIM 234", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ANIM/234", 
+                    "name": "Introduction to 3-D Animation Techniques"
+                }, 
+                {
+                    "code": "ANIM 234E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ANIM/234E", 
+                    "name": "Introduction to 3-D Animation Techniques"
+                }, 
+                {
+                    "code": "ANIM 235", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ANIM/235", 
+                    "name": "Intermediate Animation"
+                }, 
+                {
+                    "code": "ANIM 236", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ANIM/236", 
+                    "name": "Advanced Animation"
+                }, 
+                {
+                    "code": "ANIM 236E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ANIM/236E", 
+                    "name": "Advanced Animation"
+                }
+            ], 
+            "name": "Animation", 
+            "url": "http://www.chegg.com/courses/kellog/ANIM"
+        }, 
+        {
+            "abbr": "ANTH", 
+            "courses": [
+                {
+                    "code": "ANTH 200", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ANTH/200", 
+                    "name": "Introduction to Anthropology"
+                }
+            ], 
+            "name": "Anthropology", 
+            "url": "http://www.chegg.com/courses/kellog/ANTH"
+        }, 
+        {
+            "abbr": "ARAB", 
+            "courses": [
+                {
+                    "code": "ARAB 101", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ARAB/101", 
+                    "name": "Elementary Arabic"
+                }, 
+                {
+                    "code": "ARAB 102", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ARAB/102", 
+                    "name": "Elementary Arabic II"
+                }
+            ], 
+            "name": "Arabic", 
+            "url": "http://www.chegg.com/courses/kellog/ARAB"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 103", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/103", 
+                    "name": "Two-Dimension Design"
+                }, 
+                {
+                    "code": "ART 103E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/103E", 
+                    "name": "Two-Dimension Design"
+                }, 
+                {
+                    "code": "ART 105", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/105", 
+                    "name": "Contemporary Art Survey"
+                }, 
+                {
+                    "code": "ART 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/110", 
+                    "name": "Drawing I"
+                }, 
+                {
+                    "code": "ART 110E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/110E", 
+                    "name": "Drawing I"
+                }, 
+                {
+                    "code": "ART 141", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/141", 
+                    "name": "Art for Elementary Teachers"
+                }, 
+                {
+                    "code": "ART 160", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/160", 
+                    "name": "Painting and Illustration I"
+                }, 
+                {
+                    "code": "ART 160E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/160E", 
+                    "name": "Painting and Illustration I"
+                }, 
+                {
+                    "code": "ART 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/201", 
+                    "name": "Painting and Illustration II"
+                }, 
+                {
+                    "code": "ART 201E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/201E", 
+                    "name": "Painting and Illustration II"
+                }, 
+                {
+                    "code": "ART 204", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/204", 
+                    "name": "Three-Dimension Art"
+                }, 
+                {
+                    "code": "ART 204E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/204E", 
+                    "name": "Three-Dimension Art"
+                }, 
+                {
+                    "code": "ART 210", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/210", 
+                    "name": "History of Photography and Film"
+                }, 
+                {
+                    "code": "ART 211", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/211", 
+                    "name": "Art Appreciation"
+                }, 
+                {
+                    "code": "ART 212", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/212", 
+                    "name": "Art History"
+                }, 
+                {
+                    "code": "ART 213", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/213", 
+                    "name": "Art History"
+                }, 
+                {
+                    "code": "ART 215", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/215", 
+                    "name": "Art Seminar I"
+                }, 
+                {
+                    "code": "ART 215E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/215E", 
+                    "name": "Art Seminar I"
+                }, 
+                {
+                    "code": "ART 216 4", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/216%204", 
+                    "name": "D Studio Art Seminar II"
+                }, 
+                {
+                    "code": "ART 216E 4", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/216E%204", 
+                    "name": "D Studio Art Seminar II"
+                }, 
+                {
+                    "code": "ART 221", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/221", 
+                    "name": "Photography Basics"
+                }, 
+                {
+                    "code": "ART 221E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/221E", 
+                    "name": "Photography Basics"
+                }, 
+                {
+                    "code": "ART 222", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/222", 
+                    "name": "Introduction to Photography"
+                }, 
+                {
+                    "code": "ART 222E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/222E", 
+                    "name": "Introduction to Photography"
+                }, 
+                {
+                    "code": "ART 223", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/223", 
+                    "name": "Intermediate Photography"
+                }, 
+                {
+                    "code": "ART 223E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/223E", 
+                    "name": "Intermediate Photography"
+                }, 
+                {
+                    "code": "ART 224", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/224", 
+                    "name": "Advanced Photography"
+                }, 
+                {
+                    "code": "ART 224E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/224E", 
+                    "name": "Advanced Photography"
+                }, 
+                {
+                    "code": "ART 225", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/225", 
+                    "name": "Landscape Photography"
+                }, 
+                {
+                    "code": "ART 227", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/227", 
+                    "name": "Digital Color Photography"
+                }, 
+                {
+                    "code": "ART 229", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/229", 
+                    "name": "Studio Photography"
+                }, 
+                {
+                    "code": "ART 230", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/230", 
+                    "name": "Digital Color Photography II"
+                }, 
+                {
+                    "code": "ART 231", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/231", 
+                    "name": "Watercolor and Illustration I"
+                }, 
+                {
+                    "code": "ART 231E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/231E", 
+                    "name": "Watercolor and Illustration I"
+                }, 
+                {
+                    "code": "ART 232", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/232", 
+                    "name": "Watercolor and Illustration II"
+                }, 
+                {
+                    "code": "ART 232E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/232E", 
+                    "name": "Watercolor and Illustration II"
+                }, 
+                {
+                    "code": "ART 245", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/245", 
+                    "name": "Introduction to Ceramics"
+                }, 
+                {
+                    "code": "ART 245E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/245E", 
+                    "name": "Introduction to Ceramics"
+                }, 
+                {
+                    "code": "ART 246", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/246", 
+                    "name": "Intermediate Ceramics"
+                }, 
+                {
+                    "code": "ART 246E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/246E", 
+                    "name": "Intermediate Ceramics"
+                }, 
+                {
+                    "code": "ART 295", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/295", 
+                    "name": "Photography and Multimedia Special Topics"
+                }, 
+                {
+                    "code": "ART 296", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/296", 
+                    "name": "Internship and Career Development"
+                }, 
+                {
+                    "code": "ART 297", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/297", 
+                    "name": "Art Special Topics"
+                }, 
+                {
+                    "code": "ART 297E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/297E", 
+                    "name": "Art Special Topics"
+                }, 
+                {
+                    "code": "ART 298", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ART/298", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/kellog/ART"
+        }, 
+        {
+            "abbr": "ASTR", 
+            "courses": [
+                {
+                    "code": "ASTR 104", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ASTR/104", 
+                    "name": "Introductory Astronomy"
+                }
+            ], 
+            "name": "Astronomy", 
+            "url": "http://www.chegg.com/courses/kellog/ASTR"
+        }, 
+        {
+            "abbr": "BIOL", 
+            "courses": [
+                {
+                    "code": "BIOL 99", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BIOL/99", 
+                    "name": "Preparation for Biology"
+                }, 
+                {
+                    "code": "BIOL 101", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BIOL/101", 
+                    "name": "Biological Science"
+                }, 
+                {
+                    "code": "BIOL 105", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BIOL/105", 
+                    "name": "Essentials of Anatomy and Physiology"
+                }, 
+                {
+                    "code": "BIOL 109", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BIOL/109", 
+                    "name": "Principles of Biology I"
+                }, 
+                {
+                    "code": "BIOL 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BIOL/110", 
+                    "name": "Principles of Biology II"
+                }, 
+                {
+                    "code": "BIOL 111", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BIOL/111", 
+                    "name": "Botany"
+                }, 
+                {
+                    "code": "BIOL 112", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BIOL/112", 
+                    "name": "Zoology"
+                }, 
+                {
+                    "code": "BIOL 116", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BIOL/116", 
+                    "name": "Introduction to Ornithology"
+                }, 
+                {
+                    "code": "BIOL 140", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BIOL/140", 
+                    "name": "Life Science for Elementary Educators"
+                }, 
+                {
+                    "code": "BIOL 200", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BIOL/200", 
+                    "name": "Field Biology"
+                }, 
+                {
+                    "code": "BIOL 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BIOL/201", 
+                    "name": "Human Anatomy"
+                }, 
+                {
+                    "code": "BIOL 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BIOL/202", 
+                    "name": "Human Physiology"
+                }, 
+                {
+                    "code": "BIOL 205", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BIOL/205", 
+                    "name": "Microbiology"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/kellog/BIOL"
+        }, 
+        {
+            "abbr": "BUA", 
+            "courses": [
+                {
+                    "code": "BUA D100", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D100", 
+                    "name": "Employability-Interpersonal Skills Development"
+                }, 
+                {
+                    "code": "BUA D101", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D101", 
+                    "name": "Introduction to Business"
+                }, 
+                {
+                    "code": "BUA D104", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D104", 
+                    "name": "Business Correspondence"
+                }, 
+                {
+                    "code": "BUA D112", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D112", 
+                    "name": "Business Statistics"
+                }, 
+                {
+                    "code": "BUA D115", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D115", 
+                    "name": "Global Business"
+                }, 
+                {
+                    "code": "BUA D121", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D121", 
+                    "name": "Principles of Advertising"
+                }, 
+                {
+                    "code": "BUA D131", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D131", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "BUA D132", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D132", 
+                    "name": "Human Resources Management"
+                }, 
+                {
+                    "code": "BUA D200A", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D200A", 
+                    "name": "Cooperative Education I"
+                }, 
+                {
+                    "code": "BUA D200B", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D200B", 
+                    "name": "Cooperative Education II"
+                }, 
+                {
+                    "code": "BUA D200C", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D200C", 
+                    "name": "Cooperative Education III"
+                }, 
+                {
+                    "code": "BUA D201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D201", 
+                    "name": "Business Law"
+                }, 
+                {
+                    "code": "BUA D202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D202", 
+                    "name": "Business Law"
+                }, 
+                {
+                    "code": "BUA D212", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D212", 
+                    "name": "Personal Finance"
+                }, 
+                {
+                    "code": "BUA D223", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D223", 
+                    "name": "Developing an E-Commerce/E-Business Plan"
+                }, 
+                {
+                    "code": "BUA D227", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D227", 
+                    "name": "Building the E-Commerce Storefront/Website"
+                }, 
+                {
+                    "code": "BUA D251", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D251", 
+                    "name": "Principles of Marketing"
+                }, 
+                {
+                    "code": "BUA D271", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D271", 
+                    "name": "Consumer Behavior"
+                }, 
+                {
+                    "code": "BUA D272", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D272", 
+                    "name": "Marketing Management"
+                }, 
+                {
+                    "code": "BUA D273", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D273", 
+                    "name": "Labor Relations"
+                }, 
+                {
+                    "code": "BUA D274", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUA/D274", 
+                    "name": "Organizational Behavior"
+                }
+            ], 
+            "name": "Business Administration", 
+            "url": "http://www.chegg.com/courses/kellog/BUA"
+        }, 
+        {
+            "abbr": "BUEN", 
+            "courses": [
+                {
+                    "code": "BUEN 100", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUEN/100", 
+                    "name": "Introduction to Entrepreneurship"
+                }, 
+                {
+                    "code": "BUEN 101", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUEN/101", 
+                    "name": "Entrepreneurship-Developing a Business Plan"
+                }, 
+                {
+                    "code": "BUEN 102", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUEN/102", 
+                    "name": "Entrepreneurship-Business Management"
+                }, 
+                {
+                    "code": "BUEN 103", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUEN/103", 
+                    "name": "Applying Technology to Business Needs"
+                }, 
+                {
+                    "code": "BUEN 104", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUEN/104", 
+                    "name": "Presentation Skills"
+                }, 
+                {
+                    "code": "BUEN 105", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUEN/105", 
+                    "name": "Entrepreneurship Marketing/Advertising"
+                }, 
+                {
+                    "code": "BUEN 106", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUEN/106", 
+                    "name": "The Marketing/Sales Plan"
+                }, 
+                {
+                    "code": "BUEN 107", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUEN/107", 
+                    "name": "Entrepreneurial Finance"
+                }, 
+                {
+                    "code": "BUEN 108", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUEN/108", 
+                    "name": "Legal Issues and Ethics"
+                }, 
+                {
+                    "code": "BUEN 109", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUEN/109", 
+                    "name": "Basic Economic Concepts"
+                }, 
+                {
+                    "code": "BUEN 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/BUEN/110", 
+                    "name": "Risk Management for Entrepreneurs"
+                }
+            ], 
+            "name": "Business Entrepreneurship", 
+            "url": "http://www.chegg.com/courses/kellog/BUEN"
+        }, 
+        {
+            "abbr": "CET", 
+            "courses": [
+                {
+                    "code": "CET 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/110", 
+                    "name": "Principles of Electricity and Electronics"
+                }, 
+                {
+                    "code": "CET 125", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/125", 
+                    "name": "Digital Logic I"
+                }, 
+                {
+                    "code": "CET 140", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/140", 
+                    "name": "Microcomputers-Introduction"
+                }, 
+                {
+                    "code": "CET 185", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/185", 
+                    "name": "Introduction to Operating Systems"
+                }, 
+                {
+                    "code": "CET 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/201", 
+                    "name": "Foundations of Novell Networking"
+                }, 
+                {
+                    "code": "CET 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/202", 
+                    "name": "Novell Network Management"
+                }, 
+                {
+                    "code": "CET 203", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/203", 
+                    "name": "Advanced Novell Network Management"
+                }, 
+                {
+                    "code": "CET 204", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/204", 
+                    "name": "Novell E-Directory Design and Implementation"
+                }, 
+                {
+                    "code": "CET 205", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/205", 
+                    "name": "Desktop Management with Novell ZENWorks for Desktops"
+                }, 
+                {
+                    "code": "CET 210", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/210", 
+                    "name": "Installing,Configuring,and Administering Windows XP Professional"
+                }, 
+                {
+                    "code": "CET 219", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/219", 
+                    "name": "MCSE V-Designing a Microsoft Windows 2000 Directory Service Infrastructure"
+                }, 
+                {
+                    "code": "CET 221", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/221", 
+                    "name": "MCSE VI-Designing Security for a Microsoft Windows 2000 Network"
+                }, 
+                {
+                    "code": "CET 222", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/222", 
+                    "name": "MCSE VII-Upgrading from Microsoft Windows NT 4.0 to Microsoft Windows 2000"
+                }, 
+                {
+                    "code": "CET 227", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/227", 
+                    "name": "Microsoft Internet Security and Acceleration Server 2000,Enterprise Edition"
+                }, 
+                {
+                    "code": "CET 230", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/230", 
+                    "name": "Local Area Networking I-Network +"
+                }, 
+                {
+                    "code": "CET 235", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/235", 
+                    "name": "Cisco Networking I"
+                }, 
+                {
+                    "code": "CET 236", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/236", 
+                    "name": "Cisco Networking II"
+                }, 
+                {
+                    "code": "CET 250", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/250", 
+                    "name": "Security +"
+                }, 
+                {
+                    "code": "CET 260", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/260", 
+                    "name": "A+ Computer Diagnostics and Repair"
+                }, 
+                {
+                    "code": "CET 270", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/270", 
+                    "name": "Local Area Networking II-Server +"
+                }, 
+                {
+                    "code": "CET 275", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/275", 
+                    "name": "Cisco Networking III"
+                }, 
+                {
+                    "code": "CET 276", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/276", 
+                    "name": "Cisco Networking IV"
+                }, 
+                {
+                    "code": "CET 278", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/278", 
+                    "name": "Fundamentals of Wireless LANs"
+                }, 
+                {
+                    "code": "CET 279", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/279", 
+                    "name": "Network Wiring,Design,and Installation"
+                }, 
+                {
+                    "code": "CET 281", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/281", 
+                    "name": "Operating Systems-Windows System Administration"
+                }, 
+                {
+                    "code": "CET 282", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/282", 
+                    "name": "Operating Systems-UNIX"
+                }, 
+                {
+                    "code": "CET 290", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/290", 
+                    "name": "Managing and Maintaining a Windows Server 2003 Environment"
+                }, 
+                {
+                    "code": "CET 291", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/291", 
+                    "name": "Implementing,Managing,and Maintaining a Windows Server 2003 Network Infrastructure"
+                }, 
+                {
+                    "code": "CET 293", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/293", 
+                    "name": "Planning and Maintaining a Windows Server 2003 Network Infrastructure"
+                }, 
+                {
+                    "code": "CET 294", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/294", 
+                    "name": "Planning,Implementing,and Maintaining a Windows 2003 Active Directory Infrastructure"
+                }, 
+                {
+                    "code": "CET 298", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/298", 
+                    "name": "Designing Security for a Windows Server 2003 Network"
+                }, 
+                {
+                    "code": "CET 299", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CET/299", 
+                    "name": "Implementing and Administering Security in Microsoft Server 2003 Network"
+                }
+            ], 
+            "name": "Computer Engineering Tech.", 
+            "url": "http://www.chegg.com/courses/kellog/CET"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 10", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CHEM/10", 
+                    "name": "Fundamental Chemical Concepts"
+                }, 
+                {
+                    "code": "CHEM 100", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CHEM/100", 
+                    "name": "Fundamentals of Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CHEM/110", 
+                    "name": "General Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 111", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CHEM/111", 
+                    "name": "General Chemistry II"
+                }, 
+                {
+                    "code": "CHEM 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CHEM/201", 
+                    "name": "Organic Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CHEM/202", 
+                    "name": "Organic Chemistry II"
+                }, 
+                {
+                    "code": "CHEM 210", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CHEM/210", 
+                    "name": "Introduction to Organic and Biochemistry"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/kellog/CHEM"
+        }, 
+        {
+            "abbr": "COMM", 
+            "courses": [
+                {
+                    "code": "COMM 101", 
+                    "course_url": "http://www.chegg.com/courses/kellog/COMM/101", 
+                    "name": "Foundations of Interpersonal Communication"
+                }, 
+                {
+                    "code": "COMM 101H", 
+                    "course_url": "http://www.chegg.com/courses/kellog/COMM/101H", 
+                    "name": "Foundations of Interpersonal Communication-Honors"
+                }, 
+                {
+                    "code": "COMM 111", 
+                    "course_url": "http://www.chegg.com/courses/kellog/COMM/111", 
+                    "name": "Business and Technical Communication"
+                }, 
+                {
+                    "code": "COMM 205", 
+                    "course_url": "http://www.chegg.com/courses/kellog/COMM/205", 
+                    "name": "Introduction to Group Communication"
+                }, 
+                {
+                    "code": "COMM 207", 
+                    "course_url": "http://www.chegg.com/courses/kellog/COMM/207", 
+                    "name": "Public Speaking"
+                }, 
+                {
+                    "code": "COMM 210", 
+                    "course_url": "http://www.chegg.com/courses/kellog/COMM/210", 
+                    "name": "Oral Interpretation"
+                }, 
+                {
+                    "code": "COMM 241", 
+                    "course_url": "http://www.chegg.com/courses/kellog/COMM/241", 
+                    "name": "Foundations of Mass Communication"
+                }, 
+                {
+                    "code": "COMM 281", 
+                    "course_url": "http://www.chegg.com/courses/kellog/COMM/281", 
+                    "name": "Forensics Practicum"
+                }, 
+                {
+                    "code": "COMM 297", 
+                    "course_url": "http://www.chegg.com/courses/kellog/COMM/297", 
+                    "name": "Communication Special Topics"
+                }, 
+                {
+                    "code": "COMM 299", 
+                    "course_url": "http://www.chegg.com/courses/kellog/COMM/299", 
+                    "name": "Field Experience"
+                }
+            ], 
+            "name": "Communication", 
+            "url": "http://www.chegg.com/courses/kellog/COMM"
+        }, 
+        {
+            "abbr": "CP", 
+            "courses": [
+                {
+                    "code": "CP 100", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CP/100", 
+                    "name": "Introduction to the Programming and Systems Environment"
+                }, 
+                {
+                    "code": "CP 101", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CP/101", 
+                    "name": "C++ Programming I"
+                }, 
+                {
+                    "code": "CP 102", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CP/102", 
+                    "name": "Visual Basic I"
+                }, 
+                {
+                    "code": "CP 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CP/201", 
+                    "name": "C++ Programming II"
+                }, 
+                {
+                    "code": "CP 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CP/202", 
+                    "name": "Visual Basic II"
+                }, 
+                {
+                    "code": "CP 210", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CP/210", 
+                    "name": "Java Programming"
+                }, 
+                {
+                    "code": "CP 212", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CP/212", 
+                    "name": "Java Programming II"
+                }, 
+                {
+                    "code": "CP 220", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CP/220", 
+                    "name": "Visual Basic for Applications"
+                }, 
+                {
+                    "code": "CP 245", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CP/245", 
+                    "name": "Programming for WIN32API"
+                }, 
+                {
+                    "code": "CP 272", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CP/272", 
+                    "name": "CGI/PERL Programming"
+                }, 
+                {
+                    "code": "CP 280", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CP/280", 
+                    "name": "Web Development with Visual Basic.Net"
+                }
+            ], 
+            "name": "Computer Programming", 
+            "url": "http://www.chegg.com/courses/kellog/CP"
+        }, 
+        {
+            "abbr": "CRJU", 
+            "courses": [
+                {
+                    "code": "CRJU 101", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/101", 
+                    "name": "Introduction to Criminal Justice"
+                }, 
+                {
+                    "code": "CRJU 104", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/104", 
+                    "name": "Introduction to Corrections"
+                }, 
+                {
+                    "code": "CRJU 105", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/105", 
+                    "name": "Institutional Corrections"
+                }, 
+                {
+                    "code": "CRJU 106", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/106", 
+                    "name": "Correctional Law"
+                }, 
+                {
+                    "code": "CRJU 107", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/107", 
+                    "name": "Client Growth and Development"
+                }, 
+                {
+                    "code": "CRJU 108", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/108", 
+                    "name": "Client Relations in Corrections"
+                }, 
+                {
+                    "code": "CRJU 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/110", 
+                    "name": "Physical Training"
+                }, 
+                {
+                    "code": "CRJU 111", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/111", 
+                    "name": "Local Correctional Academy"
+                }, 
+                {
+                    "code": "CRJU 112", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/112", 
+                    "name": "Local Correctional Re-Entry Academy"
+                }, 
+                {
+                    "code": "CRJU 200", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/200", 
+                    "name": "Police Operations I"
+                }, 
+                {
+                    "code": "CRJU 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/201", 
+                    "name": "Criminal Investigation"
+                }, 
+                {
+                    "code": "CRJU 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/202", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CRJU 203", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/203", 
+                    "name": "Crime and Delinquency"
+                }, 
+                {
+                    "code": "CRJU 204", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/204", 
+                    "name": "Criminal Procedures"
+                }, 
+                {
+                    "code": "CRJU 205", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/205", 
+                    "name": "Traffic Control"
+                }, 
+                {
+                    "code": "CRJU 207", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/207", 
+                    "name": "PPCT Defensive Tactics"
+                }, 
+                {
+                    "code": "CRJU 208", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/208", 
+                    "name": "Police Operations II"
+                }, 
+                {
+                    "code": "CRJU 210", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/210", 
+                    "name": "Criminal Justice Practicum"
+                }, 
+                {
+                    "code": "CRJU 211", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/211", 
+                    "name": "Criminal Justice Practicum"
+                }, 
+                {
+                    "code": "CRJU 212", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/212", 
+                    "name": "Emergency Vehicle Operations"
+                }, 
+                {
+                    "code": "CRJU 213", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/213", 
+                    "name": "Firearms Training"
+                }, 
+                {
+                    "code": "CRJU 220", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/220", 
+                    "name": "Management Principles for Criminal Justice Supervisors"
+                }, 
+                {
+                    "code": "CRJU 221", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/221", 
+                    "name": "Ethical Problem Solving in Policing"
+                }, 
+                {
+                    "code": "CRJU 222", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/222", 
+                    "name": "Reserve Officer Training"
+                }, 
+                {
+                    "code": "CRJU 299", 
+                    "course_url": "http://www.chegg.com/courses/kellog/CRJU/299", 
+                    "name": "MCOLES Review"
+                }
+            ], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/kellog/CRJU"
+        }, 
+        {
+            "abbr": "DBA", 
+            "courses": [
+                {
+                    "code": "DBA 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DBA/110", 
+                    "name": "Introduction to Relational Databases"
+                }, 
+                {
+                    "code": "DBA 231", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DBA/231", 
+                    "name": "MSSQL Server 2005-I:Implementation and Maintenance"
+                }, 
+                {
+                    "code": "DBA 243", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DBA/243", 
+                    "name": "MSSQL Server 2005-II:Designing a Database Server Infrastructure"
+                }, 
+                {
+                    "code": "DBA 244", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DBA/244", 
+                    "name": "MSSQL Server 2005-III:Optimizing and Maintaining a Database Administration Solution"
+                }, 
+                {
+                    "code": "DBA 251", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DBA/251", 
+                    "name": "Oracle Database Administration I"
+                }, 
+                {
+                    "code": "DBA 252", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DBA/252", 
+                    "name": "Oracle Database Administration II"
+                }
+            ], 
+            "name": "Data Base Administration", 
+            "url": "http://www.chegg.com/courses/kellog/DBA"
+        }, 
+        {
+            "abbr": "DEHY", 
+            "courses": [
+                {
+                    "code": "DEHY 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/110", 
+                    "name": "Pre- Clinical Dental Hygiene"
+                }, 
+                {
+                    "code": "DEHY 111", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/111", 
+                    "name": "Dental Hygiene Clinic I"
+                }, 
+                {
+                    "code": "DEHY 112", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/112", 
+                    "name": "Medical Emergencies in Dental Practice"
+                }, 
+                {
+                    "code": "DEHY 114", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/114", 
+                    "name": "Oral Anatomy"
+                }, 
+                {
+                    "code": "DEHY 121", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/121", 
+                    "name": "Dental Hygiene Clinic II"
+                }, 
+                {
+                    "code": "DEHY 123", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/123", 
+                    "name": "Radiology"
+                }, 
+                {
+                    "code": "DEHY 130", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/130", 
+                    "name": "Community Dentistry I"
+                }, 
+                {
+                    "code": "DEHY 135", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/135", 
+                    "name": "Dental Materials"
+                }, 
+                {
+                    "code": "DEHY 143", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/143", 
+                    "name": "Histology"
+                }, 
+                {
+                    "code": "DEHY 222", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/222", 
+                    "name": "Oral Pathology"
+                }, 
+                {
+                    "code": "DEHY 231", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/231", 
+                    "name": "Dental Hygiene Clinic III"
+                }, 
+                {
+                    "code": "DEHY 232", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/232", 
+                    "name": "Community Dentistry II"
+                }, 
+                {
+                    "code": "DEHY 233", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/233", 
+                    "name": "Nutrition"
+                }, 
+                {
+                    "code": "DEHY 234", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/234", 
+                    "name": "Pharmacology"
+                }, 
+                {
+                    "code": "DEHY 241", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/241", 
+                    "name": "Clinical Dental Hygiene IV"
+                }, 
+                {
+                    "code": "DEHY 242", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/242", 
+                    "name": "Periodontics"
+                }, 
+                {
+                    "code": "DEHY 244", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DEHY/244", 
+                    "name": "Pain Control"
+                }
+            ], 
+            "name": "Dental Hygiene", 
+            "url": "http://www.chegg.com/courses/kellog/DEHY"
+        }, 
+        {
+            "abbr": "DRAF", 
+            "courses": [
+                {
+                    "code": "DRAF 101", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DRAF/101", 
+                    "name": "Engineering Graphics"
+                }, 
+                {
+                    "code": "DRAF 120", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DRAF/120", 
+                    "name": "Machine Drafting"
+                }, 
+                {
+                    "code": "DRAF 141", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DRAF/141", 
+                    "name": "Descriptive Geometry"
+                }, 
+                {
+                    "code": "DRAF 181", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DRAF/181", 
+                    "name": "Applications in AutoCAD"
+                }, 
+                {
+                    "code": "DRAF 190", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DRAF/190", 
+                    "name": "Introduction to AutoCAD"
+                }, 
+                {
+                    "code": "DRAF 194", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DRAF/194", 
+                    "name": "SolidWorks:Parts and Assemblies"
+                }, 
+                {
+                    "code": "DRAF 195", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DRAF/195", 
+                    "name": "SolidWorks:Advanced Applications"
+                }, 
+                {
+                    "code": "DRAF 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DRAF/202", 
+                    "name": "Independent Study"
+                }, 
+                {
+                    "code": "DRAF 211", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DRAF/211", 
+                    "name": "Dimensioning and Tolerancing"
+                }, 
+                {
+                    "code": "DRAF 221", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DRAF/221", 
+                    "name": "Architectural Drafting"
+                }, 
+                {
+                    "code": "DRAF 234", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DRAF/234", 
+                    "name": "SolidWorks"
+                }, 
+                {
+                    "code": "DRAF 251", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DRAF/251", 
+                    "name": "Advanced Modeling and CAM"
+                }, 
+                {
+                    "code": "DRAF 261", 
+                    "course_url": "http://www.chegg.com/courses/kellog/DRAF/261", 
+                    "name": "Manufacturing Design"
+                }
+            ], 
+            "name": "Drafting", 
+            "url": "http://www.chegg.com/courses/kellog/DRAF"
+        }, 
+        {
+            "abbr": "ECE", 
+            "courses": [
+                {
+                    "code": "ECE 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/201", 
+                    "name": "Early Childhood Health,Safety,and Nutrition"
+                }, 
+                {
+                    "code": "ECE 209", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/209", 
+                    "name": "Fundamentals of Early Childhood Education"
+                }, 
+                {
+                    "code": "ECE 210", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/210", 
+                    "name": "Child Growth and Development"
+                }, 
+                {
+                    "code": "ECE 212", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/212", 
+                    "name": "Selected Topics in Child Care"
+                }, 
+                {
+                    "code": "ECE 214", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/214", 
+                    "name": "Appropriate Assessment with Young Children"
+                }, 
+                {
+                    "code": "ECE 215", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/215", 
+                    "name": "Positive Child Guidance"
+                }, 
+                {
+                    "code": "ECE 216", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/216", 
+                    "name": "CDA Advisor Seminar"
+                }, 
+                {
+                    "code": "ECE 217", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/217", 
+                    "name": "School-Age Learning Environments"
+                }, 
+                {
+                    "code": "ECE 218", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/218", 
+                    "name": "Anti-Bias Curriculum in Early Childhood Settings"
+                }, 
+                {
+                    "code": "ECE 219", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/219", 
+                    "name": "Creative Arts and Movement for Young Children"
+                }, 
+                {
+                    "code": "ECE 220", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/220", 
+                    "name": "Early Childhood Education Topics"
+                }, 
+                {
+                    "code": "ECE 221", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/221", 
+                    "name": "Early Childhood Internship I"
+                }, 
+                {
+                    "code": "ECE 223", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/223", 
+                    "name": "CDA Infant/Toddler Seminar"
+                }, 
+                {
+                    "code": "ECE 224", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/224", 
+                    "name": "Introduction to Child Care"
+                }, 
+                {
+                    "code": "ECE 228", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/228", 
+                    "name": "Early Childhood Curriculum Development"
+                }, 
+                {
+                    "code": "ECE 231", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/231", 
+                    "name": "Early Childhood Literacy"
+                }, 
+                {
+                    "code": "ECE 232", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/232", 
+                    "name": "Infant and Toddler Care"
+                }, 
+                {
+                    "code": "ECE 233", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/233", 
+                    "name": "Early Childhood Learning Environments I"
+                }, 
+                {
+                    "code": "ECE 237", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/237", 
+                    "name": "Young Children with Special Needs"
+                }, 
+                {
+                    "code": "ECE 240", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/240", 
+                    "name": "Child Care Administration"
+                }, 
+                {
+                    "code": "ECE 250", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/250", 
+                    "name": "Intentional Teaching in Early Childhood"
+                }, 
+                {
+                    "code": "ECE 260", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECE/260", 
+                    "name": "Positive Relations with Families"
+                }
+            ], 
+            "name": "Early Childhood Education", 
+            "url": "http://www.chegg.com/courses/kellog/ECE"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECON/201", 
+                    "name": "Principles of Economics-MACRO"
+                }, 
+                {
+                    "code": "ECON 201H", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECON/201H", 
+                    "name": "Principles of Economics-MACRO-Honors"
+                }, 
+                {
+                    "code": "ECON 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ECON/202", 
+                    "name": "Principles of Economics- MICRO"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/kellog/ECON"
+        }, 
+        {
+            "abbr": "EDUC", 
+            "courses": [
+                {
+                    "code": "EDUC 200", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EDUC/200", 
+                    "name": "Foundations of Education"
+                }, 
+                {
+                    "code": "EDUC 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EDUC/201", 
+                    "name": "Cooperative Education I"
+                }, 
+                {
+                    "code": "EDUC 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EDUC/202", 
+                    "name": "Cooperative Education II"
+                }, 
+                {
+                    "code": "EDUC 203", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EDUC/203", 
+                    "name": "Cooperative Education III"
+                }, 
+                {
+                    "code": "EDUC 204", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EDUC/204", 
+                    "name": "Education of the Exceptional Learner"
+                }, 
+                {
+                    "code": "EDUC 250", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EDUC/250", 
+                    "name": "College Teaching Internship I"
+                }, 
+                {
+                    "code": "EDUC 251", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EDUC/251", 
+                    "name": "College Teaching Internship II"
+                }, 
+                {
+                    "code": "EDUC 299", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EDUC/299", 
+                    "name": "Field Experience"
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/kellog/EDUC"
+        }, 
+        {
+            "abbr": "EMT", 
+            "courses": [
+                {
+                    "code": "EMT 5C", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/5C", 
+                    "name": "BLS for Healthcare Providers"
+                }, 
+                {
+                    "code": "EMT 5F", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/5F", 
+                    "name": "BCLS:AHA CPR Instructor Course"
+                }, 
+                {
+                    "code": "EMT 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/110", 
+                    "name": "Medical First Responder Training"
+                }, 
+                {
+                    "code": "EMT 120", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/120", 
+                    "name": "Basic Emergency Medical Technician Didactic"
+                }, 
+                {
+                    "code": "EMT 121", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/121", 
+                    "name": "Basic Emergency Medical Technician Skills Lab"
+                }, 
+                {
+                    "code": "EMT 122", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/122", 
+                    "name": "Defensive Emergency Driving/AllSafe"
+                }, 
+                {
+                    "code": "EMT 123", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/123", 
+                    "name": "Basic Emergency Medical Technician Clinical Internship"
+                }, 
+                {
+                    "code": "EMT 162A", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/162A", 
+                    "name": "Pharmacology I"
+                }, 
+                {
+                    "code": "EMT 162B", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/162B", 
+                    "name": "Pharmacology II"
+                }, 
+                {
+                    "code": "EMT 163A", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/163A", 
+                    "name": "Skills Lab I"
+                }, 
+                {
+                    "code": "EMT 163B", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/163B", 
+                    "name": "Skills Lab II"
+                }, 
+                {
+                    "code": "EMT 164A", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/164A", 
+                    "name": "Paramedic Clinical Internship I"
+                }, 
+                {
+                    "code": "EMT 164B", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/164B", 
+                    "name": "Paramedic Clinical Internship II"
+                }, 
+                {
+                    "code": "EMT 165", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/165", 
+                    "name": "Paramedic Pediatric Advanced Life Support"
+                }, 
+                {
+                    "code": "EMT 166A", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/166A", 
+                    "name": "Cardiology I"
+                }, 
+                {
+                    "code": "EMT 166B", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/166B", 
+                    "name": "Cardiology II"
+                }, 
+                {
+                    "code": "EMT 167A", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/167A", 
+                    "name": "Advanced EMT I"
+                }, 
+                {
+                    "code": "EMT 167B", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/167B", 
+                    "name": "Advanced EMT II"
+                }, 
+                {
+                    "code": "EMT 168", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/168", 
+                    "name": "Advanced Practice"
+                }, 
+                {
+                    "code": "EMT 270", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/270", 
+                    "name": "EMS System Management"
+                }, 
+                {
+                    "code": "EMT 275", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/275", 
+                    "name": "EMS Management Practicum"
+                }, 
+                {
+                    "code": "EMT 280", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/280", 
+                    "name": "EMS Instructor/Coordinator Training"
+                }, 
+                {
+                    "code": "EMT 285", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/285", 
+                    "name": "EMS Instructor/Coordinator Practicum"
+                }, 
+                {
+                    "code": "EMT 290", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/290", 
+                    "name": "UMBC Critical Care Emergency Medical Transport Program"
+                }, 
+                {
+                    "code": "EMT 291", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/291", 
+                    "name": "UMBC Critical Care Emergency Medical Transport Program Clinical Internship"
+                }, 
+                {
+                    "code": "EMT 295", 
+                    "course_url": "http://www.chegg.com/courses/kellog/EMT/295", 
+                    "name": "UMBC Pediatric/Neonatal Critical Care Transport Course"
+                }
+            ], 
+            "name": "Emergency Medical Technician", 
+            "url": "http://www.chegg.com/courses/kellog/EMT"
+        }, 
+        {
+            "abbr": "ENGL", 
+            "courses": [
+                {
+                    "code": "ENGL 95", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/95", 
+                    "name": "Spelling Improvement"
+                }, 
+                {
+                    "code": "ENGL 96", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/96", 
+                    "name": "English as a Second Language"
+                }, 
+                {
+                    "code": "ENGL 97", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/97", 
+                    "name": "Writing Skills"
+                }, 
+                {
+                    "code": "ENGL 99", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/99", 
+                    "name": "Self-Paced Instruction in Writing Skills"
+                }, 
+                {
+                    "code": "ENGL 120", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/120", 
+                    "name": "Writing Improvement"
+                }, 
+                {
+                    "code": "ENGL 151", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/151", 
+                    "name": "Freshman Composition"
+                }, 
+                {
+                    "code": "ENGL 151H", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/151H", 
+                    "name": "Freshman Composition-Honors"
+                }, 
+                {
+                    "code": "ENGL 152", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/152", 
+                    "name": "Freshman Composition"
+                }, 
+                {
+                    "code": "ENGL 152H", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/152H", 
+                    "name": "Freshman Composition-Honors"
+                }, 
+                {
+                    "code": "ENGL 153", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/153", 
+                    "name": "Technical English"
+                }, 
+                {
+                    "code": "ENGL 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/201", 
+                    "name": "Advanced Composition"
+                }, 
+                {
+                    "code": "ENGL 203", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/203", 
+                    "name": "Introduction to Creative Writing"
+                }, 
+                {
+                    "code": "ENGL 204", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/204", 
+                    "name": "Advanced Creative Writing"
+                }, 
+                {
+                    "code": "ENGL 205", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/205", 
+                    "name": "Script Writing for the Media"
+                }, 
+                {
+                    "code": "ENGL 215", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/215", 
+                    "name": "Grant Writing"
+                }, 
+                {
+                    "code": "ENGL 269", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/269", 
+                    "name": "Writing for the Elementary Classroom"
+                }, 
+                {
+                    "code": "ENGL 298", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENGL/298", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/kellog/ENGL"
+        }, 
+        {
+            "abbr": "ENTE", 
+            "courses": [
+                {
+                    "code": "ENTE 160", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENTE/160", 
+                    "name": "Manufacturing Processes"
+                }, 
+                {
+                    "code": "ENTE 195", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENTE/195", 
+                    "name": "Cooperative Work Experience"
+                }, 
+                {
+                    "code": "ENTE 198", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENTE/198", 
+                    "name": "Independent Study"
+                }, 
+                {
+                    "code": "ENTE 215", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENTE/215", 
+                    "name": "Material Science"
+                }, 
+                {
+                    "code": "ENTE 220", 
+                    "course_url": "http://www.chegg.com/courses/kellog/ENTE/220", 
+                    "name": "Statics and Strengths of Materials"
+                }
+            ], 
+            "name": "Engineering Technology", 
+            "url": "http://www.chegg.com/courses/kellog/ENTE"
+        }, 
+        {
+            "abbr": "FISC", 
+            "courses": [
+                {
+                    "code": "FISC 102", 
+                    "course_url": "http://www.chegg.com/courses/kellog/FISC/102", 
+                    "name": "Firefighter II"
+                }, 
+                {
+                    "code": "FISC 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/FISC/110", 
+                    "name": "Fire Prevention"
+                }, 
+                {
+                    "code": "FISC 111", 
+                    "course_url": "http://www.chegg.com/courses/kellog/FISC/111", 
+                    "name": "Building Construction"
+                }, 
+                {
+                    "code": "FISC 112", 
+                    "course_url": "http://www.chegg.com/courses/kellog/FISC/112", 
+                    "name": "Fire Service Tactics"
+                }, 
+                {
+                    "code": "FISC 210", 
+                    "course_url": "http://www.chegg.com/courses/kellog/FISC/210", 
+                    "name": "Fire Cause Determination"
+                }, 
+                {
+                    "code": "FISC 211", 
+                    "course_url": "http://www.chegg.com/courses/kellog/FISC/211", 
+                    "name": "Instructional Techniques"
+                }, 
+                {
+                    "code": "FISC 212", 
+                    "course_url": "http://www.chegg.com/courses/kellog/FISC/212", 
+                    "name": "Incident Management"
+                }
+            ], 
+            "name": "Fire Science", 
+            "url": "http://www.chegg.com/courses/kellog/FISC"
+        }, 
+        {
+            "abbr": "FREN", 
+            "courses": [
+                {
+                    "code": "FREN 101", 
+                    "course_url": "http://www.chegg.com/courses/kellog/FREN/101", 
+                    "name": "Elementary French"
+                }, 
+                {
+                    "code": "FREN 102", 
+                    "course_url": "http://www.chegg.com/courses/kellog/FREN/102", 
+                    "name": "Elementary French"
+                }, 
+                {
+                    "code": "FREN 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/FREN/201", 
+                    "name": "Intermediate French"
+                }, 
+                {
+                    "code": "FREN 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/FREN/202", 
+                    "name": "Intermediate French"
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/kellog/FREN"
+        }, 
+        {
+            "abbr": "GEOG", 
+            "courses": [
+                {
+                    "code": "GEOG 100", 
+                    "course_url": "http://www.chegg.com/courses/kellog/GEOG/100", 
+                    "name": "Physical Geography"
+                }
+            ], 
+            "name": "Geography", 
+            "url": "http://www.chegg.com/courses/kellog/GEOG"
+        }, 
+        {
+            "abbr": "GRDE", 
+            "courses": [
+                {
+                    "code": "GRDE 100", 
+                    "course_url": "http://www.chegg.com/courses/kellog/GRDE/100", 
+                    "name": "Introduction to Graphic Design"
+                }, 
+                {
+                    "code": "GRDE 105", 
+                    "course_url": "http://www.chegg.com/courses/kellog/GRDE/105", 
+                    "name": "Using and Troubleshooting the Macintosh"
+                }, 
+                {
+                    "code": "GRDE 130", 
+                    "course_url": "http://www.chegg.com/courses/kellog/GRDE/130", 
+                    "name": "QuarkXPress"
+                }, 
+                {
+                    "code": "GRDE 140", 
+                    "course_url": "http://www.chegg.com/courses/kellog/GRDE/140", 
+                    "name": "FreeHand"
+                }, 
+                {
+                    "code": "GRDE 161", 
+                    "course_url": "http://www.chegg.com/courses/kellog/GRDE/161", 
+                    "name": "Flash"
+                }, 
+                {
+                    "code": "GRDE 167", 
+                    "course_url": "http://www.chegg.com/courses/kellog/GRDE/167", 
+                    "name": "Dreamweaver"
+                }, 
+                {
+                    "code": "GRDE 170", 
+                    "course_url": "http://www.chegg.com/courses/kellog/GRDE/170", 
+                    "name": "Photoshop"
+                }, 
+                {
+                    "code": "GRDE 200", 
+                    "course_url": "http://www.chegg.com/courses/kellog/GRDE/200", 
+                    "name": "Design Lab"
+                }, 
+                {
+                    "code": "GRDE 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/GRDE/201", 
+                    "name": "Design Practicum"
+                }, 
+                {
+                    "code": "GRDE 207", 
+                    "course_url": "http://www.chegg.com/courses/kellog/GRDE/207", 
+                    "name": "Advertising Design"
+                }, 
+                {
+                    "code": "GRDE 260", 
+                    "course_url": "http://www.chegg.com/courses/kellog/GRDE/260", 
+                    "name": "Graphic Design Field Experience"
+                }, 
+                {
+                    "code": "GRDE 270", 
+                    "course_url": "http://www.chegg.com/courses/kellog/GRDE/270", 
+                    "name": "Graphic Design Internship"
+                }, 
+                {
+                    "code": "GRDE 297", 
+                    "course_url": "http://www.chegg.com/courses/kellog/GRDE/297", 
+                    "name": "Graphic Design-Special Topics"
+                }, 
+                {
+                    "code": "GRDE 298", 
+                    "course_url": "http://www.chegg.com/courses/kellog/GRDE/298", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Graphic Design", 
+            "url": "http://www.chegg.com/courses/kellog/GRDE"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 103", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/103", 
+                    "name": "American Foundations"
+                }, 
+                {
+                    "code": "HIST 104", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/104", 
+                    "name": "Modern America"
+                }, 
+                {
+                    "code": "HIST 104H", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/104H", 
+                    "name": "Modern America-Honors"
+                }, 
+                {
+                    "code": "HIST 151", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/151", 
+                    "name": "Western Civilization: Early Western World"
+                }, 
+                {
+                    "code": "HIST 151H", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/151H", 
+                    "name": "Western Civilization:Early Western World-Honors"
+                }, 
+                {
+                    "code": "HIST 152", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/152", 
+                    "name": "Western Civilization:Modern Western World"
+                }, 
+                {
+                    "code": "HIST 152H", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/152H", 
+                    "name": "Western Civilization:Modern Western World-Honors"
+                }, 
+                {
+                    "code": "HIST 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/201", 
+                    "name": "Global History to 1500"
+                }, 
+                {
+                    "code": "HIST 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/202", 
+                    "name": "Global History from 1500 to Present"
+                }, 
+                {
+                    "code": "HIST 210", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/210", 
+                    "name": "History of Michigan"
+                }, 
+                {
+                    "code": "HIST 211", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/211", 
+                    "name": "History of England"
+                }, 
+                {
+                    "code": "HIST 220", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/220", 
+                    "name": "Great Lives"
+                }, 
+                {
+                    "code": "HIST 240", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/240", 
+                    "name": "African American History"
+                }, 
+                {
+                    "code": "HIST 260", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/260", 
+                    "name": "History of Middle East and North Africa"
+                }, 
+                {
+                    "code": "HIST 285", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/285", 
+                    "name": "Theological Studies Internship"
+                }, 
+                {
+                    "code": "HIST 286", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/286", 
+                    "name": "Theological Studies Internship"
+                }, 
+                {
+                    "code": "HIST 297", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/297", 
+                    "name": "Special Topics in History"
+                }, 
+                {
+                    "code": "HIST 298", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HIST/298", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/kellog/HIST"
+        }, 
+        {
+            "abbr": "HUMA", 
+            "courses": [
+                {
+                    "code": "HUMA 150", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUMA/150", 
+                    "name": "Encounter with the Arts"
+                }, 
+                {
+                    "code": "HUMA 150H", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUMA/150H", 
+                    "name": "Encounter with the Arts-Honors"
+                }, 
+                {
+                    "code": "HUMA 200", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUMA/200", 
+                    "name": "Honors Seminar"
+                }, 
+                {
+                    "code": "HUMA 205", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUMA/205", 
+                    "name": "Ethical Dilemmas in Modern Society"
+                }, 
+                {
+                    "code": "HUMA 241", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUMA/241", 
+                    "name": "Dance for Elementary Educators"
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/kellog/HUMA"
+        }, 
+        {
+            "abbr": "HURE", 
+            "courses": [
+                {
+                    "code": "HURE 100", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HURE/100", 
+                    "name": "Career Exploration:Career Investigation"
+                }, 
+                {
+                    "code": "HURE 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HURE/110", 
+                    "name": "Career Exploration:Career Planning"
+                }, 
+                {
+                    "code": "HURE 120", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HURE/120", 
+                    "name": "Career Exploration:Job Search Fundamentals"
+                }, 
+                {
+                    "code": "HURE 200", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HURE/200", 
+                    "name": "Job Search Elementals:Resume Writing"
+                }, 
+                {
+                    "code": "HURE 210", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HURE/210", 
+                    "name": "Job Search Elementals:Interviewing"
+                }, 
+                {
+                    "code": "HURE 220", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HURE/220", 
+                    "name": "Job Search Elementals:Job Development"
+                }
+            ], 
+            "name": "Human Resources", 
+            "url": "http://www.chegg.com/courses/kellog/HURE"
+        }, 
+        {
+            "abbr": "HUSE", 
+            "courses": [
+                {
+                    "code": "HUSE 101", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/101", 
+                    "name": "Introduction to Human Services"
+                }, 
+                {
+                    "code": "HUSE 183", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/183", 
+                    "name": "Practicum in Human Services"
+                }, 
+                {
+                    "code": "HUSE 184", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/184", 
+                    "name": "Practicum in Human Services"
+                }, 
+                {
+                    "code": "HUSE 185", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/185", 
+                    "name": "Human Service Internship"
+                }, 
+                {
+                    "code": "HUSE 186", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/186", 
+                    "name": "Human Service Internship"
+                }, 
+                {
+                    "code": "HUSE 200", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/200", 
+                    "name": "Psychosocial Approach to Aging"
+                }, 
+                {
+                    "code": "HUSE 203", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/203", 
+                    "name": "Introduction to Substance Abuse"
+                }, 
+                {
+                    "code": "HUSE 204", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/204", 
+                    "name": "An Introduction to Report Writing Techniques for the Human Service Worker"
+                }, 
+                {
+                    "code": "HUSE 210", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/210", 
+                    "name": "Child Psychology"
+                }, 
+                {
+                    "code": "HUSE 211", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/211", 
+                    "name": "Psychosocial Maladjustment in Children"
+                }, 
+                {
+                    "code": "HUSE 220", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/220", 
+                    "name": "Communication Skills in Helping Relationships"
+                }, 
+                {
+                    "code": "HUSE 225", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/225", 
+                    "name": "Culturally Sensitive Practice"
+                }, 
+                {
+                    "code": "HUSE 230", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/230", 
+                    "name": "Nutrition"
+                }, 
+                {
+                    "code": "HUSE 240", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/240", 
+                    "name": "Basic Concepts in Social Work"
+                }, 
+                {
+                    "code": "HUSE 241", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/241", 
+                    "name": "Human Services with Organizations and Communities"
+                }, 
+                {
+                    "code": "HUSE 242", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/242", 
+                    "name": "Human Behavior and the Social Environment"
+                }, 
+                {
+                    "code": "HUSE 250", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/250", 
+                    "name": "Introduction to Group Techniques"
+                }, 
+                {
+                    "code": "HUSE 251", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/251", 
+                    "name": "Human Services and Behavior Modification"
+                }, 
+                {
+                    "code": "HUSE 260", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/260", 
+                    "name": "Family Dynamics"
+                }, 
+                {
+                    "code": "HUSE 261", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/261", 
+                    "name": "Perspectives of Families"
+                }, 
+                {
+                    "code": "HUSE 270", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/270", 
+                    "name": "Selected Topics in Human Services"
+                }, 
+                {
+                    "code": "HUSE 271", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/271", 
+                    "name": "Later Life and the Family"
+                }, 
+                {
+                    "code": "HUSE 272", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/272", 
+                    "name": "Substance Abuse,Co-Dependency,and the Family"
+                }, 
+                {
+                    "code": "HUSE 273", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/273", 
+                    "name": "Youth and Substance Abuse"
+                }, 
+                {
+                    "code": "HUSE 280", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/280", 
+                    "name": "Death and Dying"
+                }, 
+                {
+                    "code": "HUSE 290", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/290", 
+                    "name": "Social Welfare"
+                }, 
+                {
+                    "code": "HUSE 291", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/291", 
+                    "name": "Child Welfare"
+                }, 
+                {
+                    "code": "HUSE 298", 
+                    "course_url": "http://www.chegg.com/courses/kellog/HUSE/298", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Human Services", 
+            "url": "http://www.chegg.com/courses/kellog/HUSE"
+        }, 
+        {
+            "abbr": "INTL", 
+            "courses": [
+                {
+                    "code": "INTL 210", 
+                    "course_url": "http://www.chegg.com/courses/kellog/INTL/210", 
+                    "name": "International Travel"
+                }, 
+                {
+                    "code": "INTL 211", 
+                    "course_url": "http://www.chegg.com/courses/kellog/INTL/211", 
+                    "name": "International Travel-Science and Math"
+                }
+            ], 
+            "name": "International Travel", 
+            "url": "http://www.chegg.com/courses/kellog/INTL"
+        }, 
+        {
+            "abbr": "INWE", 
+            "courses": [
+                {
+                    "code": "INWE 297", 
+                    "course_url": "http://www.chegg.com/courses/kellog/INWE/297", 
+                    "name": "Welding Art"
+                }
+            ], 
+            "name": "Industrial Welding", 
+            "url": "http://www.chegg.com/courses/kellog/INWE"
+        }, 
+        {
+            "abbr": "IT", 
+            "courses": [
+                {
+                    "code": "IT 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/IT/110", 
+                    "name": "Information Technology and Project Management"
+                }, 
+                {
+                    "code": "IT 200", 
+                    "course_url": "http://www.chegg.com/courses/kellog/IT/200", 
+                    "name": "Cooperative Education I"
+                }, 
+                {
+                    "code": "IT 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/IT/201", 
+                    "name": "Cooperative Education II"
+                }, 
+                {
+                    "code": "IT 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/IT/202", 
+                    "name": "Cooperative Education III"
+                }, 
+                {
+                    "code": "IT 210", 
+                    "course_url": "http://www.chegg.com/courses/kellog/IT/210", 
+                    "name": "Introduction to System Analysis and Design"
+                }
+            ], 
+            "name": "Information Technology", 
+            "url": "http://www.chegg.com/courses/kellog/IT"
+        }, 
+        {
+            "abbr": "JAPA", 
+            "courses": [
+                {
+                    "code": "JAPA 101", 
+                    "course_url": "http://www.chegg.com/courses/kellog/JAPA/101", 
+                    "name": "Introductory Japanese"
+                }, 
+                {
+                    "code": "JAPA 102", 
+                    "course_url": "http://www.chegg.com/courses/kellog/JAPA/102", 
+                    "name": "Introductory Japanese"
+                }
+            ], 
+            "name": "Japa", 
+            "url": "http://www.chegg.com/courses/kellog/JAPA"
+        }, 
+        {
+            "abbr": "JOUR", 
+            "courses": [
+                {
+                    "code": "JOUR 111", 
+                    "course_url": "http://www.chegg.com/courses/kellog/JOUR/111", 
+                    "name": "Mass Media Environment"
+                }, 
+                {
+                    "code": "JOUR 112", 
+                    "course_url": "http://www.chegg.com/courses/kellog/JOUR/112", 
+                    "name": "News Writing"
+                }, 
+                {
+                    "code": "JOUR 154", 
+                    "course_url": "http://www.chegg.com/courses/kellog/JOUR/154", 
+                    "name": "Writing for Student Publications"
+                }
+            ], 
+            "name": "Journalism", 
+            "url": "http://www.chegg.com/courses/kellog/JOUR"
+        }, 
+        {
+            "abbr": "LITE", 
+            "courses": [
+                {
+                    "code": "LITE 100", 
+                    "course_url": "http://www.chegg.com/courses/kellog/LITE/100", 
+                    "name": "Building Foundations through Literature"
+                }, 
+                {
+                    "code": "LITE 105", 
+                    "course_url": "http://www.chegg.com/courses/kellog/LITE/105", 
+                    "name": "Introduction to Literature"
+                }, 
+                {
+                    "code": "LITE 205", 
+                    "course_url": "http://www.chegg.com/courses/kellog/LITE/205", 
+                    "name": "World Literature"
+                }, 
+                {
+                    "code": "LITE 206", 
+                    "course_url": "http://www.chegg.com/courses/kellog/LITE/206", 
+                    "name": "World Literature"
+                }, 
+                {
+                    "code": "LITE 211", 
+                    "course_url": "http://www.chegg.com/courses/kellog/LITE/211", 
+                    "name": "American Literature"
+                }, 
+                {
+                    "code": "LITE 212", 
+                    "course_url": "http://www.chegg.com/courses/kellog/LITE/212", 
+                    "name": "American Literature"
+                }, 
+                {
+                    "code": "LITE 213", 
+                    "course_url": "http://www.chegg.com/courses/kellog/LITE/213", 
+                    "name": "Children's Literature"
+                }, 
+                {
+                    "code": "LITE 216", 
+                    "course_url": "http://www.chegg.com/courses/kellog/LITE/216", 
+                    "name": "Film Interpretation"
+                }, 
+                {
+                    "code": "LITE 222", 
+                    "course_url": "http://www.chegg.com/courses/kellog/LITE/222", 
+                    "name": "British Literature II"
+                }, 
+                {
+                    "code": "LITE 223", 
+                    "course_url": "http://www.chegg.com/courses/kellog/LITE/223", 
+                    "name": "Shakespeare"
+                }, 
+                {
+                    "code": "LITE 230", 
+                    "course_url": "http://www.chegg.com/courses/kellog/LITE/230", 
+                    "name": "Bible as Literature"
+                }, 
+                {
+                    "code": "LITE 240", 
+                    "course_url": "http://www.chegg.com/courses/kellog/LITE/240", 
+                    "name": "African-American Literature"
+                }, 
+                {
+                    "code": "LITE 285", 
+                    "course_url": "http://www.chegg.com/courses/kellog/LITE/285", 
+                    "name": "Interdisciplinary Humanities"
+                }, 
+                {
+                    "code": "LITE 298", 
+                    "course_url": "http://www.chegg.com/courses/kellog/LITE/298", 
+                    "name": "Independent Study"
+                }, 
+                {
+                    "code": "LITE 299", 
+                    "course_url": "http://www.chegg.com/courses/kellog/LITE/299", 
+                    "name": "Field Experience"
+                }
+            ], 
+            "name": "Literature", 
+            "url": "http://www.chegg.com/courses/kellog/LITE"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 98", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/98", 
+                    "name": "Mathematics Clinic"
+                }, 
+                {
+                    "code": "MATH 99", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/99", 
+                    "name": "Pre-Algebra"
+                }, 
+                {
+                    "code": "MATH 101", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/101", 
+                    "name": "Beginning Algebra"
+                }, 
+                {
+                    "code": "MATH 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/110", 
+                    "name": "Applied Algebra I"
+                }, 
+                {
+                    "code": "MATH 111", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/111", 
+                    "name": "Mathematics for Elementary Teachers"
+                }, 
+                {
+                    "code": "MATH 112", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/112", 
+                    "name": "Mathematics for Elementary Teachers II"
+                }, 
+                {
+                    "code": "MATH 118", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/118", 
+                    "name": "Applied Algebra/Trigonometry I"
+                }, 
+                {
+                    "code": "MATH 119", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/119", 
+                    "name": "Applied Algebra/Trigonometry II"
+                }, 
+                {
+                    "code": "MATH 121", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/121", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MATH 122", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/122", 
+                    "name": "Trigonometry"
+                }, 
+                {
+                    "code": "MATH 124", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/124", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MATH 128", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/128", 
+                    "name": "Finite Mathematics with Applications"
+                }, 
+                {
+                    "code": "MATH 130", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/130", 
+                    "name": "Statistics"
+                }, 
+                {
+                    "code": "MATH 135", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/135", 
+                    "name": "Math for Liberal Arts"
+                }, 
+                {
+                    "code": "MATH 140", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/140", 
+                    "name": "Preparation for Calculus"
+                }, 
+                {
+                    "code": "MATH 141", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/141", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MATH 142", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/142", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MATH 241", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/241", 
+                    "name": "Calculus III"
+                }, 
+                {
+                    "code": "MATH 242", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MATH/242", 
+                    "name": "Differential Equations and Linear Algebra"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/kellog/MATH"
+        }, 
+        {
+            "abbr": "MELA", 
+            "courses": [
+                {
+                    "code": "MELA 100", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MELA/100", 
+                    "name": "Fundamentals of Medical Laboratory Technology"
+                }, 
+                {
+                    "code": "MELA 120", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MELA/120", 
+                    "name": "Hematology"
+                }, 
+                {
+                    "code": "MELA 135", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MELA/135", 
+                    "name": "Introduction to Medical Microbiology"
+                }, 
+                {
+                    "code": "MELA 140", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MELA/140", 
+                    "name": "Immunology/Body Fluid Analysis"
+                }, 
+                {
+                    "code": "MELA 210", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MELA/210", 
+                    "name": "Clinical Chemistry"
+                }, 
+                {
+                    "code": "MELA 220", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MELA/220", 
+                    "name": "Immunohematology"
+                }, 
+                {
+                    "code": "MELA 235", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MELA/235", 
+                    "name": "Advanced Clinical Microbiology"
+                }, 
+                {
+                    "code": "MELA 250", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MELA/250", 
+                    "name": "Seminar"
+                }, 
+                {
+                    "code": "MELA 260", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MELA/260", 
+                    "name": "Coordinated Clinical Practicum"
+                }, 
+                {
+                    "code": "MELA 265", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MELA/265", 
+                    "name": "Advanced Clinical Practicum"
+                }
+            ], 
+            "name": "Medical Laboratory Technician", 
+            "url": "http://www.chegg.com/courses/kellog/MELA"
+        }, 
+        {
+            "abbr": "MUSI", 
+            "courses": [
+                {
+                    "code": "MUSI 100", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/100", 
+                    "name": "Fundamentals of Music"
+                }, 
+                {
+                    "code": "MUSI 103", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/103", 
+                    "name": "Women's Choir"
+                }, 
+                {
+                    "code": "MUSI 103E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/103E", 
+                    "name": "Women's Choir"
+                }, 
+                {
+                    "code": "MUSI 104", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/104", 
+                    "name": "Community Chorus"
+                }, 
+                {
+                    "code": "MUSI 104E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/104E", 
+                    "name": "Community Chorus"
+                }, 
+                {
+                    "code": "MUSI 105", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/105", 
+                    "name": "Kellogg Singers"
+                }, 
+                {
+                    "code": "MUSI 105E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/105E", 
+                    "name": "Kellogg Singers"
+                }, 
+                {
+                    "code": "MUSI 106", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/106", 
+                    "name": "Eclectic Chorale"
+                }, 
+                {
+                    "code": "MUSI 106E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/106E", 
+                    "name": "Eclectic Chorale"
+                }, 
+                {
+                    "code": "MUSI 107", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/107", 
+                    "name": "Voice Class"
+                }, 
+                {
+                    "code": "MUSI 107E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/107E", 
+                    "name": "Voice Class"
+                }, 
+                {
+                    "code": "MUSI 109", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/109", 
+                    "name": "Concentus Vocal Ensemble"
+                }, 
+                {
+                    "code": "MUSI 112", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/112", 
+                    "name": "Individualized Voice Lessons I"
+                }, 
+                {
+                    "code": "MUSI 113", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/113", 
+                    "name": "Individualized Voice Lessons II"
+                }, 
+                {
+                    "code": "MUSI 114", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/114", 
+                    "name": "Individualized Voice Lessons III"
+                }, 
+                {
+                    "code": "MUSI 115", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/115", 
+                    "name": "Individualized Voice Lessons IV"
+                }, 
+                {
+                    "code": "MUSI 120", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/120", 
+                    "name": "Beginning Piano Class"
+                }, 
+                {
+                    "code": "MUSI 120E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/120E", 
+                    "name": "Beginning Piano Class"
+                }, 
+                {
+                    "code": "MUSI 121", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/121", 
+                    "name": "Intermediate Piano Class"
+                }, 
+                {
+                    "code": "MUSI 121E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/121E", 
+                    "name": "Intermediate Piano Class"
+                }, 
+                {
+                    "code": "MUSI 122", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/122", 
+                    "name": "Individualized Piano Lessons I"
+                }, 
+                {
+                    "code": "MUSI 123", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/123", 
+                    "name": "Individualized Piano Lessons II"
+                }, 
+                {
+                    "code": "MUSI 124", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/124", 
+                    "name": "Individualized Piano Lessons III"
+                }, 
+                {
+                    "code": "MUSI 125", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/125", 
+                    "name": "Individualized Piano Lessons IV"
+                }, 
+                {
+                    "code": "MUSI 127E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/127E", 
+                    "name": "Individualized Lessons-Enrichment"
+                }, 
+                {
+                    "code": "MUSI 130", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/130", 
+                    "name": "Music Theory I"
+                }, 
+                {
+                    "code": "MUSI 131", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/131", 
+                    "name": "Music Theory II"
+                }, 
+                {
+                    "code": "MUSI 132", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/132", 
+                    "name": "Aural Comprehension/Music Reading I"
+                }, 
+                {
+                    "code": "MUSI 134", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/134", 
+                    "name": "Aural Comprehension/Music Reading II"
+                }, 
+                {
+                    "code": "MUSI 135", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/135", 
+                    "name": "Individualized Instrumental Lessons I"
+                }, 
+                {
+                    "code": "MUSI 136", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/136", 
+                    "name": "Individualized Instrumental Lessons II"
+                }, 
+                {
+                    "code": "MUSI 137", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/137", 
+                    "name": "Individualized Instrumental Lessons III"
+                }, 
+                {
+                    "code": "MUSI 138", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/138", 
+                    "name": "Individualized Instrumental Lessons IV"
+                }, 
+                {
+                    "code": "MUSI 141", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/141", 
+                    "name": "Fundamentals of Music for Teaching"
+                }, 
+                {
+                    "code": "MUSI 160", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/160", 
+                    "name": "Concert Band"
+                }, 
+                {
+                    "code": "MUSI 160E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/160E", 
+                    "name": "Concert Band"
+                }, 
+                {
+                    "code": "MUSI 161", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/161", 
+                    "name": "Jazz Band"
+                }, 
+                {
+                    "code": "MUSI 161E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/161E", 
+                    "name": "Jazz Band"
+                }, 
+                {
+                    "code": "MUSI 170", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/170", 
+                    "name": "Youth Orchestra"
+                }, 
+                {
+                    "code": "MUSI 170E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/170E", 
+                    "name": "Youth Orchestra"
+                }, 
+                {
+                    "code": "MUSI 211", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/211", 
+                    "name": "Music Appreciation"
+                }, 
+                {
+                    "code": "MUSI 227", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/227", 
+                    "name": "Accompanying"
+                }, 
+                {
+                    "code": "MUSI 232", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/232", 
+                    "name": "Music Theory III"
+                }, 
+                {
+                    "code": "MUSI 233", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/233", 
+                    "name": "Music Theory IV"
+                }, 
+                {
+                    "code": "MUSI 235", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/235", 
+                    "name": "Aural Comprehension III"
+                }, 
+                {
+                    "code": "MUSI 236", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/236", 
+                    "name": "Aural Comprehension IV"
+                }, 
+                {
+                    "code": "MUSI 240", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/240", 
+                    "name": "Music in Early Childhood"
+                }, 
+                {
+                    "code": "MUSI 250", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/250", 
+                    "name": "Music History I"
+                }, 
+                {
+                    "code": "MUSI 251", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/251", 
+                    "name": "Music History II"
+                }, 
+                {
+                    "code": "MUSI 260", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/260", 
+                    "name": "Basic Conducting"
+                }, 
+                {
+                    "code": "MUSI 270", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/270", 
+                    "name": "Sacred Choral Literature"
+                }, 
+                {
+                    "code": "MUSI 297", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/297", 
+                    "name": "Music Special Topics"
+                }, 
+                {
+                    "code": "MUSI 297E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/MUSI/297E", 
+                    "name": "Music Special Topics"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/kellog/MUSI"
+        }, 
+        {
+            "abbr": "NURS", 
+            "courses": [
+                {
+                    "code": "NURS 105", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/105", 
+                    "name": "Nursing Assistant Training Program"
+                }, 
+                {
+                    "code": "NURS 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/110", 
+                    "name": "Foundations of Nursing"
+                }, 
+                {
+                    "code": "NURS 130", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/130", 
+                    "name": "Adult Nursing I"
+                }, 
+                {
+                    "code": "NURS 135", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/135", 
+                    "name": "Maternal and Child Nursing"
+                }, 
+                {
+                    "code": "NURS 136", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/136", 
+                    "name": "The Transition"
+                }, 
+                {
+                    "code": "NURS 140", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/140", 
+                    "name": "The Nature/Art of Nursing"
+                }, 
+                {
+                    "code": "NURS 145", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/145", 
+                    "name": "The Science of Nursing"
+                }, 
+                {
+                    "code": "NURS 150", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/150", 
+                    "name": "Chronic Physiologic Integrity"
+                }, 
+                {
+                    "code": "NURS 155", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/155", 
+                    "name": "Family Processes"
+                }, 
+                {
+                    "code": "NURS 160", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/160", 
+                    "name": "Pharmacology Application in Nursing Practice"
+                }, 
+                {
+                    "code": "NURS 245", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/245", 
+                    "name": "Mental Health Nursing"
+                }, 
+                {
+                    "code": "NURS 246", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/246", 
+                    "name": "Pharmacology in Nursing Practice"
+                }, 
+                {
+                    "code": "NURS 247", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/247", 
+                    "name": "Pharmacology in Nursing Practice"
+                }, 
+                {
+                    "code": "NURS 248", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/248", 
+                    "name": "Pharmacology in Nursing Practice"
+                }, 
+                {
+                    "code": "NURS 250", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/250", 
+                    "name": "Adult Nursing II"
+                }, 
+                {
+                    "code": "NURS 255", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/255", 
+                    "name": "Adult Nursing III"
+                }, 
+                {
+                    "code": "NURS 260", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/260", 
+                    "name": "Leadership and Management in Nursing Practice"
+                }, 
+                {
+                    "code": "NURS 271", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/271", 
+                    "name": "Health Promotion/Maintenance"
+                }, 
+                {
+                    "code": "NURS 276", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/276", 
+                    "name": "Psychosocial Integrity"
+                }, 
+                {
+                    "code": "NURS 280", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/280", 
+                    "name": "Acute Physiologic Integrity"
+                }, 
+                {
+                    "code": "NURS 285", 
+                    "course_url": "http://www.chegg.com/courses/kellog/NURS/285", 
+                    "name": "Management/Leadership in Nursing"
+                }
+            ], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/kellog/NURS"
+        }, 
+        {
+            "abbr": "OIT", 
+            "courses": [
+                {
+                    "code": "OIT 100", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/100", 
+                    "name": "Introduction to Computer Information Systems"
+                }, 
+                {
+                    "code": "OIT 109", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/109", 
+                    "name": "Keyboarding I"
+                }, 
+                {
+                    "code": "OIT 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/110", 
+                    "name": "Keyboarding II"
+                }, 
+                {
+                    "code": "OIT 111", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/111", 
+                    "name": "Keyboarding III"
+                }, 
+                {
+                    "code": "OIT 112", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/112", 
+                    "name": "Keyboarding IV"
+                }, 
+                {
+                    "code": "OIT 116", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/116", 
+                    "name": "Office Procedures"
+                }, 
+                {
+                    "code": "OIT 160", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/160", 
+                    "name": "Applications Software"
+                }, 
+                {
+                    "code": "OIT 168", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/168", 
+                    "name": "WordPerfect I"
+                }, 
+                {
+                    "code": "OIT 169", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/169", 
+                    "name": "WordPerfect II"
+                }, 
+                {
+                    "code": "OIT 176", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/176", 
+                    "name": "Beginning Word"
+                }, 
+                {
+                    "code": "OIT 177", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/177", 
+                    "name": "Intermediate Word"
+                }, 
+                {
+                    "code": "OIT 178", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/178", 
+                    "name": "Advanced Word"
+                }, 
+                {
+                    "code": "OIT 181", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/181", 
+                    "name": "Beginning Excel"
+                }, 
+                {
+                    "code": "OIT 182", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/182", 
+                    "name": "Intermediate Excel"
+                }, 
+                {
+                    "code": "OIT 183", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/183", 
+                    "name": "Advanced Excel"
+                }, 
+                {
+                    "code": "OIT 184", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/184", 
+                    "name": "Beginning PowerPoint"
+                }, 
+                {
+                    "code": "OIT 185", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/185", 
+                    "name": "Intermediate PowerPoint"
+                }, 
+                {
+                    "code": "OIT 187", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/187", 
+                    "name": "Beginning Access"
+                }, 
+                {
+                    "code": "OIT 188", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/188", 
+                    "name": "Intermediate Access"
+                }, 
+                {
+                    "code": "OIT 189", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/189", 
+                    "name": "Advanced Access"
+                }, 
+                {
+                    "code": "OIT 190", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/190", 
+                    "name": "Microsoft Outlook"
+                }, 
+                {
+                    "code": "OIT 192", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/192", 
+                    "name": "Beginning Publisher"
+                }, 
+                {
+                    "code": "OIT 193", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/193", 
+                    "name": "Beginning Project"
+                }, 
+                {
+                    "code": "OIT 195", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/195", 
+                    "name": "Introduction to the Internet"
+                }, 
+                {
+                    "code": "OIT 196", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/196", 
+                    "name": "Introduction to Windows"
+                }, 
+                {
+                    "code": "OIT 197", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/197", 
+                    "name": "Proofreading"
+                }, 
+                {
+                    "code": "OIT 200", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/200", 
+                    "name": "Independent Study"
+                }, 
+                {
+                    "code": "OIT 226", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/226", 
+                    "name": "Legal Terminology"
+                }, 
+                {
+                    "code": "OIT 227", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/227", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "OIT 228", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/228", 
+                    "name": "Medical Office Scheduling and Billing"
+                }, 
+                {
+                    "code": "OIT 229", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/229", 
+                    "name": "Medical Coding"
+                }, 
+                {
+                    "code": "OIT 241", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/241", 
+                    "name": "General Machine Transcription"
+                }, 
+                {
+                    "code": "OIT 243", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/243", 
+                    "name": "Legal Machine Transcription I"
+                }, 
+                {
+                    "code": "OIT 244", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/244", 
+                    "name": "Legal Machine Transcription II"
+                }, 
+                {
+                    "code": "OIT 245", 
+                    "course_url": "http://www.chegg.com/courses/kellog/OIT/245", 
+                    "name": "Medical Machine Transcription I"
+                }
+            ], 
+            "name": "Office Information Technology", 
+            "url": "http://www.chegg.com/courses/kellog/OIT"
+        }, 
+        {
+            "abbr": "PARA", 
+            "courses": [
+                {
+                    "code": "PARA 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/110", 
+                    "name": "Introduction to Paralegalism"
+                }, 
+                {
+                    "code": "PARA 120", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/120", 
+                    "name": "Basic Legal Research and Writing"
+                }, 
+                {
+                    "code": "PARA 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/201", 
+                    "name": "Paralegal Internship"
+                }, 
+                {
+                    "code": "PARA 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/202", 
+                    "name": "Paralegal Internship"
+                }, 
+                {
+                    "code": "PARA 220", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/220", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "PARA 221", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/221", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "PARA 232", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/232", 
+                    "name": "Real Estate Law and Property Transactions"
+                }, 
+                {
+                    "code": "PARA 233", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/233", 
+                    "name": "Wills,Trusts,and Probate Administration"
+                }, 
+                {
+                    "code": "PARA 234", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/234", 
+                    "name": "Family Law"
+                }, 
+                {
+                    "code": "PARA 236", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/236", 
+                    "name": "Employment Law"
+                }, 
+                {
+                    "code": "PARA 237", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/237", 
+                    "name": "Law Office Management"
+                }, 
+                {
+                    "code": "PARA 240", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/240", 
+                    "name": "Litigation Procedures"
+                }, 
+                {
+                    "code": "PARA 245", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/245", 
+                    "name": "Trial Advocacy"
+                }, 
+                {
+                    "code": "PARA 250", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/250", 
+                    "name": "Administrative Law"
+                }, 
+                {
+                    "code": "PARA 251", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/251", 
+                    "name": "Advanced Legal Research and Writing"
+                }, 
+                {
+                    "code": "PARA 252", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/252", 
+                    "name": "Bankruptcy and Creditor-Debtor Law"
+                }, 
+                {
+                    "code": "PARA 290", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PARA/290", 
+                    "name": "Selected Topics in Paralegalism"
+                }
+            ], 
+            "name": "Paralegal", 
+            "url": "http://www.chegg.com/courses/kellog/PARA"
+        }, 
+        {
+            "abbr": "PEC", 
+            "courses": [
+                {
+                    "code": "PEC 103", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/103", 
+                    "name": "Tennis"
+                }, 
+                {
+                    "code": "PEC 107", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/107", 
+                    "name": "Downhill Skiing"
+                }, 
+                {
+                    "code": "PEC 108", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/108", 
+                    "name": "Intermediate Swimming"
+                }, 
+                {
+                    "code": "PEC 109", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/109", 
+                    "name": "Water Exercise"
+                }, 
+                {
+                    "code": "PEC 113", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/113", 
+                    "name": "Volleyball"
+                }, 
+                {
+                    "code": "PEC 115", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/115", 
+                    "name": "Golf"
+                }, 
+                {
+                    "code": "PEC 116", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/116", 
+                    "name": "Camping,Backpacking and Hiking"
+                }, 
+                {
+                    "code": "PEC 121", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/121", 
+                    "name": "Healthy Lifestyle Practices"
+                }, 
+                {
+                    "code": "PEC 122", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/122", 
+                    "name": "National Park Adventure"
+                }, 
+                {
+                    "code": "PEC 123", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/123", 
+                    "name": "Beginning Swimming"
+                }, 
+                {
+                    "code": "PEC 124", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/124", 
+                    "name": "Camping,Fly-Fishing and Outdoor Recreation"
+                }, 
+                {
+                    "code": "PEC 128", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/128", 
+                    "name": "Rock Climbing"
+                }, 
+                {
+                    "code": "PEC 131", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/131", 
+                    "name": "Self-Defense"
+                }, 
+                {
+                    "code": "PEC 133", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/133", 
+                    "name": "Beginning Karate"
+                }, 
+                {
+                    "code": "PEC 134", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/134", 
+                    "name": "Advanced Karate"
+                }, 
+                {
+                    "code": "PEC 136", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/136", 
+                    "name": "Advanced Weightlifting"
+                }, 
+                {
+                    "code": "PEC 142", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/142", 
+                    "name": "Scuba Diving"
+                }, 
+                {
+                    "code": "PEC 143", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/143", 
+                    "name": "Aerobics"
+                }, 
+                {
+                    "code": "PEC 149", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/149", 
+                    "name": "Bicycling"
+                }, 
+                {
+                    "code": "PEC 150", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/150", 
+                    "name": "Wellness Activity:Aquatic Exercise"
+                }, 
+                {
+                    "code": "PEC 151", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/151", 
+                    "name": "Wellness Activity:Aerobics"
+                }, 
+                {
+                    "code": "PEC 152", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/152", 
+                    "name": "Wellness Activity:Weight Training"
+                }, 
+                {
+                    "code": "PEC 153", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/153", 
+                    "name": "Wellness Activity:Sport Conditioning"
+                }, 
+                {
+                    "code": "PEC 155", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/155", 
+                    "name": "Wellness Activity:Cross Country Skiing"
+                }, 
+                {
+                    "code": "PEC 156", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/156", 
+                    "name": "Wellness Activity:Hiking"
+                }, 
+                {
+                    "code": "PEC 159", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/159", 
+                    "name": "Wellness Activity:Walking/Jogging"
+                }, 
+                {
+                    "code": "PEC 160", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/160", 
+                    "name": "Wellness Activity:Tennis"
+                }, 
+                {
+                    "code": "PEC 161", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/161", 
+                    "name": "Wellness Activity:Yoga Pilates Fusion"
+                }, 
+                {
+                    "code": "PEC 162", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEC/162", 
+                    "name": "Yoga Pilates Fusion"
+                }
+            ], 
+            "name": "Physical Education-Coed", 
+            "url": "http://www.chegg.com/courses/kellog/PEC"
+        }, 
+        {
+            "abbr": "PEP", 
+            "courses": [
+                {
+                    "code": "PEP 124", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEP/124", 
+                    "name": "Lifeguard Training"
+                }, 
+                {
+                    "code": "PEP 124E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEP/124E", 
+                    "name": "Lifeguard Training"
+                }, 
+                {
+                    "code": "PEP 125", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEP/125", 
+                    "name": "Lifeguard Recertification"
+                }, 
+                {
+                    "code": "PEP 150", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEP/150", 
+                    "name": "Introduction to Health,Physical Education,Recreation,and Wellness Professions"
+                }, 
+                {
+                    "code": "PEP 155", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEP/155", 
+                    "name": "Physical Fitness"
+                }, 
+                {
+                    "code": "PEP 220", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEP/220", 
+                    "name": "Water Safety Instructor"
+                }, 
+                {
+                    "code": "PEP 220E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEP/220E", 
+                    "name": "Water Safety Instructor"
+                }, 
+                {
+                    "code": "PEP 241", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEP/241", 
+                    "name": "Basketball Officiating"
+                }, 
+                {
+                    "code": "PEP 243", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEP/243", 
+                    "name": "Volleyball Officiating"
+                }, 
+                {
+                    "code": "PEP 244", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEP/244", 
+                    "name": "Baseball Officiating"
+                }, 
+                {
+                    "code": "PEP 245", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEP/245", 
+                    "name": "Softball Officiating"
+                }, 
+                {
+                    "code": "PEP 280", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEP/280", 
+                    "name": "Camping and Outdoor Education"
+                }, 
+                {
+                    "code": "PEP 290", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEP/290", 
+                    "name": "Preschool and Elementary Physical Education"
+                }, 
+                {
+                    "code": "PEP 298", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEP/298", 
+                    "name": "Independent Study"
+                }, 
+                {
+                    "code": "PEP 299", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PEP/299", 
+                    "name": "Field Experience"
+                }
+            ], 
+            "name": "Physical Educaton-Pro", 
+            "url": "http://www.chegg.com/courses/kellog/PEP"
+        }, 
+        {
+            "abbr": "PHIL", 
+            "courses": [
+                {
+                    "code": "PHIL 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PHIL/201", 
+                    "name": "Introduction to Philosophy"
+                }, 
+                {
+                    "code": "PHIL 201H", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PHIL/201H", 
+                    "name": "Introduction to Philosophy-Honors"
+                }, 
+                {
+                    "code": "PHIL 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PHIL/202", 
+                    "name": "Introduction to Ethics"
+                }, 
+                {
+                    "code": "PHIL 230", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PHIL/230", 
+                    "name": "Philosophy of Religion"
+                }, 
+                {
+                    "code": "PHIL 250", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PHIL/250", 
+                    "name": "Topics in Philosophy"
+                }, 
+                {
+                    "code": "PHIL 298", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PHIL/298", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/kellog/PHIL"
+        }, 
+        {
+            "abbr": "PHYS", 
+            "courses": [
+                {
+                    "code": "PHYS 111", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PHYS/111", 
+                    "name": "Introductory Physics I"
+                }, 
+                {
+                    "code": "PHYS 112", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PHYS/112", 
+                    "name": "Introductory Physics II"
+                }, 
+                {
+                    "code": "PHYS 114", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PHYS/114", 
+                    "name": "Applied Physics"
+                }, 
+                {
+                    "code": "PHYS 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PHYS/201", 
+                    "name": "General Physics I"
+                }, 
+                {
+                    "code": "PHYS 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PHYS/202", 
+                    "name": "General Physics II"
+                }, 
+                {
+                    "code": "PHYS 241", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PHYS/241", 
+                    "name": "Statics"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/kellog/PHYS"
+        }, 
+        {
+            "abbr": "POSC", 
+            "courses": [
+                {
+                    "code": "POSC 200", 
+                    "course_url": "http://www.chegg.com/courses/kellog/POSC/200", 
+                    "name": "American System of Government"
+                }, 
+                {
+                    "code": "POSC 200H", 
+                    "course_url": "http://www.chegg.com/courses/kellog/POSC/200H", 
+                    "name": "American System of Government-Honors"
+                }, 
+                {
+                    "code": "POSC 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/POSC/201", 
+                    "name": "American Government"
+                }, 
+                {
+                    "code": "POSC 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/POSC/202", 
+                    "name": "American Government"
+                }, 
+                {
+                    "code": "POSC 210", 
+                    "course_url": "http://www.chegg.com/courses/kellog/POSC/210", 
+                    "name": "Introductory Comparative Politics"
+                }, 
+                {
+                    "code": "POSC 211", 
+                    "course_url": "http://www.chegg.com/courses/kellog/POSC/211", 
+                    "name": "International Relations"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/kellog/POSC"
+        }, 
+        {
+            "abbr": "PRNU", 
+            "courses": [
+                {
+                    "code": "PRNU 10", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PRNU/10", 
+                    "name": "Medical Surgical Nursing I"
+                }, 
+                {
+                    "code": "PRNU 12", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PRNU/12", 
+                    "name": "Medical Surgical Nursing II"
+                }
+            ], 
+            "name": "Practical Nursing", 
+            "url": "http://www.chegg.com/courses/kellog/PRNU"
+        }, 
+        {
+            "abbr": "PSYC", 
+            "courses": [
+                {
+                    "code": "PSYC 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PSYC/201", 
+                    "name": "Introduction to Psychology"
+                }, 
+                {
+                    "code": "PSYC 220", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PSYC/220", 
+                    "name": "Developmental Psychology"
+                }, 
+                {
+                    "code": "PSYC 250", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PSYC/250", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSYC 260", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PSYC/260", 
+                    "name": "Health Psychology"
+                }, 
+                {
+                    "code": "PSYC 275", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PSYC/275", 
+                    "name": "Criminal Psychology"
+                }, 
+                {
+                    "code": "PSYC 280", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PSYC/280", 
+                    "name": "Special Topics in Psychology"
+                }, 
+                {
+                    "code": "PSYC 290", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PSYC/290", 
+                    "name": "Social Psychology"
+                }
+            ], 
+            "name": "Psychology", 
+            "url": "http://www.chegg.com/courses/kellog/PSYC"
+        }, 
+        {
+            "abbr": "PTA", 
+            "courses": [
+                {
+                    "code": "PTA 110", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/110", 
+                    "name": "Fundamentals of Physical Therapist Assisting"
+                }, 
+                {
+                    "code": "PTA 112", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/112", 
+                    "name": "Kinesiology I"
+                }, 
+                {
+                    "code": "PTA 114", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/114", 
+                    "name": "Physical Therapy Modalities"
+                }, 
+                {
+                    "code": "PTA 116", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/116", 
+                    "name": "Kinesiology II"
+                }, 
+                {
+                    "code": "PTA 117", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/117", 
+                    "name": "Pathology I"
+                }, 
+                {
+                    "code": "PTA 118", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/118", 
+                    "name": "Pathology II"
+                }, 
+                {
+                    "code": "PTA 119", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/119", 
+                    "name": "Orthopedics"
+                }, 
+                {
+                    "code": "PTA 120", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/120", 
+                    "name": "Neurological Concepts"
+                }, 
+                {
+                    "code": "PTA 121", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/121", 
+                    "name": "Functional Techniques"
+                }, 
+                {
+                    "code": "PTA 122", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/122", 
+                    "name": "Pediatrics"
+                }, 
+                {
+                    "code": "PTA 218", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/218", 
+                    "name": "Focused Neurology"
+                }, 
+                {
+                    "code": "PTA 219", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/219", 
+                    "name": "Advanced Intervention Techniques"
+                }, 
+                {
+                    "code": "PTA 220", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/220", 
+                    "name": "Concepts in Physical Therapist Assisting"
+                }, 
+                {
+                    "code": "PTA 221", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/221", 
+                    "name": "Clinical Experience"
+                }, 
+                {
+                    "code": "PTA 223", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/223", 
+                    "name": "Seminar in Physical Therapist Assisting"
+                }, 
+                {
+                    "code": "PTA 224", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/224", 
+                    "name": "Coordinated Clinical Experience I"
+                }, 
+                {
+                    "code": "PTA 225", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/225", 
+                    "name": "Coordinated Clinical Experience II"
+                }, 
+                {
+                    "code": "PTA 226", 
+                    "course_url": "http://www.chegg.com/courses/kellog/PTA/226", 
+                    "name": "Clinical Exploration"
+                }
+            ], 
+            "name": "Physical Therapy Assistant", 
+            "url": "http://www.chegg.com/courses/kellog/PTA"
+        }, 
+        {
+            "abbr": "RADI", 
+            "courses": [
+                {
+                    "code": "RADI 100", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/100", 
+                    "name": "Introduction to Radiologic Science and Health Care"
+                }, 
+                {
+                    "code": "RADI 111", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/111", 
+                    "name": "Patient Care in Radiologic Science"
+                }, 
+                {
+                    "code": "RADI 112", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/112", 
+                    "name": "Introduction to Imaging Principles"
+                }, 
+                {
+                    "code": "RADI 113", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/113", 
+                    "name": "Clinical Orientation"
+                }, 
+                {
+                    "code": "RADI 120", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/120", 
+                    "name": "Radiologic Positioning,Procedures and Pathology I"
+                }, 
+                {
+                    "code": "RADI 121", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/121", 
+                    "name": "Radiologic Physics"
+                }, 
+                {
+                    "code": "RADI 122", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/122", 
+                    "name": "Clinical Practice I"
+                }, 
+                {
+                    "code": "RADI 130", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/130", 
+                    "name": "Radiologic Positioning,Procedures and Pathology II"
+                }, 
+                {
+                    "code": "RADI 131", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/131", 
+                    "name": "Principles of Radiologic Imaging I"
+                }, 
+                {
+                    "code": "RADI 132", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/132", 
+                    "name": "Clinical Practice II"
+                }, 
+                {
+                    "code": "RADI 210", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/210", 
+                    "name": "Clinical Practicum"
+                }, 
+                {
+                    "code": "RADI 220", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/220", 
+                    "name": "Radiologic Positioning,Procedures and Pathology III"
+                }, 
+                {
+                    "code": "RADI 221", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/221", 
+                    "name": "Principles of Radiologic Imaging II"
+                }, 
+                {
+                    "code": "RADI 222", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/222", 
+                    "name": "Comprehensive Clinical Experience I"
+                }, 
+                {
+                    "code": "RADI 223", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/223", 
+                    "name": "Radiobiology and Protection"
+                }, 
+                {
+                    "code": "RADI 230", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/230", 
+                    "name": "Cross-Sectional Anatomy"
+                }, 
+                {
+                    "code": "RADI 231", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/231", 
+                    "name": "Radiologic Technology Special Topics"
+                }, 
+                {
+                    "code": "RADI 232", 
+                    "course_url": "http://www.chegg.com/courses/kellog/RADI/232", 
+                    "name": "Comprehensive Clinical Experience II"
+                }
+            ], 
+            "name": "Radiography", 
+            "url": "http://www.chegg.com/courses/kellog/RADI"
+        }, 
+        {
+            "abbr": "SCIE", 
+            "courses": [
+                {
+                    "code": "SCIE 100", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SCIE/100", 
+                    "name": "Environmental Science"
+                }, 
+                {
+                    "code": "SCIE 102", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SCIE/102", 
+                    "name": "Physical Science"
+                }, 
+                {
+                    "code": "SCIE 103", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SCIE/103", 
+                    "name": "Field Investigation in Environmental Studies"
+                }
+            ], 
+            "name": "Science", 
+            "url": "http://www.chegg.com/courses/kellog/SCIE"
+        }, 
+        {
+            "abbr": "SERV", 
+            "courses": [
+                {
+                    "code": "SERV 200", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SERV/200", 
+                    "name": "Service Learning"
+                }
+            ], 
+            "name": "Service Learning", 
+            "url": "http://www.chegg.com/courses/kellog/SERV"
+        }, 
+        {
+            "abbr": "SOCI", 
+            "courses": [
+                {
+                    "code": "SOCI 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SOCI/201", 
+                    "name": "Introduction to Sociology"
+                }, 
+                {
+                    "code": "SOCI 201H", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SOCI/201H", 
+                    "name": "Introduction to Sociology-Honors"
+                }, 
+                {
+                    "code": "SOCI 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SOCI/202", 
+                    "name": "Social Problems"
+                }, 
+                {
+                    "code": "SOCI 203", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SOCI/203", 
+                    "name": "Marriage and Family"
+                }, 
+                {
+                    "code": "SOCI 204", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SOCI/204", 
+                    "name": "Race and Ethnic Relations"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/kellog/SOCI"
+        }, 
+        {
+            "abbr": "SOSC", 
+            "courses": [
+                {
+                    "code": "SOSC 298", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SOSC/298", 
+                    "name": "Independent Study"
+                }, 
+                {
+                    "code": "SOSC 299", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SOSC/299", 
+                    "name": "Field Experience"
+                }
+            ], 
+            "name": "Social Science", 
+            "url": "http://www.chegg.com/courses/kellog/SOSC"
+        }, 
+        {
+            "abbr": "SPAN", 
+            "courses": [
+                {
+                    "code": "SPAN 101", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SPAN/101", 
+                    "name": "Elementary Spanish"
+                }, 
+                {
+                    "code": "SPAN 102", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SPAN/102", 
+                    "name": "Elementary Spanish"
+                }, 
+                {
+                    "code": "SPAN 131", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SPAN/131", 
+                    "name": "Conversational Spanish"
+                }, 
+                {
+                    "code": "SPAN 201", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SPAN/201", 
+                    "name": "Intermediate Spanish"
+                }, 
+                {
+                    "code": "SPAN 202", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SPAN/202", 
+                    "name": "Intermediate Spanish"
+                }, 
+                {
+                    "code": "SPAN 203", 
+                    "course_url": "http://www.chegg.com/courses/kellog/SPAN/203", 
+                    "name": "Advanced Conversational Spanish"
+                }
+            ], 
+            "name": "Spanish", 
+            "url": "http://www.chegg.com/courses/kellog/SPAN"
+        }, 
+        {
+            "abbr": "STSK", 
+            "courses": [
+                {
+                    "code": "STSK 98", 
+                    "course_url": "http://www.chegg.com/courses/kellog/STSK/98", 
+                    "name": "College Reading"
+                }, 
+                {
+                    "code": "STSK 99", 
+                    "course_url": "http://www.chegg.com/courses/kellog/STSK/99", 
+                    "name": "Applied Study Skills"
+                }, 
+                {
+                    "code": "STSK 111", 
+                    "course_url": "http://www.chegg.com/courses/kellog/STSK/111", 
+                    "name": "College Success"
+                }
+            ], 
+            "name": "Study Skills", 
+            "url": "http://www.chegg.com/courses/kellog/STSK"
+        }, 
+        {
+            "abbr": "THEA", 
+            "courses": [
+                {
+                    "code": "THEA 121", 
+                    "course_url": "http://www.chegg.com/courses/kellog/THEA/121", 
+                    "name": "Theatre Appreciation I"
+                }, 
+                {
+                    "code": "THEA 122", 
+                    "course_url": "http://www.chegg.com/courses/kellog/THEA/122", 
+                    "name": "Theatre Appreciation II"
+                }, 
+                {
+                    "code": "THEA 125", 
+                    "course_url": "http://www.chegg.com/courses/kellog/THEA/125", 
+                    "name": "Stagecraft I"
+                }, 
+                {
+                    "code": "THEA 218", 
+                    "course_url": "http://www.chegg.com/courses/kellog/THEA/218", 
+                    "name": "Acting I"
+                }, 
+                {
+                    "code": "THEA 218E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/THEA/218E", 
+                    "name": "Acting I"
+                }, 
+                {
+                    "code": "THEA 220", 
+                    "course_url": "http://www.chegg.com/courses/kellog/THEA/220", 
+                    "name": "Acting II"
+                }, 
+                {
+                    "code": "THEA 220E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/THEA/220E", 
+                    "name": "Acting II"
+                }, 
+                {
+                    "code": "THEA 225", 
+                    "course_url": "http://www.chegg.com/courses/kellog/THEA/225", 
+                    "name": "Stagecraft II"
+                }, 
+                {
+                    "code": "THEA 230", 
+                    "course_url": "http://www.chegg.com/courses/kellog/THEA/230", 
+                    "name": "Script Analysis"
+                }, 
+                {
+                    "code": "THEA 251", 
+                    "course_url": "http://www.chegg.com/courses/kellog/THEA/251", 
+                    "name": "Introduction to Children's Theatre"
+                }, 
+                {
+                    "code": "THEA 281", 
+                    "course_url": "http://www.chegg.com/courses/kellog/THEA/281", 
+                    "name": "Theatre Practicum"
+                }, 
+                {
+                    "code": "THEA 281E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/THEA/281E", 
+                    "name": "Theatre Practicum"
+                }, 
+                {
+                    "code": "THEA 285", 
+                    "course_url": "http://www.chegg.com/courses/kellog/THEA/285", 
+                    "name": "Arts Management"
+                }, 
+                {
+                    "code": "THEA 297", 
+                    "course_url": "http://www.chegg.com/courses/kellog/THEA/297", 
+                    "name": "Theatre Special Topics"
+                }, 
+                {
+                    "code": "THEA 297E", 
+                    "course_url": "http://www.chegg.com/courses/kellog/THEA/297E", 
+                    "name": "Theatre Special Topics"
+                }
+            ], 
+            "name": "Theatre", 
+            "url": "http://www.chegg.com/courses/kellog/THEA"
+        }
+    ], 
+    "name": "kellog"
+}

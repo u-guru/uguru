@@ -1,0 +1,3249 @@
+{
+    "all_stats": {
+        "num_courses": 564, 
+        "num_departments": 60
+    }, 
+    "departments": [
+        {
+            "abbr": "ACCT", 
+            "courses": [
+                {
+                    "code": "ACCT 1A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ACCT/1A", 
+                    "name": "Principles of Accounting"
+                }, 
+                {
+                    "code": "ACCT 1B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ACCT/1B", 
+                    "name": "Principles of Accounting."
+                }, 
+                {
+                    "code": "ACCT 4", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ACCT/4", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACCT 68", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ACCT/68", 
+                    "name": "Federal Tax I"
+                }, 
+                {
+                    "code": "ACCT 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ACCT/82", 
+                    "name": "Occupational W/E in Accounting"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/barstow/ACCT"
+        }, 
+        {
+            "abbr": "ACSK", 
+            "courses": [
+                {
+                    "code": "ACSK 150", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ACSK/150", 
+                    "name": "Beg Writing Essentials"
+                }, 
+                {
+                    "code": "ACSK 151", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ACSK/151", 
+                    "name": "Int Writing Essentials"
+                }, 
+                {
+                    "code": "ACSK 152", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ACSK/152", 
+                    "name": "Adv Writing Essentials"
+                }, 
+                {
+                    "code": "ACSK 153", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ACSK/153", 
+                    "name": "Beg Arithmetic Essentials"
+                }, 
+                {
+                    "code": "ACSK 154", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ACSK/154", 
+                    "name": "Int Arithmetic Essentials"
+                }, 
+                {
+                    "code": "ACSK 155", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ACSK/155", 
+                    "name": "Adv Arithmetic Essentials"
+                }, 
+                {
+                    "code": "ACSK 156", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ACSK/156", 
+                    "name": "Beg Reading Essentials"
+                }, 
+                {
+                    "code": "ACSK 157", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ACSK/157", 
+                    "name": "Int Reading Essentials"
+                }, 
+                {
+                    "code": "ACSK 158", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ACSK/158", 
+                    "name": "Adv Reading Essentials"
+                }, 
+                {
+                    "code": "ACSK 164", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ACSK/164", 
+                    "name": "Academic Support:Assmnt Wkshp"
+                }, 
+                {
+                    "code": "ACSK 165", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ACSK/165", 
+                    "name": "Academic Support:Lrng Stratgy"
+                }
+            ], 
+            "name": "Academic Support", 
+            "url": "http://www.chegg.com/courses/barstow/ACSK"
+        }, 
+        {
+            "abbr": "ADJU", 
+            "courses": [
+                {
+                    "code": "ADJU 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/1", 
+                    "name": "Intro to the Admin of Justice"
+                }, 
+                {
+                    "code": "ADJU 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/2", 
+                    "name": "Prin/Proc of the Justice Sys"
+                }, 
+                {
+                    "code": "ADJU 3", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/3", 
+                    "name": "Concepts of Criminal Law"
+                }, 
+                {
+                    "code": "ADJU 4", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/4", 
+                    "name": "Legal Aspects of Evidence"
+                }, 
+                {
+                    "code": "ADJU 5", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/5", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ADJU 6", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/6", 
+                    "name": "Concepts of Enforcement Svcs"
+                }, 
+                {
+                    "code": "ADJU 7", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/7", 
+                    "name": "Principles of Investigation"
+                }, 
+                {
+                    "code": "ADJU 8", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/8", 
+                    "name": "Juvenile Crime/Delinquency"
+                }, 
+                {
+                    "code": "ADJU 14", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/14", 
+                    "name": "Introduction to Corrections"
+                }, 
+                {
+                    "code": "ADJU 15", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/15", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ADJU 16", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/16", 
+                    "name": "Cntrl & Sprvsn in Corrections"
+                }, 
+                {
+                    "code": "ADJU 17", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/17", 
+                    "name": "Correctional Interview & Couns"
+                }, 
+                {
+                    "code": "ADJU 18", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/18", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ADJU 54", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/54", 
+                    "name": "Job Search Sklls in Law Enforc"
+                }, 
+                {
+                    "code": "ADJU 55", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/55", 
+                    "name": "Search and Rescue"
+                }, 
+                {
+                    "code": "ADJU 56", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/56", 
+                    "name": "Desert Survival"
+                }, 
+                {
+                    "code": "ADJU 60", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/60", 
+                    "name": "Corrections Officer Core Cours"
+                }, 
+                {
+                    "code": "ADJU 70", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/70", 
+                    "name": "Public Safety Internship I"
+                }, 
+                {
+                    "code": "ADJU 71", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/71", 
+                    "name": "Public Safety Internship II"
+                }, 
+                {
+                    "code": "ADJU 72", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/72", 
+                    "name": "Public Safety Internship III"
+                }, 
+                {
+                    "code": "ADJU 73", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/73", 
+                    "name": "Public Safety Internship IV"
+                }, 
+                {
+                    "code": "ADJU 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/82", 
+                    "name": "Cooperative W/E in Admin Just"
+                }, 
+                {
+                    "code": "ADJU 100", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/100", 
+                    "name": "Security Officers Tng Academy"
+                }, 
+                {
+                    "code": "ADJU 101", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ADJU/101", 
+                    "name": "Self Protection/Rape Prevent"
+                }
+            ], 
+            "name": "Administration of Justice", 
+            "url": "http://www.chegg.com/courses/barstow/ADJU"
+        }, 
+        {
+            "abbr": "AHLT", 
+            "courses": [
+                {
+                    "code": "AHLT 51", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/51", 
+                    "name": "First Aid and Personal Safety"
+                }, 
+                {
+                    "code": "AHLT 52", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/52", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "AHLT 54", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/54", 
+                    "name": "Nursing Assistant"
+                }, 
+                {
+                    "code": "AHLT 55A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/55A", 
+                    "name": "Emergency Medical Tech - Basic"
+                }, 
+                {
+                    "code": "AHLT 55B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/55B", 
+                    "name": "Emergency Medical Tech"
+                }, 
+                {
+                    "code": "AHLT 56", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/56", 
+                    "name": "Home Health Aide"
+                }, 
+                {
+                    "code": "AHLT 57", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/57", 
+                    "name": "Pharmacology"
+                }, 
+                {
+                    "code": "AHLT 58", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/58", 
+                    "name": "Basic Arrhythmia"
+                }, 
+                {
+                    "code": "AHLT 59", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/59", 
+                    "name": "Universal First Aid"
+                }, 
+                {
+                    "code": "AHLT 60", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/60", 
+                    "name": "Medical Insurance"
+                }, 
+                {
+                    "code": "AHLT 61A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/61A", 
+                    "name": "Med Office Proc-Front Office"
+                }, 
+                {
+                    "code": "AHLT 61B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/61B", 
+                    "name": "Med Office Proc-Back Office"
+                }, 
+                {
+                    "code": "AHLT 61C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/61C", 
+                    "name": "Medical Office Proc Prcticum"
+                }, 
+                {
+                    "code": "AHLT 62A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/62A", 
+                    "name": "EMT Basic Refresher-EMSA Cert."
+                }, 
+                {
+                    "code": "AHLT 62B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/62B", 
+                    "name": "EMT Basic Refresher-NRC"
+                }, 
+                {
+                    "code": "AHLT 63", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/63", 
+                    "name": "Basic CPR"
+                }, 
+                {
+                    "code": "AHLT 64", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/64", 
+                    "name": "Basic CPR Refresher"
+                }, 
+                {
+                    "code": "AHLT 65", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/65", 
+                    "name": "Prev Hlth Care-Day Care Center"
+                }, 
+                {
+                    "code": "AHLT 66", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/66", 
+                    "name": "Medical Coding"
+                }, 
+                {
+                    "code": "AHLT 70", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/70", 
+                    "name": "Physio Effects of Alchol/Drugs"
+                }, 
+                {
+                    "code": "AHLT 71", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/71", 
+                    "name": "Alc/Drug,Comm.Ed.&Prev.Outrea"
+                }, 
+                {
+                    "code": "AHLT 72", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/72", 
+                    "name": "Alcohol/Drug Abuse:Interventin"
+                }, 
+                {
+                    "code": "AHLT 73", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/73", 
+                    "name": "Adolescent Alcohol/Drug Abuse"
+                }, 
+                {
+                    "code": "AHLT 74", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/74", 
+                    "name": "Alcohol/Drug Abuse:Family Dyn"
+                }, 
+                {
+                    "code": "AHLT 75", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/75", 
+                    "name": "Alcohol/Drug Studies Field Wk"
+                }, 
+                {
+                    "code": "AHLT 77", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/77", 
+                    "name": "Medical Transcription"
+                }, 
+                {
+                    "code": "AHLT 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AHLT/82", 
+                    "name": "Cooperative W/E in Allied Hlth"
+                }
+            ], 
+            "name": "Allied Health", 
+            "url": "http://www.chegg.com/courses/barstow/AHLT"
+        }, 
+        {
+            "abbr": "AIRC", 
+            "courses": [
+                {
+                    "code": "AIRC 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AIRC/50", 
+                    "name": "Fund HVAC Maint&Service"
+                }, 
+                {
+                    "code": "AIRC 51", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AIRC/51", 
+                    "name": "Fund Heat/Vent/Air Cond"
+                }, 
+                {
+                    "code": "AIRC 52", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AIRC/52", 
+                    "name": "Commercial Refrigeration"
+                }, 
+                {
+                    "code": "AIRC 53", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AIRC/53", 
+                    "name": "Advanced Heating,Vent,& A/C"
+                }, 
+                {
+                    "code": "AIRC 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AIRC/82", 
+                    "name": "Occupational W/E in AIRC"
+                }
+            ], 
+            "name": "Air Condition/Refrigeration", 
+            "url": "http://www.chegg.com/courses/barstow/AIRC"
+        }, 
+        {
+            "abbr": "ARCH", 
+            "courses": [
+                {
+                    "code": "ARCH 10", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARCH/10", 
+                    "name": "Arch of the Mojave Desert"
+                }, 
+                {
+                    "code": "ARCH 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARCH/50", 
+                    "name": "Arch of the Soda Springs Area"
+                }, 
+                {
+                    "code": "ARCH 51", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARCH/51", 
+                    "name": "Indian Rock Art-Soda Springs"
+                }, 
+                {
+                    "code": "ARCH 52", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARCH/52", 
+                    "name": "Indian Rock Art of China Lake"
+                }, 
+                {
+                    "code": "ARCH 53A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARCH/53A", 
+                    "name": "Human History of Mojave Desert"
+                }, 
+                {
+                    "code": "ARCH 53B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARCH/53B", 
+                    "name": "Human History of Mojave Desert"
+                }, 
+                {
+                    "code": "ARCH 53C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARCH/53C", 
+                    "name": "Human History of Mojave Desert"
+                }, 
+                {
+                    "code": "ARCH 53D", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARCH/53D", 
+                    "name": "Human History of Mojave Desert"
+                }
+            ], 
+            "name": "Archaeology", 
+            "url": "http://www.chegg.com/courses/barstow/ARCH"
+        }, 
+        {
+            "abbr": "ARTS", 
+            "courses": [
+                {
+                    "code": "ARTS 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARTS/1", 
+                    "name": "Art History/Apprec"
+                }, 
+                {
+                    "code": "ARTS 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARTS/2", 
+                    "name": "Art History and Apprec"
+                }, 
+                {
+                    "code": "ARTS 7", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARTS/7", 
+                    "name": "Drawing and Composition"
+                }, 
+                {
+                    "code": "ARTS 9", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARTS/9", 
+                    "name": "Intro to Adobe PhotoShop"
+                }, 
+                {
+                    "code": "ARTS 10", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARTS/10", 
+                    "name": "Painting"
+                }, 
+                {
+                    "code": "ARTS 16", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARTS/16", 
+                    "name": "Freehand Sketching"
+                }, 
+                {
+                    "code": "ARTS 17", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARTS/17", 
+                    "name": "Watercolor Painting"
+                }, 
+                {
+                    "code": "ARTS 18", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARTS/18", 
+                    "name": "Ceramics"
+                }, 
+                {
+                    "code": "ARTS 18A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARTS/18A", 
+                    "name": "Ceramics"
+                }, 
+                {
+                    "code": "ARTS 18B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARTS/18B", 
+                    "name": "Intermediate Ceramics"
+                }, 
+                {
+                    "code": "ARTS 19", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARTS/19", 
+                    "name": "Sculpture"
+                }, 
+                {
+                    "code": "ARTS 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ARTS/82", 
+                    "name": "Coop Work Exp.in Art"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/barstow/ARTS"
+        }, 
+        {
+            "abbr": "ASTR", 
+            "courses": [
+                {
+                    "code": "ASTR 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ASTR/1", 
+                    "name": "Introduction to Astronomy"
+                }, 
+                {
+                    "code": "ASTR 1L", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ASTR/1L", 
+                    "name": "Observational Astronomy"
+                }
+            ], 
+            "name": "Astronomy", 
+            "url": "http://www.chegg.com/courses/barstow/ASTR"
+        }, 
+        {
+            "abbr": "ATHL", 
+            "courses": [
+                {
+                    "code": "ATHL 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ATHL/1", 
+                    "name": "Intercoll Basketball (MEN)"
+                }, 
+                {
+                    "code": "ATHL 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ATHL/2", 
+                    "name": "Intercoll Basketball (Women)"
+                }, 
+                {
+                    "code": "ATHL 7", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ATHL/7", 
+                    "name": "Intercoll Cross-Country (Men)"
+                }, 
+                {
+                    "code": "ATHL 8", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ATHL/8", 
+                    "name": "Intercoll Cross-Country(Women)"
+                }, 
+                {
+                    "code": "ATHL 10", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ATHL/10", 
+                    "name": "Intercollegiate Softball"
+                }, 
+                {
+                    "code": "ATHL 20", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ATHL/20", 
+                    "name": "Basketball (Men)"
+                }, 
+                {
+                    "code": "ATHL 21", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ATHL/21", 
+                    "name": "Ind Basic Skill-Bsktbl Women"
+                }, 
+                {
+                    "code": "ATHL 22", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ATHL/22", 
+                    "name": "Team Strategies/Bsktbl-Women"
+                }, 
+                {
+                    "code": "ATHL 23", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ATHL/23", 
+                    "name": "Baseball"
+                }, 
+                {
+                    "code": "ATHL 25", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ATHL/25", 
+                    "name": "Women's Softball"
+                }, 
+                {
+                    "code": "ATHL 31", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ATHL/31", 
+                    "name": "Sport Cond for Intrcllgt Athle"
+                }
+            ], 
+            "name": "Athletics", 
+            "url": "http://www.chegg.com/courses/barstow/ATHL"
+        }, 
+        {
+            "abbr": "AUTO", 
+            "courses": [
+                {
+                    "code": "AUTO 51", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/51", 
+                    "name": "Basic Automotive Maintenance"
+                }, 
+                {
+                    "code": "AUTO 51A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/51A", 
+                    "name": "Intro to Auto Tech"
+                }, 
+                {
+                    "code": "AUTO 52", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/52", 
+                    "name": "Automotive Electrical Systems"
+                }, 
+                {
+                    "code": "AUTO 53", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/53", 
+                    "name": "Automatic Trnsmsns&Trnsxls"
+                }, 
+                {
+                    "code": "AUTO 54", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/54", 
+                    "name": "Automotive Brakes"
+                }, 
+                {
+                    "code": "AUTO 55", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/55", 
+                    "name": "Suspension and Steering"
+                }, 
+                {
+                    "code": "AUTO 56", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/56", 
+                    "name": ""
+                }, 
+                {
+                    "code": "AUTO 57", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/57", 
+                    "name": "Heating and Air Conditioning"
+                }, 
+                {
+                    "code": "AUTO 58", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/58", 
+                    "name": "Basic Automotive Engine"
+                }, 
+                {
+                    "code": "AUTO 59", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/59", 
+                    "name": "Manual Trans.& Power Trains"
+                }, 
+                {
+                    "code": "AUTO 62", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/62", 
+                    "name": "Basic Motorcycle Servicing"
+                }, 
+                {
+                    "code": "AUTO 63", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/63", 
+                    "name": "Diesel Engine Fundamentals"
+                }, 
+                {
+                    "code": "AUTO 64", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/64", 
+                    "name": "Diesel Fuel Injection Systems"
+                }, 
+                {
+                    "code": "AUTO 65", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/65", 
+                    "name": ""
+                }, 
+                {
+                    "code": "AUTO 66", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/66", 
+                    "name": "Diesel Engine Service"
+                }, 
+                {
+                    "code": "AUTO 67", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/67", 
+                    "name": "Diesel Engine Auxilliary Syste"
+                }, 
+                {
+                    "code": "AUTO 68", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/68", 
+                    "name": "Diesel Engine Cyl Head Service"
+                }, 
+                {
+                    "code": "AUTO 69", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/69", 
+                    "name": "Diesel Engine Overhaul/Rebuild"
+                }, 
+                {
+                    "code": "AUTO 70", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/70", 
+                    "name": "Diesel Brake,Steering&Suspensi"
+                }, 
+                {
+                    "code": "AUTO 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/AUTO/82", 
+                    "name": "Cooperative W/E in Automotive"
+                }
+            ], 
+            "name": "Auto Mechanics Technology", 
+            "url": "http://www.chegg.com/courses/barstow/AUTO"
+        }, 
+        {
+            "abbr": "BADM", 
+            "courses": [
+                {
+                    "code": "BADM 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/1", 
+                    "name": "Business Law I"
+                }, 
+                {
+                    "code": "BADM 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/2", 
+                    "name": "Business Law II"
+                }, 
+                {
+                    "code": "BADM 5", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/5", 
+                    "name": "Introduction to Business"
+                }, 
+                {
+                    "code": "BADM 6", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/6", 
+                    "name": "Business Communications"
+                }, 
+                {
+                    "code": "BADM 19", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/19", 
+                    "name": "Marketing"
+                }, 
+                {
+                    "code": "BADM 51", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/51", 
+                    "name": "Business Math"
+                }, 
+                {
+                    "code": "BADM 62", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/62", 
+                    "name": "Professional Development"
+                }, 
+                {
+                    "code": "BADM 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/82", 
+                    "name": "Cooperative W/E in Bus Admin"
+                }, 
+                {
+                    "code": "BADM 98", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/98", 
+                    "name": "Research Methods and Stats"
+                }, 
+                {
+                    "code": "BADM 100", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/100", 
+                    "name": "Customer Service Training"
+                }, 
+                {
+                    "code": "BADM 101", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/101", 
+                    "name": "Attitude in the Workplace"
+                }, 
+                {
+                    "code": "BADM 102", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/102", 
+                    "name": "Dealing with Difficult People"
+                }, 
+                {
+                    "code": "BADM 103", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/103", 
+                    "name": "Mastering Communication"
+                }, 
+                {
+                    "code": "BADM 104", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/104", 
+                    "name": "Time and Stress Management"
+                }, 
+                {
+                    "code": "BADM 105", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/105", 
+                    "name": "Decision Making&Problem Slving"
+                }, 
+                {
+                    "code": "BADM 106", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/106", 
+                    "name": "Managing Change"
+                }, 
+                {
+                    "code": "BADM 107", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/107", 
+                    "name": "Team Building"
+                }, 
+                {
+                    "code": "BADM 108", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BADM/108", 
+                    "name": "Business Ethics"
+                }
+            ], 
+            "name": "Business Administration", 
+            "url": "http://www.chegg.com/courses/barstow/BADM"
+        }, 
+        {
+            "abbr": "BCTT", 
+            "courses": [
+                {
+                    "code": "BCTT 50A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/50A", 
+                    "name": "Basic Const Safety & Rigging"
+                }, 
+                {
+                    "code": "BCTT 50B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/50B", 
+                    "name": "Intro to Hand & Power Tools"
+                }, 
+                {
+                    "code": "BCTT 50C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/50C", 
+                    "name": "Intro to Blueprint Reading"
+                }, 
+                {
+                    "code": "BCTT 50D", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/50D", 
+                    "name": "Basic Comm & Employment Skills"
+                }, 
+                {
+                    "code": "BCTT 50E", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/50E", 
+                    "name": "Const Tech Core Prfrmnc Tstng"
+                }, 
+                {
+                    "code": "BCTT 51", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/51", 
+                    "name": "Cnstrctn Quantitative Skills"
+                }, 
+                {
+                    "code": "BCTT 52", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/52", 
+                    "name": "Soft Skills for the Workplace"
+                }, 
+                {
+                    "code": "BCTT 52A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/52A", 
+                    "name": "Blueprint Reading Fundamentals"
+                }, 
+                {
+                    "code": "BCTT 52B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/52B", 
+                    "name": "Residential Blueprint Reading"
+                }, 
+                {
+                    "code": "BCTT 52C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/52C", 
+                    "name": "Commercial Blueprint Reading"
+                }, 
+                {
+                    "code": "BCTT 54", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/54", 
+                    "name": "Safety Orientation"
+                }, 
+                {
+                    "code": "BCTT 55", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/55", 
+                    "name": "Intro Skills Crew Leader"
+                }, 
+                {
+                    "code": "BCTT 60A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/60A", 
+                    "name": "Materials and Tools"
+                }, 
+                {
+                    "code": "BCTT 60B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/60B", 
+                    "name": "Floor Systems, W&C Framing"
+                }, 
+                {
+                    "code": "BCTT 60C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/60C", 
+                    "name": "Roof Frame, Window & Ext Door"
+                }, 
+                {
+                    "code": "BCTT 60D", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/60D", 
+                    "name": "Intro to Cncrte Matrl & Form"
+                }, 
+                {
+                    "code": "BCTT 60E", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/60E", 
+                    "name": "Residential Carp. Level Test"
+                }, 
+                {
+                    "code": "BCTT 62A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/62A", 
+                    "name": "Read Plans&Site Layout I"
+                }, 
+                {
+                    "code": "BCTT 62B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/62B", 
+                    "name": "Extrior Fnsh& Moistre Prtction"
+                }, 
+                {
+                    "code": "BCTT 62C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/62C", 
+                    "name": "Roof,Stair,Metal Stud Applictn"
+                }, 
+                {
+                    "code": "BCTT 62D", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/62D", 
+                    "name": "Drywall and Interior Finish"
+                }, 
+                {
+                    "code": "BCTT 62E", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/62E", 
+                    "name": "Res Carpentry Level II Test"
+                }, 
+                {
+                    "code": "BCTT 70A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/70A", 
+                    "name": "Electrical Sfty & Hand Bending"
+                }, 
+                {
+                    "code": "BCTT 70B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/70B", 
+                    "name": "Fasteners & Electrical Theory"
+                }, 
+                {
+                    "code": "BCTT 70C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/70C", 
+                    "name": "Electrical Test Equipment,NEC"
+                }, 
+                {
+                    "code": "BCTT 70D", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/70D", 
+                    "name": "Intro to Electrical Blueprints"
+                }, 
+                {
+                    "code": "BCTT 70E", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/70E", 
+                    "name": "Electrical Level Pfrmc Test"
+                }, 
+                {
+                    "code": "BCTT 72A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/72A", 
+                    "name": "Altrnting Current,Motor&Ground"
+                }, 
+                {
+                    "code": "BCTT 72B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/72B", 
+                    "name": "Grounding,Conduit,Boxes,Fit"
+                }, 
+                {
+                    "code": "BCTT 72C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/72C", 
+                    "name": "Cable Tray,Conductor Terminat"
+                }, 
+                {
+                    "code": "BCTT 72D", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/72D", 
+                    "name": "Circuit Breakers,Fuses,Conta"
+                }, 
+                {
+                    "code": "BCTT 72E", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/72E", 
+                    "name": "Electrical Level Performance"
+                }, 
+                {
+                    "code": "BCTT 76A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/76A", 
+                    "name": "Load Conductor Calc & Wire"
+                }, 
+                {
+                    "code": "BCTT 76B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/76B", 
+                    "name": "Distribution Systems"
+                }, 
+                {
+                    "code": "BCTT 76C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/76C", 
+                    "name": "Motor Calc,Maint,& Control"
+                }, 
+                {
+                    "code": "BCTT 76D", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/76D", 
+                    "name": "Hazardous Locations"
+                }, 
+                {
+                    "code": "BCTT 76E", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/76E", 
+                    "name": "Electrical Level Testing"
+                }, 
+                {
+                    "code": "BCTT 77A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/77A", 
+                    "name": "Load Calculations,Lght & Emrg"
+                }, 
+                {
+                    "code": "BCTT 77B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/77B", 
+                    "name": "Basic Elec Theory & Fire Alarm"
+                }, 
+                {
+                    "code": "BCTT 77C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/77C", 
+                    "name": "Trnsfrmrs,Cntrls,&Heat Trcng"
+                }, 
+                {
+                    "code": "BCTT 77D", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/77D", 
+                    "name": "Motor Maint & High Voltage"
+                }, 
+                {
+                    "code": "BCTT 77E", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/77E", 
+                    "name": "Electrical Level IV Testing"
+                }, 
+                {
+                    "code": "BCTT 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BCTT/82", 
+                    "name": "Occupational W/E in Constrctn"
+                }
+            ], 
+            "name": "Bldg Const Trade & Tech", 
+            "url": "http://www.chegg.com/courses/barstow/BCTT"
+        }, 
+        {
+            "abbr": "BIOL", 
+            "courses": [
+                {
+                    "code": "BIOL 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BIOL/1", 
+                    "name": "Environmental Biology"
+                }, 
+                {
+                    "code": "BIOL 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BIOL/2", 
+                    "name": "Concepts In Biology"
+                }, 
+                {
+                    "code": "BIOL 3", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BIOL/3", 
+                    "name": "Introduction To Plant Biology"
+                }, 
+                {
+                    "code": "BIOL 4", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BIOL/4", 
+                    "name": "Human Anatomy"
+                }, 
+                {
+                    "code": "BIOL 5", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BIOL/5", 
+                    "name": "Human Physiology"
+                }, 
+                {
+                    "code": "BIOL 7", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BIOL/7", 
+                    "name": "General Zoology"
+                }, 
+                {
+                    "code": "BIOL 8", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BIOL/8", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIOL 10", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BIOL/10", 
+                    "name": "Introduction To Biology"
+                }, 
+                {
+                    "code": "BIOL 10L", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BIOL/10L", 
+                    "name": "Intro to Biology Lab"
+                }, 
+                {
+                    "code": "BIOL 11", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BIOL/11", 
+                    "name": "Human Sexuality"
+                }, 
+                {
+                    "code": "BIOL 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BIOL/82", 
+                    "name": "Cooperative W/E in Biology"
+                }, 
+                {
+                    "code": "BIOL 99", 
+                    "course_url": "http://www.chegg.com/courses/barstow/BIOL/99", 
+                    "name": "Individual Project in Biology"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/barstow/BIOL"
+        }, 
+        {
+            "abbr": "CBIS", 
+            "courses": [
+                {
+                    "code": "CBIS 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/1", 
+                    "name": "Computer Concepts"
+                }, 
+                {
+                    "code": "CBIS 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/2", 
+                    "name": "Windows and the Internet"
+                }, 
+                {
+                    "code": "CBIS 6", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/6", 
+                    "name": "Programming in JAVA"
+                }, 
+                {
+                    "code": "CBIS 10", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/10", 
+                    "name": "Computer Architecture"
+                }, 
+                {
+                    "code": "CBIS 13", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/13", 
+                    "name": "Management Information Systems"
+                }, 
+                {
+                    "code": "CBIS 15", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/15", 
+                    "name": "Information Networking"
+                }, 
+                {
+                    "code": "CBIS 17", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/17", 
+                    "name": "Database Design & Mgmt. ACCESS"
+                }, 
+                {
+                    "code": "CBIS 19", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/19", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CBIS 22A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/22A", 
+                    "name": "Business Op. Software UNIX"
+                }, 
+                {
+                    "code": "CBIS 22C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/22C", 
+                    "name": "Windows Server"
+                }, 
+                {
+                    "code": "CBIS 29A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/29A", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CBIS 29B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/29B", 
+                    "name": "Advanced Web Development"
+                }, 
+                {
+                    "code": "CBIS 29C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/29C", 
+                    "name": "Multimedia for the Web"
+                }, 
+                {
+                    "code": "CBIS 30A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/30A", 
+                    "name": "Network Tech-Cisco Emphasis"
+                }, 
+                {
+                    "code": "CBIS 30B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/30B", 
+                    "name": "Networking Tech:Cisco Emph II"
+                }, 
+                {
+                    "code": "CBIS 30C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/30C", 
+                    "name": "Networking Tech Cisco Emph III"
+                }, 
+                {
+                    "code": "CBIS 30D", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/30D", 
+                    "name": "Networking Tech Cisco Emph IV"
+                }, 
+                {
+                    "code": "CBIS 33", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/33", 
+                    "name": "Computer Science I with C++"
+                }, 
+                {
+                    "code": "CBIS 33B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/33B", 
+                    "name": "Object Oriented Prog. with C++"
+                }, 
+                {
+                    "code": "CBIS 40", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/40", 
+                    "name": "Spreadsheet Applications"
+                }, 
+                {
+                    "code": "CBIS 41", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/41", 
+                    "name": "Beginning Word Processing"
+                }, 
+                {
+                    "code": "CBIS 42", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/42", 
+                    "name": "Advanced Word Processing"
+                }, 
+                {
+                    "code": "CBIS 43", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/43", 
+                    "name": "Presentation Applctns & Media"
+                }, 
+                {
+                    "code": "CBIS 51", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/51", 
+                    "name": "A+ Certification Preparation"
+                }, 
+                {
+                    "code": "CBIS 60", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/60", 
+                    "name": "Beginning Keyboarding"
+                }, 
+                {
+                    "code": "CBIS 61", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/61", 
+                    "name": "Data Entry II & Doc Processing"
+                }, 
+                {
+                    "code": "CBIS 62", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/62", 
+                    "name": "Med Office Proc-Front Office"
+                }, 
+                {
+                    "code": "CBIS 64", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/64", 
+                    "name": "Business & Legal Transcription"
+                }, 
+                {
+                    "code": "CBIS 65", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/65", 
+                    "name": "Electronic Calculations"
+                }, 
+                {
+                    "code": "CBIS 66", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/66", 
+                    "name": "Office Procedures"
+                }, 
+                {
+                    "code": "CBIS 67", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/67", 
+                    "name": "Records Management"
+                }, 
+                {
+                    "code": "CBIS 74", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/74", 
+                    "name": "Info Management Applications"
+                }, 
+                {
+                    "code": "CBIS 77", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/77", 
+                    "name": "Medical Transcription"
+                }, 
+                {
+                    "code": "CBIS 79", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/79", 
+                    "name": "Microsoft Office Integration"
+                }, 
+                {
+                    "code": "CBIS 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/82", 
+                    "name": "Cooperative W/E in CBIS"
+                }, 
+                {
+                    "code": "CBIS 84", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/84", 
+                    "name": "Introduction to Online Courses"
+                }, 
+                {
+                    "code": "CBIS 103", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/103", 
+                    "name": "Retail Sales Clerk"
+                }, 
+                {
+                    "code": "CBIS 104", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CBIS/104", 
+                    "name": "Receptionist/Information Clerk"
+                }
+            ], 
+            "name": "Comp & Business Info Systems", 
+            "url": "http://www.chegg.com/courses/barstow/CBIS"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHEM/1", 
+                    "name": "Introductory Chemistry"
+                }, 
+                {
+                    "code": "CHEM 2A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHEM/2A", 
+                    "name": "General College Chemistry"
+                }, 
+                {
+                    "code": "CHEM 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHEM/82", 
+                    "name": "Cooperative W/E in Chemistry"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/barstow/CHEM"
+        }, 
+        {
+            "abbr": "CHLD", 
+            "courses": [
+                {
+                    "code": "CHLD 4", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/4", 
+                    "name": "Child Growth and Development"
+                }, 
+                {
+                    "code": "CHLD 6", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/6", 
+                    "name": "Child, Family, Community"
+                }, 
+                {
+                    "code": "CHLD 9", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/9", 
+                    "name": "Intro Early Chld Curriculum"
+                }, 
+                {
+                    "code": "CHLD 10", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/10", 
+                    "name": "Intro to Early Childhood Progr"
+                }, 
+                {
+                    "code": "CHLD 11A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/11A", 
+                    "name": "Principles & Practices in ECE"
+                }, 
+                {
+                    "code": "CHLD 11B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/11B", 
+                    "name": "Principles & Practices in ECE"
+                }, 
+                {
+                    "code": "CHLD 12A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/12A", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHLD 12B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/12B", 
+                    "name": "Creative Activities for ECE"
+                }, 
+                {
+                    "code": "CHLD 14", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/14", 
+                    "name": "Child, Health, Safety & Nutrit"
+                }, 
+                {
+                    "code": "CHLD 15", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/15", 
+                    "name": "Infants/Todlers: Curric/Teach"
+                }, 
+                {
+                    "code": "CHLD 15A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/15A", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHLD 16", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/16", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHLD 17", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/17", 
+                    "name": "Prog School-Age Child:Curr&Tch"
+                }, 
+                {
+                    "code": "CHLD 17A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/17A", 
+                    "name": "Activities for Schl Age Childr"
+                }, 
+                {
+                    "code": "CHLD 19A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/19A", 
+                    "name": "Admin of Early Childhood Ed I"
+                }, 
+                {
+                    "code": "CHLD 19B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/19B", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHLD 19C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/19C", 
+                    "name": "Mod & Meth in Mentor/Adlt Sprv"
+                }, 
+                {
+                    "code": "CHLD 20", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/20", 
+                    "name": "Observation & Assessment"
+                }, 
+                {
+                    "code": "CHLD 53", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/53", 
+                    "name": "Audio-Visual For ECE"
+                }, 
+                {
+                    "code": "CHLD 54", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/54", 
+                    "name": "Child Language Development"
+                }, 
+                {
+                    "code": "CHLD 60", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/60", 
+                    "name": "The Child with Special Needs"
+                }, 
+                {
+                    "code": "CHLD 60A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/60A", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHLD 61", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/61", 
+                    "name": "Family Day Care Provider"
+                }, 
+                {
+                    "code": "CHLD 80", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/80", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHLD 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CHLD/82", 
+                    "name": "Cooperative W/E in Education"
+                }
+            ], 
+            "name": "Child Development", 
+            "url": "http://www.chegg.com/courses/barstow/CHLD"
+        }, 
+        {
+            "abbr": "COMM", 
+            "courses": [
+                {
+                    "code": "COMM 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COMM/50", 
+                    "name": "Fingerspelling/Basic Signs I"
+                }, 
+                {
+                    "code": "COMM 51", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COMM/51", 
+                    "name": "Fingerspelling/Basic Signs II"
+                }, 
+                {
+                    "code": "COMM 52", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COMM/52", 
+                    "name": "Fingerspelling/Basic Signs III"
+                }, 
+                {
+                    "code": "COMM 60", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COMM/60", 
+                    "name": "College Level Reading"
+                }, 
+                {
+                    "code": "COMM 61", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COMM/61", 
+                    "name": "Vocabulary for College"
+                }, 
+                {
+                    "code": "COMM 100", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COMM/100", 
+                    "name": "Reading and Basic Skills"
+                }, 
+                {
+                    "code": "COMM 101", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COMM/101", 
+                    "name": "Reading and Basic Skills"
+                }, 
+                {
+                    "code": "COMM 102", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COMM/102", 
+                    "name": "Reading and Basic Skills"
+                }, 
+                {
+                    "code": "COMM 152", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COMM/152", 
+                    "name": "ESL Literacy"
+                }, 
+                {
+                    "code": "COMM 153", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COMM/153", 
+                    "name": "Beg Grammar & Spoken Eng"
+                }, 
+                {
+                    "code": "COMM 154", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COMM/154", 
+                    "name": "Int Grammar & Spoken Eng"
+                }, 
+                {
+                    "code": "COMM 155", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COMM/155", 
+                    "name": "Adv Grammar & Spoken Eng"
+                }, 
+                {
+                    "code": "COMM 156", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COMM/156", 
+                    "name": "Write/Read Prblms ESL Students"
+                }, 
+                {
+                    "code": "COMM 160", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COMM/160", 
+                    "name": "Basic Skills Educ Program"
+                }
+            ], 
+            "name": "Communications", 
+            "url": "http://www.chegg.com/courses/barstow/COMM"
+        }, 
+        {
+            "abbr": "COOP", 
+            "courses": [
+                {
+                    "code": "COOP 80", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COOP/80", 
+                    "name": "Intro to Employment"
+                }, 
+                {
+                    "code": "COOP 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COOP/82", 
+                    "name": "Occupational Work Experience"
+                }, 
+                {
+                    "code": "COOP 83", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COOP/83", 
+                    "name": "General Work Experience"
+                }, 
+                {
+                    "code": "COOP 100", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COOP/100", 
+                    "name": "Job Preparation Workshop"
+                }
+            ], 
+            "name": "Cooperative Work Exp Educ", 
+            "url": "http://www.chegg.com/courses/barstow/COOP"
+        }, 
+        {
+            "abbr": "COSM", 
+            "courses": [
+                {
+                    "code": "COSM 50A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COSM/50A", 
+                    "name": "Beginning Cosmetology"
+                }, 
+                {
+                    "code": "COSM 50B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COSM/50B", 
+                    "name": "Beginning Cosmetology"
+                }, 
+                {
+                    "code": "COSM 50C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COSM/50C", 
+                    "name": "Beginning Cosmetology"
+                }, 
+                {
+                    "code": "COSM 51A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COSM/51A", 
+                    "name": "Intermediate Cosmetology"
+                }, 
+                {
+                    "code": "COSM 51B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COSM/51B", 
+                    "name": "Intermediate Cosmetology"
+                }, 
+                {
+                    "code": "COSM 51C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COSM/51C", 
+                    "name": "Intermediate Cosmetology"
+                }, 
+                {
+                    "code": "COSM 52", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COSM/52", 
+                    "name": "Advanced Cosmetology"
+                }, 
+                {
+                    "code": "COSM 53A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COSM/53A", 
+                    "name": "Beginning Manicuring"
+                }, 
+                {
+                    "code": "COSM 53B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COSM/53B", 
+                    "name": "Advanced Manicuring"
+                }, 
+                {
+                    "code": "COSM 55", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COSM/55", 
+                    "name": "Cosmetology State Board Refres"
+                }, 
+                {
+                    "code": "COSM 58A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COSM/58A", 
+                    "name": "Beginning Esthetician"
+                }, 
+                {
+                    "code": "COSM 58B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COSM/58B", 
+                    "name": "Intermediate Esthetician"
+                }, 
+                {
+                    "code": "COSM 58C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COSM/58C", 
+                    "name": "Advanced Esthetician"
+                }, 
+                {
+                    "code": "COSM 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/COSM/82", 
+                    "name": "Cooperative W/E in Cosmetology"
+                }
+            ], 
+            "name": "Cosmetology", 
+            "url": "http://www.chegg.com/courses/barstow/COSM"
+        }, 
+        {
+            "abbr": "CULN", 
+            "courses": [
+                {
+                    "code": "CULN 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CULN/50", 
+                    "name": "Servsafe Sanitn & Food Sfty"
+                }, 
+                {
+                    "code": "CULN 54", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CULN/54", 
+                    "name": "Intro to Culinary Arts I"
+                }, 
+                {
+                    "code": "CULN 58", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CULN/58", 
+                    "name": "Intro to Culinary Arts II"
+                }, 
+                {
+                    "code": "CULN 62", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CULN/62", 
+                    "name": "Culinary Arts III"
+                }, 
+                {
+                    "code": "CULN 66", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CULN/66", 
+                    "name": "Intro to Baking & Pastries"
+                }, 
+                {
+                    "code": "CULN 70", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CULN/70", 
+                    "name": "Baking and Pastries II"
+                }, 
+                {
+                    "code": "CULN 71", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CULN/71", 
+                    "name": "Culinary Arts Practicum"
+                }, 
+                {
+                    "code": "CULN 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/CULN/82", 
+                    "name": "Coop W/E in Culinary Arts"
+                }
+            ], 
+            "name": "Culinary Arts", 
+            "url": "http://www.chegg.com/courses/barstow/CULN"
+        }, 
+        {
+            "abbr": "DRAF", 
+            "courses": [
+                {
+                    "code": "DRAF 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/DRAF/50", 
+                    "name": "Intro-Computer Aided Drafting"
+                }, 
+                {
+                    "code": "DRAF 51", 
+                    "course_url": "http://www.chegg.com/courses/barstow/DRAF/51", 
+                    "name": "Int-Computer Aided Drafting"
+                }, 
+                {
+                    "code": "DRAF 52", 
+                    "course_url": "http://www.chegg.com/courses/barstow/DRAF/52", 
+                    "name": "Architectural Drafting"
+                }, 
+                {
+                    "code": "DRAF 53", 
+                    "course_url": "http://www.chegg.com/courses/barstow/DRAF/53", 
+                    "name": "Technical Illustration"
+                }, 
+                {
+                    "code": "DRAF 54", 
+                    "course_url": "http://www.chegg.com/courses/barstow/DRAF/54", 
+                    "name": "Electrical-Electronic Drafting"
+                }, 
+                {
+                    "code": "DRAF 55", 
+                    "course_url": "http://www.chegg.com/courses/barstow/DRAF/55", 
+                    "name": "Sheetmetal Drafting"
+                }, 
+                {
+                    "code": "DRAF 56", 
+                    "course_url": "http://www.chegg.com/courses/barstow/DRAF/56", 
+                    "name": "Blueprint Reading-Metal Trade"
+                }, 
+                {
+                    "code": "DRAF 60", 
+                    "course_url": "http://www.chegg.com/courses/barstow/DRAF/60", 
+                    "name": "Technical Mathematics"
+                }, 
+                {
+                    "code": "DRAF 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/DRAF/82", 
+                    "name": "Cooperative W/E in Drafting"
+                }
+            ], 
+            "name": "Drafting", 
+            "url": "http://www.chegg.com/courses/barstow/DRAF"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ECON/1", 
+                    "name": "Principles of Economics-Macro"
+                }, 
+                {
+                    "code": "ECON 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ECON/2", 
+                    "name": "Principles of Economics Micro"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/barstow/ECON"
+        }, 
+        {
+            "abbr": "EDUC", 
+            "courses": [
+                {
+                    "code": "EDUC 30", 
+                    "course_url": "http://www.chegg.com/courses/barstow/EDUC/30", 
+                    "name": "Community Service Project"
+                }, 
+                {
+                    "code": "EDUC 64", 
+                    "course_url": "http://www.chegg.com/courses/barstow/EDUC/64", 
+                    "name": "The Parent Project"
+                }, 
+                {
+                    "code": "EDUC 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/EDUC/82", 
+                    "name": "Cooperative W/E in Education"
+                }, 
+                {
+                    "code": "EDUC 98A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/EDUC/98A", 
+                    "name": "Parenting Skills:Infant/Toddlr"
+                }, 
+                {
+                    "code": "EDUC 150", 
+                    "course_url": "http://www.chegg.com/courses/barstow/EDUC/150", 
+                    "name": "Tutorial Support"
+                }, 
+                {
+                    "code": "EDUC 151", 
+                    "course_url": "http://www.chegg.com/courses/barstow/EDUC/151", 
+                    "name": "Introduction to Tutoring"
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/barstow/EDUC"
+        }, 
+        {
+            "abbr": "ELCT", 
+            "courses": [
+                {
+                    "code": "ELCT 70A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELCT/70A", 
+                    "name": "Electrical Sfty & Hand Bending"
+                }, 
+                {
+                    "code": "ELCT 70B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELCT/70B", 
+                    "name": "Fasteners & Electrical Theory"
+                }, 
+                {
+                    "code": "ELCT 70C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELCT/70C", 
+                    "name": "Electrical Test Equipment, NEC"
+                }, 
+                {
+                    "code": "ELCT 70D", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELCT/70D", 
+                    "name": "Intro to Electrical Blueprints"
+                }
+            ], 
+            "name": "Electrical Technology", 
+            "url": "http://www.chegg.com/courses/barstow/ELCT"
+        }, 
+        {
+            "abbr": "ELEC", 
+            "courses": [
+                {
+                    "code": "ELEC 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELEC/50", 
+                    "name": "Survey of Electronics"
+                }, 
+                {
+                    "code": "ELEC 51", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELEC/51", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ELEC 52", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELEC/52", 
+                    "name": "Alternating Current Circuits"
+                }, 
+                {
+                    "code": "ELEC 53", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELEC/53", 
+                    "name": "Solid State Devices"
+                }, 
+                {
+                    "code": "ELEC 54", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELEC/54", 
+                    "name": "Communication Systems"
+                }, 
+                {
+                    "code": "ELEC 55", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELEC/55", 
+                    "name": "Soldering"
+                }, 
+                {
+                    "code": "ELEC 56", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELEC/56", 
+                    "name": "Digital Electronics"
+                }, 
+                {
+                    "code": "ELEC 57", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELEC/57", 
+                    "name": "Industrial Electronics"
+                }, 
+                {
+                    "code": "ELEC 58", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELEC/58", 
+                    "name": "Electronic Tests & Measurement"
+                }, 
+                {
+                    "code": "ELEC 59", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELEC/59", 
+                    "name": "Electronic Mathematics"
+                }, 
+                {
+                    "code": "ELEC 60", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELEC/60", 
+                    "name": "Technical Mathematics"
+                }, 
+                {
+                    "code": "ELEC 70", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELEC/70", 
+                    "name": "Short Course in Electronics"
+                }, 
+                {
+                    "code": "ELEC 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ELEC/82", 
+                    "name": "Cooperative W/E in Electronics"
+                }
+            ], 
+            "name": "Electronics", 
+            "url": "http://www.chegg.com/courses/barstow/ELEC"
+        }, 
+        {
+            "abbr": "ENGL", 
+            "courses": [
+                {
+                    "code": "ENGL 1A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ENGL/1A", 
+                    "name": "English Composition & Reading"
+                }, 
+                {
+                    "code": "ENGL 1B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ENGL/1B", 
+                    "name": "Introduction to Literature"
+                }, 
+                {
+                    "code": "ENGL 1C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ENGL/1C", 
+                    "name": "Critical Thinking & Comp"
+                }, 
+                {
+                    "code": "ENGL 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ENGL/2", 
+                    "name": "Survey of English Literature"
+                }, 
+                {
+                    "code": "ENGL 6", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ENGL/6", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 7", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ENGL/7", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 10", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ENGL/10", 
+                    "name": "Introduction to Linguistics"
+                }, 
+                {
+                    "code": "ENGL 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ENGL/50", 
+                    "name": "Basic English"
+                }, 
+                {
+                    "code": "ENGL 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ENGL/82", 
+                    "name": "Cooperative W/E in English"
+                }, 
+                {
+                    "code": "ENGL 101", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ENGL/101", 
+                    "name": "English Skills"
+                }, 
+                {
+                    "code": "ENGL 102", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ENGL/102", 
+                    "name": "English Skills"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/barstow/ENGL"
+        }, 
+        {
+            "abbr": "ENVT", 
+            "courses": [
+                {
+                    "code": "ENVT 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ENVT/50", 
+                    "name": "Hazardous Material/Waste Handl"
+                }, 
+                {
+                    "code": "ENVT 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ENVT/82", 
+                    "name": "Cooperative W/E in Environment"
+                }
+            ], 
+            "name": "Environmental Technology", 
+            "url": "http://www.chegg.com/courses/barstow/ENVT"
+        }, 
+        {
+            "abbr": "ESL", 
+            "courses": [
+                {
+                    "code": "ESL 102", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ESL/102", 
+                    "name": "Fndmtls of ESL Reading"
+                }, 
+                {
+                    "code": "ESL 104", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ESL/104", 
+                    "name": "Fundamentals of ESL Writing"
+                }, 
+                {
+                    "code": "ESL 106", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ESL/106", 
+                    "name": "Fndmtls of ESL Oral Comm"
+                }, 
+                {
+                    "code": "ESL 112", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ESL/112", 
+                    "name": "Intermediate ESL Reading"
+                }, 
+                {
+                    "code": "ESL 114", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ESL/114", 
+                    "name": "Intermediate ESL Writing"
+                }, 
+                {
+                    "code": "ESL 116", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ESL/116", 
+                    "name": "Intermediate ESL Oral Comm"
+                }, 
+                {
+                    "code": "ESL 122", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ESL/122", 
+                    "name": "Advanced ESL Reading"
+                }, 
+                {
+                    "code": "ESL 124", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ESL/124", 
+                    "name": "ESL Writing"
+                }, 
+                {
+                    "code": "ESL 126", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ESL/126", 
+                    "name": "Adv. Oral Communication"
+                }, 
+                {
+                    "code": "ESL 132", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ESL/132", 
+                    "name": "Bridge to Academic Reading"
+                }, 
+                {
+                    "code": "ESL 134", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ESL/134", 
+                    "name": "Bridge to Academic Writing"
+                }, 
+                {
+                    "code": "ESL 136", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ESL/136", 
+                    "name": "Bridge to Academic Oral Comm"
+                }, 
+                {
+                    "code": "ESL 190", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ESL/190", 
+                    "name": "Developing Literacy"
+                }, 
+                {
+                    "code": "ESL 192", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ESL/192", 
+                    "name": "Expanding Foundations in ESL"
+                }
+            ], 
+            "name": "English as a Second Language", 
+            "url": "http://www.chegg.com/courses/barstow/ESL"
+        }, 
+        {
+            "abbr": "FIRE", 
+            "courses": [
+                {
+                    "code": "FIRE 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/1", 
+                    "name": "Fire Protection Organization"
+                }, 
+                {
+                    "code": "FIRE 3", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/3", 
+                    "name": "Fire Behavior&Combustion"
+                }, 
+                {
+                    "code": "FIRE 4", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/4", 
+                    "name": "Bldg Cnstrctn for Fire Prtn"
+                }, 
+                {
+                    "code": "FIRE 5", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/5", 
+                    "name": "Fire Prtctn Equip and Systems"
+                }, 
+                {
+                    "code": "FIRE 6", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/6", 
+                    "name": "Fire Hydraulics"
+                }, 
+                {
+                    "code": "FIRE 16", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/16", 
+                    "name": "Fire Investigation I"
+                }, 
+                {
+                    "code": "FIRE 17", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/17", 
+                    "name": "Fire Investigation II"
+                }, 
+                {
+                    "code": "FIRE 19", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/19", 
+                    "name": "Hazardous Materials Chem I"
+                }, 
+                {
+                    "code": "FIRE 56A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/56A", 
+                    "name": "Safety and Health for Fire Srv"
+                }, 
+                {
+                    "code": "FIRE 56B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/56B", 
+                    "name": "Legal Aspects Fire Service"
+                }, 
+                {
+                    "code": "FIRE 57A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/57A", 
+                    "name": "Strategy and Tactics"
+                }, 
+                {
+                    "code": "FIRE 58A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/58A", 
+                    "name": "Intro to Emergency Mgmt"
+                }, 
+                {
+                    "code": "FIRE 58B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/58B", 
+                    "name": "Emergency Mgmt Response"
+                }, 
+                {
+                    "code": "FIRE 58C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/58C", 
+                    "name": "Emergency Management Recovery"
+                }, 
+                {
+                    "code": "FIRE 58D", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/58D", 
+                    "name": "Intro Mitigation for Disaster"
+                }, 
+                {
+                    "code": "FIRE 58E", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/58E", 
+                    "name": "Community Disaster Planning"
+                }, 
+                {
+                    "code": "FIRE 62", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/62", 
+                    "name": "Low Angle Rope Rescue Op"
+                }, 
+                {
+                    "code": "FIRE 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/FIRE/82", 
+                    "name": "Cooperative W/E in Fire Tech"
+                }
+            ], 
+            "name": "Fire Technology", 
+            "url": "http://www.chegg.com/courses/barstow/FIRE"
+        }, 
+        {
+            "abbr": "GEOG", 
+            "courses": [
+                {
+                    "code": "GEOG 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/GEOG/50", 
+                    "name": "Nat Hist Yosemite"
+                }, 
+                {
+                    "code": "GEOG 51", 
+                    "course_url": "http://www.chegg.com/courses/barstow/GEOG/51", 
+                    "name": "Nat History Death Valley"
+                }, 
+                {
+                    "code": "GEOG 52", 
+                    "course_url": "http://www.chegg.com/courses/barstow/GEOG/52", 
+                    "name": "Natural History-East Sierra NV"
+                }, 
+                {
+                    "code": "GEOG 53", 
+                    "course_url": "http://www.chegg.com/courses/barstow/GEOG/53", 
+                    "name": "Natural History-West Sierra NV"
+                }
+            ], 
+            "name": "Geography", 
+            "url": "http://www.chegg.com/courses/barstow/GEOG"
+        }, 
+        {
+            "abbr": "GEOL", 
+            "courses": [
+                {
+                    "code": "GEOL 1L", 
+                    "course_url": "http://www.chegg.com/courses/barstow/GEOL/1L", 
+                    "name": "Physical Geology"
+                }, 
+                {
+                    "code": "GEOL 3", 
+                    "course_url": "http://www.chegg.com/courses/barstow/GEOL/3", 
+                    "name": "Natural Disasters"
+                }, 
+                {
+                    "code": "GEOL 4", 
+                    "course_url": "http://www.chegg.com/courses/barstow/GEOL/4", 
+                    "name": "The Age of Dinosaurs"
+                }, 
+                {
+                    "code": "GEOL 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/GEOL/50", 
+                    "name": "Rocks & Minerals of CA Desert"
+                }
+            ], 
+            "name": "Geology", 
+            "url": "http://www.chegg.com/courses/barstow/GEOL"
+        }, 
+        {
+            "abbr": "HEAL", 
+            "courses": [
+                {
+                    "code": "HEAL 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HEAL/1", 
+                    "name": "Health Education"
+                }, 
+                {
+                    "code": "HEAL 1L", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HEAL/1L", 
+                    "name": "Health Education"
+                }, 
+                {
+                    "code": "HEAL 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HEAL/2", 
+                    "name": "Nutrition"
+                }
+            ], 
+            "name": "Health and Safety", 
+            "url": "http://www.chegg.com/courses/barstow/HEAL"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 1A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HIST/1A", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIST 1B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HIST/1B", 
+                    "name": "Survey Of Western Civilization"
+                }, 
+                {
+                    "code": "HIST 2A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HIST/2A", 
+                    "name": "Survey Of US History"
+                }, 
+                {
+                    "code": "HIST 2B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HIST/2B", 
+                    "name": "Survey Of US History"
+                }, 
+                {
+                    "code": "HIST 4", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HIST/4", 
+                    "name": "The US in the 20th Century"
+                }, 
+                {
+                    "code": "HIST 5", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HIST/5", 
+                    "name": "History of California"
+                }, 
+                {
+                    "code": "HIST 7", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HIST/7", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIST 8A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HIST/8A", 
+                    "name": "World Civilizations"
+                }, 
+                {
+                    "code": "HIST 8B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HIST/8B", 
+                    "name": "World Civilizations."
+                }, 
+                {
+                    "code": "HIST 12", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HIST/12", 
+                    "name": "The Vietnam War"
+                }, 
+                {
+                    "code": "HIST 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HIST/50", 
+                    "name": "History of the Mojave Desert"
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/barstow/HIST"
+        }, 
+        {
+            "abbr": "HOME", 
+            "courses": [
+                {
+                    "code": "HOME 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HOME/2", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HOME 10", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HOME/10", 
+                    "name": "Princ Of Clothing Construction"
+                }, 
+                {
+                    "code": "HOME 16", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HOME/16", 
+                    "name": "Life Management"
+                }, 
+                {
+                    "code": "HOME 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HOME/50", 
+                    "name": "Advanced Sewing"
+                }, 
+                {
+                    "code": "HOME 51", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HOME/51", 
+                    "name": "Tailoring"
+                }, 
+                {
+                    "code": "HOME 52", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HOME/52", 
+                    "name": "Contemporary Sewing"
+                }, 
+                {
+                    "code": "HOME 53", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HOME/53", 
+                    "name": "Art in Clothing"
+                }, 
+                {
+                    "code": "HOME 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HOME/82", 
+                    "name": "Coop W/E in Home Economics"
+                }
+            ], 
+            "name": "Home Economics", 
+            "url": "http://www.chegg.com/courses/barstow/HOME"
+        }, 
+        {
+            "abbr": "HUMA", 
+            "courses": [
+                {
+                    "code": "HUMA 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HUMA/1", 
+                    "name": "Humanities Through The Arts"
+                }, 
+                {
+                    "code": "HUMA 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HUMA/2", 
+                    "name": "Survey Of Humanities"
+                }, 
+                {
+                    "code": "HUMA 3", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HUMA/3", 
+                    "name": "Survey Of Humanities"
+                }, 
+                {
+                    "code": "HUMA 4", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HUMA/4", 
+                    "name": "Survey Of Film"
+                }, 
+                {
+                    "code": "HUMA 5", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HUMA/5", 
+                    "name": "Multi-Cultural Mythology"
+                }, 
+                {
+                    "code": "HUMA 6", 
+                    "course_url": "http://www.chegg.com/courses/barstow/HUMA/6", 
+                    "name": "History in Film"
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/barstow/HUMA"
+        }, 
+        {
+            "abbr": "LIBR", 
+            "courses": [
+                {
+                    "code": "LIBR 60", 
+                    "course_url": "http://www.chegg.com/courses/barstow/LIBR/60", 
+                    "name": "Library Research Skills"
+                }, 
+                {
+                    "code": "LIBR 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/LIBR/82", 
+                    "name": "Cooperative W/E in Library Sci"
+                }
+            ], 
+            "name": "Library Science", 
+            "url": "http://www.chegg.com/courses/barstow/LIBR"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MATH/1", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MATH/2", 
+                    "name": "Intro to Statistics"
+                }, 
+                {
+                    "code": "MATH 3", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MATH/3", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MATH 4A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MATH/4A", 
+                    "name": "Analytc Geometry & Calculus I"
+                }, 
+                {
+                    "code": "MATH 4B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MATH/4B", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 4C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MATH/4C", 
+                    "name": "Analytical Geometry & Calc III"
+                }, 
+                {
+                    "code": "MATH 5", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MATH/5", 
+                    "name": "Ideas of Math"
+                }, 
+                {
+                    "code": "MATH 48", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MATH/48", 
+                    "name": "Intro to spherical trig & vect"
+                }, 
+                {
+                    "code": "MATH 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MATH/50", 
+                    "name": "Elementary Algebra"
+                }, 
+                {
+                    "code": "MATH 52", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MATH/52", 
+                    "name": "Plane/Solid Geometry"
+                }, 
+                {
+                    "code": "MATH 55", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MATH/55", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MATH 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MATH/82", 
+                    "name": "Cooperative W/E in Mathematics"
+                }, 
+                {
+                    "code": "MATH 101", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MATH/101", 
+                    "name": "Arithmetic"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/barstow/MATH"
+        }, 
+        {
+            "abbr": "MGMT", 
+            "courses": [
+                {
+                    "code": "MGMT 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MGMT/1", 
+                    "name": "Introduction To Management"
+                }, 
+                {
+                    "code": "MGMT 3", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MGMT/3", 
+                    "name": "Human Resource Management"
+                }, 
+                {
+                    "code": "MGMT 5", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MGMT/5", 
+                    "name": "Organization and Management"
+                }, 
+                {
+                    "code": "MGMT 6", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MGMT/6", 
+                    "name": "Psychology of Management"
+                }, 
+                {
+                    "code": "MGMT 7", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MGMT/7", 
+                    "name": "Small Business Management"
+                }, 
+                {
+                    "code": "MGMT 60", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MGMT/60", 
+                    "name": "Effective Military Comm"
+                }, 
+                {
+                    "code": "MGMT 70", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MGMT/70", 
+                    "name": "OC Ldrship Devel Cert Program"
+                }, 
+                {
+                    "code": "MGMT 75", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MGMT/75", 
+                    "name": "Managing Unit Arms Function"
+                }, 
+                {
+                    "code": "MGMT 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MGMT/82", 
+                    "name": "Cooperative W/E in Mgt/Sprvsn"
+                }, 
+                {
+                    "code": "MGMT 98", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MGMT/98", 
+                    "name": "Int.Ldrshp & Mil Sci Sp Topic"
+                }
+            ], 
+            "name": "Management", 
+            "url": "http://www.chegg.com/courses/barstow/MGMT"
+        }, 
+        {
+            "abbr": "MILS", 
+            "courses": [
+                {
+                    "code": "MILS 70", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MILS/70", 
+                    "name": "OC Ldrship Devl Cert Program"
+                }, 
+                {
+                    "code": "MILS 71", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MILS/71", 
+                    "name": "OPFOR Tactics and Operations"
+                }
+            ], 
+            "name": "Military Science", 
+            "url": "http://www.chegg.com/courses/barstow/MILS"
+        }, 
+        {
+            "abbr": "MUSI", 
+            "courses": [
+                {
+                    "code": "MUSI 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MUSI/2", 
+                    "name": "Music Apprec (Classical)"
+                }, 
+                {
+                    "code": "MUSI 3", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MUSI/3", 
+                    "name": "Music Apprec (American Music)"
+                }, 
+                {
+                    "code": "MUSI 4", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MUSI/4", 
+                    "name": "College Choir"
+                }, 
+                {
+                    "code": "MUSI 6A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MUSI/6A", 
+                    "name": "Beginning Symphonic Band"
+                }, 
+                {
+                    "code": "MUSI 6B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MUSI/6B", 
+                    "name": "Intermediate Symphonic Band"
+                }, 
+                {
+                    "code": "MUSI 6C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MUSI/6C", 
+                    "name": "Advanced Symphonic Band"
+                }, 
+                {
+                    "code": "MUSI 7", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MUSI/7", 
+                    "name": "Jazz Ensemble"
+                }, 
+                {
+                    "code": "MUSI 12A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MUSI/12A", 
+                    "name": "Beginning Piano"
+                }, 
+                {
+                    "code": "MUSI 12B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MUSI/12B", 
+                    "name": "Beginning Piano (Continued)"
+                }, 
+                {
+                    "code": "MUSI 12C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MUSI/12C", 
+                    "name": "Intermediate Piano"
+                }, 
+                {
+                    "code": "MUSI 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/MUSI/82", 
+                    "name": "Cooperative W/E in Music"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/barstow/MUSI"
+        }, 
+        {
+            "abbr": "OCEA", 
+            "courses": [
+                {
+                    "code": "OCEA 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/OCEA/1", 
+                    "name": "Intro to Marine Environment"
+                }
+            ], 
+            "name": "Oceanography", 
+            "url": "http://www.chegg.com/courses/barstow/OCEA"
+        }, 
+        {
+            "abbr": "ORIE", 
+            "courses": [
+                {
+                    "code": "ORIE 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ORIE/1", 
+                    "name": "College Success"
+                }, 
+                {
+                    "code": "ORIE 49", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ORIE/49", 
+                    "name": "Student Leadership"
+                }, 
+                {
+                    "code": "ORIE 51", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ORIE/51", 
+                    "name": "College Survival Skills"
+                }, 
+                {
+                    "code": "ORIE 100", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ORIE/100", 
+                    "name": "Preparing for the SAT"
+                }, 
+                {
+                    "code": "ORIE 101", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ORIE/101", 
+                    "name": "Preparing for the ACT"
+                }, 
+                {
+                    "code": "ORIE 102", 
+                    "course_url": "http://www.chegg.com/courses/barstow/ORIE/102", 
+                    "name": "Preparing for the GED"
+                }
+            ], 
+            "name": "Orientation", 
+            "url": "http://www.chegg.com/courses/barstow/ORIE"
+        }, 
+        {
+            "abbr": "PEAC", 
+            "courses": [
+                {
+                    "code": "PEAC 3", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/3", 
+                    "name": "Circuit Wt. Trng-Machines Only"
+                }, 
+                {
+                    "code": "PEAC 4", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/4", 
+                    "name": "Basic Weight Trng & Cond."
+                }, 
+                {
+                    "code": "PEAC 10", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/10", 
+                    "name": "Intermediate Tennis"
+                }, 
+                {
+                    "code": "PEAC 11", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/11", 
+                    "name": "Beginning Volleyball"
+                }, 
+                {
+                    "code": "PEAC 12", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/12", 
+                    "name": "Intermediate Volleyball"
+                }, 
+                {
+                    "code": "PEAC 13", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/13", 
+                    "name": "Fitness Walking"
+                }, 
+                {
+                    "code": "PEAC 14", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/14", 
+                    "name": "Jogging"
+                }, 
+                {
+                    "code": "PEAC 15", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/15", 
+                    "name": "Lftime Fitn & Dietary Analysis"
+                }, 
+                {
+                    "code": "PEAC 16", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/16", 
+                    "name": "Lifetime Fitness"
+                }, 
+                {
+                    "code": "PEAC 17", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/17", 
+                    "name": "Beg Adaptive Physical Fitness"
+                }, 
+                {
+                    "code": "PEAC 18", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/18", 
+                    "name": "Bowling"
+                }, 
+                {
+                    "code": "PEAC 19", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/19", 
+                    "name": "Beginning Karate"
+                }, 
+                {
+                    "code": "PEAC 20", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/20", 
+                    "name": "Tai Ji Quan"
+                }, 
+                {
+                    "code": "PEAC 21", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/21", 
+                    "name": "Breathing,Meditation,Relaxatio"
+                }, 
+                {
+                    "code": "PEAC 22", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/22", 
+                    "name": "Cheerleading"
+                }, 
+                {
+                    "code": "PEAC 23", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/23", 
+                    "name": "Beginning Jazz Dance"
+                }, 
+                {
+                    "code": "PEAC 24", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/24", 
+                    "name": "Beginning Modern Dance"
+                }, 
+                {
+                    "code": "PEAC 27", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/27", 
+                    "name": "Golf"
+                }, 
+                {
+                    "code": "PEAC 28", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/28", 
+                    "name": "Cardio Kickboxing"
+                }, 
+                {
+                    "code": "PEAC 29", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/29", 
+                    "name": "Cardiovascular Lab"
+                }, 
+                {
+                    "code": "PEAC 30", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/30", 
+                    "name": "General Activity"
+                }, 
+                {
+                    "code": "PEAC 33", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEAC/33", 
+                    "name": "Badminton"
+                }
+            ], 
+            "name": "PE Activity", 
+            "url": "http://www.chegg.com/courses/barstow/PEAC"
+        }, 
+        {
+            "abbr": "PEIN", 
+            "courses": [
+                {
+                    "code": "PEIN 48", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PEIN/48", 
+                    "name": "Intercollegiate Soccer,Women"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/barstow/PEIN"
+        }, 
+        {
+            "abbr": "PELC", 
+            "courses": [
+                {
+                    "code": "PELC 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PELC/1", 
+                    "name": "Sport Psychology"
+                }
+            ], 
+            "name": "PE Lecture", 
+            "url": "http://www.chegg.com/courses/barstow/PELC"
+        }, 
+        {
+            "abbr": "PETH", 
+            "courses": [
+                {
+                    "code": "PETH 3", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PETH/3", 
+                    "name": "Theory of Baseball"
+                }
+            ], 
+            "name": "PE Theory", 
+            "url": "http://www.chegg.com/courses/barstow/PETH"
+        }, 
+        {
+            "abbr": "PHIL", 
+            "courses": [
+                {
+                    "code": "PHIL 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PHIL/2", 
+                    "name": "Survey Of Philosophy"
+                }, 
+                {
+                    "code": "PHIL 5", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PHIL/5", 
+                    "name": "Comparative Religion"
+                }, 
+                {
+                    "code": "PHIL 6", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PHIL/6", 
+                    "name": "Introduction To The Bible"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/barstow/PHIL"
+        }, 
+        {
+            "abbr": "PHOT", 
+            "courses": [
+                {
+                    "code": "PHOT 1C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PHOT/1C", 
+                    "name": "Intro to Digital Photography"
+                }, 
+                {
+                    "code": "PHOT 2A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PHOT/2A", 
+                    "name": "Advanced Photography"
+                }, 
+                {
+                    "code": "PHOT 2B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PHOT/2B", 
+                    "name": "Advanced Photography"
+                }, 
+                {
+                    "code": "PHOT 2C", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PHOT/2C", 
+                    "name": "Digital Photography"
+                }, 
+                {
+                    "code": "PHOT 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PHOT/50", 
+                    "name": "Intro. to the Digital Camera"
+                }
+            ], 
+            "name": "Photography", 
+            "url": "http://www.chegg.com/courses/barstow/PHOT"
+        }, 
+        {
+            "abbr": "PHSC", 
+            "courses": [
+                {
+                    "code": "PHSC 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PHSC/2", 
+                    "name": "Introduction To Earth Science"
+                }
+            ], 
+            "name": "Physical Science", 
+            "url": "http://www.chegg.com/courses/barstow/PHSC"
+        }, 
+        {
+            "abbr": "POLI", 
+            "courses": [
+                {
+                    "code": "POLI 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/POLI/1", 
+                    "name": "Am Political Instit"
+                }, 
+                {
+                    "code": "POLI 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/POLI/2", 
+                    "name": "Comparative Government"
+                }, 
+                {
+                    "code": "POLI 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/POLI/50", 
+                    "name": "Student Leadership"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/barstow/POLI"
+        }, 
+        {
+            "abbr": "PSYC", 
+            "courses": [
+                {
+                    "code": "PSYC 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PSYC/1", 
+                    "name": "Intro to Psychology"
+                }, 
+                {
+                    "code": "PSYC 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PSYC/2", 
+                    "name": "Develop Psychology"
+                }, 
+                {
+                    "code": "PSYC 4", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PSYC/4", 
+                    "name": "Child Growth and Development"
+                }, 
+                {
+                    "code": "PSYC 5", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PSYC/5", 
+                    "name": "Intro to Career/Life Planning"
+                }, 
+                {
+                    "code": "PSYC 6", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PSYC/6", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 11", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PSYC/11", 
+                    "name": "Human Sexuality"
+                }, 
+                {
+                    "code": "PSYC 13", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PSYC/13", 
+                    "name": "Sport Psychology"
+                }, 
+                {
+                    "code": "PSYC 14", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PSYC/14", 
+                    "name": "Intro to Drug/Alcohol Studies"
+                }, 
+                {
+                    "code": "PSYC 15", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PSYC/15", 
+                    "name": "Intro to Guidance & Counseling"
+                }, 
+                {
+                    "code": "PSYC 30", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PSYC/30", 
+                    "name": "Community Service Project"
+                }, 
+                {
+                    "code": "PSYC 33", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PSYC/33", 
+                    "name": "Marriage and Family"
+                }, 
+                {
+                    "code": "PSYC 51", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PSYC/51", 
+                    "name": "Issues in Psychology"
+                }, 
+                {
+                    "code": "PSYC 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PSYC/82", 
+                    "name": "Cooperative W/E in Psychology"
+                }, 
+                {
+                    "code": "PSYC 101", 
+                    "course_url": "http://www.chegg.com/courses/barstow/PSYC/101", 
+                    "name": "Personal Growth"
+                }
+            ], 
+            "name": "Psychology", 
+            "url": "http://www.chegg.com/courses/barstow/PSYC"
+        }, 
+        {
+            "abbr": "REAL", 
+            "courses": [
+                {
+                    "code": "REAL 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/REAL/50", 
+                    "name": "Real Estate License Course"
+                }, 
+                {
+                    "code": "REAL 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/REAL/82", 
+                    "name": "Cooperative W/E in Real Estate"
+                }
+            ], 
+            "name": "Real Estate/Business", 
+            "url": "http://www.chegg.com/courses/barstow/REAL"
+        }, 
+        {
+            "abbr": "RLGS", 
+            "courses": [
+                {
+                    "code": "RLGS 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/RLGS/1", 
+                    "name": "Introduction To The Bible"
+                }, 
+                {
+                    "code": "RLGS 5", 
+                    "course_url": "http://www.chegg.com/courses/barstow/RLGS/5", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RLGS 10", 
+                    "course_url": "http://www.chegg.com/courses/barstow/RLGS/10", 
+                    "name": "Comparative Religion"
+                }
+            ], 
+            "name": "Religious Studies", 
+            "url": "http://www.chegg.com/courses/barstow/RLGS"
+        }, 
+        {
+            "abbr": "SOCI", 
+            "courses": [
+                {
+                    "code": "SOCI 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/SOCI/1", 
+                    "name": "Introduction to Sociology"
+                }, 
+                {
+                    "code": "SOCI 2", 
+                    "course_url": "http://www.chegg.com/courses/barstow/SOCI/2", 
+                    "name": "American Social Problems"
+                }, 
+                {
+                    "code": "SOCI 3", 
+                    "course_url": "http://www.chegg.com/courses/barstow/SOCI/3", 
+                    "name": "Marriage and Family"
+                }, 
+                {
+                    "code": "SOCI 6", 
+                    "course_url": "http://www.chegg.com/courses/barstow/SOCI/6", 
+                    "name": "Child, Family, Community"
+                }, 
+                {
+                    "code": "SOCI 8", 
+                    "course_url": "http://www.chegg.com/courses/barstow/SOCI/8", 
+                    "name": "Juvenile Crime/Delinquency"
+                }, 
+                {
+                    "code": "SOCI 14", 
+                    "course_url": "http://www.chegg.com/courses/barstow/SOCI/14", 
+                    "name": "Intro to Drug/Alcohol Studies"
+                }, 
+                {
+                    "code": "SOCI 15", 
+                    "course_url": "http://www.chegg.com/courses/barstow/SOCI/15", 
+                    "name": "Intro to Guidance & Counseling"
+                }, 
+                {
+                    "code": "SOCI 18", 
+                    "course_url": "http://www.chegg.com/courses/barstow/SOCI/18", 
+                    "name": "Fund.of Probation and Parole"
+                }, 
+                {
+                    "code": "SOCI 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/SOCI/82", 
+                    "name": "Cooperative W/E in Sociology"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/barstow/SOCI"
+        }, 
+        {
+            "abbr": "SPAN", 
+            "courses": [
+                {
+                    "code": "SPAN 1A", 
+                    "course_url": "http://www.chegg.com/courses/barstow/SPAN/1A", 
+                    "name": "Beginning Spanish"
+                }, 
+                {
+                    "code": "SPAN 1B", 
+                    "course_url": "http://www.chegg.com/courses/barstow/SPAN/1B", 
+                    "name": ""
+                }
+            ], 
+            "name": "Spanish", 
+            "url": "http://www.chegg.com/courses/barstow/SPAN"
+        }, 
+        {
+            "abbr": "SPCH", 
+            "courses": [
+                {
+                    "code": "SPCH 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/SPCH/1", 
+                    "name": "Elements of Public Speaking"
+                }, 
+                {
+                    "code": "SPCH 3", 
+                    "course_url": "http://www.chegg.com/courses/barstow/SPCH/3", 
+                    "name": "Interpersonal Communication"
+                }
+            ], 
+            "name": "Speech", 
+            "url": "http://www.chegg.com/courses/barstow/SPCH"
+        }, 
+        {
+            "abbr": "TART", 
+            "courses": [
+                {
+                    "code": "TART 1", 
+                    "course_url": "http://www.chegg.com/courses/barstow/TART/1", 
+                    "name": "Beginning Acting"
+                }, 
+                {
+                    "code": "TART 3", 
+                    "course_url": "http://www.chegg.com/courses/barstow/TART/3", 
+                    "name": "Theatre Appreciation"
+                }, 
+                {
+                    "code": "TART 5", 
+                    "course_url": "http://www.chegg.com/courses/barstow/TART/5", 
+                    "name": "Modern Theatre Production"
+                }
+            ], 
+            "name": "Theater Arts", 
+            "url": "http://www.chegg.com/courses/barstow/TART"
+        }, 
+        {
+            "abbr": "WARE", 
+            "courses": [
+                {
+                    "code": "WARE 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WARE/50", 
+                    "name": "Forklift Operations"
+                }, 
+                {
+                    "code": "WARE 51", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WARE/51", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WARE 52", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WARE/52", 
+                    "name": "Intro to Warehousing/Dist"
+                }, 
+                {
+                    "code": "WARE 53", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WARE/53", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WARE 55", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WARE/55", 
+                    "name": "Principles of Logistics"
+                }, 
+                {
+                    "code": "WARE 57", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WARE/57", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WARE 59", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WARE/59", 
+                    "name": "Introduction to Purchasing"
+                }, 
+                {
+                    "code": "WARE 61", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WARE/61", 
+                    "name": "Project Management"
+                }, 
+                {
+                    "code": "WARE 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WARE/82", 
+                    "name": "Occupational W/E in Warehouse"
+                }
+            ], 
+            "name": "Logistics/Warehousing", 
+            "url": "http://www.chegg.com/courses/barstow/WARE"
+        }, 
+        {
+            "abbr": "WELD", 
+            "courses": [
+                {
+                    "code": "WELD 50", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WELD/50", 
+                    "name": "Oxyacetylene Welding & Cutting"
+                }, 
+                {
+                    "code": "WELD 51", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WELD/51", 
+                    "name": "Shielded Metal Arc Weld & Cut"
+                }, 
+                {
+                    "code": "WELD 52", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WELD/52", 
+                    "name": "Position Welding(Arc Welding)"
+                }, 
+                {
+                    "code": "WELD 53", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WELD/53", 
+                    "name": "Soldering,Brazing and Braze Wl"
+                }, 
+                {
+                    "code": "WELD 54", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WELD/54", 
+                    "name": "Gas Metal-Arc Welding"
+                }, 
+                {
+                    "code": "WELD 55", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WELD/55", 
+                    "name": "Gas Tungsten-Arc Welding"
+                }, 
+                {
+                    "code": "WELD 56", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WELD/56", 
+                    "name": "Blueprint Reading-Metal Trades"
+                }, 
+                {
+                    "code": "WELD 57", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WELD/57", 
+                    "name": "Weld,Fab,&Projects"
+                }, 
+                {
+                    "code": "WELD 82", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WELD/82", 
+                    "name": "Cooperative W/E in Welding"
+                }, 
+                {
+                    "code": "WELD 98", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WELD/98", 
+                    "name": "Special Studies in Welding"
+                }
+            ], 
+            "name": "Welding", 
+            "url": "http://www.chegg.com/courses/barstow/WELD"
+        }, 
+        {
+            "abbr": "WKFC", 
+            "courses": [
+                {
+                    "code": "WKFC 50D", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WKFC/50D", 
+                    "name": "Basic Comm & Employment Skills"
+                }, 
+                {
+                    "code": "WKFC 101", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WKFC/101", 
+                    "name": "Attitude in the Workplace"
+                }, 
+                {
+                    "code": "WKFC 102", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WKFC/102", 
+                    "name": "Dealing with Difficult People"
+                }, 
+                {
+                    "code": "WKFC 103", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WKFC/103", 
+                    "name": "Mastering Communication"
+                }, 
+                {
+                    "code": "WKFC 104", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WKFC/104", 
+                    "name": "Time and Stress Management"
+                }, 
+                {
+                    "code": "WKFC 105", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WKFC/105", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WKFC 106", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WKFC/106", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WKFC 107", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WKFC/107", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WKFC 108", 
+                    "course_url": "http://www.chegg.com/courses/barstow/WKFC/108", 
+                    "name": ""
+                }
+            ], 
+            "name": "Workforce Development", 
+            "url": "http://www.chegg.com/courses/barstow/WKFC"
+        }
+    ], 
+    "name": "barstow"
+}

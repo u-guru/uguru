@@ -1,0 +1,365 @@
+{
+    "all_stats": {
+        "num_courses": 0, 
+        "num_departments": 24, 
+        "popular_courses": {
+            "rmp_and_chegg": 0, 
+            "rmp_only": 30, 
+            "total": 30
+        }
+    }, 
+    "departments": [
+        {
+            "abbr": "ACCT", 
+            "courses": [
+                {
+                    "code": "ACCT 100", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/ACCT"
+        }, 
+        {
+            "abbr": "ANTH", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/ANTH"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 1", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ART 1401", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/ART"
+        }, 
+        {
+            "abbr": "BIOL", 
+            "courses": [
+                {
+                    "code": "BIOL 1417", 
+                    "frequency": 5, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "BIOL 1417"
+                    ]
+                }, 
+                {
+                    "code": "BIOL 1419", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "BIO 1101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "BIOL 1430", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "BIOL 1430"
+                    ]
+                }, 
+                {
+                    "code": "BIOL 1411", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "BIOLOGY 1435", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/BIOL"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [], 
+            "name": "Business/Marketing/Retailing (BUS)", 
+            "url": "http://www.chegg.com/courses/alexandriatc/BUS"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CHEM 1410", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/CHEM"
+        }, 
+        {
+            "abbr": "COMM", 
+            "courses": [
+                {
+                    "code": "COMM 1440", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "COMM 1435", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "COMM 1415", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "COMM 1415"
+                    ]
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/COMM"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 1420", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ECON 1404", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ECON 1410", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/ECON"
+        }, 
+        {
+            "abbr": "ENGL", 
+            "courses": [
+                {
+                    "code": "ENG 1410", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "ENGL 1410"
+                    ]
+                }, 
+                {
+                    "code": "ENG 0350", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/ENGL"
+        }, 
+        {
+            "abbr": "GEOG", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/GEOG"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/HIST"
+        }, 
+        {
+            "abbr": "HLTH", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/HLTH"
+        }, 
+        {
+            "abbr": "INTD", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/INTD"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 111", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/MATH"
+        }, 
+        {
+            "abbr": "MUSC", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/MUSC"
+        }, 
+        {
+            "abbr": "NSCI", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/NSCI"
+        }, 
+        {
+            "abbr": "NURS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/NURS"
+        }, 
+        {
+            "abbr": "PHIL", 
+            "courses": [
+                {
+                    "code": "PHIL 1440", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PHIL 101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PHIL 1405", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/PHIL"
+        }, 
+        {
+            "abbr": "PHYS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/PHYS"
+        }, 
+        {
+            "abbr": "POLS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/POLS"
+        }, 
+        {
+            "abbr": "PSYC", 
+            "courses": [
+                {
+                    "code": "PSYCH 101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSYC 1440", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSYC 1443", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSYC 1410", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSYCH 1445", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "PSYC 1445"
+                    ]
+                }, 
+                {
+                    "code": "PSYCH 1232", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/PSYC"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/SOC"
+        }, 
+        {
+            "abbr": "SPAN", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/SPAN"
+        }, 
+        {
+            "abbr": "SPCH", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/alexandriatc/SPCH"
+        }
+    ], 
+    "name": "alexandriatc", 
+    "popular_courses": []
+}

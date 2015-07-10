@@ -1,0 +1,826 @@
+{
+    "all_stats": {
+        "num_courses": 130, 
+        "num_departments": 24
+    }, 
+    "departments": [
+        {
+            "abbr": "ACCT", 
+            "courses": [
+                {
+                    "code": "ACCT 2001", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ACCT/2001", 
+                    "name": "Financial Accounting I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/ACCT"
+        }, 
+        {
+            "abbr": "ANTH", 
+            "courses": [
+                {
+                    "code": "ANTH 1001", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ANTH/1001", 
+                    "name": "Introduction to American Indian Studies"
+                }, 
+                {
+                    "code": "ANTH 1010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ANTH/1010", 
+                    "name": "Native Skywatchers"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/ANTH"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 1001", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ART/1001", 
+                    "name": "Introduction to Art"
+                }, 
+                {
+                    "code": "ART 1010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ART/1010", 
+                    "name": "Drawing"
+                }, 
+                {
+                    "code": "ART 1015", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ART/1015", 
+                    "name": "Drawing II"
+                }, 
+                {
+                    "code": "ART 1020", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ART/1020", 
+                    "name": "Design"
+                }, 
+                {
+                    "code": "ART 1030", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ART/1030", 
+                    "name": "Painting"
+                }, 
+                {
+                    "code": "ART 1035", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ART/1035", 
+                    "name": "Painting II"
+                }, 
+                {
+                    "code": "ART 1060", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ART/1060", 
+                    "name": "American Indian Art"
+                }, 
+                {
+                    "code": "ART 1080", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ART/1080", 
+                    "name": "Art History I"
+                }, 
+                {
+                    "code": "ART 1095", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ART/1095", 
+                    "name": "Digital Photography"
+                }, 
+                {
+                    "code": "ART 2001", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ART/2001", 
+                    "name": "Digital Photography II"
+                }, 
+                {
+                    "code": "ART 2020", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ART/2020", 
+                    "name": "Ceramics"
+                }, 
+                {
+                    "code": "ART 2025", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ART/2025", 
+                    "name": "Ceramics II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/ART"
+        }, 
+        {
+            "abbr": "BIOL", 
+            "courses": [
+                {
+                    "code": "BIOL 1005", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BIOL/1005", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "BIOL 1010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BIOL/1010", 
+                    "name": "Aspects of Biology"
+                }, 
+                {
+                    "code": "BIOL 1060", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BIOL/1060", 
+                    "name": "Environmental Science"
+                }, 
+                {
+                    "code": "BIOL 1101", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BIOL/1101", 
+                    "name": "General Biology I"
+                }, 
+                {
+                    "code": "BIOL 2005", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BIOL/2005", 
+                    "name": "Fundamentals of Nutrition"
+                }, 
+                {
+                    "code": "BIOL 2010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BIOL/2010", 
+                    "name": "Microbiology"
+                }, 
+                {
+                    "code": "BIOL 2015", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BIOL/2015", 
+                    "name": "Pathophysiology"
+                }, 
+                {
+                    "code": "BIOL 2020", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BIOL/2020", 
+                    "name": "Human Anatomy and Physiology I"
+                }, 
+                {
+                    "code": "BIOL 2021", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BIOL/2021", 
+                    "name": "Human Anatomy and Physiology II"
+                }, 
+                {
+                    "code": "BIOL 2050", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BIOL/2050", 
+                    "name": "Principles of Ecology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/BIOL"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 1001", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BUS/1001", 
+                    "name": "Introduction to Business"
+                }, 
+                {
+                    "code": "BUS 1002", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BUS/1002", 
+                    "name": "Introduction to Entrepreneaurship"
+                }, 
+                {
+                    "code": "BUS 1003", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BUS/1003", 
+                    "name": "Opportunity Analysis"
+                }, 
+                {
+                    "code": "BUS 1020", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BUS/1020", 
+                    "name": "General Office Procedures"
+                }, 
+                {
+                    "code": "BUS 1035", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BUS/1035", 
+                    "name": "Database and Data Spreadsheets"
+                }, 
+                {
+                    "code": "BUS 1055", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BUS/1055", 
+                    "name": "Business Communications"
+                }, 
+                {
+                    "code": "BUS 1064", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BUS/1064", 
+                    "name": "Customer Service"
+                }, 
+                {
+                    "code": "BUS 1080", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BUS/1080", 
+                    "name": "Personal Finance"
+                }, 
+                {
+                    "code": "BUS 2020", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BUS/2020", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "BUS 2036", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/BUS/2036", 
+                    "name": "Money and Banking"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/BUS"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 1001", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/CHEM/1001", 
+                    "name": "Aspects of Inorganic Chemistry"
+                }, 
+                {
+                    "code": "CHEM 1010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/CHEM/1010", 
+                    "name": "General Chemistry I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/CHEM"
+        }, 
+        {
+            "abbr": "CSCI", 
+            "courses": [
+                {
+                    "code": "CSCI 1002", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/CSCI/1002", 
+                    "name": "Computing Essentials"
+                }, 
+                {
+                    "code": "CSCI 1020", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/CSCI/1020", 
+                    "name": "Introduction to Programming"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/CSCI"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 2010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ECON/2010", 
+                    "name": "Principles of Economics Micro Economics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/ECON"
+        }, 
+        {
+            "abbr": "ENGL", 
+            "courses": [
+                {
+                    "code": "ENGL 0092", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ENGL/0092", 
+                    "name": "College Prep English I"
+                }, 
+                {
+                    "code": "ENGL 92", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ENGL/92", 
+                    "name": "College Prep English I"
+                }, 
+                {
+                    "code": "ENGL 0094", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ENGL/0094", 
+                    "name": "College Prep Engl II"
+                }, 
+                {
+                    "code": "ENGL 94", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ENGL/94", 
+                    "name": "College Prep Engl II"
+                }, 
+                {
+                    "code": "ENGL 1001", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ENGL/1001", 
+                    "name": "College Writing I: Composition and Research"
+                }, 
+                {
+                    "code": "ENGL 1010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ENGL/1010", 
+                    "name": "College Writing IIA:Introduction to Literature"
+                }, 
+                {
+                    "code": "ENGL 1020", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ENGL/1020", 
+                    "name": "College Writing IIB: Writing for Work"
+                }, 
+                {
+                    "code": "ENGL 1030", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ENGL/1030", 
+                    "name": "College Writing IIC: Creative Writing"
+                }, 
+                {
+                    "code": "ENGL 2040", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/ENGL/2040", 
+                    "name": "Mythology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/ENGL"
+        }, 
+        {
+            "abbr": "GEOG", 
+            "courses": [
+                {
+                    "code": "GEOG 1010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/GEOG/1010", 
+                    "name": "Physical Geography"
+                }, 
+                {
+                    "code": "GEOG 1020", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/GEOG/1020", 
+                    "name": "Cultural Geography"
+                }, 
+                {
+                    "code": "GEOG 1040", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/GEOG/1040", 
+                    "name": "World Regional Geography"
+                }, 
+                {
+                    "code": "GEOG 1050", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/GEOG/1050", 
+                    "name": "Introduction to Geographic Information Systems (GIS)"
+                }, 
+                {
+                    "code": "GEOG 1054", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/GEOG/1054", 
+                    "name": "Introduction to the Global Positioning System (GPS)"
+                }, 
+                {
+                    "code": "GEOG 1058", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/GEOG/1058", 
+                    "name": "Introduction to Remote Sensing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/GEOG"
+        }, 
+        {
+            "abbr": "GEOL", 
+            "courses": [
+                {
+                    "code": "GEOL 2010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/GEOL/2010", 
+                    "name": "Geomorphology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/GEOL"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 1010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/HIST/1010", 
+                    "name": "History of Western Civilization I"
+                }, 
+                {
+                    "code": "HIST 1012", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/HIST/1012", 
+                    "name": "History of Global Civilizations I"
+                }, 
+                {
+                    "code": "HIST 1030", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/HIST/1030", 
+                    "name": "History of the United States I"
+                }, 
+                {
+                    "code": "HIST 1050", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/HIST/1050", 
+                    "name": "American Indian History I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/HIST"
+        }, 
+        {
+            "abbr": "HLTH", 
+            "courses": [
+                {
+                    "code": "HLTH 1005", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/HLTH/1005", 
+                    "name": "Introduction to Nursing/Nursing Assitant /Home Health Aid"
+                }, 
+                {
+                    "code": "HLTH 1025", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/HLTH/1025", 
+                    "name": "Emergency Medical Technician"
+                }, 
+                {
+                    "code": "HLTH 1032", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/HLTH/1032", 
+                    "name": "Health Care Provider-CPT & 1st Aid"
+                }, 
+                {
+                    "code": "HLTH 1050", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/HLTH/1050", 
+                    "name": "Emergency Response First Responder"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/HLTH"
+        }, 
+        {
+            "abbr": "JOUR", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/JOUR"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 0010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MATH/0010", 
+                    "name": "Math Concepts"
+                }, 
+                {
+                    "code": "MATH 10", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MATH/10", 
+                    "name": "Math Concepts"
+                }, 
+                {
+                    "code": "MATH 0020", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MATH/0020", 
+                    "name": "Beginning Algebra"
+                }, 
+                {
+                    "code": "MATH 20", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MATH/20", 
+                    "name": "Beginning Algebra"
+                }, 
+                {
+                    "code": "MATH 0030", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MATH/0030", 
+                    "name": "Higher Algebra"
+                }, 
+                {
+                    "code": "MATH 30", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MATH/30", 
+                    "name": "Higher Algebra"
+                }, 
+                {
+                    "code": "MATH 1010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MATH/1010", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MATH 1025", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MATH/1025", 
+                    "name": "Introduction to Contemporary Mathematics"
+                }, 
+                {
+                    "code": "MATH 1030", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MATH/1030", 
+                    "name": "Introduction to Statistics"
+                }, 
+                {
+                    "code": "MATH 2001", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MATH/2001", 
+                    "name": "Calculus I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/MATH"
+        }, 
+        {
+            "abbr": "MUSC", 
+            "courses": [
+                {
+                    "code": "MUSC 1020", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/1020", 
+                    "name": "American Popular Music"
+                }, 
+                {
+                    "code": "MUSC 1030", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/1030", 
+                    "name": "Music of the World's Peoples"
+                }, 
+                {
+                    "code": "MUSC 1070", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/1070", 
+                    "name": "Choir"
+                }, 
+                {
+                    "code": "MUSC 1080", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/1080", 
+                    "name": "Voice"
+                }, 
+                {
+                    "code": "MUSC 1081", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/1081", 
+                    "name": "Piano"
+                }, 
+                {
+                    "code": "MUSC 1085", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/1085", 
+                    "name": "Strings"
+                }, 
+                {
+                    "code": "MUSC 1086", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/1086", 
+                    "name": "Guitar"
+                }, 
+                {
+                    "code": "MUSC 1180", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/1180", 
+                    "name": "Voice"
+                }, 
+                {
+                    "code": "MUSC 1181", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/1181", 
+                    "name": "Piano"
+                }, 
+                {
+                    "code": "MUSC 1185", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/1185", 
+                    "name": "Strings"
+                }, 
+                {
+                    "code": "MUSC 1186", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/1186", 
+                    "name": "Guitar"
+                }, 
+                {
+                    "code": "MUSC 2080", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/2080", 
+                    "name": "Voice"
+                }, 
+                {
+                    "code": "MUSC 2081", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/2081", 
+                    "name": "Piano"
+                }, 
+                {
+                    "code": "MUSC 2085", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/2085", 
+                    "name": "Strings"
+                }, 
+                {
+                    "code": "MUSC 2086", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/2086", 
+                    "name": "Guitar"
+                }, 
+                {
+                    "code": "MUSC 2180", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/2180", 
+                    "name": "Voice"
+                }, 
+                {
+                    "code": "MUSC 2181", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/2181", 
+                    "name": "Piano"
+                }, 
+                {
+                    "code": "MUSC 2185", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/2185", 
+                    "name": "Strings"
+                }, 
+                {
+                    "code": "MUSC 2186", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/MUSC/2186", 
+                    "name": "Guitar"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/MUSC"
+        }, 
+        {
+            "abbr": "NURS", 
+            "courses": [
+                {
+                    "code": "NURS 1001", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/NURS/1001", 
+                    "name": "Foundations of Nursing"
+                }, 
+                {
+                    "code": "NURS 1005", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/NURS/1005", 
+                    "name": "Clinical Foundations"
+                }, 
+                {
+                    "code": "NURS 1025", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/NURS/1025", 
+                    "name": "Mathematics for Medication"
+                }, 
+                {
+                    "code": "NURS 1045", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/NURS/1045", 
+                    "name": "Nursing Interventions"
+                }, 
+                {
+                    "code": "NURS 1070", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/NURS/1070", 
+                    "name": "Nursing Role Transition"
+                }, 
+                {
+                    "code": "NURS 1075", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/NURS/1075", 
+                    "name": "Nursing Role Transition Clinical"
+                }, 
+                {
+                    "code": "NURS 2100", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/NURS/2100", 
+                    "name": "Health Assessment"
+                }, 
+                {
+                    "code": "NURS 2110", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/NURS/2110", 
+                    "name": "Integration of Nursing"
+                }, 
+                {
+                    "code": "NURS 2115", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/NURS/2115", 
+                    "name": "Clincal Integration"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/NURS"
+        }, 
+        {
+            "abbr": "PE", 
+            "courses": [
+                {
+                    "code": "PE 1006", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PE/1006", 
+                    "name": "Beginning Bowling"
+                }, 
+                {
+                    "code": "PE 1042", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PE/1042", 
+                    "name": "Fitness Through Walking"
+                }, 
+                {
+                    "code": "PE 1046", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PE/1046", 
+                    "name": "Fitness Yoga"
+                }, 
+                {
+                    "code": "PE 1047", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PE/1047", 
+                    "name": "Aerobics"
+                }, 
+                {
+                    "code": "PE 1049", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PE/1049", 
+                    "name": "Summer Outdoor Activities"
+                }, 
+                {
+                    "code": "PE 1051", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PE/1051", 
+                    "name": "American Indian Dance"
+                }, 
+                {
+                    "code": "PE 1054", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PE/1054", 
+                    "name": "Introduction to the Global Positioning System (GPS)"
+                }, 
+                {
+                    "code": "PE 1061", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PE/1061", 
+                    "name": "Varsity Volleyball"
+                }, 
+                {
+                    "code": "PE 1062", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PE/1062", 
+                    "name": "Varsity Football"
+                }, 
+                {
+                    "code": "PE 1077", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PE/1077", 
+                    "name": "Officiating Basketball"
+                }, 
+                {
+                    "code": "PE 2007", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PE/2007", 
+                    "name": "Advanced Bowling"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/PE"
+        }, 
+        {
+            "abbr": "PHIL", 
+            "courses": [
+                {
+                    "code": "PHIL 1020", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PHIL/1020", 
+                    "name": "Critical Thinking"
+                }, 
+                {
+                    "code": "PHIL 2001", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PHIL/2001", 
+                    "name": "Introduction to Philosophy"
+                }, 
+                {
+                    "code": "PHIL 2010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PHIL/2010", 
+                    "name": "Ethics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/PHIL"
+        }, 
+        {
+            "abbr": "PHYS", 
+            "courses": [
+                {
+                    "code": "PHYS 1001", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PHYS/1001", 
+                    "name": "Introduction to Physics I"
+                }, 
+                {
+                    "code": "PHYS 1030", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PHYS/1030", 
+                    "name": "Meteorology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/PHYS"
+        }, 
+        {
+            "abbr": "POLS", 
+            "courses": [
+                {
+                    "code": "POLS 1010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/POLS/1010", 
+                    "name": "American Government"
+                }, 
+                {
+                    "code": "POLS 1020", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/POLS/1020", 
+                    "name": "State and Local Government"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/POLS"
+        }, 
+        {
+            "abbr": "PSYC", 
+            "courses": [
+                {
+                    "code": "PSYC 1002", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PSYC/1002", 
+                    "name": "College Success"
+                }, 
+                {
+                    "code": "PSYC 1030", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PSYC/1030", 
+                    "name": "Drug Use and Abuse"
+                }, 
+                {
+                    "code": "PSYC 2001", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PSYC/2001", 
+                    "name": "General Psychology"
+                }, 
+                {
+                    "code": "PSYC 2010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/PSYC/2010", 
+                    "name": "Developmental Psychology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/PSYC"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 1001", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/SOC/1001", 
+                    "name": "Introduction to Sociology"
+                }, 
+                {
+                    "code": "SOC 1020", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/SOC/1020", 
+                    "name": "Human Relations"
+                }, 
+                {
+                    "code": "SOC 2010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/SOC/2010", 
+                    "name": "Social Problems"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/SOC"
+        }, 
+        {
+            "abbr": "SPCH", 
+            "courses": [
+                {
+                    "code": "SPCH 1010", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/SPCH/1010", 
+                    "name": "Public Speaking"
+                }, 
+                {
+                    "code": "SPCH 1020", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/SPCH/1020", 
+                    "name": "Interpersonal Communication"
+                }, 
+                {
+                    "code": "SPCH 1030", 
+                    "course_url": "http://www.chegg.com/courses/fonddulac/SPCH/1030", 
+                    "name": "Intercultural Communications"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fonddulac/SPCH"
+        }
+    ], 
+    "name": "fonddulac"
+}

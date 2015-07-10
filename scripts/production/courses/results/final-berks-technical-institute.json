@@ -1,0 +1,372 @@
+{
+    "all_stats": {
+        "num_courses": 0, 
+        "num_departments": 39, 
+        "popular_courses": {
+            "rmp_and_chegg": 0, 
+            "rmp_only": 18, 
+            "total": 18
+        }
+    }, 
+    "departments": [
+        {
+            "abbr": "ACT", 
+            "courses": [], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/3674909/ACT"
+        }, 
+        {
+            "abbr": "BAM", 
+            "courses": [], 
+            "name": "Building And Apartment Maintenance", 
+            "url": "http://www.chegg.com/courses/3674909/BAM"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/3674909/BIO"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BU 10544", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/3674909/BUS"
+        }, 
+        {
+            "abbr": "CAD", 
+            "courses": [
+                {
+                    "code": "AD 237", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Child And Adolescent Development", 
+            "url": "http://www.chegg.com/courses/3674909/CAD"
+        }, 
+        {
+            "abbr": "CAR", 
+            "courses": [], 
+            "name": "Carpentry", 
+            "url": "http://www.chegg.com/courses/3674909/CAR"
+        }, 
+        {
+            "abbr": "CIS", 
+            "courses": [
+                {
+                    "code": "CIS 170", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CIS 145", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CIS 111", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Computer Information Systems", 
+            "url": "http://www.chegg.com/courses/3674909/CIS"
+        }, 
+        {
+            "abbr": "CJ", 
+            "courses": [], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/3674909/CJ"
+        }, 
+        {
+            "abbr": "CM", 
+            "courses": [], 
+            "name": "Computer Information Science", 
+            "url": "http://www.chegg.com/courses/3674909/CM"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COMM 101", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "COM 101"
+                    ]
+                }, 
+                {
+                    "code": "COMP 100", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Communication", 
+            "url": "http://www.chegg.com/courses/3674909/COM"
+        }, 
+        {
+            "abbr": "CPR", 
+            "courses": [], 
+            "name": "Agricultural Engineering", 
+            "url": "http://www.chegg.com/courses/3674909/CPR"
+        }, 
+        {
+            "abbr": "DAS", 
+            "courses": [], 
+            "name": "Arts And Sciences", 
+            "url": "http://www.chegg.com/courses/3674909/DAS"
+        }, 
+        {
+            "abbr": "DT", 
+            "courses": [], 
+            "name": "Dental Therapy", 
+            "url": "http://www.chegg.com/courses/3674909/DT"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "EN 210", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENG 102", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENG 101", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "EN 101", 
+                        "ENG 101"
+                    ]
+                }, 
+                {
+                    "code": "EN 10144", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/3674909/ENG"
+        }, 
+        {
+            "abbr": "EXT", 
+            "courses": [], 
+            "name": "Extended Education", 
+            "url": "http://www.chegg.com/courses/3674909/EXT"
+        }, 
+        {
+            "abbr": "FIN", 
+            "courses": [], 
+            "name": "Finance", 
+            "url": "http://www.chegg.com/courses/3674909/FIN"
+        }, 
+        {
+            "abbr": "GRD", 
+            "courses": [], 
+            "name": "Grad Degree Exit Requirements", 
+            "url": "http://www.chegg.com/courses/3674909/GRD"
+        }, 
+        {
+            "abbr": "HR", 
+            "courses": [], 
+            "name": "Honors", 
+            "url": "http://www.chegg.com/courses/3674909/HR"
+        }, 
+        {
+            "abbr": "ICD", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/3674909/ICD"
+        }, 
+        {
+            "abbr": "LAW", 
+            "courses": [], 
+            "name": "Law", 
+            "url": "http://www.chegg.com/courses/3674909/LAW"
+        }, 
+        {
+            "abbr": "LEG", 
+            "courses": [], 
+            "name": "Legal Studies (Leg)", 
+            "url": "http://www.chegg.com/courses/3674909/LEG"
+        }, 
+        {
+            "abbr": "MA", 
+            "courses": [
+                {
+                    "code": "MANY 100", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MA 102", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MA 11144", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ANATOMYMA 120", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MA 10022", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/3674909/MA"
+        }, 
+        {
+            "abbr": "MAT", 
+            "courses": [], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/3674909/MAT"
+        }, 
+        {
+            "abbr": "MCR", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/3674909/MCR"
+        }, 
+        {
+            "abbr": "MDM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/3674909/MDM"
+        }, 
+        {
+            "abbr": "MGT", 
+            "courses": [], 
+            "name": "Management", 
+            "url": "http://www.chegg.com/courses/3674909/MGT"
+        }, 
+        {
+            "abbr": "MOS", 
+            "courses": [], 
+            "name": "Master Of Sustainability", 
+            "url": "http://www.chegg.com/courses/3674909/MOS"
+        }, 
+        {
+            "abbr": "MT", 
+            "courses": [], 
+            "name": "Medical Technology", 
+            "url": "http://www.chegg.com/courses/3674909/MT"
+        }, 
+        {
+            "abbr": "NTR", 
+            "courses": [], 
+            "name": "Nutrition", 
+            "url": "http://www.chegg.com/courses/3674909/NTR"
+        }, 
+        {
+            "abbr": "NUR", 
+            "courses": [], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/3674909/NUR"
+        }, 
+        {
+            "abbr": "PCL", 
+            "courses": [], 
+            "name": "Psychology Child Life", 
+            "url": "http://www.chegg.com/courses/3674909/PCL"
+        }, 
+        {
+            "abbr": "PD", 
+            "courses": [], 
+            "name": "Urban & Regional Planning", 
+            "url": "http://www.chegg.com/courses/3674909/PD"
+        }, 
+        {
+            "abbr": "PGM", 
+            "courses": [], 
+            "name": "Professional Golf Management", 
+            "url": "http://www.chegg.com/courses/3674909/PGM"
+        }, 
+        {
+            "abbr": "PRP", 
+            "courses": [], 
+            "name": "Parks & Rec-Professional", 
+            "url": "http://www.chegg.com/courses/3674909/PRP"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [], 
+            "name": "Clinical Counseling", 
+            "url": "http://www.chegg.com/courses/3674909/PSY"
+        }, 
+        {
+            "abbr": "RD", 
+            "courses": [
+                {
+                    "code": "HARD 101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Rural Development", 
+            "url": "http://www.chegg.com/courses/3674909/RD"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/3674909/SOC"
+        }, 
+        {
+            "abbr": "UST", 
+            "courses": [], 
+            "name": "Urban Studies", 
+            "url": "http://www.chegg.com/courses/3674909/UST"
+        }, 
+        {
+            "abbr": "WEB", 
+            "courses": [
+                {
+                    "code": "WEB 101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Web Related Studies", 
+            "url": "http://www.chegg.com/courses/3674909/WEB"
+        }
+    ], 
+    "name": "3674909", 
+    "popular_courses": []
+}

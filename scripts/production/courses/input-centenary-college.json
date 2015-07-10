@@ -1,0 +1,4271 @@
+{
+    "all_stats": {
+        "num_courses": 769, 
+        "num_departments": 60
+    }, 
+    "departments": [
+        {
+            "abbr": "ACC", 
+            "courses": [
+                {
+                    "code": "ACC 2101", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ACC/2101", 
+                    "name": "Principles of Accounting I"
+                }, 
+                {
+                    "code": "ACC 2102", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ACC/2102", 
+                    "name": "Principles of Accounting II"
+                }, 
+                {
+                    "code": "ACC 3201", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ACC/3201", 
+                    "name": "Cost Accounting"
+                }, 
+                {
+                    "code": "ACC 3301", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ACC/3301", 
+                    "name": "Intermediate Accounting I"
+                }, 
+                {
+                    "code": "ACC 3302", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ACC/3302", 
+                    "name": "Intermediate Accounting II"
+                }, 
+                {
+                    "code": "ACC 3401", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ACC/3401", 
+                    "name": "Federal Income Taxation"
+                }, 
+                {
+                    "code": "ACC 4201", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ACC/4201", 
+                    "name": "Advanced Accounting"
+                }, 
+                {
+                    "code": "ACC 4301", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ACC/4301", 
+                    "name": "Auditing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/ACC"
+        }, 
+        {
+            "abbr": "AFC", 
+            "courses": [
+                {
+                    "code": "AFC 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/AFC/1001", 
+                    "name": "A Major Decision"
+                }, 
+                {
+                    "code": "AFC 1001-1002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/AFC/1001-1002", 
+                    "name": "Academic Foundations at Centenary I & II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/AFC"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/1001", 
+                    "name": "Art Appreciation"
+                }, 
+                {
+                    "code": "ART 1003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/1003", 
+                    "name": "Two-Dimensional Design"
+                }, 
+                {
+                    "code": "ART 1004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/1004", 
+                    "name": "Three-Dimensional Design"
+                }, 
+                {
+                    "code": "ART 1005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/1005", 
+                    "name": "Drawing I"
+                }, 
+                {
+                    "code": "ART 1005-1006", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/1005-1006", 
+                    "name": "Drawing I & II"
+                }, 
+                {
+                    "code": "ART 1005B", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/1005B", 
+                    "name": "Drawing for Fashion"
+                }, 
+                {
+                    "code": "ART 1099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/1099", 
+                    "name": "Special Topics in Art: Sculpture"
+                }, 
+                {
+                    "code": "ART 2001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/2001", 
+                    "name": "History of Art"
+                }, 
+                {
+                    "code": "ART 2002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/2002", 
+                    "name": "History of Modern Art"
+                }, 
+                {
+                    "code": "ART 2011-2012", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/2011-2012", 
+                    "name": "Life Drawing and Anatomy I & II semester"
+                }, 
+                {
+                    "code": "ART 2013", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/2013", 
+                    "name": "Painting I"
+                }, 
+                {
+                    "code": "ART 2013-2014", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/2013-2014", 
+                    "name": "Painting I & II"
+                }, 
+                {
+                    "code": "ART 2099,3099, or 4099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/2099%2C3099%2C%20or%204099", 
+                    "name": "Special Topics in Art and Design"
+                }, 
+                {
+                    "code": "ART 3008", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/3008", 
+                    "name": "Photography I"
+                }, 
+                {
+                    "code": "ART 3008-3009", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/3008-3009", 
+                    "name": "Photography I & II"
+                }, 
+                {
+                    "code": "ART 3009", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/3009", 
+                    "name": "Photography II"
+                }, 
+                {
+                    "code": "ART 3010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/3010", 
+                    "name": "Printmaking I"
+                }, 
+                {
+                    "code": "ART 3010-3011", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/3010-3011", 
+                    "name": "Printmaking I & II"
+                }, 
+                {
+                    "code": "ART 3013", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/3013", 
+                    "name": "Advanced Painting I"
+                }, 
+                {
+                    "code": "ART 3013-3014", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/3013-3014", 
+                    "name": "Advanced Painting I & II"
+                }, 
+                {
+                    "code": "ART 3018", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/3018", 
+                    "name": "Portfolio"
+                }, 
+                {
+                    "code": "ART 3020", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/3020", 
+                    "name": "Illustration"
+                }, 
+                {
+                    "code": "ART 3021", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/3021", 
+                    "name": "Monotype"
+                }, 
+                {
+                    "code": "ART 4003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/4003", 
+                    "name": "Senior Thesis Exhibition Project I"
+                }, 
+                {
+                    "code": "ART 4003-4004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/4003-4004", 
+                    "name": "Senior Thesis Exhibition Project I & II"
+                }, 
+                {
+                    "code": "ART 4004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ART/4004", 
+                    "name": "Senior Thesis Exhibition Project II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/ART"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 1100", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/1100", 
+                    "name": "Human Development"
+                }, 
+                {
+                    "code": "BIO 1105", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/1105", 
+                    "name": "Human Nutrition and Performance (10/21/12 - 12/15/12)"
+                }, 
+                {
+                    "code": "BIO 1110", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/1110", 
+                    "name": "Principles of Environmental Science (10/21/12 - 12/15/12)"
+                }, 
+                {
+                    "code": "BIO 1150", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/1150", 
+                    "name": "Biology of Plants and Cells"
+                }, 
+                {
+                    "code": "BIO 1160", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/1160", 
+                    "name": "Biology of Animals"
+                }, 
+                {
+                    "code": "BIO 1200", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/1200", 
+                    "name": "Marine Biology"
+                }, 
+                {
+                    "code": "BIO 2100", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/2100", 
+                    "name": "Environmental Field Sampling Techniques"
+                }, 
+                {
+                    "code": "BIO 2150", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/2150", 
+                    "name": "Animal Anatomy"
+                }, 
+                {
+                    "code": "BIO 2160", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/2160", 
+                    "name": "Animal Physiology and Behavior"
+                }, 
+                {
+                    "code": "BIO 2200", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/2200", 
+                    "name": "Anatomy and Physiology I"
+                }, 
+                {
+                    "code": "BIO 3100", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/3100", 
+                    "name": "Genetics"
+                }, 
+                {
+                    "code": "BIO 3150", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/3150", 
+                    "name": "Biochemistry"
+                }, 
+                {
+                    "code": "BIO 3200", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/3200", 
+                    "name": "Animal Anatomy"
+                }, 
+                {
+                    "code": "BIO 3500", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/3500", 
+                    "name": "Microbiology"
+                }, 
+                {
+                    "code": "BIO 4000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/4000", 
+                    "name": "Ecology"
+                }, 
+                {
+                    "code": "BIO 4100", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/4100", 
+                    "name": "Biology Seminar"
+                }, 
+                {
+                    "code": "BIO 4200", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BIO/4200", 
+                    "name": "Biochemistry"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/BIO"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/1001", 
+                    "name": "Integrated Business Perspectives"
+                }, 
+                {
+                    "code": "BUS 1002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/1002", 
+                    "name": "Business Applications and Presentations"
+                }, 
+                {
+                    "code": "BUS 1010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/1010", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "BUS 1050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/1050", 
+                    "name": "Social Responsibility in Business (8/26/12-10/20/12)"
+                }, 
+                {
+                    "code": "BUS 2010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/2010", 
+                    "name": "Principles of Marketing"
+                }, 
+                {
+                    "code": "BUS 2020", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/2020", 
+                    "name": "Management Information Systems"
+                }, 
+                {
+                    "code": "BUS 2030", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/2030", 
+                    "name": "Principles of Finance"
+                }, 
+                {
+                    "code": "BUS 2040", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/2040", 
+                    "name": "Students in Free Enterprise I"
+                }, 
+                {
+                    "code": "BUS 2041", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/2041", 
+                    "name": "Students in Free Enterprise II"
+                }, 
+                {
+                    "code": "BUS 2099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/2099", 
+                    "name": "Spec Top: Career Develop for Sophomores(Blended)"
+                }, 
+                {
+                    "code": "BUS 2990,3990", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/2990%2C3990", 
+                    "name": "and 4990 Special Topics in Business Administration"
+                }, 
+                {
+                    "code": "BUS 3010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3010", 
+                    "name": "Business Law (10/21/12 - 12/15/12)"
+                }, 
+                {
+                    "code": "BUS 3020", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3020", 
+                    "name": "Business Statistics"
+                }, 
+                {
+                    "code": "BUS 3030", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3030", 
+                    "name": "Organizational Behavior"
+                }, 
+                {
+                    "code": "BUS 3040", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3040", 
+                    "name": "Professional Presentations"
+                }, 
+                {
+                    "code": "BUS 3050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3050", 
+                    "name": "Ethics of Business"
+                }, 
+                {
+                    "code": "BUS 3060", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3060", 
+                    "name": "Global Business"
+                }, 
+                {
+                    "code": "BUS 3110", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3110", 
+                    "name": "Operations Management"
+                }, 
+                {
+                    "code": "BUS 3120", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3120", 
+                    "name": "Human Resources Management"
+                }, 
+                {
+                    "code": "BUS 3130", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3130", 
+                    "name": "Individual and Team Management"
+                }, 
+                {
+                    "code": "BUS 3210", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3210", 
+                    "name": "Facilities Management"
+                }, 
+                {
+                    "code": "BUS 3220", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3220", 
+                    "name": "Sports Law"
+                }, 
+                {
+                    "code": "BUS 3310", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3310", 
+                    "name": "Monetary Institutions"
+                }, 
+                {
+                    "code": "BUS 3320", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3320", 
+                    "name": "Financial Management"
+                }, 
+                {
+                    "code": "BUS 3330", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3330", 
+                    "name": "Investment Analysis"
+                }, 
+                {
+                    "code": "BUS 3410", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3410", 
+                    "name": "Marketing Research"
+                }, 
+                {
+                    "code": "BUS 3420", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3420", 
+                    "name": "Marketing Management"
+                }, 
+                {
+                    "code": "BUS 3450", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3450", 
+                    "name": "Sports Marketing"
+                }, 
+                {
+                    "code": "BUS 3510", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3510", 
+                    "name": "Data Management and Information Analysis"
+                }, 
+                {
+                    "code": "BUS 3520", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3520", 
+                    "name": "Business Data Communications"
+                }, 
+                {
+                    "code": "BUS 3530", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3530", 
+                    "name": "Business Systems Integration"
+                }, 
+                {
+                    "code": "BUS 3540", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/3540", 
+                    "name": "Sports Marketing"
+                }, 
+                {
+                    "code": "BUS 4010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/4010", 
+                    "name": "Business Strategy"
+                }, 
+                {
+                    "code": "BUS 4210", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/4210", 
+                    "name": "Event Administration"
+                }, 
+                {
+                    "code": "BUS 4220", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/4220", 
+                    "name": "Leadership & Problem Solving in Sports"
+                }, 
+                {
+                    "code": "BUS 4310", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/4310", 
+                    "name": "Financial Research and Analysis"
+                }, 
+                {
+                    "code": "BUS 4410", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/4410", 
+                    "name": "Sales and Sales Management"
+                }, 
+                {
+                    "code": "BUS 4420", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/BUS/4420", 
+                    "name": "Advertising Management & Integrated Mktg Communications"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/BUS"
+        }, 
+        {
+            "abbr": "CGS", 
+            "courses": [
+                {
+                    "code": "CGS 2003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CGS/2003", 
+                    "name": "Essentials of Global Politics"
+                }, 
+                {
+                    "code": "CGS 3004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CGS/3004", 
+                    "name": "Forms of Global Governance"
+                }, 
+                {
+                    "code": "CGS 3005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CGS/3005", 
+                    "name": "Peace and Conflict Analysis"
+                }, 
+                {
+                    "code": "CGS 3006", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CGS/3006", 
+                    "name": "Global and Regional Studies"
+                }, 
+                {
+                    "code": "CGS 3100", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CGS/3100", 
+                    "name": "Topics in Political Science:Introduction to the Study of Terrorism"
+                }, 
+                {
+                    "code": "CGS 3101", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CGS/3101", 
+                    "name": "Topics in Political Science:Global Humanitarian Organizations"
+                }, 
+                {
+                    "code": "CGS 4001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CGS/4001", 
+                    "name": "Senior Global Humanitarian Service Project"
+                }
+            ], 
+            "name": "Computers: General Studies", 
+            "url": "http://www.chegg.com/courses/centenarycollege/CGS"
+        }, 
+        {
+            "abbr": "CHA", 
+            "courses": [
+                {
+                    "code": "CHA 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CHA/1001", 
+                    "name": "Elementary Chinese I"
+                }, 
+                {
+                    "code": "CHA 2050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CHA/2050", 
+                    "name": "Spotlight on China"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/CHA"
+        }, 
+        {
+            "abbr": "CHM", 
+            "courses": [
+                {
+                    "code": "CHM 1050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CHM/1050", 
+                    "name": "Basic Chemistry"
+                }, 
+                {
+                    "code": "CHM 1100", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CHM/1100", 
+                    "name": "General Chemistry I"
+                }, 
+                {
+                    "code": "CHM 1110", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CHM/1110", 
+                    "name": "General Chemistry II"
+                }, 
+                {
+                    "code": "CHM 2000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CHM/2000", 
+                    "name": "Introduction to Organic Chemistry"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/CHM"
+        }, 
+        {
+            "abbr": "CJS", 
+            "courses": [
+                {
+                    "code": "CJS 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/1001", 
+                    "name": "Introduction to the Criminal Justice System"
+                }, 
+                {
+                    "code": "CJS 1002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/1002", 
+                    "name": "Careers in the Criminal Justice System"
+                }, 
+                {
+                    "code": "CJS 2001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/2001", 
+                    "name": "Community Policing"
+                }, 
+                {
+                    "code": "CJS 2002,3002 or 4002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/2002%2C3002%20or%204002", 
+                    "name": "Special Topics in Criminal Justice Studies"
+                }, 
+                {
+                    "code": "CJS 2005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/2005", 
+                    "name": "Comparative Criminal Justice Systems"
+                }, 
+                {
+                    "code": "CJS 2010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/2010", 
+                    "name": "Corrections, Probation and Parole (Blended)"
+                }, 
+                {
+                    "code": "CJS 2015", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/2015", 
+                    "name": "Crime Scene Photography"
+                }, 
+                {
+                    "code": "CJS 2020", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/2020", 
+                    "name": "Criminal Law and Criminal Procedure"
+                }, 
+                {
+                    "code": "CJS 2025", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/2025", 
+                    "name": "Criminal Investigation"
+                }, 
+                {
+                    "code": "CJS 2030", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/2030", 
+                    "name": "Fire and Arson Investigation"
+                }, 
+                {
+                    "code": "CJS 2035", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/2035", 
+                    "name": "Forensic Science"
+                }, 
+                {
+                    "code": "CJS 2040", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/2040", 
+                    "name": "Introduction to Law Enforcement"
+                }, 
+                {
+                    "code": "CJS 2045", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/2045", 
+                    "name": "Juvenile Justice and School Resources"
+                }, 
+                {
+                    "code": "CJS 2050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/2050", 
+                    "name": "Laws of Criminal Evidence"
+                }, 
+                {
+                    "code": "CJS 2055", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/2055", 
+                    "name": "Organized Crime and Gang Organization"
+                }, 
+                {
+                    "code": "CJS 2060", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/2060", 
+                    "name": "Victimology,Domestic Violence and Victim Witness Services"
+                }, 
+                {
+                    "code": "CJS 2065", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/2065", 
+                    "name": "White Collar Crime & Fraud Investigation"
+                }, 
+                {
+                    "code": "CJS 3001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/3001", 
+                    "name": "Criminology"
+                }, 
+                {
+                    "code": "CJS 3005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/3005", 
+                    "name": "Crisis Intervention in Public Safety"
+                }, 
+                {
+                    "code": "CJS 3010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/3010", 
+                    "name": "Death Investigation"
+                }, 
+                {
+                    "code": "CJS 3015", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/3015", 
+                    "name": "Interview & Interrogation and Arrest,Search & Seizure"
+                }, 
+                {
+                    "code": "CJS 3020", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/3020", 
+                    "name": "Leadership for Police Field Commanders"
+                }, 
+                {
+                    "code": "CJS 3025", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/3025", 
+                    "name": "Police Organization and Administration(8/26/12-12/8/12)"
+                }, 
+                {
+                    "code": "CJS 3030", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/3030", 
+                    "name": "Criminal Justice Internship"
+                }, 
+                {
+                    "code": "CJS 3035", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/3035", 
+                    "name": "Independent Study in Criminal Justice"
+                }, 
+                {
+                    "code": "CJS 4001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/CJS/4001", 
+                    "name": "Senior Seminar in Criminal Justice (Blended)"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/CJS"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 1003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/1003", 
+                    "name": "Practicum: The Quill"
+                }, 
+                {
+                    "code": "COM 1004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/1004", 
+                    "name": "Practicum: The Hack"
+                }, 
+                {
+                    "code": "COM 1005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/1005", 
+                    "name": "Desktop Publishing"
+                }, 
+                {
+                    "code": "COM 1011", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/1011", 
+                    "name": "Mass Media"
+                }, 
+                {
+                    "code": "COM 1013", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/1013", 
+                    "name": "Audio Production"
+                }, 
+                {
+                    "code": "COM 1014", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/1014", 
+                    "name": "Film Appreciation"
+                }, 
+                {
+                    "code": "COM 1015", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/1015", 
+                    "name": "Intro to Radio/TV Studio Operations"
+                }, 
+                {
+                    "code": "COM 2000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/2000", 
+                    "name": "Interpersonal Communication"
+                }, 
+                {
+                    "code": "COM 2001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/2001", 
+                    "name": "Public Speaking"
+                }, 
+                {
+                    "code": "COM 2003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/2003", 
+                    "name": "Advertising Copywriting"
+                }, 
+                {
+                    "code": "COM 2005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/2005", 
+                    "name": "Advanced Audio Production"
+                }, 
+                {
+                    "code": "COM 2008", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/2008", 
+                    "name": "Television Studio Production"
+                }, 
+                {
+                    "code": "COM 2010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/2010", 
+                    "name": "Broadcast Announcing"
+                }, 
+                {
+                    "code": "COM 2011", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/2011", 
+                    "name": "Introduction to Journalism"
+                }, 
+                {
+                    "code": "COM 2013", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/2013", 
+                    "name": "Media Design"
+                }, 
+                {
+                    "code": "COM 2040", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/2040", 
+                    "name": "Great Directors"
+                }, 
+                {
+                    "code": "COM 2099,3099, or 4099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/2099%2C3099%2C%20or%204099", 
+                    "name": "Special Topics in Communication"
+                }, 
+                {
+                    "code": "COM 2111", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/2111", 
+                    "name": "Global Cinema"
+                }, 
+                {
+                    "code": "COM 3005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/3005", 
+                    "name": "Mass Communication Law & Ethics"
+                }, 
+                {
+                    "code": "COM 3008", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/3008", 
+                    "name": "Electronic Field Production"
+                }, 
+                {
+                    "code": "COM 3011", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/3011", 
+                    "name": "Media Newswriting"
+                }, 
+                {
+                    "code": "COM 3013", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/3013", 
+                    "name": "Non-Fiction Freelance Writing & Editing"
+                }, 
+                {
+                    "code": "COM 3014", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/3014", 
+                    "name": "Photojournalism"
+                }, 
+                {
+                    "code": "COM 3018", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/3018", 
+                    "name": "Writing for Public Relations"
+                }, 
+                {
+                    "code": "COM 3019", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/3019", 
+                    "name": "Technical Writing"
+                }, 
+                {
+                    "code": "COM 3025", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/3025", 
+                    "name": "Advanced Television Production"
+                }, 
+                {
+                    "code": "COM 3033", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/3033", 
+                    "name": "Print Editing"
+                }, 
+                {
+                    "code": "COM 3041", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/3041", 
+                    "name": "Art Films & Video"
+                }, 
+                {
+                    "code": "COM 3042", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/3042", 
+                    "name": "Digital Filmmaking"
+                }, 
+                {
+                    "code": "COM 4018", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/COM/4018", 
+                    "name": "Senior Communication Project"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/COM"
+        }, 
+        {
+            "abbr": "DES", 
+            "courses": [
+                {
+                    "code": "DES 1007", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/DES/1007", 
+                    "name": "Introduction to Computer Graphics"
+                }, 
+                {
+                    "code": "DES 2007", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/DES/2007", 
+                    "name": "History of Graphic Design"
+                }, 
+                {
+                    "code": "DES 2008", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/DES/2008", 
+                    "name": "Typography"
+                }, 
+                {
+                    "code": "DES 2016", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/DES/2016", 
+                    "name": "Graphic Design I (8/26/12 - 12/8/12)"
+                }, 
+                {
+                    "code": "DES 2017", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/DES/2017", 
+                    "name": "Graphic Design II"
+                }, 
+                {
+                    "code": "DES 2099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/DES/2099", 
+                    "name": "Special Topics: Graphic Design"
+                }, 
+                {
+                    "code": "DES 3002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/DES/3002", 
+                    "name": "Digital Illustration"
+                }, 
+                {
+                    "code": "DES 3005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/DES/3005", 
+                    "name": "Web Design I"
+                }, 
+                {
+                    "code": "DES 3006", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/DES/3006", 
+                    "name": "Web Design II"
+                }, 
+                {
+                    "code": "DES 3007", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/DES/3007", 
+                    "name": "Computer Animation for Multi-Media and Video"
+                }, 
+                {
+                    "code": "DES 3008 3", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/DES/3008%203", 
+                    "name": "D Computer Graphics"
+                }, 
+                {
+                    "code": "DES 3099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/DES/3099", 
+                    "name": "Special Topics: Advanced 3-D Modeling"
+                }, 
+                {
+                    "code": "DES 4007", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/DES/4007", 
+                    "name": "Senior Project in Visual Communication I"
+                }, 
+                {
+                    "code": "DES 4008", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/DES/4008", 
+                    "name": "Senior Project in Visual Communication II"
+                }, 
+                {
+                    "code": "DES 4012", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/DES/4012", 
+                    "name": "Digital Photography"
+                }, 
+                {
+                    "code": "DES 4099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/DES/4099", 
+                    "name": "Special Topics: Gaming Design"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/DES"
+        }, 
+        {
+            "abbr": "ECO", 
+            "courses": [
+                {
+                    "code": "ECO 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ECO/1001", 
+                    "name": "Economics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/ECO"
+        }, 
+        {
+            "abbr": "EDP", 
+            "courses": [
+                {
+                    "code": "EDP 2001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDP/2001", 
+                    "name": "PreSchool & School aged Dev.((3-18 yrs)"
+                }, 
+                {
+                    "code": "EDP 3013", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDP/3013", 
+                    "name": "Psychology of Low and High Incidence Exceptionality"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/EDP"
+        }, 
+        {
+            "abbr": "EDU", 
+            "courses": [
+                {
+                    "code": "EDU 2000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/2000", 
+                    "name": "Foundations of Education"
+                }, 
+                {
+                    "code": "EDU 2001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/2001", 
+                    "name": "Principles and Practices of Teaching"
+                }, 
+                {
+                    "code": "EDU 2002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/2002", 
+                    "name": "Curriculum Design"
+                }, 
+                {
+                    "code": "EDU 2003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/2003", 
+                    "name": "Foundations of Education:Teaching K - 5"
+                }, 
+                {
+                    "code": "EDU 2004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/2004", 
+                    "name": "Foundations of Education:Teaching in Content Area"
+                }, 
+                {
+                    "code": "EDU 3000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/3000", 
+                    "name": "Assistive Technology"
+                }, 
+                {
+                    "code": "EDU 3031", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/3031", 
+                    "name": "Special Education: The Learner's Perspective"
+                }, 
+                {
+                    "code": "EDU 3033", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/3033", 
+                    "name": "Lang Devel, Communication and Literacy in Special Educ"
+                }, 
+                {
+                    "code": "EDU 3034", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/3034", 
+                    "name": "Special Education Methods and Materials"
+                }, 
+                {
+                    "code": "EDU 3038", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/3038", 
+                    "name": "Classroom Management for Challenging Behavior"
+                }, 
+                {
+                    "code": "EDU 3041", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/3041", 
+                    "name": "Foundations of Literacy in Elementary Education"
+                }, 
+                {
+                    "code": "EDU 3043", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/3043", 
+                    "name": "Literacy in the Content Areas"
+                }, 
+                {
+                    "code": "EDU 3052", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/3052", 
+                    "name": "Elementary Teaching Methodology"
+                }, 
+                {
+                    "code": "EDU 3053", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/3053", 
+                    "name": "Foundations of Literacy in Elementary Education"
+                }, 
+                {
+                    "code": "EDU 3054", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/3054", 
+                    "name": "Literacy in the Content Areas"
+                }, 
+                {
+                    "code": "EDU 3056", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/3056", 
+                    "name": "English Curriculum and Instruction"
+                }, 
+                {
+                    "code": "EDU 3057", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/3057", 
+                    "name": "Mathematics Curriculum and Instruction"
+                }, 
+                {
+                    "code": "EDU 3058", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/3058", 
+                    "name": "Biology Curriculum and Instruction"
+                }, 
+                {
+                    "code": "EDU 3059", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/3059", 
+                    "name": "Social Studies Curriculum and Instruction"
+                }, 
+                {
+                    "code": "EDU 3080", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/3080", 
+                    "name": "Teaching Practicum and Assessing Outcomes"
+                }, 
+                {
+                    "code": "EDU 3099A", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/3099A", 
+                    "name": "Special Topics in Education: Writing Buddies"
+                }, 
+                {
+                    "code": "EDU 4024", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/4024", 
+                    "name": "Applications in Literacy"
+                }, 
+                {
+                    "code": "EDU 4050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EDU/4050", 
+                    "name": "Student Teaching - Secondary Education"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/EDU"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 0010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/0010", 
+                    "name": "College English Skills"
+                }, 
+                {
+                    "code": "ENG 1000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/1000", 
+                    "name": "College English"
+                }, 
+                {
+                    "code": "ENG 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/1001", 
+                    "name": "Composition & Rhetoric"
+                }, 
+                {
+                    "code": "ENG 1005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/1005", 
+                    "name": "Introduction to Literary Analysis"
+                }, 
+                {
+                    "code": "ENG 2000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2000", 
+                    "name": "English Plus"
+                }, 
+                {
+                    "code": "ENG 2008", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2008", 
+                    "name": "World Literature I: Beginnings to Shakespeare"
+                }, 
+                {
+                    "code": "ENG 2009", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2009", 
+                    "name": "World Literature II: Shakespeare to Today"
+                }, 
+                {
+                    "code": "ENG 2010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2010", 
+                    "name": "Word Power"
+                }, 
+                {
+                    "code": "ENG 2012", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2012", 
+                    "name": "Advanced Composition"
+                }, 
+                {
+                    "code": "ENG 2014", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2014", 
+                    "name": "American Literature Survey"
+                }, 
+                {
+                    "code": "ENG 2015", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2015", 
+                    "name": "Poetry Workshop"
+                }, 
+                {
+                    "code": "ENG 2016", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2016", 
+                    "name": "Prose Workshop (8/26/12 - 12/8/12)"
+                }, 
+                {
+                    "code": "ENG 2017", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2017", 
+                    "name": "Survey of British Literature I"
+                }, 
+                {
+                    "code": "ENG 2017-2018", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2017-2018", 
+                    "name": "Survey of British Literature I and II"
+                }, 
+                {
+                    "code": "ENG 2019", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2019", 
+                    "name": "Classical Literature"
+                }, 
+                {
+                    "code": "ENG 2020", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2020", 
+                    "name": "The Bible as Literature"
+                }, 
+                {
+                    "code": "ENG 2025", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2025", 
+                    "name": "Ethnic American Literature (10/21/12 - 12/15/12)"
+                }, 
+                {
+                    "code": "ENG 2026", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2026", 
+                    "name": "Women Writers of the World"
+                }, 
+                {
+                    "code": "ENG 2028", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2028", 
+                    "name": "Non-Western World Literature"
+                }, 
+                {
+                    "code": "ENG 2029", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2029", 
+                    "name": "Modern European Literature"
+                }, 
+                {
+                    "code": "ENG 2031", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2031", 
+                    "name": "The Craft of Prose Writing"
+                }, 
+                {
+                    "code": "ENG 2080", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2080", 
+                    "name": "Literature of the American West"
+                }, 
+                {
+                    "code": "ENG 2082", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2082", 
+                    "name": "Literature of NYC"
+                }, 
+                {
+                    "code": "ENG 2091", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2091", 
+                    "name": "Literature to Film"
+                }, 
+                {
+                    "code": "ENG 2099,3099, or 4099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/2099%2C3099%2C%20or%204099", 
+                    "name": "Special Topics in English"
+                }, 
+                {
+                    "code": "ENG 3001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/3001", 
+                    "name": "Development of the Novel"
+                }, 
+                {
+                    "code": "ENG 3002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/3002", 
+                    "name": "History of Drama"
+                }, 
+                {
+                    "code": "ENG 3003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/3003", 
+                    "name": "Children's Literature"
+                }, 
+                {
+                    "code": "ENG 3004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/3004", 
+                    "name": "The Short Story"
+                }, 
+                {
+                    "code": "ENG 3020", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/3020", 
+                    "name": "Writing Tutor Training"
+                }, 
+                {
+                    "code": "ENG 3021", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/3021", 
+                    "name": "Writing Tutor Practicum"
+                }, 
+                {
+                    "code": "ENG 3029", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/3029", 
+                    "name": "Modern European Literature"
+                }, 
+                {
+                    "code": "ENG 3035", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/3035", 
+                    "name": "History of the English Language"
+                }, 
+                {
+                    "code": "ENG 3036", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/3036", 
+                    "name": "Medieval Literature"
+                }, 
+                {
+                    "code": "ENG 3037", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/3037", 
+                    "name": "Renaissance Literature:1500-1660"
+                }, 
+                {
+                    "code": "ENG 3038", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/3038", 
+                    "name": "Reason & Emotion: Eighteenth Century Literature"
+                }, 
+                {
+                    "code": "ENG 3039", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/3039", 
+                    "name": "Romantic and Victorian Literature"
+                }, 
+                {
+                    "code": "ENG 3040", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/3040", 
+                    "name": "Twentieth-Century British Literature"
+                }, 
+                {
+                    "code": "ENG 3042", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/3042", 
+                    "name": "Modern and Contemporary American Literature"
+                }, 
+                {
+                    "code": "ENG 3080", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/3080", 
+                    "name": "Literature of the American West"
+                }, 
+                {
+                    "code": "ENG 4005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/4005", 
+                    "name": "Modern British and American Poetry"
+                }, 
+                {
+                    "code": "ENG 4010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/4010", 
+                    "name": "Shakespeare"
+                }, 
+                {
+                    "code": "ENG 4020", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/4020", 
+                    "name": "Chaucer"
+                }, 
+                {
+                    "code": "ENG 4080", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/4080", 
+                    "name": "Senior Seminar"
+                }, 
+                {
+                    "code": "ENG 22015", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENG/22015", 
+                    "name": "Creative Writing:Poetry"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/ENG"
+        }, 
+        {
+            "abbr": "ENV", 
+            "courses": [
+                {
+                    "code": "ENV 1200", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ENV/1200", 
+                    "name": "Environmental Law"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/ENV"
+        }, 
+        {
+            "abbr": "ESL", 
+            "courses": [
+                {
+                    "code": "ESL 1003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ESL/1003", 
+                    "name": "Elementary English as a Second Language"
+                }, 
+                {
+                    "code": "ESL 1004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ESL/1004", 
+                    "name": "Advanced English as a Second Language"
+                }, 
+                {
+                    "code": "ESL 1007", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ESL/1007", 
+                    "name": "American Culture"
+                }, 
+                {
+                    "code": "ESL 2000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ESL/2000", 
+                    "name": "Advanced Reading and Conversation"
+                }, 
+                {
+                    "code": "ESL 2001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ESL/2001", 
+                    "name": "Pronunciation,Articulation,and Fluency"
+                }, 
+                {
+                    "code": "ESL 2002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ESL/2002", 
+                    "name": "Academic Writing and Documentation"
+                }, 
+                {
+                    "code": "ESL 2010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ESL/2010", 
+                    "name": "Word Power"
+                }, 
+                {
+                    "code": "ESL 2020", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ESL/2020", 
+                    "name": "Academic Reading & Vocabulary I"
+                }, 
+                {
+                    "code": "ESL 2030", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ESL/2030", 
+                    "name": "Academic Writing I"
+                }, 
+                {
+                    "code": "ESL 2040", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ESL/2040", 
+                    "name": "Pronounciation & Conversation I"
+                }, 
+                {
+                    "code": "ESL 2051", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/ESL/2051", 
+                    "name": "Public Speaking for Non-native Speakers of English"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/ESL"
+        }, 
+        {
+            "abbr": "EST", 
+            "courses": [
+                {
+                    "code": "EST 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/1001", 
+                    "name": "Basic I"
+                }, 
+                {
+                    "code": "EST 1002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/1002", 
+                    "name": "Basic II"
+                }, 
+                {
+                    "code": "EST 1003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/1003", 
+                    "name": "Equitation I"
+                }, 
+                {
+                    "code": "EST 1004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/1004", 
+                    "name": "Equitation II"
+                }, 
+                {
+                    "code": "EST 1005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/1005", 
+                    "name": "Equitation III"
+                }, 
+                {
+                    "code": "EST 1010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/1010", 
+                    "name": "Practical Horse Management"
+                }, 
+                {
+                    "code": "EST 1011", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/1011", 
+                    "name": "Fundamental Theories of Riding"
+                }, 
+                {
+                    "code": "EST 1012", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/1012", 
+                    "name": "Practical Horse Management II"
+                }, 
+                {
+                    "code": "EST 2001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/2001", 
+                    "name": "Introduction to Hunt Seat"
+                }, 
+                {
+                    "code": "EST 2002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/2002", 
+                    "name": "Introduction to Dressage"
+                }, 
+                {
+                    "code": "EST 2003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/2003", 
+                    "name": "Introduction to Jumpers"
+                }, 
+                {
+                    "code": "EST 2010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/2010", 
+                    "name": "Basic Concepts of Training the Horse"
+                }, 
+                {
+                    "code": "EST 2011", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/2011", 
+                    "name": "Equine Facilities Management"
+                }, 
+                {
+                    "code": "EST 2012", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/2012", 
+                    "name": "Equine Health I"
+                }, 
+                {
+                    "code": "EST 3001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/3001", 
+                    "name": "Novice/Limit Hunt Seat"
+                }, 
+                {
+                    "code": "EST 3002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/3002", 
+                    "name": "Training Level Dressage"
+                }, 
+                {
+                    "code": "EST 3003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/3003", 
+                    "name": "Dressage for the Hunter/Jumper Rider"
+                }, 
+                {
+                    "code": "EST 3004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/3004", 
+                    "name": "Pre-Preliminary Jumpers - Level 0"
+                }, 
+                {
+                    "code": "EST 3005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/3005", 
+                    "name": "Novice Hunt Seat"
+                }, 
+                {
+                    "code": "EST 3006", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/3006", 
+                    "name": "Limit Hunt Seat"
+                }, 
+                {
+                    "code": "EST 3010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/3010", 
+                    "name": "Equine Health II"
+                }, 
+                {
+                    "code": "EST 3011", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/3011", 
+                    "name": "Equine Business Management"
+                }, 
+                {
+                    "code": "EST 3012", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/3012", 
+                    "name": "Equine Nutrition"
+                }, 
+                {
+                    "code": "EST 3013", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/3013", 
+                    "name": "Methods of Teaching and Riding"
+                }, 
+                {
+                    "code": "EST 3015", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/3015", 
+                    "name": "Equine Semester Abroad"
+                }, 
+                {
+                    "code": "EST 3017", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/3017", 
+                    "name": "Teaching Therapeutic Riding I"
+                }, 
+                {
+                    "code": "EST 3017-3018", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/3017-3018", 
+                    "name": "Teaching Therapeutic Riding I & II"
+                }, 
+                {
+                    "code": "EST 4000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4000", 
+                    "name": "Low Schooling Jumpers - Level 1"
+                }, 
+                {
+                    "code": "EST 4001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4001", 
+                    "name": "Intermediate Hunt Seat"
+                }, 
+                {
+                    "code": "EST 4002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4002", 
+                    "name": "Open Hunt Seat"
+                }, 
+                {
+                    "code": "EST 4003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4003", 
+                    "name": "First Level Dressage"
+                }, 
+                {
+                    "code": "EST 4004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4004", 
+                    "name": "Advanced Dressage"
+                }, 
+                {
+                    "code": "EST 4005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4005", 
+                    "name": "High Schooling Jumpers - Levels 2 and 3"
+                }, 
+                {
+                    "code": "EST 4006", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4006", 
+                    "name": "Training Jumpers- Levels 3 and"
+                }, 
+                {
+                    "code": "EST 4010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4010", 
+                    "name": "Management of Equestrian Activities"
+                }, 
+                {
+                    "code": "EST 4011", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4011", 
+                    "name": "Advanced Equine Business Management"
+                }, 
+                {
+                    "code": "EST 4012", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4012", 
+                    "name": "Course Design"
+                }, 
+                {
+                    "code": "EST 4013", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4013", 
+                    "name": "Judging: Selection & Performance of Competitive Horse"
+                }, 
+                {
+                    "code": "EST 4014", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4014", 
+                    "name": "Breeding Management"
+                }, 
+                {
+                    "code": "EST 4016", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4016", 
+                    "name": "Teaching Practicum"
+                }, 
+                {
+                    "code": "EST 4017", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4017", 
+                    "name": "Practicum in Therapeutic Riding I"
+                }, 
+                {
+                    "code": "EST 4017-4018", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4017-4018", 
+                    "name": "Practicum in Therapeutic Riding I & II"
+                }, 
+                {
+                    "code": "EST 4018", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4018", 
+                    "name": "Practicum in Therapeutic Riding II"
+                }, 
+                {
+                    "code": "EST 4020", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4020", 
+                    "name": "Advanced Techniques of Training the Horse"
+                }, 
+                {
+                    "code": "EST 4023", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4023", 
+                    "name": "Professional Show Grooming"
+                }, 
+                {
+                    "code": "EST 4024", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4024", 
+                    "name": "Equine Musculoskeletal System I"
+                }, 
+                {
+                    "code": "EST 4025", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4025", 
+                    "name": "Equine Musculoskeletal System II"
+                }, 
+                {
+                    "code": "EST 4027", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4027", 
+                    "name": "Starting and Tranining The Horse"
+                }, 
+                {
+                    "code": "EST 4028", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4028", 
+                    "name": "Starting and Training the Horse"
+                }, 
+                {
+                    "code": "EST 4030", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4030", 
+                    "name": "Equine Studies Seminar"
+                }, 
+                {
+                    "code": "EST 4099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/EST/4099", 
+                    "name": "Certification:Therapeutic Riding I (Audit Only)"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/EST"
+        }, 
+        {
+            "abbr": "FAS", 
+            "courses": [
+                {
+                    "code": "FAS 1000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/1000", 
+                    "name": "Apparel Construction"
+                }, 
+                {
+                    "code": "FAS 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/1001", 
+                    "name": "Introduction to the Fashion Industry"
+                }, 
+                {
+                    "code": "FAS 1008", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/1008", 
+                    "name": "Fashion Sketching"
+                }, 
+                {
+                    "code": "FAS 1098", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/1098", 
+                    "name": "Special Topics: Chainmaille Jewelry and Construction"
+                }, 
+                {
+                    "code": "FAS 2000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/2000", 
+                    "name": "Advanced Apparel Construction"
+                }, 
+                {
+                    "code": "FAS 2009", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/2009", 
+                    "name": "Fashion Coordination & Promotion"
+                }, 
+                {
+                    "code": "FAS 2010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/2010", 
+                    "name": "Design Studio I-Flat Pattern"
+                }, 
+                {
+                    "code": "FAS 2011", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/2011", 
+                    "name": "Textile Science"
+                }, 
+                {
+                    "code": "FAS 2099,3099,4099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/2099%2C3099%2C4099", 
+                    "name": "Special Topics in Fashion"
+                }, 
+                {
+                    "code": "FAS 3001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/3001", 
+                    "name": "Retailing"
+                }, 
+                {
+                    "code": "FAS 3003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/3003", 
+                    "name": "Visual Merchandising"
+                }, 
+                {
+                    "code": "FAS 3004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/3004", 
+                    "name": "Textile Performance"
+                }, 
+                {
+                    "code": "FAS 3005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/3005", 
+                    "name": "History of Costume"
+                }, 
+                {
+                    "code": "FAS 3008", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/3008", 
+                    "name": "Consumer Goods for the Home"
+                }, 
+                {
+                    "code": "FAS 3010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/3010", 
+                    "name": "Design Studio II-Draping"
+                }, 
+                {
+                    "code": "FAS 3015", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/3015", 
+                    "name": "Fashion Graphics"
+                }, 
+                {
+                    "code": "FAS 3016", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/3016", 
+                    "name": "Flat Sketching:The Way to Global Sourcing"
+                }, 
+                {
+                    "code": "FAS 3020", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/3020", 
+                    "name": "Computer Applications in Fashion"
+                }, 
+                {
+                    "code": "FAS 4001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/4001", 
+                    "name": "Fashion Buying"
+                }, 
+                {
+                    "code": "FAS 4003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/4003", 
+                    "name": "Textile Design"
+                }, 
+                {
+                    "code": "FAS 4005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/4005", 
+                    "name": "Social and Psychological Aspects of Clothing"
+                }, 
+                {
+                    "code": "FAS 4010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/4010", 
+                    "name": "Design Studio III-Advanced Problems in Fashion"
+                }, 
+                {
+                    "code": "FAS 4012", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/4012", 
+                    "name": "Design Studio IV-Portfolio Development"
+                }, 
+                {
+                    "code": "FAS 4014", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FAS/4014", 
+                    "name": "Fashion Merchandising Portfolio Developmnt (Fashion majors)"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/FAS"
+        }, 
+        {
+            "abbr": "FRN", 
+            "courses": [
+                {
+                    "code": "FRN 1001-1002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FRN/1001-1002", 
+                    "name": "Elementary French I & II"
+                }, 
+                {
+                    "code": "FRN 2001-2002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/FRN/2001-2002", 
+                    "name": "Intermediate French I & II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/FRN"
+        }, 
+        {
+            "abbr": "GAC", 
+            "courses": [
+                {
+                    "code": "GAC 510", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GAC/510", 
+                    "name": "Comprehensive Accounting Problems"
+                }, 
+                {
+                    "code": "GAC 515", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GAC/515", 
+                    "name": "Financial Accounting"
+                }, 
+                {
+                    "code": "GAC 530", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GAC/530", 
+                    "name": "Accounting and Management Information Systems"
+                }, 
+                {
+                    "code": "GAC 610", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GAC/610", 
+                    "name": "Advanced Financial Accounting Theory"
+                }, 
+                {
+                    "code": "GAC 625", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GAC/625", 
+                    "name": "Advanced Tax Research"
+                }, 
+                {
+                    "code": "GAC 635", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GAC/635", 
+                    "name": "Advanced Auditing Standards and Problems"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/GAC"
+        }, 
+        {
+            "abbr": "GBA", 
+            "courses": [
+                {
+                    "code": "GBA 500", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GBA/500", 
+                    "name": "Leadership"
+                }, 
+                {
+                    "code": "GBA 504", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GBA/504", 
+                    "name": "Legal and Social Environment of Business"
+                }, 
+                {
+                    "code": "GBA 510", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GBA/510", 
+                    "name": "Managerial Economics"
+                }, 
+                {
+                    "code": "GBA 525", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GBA/525", 
+                    "name": "Managerial Accounting"
+                }, 
+                {
+                    "code": "GBA 530", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GBA/530", 
+                    "name": "Management Information Systems"
+                }, 
+                {
+                    "code": "GBA 540", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GBA/540", 
+                    "name": "The Global Business Environment"
+                }, 
+                {
+                    "code": "GBA 603", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GBA/603", 
+                    "name": "Organizational Theory"
+                }, 
+                {
+                    "code": "GBA 607", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GBA/607", 
+                    "name": "The Global Business Environment"
+                }, 
+                {
+                    "code": "GBA 609", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GBA/609", 
+                    "name": "Quantitative Analysis"
+                }, 
+                {
+                    "code": "GBA 630", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GBA/630", 
+                    "name": "International Management"
+                }, 
+                {
+                    "code": "GBA 690", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GBA/690", 
+                    "name": "Seminar:Business Strategy and Policy"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/GBA"
+        }, 
+        {
+            "abbr": "GED", 
+            "courses": [
+                {
+                    "code": "GED 510", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/510", 
+                    "name": "Educational Administrative Theory"
+                }, 
+                {
+                    "code": "GED 521", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/521", 
+                    "name": "Introduction to Educational Technology"
+                }, 
+                {
+                    "code": "GED 522", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/522", 
+                    "name": "Technology and Ethics"
+                }, 
+                {
+                    "code": "GED 523", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/523", 
+                    "name": "Productivity Tools for Teachers"
+                }, 
+                {
+                    "code": "GED 524", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/524", 
+                    "name": "Web Design for Teachers"
+                }, 
+                {
+                    "code": "GED 525", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/525", 
+                    "name": "Audio and Video Production for the Classroom"
+                }, 
+                {
+                    "code": "GED 526", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/526", 
+                    "name": "Digital Visual Imagery for Educators"
+                }, 
+                {
+                    "code": "GED 527", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/527", 
+                    "name": "Video Game-based Learning"
+                }, 
+                {
+                    "code": "GED 529", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/529", 
+                    "name": "Educational Research"
+                }, 
+                {
+                    "code": "GED 550", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/550", 
+                    "name": "Seminar in Curricular Evaluation and Assessment Strategies"
+                }, 
+                {
+                    "code": "GED 560", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/560", 
+                    "name": "Seminar in Instructional Leadership"
+                }, 
+                {
+                    "code": "GED 601", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/601", 
+                    "name": "Nature and Needs of Individuals with Disabilities"
+                }, 
+                {
+                    "code": "GED 602", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/602", 
+                    "name": "Ethical Issues"
+                }, 
+                {
+                    "code": "GED 604", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/604", 
+                    "name": "Behavior Management"
+                }, 
+                {
+                    "code": "GED 605", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/605", 
+                    "name": "Characteristics of Diverse Learners"
+                }, 
+                {
+                    "code": "GED 606", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/606", 
+                    "name": "Approaches to Instruction for Special Education"
+                }, 
+                {
+                    "code": "GED 607", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/607", 
+                    "name": "Assessment for Instruction in Special Education"
+                }, 
+                {
+                    "code": "GED 608", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/608", 
+                    "name": "Family, Society, and Children with Special Needs"
+                }, 
+                {
+                    "code": "GED 615", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/615", 
+                    "name": "Collaborative Practices"
+                }, 
+                {
+                    "code": "GED 617", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/617", 
+                    "name": "Alternative Assessment Practices"
+                }, 
+                {
+                    "code": "GED 618", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/618", 
+                    "name": "Seminar in Research and Application in Special Education"
+                }, 
+                {
+                    "code": "GED 619", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/619", 
+                    "name": "Students, Teachers, Social Policy, and the Law"
+                }, 
+                {
+                    "code": "GED 620", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/620", 
+                    "name": "Inclusive Practices"
+                }, 
+                {
+                    "code": "GED 621", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/621", 
+                    "name": "A Prologue to Contemporary Educational Practice"
+                }, 
+                {
+                    "code": "GED 622", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/622", 
+                    "name": "Collaborative Teaching Concepts"
+                }, 
+                {
+                    "code": "GED 623", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/623", 
+                    "name": "Assessment and Evaluation:Relevant Instructional Design Models"
+                }, 
+                {
+                    "code": "GED 624", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/624", 
+                    "name": "Teachers as Change Agents and Educational Researchers"
+                }, 
+                {
+                    "code": "GED 625", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/625", 
+                    "name": "Curriculum Design and Development"
+                }, 
+                {
+                    "code": "GED 626", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/626", 
+                    "name": "Educational Technology Integration Strategies"
+                }, 
+                {
+                    "code": "GED 627", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/627", 
+                    "name": "Action Research Based Thesis Proposal"
+                }, 
+                {
+                    "code": "GED 628", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/628", 
+                    "name": "Special Education Services and Community"
+                }, 
+                {
+                    "code": "GED 629", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/629", 
+                    "name": "Applications of Contemporary Educational Practice"
+                }, 
+                {
+                    "code": "GED 630", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/630", 
+                    "name": "Improving and Assessing Instructional Strategies"
+                }, 
+                {
+                    "code": "GED 632", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/632", 
+                    "name": "Technology in the Classroom"
+                }, 
+                {
+                    "code": "GED 633", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/633", 
+                    "name": "The Art and Science of Teaching & Learning:Brain Compatible Practices For theElementary Classroom"
+                }, 
+                {
+                    "code": "GED 634", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/634", 
+                    "name": "Innovative Approaches Literacy Instruction (Blended)"
+                }, 
+                {
+                    "code": "GED 635", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/635", 
+                    "name": "Literacy as a Process in Integrated Learning"
+                }, 
+                {
+                    "code": "GED 636", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/636", 
+                    "name": "Inquiry Instruction in the Classroom"
+                }, 
+                {
+                    "code": "GED 637", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/637", 
+                    "name": "Critical Thinking, Moral Education, and Ethics"
+                }, 
+                {
+                    "code": "GED 638", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/638", 
+                    "name": "Action Research Based Thesis Implementation"
+                }, 
+                {
+                    "code": "GED 641", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/641", 
+                    "name": "Strategies for Collaborative Teaching:Case Studies"
+                }, 
+                {
+                    "code": "GED 642", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/642", 
+                    "name": "Case Studies in Supervision"
+                }, 
+                {
+                    "code": "GED 643", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/643", 
+                    "name": "Conflict Resolution"
+                }, 
+                {
+                    "code": "GED 647", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/647", 
+                    "name": "The Summer Writing Institute:Introduction to the Writing Agenda"
+                }, 
+                {
+                    "code": "GED 648", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/648", 
+                    "name": "Applications of the Writing Agenda"
+                }, 
+                {
+                    "code": "GED 650", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/650", 
+                    "name": "Principles and Practices of Supervision"
+                }, 
+                {
+                    "code": "GED 651", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/651", 
+                    "name": "Curriculum Development and Evaluation"
+                }, 
+                {
+                    "code": "GED 652", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/652", 
+                    "name": "Current Issues in Special Education"
+                }, 
+                {
+                    "code": "GED 653", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/653", 
+                    "name": "Curriculum Development in Early Childhood and Elementary Education"
+                }, 
+                {
+                    "code": "GED 656", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/656", 
+                    "name": "Communication and Literacy in Special Education"
+                }, 
+                {
+                    "code": "GED 657", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/657", 
+                    "name": "Curriculum Development in Middle and Secondary Schools"
+                }, 
+                {
+                    "code": "GED 658", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/658", 
+                    "name": "Social Issues for Children with Special Needs"
+                }, 
+                {
+                    "code": "GED 659", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/659", 
+                    "name": "Children at Crossroads:Life Issues that Affect Young Lives"
+                }, 
+                {
+                    "code": "GED 660", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/660", 
+                    "name": "The Principalship"
+                }, 
+                {
+                    "code": "GED 661", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/661", 
+                    "name": "Managing Educational Change and Innovation"
+                }, 
+                {
+                    "code": "GED 670", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/670", 
+                    "name": "Field Supervision Internship"
+                }, 
+                {
+                    "code": "GED 671", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/671", 
+                    "name": "Field Supervision Internship II"
+                }, 
+                {
+                    "code": "GED 680", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/680", 
+                    "name": "Finance and Facilities"
+                }, 
+                {
+                    "code": "GED 697", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/697", 
+                    "name": "Educational Research (Special Education)"
+                }, 
+                {
+                    "code": "GED 698", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/698", 
+                    "name": "Research in Instructional Leadership (Special Education)"
+                }, 
+                {
+                    "code": "GED 699", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GED/699", 
+                    "name": "Special Topics in Special Education: Multiple Disabilities"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/GED"
+        }, 
+        {
+            "abbr": "GENG", 
+            "courses": [
+                {
+                    "code": "GENG 580", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/580", 
+                    "name": "Senior Seminar:Gothic Literature"
+                }, 
+                {
+                    "code": "GENG 601", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/601", 
+                    "name": "Theoretical Approaches to Literature and Research"
+                }, 
+                {
+                    "code": "GENG 610", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/610", 
+                    "name": "Studies in Medieval Literature"
+                }, 
+                {
+                    "code": "GENG 615", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/615", 
+                    "name": "Studies in Early Modern Literature"
+                }, 
+                {
+                    "code": "GENG 620", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/620", 
+                    "name": "Studies in the Seventeenth and Eighteenth Century Literature"
+                }, 
+                {
+                    "code": "GENG 625", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/625", 
+                    "name": "Studies in Nineteenth Century Literature"
+                }, 
+                {
+                    "code": "GENG 630", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/630", 
+                    "name": "The Romantics"
+                }, 
+                {
+                    "code": "GENG 635", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/635", 
+                    "name": "Studies in Twentieth Century Literature"
+                }, 
+                {
+                    "code": "GENG 650", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/650", 
+                    "name": "Author Seminar"
+                }, 
+                {
+                    "code": "GENG 660", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/660", 
+                    "name": "Studies in Drama"
+                }, 
+                {
+                    "code": "GENG 665", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/665", 
+                    "name": "Studies in Fiction"
+                }, 
+                {
+                    "code": "GENG 670", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/670", 
+                    "name": "Studies in Poetry"
+                }, 
+                {
+                    "code": "GENG 675", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/675", 
+                    "name": "Writing in Media Technology"
+                }, 
+                {
+                    "code": "GENG 680", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/680", 
+                    "name": "Linguistics"
+                }, 
+                {
+                    "code": "GENG 685", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/685", 
+                    "name": "Literary Criticism"
+                }, 
+                {
+                    "code": "GENG 687", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/687", 
+                    "name": "Literature and Allied Discourse"
+                }, 
+                {
+                    "code": "GENG 688", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/688", 
+                    "name": "Graduate Teaching Practicum"
+                }, 
+                {
+                    "code": "GENG 690", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/690", 
+                    "name": "Thesis Supervision"
+                }, 
+                {
+                    "code": "GENG 695", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GENG/695", 
+                    "name": "Master's Exam Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/GENG"
+        }, 
+        {
+            "abbr": "GFN", 
+            "courses": [
+                {
+                    "code": "GFN 610", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GFN/610", 
+                    "name": "Financial Management"
+                }, 
+                {
+                    "code": "GFN 620", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GFN/620", 
+                    "name": "Financial Markets and Monetary Institutions"
+                }, 
+                {
+                    "code": "GFN 630", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GFN/630", 
+                    "name": "Entrepreneurial Financial Management"
+                }, 
+                {
+                    "code": "GFN 640", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GFN/640", 
+                    "name": "International Financial Management"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/GFN"
+        }, 
+        {
+            "abbr": "GHR", 
+            "courses": [
+                {
+                    "code": "GHR 600", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GHR/600", 
+                    "name": "Legal Issues in the Workforce-USA"
+                }, 
+                {
+                    "code": "GHR 610", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GHR/610", 
+                    "name": "Statistical Analysis for Decision Making"
+                }, 
+                {
+                    "code": "GHR 620", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GHR/620", 
+                    "name": "Compensation & Benefits"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/GHR"
+        }, 
+        {
+            "abbr": "GIN", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/GIN"
+        }, 
+        {
+            "abbr": "GIND", 
+            "courses": [
+                {
+                    "code": "GIND 693", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GIND/693", 
+                    "name": "Temporary Grad Ind Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/GIND"
+        }, 
+        {
+            "abbr": "GLA", 
+            "courses": [
+                {
+                    "code": "GLA 501", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLA/501", 
+                    "name": "History and Philosophy of American Education"
+                }, 
+                {
+                    "code": "GLA 521", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLA/521", 
+                    "name": "Learning and Cognition"
+                }, 
+                {
+                    "code": "GLA 545", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLA/545", 
+                    "name": "Statistical Methods for Educational Research"
+                }, 
+                {
+                    "code": "GLA 602", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLA/602", 
+                    "name": "Advanced Written Communication"
+                }, 
+                {
+                    "code": "GLA 605", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLA/605", 
+                    "name": "Critical Thinking,Moral Education and Ethics in the Classroom"
+                }, 
+                {
+                    "code": "GLA 610", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLA/610", 
+                    "name": "Professional Leadership Development"
+                }, 
+                {
+                    "code": "GLA 611", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLA/611", 
+                    "name": "Students,Teachers and the Law"
+                }, 
+                {
+                    "code": "GLA 612", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLA/612", 
+                    "name": "Comparative Educational Systems"
+                }, 
+                {
+                    "code": "GLA 615", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLA/615", 
+                    "name": "Education and Social Policy"
+                }, 
+                {
+                    "code": "GLA 623", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLA/623", 
+                    "name": "Conflict Resolution"
+                }, 
+                {
+                    "code": "GLA 627", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLA/627", 
+                    "name": "Multiple Intelligences and Emotional Intelligence"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/GLA"
+        }, 
+        {
+            "abbr": "GLP", 
+            "courses": [
+                {
+                    "code": "GLP 510", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLP/510", 
+                    "name": "Introduction to Leadership"
+                }, 
+                {
+                    "code": "GLP 520", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLP/520", 
+                    "name": "Introduction to Public Administration"
+                }, 
+                {
+                    "code": "GLP 530", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLP/530", 
+                    "name": ""
+                }, 
+                {
+                    "code": "GLP 540", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLP/540", 
+                    "name": ""
+                }, 
+                {
+                    "code": "GLP 602", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLP/602", 
+                    "name": "Advanced Written Communication"
+                }, 
+                {
+                    "code": "GLP 603", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLP/603", 
+                    "name": "Organizational Theory"
+                }, 
+                {
+                    "code": "GLP 610", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLP/610", 
+                    "name": "Professional Leadership Development"
+                }, 
+                {
+                    "code": "GLP 620", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLP/620", 
+                    "name": ""
+                }, 
+                {
+                    "code": "GLP 623", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLP/623", 
+                    "name": "Conflict Resolutions"
+                }, 
+                {
+                    "code": "GLP 630", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLP/630", 
+                    "name": ""
+                }, 
+                {
+                    "code": "GLP 640", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLP/640", 
+                    "name": "Organizational Communications and Decision Making"
+                }, 
+                {
+                    "code": "GLP 650", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GLP/650", 
+                    "name": "Topical Issues in Leadership"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/GLP"
+        }, 
+        {
+            "abbr": "GMK", 
+            "courses": [
+                {
+                    "code": "GMK 540", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GMK/540", 
+                    "name": "Marketing Management"
+                }, 
+                {
+                    "code": "GMK 620", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GMK/620", 
+                    "name": "International Marketing Management"
+                }, 
+                {
+                    "code": "GMK 650", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GMK/650", 
+                    "name": "Product Management"
+                }, 
+                {
+                    "code": "GMK 660", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GMK/660", 
+                    "name": "Problems in Marketing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/GMK"
+        }, 
+        {
+            "abbr": "GPSA", 
+            "courses": [
+                {
+                    "code": "GPSA 501", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/501", 
+                    "name": "Human Development:The Developing Mind"
+                }, 
+                {
+                    "code": "GPSA 502", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/502", 
+                    "name": "Human Development:Childhood to Adolescence"
+                }, 
+                {
+                    "code": "GPSA 503", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/503", 
+                    "name": "Human Development:Adolescence to Adulthood"
+                }, 
+                {
+                    "code": "GPSA 504", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/504", 
+                    "name": "Human Development:Adulthood-Middle to Late Years"
+                }, 
+                {
+                    "code": "GPSA 510", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/510", 
+                    "name": "History of Psychoanalytic View of Women"
+                }, 
+                {
+                    "code": "GPSA 511", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/511", 
+                    "name": "History of Psychoanalytic Theory"
+                }, 
+                {
+                    "code": "GPSA 512", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/512", 
+                    "name": "History of Psychoanalysis"
+                }, 
+                {
+                    "code": "GPSA 513", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/513", 
+                    "name": "History:Between the Wars 1920's-1930"
+                }, 
+                {
+                    "code": "GPSA 514", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/514", 
+                    "name": "History of Psychoanalysis"
+                }, 
+                {
+                    "code": "GPSA 515", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/515", 
+                    "name": "History of Psychoanalysis"
+                }, 
+                {
+                    "code": "GPSA 516", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/516", 
+                    "name": "History of Psychoanalysis 1975-present"
+                }, 
+                {
+                    "code": "GPSA 521", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/521", 
+                    "name": "Basic Psychoanalytic Concepts"
+                }, 
+                {
+                    "code": "GPSA 522", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/522", 
+                    "name": "Modern Psychoanalytic Theory"
+                }, 
+                {
+                    "code": "GPSA 523", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/523", 
+                    "name": "Anxiety and Defense"
+                }, 
+                {
+                    "code": "GPSA 524", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/524", 
+                    "name": "Psychoanalytic Theory of Dream Interpretation"
+                }, 
+                {
+                    "code": "GPSA 525", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/525", 
+                    "name": "Understanding the Repetition Compulsion"
+                }, 
+                {
+                    "code": "GPSA 526", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/526", 
+                    "name": "Resistance and Defense"
+                }, 
+                {
+                    "code": "GPSA 527", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/527", 
+                    "name": "Drive Theory"
+                }, 
+                {
+                    "code": "GPSA 528", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/528", 
+                    "name": "Narcissism/Aggression and Preoedipal Personality"
+                }, 
+                {
+                    "code": "GPSA 529", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/529", 
+                    "name": "Transference and Countertransference"
+                }, 
+                {
+                    "code": "GPSA 530", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/530", 
+                    "name": "Attachment:Drives and Object Relations Theory"
+                }, 
+                {
+                    "code": "GPSA 541", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/541", 
+                    "name": "Psychopathology:Severe Emotional Disorders"
+                }, 
+                {
+                    "code": "GPSA 542", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/542", 
+                    "name": "Diagnostic Assessment:Psychopathology"
+                }, 
+                {
+                    "code": "GPSA 543", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/543", 
+                    "name": "Psychopathology Elective"
+                }, 
+                {
+                    "code": "GPSA 551", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/551", 
+                    "name": "Introduction to Research Methods"
+                }, 
+                {
+                    "code": "GPSA 553", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/553", 
+                    "name": "Research Methods and Thesis Advisement"
+                }, 
+                {
+                    "code": "GPSA 561", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/561", 
+                    "name": "Ethics"
+                }, 
+                {
+                    "code": "GPSA 699", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/699", 
+                    "name": "Special Topics"
+                }, 
+                {
+                    "code": "GPSA 701", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/701", 
+                    "name": "Fieldwork I: Clinical Interviewing and SGS"
+                }, 
+                {
+                    "code": "GPSA 702", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/702", 
+                    "name": "Fieldwork II: Consultation/ Transference/ Countertransference and SGS"
+                }, 
+                {
+                    "code": "GPSA 703", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/703", 
+                    "name": "Fieldwork III: Cultural Diversity and SGS"
+                }, 
+                {
+                    "code": "GPSA 704-707", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/704-707", 
+                    "name": "Fieldwork Continuation"
+                }, 
+                {
+                    "code": "GPSA 720", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/720", 
+                    "name": "Small Group Supervision Elective"
+                }, 
+                {
+                    "code": "GPSA 758", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPSA/758", 
+                    "name": "Continuous Case Presentation"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/GPSA"
+        }, 
+        {
+            "abbr": "GPY", 
+            "courses": [
+                {
+                    "code": "GPY 501", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/501", 
+                    "name": "Counseling: The Profession"
+                }, 
+                {
+                    "code": "GPY 505", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/505", 
+                    "name": "Counseling: Theory and Practice I"
+                }, 
+                {
+                    "code": "GPY 506", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/506", 
+                    "name": "Counseling: Theory and Practice II"
+                }, 
+                {
+                    "code": "GPY 507", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/507", 
+                    "name": "Counseling:Theory and Practice III"
+                }, 
+                {
+                    "code": "GPY 510", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/510", 
+                    "name": "Clinical Interviewing"
+                }, 
+                {
+                    "code": "GPY 520", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/520", 
+                    "name": "Group Dynamics I"
+                }, 
+                {
+                    "code": "GPY 521", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/521", 
+                    "name": "Group Dynamics II"
+                }, 
+                {
+                    "code": "GPY 525", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/525", 
+                    "name": "Counseling Consultation"
+                }, 
+                {
+                    "code": "GPY 530", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/530", 
+                    "name": "Marriage and Family Counseling"
+                }, 
+                {
+                    "code": "GPY 541", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/541", 
+                    "name": "Statistical Analysis"
+                }, 
+                {
+                    "code": "GPY 544", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/544", 
+                    "name": "Research Methods in Counseling"
+                }, 
+                {
+                    "code": "GPY 546", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/546", 
+                    "name": "Diagnostic Assessment"
+                }, 
+                {
+                    "code": "GPY 550", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/550", 
+                    "name": "Program Evaluation"
+                }, 
+                {
+                    "code": "GPY 561", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/561", 
+                    "name": "Human Growth and Development"
+                }, 
+                {
+                    "code": "GPY 562", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/562", 
+                    "name": "Social and Cultural Foundations of Behavior"
+                }, 
+                {
+                    "code": "GPY 566", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/566", 
+                    "name": "Personality Theory"
+                }, 
+                {
+                    "code": "GPY 568", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/568", 
+                    "name": "Maladaptive Behavior I"
+                }, 
+                {
+                    "code": "GPY 569", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/569", 
+                    "name": "Maladaptive Behavior II"
+                }, 
+                {
+                    "code": "GPY 581", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/581", 
+                    "name": "Fundamentals of SAC"
+                }, 
+                {
+                    "code": "GPY 582", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/582", 
+                    "name": "Crises Intervention"
+                }, 
+                {
+                    "code": "GPY 584", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/584", 
+                    "name": "Life Span Counseling"
+                }, 
+                {
+                    "code": "GPY 586", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/586", 
+                    "name": "Career Counseling (8/26/12 - 10/20/12)"
+                }, 
+                {
+                    "code": "GPY 588", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/588", 
+                    "name": "Counseling Diverse Populations"
+                }, 
+                {
+                    "code": "GPY 590", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/590", 
+                    "name": "Substance Abuse Counseling"
+                }, 
+                {
+                    "code": "GPY 592", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/592", 
+                    "name": "Psychopharmacology"
+                }, 
+                {
+                    "code": "GPY 601", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/601", 
+                    "name": "Field Experience I"
+                }, 
+                {
+                    "code": "GPY 602", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/602", 
+                    "name": "Field Experience II"
+                }, 
+                {
+                    "code": "GPY 603", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/603", 
+                    "name": "School Counseling Practicum I"
+                }, 
+                {
+                    "code": "GPY 604", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GPY/604", 
+                    "name": "School Counseling Practicum II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/GPY"
+        }, 
+        {
+            "abbr": "GSPA", 
+            "courses": [
+                {
+                    "code": "GSPA 571", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/GSPA/571", 
+                    "name": "Lifestyle and Career Development"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/GSPA"
+        }, 
+        {
+            "abbr": "HIS", 
+            "courses": [
+                {
+                    "code": "HIS 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/1001", 
+                    "name": "World History I (10/23/11 - 12/17/11)"
+                }, 
+                {
+                    "code": "HIS 1002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/1002", 
+                    "name": "World History II"
+                }, 
+                {
+                    "code": "HIS 1003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/1003", 
+                    "name": "World History I"
+                }, 
+                {
+                    "code": "HIS 1004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/1004", 
+                    "name": "World History II"
+                }, 
+                {
+                    "code": "HIS 2001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/2001", 
+                    "name": "American Civilization I"
+                }, 
+                {
+                    "code": "HIS 2002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/2002", 
+                    "name": "American Civilization II"
+                }, 
+                {
+                    "code": "HIS 2003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/2003", 
+                    "name": "History of England I"
+                }, 
+                {
+                    "code": "HIS 2004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/2004", 
+                    "name": "Modern England"
+                }, 
+                {
+                    "code": "HIS 2005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/2005", 
+                    "name": "World Geography"
+                }, 
+                {
+                    "code": "HIS 2006", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/2006", 
+                    "name": "American Social, Political and Economic Systems"
+                }, 
+                {
+                    "code": "HIS 2007", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/2007", 
+                    "name": "American Economic History"
+                }, 
+                {
+                    "code": "HIS 2008", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/2008", 
+                    "name": "African American History I"
+                }, 
+                {
+                    "code": "HIS 2009", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/2009", 
+                    "name": "African American History II"
+                }, 
+                {
+                    "code": "HIS 2010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/2010", 
+                    "name": "History of New Jersey"
+                }, 
+                {
+                    "code": "HIS 2099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/2099", 
+                    "name": "Topics in American History"
+                }, 
+                {
+                    "code": "HIS 2099 or 3099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/2099%20or%203099", 
+                    "name": "Special Topics in History"
+                }, 
+                {
+                    "code": "HIS 3000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/3000", 
+                    "name": "Twentieth Century Europe"
+                }, 
+                {
+                    "code": "HIS 3001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/3001", 
+                    "name": "Modern Russia"
+                }, 
+                {
+                    "code": "HIS 3002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/3002", 
+                    "name": "European Colonialism"
+                }, 
+                {
+                    "code": "HIS 3003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/3003", 
+                    "name": "Modern Ireland"
+                }, 
+                {
+                    "code": "HIS 3004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/3004", 
+                    "name": "Modern Warfare"
+                }, 
+                {
+                    "code": "HIS 3005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/3005", 
+                    "name": "Environmental History: An Introduction"
+                }, 
+                {
+                    "code": "HIS 3010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/3010", 
+                    "name": "History of New Jersey"
+                }, 
+                {
+                    "code": "HIS 3099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/3099", 
+                    "name": "Special Topics in History: World War II"
+                }, 
+                {
+                    "code": "HIS 4000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HIS/4000", 
+                    "name": "Historical Method: The Art and Craft of the Historian"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/HIS"
+        }, 
+        {
+            "abbr": "HON", 
+            "courses": [
+                {
+                    "code": "HON 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HON/1001", 
+                    "name": "Rhetoric"
+                }, 
+                {
+                    "code": "HON 2000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HON/2000", 
+                    "name": "Intensive Study in Cultural Diversity"
+                }, 
+                {
+                    "code": "HON 2004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HON/2004", 
+                    "name": "Science, Technology and Society"
+                }, 
+                {
+                    "code": "HON 2050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HON/2050", 
+                    "name": "Special Topics in Social and Behavioral Sciences"
+                }, 
+                {
+                    "code": "HON 3080", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HON/3080", 
+                    "name": "Honors English Seminar"
+                }, 
+                {
+                    "code": "HON 4000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/HON/4000", 
+                    "name": "Honors Program Thesis"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/HON"
+        }, 
+        {
+            "abbr": "IND", 
+            "courses": [
+                {
+                    "code": "IND 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/IND/1001", 
+                    "name": "Independent Study for 1 Credit"
+                }, 
+                {
+                    "code": "IND 1002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/IND/1002", 
+                    "name": "Independent Study for 2 Credits"
+                }, 
+                {
+                    "code": "IND 1003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/IND/1003", 
+                    "name": "Independent Study for 3 Credits"
+                }, 
+                {
+                    "code": "IND 1004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/IND/1004", 
+                    "name": "Independent Study for 4 Credits"
+                }, 
+                {
+                    "code": "IND 1006", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/IND/1006", 
+                    "name": "Independent Study for 6 Credits"
+                }, 
+                {
+                    "code": "IND 1008", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/IND/1008", 
+                    "name": "Independent Study for 8 Credits"
+                }, 
+                {
+                    "code": "IND 2004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/IND/2004", 
+                    "name": "Ind Study/Film and Philosophy"
+                }, 
+                {
+                    "code": "IND 3004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/IND/3004", 
+                    "name": "Ind Study/Writing for Public Relations"
+                }, 
+                {
+                    "code": "IND 4002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/IND/4002", 
+                    "name": "Ind Study/Advanced Exploration in Painting & Drawing"
+                }, 
+                {
+                    "code": "IND 4004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/IND/4004", 
+                    "name": "Ind. Study/Advanced Printmaking Exploration"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/IND"
+        }, 
+        {
+            "abbr": "INT", 
+            "courses": [
+                {
+                    "code": "INT 1002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/INT/1002", 
+                    "name": "Internship for 2 Credits"
+                }, 
+                {
+                    "code": "INT 1004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/INT/1004", 
+                    "name": "Internship/Sate of NJ, Morris County Probation Services"
+                }, 
+                {
+                    "code": "INT 1006", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/INT/1006", 
+                    "name": "Internship for 6 Credits"
+                }, 
+                {
+                    "code": "INT 1008", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/INT/1008", 
+                    "name": "Internship for 8 Credits"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/INT"
+        }, 
+        {
+            "abbr": "JPN", 
+            "courses": [
+                {
+                    "code": "JPN 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/JPN/1001", 
+                    "name": "Elementary Japanese I"
+                }, 
+                {
+                    "code": "JPN 1001-1002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/JPN/1001-1002", 
+                    "name": "Elementary Japanese I & II"
+                }, 
+                {
+                    "code": "JPN 2001-2002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/JPN/2001-2002", 
+                    "name": "Intermediate Japanese I & II"
+                }, 
+                {
+                    "code": "JPN 2050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/JPN/2050", 
+                    "name": "Spotlight on Japan"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/JPN"
+        }, 
+        {
+            "abbr": "KOR", 
+            "courses": [
+                {
+                    "code": "KOR 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/KOR/1001", 
+                    "name": "Elementary Korean I"
+                }, 
+                {
+                    "code": "KOR 2050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/KOR/2050", 
+                    "name": "Spotlight on Korea"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/KOR"
+        }, 
+        {
+            "abbr": "LAS", 
+            "courses": [
+                {
+                    "code": "LAS 1005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/LAS/1005", 
+                    "name": "Academic Applications in Learning Theory"
+                }, 
+                {
+                    "code": "LAS 3001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/LAS/3001", 
+                    "name": "Ancient Civilizations"
+                }, 
+                {
+                    "code": "LAS 3002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/LAS/3002", 
+                    "name": "The Rise of Europe"
+                }, 
+                {
+                    "code": "LAS 3003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/LAS/3003", 
+                    "name": "The Modern World (8/26/12 - 10/20/12)"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/LAS"
+        }, 
+        {
+            "abbr": "MTH", 
+            "courses": [
+                {
+                    "code": "MTH 1000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/1000", 
+                    "name": "College Math (Freshmen Only)"
+                }, 
+                {
+                    "code": "MTH 1111", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/1111", 
+                    "name": "Quantitative Literacy"
+                }, 
+                {
+                    "code": "MTH 1180", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/1180", 
+                    "name": "Algebraic Modeling"
+                }, 
+                {
+                    "code": "MTH 1250", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/1250", 
+                    "name": "Geometry"
+                }, 
+                {
+                    "code": "MTH 1401", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/1401", 
+                    "name": "Precalculus I"
+                }, 
+                {
+                    "code": "MTH 1402", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/1402", 
+                    "name": "Pre-Calculus II"
+                }, 
+                {
+                    "code": "MTH 1500", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/1500", 
+                    "name": "Statistics for Social Science Majors"
+                }, 
+                {
+                    "code": "MTH 1501", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/1501", 
+                    "name": "Statistics I"
+                }, 
+                {
+                    "code": "MTH 1502", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/1502", 
+                    "name": "Statistics II"
+                }, 
+                {
+                    "code": "MTH 1505", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/1505", 
+                    "name": "SPSS Lab"
+                }, 
+                {
+                    "code": "MTH 2151", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/2151", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MTH 2152", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/2152", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MTH 2999,3999,4999", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/2999%2C3999%2C4999", 
+                    "name": "Special Topics in Mathematics"
+                }, 
+                {
+                    "code": "MTH 3030", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/3030", 
+                    "name": "Linear Algebra"
+                }, 
+                {
+                    "code": "MTH 3040", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/3040", 
+                    "name": "Differential Equations"
+                }, 
+                {
+                    "code": "MTH 3070", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/3070", 
+                    "name": "History of Mathematics and the Natural Sciences"
+                }, 
+                {
+                    "code": "MTH 3161", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/3161", 
+                    "name": "Calculus III"
+                }, 
+                {
+                    "code": "MTH 3162", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/3162", 
+                    "name": "Calculus IV"
+                }, 
+                {
+                    "code": "MTH 3200", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/3200", 
+                    "name": "Discrete Mathematics"
+                }, 
+                {
+                    "code": "MTH 3250", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/3250", 
+                    "name": "Probability Theory"
+                }, 
+                {
+                    "code": "MTH 3350", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/3350", 
+                    "name": "Foundations of Advanced Mathematics"
+                }, 
+                {
+                    "code": "MTH 3740", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/3740", 
+                    "name": "Mathematical Modeling"
+                }, 
+                {
+                    "code": "MTH 4050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/4050", 
+                    "name": "Advanced Geometry"
+                }, 
+                {
+                    "code": "MTH 4100", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/4100", 
+                    "name": "Modern/Abstract Algebra"
+                }, 
+                {
+                    "code": "MTH 4150", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/4150", 
+                    "name": "Number Theory"
+                }, 
+                {
+                    "code": "MTH 4200", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MTH/4200", 
+                    "name": "Advanced Calculus"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/MTH"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MUS/1001", 
+                    "name": "Music Appreciation"
+                }, 
+                {
+                    "code": "MUS 1005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MUS/1005", 
+                    "name": "Fundamentals of Music"
+                }, 
+                {
+                    "code": "MUS 1007", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MUS/1007", 
+                    "name": "Music for Children"
+                }, 
+                {
+                    "code": "MUS 1011", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MUS/1011", 
+                    "name": "Piano Lessons"
+                }, 
+                {
+                    "code": "MUS 1017", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MUS/1017", 
+                    "name": "Voice Lessons"
+                }, 
+                {
+                    "code": "MUS 2004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/MUS/2004", 
+                    "name": "American Music"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/MUS"
+        }, 
+        {
+            "abbr": "OLO", 
+            "courses": [
+                {
+                    "code": "OLO 0", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/OLO/0", 
+                    "name": "Online Orientation (Main Campus)"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/OLO"
+        }, 
+        {
+            "abbr": "PHI", 
+            "courses": [
+                {
+                    "code": "PHI 1005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PHI/1005", 
+                    "name": "Introduction to Philosophy (8/26/12 - 10/20/12)"
+                }, 
+                {
+                    "code": "PHI 2003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PHI/2003", 
+                    "name": "Logic:An Introduction"
+                }, 
+                {
+                    "code": "PHI 2004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PHI/2004", 
+                    "name": "Contemporary Ethics"
+                }, 
+                {
+                    "code": "PHI 2099,3099, or 4099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PHI/2099%2C3099%2C%20or%204099", 
+                    "name": "Special Topics in Philosophy"
+                }, 
+                {
+                    "code": "PHI 3001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PHI/3001", 
+                    "name": "Ancient Philosophy"
+                }, 
+                {
+                    "code": "PHI 3002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PHI/3002", 
+                    "name": "Modern Philosophy"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/PHI"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 2001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PHY/2001", 
+                    "name": "Physics I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/PHY"
+        }, 
+        {
+            "abbr": "PLA", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/PLA"
+        }, 
+        {
+            "abbr": "POL", 
+            "courses": [
+                {
+                    "code": "POL 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/POL/1001", 
+                    "name": "U.S. Political Systems (8/26/12-12/8/12)"
+                }, 
+                {
+                    "code": "POL 2001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/POL/2001", 
+                    "name": "Elements of Political Theory"
+                }, 
+                {
+                    "code": "POL 2002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/POL/2002", 
+                    "name": "Comparative Contemp Political Systems (Mid-east Peace Conf)"
+                }, 
+                {
+                    "code": "POL 2003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/POL/2003", 
+                    "name": "Essentials of Global Politics"
+                }, 
+                {
+                    "code": "POL 2099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/POL/2099", 
+                    "name": "Spec Top: Investigating Public Corruption (Blended)"
+                }, 
+                {
+                    "code": "POL 3001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/POL/3001", 
+                    "name": "American Constitutional Law"
+                }, 
+                {
+                    "code": "POL 3002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/POL/3002", 
+                    "name": "American Public Policy Analysis (Blended)"
+                }, 
+                {
+                    "code": "POL 3003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/POL/3003", 
+                    "name": "American Foreign Policy"
+                }, 
+                {
+                    "code": "POL 3004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/POL/3004", 
+                    "name": "Forms of Global Governance"
+                }, 
+                {
+                    "code": "POL 3005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/POL/3005", 
+                    "name": "Peace and Conflict Analysis"
+                }, 
+                {
+                    "code": "POL 3006", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/POL/3006", 
+                    "name": "Global and Regional Studies: Model United Nations"
+                }, 
+                {
+                    "code": "POL 3010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/POL/3010", 
+                    "name": "Topics in Political Science:Introduction to the Study of Terrorism"
+                }, 
+                {
+                    "code": "POL 3011", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/POL/3011", 
+                    "name": "Topics in Pol. Sci.: Global Humanitarian Organizations"
+                }, 
+                {
+                    "code": "POL 3099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/POL/3099", 
+                    "name": "Spec Top: Intelligence Analysis & Nat. Security (No Frshmn)"
+                }, 
+                {
+                    "code": "POL 4001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/POL/4001", 
+                    "name": "Government and Political Affairs Senior Seminar (Blended)"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/POL"
+        }, 
+        {
+            "abbr": "PSC", 
+            "courses": [
+                {
+                    "code": "PSC 1025", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSC/1025", 
+                    "name": "Astronomy"
+                }, 
+                {
+                    "code": "PSC 1400", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSC/1400", 
+                    "name": "Earth Science"
+                }, 
+                {
+                    "code": "PSC 1500", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSC/1500", 
+                    "name": "Physical Science"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/PSC"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 1000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/1000", 
+                    "name": "Introduction to Psychology (8/26/2012 - 12/8/2012)"
+                }, 
+                {
+                    "code": "PSY 1010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/1010", 
+                    "name": "Sports Psychology"
+                }, 
+                {
+                    "code": "PSY 1021", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/1021", 
+                    "name": "Personal and Interpersonal Awareness"
+                }, 
+                {
+                    "code": "PSY 1022", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/1022", 
+                    "name": "Perception,Cognition,and Emotion"
+                }, 
+                {
+                    "code": "PSY 1023", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/1023", 
+                    "name": "Biopsychology"
+                }, 
+                {
+                    "code": "PSY 1024", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/1024", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "PSY 1026", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/1026", 
+                    "name": "Developmental Psychology I"
+                }, 
+                {
+                    "code": "PSY 1027", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/1027", 
+                    "name": "Developmental Psychology II"
+                }, 
+                {
+                    "code": "PSY 1050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/1050", 
+                    "name": "Developmental Psychology:The Lifespan"
+                }, 
+                {
+                    "code": "PSY 2000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/2000", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 2001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/2001", 
+                    "name": "Psychological Research Methods"
+                }, 
+                {
+                    "code": "PSY 2010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/2010", 
+                    "name": "Industrial/Organizational Psychology (8/26/12 - 12/8/12)"
+                }, 
+                {
+                    "code": "PSY 2013", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/2013", 
+                    "name": "Theories of Learning"
+                }, 
+                {
+                    "code": "PSY 2015", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/2015", 
+                    "name": "Group Dynamics"
+                }, 
+                {
+                    "code": "PSY 2018", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/2018", 
+                    "name": "Developmental Psychology III"
+                }, 
+                {
+                    "code": "PSY 2019", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/2019", 
+                    "name": "Gender Studies"
+                }, 
+                {
+                    "code": "PSY 2030", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/2030", 
+                    "name": "Forensic Psychology"
+                }, 
+                {
+                    "code": "PSY 2070", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/2070", 
+                    "name": "Psychology of Men and Women"
+                }, 
+                {
+                    "code": "PSY 2090", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/2090", 
+                    "name": "Psychology and The Media (Blended)"
+                }, 
+                {
+                    "code": "PSY 2099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/2099", 
+                    "name": "Special Topics in Psychology: Stephen King"
+                }, 
+                {
+                    "code": "PSY 3015", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/3015", 
+                    "name": "Behavior: Abnormal Child"
+                }, 
+                {
+                    "code": "PSY 3016", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/3016", 
+                    "name": "Counseling Theory"
+                }, 
+                {
+                    "code": "PSY 3017", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/3017", 
+                    "name": "Psychopharmacology"
+                }, 
+                {
+                    "code": "PSY 3018", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/3018", 
+                    "name": "Substance Abuse and Dependence"
+                }, 
+                {
+                    "code": "PSY 3019", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/3019", 
+                    "name": "Psychology Internship & Seminar (Blended)"
+                }, 
+                {
+                    "code": "PSY 3022", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/3022", 
+                    "name": "Psychological Tests and Measurements"
+                }, 
+                {
+                    "code": "PSY 3023", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/3023", 
+                    "name": "Theories of Personality"
+                }, 
+                {
+                    "code": "PSY 3024", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/3024", 
+                    "name": "Behavior:Abnormal"
+                }, 
+                {
+                    "code": "PSY 3025", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/3025", 
+                    "name": "Behavior Modification"
+                }, 
+                {
+                    "code": "PSY 4020", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/PSY/4020", 
+                    "name": "Senior Research Seminar"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/PSY"
+        }, 
+        {
+            "abbr": "REL", 
+            "courses": [
+                {
+                    "code": "REL 2001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/REL/2001", 
+                    "name": "World Religions (10/21/12 - 12/15/12)"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/REL"
+        }, 
+        {
+            "abbr": "RES", 
+            "courses": [
+                {
+                    "code": "RES 2000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/RES/2000", 
+                    "name": "Scientific Research"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/RES"
+        }, 
+        {
+            "abbr": "RUS", 
+            "courses": [
+                {
+                    "code": "RUS 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/RUS/1001", 
+                    "name": "Introduction to Contemporary Russian Language and Culture"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/RUS"
+        }, 
+        {
+            "abbr": "SLN", 
+            "courses": [
+                {
+                    "code": "SLN 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SLN/1001", 
+                    "name": "Sign Language I"
+                }, 
+                {
+                    "code": "SLN 1002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SLN/1002", 
+                    "name": "Sign Language II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/SLN"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 1000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/1000", 
+                    "name": "Contemporary Social Issues (10/21/12-12/15/12)"
+                }, 
+                {
+                    "code": "SOC 1025", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/1025", 
+                    "name": "Introduction to Sociology"
+                }, 
+                {
+                    "code": "SOC 1050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/1050", 
+                    "name": "Population and Urbanization"
+                }, 
+                {
+                    "code": "SOC 2000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/2000", 
+                    "name": "21st Century Societies"
+                }, 
+                {
+                    "code": "SOC 2001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/2001", 
+                    "name": "Sociological Theory"
+                }, 
+                {
+                    "code": "SOC 2003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/2003", 
+                    "name": "Work and the Economy"
+                }, 
+                {
+                    "code": "SOC 2004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/2004", 
+                    "name": "School, Family, and Community"
+                }, 
+                {
+                    "code": "SOC 2005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/2005", 
+                    "name": "Global Societies and Systems (8/26/12-10/20/12)"
+                }, 
+                {
+                    "code": "SOC 2007", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/2007", 
+                    "name": "Education and Society"
+                }, 
+                {
+                    "code": "SOC 2025", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/2025", 
+                    "name": "Sociology of Religion (8/26/12 - 12/8/12)"
+                }, 
+                {
+                    "code": "SOC 2050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/2050", 
+                    "name": "Race and Ethnicity (8/26/12-12/8/12)"
+                }, 
+                {
+                    "code": "SOC 2099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/2099", 
+                    "name": "Spec Top: American Military Catalyst for Social Change"
+                }, 
+                {
+                    "code": "SOC 3001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/3001", 
+                    "name": "Gender and Sexuality"
+                }, 
+                {
+                    "code": "SOC 3002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/3002", 
+                    "name": "Intimate Relationships (10/21/12 - 12/15/12)"
+                }, 
+                {
+                    "code": "SOC 3003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/3003", 
+                    "name": "Livin' on the Edge:Perceptions of Stratified Society"
+                }, 
+                {
+                    "code": "SOC 3004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/3004", 
+                    "name": "Trauma and Disaster"
+                }, 
+                {
+                    "code": "SOC 3007", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/3007", 
+                    "name": "Deviance, Crime, and Law"
+                }, 
+                {
+                    "code": "SOC 3025", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/3025", 
+                    "name": "Cyber-sociology"
+                }, 
+                {
+                    "code": "SOC 3040", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/3040", 
+                    "name": "Social Change and Movements"
+                }, 
+                {
+                    "code": "SOC 3050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/3050", 
+                    "name": "Broken Bodies: Global Perspectives on Sexual Violence"
+                }, 
+                {
+                    "code": "SOC 3099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/3099", 
+                    "name": "Special Topics in Sociology: Sociology of Disabilities"
+                }, 
+                {
+                    "code": "SOC 4000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/4000", 
+                    "name": "Sociological Theory"
+                }, 
+                {
+                    "code": "SOC 4002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/4002", 
+                    "name": "Research Methods in the Soc Sci (Social Work Students Only)"
+                }, 
+                {
+                    "code": "SOC 4005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/4005", 
+                    "name": "Senior Seminar in Sociology"
+                }, 
+                {
+                    "code": "SOC 4010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/4010", 
+                    "name": "Field Work in Sociology"
+                }, 
+                {
+                    "code": "SOC 4099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SOC/4099", 
+                    "name": "Methods of Researching Poverty (Social Work Students Only)"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/SOC"
+        }, 
+        {
+            "abbr": "SPN", 
+            "courses": [
+                {
+                    "code": "SPN 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SPN/1001", 
+                    "name": "Elementary Spanish I"
+                }, 
+                {
+                    "code": "SPN 1001-0102", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SPN/1001-0102", 
+                    "name": "Elementary Spanish I & II"
+                }, 
+                {
+                    "code": "SPN 1002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SPN/1002", 
+                    "name": "Elementary Spanish II"
+                }, 
+                {
+                    "code": "SPN 2001-2002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SPN/2001-2002", 
+                    "name": "Intermediate Spanish I & II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/SPN"
+        }, 
+        {
+            "abbr": "SWS", 
+            "courses": [
+                {
+                    "code": "SWS 1000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SWS/1000", 
+                    "name": "Introduction to Social Work and Human Services"
+                }, 
+                {
+                    "code": "SWS 3000", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SWS/3000", 
+                    "name": "Human Behavior & the Social Environment I"
+                }, 
+                {
+                    "code": "SWS 3001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SWS/3001", 
+                    "name": "Social Welfare Policy and Services I"
+                }, 
+                {
+                    "code": "SWS 3002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SWS/3002", 
+                    "name": "Social Welfare Policy and Services II"
+                }, 
+                {
+                    "code": "SWS 3010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SWS/3010", 
+                    "name": "Human Behavior and the Social Environment II"
+                }, 
+                {
+                    "code": "SWS 3021", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SWS/3021", 
+                    "name": "Social Work Practice I"
+                }, 
+                {
+                    "code": "SWS 3022", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SWS/3022", 
+                    "name": "Social Work Practice II"
+                }, 
+                {
+                    "code": "SWS 4002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SWS/4002", 
+                    "name": "Research Methods in the Social Sciences"
+                }, 
+                {
+                    "code": "SWS 4023", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SWS/4023", 
+                    "name": "Social Work Practice III"
+                }, 
+                {
+                    "code": "SWS 4050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SWS/4050", 
+                    "name": "Field Work I"
+                }, 
+                {
+                    "code": "SWS 4051", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SWS/4051", 
+                    "name": "Field Seminar I"
+                }, 
+                {
+                    "code": "SWS 4060", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SWS/4060", 
+                    "name": "Field Work II"
+                }, 
+                {
+                    "code": "SWS 4061", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SWS/4061", 
+                    "name": "Field Seminar II"
+                }, 
+                {
+                    "code": "SWS 4099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/SWS/4099", 
+                    "name": "Senior Seminar"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/SWS"
+        }, 
+        {
+            "abbr": "TEM", 
+            "courses": [
+                {
+                    "code": "TEM 1002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/TEM/1002", 
+                    "name": "Temporary 2 Credit Course"
+                }, 
+                {
+                    "code": "TEM 1003", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/TEM/1003", 
+                    "name": "Temporary 3 Credit Course"
+                }, 
+                {
+                    "code": "TEM 1004", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/TEM/1004", 
+                    "name": "Temporary 4 Credit Course"
+                }, 
+                {
+                    "code": "TEM 1008", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/TEM/1008", 
+                    "name": "Temporary 8 Credit Course"
+                }, 
+                {
+                    "code": "TEM 1012", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/TEM/1012", 
+                    "name": "Temporary 12 Credit Course"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/TEM"
+        }, 
+        {
+            "abbr": "THA", 
+            "courses": [
+                {
+                    "code": "THA 1001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1001", 
+                    "name": "Theatre Appreciation"
+                }, 
+                {
+                    "code": "THA 1002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1002", 
+                    "name": "Dance Appreciation"
+                }, 
+                {
+                    "code": "THA 1005", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1005", 
+                    "name": "Modern Dance I"
+                }, 
+                {
+                    "code": "THA 1006", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1006", 
+                    "name": "Ethnic Dance/Chinese"
+                }, 
+                {
+                    "code": "THA 1007", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1007", 
+                    "name": "Ballet I"
+                }, 
+                {
+                    "code": "THA 1007-1008", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1007-1008", 
+                    "name": "Ballet I & II"
+                }, 
+                {
+                    "code": "THA 1008", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1008", 
+                    "name": "Ballet II"
+                }, 
+                {
+                    "code": "THA 1009", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1009", 
+                    "name": "Acting Workshop"
+                }, 
+                {
+                    "code": "THA 1011", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1011", 
+                    "name": "Technical Production"
+                }, 
+                {
+                    "code": "THA 1012", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1012", 
+                    "name": "Performance Practicum"
+                }, 
+                {
+                    "code": "THA 1013", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1013", 
+                    "name": "Office Practicum"
+                }, 
+                {
+                    "code": "THA 1015", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1015", 
+                    "name": "Movement for Actors"
+                }, 
+                {
+                    "code": "THA 1015-1016", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1015-1016", 
+                    "name": "Movement for Actors"
+                }, 
+                {
+                    "code": "THA 1016", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1016", 
+                    "name": "Movement for Actors"
+                }, 
+                {
+                    "code": "THA 1017", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1017", 
+                    "name": "Jazz I"
+                }, 
+                {
+                    "code": "THA 1018", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1018", 
+                    "name": "Aerobic Dance and Fitness"
+                }, 
+                {
+                    "code": "THA 1019", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1019", 
+                    "name": "Yoga"
+                }, 
+                {
+                    "code": "THA 1050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1050", 
+                    "name": "Introduction to Design and Technical Theatre"
+                }, 
+                {
+                    "code": "THA 1050-1051", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1050-1051", 
+                    "name": "Introduction to Design and Technical Theatre"
+                }, 
+                {
+                    "code": "THA 1098", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1098", 
+                    "name": "Tai Chi"
+                }, 
+                {
+                    "code": "THA 1099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/1099", 
+                    "name": "Special Topics in Theatre: Beginner Dance"
+                }, 
+                {
+                    "code": "THA 2001-2002", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/2001-2002", 
+                    "name": "Theatre History I & II"
+                }, 
+                {
+                    "code": "THA 2009", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/2009", 
+                    "name": "Acting Workshop"
+                }, 
+                {
+                    "code": "THA 2015", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/2015", 
+                    "name": "Dance for Theatre"
+                }, 
+                {
+                    "code": "THA 2020-2021", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/2020-2021", 
+                    "name": "Voice and Speech"
+                }, 
+                {
+                    "code": "THA 2045", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/2045", 
+                    "name": "Stage Management"
+                }, 
+                {
+                    "code": "THA 2046", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/2046", 
+                    "name": "Introduction to Directing"
+                }, 
+                {
+                    "code": "THA 2050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/2050", 
+                    "name": "Theatrical Makeup"
+                }, 
+                {
+                    "code": "THA 2099", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/2099", 
+                    "name": "Special Topics in Theatre: Intro to Drafting"
+                }, 
+                {
+                    "code": "THA 3001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/3001", 
+                    "name": "Introduction to Dance Science and Kinesiology"
+                }, 
+                {
+                    "code": "THA 3009", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/3009", 
+                    "name": "From Shakespeare to Coward"
+                }, 
+                {
+                    "code": "THA 3010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/3010", 
+                    "name": "Acting for the Camera"
+                }, 
+                {
+                    "code": "THA 3015", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/3015", 
+                    "name": "Advanced Dance/Movement for Theatre"
+                }, 
+                {
+                    "code": "THA 3020-3021", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/3020-3021", 
+                    "name": "Advanced Voice and Speech"
+                }, 
+                {
+                    "code": "THA 3025", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/3025", 
+                    "name": "Set Design for the Theatre"
+                }, 
+                {
+                    "code": "THA 3026", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/3026", 
+                    "name": "Lighting Design for the Theatre"
+                }, 
+                {
+                    "code": "THA 3050", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/3050", 
+                    "name": "Playwriting"
+                }, 
+                {
+                    "code": "THA 4001", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/4001", 
+                    "name": "Thesis Project"
+                }, 
+                {
+                    "code": "THA 4009", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/4009", 
+                    "name": "Audition Workshop"
+                }, 
+                {
+                    "code": "THA 4010", 
+                    "course_url": "http://www.chegg.com/courses/centenarycollege/THA/4010", 
+                    "name": "Dramatic Theory and Script Analysis"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/THA"
+        }, 
+        {
+            "abbr": "WDW", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/centenarycollege/WDW"
+        }
+    ], 
+    "name": "centenarycollege"
+}

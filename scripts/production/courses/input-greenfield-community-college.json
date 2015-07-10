@@ -1,0 +1,2580 @@
+{
+    "all_stats": {
+        "num_courses": 440, 
+        "num_departments": 53
+    }, 
+    "departments": [
+        {
+            "abbr": "ACC", 
+            "courses": [
+                {
+                    "code": "ACC 121", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ACC/121", 
+                    "name": "Principles of Financial Accounting I"
+                }, 
+                {
+                    "code": "ACC 122", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ACC/122", 
+                    "name": "Principles of Financial Accounting II"
+                }, 
+                {
+                    "code": "ACC 151", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ACC/151", 
+                    "name": "Concepts of Financial Accounting I"
+                }, 
+                {
+                    "code": "ACC 152", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ACC/152", 
+                    "name": "Concepts of Financial Accounting II"
+                }, 
+                {
+                    "code": "ACC 203", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ACC/203", 
+                    "name": "Management Accounting"
+                }, 
+                {
+                    "code": "ACC 207", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ACC/207", 
+                    "name": "Financial Accounting Systems and Procedures"
+                }, 
+                {
+                    "code": "ACC 208", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ACC/208", 
+                    "name": "Introduction to Federal Income Taxes"
+                }, 
+                {
+                    "code": "ACC 209", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ACC/209", 
+                    "name": "Introduction to Income Tax Preparation"
+                }, 
+                {
+                    "code": "ACC 210", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ACC/210", 
+                    "name": "Introduction to Computerized Accounting"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/ACC"
+        }, 
+        {
+            "abbr": "ADM", 
+            "courses": [
+                {
+                    "code": "ADM 96", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ADM/96", 
+                    "name": "Keyboarding for Information Processing"
+                }, 
+                {
+                    "code": "ADM 122", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ADM/122", 
+                    "name": "Introduction to Medical Terminology"
+                }, 
+                {
+                    "code": "ADM 222", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ADM/222", 
+                    "name": "Introduction to Medical Coding"
+                }
+            ], 
+            "name": "Adm/Office Administration", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/ADM"
+        }, 
+        {
+            "abbr": "AHS", 
+            "courses": [
+                {
+                    "code": "AHS 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/AHS/101", 
+                    "name": "Art History Survey I"
+                }, 
+                {
+                    "code": "AHS 102", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/AHS/102", 
+                    "name": "Art History Survey II"
+                }, 
+                {
+                    "code": "AHS 107", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/AHS/107", 
+                    "name": "History of Modern Art"
+                }, 
+                {
+                    "code": "AHS 110", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/AHS/110", 
+                    "name": "History of Film and Video"
+                }
+            ], 
+            "name": "Art History", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/AHS"
+        }, 
+        {
+            "abbr": "ANT", 
+            "courses": [
+                {
+                    "code": "ANT 104", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ANT/104", 
+                    "name": "Cultural Anthropology: Tribes, States and the Global System"
+                }
+            ], 
+            "name": "Anthropology", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/ANT"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 121", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/121", 
+                    "name": "Design I"
+                }, 
+                {
+                    "code": "ART 125", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/125", 
+                    "name": "Three-Dimensional Design"
+                }, 
+                {
+                    "code": "ART 131", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/131", 
+                    "name": "Drawing I"
+                }, 
+                {
+                    "code": "ART 132", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/132", 
+                    "name": "Drawing II"
+                }, 
+                {
+                    "code": "ART 141", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/141", 
+                    "name": "Color"
+                }, 
+                {
+                    "code": "ART 151", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/151", 
+                    "name": "Introduction to Photography"
+                }, 
+                {
+                    "code": "ART 155", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/155", 
+                    "name": "Digital Video"
+                }, 
+                {
+                    "code": "ART 161", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/161", 
+                    "name": "Introduction to the Electronic Studio"
+                }, 
+                {
+                    "code": "ART 173", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/173", 
+                    "name": "Digital Design"
+                }, 
+                {
+                    "code": "ART 225", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/225", 
+                    "name": "Three-Dimensional Design II"
+                }, 
+                {
+                    "code": "ART 235", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/235", 
+                    "name": "Figure Drawing"
+                }, 
+                {
+                    "code": "ART 236", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/236", 
+                    "name": "Figure Drawing II-A"
+                }, 
+                {
+                    "code": "ART 237", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/237", 
+                    "name": "Figure Drawing II-B"
+                }, 
+                {
+                    "code": "ART 240", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/240", 
+                    "name": "Special Topics in Art: Image and Text"
+                }, 
+                {
+                    "code": "ART 241", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/241", 
+                    "name": "Painting I"
+                }, 
+                {
+                    "code": "ART 242", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/242", 
+                    "name": "Painting II-A"
+                }, 
+                {
+                    "code": "ART 243", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/243", 
+                    "name": "Painting II-B"
+                }, 
+                {
+                    "code": "ART 251", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/251", 
+                    "name": "Photography I-A"
+                }, 
+                {
+                    "code": "ART 252", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/252", 
+                    "name": "Photography I-B"
+                }, 
+                {
+                    "code": "ART 255", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/255", 
+                    "name": "Video Art"
+                }, 
+                {
+                    "code": "ART 256", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/256", 
+                    "name": "Video Portfolio"
+                }, 
+                {
+                    "code": "ART 261", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/261", 
+                    "name": "Electronic Imaging"
+                }, 
+                {
+                    "code": "ART 263", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/263", 
+                    "name": "Web Site Design"
+                }, 
+                {
+                    "code": "ART 268", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/268", 
+                    "name": "Three-Dimensional Modeling"
+                }, 
+                {
+                    "code": "ART 291", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/291", 
+                    "name": "Fine Arts Seminar"
+                }, 
+                {
+                    "code": "ART 295", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ART/295", 
+                    "name": "Directed Study in Art"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/ART"
+        }, 
+        {
+            "abbr": "ASL", 
+            "courses": [
+                {
+                    "code": "ASL 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ASL/101", 
+                    "name": "Elementary American Sign Language I"
+                }, 
+                {
+                    "code": "ASL 102", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ASL/102", 
+                    "name": "Elementary American Sign Language II"
+                }
+            ], 
+            "name": "American Sign Language", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/ASL"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 102", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BIO/102", 
+                    "name": "Botany"
+                }, 
+                {
+                    "code": "BIO 103", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BIO/103", 
+                    "name": "Ecology"
+                }, 
+                {
+                    "code": "BIO 104", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BIO/104", 
+                    "name": "Natural History"
+                }, 
+                {
+                    "code": "BIO 108", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BIO/108", 
+                    "name": "Human Systems"
+                }, 
+                {
+                    "code": "BIO 120", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BIO/120", 
+                    "name": "Introduction to Environmental Science"
+                }, 
+                {
+                    "code": "BIO 122", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BIO/122", 
+                    "name": "Freshwater Ecology"
+                }, 
+                {
+                    "code": "BIO 124", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BIO/124", 
+                    "name": "Introductory Horticulture"
+                }, 
+                {
+                    "code": "BIO 126", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BIO/126", 
+                    "name": "Biology I"
+                }, 
+                {
+                    "code": "BIO 127", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BIO/127", 
+                    "name": "Biology II"
+                }, 
+                {
+                    "code": "BIO 130", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BIO/130", 
+                    "name": "Human Nutrition"
+                }, 
+                {
+                    "code": "BIO 130L", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BIO/130L", 
+                    "name": "Human Nutrition Lab"
+                }, 
+                {
+                    "code": "BIO 194", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BIO/194", 
+                    "name": "Comprehensive Anatomy and Physiology"
+                }, 
+                {
+                    "code": "BIO 195", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BIO/195", 
+                    "name": "Human Anatomy and Physiology I"
+                }, 
+                {
+                    "code": "BIO 196", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BIO/196", 
+                    "name": "Human Anatomy and Physiology II"
+                }, 
+                {
+                    "code": "BIO 205", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BIO/205", 
+                    "name": "Microbiology"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/BIO"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 105", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BUS/105", 
+                    "name": "Personal Financial Literacy"
+                }, 
+                {
+                    "code": "BUS 111", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BUS/111", 
+                    "name": "The Contemporary Business World"
+                }, 
+                {
+                    "code": "BUS 112", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BUS/112", 
+                    "name": "Introduction to Hospitality and Tourism"
+                }, 
+                {
+                    "code": "BUS 116", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BUS/116", 
+                    "name": "E-Commerce"
+                }, 
+                {
+                    "code": "BUS 119", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BUS/119", 
+                    "name": "Principles of Real Estate"
+                }, 
+                {
+                    "code": "BUS 123", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BUS/123", 
+                    "name": "Business Communications"
+                }, 
+                {
+                    "code": "BUS 140", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BUS/140", 
+                    "name": "Entrepreneurship Seminar"
+                }, 
+                {
+                    "code": "BUS 155", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BUS/155", 
+                    "name": "Business Law I"
+                }, 
+                {
+                    "code": "BUS 203", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BUS/203", 
+                    "name": "Human Resources Management"
+                }, 
+                {
+                    "code": "BUS 205", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BUS/205", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "BUS 209", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/BUS/209", 
+                    "name": "Principles of Marketing"
+                }
+            ], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/BUS"
+        }, 
+        {
+            "abbr": "CHE", 
+            "courses": [
+                {
+                    "code": "CHE 105", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CHE/105", 
+                    "name": "Basic Principles of Chemistry"
+                }, 
+                {
+                    "code": "CHE 111", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CHE/111", 
+                    "name": "General Chemistry I"
+                }, 
+                {
+                    "code": "CHE 112", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CHE/112", 
+                    "name": "General Chemistry II"
+                }, 
+                {
+                    "code": "CHE 201", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CHE/201", 
+                    "name": "Organic Chemistry I"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/CHE"
+        }, 
+        {
+            "abbr": "CIS", 
+            "courses": [
+                {
+                    "code": "CIS 96", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CIS/96", 
+                    "name": "Keyboarding for Information Processing"
+                }, 
+                {
+                    "code": "CIS 110", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CIS/110", 
+                    "name": "Introduction to Computers"
+                }, 
+                {
+                    "code": "CIS 140", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CIS/140", 
+                    "name": "Microcomputer Software Tools I"
+                }, 
+                {
+                    "code": "CIS 141", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CIS/141", 
+                    "name": "Microcomputer Software Tools II"
+                }, 
+                {
+                    "code": "CIS 145", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CIS/145", 
+                    "name": "Relational Database Design and Application"
+                }, 
+                {
+                    "code": "CIS 150", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CIS/150", 
+                    "name": "Programming Principles and Concepts"
+                }, 
+                {
+                    "code": "CIS 151", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CIS/151", 
+                    "name": "Web Site Development"
+                }, 
+                {
+                    "code": "CIS 152", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CIS/152", 
+                    "name": "Content Management Systems"
+                }, 
+                {
+                    "code": "CIS 180", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CIS/180", 
+                    "name": "Network Workstation Administration"
+                }, 
+                {
+                    "code": "CIS 243", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CIS/243", 
+                    "name": "JavaScript"
+                }, 
+                {
+                    "code": "CIS 251", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CIS/251", 
+                    "name": "Java Programming"
+                }, 
+                {
+                    "code": "CIS 252", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CIS/252", 
+                    "name": "C++ Programming"
+                }, 
+                {
+                    "code": "CIS 254", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CIS/254", 
+                    "name": "Data Structures"
+                }, 
+                {
+                    "code": "CIS 283", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CIS/283", 
+                    "name": "Linux"
+                }
+            ], 
+            "name": "Computer Information Systems", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/CIS"
+        }, 
+        {
+            "abbr": "COL", 
+            "courses": [
+                {
+                    "code": "COL 90", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/COL/90", 
+                    "name": "College Reading Strategies"
+                }
+            ], 
+            "name": "College Strategies", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/COL"
+        }, 
+        {
+            "abbr": "CRJ", 
+            "courses": [
+                {
+                    "code": "CRJ 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CRJ/101", 
+                    "name": "Introduction to Criminal Justice"
+                }, 
+                {
+                    "code": "CRJ 103", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CRJ/103", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CRJ 105", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CRJ/105", 
+                    "name": "Police Process"
+                }, 
+                {
+                    "code": "CRJ 107", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CRJ/107", 
+                    "name": "Adjudication Process"
+                }, 
+                {
+                    "code": "CRJ 109", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CRJ/109", 
+                    "name": "Corrections Process"
+                }, 
+                {
+                    "code": "CRJ 113", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CRJ/113", 
+                    "name": "Juvenile Justice"
+                }, 
+                {
+                    "code": "CRJ 121", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CRJ/121", 
+                    "name": "Criminology"
+                }, 
+                {
+                    "code": "CRJ 131", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CRJ/131", 
+                    "name": "Social Issues in Criminal Justice"
+                }, 
+                {
+                    "code": "CRJ 203", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CRJ/203", 
+                    "name": "Criminal Investigation"
+                }, 
+                {
+                    "code": "CRJ 215", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CRJ/215", 
+                    "name": "Field Experience"
+                }, 
+                {
+                    "code": "CRJ 219", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/CRJ/219", 
+                    "name": "Constitutional Criminal Procedure"
+                }
+            ], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/CRJ"
+        }, 
+        {
+            "abbr": "DAN", 
+            "courses": [
+                {
+                    "code": "DAN 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/101", 
+                    "name": "Introduction to Dance"
+                }, 
+                {
+                    "code": "DAN 102", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/102", 
+                    "name": "Pilates Mat Work"
+                }, 
+                {
+                    "code": "DAN 103", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/103", 
+                    "name": "Jazz Dance I"
+                }, 
+                {
+                    "code": "DAN 104", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/104", 
+                    "name": "Jazz Dance II"
+                }, 
+                {
+                    "code": "DAN 107", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/107", 
+                    "name": "Ballet I"
+                }, 
+                {
+                    "code": "DAN 108", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/108", 
+                    "name": "Ballet II"
+                }, 
+                {
+                    "code": "DAN 111", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/111", 
+                    "name": "Modern Dance I"
+                }, 
+                {
+                    "code": "DAN 112", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/112", 
+                    "name": "Modern Dance II"
+                }, 
+                {
+                    "code": "DAN 114", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/114", 
+                    "name": "Tap Dance I"
+                }, 
+                {
+                    "code": "DAN 116", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/116", 
+                    "name": "Middle Eastern Dance I"
+                }, 
+                {
+                    "code": "DAN 117", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/117", 
+                    "name": "Middle Eastern Dance II"
+                }, 
+                {
+                    "code": "DAN 121", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/121", 
+                    "name": "Dance History"
+                }, 
+                {
+                    "code": "DAN 183", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/183", 
+                    "name": "Ballroom Dance: American Smooth Style"
+                }, 
+                {
+                    "code": "DAN 184", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/184", 
+                    "name": "Ballroom Dance: Latin Style"
+                }, 
+                {
+                    "code": "DAN 201", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/201", 
+                    "name": "Dance Repertory Group: Mixed Company"
+                }, 
+                {
+                    "code": "DAN 203", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/203", 
+                    "name": "Jazz Dance III"
+                }, 
+                {
+                    "code": "DAN 207", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/207", 
+                    "name": "Ballet III"
+                }, 
+                {
+                    "code": "DAN 208", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/208", 
+                    "name": "Ballet IV"
+                }, 
+                {
+                    "code": "DAN 211", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/211", 
+                    "name": "Modern Dance III"
+                }, 
+                {
+                    "code": "DAN 212", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/212", 
+                    "name": "Modern Dance IV"
+                }, 
+                {
+                    "code": "DAN 216", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/216", 
+                    "name": "Middle Eastern Dance III"
+                }, 
+                {
+                    "code": "DAN 217", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/217", 
+                    "name": "Middle Eastern Dance IV"
+                }, 
+                {
+                    "code": "DAN 220", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/DAN/220", 
+                    "name": "Intermediate/Advanced Dance Technique"
+                }
+            ], 
+            "name": "Dance", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/DAN"
+        }, 
+        {
+            "abbr": "ECO", 
+            "courses": [
+                {
+                    "code": "ECO 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ECO/101", 
+                    "name": "Principles of Macroeconomics"
+                }, 
+                {
+                    "code": "ECO 102", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ECO/102", 
+                    "name": "Principles of Microeconomics"
+                }, 
+                {
+                    "code": "ECO 113", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ECO/113", 
+                    "name": "Environmental Economics"
+                }, 
+                {
+                    "code": "ECO 295", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ECO/295", 
+                    "name": "Directed Study in Economics"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/ECO"
+        }, 
+        {
+            "abbr": "EDU", 
+            "courses": [
+                {
+                    "code": "EDU 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EDU/101", 
+                    "name": "Introduction to Early Childhood Education"
+                }, 
+                {
+                    "code": "EDU 103", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EDU/103", 
+                    "name": "Creative Experiences in Art, Music, and Drama"
+                }, 
+                {
+                    "code": "EDU 111", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EDU/111", 
+                    "name": "Introduction to Special Education"
+                }, 
+                {
+                    "code": "EDU 112", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EDU/112", 
+                    "name": "Early Childhood Special Education"
+                }, 
+                {
+                    "code": "EDU 123", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EDU/123", 
+                    "name": "Educating the Infant and Toddler"
+                }, 
+                {
+                    "code": "EDU 201", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EDU/201", 
+                    "name": "Early Childhood Curriculum"
+                }, 
+                {
+                    "code": "EDU 205", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EDU/205", 
+                    "name": "Philosophy of Education"
+                }, 
+                {
+                    "code": "EDU 215", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EDU/215", 
+                    "name": "Student Teaching I"
+                }, 
+                {
+                    "code": "EDU 216", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EDU/216", 
+                    "name": "Student Teaching II"
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/EDU"
+        }, 
+        {
+            "abbr": "EGR", 
+            "courses": [
+                {
+                    "code": "EGR 100", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EGR/100", 
+                    "name": "Engineering Culture"
+                }, 
+                {
+                    "code": "EGR 105", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EGR/105", 
+                    "name": "Introduction to Engineering, Science, Technology, and Society"
+                }, 
+                {
+                    "code": "EGR 107", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EGR/107", 
+                    "name": "Engineering Graphics"
+                }, 
+                {
+                    "code": "EGR 205", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EGR/205", 
+                    "name": "Statics"
+                }, 
+                {
+                    "code": "EGR 206", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EGR/206", 
+                    "name": "Strength of Materials"
+                }, 
+                {
+                    "code": "EGR 209", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EGR/209", 
+                    "name": "Dynamics"
+                }, 
+                {
+                    "code": "EGR 210", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EGR/210", 
+                    "name": "Thermodynamics"
+                }, 
+                {
+                    "code": "EGR 211", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EGR/211", 
+                    "name": "Circuit Analysis I"
+                }
+            ], 
+            "name": "Engineering", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/EGR"
+        }, 
+        {
+            "abbr": "EMS", 
+            "courses": [
+                {
+                    "code": "EMS 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EMS/101", 
+                    "name": "Emergency Medical Technician- Basic"
+                }, 
+                {
+                    "code": "EMS 105", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EMS/105", 
+                    "name": "Principles of Advanced Life Support"
+                }, 
+                {
+                    "code": "EMS 106", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EMS/106", 
+                    "name": "EMT - Intermediate Internship"
+                }, 
+                {
+                    "code": "EMS 202", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EMS/202", 
+                    "name": "Pharmacology"
+                }, 
+                {
+                    "code": "EMS 203", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EMS/203", 
+                    "name": "Management of Medical and Shock-Trauma Emergencies"
+                }, 
+                {
+                    "code": "EMS 204", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EMS/204", 
+                    "name": "Management of Cardiovascular Emergencies"
+                }, 
+                {
+                    "code": "EMS 210", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EMS/210", 
+                    "name": "Paramedic Clinical"
+                }, 
+                {
+                    "code": "EMS 211", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EMS/211", 
+                    "name": "Paramedic Fieldwork Internships I"
+                }, 
+                {
+                    "code": "EMS 212", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EMS/212", 
+                    "name": "Paramedic Fieldwork Internships II"
+                }
+            ], 
+            "name": "Emergency Medical/Paramedic", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/EMS"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 090", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/090", 
+                    "name": "College Writing Strategies"
+                }, 
+                {
+                    "code": "ENG 90", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/90", 
+                    "name": "College Writing Strategies"
+                }, 
+                {
+                    "code": "ENG 094", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/094", 
+                    "name": "College Reading Strategies"
+                }, 
+                {
+                    "code": "ENG 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/101", 
+                    "name": "English Composition I: Expository Writing"
+                }, 
+                {
+                    "code": "ENG 103", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/103", 
+                    "name": "English Composition I: Purposes and Technique of Prose"
+                }, 
+                {
+                    "code": "ENG 105", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/105", 
+                    "name": "English Composition I: The Impact of Language"
+                }, 
+                {
+                    "code": "ENG 112", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/112", 
+                    "name": "English Composition II: Exploring Literature"
+                }, 
+                {
+                    "code": "ENG 114", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/114", 
+                    "name": "English Composition II: Literature and Creative Writing"
+                }, 
+                {
+                    "code": "ENG 116", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/116", 
+                    "name": "English Composition II: Analysis of Literature and Film"
+                }, 
+                {
+                    "code": "ENG 203", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/203", 
+                    "name": "American Literature I"
+                }, 
+                {
+                    "code": "ENG 204", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/204", 
+                    "name": "American Literature II"
+                }, 
+                {
+                    "code": "ENG 205", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/205", 
+                    "name": "British Literature I"
+                }, 
+                {
+                    "code": "ENG 206", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/206", 
+                    "name": "British Literature II"
+                }, 
+                {
+                    "code": "ENG 208", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/208", 
+                    "name": "Creative Writing and Literature: Studies in Genre"
+                }, 
+                {
+                    "code": "ENG 210", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/210", 
+                    "name": "Creative Nonfiction"
+                }, 
+                {
+                    "code": "ENG 212", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/212", 
+                    "name": "Graphic Novel"
+                }, 
+                {
+                    "code": "ENG 221", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/221", 
+                    "name": "Shakespeare"
+                }, 
+                {
+                    "code": "ENG 228", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/228", 
+                    "name": "Queer Literature"
+                }, 
+                {
+                    "code": "ENG 229", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/229", 
+                    "name": "Gothic Literature"
+                }, 
+                {
+                    "code": "ENG 235", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/235", 
+                    "name": "Survey of Latin American Literature"
+                }, 
+                {
+                    "code": "ENG 240", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/240", 
+                    "name": "Special Topics in Literature: Science Fiction: Themes and Contexts"
+                }, 
+                {
+                    "code": "ENG 241", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/241", 
+                    "name": "Survey of Children's Literature"
+                }, 
+                {
+                    "code": "ENG 243", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/243", 
+                    "name": "Modern Poetry"
+                }, 
+                {
+                    "code": "ENG 244", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/244", 
+                    "name": "Science Fiction: Themes and Contexts"
+                }, 
+                {
+                    "code": "ENG 247", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/247", 
+                    "name": "Women in Literature I"
+                }, 
+                {
+                    "code": "ENG 261", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/261", 
+                    "name": "The Short Story"
+                }, 
+                {
+                    "code": "ENG 295", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ENG/295", 
+                    "name": "Directed Study in English"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/ENG"
+        }, 
+        {
+            "abbr": "ESL", 
+            "courses": [
+                {
+                    "code": "ESL 103", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ESL/103", 
+                    "name": "Written English-Intermediate Level"
+                }, 
+                {
+                    "code": "ESL 104", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ESL/104", 
+                    "name": "Written English-Advanced Level"
+                }, 
+                {
+                    "code": "ESL 106", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ESL/106", 
+                    "name": "English Grammar-Advanced Beginners"
+                }, 
+                {
+                    "code": "ESL 107", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ESL/107", 
+                    "name": "American English Grammar in Context"
+                }, 
+                {
+                    "code": "ESL 108", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ESL/108", 
+                    "name": "American English Grammar in Use"
+                }, 
+                {
+                    "code": "ESL 110", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ESL/110", 
+                    "name": "ESL Computer Training"
+                }, 
+                {
+                    "code": "ESL 114", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ESL/114", 
+                    "name": "Spoken English- High Intermediate Level"
+                }, 
+                {
+                    "code": "ESL 117", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ESL/117", 
+                    "name": "English Sounds and Spelling"
+                }, 
+                {
+                    "code": "ESL 118", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ESL/118", 
+                    "name": "Advanced ESOL Grammar"
+                }, 
+                {
+                    "code": "ESL 119", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ESL/119", 
+                    "name": "English at Work"
+                }, 
+                {
+                    "code": "ESL 123", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ESL/123", 
+                    "name": "Reading and Vocabulary-Intermediate Level"
+                }, 
+                {
+                    "code": "ESL 124", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/ESL/124", 
+                    "name": "Reading and Vocabulary-High Intermediate"
+                }
+            ], 
+            "name": "Eng for spkr of other Language", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/ESL"
+        }, 
+        {
+            "abbr": "EVS", 
+            "courses": [
+                {
+                    "code": "EVS 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EVS/101", 
+                    "name": "Environmental Studies: Issues in Sustainability"
+                }, 
+                {
+                    "code": "EVS 118", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EVS/118", 
+                    "name": "Introduction to Food Systems"
+                }, 
+                {
+                    "code": "EVS 121", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EVS/121", 
+                    "name": "Gender and the Environment"
+                }, 
+                {
+                    "code": "EVS 150", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EVS/150", 
+                    "name": "The 24-Hour Outdoor Personal Growth Experience"
+                }, 
+                {
+                    "code": "EVS 151", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EVS/151", 
+                    "name": "Youth, Culture and Rites of Passage in Contemporary America"
+                }, 
+                {
+                    "code": "EVS 152", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EVS/152", 
+                    "name": "Sustainable Agriculture: Organic Gardening"
+                }, 
+                {
+                    "code": "EVS 153", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EVS/153", 
+                    "name": "Ancient Wilderness Living Skills"
+                }, 
+                {
+                    "code": "EVS 154", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EVS/154", 
+                    "name": "Exploring Ecological Consciousness"
+                }, 
+                {
+                    "code": "EVS 155", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EVS/155", 
+                    "name": "Introduction to Sustainable Energy: Solar Living"
+                }, 
+                {
+                    "code": "EVS 204", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/EVS/204", 
+                    "name": "Ecological Security and Sustainability"
+                }
+            ], 
+            "name": "Environmental Studies", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/EVS"
+        }, 
+        {
+            "abbr": "FRE", 
+            "courses": [
+                {
+                    "code": "FRE 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/FRE/101", 
+                    "name": "Elementary French I"
+                }, 
+                {
+                    "code": "FRE 102", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/FRE/102", 
+                    "name": "Elementary French II"
+                }, 
+                {
+                    "code": "FRE 112", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/FRE/112", 
+                    "name": "French Skills Practice II"
+                }, 
+                {
+                    "code": "FRE 201", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/FRE/201", 
+                    "name": "Intermediate French I"
+                }, 
+                {
+                    "code": "FRE 202", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/FRE/202", 
+                    "name": "Intermediate French II"
+                }, 
+                {
+                    "code": "FRE 255", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/FRE/255", 
+                    "name": "French Film and Language I"
+                }, 
+                {
+                    "code": "FRE 256", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/FRE/256", 
+                    "name": "French Reading for Communication I"
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/FRE"
+        }, 
+        {
+            "abbr": "FST", 
+            "courses": [
+                {
+                    "code": "FST 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/FST/101", 
+                    "name": "Introduction to Fire Protection"
+                }, 
+                {
+                    "code": "FST 105", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/FST/105", 
+                    "name": "Organizational Management"
+                }, 
+                {
+                    "code": "FST 109", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/FST/109", 
+                    "name": "Hazardous Materials I"
+                }, 
+                {
+                    "code": "FST 111", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/FST/111", 
+                    "name": "Building Construction"
+                }, 
+                {
+                    "code": "FST 113", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/FST/113", 
+                    "name": "Fire Hydraulics"
+                }, 
+                {
+                    "code": "FST 201", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/FST/201", 
+                    "name": "Fire Protection Systems and Equipment I"
+                }
+            ], 
+            "name": "Fire Science Technology", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/FST"
+        }, 
+        {
+            "abbr": "GCC", 
+            "courses": [
+                {
+                    "code": "GCC 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/GCC/101", 
+                    "name": "The College Connection: Building a Community of Scholars"
+                }, 
+                {
+                    "code": "GCC 105", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/GCC/105", 
+                    "name": "Understanding College Culture"
+                }
+            ], 
+            "name": "College Orientation Series", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/GCC"
+        }, 
+        {
+            "abbr": "GEO", 
+            "courses": [
+                {
+                    "code": "GEO 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/GEO/101", 
+                    "name": "Physical Geology"
+                }, 
+                {
+                    "code": "GEO 102", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/GEO/102", 
+                    "name": "Historical Geology"
+                }, 
+                {
+                    "code": "GEO 103", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/GEO/103", 
+                    "name": "Valley Geology"
+                }, 
+                {
+                    "code": "GEO 104", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/GEO/104", 
+                    "name": "Introduction to Oceanography"
+                }
+            ], 
+            "name": "Geology", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/GEO"
+        }, 
+        {
+            "abbr": "GGY", 
+            "courses": [
+                {
+                    "code": "GGY 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/GGY/101", 
+                    "name": "Introduction to Geography"
+                }, 
+                {
+                    "code": "GGY 113", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/GGY/113", 
+                    "name": "Geography of the Pioneer Valley"
+                }
+            ], 
+            "name": "Geography", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/GGY"
+        }, 
+        {
+            "abbr": "HFW", 
+            "courses": [
+                {
+                    "code": "HFW 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HFW/101", 
+                    "name": "Introduction to Exercise Science"
+                }
+            ], 
+            "name": "Health,Fitness,Wellness", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/HFW"
+        }, 
+        {
+            "abbr": "HIS", 
+            "courses": [
+                {
+                    "code": "HIS 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HIS/101", 
+                    "name": "Western Civilization to 1500 A.D."
+                }, 
+                {
+                    "code": "HIS 102", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HIS/102", 
+                    "name": "Western Civilization Since 1500 A.D."
+                }, 
+                {
+                    "code": "HIS 105", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HIS/105", 
+                    "name": "History of the American People to 1865"
+                }, 
+                {
+                    "code": "HIS 106", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HIS/106", 
+                    "name": "History of the American People Since 1865"
+                }, 
+                {
+                    "code": "HIS 129", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HIS/129", 
+                    "name": "Introduction to Modern Africa"
+                }, 
+                {
+                    "code": "HIS 131", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HIS/131", 
+                    "name": "Women in American History"
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/HIS"
+        }, 
+        {
+            "abbr": "HSC", 
+            "courses": [
+                {
+                    "code": "HSC 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HSC/101", 
+                    "name": "Introduction to Patient Care Skills"
+                }, 
+                {
+                    "code": "HSC 127", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HSC/127", 
+                    "name": "Survey of Health Careers"
+                }, 
+                {
+                    "code": "HSC 127L", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HSC/127L", 
+                    "name": "Job Shadowing for Health Careers"
+                }
+            ], 
+            "name": "Health Science", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/HSC"
+        }, 
+        {
+            "abbr": "HSV", 
+            "courses": [
+                {
+                    "code": "HSV 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HSV/101", 
+                    "name": "Introduction to Human Services"
+                }, 
+                {
+                    "code": "HSV 115", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HSV/115", 
+                    "name": "The Helping Relationship"
+                }, 
+                {
+                    "code": "HSV 205", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HSV/205", 
+                    "name": "Case Management Practices"
+                }, 
+                {
+                    "code": "HSV 215", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HSV/215", 
+                    "name": "Counseling Skills"
+                }, 
+                {
+                    "code": "HSV 271", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HSV/271", 
+                    "name": "Practicum in Human Services"
+                }
+            ], 
+            "name": "Human Services", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/HSV"
+        }, 
+        {
+            "abbr": "HUD", 
+            "courses": [
+                {
+                    "code": "HUD 112", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HUD/112", 
+                    "name": "Assertiveness Training"
+                }, 
+                {
+                    "code": "HUD 114", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HUD/114", 
+                    "name": "College Success"
+                }, 
+                {
+                    "code": "HUD 117", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HUD/117", 
+                    "name": "Managing Stress"
+                }, 
+                {
+                    "code": "HUD 121", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HUD/121", 
+                    "name": "Applied Leadership Training"
+                }, 
+                {
+                    "code": "HUD 122", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HUD/122", 
+                    "name": "Practicum in Governance"
+                }, 
+                {
+                    "code": "HUD 127", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HUD/127", 
+                    "name": "Survey of Health Careers"
+                }, 
+                {
+                    "code": "HUD 131", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HUD/131", 
+                    "name": "Student Ambassador"
+                }
+            ], 
+            "name": "Human Development", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/HUD"
+        }, 
+        {
+            "abbr": "HUM", 
+            "courses": [
+                {
+                    "code": "HUM 108", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HUM/108", 
+                    "name": "Introduction to Topics in Humanities"
+                }, 
+                {
+                    "code": "HUM 110", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HUM/110", 
+                    "name": "Media Literacy: The World of Advertising"
+                }, 
+                {
+                    "code": "HUM 150", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HUM/150", 
+                    "name": "The Lively Arts"
+                }, 
+                {
+                    "code": "HUM 153", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/HUM/153", 
+                    "name": "Media and Popular Culture"
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/HUM"
+        }, 
+        {
+            "abbr": "IDS", 
+            "courses": [
+                {
+                    "code": "IDS 108", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/IDS/108", 
+                    "name": "Mathematics for Medical Dosage Calculations"
+                }, 
+                {
+                    "code": "IDS 295", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/IDS/295", 
+                    "name": "Dir Study in Interdisciplinary"
+                }
+            ], 
+            "name": "Interdisciplinary Studies", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/IDS"
+        }, 
+        {
+            "abbr": "LAT", 
+            "courses": [
+                {
+                    "code": "LAT 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/LAT/101", 
+                    "name": "Elementary Latin I"
+                }, 
+                {
+                    "code": "LAT 102", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/LAT/102", 
+                    "name": "Elementary Latin II"
+                }
+            ], 
+            "name": "Latin", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/LAT"
+        }, 
+        {
+            "abbr": "LED", 
+            "courses": [
+                {
+                    "code": "LED 156", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/LED/156", 
+                    "name": "Principles of Weight Training"
+                }, 
+                {
+                    "code": "LED 157", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/LED/157", 
+                    "name": "Personal Fitness Training"
+                }, 
+                {
+                    "code": "LED 157D", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/LED/157D", 
+                    "name": "Personal Fitness Training"
+                }, 
+                {
+                    "code": "LED 158", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/LED/158", 
+                    "name": "Advanced Aerobics"
+                }, 
+                {
+                    "code": "LED 161", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/LED/161", 
+                    "name": "Golf"
+                }, 
+                {
+                    "code": "LED 162", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/LED/162", 
+                    "name": "Principles of Weight Training II"
+                }, 
+                {
+                    "code": "LED 167", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/LED/167", 
+                    "name": "Introductory Tae Kwon Do I (Karate)"
+                }, 
+                {
+                    "code": "LED 168", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/LED/168", 
+                    "name": "Introductory Tae Kwon Do II (Karate)"
+                }, 
+                {
+                    "code": "LED 170", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/LED/170", 
+                    "name": "Gentle Yoga"
+                }, 
+                {
+                    "code": "LED 171", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/LED/171", 
+                    "name": "Yoga"
+                }, 
+                {
+                    "code": "LED 172", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/LED/172", 
+                    "name": "Self-Defense for Women"
+                }
+            ], 
+            "name": "Leisure Education", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/LED"
+        }, 
+        {
+            "abbr": "MAS", 
+            "courses": [
+                {
+                    "code": "MAS 100", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAS/100", 
+                    "name": "Profit/Ethics for Practioners"
+                }, 
+                {
+                    "code": "MAS 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAS/101", 
+                    "name": "Peer Cllient Consultation"
+                }, 
+                {
+                    "code": "MAS 102", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAS/102", 
+                    "name": "Neuromuscular Self Care"
+                }, 
+                {
+                    "code": "MAS 103", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAS/103", 
+                    "name": "Funtional Anatomy Shoulder"
+                }, 
+                {
+                    "code": "MAS 105", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAS/105", 
+                    "name": "Functional Anatomy Spine"
+                }, 
+                {
+                    "code": "MAS 106", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAS/106", 
+                    "name": "Alexander Technique"
+                }, 
+                {
+                    "code": "MAS 107", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAS/107", 
+                    "name": "Full Body Stone Massage"
+                }, 
+                {
+                    "code": "MAS 108", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAS/108", 
+                    "name": "Light Touch Lymph Therapy"
+                }, 
+                {
+                    "code": "MAS 109", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAS/109", 
+                    "name": "Self Care Yoga for Therapist"
+                }, 
+                {
+                    "code": "MAS 110", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAS/110", 
+                    "name": "Integrated Muscular Therapy"
+                }, 
+                {
+                    "code": "MAS 111", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAS/111", 
+                    "name": "Visceral Massage"
+                }, 
+                {
+                    "code": "MAS 112", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAS/112", 
+                    "name": "Zero Balancing"
+                }
+            ], 
+            "name": "Massage Workshop", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/MAS"
+        }, 
+        {
+            "abbr": "MAT", 
+            "courses": [
+                {
+                    "code": "MAT 90", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAT/90", 
+                    "name": "Basic Mathematics Skills"
+                }, 
+                {
+                    "code": "MAT 94", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAT/94", 
+                    "name": "Preparatory Course for Algebra"
+                }, 
+                {
+                    "code": "MAT 105", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAT/105", 
+                    "name": "Introductory Algebra"
+                }, 
+                {
+                    "code": "MAT 106", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAT/106", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MAT 107", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAT/107", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MAT 108", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAT/108", 
+                    "name": "Precalculus"
+                }, 
+                {
+                    "code": "MAT 114", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAT/114", 
+                    "name": "Introduction to Statistics"
+                }, 
+                {
+                    "code": "MAT 116", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAT/116", 
+                    "name": "Mathematics for Early Childhood and Elementary Educators"
+                }, 
+                {
+                    "code": "MAT 117", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAT/117", 
+                    "name": "Mathematical Problem Solving"
+                }, 
+                {
+                    "code": "MAT 151", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAT/151", 
+                    "name": "Applied Calculus I"
+                }, 
+                {
+                    "code": "MAT 201", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAT/201", 
+                    "name": "Calculus with Analytic Geometry I"
+                }, 
+                {
+                    "code": "MAT 202", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAT/202", 
+                    "name": "Calculus with Analytic Geometry II"
+                }, 
+                {
+                    "code": "MAT 203", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAT/203", 
+                    "name": "Multivariate Calculus"
+                }, 
+                {
+                    "code": "MAT 204", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MAT/204", 
+                    "name": "Elementary Differential Equations"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/MAT"
+        }, 
+        {
+            "abbr": "MOM", 
+            "courses": [
+                {
+                    "code": "MOM 110", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MOM/110", 
+                    "name": "Introduction to Medical Terminology"
+                }, 
+                {
+                    "code": "MOM 120", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MOM/120", 
+                    "name": "Introduction to Medical Coding"
+                }, 
+                {
+                    "code": "MOM 210", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MOM/210", 
+                    "name": "Medical Billing and Insurance"
+                }
+            ], 
+            "name": "Medical Office Management", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/MOM"
+        }, 
+        {
+            "abbr": "MTC", 
+            "courses": [
+                {
+                    "code": "MTC 112", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MTC/112", 
+                    "name": "Massage Therapy Clinic"
+                }, 
+                {
+                    "code": "MTC 113", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MTC/113", 
+                    "name": "Massage Therapy Theory and Technique III"
+                }, 
+                {
+                    "code": "MTC 114", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MTC/114", 
+                    "name": "Interpersonal Dynamics of the Therapeutic Massage Relationship"
+                }, 
+                {
+                    "code": "MTC 116", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MTC/116", 
+                    "name": "Clinical Assessment Practicum Seminar"
+                }
+            ], 
+            "name": "Massage Therapy", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/MTC"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 102", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/102", 
+                    "name": "Jazz Eras and Styles"
+                }, 
+                {
+                    "code": "MUS 103", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/103", 
+                    "name": "Music Theory Fundamentals"
+                }, 
+                {
+                    "code": "MUS 104", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/104", 
+                    "name": "Jazz and Pop Chorus"
+                }, 
+                {
+                    "code": "MUS 107", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/107", 
+                    "name": "Music Theory I"
+                }, 
+                {
+                    "code": "MUS 108", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/108", 
+                    "name": "Music Theory II"
+                }, 
+                {
+                    "code": "MUS 111", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/111", 
+                    "name": "Chorus"
+                }, 
+                {
+                    "code": "MUS 125", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/125", 
+                    "name": "Jazz Ensemble"
+                }, 
+                {
+                    "code": "MUS 127", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/127", 
+                    "name": "20th Century American Popular Music"
+                }, 
+                {
+                    "code": "MUS 130", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/130", 
+                    "name": "Applied Music"
+                }, 
+                {
+                    "code": "MUS 137", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/137", 
+                    "name": "World Music and Cultures"
+                }, 
+                {
+                    "code": "MUS 138", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/138", 
+                    "name": "Creative Musicianship"
+                }, 
+                {
+                    "code": "MUS 139", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/139", 
+                    "name": "Contemporary Music Ensemble"
+                }, 
+                {
+                    "code": "MUS 140", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/140", 
+                    "name": "Vocal Jazz Ensemble"
+                }, 
+                {
+                    "code": "MUS 147", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/147", 
+                    "name": "Aural Skills I"
+                }, 
+                {
+                    "code": "MUS 148", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/148", 
+                    "name": "Aural Skills II"
+                }, 
+                {
+                    "code": "MUS 150", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/150", 
+                    "name": "African Percussion Ensemble"
+                }, 
+                {
+                    "code": "MUS 220", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/220", 
+                    "name": "Songwriting"
+                }, 
+                {
+                    "code": "MUS 221", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/221", 
+                    "name": "Audio Recording and Production I"
+                }, 
+                {
+                    "code": "MUS 230", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/230", 
+                    "name": "Applied Music 2-credit"
+                }, 
+                {
+                    "code": "MUS 230D", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/230D", 
+                    "name": "Applied Music 2-credit concurrent"
+                }, 
+                {
+                    "code": "MUS 231", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/MUS/231", 
+                    "name": "Recital Participation"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/MUS"
+        }, 
+        {
+            "abbr": "NUR", 
+            "courses": [
+                {
+                    "code": "NUR 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/101", 
+                    "name": "Fundamentals of Nursing"
+                }, 
+                {
+                    "code": "NUR 101C", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/101C", 
+                    "name": "Fundamentals of Nursing Clinical"
+                }, 
+                {
+                    "code": "NUR 103", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/103", 
+                    "name": "Fundamentals of Practical Nursing"
+                }, 
+                {
+                    "code": "NUR 103C", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/103C", 
+                    "name": "Fundamentals of Practical Nursing Clinical"
+                }, 
+                {
+                    "code": "NUR 105", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/105", 
+                    "name": "Practical Nursing Practicum"
+                }, 
+                {
+                    "code": "NUR 106", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/106", 
+                    "name": "Pediatric Nursing"
+                }, 
+                {
+                    "code": "NUR 106C", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/106C", 
+                    "name": "Pediatric Nursing Clinical"
+                }, 
+                {
+                    "code": "NUR 107", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/107", 
+                    "name": "Nursing Care of Clients and Families"
+                }, 
+                {
+                    "code": "NUR 107C", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/107C", 
+                    "name": "Nursing Care of Clients and Families Clinical"
+                }, 
+                {
+                    "code": "NUR 108", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/108", 
+                    "name": "Obstetric Nursing"
+                }, 
+                {
+                    "code": "NUR 108C", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/108C", 
+                    "name": "Obstetric Nursing Clinical"
+                }, 
+                {
+                    "code": "NUR 109", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/109", 
+                    "name": "Advanced Concepts in Practical Nursing"
+                }, 
+                {
+                    "code": "NUR 111", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/111", 
+                    "name": "Introduction to Nursing Process"
+                }, 
+                {
+                    "code": "NUR 112", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/112", 
+                    "name": "Introduction to Professional Nursing and the Nursing Process"
+                }, 
+                {
+                    "code": "NUR 201", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/201", 
+                    "name": "Medical-Surgical Nursing I"
+                }, 
+                {
+                    "code": "NUR 201C", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/201C", 
+                    "name": "Medical-Surgical Nursing I Clinical"
+                }, 
+                {
+                    "code": "NUR 202", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/202", 
+                    "name": "Medical-Surgical Nursing II"
+                }, 
+                {
+                    "code": "NUR 202C", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/202C", 
+                    "name": "Medical-Surgical Nursing II Clinical"
+                }, 
+                {
+                    "code": "NUR 203", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/203", 
+                    "name": "Mental Health Nursing"
+                }, 
+                {
+                    "code": "NUR 203C", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/203C", 
+                    "name": "Mental Health Nursing Clinical"
+                }, 
+                {
+                    "code": "NUR 204", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/204", 
+                    "name": "Trends and Issues in Nursing"
+                }, 
+                {
+                    "code": "NUR 295", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/NUR/295", 
+                    "name": "Directed Study in Nursing"
+                }
+            ], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/NUR"
+        }, 
+        {
+            "abbr": "OLP", 
+            "courses": [
+                {
+                    "code": "OLP 111", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/OLP/111", 
+                    "name": "Introduction to Outdoor Adventure Skills"
+                }, 
+                {
+                    "code": "OLP 112", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/OLP/112", 
+                    "name": "Leadership and Group Management I"
+                }, 
+                {
+                    "code": "OLP 116", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/OLP/116", 
+                    "name": "Adventure Program Planning and Fieldwork I"
+                }, 
+                {
+                    "code": "OLP 120", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/OLP/120", 
+                    "name": "Wilderness Medical Preparedness and Rescue"
+                }, 
+                {
+                    "code": "OLP 124", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/OLP/124", 
+                    "name": "Natural/Cultural History and Resource Management"
+                }, 
+                {
+                    "code": "OLP 127", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/OLP/127", 
+                    "name": "Outdoor Adventure Skills II"
+                }, 
+                {
+                    "code": "OLP 140", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/OLP/140", 
+                    "name": "Rock Climbing Instructor"
+                }, 
+                {
+                    "code": "OLP 141", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/OLP/141", 
+                    "name": "Paddling Instructor"
+                }, 
+                {
+                    "code": "OLP 142", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/OLP/142", 
+                    "name": "Nordic Skiing Instructor"
+                }, 
+                {
+                    "code": "OLP 143", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/OLP/143", 
+                    "name": "Backcountry Travel Instructor I"
+                }, 
+                {
+                    "code": "OLP 144", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/OLP/144", 
+                    "name": "Challenge Course Programming Instructor"
+                }, 
+                {
+                    "code": "OLP 201", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/OLP/201", 
+                    "name": "Individual Project in Outdoor Leadership I"
+                }, 
+                {
+                    "code": "OLP 202", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/OLP/202", 
+                    "name": "Individual Project in Outdoor Leadership II"
+                }, 
+                {
+                    "code": "OLP 205", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/OLP/205", 
+                    "name": "Group Management for Outdoor Leaders II"
+                }, 
+                {
+                    "code": "OLP 216", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/OLP/216", 
+                    "name": "Field Work Experience in OLP II"
+                }
+            ], 
+            "name": "Outdoor Leadership", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/OLP"
+        }, 
+        {
+            "abbr": "PCS", 
+            "courses": [
+                {
+                    "code": "PCS 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PCS/101", 
+                    "name": "Public Speaking"
+                }, 
+                {
+                    "code": "PCS 131", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PCS/131", 
+                    "name": "Intercultural Communication"
+                }, 
+                {
+                    "code": "PCS 141", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PCS/141", 
+                    "name": "Interpersonal Communication"
+                }
+            ], 
+            "name": "Personal Communication Skills", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/PCS"
+        }, 
+        {
+            "abbr": "PHI", 
+            "courses": [
+                {
+                    "code": "PHI 103", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PHI/103", 
+                    "name": "Introduction to Philosophy"
+                }, 
+                {
+                    "code": "PHI 104", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PHI/104", 
+                    "name": "Introduction to Ethics"
+                }, 
+                {
+                    "code": "PHI 108", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PHI/108", 
+                    "name": "Western Religions"
+                }, 
+                {
+                    "code": "PHI 110", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PHI/110", 
+                    "name": "Eastern Religions"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/PHI"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PHY/101", 
+                    "name": "General Physics I"
+                }, 
+                {
+                    "code": "PHY 102", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PHY/102", 
+                    "name": "General Physics II"
+                }, 
+                {
+                    "code": "PHY 111", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PHY/111", 
+                    "name": "General Physics I with Calculus"
+                }, 
+                {
+                    "code": "PHY 112", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PHY/112", 
+                    "name": "General Physics II with Calculus"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/PHY"
+        }, 
+        {
+            "abbr": "POL", 
+            "courses": [
+                {
+                    "code": "POL 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/POL/101", 
+                    "name": "American Politics"
+                }, 
+                {
+                    "code": "POL 105", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/POL/105", 
+                    "name": "International Politics"
+                }, 
+                {
+                    "code": "POL 203", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/POL/203", 
+                    "name": "American Civil Liberties"
+                }, 
+                {
+                    "code": "POL 205", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/POL/205", 
+                    "name": "American Foreign Policy"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/POL"
+        }, 
+        {
+            "abbr": "PSJ", 
+            "courses": [
+                {
+                    "code": "PSJ 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PSJ/101", 
+                    "name": "Introduction to Peace Studies"
+                }, 
+                {
+                    "code": "PSJ 120", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PSJ/120", 
+                    "name": "Mediation and Conflict Resolution"
+                }, 
+                {
+                    "code": "PSJ 225", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PSJ/225", 
+                    "name": "Peacemaking and Sustainability in Practice: Strategies for a Sustainable Future"
+                }
+            ], 
+            "name": "Peace & Social Justice", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/PSJ"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PSY/101", 
+                    "name": "Principles of Psychology"
+                }, 
+                {
+                    "code": "PSY 209", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PSY/209", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSY 210", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PSY/210", 
+                    "name": "Statistics for Psychology and the Social Sciences"
+                }, 
+                {
+                    "code": "PSY 212", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PSY/212", 
+                    "name": "Research Methods in Psychology"
+                }, 
+                {
+                    "code": "PSY 214", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PSY/214", 
+                    "name": "Psychology of Peace, Conflict and Violence"
+                }, 
+                {
+                    "code": "PSY 215", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PSY/215", 
+                    "name": "Theories of Personality"
+                }, 
+                {
+                    "code": "PSY 217", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PSY/217", 
+                    "name": "Human Growth and Development"
+                }, 
+                {
+                    "code": "PSY 225", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PSY/225", 
+                    "name": "Psychology of Women"
+                }, 
+                {
+                    "code": "PSY 233", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PSY/233", 
+                    "name": "Child Behavior and Development"
+                }, 
+                {
+                    "code": "PSY 277", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/PSY/277", 
+                    "name": "Psychology of Death and Dying"
+                }
+            ], 
+            "name": "Psychology", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/PSY"
+        }, 
+        {
+            "abbr": "REW", 
+            "courses": [
+                {
+                    "code": "REW 377", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/REW/377", 
+                    "name": "Solar Thermal SCI 128"
+                }, 
+                {
+                    "code": "REW 382", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/REW/382", 
+                    "name": "Fundamentals of Elec SCI 112"
+                }, 
+                {
+                    "code": "REW 383", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/REW/383", 
+                    "name": "Energy Efficiency/Audit SCI126"
+                }, 
+                {
+                    "code": "REW 384", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/REW/384", 
+                    "name": "Sustainable Design SCI 127"
+                }, 
+                {
+                    "code": "REW 385", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/REW/385", 
+                    "name": "Comm Energy Solutions SCI110"
+                }, 
+                {
+                    "code": "REW 391", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/REW/391", 
+                    "name": "Intro Photo Tech SCI 121"
+                }, 
+                {
+                    "code": "REW 392", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/REW/392", 
+                    "name": "Photovoltaic Install"
+                }, 
+                {
+                    "code": "REW 397", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/REW/397", 
+                    "name": "Passive Solar Technology"
+                }, 
+                {
+                    "code": "REW 399", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/REW/399", 
+                    "name": "Global Warming SCI 119"
+                }, 
+                {
+                    "code": "REW 400", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/REW/400", 
+                    "name": "Insulation Retrofits SCI 130"
+                }, 
+                {
+                    "code": "REW 427", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/REW/427", 
+                    "name": "Build Earth Straw Wood SCI 134"
+                }, 
+                {
+                    "code": "REW 428", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/REW/428", 
+                    "name": "Intro HVAC"
+                }, 
+                {
+                    "code": "REW 430", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/REW/430", 
+                    "name": "Landscape Design SCI 125"
+                }, 
+                {
+                    "code": "REW 435", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/REW/435", 
+                    "name": "Green Career Exploration"
+                }
+            ], 
+            "name": "Renewable Energy Workshop", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/REW"
+        }, 
+        {
+            "abbr": "SCI", 
+            "courses": [
+                {
+                    "code": "SCI 103", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/103", 
+                    "name": "Astronomy"
+                }, 
+                {
+                    "code": "SCI 110", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/110", 
+                    "name": "Community Energy Solutions"
+                }, 
+                {
+                    "code": "SCI 112", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/112", 
+                    "name": "Fundamentals of Electricity"
+                }, 
+                {
+                    "code": "SCI 117", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/117", 
+                    "name": "Meteorology"
+                }, 
+                {
+                    "code": "SCI 119", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/119", 
+                    "name": "Introduction to Global Warming"
+                }, 
+                {
+                    "code": "SCI 120", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/120", 
+                    "name": "Sustainable Energy: Theory and Practice"
+                }, 
+                {
+                    "code": "SCI 121", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/121", 
+                    "name": "Introduction to Photovoltaic (Solar Electric) Technology"
+                }, 
+                {
+                    "code": "SCI 123", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/123", 
+                    "name": "Passive Solar Technology"
+                }, 
+                {
+                    "code": "SCI 125", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/125", 
+                    "name": "Sustainable Landscape Design"
+                }, 
+                {
+                    "code": "SCI 126", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/126", 
+                    "name": "Residential Energy Efficiency and Energy Auditing"
+                }, 
+                {
+                    "code": "SCI 128", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/128", 
+                    "name": "Solar Thermal Systems"
+                }, 
+                {
+                    "code": "SCI 130", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/130", 
+                    "name": "Extreme Insulation Retrofits"
+                }, 
+                {
+                    "code": "SCI 132", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/132", 
+                    "name": "Introduction to Home Heating and Cooling"
+                }, 
+                {
+                    "code": "SCI 134", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/134", 
+                    "name": "Building with Earth, Straw, Wood, and Stone"
+                }, 
+                {
+                    "code": "SCI 135", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/135", 
+                    "name": "Green Careers Exploration & Career Skill Building"
+                }, 
+                {
+                    "code": "SCI 136", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/136", 
+                    "name": "Applied Residential Energy Auditing"
+                }, 
+                {
+                    "code": "SCI 138", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/138", 
+                    "name": "Soil Science"
+                }, 
+                {
+                    "code": "SCI 221", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/221", 
+                    "name": "Photovoltaic (Solar Electric) Installation"
+                }, 
+                {
+                    "code": "SCI 293", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/293", 
+                    "name": "Internship in Science"
+                }, 
+                {
+                    "code": "SCI 294", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/294", 
+                    "name": "Internship in Science II"
+                }, 
+                {
+                    "code": "SCI 295", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SCI/295", 
+                    "name": "Directed Study in Science"
+                }
+            ], 
+            "name": "Science", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/SCI"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SOC/101", 
+                    "name": "Principles of Sociology"
+                }, 
+                {
+                    "code": "SOC 108", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SOC/108", 
+                    "name": "Crime & Punishment in the U.S.: A Sociological Overview"
+                }, 
+                {
+                    "code": "SOC 201", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SOC/201", 
+                    "name": "Social Problems"
+                }, 
+                {
+                    "code": "SOC 203", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SOC/203", 
+                    "name": "Sociology of the Family"
+                }, 
+                {
+                    "code": "SOC 206", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SOC/206", 
+                    "name": "Sociology of Human Sexuality: Behaviors, Experiences, and Identities"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/SOC"
+        }, 
+        {
+            "abbr": "SPA", 
+            "courses": [
+                {
+                    "code": "SPA 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SPA/101", 
+                    "name": "Elementary Spanish I"
+                }, 
+                {
+                    "code": "SPA 102", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SPA/102", 
+                    "name": "Elementary Spanish II"
+                }, 
+                {
+                    "code": "SPA 111", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SPA/111", 
+                    "name": "Spanish Skills Practice I"
+                }, 
+                {
+                    "code": "SPA 112", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SPA/112", 
+                    "name": "Spanish Skills Practice II"
+                }, 
+                {
+                    "code": "SPA 124", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SPA/124", 
+                    "name": "Spanish for Health Professionals"
+                }, 
+                {
+                    "code": "SPA 133", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SPA/133", 
+                    "name": "Spanish for Law Enforcement"
+                }, 
+                {
+                    "code": "SPA 201", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SPA/201", 
+                    "name": "Intermediate Spanish I"
+                }, 
+                {
+                    "code": "SPA 202", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SPA/202", 
+                    "name": "Intermediate Spanish II"
+                }, 
+                {
+                    "code": "SPA 255", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/SPA/255", 
+                    "name": "Spanish Film and Language I"
+                }
+            ], 
+            "name": "Spanish", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/SPA"
+        }, 
+        {
+            "abbr": "THE", 
+            "courses": [
+                {
+                    "code": "THE 101", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/THE/101", 
+                    "name": "Introduction to Theater"
+                }, 
+                {
+                    "code": "THE 106", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/THE/106", 
+                    "name": "Stage Craft"
+                }, 
+                {
+                    "code": "THE 113", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/THE/113", 
+                    "name": "Fundamentals of Acting"
+                }, 
+                {
+                    "code": "THE 133", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/THE/133", 
+                    "name": "College Theater Workshop"
+                }, 
+                {
+                    "code": "THE 213", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/THE/213", 
+                    "name": "Advanced Acting"
+                }, 
+                {
+                    "code": "THE 226", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/THE/226", 
+                    "name": "Stage Skills"
+                }
+            ], 
+            "name": "Theater", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/THE"
+        }, 
+        {
+            "abbr": "WST", 
+            "courses": [
+                {
+                    "code": "WST 115", 
+                    "course_url": "http://www.chegg.com/courses/greenfieldcc/WST/115", 
+                    "name": "Introduction to Women's Studies"
+                }
+            ], 
+            "name": "Women's Studies", 
+            "url": "http://www.chegg.com/courses/greenfieldcc/WST"
+        }
+    ], 
+    "name": "greenfieldcc"
+}

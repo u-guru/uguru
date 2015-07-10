@@ -1,0 +1,3509 @@
+{
+    "all_stats": {
+        "num_courses": 351, 
+        "num_departments": 280
+    }, 
+    "departments": [
+        {
+            "abbr": "ABRP", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ABRP"
+        }, 
+        {
+            "abbr": "ACC", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ACC"
+        }, 
+        {
+            "abbr": "ACM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ACM"
+        }, 
+        {
+            "abbr": "AEC", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/AEC"
+        }, 
+        {
+            "abbr": "AERO", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/AERO"
+        }, 
+        {
+            "abbr": "AG", 
+            "courses": [
+                {
+                    "code": "AG 112", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AG/112", 
+                    "name": "Leeward Community College - Introduction to Organic Agriculture"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/AG"
+        }, 
+        {
+            "abbr": "AGBU", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/AGBU"
+        }, 
+        {
+            "abbr": "AGEC", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/AGEC"
+        }, 
+        {
+            "abbr": "AGEN", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/AGEN"
+        }, 
+        {
+            "abbr": "AGRN", 
+            "courses": [], 
+            "name": "Agronomy", 
+            "url": "http://www.chegg.com/courses/leeward/AGRN"
+        }, 
+        {
+            "abbr": "AJ", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/AJ"
+        }, 
+        {
+            "abbr": "AMST", 
+            "courses": [
+                {
+                    "code": "AMST 201", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AMST/201", 
+                    "name": "Leeward Community College - The American Experience: Institutions and Movements"
+                }, 
+                {
+                    "code": "AMST 211", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AMST/211", 
+                    "name": "Leeward Community College - WI-Amer Issues: Domestic"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/AMST"
+        }, 
+        {
+            "abbr": "AMT", 
+            "courses": [
+                {
+                    "code": "AMT 20", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AMT/20", 
+                    "name": "Leeward Community College - Intro to Auto Mech"
+                }, 
+                {
+                    "code": "AMT 23", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AMT/23", 
+                    "name": "Leeward Community College - Lubrication & Service"
+                }, 
+                {
+                    "code": "AMT 25", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AMT/25", 
+                    "name": "Leeward Community College - Preventative Maint & Insp"
+                }, 
+                {
+                    "code": "AMT 30", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AMT/30", 
+                    "name": "Leeward Community College - Engines"
+                }, 
+                {
+                    "code": "AMT 40", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AMT/40", 
+                    "name": "Leeward Community College - Electric/Electronics I"
+                }, 
+                {
+                    "code": "AMT 40D", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AMT/40D", 
+                    "name": "Leeward Community College - Engine Performance"
+                }, 
+                {
+                    "code": "AMT 41", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AMT/41", 
+                    "name": "Leeward Community College - Electric/Electronics II"
+                }, 
+                {
+                    "code": "AMT 43", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AMT/43", 
+                    "name": "Leeward Community College - Heating & Air Condition"
+                }, 
+                {
+                    "code": "AMT 46", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AMT/46", 
+                    "name": "Leeward Community College - Man Drive Train & Axles"
+                }, 
+                {
+                    "code": "AMT 50", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AMT/50", 
+                    "name": "Leeward Community College - Auto Trans & Transaxles"
+                }, 
+                {
+                    "code": "AMT 53", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AMT/53", 
+                    "name": "Leeward Community College - Brakes"
+                }, 
+                {
+                    "code": "AMT 55", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AMT/55", 
+                    "name": "Leeward Community College - Suspension and Steering"
+                }, 
+                {
+                    "code": "AMT 60", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AMT/60", 
+                    "name": "Leeward Community College - Diagnostic and Repair"
+                }, 
+                {
+                    "code": "AMT 93D", 
+                    "course_url": "http://www.chegg.com/courses/leeward/AMT/93D", 
+                    "name": "Leeward Community College - Cooperative Education"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/AMT"
+        }, 
+        {
+            "abbr": "ANAT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ANAT"
+        }, 
+        {
+            "abbr": "ANSC", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ANSC"
+        }, 
+        {
+            "abbr": "ANTH", 
+            "courses": [
+                {
+                    "code": "ANTH 150", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ANTH/150", 
+                    "name": "Leeward Community College - Human Adaptations"
+                }, 
+                {
+                    "code": "ANTH 151", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ANTH/151", 
+                    "name": "Leeward Community College - Emerging Humanity"
+                }, 
+                {
+                    "code": "ANTH 200", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ANTH/200", 
+                    "name": "Leeward Community College - Cultural Anthropology"
+                }, 
+                {
+                    "code": "ANTH 210", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ANTH/210", 
+                    "name": "Leeward Community College - Archaeology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ANTH"
+        }, 
+        {
+            "abbr": "APDM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/APDM"
+        }, 
+        {
+            "abbr": "APSC", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/APSC"
+        }, 
+        {
+            "abbr": "APTR", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/APTR"
+        }, 
+        {
+            "abbr": "AQUA", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/AQUA"
+        }, 
+        {
+            "abbr": "ARAB", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ARAB"
+        }, 
+        {
+            "abbr": "ARCH", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ARCH"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/101", 
+                    "name": "Leeward Community College - Introduction to the Visual Arts"
+                }, 
+                {
+                    "code": "ART 104", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/104", 
+                    "name": "Leeward Community College - Intro to Prntmkg"
+                }, 
+                {
+                    "code": "ART 105B", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/105B", 
+                    "name": "Leeward Community College - Introduction to Ceramics (Handbuilding)"
+                }, 
+                {
+                    "code": "ART 105C", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/105C", 
+                    "name": "Leeward Community College - Introduction to Ceramics (Wheel Throwing)"
+                }, 
+                {
+                    "code": "ART 106", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/106", 
+                    "name": "Leeward Community College - Intro to Sculpt"
+                }, 
+                {
+                    "code": "ART 107D", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/107D", 
+                    "name": "Leeward Community College - Introduction to Digital Photography"
+                }, 
+                {
+                    "code": "ART 112", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/112", 
+                    "name": "Leeward Community College - Digital Art"
+                }, 
+                {
+                    "code": "ART 113", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/113", 
+                    "name": "Leeward Community College - Introduction to Drawing"
+                }, 
+                {
+                    "code": "ART 113D", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/113D", 
+                    "name": "Leeward Community College - Intro to Computer Drawing"
+                }, 
+                {
+                    "code": "ART 115D", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/115D", 
+                    "name": "Leeward Community College - Digital Design"
+                }, 
+                {
+                    "code": "ART 116", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/116", 
+                    "name": "Leeward Community College - Introduction to Three-Dimensional Composition"
+                }, 
+                {
+                    "code": "ART 123", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/123", 
+                    "name": "Leeward Community College - Introduction to Painting"
+                }, 
+                {
+                    "code": "ART 156", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/156", 
+                    "name": "Leeward Community College - Digital Painting"
+                }, 
+                {
+                    "code": "ART 166", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/166", 
+                    "name": "Leeward Community College - Digital Printmaking"
+                }, 
+                {
+                    "code": "ART 175", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/175", 
+                    "name": "Leeward Community College - Survey of Global Art"
+                }, 
+                {
+                    "code": "ART 197D", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/197D", 
+                    "name": "Leeward Community College - Cartoon Drawing 2D Animation"
+                }, 
+                {
+                    "code": "ART 199", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/199", 
+                    "name": "Leeward Community College - Independent Study"
+                }, 
+                {
+                    "code": "ART 207D", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/207D", 
+                    "name": "Leeward Community College - Intermediate Digital Photography"
+                }, 
+                {
+                    "code": "ART 213", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/213", 
+                    "name": "Leeward Community College - Interm Drawing"
+                }, 
+                {
+                    "code": "ART 223", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/223", 
+                    "name": "Leeward Community College - Intermediate Painting"
+                }, 
+                {
+                    "code": "ART 299", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ART/299", 
+                    "name": "Leeward Community College - Independent Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ART"
+        }, 
+        {
+            "abbr": "AS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/AS"
+        }, 
+        {
+            "abbr": "ASAN", 
+            "courses": [
+                {
+                    "code": "ASAN 203", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ASAN/203", 
+                    "name": "Leeward Community College - Phil Hist Culture"
+                }, 
+                {
+                    "code": "ASAN 204", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ASAN/204", 
+                    "name": "Leeward Community College - WI-Filipinos in the US"
+                }, 
+                {
+                    "code": "ASAN 205", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ASAN/205", 
+                    "name": "Leeward Community College - WI-Contemp Philippine Issues"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ASAN"
+        }, 
+        {
+            "abbr": "ASL", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ASL"
+        }, 
+        {
+            "abbr": "ASTR", 
+            "courses": [
+                {
+                    "code": "ASTR 110", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ASTR/110", 
+                    "name": "Leeward Community College - Survey of Astronomy"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ASTR"
+        }, 
+        {
+            "abbr": "AVIT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/AVIT"
+        }, 
+        {
+            "abbr": "BE", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/BE"
+        }, 
+        {
+            "abbr": "BIOC", 
+            "courses": [
+                {
+                    "code": "BIOC 241", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BIOC/241", 
+                    "name": "Leeward Community College - Fdmntls of Bioch"
+                }, 
+                {
+                    "code": "BIOC 251", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BIOC/251", 
+                    "name": "Leeward Community College - Elements Biochemistry"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/BIOC"
+        }, 
+        {
+            "abbr": "BIOL", 
+            "courses": [
+                {
+                    "code": "BIOL 100", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BIOL/100", 
+                    "name": "Leeward Community College - Human Biology"
+                }, 
+                {
+                    "code": "BIOL 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BIOL/101", 
+                    "name": "Leeward Community College - Biology for Non-Majors"
+                }, 
+                {
+                    "code": "BIOL 124", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BIOL/124", 
+                    "name": "Leeward Community College - Environment & Ecology"
+                }, 
+                {
+                    "code": "BIOL 130", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BIOL/130", 
+                    "name": "Leeward Community College - Anatomy and Physiology"
+                }, 
+                {
+                    "code": "BIOL 130L", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BIOL/130L", 
+                    "name": "Leeward Community College - Anatomy and Physiology Lab"
+                }, 
+                {
+                    "code": "BIOL 171", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BIOL/171", 
+                    "name": "Leeward Community College - Intro to Biology I"
+                }, 
+                {
+                    "code": "BIOL 171L", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BIOL/171L", 
+                    "name": "Leeward Community College - WI-Intro to Biology Lab I"
+                }, 
+                {
+                    "code": "BIOL 200", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BIOL/200", 
+                    "name": "Leeward Community College - Coral Reefs"
+                }, 
+                {
+                    "code": "BIOL 265", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BIOL/265", 
+                    "name": "Leeward Community College - Ecology and Evolutionary Biology"
+                }, 
+                {
+                    "code": "BIOL 265L", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BIOL/265L", 
+                    "name": "Leeward Community College - Ecology and Evolutionary Biology Lab"
+                }, 
+                {
+                    "code": "BIOL 275", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BIOL/275", 
+                    "name": "Leeward Community College - Cell & Molecular Biology"
+                }, 
+                {
+                    "code": "BIOL 275L", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BIOL/275L", 
+                    "name": "Leeward Community College - Cell & Molecular Biology Lab"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/BIOL"
+        }, 
+        {
+            "abbr": "BIOM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/BIOM"
+        }, 
+        {
+            "abbr": "BLAW", 
+            "courses": [
+                {
+                    "code": "BLAW 200", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BLAW/200", 
+                    "name": "Leeward Community College - Legal Environment of Business"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/BLAW"
+        }, 
+        {
+            "abbr": "BLPR", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/BLPR"
+        }, 
+        {
+            "abbr": "BOT", 
+            "courses": [
+                {
+                    "code": "BOT 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BOT/101", 
+                    "name": "Leeward Community College - General Botany"
+                }, 
+                {
+                    "code": "BOT 101L", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BOT/101L", 
+                    "name": "Leeward Community College - General Botany Lab"
+                }, 
+                {
+                    "code": "BOT 130", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BOT/130", 
+                    "name": "Leeward Community College - Plants in the Hawaiian Environment"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/BOT"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUS/101", 
+                    "name": "Leeward Community College - Business Computer Systems"
+                }, 
+                {
+                    "code": "BUS 120", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUS/120", 
+                    "name": "Leeward Community College - Principles of Business"
+                }, 
+                {
+                    "code": "BUS 201", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUS/201", 
+                    "name": "Leeward Community College - MS Office Advanced"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/BUS"
+        }, 
+        {
+            "abbr": "BUSA", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/BUSA"
+        }, 
+        {
+            "abbr": "BUSN", 
+            "courses": [
+                {
+                    "code": "BUSN 102", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUSN/102", 
+                    "name": "Leeward Community College - Introduction to Health Information Technology"
+                }, 
+                {
+                    "code": "BUSN 115", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUSN/115", 
+                    "name": "Leeward Community College - Reimbursement Methodologies"
+                }, 
+                {
+                    "code": "BUSN 121", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUSN/121", 
+                    "name": "Leeward Community College - Introduction to Word Processing"
+                }, 
+                {
+                    "code": "BUSN 123", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUSN/123", 
+                    "name": "Leeward Community College - Word Processing for Business"
+                }, 
+                {
+                    "code": "BUSN 164", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUSN/164", 
+                    "name": "Leeward Community College - Career Success"
+                }, 
+                {
+                    "code": "BUSN 166", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUSN/166", 
+                    "name": "Leeward Community College - Prof Employment Prep"
+                }, 
+                {
+                    "code": "BUSN 170", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUSN/170", 
+                    "name": "Leeward Community College - Records & Info Mgment"
+                }, 
+                {
+                    "code": "BUSN 188", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUSN/188", 
+                    "name": "Leeward Community College - Business Calculations"
+                }, 
+                {
+                    "code": "BUSN 193B", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUSN/193B", 
+                    "name": "Leeward Community College - Cooperative Education"
+                }, 
+                {
+                    "code": "BUSN 193C", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUSN/193C", 
+                    "name": "Leeward Community College - Cooperative Education"
+                }, 
+                {
+                    "code": "BUSN 193D", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUSN/193D", 
+                    "name": "Leeward Community College - Cooperative Education"
+                }, 
+                {
+                    "code": "BUSN 193E", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUSN/193E", 
+                    "name": "Leeward Community College - Cooperative Education"
+                }, 
+                {
+                    "code": "BUSN 242", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUSN/242", 
+                    "name": "Leeward Community College - Business Presentations"
+                }, 
+                {
+                    "code": "BUSN 277", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUSN/277", 
+                    "name": "Leeward Community College - WI-International Bus Protocol"
+                }, 
+                {
+                    "code": "BUSN 284", 
+                    "course_url": "http://www.chegg.com/courses/leeward/BUSN/284", 
+                    "name": "Leeward Community College - Medical Terminology and Office Procedures"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/BUSN"
+        }, 
+        {
+            "abbr": "CA", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CA"
+        }, 
+        {
+            "abbr": "CAAM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CAAM"
+        }, 
+        {
+            "abbr": "CAM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CAM"
+        }, 
+        {
+            "abbr": "CARP", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CARP"
+        }, 
+        {
+            "abbr": "CAS", 
+            "courses": [], 
+            "name": "Colleges of Arts & Sciences", 
+            "url": "http://www.chegg.com/courses/leeward/CAS"
+        }, 
+        {
+            "abbr": "CASE", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CASE"
+        }, 
+        {
+            "abbr": "CBES", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CBES"
+        }, 
+        {
+            "abbr": "CE", 
+            "courses": [
+                {
+                    "code": "CE 270", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CE/270", 
+                    "name": "Leeward Community College - Applied Mechanics I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CE"
+        }, 
+        {
+            "abbr": "CEE", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CEE"
+        }, 
+        {
+            "abbr": "CENT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CENT"
+        }, 
+        {
+            "abbr": "CHAM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CHAM"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 100B", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CHEM/100B", 
+                    "name": "Leeward Community College - Chemistry & Man"
+                }, 
+                {
+                    "code": "CHEM 151B", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CHEM/151B", 
+                    "name": "Leeward Community College - Elementary Survey of Chemistry"
+                }, 
+                {
+                    "code": "CHEM 161B", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CHEM/161B", 
+                    "name": "Leeward Community College - General Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 162B", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CHEM/162B", 
+                    "name": "Leeward Community College - General Chemistry II"
+                }, 
+                {
+                    "code": "CHEM 272B", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CHEM/272B", 
+                    "name": "Leeward Community College - Organic Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 273B", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CHEM/273B", 
+                    "name": "Leeward Community College - Organic Chemistry II"
+                }, 
+                {
+                    "code": "CHEM 299", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CHEM/299", 
+                    "name": "Leeward Community College - Independent Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CHEM"
+        }, 
+        {
+            "abbr": "CHN", 
+            "courses": [
+                {
+                    "code": "CHN 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CHN/101", 
+                    "name": "Leeward Community College - Elementary Chinese I"
+                }, 
+                {
+                    "code": "CHN 111", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CHN/111", 
+                    "name": "Leeward Community College - Elementary Conversational Chinese I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CHN"
+        }, 
+        {
+            "abbr": "CHNS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CHNS"
+        }, 
+        {
+            "abbr": "CHUS", 
+            "courses": [], 
+            "name": "China-US Relations", 
+            "url": "http://www.chegg.com/courses/leeward/CHUS"
+        }, 
+        {
+            "abbr": "CIS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CIS"
+        }, 
+        {
+            "abbr": "CMB", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CMB"
+        }, 
+        {
+            "abbr": "CMGT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CMGT"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 145", 
+                    "course_url": "http://www.chegg.com/courses/leeward/COM/145", 
+                    "name": "Leeward Community College - Interpersonal Communication"
+                }, 
+                {
+                    "code": "COM 210H", 
+                    "course_url": "http://www.chegg.com/courses/leeward/COM/210H", 
+                    "name": "Leeward Community College - Honors Course: Intercultural Communications"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/COM"
+        }, 
+        {
+            "abbr": "COMG", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/COMG"
+        }, 
+        {
+            "abbr": "COSM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/COSM"
+        }, 
+        {
+            "abbr": "CS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CS"
+        }, 
+        {
+            "abbr": "CSD", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CSD"
+        }, 
+        {
+            "abbr": "CUL", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CUL"
+        }, 
+        {
+            "abbr": "CULN", 
+            "courses": [
+                {
+                    "code": "CULN 111", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CULN/111", 
+                    "name": "Leeward Community College - Introduction to the Culinary Industry"
+                }, 
+                {
+                    "code": "CULN 112", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CULN/112", 
+                    "name": "Leeward Community College - Sanitation & Safety"
+                }, 
+                {
+                    "code": "CULN 115", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CULN/115", 
+                    "name": "Leeward Community College - Menu Planning & Merchandising"
+                }, 
+                {
+                    "code": "CULN 120", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CULN/120", 
+                    "name": "Leeward Community College - Fundamentals of Cookery"
+                }, 
+                {
+                    "code": "CULN 125", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CULN/125", 
+                    "name": "Leeward Community College - Fundamentals of Cookery II"
+                }, 
+                {
+                    "code": "CULN 150", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CULN/150", 
+                    "name": "Leeward Community College - Fundamentals of Baking"
+                }, 
+                {
+                    "code": "CULN 160", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CULN/160", 
+                    "name": "Leeward Community College - Dining Room Operations"
+                }, 
+                {
+                    "code": "CULN 223", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CULN/223", 
+                    "name": "Leeward Community College - Contemporary Cuisines"
+                }, 
+                {
+                    "code": "CULN 224", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CULN/224", 
+                    "name": "Leeward Community College - Asian/Continental Cuisine"
+                }, 
+                {
+                    "code": "CULN 240", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CULN/240", 
+                    "name": "Leeward Community College - Garde Manger II"
+                }, 
+                {
+                    "code": "CULN 269", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CULN/269", 
+                    "name": "Leeward Community College - Culinary Special Events"
+                }, 
+                {
+                    "code": "CULN 271", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CULN/271", 
+                    "name": "Leeward Community College - Purchasing & Cost Control"
+                }, 
+                {
+                    "code": "CULN 275", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CULN/275", 
+                    "name": "Leeward Community College - Human Resources Management & Supervision"
+                }, 
+                {
+                    "code": "CULN 293E", 
+                    "course_url": "http://www.chegg.com/courses/leeward/CULN/293E", 
+                    "name": "Leeward Community College - Culinary Externship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/CULN"
+        }, 
+        {
+            "abbr": "DEAF", 
+            "courses": [], 
+            "name": "Deaf Studies", 
+            "url": "http://www.chegg.com/courses/leeward/DEAF"
+        }, 
+        {
+            "abbr": "DENT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/DENT"
+        }, 
+        {
+            "abbr": "DH", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/DH"
+        }, 
+        {
+            "abbr": "DIMC", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/DIMC"
+        }, 
+        {
+            "abbr": "DIS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/DIS"
+        }, 
+        {
+            "abbr": "DISL", 
+            "courses": [], 
+            "name": "Diesel Mechanics", 
+            "url": "http://www.chegg.com/courses/leeward/DISL"
+        }, 
+        {
+            "abbr": "DMED", 
+            "courses": [
+                {
+                    "code": "DMED 113", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DMED/113", 
+                    "name": "Leeward Community College - Introduction to Layout Design"
+                }, 
+                {
+                    "code": "DMED 120", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DMED/120", 
+                    "name": "Leeward Community College - Netprep Web Development"
+                }, 
+                {
+                    "code": "DMED 121", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DMED/121", 
+                    "name": "Leeward Community College - Netprep Web Site Design"
+                }, 
+                {
+                    "code": "DMED 122", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DMED/122", 
+                    "name": "Leeward Community College - Netprep Flash Animation"
+                }, 
+                {
+                    "code": "DMED 130", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DMED/130", 
+                    "name": "Leeward Community College - Digital Storyboard"
+                }, 
+                {
+                    "code": "DMED 131", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DMED/131", 
+                    "name": "Leeward Community College - Introduction to Digital Video"
+                }, 
+                {
+                    "code": "DMED 140", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DMED/140", 
+                    "name": "Leeward Community College - Principles of Animation"
+                }, 
+                {
+                    "code": "DMED 141", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DMED/141", 
+                    "name": "Leeward Community College - Introduction to 3D Animation"
+                }, 
+                {
+                    "code": "DMED 150", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DMED/150", 
+                    "name": "Leeward Community College - Film Analysis & Storytelling"
+                }, 
+                {
+                    "code": "DMED 200", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DMED/200", 
+                    "name": "Leeward Community College - Electronic Portfolio"
+                }, 
+                {
+                    "code": "DMED 243", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DMED/243", 
+                    "name": "Leeward Community College - 3D Modeling & Animation"
+                }, 
+                {
+                    "code": "DMED 293", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DMED/293", 
+                    "name": "Leeward Community College - Practicum in Digital Media"
+                }, 
+                {
+                    "code": "DMED 299", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DMED/299", 
+                    "name": "Leeward Community College - Independent Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/DMED"
+        }, 
+        {
+            "abbr": "DNCE", 
+            "courses": [
+                {
+                    "code": "DNCE 108", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DNCE/108", 
+                    "name": "Leeward Community College - Yoga: Beginning"
+                }, 
+                {
+                    "code": "DNCE 131", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DNCE/131", 
+                    "name": "Leeward Community College - Modern Dance I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/DNCE"
+        }, 
+        {
+            "abbr": "DRAM", 
+            "courses": [
+                {
+                    "code": "DRAM 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DRAM/101", 
+                    "name": "Leeward Community College - Intro to Drama & Theater"
+                }, 
+                {
+                    "code": "DRAM 221", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DRAM/221", 
+                    "name": "Leeward Community College - Beg Acting I"
+                }, 
+                {
+                    "code": "DRAM 222", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DRAM/222", 
+                    "name": "Leeward Community College - Beg Acting II"
+                }, 
+                {
+                    "code": "DRAM 240", 
+                    "course_url": "http://www.chegg.com/courses/leeward/DRAM/240", 
+                    "name": "Leeward Community College - Basic Stagecraft"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/DRAM"
+        }, 
+        {
+            "abbr": "DRB", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/DRB"
+        }, 
+        {
+            "abbr": "EALL", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/EALL"
+        }, 
+        {
+            "abbr": "EBUS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/EBUS"
+        }, 
+        {
+            "abbr": "ECED", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ECED"
+        }, 
+        {
+            "abbr": "ECOM", 
+            "courses": [
+                {
+                    "code": "ECOM 100", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ECOM/100", 
+                    "name": "Leeward Community College - Intro to E-Commerce"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ECOM"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 120", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ECON/120", 
+                    "name": "Leeward Community College - Introduction to Economics"
+                }, 
+                {
+                    "code": "ECON 130", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ECON/130", 
+                    "name": "Leeward Community College - Principles of Microeconomics"
+                }, 
+                {
+                    "code": "ECON 131", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ECON/131", 
+                    "name": "Leeward Community College - Principles of Macroeconomics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ECON"
+        }, 
+        {
+            "abbr": "ED", 
+            "courses": [
+                {
+                    "code": "ED 100", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ED/100", 
+                    "name": "Leeward Community College - Introduction to Education and Teaching"
+                }, 
+                {
+                    "code": "ED 279", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ED/279", 
+                    "name": "Leeward Community College - Educational Media and Technology"
+                }, 
+                {
+                    "code": "ED 284", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ED/284", 
+                    "name": "Leeward Community College - Foundations of Inclusion in Teaching"
+                }, 
+                {
+                    "code": "ED 285", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ED/285", 
+                    "name": "Leeward Community College - Classroom Managment within the Instructional Process"
+                }, 
+                {
+                    "code": "ED 289", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ED/289", 
+                    "name": "Leeward Community College - Educational Psychology"
+                }, 
+                {
+                    "code": "ED 290", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ED/290", 
+                    "name": "Leeward Community College - Foundations of Education"
+                }, 
+                {
+                    "code": "ED 291", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ED/291", 
+                    "name": "Leeward Community College - Developing Lang & Literacy I"
+                }, 
+                {
+                    "code": "ED 294", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ED/294", 
+                    "name": "Leeward Community College - Intro Multicultural Education"
+                }, 
+                {
+                    "code": "ED 295", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ED/295", 
+                    "name": "Leeward Community College - Service Learning in Education"
+                }, 
+                {
+                    "code": "ED 295A", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ED/295A", 
+                    "name": "Leeward Community College - Practicum I: Alternative Certification for CTE Teacher Licensure"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ED"
+        }, 
+        {
+            "abbr": "EDCS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/EDCS"
+        }, 
+        {
+            "abbr": "EDEA", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/EDEA"
+        }, 
+        {
+            "abbr": "EDEE", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/EDEE"
+        }, 
+        {
+            "abbr": "EDEF", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/EDEF"
+        }, 
+        {
+            "abbr": "EDEP", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/EDEP"
+        }, 
+        {
+            "abbr": "EE", 
+            "courses": [
+                {
+                    "code": "EE 150", 
+                    "course_url": "http://www.chegg.com/courses/leeward/EE/150", 
+                    "name": "Leeward Community College - Intro Comp Prog Methods"
+                }, 
+                {
+                    "code": "EE 211", 
+                    "course_url": "http://www.chegg.com/courses/leeward/EE/211", 
+                    "name": "Leeward Community College - Basic Circuit Analysis"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/EE"
+        }, 
+        {
+            "abbr": "EIMT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/EIMT"
+        }, 
+        {
+            "abbr": "ELEC", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ELEC"
+        }, 
+        {
+            "abbr": "ELI", 
+            "courses": [
+                {
+                    "code": "ELI 10A", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ELI/10A", 
+                    "name": "Leeward Community College - Beginning Speaking/Listening"
+                }, 
+                {
+                    "code": "ELI 10B", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ELI/10B", 
+                    "name": "Leeward Community College - Beginning Reading/Writing"
+                }, 
+                {
+                    "code": "ELI 10C", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ELI/10C", 
+                    "name": "Leeward Community College - Beginning Grammar"
+                }, 
+                {
+                    "code": "ELI 10D", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ELI/10D", 
+                    "name": "Leeward Community College - Pronunciation 1"
+                }, 
+                {
+                    "code": "ELI 20A", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ELI/20A", 
+                    "name": "Leeward Community College - Low Intermediate Speaking/Listening"
+                }, 
+                {
+                    "code": "ELI 20B", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ELI/20B", 
+                    "name": "Leeward Community College - Low Intermediate Reading/Writing"
+                }, 
+                {
+                    "code": "ELI 20C", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ELI/20C", 
+                    "name": "Leeward Community College - Low Intermediate Grammar"
+                }, 
+                {
+                    "code": "ELI 20D", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ELI/20D", 
+                    "name": "Leeward Community College - Pronunciation 2"
+                }, 
+                {
+                    "code": "ELI 30A", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ELI/30A", 
+                    "name": "Leeward Community College - High Intermediate Listening and Speaking"
+                }, 
+                {
+                    "code": "ELI 30B", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ELI/30B", 
+                    "name": "Leeward Community College - High Intermediate Reading/Writing"
+                }, 
+                {
+                    "code": "ELI 30C", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ELI/30C", 
+                    "name": "Leeward Community College - High Intermediate Grammar"
+                }, 
+                {
+                    "code": "ELI 30D", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ELI/30D", 
+                    "name": "Leeward Community College - American Culture 1"
+                }, 
+                {
+                    "code": "ELI 40A", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ELI/40A", 
+                    "name": "Leeward Community College - Advanced Speaking & Listening"
+                }, 
+                {
+                    "code": "ELI 40B", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ELI/40B", 
+                    "name": "Leeward Community College - Advanced Reading & Writing"
+                }, 
+                {
+                    "code": "ELI 40C", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ELI/40C", 
+                    "name": "Leeward Community College - Advanced Grammar"
+                }, 
+                {
+                    "code": "ELI 40D", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ELI/40D", 
+                    "name": "Leeward Community College - American Culture 2"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ELI"
+        }, 
+        {
+            "abbr": "EMT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/EMT"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 8", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/8", 
+                    "name": "Leeward Community College - Reading/Writing Basics"
+                }, 
+                {
+                    "code": "ENG 18", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/18", 
+                    "name": "Leeward Community College - Reading Essentials"
+                }, 
+                {
+                    "code": "ENG 19", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/19", 
+                    "name": "Leeward Community College - Writing Essentials"
+                }, 
+                {
+                    "code": "ENG 21", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/21", 
+                    "name": "Leeward Community College - Introduction to College Reading"
+                }, 
+                {
+                    "code": "ENG 22", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/22", 
+                    "name": "Leeward Community College - Introduction to Composition"
+                }, 
+                {
+                    "code": "ENG 24", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/24", 
+                    "name": "Leeward Community College - Reading, Reasoning, & Writing"
+                }, 
+                {
+                    "code": "ENG 100", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/100", 
+                    "name": "Leeward Community College - Composition I"
+                }, 
+                {
+                    "code": "ENG 100E", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/100E", 
+                    "name": "Leeward Community College - Composition 1"
+                }, 
+                {
+                    "code": "ENG 200", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/200", 
+                    "name": "Leeward Community College - WI-Composition II"
+                }, 
+                {
+                    "code": "ENG 204", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/204", 
+                    "name": "Leeward Community College - Introduction to Creative Writing"
+                }, 
+                {
+                    "code": "ENG 207", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/207", 
+                    "name": "Leeward Community College - WI-Fiction Workshop"
+                }, 
+                {
+                    "code": "ENG 208", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/208", 
+                    "name": "Leeward Community College - Poetry Workshop"
+                }, 
+                {
+                    "code": "ENG 209", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/209", 
+                    "name": "Leeward Community College - Business Writing"
+                }, 
+                {
+                    "code": "ENG 211", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/211", 
+                    "name": "Leeward Community College - Autobiographical Writing"
+                }, 
+                {
+                    "code": "ENG 212", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/212", 
+                    "name": "Leeward Community College - WI-Screenwriting Workshop"
+                }, 
+                {
+                    "code": "ENG 225", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/225", 
+                    "name": "Leeward Community College - Technical Writing"
+                }, 
+                {
+                    "code": "ENG 250", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/250", 
+                    "name": "Leeward Community College - American Literature"
+                }, 
+                {
+                    "code": "ENG 251", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/251", 
+                    "name": "Leeward Community College - WI-British Lit I"
+                }, 
+                {
+                    "code": "ENG 252", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/252", 
+                    "name": "Leeward Community College - British Literature II (1800-Present Day)"
+                }, 
+                {
+                    "code": "ENG 253", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/253", 
+                    "name": "Leeward Community College - World Literature I (Beginnings-1600)"
+                }, 
+                {
+                    "code": "ENG 254", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/254", 
+                    "name": "Leeward Community College - World Literature II (1650-Present)"
+                }, 
+                {
+                    "code": "ENG 255", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/255", 
+                    "name": "Leeward Community College - Types of Literature I (Short Story and Novel)"
+                }, 
+                {
+                    "code": "ENG 256", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/256", 
+                    "name": "Leeward Community College - Types of Literature II (Drama and Poetry)"
+                }, 
+                {
+                    "code": "ENG 257N", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ENG/257N", 
+                    "name": "Leeward Community College - Themes in Literature: Literature and Film"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ENG"
+        }, 
+        {
+            "abbr": "ENGR", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ENGR"
+        }, 
+        {
+            "abbr": "ENRG", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ENRG"
+        }, 
+        {
+            "abbr": "ENSC", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ENSC"
+        }, 
+        {
+            "abbr": "ENT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ENT"
+        }, 
+        {
+            "abbr": "ENTO", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ENTO"
+        }, 
+        {
+            "abbr": "ES", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ES"
+        }, 
+        {
+            "abbr": "ESL", 
+            "courses": [
+                {
+                    "code": "ESL 2A", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ESL/2A", 
+                    "name": "Leeward Community College - Beginning Reading for Speakers of Other Languages"
+                }, 
+                {
+                    "code": "ESL 3A", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ESL/3A", 
+                    "name": "Leeward Community College - Beginning Writing for Speakers of Other Languages"
+                }, 
+                {
+                    "code": "ESL 8B", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ESL/8B", 
+                    "name": "Leeward Community College - Intermediate Reading for Speakers of Other Languages"
+                }, 
+                {
+                    "code": "ESL 9B", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ESL/9B", 
+                    "name": "Leeward Community College - Intermediate Writing for Speakers of Other Languages"
+                }, 
+                {
+                    "code": "ESL 18", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ESL/18", 
+                    "name": "Leeward Community College - High Intermediate Reading for Speakers of Other Languages"
+                }, 
+                {
+                    "code": "ESL 19", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ESL/19", 
+                    "name": "Leeward Community College - High Intermediate Writing for Speakers of Other Languages"
+                }, 
+                {
+                    "code": "ESL 20", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ESL/20", 
+                    "name": "Leeward Community College - High Intermediate Grammar for Speakers of Other Languages"
+                }, 
+                {
+                    "code": "ESL 21", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ESL/21", 
+                    "name": "Leeward Community College - Advanced Reading for Speakers of Other Languages"
+                }, 
+                {
+                    "code": "ESL 22", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ESL/22", 
+                    "name": "Leeward Community College - Advanced Writing for Speakers of Other Languages"
+                }, 
+                {
+                    "code": "ESL 23", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ESL/23", 
+                    "name": "Leeward Community College - Editorial Grammar for Speakers of Other Languages"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ESL"
+        }, 
+        {
+            "abbr": "ESOL", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ESOL"
+        }, 
+        {
+            "abbr": "ESS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ESS"
+        }, 
+        {
+            "abbr": "ETEC", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ETEC"
+        }, 
+        {
+            "abbr": "ETRO", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ETRO"
+        }, 
+        {
+            "abbr": "FAMR", 
+            "courses": [
+                {
+                    "code": "FAMR 230", 
+                    "course_url": "http://www.chegg.com/courses/leeward/FAMR/230", 
+                    "name": "Leeward Community College - Human Development"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/FAMR"
+        }, 
+        {
+            "abbr": "FENG", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/FENG"
+        }, 
+        {
+            "abbr": "FIL", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/FIL"
+        }, 
+        {
+            "abbr": "FIN", 
+            "courses": [
+                {
+                    "code": "FIN 160", 
+                    "course_url": "http://www.chegg.com/courses/leeward/FIN/160", 
+                    "name": "Leeward Community College - Introduction to Financial Analysis"
+                }, 
+                {
+                    "code": "FIN 197", 
+                    "course_url": "http://www.chegg.com/courses/leeward/FIN/197", 
+                    "name": "Leeward Community College - Introduction to Financial Analysis"
+                }, 
+                {
+                    "code": "FIN 245", 
+                    "course_url": "http://www.chegg.com/courses/leeward/FIN/245", 
+                    "name": "Leeward Community College - Principles of Finance"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/FIN"
+        }, 
+        {
+            "abbr": "FIRE", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/FIRE"
+        }, 
+        {
+            "abbr": "FMCH", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/FMCH"
+        }, 
+        {
+            "abbr": "FOR", 
+            "courses": [], 
+            "name": "Forestry", 
+            "url": "http://www.chegg.com/courses/leeward/FOR"
+        }, 
+        {
+            "abbr": "FR", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/FR"
+        }, 
+        {
+            "abbr": "FSHE", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/FSHE"
+        }, 
+        {
+            "abbr": "FSHN", 
+            "courses": [
+                {
+                    "code": "FSHN 100", 
+                    "course_url": "http://www.chegg.com/courses/leeward/FSHN/100", 
+                    "name": "Leeward Community College - Concepts in Nutritional Science"
+                }, 
+                {
+                    "code": "FSHN 185", 
+                    "course_url": "http://www.chegg.com/courses/leeward/FSHN/185", 
+                    "name": "Leeward Community College - Science of Human Nutrition"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/FSHN"
+        }, 
+        {
+            "abbr": "FT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/FT"
+        }, 
+        {
+            "abbr": "GEOG", 
+            "courses": [
+                {
+                    "code": "GEOG 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/GEOG/101", 
+                    "name": "Leeward Community College - The Natural Environment"
+                }, 
+                {
+                    "code": "GEOG 101L", 
+                    "course_url": "http://www.chegg.com/courses/leeward/GEOG/101L", 
+                    "name": "Leeward Community College - The Natural Environment Lab"
+                }, 
+                {
+                    "code": "GEOG 102", 
+                    "course_url": "http://www.chegg.com/courses/leeward/GEOG/102", 
+                    "name": "Leeward Community College - World Regional Geography"
+                }, 
+                {
+                    "code": "GEOG 151", 
+                    "course_url": "http://www.chegg.com/courses/leeward/GEOG/151", 
+                    "name": "Leeward Community College - Geography and Contemporary Society"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/GEOG"
+        }, 
+        {
+            "abbr": "GEOL", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/GEOL"
+        }, 
+        {
+            "abbr": "GER", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/GER"
+        }, 
+        {
+            "abbr": "GERI", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/GERI"
+        }, 
+        {
+            "abbr": "GG", 
+            "courses": [
+                {
+                    "code": "GG 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/GG/101", 
+                    "name": "Leeward Community College - Introduction to Geology"
+                }, 
+                {
+                    "code": "GG 103", 
+                    "course_url": "http://www.chegg.com/courses/leeward/GG/103", 
+                    "name": "Leeward Community College - Geology of the Hawaiian Islands"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/GG"
+        }, 
+        {
+            "abbr": "GHPS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/GHPS"
+        }, 
+        {
+            "abbr": "GIS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/GIS"
+        }, 
+        {
+            "abbr": "GRK", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/GRK"
+        }, 
+        {
+            "abbr": "HAW", 
+            "courses": [
+                {
+                    "code": "HAW 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HAW/101", 
+                    "name": "Leeward Community College - Elementary Hawaiian I"
+                }, 
+                {
+                    "code": "HAW 102", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HAW/102", 
+                    "name": "Leeward Community College - Elementary Hawaiian II"
+                }, 
+                {
+                    "code": "HAW 201", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HAW/201", 
+                    "name": "Leeward Community College - Intermediate Hawaiian I"
+                }, 
+                {
+                    "code": "HAW 202", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HAW/202", 
+                    "name": "Leeward Community College - Intermediate Hawaiian II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/HAW"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 151", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HIST/151", 
+                    "name": "Leeward Community College - World History I"
+                }, 
+                {
+                    "code": "HIST 152", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HIST/152", 
+                    "name": "Leeward Community College - World History II"
+                }, 
+                {
+                    "code": "HIST 231", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HIST/231", 
+                    "name": "Leeward Community College - WI-Modern European Civil I"
+                }, 
+                {
+                    "code": "HIST 242", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HIST/242", 
+                    "name": "Leeward Community College - WI-Civ of Asia II"
+                }, 
+                {
+                    "code": "HIST 244", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HIST/244", 
+                    "name": "Leeward Community College - WI-Intro Jpnse Hist"
+                }, 
+                {
+                    "code": "HIST 251", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HIST/251", 
+                    "name": "Leeward Community College - WI-Islamic Civilization"
+                }, 
+                {
+                    "code": "HIST 281", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HIST/281", 
+                    "name": "Leeward Community College - WI-Intro to American History I"
+                }, 
+                {
+                    "code": "HIST 282", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HIST/282", 
+                    "name": "Leeward Community College - Introduction to American History II"
+                }, 
+                {
+                    "code": "HIST 284", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HIST/284", 
+                    "name": "Leeward Community College - History of the Hawaiian Islands"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/HIST"
+        }, 
+        {
+            "abbr": "HLTH", 
+            "courses": [
+                {
+                    "code": "HLTH 110", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HLTH/110", 
+                    "name": "Leeward Community College - Medical Terminology"
+                }, 
+                {
+                    "code": "HLTH 125", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HLTH/125", 
+                    "name": "Leeward Community College - Survey of Medical Terminology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/HLTH"
+        }, 
+        {
+            "abbr": "HNDI", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/HNDI"
+        }, 
+        {
+            "abbr": "HON", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/HON"
+        }, 
+        {
+            "abbr": "HORT", 
+            "courses": [
+                {
+                    "code": "HORT 110", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HORT/110", 
+                    "name": "Leeward Community College - Hawaii Horticulture & Nutrition"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/HORT"
+        }, 
+        {
+            "abbr": "HOST", 
+            "courses": [
+                {
+                    "code": "HOST 140", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HOST/140", 
+                    "name": "Leeward Community College - Hotel & Lodging Operations"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/HOST"
+        }, 
+        {
+            "abbr": "HPER", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/HPER"
+        }, 
+        {
+            "abbr": "HPST", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/HPST"
+        }, 
+        {
+            "abbr": "HRM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/HRM"
+        }, 
+        {
+            "abbr": "HSER", 
+            "courses": [
+                {
+                    "code": "HSER 100", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HSER/100", 
+                    "name": "Leeward Community College - Self Exploratn"
+                }, 
+                {
+                    "code": "HSER 140", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HSER/140", 
+                    "name": "Leeward Community College - Individual Coun"
+                }, 
+                {
+                    "code": "HSER 160", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HSER/160", 
+                    "name": "Leeward Community College - Effec Parenting"
+                }, 
+                {
+                    "code": "HSER 245", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HSER/245", 
+                    "name": "Leeward Community College - Group Counsel"
+                }, 
+                {
+                    "code": "HSER 268", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HSER/268", 
+                    "name": "Leeward Community College - Survey of Substance Abuse Problems"
+                }, 
+                {
+                    "code": "HSER 294", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HSER/294", 
+                    "name": "Leeward Community College - Practicum"
+                }, 
+                {
+                    "code": "HSER 297M", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HSER/297M", 
+                    "name": "Leeward Community College - Prevention Process and Practice in Human Services"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/HSER"
+        }, 
+        {
+            "abbr": "HUM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/HUM"
+        }, 
+        {
+            "abbr": "HWST", 
+            "courses": [
+                {
+                    "code": "HWST 107", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HWST/107", 
+                    "name": "Leeward Community College - H-Hi:Center of the Pacific"
+                }, 
+                {
+                    "code": "HWST 160", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HWST/160", 
+                    "name": "Leeward Community College - Hula Nei I"
+                }, 
+                {
+                    "code": "HWST 261", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HWST/261", 
+                    "name": "Leeward Community College - Hawaiian Literature"
+                }, 
+                {
+                    "code": "HWST 270", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HWST/270", 
+                    "name": "Leeward Community College - WI-Hawaiian Mythology"
+                }, 
+                {
+                    "code": "HWST 291", 
+                    "course_url": "http://www.chegg.com/courses/leeward/HWST/291", 
+                    "name": "Leeward Community College - WI-Contemp Hawaiian Issues"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/HWST"
+        }, 
+        {
+            "abbr": "ICS", 
+            "courses": [
+                {
+                    "code": "ICS 100", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/100", 
+                    "name": "Leeward Community College - Computing Literacy & Applications"
+                }, 
+                {
+                    "code": "ICS 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/101", 
+                    "name": "Leeward Community College - Digital Tools for the Information World"
+                }, 
+                {
+                    "code": "ICS 110", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/110", 
+                    "name": "Leeward Community College - Introduction to Programming"
+                }, 
+                {
+                    "code": "ICS 111", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/111", 
+                    "name": "Leeward Community College - Introduction to Computer Science I"
+                }, 
+                {
+                    "code": "ICS 113", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/113", 
+                    "name": "Leeward Community College - Database Fundamentals"
+                }, 
+                {
+                    "code": "ICS 125", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/125", 
+                    "name": "Leeward Community College - Personal Computer Maintenance and Repair"
+                }, 
+                {
+                    "code": "ICS 136", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/136", 
+                    "name": "Leeward Community College - Introduction to Mobile Device Application Development"
+                }, 
+                {
+                    "code": "ICS 141", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/141", 
+                    "name": "Leeward Community College - Discrete Mathematics for Computer Science I"
+                }, 
+                {
+                    "code": "ICS 170", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/170", 
+                    "name": "Leeward Community College - Ethics for the Digital World"
+                }, 
+                {
+                    "code": "ICS 171", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/171", 
+                    "name": "Leeward Community College - Introduction to Computer Security"
+                }, 
+                {
+                    "code": "ICS 172", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/172", 
+                    "name": "Leeward Community College - Network Design and Administration"
+                }, 
+                {
+                    "code": "ICS 184", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/184", 
+                    "name": "Leeward Community College - Introduction to Networking"
+                }, 
+                {
+                    "code": "ICS 185", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/185", 
+                    "name": "Leeward Community College - Netprep Local Area Net"
+                }, 
+                {
+                    "code": "ICS 198G", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/198G", 
+                    "name": "Leeward Community College - Introduction to Gamification"
+                }, 
+                {
+                    "code": "ICS 211", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/211", 
+                    "name": "Leeward Community College - Introduction to Computer Science II"
+                }, 
+                {
+                    "code": "ICS 212", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/212", 
+                    "name": "Leeward Community College - Program Structure"
+                }, 
+                {
+                    "code": "ICS 240", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/240", 
+                    "name": "Leeward Community College - Operating Systems"
+                }, 
+                {
+                    "code": "ICS 250", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/250", 
+                    "name": "Leeward Community College - Intro Obj-Orient Prog"
+                }, 
+                {
+                    "code": "ICS 251", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/251", 
+                    "name": "Leeward Community College - Advanced Database Programming"
+                }, 
+                {
+                    "code": "ICS 281", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/281", 
+                    "name": "Leeward Community College - Ethical Hacking"
+                }, 
+                {
+                    "code": "ICS 283", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/283", 
+                    "name": "Leeward Community College - Advanced Network Routing and Optimization"
+                }, 
+                {
+                    "code": "ICS 293D", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/293D", 
+                    "name": "Leeward Community College - Cooperative Ed"
+                }, 
+                {
+                    "code": "ICS 294", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ICS/294", 
+                    "name": "Leeward Community College - Netprep Net Anal & Des"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ICS"
+        }, 
+        {
+            "abbr": "IEDC", 
+            "courses": [], 
+            "name": "IED Wood Construction", 
+            "url": "http://www.chegg.com/courses/leeward/IEDC"
+        }, 
+        {
+            "abbr": "ILO", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ILO"
+        }, 
+        {
+            "abbr": "IND", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/IND"
+        }, 
+        {
+            "abbr": "INS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/INS"
+        }, 
+        {
+            "abbr": "IP", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/IP"
+        }, 
+        {
+            "abbr": "IS", 
+            "courses": [
+                {
+                    "code": "IS 100", 
+                    "course_url": "http://www.chegg.com/courses/leeward/IS/100", 
+                    "name": "Leeward Community College - College Experience & Success"
+                }, 
+                {
+                    "code": "IS 105", 
+                    "course_url": "http://www.chegg.com/courses/leeward/IS/105", 
+                    "name": "Leeward Community College - Career Life Pla"
+                }, 
+                {
+                    "code": "IS 250H", 
+                    "course_url": "http://www.chegg.com/courses/leeward/IS/250H", 
+                    "name": "Leeward Community College - WI-Leadership Develop"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/IS"
+        }, 
+        {
+            "abbr": "IT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/IT"
+        }, 
+        {
+            "abbr": "ITAL", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ITAL"
+        }, 
+        {
+            "abbr": "ITE", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ITE"
+        }, 
+        {
+            "abbr": "ITM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ITM"
+        }, 
+        {
+            "abbr": "ITS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ITS"
+        }, 
+        {
+            "abbr": "JOUR", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/JOUR"
+        }, 
+        {
+            "abbr": "JPN", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/JPN"
+        }, 
+        {
+            "abbr": "JPNS", 
+            "courses": [
+                {
+                    "code": "JPNS 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/JPNS/101", 
+                    "name": "Leeward Community College - Elementary Japaneses I"
+                }, 
+                {
+                    "code": "JPNS 102", 
+                    "course_url": "http://www.chegg.com/courses/leeward/JPNS/102", 
+                    "name": "Leeward Community College - Elementary Japanese II"
+                }, 
+                {
+                    "code": "JPNS 197A", 
+                    "course_url": "http://www.chegg.com/courses/leeward/JPNS/197A", 
+                    "name": "Leeward Community College - Japanese Customer Service I"
+                }, 
+                {
+                    "code": "JPNS 201", 
+                    "course_url": "http://www.chegg.com/courses/leeward/JPNS/201", 
+                    "name": "Leeward Community College - Intermediate Japanese I"
+                }, 
+                {
+                    "code": "JPNS 202", 
+                    "course_url": "http://www.chegg.com/courses/leeward/JPNS/202", 
+                    "name": "Leeward Community College - Intermediate Japanese II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/JPNS"
+        }, 
+        {
+            "abbr": "JPST", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/JPST"
+        }, 
+        {
+            "abbr": "KED", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/KED"
+        }, 
+        {
+            "abbr": "KES", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/KES"
+        }, 
+        {
+            "abbr": "KHAW", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/KHAW"
+        }, 
+        {
+            "abbr": "KIND", 
+            "courses": [], 
+            "name": "Indigenous Studies-Keelikolani", 
+            "url": "http://www.chegg.com/courses/leeward/KIND"
+        }, 
+        {
+            "abbr": "KLAN", 
+            "courses": [], 
+            "name": "Indigenous Languages-Keelik", 
+            "url": "http://www.chegg.com/courses/leeward/KLAN"
+        }, 
+        {
+            "abbr": "KLIN", 
+            "courses": [], 
+            "name": "Indigenous Linguistics-Keeliko", 
+            "url": "http://www.chegg.com/courses/leeward/KLIN"
+        }, 
+        {
+            "abbr": "KLS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/KLS"
+        }, 
+        {
+            "abbr": "KOR", 
+            "courses": [
+                {
+                    "code": "KOR 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/KOR/101", 
+                    "name": "Leeward Community College - Elementary Korean I"
+                }, 
+                {
+                    "code": "KOR 102", 
+                    "course_url": "http://www.chegg.com/courses/leeward/KOR/102", 
+                    "name": "Leeward Community College - Elementary Korean II"
+                }, 
+                {
+                    "code": "KOR 201", 
+                    "course_url": "http://www.chegg.com/courses/leeward/KOR/201", 
+                    "name": "Leeward Community College - Intermediate Korean I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/KOR"
+        }, 
+        {
+            "abbr": "KRS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/KRS"
+        }, 
+        {
+            "abbr": "LAIS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/LAIS"
+        }, 
+        {
+            "abbr": "LATN", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/LATN"
+        }, 
+        {
+            "abbr": "LAW", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/LAW"
+        }, 
+        {
+            "abbr": "LING", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/LING"
+        }, 
+        {
+            "abbr": "LIS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/LIS"
+        }, 
+        {
+            "abbr": "LLEA", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/LLEA"
+        }, 
+        {
+            "abbr": "LLL", 
+            "courses": [], 
+            "name": "Language, Linguistics, & Lit", 
+            "url": "http://www.chegg.com/courses/leeward/LLL"
+        }, 
+        {
+            "abbr": "LSK", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/LSK"
+        }, 
+        {
+            "abbr": "LWEV", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/LWEV"
+        }, 
+        {
+            "abbr": "LWJT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/LWJT"
+        }, 
+        {
+            "abbr": "LWLM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/LWLM"
+        }, 
+        {
+            "abbr": "LWLW", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/LWLW"
+        }, 
+        {
+            "abbr": "LWPA", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/LWPA"
+        }, 
+        {
+            "abbr": "LWUL", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/LWUL"
+        }, 
+        {
+            "abbr": "MACH", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MACH"
+        }, 
+        {
+            "abbr": "MAIN", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MAIN"
+        }, 
+        {
+            "abbr": "MAO", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MAO"
+        }, 
+        {
+            "abbr": "MARE", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MARE"
+        }, 
+        {
+            "abbr": "MARR", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MARR"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 9", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/9", 
+                    "name": "Leeward Community College - Whole Numbers Skills"
+                }, 
+                {
+                    "code": "MATH 16", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/16", 
+                    "name": "Leeward Community College - Math Study Skills"
+                }, 
+                {
+                    "code": "MATH 18", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/18", 
+                    "name": "Leeward Community College - Essential Mathematics for Algebra"
+                }, 
+                {
+                    "code": "MATH 50C", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/50C", 
+                    "name": "Leeward Community College - Tech Math-Auto"
+                }, 
+                {
+                    "code": "MATH 50H", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/50H", 
+                    "name": "Leeward Community College - Technical Mathematics: Food Service"
+                }, 
+                {
+                    "code": "MATH 82", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/82", 
+                    "name": "Leeward Community College - Accelerated Algebraic Foundations"
+                }, 
+                {
+                    "code": "MATH 83", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/83", 
+                    "name": "Leeward Community College - Algebraic Foundations II"
+                }, 
+                {
+                    "code": "MATH 100", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/100", 
+                    "name": "Leeward Community College - Survey of Mathematics"
+                }, 
+                {
+                    "code": "MATH 103", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/103", 
+                    "name": "Leeward Community College - College Algebra"
+                }, 
+                {
+                    "code": "MATH 111", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/111", 
+                    "name": "Leeward Community College - Math for Elementary Teachers I"
+                }, 
+                {
+                    "code": "MATH 112", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/112", 
+                    "name": "Leeward Community College - Math for Elementary Teachers II"
+                }, 
+                {
+                    "code": "MATH 115", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/115", 
+                    "name": "Leeward Community College - Statistics"
+                }, 
+                {
+                    "code": "MATH 135", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/135", 
+                    "name": "Leeward Community College - Pre-Calculus: Elementary Functions"
+                }, 
+                {
+                    "code": "MATH 140", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/140", 
+                    "name": "Leeward Community College - Pre-Calculus: Trigonometry & Analytic Geometry"
+                }, 
+                {
+                    "code": "MATH 140X", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/140X", 
+                    "name": "Leeward Community College - Accelerated Pre-Calculus: Elementary Functions, Trigonometry, & Analytic Geometry"
+                }, 
+                {
+                    "code": "MATH 197H", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/197H", 
+                    "name": "Leeward Community College - Math for Culinary Arts"
+                }, 
+                {
+                    "code": "MATH 203", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/203", 
+                    "name": "Leeward Community College - Calculus for Business and Social Sciences"
+                }, 
+                {
+                    "code": "MATH 205", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/205", 
+                    "name": "Leeward Community College - Calculus I"
+                }, 
+                {
+                    "code": "MATH 206", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/206", 
+                    "name": "Leeward Community College - Calculus II"
+                }, 
+                {
+                    "code": "MATH 231", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/231", 
+                    "name": "Leeward Community College - Calculus III"
+                }, 
+                {
+                    "code": "MATH 232", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MATH/232", 
+                    "name": "Leeward Community College - Calculus IV"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MATH"
+        }, 
+        {
+            "abbr": "MBBE", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MBBE"
+        }, 
+        {
+            "abbr": "MCB", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MCB"
+        }, 
+        {
+            "abbr": "MDED", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MDED"
+        }, 
+        {
+            "abbr": "ME", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ME"
+        }, 
+        {
+            "abbr": "MED", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MED"
+        }, 
+        {
+            "abbr": "MEDA", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MEDA"
+        }, 
+        {
+            "abbr": "MEDT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MEDT"
+        }, 
+        {
+            "abbr": "MELE", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MELE"
+        }, 
+        {
+            "abbr": "MET", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MET"
+        }, 
+        {
+            "abbr": "MGT", 
+            "courses": [
+                {
+                    "code": "MGT 120", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MGT/120", 
+                    "name": "Leeward Community College - Principles of Management"
+                }, 
+                {
+                    "code": "MGT 121", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MGT/121", 
+                    "name": "Leeward Community College - Customer Service"
+                }, 
+                {
+                    "code": "MGT 122", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MGT/122", 
+                    "name": "Leeward Community College - Human Relations in Business"
+                }, 
+                {
+                    "code": "MGT 124", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MGT/124", 
+                    "name": "Leeward Community College - Human Resource Management"
+                }, 
+                {
+                    "code": "MGT 125", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MGT/125", 
+                    "name": "Leeward Community College - Starting a Business"
+                }, 
+                {
+                    "code": "MGT 135", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MGT/135", 
+                    "name": "Leeward Community College - Agricultural Entrepreneurship"
+                }, 
+                {
+                    "code": "MGT 200", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MGT/200", 
+                    "name": "Leeward Community College - Integrated Topics in Management"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MGT"
+        }, 
+        {
+            "abbr": "MICR", 
+            "courses": [
+                {
+                    "code": "MICR 130", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MICR/130", 
+                    "name": "Leeward Community College - General Microbiology"
+                }, 
+                {
+                    "code": "MICR 140", 
+                    "course_url": "http://www.chegg.com/courses/leeward/MICR/140", 
+                    "name": "Leeward Community College - General Microbiology Laboratory"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MICR"
+        }, 
+        {
+            "abbr": "MICT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MICT"
+        }, 
+        {
+            "abbr": "MKT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MKT"
+        }, 
+        {
+            "abbr": "MLT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MLT"
+        }, 
+        {
+            "abbr": "MSL", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MSL"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/MUS"
+        }, 
+        {
+            "abbr": "NHH", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/NHH"
+        }, 
+        {
+            "abbr": "NREM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/NREM"
+        }, 
+        {
+            "abbr": "NRES", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/NRES"
+        }, 
+        {
+            "abbr": "NURS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/NURS"
+        }, 
+        {
+            "abbr": "OBGN", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/OBGN"
+        }, 
+        {
+            "abbr": "OCN", 
+            "courses": [
+                {
+                    "code": "OCN 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/OCN/101", 
+                    "name": "Leeward Community College - Marine Option Program Seminar"
+                }, 
+                {
+                    "code": "OCN 201", 
+                    "course_url": "http://www.chegg.com/courses/leeward/OCN/201", 
+                    "name": "Leeward Community College - Science of the Sea"
+                }, 
+                {
+                    "code": "OCN 201L", 
+                    "course_url": "http://www.chegg.com/courses/leeward/OCN/201L", 
+                    "name": "Leeward Community College - Sci of Sea Lab"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/OCN"
+        }, 
+        {
+            "abbr": "OESM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/OESM"
+        }, 
+        {
+            "abbr": "OEST", 
+            "courses": [], 
+            "name": "Ocean & Earth Science & Tech", 
+            "url": "http://www.chegg.com/courses/leeward/OEST"
+        }, 
+        {
+            "abbr": "OKI", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/OKI"
+        }, 
+        {
+            "abbr": "ORE", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ORE"
+        }, 
+        {
+            "abbr": "OSH", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/OSH"
+        }, 
+        {
+            "abbr": "OTA", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/OTA"
+        }, 
+        {
+            "abbr": "PACE", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PACE"
+        }, 
+        {
+            "abbr": "PACS", 
+            "courses": [
+                {
+                    "code": "PACS 108", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PACS/108", 
+                    "name": "Leeward Community College - Pacific Worlds"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PACS"
+        }, 
+        {
+            "abbr": "PAS", 
+            "courses": [], 
+            "name": "Pacific and Asian Studies", 
+            "url": "http://www.chegg.com/courses/leeward/PAS"
+        }, 
+        {
+            "abbr": "PATH", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PATH"
+        }, 
+        {
+            "abbr": "PBT", 
+            "courses": [
+                {
+                    "code": "PBT 100", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PBT/100", 
+                    "name": "Leeward Community College - Orientation to Hawaii's Agriculture Industry"
+                }, 
+                {
+                    "code": "PBT 197", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PBT/197", 
+                    "name": "Leeward Community College - Introduction to Soil Science"
+                }, 
+                {
+                    "code": "PBT 200", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PBT/200", 
+                    "name": "Leeward Community College - Intro to Plant Science"
+                }, 
+                {
+                    "code": "PBT 200L", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PBT/200L", 
+                    "name": "Leeward Community College - Intro to Plant Science Lab"
+                }, 
+                {
+                    "code": "PBT 264", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PBT/264", 
+                    "name": "Leeward Community College - Introduction to Horticulture and Plant Propagation"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PBT"
+        }, 
+        {
+            "abbr": "PCC", 
+            "courses": [], 
+            "name": "Pre-College Communication", 
+            "url": "http://www.chegg.com/courses/leeward/PCC"
+        }, 
+        {
+            "abbr": "PCM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PCM"
+        }, 
+        {
+            "abbr": "PED", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PED"
+        }, 
+        {
+            "abbr": "PEPS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PEPS"
+        }, 
+        {
+            "abbr": "PERS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PERS"
+        }, 
+        {
+            "abbr": "PH", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PH"
+        }, 
+        {
+            "abbr": "PHIL", 
+            "courses": [
+                {
+                    "code": "PHIL 100", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PHIL/100", 
+                    "name": "Leeward Community College - Intro Phil: Survey of Problems"
+                }, 
+                {
+                    "code": "PHIL 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PHIL/101", 
+                    "name": "Leeward Community College - Introduction to Philosophy: Morals and Society"
+                }, 
+                {
+                    "code": "PHIL 110", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PHIL/110", 
+                    "name": "Leeward Community College - Intro to Deductive Logic"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PHIL"
+        }, 
+        {
+            "abbr": "PHPP", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PHPP"
+        }, 
+        {
+            "abbr": "PHPS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PHPS"
+        }, 
+        {
+            "abbr": "PHRM", 
+            "courses": [
+                {
+                    "code": "PHRM 203", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PHRM/203", 
+                    "name": "Leeward Community College - General Pharmacology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PHRM"
+        }, 
+        {
+            "abbr": "PHYL", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PHYL"
+        }, 
+        {
+            "abbr": "PHYS", 
+            "courses": [
+                {
+                    "code": "PHYS 100B", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PHYS/100B", 
+                    "name": "Leeward Community College - Survey of Phys"
+                }, 
+                {
+                    "code": "PHYS 151", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PHYS/151", 
+                    "name": "Leeward Community College - College Phys I"
+                }, 
+                {
+                    "code": "PHYS 151L", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PHYS/151L", 
+                    "name": "Leeward Community College - Col Phys Lab I"
+                }, 
+                {
+                    "code": "PHYS 272", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PHYS/272", 
+                    "name": "Leeward Community College - Gen Physics II"
+                }, 
+                {
+                    "code": "PHYS 272L", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PHYS/272L", 
+                    "name": "Leeward Community College - Gen Phys II Lab"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PHYS"
+        }, 
+        {
+            "abbr": "PLAN", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PLAN"
+        }, 
+        {
+            "abbr": "POLS", 
+            "courses": [
+                {
+                    "code": "POLS 110", 
+                    "course_url": "http://www.chegg.com/courses/leeward/POLS/110", 
+                    "name": "Leeward Community College - Intro to Polsc"
+                }, 
+                {
+                    "code": "POLS 130", 
+                    "course_url": "http://www.chegg.com/courses/leeward/POLS/130", 
+                    "name": "Leeward Community College - American Politics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/POLS"
+        }, 
+        {
+            "abbr": "PORT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PORT"
+        }, 
+        {
+            "abbr": "PPC", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PPC"
+        }, 
+        {
+            "abbr": "PPHY", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PPHY"
+        }, 
+        {
+            "abbr": "PPST", 
+            "courses": [], 
+            "name": "Population Studies", 
+            "url": "http://www.chegg.com/courses/leeward/PPST"
+        }, 
+        {
+            "abbr": "PPTH", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PPTH"
+        }, 
+        {
+            "abbr": "PSTY", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PSTY"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 100", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PSY/100", 
+                    "name": "Leeward Community College - Survey of Psychology"
+                }, 
+                {
+                    "code": "PSY 240", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PSY/240", 
+                    "name": "Leeward Community College - Developmental Psychology"
+                }, 
+                {
+                    "code": "PSY 260", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PSY/260", 
+                    "name": "Leeward Community College - Psychology of Personality"
+                }, 
+                {
+                    "code": "PSY 298", 
+                    "course_url": "http://www.chegg.com/courses/leeward/PSY/298", 
+                    "name": "Leeward Community College - Educational Psychology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PSY"
+        }, 
+        {
+            "abbr": "PTA", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PTA"
+        }, 
+        {
+            "abbr": "PUBA", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/PUBA"
+        }, 
+        {
+            "abbr": "QBA", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/QBA"
+        }, 
+        {
+            "abbr": "RAC", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/RAC"
+        }, 
+        {
+            "abbr": "RAD", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/RAD"
+        }, 
+        {
+            "abbr": "RE", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/RE"
+        }, 
+        {
+            "abbr": "REL", 
+            "courses": [
+                {
+                    "code": "REL 150", 
+                    "course_url": "http://www.chegg.com/courses/leeward/REL/150", 
+                    "name": "Leeward Community College - Introduction to the World's Major Religions"
+                }, 
+                {
+                    "code": "REL 151", 
+                    "course_url": "http://www.chegg.com/courses/leeward/REL/151", 
+                    "name": "Leeward Community College - WI-Meaning of Exis"
+                }, 
+                {
+                    "code": "REL 204", 
+                    "course_url": "http://www.chegg.com/courses/leeward/REL/204", 
+                    "name": "Leeward Community College - WI-Understand Japanese Rel"
+                }, 
+                {
+                    "code": "REL 207", 
+                    "course_url": "http://www.chegg.com/courses/leeward/REL/207", 
+                    "name": "Leeward Community College - WI-Understanding Buddhism"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/REL"
+        }, 
+        {
+            "abbr": "REPR", 
+            "courses": [], 
+            "name": "Reproductive Biology", 
+            "url": "http://www.chegg.com/courses/leeward/REPR"
+        }, 
+        {
+            "abbr": "RESP", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/RESP"
+        }, 
+        {
+            "abbr": "RUS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/RUS"
+        }, 
+        {
+            "abbr": "SAM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SAM"
+        }, 
+        {
+            "abbr": "SCI", 
+            "courses": [
+                {
+                    "code": "SCI 122", 
+                    "course_url": "http://www.chegg.com/courses/leeward/SCI/122", 
+                    "name": "Leeward Community College - Intro to Science-Physical"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SCI"
+        }, 
+        {
+            "abbr": "SD", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SD"
+        }, 
+        {
+            "abbr": "SLS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SLS"
+        }, 
+        {
+            "abbr": "SLT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SLT"
+        }, 
+        {
+            "abbr": "SMP", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SMP"
+        }, 
+        {
+            "abbr": "SNSK", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SNSK"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 100", 
+                    "course_url": "http://www.chegg.com/courses/leeward/SOC/100", 
+                    "name": "Leeward Community College - Survey of Soc"
+                }, 
+                {
+                    "code": "SOC 251", 
+                    "course_url": "http://www.chegg.com/courses/leeward/SOC/251", 
+                    "name": "Leeward Community College - Sociology of Family"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SOC"
+        }, 
+        {
+            "abbr": "SOCS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SOCS"
+        }, 
+        {
+            "abbr": "SOIL", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SOIL"
+        }, 
+        {
+            "abbr": "SOSE", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SOSE"
+        }, 
+        {
+            "abbr": "SP", 
+            "courses": [
+                {
+                    "code": "SP 151", 
+                    "course_url": "http://www.chegg.com/courses/leeward/SP/151", 
+                    "name": "Leeward Community College - Pers Public Speech"
+                }, 
+                {
+                    "code": "SP 251", 
+                    "course_url": "http://www.chegg.com/courses/leeward/SP/251", 
+                    "name": "Leeward Community College - WI-Prin of Effective Public"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SP"
+        }, 
+        {
+            "abbr": "SPAN", 
+            "courses": [
+                {
+                    "code": "SPAN 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/SPAN/101", 
+                    "name": "Leeward Community College - Elem Span I"
+                }, 
+                {
+                    "code": "SPAN 102", 
+                    "course_url": "http://www.chegg.com/courses/leeward/SPAN/102", 
+                    "name": "Leeward Community College - Elementary Spanish II"
+                }, 
+                {
+                    "code": "SPAN 201", 
+                    "course_url": "http://www.chegg.com/courses/leeward/SPAN/201", 
+                    "name": "Leeward Community College - Interm Span I"
+                }, 
+                {
+                    "code": "SPAN 202", 
+                    "course_url": "http://www.chegg.com/courses/leeward/SPAN/202", 
+                    "name": "Leeward Community College - Interm Span II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SPAN"
+        }, 
+        {
+            "abbr": "SPCO", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SPCO"
+        }, 
+        {
+            "abbr": "SPED", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SPED"
+        }, 
+        {
+            "abbr": "SSCI", 
+            "courses": [
+                {
+                    "code": "SSCI 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/SSCI/101", 
+                    "name": "Leeward Community College - Self Development"
+                }, 
+                {
+                    "code": "SSCI 197", 
+                    "course_url": "http://www.chegg.com/courses/leeward/SSCI/197", 
+                    "name": "Leeward Community College - Campus Involvement Seminar"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SSCI"
+        }, 
+        {
+            "abbr": "SSM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SSM"
+        }, 
+        {
+            "abbr": "SUBS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SUBS"
+        }, 
+        {
+            "abbr": "SURG", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SURG"
+        }, 
+        {
+            "abbr": "SW", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/SW"
+        }, 
+        {
+            "abbr": "TAG", 
+            "courses": [
+                {
+                    "code": "TAG 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/TAG/101", 
+                    "name": "Leeward Community College - Elementary Tagalog/Filipino I"
+                }, 
+                {
+                    "code": "TAG 102", 
+                    "course_url": "http://www.chegg.com/courses/leeward/TAG/102", 
+                    "name": "Leeward Community College - Elementary Tagalog/Filipino II"
+                }, 
+                {
+                    "code": "TAG 201", 
+                    "course_url": "http://www.chegg.com/courses/leeward/TAG/201", 
+                    "name": "Leeward Community College - Inter Tagalog/Filipino I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/TAG"
+        }, 
+        {
+            "abbr": "TAHT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/TAHT"
+        }, 
+        {
+            "abbr": "TCOM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/TCOM"
+        }, 
+        {
+            "abbr": "THAI", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/THAI"
+        }, 
+        {
+            "abbr": "THEA", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/THEA"
+        }, 
+        {
+            "abbr": "TI", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/TI"
+        }, 
+        {
+            "abbr": "TIM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/TIM"
+        }, 
+        {
+            "abbr": "TONG", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/TONG"
+        }, 
+        {
+            "abbr": "TOUR", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/TOUR"
+        }, 
+        {
+            "abbr": "TPSS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/TPSS"
+        }, 
+        {
+            "abbr": "TRMD", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/TRMD"
+        }, 
+        {
+            "abbr": "TVPR", 
+            "courses": [
+                {
+                    "code": "TVPR 101", 
+                    "course_url": "http://www.chegg.com/courses/leeward/TVPR/101", 
+                    "name": "Leeward Community College - Film/Video Production Process"
+                }, 
+                {
+                    "code": "TVPR 121", 
+                    "course_url": "http://www.chegg.com/courses/leeward/TVPR/121", 
+                    "name": "Leeward Community College - Film & Video Graphics"
+                }, 
+                {
+                    "code": "TVPR 210", 
+                    "course_url": "http://www.chegg.com/courses/leeward/TVPR/210", 
+                    "name": "Leeward Community College - Film/Video Hist, Critic, Aesth"
+                }, 
+                {
+                    "code": "TVPR 226", 
+                    "course_url": "http://www.chegg.com/courses/leeward/TVPR/226", 
+                    "name": "Leeward Community College - Digital Camera Oper & Lighting"
+                }, 
+                {
+                    "code": "TVPR 227", 
+                    "course_url": "http://www.chegg.com/courses/leeward/TVPR/227", 
+                    "name": "Leeward Community College - Advanced Film & Video Storytelling & Scriptwriting"
+                }, 
+                {
+                    "code": "TVPR 251", 
+                    "course_url": "http://www.chegg.com/courses/leeward/TVPR/251", 
+                    "name": "Leeward Community College - App. Post Editing & Audio"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/TVPR"
+        }, 
+        {
+            "abbr": "UNIV", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/UNIV"
+        }, 
+        {
+            "abbr": "URDU", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/URDU"
+        }, 
+        {
+            "abbr": "VIET", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/VIET"
+        }, 
+        {
+            "abbr": "WELD", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/WELD"
+        }, 
+        {
+            "abbr": "WS", 
+            "courses": [
+                {
+                    "code": "WS 151", 
+                    "course_url": "http://www.chegg.com/courses/leeward/WS/151", 
+                    "name": "Leeward Community College - Introduction to Women's Studies"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/WS"
+        }, 
+        {
+            "abbr": "ZOOL", 
+            "courses": [
+                {
+                    "code": "ZOOL 199", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ZOOL/199", 
+                    "name": "Leeward Community College - Independent Study"
+                }, 
+                {
+                    "code": "ZOOL 200", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ZOOL/200", 
+                    "name": "Leeward Community College - Marine Biology"
+                }, 
+                {
+                    "code": "ZOOL 240", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ZOOL/240", 
+                    "name": "Leeward Community College - Human Anat I"
+                }, 
+                {
+                    "code": "ZOOL 241", 
+                    "course_url": "http://www.chegg.com/courses/leeward/ZOOL/241", 
+                    "name": "Leeward Community College - Human Anatomy & Physiology II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/leeward/ZOOL"
+        }
+    ], 
+    "name": "leeward"
+}

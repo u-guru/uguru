@@ -1,0 +1,2623 @@
+{
+    "all_stats": {
+        "num_courses": 450, 
+        "num_departments": 52
+    }, 
+    "departments": [
+        {
+            "abbr": "Accounting", 
+            "courses": [
+                {
+                    "code": "Accounting 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Accounting/1", 
+                    "name": "Introductory Accounting I"
+                }, 
+                {
+                    "code": "Accounting 15", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Accounting/15", 
+                    "name": "Tax Accounting I"
+                }, 
+                {
+                    "code": "Accounting 16", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Accounting/16", 
+                    "name": "Tax Accounting II"
+                }, 
+                {
+                    "code": "Accounting 21", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Accounting/21", 
+                    "name": "Bookkeeping & Accounting I"
+                }, 
+                {
+                    "code": "Accounting 22", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Accounting/22", 
+                    "name": "Bookkeeping & Accounting II"
+                }, 
+                {
+                    "code": "Accounting 25", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Accounting/25", 
+                    "name": "Automated Accounting Methods"
+                }, 
+                {
+                    "code": "Accounting 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Accounting/185", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Accounting 285", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Accounting/285", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Accounting 385", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Accounting/385", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Accounting 485", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Accounting/485", 
+                    "name": "Internet Research"
+                }, 
+                {
+                    "code": "Accounting 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Accounting/921", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Accounting 931", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Accounting/931", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Accounting 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Accounting/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/lamission/Accounting"
+        }, 
+        {
+            "abbr": "Administration of Justice", 
+            "courses": [
+                {
+                    "code": "Administration of Justice 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/1", 
+                    "name": "Introduction to"
+                }, 
+                {
+                    "code": "Administration of Justice 14", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/14", 
+                    "name": "Report Writing For Peace Officers"
+                }, 
+                {
+                    "code": "Administration of Justice 24", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/24", 
+                    "name": "Introduction to Counseling"
+                }, 
+                {
+                    "code": "Administration of Justice 39", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/39", 
+                    "name": "Probation And Parole"
+                }, 
+                {
+                    "code": "Administration of Justice 41", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/41", 
+                    "name": "Officer Safety"
+                }, 
+                {
+                    "code": "Administration of Justice 67", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/67", 
+                    "name": "Community Relations"
+                }, 
+                {
+                    "code": "Administration of Justice 72", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/72", 
+                    "name": "Correctional Procedures"
+                }, 
+                {
+                    "code": "Administration of Justice 75", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/75", 
+                    "name": "Introduction to Corrections"
+                }, 
+                {
+                    "code": "Administration of Justice 86", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/86", 
+                    "name": "Issues in Law Enforcement"
+                }, 
+                {
+                    "code": "Administration of Justice 87", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/87", 
+                    "name": "Campus Patrol"
+                }, 
+                {
+                    "code": "Administration of Justice 100", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/100", 
+                    "name": "Basic Traffic Collision"
+                }, 
+                {
+                    "code": "Administration of Justice 104", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/104", 
+                    "name": "Introduction to Forensic Science"
+                }, 
+                {
+                    "code": "Administration of Justice 150", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/150", 
+                    "name": "Understanding Street"
+                }, 
+                {
+                    "code": "Administration of Justice 160", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/160", 
+                    "name": "Police Organization"
+                }, 
+                {
+                    "code": "Administration of Justice 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/185", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Administration of Justice 209", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/209", 
+                    "name": "Domestic Violence"
+                }, 
+                {
+                    "code": "Administration of Justice 250", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/250", 
+                    "name": "Forensic Photography"
+                }, 
+                {
+                    "code": "Administration of Justice 285", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/285", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Administration of Justice 297", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/297", 
+                    "name": "Security Management"
+                }, 
+                {
+                    "code": "Administration of Justice 298", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/298", 
+                    "name": "Introduction to Guard Force"
+                }, 
+                {
+                    "code": "Administration of Justice 299", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/299", 
+                    "name": "Legal Aspects of Security Law"
+                }, 
+                {
+                    "code": "Administration of Justice 300", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/300", 
+                    "name": "Private Investigations"
+                }, 
+                {
+                    "code": "Administration of Justice 301", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/301", 
+                    "name": "Report Writing For Security"
+                }, 
+                {
+                    "code": "Administration of Justice 302", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/302", 
+                    "name": "Crisis & Disaster Management"
+                }, 
+                {
+                    "code": "Administration of Justice 303", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/303", 
+                    "name": "Crime Prevention Through"
+                }, 
+                {
+                    "code": "Administration of Justice 385", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/385", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Administration of Justice 424", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/424", 
+                    "name": "Ethics & The Judicial System"
+                }, 
+                {
+                    "code": "Administration of Justice 425", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/425", 
+                    "name": "Legal Aspects of Correction"
+                }, 
+                {
+                    "code": "Administration of Justice 426", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/426", 
+                    "name": "Custody & Control in a Correctional"
+                }, 
+                {
+                    "code": "Administration of Justice 427", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/427", 
+                    "name": "Understanding Terrorism"
+                }, 
+                {
+                    "code": "Administration of Justice 485", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/485", 
+                    "name": "Internet Research"
+                }, 
+                {
+                    "code": "Administration of Justice 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/921", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Administration of Justice 931", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/931", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Administration of Justice 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Administration%20of%20Justice"
+        }, 
+        {
+            "abbr": "African-American Studies", 
+            "courses": [
+                {
+                    "code": "African-American Studies 2", 
+                    "course_url": "http://www.chegg.com/courses/lamission/African-American%20Studies/2", 
+                    "name": "The African- American in"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/African-American%20Studies"
+        }, 
+        {
+            "abbr": "Anatomy", 
+            "courses": [
+                {
+                    "code": "Anatomy 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Anatomy/1", 
+                    "name": "Introduction to Human Anatomy"
+                }
+            ], 
+            "name": "Anatomy", 
+            "url": "http://www.chegg.com/courses/lamission/Anatomy"
+        }, 
+        {
+            "abbr": "Anthropology", 
+            "courses": [
+                {
+                    "code": "Anthropology 101", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Anthropology/101", 
+                    "name": "Human Biological Evolution"
+                }, 
+                {
+                    "code": "Anthropology 102", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Anthropology/102", 
+                    "name": "Human Ways of Life: Cultural"
+                }, 
+                {
+                    "code": "Anthropology 104", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Anthropology/104", 
+                    "name": "Human Language & Culture"
+                }, 
+                {
+                    "code": "Anthropology 121", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Anthropology/121", 
+                    "name": "Anthropology of Religion"
+                }
+            ], 
+            "name": "Anthropology", 
+            "url": "http://www.chegg.com/courses/lamission/Anthropology"
+        }, 
+        {
+            "abbr": "Art", 
+            "courses": [
+                {
+                    "code": "ART 101", 
+                    "course_url": "http://www.chegg.com/courses/lamission/ART/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 201", 
+                    "course_url": "http://www.chegg.com/courses/lamission/ART/201", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 202", 
+                    "course_url": "http://www.chegg.com/courses/lamission/ART/202", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 306", 
+                    "course_url": "http://www.chegg.com/courses/lamission/ART/306", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 700", 
+                    "course_url": "http://www.chegg.com/courses/lamission/ART/700", 
+                    "name": ""
+                }, 
+                {
+                    "code": "Art 102", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/102", 
+                    "name": "Survey of Art History II"
+                }, 
+                {
+                    "code": "Art 103", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/103", 
+                    "name": "Art Appreciation I"
+                }, 
+                {
+                    "code": "Art 109", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/109", 
+                    "name": "The Arts of Africa, Oceana"
+                }, 
+                {
+                    "code": "Art 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/185", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Art 203", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/203", 
+                    "name": "Drawing III"
+                }, 
+                {
+                    "code": "Art 204", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/204", 
+                    "name": "Life Drawing I"
+                }, 
+                {
+                    "code": "Art 205", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/205", 
+                    "name": "Life Drawing II"
+                }, 
+                {
+                    "code": "Art 206", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/206", 
+                    "name": "Life Drawing III"
+                }, 
+                {
+                    "code": "Art 300", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/300", 
+                    "name": "Introduction to Painting"
+                }, 
+                {
+                    "code": "Art 304", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/304", 
+                    "name": "Acrylic Painting I"
+                }, 
+                {
+                    "code": "Art 305", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/305", 
+                    "name": "Acrylic Painting II"
+                }, 
+                {
+                    "code": "Art 501", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/501", 
+                    "name": "Beginning Two- Dimensional Design"
+                }, 
+                {
+                    "code": "Art 502", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/502", 
+                    "name": "Beginning Three- Dimensional Design"
+                }, 
+                {
+                    "code": "Art 519", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/519", 
+                    "name": "Display Techniques"
+                }, 
+                {
+                    "code": "Art 520", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/520", 
+                    "name": "Design Workshop"
+                }, 
+                {
+                    "code": "Art 638", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/638", 
+                    "name": "Computer- Aided Art Laboratory"
+                }, 
+                {
+                    "code": "Art 701", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/701", 
+                    "name": "Sculpture I"
+                }, 
+                {
+                    "code": "Art 702", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/702", 
+                    "name": "Sculpture II"
+                }, 
+                {
+                    "code": "Art 703", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Art/703", 
+                    "name": "Sculpture III"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/lamission/Art"
+        }, 
+        {
+            "abbr": "Astronomy", 
+            "courses": [
+                {
+                    "code": "Astronomy 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Astronomy/1", 
+                    "name": "Elementary Astronomy"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Astronomy"
+        }, 
+        {
+            "abbr": "Basic Skills", 
+            "courses": [
+                {
+                    "code": "Basic Skills 7CE", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Basic%20Skills/7CE", 
+                    "name": "Foundations: Study Skills"
+                }, 
+                {
+                    "code": "Basic Skills 14CE", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Basic%20Skills/14CE", 
+                    "name": "Mathematics: Whole Numbers"
+                }, 
+                {
+                    "code": "Basic Skills 15CE", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Basic%20Skills/15CE", 
+                    "name": "Mathematics: Fractions"
+                }, 
+                {
+                    "code": "Basic Skills 16CE", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Basic%20Skills/16CE", 
+                    "name": "Mathematics: Ratio, Proportion"
+                }, 
+                {
+                    "code": "Basic Skills 17CE", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Basic%20Skills/17CE", 
+                    "name": "Mathematics: Geometry"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Basic%20Skills"
+        }, 
+        {
+            "abbr": "Biology", 
+            "courses": [
+                {
+                    "code": "Biology 3", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Biology/3", 
+                    "name": "Introduction to Biology"
+                }, 
+                {
+                    "code": "Biology 33", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Biology/33", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "Biology 40", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Biology/40", 
+                    "name": "The Science of Biotechnology"
+                }, 
+                {
+                    "code": "Biology 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Biology/921", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Biology 931", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Biology/931", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Biology 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Biology/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/lamission/Biology"
+        }, 
+        {
+            "abbr": "Business", 
+            "courses": [
+                {
+                    "code": "Business 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Business/1", 
+                    "name": "Introduction to Business"
+                }, 
+                {
+                    "code": "Business 15", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Business/15", 
+                    "name": "Business Statistics"
+                }, 
+                {
+                    "code": "Business 31", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Business/31", 
+                    "name": "Business English"
+                }, 
+                {
+                    "code": "Business 32", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Business/32", 
+                    "name": "Business Communications"
+                }, 
+                {
+                    "code": "Business 38", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Business/38", 
+                    "name": "Business Computations"
+                }, 
+                {
+                    "code": "Business 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Business/185", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Business 285", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Business/285", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Business 385", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Business/385", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Business 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Business/921", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Business 931", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Business/931", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Business 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Business/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/lamission/Business"
+        }, 
+        {
+            "abbr": "Chemistry", 
+            "courses": [
+                {
+                    "code": "Chemistry 51", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chemistry/51", 
+                    "name": "Fundamentals of Chemistry I"
+                }, 
+                {
+                    "code": "Chemistry 52", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chemistry/52", 
+                    "name": "Fundamentals of College"
+                }, 
+                {
+                    "code": "Chemistry 65", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chemistry/65", 
+                    "name": "Introductory General Chemistry"
+                }, 
+                {
+                    "code": "Chemistry 101", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chemistry/101", 
+                    "name": "General Chemistry I"
+                }, 
+                {
+                    "code": "Chemistry 102", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chemistry/102", 
+                    "name": "General Chemistry II"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/lamission/Chemistry"
+        }, 
+        {
+            "abbr": "Chicano Studies", 
+            "courses": [
+                {
+                    "code": "Chicano Studies 2", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chicano%20Studies/2", 
+                    "name": "The Mexican- American in"
+                }, 
+                {
+                    "code": "Chicano Studies 19", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chicano%20Studies/19", 
+                    "name": "History of Mexico"
+                }, 
+                {
+                    "code": "Chicano Studies 20", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chicano%20Studies/20", 
+                    "name": "The Mexican American"
+                }, 
+                {
+                    "code": "Chicano Studies 37", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chicano%20Studies/37", 
+                    "name": "Chicano Literature"
+                }, 
+                {
+                    "code": "Chicano Studies 42", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chicano%20Studies/42", 
+                    "name": "Contemporary Mexican"
+                }, 
+                {
+                    "code": "Chicano Studies 44", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chicano%20Studies/44", 
+                    "name": "Mexican Civilization"
+                }, 
+                {
+                    "code": "Chicano Studies 46", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chicano%20Studies/46", 
+                    "name": "Chicano & Mexican Folklore"
+                }, 
+                {
+                    "code": "Chicano Studies 47", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chicano%20Studies/47", 
+                    "name": "Mexican- American Woman in"
+                }, 
+                {
+                    "code": "Chicano Studies 52", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chicano%20Studies/52", 
+                    "name": "Mexican Art- Modern"
+                }, 
+                {
+                    "code": "Chicano Studies 54", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chicano%20Studies/54", 
+                    "name": "Mexican- American Arts in"
+                }, 
+                {
+                    "code": "Chicano Studies 58", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chicano%20Studies/58", 
+                    "name": "Latin- American Dance Cultures"
+                }, 
+                {
+                    "code": "Chicano Studies 71", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chicano%20Studies/71", 
+                    "name": "The Chicano in Los Angeles"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Chicano%20Studies"
+        }, 
+        {
+            "abbr": "Chinese", 
+            "courses": [
+                {
+                    "code": "Chinese 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/1", 
+                    "name": "Chinese"
+                }, 
+                {
+                    "code": "Chinese 10", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/10", 
+                    "name": "Child Health"
+                }, 
+                {
+                    "code": "Chinese 11", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/11", 
+                    "name": "Home, School & Community"
+                }, 
+                {
+                    "code": "Chinese 14", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/14", 
+                    "name": "Bilingual- Bicultural Programs"
+                }, 
+                {
+                    "code": "Chinese 15", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/15", 
+                    "name": "Creative Curriculum in Bilingual"
+                }, 
+                {
+                    "code": "Chinese 22", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/22", 
+                    "name": "Practicum in"
+                }, 
+                {
+                    "code": "Chinese 23", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/23", 
+                    "name": "Practicum in"
+                }, 
+                {
+                    "code": "Chinese 30", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/30", 
+                    "name": "Infant & Toddler Studies"
+                }, 
+                {
+                    "code": "Chinese 31", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/31", 
+                    "name": "Infant & Toddler Studies II"
+                }, 
+                {
+                    "code": "Chinese 32", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/32", 
+                    "name": "Teacher Assistant in The"
+                }, 
+                {
+                    "code": "Chinese 35", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/35", 
+                    "name": "Fostering Literacy Development"
+                }, 
+                {
+                    "code": "Chinese 38", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/38", 
+                    "name": "Administration & Supervision"
+                }, 
+                {
+                    "code": "Chinese 39", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/39", 
+                    "name": "Administration & Supervision"
+                }, 
+                {
+                    "code": "Chinese 42", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/42", 
+                    "name": "The Child in a Diverse Society"
+                }, 
+                {
+                    "code": "Chinese 44", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/44", 
+                    "name": "Programs For Children With"
+                }, 
+                {
+                    "code": "Chinese 45", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/45", 
+                    "name": "Programs For Children With"
+                }, 
+                {
+                    "code": "Chinese 46", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/46", 
+                    "name": "School Age Programs I"
+                }, 
+                {
+                    "code": "Chinese 47", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/47", 
+                    "name": "School Age Programs II"
+                }, 
+                {
+                    "code": "Chinese 60", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/60", 
+                    "name": "Introduction to Family Child Care I"
+                }, 
+                {
+                    "code": "Chinese 61", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/61", 
+                    "name": "Introduction to Family Child Care II"
+                }, 
+                {
+                    "code": "Chinese 62", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/62", 
+                    "name": "Developmental Profiles"
+                }, 
+                {
+                    "code": "Chinese 63", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/63", 
+                    "name": "Creative Curriculum in a Family"
+                }, 
+                {
+                    "code": "Chinese 65", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/65", 
+                    "name": "Early Childhood Mentoring"
+                }, 
+                {
+                    "code": "Chinese 172", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/172", 
+                    "name": "Introduction to Careers"
+                }, 
+                {
+                    "code": "Chinese 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/185", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Chinese 285", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/285", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Chinese 385", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/385", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Chinese 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/921", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Chinese 931", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/931", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Chinese 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Chinese/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "Chinese", 
+            "url": "http://www.chegg.com/courses/lamission/Chinese"
+        }, 
+        {
+            "abbr": "Cinema", 
+            "courses": [
+                {
+                    "code": "CINEMA 003", 
+                    "course_url": "http://www.chegg.com/courses/lamission/CINEMA/003", 
+                    "name": ""
+                }, 
+                {
+                    "code": "Cinema 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/1", 
+                    "name": "Keyboarding I"
+                }, 
+                {
+                    "code": "Cinema 31", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/31", 
+                    "name": "Business English"
+                }, 
+                {
+                    "code": "Cinema 32", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/32", 
+                    "name": "Business Communications"
+                }, 
+                {
+                    "code": "Cinema 33", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/33", 
+                    "name": "Records Management & Filing"
+                }, 
+                {
+                    "code": "Cinema 34", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/34", 
+                    "name": "Business Terminology"
+                }, 
+                {
+                    "code": "Cinema 47", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/47", 
+                    "name": "Applied Office Practice"
+                }, 
+                {
+                    "code": "Cinema 64", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/64", 
+                    "name": "Computer & Office"
+                }, 
+                {
+                    "code": "Cinema 76", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/76", 
+                    "name": "Keyboarding For Computers"
+                }, 
+                {
+                    "code": "Cinema 82", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/82", 
+                    "name": "Microcomputer Software"
+                }, 
+                {
+                    "code": "Cinema 84", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/84", 
+                    "name": "Microcomputer Office"
+                }, 
+                {
+                    "code": "Cinema 85", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/85", 
+                    "name": "Microsoft Office Applications"
+                }, 
+                {
+                    "code": "Cinema 86", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/86", 
+                    "name": "Microcomputer Office"
+                }, 
+                {
+                    "code": "Cinema 89", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/89", 
+                    "name": "Microcomputer Office Windows"
+                }, 
+                {
+                    "code": "Cinema 91", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/91", 
+                    "name": "Microcomputer Office Applications"
+                }, 
+                {
+                    "code": "Cinema 108", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/108", 
+                    "name": "Presentation Design For The Office"
+                }, 
+                {
+                    "code": "Cinema 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/185", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Cinema 285", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/285", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Cinema 385", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/385", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Cinema 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/921", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Cinema 931", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/931", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Cinema 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Cinema/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "Cinema", 
+            "url": "http://www.chegg.com/courses/lamission/Cinema"
+        }, 
+        {
+            "abbr": "Computer Science -Information Technology", 
+            "courses": [
+                {
+                    "code": "Computer Science -Information Technology 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/185", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 285", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/285", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 385", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/385", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 401", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/401", 
+                    "name": "Introduction to Computers"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 406", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/406", 
+                    "name": "Beginning Pascal Programming"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 407", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/407", 
+                    "name": "Programming Logic"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 408", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/408", 
+                    "name": "Visual Basic"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 417", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/417", 
+                    "name": "Beginning Micro Assembly"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 430", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/430", 
+                    "name": "Microcomputer Applications"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 431", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/431", 
+                    "name": "Microcomputer Applications"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 432", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/432", 
+                    "name": "Advanced Text Processing Applications"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 433", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/433", 
+                    "name": "Database Programming"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 435", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/435", 
+                    "name": "Microcomputer Operating Systems"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 436", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/436", 
+                    "name": "Introduction to Data"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 439", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/439", 
+                    "name": "Programming in c"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 440", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/440", 
+                    "name": "Programming in C++"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 447", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/447", 
+                    "name": "Advanced Micro Assembly Language"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 448", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/448", 
+                    "name": "Advanced Microcomputer"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 449", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/449", 
+                    "name": "Electronic Publishing"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 450", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/450", 
+                    "name": "Electronic Publishing II"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 452", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/452", 
+                    "name": "Programming in Java"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 453", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/453", 
+                    "name": "a+ Certification Preparation"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 472", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/472", 
+                    "name": "Introduction to Personal"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 487", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/487", 
+                    "name": "Introduction to Local"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/921", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 931", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/931", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Computer Science -Information Technology 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Computer%20Science%20-Information%20Technology"
+        }, 
+        {
+            "abbr": "Developmental Communications", 
+            "courses": [
+                {
+                    "code": "Developmental Communications 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Developmental%20Communications/1", 
+                    "name": "Grammar: Applied to Writing"
+                }, 
+                {
+                    "code": "Developmental Communications 22", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Developmental%20Communications/22", 
+                    "name": "Communications Laboratory"
+                }, 
+                {
+                    "code": "Developmental Communications 34", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Developmental%20Communications/34", 
+                    "name": "Basic Reading"
+                }, 
+                {
+                    "code": "Developmental Communications 36A", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Developmental%20Communications/36A", 
+                    "name": "Reading II: Comprehension"
+                }, 
+                {
+                    "code": "Developmental Communications 36B", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Developmental%20Communications/36B", 
+                    "name": "Reading II: Comprehension"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Developmental%20Communications"
+        }, 
+        {
+            "abbr": "Drafting", 
+            "courses": [
+                {
+                    "code": "Drafting 16", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Drafting/16", 
+                    "name": "Blueprint Reading"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Drafting"
+        }, 
+        {
+            "abbr": "Economics", 
+            "courses": [
+                {
+                    "code": "Economics 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Economics/1", 
+                    "name": "Principles of Economics"
+                }, 
+                {
+                    "code": "Economics 10", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Economics/10", 
+                    "name": "Economic History of The United States"
+                }, 
+                {
+                    "code": "Economics 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Economics/185", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Economics 285", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Economics/285", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Economics 385", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Economics/385", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Economics 485", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Economics/485", 
+                    "name": "Internet Research"
+                }, 
+                {
+                    "code": "Economics 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Economics/921", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/lamission/Economics"
+        }, 
+        {
+            "abbr": "Education", 
+            "courses": [
+                {
+                    "code": "Education 6", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Education/6", 
+                    "name": "Methods & Materials of Tutoring"
+                }, 
+                {
+                    "code": "Education 203", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Education/203", 
+                    "name": "Urban Education in American"
+                }, 
+                {
+                    "code": "Education 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Education/921", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Education 931", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Education/931", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Education 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Education/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/lamission/Education"
+        }, 
+        {
+            "abbr": "Engineering, General", 
+            "courses": [
+                {
+                    "code": "Engineering, General 101", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Engineering%2C%20General/101", 
+                    "name": "Introduction to Science"
+                }, 
+                {
+                    "code": "Engineering, General 151", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Engineering%2C%20General/151", 
+                    "name": "Materials of Engineering"
+                }, 
+                {
+                    "code": "Engineering, General 152", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Engineering%2C%20General/152", 
+                    "name": "Materials of Engineering"
+                }, 
+                {
+                    "code": "Engineering, General 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Engineering%2C%20General/185", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Engineering, General 211", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Engineering%2C%20General/211", 
+                    "name": "Cadd For Engineers I"
+                }, 
+                {
+                    "code": "Engineering, General 243", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Engineering%2C%20General/243", 
+                    "name": "Statics & Strength of Materials"
+                }, 
+                {
+                    "code": "Engineering, General 284", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Engineering%2C%20General/284", 
+                    "name": "Projects Laboratory"
+                }, 
+                {
+                    "code": "Engineering, General 285", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Engineering%2C%20General/285", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Engineering, General 385", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Engineering%2C%20General/385", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Engineering, General 485", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Engineering%2C%20General/485", 
+                    "name": "Internet Research"
+                }, 
+                {
+                    "code": "Engineering, General 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Engineering%2C%20General/921", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Engineering, General 931", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Engineering%2C%20General/931", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Engineering, General 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Engineering%2C%20General/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Engineering%2C%20General"
+        }, 
+        {
+            "abbr": "English", 
+            "courses": [
+                {
+                    "code": "English 21", 
+                    "course_url": "http://www.chegg.com/courses/lamission/English/21", 
+                    "name": "English Fundamentals"
+                }, 
+                {
+                    "code": "English 28", 
+                    "course_url": "http://www.chegg.com/courses/lamission/English/28", 
+                    "name": "Intermediate Reading"
+                }, 
+                {
+                    "code": "English 101", 
+                    "course_url": "http://www.chegg.com/courses/lamission/English/101", 
+                    "name": "College Reading"
+                }, 
+                {
+                    "code": "English 102", 
+                    "course_url": "http://www.chegg.com/courses/lamission/English/102", 
+                    "name": "College Reading"
+                }, 
+                {
+                    "code": "English 240", 
+                    "course_url": "http://www.chegg.com/courses/lamission/English/240", 
+                    "name": "Literature & The Motion"
+                }, 
+                {
+                    "code": "English 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/English/921", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "English 931", 
+                    "course_url": "http://www.chegg.com/courses/lamission/English/931", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "English 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/English/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/lamission/English"
+        }, 
+        {
+            "abbr": "English as a Second Language", 
+            "courses": [
+                {
+                    "code": "English as a Second Language 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/English%20as%20a%20Second%20Language/1", 
+                    "name": "College English as a Second"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/English%20as%20a%20Second%20Language"
+        }, 
+        {
+            "abbr": "Food Service Management", 
+            "courses": [
+                {
+                    "code": "Food Service Management 108", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Food%20Service%20Management/108", 
+                    "name": "Internship"
+                }, 
+                {
+                    "code": "Food Service Management 109", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Food%20Service%20Management/109", 
+                    "name": "Professional Baking"
+                }, 
+                {
+                    "code": "Food Service Management 110", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Food%20Service%20Management/110", 
+                    "name": "Managing Catering Operations"
+                }, 
+                {
+                    "code": "Food Service Management 111", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Food%20Service%20Management/111", 
+                    "name": "Culinary Competition"
+                }, 
+                {
+                    "code": "Food Service Management 115", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Food%20Service%20Management/115", 
+                    "name": "Restaurant Operations Management"
+                }, 
+                {
+                    "code": "Food Service Management 116", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Food%20Service%20Management/116", 
+                    "name": "Beverage Management"
+                }, 
+                {
+                    "code": "Food Service Management 125", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Food%20Service%20Management/125", 
+                    "name": "Foods Laboratory"
+                }, 
+                {
+                    "code": "Food Service Management 130", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Food%20Service%20Management/130", 
+                    "name": "Cake Decoration I"
+                }, 
+                {
+                    "code": "Food Service Management 225", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Food%20Service%20Management/225", 
+                    "name": "Foods Laboratory"
+                }, 
+                {
+                    "code": "Food Service Management 325", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Food%20Service%20Management/325", 
+                    "name": "Foods Laboratory"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Food%20Service%20Management"
+        }, 
+        {
+            "abbr": "French", 
+            "courses": [
+                {
+                    "code": "FRENCH 001", 
+                    "course_url": "http://www.chegg.com/courses/lamission/FRENCH/001", 
+                    "name": ""
+                }, 
+                {
+                    "code": "French 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/French/1", 
+                    "name": "Elementary French I"
+                }, 
+                {
+                    "code": "French 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/French/185", 
+                    "name": "Directed Studies"
+                }, 
+                {
+                    "code": "French 285", 
+                    "course_url": "http://www.chegg.com/courses/lamission/French/285", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "French 385", 
+                    "course_url": "http://www.chegg.com/courses/lamission/French/385", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/lamission/French"
+        }, 
+        {
+            "abbr": "General Studies", 
+            "courses": [
+                {
+                    "code": "General Studies 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/General%20Studies/1", 
+                    "name": "Physical Geography"
+                }, 
+                {
+                    "code": "General Studies 14", 
+                    "course_url": "http://www.chegg.com/courses/lamission/General%20Studies/14", 
+                    "name": "Geography of California"
+                }, 
+                {
+                    "code": "General Studies 15", 
+                    "course_url": "http://www.chegg.com/courses/lamission/General%20Studies/15", 
+                    "name": "Physical Geography Laboratory"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/General%20Studies"
+        }, 
+        {
+            "abbr": "Geology", 
+            "courses": [
+                {
+                    "code": "Geology 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Geology/1", 
+                    "name": "Physical Geology"
+                }
+            ], 
+            "name": "Geology", 
+            "url": "http://www.chegg.com/courses/lamission/Geology"
+        }, 
+        {
+            "abbr": "Health", 
+            "courses": [
+                {
+                    "code": "HEALTH 008", 
+                    "course_url": "http://www.chegg.com/courses/lamission/HEALTH/008", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HEALTH 011", 
+                    "course_url": "http://www.chegg.com/courses/lamission/HEALTH/011", 
+                    "name": ""
+                }, 
+                {
+                    "code": "Health 8", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health/8", 
+                    "name": "Women's Personal Health"
+                }, 
+                {
+                    "code": "Health 11", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health/11", 
+                    "name": "Principles of Healthful Living"
+                }, 
+                {
+                    "code": "Health 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health/185", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Health 285", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health/285", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Health 385", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health/385", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "Health", 
+            "url": "http://www.chegg.com/courses/lamission/Health"
+        }, 
+        {
+            "abbr": "Health Science", 
+            "courses": [
+                {
+                    "code": "Health Science 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health%20Science/1", 
+                    "name": "Introduction to Western"
+                }, 
+                {
+                    "code": "Health Science 11", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health%20Science/11", 
+                    "name": "Political & Social History of"
+                }, 
+                {
+                    "code": "Health Science 12", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health%20Science/12", 
+                    "name": "Political & Social History of"
+                }, 
+                {
+                    "code": "Health Science 13", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health%20Science/13", 
+                    "name": "United States History in The"
+                }, 
+                {
+                    "code": "Health Science 20", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health%20Science/20", 
+                    "name": "History of California & The"
+                }, 
+                {
+                    "code": "Health Science 43", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health%20Science/43", 
+                    "name": "The Mexican- American in The"
+                }, 
+                {
+                    "code": "Health Science 44", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health%20Science/44", 
+                    "name": "The Mexican- American in The"
+                }, 
+                {
+                    "code": "Health Science 52", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health%20Science/52", 
+                    "name": "History of Women"
+                }, 
+                {
+                    "code": "Health Science 86", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health%20Science/86", 
+                    "name": "Introduction to World"
+                }, 
+                {
+                    "code": "Health Science 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health%20Science/185", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Health Science 285", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health%20Science/285", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Health Science 385", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health%20Science/385", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Health Science 485", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Health%20Science/485", 
+                    "name": "Internet Research"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Health%20Science"
+        }, 
+        {
+            "abbr": "Hospitality", 
+            "courses": [
+                {
+                    "code": "Hospitality 99", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Hospitality/99", 
+                    "name": "Recreation Services in"
+                }, 
+                {
+                    "code": "Hospitality 135", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Hospitality/135", 
+                    "name": "Meeting, Event & Convention Planning"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Hospitality"
+        }, 
+        {
+            "abbr": "Humanities", 
+            "courses": [
+                {
+                    "code": "Humanities 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Humanities/1", 
+                    "name": "Cultural Patterns of"
+                }, 
+                {
+                    "code": "Humanities 30", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Humanities/30", 
+                    "name": "The Beginnings of Civilization"
+                }, 
+                {
+                    "code": "Humanities 31", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Humanities/31", 
+                    "name": "People in Contemporary Society"
+                }, 
+                {
+                    "code": "Humanities 54", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Humanities/54", 
+                    "name": "Studies in American Culture"
+                }, 
+                {
+                    "code": "Humanities 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Humanities/921", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Humanities 931", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Humanities/931", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Humanities 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Humanities/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/lamission/Humanities"
+        }, 
+        {
+            "abbr": "Interior Design", 
+            "courses": [
+                {
+                    "code": "Interior Design 101", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Interior%20Design/101", 
+                    "name": "Professional Career"
+                }, 
+                {
+                    "code": "Interior Design 102", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Interior%20Design/102", 
+                    "name": "Introduction to Interior Design"
+                }, 
+                {
+                    "code": "Interior Design 103", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Interior%20Design/103", 
+                    "name": "Interior Design Project"
+                }, 
+                {
+                    "code": "Interior Design 104", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Interior%20Design/104", 
+                    "name": "Historical & Contemporary"
+                }, 
+                {
+                    "code": "Interior Design 105", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Interior%20Design/105", 
+                    "name": "Textiles"
+                }, 
+                {
+                    "code": "Interior Design 106", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Interior%20Design/106", 
+                    "name": "Drafting For Interior Designers"
+                }, 
+                {
+                    "code": "Interior Design 107", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Interior%20Design/107", 
+                    "name": "Color For Interiors"
+                }, 
+                {
+                    "code": "Interior Design 108", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Interior%20Design/108", 
+                    "name": "Space Planning A+b"
+                }, 
+                {
+                    "code": "Interior Design 109", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Interior%20Design/109", 
+                    "name": "Kitchen & Bath Design A+b"
+                }, 
+                {
+                    "code": "Interior Design 110", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Interior%20Design/110", 
+                    "name": "Lighting"
+                }, 
+                {
+                    "code": "Interior Design 111", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Interior%20Design/111", 
+                    "name": "Interior Design Portfolio"
+                }, 
+                {
+                    "code": "Interior Design 112", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Interior%20Design/112", 
+                    "name": "Interiors Management"
+                }, 
+                {
+                    "code": "Interior Design 113", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Interior%20Design/113", 
+                    "name": "Internship"
+                }, 
+                {
+                    "code": "Interior Design 114", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Interior%20Design/114", 
+                    "name": "Materials & Components"
+                }, 
+                {
+                    "code": "Interior Design 115", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Interior%20Design/115", 
+                    "name": "Window Treatments"
+                }, 
+                {
+                    "code": "Interior Design 116", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Interior%20Design/116", 
+                    "name": "Introduction to Decorative"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Interior%20Design"
+        }, 
+        {
+            "abbr": "Italian", 
+            "courses": [
+                {
+                    "code": "Italian 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Italian/1", 
+                    "name": "Elementary Italian I"
+                }
+            ], 
+            "name": "Italian", 
+            "url": "http://www.chegg.com/courses/lamission/Italian"
+        }, 
+        {
+            "abbr": "Journalism", 
+            "courses": [
+                {
+                    "code": "Journalism 100", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Journalism/100", 
+                    "name": "Social Values in Mass"
+                }, 
+                {
+                    "code": "Journalism 101", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Journalism/101", 
+                    "name": "Collecting & Writing News"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Journalism"
+        }, 
+        {
+            "abbr": "Law", 
+            "courses": [
+                {
+                    "code": "LAW 001", 
+                    "course_url": "http://www.chegg.com/courses/lamission/LAW/001", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LAW 002", 
+                    "course_url": "http://www.chegg.com/courses/lamission/LAW/002", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LAW 013", 
+                    "course_url": "http://www.chegg.com/courses/lamission/LAW/013", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LAW 020", 
+                    "course_url": "http://www.chegg.com/courses/lamission/LAW/020", 
+                    "name": ""
+                }, 
+                {
+                    "code": "Law 2", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Law/2", 
+                    "name": "Business Law II"
+                }, 
+                {
+                    "code": "Law 10", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Law/10", 
+                    "name": "Introduction to Legal Assistant I"
+                }, 
+                {
+                    "code": "Law 11", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Law/11", 
+                    "name": "Introduction to Legal Assistant II"
+                }, 
+                {
+                    "code": "Law 12", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Law/12", 
+                    "name": "Tort Law & Claims Investigation"
+                }, 
+                {
+                    "code": "Law 13", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Law/13", 
+                    "name": "Wills, Trusts & Probate"
+                }, 
+                {
+                    "code": "Law 16", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Law/16", 
+                    "name": "Civil & Criminal Evidence"
+                }, 
+                {
+                    "code": "Law 17", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Law/17", 
+                    "name": "Legal Writing"
+                }, 
+                {
+                    "code": "Law 18", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Law/18", 
+                    "name": "Marriage & Family Law"
+                }, 
+                {
+                    "code": "Law 19", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Law/19", 
+                    "name": "Property & Creditor Rights"
+                }, 
+                {
+                    "code": "Law 20", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Law/20", 
+                    "name": "Basic Probate Procedures"
+                }, 
+                {
+                    "code": "Law 34", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Law/34", 
+                    "name": "Legal Research Laboratory"
+                }, 
+                {
+                    "code": "Law 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Law/921", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Law 931", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Law/931", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Law 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Law/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "Law", 
+            "url": "http://www.chegg.com/courses/lamission/Law"
+        }, 
+        {
+            "abbr": "Microbiology", 
+            "courses": [
+                {
+                    "code": "Microbiology 20", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Microbiology/20", 
+                    "name": "General Microbiology"
+                }
+            ], 
+            "name": "Microbiology", 
+            "url": "http://www.chegg.com/courses/lamission/Microbiology"
+        }, 
+        {
+            "abbr": "Multimedia Studies", 
+            "courses": [
+                {
+                    "code": "Multimedia Studies 100", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/100", 
+                    "name": "Introduction to Multimedia"
+                }, 
+                {
+                    "code": "Multimedia Studies 110", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/110", 
+                    "name": "Visual Communication"
+                }, 
+                {
+                    "code": "Multimedia Studies 200", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/200", 
+                    "name": "Digital Imaging"
+                }, 
+                {
+                    "code": "Multimedia Studies 210", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/210", 
+                    "name": "Digital Editing"
+                }, 
+                {
+                    "code": "Multimedia Studies 220", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/220", 
+                    "name": "Illustration For Multimedia"
+                }, 
+                {
+                    "code": "Multimedia Studies 230", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/230", 
+                    "name": "Visual Communication For"
+                }, 
+                {
+                    "code": "Multimedia Studies 240", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/240", 
+                    "name": "Graphic Design For Multimedia"
+                }, 
+                {
+                    "code": "Multimedia Studies 300", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/300", 
+                    "name": "Design For Three- Dimensional"
+                }, 
+                {
+                    "code": "Multimedia Studies 310", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/310", 
+                    "name": "Interactive Multimedia"
+                }, 
+                {
+                    "code": "Multimedia Studies 320", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/320", 
+                    "name": "Web Design"
+                }, 
+                {
+                    "code": "Multimedia Studies 340", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/340", 
+                    "name": "Vector Graphics"
+                }, 
+                {
+                    "code": "Multimedia Studies 400", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/400", 
+                    "name": "Introduction to Experimental"
+                }, 
+                {
+                    "code": "Multimedia Studies 402", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/402", 
+                    "name": "Animation Workshop"
+                }, 
+                {
+                    "code": "Multimedia Studies 410", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/410", 
+                    "name": "Principles of 3- d Animation"
+                }, 
+                {
+                    "code": "Multimedia Studies 430", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/430", 
+                    "name": "Computer Applications For"
+                }, 
+                {
+                    "code": "Multimedia Studies 440", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/440", 
+                    "name": "Game Design"
+                }, 
+                {
+                    "code": "Multimedia Studies 500", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/500", 
+                    "name": "Multimedia Laboratory"
+                }, 
+                {
+                    "code": "Multimedia Studies 600", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/600", 
+                    "name": "Story & Script Screen"
+                }, 
+                {
+                    "code": "Multimedia Studies 610", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/610", 
+                    "name": "Introduction to Digital"
+                }, 
+                {
+                    "code": "Multimedia Studies 620", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/620", 
+                    "name": "Digital Audio"
+                }, 
+                {
+                    "code": "Multimedia Studies 630", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/630", 
+                    "name": "Digital Video Production"
+                }, 
+                {
+                    "code": "Multimedia Studies 640", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/640", 
+                    "name": "Digital Video Production"
+                }, 
+                {
+                    "code": "Multimedia Studies 700", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/700", 
+                    "name": "Web Animation"
+                }, 
+                {
+                    "code": "Multimedia Studies 800", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies/800", 
+                    "name": "Current Topics in Applied"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Multimedia%20Studies"
+        }, 
+        {
+            "abbr": "Music", 
+            "courses": [
+                {
+                    "code": "MUSIC 101", 
+                    "course_url": "http://www.chegg.com/courses/lamission/MUSIC/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUSIC 111", 
+                    "course_url": "http://www.chegg.com/courses/lamission/MUSIC/111", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUSIC 501", 
+                    "course_url": "http://www.chegg.com/courses/lamission/MUSIC/501", 
+                    "name": ""
+                }, 
+                {
+                    "code": "Music 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Music/185", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Music 285", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Music/285", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Music 321", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Music/321", 
+                    "name": "Elementary Piano I"
+                }, 
+                {
+                    "code": "Music 322", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Music/322", 
+                    "name": "Elementary Piano II"
+                }, 
+                {
+                    "code": "Music 323", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Music/323", 
+                    "name": "Elementary Piano III"
+                }, 
+                {
+                    "code": "Music 324", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Music/324", 
+                    "name": "Elementary Piano IV"
+                }, 
+                {
+                    "code": "Music 341", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Music/341", 
+                    "name": "Intermediate Piano"
+                }, 
+                {
+                    "code": "Music 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Music/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/lamission/Music"
+        }, 
+        {
+            "abbr": "Oceanography", 
+            "courses": [
+                {
+                    "code": "Oceanography 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Oceanography/1", 
+                    "name": "Introduction to Oceanography"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Oceanography"
+        }, 
+        {
+            "abbr": "Personal Development/Counseling", 
+            "courses": [
+                {
+                    "code": "Personal Development/Counseling 4", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Personal%20Development%2FCounseling/4", 
+                    "name": "Career Planning"
+                }, 
+                {
+                    "code": "Personal Development/Counseling 17", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Personal%20Development%2FCounseling/17", 
+                    "name": "College Survival Skills Development"
+                }, 
+                {
+                    "code": "Personal Development/Counseling 22", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Personal%20Development%2FCounseling/22", 
+                    "name": "The Transfer Process"
+                }, 
+                {
+                    "code": "Personal Development/Counseling 40", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Personal%20Development%2FCounseling/40", 
+                    "name": "College Success Seminar"
+                }, 
+                {
+                    "code": "Personal Development/Counseling 105", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Personal%20Development%2FCounseling/105", 
+                    "name": "Collegiate Financial Assistance"
+                }, 
+                {
+                    "code": "Personal Development/Counseling 106", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Personal%20Development%2FCounseling/106", 
+                    "name": "College: The Learning Community"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Personal%20Development%2FCounseling"
+        }, 
+        {
+            "abbr": "Philosophy", 
+            "courses": [
+                {
+                    "code": "Philosophy 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Philosophy/1", 
+                    "name": "Introduction to Philosophy"
+                }, 
+                {
+                    "code": "Philosophy 20", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Philosophy/20", 
+                    "name": "Ethics"
+                }, 
+                {
+                    "code": "Philosophy 21", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Philosophy/21", 
+                    "name": "Philosophy of Art"
+                }, 
+                {
+                    "code": "Philosophy 33", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Philosophy/33", 
+                    "name": "Comparative Survey of"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/lamission/Philosophy"
+        }, 
+        {
+            "abbr": "Photography", 
+            "courses": [
+                {
+                    "code": "Photography 9", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Photography/9", 
+                    "name": "Introduction to Cameras"
+                }, 
+                {
+                    "code": "Photography 10", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Photography/10", 
+                    "name": "Beginning Photography"
+                }, 
+                {
+                    "code": "Photography 11", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Photography/11", 
+                    "name": "Advanced Photography"
+                }, 
+                {
+                    "code": "Photography 12", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Photography/12", 
+                    "name": "Advanced Photographic"
+                }, 
+                {
+                    "code": "Photography 47", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Photography/47", 
+                    "name": "Introduction to Computerized"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Photography"
+        }, 
+        {
+            "abbr": "Physical Education", 
+            "courses": [
+                {
+                    "code": "Physical Education 91", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/91", 
+                    "name": "Theory & Application of Aerobics"
+                }, 
+                {
+                    "code": "Physical Education 96", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/96", 
+                    "name": "Combined Activities"
+                }, 
+                {
+                    "code": "Physical Education 102", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/102", 
+                    "name": "Swimming Skills"
+                }, 
+                {
+                    "code": "Physical Education 212", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/212", 
+                    "name": "Tennis"
+                }, 
+                {
+                    "code": "Physical Education 259", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/259", 
+                    "name": "Golf Skills"
+                }, 
+                {
+                    "code": "Physical Education 268", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/268", 
+                    "name": "Bowling"
+                }, 
+                {
+                    "code": "Physical Education 289", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/289", 
+                    "name": "Bowling Skills"
+                }, 
+                {
+                    "code": "Physical Education 295", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/295", 
+                    "name": "Adapted Activities"
+                }, 
+                {
+                    "code": "Physical Education 301", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/301", 
+                    "name": "Baseball Skills"
+                }, 
+                {
+                    "code": "Physical Education 313", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/313", 
+                    "name": "Soccer Skills"
+                }, 
+                {
+                    "code": "Physical Education 503", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/503", 
+                    "name": "Intercollegiate Baseball"
+                }, 
+                {
+                    "code": "Physical Education 511", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/511", 
+                    "name": "Intercollegiate Soccer"
+                }, 
+                {
+                    "code": "Physical Education 552", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/552", 
+                    "name": "Athletics Pre- Season"
+                }, 
+                {
+                    "code": "Physical Education 590", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/590", 
+                    "name": "Pilates Mat"
+                }, 
+                {
+                    "code": "Physical Education 646", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/646", 
+                    "name": "Adapted Cardiovascular"
+                }, 
+                {
+                    "code": "Physical Education 673", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/673", 
+                    "name": "Steps Aerobics"
+                }, 
+                {
+                    "code": "Physical Education 675", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/675", 
+                    "name": "Karate"
+                }, 
+                {
+                    "code": "Physical Education 690", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/690", 
+                    "name": "Weight Training"
+                }, 
+                {
+                    "code": "Physical Education 696", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/696", 
+                    "name": "Yoga"
+                }, 
+                {
+                    "code": "Physical Education 742", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Education/742", 
+                    "name": "Cardio Kickboxing"
+                }
+            ], 
+            "name": "Physical Education", 
+            "url": "http://www.chegg.com/courses/lamission/Physical%20Education"
+        }, 
+        {
+            "abbr": "Physical Science", 
+            "courses": [
+                {
+                    "code": "Physical Science 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Science/1", 
+                    "name": "Physical Science"
+                }, 
+                {
+                    "code": "Physical Science 14", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physical%20Science/14", 
+                    "name": "Physical Science Laboratory"
+                }
+            ], 
+            "name": "Physical Sciences", 
+            "url": "http://www.chegg.com/courses/lamission/Physical%20Science"
+        }, 
+        {
+            "abbr": "Physics", 
+            "courses": [
+                {
+                    "code": "PHYSICS 006", 
+                    "course_url": "http://www.chegg.com/courses/lamission/PHYSICS/006", 
+                    "name": ""
+                }, 
+                {
+                    "code": "Physics 6", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physics/6", 
+                    "name": "General Physics I"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/lamission/Physics"
+        }, 
+        {
+            "abbr": "Physiology", 
+            "courses": [
+                {
+                    "code": "Physiology 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Physiology/1", 
+                    "name": "Introduction to Human"
+                }
+            ], 
+            "name": "Physiology", 
+            "url": "http://www.chegg.com/courses/lamission/Physiology"
+        }, 
+        {
+            "abbr": "Political Science", 
+            "courses": [
+                {
+                    "code": "Political Science 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Political%20Science/1", 
+                    "name": "The Government of The"
+                }, 
+                {
+                    "code": "Political Science 41", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Political%20Science/41", 
+                    "name": "Principles of Student"
+                }, 
+                {
+                    "code": "Political Science 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Political%20Science/185", 
+                    "name": "Directed Studies"
+                }, 
+                {
+                    "code": "Political Science 285", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Political%20Science/285", 
+                    "name": "Directed Studies"
+                }, 
+                {
+                    "code": "Political Science 385", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Political%20Science/385", 
+                    "name": "Directed Studies"
+                }, 
+                {
+                    "code": "Political Science 485", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Political%20Science/485", 
+                    "name": "Internet Research"
+                }, 
+                {
+                    "code": "Political Science 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Political%20Science/921", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Political Science 931", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Political%20Science/931", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Political Science 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Political%20Science/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/lamission/Political%20Science"
+        }, 
+        {
+            "abbr": "Portuguese", 
+            "courses": [
+                {
+                    "code": "Portuguese 21", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Portuguese/21", 
+                    "name": "Fundamentals of Portuguese I"
+                }, 
+                {
+                    "code": "Portuguese 22", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Portuguese/22", 
+                    "name": "Fundamentals of Portuguese II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Portuguese"
+        }, 
+        {
+            "abbr": "Psychology", 
+            "courses": [
+                {
+                    "code": "Psychology 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Psychology/1", 
+                    "name": "General Psychology"
+                }, 
+                {
+                    "code": "Psychology 11", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Psychology/11", 
+                    "name": "Child Growth & Development"
+                }, 
+                {
+                    "code": "Psychology 12", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Psychology/12", 
+                    "name": "Adolescent Psychology"
+                }, 
+                {
+                    "code": "Psychology 13", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Psychology/13", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "Psychology 14", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Psychology/14", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "Psychology 32", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Psychology/32", 
+                    "name": "Psychology of Women"
+                }, 
+                {
+                    "code": "Psychology 41", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Psychology/41", 
+                    "name": "Life Span Psychology"
+                }, 
+                {
+                    "code": "Psychology 52", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Psychology/52", 
+                    "name": "Psychological Aspects of"
+                }, 
+                {
+                    "code": "Psychology 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Psychology/185", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Psychology 285", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Psychology/285", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Psychology 385", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Psychology/385", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Psychology 485", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Psychology/485", 
+                    "name": "Internet Research"
+                }, 
+                {
+                    "code": "Psychology 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Psychology/921", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Psychology 931", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Psychology/931", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Psychology 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Psychology/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "Psychology", 
+            "url": "http://www.chegg.com/courses/lamission/Psychology"
+        }, 
+        {
+            "abbr": "Sociology", 
+            "courses": [
+                {
+                    "code": "Sociology 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Sociology/1", 
+                    "name": "Introduction to Sociology"
+                }, 
+                {
+                    "code": "Sociology 11", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Sociology/11", 
+                    "name": "Ethnic & Racial Minorities in"
+                }, 
+                {
+                    "code": "Sociology 12", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Sociology/12", 
+                    "name": "Marriage & Family Life"
+                }, 
+                {
+                    "code": "Sociology 22", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Sociology/22", 
+                    "name": "Sociology of Women"
+                }, 
+                {
+                    "code": "Sociology 28", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Sociology/28", 
+                    "name": "The Family a Sociological"
+                }, 
+                {
+                    "code": "Sociology 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Sociology/185", 
+                    "name": "Directed Studies"
+                }, 
+                {
+                    "code": "Sociology 285", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Sociology/285", 
+                    "name": "Directed Studies"
+                }, 
+                {
+                    "code": "Sociology 385", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Sociology/385", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Sociology 485", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Sociology/485", 
+                    "name": "Internet Research"
+                }, 
+                {
+                    "code": "Sociology 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Sociology/921", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Sociology 931", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Sociology/931", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Sociology 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Sociology/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/lamission/Sociology"
+        }, 
+        {
+            "abbr": "Spanish", 
+            "courses": [
+                {
+                    "code": "Spanish 1", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Spanish/1", 
+                    "name": "Elementary Spanish I"
+                }, 
+                {
+                    "code": "Spanish 10", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Spanish/10", 
+                    "name": "Latin- American Civilization"
+                }, 
+                {
+                    "code": "Spanish 185", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Spanish/185", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Spanish 285", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Spanish/285", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "Spanish 385", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Spanish/385", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "Spanish", 
+            "url": "http://www.chegg.com/courses/lamission/Spanish"
+        }, 
+        {
+            "abbr": "Speech Communication", 
+            "courses": [
+                {
+                    "code": "Speech Communication 101", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Speech%20Communication/101", 
+                    "name": "Oral Communication I"
+                }, 
+                {
+                    "code": "Speech Communication 102", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Speech%20Communication/102", 
+                    "name": "Oral Communication II"
+                }, 
+                {
+                    "code": "Speech Communication 121", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Speech%20Communication/121", 
+                    "name": "Interpersonal Communications"
+                }, 
+                {
+                    "code": "Speech Communication 151", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Speech%20Communication/151", 
+                    "name": "Small Group Communication"
+                }, 
+                {
+                    "code": "Speech Communication 921", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Speech%20Communication/921", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Speech Communication 931", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Speech%20Communication/931", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "Speech Communication 941", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Speech%20Communication/941", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Speech%20Communication"
+        }, 
+        {
+            "abbr": "Supervision", 
+            "courses": [
+                {
+                    "code": "Supervision 6", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Supervision/6", 
+                    "name": "Labor Relations"
+                }, 
+                {
+                    "code": "Supervision 485", 
+                    "course_url": "http://www.chegg.com/courses/lamission/Supervision/485", 
+                    "name": "Internet Research"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lamission/Supervision"
+        }
+    ], 
+    "name": "lamission"
+}

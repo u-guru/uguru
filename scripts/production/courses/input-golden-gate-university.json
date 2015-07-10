@@ -1,0 +1,2396 @@
+{
+    "all_stats": {
+        "num_courses": 437, 
+        "num_departments": 29
+    }, 
+    "departments": [
+        {
+            "abbr": "ACCTG", 
+            "courses": [
+                {
+                    "code": "ACCTG 1A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/1A", 
+                    "name": "Introductory Financial Accounting"
+                }, 
+                {
+                    "code": "ACCTG 1B", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/1B", 
+                    "name": "Introductory Managerial Accounting"
+                }, 
+                {
+                    "code": "ACCTG 50", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/50", 
+                    "name": "Financial Accounting for Accounting Majors"
+                }, 
+                {
+                    "code": "ACCTG 100A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/100A", 
+                    "name": "Intermediate Accounting"
+                }, 
+                {
+                    "code": "ACCTG 100B", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/100B", 
+                    "name": "Intermediate Accounting II"
+                }, 
+                {
+                    "code": "ACCTG 100C", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/100C", 
+                    "name": "Intermediate Accounting III"
+                }, 
+                {
+                    "code": "ACCTG 103", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/103", 
+                    "name": "Advanced Accounting: Consolidations"
+                }, 
+                {
+                    "code": "ACCTG 104", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/104", 
+                    "name": "Governmental and Not-for-Profit Accounting"
+                }, 
+                {
+                    "code": "ACCTG 108A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/108A", 
+                    "name": "Federal Income Tax I"
+                }, 
+                {
+                    "code": "ACCTG 111", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/111", 
+                    "name": "Auditing"
+                }, 
+                {
+                    "code": "ACCTG 159", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/159", 
+                    "name": "Accounting Research and Communication"
+                }, 
+                {
+                    "code": "ACCTG 197", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/197", 
+                    "name": "Special Topics in Accounting"
+                }, 
+                {
+                    "code": "ACCTG 197A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/197A", 
+                    "name": "Introduction to Financial Forensic Accounting"
+                }, 
+                {
+                    "code": "ACCTG 197X", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/197X", 
+                    "name": "CPA Exam Review Financial Accounting and Reporting And Auditing and Attestation"
+                }, 
+                {
+                    "code": "ACCTG 197Y", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/197Y", 
+                    "name": "CPA Exam Review Regulation and Busines Environment and Concepts"
+                }, 
+                {
+                    "code": "ACCTG 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/198", 
+                    "name": "Internship: Accounting"
+                }, 
+                {
+                    "code": "ACCTG 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/199", 
+                    "name": "Directed Study in Accounting"
+                }, 
+                {
+                    "code": "ACCTG 200", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/200", 
+                    "name": "Introduction to Accounting Standards and Accounting Information Systems"
+                }, 
+                {
+                    "code": "ACCTG 200A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/200A", 
+                    "name": "Intermediate Accounting I"
+                }, 
+                {
+                    "code": "ACCTG 200B", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/200B", 
+                    "name": "Intermediate Accounting II"
+                }, 
+                {
+                    "code": "ACCTG 201", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/201", 
+                    "name": "Accounting for Managers"
+                }, 
+                {
+                    "code": "ACCTG 300", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/300", 
+                    "name": "Accounting Research and Communication"
+                }, 
+                {
+                    "code": "ACCTG 302", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/302", 
+                    "name": "Accountants' Professonal Responsibilities and Ethics"
+                }, 
+                {
+                    "code": "ACCTG 303", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/303", 
+                    "name": "Sustainability for Accountants and Finance Professionals"
+                }, 
+                {
+                    "code": "ACCTG 304", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/304", 
+                    "name": "Issues in Governmental and Not-For- Profit Accounting"
+                }, 
+                {
+                    "code": "ACCTG 305", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/305", 
+                    "name": "Advanced Financial Accounting Topics"
+                }, 
+                {
+                    "code": "ACCTG 306", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/306", 
+                    "name": "Advanced Issues Financial and SEC Reporting"
+                }, 
+                {
+                    "code": "ACCTG 309", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/309", 
+                    "name": "Analysis and Use of Financial Statements"
+                }, 
+                {
+                    "code": "ACCTG 310", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/310", 
+                    "name": "Auditing"
+                }, 
+                {
+                    "code": "ACCTG 311", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/311", 
+                    "name": "Fraud Auditing"
+                }, 
+                {
+                    "code": "ACCTG 319", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/319", 
+                    "name": "Accounting Information Systems"
+                }, 
+                {
+                    "code": "ACCTG 320", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/320", 
+                    "name": "Issues in Modern Management Accounting"
+                }, 
+                {
+                    "code": "ACCTG 321", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/321", 
+                    "name": "Strategic Cost and Management Control Systems"
+                }, 
+                {
+                    "code": "ACCTG 335", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/335", 
+                    "name": "Consulting: Business Valuations"
+                }, 
+                {
+                    "code": "ACCTG 351A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/351A", 
+                    "name": "Economics, Finance and International Business for Accountants"
+                }, 
+                {
+                    "code": "ACCTG 351B", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/351B", 
+                    "name": "Business Law, Professional Responsibility and Ethics for Accountants"
+                }, 
+                {
+                    "code": "ACCTG 351C", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/351C", 
+                    "name": "Communication and Analysis of Financial Information for Accountants"
+                }, 
+                {
+                    "code": "ACCTG 360", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/360", 
+                    "name": "Federal Taxation"
+                }, 
+                {
+                    "code": "ACCTG 361", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/361", 
+                    "name": "Taxation of Corporations and Other Entities"
+                }, 
+                {
+                    "code": "ACCTG 365A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/365A", 
+                    "name": "CPA Exam Review: Financial Accounting and Reporting"
+                }, 
+                {
+                    "code": "ACCTG 365B", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/365B", 
+                    "name": "CPA Exam Review: Audit and Attestation"
+                }, 
+                {
+                    "code": "ACCTG 365C", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/365C", 
+                    "name": "CPA Exam Review: Regulation"
+                }, 
+                {
+                    "code": "ACCTG 365D", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/365D", 
+                    "name": "CPA Exam Review: Business Environment and Concepts"
+                }, 
+                {
+                    "code": "ACCTG 372", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/372", 
+                    "name": "Introduction to Financial Forensic Accounting"
+                }, 
+                {
+                    "code": "ACCTG 373", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/373", 
+                    "name": "Forensic Accounting in Family Law"
+                }, 
+                {
+                    "code": "ACCTG 374", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/374", 
+                    "name": "Damages"
+                }, 
+                {
+                    "code": "ACCTG 375A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/375A", 
+                    "name": "Economic Damages"
+                }, 
+                {
+                    "code": "ACCTG 375D", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/375D", 
+                    "name": "Bankruptcy and Insolvency"
+                }, 
+                {
+                    "code": "ACCTG 375G", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/375G", 
+                    "name": "Construction Claims"
+                }, 
+                {
+                    "code": "ACCTG 375J", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/375J", 
+                    "name": "Disputes in Mergers and Acquisitions"
+                }, 
+                {
+                    "code": "ACCTG 375K", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/375K", 
+                    "name": "Intellectual Property"
+                }, 
+                {
+                    "code": "ACCTG 375L", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/375L", 
+                    "name": "Financial Statement Investigations"
+                }, 
+                {
+                    "code": "ACCTG 375N", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/375N", 
+                    "name": "Complex Discovery and Data Management"
+                }, 
+                {
+                    "code": "ACCTG 375O", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/375O", 
+                    "name": "Expert Testimony"
+                }, 
+                {
+                    "code": "ACCTG 375P", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/375P", 
+                    "name": "Role of the Expert and the Expert Report"
+                }, 
+                {
+                    "code": "ACCTG 375R", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/375R", 
+                    "name": "Allegations of Audit Failure"
+                }, 
+                {
+                    "code": "ACCTG 376", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/376", 
+                    "name": "Special Topics in Forensic Accounting"
+                }, 
+                {
+                    "code": "ACCTG 376A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/376A", 
+                    "name": "International Anti-Corruption Compliance : the Foreign Corrupt Practices Act"
+                }, 
+                {
+                    "code": "ACCTG 396", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/396", 
+                    "name": "Selected Topics in Accounting"
+                }, 
+                {
+                    "code": "ACCTG 396EL", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/396EL", 
+                    "name": "Exploring Business Leadership"
+                }, 
+                {
+                    "code": "ACCTG 396LS", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/396LS", 
+                    "name": "Business Leadership Speaker Series"
+                }, 
+                {
+                    "code": "ACCTG 396X", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/396X", 
+                    "name": "CPA Examination Review Financial Accounting and Reporting And Auditing and Attestation"
+                }, 
+                {
+                    "code": "ACCTG 396XB", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/396XB", 
+                    "name": "XBRL for Accountants"
+                }, 
+                {
+                    "code": "ACCTG 396Y", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/396Y", 
+                    "name": "CPA Exam Review Regulation and Business Environment and Concepts"
+                }, 
+                {
+                    "code": "ACCTG 398", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/398", 
+                    "name": "Internship: Accounting"
+                }, 
+                {
+                    "code": "ACCTG 399", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ACCTG/399", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/ACCTG"
+        }, 
+        {
+            "abbr": "ARTS", 
+            "courses": [
+                {
+                    "code": "ARTS 105", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ARTS/105", 
+                    "name": "Contemporary Arts and Culture"
+                }, 
+                {
+                    "code": "ARTS 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ARTS/198", 
+                    "name": "Special Topics in Arts"
+                }, 
+                {
+                    "code": "ARTS 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ARTS/199", 
+                    "name": "Directed Study in Arts"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/ARTS"
+        }, 
+        {
+            "abbr": "COMM", 
+            "courses": [
+                {
+                    "code": "COMM 35", 
+                    "course_url": "http://www.chegg.com/courses/ggu/COMM/35", 
+                    "name": "Speech Communication"
+                }, 
+                {
+                    "code": "COMM 40", 
+                    "course_url": "http://www.chegg.com/courses/ggu/COMM/40", 
+                    "name": "Understanding Communication"
+                }, 
+                {
+                    "code": "COMM 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/COMM/199", 
+                    "name": "Directed Study in Communication"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/COMM"
+        }, 
+        {
+            "abbr": "CRTH", 
+            "courses": [
+                {
+                    "code": "CRTH 10", 
+                    "course_url": "http://www.chegg.com/courses/ggu/CRTH/10", 
+                    "name": "Critical Thinking"
+                }, 
+                {
+                    "code": "CRTH 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/CRTH/198", 
+                    "name": "Special Topics in Critical Thinking"
+                }, 
+                {
+                    "code": "CRTH 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/CRTH/199", 
+                    "name": "Directed Study in Critical Thinking"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/CRTH"
+        }, 
+        {
+            "abbr": "DBA", 
+            "courses": [
+                {
+                    "code": "DBA 800", 
+                    "course_url": "http://www.chegg.com/courses/ggu/DBA/800", 
+                    "name": "Doctoral Writing and Research Methods"
+                }, 
+                {
+                    "code": "DBA 801", 
+                    "course_url": "http://www.chegg.com/courses/ggu/DBA/801", 
+                    "name": "Quantitative Research Methods"
+                }, 
+                {
+                    "code": "DBA 802C", 
+                    "course_url": "http://www.chegg.com/courses/ggu/DBA/802C", 
+                    "name": "SIMULATION AND MODELING"
+                }, 
+                {
+                    "code": "DBA 803", 
+                    "course_url": "http://www.chegg.com/courses/ggu/DBA/803", 
+                    "name": "Economic Theory and Policy"
+                }, 
+                {
+                    "code": "DBA 804", 
+                    "course_url": "http://www.chegg.com/courses/ggu/DBA/804", 
+                    "name": "Management and Organizational Theory"
+                }, 
+                {
+                    "code": "DBA 821", 
+                    "course_url": "http://www.chegg.com/courses/ggu/DBA/821", 
+                    "name": "Marketing Management"
+                }, 
+                {
+                    "code": "DBA 822", 
+                    "course_url": "http://www.chegg.com/courses/ggu/DBA/822", 
+                    "name": "Strategy and International Business"
+                }, 
+                {
+                    "code": "DBA 852", 
+                    "course_url": "http://www.chegg.com/courses/ggu/DBA/852", 
+                    "name": "Information Technology Management"
+                }, 
+                {
+                    "code": "DBA 853", 
+                    "course_url": "http://www.chegg.com/courses/ggu/DBA/853", 
+                    "name": "Management of Innovation and Technology"
+                }, 
+                {
+                    "code": "DBA 891", 
+                    "course_url": "http://www.chegg.com/courses/ggu/DBA/891", 
+                    "name": "Special Topics in Business Administration"
+                }, 
+                {
+                    "code": "DBA 891E", 
+                    "course_url": "http://www.chegg.com/courses/ggu/DBA/891E", 
+                    "name": "Advanced Issues in Consumer Behavior Research"
+                }, 
+                {
+                    "code": "DBA 895", 
+                    "course_url": "http://www.chegg.com/courses/ggu/DBA/895", 
+                    "name": "Directed Study"
+                }, 
+                {
+                    "code": "DBA 899", 
+                    "course_url": "http://www.chegg.com/courses/ggu/DBA/899", 
+                    "name": "Dissertation Research"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/DBA"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 1", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ECON/1", 
+                    "name": "Principles of Microeconomics"
+                }, 
+                {
+                    "code": "ECON 2", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ECON/2", 
+                    "name": "Principles of Macroeconomics"
+                }, 
+                {
+                    "code": "ECON 103", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ECON/103", 
+                    "name": "Money and Banking"
+                }, 
+                {
+                    "code": "ECON 108", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ECON/108", 
+                    "name": "International Economics"
+                }, 
+                {
+                    "code": "ECON 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ECON/199", 
+                    "name": "Directed Study in Economics"
+                }, 
+                {
+                    "code": "ECON 202", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ECON/202", 
+                    "name": "Economics for Managers"
+                }, 
+                {
+                    "code": "ECON 340", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ECON/340", 
+                    "name": "International Trade and Finance"
+                }, 
+                {
+                    "code": "ECON 380", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ECON/380", 
+                    "name": "Financial Markets and Institutions"
+                }, 
+                {
+                    "code": "ECON 396", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ECON/396", 
+                    "name": "Selected Topics in Economics"
+                }, 
+                {
+                    "code": "ECON 399", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ECON/399", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/ECON"
+        }, 
+        {
+            "abbr": "EMBA", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/EMBA"
+        }, 
+        {
+            "abbr": "EMPA", 
+            "courses": [
+                {
+                    "code": "EMPA 300", 
+                    "course_url": "http://www.chegg.com/courses/ggu/EMPA/300", 
+                    "name": "Theory, Ethics and Practice in Public Service"
+                }, 
+                {
+                    "code": "EMPA 301", 
+                    "course_url": "http://www.chegg.com/courses/ggu/EMPA/301", 
+                    "name": "Research Methods and Analysis"
+                }, 
+                {
+                    "code": "EMPA 302", 
+                    "course_url": "http://www.chegg.com/courses/ggu/EMPA/302", 
+                    "name": "Public Policy Analysis & Program Evaluation"
+                }, 
+                {
+                    "code": "EMPA 303", 
+                    "course_url": "http://www.chegg.com/courses/ggu/EMPA/303", 
+                    "name": "Organizational Analysis and Development"
+                }, 
+                {
+                    "code": "EMPA 304", 
+                    "course_url": "http://www.chegg.com/courses/ggu/EMPA/304", 
+                    "name": "Public Enterprise Management & Public Sector Business Relations"
+                }, 
+                {
+                    "code": "EMPA 305", 
+                    "course_url": "http://www.chegg.com/courses/ggu/EMPA/305", 
+                    "name": "Budgeting and Financial Management"
+                }, 
+                {
+                    "code": "EMPA 306", 
+                    "course_url": "http://www.chegg.com/courses/ggu/EMPA/306", 
+                    "name": "Public Service and the Law"
+                }, 
+                {
+                    "code": "EMPA 307", 
+                    "course_url": "http://www.chegg.com/courses/ggu/EMPA/307", 
+                    "name": "Personnel Management and Labor Relations"
+                }, 
+                {
+                    "code": "EMPA 308", 
+                    "course_url": "http://www.chegg.com/courses/ggu/EMPA/308", 
+                    "name": "Judicial History and Governance"
+                }, 
+                {
+                    "code": "EMPA 310", 
+                    "course_url": "http://www.chegg.com/courses/ggu/EMPA/310", 
+                    "name": "Judicial Management and Leadership"
+                }, 
+                {
+                    "code": "EMPA 396", 
+                    "course_url": "http://www.chegg.com/courses/ggu/EMPA/396", 
+                    "name": "Graduate Research Project in Public Management"
+                }, 
+                {
+                    "code": "EMPA 399", 
+                    "course_url": "http://www.chegg.com/courses/ggu/EMPA/399", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/EMPA"
+        }, 
+        {
+            "abbr": "ENGL", 
+            "courses": [
+                {
+                    "code": "ENGL 1A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ENGL/1A", 
+                    "name": "Expository Writing"
+                }, 
+                {
+                    "code": "ENGL 1B", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ENGL/1B", 
+                    "name": "Research Writing"
+                }, 
+                {
+                    "code": "ENGL 10A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ENGL/10A", 
+                    "name": "Writing Skills Workshop I"
+                }, 
+                {
+                    "code": "ENGL 10B", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ENGL/10B", 
+                    "name": "Writing Skills Workshop II"
+                }, 
+                {
+                    "code": "ENGL 120", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ENGL/120", 
+                    "name": "Business Writing"
+                }, 
+                {
+                    "code": "ENGL 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ENGL/198", 
+                    "name": "Special Topics in English"
+                }, 
+                {
+                    "code": "ENGL 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ENGL/199", 
+                    "name": "Directed Study in English"
+                }, 
+                {
+                    "code": "ENGL 201", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ENGL/201", 
+                    "name": "Graduate Writing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/ENGL"
+        }, 
+        {
+            "abbr": "FI", 
+            "courses": [
+                {
+                    "code": "FI 100", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/100", 
+                    "name": "Financial Management"
+                }, 
+                {
+                    "code": "FI 105", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/105", 
+                    "name": "Modeling for Financial Analysis"
+                }, 
+                {
+                    "code": "FI 197", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/197", 
+                    "name": "Internship: Finance"
+                }, 
+                {
+                    "code": "FI 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/198", 
+                    "name": "Selected Topics in Finance"
+                }, 
+                {
+                    "code": "FI 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/199", 
+                    "name": "Directed Study in Finance"
+                }, 
+                {
+                    "code": "FI 203", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/203", 
+                    "name": "Financial Analysis for Managers"
+                }, 
+                {
+                    "code": "FI 300", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/300", 
+                    "name": "Corporate Finance"
+                }, 
+                {
+                    "code": "FI 300A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/300A", 
+                    "name": "Managerial Finance"
+                }, 
+                {
+                    "code": "FI 305", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/305", 
+                    "name": "Financial Reporting and Analysis"
+                }, 
+                {
+                    "code": "FI 307", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/307", 
+                    "name": "Financial Modeling"
+                }, 
+                {
+                    "code": "FI 308", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/308", 
+                    "name": "Management Control Systems"
+                }, 
+                {
+                    "code": "FI 312", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/312", 
+                    "name": "Capital Budgeting and Long-term Financing"
+                }, 
+                {
+                    "code": "FI 314", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/314", 
+                    "name": "Working Capital Management"
+                }, 
+                {
+                    "code": "FI 317", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/317", 
+                    "name": "Mergers and Acquisitions"
+                }, 
+                {
+                    "code": "FI 318", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/318", 
+                    "name": "Venture Capital and Start-Up Financing"
+                }, 
+                {
+                    "code": "FI 340", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/340", 
+                    "name": "Investments"
+                }, 
+                {
+                    "code": "FI 343", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/343", 
+                    "name": "International Corporate Finance"
+                }, 
+                {
+                    "code": "FI 344", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/344", 
+                    "name": "Fundamental Analysis of Securities"
+                }, 
+                {
+                    "code": "FI 346", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/346", 
+                    "name": "Derivative Markets"
+                }, 
+                {
+                    "code": "FI 352", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/352", 
+                    "name": "Technical Analysis of Securities"
+                }, 
+                {
+                    "code": "FI 354", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/354", 
+                    "name": "Wyckoff Method I"
+                }, 
+                {
+                    "code": "FI 358", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/358", 
+                    "name": "Technical Market Analysis Strategies"
+                }, 
+                {
+                    "code": "FI 360", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/360", 
+                    "name": "Behavioral Finance"
+                }, 
+                {
+                    "code": "FI 382", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/382", 
+                    "name": "Bank and Thrift Management I"
+                }, 
+                {
+                    "code": "FI 420", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/420", 
+                    "name": "Personal Financial Planning"
+                }, 
+                {
+                    "code": "FI 421", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/421", 
+                    "name": "Personal Investment Management"
+                }, 
+                {
+                    "code": "FI 422", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/422", 
+                    "name": "Retirement & Employee Benefits Planning"
+                }, 
+                {
+                    "code": "FI 425", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/425", 
+                    "name": "Income Tax Planning"
+                }, 
+                {
+                    "code": "FI 430", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/430", 
+                    "name": "Business Development in Financial Services"
+                }, 
+                {
+                    "code": "FI 434", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/434", 
+                    "name": "Cases in Financial Planning"
+                }, 
+                {
+                    "code": "FI 450", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/450", 
+                    "name": "Practicum in Financial Planning"
+                }, 
+                {
+                    "code": "FI 463", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/463", 
+                    "name": "Real Estate Finance and Investment"
+                }, 
+                {
+                    "code": "FI 497", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/497", 
+                    "name": "Internship: Finance"
+                }, 
+                {
+                    "code": "FI 498", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/498", 
+                    "name": "Selected Topics in Finance"
+                }, 
+                {
+                    "code": "FI 498BB", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/498BB", 
+                    "name": "Seminar in Investing: Advanced Techniques in Fundamental Equity Researc"
+                }, 
+                {
+                    "code": "FI 498EI", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/498EI", 
+                    "name": "Seminar in Fundamental Equity Investing -A Practitioner's Perspective"
+                }, 
+                {
+                    "code": "FI 498ET", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/498ET", 
+                    "name": "Business Ethics and Corporate Standards"
+                }, 
+                {
+                    "code": "FI 498R", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/498R", 
+                    "name": "Online Investing: Using the Internet for Stock Market Research and Investing"
+                }, 
+                {
+                    "code": "FI 498RM", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/498RM", 
+                    "name": "Value Added Retirement Savings Management"
+                }, 
+                {
+                    "code": "FI 498S", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/498S", 
+                    "name": "Building Efficient Trading Systems"
+                }, 
+                {
+                    "code": "FI 498X", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/498X", 
+                    "name": "Wycoff Method III"
+                }, 
+                {
+                    "code": "FI 499", 
+                    "course_url": "http://www.chegg.com/courses/ggu/FI/499", 
+                    "name": "Directed Study in Finance"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/FI"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/HIST/198", 
+                    "name": "Special Topics in History"
+                }, 
+                {
+                    "code": "HIST 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/HIST/199", 
+                    "name": "Directed Study in History"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/HIST"
+        }, 
+        {
+            "abbr": "HSM", 
+            "courses": [
+                {
+                    "code": "HSM 372", 
+                    "course_url": "http://www.chegg.com/courses/ggu/HSM/372", 
+                    "name": "U.S. Health Services Delivery System"
+                }, 
+                {
+                    "code": "HSM 373", 
+                    "course_url": "http://www.chegg.com/courses/ggu/HSM/373", 
+                    "name": "Healthcare Policy and Government Relations"
+                }, 
+                {
+                    "code": "HSM 375", 
+                    "course_url": "http://www.chegg.com/courses/ggu/HSM/375", 
+                    "name": "Health Services Quality Assessment and Improvement"
+                }, 
+                {
+                    "code": "HSM 376", 
+                    "course_url": "http://www.chegg.com/courses/ggu/HSM/376", 
+                    "name": "Continuum of Long-Term Care"
+                }, 
+                {
+                    "code": "HSM 377", 
+                    "course_url": "http://www.chegg.com/courses/ggu/HSM/377", 
+                    "name": "Financial Management of Health Services Organizations"
+                }, 
+                {
+                    "code": "HSM 379", 
+                    "course_url": "http://www.chegg.com/courses/ggu/HSM/379", 
+                    "name": "Evolution of Managed Care and Integrated Health Services Delivery Systems"
+                }, 
+                {
+                    "code": "HSM 396", 
+                    "course_url": "http://www.chegg.com/courses/ggu/HSM/396", 
+                    "name": "Special Topics in Health Services Management"
+                }, 
+                {
+                    "code": "HSM 396MI", 
+                    "course_url": "http://www.chegg.com/courses/ggu/HSM/396MI", 
+                    "name": "Health Information Systems"
+                }, 
+                {
+                    "code": "HSM 399", 
+                    "course_url": "http://www.chegg.com/courses/ggu/HSM/399", 
+                    "name": "Directed Study in Health Services Management"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/HSM"
+        }, 
+        {
+            "abbr": "HUM", 
+            "courses": [
+                {
+                    "code": "HUM 156", 
+                    "course_url": "http://www.chegg.com/courses/ggu/HUM/156", 
+                    "name": "Business and Civilization"
+                }, 
+                {
+                    "code": "HUM 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/HUM/198", 
+                    "name": "Special Topics in Humanities"
+                }, 
+                {
+                    "code": "HUM 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/HUM/199", 
+                    "name": "Directed Study in Humanities"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/HUM"
+        }, 
+        {
+            "abbr": "ITM", 
+            "courses": [
+                {
+                    "code": "ITM 10", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/10", 
+                    "name": "Small Computers for Business"
+                }, 
+                {
+                    "code": "ITM 101", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/101", 
+                    "name": "Fundamental Programming Concepts with Java"
+                }, 
+                {
+                    "code": "ITM 102", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/102", 
+                    "name": "Advanced Programming Concepts with Java"
+                }, 
+                {
+                    "code": "ITM 103", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/103", 
+                    "name": "Introduction to Visual Basic"
+                }, 
+                {
+                    "code": "ITM 105", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/105", 
+                    "name": "Social Media in Business"
+                }, 
+                {
+                    "code": "ITM 106", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/106", 
+                    "name": "Information Technology for Managers I"
+                }, 
+                {
+                    "code": "ITM 113", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/113", 
+                    "name": "Database Management Systems"
+                }, 
+                {
+                    "code": "ITM 125", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/125", 
+                    "name": "Management Information Systems"
+                }, 
+                {
+                    "code": "ITM 133", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/133", 
+                    "name": "Systems Analysis: Analysis and Design"
+                }, 
+                {
+                    "code": "ITM 143", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/143", 
+                    "name": "Structured Query Language and PL/SQL"
+                }, 
+                {
+                    "code": "ITM 150", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/150", 
+                    "name": "Network Design"
+                }, 
+                {
+                    "code": "ITM 191", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/191", 
+                    "name": "Capstone: Value Creation in the IT Career"
+                }, 
+                {
+                    "code": "ITM 197", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/197", 
+                    "name": "Internship: Information Technology Management"
+                }, 
+                {
+                    "code": "ITM 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/198", 
+                    "name": "Special Topics in Information Technology"
+                }, 
+                {
+                    "code": "ITM 198A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/198A", 
+                    "name": "Social Media in Business"
+                }, 
+                {
+                    "code": "ITM 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/199", 
+                    "name": "Directed Study in Information Technology"
+                }, 
+                {
+                    "code": "ITM 225", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/225", 
+                    "name": "Management Information Systems"
+                }, 
+                {
+                    "code": "ITM 304", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/304", 
+                    "name": "Managing Distributed Data Systems"
+                }, 
+                {
+                    "code": "ITM 305", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/305", 
+                    "name": "Information Technology for Sustainability"
+                }, 
+                {
+                    "code": "ITM 306", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/306", 
+                    "name": "Emerging Enterprise and Commercial Technologies"
+                }, 
+                {
+                    "code": "ITM 319", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/319", 
+                    "name": "Data Warehouses and Data Marts"
+                }, 
+                {
+                    "code": "ITM 326", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/326", 
+                    "name": "Data Mining"
+                }, 
+                {
+                    "code": "ITM 328", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/328", 
+                    "name": "Advanced Data Modeling"
+                }, 
+                {
+                    "code": "ITM 329", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/329", 
+                    "name": "Business Continuity: Crisis Management, Recovery and Restoration"
+                }, 
+                {
+                    "code": "ITM 333", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/333", 
+                    "name": "Social Media in Business Business"
+                }, 
+                {
+                    "code": "ITM 340", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/340", 
+                    "name": "Managing Information Technologies in the Business Enterprise"
+                }, 
+                {
+                    "code": "ITM 342", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/342", 
+                    "name": "Enterprise Architecture Planning"
+                }, 
+                {
+                    "code": "ITM 344", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/344", 
+                    "name": "IT Governance, Portfolio, Program Management"
+                }, 
+                {
+                    "code": "ITM 345", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/345", 
+                    "name": "Business Intelligence and Decision Support Systems"
+                }, 
+                {
+                    "code": "ITM 346", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/346", 
+                    "name": "Wireless Communications in the Enterprise"
+                }, 
+                {
+                    "code": "ITM 347", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/347", 
+                    "name": "Enterprise Security Operations and Management"
+                }, 
+                {
+                    "code": "ITM 350", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/350", 
+                    "name": "Healthcare Information Technology Governance and Strategic Planning"
+                }, 
+                {
+                    "code": "ITM 351", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/351", 
+                    "name": "Healthcare Information Technology Infrastructure"
+                }, 
+                {
+                    "code": "ITM 352", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/352", 
+                    "name": "Managing Projects in Healthcare"
+                }, 
+                {
+                    "code": "ITM 395", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/395", 
+                    "name": "Strategic Information Technology Planning, Organization, and Leadership"
+                }, 
+                {
+                    "code": "ITM 396", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/396", 
+                    "name": "Selected Topics in Information Technology"
+                }, 
+                {
+                    "code": "ITM 396G", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/396G", 
+                    "name": "Healthcare Informatics for Business Planning"
+                }, 
+                {
+                    "code": "ITM 399", 
+                    "course_url": "http://www.chegg.com/courses/ggu/ITM/399", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/ITM"
+        }, 
+        {
+            "abbr": "LIT", 
+            "courses": [
+                {
+                    "code": "LIT 150", 
+                    "course_url": "http://www.chegg.com/courses/ggu/LIT/150", 
+                    "name": "Business in Literature"
+                }, 
+                {
+                    "code": "LIT 160", 
+                    "course_url": "http://www.chegg.com/courses/ggu/LIT/160", 
+                    "name": "Business in Movies"
+                }, 
+                {
+                    "code": "LIT 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/LIT/198", 
+                    "name": "Special Topics in Literature"
+                }, 
+                {
+                    "code": "LIT 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/LIT/199", 
+                    "name": "Directed Study in Literature"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/LIT"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 10", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MATH/10", 
+                    "name": "Introductory Algebra"
+                }, 
+                {
+                    "code": "MATH 20", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MATH/20", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MATH 30", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MATH/30", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MATH 40", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MATH/40", 
+                    "name": "Statistics"
+                }, 
+                {
+                    "code": "MATH 100", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MATH/100", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MATH 104", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MATH/104", 
+                    "name": "Applied Regression Analysis"
+                }, 
+                {
+                    "code": "MATH 106", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MATH/106", 
+                    "name": "Quantitative Analysis for Management"
+                }, 
+                {
+                    "code": "MATH 110", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MATH/110", 
+                    "name": "Discrete Mathematics"
+                }, 
+                {
+                    "code": "MATH 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MATH/198", 
+                    "name": "Special Topics in Mathematics"
+                }, 
+                {
+                    "code": "MATH 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MATH/199", 
+                    "name": "Directed Study in Mathematics"
+                }, 
+                {
+                    "code": "MATH 240", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MATH/240", 
+                    "name": "Data Analysis for Managers"
+                }, 
+                {
+                    "code": "MATH 396", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MATH/396", 
+                    "name": "Selected Topics in Mathematics"
+                }, 
+                {
+                    "code": "MATH 399", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MATH/399", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/MATH"
+        }, 
+        {
+            "abbr": "MGT", 
+            "courses": [
+                {
+                    "code": "MGT 100", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/100", 
+                    "name": "The Manager as Communicator"
+                }, 
+                {
+                    "code": "MGT 140", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/140", 
+                    "name": "Management Principles"
+                }, 
+                {
+                    "code": "MGT 141", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/141", 
+                    "name": "Organizational Behavior"
+                }, 
+                {
+                    "code": "MGT 145", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/145", 
+                    "name": "Law of Contracts, Sales & Commercial Transactions"
+                }, 
+                {
+                    "code": "MGT 156", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/156", 
+                    "name": "Management Policy and Strategy"
+                }, 
+                {
+                    "code": "MGT 160", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/160", 
+                    "name": "Management and Leadership Strategy"
+                }, 
+                {
+                    "code": "MGT 173", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/173", 
+                    "name": "Human Resource Management"
+                }, 
+                {
+                    "code": "MGT 177", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/177", 
+                    "name": "Training Methods and Administration"
+                }, 
+                {
+                    "code": "MGT 179", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/179", 
+                    "name": "Introduction to International Business"
+                }, 
+                {
+                    "code": "MGT 188C", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/188C", 
+                    "name": "Doing Business in Western Europe"
+                }, 
+                {
+                    "code": "MGT 190", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/190", 
+                    "name": "Entrepreneurship and Small Business"
+                }, 
+                {
+                    "code": "MGT 197", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/197", 
+                    "name": "Internship: Management"
+                }, 
+                {
+                    "code": "MGT 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/198", 
+                    "name": "Special Topics in Management"
+                }, 
+                {
+                    "code": "MGT 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/199", 
+                    "name": "Directed Study in Management"
+                }, 
+                {
+                    "code": "MGT 204", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/204", 
+                    "name": "International Business and Strategy"
+                }, 
+                {
+                    "code": "MGT 210", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/210", 
+                    "name": "Management Theory and Communications"
+                }, 
+                {
+                    "code": "MGT 300", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/300", 
+                    "name": "Team Dynamics and Managerial Analysis"
+                }, 
+                {
+                    "code": "MGT 301", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/301", 
+                    "name": "Entrepreneurship"
+                }, 
+                {
+                    "code": "MGT 305", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/305", 
+                    "name": "Managing People in International Settings"
+                }, 
+                {
+                    "code": "MGT 306", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/306", 
+                    "name": "Legal Aspects of International Business Transactions"
+                }, 
+                {
+                    "code": "MGT 312", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/312", 
+                    "name": "Business Planning for Entrepreneurs"
+                }, 
+                {
+                    "code": "MGT 320", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/320", 
+                    "name": "Management Leadership: Theory and Practice"
+                }, 
+                {
+                    "code": "MGT 338", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/338", 
+                    "name": "The Manager as Communicator"
+                }, 
+                {
+                    "code": "MGT 341", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/341", 
+                    "name": "Benefits Administration"
+                }, 
+                {
+                    "code": "MGT 342", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/342", 
+                    "name": "Compensation Administration"
+                }, 
+                {
+                    "code": "MGT 343", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/343", 
+                    "name": "Labor Relations"
+                }, 
+                {
+                    "code": "MGT 344", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/344", 
+                    "name": "Training and Development"
+                }, 
+                {
+                    "code": "MGT 345", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/345", 
+                    "name": "Contextual Environment of Business"
+                }, 
+                {
+                    "code": "MGT 346", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/346", 
+                    "name": "Human Resource Management"
+                }, 
+                {
+                    "code": "MGT 348", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/348", 
+                    "name": "Negotiating in Business"
+                }, 
+                {
+                    "code": "MGT 353", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/353", 
+                    "name": "Organizational Development"
+                }, 
+                {
+                    "code": "MGT 356", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/356", 
+                    "name": "Management Development Methods and Strategies"
+                }, 
+                {
+                    "code": "MGT 358", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/358", 
+                    "name": "Employment Law"
+                }, 
+                {
+                    "code": "MGT 359", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/359", 
+                    "name": "Managing the Employment Function"
+                }, 
+                {
+                    "code": "MGT 362", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/362", 
+                    "name": "Developing Strategies for Competitive Advantage"
+                }, 
+                {
+                    "code": "MGT 364", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/364", 
+                    "name": "Technology Applications in Human Resource Management"
+                }, 
+                {
+                    "code": "MGT 370", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/370", 
+                    "name": "Strategic Human Resource Management"
+                }, 
+                {
+                    "code": "MGT 384", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/384", 
+                    "name": "Managing for Sustainability"
+                }, 
+                {
+                    "code": "MGT 396CR", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/396CR", 
+                    "name": "Conflict Resolution: Skills and Techniques"
+                }, 
+                {
+                    "code": "MGT 396EF", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/396EF", 
+                    "name": "Financial Management for Start Ups"
+                }, 
+                {
+                    "code": "MGT 396EM", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/396EM", 
+                    "name": "Entrepreneurial Marketing"
+                }, 
+                {
+                    "code": "MGT 396EP", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/396EP", 
+                    "name": "Adaptive Business Planning for Entrepreneurs"
+                }, 
+                {
+                    "code": "MGT 396GD", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/396GD", 
+                    "name": "Group Dynamics and Social Processes"
+                }, 
+                {
+                    "code": "MGT 396HT", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/396HT", 
+                    "name": "High Technology Start-Up: Business & Legal Issues"
+                }, 
+                {
+                    "code": "MGT 396IO", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/396IO", 
+                    "name": "Industrial/Organizational Psychology"
+                }, 
+                {
+                    "code": "MGT 396OB", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/396OB", 
+                    "name": "Organizational Behavior and Process"
+                }, 
+                {
+                    "code": "MGT 396PM", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/396PM", 
+                    "name": "Performance Management"
+                }, 
+                {
+                    "code": "MGT 396SI", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/396SI", 
+                    "name": "Executing Strategic Initiatives"
+                }, 
+                {
+                    "code": "MGT 396ST", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/396ST", 
+                    "name": "Structure, Theory and Ethics of Conflict Resolution"
+                }, 
+                {
+                    "code": "MGT 398", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/398", 
+                    "name": "Internship: Management"
+                }, 
+                {
+                    "code": "MGT 399", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MGT/399", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/MGT"
+        }, 
+        {
+            "abbr": "MKT", 
+            "courses": [
+                {
+                    "code": "MKT 100", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/100", 
+                    "name": "Principles of Marketing"
+                }, 
+                {
+                    "code": "MKT 103", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/103", 
+                    "name": "Marketing Research"
+                }, 
+                {
+                    "code": "MKT 120", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/120", 
+                    "name": "Business Marketing and Sales"
+                }, 
+                {
+                    "code": "MKT 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/198", 
+                    "name": "Special Topics in Marketing"
+                }, 
+                {
+                    "code": "MKT 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/199", 
+                    "name": "Directed Study in Marketing"
+                }, 
+                {
+                    "code": "MKT 300", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/300", 
+                    "name": "Marketing Management"
+                }, 
+                {
+                    "code": "MKT 305", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/305", 
+                    "name": "Integrated Marketing Communications"
+                }, 
+                {
+                    "code": "MKT 307", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/307", 
+                    "name": "Sales Promotion and Sponsorships"
+                }, 
+                {
+                    "code": "MKT 308", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/308", 
+                    "name": "Integrated Marketing Communications Strategy & Implementation"
+                }, 
+                {
+                    "code": "MKT 321", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/321", 
+                    "name": "Direct and Database Marketing"
+                }, 
+                {
+                    "code": "MKT 325", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/325", 
+                    "name": "Brand and Product Management"
+                }, 
+                {
+                    "code": "MKT 332", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/332", 
+                    "name": "Sales Management"
+                }, 
+                {
+                    "code": "MKT 334", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/334", 
+                    "name": "Services Marketing"
+                }, 
+                {
+                    "code": "MKT 336", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/336", 
+                    "name": "Marketing Research"
+                }, 
+                {
+                    "code": "MKT 337", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/337", 
+                    "name": "Marketing Strategy and Planning"
+                }, 
+                {
+                    "code": "MKT 338", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/338", 
+                    "name": "Consumer Behavior"
+                }, 
+                {
+                    "code": "MKT 339", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/339", 
+                    "name": "Advertising Strategy"
+                }, 
+                {
+                    "code": "MKT 352", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/352", 
+                    "name": "Digital Marketing and E-Commerce"
+                }, 
+                {
+                    "code": "MKT 396", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/396", 
+                    "name": "Selected Topics in Marketing"
+                }, 
+                {
+                    "code": "MKT 396U", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/396U", 
+                    "name": "Advanced Business Communications Skills"
+                }, 
+                {
+                    "code": "MKT 396W", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/396W", 
+                    "name": "Marketing and Communications for Sustainability"
+                }, 
+                {
+                    "code": "MKT 398", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/398", 
+                    "name": "Internship: Marketing"
+                }, 
+                {
+                    "code": "MKT 399", 
+                    "course_url": "http://www.chegg.com/courses/ggu/MKT/399", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/MKT"
+        }, 
+        {
+            "abbr": "OP", 
+            "courses": [
+                {
+                    "code": "OP 100", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/100", 
+                    "name": "Principles of Operations Management"
+                }, 
+                {
+                    "code": "OP 113", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/113", 
+                    "name": "Import/Export Fundamentals"
+                }, 
+                {
+                    "code": "OP 121", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/121", 
+                    "name": "Production Planning and Inventory Control"
+                }, 
+                {
+                    "code": "OP 197", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/197", 
+                    "name": "Internship: Operations Management"
+                }, 
+                {
+                    "code": "OP 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/198", 
+                    "name": "Selected Topics in Operations Management"
+                }, 
+                {
+                    "code": "OP 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/199", 
+                    "name": "Directed Study in Operations Management"
+                }, 
+                {
+                    "code": "OP 300", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/300", 
+                    "name": "Operations Management"
+                }, 
+                {
+                    "code": "OP 301", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/301", 
+                    "name": "Sustainable Business Operations"
+                }, 
+                {
+                    "code": "OP 303", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/303", 
+                    "name": "Managing Innovation and Technology"
+                }, 
+                {
+                    "code": "OP 305", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/305", 
+                    "name": "Supply Chain Management Technology and Information Systems"
+                }, 
+                {
+                    "code": "OP 323", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/323", 
+                    "name": "Supply Chain Logistics Management"
+                }, 
+                {
+                    "code": "OP 340", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/340", 
+                    "name": "Introduction to Project Management"
+                }, 
+                {
+                    "code": "OP 342", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/342", 
+                    "name": "Agile Management for Project Managers"
+                }, 
+                {
+                    "code": "OP 343", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/343", 
+                    "name": "Project Planning and Control"
+                }, 
+                {
+                    "code": "OP 344", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/344", 
+                    "name": "Project Governance: Program and Portfolio Management"
+                }, 
+                {
+                    "code": "OP 345", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/345", 
+                    "name": "Project Administration, Leadership and Team Dynamics"
+                }, 
+                {
+                    "code": "OP 347", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/347", 
+                    "name": "Project Management for IT Professionals"
+                }, 
+                {
+                    "code": "OP 349", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/349", 
+                    "name": "PMP Credential Exam Prep"
+                }, 
+                {
+                    "code": "OP 350", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/350", 
+                    "name": "Project Management in Construction"
+                }, 
+                {
+                    "code": "OP 396", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/396", 
+                    "name": "Selected Topics in Operations and Project Management"
+                }, 
+                {
+                    "code": "OP 399", 
+                    "course_url": "http://www.chegg.com/courses/ggu/OP/399", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/OP"
+        }, 
+        {
+            "abbr": "PAD", 
+            "courses": [
+                {
+                    "code": "PAD 100", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PAD/100", 
+                    "name": "Public Policy and Administration"
+                }, 
+                {
+                    "code": "PAD 106", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PAD/106", 
+                    "name": "Administrative Law and Justice"
+                }, 
+                {
+                    "code": "PAD 197", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PAD/197", 
+                    "name": "Internship: Public Administration"
+                }, 
+                {
+                    "code": "PAD 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PAD/198", 
+                    "name": "Special Topics in Public Administration"
+                }, 
+                {
+                    "code": "PAD 198A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PAD/198A", 
+                    "name": "California Politics and Policy Making"
+                }, 
+                {
+                    "code": "PAD 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PAD/199", 
+                    "name": "Directed Study in Public Administration"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/PAD"
+        }, 
+        {
+            "abbr": "PHIL", 
+            "courses": [
+                {
+                    "code": "PHIL 125", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PHIL/125", 
+                    "name": "Ethics in Personal and Professional Life"
+                }, 
+                {
+                    "code": "PHIL 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PHIL/198", 
+                    "name": "Special Topics in Philosophy"
+                }, 
+                {
+                    "code": "PHIL 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PHIL/199", 
+                    "name": "Directed Study in Philosophy"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/PHIL"
+        }, 
+        {
+            "abbr": "PLUS", 
+            "courses": [
+                {
+                    "code": "PLUS 200AC", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PLUS/200AC", 
+                    "name": "Academic Communication Skills"
+                }, 
+                {
+                    "code": "PLUS 200CS", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PLUS/200CS", 
+                    "name": "Case-Study Methods"
+                }, 
+                {
+                    "code": "PLUS 200CT", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PLUS/200CT", 
+                    "name": "Applied Critical Thinking"
+                }, 
+                {
+                    "code": "PLUS 200EE", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PLUS/200EE", 
+                    "name": "The Culture of the US Classroom"
+                }, 
+                {
+                    "code": "PLUS 205", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PLUS/205", 
+                    "name": "Master of Accountancy Gateway"
+                }, 
+                {
+                    "code": "PLUS 205CT", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PLUS/205CT", 
+                    "name": "Applied Critical Thinking"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/PLUS"
+        }, 
+        {
+            "abbr": "PMBA", 
+            "courses": [
+                {
+                    "code": "PMBA 300", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PMBA/300", 
+                    "name": "Managerial Analysis and Team Dynamics"
+                }, 
+                {
+                    "code": "PMBA 305", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PMBA/305", 
+                    "name": "Quantitative Aspects of Decision Making"
+                }, 
+                {
+                    "code": "PMBA 310", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PMBA/310", 
+                    "name": "Accounting for Decision Making"
+                }, 
+                {
+                    "code": "PMBA 315", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PMBA/315", 
+                    "name": "Managerial Economics"
+                }, 
+                {
+                    "code": "PMBA 320", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PMBA/320", 
+                    "name": "Financial Management"
+                }, 
+                {
+                    "code": "PMBA 325", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PMBA/325", 
+                    "name": "Management and Communications"
+                }, 
+                {
+                    "code": "PMBA 330", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PMBA/330", 
+                    "name": "Innovation and Technology Management"
+                }, 
+                {
+                    "code": "PMBA 335", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PMBA/335", 
+                    "name": "Marketing Management"
+                }, 
+                {
+                    "code": "PMBA 340", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PMBA/340", 
+                    "name": "Operations Management"
+                }, 
+                {
+                    "code": "PMBA 345", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PMBA/345", 
+                    "name": "Contextual Environment of Business"
+                }, 
+                {
+                    "code": "PMBA 350", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PMBA/350", 
+                    "name": "Developing Personal Leadership"
+                }, 
+                {
+                    "code": "PMBA 355", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PMBA/355", 
+                    "name": "Strategic Management"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/PMBA"
+        }, 
+        {
+            "abbr": "PR", 
+            "courses": [
+                {
+                    "code": "PR 320", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PR/320", 
+                    "name": "Contemporary Public Relations"
+                }, 
+                {
+                    "code": "PR 330A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PR/330A", 
+                    "name": "Writing for Public Relations and Marketing Communications"
+                }, 
+                {
+                    "code": "PR 396", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PR/396", 
+                    "name": "Selected Topics in Public Relations"
+                }, 
+                {
+                    "code": "PR 398", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PR/398", 
+                    "name": "Internship: Public Relations"
+                }, 
+                {
+                    "code": "PR 399", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PR/399", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/PR"
+        }, 
+        {
+            "abbr": "PSYCH", 
+            "courses": [
+                {
+                    "code": "PSYCH 1", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/1", 
+                    "name": "Principles of Psychology"
+                }, 
+                {
+                    "code": "PSYCH 100", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/100", 
+                    "name": "Theories of Personality"
+                }, 
+                {
+                    "code": "PSYCH 197", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/197", 
+                    "name": "Internship: Psychology"
+                }, 
+                {
+                    "code": "PSYCH 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/199", 
+                    "name": "Directed Study in Psychology"
+                }, 
+                {
+                    "code": "PSYCH 300", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/300", 
+                    "name": "Introduction to Applied Psychology"
+                }, 
+                {
+                    "code": "PSYCH 304", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/304", 
+                    "name": "Cross-cultural Aspects of Psychology"
+                }, 
+                {
+                    "code": "PSYCH 308", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/308", 
+                    "name": "Applied Psychological Research"
+                }, 
+                {
+                    "code": "PSYCH 320", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/320", 
+                    "name": "Therapeutic Communication and Counseling Skills"
+                }, 
+                {
+                    "code": "PSYCH 321", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/321", 
+                    "name": "Psychopathology"
+                }, 
+                {
+                    "code": "PSYCH 323", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/323", 
+                    "name": "Psychodynamic Models of Counseling"
+                }, 
+                {
+                    "code": "PSYCH 324", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/324", 
+                    "name": "Child/Adolescent Psychology, Assessment and Treatment"
+                }, 
+                {
+                    "code": "PSYCH 326", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/326", 
+                    "name": "Legal and Ethical Responsibility for Counselors"
+                }, 
+                {
+                    "code": "PSYCH 335", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/335", 
+                    "name": "Special Issues in the Treatment of Families"
+                }, 
+                {
+                    "code": "PSYCH 336", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/336", 
+                    "name": "Evidence-Based Practice Treatment"
+                }, 
+                {
+                    "code": "PSYCH 337", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/337", 
+                    "name": "Community Mental Health"
+                }, 
+                {
+                    "code": "PSYCH 339", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/339", 
+                    "name": "Cognitive-Behavioral and Short-Term Models of Counseling"
+                }, 
+                {
+                    "code": "PSYCH 341", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/341", 
+                    "name": "Organizational Behavior and Process"
+                }, 
+                {
+                    "code": "PSYCH 342", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/342", 
+                    "name": "Organizational Development, Assessment and Intervention"
+                }, 
+                {
+                    "code": "PSYCH 343", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/343", 
+                    "name": "Leadership and the Development of Managerial Excellence"
+                }, 
+                {
+                    "code": "PSYCH 352", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/352", 
+                    "name": "Structure, Theory and Ethics of Conflict Resolution"
+                }, 
+                {
+                    "code": "PSYCH 353", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/353", 
+                    "name": "Conflict Resolution: Skills and Techniques"
+                }, 
+                {
+                    "code": "PSYCH 394", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/394", 
+                    "name": "Practicum: Counseling Psychology"
+                }, 
+                {
+                    "code": "PSYCH 395", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/395", 
+                    "name": "Field Research in Industrial/Organizational Psychology"
+                }, 
+                {
+                    "code": "PSYCH 396", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/396", 
+                    "name": "Selected Topics in Applied Psychology"
+                }, 
+                {
+                    "code": "PSYCH 396D", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/396D", 
+                    "name": "Forensic Psychology"
+                }, 
+                {
+                    "code": "PSYCH 396F", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/396F", 
+                    "name": "Business & Leadership Coaching"
+                }, 
+                {
+                    "code": "PSYCH 396G", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/396G", 
+                    "name": "NEGOTIATING IN BUSINESS"
+                }, 
+                {
+                    "code": "PSYCH 396H", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/396H", 
+                    "name": "Progressive Issues in Organizational Psychology"
+                }, 
+                {
+                    "code": "PSYCH 396J", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/396J", 
+                    "name": "Special Topic Organizational Development"
+                }, 
+                {
+                    "code": "PSYCH 397", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/397", 
+                    "name": "Practicum in Conflict Resolution"
+                }, 
+                {
+                    "code": "PSYCH 399", 
+                    "course_url": "http://www.chegg.com/courses/ggu/PSYCH/399", 
+                    "name": "Directed Study in Applied Psychology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/PSYCH"
+        }, 
+        {
+            "abbr": "SCI", 
+            "courses": [
+                {
+                    "code": "SCI 125", 
+                    "course_url": "http://www.chegg.com/courses/ggu/SCI/125", 
+                    "name": "Science, Technology and Social Change"
+                }, 
+                {
+                    "code": "SCI 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/SCI/198", 
+                    "name": "Special Topics in Science"
+                }, 
+                {
+                    "code": "SCI 198F", 
+                    "course_url": "http://www.chegg.com/courses/ggu/SCI/198F", 
+                    "name": "Environmental Science"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/SCI"
+        }, 
+        {
+            "abbr": "SOSC", 
+            "courses": [
+                {
+                    "code": "SOSC 88", 
+                    "course_url": "http://www.chegg.com/courses/ggu/SOSC/88", 
+                    "name": "Leadership and New Social Demands"
+                }, 
+                {
+                    "code": "SOSC 198", 
+                    "course_url": "http://www.chegg.com/courses/ggu/SOSC/198", 
+                    "name": "Special Topics in Social Sciences"
+                }, 
+                {
+                    "code": "SOSC 198A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/SOSC/198A", 
+                    "name": "International Business and Politics"
+                }, 
+                {
+                    "code": "SOSC 199", 
+                    "course_url": "http://www.chegg.com/courses/ggu/SOSC/199", 
+                    "name": "Directed Study in Social Sciences"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/SOSC"
+        }, 
+        {
+            "abbr": "TA", 
+            "courses": [
+                {
+                    "code": "TA 302", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/302", 
+                    "name": "Accountants' Professional Responsibilities and Ethics in Tax Practice"
+                }, 
+                {
+                    "code": "TA 318", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/318", 
+                    "name": "Advanced Federal Income Taxation"
+                }, 
+                {
+                    "code": "TA 319", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/319", 
+                    "name": "Federal Tax Procedure"
+                }, 
+                {
+                    "code": "TA 320", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/320", 
+                    "name": "Multistate Taxation of Business Entities"
+                }, 
+                {
+                    "code": "TA 321", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/321", 
+                    "name": "Principles of International Taxation"
+                }, 
+                {
+                    "code": "TA 322A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/322A", 
+                    "name": "Federal Income Taxation of Corporations and Shareholders I"
+                }, 
+                {
+                    "code": "TA 322B", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/322B", 
+                    "name": "Federal Income Taxation of Corporations and Shareholders II"
+                }, 
+                {
+                    "code": "TA 325", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/325", 
+                    "name": "Estate and Gift Taxation"
+                }, 
+                {
+                    "code": "TA 326", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/326", 
+                    "name": "Real Estate Taxation"
+                }, 
+                {
+                    "code": "TA 328", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/328", 
+                    "name": "Federal Income Taxation of Partners and Partnerships"
+                }, 
+                {
+                    "code": "TA 329", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/329", 
+                    "name": "Tax Research and Decision Making"
+                }, 
+                {
+                    "code": "TA 330", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/330", 
+                    "name": "Property Transactions"
+                }, 
+                {
+                    "code": "TA 331", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/331", 
+                    "name": "Taxation of Exempt Organizations"
+                }, 
+                {
+                    "code": "TA 332", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/332", 
+                    "name": "STATE TAX RESEARCH, PRACTICE & PROCEDURE"
+                }, 
+                {
+                    "code": "TA 334", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/334", 
+                    "name": "Estate Planning"
+                }, 
+                {
+                    "code": "TA 337", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/337", 
+                    "name": "Individual Retirement Plans and Distributions"
+                }, 
+                {
+                    "code": "TA 338", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/338", 
+                    "name": "Tax Timing"
+                }, 
+                {
+                    "code": "TA 344", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/344", 
+                    "name": "Federal Income Taxation of Trusts and Estates"
+                }, 
+                {
+                    "code": "TA 348", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/348", 
+                    "name": "California Sales and Use Taxation"
+                }, 
+                {
+                    "code": "TA 350A", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/350A", 
+                    "name": "Taxation of Foreign Persons with US Activities"
+                }, 
+                {
+                    "code": "TA 350B", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/350B", 
+                    "name": "Taxation of US Persons with Foreign Activities"
+                }, 
+                {
+                    "code": "TA 350C", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/350C", 
+                    "name": "Income Tax Treaties"
+                }, 
+                {
+                    "code": "TA 350D", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/350D", 
+                    "name": "Transfer Pricing"
+                }, 
+                {
+                    "code": "TA 350E", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/350E", 
+                    "name": "International Mergers, Acquisitions and Joint Venture"
+                }, 
+                {
+                    "code": "TA 352", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/352", 
+                    "name": "Taxation of Electronic Commerce"
+                }, 
+                {
+                    "code": "TA 356", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/356", 
+                    "name": "Limited Liability Companies and S Corporations: A Choice of Entity"
+                }, 
+                {
+                    "code": "TA 361", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/361", 
+                    "name": "Tax Aspects Bankruptcy and Insolvency"
+                }, 
+                {
+                    "code": "TA 362", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/362", 
+                    "name": "Accounting for Income Taxes"
+                }, 
+                {
+                    "code": "TA 363", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/363", 
+                    "name": "Taxation of Financial Instruments"
+                }, 
+                {
+                    "code": "TA 365", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/365", 
+                    "name": "Employee Benefits and Compensation"
+                }, 
+                {
+                    "code": "TA 396", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/396", 
+                    "name": "Selected Topics in Taxation"
+                }, 
+                {
+                    "code": "TA 396C", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/396C", 
+                    "name": "International Tax Compliance"
+                }, 
+                {
+                    "code": "TA 396EC", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/396EC", 
+                    "name": "Taxation of Employee Compensation Arrangements, Equity Compensation and Health Benefits"
+                }, 
+                {
+                    "code": "TA 396EL", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/396EL", 
+                    "name": "Exploring Business Leadership"
+                }, 
+                {
+                    "code": "TA 396K", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/396K", 
+                    "name": "Tax Accounting for Vineyards & Wineries"
+                }, 
+                {
+                    "code": "TA 396LS", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/396LS", 
+                    "name": "Business Leadership Speaker Series"
+                }, 
+                {
+                    "code": "TA 396Q", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/396Q", 
+                    "name": "INTERNATIONAL ESTATE PLANNING"
+                }, 
+                {
+                    "code": "TA 396SC", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/396SC", 
+                    "name": "S Corporation Taxation"
+                }, 
+                {
+                    "code": "TA 396W", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/396W", 
+                    "name": "Multistate Sales and Use Taxes"
+                }, 
+                {
+                    "code": "TA 396Z", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/396Z", 
+                    "name": "Taxation of IRAs and Qualified Retirement Plans"
+                }, 
+                {
+                    "code": "TA 399", 
+                    "course_url": "http://www.chegg.com/courses/ggu/TA/399", 
+                    "name": "Directed Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/TA"
+        }, 
+        {
+            "abbr": "UGP", 
+            "courses": [
+                {
+                    "code": "UGP 100", 
+                    "course_url": "http://www.chegg.com/courses/ggu/UGP/100", 
+                    "name": "Gateway to Success"
+                }, 
+                {
+                    "code": "UGP 150", 
+                    "course_url": "http://www.chegg.com/courses/ggu/UGP/150", 
+                    "name": "Learning Counts"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ggu/UGP"
+        }
+    ], 
+    "name": "ggu"
+}

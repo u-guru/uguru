@@ -1,0 +1,4417 @@
+{
+    "all_stats": {
+        "num_courses": 741, 
+        "num_departments": 101
+    }, 
+    "departments": [
+        {
+            "abbr": "ACC", 
+            "courses": [
+                {
+                    "code": "ACC 111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ACC/111", 
+                    "name": "Principles of Accounting"
+                }, 
+                {
+                    "code": "ACC 112", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ACC/112", 
+                    "name": "Principles of Accounting"
+                }, 
+                {
+                    "code": "ACC 117", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ACC/117", 
+                    "name": "Principles of Managerial Accounting"
+                }, 
+                {
+                    "code": "ACC 125", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ACC/125", 
+                    "name": "Accounting Computer Applications"
+                }, 
+                {
+                    "code": "ACC G111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ACC/G111", 
+                    "name": "Prin of Accounting I"
+                }, 
+                {
+                    "code": "ACC G112", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ACC/G112", 
+                    "name": "Prin of Accountng II"
+                }, 
+                {
+                    "code": "ACC G117", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ACC/G117", 
+                    "name": "Prin of Managerial Acctg"
+                }, 
+                {
+                    "code": "ACC G125", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ACC/G125", 
+                    "name": "Acct Computer Applications I"
+                }, 
+                {
+                    "code": "ACC G241", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ACC/G241", 
+                    "name": "Federal Taxes I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/ACC"
+        }, 
+        {
+            "abbr": "ACC*", 
+            "courses": [
+                {
+                    "code": "ACC* G111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ACC%2A/G111", 
+                    "name": "Prin of Accounting I"
+                }, 
+                {
+                    "code": "ACC* G112", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ACC%2A/G112", 
+                    "name": "Prin of Accountng II"
+                }, 
+                {
+                    "code": "ACC* G117", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ACC%2A/G117", 
+                    "name": "Prin of Managerial Acctg"
+                }, 
+                {
+                    "code": "ACC* G125", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ACC%2A/G125", 
+                    "name": "Acct Computer Applications I"
+                }, 
+                {
+                    "code": "ACC* G241", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ACC%2A/G241", 
+                    "name": "Federal Taxes I"
+                }, 
+                {
+                    "code": "ACC* G271", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ACC%2A/G271", 
+                    "name": "Intermediate Accounting I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/ACC%2A"
+        }, 
+        {
+            "abbr": "ANT", 
+            "courses": [
+                {
+                    "code": "ANT 105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ANT/105", 
+                    "name": "Introduction to Cultural Anthropology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/ANT"
+        }, 
+        {
+            "abbr": "ANT*", 
+            "courses": [
+                {
+                    "code": "ANT* G105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ANT%2A/G105", 
+                    "name": "Intro to Cultural Anthro"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/ANT%2A"
+        }, 
+        {
+            "abbr": "AOP", 
+            "courses": [
+                {
+                    "code": "AOP G5032", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/AOP/G5032", 
+                    "name": "Professional Comm. Certificate"
+                }, 
+                {
+                    "code": "AOP G5034", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/AOP/G5034", 
+                    "name": "Office Administrator Cert"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/AOP"
+        }, 
+        {
+            "abbr": "ARC", 
+            "courses": [
+                {
+                    "code": "ARC 102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC/102", 
+                    "name": "Architecture of the World Hessmer"
+                }, 
+                {
+                    "code": "ARC 203", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC/203", 
+                    "name": "Architecture Drafting II"
+                }, 
+                {
+                    "code": "ARC 203L", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC/203L", 
+                    "name": "Architecture Drafting II Lab"
+                }, 
+                {
+                    "code": "ARC 207", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC/207", 
+                    "name": "Architecture Design II-Detailing"
+                }, 
+                {
+                    "code": "ARC 207L", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC/207L", 
+                    "name": "Architecture Design II-Detailing Lab"
+                }, 
+                {
+                    "code": "ARC 227", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC/227", 
+                    "name": "Codes & Ordinances"
+                }, 
+                {
+                    "code": "ARC 229", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC/229", 
+                    "name": "Structures"
+                }, 
+                {
+                    "code": "ARC G103", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC/G103", 
+                    "name": "Graphics I"
+                }, 
+                {
+                    "code": "ARC G103L", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC/G103L", 
+                    "name": "Graphics I Lab"
+                }, 
+                {
+                    "code": "ARC G108", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC/G108", 
+                    "name": "Building Materials"
+                }, 
+                {
+                    "code": "ARC G116", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC/G116", 
+                    "name": "Arch Drafting I"
+                }, 
+                {
+                    "code": "ARC G116L", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC/G116L", 
+                    "name": "Arch Drafting I Lab"
+                }, 
+                {
+                    "code": "ARC G229", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC/G229", 
+                    "name": "Structures"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/ARC"
+        }, 
+        {
+            "abbr": "ARC*", 
+            "courses": [
+                {
+                    "code": "ARC* G102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC%2A/G102", 
+                    "name": "Architecture of the World"
+                }, 
+                {
+                    "code": "ARC* G103", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC%2A/G103", 
+                    "name": "Graphics I"
+                }, 
+                {
+                    "code": "ARC* G103L", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC%2A/G103L", 
+                    "name": "Graphics I Lab"
+                }, 
+                {
+                    "code": "ARC* G108", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC%2A/G108", 
+                    "name": "Building Materials"
+                }, 
+                {
+                    "code": "ARC* G116", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC%2A/G116", 
+                    "name": "Arch Drafting I"
+                }, 
+                {
+                    "code": "ARC* G116L", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC%2A/G116L", 
+                    "name": "Arch Drafting I Lab"
+                }, 
+                {
+                    "code": "ARC* G203", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC%2A/G203", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ARC* G205", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC%2A/G205", 
+                    "name": "Architectural Designing I"
+                }, 
+                {
+                    "code": "ARC* G205L", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC%2A/G205L", 
+                    "name": "Architectural Designing I Lab"
+                }, 
+                {
+                    "code": "ARC* G227", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC%2A/G227", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ARC* G229", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC%2A/G229", 
+                    "name": "Structures"
+                }, 
+                {
+                    "code": "ARC* G240", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ARC%2A/G240", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/ARC%2A"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 100", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART/100", 
+                    "name": "Art Appreciation"
+                }, 
+                {
+                    "code": "ART 101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART/101", 
+                    "name": "Art History I"
+                }, 
+                {
+                    "code": "ART 111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART/111", 
+                    "name": "Drawing I"
+                }, 
+                {
+                    "code": "ART 112", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART/112", 
+                    "name": "Drawing II"
+                }, 
+                {
+                    "code": "ART 151", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART/151", 
+                    "name": "Painting I"
+                }, 
+                {
+                    "code": "ART 202", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART/202", 
+                    "name": "Ethnic Art in the U"
+                }, 
+                {
+                    "code": "ART 208", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART/208", 
+                    "name": "Caribbean Art and Culture"
+                }, 
+                {
+                    "code": "ART G100", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART/G100", 
+                    "name": "Art Appreciation"
+                }, 
+                {
+                    "code": "ART G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART/G101", 
+                    "name": "Art History I"
+                }, 
+                {
+                    "code": "ART G111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART/G111", 
+                    "name": "Drawing I"
+                }, 
+                {
+                    "code": "ART G161", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART/G161", 
+                    "name": "Ceramics I"
+                }, 
+                {
+                    "code": "ART G208", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART/G208", 
+                    "name": "Caribbean Art/Culture"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/ART"
+        }, 
+        {
+            "abbr": "ART*", 
+            "courses": [
+                {
+                    "code": "ART* G100", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART%2A/G100", 
+                    "name": "Art Appreciation"
+                }, 
+                {
+                    "code": "ART* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART%2A/G101", 
+                    "name": "Art History I"
+                }, 
+                {
+                    "code": "ART* G111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART%2A/G111", 
+                    "name": "Drawing I"
+                }, 
+                {
+                    "code": "ART* G161", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART%2A/G161", 
+                    "name": "Ceramics I"
+                }, 
+                {
+                    "code": "ART* G208", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART%2A/G208", 
+                    "name": "Caribbean Art/Culture"
+                }, 
+                {
+                    "code": "ART* G276", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ART%2A/G276", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/ART%2A"
+        }, 
+        {
+            "abbr": "BBG", 
+            "courses": [
+                {
+                    "code": "BBG 210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BBG/210", 
+                    "name": "Business Communication"
+                }, 
+                {
+                    "code": "BBG 231", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BBG/231", 
+                    "name": "Business Law I"
+                }, 
+                {
+                    "code": "BBG 234", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BBG/234", 
+                    "name": "Legal Environment of Business"
+                }, 
+                {
+                    "code": "BBG 294", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BBG/294", 
+                    "name": "Business Internship"
+                }, 
+                {
+                    "code": "BBG G210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BBG/G210", 
+                    "name": "Bus Communication"
+                }, 
+                {
+                    "code": "BBG G231", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BBG/G231", 
+                    "name": "Business Law I"
+                }, 
+                {
+                    "code": "BBG G234", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BBG/G234", 
+                    "name": "Legal Env of Business"
+                }, 
+                {
+                    "code": "BBG G294", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BBG/G294", 
+                    "name": "Business Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/BBG"
+        }, 
+        {
+            "abbr": "BBG*", 
+            "courses": [
+                {
+                    "code": "BBG* G210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BBG%2A/G210", 
+                    "name": "Bus Communication"
+                }, 
+                {
+                    "code": "BBG* G231", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BBG%2A/G231", 
+                    "name": "Business Law I"
+                }, 
+                {
+                    "code": "BBG* G234", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BBG%2A/G234", 
+                    "name": "Legal Environment of Bus"
+                }, 
+                {
+                    "code": "BBG* G294", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BBG%2A/G294", 
+                    "name": "Business Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/BBG%2A"
+        }, 
+        {
+            "abbr": "BES", 
+            "courses": [
+                {
+                    "code": "BES 118", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BES/118", 
+                    "name": "Small Business Management"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/BES"
+        }, 
+        {
+            "abbr": "BES*", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/BES%2A"
+        }, 
+        {
+            "abbr": "BFN", 
+            "courses": [
+                {
+                    "code": "BFN 107", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BFN/107", 
+                    "name": "Managerial Finance"
+                }, 
+                {
+                    "code": "BFN G107", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BFN/G107", 
+                    "name": "Managerial Finance"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/BFN"
+        }, 
+        {
+            "abbr": "BFN*", 
+            "courses": [
+                {
+                    "code": "BFN* G107", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BFN%2A/G107", 
+                    "name": "Managerial Finance"
+                }, 
+                {
+                    "code": "BFN* G126", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BFN%2A/G126", 
+                    "name": "Principles of Insurance"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/BFN%2A"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO/105", 
+                    "name": "Introduction to Biology- Lec"
+                }, 
+                {
+                    "code": "BIO 111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO/111", 
+                    "name": "Introduction to Nutrition"
+                }, 
+                {
+                    "code": "BIO 115", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO/115", 
+                    "name": "Human Biology- Lec"
+                }, 
+                {
+                    "code": "BIO 211", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO/211", 
+                    "name": "Anatomy/ Physiology- Lec"
+                }, 
+                {
+                    "code": "BIO 212", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO/212", 
+                    "name": "Anatomy/ Physiology II- Lec"
+                }, 
+                {
+                    "code": "BIO 235", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO/235", 
+                    "name": "Microbiology Lab"
+                }, 
+                {
+                    "code": "BIO 260", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO/260", 
+                    "name": "Genetics Rakoczy"
+                }, 
+                {
+                    "code": "BIO G100", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO/G100", 
+                    "name": "Basic Biology"
+                }, 
+                {
+                    "code": "BIO G105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO/G105", 
+                    "name": "Intro to Bio-Lec 1"
+                }, 
+                {
+                    "code": "BIO G111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO/G111", 
+                    "name": "Intro to Nutrition"
+                }, 
+                {
+                    "code": "BIO G115", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO/G115", 
+                    "name": "Human Bio-Lec 1"
+                }, 
+                {
+                    "code": "BIO G121", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO/G121", 
+                    "name": "Gen'l Bio I-Lec 1"
+                }, 
+                {
+                    "code": "BIO G211", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO/G211", 
+                    "name": "Anat & Phys I-Lec 1"
+                }, 
+                {
+                    "code": "BIO G212", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO/G212", 
+                    "name": "Anat & Phys II-Lec 1"
+                }, 
+                {
+                    "code": "BIO G235", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO/G235", 
+                    "name": "Microbiology-Lec 1"
+                }, 
+                {
+                    "code": "BIO G260", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO/G260", 
+                    "name": "Prin of Genetics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/BIO"
+        }, 
+        {
+            "abbr": "BIO*", 
+            "courses": [
+                {
+                    "code": "BIO* G100", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO%2A/G100", 
+                    "name": "Basic Biology"
+                }, 
+                {
+                    "code": "BIO* G105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO%2A/G105", 
+                    "name": "Intro to Bio-Lab 8"
+                }, 
+                {
+                    "code": "BIO* G111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO%2A/G111", 
+                    "name": "Intro to Nutrition"
+                }, 
+                {
+                    "code": "BIO* G115", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO%2A/G115", 
+                    "name": "Human Bio-Lab 2"
+                }, 
+                {
+                    "code": "BIO* G121", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO%2A/G121", 
+                    "name": "Gen'l Bio I-Lab 2"
+                }, 
+                {
+                    "code": "BIO* G122", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO%2A/G122", 
+                    "name": "Gen'l Bio II-Lab"
+                }, 
+                {
+                    "code": "BIO* G211", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO%2A/G211", 
+                    "name": "Anat & Phys I-Lab 6"
+                }, 
+                {
+                    "code": "BIO* G212", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO%2A/G212", 
+                    "name": "Anat & Phys II-Lab 5"
+                }, 
+                {
+                    "code": "BIO* G235", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO%2A/G235", 
+                    "name": "Microbiology-Lab 4"
+                }, 
+                {
+                    "code": "BIO* G260", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIO%2A/G260", 
+                    "name": "Prin of Genetics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/BIO%2A"
+        }, 
+        {
+            "abbr": "BIS", 
+            "courses": [
+                {
+                    "code": "BIS G5000", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIS/G5000", 
+                    "name": "Small Business Mgmt Cert"
+                }, 
+                {
+                    "code": "BIS G5040", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIS/G5040", 
+                    "name": "Strategic Communications"
+                }, 
+                {
+                    "code": "BIS G5063", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIS/G5063", 
+                    "name": "Consider Starting Own Bus(SBA)"
+                }, 
+                {
+                    "code": "BIS G5064", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BIS/G5064", 
+                    "name": "Financing Your Business (SBA)"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/BIS"
+        }, 
+        {
+            "abbr": "BMG", 
+            "courses": [
+                {
+                    "code": "BMG 202", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BMG/202", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "BMG 210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BMG/210", 
+                    "name": "Organizational Behavior"
+                }, 
+                {
+                    "code": "BMG 220", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BMG/220", 
+                    "name": "Human Resources Management"
+                }, 
+                {
+                    "code": "BMG G202", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BMG/G202", 
+                    "name": "Prin of Management"
+                }, 
+                {
+                    "code": "BMG G210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BMG/G210", 
+                    "name": "Organizational Behavior"
+                }, 
+                {
+                    "code": "BMG G220", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BMG/G220", 
+                    "name": "Human Resources Mgmt"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/BMG"
+        }, 
+        {
+            "abbr": "BMG*", 
+            "courses": [
+                {
+                    "code": "BMG* G202", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BMG%2A/G202", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "BMG* G210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BMG%2A/G210", 
+                    "name": "Organizational Behavior"
+                }, 
+                {
+                    "code": "BMG* G220", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BMG%2A/G220", 
+                    "name": "Human Resources Mgmt"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/BMG%2A"
+        }, 
+        {
+            "abbr": "BMK", 
+            "courses": [
+                {
+                    "code": "BMK 201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BMK/201", 
+                    "name": "Principles of Marketing"
+                }, 
+                {
+                    "code": "BMK G201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BMK/G201", 
+                    "name": "Principles of Marketing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/BMK"
+        }, 
+        {
+            "abbr": "BMK*", 
+            "courses": [
+                {
+                    "code": "BMK* G201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BMK%2A/G201", 
+                    "name": "Principles of Marketing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/BMK%2A"
+        }, 
+        {
+            "abbr": "BOT", 
+            "courses": [
+                {
+                    "code": "BOT 201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BOT/201", 
+                    "name": "Business Communication"
+                }, 
+                {
+                    "code": "BOT G180", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BOT/G180", 
+                    "name": "Medical Terminology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/BOT"
+        }, 
+        {
+            "abbr": "BOT*", 
+            "courses": [
+                {
+                    "code": "BOT* G180", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/BOT%2A/G180", 
+                    "name": "Medical Terminology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/BOT%2A"
+        }, 
+        {
+            "abbr": "CAD", 
+            "courses": [
+                {
+                    "code": "CAD 112", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CAD/112", 
+                    "name": "CAD-Architectural"
+                }, 
+                {
+                    "code": "CAD 113", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CAD/113", 
+                    "name": "CAD-Architectural"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/CAD"
+        }, 
+        {
+            "abbr": "CAD*", 
+            "courses": [
+                {
+                    "code": "CAD* G112", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CAD%2A/G112", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/CAD%2A"
+        }, 
+        {
+            "abbr": "CENR", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/CENR"
+        }, 
+        {
+            "abbr": "CHE", 
+            "courses": [
+                {
+                    "code": "CHE 111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CHE/111", 
+                    "name": "Concepts of Chemistry- Lec"
+                }, 
+                {
+                    "code": "CHE 121", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CHE/121", 
+                    "name": "General Chemistry I- Lec"
+                }, 
+                {
+                    "code": "CHE 122", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CHE/122", 
+                    "name": "General Chemistry II- Lec"
+                }, 
+                {
+                    "code": "CHE G111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CHE/G111", 
+                    "name": "Concep of Chem-Lec 1"
+                }, 
+                {
+                    "code": "CHE G121", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CHE/G121", 
+                    "name": "Gen'l Chem I-Lec 1"
+                }, 
+                {
+                    "code": "CHE G122", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CHE/G122", 
+                    "name": "Gen'l Chem II-Lec 1"
+                }, 
+                {
+                    "code": "CHE G213", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CHE/G213", 
+                    "name": "Organic Chem I-Lec"
+                }, 
+                {
+                    "code": "CHE G213L", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CHE/G213L", 
+                    "name": "Organic Chem I-Lab"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/CHE"
+        }, 
+        {
+            "abbr": "CHE*", 
+            "courses": [
+                {
+                    "code": "CHE* G111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CHE%2A/G111", 
+                    "name": "Concep of Chem-Lab 8"
+                }, 
+                {
+                    "code": "CHE* G121", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CHE%2A/G121", 
+                    "name": "Gen'l Chem I-Lab 2"
+                }, 
+                {
+                    "code": "CHE* G122", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CHE%2A/G122", 
+                    "name": "Gen'l Chem II-Lab"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/CHE%2A"
+        }, 
+        {
+            "abbr": "CJS", 
+            "courses": [
+                {
+                    "code": "CJS 101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS/101", 
+                    "name": "Introduction to Criminal Justice"
+                }, 
+                {
+                    "code": "CJS 102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS/102", 
+                    "name": "Corrections"
+                }, 
+                {
+                    "code": "CJS 120", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS/120", 
+                    "name": "Police & the Community"
+                }, 
+                {
+                    "code": "CJS 210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS/210", 
+                    "name": "Constitutional Law"
+                }, 
+                {
+                    "code": "CJS 211", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS/211", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CJS 280", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS/280", 
+                    "name": "Victimology"
+                }, 
+                {
+                    "code": "CJS G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS/G101", 
+                    "name": "Intro To Crim Justice"
+                }, 
+                {
+                    "code": "CJS G102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS/G102", 
+                    "name": "Intro to Corrections"
+                }, 
+                {
+                    "code": "CJS G120", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS/G120", 
+                    "name": "Police & Community"
+                }, 
+                {
+                    "code": "CJS G201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS/G201", 
+                    "name": "Criminology"
+                }, 
+                {
+                    "code": "CJS G210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS/G210", 
+                    "name": "Constitutional Law"
+                }, 
+                {
+                    "code": "CJS G211", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS/G211", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CJS G225", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS/G225", 
+                    "name": "Forensic Science"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/CJS"
+        }, 
+        {
+            "abbr": "CJS*", 
+            "courses": [
+                {
+                    "code": "CJS* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS%2A/G101", 
+                    "name": "Intro To Crim Justice"
+                }, 
+                {
+                    "code": "CJS* G102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS%2A/G102", 
+                    "name": "Intro to Corrections"
+                }, 
+                {
+                    "code": "CJS* G120", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS%2A/G120", 
+                    "name": "Police & Community"
+                }, 
+                {
+                    "code": "CJS* G201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS%2A/G201", 
+                    "name": "Criminology"
+                }, 
+                {
+                    "code": "CJS* G210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS%2A/G210", 
+                    "name": "Constitutional Law"
+                }, 
+                {
+                    "code": "CJS* G211", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS%2A/G211", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CJS* G225", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS%2A/G225", 
+                    "name": "Forensic Science"
+                }, 
+                {
+                    "code": "CJS* G280", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CJS%2A/G280", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/CJS%2A"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM/101", 
+                    "name": "Introduction to Mass Communication"
+                }, 
+                {
+                    "code": "COM 105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM/105", 
+                    "name": "Introduction to Visual Communication"
+                }, 
+                {
+                    "code": "COM 150", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM/150", 
+                    "name": "Basic Photography"
+                }, 
+                {
+                    "code": "COM 154", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM/154", 
+                    "name": "Film Study and Appreciation"
+                }, 
+                {
+                    "code": "COM 158", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM/158", 
+                    "name": "Introduction to Digital Photography"
+                }, 
+                {
+                    "code": "COM 173", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM/173", 
+                    "name": "Public Speaking"
+                }, 
+                {
+                    "code": "COM 241", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM/241", 
+                    "name": "Television Production"
+                }, 
+                {
+                    "code": "COM 295", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM/295", 
+                    "name": "Internship I"
+                }, 
+                {
+                    "code": "COM 299", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM/299", 
+                    "name": "Independent Study"
+                }, 
+                {
+                    "code": "COM G105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM/G105", 
+                    "name": "Intro to Visual Communicat"
+                }, 
+                {
+                    "code": "COM G154", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM/G154", 
+                    "name": "Film Study and Appreciation"
+                }, 
+                {
+                    "code": "COM G158", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM/G158", 
+                    "name": "Introd. to Digital Photography"
+                }, 
+                {
+                    "code": "COM G173", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM/G173", 
+                    "name": "Public Speaking"
+                }, 
+                {
+                    "code": "COM G242", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM/G242", 
+                    "name": "Advanced Broadcast/TV Producti"
+                }, 
+                {
+                    "code": "COM G295", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM/G295", 
+                    "name": "Internship I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/COM"
+        }, 
+        {
+            "abbr": "COM*", 
+            "courses": [
+                {
+                    "code": "COM* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM%2A/G101", 
+                    "name": "Introd. to Mass Communication"
+                }, 
+                {
+                    "code": "COM* G105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM%2A/G105", 
+                    "name": "LC: Intro to Visual Communicat"
+                }, 
+                {
+                    "code": "COM* G113", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM%2A/G113", 
+                    "name": "Social Media in Contem Society"
+                }, 
+                {
+                    "code": "COM* G121", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM%2A/G121", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM* G154", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM%2A/G154", 
+                    "name": "Film Study and Appreciation"
+                }, 
+                {
+                    "code": "COM* G158", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM%2A/G158", 
+                    "name": "Introd. to Digital Photography"
+                }, 
+                {
+                    "code": "COM* G173", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM%2A/G173", 
+                    "name": "Public Speaking"
+                }, 
+                {
+                    "code": "COM* G225", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM%2A/G225", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM* G241", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM%2A/G241", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM* G242", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM%2A/G242", 
+                    "name": "Advanced Broadcast/TV Producti"
+                }, 
+                {
+                    "code": "COM* G275", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM%2A/G275", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COM* G295", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COM%2A/G295", 
+                    "name": "Internship I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/COM%2A"
+        }, 
+        {
+            "abbr": "COMP", 
+            "courses": [
+                {
+                    "code": "COMP G5033", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5033", 
+                    "name": "Intro. to Web Page Design"
+                }, 
+                {
+                    "code": "COMP G5300", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5300", 
+                    "name": "Excel 2007 Intro"
+                }, 
+                {
+                    "code": "COMP G5301", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5301", 
+                    "name": "Access 2007 Intro"
+                }, 
+                {
+                    "code": "COMP G5302", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5302", 
+                    "name": "Access 2007 Intermed."
+                }, 
+                {
+                    "code": "COMP G5329", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5329", 
+                    "name": "Word 2007 Bundle"
+                }, 
+                {
+                    "code": "COMP G5342", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5342", 
+                    "name": "Social Media as Marketing Tool"
+                }, 
+                {
+                    "code": "COMP G5346", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5346", 
+                    "name": "Web 2.0"
+                }, 
+                {
+                    "code": "COMP G5357", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5357", 
+                    "name": "MS Excel '07 III (Advanced)"
+                }, 
+                {
+                    "code": "COMP G5358", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5358", 
+                    "name": "Access 2007 Advanced"
+                }, 
+                {
+                    "code": "COMP G5359", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5359", 
+                    "name": "PowerPoint 2007 Introduction"
+                }, 
+                {
+                    "code": "COMP G5363", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5363", 
+                    "name": "Adobe Creative Suit Bootcamp"
+                }, 
+                {
+                    "code": "COMP G5364", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5364", 
+                    "name": "Adobe Creative Suit BC for Web"
+                }, 
+                {
+                    "code": "COMP G5365", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5365", 
+                    "name": "Adobe Dreamweaver 5 New Feat."
+                }, 
+                {
+                    "code": "COMP G5366", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5366", 
+                    "name": "Adobe Dreamweaver Web Develop."
+                }, 
+                {
+                    "code": "COMP G5367", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5367", 
+                    "name": "Adobe Dreamweaver Web Dev. I"
+                }, 
+                {
+                    "code": "COMP G5368", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5368", 
+                    "name": "Adobe Flash CS5 New Features"
+                }, 
+                {
+                    "code": "COMP G5369", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5369", 
+                    "name": "Adobe Flash Professional"
+                }, 
+                {
+                    "code": "COMP G5371", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5371", 
+                    "name": "Adobe Flash Bootcamp"
+                }, 
+                {
+                    "code": "COMP G5377", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5377", 
+                    "name": "Adobe Illustrator CS5 New Fea."
+                }, 
+                {
+                    "code": "COMP G5378", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5378", 
+                    "name": "Adobe Illustrator Bootcamp"
+                }, 
+                {
+                    "code": "COMP G5379", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5379", 
+                    "name": "Adobe InDesign CS5 New Feat."
+                }, 
+                {
+                    "code": "COMP G5381", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5381", 
+                    "name": "Adobe InDesign Advanced"
+                }, 
+                {
+                    "code": "COMP G5383", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5383", 
+                    "name": "Adobe InDesign Bootcamp"
+                }, 
+                {
+                    "code": "COMP G5385", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5385", 
+                    "name": "Adobe Photoshop CS5 New Fea."
+                }, 
+                {
+                    "code": "COMP G5386", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5386", 
+                    "name": "Adobe Photoshop"
+                }, 
+                {
+                    "code": "COMP G5387", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5387", 
+                    "name": "Adobe Photoshop Advanced"
+                }, 
+                {
+                    "code": "COMP G5388", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5388", 
+                    "name": "Adobe Photoshop Bootcamp"
+                }, 
+                {
+                    "code": "COMP G5389", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5389", 
+                    "name": "Photo-illu. w/ Adobe Photoshop"
+                }, 
+                {
+                    "code": "COMP G5390", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5390", 
+                    "name": "Photo Retouch. w/ Photoshop"
+                }, 
+                {
+                    "code": "COMP G5392", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5392", 
+                    "name": "Powerpnt 07 Dynamic Presntatn"
+                }, 
+                {
+                    "code": "COMP G5393", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5393", 
+                    "name": "Access 07 Create Forms& Report"
+                }, 
+                {
+                    "code": "COMP G5394", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5394", 
+                    "name": "Wordpress I"
+                }, 
+                {
+                    "code": "COMP G5395", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5395", 
+                    "name": "Wordpress II"
+                }, 
+                {
+                    "code": "COMP G5396", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5396", 
+                    "name": "Intro to Mac OS X"
+                }, 
+                {
+                    "code": "COMP G5397", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5397", 
+                    "name": "Mac OS X Support Essentials"
+                }, 
+                {
+                    "code": "COMP G5398", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5398", 
+                    "name": "Intro to Final Cut Express"
+                }, 
+                {
+                    "code": "COMP G5400", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5400", 
+                    "name": "Intro to iLife '09"
+                }, 
+                {
+                    "code": "COMP G5402", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5402", 
+                    "name": "Spanish Word 2007"
+                }, 
+                {
+                    "code": "COMP G5403", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5403", 
+                    "name": "Spanish Excel 2007"
+                }, 
+                {
+                    "code": "COMP G5404", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5404", 
+                    "name": "Spanish Outlook 2007"
+                }, 
+                {
+                    "code": "COMP G5405", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5405", 
+                    "name": "Spanish PowerPoint 2007"
+                }, 
+                {
+                    "code": "COMP G5406", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5406", 
+                    "name": "Social Media Cert"
+                }, 
+                {
+                    "code": "COMP G5407", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5407", 
+                    "name": "Freelance Blogging"
+                }, 
+                {
+                    "code": "COMP G5482", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5482", 
+                    "name": "Publisher07 Effective Public"
+                }, 
+                {
+                    "code": "COMP G5483", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G5483", 
+                    "name": "Powerpoint 07 Special Effects"
+                }, 
+                {
+                    "code": "COMP G7369", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G7369", 
+                    "name": "Photoshop - Absolute Beginners"
+                }, 
+                {
+                    "code": "COMP G7370", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G7370", 
+                    "name": "Introduction to Adobe Flash"
+                }, 
+                {
+                    "code": "COMP G7373", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G7373", 
+                    "name": "Stock Photo for Fun & Profit"
+                }, 
+                {
+                    "code": "COMP G7374", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G7374", 
+                    "name": "Are My Photos Any Good?"
+                }, 
+                {
+                    "code": "COMP G7375", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G7375", 
+                    "name": "No Flash No Problem"
+                }, 
+                {
+                    "code": "COMP G7376", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G7376", 
+                    "name": "Don't Need Photo/have elements"
+                }, 
+                {
+                    "code": "COMP G7381", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G7381", 
+                    "name": "UML for IT Business"
+                }, 
+                {
+                    "code": "COMP G7382", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G7382", 
+                    "name": "Writing for the Web"
+                }, 
+                {
+                    "code": "COMP G7383", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G7383", 
+                    "name": "Twitter for Absolute Beginners"
+                }, 
+                {
+                    "code": "COMP G7384", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G7384", 
+                    "name": "Facebook for absolute Beginner"
+                }, 
+                {
+                    "code": "COMP G7385", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G7385", 
+                    "name": "Computer Boot Camp"
+                }, 
+                {
+                    "code": "COMP G7386", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G7386", 
+                    "name": "Blogging Basics"
+                }, 
+                {
+                    "code": "COMP G7387", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/COMP/G7387", 
+                    "name": "Taking Great Digital Photos"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/COMP"
+        }, 
+        {
+            "abbr": "CSA", 
+            "courses": [
+                {
+                    "code": "CSA 105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSA/105", 
+                    "name": "Introduction to Software Applications"
+                }, 
+                {
+                    "code": "CSA 135", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSA/135", 
+                    "name": "Spreadsheet Applications"
+                }, 
+                {
+                    "code": "CSA 163", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSA/163", 
+                    "name": "The Internet"
+                }, 
+                {
+                    "code": "CSA 205", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSA/205", 
+                    "name": "Advanced Applications"
+                }, 
+                {
+                    "code": "CSA G105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSA/G105", 
+                    "name": "Intro to Software Aplicatns"
+                }, 
+                {
+                    "code": "CSA G140", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSA/G140", 
+                    "name": "Database Applications"
+                }, 
+                {
+                    "code": "CSA G155", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSA/G155", 
+                    "name": "Multimedia Communications"
+                }, 
+                {
+                    "code": "CSA G163", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSA/G163", 
+                    "name": "The Internet"
+                }, 
+                {
+                    "code": "CSA G205", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSA/G205", 
+                    "name": "Advanced Applications"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/CSA"
+        }, 
+        {
+            "abbr": "CSA*", 
+            "courses": [
+                {
+                    "code": "CSA* G105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSA%2A/G105", 
+                    "name": "Intro to Software Aplicatns"
+                }, 
+                {
+                    "code": "CSA* G135", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSA%2A/G135", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CSA* G140", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSA%2A/G140", 
+                    "name": "Database Applications"
+                }, 
+                {
+                    "code": "CSA* G155", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSA%2A/G155", 
+                    "name": "Multimedia Communications"
+                }, 
+                {
+                    "code": "CSA* G163", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSA%2A/G163", 
+                    "name": "The Internet"
+                }, 
+                {
+                    "code": "CSA* G205", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSA%2A/G205", 
+                    "name": "Advanced Applications"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/CSA%2A"
+        }, 
+        {
+            "abbr": "CSC", 
+            "courses": [
+                {
+                    "code": "CSC 101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSC/101", 
+                    "name": "Introduction to Computers"
+                }, 
+                {
+                    "code": "CSC 205", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSC/205", 
+                    "name": "Visual Basic I"
+                }, 
+                {
+                    "code": "CSC 247", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSC/247", 
+                    "name": "Game Development with C++"
+                }, 
+                {
+                    "code": "CSC G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSC/G101", 
+                    "name": "Intro to Computers"
+                }, 
+                {
+                    "code": "CSC G205", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSC/G205", 
+                    "name": "Visual Basic I"
+                }, 
+                {
+                    "code": "CSC G220", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSC/G220", 
+                    "name": "Prgrmng Usng Java"
+                }, 
+                {
+                    "code": "CSC G247", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSC/G247", 
+                    "name": "Game Development with C++"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/CSC"
+        }, 
+        {
+            "abbr": "CSC*", 
+            "courses": [
+                {
+                    "code": "CSC* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSC%2A/G101", 
+                    "name": "Intro to Computers"
+                }, 
+                {
+                    "code": "CSC* G105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSC%2A/G105", 
+                    "name": "Programming Logic"
+                }, 
+                {
+                    "code": "CSC* G205", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSC%2A/G205", 
+                    "name": "Visual Basic I"
+                }, 
+                {
+                    "code": "CSC* G206", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSC%2A/G206", 
+                    "name": "Visual Basic II"
+                }, 
+                {
+                    "code": "CSC* G220", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSC%2A/G220", 
+                    "name": "Prgrmng Usng Java"
+                }, 
+                {
+                    "code": "CSC* G247", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CSC%2A/G247", 
+                    "name": "Game Development with C++"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/CSC%2A"
+        }, 
+        {
+            "abbr": "CST", 
+            "courses": [
+                {
+                    "code": "CST 140", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/140", 
+                    "name": "A+ Introduction to Computer Hardware"
+                }, 
+                {
+                    "code": "CST 142", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/142", 
+                    "name": "A+ Introduction to Computer Hardware"
+                }, 
+                {
+                    "code": "CST 150", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/150", 
+                    "name": "Web Design & Development I"
+                }, 
+                {
+                    "code": "CST 171", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/171", 
+                    "name": "LAN System Management"
+                }, 
+                {
+                    "code": "CST 200", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/200", 
+                    "name": "Scripting Language with Java"
+                }, 
+                {
+                    "code": "CST 231", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/231", 
+                    "name": "Data Communication & Networking"
+                }, 
+                {
+                    "code": "CST 240", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/240", 
+                    "name": "Advanced Computer Hardware"
+                }, 
+                {
+                    "code": "CST 243", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/243", 
+                    "name": "Advanced Computer Hardware Lab"
+                }, 
+                {
+                    "code": "CST 250", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/250", 
+                    "name": "Web Design II-HYBRID"
+                }, 
+                {
+                    "code": "CST 281", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/281", 
+                    "name": "Data Communication & Networking II"
+                }, 
+                {
+                    "code": "CST G120", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/G120", 
+                    "name": "Intro to Operating Systems"
+                }, 
+                {
+                    "code": "CST G140", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/G140", 
+                    "name": "A+ Intro Comp Hardware"
+                }, 
+                {
+                    "code": "CST G142", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/G142", 
+                    "name": "A+ Intro Comp Hw-Lab"
+                }, 
+                {
+                    "code": "CST G150", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/G150", 
+                    "name": "Web Design & Dev I"
+                }, 
+                {
+                    "code": "CST G200", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/G200", 
+                    "name": "Scripting Language w/Java+++"
+                }, 
+                {
+                    "code": "CST G231", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/G231", 
+                    "name": "DataCom/Netwrkng I"
+                }, 
+                {
+                    "code": "CST G281", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/G281", 
+                    "name": "Data Cmm/Netwrkng II"
+                }, 
+                {
+                    "code": "CST G282", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST/G282", 
+                    "name": "DataCom/Netwrkng III"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/CST"
+        }, 
+        {
+            "abbr": "CST*", 
+            "courses": [
+                {
+                    "code": "CST* G120", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST%2A/G120", 
+                    "name": "Intro to Operating Systems"
+                }, 
+                {
+                    "code": "CST* G125", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST%2A/G125", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CST* G140", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST%2A/G140", 
+                    "name": "A+ Intro Comp Hardware"
+                }, 
+                {
+                    "code": "CST* G142", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST%2A/G142", 
+                    "name": "A+ Intro Comp Hw-Lab"
+                }, 
+                {
+                    "code": "CST* G150", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST%2A/G150", 
+                    "name": "Web Design & Dev I"
+                }, 
+                {
+                    "code": "CST* G171", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST%2A/G171", 
+                    "name": "LAN System Management"
+                }, 
+                {
+                    "code": "CST* G200", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST%2A/G200", 
+                    "name": "Scripting Language w/Java+++"
+                }, 
+                {
+                    "code": "CST* G231", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST%2A/G231", 
+                    "name": "DataCom/Netwrkng I"
+                }, 
+                {
+                    "code": "CST* G243", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST%2A/G243", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CST* G250", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST%2A/G250", 
+                    "name": "Web Design & Development II"
+                }, 
+                {
+                    "code": "CST* G264", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST%2A/G264", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CST* G281", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST%2A/G281", 
+                    "name": "Data Cmm/Netwrkng II"
+                }, 
+                {
+                    "code": "CST* G282", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/CST%2A/G282", 
+                    "name": "DataCom/Netwrkng III"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/CST%2A"
+        }, 
+        {
+            "abbr": "ECE", 
+            "courses": [
+                {
+                    "code": "ECE 101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/101", 
+                    "name": "CDA-Introduction to ECE-Bilingual"
+                }, 
+                {
+                    "code": "ECE 106", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/106", 
+                    "name": "Music/Movement for Children"
+                }, 
+                {
+                    "code": "ECE 176", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/176", 
+                    "name": "Health Safety & Nutrition"
+                }, 
+                {
+                    "code": "ECE 180", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/180", 
+                    "name": "CDA Credential Preparation I"
+                }, 
+                {
+                    "code": "ECE 181", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/181", 
+                    "name": "CDA Credential Preparation II-Bilingual"
+                }, 
+                {
+                    "code": "ECE 210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/210", 
+                    "name": "Observation"
+                }, 
+                {
+                    "code": "ECE 215", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/215", 
+                    "name": "The Exceptional Learner"
+                }, 
+                {
+                    "code": "ECE 222", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/222", 
+                    "name": "Methods & Techniques in ECE"
+                }, 
+                {
+                    "code": "ECE 295", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/295", 
+                    "name": "Student Teaching Practicum"
+                }, 
+                {
+                    "code": "ECE G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/G101", 
+                    "name": "Intro to ECE"
+                }, 
+                {
+                    "code": "ECE G103", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/G103", 
+                    "name": "Creative Experiences/Children"
+                }, 
+                {
+                    "code": "ECE G106", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/G106", 
+                    "name": "Mus & Mov for Child"
+                }, 
+                {
+                    "code": "ECE G176", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/G176", 
+                    "name": "CDA Hlth Safety/Nutrition"
+                }, 
+                {
+                    "code": "ECE G180", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/G180", 
+                    "name": "CDA Cred Prep 1"
+                }, 
+                {
+                    "code": "ECE G181", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/G181", 
+                    "name": "CDA CredPrep II-Bilingual"
+                }, 
+                {
+                    "code": "ECE G215", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/G215", 
+                    "name": "The Exceptional Learner"
+                }, 
+                {
+                    "code": "ECE G231", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/G231", 
+                    "name": "Early Lang & Literacy Devlpmnt"
+                }, 
+                {
+                    "code": "ECE G295", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE/G295", 
+                    "name": "Student Teaching Practicum"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/ECE"
+        }, 
+        {
+            "abbr": "ECE*", 
+            "courses": [
+                {
+                    "code": "ECE* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE%2A/G101", 
+                    "name": "Intro to ECE"
+                }, 
+                {
+                    "code": "ECE* G103", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE%2A/G103", 
+                    "name": "Creative Experiences/Children"
+                }, 
+                {
+                    "code": "ECE* G106", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE%2A/G106", 
+                    "name": "Mus & Mov for Child"
+                }, 
+                {
+                    "code": "ECE* G176", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE%2A/G176", 
+                    "name": "CDA BiLing-Hlth Safety/Nutriti"
+                }, 
+                {
+                    "code": "ECE* G180", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE%2A/G180", 
+                    "name": "CDA Cred Prep -Biling"
+                }, 
+                {
+                    "code": "ECE* G181", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE%2A/G181", 
+                    "name": "CDA CredPrep II"
+                }, 
+                {
+                    "code": "ECE* G190", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE%2A/G190", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ECE* G210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE%2A/G210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ECE* G215", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE%2A/G215", 
+                    "name": "The Exceptional Learner"
+                }, 
+                {
+                    "code": "ECE* G222", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE%2A/G222", 
+                    "name": "Methods & Tech in ECE"
+                }, 
+                {
+                    "code": "ECE* G231", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE%2A/G231", 
+                    "name": "Early Lang & Literacy Devlpmnt"
+                }, 
+                {
+                    "code": "ECE* G295", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE%2A/G295", 
+                    "name": "Student Teaching Practicum"
+                }, 
+                {
+                    "code": "ECE* G299", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECE%2A/G299", 
+                    "name": "Independent Study in ECE"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/ECE%2A"
+        }, 
+        {
+            "abbr": "ECN", 
+            "courses": [
+                {
+                    "code": "ECN 101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECN/101", 
+                    "name": "Principles of Macroeconomics"
+                }, 
+                {
+                    "code": "ECN 102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECN/102", 
+                    "name": "Principles of Microeconomics"
+                }, 
+                {
+                    "code": "ECN G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECN/G101", 
+                    "name": "Principles of Macroeconomics"
+                }, 
+                {
+                    "code": "ECN G102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECN/G102", 
+                    "name": "Principles of Microeconomics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/ECN"
+        }, 
+        {
+            "abbr": "ECN*", 
+            "courses": [
+                {
+                    "code": "ECN* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECN%2A/G101", 
+                    "name": "Principles of Macroeconomics"
+                }, 
+                {
+                    "code": "ECN* G102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ECN%2A/G102", 
+                    "name": "Principles of Microeconomics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/ECN%2A"
+        }, 
+        {
+            "abbr": "EMR", 
+            "courses": [
+                {
+                    "code": "EMR 102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMR/102", 
+                    "name": "Integrated Emergency Management"
+                }, 
+                {
+                    "code": "EMR 103", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMR/103", 
+                    "name": "Selected Topics in EMR"
+                }
+            ], 
+            "name": "Med - Intrl: Emergency Med", 
+            "url": "http://www.chegg.com/courses/capitalcc/EMR"
+        }, 
+        {
+            "abbr": "EMS", 
+            "courses": [
+                {
+                    "code": "EMS 101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMS/101", 
+                    "name": "Emergency Medical Services Ed I"
+                }, 
+                {
+                    "code": "EMS 102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMS/102", 
+                    "name": "Emergency Medical Services Ed II"
+                }, 
+                {
+                    "code": "EMS 103", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMS/103", 
+                    "name": "Emergency Medical Services Ed III"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/EMS"
+        }, 
+        {
+            "abbr": "EMS*", 
+            "courses": [
+                {
+                    "code": "EMS* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMS%2A/G101", 
+                    "name": "Emergency Med Service Educ I"
+                }, 
+                {
+                    "code": "EMS* G102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMS%2A/G102", 
+                    "name": "Emergency Med Service Educ II"
+                }, 
+                {
+                    "code": "EMS* G103", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMS%2A/G103", 
+                    "name": "Emergency Med Service Educ III"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/EMS%2A"
+        }, 
+        {
+            "abbr": "EMT", 
+            "courses": [
+                {
+                    "code": "EMT 111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMT/111", 
+                    "name": "Emergency Medical Technician-Paramedic I"
+                }, 
+                {
+                    "code": "EMT 112", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMT/112", 
+                    "name": "Emergency Medical Technician-Paramedic II"
+                }, 
+                {
+                    "code": "EMT 116", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMT/116", 
+                    "name": "Anatomy/Physiology for Emergency Care I"
+                }, 
+                {
+                    "code": "EMT 117", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMT/117", 
+                    "name": "Anatomy/Physiology for Emergency Care I"
+                }, 
+                {
+                    "code": "EMT G100", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMT/G100", 
+                    "name": "EMT Basic"
+                }, 
+                {
+                    "code": "EMT G111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMT/G111", 
+                    "name": "EMT - Paramedic I"
+                }, 
+                {
+                    "code": "EMT G115", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMT/G115", 
+                    "name": "EMT-Paramedic Internship"
+                }, 
+                {
+                    "code": "EMT G116", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMT/G116", 
+                    "name": "A&P for Emergency Care I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/EMT"
+        }, 
+        {
+            "abbr": "EMT*", 
+            "courses": [
+                {
+                    "code": "EMT* G100", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMT%2A/G100", 
+                    "name": "EMT Basic"
+                }, 
+                {
+                    "code": "EMT* G111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMT%2A/G111", 
+                    "name": "EMT - Paramedic I"
+                }, 
+                {
+                    "code": "EMT* G115", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMT%2A/G115", 
+                    "name": "EMT-Paramedic Internship"
+                }, 
+                {
+                    "code": "EMT* G116", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/EMT%2A/G116", 
+                    "name": "A&P for Emergency Care I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/EMT%2A"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 003", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/003", 
+                    "name": "ESL:Foundations of Reading"
+                }, 
+                {
+                    "code": "ENG 013", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/013", 
+                    "name": "ESL:Writing Foundations"
+                }, 
+                {
+                    "code": "ENG 043", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/043", 
+                    "name": "Writing:Paragraph to Essay"
+                }, 
+                {
+                    "code": "ENG 073", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/073", 
+                    "name": "Academic Reading"
+                }, 
+                {
+                    "code": "ENG 101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/101", 
+                    "name": "Composition Crimmins"
+                }, 
+                {
+                    "code": "ENG 102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/102", 
+                    "name": "Literature And Composition"
+                }, 
+                {
+                    "code": "ENG 251", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/251", 
+                    "name": "African American Literature"
+                }, 
+                {
+                    "code": "ENG 253", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/253", 
+                    "name": "Hispanic-American Literature"
+                }, 
+                {
+                    "code": "ENG 281", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/281", 
+                    "name": "Creative Writing"
+                }, 
+                {
+                    "code": "ENG G003", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/G003", 
+                    "name": "LC-1:Foundations of Reading"
+                }, 
+                {
+                    "code": "ENG G013", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/G013", 
+                    "name": "LC:1Writing Foundations of Eng"
+                }, 
+                {
+                    "code": "ENG G043", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/G043", 
+                    "name": "LC-9:Writing: Para to Essay"
+                }, 
+                {
+                    "code": "ENG G073", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/G073", 
+                    "name": "LC-9:Academic Reading"
+                }, 
+                {
+                    "code": "ENG G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/G101", 
+                    "name": "Composition"
+                }, 
+                {
+                    "code": "ENG G102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/G102", 
+                    "name": "Literature & Composition"
+                }, 
+                {
+                    "code": "ENG G200", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/G200", 
+                    "name": "Advanced Composition"
+                }, 
+                {
+                    "code": "ENG G222", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/G222", 
+                    "name": "American Literature II"
+                }, 
+                {
+                    "code": "ENG G251", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/G251", 
+                    "name": "African American Literature"
+                }, 
+                {
+                    "code": "ENG G253", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/G253", 
+                    "name": "Hispanic-American Literature"
+                }, 
+                {
+                    "code": "ENG G260", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/G260", 
+                    "name": "Studies in Women's Lit"
+                }, 
+                {
+                    "code": "ENG G281", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG/G281", 
+                    "name": "Creative Writing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/ENG"
+        }, 
+        {
+            "abbr": "ENG*", 
+            "courses": [
+                {
+                    "code": "ENG* G003", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG%2A/G003", 
+                    "name": "Found of Reading"
+                }, 
+                {
+                    "code": "ENG* G013", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG%2A/G013", 
+                    "name": "Writing Foundations"
+                }, 
+                {
+                    "code": "ENG* G043", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG%2A/G043", 
+                    "name": "Writing:Para to Essay"
+                }, 
+                {
+                    "code": "ENG* G073", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG%2A/G073", 
+                    "name": "Academic Reading"
+                }, 
+                {
+                    "code": "ENG* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG%2A/G101", 
+                    "name": "Composition"
+                }, 
+                {
+                    "code": "ENG* G102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG%2A/G102", 
+                    "name": "Literature & Composition"
+                }, 
+                {
+                    "code": "ENG* G200", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG%2A/G200", 
+                    "name": "Advanced Composition"
+                }, 
+                {
+                    "code": "ENG* G222", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG%2A/G222", 
+                    "name": "American Literature II"
+                }, 
+                {
+                    "code": "ENG* G248", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG%2A/G248", 
+                    "name": "Literature of the Caribbean"
+                }, 
+                {
+                    "code": "ENG* G251", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG%2A/G251", 
+                    "name": "African American Literature"
+                }, 
+                {
+                    "code": "ENG* G253", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG%2A/G253", 
+                    "name": "Hispanic-American Literature"
+                }, 
+                {
+                    "code": "ENG* G260", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG%2A/G260", 
+                    "name": "Studies in Women's Lit"
+                }, 
+                {
+                    "code": "ENG* G281", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ENG%2A/G281", 
+                    "name": "Creative Writing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/ENG%2A"
+        }, 
+        {
+            "abbr": "ESL", 
+            "courses": [
+                {
+                    "code": "ESL 013", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/013", 
+                    "name": "Writing & Reading I"
+                }, 
+                {
+                    "code": "ESL 017", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/017", 
+                    "name": "Oral Communications"
+                }, 
+                {
+                    "code": "ESL 023", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/023", 
+                    "name": "Writing & Reading II"
+                }, 
+                {
+                    "code": "ESL 027", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/027", 
+                    "name": "Oral Communications"
+                }, 
+                {
+                    "code": "ESL 143", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/143", 
+                    "name": "Writing & Reading IV"
+                }, 
+                {
+                    "code": "ESL 147A", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/147A", 
+                    "name": "Oral Communications-High Intermediate"
+                }, 
+                {
+                    "code": "ESL 153A", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/153A", 
+                    "name": "Writing & Reading-Low Advanced"
+                }, 
+                {
+                    "code": "ESL 157A", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/157A", 
+                    "name": "Oral Communication-Low Advanced"
+                }, 
+                {
+                    "code": "ESL 185", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/185", 
+                    "name": "Modes of Communication"
+                }, 
+                {
+                    "code": "ESL G013", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/G013", 
+                    "name": "Writing & Reading I"
+                }, 
+                {
+                    "code": "ESL G017", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/G017", 
+                    "name": "Oral Communication  I"
+                }, 
+                {
+                    "code": "ESL G023", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/G023", 
+                    "name": "Writing & Reading II"
+                }, 
+                {
+                    "code": "ESL G027", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/G027", 
+                    "name": "Oral Comm II"
+                }, 
+                {
+                    "code": "ESL G143", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/G143", 
+                    "name": "Writing & Reading IV"
+                }, 
+                {
+                    "code": "ESL G147A", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/G147A", 
+                    "name": "Oral Comm - High Intermediate"
+                }, 
+                {
+                    "code": "ESL G153A", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/G153A", 
+                    "name": "Writing/Read-Low Adv"
+                }, 
+                {
+                    "code": "ESL G157A", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/G157A", 
+                    "name": "Oral Comm - Low Advanced"
+                }, 
+                {
+                    "code": "ESL G185", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL/G185", 
+                    "name": "Modes of Communication"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/ESL"
+        }, 
+        {
+            "abbr": "ESL*", 
+            "courses": [
+                {
+                    "code": "ESL* G013", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL%2A/G013", 
+                    "name": "Writing & Reading I"
+                }, 
+                {
+                    "code": "ESL* G017", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL%2A/G017", 
+                    "name": "Oral Communications I"
+                }, 
+                {
+                    "code": "ESL* G023", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL%2A/G023", 
+                    "name": "Writing & Reading II"
+                }, 
+                {
+                    "code": "ESL* G027", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL%2A/G027", 
+                    "name": "Oral Comm II"
+                }, 
+                {
+                    "code": "ESL* G143", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL%2A/G143", 
+                    "name": "Writing & Reading IV"
+                }, 
+                {
+                    "code": "ESL* G147A", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL%2A/G147A", 
+                    "name": "Oral Comm - High Intermediate"
+                }, 
+                {
+                    "code": "ESL* G153A", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL%2A/G153A", 
+                    "name": "Writing/Read -Low/Adv"
+                }, 
+                {
+                    "code": "ESL* G157A", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL%2A/G157A", 
+                    "name": "Oral Comm - Low Advanced"
+                }, 
+                {
+                    "code": "ESL* G185", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/ESL%2A/G185", 
+                    "name": "Modes of Communication"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/ESL%2A"
+        }, 
+        {
+            "abbr": "FIN", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/FIN"
+        }, 
+        {
+            "abbr": "FLAN", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/FLAN"
+        }, 
+        {
+            "abbr": "FTA", 
+            "courses": [
+                {
+                    "code": "FTA 118", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/FTA/118", 
+                    "name": "Fire Prevention & Inspection"
+                }, 
+                {
+                    "code": "FTA 213", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/FTA/213", 
+                    "name": "Codes and Standards Quish"
+                }, 
+                {
+                    "code": "FTA 219", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/FTA/219", 
+                    "name": "Fire Investigation"
+                }, 
+                {
+                    "code": "FTA G112", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/FTA/G112", 
+                    "name": "Intro to Fire Technology"
+                }, 
+                {
+                    "code": "FTA G210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/FTA/G210", 
+                    "name": "Water Supply and Hydraulics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/FTA"
+        }, 
+        {
+            "abbr": "FTA*", 
+            "courses": [
+                {
+                    "code": "FTA* G112", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/FTA%2A/G112", 
+                    "name": "Intro to Fire Technology"
+                }, 
+                {
+                    "code": "FTA* G210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/FTA%2A/G210", 
+                    "name": "Water Supply and Hydraulics"
+                }, 
+                {
+                    "code": "FTA* G218", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/FTA%2A/G218", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FTA* G230", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/FTA%2A/G230", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/FTA%2A"
+        }, 
+        {
+            "abbr": "GEO", 
+            "courses": [
+                {
+                    "code": "GEO 102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/GEO/102", 
+                    "name": "Introduction to Human Geography"
+                }, 
+                {
+                    "code": "GEO G102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/GEO/G102", 
+                    "name": "Intro To Human Geography"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/GEO"
+        }, 
+        {
+            "abbr": "GEO*", 
+            "courses": [
+                {
+                    "code": "GEO* G102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/GEO%2A/G102", 
+                    "name": "Intro To Human Geography"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/GEO%2A"
+        }, 
+        {
+            "abbr": "HIS", 
+            "courses": [
+                {
+                    "code": "HIS 101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/101", 
+                    "name": "Western Civilization I"
+                }, 
+                {
+                    "code": "HIS 102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/102", 
+                    "name": "Western Civilization II"
+                }, 
+                {
+                    "code": "HIS 107", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/107", 
+                    "name": "History of Puerto Rico"
+                }, 
+                {
+                    "code": "HIS 121", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/121", 
+                    "name": "World Civilization I"
+                }, 
+                {
+                    "code": "HIS 122", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/122", 
+                    "name": "World Civilization II"
+                }, 
+                {
+                    "code": "HIS 201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/201", 
+                    "name": "U.S.History I"
+                }, 
+                {
+                    "code": "HIS 202", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/202", 
+                    "name": "U.S.History II"
+                }, 
+                {
+                    "code": "HIS 216", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/216", 
+                    "name": "African-American History"
+                }, 
+                {
+                    "code": "HIS 217", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/217", 
+                    "name": "African-American History"
+                }, 
+                {
+                    "code": "HIS 226", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/226", 
+                    "name": "The U"
+                }, 
+                {
+                    "code": "HIS G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/G101", 
+                    "name": "Western Civ I"
+                }, 
+                {
+                    "code": "HIS G102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/G102", 
+                    "name": "Western Civ II"
+                }, 
+                {
+                    "code": "HIS G107", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/G107", 
+                    "name": "His of Puerto Rico"
+                }, 
+                {
+                    "code": "HIS G121", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/G121", 
+                    "name": "World Civ I"
+                }, 
+                {
+                    "code": "HIS G122", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/G122", 
+                    "name": "World Civ II"
+                }, 
+                {
+                    "code": "HIS G201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/G201", 
+                    "name": "U.S. History I"
+                }, 
+                {
+                    "code": "HIS G202", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/G202", 
+                    "name": "U.S. History II"
+                }, 
+                {
+                    "code": "HIS G216", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/G216", 
+                    "name": "African/Amer Hist I"
+                }, 
+                {
+                    "code": "HIS G217", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS/G217", 
+                    "name": "African-Amer History II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/HIS"
+        }, 
+        {
+            "abbr": "HIS*", 
+            "courses": [
+                {
+                    "code": "HIS* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS%2A/G101", 
+                    "name": "Western Civ I"
+                }, 
+                {
+                    "code": "HIS* G102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS%2A/G102", 
+                    "name": "Western Civ II"
+                }, 
+                {
+                    "code": "HIS* G107", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS%2A/G107", 
+                    "name": "His of Puerto Rico"
+                }, 
+                {
+                    "code": "HIS* G121", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS%2A/G121", 
+                    "name": "World Civ I"
+                }, 
+                {
+                    "code": "HIS* G122", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS%2A/G122", 
+                    "name": "World Civ II"
+                }, 
+                {
+                    "code": "HIS* G201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS%2A/G201", 
+                    "name": "U.S. History I"
+                }, 
+                {
+                    "code": "HIS* G202", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS%2A/G202", 
+                    "name": "U.S. History II"
+                }, 
+                {
+                    "code": "HIS* G216", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS%2A/G216", 
+                    "name": "African/Amer Hist I"
+                }, 
+                {
+                    "code": "HIS* G217", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HIS%2A/G217", 
+                    "name": "African-Amer History II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/HIS%2A"
+        }, 
+        {
+            "abbr": "HLT", 
+            "courses": [
+                {
+                    "code": "HLT 103", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HLT/103", 
+                    "name": "Investigations in Health Careers"
+                }
+            ], 
+            "name": "Horticulture", 
+            "url": "http://www.chegg.com/courses/capitalcc/HLT"
+        }, 
+        {
+            "abbr": "HMED", 
+            "courses": [
+                {
+                    "code": "HMED G5023", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HMED/G5023", 
+                    "name": "Nurse Aide Cert - Lab"
+                }, 
+                {
+                    "code": "HMED G5042", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HMED/G5042", 
+                    "name": "Pharm Tech Training"
+                }, 
+                {
+                    "code": "HMED G5166", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HMED/G5166", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HMED G5207", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HMED/G5207", 
+                    "name": "EMT-B"
+                }, 
+                {
+                    "code": "HMED G5208", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HMED/G5208", 
+                    "name": "MC&B - Coding"
+                }, 
+                {
+                    "code": "HMED G5228", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HMED/G5228", 
+                    "name": "PCT Certificate"
+                }, 
+                {
+                    "code": "HMED G5240", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HMED/G5240", 
+                    "name": "Personal Care Assistant (PCA)"
+                }, 
+                {
+                    "code": "HMED G5261", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HMED/G5261", 
+                    "name": "Medical Terminlogy"
+                }, 
+                {
+                    "code": "HMED G5290", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HMED/G5290", 
+                    "name": "MC&B - HIT"
+                }, 
+                {
+                    "code": "HMED G5291", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HMED/G5291", 
+                    "name": "MC&B-Medical Terminology"
+                }, 
+                {
+                    "code": "HMED G5292", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HMED/G5292", 
+                    "name": "MC&B - Billing"
+                }, 
+                {
+                    "code": "HMED G5297", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HMED/G5297", 
+                    "name": "Intro to HIT: EHR's"
+                }, 
+                {
+                    "code": "HMED G5301", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HMED/G5301", 
+                    "name": "MC&B Exam Prep"
+                }, 
+                {
+                    "code": "HMED G5328", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HMED/G5328", 
+                    "name": "Basic Search & Rescue Cert."
+                }, 
+                {
+                    "code": "HMED G5329", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/HMED/G5329", 
+                    "name": "Medical Interpretation Cert."
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/HMED"
+        }, 
+        {
+            "abbr": "IDS", 
+            "courses": [
+                {
+                    "code": "IDS G105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/IDS/G105", 
+                    "name": "College Success"
+                }, 
+                {
+                    "code": "IDS G250", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/IDS/G250", 
+                    "name": "Liberal Arts Capstone"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/IDS"
+        }, 
+        {
+            "abbr": "LIB", 
+            "courses": [
+                {
+                    "code": "LIB 102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/LIB/102", 
+                    "name": "Introduction to Cataloging Slovasky"
+                }, 
+                {
+                    "code": "LIB 103", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/LIB/103", 
+                    "name": "Computers in Libraries"
+                }, 
+                {
+                    "code": "LIB 104", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/LIB/104", 
+                    "name": "Introduction to Reference Services Antonucci"
+                }, 
+                {
+                    "code": "LIB 202", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/LIB/202", 
+                    "name": "Supervised Field Placement Deloatch"
+                }, 
+                {
+                    "code": "LIB G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/LIB/G101", 
+                    "name": "Intro to Library Public Svcs"
+                }, 
+                {
+                    "code": "LIB G202", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/LIB/G202", 
+                    "name": "Supervised Field Placement"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/LIB"
+        }, 
+        {
+            "abbr": "LIB*", 
+            "courses": [
+                {
+                    "code": "LIB* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/LIB%2A/G101", 
+                    "name": "Intro to Library Public Svcs"
+                }, 
+                {
+                    "code": "LIB* G102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/LIB%2A/G102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LIB* G104", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/LIB%2A/G104", 
+                    "name": "Intro to Reference Svcs"
+                }, 
+                {
+                    "code": "LIB* G202", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/LIB%2A/G202", 
+                    "name": "Supervised Field Placement"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/LIB%2A"
+        }, 
+        {
+            "abbr": "MAT", 
+            "courses": [
+                {
+                    "code": "MAT 075", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/075", 
+                    "name": "Prealgebra-Number Sense"
+                }, 
+                {
+                    "code": "MAT 095", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/095", 
+                    "name": "Elementary Algebra Foundations Bocharova"
+                }, 
+                {
+                    "code": "MAT 137", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/137", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MAT 167", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/167", 
+                    "name": "Principles of Statistics"
+                }, 
+                {
+                    "code": "MAT 186", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/186", 
+                    "name": "Precalculus"
+                }, 
+                {
+                    "code": "MAT 254", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/254", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MAT 256", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/256", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MAT G075", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/G075", 
+                    "name": "Pre Algebra-NMBR Sense, Geom"
+                }, 
+                {
+                    "code": "MAT G092", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/G092", 
+                    "name": "Statway I"
+                }, 
+                {
+                    "code": "MAT G095", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/G095", 
+                    "name": "Elem Algebra Foundations"
+                }, 
+                {
+                    "code": "MAT G137", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/G137", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MAT G139", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/G139", 
+                    "name": "Elem & Interm Alg Combined"
+                }, 
+                {
+                    "code": "MAT G167", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/G167", 
+                    "name": "Principles of Statistics"
+                }, 
+                {
+                    "code": "MAT G172", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/G172", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MAT G186", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/G186", 
+                    "name": "Precalculus"
+                }, 
+                {
+                    "code": "MAT G230", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/G230", 
+                    "name": "Appld Calc w/Modeling Approach"
+                }, 
+                {
+                    "code": "MAT G254", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT/G254", 
+                    "name": "Calculus I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/MAT"
+        }, 
+        {
+            "abbr": "MAT*", 
+            "courses": [
+                {
+                    "code": "MAT* G075", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT%2A/G075", 
+                    "name": "Pre Algebra-NMBR Sense, Geom"
+                }, 
+                {
+                    "code": "MAT* G092", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT%2A/G092", 
+                    "name": "Statistics: Statway I"
+                }, 
+                {
+                    "code": "MAT* G095", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT%2A/G095", 
+                    "name": "Elem Algebra Foundations"
+                }, 
+                {
+                    "code": "MAT* G137", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT%2A/G137", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MAT* G139", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT%2A/G139", 
+                    "name": "Elem & Interm Alg Combined"
+                }, 
+                {
+                    "code": "MAT* G167", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT%2A/G167", 
+                    "name": "Principles of Statistics"
+                }, 
+                {
+                    "code": "MAT* G172", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT%2A/G172", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MAT* G186", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT%2A/G186", 
+                    "name": "Precalculus"
+                }, 
+                {
+                    "code": "MAT* G230", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT%2A/G230", 
+                    "name": "Appld Calc w/Modeling Approach"
+                }, 
+                {
+                    "code": "MAT* G254", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT%2A/G254", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MAT* G256", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MAT%2A/G256", 
+                    "name": "Calculus II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/MAT%2A"
+        }, 
+        {
+            "abbr": "MED", 
+            "courses": [
+                {
+                    "code": "MED 114", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED/114", 
+                    "name": "Administrative Medical Office Assisting"
+                }, 
+                {
+                    "code": "MED 131", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED/131", 
+                    "name": "Clinical Medical Assisting"
+                }, 
+                {
+                    "code": "MED 141", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED/141", 
+                    "name": "Lab Principles for Medical Assisting"
+                }, 
+                {
+                    "code": "MED 219", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED/219", 
+                    "name": "Computerized Medical Practice"
+                }, 
+                {
+                    "code": "MED 250", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED/250", 
+                    "name": "Principles of Pharmacology"
+                }, 
+                {
+                    "code": "MED 280", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED/280", 
+                    "name": "Medical Assisting Externship"
+                }, 
+                {
+                    "code": "MED G112", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED/G112", 
+                    "name": "Medical Ins & Billing"
+                }, 
+                {
+                    "code": "MED G141", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED/G141", 
+                    "name": "Lab Principles for Med Asstg"
+                }, 
+                {
+                    "code": "MED G170", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED/G170", 
+                    "name": "Law & Ethics For Hlth Prof"
+                }, 
+                {
+                    "code": "MED G219", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED/G219", 
+                    "name": "Computrzd Medical Practice Mgt"
+                }, 
+                {
+                    "code": "MED G241", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED/G241", 
+                    "name": "Lab Principles of Med Asstg II"
+                }, 
+                {
+                    "code": "MED G280", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED/G280", 
+                    "name": "Medical Assisting Externship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/MED"
+        }, 
+        {
+            "abbr": "MED*", 
+            "courses": [
+                {
+                    "code": "MED* G112", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED%2A/G112", 
+                    "name": "Medical Ins & Billing"
+                }, 
+                {
+                    "code": "MED* G114", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED%2A/G114", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MED* G131", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED%2A/G131", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MED* G141", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED%2A/G141", 
+                    "name": "Lab Principles for Med Asstg"
+                }, 
+                {
+                    "code": "MED* G170", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED%2A/G170", 
+                    "name": "Law & Ethics For Hlth Prof"
+                }, 
+                {
+                    "code": "MED* G219", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED%2A/G219", 
+                    "name": "Computrzd Medical Practice Mgt"
+                }, 
+                {
+                    "code": "MED* G241", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED%2A/G241", 
+                    "name": "Lab Principles of Med Asstg II"
+                }, 
+                {
+                    "code": "MED* G250", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED%2A/G250", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MED* G280", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MED%2A/G280", 
+                    "name": "Medical Assisting Externship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/MED%2A"
+        }, 
+        {
+            "abbr": "MGMT", 
+            "courses": [
+                {
+                    "code": "MGMT G5054", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MGMT/G5054", 
+                    "name": "The Challenging Employee"
+                }, 
+                {
+                    "code": "MGMT G5101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MGMT/G5101", 
+                    "name": "Keeping emotions In Check"
+                }, 
+                {
+                    "code": "MGMT G5102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MGMT/G5102", 
+                    "name": "New Manager Essentials"
+                }, 
+                {
+                    "code": "MGMT G5103", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MGMT/G5103", 
+                    "name": "Leadership Challenge Wrkshp"
+                }, 
+                {
+                    "code": "MGMT G5104", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MGMT/G5104", 
+                    "name": "Supervising Part-Time Emplys."
+                }, 
+                {
+                    "code": "MGMT G5105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MGMT/G5105", 
+                    "name": "Change Management"
+                }, 
+                {
+                    "code": "MGMT G5106", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MGMT/G5106", 
+                    "name": "Bully is not on the playground"
+                }, 
+                {
+                    "code": "MGMT G5107", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MGMT/G5107", 
+                    "name": "Managing Chaos"
+                }, 
+                {
+                    "code": "MGMT G5108", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MGMT/G5108", 
+                    "name": "Women's Entre. Cert."
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/MGMT"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS/101", 
+                    "name": "Music History & Appreciation"
+                }, 
+                {
+                    "code": "MUS 103", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS/103", 
+                    "name": "History of American Music"
+                }, 
+                {
+                    "code": "MUS 115", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS/115", 
+                    "name": "Music Theory I Hernandez"
+                }, 
+                {
+                    "code": "MUS 150", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS/150", 
+                    "name": "Classical Piano I"
+                }, 
+                {
+                    "code": "MUS 151", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS/151", 
+                    "name": "Classical Piano II"
+                }, 
+                {
+                    "code": "MUS G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS/G101", 
+                    "name": "Music His & Appreciation I"
+                }, 
+                {
+                    "code": "MUS G104", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS/G104", 
+                    "name": "World Music"
+                }, 
+                {
+                    "code": "MUS G105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS/G105", 
+                    "name": "Intro to Music Business"
+                }, 
+                {
+                    "code": "MUS G115", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS/G115", 
+                    "name": "Music Theory I"
+                }, 
+                {
+                    "code": "MUS G150", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS/G150", 
+                    "name": "Class Piano I"
+                }, 
+                {
+                    "code": "MUS G151", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS/G151", 
+                    "name": "Class Piano II"
+                }, 
+                {
+                    "code": "MUS G171", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS/G171", 
+                    "name": "Chorus I"
+                }, 
+                {
+                    "code": "MUS G183", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS/G183", 
+                    "name": "Voice Applied Music Lessons"
+                }, 
+                {
+                    "code": "MUS G218", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS/G218", 
+                    "name": "Elect Mus Comp/Audio Tecn I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/MUS"
+        }, 
+        {
+            "abbr": "MUS*", 
+            "courses": [
+                {
+                    "code": "MUS* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS%2A/G101", 
+                    "name": "Music His & Appreciation I"
+                }, 
+                {
+                    "code": "MUS* G104", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS%2A/G104", 
+                    "name": "World Music"
+                }, 
+                {
+                    "code": "MUS* G105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS%2A/G105", 
+                    "name": "Intro to Music Business"
+                }, 
+                {
+                    "code": "MUS* G115", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS%2A/G115", 
+                    "name": "Music Theory I"
+                }, 
+                {
+                    "code": "MUS* G137", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS%2A/G137", 
+                    "name": "History & Appreciation of Jazz"
+                }, 
+                {
+                    "code": "MUS* G150", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS%2A/G150", 
+                    "name": "Class Piano I"
+                }, 
+                {
+                    "code": "MUS* G151", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS%2A/G151", 
+                    "name": "Class Piano II"
+                }, 
+                {
+                    "code": "MUS* G158", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS%2A/G158", 
+                    "name": "Chamber Music/Jazz Ensemble I"
+                }, 
+                {
+                    "code": "MUS* G171", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS%2A/G171", 
+                    "name": "Chorus I"
+                }, 
+                {
+                    "code": "MUS* G183", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS%2A/G183", 
+                    "name": "Compositon Appl'd Priv Lessons"
+                }, 
+                {
+                    "code": "MUS* G205", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS%2A/G205", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS* G218", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS%2A/G218", 
+                    "name": "Elect Mus Comp/Audio Tecn I"
+                }, 
+                {
+                    "code": "MUS* G299", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/MUS%2A/G299", 
+                    "name": "Hist of Rock and Roll"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/MUS%2A"
+        }, 
+        {
+            "abbr": "NSG", 
+            "courses": [
+                {
+                    "code": "NSG 210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/NSG/210", 
+                    "name": "Family Health Nursing"
+                }
+            ], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/capitalcc/NSG"
+        }, 
+        {
+            "abbr": "NUR", 
+            "courses": [
+                {
+                    "code": "NUR 102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/NUR/102", 
+                    "name": "Family Health Nursing"
+                }, 
+                {
+                    "code": "NUR 103", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/NUR/103", 
+                    "name": "Pharmacology for Families"
+                }, 
+                {
+                    "code": "NUR G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/NUR/G101", 
+                    "name": "Intro to NSG Practice"
+                }, 
+                {
+                    "code": "NUR G201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/NUR/G201", 
+                    "name": "(A)NSG Care In-Fam I"
+                }, 
+                {
+                    "code": "NUR G202", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/NUR/G202", 
+                    "name": "(A)Pharmacology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/NUR"
+        }, 
+        {
+            "abbr": "NUR*", 
+            "courses": [
+                {
+                    "code": "NUR* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/NUR%2A/G101", 
+                    "name": "Intro to NSG Practice"
+                }, 
+                {
+                    "code": "NUR* G102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/NUR%2A/G102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NUR* G103", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/NUR%2A/G103", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NUR* G130", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/NUR%2A/G130", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NUR* G201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/NUR%2A/G201", 
+                    "name": "NSG Care In-Fam I"
+                }, 
+                {
+                    "code": "NUR* G202", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/NUR%2A/G202", 
+                    "name": "Pharmacology"
+                }, 
+                {
+                    "code": "NUR* G204", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/NUR%2A/G204", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NUR* G205", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/NUR%2A/G205", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/NUR%2A"
+        }, 
+        {
+            "abbr": "NURS", 
+            "courses": [
+                {
+                    "code": "NURS G5121", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/NURS/G5121", 
+                    "name": "Cardio Assessment Refresher"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/NURS"
+        }, 
+        {
+            "abbr": "PHL", 
+            "courses": [
+                {
+                    "code": "PHL 101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PHL/101", 
+                    "name": "Introduction to Philosophy"
+                }, 
+                {
+                    "code": "PHL 111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PHL/111", 
+                    "name": "Ethics"
+                }, 
+                {
+                    "code": "PHL G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PHL/G101", 
+                    "name": "Intro to Philosophy"
+                }, 
+                {
+                    "code": "PHL G111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PHL/G111", 
+                    "name": "Ethics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/PHL"
+        }, 
+        {
+            "abbr": "PHL*", 
+            "courses": [
+                {
+                    "code": "PHL* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PHL%2A/G101", 
+                    "name": "Intro to Philosophy"
+                }, 
+                {
+                    "code": "PHL* G111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PHL%2A/G111", 
+                    "name": "Ethics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/PHL%2A"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 121", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PHY/121", 
+                    "name": "General Physics I"
+                }, 
+                {
+                    "code": "PHY 122", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PHY/122", 
+                    "name": "General Physics II"
+                }, 
+                {
+                    "code": "PHY G121", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PHY/G121", 
+                    "name": "Gen'l Phys I-Lec 1"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/PHY"
+        }, 
+        {
+            "abbr": "PHY*", 
+            "courses": [
+                {
+                    "code": "PHY* G121", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PHY%2A/G121", 
+                    "name": "Gen'l Phys I-Lab 2"
+                }, 
+                {
+                    "code": "PHY* G122", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PHY%2A/G122", 
+                    "name": "Gen'l Phys II-Lab"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/PHY%2A"
+        }, 
+        {
+            "abbr": "POL", 
+            "courses": [
+                {
+                    "code": "POL 103", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/POL/103", 
+                    "name": "Introduction To International Relations"
+                }, 
+                {
+                    "code": "POL 111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/POL/111", 
+                    "name": "American Government"
+                }, 
+                {
+                    "code": "POL 112", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/POL/112", 
+                    "name": "State & Local Government"
+                }, 
+                {
+                    "code": "POL 293", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/POL/293", 
+                    "name": "Connecticut Legislative Internship"
+                }, 
+                {
+                    "code": "POL G103", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/POL/G103", 
+                    "name": "International Relations"
+                }, 
+                {
+                    "code": "POL G111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/POL/G111", 
+                    "name": "American Government"
+                }, 
+                {
+                    "code": "POL G112", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/POL/G112", 
+                    "name": "State & Local Government"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/POL"
+        }, 
+        {
+            "abbr": "POL*", 
+            "courses": [
+                {
+                    "code": "POL* G103", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/POL%2A/G103", 
+                    "name": "International Relations"
+                }, 
+                {
+                    "code": "POL* G111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/POL%2A/G111", 
+                    "name": "American Government"
+                }, 
+                {
+                    "code": "POL* G112", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/POL%2A/G112", 
+                    "name": "State & Local Government"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/POL%2A"
+        }, 
+        {
+            "abbr": "PRFD", 
+            "courses": [
+                {
+                    "code": "PRFD G5309", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5309", 
+                    "name": "IFS Bus. Analyst Cert"
+                }, 
+                {
+                    "code": "PRFD G5354", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5354", 
+                    "name": "INS 23 (Commercial Insurance)"
+                }, 
+                {
+                    "code": "PRFD G5359", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5359", 
+                    "name": "ARM 54 (Risk Management)"
+                }, 
+                {
+                    "code": "PRFD G5387", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5387", 
+                    "name": "Spanish for the Workplace"
+                }, 
+                {
+                    "code": "PRFD G5390", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5390", 
+                    "name": "Building Bridges Impro. Comm."
+                }, 
+                {
+                    "code": "PRFD G5395", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5395", 
+                    "name": "ARM 56 (Risk Management)"
+                }, 
+                {
+                    "code": "PRFD G5401", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5401", 
+                    "name": "Getting it 'Write'"
+                }, 
+                {
+                    "code": "PRFD G5402", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5402", 
+                    "name": "Don't Take it for 'Grant'-ed"
+                }, 
+                {
+                    "code": "PRFD G5407", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5407", 
+                    "name": "CPCU 530"
+                }, 
+                {
+                    "code": "PRFD G5408", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5408", 
+                    "name": "CPCU 540"
+                }, 
+                {
+                    "code": "PRFD G5420", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5420", 
+                    "name": "Stress That Motivates"
+                }, 
+                {
+                    "code": "PRFD G5421", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5421", 
+                    "name": "Attitude!"
+                }, 
+                {
+                    "code": "PRFD G5424", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5424", 
+                    "name": "The Global Workforce"
+                }, 
+                {
+                    "code": "PRFD G5425", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5425", 
+                    "name": "Speed Reading"
+                }, 
+                {
+                    "code": "PRFD G5426", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5426", 
+                    "name": "Intro to Risk Mgmt"
+                }, 
+                {
+                    "code": "PRFD G5427", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5427", 
+                    "name": "Positive Assertiveness"
+                }, 
+                {
+                    "code": "PRFD G5428", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5428", 
+                    "name": "Be Your Own Coach"
+                }, 
+                {
+                    "code": "PRFD G5429", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5429", 
+                    "name": "Make Your Message Memorable"
+                }, 
+                {
+                    "code": "PRFD G5430", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5430", 
+                    "name": "When Generations Collide"
+                }, 
+                {
+                    "code": "PRFD G5434", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5434", 
+                    "name": "Legal Office Administrator"
+                }, 
+                {
+                    "code": "PRFD G5435", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5435", 
+                    "name": "Medical Office Administrator"
+                }, 
+                {
+                    "code": "PRFD G5436", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5436", 
+                    "name": "Going Mobile - Smart Phones"
+                }, 
+                {
+                    "code": "PRFD G5437", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5437", 
+                    "name": "Mastering Your Job Search"
+                }, 
+                {
+                    "code": "PRFD G5438", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5438", 
+                    "name": "Office Administrator-CORE"
+                }, 
+                {
+                    "code": "PRFD G5441", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5441", 
+                    "name": "Group Communication"
+                }, 
+                {
+                    "code": "PRFD G5442", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5442", 
+                    "name": "Busi. Writing People Will Read"
+                }, 
+                {
+                    "code": "PRFD G5443", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5443", 
+                    "name": "Shielding Child from Conflict"
+                }, 
+                {
+                    "code": "PRFD G5456", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5456", 
+                    "name": "AU 60"
+                }, 
+                {
+                    "code": "PRFD G5457", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5457", 
+                    "name": "AU 61"
+                }, 
+                {
+                    "code": "PRFD G5479", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5479", 
+                    "name": "Dev. Your Personal Brand Value"
+                }, 
+                {
+                    "code": "PRFD G5480", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5480", 
+                    "name": "Connecting Audience Impromptu"
+                }, 
+                {
+                    "code": "PRFD G5486", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5486", 
+                    "name": "MBA Boot Camp"
+                }, 
+                {
+                    "code": "PRFD G5487", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PRFD/G5487", 
+                    "name": "Develop your Emotional Intelli"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/PRFD"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY/105", 
+                    "name": "Group Dynamics Rubenzahl"
+                }, 
+                {
+                    "code": "PSY 111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY/111", 
+                    "name": "General Psychology I"
+                }, 
+                {
+                    "code": "PSY 201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY/201", 
+                    "name": "Life Span Development"
+                }, 
+                {
+                    "code": "PSY 204", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY/204", 
+                    "name": "Child & Adolescent Development"
+                }, 
+                {
+                    "code": "PSY 245", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY/245", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSY 247", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY/247", 
+                    "name": "Industrial & Organizational Psychology"
+                }, 
+                {
+                    "code": "PSY 253", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY/253", 
+                    "name": "Multicultural Issues in Psychology"
+                }, 
+                {
+                    "code": "PSY G105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY/G105", 
+                    "name": "Group Dynamics"
+                }, 
+                {
+                    "code": "PSY G111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY/G111", 
+                    "name": "Gen'l Psychology I"
+                }, 
+                {
+                    "code": "PSY G201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY/G201", 
+                    "name": "Life Span Development"
+                }, 
+                {
+                    "code": "PSY G204", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY/G204", 
+                    "name": "Child & Adolescent Dev"
+                }, 
+                {
+                    "code": "PSY G208", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY/G208", 
+                    "name": "Psych of Adult Dev & Aging"
+                }, 
+                {
+                    "code": "PSY G245", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY/G245", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSY G253", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY/G253", 
+                    "name": "Multicultural Issues in Psyc"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/PSY"
+        }, 
+        {
+            "abbr": "PSY*", 
+            "courses": [
+                {
+                    "code": "PSY* G105", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY%2A/G105", 
+                    "name": "Group Dynamics"
+                }, 
+                {
+                    "code": "PSY* G111", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY%2A/G111", 
+                    "name": "General Psychology I"
+                }, 
+                {
+                    "code": "PSY* G112", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY%2A/G112", 
+                    "name": "General Psychology II"
+                }, 
+                {
+                    "code": "PSY* G201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY%2A/G201", 
+                    "name": "Life Span Development"
+                }, 
+                {
+                    "code": "PSY* G204", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY%2A/G204", 
+                    "name": "Child & Adolescent Dev"
+                }, 
+                {
+                    "code": "PSY* G208", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY%2A/G208", 
+                    "name": "Psych of Adult Dev & Aging"
+                }, 
+                {
+                    "code": "PSY* G245", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY%2A/G245", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSY* G250", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY%2A/G250", 
+                    "name": "Human Sexuality"
+                }, 
+                {
+                    "code": "PSY* G253", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PSY%2A/G253", 
+                    "name": "Multicultural Issues in Psyc"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/PSY%2A"
+        }, 
+        {
+            "abbr": "PTA", 
+            "courses": [
+                {
+                    "code": "PTA 120", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA/120", 
+                    "name": "Introduction to Physical Therapist Assistant"
+                }, 
+                {
+                    "code": "PTA 125", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA/125", 
+                    "name": "Physical Therapy for Function"
+                }, 
+                {
+                    "code": "PTA 250", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA/250", 
+                    "name": "Therapeutic Exercise"
+                }, 
+                {
+                    "code": "PTA 253", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA/253", 
+                    "name": "Pathophysiology for Rehabilitation"
+                }, 
+                {
+                    "code": "PTA 258", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA/258", 
+                    "name": "PT Assistant in the Health Care Arena"
+                }, 
+                {
+                    "code": "PTA G220", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA/G220", 
+                    "name": "Intro to the PT Clinic"
+                }, 
+                {
+                    "code": "PTA G230", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA/G230", 
+                    "name": "Physical Agents In PT"
+                }, 
+                {
+                    "code": "PTA G235", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA/G235", 
+                    "name": "Kinesiology For Rehab"
+                }, 
+                {
+                    "code": "PTA G260", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA/G260", 
+                    "name": "Physical Therapy Seminar"
+                }, 
+                {
+                    "code": "PTA G262", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA/G262", 
+                    "name": "PTA Internship II"
+                }, 
+                {
+                    "code": "PTA G265", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA/G265", 
+                    "name": "PTA Internship III"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/PTA"
+        }, 
+        {
+            "abbr": "PTA*", 
+            "courses": [
+                {
+                    "code": "PTA* G220", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA%2A/G220", 
+                    "name": "Intro to the PT Clinic"
+                }, 
+                {
+                    "code": "PTA* G230", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA%2A/G230", 
+                    "name": "Physical Agents In PT"
+                }, 
+                {
+                    "code": "PTA* G235", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA%2A/G235", 
+                    "name": "Kinesiology For Rehab"
+                }, 
+                {
+                    "code": "PTA* G260", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA%2A/G260", 
+                    "name": "Physical Therapy Seminar"
+                }, 
+                {
+                    "code": "PTA* G262", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA%2A/G262", 
+                    "name": "PTA Internship II"
+                }, 
+                {
+                    "code": "PTA* G265", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/PTA%2A/G265", 
+                    "name": "PTA Internship III"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/PTA%2A"
+        }, 
+        {
+            "abbr": "RAD", 
+            "courses": [
+                {
+                    "code": "RAD 102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/RAD/102", 
+                    "name": "Radiography Seminar II"
+                }, 
+                {
+                    "code": "RAD 191", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/RAD/191", 
+                    "name": "Radiography Clinical II"
+                }, 
+                {
+                    "code": "RAD 202", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/RAD/202", 
+                    "name": "Radiography Seminar V"
+                }, 
+                {
+                    "code": "RAD 222", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/RAD/222", 
+                    "name": "Radiobiology and Protection"
+                }, 
+                {
+                    "code": "RAD 289", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/RAD/289", 
+                    "name": "Radiography Clinical V"
+                }, 
+                {
+                    "code": "RAD G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/RAD/G101", 
+                    "name": "Radiography Seminar I"
+                }, 
+                {
+                    "code": "RAD G190", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/RAD/G190", 
+                    "name": "Radiography Clinical I"
+                }, 
+                {
+                    "code": "RAD G201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/RAD/G201", 
+                    "name": "Radiography Seminar IV"
+                }, 
+                {
+                    "code": "RAD G288", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/RAD/G288", 
+                    "name": "Radiography Clinical IV"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/RAD"
+        }, 
+        {
+            "abbr": "RAD*", 
+            "courses": [
+                {
+                    "code": "RAD* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/RAD%2A/G101", 
+                    "name": "Radiography Seminar I"
+                }, 
+                {
+                    "code": "RAD* G190", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/RAD%2A/G190", 
+                    "name": "Radiography Clinical I"
+                }, 
+                {
+                    "code": "RAD* G201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/RAD%2A/G201", 
+                    "name": "Radiography Seminar IV"
+                }, 
+                {
+                    "code": "RAD* G202", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/RAD%2A/G202", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RAD* G288", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/RAD%2A/G288", 
+                    "name": "Radiography Clinical IV"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/RAD%2A"
+        }, 
+        {
+            "abbr": "REAL", 
+            "courses": [
+                {
+                    "code": "REAL G5000", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/REAL/G5000", 
+                    "name": "Prin & Practices of Real Estat"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/REAL"
+        }, 
+        {
+            "abbr": "RECR", 
+            "courses": [
+                {
+                    "code": "RECR G5004", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/RECR/G5004", 
+                    "name": "Intro to Power Yoga"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/RECR"
+        }, 
+        {
+            "abbr": "SCI", 
+            "courses": [
+                {
+                    "code": "SCI G200", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SCI/G200", 
+                    "name": "Forensic Science"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/SCI"
+        }, 
+        {
+            "abbr": "SCI*", 
+            "courses": [
+                {
+                    "code": "SCI* G200", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SCI%2A/G200", 
+                    "name": "Forensic Science"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/SCI%2A"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC/101", 
+                    "name": "Principles of Sociology Limeres"
+                }, 
+                {
+                    "code": "SOC 117", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC/117", 
+                    "name": "Minorities in the U"
+                }, 
+                {
+                    "code": "SOC 123", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC/123", 
+                    "name": "Community Organization Lewis"
+                }, 
+                {
+                    "code": "SOC 201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC/201", 
+                    "name": "Contemporary Social Issues French"
+                }, 
+                {
+                    "code": "SOC 210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC/210", 
+                    "name": "Sociology of the Family Villegas"
+                }, 
+                {
+                    "code": "SOC 216", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC/216", 
+                    "name": "Health & Aging Leach"
+                }, 
+                {
+                    "code": "SOC 217", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC/217", 
+                    "name": "Introduction to Gerontology Leach"
+                }, 
+                {
+                    "code": "SOC 235", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC/235", 
+                    "name": "Introduction to Social Welfare"
+                }, 
+                {
+                    "code": "SOC G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC/G101", 
+                    "name": "Principles of Sociology"
+                }, 
+                {
+                    "code": "SOC G117", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC/G117", 
+                    "name": "Minorities in the US"
+                }, 
+                {
+                    "code": "SOC G201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC/G201", 
+                    "name": "Contemporary Social Issues"
+                }, 
+                {
+                    "code": "SOC G210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC/G210", 
+                    "name": "Sociology of the Family"
+                }, 
+                {
+                    "code": "SOC G216", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC/G216", 
+                    "name": "Health & Aging"
+                }, 
+                {
+                    "code": "SOC G217", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC/G217", 
+                    "name": "Intro to Gerontology"
+                }, 
+                {
+                    "code": "SOC G235", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC/G235", 
+                    "name": "Intro to Social Welfare"
+                }, 
+                {
+                    "code": "SOC G285", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC/G285", 
+                    "name": "Comm Organization"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/SOC"
+        }, 
+        {
+            "abbr": "SOC*", 
+            "courses": [
+                {
+                    "code": "SOC* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC%2A/G101", 
+                    "name": "Principles of Sociology"
+                }, 
+                {
+                    "code": "SOC* G107", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC%2A/G107", 
+                    "name": "Social Media in Contem Society"
+                }, 
+                {
+                    "code": "SOC* G117", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC%2A/G117", 
+                    "name": "Minorities in the US"
+                }, 
+                {
+                    "code": "SOC* G201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC%2A/G201", 
+                    "name": "Contemporary Social Issues"
+                }, 
+                {
+                    "code": "SOC* G210", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC%2A/G210", 
+                    "name": "Sociology of the Family"
+                }, 
+                {
+                    "code": "SOC* G216", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC%2A/G216", 
+                    "name": "Health & Aging"
+                }, 
+                {
+                    "code": "SOC* G217", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC%2A/G217", 
+                    "name": "Intro to Gerontology"
+                }, 
+                {
+                    "code": "SOC* G235", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC%2A/G235", 
+                    "name": "Intro to Social Welfare"
+                }, 
+                {
+                    "code": "SOC* G285", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SOC%2A/G285", 
+                    "name": "Comm Organization"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/SOC%2A"
+        }, 
+        {
+            "abbr": "SPA", 
+            "courses": [
+                {
+                    "code": "SPA 101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SPA/101", 
+                    "name": "Elementary Spanish I Romano"
+                }, 
+                {
+                    "code": "SPA 102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SPA/102", 
+                    "name": "Elementary Spanish II Goshdigian"
+                }, 
+                {
+                    "code": "SPA G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SPA/G101", 
+                    "name": "Elem Span I"
+                }, 
+                {
+                    "code": "SPA G102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SPA/G102", 
+                    "name": "Elem Span II"
+                }, 
+                {
+                    "code": "SPA G201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SPA/G201", 
+                    "name": "Intermediate Spanish I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/SPA"
+        }, 
+        {
+            "abbr": "SPA*", 
+            "courses": [
+                {
+                    "code": "SPA* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SPA%2A/G101", 
+                    "name": "Elem Span I"
+                }, 
+                {
+                    "code": "SPA* G102", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SPA%2A/G102", 
+                    "name": "Elem Span II"
+                }, 
+                {
+                    "code": "SPA* G201", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SPA%2A/G201", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/SPA%2A"
+        }, 
+        {
+            "abbr": "SPIN", 
+            "courses": [
+                {
+                    "code": "SPIN G5118", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SPIN/G5118", 
+                    "name": "Portable Exercise & Cooking"
+                }, 
+                {
+                    "code": "SPIN G5120", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SPIN/G5120", 
+                    "name": "Energy & Fitness Tips at Work"
+                }, 
+                {
+                    "code": "SPIN G5121", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SPIN/G5121", 
+                    "name": "Weight Management"
+                }, 
+                {
+                    "code": "SPIN G5130", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SPIN/G5130", 
+                    "name": "Screenprinting 101"
+                }, 
+                {
+                    "code": "SPIN G5131", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/SPIN/G5131", 
+                    "name": "Claymation"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/SPIN"
+        }, 
+        {
+            "abbr": "THR", 
+            "courses": [
+                {
+                    "code": "THR G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/THR/G101", 
+                    "name": "Intro to Theater"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/THR"
+        }, 
+        {
+            "abbr": "THR*", 
+            "courses": [
+                {
+                    "code": "THR* G101", 
+                    "course_url": "http://www.chegg.com/courses/capitalcc/THR%2A/G101", 
+                    "name": "Introduction to Theater"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/capitalcc/THR%2A"
+        }
+    ], 
+    "name": "capitalcc"
+}

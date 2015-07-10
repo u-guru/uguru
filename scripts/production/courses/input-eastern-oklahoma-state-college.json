@@ -1,0 +1,2513 @@
+{
+    "all_stats": {
+        "num_courses": 435, 
+        "num_departments": 47
+    }, 
+    "departments": [
+        {
+            "abbr": "ACCT", 
+            "courses": [
+                {
+                    "code": "ACCT 1113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ACCT/1113", 
+                    "name": "Basic Bookkeeping"
+                }, 
+                {
+                    "code": "ACCT 2203", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ACCT/2203", 
+                    "name": "Managerial Accounting"
+                }, 
+                {
+                    "code": "ACCT 2213", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ACCT/2213", 
+                    "name": "Cost Accounting"
+                }, 
+                {
+                    "code": "ACCT 2223", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ACCT/2223", 
+                    "name": "Intermediate Accounting"
+                }, 
+                {
+                    "code": "ACCT 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ACCT/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Accountancy", 
+            "url": "http://www.chegg.com/courses/eosc/ACCT"
+        }, 
+        {
+            "abbr": "AG", 
+            "courses": [
+                {
+                    "code": "AG 1011", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AG/1011", 
+                    "name": "Agriculture Orientation"
+                }, 
+                {
+                    "code": "AG 2112", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AG/2112", 
+                    "name": "Microcomputer Techniques in Agriculture"
+                }, 
+                {
+                    "code": "AG 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AG/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Agriculture", 
+            "url": "http://www.chegg.com/courses/eosc/AG"
+        }, 
+        {
+            "abbr": "AG COMM", 
+            "courses": [
+                {
+                    "code": "AG COMM 2103", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AG%20COMM/2103", 
+                    "name": "Communications in Agriculture"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eosc/AG%20COMM"
+        }, 
+        {
+            "abbr": "AG EC", 
+            "courses": [
+                {
+                    "code": "AG EC 1114", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AG%20EC/1114", 
+                    "name": "Introduction to Agriculture Economics"
+                }, 
+                {
+                    "code": "AG EC 1203", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AG%20EC/1203", 
+                    "name": "Agriculture Finance And Accounting"
+                }, 
+                {
+                    "code": "AG EC 2013", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AG%20EC/2013", 
+                    "name": "Principles of Agriculture Economics"
+                }, 
+                {
+                    "code": "AG EC 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AG%20EC/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Agricultural Economics", 
+            "url": "http://www.chegg.com/courses/eosc/AG%20EC"
+        }, 
+        {
+            "abbr": "AGRON", 
+            "courses": [
+                {
+                    "code": "AGRON 1213", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AGRON/1213", 
+                    "name": "Crop Production"
+                }, 
+                {
+                    "code": "AGRON 1214", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AGRON/1214", 
+                    "name": "Introduction to The Plant Sciences"
+                }, 
+                {
+                    "code": "AGRON 1222", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AGRON/1222", 
+                    "name": "Grain And Seed Science"
+                }, 
+                {
+                    "code": "AGRON 2012", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AGRON/2012", 
+                    "name": "Crop Production Laboratory"
+                }, 
+                {
+                    "code": "AGRON 2014", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AGRON/2014", 
+                    "name": "Hay, Forage And Pastures"
+                }, 
+                {
+                    "code": "AGRON 2124", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AGRON/2124", 
+                    "name": "Fundamentals of Soil Science"
+                }
+            ], 
+            "name": "Agronomy", 
+            "url": "http://www.chegg.com/courses/eosc/AGRON"
+        }, 
+        {
+            "abbr": "ANSI", 
+            "courses": [
+                {
+                    "code": "ANSI 1101", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ANSI/1101", 
+                    "name": "Equine Selection"
+                }, 
+                {
+                    "code": "ANSI 1102", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ANSI/1102", 
+                    "name": "Livestock Selection"
+                }, 
+                {
+                    "code": "ANSI 1103", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ANSI/1103", 
+                    "name": "Livestock Production"
+                }, 
+                {
+                    "code": "ANSI 1122", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ANSI/1122", 
+                    "name": "Basic Horseshoeing"
+                }, 
+                {
+                    "code": "ANSI 1124", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ANSI/1124", 
+                    "name": "Introduction to Animal Sciences"
+                }, 
+                {
+                    "code": "ANSI 1133", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ANSI/1133", 
+                    "name": "Fundamentals of Food Science"
+                }, 
+                {
+                    "code": "ANSI 1202", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ANSI/1202", 
+                    "name": "Beef Cattle Management"
+                }, 
+                {
+                    "code": "ANSI 1213", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ANSI/1213", 
+                    "name": "Livestock Production"
+                }, 
+                {
+                    "code": "ANSI 1223", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ANSI/1223", 
+                    "name": "Ranch Animal Anatomy And Diseases"
+                }, 
+                {
+                    "code": "ANSI 1232", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ANSI/1232", 
+                    "name": "Swine Management"
+                }, 
+                {
+                    "code": "ANSI 2012", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ANSI/2012", 
+                    "name": "Live Animal Evaluation"
+                }, 
+                {
+                    "code": "ANSI 2123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ANSI/2123", 
+                    "name": "Livestock Feeding"
+                }, 
+                {
+                    "code": "ANSI 2133", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ANSI/2133", 
+                    "name": "Equine Nutrition And Health"
+                }, 
+                {
+                    "code": "ANSI 2253", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ANSI/2253", 
+                    "name": "Meat Animal And Carcass Evaluation"
+                }, 
+                {
+                    "code": "ANSI 2422", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ANSI/2422", 
+                    "name": "Horse Production"
+                }, 
+                {
+                    "code": "ANSI 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ANSI/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eosc/ANSI"
+        }, 
+        {
+            "abbr": "AOT", 
+            "courses": [
+                {
+                    "code": "AOT 1143", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AOT/1143", 
+                    "name": "Medical Terminology For The Office"
+                }, 
+                {
+                    "code": "AOT 1243", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AOT/1243", 
+                    "name": "Machine Transcription"
+                }, 
+                {
+                    "code": "AOT 2113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AOT/2113", 
+                    "name": "Medical Machine Transcription"
+                }, 
+                {
+                    "code": "AOT 2132", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AOT/2132", 
+                    "name": "Records Management"
+                }, 
+                {
+                    "code": "AOT 2223", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AOT/2223", 
+                    "name": "The Law Office I"
+                }, 
+                {
+                    "code": "AOT 2233", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AOT/2233", 
+                    "name": "Administrative Office Procedures"
+                }, 
+                {
+                    "code": "AOT 2253", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AOT/2253", 
+                    "name": "The Law Office II"
+                }, 
+                {
+                    "code": "AOT 2303", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AOT/2303", 
+                    "name": "Intermediate Keyboarding"
+                }, 
+                {
+                    "code": "AOT 2333", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AOT/2333", 
+                    "name": "Advanced Production Keyboarding"
+                }, 
+                {
+                    "code": "AOT 2343", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AOT/2343", 
+                    "name": "Coding For Reimbursement"
+                }, 
+                {
+                    "code": "AOT 2353", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AOT/2353", 
+                    "name": "Coding Icd"
+                }, 
+                {
+                    "code": "AOT 2363", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AOT/2363", 
+                    "name": "Medical Office Procedures"
+                }, 
+                {
+                    "code": "AOT 2373", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AOT/2373", 
+                    "name": "Legal Aspects of Health Records"
+                }, 
+                {
+                    "code": "AOT 2991,2992,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AOT/2991%2C2992%2C2994", 
+                    "name": "Special Topics"
+                }, 
+                {
+                    "code": "AOT 2993", 
+                    "course_url": "http://www.chegg.com/courses/eosc/AOT/2993", 
+                    "name": "Internship For Administrative Office Technology"
+                }
+            ], 
+            "name": "Administrative Office Technolo", 
+            "url": "http://www.chegg.com/courses/eosc/AOT"
+        }, 
+        {
+            "abbr": "BIOL", 
+            "courses": [
+                {
+                    "code": "BIOL 1104", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BIOL/1104", 
+                    "name": "Conservation of Natural Resources"
+                }, 
+                {
+                    "code": "BIOL 2103", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BIOL/2103", 
+                    "name": "Environmental Science I"
+                }, 
+                {
+                    "code": "BIOL 2104", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BIOL/2104", 
+                    "name": "Environmental Science II"
+                }, 
+                {
+                    "code": "BIOL 2124", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BIOL/2124", 
+                    "name": "Introduction to Microbiology"
+                }, 
+                {
+                    "code": "BIOL 2155", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BIOL/2155", 
+                    "name": "Microbiology"
+                }, 
+                {
+                    "code": "BIOL 2204", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BIOL/2204", 
+                    "name": "Human Physiology"
+                }, 
+                {
+                    "code": "BIOL 2224", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BIOL/2224", 
+                    "name": "General Entomology"
+                }, 
+                {
+                    "code": "BIOL 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BIOL/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/eosc/BIOL"
+        }, 
+        {
+            "abbr": "BOT", 
+            "courses": [
+                {
+                    "code": "BOT 1114", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BOT/1114", 
+                    "name": "General Botany"
+                }, 
+                {
+                    "code": "BOT 2134", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BOT/2134", 
+                    "name": "Dendrology"
+                }, 
+                {
+                    "code": "BOT 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BOT/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Botany", 
+            "url": "http://www.chegg.com/courses/eosc/BOT"
+        }, 
+        {
+            "abbr": "BUS AD", 
+            "courses": [
+                {
+                    "code": "BUS AD 1023", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/1023", 
+                    "name": "Business Mathematics"
+                }, 
+                {
+                    "code": "BUS AD 1101", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/1101", 
+                    "name": "Leadership Development I"
+                }, 
+                {
+                    "code": "BUS AD 1111", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/1111", 
+                    "name": "Leadership Development II"
+                }, 
+                {
+                    "code": "BUS AD 1113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/1113", 
+                    "name": "Administrative Office Technology"
+                }, 
+                {
+                    "code": "BUS AD 1123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/1123", 
+                    "name": "Introduction to Business"
+                }, 
+                {
+                    "code": "BUS AD 1133", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/1133", 
+                    "name": "Human Relations"
+                }, 
+                {
+                    "code": "BUS AD 1233", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/1233", 
+                    "name": "Grammar For Business"
+                }, 
+                {
+                    "code": "BUS AD 1513", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/1513", 
+                    "name": "Introduction to Hospitality And Tourism"
+                }, 
+                {
+                    "code": "BUS AD 1613", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/1613", 
+                    "name": "Principals of Customer Service"
+                }, 
+                {
+                    "code": "BUS AD 2101", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/2101", 
+                    "name": "Leadership Development III"
+                }, 
+                {
+                    "code": "BUS AD 2111", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/2111", 
+                    "name": "Leadership Development IV"
+                }, 
+                {
+                    "code": "BUS AD 2113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/2113", 
+                    "name": "Business Statistics"
+                }, 
+                {
+                    "code": "BUS AD 2123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/2123", 
+                    "name": "Business Communications"
+                }, 
+                {
+                    "code": "BUS AD 2203", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/2203", 
+                    "name": "Business Calculus"
+                }, 
+                {
+                    "code": "BUS AD 2223", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/2223", 
+                    "name": "Business Law"
+                }, 
+                {
+                    "code": "BUS AD 2513", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/2513", 
+                    "name": "Survey of Casino Operations"
+                }, 
+                {
+                    "code": "BUS AD 2613", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/2613", 
+                    "name": "Survey of Energy Industry"
+                }, 
+                {
+                    "code": "BUS AD 2991,2992,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/2991%2C2992%2C2994", 
+                    "name": "Special Topics"
+                }, 
+                {
+                    "code": "BUS AD 2993", 
+                    "course_url": "http://www.chegg.com/courses/eosc/BUS%20AD/2993", 
+                    "name": "Internship For Business Services"
+                }
+            ], 
+            "name": "Business Administration", 
+            "url": "http://www.chegg.com/courses/eosc/BUS%20AD"
+        }, 
+        {
+            "abbr": "CDP", 
+            "courses": [
+                {
+                    "code": "CDP 1113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CDP/1113", 
+                    "name": "Child Growth And Development"
+                }, 
+                {
+                    "code": "CDP 1223", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CDP/1223", 
+                    "name": "Preschool Behavior And Guidance"
+                }, 
+                {
+                    "code": "CDP 2013", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CDP/2013", 
+                    "name": "Children With Special Needs"
+                }, 
+                {
+                    "code": "CDP 2103", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CDP/2103", 
+                    "name": "Parent- Teacher Community Relations"
+                }, 
+                {
+                    "code": "CDP 2133", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CDP/2133", 
+                    "name": "Language Arts And Literature"
+                }, 
+                {
+                    "code": "CDP 2213", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CDP/2213", 
+                    "name": "Art And Music For Young Children"
+                }, 
+                {
+                    "code": "CDP 2223", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CDP/2223", 
+                    "name": "Program Planning For Early Childhood Programs"
+                }, 
+                {
+                    "code": "CDP 2991,2992,2993", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CDP/2991%2C2992%2C2993", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eosc/CDP"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 1104", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CHEM/1104", 
+                    "name": "Materials Chemistry"
+                }, 
+                {
+                    "code": "CHEM 1315", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CHEM/1315", 
+                    "name": "General College Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 1415", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CHEM/1415", 
+                    "name": "General College Chemistry II"
+                }, 
+                {
+                    "code": "CHEM 2105", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CHEM/2105", 
+                    "name": "Organic Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 2205", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CHEM/2205", 
+                    "name": "Organic Chemistry II"
+                }, 
+                {
+                    "code": "CHEM 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CHEM/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/eosc/CHEM"
+        }, 
+        {
+            "abbr": "CHOC", 
+            "courses": [
+                {
+                    "code": "CHOC 1113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CHOC/1113", 
+                    "name": "Elementary Choctaw I"
+                }, 
+                {
+                    "code": "CHOC 1213", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CHOC/1213", 
+                    "name": "Elementary Choctaw II"
+                }
+            ], 
+            "name": "Choctaw", 
+            "url": "http://www.chegg.com/courses/eosc/CHOC"
+        }, 
+        {
+            "abbr": "CIS", 
+            "courses": [
+                {
+                    "code": "CIS 1101", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1101", 
+                    "name": "Keyboarding For Computers I"
+                }, 
+                {
+                    "code": "CIS 1102", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1102", 
+                    "name": "Keyboarding For Computers II"
+                }, 
+                {
+                    "code": "CIS 1103", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1103", 
+                    "name": "Keyboarding For Computers III"
+                }, 
+                {
+                    "code": "CIS 1223", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1223", 
+                    "name": "Computer Logic And Algorithms"
+                }, 
+                {
+                    "code": "CIS 1233", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1233", 
+                    "name": "Introduction to Unix"
+                }, 
+                {
+                    "code": "CIS 1243", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1243", 
+                    "name": "Introduction to Windows Operating System"
+                }, 
+                {
+                    "code": "CIS 1313", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1313", 
+                    "name": "Networking Essentials"
+                }, 
+                {
+                    "code": "CIS 1323", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1323", 
+                    "name": "ms Windows xp Professional"
+                }, 
+                {
+                    "code": "CIS 1333", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1333", 
+                    "name": "ms Windows 2003 Server"
+                }, 
+                {
+                    "code": "CIS 1343", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1343", 
+                    "name": "ms Windows 2003 Network Infrastructure"
+                }, 
+                {
+                    "code": "CIS 1353", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1353", 
+                    "name": "ms Windows 2003 Directory Services"
+                }, 
+                {
+                    "code": "CIS 1363", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1363", 
+                    "name": "ms Windows 2003 Network Security"
+                }, 
+                {
+                    "code": "CIS 1513", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1513", 
+                    "name": "Introduction to Word Processing"
+                }, 
+                {
+                    "code": "CIS 1523", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1523", 
+                    "name": "Advanced Word Processing"
+                }, 
+                {
+                    "code": "CIS 1533", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1533", 
+                    "name": "Introduction to Spreadsheets"
+                }, 
+                {
+                    "code": "CIS 1543", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1543", 
+                    "name": "Advanced Spreadsheets"
+                }, 
+                {
+                    "code": "CIS 1563", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1563", 
+                    "name": "Desktop Publishing"
+                }, 
+                {
+                    "code": "CIS 1573", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/1573", 
+                    "name": "Windows/ ms Dos Operating Systems"
+                }, 
+                {
+                    "code": "CIS 2113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2113", 
+                    "name": "Programming in Cobol"
+                }, 
+                {
+                    "code": "CIS 2123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2123", 
+                    "name": "Advanced Cobol"
+                }, 
+                {
+                    "code": "CIS 2223", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2223", 
+                    "name": "Programming in C++"
+                }, 
+                {
+                    "code": "CIS 2233", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2233", 
+                    "name": "Advanced C++ Programming"
+                }, 
+                {
+                    "code": "CIS 2243", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2243", 
+                    "name": "Visual C++"
+                }, 
+                {
+                    "code": "CIS 2323", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2323", 
+                    "name": "Programming in Java"
+                }, 
+                {
+                    "code": "CIS 2333", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2333", 
+                    "name": "Introduction to Access Database"
+                }, 
+                {
+                    "code": "CIS 2533", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2533", 
+                    "name": "Computer Accounting Application I"
+                }, 
+                {
+                    "code": "CIS 2543", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2543", 
+                    "name": "Computer Accounting Applications II"
+                }, 
+                {
+                    "code": "CIS 2613", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2613", 
+                    "name": "Software And Support Services"
+                }, 
+                {
+                    "code": "CIS 2623", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2623", 
+                    "name": "Hardware Maintenance And Upgrade"
+                }, 
+                {
+                    "code": "CIS 2633", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2633", 
+                    "name": "Information Systems Resource Management"
+                }, 
+                {
+                    "code": "CIS 2643", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2643", 
+                    "name": "Telecom/ Network Cable Certification"
+                }, 
+                {
+                    "code": "CIS 2713", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2713", 
+                    "name": "Cisco Systems II"
+                }, 
+                {
+                    "code": "CIS 2723", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2723", 
+                    "name": "Cisco Systems III"
+                }, 
+                {
+                    "code": "CIS 2733", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2733", 
+                    "name": "Cisco Systems IV"
+                }, 
+                {
+                    "code": "CIS 2743", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2743", 
+                    "name": "Implementing Wireless Networks"
+                }, 
+                {
+                    "code": "CIS 2991,2992,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2991%2C2992%2C2994", 
+                    "name": "Special Topics"
+                }, 
+                {
+                    "code": "CIS 2993", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CIS/2993", 
+                    "name": "Internship For Computer Technology"
+                }
+            ], 
+            "name": "Computer Information Systems", 
+            "url": "http://www.chegg.com/courses/eosc/CIS"
+        }, 
+        {
+            "abbr": "CRJS", 
+            "courses": [
+                {
+                    "code": "CRJS 1113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/1113", 
+                    "name": "Introduction to Corrections"
+                }, 
+                {
+                    "code": "CRJS 1123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/1123", 
+                    "name": "Introduction to Criminal Justice"
+                }, 
+                {
+                    "code": "CRJS 1133", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/1133", 
+                    "name": "Introduction to Law Enforcement"
+                }, 
+                {
+                    "code": "CRJS 1143", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/1143", 
+                    "name": "Juvenile Delinquency"
+                }, 
+                {
+                    "code": "CRJS 1211,1212", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/1211%2C1212", 
+                    "name": "Criminal Justice Seminar"
+                }, 
+                {
+                    "code": "CRJS 1213", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/1213", 
+                    "name": "Criminal Procedures And Evidence"
+                }, 
+                {
+                    "code": "CRJS 1222", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/1222", 
+                    "name": "Crisis Intervention"
+                }, 
+                {
+                    "code": "CRJS 1233", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/1233", 
+                    "name": "Criminology"
+                }, 
+                {
+                    "code": "CRJS 1253", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/1253", 
+                    "name": "Investigations"
+                }, 
+                {
+                    "code": "CRJS 1311", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/1311", 
+                    "name": "Speed- Measuring Devices"
+                }, 
+                {
+                    "code": "CRJS 1322", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/1322", 
+                    "name": "Dwi Detection And Standardized Field Sobriety Testing"
+                }, 
+                {
+                    "code": "CRJS 2123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/2123", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CRJS 2133", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/2133", 
+                    "name": "Professional Development"
+                }, 
+                {
+                    "code": "CRJS 2144", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/2144", 
+                    "name": "Police Patrol And Traffic Procedures"
+                }, 
+                {
+                    "code": "CRJS 2233", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/2233", 
+                    "name": "Deviant Behavior"
+                }, 
+                {
+                    "code": "CRJS 2251", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/2251", 
+                    "name": "Stress Management"
+                }, 
+                {
+                    "code": "CRJS 2264", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/2264", 
+                    "name": "Firearms Training"
+                }, 
+                {
+                    "code": "CRJS 2272", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/2272", 
+                    "name": "Law Enforcement Driver Training"
+                }, 
+                {
+                    "code": "CRJS 2283", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/2283", 
+                    "name": "Custody And Control"
+                }, 
+                {
+                    "code": "CRJS 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/CRJS/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/eosc/CRJS"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 2123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ECON/2123", 
+                    "name": "Introduction to Microeconomics"
+                }, 
+                {
+                    "code": "ECON 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ECON/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/eosc/ECON"
+        }, 
+        {
+            "abbr": "ENGL", 
+            "courses": [
+                {
+                    "code": "ENGL 0123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGL/0123", 
+                    "name": "Fundamentals of English"
+                }, 
+                {
+                    "code": "ENGL 0131,0132,0133", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGL/0131%2C0132%2C0133", 
+                    "name": "Development Reading"
+                }, 
+                {
+                    "code": "ENGL 1113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGL/1113", 
+                    "name": "Freshman Composition I"
+                }, 
+                {
+                    "code": "ENGL 1213", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGL/1213", 
+                    "name": "Freshman Composition II"
+                }, 
+                {
+                    "code": "ENGL 1223", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGL/1223", 
+                    "name": "Technical Report Writing"
+                }, 
+                {
+                    "code": "ENGL 1233", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGL/1233", 
+                    "name": "Grammar For Business"
+                }, 
+                {
+                    "code": "ENGL 2413", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGL/2413", 
+                    "name": "Introduction to Literature"
+                }, 
+                {
+                    "code": "ENGL 2433", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGL/2433", 
+                    "name": "World Literature I"
+                }, 
+                {
+                    "code": "ENGL 2443", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGL/2443", 
+                    "name": "World Literature II"
+                }, 
+                {
+                    "code": "ENGL 2543", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGL/2543", 
+                    "name": "English Literature I"
+                }, 
+                {
+                    "code": "ENGL 2653", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGL/2653", 
+                    "name": "English Literature II"
+                }, 
+                {
+                    "code": "ENGL 2773", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGL/2773", 
+                    "name": "American Literature I"
+                }, 
+                {
+                    "code": "ENGL 2883", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGL/2883", 
+                    "name": "American Literature II"
+                }, 
+                {
+                    "code": "ENGL 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGL/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/eosc/ENGL"
+        }, 
+        {
+            "abbr": "ENGR", 
+            "courses": [
+                {
+                    "code": "ENGR 1222", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGR/1222", 
+                    "name": "Topographic Mapping"
+                }, 
+                {
+                    "code": "ENGR 1223", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGR/1223", 
+                    "name": "Surveying"
+                }, 
+                {
+                    "code": "ENGR 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ENGR/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Engineering", 
+            "url": "http://www.chegg.com/courses/eosc/ENGR"
+        }, 
+        {
+            "abbr": "FOREST", 
+            "courses": [
+                {
+                    "code": "FOREST 1103", 
+                    "course_url": "http://www.chegg.com/courses/eosc/FOREST/1103", 
+                    "name": "Forest Business Methods"
+                }, 
+                {
+                    "code": "FOREST 1123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/FOREST/1123", 
+                    "name": "Introduction to Forestry"
+                }, 
+                {
+                    "code": "FOREST 1224", 
+                    "course_url": "http://www.chegg.com/courses/eosc/FOREST/1224", 
+                    "name": "Forest Measurement"
+                }, 
+                {
+                    "code": "FOREST 2114", 
+                    "course_url": "http://www.chegg.com/courses/eosc/FOREST/2114", 
+                    "name": "Applied Silviculture"
+                }, 
+                {
+                    "code": "FOREST 2115", 
+                    "course_url": "http://www.chegg.com/courses/eosc/FOREST/2115", 
+                    "name": "Advanced Forest Measurements"
+                }, 
+                {
+                    "code": "FOREST 2123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/FOREST/2123", 
+                    "name": "Timber Harvesting"
+                }, 
+                {
+                    "code": "FOREST 2132", 
+                    "course_url": "http://www.chegg.com/courses/eosc/FOREST/2132", 
+                    "name": "Forest Practices"
+                }, 
+                {
+                    "code": "FOREST 2213", 
+                    "course_url": "http://www.chegg.com/courses/eosc/FOREST/2213", 
+                    "name": "Forest Multiple Use And Conservation"
+                }, 
+                {
+                    "code": "FOREST 2214", 
+                    "course_url": "http://www.chegg.com/courses/eosc/FOREST/2214", 
+                    "name": "Forest Protection"
+                }, 
+                {
+                    "code": "FOREST 2223", 
+                    "course_url": "http://www.chegg.com/courses/eosc/FOREST/2223", 
+                    "name": "Forest Products"
+                }, 
+                {
+                    "code": "FOREST 2992", 
+                    "course_url": "http://www.chegg.com/courses/eosc/FOREST/2992", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Forestry", 
+            "url": "http://www.chegg.com/courses/eosc/FOREST"
+        }, 
+        {
+            "abbr": "GEOG", 
+            "courses": [
+                {
+                    "code": "GEOG 2143", 
+                    "course_url": "http://www.chegg.com/courses/eosc/GEOG/2143", 
+                    "name": "Introduction to Geography"
+                }, 
+                {
+                    "code": "GEOG 2723", 
+                    "course_url": "http://www.chegg.com/courses/eosc/GEOG/2723", 
+                    "name": "Regional World Geography"
+                }, 
+                {
+                    "code": "GEOG 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/GEOG/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Geography", 
+            "url": "http://www.chegg.com/courses/eosc/GEOG"
+        }, 
+        {
+            "abbr": "GEOL", 
+            "courses": [
+                {
+                    "code": "GEOL 1114", 
+                    "course_url": "http://www.chegg.com/courses/eosc/GEOL/1114", 
+                    "name": "General Geology"
+                }, 
+                {
+                    "code": "GEOL 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/GEOL/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Geology", 
+            "url": "http://www.chegg.com/courses/eosc/GEOL"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 1103", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HIST/1103", 
+                    "name": "History of Oklahoma"
+                }, 
+                {
+                    "code": "HIST 1483", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HIST/1483", 
+                    "name": "American History to 1877"
+                }, 
+                {
+                    "code": "HIST 2113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HIST/2113", 
+                    "name": "Latin America"
+                }, 
+                {
+                    "code": "HIST 2413", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HIST/2413", 
+                    "name": "Early World Civilization"
+                }, 
+                {
+                    "code": "HIST 2723", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HIST/2723", 
+                    "name": "History of The American Indian"
+                }, 
+                {
+                    "code": "HIST 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HIST/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/eosc/HIST"
+        }, 
+        {
+            "abbr": "HNRS", 
+            "courses": [
+                {
+                    "code": "HNRS 1221", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HNRS/1221", 
+                    "name": "Contemporary American Issues I"
+                }, 
+                {
+                    "code": "HNRS 2221", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HNRS/2221", 
+                    "name": "Contemporary American Issues II"
+                }, 
+                {
+                    "code": "HNRS 2313", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HNRS/2313", 
+                    "name": "Leadership in a Complex Environment"
+                }
+            ], 
+            "name": "Honors", 
+            "url": "http://www.chegg.com/courses/eosc/HNRS"
+        }, 
+        {
+            "abbr": "HORT", 
+            "courses": [
+                {
+                    "code": "HORT 1113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HORT/1113", 
+                    "name": "Principles of Horticulture And Landscape Design"
+                }, 
+                {
+                    "code": "HORT 2112", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HORT/2112", 
+                    "name": "Indoor Plants"
+                }, 
+                {
+                    "code": "HORT 2113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HORT/2113", 
+                    "name": "Plant Materials"
+                }, 
+                {
+                    "code": "HORT 2122", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HORT/2122", 
+                    "name": "Turfgrass Management"
+                }, 
+                {
+                    "code": "HORT 2123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HORT/2123", 
+                    "name": "Ornamental Plant Pest Control"
+                }, 
+                {
+                    "code": "HORT 2212", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HORT/2212", 
+                    "name": "Herbaceous Plants"
+                }, 
+                {
+                    "code": "HORT 2213", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HORT/2213", 
+                    "name": "Landscaping"
+                }, 
+                {
+                    "code": "HORT 2222", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HORT/2222", 
+                    "name": "Arboriculture"
+                }, 
+                {
+                    "code": "HORT 2233", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HORT/2233", 
+                    "name": "Nursery And Greenhouse Practices"
+                }, 
+                {
+                    "code": "HORT 2243", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HORT/2243", 
+                    "name": "Plant Propagation And Maintenance"
+                }, 
+                {
+                    "code": "HORT 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HORT/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Horticulture Sciences", 
+            "url": "http://www.chegg.com/courses/eosc/HORT"
+        }, 
+        {
+            "abbr": "HPER", 
+            "courses": [
+                {
+                    "code": "HPER 1001,1002", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1001%2C1002", 
+                    "name": "Physical Fitness"
+                }, 
+                {
+                    "code": "HPER 1021", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1021", 
+                    "name": "Cpr For The Professional"
+                }, 
+                {
+                    "code": "HPER 1101", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1101", 
+                    "name": "Individual Sports For Women I"
+                }, 
+                {
+                    "code": "HPER 1111", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1111", 
+                    "name": "Individual Sports For Men I"
+                }, 
+                {
+                    "code": "HPER 1112/1113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1112%2F1113", 
+                    "name": "Health Concepts"
+                }, 
+                {
+                    "code": "HPER 1121", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1121", 
+                    "name": "Elementary Swimming I"
+                }, 
+                {
+                    "code": "HPER 1131", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1131", 
+                    "name": "Baseball I"
+                }, 
+                {
+                    "code": "HPER 1142", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1142", 
+                    "name": "Aerobiosis And Ecology I"
+                }, 
+                {
+                    "code": "HPER 1161", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1161", 
+                    "name": "Elementary Tennis I"
+                }, 
+                {
+                    "code": "HPER 1171", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1171", 
+                    "name": "Elementary Golf I"
+                }, 
+                {
+                    "code": "HPER 1181", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1181", 
+                    "name": "Women's Softball I"
+                }, 
+                {
+                    "code": "HPER 1201", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1201", 
+                    "name": "Individual Sports For Women II"
+                }, 
+                {
+                    "code": "HPER 1211", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1211", 
+                    "name": "Individual Sports For Men II"
+                }, 
+                {
+                    "code": "HPER 1221", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1221", 
+                    "name": "Intermediate Swimming II"
+                }, 
+                {
+                    "code": "HPER 1231", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1231", 
+                    "name": "Baseball II"
+                }, 
+                {
+                    "code": "HPER 1241", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1241", 
+                    "name": "Basketball II"
+                }, 
+                {
+                    "code": "HPER 1242", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1242", 
+                    "name": "Aerobiosis And Ecology II"
+                }, 
+                {
+                    "code": "HPER 1261", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1261", 
+                    "name": "Intermediate Tennis II"
+                }, 
+                {
+                    "code": "HPER 1271", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1271", 
+                    "name": "Intermediate Golf II"
+                }, 
+                {
+                    "code": "HPER 1281", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1281", 
+                    "name": "Women's Softball II"
+                }, 
+                {
+                    "code": "HPER 1301", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1301", 
+                    "name": "Dance For Pom And Dance Team"
+                }, 
+                {
+                    "code": "HPER 1311", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1311", 
+                    "name": "Gymnastics For Cheerleading"
+                }, 
+                {
+                    "code": "HPER 1321", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1321", 
+                    "name": "Western Swing Dance"
+                }, 
+                {
+                    "code": "HPER 1341", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1341", 
+                    "name": "Aerobic Dance"
+                }, 
+                {
+                    "code": "HPER 1401,1402,1403,1404", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1401%2C1402%2C1403%2C1404", 
+                    "name": "Hper Workshops"
+                }, 
+                {
+                    "code": "HPER 1501,1502", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1501%2C1502", 
+                    "name": "Recreational Sports"
+                }, 
+                {
+                    "code": "HPER 1601", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1601", 
+                    "name": "Water Exercises"
+                }, 
+                {
+                    "code": "HPER 1613", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/1613", 
+                    "name": "Care And Prevention of Athletic Injury"
+                }, 
+                {
+                    "code": "HPER 2121", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/2121", 
+                    "name": "Lifeguard Training"
+                }, 
+                {
+                    "code": "HPER 2131", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/2131", 
+                    "name": "Baseball III"
+                }, 
+                {
+                    "code": "HPER 2181", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/2181", 
+                    "name": "Women's Softball III"
+                }, 
+                {
+                    "code": "HPER 2182", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/2182", 
+                    "name": "Sports Officiating I"
+                }, 
+                {
+                    "code": "HPER 2201", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/2201", 
+                    "name": "Instructor's Course in Water Safety"
+                }, 
+                {
+                    "code": "HPER 2221", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/2221", 
+                    "name": "Instructor's Theory Course in Lifeguard Training"
+                }, 
+                {
+                    "code": "HPER 2231", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/2231", 
+                    "name": "Baseball IV"
+                }, 
+                {
+                    "code": "HPER 2242", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/2242", 
+                    "name": "Aerobiosis And Ecology III"
+                }, 
+                {
+                    "code": "HPER 2272", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/2272", 
+                    "name": "Sports Officiating II"
+                }, 
+                {
+                    "code": "HPER 2281", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/2281", 
+                    "name": "Women's Softball IV"
+                }, 
+                {
+                    "code": "HPER 2322", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/2322", 
+                    "name": "Theory of Coaching Athletics"
+                }, 
+                {
+                    "code": "HPER 2342", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/2342", 
+                    "name": "Aerobiosis And Ecology IV"
+                }, 
+                {
+                    "code": "HPER 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPER/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Health-Pe-And Recreation", 
+            "url": "http://www.chegg.com/courses/eosc/HPER"
+        }, 
+        {
+            "abbr": "HPT", 
+            "courses": [
+                {
+                    "code": "HPT 2212", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPT/2212", 
+                    "name": "Interpretive Recreation Services"
+                }, 
+                {
+                    "code": "HPT 2291,2292,2293,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPT/2291%2C2292%2C2293%2C2994", 
+                    "name": "Special Topics"
+                }, 
+                {
+                    "code": "HPT 2312", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HPT/2312", 
+                    "name": "Parks And Nursery Management"
+                }
+            ], 
+            "name": "Human Performance-Training", 
+            "url": "http://www.chegg.com/courses/eosc/HPT"
+        }, 
+        {
+            "abbr": "HUMAN", 
+            "courses": [
+                {
+                    "code": "HUMAN 1143", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HUMAN/1143", 
+                    "name": "Art in Life"
+                }, 
+                {
+                    "code": "HUMAN 1153", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HUMAN/1153", 
+                    "name": "Survey of World Religions"
+                }, 
+                {
+                    "code": "HUMAN 2103", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HUMAN/2103", 
+                    "name": "Theatre Appreciation"
+                }, 
+                {
+                    "code": "HUMAN 2113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HUMAN/2113", 
+                    "name": "Global Humanities I"
+                }, 
+                {
+                    "code": "HUMAN 2213", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HUMAN/2213", 
+                    "name": "Global Humanities II"
+                }, 
+                {
+                    "code": "HUMAN 2223", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HUMAN/2223", 
+                    "name": "Introduction to Global Philosophy"
+                }, 
+                {
+                    "code": "HUMAN 2233", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HUMAN/2233", 
+                    "name": "World Literature I"
+                }, 
+                {
+                    "code": "HUMAN 2243", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HUMAN/2243", 
+                    "name": "World Literature II"
+                }, 
+                {
+                    "code": "HUMAN 2413", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HUMAN/2413", 
+                    "name": "Early World Civilization"
+                }, 
+                {
+                    "code": "HUMAN 2423", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HUMAN/2423", 
+                    "name": "Modern World Civilizations"
+                }, 
+                {
+                    "code": "HUMAN 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/HUMAN/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/eosc/HUMAN"
+        }, 
+        {
+            "abbr": "JOURN", 
+            "courses": [
+                {
+                    "code": "JOURN 1101", 
+                    "course_url": "http://www.chegg.com/courses/eosc/JOURN/1101", 
+                    "name": "Publications Production"
+                }, 
+                {
+                    "code": "JOURN 1103", 
+                    "course_url": "http://www.chegg.com/courses/eosc/JOURN/1103", 
+                    "name": "Fundamentals of Photography"
+                }, 
+                {
+                    "code": "JOURN 1113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/JOURN/1113", 
+                    "name": "Introduction to Mass Communications"
+                }, 
+                {
+                    "code": "JOURN 1123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/JOURN/1123", 
+                    "name": "Introduction to Short Story Writing"
+                }, 
+                {
+                    "code": "JOURN 1133", 
+                    "course_url": "http://www.chegg.com/courses/eosc/JOURN/1133", 
+                    "name": "Photographic Journalism"
+                }, 
+                {
+                    "code": "JOURN 1143", 
+                    "course_url": "http://www.chegg.com/courses/eosc/JOURN/1143", 
+                    "name": "Fundamentals of Public Relations"
+                }, 
+                {
+                    "code": "JOURN 1203", 
+                    "course_url": "http://www.chegg.com/courses/eosc/JOURN/1203", 
+                    "name": "Graphic Arts For The Print Media"
+                }, 
+                {
+                    "code": "JOURN 1213", 
+                    "course_url": "http://www.chegg.com/courses/eosc/JOURN/1213", 
+                    "name": "Newspaper Reporting"
+                }, 
+                {
+                    "code": "JOURN 1223", 
+                    "course_url": "http://www.chegg.com/courses/eosc/JOURN/1223", 
+                    "name": "Introduction to Novel Writing"
+                }, 
+                {
+                    "code": "JOURN 2013", 
+                    "course_url": "http://www.chegg.com/courses/eosc/JOURN/2013", 
+                    "name": "Practical Experience in Journalism"
+                }, 
+                {
+                    "code": "JOURN 2113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/JOURN/2113", 
+                    "name": "News Editing"
+                }, 
+                {
+                    "code": "JOURN 2123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/JOURN/2123", 
+                    "name": "Principles of Mass Media Advertising"
+                }, 
+                {
+                    "code": "JOURN 2133", 
+                    "course_url": "http://www.chegg.com/courses/eosc/JOURN/2133", 
+                    "name": "Radio Broadcasting"
+                }, 
+                {
+                    "code": "JOURN 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/JOURN/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Journalism", 
+            "url": "http://www.chegg.com/courses/eosc/JOURN"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 0103", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/0103", 
+                    "name": "General College Mathematics"
+                }, 
+                {
+                    "code": "MATH 0113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/0113", 
+                    "name": "Basic Algebra"
+                }, 
+                {
+                    "code": "MATH 0123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/0123", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MATH 0125", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/0125", 
+                    "name": "Basic And Intermediate Algebra"
+                }, 
+                {
+                    "code": "MATH 1023", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/1023", 
+                    "name": "Business Mathematics"
+                }, 
+                {
+                    "code": "MATH 1133", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/1133", 
+                    "name": "Technical Math"
+                }, 
+                {
+                    "code": "MATH 1503", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/1503", 
+                    "name": "Survey of Mathematics"
+                }, 
+                {
+                    "code": "MATH 1613", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/1613", 
+                    "name": "Trigonometry"
+                }, 
+                {
+                    "code": "MATH 2013", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/2013", 
+                    "name": "Introduction to Discrete Mathematics"
+                }, 
+                {
+                    "code": "MATH 2113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/2113", 
+                    "name": "Business Statistics"
+                }, 
+                {
+                    "code": "MATH 2203", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/2203", 
+                    "name": "Business Calculus"
+                }, 
+                {
+                    "code": "MATH 2213", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/2213", 
+                    "name": "Problem Solving For Elementary Education Majors"
+                }, 
+                {
+                    "code": "MATH 2223", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/2223", 
+                    "name": "Geometry For Elementary Education Majors"
+                }, 
+                {
+                    "code": "MATH 2233", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/2233", 
+                    "name": "Elementary Statistics"
+                }, 
+                {
+                    "code": "MATH 2235", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/2235", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MATH 2245", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/2245", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MATH 2253", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/2253", 
+                    "name": "Differential Equations"
+                }, 
+                {
+                    "code": "MATH 2263", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/2263", 
+                    "name": "College Geometry"
+                }, 
+                {
+                    "code": "MATH 2343", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/2343", 
+                    "name": "Calculus III"
+                }, 
+                {
+                    "code": "MATH 2413", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/2413", 
+                    "name": "Brief Calculus With Applications"
+                }, 
+                {
+                    "code": "MATH 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MATH/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/eosc/MATH"
+        }, 
+        {
+            "abbr": "MECAG", 
+            "courses": [
+                {
+                    "code": "MECAG 1413", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MECAG/1413", 
+                    "name": "Introduction to Engineering in Agriculture"
+                }, 
+                {
+                    "code": "MECAG 2202", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MECAG/2202", 
+                    "name": "Conservation Surveys And Technology"
+                }, 
+                {
+                    "code": "MECAG 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MECAG/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eosc/MECAG"
+        }, 
+        {
+            "abbr": "MGT", 
+            "courses": [
+                {
+                    "code": "MGT 2113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MGT/2113", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "MGT 2143", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MGT/2143", 
+                    "name": "Financial Management"
+                }
+            ], 
+            "name": "Management", 
+            "url": "http://www.chegg.com/courses/eosc/MGT"
+        }, 
+        {
+            "abbr": "MKT", 
+            "courses": [
+                {
+                    "code": "MKT 2123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MKT/2123", 
+                    "name": "Principles of Advertising"
+                }, 
+                {
+                    "code": "MKT 2333", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MKT/2333", 
+                    "name": "Marketing"
+                }, 
+                {
+                    "code": "MKT 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MKT/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Marketing", 
+            "url": "http://www.chegg.com/courses/eosc/MKT"
+        }, 
+        {
+            "abbr": "MPFS", 
+            "courses": [
+                {
+                    "code": "MPFS 1124", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MPFS/1124", 
+                    "name": "Meat Processing And Merchandising"
+                }, 
+                {
+                    "code": "MPFS 1143", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MPFS/1143", 
+                    "name": "Meat Grading And Selection"
+                }, 
+                {
+                    "code": "MPFS 1214", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MPFS/1214", 
+                    "name": "Introduction to Meat Technology"
+                }, 
+                {
+                    "code": "MPFS 1222", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MPFS/1222", 
+                    "name": "Meat Product Evaluation"
+                }, 
+                {
+                    "code": "MPFS 1244", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MPFS/1244", 
+                    "name": "Introduction to Livestock Processing"
+                }, 
+                {
+                    "code": "MPFS 2004", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MPFS/2004", 
+                    "name": "Meat Industry Internship"
+                }, 
+                {
+                    "code": "MPFS 2114", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MPFS/2114", 
+                    "name": "Advanced Meat Merchandising"
+                }, 
+                {
+                    "code": "MPFS 2124", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MPFS/2124", 
+                    "name": "Poultry Processing Technology"
+                }, 
+                {
+                    "code": "MPFS 2134", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MPFS/2134", 
+                    "name": "Food Safety And Sanitation"
+                }, 
+                {
+                    "code": "MPFS 2144", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MPFS/2144", 
+                    "name": "Advanced Livestock Processing/ Safety Analysis"
+                }, 
+                {
+                    "code": "MPFS 2211", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MPFS/2211", 
+                    "name": "Meat Technology Seminar"
+                }, 
+                {
+                    "code": "MPFS 2214", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MPFS/2214", 
+                    "name": "Advanced Meat Technology And Fabrications"
+                }, 
+                {
+                    "code": "MPFS 2224", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MPFS/2224", 
+                    "name": "Processing Sausage And Cured Meats"
+                }, 
+                {
+                    "code": "MPFS 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MPFS/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eosc/MPFS"
+        }, 
+        {
+            "abbr": "MUSIC", 
+            "courses": [
+                {
+                    "code": "MUSIC 1051", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1051", 
+                    "name": "Applied Music"
+                }, 
+                {
+                    "code": "MUSIC 1061", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1061", 
+                    "name": "Applied Music"
+                }, 
+                {
+                    "code": "MUSIC 1071", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1071", 
+                    "name": "Applied Music"
+                }, 
+                {
+                    "code": "MUSIC 1081", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1081", 
+                    "name": "Applied Music"
+                }, 
+                {
+                    "code": "MUSIC 1091", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1091", 
+                    "name": "Applied Music"
+                }, 
+                {
+                    "code": "MUSIC 1101", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1101", 
+                    "name": "Applied Music"
+                }, 
+                {
+                    "code": "MUSIC 1102", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1102", 
+                    "name": "Fundamentals of Music"
+                }, 
+                {
+                    "code": "MUSIC 1114", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1114", 
+                    "name": "Elementary Harmony And Ear Training"
+                }, 
+                {
+                    "code": "MUSIC 1121", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1121", 
+                    "name": "Applied Music"
+                }, 
+                {
+                    "code": "MUSIC 1131", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1131", 
+                    "name": "Applied Music"
+                }, 
+                {
+                    "code": "MUSIC 1161", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1161", 
+                    "name": "Applied Music"
+                }, 
+                {
+                    "code": "MUSIC 1171", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1171", 
+                    "name": "Applied Music"
+                }, 
+                {
+                    "code": "MUSIC 1181", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1181", 
+                    "name": "Applied Music"
+                }, 
+                {
+                    "code": "MUSIC 1191", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1191", 
+                    "name": "Applied Music"
+                }, 
+                {
+                    "code": "MUSIC 1214", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1214", 
+                    "name": "Intermediate Harmony And Ear Training"
+                }, 
+                {
+                    "code": "MUSIC 1411", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1411", 
+                    "name": "Piano I"
+                }, 
+                {
+                    "code": "MUSIC 1421", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1421", 
+                    "name": "Piano II"
+                }, 
+                {
+                    "code": "MUSIC 1511", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1511", 
+                    "name": "Class Voice I"
+                }, 
+                {
+                    "code": "MUSIC 1521", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1521", 
+                    "name": "Class Voice II"
+                }, 
+                {
+                    "code": "MUSIC 1611", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1611", 
+                    "name": "College Choir"
+                }, 
+                {
+                    "code": "MUSIC 1621", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1621", 
+                    "name": "College Choir"
+                }, 
+                {
+                    "code": "MUSIC 1711", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1711", 
+                    "name": "College Band"
+                }, 
+                {
+                    "code": "MUSIC 1721", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1721", 
+                    "name": "College Band"
+                }, 
+                {
+                    "code": "MUSIC 1811", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1811", 
+                    "name": "Vocal Ensemble("
+                }, 
+                {
+                    "code": "MUSIC 1821", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/1821", 
+                    "name": "Vocal Ensemble("
+                }, 
+                {
+                    "code": "MUSIC 2114", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/2114", 
+                    "name": "Advanced Harmony And Ear Training I"
+                }, 
+                {
+                    "code": "MUSIC 2121", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/2121", 
+                    "name": "Accompanying"
+                }, 
+                {
+                    "code": "MUSIC 2214", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/2214", 
+                    "name": "Advanced Harmony And Ear Training II"
+                }, 
+                {
+                    "code": "MUSIC 2411", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/2411", 
+                    "name": "Piano III"
+                }, 
+                {
+                    "code": "MUSIC 2421", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/2421", 
+                    "name": "Piano IV"
+                }, 
+                {
+                    "code": "MUSIC 2511", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/2511", 
+                    "name": "Applied Voice I"
+                }, 
+                {
+                    "code": "MUSIC 2521", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/2521", 
+                    "name": "Applied Voice II"
+                }, 
+                {
+                    "code": "MUSIC 2611", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/2611", 
+                    "name": "College Choir"
+                }, 
+                {
+                    "code": "MUSIC 2621", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/2621", 
+                    "name": "College Choir"
+                }, 
+                {
+                    "code": "MUSIC 2711", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/2711", 
+                    "name": "College Band"
+                }, 
+                {
+                    "code": "MUSIC 2721", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/2721", 
+                    "name": "College Band"
+                }, 
+                {
+                    "code": "MUSIC 2811", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/2811", 
+                    "name": "Vocal Ensemble"
+                }, 
+                {
+                    "code": "MUSIC 2821", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/2821", 
+                    "name": "Vocal Ensemble"
+                }, 
+                {
+                    "code": "MUSIC 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/MUSIC/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/eosc/MUSIC"
+        }, 
+        {
+            "abbr": "NURS", 
+            "courses": [
+                {
+                    "code": "NURS 1002", 
+                    "course_url": "http://www.chegg.com/courses/eosc/NURS/1002", 
+                    "name": "Math For Medications"
+                }, 
+                {
+                    "code": "NURS 1012", 
+                    "course_url": "http://www.chegg.com/courses/eosc/NURS/1012", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "NURS 1022", 
+                    "course_url": "http://www.chegg.com/courses/eosc/NURS/1022", 
+                    "name": "Pharmacology in Nursing"
+                }, 
+                {
+                    "code": "NURS 1032", 
+                    "course_url": "http://www.chegg.com/courses/eosc/NURS/1032", 
+                    "name": "Nursing Process"
+                }, 
+                {
+                    "code": "NURS 1118", 
+                    "course_url": "http://www.chegg.com/courses/eosc/NURS/1118", 
+                    "name": "Introduction to Nursing Science"
+                }, 
+                {
+                    "code": "NURS 1218", 
+                    "course_url": "http://www.chegg.com/courses/eosc/NURS/1218", 
+                    "name": "Family Nursing"
+                }, 
+                {
+                    "code": "NURS 1303", 
+                    "course_url": "http://www.chegg.com/courses/eosc/NURS/1303", 
+                    "name": "Transition in Nursing"
+                }, 
+                {
+                    "code": "NURS 2118", 
+                    "course_url": "http://www.chegg.com/courses/eosc/NURS/2118", 
+                    "name": "PHYSICAL AND MENTAL ILLNESS I ("
+                }, 
+                {
+                    "code": "NURS 2212", 
+                    "course_url": "http://www.chegg.com/courses/eosc/NURS/2212", 
+                    "name": "Current Issues in Nursing"
+                }, 
+                {
+                    "code": "NURS 2218", 
+                    "course_url": "http://www.chegg.com/courses/eosc/NURS/2218", 
+                    "name": "PHYSICAL AND MENTAL ILLNESS II ("
+                }, 
+                {
+                    "code": "NURS 2991,2992,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/NURS/2991%2C2992%2C2994", 
+                    "name": "Special Topics"
+                }, 
+                {
+                    "code": "NURS 2993", 
+                    "course_url": "http://www.chegg.com/courses/eosc/NURS/2993", 
+                    "name": "Medical Terminology"
+                }
+            ], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/eosc/NURS"
+        }, 
+        {
+            "abbr": "NUTRIT", 
+            "courses": [
+                {
+                    "code": "NUTRIT 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/NUTRIT/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eosc/NUTRIT"
+        }, 
+        {
+            "abbr": "OLS", 
+            "courses": [
+                {
+                    "code": "OLS 1111", 
+                    "course_url": "http://www.chegg.com/courses/eosc/OLS/1111", 
+                    "name": "Orientation And Library Science"
+                }
+            ], 
+            "name": "Ols-Organiz Ldrshp&Supervision", 
+            "url": "http://www.chegg.com/courses/eosc/OLS"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 1214", 
+                    "course_url": "http://www.chegg.com/courses/eosc/PHY/1214", 
+                    "name": "General Physics II"
+                }, 
+                {
+                    "code": "PHY 2014", 
+                    "course_url": "http://www.chegg.com/courses/eosc/PHY/2014", 
+                    "name": "Engineering Physics I"
+                }, 
+                {
+                    "code": "PHY 2114", 
+                    "course_url": "http://www.chegg.com/courses/eosc/PHY/2114", 
+                    "name": "Engineering Physics II"
+                }, 
+                {
+                    "code": "PHY 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/PHY/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/eosc/PHY"
+        }, 
+        {
+            "abbr": "PHY SC", 
+            "courses": [
+                {
+                    "code": "PHY SC 1114", 
+                    "course_url": "http://www.chegg.com/courses/eosc/PHY%20SC/1114", 
+                    "name": "Physical Science"
+                }, 
+                {
+                    "code": "PHY SC 1124", 
+                    "course_url": "http://www.chegg.com/courses/eosc/PHY%20SC/1124", 
+                    "name": "Elementary Astronomy"
+                }, 
+                {
+                    "code": "PHY SC 1214", 
+                    "course_url": "http://www.chegg.com/courses/eosc/PHY%20SC/1214", 
+                    "name": "Earth Science"
+                }, 
+                {
+                    "code": "PHY SC 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/PHY%20SC/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Independent Studies", 
+            "url": "http://www.chegg.com/courses/eosc/PHY%20SC"
+        }, 
+        {
+            "abbr": "POL SC", 
+            "courses": [
+                {
+                    "code": "POL SC 1111", 
+                    "course_url": "http://www.chegg.com/courses/eosc/POL%20SC/1111", 
+                    "name": "Current Issues in American Life"
+                }, 
+                {
+                    "code": "POL SC 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/POL%20SC/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/eosc/POL%20SC"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 1123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/PSY/1123", 
+                    "name": "Psychology of Aging"
+                }, 
+                {
+                    "code": "PSY 1143", 
+                    "course_url": "http://www.chegg.com/courses/eosc/PSY/1143", 
+                    "name": "Psychology of Personal Adjustment"
+                }, 
+                {
+                    "code": "PSY 2113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/PSY/2113", 
+                    "name": "Child Psychology"
+                }, 
+                {
+                    "code": "PSY 2123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/PSY/2123", 
+                    "name": "Personality Theories"
+                }, 
+                {
+                    "code": "PSY 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/PSY/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Clinical Counseling", 
+            "url": "http://www.chegg.com/courses/eosc/PSY"
+        }, 
+        {
+            "abbr": "REL ED", 
+            "courses": [
+                {
+                    "code": "REL ED 2103", 
+                    "course_url": "http://www.chegg.com/courses/eosc/REL%20ED/2103", 
+                    "name": "Introduction to The Old Testament"
+                }, 
+                {
+                    "code": "REL ED 2203", 
+                    "course_url": "http://www.chegg.com/courses/eosc/REL%20ED/2203", 
+                    "name": "Introduction to The New Testament"
+                }, 
+                {
+                    "code": "REL ED 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/REL%20ED/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/eosc/REL%20ED"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 1113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SOC/1113", 
+                    "name": "Introduction to Sociology"
+                }, 
+                {
+                    "code": "SOC 1213", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SOC/1213", 
+                    "name": "Marriage And The Family"
+                }, 
+                {
+                    "code": "SOC 1312", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SOC/1312", 
+                    "name": "Drug Education"
+                }, 
+                {
+                    "code": "SOC 2113", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SOC/2113", 
+                    "name": "Social Problems"
+                }, 
+                {
+                    "code": "SOC 2123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SOC/2123", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "SOC 2213", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SOC/2213", 
+                    "name": "Crime And Delinquency"
+                }, 
+                {
+                    "code": "SOC 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SOC/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/eosc/SOC"
+        }, 
+        {
+            "abbr": "SPAN", 
+            "courses": [
+                {
+                    "code": "SPAN 1115", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPAN/1115", 
+                    "name": "Elementary Spanish I"
+                }, 
+                {
+                    "code": "SPAN 1215", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPAN/1215", 
+                    "name": "Elementary Spanish II"
+                }, 
+                {
+                    "code": "SPAN 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPAN/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Spanish", 
+            "url": "http://www.chegg.com/courses/eosc/SPAN"
+        }, 
+        {
+            "abbr": "SPCH", 
+            "courses": [
+                {
+                    "code": "SPCH 1011", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/1011", 
+                    "name": "Participation in Competitive Speech Activities"
+                }, 
+                {
+                    "code": "SPCH 1021", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/1021", 
+                    "name": "Participation in Competitive Speech Activities"
+                }, 
+                {
+                    "code": "SPCH 1103", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/1103", 
+                    "name": "Acting"
+                }, 
+                {
+                    "code": "SPCH 1111,1121,2131,2141", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/1111%2C1121%2C2131%2C2141", 
+                    "name": "Production Activities"
+                }, 
+                {
+                    "code": "SPCH 1123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/1123", 
+                    "name": "Introduction to Theatre"
+                }, 
+                {
+                    "code": "SPCH 1203", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/1203", 
+                    "name": "Voice And Diction"
+                }, 
+                {
+                    "code": "SPCH 1223", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/1223", 
+                    "name": "Interpersonal Communications"
+                }, 
+                {
+                    "code": "SPCH 1233", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/1233", 
+                    "name": "Argumentation And Debate"
+                }, 
+                {
+                    "code": "SPCH 1403", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/1403", 
+                    "name": "American Sign Language I"
+                }, 
+                {
+                    "code": "SPCH 1413", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/1413", 
+                    "name": "American Sign Language II"
+                }, 
+                {
+                    "code": "SPCH 2011", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/2011", 
+                    "name": "Participation in Competitive Speech Activities"
+                }, 
+                {
+                    "code": "SPCH 2021", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/2021", 
+                    "name": "Participation in Competitive Speech Activities"
+                }, 
+                {
+                    "code": "SPCH 2103", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/2103", 
+                    "name": "Stagecraft"
+                }, 
+                {
+                    "code": "SPCH 2123", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/2123", 
+                    "name": "Basic Lighting And Sound"
+                }, 
+                {
+                    "code": "SPCH 2133", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/2133", 
+                    "name": "Basic Costume And Make- up"
+                }, 
+                {
+                    "code": "SPCH 2203", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/2203", 
+                    "name": "Oral Interpretation"
+                }, 
+                {
+                    "code": "SPCH 2233", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/2233", 
+                    "name": "Business And Professional Speaking"
+                }, 
+                {
+                    "code": "SPCH 2303", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/2303", 
+                    "name": "Intermediate Acting"
+                }, 
+                {
+                    "code": "SPCH 2313", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/2313", 
+                    "name": "Character Analysis"
+                }, 
+                {
+                    "code": "SPCH 2323", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/2323", 
+                    "name": "Audition"
+                }, 
+                {
+                    "code": "SPCH 2333", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/2333", 
+                    "name": "Play Writing"
+                }, 
+                {
+                    "code": "SPCH 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/SPCH/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Speech", 
+            "url": "http://www.chegg.com/courses/eosc/SPCH"
+        }, 
+        {
+            "abbr": "TECH", 
+            "courses": [
+                {
+                    "code": "TECH 1114", 
+                    "course_url": "http://www.chegg.com/courses/eosc/TECH/1114", 
+                    "name": "Introduction to Technical Studies"
+                }, 
+                {
+                    "code": "TECH 1124", 
+                    "course_url": "http://www.chegg.com/courses/eosc/TECH/1124", 
+                    "name": "Lab Safety"
+                }, 
+                {
+                    "code": "TECH 1134", 
+                    "course_url": "http://www.chegg.com/courses/eosc/TECH/1134", 
+                    "name": "Equipment Ops/ Management"
+                }, 
+                {
+                    "code": "TECH 1144", 
+                    "course_url": "http://www.chegg.com/courses/eosc/TECH/1144", 
+                    "name": "Beginning Technical Concepts"
+                }, 
+                {
+                    "code": "TECH 2114", 
+                    "course_url": "http://www.chegg.com/courses/eosc/TECH/2114", 
+                    "name": "Lab Management"
+                }, 
+                {
+                    "code": "TECH 2124", 
+                    "course_url": "http://www.chegg.com/courses/eosc/TECH/2124", 
+                    "name": "Intermediate Tech Applications"
+                }, 
+                {
+                    "code": "TECH 2134", 
+                    "course_url": "http://www.chegg.com/courses/eosc/TECH/2134", 
+                    "name": "Advanced Tech Applications"
+                }, 
+                {
+                    "code": "TECH 2144", 
+                    "course_url": "http://www.chegg.com/courses/eosc/TECH/2144", 
+                    "name": "Employability Skills"
+                }
+            ], 
+            "name": "Technology", 
+            "url": "http://www.chegg.com/courses/eosc/TECH"
+        }, 
+        {
+            "abbr": "ZOO", 
+            "courses": [
+                {
+                    "code": "ZOO 1114", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ZOO/1114", 
+                    "name": "General Zoology"
+                }, 
+                {
+                    "code": "ZOO 1414", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ZOO/1414", 
+                    "name": "Introductory Cellular Physiology"
+                }, 
+                {
+                    "code": "ZOO 2114", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ZOO/2114", 
+                    "name": "Human Anatomy"
+                }, 
+                {
+                    "code": "ZOO 2991,2992,2993,2994", 
+                    "course_url": "http://www.chegg.com/courses/eosc/ZOO/2991%2C2992%2C2993%2C2994", 
+                    "name": "Special Topics"
+                }
+            ], 
+            "name": "Zoology", 
+            "url": "http://www.chegg.com/courses/eosc/ZOO"
+        }
+    ], 
+    "name": "eosc"
+}

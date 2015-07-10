@@ -1,0 +1,3579 @@
+{
+    "all_stats": {
+        "num_courses": 600, 
+        "num_departments": 88
+    }, 
+    "departments": [
+        {
+            "abbr": "ACC XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/ACC%20XXX"
+        }, 
+        {
+            "abbr": "AMS XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/AMS%20XXX"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 116", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/116", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 123", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/123", 
+                    "name": "Media Design"
+                }, 
+                {
+                    "code": "ART 130", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/130", 
+                    "name": "Color and Design"
+                }, 
+                {
+                    "code": "ART 160", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/160", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 175", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/175", 
+                    "name": "Ceramics I"
+                }, 
+                {
+                    "code": "ART 190", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/190", 
+                    "name": "Digital Fine Art Photography I"
+                }, 
+                {
+                    "code": "ART 235", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/235", 
+                    "name": "Issues in Comtemporary Art"
+                }, 
+                {
+                    "code": "ART 260", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/260", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 275", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/275", 
+                    "name": "Ceramics II"
+                }, 
+                {
+                    "code": "ART 290", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/290", 
+                    "name": "Digital Fine Art Photography II"
+                }, 
+                {
+                    "code": "ART 350", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/350", 
+                    "name": "Eastern Thought in Western Art"
+                }, 
+                {
+                    "code": "ART 370", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/370", 
+                    "name": "Painting III"
+                }, 
+                {
+                    "code": "ART 375", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/375", 
+                    "name": "Ceramics III"
+                }, 
+                {
+                    "code": "ART 470", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/470", 
+                    "name": "Painting IV"
+                }, 
+                {
+                    "code": "ART 475", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/475", 
+                    "name": "Ceramics IV"
+                }, 
+                {
+                    "code": "ART 498", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/498", 
+                    "name": "Senior Portfolio Review"
+                }, 
+                {
+                    "code": "ART 499", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ART/499", 
+                    "name": "Senior Comprehensive Exam"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/franklincollege/ART"
+        }, 
+        {
+            "abbr": "ART XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/ART%20XXX"
+        }, 
+        {
+            "abbr": "ASC XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/ASC%20XXX"
+        }, 
+        {
+            "abbr": "ATR", 
+            "courses": [
+                {
+                    "code": "ATR 121", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ATR/121", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ATR 245", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ATR/245", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ATR 345", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ATR/345", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ATR 347", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ATR/347", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ATR 350", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ATR/350", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ATR 370", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ATR/370", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ATR 499", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ATR/499", 
+                    "name": "Senior Competency Practicum"
+                }
+            ], 
+            "name": "Athletic Training", 
+            "url": "http://www.chegg.com/courses/franklincollege/ATR"
+        }, 
+        {
+            "abbr": "ATR XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/ATR%20XXX"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 100", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BIO/100", 
+                    "name": "Topics in Human Biology"
+                }, 
+                {
+                    "code": "BIO 114", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BIO/114", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 115", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BIO/115", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 134", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BIO/134", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 240", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BIO/240", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 320", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BIO/320", 
+                    "name": "Conservation Biology"
+                }, 
+                {
+                    "code": "BIO 360", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BIO/360", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 372", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BIO/372", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 373", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BIO/373", 
+                    "name": ""
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/franklincollege/BIO"
+        }, 
+        {
+            "abbr": "BIO XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/BIO%20XXX"
+        }, 
+        {
+            "abbr": "BRJ", 
+            "courses": [
+                {
+                    "code": "BRJ 001", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BRJ/001", 
+                    "name": "Radio Station"
+                }, 
+                {
+                    "code": "BRJ 336", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BRJ/336", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BRJ 339", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BRJ/339", 
+                    "name": "TV Production & On-air Performance"
+                }, 
+                {
+                    "code": "BRJ 428", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BRJ/428", 
+                    "name": "Broadcast Journalism Senior Seminar"
+                }, 
+                {
+                    "code": "BRJ 498", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BRJ/498", 
+                    "name": "Portfolio Development Practicum"
+                }, 
+                {
+                    "code": "BRJ 499", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BRJ/499", 
+                    "name": "Senior Competency Practicum"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/BRJ"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 100", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BUS/100", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUS 265", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BUS/265", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUS 341", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BUS/341", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUS 351", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BUS/351", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUS 355", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BUS/355", 
+                    "name": "Entrepreneurship"
+                }, 
+                {
+                    "code": "BUS 361", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/BUS/361", 
+                    "name": ""
+                }
+            ], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/franklincollege/BUS"
+        }, 
+        {
+            "abbr": "BUS XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/BUS%20XXX"
+        }, 
+        {
+            "abbr": "CAN XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/CAN%20XXX"
+        }, 
+        {
+            "abbr": "CHE", 
+            "courses": [
+                {
+                    "code": "CHE 121", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CHE/121", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 123", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CHE/123", 
+                    "name": "General Chemistry I Lab"
+                }, 
+                {
+                    "code": "CHE 124", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CHE/124", 
+                    "name": "General Chemistry II Lab"
+                }, 
+                {
+                    "code": "CHE 221", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CHE/221", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 227", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CHE/227", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 341", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CHE/341", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 343", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CHE/343", 
+                    "name": "Physical Chemistry Lab I"
+                }, 
+                {
+                    "code": "CHE 344", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CHE/344", 
+                    "name": "Physical Chemistry Lab II"
+                }, 
+                {
+                    "code": "CHE 392", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CHE/392", 
+                    "name": "Molecular Biotechnology"
+                }, 
+                {
+                    "code": "CHE 472", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CHE/472", 
+                    "name": ""
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/franklincollege/CHE"
+        }, 
+        {
+            "abbr": "CHE XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/CHE%20XXX"
+        }, 
+        {
+            "abbr": "CMP", 
+            "courses": [
+                {
+                    "code": "CMP 130", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CMP/130", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CMP 141", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CMP/141", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CMP 150", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CMP/150", 
+                    "name": "Computer Tools for Problem Solving"
+                }, 
+                {
+                    "code": "CMP 283", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CMP/283", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CMP 285", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CMP/285", 
+                    "name": "Web-Based Software Development"
+                }, 
+                {
+                    "code": "CMP 352", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CMP/352", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CMP 362", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/CMP/362", 
+                    "name": ""
+                }
+            ], 
+            "name": "Motion Pictures", 
+            "url": "http://www.chegg.com/courses/franklincollege/CMP"
+        }, 
+        {
+            "abbr": "CMP XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/CMP%20XXX"
+        }, 
+        {
+            "abbr": "COR XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/COR%20XXX"
+        }, 
+        {
+            "abbr": "ECO XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/ECO%20XXX"
+        }, 
+        {
+            "abbr": "EDE XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/EDE%20XXX"
+        }, 
+        {
+            "abbr": "EDS", 
+            "courses": [
+                {
+                    "code": "EDS 326", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/EDS/326", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDS 443", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/EDS/443", 
+                    "name": "Interdisciplinary Unit Plan"
+                }, 
+                {
+                    "code": "EDS 459", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/EDS/459", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDS 490", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/EDS/490", 
+                    "name": "Independent Study: Secondary Ed"
+                }
+            ], 
+            "name": "Sp Ed, Rhb, Sch Psy & Deaf Std", 
+            "url": "http://www.chegg.com/courses/franklincollege/EDS"
+        }, 
+        {
+            "abbr": "EDS XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/EDS%20XXX"
+        }, 
+        {
+            "abbr": "EDU", 
+            "courses": [
+                {
+                    "code": "EDU 124", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/EDU/124", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 222", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/EDU/222", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 223", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/EDU/223", 
+                    "name": "Children's & Adolescent Literature"
+                }, 
+                {
+                    "code": "EDU 227", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/EDU/227", 
+                    "name": "Grammar and Linguistics for El. Ed. Teac"
+                }, 
+                {
+                    "code": "EDU 315", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/EDU/315", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 490", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/EDU/490", 
+                    "name": "Independent Study: Education"
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/franklincollege/EDU"
+        }, 
+        {
+            "abbr": "EDU XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/EDU%20XXX"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 080", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ENG/080", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 117", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ENG/117", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 190", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ENG/190", 
+                    "name": "Topics in Creative Writing"
+                }, 
+                {
+                    "code": "ENG 200", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ENG/200", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 220", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ENG/220", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 226", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ENG/226", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 228", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ENG/228", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 308", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ENG/308", 
+                    "name": "Old & Medieval Literature in English"
+                }, 
+                {
+                    "code": "ENG 309", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ENG/309", 
+                    "name": "Early Modern British Literature"
+                }, 
+                {
+                    "code": "ENG 312", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ENG/312", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 326", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ENG/326", 
+                    "name": "Advanced Creative Writing"
+                }, 
+                {
+                    "code": "ENG 355", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ENG/355", 
+                    "name": ""
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/franklincollege/ENG"
+        }, 
+        {
+            "abbr": "ENG XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/ENG%20XXX"
+        }, 
+        {
+            "abbr": "ESC XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/ESC%20XXX"
+        }, 
+        {
+            "abbr": "FNA XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/FNA%20XXX"
+        }, 
+        {
+            "abbr": "FRE", 
+            "courses": [
+                {
+                    "code": "FRE 110", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/FRE/110", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FRE 200", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/FRE/200", 
+                    "name": "Gaining Prof. in French"
+                }, 
+                {
+                    "code": "FRE 210", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/FRE/210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FRE 315", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/FRE/315", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FRE 334", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/FRE/334", 
+                    "name": ""
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/franklincollege/FRE"
+        }, 
+        {
+            "abbr": "FRE XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/FRE%20XXX"
+        }, 
+        {
+            "abbr": "GEO XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/GEO%20XXX"
+        }, 
+        {
+            "abbr": "HIS", 
+            "courses": [
+                {
+                    "code": "HIS 120", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/HIS/120", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 205", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/HIS/205", 
+                    "name": "World History to 1750"
+                }, 
+                {
+                    "code": "HIS 215", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/HIS/215", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 323", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/HIS/323", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 332", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/HIS/332", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 343", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/HIS/343", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 361", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/HIS/361", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 370", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/HIS/370", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 400", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/HIS/400", 
+                    "name": ""
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/franklincollege/HIS"
+        }, 
+        {
+            "abbr": "HIS XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/HIS%20XXX"
+        }, 
+        {
+            "abbr": "HSE", 
+            "courses": [
+                {
+                    "code": "HSE 118", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/HSE/118", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HSE 119", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/HSE/119", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HSE 208", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/HSE/208", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HSE 341", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/HSE/341", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HSE 372", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/HSE/372", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HSE 483", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/HSE/483", 
+                    "name": "Fitness or Allied Health Practicum"
+                }
+            ], 
+            "name": "Human Services", 
+            "url": "http://www.chegg.com/courses/franklincollege/HSE"
+        }, 
+        {
+            "abbr": "HSE XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/HSE%20XXX"
+        }, 
+        {
+            "abbr": "HUM XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/HUM%20XXX"
+        }, 
+        {
+            "abbr": "IHE", 
+            "courses": [
+                {
+                    "code": "IHE 100", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/IHE/100", 
+                    "name": "Intercultural Honors Experience"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/IHE"
+        }, 
+        {
+            "abbr": "IND", 
+            "courses": [
+                {
+                    "code": "IND 498", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/IND/498", 
+                    "name": "Senior Portfolio"
+                }, 
+                {
+                    "code": "IND 499", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/IND/499", 
+                    "name": "Senior Competency Practicum"
+                }
+            ], 
+            "name": "Industrial Design", 
+            "url": "http://www.chegg.com/courses/franklincollege/IND"
+        }, 
+        {
+            "abbr": "INEC", 
+            "courses": [
+                {
+                    "code": "INEC 400", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INEC/400", 
+                    "name": "International/Intercultural Educ. Intern"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/INEC"
+        }, 
+        {
+            "abbr": "INO", 
+            "courses": [
+                {
+                    "code": "INO 101", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/101", 
+                    "name": "Artistic Internship"
+                }, 
+                {
+                    "code": "INO 102", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/102", 
+                    "name": "Music Internship"
+                }, 
+                {
+                    "code": "INO 110", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/110", 
+                    "name": "Accounting Internship"
+                }, 
+                {
+                    "code": "INO 120", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/120", 
+                    "name": "Banking Internship"
+                }, 
+                {
+                    "code": "INO 121", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/121", 
+                    "name": "Plants/Animals Internship"
+                }, 
+                {
+                    "code": "INO 130", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/130", 
+                    "name": "Insurance Internship"
+                }, 
+                {
+                    "code": "INO 150", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/150", 
+                    "name": "Real Estate Internship"
+                }, 
+                {
+                    "code": "INO 151", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/151", 
+                    "name": "Medical Internship"
+                }, 
+                {
+                    "code": "INO 160", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/160", 
+                    "name": "Retail Management Internship"
+                }, 
+                {
+                    "code": "INO 161", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/161", 
+                    "name": "Safety/Law Enforcement"
+                }, 
+                {
+                    "code": "INO 170", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/170", 
+                    "name": "Financial Management Internship"
+                }, 
+                {
+                    "code": "INO 180", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/180", 
+                    "name": "Food Service Management Internship"
+                }, 
+                {
+                    "code": "INO 190", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/190", 
+                    "name": "Personnel Management Internship"
+                }, 
+                {
+                    "code": "INO 201", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/201", 
+                    "name": "Industrial/Production Internship"
+                }, 
+                {
+                    "code": "INO 211", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/211", 
+                    "name": "Sales/Marketing Intenship"
+                }, 
+                {
+                    "code": "INO 221", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/221", 
+                    "name": "Hospitality/Customer Internship"
+                }, 
+                {
+                    "code": "INO 230", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/230", 
+                    "name": "Higher Education Internship"
+                }, 
+                {
+                    "code": "INO 241", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/241", 
+                    "name": "Social/Community Servis Internship"
+                }, 
+                {
+                    "code": "INO 250", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/250", 
+                    "name": "Coaching Internship"
+                }, 
+                {
+                    "code": "INO 261", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/261", 
+                    "name": "Computer/Math/Statistics Internship"
+                }, 
+                {
+                    "code": "INO 265", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/265", 
+                    "name": "Early Childhood Development"
+                }, 
+                {
+                    "code": "INO 271", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/271", 
+                    "name": "Education/Library Services"
+                }, 
+                {
+                    "code": "INO 271N", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/271N", 
+                    "name": "Education/Library Services Abroad"
+                }, 
+                {
+                    "code": "INO 281", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/281", 
+                    "name": "Social Research Internship"
+                }, 
+                {
+                    "code": "INO 291", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/291", 
+                    "name": "Law Internship"
+                }, 
+                {
+                    "code": "INO 300", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/300", 
+                    "name": "Communications Internship"
+                }, 
+                {
+                    "code": "INO 301", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/301", 
+                    "name": "Business Adm./Gen Management"
+                }, 
+                {
+                    "code": "INO 302", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/302", 
+                    "name": "Leadership Internship"
+                }, 
+                {
+                    "code": "INO 310", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/310", 
+                    "name": "Newspaper Internship"
+                }, 
+                {
+                    "code": "INO 320", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/320", 
+                    "name": "Magazine Internship"
+                }, 
+                {
+                    "code": "INO 321", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/321", 
+                    "name": "Communications/Journalism"
+                }, 
+                {
+                    "code": "INO 331", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/331", 
+                    "name": "Advertising/Public Relations"
+                }, 
+                {
+                    "code": "INO 340", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/340", 
+                    "name": "Radio Internship"
+                }, 
+                {
+                    "code": "INO 341", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/341", 
+                    "name": "Public Services/Administration Internshi"
+                }, 
+                {
+                    "code": "INO 341N", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/341N", 
+                    "name": "Public Service/Administration"
+                }, 
+                {
+                    "code": "INO 350", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/350", 
+                    "name": "Lugar Internship"
+                }, 
+                {
+                    "code": "INO 351", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/351", 
+                    "name": "Recreation/Physical Performing Internshi"
+                }, 
+                {
+                    "code": "INO 352", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/352", 
+                    "name": "TV Internship"
+                }, 
+                {
+                    "code": "INO 370", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/370", 
+                    "name": "Arts Administration Internship"
+                }, 
+                {
+                    "code": "INO 375", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/375", 
+                    "name": "Theatre Internship"
+                }, 
+                {
+                    "code": "INO 380", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/380", 
+                    "name": "Photography Internship"
+                }, 
+                {
+                    "code": "INO 390", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/390", 
+                    "name": "Publishing Internship"
+                }, 
+                {
+                    "code": "INO 400", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/400", 
+                    "name": "Health Sciences Internship"
+                }, 
+                {
+                    "code": "INO 420", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/420", 
+                    "name": "Dentistry Internship"
+                }, 
+                {
+                    "code": "INO 430", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/430", 
+                    "name": "Physical/Occupational Therapy Internship"
+                }, 
+                {
+                    "code": "INO 441", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/441", 
+                    "name": "Optometry Internship"
+                }, 
+                {
+                    "code": "INO 460", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/460", 
+                    "name": "Chiropractic Internship"
+                }, 
+                {
+                    "code": "INO 470", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/470", 
+                    "name": "Veterinary Medicine Internship"
+                }, 
+                {
+                    "code": "INO 495", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/495", 
+                    "name": "Chemistry Internship"
+                }, 
+                {
+                    "code": "INO 520", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/520", 
+                    "name": "Local Government Internship"
+                }, 
+                {
+                    "code": "INO 530", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/530", 
+                    "name": "State Government Internship"
+                }, 
+                {
+                    "code": "INO 540", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/540", 
+                    "name": "Federal Government Internship"
+                }, 
+                {
+                    "code": "INO 545", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/545", 
+                    "name": "Foreign Government Internship"
+                }, 
+                {
+                    "code": "INO 546", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/546", 
+                    "name": "International Internship"
+                }, 
+                {
+                    "code": "INO 550", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/550", 
+                    "name": "Social Work Internship"
+                }, 
+                {
+                    "code": "INO 570", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/570", 
+                    "name": "Geriatric Service Internship"
+                }, 
+                {
+                    "code": "INO 590", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/590", 
+                    "name": "Counseling Internship"
+                }, 
+                {
+                    "code": "INO 600", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/600", 
+                    "name": "Public Library Internship"
+                }, 
+                {
+                    "code": "INO 610", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/610", 
+                    "name": "Museum Internship"
+                }, 
+                {
+                    "code": "INO 620", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/620", 
+                    "name": "Leisure Activities Internship"
+                }, 
+                {
+                    "code": "INO 640", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/640", 
+                    "name": "Pastorial Ministry Internship"
+                }, 
+                {
+                    "code": "INO 670", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/670", 
+                    "name": "Youth Ministry Internship"
+                }, 
+                {
+                    "code": "INO 680", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/680", 
+                    "name": "Science Lab Internship"
+                }, 
+                {
+                    "code": "INO 720", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/720", 
+                    "name": "Spanish Language Internship"
+                }, 
+                {
+                    "code": "INO 999", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INO/999", 
+                    "name": "Research Assistant"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/INO"
+        }, 
+        {
+            "abbr": "INO XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/INO%20XXX"
+        }, 
+        {
+            "abbr": "INS", 
+            "courses": [
+                {
+                    "code": "INS 285", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INS/285", 
+                    "name": "Internship High School Education"
+                }, 
+                {
+                    "code": "INS 384", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INS/384", 
+                    "name": "International/Intercultural Internship"
+                }
+            ], 
+            "name": "International Studies", 
+            "url": "http://www.chegg.com/courses/franklincollege/INS"
+        }, 
+        {
+            "abbr": "INT", 
+            "courses": [
+                {
+                    "code": "INT 101", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/101", 
+                    "name": "Artistic Internship"
+                }, 
+                {
+                    "code": "INT 110", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/110", 
+                    "name": "Accounting Internship"
+                }, 
+                {
+                    "code": "INT 119", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/119", 
+                    "name": "Covering the Indiana Legislature"
+                }, 
+                {
+                    "code": "INT 120", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/120", 
+                    "name": "Banking Internship"
+                }, 
+                {
+                    "code": "INT 121", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/121", 
+                    "name": "Plants and Animals Internship"
+                }, 
+                {
+                    "code": "INT 130", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/130", 
+                    "name": "Insurance Internship"
+                }, 
+                {
+                    "code": "INT 150", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/150", 
+                    "name": "Real Estate Internship"
+                }, 
+                {
+                    "code": "INT 151", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/151", 
+                    "name": "Medical Internship"
+                }, 
+                {
+                    "code": "INT 160", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/160", 
+                    "name": "Retail Mgmt. Internship"
+                }, 
+                {
+                    "code": "INT 161", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/161", 
+                    "name": "Safety/Law Enforcement Intern"
+                }, 
+                {
+                    "code": "INT 170", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/170", 
+                    "name": "Financial Mgmt. Internship"
+                }, 
+                {
+                    "code": "INT 180", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/180", 
+                    "name": "Food Service Mgmt. Internship"
+                }, 
+                {
+                    "code": "INT 190", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/190", 
+                    "name": "Human Resources"
+                }, 
+                {
+                    "code": "INT 201", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/201", 
+                    "name": "Industrial/Production Intern"
+                }, 
+                {
+                    "code": "INT 211", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/211", 
+                    "name": "Sales/Marketing Internship"
+                }, 
+                {
+                    "code": "INT 221", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/221", 
+                    "name": "Hospitality/Customer Intern"
+                }, 
+                {
+                    "code": "INT 230", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/230", 
+                    "name": "Higher Education Internship"
+                }, 
+                {
+                    "code": "INT 241", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/241", 
+                    "name": "Social/Community Service"
+                }, 
+                {
+                    "code": "INT 261", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/261", 
+                    "name": "Computer/Math/ Statistics"
+                }, 
+                {
+                    "code": "INT 265", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/265", 
+                    "name": "Early Childhood Development"
+                }, 
+                {
+                    "code": "INT 271", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/271", 
+                    "name": "Educational/Library Services"
+                }, 
+                {
+                    "code": "INT 281", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/281", 
+                    "name": "Social Research Internship"
+                }, 
+                {
+                    "code": "INT 291", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/291", 
+                    "name": "Law Internship"
+                }, 
+                {
+                    "code": "INT 300", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/300", 
+                    "name": "Communications Internship"
+                }, 
+                {
+                    "code": "INT 301", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/301", 
+                    "name": "Business Adm./Gen Management"
+                }, 
+                {
+                    "code": "INT 302", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/302", 
+                    "name": "Leadership"
+                }, 
+                {
+                    "code": "INT 310", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/310", 
+                    "name": "Newspaper Internship"
+                }, 
+                {
+                    "code": "INT 320", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/320", 
+                    "name": "Magazine Internship"
+                }, 
+                {
+                    "code": "INT 321", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/321", 
+                    "name": "Communications/Journalism"
+                }, 
+                {
+                    "code": "INT 331", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/331", 
+                    "name": "Advertising/Public Relations"
+                }, 
+                {
+                    "code": "INT 340", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/340", 
+                    "name": "Radio Internship"
+                }, 
+                {
+                    "code": "INT 341", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/341", 
+                    "name": "Public Services/Administration"
+                }, 
+                {
+                    "code": "INT 350", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/350", 
+                    "name": "TV Internship"
+                }, 
+                {
+                    "code": "INT 351", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/351", 
+                    "name": "Recreation/Physical Performing"
+                }, 
+                {
+                    "code": "INT 370", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/370", 
+                    "name": "Arts Administration Internship"
+                }, 
+                {
+                    "code": "INT 372", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/372", 
+                    "name": "Wildlife Survey: Wolf & Lynx Eco"
+                }, 
+                {
+                    "code": "INT 375", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/375", 
+                    "name": "Theatre Internship"
+                }, 
+                {
+                    "code": "INT 380", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/380", 
+                    "name": "Photography Internship"
+                }, 
+                {
+                    "code": "INT 390", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/390", 
+                    "name": "Publishing Internship"
+                }, 
+                {
+                    "code": "INT 400", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/400", 
+                    "name": "Health Sciences Internship"
+                }, 
+                {
+                    "code": "INT 420", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/420", 
+                    "name": "Dentistry Internship"
+                }, 
+                {
+                    "code": "INT 430", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/430", 
+                    "name": "Physical/Occupational Therapy Internship"
+                }, 
+                {
+                    "code": "INT 441", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/441", 
+                    "name": "Optometry Internship"
+                }, 
+                {
+                    "code": "INT 460", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/460", 
+                    "name": "Chiropractic Internship"
+                }, 
+                {
+                    "code": "INT 470", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/470", 
+                    "name": "Veterinary Medicine Intern"
+                }, 
+                {
+                    "code": "INT 495", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/495", 
+                    "name": "Chemistry Internship"
+                }, 
+                {
+                    "code": "INT 520", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/520", 
+                    "name": "Local Government Internship"
+                }, 
+                {
+                    "code": "INT 530", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/530", 
+                    "name": "State Government Internship"
+                }, 
+                {
+                    "code": "INT 540", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/540", 
+                    "name": "Federal Government Internship"
+                }, 
+                {
+                    "code": "INT 545", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/545", 
+                    "name": "Foreign Government Internship"
+                }, 
+                {
+                    "code": "INT 550", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/550", 
+                    "name": "Social Work Internship"
+                }, 
+                {
+                    "code": "INT 570", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/570", 
+                    "name": "Geriatric Service Internship"
+                }, 
+                {
+                    "code": "INT 590", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/590", 
+                    "name": "Counseling Internship"
+                }, 
+                {
+                    "code": "INT 600", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/600", 
+                    "name": "Public Library Internship"
+                }, 
+                {
+                    "code": "INT 610", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/610", 
+                    "name": "Museum Internship"
+                }, 
+                {
+                    "code": "INT 620", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/620", 
+                    "name": "Leisure Activities Internship"
+                }, 
+                {
+                    "code": "INT 630", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/630", 
+                    "name": "Religion Internship"
+                }, 
+                {
+                    "code": "INT 640", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/640", 
+                    "name": "Pastorial Ministry Internship"
+                }, 
+                {
+                    "code": "INT 670", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/670", 
+                    "name": "Youth Ministry Internship"
+                }, 
+                {
+                    "code": "INT 680", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/680", 
+                    "name": "Science Lab Internship"
+                }, 
+                {
+                    "code": "INT 720", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/720", 
+                    "name": "Spanish Language Internship"
+                }, 
+                {
+                    "code": "INT 999", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/INT/999", 
+                    "name": "Research Assistant"
+                }
+            ], 
+            "name": "Interdisciplinary", 
+            "url": "http://www.chegg.com/courses/franklincollege/INT"
+        }, 
+        {
+            "abbr": "INT XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/INT%20XXX"
+        }, 
+        {
+            "abbr": "JOU", 
+            "courses": [
+                {
+                    "code": "JOU 120", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/JOU/120", 
+                    "name": ""
+                }, 
+                {
+                    "code": "JOU 150", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/JOU/150", 
+                    "name": ""
+                }, 
+                {
+                    "code": "JOU 160", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/JOU/160", 
+                    "name": "Media Design & Digital Photography"
+                }, 
+                {
+                    "code": "JOU 250", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/JOU/250", 
+                    "name": "Multimedia Storytelling"
+                }, 
+                {
+                    "code": "JOU 301", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/JOU/301", 
+                    "name": "Mass Media & the Liberal Arts"
+                }, 
+                {
+                    "code": "JOU 445", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/JOU/445", 
+                    "name": ""
+                }
+            ], 
+            "name": "Journalism", 
+            "url": "http://www.chegg.com/courses/franklincollege/JOU"
+        }, 
+        {
+            "abbr": "JOU XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/JOU%20XXX"
+        }, 
+        {
+            "abbr": "JPN XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/JPN%20XXX"
+        }, 
+        {
+            "abbr": "LA", 
+            "courses": [
+                {
+                    "code": "LA 100", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LA/100", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LA 101", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LA/101", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LA 102", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LA/102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LA 103", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LA/103", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LA 111", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LA/111", 
+                    "name": "The Voices of Many: Comm. Effectively"
+                }, 
+                {
+                    "code": "LA 112", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LA/112", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LA 112 C", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LA/112%20C", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LA 112C", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LA/112C", 
+                    "name": "The World Today: Contemporary Issues"
+                }, 
+                {
+                    "code": "LA 112N", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LA/112N", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LA 201", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LA/201", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LA 300", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LA/300", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LA 301", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LA/301", 
+                    "name": "Liberal Arts Capstone Exp"
+                }
+            ], 
+            "name": "Landscape Architecture", 
+            "url": "http://www.chegg.com/courses/franklincollege/LA"
+        }, 
+        {
+            "abbr": "LA XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/LA%20XXX"
+        }, 
+        {
+            "abbr": "LAN XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/LAN%20XXX"
+        }, 
+        {
+            "abbr": "LEA", 
+            "courses": [
+                {
+                    "code": "LEA 302", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LEA/302", 
+                    "name": "Leadership Internship"
+                }, 
+                {
+                    "code": "LEA 482", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LEA/482", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LEA 490", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LEA/490", 
+                    "name": "Independent Study: Leadership"
+                }, 
+                {
+                    "code": "LEA 498", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LEA/498", 
+                    "name": "Senior Year Experience/Portfolio"
+                }, 
+                {
+                    "code": "LEA 499", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/LEA/499", 
+                    "name": "Senior Competency Practicum"
+                }
+            ], 
+            "name": "Law Enforcement Academy", 
+            "url": "http://www.chegg.com/courses/franklincollege/LEA"
+        }, 
+        {
+            "abbr": "LEA XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/LEA%20XXX"
+        }, 
+        {
+            "abbr": "MAT", 
+            "courses": [
+                {
+                    "code": "MAT 085", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/MAT/085", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 125", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/MAT/125", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 181", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/MAT/181", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 182", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/MAT/182", 
+                    "name": "Discrete Mathematics II"
+                }, 
+                {
+                    "code": "MAT 224", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/MAT/224", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 253", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/MAT/253", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 323", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/MAT/323", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 331", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/MAT/331", 
+                    "name": "Probability and Statistics"
+                }, 
+                {
+                    "code": "MAT 471", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/MAT/471", 
+                    "name": ""
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/franklincollege/MAT"
+        }, 
+        {
+            "abbr": "MAT XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/MAT%20XXX"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 110", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/MUS/110", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 180", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/MUS/180", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 210", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/MUS/210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 219", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/MUS/219", 
+                    "name": "World Music"
+                }, 
+                {
+                    "code": "MUS 333", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/MUS/333", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 498", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/MUS/498", 
+                    "name": "Senior Portfolio"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/franklincollege/MUS"
+        }, 
+        {
+            "abbr": "MUS SEM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/MUS%20SEM"
+        }, 
+        {
+            "abbr": "MUS XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/MUS%20XXX"
+        }, 
+        {
+            "abbr": "NWS", 
+            "courses": [
+                {
+                    "code": "NWS 001", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/NWS/001", 
+                    "name": "Student Media"
+                }, 
+                {
+                    "code": "NWS 335", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/NWS/335", 
+                    "name": "Publication Design"
+                }, 
+                {
+                    "code": "NWS 336", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/NWS/336", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NWS 337", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/NWS/337", 
+                    "name": "Feature & Opinion Writing"
+                }, 
+                {
+                    "code": "NWS 425", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/NWS/425", 
+                    "name": "Investigative Reporting"
+                }, 
+                {
+                    "code": "NWS 498", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/NWS/498", 
+                    "name": "Portfolio Development Practicum"
+                }, 
+                {
+                    "code": "NWS 499", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/NWS/499", 
+                    "name": "Senior Competency Practicum"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/NWS"
+        }, 
+        {
+            "abbr": "PDP", 
+            "courses": [
+                {
+                    "code": "PDP 200", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PDP/200", 
+                    "name": "Preparing for your Internship"
+                }, 
+                {
+                    "code": "PDP 300", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PDP/300", 
+                    "name": "Topics in Professional Development"
+                }, 
+                {
+                    "code": "PDP 301", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PDP/301", 
+                    "name": "Medical School Admission Preparation"
+                }, 
+                {
+                    "code": "PDP 490", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PDP/490", 
+                    "name": "Individual Study: Professional Developme"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/PDP"
+        }, 
+        {
+            "abbr": "PED", 
+            "courses": [
+                {
+                    "code": "PED 234", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PED/234", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PED 322", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PED/322", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PED 325", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PED/325", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PED 327", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PED/327", 
+                    "name": "Intro to Adapted Physical Education"
+                }, 
+                {
+                    "code": "PED 339", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PED/339", 
+                    "name": "Coaching Swimming"
+                }, 
+                {
+                    "code": "PED 341", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PED/341", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PED 345", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PED/345", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PED 424", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PED/424", 
+                    "name": ""
+                }
+            ], 
+            "name": "Physical Ed", 
+            "url": "http://www.chegg.com/courses/franklincollege/PED"
+        }, 
+        {
+            "abbr": "PED XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/PED%20XXX"
+        }, 
+        {
+            "abbr": "PHL XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/PHL%20XXX"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 201", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PHY/201", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHY 202", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PHY/202", 
+                    "name": "General Physics II"
+                }, 
+                {
+                    "code": "PHY 341", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PHY/341", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHY 343", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PHY/343", 
+                    "name": "Physical Chemistry Lab I"
+                }, 
+                {
+                    "code": "PHY 344", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PHY/344", 
+                    "name": "Physical Chemistry Lab II"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/franklincollege/PHY"
+        }, 
+        {
+            "abbr": "PHY XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/PHY%20XXX"
+        }, 
+        {
+            "abbr": "POL XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/POL%20XXX"
+        }, 
+        {
+            "abbr": "PRL", 
+            "courses": [
+                {
+                    "code": "PRL 221", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PRL/221", 
+                    "name": "Public Relations Campaigns/Case Studies"
+                }, 
+                {
+                    "code": "PRL 331", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PRL/331", 
+                    "name": "Advertising Principles & Copywriting"
+                }, 
+                {
+                    "code": "PRL 333", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PRL/333", 
+                    "name": "Public Relations Writing"
+                }, 
+                {
+                    "code": "PRL 335", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PRL/335", 
+                    "name": "Publications Design"
+                }, 
+                {
+                    "code": "PRL 421", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PRL/421", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PRL 498", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PRL/498", 
+                    "name": "Portfolio Development Practicum"
+                }, 
+                {
+                    "code": "PRL 499", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PRL/499", 
+                    "name": "Senior Competency Practicum"
+                }
+            ], 
+            "name": "Paralegal", 
+            "url": "http://www.chegg.com/courses/franklincollege/PRL"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 117", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PSY/117", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 200", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PSY/200", 
+                    "name": "Careers in Psychology"
+                }, 
+                {
+                    "code": "PSY 224", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PSY/224", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 310", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PSY/310", 
+                    "name": "Introduction to Counseling"
+                }, 
+                {
+                    "code": "PSY 323", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PSY/323", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 324", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PSY/324", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 421", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/PSY/421", 
+                    "name": ""
+                }
+            ], 
+            "name": "Clinical Counseling", 
+            "url": "http://www.chegg.com/courses/franklincollege/PSY"
+        }, 
+        {
+            "abbr": "PSY XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/PSY%20XXX"
+        }, 
+        {
+            "abbr": "REC XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/REC%20XXX"
+        }, 
+        {
+            "abbr": "REL", 
+            "courses": [
+                {
+                    "code": "REL 114", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/REL/114", 
+                    "name": ""
+                }, 
+                {
+                    "code": "REL 210", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/REL/210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "REL 350", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/REL/350", 
+                    "name": ""
+                }
+            ], 
+            "name": "Religion", 
+            "url": "http://www.chegg.com/courses/franklincollege/REL"
+        }, 
+        {
+            "abbr": "REL XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/REL%20XXX"
+        }, 
+        {
+            "abbr": "SCI XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/SCI%20XXX"
+        }, 
+        {
+            "abbr": "SNR", 
+            "courses": [
+                {
+                    "code": "SNR 489", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/SNR/489", 
+                    "name": "Senior Research"
+                }
+            ], 
+            "name": "Sustainable Natural Resources", 
+            "url": "http://www.chegg.com/courses/franklincollege/SNR"
+        }, 
+        {
+            "abbr": "SNT", 
+            "courses": [
+                {
+                    "code": "SNT 489N", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/SNT/489N", 
+                    "name": "Senior Intern Abroad"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/SNT"
+        }, 
+        {
+            "abbr": "SOC XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/SOC%20XXX"
+        }, 
+        {
+            "abbr": "SPA", 
+            "courses": [
+                {
+                    "code": "SPA 110", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/SPA/110", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPA 210", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/SPA/210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPA 300", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/SPA/300", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPA 312", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/SPA/312", 
+                    "name": "Pronunciation for Communication"
+                }, 
+                {
+                    "code": "SPA 332", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/SPA/332", 
+                    "name": ""
+                }
+            ], 
+            "name": "Speech Pathology And Audiology", 
+            "url": "http://www.chegg.com/courses/franklincollege/SPA"
+        }, 
+        {
+            "abbr": "SPA XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/SPA%20XXX"
+        }, 
+        {
+            "abbr": "SSC XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/SSC%20XXX"
+        }, 
+        {
+            "abbr": "THE", 
+            "courses": [
+                {
+                    "code": "THE 110", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/THE/110", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THE 125", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/THE/125", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THE 135", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/THE/135", 
+                    "name": "Stagecraft"
+                }, 
+                {
+                    "code": "THE 145", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/THE/145", 
+                    "name": "Playwriting"
+                }, 
+                {
+                    "code": "THE 170", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/THE/170", 
+                    "name": "Theatre History"
+                }, 
+                {
+                    "code": "THE 200", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/THE/200", 
+                    "name": "Professional Development"
+                }, 
+                {
+                    "code": "THE 205", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/THE/205", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THE 235", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/THE/235", 
+                    "name": "Scenic Painting"
+                }, 
+                {
+                    "code": "THE 236", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/THE/236", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THE 240", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/THE/240", 
+                    "name": "Acting II"
+                }, 
+                {
+                    "code": "THE 325", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/THE/325", 
+                    "name": "Directing II"
+                }, 
+                {
+                    "code": "THE 498", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/THE/498", 
+                    "name": "Senior Portfolio"
+                }
+            ], 
+            "name": "Theatre", 
+            "url": "http://www.chegg.com/courses/franklincollege/THE"
+        }, 
+        {
+            "abbr": "THE XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/THE%20XXX"
+        }, 
+        {
+            "abbr": "UND XXX", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/UND%20XXX"
+        }, 
+        {
+            "abbr": "WIC", 
+            "courses": [
+                {
+                    "code": "WIC 108", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/108", 
+                    "name": "Film Music Around the World"
+                }, 
+                {
+                    "code": "WIC 112", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/112", 
+                    "name": "Leadership in Times of Crisis"
+                }, 
+                {
+                    "code": "WIC 114", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/114", 
+                    "name": "Language and Ethnic Identity"
+                }, 
+                {
+                    "code": "WIC 120", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/120", 
+                    "name": "Inner-city Missions"
+                }, 
+                {
+                    "code": "WIC 122", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/122", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WIC 123", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/123", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WIC 125", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/125", 
+                    "name": "Living/w Land: Athapaskans"
+                }, 
+                {
+                    "code": "WIC 126", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/126", 
+                    "name": "Living With Land: Trans. of inter. Alsk"
+                }, 
+                {
+                    "code": "WIC 127", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/127", 
+                    "name": "Leadership in World Terrorism"
+                }, 
+                {
+                    "code": "WIC 134", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/134", 
+                    "name": "Brazil: A Culture of Paradox"
+                }, 
+                {
+                    "code": "WIC 135", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/135", 
+                    "name": "African-American Music from the Civil Wa"
+                }, 
+                {
+                    "code": "WIC 140", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/140", 
+                    "name": "Themese in West African History"
+                }, 
+                {
+                    "code": "WIC 150", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/150", 
+                    "name": "The Spiritual in Art"
+                }, 
+                {
+                    "code": "WIC 157", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/157", 
+                    "name": "Gender, Sexuality, & Family in Latin Am"
+                }, 
+                {
+                    "code": "WIC 160", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/160", 
+                    "name": "African American Activism in Post-WWII"
+                }, 
+                {
+                    "code": "WIC 177", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/177", 
+                    "name": "The Republic of Chile"
+                }, 
+                {
+                    "code": "WIC 180", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/180", 
+                    "name": "Apache Quest: Intro to Native America"
+                }, 
+                {
+                    "code": "WIC 197", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/197", 
+                    "name": "A Multi-Media Study of WWII"
+                }, 
+                {
+                    "code": "WIC 200", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/200", 
+                    "name": "Religious Art & Architecture in Italy"
+                }, 
+                {
+                    "code": "WIC 205", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/205", 
+                    "name": "Introduction to Spain History & Culture"
+                }, 
+                {
+                    "code": "WIC 206", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/206", 
+                    "name": "Old Europe & the U.S.:Comparative Hist"
+                }, 
+                {
+                    "code": "WIC 210", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/210", 
+                    "name": "Egypt Through the Ages"
+                }, 
+                {
+                    "code": "WIC 211", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/211", 
+                    "name": "Religion in Egypt: From Pyramids to Mosq"
+                }, 
+                {
+                    "code": "WIC 214", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/214", 
+                    "name": "Black Classics"
+                }, 
+                {
+                    "code": "WIC 215", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/215", 
+                    "name": "A Comp of the Leg & Exec Sys of US & CAN"
+                }, 
+                {
+                    "code": "WIC 220", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/220", 
+                    "name": "Nordic Landscapes"
+                }, 
+                {
+                    "code": "WIC 221", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/221", 
+                    "name": "Photographing Norway"
+                }, 
+                {
+                    "code": "WIC 225", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/225", 
+                    "name": "Mathematics & World Cultures"
+                }, 
+                {
+                    "code": "WIC 227", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/227", 
+                    "name": "Education of a Renaissance Prince"
+                }, 
+                {
+                    "code": "WIC 228", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/228", 
+                    "name": "Navigating Provence: One Foot in France"
+                }, 
+                {
+                    "code": "WIC 230", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/230", 
+                    "name": "Mythology, Magic, Religion and Science"
+                }, 
+                {
+                    "code": "WIC 235", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/235", 
+                    "name": "Civil Rights: Movement, Faith, & Music"
+                }, 
+                {
+                    "code": "WIC 240", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/240", 
+                    "name": "World Cinema"
+                }, 
+                {
+                    "code": "WIC 250", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/250", 
+                    "name": "Winter Cities"
+                }, 
+                {
+                    "code": "WIC 251", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/251", 
+                    "name": "Freedom, Culture and the Self"
+                }, 
+                {
+                    "code": "WIC 260", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/260", 
+                    "name": "Good New Fiction You've Never Heard Of"
+                }, 
+                {
+                    "code": "WIC 282", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/282", 
+                    "name": "Model United Nations"
+                }, 
+                {
+                    "code": "WIC 295", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/295", 
+                    "name": "Community Health Initiatives"
+                }, 
+                {
+                    "code": "WIC 321", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/321", 
+                    "name": "Ibsen in Norway"
+                }, 
+                {
+                    "code": "WIC 360", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/360", 
+                    "name": "Media London/Media Paris"
+                }, 
+                {
+                    "code": "WIC 370", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/370", 
+                    "name": "Immersion in Culture & Language Mexico"
+                }, 
+                {
+                    "code": "WIC 371", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/371", 
+                    "name": "The Magnificence and Mystery of the Maya"
+                }, 
+                {
+                    "code": "WIC 372", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/372", 
+                    "name": "Tropical Biology"
+                }, 
+                {
+                    "code": "WIC 380", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/380", 
+                    "name": "Impressions of Provence"
+                }, 
+                {
+                    "code": "WIC 381", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/381", 
+                    "name": "Understand the European Union & Its Insi"
+                }, 
+                {
+                    "code": "WIC 390", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIC/390", 
+                    "name": "The Ascending Dragon: Vietnam"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/WIC"
+        }, 
+        {
+            "abbr": "WIN", 
+            "courses": [
+                {
+                    "code": "WIN 080", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/080", 
+                    "name": "Turning Points: Self & Society"
+                }, 
+                {
+                    "code": "WIN 095", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/095", 
+                    "name": "Math without Fear: Basic Math Comp"
+                }, 
+                {
+                    "code": "WIN 096", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/096", 
+                    "name": "Patterns in Intercultural Communication"
+                }, 
+                {
+                    "code": "WIN 101", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/101", 
+                    "name": "Clinicals in Athletic Training"
+                }, 
+                {
+                    "code": "WIN 102", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/102", 
+                    "name": "The '60s: Aquarius to Angst"
+                }, 
+                {
+                    "code": "WIN 106", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/106", 
+                    "name": "Relationships"
+                }, 
+                {
+                    "code": "WIN 107", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/107", 
+                    "name": "Practical Applications of Psychology"
+                }, 
+                {
+                    "code": "WIN 108", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/108", 
+                    "name": "Diversity, Equal Opportunity & Affirmati"
+                }, 
+                {
+                    "code": "WIN 109", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/109", 
+                    "name": "Mediation: A Process for Dispute Resolut"
+                }, 
+                {
+                    "code": "WIN 111", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/111", 
+                    "name": "Weathering the Storm: Successful Dev Wrt"
+                }, 
+                {
+                    "code": "WIN 112", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/112", 
+                    "name": "Leadership in Times of Crisis"
+                }, 
+                {
+                    "code": "WIN 118", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/118", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WIN 119", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/119", 
+                    "name": "Covering the Indiana Legislature"
+                }, 
+                {
+                    "code": "WIN 121", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/121", 
+                    "name": "Mexican-Americans in the US"
+                }, 
+                {
+                    "code": "WIN 122", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/122", 
+                    "name": "Comic Books: Sub Cutlure to Pop Culture"
+                }, 
+                {
+                    "code": "WIN 123", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/123", 
+                    "name": "Phys Disability and Rehabilitation"
+                }, 
+                {
+                    "code": "WIN 124", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/124", 
+                    "name": "The Art of French & Hispanic Cinema"
+                }, 
+                {
+                    "code": "WIN 125", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/125", 
+                    "name": "MCAT/DAT Preparation"
+                }, 
+                {
+                    "code": "WIN 126", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/126", 
+                    "name": "Living w/Land: Trans. Interior Alaska"
+                }, 
+                {
+                    "code": "WIN 127", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/127", 
+                    "name": "Gothean Painting: Exp Self through Art"
+                }, 
+                {
+                    "code": "WIN 128", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/128", 
+                    "name": "Evolution American Musical Theatre 20th"
+                }, 
+                {
+                    "code": "WIN 130", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/130", 
+                    "name": "Existing In a World of Diversity"
+                }, 
+                {
+                    "code": "WIN 131", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/131", 
+                    "name": "Leadership Modified by Religious Leaders"
+                }, 
+                {
+                    "code": "WIN 132", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/132", 
+                    "name": "Leadership in the Newsroom"
+                }, 
+                {
+                    "code": "WIN 133", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/133", 
+                    "name": "Computer-Mediated Environments"
+                }, 
+                {
+                    "code": "WIN 136", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/136", 
+                    "name": "Real World Leadership"
+                }, 
+                {
+                    "code": "WIN 138", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/138", 
+                    "name": "The History of the Future"
+                }, 
+                {
+                    "code": "WIN 139", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/139", 
+                    "name": "Science and Religion"
+                }, 
+                {
+                    "code": "WIN 141", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/141", 
+                    "name": "Illuminate the Past, Preserve the Pres"
+                }, 
+                {
+                    "code": "WIN 143", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/143", 
+                    "name": "Leadership Biographies in Film"
+                }, 
+                {
+                    "code": "WIN 146", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/146", 
+                    "name": "Leadership in Fraternities & Sororties"
+                }, 
+                {
+                    "code": "WIN 147", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/147", 
+                    "name": "Bio Ethics & Leadership"
+                }, 
+                {
+                    "code": "WIN 148", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/148", 
+                    "name": "Films of Alfred Hitchcock"
+                }, 
+                {
+                    "code": "WIN 151", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/151", 
+                    "name": "Applications of Electronic Spreadsheet -"
+                }, 
+                {
+                    "code": "WIN 152", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/152", 
+                    "name": "1998 Personal Taxes"
+                }, 
+                {
+                    "code": "WIN 153", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/153", 
+                    "name": "Personal Income Tax"
+                }, 
+                {
+                    "code": "WIN 154", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/154", 
+                    "name": "Federal & State Income Tax Prep"
+                }, 
+                {
+                    "code": "WIN 157", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/157", 
+                    "name": "Plato & Charlie Chaplin in Hyperdrive"
+                }, 
+                {
+                    "code": "WIN 158", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/158", 
+                    "name": "Social Meanings of Crafts and Hobbies"
+                }, 
+                {
+                    "code": "WIN 159", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/159", 
+                    "name": "Producing Videos"
+                }, 
+                {
+                    "code": "WIN 161", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/161", 
+                    "name": "Nonviolence"
+                }, 
+                {
+                    "code": "WIN 163", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/163", 
+                    "name": "No Laughing Matter: Psychology of Humor"
+                }, 
+                {
+                    "code": "WIN 164", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/164", 
+                    "name": "The Highland Bagpipe: History/Lit/Music"
+                }, 
+                {
+                    "code": "WIN 167", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/167", 
+                    "name": "The Internet and the Law"
+                }, 
+                {
+                    "code": "WIN 168", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/168", 
+                    "name": "Cryptology and Privacy"
+                }, 
+                {
+                    "code": "WIN 169", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/169", 
+                    "name": "Figure Drawing"
+                }, 
+                {
+                    "code": "WIN 173", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/173", 
+                    "name": "Natural History Videos"
+                }, 
+                {
+                    "code": "WIN 177", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/177", 
+                    "name": "Earthly Demise"
+                }, 
+                {
+                    "code": "WIN 180", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/180", 
+                    "name": "Introduction to China"
+                }, 
+                {
+                    "code": "WIN 182", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/182", 
+                    "name": "Abandon All Hope, Ye Who Enter Here. Not"
+                }, 
+                {
+                    "code": "WIN 183", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/183", 
+                    "name": "Four-Week Film School"
+                }, 
+                {
+                    "code": "WIN 186", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/186", 
+                    "name": "Opera: Extravagant/Irrational"
+                }, 
+                {
+                    "code": "WIN 187", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/187", 
+                    "name": "Creativity"
+                }, 
+                {
+                    "code": "WIN 188", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/188", 
+                    "name": "Wagner-Musical Drama-The Ring Cycle"
+                }, 
+                {
+                    "code": "WIN 189", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/189", 
+                    "name": "Art & Spirit"
+                }, 
+                {
+                    "code": "WIN 195", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/195", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WIN 197", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/197", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WIN 201", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/201", 
+                    "name": "Braveheart to Ken Burns: His & Film"
+                }, 
+                {
+                    "code": "WIN 202", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/202", 
+                    "name": "Quebec Nationalism"
+                }, 
+                {
+                    "code": "WIN 203", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/203", 
+                    "name": "Sound in the Story"
+                }, 
+                {
+                    "code": "WIN 204", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/204", 
+                    "name": "Introduction to West-Central Europe"
+                }, 
+                {
+                    "code": "WIN 211", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/211", 
+                    "name": "Narnia & Shadowlands: Life & Works CS Le"
+                }, 
+                {
+                    "code": "WIN 212", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/212", 
+                    "name": "Masks and Puppets in Theatre & Society"
+                }, 
+                {
+                    "code": "WIN 213", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/213", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WIN 215", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/215", 
+                    "name": "Logic & Board Games"
+                }, 
+                {
+                    "code": "WIN 216", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/216", 
+                    "name": "American Heroic Masculinity"
+                }, 
+                {
+                    "code": "WIN 217", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/217", 
+                    "name": "A+ Certification All-In-One-Review"
+                }, 
+                {
+                    "code": "WIN 218", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/218", 
+                    "name": "Yoga & Meditation"
+                }, 
+                {
+                    "code": "WIN 219", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/219", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WIN 220", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/220", 
+                    "name": "MCAT Preparation"
+                }, 
+                {
+                    "code": "WIN 221", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/221", 
+                    "name": "Nanotechnology"
+                }, 
+                {
+                    "code": "WIN 229", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/229", 
+                    "name": "Natural History Videos"
+                }, 
+                {
+                    "code": "WIN 231", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/231", 
+                    "name": "Harry Potter & the Literary Critics"
+                }, 
+                {
+                    "code": "WIN 233", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/233", 
+                    "name": "The Amazing Brain"
+                }, 
+                {
+                    "code": "WIN 238", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/238", 
+                    "name": "Feminist Theory & Popular Culture"
+                }, 
+                {
+                    "code": "WIN 247", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/247", 
+                    "name": "Prob. Reasoning to No-Lim. Hold'em Poker"
+                }, 
+                {
+                    "code": "WIN 256", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/256", 
+                    "name": "Deconstructing the Mouse"
+                }, 
+                {
+                    "code": "WIN 267", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/267", 
+                    "name": "Stage on Screen: Movies about Theatre"
+                }, 
+                {
+                    "code": "WIN 270", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/270", 
+                    "name": "Psych of Athletic Performance"
+                }, 
+                {
+                    "code": "WIN 272", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/272", 
+                    "name": "Childern's Programs:Ratings/Guidelines"
+                }, 
+                {
+                    "code": "WIN 275", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/275", 
+                    "name": "Personal Financial Planning"
+                }, 
+                {
+                    "code": "WIN 281", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/281", 
+                    "name": "Diversity! What Difference Does Differen"
+                }, 
+                {
+                    "code": "WIN 282", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/282", 
+                    "name": "Introduction to Photoshop 6.0"
+                }, 
+                {
+                    "code": "WIN 283", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/283", 
+                    "name": "The End of Communism?"
+                }, 
+                {
+                    "code": "WIN 285", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/285", 
+                    "name": "American Presidency"
+                }, 
+                {
+                    "code": "WIN 286", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/286", 
+                    "name": "American Film History"
+                }, 
+                {
+                    "code": "WIN 287", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/287", 
+                    "name": "Diverse Undergrad. on College Campus"
+                }, 
+                {
+                    "code": "WIN 288", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/288", 
+                    "name": "The Holocaust: Killers & Victims, Bystan"
+                }, 
+                {
+                    "code": "WIN 289", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/289", 
+                    "name": "Rescuers: People during Holocaust"
+                }, 
+                {
+                    "code": "WIN 290", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/290", 
+                    "name": "Stage Dialects"
+                }, 
+                {
+                    "code": "WIN 291", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/291", 
+                    "name": "Biographies in Film"
+                }, 
+                {
+                    "code": "WIN 292", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/292", 
+                    "name": "Science Fict: Ideas/Genres I"
+                }, 
+                {
+                    "code": "WIN 293", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/293", 
+                    "name": "Science Fiction: Ideas and Genres II"
+                }, 
+                {
+                    "code": "WIN 294", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/294", 
+                    "name": "The Holocaust: Perpetrators, By-Stand,"
+                }, 
+                {
+                    "code": "WIN 295", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/295", 
+                    "name": "Community Health Initiatives"
+                }, 
+                {
+                    "code": "WIN 296", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/296", 
+                    "name": "Science Fiction: Ideas & Genres I"
+                }, 
+                {
+                    "code": "WIN 297", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/297", 
+                    "name": "Cinematic Storytelling Alfred Hitchcock"
+                }, 
+                {
+                    "code": "WIN 299", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/299", 
+                    "name": "Web Programming"
+                }, 
+                {
+                    "code": "WIN 302", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/302", 
+                    "name": "Bioethics: Leadership Dec. for 21st Cent"
+                }, 
+                {
+                    "code": "WIN 303", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/303", 
+                    "name": "Chemistry for the Curious"
+                }, 
+                {
+                    "code": "WIN 307", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/307", 
+                    "name": "Mac: The Computer for the Rest of Us"
+                }, 
+                {
+                    "code": "WIN 308", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/308", 
+                    "name": "Harlem Renaissance"
+                }, 
+                {
+                    "code": "WIN 309", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/309", 
+                    "name": "Exploring the Internet"
+                }, 
+                {
+                    "code": "WIN 311", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/311", 
+                    "name": "Belize:Rainforest, Ruins and Reefs"
+                }, 
+                {
+                    "code": "WIN 323", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/323", 
+                    "name": "Canadian Women Writers"
+                }, 
+                {
+                    "code": "WIN 324", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/324", 
+                    "name": "Quebec Nationalism & the Crisis of Canad"
+                }, 
+                {
+                    "code": "WIN 336", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/336", 
+                    "name": "Creative Writing"
+                }, 
+                {
+                    "code": "WIN 339", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/339", 
+                    "name": "Non-Fiction Book Writng Workshop II"
+                }, 
+                {
+                    "code": "WIN 342", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/342", 
+                    "name": "Visions/Revisions of Black Women Writers"
+                }, 
+                {
+                    "code": "WIN 343", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/343", 
+                    "name": "Espionage:Fact & Fiction"
+                }, 
+                {
+                    "code": "WIN 344", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/344", 
+                    "name": "Tradition & Modernism in Picas"
+                }, 
+                {
+                    "code": "WIN 346", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/346", 
+                    "name": "Leadership in the Civil Rights Movement"
+                }, 
+                {
+                    "code": "WIN 361", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/361", 
+                    "name": "Photographing Belize"
+                }, 
+                {
+                    "code": "WIN 363", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/363", 
+                    "name": "Service Learning"
+                }, 
+                {
+                    "code": "WIN 364", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/364", 
+                    "name": "Inner City Mission Work"
+                }, 
+                {
+                    "code": "WIN 366", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/366", 
+                    "name": "Photographing Norway"
+                }, 
+                {
+                    "code": "WIN 372", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/372", 
+                    "name": "Wildlife Survey: Wolf & Lynx Ecology Exp"
+                }, 
+                {
+                    "code": "WIN 401", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/401", 
+                    "name": "Leadership"
+                }, 
+                {
+                    "code": "WIN 404", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/404", 
+                    "name": "N. Amer Film Propagand Dur WW II"
+                }, 
+                {
+                    "code": "WIN 407", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/407", 
+                    "name": "Burden of Vietnam:Myth&Reality"
+                }, 
+                {
+                    "code": "WIN 408", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/408", 
+                    "name": "Travel-Related Creative Writing"
+                }, 
+                {
+                    "code": "WIN 411", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/411", 
+                    "name": "Experiencing Venezuela"
+                }, 
+                {
+                    "code": "WIN 412", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/412", 
+                    "name": "North Africa-Morocco&Tunisia"
+                }, 
+                {
+                    "code": "WIN 413", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/413", 
+                    "name": "Leadership and Norwegian Culture"
+                }, 
+                {
+                    "code": "WIN 416", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/416", 
+                    "name": "Asia & the Pacific Islands: Religions"
+                }, 
+                {
+                    "code": "WIN 418", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/418", 
+                    "name": "Natural History of South Florida"
+                }, 
+                {
+                    "code": "WIN 422", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/422", 
+                    "name": "Three in \"01\""
+                }, 
+                {
+                    "code": "WIN 428", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/428", 
+                    "name": "Ascending Dragon: Exploring Vietnam"
+                }, 
+                {
+                    "code": "WIN 429", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/429", 
+                    "name": "Italy: Window to Christendom and Western"
+                }, 
+                {
+                    "code": "WIN 431", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/431", 
+                    "name": "Tropical Marine Biology"
+                }, 
+                {
+                    "code": "WIN 433", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/433", 
+                    "name": "The Middle East: Cradle of Civilization"
+                }, 
+                {
+                    "code": "WIN 434", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/434", 
+                    "name": "Monastic Spirituality"
+                }, 
+                {
+                    "code": "WIN 437", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/437", 
+                    "name": "Peace & Justice in Northern Ireland"
+                }, 
+                {
+                    "code": "WIN 438", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/438", 
+                    "name": "Winter Cities: A Canadian Experience"
+                }, 
+                {
+                    "code": "WIN 439", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/439", 
+                    "name": "South Africa: Apartheid to Democracy"
+                }, 
+                {
+                    "code": "WIN 441", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/441", 
+                    "name": "A Walking Tour of London"
+                }, 
+                {
+                    "code": "WIN 442", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/442", 
+                    "name": "Budapest and Prague: Raising the Iron"
+                }, 
+                {
+                    "code": "WIN 443", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/443", 
+                    "name": "Australia 2000!!"
+                }, 
+                {
+                    "code": "WIN 445", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/445", 
+                    "name": "The Glory that was Greece: An exploratio"
+                }, 
+                {
+                    "code": "WIN 448", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/448", 
+                    "name": "Ireland to America"
+                }, 
+                {
+                    "code": "WIN 450", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/450", 
+                    "name": "Scottish History on Location"
+                }, 
+                {
+                    "code": "WIN 452", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/452", 
+                    "name": "Examining the Journalism of Hemmingway"
+                }, 
+                {
+                    "code": "WIN 455", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/455", 
+                    "name": "The Nonfiction of Kurt Vonnegut"
+                }, 
+                {
+                    "code": "WIN 481", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WIN/481", 
+                    "name": "Montreal"
+                }
+            ], 
+            "name": "Wingate 401. The Senior Year Transition (Win)", 
+            "url": "http://www.chegg.com/courses/franklincollege/WIN"
+        }, 
+        {
+            "abbr": "WLC", 
+            "courses": [
+                {
+                    "code": "WLC 120", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/120", 
+                    "name": "Leadership & Inner City Missions"
+                }, 
+                {
+                    "code": "WLC 122", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/122", 
+                    "name": "Grassroots Ldsp of the Civil Rights Move"
+                }, 
+                {
+                    "code": "WLC 123", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/123", 
+                    "name": "Change"
+                }, 
+                {
+                    "code": "WLC 125", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/125", 
+                    "name": "Nationalism: Explanatory Models, Leaders"
+                }, 
+                {
+                    "code": "WLC 130", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/130", 
+                    "name": "Leadership in a Multicultural Context"
+                }, 
+                {
+                    "code": "WLC 134", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/134", 
+                    "name": "Brazil: A Culture of Paradox"
+                }, 
+                {
+                    "code": "WLC 135", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/135", 
+                    "name": "Leadership in World Terrorism: Cross Cul"
+                }, 
+                {
+                    "code": "WLC 144", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/144", 
+                    "name": "Political Leadership: Great Depre & WWII"
+                }, 
+                {
+                    "code": "WLC 145", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/145", 
+                    "name": "Vision & Dream: Leadership & Spiritual E"
+                }, 
+                {
+                    "code": "WLC 150", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/150", 
+                    "name": "Spiritual Exploration as Inspiration in"
+                }, 
+                {
+                    "code": "WLC 155", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/155", 
+                    "name": "Russian Leaders"
+                }, 
+                {
+                    "code": "WLC 157", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/157", 
+                    "name": "Gender, Sexuality, and Family in Latin A"
+                }, 
+                {
+                    "code": "WLC 165", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/165", 
+                    "name": "Leadership in the Civil War-A Cultural C"
+                }, 
+                {
+                    "code": "WLC 200", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/200", 
+                    "name": "Ldrshp: Italian hist, art & arch."
+                }, 
+                {
+                    "code": "WLC 211", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/211", 
+                    "name": "China: Culture, His, Politics & Leadersh"
+                }, 
+                {
+                    "code": "WLC 227", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/227", 
+                    "name": "Education of a Renaissance Prince:"
+                }, 
+                {
+                    "code": "WLC 235", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/235", 
+                    "name": "Civil Rights: Leaders, Music, and Faith"
+                }, 
+                {
+                    "code": "WLC 240", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/240", 
+                    "name": "Leadership in Canadian Politics"
+                }, 
+                {
+                    "code": "WLC 250", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/250", 
+                    "name": "Discovering Musical Capitals of Europe"
+                }, 
+                {
+                    "code": "WLC 301", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/301", 
+                    "name": "The Glory That Was (Is) Greece"
+                }, 
+                {
+                    "code": "WLC 360", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/360", 
+                    "name": "Media London/Media Paris"
+                }, 
+                {
+                    "code": "WLC 381", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLC/381", 
+                    "name": "Understand the European Union & Its Inst"
+                }
+            ], 
+            "name": "World Languages And Cultures", 
+            "url": "http://www.chegg.com/courses/franklincollege/WLC"
+        }, 
+        {
+            "abbr": "WLD", 
+            "courses": [
+                {
+                    "code": "WLD 108", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/108", 
+                    "name": "Film Music Around the World"
+                }, 
+                {
+                    "code": "WLD 110", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/110", 
+                    "name": "Prin of Leadership from Bus Prospective"
+                }, 
+                {
+                    "code": "WLD 115", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/115", 
+                    "name": "Interpersonal Communication"
+                }, 
+                {
+                    "code": "WLD 117", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/117", 
+                    "name": "Ben Franklin: Ldrshp in the 21st C."
+                }, 
+                {
+                    "code": "WLD 120", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/120", 
+                    "name": "Athletic Performance: PSY & Leadership"
+                }, 
+                {
+                    "code": "WLD 122", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/122", 
+                    "name": "Intro to Peace Studies"
+                }, 
+                {
+                    "code": "WLD 125", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/125", 
+                    "name": "Theology and Film Leadership Class"
+                }, 
+                {
+                    "code": "WLD 127", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/127", 
+                    "name": "Thomas Hardy's Wessex"
+                }, 
+                {
+                    "code": "WLD 130", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/130", 
+                    "name": "Leadership in Business & Politics"
+                }, 
+                {
+                    "code": "WLD 132", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/132", 
+                    "name": "Leadership in Shakespeare"
+                }, 
+                {
+                    "code": "WLD 135", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/135", 
+                    "name": "Leadership: Tolkin's Lord of the Rings"
+                }, 
+                {
+                    "code": "WLD 136", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/136", 
+                    "name": "Leadership Biographies in Film"
+                }, 
+                {
+                    "code": "WLD 139", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/139", 
+                    "name": "Leadership and Mythology of the Star War"
+                }, 
+                {
+                    "code": "WLD 140", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/140", 
+                    "name": "Leadership in Vounteer-Based Organizatio"
+                }, 
+                {
+                    "code": "WLD 141", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/141", 
+                    "name": "Scholarship on Leading and Following"
+                }, 
+                {
+                    "code": "WLD 142", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/142", 
+                    "name": "Microsociological Perspectives for Leade"
+                }, 
+                {
+                    "code": "WLD 145", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/145", 
+                    "name": "Ldrshp in the Schools: An Integrated App"
+                }, 
+                {
+                    "code": "WLD 147", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/147", 
+                    "name": "Outstanding in our Field"
+                }, 
+                {
+                    "code": "WLD 150", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/150", 
+                    "name": "Leadership & Producing Videos"
+                }, 
+                {
+                    "code": "WLD 151", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/151", 
+                    "name": "Leadership in Sports Journalism and Spor"
+                }, 
+                {
+                    "code": "WLD 152", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/152", 
+                    "name": "Environmental Chemistry & Leadership"
+                }, 
+                {
+                    "code": "WLD 157", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/157", 
+                    "name": "Leadership in Children's Literature"
+                }, 
+                {
+                    "code": "WLD 160", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/160", 
+                    "name": "Effective Leadership in Student Org"
+                }, 
+                {
+                    "code": "WLD 165", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/165", 
+                    "name": "Cryptology, Privacy, & Leadership"
+                }, 
+                {
+                    "code": "WLD 170", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/170", 
+                    "name": "Enviromental Chemistry/Leadership"
+                }, 
+                {
+                    "code": "WLD 171", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/171", 
+                    "name": "Bioethics: Leadership Decisions for the"
+                }, 
+                {
+                    "code": "WLD 180", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/180", 
+                    "name": "Leadership in the Crucifixion"
+                }, 
+                {
+                    "code": "WLD 190", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/190", 
+                    "name": "Experiencing Leadership: Theory & Pract"
+                }, 
+                {
+                    "code": "WLD 200", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/200", 
+                    "name": "Think Globally, Act Locally: Ldrshp for"
+                }, 
+                {
+                    "code": "WLD 210", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/210", 
+                    "name": "Leadership in Marriage & Family"
+                }, 
+                {
+                    "code": "WLD 230", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WLD/230", 
+                    "name": "Boldly Lead: Ethics, Ldrshp, & Star Trek"
+                }
+            ], 
+            "name": "Welding", 
+            "url": "http://www.chegg.com/courses/franklincollege/WLD"
+        }, 
+        {
+            "abbr": "WNL", 
+            "courses": [
+                {
+                    "code": "WNL 200", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WNL/200", 
+                    "name": "Italian Religion, Politics, and Art"
+                }, 
+                {
+                    "code": "WNL 228", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WNL/228", 
+                    "name": "Search for Belonging: Study in France"
+                }, 
+                {
+                    "code": "WNL 245", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WNL/245", 
+                    "name": "New Zealand: Studies in Culture & Enviro"
+                }, 
+                {
+                    "code": "WNL 250", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WNL/250", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WNL 260", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WNL/260", 
+                    "name": "Research in Brazil"
+                }, 
+                {
+                    "code": "WNL 270", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WNL/270", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WNL 300", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WNL/300", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WNL 305", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WNL/305", 
+                    "name": "Understanding Cuba"
+                }, 
+                {
+                    "code": "WNL 310", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WNL/310", 
+                    "name": "Immersion in Culture & Lang in Spain"
+                }, 
+                {
+                    "code": "WNL 350", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WNL/350", 
+                    "name": "Turkey: The Crossroad of Civilization"
+                }, 
+                {
+                    "code": "WNL 370", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WNL/370", 
+                    "name": "Immersion in Culture & Language Mexico"
+                }, 
+                {
+                    "code": "WNL 372", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WNL/372", 
+                    "name": "Reefs, Rainforests, Ruins in Belize"
+                }, 
+                {
+                    "code": "WNL 375", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WNL/375", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WNL 380", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WNL/380", 
+                    "name": "Poverty, Conflict, & Disease Ugandan Peo"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/WNL"
+        }, 
+        {
+            "abbr": "WST", 
+            "courses": [
+                {
+                    "code": "WST 332", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WST/332", 
+                    "name": ""
+                }, 
+                {
+                    "code": "WST 482", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WST/482", 
+                    "name": "Women's Studies Practicum"
+                }, 
+                {
+                    "code": "WST 490", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/WST/490", 
+                    "name": "Independent Study: Women's Studies"
+                }
+            ], 
+            "name": "WomenS Studies", 
+            "url": "http://www.chegg.com/courses/franklincollege/WST"
+        }, 
+        {
+            "abbr": "ZIP", 
+            "courses": [
+                {
+                    "code": "ZIP 001", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ZIP/001", 
+                    "name": "Semester Off Campus"
+                }, 
+                {
+                    "code": "ZIP 002", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ZIP/002", 
+                    "name": "Cross Registration - CUE"
+                }, 
+                {
+                    "code": "ZIP 003", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ZIP/003", 
+                    "name": "Course Off Campus"
+                }, 
+                {
+                    "code": "ZIP 004", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ZIP/004", 
+                    "name": "3+ program semester off campus"
+                }, 
+                {
+                    "code": "ZIP 009", 
+                    "course_url": "http://www.chegg.com/courses/franklincollege/ZIP/009", 
+                    "name": "Future full time"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/franklincollege/ZIP"
+        }
+    ], 
+    "name": "franklincollege"
+}

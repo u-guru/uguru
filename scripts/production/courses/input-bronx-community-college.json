@@ -1,0 +1,2482 @@
+{
+    "all_stats": {
+        "num_courses": 401, 
+        "num_departments": 67
+    }, 
+    "departments": [
+        {
+            "abbr": "ACC", 
+            "courses": [
+                {
+                    "code": "ACC 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ACC/11", 
+                    "name": "Fundmntl Account 1"
+                }, 
+                {
+                    "code": "ACC 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ACC/12", 
+                    "name": "Fundmntl Account 2"
+                }, 
+                {
+                    "code": "ACC 13", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ACC/13", 
+                    "name": "Intermdte Accountg"
+                }, 
+                {
+                    "code": "ACC 15", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ACC/15", 
+                    "name": "Acctg Info Systems"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/bronx/ACC"
+        }, 
+        {
+            "abbr": "ACM", 
+            "courses": [
+                {
+                    "code": "ACM 90", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ACM/90", 
+                    "name": "Acm Internship"
+                }
+            ], 
+            "name": "Animal Care and Management", 
+            "url": "http://www.chegg.com/courses/bronx/ACM"
+        }, 
+        {
+            "abbr": "ACS", 
+            "courses": [
+                {
+                    "code": "ACS 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ACS/10", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACS 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ACS/11", 
+                    "name": "Engine Repair"
+                }, 
+                {
+                    "code": "ACS 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ACS/12", 
+                    "name": "Brake Systems"
+                }, 
+                {
+                    "code": "ACS 13", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ACS/13", 
+                    "name": "Engine Performance"
+                }, 
+                {
+                    "code": "ACS 14", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ACS/14", 
+                    "name": "Manual Drive Train and Axle"
+                }, 
+                {
+                    "code": "ACS 21", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ACS/21", 
+                    "name": "Front Ends"
+                }, 
+                {
+                    "code": "ACS 22", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ACS/22", 
+                    "name": "Automatic Transmission and Transaxle"
+                }, 
+                {
+                    "code": "ACS 23", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ACS/23", 
+                    "name": "Heating and Air-Conditioning"
+                }, 
+                {
+                    "code": "ACS 24", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ACS/24", 
+                    "name": "Electrical Systems"
+                }, 
+                {
+                    "code": "ACS 35", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ACS/35", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACS 45", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ACS/45", 
+                    "name": "Diesel Technology"
+                }
+            ], 
+            "name": "Automotive Technology", 
+            "url": "http://www.chegg.com/courses/bronx/ACS"
+        }, 
+        {
+            "abbr": "ANT", 
+            "courses": [
+                {
+                    "code": "ANT 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ANT/11", 
+                    "name": "Introduction to Anthropology"
+                }
+            ], 
+            "name": "Anthropology", 
+            "url": "http://www.chegg.com/courses/bronx/ANT"
+        }, 
+        {
+            "abbr": "AST", 
+            "courses": [
+                {
+                    "code": "AST 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/AST/11", 
+                    "name": "Stellar Astronomy"
+                }, 
+                {
+                    "code": "AST 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/AST/12", 
+                    "name": "Planetary Astronomy"
+                }
+            ], 
+            "name": "Astronomy", 
+            "url": "http://www.chegg.com/courses/bronx/AST"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/11", 
+                    "name": "General Biology 1"
+                }, 
+                {
+                    "code": "BIO 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/12", 
+                    "name": "General Biology 2"
+                }, 
+                {
+                    "code": "BIO 15", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/15", 
+                    "name": "Zoology"
+                }, 
+                {
+                    "code": "BIO 21", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/21", 
+                    "name": "The Human Body"
+                }, 
+                {
+                    "code": "BIO 22", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/22", 
+                    "name": "Medical Terminolgy"
+                }, 
+                {
+                    "code": "BIO 23", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/23", 
+                    "name": "Anatomy&Physiology 1"
+                }, 
+                {
+                    "code": "BIO 24", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/24", 
+                    "name": "Anatomy&Physiology 2"
+                }, 
+                {
+                    "code": "BIO 27", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/27", 
+                    "name": "Intro to Beh Neursci"
+                }, 
+                {
+                    "code": "BIO 28", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/28", 
+                    "name": "Microbio/Inf Control"
+                }, 
+                {
+                    "code": "BIO 44", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/44", 
+                    "name": "Diagnostic Microbio"
+                }, 
+                {
+                    "code": "BIO 46", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/46", 
+                    "name": "Clin Techniques 1"
+                }, 
+                {
+                    "code": "BIO 47", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/47", 
+                    "name": "Clin Techniques 2"
+                }, 
+                {
+                    "code": "BIO 50", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/50", 
+                    "name": "Bioethics and Law"
+                }, 
+                {
+                    "code": "BIO 52", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/52", 
+                    "name": "Immunology"
+                }, 
+                {
+                    "code": "BIO 55", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/55", 
+                    "name": "Genetics"
+                }, 
+                {
+                    "code": "BIO 81", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/81", 
+                    "name": "Intro to M.L.T."
+                }, 
+                {
+                    "code": "BIO 82", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/82", 
+                    "name": "Clinical Hemotology"
+                }, 
+                {
+                    "code": "BIO 83", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/83", 
+                    "name": "Clinical Chemistry"
+                }, 
+                {
+                    "code": "BIO 85", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/85", 
+                    "name": "Serology"
+                }, 
+                {
+                    "code": "BIO 86", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/86", 
+                    "name": "Immunohematology"
+                }, 
+                {
+                    "code": "BIO 87", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/87", 
+                    "name": "Urinalysis and Bd Fl"
+                }, 
+                {
+                    "code": "BIO 90", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIO/90", 
+                    "name": "Clinical Practicum"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/bronx/BIO"
+        }, 
+        {
+            "abbr": "BIS", 
+            "courses": [
+                {
+                    "code": "BIS 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIS/12", 
+                    "name": "Multimedia Theory"
+                }, 
+                {
+                    "code": "BIS 13", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIS/13", 
+                    "name": "Intro to Internet"
+                }, 
+                {
+                    "code": "BIS 23", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIS/23", 
+                    "name": "Adv Web Page Design"
+                }, 
+                {
+                    "code": "BIS 31", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BIS/31", 
+                    "name": "E-Commerce"
+                }
+            ], 
+            "name": "Business & Information Systems", 
+            "url": "http://www.chegg.com/courses/bronx/BIS"
+        }, 
+        {
+            "abbr": "BOT", 
+            "courses": [
+                {
+                    "code": "BOT 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BOT/11", 
+                    "name": "Basic Botany"
+                }, 
+                {
+                    "code": "BOT 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BOT/12", 
+                    "name": "Plant Form/Function"
+                }, 
+                {
+                    "code": "BOT 13", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BOT/13", 
+                    "name": "Plant Physiology"
+                }, 
+                {
+                    "code": "BOT 41", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BOT/41", 
+                    "name": "Entomology"
+                }, 
+                {
+                    "code": "BOT 61", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BOT/61", 
+                    "name": "Fall Trees&Shrubs"
+                }, 
+                {
+                    "code": "BOT 63", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BOT/63", 
+                    "name": "Conifers"
+                }
+            ], 
+            "name": "Botany", 
+            "url": "http://www.chegg.com/courses/bronx/BOT"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BUS/10", 
+                    "name": "Intro to Business"
+                }, 
+                {
+                    "code": "BUS 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BUS/11", 
+                    "name": "Business Math"
+                }, 
+                {
+                    "code": "BUS 41", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BUS/41", 
+                    "name": "Business Statistcs"
+                }, 
+                {
+                    "code": "BUS 51", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BUS/51", 
+                    "name": "Business Org & Mgmt"
+                }, 
+                {
+                    "code": "BUS 52", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BUS/52", 
+                    "name": "Organizational Behav"
+                }, 
+                {
+                    "code": "BUS 53", 
+                    "course_url": "http://www.chegg.com/courses/bronx/BUS/53", 
+                    "name": "International Mgmt."
+                }
+            ], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/bronx/BUS"
+        }, 
+        {
+            "abbr": "CHM", 
+            "courses": [
+                {
+                    "code": "CHM 02", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CHM/02", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHM 2", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CHM/2", 
+                    "name": "Intro to Chemistry"
+                }, 
+                {
+                    "code": "CHM 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CHM/10", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHM 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CHM/11", 
+                    "name": "College Chemistry 1"
+                }, 
+                {
+                    "code": "CHM 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CHM/12", 
+                    "name": "General Coll Chem II"
+                }, 
+                {
+                    "code": "CHM 17", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CHM/17", 
+                    "name": "General Chemistry 1"
+                }, 
+                {
+                    "code": "CHM 18", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CHM/18", 
+                    "name": "General Chemistry 2"
+                }, 
+                {
+                    "code": "CHM 20", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CHM/20", 
+                    "name": "Intro to Nanoscience"
+                }, 
+                {
+                    "code": "CHM 22", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CHM/22", 
+                    "name": "Gen Chem II-Qualanal"
+                }, 
+                {
+                    "code": "CHM 31", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CHM/31", 
+                    "name": "Organic Chemistry 1"
+                }, 
+                {
+                    "code": "CHM 32", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CHM/32", 
+                    "name": "Organic Chemistry 2"
+                }, 
+                {
+                    "code": "CHM 33", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CHM/33", 
+                    "name": "Quant Analysis"
+                }, 
+                {
+                    "code": "CHM 38", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CHM/38", 
+                    "name": "Comptr Appl in Chem."
+                }, 
+                {
+                    "code": "CHM 39", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CHM/39", 
+                    "name": "Found. of Pharm Tech"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/bronx/CHM"
+        }, 
+        {
+            "abbr": "CLE", 
+            "courses": [
+                {
+                    "code": "CLE 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CLE/11", 
+                    "name": "Clinical Radiography Fundamentals"
+                }, 
+                {
+                    "code": "CLE 15", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CLE/15", 
+                    "name": "Clinical Radiography I"
+                }, 
+                {
+                    "code": "CLE 41", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CLE/41", 
+                    "name": "Clinical Education IV"
+                }, 
+                {
+                    "code": "CLE 45", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CLE/45", 
+                    "name": "Clinical Radiography V"
+                }
+            ], 
+            "name": "Clinical Experience: Rad Tech", 
+            "url": "http://www.chegg.com/courses/bronx/CLE"
+        }, 
+        {
+            "abbr": "CMS", 
+            "courses": [
+                {
+                    "code": "CMS 9", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMS/9", 
+                    "name": "Speech Clinic"
+                }, 
+                {
+                    "code": "CMS 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMS/10", 
+                    "name": "Phonetics"
+                }, 
+                {
+                    "code": "CMS 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMS/11", 
+                    "name": "Fund Communication"
+                }, 
+                {
+                    "code": "CMS 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMS/12", 
+                    "name": "Voice & Diction"
+                }, 
+                {
+                    "code": "CMS 20", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMS/20", 
+                    "name": "Public Speaking"
+                }, 
+                {
+                    "code": "CMS 22", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMS/22", 
+                    "name": "Sm Group Discussion"
+                }, 
+                {
+                    "code": "CMS 41", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMS/41", 
+                    "name": "Language Developmnt"
+                }, 
+                {
+                    "code": "CMS 42", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMS/42", 
+                    "name": "The Anatomy and Physiology of the Speech Mechanism"
+                }, 
+                {
+                    "code": "CMS 60", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMS/60", 
+                    "name": "Intro to Mass Comm"
+                }, 
+                {
+                    "code": "CMS 61", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMS/61", 
+                    "name": "Intro to Film"
+                }, 
+                {
+                    "code": "CMS 62", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMS/62", 
+                    "name": "Beginning Film and Video Production"
+                }, 
+                {
+                    "code": "CMS 75", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMS/75", 
+                    "name": "Acting 1"
+                }
+            ], 
+            "name": "Communication Arts and Science", 
+            "url": "http://www.chegg.com/courses/bronx/CMS"
+        }, 
+        {
+            "abbr": "CMT", 
+            "courses": [
+                {
+                    "code": "CMT 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMT/10", 
+                    "name": "Intro to Tv Tech"
+                }, 
+                {
+                    "code": "CMT 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMT/12", 
+                    "name": "Sm Studio Color Tv"
+                }, 
+                {
+                    "code": "CMT 14", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMT/14", 
+                    "name": "Digital Video Effects and Presentational Graphics"
+                }, 
+                {
+                    "code": "CMT 23", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMT/23", 
+                    "name": "Field Tv Production"
+                }, 
+                {
+                    "code": "CMT 31", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMT/31", 
+                    "name": "Sound Recording and Editing"
+                }, 
+                {
+                    "code": "CMT 33", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMT/33", 
+                    "name": "Tv Linear Editing"
+                }, 
+                {
+                    "code": "CMT 35", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMT/35", 
+                    "name": "Video Editing II"
+                }, 
+                {
+                    "code": "CMT 51", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMT/51", 
+                    "name": "Media Internship"
+                }, 
+                {
+                    "code": "CMT 53", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CMT/53", 
+                    "name": "Media Projects Lab"
+                }
+            ], 
+            "name": "Media Technology", 
+            "url": "http://www.chegg.com/courses/bronx/CMT"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 31", 
+                    "course_url": "http://www.chegg.com/courses/bronx/COM/31", 
+                    "name": "Business Comm"
+                }
+            ], 
+            "name": "Business Communications", 
+            "url": "http://www.chegg.com/courses/bronx/COM"
+        }, 
+        {
+            "abbr": "CPL", 
+            "courses": [
+                {
+                    "code": "CPL 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CPL/11", 
+                    "name": "Computer Literacy"
+                }
+            ], 
+            "name": "Computer Literacy", 
+            "url": "http://www.chegg.com/courses/bronx/CPL"
+        }, 
+        {
+            "abbr": "CPR", 
+            "courses": [
+                {
+                    "code": "CPR 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CPR/10", 
+                    "name": "C.P.R."
+                }
+            ], 
+            "name": "Cardiopulmonary Resuscitation", 
+            "url": "http://www.chegg.com/courses/bronx/CPR"
+        }, 
+        {
+            "abbr": "CRJ", 
+            "courses": [
+                {
+                    "code": "CRJ 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CRJ/11", 
+                    "name": "Introduction to Criminal Justice"
+                }, 
+                {
+                    "code": "CRJ 21", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CRJ/21", 
+                    "name": "Introduction to Criminology"
+                }, 
+                {
+                    "code": "CRJ 22", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CRJ/22", 
+                    "name": "Introduction to Policing"
+                }
+            ], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/bronx/CRJ"
+        }, 
+        {
+            "abbr": "CSI", 
+            "courses": [
+                {
+                    "code": "CSI 30", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CSI/30", 
+                    "name": "Discrete Math 1"
+                }, 
+                {
+                    "code": "CSI 31", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CSI/31", 
+                    "name": "Intro Comptr Prgmg I"
+                }, 
+                {
+                    "code": "CSI 32", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CSI/32", 
+                    "name": "Intro Comptr Prog II"
+                }, 
+                {
+                    "code": "CSI 33", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CSI/33", 
+                    "name": "Data Structures"
+                }, 
+                {
+                    "code": "CSI 35", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CSI/35", 
+                    "name": "Discrete Math II"
+                }
+            ], 
+            "name": "Computer Science", 
+            "url": "http://www.chegg.com/courses/bronx/CSI"
+        }, 
+        {
+            "abbr": "CWE", 
+            "courses": [
+                {
+                    "code": "CWE 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CWE/11", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CWE 31", 
+                    "course_url": "http://www.chegg.com/courses/bronx/CWE/31", 
+                    "name": "Cooperative Work Experience I"
+                }
+            ], 
+            "name": "Cooperative Work Experience", 
+            "url": "http://www.chegg.com/courses/bronx/CWE"
+        }, 
+        {
+            "abbr": "DAT", 
+            "courses": [
+                {
+                    "code": "DAT 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/DAT/10", 
+                    "name": "Computer Fundamentls"
+                }, 
+                {
+                    "code": "DAT 30", 
+                    "course_url": "http://www.chegg.com/courses/bronx/DAT/30", 
+                    "name": "Intro to Systems"
+                }, 
+                {
+                    "code": "DAT 33", 
+                    "course_url": "http://www.chegg.com/courses/bronx/DAT/33", 
+                    "name": "Micro Applications"
+                }, 
+                {
+                    "code": "DAT 35", 
+                    "course_url": "http://www.chegg.com/courses/bronx/DAT/35", 
+                    "name": "Visual Basic Progrmn"
+                }, 
+                {
+                    "code": "DAT 36", 
+                    "course_url": "http://www.chegg.com/courses/bronx/DAT/36", 
+                    "name": "Micro Spreadsheets"
+                }, 
+                {
+                    "code": "DAT 38", 
+                    "course_url": "http://www.chegg.com/courses/bronx/DAT/38", 
+                    "name": "Micro Database"
+                }, 
+                {
+                    "code": "DAT 47", 
+                    "course_url": "http://www.chegg.com/courses/bronx/DAT/47", 
+                    "name": "Java Programming"
+                }, 
+                {
+                    "code": "DAT 48", 
+                    "course_url": "http://www.chegg.com/courses/bronx/DAT/48", 
+                    "name": "Advanced Java Progrm"
+                }, 
+                {
+                    "code": "DAT 49", 
+                    "course_url": "http://www.chegg.com/courses/bronx/DAT/49", 
+                    "name": "Unix Fundamentals"
+                }
+            ], 
+            "name": "Data Processing", 
+            "url": "http://www.chegg.com/courses/bronx/DAT"
+        }, 
+        {
+            "abbr": "ECO", 
+            "courses": [
+                {
+                    "code": "ECO 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ECO/11", 
+                    "name": "Microeconomics"
+                }, 
+                {
+                    "code": "ECO 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ECO/12", 
+                    "name": "Macroeconomics"
+                }, 
+                {
+                    "code": "ECO 70", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ECO/70", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ECO 71", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ECO/71", 
+                    "name": "Eco. of Develop.Area"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/bronx/ECO"
+        }, 
+        {
+            "abbr": "EDU", 
+            "courses": [
+                {
+                    "code": "EDU 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/EDU/10", 
+                    "name": "Child Study-Birth to Grade 6"
+                }, 
+                {
+                    "code": "EDU 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/EDU/12", 
+                    "name": "Contemporary Urban Education-Birth to Grade 6"
+                }, 
+                {
+                    "code": "EDU 16", 
+                    "course_url": "http://www.chegg.com/courses/bronx/EDU/16", 
+                    "name": "Literacy in Early Childhood Education-Birth to Grade 2"
+                }, 
+                {
+                    "code": "EDU 18", 
+                    "course_url": "http://www.chegg.com/courses/bronx/EDU/18", 
+                    "name": "Literacy in a Spanish Bilingual Program"
+                }, 
+                {
+                    "code": "EDU 26", 
+                    "course_url": "http://www.chegg.com/courses/bronx/EDU/26", 
+                    "name": "Human Relations in Urban Schools"
+                }, 
+                {
+                    "code": "EDU 30", 
+                    "course_url": "http://www.chegg.com/courses/bronx/EDU/30", 
+                    "name": "Introduction to Special Needs, Schools and Society"
+                }, 
+                {
+                    "code": "EDU 40", 
+                    "course_url": "http://www.chegg.com/courses/bronx/EDU/40", 
+                    "name": "Field Work Seminar-Birth to Grade 6"
+                }, 
+                {
+                    "code": "EDU 50", 
+                    "course_url": "http://www.chegg.com/courses/bronx/EDU/50", 
+                    "name": "Creativity and the Arts for the Early Childhood and Childhood Years"
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/bronx/EDU"
+        }, 
+        {
+            "abbr": "ELC", 
+            "courses": [
+                {
+                    "code": "ELC 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ELC/11", 
+                    "name": "DC Circuit Analysis"
+                }, 
+                {
+                    "code": "ELC 13", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ELC/13", 
+                    "name": "Computer Applications in Telecommunications"
+                }, 
+                {
+                    "code": "ELC 15", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ELC/15", 
+                    "name": "Computer Applications in Technology"
+                }, 
+                {
+                    "code": "ELC 18", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ELC/18", 
+                    "name": "Computer Programming for Engineering Technology"
+                }, 
+                {
+                    "code": "ELC 21", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ELC/21", 
+                    "name": "AC Circuit Analysis"
+                }, 
+                {
+                    "code": "ELC 25", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ELC/25", 
+                    "name": "Electronics I"
+                }, 
+                {
+                    "code": "ELC 31", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ELC/31", 
+                    "name": "Electrical Circuits"
+                }, 
+                {
+                    "code": "ELC 35", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ELC/35", 
+                    "name": "Electronics II"
+                }, 
+                {
+                    "code": "ELC 51", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ELC/51", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ELC 81", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ELC/81", 
+                    "name": "Electronic Communications"
+                }, 
+                {
+                    "code": "ELC 94", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ELC/94", 
+                    "name": "Laser and Fiber Optic Communications"
+                }, 
+                {
+                    "code": "ELC 96", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ELC/96", 
+                    "name": "Digital Systems I"
+                }, 
+                {
+                    "code": "ELC 97", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ELC/97", 
+                    "name": "Digital Systems II"
+                }
+            ], 
+            "name": "Electrical Technology", 
+            "url": "http://www.chegg.com/courses/bronx/ELC"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 01", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/01", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 1", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/1", 
+                    "name": "Developmental Writing I"
+                }, 
+                {
+                    "code": "ENG 02", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/02", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 2", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/2", 
+                    "name": "Developmental Writing II"
+                }, 
+                {
+                    "code": "ENG 09", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/09", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 9", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/9", 
+                    "name": "Writers' Workshop for ESL Students"
+                }, 
+                {
+                    "code": "ENG 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/10", 
+                    "name": "Fundamentals of Composition and Rhetoric"
+                }, 
+                {
+                    "code": "ENG 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/11", 
+                    "name": "Composition and Rhetoric I"
+                }, 
+                {
+                    "code": "ENG 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/12", 
+                    "name": "Composition and Rhetoric II"
+                }, 
+                {
+                    "code": "ENG 14", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/14", 
+                    "name": "Written Composition and Prose Fiction"
+                }, 
+                {
+                    "code": "ENG 15", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/15", 
+                    "name": "Written Composition and Drama"
+                }, 
+                {
+                    "code": "ENG 16", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/16", 
+                    "name": "Written Composition and Poetry"
+                }, 
+                {
+                    "code": "ENG 21", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/21", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 23", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/23", 
+                    "name": "Scientific and Technical Writing"
+                }, 
+                {
+                    "code": "ENG 47", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/47", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 48", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/48", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 50", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/50", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 57", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/57", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 59", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/59", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 72", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/72", 
+                    "name": "The Bible as Literature"
+                }, 
+                {
+                    "code": "ENG 101", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENG/101", 
+                    "name": ""
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/bronx/ENG"
+        }, 
+        {
+            "abbr": "ENV", 
+            "courses": [
+                {
+                    "code": "ENV 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENV/11", 
+                    "name": "Environmentl Health"
+                }, 
+                {
+                    "code": "ENV 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ENV/12", 
+                    "name": "Envrnmntl Regulatns"
+                }
+            ], 
+            "name": "Environmental Technology", 
+            "url": "http://www.chegg.com/courses/bronx/ENV"
+        }, 
+        {
+            "abbr": "ESE", 
+            "courses": [
+                {
+                    "code": "ESE 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ESE/11", 
+                    "name": "The Earth"
+                }, 
+                {
+                    "code": "ESE 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ESE/12", 
+                    "name": "The Atmosphere"
+                }, 
+                {
+                    "code": "ESE 13", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ESE/13", 
+                    "name": "The Ocean"
+                }
+            ], 
+            "name": "Earth Systems & Environmntl Sci", 
+            "url": "http://www.chegg.com/courses/bronx/ESE"
+        }, 
+        {
+            "abbr": "ESL", 
+            "courses": [
+                {
+                    "code": "ESL 01", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ESL/01", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ESL 1", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ESL/1", 
+                    "name": "English as a Second Language-Basic"
+                }, 
+                {
+                    "code": "ESL 02", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ESL/02", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ESL 2", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ESL/2", 
+                    "name": "English as a Second Language-Intermediate"
+                }, 
+                {
+                    "code": "ESL 03", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ESL/03", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ESL 3", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ESL/3", 
+                    "name": "English as a Second Language-Advanced"
+                }
+            ], 
+            "name": "English as a Second Language", 
+            "url": "http://www.chegg.com/courses/bronx/ESL"
+        }, 
+        {
+            "abbr": "EST", 
+            "courses": [], 
+            "name": "Energy Services and Tech", 
+            "url": "http://www.chegg.com/courses/bronx/EST"
+        }, 
+        {
+            "abbr": "FIN", 
+            "courses": [
+                {
+                    "code": "FIN 31", 
+                    "course_url": "http://www.chegg.com/courses/bronx/FIN/31", 
+                    "name": "Princples/Finance"
+                }
+            ], 
+            "name": "Finance", 
+            "url": "http://www.chegg.com/courses/bronx/FIN"
+        }, 
+        {
+            "abbr": "FLO", 
+            "courses": [
+                {
+                    "code": "FLO 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/FLO/11", 
+                    "name": "Basic Centerpieces"
+                }, 
+                {
+                    "code": "FLO 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/FLO/12", 
+                    "name": "Holiday Decoration"
+                }, 
+                {
+                    "code": "FLO 13", 
+                    "course_url": "http://www.chegg.com/courses/bronx/FLO/13", 
+                    "name": "Funeral Arrangmnts"
+                }, 
+                {
+                    "code": "FLO 14", 
+                    "course_url": "http://www.chegg.com/courses/bronx/FLO/14", 
+                    "name": "Pract House Plants"
+                }, 
+                {
+                    "code": "FLO 15", 
+                    "course_url": "http://www.chegg.com/courses/bronx/FLO/15", 
+                    "name": "Wedding Flowers"
+                }, 
+                {
+                    "code": "FLO 23", 
+                    "course_url": "http://www.chegg.com/courses/bronx/FLO/23", 
+                    "name": "Care of House Plants"
+                }, 
+                {
+                    "code": "FLO 24", 
+                    "course_url": "http://www.chegg.com/courses/bronx/FLO/24", 
+                    "name": "Assential Flo Arrang"
+                }, 
+                {
+                    "code": "FLO 25", 
+                    "course_url": "http://www.chegg.com/courses/bronx/FLO/25", 
+                    "name": "Basic Flo Bus Technq"
+                }, 
+                {
+                    "code": "FLO 26", 
+                    "course_url": "http://www.chegg.com/courses/bronx/FLO/26", 
+                    "name": "Interm Flo Arrangmt"
+                }, 
+                {
+                    "code": "FLO 61", 
+                    "course_url": "http://www.chegg.com/courses/bronx/FLO/61", 
+                    "name": "Comm Flo Field Exp I"
+                }, 
+                {
+                    "code": "FLO 62", 
+                    "course_url": "http://www.chegg.com/courses/bronx/FLO/62", 
+                    "name": "Field Experience 2"
+                }, 
+                {
+                    "code": "FLO 63", 
+                    "course_url": "http://www.chegg.com/courses/bronx/FLO/63", 
+                    "name": "Field Exp. III"
+                }
+            ], 
+            "name": "Floristry", 
+            "url": "http://www.chegg.com/courses/bronx/FLO"
+        }, 
+        {
+            "abbr": "FRN", 
+            "courses": [
+                {
+                    "code": "FRN 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/FRN/11", 
+                    "name": "Beginning French I"
+                }, 
+                {
+                    "code": "FRN 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/FRN/12", 
+                    "name": "Beginning French II"
+                }, 
+                {
+                    "code": "FRN 13", 
+                    "course_url": "http://www.chegg.com/courses/bronx/FRN/13", 
+                    "name": ""
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/bronx/FRN"
+        }, 
+        {
+            "abbr": "GAR", 
+            "courses": [
+                {
+                    "code": "GAR 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/GAR/11", 
+                    "name": "Horticult Tech 1"
+                }, 
+                {
+                    "code": "GAR 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/GAR/12", 
+                    "name": "Horticult Tech 2"
+                }, 
+                {
+                    "code": "GAR 13", 
+                    "course_url": "http://www.chegg.com/courses/bronx/GAR/13", 
+                    "name": "Pruning"
+                }, 
+                {
+                    "code": "GAR 21", 
+                    "course_url": "http://www.chegg.com/courses/bronx/GAR/21", 
+                    "name": "Soil Science I"
+                }, 
+                {
+                    "code": "GAR 24", 
+                    "course_url": "http://www.chegg.com/courses/bronx/GAR/24", 
+                    "name": "Soil Science II"
+                }, 
+                {
+                    "code": "GAR 31", 
+                    "course_url": "http://www.chegg.com/courses/bronx/GAR/31", 
+                    "name": "Pesticides"
+                }, 
+                {
+                    "code": "GAR 32", 
+                    "course_url": "http://www.chegg.com/courses/bronx/GAR/32", 
+                    "name": "Plant Diseases"
+                }, 
+                {
+                    "code": "GAR 41", 
+                    "course_url": "http://www.chegg.com/courses/bronx/GAR/41", 
+                    "name": "Plant Propagation1"
+                }, 
+                {
+                    "code": "GAR 44", 
+                    "course_url": "http://www.chegg.com/courses/bronx/GAR/44", 
+                    "name": "Greenhouse Mgmnt"
+                }, 
+                {
+                    "code": "GAR 51", 
+                    "course_url": "http://www.chegg.com/courses/bronx/GAR/51", 
+                    "name": "Ground Maintenance"
+                }, 
+                {
+                    "code": "GAR 81", 
+                    "course_url": "http://www.chegg.com/courses/bronx/GAR/81", 
+                    "name": "Landscaping"
+                }
+            ], 
+            "name": "Gardening", 
+            "url": "http://www.chegg.com/courses/bronx/GAR"
+        }, 
+        {
+            "abbr": "GEO", 
+            "courses": [
+                {
+                    "code": "GEO 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/GEO/10", 
+                    "name": "Human Geography"
+                }
+            ], 
+            "name": "Geography", 
+            "url": "http://www.chegg.com/courses/bronx/GEO"
+        }, 
+        {
+            "abbr": "HCM", 
+            "courses": [
+                {
+                    "code": "HCM 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HCM/11", 
+                    "name": "Health Care Delivery"
+                }
+            ], 
+            "name": "Health Care Mangement", 
+            "url": "http://www.chegg.com/courses/bronx/HCM"
+        }, 
+        {
+            "abbr": "HIS", 
+            "courses": [
+                {
+                    "code": "HIS 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HIS/10", 
+                    "name": "The Modern World"
+                }, 
+                {
+                    "code": "HIS 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HIS/11", 
+                    "name": "Intro Modern World"
+                }, 
+                {
+                    "code": "HIS 14", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HIS/14", 
+                    "name": "Europ Middle Ages"
+                }, 
+                {
+                    "code": "HIS 20", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HIS/20", 
+                    "name": "American Experience"
+                }, 
+                {
+                    "code": "HIS 23", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HIS/23", 
+                    "name": "Social and Intellectual History of Modern America"
+                }, 
+                {
+                    "code": "HIS 28", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HIS/28", 
+                    "name": "Women:Hist Perspec"
+                }, 
+                {
+                    "code": "HIS 35", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HIS/35", 
+                    "name": "History of Africa"
+                }, 
+                {
+                    "code": "HIS 45", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HIS/45", 
+                    "name": "The History of Genocide and Ethnic Cleansing in the Modern World"
+                }, 
+                {
+                    "code": "HIS 51", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HIS/51", 
+                    "name": ""
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/bronx/HIS"
+        }, 
+        {
+            "abbr": "HLT", 
+            "courses": [
+                {
+                    "code": "HLT 89", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HLT/89", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HLT 90", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HLT/90", 
+                    "name": "Health and Aging"
+                }, 
+                {
+                    "code": "HLT 91", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HLT/91", 
+                    "name": "Issues in Health"
+                }, 
+                {
+                    "code": "HLT 93", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HLT/93", 
+                    "name": "Human Sexuality"
+                }, 
+                {
+                    "code": "HLT 94", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HLT/94", 
+                    "name": "Human Nutrition"
+                }, 
+                {
+                    "code": "HLT 96", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HLT/96", 
+                    "name": "Parenting"
+                }, 
+                {
+                    "code": "HLT 97", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HLT/97", 
+                    "name": "Field Work in Health"
+                }, 
+                {
+                    "code": "HLT 99", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HLT/99", 
+                    "name": "Health of the Nation"
+                }
+            ], 
+            "name": "Health Education", 
+            "url": "http://www.chegg.com/courses/bronx/HLT"
+        }, 
+        {
+            "abbr": "HRT", 
+            "courses": [
+                {
+                    "code": "HRT 13", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HRT/13", 
+                    "name": "Turf/Grounds Mgmnt 1"
+                }, 
+                {
+                    "code": "HRT 14", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HRT/14", 
+                    "name": "Arboriculture 1"
+                }, 
+                {
+                    "code": "HRT 15", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HRT/15", 
+                    "name": "Perennials 1"
+                }, 
+                {
+                    "code": "HRT 16", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HRT/16", 
+                    "name": "Greenhouse 1"
+                }, 
+                {
+                    "code": "HRT 17", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HRT/17", 
+                    "name": "Horticult Field Exp"
+                }
+            ], 
+            "name": "Horticulture", 
+            "url": "http://www.chegg.com/courses/bronx/HRT"
+        }, 
+        {
+            "abbr": "HSC", 
+            "courses": [
+                {
+                    "code": "HSC 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HSC/10", 
+                    "name": "Human Services and Social Welfare Institutions"
+                }, 
+                {
+                    "code": "HSC 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HSC/11", 
+                    "name": "Introduction to Case Management"
+                }, 
+                {
+                    "code": "HSC 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HSC/12", 
+                    "name": "Human Svc Skill&Meth"
+                }, 
+                {
+                    "code": "HSC 91", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HSC/91", 
+                    "name": "Field Work and Seminar in Human Services I"
+                }, 
+                {
+                    "code": "HSC 92", 
+                    "course_url": "http://www.chegg.com/courses/bronx/HSC/92", 
+                    "name": "Field Work and Seminar in Human Services II"
+                }
+            ], 
+            "name": "Human Services", 
+            "url": "http://www.chegg.com/courses/bronx/HSC"
+        }, 
+        {
+            "abbr": "ITL", 
+            "courses": [
+                {
+                    "code": "ITL 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ITL/11", 
+                    "name": "Beginning Italian I"
+                }, 
+                {
+                    "code": "ITL 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ITL/12", 
+                    "name": "Beginning Italian II"
+                }, 
+                {
+                    "code": "ITL 13", 
+                    "course_url": "http://www.chegg.com/courses/bronx/ITL/13", 
+                    "name": ""
+                }
+            ], 
+            "name": "Italian", 
+            "url": "http://www.chegg.com/courses/bronx/ITL"
+        }, 
+        {
+            "abbr": "KEY", 
+            "courses": [
+                {
+                    "code": "KEY 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/KEY/10", 
+                    "name": "Keyboarding for Comt"
+                }, 
+                {
+                    "code": "KEY 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/KEY/11", 
+                    "name": "Doc Format & Spd Dev"
+                }, 
+                {
+                    "code": "KEY 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/KEY/12", 
+                    "name": "Adv Doc Production"
+                }
+            ], 
+            "name": "Keyboarding", 
+            "url": "http://www.chegg.com/courses/bronx/KEY"
+        }, 
+        {
+            "abbr": "LAN", 
+            "courses": [
+                {
+                    "code": "LAN 15", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LAN/15", 
+                    "name": "Comparative Grammar for Native Spanish Speakers"
+                }
+            ], 
+            "name": "Language", 
+            "url": "http://www.chegg.com/courses/bronx/LAN"
+        }, 
+        {
+            "abbr": "LAW", 
+            "courses": [
+                {
+                    "code": "LAW 17", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LAW/17", 
+                    "name": "Paralegal Studies"
+                }, 
+                {
+                    "code": "LAW 19", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LAW/19", 
+                    "name": "Introduction to Law Office Management and Computers"
+                }, 
+                {
+                    "code": "LAW 41", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LAW/41", 
+                    "name": "Business Law"
+                }, 
+                {
+                    "code": "LAW 45", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LAW/45", 
+                    "name": "Medical Law"
+                }, 
+                {
+                    "code": "LAW 47", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LAW/47", 
+                    "name": "Civil Procedure"
+                }, 
+                {
+                    "code": "LAW 62", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LAW/62", 
+                    "name": "Family Law"
+                }, 
+                {
+                    "code": "LAW 64", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LAW/64", 
+                    "name": "Constitutional Law"
+                }, 
+                {
+                    "code": "LAW 65", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LAW/65", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "LAW 72", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LAW/72", 
+                    "name": "Real Property"
+                }, 
+                {
+                    "code": "LAW 77", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LAW/77", 
+                    "name": "Immigration Law"
+                }, 
+                {
+                    "code": "LAW 82", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LAW/82", 
+                    "name": "Insurance & Torts"
+                }, 
+                {
+                    "code": "LAW 92", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LAW/92", 
+                    "name": "Estates and Wills"
+                }, 
+                {
+                    "code": "LAW 95", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LAW/95", 
+                    "name": "Legal Research"
+                }, 
+                {
+                    "code": "LAW 96", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LAW/96", 
+                    "name": "Advanced Legal Research and Writing"
+                }, 
+                {
+                    "code": "LAW 98", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LAW/98", 
+                    "name": "Paralegal Internship"
+                }
+            ], 
+            "name": "Law", 
+            "url": "http://www.chegg.com/courses/bronx/LAW"
+        }, 
+        {
+            "abbr": "LND", 
+            "courses": [
+                {
+                    "code": "LND 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LND/11", 
+                    "name": "Design Theory"
+                }, 
+                {
+                    "code": "LND 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LND/12", 
+                    "name": "Graphics"
+                }
+            ], 
+            "name": "Landscape Design", 
+            "url": "http://www.chegg.com/courses/bronx/LND"
+        }, 
+        {
+            "abbr": "LTL", 
+            "courses": [
+                {
+                    "code": "LTL 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/LTL/10", 
+                    "name": "Learning to Learn"
+                }
+            ], 
+            "name": "Learning to Learn", 
+            "url": "http://www.chegg.com/courses/bronx/LTL"
+        }, 
+        {
+            "abbr": "MKT", 
+            "courses": [
+                {
+                    "code": "MKT 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MKT/11", 
+                    "name": "Marketing"
+                }, 
+                {
+                    "code": "MKT 18", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MKT/18", 
+                    "name": "Consumer Behavior"
+                }, 
+                {
+                    "code": "MKT 43", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MKT/43", 
+                    "name": "Advertising"
+                }, 
+                {
+                    "code": "MKT 48", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MKT/48", 
+                    "name": "Marketing Management"
+                }
+            ], 
+            "name": "Marketing", 
+            "url": "http://www.chegg.com/courses/bronx/MKT"
+        }, 
+        {
+            "abbr": "MTH", 
+            "courses": [
+                {
+                    "code": "MTH 1", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/1", 
+                    "name": "Arithmetic & Algebra"
+                }, 
+                {
+                    "code": "MTH 05", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/05", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MTH 5", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/5", 
+                    "name": "Basic Concepts 1"
+                }, 
+                {
+                    "code": "MTH 06", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/06", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MTH 6", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/6", 
+                    "name": "Basic Concepts 2"
+                }, 
+                {
+                    "code": "MTH 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/12", 
+                    "name": "Mathematical Thought"
+                }, 
+                {
+                    "code": "MTH 13", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/13", 
+                    "name": "Trig/College Algebra"
+                }, 
+                {
+                    "code": "MTH 14", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/14", 
+                    "name": "College Algebra/Calc"
+                }, 
+                {
+                    "code": "MTH 15", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/15", 
+                    "name": "Calculus"
+                }, 
+                {
+                    "code": "MTH 21", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/21", 
+                    "name": "Survey of Math 1"
+                }, 
+                {
+                    "code": "MTH 23", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/23", 
+                    "name": "Probability & Stat"
+                }, 
+                {
+                    "code": "MTH 30", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/30", 
+                    "name": "Pre Calculus Math"
+                }, 
+                {
+                    "code": "MTH 31", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/31", 
+                    "name": "Anal Geom & Calc 1"
+                }, 
+                {
+                    "code": "MTH 32", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/32", 
+                    "name": "Anal Geom & Calc 2"
+                }, 
+                {
+                    "code": "MTH 33", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/33", 
+                    "name": "Anal Geom & Calc 3"
+                }, 
+                {
+                    "code": "MTH 34", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/34", 
+                    "name": "Dif Eqtns/Adv Calc"
+                }, 
+                {
+                    "code": "MTH 35", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/35", 
+                    "name": "Adv Calc/Lin Algbr"
+                }, 
+                {
+                    "code": "MTH 42", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/42", 
+                    "name": "Linear Algebra"
+                }, 
+                {
+                    "code": "MTH 46", 
+                    "course_url": "http://www.chegg.com/courses/bronx/MTH/46", 
+                    "name": "Abstract Algebra"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/bronx/MTH"
+        }, 
+        {
+            "abbr": "NMT", 
+            "courses": [
+                {
+                    "code": "NMT 78", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NMT/78", 
+                    "name": "EKG - Interpretation and Techniques"
+                }, 
+                {
+                    "code": "NMT 79", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NMT/79", 
+                    "name": "Introduction to Phlebotomy"
+                }, 
+                {
+                    "code": "NMT 81", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NMT/81", 
+                    "name": "Orientation in Clinical Nuclear Medicine"
+                }, 
+                {
+                    "code": "NMT 82", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NMT/82", 
+                    "name": "Radio-Pharmaceutical Chemistry"
+                }, 
+                {
+                    "code": "NMT 83", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NMT/83", 
+                    "name": "Radiation Physics and Dosimetry"
+                }, 
+                {
+                    "code": "NMT 84", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NMT/84", 
+                    "name": "Radiation Biology"
+                }, 
+                {
+                    "code": "NMT 85", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NMT/85", 
+                    "name": "Nuclear Medicine Procedures"
+                }, 
+                {
+                    "code": "NMT 86", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NMT/86", 
+                    "name": "Didactic Nuclear Medicine"
+                }, 
+                {
+                    "code": "NMT 87", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NMT/87", 
+                    "name": "Clinical Nuclear Medicine I"
+                }, 
+                {
+                    "code": "NMT 88", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NMT/88", 
+                    "name": "Senior Nmt Seminar"
+                }, 
+                {
+                    "code": "NMT 89", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NMT/89", 
+                    "name": "Introduction to Cardiac Ultrasound"
+                }
+            ], 
+            "name": "Nuclear Medical Technology", 
+            "url": "http://www.chegg.com/courses/bronx/NMT"
+        }, 
+        {
+            "abbr": "NTR", 
+            "courses": [
+                {
+                    "code": "NTR 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NTR/11", 
+                    "name": "Nutrition in Physical and Emotional Disorders"
+                }
+            ], 
+            "name": "Nutrition", 
+            "url": "http://www.chegg.com/courses/bronx/NTR"
+        }, 
+        {
+            "abbr": "NUR", 
+            "courses": [
+                {
+                    "code": "NUR 41", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NUR/41", 
+                    "name": "Nursing Process and Therapeutic Communication"
+                }, 
+                {
+                    "code": "NUR 42", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NUR/42", 
+                    "name": "Fundamental Skills in Nursing"
+                }, 
+                {
+                    "code": "NUR 43", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NUR/43", 
+                    "name": "Mental Health Nursing"
+                }, 
+                {
+                    "code": "NUR 44", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NUR/44", 
+                    "name": "Nursing of the Adult I"
+                }, 
+                {
+                    "code": "NUR 45", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NUR/45", 
+                    "name": "Maternal, Newborn and Women's Health"
+                }, 
+                {
+                    "code": "NUR 46", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NUR/46", 
+                    "name": "Nursing of the Adult II"
+                }, 
+                {
+                    "code": "NUR 47", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NUR/47", 
+                    "name": "Pediatric Nursing"
+                }, 
+                {
+                    "code": "NUR 48", 
+                    "course_url": "http://www.chegg.com/courses/bronx/NUR/48", 
+                    "name": "Nursing of the Adult III"
+                }
+            ], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/bronx/NUR"
+        }, 
+        {
+            "abbr": "OCD", 
+            "courses": [
+                {
+                    "code": "OCD 01", 
+                    "course_url": "http://www.chegg.com/courses/bronx/OCD/01", 
+                    "name": ""
+                }, 
+                {
+                    "code": "OCD 1", 
+                    "course_url": "http://www.chegg.com/courses/bronx/OCD/1", 
+                    "name": "Orientation and Career Development"
+                }, 
+                {
+                    "code": "OCD 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/OCD/11", 
+                    "name": "Career Development"
+                }
+            ], 
+            "name": "Freshman & Career Orientation", 
+            "url": "http://www.chegg.com/courses/bronx/OCD"
+        }, 
+        {
+            "abbr": "PEA", 
+            "courses": [
+                {
+                    "code": "PEA 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PEA/11", 
+                    "name": "Fitness for Life"
+                }, 
+                {
+                    "code": "PEA 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PEA/12", 
+                    "name": "Hatha Yoga"
+                }, 
+                {
+                    "code": "PEA 14", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PEA/14", 
+                    "name": "Aerobic Dance"
+                }, 
+                {
+                    "code": "PEA 15", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PEA/15", 
+                    "name": "Jogging & Weights"
+                }, 
+                {
+                    "code": "PEA 16", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PEA/16", 
+                    "name": "Strength thru Pilate"
+                }, 
+                {
+                    "code": "PEA 41", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PEA/41", 
+                    "name": "Jazz Dance"
+                }, 
+                {
+                    "code": "PEA 46", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PEA/46", 
+                    "name": "African, Caribbean and Black Dance Forms"
+                }, 
+                {
+                    "code": "PEA 47", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PEA/47", 
+                    "name": "Beginning Salsa"
+                }, 
+                {
+                    "code": "PEA 51", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PEA/51", 
+                    "name": "Stress Management"
+                }, 
+                {
+                    "code": "PEA 81", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PEA/81", 
+                    "name": "Self-Defense"
+                }, 
+                {
+                    "code": "PEA 82", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PEA/82", 
+                    "name": "Tai Chi Chuan"
+                }
+            ], 
+            "name": "Physical Education", 
+            "url": "http://www.chegg.com/courses/bronx/PEA"
+        }, 
+        {
+            "abbr": "PHL", 
+            "courses": [
+                {
+                    "code": "PHL 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PHL/11", 
+                    "name": "Intro to Philosophy"
+                }, 
+                {
+                    "code": "PHL 90", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PHL/90", 
+                    "name": "Intro to Religion"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/bronx/PHL"
+        }, 
+        {
+            "abbr": "PHM", 
+            "courses": [
+                {
+                    "code": "PHM 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PHM/10", 
+                    "name": "Pharmacology Computations"
+                }, 
+                {
+                    "code": "PHM 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PHM/11", 
+                    "name": ""
+                }
+            ], 
+            "name": "Pharmacology", 
+            "url": "http://www.chegg.com/courses/bronx/PHM"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PHY/11", 
+                    "name": "College Physics I"
+                }, 
+                {
+                    "code": "PHY 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PHY/12", 
+                    "name": "College Physics II"
+                }, 
+                {
+                    "code": "PHY 21", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PHY/21", 
+                    "name": "Physics for Engineering Technology I"
+                }, 
+                {
+                    "code": "PHY 22", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PHY/22", 
+                    "name": "Physics for Engineering Technology II"
+                }, 
+                {
+                    "code": "PHY 24", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PHY/24", 
+                    "name": "Principles of General Physics"
+                }, 
+                {
+                    "code": "PHY 31", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PHY/31", 
+                    "name": "Physics I"
+                }, 
+                {
+                    "code": "PHY 32", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PHY/32", 
+                    "name": "Physics II"
+                }, 
+                {
+                    "code": "PHY 33", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PHY/33", 
+                    "name": "Physics III"
+                }, 
+                {
+                    "code": "PHY 40", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PHY/40", 
+                    "name": "Physics of Light and Sound"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/bronx/PHY"
+        }, 
+        {
+            "abbr": "PNR", 
+            "courses": [
+                {
+                    "code": "PNR 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PNR/11", 
+                    "name": "Nursing Skills I"
+                }, 
+                {
+                    "code": "PNR 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PNR/12", 
+                    "name": "Mental Health Concepts"
+                }, 
+                {
+                    "code": "PNR 13", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PNR/13", 
+                    "name": "Practical Nursing Arts"
+                }, 
+                {
+                    "code": "PNR 21", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PNR/21", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PNR 22", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PNR/22", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PNR 42", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PNR/42", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PNR 44", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PNR/44", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PNR 45", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PNR/45", 
+                    "name": ""
+                }
+            ], 
+            "name": "Licensed Practical Nursing", 
+            "url": "http://www.chegg.com/courses/bronx/PNR"
+        }, 
+        {
+            "abbr": "POL", 
+            "courses": [
+                {
+                    "code": "POL 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/POL/11", 
+                    "name": "American National Government"
+                }, 
+                {
+                    "code": "POL 31", 
+                    "course_url": "http://www.chegg.com/courses/bronx/POL/31", 
+                    "name": "Comparative Government"
+                }, 
+                {
+                    "code": "POL 41", 
+                    "course_url": "http://www.chegg.com/courses/bronx/POL/41", 
+                    "name": "Civil Rights /1954"
+                }, 
+                {
+                    "code": "POL 51", 
+                    "course_url": "http://www.chegg.com/courses/bronx/POL/51", 
+                    "name": "Urban Politics"
+                }, 
+                {
+                    "code": "POL 81", 
+                    "course_url": "http://www.chegg.com/courses/bronx/POL/81", 
+                    "name": "Independent Study and Internships in Government"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/bronx/POL"
+        }, 
+        {
+            "abbr": "POR", 
+            "courses": [
+                {
+                    "code": "POR 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/POR/11", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POR 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/POR/12", 
+                    "name": ""
+                }
+            ], 
+            "name": "PORTUGUESE 12", 
+            "url": "http://www.chegg.com/courses/bronx/POR"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PSY/11", 
+                    "name": "Psychology"
+                }, 
+                {
+                    "code": "PSY 22", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PSY/22", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "PSY 27", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PSY/27", 
+                    "name": "Intro to Beh Neursci"
+                }, 
+                {
+                    "code": "PSY 30", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PSY/30", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 31", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PSY/31", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSY 35", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PSY/35", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 40", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PSY/40", 
+                    "name": "Life Span Development"
+                }, 
+                {
+                    "code": "PSY 41", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PSY/41", 
+                    "name": "Psychology of Infancy and Childhood"
+                }, 
+                {
+                    "code": "PSY 42", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PSY/42", 
+                    "name": "Psychology of Adolescence and Adulthood"
+                }, 
+                {
+                    "code": "PSY 44", 
+                    "course_url": "http://www.chegg.com/courses/bronx/PSY/44", 
+                    "name": "Psychology of Women"
+                }
+            ], 
+            "name": "Psychology", 
+            "url": "http://www.chegg.com/courses/bronx/PSY"
+        }, 
+        {
+            "abbr": "RAD", 
+            "courses": [
+                {
+                    "code": "RAD 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RAD/11", 
+                    "name": "Fundamentals of Radiologic Sciences and Health Care"
+                }, 
+                {
+                    "code": "RAD 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RAD/12", 
+                    "name": "Radiographic Exposure I"
+                }, 
+                {
+                    "code": "RAD 13", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RAD/13", 
+                    "name": "Radiographic Procedures I"
+                }, 
+                {
+                    "code": "RAD 14", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RAD/14", 
+                    "name": "Recording Media and Processing"
+                }, 
+                {
+                    "code": "RAD 15", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RAD/15", 
+                    "name": "Radiographic Anatomy I"
+                }, 
+                {
+                    "code": "RAD 16", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RAD/16", 
+                    "name": "Patient Care and Pharmacology in Radiologic Sciences"
+                }, 
+                {
+                    "code": "RAD 22", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RAD/22", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RAD 23", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RAD/23", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RAD 24", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RAD/24", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RAD 32", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RAD/32", 
+                    "name": "Imaging Modalities"
+                }, 
+                {
+                    "code": "RAD 33", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RAD/33", 
+                    "name": "Radiographic Procedures III & Cross Sectional Anatomy"
+                }, 
+                {
+                    "code": "RAD 34", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RAD/34", 
+                    "name": "Radiographic Pathology"
+                }, 
+                {
+                    "code": "RAD 42", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RAD/42", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RAD 43", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RAD/43", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RAD 71", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RAD/71", 
+                    "name": ""
+                }
+            ], 
+            "name": "Radiologic Technology", 
+            "url": "http://www.chegg.com/courses/bronx/RAD"
+        }, 
+        {
+            "abbr": "RDL", 
+            "courses": [
+                {
+                    "code": "RDL 01", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RDL/01", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RDL 1", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RDL/1", 
+                    "name": "Basic Reading Skills"
+                }, 
+                {
+                    "code": "RDL 02", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RDL/02", 
+                    "name": ""
+                }, 
+                {
+                    "code": "RDL 2", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RDL/2", 
+                    "name": "Reading and Study Skills"
+                }, 
+                {
+                    "code": "RDL 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RDL/11", 
+                    "name": "College Reading and Study Skills"
+                }, 
+                {
+                    "code": "RDL 21", 
+                    "course_url": "http://www.chegg.com/courses/bronx/RDL/21", 
+                    "name": "Reading in the Sciences and Technologies"
+                }
+            ], 
+            "name": "Reading", 
+            "url": "http://www.chegg.com/courses/bronx/RDL"
+        }, 
+        {
+            "abbr": "REC", 
+            "courses": [
+                {
+                    "code": "REC 93", 
+                    "course_url": "http://www.chegg.com/courses/bronx/REC/93", 
+                    "name": "Intr Therapeutic Rec"
+                }, 
+                {
+                    "code": "REC 94", 
+                    "course_url": "http://www.chegg.com/courses/bronx/REC/94", 
+                    "name": "Hist&Philo Perspctvs"
+                }, 
+                {
+                    "code": "REC 95", 
+                    "course_url": "http://www.chegg.com/courses/bronx/REC/95", 
+                    "name": "Program Planning and Leadership in Recreation"
+                }
+            ], 
+            "name": "Recreation", 
+            "url": "http://www.chegg.com/courses/bronx/REC"
+        }, 
+        {
+            "abbr": "SEC", 
+            "courses": [
+                {
+                    "code": "SEC 35", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SEC/35", 
+                    "name": "Medical Office Mgmnt"
+                }
+            ], 
+            "name": "Secretarial Studies", 
+            "url": "http://www.chegg.com/courses/bronx/SEC"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SOC/11", 
+                    "name": "Sociology"
+                }, 
+                {
+                    "code": "SOC 31", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SOC/31", 
+                    "name": "Race and Ethnic Relations"
+                }, 
+                {
+                    "code": "SOC 34", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SOC/34", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 35", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SOC/35", 
+                    "name": "Introduction to Social Work"
+                }, 
+                {
+                    "code": "SOC 37", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SOC/37", 
+                    "name": "Social Inequality"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/bronx/SOC"
+        }, 
+        {
+            "abbr": "SPN", 
+            "courses": [
+                {
+                    "code": "SPN 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SPN/10", 
+                    "name": "Spanish for Heritage Speakers"
+                }, 
+                {
+                    "code": "SPN 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SPN/11", 
+                    "name": "Beginning Spanish I"
+                }, 
+                {
+                    "code": "SPN 12", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SPN/12", 
+                    "name": "Beginning Spanish II"
+                }, 
+                {
+                    "code": "SPN 13", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SPN/13", 
+                    "name": "Intermediate Spanish"
+                }, 
+                {
+                    "code": "SPN 17", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SPN/17", 
+                    "name": "Advanced Spanish Conversation"
+                }, 
+                {
+                    "code": "SPN 20", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SPN/20", 
+                    "name": "Advanced Spanish Composition and Creative Writing"
+                }, 
+                {
+                    "code": "SPN 21", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SPN/21", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPN 22", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SPN/22", 
+                    "name": "Latin-American Language and Culture"
+                }, 
+                {
+                    "code": "SPN 23", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SPN/23", 
+                    "name": "19th-Century Spanish Literature: Romanticism and Realism"
+                }, 
+                {
+                    "code": "SPN 24", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SPN/24", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPN 25", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SPN/25", 
+                    "name": "Generation of 1898"
+                }, 
+                {
+                    "code": "SPN 30", 
+                    "course_url": "http://www.chegg.com/courses/bronx/SPN/30", 
+                    "name": "Literature and Culture of Puerto Rico"
+                }
+            ], 
+            "name": "Spanish", 
+            "url": "http://www.chegg.com/courses/bronx/SPN"
+        }, 
+        {
+            "abbr": "TEC", 
+            "courses": [
+                {
+                    "code": "TEC 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/TEC/11", 
+                    "name": "Voice Telecommunications"
+                }, 
+                {
+                    "code": "TEC 21", 
+                    "course_url": "http://www.chegg.com/courses/bronx/TEC/21", 
+                    "name": "Data Communications"
+                }, 
+                {
+                    "code": "TEC 31", 
+                    "course_url": "http://www.chegg.com/courses/bronx/TEC/31", 
+                    "name": "Local Area Networks"
+                }, 
+                {
+                    "code": "TEC 41", 
+                    "course_url": "http://www.chegg.com/courses/bronx/TEC/41", 
+                    "name": "Advanced Topics"
+                }
+            ], 
+            "name": "Telecommunications", 
+            "url": "http://www.chegg.com/courses/bronx/TEC"
+        }, 
+        {
+            "abbr": "WFA", 
+            "courses": [
+                {
+                    "code": "WFA 10", 
+                    "course_url": "http://www.chegg.com/courses/bronx/WFA/10", 
+                    "name": "Workplace First Aid"
+                }
+            ], 
+            "name": "Workplace First Aid", 
+            "url": "http://www.chegg.com/courses/bronx/WFA"
+        }, 
+        {
+            "abbr": "WPR", 
+            "courses": [
+                {
+                    "code": "WPR 11", 
+                    "course_url": "http://www.chegg.com/courses/bronx/WPR/11", 
+                    "name": "Transcrptn for Bus"
+                }, 
+                {
+                    "code": "WPR 21", 
+                    "course_url": "http://www.chegg.com/courses/bronx/WPR/21", 
+                    "name": "Wp Applications"
+                }, 
+                {
+                    "code": "WPR 23", 
+                    "course_url": "http://www.chegg.com/courses/bronx/WPR/23", 
+                    "name": "Supervision and Administration of Office Automation"
+                }
+            ], 
+            "name": "Word Processing", 
+            "url": "http://www.chegg.com/courses/bronx/WPR"
+        }
+    ], 
+    "name": "bronx"
+}

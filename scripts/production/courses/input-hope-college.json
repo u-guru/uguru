@@ -1,0 +1,4212 @@
+{
+    "all_stats": {
+        "num_courses": 771, 
+        "num_departments": 50
+    }, 
+    "departments": [
+        {
+            "abbr": "ACCT", 
+            "courses": [
+                {
+                    "code": "ACCT 221", 
+                    "course_url": "http://www.chegg.com/courses/hope/ACCT/221", 
+                    "name": "Financial Accounting"
+                }, 
+                {
+                    "code": "ACCT 222", 
+                    "course_url": "http://www.chegg.com/courses/hope/ACCT/222", 
+                    "name": "Managerial Accounting"
+                }, 
+                {
+                    "code": "ACCT 321", 
+                    "course_url": "http://www.chegg.com/courses/hope/ACCT/321", 
+                    "name": "Intermediate Accounting I"
+                }, 
+                {
+                    "code": "ACCT 361", 
+                    "course_url": "http://www.chegg.com/courses/hope/ACCT/361", 
+                    "name": "Accounting Practicum I"
+                }, 
+                {
+                    "code": "ACCT 375", 
+                    "course_url": "http://www.chegg.com/courses/hope/ACCT/375", 
+                    "name": "Cost Accounting"
+                }, 
+                {
+                    "code": "ACCT 425", 
+                    "course_url": "http://www.chegg.com/courses/hope/ACCT/425", 
+                    "name": "Individual Taxation"
+                }, 
+                {
+                    "code": "ACCT 427", 
+                    "course_url": "http://www.chegg.com/courses/hope/ACCT/427", 
+                    "name": "Advanced Accounting"
+                }, 
+                {
+                    "code": "ACCT 428", 
+                    "course_url": "http://www.chegg.com/courses/hope/ACCT/428", 
+                    "name": "Govrnmtl & Not-for-Profit Acct"
+                }, 
+                {
+                    "code": "ACCT 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/ACCT/490", 
+                    "name": "Independent Studies in Acct"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/ACCT"
+        }, 
+        {
+            "abbr": "AES", 
+            "courses": [
+                {
+                    "code": "AES 210", 
+                    "course_url": "http://www.chegg.com/courses/hope/AES/210", 
+                    "name": "Introduction to Ethnic Studies"
+                }, 
+                {
+                    "code": "AES 494", 
+                    "course_url": "http://www.chegg.com/courses/hope/AES/494", 
+                    "name": "Capstone Seminar"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/AES"
+        }, 
+        {
+            "abbr": "ARAB", 
+            "courses": [
+                {
+                    "code": "ARAB 101", 
+                    "course_url": "http://www.chegg.com/courses/hope/ARAB/101", 
+                    "name": "Arabic I"
+                }, 
+                {
+                    "code": "ARAB 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/ARAB/295", 
+                    "name": "Arabic III"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/ARAB"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 105", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/105", 
+                    "name": "Basic Design"
+                }, 
+                {
+                    "code": "ART 111", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/111", 
+                    "name": "Intro to Art History"
+                }, 
+                {
+                    "code": "ART 112", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/112", 
+                    "name": "Theory and Practice of Color"
+                }, 
+                {
+                    "code": "ART 113", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/113", 
+                    "name": "Basic Painting"
+                }, 
+                {
+                    "code": "ART 114", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/114", 
+                    "name": "Basic Drawing"
+                }, 
+                {
+                    "code": "ART 115", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/115", 
+                    "name": "Basic Sculpture"
+                }, 
+                {
+                    "code": "ART 116", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/116", 
+                    "name": "Basic Printmaking"
+                }, 
+                {
+                    "code": "ART 117", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/117", 
+                    "name": "Basic Ceramics"
+                }, 
+                {
+                    "code": "ART 119", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/119", 
+                    "name": "Basic Photography"
+                }, 
+                {
+                    "code": "ART 120", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/120", 
+                    "name": "Basic Photo Digital"
+                }, 
+                {
+                    "code": "ART 205", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/205", 
+                    "name": "Design II Applied"
+                }, 
+                {
+                    "code": "ART 213", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/213", 
+                    "name": "Painting II"
+                }, 
+                {
+                    "code": "ART 214", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/214", 
+                    "name": "Drawing II"
+                }, 
+                {
+                    "code": "ART 215", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/215", 
+                    "name": "Sculpture II"
+                }, 
+                {
+                    "code": "ART 217", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/217", 
+                    "name": "Ceramics II"
+                }, 
+                {
+                    "code": "ART 219", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/219", 
+                    "name": "Photography II"
+                }, 
+                {
+                    "code": "ART 242", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/242", 
+                    "name": "Contemporary Art &Architecture"
+                }, 
+                {
+                    "code": "ART 306", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/306", 
+                    "name": "Secondary Art Educ Method"
+                }, 
+                {
+                    "code": "ART 360", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/360", 
+                    "name": "Special Problems: Art History"
+                }, 
+                {
+                    "code": "ART 361", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/361", 
+                    "name": "Special Projects: Art History"
+                }, 
+                {
+                    "code": "ART 365", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/365", 
+                    "name": "Indep Studio Projects Seminar"
+                }, 
+                {
+                    "code": "ART 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/490", 
+                    "name": "Special Problems in Studio"
+                }, 
+                {
+                    "code": "ART 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/ART/499", 
+                    "name": "Art Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/ART"
+        }, 
+        {
+            "abbr": "BIOL", 
+            "courses": [
+                {
+                    "code": "BIOL 103", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/103", 
+                    "name": "Intro Cell Biol Laboratory"
+                }, 
+                {
+                    "code": "BIOL 104", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/104", 
+                    "name": "Organisms and Environments"
+                }, 
+                {
+                    "code": "BIOL 105", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/105", 
+                    "name": "General Biology I Laboratory"
+                }, 
+                {
+                    "code": "BIOL 221", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/221", 
+                    "name": "Human Physiology Laboratory"
+                }, 
+                {
+                    "code": "BIOL 240", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/240", 
+                    "name": "Cells and Genetics Laboratory"
+                }, 
+                {
+                    "code": "BIOL 280", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/280", 
+                    "name": "Ecology & Evolutionary Discuss"
+                }, 
+                {
+                    "code": "BIOL 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/295", 
+                    "name": "Honors Lab in Gen Biology I"
+                }, 
+                {
+                    "code": "BIOL 301", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/301", 
+                    "name": "General Microbiology"
+                }, 
+                {
+                    "code": "BIOL 315", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/315", 
+                    "name": "Population & Community Ecology"
+                }, 
+                {
+                    "code": "BIOL 340", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/340", 
+                    "name": "Adv Topics Plant Biology & Lab"
+                }, 
+                {
+                    "code": "BIOL 343", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/343", 
+                    "name": "Vascular Plant Systematics"
+                }, 
+                {
+                    "code": "BIOL 348", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/348", 
+                    "name": "Advanced Cell Biology"
+                }, 
+                {
+                    "code": "BIOL 349", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/349", 
+                    "name": "Adv Cell Biology Laboratory"
+                }, 
+                {
+                    "code": "BIOL 355", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/355", 
+                    "name": "Developmental Biology"
+                }, 
+                {
+                    "code": "BIOL 356", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/356", 
+                    "name": "Genetics"
+                }, 
+                {
+                    "code": "BIOL 357", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/357", 
+                    "name": "Genetics Laboratory"
+                }, 
+                {
+                    "code": "BIOL 366", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/366", 
+                    "name": "Molecular Biology Laboratory"
+                }, 
+                {
+                    "code": "BIOL 370", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/370", 
+                    "name": "Animal Behavior"
+                }, 
+                {
+                    "code": "BIOL 374", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/374", 
+                    "name": "Biology of Insects"
+                }, 
+                {
+                    "code": "BIOL 380", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/380", 
+                    "name": "Field Studies in Biology"
+                }, 
+                {
+                    "code": "BIOL 390", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/390", 
+                    "name": "Independent Study in Biology"
+                }, 
+                {
+                    "code": "BIOL 395", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/395", 
+                    "name": "Bioinformatics"
+                }, 
+                {
+                    "code": "BIOL 422", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/422", 
+                    "name": "Invertebrate Zoology"
+                }, 
+                {
+                    "code": "BIOL 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/490", 
+                    "name": "Independent Research Biology"
+                }, 
+                {
+                    "code": "BIOL 495", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/495", 
+                    "name": "Adv Top:Great Lakes Limnology"
+                }, 
+                {
+                    "code": "BIOL 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/BIOL/499", 
+                    "name": "Biology Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/BIOL"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 104", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHEM/104", 
+                    "name": "Matter and Energy"
+                }, 
+                {
+                    "code": "CHEM 125", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHEM/125", 
+                    "name": "General Chem I -Discussion"
+                }, 
+                {
+                    "code": "CHEM 127", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHEM/127", 
+                    "name": "General Chem I Laboratory"
+                }, 
+                {
+                    "code": "CHEM 131", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHEM/131", 
+                    "name": "Accelerated Gen Chemistry"
+                }, 
+                {
+                    "code": "CHEM 132", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHEM/132", 
+                    "name": "Accelerate Gen Chemistry Lab"
+                }, 
+                {
+                    "code": "CHEM 221", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHEM/221", 
+                    "name": "Organic Chem I - Discussion"
+                }, 
+                {
+                    "code": "CHEM 255", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHEM/255", 
+                    "name": "Organic Chemistry Discussion"
+                }, 
+                {
+                    "code": "CHEM 311", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHEM/311", 
+                    "name": "Biochemistry I - Discussion"
+                }, 
+                {
+                    "code": "CHEM 331", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHEM/331", 
+                    "name": "Analytical Chemistry"
+                }, 
+                {
+                    "code": "CHEM 332", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHEM/332", 
+                    "name": "Analytical Chemistry Lab"
+                }, 
+                {
+                    "code": "CHEM 343", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHEM/343", 
+                    "name": "Physical Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 345", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHEM/345", 
+                    "name": "Physical Chemistry Lab I"
+                }, 
+                {
+                    "code": "CHEM 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHEM/490", 
+                    "name": "Independent Research in Chem"
+                }, 
+                {
+                    "code": "CHEM 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHEM/499", 
+                    "name": "Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/CHEM"
+        }, 
+        {
+            "abbr": "CHIN", 
+            "courses": [
+                {
+                    "code": "CHIN 101", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHIN/101", 
+                    "name": "Chinese I"
+                }, 
+                {
+                    "code": "CHIN 201", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHIN/201", 
+                    "name": "Chinese III"
+                }, 
+                {
+                    "code": "CHIN 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHIN/295", 
+                    "name": "Chinese III"
+                }, 
+                {
+                    "code": "CHIN 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/CHIN/490", 
+                    "name": "Special Problems in Chinese"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/CHIN"
+        }, 
+        {
+            "abbr": "CLAS", 
+            "courses": [
+                {
+                    "code": "CLAS 215", 
+                    "course_url": "http://www.chegg.com/courses/hope/CLAS/215", 
+                    "name": "The Roman World"
+                }, 
+                {
+                    "code": "CLAS 280", 
+                    "course_url": "http://www.chegg.com/courses/hope/CLAS/280", 
+                    "name": "Practicum in Classics"
+                }, 
+                {
+                    "code": "CLAS 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/CLAS/499", 
+                    "name": "Internship in Classics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/CLAS"
+        }, 
+        {
+            "abbr": "COMM", 
+            "courses": [
+                {
+                    "code": "COMM 101", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/101", 
+                    "name": "The Communication Process"
+                }, 
+                {
+                    "code": "COMM 140", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/140", 
+                    "name": "Public Presentations"
+                }, 
+                {
+                    "code": "COMM 151", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/151", 
+                    "name": "Intro to Mass Communications"
+                }, 
+                {
+                    "code": "COMM 160", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/160", 
+                    "name": "Analytic Skills in Comm"
+                }, 
+                {
+                    "code": "COMM 210", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/210", 
+                    "name": "Interpersonal Communication"
+                }, 
+                {
+                    "code": "COMM 220", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/220", 
+                    "name": "Task Group Leadership"
+                }, 
+                {
+                    "code": "COMM 231", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/231", 
+                    "name": "Communication and Conflict"
+                }, 
+                {
+                    "code": "COMM 251", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/251", 
+                    "name": "Media Prod I - Laboratory"
+                }, 
+                {
+                    "code": "COMM 255", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/255", 
+                    "name": "Reprtng,Wrtng,VisDsgn Mass Med"
+                }, 
+                {
+                    "code": "COMM 260", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/260", 
+                    "name": "Rhetoric and Public Culture"
+                }, 
+                {
+                    "code": "COMM 280", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/280", 
+                    "name": "Research Methods"
+                }, 
+                {
+                    "code": "COMM 335", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/335", 
+                    "name": "Leadership Skills/Perspectives"
+                }, 
+                {
+                    "code": "COMM 357", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/357", 
+                    "name": "Media Prod: Social Documentary"
+                }, 
+                {
+                    "code": "COMM 371", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/371", 
+                    "name": "Intercultural & Gender Comm"
+                }, 
+                {
+                    "code": "COMM 390", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/390", 
+                    "name": "Ind Studies in Communication"
+                }, 
+                {
+                    "code": "COMM 395", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/395", 
+                    "name": "Sports Broadcasting"
+                }, 
+                {
+                    "code": "COMM 399", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/399", 
+                    "name": "Communication Internship"
+                }, 
+                {
+                    "code": "COMM 451", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/451", 
+                    "name": "Media Theory"
+                }, 
+                {
+                    "code": "COMM 480", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/480", 
+                    "name": "Communication Honors"
+                }, 
+                {
+                    "code": "COMM 495", 
+                    "course_url": "http://www.chegg.com/courses/hope/COMM/495", 
+                    "name": "Studies in Comm Theory"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/COMM"
+        }, 
+        {
+            "abbr": "CSCI", 
+            "courses": [
+                {
+                    "code": "CSCI 112", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/112", 
+                    "name": "Exploring Computer Science"
+                }, 
+                {
+                    "code": "CSCI 114", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/114", 
+                    "name": "Intro Comp Science Laboratory"
+                }, 
+                {
+                    "code": "CSCI 140", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/140", 
+                    "name": "Business Computing"
+                }, 
+                {
+                    "code": "CSCI 160", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/160", 
+                    "name": "Scientific Comp Programming"
+                }, 
+                {
+                    "code": "CSCI 225", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/225", 
+                    "name": "Software Design&Implementation"
+                }, 
+                {
+                    "code": "CSCI 241", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/241", 
+                    "name": "Program Development"
+                }, 
+                {
+                    "code": "CSCI 245", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/245", 
+                    "name": "Programming Lang & Paradims"
+                }, 
+                {
+                    "code": "CSCI 255", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/255", 
+                    "name": "Algorithms & Discr Structures"
+                }, 
+                {
+                    "code": "CSCI 260", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/260", 
+                    "name": "Computer Organization"
+                }, 
+                {
+                    "code": "CSCI 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/295", 
+                    "name": "Web Design & Impl"
+                }, 
+                {
+                    "code": "CSCI 321", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/321", 
+                    "name": "Applications Programming"
+                }, 
+                {
+                    "code": "CSCI 342", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/342", 
+                    "name": "Computer Graphics"
+                }, 
+                {
+                    "code": "CSCI 354", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/354", 
+                    "name": "Operating Systems"
+                }, 
+                {
+                    "code": "CSCI 385", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/385", 
+                    "name": "Adv Data Structures&Algorithms"
+                }, 
+                {
+                    "code": "CSCI 392", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/392", 
+                    "name": "Database Systems"
+                }, 
+                {
+                    "code": "CSCI 481", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/481", 
+                    "name": "Senior Project Seminar"
+                }, 
+                {
+                    "code": "CSCI 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/490", 
+                    "name": "Independent Study & Research"
+                }, 
+                {
+                    "code": "CSCI 491", 
+                    "course_url": "http://www.chegg.com/courses/hope/CSCI/491", 
+                    "name": "Internship in Computer Science"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/CSCI"
+        }, 
+        {
+            "abbr": "DAN", 
+            "courses": [
+                {
+                    "code": "DAN 102", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/102", 
+                    "name": "Modern Novice"
+                }, 
+                {
+                    "code": "DAN 104", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/104", 
+                    "name": "Jazz Novice"
+                }, 
+                {
+                    "code": "DAN 105", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/105", 
+                    "name": "Tap Novice"
+                }, 
+                {
+                    "code": "DAN 110", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/110", 
+                    "name": "Folk, Social, & Swing Dance"
+                }, 
+                {
+                    "code": "DAN 114", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/114", 
+                    "name": "Historical Social Dance"
+                }, 
+                {
+                    "code": "DAN 116", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/116", 
+                    "name": "Hip Hop"
+                }, 
+                {
+                    "code": "DAN 120", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/120", 
+                    "name": "Modern I"
+                }, 
+                {
+                    "code": "DAN 122", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/122", 
+                    "name": "Modern II"
+                }, 
+                {
+                    "code": "DAN 125", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/125", 
+                    "name": "Modern III"
+                }, 
+                {
+                    "code": "DAN 127", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/127", 
+                    "name": "Modern IV"
+                }, 
+                {
+                    "code": "DAN 140", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/140", 
+                    "name": "Jazz I"
+                }, 
+                {
+                    "code": "DAN 142", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/142", 
+                    "name": "Jazz II"
+                }, 
+                {
+                    "code": "DAN 145", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/145", 
+                    "name": "Jazz III"
+                }, 
+                {
+                    "code": "DAN 147", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/147", 
+                    "name": "Jazz IV"
+                }, 
+                {
+                    "code": "DAN 150", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/150", 
+                    "name": "Tap I"
+                }, 
+                {
+                    "code": "DAN 152", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/152", 
+                    "name": "Tap II"
+                }, 
+                {
+                    "code": "DAN 155", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/155", 
+                    "name": "Tap III"
+                }, 
+                {
+                    "code": "DAN 160", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/160", 
+                    "name": "Ballet Novice"
+                }, 
+                {
+                    "code": "DAN 162", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/162", 
+                    "name": "Ballet I"
+                }, 
+                {
+                    "code": "DAN 163", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/163", 
+                    "name": "Ballet II"
+                }, 
+                {
+                    "code": "DAN 165", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/165", 
+                    "name": "Ballet III"
+                }, 
+                {
+                    "code": "DAN 167", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/167", 
+                    "name": "Ballet, Pointe"
+                }, 
+                {
+                    "code": "DAN 170", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/170", 
+                    "name": "Movement Fundamentals"
+                }, 
+                {
+                    "code": "DAN 195", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/195", 
+                    "name": "Hip-Hop"
+                }, 
+                {
+                    "code": "DAN 201", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/201", 
+                    "name": "Eurhythmics"
+                }, 
+                {
+                    "code": "DAN 221", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/221", 
+                    "name": "Anatomical Kinesiology"
+                }, 
+                {
+                    "code": "DAN 226", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/226", 
+                    "name": "Intro to Dance Production I"
+                }, 
+                {
+                    "code": "DAN 300", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/300", 
+                    "name": "Improvisation I"
+                }, 
+                {
+                    "code": "DAN 305", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/305", 
+                    "name": "Composition I"
+                }, 
+                {
+                    "code": "DAN 310", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/310", 
+                    "name": "Creative Dance for Children"
+                }, 
+                {
+                    "code": "DAN 316", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/316", 
+                    "name": "Dance History Survey"
+                }, 
+                {
+                    "code": "DAN 320", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/320", 
+                    "name": "20th Cent Dance Hist&Criticism"
+                }, 
+                {
+                    "code": "DAN 350", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/350", 
+                    "name": "Sacred Dance"
+                }, 
+                {
+                    "code": "DAN 360", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/360", 
+                    "name": "Dance Therapy"
+                }, 
+                {
+                    "code": "DAN 412", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/412", 
+                    "name": "Improvisation II"
+                }, 
+                {
+                    "code": "DAN 480", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/480", 
+                    "name": "Composition II"
+                }, 
+                {
+                    "code": "DAN 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/490", 
+                    "name": "Independent Study"
+                }, 
+                {
+                    "code": "DAN 495", 
+                    "course_url": "http://www.chegg.com/courses/hope/DAN/495", 
+                    "name": "Adv Studies Dance and/or Comp"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/DAN"
+        }, 
+        {
+            "abbr": "DUT", 
+            "courses": [
+                {
+                    "code": "DUT 101", 
+                    "course_url": "http://www.chegg.com/courses/hope/DUT/101", 
+                    "name": "Dutch I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/DUT"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 211", 
+                    "course_url": "http://www.chegg.com/courses/hope/ECON/211", 
+                    "name": "Principles of Macroeconomics"
+                }, 
+                {
+                    "code": "ECON 212", 
+                    "course_url": "http://www.chegg.com/courses/hope/ECON/212", 
+                    "name": "Prin of Microeconomics"
+                }, 
+                {
+                    "code": "ECON 306", 
+                    "course_url": "http://www.chegg.com/courses/hope/ECON/306", 
+                    "name": "Econometrics"
+                }, 
+                {
+                    "code": "ECON 312", 
+                    "course_url": "http://www.chegg.com/courses/hope/ECON/312", 
+                    "name": "Intermediate Microeconomics"
+                }, 
+                {
+                    "code": "ECON 320", 
+                    "course_url": "http://www.chegg.com/courses/hope/ECON/320", 
+                    "name": "Financial Economics"
+                }, 
+                {
+                    "code": "ECON 395", 
+                    "course_url": "http://www.chegg.com/courses/hope/ECON/395", 
+                    "name": "Economics of Poverty"
+                }, 
+                {
+                    "code": "ECON 403", 
+                    "course_url": "http://www.chegg.com/courses/hope/ECON/403", 
+                    "name": "Labor Economics"
+                }, 
+                {
+                    "code": "ECON 410", 
+                    "course_url": "http://www.chegg.com/courses/hope/ECON/410", 
+                    "name": "Public Finance"
+                }, 
+                {
+                    "code": "ECON 480", 
+                    "course_url": "http://www.chegg.com/courses/hope/ECON/480", 
+                    "name": "Senior Research Project"
+                }, 
+                {
+                    "code": "ECON 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/ECON/490", 
+                    "name": "Independent Studies in Econ"
+                }, 
+                {
+                    "code": "ECON 495", 
+                    "course_url": "http://www.chegg.com/courses/hope/ECON/495", 
+                    "name": "Investments"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/ECON"
+        }, 
+        {
+            "abbr": "EDUC", 
+            "courses": [
+                {
+                    "code": "EDUC 220", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/220", 
+                    "name": "Educational Psychology"
+                }, 
+                {
+                    "code": "EDUC 221", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/221", 
+                    "name": "Educ Psych Field Placement"
+                }, 
+                {
+                    "code": "EDUC 225", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/225", 
+                    "name": "The Exceptional Child"
+                }, 
+                {
+                    "code": "EDUC 226", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/226", 
+                    "name": "Exceptnl Child Field Placement"
+                }, 
+                {
+                    "code": "EDUC 251", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/251", 
+                    "name": "Intro to Assessment"
+                }, 
+                {
+                    "code": "EDUC 253", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/253", 
+                    "name": "Intro Learning Disabilities"
+                }, 
+                {
+                    "code": "EDUC 254", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/254", 
+                    "name": "Field Experience:Learning Dis"
+                }, 
+                {
+                    "code": "EDUC 260", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/260", 
+                    "name": "Soc Studies for Elem/Mid Schl"
+                }, 
+                {
+                    "code": "EDUC 270", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/270", 
+                    "name": "Foundations of Education"
+                }, 
+                {
+                    "code": "EDUC 280", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/280", 
+                    "name": "Literacy I:Rdg/LA Birth-3rd Gr"
+                }, 
+                {
+                    "code": "EDUC 281", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/281", 
+                    "name": "Literacy I:Field Placement"
+                }, 
+                {
+                    "code": "EDUC 282", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/282", 
+                    "name": "Literacy II:Rdg/LA Grades 4-8"
+                }, 
+                {
+                    "code": "EDUC 283", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/283", 
+                    "name": "Literacy II:Field Placement"
+                }, 
+                {
+                    "code": "EDUC 285", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/285", 
+                    "name": "Content Area Literacy Sec Educ"
+                }, 
+                {
+                    "code": "EDUC 286", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/286", 
+                    "name": "Content Area Lit Sec Educ F.P."
+                }, 
+                {
+                    "code": "EDUC 287", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/287", 
+                    "name": "Instruct Design & Classrm Mgmt"
+                }, 
+                {
+                    "code": "EDUC 305", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/305", 
+                    "name": "Physical Geography"
+                }, 
+                {
+                    "code": "EDUC 306", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/306", 
+                    "name": "Cultural Geography"
+                }, 
+                {
+                    "code": "EDUC 310", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/310", 
+                    "name": "Elem & Mdl Sch Curric& Methods"
+                }, 
+                {
+                    "code": "EDUC 311", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/311", 
+                    "name": "Elem & Mdl Sch Curr &Meth F.P."
+                }, 
+                {
+                    "code": "EDUC 312", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/312", 
+                    "name": "Classroom Management:Elem/Tech"
+                }, 
+                {
+                    "code": "EDUC 313", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/313", 
+                    "name": "Theor Chld Dev & Early Chld Ed"
+                }, 
+                {
+                    "code": "EDUC 314", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/314", 
+                    "name": "Chld Dev& Early Chld Ed Fld Pl"
+                }, 
+                {
+                    "code": "EDUC 319", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/319", 
+                    "name": "Ldshp,Advoc,Admn Early Ch Prog"
+                }, 
+                {
+                    "code": "EDUC 321", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/321", 
+                    "name": "Teaching Soc Studies Sec Sch"
+                }, 
+                {
+                    "code": "EDUC 322", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/322", 
+                    "name": "Tchg SS Sec Sch Field Placemnt"
+                }, 
+                {
+                    "code": "EDUC 331", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/331", 
+                    "name": "Teaching Science Secondary Sch"
+                }, 
+                {
+                    "code": "EDUC 332", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/332", 
+                    "name": "Tchg Sci Sec Sch Field Placmnt"
+                }, 
+                {
+                    "code": "EDUC 333", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/333", 
+                    "name": "Programs & Services:Sec SpecEd"
+                }, 
+                {
+                    "code": "EDUC 342", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/342", 
+                    "name": "Strat & Prog:Emot Imp/Behv Dis"
+                }, 
+                {
+                    "code": "EDUC 360", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/360", 
+                    "name": "Secondary Principles"
+                }, 
+                {
+                    "code": "EDUC 361", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/361", 
+                    "name": "Secondary Prin:Field Placement"
+                }, 
+                {
+                    "code": "EDUC 386", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/386", 
+                    "name": "Teaching Foreign Lang Sec Sch"
+                }, 
+                {
+                    "code": "EDUC 387", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/387", 
+                    "name": "Tchg FL Sec Sch Field Placemnt"
+                }, 
+                {
+                    "code": "EDUC 420", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/420", 
+                    "name": "Early Child Diverse Cultures"
+                }, 
+                {
+                    "code": "EDUC 421", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/421", 
+                    "name": "Early Ch Diverse Cult Fld Pl"
+                }, 
+                {
+                    "code": "EDUC 434", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/434", 
+                    "name": "Sec Spec Ed:Instructnl Design"
+                }, 
+                {
+                    "code": "EDUC 453", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/453", 
+                    "name": "Computers & Technology:Spec Ed"
+                }, 
+                {
+                    "code": "EDUC 454", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/454", 
+                    "name": "Current Issues&Trends:Spec Ed"
+                }, 
+                {
+                    "code": "EDUC 455", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/455", 
+                    "name": "Student Teaching Seminar"
+                }, 
+                {
+                    "code": "EDUC 460", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/460", 
+                    "name": "Student Teaching:Learning Dis"
+                }, 
+                {
+                    "code": "EDUC 465", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/465", 
+                    "name": "Student Teaching:Em Impaired"
+                }, 
+                {
+                    "code": "EDUC 470", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/470", 
+                    "name": "Student Tchg: Elem or Mdl Schl"
+                }, 
+                {
+                    "code": "EDUC 480", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/480", 
+                    "name": "Student Teaching:Secondary Sch"
+                }, 
+                {
+                    "code": "EDUC 485", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/485", 
+                    "name": "Stu Tchg:Elem(K-5) & Sec(6-12)"
+                }, 
+                {
+                    "code": "EDUC 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/490", 
+                    "name": "Independent Studies in Educ"
+                }, 
+                {
+                    "code": "EDUC 500", 
+                    "course_url": "http://www.chegg.com/courses/hope/EDUC/500", 
+                    "name": "Perspectives in Education"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/EDUC"
+        }, 
+        {
+            "abbr": "ENGL", 
+            "courses": [
+                {
+                    "code": "ENGL 102", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/102", 
+                    "name": "English Non-Native Speakers II"
+                }, 
+                {
+                    "code": "ENGL 113", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/113", 
+                    "name": "Crichton's Jurassic Park"
+                }, 
+                {
+                    "code": "ENGL 155", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/155", 
+                    "name": "Intro Creative Writing:Poems"
+                }, 
+                {
+                    "code": "ENGL 213", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/213", 
+                    "name": "Expository Writing II"
+                }, 
+                {
+                    "code": "ENGL 214", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/214", 
+                    "name": "Workplace Writing"
+                }, 
+                {
+                    "code": "ENGL 231", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/231", 
+                    "name": "Literature Western World I"
+                }, 
+                {
+                    "code": "ENGL 232", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/232", 
+                    "name": "Literature Western World II"
+                }, 
+                {
+                    "code": "ENGL 233", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/233", 
+                    "name": "Ancient Global Literature"
+                }, 
+                {
+                    "code": "ENGL 248", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/248", 
+                    "name": "Intro to Literary Studies"
+                }, 
+                {
+                    "code": "ENGL 254", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/254", 
+                    "name": "Creative Writing:Fiction"
+                }, 
+                {
+                    "code": "ENGL 255", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/255", 
+                    "name": "Creative Writing:Poems"
+                }, 
+                {
+                    "code": "ENGL 258", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/258", 
+                    "name": "Creative Writing:Nonfiction"
+                }, 
+                {
+                    "code": "ENGL 259", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/259", 
+                    "name": "Creative Writing:Satire"
+                }, 
+                {
+                    "code": "ENGL 270", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/270", 
+                    "name": "British Literature I"
+                }, 
+                {
+                    "code": "ENGL 271", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/271", 
+                    "name": "British Literature II"
+                }, 
+                {
+                    "code": "ENGL 279", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/279", 
+                    "name": "Writing for Teachers"
+                }, 
+                {
+                    "code": "ENGL 280", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/280", 
+                    "name": "American Literature I"
+                }, 
+                {
+                    "code": "ENGL 281", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/281", 
+                    "name": "American Literature II"
+                }, 
+                {
+                    "code": "ENGL 282", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/282", 
+                    "name": "American Ethnic Literature"
+                }, 
+                {
+                    "code": "ENGL 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/295", 
+                    "name": "Global Literature"
+                }, 
+                {
+                    "code": "ENGL 301", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/301", 
+                    "name": "British Literature I"
+                }, 
+                {
+                    "code": "ENGL 302", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/302", 
+                    "name": "British Literature II"
+                }, 
+                {
+                    "code": "ENGL 305", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/305", 
+                    "name": "American Literature I"
+                }, 
+                {
+                    "code": "ENGL 306", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/306", 
+                    "name": "American Literature II"
+                }, 
+                {
+                    "code": "ENGL 354", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/354", 
+                    "name": "Intermed Creative Wrtg:Fiction"
+                }, 
+                {
+                    "code": "ENGL 355", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/355", 
+                    "name": "Intermed Creative Wrtg:Poems"
+                }, 
+                {
+                    "code": "ENGL 359", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/359", 
+                    "name": "Internship in English"
+                }, 
+                {
+                    "code": "ENGL 360", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/360", 
+                    "name": "Modern English Grammar"
+                }, 
+                {
+                    "code": "ENGL 371", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/371", 
+                    "name": "The Novels of Chinua Achebe"
+                }, 
+                {
+                    "code": "ENGL 373", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/373", 
+                    "name": "Lit for Children & Adolescents"
+                }, 
+                {
+                    "code": "ENGL 375", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/375", 
+                    "name": "American Environmental Lit"
+                }, 
+                {
+                    "code": "ENGL 380", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/380", 
+                    "name": "Teaching Secondary School Engl"
+                }, 
+                {
+                    "code": "ENGL 381", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/381", 
+                    "name": "Tchg Sec Sch Engl Field Plcmnt"
+                }, 
+                {
+                    "code": "ENGL 390", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/390", 
+                    "name": "Individual Study"
+                }, 
+                {
+                    "code": "ENGL 393", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/393", 
+                    "name": "Individual Writing Project"
+                }, 
+                {
+                    "code": "ENGL 395", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/395", 
+                    "name": "Creative Wrtg: Graphic Novel"
+                }, 
+                {
+                    "code": "ENGL 455", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/455", 
+                    "name": "Adv Creative Writing:Poems"
+                }, 
+                {
+                    "code": "ENGL 480", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/480", 
+                    "name": "Intro to Literary Theory"
+                }, 
+                {
+                    "code": "ENGL 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/490", 
+                    "name": "Individual Study"
+                }, 
+                {
+                    "code": "ENGL 493", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/493", 
+                    "name": "Individual Writing Project"
+                }, 
+                {
+                    "code": "ENGL 495", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/495", 
+                    "name": "Advanced Studies in English"
+                }, 
+                {
+                    "code": "ENGL 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGL/499", 
+                    "name": "Readings in Literature"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/ENGL"
+        }, 
+        {
+            "abbr": "ENGS", 
+            "courses": [
+                {
+                    "code": "ENGS 080", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/080", 
+                    "name": "Engineering Seminar"
+                }, 
+                {
+                    "code": "ENGS 80", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/80", 
+                    "name": "Engineering Seminar"
+                }, 
+                {
+                    "code": "ENGS 100", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/100", 
+                    "name": "Intro Engineering Laboratory"
+                }, 
+                {
+                    "code": "ENGS 221", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/221", 
+                    "name": "Introduction to Solid Mech I"
+                }, 
+                {
+                    "code": "ENGS 240", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/240", 
+                    "name": "Electric Circuits Laboratory"
+                }, 
+                {
+                    "code": "ENGS 290", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/290", 
+                    "name": "Independent Studies"
+                }, 
+                {
+                    "code": "ENGS 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/295", 
+                    "name": "Circuit Analysis Lab"
+                }, 
+                {
+                    "code": "ENGS 331", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/331", 
+                    "name": "System Dynamics"
+                }, 
+                {
+                    "code": "ENGS 333", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/333", 
+                    "name": "System Dynamics Laboratory"
+                }, 
+                {
+                    "code": "ENGS 340", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/340", 
+                    "name": "Applied Thermodynamics"
+                }, 
+                {
+                    "code": "ENGS 344", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/344", 
+                    "name": "Mechanical Vibrations"
+                }, 
+                {
+                    "code": "ENGS 355", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/355", 
+                    "name": "Structural Analysis"
+                }, 
+                {
+                    "code": "ENGS 365", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/365", 
+                    "name": "Reinforced Concrete"
+                }, 
+                {
+                    "code": "ENGS 371", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/371", 
+                    "name": "Chemical Reaction Engineering"
+                }, 
+                {
+                    "code": "ENGS 375", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/375", 
+                    "name": "Phase Equilibr & Separations I"
+                }, 
+                {
+                    "code": "ENGS 451", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/451", 
+                    "name": "Intro to Engineering Design"
+                }, 
+                {
+                    "code": "ENGS 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/490", 
+                    "name": "Research"
+                }, 
+                {
+                    "code": "ENGS 495", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/495", 
+                    "name": "Microcontroller Electronics"
+                }, 
+                {
+                    "code": "ENGS 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENGS/499", 
+                    "name": "Internship in Engineering"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/ENGS"
+        }, 
+        {
+            "abbr": "ENVR", 
+            "courses": [
+                {
+                    "code": "ENVR 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/ENVR/490", 
+                    "name": "Ind Study: Environment Studies"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/ENVR"
+        }, 
+        {
+            "abbr": "FREN", 
+            "courses": [
+                {
+                    "code": "FREN 101", 
+                    "course_url": "http://www.chegg.com/courses/hope/FREN/101", 
+                    "name": "French I"
+                }, 
+                {
+                    "code": "FREN 102", 
+                    "course_url": "http://www.chegg.com/courses/hope/FREN/102", 
+                    "name": "Drill"
+                }, 
+                {
+                    "code": "FREN 201", 
+                    "course_url": "http://www.chegg.com/courses/hope/FREN/201", 
+                    "name": "Drill"
+                }, 
+                {
+                    "code": "FREN 202", 
+                    "course_url": "http://www.chegg.com/courses/hope/FREN/202", 
+                    "name": "Drill"
+                }, 
+                {
+                    "code": "FREN 250", 
+                    "course_url": "http://www.chegg.com/courses/hope/FREN/250", 
+                    "name": "Drill"
+                }, 
+                {
+                    "code": "FREN 280", 
+                    "course_url": "http://www.chegg.com/courses/hope/FREN/280", 
+                    "name": "Practicum in French"
+                }, 
+                {
+                    "code": "FREN 311", 
+                    "course_url": "http://www.chegg.com/courses/hope/FREN/311", 
+                    "name": "French Grammar and Phonetics"
+                }, 
+                {
+                    "code": "FREN 341", 
+                    "course_url": "http://www.chegg.com/courses/hope/FREN/341", 
+                    "name": "Into to Fren Culture & Society"
+                }, 
+                {
+                    "code": "FREN 345", 
+                    "course_url": "http://www.chegg.com/courses/hope/FREN/345", 
+                    "name": "Life Writing:Theory & Practice"
+                }, 
+                {
+                    "code": "FREN 380", 
+                    "course_url": "http://www.chegg.com/courses/hope/FREN/380", 
+                    "name": "French House Practicum"
+                }, 
+                {
+                    "code": "FREN 441", 
+                    "course_url": "http://www.chegg.com/courses/hope/FREN/441", 
+                    "name": "The Francophone Experience"
+                }, 
+                {
+                    "code": "FREN 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/FREN/490", 
+                    "name": "Special Problems in French"
+                }, 
+                {
+                    "code": "FREN 495", 
+                    "course_url": "http://www.chegg.com/courses/hope/FREN/495", 
+                    "name": "Studies in Fren Lang & Culture"
+                }, 
+                {
+                    "code": "FREN 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/FREN/499", 
+                    "name": "Internship in French"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/FREN"
+        }, 
+        {
+            "abbr": "GEMS", 
+            "courses": [
+                {
+                    "code": "GEMS 100", 
+                    "course_url": "http://www.chegg.com/courses/hope/GEMS/100", 
+                    "name": "Understanding Our Quant World"
+                }, 
+                {
+                    "code": "GEMS 105", 
+                    "course_url": "http://www.chegg.com/courses/hope/GEMS/105", 
+                    "name": "Nature of Mathematics"
+                }, 
+                {
+                    "code": "GEMS 152", 
+                    "course_url": "http://www.chegg.com/courses/hope/GEMS/152", 
+                    "name": "Atmosphere & Envrn Change Lab"
+                }, 
+                {
+                    "code": "GEMS 157", 
+                    "course_url": "http://www.chegg.com/courses/hope/GEMS/157", 
+                    "name": "The Planet Earth Laboratory"
+                }, 
+                {
+                    "code": "GEMS 159", 
+                    "course_url": "http://www.chegg.com/courses/hope/GEMS/159", 
+                    "name": "History of Science"
+                }, 
+                {
+                    "code": "GEMS 161", 
+                    "course_url": "http://www.chegg.com/courses/hope/GEMS/161", 
+                    "name": "Biotechnology and You Lab"
+                }, 
+                {
+                    "code": "GEMS 163", 
+                    "course_url": "http://www.chegg.com/courses/hope/GEMS/163", 
+                    "name": "How Computers Work"
+                }, 
+                {
+                    "code": "GEMS 204", 
+                    "course_url": "http://www.chegg.com/courses/hope/GEMS/204", 
+                    "name": "Regional Flora & Fauna"
+                }, 
+                {
+                    "code": "GEMS 206", 
+                    "course_url": "http://www.chegg.com/courses/hope/GEMS/206", 
+                    "name": "The Night Sky"
+                }, 
+                {
+                    "code": "GEMS 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/GEMS/295", 
+                    "name": "The Science of Sustainability"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/GEMS"
+        }, 
+        {
+            "abbr": "GERM", 
+            "courses": [
+                {
+                    "code": "GERM 101", 
+                    "course_url": "http://www.chegg.com/courses/hope/GERM/101", 
+                    "name": "German I"
+                }, 
+                {
+                    "code": "GERM 201", 
+                    "course_url": "http://www.chegg.com/courses/hope/GERM/201", 
+                    "name": "Drill"
+                }, 
+                {
+                    "code": "GERM 280", 
+                    "course_url": "http://www.chegg.com/courses/hope/GERM/280", 
+                    "name": "Practicum in German"
+                }, 
+                {
+                    "code": "GERM 311", 
+                    "course_url": "http://www.chegg.com/courses/hope/GERM/311", 
+                    "name": "Writing: Self and Society"
+                }, 
+                {
+                    "code": "GERM 313", 
+                    "course_url": "http://www.chegg.com/courses/hope/GERM/313", 
+                    "name": "German for Business"
+                }, 
+                {
+                    "code": "GERM 325", 
+                    "course_url": "http://www.chegg.com/courses/hope/GERM/325", 
+                    "name": "German Cinema"
+                }, 
+                {
+                    "code": "GERM 380", 
+                    "course_url": "http://www.chegg.com/courses/hope/GERM/380", 
+                    "name": "German House Practicum"
+                }, 
+                {
+                    "code": "GERM 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/GERM/490", 
+                    "name": "German Literary Studies"
+                }, 
+                {
+                    "code": "GERM 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/GERM/499", 
+                    "name": "Internship in German"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/GERM"
+        }, 
+        {
+            "abbr": "GES", 
+            "courses": [
+                {
+                    "code": "GES 100", 
+                    "course_url": "http://www.chegg.com/courses/hope/GES/100", 
+                    "name": "The Planet Earth Laboratory"
+                }, 
+                {
+                    "code": "GES 104", 
+                    "course_url": "http://www.chegg.com/courses/hope/GES/104", 
+                    "name": "Organisms and Environments"
+                }, 
+                {
+                    "code": "GES 111", 
+                    "course_url": "http://www.chegg.com/courses/hope/GES/111", 
+                    "name": "How the Earth Works"
+                }, 
+                {
+                    "code": "GES 211", 
+                    "course_url": "http://www.chegg.com/courses/hope/GES/211", 
+                    "name": "Earth Environmental Systems I"
+                }, 
+                {
+                    "code": "GES 243", 
+                    "course_url": "http://www.chegg.com/courses/hope/GES/243", 
+                    "name": "Mineralogy:Earth Materials I"
+                }, 
+                {
+                    "code": "GES 251", 
+                    "course_url": "http://www.chegg.com/courses/hope/GES/251", 
+                    "name": "Surficial Geol:Earth Struct I"
+                }, 
+                {
+                    "code": "GES 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/GES/295", 
+                    "name": "Michigan Field Geology"
+                }, 
+                {
+                    "code": "GES 341", 
+                    "course_url": "http://www.chegg.com/courses/hope/GES/341", 
+                    "name": "Regional Field Study"
+                }, 
+                {
+                    "code": "GES 351", 
+                    "course_url": "http://www.chegg.com/courses/hope/GES/351", 
+                    "name": "Invertebrate Paleontology"
+                }, 
+                {
+                    "code": "GES 401", 
+                    "course_url": "http://www.chegg.com/courses/hope/GES/401", 
+                    "name": "Adv Environmental Seminar"
+                }, 
+                {
+                    "code": "GES 453", 
+                    "course_url": "http://www.chegg.com/courses/hope/GES/453", 
+                    "name": "Sedimentology"
+                }, 
+                {
+                    "code": "GES 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/GES/490", 
+                    "name": "Special Problems"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/GES"
+        }, 
+        {
+            "abbr": "GRK", 
+            "courses": [
+                {
+                    "code": "GRK 171", 
+                    "course_url": "http://www.chegg.com/courses/hope/GRK/171", 
+                    "name": "Ancient/Biblical Greek I"
+                }, 
+                {
+                    "code": "GRK 271", 
+                    "course_url": "http://www.chegg.com/courses/hope/GRK/271", 
+                    "name": "Greek III"
+                }, 
+                {
+                    "code": "GRK 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/GRK/490", 
+                    "name": "Special Authors: Lucian"
+                }, 
+                {
+                    "code": "GRK 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/GRK/499", 
+                    "name": "Greek Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/GRK"
+        }, 
+        {
+            "abbr": "HEBR", 
+            "courses": [
+                {
+                    "code": "HEBR 171", 
+                    "course_url": "http://www.chegg.com/courses/hope/HEBR/171", 
+                    "name": "Biblical Hebrew I"
+                }, 
+                {
+                    "code": "HEBR 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/HEBR/295", 
+                    "name": "See REL 295-01 listing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/HEBR"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 130", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/130", 
+                    "name": "Intro Ancient Civilization"
+                }, 
+                {
+                    "code": "HIST 131", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/131", 
+                    "name": "Intro Modern European History"
+                }, 
+                {
+                    "code": "HIST 140", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/140", 
+                    "name": "Rel,Pol&Soc in Eur:1500-1800"
+                }, 
+                {
+                    "code": "HIST 159", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/159", 
+                    "name": "History of Science"
+                }, 
+                {
+                    "code": "HIST 160", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/160", 
+                    "name": "U.S. History to 1877"
+                }, 
+                {
+                    "code": "HIST 175", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/175", 
+                    "name": "Michigan History"
+                }, 
+                {
+                    "code": "HIST 200", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/200", 
+                    "name": "Wom in Early Mod Eur:1500-1800"
+                }, 
+                {
+                    "code": "HIST 205", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/205", 
+                    "name": "British and Irish Hist to 1700"
+                }, 
+                {
+                    "code": "HIST 207", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/207", 
+                    "name": "World Civilization I"
+                }, 
+                {
+                    "code": "HIST 209", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/209", 
+                    "name": "History of Science"
+                }, 
+                {
+                    "code": "HIST 215", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/215", 
+                    "name": "The Roman World"
+                }, 
+                {
+                    "code": "HIST 221", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/221", 
+                    "name": "Colonial & Post-Col Africa"
+                }, 
+                {
+                    "code": "HIST 225", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/225", 
+                    "name": "West African Economy & Society"
+                }, 
+                {
+                    "code": "HIST 251", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/251", 
+                    "name": "Revolutionary America"
+                }, 
+                {
+                    "code": "HIST 252", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/252", 
+                    "name": "Civil War America"
+                }, 
+                {
+                    "code": "HIST 260", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/260", 
+                    "name": "History of Latin America"
+                }, 
+                {
+                    "code": "HIST 263", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/263", 
+                    "name": "Colonial Latin American Hist"
+                }, 
+                {
+                    "code": "HIST 280", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/280", 
+                    "name": "Perspect Modern Imperialism"
+                }, 
+                {
+                    "code": "HIST 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/295", 
+                    "name": "Europe in the Age of Rel Wars"
+                }, 
+                {
+                    "code": "HIST 341", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/341", 
+                    "name": "World War II: Collab & Resist"
+                }, 
+                {
+                    "code": "HIST 352", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/352", 
+                    "name": "U.S. Women and Social Change"
+                }, 
+                {
+                    "code": "HIST 357", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/357", 
+                    "name": "U.S. Cultural History"
+                }, 
+                {
+                    "code": "HIST 361", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/361", 
+                    "name": "U.S. Military History"
+                }, 
+                {
+                    "code": "HIST 370", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/370", 
+                    "name": "Modern Middle East"
+                }, 
+                {
+                    "code": "HIST 371", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/371", 
+                    "name": "Paris & Shanghai"
+                }, 
+                {
+                    "code": "HIST 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/490", 
+                    "name": "Independent Studies in History"
+                }, 
+                {
+                    "code": "HIST 495", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/495", 
+                    "name": "Seminar in History"
+                }, 
+                {
+                    "code": "HIST 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/HIST/499", 
+                    "name": "History Internships"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/HIST"
+        }, 
+        {
+            "abbr": "IDS", 
+            "courses": [
+                {
+                    "code": "IDS 050", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/050", 
+                    "name": "Focus Workshop"
+                }, 
+                {
+                    "code": "IDS 50", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/50", 
+                    "name": "Focus Workshop"
+                }, 
+                {
+                    "code": "IDS 100", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/100", 
+                    "name": "First Year Seminar"
+                }, 
+                {
+                    "code": "IDS 160", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/160", 
+                    "name": "Arts Elem & Mdl School Teacher"
+                }, 
+                {
+                    "code": "IDS 171", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/171", 
+                    "name": "Cultural Heritage I"
+                }, 
+                {
+                    "code": "IDS 172", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/172", 
+                    "name": "Cultural Heritage II"
+                }, 
+                {
+                    "code": "IDS 173", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/173", 
+                    "name": "Cultural Heritage I: Lit/Hist"
+                }, 
+                {
+                    "code": "IDS 174", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/174", 
+                    "name": "Cultural Heritage II: Lit/Hist"
+                }, 
+                {
+                    "code": "IDS 175", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/175", 
+                    "name": "Cultural Heritage I: Lit/Phil"
+                }, 
+                {
+                    "code": "IDS 180", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/180", 
+                    "name": "Mellon Schol IDS Seminar I"
+                }, 
+                {
+                    "code": "IDS 181", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/181", 
+                    "name": "Mellon Schol IDS Seminar II"
+                }, 
+                {
+                    "code": "IDS 200", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/200", 
+                    "name": "Encounter with Cultures"
+                }, 
+                {
+                    "code": "IDS 210", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/210", 
+                    "name": "Introduction to Ethnic Studies"
+                }, 
+                {
+                    "code": "IDS 402", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/402", 
+                    "name": "Christianity & Literature"
+                }, 
+                {
+                    "code": "IDS 431", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/431", 
+                    "name": "Female, Male, Human"
+                }, 
+                {
+                    "code": "IDS 432", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/432", 
+                    "name": "Do No Harm:Ethics Health Care"
+                }, 
+                {
+                    "code": "IDS 441", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/441", 
+                    "name": "What's Worth Remembering?"
+                }, 
+                {
+                    "code": "IDS 442", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/442", 
+                    "name": "Pondering the Big Questions"
+                }, 
+                {
+                    "code": "IDS 452", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/452", 
+                    "name": "Educ & Christian Ways Living"
+                }, 
+                {
+                    "code": "IDS 455", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/455", 
+                    "name": "Vocation and Health Care"
+                }, 
+                {
+                    "code": "IDS 457", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/457", 
+                    "name": "Christ'n Thought&Spirit'l Life"
+                }, 
+                {
+                    "code": "IDS 463", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/463", 
+                    "name": "Family, Faith and Calling"
+                }, 
+                {
+                    "code": "IDS 468", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/468", 
+                    "name": "Change,Complexity,Christianity"
+                }, 
+                {
+                    "code": "IDS 495", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/495", 
+                    "name": "Things That Matter"
+                }, 
+                {
+                    "code": "IDS 590", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/590", 
+                    "name": "Mellon Schol SR Tutorial &Proj"
+                }, 
+                {
+                    "code": "IDS 747", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/747", 
+                    "name": "Domestic Off Campus Program"
+                }, 
+                {
+                    "code": "IDS 767", 
+                    "course_url": "http://www.chegg.com/courses/hope/IDS/767", 
+                    "name": "Off Campus:Meiji Gakuin"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/IDS"
+        }, 
+        {
+            "abbr": "ITAL", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/ITAL"
+        }, 
+        {
+            "abbr": "JAPN", 
+            "courses": [
+                {
+                    "code": "JAPN 101", 
+                    "course_url": "http://www.chegg.com/courses/hope/JAPN/101", 
+                    "name": "Japanese I"
+                }, 
+                {
+                    "code": "JAPN 201", 
+                    "course_url": "http://www.chegg.com/courses/hope/JAPN/201", 
+                    "name": "Japanese III"
+                }, 
+                {
+                    "code": "JAPN 280", 
+                    "course_url": "http://www.chegg.com/courses/hope/JAPN/280", 
+                    "name": "Practicum in Japanese"
+                }, 
+                {
+                    "code": "JAPN 301", 
+                    "course_url": "http://www.chegg.com/courses/hope/JAPN/301", 
+                    "name": "Advanced Japanese I"
+                }, 
+                {
+                    "code": "JAPN 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/JAPN/490", 
+                    "name": "Special Problems in Japanese"
+                }, 
+                {
+                    "code": "JAPN 495", 
+                    "course_url": "http://www.chegg.com/courses/hope/JAPN/495", 
+                    "name": "Studies in Japn Language & Lit"
+                }, 
+                {
+                    "code": "JAPN 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/JAPN/499", 
+                    "name": "Internship in Japanese"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/JAPN"
+        }, 
+        {
+            "abbr": "KIN", 
+            "courses": [
+                {
+                    "code": "KIN 101", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/101", 
+                    "name": "Beginning Tennis"
+                }, 
+                {
+                    "code": "KIN 103", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/103", 
+                    "name": "Advanced Tennis"
+                }, 
+                {
+                    "code": "KIN 104", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/104", 
+                    "name": "Badminton"
+                }, 
+                {
+                    "code": "KIN 112", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/112", 
+                    "name": "Condition & Weight Training"
+                }, 
+                {
+                    "code": "KIN 114", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/114", 
+                    "name": "Women's Body Conditioning"
+                }, 
+                {
+                    "code": "KIN 115", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/115", 
+                    "name": "Dance for Sport"
+                }, 
+                {
+                    "code": "KIN 118", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/118", 
+                    "name": "Fencing"
+                }, 
+                {
+                    "code": "KIN 120", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/120", 
+                    "name": "Beginning Racquetball"
+                }, 
+                {
+                    "code": "KIN 122", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/122", 
+                    "name": "Beginning Volleyball"
+                }, 
+                {
+                    "code": "KIN 132", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/132", 
+                    "name": "Jogging"
+                }, 
+                {
+                    "code": "KIN 140", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/140", 
+                    "name": "Health Dynamics"
+                }, 
+                {
+                    "code": "KIN 157", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/157", 
+                    "name": "Softball"
+                }, 
+                {
+                    "code": "KIN 198", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/198", 
+                    "name": "Athletic Training:Practicum I"
+                }, 
+                {
+                    "code": "KIN 200", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/200", 
+                    "name": "Human Anatomy Laboratory"
+                }, 
+                {
+                    "code": "KIN 201", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/201", 
+                    "name": "Intro to Physical Education"
+                }, 
+                {
+                    "code": "KIN 201L", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/201L", 
+                    "name": "Intro Phys Educ Laboratory"
+                }, 
+                {
+                    "code": "KIN 202", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/202", 
+                    "name": "Intro Writing in Exercise Sci"
+                }, 
+                {
+                    "code": "KIN 205", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/205", 
+                    "name": "Safety, First Aid, and C.P.R."
+                }, 
+                {
+                    "code": "KIN 207", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/207", 
+                    "name": "Sports in Society"
+                }, 
+                {
+                    "code": "KIN 208", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/208", 
+                    "name": "Introduction to Nutrition"
+                }, 
+                {
+                    "code": "KIN 221", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/221", 
+                    "name": "Anatomical Kinesiology"
+                }, 
+                {
+                    "code": "KIN 222", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/222", 
+                    "name": "Exercise Physiology"
+                }, 
+                {
+                    "code": "KIN 223", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/223", 
+                    "name": "Exercise Physiology Laboratory"
+                }, 
+                {
+                    "code": "KIN 250", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/250", 
+                    "name": "Research Methods: Kinesiology"
+                }, 
+                {
+                    "code": "KIN 251", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/251", 
+                    "name": "Foundation:Teaching Health Edu"
+                }, 
+                {
+                    "code": "KIN 252", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/252", 
+                    "name": "Health & PE for Elem School"
+                }, 
+                {
+                    "code": "KIN 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/295", 
+                    "name": "Coaching Volleyball"
+                }, 
+                {
+                    "code": "KIN 298", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/298", 
+                    "name": "Athletic Training:Practicum II"
+                }, 
+                {
+                    "code": "KIN 299", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/299", 
+                    "name": "Internship: PE"
+                }, 
+                {
+                    "code": "KIN 301", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/301", 
+                    "name": "Motor Development"
+                }, 
+                {
+                    "code": "KIN 323", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/323", 
+                    "name": "Exercise Science & Health"
+                }, 
+                {
+                    "code": "KIN 324", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/324", 
+                    "name": "Fitness Assess & Exc Prescript"
+                }, 
+                {
+                    "code": "KIN 325", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/325", 
+                    "name": "Sci of Cond, Strength & Power"
+                }, 
+                {
+                    "code": "KIN 330", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/330", 
+                    "name": "Prin & Practices of Coaching"
+                }, 
+                {
+                    "code": "KIN 340", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/340", 
+                    "name": "Injury Prevention and Care"
+                }, 
+                {
+                    "code": "KIN 344", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/344", 
+                    "name": "Basic Meth Teachng PE & Lab"
+                }, 
+                {
+                    "code": "KIN 345", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/345", 
+                    "name": "Meth Teaching Early PE & Lab"
+                }, 
+                {
+                    "code": "KIN 346", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/346", 
+                    "name": "Meth Tchng Secondary PE & Lab"
+                }, 
+                {
+                    "code": "KIN 350", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/350", 
+                    "name": "Adapted & Therapeutic PE"
+                }, 
+                {
+                    "code": "KIN 398", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/398", 
+                    "name": "Athletic Trng:Practicum III"
+                }, 
+                {
+                    "code": "KIN 400", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/400", 
+                    "name": "Exercise Science Practicum"
+                }, 
+                {
+                    "code": "KIN 401", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/401", 
+                    "name": "Therapeutic Modalities"
+                }, 
+                {
+                    "code": "KIN 402", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/402", 
+                    "name": "Therapeutic Exercise"
+                }, 
+                {
+                    "code": "KIN 404", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/404", 
+                    "name": "Seminar Athletc Training Admn"
+                }, 
+                {
+                    "code": "KIN 422", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/422", 
+                    "name": "Reg of Human Metabolism Lab"
+                }, 
+                {
+                    "code": "KIN 451", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/451", 
+                    "name": "Methods Teaching Health Ed I"
+                }, 
+                {
+                    "code": "KIN 455", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/455", 
+                    "name": "Measurement & Eval Health Educ"
+                }, 
+                {
+                    "code": "KIN 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/490", 
+                    "name": "Independent Study"
+                }, 
+                {
+                    "code": "KIN 498", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/498", 
+                    "name": "Athletic Training:Practicum IV"
+                }, 
+                {
+                    "code": "KIN 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/KIN/499", 
+                    "name": "Spec Studies: Exercise Science"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/KIN"
+        }, 
+        {
+            "abbr": "LANG", 
+            "courses": [
+                {
+                    "code": "LANG 195", 
+                    "course_url": "http://www.chegg.com/courses/hope/LANG/195", 
+                    "name": "Beginning Portuguese"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/LANG"
+        }, 
+        {
+            "abbr": "LATN", 
+            "courses": [
+                {
+                    "code": "LATN 171", 
+                    "course_url": "http://www.chegg.com/courses/hope/LATN/171", 
+                    "name": "Latin I"
+                }, 
+                {
+                    "code": "LATN 271", 
+                    "course_url": "http://www.chegg.com/courses/hope/LATN/271", 
+                    "name": "Latin III"
+                }, 
+                {
+                    "code": "LATN 372", 
+                    "course_url": "http://www.chegg.com/courses/hope/LATN/372", 
+                    "name": "Latin Poetry: Senecan Tragedy"
+                }, 
+                {
+                    "code": "LATN 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/LATN/490", 
+                    "name": "Special Authors"
+                }, 
+                {
+                    "code": "LATN 495", 
+                    "course_url": "http://www.chegg.com/courses/hope/LATN/495", 
+                    "name": "Late Antiquity & Medieval"
+                }, 
+                {
+                    "code": "LATN 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/LATN/499", 
+                    "name": "Latin Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/LATN"
+        }, 
+        {
+            "abbr": "LDRS", 
+            "courses": [
+                {
+                    "code": "LDRS 201", 
+                    "course_url": "http://www.chegg.com/courses/hope/LDRS/201", 
+                    "name": "Introduction to Leadership"
+                }, 
+                {
+                    "code": "LDRS 231", 
+                    "course_url": "http://www.chegg.com/courses/hope/LDRS/231", 
+                    "name": "Entrepreneurship"
+                }, 
+                {
+                    "code": "LDRS 291", 
+                    "course_url": "http://www.chegg.com/courses/hope/LDRS/291", 
+                    "name": "Leadership & Service I"
+                }, 
+                {
+                    "code": "LDRS 299", 
+                    "course_url": "http://www.chegg.com/courses/hope/LDRS/299", 
+                    "name": "Intern Student Leadership Devl"
+                }, 
+                {
+                    "code": "LDRS 390", 
+                    "course_url": "http://www.chegg.com/courses/hope/LDRS/390", 
+                    "name": "Next Generation Church Ldrship"
+                }, 
+                {
+                    "code": "LDRS 391", 
+                    "course_url": "http://www.chegg.com/courses/hope/LDRS/391", 
+                    "name": "Leadership & Service II"
+                }, 
+                {
+                    "code": "LDRS 395", 
+                    "course_url": "http://www.chegg.com/courses/hope/LDRS/395", 
+                    "name": "Faith-based, Nonprofit Admin"
+                }, 
+                {
+                    "code": "LDRS 399", 
+                    "course_url": "http://www.chegg.com/courses/hope/LDRS/399", 
+                    "name": "Internship in Leadership"
+                }, 
+                {
+                    "code": "LDRS 401", 
+                    "course_url": "http://www.chegg.com/courses/hope/LDRS/401", 
+                    "name": "Leadership Capstone Seminar"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/LDRS"
+        }, 
+        {
+            "abbr": "LING", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/LING"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 125", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/125", 
+                    "name": "Calculus with Review I"
+                }, 
+                {
+                    "code": "MATH 131", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/131", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MATH 132", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/132", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MATH 205", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/205", 
+                    "name": "Math Elem & Mdl Schl Teacher I"
+                }, 
+                {
+                    "code": "MATH 210", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/210", 
+                    "name": "Introductory Statistics"
+                }, 
+                {
+                    "code": "MATH 231", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/231", 
+                    "name": "Multivariable Mathematics I"
+                }, 
+                {
+                    "code": "MATH 232", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/232", 
+                    "name": "Multivariable Mathematics II"
+                }, 
+                {
+                    "code": "MATH 311", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/311", 
+                    "name": "Statistical Methods"
+                }, 
+                {
+                    "code": "MATH 321", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/321", 
+                    "name": "History of Mathematics"
+                }, 
+                {
+                    "code": "MATH 323", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/323", 
+                    "name": "Teaching Math Secondary School"
+                }, 
+                {
+                    "code": "MATH 324", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/324", 
+                    "name": "Tchg Math Sec Sch Field Plcmnt"
+                }, 
+                {
+                    "code": "MATH 331", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/331", 
+                    "name": "Real Analysis I"
+                }, 
+                {
+                    "code": "MATH 334", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/334", 
+                    "name": "Complex Analysis"
+                }, 
+                {
+                    "code": "MATH 341", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/341", 
+                    "name": "Algebraic Structures I"
+                }, 
+                {
+                    "code": "MATH 351", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/351", 
+                    "name": "College Geometry"
+                }, 
+                {
+                    "code": "MATH 361", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/361", 
+                    "name": "Introduction to Probability"
+                }, 
+                {
+                    "code": "MATH 363", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/363", 
+                    "name": "Probability Problem Solving"
+                }, 
+                {
+                    "code": "MATH 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/490", 
+                    "name": "Independent Study & Research"
+                }, 
+                {
+                    "code": "MATH 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/MATH/499", 
+                    "name": "Mathematics Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/MATH"
+        }, 
+        {
+            "abbr": "MGMT", 
+            "courses": [
+                {
+                    "code": "MGMT 150", 
+                    "course_url": "http://www.chegg.com/courses/hope/MGMT/150", 
+                    "name": "Integrated Mgmt Decisions"
+                }, 
+                {
+                    "code": "MGMT 222", 
+                    "course_url": "http://www.chegg.com/courses/hope/MGMT/222", 
+                    "name": "Mgmt Perspectives and Theory"
+                }, 
+                {
+                    "code": "MGMT 331", 
+                    "course_url": "http://www.chegg.com/courses/hope/MGMT/331", 
+                    "name": "Marketing Management"
+                }, 
+                {
+                    "code": "MGMT 341", 
+                    "course_url": "http://www.chegg.com/courses/hope/MGMT/341", 
+                    "name": "Business Law"
+                }, 
+                {
+                    "code": "MGMT 361", 
+                    "course_url": "http://www.chegg.com/courses/hope/MGMT/361", 
+                    "name": "Operations Management"
+                }, 
+                {
+                    "code": "MGMT 371", 
+                    "course_url": "http://www.chegg.com/courses/hope/MGMT/371", 
+                    "name": "Financial Management"
+                }, 
+                {
+                    "code": "MGMT 390", 
+                    "course_url": "http://www.chegg.com/courses/hope/MGMT/390", 
+                    "name": "Internships in Vocation"
+                }, 
+                {
+                    "code": "MGMT 391", 
+                    "course_url": "http://www.chegg.com/courses/hope/MGMT/391", 
+                    "name": "Intrnships & Sems in Vocation"
+                }, 
+                {
+                    "code": "MGMT 395", 
+                    "course_url": "http://www.chegg.com/courses/hope/MGMT/395", 
+                    "name": "Entrepreneurial Leadership"
+                }, 
+                {
+                    "code": "MGMT 401", 
+                    "course_url": "http://www.chegg.com/courses/hope/MGMT/401", 
+                    "name": "Management Seminar"
+                }, 
+                {
+                    "code": "MGMT 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/MGMT/490", 
+                    "name": "Ind Study: Entrepreneurship"
+                }, 
+                {
+                    "code": "MGMT 495", 
+                    "course_url": "http://www.chegg.com/courses/hope/MGMT/495", 
+                    "name": "Investments"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/MGMT"
+        }, 
+        {
+            "abbr": "MIN", 
+            "courses": [
+                {
+                    "code": "MIN 321", 
+                    "course_url": "http://www.chegg.com/courses/hope/MIN/321", 
+                    "name": "Theology of Worship & Music"
+                }, 
+                {
+                    "code": "MIN 323", 
+                    "course_url": "http://www.chegg.com/courses/hope/MIN/323", 
+                    "name": "Theo of Soc Witness & Mission"
+                }, 
+                {
+                    "code": "MIN 325", 
+                    "course_url": "http://www.chegg.com/courses/hope/MIN/325", 
+                    "name": "Theology of Youth Ministry"
+                }, 
+                {
+                    "code": "MIN 371", 
+                    "course_url": "http://www.chegg.com/courses/hope/MIN/371", 
+                    "name": "Theology of Ministry I"
+                }, 
+                {
+                    "code": "MIN 395", 
+                    "course_url": "http://www.chegg.com/courses/hope/MIN/395", 
+                    "name": "Integral Mission & Intent Comm"
+                }, 
+                {
+                    "code": "MIN 398", 
+                    "course_url": "http://www.chegg.com/courses/hope/MIN/398", 
+                    "name": "Internship in Ministry I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/MIN"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 050", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/050", 
+                    "name": "Pending Audition - Piano"
+                }, 
+                {
+                    "code": "MUS 50", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/50", 
+                    "name": "Pending Audition - Piano"
+                }, 
+                {
+                    "code": "MUS 060", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/060", 
+                    "name": "Pending Audition - Voice"
+                }, 
+                {
+                    "code": "MUS 60", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/60", 
+                    "name": "Pending Audition - Voice"
+                }, 
+                {
+                    "code": "MUS 080", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/080", 
+                    "name": "Concert Attendance"
+                }, 
+                {
+                    "code": "MUS 80", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/80", 
+                    "name": "Concert Attendance"
+                }, 
+                {
+                    "code": "MUS 101", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/101", 
+                    "name": "Introduction to Music"
+                }, 
+                {
+                    "code": "MUS 104", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/104", 
+                    "name": "World Music"
+                }, 
+                {
+                    "code": "MUS 105", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/105", 
+                    "name": "Survey of Jazz"
+                }, 
+                {
+                    "code": "MUS 111", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/111", 
+                    "name": "Theory I"
+                }, 
+                {
+                    "code": "MUS 113", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/113", 
+                    "name": "Aural Skills I"
+                }, 
+                {
+                    "code": "MUS 115", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/115", 
+                    "name": "Chapel Choir"
+                }, 
+                {
+                    "code": "MUS 116", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/116", 
+                    "name": "College Chorus"
+                }, 
+                {
+                    "code": "MUS 117", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/117", 
+                    "name": "Women's Chamber Choir"
+                }, 
+                {
+                    "code": "MUS 120", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/120", 
+                    "name": "Orchestra"
+                }, 
+                {
+                    "code": "MUS 130", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/130", 
+                    "name": "Wind Ensemble"
+                }, 
+                {
+                    "code": "MUS 133", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/133", 
+                    "name": "Concert Band"
+                }, 
+                {
+                    "code": "MUS 135", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/135", 
+                    "name": "Jazz Arts Collective"
+                }, 
+                {
+                    "code": "MUS 140", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/140", 
+                    "name": "Collegium Musicum - Vocal"
+                }, 
+                {
+                    "code": "MUS 160", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/160", 
+                    "name": "Percussion Ensemble"
+                }, 
+                {
+                    "code": "MUS 161", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/161", 
+                    "name": "Flute"
+                }, 
+                {
+                    "code": "MUS 162", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/162", 
+                    "name": "Oboe"
+                }, 
+                {
+                    "code": "MUS 163", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/163", 
+                    "name": "Clarinet"
+                }, 
+                {
+                    "code": "MUS 164", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/164", 
+                    "name": "Jazz Saxophone"
+                }, 
+                {
+                    "code": "MUS 165", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/165", 
+                    "name": "Bassoon"
+                }, 
+                {
+                    "code": "MUS 166", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/166", 
+                    "name": "Horn"
+                }, 
+                {
+                    "code": "MUS 167", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/167", 
+                    "name": "Jazz Trumpet"
+                }, 
+                {
+                    "code": "MUS 168", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/168", 
+                    "name": "Jazz Trombone"
+                }, 
+                {
+                    "code": "MUS 170", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/170", 
+                    "name": "Tuba"
+                }, 
+                {
+                    "code": "MUS 171", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/171", 
+                    "name": "Jazz Percussion"
+                }, 
+                {
+                    "code": "MUS 172", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/172", 
+                    "name": "Harp"
+                }, 
+                {
+                    "code": "MUS 173", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/173", 
+                    "name": "Violin"
+                }, 
+                {
+                    "code": "MUS 174", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/174", 
+                    "name": "Viola"
+                }, 
+                {
+                    "code": "MUS 175", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/175", 
+                    "name": "Cello"
+                }, 
+                {
+                    "code": "MUS 176", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/176", 
+                    "name": "Jazz Bass"
+                }, 
+                {
+                    "code": "MUS 177", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/177", 
+                    "name": "Organ"
+                }, 
+                {
+                    "code": "MUS 179", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/179", 
+                    "name": "Piano"
+                }, 
+                {
+                    "code": "MUS 179J", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/179J", 
+                    "name": "Jazz Piano"
+                }, 
+                {
+                    "code": "MUS 180", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/180", 
+                    "name": "Guitar"
+                }, 
+                {
+                    "code": "MUS 181", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/181", 
+                    "name": "Voice"
+                }, 
+                {
+                    "code": "MUS 182", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/182", 
+                    "name": "Jazz Voice"
+                }, 
+                {
+                    "code": "MUS 186", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/186", 
+                    "name": "Classical Guitar Class, Begin"
+                }, 
+                {
+                    "code": "MUS 187", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/187", 
+                    "name": "Folk Style Guitar Methods"
+                }, 
+                {
+                    "code": "MUS 188", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/188", 
+                    "name": "Applied Composition"
+                }, 
+                {
+                    "code": "MUS 189", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/189", 
+                    "name": "Applied Computer Music"
+                }, 
+                {
+                    "code": "MUS 190", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/190", 
+                    "name": "Piano Class, Beginning"
+                }, 
+                {
+                    "code": "MUS 192", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/192", 
+                    "name": "Voice Class, Beginning"
+                }, 
+                {
+                    "code": "MUS 195", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/195", 
+                    "name": "Small Group Voice"
+                }, 
+                {
+                    "code": "MUS 197", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/197", 
+                    "name": "Keyboard Skills"
+                }, 
+                {
+                    "code": "MUS 201", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/201", 
+                    "name": "Eurhythmics I"
+                }, 
+                {
+                    "code": "MUS 211", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/211", 
+                    "name": "Theory III"
+                }, 
+                {
+                    "code": "MUS 213", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/213", 
+                    "name": "Aural Skills III"
+                }, 
+                {
+                    "code": "MUS 297", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/297", 
+                    "name": "Keyboard Skills - Intermediate"
+                }, 
+                {
+                    "code": "MUS 300", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/300", 
+                    "name": "Elementary Music Methods"
+                }, 
+                {
+                    "code": "MUS 324", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/324", 
+                    "name": "Hist & Literature of Symphony"
+                }, 
+                {
+                    "code": "MUS 326", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/326", 
+                    "name": "Hist & Literature of the Opera"
+                }, 
+                {
+                    "code": "MUS 327", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/327", 
+                    "name": "Organ Literature"
+                }, 
+                {
+                    "code": "MUS 328", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/328", 
+                    "name": "Music in the Church"
+                }, 
+                {
+                    "code": "MUS 329", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/329", 
+                    "name": "Piano Pedagogy I"
+                }, 
+                {
+                    "code": "MUS 331", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/331", 
+                    "name": "Piano Literature I"
+                }, 
+                {
+                    "code": "MUS 335", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/335", 
+                    "name": "Violin/Viola Pedagogy, Lit"
+                }, 
+                {
+                    "code": "MUS 336", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/336", 
+                    "name": "Woodwind Methods I"
+                }, 
+                {
+                    "code": "MUS 337", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/337", 
+                    "name": "Instrum of Band & Orchestra I"
+                }, 
+                {
+                    "code": "MUS 340", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/340", 
+                    "name": "Woodwind Methods II"
+                }, 
+                {
+                    "code": "MUS 341", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/341", 
+                    "name": "Orchestration"
+                }, 
+                {
+                    "code": "MUS 345", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/345", 
+                    "name": "Conducting Techniques"
+                }, 
+                {
+                    "code": "MUS 346", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/346", 
+                    "name": "Percussion Methods"
+                }, 
+                {
+                    "code": "MUS 348", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/348", 
+                    "name": "Diction for Singers II"
+                }, 
+                {
+                    "code": "MUS 349", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/349", 
+                    "name": "Diction for Singers III"
+                }, 
+                {
+                    "code": "MUS 351", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/351", 
+                    "name": "Voice Literature"
+                }, 
+                {
+                    "code": "MUS 361", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/361", 
+                    "name": "Jazz Theory & Improvisation I"
+                }, 
+                {
+                    "code": "MUS 363", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/363", 
+                    "name": "Jazz Styles and Analysis"
+                }, 
+                {
+                    "code": "MUS 365", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/365", 
+                    "name": "Jazz Literature & Pedagogy"
+                }, 
+                {
+                    "code": "MUS 366", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/366", 
+                    "name": "Jazz Composition & Arranging I"
+                }, 
+                {
+                    "code": "MUS 368", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/368", 
+                    "name": "Recording Arts & Techniques"
+                }, 
+                {
+                    "code": "MUS 370", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/370", 
+                    "name": "Sec Instrumental Meth & Admin"
+                }, 
+                {
+                    "code": "MUS 397", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/397", 
+                    "name": "Keyboard Skills for Organ"
+                }, 
+                {
+                    "code": "MUS 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/490", 
+                    "name": "Ind Stdy:Topics Piano Pedagogy"
+                }, 
+                {
+                    "code": "MUS 491", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/491", 
+                    "name": "Seminar in Music"
+                }, 
+                {
+                    "code": "MUS 495", 
+                    "course_url": "http://www.chegg.com/courses/hope/MUS/495", 
+                    "name": "Studies in Music"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/MUS"
+        }, 
+        {
+            "abbr": "NSCI", 
+            "courses": [
+                {
+                    "code": "NSCI 311", 
+                    "course_url": "http://www.chegg.com/courses/hope/NSCI/311", 
+                    "name": "Neuroscience Journal Club"
+                }, 
+                {
+                    "code": "NSCI 411", 
+                    "course_url": "http://www.chegg.com/courses/hope/NSCI/411", 
+                    "name": "Adv Neuroscience Research I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/NSCI"
+        }, 
+        {
+            "abbr": "NURS", 
+            "courses": [
+                {
+                    "code": "NURS 210", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/210", 
+                    "name": "Intro Professional Nursing"
+                }, 
+                {
+                    "code": "NURS 222", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/222", 
+                    "name": "Basic Skills Laboratory"
+                }, 
+                {
+                    "code": "NURS 242", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/242", 
+                    "name": "Advanced Skills Laboratory"
+                }, 
+                {
+                    "code": "NURS 255", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/255", 
+                    "name": "Health Assessment"
+                }, 
+                {
+                    "code": "NURS 310", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/310", 
+                    "name": "Special Topics Prof Nursing"
+                }, 
+                {
+                    "code": "NURS 320", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/320", 
+                    "name": "Pathophysiology"
+                }, 
+                {
+                    "code": "NURS 325", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/325", 
+                    "name": "Psych Theory & Prac"
+                }, 
+                {
+                    "code": "NURS 335", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/335", 
+                    "name": "Matrnity &Wom Hlth:Theory&Prac"
+                }, 
+                {
+                    "code": "NURS 345", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/345", 
+                    "name": "Pediatric Nurs Theory & Prac"
+                }, 
+                {
+                    "code": "NURS 365", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/365", 
+                    "name": "Adult Nursing Theory & Prac"
+                }, 
+                {
+                    "code": "NURS 385", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/385", 
+                    "name": "Gerontological Theory & Prac"
+                }, 
+                {
+                    "code": "NURS 418", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/418", 
+                    "name": "Nursing Research Practicum"
+                }, 
+                {
+                    "code": "NURS 420", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/420", 
+                    "name": "Comm Health Theory & Practicum"
+                }, 
+                {
+                    "code": "NURS 465", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/465", 
+                    "name": "Advanced Adult Nursing"
+                }, 
+                {
+                    "code": "NURS 480", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/480", 
+                    "name": "Management & Transitions"
+                }, 
+                {
+                    "code": "NURS 486", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/486", 
+                    "name": "Clinical Reasoning in Nursing"
+                }, 
+                {
+                    "code": "NURS 488", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/488", 
+                    "name": "Nursing Internship"
+                }, 
+                {
+                    "code": "NURS 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/490", 
+                    "name": "Independent Study in Nursing"
+                }, 
+                {
+                    "code": "NURS 495", 
+                    "course_url": "http://www.chegg.com/courses/hope/NURS/495", 
+                    "name": "Advanced Studies in Nursing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/NURS"
+        }, 
+        {
+            "abbr": "PHIL", 
+            "courses": [
+                {
+                    "code": "PHIL 195", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHIL/195", 
+                    "name": "Philosphy of Race"
+                }, 
+                {
+                    "code": "PHIL 201", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHIL/201", 
+                    "name": "Logic"
+                }, 
+                {
+                    "code": "PHIL 230", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHIL/230", 
+                    "name": "Ancient Philosophy"
+                }, 
+                {
+                    "code": "PHIL 232", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHIL/232", 
+                    "name": "Modern Philosophy"
+                }, 
+                {
+                    "code": "PHIL 237", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHIL/237", 
+                    "name": "World Philosophies I"
+                }, 
+                {
+                    "code": "PHIL 241", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHIL/241", 
+                    "name": "Philosophies of India & Tibet"
+                }, 
+                {
+                    "code": "PHIL 245", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHIL/245", 
+                    "name": "Global Ethical Challenges"
+                }, 
+                {
+                    "code": "PHIL 280", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHIL/280", 
+                    "name": "Knowledge and Belief"
+                }, 
+                {
+                    "code": "PHIL 341", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHIL/341", 
+                    "name": "Ancient & Medieval Pol Thought"
+                }, 
+                {
+                    "code": "PHIL 342", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHIL/342", 
+                    "name": "Modern Political Thought"
+                }, 
+                {
+                    "code": "PHIL 360", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHIL/360", 
+                    "name": "Philosophy of Science"
+                }, 
+                {
+                    "code": "PHIL 385", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHIL/385", 
+                    "name": "Postmodernism"
+                }, 
+                {
+                    "code": "PHIL 450", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHIL/450", 
+                    "name": "Does Morality Need God?"
+                }, 
+                {
+                    "code": "PHIL 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHIL/490", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/PHIL"
+        }, 
+        {
+            "abbr": "PHYS", 
+            "courses": [
+                {
+                    "code": "PHYS 080", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHYS/080", 
+                    "name": "Physics Seminar"
+                }, 
+                {
+                    "code": "PHYS 80", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHYS/80", 
+                    "name": "Physics Seminar"
+                }, 
+                {
+                    "code": "PHYS 104", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHYS/104", 
+                    "name": "Matter and Energy"
+                }, 
+                {
+                    "code": "PHYS 105", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHYS/105", 
+                    "name": "College Physics I - Discussion"
+                }, 
+                {
+                    "code": "PHYS 121", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHYS/121", 
+                    "name": "General Physics I Discussion"
+                }, 
+                {
+                    "code": "PHYS 122", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHYS/122", 
+                    "name": "General Physics II Discussion"
+                }, 
+                {
+                    "code": "PHYS 141", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHYS/141", 
+                    "name": "General Physics Laboratory I"
+                }, 
+                {
+                    "code": "PHYS 142", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHYS/142", 
+                    "name": "Physics Laboratory II"
+                }, 
+                {
+                    "code": "PHYS 195", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHYS/195", 
+                    "name": "Intro Gen Phys On-Line Lab I"
+                }, 
+                {
+                    "code": "PHYS 270", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHYS/270", 
+                    "name": "Modern Physics"
+                }, 
+                {
+                    "code": "PHYS 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHYS/295", 
+                    "name": "Astrophysics"
+                }, 
+                {
+                    "code": "PHYS 361", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHYS/361", 
+                    "name": "Analytical Mechanics"
+                }, 
+                {
+                    "code": "PHYS 372", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHYS/372", 
+                    "name": "Quantum Theory"
+                }, 
+                {
+                    "code": "PHYS 380", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHYS/380", 
+                    "name": "Math Physics II"
+                }, 
+                {
+                    "code": "PHYS 382", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHYS/382", 
+                    "name": "Continuation Adv Laboratory"
+                }, 
+                {
+                    "code": "PHYS 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/PHYS/490", 
+                    "name": "Research"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/PHYS"
+        }, 
+        {
+            "abbr": "POL", 
+            "courses": [
+                {
+                    "code": "POL 100", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/100", 
+                    "name": "Intro to American Politics"
+                }, 
+                {
+                    "code": "POL 110", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/110", 
+                    "name": "Development of Amer Democ"
+                }, 
+                {
+                    "code": "POL 151", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/151", 
+                    "name": "Intro to Global Politics"
+                }, 
+                {
+                    "code": "POL 160", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/160", 
+                    "name": "Global Feminisms"
+                }, 
+                {
+                    "code": "POL 201", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/201", 
+                    "name": "Political Geography"
+                }, 
+                {
+                    "code": "POL 212", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/212", 
+                    "name": "Parties, Int Groups &Elections"
+                }, 
+                {
+                    "code": "POL 221", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/221", 
+                    "name": "State & Local Government"
+                }, 
+                {
+                    "code": "POL 242", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/242", 
+                    "name": "Research Methods"
+                }, 
+                {
+                    "code": "POL 251", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/251", 
+                    "name": "International Relations"
+                }, 
+                {
+                    "code": "POL 262", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/262", 
+                    "name": "Latin American Politics"
+                }, 
+                {
+                    "code": "POL 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/295", 
+                    "name": "Moot Court Simulation"
+                }, 
+                {
+                    "code": "POL 301", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/301", 
+                    "name": "Religion and Politics"
+                }, 
+                {
+                    "code": "POL 303", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/303", 
+                    "name": "Asian Politics"
+                }, 
+                {
+                    "code": "POL 339", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/339", 
+                    "name": "American Constitutional Law"
+                }, 
+                {
+                    "code": "POL 341", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/341", 
+                    "name": "Ancient & Medieval Pol Thought"
+                }, 
+                {
+                    "code": "POL 342", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/342", 
+                    "name": "Modern Political Thought"
+                }, 
+                {
+                    "code": "POL 352", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/352", 
+                    "name": "Global Political Economy"
+                }, 
+                {
+                    "code": "POL 378", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/378", 
+                    "name": "American Foreign Policy"
+                }, 
+                {
+                    "code": "POL 391", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/391", 
+                    "name": "Internships"
+                }, 
+                {
+                    "code": "POL 397", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/397", 
+                    "name": "Campaign Mgmt Lab - DEM"
+                }, 
+                {
+                    "code": "POL 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/490", 
+                    "name": "Independent Studies"
+                }, 
+                {
+                    "code": "POL 492", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/492", 
+                    "name": "Washington Sem Preparation"
+                }, 
+                {
+                    "code": "POL 494", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/494", 
+                    "name": "Capstone Seminar"
+                }, 
+                {
+                    "code": "POL 494L", 
+                    "course_url": "http://www.chegg.com/courses/hope/POL/494L", 
+                    "name": "Capstone Seminar:Portfolio"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/POL"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 100", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/100", 
+                    "name": "Introduction to Psychology"
+                }, 
+                {
+                    "code": "PSY 105", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/105", 
+                    "name": "Intro Psychology Projects"
+                }, 
+                {
+                    "code": "PSY 200", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/200", 
+                    "name": "Research Methods"
+                }, 
+                {
+                    "code": "PSY 225", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/225", 
+                    "name": "Exceptional Child"
+                }, 
+                {
+                    "code": "PSY 230", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/230", 
+                    "name": "Developmental Psychology"
+                }, 
+                {
+                    "code": "PSY 265", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/265", 
+                    "name": "Theory & Practice of Helping"
+                }, 
+                {
+                    "code": "PSY 280", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/280", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "PSY 290", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/290", 
+                    "name": "Supervised Study in Psychology"
+                }, 
+                {
+                    "code": "PSY 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/295", 
+                    "name": "Phonetics"
+                }, 
+                {
+                    "code": "PSY 335", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/335", 
+                    "name": "Adult Development and Aging"
+                }, 
+                {
+                    "code": "PSY 340", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/340", 
+                    "name": "Cognitive Psychology"
+                }, 
+                {
+                    "code": "PSY 350", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/350", 
+                    "name": "Industrial/Organizational Psy"
+                }, 
+                {
+                    "code": "PSY 370", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/370", 
+                    "name": "Behavior Disorders"
+                }, 
+                {
+                    "code": "PSY 390", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/390", 
+                    "name": "Advanced Research"
+                }, 
+                {
+                    "code": "PSY 395", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/395", 
+                    "name": "Positive Psychology"
+                }, 
+                {
+                    "code": "PSY 410", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/410", 
+                    "name": "Clinical Psychology"
+                }, 
+                {
+                    "code": "PSY 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/490", 
+                    "name": "Honors Research"
+                }, 
+                {
+                    "code": "PSY 496", 
+                    "course_url": "http://www.chegg.com/courses/hope/PSY/496", 
+                    "name": "Psychology Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/PSY"
+        }, 
+        {
+            "abbr": "REL", 
+            "courses": [
+                {
+                    "code": "REL 100", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/100", 
+                    "name": "The Bible in the Real World"
+                }, 
+                {
+                    "code": "REL 171", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/171", 
+                    "name": "Biblical Hebrew"
+                }, 
+                {
+                    "code": "REL 220", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/220", 
+                    "name": "Intro to Biblical Literature"
+                }, 
+                {
+                    "code": "REL 221", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/221", 
+                    "name": "Intro to Biblical Literature"
+                }, 
+                {
+                    "code": "REL 222", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/222", 
+                    "name": "Introduction to Old Testament"
+                }, 
+                {
+                    "code": "REL 223", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/223", 
+                    "name": "Introduction to New Testament"
+                }, 
+                {
+                    "code": "REL 240", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/240", 
+                    "name": "Intro History of Christianity"
+                }, 
+                {
+                    "code": "REL 241", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/241", 
+                    "name": "Intro History of Christianity"
+                }, 
+                {
+                    "code": "REL 260", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/260", 
+                    "name": "Christian Love"
+                }, 
+                {
+                    "code": "REL 261", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/261", 
+                    "name": "Faith Seeking Understanding"
+                }, 
+                {
+                    "code": "REL 263", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/263", 
+                    "name": "Perspectives on Christ"
+                }, 
+                {
+                    "code": "REL 264", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/264", 
+                    "name": "Christian Feminism"
+                }, 
+                {
+                    "code": "REL 266", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/266", 
+                    "name": "Christian Love"
+                }, 
+                {
+                    "code": "REL 280", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/280", 
+                    "name": "Intro to World Religions"
+                }, 
+                {
+                    "code": "REL 281", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/281", 
+                    "name": "Intro to World Religions"
+                }, 
+                {
+                    "code": "REL 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/295", 
+                    "name": "Emmaus Seminar Reconciliation"
+                }, 
+                {
+                    "code": "REL 325", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/325", 
+                    "name": "Jesus and the Gospels"
+                }, 
+                {
+                    "code": "REL 328", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/328", 
+                    "name": "Johannine Literature"
+                }, 
+                {
+                    "code": "REL 349", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/349", 
+                    "name": "The Faith of the Early Church"
+                }, 
+                {
+                    "code": "REL 351", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/351", 
+                    "name": "Theology of Youth Ministry"
+                }, 
+                {
+                    "code": "REL 363", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/363", 
+                    "name": "Studies Christian Spirituality"
+                }, 
+                {
+                    "code": "REL 369", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/369", 
+                    "name": "Knowledge and Belief"
+                }, 
+                {
+                    "code": "REL 381", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/381", 
+                    "name": "Religions of India"
+                }, 
+                {
+                    "code": "REL 383", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/383", 
+                    "name": "Studies in Islam"
+                }, 
+                {
+                    "code": "REL 395", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/395", 
+                    "name": "Luke-Acts"
+                }, 
+                {
+                    "code": "REL 420", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/420", 
+                    "name": "Seminar in Scripture"
+                }, 
+                {
+                    "code": "REL 440", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/440", 
+                    "name": "Recent American Religion"
+                }, 
+                {
+                    "code": "REL 460", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/460", 
+                    "name": "Seminar in Theology/Ethics"
+                }, 
+                {
+                    "code": "REL 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/490", 
+                    "name": "Independent Studies"
+                }, 
+                {
+                    "code": "REL 498", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/498", 
+                    "name": "Religion Internship I"
+                }, 
+                {
+                    "code": "REL 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/REL/499", 
+                    "name": "Religion Internship II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/REL"
+        }, 
+        {
+            "abbr": "RUSS", 
+            "courses": [
+                {
+                    "code": "RUSS 101", 
+                    "course_url": "http://www.chegg.com/courses/hope/RUSS/101", 
+                    "name": "Russian I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/RUSS"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 101", 
+                    "course_url": "http://www.chegg.com/courses/hope/SOC/101", 
+                    "name": "Sociology & Soc Problems & Lab"
+                }, 
+                {
+                    "code": "SOC 151", 
+                    "course_url": "http://www.chegg.com/courses/hope/SOC/151", 
+                    "name": "Cultural Anthropology"
+                }, 
+                {
+                    "code": "SOC 221", 
+                    "course_url": "http://www.chegg.com/courses/hope/SOC/221", 
+                    "name": "Criminology I"
+                }, 
+                {
+                    "code": "SOC 222", 
+                    "course_url": "http://www.chegg.com/courses/hope/SOC/222", 
+                    "name": "Criminology II"
+                }, 
+                {
+                    "code": "SOC 233", 
+                    "course_url": "http://www.chegg.com/courses/hope/SOC/233", 
+                    "name": "Sociology of the Family"
+                }, 
+                {
+                    "code": "SOC 261", 
+                    "course_url": "http://www.chegg.com/courses/hope/SOC/261", 
+                    "name": "Theoretical Perspectives"
+                }, 
+                {
+                    "code": "SOC 269", 
+                    "course_url": "http://www.chegg.com/courses/hope/SOC/269", 
+                    "name": "Race and Ethnic Relations"
+                }, 
+                {
+                    "code": "SOC 280", 
+                    "course_url": "http://www.chegg.com/courses/hope/SOC/280", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "SOC 312", 
+                    "course_url": "http://www.chegg.com/courses/hope/SOC/312", 
+                    "name": "Urban Sociology"
+                }, 
+                {
+                    "code": "SOC 390", 
+                    "course_url": "http://www.chegg.com/courses/hope/SOC/390", 
+                    "name": "Advanced Research Projects"
+                }, 
+                {
+                    "code": "SOC 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/SOC/490", 
+                    "name": "Independent Studies in Soc"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/SOC"
+        }, 
+        {
+            "abbr": "SPAN", 
+            "courses": [
+                {
+                    "code": "SPAN 121", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/121", 
+                    "name": "Spanish I"
+                }, 
+                {
+                    "code": "SPAN 122", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/122", 
+                    "name": "Spanish II"
+                }, 
+                {
+                    "code": "SPAN 124", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/124", 
+                    "name": "Intensive Beginning Spanish"
+                }, 
+                {
+                    "code": "SPAN 195", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/195", 
+                    "name": "Beginning Portuguese"
+                }, 
+                {
+                    "code": "SPAN 221", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/221", 
+                    "name": "Drill"
+                }, 
+                {
+                    "code": "SPAN 222", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/222", 
+                    "name": "LAUP ESL Participation"
+                }, 
+                {
+                    "code": "SPAN 280", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/280", 
+                    "name": "Practicum in Spanish"
+                }, 
+                {
+                    "code": "SPAN 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/295", 
+                    "name": "Span for Heritage Speakers"
+                }, 
+                {
+                    "code": "SPAN 321", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/321", 
+                    "name": "Spanish V:Adv Grammar & Comp I"
+                }, 
+                {
+                    "code": "SPAN 322", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/322", 
+                    "name": "Spanish VI:Adv Gram & Comp II"
+                }, 
+                {
+                    "code": "SPAN 325", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/325", 
+                    "name": "Spanish Conversation"
+                }, 
+                {
+                    "code": "SPAN 341", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/341", 
+                    "name": "Intro to Literature"
+                }, 
+                {
+                    "code": "SPAN 342", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/342", 
+                    "name": "Modern Spanish Literature"
+                }, 
+                {
+                    "code": "SPAN 380", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/380", 
+                    "name": "Spanish House Practicum"
+                }, 
+                {
+                    "code": "SPAN 443", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/443", 
+                    "name": "Colonial Hispanic American Lit"
+                }, 
+                {
+                    "code": "SPAN 462", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/462", 
+                    "name": "Spanish Linguistics"
+                }, 
+                {
+                    "code": "SPAN 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/490", 
+                    "name": "Special Problems"
+                }, 
+                {
+                    "code": "SPAN 494", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/494", 
+                    "name": "Literature Seminar"
+                }, 
+                {
+                    "code": "SPAN 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/SPAN/499", 
+                    "name": "Internship in Spanish"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/SPAN"
+        }, 
+        {
+            "abbr": "SSR", 
+            "courses": [
+                {
+                    "code": "SSR 495", 
+                    "course_url": "http://www.chegg.com/courses/hope/SSR/495", 
+                    "name": "Research Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/SSR"
+        }, 
+        {
+            "abbr": "SWK", 
+            "courses": [
+                {
+                    "code": "SWK 232", 
+                    "course_url": "http://www.chegg.com/courses/hope/SWK/232", 
+                    "name": "Social Work and Family"
+                }, 
+                {
+                    "code": "SWK 241", 
+                    "course_url": "http://www.chegg.com/courses/hope/SWK/241", 
+                    "name": "Intro to Social Welfare"
+                }, 
+                {
+                    "code": "SWK 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/SWK/295", 
+                    "name": "Interviewing Laboratory"
+                }, 
+                {
+                    "code": "SWK 310", 
+                    "course_url": "http://www.chegg.com/courses/hope/SWK/310", 
+                    "name": "Human Behavior & Soc Environ I"
+                }, 
+                {
+                    "code": "SWK 311", 
+                    "course_url": "http://www.chegg.com/courses/hope/SWK/311", 
+                    "name": "Human Behavior & Soc Envirn II"
+                }, 
+                {
+                    "code": "SWK 320", 
+                    "course_url": "http://www.chegg.com/courses/hope/SWK/320", 
+                    "name": "Social Work Interviewing"
+                }, 
+                {
+                    "code": "SWK 352", 
+                    "course_url": "http://www.chegg.com/courses/hope/SWK/352", 
+                    "name": "Social Interventions II"
+                }, 
+                {
+                    "code": "SWK 401", 
+                    "course_url": "http://www.chegg.com/courses/hope/SWK/401", 
+                    "name": "Social Interventions III"
+                }, 
+                {
+                    "code": "SWK 443", 
+                    "course_url": "http://www.chegg.com/courses/hope/SWK/443", 
+                    "name": "Social Work Field Experience I"
+                }, 
+                {
+                    "code": "SWK 446", 
+                    "course_url": "http://www.chegg.com/courses/hope/SWK/446", 
+                    "name": "Soc Work Field Experience II"
+                }, 
+                {
+                    "code": "SWK 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/SWK/490", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/SWK"
+        }, 
+        {
+            "abbr": "THEA", 
+            "courses": [
+                {
+                    "code": "THEA 101", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/101", 
+                    "name": "Introduction to the Theatre"
+                }, 
+                {
+                    "code": "THEA 105", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/105", 
+                    "name": "Introduction to Thea Practice"
+                }, 
+                {
+                    "code": "THEA 110", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/110", 
+                    "name": "Acting for the Non-Major"
+                }, 
+                {
+                    "code": "THEA 130", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/130", 
+                    "name": "Oral Interpretation of Lit"
+                }, 
+                {
+                    "code": "THEA 153", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/153", 
+                    "name": "Art of the Cinema"
+                }, 
+                {
+                    "code": "THEA 161", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/161", 
+                    "name": "Acting I"
+                }, 
+                {
+                    "code": "THEA 210", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/210", 
+                    "name": "Theatre Crafts I"
+                }, 
+                {
+                    "code": "THEA 223", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/223", 
+                    "name": "Lighting Design"
+                }, 
+                {
+                    "code": "THEA 224", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/224", 
+                    "name": "Costume Design"
+                }, 
+                {
+                    "code": "THEA 250", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/250", 
+                    "name": "Stage Management"
+                }, 
+                {
+                    "code": "THEA 261", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/261", 
+                    "name": "Acting III"
+                }, 
+                {
+                    "code": "THEA 280", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/280", 
+                    "name": "Theatre Lab:Stage Management"
+                }, 
+                {
+                    "code": "THEA 301", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/301", 
+                    "name": "Western Theatre History I"
+                }, 
+                {
+                    "code": "THEA 331", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/331", 
+                    "name": "Stage Direction I"
+                }, 
+                {
+                    "code": "THEA 375", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/375", 
+                    "name": "Musical Theatre Workshop A"
+                }, 
+                {
+                    "code": "THEA 380", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/380", 
+                    "name": "Practicum:Makeup Design"
+                }, 
+                {
+                    "code": "THEA 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/490", 
+                    "name": "Independent Studies in Theatre"
+                }, 
+                {
+                    "code": "THEA 499", 
+                    "course_url": "http://www.chegg.com/courses/hope/THEA/499", 
+                    "name": "Readings in Theatre"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/THEA"
+        }, 
+        {
+            "abbr": "WS", 
+            "courses": [
+                {
+                    "code": "WS 160", 
+                    "course_url": "http://www.chegg.com/courses/hope/WS/160", 
+                    "name": "Global Feminisms"
+                }, 
+                {
+                    "code": "WS 195", 
+                    "course_url": "http://www.chegg.com/courses/hope/WS/195", 
+                    "name": "Gender, Conflict and Peace"
+                }, 
+                {
+                    "code": "WS 200", 
+                    "course_url": "http://www.chegg.com/courses/hope/WS/200", 
+                    "name": "Introduction Women's Studies"
+                }, 
+                {
+                    "code": "WS 295", 
+                    "course_url": "http://www.chegg.com/courses/hope/WS/295", 
+                    "name": "Contemporary Art &Architecture"
+                }, 
+                {
+                    "code": "WS 300", 
+                    "course_url": "http://www.chegg.com/courses/hope/WS/300", 
+                    "name": "Global Feminisms"
+                }, 
+                {
+                    "code": "WS 350", 
+                    "course_url": "http://www.chegg.com/courses/hope/WS/350", 
+                    "name": "Feminist Visions of Justice"
+                }, 
+                {
+                    "code": "WS 371", 
+                    "course_url": "http://www.chegg.com/courses/hope/WS/371", 
+                    "name": "Intercultural & Gender Comm"
+                }, 
+                {
+                    "code": "WS 395", 
+                    "course_url": "http://www.chegg.com/courses/hope/WS/395", 
+                    "name": "Facilitating Intergroup Dialog"
+                }, 
+                {
+                    "code": "WS 490", 
+                    "course_url": "http://www.chegg.com/courses/hope/WS/490", 
+                    "name": "Independent Projects"
+                }, 
+                {
+                    "code": "WS 496", 
+                    "course_url": "http://www.chegg.com/courses/hope/WS/496", 
+                    "name": "Internship in Women's Studies"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/hope/WS"
+        }
+    ], 
+    "name": "hope"
+}

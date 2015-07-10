@@ -1,0 +1,3959 @@
+{
+    "all_stats": {
+        "num_courses": 723, 
+        "num_departments": 48
+    }, 
+    "departments": [
+        {
+            "abbr": "ACCT", 
+            "courses": [
+                {
+                    "code": "ACCT 231", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ACCT/231", 
+                    "name": "Principles of Accounting I"
+                }, 
+                {
+                    "code": "ACCT 232", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ACCT/232", 
+                    "name": "Principles of Accounting II"
+                }, 
+                {
+                    "code": "ACCT 331", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ACCT/331", 
+                    "name": "Intermediate Accounting I"
+                }, 
+                {
+                    "code": "ACCT 332", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ACCT/332", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACCT 334", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ACCT/334", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACCT 337", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ACCT/337", 
+                    "name": "Cost Accounting"
+                }, 
+                {
+                    "code": "ACCT 340", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ACCT/340", 
+                    "name": "Advd Computerized Accounting"
+                }, 
+                {
+                    "code": "ACCT 344", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ACCT/344", 
+                    "name": "Business Income Tax Accounting"
+                }, 
+                {
+                    "code": "ACCT 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ACCT/399", 
+                    "name": "ST&P: Vita"
+                }, 
+                {
+                    "code": "ACCT 432", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ACCT/432", 
+                    "name": "Advanced Accounting"
+                }, 
+                {
+                    "code": "ACCT 435", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ACCT/435", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACCT 436", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ACCT/436", 
+                    "name": "Accounting Systems"
+                }, 
+                {
+                    "code": "ACCT 438", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ACCT/438", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACCT 497", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ACCT/497", 
+                    "name": "Internship II"
+                }, 
+                {
+                    "code": "ACCT 499", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ACCT/499", 
+                    "name": "IRP: VITA II Research"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/ACCT"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/199", 
+                    "name": "ST&P: Piano Accompanying"
+                }, 
+                {
+                    "code": "ART 200", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/200", 
+                    "name": "Survey of Art"
+                }, 
+                {
+                    "code": "ART 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/201", 
+                    "name": "Representational Drawing"
+                }, 
+                {
+                    "code": "ART 202", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/202", 
+                    "name": "Color and Design"
+                }, 
+                {
+                    "code": "ART 293", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/293", 
+                    "name": "Fourth Portfolio Jury"
+                }, 
+                {
+                    "code": "ART 307", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/307", 
+                    "name": "Introductory Oil Painting"
+                }, 
+                {
+                    "code": "ART 308", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/308", 
+                    "name": "Watercolor Painting"
+                }, 
+                {
+                    "code": "ART 326", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/326", 
+                    "name": "Intermediate Ceramics"
+                }, 
+                {
+                    "code": "ART 330", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/330", 
+                    "name": "Art Methods - Elem Educ Major"
+                }, 
+                {
+                    "code": "ART 340", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/340", 
+                    "name": "Sculpture"
+                }, 
+                {
+                    "code": "ART 341", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/341", 
+                    "name": "Intermediate Sculpture"
+                }, 
+                {
+                    "code": "ART 351", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/351", 
+                    "name": "Intermedte Digital Photography"
+                }, 
+                {
+                    "code": "ART 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/399", 
+                    "name": "ST&P: Foundtns of Art & Design"
+                }, 
+                {
+                    "code": "ART 401", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/401", 
+                    "name": "Art Hist: 19 C to the Present"
+                }, 
+                {
+                    "code": "ART 406", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/406", 
+                    "name": "Intermediate Oil Painting"
+                }, 
+                {
+                    "code": "ART 407", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/407", 
+                    "name": "Advanced Water Color Painting"
+                }, 
+                {
+                    "code": "ART 426", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/426", 
+                    "name": "Advanced Ceramics"
+                }, 
+                {
+                    "code": "ART 493", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/493", 
+                    "name": "Senior Exhibition"
+                }, 
+                {
+                    "code": "ART 499", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ART/499", 
+                    "name": "IRP: Advanced Drawing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/ART"
+        }, 
+        {
+            "abbr": "BIOL", 
+            "courses": [
+                {
+                    "code": "BIOL 100", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/100", 
+                    "name": "Human Nutrition"
+                }, 
+                {
+                    "code": "BIOL 101", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/101", 
+                    "name": "General Biology I (Lab)"
+                }, 
+                {
+                    "code": "BIOL 102", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/102", 
+                    "name": "Intro Cellular Biology (Lab)"
+                }, 
+                {
+                    "code": "BIOL 108", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/108", 
+                    "name": "Dendrology I"
+                }, 
+                {
+                    "code": "BIOL 109", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/109", 
+                    "name": "Dendrology II"
+                }, 
+                {
+                    "code": "BIOL 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/199", 
+                    "name": "ST&P: Intr Medical Terminology"
+                }, 
+                {
+                    "code": "BIOL 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/201", 
+                    "name": "Intro Cell Biochemistry (Lab)"
+                }, 
+                {
+                    "code": "BIOL 203", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/203", 
+                    "name": "Plant Dis/Insect Ctrl (Lab)"
+                }, 
+                {
+                    "code": "BIOL 206", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/206", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIOL 293", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/293", 
+                    "name": "Techniques of Science"
+                }, 
+                {
+                    "code": "BIOL 302", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/302", 
+                    "name": "General Entomology (Lab)"
+                }, 
+                {
+                    "code": "BIOL 309", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/309", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIOL 310", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/310", 
+                    "name": "Human Anatomy/Phys II (Lab)"
+                }, 
+                {
+                    "code": "BIOL 335", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/335", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIOL 361", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/361", 
+                    "name": "Microbiology (Lab)"
+                }, 
+                {
+                    "code": "BIOL 362", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/362", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIOL 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/399", 
+                    "name": "ST&P: Herpetology (Lab)"
+                }, 
+                {
+                    "code": "BIOL 400", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/400", 
+                    "name": "Ecology & Field Biology (Lab)"
+                }, 
+                {
+                    "code": "BIOL 420", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/420", 
+                    "name": "Neurobiology"
+                }, 
+                {
+                    "code": "BIOL 493", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/493", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIOL 499", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BIOL/499", 
+                    "name": "IRP: Research"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/BIOL"
+        }, 
+        {
+            "abbr": "BUSN", 
+            "courses": [
+                {
+                    "code": "BUSN 100", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/100", 
+                    "name": "Introduction to Business"
+                }, 
+                {
+                    "code": "BUSN 118", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/118", 
+                    "name": "Office Software"
+                }, 
+                {
+                    "code": "BUSN 193", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/193", 
+                    "name": "Applied Busn Communications"
+                }, 
+                {
+                    "code": "BUSN 197", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/197", 
+                    "name": "Work Experience"
+                }, 
+                {
+                    "code": "BUSN 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/199", 
+                    "name": "ST&P: Intro to Internat'l Busn"
+                }, 
+                {
+                    "code": "BUSN 230", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/230", 
+                    "name": "Quantitative Busn Analysis I"
+                }, 
+                {
+                    "code": "BUSN 270", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/270", 
+                    "name": "Business Law I"
+                }, 
+                {
+                    "code": "BUSN 293", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/293", 
+                    "name": "Capstone Internship Experience"
+                }, 
+                {
+                    "code": "BUSN 296", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/296", 
+                    "name": "Dimensions in Prof Development"
+                }, 
+                {
+                    "code": "BUSN 297", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/297", 
+                    "name": "Internship I"
+                }, 
+                {
+                    "code": "BUSN 305", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/305", 
+                    "name": "Professional Office Procedures"
+                }, 
+                {
+                    "code": "BUSN 330", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/330", 
+                    "name": "Quantitative Busn Analysis II"
+                }, 
+                {
+                    "code": "BUSN 397", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/397", 
+                    "name": "Work Experience"
+                }, 
+                {
+                    "code": "BUSN 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/399", 
+                    "name": "ST&P:Economic Impact Resrch I"
+                }, 
+                {
+                    "code": "BUSN 470", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/470", 
+                    "name": "Business Law II"
+                }, 
+                {
+                    "code": "BUSN 493", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/493", 
+                    "name": "Strategic Mgmt and Planning"
+                }, 
+                {
+                    "code": "BUSN 497", 
+                    "course_url": "http://www.chegg.com/courses/glenville/BUSN/497", 
+                    "name": "Internship II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/BUSN"
+        }, 
+        {
+            "abbr": "CART", 
+            "courses": [
+                {
+                    "code": "CART 101", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CART/101", 
+                    "name": "Intro to Public Speaking"
+                }, 
+                {
+                    "code": "CART 200", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CART/200", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CART 210", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CART/210", 
+                    "name": "Introduction to Acting"
+                }, 
+                {
+                    "code": "CART 297", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CART/297", 
+                    "name": "Internship I"
+                }, 
+                {
+                    "code": "CART 306", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CART/306", 
+                    "name": "Oral Interpretation"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/CART"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 100", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CHEM/100", 
+                    "name": "Introductory Chemistry I (Lab)"
+                }, 
+                {
+                    "code": "CHEM 101", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CHEM/101", 
+                    "name": "General Chemistry I (Lab)"
+                }, 
+                {
+                    "code": "CHEM 102", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CHEM/102", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHEM 103", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CHEM/103", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHEM 293", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CHEM/293", 
+                    "name": "Techniques of Chemistry"
+                }, 
+                {
+                    "code": "CHEM 301", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CHEM/301", 
+                    "name": "Organic Chemistry I (Lab)"
+                }, 
+                {
+                    "code": "CHEM 302", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CHEM/302", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHEM 304", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CHEM/304", 
+                    "name": "Biochemistry (Lab)"
+                }, 
+                {
+                    "code": "CHEM 307", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CHEM/307", 
+                    "name": "Inorganic Chemistry (Lab)"
+                }, 
+                {
+                    "code": "CHEM 321", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CHEM/321", 
+                    "name": "Analytical Chemistry I (Lab)"
+                }, 
+                {
+                    "code": "CHEM 341", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CHEM/341", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHEM 345", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CHEM/345", 
+                    "name": "Intro Physical Chemistry (Lab)"
+                }, 
+                {
+                    "code": "CHEM 380", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CHEM/380", 
+                    "name": "Biochemistry I (Lab)"
+                }, 
+                {
+                    "code": "CHEM 407", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CHEM/407", 
+                    "name": "Physical Chemistry I (Lab)"
+                }, 
+                {
+                    "code": "CHEM 493", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CHEM/493", 
+                    "name": "Senior Research Seminar"
+                }, 
+                {
+                    "code": "CHEM 499", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CHEM/499", 
+                    "name": "IRP: Research"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/CHEM"
+        }, 
+        {
+            "abbr": "COMM", 
+            "courses": [
+                {
+                    "code": "COMM 101", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/101", 
+                    "name": "Critical Reading and Writing"
+                }, 
+                {
+                    "code": "COMM 102", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/102", 
+                    "name": "CRW II: The American Mosaic"
+                }, 
+                {
+                    "code": "COMM 203", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/203", 
+                    "name": "Survey of English Lit I"
+                }, 
+                {
+                    "code": "COMM 204", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/204", 
+                    "name": "Survey of English Lit II"
+                }, 
+                {
+                    "code": "COMM 205", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/205", 
+                    "name": "Survey of American Lit I"
+                }, 
+                {
+                    "code": "COMM 206", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/206", 
+                    "name": "Survey of American Lit II"
+                }, 
+                {
+                    "code": "COMM 293", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/293", 
+                    "name": "Intro to Lit & Criticism"
+                }, 
+                {
+                    "code": "COMM 299", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/299", 
+                    "name": "ST&P: The College Newspaper"
+                }, 
+                {
+                    "code": "COMM 307", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/307", 
+                    "name": "World Literature"
+                }, 
+                {
+                    "code": "COMM 320", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/320", 
+                    "name": "Reading Childrens Literature"
+                }, 
+                {
+                    "code": "COMM 321", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/321", 
+                    "name": "The British Novel to 1900"
+                }, 
+                {
+                    "code": "COMM 322", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/322", 
+                    "name": "Adolescent Literature"
+                }, 
+                {
+                    "code": "COMM 331", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/331", 
+                    "name": "The American Novel"
+                }, 
+                {
+                    "code": "COMM 332", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/332", 
+                    "name": "The British Novel to 1900"
+                }, 
+                {
+                    "code": "COMM 333", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/333", 
+                    "name": "The Modern Novel"
+                }, 
+                {
+                    "code": "COMM 335", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/335", 
+                    "name": "Introduction to Film"
+                }, 
+                {
+                    "code": "COMM 390", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/390", 
+                    "name": "Womens Literature"
+                }, 
+                {
+                    "code": "COMM 392", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/392", 
+                    "name": "Advanced Study of Engl Grammar"
+                }, 
+                {
+                    "code": "COMM 395", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/395", 
+                    "name": "The English Language"
+                }, 
+                {
+                    "code": "COMM 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/399", 
+                    "name": "ST&P: Vict Poetic Imag"
+                }, 
+                {
+                    "code": "COMM 401", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/401", 
+                    "name": "Shakespeare"
+                }, 
+                {
+                    "code": "COMM 412", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/412", 
+                    "name": "Creative Writing"
+                }, 
+                {
+                    "code": "COMM 420", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/420", 
+                    "name": "Modern Poetry"
+                }, 
+                {
+                    "code": "COMM 493", 
+                    "course_url": "http://www.chegg.com/courses/glenville/COMM/493", 
+                    "name": "Seminar: Mind/Body/Soul 18th C"
+                }
+            ], 
+            "name": "Communications", 
+            "url": "http://www.chegg.com/courses/glenville/COMM"
+        }, 
+        {
+            "abbr": "CRJU", 
+            "courses": [
+                {
+                    "code": "CRJU 111", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/111", 
+                    "name": "Intro to Criminal Justice"
+                }, 
+                {
+                    "code": "CRJU 120", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/120", 
+                    "name": "Cross-Gender Supervision"
+                }, 
+                {
+                    "code": "CRJU 197", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/197", 
+                    "name": "Work Experience"
+                }, 
+                {
+                    "code": "CRJU 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/199", 
+                    "name": "ST&P: OSIX I"
+                }, 
+                {
+                    "code": "CRJU 215", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/215", 
+                    "name": "Crime Scene Management"
+                }, 
+                {
+                    "code": "CRJU 222", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/222", 
+                    "name": "Police Practices & Procedures"
+                }, 
+                {
+                    "code": "CRJU 223", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/223", 
+                    "name": "Corrections"
+                }, 
+                {
+                    "code": "CRJU 231", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/231", 
+                    "name": "Community Oriented Policing"
+                }, 
+                {
+                    "code": "CRJU 232", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/232", 
+                    "name": "Criminal Evidence & Procedures"
+                }, 
+                {
+                    "code": "CRJU 240", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/240", 
+                    "name": "Technology for Investigations"
+                }, 
+                {
+                    "code": "CRJU 251", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/251", 
+                    "name": "Community Corrections"
+                }, 
+                {
+                    "code": "CRJU 293", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/293", 
+                    "name": "Juvenile Justice System"
+                }, 
+                {
+                    "code": "CRJU 299", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/299", 
+                    "name": "ST&P: Prin Crmnl Investigation"
+                }, 
+                {
+                    "code": "CRJU 310", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CRJU 312", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/312", 
+                    "name": "Organized Crime"
+                }, 
+                {
+                    "code": "CRJU 321", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/321", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CRJU 335", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/335", 
+                    "name": "Cyber Crime Investigation I"
+                }, 
+                {
+                    "code": "CRJU 340", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/340", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CRJU 397", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/397", 
+                    "name": "Work Experience"
+                }, 
+                {
+                    "code": "CRJU 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/399", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CRJU 401", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/401", 
+                    "name": "Ethics in Criminal Justice"
+                }, 
+                {
+                    "code": "CRJU 405", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/405", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CRJU 415", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/415", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CRJU 425", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/425", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CRJU 435", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/435", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CRJU 445", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/445", 
+                    "name": "Advd Crime Scene Management"
+                }, 
+                {
+                    "code": "CRJU 493", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/493", 
+                    "name": "Seminar in Criminal Justice"
+                }, 
+                {
+                    "code": "CRJU 497", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CRJU/497", 
+                    "name": "Internship II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/CRJU"
+        }, 
+        {
+            "abbr": "CSCI", 
+            "courses": [
+                {
+                    "code": "CSCI 101", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CSCI/101", 
+                    "name": "Contemp Computer Applications"
+                }, 
+                {
+                    "code": "CSCI 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CSCI/201", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CSCI 202", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CSCI/202", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CSCI 260", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CSCI/260", 
+                    "name": "Management Information Systems"
+                }, 
+                {
+                    "code": "CSCI 267", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CSCI/267", 
+                    "name": "Computer Skills for Education"
+                }, 
+                {
+                    "code": "CSCI 286", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CSCI/286", 
+                    "name": "C++ Programming I"
+                }, 
+                {
+                    "code": "CSCI 304", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CSCI/304", 
+                    "name": "Networking & Security"
+                }, 
+                {
+                    "code": "CSCI 305", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CSCI/305", 
+                    "name": "Web Design"
+                }, 
+                {
+                    "code": "CSCI 335", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CSCI/335", 
+                    "name": "Cyber Crime Investigation I"
+                }, 
+                {
+                    "code": "CSCI 352", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CSCI/352", 
+                    "name": "Operating Systems Principles"
+                }, 
+                {
+                    "code": "CSCI 360", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CSCI/360", 
+                    "name": "Systems Analysis and Design"
+                }, 
+                {
+                    "code": "CSCI 381", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CSCI/381", 
+                    "name": "Database Management"
+                }, 
+                {
+                    "code": "CSCI 390", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CSCI/390", 
+                    "name": "Applications Project"
+                }, 
+                {
+                    "code": "CSCI 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CSCI/399", 
+                    "name": "ST&P: CSCI Research"
+                }, 
+                {
+                    "code": "CSCI 405", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CSCI/405", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CSCI 435", 
+                    "course_url": "http://www.chegg.com/courses/glenville/CSCI/435", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/CSCI"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ECON/201", 
+                    "name": "Principles of Microeconomics"
+                }, 
+                {
+                    "code": "ECON 202", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ECON/202", 
+                    "name": "Principles of Macroeconomics"
+                }, 
+                {
+                    "code": "ECON 420", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ECON/420", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/ECON"
+        }, 
+        {
+            "abbr": "EDUC", 
+            "courses": [
+                {
+                    "code": "EDUC 203", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/203", 
+                    "name": "Foundations of Education"
+                }, 
+                {
+                    "code": "EDUC 205", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/205", 
+                    "name": "Educational Psychology"
+                }, 
+                {
+                    "code": "EDUC 207", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/207", 
+                    "name": "Cul Div & Excep in Early Educ"
+                }, 
+                {
+                    "code": "EDUC 213", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/213", 
+                    "name": "Early Childhood Development"
+                }, 
+                {
+                    "code": "EDUC 218", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/218", 
+                    "name": "Intro to Early Education"
+                }, 
+                {
+                    "code": "EDUC 299", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/299", 
+                    "name": "ST&P: Tchr Candidate Assist"
+                }, 
+                {
+                    "code": "EDUC 309", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/309", 
+                    "name": "General Music Methods/Material"
+                }, 
+                {
+                    "code": "EDUC 310", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/310", 
+                    "name": "Class Mgmt & Tchg Strategies"
+                }, 
+                {
+                    "code": "EDUC 319", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/319", 
+                    "name": "Org & Adm of Erly Ed (Pre K-K)"
+                }, 
+                {
+                    "code": "EDUC 320", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/320", 
+                    "name": "Assessment of Young Children"
+                }, 
+                {
+                    "code": "EDUC 321", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/321", 
+                    "name": "Early Educ Curr Methods & Mat"
+                }, 
+                {
+                    "code": "EDUC 329", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/329", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDUC 341", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/341", 
+                    "name": "Tchg Busn Mdle/Adlt (5-Adult)"
+                }, 
+                {
+                    "code": "EDUC 343", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/343", 
+                    "name": "Tchg Math Mdle/Adlt (5-Adult)"
+                }, 
+                {
+                    "code": "EDUC 346", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/346", 
+                    "name": "Tchg Soc Stu Mdl/Ad (5-Adult)"
+                }, 
+                {
+                    "code": "EDUC 349", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/349", 
+                    "name": "Tchg Music Adlt Ed (9-Adult)"
+                }, 
+                {
+                    "code": "EDUC 351", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/351", 
+                    "name": "Methods of Teaching HLTH & PED"
+                }, 
+                {
+                    "code": "EDUC 397", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/397", 
+                    "name": "Work Experience"
+                }, 
+                {
+                    "code": "EDUC 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/399", 
+                    "name": "St&P: Tcap II"
+                }, 
+                {
+                    "code": "EDUC 411", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/411", 
+                    "name": "Curriculum/Assess: Elementary"
+                }, 
+                {
+                    "code": "EDUC 412", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/412", 
+                    "name": "Curr/Assess: Content (5-Adult)"
+                }, 
+                {
+                    "code": "EDUC 413", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/413", 
+                    "name": "Integrated Curr/Assess: Middle"
+                }, 
+                {
+                    "code": "EDUC 450", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/450", 
+                    "name": "Stu Intern - (PreK-K)"
+                }, 
+                {
+                    "code": "EDUC 451", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/451", 
+                    "name": "Stu Intern - Elementary (K-4)"
+                }, 
+                {
+                    "code": "EDUC 452", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/452", 
+                    "name": "Stu Intern - Elementary (5-6)"
+                }, 
+                {
+                    "code": "EDUC 453", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/453", 
+                    "name": "Stu Intern - Content (K-4)"
+                }, 
+                {
+                    "code": "EDUC 454", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/454", 
+                    "name": "Stu Intern - Content (5-9)"
+                }, 
+                {
+                    "code": "EDUC 455", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/455", 
+                    "name": "Stu Intern - Content (9-Adult)"
+                }, 
+                {
+                    "code": "EDUC 462", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/462", 
+                    "name": "Stu Intern - MC SPED (5-9)"
+                }, 
+                {
+                    "code": "EDUC 463", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/463", 
+                    "name": "Stu Intern - MC SPED (9-Adult)"
+                }, 
+                {
+                    "code": "EDUC 465", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/465", 
+                    "name": "Stu Intern - MC SPED (K-6)"
+                }, 
+                {
+                    "code": "EDUC 493", 
+                    "course_url": "http://www.chegg.com/courses/glenville/EDUC/493", 
+                    "name": "Capstone Assessment"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/EDUC"
+        }, 
+        {
+            "abbr": "ENGF", 
+            "courses": [
+                {
+                    "code": "ENGF 001", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGF/001", 
+                    "name": "Developmental English"
+                }, 
+                {
+                    "code": "ENGF 1", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGF/1", 
+                    "name": "Developmental English"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/ENGF"
+        }, 
+        {
+            "abbr": "ENGL", 
+            "courses": [
+                {
+                    "code": "ENGL 100", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/100", 
+                    "name": "The First-Year Experience"
+                }, 
+                {
+                    "code": "ENGL 101", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/101", 
+                    "name": "Critical Reading and Writing I"
+                }, 
+                {
+                    "code": "ENGL 102", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/102", 
+                    "name": "CRW II: The American Mosaic"
+                }, 
+                {
+                    "code": "ENGL 197", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/197", 
+                    "name": "Work Experience"
+                }, 
+                {
+                    "code": "ENGL 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/199", 
+                    "name": "ST&P:Critical Rdg & Wrtg I Lab"
+                }, 
+                {
+                    "code": "ENGL 203", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/203", 
+                    "name": "Survey of English Lit I"
+                }, 
+                {
+                    "code": "ENGL 204", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/204", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 205", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/205", 
+                    "name": "Survey of American Lit I"
+                }, 
+                {
+                    "code": "ENGL 206", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/206", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 293", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/293", 
+                    "name": "Intro to Lit & Criticism"
+                }, 
+                {
+                    "code": "ENGL 299", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/299", 
+                    "name": "ST&P: Public School Mentoring"
+                }, 
+                {
+                    "code": "ENGL 307", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/307", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 320", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/320", 
+                    "name": "Reading Children's Literature"
+                }, 
+                {
+                    "code": "ENGL 322", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/322", 
+                    "name": "Adolescent Literature"
+                }, 
+                {
+                    "code": "ENGL 331", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/331", 
+                    "name": "The American Novel"
+                }, 
+                {
+                    "code": "ENGL 332", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/332", 
+                    "name": "The British Novel to 1900"
+                }, 
+                {
+                    "code": "ENGL 335", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/335", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 392", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/392", 
+                    "name": "Advanced Study of Engl Grammar"
+                }, 
+                {
+                    "code": "ENGL 395", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/395", 
+                    "name": "The English Language"
+                }, 
+                {
+                    "code": "ENGL 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/399", 
+                    "name": "ST&P: Senior Experience"
+                }, 
+                {
+                    "code": "ENGL 401", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/401", 
+                    "name": "Shakespeare"
+                }, 
+                {
+                    "code": "ENGL 412", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/412", 
+                    "name": "Creative Writing"
+                }, 
+                {
+                    "code": "ENGL 420", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/420", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 493", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENGL/493", 
+                    "name": "Seminar: Steinbeck"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/ENGL"
+        }, 
+        {
+            "abbr": "ENVR", 
+            "courses": [
+                {
+                    "code": "ENVR 101", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENVR/101", 
+                    "name": "Environmental Science (Lab)"
+                }, 
+                {
+                    "code": "ENVR 193", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENVR/193", 
+                    "name": "Solid Waste Management (Lab)"
+                }, 
+                {
+                    "code": "ENVR 197", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENVR/197", 
+                    "name": "Work Experience"
+                }, 
+                {
+                    "code": "ENVR 255", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENVR/255", 
+                    "name": "Health and Safety"
+                }, 
+                {
+                    "code": "ENVR 351", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENVR/351", 
+                    "name": "Soils/Land Reclamation (Lab)"
+                }, 
+                {
+                    "code": "ENVR 393", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENVR/393", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENVR 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/ENVR/399", 
+                    "name": "ST&P: Survey Alantis Altissima"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/ENVR"
+        }, 
+        {
+            "abbr": "FINC", 
+            "courses": [
+                {
+                    "code": "FINC 321", 
+                    "course_url": "http://www.chegg.com/courses/glenville/FINC/321", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FINC 421", 
+                    "course_url": "http://www.chegg.com/courses/glenville/FINC/421", 
+                    "name": "Risk Management and Insurance"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/FINC"
+        }, 
+        {
+            "abbr": "FRST", 
+            "courses": [
+                {
+                    "code": "FRST 103", 
+                    "course_url": "http://www.chegg.com/courses/glenville/FRST/103", 
+                    "name": "Forest Measurements I (Lab)"
+                }, 
+                {
+                    "code": "FRST 107", 
+                    "course_url": "http://www.chegg.com/courses/glenville/FRST/107", 
+                    "name": "Tree & Wood Identification"
+                }, 
+                {
+                    "code": "FRST 193", 
+                    "course_url": "http://www.chegg.com/courses/glenville/FRST/193", 
+                    "name": ""
+                }, 
+                {
+                    "code": "FRST 197", 
+                    "course_url": "http://www.chegg.com/courses/glenville/FRST/197", 
+                    "name": "Work Experience"
+                }, 
+                {
+                    "code": "FRST 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/FRST/199", 
+                    "name": "ST&P: Effect Invasive Species"
+                }, 
+                {
+                    "code": "FRST 204", 
+                    "course_url": "http://www.chegg.com/courses/glenville/FRST/204", 
+                    "name": "Photogram/Photointerpret (Lab)"
+                }, 
+                {
+                    "code": "FRST 209", 
+                    "course_url": "http://www.chegg.com/courses/glenville/FRST/209", 
+                    "name": "Silviculture/Veget Mgmt (Lab)"
+                }, 
+                {
+                    "code": "FRST 212", 
+                    "course_url": "http://www.chegg.com/courses/glenville/FRST/212", 
+                    "name": "Timber Harvesting Techniques"
+                }, 
+                {
+                    "code": "FRST 214", 
+                    "course_url": "http://www.chegg.com/courses/glenville/FRST/214", 
+                    "name": "Fire Protection (Lab)"
+                }, 
+                {
+                    "code": "FRST 216", 
+                    "course_url": "http://www.chegg.com/courses/glenville/FRST/216", 
+                    "name": "Wood Identification"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/FRST"
+        }, 
+        {
+            "abbr": "GEOG", 
+            "courses": [
+                {
+                    "code": "GEOG 203", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GEOG/203", 
+                    "name": "World Regional Geography"
+                }, 
+                {
+                    "code": "GEOG 204", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GEOG/204", 
+                    "name": "Physical Geography"
+                }, 
+                {
+                    "code": "GEOG 304", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GEOG/304", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/GEOG"
+        }, 
+        {
+            "abbr": "GNED", 
+            "courses": [
+                {
+                    "code": "GNED 102", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/102", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "GNED 103", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/103", 
+                    "name": "Plane Trigonometry"
+                }, 
+                {
+                    "code": "GNED 105", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/105", 
+                    "name": "Quantitative Reasoning"
+                }, 
+                {
+                    "code": "GNED 110", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/110", 
+                    "name": "The Nature of Math"
+                }, 
+                {
+                    "code": "GNED 120", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/120", 
+                    "name": "Precalculus"
+                }, 
+                {
+                    "code": "GNED 202", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/202", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "GNED 207", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/207", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "GNED 230", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/230", 
+                    "name": "Math-Euclidean Geometry"
+                }, 
+                {
+                    "code": "GNED 256", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/256", 
+                    "name": "Probability & Statistics I"
+                }, 
+                {
+                    "code": "GNED 303", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/303", 
+                    "name": "Modern Algebra"
+                }, 
+                {
+                    "code": "GNED 308", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/308", 
+                    "name": "Calculus III"
+                }, 
+                {
+                    "code": "GNED 310", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/310", 
+                    "name": "College Geometry"
+                }, 
+                {
+                    "code": "GNED 315", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/315", 
+                    "name": "Linear Algebra"
+                }, 
+                {
+                    "code": "GNED 321", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/321", 
+                    "name": "History of Mathematics"
+                }, 
+                {
+                    "code": "GNED 327", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/327", 
+                    "name": "Math Methods for Elem/Mdle Tch"
+                }, 
+                {
+                    "code": "GNED 330", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/330", 
+                    "name": "Discrete Mathematics"
+                }, 
+                {
+                    "code": "GNED 356", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/356", 
+                    "name": "Probability and Statistics II"
+                }, 
+                {
+                    "code": "GNED 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/399", 
+                    "name": "ST&P: Linear Algebra"
+                }, 
+                {
+                    "code": "GNED 499", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GNED/499", 
+                    "name": "IRP: Research"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/GNED"
+        }, 
+        {
+            "abbr": "GSC", 
+            "courses": [
+                {
+                    "code": "GSC 100", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GSC/100", 
+                    "name": "The First-Year Experience"
+                }, 
+                {
+                    "code": "GSC 110", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GSC/110", 
+                    "name": "Public School Mentoring"
+                }, 
+                {
+                    "code": "GSC 111", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GSC/111", 
+                    "name": "Public School Mentoring"
+                }, 
+                {
+                    "code": "GSC 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GSC/199", 
+                    "name": "ST&P: Teaching Assistant"
+                }, 
+                {
+                    "code": "GSC 210", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GSC/210", 
+                    "name": "Public School Mentoring"
+                }, 
+                {
+                    "code": "GSC 211", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GSC/211", 
+                    "name": "Public School Mentoring"
+                }, 
+                {
+                    "code": "GSC 310", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GSC/310", 
+                    "name": "Public School Mentoring"
+                }, 
+                {
+                    "code": "GSC 311", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GSC/311", 
+                    "name": "Public School Mentoring"
+                }, 
+                {
+                    "code": "GSC 410", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GSC/410", 
+                    "name": "Public School Mentoring"
+                }, 
+                {
+                    "code": "GSC 411", 
+                    "course_url": "http://www.chegg.com/courses/glenville/GSC/411", 
+                    "name": "Public School Mentoring"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/GSC"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HIST/201", 
+                    "name": "History of World Cultures I"
+                }, 
+                {
+                    "code": "HIST 202", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HIST/202", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIST 207", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HIST/207", 
+                    "name": "United States Hist to 1877"
+                }, 
+                {
+                    "code": "HIST 208", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HIST/208", 
+                    "name": "United States Hist Since 1877"
+                }, 
+                {
+                    "code": "HIST 293", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HIST/293", 
+                    "name": "Fields/Careers in History/POSC"
+                }, 
+                {
+                    "code": "HIST 303", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HIST/303", 
+                    "name": "WV & Appalachian Region"
+                }, 
+                {
+                    "code": "HIST 320", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HIST/320", 
+                    "name": "Europe Since 1815"
+                }, 
+                {
+                    "code": "HIST 335", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HIST/335", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIST 370", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HIST/370", 
+                    "name": "African American History"
+                }, 
+                {
+                    "code": "HIST 380", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HIST/380", 
+                    "name": "History of Modern China"
+                }, 
+                {
+                    "code": "HIST 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HIST/399", 
+                    "name": "ST&P: Military History"
+                }, 
+                {
+                    "code": "HIST 399E", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HIST/399E", 
+                    "name": "ST&P: World War II"
+                }, 
+                {
+                    "code": "HIST 399N", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HIST/399N", 
+                    "name": "ST&P: World History Since 1945"
+                }, 
+                {
+                    "code": "HIST 432", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HIST/432", 
+                    "name": "The Civil War & Reconstruction"
+                }, 
+                {
+                    "code": "HIST 493", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HIST/493", 
+                    "name": "Senior Project"
+                }, 
+                {
+                    "code": "HIST 497", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HIST/497", 
+                    "name": "Internship II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/HIST"
+        }, 
+        {
+            "abbr": "HLTH", 
+            "courses": [
+                {
+                    "code": "HLTH 232", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HLTH/232", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HLTH 321", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HLTH/321", 
+                    "name": "Drug Use/Abuse/Addiction"
+                }, 
+                {
+                    "code": "HLTH 332", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HLTH/332", 
+                    "name": "Org & Adm School Hlth Programs"
+                }, 
+                {
+                    "code": "HLTH 341", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HLTH/341", 
+                    "name": "Community/Environmental Health"
+                }, 
+                {
+                    "code": "HLTH 411", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HLTH/411", 
+                    "name": "Health Education Seminar"
+                }, 
+                {
+                    "code": "HLTH 421", 
+                    "course_url": "http://www.chegg.com/courses/glenville/HLTH/421", 
+                    "name": "Health Educ Field Experience"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/HLTH"
+        }, 
+        {
+            "abbr": "JOUR", 
+            "courses": [
+                {
+                    "code": "JOUR 197", 
+                    "course_url": "http://www.chegg.com/courses/glenville/JOUR/197", 
+                    "name": "Work Experience"
+                }, 
+                {
+                    "code": "JOUR 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/JOUR/199", 
+                    "name": "ST&P: College Newspaper"
+                }, 
+                {
+                    "code": "JOUR 205", 
+                    "course_url": "http://www.chegg.com/courses/glenville/JOUR/205", 
+                    "name": "Writing for College Newspaper"
+                }, 
+                {
+                    "code": "JOUR 321", 
+                    "course_url": "http://www.chegg.com/courses/glenville/JOUR/321", 
+                    "name": "Newswriting & Editing"
+                }, 
+                {
+                    "code": "JOUR 397", 
+                    "course_url": "http://www.chegg.com/courses/glenville/JOUR/397", 
+                    "name": "Work Experience: Cllg Newsppr"
+                }, 
+                {
+                    "code": "JOUR 415", 
+                    "course_url": "http://www.chegg.com/courses/glenville/JOUR/415", 
+                    "name": "Literary NonFiction & Features"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/JOUR"
+        }, 
+        {
+            "abbr": "LAMN", 
+            "courses": [
+                {
+                    "code": "LAMN 193", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAMN/193", 
+                    "name": "Principles Landman Technology"
+                }, 
+                {
+                    "code": "LAMN 197", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAMN/197", 
+                    "name": "Work Experience"
+                }, 
+                {
+                    "code": "LAMN 293", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAMN/293", 
+                    "name": "Land Titles & Abstracting"
+                }, 
+                {
+                    "code": "LAMN 297", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAMN/297", 
+                    "name": "Internship I"
+                }, 
+                {
+                    "code": "LAMN 299", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAMN/299", 
+                    "name": "ST&P: Ethics"
+                }, 
+                {
+                    "code": "LAMN 310", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAMN/310", 
+                    "name": "Energy Resource Law"
+                }, 
+                {
+                    "code": "LAMN 397", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAMN/397", 
+                    "name": "Work Experience"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/LAMN"
+        }, 
+        {
+            "abbr": "LAND", 
+            "courses": [
+                {
+                    "code": "LAND 121", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAND/121", 
+                    "name": "Intro to Land Surveying (Lab)"
+                }, 
+                {
+                    "code": "LAND 123", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAND/123", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LAND 124", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAND/124", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LAND 197", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAND/197", 
+                    "name": "Work Experience"
+                }, 
+                {
+                    "code": "LAND 230", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAND/230", 
+                    "name": "Sur Measure & Comp II (Lab)"
+                }, 
+                {
+                    "code": "LAND 231", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAND/231", 
+                    "name": "Retracement Surveys"
+                }, 
+                {
+                    "code": "LAND 232", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAND/232", 
+                    "name": "Cartographic Surveying (Lab)"
+                }, 
+                {
+                    "code": "LAND 240", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAND/240", 
+                    "name": ""
+                }, 
+                {
+                    "code": "LAND 244", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAND/244", 
+                    "name": "Remote Sensing Aerial Photo"
+                }, 
+                {
+                    "code": "LAND 299", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAND/299", 
+                    "name": "ST&P: LS Principles & Practice"
+                }, 
+                {
+                    "code": "LAND 335", 
+                    "course_url": "http://www.chegg.com/courses/glenville/LAND/335", 
+                    "name": "Hydro/Drain/Subdivision (Lab)"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/LAND"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 101", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/101", 
+                    "name": "Leadership & Development"
+                }, 
+                {
+                    "code": "MATH 102", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/102", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MATH 103", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/103", 
+                    "name": "Practicum Military Trng Lab"
+                }, 
+                {
+                    "code": "MATH 104", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/104", 
+                    "name": "Practicum Military Trng Lab"
+                }, 
+                {
+                    "code": "MATH 105", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/105", 
+                    "name": "Quantitative Reasoning"
+                }, 
+                {
+                    "code": "MATH 110", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/110", 
+                    "name": "The Nature of Math"
+                }, 
+                {
+                    "code": "MATH 115", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/115", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MATH 120", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/120", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 150", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/150", 
+                    "name": "Basic Military Conditioning"
+                }, 
+                {
+                    "code": "MATH 151", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/151", 
+                    "name": "Basic Military Conditioning II"
+                }, 
+                {
+                    "code": "MATH 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/199", 
+                    "name": "ST&P: College Algebra Lab"
+                }, 
+                {
+                    "code": "MATH 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/201", 
+                    "name": "Foundations of Leadership"
+                }, 
+                {
+                    "code": "MATH 202", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/202", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MATH 203", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/203", 
+                    "name": "Practicum Military Trng Lab"
+                }, 
+                {
+                    "code": "MATH 204", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/204", 
+                    "name": "Practicum Military Trng Lab"
+                }, 
+                {
+                    "code": "MATH 207", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/207", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 230", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/230", 
+                    "name": "Euclidean Geometry"
+                }, 
+                {
+                    "code": "MATH 250", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/250", 
+                    "name": "Basic Military Conditioning"
+                }, 
+                {
+                    "code": "MATH 251", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/251", 
+                    "name": "Military Conditioning/Fitness"
+                }, 
+                {
+                    "code": "MATH 256", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/256", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 301", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/301", 
+                    "name": "Adaptive Team Leadership"
+                }, 
+                {
+                    "code": "MATH 303", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/303", 
+                    "name": "Adv Practicum Military Tng Lab"
+                }, 
+                {
+                    "code": "MATH 308", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/308", 
+                    "name": "Calculus III"
+                }, 
+                {
+                    "code": "MATH 310", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/310", 
+                    "name": "College Geometry"
+                }, 
+                {
+                    "code": "MATH 315", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/315", 
+                    "name": "Linear Algebra"
+                }, 
+                {
+                    "code": "MATH 321", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/321", 
+                    "name": "History of Mathematics"
+                }, 
+                {
+                    "code": "MATH 327", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/327", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 330", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/330", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MATH 350", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/350", 
+                    "name": "Advd Military Conditioning"
+                }, 
+                {
+                    "code": "MATH 356", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MATH/356", 
+                    "name": "Probability and Statistics II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/MATH"
+        }, 
+        {
+            "abbr": "MGMT", 
+            "courses": [
+                {
+                    "code": "MGMT 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MGMT/199", 
+                    "name": "ST&P: Business Applications"
+                }, 
+                {
+                    "code": "MGMT 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MGMT/201", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "MGMT 202", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MGMT/202", 
+                    "name": "Small Business Management"
+                }, 
+                {
+                    "code": "MGMT 383", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MGMT/383", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MGMT 384", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MGMT/384", 
+                    "name": "Human Resource Management"
+                }, 
+                {
+                    "code": "MGMT 484", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MGMT/484", 
+                    "name": "Organizational Behavior"
+                }, 
+                {
+                    "code": "MGMT 487", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MGMT/487", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MGMT 497", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MGMT/497", 
+                    "name": "Internship II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/MGMT"
+        }, 
+        {
+            "abbr": "MRKT", 
+            "courses": [
+                {
+                    "code": "MRKT 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MRKT/201", 
+                    "name": "Principles of Marketing"
+                }, 
+                {
+                    "code": "MRKT 202", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MRKT/202", 
+                    "name": "Principles of Retailing"
+                }, 
+                {
+                    "code": "MRKT 203", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MRKT/203", 
+                    "name": "Introduction to Graphic Design"
+                }, 
+                {
+                    "code": "MRKT 377", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MRKT/377", 
+                    "name": "Sales Management & Technology"
+                }, 
+                {
+                    "code": "MRKT 379", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MRKT/379", 
+                    "name": "Advertising & Sales Promotion"
+                }, 
+                {
+                    "code": "MRKT 385", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MRKT/385", 
+                    "name": "Global Marketing"
+                }, 
+                {
+                    "code": "MRKT 390", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MRKT/390", 
+                    "name": "Consumer Behavior"
+                }, 
+                {
+                    "code": "MRKT 395", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MRKT/395", 
+                    "name": "Marketing Management"
+                }, 
+                {
+                    "code": "MRKT 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MRKT/399", 
+                    "name": "ST&P:Publication Design"
+                }, 
+                {
+                    "code": "MRKT 478", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MRKT/478", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/MRKT"
+        }, 
+        {
+            "abbr": "MSL", 
+            "courses": [
+                {
+                    "code": "MSL 100", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/100", 
+                    "name": "Introduction to Nursing"
+                }, 
+                {
+                    "code": "MSL 101", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/101", 
+                    "name": "Leadership & Development"
+                }, 
+                {
+                    "code": "MSL 102", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/102", 
+                    "name": "Intro to Tactical Leadership"
+                }, 
+                {
+                    "code": "MSL 103", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/103", 
+                    "name": "Practicum Military Trng Lab"
+                }, 
+                {
+                    "code": "MSL 110", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/110", 
+                    "name": "Health and Caring Profession"
+                }, 
+                {
+                    "code": "MSL 150", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/150", 
+                    "name": "Basic Military Conditioning"
+                }, 
+                {
+                    "code": "MSL 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/199", 
+                    "name": "ST&P: Introduction to Nursing"
+                }, 
+                {
+                    "code": "MSL 200", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/200", 
+                    "name": "Health Assssmnt & Communctn"
+                }, 
+                {
+                    "code": "MSL 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/201", 
+                    "name": "Foundations of Leadership"
+                }, 
+                {
+                    "code": "MSL 203", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/203", 
+                    "name": "Practicum Military Trng Lab"
+                }, 
+                {
+                    "code": "MSL 221", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/221", 
+                    "name": "Human Responses I"
+                }, 
+                {
+                    "code": "MSL 225", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/225", 
+                    "name": "Nursing Interventions I"
+                }, 
+                {
+                    "code": "MSL 241", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/241", 
+                    "name": "Human Responses II"
+                }, 
+                {
+                    "code": "MSL 245", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/245", 
+                    "name": "Nursing Interventions II"
+                }, 
+                {
+                    "code": "MSL 250", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/250", 
+                    "name": "Basic Military Cond III"
+                }, 
+                {
+                    "code": "MSL 293B", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/293B", 
+                    "name": "Health Assment & Commnctn(Lab)"
+                }, 
+                {
+                    "code": "MSL 301", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/301", 
+                    "name": "Adaptive Team Leadership"
+                }, 
+                {
+                    "code": "MSL 303", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/303", 
+                    "name": "Adv Practicum Military Tng Lab"
+                }, 
+                {
+                    "code": "MSL 350", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/350", 
+                    "name": "Advd Military Conditioning I"
+                }, 
+                {
+                    "code": "MSL 361", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/361", 
+                    "name": "Health Assessment"
+                }, 
+                {
+                    "code": "MSL 401", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/401", 
+                    "name": "Adaptive Leadership"
+                }, 
+                {
+                    "code": "MSL 403", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/403", 
+                    "name": "Advd Course Leadership Lab III"
+                }, 
+                {
+                    "code": "MSL 450", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MSL/450", 
+                    "name": "Advd Military Fitness/Cond III"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/MSL"
+        }, 
+        {
+            "abbr": "MTHF", 
+            "courses": [
+                {
+                    "code": "MTHF 003", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MTHF/003", 
+                    "name": "Dev Math-Elementary Algebra"
+                }, 
+                {
+                    "code": "MTHF 3", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MTHF/3", 
+                    "name": "Dev Math-Elementary Algebra"
+                }, 
+                {
+                    "code": "MTHF 004", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MTHF/004", 
+                    "name": "Dev Math-Intermediate Algebra"
+                }, 
+                {
+                    "code": "MTHF 4", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MTHF/4", 
+                    "name": "Dev Math-Intermediate Algebra"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/MTHF"
+        }, 
+        {
+            "abbr": "MUSC", 
+            "courses": [
+                {
+                    "code": "MUSC 109", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/109", 
+                    "name": "Recording & Engineering I"
+                }, 
+                {
+                    "code": "MUSC 110", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/110", 
+                    "name": "Bluegrass Band Organization"
+                }, 
+                {
+                    "code": "MUSC 111", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/111", 
+                    "name": "Marching Band"
+                }, 
+                {
+                    "code": "MUSC 112", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/112", 
+                    "name": "Concert Band"
+                }, 
+                {
+                    "code": "MUSC 113", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/113", 
+                    "name": "Jazz Band"
+                }, 
+                {
+                    "code": "MUSC 114", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/114", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUSC 116", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/116", 
+                    "name": "Woodwind/Saxophone/Clarinet"
+                }, 
+                {
+                    "code": "MUSC 119", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/119", 
+                    "name": "Brass/Tuba/Euphonium/Trombone"
+                }, 
+                {
+                    "code": "MUSC 120", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/120", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUSC 121", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/121", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUSC 124", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/124", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUSC 125", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/125", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUSC 126", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/126", 
+                    "name": "Applied Fiddle"
+                }, 
+                {
+                    "code": "MUSC 134", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/134", 
+                    "name": "Applied Clarinet"
+                }, 
+                {
+                    "code": "MUSC 135", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/135", 
+                    "name": "Applied Clarinet"
+                }, 
+                {
+                    "code": "MUSC 136", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/136", 
+                    "name": "Applied Flute"
+                }, 
+                {
+                    "code": "MUSC 137", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/137", 
+                    "name": "Applied Flute"
+                }, 
+                {
+                    "code": "MUSC 138", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/138", 
+                    "name": "Applied Oboe"
+                }, 
+                {
+                    "code": "MUSC 139", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/139", 
+                    "name": "Applied Oboe"
+                }, 
+                {
+                    "code": "MUSC 140", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/140", 
+                    "name": "Applied Bassoon"
+                }, 
+                {
+                    "code": "MUSC 142", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/142", 
+                    "name": "Applied Trumpet"
+                }, 
+                {
+                    "code": "MUSC 143", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/143", 
+                    "name": "Applied Trumpet"
+                }, 
+                {
+                    "code": "MUSC 144", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/144", 
+                    "name": "Applied Trombone"
+                }, 
+                {
+                    "code": "MUSC 145", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/145", 
+                    "name": "Applied Trombone"
+                }, 
+                {
+                    "code": "MUSC 146", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/146", 
+                    "name": "Applied Euphonium"
+                }, 
+                {
+                    "code": "MUSC 147", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/147", 
+                    "name": "Applied Euphonium"
+                }, 
+                {
+                    "code": "MUSC 148", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/148", 
+                    "name": "Applied French Horn"
+                }, 
+                {
+                    "code": "MUSC 149", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/149", 
+                    "name": "Applied French Horn"
+                }, 
+                {
+                    "code": "MUSC 150", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/150", 
+                    "name": "Applied Tuba"
+                }, 
+                {
+                    "code": "MUSC 151", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/151", 
+                    "name": "Applied Tuba"
+                }, 
+                {
+                    "code": "MUSC 152", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/152", 
+                    "name": "Applied Percussion"
+                }, 
+                {
+                    "code": "MUSC 153", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/153", 
+                    "name": "Applied Percussion"
+                }, 
+                {
+                    "code": "MUSC 154", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/154", 
+                    "name": "Applied Saxophone"
+                }, 
+                {
+                    "code": "MUSC 155", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/155", 
+                    "name": "Applied Saxophone"
+                }, 
+                {
+                    "code": "MUSC 157", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/157", 
+                    "name": "Percussion Ensemble"
+                }, 
+                {
+                    "code": "MUSC 158", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/158", 
+                    "name": "Applied Bluegrass Guitar"
+                }, 
+                {
+                    "code": "MUSC 159", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/159", 
+                    "name": "Applied Bluegrass Guitar"
+                }, 
+                {
+                    "code": "MUSC 160", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/160", 
+                    "name": "Applied Bluegrass Banjo I"
+                }, 
+                {
+                    "code": "MUSC 161", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/161", 
+                    "name": "Applied Bluegrass Banjo II"
+                }, 
+                {
+                    "code": "MUSC 162", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/162", 
+                    "name": "Applied Bluegrass Mandolin"
+                }, 
+                {
+                    "code": "MUSC 163", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/163", 
+                    "name": "Applied Bluegrass Mandolin"
+                }, 
+                {
+                    "code": "MUSC 164", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/164", 
+                    "name": "Applied Bluegrass Bass"
+                }, 
+                {
+                    "code": "MUSC 165", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/165", 
+                    "name": "Applied Bass"
+                }, 
+                {
+                    "code": "MUSC 166", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/166", 
+                    "name": "Applied Bluegrass Fiddle"
+                }, 
+                {
+                    "code": "MUSC 167", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/167", 
+                    "name": "Chamber Singers"
+                }, 
+                {
+                    "code": "MUSC 168", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/168", 
+                    "name": "Concert Choir"
+                }, 
+                {
+                    "code": "MUSC 170", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/170", 
+                    "name": "Theory I (Lab)"
+                }, 
+                {
+                    "code": "MUSC 171", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/171", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUSC 172", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/172", 
+                    "name": "Bluegrass Band Ensemble"
+                }, 
+                {
+                    "code": "MUSC 176", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/176", 
+                    "name": "Applied Bluegrass Fiddle"
+                }, 
+                {
+                    "code": "MUSC 178", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/178", 
+                    "name": "Applied Bluegrass Dobro I"
+                }, 
+                {
+                    "code": "MUSC 179", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/179", 
+                    "name": "Applied Bluegrass Dobro II"
+                }, 
+                {
+                    "code": "MUSC 180", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/180", 
+                    "name": "Class Instruction in Piano I"
+                }, 
+                {
+                    "code": "MUSC 181", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/181", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUSC 198", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/198", 
+                    "name": "Notation Software"
+                }, 
+                {
+                    "code": "MUSC 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/199", 
+                    "name": "ST&P: Composition/Arranging I"
+                }, 
+                {
+                    "code": "MUSC 200", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/200", 
+                    "name": "Survey of Music"
+                }, 
+                {
+                    "code": "MUSC 209", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/209", 
+                    "name": "Recording and Engineering II"
+                }, 
+                {
+                    "code": "MUSC 215", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/215", 
+                    "name": "Class Instruction in Strings"
+                }, 
+                {
+                    "code": "MUSC 216", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/216", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUSC 220", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/220", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUSC 221", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/221", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUSC 224", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/224", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUSC 225", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/225", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUSC 234", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/234", 
+                    "name": "Applied Clarinet"
+                }, 
+                {
+                    "code": "MUSC 235", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/235", 
+                    "name": "Applied Clarinet"
+                }, 
+                {
+                    "code": "MUSC 236", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/236", 
+                    "name": "Applied Flute"
+                }, 
+                {
+                    "code": "MUSC 237", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/237", 
+                    "name": "Applied Flute"
+                }, 
+                {
+                    "code": "MUSC 238", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/238", 
+                    "name": "Applied Oboe"
+                }, 
+                {
+                    "code": "MUSC 239", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/239", 
+                    "name": "Applied Oboe"
+                }, 
+                {
+                    "code": "MUSC 242", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/242", 
+                    "name": "Applied Trumpet"
+                }, 
+                {
+                    "code": "MUSC 243", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/243", 
+                    "name": "Applied Trumpet"
+                }, 
+                {
+                    "code": "MUSC 244", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/244", 
+                    "name": "Applied Trombone"
+                }, 
+                {
+                    "code": "MUSC 245", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/245", 
+                    "name": "Applied Trombone"
+                }, 
+                {
+                    "code": "MUSC 246", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/246", 
+                    "name": "Applied Euphonium"
+                }, 
+                {
+                    "code": "MUSC 247", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/247", 
+                    "name": "Applied Euphonium"
+                }, 
+                {
+                    "code": "MUSC 248", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/248", 
+                    "name": "Applied French Horn"
+                }, 
+                {
+                    "code": "MUSC 249", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/249", 
+                    "name": "Applied French Horn"
+                }, 
+                {
+                    "code": "MUSC 250", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/250", 
+                    "name": "Applied Tuba"
+                }, 
+                {
+                    "code": "MUSC 251", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/251", 
+                    "name": "Applied Tuba"
+                }, 
+                {
+                    "code": "MUSC 252", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/252", 
+                    "name": "Applied Percussion"
+                }, 
+                {
+                    "code": "MUSC 253", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/253", 
+                    "name": "Applied Percussion"
+                }, 
+                {
+                    "code": "MUSC 254", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/254", 
+                    "name": "Applied Saxophone"
+                }, 
+                {
+                    "code": "MUSC 255", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/255", 
+                    "name": "Applied Saxophone"
+                }, 
+                {
+                    "code": "MUSC 258", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/258", 
+                    "name": "Applied Bluegrass Guitar"
+                }, 
+                {
+                    "code": "MUSC 259", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/259", 
+                    "name": "Applied Bluegrass Guitar"
+                }, 
+                {
+                    "code": "MUSC 260", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/260", 
+                    "name": "Applied Bluegrass Banjo III"
+                }, 
+                {
+                    "code": "MUSC 261", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/261", 
+                    "name": "Applied Bluegrass Banjo IV"
+                }, 
+                {
+                    "code": "MUSC 262", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/262", 
+                    "name": "Applied Bluegrass Mandolin"
+                }, 
+                {
+                    "code": "MUSC 263", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/263", 
+                    "name": "Applied Bluegrass Mandolin"
+                }, 
+                {
+                    "code": "MUSC 264", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/264", 
+                    "name": "Applied Bass"
+                }, 
+                {
+                    "code": "MUSC 265", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/265", 
+                    "name": "Applied Bluegrass Bass"
+                }, 
+                {
+                    "code": "MUSC 266", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/266", 
+                    "name": "Applied Fiddle"
+                }, 
+                {
+                    "code": "MUSC 267", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/267", 
+                    "name": "Applied Bluegrass Fiddle"
+                }, 
+                {
+                    "code": "MUSC 270", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/270", 
+                    "name": "Theory III (Lab)"
+                }, 
+                {
+                    "code": "MUSC 271", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/271", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUSC 280", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/280", 
+                    "name": "Class Instruction in Piano III"
+                }, 
+                {
+                    "code": "MUSC 281", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/281", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUSC 293", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/293", 
+                    "name": "Fourth Applied Jury"
+                }, 
+                {
+                    "code": "MUSC 298", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/298", 
+                    "name": "Orchestration Software"
+                }, 
+                {
+                    "code": "MUSC 299", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/299", 
+                    "name": "ST&P: Applied Percussion"
+                }, 
+                {
+                    "code": "MUSC 301", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/301", 
+                    "name": "Music Hist & Literature I"
+                }, 
+                {
+                    "code": "MUSC 302", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/302", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUSC 311", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/311", 
+                    "name": "Marching Band"
+                }, 
+                {
+                    "code": "MUSC 312", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/312", 
+                    "name": "Concert Band"
+                }, 
+                {
+                    "code": "MUSC 313", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/313", 
+                    "name": "Jazz Band"
+                }, 
+                {
+                    "code": "MUSC 316", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/316", 
+                    "name": "Woodwind/Saxophone/Clarinet"
+                }, 
+                {
+                    "code": "MUSC 317", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/317", 
+                    "name": "Class Instruction Percussion"
+                }, 
+                {
+                    "code": "MUSC 319", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/319", 
+                    "name": "Brass/Tuba/Euphonium/Trombone"
+                }, 
+                {
+                    "code": "MUSC 320", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/320", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUSC 321", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/321", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUSC 324", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/324", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUSC 325", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/325", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUSC 334", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/334", 
+                    "name": "Applied Clarinet"
+                }, 
+                {
+                    "code": "MUSC 335", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/335", 
+                    "name": "Applied Clarinet"
+                }, 
+                {
+                    "code": "MUSC 336", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/336", 
+                    "name": "Applied Flute"
+                }, 
+                {
+                    "code": "MUSC 337", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/337", 
+                    "name": "Applied Flute"
+                }, 
+                {
+                    "code": "MUSC 338", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/338", 
+                    "name": "Applied Oboe"
+                }, 
+                {
+                    "code": "MUSC 339", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/339", 
+                    "name": "Applied Oboe"
+                }, 
+                {
+                    "code": "MUSC 342", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/342", 
+                    "name": "Applied Trumpet"
+                }, 
+                {
+                    "code": "MUSC 343", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/343", 
+                    "name": "Applied Trumpet"
+                }, 
+                {
+                    "code": "MUSC 344", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/344", 
+                    "name": "Applied Trombone"
+                }, 
+                {
+                    "code": "MUSC 345", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/345", 
+                    "name": "Applied Trombone"
+                }, 
+                {
+                    "code": "MUSC 346", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/346", 
+                    "name": "Applied Euphonium"
+                }, 
+                {
+                    "code": "MUSC 347", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/347", 
+                    "name": "Applied Euphonium"
+                }, 
+                {
+                    "code": "MUSC 348", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/348", 
+                    "name": "Applied French Horn"
+                }, 
+                {
+                    "code": "MUSC 349", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/349", 
+                    "name": "Applied French Horn"
+                }, 
+                {
+                    "code": "MUSC 350", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/350", 
+                    "name": "Applied Tuba"
+                }, 
+                {
+                    "code": "MUSC 351", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/351", 
+                    "name": "Applied Tuba"
+                }, 
+                {
+                    "code": "MUSC 352", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/352", 
+                    "name": "Applied Percussion"
+                }, 
+                {
+                    "code": "MUSC 353", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/353", 
+                    "name": "Applied Percussion"
+                }, 
+                {
+                    "code": "MUSC 354", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/354", 
+                    "name": "Applied Saxophone"
+                }, 
+                {
+                    "code": "MUSC 355", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/355", 
+                    "name": "Applied Saxophone"
+                }, 
+                {
+                    "code": "MUSC 357", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/357", 
+                    "name": "Percussion Ensemble"
+                }, 
+                {
+                    "code": "MUSC 359", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/359", 
+                    "name": "Music Fundamentals & Methods"
+                }, 
+                {
+                    "code": "MUSC 362", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/362", 
+                    "name": "Applied Mandolin V"
+                }, 
+                {
+                    "code": "MUSC 363", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/363", 
+                    "name": "Applied Mandolin VI"
+                }, 
+                {
+                    "code": "MUSC 367", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/367", 
+                    "name": "Chamber Singers"
+                }, 
+                {
+                    "code": "MUSC 368", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/368", 
+                    "name": "Concert Choir"
+                }, 
+                {
+                    "code": "MUSC 372", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/372", 
+                    "name": "Bluegrass Band Ensemble"
+                }, 
+                {
+                    "code": "MUSC 375", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/375", 
+                    "name": "Conducting I"
+                }, 
+                {
+                    "code": "MUSC 376", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/376", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUSC 377", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/377", 
+                    "name": "Music Technology"
+                }, 
+                {
+                    "code": "MUSC 378", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/378", 
+                    "name": "Junior Recital"
+                }, 
+                {
+                    "code": "MUSC 379", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/379", 
+                    "name": "Chamber Recital"
+                }, 
+                {
+                    "code": "MUSC 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/399", 
+                    "name": "ST&P: Trumpet Ensemble"
+                }, 
+                {
+                    "code": "MUSC 420", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/420", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUSC 421", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/421", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUSC 424", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/424", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUSC 425", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/425", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUSC 434", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/434", 
+                    "name": "Applied Clarinet"
+                }, 
+                {
+                    "code": "MUSC 435", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/435", 
+                    "name": "Applied Clarinet"
+                }, 
+                {
+                    "code": "MUSC 436", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/436", 
+                    "name": "Applied Flute"
+                }, 
+                {
+                    "code": "MUSC 437", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/437", 
+                    "name": "Applied Flute"
+                }, 
+                {
+                    "code": "MUSC 438", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/438", 
+                    "name": "Applied Oboe"
+                }, 
+                {
+                    "code": "MUSC 439", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/439", 
+                    "name": "Applied Oboe"
+                }, 
+                {
+                    "code": "MUSC 442", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/442", 
+                    "name": "Applied Trumpet"
+                }, 
+                {
+                    "code": "MUSC 443", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/443", 
+                    "name": "Applied Trumpet"
+                }, 
+                {
+                    "code": "MUSC 444", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/444", 
+                    "name": "Applied Trombone"
+                }, 
+                {
+                    "code": "MUSC 445", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/445", 
+                    "name": "Applied Trombone"
+                }, 
+                {
+                    "code": "MUSC 446", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/446", 
+                    "name": "Applied Euphonium"
+                }, 
+                {
+                    "code": "MUSC 447", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/447", 
+                    "name": "Applied Euphonium"
+                }, 
+                {
+                    "code": "MUSC 448", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/448", 
+                    "name": "Applied French Horn"
+                }, 
+                {
+                    "code": "MUSC 449", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/449", 
+                    "name": "Applied French Horn"
+                }, 
+                {
+                    "code": "MUSC 450", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/450", 
+                    "name": "Applied Tuba"
+                }, 
+                {
+                    "code": "MUSC 451", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/451", 
+                    "name": "Applied Tuba"
+                }, 
+                {
+                    "code": "MUSC 452", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/452", 
+                    "name": "Applied Percussion"
+                }, 
+                {
+                    "code": "MUSC 453", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/453", 
+                    "name": "Applied Percussion"
+                }, 
+                {
+                    "code": "MUSC 454", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/454", 
+                    "name": "Applied Saxophone"
+                }, 
+                {
+                    "code": "MUSC 455", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/455", 
+                    "name": "Applied Saxophone"
+                }, 
+                {
+                    "code": "MUSC 462", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/462", 
+                    "name": "Applied Mandolin VII"
+                }, 
+                {
+                    "code": "MUSC 493", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/493", 
+                    "name": "Senior Project/Recital"
+                }, 
+                {
+                    "code": "MUSC 499", 
+                    "course_url": "http://www.chegg.com/courses/glenville/MUSC/499", 
+                    "name": "IRP: Applied Percussion"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/MUSC"
+        }, 
+        {
+            "abbr": "NPLM", 
+            "courses": [
+                {
+                    "code": "NPLM 101", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NPLM/101", 
+                    "name": "Intro Nonprofit Organizations"
+                }, 
+                {
+                    "code": "NPLM 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NPLM/201", 
+                    "name": "Nonprofit Practices/Procedures"
+                }, 
+                {
+                    "code": "NPLM 297", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NPLM/297", 
+                    "name": "Internship I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/NPLM"
+        }, 
+        {
+            "abbr": "NRMT", 
+            "courses": [
+                {
+                    "code": "NRMT 125", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NRMT/125", 
+                    "name": "Computer Assisted Mapping"
+                }, 
+                {
+                    "code": "NRMT 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NRMT/201", 
+                    "name": "Forest Ecology (Lab)"
+                }, 
+                {
+                    "code": "NRMT 234", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NRMT/234", 
+                    "name": "GIS Applications I"
+                }, 
+                {
+                    "code": "NRMT 312", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NRMT/312", 
+                    "name": "Sustainable Trails Design"
+                }, 
+                {
+                    "code": "NRMT 334", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NRMT/334", 
+                    "name": "GIS Applications II"
+                }, 
+                {
+                    "code": "NRMT 389", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NRMT/389", 
+                    "name": "Community Service"
+                }, 
+                {
+                    "code": "NRMT 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NRMT/399", 
+                    "name": "ST&P: Tundra Ecology"
+                }, 
+                {
+                    "code": "NRMT 410", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NRMT/410", 
+                    "name": "Energy Resource Law"
+                }, 
+                {
+                    "code": "NRMT 493", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NRMT/493", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NRMT 499", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NRMT/499", 
+                    "name": "IRP: Research"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/NRMT"
+        }, 
+        {
+            "abbr": "NURS", 
+            "courses": [
+                {
+                    "code": "NURS 100", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NURS/100", 
+                    "name": "Introduction to Nursing"
+                }, 
+                {
+                    "code": "NURS 101", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NURS/101", 
+                    "name": "Intro to Medical Terminology"
+                }, 
+                {
+                    "code": "NURS 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NURS/199", 
+                    "name": "ST&P: Introduction to Nursing"
+                }, 
+                {
+                    "code": "NURS 200", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NURS/200", 
+                    "name": "Health Assssmnt & Communctn"
+                }, 
+                {
+                    "code": "NURS 293B", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NURS/293B", 
+                    "name": "Health Assment & Commnctn(Lab)"
+                }, 
+                {
+                    "code": "NURS 293C", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NURS/293C", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 293D", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NURS/293D", 
+                    "name": ""
+                }, 
+                {
+                    "code": "NURS 317", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NURS/317", 
+                    "name": "Tchg Rdg Mdle/Adlt Ed"
+                }, 
+                {
+                    "code": "NURS 318", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NURS/318", 
+                    "name": "Tchg Rdg & Lang Arts (K-6)"
+                }, 
+                {
+                    "code": "NURS 414", 
+                    "course_url": "http://www.chegg.com/courses/glenville/NURS/414", 
+                    "name": "Diag & Pres Tchg of Rdg"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/NURS"
+        }, 
+        {
+            "abbr": "OREC", 
+            "courses": [
+                {
+                    "code": "OREC 120", 
+                    "course_url": "http://www.chegg.com/courses/glenville/OREC/120", 
+                    "name": "Canoe, Flat Water Travel"
+                }, 
+                {
+                    "code": "OREC 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/OREC/201", 
+                    "name": ""
+                }, 
+                {
+                    "code": "OREC 210", 
+                    "course_url": "http://www.chegg.com/courses/glenville/OREC/210", 
+                    "name": "Map, Compass and GPS Travel"
+                }, 
+                {
+                    "code": "OREC 220", 
+                    "course_url": "http://www.chegg.com/courses/glenville/OREC/220", 
+                    "name": "Backpacking/Backcountry Living"
+                }, 
+                {
+                    "code": "OREC 299", 
+                    "course_url": "http://www.chegg.com/courses/glenville/OREC/299", 
+                    "name": "ST&P: Advanced Rock Climbing"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/OREC"
+        }, 
+        {
+            "abbr": "PED", 
+            "courses": [
+                {
+                    "code": "PED 101", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/101", 
+                    "name": "Personal Health"
+                }, 
+                {
+                    "code": "PED 119", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/119", 
+                    "name": "Body Mechanics & Conditioning"
+                }, 
+                {
+                    "code": "PED 121", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/121", 
+                    "name": "Foundations of PE and Sport"
+                }, 
+                {
+                    "code": "PED 122", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/122", 
+                    "name": "Basketball/Soccer/Speedball"
+                }, 
+                {
+                    "code": "PED 123", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/123", 
+                    "name": "Flg Ftbll/Tm Hd/Tr & Field"
+                }, 
+                {
+                    "code": "PED 124", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/124", 
+                    "name": "Fld Hockey/Softball/Volleyball"
+                }, 
+                {
+                    "code": "PED 130", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/130", 
+                    "name": "Recreational Sports"
+                }, 
+                {
+                    "code": "PED 131", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/131", 
+                    "name": "Intro to Athletic Training"
+                }, 
+                {
+                    "code": "PED 132", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/132", 
+                    "name": "Individual and Dual Sports"
+                }, 
+                {
+                    "code": "PED 136", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/136", 
+                    "name": "Team Sports"
+                }, 
+                {
+                    "code": "PED 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/199", 
+                    "name": "ST&P: Advanced Fencing"
+                }, 
+                {
+                    "code": "PED 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/201", 
+                    "name": "First Aid and Safety"
+                }, 
+                {
+                    "code": "PED 219", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/219", 
+                    "name": "Body Mechanics & Conditioning"
+                }, 
+                {
+                    "code": "PED 223", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/223", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PED 224", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/224", 
+                    "name": "Asstg-Sports/Camps/Intra/Coach"
+                }, 
+                {
+                    "code": "PED 230", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/230", 
+                    "name": "Intramural Development"
+                }, 
+                {
+                    "code": "PED 301", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/301", 
+                    "name": "Lifelong Wellness"
+                }, 
+                {
+                    "code": "PED 319", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/319", 
+                    "name": "Body Mechanics & Conditioning"
+                }, 
+                {
+                    "code": "PED 326", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/326", 
+                    "name": "Physical Ed Erly/Middle Child"
+                }, 
+                {
+                    "code": "PED 327", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/327", 
+                    "name": "Adapted Physical Education"
+                }, 
+                {
+                    "code": "PED 332", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/332", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PED 333", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/333", 
+                    "name": "Motor Learning/Development"
+                }, 
+                {
+                    "code": "PED 397", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/397", 
+                    "name": "Work Experience"
+                }, 
+                {
+                    "code": "PED 410", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/410", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PED 419", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/419", 
+                    "name": "Body Mechanics & Conditioning"
+                }, 
+                {
+                    "code": "PED 421", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PED/421", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/PED"
+        }, 
+        {
+            "abbr": "PHYS", 
+            "courses": [
+                {
+                    "code": "PHYS 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PHYS/199", 
+                    "name": "ST&P: Optical Telescope Const"
+                }, 
+                {
+                    "code": "PHYS 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PHYS/201", 
+                    "name": "General Physics I (Lab)"
+                }, 
+                {
+                    "code": "PHYS 202", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PHYS/202", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHYS 209", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PHYS/209", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHYS 304", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PHYS/304", 
+                    "name": "Problems in Physics"
+                }, 
+                {
+                    "code": "PHYS 310", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PHYS/310", 
+                    "name": "General Astronomy (Lab)"
+                }, 
+                {
+                    "code": "PHYS 341", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PHYS/341", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHYS 345", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PHYS/345", 
+                    "name": "Intro Chemical Physics (Lab)"
+                }, 
+                {
+                    "code": "PHYS 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PHYS/399", 
+                    "name": "ST&P: Astronomy Lab"
+                }, 
+                {
+                    "code": "PHYS 407", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PHYS/407", 
+                    "name": "Chemical Physics (Lab)"
+                }, 
+                {
+                    "code": "PHYS 493", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PHYS/493", 
+                    "name": "Senior Research Seminar"
+                }, 
+                {
+                    "code": "PHYS 499", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PHYS/499", 
+                    "name": "IRP: Physics Research"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/PHYS"
+        }, 
+        {
+            "abbr": "POSC", 
+            "courses": [
+                {
+                    "code": "POSC 203", 
+                    "course_url": "http://www.chegg.com/courses/glenville/POSC/203", 
+                    "name": "American National Government"
+                }, 
+                {
+                    "code": "POSC 204", 
+                    "course_url": "http://www.chegg.com/courses/glenville/POSC/204", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POSC 297", 
+                    "course_url": "http://www.chegg.com/courses/glenville/POSC/297", 
+                    "name": "Internship I"
+                }, 
+                {
+                    "code": "POSC 304", 
+                    "course_url": "http://www.chegg.com/courses/glenville/POSC/304", 
+                    "name": "Comparative Government"
+                }, 
+                {
+                    "code": "POSC 309", 
+                    "course_url": "http://www.chegg.com/courses/glenville/POSC/309", 
+                    "name": "Civil Liberties"
+                }, 
+                {
+                    "code": "POSC 310", 
+                    "course_url": "http://www.chegg.com/courses/glenville/POSC/310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POSC 390", 
+                    "course_url": "http://www.chegg.com/courses/glenville/POSC/390", 
+                    "name": "Intro to Public Administration"
+                }, 
+                {
+                    "code": "POSC 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/POSC/399", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POSC 401", 
+                    "course_url": "http://www.chegg.com/courses/glenville/POSC/401", 
+                    "name": "International Relations"
+                }, 
+                {
+                    "code": "POSC 493", 
+                    "course_url": "http://www.chegg.com/courses/glenville/POSC/493", 
+                    "name": "Senior Project"
+                }, 
+                {
+                    "code": "POSC 497", 
+                    "course_url": "http://www.chegg.com/courses/glenville/POSC/497", 
+                    "name": "Internship II"
+                }, 
+                {
+                    "code": "POSC 498", 
+                    "course_url": "http://www.chegg.com/courses/glenville/POSC/498", 
+                    "name": "Seminar - Legislative Behavior"
+                }, 
+                {
+                    "code": "POSC 499", 
+                    "course_url": "http://www.chegg.com/courses/glenville/POSC/499", 
+                    "name": "IRP: State Government"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/POSC"
+        }, 
+        {
+            "abbr": "PSYC", 
+            "courses": [
+                {
+                    "code": "PSYC 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PSYC/201", 
+                    "name": "General Psychology"
+                }, 
+                {
+                    "code": "PSYC 250", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PSYC/250", 
+                    "name": "Lifespan Development"
+                }, 
+                {
+                    "code": "PSYC 310", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PSYC/310", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSYC 330", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PSYC/330", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 360", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PSYC/360", 
+                    "name": "Psychology of Human Sexuality"
+                }, 
+                {
+                    "code": "PSYC 380", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PSYC/380", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 390", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PSYC/390", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PSYC/399", 
+                    "name": "ST&P: Comparative Psychology I"
+                }, 
+                {
+                    "code": "PSYC 420", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PSYC/420", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 450", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PSYC/450", 
+                    "name": "Perception and Cognition"
+                }, 
+                {
+                    "code": "PSYC 460", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PSYC/460", 
+                    "name": "Clinical App/Tests & Measures"
+                }, 
+                {
+                    "code": "PSYC 493", 
+                    "course_url": "http://www.chegg.com/courses/glenville/PSYC/493", 
+                    "name": "Senior Seminar"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/PSYC"
+        }, 
+        {
+            "abbr": "READ", 
+            "courses": [
+                {
+                    "code": "READ 317", 
+                    "course_url": "http://www.chegg.com/courses/glenville/READ/317", 
+                    "name": "Tchg Rdg Mdle/Adlt Ed"
+                }, 
+                {
+                    "code": "READ 318", 
+                    "course_url": "http://www.chegg.com/courses/glenville/READ/318", 
+                    "name": "Tchg Rdg & Lang Arts (K-6)"
+                }, 
+                {
+                    "code": "READ 361", 
+                    "course_url": "http://www.chegg.com/courses/glenville/READ/361", 
+                    "name": "Intro to Statistical Analysis"
+                }, 
+                {
+                    "code": "READ 414", 
+                    "course_url": "http://www.chegg.com/courses/glenville/READ/414", 
+                    "name": "Diag & Pres Tchg of Rdg"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/READ"
+        }, 
+        {
+            "abbr": "SAFE", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/SAFE"
+        }, 
+        {
+            "abbr": "SCNC", 
+            "courses": [
+                {
+                    "code": "SCNC 101", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SCNC/101", 
+                    "name": "Earth Science (Lab)"
+                }, 
+                {
+                    "code": "SCNC 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SCNC/199", 
+                    "name": "ST&P: Geoscience (Lab)"
+                }, 
+                {
+                    "code": "SCNC 302", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SCNC/302", 
+                    "name": "Physical Science for Elem(Lab)"
+                }, 
+                {
+                    "code": "SCNC 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SCNC/399", 
+                    "name": "ST&P: Instructional Experience"
+                }, 
+                {
+                    "code": "SCNC 499", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SCNC/499", 
+                    "name": "IRP: Research"
+                }, 
+                {
+                    "code": "SCNC 501", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SCNC/501", 
+                    "name": "Transfer of Energy"
+                }, 
+                {
+                    "code": "SCNC 502", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SCNC/502", 
+                    "name": "Earth in the Solar System"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/SCNC"
+        }, 
+        {
+            "abbr": "SMGT", 
+            "courses": [
+                {
+                    "code": "SMGT 130", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SMGT/130", 
+                    "name": "Intro to Sport Management"
+                }, 
+                {
+                    "code": "SMGT 330", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SMGT/330", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SMGT 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SMGT/399", 
+                    "name": "ST&P:Media Relations in Sport"
+                }, 
+                {
+                    "code": "SMGT 430", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SMGT/430", 
+                    "name": ""
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/SMGT"
+        }, 
+        {
+            "abbr": "SOCL", 
+            "courses": [
+                {
+                    "code": "SOCL 105", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCL/105", 
+                    "name": "Interviewing and Counseling"
+                }, 
+                {
+                    "code": "SOCL 205", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCL/205", 
+                    "name": "Principles of Sociology"
+                }, 
+                {
+                    "code": "SOCL 209", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCL/209", 
+                    "name": "Social Problems"
+                }, 
+                {
+                    "code": "SOCL 304", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCL/304", 
+                    "name": "Marriage and Family"
+                }, 
+                {
+                    "code": "SOCL 309", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCL/309", 
+                    "name": "Case Management"
+                }, 
+                {
+                    "code": "SOCL 312", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCL/312", 
+                    "name": "Criminology"
+                }, 
+                {
+                    "code": "SOCL 330", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCL/330", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCL 340", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCL/340", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCL 390", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCL/390", 
+                    "name": "Intro to Public Administration"
+                }, 
+                {
+                    "code": "SOCL 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCL/399", 
+                    "name": "ST&P: Social Welfare Policy"
+                }, 
+                {
+                    "code": "SOCL 402", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCL/402", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCL 493", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCL/493", 
+                    "name": "Senior Seminar"
+                }, 
+                {
+                    "code": "SOCL 497", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCL/497", 
+                    "name": "Internship II"
+                }, 
+                {
+                    "code": "SOCL 499", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCL/499", 
+                    "name": "IRP: Socl Wk Rural Appalachia"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/SOCL"
+        }, 
+        {
+            "abbr": "SOCS", 
+            "courses": [
+                {
+                    "code": "SOCS 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCS/199", 
+                    "name": "ST&P: Basic PFT and Cond."
+                }, 
+                {
+                    "code": "SOCS 225", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCS/225", 
+                    "name": "Introduction to Global Studies"
+                }, 
+                {
+                    "code": "SOCS 293", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCS/293", 
+                    "name": "Research Methods in Psychology"
+                }, 
+                {
+                    "code": "SOCS 299", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCS/299", 
+                    "name": "ST&P: Intro to Social Work"
+                }, 
+                {
+                    "code": "SOCS 314", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCS/314", 
+                    "name": "Social Studies Erly-Mdle Educ"
+                }, 
+                {
+                    "code": "SOCS 318", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCS/318", 
+                    "name": "Statistics Behavioral Sciences"
+                }, 
+                {
+                    "code": "SOCS 399", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCS/399", 
+                    "name": "ST&P: New Testament Literature"
+                }, 
+                {
+                    "code": "SOCS 499", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SOCS/499", 
+                    "name": "Irp: Adv Cse Ldrshp Lab Iv"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/SOCS"
+        }, 
+        {
+            "abbr": "SPAN", 
+            "courses": [
+                {
+                    "code": "SPAN 101", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SPAN/101", 
+                    "name": "Elementary Spanish I"
+                }, 
+                {
+                    "code": "SPAN 102", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SPAN/102", 
+                    "name": "Elementary Spanish II"
+                }, 
+                {
+                    "code": "SPAN 199", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SPAN/199", 
+                    "name": "ST&P: Reading and Conversation"
+                }, 
+                {
+                    "code": "SPAN 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SPAN/201", 
+                    "name": "Elementary Spanish II"
+                }, 
+                {
+                    "code": "SPAN 203", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SPAN/203", 
+                    "name": "Intermediate Spanish I"
+                }, 
+                {
+                    "code": "SPAN 204", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SPAN/204", 
+                    "name": "Intermediate Spanish II"
+                }, 
+                {
+                    "code": "SPAN 299", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SPAN/299", 
+                    "name": "ST&P:Hispnc Lit in Translation"
+                }, 
+                {
+                    "code": "SPAN 301", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SPAN/301", 
+                    "name": "Intermediate Spanish"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/SPAN"
+        }, 
+        {
+            "abbr": "SPED", 
+            "courses": [
+                {
+                    "code": "SPED 220", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SPED/220", 
+                    "name": "Educ Stus Except/Cultural Div"
+                }, 
+                {
+                    "code": "SPED 321", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SPED/321", 
+                    "name": "Educ Stus Mental Impairment"
+                }, 
+                {
+                    "code": "SPED 331", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SPED/331", 
+                    "name": "Intro to Learning Disabilities"
+                }, 
+                {
+                    "code": "SPED 332", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SPED/332", 
+                    "name": "Intro to Behavior Disorders"
+                }, 
+                {
+                    "code": "SPED 334", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SPED/334", 
+                    "name": "Strat L D Beh Disordered Stu"
+                }, 
+                {
+                    "code": "SPED 351", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SPED/351", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPED 420", 
+                    "course_url": "http://www.chegg.com/courses/glenville/SPED/420", 
+                    "name": "Special Education Practicum"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/SPED"
+        }, 
+        {
+            "abbr": "STAT", 
+            "courses": [
+                {
+                    "code": "STAT 200", 
+                    "course_url": "http://www.chegg.com/courses/glenville/STAT/200", 
+                    "name": "Survey of Theatre"
+                }, 
+                {
+                    "code": "STAT 361", 
+                    "course_url": "http://www.chegg.com/courses/glenville/STAT/361", 
+                    "name": "Intro to Statistical Analysis"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/glenville/STAT"
+        }, 
+        {
+            "abbr": "THET", 
+            "courses": [
+                {
+                    "code": "THET 101", 
+                    "course_url": "http://www.chegg.com/courses/glenville/THET/101", 
+                    "name": "Finger Spelling I"
+                }, 
+                {
+                    "code": "THET 102", 
+                    "course_url": "http://www.chegg.com/courses/glenville/THET/102", 
+                    "name": "Finger Spelling II"
+                }, 
+                {
+                    "code": "THET 103", 
+                    "course_url": "http://www.chegg.com/courses/glenville/THET/103", 
+                    "name": "Finger Spelling IIi"
+                }, 
+                {
+                    "code": "THET 111", 
+                    "course_url": "http://www.chegg.com/courses/glenville/THET/111", 
+                    "name": "American Sign Language I"
+                }, 
+                {
+                    "code": "THET 112", 
+                    "course_url": "http://www.chegg.com/courses/glenville/THET/112", 
+                    "name": "American Sign Language II"
+                }, 
+                {
+                    "code": "THET 113", 
+                    "course_url": "http://www.chegg.com/courses/glenville/THET/113", 
+                    "name": "American Sign Language IIi"
+                }, 
+                {
+                    "code": "THET 122", 
+                    "course_url": "http://www.chegg.com/courses/glenville/THET/122", 
+                    "name": "DEAF CULTURE and HISTORY"
+                }, 
+                {
+                    "code": "THET 123", 
+                    "course_url": "http://www.chegg.com/courses/glenville/THET/123", 
+                    "name": "Cochlear Implants"
+                }, 
+                {
+                    "code": "THET 124", 
+                    "course_url": "http://www.chegg.com/courses/glenville/THET/124", 
+                    "name": "Eductnl Interpreting Principls"
+                }, 
+                {
+                    "code": "THET 200", 
+                    "course_url": "http://www.chegg.com/courses/glenville/THET/200", 
+                    "name": "Voicing I"
+                }, 
+                {
+                    "code": "THET 201", 
+                    "course_url": "http://www.chegg.com/courses/glenville/THET/201", 
+                    "name": "Voicing II"
+                }
+            ], 
+            "name": "Theatre", 
+            "url": "http://www.chegg.com/courses/glenville/THET"
+        }
+    ], 
+    "name": "glenville"
+}

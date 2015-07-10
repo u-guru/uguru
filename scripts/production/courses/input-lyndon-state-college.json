@@ -1,0 +1,4071 @@
+{
+    "all_stats": {
+        "num_courses": 755, 
+        "num_departments": 41
+    }, 
+    "departments": [
+        {
+            "abbr": "ACC", 
+            "courses": [
+                {
+                    "code": "ACC 2121", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ACC/2121", 
+                    "name": "Financial Accounting"
+                }, 
+                {
+                    "code": "ACC 2122", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ACC/2122", 
+                    "name": "Managerial Accounting"
+                }, 
+                {
+                    "code": "ACC 2201", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ACC/2201", 
+                    "name": "Intermed Accounting I"
+                }, 
+                {
+                    "code": "ACC 2230", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ACC/2230", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACC 3025", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ACC/3025", 
+                    "name": "IS:Cost Management"
+                }, 
+                {
+                    "code": "ACC 3040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ACC/3040", 
+                    "name": "Auditing Process"
+                }, 
+                {
+                    "code": "ACC 3111", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ACC/3111", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACC 3112", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ACC/3112", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ACC 4010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ACC/4010", 
+                    "name": "Accounting Information Systems"
+                }, 
+                {
+                    "code": "ACC 4030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ACC/4030", 
+                    "name": "Government and Nonprofit Accounting"
+                }, 
+                {
+                    "code": "ACC 4050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ACC/4050", 
+                    "name": ""
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/lscvsc/ACC"
+        }, 
+        {
+            "abbr": "AHS", 
+            "courses": [
+                {
+                    "code": "AHS 1240", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/1240", 
+                    "name": "Fitness for Health"
+                }, 
+                {
+                    "code": "AHS 1250", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/1250", 
+                    "name": "Fitness for Performance"
+                }, 
+                {
+                    "code": "AHS 1260", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/1260", 
+                    "name": "Professional Experience"
+                }, 
+                {
+                    "code": "AHS 2050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/2050", 
+                    "name": "Human Gross Anatomy"
+                }, 
+                {
+                    "code": "AHS 2055", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/2055", 
+                    "name": "Human Physiology"
+                }, 
+                {
+                    "code": "AHS 2111", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/2111", 
+                    "name": "Care and Prevention of Injuries"
+                }, 
+                {
+                    "code": "AHS 2140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/2140", 
+                    "name": "Personal and Community Health"
+                }, 
+                {
+                    "code": "AHS 2153", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/2153", 
+                    "name": "Evaluation & Management of Lower Extremities"
+                }, 
+                {
+                    "code": "AHS 2154", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/2154", 
+                    "name": "Evaluation & Management of Upper Extremities"
+                }, 
+                {
+                    "code": "AHS 3020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/3020", 
+                    "name": "Therapeutic Modalities"
+                }, 
+                {
+                    "code": "AHS 3080", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/3080", 
+                    "name": "Personal Fitness"
+                }, 
+                {
+                    "code": "AHS 3120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/3120", 
+                    "name": "Kinesiology"
+                }, 
+                {
+                    "code": "AHS 3150", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/3150", 
+                    "name": "Physiology of Exercise"
+                }, 
+                {
+                    "code": "AHS 3810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/3810", 
+                    "name": "Practicum in Phys Ed and/or Exercise Science"
+                }, 
+                {
+                    "code": "AHS 4071", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/4071", 
+                    "name": "Assessment of Exercise Science"
+                }, 
+                {
+                    "code": "AHS 4072", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/4072", 
+                    "name": "Research Methods in Exercise Science"
+                }, 
+                {
+                    "code": "AHS 4080", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/4080", 
+                    "name": "Fundamentals of Physical Conditioning"
+                }, 
+                {
+                    "code": "AHS 4090", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/4090", 
+                    "name": "Exercise Testing,Interpretation,and Intervention"
+                }, 
+                {
+                    "code": "AHS 4130", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/4130", 
+                    "name": "Practical Applications in Exercise Science"
+                }, 
+                {
+                    "code": "AHS 4140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/4140", 
+                    "name": "Emergency Medical Technician"
+                }, 
+                {
+                    "code": "AHS 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/4710", 
+                    "name": "Topics in Exercise Science"
+                }, 
+                {
+                    "code": "AHS 4810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/4810", 
+                    "name": "Internship In Exercise Science"
+                }, 
+                {
+                    "code": "AHS 4820", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/4820", 
+                    "name": "Practicum in Exercise Science"
+                }, 
+                {
+                    "code": "AHS 4910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/AHS/4910", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Art History", 
+            "url": "http://www.chegg.com/courses/lscvsc/AHS"
+        }, 
+        {
+            "abbr": "ANT", 
+            "courses": [
+                {
+                    "code": "ANT 1030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ANT/1030", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ANT 2060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ANT/2060", 
+                    "name": "Ethnocuisine"
+                }, 
+                {
+                    "code": "ANT 2710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ANT/2710", 
+                    "name": "Topics in Anthropology"
+                }, 
+                {
+                    "code": "ANT 2910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ANT/2910", 
+                    "name": "Independent Study in Anthropology"
+                }, 
+                {
+                    "code": "ANT 3010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ANT/3010", 
+                    "name": "Native Societies of America"
+                }, 
+                {
+                    "code": "ANT 3030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ANT/3030", 
+                    "name": "Comparative Cultures"
+                }, 
+                {
+                    "code": "ANT 3050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ANT/3050", 
+                    "name": "Culture Ecology & Health"
+                }, 
+                {
+                    "code": "ANT 3310", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ANT/3310", 
+                    "name": "Myth,Magic & Religion"
+                }, 
+                {
+                    "code": "ANT 3410", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ANT/3410", 
+                    "name": "African Ethnography"
+                }, 
+                {
+                    "code": "ANT 3820", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ANT/3820", 
+                    "name": "Anthropology Fieldwork"
+                }, 
+                {
+                    "code": "ANT 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ANT/4710", 
+                    "name": "Topics in Anthropology"
+                }, 
+                {
+                    "code": "ANT 4910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ANT/4910", 
+                    "name": "Independent Study in Anthropology"
+                }
+            ], 
+            "name": "Anthropology", 
+            "url": "http://www.chegg.com/courses/lscvsc/ANT"
+        }, 
+        {
+            "abbr": "ARH", 
+            "courses": [
+                {
+                    "code": "ARH 2011", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ARH/2011", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ARH 2012", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ARH/2012", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ARH 3080", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ARH/3080", 
+                    "name": "History of Animation and American Illustration"
+                }, 
+                {
+                    "code": "ARH 3090", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ARH/3090", 
+                    "name": "Historical Themes Vis Arts"
+                }
+            ], 
+            "name": "Art History", 
+            "url": "http://www.chegg.com/courses/lscvsc/ARH"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 1010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/1010", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 1011", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/1011", 
+                    "name": "Drawing I"
+                }, 
+                {
+                    "code": "ART 1015", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/1015", 
+                    "name": "Art Foundations"
+                }, 
+                {
+                    "code": "ART 1140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/1140", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 1310", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/1310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 2012", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/2012", 
+                    "name": "Drawing II"
+                }, 
+                {
+                    "code": "ART 2020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/2020", 
+                    "name": "Color Theory"
+                }, 
+                {
+                    "code": "ART 2060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/2060", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 2070", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/2070", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 2121", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/2121", 
+                    "name": "Calligraphy I"
+                }, 
+                {
+                    "code": "ART 2241", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/2241", 
+                    "name": "Painting I"
+                }, 
+                {
+                    "code": "ART 2251", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/2251", 
+                    "name": "Sculpture I"
+                }, 
+                {
+                    "code": "ART 2301", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/2301", 
+                    "name": "Photography I"
+                }, 
+                {
+                    "code": "ART 2302", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/2302", 
+                    "name": "Photography II"
+                }, 
+                {
+                    "code": "ART 2710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/2710", 
+                    "name": "Special Topics in Art"
+                }, 
+                {
+                    "code": "ART 2910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/2910", 
+                    "name": "Independent Study in Art"
+                }, 
+                {
+                    "code": "ART 3020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/3020", 
+                    "name": "Digital Techniques"
+                }, 
+                {
+                    "code": "ART 3031", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/3031", 
+                    "name": "Life Drawing"
+                }, 
+                {
+                    "code": "ART 3050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/3050", 
+                    "name": "Painting II"
+                }, 
+                {
+                    "code": "ART 3060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/3060", 
+                    "name": "Book Arts"
+                }, 
+                {
+                    "code": "ART 3070", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/3070", 
+                    "name": "Advanced Illustration"
+                }, 
+                {
+                    "code": "ART 3080", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/3080", 
+                    "name": "Basic 3D Modeling"
+                }, 
+                {
+                    "code": "ART 3210", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/3210", 
+                    "name": "Puppetry"
+                }, 
+                {
+                    "code": "ART 3220", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/3220", 
+                    "name": "Little Theatre Arts-Miniature Stage Sets"
+                }, 
+                {
+                    "code": "ART 3270", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/3270", 
+                    "name": "Advanced Photography"
+                }, 
+                {
+                    "code": "ART 4410", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/4410", 
+                    "name": "Collaborative Creativity in the Arts"
+                }, 
+                {
+                    "code": "ART 4611", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/4611", 
+                    "name": "Senior Thesis I"
+                }, 
+                {
+                    "code": "ART 4612", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/4612", 
+                    "name": "Senior Thesis II"
+                }, 
+                {
+                    "code": "ART 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/4710", 
+                    "name": "Special Topics in Art"
+                }, 
+                {
+                    "code": "ART 4910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/4910", 
+                    "name": "IS: Large-Format Photography"
+                }, 
+                {
+                    "code": "ART ACCPT", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ART/ACCPT", 
+                    "name": "BFA Anim/Illustr Portfolio"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/lscvsc/ART"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 1110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/1110", 
+                    "name": "Bird Identification"
+                }, 
+                {
+                    "code": "BIO 1210", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/1210", 
+                    "name": "Intro to Biology"
+                }, 
+                {
+                    "code": "BIO 1210L", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/1210L", 
+                    "name": "Intro to Biology Lab"
+                }, 
+                {
+                    "code": "BIO 1211", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/1211", 
+                    "name": "Intro Bio: Ecology & Evolution"
+                }, 
+                {
+                    "code": "BIO 2011", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/2011", 
+                    "name": "Anatomy & Phys I"
+                }, 
+                {
+                    "code": "BIO 2011L", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/2011L", 
+                    "name": "Anat & Phys I Lab"
+                }, 
+                {
+                    "code": "BIO 2012", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/2012", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 2020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/2020", 
+                    "name": "Laboratory Techniques in Exercise Science"
+                }, 
+                {
+                    "code": "BIO 2060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/2060", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 2070", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/2070", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 2370", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/2370", 
+                    "name": "Biology Modules"
+                }, 
+                {
+                    "code": "BIO 2520", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/2520", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 2710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/2710", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 3020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/3020", 
+                    "name": "Field Zoology"
+                }, 
+                {
+                    "code": "BIO 3050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/3050", 
+                    "name": "Natural History of Vertebrates"
+                }, 
+                {
+                    "code": "BIO 3110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/3110", 
+                    "name": "Field Ornithology"
+                }, 
+                {
+                    "code": "BIO 3120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/3120", 
+                    "name": "Principles of Ornithology"
+                }, 
+                {
+                    "code": "BIO 3140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/3140", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 3160", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/3160", 
+                    "name": "Animal Behavior"
+                }, 
+                {
+                    "code": "BIO 3220", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/3220", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 3330", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/3330", 
+                    "name": "Field Botany and Dendrology"
+                }, 
+                {
+                    "code": "BIO 3340", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/3340", 
+                    "name": "Advanced Systematic Botany"
+                }, 
+                {
+                    "code": "BIO 4040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/4040", 
+                    "name": "Ecology"
+                }, 
+                {
+                    "code": "BIO 4050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/4050", 
+                    "name": "Watershed Ecology"
+                }, 
+                {
+                    "code": "BIO 4210", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/4210", 
+                    "name": "Wildlife Biology and Management"
+                }, 
+                {
+                    "code": "BIO 4310", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/4310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BIO 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/4710", 
+                    "name": "Biology Modules"
+                }, 
+                {
+                    "code": "BIO 4720", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BIO/4720", 
+                    "name": "Seminar in Conservation Biology"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/lscvsc/BIO"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 1090", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/1090", 
+                    "name": "Business Math"
+                }, 
+                {
+                    "code": "BUS 1210", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/1210", 
+                    "name": "Intro Bus Software & Info Sys"
+                }, 
+                {
+                    "code": "BUS 2015", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/2015", 
+                    "name": "Fund of Mgmt in Business"
+                }, 
+                {
+                    "code": "BUS 2020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/2020", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUS 2025", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/2025", 
+                    "name": "Nonprofit Management"
+                }, 
+                {
+                    "code": "BUS 2045", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/2045", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUS 2060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/2060", 
+                    "name": "Money and Capital Markets"
+                }, 
+                {
+                    "code": "BUS 2080", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/2080", 
+                    "name": "Org Bev & Comm in Business"
+                }, 
+                {
+                    "code": "BUS 2140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/2140", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUS 2230", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/2230", 
+                    "name": "Prin of Marketing"
+                }, 
+                {
+                    "code": "BUS 2235", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/2235", 
+                    "name": "Service Marketing"
+                }, 
+                {
+                    "code": "BUS 2250", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/2250", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUS 2265", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/2265", 
+                    "name": "Fiscal Management"
+                }, 
+                {
+                    "code": "BUS 2410", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/2410", 
+                    "name": "Human Resources Management"
+                }, 
+                {
+                    "code": "BUS 2420", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/2420", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUS 2450", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/2450", 
+                    "name": "Business Law"
+                }, 
+                {
+                    "code": "BUS 2710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/2710", 
+                    "name": "Seminar in Business"
+                }, 
+                {
+                    "code": "BUS 3030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/3030", 
+                    "name": "Customer Satisfaction"
+                }, 
+                {
+                    "code": "BUS 3060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/3060", 
+                    "name": "Consumer Behavior"
+                }, 
+                {
+                    "code": "BUS 3120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/3120", 
+                    "name": "Business and Financial Reporting Software"
+                }, 
+                {
+                    "code": "BUS 3131", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/3131", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUS 3132", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/3132", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUS 3150", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/3150", 
+                    "name": "Production/Operations"
+                }, 
+                {
+                    "code": "BUS 3160", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/3160", 
+                    "name": "Sales Management and Selling"
+                }, 
+                {
+                    "code": "BUS 3210", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/3210", 
+                    "name": "Advertising Management"
+                }, 
+                {
+                    "code": "BUS 3230", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/3230", 
+                    "name": "Financial Management"
+                }, 
+                {
+                    "code": "BUS 3240", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/3240", 
+                    "name": "Global Business"
+                }, 
+                {
+                    "code": "BUS 3250", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/3250", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUS 3260", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/3260", 
+                    "name": "Investment and Portfolio Management"
+                }, 
+                {
+                    "code": "BUS 3350", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/3350", 
+                    "name": "Innovation, Creat & Entrepren"
+                }, 
+                {
+                    "code": "BUS 3360", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/3360", 
+                    "name": "The Small Business Plan"
+                }, 
+                {
+                    "code": "BUS 3810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/3810", 
+                    "name": "Business Internship"
+                }, 
+                {
+                    "code": "BUS 4020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/4020", 
+                    "name": "Small Business Problems"
+                }, 
+                {
+                    "code": "BUS 4030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/4030", 
+                    "name": "Marketing Research"
+                }, 
+                {
+                    "code": "BUS 4060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/4060", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUS 4120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/4120", 
+                    "name": "The Operating Manager"
+                }, 
+                {
+                    "code": "BUS 4150", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/4150", 
+                    "name": "Quantitative Business Decision-Making"
+                }, 
+                {
+                    "code": "BUS 4160", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/4160", 
+                    "name": ""
+                }, 
+                {
+                    "code": "BUS 4240", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/4240", 
+                    "name": "Small Business Marketing and Sales"
+                }, 
+                {
+                    "code": "BUS 4260", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/4260", 
+                    "name": "Financing and Financial Management of Emerging Enterprises"
+                }, 
+                {
+                    "code": "BUS 4270", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/4270", 
+                    "name": "Entrepreneurial Strategy"
+                }, 
+                {
+                    "code": "BUS 4420", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/4420", 
+                    "name": "e-Business Sales and Marketing"
+                }, 
+                {
+                    "code": "BUS 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/4710", 
+                    "name": "IS:Advanced Accounting"
+                }, 
+                {
+                    "code": "BUS 4830", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/4830", 
+                    "name": "Senior Practicum"
+                }, 
+                {
+                    "code": "BUS 4910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/BUS/4910", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/lscvsc/BUS"
+        }, 
+        {
+            "abbr": "CHE", 
+            "courses": [
+                {
+                    "code": "CHE 1020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CHE/1020", 
+                    "name": "Introduction to Chemistry"
+                }, 
+                {
+                    "code": "CHE 1023", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CHE/1023", 
+                    "name": "Outline of General Chemistry"
+                }, 
+                {
+                    "code": "CHE 1031", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CHE/1031", 
+                    "name": "Gen Chemistry I"
+                }, 
+                {
+                    "code": "CHE 1031L", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CHE/1031L", 
+                    "name": "Gen Chem I Lab"
+                }, 
+                {
+                    "code": "CHE 1032", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CHE/1032", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 1032L", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CHE/1032L", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 2020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CHE/2020", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 2710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CHE/2710", 
+                    "name": "Chemistry Modules"
+                }, 
+                {
+                    "code": "CHE 3010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CHE/3010", 
+                    "name": "Biochemistry"
+                }, 
+                {
+                    "code": "CHE 3050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CHE/3050", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 3111", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CHE/3111", 
+                    "name": "IS:Organic Chemistry I"
+                }, 
+                {
+                    "code": "CHE 3112", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CHE/3112", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CHE 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CHE/4710", 
+                    "name": "Chemistry Modules"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/lscvsc/CHE"
+        }, 
+        {
+            "abbr": "CIS", 
+            "courses": [
+                {
+                    "code": "CIS 1050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/1050", 
+                    "name": "Computer Opr Sys & Sprdsht"
+                }, 
+                {
+                    "code": "CIS 1060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/1060", 
+                    "name": "Intro to Database"
+                }, 
+                {
+                    "code": "CIS 1070", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/1070", 
+                    "name": "Advanced Concepts of Microcomputer Spreadsheets & Databases"
+                }, 
+                {
+                    "code": "CIS 1090", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/1090", 
+                    "name": "Object Oriented Problem Solv"
+                }, 
+                {
+                    "code": "CIS 1210", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/1210", 
+                    "name": "Concepts of Word Processing"
+                }, 
+                {
+                    "code": "CIS 1220", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/1220", 
+                    "name": "Concepts of the Internet and WWW"
+                }, 
+                {
+                    "code": "CIS 1240", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/1240", 
+                    "name": "Simple Computer Graphics"
+                }, 
+                {
+                    "code": "CIS 1247", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/1247", 
+                    "name": "Concepts of Desktop Publishing"
+                }, 
+                {
+                    "code": "CIS 1310", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/1310", 
+                    "name": "Methods of Computer Presentations"
+                }, 
+                {
+                    "code": "CIS 2011", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/2011", 
+                    "name": "Visual Basic Programming"
+                }, 
+                {
+                    "code": "CIS 2031", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/2031", 
+                    "name": "C Programming"
+                }, 
+                {
+                    "code": "CIS 2032", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/2032", 
+                    "name": "C/C++ Programming II"
+                }, 
+                {
+                    "code": "CIS 2060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/2060", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CIS 2101", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/2101", 
+                    "name": "Introduction to Unix"
+                }, 
+                {
+                    "code": "CIS 2141", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/2141", 
+                    "name": "Prog Inter/Web Aps"
+                }, 
+                {
+                    "code": "CIS 2142", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/2142", 
+                    "name": "Advanced Visual Basic"
+                }, 
+                {
+                    "code": "CIS 2271", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/2271", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CIS 2279", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/2279", 
+                    "name": "Intro to Perl Programming"
+                }, 
+                {
+                    "code": "CIS 2290", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/2290", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CIS 2990", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/2990", 
+                    "name": "Portfolio"
+                }, 
+                {
+                    "code": "CIS 3060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/3060", 
+                    "name": "Advanced Programming"
+                }, 
+                {
+                    "code": "CIS 3110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/3110", 
+                    "name": "Networking"
+                }, 
+                {
+                    "code": "CIS 3120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/3120", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CIS 3810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/3810", 
+                    "name": "Cooperative Field Work"
+                }, 
+                {
+                    "code": "CIS 4040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/4040", 
+                    "name": "Computer Security"
+                }, 
+                {
+                    "code": "CIS 4120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/4120", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CIS 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/4710", 
+                    "name": "Special Studies in Computer Science"
+                }, 
+                {
+                    "code": "CIS 4810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/4810", 
+                    "name": "Internship in Computer Science"
+                }, 
+                {
+                    "code": "CIS 4990", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/CIS/4990", 
+                    "name": "Portfolio"
+                }
+            ], 
+            "name": "Computer Information Systems", 
+            "url": "http://www.chegg.com/courses/lscvsc/CIS"
+        }, 
+        {
+            "abbr": "DGC", 
+            "courses": [
+                {
+                    "code": "DGC 1025", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/1025", 
+                    "name": "Typography for Design"
+                }, 
+                {
+                    "code": "DGC 2015", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/2015", 
+                    "name": "Illustration Software for Design"
+                }, 
+                {
+                    "code": "DGC 2025", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/2025", 
+                    "name": "Photographic Manipulation Software for Design"
+                }, 
+                {
+                    "code": "DGC 2035", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/2035", 
+                    "name": "Page Layout Software for Design"
+                }, 
+                {
+                    "code": "DGC 2050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/2050", 
+                    "name": "Illustration"
+                }, 
+                {
+                    "code": "DGC 2055", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/2055", 
+                    "name": "Onsite Illustration"
+                }, 
+                {
+                    "code": "DGC 2060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/2060", 
+                    "name": "Design for Screen Printing"
+                }, 
+                {
+                    "code": "DGC 3035", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/3035", 
+                    "name": "Advanced Typography/Layout"
+                }, 
+                {
+                    "code": "DGC 3050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/3050", 
+                    "name": "Advanced Illustration"
+                }, 
+                {
+                    "code": "DGC 3111", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/3111", 
+                    "name": "Design for Print"
+                }, 
+                {
+                    "code": "DGC 3120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/3120", 
+                    "name": "Book Design & Publishing"
+                }, 
+                {
+                    "code": "DGC 3150", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/3150", 
+                    "name": "Package Design"
+                }, 
+                {
+                    "code": "DGC 4010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/4010", 
+                    "name": "Designing a Portfolio"
+                }, 
+                {
+                    "code": "DGC 4020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/4020", 
+                    "name": "Branding and Corporate Identity"
+                }, 
+                {
+                    "code": "DGC 4025", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/4025", 
+                    "name": "Advanced Design Software"
+                }, 
+                {
+                    "code": "DGC 4050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/4050", 
+                    "name": "Children's Book Illustration"
+                }, 
+                {
+                    "code": "DGC 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/4710", 
+                    "name": "Special Topics in Graphic Design"
+                }, 
+                {
+                    "code": "DGC 4720", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/4720", 
+                    "name": "Senior Seminar"
+                }, 
+                {
+                    "code": "DGC 4811", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/4811", 
+                    "name": "Graphic Design Internship"
+                }, 
+                {
+                    "code": "DGC 4812", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/4812", 
+                    "name": "Graphic Design Studio"
+                }, 
+                {
+                    "code": "DGC 4920", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/DGC/4920", 
+                    "name": "Independent Study in Graphic Design"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lscvsc/DGC"
+        }, 
+        {
+            "abbr": "ECO", 
+            "courses": [
+                {
+                    "code": "ECO 2020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ECO/2020", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ECO 2030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ECO/2030", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ECO 2060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ECO/2060", 
+                    "name": "Survey of Economics"
+                }, 
+                {
+                    "code": "ECO 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ECO/4710", 
+                    "name": "Topics in Economic"
+                }, 
+                {
+                    "code": "ECO 4810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ECO/4810", 
+                    "name": "Internship in Economics"
+                }, 
+                {
+                    "code": "ECO 4910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ECO/4910", 
+                    "name": "Independent Study in Economics"
+                }, 
+                {
+                    "code": "ECO 4920", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ECO/4920", 
+                    "name": "Research in Economics"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/lscvsc/ECO"
+        }, 
+        {
+            "abbr": "EDU", 
+            "courses": [
+                {
+                    "code": "EDU 1010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/1010", 
+                    "name": "Supporting Students With Challenging Behaviors"
+                }, 
+                {
+                    "code": "EDU 1030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/1030", 
+                    "name": "Introduction to Early Childhood Education"
+                }, 
+                {
+                    "code": "EDU 1310", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/1310", 
+                    "name": "Introduction to Communication Disorders for Paraeducators"
+                }, 
+                {
+                    "code": "EDU 2025", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/2025", 
+                    "name": "Intro to Secondary Ed"
+                }, 
+                {
+                    "code": "EDU 2120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/2120", 
+                    "name": "Child With Disabilities"
+                }, 
+                {
+                    "code": "EDU 2210", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/2210", 
+                    "name": "Found of Ed: Elem & Special Ed"
+                }, 
+                {
+                    "code": "EDU 2220", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/2220", 
+                    "name": "IS:Differentiated Instruct"
+                }, 
+                {
+                    "code": "EDU 2230", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/2230", 
+                    "name": "Supporting Students with Autism Spectrum Disorders"
+                }, 
+                {
+                    "code": "EDU 2240", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/2240", 
+                    "name": "Instructional Planning"
+                }, 
+                {
+                    "code": "EDU 2250", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/2250", 
+                    "name": "Models of Discipline"
+                }, 
+                {
+                    "code": "EDU 2840", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/2840", 
+                    "name": "Field Experience"
+                }, 
+                {
+                    "code": "EDU 2850", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/2850", 
+                    "name": "IS: Early Childhood Practicum"
+                }, 
+                {
+                    "code": "EDU 2855", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/2855", 
+                    "name": "Practicum for Paraeducators"
+                }, 
+                {
+                    "code": "EDU 3020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3020", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 3070", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3070", 
+                    "name": "Secondary School Observation"
+                }, 
+                {
+                    "code": "EDU 3110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3110", 
+                    "name": "Literature for Children"
+                }, 
+                {
+                    "code": "EDU 3150", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3150", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 3240", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3240", 
+                    "name": "Lit Dev in Cont Area"
+                }, 
+                {
+                    "code": "EDU 3315", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3315", 
+                    "name": "Managing the Behavior of Individuals & Groups"
+                }, 
+                {
+                    "code": "EDU 3325", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3325", 
+                    "name": "Teaching Over Time - Curr Dev"
+                }, 
+                {
+                    "code": "EDU 3350", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3350", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 3510", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3510", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 3520", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3520", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 3530", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3530", 
+                    "name": "Social Science Methods"
+                }, 
+                {
+                    "code": "EDU 3540", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3540", 
+                    "name": "Reading & Lit in Elem Class"
+                }, 
+                {
+                    "code": "EDU 3550", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3550", 
+                    "name": "Technology in the Classroom"
+                }, 
+                {
+                    "code": "EDU 3560", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3560", 
+                    "name": "Science and Health Methods"
+                }, 
+                {
+                    "code": "EDU 3810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3810", 
+                    "name": "Apprenticeship Fieldwork"
+                }, 
+                {
+                    "code": "EDU 3820", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3820", 
+                    "name": "Special Education Practicum"
+                }, 
+                {
+                    "code": "EDU 3830", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/3830", 
+                    "name": "IS: Prac Early Child Ed"
+                }, 
+                {
+                    "code": "EDU 4011", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4011", 
+                    "name": "Read Disability I"
+                }, 
+                {
+                    "code": "EDU 4012", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4012", 
+                    "name": "Reading Disabilities II"
+                }, 
+                {
+                    "code": "EDU 4020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4020", 
+                    "name": "Meth Teaching Sec English"
+                }, 
+                {
+                    "code": "EDU 4025", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4025", 
+                    "name": "Methods Teaching Sec Math"
+                }, 
+                {
+                    "code": "EDU 4030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4030", 
+                    "name": "Meth Teaching Sec Soc Stud"
+                }, 
+                {
+                    "code": "EDU 4040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4040", 
+                    "name": "Methods in Teaching Secondary Science"
+                }, 
+                {
+                    "code": "EDU 4050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4050", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 4070", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4070", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 4120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4120", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 4250", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4250", 
+                    "name": "e-Portfolio Development"
+                }, 
+                {
+                    "code": "EDU 4450", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4450", 
+                    "name": "Assessment of Exceptional Students"
+                }, 
+                {
+                    "code": "EDU 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4710", 
+                    "name": "Topics in Education"
+                }, 
+                {
+                    "code": "EDU 4730", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4730", 
+                    "name": "Student Teaching Seminar"
+                }, 
+                {
+                    "code": "EDU 4811", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4811", 
+                    "name": "Teaching Elementary Education"
+                }, 
+                {
+                    "code": "EDU 4850", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4850", 
+                    "name": "Secondary Student Teaching"
+                }, 
+                {
+                    "code": "EDU 4880", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4880", 
+                    "name": "Teaching Special Education"
+                }, 
+                {
+                    "code": "EDU 4910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/4910", 
+                    "name": "Independent Study in Education"
+                }, 
+                {
+                    "code": "EDU 5110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/5110", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 5223", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/5223", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 5250", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/5250", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 5350", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/5350", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 5480", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/5480", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 6540", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/6540", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 6550", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/6550", 
+                    "name": ""
+                }, 
+                {
+                    "code": "EDU 6565", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/EDU/6565", 
+                    "name": ""
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/lscvsc/EDU"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 0030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/0030", 
+                    "name": "Basic Reading & Writing"
+                }, 
+                {
+                    "code": "ENG 0035", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/0035", 
+                    "name": "Reading & Writing Lab"
+                }, 
+                {
+                    "code": "ENG 1051", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/1051", 
+                    "name": "College Writing"
+                }, 
+                {
+                    "code": "ENG 1052", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/1052", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 1080", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/1080", 
+                    "name": "Expository Speaking"
+                }, 
+                {
+                    "code": "ENG 1310", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/1310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 2020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/2020", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 2040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/2040", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 2060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/2060", 
+                    "name": "Technical Writing"
+                }, 
+                {
+                    "code": "ENG 2130", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/2130", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 2140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/2140", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 2155", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/2155", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 2240", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/2240", 
+                    "name": "Greek and Roman Classics"
+                }, 
+                {
+                    "code": "ENG 2250", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/2250", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 2290", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/2290", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 2325", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/2325", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 2390", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/2390", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 2410", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/2410", 
+                    "name": "Mystery and Detective Fiction"
+                }, 
+                {
+                    "code": "ENG 2480", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/2480", 
+                    "name": "Survey of Literary Non-Fiction"
+                }, 
+                {
+                    "code": "ENG 2540", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/2540", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 2710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/2710", 
+                    "name": "Topics in English"
+                }, 
+                {
+                    "code": "ENG 3010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3010", 
+                    "name": "Advanced Composition"
+                }, 
+                {
+                    "code": "ENG 3040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3040", 
+                    "name": "Advanced News Writing"
+                }, 
+                {
+                    "code": "ENG 3050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3050", 
+                    "name": "Publication Production"
+                }, 
+                {
+                    "code": "ENG 3080", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3080", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 3110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3110", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 3135", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3135", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 3145", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3145", 
+                    "name": "Writing Narrative:Form and Theory"
+                }, 
+                {
+                    "code": "ENG 3150", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3150", 
+                    "name": "Creative Non-Fiction:From Pre-writing to Publication"
+                }, 
+                {
+                    "code": "ENG 3240", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3240", 
+                    "name": "The Bible as Literature"
+                }, 
+                {
+                    "code": "ENG 3250", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3250", 
+                    "name": "Myth,Folklore,and Fairytales"
+                }, 
+                {
+                    "code": "ENG 3330", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3330", 
+                    "name": "The Novel in England"
+                }, 
+                {
+                    "code": "ENG 3340", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3340", 
+                    "name": "The Novel in America"
+                }, 
+                {
+                    "code": "ENG 3385", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3385", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 3399", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3399", 
+                    "name": "Gender Issues in Literature and Culture"
+                }, 
+                {
+                    "code": "ENG 3420", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3420", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 3450", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3450", 
+                    "name": "Issues in British Literature and Culture 1750-present"
+                }, 
+                {
+                    "code": "ENG 3540", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3540", 
+                    "name": "Methods of Teaching Writing"
+                }, 
+                {
+                    "code": "ENG 3710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3710", 
+                    "name": "Topics in English"
+                }, 
+                {
+                    "code": "ENG 3811", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/3811", 
+                    "name": "Professional Experience"
+                }, 
+                {
+                    "code": "ENG 4020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/4020", 
+                    "name": "Law of the Media"
+                }, 
+                {
+                    "code": "ENG 4030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/4030", 
+                    "name": "Writing and Publication Workshop"
+                }, 
+                {
+                    "code": "ENG 4240", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/4240", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENG 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/4710", 
+                    "name": "Topics in English"
+                }, 
+                {
+                    "code": "ENG 4750", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/4750", 
+                    "name": "Senior Seminar"
+                }, 
+                {
+                    "code": "ENG 4810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/4810", 
+                    "name": "Internship in English"
+                }, 
+                {
+                    "code": "ENG 4900", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/4900", 
+                    "name": "Independent Study in English"
+                }, 
+                {
+                    "code": "ENG 4910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENG/4910", 
+                    "name": "Portfolio/Thesis"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/lscvsc/ENG"
+        }, 
+        {
+            "abbr": "ENV", 
+            "courses": [
+                {
+                    "code": "ENV 1000", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENV/1000", 
+                    "name": "First-Year Seminar in Sustainability"
+                }, 
+                {
+                    "code": "ENV 1080", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENV/1080", 
+                    "name": "Intro to Environmental Science"
+                }, 
+                {
+                    "code": "ENV 2040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENV/2040", 
+                    "name": "Introduction to Environmental Restoration"
+                }, 
+                {
+                    "code": "ENV 2060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENV/2060", 
+                    "name": "Energy,Environment,and Society"
+                }, 
+                {
+                    "code": "ENV 2090", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENV/2090", 
+                    "name": "Sustainable Living"
+                }, 
+                {
+                    "code": "ENV 3060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENV/3060", 
+                    "name": "Waste Reduction and Management"
+                }, 
+                {
+                    "code": "ENV 3070", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENV/3070", 
+                    "name": "Environmental Instrumentation"
+                }, 
+                {
+                    "code": "ENV 3110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENV/3110", 
+                    "name": "Environmental Pollution"
+                }, 
+                {
+                    "code": "ENV 3120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENV/3120", 
+                    "name": "Environmental Modeling"
+                }, 
+                {
+                    "code": "ENV 3140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENV/3140", 
+                    "name": "OSHA Safety Course"
+                }, 
+                {
+                    "code": "ENV 3320", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENV/3320", 
+                    "name": "Hydrogeology and Watershed Ecology"
+                }, 
+                {
+                    "code": "ENV 3710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/ENV/3710", 
+                    "name": "Special Topics in Environmental Science"
+                }
+            ], 
+            "name": "Environmental Science", 
+            "url": "http://www.chegg.com/courses/lscvsc/ENV"
+        }, 
+        {
+            "abbr": "FLL", 
+            "courses": [
+                {
+                    "code": "FLL 1010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLL/1010", 
+                    "name": "Immersion Experience"
+                }, 
+                {
+                    "code": "FLL 2710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLL/2710", 
+                    "name": "Topics in Foreign Language"
+                }, 
+                {
+                    "code": "FLL 2810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLL/2810", 
+                    "name": "Co-op in Foreign Language"
+                }, 
+                {
+                    "code": "FLL 2910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLL/2910", 
+                    "name": "Independent Study in Foreign Language"
+                }
+            ], 
+            "name": "Fll-Foreign Lang & Literatures", 
+            "url": "http://www.chegg.com/courses/lscvsc/FLL"
+        }, 
+        {
+            "abbr": "FLM", 
+            "courses": [
+                {
+                    "code": "FLM 1055", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLM/1055", 
+                    "name": "Film Analysis and App"
+                }, 
+                {
+                    "code": "FLM 2010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLM/2010", 
+                    "name": "IS: History of Cinema"
+                }, 
+                {
+                    "code": "FLM 2020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLM/2020", 
+                    "name": "Semiotics and Cinema"
+                }, 
+                {
+                    "code": "FLM 2710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLM/2710", 
+                    "name": "Special Topics in Film Studies"
+                }, 
+                {
+                    "code": "FLM 3010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLM/3010", 
+                    "name": "Auteur Seminar: Hitchcock"
+                }, 
+                {
+                    "code": "FLM 3610", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLM/3610", 
+                    "name": "Film Studies Seminar"
+                }, 
+                {
+                    "code": "FLM 3710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLM/3710", 
+                    "name": "Special Topics in Film Studies"
+                }, 
+                {
+                    "code": "FLM 4010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLM/4010", 
+                    "name": "Theory of Cinema"
+                }, 
+                {
+                    "code": "FLM 4610", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLM/4610", 
+                    "name": "Senior Thesis"
+                }, 
+                {
+                    "code": "FLM 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLM/4710", 
+                    "name": "Special Topics in Film Studies"
+                }, 
+                {
+                    "code": "FLM 4810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLM/4810", 
+                    "name": "Internship in Film Studies"
+                }, 
+                {
+                    "code": "FLM 5010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLM/5010", 
+                    "name": "Grad Auteur Seminar: Hitchcock"
+                }, 
+                {
+                    "code": "FLM 5710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FLM/5710", 
+                    "name": "Grad St: Semiotics & Cinema"
+                }
+            ], 
+            "name": "Film", 
+            "url": "http://www.chegg.com/courses/lscvsc/FLM"
+        }, 
+        {
+            "abbr": "FRE", 
+            "courses": [
+                {
+                    "code": "FRE 1111", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FRE/1111", 
+                    "name": "French I"
+                }, 
+                {
+                    "code": "FRE 1112", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FRE/1112", 
+                    "name": "Intermediate French"
+                }, 
+                {
+                    "code": "FRE 2910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/FRE/2910", 
+                    "name": "Independent Study in French"
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/lscvsc/FRE"
+        }, 
+        {
+            "abbr": "GEO", 
+            "courses": [
+                {
+                    "code": "GEO 1010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GEO/1010", 
+                    "name": ""
+                }, 
+                {
+                    "code": "GEO 2710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GEO/2710", 
+                    "name": "Topics in Geography"
+                }, 
+                {
+                    "code": "GEO 2910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GEO/2910", 
+                    "name": "Independent Study in Geography"
+                }
+            ], 
+            "name": "Geography", 
+            "url": "http://www.chegg.com/courses/lscvsc/GEO"
+        }, 
+        {
+            "abbr": "GER", 
+            "courses": [
+                {
+                    "code": "GER 1111", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GER/1111", 
+                    "name": "German I"
+                }
+            ], 
+            "name": "German", 
+            "url": "http://www.chegg.com/courses/lscvsc/GER"
+        }, 
+        {
+            "abbr": "GEY", 
+            "courses": [
+                {
+                    "code": "GEY 1111", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GEY/1111", 
+                    "name": "Geology I"
+                }, 
+                {
+                    "code": "GEY 1111L", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GEY/1111L", 
+                    "name": "Geology I Lab"
+                }, 
+                {
+                    "code": "GEY 2112", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GEY/2112", 
+                    "name": "Geology II"
+                }, 
+                {
+                    "code": "GEY 2710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GEY/2710", 
+                    "name": "Geology Modules"
+                }, 
+                {
+                    "code": "GEY 3035", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GEY/3035", 
+                    "name": "Aqueous Geochemistry"
+                }, 
+                {
+                    "code": "GEY 3040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GEY/3040", 
+                    "name": "Mineralogy"
+                }, 
+                {
+                    "code": "GEY 3110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GEY/3110", 
+                    "name": "Hydrogeology"
+                }, 
+                {
+                    "code": "GEY 3113", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GEY/3113", 
+                    "name": "Geology III"
+                }, 
+                {
+                    "code": "GEY 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GEY/4710", 
+                    "name": "Geology Modules"
+                }, 
+                {
+                    "code": "GEY 4830", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GEY/4830", 
+                    "name": "Environmental Field Geology"
+                }
+            ], 
+            "name": "Gey-Gerontology", 
+            "url": "http://www.chegg.com/courses/lscvsc/GEY"
+        }, 
+        {
+            "abbr": "GIS", 
+            "courses": [
+                {
+                    "code": "GIS 1010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GIS/1010", 
+                    "name": "Applied Techniques in Thematic Mapping and Data Base Management"
+                }, 
+                {
+                    "code": "GIS 1020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GIS/1020", 
+                    "name": "Applied Techniques in Geocode Mapping and Data Base Management"
+                }, 
+                {
+                    "code": "GIS 1030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GIS/1030", 
+                    "name": "Mapping Applications using U"
+                }, 
+                {
+                    "code": "GIS 1040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GIS/1040", 
+                    "name": "Applied Field Techniques in Global Positioning Systems and Data Base Management"
+                }, 
+                {
+                    "code": "GIS 1050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GIS/1050", 
+                    "name": "Intro to GIS"
+                }, 
+                {
+                    "code": "GIS 2010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GIS/2010", 
+                    "name": "Spatial and Network Analysis Techniques in Geographic Information Systems"
+                }, 
+                {
+                    "code": "GIS 2020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GIS/2020", 
+                    "name": "Computer Operating Systems for Geographic Information and Global Positioning Systems Peripherals"
+                }, 
+                {
+                    "code": "GIS 3010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GIS/3010", 
+                    "name": "Introduction to Analysis of Remote Satellite Digital Imagery"
+                }, 
+                {
+                    "code": "GIS 3020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GIS/3020", 
+                    "name": "Practical Applications with Satellite Digital Imagery"
+                }, 
+                {
+                    "code": "GIS 3830", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/GIS/3830", 
+                    "name": "Field Internship in GIS/GPS"
+                }
+            ], 
+            "name": "Geographic Information Science", 
+            "url": "http://www.chegg.com/courses/lscvsc/GIS"
+        }, 
+        {
+            "abbr": "HIS", 
+            "courses": [
+                {
+                    "code": "HIS 1011", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/1011", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 1020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/1020", 
+                    "name": "Comparative Civilization"
+                }, 
+                {
+                    "code": "HIS 1211", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/1211", 
+                    "name": "Amer Hist I"
+                }, 
+                {
+                    "code": "HIS 1212", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/1212", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 2240", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/2240", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 2330", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/2330", 
+                    "name": "Traditional Asia"
+                }, 
+                {
+                    "code": "HIS 2710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/2710", 
+                    "name": "Topics in History"
+                }, 
+                {
+                    "code": "HIS 2910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/2910", 
+                    "name": "Independent Study in History"
+                }, 
+                {
+                    "code": "HIS 3056", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/3056", 
+                    "name": "Race in America"
+                }, 
+                {
+                    "code": "HIS 3110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/3110", 
+                    "name": "Ante-Bellum America"
+                }, 
+                {
+                    "code": "HIS 3155", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/3155", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 3165", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/3165", 
+                    "name": "Vermont History"
+                }, 
+                {
+                    "code": "HIS 3310", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/3310", 
+                    "name": "18th & 19th Cent Euro"
+                }, 
+                {
+                    "code": "HIS 3330", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/3330", 
+                    "name": "Europe since 1914"
+                }, 
+                {
+                    "code": "HIS 3440", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/3440", 
+                    "name": "Modern Russia"
+                }, 
+                {
+                    "code": "HIS 3530", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/3530", 
+                    "name": "Modern East and Southeast Asia"
+                }, 
+                {
+                    "code": "HIS 3540", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/3540", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HIS 3550", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/3550", 
+                    "name": "Islamic World"
+                }, 
+                {
+                    "code": "HIS 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/4710", 
+                    "name": "Topics in History"
+                }, 
+                {
+                    "code": "HIS 4810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/4810", 
+                    "name": "Internship in History"
+                }, 
+                {
+                    "code": "HIS 4910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HIS/4910", 
+                    "name": "Independent Study in History"
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/lscvsc/HIS"
+        }, 
+        {
+            "abbr": "HUM", 
+            "courses": [
+                {
+                    "code": "HUM 1030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/HUM/1030", 
+                    "name": ""
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/lscvsc/HUM"
+        }, 
+        {
+            "abbr": "IDM", 
+            "courses": [
+                {
+                    "code": "IDM 1015", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/1015", 
+                    "name": "Introduction to Digital Media"
+                }, 
+                {
+                    "code": "IDM 2010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/2010", 
+                    "name": "Motion Graphics"
+                }, 
+                {
+                    "code": "IDM 2050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/2050", 
+                    "name": "Web Design and Digital Imaging"
+                }, 
+                {
+                    "code": "IDM 2160", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/2160", 
+                    "name": "Instructional Technology"
+                }, 
+                {
+                    "code": "IDM 3020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/3020", 
+                    "name": "Virtual Arts and Sciences"
+                }, 
+                {
+                    "code": "IDM 3030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/3030", 
+                    "name": "e-Business Fundamentals"
+                }, 
+                {
+                    "code": "IDM 3050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/3050", 
+                    "name": "Non-Linear Video Editing"
+                }, 
+                {
+                    "code": "IDM 3060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/3060", 
+                    "name": "Basic 3D Modeling"
+                }, 
+                {
+                    "code": "IDM 3070", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/3070", 
+                    "name": "Basic 3D Animation"
+                }, 
+                {
+                    "code": "IDM 3080", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/3080", 
+                    "name": "Advanced Motion Graphics"
+                }, 
+                {
+                    "code": "IDM 3810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/3810", 
+                    "name": "Special Interests On The Web"
+                }, 
+                {
+                    "code": "IDM 4010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/4010", 
+                    "name": "Multimedia Authoring"
+                }, 
+                {
+                    "code": "IDM 4030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/4030", 
+                    "name": "Digital Media Studio"
+                }, 
+                {
+                    "code": "IDM 4040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/4040", 
+                    "name": "Advanced 3D Animation"
+                }, 
+                {
+                    "code": "IDM 4045", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/4045", 
+                    "name": "Advanced Motion Graphics Tools"
+                }, 
+                {
+                    "code": "IDM 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/4710", 
+                    "name": "Special Topics in Digital Media"
+                }, 
+                {
+                    "code": "IDM 4810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/4810", 
+                    "name": "Senior Internship"
+                }, 
+                {
+                    "code": "IDM 4990", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/IDM/4990", 
+                    "name": "Portfolio"
+                }
+            ], 
+            "name": "Industrial Management", 
+            "url": "http://www.chegg.com/courses/lscvsc/IDM"
+        }, 
+        {
+            "abbr": "INT", 
+            "courses": [
+                {
+                    "code": "INT 1010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/INT/1010", 
+                    "name": "New Student Seminar"
+                }, 
+                {
+                    "code": "INT 1020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/INT/1020", 
+                    "name": "Academic Community"
+                }, 
+                {
+                    "code": "INT 1030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/INT/1030", 
+                    "name": "Experiencing Academic and Cultural Life"
+                }, 
+                {
+                    "code": "INT 1040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/INT/1040", 
+                    "name": "Introduction to College"
+                }, 
+                {
+                    "code": "INT 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/INT/4710", 
+                    "name": "Topics in Interdisciplinary Studies"
+                }, 
+                {
+                    "code": "INT 4720", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/INT/4720", 
+                    "name": "Interdisciplinary Seminars"
+                }, 
+                {
+                    "code": "INT 4740", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/INT/4740", 
+                    "name": "New Student Seminar Practicum"
+                }
+            ], 
+            "name": "Interdisciplinary", 
+            "url": "http://www.chegg.com/courses/lscvsc/INT"
+        }, 
+        {
+            "abbr": "MAT", 
+            "courses": [
+                {
+                    "code": "MAT 0010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/0010", 
+                    "name": "Basic Math Review"
+                }, 
+                {
+                    "code": "MAT 0210", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/0210", 
+                    "name": "Basic Math"
+                }, 
+                {
+                    "code": "MAT 0221", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/0221", 
+                    "name": "Basic Algebra"
+                }, 
+                {
+                    "code": "MAT 1020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/1020", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MAT 1060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/1060", 
+                    "name": "Prob Solving With Math"
+                }, 
+                {
+                    "code": "MAT 1221", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/1221", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 1410", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/1410", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 1531", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/1531", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 2010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/2010", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 2021", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/2021", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 2115", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/2115", 
+                    "name": "Number and Operation in K"
+                }, 
+                {
+                    "code": "MAT 2210", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/2210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 2532", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/2532", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 2543", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/2543", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 3010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/3010", 
+                    "name": "History of Mathematics"
+                }, 
+                {
+                    "code": "MAT 3025", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/3025", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 3130", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/3130", 
+                    "name": "Statistical Theory and Applications"
+                }, 
+                {
+                    "code": "MAT 3210", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/3210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 3310", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/3310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 3730", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/3730", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 3740", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/3740", 
+                    "name": "Topics in Number Theory"
+                }, 
+                {
+                    "code": "MAT 3810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/3810", 
+                    "name": "Cooperative Field Work"
+                }, 
+                {
+                    "code": "MAT 4040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/4040", 
+                    "name": "Complex Analysis"
+                }, 
+                {
+                    "code": "MAT 4060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/4060", 
+                    "name": "Real Analysis"
+                }, 
+                {
+                    "code": "MAT 4120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/4120", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 4130", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/4130", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MAT 4140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/4140", 
+                    "name": "Geometry"
+                }, 
+                {
+                    "code": "MAT 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/4710", 
+                    "name": "Special Studies in Math"
+                }, 
+                {
+                    "code": "MAT 4990", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MAT/4990", 
+                    "name": "Portfolio"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/lscvsc/MAT"
+        }, 
+        {
+            "abbr": "MET", 
+            "courses": [
+                {
+                    "code": "MET 1010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/1010", 
+                    "name": "Elementary Meteorology"
+                }, 
+                {
+                    "code": "MET 1030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/1030", 
+                    "name": "Elementary Oceanography"
+                }, 
+                {
+                    "code": "MET 1040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/1040", 
+                    "name": "Field Experience"
+                }, 
+                {
+                    "code": "MET 1050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/1050", 
+                    "name": "Problem Solving in Atmospheric Science"
+                }, 
+                {
+                    "code": "MET 1211", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/1211", 
+                    "name": "Survey of Meteorology I"
+                }, 
+                {
+                    "code": "MET 1211L", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/1211L", 
+                    "name": "Survey of Meteorology I Lab"
+                }, 
+                {
+                    "code": "MET 2050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/2050", 
+                    "name": "Statistical Applications in Meteorology"
+                }, 
+                {
+                    "code": "MET 2110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/2110", 
+                    "name": "Weather Data and Analysis"
+                }, 
+                {
+                    "code": "MET 2210", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/2210", 
+                    "name": "Geophysical,Human Interactions"
+                }, 
+                {
+                    "code": "MET 3020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/3020", 
+                    "name": "Practicum in Forecasting and Broadcasting"
+                }, 
+                {
+                    "code": "MET 3110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/3110", 
+                    "name": "Remote Sensing"
+                }, 
+                {
+                    "code": "MET 3140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/3140", 
+                    "name": "Physical Meteorology"
+                }, 
+                {
+                    "code": "MET 3220", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/3220", 
+                    "name": "Physical Oceanography"
+                }, 
+                {
+                    "code": "MET 3230", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/3230", 
+                    "name": "Aviation Meteorology"
+                }, 
+                {
+                    "code": "MET 3270", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/3270", 
+                    "name": "Television Weather Graphics"
+                }, 
+                {
+                    "code": "MET 3280", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/3280", 
+                    "name": "Seminar in Atmospheric Science Research"
+                }, 
+                {
+                    "code": "MET 3310", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/3310", 
+                    "name": "Forecasting Applications"
+                }, 
+                {
+                    "code": "MET 3321", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/3321", 
+                    "name": "Atmospheric Dynamics I"
+                }, 
+                {
+                    "code": "MET 3322", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/3322", 
+                    "name": "Atmospheric Dynamics II"
+                }, 
+                {
+                    "code": "MET 3331", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/3331", 
+                    "name": "Analysis and Forecasting I"
+                }, 
+                {
+                    "code": "MET 3332", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/3332", 
+                    "name": "Analysis and Forecasting II"
+                }, 
+                {
+                    "code": "MET 3410", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/3410", 
+                    "name": "GIS Project Using Geophysical Data I"
+                }, 
+                {
+                    "code": "MET 3411", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/3411", 
+                    "name": "GIS Project Using Geophysical Data II"
+                }, 
+                {
+                    "code": "MET 4010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4010", 
+                    "name": "Television Weathercasting"
+                }, 
+                {
+                    "code": "MET 4020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4020", 
+                    "name": "Tropical Meteorology"
+                }, 
+                {
+                    "code": "MET 4030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4030", 
+                    "name": "Synoptic Climatology"
+                }, 
+                {
+                    "code": "MET 4040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4040", 
+                    "name": "Hydrometeorology"
+                }, 
+                {
+                    "code": "MET 4050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4050", 
+                    "name": "Air Pollution Meteorology"
+                }, 
+                {
+                    "code": "MET 4060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4060", 
+                    "name": "Boundary Layer Meteorology"
+                }, 
+                {
+                    "code": "MET 4071", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4071", 
+                    "name": "Broadcast Meteorologist I"
+                }, 
+                {
+                    "code": "MET 4072", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4072", 
+                    "name": "Broadcast Meteorologist II MET 4110-Numerical Weather Prediction"
+                }, 
+                {
+                    "code": "MET 4120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4120", 
+                    "name": "Mesoscale Meteorology"
+                }, 
+                {
+                    "code": "MET 4410", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4410", 
+                    "name": "Workshop on Weathercasting Techniques"
+                }, 
+                {
+                    "code": "MET 4610", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4610", 
+                    "name": "Mathematical Studies in Meteorology I"
+                }, 
+                {
+                    "code": "MET 4620", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4620", 
+                    "name": "Mathematical Studies in Meteorology II"
+                }, 
+                {
+                    "code": "MET 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4710", 
+                    "name": "Topics in Meteorology"
+                }, 
+                {
+                    "code": "MET 4712", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4712", 
+                    "name": "Thesis in Atmospheric Sciences I"
+                }, 
+                {
+                    "code": "MET 4713", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4713", 
+                    "name": "Thesis in Atmospheric Sciences II"
+                }, 
+                {
+                    "code": "MET 4820", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4820", 
+                    "name": "Co-op in Meteorology"
+                }, 
+                {
+                    "code": "MET 4900", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MET/4900", 
+                    "name": "Independent Study,Directed Study,and Special Projects in Meteorology"
+                }
+            ], 
+            "name": "Met-Mechanical Engr Tech", 
+            "url": "http://www.chegg.com/courses/lscvsc/MET"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 1010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/1010", 
+                    "name": "Music Appreciation"
+                }, 
+                {
+                    "code": "MUS 1030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/1030", 
+                    "name": "Music Fundamentals"
+                }, 
+                {
+                    "code": "MUS 1041", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/1041", 
+                    "name": "Class Piano I"
+                }, 
+                {
+                    "code": "MUS 1042", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/1042", 
+                    "name": "Class Piano II"
+                }, 
+                {
+                    "code": "MUS 1110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/1110", 
+                    "name": "Radio Live"
+                }, 
+                {
+                    "code": "MUS 1231", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/1231", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 2070", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/2070", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 2160", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/2160", 
+                    "name": "Introduction to Technology in Music"
+                }, 
+                {
+                    "code": "MUS 2170", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/2170", 
+                    "name": "Introduction to Audio Engineering"
+                }, 
+                {
+                    "code": "MUS 2180", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/2180", 
+                    "name": "Studio Production and Maintenance"
+                }, 
+                {
+                    "code": "MUS 2220", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/2220", 
+                    "name": "Music Ensemble: Chorus"
+                }, 
+                {
+                    "code": "MUS 2341", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/2341", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 2360", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/2360", 
+                    "name": "Introduction to the Music Industry"
+                }, 
+                {
+                    "code": "MUS 2410", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/2410", 
+                    "name": "Collab Creativity in Music"
+                }, 
+                {
+                    "code": "MUS 2710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/2710", 
+                    "name": "Special Topics in Music"
+                }, 
+                {
+                    "code": "MUS 2910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/2910", 
+                    "name": "Independent Study in Music"
+                }, 
+                {
+                    "code": "MUS 3055", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/3055", 
+                    "name": "Rock & Roll: Form & Style"
+                }, 
+                {
+                    "code": "MUS 3170", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/3170", 
+                    "name": "Recording and Post-Production Techniques"
+                }, 
+                {
+                    "code": "MUS 3330", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/3330", 
+                    "name": ""
+                }, 
+                {
+                    "code": "MUS 3350", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/3350", 
+                    "name": "Music of the Americas"
+                }, 
+                {
+                    "code": "MUS 3810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/3810", 
+                    "name": "Music Industry Production Co-Op"
+                }, 
+                {
+                    "code": "MUS 4040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/4040", 
+                    "name": "Auditory Perception and Psychoacoustics"
+                }, 
+                {
+                    "code": "MUS 4410", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/4410", 
+                    "name": "Collaborative Creativity in Music"
+                }, 
+                {
+                    "code": "MUS 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/4710", 
+                    "name": "Special Topics in Music"
+                }, 
+                {
+                    "code": "MUS 4810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/4810", 
+                    "name": "Music Industry Internship"
+                }, 
+                {
+                    "code": "MUS 4910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/MUS/4910", 
+                    "name": "Independent Study in Music"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/lscvsc/MUS"
+        }, 
+        {
+            "abbr": "OER", 
+            "courses": [
+                {
+                    "code": "OER 1010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/1010", 
+                    "name": "Leisure and Society"
+                }, 
+                {
+                    "code": "OER 1020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/1020", 
+                    "name": "Problem Solving Techniques"
+                }, 
+                {
+                    "code": "OER 1080", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/1080", 
+                    "name": "Leadership Theory and Practice"
+                }, 
+                {
+                    "code": "OER 1110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/1110", 
+                    "name": "Introduction to Adventure Programming"
+                }, 
+                {
+                    "code": "OER 1120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/1120", 
+                    "name": "Outdoor Adventure Skills"
+                }, 
+                {
+                    "code": "OER 1132", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/1132", 
+                    "name": "Outdoor Adventure Skills"
+                }, 
+                {
+                    "code": "OER 1140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/1140", 
+                    "name": "Introduction to Ski Resort Management"
+                }, 
+                {
+                    "code": "OER 1310", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/1310", 
+                    "name": "Outdoor Adventure Skills"
+                }, 
+                {
+                    "code": "OER 1410", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/1410", 
+                    "name": "Introduction to Natural Resource GIS Mapping and Planning"
+                }, 
+                {
+                    "code": "OER 1810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/1810", 
+                    "name": "Outdoor Education/Recreation Practicum"
+                }, 
+                {
+                    "code": "OER 2010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/2010", 
+                    "name": "Leisure Service Delivery Systems"
+                }, 
+                {
+                    "code": "OER 2040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/2040", 
+                    "name": "Adventure Programming Leadership Skills"
+                }, 
+                {
+                    "code": "OER 2060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/2060", 
+                    "name": "Wilderness First Responder Procedures"
+                }, 
+                {
+                    "code": "OER 2120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/2120", 
+                    "name": "Recreation Resource Impacts"
+                }, 
+                {
+                    "code": "OER 2130", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/2130", 
+                    "name": "Wilderness Mind"
+                }, 
+                {
+                    "code": "OER 2210", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/2210", 
+                    "name": "Lift Functions and Maintenance"
+                }, 
+                {
+                    "code": "OER 2820", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/2820", 
+                    "name": "Field Practicum in Natural Resource GIS Mapping and Planning"
+                }, 
+                {
+                    "code": "OER 2830", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/2830", 
+                    "name": "Field Practicum in Natural Resource GIS Mapping and Planning"
+                }, 
+                {
+                    "code": "OER 2841", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/2841", 
+                    "name": "Field Practicum in Ski Resort Management"
+                }, 
+                {
+                    "code": "OER 2842", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/2842", 
+                    "name": "Field Practicum in Ski Resort Management"
+                }, 
+                {
+                    "code": "OER 2850", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/2850", 
+                    "name": "Adventure Programming Leadership Skills"
+                }, 
+                {
+                    "code": "OER 3020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/3020", 
+                    "name": "Program Planning and Delivery"
+                }, 
+                {
+                    "code": "OER 3050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/3050", 
+                    "name": "Risk Management in the Resort Industry"
+                }, 
+                {
+                    "code": "OER 3060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/3060", 
+                    "name": "Risk Management in Adventure Programming"
+                }, 
+                {
+                    "code": "OER 3080", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/3080", 
+                    "name": "Environmental Policy,Politics and the Law"
+                }, 
+                {
+                    "code": "OER 3110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/3110", 
+                    "name": "Public Relations"
+                }, 
+                {
+                    "code": "OER 3140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/3140", 
+                    "name": "Outdoor Expedition"
+                }, 
+                {
+                    "code": "OER 3810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/3810", 
+                    "name": "Co-op in Recreation"
+                }, 
+                {
+                    "code": "OER 3910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/3910", 
+                    "name": "Research Design and Analysis"
+                }, 
+                {
+                    "code": "OER 4020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/4020", 
+                    "name": "Recreation Management Principles and Practices"
+                }, 
+                {
+                    "code": "OER 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/4710", 
+                    "name": "Special Topics in Recreation Industry"
+                }, 
+                {
+                    "code": "OER 4720", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/4720", 
+                    "name": "Management Intern Seminar"
+                }, 
+                {
+                    "code": "OER 4730", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/4730", 
+                    "name": "Senior Thesis"
+                }, 
+                {
+                    "code": "OER 4820", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/OER/4820", 
+                    "name": "Management Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lscvsc/OER"
+        }, 
+        {
+            "abbr": "PED", 
+            "courses": [
+                {
+                    "code": "PED 1030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/1030", 
+                    "name": "Rhythmic Fundamentals"
+                }, 
+                {
+                    "code": "PED 1050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/1050", 
+                    "name": "Lifeguard Training"
+                }, 
+                {
+                    "code": "PED 1060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/1060", 
+                    "name": "Water Safety"
+                }, 
+                {
+                    "code": "PED 1120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/1120", 
+                    "name": "Swim Conditioning"
+                }, 
+                {
+                    "code": "PED 1140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/1140", 
+                    "name": "Yoga I"
+                }, 
+                {
+                    "code": "PED 1142", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/1142", 
+                    "name": "Yoga II"
+                }, 
+                {
+                    "code": "PED 1510", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/1510", 
+                    "name": "Praxis and Portfolio Prep"
+                }, 
+                {
+                    "code": "PED 2061", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/2061", 
+                    "name": "Educational Sport I"
+                }, 
+                {
+                    "code": "PED 2062", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/2062", 
+                    "name": "Educational Sport II"
+                }, 
+                {
+                    "code": "PED 2260", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/2260", 
+                    "name": "Gymnastics Stunts and Tumbling"
+                }, 
+                {
+                    "code": "PED 2330", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/2330", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PED 2820", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/2820", 
+                    "name": "Sophomore Field Experience"
+                }, 
+                {
+                    "code": "PED 3010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/3010", 
+                    "name": "Coaching Methods - Baseball"
+                }, 
+                {
+                    "code": "PED 3020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/3020", 
+                    "name": "Sports Officiating"
+                }, 
+                {
+                    "code": "PED 3050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/3050", 
+                    "name": "Recreational Sports Administration"
+                }, 
+                {
+                    "code": "PED 3070", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/3070", 
+                    "name": "Meth Teach Ele Pe"
+                }, 
+                {
+                    "code": "PED 3080", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/3080", 
+                    "name": "K-5 Physical Education"
+                }, 
+                {
+                    "code": "PED 3140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/3140", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PED 3145", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/3145", 
+                    "name": "Curr Design in Phys Ed"
+                }, 
+                {
+                    "code": "PED 3150", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/3150", 
+                    "name": "Methods of Teaching Health"
+                }, 
+                {
+                    "code": "PED 4010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/4010", 
+                    "name": "Legal and Ethical Issues in Sports Management"
+                }, 
+                {
+                    "code": "PED 4810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/4810", 
+                    "name": "Internship in Physical Education"
+                }, 
+                {
+                    "code": "PED 4830", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PED/4830", 
+                    "name": "Phys Educ Practicum"
+                }
+            ], 
+            "name": "Physical Ed", 
+            "url": "http://www.chegg.com/courses/lscvsc/PED"
+        }, 
+        {
+            "abbr": "PHI", 
+            "courses": [
+                {
+                    "code": "PHI 1010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/1010", 
+                    "name": "Introduction to Philosophy"
+                }, 
+                {
+                    "code": "PHI 1020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/1020", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHI 1050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/1050", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHI 1060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/1060", 
+                    "name": "Prob Solv & Creative Thinking"
+                }, 
+                {
+                    "code": "PHI 2030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/2030", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHI 2050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/2050", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHI 2070", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/2070", 
+                    "name": "Philosophy of Film and Television"
+                }, 
+                {
+                    "code": "PHI 2090", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/2090", 
+                    "name": "Popular Culture and Philosophy"
+                }, 
+                {
+                    "code": "PHI 3010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/3010", 
+                    "name": "Political Philosophy"
+                }, 
+                {
+                    "code": "PHI 3130", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/3130", 
+                    "name": "Philosophies of Gender"
+                }, 
+                {
+                    "code": "PHI 3140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/3140", 
+                    "name": "Philosophy of Art"
+                }, 
+                {
+                    "code": "PHI 3399", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/3399", 
+                    "name": "Gender Issues in Philosophy"
+                }, 
+                {
+                    "code": "PHI 4010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/4010", 
+                    "name": "Philosophy and Society"
+                }, 
+                {
+                    "code": "PHI 4610", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/4610", 
+                    "name": "Senior Thesis"
+                }, 
+                {
+                    "code": "PHI 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/4710", 
+                    "name": "Topics in Philosophy"
+                }, 
+                {
+                    "code": "PHI 4810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/4810", 
+                    "name": "Internship in Philosophy"
+                }, 
+                {
+                    "code": "PHI 4910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/4910", 
+                    "name": "Independent Study in Philosophy"
+                }, 
+                {
+                    "code": "PHI 5140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHI/5140", 
+                    "name": "Grad Philosophies of Art"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/lscvsc/PHI"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 1120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHY/1120", 
+                    "name": "Introduction to Astronomy"
+                }, 
+                {
+                    "code": "PHY 2010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHY/2010", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHY 2020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHY/2020", 
+                    "name": "Energy,Environment,and Society"
+                }, 
+                {
+                    "code": "PHY 2025", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHY/2025", 
+                    "name": "Physics for the Environment"
+                }, 
+                {
+                    "code": "PHY 2030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHY/2030", 
+                    "name": "The Universe"
+                }, 
+                {
+                    "code": "PHY 2031", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHY/2031", 
+                    "name": "Fund Physics I"
+                }, 
+                {
+                    "code": "PHY 2031L", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHY/2031L", 
+                    "name": "Fund Physics I Lab"
+                }, 
+                {
+                    "code": "PHY 2032", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHY/2032", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PHY 2061", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHY/2061", 
+                    "name": "Classical Physics I"
+                }, 
+                {
+                    "code": "PHY 2061L", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHY/2061L", 
+                    "name": "Classic Physics I Lab"
+                }, 
+                {
+                    "code": "PHY 2063", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHY/2063", 
+                    "name": "Classic Physics III"
+                }, 
+                {
+                    "code": "PHY 2120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHY/2120", 
+                    "name": "Physics Modules"
+                }, 
+                {
+                    "code": "PHY 3120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHY/3120", 
+                    "name": "Modern Physics"
+                }, 
+                {
+                    "code": "PHY 4110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHY/4110", 
+                    "name": "Physics Modules"
+                }, 
+                {
+                    "code": "PHY 4530", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PHY/4530", 
+                    "name": "Research in Physics"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/lscvsc/PHY"
+        }, 
+        {
+            "abbr": "POS", 
+            "courses": [
+                {
+                    "code": "POS 1010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/1010", 
+                    "name": "Intro to Pol Sci"
+                }, 
+                {
+                    "code": "POS 1020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/1020", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POS 1030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/1030", 
+                    "name": "Comparative Government"
+                }, 
+                {
+                    "code": "POS 2040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/2040", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POS 2710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/2710", 
+                    "name": "Topics in Political Science"
+                }, 
+                {
+                    "code": "POS 2910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/2910", 
+                    "name": "Independent Study in Political Science"
+                }, 
+                {
+                    "code": "POS 3020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/3020", 
+                    "name": "Problems in International Relations"
+                }, 
+                {
+                    "code": "POS 3060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/3060", 
+                    "name": "Vermont Politics"
+                }, 
+                {
+                    "code": "POS 3140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/3140", 
+                    "name": "Government,Politics and the Press"
+                }, 
+                {
+                    "code": "POS 3170", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/3170", 
+                    "name": "U.S.Constitutional Law"
+                }, 
+                {
+                    "code": "POS 3210", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/3210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POS 3260", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/3260", 
+                    "name": "Middle East Politics and Government"
+                }, 
+                {
+                    "code": "POS 3310", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/3310", 
+                    "name": ""
+                }, 
+                {
+                    "code": "POS 3410", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/3410", 
+                    "name": "African Politics"
+                }, 
+                {
+                    "code": "POS 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/4710", 
+                    "name": "Topics in Political Science"
+                }, 
+                {
+                    "code": "POS 4810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/4810", 
+                    "name": "Internship in Political Science"
+                }, 
+                {
+                    "code": "POS 4910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/POS/4910", 
+                    "name": "IS: Am Govt & Middle East"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/lscvsc/POS"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 1010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/1010", 
+                    "name": "Intro to Psych"
+                }, 
+                {
+                    "code": "PSY 1040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/1040", 
+                    "name": "Human Interaction"
+                }, 
+                {
+                    "code": "PSY 1050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/1050", 
+                    "name": "Human Growth & Dev"
+                }, 
+                {
+                    "code": "PSY 1130", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/1130", 
+                    "name": "Intro to Substance Abuse"
+                }, 
+                {
+                    "code": "PSY 2040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/2040", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "PSY 2090", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/2090", 
+                    "name": "Lifespan Across Cultures"
+                }, 
+                {
+                    "code": "PSY 2120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/2120", 
+                    "name": "Human Sexuality"
+                }, 
+                {
+                    "code": "PSY 2270", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/2270", 
+                    "name": "Intro Human Services"
+                }, 
+                {
+                    "code": "PSY 2411", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/2411", 
+                    "name": "Research Meth/Psych"
+                }, 
+                {
+                    "code": "PSY 2450", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/2450", 
+                    "name": "Sports Psychology"
+                }, 
+                {
+                    "code": "PSY 2811", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/2811", 
+                    "name": "Field Work I"
+                }, 
+                {
+                    "code": "PSY 2812", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/2812", 
+                    "name": "Fieldwork Seminar"
+                }, 
+                {
+                    "code": "PSY 3010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/3010", 
+                    "name": "Theories of Personality"
+                }, 
+                {
+                    "code": "PSY 3040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/3040", 
+                    "name": "Cognitive Psychology"
+                }, 
+                {
+                    "code": "PSY 3050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/3050", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 3070", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/3070", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSY 3080", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/3080", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 3090", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/3090", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 3110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/3110", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 3210", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/3210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 3230", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/3230", 
+                    "name": "Psychology of Gender"
+                }, 
+                {
+                    "code": "PSY 3260", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/3260", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 3399", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/3399", 
+                    "name": "Gender Issues in Psychology"
+                }, 
+                {
+                    "code": "PSY 3811", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/3811", 
+                    "name": "Professional Experience"
+                }, 
+                {
+                    "code": "PSY 4010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4010", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 4020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4020", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 4110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4110", 
+                    "name": "Creative Therapies"
+                }, 
+                {
+                    "code": "PSY 4120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4120", 
+                    "name": "History of Psychology"
+                }, 
+                {
+                    "code": "PSY 4130", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4130", 
+                    "name": "Historical Uses and Abuses of Intelligence Testing"
+                }, 
+                {
+                    "code": "PSY 4140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4140", 
+                    "name": "Women in Psychology"
+                }, 
+                {
+                    "code": "PSY 4145", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4145", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 4150", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4150", 
+                    "name": "Understanding and Working with At-Risk Families"
+                }, 
+                {
+                    "code": "PSY 4151", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4151", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 4160", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4160", 
+                    "name": "Counseling with Groups"
+                }, 
+                {
+                    "code": "PSY 4170", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4170", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 4180", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4180", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 4210", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4710", 
+                    "name": "Special Topics in Psychology"
+                }, 
+                {
+                    "code": "PSY 4720", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4720", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 4820", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4820", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSY 4900", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4900", 
+                    "name": "Independent Study"
+                }, 
+                {
+                    "code": "PSY 4921", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4921", 
+                    "name": "Senior Research I"
+                }, 
+                {
+                    "code": "PSY 4922", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/PSY/4922", 
+                    "name": "Senior Research II"
+                }
+            ], 
+            "name": "Clinical Counseling", 
+            "url": "http://www.chegg.com/courses/lscvsc/PSY"
+        }, 
+        {
+            "abbr": "RUS", 
+            "courses": [
+                {
+                    "code": "RUS 1011", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/RUS/1011", 
+                    "name": "Russian I"
+                }, 
+                {
+                    "code": "RUS 1012", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/RUS/1012", 
+                    "name": "Russian II"
+                }
+            ], 
+            "name": "Russian", 
+            "url": "http://www.chegg.com/courses/lscvsc/RUS"
+        }, 
+        {
+            "abbr": "SCI", 
+            "courses": [
+                {
+                    "code": "SCI 1030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SCI/1030", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SCI 1070", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SCI/1070", 
+                    "name": "Food for Thought"
+                }, 
+                {
+                    "code": "SCI 2310", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SCI/2310", 
+                    "name": "Phy Sci in the Classrroom"
+                }, 
+                {
+                    "code": "SCI 4010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SCI/4010", 
+                    "name": "History of Science"
+                }, 
+                {
+                    "code": "SCI 4030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SCI/4030", 
+                    "name": "Applied Science"
+                }, 
+                {
+                    "code": "SCI 4610", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SCI/4610", 
+                    "name": "Senior Seminar"
+                }, 
+                {
+                    "code": "SCI 4810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SCI/4810", 
+                    "name": "Internship in Environmental Science"
+                }, 
+                {
+                    "code": "SCI 4900", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SCI/4900", 
+                    "name": "Research in Science"
+                }
+            ], 
+            "name": "Science - Cps", 
+            "url": "http://www.chegg.com/courses/lscvsc/SCI"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 1010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SOC/1010", 
+                    "name": "Intro to Sociology"
+                }, 
+                {
+                    "code": "SOC 2040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SOC/2040", 
+                    "name": "Race,Ethnicity,Class,and Gender"
+                }, 
+                {
+                    "code": "SOC 2220", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SOC/2220", 
+                    "name": "The Family in Society"
+                }, 
+                {
+                    "code": "SOC 2710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SOC/2710", 
+                    "name": "Topics in Sociology"
+                }, 
+                {
+                    "code": "SOC 2910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SOC/2910", 
+                    "name": "Independent Study in Sociology"
+                }, 
+                {
+                    "code": "SOC 3050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SOC/3050", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 3320", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SOC/3320", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SOC/4710", 
+                    "name": "Topics in Sociology"
+                }, 
+                {
+                    "code": "SOC 4810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SOC/4810", 
+                    "name": "Internship in Soc"
+                }, 
+                {
+                    "code": "SOC 4910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SOC/4910", 
+                    "name": "Independent Study in Sociology"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/lscvsc/SOC"
+        }, 
+        {
+            "abbr": "SPA", 
+            "courses": [
+                {
+                    "code": "SPA 1011", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SPA/1011", 
+                    "name": "Spanish I"
+                }, 
+                {
+                    "code": "SPA 1012", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SPA/1012", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SPA 2910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SPA/2910", 
+                    "name": "Independent Study in Spanish"
+                }
+            ], 
+            "name": "Speech Pathology And Audiology", 
+            "url": "http://www.chegg.com/courses/lscvsc/SPA"
+        }, 
+        {
+            "abbr": "SSC", 
+            "courses": [
+                {
+                    "code": "SSC 1030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SSC/1030", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SSC 2020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SSC/2020", 
+                    "name": "Experience Russia"
+                }, 
+                {
+                    "code": "SSC 2040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SSC/2040", 
+                    "name": "Experience Brazil"
+                }, 
+                {
+                    "code": "SSC 2050", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SSC/2050", 
+                    "name": "Experience China"
+                }, 
+                {
+                    "code": "SSC 2060", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SSC/2060", 
+                    "name": "Experience Cuba"
+                }, 
+                {
+                    "code": "SSC 2110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SSC/2110", 
+                    "name": "Globalization and Development"
+                }, 
+                {
+                    "code": "SSC 3020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SSC/3020", 
+                    "name": "Research Design & Analysis"
+                }, 
+                {
+                    "code": "SSC 3399", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SSC/3399", 
+                    "name": "Gender Issues in Social Sciences"
+                }, 
+                {
+                    "code": "SSC 3820", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SSC/3820", 
+                    "name": "Global Studies Fieldwork"
+                }, 
+                {
+                    "code": "SSC 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SSC/4710", 
+                    "name": "Topics in Social Science"
+                }, 
+                {
+                    "code": "SSC 4720", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SSC/4720", 
+                    "name": "Senior Thesis/Capstone"
+                }, 
+                {
+                    "code": "SSC 4740", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/SSC/4740", 
+                    "name": "IS:Social Science Sem"
+                }
+            ], 
+            "name": "Interdisciplinary Social Sci", 
+            "url": "http://www.chegg.com/courses/lscvsc/SSC"
+        }, 
+        {
+            "abbr": "THA", 
+            "courses": [
+                {
+                    "code": "THA 1040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/THA/1040", 
+                    "name": ""
+                }, 
+                {
+                    "code": "THA 1041", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/THA/1041", 
+                    "name": "Introduction to Theatre"
+                }, 
+                {
+                    "code": "THA 2080", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/THA/2080", 
+                    "name": "Theatre Arts in The Dramatic Format"
+                }, 
+                {
+                    "code": "THA 2121", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/THA/2121", 
+                    "name": "Acting I"
+                }, 
+                {
+                    "code": "THA 2122", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/THA/2122", 
+                    "name": "Acting II"
+                }, 
+                {
+                    "code": "THA 2710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/THA/2710", 
+                    "name": "Special Topics in Theatre"
+                }, 
+                {
+                    "code": "THA 2840", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/THA/2840", 
+                    "name": "Theatre Performance"
+                }, 
+                {
+                    "code": "THA 2845", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/THA/2845", 
+                    "name": "Theatre Tech Crew"
+                }, 
+                {
+                    "code": "THA 3070", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/THA/3070", 
+                    "name": "Voices of the American Theatre"
+                }, 
+                {
+                    "code": "THA 3080", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/THA/3080", 
+                    "name": "Founders of Modern Drama"
+                }, 
+                {
+                    "code": "THA 3090", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/THA/3090", 
+                    "name": "History of Musical Theatre"
+                }, 
+                {
+                    "code": "THA 3211", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/THA/3211", 
+                    "name": "Directing I"
+                }, 
+                {
+                    "code": "THA 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/THA/4710", 
+                    "name": "Special Topics in Theatre"
+                }, 
+                {
+                    "code": "THA 4810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/THA/4810", 
+                    "name": "Theatre Arts Internship"
+                }, 
+                {
+                    "code": "THA 4820", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/THA/4820", 
+                    "name": "Professional Theatre Internship"
+                }, 
+                {
+                    "code": "THA 4910", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/THA/4910", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Theater Arts", 
+            "url": "http://www.chegg.com/courses/lscvsc/THA"
+        }, 
+        {
+            "abbr": "TVS", 
+            "courses": [
+                {
+                    "code": "TVS 1010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/1010", 
+                    "name": "Introduction to Media Communication"
+                }, 
+                {
+                    "code": "TVS 2110", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/2110", 
+                    "name": "Voice Production"
+                }, 
+                {
+                    "code": "TVS 2120", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/2120", 
+                    "name": "Television Studio Production"
+                }, 
+                {
+                    "code": "TVS 2130", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/2130", 
+                    "name": "Introduction to Broadcast Journalism"
+                }, 
+                {
+                    "code": "TVS 2140", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/2140", 
+                    "name": "Electronic Field Production and Editing"
+                }, 
+                {
+                    "code": "TVS 2221", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/2221", 
+                    "name": "Television Performance I"
+                }, 
+                {
+                    "code": "TVS 2810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/2810", 
+                    "name": "LSC-TV Sophomore Editorial Practicum"
+                }, 
+                {
+                    "code": "TVS 2820", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/2820", 
+                    "name": "LSC-TV Sophomore Design and Broadcast Production Practicum"
+                }, 
+                {
+                    "code": "TVS 2830", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/2830", 
+                    "name": "Co-op in Television Studies"
+                }, 
+                {
+                    "code": "TVS 3010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/3010", 
+                    "name": "Television Post Production"
+                }, 
+                {
+                    "code": "TVS 3030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/3030", 
+                    "name": "Law and Regulation in Broadcasting"
+                }, 
+                {
+                    "code": "TVS 3150", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/3150", 
+                    "name": "News Editing for Reporters and Producers"
+                }, 
+                {
+                    "code": "TVS 3222", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/3222", 
+                    "name": "Television Performance II"
+                }, 
+                {
+                    "code": "TVS 3811", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/3811", 
+                    "name": "LSC-TV Junior Broadcast Editorial Practicum"
+                }, 
+                {
+                    "code": "TVS 3812", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/3812", 
+                    "name": "LSC-TV Junior Broadcast Design and Production Practicum"
+                }, 
+                {
+                    "code": "TVS 3820", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/3820", 
+                    "name": "Co-op in Television Studies"
+                }, 
+                {
+                    "code": "TVS 4010", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/4010", 
+                    "name": "Directing for Television"
+                }, 
+                {
+                    "code": "TVS 4020", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/4020", 
+                    "name": "Issues and Ethics in Broadcast News"
+                }, 
+                {
+                    "code": "TVS 4030", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/4030", 
+                    "name": "LSC-TV News Broadcast Performance"
+                }, 
+                {
+                    "code": "TVS 4040", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/4040", 
+                    "name": "Advanced Post-Production"
+                }, 
+                {
+                    "code": "TVS 4710", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/4710", 
+                    "name": "Special Topics in Telecommunications Studies"
+                }, 
+                {
+                    "code": "TVS 4720", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/4720", 
+                    "name": "Senior Seminar"
+                }, 
+                {
+                    "code": "TVS 4810", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/4810", 
+                    "name": "LSC-TV Broadcast Editorial Practicum"
+                }, 
+                {
+                    "code": "TVS 4820", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/4820", 
+                    "name": "LSC-TV Broadcast Design and Production Practicum"
+                }, 
+                {
+                    "code": "TVS 4830", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/4830", 
+                    "name": "I-Team Special Projects"
+                }, 
+                {
+                    "code": "TVS 4840", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/4840", 
+                    "name": "Co-op in Television Studies"
+                }, 
+                {
+                    "code": "TVS 4850", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/4850", 
+                    "name": "Video Photojournalism"
+                }, 
+                {
+                    "code": "TVS 4900", 
+                    "course_url": "http://www.chegg.com/courses/lscvsc/TVS/4900", 
+                    "name": "Special Studies in Television Studies"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/lscvsc/TVS"
+        }
+    ], 
+    "name": "lscvsc"
+}

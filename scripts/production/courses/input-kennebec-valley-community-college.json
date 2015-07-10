@@ -1,0 +1,2144 @@
+{
+    "all_stats": {
+        "num_courses": 357, 
+        "num_departments": 50
+    }, 
+    "departments": [
+        {
+            "abbr": "ACC", 
+            "courses": [
+                {
+                    "code": "ACC 111", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ACC/111", 
+                    "name": "Principles of Accounting II"
+                }, 
+                {
+                    "code": "ACC 211", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ACC/211", 
+                    "name": "Accounting Spreadsheet and Data Base Applications"
+                }, 
+                {
+                    "code": "ACC 212", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ACC/212", 
+                    "name": "Computerized Accounting Applications"
+                }, 
+                {
+                    "code": "ACC 213", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ACC/213", 
+                    "name": "Federal Taxation"
+                }, 
+                {
+                    "code": "ACC 215", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ACC/215", 
+                    "name": "Cost Accounting"
+                }, 
+                {
+                    "code": "ACC 217", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ACC/217", 
+                    "name": "Intermediate Accounting I"
+                }, 
+                {
+                    "code": "ACC 218", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ACC/218", 
+                    "name": "Intermediate Accounting II"
+                }, 
+                {
+                    "code": "ACC 220", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ACC/220", 
+                    "name": "Principles of Payroll Administration"
+                }, 
+                {
+                    "code": "ACC 222", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ACC/222", 
+                    "name": "Capstone Review Course of Accounting Principles"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/kvccfair/ACC"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 110", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ART/110", 
+                    "name": "Creativity and Communication"
+                }, 
+                {
+                    "code": "ART 112", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ART/112", 
+                    "name": "Art Appreciation:Perspectives on Art"
+                }, 
+                {
+                    "code": "ART 132", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ART/132", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 144-1", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ART/144-1", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 161-2", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ART/161-2", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 163", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ART/163", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 196-4", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ART/196-4", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ART 206", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ART/206", 
+                    "name": "Advanced Topics in Art"
+                }, 
+                {
+                    "code": "ART 210", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ART/210", 
+                    "name": "Graphic Design"
+                }, 
+                {
+                    "code": "ART 212", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ART/212", 
+                    "name": "Drawing Techniques"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/kvccfair/ART"
+        }, 
+        {
+            "abbr": "ASL", 
+            "courses": [
+                {
+                    "code": "ASL 106", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ASL/106", 
+                    "name": "American Sign Language I"
+                }, 
+                {
+                    "code": "ASL 107", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ASL/107", 
+                    "name": "American Sign Language II"
+                }, 
+                {
+                    "code": "ASL 206", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ASL/206", 
+                    "name": "American Sign Language III"
+                }, 
+                {
+                    "code": "ASL 207", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ASL/207", 
+                    "name": "American Sign Language IV"
+                }, 
+                {
+                    "code": "ASL 208", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ASL/208", 
+                    "name": "Deaf Culture and History"
+                }
+            ], 
+            "name": "American Sign Language", 
+            "url": "http://www.chegg.com/courses/kvccfair/ASL"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BIO/101", 
+                    "name": "Biology I"
+                }, 
+                {
+                    "code": "BIO 102", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BIO/102", 
+                    "name": "Biology II"
+                }, 
+                {
+                    "code": "BIO 105", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BIO/105", 
+                    "name": "General Ecology"
+                }, 
+                {
+                    "code": "BIO 113", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BIO/113", 
+                    "name": "Survey of Anatomy and Physiology"
+                }, 
+                {
+                    "code": "BIO 115", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BIO/115", 
+                    "name": "Human Biology"
+                }, 
+                {
+                    "code": "BIO 125", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BIO/125", 
+                    "name": "Health Science Seminar"
+                }, 
+                {
+                    "code": "BIO 213", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BIO/213", 
+                    "name": "Anatomy & Physiology I"
+                }, 
+                {
+                    "code": "BIO 214", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BIO/214", 
+                    "name": "Anatomy & Physiology II"
+                }, 
+                {
+                    "code": "BIO 216", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BIO/216", 
+                    "name": "Pathophysiology and Principles of Pharmacology for the Health Professional"
+                }, 
+                {
+                    "code": "BIO 219", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BIO/219", 
+                    "name": "Microbiology"
+                }, 
+                {
+                    "code": "BIO 234", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BIO/234", 
+                    "name": "Introduction to Biochemistry and Molecular Biology"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/kvccfair/BIO"
+        }, 
+        {
+            "abbr": "BPT", 
+            "courses": [
+                {
+                    "code": "BPT 125", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BPT/125", 
+                    "name": "Drafting/Print Reading"
+                }, 
+                {
+                    "code": "BPT 126", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BPT/126", 
+                    "name": "Technical Print Reading & Sketching"
+                }
+            ], 
+            "name": "Broadcast Production", 
+            "url": "http://www.chegg.com/courses/kvccfair/BPT"
+        }, 
+        {
+            "abbr": "BSC", 
+            "courses": [
+                {
+                    "code": "BSC 201", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BSC/201", 
+                    "name": "Laboratory Techniques"
+                }, 
+                {
+                    "code": "BSC 211", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BSC/211", 
+                    "name": "Plant Propagation"
+                }, 
+                {
+                    "code": "BSC 216", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BSC/216", 
+                    "name": "Small Animal Care and Handling"
+                }, 
+                {
+                    "code": "BSC 218", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BSC/218", 
+                    "name": "Animal Nutrition"
+                }
+            ], 
+            "name": "Biological Sciences", 
+            "url": "http://www.chegg.com/courses/kvccfair/BSC"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 113", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BUS/113", 
+                    "name": "Marketing"
+                }, 
+                {
+                    "code": "BUS 115", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BUS/115", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "BUS 116", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BUS/116", 
+                    "name": "Business Law"
+                }, 
+                {
+                    "code": "BUS 119", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BUS/119", 
+                    "name": "Personal Selling and Advertising"
+                }, 
+                {
+                    "code": "BUS 120", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BUS/120", 
+                    "name": "Introduction to Entrepreneurship"
+                }, 
+                {
+                    "code": "BUS 125", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BUS/125", 
+                    "name": "Introduction to E-Commerce"
+                }, 
+                {
+                    "code": "BUS 218", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BUS/218", 
+                    "name": "The Entrepreneur's Guide to Small Business Management"
+                }, 
+                {
+                    "code": "BUS 250", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BUS/250", 
+                    "name": "Virtual Office Simulation/Internship"
+                }, 
+                {
+                    "code": "BUS 251", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/BUS/251", 
+                    "name": "Effective Customer Service"
+                }
+            ], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/kvccfair/BUS"
+        }, 
+        {
+            "abbr": "CAD", 
+            "courses": [
+                {
+                    "code": "CAD 140", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CAD/140", 
+                    "name": "Applied AutoCAD"
+                }, 
+                {
+                    "code": "CAD 242", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CAD/242", 
+                    "name": "Intermediate AutoCAD"
+                }, 
+                {
+                    "code": "CAD 243", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CAD/243", 
+                    "name": "Advanced AutoCAD"
+                }, 
+                {
+                    "code": "CAD 244", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CAD/244", 
+                    "name": "Experiential Education"
+                }
+            ], 
+            "name": "Child And Adolescent Development", 
+            "url": "http://www.chegg.com/courses/kvccfair/CAD"
+        }, 
+        {
+            "abbr": "CDM", 
+            "courses": [
+                {
+                    "code": "CDM 010", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CDM/010", 
+                    "name": "Career Decision Making"
+                }
+            ], 
+            "name": "Cdm - Coll Of Dental Medicine", 
+            "url": "http://www.chegg.com/courses/kvccfair/CDM"
+        }, 
+        {
+            "abbr": "CHE", 
+            "courses": [
+                {
+                    "code": "CHE 112", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CHE/112", 
+                    "name": "General Chemistry I"
+                }, 
+                {
+                    "code": "CHE 113", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CHE/113", 
+                    "name": "Introduction to Biochemistry"
+                }, 
+                {
+                    "code": "CHE 115", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CHE/115", 
+                    "name": "General Chemistry II"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/kvccfair/CHE"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 104", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/COM/104", 
+                    "name": "Introduction to Communication"
+                }
+            ], 
+            "name": "Communication", 
+            "url": "http://www.chegg.com/courses/kvccfair/COM"
+        }, 
+        {
+            "abbr": "CPT", 
+            "courses": [
+                {
+                    "code": "CPT 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/101", 
+                    "name": "Introduction to Computer Science"
+                }, 
+                {
+                    "code": "CPT 117", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/117", 
+                    "name": "Software Applications"
+                }, 
+                {
+                    "code": "CPT 119", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/119", 
+                    "name": "Introduction to Programming"
+                }, 
+                {
+                    "code": "CPT 120", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/120", 
+                    "name": "Internet Technologies"
+                }, 
+                {
+                    "code": "CPT 121", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/121", 
+                    "name": "Software Applications II"
+                }, 
+                {
+                    "code": "CPT 123", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/123", 
+                    "name": "Advanced Programming Applications"
+                }, 
+                {
+                    "code": "CPT 220", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/220", 
+                    "name": "XML Programming"
+                }, 
+                {
+                    "code": "CPT 222", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/222", 
+                    "name": "Introduction to Computer Networking"
+                }, 
+                {
+                    "code": "CPT 224", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/224", 
+                    "name": "Experiential Education"
+                }, 
+                {
+                    "code": "CPT 226", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/226", 
+                    "name": "Cobol"
+                }, 
+                {
+                    "code": "CPT 227", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/227", 
+                    "name": "C++"
+                }, 
+                {
+                    "code": "CPT 228", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/228", 
+                    "name": "Advanced C++ Programming"
+                }, 
+                {
+                    "code": "CPT 230", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/230", 
+                    "name": "Database Design and Management"
+                }, 
+                {
+                    "code": "CPT 231", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/231", 
+                    "name": "Introduction to Multimedia"
+                }, 
+                {
+                    "code": "CPT 232", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/232", 
+                    "name": "Multimedia Internet Design"
+                }, 
+                {
+                    "code": "CPT 233", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/233", 
+                    "name": "Active Server Pages"
+                }, 
+                {
+                    "code": "CPT 235", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/235", 
+                    "name": "Networking Installation & Maintenance"
+                }, 
+                {
+                    "code": "CPT 236", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/236", 
+                    "name": "Java Programming"
+                }, 
+                {
+                    "code": "CPT 237", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/237", 
+                    "name": "Hardware Management"
+                }, 
+                {
+                    "code": "CPT 250", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/250", 
+                    "name": "MCSE Windows Prof & Server"
+                }, 
+                {
+                    "code": "CPT 260", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/260", 
+                    "name": "Planning and Implementing a Microsoft Network Infrastructure"
+                }, 
+                {
+                    "code": "CPT 270", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/CPT/270", 
+                    "name": "MCSE Windows Active Directory"
+                }
+            ], 
+            "name": "Computer Programming", 
+            "url": "http://www.chegg.com/courses/kvccfair/CPT"
+        }, 
+        {
+            "abbr": "DMS", 
+            "courses": [
+                {
+                    "code": "DMS 200", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/DMS/200", 
+                    "name": "Principles of Diagnostic Medical Sonography in a Patient Care Setting"
+                }, 
+                {
+                    "code": "DMS 201", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/DMS/201", 
+                    "name": "Introduction to Abdominal Sonography,Superficial,and Special Structures"
+                }, 
+                {
+                    "code": "DMS 202", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/DMS/202", 
+                    "name": "Obstetrical and Gynecological Ultrasound I"
+                }, 
+                {
+                    "code": "DMS 203", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/DMS/203", 
+                    "name": "Primary Practicum"
+                }, 
+                {
+                    "code": "DMS 206", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/DMS/206", 
+                    "name": "Clinical Physics in Diagnostic Ultrasound"
+                }, 
+                {
+                    "code": "DMS 207", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/DMS/207", 
+                    "name": "Abdominal Techniques,Anatomy,and Pathology"
+                }, 
+                {
+                    "code": "DMS 208", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/DMS/208", 
+                    "name": "Evaluation of the Gravid and Non-Gravid Pelvis"
+                }, 
+                {
+                    "code": "DMS 209", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/DMS/209", 
+                    "name": "Intermediate Clinical Practicum"
+                }, 
+                {
+                    "code": "DMS 213", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/DMS/213", 
+                    "name": "Extra-Cranial Doppler Model and Venous Duplex Techniques"
+                }, 
+                {
+                    "code": "DMS 214", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/DMS/214", 
+                    "name": "Integrated Clinical Practicum"
+                }, 
+                {
+                    "code": "DMS 215", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/DMS/215", 
+                    "name": "Diagnostic Medical Sonographic Interpretation"
+                }, 
+                {
+                    "code": "DMS 216", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/DMS/216", 
+                    "name": "Advanced Clinical Practicum"
+                }
+            ], 
+            "name": "Media Study", 
+            "url": "http://www.chegg.com/courses/kvccfair/DMS"
+        }, 
+        {
+            "abbr": "DSO", 
+            "courses": [
+                {
+                    "code": "DSO 012", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/DSO/012", 
+                    "name": "Basic Writing"
+                }, 
+                {
+                    "code": "DSO 015", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/DSO/015", 
+                    "name": "Basic Reading"
+                }, 
+                {
+                    "code": "DSO 025", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/DSO/025", 
+                    "name": "Basic Math"
+                }
+            ], 
+            "name": "Dso - Dr Studies Orientation", 
+            "url": "http://www.chegg.com/courses/kvccfair/DSO"
+        }, 
+        {
+            "abbr": "ECE", 
+            "courses": [
+                {
+                    "code": "ECE 131", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ECE/131", 
+                    "name": "Introduction to Early Childhood Education"
+                }, 
+                {
+                    "code": "ECE 133", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ECE/133", 
+                    "name": "Literacy and Literature for Young Children"
+                }, 
+                {
+                    "code": "ECE 134", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ECE/134", 
+                    "name": "Health,Safety,and Nutrition"
+                }, 
+                {
+                    "code": "ECE 135", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ECE/135", 
+                    "name": "Observing and Recording Children's Behaviors"
+                }, 
+                {
+                    "code": "ECE 140", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ECE/140", 
+                    "name": "Fostering Growth and Development:Infants and Toddlers"
+                }, 
+                {
+                    "code": "ECE 145", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ECE/145", 
+                    "name": "Fostering Growth and Development:Preschool Years"
+                }, 
+                {
+                    "code": "ECE 148", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ECE/148", 
+                    "name": "Fostering Growth and Development:Early Primary Aged Children:5-8 Years Old"
+                }, 
+                {
+                    "code": "ECE 155", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ECE/155", 
+                    "name": "Practicum I:Early Childhood"
+                }, 
+                {
+                    "code": "ECE 158", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ECE/158", 
+                    "name": "Including Children with Special Needs in Early Childhood Settings"
+                }, 
+                {
+                    "code": "ECE 200", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ECE/200", 
+                    "name": "Practicum II:Early Childhood"
+                }, 
+                {
+                    "code": "ECE 250", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ECE/250", 
+                    "name": "Practicum III:Early Childhood"
+                }
+            ], 
+            "name": "Electrical & Computer Engr", 
+            "url": "http://www.chegg.com/courses/kvccfair/ECE"
+        }, 
+        {
+            "abbr": "ECO", 
+            "courses": [
+                {
+                    "code": "ECO 113", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ECO/113", 
+                    "name": "Principles of Economics I"
+                }, 
+                {
+                    "code": "ECO 114", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ECO/114", 
+                    "name": "Principles of Economics II"
+                }, 
+                {
+                    "code": "ECO 120", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ECO/120", 
+                    "name": "Investment Planning in Our Society"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/kvccfair/ECO"
+        }, 
+        {
+            "abbr": "EDU", 
+            "courses": [
+                {
+                    "code": "EDU 102", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/102", 
+                    "name": "Working with Students with Disabilities"
+                }, 
+                {
+                    "code": "EDU 103", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/103", 
+                    "name": "Language Development"
+                }, 
+                {
+                    "code": "EDU 201", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/201", 
+                    "name": "The Brain and the Learning Process"
+                }, 
+                {
+                    "code": "EDU 204", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/204", 
+                    "name": "Adapting Instruction:Mathematics/Sciences"
+                }, 
+                {
+                    "code": "EDU 207", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/207", 
+                    "name": "Adapting Instruction:Reading/Language Arts"
+                }, 
+                {
+                    "code": "EDU 208", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/208", 
+                    "name": "Communication Disorders"
+                }, 
+                {
+                    "code": "EDU 210", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/210", 
+                    "name": "Introduction to Autism Spectrum Disorders"
+                }, 
+                {
+                    "code": "EDU 212", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/212", 
+                    "name": "Introduction to Phonology:Phonetics"
+                }, 
+                {
+                    "code": "EDU 215", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/215", 
+                    "name": "Introduction to Audiology:Hearing Impairment"
+                }, 
+                {
+                    "code": "EDU 216", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/216", 
+                    "name": "Clinical Techniques:Speech/Hearing/Language Disorders"
+                }, 
+                {
+                    "code": "EDU 218", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/218", 
+                    "name": "Clinical Approach to Dysphagia"
+                }, 
+                {
+                    "code": "EDU 219", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/219", 
+                    "name": "Psycho/Social Needs of Students with Disabilities"
+                }, 
+                {
+                    "code": "EDU 220", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/220", 
+                    "name": "Foundations of American Education"
+                }, 
+                {
+                    "code": "EDU 221", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/221", 
+                    "name": "Practicum:Special Education Field Experience"
+                }, 
+                {
+                    "code": "EDU 222", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/222", 
+                    "name": "Practicum:Speech/Language Field Experience"
+                }, 
+                {
+                    "code": "EDU 224", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/224", 
+                    "name": "Speech Language Community Practicum"
+                }, 
+                {
+                    "code": "EDU 225", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EDU/225", 
+                    "name": "Approaches to Working with Persons with Autism Spectrum Disorders"
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/kvccfair/EDU"
+        }, 
+        {
+            "abbr": "ELW", 
+            "courses": [
+                {
+                    "code": "ELW 146", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ELW/146", 
+                    "name": "Basic Telecommunications"
+                }, 
+                {
+                    "code": "ELW 150", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ELW/150", 
+                    "name": "Lineworker Training I"
+                }, 
+                {
+                    "code": "ELW 160", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ELW/160", 
+                    "name": "Lineworker Training II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/kvccfair/ELW"
+        }, 
+        {
+            "abbr": "EMS", 
+            "courses": [
+                {
+                    "code": "EMS 111", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EMS/111", 
+                    "name": "Emergency Medical Technology I"
+                }, 
+                {
+                    "code": "EMS 113", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EMS/113", 
+                    "name": "Fundamentals of EMS"
+                }, 
+                {
+                    "code": "EMS 115", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EMS/115", 
+                    "name": "Intermediate Clinical Preceptorship and Field Internship"
+                }, 
+                {
+                    "code": "EMS 117", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EMS/117", 
+                    "name": "Cardiac/Respiratory Emergencies"
+                }, 
+                {
+                    "code": "EMS 119", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EMS/119", 
+                    "name": "Intermediate Skills Seminar"
+                }, 
+                {
+                    "code": "EMS 208", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EMS/208", 
+                    "name": "Advanced Emergency Cardiovascular Care"
+                }, 
+                {
+                    "code": "EMS 209", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EMS/209", 
+                    "name": "Advanced Emergency Pharmacology"
+                }, 
+                {
+                    "code": "EMS 215", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EMS/215", 
+                    "name": "Paramedic Clinical Preceptorship and Field Internship I"
+                }, 
+                {
+                    "code": "EMS 218", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EMS/218", 
+                    "name": "Medical Emergencies"
+                }, 
+                {
+                    "code": "EMS 219", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EMS/219", 
+                    "name": "Emergency Care Across the Lifespan"
+                }, 
+                {
+                    "code": "EMS 225", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EMS/225", 
+                    "name": "Paramedic Clinical Preceptorship and Field Internship II"
+                }, 
+                {
+                    "code": "EMS 228", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EMS/228", 
+                    "name": "Trauma Management"
+                }, 
+                {
+                    "code": "EMS 229", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EMS/229", 
+                    "name": "Paramedic Skills Seminar"
+                }, 
+                {
+                    "code": "EMS 235", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/EMS/235", 
+                    "name": "Paramedic Clinical Preceptorship and Field Internship III"
+                }
+            ], 
+            "name": "Early Modern Studies", 
+            "url": "http://www.chegg.com/courses/kvccfair/EMS"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ENG/101", 
+                    "name": "College Composition"
+                }, 
+                {
+                    "code": "ENG 108", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ENG/108", 
+                    "name": "Technical Writing"
+                }, 
+                {
+                    "code": "ENG 121", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ENG/121", 
+                    "name": "Introduction to Literature"
+                }, 
+                {
+                    "code": "ENG 210", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ENG/210", 
+                    "name": "Creative Writing"
+                }, 
+                {
+                    "code": "ENG 212", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ENG/212", 
+                    "name": "Poetry:An Introduction to the Language of Thought and Feeling"
+                }, 
+                {
+                    "code": "ENG 219", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ENG/219", 
+                    "name": "Professional Writing"
+                }, 
+                {
+                    "code": "ENG 220", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ENG/220", 
+                    "name": "American Literature"
+                }, 
+                {
+                    "code": "ENG 223", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ENG/223", 
+                    "name": "World Literature"
+                }, 
+                {
+                    "code": "ENG 230", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ENG/230", 
+                    "name": "20th Century German Literature"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/kvccfair/ENG"
+        }, 
+        {
+            "abbr": "ENV", 
+            "courses": [
+                {
+                    "code": "ENV 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ENV/101", 
+                    "name": "Introduction to Environmental Science"
+                }
+            ], 
+            "name": "Environmental Science", 
+            "url": "http://www.chegg.com/courses/kvccfair/ENV"
+        }, 
+        {
+            "abbr": "ETC", 
+            "courses": [
+                {
+                    "code": "ETC 110", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETC/110", 
+                    "name": "Computer Operating Systems"
+                }, 
+                {
+                    "code": "ETC 119", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETC/119", 
+                    "name": "Digital Electronics"
+                }, 
+                {
+                    "code": "ETC 125", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETC/125", 
+                    "name": "Semiconductor Fundamentals"
+                }, 
+                {
+                    "code": "ETC 210", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETC/210", 
+                    "name": "Computer Operating System Applications"
+                }, 
+                {
+                    "code": "ETC 211", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETC/211", 
+                    "name": "Networking Operating Systems"
+                }, 
+                {
+                    "code": "ETC 220", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETC/220", 
+                    "name": "Microprocessor Fundamentals"
+                }, 
+                {
+                    "code": "ETC 225", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETC/225", 
+                    "name": "Analog Circuit Analysis"
+                }, 
+                {
+                    "code": "ETC 227", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETC/227", 
+                    "name": "Experiential Education-AECT"
+                }, 
+                {
+                    "code": "ETC 240", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETC/240", 
+                    "name": "Electronic Communication Systems"
+                }, 
+                {
+                    "code": "ETC 241", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETC/241", 
+                    "name": "Digital/Data Communications"
+                }, 
+                {
+                    "code": "ETC 245", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETC/245", 
+                    "name": "Networking Applications Lab"
+                }, 
+                {
+                    "code": "ETC 250", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETC/250", 
+                    "name": "Computer Technology Applications"
+                }
+            ], 
+            "name": "Engineering Techn Civil", 
+            "url": "http://www.chegg.com/courses/kvccfair/ETC"
+        }, 
+        {
+            "abbr": "ETL", 
+            "courses": [
+                {
+                    "code": "ETL 109", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETL/109", 
+                    "name": "Direct Current Theory"
+                }, 
+                {
+                    "code": "ETL 110", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETL/110", 
+                    "name": "Alternating Current Theory"
+                }, 
+                {
+                    "code": "ETL 113", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETL/113", 
+                    "name": "Direct Current Theory"
+                }, 
+                {
+                    "code": "ETL 114", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETL/114", 
+                    "name": "Alternating Current Theory"
+                }, 
+                {
+                    "code": "ETL 120", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETL/120", 
+                    "name": "Rotating Machines and Transformers"
+                }, 
+                {
+                    "code": "ETL 121", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETL/121", 
+                    "name": "Electrical Wiring Practices I"
+                }, 
+                {
+                    "code": "ETL 122", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETL/122", 
+                    "name": "Electrical Wiring Practices II"
+                }, 
+                {
+                    "code": "ETL 124", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETL/124", 
+                    "name": "Fundamentals of Electronics"
+                }, 
+                {
+                    "code": "ETL 127", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETL/127", 
+                    "name": "Electrical Motor Controls"
+                }, 
+                {
+                    "code": "ETL 215", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETL/215", 
+                    "name": "National Electrical Code"
+                }, 
+                {
+                    "code": "ETL 221", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETL/221", 
+                    "name": "Industrial Control Systems"
+                }, 
+                {
+                    "code": "ETL 222", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETL/222", 
+                    "name": "Introduction to Instrumentation"
+                }, 
+                {
+                    "code": "ETL 225", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETL/225", 
+                    "name": "Energy Alternatives,Conservation,and Management"
+                }, 
+                {
+                    "code": "ETL 226", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/ETL/226", 
+                    "name": "Experiential Education-Electrical"
+                }
+            ], 
+            "name": "Excellence/Teaching/Learning", 
+            "url": "http://www.chegg.com/courses/kvccfair/ETL"
+        }, 
+        {
+            "abbr": "FIN", 
+            "courses": [
+                {
+                    "code": "FIN 201", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/FIN/201", 
+                    "name": "Financial Management"
+                }, 
+                {
+                    "code": "FIN 202", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/FIN/202", 
+                    "name": "Principles of Banking"
+                }, 
+                {
+                    "code": "FIN 203", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/FIN/203", 
+                    "name": "Consumer Lending"
+                }, 
+                {
+                    "code": "FIN 204", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/FIN/204", 
+                    "name": "Commercial Lending"
+                }
+            ], 
+            "name": "Finance", 
+            "url": "http://www.chegg.com/courses/kvccfair/FIN"
+        }, 
+        {
+            "abbr": "FRE", 
+            "courses": [
+                {
+                    "code": "FRE 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/FRE/101", 
+                    "name": "Elementary French I"
+                }, 
+                {
+                    "code": "FRE 102", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/FRE/102", 
+                    "name": "Elementary French II"
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/kvccfair/FRE"
+        }, 
+        {
+            "abbr": "GER", 
+            "courses": [
+                {
+                    "code": "GER 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/GER/101", 
+                    "name": "Elementary German I"
+                }, 
+                {
+                    "code": "GER 102", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/GER/102", 
+                    "name": "Elementary German II"
+                }, 
+                {
+                    "code": "GER 201", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/GER/201", 
+                    "name": "Intermediate German I"
+                }, 
+                {
+                    "code": "GER 202", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/GER/202", 
+                    "name": "Intermediate German II"
+                }, 
+                {
+                    "code": "GER 230", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/GER/230", 
+                    "name": "20th Century German Literature"
+                }
+            ], 
+            "name": "German", 
+            "url": "http://www.chegg.com/courses/kvccfair/GER"
+        }, 
+        {
+            "abbr": "GIS", 
+            "courses": [
+                {
+                    "code": "GIS 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/GIS/101", 
+                    "name": "Geographic Information Systems"
+                }, 
+                {
+                    "code": "GIS 103", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/GIS/103", 
+                    "name": "Geographic Information Systems II"
+                }
+            ], 
+            "name": "Geographic Information Science", 
+            "url": "http://www.chegg.com/courses/kvccfair/GIS"
+        }, 
+        {
+            "abbr": "HIS", 
+            "courses": [
+                {
+                    "code": "HIS 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HIS/101", 
+                    "name": "Western Civilization I"
+                }, 
+                {
+                    "code": "HIS 102", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HIS/102", 
+                    "name": "Western Civilization II"
+                }, 
+                {
+                    "code": "HIS 111", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HIS/111", 
+                    "name": "U.S.History I"
+                }, 
+                {
+                    "code": "HIS 112", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HIS/112", 
+                    "name": "U.S.History II"
+                }, 
+                {
+                    "code": "HIS 202", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HIS/202", 
+                    "name": "History of Maine"
+                }, 
+                {
+                    "code": "HIS 212", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HIS/212", 
+                    "name": "America and the Cold War Years"
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/kvccfair/HIS"
+        }, 
+        {
+            "abbr": "HIT", 
+            "courses": [
+                {
+                    "code": "HIT 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HIT/101", 
+                    "name": "Introduction to Health Information Technology"
+                }, 
+                {
+                    "code": "HIT 132", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HIT/132", 
+                    "name": "Legal,Ethical and Regulatory Issues"
+                }, 
+                {
+                    "code": "HIT 136", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HIT/136", 
+                    "name": "Introduction to Coding & Classification"
+                }, 
+                {
+                    "code": "HIT 142", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HIT/142", 
+                    "name": "Directed Clinical Practice I"
+                }, 
+                {
+                    "code": "HIT 201", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HIT/201", 
+                    "name": "ICD-9-CM Coding and Classification Systems"
+                }, 
+                {
+                    "code": "HIT 211", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HIT/211", 
+                    "name": "Health Data Collection"
+                }, 
+                {
+                    "code": "HIT 212", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HIT/212", 
+                    "name": "Quality Improvement"
+                }, 
+                {
+                    "code": "HIT 222", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HIT/222", 
+                    "name": "CPT-4-Coding"
+                }, 
+                {
+                    "code": "HIT 243", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HIT/243", 
+                    "name": "Directed Clinical Practice II"
+                }, 
+                {
+                    "code": "HIT 245", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HIT/245", 
+                    "name": "Seminar in Health Information Technology"
+                }
+            ], 
+            "name": "Hit-Health Information Tech", 
+            "url": "http://www.chegg.com/courses/kvccfair/HIT"
+        }, 
+        {
+            "abbr": "HUM", 
+            "courses": [
+                {
+                    "code": "HUM 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HUM/101", 
+                    "name": "Multi-Cultural Nature of American Society"
+                }, 
+                {
+                    "code": "HUM 201", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HUM/201", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HUM 207", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HUM/207", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HUM 210", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HUM/210", 
+                    "name": ""
+                }, 
+                {
+                    "code": "HUM 212", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/HUM/212", 
+                    "name": ""
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/kvccfair/HUM"
+        }, 
+        {
+            "abbr": "LAT", 
+            "courses": [
+                {
+                    "code": "LAT 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/LAT/101", 
+                    "name": "Introduction to Latin"
+                }
+            ], 
+            "name": "Latin", 
+            "url": "http://www.chegg.com/courses/kvccfair/LAT"
+        }, 
+        {
+            "abbr": "MAS", 
+            "courses": [
+                {
+                    "code": "MAS 114", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAS/114", 
+                    "name": "Medical Office Law and Ethics"
+                }, 
+                {
+                    "code": "MAS 115", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAS/115", 
+                    "name": "Clinical Procedures"
+                }, 
+                {
+                    "code": "MAS 116", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAS/116", 
+                    "name": "Introduction to Professional Administrative Management"
+                }, 
+                {
+                    "code": "MAS 117", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAS/117", 
+                    "name": "Clinical Lab"
+                }, 
+                {
+                    "code": "MAS 121", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAS/121", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "MAS 211", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAS/211", 
+                    "name": "Insurance Coding for the Medical Office"
+                }, 
+                {
+                    "code": "MAS 212", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAS/212", 
+                    "name": "Introduction to Health Insurance and Claims Processing"
+                }, 
+                {
+                    "code": "MAS 215", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAS/215", 
+                    "name": "Advanced Clinical Theory"
+                }, 
+                {
+                    "code": "MAS 232", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAS/232", 
+                    "name": "Experiential Education"
+                }, 
+                {
+                    "code": "MAS 234", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAS/234", 
+                    "name": "Clinical/Administrative Office Practicum"
+                }
+            ], 
+            "name": "Mexican American Studies", 
+            "url": "http://www.chegg.com/courses/kvccfair/MAS"
+        }, 
+        {
+            "abbr": "MAT", 
+            "courses": [
+                {
+                    "code": "MAT 031", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAT/031", 
+                    "name": "Introduction to Algebra"
+                }, 
+                {
+                    "code": "MAT 113", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAT/113", 
+                    "name": "Elements of Mathematics"
+                }, 
+                {
+                    "code": "MAT 114", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAT/114", 
+                    "name": "College Math"
+                }, 
+                {
+                    "code": "MAT 117", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAT/117", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MAT 119", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAT/119", 
+                    "name": "Advanced College Algebra"
+                }, 
+                {
+                    "code": "MAT 218", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAT/218", 
+                    "name": "Trigonometry"
+                }, 
+                {
+                    "code": "MAT 220", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAT/220", 
+                    "name": "Statistics"
+                }, 
+                {
+                    "code": "MAT 225", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAT/225", 
+                    "name": "Math for Business and Economics"
+                }, 
+                {
+                    "code": "MAT 226", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAT/226", 
+                    "name": "Precalculus"
+                }, 
+                {
+                    "code": "MAT 227", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MAT/227", 
+                    "name": "Calculus I"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/kvccfair/MAT"
+        }, 
+        {
+            "abbr": "MHT", 
+            "courses": [
+                {
+                    "code": "MHT 103", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MHT/103", 
+                    "name": "Introduction to Social Services Systems"
+                }, 
+                {
+                    "code": "MHT 104", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MHT/104", 
+                    "name": "Community Mental Health"
+                }, 
+                {
+                    "code": "MHT 110", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MHT/110", 
+                    "name": "Interviewing and Counseling"
+                }, 
+                {
+                    "code": "MHT 112", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MHT/112", 
+                    "name": "Crisis Identification and Intervention"
+                }, 
+                {
+                    "code": "MHT 114", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MHT/114", 
+                    "name": "Incest,Sexual Abuse,and Trauma"
+                }, 
+                {
+                    "code": "MHT 116", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MHT/116", 
+                    "name": "Mental Health and Aging"
+                }, 
+                {
+                    "code": "MHT 118", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MHT/118", 
+                    "name": "Substance Abuse Counseling for Special Populations"
+                }, 
+                {
+                    "code": "MHT 120", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MHT/120", 
+                    "name": "Case Management"
+                }, 
+                {
+                    "code": "MHT 122", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MHT/122", 
+                    "name": "Group Process"
+                }, 
+                {
+                    "code": "MHT 124", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MHT/124", 
+                    "name": "Psychosocial Rehabilitation"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/kvccfair/MHT"
+        }, 
+        {
+            "abbr": "MTS", 
+            "courses": [
+                {
+                    "code": "MTS 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MTS/101", 
+                    "name": "Massage Therapy Theory and Practice I"
+                }, 
+                {
+                    "code": "MTS 103", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MTS/103", 
+                    "name": "Massage Therapy Theory and Practice Lab I"
+                }, 
+                {
+                    "code": "MTS 107", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MTS/107", 
+                    "name": "Myology for Massage Therapists"
+                }, 
+                {
+                    "code": "MTS 109", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MTS/109", 
+                    "name": "Massage Therapy Practical I"
+                }, 
+                {
+                    "code": "MTS 110", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MTS/110", 
+                    "name": "Massage Therapy Theory and Practice II"
+                }, 
+                {
+                    "code": "MTS 112", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MTS/112", 
+                    "name": "Massage Therapy Theory and Practice Lab II"
+                }, 
+                {
+                    "code": "MTS 114", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MTS/114", 
+                    "name": "Business/Ethics for Massage Therapists"
+                }, 
+                {
+                    "code": "MTS 116", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MTS/116", 
+                    "name": "Massage Therapy Practical II"
+                }
+            ], 
+            "name": "Media", 
+            "url": "http://www.chegg.com/courses/kvccfair/MTS"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MUS/101", 
+                    "name": "Fundamentals of Music"
+                }, 
+                {
+                    "code": "MUS 103", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MUS/103", 
+                    "name": "American Music"
+                }, 
+                {
+                    "code": "MUS 105", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MUS/105", 
+                    "name": "Music Theory I"
+                }, 
+                {
+                    "code": "MUS 107", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/MUS/107", 
+                    "name": "Music Performance Ensemble"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/kvccfair/MUS"
+        }, 
+        {
+            "abbr": "NUR", 
+            "courses": [
+                {
+                    "code": "NUR 118", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/NUR/118", 
+                    "name": "Foundations of Nursing"
+                }, 
+                {
+                    "code": "NUR 122", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/NUR/122", 
+                    "name": "Nursing Across the Life Span I"
+                }, 
+                {
+                    "code": "NUR 124", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/NUR/124", 
+                    "name": "LPN to ADN Role Transition"
+                }, 
+                {
+                    "code": "NUR 224", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/NUR/224", 
+                    "name": "Nursing Across the Life Span II"
+                }, 
+                {
+                    "code": "NUR 227", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/NUR/227", 
+                    "name": "Nursing Across the Life Span III"
+                }, 
+                {
+                    "code": "NUR 229", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/NUR/229", 
+                    "name": "Transition into Nursing Practice for the ADN"
+                }
+            ], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/kvccfair/NUR"
+        }, 
+        {
+            "abbr": "OTS", 
+            "courses": [
+                {
+                    "code": "OTS 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/OTS/101", 
+                    "name": "Introduction to Occupational Therapy & Human Occupation"
+                }, 
+                {
+                    "code": "OTS 102", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/OTS/102", 
+                    "name": "Occupational Therapy Across the Life Span I"
+                }, 
+                {
+                    "code": "OTS 103", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/OTS/103", 
+                    "name": "Functional Kinesiology"
+                }, 
+                {
+                    "code": "OTS 104", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/OTS/104", 
+                    "name": "Interpersonal Skills for the Practicing Allied Health Professional"
+                }, 
+                {
+                    "code": "OTS 105", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/OTS/105", 
+                    "name": "Fieldwork Education I"
+                }, 
+                {
+                    "code": "OTS 107", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/OTS/107", 
+                    "name": "Assistive Technology in OT Practice"
+                }, 
+                {
+                    "code": "OTS 109", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/OTS/109", 
+                    "name": "Group Process"
+                }, 
+                {
+                    "code": "OTS 201", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/OTS/201", 
+                    "name": "Practice Environments"
+                }, 
+                {
+                    "code": "OTS 203", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/OTS/203", 
+                    "name": "Occupational Therapy Across the Life Span II"
+                }, 
+                {
+                    "code": "OTS 206", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/OTS/206", 
+                    "name": "Fieldwork Education II-A"
+                }, 
+                {
+                    "code": "OTS 208", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/OTS/208", 
+                    "name": "Fieldwork Education II-B"
+                }
+            ], 
+            "name": "Occupational/Technical Studie", 
+            "url": "http://www.chegg.com/courses/kvccfair/OTS"
+        }, 
+        {
+            "abbr": "PHI", 
+            "courses": [
+                {
+                    "code": "PHI 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PHI/101", 
+                    "name": "Introduction to Philosophy"
+                }, 
+                {
+                    "code": "PHI 106", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PHI/106", 
+                    "name": "World Religions"
+                }, 
+                {
+                    "code": "PHI 108", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PHI/108", 
+                    "name": "Human Nature in Contemporary Film"
+                }, 
+                {
+                    "code": "PHI 110", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PHI/110", 
+                    "name": "Introduction to Contemporary Ethics"
+                }, 
+                {
+                    "code": "PHI 201", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PHI/201", 
+                    "name": "Critical Thinking"
+                }, 
+                {
+                    "code": "PHI 220", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PHI/220", 
+                    "name": "The Philosopher Explores the \"Good\" Life"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/kvccfair/PHI"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 111", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PHY/111", 
+                    "name": "Elements of Physics"
+                }, 
+                {
+                    "code": "PHY 211", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PHY/211", 
+                    "name": "Elements of Physics II"
+                }, 
+                {
+                    "code": "PHY 213", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PHY/213", 
+                    "name": "Radiographic Physics"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/kvccfair/PHY"
+        }, 
+        {
+            "abbr": "PMT", 
+            "courses": [
+                {
+                    "code": "PMT 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PMT/101", 
+                    "name": "Fundamentals of Precision Machining Technology I"
+                }, 
+                {
+                    "code": "PMT 111", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PMT/111", 
+                    "name": "Fundamentals of Precision Machining Technology II"
+                }, 
+                {
+                    "code": "PMT 201", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PMT/201", 
+                    "name": "Fundamentals of Precision Machining Technology III"
+                }, 
+                {
+                    "code": "PMT 211", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PMT/211", 
+                    "name": "Fundamentals of Precision Machining Technology IV"
+                }, 
+                {
+                    "code": "PMT 217", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PMT/217", 
+                    "name": "Metal Fabrication"
+                }, 
+                {
+                    "code": "PMT 226", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PMT/226", 
+                    "name": "Experiential Education"
+                }
+            ], 
+            "name": "Plastics/Composites Manufacturing Technology", 
+            "url": "http://www.chegg.com/courses/kvccfair/PMT"
+        }, 
+        {
+            "abbr": "POL", 
+            "courses": [
+                {
+                    "code": "POL 111", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/POL/111", 
+                    "name": "Current Issues in Political Science"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/kvccfair/POL"
+        }, 
+        {
+            "abbr": "PPT", 
+            "courses": [
+                {
+                    "code": "PPT 111", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PPT/111", 
+                    "name": "Introduction to Pulp & Paper Technology"
+                }, 
+                {
+                    "code": "PPT 113", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PPT/113", 
+                    "name": "Paper Making Processes"
+                }, 
+                {
+                    "code": "PPT 115", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PPT/115", 
+                    "name": "Pulping Technology"
+                }, 
+                {
+                    "code": "PPT 116", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PPT/116", 
+                    "name": "Maintenance for Pulp & Paper Manufacturing Facilities"
+                }, 
+                {
+                    "code": "PPT 117", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PPT/117", 
+                    "name": "Safe Work Practices in the Pulp & Paper Industry"
+                }, 
+                {
+                    "code": "PPT 219", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PPT/219", 
+                    "name": "Basic Paper Industry Process Chemistry"
+                }, 
+                {
+                    "code": "PPT 223", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PPT/223", 
+                    "name": "Process Instrumentation and Control"
+                }, 
+                {
+                    "code": "PPT 225", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PPT/225", 
+                    "name": "Quality Aspects of Pulp and Paper Manufacture"
+                }
+            ], 
+            "name": "Power Plant Technology", 
+            "url": "http://www.chegg.com/courses/kvccfair/PPT"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PSY/101", 
+                    "name": "Introduction to Psychology"
+                }, 
+                {
+                    "code": "PSY 202", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PSY/202", 
+                    "name": "Community Psychology"
+                }, 
+                {
+                    "code": "PSY 204", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PSY/204", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSY 205", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PSY/205", 
+                    "name": "Dreams/Transpersonal Psychology"
+                }, 
+                {
+                    "code": "PSY 206", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PSY/206", 
+                    "name": "The Psychology of Film & Literature"
+                }, 
+                {
+                    "code": "PSY 208", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PSY/208", 
+                    "name": "Advanced Topics in Psychology"
+                }, 
+                {
+                    "code": "PSY 215", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PSY/215", 
+                    "name": "Developmental Psychology"
+                }, 
+                {
+                    "code": "PSY 220", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PSY/220", 
+                    "name": "Behavior Management"
+                }
+            ], 
+            "name": "Clinical Counseling", 
+            "url": "http://www.chegg.com/courses/kvccfair/PSY"
+        }, 
+        {
+            "abbr": "PTS", 
+            "courses": [
+                {
+                    "code": "PTS 105", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PTS/105", 
+                    "name": "Self-Paced Medical Terminology for PTAs"
+                }, 
+                {
+                    "code": "PTS 107", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PTS/107", 
+                    "name": "Introduction to Kinesiology"
+                }, 
+                {
+                    "code": "PTS 111", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PTS/111", 
+                    "name": "Physical Therapy I"
+                }, 
+                {
+                    "code": "PTS 112", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PTS/112", 
+                    "name": "Physical Therapy II"
+                }, 
+                {
+                    "code": "PTS 115", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PTS/115", 
+                    "name": "Professional Issues"
+                }, 
+                {
+                    "code": "PTS 116", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PTS/116", 
+                    "name": "Pathology"
+                }, 
+                {
+                    "code": "PTS 117", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PTS/117", 
+                    "name": "Kinesiology"
+                }, 
+                {
+                    "code": "PTS 120", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PTS/120", 
+                    "name": "PTA Clinical Education I"
+                }, 
+                {
+                    "code": "PTS 211", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PTS/211", 
+                    "name": "Physical Therapy III"
+                }, 
+                {
+                    "code": "PTS 215", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PTS/215", 
+                    "name": "Neuroscience"
+                }, 
+                {
+                    "code": "PTS 218", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PTS/218", 
+                    "name": "PTA Clinical Education II"
+                }, 
+                {
+                    "code": "PTS 220", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PTS/220", 
+                    "name": "PTA Clinical Education III"
+                }, 
+                {
+                    "code": "PTS 222", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/PTS/222", 
+                    "name": "PTA Seminar"
+                }
+            ], 
+            "name": "Physical Therapy", 
+            "url": "http://www.chegg.com/courses/kvccfair/PTS"
+        }, 
+        {
+            "abbr": "RAD", 
+            "courses": [
+                {
+                    "code": "RAD 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RAD/101", 
+                    "name": "Radiographic Positioning I"
+                }, 
+                {
+                    "code": "RAD 102", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RAD/102", 
+                    "name": "Radiographic Positioning II and Contrast Media"
+                }, 
+                {
+                    "code": "RAD 103", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RAD/103", 
+                    "name": "Radiographic Positioning III"
+                }, 
+                {
+                    "code": "RAD 111", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RAD/111", 
+                    "name": "Introduction to Radiologic Technology and Clinical Practicum I"
+                }, 
+                {
+                    "code": "RAD 113", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RAD/113", 
+                    "name": "Clinical Practicum III"
+                }, 
+                {
+                    "code": "RAD 121", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RAD/121", 
+                    "name": "Patient Care & Medical Terminology"
+                }, 
+                {
+                    "code": "RAD 131", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RAD/131", 
+                    "name": "Principles of Radiographic Exposure and Processing"
+                }, 
+                {
+                    "code": "RAD 211", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RAD/211", 
+                    "name": "Clinical Practicum IV"
+                }, 
+                {
+                    "code": "RAD 212", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RAD/212", 
+                    "name": "Clinical Practicum V"
+                }, 
+                {
+                    "code": "RAD 214", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RAD/214", 
+                    "name": "Quality Assurance and Ethical-Legal Issues"
+                }, 
+                {
+                    "code": "RAD 215", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RAD/215", 
+                    "name": "Pathology and Radiographic Critique"
+                }, 
+                {
+                    "code": "RAD 216", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RAD/216", 
+                    "name": "Introduction to Imaging Modalities"
+                }, 
+                {
+                    "code": "RAD 218", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RAD/218", 
+                    "name": "Radiation Biology & Protection"
+                }
+            ], 
+            "name": "Radiologic Sciences", 
+            "url": "http://www.chegg.com/courses/kvccfair/RAD"
+        }, 
+        {
+            "abbr": "RTS", 
+            "courses": [
+                {
+                    "code": "RTS 111", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RTS/111", 
+                    "name": "Introduction to Respiratory Care"
+                }, 
+                {
+                    "code": "RTS 112", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RTS/112", 
+                    "name": "Therapeutic Modalities in Respiratory Care"
+                }, 
+                {
+                    "code": "RTS 117", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RTS/117", 
+                    "name": "Cardiopulmonary Anatomy & Physiology"
+                }, 
+                {
+                    "code": "RTS 120", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RTS/120", 
+                    "name": "Clinical Practicum I"
+                }, 
+                {
+                    "code": "RTS 121", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RTS/121", 
+                    "name": "Cardiopulmonary Diagnostics"
+                }, 
+                {
+                    "code": "RTS 127", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RTS/127", 
+                    "name": "Respiratory Pharmacology"
+                }, 
+                {
+                    "code": "RTS 223", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RTS/223", 
+                    "name": "Mechanical Ventilation"
+                }, 
+                {
+                    "code": "RTS 224", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RTS/224", 
+                    "name": "Concepts in Critical Care"
+                }, 
+                {
+                    "code": "RTS 225", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RTS/225", 
+                    "name": "Perinatal and Pediatric Respiratory Care"
+                }, 
+                {
+                    "code": "RTS 226", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RTS/226", 
+                    "name": "Cardiopulmonary Pathology"
+                }, 
+                {
+                    "code": "RTS 229", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RTS/229", 
+                    "name": "Clinical Practicum II"
+                }, 
+                {
+                    "code": "RTS 230", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RTS/230", 
+                    "name": "Clinical Practicum III"
+                }, 
+                {
+                    "code": "RTS 231", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RTS/231", 
+                    "name": "Respiratory Care Senior Seminar"
+                }, 
+                {
+                    "code": "RTS 251", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/RTS/251", 
+                    "name": "Introduction to Polysomnography"
+                }
+            ], 
+            "name": "Recreation/Tourism Studies", 
+            "url": "http://www.chegg.com/courses/kvccfair/RTS"
+        }, 
+        {
+            "abbr": "SFS", 
+            "courses": [
+                {
+                    "code": "SFS 010", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/SFS/010", 
+                    "name": "Skills for Success"
+                }
+            ], 
+            "name": "Structural Fire Science", 
+            "url": "http://www.chegg.com/courses/kvccfair/SFS"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/SOC/101", 
+                    "name": "Introduction to Sociology"
+                }, 
+                {
+                    "code": "SOC 104", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/SOC/104", 
+                    "name": "The Changing Workplace"
+                }, 
+                {
+                    "code": "SOC 203", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/SOC/203", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 204", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/SOC/204", 
+                    "name": "Social Problems"
+                }, 
+                {
+                    "code": "SOC 205", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/SOC/205", 
+                    "name": "Sociology of Families"
+                }, 
+                {
+                    "code": "SOC 206", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/SOC/206", 
+                    "name": "Advanced Topics in Sociology"
+                }, 
+                {
+                    "code": "SOC 209", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/SOC/209", 
+                    "name": ""
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/kvccfair/SOC"
+        }, 
+        {
+            "abbr": "SPA", 
+            "courses": [
+                {
+                    "code": "SPA 101", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/SPA/101", 
+                    "name": "Elementary Spanish I"
+                }, 
+                {
+                    "code": "SPA 102", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/SPA/102", 
+                    "name": "Elementary Spanish II"
+                }, 
+                {
+                    "code": "SPA 201", 
+                    "course_url": "http://www.chegg.com/courses/kvccfair/SPA/201", 
+                    "name": "Intermediate Spanish I"
+                }
+            ], 
+            "name": "Speech Pathology And Audiology", 
+            "url": "http://www.chegg.com/courses/kvccfair/SPA"
+        }
+    ], 
+    "name": "kvccfair"
+}

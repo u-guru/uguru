@@ -1,0 +1,1384 @@
+{
+    "all_stats": {
+        "num_courses": 226, 
+        "num_departments": 35
+    }, 
+    "departments": [
+        {
+            "abbr": "ACC", 
+            "courses": [
+                {
+                    "code": "ACC 1213", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ACC/1213", 
+                    "name": "Principles of Accounting I"
+                }, 
+                {
+                    "code": "ACC 1223", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ACC/1223", 
+                    "name": "Principles of Accounting II"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/1577719/ACC"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 1313", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ART/1313", 
+                    "name": "Drawing I"
+                }, 
+                {
+                    "code": "ART 1323", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ART/1323", 
+                    "name": "Drawing II"
+                }, 
+                {
+                    "code": "ART 1433", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ART/1433", 
+                    "name": "Design I"
+                }, 
+                {
+                    "code": "ART 1443", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ART/1443", 
+                    "name": "Design II"
+                }, 
+                {
+                    "code": "ART 1453", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ART/1453", 
+                    "name": "Three Dimensional Design"
+                }, 
+                {
+                    "code": "ART 1913", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ART/1913", 
+                    "name": "Art for Elementary Teachers"
+                }, 
+                {
+                    "code": "ART 2513", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ART/2513", 
+                    "name": "Painting I"
+                }, 
+                {
+                    "code": "ART 2523", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ART/2523", 
+                    "name": "Painting II"
+                }, 
+                {
+                    "code": "ART 2613", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ART/2613", 
+                    "name": "Ceramics I"
+                }, 
+                {
+                    "code": "ART 2623", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ART/2623", 
+                    "name": "Ceramics II"
+                }, 
+                {
+                    "code": "ART 2713", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ART/2713", 
+                    "name": "Art History I"
+                }, 
+                {
+                    "code": "ART 2723", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ART/2723", 
+                    "name": "Art History II"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/1577719/ART"
+        }, 
+        {
+            "abbr": "BAD", 
+            "courses": [
+                {
+                    "code": "BAD 1113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BAD/1113", 
+                    "name": "Introduction to Business"
+                }, 
+                {
+                    "code": "BAD 2323", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BAD/2323", 
+                    "name": "Business Statistics"
+                }, 
+                {
+                    "code": "BAD 2413", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BAD/2413", 
+                    "name": "Legal Environment of Business"
+                }, 
+                {
+                    "code": "BAD 2533", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BAD/2533", 
+                    "name": "Business Management and Microcomputers"
+                }, 
+                {
+                    "code": "BAD 2713", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BAD/2713", 
+                    "name": "Principles of Real Estate"
+                }, 
+                {
+                    "code": "BAD 2723", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BAD/2723", 
+                    "name": "Real Estate Law"
+                }, 
+                {
+                    "code": "BAD 2853", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BAD/2853", 
+                    "name": "Business Ethics"
+                }
+            ], 
+            "name": "Business Administration", 
+            "url": "http://www.chegg.com/courses/1577719/BAD"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 1111", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/1111", 
+                    "name": "Principles of Biology I"
+                }, 
+                {
+                    "code": "BIO 1113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/1113", 
+                    "name": "Principles of Biology I"
+                }, 
+                {
+                    "code": "BIO 1121", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/1121", 
+                    "name": "Principles of Biology II"
+                }, 
+                {
+                    "code": "BIO 1123", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/1123", 
+                    "name": "Principles of Biology II"
+                }, 
+                {
+                    "code": "BIO 1131", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/1131", 
+                    "name": "General Biology I"
+                }, 
+                {
+                    "code": "BIO 1133", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/1133", 
+                    "name": "General Biology I"
+                }, 
+                {
+                    "code": "BIO 1141", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/1141", 
+                    "name": "General Biology,II Lab"
+                }, 
+                {
+                    "code": "BIO 1143", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/1143", 
+                    "name": "General Biology II"
+                }, 
+                {
+                    "code": "BIO 1311", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/1311", 
+                    "name": "Botany I"
+                }, 
+                {
+                    "code": "BIO 1313", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/1313", 
+                    "name": "Botany I"
+                }, 
+                {
+                    "code": "BIO 1321", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/1321", 
+                    "name": "Botany II"
+                }, 
+                {
+                    "code": "BIO 1323", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/1323", 
+                    "name": "Botany II"
+                }, 
+                {
+                    "code": "BIO 1511", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/1511", 
+                    "name": "Principles of Anatomy and Physiology I"
+                }, 
+                {
+                    "code": "BIO 1513", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/1513", 
+                    "name": "Principles of Anatomy and Physiology I"
+                }, 
+                {
+                    "code": "BIO 1613", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/1613", 
+                    "name": "Nutrition"
+                }, 
+                {
+                    "code": "BIO 2313", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/2313", 
+                    "name": "Dendrology"
+                }, 
+                {
+                    "code": "BIO 2411", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/2411", 
+                    "name": "Zoology I"
+                }, 
+                {
+                    "code": "BIO 2413", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/2413", 
+                    "name": "Zoology I"
+                }, 
+                {
+                    "code": "BIO 2511", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/2511", 
+                    "name": "Anatomy and Physiology I"
+                }, 
+                {
+                    "code": "BIO 2513", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/2513", 
+                    "name": "Anatomy and Physiology I,Lecture"
+                }, 
+                {
+                    "code": "BIO 2521", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/2521", 
+                    "name": "Anatomy and Physiology II"
+                }, 
+                {
+                    "code": "BIO 2523", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/2523", 
+                    "name": "Anatomy and Physiology II"
+                }, 
+                {
+                    "code": "BIO 2921", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/2921", 
+                    "name": "Microbiology"
+                }, 
+                {
+                    "code": "BIO 2923", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BIO/2923", 
+                    "name": "Microbiology"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/1577719/BIO"
+        }, 
+        {
+            "abbr": "BOA", 
+            "courses": [
+                {
+                    "code": "BOA 1413", 
+                    "course_url": "http://www.chegg.com/courses/1577719/BOA/1413", 
+                    "name": "Keyboarding"
+                }
+            ], 
+            "name": "Business Office Applications", 
+            "url": "http://www.chegg.com/courses/1577719/BOA"
+        }, 
+        {
+            "abbr": "CHE", 
+            "courses": [
+                {
+                    "code": "CHE 1113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CHE/1113", 
+                    "name": "General Chemistry Survey"
+                }, 
+                {
+                    "code": "CHE 1211", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CHE/1211", 
+                    "name": "General Chemistry I"
+                }, 
+                {
+                    "code": "CHE 1213", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CHE/1213", 
+                    "name": "General Chemistry I"
+                }, 
+                {
+                    "code": "CHE 1221", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CHE/1221", 
+                    "name": "General Chemistry II"
+                }, 
+                {
+                    "code": "CHE 1223", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CHE/1223", 
+                    "name": "General Chemistry II"
+                }, 
+                {
+                    "code": "CHE 1311", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CHE/1311", 
+                    "name": "Principles of Chemistry I"
+                }, 
+                {
+                    "code": "CHE 1313", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CHE/1313", 
+                    "name": "Principles of Chemistry I"
+                }, 
+                {
+                    "code": "CHE 2421", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CHE/2421", 
+                    "name": "Organic Chemistry I"
+                }, 
+                {
+                    "code": "CHE 2423", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CHE/2423", 
+                    "name": "Organic Chemistry I"
+                }, 
+                {
+                    "code": "CHE 2431", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CHE/2431", 
+                    "name": "Organic Chemistry II"
+                }, 
+                {
+                    "code": "CHE 2433", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CHE/2433", 
+                    "name": "Organic Chemistry II"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/1577719/CHE"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 1423", 
+                    "course_url": "http://www.chegg.com/courses/1577719/COM/1423", 
+                    "name": "Introduction to Broadcasting"
+                }, 
+                {
+                    "code": "COM 1463", 
+                    "course_url": "http://www.chegg.com/courses/1577719/COM/1463", 
+                    "name": "TV Production"
+                }, 
+                {
+                    "code": "COM 1511", 
+                    "course_url": "http://www.chegg.com/courses/1577719/COM/1511", 
+                    "name": "Radio/TV Production Lab I"
+                }, 
+                {
+                    "code": "COM 2463", 
+                    "course_url": "http://www.chegg.com/courses/1577719/COM/2463", 
+                    "name": "Writing for the Electronic Media"
+                }, 
+                {
+                    "code": "COM 2483", 
+                    "course_url": "http://www.chegg.com/courses/1577719/COM/2483", 
+                    "name": "Introduction to Mass Communications"
+                }
+            ], 
+            "name": "Communication", 
+            "url": "http://www.chegg.com/courses/1577719/COM"
+        }, 
+        {
+            "abbr": "CRJ", 
+            "courses": [
+                {
+                    "code": "CRJ 1313", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CRJ/1313", 
+                    "name": "Introduction to Criminal Justice"
+                }, 
+                {
+                    "code": "CRJ 1323", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CRJ/1323", 
+                    "name": "Police Administration and Organization I"
+                }, 
+                {
+                    "code": "CRJ 1363", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CRJ/1363", 
+                    "name": "Introduction to Corrections"
+                }, 
+                {
+                    "code": "CRJ 2513", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CRJ/2513", 
+                    "name": "Law Enforcement and the Juvenile"
+                }
+            ], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/1577719/CRJ"
+        }, 
+        {
+            "abbr": "CSC", 
+            "courses": [
+                {
+                    "code": "CSC 1123", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CSC/1123", 
+                    "name": "Computer Applications I"
+                }, 
+                {
+                    "code": "CSC 1213", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CSC/1213", 
+                    "name": "Visual Basic Computer Programming I"
+                }, 
+                {
+                    "code": "CSC 1613", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CSC/1613", 
+                    "name": "Computer Programming I"
+                }, 
+                {
+                    "code": "CSC 2133", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CSC/2133", 
+                    "name": "Programming I with \"C++\""
+                }, 
+                {
+                    "code": "CSC 2143", 
+                    "course_url": "http://www.chegg.com/courses/1577719/CSC/2143", 
+                    "name": "Programming II with \"C++\""
+                }
+            ], 
+            "name": "Computer Science", 
+            "url": "http://www.chegg.com/courses/1577719/CSC"
+        }, 
+        {
+            "abbr": "ECO", 
+            "courses": [
+                {
+                    "code": "ECO 2113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ECO/2113", 
+                    "name": "Principles of Economics I"
+                }, 
+                {
+                    "code": "ECO 2123", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ECO/2123", 
+                    "name": "Principles of Economics II"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/1577719/ECO"
+        }, 
+        {
+            "abbr": "EGR", 
+            "courses": [
+                {
+                    "code": "EGR 2413", 
+                    "course_url": "http://www.chegg.com/courses/1577719/EGR/2413", 
+                    "name": "Engineering Mechanics"
+                }
+            ], 
+            "name": "Engineering", 
+            "url": "http://www.chegg.com/courses/1577719/EGR"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 0113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ENG/0113", 
+                    "name": "Beginning English"
+                }, 
+                {
+                    "code": "ENG 0123", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ENG/0123", 
+                    "name": "Intermediate English"
+                }, 
+                {
+                    "code": "ENG 1113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ENG/1113", 
+                    "name": "English Composition I"
+                }, 
+                {
+                    "code": "ENG 2133", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ENG/2133", 
+                    "name": "Creative Writing I"
+                }, 
+                {
+                    "code": "ENG 2143", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ENG/2143", 
+                    "name": "Creative Writing II"
+                }, 
+                {
+                    "code": "ENG 2153", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ENG/2153", 
+                    "name": "Traditional Grammar"
+                }, 
+                {
+                    "code": "ENG 2223", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ENG/2223", 
+                    "name": "American Literature I"
+                }, 
+                {
+                    "code": "ENG 2233", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ENG/2233", 
+                    "name": "American Literature II"
+                }, 
+                {
+                    "code": "ENG 2423", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ENG/2423", 
+                    "name": "World Literature I"
+                }, 
+                {
+                    "code": "ENG 2433", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ENG/2433", 
+                    "name": "World Literature II"
+                }, 
+                {
+                    "code": "ENG 2523", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ENG/2523", 
+                    "name": "African-American Literature I"
+                }, 
+                {
+                    "code": "ENG 2533", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ENG/2533", 
+                    "name": "African-American Literature II"
+                }, 
+                {
+                    "code": "ENG 2613", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ENG/2613", 
+                    "name": "Film as Literature"
+                }, 
+                {
+                    "code": "ENG 2923", 
+                    "course_url": "http://www.chegg.com/courses/1577719/ENG/2923", 
+                    "name": "Professional Writing"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/1577719/ENG"
+        }, 
+        {
+            "abbr": "EPY", 
+            "courses": [
+                {
+                    "code": "EPY 2513", 
+                    "course_url": "http://www.chegg.com/courses/1577719/EPY/2513", 
+                    "name": "Child Psychology"
+                }, 
+                {
+                    "code": "EPY 2533", 
+                    "course_url": "http://www.chegg.com/courses/1577719/EPY/2533", 
+                    "name": "Human Growth and Development"
+                }
+            ], 
+            "name": "Educational Psychology", 
+            "url": "http://www.chegg.com/courses/1577719/EPY"
+        }, 
+        {
+            "abbr": "FCS", 
+            "courses": [
+                {
+                    "code": "FCS 1253", 
+                    "course_url": "http://www.chegg.com/courses/1577719/FCS/1253", 
+                    "name": "Nutrition"
+                }
+            ], 
+            "name": "Family Consumer Science", 
+            "url": "http://www.chegg.com/courses/1577719/FCS"
+        }, 
+        {
+            "abbr": "GEO", 
+            "courses": [
+                {
+                    "code": "GEO 1113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/GEO/1113", 
+                    "name": "World Geography"
+                }
+            ], 
+            "name": "Geography", 
+            "url": "http://www.chegg.com/courses/1577719/GEO"
+        }, 
+        {
+            "abbr": "GRA", 
+            "courses": [
+                {
+                    "code": "GRA 1113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/GRA/1113", 
+                    "name": "Engineering Drawing I"
+                }, 
+                {
+                    "code": "GRA 1143", 
+                    "course_url": "http://www.chegg.com/courses/1577719/GRA/1143", 
+                    "name": "Graphic Communications"
+                }
+            ], 
+            "name": "Gra - Grantwriting Course", 
+            "url": "http://www.chegg.com/courses/1577719/GRA"
+        }, 
+        {
+            "abbr": "HIS", 
+            "courses": [
+                {
+                    "code": "HIS 1613", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HIS/1613", 
+                    "name": "Survey of African American History"
+                }, 
+                {
+                    "code": "HIS 2223", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HIS/2223", 
+                    "name": "American History II"
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/1577719/HIS"
+        }, 
+        {
+            "abbr": "HON", 
+            "courses": [
+                {
+                    "code": "HON 1911", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HON/1911", 
+                    "name": "Honors Forum I"
+                }, 
+                {
+                    "code": "HON 1921", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HON/1921", 
+                    "name": "Honors Forum II"
+                }, 
+                {
+                    "code": "HON 2911", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HON/2911", 
+                    "name": "Honors Forum III"
+                }
+            ], 
+            "name": "Honors", 
+            "url": "http://www.chegg.com/courses/1577719/HON"
+        }, 
+        {
+            "abbr": "HPR", 
+            "courses": [
+                {
+                    "code": "HPR 1111", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/1111", 
+                    "name": "General Activities I"
+                }, 
+                {
+                    "code": "HPR 1121", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/1121", 
+                    "name": "General Activities II"
+                }, 
+                {
+                    "code": "HPR 1131", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/1131", 
+                    "name": "Varsity Sports I"
+                }, 
+                {
+                    "code": "HPR 1141", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/1141", 
+                    "name": "Varsity Sports II"
+                }, 
+                {
+                    "code": "HPR 1213", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/1213", 
+                    "name": "Personal and Community Health"
+                }, 
+                {
+                    "code": "HPR 1313", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/1313", 
+                    "name": "Introduction to Health,Physical Education & Recreation"
+                }, 
+                {
+                    "code": "HPR 1551", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/1551", 
+                    "name": "Fitness & Conditioning Training I"
+                }, 
+                {
+                    "code": "HPR 1561", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/1561", 
+                    "name": "Fitness & Conditioning Training II"
+                }, 
+                {
+                    "code": "HPR 1751", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/1751", 
+                    "name": "Nutrition and Weight Control"
+                }, 
+                {
+                    "code": "HPR 1761", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/1761", 
+                    "name": "Wellness and Weight Control"
+                }, 
+                {
+                    "code": "HPR 2111", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/2111", 
+                    "name": "General Activities III"
+                }, 
+                {
+                    "code": "HPR 2121", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/2121", 
+                    "name": "General Activities IV"
+                }, 
+                {
+                    "code": "HPR 2131", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/2131", 
+                    "name": "Varsity Sports Ill"
+                }, 
+                {
+                    "code": "HPR 2141", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/2141", 
+                    "name": "Varsity Sports IV"
+                }, 
+                {
+                    "code": "HPR 2213", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/2213", 
+                    "name": "First Aid and CPR"
+                }, 
+                {
+                    "code": "HPR 2423", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/2423", 
+                    "name": "Football Theory"
+                }, 
+                {
+                    "code": "HPR 2443", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HPR/2443", 
+                    "name": "Athletic Training and Treatment of Injuries"
+                }
+            ], 
+            "name": "Human Performance And Recreation", 
+            "url": "http://www.chegg.com/courses/1577719/HPR"
+        }, 
+        {
+            "abbr": "HUM", 
+            "courses": [
+                {
+                    "code": "HUM 1113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/HUM/1113", 
+                    "name": "Introduction to Humanities"
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/1577719/HUM"
+        }, 
+        {
+            "abbr": "JOU", 
+            "courses": [
+                {
+                    "code": "JOU 1111", 
+                    "course_url": "http://www.chegg.com/courses/1577719/JOU/1111", 
+                    "name": "College Publications I"
+                }, 
+                {
+                    "code": "JOU 1121", 
+                    "course_url": "http://www.chegg.com/courses/1577719/JOU/1121", 
+                    "name": "College Publications II"
+                }, 
+                {
+                    "code": "JOU 1313", 
+                    "course_url": "http://www.chegg.com/courses/1577719/JOU/1313", 
+                    "name": "Principles of Journalism I"
+                }, 
+                {
+                    "code": "JOU 1323", 
+                    "course_url": "http://www.chegg.com/courses/1577719/JOU/1323", 
+                    "name": "Principles of Journalism II"
+                }, 
+                {
+                    "code": "JOU 2111", 
+                    "course_url": "http://www.chegg.com/courses/1577719/JOU/2111", 
+                    "name": "College Publications III"
+                }, 
+                {
+                    "code": "JOU 2121", 
+                    "course_url": "http://www.chegg.com/courses/1577719/JOU/2121", 
+                    "name": "College Publications IV"
+                }
+            ], 
+            "name": "Journalism", 
+            "url": "http://www.chegg.com/courses/1577719/JOU"
+        }, 
+        {
+            "abbr": "LLS", 
+            "courses": [
+                {
+                    "code": "LLS 1311", 
+                    "course_url": "http://www.chegg.com/courses/1577719/LLS/1311", 
+                    "name": "Orientation"
+                }, 
+                {
+                    "code": "LLS 1413", 
+                    "course_url": "http://www.chegg.com/courses/1577719/LLS/1413", 
+                    "name": "Improvement of Study"
+                }, 
+                {
+                    "code": "LLS 1423", 
+                    "course_url": "http://www.chegg.com/courses/1577719/LLS/1423", 
+                    "name": "College Study Skills"
+                }
+            ], 
+            "name": "Latina/Latino Studies", 
+            "url": "http://www.chegg.com/courses/1577719/LLS"
+        }, 
+        {
+            "abbr": "MAT", 
+            "courses": [
+                {
+                    "code": "MAT 0113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MAT/0113", 
+                    "name": "Fundamentals of Mathematics"
+                }, 
+                {
+                    "code": "MAT 0123", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MAT/0123", 
+                    "name": "Beginning Algebra"
+                }, 
+                {
+                    "code": "MAT 1313", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MAT/1313", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MAT 1323", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MAT/1323", 
+                    "name": "Trigonometry"
+                }, 
+                {
+                    "code": "MAT 1343", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MAT/1343", 
+                    "name": "Pre-Calculus"
+                }, 
+                {
+                    "code": "MAT 1513", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MAT/1513", 
+                    "name": "Business Calculus I"
+                }, 
+                {
+                    "code": "MAT 1613", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MAT/1613", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MAT 1623", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MAT/1623", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MAT 1723", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MAT/1723", 
+                    "name": "The Real Number System"
+                }, 
+                {
+                    "code": "MAT 1733", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MAT/1733", 
+                    "name": "Geometry,Measurement,and Probability"
+                }, 
+                {
+                    "code": "MAT 1743", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MAT/1743", 
+                    "name": "Problem Solving with Real Numbers"
+                }, 
+                {
+                    "code": "MAT 2323", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MAT/2323", 
+                    "name": "Statistics"
+                }, 
+                {
+                    "code": "MAT 2613", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MAT/2613", 
+                    "name": "Calculus III"
+                }, 
+                {
+                    "code": "MAT 2623", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MAT/2623", 
+                    "name": "Calculus IV"
+                }, 
+                {
+                    "code": "MAT 2913", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MAT/2913", 
+                    "name": "Differential Equations"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/1577719/MAT"
+        }, 
+        {
+            "abbr": "MFL", 
+            "courses": [
+                {
+                    "code": "MFL 1113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MFL/1113", 
+                    "name": "French I"
+                }, 
+                {
+                    "code": "MFL 1123", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MFL/1123", 
+                    "name": "French II"
+                }, 
+                {
+                    "code": "MFL 1213", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MFL/1213", 
+                    "name": "Spanish I"
+                }, 
+                {
+                    "code": "MFL 1223", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MFL/1223", 
+                    "name": "Spanish II"
+                }, 
+                {
+                    "code": "MFL 2213", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MFL/2213", 
+                    "name": "Spanish III"
+                }, 
+                {
+                    "code": "MFL 2223", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MFL/2223", 
+                    "name": "Spanish IV"
+                }, 
+                {
+                    "code": "MFL 2243", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MFL/2243", 
+                    "name": "Spanish Conversation I"
+                }, 
+                {
+                    "code": "MFL 2253", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MFL/2253", 
+                    "name": "Spanish Conversation II"
+                }, 
+                {
+                    "code": "MFL 2613", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MFL/2613", 
+                    "name": "Foreign Language Study Abroad"
+                }
+            ], 
+            "name": "Modern Foreign Languages", 
+            "url": "http://www.chegg.com/courses/1577719/MFL"
+        }, 
+        {
+            "abbr": "MUA", 
+            "courses": [
+                {
+                    "code": "MUA 1111,1121,2111,2121", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1111%2C1121%2C2111%2C2121", 
+                    "name": "Class Brass I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1141,1151,2141,2151", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1141%2C1151%2C2141%2C2151", 
+                    "name": "Brass For Non Majors I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1172,1182,2172,2182", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1172%2C1182%2C2172%2C2182", 
+                    "name": "Brass For Music Education Majors I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1173,1183,2173,2183", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1173%2C1183%2C2173%2C2183", 
+                    "name": "Brass For Music Majors I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1211,1221,2211,2221", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1211%2C1221%2C2211%2C2221", 
+                    "name": "Class Guitar I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1241,1251,2241,2251", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1241%2C1251%2C2241%2C2251", 
+                    "name": "Guitar For Non Majors I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1272,1282,2272,2282", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1272%2C1282%2C2272%2C2282", 
+                    "name": "Guitar For Music and Music Education Majors I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1411,1421,2411,2421", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1411%2C1421%2C2411%2C2421", 
+                    "name": "Class Percussion I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1441,1451,2441,2451", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1441%2C1451%2C2441%2C2451", 
+                    "name": "Percussion For Non Majors I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1472,1482,2472,2482", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1472%2C1482%2C2472%2C2482", 
+                    "name": "Percussion For Music Education I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1473,1483,2473,2483", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1473%2C1483%2C2473%2C2483", 
+                    "name": "Percussion For Music Majors I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1511,1521,2511,2521", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1511%2C1521%2C2511%2C2521", 
+                    "name": "Class Piano I,II,III & IV"
+                }, 
+                {
+                    "code": "MUA 1541,1551,2541,2551", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1541%2C1551%2C2541%2C2551", 
+                    "name": "Piano For Non Majors I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1572,1582,2572,2582", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1572%2C1582%2C2572%2C2582", 
+                    "name": "Piano For Music Education Majors I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1573,1583,2573,2583", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1573%2C1583%2C2573%2C2583", 
+                    "name": "Piano For Music Majors I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1711,1721,2711,2721", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1711%2C1721%2C2711%2C2721", 
+                    "name": "Class Voice I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1741,1751,2741,2751", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1741%2C1751%2C2741%2C2751", 
+                    "name": "Voice For Non Majors I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1772,1782,2772,2782", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1772%2C1782%2C2772%2C2782", 
+                    "name": "Voice For Music Education Majors I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1773,1783,2773,2783", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1773%2C1783%2C2773%2C2783", 
+                    "name": "Voice For Music Majors I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1811,1821,2811,2821", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1811%2C1821%2C2811%2C2821", 
+                    "name": "Class Woodwinds I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1841,1851,2841,2851", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1841%2C1851%2C2841%2C2851", 
+                    "name": "Woodwinds For Non Majors I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1872,1882,2872,2882", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1872%2C1882%2C2872%2C2882", 
+                    "name": "Woodwinds For Music Education Majors I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUA 1873,1883,2873,2883", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUA/1873%2C1883%2C2873%2C2883", 
+                    "name": "Woodwinds For Music Majors I,II,III,& IV"
+                }
+            ], 
+            "name": "Applied Music", 
+            "url": "http://www.chegg.com/courses/1577719/MUA"
+        }, 
+        {
+            "abbr": "MUO", 
+            "courses": [
+                {
+                    "code": "MUO 1111,1121,2111,2121", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUO/1111%2C1121%2C2111%2C2121", 
+                    "name": "Band I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUO 1141,1151,2141,2151", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUO/1141%2C1151%2C2141%2C2151", 
+                    "name": "Small Band Groups I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUO 1171,1181,2171,2181", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUO/1171%2C1181%2C2171%2C2181", 
+                    "name": "Stage Band I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUO 1211,1221,2211,2221", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUO/1211%2C1221%2C2211%2C2221", 
+                    "name": "Choir I,II,III,& IV"
+                }, 
+                {
+                    "code": "MUO 1241,1251,2241,2251", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUO/1241%2C1251%2C2241%2C2251", 
+                    "name": "Small Singing Groups I,II,III,& IV"
+                }
+            ], 
+            "name": "Music Organization", 
+            "url": "http://www.chegg.com/courses/1577719/MUO"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 1123", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUS/1123", 
+                    "name": "Music Survey"
+                }, 
+                {
+                    "code": "MUS 1133", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUS/1133", 
+                    "name": "Fundamentals of Music"
+                }, 
+                {
+                    "code": "MUS 1211", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUS/1211", 
+                    "name": "Music Theory I"
+                }, 
+                {
+                    "code": "MUS 1213", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUS/1213", 
+                    "name": "Music Theory I"
+                }, 
+                {
+                    "code": "MUS 1221", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUS/1221", 
+                    "name": "Music Theory II"
+                }, 
+                {
+                    "code": "MUS 1223", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUS/1223", 
+                    "name": "Music Theory II"
+                }, 
+                {
+                    "code": "MUS 1911", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUS/1911", 
+                    "name": "Recital Class I"
+                }, 
+                {
+                    "code": "MUS 1921", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUS/1921", 
+                    "name": "Recital Class II"
+                }, 
+                {
+                    "code": "MUS 2211", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUS/2211", 
+                    "name": "Music Theory III"
+                }, 
+                {
+                    "code": "MUS 2213", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUS/2213", 
+                    "name": "Music Theory III"
+                }, 
+                {
+                    "code": "MUS 2221", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUS/2221", 
+                    "name": "Music Theory IV"
+                }, 
+                {
+                    "code": "MUS 2223", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUS/2223", 
+                    "name": "Music Theory IV"
+                }, 
+                {
+                    "code": "MUS 2513", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUS/2513", 
+                    "name": "Music for Elementary Teachers"
+                }, 
+                {
+                    "code": "MUS 2911", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUS/2911", 
+                    "name": "Recital Class III"
+                }, 
+                {
+                    "code": "MUS 2921", 
+                    "course_url": "http://www.chegg.com/courses/1577719/MUS/2921", 
+                    "name": "Recital Class IV"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/1577719/MUS"
+        }, 
+        {
+            "abbr": "NSG", 
+            "courses": [
+                {
+                    "code": "NSG 1113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/NSG/1113", 
+                    "name": "Pharmacology"
+                }, 
+                {
+                    "code": "NSG 1119", 
+                    "course_url": "http://www.chegg.com/courses/1577719/NSG/1119", 
+                    "name": "Fundamentals of Nursing"
+                }, 
+                {
+                    "code": "NSG 1219", 
+                    "course_url": "http://www.chegg.com/courses/1577719/NSG/1219", 
+                    "name": "Medical-Surgical Nursing I"
+                }, 
+                {
+                    "code": "NSG 1953", 
+                    "course_url": "http://www.chegg.com/courses/1577719/NSG/1953", 
+                    "name": "Nursing Externship"
+                }, 
+                {
+                    "code": "NSG 2316", 
+                    "course_url": "http://www.chegg.com/courses/1577719/NSG/2316", 
+                    "name": "Maternal-Newborn Nursing"
+                }, 
+                {
+                    "code": "NSG 2326", 
+                    "course_url": "http://www.chegg.com/courses/1577719/NSG/2326", 
+                    "name": "Nursing Care and the Pediatric Client"
+                }, 
+                {
+                    "code": "NSG 2414", 
+                    "course_url": "http://www.chegg.com/courses/1577719/NSG/2414", 
+                    "name": "Psychiatric Mental Health Nursing"
+                }, 
+                {
+                    "code": "NSG 2426", 
+                    "course_url": "http://www.chegg.com/courses/1577719/NSG/2426", 
+                    "name": "Medical Surgical Nursing II"
+                }, 
+                {
+                    "code": "NSG 2432", 
+                    "course_url": "http://www.chegg.com/courses/1577719/NSG/2432", 
+                    "name": "NCLEX-RN? Preparation"
+                }
+            ], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/1577719/NSG"
+        }, 
+        {
+            "abbr": "PHI", 
+            "courses": [
+                {
+                    "code": "PHI 1113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/PHI/1113", 
+                    "name": "Old Testament Survey"
+                }, 
+                {
+                    "code": "PHI 1133", 
+                    "course_url": "http://www.chegg.com/courses/1577719/PHI/1133", 
+                    "name": "New Testament Survey"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/1577719/PHI"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 1114", 
+                    "course_url": "http://www.chegg.com/courses/1577719/PHY/1114", 
+                    "name": "Introduction to Astronomy"
+                }, 
+                {
+                    "code": "PHY 1213", 
+                    "course_url": "http://www.chegg.com/courses/1577719/PHY/1213", 
+                    "name": "Survey of Physics"
+                }, 
+                {
+                    "code": "PHY 2241", 
+                    "course_url": "http://www.chegg.com/courses/1577719/PHY/2241", 
+                    "name": "Physical Science I"
+                }, 
+                {
+                    "code": "PHY 2243", 
+                    "course_url": "http://www.chegg.com/courses/1577719/PHY/2243", 
+                    "name": "Physical Science I"
+                }, 
+                {
+                    "code": "PHY 2251", 
+                    "course_url": "http://www.chegg.com/courses/1577719/PHY/2251", 
+                    "name": "Physical Science II"
+                }, 
+                {
+                    "code": "PHY 2253", 
+                    "course_url": "http://www.chegg.com/courses/1577719/PHY/2253", 
+                    "name": "Physical Science II"
+                }, 
+                {
+                    "code": "PHY 2313", 
+                    "course_url": "http://www.chegg.com/courses/1577719/PHY/2313", 
+                    "name": "Physics I"
+                }, 
+                {
+                    "code": "PHY 2323", 
+                    "course_url": "http://www.chegg.com/courses/1577719/PHY/2323", 
+                    "name": "Physics II"
+                }, 
+                {
+                    "code": "PHY 2333", 
+                    "course_url": "http://www.chegg.com/courses/1577719/PHY/2333", 
+                    "name": "Physics III"
+                }, 
+                {
+                    "code": "PHY 2411", 
+                    "course_url": "http://www.chegg.com/courses/1577719/PHY/2411", 
+                    "name": "General Physics I"
+                }, 
+                {
+                    "code": "PHY 2413", 
+                    "course_url": "http://www.chegg.com/courses/1577719/PHY/2413", 
+                    "name": "General Physics I"
+                }, 
+                {
+                    "code": "PHY 2421", 
+                    "course_url": "http://www.chegg.com/courses/1577719/PHY/2421", 
+                    "name": "General Physics II"
+                }, 
+                {
+                    "code": "PHY 2423", 
+                    "course_url": "http://www.chegg.com/courses/1577719/PHY/2423", 
+                    "name": "General Physics II"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/1577719/PHY"
+        }, 
+        {
+            "abbr": "PSC", 
+            "courses": [
+                {
+                    "code": "PSC 1123", 
+                    "course_url": "http://www.chegg.com/courses/1577719/PSC/1123", 
+                    "name": "American State and Local Government"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/1577719/PSC"
+        }, 
+        {
+            "abbr": "REA", 
+            "courses": [
+                {
+                    "code": "REA 0113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/REA/0113", 
+                    "name": "Reading Comprehension I"
+                }, 
+                {
+                    "code": "REA 0123", 
+                    "course_url": "http://www.chegg.com/courses/1577719/REA/0123", 
+                    "name": "Reading Comprehension II"
+                }
+            ], 
+            "name": "Reading", 
+            "url": "http://www.chegg.com/courses/1577719/REA"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 2213", 
+                    "course_url": "http://www.chegg.com/courses/1577719/SOC/2213", 
+                    "name": "Introductory Anthropology"
+                }, 
+                {
+                    "code": "SOC 2243", 
+                    "course_url": "http://www.chegg.com/courses/1577719/SOC/2243", 
+                    "name": "Cultural Anthropology"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/1577719/SOC"
+        }, 
+        {
+            "abbr": "SPT", 
+            "courses": [
+                {
+                    "code": "SPT 0113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/SPT/0113", 
+                    "name": "Basic Speaking"
+                }, 
+                {
+                    "code": "SPT 1113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/SPT/1113", 
+                    "name": "Public Speaking I"
+                }, 
+                {
+                    "code": "SPT 2233", 
+                    "course_url": "http://www.chegg.com/courses/1577719/SPT/2233", 
+                    "name": "Theatre Appreciation"
+                }
+            ], 
+            "name": "Spanish Literature In Transl.", 
+            "url": "http://www.chegg.com/courses/1577719/SPT"
+        }, 
+        {
+            "abbr": "SWK", 
+            "courses": [
+                {
+                    "code": "SWK 1113", 
+                    "course_url": "http://www.chegg.com/courses/1577719/SWK/1113", 
+                    "name": "Introduction to Social Work"
+                }
+            ], 
+            "name": "Social Work", 
+            "url": "http://www.chegg.com/courses/1577719/SWK"
+        }
+    ], 
+    "name": "1577719"
+}

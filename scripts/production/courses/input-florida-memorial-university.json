@@ -1,0 +1,2443 @@
+{
+    "all_stats": {
+        "num_courses": 394, 
+        "num_departments": 68
+    }, 
+    "departments": [
+        {
+            "abbr": "ACC", 
+            "courses": [
+                {
+                    "code": "ACC 211", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ACC/211", 
+                    "name": "Principles Accounting I"
+                }, 
+                {
+                    "code": "ACC 212", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ACC/212", 
+                    "name": "Principles of Acounting II"
+                }, 
+                {
+                    "code": "ACC 311", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ACC/311", 
+                    "name": "Intermediate Accounting I"
+                }, 
+                {
+                    "code": "ACC 312", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ACC/312", 
+                    "name": "Intermediate Accounting II"
+                }, 
+                {
+                    "code": "ACC 352", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ACC/352", 
+                    "name": "Managerial Accounting"
+                }, 
+                {
+                    "code": "ACC 411", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ACC/411", 
+                    "name": "Advanced Accounting"
+                }, 
+                {
+                    "code": "ACC 431", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ACC/431", 
+                    "name": "Auditing I"
+                }, 
+                {
+                    "code": "ACC 434", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ACC/434", 
+                    "name": "Federal Income Tax I"
+                }, 
+                {
+                    "code": "ACC 454", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ACC/454", 
+                    "name": "Computer Accounting"
+                }, 
+                {
+                    "code": "ACC 501", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ACC/501", 
+                    "name": "Accounting for Management"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/ACC"
+        }, 
+        {
+            "abbr": "AFE", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/AFE"
+        }, 
+        {
+            "abbr": "AHS", 
+            "courses": [
+                {
+                    "code": "AHS 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AHS/301", 
+                    "name": "Prin of Homeland Security"
+                }, 
+                {
+                    "code": "AHS 302", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AHS/302", 
+                    "name": "Transportation Security"
+                }, 
+                {
+                    "code": "AHS 412", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AHS/412", 
+                    "name": "Homeland Security Law &amp; Policy"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/AHS"
+        }, 
+        {
+            "abbr": "AIS", 
+            "courses": [
+                {
+                    "code": "AIS 101", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AIS/101", 
+                    "name": "Intro Air Force I"
+                }, 
+                {
+                    "code": "AIS 201", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AIS/201", 
+                    "name": "Evol USAF Spac Pow"
+                }, 
+                {
+                    "code": "AIS 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AIS/301", 
+                    "name": "AF Leadership Studie"
+                }, 
+                {
+                    "code": "AIS 401", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AIS/401", 
+                    "name": "Ntnl Security Act"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/AIS"
+        }, 
+        {
+            "abbr": "ARA", 
+            "courses": [
+                {
+                    "code": "ARA 201", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ARA/201", 
+                    "name": "Elementary Arabic I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/ARA"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/ART"
+        }, 
+        {
+            "abbr": "ASC", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/ASC"
+        }, 
+        {
+            "abbr": "AVT", 
+            "courses": [
+                {
+                    "code": "AVT 203", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AVT/203", 
+                    "name": "Navigation &amp; Performance"
+                }, 
+                {
+                    "code": "AVT 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AVT/301", 
+                    "name": "Instrument Rating - Ground"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/AVT"
+        }, 
+        {
+            "abbr": "AWS", 
+            "courses": [
+                {
+                    "code": "AWS 200", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AWS/200", 
+                    "name": "Aviation History"
+                }, 
+                {
+                    "code": "AWS 201", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AWS/201", 
+                    "name": "Introduction to Aeronautics"
+                }, 
+                {
+                    "code": "AWS 235", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AWS/235", 
+                    "name": "Air Traffic Operations"
+                }, 
+                {
+                    "code": "AWS 240", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AWS/240", 
+                    "name": "Aviation Weather"
+                }, 
+                {
+                    "code": "AWS 270", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AWS/270", 
+                    "name": "Aircraft Engines"
+                }, 
+                {
+                    "code": "AWS 305", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AWS/305", 
+                    "name": "VFR Tower Operations"
+                }, 
+                {
+                    "code": "AWS 310", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AWS/310", 
+                    "name": "Aviation Legislation"
+                }, 
+                {
+                    "code": "AWS 390", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AWS/390", 
+                    "name": "Airline Management"
+                }, 
+                {
+                    "code": "AWS 410", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AWS/410", 
+                    "name": "Advance Terminal Operations"
+                }, 
+                {
+                    "code": "AWS 415", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AWS/415", 
+                    "name": "Seminar in Aviation Science"
+                }, 
+                {
+                    "code": "AWS 418", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AWS/418", 
+                    "name": "Cockpit Resources Management"
+                }, 
+                {
+                    "code": "AWS 420", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AWS/420", 
+                    "name": "Flight Safety"
+                }, 
+                {
+                    "code": "AWS 450", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AWS/450", 
+                    "name": "Sr. Proj Avi Stds"
+                }, 
+                {
+                    "code": "AWS 498", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AWS/498", 
+                    "name": "Cooperative Education in Aviation I"
+                }, 
+                {
+                    "code": "AWS 499", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/AWS/499", 
+                    "name": "Cooperative Education in Aviation II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/AWS"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 101", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/101", 
+                    "name": "Biological Science"
+                }, 
+                {
+                    "code": "BIO 130", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/130", 
+                    "name": "Principles of Biology I"
+                }, 
+                {
+                    "code": "BIO 131", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/131", 
+                    "name": "Principles of Biology Laboratory I"
+                }, 
+                {
+                    "code": "BIO 132", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/132", 
+                    "name": "Principles of Biology II"
+                }, 
+                {
+                    "code": "BIO 133", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/133", 
+                    "name": "Principles of Biology Laboratory II"
+                }, 
+                {
+                    "code": "BIO 204", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/204", 
+                    "name": "General Zoology"
+                }, 
+                {
+                    "code": "BIO 205", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/205", 
+                    "name": "General Zoology Laboratory"
+                }, 
+                {
+                    "code": "BIO 206", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/206", 
+                    "name": "General Botany"
+                }, 
+                {
+                    "code": "BIO 207", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/207", 
+                    "name": "General Botany Laboratory"
+                }, 
+                {
+                    "code": "BIO 211", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/211", 
+                    "name": "Radiobiology"
+                }, 
+                {
+                    "code": "BIO 212", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/212", 
+                    "name": "Human Anatomy"
+                }, 
+                {
+                    "code": "BIO 213", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/213", 
+                    "name": "Human Anatomy Lab"
+                }, 
+                {
+                    "code": "BIO 300", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/300", 
+                    "name": "Human Physiology"
+                }, 
+                {
+                    "code": "BIO 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/301", 
+                    "name": "Human Physiology Laboratory"
+                }, 
+                {
+                    "code": "BIO 304", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/304", 
+                    "name": "Embryology"
+                }, 
+                {
+                    "code": "BIO 310", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/310", 
+                    "name": "Genetics"
+                }, 
+                {
+                    "code": "BIO 311", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/311", 
+                    "name": "Genetics Laboratory"
+                }, 
+                {
+                    "code": "BIO 320", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/320", 
+                    "name": "General Ecology"
+                }, 
+                {
+                    "code": "BIO 321", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/321", 
+                    "name": "General Ecology Laboratory"
+                }, 
+                {
+                    "code": "BIO 410", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/410", 
+                    "name": "Microbiology"
+                }, 
+                {
+                    "code": "BIO 411", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/411", 
+                    "name": "Microbiology Laboratory"
+                }, 
+                {
+                    "code": "BIO 420", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/420", 
+                    "name": "Cell Biology"
+                }, 
+                {
+                    "code": "BIO 421", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/421", 
+                    "name": "Cell Biology Laboratory"
+                }, 
+                {
+                    "code": "BIO 431", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BIO/431", 
+                    "name": "Immunology Laboratory"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/BIO"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [
+                {
+                    "code": "BUS 211", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/211", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "BUS 215", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/215", 
+                    "name": "Quantitative Methods: Business &amp; Economi"
+                }, 
+                {
+                    "code": "BUS 240", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/240", 
+                    "name": "Introduction Hospitality Management"
+                }, 
+                {
+                    "code": "BUS 311", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/311", 
+                    "name": "Business Law I"
+                }, 
+                {
+                    "code": "BUS 312", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/312", 
+                    "name": "Business Law II"
+                }, 
+                {
+                    "code": "BUS 320", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/320", 
+                    "name": "Business Statistics I"
+                }, 
+                {
+                    "code": "BUS 321", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/321", 
+                    "name": "Business Statistics II"
+                }, 
+                {
+                    "code": "BUS 344", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/344", 
+                    "name": "Business Organization &amp; Management"
+                }, 
+                {
+                    "code": "BUS 361", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/361", 
+                    "name": "Leadership Applications"
+                }, 
+                {
+                    "code": "BUS 371", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/371", 
+                    "name": "Cooperative Education in Business"
+                }, 
+                {
+                    "code": "BUS 394", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/394", 
+                    "name": "Business Ethics &amp; Society"
+                }, 
+                {
+                    "code": "BUS 400", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/400", 
+                    "name": "Entrepreneurship"
+                }, 
+                {
+                    "code": "BUS 403", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/403", 
+                    "name": "Strategic Management"
+                }, 
+                {
+                    "code": "BUS 404", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/404", 
+                    "name": "International Business"
+                }, 
+                {
+                    "code": "BUS 420", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/420", 
+                    "name": "Operations Research"
+                }, 
+                {
+                    "code": "BUS 450", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/450", 
+                    "name": "Business Internship &amp; Seminar"
+                }, 
+                {
+                    "code": "BUS 498", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/498", 
+                    "name": "Senior Project in Business"
+                }, 
+                {
+                    "code": "BUS 502", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/502", 
+                    "name": "Business Research Methods"
+                }, 
+                {
+                    "code": "BUS 503", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/BUS/503", 
+                    "name": "Ethics &amp; Values Leadership"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/BUS"
+        }, 
+        {
+            "abbr": "CET", 
+            "courses": [
+                {
+                    "code": "CET 526", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CET/526", 
+                    "name": "Technology Integration Across Curriculum"
+                }, 
+                {
+                    "code": "CET 533", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CET/533", 
+                    "name": "Computer Ethics & Society"
+                }, 
+                {
+                    "code": "CET 542", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CET/542", 
+                    "name": "Web Technology and Differented Instruct"
+                }, 
+                {
+                    "code": "CET 575", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CET/575", 
+                    "name": "Education Technology Theory Models"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/CET"
+        }, 
+        {
+            "abbr": "CHE", 
+            "courses": [
+                {
+                    "code": "CHE 110", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/110", 
+                    "name": "General Chemistry I"
+                }, 
+                {
+                    "code": "CHE 111", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/111", 
+                    "name": "General Chemistry I Laboratory"
+                }, 
+                {
+                    "code": "CHE 112", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/112", 
+                    "name": "General Chemistry II"
+                }, 
+                {
+                    "code": "CHE 113", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/113", 
+                    "name": "General Chemistry Laboratory II"
+                }, 
+                {
+                    "code": "CHE 210", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/210", 
+                    "name": "Organic Chemistry I"
+                }, 
+                {
+                    "code": "CHE 211", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/211", 
+                    "name": "Organic Chemistry Laboratory I"
+                }, 
+                {
+                    "code": "CHE 212", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/212", 
+                    "name": "Organic Chemistry II"
+                }, 
+                {
+                    "code": "CHE 213", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/213", 
+                    "name": "Organic Chemistry Laboratory II"
+                }, 
+                {
+                    "code": "CHE 214", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/214", 
+                    "name": "Quatitative Analysis"
+                }, 
+                {
+                    "code": "CHE 215", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/215", 
+                    "name": "Quatitative Analysis Laboratory"
+                }, 
+                {
+                    "code": "CHE 224", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/224", 
+                    "name": "Environmental Chem"
+                }, 
+                {
+                    "code": "CHE 225", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/225", 
+                    "name": "Environmental Chemistry Laboratory"
+                }, 
+                {
+                    "code": "CHE 230", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/230", 
+                    "name": "Intro to Radio Chem"
+                }, 
+                {
+                    "code": "CHE 231", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/231", 
+                    "name": "Intro Radio Chem Lab"
+                }, 
+                {
+                    "code": "CHE 340", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/340", 
+                    "name": "Survey of Physical Chemistry"
+                }, 
+                {
+                    "code": "CHE 341", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/341", 
+                    "name": "Survey of Physical Chemistry Laboratory"
+                }, 
+                {
+                    "code": "CHE 370", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/370", 
+                    "name": "Advance Radiochemistry/Nuclear"
+                }, 
+                {
+                    "code": "CHE 371", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/371", 
+                    "name": "Advanced Radiochemistry Nuclear Lab"
+                }, 
+                {
+                    "code": "CHE 380", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/380", 
+                    "name": "Immunochemistry"
+                }, 
+                {
+                    "code": "CHE 381", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/381", 
+                    "name": "Immunochemistry Laboratory"
+                }, 
+                {
+                    "code": "CHE 430", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/430", 
+                    "name": "Biochemistry"
+                }, 
+                {
+                    "code": "CHE 431", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHE/431", 
+                    "name": "Biochemistry Laboratory"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/CHE"
+        }, 
+        {
+            "abbr": "CHI", 
+            "courses": [
+                {
+                    "code": "CHI 201", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHI/201", 
+                    "name": "Elementary Chinese I"
+                }, 
+                {
+                    "code": "CHI 202", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CHI/202", 
+                    "name": "Elementary Chinese II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/CHI"
+        }, 
+        {
+            "abbr": "CLS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/CLS"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 103", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/103", 
+                    "name": "Introduction to Public Speaking"
+                }, 
+                {
+                    "code": "COM 203", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/203", 
+                    "name": "Newswriting and Reporting"
+                }, 
+                {
+                    "code": "COM 205", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/205", 
+                    "name": "Public Relations Writing"
+                }, 
+                {
+                    "code": "COM 210", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/210", 
+                    "name": "Newspaper Writing"
+                }, 
+                {
+                    "code": "COM 294", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/294", 
+                    "name": "Writing for Electronic Media"
+                }, 
+                {
+                    "code": "COM 295", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/295", 
+                    "name": "TV News Reporting"
+                }, 
+                {
+                    "code": "COM 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/301", 
+                    "name": "Survey of Mass Communicatios"
+                }, 
+                {
+                    "code": "COM 306", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/306", 
+                    "name": "Business and Professional Speaking"
+                }, 
+                {
+                    "code": "COM 308", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/308", 
+                    "name": "Voice and Diction"
+                }, 
+                {
+                    "code": "COM 314", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/314", 
+                    "name": "Principles of Public Relations"
+                }, 
+                {
+                    "code": "COM 320", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/320", 
+                    "name": "International Public Relations"
+                }, 
+                {
+                    "code": "COM 329", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/329", 
+                    "name": "TV Production"
+                }, 
+                {
+                    "code": "COM 344", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/344", 
+                    "name": "Diversity Mass Communication"
+                }, 
+                {
+                    "code": "COM 406", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/406", 
+                    "name": "Television Practicum"
+                }, 
+                {
+                    "code": "COM 422", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/422", 
+                    "name": "Comm Research Methods"
+                }, 
+                {
+                    "code": "COM 423", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/423", 
+                    "name": "Public Relations Campaigns"
+                }, 
+                {
+                    "code": "COM 494", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/494", 
+                    "name": "Public Relations Internship"
+                }, 
+                {
+                    "code": "COM 495", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/COM/495", 
+                    "name": "Senior Project Communications"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/COM"
+        }, 
+        {
+            "abbr": "CRJ", 
+            "courses": [
+                {
+                    "code": "CRJ 200", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CRJ/200", 
+                    "name": "Intro To Criminal Justice"
+                }, 
+                {
+                    "code": "CRJ 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CRJ/301", 
+                    "name": "Criminal Law I"
+                }, 
+                {
+                    "code": "CRJ 303", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CRJ/303", 
+                    "name": "Probation &amp; Parole System"
+                }, 
+                {
+                    "code": "CRJ 304", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CRJ/304", 
+                    "name": "Causes & Prevent Delq & Crime"
+                }, 
+                {
+                    "code": "CRJ 305", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CRJ/305", 
+                    "name": "Confinement Facilities"
+                }, 
+                {
+                    "code": "CRJ 306", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CRJ/306", 
+                    "name": "Correctional Phil. &amp; Services"
+                }, 
+                {
+                    "code": "CRJ 400", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CRJ/400", 
+                    "name": "Selected Topics In Crj"
+                }, 
+                {
+                    "code": "CRJ 403", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CRJ/403", 
+                    "name": "Police Administration"
+                }, 
+                {
+                    "code": "CRJ 405", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CRJ/405", 
+                    "name": "Law Enforcement"
+                }, 
+                {
+                    "code": "CRJ 406", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CRJ/406", 
+                    "name": "Sr. Seminar In Criminal Justice"
+                }, 
+                {
+                    "code": "CRJ 407", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CRJ/407", 
+                    "name": "Constitutional Law I"
+                }, 
+                {
+                    "code": "CRJ 409", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CRJ/409", 
+                    "name": "Court Proc. &amp; Crim. Evid."
+                }, 
+                {
+                    "code": "CRJ 410", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CRJ/410", 
+                    "name": "Private And Public Security"
+                }, 
+                {
+                    "code": "CRJ 411", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CRJ/411", 
+                    "name": "Drug, Alcohol And Crime"
+                }, 
+                {
+                    "code": "CRJ 412", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CRJ/412", 
+                    "name": "Criminal Investigation"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/CRJ"
+        }, 
+        {
+            "abbr": "CSC", 
+            "courses": [
+                {
+                    "code": "CSC 101", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/101", 
+                    "name": "Intro To Computers"
+                }, 
+                {
+                    "code": "CSC 202H", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/202H", 
+                    "name": "Technology (Honors)"
+                }, 
+                {
+                    "code": "CSC 220", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/220", 
+                    "name": "Microcomputer Applications"
+                }, 
+                {
+                    "code": "CSC 230", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/230", 
+                    "name": "Computer Programming"
+                }, 
+                {
+                    "code": "CSC 341", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/341", 
+                    "name": "Computer Organization"
+                }, 
+                {
+                    "code": "CSC 345", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/345", 
+                    "name": "Web Technology"
+                }, 
+                {
+                    "code": "CSC 351", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/351", 
+                    "name": "Special Problems II"
+                }, 
+                {
+                    "code": "CSC 360", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/360", 
+                    "name": "Computer Operating Systems"
+                }, 
+                {
+                    "code": "CSC 373", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/373", 
+                    "name": "C++ Programming"
+                }, 
+                {
+                    "code": "CSC 375", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/375", 
+                    "name": "Network &amp; Data Communication"
+                }, 
+                {
+                    "code": "CSC 385", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/385", 
+                    "name": "Artificial Intelligence"
+                }, 
+                {
+                    "code": "CSC 395", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/395", 
+                    "name": "Software Engineer Principles"
+                }, 
+                {
+                    "code": "CSC 405", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/405", 
+                    "name": "Programming Languages"
+                }, 
+                {
+                    "code": "CSC 430", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/430", 
+                    "name": "Computer Programming III"
+                }, 
+                {
+                    "code": "CSC 445", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/445", 
+                    "name": "Management Information Systems"
+                }, 
+                {
+                    "code": "CSC 460", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/460", 
+                    "name": "Senior Project"
+                }, 
+                {
+                    "code": "CSC 483", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/483", 
+                    "name": "Data Base Concept Design"
+                }, 
+                {
+                    "code": "CSC 487", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/487", 
+                    "name": "Database (SQL) Programming"
+                }, 
+                {
+                    "code": "CSC 493", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/CSC/493", 
+                    "name": "Computer Security"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/CSC"
+        }, 
+        {
+            "abbr": "DAN", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/DAN"
+        }, 
+        {
+            "abbr": "DRA", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/DRA"
+        }, 
+        {
+            "abbr": "DSE", 
+            "courses": [
+                {
+                    "code": "DSE 099", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/DSE/099", 
+                    "name": "Essentials of College English"
+                }, 
+                {
+                    "code": "DSE 99", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/DSE/99", 
+                    "name": "Essentials of College English"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/DSE"
+        }, 
+        {
+            "abbr": "DSM", 
+            "courses": [
+                {
+                    "code": "DSM 099", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/DSM/099", 
+                    "name": "Essentials of College Math II"
+                }, 
+                {
+                    "code": "DSM 99", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/DSM/99", 
+                    "name": "Essentials of College Math II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/DSM"
+        }, 
+        {
+            "abbr": "DSR", 
+            "courses": [
+                {
+                    "code": "DSR 099", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/DSR/099", 
+                    "name": "Essentials of College Reading"
+                }, 
+                {
+                    "code": "DSR 99", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/DSR/99", 
+                    "name": "Essentials of College Reading"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/DSR"
+        }, 
+        {
+            "abbr": "ECO", 
+            "courses": [
+                {
+                    "code": "ECO 201", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ECO/201", 
+                    "name": "Principles Of Macro-Econ"
+                }, 
+                {
+                    "code": "ECO 202", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ECO/202", 
+                    "name": "Principles Of Micro-Econ"
+                }, 
+                {
+                    "code": "ECO 371", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ECO/371", 
+                    "name": "Money &amp; Capital Markets"
+                }, 
+                {
+                    "code": "ECO 501", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ECO/501", 
+                    "name": "Managerial Economics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/ECO"
+        }, 
+        {
+            "abbr": "EDR", 
+            "courses": [
+                {
+                    "code": "EDR 551", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDR/551", 
+                    "name": "Educational Measurement &amp; Research"
+                }, 
+                {
+                    "code": "EDR 555", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDR/555", 
+                    "name": "Action &amp; Applied Research"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/EDR"
+        }, 
+        {
+            "abbr": "EDU", 
+            "courses": [
+                {
+                    "code": "EDU 203", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/203", 
+                    "name": "Psy/Soc Foundation Of Edu"
+                }, 
+                {
+                    "code": "EDU 204", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/204", 
+                    "name": "Teaching In Elementary School"
+                }, 
+                {
+                    "code": "EDU 205", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/205", 
+                    "name": "Multicultural Diversity"
+                }, 
+                {
+                    "code": "EDU 206", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/206", 
+                    "name": "Tchg In The Mid/Sec Sch"
+                }, 
+                {
+                    "code": "EDU 302", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/302", 
+                    "name": "Tchg Science In Elem Sch"
+                }, 
+                {
+                    "code": "EDU 303", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/303", 
+                    "name": "Music For Elementary School"
+                }, 
+                {
+                    "code": "EDU 304", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/304", 
+                    "name": "Tchg Social Studies Elem Sch"
+                }, 
+                {
+                    "code": "EDU 307", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/307", 
+                    "name": "Tchg Math In Elem Sch"
+                }, 
+                {
+                    "code": "EDU 308", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/308", 
+                    "name": "Tchg Reading In Elem Sch"
+                }, 
+                {
+                    "code": "EDU 313", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/313", 
+                    "name": "Pre-Student Teaching"
+                }, 
+                {
+                    "code": "EDU 314", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/314", 
+                    "name": "Pre-Student Teaching"
+                }, 
+                {
+                    "code": "EDU 315", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/315", 
+                    "name": "Pre-Student Teaching"
+                }, 
+                {
+                    "code": "EDU 324", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/324", 
+                    "name": "Elem Health/P.E. Edu Methods"
+                }, 
+                {
+                    "code": "EDU 331", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/331", 
+                    "name": "Instructional Technology"
+                }, 
+                {
+                    "code": "EDU 408", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/408", 
+                    "name": "Classroom Beh Management"
+                }, 
+                {
+                    "code": "EDU 411", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/411", 
+                    "name": "Diagnosis Remediation"
+                }, 
+                {
+                    "code": "EDU 412", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/412", 
+                    "name": "Methods In Physical Ed. K-12"
+                }, 
+                {
+                    "code": "EDU 418", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/418", 
+                    "name": "Tchg English (Mid/Sec)"
+                }, 
+                {
+                    "code": "EDU 426", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/426", 
+                    "name": "Content Reading"
+                }, 
+                {
+                    "code": "EDU 427", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/427", 
+                    "name": "Tchg Lang Arts &amp; Child Lit E/S"
+                }, 
+                {
+                    "code": "EDU 428", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/428", 
+                    "name": "Practicum in Reading"
+                }, 
+                {
+                    "code": "EDU 429", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/429", 
+                    "name": "Tchg Remedial Reading"
+                }, 
+                {
+                    "code": "EDU 431", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/431", 
+                    "name": "Tchg Music K-12"
+                }, 
+                {
+                    "code": "EDU 432", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/432", 
+                    "name": "Supervised Reading Practicum"
+                }, 
+                {
+                    "code": "EDU 439", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/439", 
+                    "name": "Test &amp; Measurements"
+                }, 
+                {
+                    "code": "EDU 450", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/EDU/450", 
+                    "name": "Educational Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/EDU"
+        }, 
+        {
+            "abbr": "ELE", 
+            "courses": [
+                {
+                    "code": "ELE 601", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ELE/601", 
+                    "name": "Curriculum"
+                }, 
+                {
+                    "code": "ELE 604", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ELE/604", 
+                    "name": "Elem Soc Std Multicultural Persp"
+                }, 
+                {
+                    "code": "ELE 605", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ELE/605", 
+                    "name": "Literacy Development &amp; Inst Early Rdg"
+                }, 
+                {
+                    "code": "ELE 608", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ELE/608", 
+                    "name": "Reading Instruction"
+                }, 
+                {
+                    "code": "ELE 632", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ELE/632", 
+                    "name": "Remedial Reading"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/ELE"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 101", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/101", 
+                    "name": "College Writing I"
+                }, 
+                {
+                    "code": "ENG 102", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/102", 
+                    "name": "College Writing II"
+                }, 
+                {
+                    "code": "ENG 104H", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/104H", 
+                    "name": "Honors English I"
+                }, 
+                {
+                    "code": "ENG 111", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/111", 
+                    "name": "First Year Literature"
+                }, 
+                {
+                    "code": "ENG 201", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/201", 
+                    "name": "World Literature I"
+                }, 
+                {
+                    "code": "ENG 212", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/212", 
+                    "name": "Ethnic American Literature"
+                }, 
+                {
+                    "code": "ENG 297", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/297", 
+                    "name": "Caribbean Literature"
+                }, 
+                {
+                    "code": "ENG 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/301", 
+                    "name": "Advanced Composition"
+                }, 
+                {
+                    "code": "ENG 303", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/303", 
+                    "name": "English Literature I"
+                }, 
+                {
+                    "code": "ENG 308", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/308", 
+                    "name": "Afro-American Literature"
+                }, 
+                {
+                    "code": "ENG 309", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/309", 
+                    "name": "Advanced Grammar &amp; Composition"
+                }, 
+                {
+                    "code": "ENG 310", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/310", 
+                    "name": "Study Abroad"
+                }, 
+                {
+                    "code": "ENG 316", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/316", 
+                    "name": "African American Women Writers"
+                }, 
+                {
+                    "code": "ENG 340", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/340", 
+                    "name": "Amer Literature 1945-Present"
+                }, 
+                {
+                    "code": "ENG 355", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/355", 
+                    "name": "Harlem Renaissace"
+                }, 
+                {
+                    "code": "ENG 361", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/361", 
+                    "name": "Contemporary Fiction"
+                }, 
+                {
+                    "code": "ENG 383", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/383", 
+                    "name": "Literary Criticism"
+                }, 
+                {
+                    "code": "ENG 402", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/402", 
+                    "name": "Romantic Literature"
+                }, 
+                {
+                    "code": "ENG 403", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/403", 
+                    "name": "Shakespeare"
+                }, 
+                {
+                    "code": "ENG 404", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/404", 
+                    "name": "Victorian Literature"
+                }, 
+                {
+                    "code": "ENG 405", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/405", 
+                    "name": "Creative Writing"
+                }, 
+                {
+                    "code": "ENG 410", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/410", 
+                    "name": "Study Abroad"
+                }, 
+                {
+                    "code": "ENG 442", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/442", 
+                    "name": "Postcolonial Literature"
+                }, 
+                {
+                    "code": "ENG 457", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/457", 
+                    "name": "Amer Lit - 1914 To 1945"
+                }, 
+                {
+                    "code": "ENG 460", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/460", 
+                    "name": "Applied Linguistics"
+                }, 
+                {
+                    "code": "ENG 495", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENG/495", 
+                    "name": "Senior Project"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/ENG"
+        }, 
+        {
+            "abbr": "ENV", 
+            "courses": [
+                {
+                    "code": "ENV 101", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENV/101", 
+                    "name": "Intro To Environmental Studies"
+                }, 
+                {
+                    "code": "ENV 131", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENV/131", 
+                    "name": "Earth Science"
+                }, 
+                {
+                    "code": "ENV 401", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENV/401", 
+                    "name": "Ecology Of South Florida"
+                }, 
+                {
+                    "code": "ENV 402", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ENV/402", 
+                    "name": "South Florida Ecology Lab"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/ENV"
+        }, 
+        {
+            "abbr": "ESE", 
+            "courses": [
+                {
+                    "code": "ESE 430", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ESE/430", 
+                    "name": "Intro To Exceptional Child"
+                }, 
+                {
+                    "code": "ESE 435", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ESE/435", 
+                    "name": "Curr. Inst. Moderate Exception"
+                }, 
+                {
+                    "code": "ESE 447", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ESE/447", 
+                    "name": "Advance Assessmnt Of Except St"
+                }, 
+                {
+                    "code": "ESE 448", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ESE/448", 
+                    "name": "Inclus. Coll. Consul. Div. Env"
+                }, 
+                {
+                    "code": "ESE 601", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ESE/601", 
+                    "name": "Iss Trend Spc Edu"
+                }, 
+                {
+                    "code": "ESE 628", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ESE/628", 
+                    "name": "Adv Behav Supt Mgm"
+                }, 
+                {
+                    "code": "ESE 641", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ESE/641", 
+                    "name": "Adv Curr Instr K-6"
+                }, 
+                {
+                    "code": "ESE 643", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ESE/643", 
+                    "name": "Adv Cur Inst Severe Disabilities Level"
+                }, 
+                {
+                    "code": "ESE 647", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ESE/647", 
+                    "name": "Adv Asses Excep Std II"
+                }, 
+                {
+                    "code": "ESE 648", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ESE/648", 
+                    "name": "Adv Communication, Consultation &amp; Collab"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/ESE"
+        }, 
+        {
+            "abbr": "ESL", 
+            "courses": [
+                {
+                    "code": "ESL 099", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ESL/099", 
+                    "name": "College Language Skills II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/ESL"
+        }, 
+        {
+            "abbr": "ESO", 
+            "courses": [
+                {
+                    "code": "ESO 402", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/ESO/402", 
+                    "name": "Methodology Of Teaching Esol"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/ESO"
+        }, 
+        {
+            "abbr": "FIN", 
+            "courses": [
+                {
+                    "code": "FIN 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/FIN/301", 
+                    "name": "Principles of Finance"
+                }, 
+                {
+                    "code": "FIN 333", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/FIN/333", 
+                    "name": "Investments"
+                }, 
+                {
+                    "code": "FIN 495", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/FIN/495", 
+                    "name": "Futures Options &amp; Markets"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/FIN"
+        }, 
+        {
+            "abbr": "FMC", 
+            "courses": [
+                {
+                    "code": "FMC 101", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/FMC/101", 
+                    "name": "Edu Life Sem AVI/CSI"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/FMC"
+        }, 
+        {
+            "abbr": "FMU", 
+            "courses": [
+                {
+                    "code": "FMU 101", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/FMU/101", 
+                    "name": "University 101 HUM"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/FMU"
+        }, 
+        {
+            "abbr": "FRE", 
+            "courses": [
+                {
+                    "code": "FRE 201", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/FRE/201", 
+                    "name": "Elementary French I"
+                }, 
+                {
+                    "code": "FRE 202", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/FRE/202", 
+                    "name": "Elementary French II"
+                }, 
+                {
+                    "code": "FRE 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/FRE/301", 
+                    "name": "Intermediate French I"
+                }, 
+                {
+                    "code": "FRE 305", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/FRE/305", 
+                    "name": "Survey Of French Literature I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/FRE"
+        }, 
+        {
+            "abbr": "HED", 
+            "courses": [
+                {
+                    "code": "HED 221", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/HED/221", 
+                    "name": "Nutritional Health"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/HED"
+        }, 
+        {
+            "abbr": "HIS", 
+            "courses": [
+                {
+                    "code": "HIS 103", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/HIS/103", 
+                    "name": "African American History"
+                }, 
+                {
+                    "code": "HIS 104", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/HIS/104", 
+                    "name": "African American History II"
+                }, 
+                {
+                    "code": "HIS 200", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/HIS/200", 
+                    "name": "Hist of the USA"
+                }, 
+                {
+                    "code": "HIS 201H", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/HIS/201H", 
+                    "name": "African Amer Hist I (honors)"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/HIS"
+        }, 
+        {
+            "abbr": "HRM", 
+            "courses": [
+                {
+                    "code": "HRM 350", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/HRM/350", 
+                    "name": "Human Resource Management"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/HRM"
+        }, 
+        {
+            "abbr": "HUM", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/HUM"
+        }, 
+        {
+            "abbr": "MAR", 
+            "courses": [
+                {
+                    "code": "MAR 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAR/301", 
+                    "name": "Prin Of Marketing"
+                }, 
+                {
+                    "code": "MAR 361", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAR/361", 
+                    "name": "Retail Marketing"
+                }, 
+                {
+                    "code": "MAR 362", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAR/362", 
+                    "name": "Personal Selling"
+                }, 
+                {
+                    "code": "MAR 495", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAR/495", 
+                    "name": "Marketing Research"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/MAR"
+        }, 
+        {
+            "abbr": "MAT", 
+            "courses": [
+                {
+                    "code": "MAT 103H", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/103H", 
+                    "name": "Honors Math I"
+                }, 
+                {
+                    "code": "MAT 110", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/110", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MAT 111", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/111", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MAT 112", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/112", 
+                    "name": "Pre-Calculus"
+                }, 
+                {
+                    "code": "MAT 113", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/113", 
+                    "name": "College Trigonometry"
+                }, 
+                {
+                    "code": "MAT 114", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/114", 
+                    "name": "Finite Mathematics"
+                }, 
+                {
+                    "code": "MAT 200", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/200", 
+                    "name": "Applied Calculus"
+                }, 
+                {
+                    "code": "MAT 201", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/201", 
+                    "name": "Calculus I"
+                }, 
+                {
+                    "code": "MAT 202", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/202", 
+                    "name": "Calculus II"
+                }, 
+                {
+                    "code": "MAT 205", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/205", 
+                    "name": "Probability And Statistics"
+                }, 
+                {
+                    "code": "MAT 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/301", 
+                    "name": "Calculus III"
+                }, 
+                {
+                    "code": "MAT 302", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/302", 
+                    "name": "Multivariable Calculus Lec/Rec"
+                }, 
+                {
+                    "code": "MAT 305", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/305", 
+                    "name": "College Geometry"
+                }, 
+                {
+                    "code": "MAT 307", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/307", 
+                    "name": "Number Theory"
+                }, 
+                {
+                    "code": "MAT 350", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/350", 
+                    "name": "Linear Algebra I"
+                }, 
+                {
+                    "code": "MAT 405", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/405", 
+                    "name": "Senior Project - Math"
+                }, 
+                {
+                    "code": "MAT 406", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/406", 
+                    "name": "Complex Variables"
+                }, 
+                {
+                    "code": "MAT 411", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/411", 
+                    "name": "Numerical Analysis I"
+                }, 
+                {
+                    "code": "MAT 450", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MAT/450", 
+                    "name": "Senior Project In Math I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/MAT"
+        }, 
+        {
+            "abbr": "MKT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/MKT"
+        }, 
+        {
+            "abbr": "MSL", 
+            "courses": [
+                {
+                    "code": "MSL 101", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MSL/101", 
+                    "name": "Foundations Of Officership"
+                }, 
+                {
+                    "code": "MSL 201", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MSL/201", 
+                    "name": "Basic Mlt Sc ROTC"
+                }, 
+                {
+                    "code": "MSL 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MSL/301", 
+                    "name": "Leadership Problem Solving"
+                }, 
+                {
+                    "code": "MSL 401", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MSL/401", 
+                    "name": "Leadership Management"
+                }, 
+                {
+                    "code": "MSL 430L", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MSL/430L", 
+                    "name": "Leadership Lab"
+                }, 
+                {
+                    "code": "MSL 440", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MSL/440", 
+                    "name": "US Military History"
+                }, 
+                {
+                    "code": "MSL 490", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/MSL/490", 
+                    "name": "Misc Supv Indiv Stdy"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/MSL"
+        }, 
+        {
+            "abbr": "MUB", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/MUB"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/MUS"
+        }, 
+        {
+            "abbr": "NSC", 
+            "courses": [
+                {
+                    "code": "NSC 453", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/NSC/453", 
+                    "name": "Senior Project In Natural Sci"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/NSC"
+        }, 
+        {
+            "abbr": "NUT", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/NUT"
+        }, 
+        {
+            "abbr": "PAD", 
+            "courses": [
+                {
+                    "code": "PAD 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PAD/301", 
+                    "name": "Cpts &amp; Issues Of Public Adm."
+                }, 
+                {
+                    "code": "PAD 302", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PAD/302", 
+                    "name": "Management Of Urban Gov't"
+                }, 
+                {
+                    "code": "PAD 305", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PAD/305", 
+                    "name": "Fla. Law & Government"
+                }, 
+                {
+                    "code": "PAD 306", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PAD/306", 
+                    "name": "Administrative Behavior"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/PAD"
+        }, 
+        {
+            "abbr": "PED", 
+            "courses": [
+                {
+                    "code": "PED 110", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PED/110", 
+                    "name": "Dimension Of Wellness"
+                }, 
+                {
+                    "code": "PED 210", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PED/210", 
+                    "name": "Beginning Swimming"
+                }, 
+                {
+                    "code": "PED 212", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PED/212", 
+                    "name": "Adv Swimming II"
+                }, 
+                {
+                    "code": "PED 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PED/301", 
+                    "name": "Historical Phil Foundation Sport PE"
+                }, 
+                {
+                    "code": "PED 308", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PED/308", 
+                    "name": "Movement Skills Rhythm Dance"
+                }, 
+                {
+                    "code": "PED 322", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PED/322", 
+                    "name": "Theory Coaching &amp; Officiating"
+                }, 
+                {
+                    "code": "PED 323", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PED/323", 
+                    "name": "Indiv &amp; Group Activity"
+                }, 
+                {
+                    "code": "PED 408", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PED/408", 
+                    "name": "Kinesiology"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/PED"
+        }, 
+        {
+            "abbr": "PEG", 
+            "courses": [
+                {
+                    "code": "PEG 331", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PEG/331", 
+                    "name": "Statics"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/PEG"
+        }, 
+        {
+            "abbr": "PHI", 
+            "courses": [
+                {
+                    "code": "PHI 341", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PHI/341", 
+                    "name": "Critical Thinking/Informal Logic"
+                }, 
+                {
+                    "code": "PHI 431", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PHI/431", 
+                    "name": "Philosophy Of Science"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/PHI"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 200", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PHY/200", 
+                    "name": "College Physics I"
+                }, 
+                {
+                    "code": "PHY 201", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PHY/201", 
+                    "name": "College Physics I Lab"
+                }, 
+                {
+                    "code": "PHY 250", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PHY/250", 
+                    "name": "Physics W/Calculus I"
+                }, 
+                {
+                    "code": "PHY 251", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PHY/251", 
+                    "name": "Physics W/Calculus I Lab"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/PHY"
+        }, 
+        {
+            "abbr": "POL", 
+            "courses": [
+                {
+                    "code": "POL 200", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/POL/200", 
+                    "name": "Intro to Political Science"
+                }, 
+                {
+                    "code": "POL 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/POL/301", 
+                    "name": "U.S.Government"
+                }, 
+                {
+                    "code": "POL 302", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/POL/302", 
+                    "name": "State & Local Govt."
+                }, 
+                {
+                    "code": "POL 311", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/POL/311", 
+                    "name": "Comparative Government"
+                }, 
+                {
+                    "code": "POL 337", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/POL/337", 
+                    "name": "Public Policy Analysis"
+                }, 
+                {
+                    "code": "POL 340", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/POL/340", 
+                    "name": "Third World Politics"
+                }, 
+                {
+                    "code": "POL 403", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/POL/403", 
+                    "name": "Management Of Federal Gov't"
+                }, 
+                {
+                    "code": "POL 436", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/POL/436", 
+                    "name": "Political Theory"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/POL"
+        }, 
+        {
+            "abbr": "POR", 
+            "courses": [], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/POR"
+        }, 
+        {
+            "abbr": "PSC", 
+            "courses": [
+                {
+                    "code": "PSC 101", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSC/101", 
+                    "name": "Physical Science"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/PSC"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 200", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/200", 
+                    "name": "Intro To Psychology"
+                }, 
+                {
+                    "code": "PSY 300", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/300", 
+                    "name": "Found Of Industrial/Organ Psy"
+                }, 
+                {
+                    "code": "PSY 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/301", 
+                    "name": "Psychopathology"
+                }, 
+                {
+                    "code": "PSY 303", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/303", 
+                    "name": "Experimental Psychology"
+                }, 
+                {
+                    "code": "PSY 306", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/306", 
+                    "name": "Developmental Psychology"
+                }, 
+                {
+                    "code": "PSY 309", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/309", 
+                    "name": "Research Methods"
+                }, 
+                {
+                    "code": "PSY 310", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/310", 
+                    "name": "Community Psychology"
+                }, 
+                {
+                    "code": "PSY 312", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/312", 
+                    "name": "Intro To Statistics"
+                }, 
+                {
+                    "code": "PSY 316", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/316", 
+                    "name": "Psychology Of Culture"
+                }, 
+                {
+                    "code": "PSY 401", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/401", 
+                    "name": "Advanced Statistics II"
+                }, 
+                {
+                    "code": "PSY 402", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/402", 
+                    "name": "Clin. Interv. &amp; Behav. Asse"
+                }, 
+                {
+                    "code": "PSY 403", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/403", 
+                    "name": "Psychology Of Learning"
+                }, 
+                {
+                    "code": "PSY 405", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/405", 
+                    "name": "Assessment &amp; Evaluation"
+                }, 
+                {
+                    "code": "PSY 406", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/406", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "PSY 407", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/407", 
+                    "name": "Psy. Of The African-American"
+                }, 
+                {
+                    "code": "PSY 408", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/408", 
+                    "name": "Practicum I"
+                }, 
+                {
+                    "code": "PSY 409", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/409", 
+                    "name": "Practicum II"
+                }, 
+                {
+                    "code": "PSY 452", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PSY/452", 
+                    "name": "Organizational Behavior"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/PSY"
+        }, 
+        {
+            "abbr": "PTG", 
+            "courses": [
+                {
+                    "code": "PTG 201", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PTG/201", 
+                    "name": "Elementary Portuguese I"
+                }, 
+                {
+                    "code": "PTG 202", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/PTG/202", 
+                    "name": "Elementary Portuguese II"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/PTG"
+        }, 
+        {
+            "abbr": "REA", 
+            "courses": [
+                {
+                    "code": "REA 101", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REA/101", 
+                    "name": "Critical Thinking &amp; Reading"
+                }, 
+                {
+                    "code": "REA 505", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REA/505", 
+                    "name": "Literacy Development Instruc Early Read"
+                }, 
+                {
+                    "code": "REA 508", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REA/508", 
+                    "name": "Reading Instruction Elem Sch"
+                }, 
+                {
+                    "code": "REA 525", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REA/525", 
+                    "name": "Adolescent Literature"
+                }, 
+                {
+                    "code": "REA 530", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REA/530", 
+                    "name": "Techniques &amp; Strat in Assessment &amp; Remed"
+                }, 
+                {
+                    "code": "REA 532", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REA/532", 
+                    "name": "Remedial Reading"
+                }, 
+                {
+                    "code": "REA 534", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REA/534", 
+                    "name": "Supervision &amp; Administration REA Program"
+                }, 
+                {
+                    "code": "REA 580", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REA/580", 
+                    "name": "Practicum In Clinical Reading"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/REA"
+        }, 
+        {
+            "abbr": "REL", 
+            "courses": [
+                {
+                    "code": "REL 101", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REL/101", 
+                    "name": "Intro To Religion"
+                }, 
+                {
+                    "code": "REL 201", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REL/201", 
+                    "name": "Intro To Philosophy"
+                }, 
+                {
+                    "code": "REL 308", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REL/308", 
+                    "name": "Greek II"
+                }, 
+                {
+                    "code": "REL 310", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REL/310", 
+                    "name": "The Psalms"
+                }, 
+                {
+                    "code": "REL 314", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REL/314", 
+                    "name": "Survey Baptist Doctr"
+                }, 
+                {
+                    "code": "REL 322", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REL/322", 
+                    "name": "Christian History"
+                }, 
+                {
+                    "code": "REL 324", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REL/324", 
+                    "name": "The Intertestamental Period"
+                }, 
+                {
+                    "code": "REL 402", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REL/402", 
+                    "name": "8th &amp; 7th Century Prophets"
+                }, 
+                {
+                    "code": "REL 405", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REL/405", 
+                    "name": "Internship I (Religion)"
+                }, 
+                {
+                    "code": "REL 410", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REL/410", 
+                    "name": "Homiletics"
+                }, 
+                {
+                    "code": "REL 431", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REL/431", 
+                    "name": "Biblical Ethics"
+                }, 
+                {
+                    "code": "REL 434", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REL/434", 
+                    "name": "Life Of Christ"
+                }, 
+                {
+                    "code": "REL 463", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REL/463", 
+                    "name": "Seminar In Black Theology"
+                }, 
+                {
+                    "code": "REL 473", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REL/473", 
+                    "name": "Systematic Theology I"
+                }, 
+                {
+                    "code": "REL 495", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/REL/495", 
+                    "name": "Senior Project in REL"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/REL"
+        }, 
+        {
+            "abbr": "RSC", 
+            "courses": [
+                {
+                    "code": "RSC 403H", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/RSC/403H", 
+                    "name": "Honors Thesis"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/RSC"
+        }, 
+        {
+            "abbr": "SAF", 
+            "courses": [
+                {
+                    "code": "SAF 101", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SAF/101", 
+                    "name": "Intro Occup Health Safety"
+                }, 
+                {
+                    "code": "SAF 110", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SAF/110", 
+                    "name": "System Safety"
+                }, 
+                {
+                    "code": "SAF 245", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SAF/245", 
+                    "name": "Indust Safety & Hlth Mgmt"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/SAF"
+        }, 
+        {
+            "abbr": "SCI", 
+            "courses": [
+                {
+                    "code": "SCI 104H", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SCI/104H", 
+                    "name": "Insight I (Science)"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/SCI"
+        }, 
+        {
+            "abbr": "SEM", 
+            "courses": [
+                {
+                    "code": "SEM 101H", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SEM/101H", 
+                    "name": "Honors Seminar I"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/SEM"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 200", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SOC/200", 
+                    "name": "Intro To Sociology"
+                }, 
+                {
+                    "code": "SOC 303", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SOC/303", 
+                    "name": "Social Problems"
+                }, 
+                {
+                    "code": "SOC 305", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SOC/305", 
+                    "name": "Group Dynamics"
+                }, 
+                {
+                    "code": "SOC 306", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SOC/306", 
+                    "name": "Urban Social Movements"
+                }, 
+                {
+                    "code": "SOC 307", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SOC/307", 
+                    "name": "Community Organization"
+                }, 
+                {
+                    "code": "SOC 308", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SOC/308", 
+                    "name": "Urban Sociology"
+                }, 
+                {
+                    "code": "SOC 309", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SOC/309", 
+                    "name": "Sociology Of Deviance"
+                }, 
+                {
+                    "code": "SOC 402", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SOC/402", 
+                    "name": "Racial And Cultural Minorities"
+                }, 
+                {
+                    "code": "SOC 408", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SOC/408", 
+                    "name": "African American Women in American Socie"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/SOC"
+        }, 
+        {
+            "abbr": "SOW", 
+            "courses": [
+                {
+                    "code": "SOW 300", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SOW/300", 
+                    "name": "Intro To Social Work"
+                }, 
+                {
+                    "code": "SOW 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SOW/301", 
+                    "name": "Human Behavior/Dynamics"
+                }, 
+                {
+                    "code": "SOW 302", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SOW/302", 
+                    "name": "Human Behav. In Social Environ"
+                }, 
+                {
+                    "code": "SOW 405", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SOW/405", 
+                    "name": "Social Policy"
+                }, 
+                {
+                    "code": "SOW 410", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SOW/410", 
+                    "name": "SW Practice II"
+                }, 
+                {
+                    "code": "SOW 411", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SOW/411", 
+                    "name": "SW Field Practicum &amp; Seminar I"
+                }, 
+                {
+                    "code": "SOW 413", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SOW/413", 
+                    "name": "Senior Project in Social Work"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/SOW"
+        }, 
+        {
+            "abbr": "SPA", 
+            "courses": [
+                {
+                    "code": "SPA 201", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SPA/201", 
+                    "name": "Elementary Spanish I"
+                }, 
+                {
+                    "code": "SPA 202", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SPA/202", 
+                    "name": "Elementary Spanish II"
+                }, 
+                {
+                    "code": "SPA 301", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SPA/301", 
+                    "name": "Intermediate Spanish I"
+                }, 
+                {
+                    "code": "SPA 302", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SPA/302", 
+                    "name": "Intermediate Spanish II"
+                }, 
+                {
+                    "code": "SPA 312", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SPA/312", 
+                    "name": "Peninsular Cult. & Civilizatio"
+                }, 
+                {
+                    "code": "SPA 313", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SPA/313", 
+                    "name": "Hispan-Amer Culture & Civil"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/SPA"
+        }, 
+        {
+            "abbr": "SSC", 
+            "courses": [
+                {
+                    "code": "SSC 200", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SSC/200", 
+                    "name": "Cultural Antrop"
+                }, 
+                {
+                    "code": "SSC 300", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SSC/300", 
+                    "name": "Research Methods"
+                }, 
+                {
+                    "code": "SSC 302", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SSC/302", 
+                    "name": "Introduction To Statistics"
+                }, 
+                {
+                    "code": "SSC 407", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SSC/407", 
+                    "name": "Grant Proposal Writing"
+                }, 
+                {
+                    "code": "SSC 419", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SSC/419", 
+                    "name": "Field Placement I"
+                }, 
+                {
+                    "code": "SSC 423", 
+                    "course_url": "http://www.chegg.com/courses/fmuniv/SSC/423", 
+                    "name": "Senior Project"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/fmuniv/SSC"
+        }
+    ], 
+    "name": "fmuniv"
+}

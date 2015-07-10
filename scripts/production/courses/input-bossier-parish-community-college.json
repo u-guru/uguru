@@ -1,0 +1,3142 @@
+{
+    "all_stats": {
+        "num_courses": 551, 
+        "num_departments": 54
+    }, 
+    "departments": [
+        {
+            "abbr": "ACCT", 
+            "courses": [
+                {
+                    "code": "ACCT 210", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ACCT/210", 
+                    "name": "Personal Income Tax"
+                }, 
+                {
+                    "code": "ACCT 212", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ACCT/212", 
+                    "name": "Computerized Accounting"
+                }
+            ], 
+            "name": "Accounting", 
+            "url": "http://www.chegg.com/courses/bpcc/ACCT"
+        }, 
+        {
+            "abbr": "ALHT", 
+            "courses": [
+                {
+                    "code": "ALHT 102 /102L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ALHT/102%20%2F102L", 
+                    "name": "Introduction to Phlebotomy"
+                }, 
+                {
+                    "code": "ALHT 105", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ALHT/105", 
+                    "name": "Medical Ethics and Law"
+                }, 
+                {
+                    "code": "ALHT 109", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ALHT/109", 
+                    "name": "Health Care Systems and Safety"
+                }, 
+                {
+                    "code": "ALHT 112 /112L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ALHT/112%20%2F112L", 
+                    "name": "Basic EKG"
+                }, 
+                {
+                    "code": "ALHT 114", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ALHT/114", 
+                    "name": "Introduction to Medical Coding"
+                }, 
+                {
+                    "code": "ALHT 115", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ALHT/115", 
+                    "name": "Pharmacology for Allied Health Students"
+                }, 
+                {
+                    "code": "ALHT 116", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ALHT/116", 
+                    "name": "Pharmaceutical Dosage Calculations and Measurements"
+                }, 
+                {
+                    "code": "ALHT 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ALHT/201", 
+                    "name": "Medical Supplies and Patient Preparation"
+                }, 
+                {
+                    "code": "ALHT 203", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ALHT/203", 
+                    "name": "Specialty Areas for Medical Assistants"
+                }, 
+                {
+                    "code": "ALHT 204", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ALHT/204", 
+                    "name": "EKG/Telemetry Practicum"
+                }, 
+                {
+                    "code": "ALHT 206", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ALHT/206", 
+                    "name": "Pathophysiology"
+                }, 
+                {
+                    "code": "ALHT 207", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ALHT/207", 
+                    "name": "Advanced Medical Language"
+                }, 
+                {
+                    "code": "ALHT 209 /209L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ALHT/209%20%2F209L", 
+                    "name": "Laboratory Testing"
+                }, 
+                {
+                    "code": "ALHT 210", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ALHT/210", 
+                    "name": "Medical Assistant Externship"
+                }, 
+                {
+                    "code": "ALHT 211", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ALHT/211", 
+                    "name": "Phlebotomy Hospital Clinicals"
+                }, 
+                {
+                    "code": "ALHT 213", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ALHT/213", 
+                    "name": "Introduction to Blood Banking"
+                }
+            ], 
+            "name": "Allied Health", 
+            "url": "http://www.chegg.com/courses/bpcc/ALHT"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ART/101", 
+                    "name": "Design I"
+                }, 
+                {
+                    "code": "ART 102", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ART/102", 
+                    "name": "Design II"
+                }, 
+                {
+                    "code": "ART 103", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ART/103", 
+                    "name": "Drawing I"
+                }, 
+                {
+                    "code": "ART 104", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ART/104", 
+                    "name": "Drawing II"
+                }, 
+                {
+                    "code": "ART 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ART/201", 
+                    "name": "Art History I"
+                }, 
+                {
+                    "code": "ART 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ART/202", 
+                    "name": "Art History II"
+                }, 
+                {
+                    "code": "ART 203", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ART/203", 
+                    "name": "Painting I"
+                }, 
+                {
+                    "code": "ART 204", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ART/204", 
+                    "name": "Painting II"
+                }, 
+                {
+                    "code": "ART 206", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ART/206", 
+                    "name": "Introduction to Fine Arts"
+                }, 
+                {
+                    "code": "ART 231", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ART/231", 
+                    "name": "Art for Elementary Teachers"
+                }, 
+                {
+                    "code": "ART 246", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ART/246", 
+                    "name": "Ceramics I"
+                }, 
+                {
+                    "code": "ART 247", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ART/247", 
+                    "name": "Ceramics II"
+                }, 
+                {
+                    "code": "ART 250", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ART/250", 
+                    "name": "Sculpture I"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/bpcc/ART"
+        }, 
+        {
+            "abbr": "BADM", 
+            "courses": [
+                {
+                    "code": "BADM 108", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BADM/108", 
+                    "name": "Finance"
+                }, 
+                {
+                    "code": "BADM 112", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BADM/112", 
+                    "name": "Business English"
+                }, 
+                {
+                    "code": "BADM 113", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BADM/113", 
+                    "name": "Business Math"
+                }, 
+                {
+                    "code": "BADM 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BADM/202", 
+                    "name": "Economic Principles II"
+                }, 
+                {
+                    "code": "BADM 212", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BADM/212", 
+                    "name": "Principles of Management"
+                }, 
+                {
+                    "code": "BADM 213", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BADM/213", 
+                    "name": "Human Resource Management"
+                }, 
+                {
+                    "code": "BADM 215", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BADM/215", 
+                    "name": "Business Law"
+                }, 
+                {
+                    "code": "BADM 217", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BADM/217", 
+                    "name": "Organizational Behavior"
+                }, 
+                {
+                    "code": "BADM 250", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BADM/250", 
+                    "name": "Principles of Real Estate"
+                }, 
+                {
+                    "code": "BADM 251", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BADM/251", 
+                    "name": "Real Estate Finance"
+                }
+            ], 
+            "name": "Business Administration", 
+            "url": "http://www.chegg.com/courses/bpcc/BADM"
+        }, 
+        {
+            "abbr": "BIOT", 
+            "courses": [
+                {
+                    "code": "BIOT 103", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BIOT/103", 
+                    "name": "Survey of Biotechnology"
+                }, 
+                {
+                    "code": "BIOT 104", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BIOT/104", 
+                    "name": "Technical Computations"
+                }, 
+                {
+                    "code": "BIOT 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BIOT/201", 
+                    "name": "Introduction of Biotechnology"
+                }, 
+                {
+                    "code": "BIOT 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BIOT/202", 
+                    "name": "Cell Culture Techniques"
+                }, 
+                {
+                    "code": "BIOT 204", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BIOT/204", 
+                    "name": "Bioinstrumentation"
+                }, 
+                {
+                    "code": "BIOT 205", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BIOT/205", 
+                    "name": "Biotechnology Internship"
+                }
+            ], 
+            "name": "Biotechnology", 
+            "url": "http://www.chegg.com/courses/bpcc/BIOT"
+        }, 
+        {
+            "abbr": "BLGY", 
+            "courses": [
+                {
+                    "code": "BLGY 101 /101L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/101%20%2F101L", 
+                    "name": "General Biology I"
+                }, 
+                {
+                    "code": "BLGY 102 /102L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/102%20%2F102L", 
+                    "name": "General Biology II"
+                }, 
+                {
+                    "code": "BLGY 105", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/105", 
+                    "name": "Elements of Biology"
+                }, 
+                {
+                    "code": "BLGY 106", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/106", 
+                    "name": "Elements of Biology II"
+                }, 
+                {
+                    "code": "BLGY 110", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/110", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "BLGY 113", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/113", 
+                    "name": "Consumer Nutrition"
+                }, 
+                {
+                    "code": "BLGY 120", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/120", 
+                    "name": "Introductory Human Anatomy and Physiology"
+                }, 
+                {
+                    "code": "BLGY 120L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/120L", 
+                    "name": "Introductory Human Anatomy and Physiology Lab"
+                }, 
+                {
+                    "code": "BLGY 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/201", 
+                    "name": "General Botany"
+                }, 
+                {
+                    "code": "BLGY 201L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/201L", 
+                    "name": "General Botany Laboratory"
+                }, 
+                {
+                    "code": "BLGY 203", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/203", 
+                    "name": "Basic Nutrition"
+                }, 
+                {
+                    "code": "BLGY 205 /205L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/205%20%2F205L", 
+                    "name": "Introduction to Modern Genetics"
+                }, 
+                {
+                    "code": "BLGY 224", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/224", 
+                    "name": "Human Anatomy"
+                }, 
+                {
+                    "code": "BLGY 224L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/224L", 
+                    "name": "Human Anatomy Laboratory"
+                }, 
+                {
+                    "code": "BLGY 225", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/225", 
+                    "name": "Human Physiology"
+                }, 
+                {
+                    "code": "BLGY 225L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/225L", 
+                    "name": "Human Physiology Laboratory"
+                }, 
+                {
+                    "code": "BLGY 244", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/BLGY/244", 
+                    "name": "Introduction to Human Genetics"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/bpcc/BLGY"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CHEM/101", 
+                    "name": "General Chemistry I"
+                }, 
+                {
+                    "code": "CHEM 101L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CHEM/101L", 
+                    "name": "General Chemistry I Laboratory"
+                }, 
+                {
+                    "code": "CHEM 102", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CHEM/102", 
+                    "name": "General Chemistry II"
+                }, 
+                {
+                    "code": "CHEM 102L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CHEM/102L", 
+                    "name": "General Chemistry II Laboratory"
+                }, 
+                {
+                    "code": "CHEM 107", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CHEM/107", 
+                    "name": "Introductory Chemistry"
+                }, 
+                {
+                    "code": "CHEM 107L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CHEM/107L", 
+                    "name": "Introductory Chemistry Laboratory"
+                }, 
+                {
+                    "code": "CHEM 108", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CHEM/108", 
+                    "name": "Introductory Organic and Biochemistry"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/bpcc/CHEM"
+        }, 
+        {
+            "abbr": "CIS", 
+            "courses": [
+                {
+                    "code": "CIS 099", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/099", 
+                    "name": "Keyboarding"
+                }, 
+                {
+                    "code": "CIS 102", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/102", 
+                    "name": "Problem Solving and Programming Techniques"
+                }, 
+                {
+                    "code": "CIS 113", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/113", 
+                    "name": "Introduction to C++ Programming"
+                }, 
+                {
+                    "code": "CIS 114", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/114", 
+                    "name": "Microsoft Windows"
+                }, 
+                {
+                    "code": "CIS 115", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/115", 
+                    "name": "Software Applications"
+                }, 
+                {
+                    "code": "CIS 117", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/117", 
+                    "name": "Introduction to Visual BASIC"
+                }, 
+                {
+                    "code": "CIS 205", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/205", 
+                    "name": "Advanced MS Word"
+                }, 
+                {
+                    "code": "CIS 207", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/207", 
+                    "name": "Advanced MS Excel"
+                }, 
+                {
+                    "code": "CIS 209", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/209", 
+                    "name": "Advanced MS Access"
+                }, 
+                {
+                    "code": "CIS 210", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/210", 
+                    "name": "Advanced MS PowerPoint"
+                }, 
+                {
+                    "code": "CIS 213", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/213", 
+                    "name": "Advanced C++ Programming"
+                }, 
+                {
+                    "code": "CIS 215", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/215", 
+                    "name": "Desktop Publishing"
+                }, 
+                {
+                    "code": "CIS 217", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/217", 
+                    "name": "Visual BASIC II"
+                }, 
+                {
+                    "code": "CIS 218", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/218", 
+                    "name": "WordPerfect"
+                }, 
+                {
+                    "code": "CIS 227", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/227", 
+                    "name": "Computer System Design"
+                }, 
+                {
+                    "code": "CIS 250", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/250", 
+                    "name": "Beginning Networking"
+                }, 
+                {
+                    "code": "CIS 251", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/251", 
+                    "name": "Advanced Networking"
+                }, 
+                {
+                    "code": "CIS 299", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CIS/299", 
+                    "name": "Current Topics"
+                }
+            ], 
+            "name": "Computer Information Systems", 
+            "url": "http://www.chegg.com/courses/bpcc/CIS"
+        }, 
+        {
+            "abbr": "CJUS", 
+            "courses": [
+                {
+                    "code": "CJUS 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CJUS/101", 
+                    "name": "Introduction to Criminal Justice"
+                }, 
+                {
+                    "code": "CJUS 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CJUS/201", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CJUS 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CJUS/202", 
+                    "name": "Criminal Investigation"
+                }, 
+                {
+                    "code": "CJUS 203", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CJUS/203", 
+                    "name": "Civil Disturbances"
+                }, 
+                {
+                    "code": "CJUS 204", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CJUS/204", 
+                    "name": "Accident Investigation"
+                }, 
+                {
+                    "code": "CJUS 205", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CJUS/205", 
+                    "name": "Contemporary Issues in Criminal Justice"
+                }, 
+                {
+                    "code": "CJUS 232", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CJUS/232", 
+                    "name": "Police Supervision"
+                }, 
+                {
+                    "code": "CJUS 250", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CJUS/250", 
+                    "name": "Police Procedures"
+                }, 
+                {
+                    "code": "CJUS 290", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CJUS/290", 
+                    "name": "Criminal Justice Practicum in Homeland Security"
+                }, 
+                {
+                    "code": "CJUS 291", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CJUS/291", 
+                    "name": "Criminal Evidence and Procedure"
+                }, 
+                {
+                    "code": "CJUS 292", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CJUS/292", 
+                    "name": "Police-Community Relations"
+                }, 
+                {
+                    "code": "CJUS 294", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CJUS/294", 
+                    "name": "Medicolegal Death Investigation"
+                }, 
+                {
+                    "code": "CJUS 295", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CJUS/295", 
+                    "name": "Criminalistics"
+                }, 
+                {
+                    "code": "CJUS 296", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CJUS/296", 
+                    "name": "Introduction to Jurisprudence"
+                }, 
+                {
+                    "code": "CJUS 299", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CJUS/299", 
+                    "name": "Juvenile Justice"
+                }
+            ], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/bpcc/CJUS"
+        }, 
+        {
+            "abbr": "CONS", 
+            "courses": [
+                {
+                    "code": "CONS 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CONS/101", 
+                    "name": "Materials of Construction"
+                }, 
+                {
+                    "code": "CONS 120", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CONS/120", 
+                    "name": "Carpentry"
+                }, 
+                {
+                    "code": "CONS 130", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CONS/130", 
+                    "name": "Reinforced Concrete Design"
+                }, 
+                {
+                    "code": "CONS 150", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CONS/150", 
+                    "name": "Construction Contracting and Laws"
+                }, 
+                {
+                    "code": "CONS 160", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CONS/160", 
+                    "name": "Construction Blueprint Reading"
+                }, 
+                {
+                    "code": "CONS 210", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CONS/210", 
+                    "name": "Construction Surveying and Laboratory"
+                }, 
+                {
+                    "code": "CONS 210L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CONS/210L", 
+                    "name": "Construction Surveying Laboratory"
+                }, 
+                {
+                    "code": "CONS 220", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CONS/220", 
+                    "name": "Construction Estimating"
+                }, 
+                {
+                    "code": "CONS 240", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CONS/240", 
+                    "name": "Construction Safety and Health"
+                }, 
+                {
+                    "code": "CONS 250", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CONS/250", 
+                    "name": "Construction Management"
+                }
+            ], 
+            "name": "Construction Technology", 
+            "url": "http://www.chegg.com/courses/bpcc/CONS"
+        }, 
+        {
+            "abbr": "CORR", 
+            "courses": [
+                {
+                    "code": "CORR 102", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CORR/102", 
+                    "name": "Introduction to Corrections"
+                }, 
+                {
+                    "code": "CORR 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CORR/201", 
+                    "name": "Correctional Law"
+                }, 
+                {
+                    "code": "CORR 210", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CORR/210", 
+                    "name": "Local and Adult Detention Facilities"
+                }, 
+                {
+                    "code": "CORR 230", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CORR/230", 
+                    "name": "Probation,Parole,and Treatment"
+                }, 
+                {
+                    "code": "CORR 250", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CORR/250", 
+                    "name": "Management of Correctional Facilities"
+                }
+            ], 
+            "name": "Corrections", 
+            "url": "http://www.chegg.com/courses/bpcc/CORR"
+        }, 
+        {
+            "abbr": "CULA", 
+            "courses": [
+                {
+                    "code": "CULA 100", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CULA/100", 
+                    "name": "Sanitation"
+                }, 
+                {
+                    "code": "CULA 110", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CULA/110", 
+                    "name": "Nutrition"
+                }, 
+                {
+                    "code": "CULA 115", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CULA/115", 
+                    "name": "Mathematics of Culinary Arts"
+                }, 
+                {
+                    "code": "CULA 120", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CULA/120", 
+                    "name": "Food Preparation Principles"
+                }, 
+                {
+                    "code": "CULA 130", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CULA/130", 
+                    "name": "The Hospitality Industry"
+                }, 
+                {
+                    "code": "CULA 140", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CULA/140", 
+                    "name": "Food Preparation Fundamentals"
+                }, 
+                {
+                    "code": "CULA 150", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CULA/150", 
+                    "name": "Menu Planning"
+                }, 
+                {
+                    "code": "CULA 160", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CULA/160", 
+                    "name": "Dining Room Service"
+                }, 
+                {
+                    "code": "CULA 170", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CULA/170", 
+                    "name": "Supervisory Management"
+                }, 
+                {
+                    "code": "CULA 180", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CULA/180", 
+                    "name": "Culinary Arts Externship"
+                }
+            ], 
+            "name": "Culinary Arts", 
+            "url": "http://www.chegg.com/courses/bpcc/CULA"
+        }, 
+        {
+            "abbr": "CWD", 
+            "courses": [
+                {
+                    "code": "CWD 111", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CWD/111", 
+                    "name": "Internet Technology I"
+                }, 
+                {
+                    "code": "CWD 130", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CWD/130", 
+                    "name": "Website Design I"
+                }, 
+                {
+                    "code": "CWD 140", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CWD/140", 
+                    "name": "Designing Web Interfaces"
+                }, 
+                {
+                    "code": "CWD 150", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CWD/150", 
+                    "name": "Web Scripting I. Fall"
+                }, 
+                {
+                    "code": "CWD 155", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CWD/155", 
+                    "name": "Web Scripting II. Spring"
+                }, 
+                {
+                    "code": "CWD 160", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CWD/160", 
+                    "name": "Introduction to Flash"
+                }, 
+                {
+                    "code": "CWD 170", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CWD/170", 
+                    "name": "Database Interactions I. Fall"
+                }, 
+                {
+                    "code": "CWD 210", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CWD/210", 
+                    "name": "CGI/Perl Programming. Fall"
+                }, 
+                {
+                    "code": "CWD 230", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CWD/230", 
+                    "name": "Website Design II. Spring"
+                }, 
+                {
+                    "code": "CWD 235", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CWD/235", 
+                    "name": "Multimedia Authoring Using Macromedia Director"
+                }, 
+                {
+                    "code": "CWD 240", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CWD/240", 
+                    "name": "Web Graphics I"
+                }, 
+                {
+                    "code": "CWD 270", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CWD/270", 
+                    "name": "Database Interactions II. Spring"
+                }, 
+                {
+                    "code": "CWD 280", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CWD/280", 
+                    "name": "Information Assurance"
+                }, 
+                {
+                    "code": "CWD 295", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/CWD/295", 
+                    "name": "Internship/Final Project"
+                }
+            ], 
+            "name": "Computer Web Design", 
+            "url": "http://www.chegg.com/courses/bpcc/CWD"
+        }, 
+        {
+            "abbr": "Care and Development of Young CDYC", 
+            "courses": [
+                {
+                    "code": "Care and Development of Young CDYC 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Care%20and%20Development%20of%20Young%20CDYC/101", 
+                    "name": "Foundations of Early Childhood Development"
+                }, 
+                {
+                    "code": "Care and Development of Young CDYC 103", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Care%20and%20Development%20of%20Young%20CDYC/103", 
+                    "name": "The Learning Environment"
+                }, 
+                {
+                    "code": "Care and Development of Young CDYC 141", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Care%20and%20Development%20of%20Young%20CDYC/141", 
+                    "name": "Creative Expression in Early Childhood Development"
+                }, 
+                {
+                    "code": "Care and Development of Young CDYC 165", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Care%20and%20Development%20of%20Young%20CDYC/165", 
+                    "name": "Language and Literacy in Early Childhood"
+                }, 
+                {
+                    "code": "Care and Development of Young CDYC 211", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Care%20and%20Development%20of%20Young%20CDYC/211", 
+                    "name": "Child Guidance"
+                }, 
+                {
+                    "code": "Care and Development of Young CDYC 240", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Care%20and%20Development%20of%20Young%20CDYC/240", 
+                    "name": "Observation and Participation"
+                }, 
+                {
+                    "code": "Care and Development of Young CDYC 273", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Care%20and%20Development%20of%20Young%20CDYC/273", 
+                    "name": "Developmentally Appropriate Curriculum and Materials in Early Childhood"
+                }, 
+                {
+                    "code": "Care and Development of Young CDYC 280", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Care%20and%20Development%20of%20Young%20CDYC/280", 
+                    "name": "Administration of Early Childhood Programs"
+                }, 
+                {
+                    "code": "Care and Development of Young CDYC 298", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Care%20and%20Development%20of%20Young%20CDYC/298", 
+                    "name": "Practicum in Early Childhood Development"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bpcc/Care%20and%20Development%20of%20Young%20CDYC"
+        }, 
+        {
+            "abbr": "Cyber Information Technology CIT", 
+            "courses": [
+                {
+                    "code": "Cyber Information Technology CIT 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/101", 
+                    "name": "Network Essentials"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 110", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/110", 
+                    "name": "Help Desk Tools and Techniques"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 112", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/112", 
+                    "name": "Support of Emerging Technologies"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 115", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/115", 
+                    "name": "Network Defense"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 120", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/120", 
+                    "name": "Network Routing and Switching"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 140", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/140", 
+                    "name": "Mainframe Operations"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 150", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/150", 
+                    "name": "Introduction to Programming with JAVA"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 151", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/151", 
+                    "name": "Advanced Java Programming"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 160", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/160", 
+                    "name": "COBOL Programming I"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 161", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/161", 
+                    "name": "COBOL Programming II"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 170", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/170", 
+                    "name": "Microsoft Windows Server"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 172", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/172", 
+                    "name": "Linux Server"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 174", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/174", 
+                    "name": "Novell Server"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 190", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/190", 
+                    "name": "Help Desk Specialist Internship"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 210", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/210", 
+                    "name": "Advanced Network Topics"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 220", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/220", 
+                    "name": "Managing Firewalls"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 225", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/225", 
+                    "name": "Network Security Design"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 235", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/235", 
+                    "name": "Web Application Development"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 240", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/240", 
+                    "name": "Virtual Private Networks"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 270", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/270", 
+                    "name": "Relational Database Coding"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 280", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/280", 
+                    "name": "Computer Forensics"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 282", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/282", 
+                    "name": "IT Project Management"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 291", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/291", 
+                    "name": "Systems Administration Specialist Internship"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 292", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/292", 
+                    "name": "Network Specialist Internship"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 293", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/293", 
+                    "name": "Network Security Internship"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 294", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/294", 
+                    "name": "Web Analyst/Programmer Internship"
+                }, 
+                {
+                    "code": "Cyber Information Technology CIT 299", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT/299", 
+                    "name": "Program/Analyst Internship"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bpcc/Cyber%20Information%20Technology%20CIT"
+        }, 
+        {
+            "abbr": "DMTP", 
+            "courses": [
+                {
+                    "code": "DMTP 102", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/DMTP/102", 
+                    "name": "Nutrition Therapy for Dietary Managers"
+                }, 
+                {
+                    "code": "DMTP 110", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/DMTP/110", 
+                    "name": "DMA Resource Management"
+                }, 
+                {
+                    "code": "DMTP 111", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/DMTP/111", 
+                    "name": "Resource Management"
+                }, 
+                {
+                    "code": "DMTP 115", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/DMTP/115", 
+                    "name": "DMA Food Service Operations"
+                }, 
+                {
+                    "code": "DMTP 116", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/DMTP/116", 
+                    "name": "Food Service Operations"
+                }, 
+                {
+                    "code": "DMTP 120", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/DMTP/120", 
+                    "name": "DMA Sanitation and Safety"
+                }, 
+                {
+                    "code": "DMTP 121", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/DMTP/121", 
+                    "name": "Sanitation and Safety"
+                }
+            ], 
+            "name": "Dietary Management", 
+            "url": "http://www.chegg.com/courses/bpcc/DMTP"
+        }, 
+        {
+            "abbr": "EDUC", 
+            "courses": [
+                {
+                    "code": "EDUC 099", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/EDUC/099", 
+                    "name": "College Success Skills"
+                }, 
+                {
+                    "code": "EDUC 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/EDUC/201", 
+                    "name": "Teaching and Learning in Diverse Settings I"
+                }, 
+                {
+                    "code": "EDUC 250", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/EDUC/250", 
+                    "name": "Teaching and Learning in Diverse Settings II"
+                }, 
+                {
+                    "code": "EDUC 295", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/EDUC/295", 
+                    "name": "Contemporary Issues in Education"
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/bpcc/EDUC"
+        }, 
+        {
+            "abbr": "ENGL", 
+            "courses": [
+                {
+                    "code": "ENGL 099", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ENGL/099", 
+                    "name": "Fundamentals of Grammar and Composition"
+                }, 
+                {
+                    "code": "ENGL 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ENGL/202", 
+                    "name": "Major American Writers"
+                }, 
+                {
+                    "code": "ENGL 255", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ENGL/255", 
+                    "name": "Introduction to Fiction"
+                }, 
+                {
+                    "code": "ENGL 256", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ENGL/256", 
+                    "name": "Introduction to Poetry and Drama"
+                }, 
+                {
+                    "code": "ENGL 290", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ENGL/290", 
+                    "name": "Creative Writing"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/bpcc/ENGL"
+        }, 
+        {
+            "abbr": "Emergency Medical Technician: EMTP", 
+            "courses": [
+                {
+                    "code": "Emergency Medical Technician: EMTP 100", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Emergency%20Medical%20Technician%3A%20EMTP/100", 
+                    "name": "Emergency Medical Technician:Basic"
+                }, 
+                {
+                    "code": "Emergency Medical Technician: EMTP 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Emergency%20Medical%20Technician%3A%20EMTP/202", 
+                    "name": "Airway Management and Ventilation"
+                }, 
+                {
+                    "code": "Emergency Medical Technician: EMTP 203", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Emergency%20Medical%20Technician%3A%20EMTP/203", 
+                    "name": "Patient Assessment"
+                }, 
+                {
+                    "code": "Emergency Medical Technician: EMTP 204", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Emergency%20Medical%20Technician%3A%20EMTP/204", 
+                    "name": "Treatment of the Trauma Patient"
+                }, 
+                {
+                    "code": "Emergency Medical Technician: EMTP 205", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Emergency%20Medical%20Technician%3A%20EMTP/205", 
+                    "name": "Treatment of the Medical Patient I"
+                }, 
+                {
+                    "code": "Emergency Medical Technician: EMTP 206", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Emergency%20Medical%20Technician%3A%20EMTP/206", 
+                    "name": "Special Considerations and Assessment Based Management"
+                }, 
+                {
+                    "code": "Emergency Medical Technician: EMTP 207", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Emergency%20Medical%20Technician%3A%20EMTP/207", 
+                    "name": "Operations"
+                }, 
+                {
+                    "code": "Emergency Medical Technician: EMTP 208", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Emergency%20Medical%20Technician%3A%20EMTP/208", 
+                    "name": "Treatment of the Medical Patient II"
+                }, 
+                {
+                    "code": "Emergency Medical Technician: EMTP 209", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Emergency%20Medical%20Technician%3A%20EMTP/209", 
+                    "name": "Applied Practice"
+                }, 
+                {
+                    "code": "Emergency Medical Technician: EMTP 210", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Emergency%20Medical%20Technician%3A%20EMTP/210", 
+                    "name": "Paramedic Field Experience"
+                }, 
+                {
+                    "code": "Emergency Medical Technician: EMTP 211", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Emergency%20Medical%20Technician%3A%20EMTP/211", 
+                    "name": "Paramedic Clinical Experience"
+                }, 
+                {
+                    "code": "Emergency Medical Technician: EMTP 212", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/Emergency%20Medical%20Technician%3A%20EMTP/212", 
+                    "name": "Paramedic Assessment and Review"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/bpcc/Emergency%20Medical%20Technician%3A%20EMTP"
+        }, 
+        {
+            "abbr": "FREN", 
+            "courses": [
+                {
+                    "code": "FREN 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/FREN/101", 
+                    "name": "Elementary French I"
+                }, 
+                {
+                    "code": "FREN 102", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/FREN/102", 
+                    "name": "Elementary French II"
+                }, 
+                {
+                    "code": "FREN 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/FREN/201", 
+                    "name": "Intermediate French"
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/bpcc/FREN"
+        }, 
+        {
+            "abbr": "GPHY", 
+            "courses": [
+                {
+                    "code": "GPHY 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/GPHY/101", 
+                    "name": "Physical Geography"
+                }, 
+                {
+                    "code": "GPHY 102", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/GPHY/102", 
+                    "name": "Cultural Geography"
+                }
+            ], 
+            "name": "Geography", 
+            "url": "http://www.chegg.com/courses/bpcc/GPHY"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 102", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HIST/102", 
+                    "name": "Western World II"
+                }, 
+                {
+                    "code": "HIST 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HIST/202", 
+                    "name": "American History II"
+                }, 
+                {
+                    "code": "HIST 203", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HIST/203", 
+                    "name": "Louisiana History"
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/bpcc/HIST"
+        }, 
+        {
+            "abbr": "HLPE", 
+            "courses": [
+                {
+                    "code": "HLPE 103", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HLPE/103", 
+                    "name": "Bowling"
+                }, 
+                {
+                    "code": "HLPE 106", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HLPE/106", 
+                    "name": "Fitness for Life"
+                }, 
+                {
+                    "code": "HLPE 107", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HLPE/107", 
+                    "name": "Aerobics"
+                }, 
+                {
+                    "code": "HLPE 108", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HLPE/108", 
+                    "name": "Yoga"
+                }, 
+                {
+                    "code": "HLPE 113", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HLPE/113", 
+                    "name": "Fundamental Weight Training"
+                }, 
+                {
+                    "code": "HLPE 114", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HLPE/114", 
+                    "name": "Fundamental Weight Training"
+                }, 
+                {
+                    "code": "HLPE 115", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HLPE/115", 
+                    "name": "Intermediate Weight Training"
+                }, 
+                {
+                    "code": "HLPE 116", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HLPE/116", 
+                    "name": "Intermediate Weight Training"
+                }, 
+                {
+                    "code": "HLPE 140", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HLPE/140", 
+                    "name": "Principles and Practices of Softball"
+                }, 
+                {
+                    "code": "HLPE 141", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HLPE/141", 
+                    "name": "Principles and Practices of Coaching Baseball"
+                }, 
+                {
+                    "code": "HLPE 205", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HLPE/205", 
+                    "name": "Personal Health for College Students"
+                }, 
+                {
+                    "code": "HLPE 221", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HLPE/221", 
+                    "name": "First Aid"
+                }
+            ], 
+            "name": "Health And Physical Education", 
+            "url": "http://www.chegg.com/courses/bpcc/HLPE"
+        }, 
+        {
+            "abbr": "HMAN", 
+            "courses": [
+                {
+                    "code": "HMAN 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HMAN/201", 
+                    "name": "Humanities I"
+                }, 
+                {
+                    "code": "HMAN 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HMAN/202", 
+                    "name": "Humanities II"
+                }, 
+                {
+                    "code": "HMAN 203", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/HMAN/203", 
+                    "name": "Film and Culture"
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/bpcc/HMAN"
+        }, 
+        {
+            "abbr": "JRNL", 
+            "courses": [
+                {
+                    "code": "JRNL 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/JRNL/101", 
+                    "name": "Newspaper Staff I"
+                }, 
+                {
+                    "code": "JRNL 102", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/JRNL/102", 
+                    "name": "Newspaper Staff I"
+                }, 
+                {
+                    "code": "JRNL 211", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/JRNL/211", 
+                    "name": "Newspaper Staff II"
+                }, 
+                {
+                    "code": "JRNL 212", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/JRNL/212", 
+                    "name": "Newspaper Staff II"
+                }
+            ], 
+            "name": "Journalism", 
+            "url": "http://www.chegg.com/courses/bpcc/JRNL"
+        }, 
+        {
+            "abbr": "LITR", 
+            "courses": [
+                {
+                    "code": "LITR 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/LITR/101", 
+                    "name": "Literary Journal Staff"
+                }
+            ], 
+            "name": "Literature", 
+            "url": "http://www.chegg.com/courses/bpcc/LITR"
+        }, 
+        {
+            "abbr": "LSEC", 
+            "courses": [
+                {
+                    "code": "LSEC 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/LSEC/101", 
+                    "name": "Legal Office Concepts I"
+                }, 
+                {
+                    "code": "LSEC 150", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/LSEC/150", 
+                    "name": "Legal Ethics and Professionalism"
+                }, 
+                {
+                    "code": "LSEC 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/LSEC/201", 
+                    "name": "Legal Concepts II"
+                }, 
+                {
+                    "code": "LSEC 250", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/LSEC/250", 
+                    "name": "Litigation Documentation"
+                }
+            ], 
+            "name": "Legal Secretary", 
+            "url": "http://www.chegg.com/courses/bpcc/LSEC"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 097", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MATH/097", 
+                    "name": "Basic Mathematics"
+                }, 
+                {
+                    "code": "MATH 098", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MATH/098", 
+                    "name": "Beginning Algebra I"
+                }, 
+                {
+                    "code": "MATH 099", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MATH/099", 
+                    "name": "Beginning Algebra II"
+                }, 
+                {
+                    "code": "MATH 111", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MATH/111", 
+                    "name": "Precalculus Algebra"
+                }, 
+                {
+                    "code": "MATH 112", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MATH/112", 
+                    "name": "Trigonometry"
+                }, 
+                {
+                    "code": "MATH 114", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MATH/114", 
+                    "name": "Finite Math"
+                }, 
+                {
+                    "code": "MATH 117", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MATH/117", 
+                    "name": "Mathematics for Elementary School Teachers I"
+                }, 
+                {
+                    "code": "MATH 124", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MATH/124", 
+                    "name": "Mathematical Concepts"
+                }, 
+                {
+                    "code": "MATH 129", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MATH/129", 
+                    "name": "Applied Technical Mathematics"
+                }, 
+                {
+                    "code": "MATH 131", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MATH/131", 
+                    "name": "Elementary Applied Calculus"
+                }, 
+                {
+                    "code": "MATH 210", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MATH/210", 
+                    "name": "Basic Statistics"
+                }, 
+                {
+                    "code": "MATH 217", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MATH/217", 
+                    "name": "Mathematics for Elementary School Teachers II"
+                }, 
+                {
+                    "code": "MATH 218", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MATH/218", 
+                    "name": "Mathematics for Elementary School Teachers III"
+                }, 
+                {
+                    "code": "MATH 250", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MATH/250", 
+                    "name": "Analytic Geometry and Calculus I"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/bpcc/MATH"
+        }, 
+        {
+            "abbr": "METR", 
+            "courses": [
+                {
+                    "code": "METR 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/METR/101", 
+                    "name": "Introduction to Atmospheric Science"
+                }
+            ], 
+            "name": "Meterology", 
+            "url": "http://www.chegg.com/courses/bpcc/METR"
+        }, 
+        {
+            "abbr": "MICR", 
+            "courses": [
+                {
+                    "code": "MICR 110 /110L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MICR/110%20%2F110L", 
+                    "name": "Survey of Microbiology"
+                }, 
+                {
+                    "code": "MICR 206 /206L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MICR/206%20%2F206L", 
+                    "name": "Principles of Microbiology"
+                }
+            ], 
+            "name": "Microbiology", 
+            "url": "http://www.chegg.com/courses/bpcc/MICR"
+        }, 
+        {
+            "abbr": "MIS", 
+            "courses": [
+                {
+                    "code": "MIS 105", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MIS/105", 
+                    "name": "Introduction to MIS"
+                }, 
+                {
+                    "code": "MIS 120", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MIS/120", 
+                    "name": "Survey of E-commerce"
+                }, 
+                {
+                    "code": "MIS 205", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MIS/205", 
+                    "name": "Case Studies in MIS"
+                }
+            ], 
+            "name": "Management Information Systems", 
+            "url": "http://www.chegg.com/courses/bpcc/MIS"
+        }, 
+        {
+            "abbr": "MOS", 
+            "courses": [
+                {
+                    "code": "MOS 106", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MOS/106", 
+                    "name": "Medical Transcription"
+                }, 
+                {
+                    "code": "MOS 110 /110L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MOS/110%20%2F110L", 
+                    "name": "Medical Coding I/Laboratory"
+                }, 
+                {
+                    "code": "MOS 111 /111L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MOS/111%20%2F111L", 
+                    "name": "Medical Coding II/Laboratory"
+                }, 
+                {
+                    "code": "MOS 113", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MOS/113", 
+                    "name": "Reimbursement Methodology"
+                }, 
+                {
+                    "code": "MOS 114", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MOS/114", 
+                    "name": "Medical Transcription Practicum"
+                }, 
+                {
+                    "code": "MOS 116", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MOS/116", 
+                    "name": "Medical Coding Practicum"
+                }, 
+                {
+                    "code": "MOS 206", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MOS/206", 
+                    "name": "Medical Office Procedures"
+                }, 
+                {
+                    "code": "MOS 206L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MOS/206L", 
+                    "name": "Medical Office Procedures Laboratory"
+                }, 
+                {
+                    "code": "MOS 216", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MOS/216", 
+                    "name": "Advanced Medical Transcription"
+                }, 
+                {
+                    "code": "MOS 216L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MOS/216L", 
+                    "name": "Advanced Medical Transcription Laboratory"
+                }
+            ], 
+            "name": "Medical Office Specialist", 
+            "url": "http://www.chegg.com/courses/bpcc/MOS"
+        }, 
+        {
+            "abbr": "MUSC", 
+            "courses": [
+                {
+                    "code": "MUSC 099", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/099", 
+                    "name": "Music Fundamentals"
+                }, 
+                {
+                    "code": "MUSC 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/101", 
+                    "name": "Class Voice"
+                }, 
+                {
+                    "code": "MUSC 105", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/105", 
+                    "name": "Class Guitar"
+                }, 
+                {
+                    "code": "MUSC 110", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/110", 
+                    "name": "Class Piano I"
+                }, 
+                {
+                    "code": "MUSC 111", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/111", 
+                    "name": "Class Piano II"
+                }, 
+                {
+                    "code": "MUSC 112", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/112", 
+                    "name": "Ear Training/Sightsinging I"
+                }, 
+                {
+                    "code": "MUSC 113", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/113", 
+                    "name": "Ear Training/Sightsinging II"
+                }, 
+                {
+                    "code": "MUSC 120", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/120", 
+                    "name": "Music Appreciation"
+                }, 
+                {
+                    "code": "MUSC 122", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/122", 
+                    "name": "Music Theory I"
+                }, 
+                {
+                    "code": "MUSC 123", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/123", 
+                    "name": "Music Theory II"
+                }, 
+                {
+                    "code": "MUSC 140", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/140", 
+                    "name": "Concert Band I"
+                }, 
+                {
+                    "code": "MUSC 141", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/141", 
+                    "name": "Concert Band II"
+                }, 
+                {
+                    "code": "MUSC 142", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/142", 
+                    "name": "Concert Band III"
+                }, 
+                {
+                    "code": "MUSC 143", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/143", 
+                    "name": "Concert Band IV"
+                }, 
+                {
+                    "code": "MUSC 144", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/144", 
+                    "name": "Jazz Ensemble I"
+                }, 
+                {
+                    "code": "MUSC 145", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/145", 
+                    "name": "Jazz Ensemble II"
+                }, 
+                {
+                    "code": "MUSC 146", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/146", 
+                    "name": "Jazz Ensemble III"
+                }, 
+                {
+                    "code": "MUSC 147", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/147", 
+                    "name": "Jazz Ensemble IV"
+                }, 
+                {
+                    "code": "MUSC 148", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/148", 
+                    "name": "Concert Choir I"
+                }, 
+                {
+                    "code": "MUSC 149", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/149", 
+                    "name": "Concert Choir II"
+                }, 
+                {
+                    "code": "MUSC 150", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/150", 
+                    "name": "Concert Choir III"
+                }, 
+                {
+                    "code": "MUSC 151", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/151", 
+                    "name": "Concert Choir IV"
+                }, 
+                {
+                    "code": "MUSC 212", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/212", 
+                    "name": "Ear Training/Sightsinging III"
+                }, 
+                {
+                    "code": "MUSC 213", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/213", 
+                    "name": "Ear Training/Sightsinging IV"
+                }, 
+                {
+                    "code": "MUSC 215", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/215", 
+                    "name": "Introduction to Music Technology"
+                }, 
+                {
+                    "code": "MUSC 216", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/216", 
+                    "name": "Basic Conducting"
+                }, 
+                {
+                    "code": "MUSC 220", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/220", 
+                    "name": "Historical Survey"
+                }, 
+                {
+                    "code": "MUSC 222", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/222", 
+                    "name": "Music Theory III"
+                }, 
+                {
+                    "code": "MUSC 223", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/223", 
+                    "name": "Music Theory IV"
+                }, 
+                {
+                    "code": "MUSC 230 ,231, 232 ,233", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/230%20%2C231%2C%20232%20%2C233", 
+                    "name": "Applied Piano"
+                }, 
+                {
+                    "code": "MUSC 230-289", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/230-289", 
+                    "name": "Applied Studio Lessons"
+                }, 
+                {
+                    "code": "MUSC 234 ,235, 236 ,237", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/234%20%2C235%2C%20236%20%2C237", 
+                    "name": "Applied Voice"
+                }, 
+                {
+                    "code": "MUSC 238 ,239, 240 ,241", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/238%20%2C239%2C%20240%20%2C241", 
+                    "name": "Applied Flute"
+                }, 
+                {
+                    "code": "MUSC 242 ,243, 244 ,245", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/242%20%2C243%2C%20244%20%2C245", 
+                    "name": "Applied Oboe"
+                }, 
+                {
+                    "code": "MUSC 246 ,247, 248 ,249", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/246%20%2C247%2C%20248%20%2C249", 
+                    "name": "Applied Clarinet"
+                }, 
+                {
+                    "code": "MUSC 250 ,251, 252 ,253", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/250%20%2C251%2C%20252%20%2C253", 
+                    "name": "Applied Bassoon"
+                }, 
+                {
+                    "code": "MUSC 254 ,255, 256 ,257", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/254%20%2C255%2C%20256%20%2C257", 
+                    "name": "Applied Saxophone"
+                }, 
+                {
+                    "code": "MUSC 258 ,259, 260 ,261", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/258%20%2C259%2C%20260%20%2C261", 
+                    "name": "Applied Trumpet"
+                }, 
+                {
+                    "code": "MUSC 262 ,263, 264 ,265", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/262%20%2C263%2C%20264%20%2C265", 
+                    "name": "Applied Horn"
+                }, 
+                {
+                    "code": "MUSC 266 ,267, 268 ,269", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/266%20%2C267%2C%20268%20%2C269", 
+                    "name": "Applied Trombone"
+                }, 
+                {
+                    "code": "MUSC 270 ,271, 272 ,273", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/270%20%2C271%2C%20272%20%2C273", 
+                    "name": "Applied Tuba/Euph"
+                }, 
+                {
+                    "code": "MUSC 274 ,275, 276 ,277", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/274%20%2C275%2C%20276%20%2C277", 
+                    "name": "Applied Percussion"
+                }, 
+                {
+                    "code": "MUSC 278 ,279, 280 ,281", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/278%20%2C279%2C%20280%20%2C281", 
+                    "name": "Applied Classical Guitar"
+                }, 
+                {
+                    "code": "MUSC 282 ,283, 284 ,285", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/282%20%2C283%2C%20284%20%2C285", 
+                    "name": "Applied Electric Bass"
+                }, 
+                {
+                    "code": "MUSC 286 ,287, 288 ,289", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/MUSC/286%20%2C287%2C%20288%20%2C289", 
+                    "name": "Applied Orchestral Strings"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/bpcc/MUSC"
+        }, 
+        {
+            "abbr": "PHAR", 
+            "courses": [
+                {
+                    "code": "PHAR 102", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PHAR/102", 
+                    "name": "Pharmacy Practice/Lab"
+                }, 
+                {
+                    "code": "PHAR 104", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PHAR/104", 
+                    "name": "Pharmacology for Pharmacy Technicians"
+                }, 
+                {
+                    "code": "PHAR 110", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PHAR/110", 
+                    "name": "Sterile Products/Lab"
+                }, 
+                {
+                    "code": "PHAR 120", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PHAR/120", 
+                    "name": "Professional Practice Seminar"
+                }, 
+                {
+                    "code": "PHAR 151", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PHAR/151", 
+                    "name": "Pharmacy Clinical Practice"
+                }
+            ], 
+            "name": "Pharmacy", 
+            "url": "http://www.chegg.com/courses/bpcc/PHAR"
+        }, 
+        {
+            "abbr": "PHSC", 
+            "courses": [
+                {
+                    "code": "PHSC 105", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PHSC/105", 
+                    "name": "Elemental Physics"
+                }, 
+                {
+                    "code": "PHSC 105L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PHSC/105L", 
+                    "name": "Elemental Physics Laboratory"
+                }, 
+                {
+                    "code": "PHSC 106", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PHSC/106", 
+                    "name": "Elemental Chemistry"
+                }, 
+                {
+                    "code": "PHSC 110", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PHSC/110", 
+                    "name": "Astronomy"
+                }
+            ], 
+            "name": "Physical Science", 
+            "url": "http://www.chegg.com/courses/bpcc/PHSC"
+        }, 
+        {
+            "abbr": "PHYS", 
+            "courses": [
+                {
+                    "code": "PHYS 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PHYS/201", 
+                    "name": "General Physics I"
+                }, 
+                {
+                    "code": "PHYS 201L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PHYS/201L", 
+                    "name": "General Physics I Laboratory"
+                }, 
+                {
+                    "code": "PHYS 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PHYS/202", 
+                    "name": "General Physics II"
+                }, 
+                {
+                    "code": "PHYS 202L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PHYS/202L", 
+                    "name": "General Physics II Laboratory"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/bpcc/PHYS"
+        }, 
+        {
+            "abbr": "POSC", 
+            "courses": [
+                {
+                    "code": "POSC 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/POSC/201", 
+                    "name": "National Government in the United States"
+                }, 
+                {
+                    "code": "POSC 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/POSC/202", 
+                    "name": "State and Local Government"
+                }, 
+                {
+                    "code": "POSC 290", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/POSC/290", 
+                    "name": "Political Science Practicum in Homeland Security"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/bpcc/POSC"
+        }, 
+        {
+            "abbr": "PSYC", 
+            "courses": [
+                {
+                    "code": "PSYC 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PSYC/202", 
+                    "name": "Practical Psychology for Health Professionals"
+                }, 
+                {
+                    "code": "PSYC 205", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PSYC/205", 
+                    "name": "Child Psychology"
+                }, 
+                {
+                    "code": "PSYC 206", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PSYC/206", 
+                    "name": "Adolescent Psychology"
+                }, 
+                {
+                    "code": "PSYC 210", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PSYC/210", 
+                    "name": "Educational Psychology"
+                }, 
+                {
+                    "code": "PSYC 220", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PSYC/220", 
+                    "name": "Developmental Psychology"
+                }, 
+                {
+                    "code": "PSYC 225", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PSYC/225", 
+                    "name": "Loss and Death"
+                }, 
+                {
+                    "code": "PSYC 290", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PSYC/290", 
+                    "name": "Social Psychology"
+                }
+            ], 
+            "name": "Psychology", 
+            "url": "http://www.chegg.com/courses/bpcc/PSYC"
+        }, 
+        {
+            "abbr": "PTAP", 
+            "courses": [
+                {
+                    "code": "PTAP 200", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PTAP/200", 
+                    "name": "Functional Anatomy"
+                }, 
+                {
+                    "code": "PTAP 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PTAP/201", 
+                    "name": "Introduction to Physical Therapy"
+                }, 
+                {
+                    "code": "PTAP 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PTAP/202", 
+                    "name": "Clinical Kinesiology"
+                }, 
+                {
+                    "code": "PTAP 203", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PTAP/203", 
+                    "name": "Orthopaedic Conditions"
+                }, 
+                {
+                    "code": "PTAP 204", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PTAP/204", 
+                    "name": "Physical Therapy Procedures"
+                }, 
+                {
+                    "code": "PTAP 205", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PTAP/205", 
+                    "name": "Therapeutic Modalities"
+                }, 
+                {
+                    "code": "PTAP 206", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PTAP/206", 
+                    "name": "Clinical Practice I"
+                }, 
+                {
+                    "code": "PTAP 212", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PTAP/212", 
+                    "name": "Clinical Neuroanatomy"
+                }, 
+                {
+                    "code": "PTAP 213", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PTAP/213", 
+                    "name": "Neurological Conditions"
+                }, 
+                {
+                    "code": "PTAP 214", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PTAP/214", 
+                    "name": "Therapeutic Exercise"
+                }, 
+                {
+                    "code": "PTAP 215", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PTAP/215", 
+                    "name": "Special Areas of Practice"
+                }, 
+                {
+                    "code": "PTAP 216", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PTAP/216", 
+                    "name": "Clinical Practice II"
+                }, 
+                {
+                    "code": "PTAP 217", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PTAP/217", 
+                    "name": "Comprehensive Interventions for the Physical Therapist Assistant"
+                }, 
+                {
+                    "code": "PTAP 226", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/PTAP/226", 
+                    "name": "Clinical Practice III"
+                }
+            ], 
+            "name": "Physical Therapy Assistant", 
+            "url": "http://www.chegg.com/courses/bpcc/PTAP"
+        }, 
+        {
+            "abbr": "READ", 
+            "courses": [
+                {
+                    "code": "READ 099", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/READ/099", 
+                    "name": "Developmental Reading"
+                }
+            ], 
+            "name": "Reading", 
+            "url": "http://www.chegg.com/courses/bpcc/READ"
+        }, 
+        {
+            "abbr": "RLGN", 
+            "courses": [
+                {
+                    "code": "RLGN 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RLGN/201", 
+                    "name": "New Testament Survey I:Interbiblical Period,Four Gospels"
+                }, 
+                {
+                    "code": "RLGN 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RLGN/202", 
+                    "name": "New Testament Survey II:Acts to Revelations"
+                }
+            ], 
+            "name": "Religion", 
+            "url": "http://www.chegg.com/courses/bpcc/RLGN"
+        }, 
+        {
+            "abbr": "RSTH", 
+            "courses": [
+                {
+                    "code": "RSTH 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/202", 
+                    "name": "Fundamentals of Respiratory Therapy"
+                }, 
+                {
+                    "code": "RSTH 203", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/203", 
+                    "name": "Cardiopulmonary Physiology I"
+                }, 
+                {
+                    "code": "RSTH 204", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/204", 
+                    "name": "Cardiopulmonary Pharmacology"
+                }, 
+                {
+                    "code": "RSTH 210", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/210", 
+                    "name": "Clinical Applications and Procedures I"
+                }, 
+                {
+                    "code": "RSTH 220", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/220", 
+                    "name": "Pulmonary Disease"
+                }, 
+                {
+                    "code": "RSTH 221", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/221", 
+                    "name": "Critical Care Concepts"
+                }, 
+                {
+                    "code": "RSTH 225", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/225", 
+                    "name": "Clinical Applications and Procedure II"
+                }, 
+                {
+                    "code": "RSTH 226", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/226", 
+                    "name": "Clinical Seminars"
+                }, 
+                {
+                    "code": "RSTH 230", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/230", 
+                    "name": "Clinical and Review Conference"
+                }, 
+                {
+                    "code": "RSTH 250", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/250", 
+                    "name": "Respiratory Care Seminar II"
+                }, 
+                {
+                    "code": "RSTH 255", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/255", 
+                    "name": "Critical Concepts II"
+                }, 
+                {
+                    "code": "RSTH 260", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/260", 
+                    "name": "Cardiopulmonary Physiology II"
+                }, 
+                {
+                    "code": "RSTH 265", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/265", 
+                    "name": "Clinical Applications and Procedures III"
+                }, 
+                {
+                    "code": "RSTH 270", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/270", 
+                    "name": "Neonatology/Pediatric Respiratory Care"
+                }, 
+                {
+                    "code": "RSTH 275", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/275", 
+                    "name": "Cardiopulmonary Diagnostics"
+                }, 
+                {
+                    "code": "RSTH 280", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/280", 
+                    "name": "Clinical Applications and Procedures IV"
+                }, 
+                {
+                    "code": "RSTH 285", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/285", 
+                    "name": "Advanced Practitioners Review"
+                }, 
+                {
+                    "code": "RSTH 291", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/RSTH/291", 
+                    "name": "Cardiopulmonary Rehabilitation"
+                }
+            ], 
+            "name": "Respiratory Therapy", 
+            "url": "http://www.chegg.com/courses/bpcc/RSTH"
+        }, 
+        {
+            "abbr": "SCI", 
+            "courses": [
+                {
+                    "code": "SCI 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/SCI/101", 
+                    "name": "Foundation in Science"
+                }
+            ], 
+            "name": "Science", 
+            "url": "http://www.chegg.com/courses/bpcc/SCI"
+        }, 
+        {
+            "abbr": "SLGY", 
+            "courses": [
+                {
+                    "code": "SLGY 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/SLGY/201", 
+                    "name": "Introduction to Sociology"
+                }, 
+                {
+                    "code": "SLGY 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/SLGY/202", 
+                    "name": "Social Problems"
+                }, 
+                {
+                    "code": "SLGY 203", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/SLGY/203", 
+                    "name": "Marriage and Family Living"
+                }, 
+                {
+                    "code": "SLGY 207", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/SLGY/207", 
+                    "name": "Race,Class & Ethnicity"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/bpcc/SLGY"
+        }, 
+        {
+            "abbr": "SLIS", 
+            "courses": [
+                {
+                    "code": "SLIS 100", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/SLIS/100", 
+                    "name": "Service Learning/Interdisciplinary Studies"
+                }
+            ], 
+            "name": "Service Learning/Interdisciplinary Studies", 
+            "url": "http://www.chegg.com/courses/bpcc/SLIS"
+        }, 
+        {
+            "abbr": "SPAN", 
+            "courses": [
+                {
+                    "code": "SPAN 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/SPAN/101", 
+                    "name": "Elementary Spanish I"
+                }, 
+                {
+                    "code": "SPAN 102", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/SPAN/102", 
+                    "name": "Elementary Spanish II"
+                }, 
+                {
+                    "code": "SPAN 105", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/SPAN/105", 
+                    "name": "Spanish for the Medical Profession"
+                }, 
+                {
+                    "code": "SPAN 106", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/SPAN/106", 
+                    "name": "Spanish for Law Enforcement Personnel"
+                }, 
+                {
+                    "code": "SPAN 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/SPAN/201", 
+                    "name": "Intermediate Spanish"
+                }
+            ], 
+            "name": "Spanish", 
+            "url": "http://www.chegg.com/courses/bpcc/SPAN"
+        }, 
+        {
+            "abbr": "SPCH", 
+            "courses": [
+                {
+                    "code": "SPCH 115", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/SPCH/115", 
+                    "name": "Interpersonal Communication"
+                }
+            ], 
+            "name": "Speech", 
+            "url": "http://www.chegg.com/courses/bpcc/SPCH"
+        }, 
+        {
+            "abbr": "STEC", 
+            "courses": [
+                {
+                    "code": "STEC 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/STEC/101", 
+                    "name": "Orientation to Surgical Technology"
+                }, 
+                {
+                    "code": "STEC 102 /102L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/STEC/102%20%2F102L", 
+                    "name": "Introduction to Surgical Techniques"
+                }, 
+                {
+                    "code": "STEC 110", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/STEC/110", 
+                    "name": "Surgical Procedures I"
+                }, 
+                {
+                    "code": "STEC 111", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/STEC/111", 
+                    "name": "Clinical Specialties"
+                }, 
+                {
+                    "code": "STEC 112", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/STEC/112", 
+                    "name": "Surgical Practicum I"
+                }, 
+                {
+                    "code": "STEC 120", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/STEC/120", 
+                    "name": "Surgical Procedures II"
+                }, 
+                {
+                    "code": "STEC 121", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/STEC/121", 
+                    "name": "Surgical Specialties and Review"
+                }, 
+                {
+                    "code": "STEC 122", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/STEC/122", 
+                    "name": "Surgical Practicum II"
+                }
+            ], 
+            "name": "Surgical Technology", 
+            "url": "http://www.chegg.com/courses/bpcc/STEC"
+        }, 
+        {
+            "abbr": "TEAC", 
+            "courses": [
+                {
+                    "code": "TEAC 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEAC/201", 
+                    "name": "Teaching and Learning in Diverse Settings I"
+                }, 
+                {
+                    "code": "TEAC 203", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEAC/203", 
+                    "name": "Teaching and Learning in Diverse Settings II"
+                }
+            ], 
+            "name": "Teaching & Learning", 
+            "url": "http://www.chegg.com/courses/bpcc/TEAC"
+        }, 
+        {
+            "abbr": "TEED", 
+            "courses": [
+                {
+                    "code": "TEED 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/101", 
+                    "name": "Basic Electricity"
+                }, 
+                {
+                    "code": "TEED 101L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/101L", 
+                    "name": "Basic Electricity Laboratory"
+                }, 
+                {
+                    "code": "TEED 102", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/102", 
+                    "name": "Semiconductor Electronics"
+                }, 
+                {
+                    "code": "TEED 102L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/102L", 
+                    "name": "Semiconductor Electronics Laboratory"
+                }, 
+                {
+                    "code": "TEED 132", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/132", 
+                    "name": "National Electrical Code I"
+                }, 
+                {
+                    "code": "TEED 133", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/133", 
+                    "name": "National Electrical Code II"
+                }, 
+                {
+                    "code": "TEED 140", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/140", 
+                    "name": "Engineering Drawing"
+                }, 
+                {
+                    "code": "TEED 140L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/140L", 
+                    "name": "Engineering Drawing Laboratory"
+                }, 
+                {
+                    "code": "TEED 142", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/142", 
+                    "name": "Industrial Blueprint Reading"
+                }, 
+                {
+                    "code": "TEED 143", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/143", 
+                    "name": "Introductory Computer Drafting"
+                }, 
+                {
+                    "code": "TEED 144", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/144", 
+                    "name": "Intermediate Computer Drafting"
+                }, 
+                {
+                    "code": "TEED 145", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/145", 
+                    "name": "Industrial Mechanical Theory I"
+                }, 
+                {
+                    "code": "TEED 146", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/146", 
+                    "name": "Industrial Mechanical Theory II"
+                }, 
+                {
+                    "code": "TEED 147", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/147", 
+                    "name": "Machine Shop Theory I"
+                }, 
+                {
+                    "code": "TEED 147L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/147L", 
+                    "name": "Machine Shop Theory I Laboratory"
+                }, 
+                {
+                    "code": "TEED 148", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/148", 
+                    "name": "Machine Shop Theory II"
+                }, 
+                {
+                    "code": "TEED 148L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/148L", 
+                    "name": "Machine Shop II Laboratory"
+                }, 
+                {
+                    "code": "TEED 149", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/149", 
+                    "name": "Computer Numerical Control"
+                }, 
+                {
+                    "code": "TEED 150", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/150", 
+                    "name": "Pneumatics"
+                }, 
+                {
+                    "code": "TEED 152", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/152", 
+                    "name": "Hydraulics"
+                }, 
+                {
+                    "code": "TEED 154", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/154", 
+                    "name": "Metallurgy"
+                }, 
+                {
+                    "code": "TEED 155", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/155", 
+                    "name": "Welding"
+                }, 
+                {
+                    "code": "TEED 156", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/156", 
+                    "name": "Customizing AutoCAD"
+                }, 
+                {
+                    "code": "TEED 158", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/158", 
+                    "name": "Computer Drafting Applications"
+                }, 
+                {
+                    "code": "TEED 160", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/160", 
+                    "name": "3D Computer Drafting"
+                }, 
+                {
+                    "code": "TEED 171", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/171", 
+                    "name": "Building Information Modeling I"
+                }, 
+                {
+                    "code": "TEED 172", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/172", 
+                    "name": "Building Information Modeling II"
+                }, 
+                {
+                    "code": "TEED 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/201", 
+                    "name": "Basic Digital Electronics"
+                }, 
+                {
+                    "code": "TEED 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/202", 
+                    "name": "Introduction to Microprocessors"
+                }, 
+                {
+                    "code": "TEED 202L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/202L", 
+                    "name": "Introduction to Microprocessor Laboratory"
+                }, 
+                {
+                    "code": "TEED 204", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/204", 
+                    "name": "Industrial Instrumentation"
+                }, 
+                {
+                    "code": "TEED 206", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/206", 
+                    "name": "Electronics Equipment and Repair"
+                }, 
+                {
+                    "code": "TEED 208", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/208", 
+                    "name": "Programmable Logic Controllers"
+                }, 
+                {
+                    "code": "TEED 208L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/208L", 
+                    "name": "Programmable Logic Controllers Laboratory"
+                }, 
+                {
+                    "code": "TEED 250", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/250", 
+                    "name": "Refrigeration Fundamentals"
+                }, 
+                {
+                    "code": "TEED 252", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/252", 
+                    "name": "Electric Motor Controls"
+                }, 
+                {
+                    "code": "TEED 252L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/252L", 
+                    "name": "Electric Motor Control Lab"
+                }, 
+                {
+                    "code": "TEED 263", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TEED/263", 
+                    "name": "Pipefitting Theory"
+                }
+            ], 
+            "name": "Technical Education", 
+            "url": "http://www.chegg.com/courses/bpcc/TEED"
+        }, 
+        {
+            "abbr": "THTR", 
+            "courses": [
+                {
+                    "code": "THTR 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/101", 
+                    "name": "Humanities of Theatre"
+                }, 
+                {
+                    "code": "THTR 107 ,108, 109 ,110", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/107%20%2C108%2C%20109%20%2C110", 
+                    "name": "Theatre Lab Production"
+                }, 
+                {
+                    "code": "THTR 112", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/112", 
+                    "name": "Stagecraft"
+                }, 
+                {
+                    "code": "THTR 113", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/113", 
+                    "name": "Stage Lighting I"
+                }, 
+                {
+                    "code": "THTR 114", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/114", 
+                    "name": "Scene Design I"
+                }, 
+                {
+                    "code": "THTR 116", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/116", 
+                    "name": "Stage Management"
+                }, 
+                {
+                    "code": "THTR 120", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/120", 
+                    "name": "Makeup for Stage"
+                }, 
+                {
+                    "code": "THTR 131", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/131", 
+                    "name": "Elements of Theatre"
+                }, 
+                {
+                    "code": "THTR 153", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/153", 
+                    "name": "Acting I"
+                }, 
+                {
+                    "code": "THTR 154", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/154", 
+                    "name": "Acting II"
+                }, 
+                {
+                    "code": "THTR 156", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/156", 
+                    "name": "Voice for the Stage"
+                }, 
+                {
+                    "code": "THTR 157", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/157", 
+                    "name": "Stage Movement I"
+                }, 
+                {
+                    "code": "THTR 211", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/211", 
+                    "name": "Theatre Arts Apprenticeship"
+                }, 
+                {
+                    "code": "THTR 212", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/212", 
+                    "name": "Advanced Stagecraft"
+                }, 
+                {
+                    "code": "THTR 213", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/213", 
+                    "name": "Stage Lighting II"
+                }, 
+                {
+                    "code": "THTR 214", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/214", 
+                    "name": "Scene Design II"
+                }, 
+                {
+                    "code": "THTR 215", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/215", 
+                    "name": "Scene Painting"
+                }, 
+                {
+                    "code": "THTR 216", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/216", 
+                    "name": "Technical Direction/Stage Technology"
+                }, 
+                {
+                    "code": "THTR 220", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/220", 
+                    "name": "Costuming I"
+                }, 
+                {
+                    "code": "THTR 221", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/221", 
+                    "name": "Costuming II"
+                }, 
+                {
+                    "code": "THTR 232", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/232", 
+                    "name": "Theatre Management"
+                }, 
+                {
+                    "code": "THTR 255", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/255", 
+                    "name": "Directing I"
+                }, 
+                {
+                    "code": "THTR 256", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/256", 
+                    "name": "Directing II"
+                }, 
+                {
+                    "code": "THTR 257", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/257", 
+                    "name": "Stage Movement II"
+                }, 
+                {
+                    "code": "THTR 260", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/260", 
+                    "name": "Special Projects"
+                }, 
+                {
+                    "code": "THTR 261", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/261", 
+                    "name": "Special Projects"
+                }, 
+                {
+                    "code": "THTR 262", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/262", 
+                    "name": "Special Projects"
+                }, 
+                {
+                    "code": "THTR 263", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/THTR/263", 
+                    "name": "Special Projects"
+                }
+            ], 
+            "name": "Theatre", 
+            "url": "http://www.chegg.com/courses/bpcc/THTR"
+        }, 
+        {
+            "abbr": "TLCM", 
+            "courses": [
+                {
+                    "code": "TLCM 101", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/101", 
+                    "name": "Introduction to Telecommunications"
+                }, 
+                {
+                    "code": "TLCM 103", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/103", 
+                    "name": "Telecommunications Practicum"
+                }, 
+                {
+                    "code": "TLCM 104", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/104", 
+                    "name": "Media Seminar"
+                }, 
+                {
+                    "code": "TLCM 105", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/105", 
+                    "name": "Survey of Music Business"
+                }, 
+                {
+                    "code": "TLCM 106", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/106", 
+                    "name": "Music Publishing"
+                }, 
+                {
+                    "code": "TLCM 107", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/107", 
+                    "name": "Sound Reinforcement"
+                }, 
+                {
+                    "code": "TLCM 108", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/108", 
+                    "name": "Marketing of Recorded Music"
+                }, 
+                {
+                    "code": "TLCM 109", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/109", 
+                    "name": "Public Relations in the Music Business"
+                }, 
+                {
+                    "code": "TLCM 110", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/110", 
+                    "name": "Basic Makeup"
+                }, 
+                {
+                    "code": "TLCM 111", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/111", 
+                    "name": "Intermediate Makeup"
+                }, 
+                {
+                    "code": "TLCM 112", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/112", 
+                    "name": "Advanced Makeup"
+                }, 
+                {
+                    "code": "TLCM 113", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/113", 
+                    "name": "Wig and Hair Techniques"
+                }, 
+                {
+                    "code": "TLCM 114", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/114", 
+                    "name": "Character Development and Design"
+                }, 
+                {
+                    "code": "TLCM 115", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/115", 
+                    "name": "Old Age Makeup"
+                }, 
+                {
+                    "code": "TLCM 121", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/121", 
+                    "name": "LightWave I"
+                }, 
+                {
+                    "code": "TLCM 130", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/130", 
+                    "name": "Film Pre-production"
+                }, 
+                {
+                    "code": "TLCM 161", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/161", 
+                    "name": "Digital Darkroom"
+                }, 
+                {
+                    "code": "TLCM 162", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/162", 
+                    "name": "Fine Art Photography"
+                }, 
+                {
+                    "code": "TLCM 163", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/163", 
+                    "name": "Techniques of the Masters"
+                }, 
+                {
+                    "code": "TLCM 164", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/164", 
+                    "name": "Creating Digital Presentations"
+                }, 
+                {
+                    "code": "TLCM 165", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/165", 
+                    "name": "Photography II"
+                }, 
+                {
+                    "code": "TLCM 166", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/166", 
+                    "name": "Makeup for Photography and Fashion"
+                }, 
+                {
+                    "code": "TLCM 171", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/171", 
+                    "name": "The Business of Visual Artistry"
+                }, 
+                {
+                    "code": "TLCM 175", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/175", 
+                    "name": "Radio and Television Programming"
+                }, 
+                {
+                    "code": "TLCM 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/201", 
+                    "name": "Video Post Production"
+                }, 
+                {
+                    "code": "TLCM 202", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/202", 
+                    "name": "Video Editing"
+                }, 
+                {
+                    "code": "TLCM 204", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/204", 
+                    "name": "Non-linear Editing"
+                }, 
+                {
+                    "code": "TLCM 207", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/207", 
+                    "name": "Electronic Field Production"
+                }, 
+                {
+                    "code": "TLCM 210", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/210", 
+                    "name": "Copywriting"
+                }, 
+                {
+                    "code": "TLCM 211", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/211", 
+                    "name": "Newswriting"
+                }, 
+                {
+                    "code": "TLCM 212", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/212", 
+                    "name": "Announcing"
+                }, 
+                {
+                    "code": "TLCM 213", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/213", 
+                    "name": "Voice and Diction"
+                }, 
+                {
+                    "code": "TLCM 215", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/215", 
+                    "name": "Special Topics I"
+                }, 
+                {
+                    "code": "TLCM 216", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/216", 
+                    "name": "Adobe Photoshop"
+                }, 
+                {
+                    "code": "TLCM 217", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/217", 
+                    "name": "LightWave II"
+                }, 
+                {
+                    "code": "TLCM 218", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/218", 
+                    "name": "Adobe Illustrator"
+                }, 
+                {
+                    "code": "TLCM 219", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/219", 
+                    "name": "2D Graphics II"
+                }, 
+                {
+                    "code": "TLCM 220", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/220", 
+                    "name": "Media Utilization"
+                }, 
+                {
+                    "code": "TLCM 221", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/221", 
+                    "name": "Advanced Photoshop"
+                }, 
+                {
+                    "code": "TLCM 222", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/222", 
+                    "name": "Audio-video Engineering"
+                }, 
+                {
+                    "code": "TLCM 223", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/223", 
+                    "name": "Color Management Theory"
+                }, 
+                {
+                    "code": "TLCM 225", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/225", 
+                    "name": "Audio Production in Media"
+                }, 
+                {
+                    "code": "TLCM 226", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/226", 
+                    "name": "Concert Promotion and Booking"
+                }, 
+                {
+                    "code": "TLCM 227", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/227", 
+                    "name": "The Music Company"
+                }, 
+                {
+                    "code": "TLCM 228", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/228", 
+                    "name": "Prosthetics Makeup"
+                }, 
+                {
+                    "code": "TLCM 229", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/229", 
+                    "name": "Injury Makeup"
+                }, 
+                {
+                    "code": "TLCM 231", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/231", 
+                    "name": "Severe Trauma Makeup"
+                }, 
+                {
+                    "code": "TLCM 232", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/232", 
+                    "name": "The Business of Makeup"
+                }, 
+                {
+                    "code": "TLCM 234", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/234", 
+                    "name": "Legal Issues in the Music Business"
+                }, 
+                {
+                    "code": "TLCM 236", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/236", 
+                    "name": "Modeling in 3D"
+                }, 
+                {
+                    "code": "TLCM 238", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/238", 
+                    "name": "Lighting in 3D"
+                }, 
+                {
+                    "code": "TLCM 239", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/239", 
+                    "name": "Motion Graphics and Visual Effect"
+                }, 
+                {
+                    "code": "TLCM 240", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/240", 
+                    "name": "American Cinema"
+                }, 
+                {
+                    "code": "TLCM 241", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/241", 
+                    "name": "TV and Film Set Construction"
+                }, 
+                {
+                    "code": "TLCM 242", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/242", 
+                    "name": "Prop Making"
+                }, 
+                {
+                    "code": "TLCM 250", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/250", 
+                    "name": "Electronic News Gathering"
+                }, 
+                {
+                    "code": "TLCM 251", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/251", 
+                    "name": "Special Effects in Animation"
+                }, 
+                {
+                    "code": "TLCM 253", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/253", 
+                    "name": "Animation for the Web"
+                }, 
+                {
+                    "code": "TLCM 254", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/254", 
+                    "name": "Advanced Multi-media Concepts"
+                }, 
+                {
+                    "code": "TLCM 255", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/255", 
+                    "name": "Sportscasting"
+                }, 
+                {
+                    "code": "TLCM 256", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/256", 
+                    "name": "Newscasting"
+                }, 
+                {
+                    "code": "TLCM 258", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/258", 
+                    "name": "Media Portfolio"
+                }, 
+                {
+                    "code": "TLCM 259", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/259", 
+                    "name": "Media Ethics"
+                }, 
+                {
+                    "code": "TLCM 260", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/260", 
+                    "name": "Wedding Photography"
+                }, 
+                {
+                    "code": "TLCM 261", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/261", 
+                    "name": "Digital Photography"
+                }, 
+                {
+                    "code": "TLCM 262", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/262", 
+                    "name": "The Photographic Artist"
+                }, 
+                {
+                    "code": "TLCM 265", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/265", 
+                    "name": "Photojournalism"
+                }, 
+                {
+                    "code": "TLCM 266", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/266", 
+                    "name": "Color Print and Slide Photography"
+                }, 
+                {
+                    "code": "TLCM 267", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/267", 
+                    "name": "Portrait Photography"
+                }, 
+                {
+                    "code": "TLCM 268", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/268", 
+                    "name": "Sports Photography"
+                }, 
+                {
+                    "code": "TLCM 269", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/269", 
+                    "name": "Special Topics in Photography I"
+                }, 
+                {
+                    "code": "TLCM 270", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/270", 
+                    "name": "Radio Practicum I"
+                }, 
+                {
+                    "code": "TLCM 271", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/271", 
+                    "name": "Radio Practicum II"
+                }, 
+                {
+                    "code": "TLCM 272", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/272", 
+                    "name": "Advanced Portrait Photography"
+                }, 
+                {
+                    "code": "TLCM 280", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/280", 
+                    "name": "Film Production and Design"
+                }, 
+                {
+                    "code": "TLCM 290", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/290", 
+                    "name": "Digital Recording and Editing"
+                }, 
+                {
+                    "code": "TLCM 291", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/291", 
+                    "name": "Sound System Design"
+                }, 
+                {
+                    "code": "TLCM 292", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/292", 
+                    "name": "Principles of Sound Mixing"
+                }, 
+                {
+                    "code": "TLCM 293", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/293", 
+                    "name": "Multi-track Recording"
+                }, 
+                {
+                    "code": "TLCM 294", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/294", 
+                    "name": "Studio Production"
+                }, 
+                {
+                    "code": "TLCM 295", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/TLCM/295", 
+                    "name": "Post-Production Techniques for Music"
+                }
+            ], 
+            "name": "Telecommunications", 
+            "url": "http://www.chegg.com/courses/bpcc/TLCM"
+        }, 
+        {
+            "abbr": "VTAH", 
+            "courses": [
+                {
+                    "code": "VTAH 111", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/VTAH/111", 
+                    "name": "Varsity Athletics I"
+                }, 
+                {
+                    "code": "VTAH 112", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/VTAH/112", 
+                    "name": "Varsity Athletics I"
+                }, 
+                {
+                    "code": "VTAH 217", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/VTAH/217", 
+                    "name": "Varsity Athletics II"
+                }, 
+                {
+                    "code": "VTAH 218", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/VTAH/218", 
+                    "name": "Varsity Athletics II"
+                }
+            ], 
+            "name": "Varsity Athletics", 
+            "url": "http://www.chegg.com/courses/bpcc/VTAH"
+        }, 
+        {
+            "abbr": "ZLGY", 
+            "courses": [
+                {
+                    "code": "ZLGY 110", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ZLGY/110", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "ZLGY 120", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ZLGY/120", 
+                    "name": "Introductory Human Anatomy and Physiology"
+                }, 
+                {
+                    "code": "ZLGY 120L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ZLGY/120L", 
+                    "name": "Introductory Human Anatomy and Physiology Lab"
+                }, 
+                {
+                    "code": "ZLGY 201", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ZLGY/201", 
+                    "name": "General Zoology"
+                }, 
+                {
+                    "code": "ZLGY 201L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ZLGY/201L", 
+                    "name": "General Zoology Laboratory"
+                }, 
+                {
+                    "code": "ZLGY 205 /205L", 
+                    "course_url": "http://www.chegg.com/courses/bpcc/ZLGY/205%20%2F205L", 
+                    "name": "Introduction to Modern Genetics"
+                }
+            ], 
+            "name": "Zoology", 
+            "url": "http://www.chegg.com/courses/bpcc/ZLGY"
+        }
+    ], 
+    "name": "bpcc"
+}

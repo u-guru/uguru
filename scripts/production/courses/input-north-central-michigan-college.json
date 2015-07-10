@@ -1,0 +1,2381 @@
+{
+    "all_stats": {
+        "num_courses": 403, 
+        "num_departments": 51
+    }, 
+    "departments": [
+        {
+            "abbr": "AH", 
+            "courses": [
+                {
+                    "code": "AH 107", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/AH/107", 
+                    "name": "Medical Office Procedures"
+                }, 
+                {
+                    "code": "AH 108", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/AH/108", 
+                    "name": "Medical Office Procedures II"
+                }, 
+                {
+                    "code": "AH 130", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/AH/130", 
+                    "name": "Body Systems And Diseases"
+                }, 
+                {
+                    "code": "AH 154", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/AH/154", 
+                    "name": "Certified Nurse Aide Training"
+                }, 
+                {
+                    "code": "AH 180", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/AH/180", 
+                    "name": "Pharmacology For Medical Assistants"
+                }, 
+                {
+                    "code": "AH 240", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/AH/240", 
+                    "name": "Pathophysiology"
+                }, 
+                {
+                    "code": "AH 254", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/AH/254", 
+                    "name": "Advanced Cna Skills"
+                }, 
+                {
+                    "code": "AH 280", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/AH/280", 
+                    "name": "Pharmacology"
+                }, 
+                {
+                    "code": "AH 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/AH/297", 
+                    "name": "Special Topics in Allied Health"
+                }
+            ], 
+            "name": "Allied Health", 
+            "url": "http://www.chegg.com/courses/ncmich/AH"
+        }, 
+        {
+            "abbr": "ANP", 
+            "courses": [
+                {
+                    "code": "ANP 110", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ANP/110", 
+                    "name": "Cultural Anthropology"
+                }, 
+                {
+                    "code": "ANP 130", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ANP/130", 
+                    "name": "Introduction to Prehistoric Archeology"
+                }, 
+                {
+                    "code": "ANP 161", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ANP/161", 
+                    "name": "Introduction to Biological Anthropology"
+                }, 
+                {
+                    "code": "ANP 210", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ANP/210", 
+                    "name": "Ethnology of World Cultures"
+                }, 
+                {
+                    "code": "ANP 295", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ANP/295", 
+                    "name": "Field Studies in Anthropology"
+                }
+            ], 
+            "name": "Anthropology", 
+            "url": "http://www.chegg.com/courses/ncmich/ANP"
+        }, 
+        {
+            "abbr": "ARC", 
+            "courses": [
+                {
+                    "code": "ARC 110", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ARC/110", 
+                    "name": "Elements of Architecture"
+                }
+            ], 
+            "name": "Architecture", 
+            "url": "http://www.chegg.com/courses/ncmich/ARC"
+        }, 
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 100", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/100", 
+                    "name": "Two- Dimensional Design"
+                }, 
+                {
+                    "code": "ART 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/101", 
+                    "name": "Color Theory"
+                }, 
+                {
+                    "code": "ART 102", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/102", 
+                    "name": "Three- Dimensional Design"
+                }, 
+                {
+                    "code": "ART 103", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/103", 
+                    "name": "Art Appreciation"
+                }, 
+                {
+                    "code": "ART 105", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/105", 
+                    "name": "Art History I"
+                }, 
+                {
+                    "code": "ART 106", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/106", 
+                    "name": "Art History II"
+                }, 
+                {
+                    "code": "ART 109", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/109", 
+                    "name": "Basic Drawing & Composition"
+                }, 
+                {
+                    "code": "ART 110", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/110", 
+                    "name": "Painting & Composition"
+                }, 
+                {
+                    "code": "ART 112", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/112", 
+                    "name": "Watercolors I"
+                }, 
+                {
+                    "code": "ART 113", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/113", 
+                    "name": "Oil Painting"
+                }, 
+                {
+                    "code": "ART 120", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/120", 
+                    "name": "Arts & Crafts For Elementary Teachers"
+                }, 
+                {
+                    "code": "ART 130", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/130", 
+                    "name": "Introduction to Jewelry"
+                }, 
+                {
+                    "code": "ART 141", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/141", 
+                    "name": "Pastel Landscape Painting"
+                }, 
+                {
+                    "code": "ART 201", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/201", 
+                    "name": "Printmaking"
+                }, 
+                {
+                    "code": "ART 202", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/202", 
+                    "name": "Introduction to Fiber And Textile Design"
+                }, 
+                {
+                    "code": "ART 204", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/204", 
+                    "name": "Ceramics I"
+                }, 
+                {
+                    "code": "ART 205", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/205", 
+                    "name": "Ceramics II"
+                }, 
+                {
+                    "code": "ART 206", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/206", 
+                    "name": "Ceramics III"
+                }, 
+                {
+                    "code": "ART 208", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/208", 
+                    "name": "Advanced Ceramics"
+                }, 
+                {
+                    "code": "ART 215", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/215", 
+                    "name": "Advanced Painting & Composition"
+                }, 
+                {
+                    "code": "ART 218", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/218", 
+                    "name": "Watercolors II"
+                }, 
+                {
+                    "code": "ART 219", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/219", 
+                    "name": "Watercolors III"
+                }, 
+                {
+                    "code": "ART 220", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/220", 
+                    "name": "Stained Glass"
+                }, 
+                {
+                    "code": "ART 221", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/221", 
+                    "name": "Advanced Stained Glass"
+                }, 
+                {
+                    "code": "ART 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/297", 
+                    "name": "Special Topics in Art"
+                }, 
+                {
+                    "code": "ART 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ART/299", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/ncmich/ART"
+        }, 
+        {
+            "abbr": "B", 
+            "courses": [
+                {
+                    "code": "B 104", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/104", 
+                    "name": "Business Math"
+                }, 
+                {
+                    "code": "B 111", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/111", 
+                    "name": "Accounting Procedures"
+                }, 
+                {
+                    "code": "B 113", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/113", 
+                    "name": "Computer- Assisted Accounting"
+                }, 
+                {
+                    "code": "B 155", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/155", 
+                    "name": "Personal Finance"
+                }, 
+                {
+                    "code": "B 161", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/161", 
+                    "name": "Introduction to Business"
+                }, 
+                {
+                    "code": "B 162", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/162", 
+                    "name": "Strategic Planning in Small Business"
+                }, 
+                {
+                    "code": "B 163", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/163", 
+                    "name": "Management Practices in Small Business"
+                }, 
+                {
+                    "code": "B 201", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/201", 
+                    "name": "Human Resource Management"
+                }, 
+                {
+                    "code": "B 207", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/207", 
+                    "name": "Business Communications"
+                }, 
+                {
+                    "code": "B 211", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/211", 
+                    "name": "Principles of Accounting I"
+                }, 
+                {
+                    "code": "B 212", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/212", 
+                    "name": "Principles of Accounting II"
+                }, 
+                {
+                    "code": "B 213", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/213", 
+                    "name": "Intermediate Accounting I"
+                }, 
+                {
+                    "code": "B 214", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/214", 
+                    "name": "Intermediate Accounting II"
+                }, 
+                {
+                    "code": "B 216", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/216", 
+                    "name": "Federal Taxation Accounting"
+                }, 
+                {
+                    "code": "B 218", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/218", 
+                    "name": "Cost Accounting I"
+                }, 
+                {
+                    "code": "B 290", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/290", 
+                    "name": "Business Law I"
+                }, 
+                {
+                    "code": "B 291", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/291", 
+                    "name": "Business Law II"
+                }, 
+                {
+                    "code": "B 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/B/299", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/ncmich/B"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [
+                {
+                    "code": "BIO 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/BIO/101", 
+                    "name": "Introduction to Biology"
+                }, 
+                {
+                    "code": "BIO 133", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/BIO/133", 
+                    "name": "Human Biology With Lab"
+                }, 
+                {
+                    "code": "BIO 151", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/BIO/151", 
+                    "name": "General Biology I"
+                }, 
+                {
+                    "code": "BIO 152", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/BIO/152", 
+                    "name": "General Biology II"
+                }, 
+                {
+                    "code": "BIO 220", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/BIO/220", 
+                    "name": "Natural Resource Management"
+                }, 
+                {
+                    "code": "BIO 226", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/BIO/226", 
+                    "name": "Microbiology"
+                }, 
+                {
+                    "code": "BIO 233", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/BIO/233", 
+                    "name": "Introduction to Nature Study"
+                }, 
+                {
+                    "code": "BIO 235", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/BIO/235", 
+                    "name": "General Anatomy & Physiology I"
+                }, 
+                {
+                    "code": "BIO 236", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/BIO/236", 
+                    "name": "General Anatomy & Physiology II"
+                }, 
+                {
+                    "code": "BIO 265", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/BIO/265", 
+                    "name": "Environmental Biology"
+                }, 
+                {
+                    "code": "BIO 295", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/BIO/295", 
+                    "name": "Field Studies in Biology I"
+                }, 
+                {
+                    "code": "BIO 296", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/BIO/296", 
+                    "name": "Field Studies in Biology II"
+                }, 
+                {
+                    "code": "BIO 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/BIO/297", 
+                    "name": "Special Topics in Biology"
+                }, 
+                {
+                    "code": "BIO 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/BIO/299", 
+                    "name": "Independent Study Biology"
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/ncmich/BIO"
+        }, 
+        {
+            "abbr": "CAP", 
+            "courses": [
+                {
+                    "code": "CAP 100", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CAP/100", 
+                    "name": "Computers For The Very Beginner"
+                }, 
+                {
+                    "code": "CAP 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CAP/101", 
+                    "name": "Internet Searching & Researching"
+                }, 
+                {
+                    "code": "CAP 125", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CAP/125", 
+                    "name": "Microsoft Excel I"
+                }, 
+                {
+                    "code": "CAP 135", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CAP/135", 
+                    "name": "Web Page Design"
+                }, 
+                {
+                    "code": "CAP 140", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CAP/140", 
+                    "name": "Introduction to Adobe Photoshop"
+                }, 
+                {
+                    "code": "CAP 160", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CAP/160", 
+                    "name": "Introduction to Digital Audio And Video"
+                }, 
+                {
+                    "code": "CAP 210", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CAP/210", 
+                    "name": "Advanced Web Page Design"
+                }, 
+                {
+                    "code": "CAP 215", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CAP/215", 
+                    "name": "Advanced Digital Audio And Video"
+                }, 
+                {
+                    "code": "CAP 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CAP/297", 
+                    "name": "Special Topics in Computer Applications"
+                }
+            ], 
+            "name": "Computer Applications", 
+            "url": "http://www.chegg.com/courses/ncmich/CAP"
+        }, 
+        {
+            "abbr": "CEM", 
+            "courses": [
+                {
+                    "code": "CEM 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CEM/101", 
+                    "name": "Fundamentals of Chemistry"
+                }, 
+                {
+                    "code": "CEM 102", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CEM/102", 
+                    "name": "Fundamentals of Bioorganic Chemistry"
+                }, 
+                {
+                    "code": "CEM 121", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CEM/121", 
+                    "name": "Principles of Chemistry I"
+                }, 
+                {
+                    "code": "CEM 122", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CEM/122", 
+                    "name": "Principles of Chemistry II"
+                }, 
+                {
+                    "code": "CEM 212", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CEM/212", 
+                    "name": "Quantitative Analysis"
+                }, 
+                {
+                    "code": "CEM 231", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CEM/231", 
+                    "name": "Organic Chemistry I"
+                }, 
+                {
+                    "code": "CEM 232", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CEM/232", 
+                    "name": "Organic Chemistry II"
+                }, 
+                {
+                    "code": "CEM 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CEM/297", 
+                    "name": "Special Topics in Chemistry"
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/ncmich/CEM"
+        }, 
+        {
+            "abbr": "CIS", 
+            "courses": [
+                {
+                    "code": "CIS 100", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/100", 
+                    "name": "Introduction to Computers"
+                }, 
+                {
+                    "code": "CIS 103", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/103", 
+                    "name": "Internet"
+                }, 
+                {
+                    "code": "CIS 104", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/104", 
+                    "name": "Introduction to Programming Logic"
+                }, 
+                {
+                    "code": "CIS 105", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/105", 
+                    "name": "Visual Basic Programming I"
+                }, 
+                {
+                    "code": "CIS 115", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/115", 
+                    "name": "C++ Programming I"
+                }, 
+                {
+                    "code": "CIS 120", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/120", 
+                    "name": "pc Operating Systems I"
+                }, 
+                {
+                    "code": "CIS 121", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/121", 
+                    "name": "pc Operating Systems II"
+                }, 
+                {
+                    "code": "CIS 125", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/125", 
+                    "name": "pc Hardware"
+                }, 
+                {
+                    "code": "CIS 140", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/140", 
+                    "name": "Introduction to Unix"
+                }, 
+                {
+                    "code": "CIS 145", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/145", 
+                    "name": "ePORTAL DEVELOPMENT"
+                }, 
+                {
+                    "code": "CIS 205", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/205", 
+                    "name": "C++ Programming II"
+                }, 
+                {
+                    "code": "CIS 215", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/215", 
+                    "name": "Database Design And Management"
+                }, 
+                {
+                    "code": "CIS 220", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/220", 
+                    "name": "Visual Basic Programming II"
+                }, 
+                {
+                    "code": "CIS 225", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/225", 
+                    "name": "Introduction to Java Programming I"
+                }, 
+                {
+                    "code": "CIS 240", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/240", 
+                    "name": "Linux/ Unix System Administration"
+                }, 
+                {
+                    "code": "CIS 280", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/280", 
+                    "name": "Internship/ Project"
+                }, 
+                {
+                    "code": "CIS 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/297", 
+                    "name": "Special Topics in Computer Information Systems"
+                }, 
+                {
+                    "code": "CIS 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CIS/299", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Computer Information Systems", 
+            "url": "http://www.chegg.com/courses/ncmich/CIS"
+        }, 
+        {
+            "abbr": "CJ", 
+            "courses": [
+                {
+                    "code": "CJ 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CJ/101", 
+                    "name": "Criminology"
+                }, 
+                {
+                    "code": "CJ 102", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CJ/102", 
+                    "name": "Introduction to Criminal Justice"
+                }, 
+                {
+                    "code": "CJ 120", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CJ/120", 
+                    "name": "Introduction to Corrections"
+                }, 
+                {
+                    "code": "CJ 130", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CJ/130", 
+                    "name": "Police Process"
+                }, 
+                {
+                    "code": "CJ 195", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CJ/195", 
+                    "name": "Police Practicum/ Internship"
+                }, 
+                {
+                    "code": "CJ 202", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CJ/202", 
+                    "name": "Criminal Investigation"
+                }, 
+                {
+                    "code": "CJ 207", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CJ/207", 
+                    "name": "Criminal Law"
+                }, 
+                {
+                    "code": "CJ 210", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CJ/210", 
+                    "name": "Current Issues in Criminal Justice"
+                }, 
+                {
+                    "code": "CJ 217", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/CJ/217", 
+                    "name": "Criminal Procedures"
+                }
+            ], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/ncmich/CJ"
+        }, 
+        {
+            "abbr": "COM", 
+            "courses": [
+                {
+                    "code": "COM 111", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/COM/111", 
+                    "name": "Speech"
+                }, 
+                {
+                    "code": "COM 121", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/COM/121", 
+                    "name": "Oral Interpretation"
+                }, 
+                {
+                    "code": "COM 130", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/COM/130", 
+                    "name": "Introduction to American Sign Language"
+                }, 
+                {
+                    "code": "COM 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/COM/297", 
+                    "name": "Special Topics in Communications"
+                }
+            ], 
+            "name": "Communications", 
+            "url": "http://www.chegg.com/courses/ncmich/COM"
+        }, 
+        {
+            "abbr": "ECE", 
+            "courses": [
+                {
+                    "code": "ECE 105", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ECE/105", 
+                    "name": "Foundations of Early Childhood Education"
+                }, 
+                {
+                    "code": "ECE 110", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ECE/110", 
+                    "name": "Curriculum And Methods"
+                }, 
+                {
+                    "code": "ECE 120", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ECE/120", 
+                    "name": "Administration of Program"
+                }, 
+                {
+                    "code": "ECE 130", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ECE/130", 
+                    "name": "Child Guidance And Communication Skills"
+                }, 
+                {
+                    "code": "ECE 210", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ECE/210", 
+                    "name": "Infants And Toddlers"
+                }, 
+                {
+                    "code": "ECE 220", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ECE/220", 
+                    "name": "Children With Special Needs"
+                }, 
+                {
+                    "code": "ECE 282", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ECE/282", 
+                    "name": "Ece Practicum/ Seminar"
+                }, 
+                {
+                    "code": "ECE 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ECE/299", 
+                    "name": "Independent Study- Ece"
+                }
+            ], 
+            "name": "Early Childhood Education", 
+            "url": "http://www.chegg.com/courses/ncmich/ECE"
+        }, 
+        {
+            "abbr": "ECO", 
+            "courses": [
+                {
+                    "code": "ECO 111", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ECO/111", 
+                    "name": "Macroeconomics"
+                }, 
+                {
+                    "code": "ECO 112", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ECO/112", 
+                    "name": "Microeconomics"
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/ncmich/ECO"
+        }, 
+        {
+            "abbr": "ED", 
+            "courses": [
+                {
+                    "code": "ED 100", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ED/100", 
+                    "name": "Introduction to Education"
+                }, 
+                {
+                    "code": "ED 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ED/299", 
+                    "name": "Independent Study- Education"
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/ncmich/ED"
+        }, 
+        {
+            "abbr": "EMS", 
+            "courses": [
+                {
+                    "code": "EMS 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/EMS/101", 
+                    "name": "Cpr And First Aid"
+                }, 
+                {
+                    "code": "EMS 105", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/EMS/105", 
+                    "name": "Medical First Responder"
+                }, 
+                {
+                    "code": "EMS 110", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/EMS/110", 
+                    "name": "Emt Basic"
+                }, 
+                {
+                    "code": "EMS 120", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/EMS/120", 
+                    "name": "Paramedic 1"
+                }, 
+                {
+                    "code": "EMS 130", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/EMS/130", 
+                    "name": "Paramedic"
+                }, 
+                {
+                    "code": "EMS 220", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/EMS/220", 
+                    "name": "Paramedic 3"
+                }, 
+                {
+                    "code": "EMS 230", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/EMS/230", 
+                    "name": "Paramedic 4"
+                }, 
+                {
+                    "code": "EMS 270", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/EMS/270", 
+                    "name": "Paramedic Field Internship"
+                }
+            ], 
+            "name": "Emergency Medical Services", 
+            "url": "http://www.chegg.com/courses/ncmich/EMS"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENG 090", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/090", 
+                    "name": "Writing Fundamentals"
+                }, 
+                {
+                    "code": "ENG 095", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/095", 
+                    "name": "College Prep Writing"
+                }, 
+                {
+                    "code": "ENG 112", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/112", 
+                    "name": "English Composition II"
+                }, 
+                {
+                    "code": "ENG 130", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/130", 
+                    "name": "Introduction to Literature"
+                }, 
+                {
+                    "code": "ENG 210", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/210", 
+                    "name": "Creative Writing I"
+                }, 
+                {
+                    "code": "ENG 213", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/213", 
+                    "name": "Shakespeare I"
+                }, 
+                {
+                    "code": "ENG 214", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/214", 
+                    "name": "Shakespeare II"
+                }, 
+                {
+                    "code": "ENG 215", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/215", 
+                    "name": "Introduction to Poetry"
+                }, 
+                {
+                    "code": "ENG 220", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/220", 
+                    "name": "Creative Writing II"
+                }, 
+                {
+                    "code": "ENG 221", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/221", 
+                    "name": "English Literature I"
+                }, 
+                {
+                    "code": "ENG 222", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/222", 
+                    "name": "English Literature II"
+                }, 
+                {
+                    "code": "ENG 231", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/231", 
+                    "name": "American Literature I"
+                }, 
+                {
+                    "code": "ENG 232", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/232", 
+                    "name": "American Literature II"
+                }, 
+                {
+                    "code": "ENG 240", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/240", 
+                    "name": "Children's Literature"
+                }, 
+                {
+                    "code": "ENG 241", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/241", 
+                    "name": "World Literature, Ancient- 1700"
+                }, 
+                {
+                    "code": "ENG 242", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/242", 
+                    "name": "World Literature, 1700- Present"
+                }, 
+                {
+                    "code": "ENG 244", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/244", 
+                    "name": "Multicultural Literature"
+                }, 
+                {
+                    "code": "ENG 245", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/245", 
+                    "name": "Introduction to Linguistics"
+                }, 
+                {
+                    "code": "ENG 250", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/250", 
+                    "name": "Mythology"
+                }, 
+                {
+                    "code": "ENG 251", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/251", 
+                    "name": "Contemporary Literature I"
+                }, 
+                {
+                    "code": "ENG 252", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/252", 
+                    "name": "Contemporary Literature II"
+                }, 
+                {
+                    "code": "ENG 255", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/255", 
+                    "name": "Modern Mythology: Tolkien & Lewis"
+                }, 
+                {
+                    "code": "ENG 276", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/276", 
+                    "name": "Contemporary Film"
+                }, 
+                {
+                    "code": "ENG 290", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/290", 
+                    "name": "Introduction to Writing For Film & Video"
+                }, 
+                {
+                    "code": "ENG 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENG/299", 
+                    "name": "Independent Study English"
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/ncmich/ENG"
+        }, 
+        {
+            "abbr": "ENGR", 
+            "courses": [
+                {
+                    "code": "ENGR 107", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENGR/107", 
+                    "name": "Engineering Graphics"
+                }
+            ], 
+            "name": "Engineering", 
+            "url": "http://www.chegg.com/courses/ncmich/ENGR"
+        }, 
+        {
+            "abbr": "ENT", 
+            "courses": [
+                {
+                    "code": "ENT 110", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENT/110", 
+                    "name": "Essentials of Entrepreneurship"
+                }, 
+                {
+                    "code": "ENT 120", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENT/120", 
+                    "name": "Financing an Entrepreneurial Business"
+                }, 
+                {
+                    "code": "ENT 125", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENT/125", 
+                    "name": "Legal Issues For Entrepreneurs"
+                }, 
+                {
+                    "code": "ENT 130", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENT/130", 
+                    "name": "Tax Law And Policy"
+                }, 
+                {
+                    "code": "ENT 135", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENT/135", 
+                    "name": "Human Resources Issue- Entrepreneurs"
+                }, 
+                {
+                    "code": "ENT 140", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENT/140", 
+                    "name": "Technology And Entrepreneurship"
+                }, 
+                {
+                    "code": "ENT 145", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENT/145", 
+                    "name": "Advertising And The Entrepreneur"
+                }, 
+                {
+                    "code": "ENT 170", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ENT/170", 
+                    "name": "Creative Blockbusting & Problem Solving"
+                }
+            ], 
+            "name": "Entrepreneurship", 
+            "url": "http://www.chegg.com/courses/ncmich/ENT"
+        }, 
+        {
+            "abbr": "ESC", 
+            "courses": [
+                {
+                    "code": "ESC 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ESC/101", 
+                    "name": "Introduction to Earth Science"
+                }, 
+                {
+                    "code": "ESC 121", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ESC/121", 
+                    "name": "Physical Geology"
+                }, 
+                {
+                    "code": "ESC 122", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ESC/122", 
+                    "name": "The Earth Through Time"
+                }, 
+                {
+                    "code": "ESC 150", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ESC/150", 
+                    "name": "Weather And Climate"
+                }, 
+                {
+                    "code": "ESC 201", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ESC/201", 
+                    "name": "Foundations of Astronomy"
+                }, 
+                {
+                    "code": "ESC 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/ESC/297", 
+                    "name": "Special Topics in Earth Science"
+                }
+            ], 
+            "name": "Earth Science", 
+            "url": "http://www.chegg.com/courses/ncmich/ESC"
+        }, 
+        {
+            "abbr": "FR", 
+            "courses": [
+                {
+                    "code": "FR 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/FR/101", 
+                    "name": "Conversational French"
+                }, 
+                {
+                    "code": "FR 111", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/FR/111", 
+                    "name": "Elementary French I"
+                }, 
+                {
+                    "code": "FR 112", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/FR/112", 
+                    "name": "Elementary French II"
+                }, 
+                {
+                    "code": "FR 211", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/FR/211", 
+                    "name": "Intermediate French I"
+                }, 
+                {
+                    "code": "FR 212", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/FR/212", 
+                    "name": "Intermediate French II"
+                }, 
+                {
+                    "code": "FR 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/FR/297", 
+                    "name": "Special Topics in French"
+                }, 
+                {
+                    "code": "FR 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/FR/299", 
+                    "name": "Independent Study French"
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/ncmich/FR"
+        }, 
+        {
+            "abbr": "GEO", 
+            "courses": [
+                {
+                    "code": "GEO 111", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/GEO/111", 
+                    "name": "Elements of Geography"
+                }, 
+                {
+                    "code": "GEO 121", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/GEO/121", 
+                    "name": "World Geography"
+                }
+            ], 
+            "name": "Geography", 
+            "url": "http://www.chegg.com/courses/ncmich/GEO"
+        }, 
+        {
+            "abbr": "GR", 
+            "courses": [
+                {
+                    "code": "GR 111", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/GR/111", 
+                    "name": "Elementary German I"
+                }, 
+                {
+                    "code": "GR 112", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/GR/112", 
+                    "name": "Elementary German II"
+                }, 
+                {
+                    "code": "GR 211", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/GR/211", 
+                    "name": "Intermediate German I"
+                }, 
+                {
+                    "code": "GR 212", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/GR/212", 
+                    "name": "Intermediate German II"
+                }, 
+                {
+                    "code": "GR 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/GR/297", 
+                    "name": "Special Topics in German"
+                }, 
+                {
+                    "code": "GR 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/GR/299", 
+                    "name": "Independent Study German"
+                }
+            ], 
+            "name": "Geography", 
+            "url": "http://www.chegg.com/courses/ncmich/GR"
+        }, 
+        {
+            "abbr": "GS", 
+            "courses": [
+                {
+                    "code": "GS 115", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/GS/115", 
+                    "name": "Basic Aviation Ground School"
+                }
+            ], 
+            "name": "Global Studies", 
+            "url": "http://www.chegg.com/courses/ncmich/GS"
+        }, 
+        {
+            "abbr": "HE", 
+            "courses": [
+                {
+                    "code": "HE 200", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HE/200", 
+                    "name": "Nutrition"
+                }, 
+                {
+                    "code": "HE 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HE/297", 
+                    "name": "Special Topics in Human Ecology"
+                }
+            ], 
+            "name": "Human Ecology", 
+            "url": "http://www.chegg.com/courses/ncmich/HE"
+        }, 
+        {
+            "abbr": "HST", 
+            "courses": [
+                {
+                    "code": "HST 131", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HST/131", 
+                    "name": "History of u"
+                }, 
+                {
+                    "code": "HST 132", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HST/132", 
+                    "name": "History of u. s. 1877- Present"
+                }, 
+                {
+                    "code": "HST 140", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HST/140", 
+                    "name": "Celts And Nature"
+                }, 
+                {
+                    "code": "HST 141", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HST/141", 
+                    "name": "Culture & Myth: Quest For The Grail"
+                }, 
+                {
+                    "code": "HST 205", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HST/205", 
+                    "name": "The Civil War"
+                }, 
+                {
+                    "code": "HST 220", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HST/220", 
+                    "name": "Cultural History of Native American"
+                }, 
+                {
+                    "code": "HST 221", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HST/221", 
+                    "name": "Cultural History of Native American II"
+                }, 
+                {
+                    "code": "HST 222", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HST/222", 
+                    "name": "Woodlands Indians, 1800- 1980"
+                }, 
+                {
+                    "code": "HST 232", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HST/232", 
+                    "name": "Survey of Later West Civilization"
+                }, 
+                {
+                    "code": "HST 255", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HST/255", 
+                    "name": "History of Rock And Roll Era"
+                }, 
+                {
+                    "code": "HST 258", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HST/258", 
+                    "name": "America in The Sixties"
+                }, 
+                {
+                    "code": "HST 270", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HST/270", 
+                    "name": "Michigan History"
+                }, 
+                {
+                    "code": "HST 295", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HST/295", 
+                    "name": "Field Studies in History"
+                }, 
+                {
+                    "code": "HST 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HST/297", 
+                    "name": "Special Topics in History"
+                }, 
+                {
+                    "code": "HST 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HST/299", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/ncmich/HST"
+        }, 
+        {
+            "abbr": "HTM", 
+            "courses": [
+                {
+                    "code": "HTM 121", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HTM/121", 
+                    "name": "Introduction to Hospitality Industry"
+                }, 
+                {
+                    "code": "HTM 130", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HTM/130", 
+                    "name": "Food And Beverage Management"
+                }, 
+                {
+                    "code": "HTM 140", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HTM/140", 
+                    "name": "Introduction to Gaming Management"
+                }, 
+                {
+                    "code": "HTM 232", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HTM/232", 
+                    "name": "Hospitality Law & Ethics"
+                }, 
+                {
+                    "code": "HTM 240", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HTM/240", 
+                    "name": "Casino Operations And Management I"
+                }, 
+                {
+                    "code": "HTM 245", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HTM/245", 
+                    "name": "Casino Operations And Management II"
+                }, 
+                {
+                    "code": "HTM 250", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/HTM/250", 
+                    "name": "Casino Risk Management"
+                }
+            ], 
+            "name": "Hospitality Management", 
+            "url": "http://www.chegg.com/courses/ncmich/HTM"
+        }, 
+        {
+            "abbr": "IT", 
+            "courses": [
+                {
+                    "code": "IT 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/IT/101", 
+                    "name": "Network+"
+                }, 
+                {
+                    "code": "IT 102", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/IT/102", 
+                    "name": "Networking Essentials"
+                }, 
+                {
+                    "code": "IT 112", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/IT/112", 
+                    "name": "Microsoft Windows Workstations"
+                }, 
+                {
+                    "code": "IT 122", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/IT/122", 
+                    "name": "Microsoft Windows Servers"
+                }, 
+                {
+                    "code": "IT 130", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/IT/130", 
+                    "name": "Microsoft Windows 2000 Network Infrastructure"
+                }, 
+                {
+                    "code": "IT 131", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/IT/131", 
+                    "name": "Windows Web Server"
+                }, 
+                {
+                    "code": "IT 141", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/IT/141", 
+                    "name": "Managing Windows Networks"
+                }, 
+                {
+                    "code": "IT 150", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/IT/150", 
+                    "name": "Windows 2000 Directory Services"
+                }, 
+                {
+                    "code": "IT 160", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/IT/160", 
+                    "name": "Advanced Hardware And Routing"
+                }, 
+                {
+                    "code": "IT 161", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/IT/161", 
+                    "name": "Introductory Digital Logic"
+                }, 
+                {
+                    "code": "IT 221", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/IT/221", 
+                    "name": "Designing Windows Networks"
+                }, 
+                {
+                    "code": "IT 270", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/IT/270", 
+                    "name": "Capstone Project"
+                }, 
+                {
+                    "code": "IT 280", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/IT/280", 
+                    "name": "Internship/ Project"
+                }, 
+                {
+                    "code": "IT 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/IT/297", 
+                    "name": "Special Topics in Information Technology"
+                }, 
+                {
+                    "code": "IT 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/IT/299", 
+                    "name": "it Independent Study"
+                }
+            ], 
+            "name": "Information Technologies", 
+            "url": "http://www.chegg.com/courses/ncmich/IT"
+        }, 
+        {
+            "abbr": "JRN", 
+            "courses": [
+                {
+                    "code": "JRN 100", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/JRN/100", 
+                    "name": "Introduction to Mass Media"
+                }, 
+                {
+                    "code": "JRN 102", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/JRN/102", 
+                    "name": "Newswriting"
+                }, 
+                {
+                    "code": "JRN 201", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/JRN/201", 
+                    "name": "News Writing II"
+                }
+            ], 
+            "name": "Journalism", 
+            "url": "http://www.chegg.com/courses/ncmich/JRN"
+        }, 
+        {
+            "abbr": "LA", 
+            "courses": [
+                {
+                    "code": "LA 200", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/LA/200", 
+                    "name": "Law Office Management & Legal Ethics"
+                }, 
+                {
+                    "code": "LA 201", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/LA/201", 
+                    "name": "Research Writing & Analysis I"
+                }, 
+                {
+                    "code": "LA 202", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/LA/202", 
+                    "name": "Research, Writing & Analysis II"
+                }, 
+                {
+                    "code": "LA 203", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/LA/203", 
+                    "name": "Litigation Preparation & Procedure"
+                }, 
+                {
+                    "code": "LA 204", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/LA/204", 
+                    "name": "Civil Procedure & Rules of Evidence"
+                }, 
+                {
+                    "code": "LA 205", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/LA/205", 
+                    "name": "Real Estate Law"
+                }, 
+                {
+                    "code": "LA 206", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/LA/206", 
+                    "name": "Probate Law"
+                }, 
+                {
+                    "code": "LA 207", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/LA/207", 
+                    "name": "Family Law"
+                }, 
+                {
+                    "code": "LA 208", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/LA/208", 
+                    "name": "Tort Law"
+                }, 
+                {
+                    "code": "LA 210", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/LA/210", 
+                    "name": "Internship Paralegal"
+                }
+            ], 
+            "name": "Legal Assistant", 
+            "url": "http://www.chegg.com/courses/ncmich/LA"
+        }, 
+        {
+            "abbr": "M", 
+            "courses": [
+                {
+                    "code": "M 200", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/M/200", 
+                    "name": "Introduction to Marketing"
+                }, 
+                {
+                    "code": "M 202", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/M/202", 
+                    "name": "Fundamentals of Advertising"
+                }, 
+                {
+                    "code": "M 204", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/M/204", 
+                    "name": "e- Commerce, Retailing & Service Management"
+                }, 
+                {
+                    "code": "M 220", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/M/220", 
+                    "name": "Marketing & Management Strategy"
+                }, 
+                {
+                    "code": "M 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/M/299", 
+                    "name": "Marketing, Independent Study"
+                }
+            ], 
+            "name": "Marketing", 
+            "url": "http://www.chegg.com/courses/ncmich/M"
+        }, 
+        {
+            "abbr": "MTH", 
+            "courses": [
+                {
+                    "code": "MTH 090", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MTH/090", 
+                    "name": "College Prep Math"
+                }, 
+                {
+                    "code": "MTH 096", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MTH/096", 
+                    "name": "Pre- Algebra And Beginning Algebra"
+                }, 
+                {
+                    "code": "MTH 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MTH/101", 
+                    "name": "Math For Elementary Teachers I"
+                }, 
+                {
+                    "code": "MTH 102", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MTH/102", 
+                    "name": "Math For Elementary Teachers II"
+                }, 
+                {
+                    "code": "MTH 106", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MTH/106", 
+                    "name": "Pre- Algebra And Beginning Algebra I"
+                }, 
+                {
+                    "code": "MTH 113", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MTH/113", 
+                    "name": "Intermediate Algebra"
+                }, 
+                {
+                    "code": "MTH 119", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MTH/119", 
+                    "name": "College Algebra"
+                }, 
+                {
+                    "code": "MTH 122", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MTH/122", 
+                    "name": "Analytic Geometry & Calculus I"
+                }, 
+                {
+                    "code": "MTH 123", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MTH/123", 
+                    "name": "Trigonometry & Applications"
+                }, 
+                {
+                    "code": "MTH 211", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MTH/211", 
+                    "name": "Analytic Geometry & Calculus II"
+                }, 
+                {
+                    "code": "MTH 212", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MTH/212", 
+                    "name": "Analytic Geometry & Calculus III"
+                }, 
+                {
+                    "code": "MTH 215", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MTH/215", 
+                    "name": "Differential Equations"
+                }, 
+                {
+                    "code": "MTH 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MTH/297", 
+                    "name": "Special Topics- Mathematics"
+                }, 
+                {
+                    "code": "MTH 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MTH/299", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/ncmich/MTH"
+        }, 
+        {
+            "abbr": "MU", 
+            "courses": [
+                {
+                    "code": "MU 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MU/101", 
+                    "name": "Chorale I"
+                }, 
+                {
+                    "code": "MU 102", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MU/102", 
+                    "name": "Chorale II"
+                }, 
+                {
+                    "code": "MU 112", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MU/112", 
+                    "name": "Private Voice Instruction"
+                }, 
+                {
+                    "code": "MU 115", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MU/115", 
+                    "name": "Private Instrumental Instruction"
+                }, 
+                {
+                    "code": "MU 120", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MU/120", 
+                    "name": "History of Music"
+                }, 
+                {
+                    "code": "MU 130", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MU/130", 
+                    "name": "Music Theory I"
+                }, 
+                {
+                    "code": "MU 131", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MU/131", 
+                    "name": "Music Theory II"
+                }, 
+                {
+                    "code": "MU 141", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MU/141", 
+                    "name": "Contemporary Finger- Style Guitar"
+                }, 
+                {
+                    "code": "MU 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/MU/297", 
+                    "name": "Special Topics in Music"
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/ncmich/MU"
+        }, 
+        {
+            "abbr": "N", 
+            "courses": [
+                {
+                    "code": "N 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/101", 
+                    "name": "Fundamentals of Nursing"
+                }, 
+                {
+                    "code": "N 102", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/102", 
+                    "name": "Fundamentals of Nursing Clinical"
+                }, 
+                {
+                    "code": "N 131", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/131", 
+                    "name": "Introduction Nursing Care of The Adult"
+                }, 
+                {
+                    "code": "N 132", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/132", 
+                    "name": "Introduction Nursing Care of The Adult Clinical"
+                }, 
+                {
+                    "code": "N 135", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/135", 
+                    "name": "Foundations of Nursing"
+                }, 
+                {
+                    "code": "N 200", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/200", 
+                    "name": "Nursing Transition- Lpn"
+                }, 
+                {
+                    "code": "N 241", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/241", 
+                    "name": "Nursing Care of The Adult I"
+                }, 
+                {
+                    "code": "N 242", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/242", 
+                    "name": "Nursing Care of The Adult I Clinical"
+                }, 
+                {
+                    "code": "N 243", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/243", 
+                    "name": "Nursing Care of The Adult I Research"
+                }, 
+                {
+                    "code": "N 251", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/251", 
+                    "name": "Nursing Care of The Adult II"
+                }, 
+                {
+                    "code": "N 252", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/252", 
+                    "name": "Nursing Care of The Adult II Clinical"
+                }, 
+                {
+                    "code": "N 253", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/253", 
+                    "name": "Nursing Care of The Adult II Research"
+                }, 
+                {
+                    "code": "N 255", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/255", 
+                    "name": "Family- Centered Care of Children"
+                }, 
+                {
+                    "code": "N 256", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/256", 
+                    "name": "Family- Centered Care of Children Clinical"
+                }, 
+                {
+                    "code": "N 265", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/265", 
+                    "name": "Women?s Health Care"
+                }, 
+                {
+                    "code": "N 266", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/266", 
+                    "name": "Women?s Health Care Clinical"
+                }, 
+                {
+                    "code": "N 275", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/275", 
+                    "name": "Mental Health Nursing"
+                }, 
+                {
+                    "code": "N 276", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/276", 
+                    "name": "Mental Health Nursing Clinical"
+                }, 
+                {
+                    "code": "N 290", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/N/290", 
+                    "name": "Nursing Process"
+                }
+            ], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/ncmich/N"
+        }, 
+        {
+            "abbr": "NISH", 
+            "courses": [
+                {
+                    "code": "NISH 111", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/NISH/111", 
+                    "name": "Elementary Anishnaabemowin I"
+                }, 
+                {
+                    "code": "NISH 112", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/NISH/112", 
+                    "name": "Elementary Anishnaabemowin II"
+                }, 
+                {
+                    "code": "NISH 211", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/NISH/211", 
+                    "name": "Intermediate Anishnabemowin I"
+                }, 
+                {
+                    "code": "NISH 212", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/NISH/212", 
+                    "name": "Intermediate Anishnabemowin II"
+                }
+            ], 
+            "name": "Anishnaabemowin", 
+            "url": "http://www.chegg.com/courses/ncmich/NISH"
+        }, 
+        {
+            "abbr": "OAS", 
+            "courses": [
+                {
+                    "code": "OAS 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/101", 
+                    "name": "Customer Service"
+                }, 
+                {
+                    "code": "OAS 110", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/110", 
+                    "name": "Keyboarding Fundamentals"
+                }, 
+                {
+                    "code": "OAS 112", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/112", 
+                    "name": "Fundamentals of Word Processing"
+                }, 
+                {
+                    "code": "OAS 116", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/116", 
+                    "name": "Medical Terminology"
+                }, 
+                {
+                    "code": "OAS 117", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/117", 
+                    "name": "Medical Transcription"
+                }, 
+                {
+                    "code": "OAS 121", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/121", 
+                    "name": "Computer Keyboarding/ Software Fundamentals"
+                }, 
+                {
+                    "code": "OAS 122", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/122", 
+                    "name": "Document Processing I"
+                }, 
+                {
+                    "code": "OAS 141", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/141", 
+                    "name": "Filing And Records Management"
+                }, 
+                {
+                    "code": "OAS 190", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/190", 
+                    "name": "Employability Skills"
+                }, 
+                {
+                    "code": "OAS 216", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/216", 
+                    "name": "Medical Insurance Billing"
+                }, 
+                {
+                    "code": "OAS 217", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/217", 
+                    "name": "Medical Transcription II"
+                }, 
+                {
+                    "code": "OAS 220", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/220", 
+                    "name": "Beginning Medical Coding"
+                }, 
+                {
+                    "code": "OAS 221", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/221", 
+                    "name": "Beginning Medical Billing"
+                }, 
+                {
+                    "code": "OAS 223", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/223", 
+                    "name": "Document Processing II"
+                }, 
+                {
+                    "code": "OAS 224", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/224", 
+                    "name": "Transcription/ Editing"
+                }, 
+                {
+                    "code": "OAS 230", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/230", 
+                    "name": "Advanced Medical Coding Icd- cm"
+                }, 
+                {
+                    "code": "OAS 231", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/231", 
+                    "name": "Advanced Medical Coding Cpt"
+                }, 
+                {
+                    "code": "OAS 241", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/241", 
+                    "name": "Administrative Procedures"
+                }, 
+                {
+                    "code": "OAS 242", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/242", 
+                    "name": "Office Technology"
+                }, 
+                {
+                    "code": "OAS 252", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/252", 
+                    "name": "Microsoft Office For Windows"
+                }, 
+                {
+                    "code": "OAS 254", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/254", 
+                    "name": "Desktop Publishing For The Office"
+                }, 
+                {
+                    "code": "OAS 263", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/263", 
+                    "name": "Advanced Word Processing"
+                }, 
+                {
+                    "code": "OAS 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/OAS/299", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Office Administrative Services", 
+            "url": "http://www.chegg.com/courses/ncmich/OAS"
+        }, 
+        {
+            "abbr": "PE", 
+            "courses": [
+                {
+                    "code": "PE 111", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PE/111", 
+                    "name": "Individual Sports- T'ai Chi Chuan"
+                }, 
+                {
+                    "code": "PE 112", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PE/112", 
+                    "name": "Beginning Yoga"
+                }, 
+                {
+                    "code": "PE 114", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PE/114", 
+                    "name": "Yoga II"
+                }, 
+                {
+                    "code": "PE 115", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PE/115", 
+                    "name": "Personal Wellness"
+                }, 
+                {
+                    "code": "PE 116", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PE/116", 
+                    "name": "Intro to Physical Conditioning"
+                }, 
+                {
+                    "code": "PE 117", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PE/117", 
+                    "name": "Resistance Training"
+                }, 
+                {
+                    "code": "PE 135", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PE/135", 
+                    "name": "Pilates"
+                }, 
+                {
+                    "code": "PE 140", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PE/140", 
+                    "name": "Team Sports"
+                }, 
+                {
+                    "code": "PE 216", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PE/216", 
+                    "name": "Physical Conditioning II"
+                }, 
+                {
+                    "code": "PE 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PE/297", 
+                    "name": "Special Topics in Physical Education"
+                }
+            ], 
+            "name": "Physical Education", 
+            "url": "http://www.chegg.com/courses/ncmich/PE"
+        }, 
+        {
+            "abbr": "PHL", 
+            "courses": [
+                {
+                    "code": "PHL 102", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PHL/102", 
+                    "name": "Introduction to Logic"
+                }, 
+                {
+                    "code": "PHL 109", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PHL/109", 
+                    "name": "Contemporary Moral Issues"
+                }, 
+                {
+                    "code": "PHL 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PHL/297", 
+                    "name": "Special Topics in Philosophy"
+                }, 
+                {
+                    "code": "PHL 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PHL/299", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/ncmich/PHL"
+        }, 
+        {
+            "abbr": "PHLB", 
+            "courses": [
+                {
+                    "code": "PHLB 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PHLB/101", 
+                    "name": "Phlebotomy I"
+                }, 
+                {
+                    "code": "PHLB 102", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PHLB/102", 
+                    "name": "Phlebotomy II"
+                }
+            ], 
+            "name": "Phlebotomy", 
+            "url": "http://www.chegg.com/courses/ncmich/PHLB"
+        }, 
+        {
+            "abbr": "PHO", 
+            "courses": [
+                {
+                    "code": "PHO 100", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PHO/100", 
+                    "name": "Basic Photography"
+                }, 
+                {
+                    "code": "PHO 120", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PHO/120", 
+                    "name": "Digital Photography"
+                }, 
+                {
+                    "code": "PHO 210", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PHO/210", 
+                    "name": "Advanced Photography"
+                }, 
+                {
+                    "code": "PHO 295", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PHO/295", 
+                    "name": "Field Studies in Photography"
+                }
+            ], 
+            "name": "Photography", 
+            "url": "http://www.chegg.com/courses/ncmich/PHO"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [
+                {
+                    "code": "PHY 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PHY/101", 
+                    "name": "Concepts in Physics"
+                }, 
+                {
+                    "code": "PHY 210", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PHY/210", 
+                    "name": "General Physics I Lecture\\review\\lab"
+                }, 
+                {
+                    "code": "PHY 211", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PHY/211", 
+                    "name": "General Physics II Lecture\\review\\lab"
+                }, 
+                {
+                    "code": "PHY 230", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PHY/230", 
+                    "name": "Physics For Scientists & Engineers I"
+                }, 
+                {
+                    "code": "PHY 231", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PHY/231", 
+                    "name": "Physics Scientists & Engineers II"
+                }, 
+                {
+                    "code": "PHY 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PHY/297", 
+                    "name": "Special Topics in Physics"
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/ncmich/PHY"
+        }, 
+        {
+            "abbr": "PLS", 
+            "courses": [
+                {
+                    "code": "PLS 200", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PLS/200", 
+                    "name": "International Relations"
+                }, 
+                {
+                    "code": "PLS 225", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PLS/225", 
+                    "name": "Citizen Politics at Local Level"
+                }, 
+                {
+                    "code": "PLS 270", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PLS/270", 
+                    "name": "Vietnam Then And Now"
+                }, 
+                {
+                    "code": "PLS 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PLS/297", 
+                    "name": "Special Topics in Political Science"
+                }, 
+                {
+                    "code": "PLS 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PLS/299", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/ncmich/PLS"
+        }, 
+        {
+            "abbr": "PREREQUISITE(S):ART", 
+            "courses": [
+                {
+                    "code": "PREREQUISITE(S):ART 206", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PREREQUISITE%28S%29%3AART/206", 
+                    "name": "or equivalent.ART 212 LIFE DRAWING"
+                }
+            ], 
+            "name": "", 
+            "url": "http://www.chegg.com/courses/ncmich/PREREQUISITE%28S%29%3AART"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 102", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PSY/102", 
+                    "name": "Career And Life Planning"
+                }, 
+                {
+                    "code": "PSY 161", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PSY/161", 
+                    "name": "Introduction to Psychology"
+                }, 
+                {
+                    "code": "PSY 210", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PSY/210", 
+                    "name": "Human Sexuality"
+                }, 
+                {
+                    "code": "PSY 230", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PSY/230", 
+                    "name": "Mental Illness in Film"
+                }, 
+                {
+                    "code": "PSY 235", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PSY/235", 
+                    "name": "Theories of Personality"
+                }, 
+                {
+                    "code": "PSY 241", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PSY/241", 
+                    "name": "Abnormal Psychology"
+                }, 
+                {
+                    "code": "PSY 255", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PSY/255", 
+                    "name": "Child Psychology"
+                }, 
+                {
+                    "code": "PSY 261", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PSY/261", 
+                    "name": "Developmental Psychology"
+                }, 
+                {
+                    "code": "PSY 290", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PSY/290", 
+                    "name": "Social Psychology"
+                }, 
+                {
+                    "code": "PSY 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PSY/297", 
+                    "name": "Special Topics Psychology"
+                }, 
+                {
+                    "code": "PSY 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/PSY/299", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Psychology", 
+            "url": "http://www.chegg.com/courses/ncmich/PSY"
+        }, 
+        {
+            "abbr": "REL", 
+            "courses": [
+                {
+                    "code": "REL 100", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/REL/100", 
+                    "name": "World Religions"
+                }, 
+                {
+                    "code": "REL 102", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/REL/102", 
+                    "name": "History of Religion in The u"
+                }, 
+                {
+                    "code": "REL 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/REL/297", 
+                    "name": "Special Topics in Religion"
+                }, 
+                {
+                    "code": "REL 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/REL/299", 
+                    "name": "Independent Study"
+                }
+            ], 
+            "name": "Religion", 
+            "url": "http://www.chegg.com/courses/ncmich/REL"
+        }, 
+        {
+            "abbr": "SD", 
+            "courses": [
+                {
+                    "code": "SD 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SD/101", 
+                    "name": "College Study Methods"
+                }, 
+                {
+                    "code": "SD 110", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SD/110", 
+                    "name": "Basic Skills Test- Prep Course"
+                }, 
+                {
+                    "code": "SD 120", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SD/120", 
+                    "name": "Reading For College Success"
+                }
+            ], 
+            "name": "Student Development", 
+            "url": "http://www.chegg.com/courses/ncmich/SD"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [
+                {
+                    "code": "SOC 110", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SOC/110", 
+                    "name": "Introduction to Women's Studies"
+                }, 
+                {
+                    "code": "SOC 171", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SOC/171", 
+                    "name": "Introduction to Sociology"
+                }, 
+                {
+                    "code": "SOC 208", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SOC/208", 
+                    "name": "Juvenile Delinquency"
+                }, 
+                {
+                    "code": "SOC 220", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SOC/220", 
+                    "name": "Death And Dying"
+                }, 
+                {
+                    "code": "SOC 230", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SOC/230", 
+                    "name": "Race And Ethnicity in America"
+                }, 
+                {
+                    "code": "SOC 250", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SOC/250", 
+                    "name": "Deviant Behavior"
+                }, 
+                {
+                    "code": "SOC 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SOC/297", 
+                    "name": "Special Topics in Sociology"
+                }, 
+                {
+                    "code": "SOC 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SOC/299", 
+                    "name": "Independent Study Sociology"
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/ncmich/SOC"
+        }, 
+        {
+            "abbr": "SPAN", 
+            "courses": [
+                {
+                    "code": "SPAN 111", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SPAN/111", 
+                    "name": "Elementary Spanish I"
+                }, 
+                {
+                    "code": "SPAN 112", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SPAN/112", 
+                    "name": "Elementary Spanish II"
+                }, 
+                {
+                    "code": "SPAN 211", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SPAN/211", 
+                    "name": "Intermediate Spanish I"
+                }, 
+                {
+                    "code": "SPAN 212", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SPAN/212", 
+                    "name": "Intermediate Spanish II"
+                }, 
+                {
+                    "code": "SPAN 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SPAN/297", 
+                    "name": "Special Topics in Spanish"
+                }, 
+                {
+                    "code": "SPAN 299", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/SPAN/299", 
+                    "name": "Independent Study Spanish"
+                }
+            ], 
+            "name": "Spanish", 
+            "url": "http://www.chegg.com/courses/ncmich/SPAN"
+        }, 
+        {
+            "abbr": "STAT", 
+            "courses": [
+                {
+                    "code": "STAT 200", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/STAT/200", 
+                    "name": "Statistics"
+                }
+            ], 
+            "name": "Statistics", 
+            "url": "http://www.chegg.com/courses/ncmich/STAT"
+        }, 
+        {
+            "abbr": "TDT", 
+            "courses": [
+                {
+                    "code": "TDT 130", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/TDT/130", 
+                    "name": "Cad I"
+                }, 
+                {
+                    "code": "TDT 132", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/TDT/132", 
+                    "name": "Cad III"
+                }, 
+                {
+                    "code": "TDT 140", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/TDT/140", 
+                    "name": "Architectural Cad"
+                }, 
+                {
+                    "code": "TDT 150", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/TDT/150", 
+                    "name": "Mechanical Cad"
+                }, 
+                {
+                    "code": "TDT 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/TDT/297", 
+                    "name": "Special Topics in Technology- Drafting"
+                }
+            ], 
+            "name": "Drafting Technologies", 
+            "url": "http://www.chegg.com/courses/ncmich/TDT"
+        }, 
+        {
+            "abbr": "THF", 
+            "courses": [
+                {
+                    "code": "THF 101", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/THF/101", 
+                    "name": "Survey of The Theatre"
+                }, 
+                {
+                    "code": "THF 102", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/THF/102", 
+                    "name": "Acting I"
+                }, 
+                {
+                    "code": "THF 250", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/THF/250", 
+                    "name": "Film And Literature"
+                }, 
+                {
+                    "code": "THF 275", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/THF/275", 
+                    "name": "Classic Cinema"
+                }, 
+                {
+                    "code": "THF 276", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/THF/276", 
+                    "name": "Contemporary Film"
+                }, 
+                {
+                    "code": "THF 280", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/THF/280", 
+                    "name": "The Director?s Series"
+                }, 
+                {
+                    "code": "THF 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/THF/297", 
+                    "name": "Special Topics in Theatre & Film"
+                }
+            ], 
+            "name": "Theatre And Film", 
+            "url": "http://www.chegg.com/courses/ncmich/THF"
+        }, 
+        {
+            "abbr": "WBL", 
+            "courses": [
+                {
+                    "code": "WBL 102", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/WBL/102", 
+                    "name": "Work- Based Learning"
+                }, 
+                {
+                    "code": "WBL 201", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/WBL/201", 
+                    "name": "Work- Based Learning"
+                }, 
+                {
+                    "code": "WBL 297", 
+                    "course_url": "http://www.chegg.com/courses/ncmich/WBL/297", 
+                    "name": "Special Topics in Work- Based Learning"
+                }
+            ], 
+            "name": "Work-Based Learning", 
+            "url": "http://www.chegg.com/courses/ncmich/WBL"
+        }
+    ], 
+    "name": "ncmich"
+}
