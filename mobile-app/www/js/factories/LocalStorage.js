@@ -1,6 +1,13 @@
 angular.module('ionic.utils', [])
 
-.factory('$localstorage', ['$window', function($window) {
+.factory('$localstorage', [
+  '$window', 
+  '$ionicPlatform', //feel free to add more stuff here
+  
+  
+  function($window, $ionicPlatform) {
+  
+
   return {
     set: function(key, value) {
       $window.localStorage[key] = value;
@@ -16,6 +23,19 @@ angular.module('ionic.utils', [])
     },
     removeObject: function(key) {
       $window.localStorage.removeItem(key);
+    },
+    
+    //feel free to pass in extra arguments
+    saveToDisk: function(arg1, arg2) {
+
+      console.log('saving to disk...');
+      //if android
+
+      //if ios
+
+      //if android
+
     }
+
   };
 }]);
