@@ -54,6 +54,9 @@ nosetests.xml
 # Secret Sauce
 
 scripts/*json
+scripts/production/courses/results/processed/*json
+scripts/production/courses/results/*json
+scripts/production/courses/*json
 
 *.rdb
 
@@ -97,4 +100,5 @@ app.css.map
 node_modules*
 main.js
 *json
+
 
