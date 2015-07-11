@@ -390,6 +390,14 @@ FileSerializer = {
     'url': fields.String
 }
 
+AdminUniversitySerializer = {
+    'id': fields.Integer,
+    'num_courses': fields.Integer,
+    'num_depts': fields.Integer,
+    'name': fields.String,
+    'short_name': fields.String
+}
+
 SkillSerializer = {
     'id': fields.Integer,
     'name': fields.String,

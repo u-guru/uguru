@@ -2405,12 +2405,39 @@ class AdminUniversityCourseView(restful.Resource):
 
         return jsonify(success=[True])
 
-class AdminUniversityListView(restful.Resource):
+class AdminUniversityView(restful.Resource):
     def get(self):
 
         from static.data.universities_efficient import universities_arr
 
-        return json.dumps(universities_arr), 200
+        return json.dumps(universities_arr), 201
+
+    @marshal_with(AdminUniversitySerializer)
+    def post(self, auth_token):
+        if auth_token and auth_token in APPROVED_ADMIN_TOKENS:
+            
+            # parse the response
+            request_json = json.loads(request.json)
+
+            
+            university_name = request_json.get('name')
+
+            u = University.query.filter_by(name=university_name).first()
+            if u:
+                return u, 200
+
+            u = University()
+            u.name = university_name
+            u.num_courses = int(num_classes)
+            # u.num_depts = int(num_dept)
+            u.short_name = request_json.get('short_name')
+            db_session.add(u)
+            db_session.commit()            
+
+
+            return u, 200
+
+        return "UNAUTHORIZED", 201
 
 class AdminUniversityDeptCoursesView(restful.Resource):
     def post(self, auth_token, uni_id, dept_id):
@@ -2483,7 +2510,7 @@ api.add_resource(UserEmailView, '/api/v1/user_emails')
 # Admin views
 api.add_resource(AdminSessionView, '/api/admin')
 api.add_resource(AdminUserView, '/api/admin/users/')
-api.add_resource(AdminUniversityListView, '/api/admin/<string:auth_token>/universities')
+api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/university/<int:uni_id>/courses')
 api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/university/<int:uni_id>/departments')
 api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/university/<int:uni_id>/depts/<int:dept_id>/courses')

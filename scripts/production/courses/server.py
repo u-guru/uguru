@@ -80,16 +80,19 @@ if __name__ == '__main__':
 		school_info = open_school_list(school_file)
 		
 		# prepare school to get API 
-		school_api_params = process_school_info(school_file, school_info)
+		school_api_params = process_school_info(school_name, school_info)
 
 		print '====PROCESSING', school_name
 		print '='
-		print '='
+		print '=' 
 		print len(school_info['departments']), 'departments'
 		print school_info['all_stats']['num_courses'], 'courses'
 		
 		# return university json DB JSON 
 		university_response = create_university(school_api_params)
+		
+		continue
+
 		university_id = university_response and university_response.get('id')
 		print 'SUCCESS', '/api/university [POST]'
 

@@ -93,12 +93,11 @@ build/Release
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
 node_modules
 
-
-plugins
+mobile-app/platforms
+mobile-app/plugins
 .sass-cache*
 app.css.map
 node_modules*
-main.js
 *json
 
 

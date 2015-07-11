@@ -1,10 +1,28 @@
-import requests
+import requests, os, json
 
 ADMIN_AUTH_TOKEN = '9c1185a5c5e9fc54612808977ee8f548b2258d31'
 
+
+def construct_url(args, production_flag = False):
+	base_url = 'http://localhost:5000/api/admin/'
+	if os.environ.get('production') or production_flag:
+		base_url = 'http://uguru-rest.herokuapp.com/api/admin/'
+	return base_url + ADMIN_AUTH_TOKEN + '/' + args
+
+def parseResponse(payload):
+	
+	if payload.status_code != 200:
+		print 'ERROR:', payload.text, '\n\n'
+		raise
+	else:
+		return payload.json(), payload.status_code
+
 # POST request
 def create_university(payload):
-	pass
+	url = construct_url('universities')
+	json_payload = json.dumps(payload)
+	response, status = parseResponse(requests.post(url=url, json=json_payload))
+	return response
 
 # POST Create university departments
 def create_university_departments(u_id,payload):
