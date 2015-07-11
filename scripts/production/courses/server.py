@@ -30,7 +30,26 @@ def open_school_list(filename):
 		university_info = json.load(data_file)
 		return university_info
 
+def check_school_exists_before(school):
+	from universities_efficient import universities_arr
+	from fuzzywuzzy import fuzz, process
+
+	previous_university_titles = [university['title'] for university in universities_arr]
+
+	for title in previous_university_titles:
+		if fuzz.partial_ratio(school.lower(), title.replace('-', ' ').lower()) == 100:
+			print 'MATCH\n', school, '\n', title, '\n\n\n'
+			school = title
+			return school
+
+	print "school not found", school
+	return school
+
 def process_school_info(school,info):
+	
+
+	school = check_school_exists_before(school)
+
 	result = {
 		'name': school,
 		# 'num_popular_courses': info['all_stats']['popular_courses']['total'],
@@ -73,14 +92,26 @@ if __name__ == '__main__':
 	print len(chegg_schools_list), 'loaded, now checking for final results'
 	
 
-	for school_file in chegg_schools_list[0:1]:
+	for school_file in chegg_schools_list:
 		
 		school_name = school_file.replace('.json', '').replace('input-', '').replace('-', ' ').title()
 
 		school_info = open_school_list(school_file)
+
+		try:
+			if not school_info.get('name'):
+				print 'ERROR: look into this'
+				print school_name
+				continue
+		except:
+			print 'WIERD ERROR: look into this'
+			print school_name
+			continue
 		
 		# prepare school to get API 
 		school_api_params = process_school_info(school_name, school_info)
+		
+		continue
 
 		print '====PROCESSING', school_name
 		print '='
@@ -88,10 +119,11 @@ if __name__ == '__main__':
 		print len(school_info['departments']), 'departments'
 		print school_info['all_stats']['num_courses'], 'courses'
 		
-		# return university json DB JSON 
+		## Find whether we can find the university or not
+
 		university_response = create_university(school_api_params)
-		
 		continue
+		
 
 		university_id = university_response and university_response.get('id')
 		print 'SUCCESS', '/api/university [POST]'

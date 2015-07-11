@@ -2427,6 +2427,7 @@ class AdminUniversityView(restful.Resource):
 
             u = University.query.filter_by(name=university_name).first()
             if u:
+                u.last_updated = datetime.now()
                 return u, 200
 
             u = University()
@@ -2436,6 +2437,7 @@ class AdminUniversityView(restful.Resource):
             # u.num_depts = int(num_dept)
             
             u.short_name = request_json.get('short_name')
+            u.last_updated = datetime.now()
             db_session.add(u)
             db_session.commit()
 
