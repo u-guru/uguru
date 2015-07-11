@@ -22,12 +22,7 @@ def verify_password(email, password):
     g.user = user
     return flask_bcrypt.check_password_hash(user.password, password)
 
-class UniversityListView(restful.Resource):
-    def get(self):
 
-        from static.data.universities_efficient import universities_arr
-
-        return json.dumps(universities_arr), 200
 
 class VersionView(restful.Resource):
     def get(self):
@@ -72,12 +67,7 @@ class CourseListView(restful.Resource):
 
         return json.dumps({"courses":courses}), 200
 
-class UniversityMajorsView(restful.Resource):
-    @marshal_with(MajorSerializer)
-    def get(self, id):
-        majors = Major.query.all()
 
-        return majors, 200
 
 class SkillListView(restful.Resource):
     @marshal_with(SkillSerializer)
@@ -95,6 +85,19 @@ class ProfessionListView(restful.Resource):
 
         return professions, 200
 
+class UniversityListView(restful.Resource):
+    def get(self):
+
+        from static.data.universities_efficient import universities_arr
+
+        return json.dumps(universities_arr), 200
+
+class UniversityMajorsView(restful.Resource):
+    @marshal_with(MajorSerializer)
+    def get(self, id):
+        majors = Major.query.all()
+
+        return majors, 200
 
 class UniversityCoursesView(restful.Resource):
     @marshal_with(CourseSerializer)
