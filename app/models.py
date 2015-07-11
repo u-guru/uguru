@@ -485,6 +485,7 @@ class University(Base):
     num_popular_courses = Column(Integer)
     num_courses = Column(Integer)
     num_students = Column(Integer)
+    #num_depts = Column(Integer) # TODO SAMIR
     num_gurus = Column(Integer)
     num_majors = Column(Integer)
     num_emails = Column(Integer)
@@ -1786,6 +1787,8 @@ class Course(Base):
     department_long = Column(String)
 
     is_popular = Column(Boolean)
+
+    variations = Column(String) #TODO SAMIR
 
     course_number = Column(String)
     admin_approved = Column(Boolean, default = False)

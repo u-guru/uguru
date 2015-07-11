@@ -176,6 +176,11 @@ def get_chegg_course_descriptions(chegg_name):
 
 	return university_info
 
+def delete_empty_results():
+	with open('school-data.json') as data_file:
+		SCHOOLS = json.load(data_file)
+
+
 def get_school_information():
 	school_list = []
 
@@ -191,10 +196,12 @@ def get_school_information():
 
 		sch['id'] = int(get_school_id(school.find('span', attrs = {'class': 'code'}).string))
 
-		if sch['id'] != -1:
-			school_list.append(sch)
+		# if sch['id'] != -1:
+		# 	school_list.append(sch)
+		# 	for school in SCHOOLS:
 
-	return school_list
+
+	# return school_list
 
 def remove_special_chars_and_articles(string):
 	words_to_filter = [' AND ', ' OR ', ' Of ']
@@ -300,190 +307,192 @@ if __name__ == '__main__':
 		# except:
 		# 	print "master.json broke again fuck this"
 
-		# print("Getting teacher information from RateMyProfessor for " + school["name"])
-		# teacher_ids = []
-		# teacher_data = []
+		print("Getting teacher information from RateMyProfessor for " + school["name"])
+		teacher_ids = []
+		teacher_data = []
 
-		# url = get_school_url(school["id"])
+		url = get_school_url(school["id"])
 
-		# response = tor_client.get(url).text
-		# try:
+		response = tor_client.get(url).text
+		try:
 
-		# 	response = json.loads(response)["response"]["docs"]
-		# except:
-		# 	print response
-		# 	raise
+			response = json.loads(response)["response"]["docs"]
+		except:
+			print response
+			raise
 
-		# for teacher in response:
+		for teacher in response:
 
-		# 	teacher_ids.append(teacher["pk_id"])
-		# 	teacher_data.append(teacher)
+			teacher_ids.append(teacher["pk_id"])
+			teacher_data.append(teacher)
 
-		# class_information = {}
-		# university_info['popular_courses'] = []
+		class_information = {}
+		university_info['popular_courses'] = []
 
-		# print("Getting teacher ratings from RateMyProfessor for " + school["name"])
-		# popular_courses = 0
-		# rmp_only = 0
+		print("Getting teacher ratings from RateMyProfessor for " + school["name"])
+		popular_courses = 0
+		rmp_only = 0
 		
 		
-		# try:
-		# 	with open("results/final-" + school["name"] + ".json") as outfile:
-		# 		processed_data = json.load(outfile)
-		# 		if processed_data and len(processed_data.keys()) > 0:
-		# 			print 'already processed', school['name'], 'moving along'
-		# 			continue
-		# 		else:
-		# 			print 'another thread is already working on this'
-		# 			continue
-		# except:
-		# 	with open("results/final-" + school["name"] + ".json", "w") as outfile:
-		# 		print 'creating empty file so other threads dont intrude'
-		# 		json.dump(obj={}, fp=outfile, indent=4, sort_keys=True)
+		try:
+			with open("results/final-" + school["name"] + ".json") as outfile:
+				processed_data = json.load(outfile)
+				if processed_data and len(processed_data.keys()) > 0:
+					print 'already processed', school['name'], 'moving along'
+					continue
+				else:
+					print 'another thread is already working on this'
+					continue
+		except:
+			with open("results/final-" + school["name"] + ".json", "w") as outfile:
+				print 'creating empty file so other threads dont intrude'
+				json.dump(obj={}, fp=outfile, indent=4, sort_keys=True)
 
-		# for teacher in teacher_ids:
-		# 	url = get_teacher_url(teacher)
-		# 	from time import sleep
+		for teacher in teacher_ids:
+			url = get_teacher_url(teacher)
+			from time import sleep
 			
-		# 	response = json.loads(tor_client.get(url).text)["ratings"]
-		# 	from pprint import pprint
-		# 	# print len(response), 'ratings found'
-		# 	index = 0
-		# 	for rating in response:
-		# 		index += 1
-		# 		class_name = rating["rClass"]
+			response = json.loads(tor_client.get(url).text)["ratings"]
+			from pprint import pprint
+			# print len(response), 'ratings found'
+			index2 = 0
+			for rating in response:
+				index2 += 1
+				class_name = rating["rClass"]
 
-		# 		# Skip the rating if the class doesn't contain a number
-		# 		if contains_number(class_name) == False:
-		# 			# print 'INVALID: doesnt contain number', class_name
-		# 			continue
+				# Skip the rating if the class doesn't contain a number
+				if contains_number(class_name) == False:
+					# print 'INVALID: doesnt contain number', class_name
+					continue
 
-		# 		# Skip the rating if the first letter of the class name is a number
-		# 		if contains_number(class_name[0]) == True:
-		# 			# print 'INVALID: first is number', class_name
-		# 			continue
+				# Skip the rating if the first letter of the class name is a number
+				if contains_number(class_name[0]) == True:
+					# print 'INVALID: first is number', class_name
+					continue
 
-		# 		class_name = format_class_name(class_name)
+				class_name = format_class_name(class_name)
 
-		# 		if len(class_name.split(' ')) < 2:
-		# 			print class_name, 'does not have two words'
-		# 			continue
+				if len(class_name.split(' ')) < 2:
+					# print class_name, 'does not have two words'
+					continue
+				try:
+					is_linked = link_rmp_with_chegg(class_name, university_info, index2)
+				except:
+					continue
 
-		# 		is_linked = link_rmp_with_chegg(class_name, university_info, index)
+				if is_linked:
+					dept_index, class_index, option = is_linked
+					from pprint import pprint
 
-		# 		if is_linked:
-		# 			dept_index, class_index, option = is_linked
-		# 			from pprint import pprint
+					if option == 'connected':
+						course_obj = university_info['departments'][dept_index]['courses'][class_index]
 
-		# 			if option == 'connected':
-		# 				course_obj = university_info['departments'][dept_index]['courses'][class_index]
+						if course_obj.get('frequency'):
+							course_obj['frequency'] += 1
+						else:
+							popular_courses += 1
+							course_obj['frequency'] = 1
+							course_obj['is_popular'] = True
 
-		# 				if course_obj.get('frequency'):
-		# 					course_obj['frequency'] += 1
-		# 				else:
-		# 					popular_courses += 1
-		# 					course_obj['frequency'] = 1
-		# 					course_obj['is_popular'] = True
+						if course_obj.get('variations') and class_name not in course_obj['variations']:
+							course_obj['variations'].append(class_name.upper())
+						else:
+							course_obj['variations'] = [class_name.upper()]
 
-		# 				if course_obj.get('variations') and class_name not in course_obj['variations']:
-		# 					course_obj['variations'].append(class_name.upper())
-		# 				else:
-		# 					course_obj['variations'] = [class_name.upper()]
+						university_info['departments'][dept_index]['courses'][class_index] = course_obj
 
-		# 				university_info['departments'][dept_index]['courses'][class_index] = course_obj
+						# pprint(university_info['departments'][dept_index]['courses'][class_index])
+						# print
 
-		# 				# pprint(university_info['departments'][dept_index]['courses'][class_index])
-		# 				# print
+					#add to variations
+					elif option == 'dept-variation':
+						course_obj = university_info['departments'][dept_index]['courses'][class_index]
+						if course_obj.get('frequency'):
+							course_obj['frequency'] += 1
+						else:
+							popular_courses += 1
+							course_obj['frequency'] = 1
+							course_obj['is_popular'] = True
 
-		# 			#add to variations
-		# 			elif option == 'dept-variation':
-		# 				course_obj = university_info['departments'][dept_index]['courses'][class_index]
-		# 				if course_obj.get('frequency'):
-		# 					course_obj['frequency'] += 1
-		# 				else:
-		# 					popular_courses += 1
-		# 					course_obj['frequency'] = 1
-		# 					course_obj['is_popular'] = True
+						if course_obj.get('variations') and class_name not in course_obj['variations']:
+							course_obj['variations'].append(class_name.upper())
+						else:
+							course_obj['variations'] = [class_name.upper()]
 
-		# 				if course_obj.get('variations') and class_name not in course_obj['variations']:
-		# 					course_obj['variations'].append(class_name.upper())
-		# 				else:
-		# 					course_obj['variations'] = [class_name.upper()]
+						university_info['departments'][dept_index]['courses'][class_index] = course_obj
+						# pprint(university_info['departments'][dept_index]['courses'][class_index])
+						# print
 
-		# 				university_info['departments'][dept_index]['courses'][class_index] = course_obj
-		# 				# pprint(university_info['departments'][dept_index]['courses'][class_index])
-		# 				# print
+					elif option == 'acronym-variation':
 
-		# 			elif option == 'acronym-variation':
+						course_obj = university_info['departments'][dept_index]['courses'][class_index]
+						if course_obj.get('frequency'):
+							course_obj['frequency'] += 1
+						else:
+							popular_courses += 1
+							course_obj['frequency'] = 1
+							course_obj['is_popular'] = True
 
-		# 				course_obj = university_info['departments'][dept_index]['courses'][class_index]
-		# 				if course_obj.get('frequency'):
-		# 					course_obj['frequency'] += 1
-		# 				else:
-		# 					popular_courses += 1
-		# 					course_obj['frequency'] = 1
-		# 					course_obj['is_popular'] = True
+						if course_obj.get('variations') and class_name not in course_obj['variations']:
+							course_obj['variations'].append(class_name.upper())
+						else:
+							course_obj['variations'] = [class_name.upper()]
 
-		# 				if course_obj.get('variations') and class_name not in course_obj['variations']:
-		# 					course_obj['variations'].append(class_name.upper())
-		# 				else:
-		# 					course_obj['variations'] = [class_name.upper()]
-
-		# 				university_info['departments'][dept_index]['courses'][class_index] = course_obj
-		# 				# pprint(university_info['departments'][dept_index]['courses'][class_index])
-		# 				# print
-
-
-		# 			elif option == 'rmp-abbr-only':
-		# 				popular_courses += 1
-		# 				rmp_only += 1
-		# 				university_info['departments'][dept_index]['courses'].append({'code': class_name, 'frequency': 1, 'is_popular' : True, 'rmp_only': True})
-		# 				# pprint(university_info['departments'][dept_index]['courses'][len(university_info['departments'][dept_index]['courses']) - 1])
-		# 				# print index, class_name, '--rmp only, abbr'
-		# 				# print
-		# 			elif option == 'rmp-dept-only':
-		# 				popular_courses += 1
-		# 				rmp_only += 1
-		# 				university_info['departments'][dept_index]['courses'].append({'code': class_name, 'frequency': 1, 'is_popular' : True, 'rmp_only': True})
-		# 				# pprint(university_info['departments'][dept_index]['courses'][len(university_info['departments'][dept_index]['courses']) - 1])
-		# 				# print index, class_name, '--rmp only, department'
-		# 				# print
+						university_info['departments'][dept_index]['courses'][class_index] = course_obj
+						# pprint(university_info['departments'][dept_index]['courses'][class_index])
+						# print
 
 
-		# 			# print class_abbr, university_info['all_stats']['num_departments'], len(all_university_abbrs)
+					elif option == 'rmp-abbr-only':
+						popular_courses += 1
+						rmp_only += 1
+						university_info['departments'][dept_index]['courses'].append({'code': class_name, 'frequency': 1, 'is_popular' : True, 'rmp_only': True})
+						# pprint(university_info['departments'][dept_index]['courses'][len(university_info['departments'][dept_index]['courses']) - 1])
+						# print index, class_name, '--rmp only, abbr'
+						# print
+					elif option == 'rmp-dept-only':
+						popular_courses += 1
+						rmp_only += 1
+						university_info['departments'][dept_index]['courses'].append({'code': class_name, 'frequency': 1, 'is_popular' : True, 'rmp_only': True})
+						# pprint(university_info['departments'][dept_index]['courses'][len(university_info['departments'][dept_index]['courses']) - 1])
+						# print index, class_name, '--rmp only, department'
+						# print
 
 
-		# 			# 	else:
-		# 			# 		print class_name, 'not connected'
-		# 			# else:
-		# 			# 	print class_abbr, class_name, 'abbr not connected'
+					# print class_abbr, university_info['all_stats']['num_departments'], len(all_university_abbrs)
 
-		# 			#case two, see if class ABBR is same as article-filtered PS for political science
 
-		# 			#case three, see if rmp_abbr is subset of chegg or vice cersa
-		# university_info['all_stats']['popular_courses'] = {'total': popular_courses,'rmp_only': rmp_only,'rmp_and_chegg': (popular_courses - rmp_only)}
-		# with open("results/final-" + school["name"] + ".json", 'w') as outfile:
-		# 	json.dump(obj=university_info, fp=outfile, indent=4, sort_keys=True)
+					# 	else:
+					# 		print class_name, 'not connected'
+					# else:
+					# 	print class_abbr, class_name, 'abbr not connected'
 
-		# # 		class_description_found = 1
-		# # 		try:
-		# # 			description = course_descriptions[class_name]
-		# # 		except KeyError:
-		# # 			class_description_found = 0
+					#case two, see if class ABBR is same as article-filtered PS for political science
 
-		# # 		if class_description_found == 1:
-		# # 			try:
-		# # 				frequency = class_information[class_name]["frequency"]
-		# # 			except KeyError:
-		# # 				frequency = 0
-		# # 				class_information[class_name] = {}
+					#case three, see if rmp_abbr is subset of chegg or vice cersa
+		university_info['all_stats']['popular_courses'] = {'total': popular_courses,'rmp_only': rmp_only,'rmp_and_chegg': (popular_courses - rmp_only)}
+		with open("results/final-" + school["name"] + ".json", 'w') as outfile:
+			json.dump(obj=university_info, fp=outfile, indent=4, sort_keys=True)
 
-		# # 			frequency += 1
+		# 		class_description_found = 1
+		# 		try:
+		# 			description = course_descriptions[class_name]
+		# 		except KeyError:
+		# 			class_description_found = 0
 
-		# # 			class_information[class_name]["description"] = description
-		# # 			class_information[class_name]["frequency"] = frequency
+		# 		if class_description_found == 1:
+		# 			try:
+		# 				frequency = class_information[class_name]["frequency"]
+		# 			except KeyError:
+		# 				frequency = 0
+		# 				class_information[class_name] = {}
 
-		# # print("Information dumped to output-" + school["name"] + ".json")
+		# 			frequency += 1
+
+		# 			class_information[class_name]["description"] = description
+		# 			class_information[class_name]["frequency"] = frequency
+
+		# print("Information dumped to output-" + school["name"] + ".json")
 
 		# # ## check list
 		# # ## 100-300

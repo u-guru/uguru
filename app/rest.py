@@ -2429,11 +2429,12 @@ class AdminUniversityView(restful.Resource):
             u = University()
             u.name = university_name
             u.num_courses = int(num_classes)
+
             # u.num_depts = int(num_dept)
+            
             u.short_name = request_json.get('short_name')
             db_session.add(u)
-            db_session.commit()            
-
+            db_session.commit()
 
             return u, 200
 
