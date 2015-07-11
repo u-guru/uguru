@@ -3,9 +3,8 @@ angular.module('ionic.utils', [])
 .factory('$localstorage', [
   '$window', 
   '$ionicPlatform', //feel free to add more stuff here
-  
-  
-  function($window, $ionicPlatform) {
+  '$cordovaFile',
+  function($window, $ionicPlatform, $cordovaFile) {
   
 
   return {
@@ -35,7 +34,8 @@ angular.module('ionic.utils', [])
 
       //if android
 
-    }
+    }, 
+
 
   };
 }]);

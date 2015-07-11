@@ -4,17 +4,49 @@ Uguru Mobile
 **Setup**
 
 - % brew install npm
+- % npm install gulp gulp util --save
 - % npm install -g cordova ionic
 - % npm install -g
 
-**Run local server on ios-sim**
+**Run on Web**
 
-- % ionic emulate ios -clr
+- % >> ionic serve -clr
+- % http://localhost:8100/remote
 
+**Run on Android live-reload device (first time) **
+- % NOTE: Make sure android is setup. Make sure by typing android in your terminal and seeing if returns familiarity
+- % source ~/.bash_profile
+- % cordova platform rm android 
+- % cordova plugins rm com.phonegap.plugins.facebookconnect
+- % cordova platform add android
+- % cordova -d plugin add packages/phonegap-facebook-plugin-master --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
+- % android update project --subprojects --path "platforms/android" --target android-19 --library "CordovaLib"
+- % android update project --subprojects --path "platforms/android" --target android-19 --library "com.phonegap.plugins.facebookconnect/Uguru-FacebookLib"
+- % cd platforms/android/
+- % cp local.properties com.phonegap.plugins.facebookconnect/Uguru-FacebookLib
+- % ant clean
+- % mkdir com.phonegap.plugins.facebookconnect/Uguru-FacebookLib/ant-build
+- % cd com.phonegap.plugins.facebookconnect/Uguru-FacebookLib
+- % mkdir ant-build
+- % ant clean
+- % ant release
+- % cd ../../../.. # should takes you back to uguru/mobile-app
+- % cordova prepare android
+- % cordova build android
+- % cordova run android -clr ## MAKE SURE DEVICE IS PLUGGED IN
 
+**Android SDK setup**
+-- Install Java 7 SDK : http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
+- % brew install ant
+- % brew install android-sdk
 
+Source this in your .bash_profile or .zshrc:
 
+export ANDROID_HOME=/usr/local/opt/android-sdk
 
+- % android (*A window will open asking what to install. Choose API 19*)
+- % android avd (*this will launch a window in which you create a virtual device to emulate*)
+- % ionic run android (*the "run" command uses Genymotion, a much faster Android emulator.*)
 
 ======LESS IMPORTANT STUFF BELOW=======
 
@@ -49,21 +81,6 @@ Uguru Mobile
 *iOS Build*
 - Build & Archive new project via XCODE
 - Submit it right away via hockey app
-
-*Android Build*
-
--- Install Java 7 SDK : http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
-
-- % brew install ant
-- % brew install android-sdk
-
-Source this in your .bash_profile or .zshrc:
-
-export ANDROID_HOME=/usr/local/opt/android-sdk
-
-- % android (*A window will open asking what to install. Choose API 19*)
-- % android avd (*this will launch a window in which you create a virtual device to emulate*)
-- % ionic run android (*the "run" command uses Genymotion, a much faster Android emulator.*)
 
 *Publish Android App to HockeyApp*
 

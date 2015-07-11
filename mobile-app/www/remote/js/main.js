@@ -48,7 +48,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
           // TODO: demonstrate to image to the file storage
           // See js/factories/LocalStorage.js for more details
-          $localtorage.saveToDisk();
+          $localstorage.saveToDisk();
 
 
 

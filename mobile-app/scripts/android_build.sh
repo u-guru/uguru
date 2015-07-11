@@ -7,7 +7,7 @@ echo "Add android..."
 cordova platform add android
 echo "Android added successfully"
 echo "Re-adding facebook connect url"
-cordova -d plugin add ~/Git/packages/phonegap-facebook-plugin-master --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
+cordova -d plugin add ~/Git/uguru/mobile-app/packages/phonegap-facebook-plugin-master --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
 android update project --subprojects --path "platforms/android" --target android-19 --library "CordovaLib"
 android update project --subprojects --path "platforms/android" --target android-19 --library "com.phonegap.plugins.facebookconnect/Uguru-FacebookLib"
 cd platforms/android/
