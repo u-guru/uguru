@@ -4,7 +4,11 @@ from app.database import Base, db_session
 from datetime import datetime
 import os
 
-# TODO create __dict__ for popular objects
+##
+#### university --> departments
+##### course DONE --> departments
+##### course: source[string, default=chegg], variations, times_mentioned,
+##### DONE department --> variations, name. abbreviation
 
 from app import flask_bcrypt
 
@@ -487,6 +491,7 @@ class University(Base):
     num_students = Column(Integer)
     #num_depts = Column(Integer) # TODO SAMIR
     num_gurus = Column(Integer)
+    num_depts = Column(Integer)
     num_majors = Column(Integer)
     num_emails = Column(Integer)
 
@@ -651,7 +656,21 @@ class Department(Base):
 
     id = Column(Integer, primary_key=True)
 
+    time_created = Column(DateTime)
+    time_updated = Column(DateTime)
+    is_popular = Column(Boolean)
+    source = Column(String, default = 'chegg')
+
+    times_mentioned = Column(Integer)
+
+    num_courses = Column(Integer)
+    num_popular_courses = Column(Integer)
+
     code = Column(String)
+    abbr = Column(String)
+    name = Column(String)
+    short_name = Column(String)
+    variations = Column(String)
     title = Column(String)
 
     university_id = Column(Integer, ForeignKey('university.id'))
@@ -660,6 +679,11 @@ class Department(Base):
         primaryjoin = "University.id == Department.university_id",
         backref = "departments"
     )
+
+    popular_courses = relationship("Course",
+        uselist = False,
+        primaryjoin = "(Course.department_id==Department.id) & "\
+                        "(Course.is_popular==True)")
 
 
 class Campaign(Base):
@@ -1782,17 +1806,30 @@ class Course(Base):
     short_name = Column(String) #Casual shorted version that students use
     full_name = Column(String)
 
-    department_id = ForeignKey("major.id")
+    # department_id = ForeignKey("major.id")
+
+
     department_short = Column(String) #user generated
     department_long = Column(String)
 
     is_popular = Column(Boolean)
 
-    variations = Column(String) #TODO SAMIR
+
+    variations = Column(String)
+
+    times_mentioned = Column(Integer)
+    source = Column(String, default="chegg")
+    rmp_only =  Column(Boolean)
 
     course_number = Column(String)
     admin_approved = Column(Boolean, default = False)
     contributed_user_id = Column(Integer, ForeignKey('user.id'))
+
+    department_id = Column(Integer, ForeignKey('department.id'))
+    department = relationship("Department",
+        primaryjoin = "Department.id == Course.department_id",
+        backref = 'courses'
+        )
 
     university_id = Column(Integer, ForeignKey('university.id'))
     university = relationship("University",
