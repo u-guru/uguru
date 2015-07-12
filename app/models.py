@@ -490,10 +490,10 @@ class University(Base):
     num_courses = Column(Integer)
     num_students = Column(Integer)
     #num_depts = Column(Integer) # TODO SAMIR
-    num_gurus = Column(Integer)
-    num_depts = Column(Integer)
-    num_majors = Column(Integer)
-    num_emails = Column(Integer)
+    num_gurus = Column(Integer, default =0)
+    num_depts = Column(Integer, default =0)
+    num_majors = Column(Integer, default =0)
+    num_emails = Column(Integer, default =0)
 
     ready_to_launch = Column(Boolean)
 
@@ -660,6 +660,7 @@ class Department(Base):
     time_updated = Column(DateTime)
     is_popular = Column(Boolean)
     source = Column(String, default = 'chegg')
+    source_url = Column(String)
 
     times_mentioned = Column(Integer)
 
@@ -807,6 +808,19 @@ class Resource(Base):
     course_string = Column(String)
 
 
+class Stats(Base):
+    __tablename__ ='stats'
+    id = Column(Integer, primary_key = True)    
+    last_updated = Column(DateTime)
+    total_courses = Column(Integer)
+    total_universities = Column(Integer)
+    total_users = Column(Integer)
+    total_gurus = Column(Integer)
+    total_depts = Column(Integer)
+    total_popular_courses = Column(Integer)
+    gurus_24h = Column(Integer)
+    users_24h = Column(Integer)
+    visitors_24 = Column(Integer)
 
 
 class Queue(Base):
@@ -1819,6 +1833,7 @@ class Course(Base):
 
     times_mentioned = Column(Integer)
     source = Column(String, default="chegg")
+    source_url = Column(String)
     rmp_only =  Column(Boolean)
 
     course_number = Column(String)

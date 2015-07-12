@@ -2451,37 +2451,90 @@ class AdminUniversityDeptCoursesView(restful.Resource):
 
 # create a department
 class AdminUniversityDeptView(restful.Resource):
-    @AdminUniversityDeptSerializer
+    
+    @marshal_with(AdminUniversityDeptSerializer)
     def post(self, auth_token, uni_id):
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
 
-        new_db_objs = []
 
-        department = request.json.get('department')
-        d = Department()
-        d.code = department['code'].upper()
-        d.title = department['title']
-        d.university_id = uni_id
-        new_db_objs.append(d)
+        if auth_token and auth_token in APPROVED_ADMIN_TOKENS:
+            
+            u = University.query.get(uni_id)
+            if not u:
+                return "MISSING DATA", 202
 
-        courses = department.get('courses')
-        if courses:
-            for course in courses:
-                c = Course()
-                c.department_short = d.code
-                c.department_long = d.title
-                c.short_name = course['code'].upper()
-                c.course_number = course["code"].upper().split(" ")[::-1][0]
-                c.full_name = course["title"]
-                c.university_id = uni_id
-                new_db_objs.append(c)
+            print u.name, u.num_depts, u.num_courses
+            from pprint import pprint
 
-        db_session.add_all(new_db_objs)
-        db_session.commit()
-        results = {'message': str(len(new_db_objs)) + ' objects processed'}
+            # parse the response
+            dept_list_request_json = json.loads(request.json)
+            
+            
+            for dept_json in dept_list_request_json[0:1]:
+                pprint(dept_json)
 
-        return jsonify(success=results)
+                dept = Department()
+                dept.num_courses = dept_json.get('num_courses')
+                dept.num_popular_courses = dept_json.get('num_popular_courses')
+                dept.abbr = dept_json.get('abbr')
+                dept.source = 'chegg'
+                dept.source_url = dept_json.get('source')
+                dept.university_id = u.id
+                db_session.add(dept)
+            
+            # db_session.commit()
+            print len(u.departments)
+            
+            return u.departments, 200
+        
+        return "UNAUTHORIZED", 201
+            
+
+
+        # # time_created = Column(DateTime)
+        # # time_updated = Column(DateTime)
+        # # is_popular = Column(Boolean)
+        # # source = Column(String, default = 'chegg')
+
+        # # times_mentioned = Column(Integer)
+
+        # # num_courses = Column(Integer)
+        # # num_popular_courses = Column(Integer)
+
+        # # code = Column(String)
+        # # abbr = Column(String)
+        # # name = Column(String)
+        # # short_name = Column(String)
+        # # variations = Column(String)
+        # # title = Column(String)
+
+        # # new_db_objs = []
+
+        # # department = request.json.get('department')
+        # # d = Department()
+        # # d.code = department['code'].upper()
+        # # d.title = department['title']
+        # # d.university_id = uni_id
+        # # new_db_objs.append(d)
+
+        # # courses = department.get('courses')
+        # # if courses:
+        # #     for course in courses:
+        # #         c = Course()
+        # #         c.department_short = d.code
+        # #         c.department_long = d.title
+        # #         c.short_name = course['code'].upper()
+        # #         c.course_number = course["code"].upper().split(" ")[::-1][0]
+        # #         c.full_name = course["title"]
+        # #         c.university_id = uni_id
+        # #         new_db_objs.append(c)
+
+        # # db_session.add_all(new_db_objs)
+        # # db_session.commit()
+        # # results = {'message': str(len(new_db_objs)) + ' objects processed'}
+
+        # return jsonify(success=results)
 
 ####################
 ### END (OFFICIAL) #
@@ -2519,7 +2572,7 @@ api.add_resource(AdminSessionView, '/api/admin')
 api.add_resource(AdminUserView, '/api/admin/users/')
 api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/university/<int:uni_id>/courses')
-api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/university/<int:uni_id>/depts')
+api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts')
 api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/university/<int:uni_id>/depts/<int:dept_id>/courses')
 api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients')
 api.add_resource(AdminSendView, '/api/admin/<string:auth_token>/send_test')

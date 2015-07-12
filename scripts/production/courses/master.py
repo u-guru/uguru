@@ -252,8 +252,8 @@ if __name__ == '__main__':
 		print("Dumped school data to file", )
 	
 	# Iterates through chegg courses
-	index = 2400
-	for school in SCHOOLS[2400:2500]:
+	index = 2800
+	for school in SCHOOLS[2800:]:
 		index += 1
 		school["name"] = school["name"].replace("/"," ")
 		print(str(index) + " Attempting to load course information for " + school["name"])
@@ -264,21 +264,27 @@ if __name__ == '__main__':
 				university_info = json.load(data_file)
 			print("Loaded course information for " + school["name"])
 			
-			
+			# exists but empty dictionary
 			if len(university_info.keys()) == 0:
 				university_info = get_chegg_course_descriptions(school["chegg-name"])
 				print("EMPTY DICT: Writing course information for " + school["name"])
 
-			with open("input-" + school["name"] + ".json", 'w') as outfile:
-				# we're going to send this to the server, might as well make it look nice & easy to read
-				json.dump(obj=university_info, fp=outfile, indent=4, sort_keys=True)
+				with open("input-" + school["name"] + ".json", 'w') as outfile:
+					# we're going to send this to the server, might as well make it look nice & easy to read
+					json.dump(obj=university_info, fp=outfile, indent=4, sort_keys=True)
+			else:
+				# go to next university
+				continue
 		except IOError:
+			
+			# doesnt exists
 			print("Getting course information from Chegg for " + school["name"])
 			
 			try:
 				university_info = get_chegg_course_descriptions(school["chegg-name"])
 			except:
 				print "ERROR within get chegg course descriptions for",  school["chegg-name"]
+				raise
 
 			print("Writing course information for " + school["name"])
 
