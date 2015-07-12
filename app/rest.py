@@ -2451,6 +2451,7 @@ class AdminUniversityDeptCoursesView(restful.Resource):
 
 # create a department
 class AdminUniversityDeptView(restful.Resource):
+    @AdminUniversityDeptSerializer
     def post(self, auth_token, uni_id):
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
@@ -2518,7 +2519,7 @@ api.add_resource(AdminSessionView, '/api/admin')
 api.add_resource(AdminUserView, '/api/admin/users/')
 api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/university/<int:uni_id>/courses')
-api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/university/<int:uni_id>/departments')
+api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/university/<int:uni_id>/depts')
 api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/university/<int:uni_id>/depts/<int:dept_id>/courses')
 api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients')
 api.add_resource(AdminSendView, '/api/admin/<string:auth_token>/send_test')

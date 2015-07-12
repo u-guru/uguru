@@ -26,11 +26,17 @@ def create_university(payload):
 
 # POST Create university departments
 def create_university_departments(u_id,payload):
-	return []
+	url = construct_url('universities/' + str(u_id) + '/depts')
+	json_payload = json.dumps(payload)
+	response, status = parseResponse(requests.post(url=url, json=json_payload))
+	return response
 
 # POST Create university departments
 def create_university_dept_courses(u_id,dept_id, payload):
-	pass
+	url = construct_url('universities/' + str(u_id) + '/depts/' + dept_id + '/courses')
+	json_payload = json.dumps(payload)
+	response, status = parseResponse(requests.post(url=url, json=json_payload))
+	return response
 
 # PUT update university
 def update_university(u_id, payload):

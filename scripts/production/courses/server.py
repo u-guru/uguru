@@ -75,9 +75,8 @@ def process_school_department(dept):
 		'num_popular_courses': popular_count
 	}
 
-def university_already_processed(payload):
-	return False
-
+def university_already_processed(payload, reference):
+	return payload.get('num_classes') < reference.get('num_classes')
 
 def send_university_info(school):
 	pass
@@ -110,8 +109,7 @@ if __name__ == '__main__':
 		
 		# prepare school to get API 
 		school_api_params = process_school_info(school_name, school_info)
-		
-		continue
+	
 
 		print '====PROCESSING', school_name
 		print '='
@@ -122,13 +120,16 @@ if __name__ == '__main__':
 		## Find whether we can find the university or not
 
 		university_response = create_university(school_api_params)
-		continue
 		
 
-		university_id = university_response and university_response.get('id')
+		if not university_response:
+			print 'ERROR', school_name
+			raise
+
+		university_id = university_response.get('id')
 		print 'SUCCESS', '/api/university [POST]'
 
-		if university_already_processed(university_response):
+		if university_already_processed(university_response, school_info):
 			print 'SKIPPING', school_name
 			continue
 
@@ -141,8 +142,15 @@ if __name__ == '__main__':
 
 
 		# for department in department_response:
-		for department in school_info['departments']:
+		index = 0
+		for department in department_response['departments']:
 			
+			if department_already_processed(department, department_payload):
+				
+				print 'SKIPPING', department['name']
+				index += 1
+				continue
+
 			course_payload = department['courses']
 			
 			department_id = department['id']
@@ -151,6 +159,7 @@ if __name__ == '__main__':
 
 			print 'Success', '/api/courses [POST] x', len(course_params_arr)
 			
+			index += 1
 
 		print '='
 		print '='
