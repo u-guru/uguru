@@ -1,0 +1,44 @@
+
+<ion-view title="Messages">
+    <ion-nav-buttons side="secondary">
+
+      <button class="button button-clear button-positive" ng-click="getMessagesFromServer(0, true)">
+        <i class="icon ion-ios7-refresh-empty"></i>
+      </button>
+    </ion-nav-buttons>
+    <ion-header-bar id="request-location" style="height:30px; text-align:center;" class="bar-subheader bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)" ng-init="init()">
+
+      <div style="margin-top:5px; width:100%; white-space:no-wrap; overflow: hidden; text-overflow: ellipsis;text-transform:none; font-size:12px;">
+        Last updated: {{last_updated}}
+      </div>
+
+    </ion-header-bar>
+  <ion-content scroll="true" delegate-handle="message-scroll" ng-click="hideKeyboard()" style="background-color:rgba(0,0,0,0.04); top:88px;">
+
+    <div class="messages">
+      <ul class="list">
+          <li class="item {{message.class}}" ng-repeat="message in messages">
+            <div class="text">{{message.contents}}</div>
+            <img ng-src="{{message.profile_url}}">
+          </li>
+
+      </ul>
+    </div>
+  </ion-content>
+  <ion-footer-bar class="bar-footer item-input-inset" keyboard-attach>
+    <label class="item-input-wrapper">
+        <i class="icon ion-ios7-search placeholder-icon"></i>
+
+        <input type="search" name="message-input" class="form-control"
+                placeholder="Enter a message"
+                ng-model="new_message.content"
+                ng-focus="setFocus()"
+                ng-blur="setFocus()"
+        />
+    </label>
+
+    <button class="button button-clear button-positive" ng-show="new_message.content.length > 0" ng-click="sendMessage(new_message.content)">
+    Send
+    </button>
+  </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,59 @@
+
+
+<ion-view hide-nav-bar="true" class="student-request-calendar">
+
+    <ion-header-bar class='header-bar' ng-hide='user.guru_mode'>
+        <a ng-show='!viewOnly' class='button button-clear button-back' nav-direction="back" href="#/student-request">Back</a>
+        <a ng-show='viewOnly' class='button button-clear button-back' ng-click='goBack()'>Back</a>
+        <h5 class="title">Availability</h5>
+        <a ng-show='!viewOnly'class="button button-clear button-back bold positive uppercase" nav-direction='forward' href='#/request-location'>Next</a>
+    </ion-header-bar>
+
+    <ion-header-bar class='header-bar header-bar-dark' ng-show='user.guru_mode'>
+        <a  class='button button-clear button-back' ng-click='goBack()'>Back</a>
+            <h5 class="title">{{proposal.request.student.name.split(' ')[0]}}'s Calendar</h5>
+        <a class='button button-clear button-back' ng-click='goToConfirmProposal()'>Next</a>
+    </ion-header-bar>
+
+    <ion-header-bar class='bar-subheader calendar-subheader'>
+        <div class='pure-g-c center'>
+            <div class='pure-u-1-2 auto-margin'>
+                <div class='calendar-header'>Today <span class='opacity-1-2'> {{day_one}} </span></div>
+            </div>
+            <div class='pure-u-1-2 auto-margin'>
+                <div class='calendar-header auto-margin'>Tomorrow <span class='opacity-1-2'> {{day_two}} </span></div>
+            </div>
+        </div>
+    </ion-header-bar>
+
+    <!-- <ion-tabs class="tabs-positive tabs-top tabs-striped tabs-background-positive tabs-color-dark">
+
+        <ion-tab title="Today">
+            <div ng-include="base_url + 'remote/templates/student.request.calendar.day-template.html'"></div>
+        </ion-tab>
+
+        <ion-tab title="Tomorrow">
+        </ion-tab>
+
+    </ion-tabs> -->
+
+    <ion-content style='margin-top:44px;' class='course-list-container has-header'>
+      <ion-list>
+        <ion-item class="item" ng-repeat="hour_int in day_rows" style="padding:0px; margin:0px;">
+          <div class='pure-g-c calendar-row'>
+            <div class="pure-u-1-2 calendar-col relative ng-class:{'unclickable-calendar-element':hour_int < hours_past} " id="0,{{hour_int}}"ng-click='clickCalendarGridElement($event, 0, hour_int)'>
+                <span class='time' ng-click='triggerCalendarClick($event.target.parentNode, 0, hour_int)'>
+                    {{getTimeFromHourInt(hour_int).replace(' ','').toUpperCase()}}
+                </span>
+            </div>
+            <div class='pure-u-1-2 calendar-col-2 relative' id="1,{{hour_int}}" ng-click='clickCalendarGridElement($event, 1, hour_int)'>
+                <span class='time' ng-click='triggerCalendarClick($event.target.parentNode, 1, hour_int)'>
+                    {{getTimeFromHourInt(hour_int).replace(' ', '').toUpperCase()}}
+                </span>
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+
+</ion-view>

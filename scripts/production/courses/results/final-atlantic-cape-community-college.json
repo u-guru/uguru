@@ -1,0 +1,4451 @@
+{
+    "all_stats": {
+        "num_courses": 356, 
+        "num_departments": 48, 
+        "popular_courses": {
+            "rmp_and_chegg": 180, 
+            "rmp_only": 205, 
+            "total": 385
+        }
+    }, 
+    "departments": [
+        {
+            "abbr": "ACCT", 
+            "courses": [
+                {
+                    "code": "ACCT 130", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ACCT/130", 
+                    "frequency": 15, 
+                    "is_popular": true, 
+                    "name": "Financial Accounting", 
+                    "variations": [
+                        "ACCT 130"
+                    ]
+                }, 
+                {
+                    "code": "ACCT 131", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ACCT/131", 
+                    "frequency": 9, 
+                    "is_popular": true, 
+                    "name": "Managerial Accounting", 
+                    "variations": [
+                        "ACCT 131"
+                    ]
+                }, 
+                {
+                    "code": "ACCT 150", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ACCT/150", 
+                    "name": "Comp Acct Apps/Quickbks Pro"
+                }, 
+                {
+                    "code": "ACCT 162", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ACCT/162", 
+                    "name": "Microcomp App Sprdsheets"
+                }, 
+                {
+                    "code": "ACCT 230", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ACCT/230", 
+                    "name": "Intermediate Accounting"
+                }, 
+                {
+                    "code": "ACCT 245", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ACCT/245", 
+                    "name": "Accounting Info Systems"
+                }, 
+                {
+                    "code": "ACCT 260", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ACCT/260", 
+                    "name": "Federal Taxation"
+                }, 
+                {
+                    "code": "C 167MD 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ACCT 101", 
+                    "frequency": 12, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "ACCT 101"
+                    ]
+                }, 
+                {
+                    "code": "ACC 104", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "FACCTE 51", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ACCT 001", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ACCT 120", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ACCT 202", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ACCT 130AD 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Accounting and Finance", 
+            "url": "http://www.chegg.com/courses/atlantic/ACCT"
+        }, 
+        {
+            "abbr": "ALHT", 
+            "courses": [
+                {
+                    "code": "ALHT 108", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ALHT/108", 
+                    "frequency": 4, 
+                    "is_popular": true, 
+                    "name": "Fundamentals of Nutrition", 
+                    "variations": [
+                        "ALHT 108"
+                    ]
+                }, 
+                {
+                    "code": "ALHT 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ALHT/110", 
+                    "frequency": 9, 
+                    "is_popular": true, 
+                    "name": "Comprehensive Med Terminology", 
+                    "variations": [
+                        "ALHT 110"
+                    ]
+                }, 
+                {
+                    "code": "ALHT 130", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ALHT/130", 
+                    "name": "First Aid/Life Support"
+                }, 
+                {
+                    "code": "ALHT 160", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ALHT/160", 
+                    "name": "Essentials/Culinary Nutrition"
+                }, 
+                {
+                    "code": "ALHT 108OL 01", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "ALHT 108OL 01"
+                    ]
+                }
+            ], 
+            "name": "Allied Health", 
+            "url": "http://www.chegg.com/courses/atlantic/ALHT"
+        }, 
+        {
+            "abbr": "ANTH", 
+            "courses": [
+                {
+                    "code": "ANTH 101", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ANTH/101", 
+                    "frequency": 5, 
+                    "is_popular": true, 
+                    "name": "Biological Anthropology", 
+                    "variations": [
+                        "ANTHR 101", 
+                        "ANT 101", 
+                        "ANTH 101"
+                    ]
+                }, 
+                {
+                    "code": "ANTH 103", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ANTH/103", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Cultural Anthropology", 
+                    "variations": [
+                        "ANTH 103"
+                    ]
+                }, 
+                {
+                    "code": "ANTH 109", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "N 206", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "N 206"
+                    ]
+                }, 
+                {
+                    "code": "ANT 102", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "N 112", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Anthropology", 
+            "url": "http://www.chegg.com/courses/atlantic/ANTH"
+        }, 
+        {
+            "abbr": "ARTS", 
+            "courses": [
+                {
+                    "code": "ARTS 100", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/100", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Color and 2-D Design", 
+                    "variations": [
+                        "ART 100"
+                    ]
+                }, 
+                {
+                    "code": "ARTS 103", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/103", 
+                    "frequency": 14, 
+                    "is_popular": true, 
+                    "name": "Art Appreciation", 
+                    "variations": [
+                        "ART 103", 
+                        "ARTS 103"
+                    ]
+                }, 
+                {
+                    "code": "ARTS 105", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/105", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Film Hist/Appreciation", 
+                    "variations": [
+                        "ARTS 105"
+                    ]
+                }, 
+                {
+                    "code": "ARTS 108", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/108", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "name": "Art/Ancient Times-Gothic", 
+                    "variations": [
+                        "ARTS 108", 
+                        "ART 108"
+                    ]
+                }, 
+                {
+                    "code": "ARTS 109", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/109", 
+                    "frequency": 4, 
+                    "is_popular": true, 
+                    "name": "Art/Renaissance-Modern Era", 
+                    "variations": [
+                        "ARTS 109", 
+                        "ART 109"
+                    ]
+                }, 
+                {
+                    "code": "ARTS 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/110", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "name": "Fundamental Drawing", 
+                    "variations": [
+                        "ART 110"
+                    ]
+                }, 
+                {
+                    "code": "ARTS 111", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/111", 
+                    "name": "Crafts"
+                }, 
+                {
+                    "code": "ARTS 112", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/112", 
+                    "name": "Intro to Ceramics"
+                }, 
+                {
+                    "code": "ARTS 115", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/115", 
+                    "frequency": 8, 
+                    "is_popular": true, 
+                    "name": "Intro to the Visual Arts", 
+                    "variations": [
+                        "ART 115"
+                    ]
+                }, 
+                {
+                    "code": "ARTS 116", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/116", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Graphic Design", 
+                    "variations": [
+                        "ARTS 116"
+                    ]
+                }, 
+                {
+                    "code": "ARTS 128", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/128", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Intro to Photo Methods", 
+                    "variations": [
+                        "ARTS 128"
+                    ]
+                }, 
+                {
+                    "code": "ARTS 135", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/135", 
+                    "name": "Art With Computers"
+                }, 
+                {
+                    "code": "ARTS 165", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/165", 
+                    "name": "Web Graphics/Animation"
+                }, 
+                {
+                    "code": "ARTS 205", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/205", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ARTS 208", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/208", 
+                    "name": "Advanced Art With Computers"
+                }, 
+                {
+                    "code": "ARTS 209", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/209", 
+                    "name": "Intermediate Ceramics"
+                }, 
+                {
+                    "code": "ARTS 210", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/210", 
+                    "name": "Oil & Acrylic Painting"
+                }, 
+                {
+                    "code": "ARTS 211", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/211", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Mixed Media Painting", 
+                    "variations": [
+                        "ARTS 211"
+                    ]
+                }, 
+                {
+                    "code": "ARTS 212", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/212", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Sculpture/3-D Design", 
+                    "variations": [
+                        "ARTS 212"
+                    ]
+                }, 
+                {
+                    "code": "ARTS 221", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ARTS/221", 
+                    "name": "Advanced Ceramics"
+                }, 
+                {
+                    "code": "ARTS 103OL", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ARTSL 102", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ART 154", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/atlantic/ARTS"
+        }, 
+        {
+            "abbr": "ATCT", 
+            "courses": [
+                {
+                    "code": "ATCT 101", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ATCT/101", 
+                    "name": "Intro to Air Traffic Control"
+                }, 
+                {
+                    "code": "ATCT 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ATCT/110", 
+                    "name": "Private Pilot Ground School"
+                }, 
+                {
+                    "code": "ATCT 120", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ATCT/120", 
+                    "name": "Aviation Weather"
+                }, 
+                {
+                    "code": "ATCT 170", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ATCT/170", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "ATC Regulations", 
+                    "variations": [
+                        "ATCT 170"
+                    ]
+                }, 
+                {
+                    "code": "ATCT 220", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ATCT/220", 
+                    "name": "Control Tower Operations I"
+                }, 
+                {
+                    "code": "ATCT 225", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ATCT/225", 
+                    "name": "Terminal Radar I"
+                }, 
+                {
+                    "code": "ATCT 280", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ATCT/280", 
+                    "name": "Control Tower Operations II"
+                }, 
+                {
+                    "code": "ATCT 285", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ATCT/285", 
+                    "name": "Terminal Radar II"
+                }
+            ], 
+            "name": "Air Traffic Control Terminal", 
+            "url": "http://www.chegg.com/courses/atlantic/ATCT"
+        }, 
+        {
+            "abbr": "AVIT", 
+            "courses": [
+                {
+                    "code": "AVIT 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/AVIT/110", 
+                    "name": "Private Pilot Ground School"
+                }, 
+                {
+                    "code": "AVIT 125", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/AVIT/125", 
+                    "name": "Special Topics Aviat. Studies"
+                }
+            ], 
+            "name": "Aviation Studies", 
+            "url": "http://www.chegg.com/courses/atlantic/AVIT"
+        }, 
+        {
+            "abbr": "BIOL", 
+            "courses": [
+                {
+                    "code": "BIOL 101", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BIOL/101", 
+                    "frequency": 14, 
+                    "is_popular": true, 
+                    "name": "Biological Anthropology", 
+                    "variations": [
+                        "BIO 101"
+                    ]
+                }, 
+                {
+                    "code": "BIOL 103", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BIOL/103", 
+                    "frequency": 10, 
+                    "is_popular": true, 
+                    "name": "Biology of Our World", 
+                    "variations": [
+                        "BIO 103"
+                    ]
+                }, 
+                {
+                    "code": "BIOL 104", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BIOL/104", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "name": "Bioethics/New Millennium", 
+                    "variations": [
+                        "BIOL 104"
+                    ]
+                }, 
+                {
+                    "code": "BIOL 109", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BIOL/109", 
+                    "frequency": 13, 
+                    "is_popular": true, 
+                    "name": "General Biology I", 
+                    "variations": [
+                        "BIO 109"
+                    ]
+                }, 
+                {
+                    "code": "BIOL 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BIOL/110", 
+                    "frequency": 7, 
+                    "is_popular": true, 
+                    "name": "General Biology II", 
+                    "variations": [
+                        "BIO 110"
+                    ]
+                }, 
+                {
+                    "code": "BIOL 118", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BIOL/118", 
+                    "frequency": 5, 
+                    "is_popular": true, 
+                    "name": "The Human Body", 
+                    "variations": [
+                        "BIOL 118"
+                    ]
+                }, 
+                {
+                    "code": "BIOL 120", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BIOL/120", 
+                    "frequency": 64, 
+                    "is_popular": true, 
+                    "name": "Human Anatomy Physiology I", 
+                    "variations": [
+                        "BIOL 120"
+                    ]
+                }, 
+                {
+                    "code": "BIOL 121", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BIOL/121", 
+                    "frequency": 24, 
+                    "is_popular": true, 
+                    "name": "Human Anatomy Physiology II", 
+                    "variations": [
+                        "BIO 121"
+                    ]
+                }, 
+                {
+                    "code": "BIOL 203", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BIOL/203", 
+                    "frequency": 9, 
+                    "is_popular": true, 
+                    "name": "Microbiology", 
+                    "variations": [
+                        "BIOL 203"
+                    ]
+                }, 
+                {
+                    "code": "OL 02", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "OL 02"
+                    ]
+                }, 
+                {
+                    "code": "BIOL 200", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "BIOL 104MD 01", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "OL 01", 
+                        "BIOLMW 01"
+                    ]
+                }, 
+                {
+                    "code": "BIO 2", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "BIO 2"
+                    ]
+                }, 
+                {
+                    "code": "BIO 210", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "BIO 210"
+                    ]
+                }, 
+                {
+                    "code": "BIO 102", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "BIO 102"
+                    ]
+                }, 
+                {
+                    "code": "BIO 1", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "BIO 1"
+                    ]
+                }, 
+                {
+                    "code": "BIO 103MD 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "BIO 122", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "BIOL 122", 
+                        "BIO 122"
+                    ]
+                }, 
+                {
+                    "code": "BIOL 12O", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "BIOL 230", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "BIOL 125", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "BIOL 118OL 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "OL 013", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "BIO 100", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "BIO 118OL 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "BIO 118OLO 1", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/atlantic/BIOL"
+        }, 
+        {
+            "abbr": "BUSN", 
+            "courses": [
+                {
+                    "code": "BUSN 101", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BUSN/101", 
+                    "frequency": 19, 
+                    "is_popular": true, 
+                    "name": "Intro to Business", 
+                    "variations": [
+                        "BUSN 101"
+                    ]
+                }, 
+                {
+                    "code": "BUSN 102", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BUSN/102", 
+                    "frequency": 13, 
+                    "is_popular": true, 
+                    "name": "Principles of Marketing", 
+                    "variations": [
+                        "BUSN 102"
+                    ]
+                }, 
+                {
+                    "code": "BUSN 104", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BUSN/104", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Small Business Mgmt", 
+                    "variations": [
+                        "BUSN 104"
+                    ]
+                }, 
+                {
+                    "code": "BUSN 106", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BUSN/106", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Business Ethics", 
+                    "variations": [
+                        "BUSN 106"
+                    ]
+                }, 
+                {
+                    "code": "BUSN 120", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BUSN/120", 
+                    "frequency": 9, 
+                    "is_popular": true, 
+                    "name": "Principles of Management", 
+                    "variations": [
+                        "BUSN 120"
+                    ]
+                }, 
+                {
+                    "code": "BUSN 130", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BUSN/130", 
+                    "name": "Applied Human Relations"
+                }, 
+                {
+                    "code": "BUSN 205", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BUSN/205", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "name": "Human Resources Management", 
+                    "variations": [
+                        "BUSN 205"
+                    ]
+                }, 
+                {
+                    "code": "BUSN 210", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BUSN/210", 
+                    "frequency": 9, 
+                    "is_popular": true, 
+                    "name": "Business Law I", 
+                    "variations": [
+                        "BUSN 210"
+                    ]
+                }, 
+                {
+                    "code": "BUSN 211", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BUSN/211", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Business Law II", 
+                    "variations": [
+                        "BUSN 211"
+                    ]
+                }, 
+                {
+                    "code": "BUSN 215", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BUSN/215", 
+                    "name": "Employment Law"
+                }, 
+                {
+                    "code": "BUSN 247", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/BUSN/247", 
+                    "frequency": 4, 
+                    "is_popular": true, 
+                    "name": "Management Info Systems", 
+                    "variations": [
+                        "BUSN 247"
+                    ]
+                }, 
+                {
+                    "code": "US 1", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "BUSNLAW 1"
+                    ]
+                }, 
+                {
+                    "code": "BUS 0LO 1", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "BUS 001", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "BUS 001"
+                    ]
+                }, 
+                {
+                    "code": "BUSNCE 01", 
+                    "frequency": 4, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "BUSNCE 01", 
+                        "BUSNAD 01", 
+                        "BUSNMD 01"
+                    ]
+                }, 
+                {
+                    "code": "US 103", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "BUSN 102CE 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "BUSN 153", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/atlantic/BUSN"
+        }, 
+        {
+            "abbr": "CDCC", 
+            "courses": [
+                {
+                    "code": "CDCC 103", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CDCC/103", 
+                    "name": "Roles/Child Care Prof"
+                }, 
+                {
+                    "code": "CDCC 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CDCC/110", 
+                    "frequency": 5, 
+                    "is_popular": true, 
+                    "name": "Child Dev: Theory/Practice", 
+                    "variations": [
+                        "CDCC 110"
+                    ]
+                }, 
+                {
+                    "code": "CDCC 115", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CDCC/115", 
+                    "name": "Plan/Pre-School Curric"
+                }, 
+                {
+                    "code": "CDCC 130", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CDCC/130", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Early Childhood Practicum", 
+                    "variations": [
+                        "CDCC 130"
+                    ]
+                }, 
+                {
+                    "code": "CDCC 104", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Child Development/Child Care", 
+            "url": "http://www.chegg.com/courses/atlantic/CDCC"
+        }, 
+        {
+            "abbr": "CHEM", 
+            "courses": [
+                {
+                    "code": "CHEM 100", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CHEM/100", 
+                    "frequency": 8, 
+                    "is_popular": true, 
+                    "name": "Intro to College Chemistry", 
+                    "variations": [
+                        "CHEM 100"
+                    ]
+                }, 
+                {
+                    "code": "CHEM 102", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CHEM/102", 
+                    "name": "Intro to Forensics"
+                }, 
+                {
+                    "code": "CHEM 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CHEM/110", 
+                    "frequency": 38, 
+                    "is_popular": true, 
+                    "name": "General Chemistry I", 
+                    "variations": [
+                        "CHEM 110"
+                    ]
+                }, 
+                {
+                    "code": "CHEM 111", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CHEM/111", 
+                    "frequency": 11, 
+                    "is_popular": true, 
+                    "name": "General Chemistry II", 
+                    "variations": [
+                        "CHEM 111"
+                    ]
+                }, 
+                {
+                    "code": "CHEM 210", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CHEM/210", 
+                    "frequency": 4, 
+                    "is_popular": true, 
+                    "name": "Organic Chemistry I", 
+                    "variations": [
+                        "CHEM 210"
+                    ]
+                }, 
+                {
+                    "code": "CHEM 211", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CHEM/211", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Organic Chemistry II", 
+                    "variations": [
+                        "CHEM 211"
+                    ]
+                }, 
+                {
+                    "code": "M 122", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CHEM 1", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "CHEM 1"
+                    ]
+                }, 
+                {
+                    "code": "CHEMISTRY 110M", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CHEM 210AND 21", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CHEMMD 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CHEM 101", 
+                    "frequency": 6, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "CHEM 101"
+                    ]
+                }, 
+                {
+                    "code": "CHEM 2", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "CHEM 2"
+                    ]
+                }, 
+                {
+                    "code": "CHEM 31", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CHEM 201", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CHEM 2115", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/atlantic/CHEM"
+        }, 
+        {
+            "abbr": "CISM", 
+            "courses": [
+                {
+                    "code": "CISM 102", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/102", 
+                    "name": "Computer Fund/Windows"
+                }, 
+                {
+                    "code": "CISM 106", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/106", 
+                    "name": "Internet Research"
+                }, 
+                {
+                    "code": "CISM 125", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/125", 
+                    "frequency": 78, 
+                    "is_popular": true, 
+                    "name": "Intro to Computers", 
+                    "variations": [
+                        "CISM 125", 
+                        "CIS 125"
+                    ]
+                }, 
+                {
+                    "code": "CISM 127", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/127", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Internet/World Wide Web", 
+                    "variations": [
+                        "CISM 127"
+                    ]
+                }, 
+                {
+                    "code": "CISM 128", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/128", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Technology for Educators", 
+                    "variations": [
+                        "CISM 128"
+                    ]
+                }, 
+                {
+                    "code": "CISM 130", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/130", 
+                    "frequency": 4, 
+                    "is_popular": true, 
+                    "name": "Using Pc Operating Sys", 
+                    "variations": [
+                        "CISM 130"
+                    ]
+                }, 
+                {
+                    "code": "CISM 135", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/135", 
+                    "frequency": 4, 
+                    "is_popular": true, 
+                    "name": "Computer Program/C++", 
+                    "variations": [
+                        "CISM 135"
+                    ]
+                }, 
+                {
+                    "code": "CISM 142", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/142", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "name": "Help Desk Support", 
+                    "variations": [
+                        "CISM 142"
+                    ]
+                }, 
+                {
+                    "code": "CISM 154", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/154", 
+                    "frequency": 11, 
+                    "is_popular": true, 
+                    "name": "Computer Programming-Java", 
+                    "variations": [
+                        "CISM 154"
+                    ]
+                }, 
+                {
+                    "code": "CISM 159", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/159", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Interm Programming C++", 
+                    "variations": [
+                        "CISM 159"
+                    ]
+                }, 
+                {
+                    "code": "CISM 160", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/160", 
+                    "frequency": 6, 
+                    "is_popular": true, 
+                    "name": "Systems Analysis & Design", 
+                    "variations": [
+                        "CISM 160"
+                    ]
+                }, 
+                {
+                    "code": "CISM 162", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/162", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Micro Apps Spreadsheets", 
+                    "variations": [
+                        "CISM 162", 
+                        "CIS 162"
+                    ]
+                }, 
+                {
+                    "code": "CISM 163", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/163", 
+                    "name": "Web Page Design"
+                }, 
+                {
+                    "code": "CISM 164", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/164", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Micro Apps Relat Dbase", 
+                    "variations": [
+                        "CISM 164"
+                    ]
+                }, 
+                {
+                    "code": "CISM 165", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/165", 
+                    "name": "Web Graphics/Animation"
+                }, 
+                {
+                    "code": "CISM 167", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/167", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Programming/Oracle SQL", 
+                    "variations": [
+                        "CISM 167"
+                    ]
+                }, 
+                {
+                    "code": "CISM 170", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/170", 
+                    "name": "Database Design Using Oracle"
+                }, 
+                {
+                    "code": "CISM 174", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/174", 
+                    "frequency": 4, 
+                    "is_popular": true, 
+                    "name": "Comp Prog Visual Basic", 
+                    "variations": [
+                        "CISM 174"
+                    ]
+                }, 
+                {
+                    "code": "CISM 190", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/190", 
+                    "name": "Social Media for Business"
+                }, 
+                {
+                    "code": "CISM 222", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/222", 
+                    "frequency": 7, 
+                    "is_popular": true, 
+                    "name": "Issues/Computer Security", 
+                    "variations": [
+                        "CISM 222"
+                    ]
+                }, 
+                {
+                    "code": "CISM 240", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/240", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Intro/Computer Forensics", 
+                    "variations": [
+                        "CISM 240"
+                    ]
+                }, 
+                {
+                    "code": "CISM 245", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/245", 
+                    "name": "Acct Info Systems"
+                }, 
+                {
+                    "code": "CISM 247", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/247", 
+                    "name": "Mgmt Info Systems"
+                }, 
+                {
+                    "code": "CISM 254", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/254", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Adv/Comp/Prog/Java", 
+                    "variations": [
+                        "CISM 254"
+                    ]
+                }, 
+                {
+                    "code": "CISM 270", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CISM/270", 
+                    "name": ""
+                }, 
+                {
+                    "code": "CIS 101", 
+                    "frequency": 8, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "CISM 101"
+                    ]
+                }, 
+                {
+                    "code": "CISM 126", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CISMD 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CISM 138", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "CISM 138"
+                    ]
+                }, 
+                {
+                    "code": "CISM 200", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CISM 123", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CISM 271", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CISM 120", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CISM 124", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CISM 290", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CISMD 09", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Computer Information Systems", 
+            "url": "http://www.chegg.com/courses/atlantic/CISM"
+        }, 
+        {
+            "abbr": "COMM", 
+            "courses": [
+                {
+                    "code": "COMM 103", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/COMM/103", 
+                    "frequency": 7, 
+                    "is_popular": true, 
+                    "name": "Intro to Mass Media", 
+                    "variations": [
+                        "COMM 103"
+                    ]
+                }, 
+                {
+                    "code": "COMM 104", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/COMM/104", 
+                    "frequency": 4, 
+                    "is_popular": true, 
+                    "name": "Intro to Public Relations", 
+                    "variations": [
+                        "COMM 104"
+                    ]
+                }, 
+                {
+                    "code": "COMM 105", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/COMM/105", 
+                    "name": "Television History"
+                }, 
+                {
+                    "code": "COMM 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/COMM/110", 
+                    "frequency": 15, 
+                    "is_popular": true, 
+                    "name": "Interpersonal Communication", 
+                    "variations": [
+                        "COMM 110"
+                    ]
+                }, 
+                {
+                    "code": "COMM 120", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/COMM/120", 
+                    "frequency": 22, 
+                    "is_popular": true, 
+                    "name": "Public Speaking", 
+                    "variations": [
+                        "COMM 120"
+                    ]
+                }, 
+                {
+                    "code": "COMM 204", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/COMM/204", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Organizational Communication", 
+                    "variations": [
+                        "COM 204"
+                    ]
+                }, 
+                {
+                    "code": "COMM 209", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/COMM/209", 
+                    "name": "Journalism I"
+                }, 
+                {
+                    "code": "COMM 210", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/COMM/210", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Special Topics: Magazine Wrtng", 
+                    "variations": [
+                        "COMM 210"
+                    ]
+                }, 
+                {
+                    "code": "COMM 211", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/COMM/211", 
+                    "name": ""
+                }, 
+                {
+                    "code": "COMM 220", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/COMM/220", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Creative Writing I", 
+                    "variations": [
+                        "COMM 220"
+                    ]
+                }, 
+                {
+                    "code": "COMM 221", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/COMM/221", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Creative Writing II", 
+                    "variations": [
+                        "COMM 221"
+                    ]
+                }, 
+                {
+                    "code": "COMM 102", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "COMM 102"
+                    ]
+                }, 
+                {
+                    "code": "COMM 101", 
+                    "frequency": 11, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "COMM 101", 
+                        "COMMU 101", 
+                        "COM 101"
+                    ]
+                }, 
+                {
+                    "code": "COMM 01", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "COMMD 01"
+                    ]
+                }, 
+                {
+                    "code": "COMM 1", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Communication", 
+            "url": "http://www.chegg.com/courses/atlantic/COMM"
+        }, 
+        {
+            "abbr": "CRIM", 
+            "courses": [
+                {
+                    "code": "CRIM 101", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/101", 
+                    "frequency": 19, 
+                    "is_popular": true, 
+                    "name": "Intro to Criminal Justice", 
+                    "variations": [
+                        "CRIM 101"
+                    ]
+                }, 
+                {
+                    "code": "CRIM 102", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/102", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Intro to Criminology", 
+                    "variations": [
+                        "CRIM 102"
+                    ]
+                }, 
+                {
+                    "code": "CRIM 105", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/105", 
+                    "frequency": 5, 
+                    "is_popular": true, 
+                    "name": "Police Operations", 
+                    "variations": [
+                        "CRIM 105"
+                    ]
+                }, 
+                {
+                    "code": "CRIM 106", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/106", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Intro to Corrections", 
+                    "variations": [
+                        "CRIM 106"
+                    ]
+                }, 
+                {
+                    "code": "CRIM 107", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/107", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Intro to Cyber Crime", 
+                    "variations": [
+                        "CRIM 107"
+                    ]
+                }, 
+                {
+                    "code": "CRIM 108", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/108", 
+                    "name": "Intro to Terrorism"
+                }, 
+                {
+                    "code": "CRIM 109", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/109", 
+                    "name": "Ethics in Criminal Justice"
+                }, 
+                {
+                    "code": "CRIM 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/110", 
+                    "name": "Women/Criminal Justice System"
+                }, 
+                {
+                    "code": "CRIM 165", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/165", 
+                    "name": "Crime Analysis/Mapping/GIS"
+                }, 
+                {
+                    "code": "CRIM 170", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/170", 
+                    "name": "Concepts in Homeland Security"
+                }, 
+                {
+                    "code": "CRIM 201", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/201", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Criminal Law", 
+                    "variations": [
+                        "CRIM 201"
+                    ]
+                }, 
+                {
+                    "code": "CRIM 202", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/202", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Constitutional Law", 
+                    "variations": [
+                        "CRIM 202"
+                    ]
+                }, 
+                {
+                    "code": "CRIM 203", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/203", 
+                    "frequency": 18, 
+                    "is_popular": true, 
+                    "name": "Criminal Investigation", 
+                    "variations": [
+                        "CRIM 203"
+                    ]
+                }, 
+                {
+                    "code": "CRIM 206", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/206", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Juvenile Justice", 
+                    "variations": [
+                        "CRIM 206"
+                    ]
+                }, 
+                {
+                    "code": "CRIM 210", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/210", 
+                    "name": "Community-Based Corrections"
+                }, 
+                {
+                    "code": "CRIM 212", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/212", 
+                    "name": "Trial Advocacy"
+                }, 
+                {
+                    "code": "CRIM 214", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/214", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "name": "Organized Crime", 
+                    "variations": [
+                        "CRIM 214"
+                    ]
+                }, 
+                {
+                    "code": "CRIM 216", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/216", 
+                    "name": "Crim. Justice Report Proced."
+                }, 
+                {
+                    "code": "CRIM 250", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CRIM/250", 
+                    "name": "Intern/Criminal Justice"
+                }, 
+                {
+                    "code": "CRIMME 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CRIM 220", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CRIM 101105", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "CRIM 101105"
+                    ]
+                }, 
+                {
+                    "code": "CRIM 122", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "CRIM 122"
+                    ]
+                }, 
+                {
+                    "code": "CRIM 204", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "CRIM 204"
+                    ]
+                }, 
+                {
+                    "code": "CRIM 236", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CRIM 205", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CRIM 354", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/atlantic/CRIM"
+        }, 
+        {
+            "abbr": "CUBP", 
+            "courses": [
+                {
+                    "code": "CUBP 100", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CUBP/100", 
+                    "name": "Intro. Culinary/Baking/Pastry"
+                }, 
+                {
+                    "code": "CUBP 101", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CUBP/101", 
+                    "name": "Baking Theories/Apps"
+                }, 
+                {
+                    "code": "CUBP 105", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CUBP/105", 
+                    "name": "Culinary Foundations"
+                }, 
+                {
+                    "code": "CUBP 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CUBP/110", 
+                    "name": "Fundamentals of Baking"
+                }, 
+                {
+                    "code": "CUBP 120", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CUBP/120", 
+                    "name": "Basic Pastry Preparation"
+                }, 
+                {
+                    "code": "CUBP 210", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CUBP/210", 
+                    "name": "Advanced Baking"
+                }, 
+                {
+                    "code": "CUBP 211", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CUBP/211", 
+                    "name": "Prin Bake Artisan Brd"
+                }, 
+                {
+                    "code": "CUBP 220", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CUBP/220", 
+                    "name": "Advanced Classical Pastry"
+                }, 
+                {
+                    "code": "CUBP 221", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CUBP/221", 
+                    "name": "Adv Concepts/Pastry"
+                }, 
+                {
+                    "code": "CUBP 222", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CUBP/222", 
+                    "name": "Specialty Cakes"
+                }, 
+                {
+                    "code": "CUBP 223", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CUBP/223", 
+                    "name": "Wedding Cake Design"
+                }, 
+                {
+                    "code": "CUBP 224", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CUBP/224", 
+                    "name": "Centerpiece Artistry"
+                }, 
+                {
+                    "code": "CUBP 225", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CUBP/225", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Classical Confections", 
+                    "variations": [
+                        "CUBP 225"
+                    ]
+                }
+            ], 
+            "name": "Culinary Baking/Pastry", 
+            "url": "http://www.chegg.com/courses/atlantic/CUBP"
+        }, 
+        {
+            "abbr": "CULN", 
+            "courses": [
+                {
+                    "code": "CULN 101", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CULN/101", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Introduction to Culinary Arts", 
+                    "variations": [
+                        "CULN 101"
+                    ]
+                }, 
+                {
+                    "code": "CULN 105", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CULN/105", 
+                    "name": "Applied Culinary Skills I"
+                }, 
+                {
+                    "code": "CULN 106", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CULN/106", 
+                    "name": "Applied Culinary Skills II"
+                }, 
+                {
+                    "code": "CULN 107", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CULN/107", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Intro to Diversified Cuisines", 
+                    "variations": [
+                        "CUL 107"
+                    ]
+                }, 
+                {
+                    "code": "CULN 109", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CULN/109", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Intro to Garde Manger", 
+                    "variations": [
+                        "CULN 109"
+                    ]
+                }, 
+                {
+                    "code": "CULN 117", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CULN/117", 
+                    "name": "Fndmtls Dining Rm SVC"
+                }, 
+                {
+                    "code": "CULN 204", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CULN/204", 
+                    "name": "Buffet Serv/Cater"
+                }, 
+                {
+                    "code": "CULN 207", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CULN/207", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Advanced Hot Food Prep", 
+                    "variations": [
+                        "CUL 207"
+                    ]
+                }, 
+                {
+                    "code": "CULN 209", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CULN/209", 
+                    "name": "Advanced Garde Manger"
+                }, 
+                {
+                    "code": "CULN 217", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CULN/217", 
+                    "name": "App Dn Rm OPS/PRINC Mgt"
+                }, 
+                {
+                    "code": "CULN 220", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CULN/220", 
+                    "name": "International Food Prep"
+                }, 
+                {
+                    "code": "CULN 221", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CULN/221", 
+                    "name": "Italian Region/Cuisine"
+                }, 
+                {
+                    "code": "CULN 222", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CULN/222", 
+                    "name": "Charcuterie"
+                }, 
+                {
+                    "code": "CULN 223", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CULN/223", 
+                    "name": "Appld Restrnt Prod"
+                }, 
+                {
+                    "code": "CULN 224", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CULN/224", 
+                    "name": "Intro Culinary Compet"
+                }, 
+                {
+                    "code": "CULN 280", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/CULN/280", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "CUL 3", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Culinary Arts", 
+            "url": "http://www.chegg.com/courses/atlantic/CULN"
+        }, 
+        {
+            "abbr": "DANC", 
+            "courses": [
+                {
+                    "code": "DANC 170", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/DANC/170", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Introduction to Dance", 
+                    "variations": [
+                        "DANC 170"
+                    ]
+                }, 
+                {
+                    "code": "DANC 171", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/DANC/171", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Modern Dance I", 
+                    "variations": [
+                        "DANC 171"
+                    ]
+                }, 
+                {
+                    "code": "DANC 172", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/DANC/172", 
+                    "name": "Modern Dance II"
+                }, 
+                {
+                    "code": "DANC 173", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/DANC/173", 
+                    "name": "Jazz Dance I"
+                }, 
+                {
+                    "code": "DANC 174", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/DANC/174", 
+                    "name": "Jazz Dance II"
+                }, 
+                {
+                    "code": "DANC 271", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/DANC/271", 
+                    "name": "Ballet I"
+                }, 
+                {
+                    "code": "DANC 272", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/DANC/272", 
+                    "name": "Ballet II"
+                }, 
+                {
+                    "code": "DANCEMD 03", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "DANC 272MD 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Dance", 
+            "url": "http://www.chegg.com/courses/atlantic/DANC"
+        }, 
+        {
+            "abbr": "DEVA", 
+            "courses": [
+                {
+                    "code": "DEVA 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/DEVA/110", 
+                    "name": "Intro Career Development"
+                }, 
+                {
+                    "code": "DEVA 113", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/DEVA/113", 
+                    "name": "Human Potential Seminar"
+                }, 
+                {
+                    "code": "DEVA 155", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/DEVA/155", 
+                    "name": "Student Success Seminar"
+                }, 
+                {
+                    "code": "AD 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Affective Development", 
+            "url": "http://www.chegg.com/courses/atlantic/DEVA"
+        }, 
+        {
+            "abbr": "DEVS", 
+            "courses": [
+                {
+                    "code": "DEVS 111", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/DEVS/111", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "name": "College Skills", 
+                    "variations": [
+                        "DEVS 111"
+                    ]
+                }
+            ], 
+            "name": "College Skills", 
+            "url": "http://www.chegg.com/courses/atlantic/DEVS"
+        }, 
+        {
+            "abbr": "ECON", 
+            "courses": [
+                {
+                    "code": "ECON 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ECON/110", 
+                    "frequency": 19, 
+                    "is_popular": true, 
+                    "name": "Principles of Economics I", 
+                    "variations": [
+                        "ECON 110"
+                    ]
+                }, 
+                {
+                    "code": "ECON 111", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ECON/111", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Principles of Economics II", 
+                    "variations": [
+                        "ECON 111"
+                    ]
+                }, 
+                {
+                    "code": "ECON 101", 
+                    "frequency": 5, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "ECON 101"
+                    ]
+                }, 
+                {
+                    "code": "ECON 102", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "ECON 102"
+                    ]
+                }
+            ], 
+            "name": "Economics", 
+            "url": "http://www.chegg.com/courses/atlantic/ECON"
+        }, 
+        {
+            "abbr": "EDUC", 
+            "courses": [
+                {
+                    "code": "EDUC 101", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/EDUC/101", 
+                    "frequency": 15, 
+                    "is_popular": true, 
+                    "name": "Historical Found American Ed", 
+                    "variations": [
+                        "EDU 101"
+                    ]
+                }, 
+                {
+                    "code": "EDUC 213", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/EDUC/213", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Educational Psychology", 
+                    "variations": [
+                        "EDUC 213", 
+                        "PSYCEDUC 213"
+                    ]
+                }, 
+                {
+                    "code": "EDUC 220", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/EDUC/220", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Field Place/Ed Psych", 
+                    "variations": [
+                        "EDUC 220"
+                    ]
+                }, 
+                {
+                    "code": "EDUC 226", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/EDUC/226", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Psychology of Exceptionality", 
+                    "variations": [
+                        "EDUC 226"
+                    ]
+                }, 
+                {
+                    "code": "EDUC 216", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "EDU 101OL", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "EDUCAME 01", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "EDUCE 01"
+                    ]
+                }, 
+                {
+                    "code": "EDUC 230", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "EDUC 102", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "EDU 100", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/atlantic/EDUC"
+        }, 
+        {
+            "abbr": "ENGL", 
+            "courses": [
+                {
+                    "code": "ENGL 070", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ENGL/070", 
+                    "frequency": 6, 
+                    "is_popular": true, 
+                    "name": "Reading/Writing I", 
+                    "variations": [
+                        "ENG 070"
+                    ]
+                }, 
+                {
+                    "code": "ENGL 70", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ENGL/70", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Reading/Writing I", 
+                    "variations": [
+                        "ENGL 70", 
+                        "ENGLI 70"
+                    ]
+                }, 
+                {
+                    "code": "ENGL 080", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ENGL/080", 
+                    "frequency": 45, 
+                    "is_popular": true, 
+                    "name": "Reading/Writing II", 
+                    "variations": [
+                        "ENG 080", 
+                        "ENGLISH 080"
+                    ]
+                }, 
+                {
+                    "code": "ENGL 80", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ENGL/80", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Reading/Writing II", 
+                    "variations": [
+                        "ENG 80"
+                    ]
+                }, 
+                {
+                    "code": "ENGL 101", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ENGL/101", 
+                    "frequency": 202, 
+                    "is_popular": true, 
+                    "name": "Composition I", 
+                    "variations": [
+                        "ENGL 101", 
+                        "ENG 101"
+                    ]
+                }, 
+                {
+                    "code": "ENGL 102", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ENGL/102", 
+                    "frequency": 153, 
+                    "is_popular": true, 
+                    "name": "Composition II", 
+                    "variations": [
+                        "ENG 102", 
+                        "ENGL 102"
+                    ]
+                }, 
+                {
+                    "code": "ENGL 104", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ENGL/104", 
+                    "frequency": 50, 
+                    "is_popular": true, 
+                    "name": "Intro to Literature", 
+                    "variations": [
+                        "ENG 104"
+                    ]
+                }, 
+                {
+                    "code": "ENGL 201", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ENGL/201", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "name": "World Literature", 
+                    "variations": [
+                        "ENGL 201", 
+                        "ENG 201"
+                    ]
+                }, 
+                {
+                    "code": "ENGL 203", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ENGL/203", 
+                    "name": "British Literature I"
+                }, 
+                {
+                    "code": "ENGL 206", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ENGL/206", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "20th Cen Amer Lit", 
+                    "variations": [
+                        "ENGL 206"
+                    ]
+                }, 
+                {
+                    "code": "ENGL 209", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ENGL/209", 
+                    "name": "Journalism I"
+                }, 
+                {
+                    "code": "ENGL 218", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ENGL/218", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "", 
+                    "variations": [
+                        "ENGL 218"
+                    ]
+                }, 
+                {
+                    "code": "ENGL 220", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ENGL/220", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Creative Writing I", 
+                    "variations": [
+                        "ENG 220", 
+                        "ENGL 220"
+                    ]
+                }, 
+                {
+                    "code": "ENGL 221", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ENGL/221", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Creative Writing II", 
+                    "variations": [
+                        "ENG 221"
+                    ]
+                }, 
+                {
+                    "code": "ENGL 223", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ENGL/223", 
+                    "name": "Poetry Workshop"
+                }, 
+                {
+                    "code": "ENGL 229", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ENGL/229", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ENGL 102MD 05", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENGLMD 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENGL 102OL 06", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENGLMD 03", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "ENGLOL 03"
+                    ]
+                }, 
+                {
+                    "code": "ENG 103", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "ENG 103"
+                    ]
+                }, 
+                {
+                    "code": "ENG 101ENG 102", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENGL 216", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENG 101AND 102", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENGL 212", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENG 55", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENGL 080ME 05", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENG 101104", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENG 000", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENGL 101ME 10", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENG 102OL 08", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENG 102MD 14", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENGL 101OL 06", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENG 073", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "ENGLI 073"
+                    ]
+                }, 
+                {
+                    "code": "ENGL 074", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/atlantic/ENGL"
+        }, 
+        {
+            "abbr": "ESCI", 
+            "courses": [
+                {
+                    "code": "ESCI 100", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESCI/100", 
+                    "frequency": 12, 
+                    "is_popular": true, 
+                    "name": "Earth Science", 
+                    "variations": [
+                        "ESCI 100"
+                    ]
+                }, 
+                {
+                    "code": "ESC 1100", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ESCI 1", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "SCI 101", 
+                    "frequency": 6, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "ESCI 101"
+                    ]
+                }, 
+                {
+                    "code": "ESCIE 51", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ESCI 100CE 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Earth Science", 
+            "url": "http://www.chegg.com/courses/atlantic/ESCI"
+        }, 
+        {
+            "abbr": "ESLN", 
+            "courses": [
+                {
+                    "code": "ESLN 060", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/060", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ESLN 60", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/60", 
+                    "name": "Elementary Esl I"
+                }, 
+                {
+                    "code": "ESLN 062", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/062", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ESLN 62", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/62", 
+                    "name": "Elementary Esl II"
+                }, 
+                {
+                    "code": "ESLN 070", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/070", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ESLN 70", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/70", 
+                    "name": "Intermediate Esl I"
+                }, 
+                {
+                    "code": "ESLN 072", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/072", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ESLN 72", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/72", 
+                    "name": "Intermediate Esl II"
+                }, 
+                {
+                    "code": "ESLN 074", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/074", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ESLN 74", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/74", 
+                    "name": "Vocabulary Strategies"
+                }, 
+                {
+                    "code": "ESLN 075", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/075", 
+                    "name": "Fundamental English Grammar"
+                }, 
+                {
+                    "code": "ESLN 080", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/080", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "", 
+                    "variations": [
+                        "ESLN 080"
+                    ]
+                }, 
+                {
+                    "code": "ESLN 80", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/80", 
+                    "name": "Esl Academic Foundations"
+                }, 
+                {
+                    "code": "ESLN 090", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/090", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ESLN 90", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/90", 
+                    "name": "Advanced Esl I"
+                }, 
+                {
+                    "code": "ESLN 091", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/091", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ESLN 91", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/91", 
+                    "name": "Special Topic/American Culture"
+                }, 
+                {
+                    "code": "ESLN 092", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/092", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ESLN 92", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/92", 
+                    "name": "Advanced Esl II"
+                }, 
+                {
+                    "code": "ESLN 093", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/093", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ESLN 93", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/93", 
+                    "name": "Advanced Esl:listen/Speak"
+                }, 
+                {
+                    "code": "ESLN 094", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/094", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ESLN 94", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/94", 
+                    "name": "Advanced Esl: Grammar"
+                }, 
+                {
+                    "code": "ESLN 096", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/096", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ESLN 099", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/099", 
+                    "name": ""
+                }, 
+                {
+                    "code": "ESLN 99", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/99", 
+                    "name": "Strategies/American Classrm"
+                }, 
+                {
+                    "code": "ESLN 100", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ESLN/100", 
+                    "frequency": 8, 
+                    "is_popular": true, 
+                    "name": "Academic Reading/Writing", 
+                    "variations": [
+                        "ESLN 100", 
+                        "ESL 100"
+                    ]
+                }, 
+                {
+                    "code": "ESL 200", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ESLN 220", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ESLN 044", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "English As a Second Language", 
+            "url": "http://www.chegg.com/courses/atlantic/ESLN"
+        }, 
+        {
+            "abbr": "FREN", 
+            "courses": [
+                {
+                    "code": "FREN 111", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/FREN/111", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Elementary French I", 
+                    "variations": [
+                        "FREN 111"
+                    ]
+                }, 
+                {
+                    "code": "FREN 112", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/FREN/112", 
+                    "name": "Elementary French II"
+                }, 
+                {
+                    "code": "FREN 101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "FRENC 0102", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "FRENC 1", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/atlantic/FREN"
+        }, 
+        {
+            "abbr": "GEOG", 
+            "courses": [
+                {
+                    "code": "GEOG 102", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/GEOG/102", 
+                    "frequency": 9, 
+                    "is_popular": true, 
+                    "name": "Intro to Cultural Geography", 
+                    "variations": [
+                        "GEOG 102"
+                    ]
+                }, 
+                {
+                    "code": "GEOG 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/GEOG/110", 
+                    "frequency": 7, 
+                    "is_popular": true, 
+                    "name": "World Geography", 
+                    "variations": [
+                        "GEOG 110", 
+                        "GEO 110"
+                    ]
+                }, 
+                {
+                    "code": "GEOG 201", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/GEOG/201", 
+                    "name": ""
+                }, 
+                {
+                    "code": "GEOG 101", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "GEOG 101"
+                    ]
+                }, 
+                {
+                    "code": "GEOG 102OL 02", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "GEOG 102MD 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Geography", 
+            "url": "http://www.chegg.com/courses/atlantic/GEOG"
+        }, 
+        {
+            "abbr": "GIST", 
+            "courses": [
+                {
+                    "code": "GIST 101", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/GIST/101", 
+                    "name": "Intro to Geo Info Systems"
+                }, 
+                {
+                    "code": "GIST 150", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/GIST/150", 
+                    "name": "Geospatial Data Collection"
+                }, 
+                {
+                    "code": "GIST 170", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/GIST/170", 
+                    "name": "Concepts in Homeland Security"
+                }, 
+                {
+                    "code": "GIST 201", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/GIST/201", 
+                    "name": ""
+                }
+            ], 
+            "name": "Geographic Information Systems", 
+            "url": "http://www.chegg.com/courses/atlantic/GIST"
+        }, 
+        {
+            "abbr": "GOVT", 
+            "courses": [
+                {
+                    "code": "GOVT 101", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/GOVT/101", 
+                    "name": "Intro to Government & Politics"
+                }, 
+                {
+                    "code": "GOVT 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/GOVT/110", 
+                    "frequency": 5, 
+                    "is_popular": true, 
+                    "name": "American National Govt", 
+                    "variations": [
+                        "GOVT 110"
+                    ]
+                }
+            ], 
+            "name": "Government", 
+            "url": "http://www.chegg.com/courses/atlantic/GOVT"
+        }, 
+        {
+            "abbr": "HIST", 
+            "courses": [
+                {
+                    "code": "HIST 101", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HIST/101", 
+                    "frequency": 66, 
+                    "is_popular": true, 
+                    "name": "Western World I", 
+                    "variations": [
+                        "HIST 101"
+                    ]
+                }, 
+                {
+                    "code": "HIST 102", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HIST/102", 
+                    "frequency": 45, 
+                    "is_popular": true, 
+                    "name": "Western World II", 
+                    "variations": [
+                        "HIST 102"
+                    ]
+                }, 
+                {
+                    "code": "HIST 103", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HIST/103", 
+                    "frequency": 19, 
+                    "is_popular": true, 
+                    "name": "U.S. History I", 
+                    "variations": [
+                        "HIST 103"
+                    ]
+                }, 
+                {
+                    "code": "HIST 104", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HIST/104", 
+                    "frequency": 13, 
+                    "is_popular": true, 
+                    "name": "U.S. History II", 
+                    "variations": [
+                        "HIST 104"
+                    ]
+                }, 
+                {
+                    "code": "HIST 117", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HIST/117", 
+                    "frequency": 4, 
+                    "is_popular": true, 
+                    "name": "The Holocaust and Genocide", 
+                    "variations": [
+                        "HIST 117"
+                    ]
+                }, 
+                {
+                    "code": "HIST 119", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HIST/119", 
+                    "name": "History of South Jersey"
+                }, 
+                {
+                    "code": "HIST 2", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "HIST 444", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "USHIST 101102", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "HIST 101102"
+                    ]
+                }, 
+                {
+                    "code": "HISTME 01", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "HIST 01"
+                    ]
+                }, 
+                {
+                    "code": "HISTL 04", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "HISTORY 10", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "HIST 1100", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "HIST 102MD 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "HIST 1030L 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "USHISTORYOL 1", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "HIST 102OL 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "HISTMD 03", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "HIST 110", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "HIST 103USI", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/atlantic/HIST"
+        }, 
+        {
+            "abbr": "HOSP", 
+            "courses": [
+                {
+                    "code": "HOSP 100", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HOSP/100", 
+                    "name": "Orientation to Hosp/Tourism"
+                }, 
+                {
+                    "code": "HOSP 132", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HOSP/132", 
+                    "name": "Food Serv Sanitation"
+                }, 
+                {
+                    "code": "HOSP 134", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HOSP/134", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Restaurant Operations", 
+                    "variations": [
+                        "HOSP 134"
+                    ]
+                }, 
+                {
+                    "code": "HOSP 150", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HOSP/150", 
+                    "name": "Hospitality Sales/Market"
+                }, 
+                {
+                    "code": "HOSP 200", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HOSP/200", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Hotel Operations", 
+                    "variations": [
+                        "HOSP 200"
+                    ]
+                }, 
+                {
+                    "code": "HOSP 205", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HOSP/205", 
+                    "name": "Human Resources Management"
+                }, 
+                {
+                    "code": "HOSP 215", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HOSP/215", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Bev Ops: Wine/Beer/Spirits", 
+                    "variations": [
+                        "HOSP 215"
+                    ]
+                }, 
+                {
+                    "code": "HOSP 225", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HOSP/225", 
+                    "name": "Hospitality Law"
+                }, 
+                {
+                    "code": "HOSP 250", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HOSP/250", 
+                    "name": "Catering and Events Planning"
+                }, 
+                {
+                    "code": "HOSP 295", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HOSP/295", 
+                    "name": "Internship in Hosp Mgt"
+                }, 
+                {
+                    "code": "HOSP 299", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HOSP/299", 
+                    "name": "Seminar in Hospitality Mgmt"
+                }, 
+                {
+                    "code": "HOSP 101", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "HOSP 101"
+                    ]
+                }, 
+                {
+                    "code": "HOSP 210", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "HOSP 220", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "HOSP 110", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "HOSPOL 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Hospitality Management", 
+            "url": "http://www.chegg.com/courses/atlantic/HOSP"
+        }, 
+        {
+            "abbr": "HPED", 
+            "courses": [
+                {
+                    "code": "HPED 117", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HPED/117", 
+                    "name": "Archery I"
+                }, 
+                {
+                    "code": "HPED 150", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HPED/150", 
+                    "frequency": 7, 
+                    "is_popular": true, 
+                    "name": "Concepts of Physical Fitness", 
+                    "variations": [
+                        "HPED 150"
+                    ]
+                }
+            ], 
+            "name": "Health and Physical Education", 
+            "url": "http://www.chegg.com/courses/atlantic/HPED"
+        }, 
+        {
+            "abbr": "HSRV", 
+            "courses": [
+                {
+                    "code": "HSRV 115", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HSRV/115", 
+                    "frequency": 9, 
+                    "is_popular": true, 
+                    "name": "Intro/Soc Work/Human Svcs", 
+                    "variations": [
+                        "HSRV 115"
+                    ]
+                }, 
+                {
+                    "code": "HSRV 116", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HSRV/116", 
+                    "frequency": 4, 
+                    "is_popular": true, 
+                    "name": "Social Agency Skills/Processes", 
+                    "variations": [
+                        "HSRV 116"
+                    ]
+                }, 
+                {
+                    "code": "HSRV 141", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HSRV/141", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Assmt Skills Addiction Counsel", 
+                    "variations": [
+                        "HSRV 141"
+                    ]
+                }, 
+                {
+                    "code": "HSRV 142", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HSRV/142", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Counseling/Skills/Addict/Cnsl", 
+                    "variations": [
+                        "HSRV 142"
+                    ]
+                }, 
+                {
+                    "code": "HSRV 143", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HSRV/143", 
+                    "name": "Case Mgt Addict Populations"
+                }, 
+                {
+                    "code": "HSRV 144", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HSRV/144", 
+                    "name": "Client Educ/Addict Populations"
+                }, 
+                {
+                    "code": "HSRV 145", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HSRV/145", 
+                    "name": "Prof Issues Addict Cnsl"
+                }, 
+                {
+                    "code": "HSRV 215", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HSRV/215", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Fieldwork in Human Services", 
+                    "variations": [
+                        "HSRV 215"
+                    ]
+                }, 
+                {
+                    "code": "HSRV 216", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "HS 104", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "HSRV 115CD 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Human Services", 
+            "url": "http://www.chegg.com/courses/atlantic/HSRV"
+        }, 
+        {
+            "abbr": "HUMT", 
+            "courses": [
+                {
+                    "code": "HUMT 200", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HUMT/200", 
+                    "frequency": 8, 
+                    "is_popular": true, 
+                    "name": "Intro Arts/Humanities", 
+                    "variations": [
+                        "HUMT 200"
+                    ]
+                }, 
+                {
+                    "code": "HUMT 201", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HUMT/201", 
+                    "frequency": 12, 
+                    "is_popular": true, 
+                    "name": "Introduction to Humanities I", 
+                    "variations": [
+                        "HUMT 201"
+                    ]
+                }, 
+                {
+                    "code": "HUMT 202", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/HUMT/202", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "", 
+                    "variations": [
+                        "HUMT 202"
+                    ]
+                }, 
+                {
+                    "code": "HUMT 201OL 01", 
+                    "frequency": 4, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "HUMT 201OL 01", 
+                        "HUMTAE 01", 
+                        "HUMTL 01"
+                    ]
+                }, 
+                {
+                    "code": "HUMT 201OL 03", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "HUMTOL 03"
+                    ]
+                }
+            ], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/atlantic/HUMT"
+        }, 
+        {
+            "abbr": "ITAL", 
+            "courses": [
+                {
+                    "code": "ITAL 111", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ITAL/111", 
+                    "name": "Elementary Italian I"
+                }, 
+                {
+                    "code": "ITAL 112", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/ITAL/112", 
+                    "name": "Elementary Italian II"
+                }
+            ], 
+            "name": "Italian", 
+            "url": "http://www.chegg.com/courses/atlantic/ITAL"
+        }, 
+        {
+            "abbr": "LEGL", 
+            "courses": [
+                {
+                    "code": "LEGL 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/LEGL/110", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Intro to Law & Litigation", 
+                    "variations": [
+                        "LEGL 110"
+                    ]
+                }, 
+                {
+                    "code": "LEGL 140", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/LEGL/140", 
+                    "name": "Legal Research and Writing"
+                }, 
+                {
+                    "code": "LEGL 145", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/LEGL/145", 
+                    "name": "Law Office Management"
+                }, 
+                {
+                    "code": "LEGL 150", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/LEGL/150", 
+                    "name": "Legal Ethics Prof Resp"
+                }, 
+                {
+                    "code": "LEGL 200", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/LEGL/200", 
+                    "name": "Bankruptcy Law and Practice"
+                }, 
+                {
+                    "code": "LEGL 203", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/LEGL/203", 
+                    "name": "Administrative Law"
+                }, 
+                {
+                    "code": "LEGL 212", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/LEGL/212", 
+                    "name": "Trial Advocacy"
+                }, 
+                {
+                    "code": "LEGL 246", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/LEGL/246", 
+                    "name": "Litigation Asst Procedures"
+                }, 
+                {
+                    "code": "LEGL 248", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/LEGL/248", 
+                    "name": "Family Law"
+                }, 
+                {
+                    "code": "LEGL 249", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/LEGL/249", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Wills & Estates", 
+                    "variations": [
+                        "LEGL 249"
+                    ]
+                }, 
+                {
+                    "code": "LEGL 250", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/LEGL/250", 
+                    "name": "Torts/Personal Injury Ltg"
+                }, 
+                {
+                    "code": "LEGL 251", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/LEGL/251", 
+                    "name": "Real Estate Transactions"
+                }, 
+                {
+                    "code": "LEGL 280", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/LEGL/280", 
+                    "name": "Cooperative Education"
+                }
+            ], 
+            "name": "Paralegal", 
+            "url": "http://www.chegg.com/courses/atlantic/LEGL"
+        }, 
+        {
+            "abbr": "MATH", 
+            "courses": [
+                {
+                    "code": "MATH 073", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/MATH/073", 
+                    "frequency": 62, 
+                    "is_popular": true, 
+                    "name": "Intro to Algebra I-Prealgebra", 
+                    "variations": [
+                        "MATH 073"
+                    ]
+                }, 
+                {
+                    "code": "MATH 73", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/MATH/73", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Intro/Algebra I/Prealgebra", 
+                    "variations": [
+                        "MATH 73"
+                    ]
+                }, 
+                {
+                    "code": "MATH 074", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/MATH/074", 
+                    "frequency": 98, 
+                    "is_popular": true, 
+                    "name": "", 
+                    "variations": [
+                        "MATH 074"
+                    ]
+                }, 
+                {
+                    "code": "MATH 74", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/MATH/74", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Introduction to Algebra II", 
+                    "variations": [
+                        "MATH 74"
+                    ]
+                }, 
+                {
+                    "code": "MATH 121", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/MATH/121", 
+                    "frequency": 13, 
+                    "is_popular": true, 
+                    "name": "Applications of Mathematics", 
+                    "variations": [
+                        "MATH 121"
+                    ]
+                }, 
+                {
+                    "code": "MATH 122", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/MATH/122", 
+                    "frequency": 32, 
+                    "is_popular": true, 
+                    "name": "College Algebra", 
+                    "variations": [
+                        "MATH 122"
+                    ]
+                }, 
+                {
+                    "code": "MATH 128", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/MATH/128", 
+                    "name": "Trigonometry"
+                }, 
+                {
+                    "code": "MATH 150", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/MATH/150", 
+                    "frequency": 17, 
+                    "is_popular": true, 
+                    "name": "Precalculus", 
+                    "variations": [
+                        "MATH 150"
+                    ]
+                }, 
+                {
+                    "code": "MATH 152", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/MATH/152", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Linear Algebra", 
+                    "variations": [
+                        "MATH 152"
+                    ]
+                }, 
+                {
+                    "code": "MATH 153", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/MATH/153", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Discrete Mathematics", 
+                    "variations": [
+                        "MATH 153"
+                    ]
+                }, 
+                {
+                    "code": "MATH 155", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/MATH/155", 
+                    "frequency": 22, 
+                    "is_popular": true, 
+                    "name": "Calculus I", 
+                    "variations": [
+                        "MATH 155"
+                    ]
+                }, 
+                {
+                    "code": "MATH 156", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/MATH/156", 
+                    "frequency": 10, 
+                    "is_popular": true, 
+                    "name": "Calculus II", 
+                    "variations": [
+                        "MATH 156"
+                    ]
+                }, 
+                {
+                    "code": "MATH 220", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/MATH/220", 
+                    "frequency": 49, 
+                    "is_popular": true, 
+                    "name": "Statistical Methods", 
+                    "variations": [
+                        "MATH 220"
+                    ]
+                }, 
+                {
+                    "code": "MATH 255", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/MATH/255", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Calculus III", 
+                    "variations": [
+                        "MATH 255"
+                    ]
+                }, 
+                {
+                    "code": "MATH 256", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/MATH/256", 
+                    "name": "Differential Equations"
+                }, 
+                {
+                    "code": "MATH 101", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "MATH 101"
+                    ]
+                }, 
+                {
+                    "code": "MATH 151", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MATH 300", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MATH 0730L 01", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "MATHAD 01", 
+                        "MATHME 01"
+                    ]
+                }, 
+                {
+                    "code": "MATH 072", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MATH 01130", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MATH 150MD 02", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "MATHAD 02", 
+                        "MATHMD 02"
+                    ]
+                }, 
+                {
+                    "code": "MATH 120", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MATH 105", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "MATH 105"
+                    ]
+                }, 
+                {
+                    "code": "MATH 222", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MATH 119", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "MATH 119"
+                    ]
+                }, 
+                {
+                    "code": "MATH 150CD 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MATH 080", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "MATH 080"
+                    ]
+                }, 
+                {
+                    "code": "MATH 073074", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "MATH 073074"
+                    ]
+                }, 
+                {
+                    "code": "MATH 074OL 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MATH 074OL 021", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MATHA 1", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MATH 220MD 06", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MATH 074ME 03", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MATH 0D 1", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MATH 220STATS", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/atlantic/MATH"
+        }, 
+        {
+            "abbr": "MUSC", 
+            "courses": [
+                {
+                    "code": "MUSC 100", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/MUSC/100", 
+                    "frequency": 7, 
+                    "is_popular": true, 
+                    "name": "Music Appreciation", 
+                    "variations": [
+                        "MUSC 100"
+                    ]
+                }, 
+                {
+                    "code": "MUSC 101", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "MUSC 101"
+                    ]
+                }, 
+                {
+                    "code": "MUS 1", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/atlantic/MUSC"
+        }, 
+        {
+            "abbr": "NURS", 
+            "courses": [
+                {
+                    "code": "NURS 109", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/NURS/109", 
+                    "name": "LPN Transition Course"
+                }, 
+                {
+                    "code": "NURS 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/NURS/110", 
+                    "frequency": 7, 
+                    "is_popular": true, 
+                    "name": "Nursing I", 
+                    "variations": [
+                        "NURS 110"
+                    ]
+                }, 
+                {
+                    "code": "NURS 112", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/NURS/112", 
+                    "frequency": 5, 
+                    "is_popular": true, 
+                    "name": "Nursing II", 
+                    "variations": [
+                        "NURS 112"
+                    ]
+                }, 
+                {
+                    "code": "NURS 200", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/NURS/200", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Nursing III", 
+                    "variations": [
+                        "NURS 200"
+                    ]
+                }, 
+                {
+                    "code": "NURS 204", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/NURS/204", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Nursing Management", 
+                    "variations": [
+                        "NURS 204"
+                    ]
+                }, 
+                {
+                    "code": "NURS 206", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/NURS/206", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Nursing IV", 
+                    "variations": [
+                        "NURS 206"
+                    ]
+                }, 
+                {
+                    "code": "NURS 208", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/NURS/208", 
+                    "name": "Nursing Trends & Issues"
+                }, 
+                {
+                    "code": "NURS 296", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "NURS 296"
+                    ]
+                }, 
+                {
+                    "code": "NURS 101", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "NURS 101"
+                    ]
+                }
+            ], 
+            "name": "Nursing", 
+            "url": "http://www.chegg.com/courses/atlantic/NURS"
+        }, 
+        {
+            "abbr": "OSTM", 
+            "courses": [
+                {
+                    "code": "OSTM 101", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/OSTM/101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Keyboarding", 
+                    "variations": [
+                        "OSTM 101"
+                    ]
+                }, 
+                {
+                    "code": "OSTM 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/OSTM/110", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Keyboarding Doc Prod I", 
+                    "variations": [
+                        "OSTM 110"
+                    ]
+                }, 
+                {
+                    "code": "OSTM 141", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/OSTM/141", 
+                    "name": "Word Processing I"
+                }, 
+                {
+                    "code": "OSTM 142", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/OSTM/142", 
+                    "name": "Word Processing II"
+                }, 
+                {
+                    "code": "OSTM 210", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/OSTM/210", 
+                    "name": "Keybrding Doc Prod II"
+                }, 
+                {
+                    "code": "OSTM 230", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/OSTM/230", 
+                    "name": "Admin Office Procedures"
+                }, 
+                {
+                    "code": "OSTM 260", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/OSTM/260", 
+                    "frequency": 5, 
+                    "is_popular": true, 
+                    "name": "Business Communications", 
+                    "variations": [
+                        "OSTM 260"
+                    ]
+                }, 
+                {
+                    "code": "OSTM 261", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/OSTM/261", 
+                    "name": "Records & Info Mgmt"
+                }, 
+                {
+                    "code": "OSTM 262", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/OSTM/262", 
+                    "name": "Busn Pres Multimedia"
+                }, 
+                {
+                    "code": "OSTM 263", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/OSTM/263", 
+                    "name": "Publishing for Business"
+                }, 
+                {
+                    "code": "OSTM 280", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/OSTM/280", 
+                    "name": "Cooperative Education"
+                }, 
+                {
+                    "code": "OSTMD 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Office Systems Technology", 
+            "url": "http://www.chegg.com/courses/atlantic/OSTM"
+        }, 
+        {
+            "abbr": "PHIL", 
+            "courses": [
+                {
+                    "code": "PHIL 101", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PHIL/101", 
+                    "frequency": 16, 
+                    "is_popular": true, 
+                    "name": "Introduction to Logic", 
+                    "variations": [
+                        "PHIL 101"
+                    ]
+                }, 
+                {
+                    "code": "PHIL 102", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PHIL/102", 
+                    "frequency": 15, 
+                    "is_popular": true, 
+                    "name": "Intro to Philosophy", 
+                    "variations": [
+                        "PHIL 102"
+                    ]
+                }, 
+                {
+                    "code": "PHIL 104", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PHIL/104", 
+                    "name": "Bioethics/New Millennium"
+                }, 
+                {
+                    "code": "PHIL 105", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PHIL/105", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "World Myths and Legends", 
+                    "variations": [
+                        "PHIL 105"
+                    ]
+                }, 
+                {
+                    "code": "PHIL 106", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PHIL/106", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Intro/Social/Polit/Phil", 
+                    "variations": [
+                        "PHIL 106"
+                    ]
+                }, 
+                {
+                    "code": "PHIL 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PHIL/110", 
+                    "frequency": 5, 
+                    "is_popular": true, 
+                    "name": "Introduction to Ethics", 
+                    "variations": [
+                        "PHIL 110"
+                    ]
+                }, 
+                {
+                    "code": "PHIL 111", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PHIL/111", 
+                    "name": "World Systems/Ethics"
+                }, 
+                {
+                    "code": "PHIL 115", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PHIL/115", 
+                    "name": "Philosophy in Literature"
+                }, 
+                {
+                    "code": "PHIL 0000", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PHILL 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Philosophy", 
+            "url": "http://www.chegg.com/courses/atlantic/PHIL"
+        }, 
+        {
+            "abbr": "PHYS", 
+            "courses": [
+                {
+                    "code": "PHYS 100", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PHYS/100", 
+                    "frequency": 4, 
+                    "is_popular": true, 
+                    "name": "Conceptual Physics", 
+                    "variations": [
+                        "PHYS 100", 
+                        "PHYSC 100"
+                    ]
+                }, 
+                {
+                    "code": "PHYS 125", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PHYS/125", 
+                    "frequency": 4, 
+                    "is_popular": true, 
+                    "name": "College Physics I", 
+                    "variations": [
+                        "PHYS 125"
+                    ]
+                }, 
+                {
+                    "code": "PHYS 126", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PHYS/126", 
+                    "name": "College Physics II"
+                }, 
+                {
+                    "code": "PHYS 225", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PHYS/225", 
+                    "frequency": 6, 
+                    "is_popular": true, 
+                    "name": "General Physics I", 
+                    "variations": [
+                        "PHYS 225"
+                    ]
+                }, 
+                {
+                    "code": "PHYS 226", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PHYS/226", 
+                    "frequency": 5, 
+                    "is_popular": true, 
+                    "name": "General Physics II", 
+                    "variations": [
+                        "PHYS 226"
+                    ]
+                }, 
+                {
+                    "code": "PHY 211", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ANATPHYS 1", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PHYS 101", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "PHYS 101"
+                    ]
+                }, 
+                {
+                    "code": "PHYS 225ME 03", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/atlantic/PHYS"
+        }, 
+        {
+            "abbr": "PSYC", 
+            "courses": [
+                {
+                    "code": "PSYC 101", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PSYC/101", 
+                    "frequency": 100, 
+                    "is_popular": true, 
+                    "name": "General Psychology", 
+                    "variations": [
+                        "PSYC 101"
+                    ]
+                }, 
+                {
+                    "code": "PSYC 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PSYC/110", 
+                    "name": "Child Dev Theory Prac"
+                }, 
+                {
+                    "code": "PSYC 130", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PSYC/130", 
+                    "name": "Applied Human Relations"
+                }, 
+                {
+                    "code": "PSYC 135", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PSYC/135", 
+                    "frequency": 18, 
+                    "is_popular": true, 
+                    "name": "Child Psychology", 
+                    "variations": [
+                        "PSYC 135"
+                    ]
+                }, 
+                {
+                    "code": "PSYC 140", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PSYC/140", 
+                    "name": "Prin Guid Parent Teacher"
+                }, 
+                {
+                    "code": "PSYC 204", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PSYC/204", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "name": "Social Psychology", 
+                    "variations": [
+                        "PSYC 204"
+                    ]
+                }, 
+                {
+                    "code": "PSYC 207", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PSYC/207", 
+                    "name": ""
+                }, 
+                {
+                    "code": "PSYC 212", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PSYC/212", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Personality & Adjustment", 
+                    "variations": [
+                        "PSYC 212"
+                    ]
+                }, 
+                {
+                    "code": "PSYC 213", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PSYC/213", 
+                    "frequency": 6, 
+                    "is_popular": true, 
+                    "name": "Educational Psychology", 
+                    "variations": [
+                        "PSYC 213"
+                    ]
+                }, 
+                {
+                    "code": "PSYC 214", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PSYC/214", 
+                    "frequency": 11, 
+                    "is_popular": true, 
+                    "name": "Abnormal Psychology", 
+                    "variations": [
+                        "PSYC 214", 
+                        "PSYCHOLOGY 214"
+                    ]
+                }, 
+                {
+                    "code": "PSYC 226", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PSYC/226", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "name": "Psyc of Exceptionality", 
+                    "variations": [
+                        "PSY 226", 
+                        "PSYCH 226", 
+                        "PSYC 226"
+                    ]
+                }, 
+                {
+                    "code": "PSYC 230", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/PSYC/230", 
+                    "name": "Psych of Adulthood"
+                }, 
+                {
+                    "code": "PS 120", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSYCD 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSYC 135MD 02", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSYCHMD 04", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSYC 204OL 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSYCH 102", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSYCH 202", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSYCH 220", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSYC 2040", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSYCH 222", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSYC 310", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSYC 271", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Psychology", 
+            "url": "http://www.chegg.com/courses/atlantic/PSYC"
+        }, 
+        {
+            "abbr": "RELG", 
+            "courses": [
+                {
+                    "code": "RELG 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/RELG/110", 
+                    "frequency": 14, 
+                    "is_popular": true, 
+                    "name": "World Religions", 
+                    "variations": [
+                        "RELG 110"
+                    ]
+                }, 
+                {
+                    "code": "RELG 111", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/RELG/111", 
+                    "name": "World Systems/Ethics"
+                }, 
+                {
+                    "code": "RELG 101", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "RELG 101"
+                    ]
+                }, 
+                {
+                    "code": "RELG 110OL 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Religion", 
+            "url": "http://www.chegg.com/courses/atlantic/RELG"
+        }, 
+        {
+            "abbr": "SOCL", 
+            "courses": [
+                {
+                    "code": "SOCL 101", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/SOCL/101", 
+                    "frequency": 106, 
+                    "is_popular": true, 
+                    "name": "Principles of Sociology", 
+                    "variations": [
+                        "SOCL 101", 
+                        "SOC 101"
+                    ]
+                }, 
+                {
+                    "code": "SOCL 102", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/SOCL/102", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "name": "Contemp Social Problems", 
+                    "variations": [
+                        "SOCL 102"
+                    ]
+                }, 
+                {
+                    "code": "SOCL 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/SOCL/110", 
+                    "frequency": 12, 
+                    "is_popular": true, 
+                    "name": "Minority/Intergrp Relat", 
+                    "variations": [
+                        "SOCL 110", 
+                        "SOC 110"
+                    ]
+                }, 
+                {
+                    "code": "SOCL 120", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/SOCL/120", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOCL 202", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/SOCL/202", 
+                    "name": "Marriage & the Family"
+                }, 
+                {
+                    "code": "SOCL 204", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/SOCL/204", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "name": "Social Psychology", 
+                    "variations": [
+                        "SOCL 204", 
+                        "SOC 204"
+                    ]
+                }, 
+                {
+                    "code": "SOCL 206", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/SOCL/206", 
+                    "name": "Juvenile Justice"
+                }, 
+                {
+                    "code": "SOCL 207", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/SOCL/207", 
+                    "name": ""
+                }, 
+                {
+                    "code": "SOC 210", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "SOC 201", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "SOCL 101OL 01", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "SOCL 115", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "SOC 216", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "SOCL 101EDUC 101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "SOC 100", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "SOC 1100", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "SOCL 206OL 012", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/atlantic/SOCL"
+        }, 
+        {
+            "abbr": "SPAN", 
+            "courses": [
+                {
+                    "code": "SPAN 111", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/SPAN/111", 
+                    "frequency": 4, 
+                    "is_popular": true, 
+                    "name": "Elementary Spanish I", 
+                    "variations": [
+                        "SPAN 111", 
+                        "SPANISH 111"
+                    ]
+                }, 
+                {
+                    "code": "SPAN 112", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/SPAN/112", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Elementary Spanish II", 
+                    "variations": [
+                        "SPANI 112"
+                    ]
+                }, 
+                {
+                    "code": "SPAN 201", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/SPAN/201", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Interm Spanish I", 
+                    "variations": [
+                        "SPAN 201"
+                    ]
+                }, 
+                {
+                    "code": "SPANI 1112", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "SPAN 102", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "SPAN 1", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "SPANISH 1"
+                    ]
+                }, 
+                {
+                    "code": "SPAN 110", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "SPAN 110"
+                    ]
+                }, 
+                {
+                    "code": "SPAN 101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "SPANISH 2", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Spanish", 
+            "url": "http://www.chegg.com/courses/atlantic/SPAN"
+        }, 
+        {
+            "abbr": "SPCH", 
+            "courses": [
+                {
+                    "code": "SPCH 130", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/SPCH/130", 
+                    "frequency": 4, 
+                    "is_popular": true, 
+                    "name": "Signed English", 
+                    "variations": [
+                        "SPCH 130"
+                    ]
+                }
+            ], 
+            "name": "Speech", 
+            "url": "http://www.chegg.com/courses/atlantic/SPCH"
+        }, 
+        {
+            "abbr": "TCOM", 
+            "courses": [
+                {
+                    "code": "TCOM 125", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/TCOM/125", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "name": "Technical Communication", 
+                    "variations": [
+                        "TCOM 125"
+                    ]
+                }
+            ], 
+            "name": "Technical Communication", 
+            "url": "http://www.chegg.com/courses/atlantic/TCOM"
+        }, 
+        {
+            "abbr": "THEA", 
+            "courses": [
+                {
+                    "code": "THEA 110", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/THEA/110", 
+                    "frequency": 17, 
+                    "is_popular": true, 
+                    "name": "Introduction to Theater", 
+                    "variations": [
+                        "THEA 110"
+                    ]
+                }, 
+                {
+                    "code": "THEA 111", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/THEA/111", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Acting I", 
+                    "variations": [
+                        "THEA 111"
+                    ]
+                }, 
+                {
+                    "code": "THEA 112", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/THEA/112", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "name": "Acting II", 
+                    "variations": [
+                        "THEA 112"
+                    ]
+                }, 
+                {
+                    "code": "THEAT 101", 
+                    "frequency": 3, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "THEAT 101"
+                    ]
+                }
+            ], 
+            "name": "Theater", 
+            "url": "http://www.chegg.com/courses/atlantic/THEA"
+        }, 
+        {
+            "abbr": "TVRF", 
+            "courses": [
+                {
+                    "code": "TVRF 103", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/TVRF/103", 
+                    "name": "Television Production I"
+                }, 
+                {
+                    "code": "TVRF 180", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/TVRF/180", 
+                    "name": "Radio Production I"
+                }, 
+                {
+                    "code": "TVRF 225", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/TVRF/225", 
+                    "name": ""
+                }, 
+                {
+                    "code": "TVRF 230", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/TVRF/230", 
+                    "name": "Visual Communication"
+                }, 
+                {
+                    "code": "TVRF 280", 
+                    "course_url": "http://www.chegg.com/courses/atlantic/TVRF/280", 
+                    "name": "Radio Production II"
+                }
+            ], 
+            "name": "Television, Radio and Film", 
+            "url": "http://www.chegg.com/courses/atlantic/TVRF"
+        }
+    ], 
+    "name": "atlantic", 
+    "popular_courses": []
+}

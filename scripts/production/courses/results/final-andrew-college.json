@@ -1,0 +1,390 @@
+{
+    "all_stats": {
+        "num_courses": 0, 
+        "num_departments": 31, 
+        "popular_courses": {
+            "rmp_and_chegg": 0, 
+            "rmp_only": 27, 
+            "total": 27
+        }
+    }, 
+    "departments": [
+        {
+            "abbr": "ART", 
+            "courses": [
+                {
+                    "code": "ART 1", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ART 201", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "ART 201"
+                    ]
+                }, 
+                {
+                    "code": "ART 101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ART 123", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Art", 
+            "url": "http://www.chegg.com/courses/1567831/ART"
+        }, 
+        {
+            "abbr": "ASL", 
+            "courses": [], 
+            "name": "American Sign Language", 
+            "url": "http://www.chegg.com/courses/1567831/ASL"
+        }, 
+        {
+            "abbr": "BIO", 
+            "courses": [], 
+            "name": "Biology", 
+            "url": "http://www.chegg.com/courses/1567831/BIO"
+        }, 
+        {
+            "abbr": "BUS", 
+            "courses": [], 
+            "name": "Business", 
+            "url": "http://www.chegg.com/courses/1567831/BUS"
+        }, 
+        {
+            "abbr": "CHE", 
+            "courses": [
+                {
+                    "code": "E 71982", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "CHEM 121", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "CHE 121"
+                    ]
+                }
+            ], 
+            "name": "Chemistry", 
+            "url": "http://www.chegg.com/courses/1567831/CHE"
+        }, 
+        {
+            "abbr": "CLT", 
+            "courses": [], 
+            "name": "Modern Languages & Cultures - Comparative Literature", 
+            "url": "http://www.chegg.com/courses/1567831/CLT"
+        }, 
+        {
+            "abbr": "CRJ", 
+            "courses": [], 
+            "name": "Criminal Justice", 
+            "url": "http://www.chegg.com/courses/1567831/CRJ"
+        }, 
+        {
+            "abbr": "EDU", 
+            "courses": [
+                {
+                    "code": "EDU 237", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "EDU 227", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "EDU 124", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "EDU 221", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Education", 
+            "url": "http://www.chegg.com/courses/1567831/EDU"
+        }, 
+        {
+            "abbr": "ENG", 
+            "courses": [
+                {
+                    "code": "ENGL 111", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "ENG 111"
+                    ]
+                }, 
+                {
+                    "code": "ENGL 1101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "ENG 112", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "English", 
+            "url": "http://www.chegg.com/courses/1567831/ENG"
+        }, 
+        {
+            "abbr": "ESL", 
+            "courses": [], 
+            "name": "English As A Second Language", 
+            "url": "http://www.chegg.com/courses/1567831/ESL"
+        }, 
+        {
+            "abbr": "FRE", 
+            "courses": [], 
+            "name": "French", 
+            "url": "http://www.chegg.com/courses/1567831/FRE"
+        }, 
+        {
+            "abbr": "HED", 
+            "courses": [], 
+            "name": "Health Education", 
+            "url": "http://www.chegg.com/courses/1567831/HED"
+        }, 
+        {
+            "abbr": "HIS", 
+            "courses": [], 
+            "name": "History", 
+            "url": "http://www.chegg.com/courses/1567831/HIS"
+        }, 
+        {
+            "abbr": "HUM", 
+            "courses": [], 
+            "name": "Humanities", 
+            "url": "http://www.chegg.com/courses/1567831/HUM"
+        }, 
+        {
+            "abbr": "IFS", 
+            "courses": [], 
+            "name": "Information Studies", 
+            "url": "http://www.chegg.com/courses/1567831/IFS"
+        }, 
+        {
+            "abbr": "JRN", 
+            "courses": [], 
+            "name": "Journalism", 
+            "url": "http://www.chegg.com/courses/1567831/JRN"
+        }, 
+        {
+            "abbr": "MAT", 
+            "courses": [
+                {
+                    "code": "MATH 111", 
+                    "frequency": 2, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "MATH 111"
+                    ]
+                }
+            ], 
+            "name": "Mathematics", 
+            "url": "http://www.chegg.com/courses/1567831/MAT"
+        }, 
+        {
+            "abbr": "MUC", 
+            "courses": [], 
+            "name": "Class Instruction In Music", 
+            "url": "http://www.chegg.com/courses/1567831/MUC"
+        }, 
+        {
+            "abbr": "MUS", 
+            "courses": [
+                {
+                    "code": "MUS 1751", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MUSIC 101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "MUSC 1101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/1567831/MUS"
+        }, 
+        {
+            "abbr": "MUSIC", 
+            "courses": [], 
+            "name": "Music", 
+            "url": "http://www.chegg.com/courses/1567831/MUSIC"
+        }, 
+        {
+            "abbr": "ODL", 
+            "courses": [], 
+            "name": "Organizational Development And Leadership", 
+            "url": "http://www.chegg.com/courses/1567831/ODL"
+        }, 
+        {
+            "abbr": "PED", 
+            "courses": [
+                {
+                    "code": "PED 1111", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Physical Ed", 
+            "url": "http://www.chegg.com/courses/1567831/PED"
+        }, 
+        {
+            "abbr": "PHY", 
+            "courses": [], 
+            "name": "Physics", 
+            "url": "http://www.chegg.com/courses/1567831/PHY"
+        }, 
+        {
+            "abbr": "POS", 
+            "courses": [], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/1567831/POS"
+        }, 
+        {
+            "abbr": "PSC", 
+            "courses": [], 
+            "name": "Political Science", 
+            "url": "http://www.chegg.com/courses/1567831/PSC"
+        }, 
+        {
+            "abbr": "PSY", 
+            "courses": [
+                {
+                    "code": "PSY 202", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSY 101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "PSY 121", 
+                    "frequency": 5, 
+                    "is_popular": true, 
+                    "rmp_only": true, 
+                    "variations": [
+                        "PSY 121"
+                    ]
+                }, 
+                {
+                    "code": "PSY 111", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Clinical Counseling", 
+            "url": "http://www.chegg.com/courses/1567831/PSY"
+        }, 
+        {
+            "abbr": "RPH", 
+            "courses": [
+                {
+                    "code": "RPH 122RPH 121", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }, 
+                {
+                    "code": "RPH 122", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Religion And Philosophy", 
+            "url": "http://www.chegg.com/courses/1567831/RPH"
+        }, 
+        {
+            "abbr": "SOC", 
+            "courses": [], 
+            "name": "Sociology", 
+            "url": "http://www.chegg.com/courses/1567831/SOC"
+        }, 
+        {
+            "abbr": "SPA", 
+            "courses": [
+                {
+                    "code": "SPAN 1111", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Speech Pathology And Audiology", 
+            "url": "http://www.chegg.com/courses/1567831/SPA"
+        }, 
+        {
+            "abbr": "STL", 
+            "courses": [
+                {
+                    "code": "STL 101", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Student Leadership", 
+            "url": "http://www.chegg.com/courses/1567831/STL"
+        }, 
+        {
+            "abbr": "THE", 
+            "courses": [
+                {
+                    "code": "THEA 000", 
+                    "frequency": 1, 
+                    "is_popular": true, 
+                    "rmp_only": true
+                }
+            ], 
+            "name": "Theatre", 
+            "url": "http://www.chegg.com/courses/1567831/THE"
+        }
+    ], 
+    "name": "1567831", 
+    "popular_courses": []
+}

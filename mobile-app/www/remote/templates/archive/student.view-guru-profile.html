@@ -1,0 +1,58 @@
+
+
+<ion-view hide-nav-bar="true" class='student-view-guru-profile'>
+    <ion-header-bar class="header-bar">
+      <a class='button button-clear button-back' nav-direction="back" ng-click="goBack()">Back</a>
+        <h5 class="title capitalize">{{guru.name.split(' ')[0]}}'s PROFILE</h5>
+    </ion-header-bar>
+  <ion-content>
+    <div class='pure-g-c flex-column flex-space-between'>
+      <div class='pure-g flex-item-c'>
+        <div class='guru-prof-pic' style='background-image: url({{guru.profile_url}});'> </div>
+      </div>
+    </div>
+    <div class='pure-g center'>
+      <div class='pure-u-1-3 padding-1em'>
+        <span class='guru-profile-number' ng-hide='!guru.guru_avg_rating'>
+        {{guru.guru_avg_rating}}</span>
+        <span class='guru-profile-number' ng-show='!guru.guru_avg_rating'>
+        0</span>
+        <br>
+        <span class='number-subheader'>
+        rating
+        </span>
+      </div>
+      <div class='pure-u-1-3 padding-1em'>
+        <span class='guru-profile-number' ng-hide='!guru.guru_sessions.length'>
+        {{guru.guru_sessions.length}} </span>
+        <span class='guru-profile-number' ng-show='!guru.guru_sessions.length'>
+        0</span>
+        <br>
+        <span class='number-subheader'>
+        sessions
+        </span>
+      </div>
+      <div class='pure-u-1-3 padding-1em'>
+        <span class='guru-profile-number'>
+        $1</span>
+        <br>
+        <span class='number-subheader'>
+          hourly
+        </span>
+      </div>
+    </div>
+    <div class='pure-g-c center'>
+      <div class='pure-u-1 align-left padding-1em'>
+        <!-- <span class='course-tag' ng-repreat="course in guru.guru_courses">{{course.short_name}}</span> -->
+
+        <span class='course-tag' ng-repeat='course in guru.guru_courses'> {{course.short_name}} </span>
+      </div>
+    </div>
+    <div class='pure-g-c center guru-intro-wrapper'>
+      <div class='pure-u-1 align-left'>
+        <p>
+        {{guru.guru_introduction}}</p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
