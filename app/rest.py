@@ -2446,8 +2446,43 @@ class AdminUniversityView(restful.Resource):
         return "UNAUTHORIZED", 201
 
 class AdminUniversityDeptCoursesView(restful.Resource):
+    
+        
+    @marshal_with(AdminUniversityDeptCourseSerializer)
     def post(self, auth_token, uni_id, dept_id):
-        pass
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+
+        if auth_token and auth_token in APPROVED_ADMIN_TOKENS:
+            
+            u = University.query.get(uni_id)
+            if not u:
+                return "MISSING DATA", 202
+
+            d = Department.query.get(dept_id)
+            if not d:
+                return "MISSING DATA", 202
+
+            # parse the response
+            course_list_json = json.loads(request.json)
+            
+            for course_json in course_list_json:
+                pprint(dept_json)
+
+                course = Course()
+                course.department_id = d.id
+                course.university_id = u.id
+                course.variations = "|".join(course_json.get('variations'))
+                course.is_popular = course_json.get('is_popular')
+                
+                db_session.add(course)
+            
+            db_session.commit()
+            
+            return d.courses, 200
+        
+        return "UNAUTHORIZED", 201
 
 # create a department
 class AdminUniversityDeptView(restful.Resource):
@@ -2483,58 +2518,12 @@ class AdminUniversityDeptView(restful.Resource):
                 dept.university_id = u.id
                 db_session.add(dept)
             
-            # db_session.commit()
-            print len(u.departments)
+            db_session.commit()
             
             return u.departments, 200
         
         return "UNAUTHORIZED", 201
-            
-
-
-        # # time_created = Column(DateTime)
-        # # time_updated = Column(DateTime)
-        # # is_popular = Column(Boolean)
-        # # source = Column(String, default = 'chegg')
-
-        # # times_mentioned = Column(Integer)
-
-        # # num_courses = Column(Integer)
-        # # num_popular_courses = Column(Integer)
-
-        # # code = Column(String)
-        # # abbr = Column(String)
-        # # name = Column(String)
-        # # short_name = Column(String)
-        # # variations = Column(String)
-        # # title = Column(String)
-
-        # # new_db_objs = []
-
-        # # department = request.json.get('department')
-        # # d = Department()
-        # # d.code = department['code'].upper()
-        # # d.title = department['title']
-        # # d.university_id = uni_id
-        # # new_db_objs.append(d)
-
-        # # courses = department.get('courses')
-        # # if courses:
-        # #     for course in courses:
-        # #         c = Course()
-        # #         c.department_short = d.code
-        # #         c.department_long = d.title
-        # #         c.short_name = course['code'].upper()
-        # #         c.course_number = course["code"].upper().split(" ")[::-1][0]
-        # #         c.full_name = course["title"]
-        # #         c.university_id = uni_id
-        # #         new_db_objs.append(c)
-
-        # # db_session.add_all(new_db_objs)
-        # # db_session.commit()
-        # # results = {'message': str(len(new_db_objs)) + ' objects processed'}
-
-        # return jsonify(success=results)
+        
 
 ####################
 ### END (OFFICIAL) #

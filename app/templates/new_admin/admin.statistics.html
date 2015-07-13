@@ -1,0 +1,372 @@
+{% extends 'new_admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/new_admin/plugins/ionslider/ion.rangeSlider.css" rel="stylesheet" type="text/css" />
+    <!-- ion slider Nice -->
+    <link href="/static/new_admin/plugins/ionslider/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css" />
+    <link href="/static/new_admin/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="/static/new_admin/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+
+      <div class="content-wrapper" style="min-height: 918px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Statistics
+            <small>Numbers we are proud of</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-bar-chart-o"></i> Home</a></li>
+            <li>statistics</li>
+            <li class="active">app usage</li>
+          </ol>
+        </section>
+
+
+        <section class="content">
+
+
+          <div class="row">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3>{{stats.total_courses}}</h3>
+                  <p>Unique Courses</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+                <a href="#" class="small-box-footer">Within US Only</a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-orange">
+                <div class="inner">
+                  <h3>{{stats.total_universities}}<sup style="font-size: 20px"></sup></h3>
+                  <p>US Colleges</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-home"></i>
+                </div>
+                <a href="#" class="small-box-footer">Add international support <strong>soon</strong> </a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-gray">
+                <div class="inner">
+                  <h3>{{stats.total_users}}</h3>
+                  <p>Active Users</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">Active = active within last month</a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-purple">
+                <div class="inner">
+                  <h3>{{stats.total_depts}}</h3>
+                  <p>Unique Departments</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" class="small-box-footer">Across all universities</a>
+              </div>
+            </div><!-- ./col -->
+          </div>
+
+          <div class="row">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-olive">
+                <div class="inner">
+                  <h3>{{stats.total_gurus}}</h3>
+                  <p>Total Gurus</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person"></i>
+                </div>
+                <a href="#" class="small-box-footer">Whoever has added courses</a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-navy">
+                <div class="inner">
+                  <h3>{{stats.total_popular_courses}}<sup style="font-size: 20px"></sup></h3>
+                  <p>Popular Courses</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document" style='color:whitesmoke;'></i>
+                </div>
+                <a href="#" class="small-box-footer">Changes with usage<strong>soon</strong> </a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-maroon disabled">
+                <div class="inner">
+                  <h3>{{stats.gurus_24h}}</h3>
+                  <p>Active Gurus </p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">Active = active within 24 hours</a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-teal">
+                <div class="inner">
+                  <h3>{{stats.users_24h}}</h3>
+                  <p>Active Users</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" class="small-box-footer">Across all universities</a>
+              </div>
+            </div><!-- ./col -->
+          </div>
+
+          <div class='row'>
+            <div class='col-md-8'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Most Popular Universities</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Name</th>
+                          <th>Number of Users</th>
+                          <th>Number of Gurus</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><a href="#">1</a></td>
+                          <td>Berkeley</td>
+                          <td><span class="label label-success">1020</span></td>
+                          <td><div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div></td>
+                        </tr>
+                        <tr>
+                          <td><a href="#">1</a></td>
+                          <td>Berkeley</td>
+                          <td><span class="label label-success">1020</span></td>
+                          <td><div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div></td>
+                        </tr><tr>
+                          <td><a href="#">1</a></td>
+                          <td>Berkeley</td>
+                          <td><span class="label label-success">1020</span></td>
+                          <td><div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div></td>
+                        </tr><tr>
+                          <td><a href="#">1</a></td>
+                          <td>Berkeley</td>
+                          <td><span class="label label-success">1020</span></td>
+                          <td><div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div></td>
+                        </tr><tr>
+                          <td><a href="#">1</a></td>
+                          <td>Berkeley</td>
+                          <td><span class="label label-success">1020</span></td>
+                          <td><div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div></td>
+                        </tr><tr>
+                          <td><a href="#">1</a></td>
+                          <td>Berkeley</td>
+                          <td><span class="label label-success">1020</span></td>
+                          <td><div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div></td>
+                        </tr><tr>
+                          <td><a href="#">1</a></td>
+                          <td>Berkeley</td>
+                          <td><span class="label label-success">1020</span></td>
+                          <td><div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+            <div class='col-md-4'>
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">New Users</h3>
+                  <div class="box-tools pull-right">
+                    <span class="label label-danger">8 New Users Today</span>
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="/static/new_admin/dist/img/user2-160x160.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="javascript::;" class="product-title">Jeff L. <span class="label label-warning pull-right">Berkeley</span></a>
+                        <span class="product-description">
+                          I like to tutor on a weekly basis...
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="/static/new_admin/dist/img/user1-128x128.jpg" alt="Product Image">
+                      </div>
+                      <div class="product-info">
+                        <a href="javascript::;" class="product-title">Tony H <span class="label label-info pull-right">UCSD</span></a>
+                        <span class="product-description">
+                          A+ in all courses so far, except all of them
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="/static/new_admin/dist/img/user5-128x128.jpg" alt="Product Image">
+                      </div>
+                      <div class="product-info">
+                        <a href="javascript::;" class="product-title">Sarah L<span class="label label-danger pull-right">UCR</span></a>
+                        <span class="product-description">
+                          No introduction yet
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="/static/new_admin/dist/img/user3-128x128.jpg" alt="Product Image">
+                      </div>
+                      <div class="product-info">
+                        <a href="javascript::;" class="product-title">Tina F<span class="label label-success pull-right">Berkeley</span></a>
+                        <span class="product-description">
+                          No introduction yet
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="#" onclick='alert("Coming Soon!")' class="uppercase">View All New Users</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <!-- USERS LIST -->
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Random Schools</h3>
+                  <div class="box-tools pull-right">
+                    <span class="label label-warning">These universities are insignificant</span>
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                  <ul class="users-list clearfix">
+                    <li>
+                      <img height="128" width="128" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOJfKs6uHsrqT6OYTT5x_Lpnz8HeI4Dw_9KIl_X7U_hEdDmGJTyTzCWQ" alt="User Image">
+                      <a class="users-list-name" href="#">UC Berkeley</a>
+                      <span class="users-list-date">California</span>
+                    </li>
+                    <li>
+
+                      <img height="128" width="128" src="http://www.pies.ucla.edu/img/UCLA_seal.gif">
+                      <a class="users-list-name" href="#">UCLA</a>
+                      <span class="users-list-date">California</span>
+                    </li>
+                    <li>
+                      <img height="128" width="128" src="http://www.sandiegotroll.com/images/Seal_Of_San_Diego.svg.png">
+                      <a class="users-list-name" href="#">UC San Diego</a>
+                      <span class="users-list-date">California</span>
+                    </li>
+                    <li>
+                      <img height="128" width="128" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Uc_seal_black.png/768px-Uc_seal_black.png">
+                      <a class="users-list-name" href="#">UC Riverside</a>
+                      <span class="users-list-date">California</span>
+                    </li>
+
+                    <li>
+                      <img height="128" width="128" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Large_university-of-texas_seal_rgb(199-91-18).png">
+                      <a class="users-list-name" href="#">UT Austin</a>
+                      <span class="users-list-date">Texas</span>
+                    </li>
+                    <li>
+                      <img height="128" width="128" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSL4yGhCkl86gS_tf7VcparlxD6G-Af1zZHetFvm_7noxlesCOkVQ">
+                      <a class="users-list-name" href="#">University of Florida</a>
+                      <span class="users-list-date">UF</span>
+                    </li>
+                    <li>
+                      <img height="128" width="128" src="http://www-personal.umich.edu/~samoore/images/uva-seal.png">
+                      <a class="users-list-name" href="#">University of Virginia</a>
+                      <span class="users-list-date">Virginia</span>
+                    </li>
+                    <li>
+                      <img height="128" width="128" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSoRWcjkmpiGNg4kVSIGnj4Y1joZNcL1p-HT_bmw2at1KIi5MhcstkgyS0">
+                      <a class="users-list-name" href="#">Georgia Tech</a>
+                      <span class="users-list-date">Georgia</span>
+                    </li>
+
+                    <li>
+                      <img height="128" width="128" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQfP4JiQ_KDCGWF4n3_Xanlt2ptzhZpmEAF5UKsnYUjEOi7E1VmpN_v3cM">
+                      <a class="users-list-name" href="#">USC</a>
+                      <span class="users-list-date">California</span>
+                    </li>
+
+                    <li>
+                      <img height="128" width="128" src="http://faculty.ucmerced.edu/hbhat/UCMercedSeal400.jpg">
+                      <a class="users-list-name" href="#">UC Merced</a>
+                      <span class="users-list-date">California</span>
+                    </li>
+                    <li>
+                      <img height="128" width="128" src="http://web.stanford.edu/~mjd/stanford_seal.png">
+                      <a class="users-list-name" href="#">Stanford</a>
+                      <span class="users-list-date">California</span>
+                    </li>
+                    <li>
+                      <img height="128" width="128" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/The_University_of_California_1868_UCSF.svg/512px-The_University_of_California_1868_UCSF.svg.png">
+                      <a class="users-list-name" href="#">UCSF</a>
+                      <span class="users-list-date">California</span>
+                    </li>
+                  </ul><!-- /.users-list -->
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="#" onclick='alert("coming-soon!")' class="uppercase">View All Universities</a>
+                </div><!-- /.box-footer -->
+              </div><!--/.box -->
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/new_admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/new_admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/new_admin/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="/static/new_admin/plugins/timepicker/bootstrap-timepicker.js" type="text/javascript"></script>
+<script src="/static/js/new_admin/mandrill.js" type="text/javascript"></script>
+
+{% endblock %}

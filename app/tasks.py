@@ -113,6 +113,40 @@ def check_proposal_status(proposal_id, previous_status):
         return
 
 
+@periodic_task(run_every=crontab(minute=0, crontab(minute=0, hour='*/1')), name="tasks.calculate_stats")
+def update_stats_hourly():
+
+    s = Stats.query.get(1)
+    s.last_updated = datetime.now()
+    s.total_users = len(User.query.all())
+    s.total_gurus = len([user.is_a_guru or user.guru_courses for user in User.query.all() if user.is_a_guru])
+    s.total_universities = len(University.query.all())
+    print s.total_users, s.total_gurus, s.total_universities
+    s.total_courses = 0
+    s.total_depts = 0
+    s.total_popular_courses= 0
+
+
+    for u in University.query.all():
+        u.num_courses = len(u.courses)
+        u.num_depts = len(u.departments)
+        # u.num_popular_courses = len(u.popular_courses)
+
+        s.total_courses += u.num_courses
+        s.total_depts += u.num_depts
+        s.total_popular_courses += u.num_popular_courses
+        db_session.commit()
+
+
+    ## calculate all students
+    ## calculate all universities
+    ## calculate all gurus
+    ## calculat all courses
+    ## calculate all popular courses
+    ## calculat all universities departments
+    ## Active users
+    ## Active gurus
+
 @periodic_task(run_every=crontab(minute=0, hour=0), name="tasks.update_university_guru_rankings")
 def update_university_guru_rankings():
     for u in University.query.all():

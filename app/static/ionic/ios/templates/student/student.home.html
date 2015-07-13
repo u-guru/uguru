@@ -1,0 +1,67 @@
+<ion-view view-title="find a guru">
+  
+  <div class="bar bar-subheader">
+    <div class="row center">
+      <div class="col border-bottom">MY CLASSES</div>
+      <div class="col">PREVIOUS SESSIONS</div>
+    </div>
+  </div>
+
+
+  <ion-nav-buttons side="secondary">
+    <button ng-click="submitSupport()" ng-disabled="!support.message" class="button button-clear button-positive">save</button>
+  </ion-nav-buttons>
+  
+  <ion-content>
+    <div class="add-class margin-top-40">
+      <div class="green-box"><span class="icon ion-plus"></span></div>
+      <div class="md-box">
+        <div class="text">
+          Add a class ...
+        </div>
+      </div>
+    </div>
+  </ion-content>
+
+  <div class="bar bar-footer uguru-footer">
+      <div class="row">
+        <div class="col center border-bottom"><img src='./img/glass.png' class='width'></div>
+        <div class="col center"><img src='./img/book.png' class='width'></div>
+        <div class="col center"><img src='./img/setting.png' class='width'></div>
+      </div>
+  </div>
+
+  <script id="templates/welcomePopup.html" type="text/ng-template">
+    <div class='row'>
+      <div class="col">
+        <div class="center">
+            <img style="background:rgba(105, 179, 165, 1)" src='./img/uguru-04.png' width="60%" class="uguru_glass center">        
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p style="font-size:2.25em; color:rgba(0,0,0,0.7)"class="bold-font center font-24 line-height-120">Welcome!</p>
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col">
+        <p style="font-size:15px;"class="osreg-font center grey">
+        We d like to notify tou when your Guru s<br>
+        accept your request for help.<br>
+        Turn norifications on?
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col">
+        <button class="button button-full button-positive footer-button" ng-click="$confirmPopup.close();">
+          Get Started
+        </button>
+        <a class="button button-full button-outline" ng-click="goToStudentAction();" style="background-color:white; border:0px;color:rgba(105, 179, 165, 1); min-height:0px !important;height:30px;">
+          No Thanks
+        </a>
+      </div>
+    </div>
+  </script>
+
+</ion-view>

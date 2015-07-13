@@ -486,9 +486,9 @@ class University(Base):
     admin_approved = Column(Boolean, default = False)
     contributed_user_id = Column(Integer)
 
-    num_popular_courses = Column(Integer)
-    num_courses = Column(Integer)
-    num_students = Column(Integer)
+    num_popular_courses = Column(Integer, default = 0)
+    num_courses = Column(Integer, default = 0)
+    num_students = Column(Integer, default = 0)
     #num_depts = Column(Integer) # TODO SAMIR
     num_gurus = Column(Integer, default =0)
     num_depts = Column(Integer, default =0)
@@ -812,15 +812,15 @@ class Stats(Base):
     __tablename__ ='stats'
     id = Column(Integer, primary_key = True)    
     last_updated = Column(DateTime)
-    total_courses = Column(Integer)
-    total_universities = Column(Integer)
-    total_users = Column(Integer)
-    total_gurus = Column(Integer)
-    total_depts = Column(Integer)
-    total_popular_courses = Column(Integer)
-    gurus_24h = Column(Integer)
-    users_24h = Column(Integer)
-    visitors_24 = Column(Integer)
+    total_courses = Column(Integer, default=0)
+    total_universities = Column(Integer, default=0)
+    total_users = Column(Integer, default=0)
+    total_gurus = Column(Integer, default=0)
+    total_depts = Column(Integer, default=0)
+    total_popular_courses = Column(Integer, default=0)
+    gurus_24h = Column(Integer, default=0)
+    users_24h = Column(Integer, default=0)
+    visitors_24 = Column(Integer, default=0)
 
 
 class Queue(Base):
@@ -1815,6 +1815,8 @@ class Course(Base):
     __tablename__ = 'course'
     id = Column(Integer, primary_key=True)
     time_added = Column(DateTime)
+    # time_created = Column(DateTime)
+    # time_updated = Column(DateTime)
     name = Column(String) #Usually department + course_number
 
     short_name = Column(String) #Casual shorted version that students use

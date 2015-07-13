@@ -58,6 +58,13 @@ def admin_login():
     return render_template("new_admin/login.html", error=error)
 
 
+@app.route('/admin/statistics/')
+def admin_statistics():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    stats = Stats.query.get(1)
+    return render_template("new_admin/admin.statistics.html", stats=stats)
+
 ###############
 ## Investors ##
 ###############

@@ -399,6 +399,7 @@ AdminUniversitySerializer = {
 }
 
 AdminUniversityDeptSerializer = {
+    'id': fields.Integer,
     'time_created' : fields.DateTime,
     'time_updated' : fields.DateTime,
     'is_popular' : fields.Boolean,
@@ -412,6 +413,16 @@ AdminUniversityDeptSerializer = {
     'short_name': fields.String,
     'variations': fields.String,
     'title' :  fields.String
+}
+
+AdminUniversityDeptCourseSerializer = {
+    'id': fields.Integer,
+    'time_added': fields.DateTime,
+    'name': fields.String,
+    'short_name': fields.String,
+    'is_popular': fields.Boolean,
+    'variations': fields.String,
+    'times_mentioned': fields.Integer
 }
 
 SkillSerializer = {
