@@ -251,9 +251,9 @@ if __name__ == '__main__':
 			json.dump(obj=SCHOOLS, fp=outfile, indent=4, sort_keys=True)
 		print("Dumped school data to file", )
 	
-	# Iterates through chegg courses
-	index = 2800
-	for school in SCHOOLS[2800:]:
+	# Iterates through chegg 
+	index = 1260
+	for school in SCHOOLS[1260:1270]:
 		index += 1
 		school["name"] = school["name"].replace("/"," ")
 		print(str(index) + " Attempting to load course information for " + school["name"])
