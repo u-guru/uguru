@@ -113,7 +113,7 @@ def check_proposal_status(proposal_id, previous_status):
         return
 
 
-@periodic_task(run_every=crontab(minute=0, crontab(minute=0, hour='*/1'), name="tasks.calculate_stats")
+@periodic_task(run_every=crontab(minute=0, hour='*/1'), name="tasks.calculate_stats")
 def update_stats_hourly():
 
     s = Stats.query.get(1)
