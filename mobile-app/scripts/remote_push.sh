@@ -55,10 +55,17 @@ echo 'pushing to git, to the master branch'
 echo
 echo
 git push origin master
+echo
+echo
+echo 'pushing to heroku, to the master branch'
+echo
+echo
 git push rest master
 echo
 echo
-echo 'restarting servers'
+echo 'last part: restarting servers'
+echo
+echo
 heroku restart --app uguru-rest
 # honcho run python manage.py update
 # heroku run honcho run python manage.py update --app uguru-rest
