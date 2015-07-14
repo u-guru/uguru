@@ -5,7 +5,7 @@
 
 - Install heroku toolbelt from site (https://toolbelt.heroku.com)
 - Install Homebrew (http://brew.sh)
-- Install Redis 
+- Install Redis
 - % brew install redis
 - Download PostgreSQL (http://postgresapp.com)
 - Goto Postgres.app's preferences, and set it to "automatically open after login"
@@ -32,12 +32,13 @@
 
 
 **Pull seed data from heroku servers**
-- % heroku pg:backups capture --app uguru-rest     
+- % heroku pg:backups capture --app uguru-rest
 - % curl -o latest.dump `heroku pg:backups public-url --app uguru-rest`
 - % psql (enters shell with prompt: User=#)
 - % createdb -U uguru -E utf-8 -O uguru uguru_db
 - % pg_restore --verbose --clean --no-acl --no-owner -h localhost -U uguru -d uguru_db latest.dump
 - (it's okay if it prints out that there were errors ignored)
+- % honcho run python manage.py init_stats
 
 **Admin Console and Celery Flower UI Login**
 

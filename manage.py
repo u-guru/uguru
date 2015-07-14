@@ -270,6 +270,24 @@ if arg == 'delete_all_users':
         db_session.commit()
         print 'all users deleted'
 
+if arg == 'init_stats':
+    s = Stats()
+    from datetime import datetime
+    s.last_updated = datetime.now()
+    s.total_courses = 0
+    s.total_universities = 0
+    s.total_users = 0
+    s.total_gurus = 0
+    s.total_depts = 0
+    s.total_popular_courses = 0
+    s.gurus_24h = 0
+    s.users_24h = 0
+    s.visitors_24 = 0
+    db_session.add(s)
+    db_session.commit()
+    print 'stats initialized'
+
+
 if arg == 'delete_admin_users':
     from app.models import *
     from app.database import db_session
