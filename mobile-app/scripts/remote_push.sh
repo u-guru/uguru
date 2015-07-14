@@ -53,3 +53,10 @@ echo
 echo
 echo 'commit successful'
 echo
+# git push origin uguru-prod
+# git push rest uguru-prod:master
+# echo 'commit your message!'
+# honcho run python manage.py update
+# heroku run honcho run python manage.py update --app uguru-rest
+# heroku run honcho run python manage.py init_admin --app uguru-rest
+# heroku restart --app uguru-rest
