@@ -51,12 +51,15 @@ git add -A .
 git commit -m "{$msg}"
 echo
 echo
-echo 'commit successful'
+echo 'pushing to git, to the master branch'
 echo
-# git push origin uguru-prod
-# git push rest uguru-prod:master
-# echo 'commit your message!'
+echo
+git push origin master
+git push rest master
+echo
+echo
+echo 'restarting servers'
+heroku restart --app uguru-rest
 # honcho run python manage.py update
 # heroku run honcho run python manage.py update --app uguru-rest
 # heroku run honcho run python manage.py init_admin --app uguru-rest
-# heroku restart --app uguru-rest
