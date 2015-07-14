@@ -1031,6 +1031,9 @@ ion-list.list-inset.visible-overflow.proposal-card-request.disable-user-behavior
 .tabs.dark-bg {
   border-color: transparent; }
 
+.platform-ios .side-menu-right .ios-status-bar-dark {
+  border-top: 20px solid #2B3233; }
+
 .character-count {
   bottom: 0.5em;
   right: 0.5em !important;
