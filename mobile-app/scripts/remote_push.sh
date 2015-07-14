@@ -41,7 +41,8 @@ cd ..
 echo 'copying new files from uguru-mobile'
 cp -r mobile-app/www/remote/* app/static/remote/
 echo 'updating ios plugins'
-cp -r mobile-app/platforms/ios/www/plugins/ app/static/remote/plugins/ && cp -r mobile-app/www/remote/* app/static/remote/ && cp mobile-app/platforms/ios/www/cordova.js app/static/remote/ios.cordova.js && cp mobile-app/platforms/ios/www/cordova_plugins.js app/static/remote/ios.cordova_plugins.js
+# cp mobile-app/platforms/ios/www/cordova.js app/static/remote/ios.cordova.js && cp mobile-app/platforms/ios/www/cordova_plugins.js app/static/remote/ios.cordova_plugins.js
+cp -r mobile-app/platforms/ios/www/plugins/ app/static/remote/plugins/ && cp -r mobile-app/www/remote/* app/static/remote/
 echo 'copying ios.css, windows, android file into the root remote'
 cp mobile-app/www/remote/css/ios.css app/static/remote/
 cp mobile-app/www/remote/css/android.css app/static/remote/
