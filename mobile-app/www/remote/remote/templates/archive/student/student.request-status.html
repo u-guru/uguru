@@ -1,0 +1,28 @@
+<ion-view title="Request Status">
+  <ion-content>
+    <div class="session-progress">
+      <li class="item padding-0 no-border">
+        <div class="course padding-10-15" style="border-radius:0px; border-bottom:0px;">
+          <div class="box-1">
+            <span class="name">{{course.short_name}}</span>
+            <span class="session">Request</span>
+          </div>
+          <div class="message">Searching for gurus</div>
+          <div class="message" style="font-size:10px; color:rgba(0,0,0,0.4); text-transform:none; padding:0px; margin:-3px 0px !important;">We'll get back to you by midnight</div>
+        </div>
+      </li>
+      <li class="item padding-10-15" style="border-radius:0px; border-bottom:0px; border-right: 1px solid rgba(0, 0, 0, 0.4);border-bottom: 1px solid rgba(0, 0, 0, 0.4);" ng-show="course.active_request.time_estimate">
+        <div class="location"><span class="icon ion-ios7-clock"></span><span class="bold">Estimated Time:</span> {{convertTimeEstimate(course.active_request.time_estimate)}}</div>
+      </li>
+      <li class="item padding-10-15" style="border-radius:0px; border-bottom:0px; border-right: 1px solid rgba(0, 0, 0, 0.4);border-bottom: 1px solid rgba(0, 0, 0, 0.4);" ng-show="course.active_request.location">
+        <div class="location"><span class="icon ion-navigate"></span><span class="bold">Location:</span> {{course.active_request.location}}</div>
+      </li>
+      <li class="item padding-10-15" style="border-radius:0px; border-bottom:0px; border-right: 1px solid rgba(0, 0, 0, 0.4);border-bottom: 1px solid rgba(0, 0, 0, 0.4); white-space:normal;" ng-show="course.active_request.note">
+        <div class="location"><span class="icon ion-document"></span><span class="bold">Note:</span> {{course.active_request.note}}</div>
+      </li>
+      <button class="button button-full button-outline button-positive" ng-click="cancelRequest()">
+        Cancel Request
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

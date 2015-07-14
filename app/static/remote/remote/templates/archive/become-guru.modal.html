@@ -1,0 +1,62 @@
+<ion-modal-view class='become-guru'>
+    <ion-header-bar class="header-bar dark-header">
+            <h5 class="title">Become a Guru</h5>
+        <a class='button button-clear positive' ng-click='becomeGuruModal.hide()'>CLOSE</a>
+    </ion-header-bar>
+
+    <ion-content scroll="false">
+        <div class='pure-g-c flex-column flex-space-between center'>
+
+            <!-- <div class='flex-item-c a-c'> -->
+
+        <img src='./img/uguru_splash.png' class="pure-img padding-2em">
+            <!-- </div> -->
+
+            <div class="pure-g flex-item-c guru-content">
+                <div class='pure-u-1 padding-1em center'>
+                    <h1>Ready to make<br>some moolah?</h1>
+                    <p> We're looking for smart people like <br> you to tutor students at your university </p>
+                </div>
+            </div>
+
+            <div class="pure-g flex-item-c j-end guru-footer-buttons">
+                <div class='pure-u-1'>
+                    <button class='button button-full button-positive' ng-click='goToBecomeGuru()'>
+                    Get Started
+                    </button>
+                    <button class='button button-full button-positive button-outline' ng-click='becomeGuruModal.hide()'>
+                    I don't want to be a guru
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- <ion-content class="" scroll="false" style="padding-bottom:44px; bottom:0px;"> -->
+
+                <!-- <div class='row absolute-center' style="height:40%">
+                  <div class="col col-offset-33 col-33 padding" style="margin-top:5%">
+                    <img src='./img/uguru_splash.png' class='inherit-width'>
+                  </div>
+                </div>
+                <div class="row" style="height:60%;">
+
+                </div> -->
+
+      </ion-content>
+
+      <!-- <ion-footer-bar style="height:auto; background-color:transparent !important; background-image:none;background-color: rgba(0,0,0,0.04); z-index:12;">
+
+                <div class='row'>
+                    <div class="col">
+                        <button class="button button-full button-positive footer-button" ng-click="goToBecomeGuru()">
+                                    Get Started
+                        </button>
+                        <button ng-click="becomeGuruModal.hide()" class="button button-full button-outline button-positive footer-button" style="margin-bottom:0px;">
+                                    No Thanks
+                        </button>
+                    </div>
+                </div>
+
+        </ion-footer-bar> -->
+</ion-modal-view>

@@ -1,0 +1,55 @@
+ <ion-view hide-nav-bar='true' ng-controller='CoursesController' class='dark-bg'>
+  <ion-content class='white-text dark-bg has-header' scroll='false' >
+
+
+      <h3 class='uppercase white-text semibold center'>
+        Tap skills that apply
+      </h3>
+      <h6 class='uppercase white-text bold center opacity-1-2 nano-text'>
+        Make money on errthang.
+      </h5>
+
+      <div class='pure-g-c flex-column flex-space-between'>
+        <div class='flex-item-c center'>
+        </div>
+        <div class='flex-item-c center j-start'>
+
+          <div class='pure-g'>
+
+
+            <div class='pure-u-1 professional-wrapper'>
+                <a ng-click='addSelectedGuruSkill(professional_skill)' class='course-tag skill-tag' ng-repeat='professional_skill in static.professional_skills'>{{professional_skill.name.toUpperCase()}}</a>
+                <!-- <a class='course-tag skill-tag'>Writing</a>
+                <a class='course-tag skill-tag'>Interviews</a><br>
+                <a class='course-tag skill-tag'>Public Speaking</a>
+                <a class='course-tag skill-tag'>Bullshitting</a>
+                <a class='course-tag skill-tag'>Drinking</a> -->
+            </div>
+
+
+            <div class='pure-u-1 skilled-wrapper'>
+                <a class='course-tag skill-tag' ng-click='addSelectedGuruSkill(specialized_skill)' ng-repeat='specialized_skill in static.specialized_skills'>{{specialized_skill.name.toUpperCase()}}</a>
+            </div>
+
+            <div class='pure-u-1 chores-wrapper'>
+              <a class='course-tag skill-tag' ng-click='addSelectedGuruSkill(chores_skill)' ng-repeat='chores_skill in static.chores_skills'>{{chores_skill.name.toUpperCase()}}</a>
+            </div>
+
+            <div class='pure-u-1 labor-wrapper' >
+                <a class='course-tag skill-tag' ng-click='addSelectedGuruSkill(labor_skill)' ng-repeat='labor_skill in static.labor_skills'>{{labor_skill.name.toUpperCase()}}</a>
+            </div>
+
+
+          </div>
+        </div>
+
+        <div class='flex-item-c j-start'>
+
+        </div>
+      </div>
+
+
+  </ion-content>
+
+
+</ion-view>

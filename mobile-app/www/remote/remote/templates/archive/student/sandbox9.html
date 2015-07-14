@@ -1,0 +1,48 @@
+<ion-view view-title="uguru">
+  <ion-nav-buttons side="secondary">
+      <button ng-click="submitSupport()" ng-disabled="!support.message" class="button button-clear button-positive">save</button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="session-progress">
+      <li class="item padding-0 no-border">
+        <div class="course padding-10-15">
+          <div class="box-1">
+            <span class="name">BIO101</span>
+            <span class="session">Session</span>
+          </div>
+          <div class="message">session in progress</div>
+        </div>
+      </li>
+      <li class="item padding-6-15">
+        <div class="icon"><img src='./img/shun.png' class='width'></div>
+        <div class="box-2 margin-top">
+          <div class="name">Shun Kurosaki
+            <span class="profile" ui-sref="^.sandbox8">view profile</span>
+          </div>
+          <div class="stars">
+            <span class="icon ion-star"></span>
+            <span class="icon ion-star"></span>
+            <span class="icon ion-star"></span>
+            <span class="icon ion-star"></span>
+            <span class="icon ion-star"></span>
+          </div>
+        </div>
+      </li>
+      <li class="item padding-10-15">
+        <div class="location"><span class="icon ion-navigate"></span><span class="bold">Location:</span> 198 Church St.</div>
+      </li>
+      <li class="item padding-10-15">
+        <div class="tag"><span class="icon ion-pricetag"></span><span class="bold">$5</span> for every <span class="bold">15 minutes</span></div>
+      </li>
+    </div>
+  </ion-content>
+
+<div class="bar bar-footer uguru-footer">
+  <div class="row">
+    <div class="col center border-bottom"><img src='./img/glass.png' class='width'></div>
+    <div class="col center"><img src='./img/book.png' class='width'></div>
+    <div class="col center"><img src='./img/setting.png' class='width'></div>
+  </div>
+</div>
+
+</ion-view>

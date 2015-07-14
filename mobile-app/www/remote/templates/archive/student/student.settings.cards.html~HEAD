@@ -1,0 +1,28 @@
+  <ion-view title="Your Payment Cards">
+    <ion-content>
+    <div class="settings-cards">
+      <div class="your-account">Add Debit / Credit Card</div>
+        <ion-list>
+          <ion-item class="item" ui-sref="^.add-payment"><span style="margin-left:10px;">Add a Payment Card</span>
+            <img src="./img/right-chevron.png" class="right-chevron">
+          </ion-item>
+          <ion-item class="item" style="background-color:white;" ng-click="goToAddTransferMethod(true)"><span style="margin-left:10px;">Add a Bank Card</span>
+            <img src="./img/right-chevron.png" class="right-chevron">
+          </ion-item>
+        </ion-list>
+        <div class="your-account" ng-show="user.payment_cards.length > 0">Your Payment Cards</div>
+          <ion-list>
+            <ion-item ng-repeat="card in user.payment_cards" class="cards-padding" ng-click="goToEditCard(card)">
+                <img src="./img/{{card.card_type.toLowerCase()}}.png" class="cards"> ****{{card.card_last4}}<span ng-show="card.is_default_payment" class="positive">&nbsp;&nbsp;Default</span>
+                 <img src="./img/right-chevron.png" class="right-chevron">
+            </ion-item>
+          </ion-list>
+        <div class="your-account" ng-show="user.transfer_cards.length > 0">Your Transfer Cards</div>
+          <ion-list>
+          <ion-item ng-repeat="card in user.transfer_cards" class="cards-padding" ng-click="goToEditCard(card)">
+                <img src="./img/{{card.card_type.toLowerCase()}}.png" class="cards"> ****{{card.card_last4}}<span ng-show="card.is_default_transfer" class="positive">&nbsp;&nbsp;Default</span>
+                 <img src="./img/right-chevron.png" class="right-chevron">
+          </ion-item>
+      </div>
+    </ion-content>
+  </ion-view>

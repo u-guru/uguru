@@ -1,0 +1,23 @@
+<ion-view title="Edit Courses">
+    <ion-nav-buttons side="secondary">
+      
+      <button ng-click="toggleEditMode()" class="button button-clear button-positive">
+      	<span ng-show="editMode">Save</span>
+      	<span ng-show="!editMode">Edit</span>
+      </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list class="list" show-delete="shouldShowDelete">
+			<a class="item item-icon-right" ng-click="addCourseModal.show()">
+				Add a course
+				<!-- <button class="button button-positive"> -->
+      				<i style="font-size:14px;"class="icon ion-plus positive"></i>
+    			<!-- </button> -->
+			</a>
+			<ion-item class="item-thumbnail-right" ng-repeat="course in user.student_courses">
+				{{course.short_name}}
+				 <ion-delete-button  ng-click="user.student_courses.splice($index, 1)" class="ion-minus-circled"></ion-delete-button>
+			</ion-item>
+		</div>
+    </ion-content>
+  </ion-view>

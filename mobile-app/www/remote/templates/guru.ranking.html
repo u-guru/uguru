@@ -9,12 +9,44 @@
       <h1 class="title">Progress & Ranking </h1>
   </ion-header-bar>
 
-<ion-content class='white-bg standard-bg'>
-    <ion-list>
-      <ion-item ng-repeat="opportunity in user.guru_score_opportunities">
-        {{opportunity.details.title}}
-        <p style="white-space:normal;">{{opportunity.details.description}}</p>
-        <span class="badge badge-positive">{{opportunity.impact_level}}</span>
+<ion-content class='white-bg standard-bg has-header'>
+
+    <div class='pure-g-c flex-column'>
+      <div class='pure-u-1 padding-2em center' style='margin-top:5%'>
+         <div class='pure-u-1-2 relative margin-auto'>
+                    <div class='ranking-container margin-auto full-width relative'>
+
+                      <span class='light text absolute' >
+                        <span class='font-200'>9</span><span class='micro-text uppercase semibold'>th</span>
+                      </span>
+                        <!-- <div class='row'>
+
+                        </div>
+                        <h1 class='white-text' style='position:absolute'></h1> -->
+
+                    </div>
+          </div>
+      </div>
+    </div>
+
+
+    <ion-list class='standard-bg'>
+      <ion-item class='request-item item-icon-left item-icon-right relative' ng-repeat='opportunity in user.guru_score_opportunities'>
+        <i class='icon ion-person'> </i>
+        <div class='item-container'>
+          <p class='no-margin white-space-normal' style='font-size:110%;'>
+            {{opportunity.details.title}}
+          </p>
+          <p class='opacity-4-5 no-margin white-space-normal'>
+            {{opportunity.details.description}}
+          </p>
+        </div>
+          <i class='icon ion-chevron-right opacity-1-2 icon-small'> </i>
       </ion-item>
+      <!-- <ion-item ng-repeat="opportunity in user.guru_score_opportunities">
+
+
+        <span class="badge badge-positive">{{opportunity.impact_level}}</span>
+      </ion-item> -->
     </ion-list
 </ion-view>

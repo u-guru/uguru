@@ -1,0 +1,191 @@
+    <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
+        <h1 class="title">My Sessions</h1>
+    </ion-header-bar>
+    <div class="bar bar-subheader">
+        <ion-tabs class="tabs-dark tabs-icon-only" delegate-handle="student-book-tabs-top">
+          <ion-tab title="Active"></ion-tab>
+          <ion-tab title="Past"></ion-tab>
+        </ion-tabs>
+      </div>
+    </div>
+
+    <ion-content ng-show="user.pending_requests && ionicTabsStudentBookDelegate.selectedIndex() === 0" ng-controller="StudentBookController">
+      <div class="guru-book margin-top-40">
+        <li class="item padding-6-15" ng-repeat="guru in user.gurus" ng-click="goToGuruProfile(guru)">
+          <div class="icon"><img ng-src='./img/shun.png' class='width'></div>
+          <div class="box-2 margin-top">
+            <div class="box-3">
+              <span class="name">{{guru.name}}
+              </span>
+              <div class="stars">
+                <span class="icon ion-star"></span>
+                <span class="icon ion-star"></span>
+                <span class="icon ion-star"></span>
+                <span class="icon ion-star"></span>
+                <span class="icon ion-star"></span>&nbsp;&nbsp;
+                <span style="color:grey;"class="icon ion-chevron-right"></span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </div>
+    </ion-content>
+
+
+
+
+    <ion-content ng-show="(user.pending_proposals.length > 0 || user.active_proposals.length > 0 || user.active_guru_sessions.length > 0) &&  ionicTabsStudentBookDelegate.selectedIndex() === 0"
+    ng-controller="StudentBookController">
+        <!-- <div class="no-session margin-150-10 center">
+          <h2>No sessions yet</h2>
+          <div ng-show="user.student_courses.length == 0">
+            <div class="gray">We'll contact you immediately soon</div>
+          </div>
+        </div> -->
+
+      <div class="add-class margin-top-40" ng-repeat="session in user.active_guru_sessions">
+        <div class="session-progress" ng-click="goToActiveSession(session)">
+          <li class="item padding-0 no-border">
+            <div class="course padding-10-15">
+              <div class="box-1">
+                <span class="name">{{session.request.course.short_name}}</span>
+                <span class="session">Session</span>
+              </div>
+              <div class="message">
+                <span style="color:red;" ng-show="session.status === 1">STUDENT EN ROUTE</span>
+                <span style="color:red;" ng-show="session.status === 2">SESSION IN PROGRESS</span>
+              </div>
+            </div>
+          </li>
+          <li class="item padding-6-15">
+            <div class="icon"><img ng-src='{{session.request.student.profile_url}}' class='width'></div>
+            <div class="box-2 margin-top">
+              <div class="name">{{session.request.student.name.split(" ")[0]}}
+                <!-- <span class="profile" style="font-size:12px;">Details</span> -->
+              </div>
+              <div class="stars" ng-show="session.request.student.student_avg_rating">
+                <span class="icon ion-star" ng-repeat="i in getNumber(session.request.student.student_avg_rating) track by $index"></span>
+              </div>
+              <div class="stars" ng-show="!session.request.student.student_avg_rating">
+                First time using uGuru
+              </div>
+            </div>
+          </li>
+          <li class="item padding-10-15">
+            <div class="location" style="white-space: normal;"><span class="icon ion-navigate"></span><span class="bold">Location:</span> {{session.request.address}}</div>
+          </li>
+          <li class="item padding-10-15">
+            <div class="tag"><span class="icon ion-pricetag"></span>You'll earn <span class="bold">$4</span> for every <span class="bold">15 minutes</span></div>
+          </li>
+        </div>
+      </div>
+
+      <div class="add-class margin-top-40" ng-repeat="proposal in user.pending_proposals">
+        <div class="session-progress">
+          <li class="item padding-0 no-border">
+            <div class="course padding-10-15">
+              <div class="box-1">
+                <span class="name">{{proposal.request.course.short_name}}</span>
+                <span class="session">Session</span>
+              </div>
+              <div class="message">
+                <span style="color:red;" ng-show="proposal.status === 2">WAITING FOR STUDENT</span>
+              </div>
+            </div>
+          </li>
+          <li class="item padding-6-15">
+            <div class="icon"><img ng-src='{{proposal.request.student.profile_url}}' class='width'></div>
+            <div class="box-2 margin-top">
+              <div class="name">{{proposal.request.student.name.split(" ")[0]}}
+                <!-- <span class="profile" style="font-size:12px;">Details</span> -->
+              </div>
+              <div class="stars" ng-show="request.student.student_avg_rating">
+                <span class="icon ion-star" ng-repeat="i in getNumber(request.student.student_avg_rating) track by $index"></span>
+              </div>
+              <div class="stars" ng-show="!request.student.student_avg_rating">
+                First time using uGuru
+              </div>
+            </div>
+          </li>
+          <li class="item padding-10-15">
+            <div class="location" style="white-space: normal;"><span class="icon ion-navigate"></span><span class="bold">Location:</span> {{proposal.request.address}}</div>
+          </li>
+          <li class="item padding-10-15">
+            <div class="tag"><span class="icon ion-pricetag"></span>You'll earn <span class="bold">$4</span> for every <span class="bold">15 minutes</span></div>
+          </li>
+        </div>
+      </div>
+
+      <div class="add-class margin-top-40" ng-repeat="proposal in user.active_proposals">
+        <div class="session-progress" ng-click="goToActiveSession(session)">
+          <li class="item padding-0 no-border">
+            <div class="course padding-10-15">
+              <div class="box-1">
+                <span class="name">{{proposal.course.short_name}}</span>
+                <span class="session">Session</span>
+              </div>
+              <div class="message">
+                <span ng-show="proposal.status === 2">STUDENT EN ROUTE</span>
+              </div>
+            </div>
+          </li>
+          <li class="item padding-6-15">
+            <div class="icon"><img ng-src='{{session.student.profile_url}}' class='width'></div>
+            <div class="box-2 margin-top">
+              <div class="name">{{session.guru.first_name}}
+                <span class="profile" style="font-size:12px;">Details</span>
+              </div>
+              <div class="stars">
+                <span class="icon ion-star"></span>
+                <span class="icon ion-star"></span>
+                <span class="icon ion-star"></span>
+                <span class="icon ion-star"></span>
+                <span class="icon ion-star"></span>
+              </div>
+            </div>
+          </li>
+          <li class="item padding-10-15">
+            <div class="location" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="icon ion-navigate"></span><span class="bold">Location:</span> {{session.location}}</div>
+          </li>
+          <li class="item padding-10-15">
+            <div class="tag"><span class="icon ion-pricetag"></span><span class="bold">${{session.price.amount}}</span> for every <span class="bold">{{session.price.minutes}} minutes</span></div>
+          </li>
+        </div>
+      </div>
+
+    </ion-content>
+
+     <ion-content ng-show="user.active_proposals.length === 0 && user.pending_proposals.length == 0 && user.active_guru_sessions.length === 0 && ionicTabsStudentBookDelegate.selectedIndex() === 0" ng-controller="StudentBookController">
+        <div class="no-session margin-150-10 center">
+          <h2>No sessions yet</h2>
+          <div ng-show="user.student_courses.length > 0">
+            <div class="gray">Sit tight, we'll contact you as soon as students need help</div>
+          </div>
+        </div>
+      </ion-content>
+
+      <ion-content ng-show="user.previous_guru_sessions.length === 0 && ionicTabsStudentBookDelegate.selectedIndex() === 1" ng-controller="StudentBookController">
+        <div class="no-session margin-150-10 center">
+          <h2>No sessions yet</h2>
+          <div ng-show="user.student_courses.length > 0">
+            <div class="gray">Sit tight, we'll contact you as soon as students need help</div>
+          </div>
+        </div>
+      </ion-content>
+
+      <ion-content ng-show="user.previous_guru_sessions.length > 0 && ionicTabsStudentBookDelegate.selectedIndex() === 1" ng-controller="StudentBookController">
+        <div class="guru-book margin-top-40" ng-repeat="session in user.previous_guru_sessions" ng-click="goToPreviousSessionDetails(session)">
+          <li class="item padding-6-15">
+            <div class="icon"><img ng-src='{{session.student.profile_url}}' class='width'></div>
+            <div class="box-2 margin-top">
+              <div class="box-3">
+                <span class="name">{{session.student.name.split(" ")[0]}}
+                </span>
+                <div class="stars" ng-show="session.guru.guru_avg_rating">
+                  <span class="icon ion-star" ng-repeat="i in getNumber(session.student.guru_avg_rating) track by $index"></span>
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+      </ion-content>

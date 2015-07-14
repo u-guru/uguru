@@ -1,0 +1,29 @@
+.guru-bg-img {
+  max-width: 33%;
+  height:33%;
+  margin: 0 auto;
+}
+
+.verb-modal .icon-wrapper {
+    width:100%;
+}
+
+.pure-img {
+    height:100%;
+}
+
+#home-page .button-img {
+    background-color:transparent;
+}
+
+.left-icon-menu-bar .flex-item-c {
+    flex-grow:0;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.platform-windowsphone .menu-content{
+    margin-bottom:-20px;
+}

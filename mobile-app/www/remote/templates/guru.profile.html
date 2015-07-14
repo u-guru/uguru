@@ -3,92 +3,173 @@
 <ion-view hide-nav-bar='true' class='ranking'>
 
   <ion-header-bar class='dark-bg-header'>
-      <h1 class='title sans-bold bold uppercase'>{{user.name.split(' ')[0] + ' ' + user.name.split(' ')[1][0].toUpperCase()}}.</h1>
+      <h1 class='title'>Profile</h1>
   </ion-header-bar>
 
-<ion-content class='white-bg standard-bg full-height' style='bottom:50px;'>
+  <div class="tabs home-request-tabs-top tabs-top">
+
+      <a class="tab-item uppercase ng-class:{'blue-bg white-text':showActive, 'opacity-1-2':!showActive}" ng-click='showPreviousActions(0);'>
+        Profile
+      </a>
+      <a class="tab-item uppercase ng-class:{'blue-bg white-text':!showActive, 'opacity-1-2':showActive}" ng-click='showPreviousActions(1);'>
+        Credibility
+      </a>
+  </div>
+
+  <div class="tabs home-request-tabs-top tabs-top white-text bg-edit-mode" style='height:44px'>
+    Edit Mode: Tap anything to edit
+  </div>
+
+<ion-content class='white-bg standard-bg full-height' style='bottom:50px; top:88px;'>
     <div class='pure-g-c flex-column flex-space-between full-height'>
 
       <ion-slide-box class='guru-profile-slide-box'>
-        <ion-slide>
-          <div class='pure-g-c flex-column j-end padding-3em guru-profile-img-wrapper' style='padding-top:1em; padding-bottom:1em;'>
-              <div class='center no-margin'>
-                <div class='pure-u-1 center float-center'>
-                  <img ng-show='user && !user.id'class='pure-img profile-img sidebar-img guru-profile-img inline'  src='https://graph.facebook.com/10152573868267292/picture?width=100&height=100'/>
-                  <img ng-show='user && user.profile_url' class='pure-img profile-img sidebar-img guru-profile-img inline'  src='{{user.profile_url}}'/>
+        <ion-slide style='min-height:200px;'>
+          <div class='profile-banner-bg full-height' style='background-image:url({{img_base}}./img/profile/library.png)'>
+          </div>
+            <div class='pure-g-c flex-column j-center guru-profile-img-wrapper full-width relative'>
+              <div class='pure-u-1'>
+                <div class='pure-g'>
+                  <div class='pure-u-1-2'>
+                    <div class='padding-1em' style='padding-left:2em;'>
+                      <img ng-show='user && !user.id'class='pure-img profile-img sidebar-img guru-profile-img inline'  src='https://graph.facebook.com/10152573868267292/picture?width=100&height=100'/>
+                      <img ng-show='user && user.profile_url' class='pure-img profile-img sidebar-img guru-profile-img inline'  src='{{user.profile_url}}'/>
+                    </div>
+                  </div>
+
+                  <div class='pure-u-1-2 relative' style='padding-top:1em;'>
+                    <div class='verification-icons' style='height:25px; display:flex;'>
+                      <img ng-src='{{img_base}}./img/profile/checkmark.svg' class='pure-img' />
+                      <img ng-src='{{img_base}}./img/profile/phone.svg' class='pure-img' />
+                      <img ng-src='{{img_base}}./img/profile/document.svg' class='pure-img' />
+                    </div>
+                    <div class='center no-margin'>
+                      <h1 class='title light uppercase margin-half'>{{user.name.split(' ')[0] + ' ' + user.name.split(' ')[1][0].toUpperCase()}}.</h1>
+                      <h5 class='white-text bold no-margin uppercase'>
+                        UC BERKELEY
+                      </h5>
+                      <h5 class='uppercase light no-margin'>
+                        PHYSICS MAJOR
+                      </h5>
+                      <h1 class='uppercase light bold' style='margin-top:8px;'>
+                        $10 <span class='profile-15m-text'>/ 15min</span>
+                      </h1>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class='pure-u-1 center' style='font-size:1.5em;'>
-                    <div class='pure-u-1-8' ng-repeat='number in getNumber(user.guru_avg_rating) track by $index'>
-                            <i class='icon ion-star blue'></i>
-                    </div>
-                    <div class='pure-u-1-8' ng-repeat='number in getNumber(5 - user.guru_avg_rating) track by $index'>
-                      <i class='icon ion-star grey'></i>
-                    </div>
-              </div>
-              <!-- majors section -->
-              <div class='center' ng-show='user.majors && user.majors.length > 0'>
-                <p class='nano-text' style='font-size:70%; margin-bottom:0.4em; margin-top:0.75em;'>Attending <strong>{{user.university.title}}</strong> </p>
-                <p class='nano-text' style='font-size:70%;'>Studying
-                  <span ng-show='user.majors && user.majors.length > 2'>
-                    <span ng-repeat="major in user.majors.slice(0, user.majors.length - 1)"><strong>{{major.name}}</strong>, </span>  and <strong>{{user.majors[user.majors.length - 1].name}}</strong>
-                  </span>
-                  <span ng-show='user.majors && user.majors.length === 2'>
-                    <strong>{{user.majors[0].name}}</strong> and <strong>{{user.majors[1].name}}</strong>.
-                  </span>
-                  <span ng-show='user.majors && user.majors.length === 1'>
-                    <strong> {{user.majors[0].name}} </strong>
-                  </span>
-                 </p>
-              </div>
-          </div>
+            </div>
         </ion-slide>
         <ion-slide>
           <div class='pure-g-c flex-column j-end padding-3em guru-profile-img-wrapper' style='opacity:1.0'>
               <div class='center no-margin'>
-
+                <h1 class='title sans-bold bold uppercase'>{{user.name.split(' ')[0] + ' ' + user.name.split(' ')[1][0].toUpperCase()}}.</h1>
               </div>
           </div>
 
         </ion-slide>
       </ion-slide-box>
       <!-- <div class='pure-g-c flex-column j-start center'> -->
-        <div class='pure-g opacity-3-4' style='border-bottom: 1px solid rgba(0,0,0,0.4)'>
-          <!-- <div class='pure-u-1 center'> -->
-            <!-- <div class='pure-g opacity-3-4'> -->
-              <div class='pure-u-1-3 center'>
-                <div class='padding-1em'>
-                  ${{user.current_hourly || 10}}/hr
-                </div>
-              </div>
-              <div class='pure-u-1-3 center'>
-                <div class='padding-1em'>
-                    {{user.guru_sessions.length}} sessions
-                </div>
-              </div>
-              <div class='pure-u-1-3 center'>
-                <div class='padding-1em'>
-                  %{{user.current_hourly || 100}}
-                </div>
-              </div>
-            <!-- </div> -->
-          <!-- </div> -->
+      <div class='profile-statistics-wrapper padding-1em' style='border-bottom: 1px solid rgba(0,0,0,0.4);'>
+        <div class='pure-u-1 center' style='font-size:1.5em;'>
+            <div class='pure-u-1-8' ng-repeat='number in getNumber(user.guru_avg_rating) track by $index'>
+                    <i class='icon ion-star blue'></i>
+            </div>
+            <div class='pure-u-1-8' ng-repeat='number in getNumber(5 - user.guru_avg_rating) track by $index'>
+              <i class='icon ion-star grey'></i>
+            </div>
         </div>
-        <!-- </div> -->
-      <!-- </div> -->
-       <div class='pure-g-c flex-column j-center center'>
+        <div class='pure-g' style='margin-top:15px;'>
+
+              <div class='pure-u-1-3 center'>
+                <div class='no-margin center padding-half' style='border-right:1px solid rgba(0,0,0,0.1);'>
+                  <h1 class='no-margin' style='font-size:250%;'>
+                    145
+                  </h1>
+                  <h5 class='opacity-3-4 no-margin semibold' style='font-size:86%; margin-top:0.7em; opacity:0.5'>
+                    sessions
+                  </h5>
+                </div>
+              </div>
+              <div class='pure-u-1-3 center' style='border-right:1px solid rgba(0,0,0,0.1);'>
+                <div class=' no-margin center padding-half'>
+                  <h1 class='no-margin' style='font-size:250%;'>
+                    80%
+                  </h1>
+                  <h5 class='opacity-3-4 no-margin semibold' style='font-size:86%; margin-top:0.7em; opacity:0.5'>
+                    response rate
+                  </h5>
+                </div>
+              </div>
+              <div class='pure-u-1-3 center'>
+                <div class='no-margin center padding-half'>
+                  <h1 class='no-margin' style='font-size:250%;'>
+                    < 1hr
+                  </h1>
+                  <h5 class='opacity-3-4 no-margin semibold' style='font-size:86%; margin-top:0.7em; opacity:0.5'>
+                    last active
+                  </h5>
+                </div>
+              </div>
+        </div>
         <div class='pure-g'>
-          <div class='pure-u-1 padding-half'>
-            <h5 class='grey-text center uppercase semibold opacity-1-2' style='font-size:80%;'> My Courses </h5>
-            <div class='courses-container center'>
-              <span class='course-tag uppercase' ng-repeat='guru_course in user.guru_courses'>{{guru_course.short_name}}</span>
+          <div class='pure-u-1-3'>
+            <img ng-src='{{img_base}}./img/profile/ribbon.svg' class='pure-img padding-1em' />
+          </div>
+          <div class='pure-u-1-3'>
+            <img ng-src='{{img_base}}./img/profile/ribbon.svg' class='pure-img padding-1em' />
+          </div>
+          <div class='pure-u-1-3'>
+            <img ng-src='{{img_base}}./img/profile/ribbon.svg' class='pure-img padding-1em' />
+          </div>
+        </div>
+      </div>
+       <div class='pure-g-c flex-column j-center center dark-bg'>
+        <div class='pure-g'>
+          <div class='pure-u-1 skill-tag-bg' style='margin:0.5em 0em; padding:0.5em;0em;'>
+            <div class='pure-g'>
+              <div class='pure-u-1-4 padding-half left' style='display:flex;'>
+                <h4 class='light white-text uppercase flex-item-c'>
+                  Skills
+                </h4>
+              </div>
+              <div class='pure-u-3-4'>
+                <div class='pure-g'>
+                  <div class='pure-u-1 white-space-nowrap'>
+                    <span style='font-size:100%;' class='skill-tag uppercase' ng-repeat='guru_skill in user.guru_skills'>{{guru_skill.name}}</span>
+                  </div>
+                </div>
+
+                <div class='pure-g'>
+                  <div class='pure-u-1 white-space-nowrap'>
+                    <span style='font-size:100%;' class='skill-tag uppercase' ng-repeat='guru_skill in user.guru_skills'>{{guru_skill.name}}</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+        <div class='pure-g'>
+          <div class='pure-u-1 skill-tag-bg' style='margin:0.5em 0em; padding:0.5em;0em;'>
+            <div class='pure-g'>
+              <div class='pure-u-1-4 padding-half left' style='display:flex;'>
+                <h4 class='light white-text uppercase flex-item-c'>
+                  Courses
+                </h4>
+              </div>
+              <div class='pure-u-3-4'>
+                <div class='pure-g'>
+                  <div class='pure-u-1 white-space-nowrap'>
+                    <span style='font-size:100%;' class='course-tag-profile uppercase' ng-repeat='guru_skill in user.guru_skills'>{{guru_skill.name}}</span>
+                  </div>
+                </div>
 
-          <div class='pure-u-1 padding-half' style='padding-top:0em;'>
-            <h5 class='grey-text center uppercase semibold opacity-1-2' style='font-size:80%;'> My Skills </h5>
-            <div class='courses-container center skilled-wrapper'>
-              <span style='font-size:100%;' class='course-tag specialized-tag uppercase' ng-repeat='guru_skill in user.guru_skills'>{{guru_skill.name}}</span>
+                <div class='pure-g'>
+                  <div class='pure-u-1 white-space-nowrap'>
+                    <span style='font-size:100%;' class='course-tag-profile uppercase' ng-repeat='guru_skill in user.guru_skills'>{{guru_skill.name}}</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

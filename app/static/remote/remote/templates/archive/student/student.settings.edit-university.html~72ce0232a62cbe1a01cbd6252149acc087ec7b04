@@ -1,0 +1,15 @@
+<ion-view title="Edit University">
+    <ion-nav-buttons side="secondary">
+
+      <button ng-click="addUniversityModal.show()" class="button button-clear button-positive">
+      	Edit
+      </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list class="list" show-delete="shouldShowDelete">
+			<a class="item item-icon-right" ng-click="addCourseModal.show()">
+				{{user.university.title}}
+			</a>
+		</div>
+    </ion-content>
+  </ion-view>

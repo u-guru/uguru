@@ -1,0 +1,13 @@
+<ion-view class='request-status' hide-nav-bar='true'>
+
+  <ion-header-bar class="header-bar header-bar-dark">
+
+        <a class="button button-clear button-back" ng-click='goBack()'>Back</a>
+        <h5 class="title uppercase">Confirm {{proposal.request.course.short_name}} </h5>
+  </ion-header-bar>
+
+  <ion-content scroll="false" class='guru-background'>
+    <a class='button button-full button-positive button-positive-outline' href='#/payment/' ng-show="user.transfer_cards && user.transfer_cards.length === 0" nav-direction="forward">Debit Card</a>
+    <a class='button button-full button-positive' ng-click = 'acceptStudent()'>Accept Request</a>
+  </ion-content>
+</ion-view>

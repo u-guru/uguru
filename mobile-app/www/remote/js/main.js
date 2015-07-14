@@ -12,9 +12,7 @@ if (LOCAL) {
  // REST_URL = 'http://192.168.42.66:5000';
 
   BASE_URL = 'http://localhost:8100/';
-  // REST_URL = 'localhost:5000';
   REST_URL = 'http://localhost:5000';
-  // var REST_URL = 'http://uguru-rest.herokuapp.com'
 
 } else {
   img_base = '/static/'
@@ -42,15 +40,10 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
 
           if ($cordovaSplashscreen && $cordovaSplashscreen.hide) {
+
+
             $cordovaSplashscreen.hide();
           }
-
-
-          // TODO: demonstrate to image to the file storage
-          // See js/factories/LocalStorage.js for more details
-          $localstorage.saveToDisk();
-
-
 
 
             var posOptions = {
@@ -66,6 +59,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
                 web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone()),
                 device: ionic.Platform.device(),
             }
+
+            console.log(JSON.stringify($rootScope.platform));
+
 
             if ($cordovaDevice && $cordovaDevice.getPlatform() === 'Win32NT') {
               $rootScope.platform.windows = true;
@@ -145,8 +141,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
     });
 
 
+
   if (ionic.Platform.isWindowsPhone()) {
-    $compileProvider.imgSrcSanitizationWhitelist('CapturedImagesCache/');
+
+    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|chrome-extension|x-wmapp.?):|data:image\//);
+
   }
 
   // })
@@ -262,6 +261,19 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '/messages/:sessionObj',
         templateUrl: BASE + 'templates/student.messages.html',
         controller: 'StudentMessagesController'
+  }).
+  state('root.student-conversations', {
+        url: '/student-conversations',
+        templateUrl: BASE + 'templates/student.conversations.html'
+  }).
+  state('root.bill-student', {
+        url: '/bill-student',
+        templateUrl: BASE + 'templates/guru.bill-student.html',
+        controller: 'BillStudentController'
+  }).
+  state('root.guru-conversations', {
+        url: '/guru-conversations',
+        templateUrl: BASE + 'templates/guru.conversations.html'
   });
 
 
