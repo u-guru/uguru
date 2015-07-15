@@ -8,7 +8,7 @@ class DevNull:
 
 
 
-
+#job_list = client.hr.get_jobs()
 httplib2.Http(disable_ssl_certificate_validation=True)#.request('https://www.odesk.com:443')
 
 key = '8945fabd1900de9746d74e5782d9b623'
@@ -23,16 +23,27 @@ client = upwork.Client(key, secret,
                        oauth_access_token=oauth_access_token,
  	                   oauth_access_token_secret=oauth_access_token_secret)
 
-
-# jobs_list = client.hr.get_jobs('1850815')
-# print jobs_list
+#~016e686fe0d68ba380 --> ACTUAL SHIT
+#jobs_list = client.hr.get_jobs('1850815')
+#print jobs_list
 #category = 'Web Development'
 #sub_category = 'Web Programming'
 #client.hr.update_job('~016e686fe0d68ba380','1850815','Heres my new titles','this be my new ssdescription','private',category,sub_category, duration = 100, status = 'open')
 job_key = '~016e686fe0d68ba380'
 
+#skills_list = client.provider.get_skills_metadata()
+#pp = pprint.PrettyPrinter(indent = 4)
+#pp.pprint(skills_list)
 #get_job_prof = client.job.get_job_profile(job_key)
 #print get_job_prof
+def get_list_of_categories():
+		sys.stderr = DevNull()
+		meta_data = client.provider.get_categories_metadata()
+		pp = pprint.PrettyPrinter(indent = 4)
+		pp.pprint(meta_data)
+		print "categories successfully loaded"
+		return upwork_wrapper.get_list_of_categories(client.provider.get_categories_metadata)
+
 def search_for_freelancer(data):
 		sys.stderr = DevNull()
 		search_data = client.provider_v2.search_providers(data)
@@ -60,14 +71,14 @@ def get_profile_details(freelancer_id):
 		print "Successfully loaded profile details"
 		return upwork_wrapper.get_profile_details(client.provider.get_provider)
 
-def post_a_job(owner,title,rate,description,private_or_not,category,sub_category,budget,duration):
+def post_a_job(owner,title,rate,description,private_or_not,category,sub_category,budget,skills):
 		sys.stderr = DevNull()
-		client.hr.post_job(owner,title,rate,description,private_or_not,category,sub_category,budget,duration)
+		client.hr.post_job(owner,title,rate,description,private_or_not,category,sub_category,budget, skills = ['data-mining','data-scraping','google-docs','google-spreadsheet','internet-research','spreadsheets'])
 		print "Job successfully created!"
 		return upwork_wrapper.post_a_job(client.hr.post_job)
 
 def update_a_job(job_key,owner,title,description,private_or_not,category,sub_category,duration = 100,status = 'open'):
-		sys.stderr = DevNull()
+		#sys.stderr = DevNull()
   		client.hr.update_job(job_key,owner,title,description,private_or_not,category,sub_category,duration=100,status='open')
   		print "Job successfully updated!"
   		return upwork_wrapper.update_a_job(client.hr.update_job)
@@ -110,8 +121,8 @@ def list_job_applications(owner,job_key):
 		return upwork_wrapper.list_job_applications(client.hr_v3.list_client_applications)
 
 def create_a_mile_stone(owner,milestones_descrption,deposit_amount,due_date):
-		sys.stderr = DevNull()
-		client.hr_v3.create_milestones(owner,milestones_descrption,deposit_amount,due_date)
+		#sys.stderr = DevNull()
+		client.hr_v3.create_milestone(owner,milestones_descrption,deposit_amount,due_date)
 		print "Successfully created a milestones!"
 		return upwork_wrapper.create_a_mile_stone(client.hr_v3.create_milestones)
 
