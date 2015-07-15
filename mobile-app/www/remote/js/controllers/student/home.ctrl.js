@@ -758,9 +758,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
      $scope.$on('$ionicView.enter', function() {
 
-        // $timeout(function() {
-        //   $ionicSideMenuDelegate.toggleRight();
-        // }, 500)
+        $timeout(function() {
+          $ionicSideMenuDelegate.toggleRight();
+        }, 500)
 
         if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
             $scope.processIncomingRequests($scope.user.incoming_requests);

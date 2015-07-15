@@ -28,11 +28,13 @@ angular.module('uguru.util.controllers')
 
     $scope.settings = {}
     $scope.settings.icons = {
-      profile:true,
+      profile: ($scope.user && $scope.user.id),
       notifications: false,
       card: false,
       support: false,
-      guru: false
+      guru: false,
+      groceries:false,
+      presignup: ($scope.user && !$scope.user.id),
     }
 
     $scope.selectedCurrentHourly = 10;
@@ -58,7 +60,7 @@ angular.module('uguru.util.controllers')
 
       }
 
-      if (index === 5) {
+      if (index === 5 && $scope.user.id) {
         if ($scope.root.vars.guru_mode) {
 
           $scope.root.vars.guru_mode = false;
@@ -68,6 +70,7 @@ angular.module('uguru.util.controllers')
           $scope.goToGuru();
         }
       }
+
 
 
     }
@@ -294,17 +297,25 @@ angular.module('uguru.util.controllers')
       }, 500);
     }
 
-    $scope.login = function () {
+    $scope.connectWithFacebook = function () {
 
-        // $scope.loader.show();
+        $scope.loader.show();
         $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
         // $cordovaFacebook.login(["user_education_history", "friends_education_history"]).then(function (success) {
         $scope.loginInfo = success;
         console.log('success', success);
 
-        $scope.getMe();
+        var successCallback = function() {
+          $timeout(function(){
+            $scope.loader.hide();
+            $timeout(function() {
+              $scope.success.show(0, 1500, 'Login Successful!');
+            }, 1000)
+          }, 1000);
+        }
+        $scope.facebookApiGetDetails(successCallback);
         console.log('Getting Facebook information...');
-        $scope.loader.hide();
+
         //get user information
       },
       //error function
@@ -327,7 +338,7 @@ angular.module('uguru.util.controllers')
     }
 
 
-     $scope.getMe = function () {
+     $scope.facebookApiGetDetails = function (callback) {
       $cordovaFacebook.api("/me", null).then(function (success) {
 
         $scope.user.first_name = success.first_name;
@@ -346,12 +357,10 @@ angular.module('uguru.util.controllers')
 
 
         $scope.completeSignup();
-        $scope.loader.hide();
-        $scope.success.show(0, 2000, 'Login Successful!');
-        $timeout(function() {
-          $ionicSideMenuDelegate.toggleRight();
-        }, 1500);
 
+        if (callback) {
+          callback();
+        }
 
       }, function (error) {
         $scope.error = error;

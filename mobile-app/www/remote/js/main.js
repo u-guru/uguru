@@ -1,6 +1,6 @@
 // Uguru upp
 
-var LOCAL = false; //local to the 8100 codebasebirbirs
+var LOCAL = true; //local to the 8100 codebasebirbirs
 
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 var REST_URL = 'http://uguru-rest.herokuapp.com'
@@ -8,10 +8,10 @@ var REST_URL = 'http://uguru-rest.herokuapp.com'
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  // BASE_URL = 'http://192.168.42.66:8100';
+  BASE_URL = 'http://192.168.42.66:8100';
  // REST_URL = 'http://192.168.42.66:5000';
 
-  BASE_URL = 'http://localhost:8100/';
+  // BASE_URL = 'http://localhost:8100/';
   REST_URL = 'http://localhost:5000';
 
 } else {
@@ -325,8 +325,8 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
                       Version.setVersion(serverVersionNumber);
                       $localstorage.set('recently_updated', true);
                       console.log('V' + serverVersionNumber + 'stored to user');
-                      window.location = BASE_URL;
-                      window.location.reload(true);
+                      window.location.href = BASE_URL;
+                      window.location.replace(true);
                     }
                },
 
