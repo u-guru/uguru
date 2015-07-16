@@ -1,11 +1,11 @@
-<div ng-show='settings.icons.profile && user.id' class='relative' style='height:90%;'>
+<div ng-show='settings.icons.profile && user.id' class='relative full-height hide ng-class:{"show": settings.icons.profile && user.id}' style='height:90%;'>
         <div ng-show='user && user.id'class="bar bar-header dark-bg-header mini-header uppercase relative" style='width:auto;'>
           <h1 class="title bold">Student Profile</h1>
           <div class='buttons'>
             <button style='padding-top:0.1em;'class="button button-clear button-header-link submit-button button-right " id='done-button' ng-click='showStudentEditActionSheet()'>Edit</button>
           </div>
         </div>
-        <div class='pure-g-c flex-column flex-space-between'>
+        <div class='pure-g-c flex-column flex-space-between full-height'>
 
 
             <div class='pure-g flex-item-c center no-margin relative full-width'>
