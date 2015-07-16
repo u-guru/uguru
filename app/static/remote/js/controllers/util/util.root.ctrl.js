@@ -35,7 +35,7 @@ angular.module('uguru.util.controllers')
           Skill, Profession, $cordovaDevice) {
 
           // console.log('1. checking for app updates\n');
-          // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
+          checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
 
 
           $scope.network_speed = null;
@@ -538,7 +538,7 @@ angular.module('uguru.util.controllers')
             document.addEventListener("resume", function() {
 
                 // console.log('device is resuming....');
-                // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+                checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
                 // console.log('device resumed');
 
                 Version.getUpdatedVersionNum().then(
