@@ -2648,3 +2648,32 @@ input.bill-student-input {
 .padding-eight {
     padding:0.125em;
 }
+
+.course-tag.inverted {
+    border: 1px solid #D97142;
+    padding: 3px 20px !important;
+    border-color: #D97142;
+    background-color:transparent;
+    color:#D97142;
+    min-height:0px;
+    line-height:2em;
+}
+
+.button.course-tag:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+}
+
+.course-tag.inverted.active, .course-tag.inverted.activated {
+    background-color:#D97142;
+    color:white;
+}
+
+.button.button-positive {
+  background-color:$blue;
+  border-color: $blue;
+}

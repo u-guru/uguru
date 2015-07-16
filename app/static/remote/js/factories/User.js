@@ -624,12 +624,6 @@ angular.module('uguru.user', [])
                         'remove_student_course': true
                   }
               }
-              if (arg === 'email') {
-                  return {
-                        email: obj,
-                        'email': true
-                  }
-              }
               if (arg === 'phone_number') {
                   return {
                         phone_number: obj,
@@ -681,6 +675,18 @@ angular.module('uguru.user', [])
               if (arg === 'change_password') {
                 return {
                     'change_password': obj
+                }
+              }
+
+              if (arg === 'name') {
+                return {
+                    'name': obj
+                }
+              }
+
+              if (arg === 'email') {
+                return {
+                    'email': obj
                 }
               }
 
@@ -1151,7 +1157,7 @@ angular.module('uguru.user', [])
             });
 
         },
-        updateAttrUser: function(arg, user, obj, success_callback, $scope) {
+        updateAttrUser: function(arg, user, obj, success_callback, $scope, failure_callback) {
             if (!user.id) {
               console.log('user has not created an account yet.')
               return
@@ -1170,8 +1176,8 @@ angular.module('uguru.user', [])
                     success_callback();
                 }
             }, function(err){
-                if (success_callback) {
-                    success_callback(err);
+                if (failure_callback) {
+                    failure_callback(err);
                 } else {
                     console.log(JSON.stringify(err));
                     console.log('error...something happened with the server;')

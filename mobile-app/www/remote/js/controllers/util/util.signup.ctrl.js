@@ -17,10 +17,12 @@ angular.module('uguru.util.controllers')
   '$cordovaPush',
   '$ionicViewSwitcher',
   '$ionicHistory',
+  '$ionicActionSheet',
+  '$ionicPopup',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
-  $ionicViewSwitcher, $ionicHistory) {
+  $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup) {
 
     $scope.root.vars.show_account_fields = false;
     $scope.loginMode = false;
@@ -89,6 +91,14 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.goToEditCourses = function() {
+      $scope.loader.show();
+      $state.go('^.courses');
+      $timeout(function() {
+        $scope.loader.hide();
+      }, 750);
+    }
+
     $scope.toggleLoginMode = function() {
       $scope.loginMode = !$scope.loginMode;
       if (!$scope.loginMode) {
@@ -139,6 +149,198 @@ angular.module('uguru.util.controllers')
       last_name: null,
       email: null,
       password:null
+    }
+
+    $scope.showPopupEditEmail = function() {
+
+      $scope.data = {name:$scope.user.email};
+
+      $scope.inputPopup = $ionicPopup.show({
+          template: '<input style="padding:2px 4px;" type="text" ng-model="data.name" autofocus>',
+          title: 'Edit email',
+          subTitle: 'Please your main school one',
+          scope: $scope,
+          buttons: [
+            { text: 'Cancel' },
+            {
+              text: '<b>Save</b>',
+              type: 'button-positive',
+              onTap: function(e) {
+                $scope.inputPopup.close();
+                $scope.user.email = $scope.data.email;
+
+                $scope.user.updateAttr('email', $scope.user, $scope.user.email, null, $scope);
+                $scope.success.show(0, 1000, 'Saved!');
+              }
+            }
+          ]
+        });
+    };
+
+    $scope.showPopupEditPassword = function() {
+      $scope.data = {email: $scope.user.email}
+
+
+      $scope.inputPopup = $ionicPopup.show({
+          template: '<input style="padding:2px 4px; margin-bottom:4px;" type="password" ng-model="data.old_password" placeholder="old password" autofocus><input style="padding:2px 4px;" type="password" ng-model="data.new_password" placeholder="new password">',
+          title: 'Change your password',
+          subTitle: 'Must be longer than 6 characters',
+          scope: $scope,
+          buttons: [
+            { text: 'Cancel' },
+            {
+              text: '<b>Save</b>',
+              type: 'button-positive',
+              onTap: function(e) {
+
+                if (!$scope.data.old_password || !$scope.data.new_password || $scope.data.new_password.length < 7) {
+                  alert('Please fill in all fields');
+                  return;
+                }
+
+                if ($scope.data.new_password.length < 7) {
+                  alert('Please create a password longer than 6 characters');
+                  return;
+                }
+
+                var successCallback = function() {
+                  $scope.inputPopup.close();
+                  $timeout(function() {
+                    $scope.success.show(0, 1000, 'Saved!');
+                  }, 500);
+                }
+
+                var failureCallback = function() {
+                  alert('Incorrect Password - try again?');
+                }
+
+                var payload = {
+                  email : $scope.user.email,
+                  new_password : $scope.data.new_password,
+                  old_password: $scope.data.old_password
+                }
+
+                $scope.user.updateAttr('change_password', $scope.user, payload, successCallback, $scope, failureCallback);
+
+              }
+            }
+          ]
+        });
+
+    }
+
+
+    $scope.showPopupEditName = function() {
+
+      $scope.data = {name:$scope.user.name};
+
+      $scope.inputPopup = $ionicPopup.show({
+          template: '<input style="padding:2px 4px;" type="text" ng-model="data.name" autofocus>',
+          title: 'Change your try identity',
+          subTitle: 'Try not to troll too hard',
+          scope: $scope,
+          buttons: [
+            { text: 'Cancel' },
+            {
+              text: '<b>Save</b>',
+              type: 'button-positive',
+              onTap: function(e) {
+                $scope.inputPopup.close();
+                $scope.user.name = $scope.data.name;
+                $scope.user.updateAttr('name', $scope.user, $scope.user.name, null, $scope);
+                $scope.success.show(0, 1000, 'Saved!');
+              }
+            }
+          ]
+        });
+    };
+
+    //settings info
+    $scope.editAccountInfoActionSheet = function() {
+
+      var options = [{text: 'Edit Name'},{text: 'Edit Email'}];
+      if (!$scope.user.fb_id) {
+        options.push({text: 'Edit Password'});
+      }
+        // Show the action sheet
+        $scope.closeAttachActionSheet = $ionicActionSheet.show({
+            buttons: options,
+            titleText: '<span class="semibold uppercase">Edit Account Settings</span>',
+            cancelText: 'Cancel',
+            cancel: function() {
+                $scope.closeAttachActionSheet();
+            },
+            buttonClicked: function(index) {
+
+              // fire profile photo
+              if (index === 0) {
+                $scope.closeAttachActionSheet();
+                $timeout(function() {
+                  $scope.showPopupEditName();
+                }, 500);
+              }
+
+              if (index === 1) {
+                $scope.closeAttachActionSheet();
+                $timeout(function() {
+                  $scope.showPopupEditEmail();
+                }, 500);
+
+              }
+
+              if (index === 2) {
+                $scope.closeAttachActionSheet();
+                $timeout(function() {
+                  $scope.showPopupEditPassword();
+                }, 500);
+
+              }
+
+            }
+      });
+
+    }
+
+
+
+
+
+    $scope.showStudentEditActionSheet = function() {
+
+        var options = [{text: 'Profile Photo'},{text: 'University'}, {text: 'Major'}, {text: 'Account Information'}];
+
+        // Show the action sheet
+        $scope.closeAttachActionSheet = $ionicActionSheet.show({
+            buttons: options,
+            titleText: '<span class="semibold uppercase">What would you like to edit?</span>',
+            cancelText: 'Cancel',
+            cancel: function() {
+                $scope.closeAttachActionSheet();
+            },
+            buttonClicked: function(index) {
+
+              // fire profile photo
+              if (index === 0) {
+
+              }
+
+              if (index === 1) {
+                $scope.transitionToUniversity()
+              }
+
+              if (index === 2) {
+                $scope.transitionToMajor();
+              }
+
+              if (index === 3) {
+                $scope.closeAttachActionSheet();
+                $timeout(function() {
+                  $scope.editAccountInfoActionSheet();
+                }, 500);
+              }
+
+            }
+      });
     }
 
     $scope.resetSignupForm = function() {
@@ -195,13 +397,26 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    $scope.goToBecomeGuru = function() {
-      $ionicSideMenuDelegate.toggleRight();
-      $scope.user.updateAttr('is_a_guru', $scope.user, {'is_a_guru': true}, null, $scope);
+    $scope.goToEditCourses = function() {
+      $scope.loader.show();
+      $state.go('^.courses');
+
       $timeout(function() {
-        $ionicViewSwitcher.nextDirection('forward');
-        $state.go('^.become-guru');
-      }, 500)
+        $ionicSideMenuDelegate.toggleRight();
+        $scope.loader.hide();
+      }, 750);
+    }
+
+    $scope.goToBecomeGuru = function() {
+      $scope.loader.show();
+      $state.go('^.become-guru');
+
+      $scope.user.updateAttr('is_a_guru', $scope.user, {'is_a_guru': true}, null, $scope);
+
+      $timeout(function() {
+        $ionicSideMenuDelegate.toggleRight();
+        $scope.loader.hide();
+      }, 750)
     }
 
     $scope.goToGuru = function() {

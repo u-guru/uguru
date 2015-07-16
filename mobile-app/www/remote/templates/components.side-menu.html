@@ -61,22 +61,17 @@
               </div>
             </a>
           </div>
-          <div class='flex-item-c center'>
+          <div class='flex-item-c center' ng-show='user && !user.id'>
             <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(5)'>
-              <div ng-show='user && user.id'>
-                <img class='pure-img animated pulse ng-class:{"hide":!root.vars.guru_mode}' ng-src='{{img_base}}./img/settings/become-guru.svg'/>
-
-                  <img class='pure-img ng-class:{"hide":root.vars.guru_mode}' ng-src='{{img_base}}./img/settings/become-guru-outline.svg'>
-              </div>
-              <div ng-show='user && !user.id'>
+              <div>
                 <img class='pure-img padding-eight' ng-src='{{img_base}}./img/verbs/skilled.svg'/>
               </div>
             </a>
           </div>
 
-          <div class='flex-item-c center'>
+          <div class='flex-item-c center' ng-show='user && !user.id'>
             <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(6)'>
-              <div ng-show='user && !user.id'>
+              <div>
                 <img class='pure-img' ng-src='{{img_base}}./img/verbs/items.svg'/>
               </div>
             </a>
@@ -100,7 +95,7 @@
 
       <!-- [Profile] settings icon section -->
 
-          <div class='full-height' ng-include="img_base + 'templates/components.side-menu.presignup.html'"> </div>
+          <div class='full-height' ng-show='user && !user.id' ng-include="img_base + 'templates/components.side-menu.presignup.html'"> </div>
 
           <div class='full-height' ng-include="img_base + 'templates/components.side-menu.postsignup.html'"> </div>
 
@@ -111,11 +106,11 @@
 
 
     </div>
-    <ion-footer-bar ng-show='root.vars.version && !settings.icons.support' class='side-menu-footer-bar' style='padding-left:20%; background-color:transparent;'>
+   <!--  <ion-footer-bar ng-show='root.vars.version && !settings.icons.support' class='side-menu-footer-bar' style='padding-left:20%; background-color:transparent;'>
       <a class='pure-u-1 nano-text center' ng-click='resetAccount()'>
           v1.0.{{root.vars.version}}
       </a>
-    </ion-footer-bar>
+    </ion-footer-bar> -->
 
   </ion-content>
 </ion-modal-view>
