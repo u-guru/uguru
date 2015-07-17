@@ -66,9 +66,12 @@
                         <img class='pure-img absolute' ng-src='{{img_base}}./img/settings/become-guru-outline.svg' style='height:120%; top:0;'>
                         Become a Guru
                       </button>
-                      <button class='button button-full button-black micro-text item-avatar-left relative' ng-show='user && user.is_a_guru' style='padding-left:3em; height:50px;' ng-click='goToBecomeGuru()'>
+                      <button class='button button-full button-black micro-text item-avatar-left relative' ng-show='user && user.is_a_guru && !root.vars.guru_mode' style='padding-left:3em; height:50px;' ng-click='goToGuru()'>
                         <img class='pure-img absolute' ng-src='{{img_base}}./img/settings/become-guru-outline.svg' style='height:60px; top:10%;'>
                         Switch to Guru Mode
+                      </button>
+                      <button class='button button-full button-footer light-blue-bg micro-text relative white' ng-show='user && user.is_a_guru && root.vars.guru_mode' style='height:50px;' ng-click='goToStudent()'>
+                        Switch to Student Mode
                       </button>
                      </div>
                   </div>

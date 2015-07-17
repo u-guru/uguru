@@ -2686,3 +2686,13 @@ input.bill-student-input {
 .extra .toggle.toggle-calm {
     top:5px;
 }
+
+.button.button-footer.light-blue-bg.active, .button.button-footer.light-blue-bg.activated, .button.button-footer.light-blue-bg:visited {
+    opacity:0.5;
+    color:white;
+    border-color:$blue;
+}
+
+a.button-footer:visited, a.button-footer:hover {
+    color:white;
+}

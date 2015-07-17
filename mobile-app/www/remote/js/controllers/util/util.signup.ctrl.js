@@ -514,32 +514,38 @@ angular.module('uguru.util.controllers')
 
     $scope.goToGuru = function() {
 
-      if ($scope.user && $scope.user.show_become_guru) {
+      $scope.loader.show();
+      $state.go('^.guru');
 
-        $state.go('^.become-guru');
+      $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': true}, null, $scope);
 
-        $scope.user.updateAttr('is_a_guru', $scope.user, {'is_a_guru': true}, null, $scope);
+      $timeout(function() {
+        $ionicSideMenuDelegate.toggleRight();
+        $scope.loader.hide();
+      }, 750)
 
-        $timeout(function() {
-          $ionicViewSwitcher.nextDirection('back');
-          $ionicSideMenuDelegate.toggleRight();
-        }, 500)
-
-      } else {
-
-        $state.go('^.guru');
+      $timeout(function() {
         $scope.root.vars.guru_mode = true;
-        $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': true}, null, $scope);
-        $timeout(function() {
-            $ionicViewSwitcher.nextDirection('back');
-            $ionicSideMenuDelegate.toggleRight();
-        }, 500);
-
-      }
-
+      }, 1000)
     }
 
+    $scope.goToStudent = function() {
 
+
+      $scope.loader.show();
+      $state.go('^.home');
+
+      $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': false}, null, $scope);
+
+      $timeout(function() {
+        $ionicSideMenuDelegate.toggleRight();
+        $scope.loader.hide();
+      }, 750)
+
+      $timeout(function() {
+        $scope.root.vars.guru_mode = false;
+      }, 1000)
+    }
 
     $scope.closeSignupModal = function(callback) {
       $scope.loader.hide();
