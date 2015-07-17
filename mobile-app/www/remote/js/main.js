@@ -193,7 +193,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         controller: 'SignupController'
   }).
   state('root.payments', {
-        url: '/payments',
+        url: '/payments:cardObj',
         templateUrl: BASE + 'templates/payments.html',
         controller: 'PaymentsController'
   }).

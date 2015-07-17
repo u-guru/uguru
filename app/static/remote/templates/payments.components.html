@@ -4,9 +4,14 @@
       </div>
       <h1 class="title micro-text">Add Payment</h1>
       <div class="buttons">
-        <button class="button button-clear button-header-link submit-button" id='done-button' ng-click='savePayment()'>
+        <button class="button button-clear button-header-link submit-button hide ng-class:{'show': !data.card_exists}" id='done-button' ng-click='savePayment()'>
           <span class='ng-class:{"grey-text":card_details.number.length === 0}'>Add</span>
         </button>
+
+        <button class="button button-clear button-header-link submit-button ng-class:{'show': data.card_exists}" id='done-button' ng-click='paymentCardActionSheetOptions()'>
+          <span class='grey-text'>Edit</span>
+        </button>
+
       </div>
   </ion-header-bar>
 

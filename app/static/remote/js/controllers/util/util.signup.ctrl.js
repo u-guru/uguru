@@ -30,6 +30,9 @@ angular.module('uguru.util.controllers')
     $scope.loginMode = false;
     $scope.headerText = 'Sign Up';
 
+    console.log('length', $scope.user.payment_cards.length);
+    console.log(JSON.stringify($scope.user.payment_cards[0]));
+
     $scope.settings = {}
     $scope.settings.icons = {
       profile: ($scope.user && $scope.user.id),
@@ -529,14 +532,20 @@ angular.module('uguru.util.controllers')
       }, 1000)
     }
 
-    $scope.goToPaymentsFromSideBar = function() {
+    $scope.goToPaymentsFromSideBar = function(payment) {
+
 
       $scope.loader.show();
-      $state.go('^.payments');
+      if (payment) {
+        console.log('passing payments');
+        $state.go('^.payments', {cardObj:JSON.stringify(payment)})
+      } else {
+        $state.go('^.payments');
+      }
+
 
       $timeout(function() {
         $ionicSideMenuDelegate.toggleRight();
-        $scope.loader.hide();
       }, 750);
     }
 
@@ -658,7 +667,22 @@ angular.module('uguru.util.controllers')
     };
 
     $scope.closeSideBar = function() {
-      $ionicSideMenuDelegate.toggleRight();
+
+
+      if ($state.current.name === 'root.home') {
+        $ionicSideMenuDelegate.toggleRight()
+      }
+      else {
+
+        $timeout(function() {
+          $ionicSideMenuDelegate.toggleRight()
+          $scope.loader.hide();
+        }, 500)
+
+        $scope.loader.show();
+        $state.go('^.home');
+
+      }
     }
 
 

@@ -57,10 +57,10 @@
             </div>
 
 
-             <div class='flex-item-c j-center'>
+             <div class='flex-item-c j-start'>
 
                 <div class='pure-u-1'>
-                  <div class='pure-g-c flex-column j-end'>
+                  <div class='pure-g-c flex-column j-start'>
                     <div class='pure-u-1 padding-1em no-padding-bottom '>
                       <button class='button button-full button-black micro-text item-avatar-left relative' ng-show='user && !user.is_a_guru' style='padding-left:3em;' ng-click='goToBecomeGuru()'>
                         <img class='pure-img absolute' ng-src='{{img_base}}./img/settings/become-guru-outline.svg' style='height:120%; top:0;'>
@@ -163,26 +163,15 @@
                 </ion-item>
 
 
-                <ion-item class='request-item item-icon-right relative'>
+                <ion-item  class='request-item item-icon-right relative' ng-repeat='payment_card in user.payment_cards' ng-click='goToPaymentsFromSideBar(payment_card)'>
                   <span class='card-img'> <img ng-src='{{img_base}}./img/visa.png' class='pure-img' style='height:20px; display:inline-block;'/> </span>
                   <p class='opacity-4-5' style='padding-left:3em; padding-right:3em;'>
-                    **6190 </p>
+                    **{{payment_card.card_last4}} </p>
                   <span class='card-icons-right'>
                     <i class='icon ion-chevron-right icon-small'> </i>
-                    <i class='icon ion-checkmark green'> </i>
+                    <i ng-show='payment_card.is_default_payment' class='icon ion-checkmark green'> </i>
                   </span>
                 </ion-item>
-
-                <ion-item class='request-item item-icon-right relative'>
-                  <span class='card-img'> <img ng-src='{{img_base}}./img/visa.png' class='pure-img' style='height:20px; display:inline-block;'/> </span>
-                  <p class='opacity-4-5' style='padding-left:3em; padding-right:3em;'>
-                    **9563 </p>
-                  <span class='card-icons-right'>
-                    <i class='icon ion-chevron-right icon-small'> </i>
-                  </span>
-                </ion-item>
-
-
 
                 <div class='item item-divider' ng-show='user && user.is_a_guru'>
                 </div>
@@ -191,7 +180,7 @@
                   <p class='uppercase opacity-3-4 micro-text'> Bank Cards </p>
                 </div>
 
-                <ion-item class='request-item item-icon-right relative' ng-show='user && user.is_a_guru'>
+                <ion-item class='request-item item-icon-right relative' ng-show='user && user.is_a_guru' ng-click='goToPaymentsFromSideBar()'>
                   <p class='opacity-4-5 no-margin' style='padding-left:0.3em; font-size:80%;'>
                     Add A New Bank Account </p>
                   <span class='card-icons-right'>

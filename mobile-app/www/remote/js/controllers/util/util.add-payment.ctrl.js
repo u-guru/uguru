@@ -17,7 +17,7 @@
 
     $scope.card_details = {number: '', expiry:''};
 
-
+    $scope.data = {card_exists: false};
     // console.log();
     $scope.user.cards = [];
     $scope.user_has_card = $scope.user.cards && $scope.user.cards.length > 0;
@@ -49,7 +49,19 @@
     }
 
     $scope.goBack = function() {
-      $ionicHistory.goBack();
+      if ($scope.paymentsModal) {
+        $ionicHistory.goBack();
+      } else {
+        $scope.loader.show();
+        $ionicSideMenuDelegate.toggleRight();
+
+        $timeout(function() {
+
+          $scope.loader.hide();
+        }, 1000);
+
+      }
+
     }
 
     $scope.showSuccess = function(msg) {
@@ -337,9 +349,21 @@
       });
     }
 
-    $scope.$on('$ionicView.afterEnter', function(){
+    $scope.$on('$ionicView.enter', function(){
+
+        if ($stateParams && $stateParams.cardObj) {
+          $scope.data.card_exists = true;
+          console.log('whoooo card exits');
+        }
+
+        $timeout(function() {
+          $scope.loader.hide();
+        }, 1000);
+
         console.log('after enter');
-        $scope.initCardAndFocusInput();
+        $timeout(function() {
+          $scope.initCardAndFocusInput();
+        }, 1000);
 
     });
 
