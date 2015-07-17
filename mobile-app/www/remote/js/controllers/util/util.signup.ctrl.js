@@ -622,6 +622,7 @@ angular.module('uguru.util.controllers')
         var successCallback = function() {
           $timeout(function(){
             $scope.loader.hide();
+            $scope.settings.icons.profile = true;
             $timeout(function() {
               $scope.success.show(0, 1500, 'Login Successful!');
             }, 1000)
@@ -880,13 +881,21 @@ angular.module('uguru.util.controllers')
           $localstorage.setObject('user', $scope.user);
 
           $scope.success.show(0, 2000, 'Login Successful!');
-
+          $scope.settings.icons.profile = true;
 
           $scope.toggleAccountView();
 
-          if ($state.current.name === 'root.home') {
-            $ionicSideMenuDelegate.toggleRight();
-          }
+          $scope.loader.show();
+          $timeout(function() {
+
+            $timeout(function() {
+              $scope.loader.hide();
+            }, 500);
+            if ($state.current.name === 'root.home') {
+              $ionicSideMenuDelegate.toggleRight();
+            }
+
+          }, 500);
 
 
       }, function(err) {
