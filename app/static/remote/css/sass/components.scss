@@ -2656,7 +2656,8 @@ input.bill-student-input {
     background-color:transparent;
     color:#D97142;
     min-height:0px;
-    line-height:2em;
+    line-height:19px;
+    text-transform:uppercase;
 }
 
 .button.course-tag:after {
@@ -2676,4 +2677,12 @@ input.bill-student-input {
 .button.button-positive {
   background-color:$blue;
   border-color: $blue;
+}
+
+.white{
+    color:white;
+}
+
+.extra .toggle.toggle-calm {
+    top:5px;
 }

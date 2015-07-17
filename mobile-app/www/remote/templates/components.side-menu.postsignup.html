@@ -1,17 +1,17 @@
-<div ng-show='settings.icons.profile && user.id' class='relative full-height hide ng-class:{"show": settings.icons.profile && user.id}' style='height:90%;'>
+<div ng-show='settings.icons.profile && user.id' class='relative full-height hide ng-class:{"show": settings.icons.profile && user.id}'>
         <div ng-show='user && user.id'class="bar bar-header dark-bg-header mini-header uppercase relative" style='width:auto;'>
           <h1 class="title bold">Student Profile</h1>
           <div class='buttons'>
             <button style='padding-top:0.1em;'class="button button-clear button-header-link submit-button button-right " id='done-button' ng-click='showStudentEditActionSheet()'>Edit</button>
           </div>
         </div>
-        <div class='pure-g-c flex-column flex-space-between full-height'>
+        <div class='pure-g-c flex-column flex-space-between' style='height:90%;'>
 
 
             <div class='pure-g flex-item-c center no-margin relative full-width'>
               <div class='pure-u-1 center float-center relative center'>
                 <div class='absolute settings-profile-image-container padding-1em auto-margin full-width' style='position:absolute'>
-                  <img ng-show='user && user.profile_url' class='pure-img profile-img sidebar-img inline'style='margin-top:2%;' src='{{user.profile_url}}'/>
+                  <img ng-show='user && user.profile_url' style='width:130px; height:130px;'class='pure-img profile-img sidebar-img inline'style='margin-top:2%;' id='sidebar-student-profile-photo'src='{{user.profile_url}}'/>
                 </div>
                 <div class='white-bg' style='margin-top:35%; padding-top:20%; padding-bottom:5%;'>
                   <div class='pure-u-1 regular'>
@@ -57,7 +57,7 @@
             </div>
 
 
-             <div class='flex-item-c j-end'>
+             <div class='flex-item-c j-center'>
 
                 <div class='pure-u-1'>
                   <div class='pure-g-c flex-column j-end'>
@@ -66,8 +66,8 @@
                         <img class='pure-img absolute' ng-src='{{img_base}}./img/settings/become-guru-outline.svg' style='height:120%; top:0;'>
                         Become a Guru
                       </button>
-                      <button class='button button-full button-black micro-text item-avatar-left relative' ng-show='user && user.is_a_guru' style='padding-left:3em;' ng-click='goToBecomeGuru()'>
-                        <img class='pure-img absolute' ng-src='{{img_base}}./img/settings/become-guru-outline.svg' style='height:120%; top:0;'>
+                      <button class='button button-full button-black micro-text item-avatar-left relative' ng-show='user && user.is_a_guru' style='padding-left:3em; height:50px;' ng-click='goToBecomeGuru()'>
+                        <img class='pure-img absolute' ng-src='{{img_base}}./img/settings/become-guru-outline.svg' style='height:60px; top:10%;'>
                         Switch to Guru Mode
                       </button>
                      </div>
@@ -94,27 +94,21 @@
             <ion-list class='standard-bg full-width'>
 
 
-              <div class='item item-divider course-divider'>
+              <!-- <div class='item item-divider course-divider'>
                 <p class='uppercase opacity-3-4 micro-text'> Student Notifications </p>
-              </div>
+              </div> -->
 
-              <ion-toggle class='request-form-item'>
-                <p class='opacity-4-5'> Options </p>
+              <ion-toggle class='request-form-item'  ng-change="requestPushNotifications()" ng-show='platform.mobile' ng-model="user.push_notifications" toggle-class="toggle-calm">
+                <p class='opacity-4-5'> Push Notifications </p>
               </ion-toggle>
 
-              <ion-toggle class='request-form-item'>
-                <p class='opacity-4-5'> Options </p>
+              <ion-toggle class='request-form-item ng-class:{"extra":user.email && user.email.length > 0}' ng-model="user.email_notifications" ng-change='emailNotificationChange()' toggle-class="toggle-calm">
+                <p class='opacity-4-5'> Email Notifications</p>
+                <p class='opacity-6-10 nano-text'>{{user.email}}</p>
               </ion-toggle>
 
-              <ion-toggle class='request-form-item'>
-                <p class='opacity-4-5'> Options </p>
-              </ion-toggle>
 
-              <ion-toggle class='request-form-item'>
-                <p class='opacity-4-5'> Options </p>
-              </ion-toggle>
-
-              <div class='item item-divider'>
+              <!-- <div class='item item-divider'>
               </div>
 
               <div class='item item-divider course-divider'>
@@ -135,7 +129,7 @@
 
               <ion-toggle class='request-form-item'>
                 <p class='opacity-4-5'> Options </p>
-              </ion-toggle>
+              </ion-toggle> -->
 
             </ion-list>
           </div>
@@ -149,7 +143,7 @@
         </div>
         <div class='pure-g-c flex-column flex-space-between'>
           <div class='pure-g flex-item-c relative'>
-              <ion-list class='standard-bg'>
+              <ion-list class='standard-bg full-width'>
 
 
                 <div class='item item-divider course-divider'>
@@ -335,3 +329,5 @@
             </div>
           </div>
         </div>
+
+        <input type='file' id='file-input-web-sidebar' onchange="angular.element(this).scope().file_changed(this)" style='display:none'>

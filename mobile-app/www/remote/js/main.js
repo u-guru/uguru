@@ -177,6 +177,16 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/university.html',
         controller: 'HomeController'
   }).
+  state('root.university-container', {
+        url: '/university-container',
+        templateUrl: BASE + 'templates/university.container.html',
+        controller: 'AddUniversityController'
+  }).
+  state('root.majors-container', {
+        url: '/majors-container',
+        templateUrl: BASE + 'templates/majors.container.html',
+        controller: 'AddMajorController'
+  }).
   state('root.signup', {
         url: '/signup',
         templateUrl: BASE + 'templates/signup.html',

@@ -19,10 +19,12 @@ angular.module('uguru.util.controllers')
   '$ionicHistory',
   '$ionicActionSheet',
   '$ionicPopup',
+  'Camera',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
-  $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup) {
+  $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
+  Camera) {
 
     $scope.root.vars.show_account_fields = false;
     $scope.loginMode = false;
@@ -150,6 +152,73 @@ angular.module('uguru.util.controllers')
       email: null,
       password:null
     }
+
+    $scope.showActionSheetProfilePhoto = function() {
+
+      //desktop only
+      if (!$scope.platform.mobile) {
+          $scope.takePhoto(index);
+          return;
+      }
+
+      var options = [{ text: 'Choose from Library' }];
+      if ($scope.platform.mobile) {
+        options.push({text: 'Take a Photo'})
+      }
+
+     // Show the action sheet
+     $scope.closeAttachActionSheet = $ionicActionSheet.show({
+       buttons: options,
+       cancelText: 'Cancel',
+       cancel: function() {
+            $scope.closeAttachActionSheet();
+        },
+       buttonClicked: function(index) {
+          $scope.takePhoto(index);
+
+          $timeout(function() {
+              $scope.closeAttachActionSheet();
+          }, 500);
+       }
+     });
+    }
+
+    $scope.takePhoto = function(index) {
+      if ($scope.platform.mobile) {
+        Camera.takePicture($scope, index, successCallback);
+      } else {
+        var element = document.getElementById('file-input-web')
+        element.click();
+      }
+    }
+
+    $scope.file_changed = function(element) {
+        var photofile = element.files[0];
+
+        var reader = new FileReader();
+
+
+        var image = document.getElementById('become-guru-profile');
+
+        reader.onload = function(e) {
+            $scope.user.profile_url = e.target.result;
+        };
+
+        reader.readAsDataURL(photofile);
+
+
+        var formData = new FormData();
+
+        formData.append('file', photofile);
+        formData.append('profile_url', $scope.user.id);
+
+        formData.append('filename', name);
+
+        $scope.file_index += 1;
+
+        $scope.user.createObj($scope.user, 'files', formData, $scope, $scope.takePhotoCallbackSuccess);
+    };
+
 
     $scope.showPopupEditEmail = function() {
 
@@ -303,6 +372,15 @@ angular.module('uguru.util.controllers')
 
 
 
+    $scope.transitionToUniversity = function() {
+      $state.go('^.university-container');
+    }
+
+    $scope.transitionToMajor = function() {
+      $state.go('^.majors-container');
+    }
+
+
 
 
     $scope.showStudentEditActionSheet = function() {
@@ -321,15 +399,30 @@ angular.module('uguru.util.controllers')
 
               // fire profile photo
               if (index === 0) {
-
+                $scope.closeAttachActionSheet();
+                $timeout(function() {
+                  $scope.showActionSheetProfilePhoto();
+                }, 500);
               }
 
               if (index === 1) {
+                $scope.closeAttachActionSheet();
+                $scope.loader.show();
                 $scope.transitionToUniversity()
+                $timeout(function() {
+                  $scope.loader.hide();
+                  $ionicSideMenuDelegate.toggleRight();
+                }, 1000);
               }
 
               if (index === 2) {
-                $scope.transitionToMajor();
+                $scope.closeAttachActionSheet();
+                $scope.loader.show();
+                $scope.transitionToMajor()
+                $timeout(function() {
+                  $scope.loader.hide();
+                  $ionicSideMenuDelegate.toggleRight();
+                }, 1000);
               }
 
               if (index === 3) {

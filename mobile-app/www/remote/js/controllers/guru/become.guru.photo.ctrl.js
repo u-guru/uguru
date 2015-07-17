@@ -86,7 +86,7 @@ angular.module('uguru.guru.controllers')
         var reader = new FileReader();
 
 
-        var image = document.getElementById('become-guru-profile');
+        var image = document.getElementById('sidebar-student-profile-photo');
 
         reader.onload = function(e) {
             $scope.user.profile_url = e.target.result;

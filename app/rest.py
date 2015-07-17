@@ -362,6 +362,9 @@ class UserOneView(restful.Resource):
             user.text_notifications = request.json.get('text_notifications')
             print 'coming soon!'
 
+        if 'profile_url' in request.json:
+            user.profile_url = request.json.get('profile_url')
+
         if 'email_notifications' in request.json:
             user.email_notifications = request.json.get('email_notifications')
 
