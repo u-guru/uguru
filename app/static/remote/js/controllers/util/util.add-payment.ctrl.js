@@ -88,7 +88,7 @@
     }
 
     $scope.savePayment = function() {
-
+      $scope.loader.show();
       var cardNum = $scope.card_details.number;
       var expMM = $scope.card_details.expiry.split(' / ')[0];
       var expYY = $scope.card_details.expiry.split(' / ')[1];
@@ -98,6 +98,7 @@
       var stripeResponseHandler = function(status, response) {
 
         if (response.error) {
+            $scope.loader.hide();
             $scope.error_msg = true;
             $scope.progress_active = true;
             $scope.success.show(0, 2000, response.error.message);
@@ -136,33 +137,44 @@
             }
             $scope.user.payment_cards.push(cardInfo);
           }
-
+          $scope.loader.hide();
           $scope.user.cards.push(cardInfo);
           $scope.success.show(0, 2000, 'Your card has been successfully added');
 
           var successCallback = function($scope, $state) {
 
+
+
               if ($state.current.name === 'root.home') {
+
+
+
                 $scope.closePaymentsModal();
 
                 if ($scope.choosePriceModal) {
-                $scope.choosePriceModal.show();
+                  $scope.choosePriceModal.show();
+                  $timeout(function() {
+                    $scope.loader.hide();
+                  }, 500)
                 }
+
               }
 
               if ($scope.paymentsModal && $scope.paymentsModal.isShown()) {
                 $scope.paymentsModal.hide();
+                $scope.loader.hide();
               }
 
-              $scope.loader.hide();
+
 
               // $scope.success.show(0, 2000, 'Your card has been successfully added');
 
               if ($state.current.name === 'root.payments') {
+                $ionicSideMenuDelegate.toggleRight();
 
                 $timeout(function() {
-                  $ionicHistory.goBack();
-                }, 500);
+                  $scope.loader.hide();
+                }, 500)
               }
 
 

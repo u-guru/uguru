@@ -529,6 +529,29 @@ angular.module('uguru.util.controllers')
       }, 1000)
     }
 
+    $scope.goToPaymentsFromSideBar = function() {
+
+      $scope.loader.show();
+      $state.go('^.payments');
+
+      $timeout(function() {
+        $ionicSideMenuDelegate.toggleRight();
+        $scope.loader.hide();
+      }, 750);
+    }
+
+    $scope.goToSignupFromSideBar = function() {
+
+      $scope.loader.show();
+      $state.go('^.signup');
+
+      $timeout(function() {
+        $ionicSideMenuDelegate.toggleRight();
+        $scope.loader.hide();
+      }, 750);
+
+    }
+
     $scope.goToStudent = function() {
 
 
@@ -567,21 +590,7 @@ angular.module('uguru.util.controllers')
 
     }
 
-    $scope.goToPaymentsFromSideBar = function() {
-      $ionicSideMenuDelegate.toggleRight();
-      $timeout(function() {
-        $ionicViewSwitcher.nextDirection('forward');
-        $state.go('^.payments');
-      }, 300);
-    }
 
-    $scope.goToSignupFromSideBar = function() {
-      $ionicSideMenuDelegate.toggleRight();
-      $timeout(function() {
-        $ionicViewSwitcher.nextDirection('forward');
-        $state.go('^.signup');
-      }, 300);
-    }
 
     $scope.comingSoon = function() {
       $scope.success.show(0, 1500, 'Coming Soon!');
