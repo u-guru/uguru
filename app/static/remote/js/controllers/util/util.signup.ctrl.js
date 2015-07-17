@@ -30,8 +30,10 @@ angular.module('uguru.util.controllers')
     $scope.loginMode = false;
     $scope.headerText = 'Sign Up';
 
-    console.log('length', $scope.user.payment_cards.length);
-    console.log(JSON.stringify($scope.user.payment_cards[0]));
+    if ($scope.user.payment_cards && $scope.user.payment_cards.length > 0) {
+      console.log('length', $scope.user.payment_cards.length);
+      console.log(JSON.stringify($scope.user.payment_cards[0]));
+    }
 
     $scope.settings = {}
     $scope.settings.icons = {
