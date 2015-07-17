@@ -17,6 +17,8 @@ angular.module('uguru.util.controllers')
   $ionicModal, $ionicTabsDelegate, $q,
   $cordovaKeyboard, University, $ionicSideMenuDelegate) {
 
+    $scope.showMainBody = true;
+
     $scope.search_text = '';
 
     $scope.backToStudentEditProfile = function(is_saved) {
@@ -166,8 +168,9 @@ angular.module('uguru.util.controllers')
           $scope.user.majors = [];
       }
 
-      $scope.majorInput = document.getElementById('major-input')
+
       $scope.majorInput.value = '';
+      $scope.showMainBody = true;
 
       $scope.search_text = '';
       $scope.keyboard_force_off = true;
@@ -176,15 +179,27 @@ angular.module('uguru.util.controllers')
 
       $scope.user.majors.push(major)
 
-
     }
+
 
     $scope.$on('$ionicView.enter', function() {
 
-      $scope.deactivateKeyboard = false;
 
       $timeout(function() {
+
+        //add event listener
         $scope.majorInput = document.getElementById('major-input');
+
+        $scope.majorInput.addEventListener("keyup", function() {
+
+          console.log($scope.majorInput.value.length);
+
+          // console.log('keyup callback', $scope.majorInput.value, $scope.showMainBody);
+
+
+        }, 500);
+
+
       }, 1000);
 
     });

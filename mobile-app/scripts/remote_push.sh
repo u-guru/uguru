@@ -64,10 +64,10 @@ echo
 git push rest master
 echo
 echo
-echo 'last part: restarting servers'
+echo 'last part: restarting servers & updating database'
 echo
 echo
-heroku restart --app uguru-rest
-# honcho run python manage.py update
-# heroku run honcho run python manage.py update --app uguru-rest
+honcho run python manage.py update
+heroku run honcho run python manage.py update --app uguru-rest
+#heroku restart --app uguru-rest
 # heroku run honcho run python manage.py init_admin --app uguru-rest
