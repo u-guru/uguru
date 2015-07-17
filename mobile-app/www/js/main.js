@@ -32,7 +32,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ugur
 
     //Only when the app is opened after its been closed
     document.addEventListener("deviceready", function () {
-
       //Set platform in local store
       var device = ionic.Platform.device();
       var platform = ionic.Platform.platform();
@@ -54,7 +53,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ugur
       if ($cordovaNetwork.isOnline()) {
         console.log('device is online..going straight to the app ');
         navigator.splashscreen.show();
-        window.location = "http://192.168.42.66:5000/app/production/";
+        window.location = "http://192.168.42.83:5000/app/production/";
         // window.location = "http://u.uguru.me/app/production/";
         console.log('this is to test whether things are logged after window.location');
 
