@@ -1032,6 +1032,7 @@ angular.module('uguru.util.controllers')
           }
 
           if ($state.current.name === 'root.home') {
+            $scope.loader.show();
             if ($scope.signupModal && $scope.signupModal.isShown()) {
               $scope.signupModal.hide();
             } else {
