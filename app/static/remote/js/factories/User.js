@@ -1,6 +1,8 @@
 angular.module('uguru.user', [])
 .factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory', 'RootService',
-    function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService) {
+    '$ionicSideMenuDelegate',
+    function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService,
+        $ionicSideMenuDelegate) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -442,7 +444,7 @@ angular.module('uguru.user', [])
         $scope.user.guru_score_opportunities = user.guru_score_opportunities;
         $scope.user.skills = user.skills;
         $scope.user.professions = user.professions;
-
+        $scope.user.support_tickets = user.support_tickets;
 
         //custom logic client side only
         $scope.user.show_become_guru =  !($scope.user.guru_courses.length || $scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);
@@ -624,12 +626,6 @@ angular.module('uguru.user', [])
                         'remove_student_course': true
                   }
               }
-              if (arg === 'email') {
-                  return {
-                        email: obj,
-                        'email': true
-                  }
-              }
               if (arg === 'phone_number') {
                   return {
                         phone_number: obj,
@@ -652,6 +648,11 @@ angular.module('uguru.user', [])
                 return {
                     event_id: obj,
                     'impact_event': true
+                }
+              }
+              if (arg === 'profile_url') {
+                return {
+                    'profile_url': obj
                 }
               }
               if (arg === 'university_id') {
@@ -681,6 +682,18 @@ angular.module('uguru.user', [])
               if (arg === 'change_password') {
                 return {
                     'change_password': obj
+                }
+              }
+
+              if (arg === 'name') {
+                return {
+                    'name': obj
+                }
+              }
+
+              if (arg === 'email') {
+                return {
+                    'email': obj
                 }
               }
 
@@ -918,8 +931,12 @@ angular.module('uguru.user', [])
                         console.log(JSON.stringify(file.plain()));
 
 
-
-                            if ($state.current.name === 'root.home') {
+                            if ($ionicSideMenuDelegate.isOpen() && $state.current.name === 'root.home') {
+                                $scope.user.profile_url = file.plain().url;
+                                $localstorage.setObject('user', $scope.user);
+                                $scope.user.updateAttr('profile_url', $scope.user, $scope.user.profile_url, null, $scope, null);
+                            }
+                            else if ($state.current.name === 'root.home') {
                                 $scope.request.files.push(file.plain());
                             }
                             else if ($state.current.name === 'root.guru-questions') {
@@ -1151,7 +1168,7 @@ angular.module('uguru.user', [])
             });
 
         },
-        updateAttrUser: function(arg, user, obj, success_callback, $scope) {
+        updateAttrUser: function(arg, user, obj, success_callback, $scope, failure_callback) {
             if (!user.id) {
               console.log('user has not created an account yet.')
               return
@@ -1170,8 +1187,8 @@ angular.module('uguru.user', [])
                     success_callback();
                 }
             }, function(err){
-                if (success_callback) {
-                    success_callback(err);
+                if (failure_callback) {
+                    failure_callback(err);
                 } else {
                     console.log(JSON.stringify(err));
                     console.log('error...something happened with the server;')

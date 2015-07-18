@@ -16,14 +16,76 @@ angular.module('uguru.util.controllers', [])
   '$cordovaStatusbar',
   '$ionicViewSwitcher',
   '$cordovaGeolocation',
+  '$ionicSideMenuDelegate',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $q, University,
   $cordovaKeyboard, $ionicLoading, $cordovaStatusbar,
-  $ionicViewSwitcher, $cordovaGeolocation) {
-
+  $ionicViewSwitcher, $cordovaGeolocation, $ionicSideMenuDelegate) {
+    $scope.data = {};
     $scope.search_text = '';
     $scope.keyboard_force_off = false;
     $scope.view = 1;
+
+    $scope.backToStudentEditProfile = function(is_saved) {
+
+
+      if (is_saved) {
+        $scope.success.show(0, 1500);
+      } else {
+        $scope.loader.show();
+      }
+
+      $timeout(function() {
+        $ionicSideMenuDelegate.toggleRight();
+      }, 500);
+
+      $timeout(function() {
+        $scope.loader.hide();
+
+      }, 1000);
+    }
+
+    $scope.saveUniversityFromStudentProfileSideBar = function(university) {
+
+      var successCallback = function() {
+
+        $scope.user.student_courses = [];
+        $localstorage.removeObject('courses');
+
+        $scope.user.university_id = university.id;
+        $scope.user.university = university;
+        $scope.user.university.latitude = university.location.latitude;
+        $scope.user.university.longitude = university.location.longitude;
+
+        $scope.search_text = '';
+        $scope.keyboard_force_off = true;
+
+        payload = {'university_id': $scope.user.university_id};
+
+        $scope.backToStudentEditProfile(true);
+
+        $scope.user.updateAttr('university_id', $scope.user, payload, null, $scope);
+      };
+
+      //if they have already selected one
+      if ($scope.user.university_id && university.id !== $scope.user.university_id) {
+        var dialog = {
+          msg: 'Are you sure you want to change universities? This will deactive your current courses.',
+          title: 'Warning',
+          button_arr: ['No Thanks', "I'm sure"],
+        }
+
+        if ($scope.platform.mobile) {
+            dialog.arr_callback = [null, successCallback];
+            $scope.root.dialog.confirm(dialog.msg, dialog.title, dialog.button_arr, dialog.arr_callback);
+        }  else {
+          if (confirm(dialog.msg)) {
+            successCallback();
+          }
+        }
+
+      }
+    }
 
     $scope.unFocusSelect = function() {
       var selectElement = document.getElementById('role-select');
@@ -337,6 +399,20 @@ angular.module('uguru.util.controllers', [])
         $scope.addUniversityModal.hide();
       }
     }
+
+    $scope.$on('$ionicView.enter', function() {
+
+      if ($state.current.name === 'root.university-container') {
+        $timeout(function() {
+          $scope.setFocus();
+        }, 1250)
+      }
+
+      if ($scope.user.university && $scope.user.university_id) {
+        $scope.search_text = $scope.user.university.title;
+      }
+
+    });
     //case 1: if universities do not exist in local storage ... go get them
     //case 2: if user has ios && user has not been prompted... , prompt the display to get access
     //case 3: if coordinates are available && nearest_universities are not displayed..., calculate the nearest gps

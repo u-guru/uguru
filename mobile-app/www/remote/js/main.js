@@ -1,6 +1,6 @@
 // Uguru upp
 
-var LOCAL = true; //local to the 8100 codebasebirbirs
+var LOCAL = false; //local to the 8100 codebasebirbirs
 
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 var REST_URL = 'http://uguru-rest.herokuapp.com'
@@ -186,13 +186,23 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/university.html',
         controller: 'HomeController'
   }).
+  state('root.university-container', {
+        url: '/university-container',
+        templateUrl: BASE + 'templates/university.container.html',
+        controller: 'AddUniversityController'
+  }).
+  state('root.majors-container', {
+        url: '/majors-container',
+        templateUrl: BASE + 'templates/majors.container.html',
+        controller: 'AddMajorController'
+  }).
   state('root.signup', {
         url: '/signup',
         templateUrl: BASE + 'templates/signup.html',
         controller: 'SignupController'
   }).
   state('root.payments', {
-        url: '/payments',
+        url: '/payments:cardObj',
         templateUrl: BASE + 'templates/payments.html',
         controller: 'PaymentsController'
   }).

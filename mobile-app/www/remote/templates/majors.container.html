@@ -1,0 +1,66 @@
+<ion-view hide-nav-bar='true' >
+   <div class="bar bar-header dark-bg-header mini-header uppercase relative" style='width:auto;'>
+      <div class="buttons">
+      <button class="button button-clear button-header-link cancel-button button-left" ng-click='backToStudentEditProfile()'>Back</button>
+      </div>
+      <h1 class="title bold">Edit Majors</h1>
+      <div class='buttons'>
+        <button style='padding-top:0.1em;'class="button button-clear button-header-link submit-button button-right " id='done-button' ng-click='backToStudentEditProfile(true)'>Save</button>
+      </div>
+  </div>
+<ion-content class='dark-bg has-header' scroll='false'>
+    <div class='pure-g'>
+      <div class="list pure-u-1">
+        <label class="item item-input bg-transparent university-label no-margin no-border no-box-shadow view-2">
+              <i class='icon ion-search onboarding-search-icon' ng-hide="search_text.length > 0"></i>
+              <input id='major-input' type="text" class='ng-class:{"align-left-start":search_text.length > 0}'
+
+                      fast-matcher
+                        fast-matcher-source="majors"
+                        fast-matcher-output="matchingMajors"
+                        fast-matcher-properties="name"
+                        fast-matcher-any-word="true"
+                        fast-matcher-limit="10"
+                        fast-matcher-preserve-order="true"
+                        fast-matcher-case-insensitive="true"
+                        placeholder="Search Available Majors"
+                      ng-model="search_text"/>
+          <!-- </span> -->
+        </label>
+      </div>
+    </div>
+
+
+    <ion-list>
+      <ion-item ng-show='majorInput.value.length > 0' class='item-button-right request-form-item major-item' ng-repeat="major in matchingMajors" ng-click="majorSelected(major, $event)">
+                  <p class='semibold'>{{major.name}}
+                  </p>
+      </ion-item>
+    </ion-list>
+
+    <div class='pure-g-c flex-column flex-space-between' ng-show='majorInput.value.length === 0'>
+
+              <div class='flex-item-c center j-center' ng-show='user.majors.length > 0'>
+                <div class='pure-g'>
+
+                  <div class='pure-u-1 padding-half'>
+                    <p class='uppercase opacity-1-2 micro-text bold grey' style='color:grey;'> My Majors<br>
+                    </p>
+                    <div class='micro-text regular grey padding-half white' style='opacity:1'>(Tap & Hold to Remove)</div>
+                  </div>
+                </div>
+
+                <div class='pure-g'>
+
+                  <div class='pure-u-1'>
+                    <a class='course-tag major-tag white-bg orange' on-hold="removeMajor(user_major)" style='font-size:80%;' ng-repeat="user_major in user.majors">{{user_major.name}} &nbsp; &nbsp; <i class='icon ion-checkmark'></i></a>
+                  </div>
+                </div>
+
+              </div>
+    </div>
+
+</ion-content>
+
+
+</ion-view>

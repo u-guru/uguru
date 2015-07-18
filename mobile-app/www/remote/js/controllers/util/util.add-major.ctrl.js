@@ -12,9 +12,33 @@ angular.module('uguru.util.controllers')
   '$q',
   '$cordovaKeyboard',
   'University',
+  '$ionicSideMenuDelegate',
   function($scope, $state, $timeout, $localstorage,
   $ionicModal, $ionicTabsDelegate, $q,
-  $cordovaKeyboard, University) {
+  $cordovaKeyboard, University, $ionicSideMenuDelegate) {
+
+    $scope.showMainBody = true;
+
+    $scope.search_text = '';
+
+    $scope.backToStudentEditProfile = function(is_saved) {
+
+
+      if (is_saved) {
+        $scope.success.show(0, 1500);
+      } else {
+        $scope.loader.show();
+      }
+
+      $timeout(function() {
+        $ionicSideMenuDelegate.toggleRight();
+      }, 500);
+
+      $timeout(function() {
+        $scope.loader.hide();
+
+      }, 1000);
+    }
 
 
     $scope.keyboard_force_off = false;
@@ -97,7 +121,7 @@ angular.module('uguru.util.controllers')
 
     };
 
-    // $scope.majors = $scope.static.majors || GetMajorsList();
+    $scope.majors = $scope.static.majors || GetMajorsList();
 
     // console.log($scope.static.majors);
 
@@ -138,10 +162,15 @@ angular.module('uguru.util.controllers')
 
     $scope.majorSelected = function(major, $event) {
 
+      console.log('major selected');
 
       if (!$scope.user.majors) {
           $scope.user.majors = [];
       }
+
+
+      $scope.majorInput.value = '';
+      $scope.showMainBody = true;
 
       $scope.search_text = '';
       $scope.keyboard_force_off = true;
@@ -150,10 +179,34 @@ angular.module('uguru.util.controllers')
 
       $scope.user.majors.push(major)
 
-
     }
+
+
+    $scope.$on('$ionicView.enter', function() {
+
+
+      $timeout(function() {
+
+        //add event listener
+        $scope.majorInput = document.getElementById('major-input');
+
+        $scope.majorInput.addEventListener("keyup", function() {
+
+          console.log($scope.majorInput.value.length);
+
+          // console.log('keyup callback', $scope.majorInput.value, $scope.showMainBody);
+
+
+        }, 500);
+
+
+      }, 1000);
+
+    });
+
 
   }
 
 
 ])
+

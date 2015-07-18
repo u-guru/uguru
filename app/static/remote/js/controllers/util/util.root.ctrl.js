@@ -121,24 +121,24 @@ angular.module('uguru.util.controllers')
 
           $scope.logoutUser = function() {
             if (confirm('Are you sure you want to log out?')) {
-
+              $scope.loader.show();
               $localstorage.setObject('user', []);
               // $scope.user = null;;
               $ionicHistory.clearCache();
               $ionicHistory.clearHistory();
+              //toggle in the middle
               $timeout(function() {
+                  $ionicSideMenuDelegate.toggleRight();
+              }, 1000);
+              $timeout(function() {
+                $scope.loader.hide();
                 $scope.user = User.getLocal();
                 $scope.user.updateAttr = User.updateAttrUser;
                 $scope.user.createObj = User.createObj;
                 $scope.user.updateObj = User.updateObj;
-                $scope.success.show(0, 1500, 'You have been successfully logged out!');
-                $timeout(function() {
-                  $ionicSideMenuDelegate.toggleRight();
-                })
-                $timeout(function() {
-                  $state.go('^.onboarding');
-                }, 1000);
-              }, 500);
+                $scope.root.vars.settings = {icons : {profile : true}};
+                $scope.success.show(500, 1500, 'You have been successfully logged out!');
+              }, 2000);
 
             }
           }
@@ -329,6 +329,9 @@ angular.module('uguru.util.controllers')
 
           //returns empty array of length
           $scope.getNumber = function(num) {
+            if (!num) {
+              return new Array(0);
+            }
             if (typeof(num) === "string") {
               num = parseInt(num) | 0;
             }
@@ -337,6 +340,9 @@ angular.module('uguru.util.controllers')
           }
 
           $scope.getGrayNumber = function(num) {
+            if (!num) {
+              return new Array(5);
+            }
             if (typeof(num) === "string") {
               num = parseInt(num) | 0;
             }

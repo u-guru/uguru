@@ -340,6 +340,12 @@ class UserOneView(restful.Resource):
         if 'outside_university' in request.json:
             user.outside_university = request.json.get('outside_university')
 
+        if 'email' in request.json:
+            user.email = request.json.get('email')
+
+        if 'name' in request.json:
+            user.name = request.json.get('name')
+
         if 'summer_15' in request.json:
             user.summer_15 = request.json.get('summer_15')
 
@@ -355,6 +361,9 @@ class UserOneView(restful.Resource):
         if 'text_notifications' in request.json:
             user.text_notifications = request.json.get('text_notifications')
             print 'coming soon!'
+
+        if 'profile_url' in request.json:
+            user.profile_url = request.json.get('profile_url')
 
         if 'email_notifications' in request.json:
             user.email_notifications = request.json.get('email_notifications')
@@ -2418,11 +2427,11 @@ class AdminUniversityView(restful.Resource):
     @marshal_with(AdminUniversitySerializer)
     def post(self, auth_token):
         if auth_token and auth_token in APPROVED_ADMIN_TOKENS:
-            
+
             # parse the response
             request_json = json.loads(request.json)
 
-            
+
             university_name = request_json.get('name')
 
             u = University.query.filter_by(name=university_name).first()
@@ -2435,7 +2444,7 @@ class AdminUniversityView(restful.Resource):
             u.num_courses = int(num_classes)
 
             # u.num_depts = int(num_dept)
-            
+
             u.short_name = request_json.get('short_name')
             u.last_updated = datetime.now()
             db_session.add(u)
@@ -2446,8 +2455,8 @@ class AdminUniversityView(restful.Resource):
         return "UNAUTHORIZED", 201
 
 class AdminUniversityDeptCoursesView(restful.Resource):
-    
-        
+
+
     @marshal_with(AdminUniversityDeptCourseSerializer)
     def post(self, auth_token, uni_id, dept_id):
         if not auth_token in APPROVED_ADMIN_TOKENS:
@@ -2455,7 +2464,7 @@ class AdminUniversityDeptCoursesView(restful.Resource):
 
 
         if auth_token and auth_token in APPROVED_ADMIN_TOKENS:
-            
+
             u = University.query.get(uni_id)
             if not u:
                 return "MISSING DATA", 202
@@ -2466,7 +2475,7 @@ class AdminUniversityDeptCoursesView(restful.Resource):
 
             # parse the response
             course_list_json = json.loads(request.json)
-            
+
             for course_json in course_list_json:
                 pprint(dept_json)
 
@@ -2475,18 +2484,18 @@ class AdminUniversityDeptCoursesView(restful.Resource):
                 course.university_id = u.id
                 course.variations = "|".join(course_json.get('variations'))
                 course.is_popular = course_json.get('is_popular')
-                
+
                 db_session.add(course)
-            
+
             db_session.commit()
-            
+
             return d.courses, 200
-        
+
         return "UNAUTHORIZED", 201
 
 # create a department
 class AdminUniversityDeptView(restful.Resource):
-    
+
     @marshal_with(AdminUniversityDeptSerializer)
     def post(self, auth_token, uni_id):
         if not auth_token in APPROVED_ADMIN_TOKENS:
@@ -2494,7 +2503,7 @@ class AdminUniversityDeptView(restful.Resource):
 
 
         if auth_token and auth_token in APPROVED_ADMIN_TOKENS:
-            
+
             u = University.query.get(uni_id)
             if not u:
                 return "MISSING DATA", 202
@@ -2504,8 +2513,8 @@ class AdminUniversityDeptView(restful.Resource):
 
             # parse the response
             dept_list_request_json = json.loads(request.json)
-            
-            
+
+
             for dept_json in dept_list_request_json[0:1]:
                 pprint(dept_json)
 
@@ -2517,13 +2526,13 @@ class AdminUniversityDeptView(restful.Resource):
                 dept.source_url = dept_json.get('source')
                 dept.university_id = u.id
                 db_session.add(dept)
-            
+
             db_session.commit()
-            
+
             return u.departments, 200
-        
+
         return "UNAUTHORIZED", 201
-        
+
 
 ####################
 ### END (OFFICIAL) #

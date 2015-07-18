@@ -8,10 +8,10 @@ var REST_URL = 'http://uguru-rest.herokuapp.com'
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  // BASE_URL = 'http://192.168.42.66:8100';
+  BASE_URL = 'http://192.168.42.66:8100';
  // REST_URL = 'http://192.168.42.66:5000';
 
-  BASE_URL = 'http://localhost:8100/';
+  // BASE_URL = 'http://localhost:8100/';
   REST_URL = 'http://localhost:5000';
 
 } else {
@@ -177,13 +177,23 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/university.html',
         controller: 'HomeController'
   }).
+  state('root.university-container', {
+        url: '/university-container',
+        templateUrl: BASE + 'templates/university.container.html',
+        controller: 'AddUniversityController'
+  }).
+  state('root.majors-container', {
+        url: '/majors-container',
+        templateUrl: BASE + 'templates/majors.container.html',
+        controller: 'AddMajorController'
+  }).
   state('root.signup', {
         url: '/signup',
         templateUrl: BASE + 'templates/signup.html',
         controller: 'SignupController'
   }).
   state('root.payments', {
-        url: '/payments',
+        url: '/payments:cardObj',
         templateUrl: BASE + 'templates/payments.html',
         controller: 'PaymentsController'
   }).
@@ -325,8 +335,8 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
                       Version.setVersion(serverVersionNumber);
                       $localstorage.set('recently_updated', true);
                       console.log('V' + serverVersionNumber + 'stored to user');
-                      window.location = BASE_URL;
-                      window.location.reload(true);
+                      window.location.href = BASE_URL;
+                      window.location.replace(true);
                     }
                },
 

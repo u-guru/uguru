@@ -2313,7 +2313,6 @@ button.button-full.ratings-footer-button {
 }
 
 .support-img-container {
-
     img {
         max-height:35px;
         margin:0 auto;
@@ -2332,6 +2331,11 @@ button.button-full.ratings-footer-button {
         width:40px;
     }
 }
+
+.support-img-container.blue-bg {
+    background-color: $blue !important;
+}
+
 .bg-edit-mode {
     background-color:#57CD9F;
 }
@@ -2647,4 +2651,68 @@ input.bill-student-input {
 
 .padding-eight {
     padding:0.125em;
+}
+
+.course-tag.inverted {
+    border: 1px solid #D97142;
+    padding: 3px 20px !important;
+    border-color: #D97142;
+    background-color:transparent;
+    color:#D97142;
+    min-height:0px;
+    line-height:19px;
+    text-transform:uppercase;
+}
+
+.button.course-tag:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+}
+
+.course-tag.inverted.active, .course-tag.inverted.activated {
+    background-color:#D97142;
+    color:white;
+}
+
+.button.button-positive {
+  background-color:$blue;
+  border-color: $blue;
+}
+
+.white{
+    color:white;
+}
+
+.extra .toggle.toggle-calm {
+    top:12px;
+}
+
+.button.button-footer.light-blue-bg.active, .button.button-footer.light-blue-bg.activated, .button.button-footer.light-blue-bg:visited {
+    opacity:0.5;
+    color:white;
+    border-color:$blue;
+}
+
+a.button-footer:visited, a.button-footer:hover {
+    color:white;
+}
+
+.hide {
+    display:none !important;
+}
+
+.show {
+    display:block !important;
+}
+
+.show-inline {
+    display:inline-block !important;
+}
+
+.light.blue {
+    color:$blue;
 }
