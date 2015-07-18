@@ -26,6 +26,16 @@ angular.module('uguru.util.controllers')
       $scope.course_search_text = '';
     }
 
+    $scope.swipeRightGoBack = function() {
+      if (confirm('Exit become guru process?')) {
+        $scope.loader.show();
+        $ionicSideMenuDelegate.toggleRight();
+        $timeout(function() {
+          $scope.loader.hide();
+        }, 500)
+      }
+    }
+
     $scope.toggleEditGuru = function() {
       $scope.editCourseMode = !$scope.editCourseMode;
 
@@ -61,15 +71,25 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    $scope.removeGuruCourseAndUpdate = function(index) {
+    $scope.removeGuruCourseAndUpdate = function(course, index) {
+
+      if ($state.current.name === 'root.become-guru' && !confirm('Remove ' + course.short_name + '?')) {
+        return;
+      }
 
 
-      var guru_course = $scope.user.guru_courses[index];
       $scope.user.guru_courses.splice(index, 1);
-      $scope.user.updateAttr('remove_guru_course', $scope.user, guru_course, null, $scope);
+
+      var confirmCallback = function() {
+        $scope.loader.hide();
+        $scope.success.show(0, 1000, course.short_name + ' successfully removed');
+      }
+      $scope.loader.show();
+
+      $scope.user.updateAttr('remove_guru_course', $scope.user, course, confirmCallback, $scope);
     }
 
-    $scope.addSelectedGuruSkill = function(skill, input_text) {
+    $scope.addSelectedGuruSkill = function(skill, input_text, $index) {
       $scope.user.guru_skills.push(skill);
 
        if ($scope.user.id) {
@@ -82,30 +102,19 @@ angular.module('uguru.util.controllers')
 
     }
 
-    $scope.addSelectedGuruCourse = function(course, input_text) {
-      // $scope.course_search_text = course.short_name.toUpperCase();
+    $scope.addSelectedGuruCourse = function(course, input_text, $index) {
 
 
       //set the variable to this
+      $scope.static.popular_courses.splice($index, 1);
 
       $scope.search_text = '';
 
       //set the course text to what it should be
       document.getElementById('guru-course-input').value = '';
       $scope.course_search_text = course.short_name
-      //make progress false so we can hide all other elements
-      // $scope.progress = false;
 
-      //TODO JASON ADD TEST CASE: check if course is already in their courses
-
-
-      //add to user local
       $scope.user.guru_courses.push(course);
-
-      //JASON ADD TEST CASE: Check if length of student courses is now longer than one
-
-      //if user is already logged in
-      // $scope.course_search_text = '';
 
       if ($scope.user.id) {
         //adds to database for user

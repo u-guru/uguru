@@ -1122,8 +1122,10 @@ p.university-header {
     color: white;
     padding: 0 0.5em;
     display: inline-block;
-    font-family: "OpenSans-Bold";
-    text-transform: uppercase; }
+    font-family: "OpenSans-Regular";
+    text-transform: capitalize;
+    font-size: 110%;
+    line-height: 110%; }
   .university-label .university-input-container {
     width: 100%;
     margin-left: -0.8em;
