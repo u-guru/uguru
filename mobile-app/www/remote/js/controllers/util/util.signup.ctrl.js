@@ -20,20 +20,20 @@ angular.module('uguru.util.controllers')
   '$ionicActionSheet',
   '$ionicPopup',
   'Camera',
+  'Support',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
-  Camera) {
+  Camera, Support) {
 
     $scope.root.vars.show_account_fields = false;
     $scope.loginMode = false;
     $scope.headerText = 'Sign Up';
 
-    if ($scope.user.payment_cards && $scope.user.payment_cards.length > 0) {
-      console.log('length', $scope.user.payment_cards.length);
-      console.log(JSON.stringify($scope.user.payment_cards[0]));
-    }
+
+    $scope.support_index = 0;
+    $scope.supportTicket = {};
 
     $scope.settings = {}
     $scope.settings.icons = {
@@ -88,6 +88,8 @@ angular.module('uguru.util.controllers')
       $scope.selectedCurrentHourly = $scope.user.current_hourly + '';
     }
 
+
+
     if (!$scope.loginMode) {
       $scope.loginMode = false;
     }
@@ -133,6 +135,35 @@ angular.module('uguru.util.controllers')
 
       }, 250)
 
+    }
+
+    $scope.setSupportIndex = function(index) {
+      $scope.support_index = index;
+    }
+
+    $scope.submitSupport = function() {
+
+      if (!$scope.support_index) {
+        alert('Please submit one of the 6 support options');
+        return;
+      }
+
+      if (!$scope.supportTicket.description || $scope.supportTicket.description.length === 0)  {
+        alert('Please write a message so we can help!');
+        return;
+      }
+
+      $scope.loader.show();
+      $scope.supportTicket.message = $scope.support_index.toString() + '|' + $scope.supportTicket.description;
+
+      $scope.supportTicket.user_id = $scope.user.id;
+      Support.create($scope.supportTicket).then(function(){
+        $scope.success.show(0, 3500, 'Your support message has been submitted. <br> <br> We will get back to you very soon!');
+        $scope.supportTicket.description = '';
+        $scope.support_index = 0;
+      }, function(err) {
+        console.log('error from server', err);
+      } );
     }
 
     $scope.goBack = function(callback,direction) {
@@ -393,8 +424,17 @@ angular.module('uguru.util.controllers')
       $state.go('^.majors-container');
     }
 
+    $scope.goToMajorPage = function() {
 
+      $scope.closeAttachActionSheet();
+          $scope.loader.show();
+          $scope.transitionToMajor()
+          $timeout(function() {
+          $scope.loader.hide();
+          $ionicSideMenuDelegate.toggleRight();
+      }, 1000);
 
+    }
 
     $scope.showStudentEditActionSheet = function() {
 
@@ -429,13 +469,7 @@ angular.module('uguru.util.controllers')
               }
 
               if (index === 2) {
-                $scope.closeAttachActionSheet();
-                $scope.loader.show();
-                $scope.transitionToMajor()
-                $timeout(function() {
-                  $scope.loader.hide();
-                  $ionicSideMenuDelegate.toggleRight();
-                }, 1000);
+                $scope.goToMajorPage();
               }
 
               if (index === 3) {
@@ -925,22 +959,22 @@ angular.module('uguru.util.controllers')
           $scope.user.guru_mode = false;
           $localstorage.setObject('user', $scope.user);
 
-          $scope.success.show(0, 2000, 'Login Successful!');
+          $scope.success.show(0, 1250, 'Login Successful!');
           $scope.settings.icons.profile = true;
 
-          $scope.toggleAccountView();
-
-          $scope.loader.show();
-          $timeout(function() {
-
+          if ($state.current.name === 'root.home') {
             $timeout(function() {
               $scope.loader.hide();
             }, 500);
-            if ($state.current.name === 'root.home') {
-              $ionicSideMenuDelegate.toggleRight();
-            }
+            $ionicHistory.goBack();
+          }
 
-          }, 500);
+          if ($state.current.name === 'root.signup') {
+            $timeout(function() {
+              $ionicSideMenuDelegate.toggleRight();
+            }, 500);
+          }
+
 
 
       }, function(err) {
@@ -953,7 +987,7 @@ angular.module('uguru.util.controllers')
 
     $scope.completeSignup = function() {
 
-      if ($scope.loginMode && $scope.root.vars.show_account_fields) {
+      if ($scope.loginMode) {
         $scope.loginUser();
         return;
       }
@@ -1000,6 +1034,12 @@ angular.module('uguru.util.controllers')
           if ($state.current.name === 'root.home') {
             if ($scope.signupModal && $scope.signupModal.isShown()) {
               $scope.signupModal.hide();
+            } else {
+              $ionicSideMenuDelegate.toggleRight();
+              $timeout(function() {
+                $scope.loader.hide();
+                $scope.success.show(0, 1000, 'Account Successfully Created!');
+              }, 750);
             }
           }
           //if we are about to create a request

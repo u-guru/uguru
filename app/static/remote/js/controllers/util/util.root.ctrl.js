@@ -330,7 +330,7 @@ angular.module('uguru.util.controllers')
           //returns empty array of length
           $scope.getNumber = function(num) {
             if (!num) {
-              return new Array(1);
+              return new Array(0);
             }
             if (typeof(num) === "string") {
               num = parseInt(num) | 0;

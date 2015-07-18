@@ -2,7 +2,7 @@
         <div ng-show='user && user.id'class="bar bar-header dark-bg-header mini-header uppercase relative" style='width:auto;'>
           <h1 class="title bold">Student Profile</h1>
           <div class='buttons'>
-            <button style='padding-top:0.1em;'class="button button-clear button-header-link submit-button button-right " id='done-button' ng-click='showStudentEditActionSheet()'>Edit</button>
+            <button style='padding-top:0.1em;'class="button button-clear button-header-link submit-button button-right" id='done-button' ng-click='showStudentEditActionSheet()'>Edit</button>
           </div>
         </div>
         <div class='pure-g-c flex-column flex-space-between' style='height:90%;'>
@@ -17,7 +17,7 @@
                   <div class='pure-u-1 regular'>
                     <div ng-show='user && user.id'>
                       <h1 class='light regular-text no-margin'>
-                        {{user.name.split(' ')[0]}} {{user.name.split(' ')[1][0].toUpperCase()}}.
+                        {{user.name.split(' ')[0].toUpperCase()}} {{user.name.split(' ')[1][0].toUpperCase()}}.
                       </h1>
                     </div>
                   </div>
@@ -35,7 +35,7 @@
                     <div class='white-space-normal uppercase semibold'>{{user.university.title}}</div>
                   </div>
                   <div class='pure-u-1' style='font-size:80%; opacity:1' ng-show='!user.majors || user.majors.length === 0'>
-                    <div class='white-space-normal uppercase light blue'> + add your major</div>
+                    <a class='white-space-normal uppercase light blue' ng-click='transitionToMajor()'> + add your major(s)</a>
                   </div>
                 </div>
 
@@ -51,7 +51,8 @@
                   </div>
                 </div>
                 <div class='pure-u-1 padding-1em' style='padding-left:0px; padding-right:0px;'>
-                    <span ng-repeat='course in user.student_courses' class='course-tag student-settings inline white-space-normal' style='letter-spacing:0em'>{{course.short_name}}</span> <span ng-click='goToEditCourses()' class='button course-tag student-settings inline white-space-normal inverted'>Edit</span>
+                    <span ng-repeat='course in user.student_courses' class='course-tag student-settings inline white-space-normal' style='letter-spacing:0em'>{{course.short_name}}</span><span ng-click='goToEditCourses()' class='button course-tag student-settings inline white-space-normal inverted hide ng-class:{"show-inline":user.student_courses.length > 0}'>Edit</span>
+                    <span ng-click='goToEditCourses()' class='button course-tag student-settings inline white-space-normal inverted hide ng-class:{"show-inline":user.student_courses.length === 0}'>Add A Class</span>
                 </div>
               </div>
             </div>
@@ -222,15 +223,18 @@
       </div>
 
       <div ng-show='settings.icons.support' class='relative full-height support-notification'>
+
         <div class="bar bar-header dark-bg-header mini-header uppercase" style='width:auto;'>
           <h1 class="title bold">Support</h1>
         </div>
          <div class='pure-g-c flex-column flex-space-between'>
           <div class='pure-g flex-item-c relative j-start'>
+
             <div class='pure-u-1 padding-1em' style='margin-top:44px;'>
+              <ion-scroll>
               <div class='pure-g'>
                 <div class='pure-u-1-2 padding-half'>
-                  <div class='support-img-container dark-bg full-height padding-half'>
+                  <div ng-click='setSupportIndex(1);' class='support-img-container dark-bg full-height padding-half ng-class:{"blue-bg":support_index === 1}'>
                     <img ng-src='{{img_base}}./img/support/refund.svg' class='pure-img support-img card-img-support'
                     >
                     <p class='semibold white-text center' style='padding:0.5em 0em 0em 0em;'>
@@ -240,7 +244,7 @@
                 </div>
 
                 <div class='pure-u-1-2 padding-half'>
-                  <div class='support-img-container dark-bg full-height padding-half'>
+                  <div ng-click='setSupportIndex(2);' class='support-img-container dark-bg full-height padding-half ng-class:{"blue-bg":support_index === 2}'>
                     <img ng-src='{{img_base}}./img/support/confused.svg' class='pure-img support-img card-img-confused'
                     >
                     <p class='semibold white-text center' style='padding:0.5em 0em 0em 0em;'>
@@ -252,7 +256,7 @@
               </div>
               <div class='pure-g'>
                <div class='pure-u-1-2 padding-half'>
-                  <div class='support-img-container dark-bg full-height padding-half'>
+                  <div ng-click='setSupportIndex(3);'class='support-img-container dark-bg full-height padding-half ng-class:{"blue-bg":support_index === 3}'>
                     <img ng-src='{{img_base}}./img/support/frustated.svg' class='pure-img support-img'
                     >
                     <p class='semibold white-text center' style='padding:0.5em 0em 0em 0em;'>
@@ -261,7 +265,7 @@
                   </div>
                 </div>
                 <div class='pure-u-1-2 padding-half'>
-                  <div class='support-img-container dark-bg full-height padding-half'>
+                  <div ng-click='setSupportIndex(4)' class='support-img-container dark-bg full-height padding-half ng-class:{"blue-bg":support_index === 4}'>
                     <img ng-src='{{img_base}}./img/support/question.svg' class='pure-img support-img'
                     >
                     <p class='semibold white-text center' style='padding:0.5em 0em 0em 0em;'>
@@ -273,7 +277,7 @@
               <div class='pure-g'>
 
                 <div class='pure-u-1-2 padding-half'>
-                  <div class='support-img-container dark-bg full-height padding-half'>
+                  <div ng-click='setSupportIndex(5)' class='support-img-container dark-bg full-height padding-half ng-class:{"blue-bg":support_index === 5}'>
                     <img ng-src='{{img_base}}./img/support/not-working.svg' class='pure-img support-img'
                     >
                     <p class='semibold white-text center' style='padding:0.5em 0em 0em 0em;'>
@@ -282,7 +286,7 @@
                   </div>
                 </div>
                 <div class='pure-u-1-2 padding-half'>
-                  <div class='support-img-container dark-bg full-height padding-half'>
+                  <div ng-click='setSupportIndex(6);'class='support-img-container dark-bg full-height padding-half ng-class:{"blue-bg":support_index === 6}'>
                     <img ng-src='{{img_base}}./img/support/other.svg' class='pure-img support-img other-img-support'
                     >
                     <p class='semibold white-text center' style='padding:0.5em 0em 0em 0em;'>
@@ -291,33 +295,31 @@
                   </div>
                 </div>
 
-              </div>
+                </div>
               <div class='pure-g'>
-                <div class='pure-u-1'>
+                <div class='pure-u-1' keyboard-attach>
 
                   <ion-list class='list-inset standard-bg'>
 
 
-                    <ion-item class='relative item-icon-right description-item request-form-item'>
-                      <div class='empty-description-wrapper'>
-                        <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='{{img_base}}./img/icons/paperclip.svg' style='margin-right: 0.33em; margin-top:0.4em;'>
-                        <span><p class='white-space-normal' style='padding-right:2em;'>Please provide more details</p></span>
-                        <div class='pure-u-1 padding-1em'>&nbsp;<br></div>
-                        <div class='pure-u-1 padding-1em'>&nbsp;<br></div>
-                      </div>
-                    </ion-item>
+                    <ion-list class='standard-bg flex-item-c pure-g j-start bg-transparent'>
+                      <ion-item class='pure-u-1 item-icon-right relative description-wrapper-item' ng-hide='progress'>
+                            <textarea id='description-input'  style='font-size:1em;' rows="5" class='full-width' ng-model='supportTicket.description' placeholder='How can we help?'></textarea>
+                      </ion-item>
+                    </ion-list>
 
                     <!-- <ion-item class='request-form-item item-icon-left' style='height:44px;'>
                       <img style='margin-top:0.4em;'class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/tags.svg'>
                         <p class='empty-tags-placeholder opacity-1-2'>Add some tags (optional)</p>
                     </ion-item> -->
                   </ion-list>
-                  <button class='button button-full button-black'>
+                  <button class='button button-full button-black light-blue-bg' ng-click='submitSupport()' style='font-size:80%;'>
                     Submit
                   </button>
 
                 </div>
               </div>
+            </ion-scroll>
             </div>
           </div>
         </div>

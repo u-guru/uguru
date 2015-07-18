@@ -1673,6 +1673,9 @@ button.button-full.ratings-footer-button {
   height: 40px;
   width: 40px; }
 
+.support-img-container.blue-bg {
+  background-color: #68A7CF !important; }
+
 .bg-edit-mode {
   background-color: #57CD9F; }
 
@@ -1971,3 +1974,9 @@ a.button-footer:visited, a.button-footer:hover {
 
 .show {
   display: block !important; }
+
+.show-inline {
+  display: inline-block !important; }
+
+.light.blue {
+  color: #68A7CF; }

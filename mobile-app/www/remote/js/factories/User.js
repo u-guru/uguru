@@ -444,7 +444,7 @@ angular.module('uguru.user', [])
         $scope.user.guru_score_opportunities = user.guru_score_opportunities;
         $scope.user.skills = user.skills;
         $scope.user.professions = user.professions;
-
+        $scope.user.support_tickets = user.support_tickets;
 
         //custom logic client side only
         $scope.user.show_become_guru =  !($scope.user.guru_courses.length || $scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);

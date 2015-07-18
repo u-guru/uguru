@@ -2313,7 +2313,6 @@ button.button-full.ratings-footer-button {
 }
 
 .support-img-container {
-
     img {
         max-height:35px;
         margin:0 auto;
@@ -2332,6 +2331,11 @@ button.button-full.ratings-footer-button {
         width:40px;
     }
 }
+
+.support-img-container.blue-bg {
+    background-color: $blue !important;
+}
+
 .bg-edit-mode {
     background-color:#57CD9F;
 }
@@ -2703,4 +2707,12 @@ a.button-footer:visited, a.button-footer:hover {
 
 .show {
     display:block !important;
+}
+
+.show-inline {
+    display:inline-block !important;
+}
+
+.light.blue {
+    color:$blue;
 }
