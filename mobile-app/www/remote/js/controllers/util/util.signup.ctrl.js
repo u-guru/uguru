@@ -162,7 +162,7 @@ angular.module('uguru.util.controllers')
 
       //desktop only
       if (!$scope.platform.mobile) {
-          $scope.takePhoto(index);
+          $scope.takePhoto(0);
           return;
       }
 
@@ -189,10 +189,12 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.takePhoto = function(index) {
+
+
       if ($scope.platform.mobile) {
-        Camera.takePicture($scope, index, successCallback);
+        Camera.takePicture($scope, index, true);
       } else {
-        var element = document.getElementById('file-input-web')
+        var element = document.getElementById('file-input-web-sidebar')
         element.click();
       }
     }
@@ -221,7 +223,13 @@ angular.module('uguru.util.controllers')
 
         $scope.file_index += 1;
 
-        $scope.user.createObj($scope.user, 'files', formData, $scope, $scope.takePhotoCallbackSuccess);
+        $scope.loader.show();
+        callbackSuccess = function() {
+          $scope.loader.hide();
+          $scope.success.show(0, 1500, 'Saved!');
+        }
+
+        $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
     };
 
 
@@ -539,7 +547,8 @@ angular.module('uguru.util.controllers')
 
       $scope.loader.show();
       if (payment) {
-        console.log('passing payments');
+        console.log('passing payments', payment);
+        $scope.root.vars.editCardClicked = true;
         $state.go('^.payments', {cardObj:JSON.stringify(payment)})
       } else {
         $state.go('^.payments');
@@ -548,6 +557,7 @@ angular.module('uguru.util.controllers')
 
       $timeout(function() {
         $ionicSideMenuDelegate.toggleRight();
+        $scope.loader.hide();
       }, 750);
     }
 

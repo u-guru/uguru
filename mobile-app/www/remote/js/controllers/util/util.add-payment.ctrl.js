@@ -12,10 +12,10 @@
   '$stateParams',
   '$ionicViewSwitcher',
   '$ionicSideMenuDelegate',
+  '$ionicActionSheet',
   function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $ionicHistory, $stateParams, $ionicViewSwitcher, $ionicSideMenuDelegate) {
-
-    $scope.card_details = {number: '', expiry:''};
+ 	$ionicModal, $ionicHistory, $stateParams, $ionicViewSwitcher,
+  $ionicSideMenuDelegate, $ionicActionSheet) {
 
     $scope.data = {card_exists: false};
     // console.log();
@@ -28,6 +28,45 @@
       $scope.ccvInput.value = '';
       $scope.rootUser.updateLocal($scope.user);
       $scope.root.keyboard.show('card-input', 500);
+    }
+
+    $scope.paymentCardActionSheetOptions = function() {
+      var card = $scope.card;
+      var options = [{text: 'Remove Card'}];
+      if (!card.is_default_payment && !card.is_default_transfer) {
+        options.push({text: 'Set Default'});
+      }
+        // Show the action sheet
+        $scope.closeAttachActionSheet = $ionicActionSheet.show({
+            buttons: options,
+            titleText: '<span class="semibold uppercase">Edit Card **-' + card.card_last4 + '</span>',
+            cancelText: 'Cancel',
+            cancel: function() {
+                $scope.closeAttachActionSheet();
+            },
+            buttonClicked: function(index) {
+
+              // fire profile photo
+              if (index === 0) {
+                $scope.closeAttachActionSheet();
+                $scope.removeCard();
+                $scope.loader.show();
+                $timeout(function() {
+                  $scope.loader.hide();
+                }, 750);
+              }
+
+              if (index === 1) {
+                $scope.closeAttachActionSheet();
+                $scope.setDefault();
+                $scope.loader.show();
+                $timeout(function() {
+                  $scope.loader.hide();
+                }, 750);
+              }
+            }
+
+      });
     }
 
 
@@ -218,6 +257,11 @@
       alert('Card Successfully Deleted');
       $ionicHistory.goBack();
     }
+
+
+
+
+
     $scope.setDefault = function() {
 
       var cardInfo = {
@@ -333,39 +377,82 @@
 
     });
 
-    $scope.initCardAndFocusInput = function() {
+    $scope.initCardAndFocusInput = function(callback) {
       var payment_input = document.getElementById('card-input');
       payment_input.focus();
 
+      var values = {name:$scope.user.name || null};
+      var formSelectors = {
+              numberInput: 'input#card-input',
+              expiryInput: 'input#expiry-input',
+      }
+
+
+
+      if ($scope.root.vars.editCardClicked) {
+        values.number = $scope.card_details.number;
+        values.expiry = '**/**';
+      }
 
       $scope.card_js = new Card({
           form: document.querySelector('form'),
           container: '.card-wrapper',
-          values: {name:$scope.user.name || null},
-          formSelectors: {
-              numberInput: 'input#card-input',
-              expiryInput: 'input#expiry-input',
-          },
+          values: values,
+          formSelectors: formSelectors,
       });
+
+
+      callback();
+
     }
+
+    $scope.fireKeyUpEvent = function() {
+      var elem = document.getElementById('card-input');
+      var e = document.createEvent("KeyboardEvent");
+      e.initEvent("keyup", true, true);
+      e.view = window;
+      e.altKey = false;
+      e.ctrlKey = false;
+      e.shiftKey = false;
+      e.metaKey = false;
+      e.keyCode = 0;
+      e.charCode = 'a';
+      e.keyCode = 32;
+
+      elem.dispatchEvent(e);
+      console.log('fired shit');
+    }
+
+    console.log('rendering the original')
+    $scope.card_details = {number: '', expiry:''};
 
     $scope.$on('$ionicView.enter', function(){
 
-        if ($stateParams && $stateParams.cardObj) {
-          $scope.data.card_exists = true;
-          console.log('whoooo card exits');
-        }
+        $scope.loader.hide();
 
-        $timeout(function() {
-          $scope.loader.hide();
-        }, 1000);
+        if ($scope.root.vars.editCardClicked) {
+          $scope.data.card_exists = true;
+        }
 
         console.log('after enter');
         $timeout(function() {
-          $scope.initCardAndFocusInput();
+          var callback = function() {
+            $scope.card = JSON.parse($stateParams.cardObj);
+            $scope.card_details.expiry = '** / **'
+            $scope.card_details.number = '****-****-****-' + $scope.card.card_last4;
+            $timeout(function() {
+              $scope.fireKeyUpEvent();
+            }, 500);
+          }
+          $scope.initCardAndFocusInput(callback);
         }, 1000);
 
     });
+
+    $scope.$on('$ionicView.leave', function() {
+      console.log('leaving view..');
+      $scope.root.vars.editCardClicked = null;
+    })
 
   }
 

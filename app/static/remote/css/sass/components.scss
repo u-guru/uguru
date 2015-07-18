@@ -2684,7 +2684,7 @@ input.bill-student-input {
 }
 
 .extra .toggle.toggle-calm {
-    top:5px;
+    top:12px;
 }
 
 .button.button-footer.light-blue-bg.active, .button.button-footer.light-blue-bg.activated, .button.button-footer.light-blue-bg:visited {
@@ -2695,4 +2695,12 @@ input.bill-student-input {
 
 a.button-footer:visited, a.button-footer:hover {
     color:white;
+}
+
+.hide {
+    display:none !important;
+}
+
+.show {
+    display:block !important;
 }

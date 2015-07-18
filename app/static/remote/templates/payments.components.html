@@ -2,16 +2,15 @@
       <div class="buttons">
         <button class="button button-clear button-header-link grey-text light nano-text" ng-click='goBack()'>Cancel</button>
       </div>
-      <h1 class="title micro-text">Add Payment</h1>
+      <h1 class="title micro-text hide ng-class:{'show': !data.card_exists }">Add Payment</h1>
+      <h1 class="title micro-text hide ng-class:{'show': data.card_exists }">Edit Payment</h1>
       <div class="buttons">
-        <button class="button button-clear button-header-link submit-button hide ng-class:{'show': !data.card_exists}" id='done-button' ng-click='savePayment()'>
+        <button class="button button-clear button-header-link  submit-button hide ng-class:{'show': !data.card_exists}" id='done-button' ng-click='savePayment()'>
           <span class='ng-class:{"grey-text":card_details.number.length === 0}'>Add</span>
         </button>
-
-        <button class="button button-clear button-header-link submit-button ng-class:{'show': data.card_exists}" id='done-button' ng-click='paymentCardActionSheetOptions()'>
-          <span class='grey-text'>Edit</span>
+        <button class="button button-clear button-header-link submit-button hide ng-class:{'show': data.card_exists}" id='done-button' ng-click='paymentCardActionSheetOptions()'>
+          <span>Edit</span>
         </button>
-
       </div>
   </ion-header-bar>
 
@@ -41,7 +40,7 @@
                   <div class='pure-u-1 padding-1em' style='padding-bottom:0em;'>
                     <label class="item item-input item-icon-left">
                       <i class="icon ion-card placeholder-icon"></i>
-                      <input type="tel" id='card-input' class='sidebar-card-input' name='number' ng-model='card_details.number' placeholder='1234 5678 9012 3456'></input>
+                      <input type="tel" id='card-input' class='sidebar-card-input' name='number' ng-model='card_details.number' placeholder='1234 5678 9012 3456' ng-disabled='data.card_exists'></input>
                     </label>
                   </div>
                 </div>
@@ -49,7 +48,7 @@
                   <div class='pure-u-1 padding-1em' style='padding-top:0em;'>
                     <label class="item item-input item-icon-left">
                       <i class="icon ion-calendar placeholder-icon"></i>
-                      <input type="tel" id='expiry-input' class='sidebar-mm-input sidebar-expiry-input' name='expiry' ng-model='card_details.expiry' name='expiry'  placeholder='MM / YY' style='padding-left:2.25em;'></input>
+                      <input type="tel" id='expiry-input' class='sidebar-mm-input sidebar-expiry-input' name='expiry' ng-model='card_details.expiry' name='expiry'  placeholder='MM / YY' style='padding-left:2.25em;' ng-disabled='data.card_exists'></input>
                     </label>
                   </div>
                 </div>
