@@ -61,7 +61,10 @@
             <div class='pure-u-1'>
               <p class='standard university-header'>
                 I am a
-                <select ng-model="selectedBg" id='role-select' class='ng-class:{"student-width": selectedBg.name === "student", "professional-width": selectedBg.name === "professional", "hs-student-width": selectedBg.name === "HS student"}' ng-change="unFocusSelect()" ng-options="background.name for background in user_bgs"></select><span ng-show='selectedBg.name==="student"'>attending</span><span ng-show='selectedBg.name==="professional"'>who attended</span><span ng-show='selectedBg.name==="HS student"'>aspiring to attend</span>
+                <select ng-model="selectedBg" id='role-select' class='ng-class:{"student-width": selectedBg.name === "student", "professional-width": selectedBg.name === "professional", "hs-student-width": selectedBg.name === "HS student"}' ng-change="unFocusSelect()" ng-options="background.name for background in user_bgs">
+                  
+                </select>
+                <span ng-show='selectedBg.name==="student"'>attending</span><span ng-show='selectedBg.name==="professional"'>who attended</span><span ng-show='selectedBg.name==="HS student"'>aspiring to attend</span>
               </p>
             </div>
 
@@ -72,7 +75,7 @@
         <div class='flex-item-c j-start'>
           <div class='pure-g'>
                   <div class="list pure-u-1 padding-half-horizontal">
-                    <ion-item class='item-icon-left fake-university-input' ng-click='toggleView(2)' style='font-size:100%'>
+                    <ion-item id='E2E-manuelUni' class='item-icon-left fake-university-input' ng-click='toggleView(2)' style='font-size:100%'>
                         <i class='icon ion-search'></i>
                         <p class='fake-placeholder-text'>
                           Enter your university
@@ -86,7 +89,7 @@
 
         <div class='flex-item-c j-center center' ng-show='platform.mobile'>
           <div class='pure-u-1 padding-2em item-icon-right'>
-            <button class='button button-full light-blue-bg button-footer white-text' ng-click='getLocation()'>Search By Location <i class='icon ion-navigate font-small' style='top:3px'> </i></button>
+            <button id= 'E2E-university' class='button button-full light-blue-bg button-footer white-text' ng-click='getLocation()'>Search By Location <i class='icon ion-navigate font-small' style='top:3px'> </i></button>
           </div>
         </div>
 

@@ -464,6 +464,65 @@ angular.module('uguru.util.controllers')
 
               }
 
+            //create the local storage
+            // $localstorage.saveToDisk(device.platform);
+              //$localstorage.init();
+            //   var logOb;
+
+            //     window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(dir) {
+            //       console.log("got main dir",dir);
+            //       dir.getFile("log.txt", {create:true}, function(file) {
+            //         console.log("got the file", file);
+            //         logOb = file;
+            //         writeLog("App started");      
+            //       });
+            //     });
+              
+            // //console.log("Log :" + JSON.stringify(logs));
+            //     //Ok, normal stuff for actionOne here
+            //     //
+            //     //Now log it
+            //     writeLog("actionOne fired");
+
+            //     //Ok, normal stuff for actionTwo here
+            //     //
+            //     //Now log it
+            //     writeLog("actionTwo fired");
+            //     justForTesting();
+
+
+            //   function fail(e) {
+            //     console.log("FileSystem Error");
+            //     console.dir(e);
+            //   }
+            //     function justForTesting() {
+            //       logOb.file(function(file) {
+            //         var reader = new FileReader();
+
+            //         reader.onloadend = function(e) {
+            //           console.log(this.result);
+            //         };
+
+            //         reader.readAsText(file);
+            //       }, fail);
+
+            //     }
+
+            //   function writeLog(str) {
+                
+            //     if(!logOb) return;
+            //     var log = str + " [" + (new Date()) + "]\n";
+            //     console.log("going to log "+log);
+            //     logOb.createWriter(function(fileWriter) {
+                  
+            //       fileWriter.seek(fileWriter.length);
+                  
+            //       var blob = new Blob([log], {type:'text/plain'});
+            //       fileWriter.write(blob);
+            //       console.log("ok, in theory i worked");
+            //     }, fail);
+            //   }
+
             if ($scope.platform.windows && $cordovaPush) {
                 console.log('we are updating the push notifications on windows device')
                   $cordovaPush.register(

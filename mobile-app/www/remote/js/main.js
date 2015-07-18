@@ -103,7 +103,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
 
                 //Local Storage
-                 $localstorage.saveToDisk(device.platform);
+                 // $localstorage.saveToDisk(device.platform);
                //$localstorage.updateDisk();
                //console.log("LOG "+$localstorage.getFreeDiskSpace());
 

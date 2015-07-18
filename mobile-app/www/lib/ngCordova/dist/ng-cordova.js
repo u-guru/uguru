@@ -1873,10 +1873,15 @@ angular.module('ngCordova.plugins.file', [])
           var options = {
             create: true,
             exclusive: replaceBool
-          };
+          };  
 
           try {
+            console.log("The Path : " + path);
+
             $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+              console.log("fileSystem : "+ JSON.stringify(fileSystem));
+            //  console.log("fileSystem : "+ JSON.stringify(fileSystem.getDirectory()));
+
               fileSystem.getDirectory(dirName, options, function (result) {
                 q.resolve(result);
               }, function (error) {

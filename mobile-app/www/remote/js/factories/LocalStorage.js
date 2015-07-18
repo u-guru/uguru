@@ -1,3 +1,4 @@
+var logOb;
 angular.module('ionic.utils', [])
   
 .factory('$localstorage', ['$window','$cordovaFile',function($window,$cordovaFile) {
@@ -43,81 +44,124 @@ angular.module('ionic.utils', [])
         console.error('listDir error: ', err);
       });*/
     },
-    saveToDisk: function(platfrom)
+    init: function()
     {
 
-      console.log("Check Platform : " + platfrom);
-      var hostfile_Path = 'http://192.168.42.83:8100/remote/img/onboarding-phone.svg';
-      var fileDir = 'remote/img/'
-      var localDataPath =  cordova.file.dataDirectory;
-      var clientFile_Path = localDataPath +'remote/img/onboarding-phone.svg';
-      var fileTransferOptions = {};
-      //console.log("Check Plugin :" + JSON.stringify($cordovaFileTransfer));
-      if (platfrom=="Android")        
-      {
-         console.log('cordova.file.applicationDirectory: ' + cordova.file.applicationDirectory);
-         console.log('cordova.file.applicationStorageDirectory: ' + cordova.file.applicationStorageDirectory);
-         console.log('cordova.file.dataDirectory: ' + cordova.file.dataDirectory);
-         console.log('cordova.file.externalDataDirectory: ' + cordova.file.externalDataDirectory);
-
-        // //$cordovaFile.downloadFile(hostfile_Path, clientFile_Path, true, fileTransferOptions).then(function (success) {
-        //   console.log("Download success");
-        // }, function (error) {
-        //   console.error('Error '+JSON.stringify(error));
-        // });
+        window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(dir) {
+        console.log("got main dir",dir);
+        dir.getFile("log.txt", {create:true}, function(file) {
+          console.log("got the file", JSON.stringify(file));
+          logOb = file;
+        var str = "App started";
+        if(!logOb) return;
+        var log = str + " [" + (new Date()) + "]\n";
+        console.log("going to log "+log);
+        logOb.createWriter(function(fileWriter) {
+          
+          fileWriter.seek(fileWriter.length);
+          
+          var blob = new Blob([log], {type:'text/plain'});
+          fileWriter.write(blob);
+          console.log("ok, in theory i worked");
+        }, fail);
+        });
+      });
+    },
+    writeLog: function(str)
+    {
+      if(!logOb) return;
+      var log = str + " [" + (new Date()) + "]\n";
+      console.log("going to log "+log);
+      logOb.createWriter(function(fileWriter) {
         
-        //console.log("Check Plugin :" + JSON.stringify(fileTransfer));
-
-         //check Dir
-         //should see error if it is hasn't created yet
-        $cordovaFile.checkDir(localDataPath, "remote/img/").then(function (success) {
-          console.log("Dir Clear")
-        }, function (error) {
-          console.error('Dir Error '+JSON.stringify(error));
-        });
-        //check File
-         $cordovaFile.checkFile(localDataPath, "onboarding-phone.svg").then(function (success) {
-          console.log("File Clear")
-        }, function (error) {
-          console.error('File Error '+JSON.stringify(error));
-        });
-
-        //create dir
-        $cordovaFile.createDir(cordova.file.dataDirectory, "remote/img/", true).then(function (success) {
-            // success
-            console.log("Dir Create success");
-          }, function (error) {
-            // error
-            console.error('Create Dir Error '+JSON.stringify(error));
-          });
-        // //create file
-        //  $cordovaFile.createFile(cordova.file.dataDirectory, "remote/img/onboarding-phone.svg", true).then(function (success) {
-        // // success
-        //     console.log("File Create success");
-        //   }, function (error) {
-        // // error
-        //   console.error('Create file Error '+JSON.stringify(error));
-        // });
-
-
-
-      }
-
-
-
-
-
-
-
-      // console.log("Save To disk");
-      // //http://192.168.42.83:8100/remote/img/onboarding-phone.svg
-      // //Download the file 
-      // var hostfile_Path = 'http://192.168.42.83:8100/remote/img/onboarding-phone.svg';
-      // console.log("");
-      // var clientPath = fileTransferDir + 'remote/img/onboarding-phone.svg';
-      // var fileTransferOptions = {};
-
+        fileWriter.seek(fileWriter.length);
+        
+        var blob = new Blob([log], {type:'text/plain'});
+        fileWriter.write(blob);
+        console.log("ok, in theory i worked");
+  }, fail);
     }
+    // saveToDisk: function(platfrom)
+    // {
+
+    //   console.log("Check Platform : " + platfrom);
+    //   var hostfile_Path = 'http://192.168.42.83:8100/remote/img/onboarding-phone.svg';
+    //   var fileDir = 'remote/img/'
+    //   var localDataPath =  cordova.file.dataDirectory;
+    //   var clientFile_Path = localDataPath +'remote/img/onboarding-phone.svg';
+    //   var fileTransferOptions = {};
+    //   //console.log("Check Plugin :" + JSON.stringify($cordovaFileTransfer));
+    //   if (platfrom=="Android")        
+    //   {
+    //      console.log('cordova.file.applicationDirectory: ' + cordova.file.applicationDirectory);
+    //      console.log('cordova.file.applicationStorageDirectory: ' + cordova.file.applicationStorageDirectory);
+    //      console.log('cordova.file.dataDirectory: ' + cordova.file.dataDirectory);
+    //      console.log('cordova.file.externalDataDirectory: ' + cordova.file.externalDataDirectory);
+    //     // localDataPath = localDataPath.replace('file:///storage/emulated/0/','');
+    //      //console.log('Check externalDataDirectory: ' + localDataPath);
+
+    //     // //$cordovaFile.downloadFile(hostfile_Path, clientFile_Path, true, fileTransferOptions).then(function (success) {
+    //     //   console.log("Download success");
+    //     // }, function (error) {
+    //     //   console.error('Error '+JSON.stringify(error));
+    //     // });
+        
+    //     //console.log("Check Plugin :" + JSON.stringify(fileTransfer));
+
+    //      //check Dir
+    //      //should see error if it is hasn't created yet
+    //     $cordovaFile.checkDir(localDataPath + "remote/img").then(function (success) {
+    //       console.log("Dir Clear")
+    //     }, function (error) {
+    //       console.error('Dir Error '+JSON.stringify(error));
+    //     });
+    //     //check cache
+    //     console.log("FreeDisk :"+JSON.stringify($cordovaFile.getFreeDiskSpace()));
+        
+    //     //check File
+    //      $cordovaFile.checkFile(localDataPath +"remote/img/onboarding-phone.svg").then(function (success) {
+    //       console.log("File Clear")
+    //     }, function (error) {
+    //       console.error('File Error '+JSON.stringify(error));
+    //     });
+
+    //     //create dir
+    //     $cordovaFile.createDir(localDataPath , "remote/img", true).then(function (success) {
+    //         // success
+    //         console.log("Dir Create success");
+    //       }, function (error) {
+    //         // error
+    //         console.error('Create Dir Error '+JSON.stringify(error));
+    //       });
+
+    //     // //create file
+    //     //  $cordovaFile.createFile(cordova.file.dataDirectory, "remote/img/onboarding-phone.svg", true).then(function (success) {
+    //     // // success
+    //     //     console.log("File Create success");
+    //     //   }, function (error) {
+    //     // // error
+    //     //   console.error('Create file Error '+JSON.stringify(error));
+    //     // });
+
+
+
+    //   }
+
+
+
+
+
+
+
+    //   // console.log("Save To disk");
+    //   // //http://192.168.42.83:8100/remote/img/onboarding-phone.svg
+    //   // //Download the file 
+    //   // var hostfile_Path = 'http://192.168.42.83:8100/remote/img/onboarding-phone.svg';
+    //   // console.log("");
+    //   // var clientPath = fileTransferDir + 'remote/img/onboarding-phone.svg';
+    //   // var fileTransferOptions = {};
+
+    // }
 
 
   };
