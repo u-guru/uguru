@@ -631,7 +631,8 @@ class Support(Base):
     time_created = Column(DateTime)
     time_resolved = Column(DateTime)
     time_updated = Column(DateTime)
-
+    # category --> add the string
+    # status --> ad more
 
 
     @staticmethod
@@ -810,7 +811,7 @@ class Resource(Base):
 
 class Stats(Base):
     __tablename__ ='stats'
-    id = Column(Integer, primary_key = True)    
+    id = Column(Integer, primary_key = True)
     last_updated = Column(DateTime)
     total_courses = Column(Integer, default=0)
     total_universities = Column(Integer, default=0)

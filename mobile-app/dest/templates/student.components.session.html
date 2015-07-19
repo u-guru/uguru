@@ -10,7 +10,7 @@
 
     <div class='buttons'>
       <button class="button button-clear button-header-link submit-button" ng-click='showAttachActionSheet()'>
-        <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' style='height:15px; margin-top:0.18em' src='{{img_base}}./img/paperclip-blue.svg' ng-show='!details.show'>
+        <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' style='height:15px; margin-top:0.18em' ng-src='{{img_base}}./img/paperclip-blue.svg' ng-show='!details.show'>
       </button>
       <button class="button button-clear button-header-link submit-button" ng-click='showAttachActionSheet()'>
         Help
@@ -29,11 +29,11 @@
 </div>
 
 
-<ion-content class='white-bg ng-class:{"has-subheader":session.request.status > 1}' ng-show='details.show'>
+<ion-content class='white-bg ng-class:{"has-subheader":session.request.status > 1}' ng-show='details.show && session && session.request'>
       <div class='pure-g'>
           <ion-list class='pure-u-1'>
 
-            <ion-item class='padding-1em item-avatar-left dark-bg white-text' ng-show='session.request.guru.name'>
+            <ion-item class='padding-1em item-avatar-left dark-bg white-text' ng-show='session && session.request.guru.name'>
               <img class='pure-img can-help-profile-img'  src='{{session.request.guru.profile_url}}'/>
                 <div class='guru-info-wrapper'>
                   <h2>{{session.request.guru.name.split(' ')[0]}} </h2>
@@ -62,7 +62,7 @@
             </ion-item>
 
             <ion-item class='item-avatar-left card-item-left request-form-item' ng-show='false || todo'>
-              <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
+              <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'/>
               <p class='inline'> Starts in </p>
               <p ng-show='session.status === 1' class='inline time-until' style='padding-left:1em'> {{session.request.schedule_time}} minutes </p>
               <p ng-show='session.status === 2' class='inline time-until' style='padding-left:1em; color:green;'> In progress </p>
