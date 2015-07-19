@@ -1,10 +1,10 @@
 var settingButton = element(by.id('settings-button'));
 //var settingButton = element(by.id('settings-button'));
 
-var connectFB = element(by.css('[ng-click="signupFacebook()"]'));
+var connectFB = element(by.css('[ng-click="connectWithFacebook()"]'));
+var signFB = element(by.css('[ng-click="signupFacebook()"]'));
 
-var logoff = element(by.css('[ng-click="logoutUser()"]'));
-var logoff = element(by.css('[ng-click="logoutUser()"]'));
+
 
 var request = element(by.id('request-button'));
 var request = element(by.id('request-button'));
@@ -38,6 +38,10 @@ var QuestionButton = element(by.css('[ng-click="launchRequestModal(1)"]'));
 var SearchUniversity = element(by.id('E2E-manuelUni'));
 //onbaroding
 var roleSelect = element(by.id('role-select'));
+//account
+var viaEmail= element(by.id('E2E_Email'));
+var logoff = element(by.id('E2E-logoff'));
+
 exports.globals =
     {
   
@@ -67,6 +71,7 @@ exports.globals =
         tagButton :tagButton,
         SearchUniversity : SearchUniversity,
         roleSelect : roleSelect,
+        viaEmail : viaEmail
     };
 exports.run =
 {
@@ -101,6 +106,23 @@ exports.run =
                 return url;
             });
         }, 10000);
+    },
+    connectFB:function(id, pw)
+    {
+    	//expect(connectFB.isEnabled()).toBe(true);
+        connectFB.click();
+        //Switch Screen
+        browser.getAllWindowHandles().then(function (handles) {
+            // switch to the popup
+            browser.switchTo().window(handles[1]);
+
+            // do stuff with the popup
+            browser.driver.findElement(by.id('email')).sendKeys(id);
+            browser.driver.findElement(by.id('pass')).sendKeys(pw);
+            browser.driver.findElement(by.id('u_0_2')).click();
+            // go back to the main window
+            browser.switchTo().window(handles[0]);
+        });
     },
     KeyIn : function(title,location,detail,tag)
     {
@@ -167,12 +189,21 @@ exports.run =
         SubmitButton.click();
 
      },
-     LogIn: function ()
+     LogIn: function (id, pw)
     {
-        if (email.getText() == "")
-            email.sendKeys('hair_lvrxrsl_one@tfbnw.net');
-        password.sendKeys('makhani1');
+       // if (email.getText() == "Email")
+        email.sendKeys(id);
+        password.sendKeys(pw);
         SubmitButton.click();
+		},
+     logoff: function()
+     {
+     	 settingButton.click();
+         browser.sleep(800);
+         logoff.click();
+     	 browser.sleep(1000);
+		 var alertDialog = browser.switchTo().alert();
+		 alertDialog.accept();  // Use to accept (simulate clicking ok)
      },
       Description : function ()
      {

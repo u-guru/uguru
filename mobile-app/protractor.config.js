@@ -14,13 +14,13 @@ exports.config = {
                 //'www/remote/tests/e2e/test.spec.js'
                // 'www/remote/tests/e2e/request_test.js'
                 //'www/remote/tests/e2e/template.js'
-           //    'www/remote/tests/e2e/sign_test.js'
+                  
                 // 'www/remote/tests/e2e/session_test.js'
           //      'www/remote/tests/e2e/question_test.js'
               //'www/remote/tests/e2e/university_test.js'
              // 'www/remote/tests/e2e/task_test.js'
-             'www/remote/tests/e2e/onboarding_test.js'
-
+             // 'www/remote/tests/e2e/onboarding_test.js'
+                'www/remote/tests/e2e/sign_test.js'
 
         ],
         rootElement: "[ng-app]" ,

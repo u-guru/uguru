@@ -700,7 +700,7 @@ angular.module('uguru.util.controllers')
       //error function
       function (error) {
         $scope.error = error;
-        console.log('FB CONNECT FAILED...');
+        console.error('FB CONNECT FAILED...');
         console.log('Error from logging from facebook:' + JSON.stringify(error));
         $cordovaFacebook.logout();
         if ($cordovaFacebook) {

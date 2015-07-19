@@ -1,58 +1,86 @@
-var settingButton = element(by.id('settings-button'));
-var connectFB = element(by.css('[ng-click="signupFacebook()"]'))
-var logoff = element(by.css('[ng-click="logoutUser()"]'))
-describe('Testing Home Page', function () {
-/*
-  beforeEach(function () {
 
-        browser.manage().window().setSize(414, 736);
-        browser.driver.get('http://localhost:8100/remote');
+describe('Account Unit Test', function () {
+   beforeEach(function()
+    {
+        browser.driver.manage().window().setSize(414, 736);
+        browser.driver.get('http://localhost:8100/#/new-home');
+        browser.sleep(1000);
+    });
+    describe('Facebook',function(){
 
-        settingButton.click();
-        
-        //expect(connectFB.isEnabled()).toBe(true);
-        connectFB.click();
-            //Switch Screen
+      describe('Log in', function ()
+      {
+        it('Cancel Log in',function()
+        {
+            browser.sleep(800);
+            browser.waitForAngular();
+            protractor.get.settingButton.click();
+            protractor.get.connectFB.click();
+
             browser.getAllWindowHandles().then(function (handles) {
               // switch to the popup
               browser.switchTo().window(handles[1]);
+              browser.sleep(1000);
 
-              // do stuff with the popup
-                browser.driver.findElement(by.id('email')).sendKeys('hair_lvrxrsl_one@tfbnw.net');
-                browser.driver.findElement(by.id('pass')).sendKeys('makhani1');
-                browser.driver.findElement(by.id('u_0_2')).click();
+              browser.driver.findElement(by.id('u_0_3')).click();
               // go back to the main window
               browser.switchTo().window(handles[0]);
             });
-
-            return browser.driver.wait(function() {
-                return browser.driver.getCurrentUrl().then(function(url) {
-                     console.log(/remote/.test(url));
-                  return url;
-                });
-            }, 10000);
-
-    },30000);
-*/
-    beforeEach(function()
-        {
-            browser.driver.ignoreSynchronization = true;
+           //browser.executeScript(function() {console.log('FB CONNECT FAILED..sedfsdf.')});
         });
+
+        it('Login & Logoff',function()
+        {
+          browser.sleep(800);
+          browser.waitForAngular();
+          protractor.get.settingButton.click().then(function()
+            {
+                protractor.run.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+                browser.sleep(8000);
+                protractor.run.logoff();
+            });
+        });
+      });
+    });
         //Cancel is Disabled
-        it('is Login', function () {
-           
-           browser.sleep(500);
-           settingButton.click().then(function(){
-           logoff.click();    
+    // describe('Email',function(){
+    //   describe('log in & log off',function()
+    //   {
+    //     it('log in successful',function(){
+    //       browser.sleep(800);
+    //       browser.waitForAngular();
+    //       protractor.get.settingButton.click();
+    //       protractor.get.viaEmail.click();
+    //       protractor.get.switchLoginMode.click();
+    //       protractor.run.LogIn('hair_lvrxrsl_one@tfbnw.net','makhani1').then(function()
+    //         {
 
-           });
-           browser.sleep(5000);
+    //         });
+    //       browser.sleep(2000);
 
-                        
+    //     });
+    //   });
+    // });
 
-        },30000);
+});
+
+
+    // afterEach(function() {
+    //   browser.manage().logs().get('browser').then(function(browserLog) {
+    //     expect(browserLog.length).toEqual(0);
+    //     // Uncomment to actually see the log.
+    //      console.log('log: ' + require('util').inspect(browserLog));
+    //   });
+    // });
+
+     
+
+
+                   
+
+     
+    
+
 
 
     
-
-});
