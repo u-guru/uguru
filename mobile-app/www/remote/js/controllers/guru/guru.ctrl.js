@@ -717,7 +717,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           var startColor = '#68A7CF';
           var endColor = '#6FD57F';
           var circle = new ProgressBar.Circle(selector, {
-              fill: '#FFF',
+              fill: 'rgba(255,255,255,.97)',
               trailColor: '#FFF',
               color: startColor,
               strokeWidth: 10,
@@ -752,7 +752,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               $scope.root.vars.guru_rank_initialized = true;
 
               var startColor = '#68A7CF';
-              var endColor = '#6FD57F';
+              var endColor = '#68A7CF';
+              // var endColor = '#6FD57F';
               animateProgress($scope.guruRankProgress, 0.99, startColor, endColor);
             }
 
