@@ -343,9 +343,18 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
 
                       Version.setVersion(serverVersionNumber);
                       $localstorage.set('recently_updated', true);
+
+
+
                       console.log('V' + serverVersionNumber + 'stored to user');
+
+
+
+
                       window.location.href = BASE_URL;
                       window.location.replace(true);
+
+
                     }
                },
 

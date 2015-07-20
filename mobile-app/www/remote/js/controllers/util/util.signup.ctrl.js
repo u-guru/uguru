@@ -176,8 +176,11 @@ angular.module('uguru.util.controllers')
 
 
       if ($state.current.name === 'root.signup') {
-        $ionicViewSwitcher.nextDirection('back');
-        $state.go('^.home');
+        $scope.loader.show();
+        $ionicSideMenuDelegate.toggleRight();
+        $timeout(function() {
+          $scope.loader.hide();
+        }, 500);
       }
 
     }
@@ -548,7 +551,16 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.goToBecomeGuru = function() {
+      if (!$scope.user || !$scope.user.id) {
+        if (confirm('You need to have an account to become a guru. Continue?')) {
+            $scope.goToSignupFromSideBar();
+        }
+        return;
+      }
+
+
       $scope.loader.show();
+      $scope.root.vars.guru_mode = false;
       $state.go('^.become-guru');
 
       $scope.user.updateAttr('is_a_guru', $scope.user, {'is_a_guru': true}, null, $scope);
@@ -562,7 +574,16 @@ angular.module('uguru.util.controllers')
     $scope.goToGuru = function() {
 
       $scope.loader.show();
-      $state.go('^.guru');
+
+
+      //if no skills, courses, or majors
+      if ($scope.user && (($scope.user.guru_courses.length === 0)  || ($scope.user.guru_skills.length === 0)
+      || ($scope.user.majors.length === 0))  && confirm('Your guru account is not complete. Complete it?')) {
+        $state.go('^.become-guru');
+      } else {
+        $state.go('^.guru');
+      }
+
 
       $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': true}, null, $scope);
 
@@ -1022,25 +1043,19 @@ angular.module('uguru.util.controllers')
 
           //signup normally from sidebar
           if ($state.current.name === 'root.signup') {
-            $scope.success.show(0, 2000, 'Signup Successful!');
+            $scope.loader.show();
             $scope.show_account_fields = false;
+            $ionicSideMenuDelegate.toggleRight();
             $timeout(function() {
-              if ($state.current.name === 'root.home') {
-                $ionicSideMenuDelegate.toggleRight();
-              }
-            }, 500)
+              $scope.loader.hide();
+              $scope.success.show(0, 1000, 'Account Successfully Created!');
+            }, 750);
           }
 
           if ($state.current.name === 'root.home') {
             $scope.loader.show();
             if ($scope.signupModal && $scope.signupModal.isShown()) {
               $scope.signupModal.hide();
-            } else {
-              $ionicSideMenuDelegate.toggleRight();
-              $timeout(function() {
-                $scope.loader.hide();
-                $scope.success.show(0, 1000, 'Account Successfully Created!');
-              }, 750);
             }
           }
           //if we are about to create a request

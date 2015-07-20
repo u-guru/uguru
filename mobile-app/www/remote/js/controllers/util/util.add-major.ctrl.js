@@ -141,11 +141,21 @@ angular.module('uguru.util.controllers')
 
     $scope.removeMajor = function(major, index) {
 
-      var confirmCallback = function() {
-        $scope.success.show(0, 2000, major.name + ' successfully removed');
+      if ($state.current.name === 'root.become-guru' && !confirm('Remove ' + major.name + '?')) {
+        return;
       }
 
-      $scope.user.updateAttr('remove_major', $scope.user, major, confirmCallback, $scope);
+      var confirmCallback = function() {
+        $scope.loader.hide();
+        $scope.success.show(0, 1000, major.name + ' successfully removed');
+      }
+
+      $scope.loader.show();
+
+      $timeout(function() {
+        $scope.user.updateAttr('remove_major', $scope.user, major, confirmCallback, $scope);
+      }, 1000);
+
     }
 
     $scope.updateMajorProgress = function(text) {
@@ -160,16 +170,24 @@ angular.module('uguru.util.controllers')
     $scope.major_progress = false;
 
 
-    $scope.majorSelected = function(major, $event) {
+    $scope.majorSelected = function(major, $event, $index) {
 
       console.log('major selected');
+
+      $scope.static.popular_majors.splice($index, 1);
+
+
+
+
 
       if (!$scope.user.majors) {
           $scope.user.majors = [];
       }
 
 
-      $scope.majorInput.value = '';
+      if ($scope.majorInput) {
+        $scope.majorInput.value = '';
+      }
       $scope.showMainBody = true;
 
       $scope.search_text = '';

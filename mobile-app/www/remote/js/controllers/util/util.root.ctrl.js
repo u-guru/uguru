@@ -277,7 +277,6 @@ angular.module('uguru.util.controllers')
               }, 1000);
             }
           }
-
           $scope.requestPushNotifications = function() {
 
               if (!$scope.user.push_notifications) {

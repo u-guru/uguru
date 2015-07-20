@@ -17,7 +17,7 @@
       <ion-list class='standard-bg'>
 
           <ion-item class='item-avatar-left item-mini course-input-item item-button-right' ng-click='focusCourseInput()'>
-            <img class='pure-img'  src='{{img_base}}./img/verbs/{{request_fields.img}}' class=''/>
+            <img class='pure-img'  ng-src='{{img_base}}./img/verbs/{{request_fields.img}}' class=''/>
             <input type='text' name="course-input" class='light input-lg course-input form-control'id='course-input' ng-click='focusCourseInput()'
                 fast-matcher
                 fast-matcher-source="root.vars.courses"
@@ -35,8 +35,8 @@
 
             <!-- ng-change="updateProgress()" -->
             <a ng-click='toggleYourCourses()' class='button button-clear' style='top:20px; padding-left:50px;'>
-              <img ng-show='show_student_courses' class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='{{img_base}}./img/icons/chevron-filled-down.svg'>
-              <img ng-show='!show_student_courses && user.student_courses && user.student_courses.length > 0 && root.vars.last_verb_index_clicked !== 2'class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' src='{{img_base}}./img/icons/chevron-filled.svg'>
+              <img ng-show='show_student_courses' class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' ng-src='{{img_base}}./img/icons/chevron-filled-down.svg'>
+              <img ng-show='!show_student_courses && user.student_courses && user.student_courses.length > 0 && root.vars.last_verb_index_clicked !== 2'class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' ng-src='{{img_base}}./img/icons/chevron-filled.svg'>
             </a>
           </ion-item>
 
@@ -75,7 +75,7 @@
                 </p>
               </a>
               <button class='button button-clear' ng-click='resetLocation()' style='margin-right: -8px;'>
-                <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' style='margin-top:-0.3em;' src='{{img_base}}./img/icons/close_icon.svg'>
+                <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' style='margin-top:-0.3em;' ng-src='{{img_base}}./img/icons/close_icon.svg'>
               </button>
             </ion-item>
 
@@ -127,14 +127,14 @@
           </div>
           <ion-item class='relative item-icon-right description-item request-form-item' ng-hide='progress' ng-click='launchDescriptionModal()' >
             <div class='empty-description-wrapper' ng-hide='progress || request.description || request.files.length > 0'>
-              <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='{{img_base}}./img/icons/paperclip.svg' style='margin-right: 0.33em; margin-top:0.4em;'>
+              <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' ng-src='{{img_base}}./img/icons/paperclip.svg' style='margin-right: 0.33em; margin-top:0.4em;'>
               <span><p class='white-space-normal' style='padding-right:2em;'> {{request_fields.description_placeholder}}</p></span>
               <div class='pure-u-1 padding-1em'>&nbsp;<br></div>
               <div class='pure-u-1 padding-1em'>&nbsp;<br></div>
             </div>
 
             <div class='description-wrapper item-icon-right' ng-hide='progress || (!request.description && !request.files.length > 0)' style='margin-right: 0.33em;'>
-              <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='{{img_base}}./img/icons/paperclip.svg'>
+              <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' ng-src='{{img_base}}./img/icons/paperclip.svg'>
               <p class='black white-space-normal' ng-show='request.description'>
                 {{request.description}}
               </p>
@@ -153,7 +153,7 @@
 
           </ion-item>
           <ion-item class='item-icon-left' ng-hide='progress' ng-click='launchTagsModal()'>
-            <img style='margin-top:0.4em;'class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/tags.svg'>
+            <img style='margin-top:0.4em;'class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' ng-src='{{img_base}}./img/icons/tags.svg'>
             <p class='empty-tags-placeholder' ng-show='!request.tags || request.tags.length === 0'>Add some tags (optional)</p>
             <p class='tags-wrapper'>&nbsp;<span class='blue request-tag' ng-repeat='tag in request.tags'>#{{tag}} </span> </p>
           </ion-item>

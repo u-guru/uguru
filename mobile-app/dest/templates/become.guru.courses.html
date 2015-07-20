@@ -1,5 +1,5 @@
- <ion-view hide-nav-bar='true' class='dark-bg' cache-view='false'>
-  <ion-content class='white-text subdark-bg university-view-2' scroll='false' style='top:0px;' ng-controller='CoursesController'>
+ <ion-view hide-nav-bar='true' class='subdark-bg' cache-view='false' >
+  <ion-content class='white-text subdark-bg university-view-2' scroll='false' style='top:0px; bottom:10%;' ng-controller='CoursesController' on-swipe-right="swipeRightGoBack()">
       <div class='pure-g'>
         <div class="list pure-u-1">
           <label class="item item-input bg-transparent university-label no-margin no-border no-box-shadow view-2">
@@ -48,14 +48,14 @@
                   <div class='pure-u-1'>
                     <p class='uppercase opacity-1-2 micro-text bold sans-bold'> <strong> My Courses </strong> <br>
                     </p>
-                    <div class='micro-text regular' style='opacity:1'>(Tap & Hold to Remove)</div>
+                    <div class='micro-text regular' style='opacity:1'>(Double tap to Remove)</div>
                   </div>
                 </div>
 
                 <div class='pure-g'>
 
                   <div class='pure-u-1'>
-                    <a class='course-tag major-tag white-bg orange' on-hold="removeGuruCourseAndUpdate($index)" style='font-size:80%;' ng-repeat="guru_course in user.guru_courses track by $index">{{guru_course.short_name}} &nbsp; &nbsp; <i class='icon ion-checkmark'></i></a>
+                    <a class='course-tag major-tag white-bg orange' on-double-tap="removeGuruCourseAndUpdate(guru_course, $index)" style='font-size:80%;' ng-repeat="guru_course in user.guru_courses track by $index">{{guru_course.short_name}} &nbsp; &nbsp; <i class='icon ion-checkmark'></i></a>
                   </div>
                 </div>
 
@@ -73,7 +73,7 @@
                     </p>
                   </div>
                   <div class='pure-u-1'>
-                    <a class='course-tag popular-course-tag' ng-click='addSelectedGuruCourse(popular_course, course_search_text)' style='font-size:60%;' ng-repeat='popular_course in static.popular_courses'>{{popular_course.short_name}}</a>
+                    <a class='course-tag popular-course-tag' ng-click='addSelectedGuruCourse(popular_course, course_search_text, $index)' style='font-size:60%;' ng-repeat='popular_course in static.popular_courses'>{{popular_course.short_name}}</a>
                   </div>
 
 
