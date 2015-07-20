@@ -22,7 +22,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
   $ionicActionSheet)     {
 
-
+  $scope.root.vars.guru_rank_initialized = false;
   $scope.showActive = true;
 
   document.addEventListener("deviceready", function () {
@@ -713,8 +713,48 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         });
 
+        $scope.initGuruRankProgress = function(selector) {
+          var startColor = '#68A7CF';
+          var endColor = '#6FD57F';
+          var circle = new ProgressBar.Circle(selector, {
+              fill: '#FFF',
+              trailColor: '#FFF',
+              color: startColor,
+              strokeWidth: 10,
+              trailWidth: 10,
+              duration: 3000,
+              text: {
+                  value: '0'
+              },
+              step: function(state, bar) {
+                  bar.setText((bar.value() * 100).toFixed(0));
+                  bar.path.setAttribute('stroke', state.color);
+              }
+          });
+
+          return circle;
+
+        }
+
+        var animateProgress = function(progressObj, percent, startColor, endColor) {
+          progressObj.animate(percent, {
+              from: {color: startColor},
+              to: {color: endColor}
+          });
+        }
+
         $scope.$on('$ionicView.enter', function() {
             console.log('checking for pending actions...');
+
+            if (!$scope.root.vars.guru_rank_initialized) {
+              $scope.guruRankProgress = $scope.initGuruRankProgress('#guru-ranking-progress');
+
+              $scope.root.vars.guru_rank_initialized = true;
+
+              var startColor = '#68A7CF';
+              var endColor = '#6FD57F';
+              animateProgress($scope.guruRankProgress, 0.99, startColor, endColor);
+            }
 
 
             $scope.doRefresh();

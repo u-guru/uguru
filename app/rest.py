@@ -2459,6 +2459,7 @@ class AdminUniversityDeptCoursesView(restful.Resource):
 
     @marshal_with(AdminUniversityDeptCourseSerializer)
     def post(self, auth_token, uni_id, dept_id):
+
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
 
@@ -2475,19 +2476,29 @@ class AdminUniversityDeptCoursesView(restful.Resource):
 
             # parse the response
             course_list_json = json.loads(request.json)
+            course_names = [course.name for course in u.courses]
 
+            already_exists_course = 0
             for course_json in course_list_json:
-                pprint(dept_json)
+                if course_json['name'] in course_names:
+                    already_exists_course += 1
+                    continue
 
                 course = Course()
                 course.department_id = d.id
                 course.university_id = u.id
-                course.variations = "|".join(course_json.get('variations'))
+                # course.variations = "|".join(course_json.get('variations'))
                 course.is_popular = course_json.get('is_popular')
+                course.source_url = course_json.get('course_url')
+                course.short_name = course_json.get('code')
+                course.time_added = datetime.now()
+                course.name = course_json.get('name')
 
                 db_session.add(course)
 
             db_session.commit()
+            d.num_courses = len(d.courses)
+            u.num_courses = len(u.courses)
 
             return d.courses, 200
 
@@ -2509,14 +2520,20 @@ class AdminUniversityDeptView(restful.Resource):
                 return "MISSING DATA", 202
 
             print u.name, u.num_depts, u.num_courses
-            from pprint import pprint
 
-            # parse the response
+
             dept_list_request_json = json.loads(request.json)
+            dept_names = [dept.name for dept in u.departments]
+
+            already_exists_dept = 0
+            for dept_json in dept_list_request_json:
+
+                if dept_json['name'] in dept_names:
+                    already_exists_dept += 1
+                    continue
 
 
-            for dept_json in dept_list_request_json[0:1]:
-                pprint(dept_json)
+                # pprint(dept_json)
 
                 dept = Department()
                 dept.num_courses = dept_json.get('num_courses')
@@ -2525,17 +2542,22 @@ class AdminUniversityDeptView(restful.Resource):
                 dept.source = 'chegg'
                 dept.source_url = dept_json.get('source')
                 dept.university_id = u.id
+                dept.name = dept_json.get('name')
+
                 db_session.add(dept)
+
+            u.num_depts = len(u.departments)
 
             db_session.commit()
 
+            # update num depts, update num universities
             return u.departments, 200
 
         return "UNAUTHORIZED", 201
 
 
 ####################
-### END (OFFICIAL) #
+### END ADMIN API(OFFICIAL) #
 ####################
 
 api.add_resource(UserView, '/api/v1/users')
@@ -2571,7 +2593,7 @@ api.add_resource(AdminUserView, '/api/admin/users/')
 api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/university/<int:uni_id>/courses')
 api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts')
-api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/university/<int:uni_id>/depts/<int:dept_id>/courses')
+api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts/<int:dept_id>/courses')
 api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients')
 api.add_resource(AdminSendView, '/api/admin/<string:auth_token>/send_test')
 api.add_resource(AdminAppUpdateView, '/api/admin/app/update')
