@@ -17,6 +17,8 @@ var locationButton = element(by.css('[ng-click="launchLocationModal()"]'));
 var helpButton = element(by.css('[ng-click="showAttachActionSheet()"]'));
 var emailSignButton = element(by.id('email'));
 var switchLoginMode = element(by.id('E2E_SwitchLog'));
+//var switchLoginMode = element(by.css('[ng-click="toggleLoginMode()"]'));
+
 var doneButton = element(by.id('done-button'));
 
 var describeButton = element(by.id("E2E-describe"));

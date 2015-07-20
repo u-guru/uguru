@@ -7,7 +7,12 @@ describe('Account Unit Test', function () {
         browser.sleep(1000);
     });
     describe('Facebook',function(){
+      beforeEach(function()
+      {
+          browser.driver.get('http://localhost:8100/#/new-home');
+          browser.sleep(1000);
 
+      });
       describe('Log in', function ()
       {
         it('Cancel Log in',function()
@@ -41,26 +46,88 @@ describe('Account Unit Test', function () {
             });
         });
       });
+
+      //Sign Up
+      describe('Sign Up',function(){
+        it("fb sign up",function(){
+          browser.sleep(800);
+          browser.waitForAngular();
+          protractor.get.settingButton.click();
+          protractor.get.viaEmail.click();
+          protractor.get.switchLoginMode.click();
+          protractor.get.signFB.click();
+          //Switch Screen
+          browser.getAllWindowHandles().then(function (handles) {
+          // switch to the popup
+          browser.switchTo().window(handles[1]);
+
+          // do stuff with the popup
+          browser.driver.findElement(by.id('jason_dhcxgww_huang@tfbnw.net')).sendKeys(id);
+          browser.driver.findElement(by.id('pass')).sendKeys(pw);
+          browser.driver.findElement(by.id('u_0_2')).click();
+          // go back to the main window
+          browser.switchTo().window(handles[0]);
+         });
+          browser.sleep(8000);
+          protractor.run.logoff();
+        });
+        
+
+      });
+
     });
-        //Cancel is Disabled
-    // describe('Email',function(){
-    //   describe('log in & log off',function()
-    //   {
-    //     it('log in successful',function(){
-    //       browser.sleep(800);
-    //       browser.waitForAngular();
-    //       protractor.get.settingButton.click();
-    //       protractor.get.viaEmail.click();
-    //       protractor.get.switchLoginMode.click();
-    //       protractor.run.LogIn('hair_lvrxrsl_one@tfbnw.net','makhani1').then(function()
-    //         {
+    describe('Email',function(){
+      beforeEach(function()
+    {
+        browser.driver.get('http://localhost:8100/#/new-home');
+                  browser.sleep(1000);
 
-    //         });
-    //       browser.sleep(2000);
+    });
+      describe('log in & log off',function()
+      {
+        it('log in successful',function(){
+          browser.sleep(800);
+          browser.waitForAngular();
+          protractor.get.settingButton.click();
+          protractor.get.viaEmail.click();
+          protractor.get.switchLoginMode.click();
+          protractor.run.LogIn('hair_lvrxrsl_one@tfbnw.net','makhani1');
+          browser.sleep(8000);
+          protractor.run.logoff();
+          browser.sleep(2000);
 
-    //     });
-    //   });
-    // });
+        });
+      });
+
+      describe('SIgn up & log off',function()
+      {
+        it('With Exist account work flow',function(){
+          browser.sleep(800);
+          browser.waitForAngular();
+          protractor.get.settingButton.click();
+          protractor.get.viaEmail.click();
+          protractor.run.SignUp();
+          alertDialog.accept();  // Use to accept (simulate clicking ok)
+
+          browser.sleep(1000);
+          protractor.run.LogIn('hair_lvrxrsl_one@tfbnw.net','makhani1');
+          browser.sleep(8000);
+          protractor.run.logoff();
+
+        });
+        it('With new account work flow',function(){
+          browser.sleep(800);
+          browser.waitForAngular();
+          protractor.get.settingButton.click();
+          protractor.get.viaEmail.click();
+          protractor.run.SignUp();
+          browser.sleep(8000);
+          protractor.run.logoff();
+
+        });
+      });
+
+    });
 
 });
 

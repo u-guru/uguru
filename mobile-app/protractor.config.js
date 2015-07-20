@@ -30,8 +30,7 @@ exports.config = {
                   defaultTimeoutInterval: 40000,
                   isVerbose: true,
                   silent: true,
-                  print: function () {
-                  }
+                  print: function () {}
         },
         allScriptsTimeout: 40000,
         onPrepare: function () {
@@ -40,7 +39,7 @@ exports.config = {
             jasmine.getEnv().addReporter(new SpecReporter(
                 {
                     displayStacktrace: 'none',    // display stacktrace for each failed assertion, values: (all|specs|summary|none)
-                    displayFailuresSummary: true, // display summary of all failures after execution
+                    displayFailuresSummary: false, // display summary of all failures after execution
                     displaySuccessfulSpec: true,  // display each successful spec
                     displayFailedSpec: true,      // display each failed spec
                     displayPendingSpec: false,    // display each pending spec
