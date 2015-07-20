@@ -7,8 +7,14 @@ exports.config = {
                 //other browser names, phantomjs
                 //
                  'browserName': 'chrome'
+
                 // 'phantomjs.binary.path': require('phantomjs').path
          },
+        //   multiCapabilities: [
+        //   {'browserName': 'chrome'},
+        //   {'browserName': 'firefox'},
+        //   {'browserName': 'phantomjs'}
+        // ],
         specs: [
                // 'www/remote/tests/e2e/globals.js',
                 //'www/remote/tests/e2e/test.spec.js'
@@ -19,7 +25,7 @@ exports.config = {
           //      'www/remote/tests/e2e/question_test.js'
               //'www/remote/tests/e2e/university_test.js'
              // 'www/remote/tests/e2e/task_test.js'
-             // 'www/remote/tests/e2e/onboarding_test.js'
+              //'www/remote/tests/e2e/onboarding_test.js',
                 'www/remote/tests/e2e/sign_test.js'
 
         ],

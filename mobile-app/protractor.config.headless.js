@@ -28,7 +28,8 @@ exports.config = {
           //      'www/remote/tests/e2e/question_test.js'
               //'www/remote/tests/e2e/university_test.js'
              // 'www/remote/tests/e2e/task_test.js'
-             'www/remote/tests/e2e/onboarding_test.js'
+             'www/remote/tests/e2e/onboarding_test.js',
+              'www/remote/tests/e2e/sign_test.js'
 
 
         ],

@@ -21,7 +21,7 @@ describe('Account Unit Test', function () {
             browser.waitForAngular();
             protractor.get.settingButton.click();
             protractor.get.connectFB.click();
-
+            
             browser.getAllWindowHandles().then(function (handles) {
               // switch to the popup
               browser.switchTo().window(handles[1]);
@@ -62,7 +62,7 @@ describe('Account Unit Test', function () {
           browser.switchTo().window(handles[1]);
 
           // do stuff with the popup
-          browser.driver.findElement(by.id('jason_dhcxgww_huang@tfbnw.net')).sendKeys(id);
+          browser.driver.findElement(by.id('email')).sendKeys("jason_dhcxgww_huang@tfbnw.net");
           browser.driver.findElement(by.id('pass')).sendKeys(pw);
           browser.driver.findElement(by.id('u_0_2')).click();
           // go back to the main window
@@ -91,8 +91,8 @@ describe('Account Unit Test', function () {
           protractor.get.settingButton.click();
           protractor.get.viaEmail.click();
           protractor.get.switchLoginMode.click();
-          protractor.run.LogIn('hair_lvrxrsl_one@tfbnw.net','makhani1');
-          browser.sleep(8000);
+          protractor.run.LogIn('jason@berkeley.edu','test',false);
+          browser.sleep(2000);
           protractor.run.logoff();
           browser.sleep(2000);
 
@@ -106,22 +106,24 @@ describe('Account Unit Test', function () {
           browser.waitForAngular();
           protractor.get.settingButton.click();
           protractor.get.viaEmail.click();
-          protractor.run.SignUp();
-          alertDialog.accept();  // Use to accept (simulate clicking ok)
-
+          protractor.run.SignUp(false);
           browser.sleep(1000);
-          protractor.run.LogIn('hair_lvrxrsl_one@tfbnw.net','makhani1');
-          browser.sleep(8000);
+           var alertDialog = browser.switchTo().alert();
+          alertDialog.accept();  // Use to accept (simulate clicking ok)
+          browser.sleep(1000);
+          protractor.run.LogIn('jason@berkeley.edu','test',true);
+          browser.sleep(2000);
           protractor.run.logoff();
 
         });
+
         it('With new account work flow',function(){
           browser.sleep(800);
           browser.waitForAngular();
           protractor.get.settingButton.click();
           protractor.get.viaEmail.click();
-          protractor.run.SignUp();
-          browser.sleep(8000);
+          protractor.run.SignUp(true);
+          browser.sleep(4000);
           protractor.run.logoff();
 
         });

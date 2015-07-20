@@ -180,27 +180,33 @@ exports.run =
         element(by.css('[ng-click="savePayment()"]')).click();
      },
 
-     SignUp: function ()
+     SignUp: function (isNew)
      {
         var firstName = element(by.id('first-name-input'));
         var lastName = element(by.id('last-name-input'));
+        var d = new Date();
+        var sec = d.getSeconds();
+        var hr = d.getHours();
         firstName.sendKeys('John');
         lastName.sendKeys('hair');
-        email.sendKeys('hair_lvrxrsl_one@tfbnw.net');
-        password.sendKeys('makhani1');
+        if (isNew== true)
+            email.sendKeys(Date.UTC(2012,02,30,hr,sec)+'@jason-test.edu')
+        else
+            email.sendKeys('jason@berkeley.edu');
+        password.sendKeys('test');
         SubmitButton.click();
 
      },
-     LogIn: function (id, pw)
+     LogIn: function (id, pw, repeat)
     {
-       // if (email.getText() == "Email")
-        email.sendKeys(id);
+        if (repeat == false)
+             email.sendKeys(id);
         password.sendKeys(pw);
         SubmitButton.click();
 		},
      logoff: function()
      {
-     	 settingButton.click();
+     	// settingButton.click();
          browser.sleep(800);
          logoff.click();
      	 browser.sleep(1000);
