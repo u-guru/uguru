@@ -43,6 +43,12 @@ var roleSelect = element(by.id('role-select'));
 //account
 var viaEmail= element(by.id('E2E_Email'));
 var logoff = element(by.id('E2E-logoff'));
+var usrProfile = element(by.id('E2E-profile'));
+
+//Setting
+var editName = element(by.id('E2E-editName'));
+var oldPassword = element(by.id('E2E-oldPassword'));
+var newPassword = element(by.id('E2E-newPassword'));
 
 exports.globals =
     {
@@ -73,7 +79,10 @@ exports.globals =
         tagButton :tagButton,
         SearchUniversity : SearchUniversity,
         roleSelect : roleSelect,
-        viaEmail : viaEmail
+        viaEmail : viaEmail,
+        usrProfile : usrProfile,
+        newPassword : newPassword,
+        oldPassword : oldPassword
     };
 exports.run =
 {

@@ -272,7 +272,7 @@ angular.module('uguru.util.controllers')
       $scope.data = {name:$scope.user.email};
 
       $scope.inputPopup = $ionicPopup.show({
-          template: '<input style="padding:2px 4px;" type="text" ng-model="data.name" autofocus>',
+          template: '<input id="E2E-editEmail" value = {{data.email}}  style="padding:2px 4px;" type="text" ng-model="data.name" autofocus>',
           title: 'Edit email',
           subTitle: 'Please your main school one',
           scope: $scope,
@@ -298,7 +298,7 @@ angular.module('uguru.util.controllers')
 
 
       $scope.inputPopup = $ionicPopup.show({
-          template: '<input style="padding:2px 4px; margin-bottom:4px;" type="password" ng-model="data.old_password" placeholder="old password" autofocus><input style="padding:2px 4px;" type="password" ng-model="data.new_password" placeholder="new password">',
+          template: '<input id="E2E-oldPassword"   style="padding:2px 4px; margin-bottom:4px;" type="password" ng-model="data.old_password" placeholder="old password" autofocus><input id="E2E-newPassword" style="padding:2px 4px;" type="password" ng-model="data.new_password" placeholder="new password">',
           title: 'Change your password',
           subTitle: 'Must be longer than 6 characters',
           scope: $scope,
@@ -351,7 +351,7 @@ angular.module('uguru.util.controllers')
       $scope.data = {name:$scope.user.name};
 
       $scope.inputPopup = $ionicPopup.show({
-          template: '<input style="padding:2px 4px;" type="text" ng-model="data.name" autofocus>',
+          template: '<input id="E2E-editName" value = {{data.name}} style="padding:2px 4px;" type="text" ng-model="data.name" autofocus>',
           title: 'Change your try identity',
           subTitle: 'Try not to troll too hard',
           scope: $scope,

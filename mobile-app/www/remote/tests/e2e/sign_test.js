@@ -6,6 +6,7 @@ describe('Account Unit Test', function () {
         browser.driver.get('http://localhost:8100/#/new-home');
         browser.sleep(1000);
     });
+
     describe('Facebook',function(){
       beforeEach(function()
       {
@@ -13,6 +14,7 @@ describe('Account Unit Test', function () {
           browser.sleep(1000);
 
       });
+
       describe('Log in', function ()
       {
         it('Cancel Log in',function()
@@ -80,7 +82,7 @@ describe('Account Unit Test', function () {
       beforeEach(function()
     {
         browser.driver.get('http://localhost:8100/#/new-home');
-                  browser.sleep(1000);
+        browser.sleep(1000);
 
     });
       describe('log in & log off',function()
@@ -102,7 +104,7 @@ describe('Account Unit Test', function () {
       describe('SIgn up & log off',function()
       {
         it('With Exist account work flow',function(){
-          browser.sleep(800);
+          browser.sleep(1000);
           browser.waitForAngular();
           protractor.get.settingButton.click();
           protractor.get.viaEmail.click();
@@ -112,13 +114,13 @@ describe('Account Unit Test', function () {
           alertDialog.accept();  // Use to accept (simulate clicking ok)
           browser.sleep(1000);
           protractor.run.LogIn('jason@berkeley.edu','test',true);
-          browser.sleep(2000);
+          browser.sleep(4000);
           protractor.run.logoff();
 
         });
 
         it('With new account work flow',function(){
-          browser.sleep(800);
+          browser.sleep(1000);
           browser.waitForAngular();
           protractor.get.settingButton.click();
           protractor.get.viaEmail.click();
@@ -132,24 +134,3 @@ describe('Account Unit Test', function () {
     });
 
 });
-
-
-    // afterEach(function() {
-    //   browser.manage().logs().get('browser').then(function(browserLog) {
-    //     expect(browserLog.length).toEqual(0);
-    //     // Uncomment to actually see the log.
-    //      console.log('log: ' + require('util').inspect(browserLog));
-    //   });
-    // });
-
-     
-
-
-                   
-
-     
-    
-
-
-
-    

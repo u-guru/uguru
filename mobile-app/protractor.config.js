@@ -25,20 +25,36 @@ exports.config = {
           //      'www/remote/tests/e2e/question_test.js'
               //'www/remote/tests/e2e/university_test.js'
              // 'www/remote/tests/e2e/task_test.js'
-              //'www/remote/tests/e2e/onboarding_test.js',
-                'www/remote/tests/e2e/sign_test.js'
+                'www/remote/tests/e2e/onboarding_test.js',
+                'www/remote/tests/e2e/sign_test.js',
+                'www/remote/tests/e2e/setting_test_fb.js',
+                'www/remote/tests/e2e/setting_test_email.js'
+
+
 
         ],
+        suites:
+        {
+          //setting
+          o :'www/remote/tests/e2e/onboarding_test.js',
+          //onboarding
+          l :'www/remote/tests/e2e/sign_test.js',
+          //Setting
+          sf:'www/remote/tests/e2e/setting_test_fb.js',
+          se:'www/remote/tests/e2e/setting_test_email.js',
+        },
+
+        resultJsonOutputFile: 'www/remote/tests/e2e/result.json',
         rootElement: "[ng-app]" ,
        // rootElement: 'uguru' ,
         jasmineNodeOpts: {
                   showColors: true,
-                  defaultTimeoutInterval: 40000,
+                  defaultTimeoutInterval: 4000000,
                   isVerbose: true,
                   silent: true,
                   print: function () {}
         },
-        allScriptsTimeout: 40000,
+        allScriptsTimeout: 4000000,
         onPrepare: function () {
             var SpecReporter = require('jasmine-spec-reporter');
             // add jasmine spec reporter

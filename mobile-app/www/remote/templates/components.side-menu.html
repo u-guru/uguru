@@ -11,7 +11,7 @@
             <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(1)'>
 
               <!-- For logged in users they can see the settings options-->
-              <div ng-show='user && user.id'>
+              <div id ="E2E-profile" ng-show='user && user.id'>
                 <img class='pure-img animated pulse ng-class:{"hide":!settings.icons.profile && !root.vars.settings.icons.profile}' ng-src='{{img_base}}./img/settings/profile.svg'/>
 
 
