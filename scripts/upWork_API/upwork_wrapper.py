@@ -46,24 +46,102 @@ client = upwork.Client(key, secret,
 #pp = pprint.PrettyPrinter(indent = 4)
 #pp.pprint(profile_details)
 
-
+category = 'Administrative Support'
+sub_category = 'Data Entry'
 owner = '1850815'
 job_key = '~014754850f959aacfa'
+context = {'related_jobcategory': '40'}
+cover_message = 'Hello guys! I will be sending over google docs, shortly'
+milestones = [
+    {"milestone_description":"I am looking to hire someone who can WEB RESEARCH + DATA ENTRY for 500 schools.You are looking for the start and end date for the fall term and the spring term.\n\n However you can access this information is up to you(scraping,web searches, etc)\n\n This task is simple and anyone can do it.\n\n For example:\n\n1. Copy+Paste college name into web browser.\n\n2. Search for the fall and Spring term dates for when classes start and when they end.\n\n TIP: Information can be found by typing in school name and then writing the word academic calendar, for instance Adirondack Community College Academic Calender\n\n Once you are hired I will share you a google documents containing the school list!\n\n Deadline: Sunday, July 20th 2015(California) by the end of the day", "deposit_amount":"5", "due_date":"08-01-2015"},
+]
+#ERROR - Samir I need help on client.offers.send_client_offer - Client_team_reference don't know how to get that value, in doc it says list items, I tried all the value from list items, doesn't work still!
+description = 'I am looking to hire someone who can WEB RESEARCH + DATA ENTRY for 500 schools.You are looking for the start and end date for the fall term and the spring term.\n\n However you can access this information is up to you(scraping,web searches, etc)\n\n This task is simple and anyone can do it.\n\n For example:\n\n1. Copy+Paste college name into web browser.\n\n2. Search for the fall and Spring term dates for when classes start and when they end.\n\n TIP: Information can be found by typing in school name and then writing the word academic calendar, for instance Adirondack Community College Academic Calender\n\n Once you are hired I will share you a google documents containing the school list!\n\n Deadline: Sunday, August first 2015(California) by the end of the day'
+
+client.offers.send_client_offer('Data Scraping','fixed-price',5.0,description,'1850815','2405c762',context=context,contractor_username = 'layug_lorielyn',milestones=milestones )
+# #
+list_teams = client.hr.get_teams()
+pp = pprint.PrettyPrinter(indent = 4)
+pp.pprint(list_teams)
+# list_teams = client.hr.get_teams()
+# print list_teams
+#owner12 = 'r9gf7hijszllyinylk0xrg'
+
+# with open ('job_applications.json') as f:
+# 	get_me_data = json.load(f)
+# 	json_string = json.dumps(get_me_data, sort_keys = True, indent = 2)
+# #	print json_string
+# 	parent = get_me_data['applications']
+# 	for item in parent:
+
+# 		get_me_the_best_worker = client.provider.get_provider_brief(item['contractor_ciphertext'])
+# 		#print get_me_the_best_worker
+# 		parent_data =  get_me_the_best_worker['dev_adj_score']
+	
+# with open('job_applications.json') as f:
+# 		freelancer_id = json.load(f)
+# 		json_string = json.dumps(freelancer_id, sort_keys = True, indent = 2)
+# 		parent = freelancer_id['applications']
+# 	#	print parent
+# 		for item in parent:
+# 			contractor = item['contractor_ciphertext']
+# 			hire_someone = client.hr_v1.invite_to_interview(job_key,cover_message,contractor)
+# 			print contractor
+
+# content = client.mc.get_tray_content('2405c762','inbox')
+# with open('thread_id.json','w') as thread_ids:
+# 	json.dump(content,thread_ids,indent = 4)
+# 	print "Thread ID saved in a json FILE!"
 
 
-with open ('job_applications.json') as f:
-	get_me_data = json.load(f)
-	json_string = json.dumps(get_me_data, sort_keys = True, indent = 2)
-#	print json_string
-	parent = get_me_data['applications']
-	for item in parent:
+# with open('thread_id.json') as fps:
+# 		thread_id = json.load(fps)
+# 		for items in thread_id:
+# 			contractor = items['participants']
+# 			for secondary_items in contractor:
+# 				username = secondary_items[0]['username']
+# 				print username
 
-		get_me_the_best_worker = client.provider.get_provider_brief(item['contractor_ciphertext'])
-		#print get_me_the_best_worker
-		parent_data =  get_me_the_best_worker['dev_adj_score']
-		for datas in parent_data:
-			if datas <= '5':
-				
+		# json_string = json.dumps(thread_id, sort_keys = True, indent = 2)
+		# parent = thread_id['participants']
+		# print parent
+		# for item in parent:
+		# 	contractor = item['username']
+		# 	#hire_someone = client.hr_v1.invite_to_interview(job_key,cover_message,contractor)
+		# 	print contractor
+
+
+
+
+#object_client = client.hr.get_teams()
+#pp = pprint.PrettyPrinter(indent = 4)
+#pp.pprint(object_client)
+#client_obj = client.mc.get_trays()
+#clients = client.auth.get_info()
+
+#client_def = client.mc.get_trays('2405c762')
+freelancer_id_1 = '~011d8724f956a759b0'
+freelancer_id_2 = '~019a997e9118c21d5a'
+freelancer_id_3 = '~015f8632866ff09eb6'
+freelancer_id_4 = '~012e08fb3ba663b8d6'
+freelancer_id_5 = '~017258aba76e920733'
+#send_message = client.mc.post_message('2405c762,')
+#content = client.mc.get_tray_content('2405c762','inbox')
+#job_key = '~014754850f959aacfa'
+#client.mc.get_thread_by_context('2405c762','Interviews',job_key,last_posts=True)
+#freelancer_link_1 = 'https://docs.google.com/spreadsheets/d/1zOoZE7hMkzG3AJqckEv0JCET4skT2L_TIDwE4HSkkk4/edit?usp=sharing'
+#freelancer_link_2 = 
+# owner = '7447474'
+# # tray_name = 'inbox'
+#another_id = '5585060'
+#user_id = '2405c762'
+# u'user__id': u'2405c762',
+#thread_id = '48268566'
+#content = client.mc.get_thread_content('Samir_Makhani','inbox')
+#pp = pprint.PrettyPrinter(indent = 4)
+#pp.pprint(content)
+#content = client.mc.get_tray_content('1850815','inbox')
+#client.mc.post_message('samir@uguru.me',['Marilyn'],'Hey! I would like to hire you to work for me!','Hey! I would like to hire you to work for me!')
 def get_list_of_categories():
 		sys.stderr = DevNull()
 		meta_data = client.provider.get_categories_metadata()
@@ -125,7 +203,7 @@ def get_job_profile(job_key):
 		return upwork_wrapper.get_job_profile(client.job.get_job_profile)
 
 def hire_someone(job_key,cover_message,freelancer_id):
-		sys.stderr = DevNull()
+		#sys.stderr = DevNull()
 		client.hr_v1.invite_to_interview(job_key,cover_message,freelancer_id)
 		print "Successfully hired!"
 		return upwork_wrapper.hire_someone(client.hr_v1.invite_to_interview)
@@ -151,20 +229,12 @@ def send_client_offer(title,hourly,budget,message_to_contractor,owner,contractor
 		return upwork_wrapper.send_client_offer(client.offers.send_client_offer)
 
 def list_job_applications(owner,job_key):
-	#	sys.stderr = DevNull()
+		sys.stderr = DevNull()
 		free_lancer_offers = client.hr_v3.list_client_applications(owner,job_key)
 		with open('job_applications.json', 'w') as fp:
 			json.dump(free_lancer_offers,fp,indent = 4)
 		print "Job applications successfully loaded in a json file"
 		return upwork_wrapper.list_job_applications(client.hr_v3.list_client_applications)
-
-
-def get_best_job_application(owner,job_key):
-		sys.stderr = DevNull()
-		#get_me_best_free_lancer = client.hr_v3.list_client_applications(owner,job_key)['contractor_ciphertext']
-
-
-
 
 def create_a_mile_stone(owner,milestones_descrption,deposit_amount,due_date):
 		#sys.stderr = DevNull()
@@ -224,9 +294,13 @@ def get_active_messages(owner):
 
 def get_message_content(owner,inbox):
 		#sys.stderr = DevNull
-		message_content = client.mc.get_tray_content(owner,inbox)
-		pp = pprint.PrettyPrinter(indent = 4)
-		pp.pprint(get_active_messages)
+		content = client.mc.get_tray_content('2405c762','inbox')
+		with open('thread_id.json','w') as thread_ids:
+			json.dump(content,thread_ids,indent = 4)
+		print "Thread ID saved in a json FILE!"
+		#message_content = client.mc.get_tray_content(owner,inbox)
+		#pp = pprint.PrettyPrinter(indent = 4)
+		#pp.pprint(get_active_messages)
 		return upwork_wrapper.get_message_content(owner,inbox)
 
 def get_thread(owner,thread_id):
@@ -238,6 +312,8 @@ def get_thread(owner,thread_id):
 
 def send_message(owner,recipients,body,bcc):
 		sys.stderr = DevNull
+		client.mc.post_message(owner,recipients,body,bcc)
+		print "message sent to", recipients
 		client.mc.post_message(owner,recipients,body,bcc)
 		return upwork_wrapper.send_message(owner,recipients,body,bcc)
 
