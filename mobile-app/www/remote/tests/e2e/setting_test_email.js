@@ -1,5 +1,5 @@
 var firstime = true;
-describe('Account Unit Test', function ()
+describe('Account Unit Test Email', function ()
 {
 	beforeEach(function()
     {
@@ -101,44 +101,59 @@ describe('Account Unit Test', function ()
 			
 		});	
 
-		// describe("edit Password",function(){
-		// 		it("Change Password",function()
-		// 		{
-		// 			element.all(by.repeater('b in buttons')).then(function (items) {
-		//              items[2].click();
-		//         	 });
+		describe("edit Password",function(){
+				it("Change Password",function()
+				{
+					element.all(by.repeater('b in buttons')).then(function (items) {
+		             items[2].click();
+		        	 });
 
-		// 			browser.sleep(800);
-		// 			element(by.id("E2E-oldPassword")).sendKeys("test");
-		// 			element(by.id("E2E-newPassword")).sendKeys("test1");
+					browser.sleep(800);
+					element(by.id("E2E-oldPassword")).sendKeys("test");
+					element(by.id("E2E-newPassword")).sendKeys("test1");
 
-		// 			element.all(by.repeater('button in buttons')).then(function (items) {
-		//              items[1].click();
-		//         	 });
-  //     			    browser.sleep(2000);
-		// 			 var alertDialog = browser.switchTo().alert();
-  //        			 var log = alertDialog.getText();
-  //        			 alertDialog.accept();  // Use to accept (simulate clicking ok)
-		// 			expect(alertDialog.getText()).not.toEqual("Please fill in all fields"); 
-		// 		});
+					element.all(by.repeater('button in buttons')).then(function (items) {
+		             items[1].click();
+		        	 });
+      			    browser.sleep(2000);
+					 var alertDialog = browser.switchTo().alert();
+         			 var log = alertDialog.getText();
+         			 alertDialog.accept();  // Use to accept (simulate clicking ok)
+					expect(alertDialog.getText()).not.toEqual("Please fill in all fields"); 
+				});
 				
-		// 	});	
+			});	
 	});
 	describe("Edit Profile Photo",function()
 		{
-		
+			
+			var originPath;
 			var path = require('path');
 
 			it('should upload picuture', function() {
-			  var fileToUpload = '/www/remote/tests/e2e/sheep.png';
+
+			  //var fileToUpload = '../e2e/sheep.png';
+			  var fileToUpload = '../e2e/kururu.jpg';
 			  var absolutePath = path.resolve(__dirname, fileToUpload);
-			  	 browser.sleep(2000);
+				browser.sleep(1000);
+				element(by.id("sidebar-student-profile-photo")).getAttribute('value').then(function(src){
+		 		//	console.log("Path :"+src);
+		 			originPath = src;
+		 		});	
+				browser.sleep(500);
+		
 				protractor.get.doneButton.click();
-			  $('input[type="file"]').sendKeys(absolutePath);
-				element.all(by.repeater('b in buttons')).then(function (items) {
-	             items[0].click();
-	        	 });
-								  browser.sleep(1000);
+
+				  $('input[type="file"]').sendKeys(absolutePath);
+					element.all(by.repeater('b in buttons')).then(function (items) {
+		             items[0].click();
+		        	 });
+			});
+			it ('check picuture is upload successfully',function(){
+				element(by.id("sidebar-student-profile-photo")).getAttribute('value').then(function(src){
+	 			//console.log("New Path :"+src);
+				expect(src).not.toBe(originPath);
+		 		});	
 
 			});
 		});

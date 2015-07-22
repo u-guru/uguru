@@ -1,5 +1,5 @@
 var firstime = true;
-describe('Account Unit Test', function ()
+describe('Account Unit Test Facebook', function ()
 {
 	beforeEach(function()
     {
@@ -12,7 +12,7 @@ describe('Account Unit Test', function ()
         protractor.run.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
         firstime =false; 
     });
-    describe("Edit Profile",function()
+     describe("Edit Profile",function()
 	{
 		beforeEach(function(){
 			browser.sleep(1000);
@@ -76,7 +76,6 @@ describe('Account Unit Test', function ()
 	             items[1].click();
 	        	 });
 			});
-			
 			it("check email is changed",function()
 				{
 					//check 
@@ -97,5 +96,38 @@ describe('Account Unit Test', function ()
 			
 		});	
 	});
+	describe("Edit Profile Photo",function()
+		{
+			
+			var originPath;
+			var path = require('path');
+
+			it('should upload picuture', function() {
+
+			  //var fileToUpload = '../e2e/sheep.png';
+			  var fileToUpload = '../e2e/kururu.jpg';
+			  var absolutePath = path.resolve(__dirname, fileToUpload);
+				browser.sleep(1000);
+				element(by.id("sidebar-student-profile-photo")).getAttribute('value').then(function(src){
+		 		//	console.log("Path :"+src);
+		 			originPath = src;
+		 		});	
+				browser.sleep(500);
+		
+				protractor.get.doneButton.click();
+
+				  $('input[type="file"]').sendKeys(absolutePath);
+					element.all(by.repeater('b in buttons')).then(function (items) {
+		             items[0].click();
+		        	 });
+			});
+			it ('check picuture is upload successfully',function(){
+				element(by.id("sidebar-student-profile-photo")).getAttribute('value').then(function(src){
+	 			//console.log("New Path :"+src);
+				expect(src).not.toBe(originPath);
+		 		});	
+
+			});
+		});
 
 });
