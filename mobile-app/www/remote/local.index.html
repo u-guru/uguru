@@ -24,6 +24,39 @@
      <script>
     LOCAL = true;
     BASE = '/remote';
+
+    function getMobileOperatingSystem() {
+          var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i)) {
+                    console.log('injecting windows specific css & js');
+                    injectJs('windows.cordova.js');
+                    injectCss('windows.css');
+                  }
+                  else
+                  {
+                    console.log('hard to determine identifies')
+                    // injectCss('web.css')
+                    return 'unknown';
+            }
+    }
+
+      function injectJs(link) {
+          var scr = document.createElement('script');
+          scr.type="text/javascript";
+          scr.src=link;
+          document.getElementsByTagName('head')[0].appendChild(scr)
+      }
+
+      function injectCss(file) {
+        var link = document.createElement("link");
+        link.href = file;
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        document.getElementsByTagName("head")[0].appendChild(link);
+      }
+
+      getMobileOperatingSystem();
+
     </script>
       <!-- start Mixpanel -->
 

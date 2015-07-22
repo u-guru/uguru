@@ -418,6 +418,8 @@ AdminUniversityDeptSerializer = {
 AdminUniversityDeptCourseSerializer = {
     'id': fields.Integer,
     'time_added': fields.DateTime,
+    'department_id': fields.Integer,
+    'university_id': fields.Integer,
     'name': fields.String,
     'short_name': fields.String,
     'is_popular': fields.Boolean,
