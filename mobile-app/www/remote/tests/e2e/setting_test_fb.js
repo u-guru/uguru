@@ -5,7 +5,6 @@ describe('Account Unit Test Facebook', function ()
     {
         browser.driver.manage().window().setSize(414, 736);
         browser.driver.get('http://localhost:8100/#/new-home');
-		browser.sleep(1000);
 		browser.waitForAngular();
 		protractor.get.settingButton.click();
 		if (firstime == true)
@@ -54,6 +53,20 @@ describe('Account Unit Test Facebook', function ()
 
 				});
 			});
+			// it("check name is changed after relog",function()
+			// {
+			//     protractor.run.logoff();
+			// 	protractor.run.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+			// 	element.all(by.repeater('b in buttons')).then(function (items) {
+	  //            items[0].click();
+	  //       	 });
+			// 	browser.sleep(800);
+		
+			// 	element(by.id("E2E-editName")).getAttribute('value').then(function(value){
+			// 		expect(value).toBe("Test test");
+
+			// 	});
+			// }
 		
 			
 
@@ -109,7 +122,7 @@ describe('Account Unit Test Facebook', function ()
 			  var absolutePath = path.resolve(__dirname, fileToUpload);
 				browser.sleep(1000);
 				element(by.id("sidebar-student-profile-photo")).getAttribute('value').then(function(src){
-		 		//	console.log("Path :"+src);
+		 		//s	console.log("Path :"+src);
 		 			originPath = src;
 		 		});	
 				browser.sleep(500);
