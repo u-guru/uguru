@@ -148,6 +148,9 @@ describe('Account Unit Test Email', function ()
 					element.all(by.repeater('b in buttons')).then(function (items) {
 		             items[0].click();
 		        	 });
+				var EC = protractor.ExpectedConditions;
+				var message = element(by.binding('message');
+				browser.wait(EC.textToBePresentInElement(message, 'Timeout take too long to upload and not Error msg...'), 5000); 
 			});
 			it ('check picuture is upload successfully',function(){
 				element(by.id("sidebar-student-profile-photo")).getAttribute('value').then(function(src){

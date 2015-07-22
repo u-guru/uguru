@@ -49,12 +49,12 @@ exports.config = {
        // rootElement: 'uguru' ,
         jasmineNodeOpts: {
                   showColors: true,
-                  defaultTimeoutInterval: 4000000,
+                  defaultTimeoutInterval: 400000,
                   isVerbose: true,
                   silent: true,
                   print: function () {}
         },
-        allScriptsTimeout: 4000000,
+        allScriptsTimeout: 400000,
         onPrepare: function () {
             var SpecReporter = require('jasmine-spec-reporter');
             // add jasmine spec reporter

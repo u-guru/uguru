@@ -5,11 +5,13 @@ describe('Account Unit Test Facebook', function ()
     {
         browser.driver.manage().window().setSize(414, 736);
         browser.driver.get('http://localhost:8100/#/new-home');
-		browser.waitForAngular();
-		protractor.get.settingButton.click();
-		if (firstime == true)
-        protractor.run.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
-        firstime =false; 
+		browser.waitForAngular()
+				protractor.get.settingButton.click();
+				if (firstime == true)
+		        protractor.run.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+		        firstime =false; 
+		
+	
     });
      describe("Edit Profile",function()
 	{
@@ -133,7 +135,8 @@ describe('Account Unit Test Facebook', function ()
 					element.all(by.repeater('b in buttons')).then(function (items) {
 		             items[0].click();
 		        	 });
-			});
+
+			},50000);
 			it ('check picuture is upload successfully',function(){
 				element(by.id("sidebar-student-profile-photo")).getAttribute('value').then(function(src){
 	 			//console.log("New Path :"+src);
