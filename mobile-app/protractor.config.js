@@ -55,6 +55,9 @@ exports.config = {
                   defaultTimeoutInterval: 400000,
                   isVerbose: true,
                   silent: true
+                  // ,
+                  //    print: function() {}
+
                           },
         allScriptsTimeout: 400000,
         onPrepare: function () {

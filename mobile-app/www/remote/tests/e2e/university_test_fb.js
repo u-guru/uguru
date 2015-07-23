@@ -2,24 +2,23 @@ var  deferred = protractor.promise.defer();
 describe('Account Unit Test Facebook', function ()
 {
 	var firstime = true;
-	var old_schoolName; ''
-	beforeEach(function()
-    {
-    	browser.ignoreSynchronization = false;
-       	browser.driver.get('http://localhost:8100/#/new-home');
-		browser.waitForAngular()
+	var old_schoolName;
+		
+		browser.driver.get('http://localhost:8100/#/new-home');
+		browser.waitForAngular();
 		protractor.get.settingButton.click();
-		if (firstime == true)
-		{
 			protractor.run.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
 	        firstime =false; 
 			browser.sleep(800);
 			element(by.id("E2E-uniTitle")).getAttribute('value').then(function(value){
 			old_schoolName = value;
 			});	
-		}
-		firstime =false; 
-	 });
+	
+
+	beforeEach(function()
+    {
+    	browser.ignoreSynchronization = false;
+	});
  //   describe("University",function(){
  //   		describe("test The same University",function()
  //   			{
@@ -94,7 +93,6 @@ describe('Account Unit Test Facebook', function ()
 			var listCount;
 			it("Add Major",function()
 			{
-
 				protractor.get.doneButton.click();
 				element.all(by.repeater('b in buttons')).then(function (items) {
 		         items[2].click();
@@ -103,25 +101,38 @@ describe('Account Unit Test Facebook', function ()
 				element.all(by.repeater('major in matchingMajors')).then(function (items) {
 		         	items[0].click();
 		    	 });
-			 	element(by.id("major-input")).sendKeys("a");		
-			
-				browser.sleep(1000);	
 			});
-			// it("Check Majors",function()
-			// {
-			// 	browser.sleep(800);	
+			it("Add More Major",function()
+			{
+				element(by.id("major-input")).sendKeys("a");
+				element.all(by.repeater('major in matchingMajors')).then(function (items) {
+		         	items[0].click();
+		    	 });
+			});
+			 it("Delete Majors",function()
+			{
+				 element.all(by.repeater('user_major in user.majors')).then(function (major) {
+		                
+		                 browser.actions().mouseDown(major[0]).perform();
+		                 browser.sleep(2000);             
 
-			// 	protractor.get.doneButton.click();
-			// 	element.all(by.repeater('b in buttons')).then(function (items) {
-		 //         items[2].click();
-		 //    	 });
-			// 	element.all(by.repeater('user_major in user.majors')).count().then(function(count) {
-			// 		expect(value).toBe(totalValue).then(function()
-			// 			{
-			// 				console.error("The Majors is not upadated correctly");
-			// 			});
-			// 	});
-			// });
+		         });
+			});
+			 it("Save buttons",function()
+			 {
+			 	protractor.get.backButton.click();
+
+
+			 });
+			  it("back buttons",function()
+			 {
+				protractor.get.doneButton.click();
+				element.all(by.repeater('b in buttons')).then(function (items) {
+		         items[2].click();
+		    	 });
+				protractor.get.doneButton.click();
+
+			 });
 		});
 
 });

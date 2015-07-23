@@ -12,7 +12,6 @@ var request = element(by.id('request-button'));
 var sessionButton = element(by.css('[ng-click="launchRequestModal(0)"]'));
 
 var locationButton = element(by.css('[ng-click="launchLocationModal()"]'));
-var locationButton = element(by.css('[ng-click="launchLocationModal()"]'));
 
 var helpButton = element(by.css('[ng-click="showAttachActionSheet()"]'));
 var emailSignButton = element(by.id('email'));
@@ -50,6 +49,8 @@ var newPassword = element(by.id('E2E-newPassword'));
 //input 
 var majorInput = element(by.id('major-input'));
 var password = element(by.id('password-input'));
+var backButton = element(by.css('[ng-click="backToStudentEditProfile()"]'));
+
 
 exports.globals =
     {
@@ -84,7 +85,8 @@ exports.globals =
         usrProfile : usrProfile,
         newPassword : newPassword,
         oldPassword : oldPassword,
-        majorInput : majorInput
+        majorInput : majorInput,
+        backButton :backButton
     };
 exports.run =
 {
