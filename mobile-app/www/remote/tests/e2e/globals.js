@@ -25,10 +25,8 @@ var describeButton = element(by.id("E2E-describe"));
 var describeButton = element(by.id("E2E-describe"));
 
 var tagButton = element(by.id("E2E-tag"));
-var tagButton = element(by.id("E2E-tag"));
 
 var email = element(by.id('email-input'));
-var password = element(by.id('password-input'));
 var SubmitButton = element(by.id('done-button'));
 var ErrorMsg = element(by.id('E2E-show'));
 var FindUniversity =  element(by.id('E2E-university')); 
@@ -49,6 +47,9 @@ var usrProfile = element(by.id('E2E-profile'));
 var editName = element(by.id('E2E-editName'));
 var oldPassword = element(by.id('E2E-oldPassword'));
 var newPassword = element(by.id('E2E-newPassword'));
+//input 
+var majorInput = element(by.id('major-input'));
+var password = element(by.id('password-input'));
 
 exports.globals =
     {
@@ -82,7 +83,8 @@ exports.globals =
         viaEmail : viaEmail,
         usrProfile : usrProfile,
         newPassword : newPassword,
-        oldPassword : oldPassword
+        oldPassword : oldPassword,
+        majorInput : majorInput
     };
 exports.run =
 {

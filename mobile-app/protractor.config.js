@@ -1,6 +1,6 @@
 exports.config = {
     framework: 'jasmine2',
-    seleniumAddress: 'http://localhost:4444/wd/hub',
+    // seleniumAddress: 'http://localhost:4444/wd/hub',
 
 
          capabilities: {
@@ -28,8 +28,8 @@ exports.config = {
                 'www/remote/tests/e2e/onboarding_test.js',
                 'www/remote/tests/e2e/sign_test.js',
                 'www/remote/tests/e2e/setting_test_fb.js',
-                'www/remote/tests/e2e/setting_test_email.js'
-
+                'www/remote/tests/e2e/setting_test_email.js',
+                'www/remote/tests/e2e/university_test_fb.js'
 
 
         ],
@@ -42,6 +42,9 @@ exports.config = {
           //Setting
           sf:'www/remote/tests/e2e/setting_test_fb.js',
           se:'www/remote/tests/e2e/setting_test_email.js',
+          //school
+          uf:'www/remote/tests/e2e/university_test_fb.js',
+
         },
 
         resultJsonOutputFile: 'www/remote/tests/e2e/result.json',
@@ -51,9 +54,8 @@ exports.config = {
                   showColors: true,
                   defaultTimeoutInterval: 400000,
                   isVerbose: true,
-                  silent: true,
-                  print: function () {}
-        },
+                  silent: true
+                          },
         allScriptsTimeout: 400000,
         onPrepare: function () {
             var SpecReporter = require('jasmine-spec-reporter');
@@ -81,6 +83,7 @@ exports.config = {
                 }));
             protractor.get = require('./www/remote/tests/e2e/globals.js').globals;
             protractor.run = require('./www/remote/tests/e2e/globals.js').run;
+            browser.driver.manage().window().setSize(414, 736);
 
 
         }
