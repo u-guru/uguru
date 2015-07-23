@@ -43,29 +43,51 @@ client = upwork.Client(key, secret,
 #print get_job_prof
 #freelancer_id = '7719882'
 #profile_details = client.provider.get_provider('~011d8724f956a759b0')
-#pp = pprint.PrettyPrinter(indent = 4)
-#pp.pprint(profile_details)
+#profile_details = client.hr.get_engagements()
+# profile_details = client.hr_v3.get_active_milestone('1850815')
+# pp = pprint.PrettyPrinter(indent = 4)
+# pp.pprint(profile_details)
 
-category = 'Administrative Support'
-sub_category = 'Data Entry'
-owner = '1850815'
-job_key = '~014754850f959aacfa'
-context = {'related_jobcategory': '40'}
-cover_message = 'Hello guys! I will be sending over google docs, shortly'
-milestones = [
-    {"milestone_description":"I am looking to hire someone who can WEB RESEARCH + DATA ENTRY for 500 schools.You are looking for the start and end date for the fall term and the spring term.\n\n However you can access this information is up to you(scraping,web searches, etc)\n\n This task is simple and anyone can do it.\n\n For example:\n\n1. Copy+Paste college name into web browser.\n\n2. Search for the fall and Spring term dates for when classes start and when they end.\n\n TIP: Information can be found by typing in school name and then writing the word academic calendar, for instance Adirondack Community College Academic Calender\n\n Once you are hired I will share you a google documents containing the school list!\n\n Deadline: Sunday, July 20th 2015(California) by the end of the day", "deposit_amount":"5", "due_date":"08-01-2015"},
-]
-#ERROR - Samir I need help on client.offers.send_client_offer - Client_team_reference don't know how to get that value, in doc it says list items, I tried all the value from list items, doesn't work still!
-description = 'I am looking to hire someone who can WEB RESEARCH + DATA ENTRY for 500 schools.You are looking for the start and end date for the fall term and the spring term.\n\n However you can access this information is up to you(scraping,web searches, etc)\n\n This task is simple and anyone can do it.\n\n For example:\n\n1. Copy+Paste college name into web browser.\n\n2. Search for the fall and Spring term dates for when classes start and when they end.\n\n TIP: Information can be found by typing in school name and then writing the word academic calendar, for instance Adirondack Community College Academic Calender\n\n Once you are hired I will share you a google documents containing the school list!\n\n Deadline: Sunday, August first 2015(California) by the end of the day'
 
-client.offers.send_client_offer('Data Scraping','fixed-price',5.0,description,'1850815','2405c762',context=context,contractor_username = 'layug_lorielyn',milestones=milestones )
-# #
-list_teams = client.hr.get_teams()
-pp = pprint.PrettyPrinter(indent = 4)
-pp.pprint(list_teams)
+# list_teams = client.hr.get_user_roles()
+# pp = pprint.PrettyPrinter(indent = 4)
+# pp.pprint(list_teams)
 # list_teams = client.hr.get_teams()
 # print list_teams
 #owner12 = 'r9gf7hijszllyinylk0xrg'
+
+
+def save_user_name():
+
+		user_name = client.mc.get_tray_content('2405c762','inbox')
+		with open('user_name_applications.json', 'w') as fp:
+			json.dump(user_name,fp,indent = 4)
+		print "usernames successfully saved!"
+save_user_name()
+
+
+# with open('user_name_applications.json') as send_message:
+# 	get_me_data = json.load(send_message)
+# 	for item in get_me_data:
+# 		get_me_worker_id = item['participants']
+# 		for send_message in get_me_worker_id:
+# 			username = send_message['username']
+# 			client.mc.post_message('2405c762',username,'Regarding the new job', 'Hello there! I have got a very reasonable pricing job for you!, I apologise as I couldnt get back to you regarding my early job posting, here is the link to the new job posting /https://www.upwork.com/jobs/Colleges-Data-Scraping-Data-Collection-Data-Entry_~~f12cd1aa02b2bdde/, its a perfect deal')
+# 			print "message sent to", username
+
+
+
+
+# with open('thread_id.json') as fps:
+# # 		thread_id = json.load(fps)
+# # 		for items in thread_id:
+# # 			contractor = items['participants']
+# # 			for secondary_items in contractor:
+# # 				username = secondary_items[0]['username']
+# # 				print username
+
+
+
 
 # with open ('job_applications.json') as f:
 # 	get_me_data = json.load(f)
@@ -112,6 +134,9 @@ pp.pprint(list_teams)
 
 
 
+#share - 1 (https://docs.google.com/spreadsheets/d/1673EIcylaWhUSEFK0SglZ1YKQaqmn5fgQJ_icsMd_bQ/edit?usp=sharing)
+#share - 2 (https://docs.google.com/spreadsheets/d/1BHFRaPYAKv7-s7cMN5Psb4Io7yWwFuAmTHn3I9JQ5r8/edit?usp=sharing)
+
 
 #object_client = client.hr.get_teams()
 #pp = pprint.PrettyPrinter(indent = 4)
@@ -142,6 +167,68 @@ freelancer_id_5 = '~017258aba76e920733'
 #pp.pprint(content)
 #content = client.mc.get_tray_content('1850815','inbox')
 #client.mc.post_message('samir@uguru.me',['Marilyn'],'Hey! I would like to hire you to work for me!','Hey! I would like to hire you to work for me!')
+
+#content = client.hr.get_jobs('1850815')
+milestones = [
+    {"milestone_description":"Every 50 school you get done, you will be awarded with 1 dollar.Google doc is here /https://docs.google.com/spreadsheets/d/1aZdvv3h-3InMwAUlObn_b0Qu48XD-kCzgK6AseAGJOc/edit?usp=sharing/\n\n Deadline: Sunday, July 23rd 2015(California) by the end of the day", "deposit_amount":"1", "due_date":"07-23-2015"},
+]
+
+context = {'related_jobcategory': '40'}
+description = 'I am looking to hire someone who can WEB RESEARCH + DATA ENTRY for 50 schools.You are looking for the start and end date for the fall term and the spring term.\n\n However you can access this information is up to you(scraping,web searches, etc)\n\n This task is simple and anyone can do it.\n\n For example:\n\n1. Copy+Paste college name into web browser.\n\n2. Search for the fall and Spring term dates for when classes start and when they end.\n\n TIP: Information can be found by typing in school name and then writing the word academic calendar, for instance Adirondack Community College Academic Calender\n\n Once you are hired I will share you a google documents containing the school list!\n\n Deadline: Sunday, July 23rd(California) by the end of the day'
+# with open('user_name_applications.json') as send_message:
+# 	get_me_data = json.load(send_message)
+# 	for item in get_me_data:
+# 		get_me_worker_id = item['participants']
+# 		for send_message in get_me_worker_id:
+# 			username = send_message['username']
+# 			if not username.isalpha():
+#     #continue
+# 				#upwork_wrapper.send_message('2405c762',username,'Regarding the new job', 'Hello there! I have got a very reasonable pricing job for you!, I apologise as I couldnt get back to you regarding my early job posting, here is the link to the new job posting /https://www.upwork.com/jobs/Colleges-Data-Scraping-Data-Collection-Data-Entry_~~f12cd1aa02b2bdde/, its a perfect deal')
+# 				client.offers.send_client_offer('Data Scraping','fixed-price',1.0,description,'1850815','r9gf7hijszllyinylk0xrg',context=context,contractor_username = username,milestones=milestones )
+# 				print "offer sent to", username
+#'r9gf7hijszllyinylk0xrg'
+#client.offers.send_client_offer('Data Scraping','fixed-price',1.0,description,'1850815','r9gf7hijszllyinylk0xrg',contractor_username = 'rashidhussain157',context=context,milestones=milestones )
+
+
+def get_engangements():
+		contract_reference = client.hr.get_engagements()
+		with open('engagements.json', 'w') as fp:
+			json.dump(contract_reference,fp,indent = 4)
+		print "engagements saved in a json file!" 
+		return upwork_wrapper.get_engangments()
+#get_engangements()
+
+def get_submission_ids():
+
+	with open('engagements.json') as data_file:
+		load_data = json.load(data_file)['engagement']
+		big_array = []
+		for ref_ids in load_data:
+			ref_id = ref_ids['reference']
+			object_oreinted = client.hr_v3.get_active_milestone(ref_id)
+			big_array.append(object_oreinted)
+			with open('submission_ids.json','w') as submission_id:
+				json.dump(big_array,submission_id,indent = 4)
+			print "Id's are saved!"
+			return upwork_wrapper.get_submission_ids()
+
+def get_milestone_submission_list():
+
+	big_second_array = []
+	with open('submission_ids.json') as data_file:
+		data_info = json.load(data_file)
+		for data_main_info in data_info:
+			milestones = data_main_info['milestone']
+			id_in_milestones = milestones['id']
+			get_me_submitted_milestones = client.hr_v3.get_milestone_submissions(id_in_milestones)
+			big_second_array.append(get_me_submitted_milestones)
+			with open('submitted_milestones.json','w') as submission:
+				json.dump(big_second_array,submission, indent = 4)
+			print "Subission list of milestones saved!"
+			return upwork_wrapper.get_milestone_submission_list
+
+
+
 def get_list_of_categories():
 		sys.stderr = DevNull()
 		meta_data = client.provider.get_categories_metadata()
@@ -178,7 +265,7 @@ def get_profile_details(freelancer_id):
 		return upwork_wrapper.get_profile_details(client.provider.get_provider)
 
 def post_a_job(owner,title,rate,description,private_or_not,category,sub_category,budget,skills):
-		sys.stderr = DevNull()
+		#sys.stderr = DevNull()
 		client.hr.post_job(owner,title,rate,description,private_or_not,category,sub_category,budget, skills = ['data-mining','data-scraping','google-docs','google-spreadsheet','internet-research','spreadsheets'])
 		print "Job successfully created!"
 		return upwork_wrapper.post_a_job(client.hr.post_job)
@@ -222,8 +309,9 @@ def list_client_offers(owner):
 		return upwork_wrapper.list_client_offers(client.offers.list_client_offers)
 
 
-def send_client_offer(title,hourly,budget,message_to_contractor,owner,contractor_name,context,milestones):
-		sys.stderr = DevNull()
+def send_client_offer(title,hourly,budget,message_to_contractor,owner,contractor_name,context,contracter_username,milestones):
+# #
+		#sys.stderr = DevNull()
 		client.offers.send_client_offer(title,hourly,budget,message_to_contractor,owner,contractor_name,context,milestones)
 		print "Offer successfully sent!"
 		return upwork_wrapper.send_client_offer(client.offers.send_client_offer)
