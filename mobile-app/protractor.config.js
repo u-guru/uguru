@@ -51,12 +51,11 @@ exports.config = {
         rootElement: "[ng-app]" ,
        // rootElement: 'uguru' ,
         jasmineNodeOpts: {
-                  showColors: true,
-                  defaultTimeoutInterval: 400000,
-                  isVerbose: true,
-                  silent: true
-                  // ,
-                  //    print: function() {}
+                          showColors: true,
+                          defaultTimeoutInterval: 400000,
+                          isVerbose: true,
+                          silent: true,
+                          print: function() {}
 
                           },
         allScriptsTimeout: 400000,

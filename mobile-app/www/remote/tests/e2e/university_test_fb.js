@@ -1,4 +1,3 @@
-var  deferred = protractor.promise.defer();
 describe('Account Unit Test Facebook', function ()
 {
 	var firstime = true;
@@ -87,52 +86,77 @@ describe('Account Unit Test Facebook', function ()
 	// 			});
  //   			});
 	// });	
-		describe("Major",function()
-		{
-			var totalValue;
-			var listCount;
-			it("Add Major",function()
-			{
-				protractor.get.doneButton.click();
-				element.all(by.repeater('b in buttons')).then(function (items) {
-		         items[2].click();
-		    	 });
-				element(by.id("major-input")).sendKeys("a");
-				element.all(by.repeater('major in matchingMajors')).then(function (items) {
-		         	items[0].click();
-		    	 });
-			});
-			it("Add More Major",function()
-			{
-				element(by.id("major-input")).sendKeys("a");
-				element.all(by.repeater('major in matchingMajors')).then(function (items) {
-		         	items[0].click();
-		    	 });
-			});
-			 it("Delete Majors",function()
-			{
-				 element.all(by.repeater('user_major in user.majors')).then(function (major) {
+		// describe("Major",function()
+		// {
+		// 	var totalValue;
+		// 	var listCount;
+		// 	it("Add Major",function()
+		// 	{
+		// 		protractor.get.doneButton.click();
+		// 		element.all(by.repeater('b in buttons')).then(function (items) {
+		//          items[2].click();
+		//     	 });
+		// 		element(by.id("major-input")).sendKeys("a");
+		// 		element.all(by.repeater('major in matchingMajors')).then(function (items) {
+		//          	items[0].click();
+		//     	 });
+		// 	});
+		// 	it("Add More Major",function()
+		// 	{
+		// 		element(by.id("major-input")).sendKeys("a");
+		// 		element.all(by.repeater('major in matchingMajors')).then(function (items) {
+		//          	items[0].click();
+		//     	 });
+		// 	});
+		// 	 it("Delete Majors",function()
+		// 	{
+		// 		 element.all(by.repeater('user_major in user.majors')).then(function (major) {
 		                
-		                 browser.actions().mouseDown(major[0]).perform();
-		                 browser.sleep(2000);             
+		//                  browser.actions().mouseDown(major[0]).perform();
+		//                  browser.sleep(2000);             
 
-		         });
-			});
-			 it("Save buttons",function()
-			 {
-			 	protractor.get.backButton.click();
+		//          });
+		// 	});
+		// 	 it("Save buttons",function()
+		// 	 {
+		// 	 	protractor.get.doneButton.click();
 
 
-			 });
-			  it("back buttons",function()
-			 {
-				protractor.get.doneButton.click();
-				element.all(by.repeater('b in buttons')).then(function (items) {
-		         items[2].click();
-		    	 });
-				protractor.get.doneButton.click();
+		// 	 });
+		// 	  it("back buttons",function()
+		// 	 {
+		// 		protractor.get.doneButton.click();
+		// 		element.all(by.repeater('b in buttons')).then(function (items) {
+		//          items[2].click();
+		//     	 });
+		// 		protractor.get.doneButton.click();
 
-			 });
+		// 	 });
+		// });
+
+		describe("Course",function()
+		{
+			var counts;
+			it("delete Course",function()
+				{
+					protractor.get.editCourses.click().then(function()
+					{	
+						element.all(by.repeater('course in user.student_courses')).count().then(function(count) {
+							 counts = count;
+							 console.log("Counts "+ count);
+						});
+						var yourOffset = { x: -100, y: 0 };
+
+						element.all(by.repeater('course in user.student_courses')).then(function (items) {
+					         // browser.actions().mouseMove(items[0], yourOffset).mouseDown().mouseMove({ x: -200, y: 0 }).perform();
+					       		//items[0].dragAndDrop(-100, 0);
+					       		
+					       	browser.actions().dragAndDrop(items[0], {x: 200, y: 20}).perform();
+					    });
+						browser.sleep(10000);
+
+					});
+				});
+			
 		});
-
 });

@@ -41,6 +41,8 @@ var roleSelect = element(by.id('role-select'));
 var viaEmail= element(by.id('E2E_Email'));
 var logoff = element(by.id('E2E-logoff'));
 var usrProfile = element(by.id('E2E-profile'));
+//Course
+var editCourses = element(by.css('[ng-click="goToEditCourses()"]'));
 
 //Setting
 var editName = element(by.id('E2E-editName'));
@@ -86,7 +88,8 @@ exports.globals =
         newPassword : newPassword,
         oldPassword : oldPassword,
         majorInput : majorInput,
-        backButton :backButton
+        backButton :backButton,
+        editCourses : editCourses
     };
 exports.run =
 {
