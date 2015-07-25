@@ -21,7 +21,6 @@ var switchLoginMode = element(by.id('E2E_SwitchLog'));
 var doneButton = element(by.id('done-button'));
 
 var describeButton = element(by.id("E2E-describe"));
-var describeButton = element(by.id("E2E-describe"));
 
 var tagButton = element(by.id("E2E-tag"));
 
@@ -52,7 +51,14 @@ var newPassword = element(by.id('E2E-newPassword'));
 var majorInput = element(by.id('major-input'));
 var password = element(by.id('password-input'));
 var backButton = element(by.css('[ng-click="backToStudentEditProfile()"]'));
-
+//Switch
+var switchStudent = element(by.id('E2E-switchStudent'));
+var switchUguru = element(by.id('E2E-switchUguru'));
+var homebutton = element(by.id('home-button'));
+var questionButton = element(by.id('courses-button'));
+var tasksButton = element(by.id('tasks-button'));
+var profileButton = element(by.id('profile-tab-button'));
+var closeBar = element(by.id('E2E-closeBar'));
 
 exports.globals =
     {
@@ -89,7 +95,13 @@ exports.globals =
         oldPassword : oldPassword,
         majorInput : majorInput,
         backButton :backButton,
-        editCourses : editCourses
+        editCourses : editCourses,
+        switchStudent :switchStudent,
+        switchUguru : switchUguru,
+        homebutton :homebutton,
+        questionButton : questionButton,
+        tasksButton : tasksButton,
+        profileButton : profileButton
     };
 exports.run =
 {
@@ -128,7 +140,9 @@ exports.run =
     connectFB:function(id, pw)
     {
     	//expect(connectFB.isEnabled()).toBe(true);
-        connectFB.click();
+        // connectFB.click();
+        element.all(by.css("[ng-click=\"connectWithFacebook()\"]")).first().click();
+
         //Switch Screen
         browser.getAllWindowHandles().then(function (handles) {
             // switch to the popup

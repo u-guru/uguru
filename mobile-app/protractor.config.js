@@ -29,7 +29,8 @@ exports.config = {
                 'www/remote/tests/e2e/sign_test.js',
                 'www/remote/tests/e2e/setting_test_fb.js',
                 'www/remote/tests/e2e/setting_test_email.js',
-                'www/remote/tests/e2e/university_test_fb.js'
+                'www/remote/tests/e2e/university_test_fb.js',
+                'www/remote/tests/e2e/uguru_test_fb.js'
 
 
         ],
@@ -44,6 +45,8 @@ exports.config = {
           se:'www/remote/tests/e2e/setting_test_email.js',
           //school
           uf:'www/remote/tests/e2e/university_test_fb.js',
+          //uguru
+          ugf :'www/remote/tests/e2e/uguru_test_fb.js'
 
         },
 
@@ -58,6 +61,7 @@ exports.config = {
                           print: function() {}
 
                           },
+        getPageTimeout: 10000,
         allScriptsTimeout: 400000,
         onPrepare: function () {
             var SpecReporter = require('jasmine-spec-reporter');
