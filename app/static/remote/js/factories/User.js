@@ -401,6 +401,17 @@ angular.module('uguru.user', [])
         $scope.user.active_tasks = user.active_tasks;
         $scope.user.guru_skills = user.guru_skills;
 
+        $scope.user.email_friendly = user.email_friendly;
+        $scope.user.facetime_friendly = user.facetime_friendly;
+        $scope.user.guru_latest_time = user.guru_latest_time;
+        $scope.user.hangouts_friendly = user.hangouts_friendly;
+        $scope.user.messenger_friendly = user.messenger_friendly;
+        $scope.user.phone_friendly = user.phone_friendly;
+        $scope.user.skype_friendly = user.skype_friendly;
+        $scope.user.text_friendly = user.text_friendly;
+        $scope.user.guru_experiences = user.guru_experiences;
+        $scope.user.guru_languages = user.guru_languages;
+
         $scope.user.text_notifications = user.text_notifications;
         $scope.user.email_notifications = user.email_notifications;
         $scope.user.email = user.email;
@@ -445,6 +456,7 @@ angular.module('uguru.user', [])
         $scope.user.skills = user.skills;
         $scope.user.professions = user.professions;
         $scope.user.support_tickets = user.support_tickets;
+        $scope.user.max_hourly = parseInt(user.max_hourly);
 
         //custom logic client side only
         $scope.user.show_become_guru =  !($scope.user.guru_courses.length || $scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);
@@ -626,6 +638,11 @@ angular.module('uguru.user', [])
                         'remove_student_course': true
                   }
               }
+              if (arg === 'guru_introduction') {
+                return {
+                    'guru_introduction': obj
+                }
+              }
               if (arg === 'phone_number') {
                   return {
                         phone_number: obj,
@@ -703,6 +720,41 @@ angular.module('uguru.user', [])
                 }
               }
 
+              if (arg === 'guru_latest_time') {
+                return {
+                    'guru_latest_time': obj
+                }
+              }
+
+              if (arg === 'add_guru_language') {
+                return {
+                    'add_guru_language': obj
+                }
+              }
+
+              if (arg === 'remove_guru_language') {
+                return {
+                    'remove_guru_language': obj
+                }
+              }
+
+              if (arg === 'add_guru_experience') {
+                return {
+                    'add_guru_experience': obj
+                }
+              }
+
+              if (arg === 'update_guru_experience') {
+                return {
+                    'update_guru_experience': obj
+                }
+              }
+
+              if (arg === 'remove_guru_experience') {
+                return {
+                    'remove_guru_experience': obj
+                }
+              }
 
 
               if (arg === 'email_notifications') {
@@ -750,6 +802,54 @@ angular.module('uguru.user', [])
 
               if (arg === 'devices') {
                 return obj;
+              }
+
+              if (arg === 'max_hourly') {
+                return {
+                    'max_hourly': obj
+                }
+              }
+
+              if (arg === 'skype_friendly') {
+                return {
+                    'skype_friendly': obj
+                }
+              }
+
+              if (arg === 'facetime_friendly') {
+                return {
+                    'facetime_friendly': obj
+                }
+              }
+
+              if (arg === 'hangouts_friendly') {
+                return {
+                    'hangouts_friendly': obj
+                }
+              }
+
+              if (arg === 'text_friendly') {
+                return {
+                    'text_friendly': obj
+                }
+              }
+
+              if (arg === 'messenger_friendly') {
+                return {
+                    'messenger_friendly': obj
+                }
+              }
+
+              if (arg === 'phone_friendly') {
+                return {
+                    'phone_friendly': obj
+                }
+              }
+
+              if (arg === 'email_friendly') {
+                return {
+                    'email_friendly': obj
+                }
               }
         },
         getUserFromServer: function($scope, callback, $state) {

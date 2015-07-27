@@ -98,6 +98,10 @@ angular.module('uguru.guru.controllers')
       $state.go('^.guru-remote');
     }
 
+    $scope.transitionToGuruLanguages = function() {
+      $state.go('^.guru-languages');
+    }
+
     $scope.transitionToGuruCourses = function() {
       $state.go('^.guru-courses-container');
     }

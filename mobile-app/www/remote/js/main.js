@@ -1,6 +1,6 @@
 // Uguru upp
 
-var LOCAL = true; //local to the 8100 codebasebirbirs
+var LOCAL = false; //local to the 8100 codebasebirbirs
 
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 var REST_URL = 'http://uguru-rest.herokuapp.com'
@@ -201,6 +201,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
     url:'/guru-remote',
     templateUrl: BASE + 'templates/guru.remote.html',
     controller: 'GuruRemoteController'
+  }).
+  state('root.guru-languages', {
+    url:'/guru-languages',
+    templateUrl: BASE + 'templates/guru.languages.container.html',
+    controller: 'LanguagesController'
   }).
   state('root.payments', {
         url: '/payments:cardObj',

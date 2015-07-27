@@ -1,0 +1,73 @@
+ <ion-view hide-nav-bar='true' class='dark-bg'>
+   <div class="bar bar-header dark-bg-header mini-header uppercase relative" style='width:auto;'>
+      <div class="buttons">
+      <button class="button button-clear button-header-link cancel-button button-left" ng-click='backToEditProfile()'>Back</button>
+      </div>
+      <h1 class="title bold">My Languages</h1>
+      <div class='buttons'>
+        <button style='padding-top:0.1em;'class="button button-clear button-header-link submit-button button-right " id='done-button' ng-click='backToEditProfile(true)'>Save</button>
+      </div>
+  </div>
+  <ion-content class='dark-bg has-header' scroll='false'>
+      <div class='pure-g'>
+        <div class="list pure-u-1">
+          <label class="item item-input bg-transparent university-label no-margin no-border no-box-shadow view-2">
+                  <i class='icon ion-search onboarding-search-icon' ng-hide="search_text.length > 0"></i>
+                      <input id='guru-course-input' type="text" class='ng-class:{"align-left-start":search_text.length > 0}'
+                        fast-matcher
+                        fast-matcher-source="static.languages"
+                        fast-matcher-output="matchingLanguages"
+                        fast-matcher-properties="name"
+                        fast-matcher-any-word="true"
+                        fast-matcher-limit="10"
+                        fast-matcher-preserve-order="true"
+                        fast-matcher-case-insensitive="true"
+                        placeholder="Search All Languages"
+                        ng-model = "search_text"
+                      />
+                  </span>
+                </label>
+              </div>
+          </div>
+
+            <ion-list ng-show='search_text.length > 0'>
+              <ion-scroll>
+                <ion-item class='item-button-right request-form-item course-item major-item' ng-repeat='language in matchingLanguages' ng-click='addSelectedGuruCourse(language, language_search_text)'>
+                  <p class='semibold'> {{language.name}} </p>
+                </ion-item>
+              </ion-scroll>
+            </ion-list>
+
+            <div class='pure-g-c flex-column flex-space-between' ng-show='!search_text || search_text.length === 0'>
+
+              <div class='flex-item-c center j-end' ng-show='user.guru_courses.length > 0'>
+                <div class='pure-g'>
+
+                  <div class='pure-u-1'>
+                    <p class='uppercase opacity-3-4 micro-text bold sans-bold white-text padding-half'> <strong> My Languages </strong> <br>
+                    </p>
+                    <div class='micro-text regular white-text' style='opacity:1'>(Double tap to Remove)</div>
+                  </div>
+                </div>
+
+                <div class='pure-g'>
+
+                  <div class='pure-u-1'>
+                    <a class='course-tag major-tag white-bg orange' on-double-tap="removeGuruLanguageAndUpdate(guru_course, $index)" style='font-size:80%;' ng-repeat="language in user.guru_languages track by $index">{{language.name}} &nbsp; &nbsp; <i class='icon ion-checkmark'></i></a>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class='flex-item-c center'>
+              </div>
+
+
+              <div class='flex-item-c j-start'>
+
+              </div>
+            </div>
+        </ion-content>
+
+
+</ion-view>

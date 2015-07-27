@@ -458,6 +458,30 @@ if arg == 'init_professions':
 
     print len(professions),  'all skills successfully added'
 
+if arg == 'init_languages':
+    from datetime import datetime
+    languages_arr = json.load(open('scripts/languages/languages.json'))
+    for lang_str in languages_arr:
+        language = Language()
+        language.name = lang_str
+        language.time_created = datetime.now()
+        language.time_updated = datetime.now()
+        db_session.add(language)
+        db_session.commit()
+
+    print len(Language.query.all()), 'created'
+
+if arg == 'save_languages':
+    languages_arr = []
+    for language in Language.query.all():
+        languages_arr.append({'name': language.name, 'id': language.id})
+
+    with open('scripts/languages/languages_id.json', 'wb') as fp:
+        json.dump(languages_arr, fp)
+    print len(languages_arr), 'saved'
+
+
+
 if arg =='migrate':
 
     from app.models import *

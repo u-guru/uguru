@@ -295,13 +295,44 @@ class UserOneView(restful.Resource):
                 user.phone_number = request.json.get('phone_number')
 
 
-
         if request.json.get('profile_info'):
             profile_info_dict = request.json.get('profile_info')
             email = profile_info_dict.get('email')
             name = profile_info_dict.get('first_name').title() + ' ' + profile_info_dict.get('last_name').title()
             user.email = email
             user.name = name
+            db_session.commit()
+
+        if request.json.get('add_guru_experience'):
+            guru_experience_json = request.json.get('add_guru_experience')
+            experience_name = guru_experience_json.get('name')
+            experience_years = guru_experience_json.get('years')
+
+            guru_experience_names = []
+            if user.guru_experiences:
+                guru_experience_names = [experience.name for experience in user.guru_experiences]
+
+            if experience_name not in guru_experience_names:
+                experience = Experience()
+                experience.user_id = user.id
+                experience.university_id = user.university_id
+                experience.time_created = datetime.now()
+                experience.name = experience_name
+                experience.years = experience_years
+                experience.last_updated = datetime.now()
+                experience.time_created = datetime.now()
+                db_session.add(experience)
+                db_session.commit()
+
+        if request.json.get('update_guru_experience') and request.json.get('update_guru_experience').get('id'):
+            guru_experience_json = request.json.get('update_guru_experience')
+            guru_experience_id = guru_experience_json.get('id')
+
+            experience = Experience.query.get(guru_experience_id)
+            experience.name = guru_experience_json.get('name')
+            experience.years = guru_experience_json.get('years')
+            experience.last_updated = datetime.now()
+
             db_session.commit()
 
         if request.json.get('change_password'):
@@ -333,6 +364,11 @@ class UserOneView(restful.Resource):
         if 'current_hourly' in request.json:
             print 'woohoo current hourly'
             user.current_hourly = int(request.json.get('current_hourly'))
+        print request.json
+        if 'max_hourly' in request.json:
+
+            user.max_hourly = request.json.get('max_hourly')
+            db_session.commit()
 
         if 'uber_friendly' in request.json:
             user.uber_friendly = request.json.get('uber_friendly')
@@ -362,6 +398,30 @@ class UserOneView(restful.Resource):
             user.text_notifications = request.json.get('text_notifications')
             print 'coming soon!'
 
+        if 'guru_latest_time' in request.json:
+            user.guru_latest_time = request.json.get('guru_latest_time')
+
+        if 'email_friendly' in request.json:
+            user.email_friendly = request.json.get('email_friendly')
+
+        if 'hangouts_friendly' in request.json:
+            user.hangouts_friendly = request.json.get('hangouts_friendly')
+
+        if 'phone_friendly' in request.json:
+            user.phone_friendly = request.json.get('phone_friendly')
+
+        if 'facetime_friendly' in request.json:
+            user.facetime_friendly = request.json.get('facetime_friendly')
+
+        if 'messenger_friendly' in request.json:
+            user.messenger_friendly = request.json.get('messenger_friendly')
+
+        if 'text_friendly' in request.json:
+            user.text_friendly = request.json.get('text_friendly')
+
+        if 'skype_friendly' in request.json:
+            user.skype_friendly = request.json.get('skype_friendly')
+
         if 'profile_url' in request.json:
             user.profile_url = request.json.get('profile_url')
 
@@ -388,9 +448,24 @@ class UserOneView(restful.Resource):
                 user.student_courses.append(c)
                 db_session.commit()
 
+        if request.json.get('guru_introduction'):
+            user.guru_introduction = request.json.get('guru_introduction')
+
+
         if request.json.get('add_guru_intro'):
             user.guru_introduction = request.json.get('introduction')
             print user.guru_introduction
+
+        if request.json.get('add_guru_language'):
+            language_json = request.json.get('add_guru_language')
+            language_id = language_json.get('id')
+            if not language_id:
+                abort(404)
+            else:
+                language_obj = Language.query.get(int(language_id))
+                user.guru_languages.append(language_obj)
+                db_session.commit()
+
 
         if request.json.get('add_user_major'):
             major = request.json.get('major')
@@ -409,6 +484,7 @@ class UserOneView(restful.Resource):
             print request.json.get('add_guru_skill')
             skill_json = request.json.get('skill')
             skill_id = skill_json.get('id')
+
             if skill_id:
                 skill = Skill.query.get(int(skill_id))
                 if skill:
@@ -416,8 +492,6 @@ class UserOneView(restful.Resource):
                     user.guru_skills.append(skill)
                     db_session.commit()
                     print 'length of user skills', len(user.guru_skills)
-
-
 
 
         if request.json.get('add_guru_course'):
@@ -474,6 +548,15 @@ class UserOneView(restful.Resource):
             m = Major.query.get(int(major_id))
             if m in user.majors:
                 user.majors.remove(m)
+            db_session.commit()
+
+        if request.json.get('remove_language'):
+            language_json = request.json.get('remove_language')
+            language_id = language_json.get('id')
+            language = Language.query.get(int(language_id))
+
+            if language in user.guru_languages:
+                user.guru_languages.remove(language)
             db_session.commit()
 
         #
