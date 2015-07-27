@@ -524,22 +524,33 @@ class UserOneView(restful.Resource):
             user.current_device_id = request.json.get('current_device_id')
 
 
+        if request.json.get('remove_guru_language'):
+            language_json = request.json.get('remove_guru_language')
+            language_id = language_json.get('id')
+            language = Language.query.get(language_id)
+            print "NOT WORKING YET"
+            # if language in user.guru_languages:
+            #     user.guru_languages.remove(language)
+            #     db_session.commit()
+
+
         if request.json.get('remove_guru_course'):
             course = request.json.get('course')
             course_id = course.get('id')
             print course, course_id
             c = Course.query.get(int(course_id))
-            if user in c.gurus:
-                # c.gurus.remove(user)
-                from app.models import guru_courses_table
-                db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == user.id and guru_courses_table.c.course_id == c.id))
-                # user.guru_courses.remove(c)
-            # for user_course in user.guru_courses:
-            #     if user_course.id == c.id:
-            #         user_course.student_id = None
-            #         db_session.commit()
-            #         print c.short_name, 'removed'
-            db_session.commit()
+            print "not working yet!"
+            # if user in c.gurus:
+            #     # c.gurus.remove(user)
+            #     from app.models import guru_courses_table
+            #     db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == user.id and guru_courses_table.c.course_id == c.id))
+            #     # user.guru_courses.remove(c)
+            # # for user_course in user.guru_courses:
+            # #     if user_course.id == c.id:
+            # #         user_course.student_id = None
+            # #         db_session.commit()
+            # #         print c.short_name, 'removed'
+            # db_session.commit()
 
         if request.json.get('remove_major'):
             major = request.json.get('major')

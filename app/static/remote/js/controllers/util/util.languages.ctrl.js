@@ -41,15 +41,9 @@ angular.module('uguru.util.controllers')
     }
 
 
-    $scope.focusLanguageInput = function () {
-      var input = document.getElementById('guru-course-input');
-      if (input) {
-        input.focus();
-      }
-    }
-
     $scope.removeGuruLanguageAndUpdate = function(language, index) {
-
+      alert('coming soon!');
+      return
       if ($state.current.name === 'root.become-guru' && !confirm('Remove ' + language.name + '?')) {
         return;
       }
@@ -59,7 +53,7 @@ angular.module('uguru.util.controllers')
 
       var confirmCallback = function() {
         $scope.loader.hide();
-        $scope.success.show(0, 1000, course.short_name + ' successfully removed');
+        $scope.success.show(0, 1000, language.short_name + ' successfully removed');
       }
       $scope.loader.show();
 
@@ -72,13 +66,13 @@ angular.module('uguru.util.controllers')
       //set the variable to this
       $scope.static.languages.splice($index, 1);
 
-      $scope.search_text = '';
+      $scope.search_text = null;
 
       //set the course text to what it should be
-      document.getElementById('guru-course-input').value = '';
-      $scope.course_search_text = language.name
+      document.getElementById('guru-language-input').value = '';
+      $scope.language_search_text = language.name;
 
-      $scope.user.guru_languages.push(course);
+      $scope.user.guru_languages.push(language);
 
       if ($scope.user.id) {
         //adds to database for user
@@ -90,8 +84,17 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.$on('$ionicView.enter', function() {
 
 
+        $timeout(function() {
+
+          $scope.languageInput = document.getElementById('guru-language-input');
+
+        });
+
+
+    });
 
 
   }

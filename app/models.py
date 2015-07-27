@@ -136,7 +136,6 @@ class User(Base):
     summer_15 = Column(Boolean)
     outside_university = Column(Boolean)
 
-
     #Student fields
     student_introduction = Column(String)
     student_courses = relationship("Course",

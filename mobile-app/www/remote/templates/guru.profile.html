@@ -215,8 +215,10 @@
                     </div>
                     <div class="card-body">
                       <h2 class='opacity-1-2' style='font-size:150%'>
-                        <div>Spanish </div>
-                        <div> English </div>
+                        <div ng-repeat='language in user.guru_languages'>{{language.name}}</div>
+                        <div class='uppercase semibold no-margin blue hide ng-class:{"show":user.guru_languages.length === 0}'>
+                          + Add a language
+                        </div>
                       </h2>
                     </div>
                 </div>
