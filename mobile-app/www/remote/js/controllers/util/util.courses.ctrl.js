@@ -36,6 +36,34 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    $scope.backToStudentEditProfile = function(is_saved) {
+
+
+      if (is_saved) {
+        $scope.success.show(0, 1500);
+      } else {
+        $scope.loader.show();
+      }
+
+      if ($scope.root.vars.guru_mode) {
+
+        $state.go('^.guru-profile');
+
+      } else {
+
+        $timeout(function() {
+          $ionicSideMenuDelegate.toggleRight();
+        }, 500);
+
+      }
+
+
+      $timeout(function() {
+        $scope.loader.hide();
+
+      }, 500);
+    }
+
     $scope.toggleEditGuru = function() {
       $scope.editCourseMode = !$scope.editCourseMode;
 
