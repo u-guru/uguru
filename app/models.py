@@ -107,6 +107,15 @@ class User(Base):
     profile_url = Column(String, default="https://graph.facebook.com/10152573868267292/picture?width=100&height=100")
 
 
+    #credibility confirmation
+    school_email = Column(String)
+    school_email_token = Column(String)
+    school_email_confirmed = Column(Boolean, default = False)
+
+
+
+
+
     #admin fields
     is_admin = Column(Boolean)
     is_support_admin = Column(Boolean)
@@ -211,9 +220,13 @@ class User(Base):
     email_notifications = Column(Boolean, default = True)
     text_notifications = Column(Boolean, default = False)
 
+    debit_card_confirmed = Column(Boolean, default = False)
+    tutoring_platforms_description = Column(String)
+    tutoring_platforms_verified_by_admin = Column(Boolean, default=False)
 
     phone_number = Column(String)
-    phone_number_confirmed = Column(Boolean)
+    phone_number_confirmed = Column(Boolean, default = False)
+    phone_number_token = Column(String)
     lower_pay_rate = Column(Float)
     upper_pay_rate = Column(Float)
 
@@ -244,6 +257,9 @@ class User(Base):
 
     #referral stuff
     referral_code = Column(String)
+
+    transcript_file = relationship("File", uselist=False)
+    transcript_verified_by_admin = Column(Boolean, default = False)
 
     #referred_by
     referred_by_id = Column(Integer, ForeignKey('user.id'))
