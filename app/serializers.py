@@ -267,6 +267,7 @@ UserSerializer = {
     'profile_url': fields.String,
     'is_a_guru': fields.Boolean,
     'files': fields.List(fields.Nested(file_fields)),
+    'transcript_file': fields.Nested(file_fields),
     'is_admin': fields.Boolean,
     'is_support_admin': fields.Boolean,
     'guru_mode': fields.Boolean,

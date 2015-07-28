@@ -18,7 +18,7 @@ angular.module('uguru.root.services')
     function($localstorage, $timeout, $cordovaCamera, $state) {
 
         deviceCamera = {
-                    takePicture: function($scope, index, has_callback) {
+                    takePicture: function($scope, index, has_callback, is_transcript) {
 
                       // if ($scope.platform.mobile) {
                         var source_type = 1;
@@ -60,6 +60,10 @@ angular.module('uguru.root.services')
                           var file_name = new Date().getTime().toString();
                           formData.append('filename', file_name);
 
+                          if (is_transcript) {
+                            formData.append('transcript_url', is_transcript);
+                          }
+                          $scope.root.vars.transcript_url_changed = true;
                           $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
 
                         }, function(err) {

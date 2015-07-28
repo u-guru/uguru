@@ -20,7 +20,7 @@ angular.module('uguru.guru.controllers')
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
   $ionicActionSheet, $cordovaFacebook) {
 
-    $scope.profile = {edit_mode:false, showCredibility:true};
+    $scope.profile = {edit_mode:false, showCredibility:false};
 
 
     $scope.initHourlyMax = function() {
@@ -178,7 +178,6 @@ angular.module('uguru.guru.controllers')
      });
     }
 
-
     $scope.showActionSheetProfilePhoto = function() {
 
       //desktop only
@@ -225,7 +224,7 @@ angular.module('uguru.guru.controllers')
 
 
       if ($scope.platform.mobile) {
-        Camera.takePicture($scope, index, true);
+        Camera.takePicture($scope, index, true, $scope.user.id);
       } else {
         var element = document.getElementById('file-input-guru-add-transcript');
         element.click();
@@ -285,7 +284,7 @@ angular.module('uguru.guru.controllers')
         var formData = new FormData();
 
         formData.append('file', photofile);
-        formData.append('profile_url', $scope.user.id);
+        formData.append('transcript_url', $scope.user.id);
 
         formData.append('filename', name);
 
@@ -296,7 +295,7 @@ angular.module('uguru.guru.controllers')
           $scope.loader.hide();
           $scope.success.show(0, 1500, 'Saved!');
         }
-
+        $scope.root.vars.transcript_url_changed = true;
         $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
     };
 

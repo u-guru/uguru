@@ -1271,6 +1271,14 @@ class FileView(restful.Resource):
                 print user.name,'saved', file_obj.url
                 db_session.commit()
 
+            if request.values.get('transcript_url'):
+                print request.values.get('transcript_url')
+                user = User.query.get(int(request.values.get('transcript_url')))
+
+                user.transcript_file = file_obj
+                print user.name,'saved', file_obj.url
+                db_session.commit()
+
             return file_obj, 200
 
 

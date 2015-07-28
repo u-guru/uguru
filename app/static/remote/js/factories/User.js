@@ -400,6 +400,8 @@ angular.module('uguru.user', [])
         $scope.user.active_questions = user.active_questions;
         $scope.user.active_tasks = user.active_tasks;
         $scope.user.guru_skills = user.guru_skills;
+        $scope.user.transcript_file = user.transcript_file;
+        $scope.user.transcript_verified_by_admin = user.transcript_verified_by_admin;
 
         $scope.user.email_friendly = user.email_friendly;
         $scope.user.facetime_friendly = user.facetime_friendly;
@@ -1049,6 +1051,11 @@ angular.module('uguru.user', [])
 
                                 $scope.proposal.files.push(file.plain());
 
+                            }
+                            else if ($scope.root.vars.transcript_url_changed) {
+                                $scope.root.vars.transcript_url_changed = false;
+                                $scope.user.transcript_file = file.plain();
+                                $localstorage.setObject('user', $scope.user);
                             }
                             else {
                                 $scope.user.profile_url = file.plain().url;

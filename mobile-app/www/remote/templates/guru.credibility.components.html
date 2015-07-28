@@ -14,14 +14,14 @@
          </label>
          <i class="icon ion-plus hide blue ng-class:{'show':!user.fb_id}"> </i>
       </a>
-      <a class="item item-checkbox item-avatar-left item-icon-right" ng-click='!user.transcript_file && showActionSheetTranscriptPhoto()'>
+      <a class="item item-checkbox item-avatar-left item-icon-right" ng-click='!user.transcript_file.url && showActionSheetTranscriptPhoto()'>
          <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/credibility/transcript.svg'/>
           <p class='font-18'> Upload your transcript</p>
           <p class='micro-text regular opacity-3-5'>Can increase hourly pay + ranking</p>
-         <label class="checkbox hide ng-class:{'show':user.guru_transcript_confirmed}">
+         <label class="checkbox hide ng-class:{'show':user.transcript_file.url}">
            <input type="checkbox" checked>
          </label>
-         <i class="icon ion-plus hide blue ng-class:{'show':!user.guru_transcript_confirmed}"> </i>
+         <i class="icon ion-plus hide blue ng-class:{'show':!user.transcript_file.url}"> </i>
       </a>
       <li class="item item-checkbox item-avatar-left item-icon-right">
          <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/credibility/network.svg'/>

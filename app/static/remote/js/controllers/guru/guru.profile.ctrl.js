@@ -20,7 +20,7 @@ angular.module('uguru.guru.controllers')
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
   $ionicActionSheet, $cordovaFacebook) {
 
-    $scope.profile = {edit_mode:false, showCredibility:true};
+    $scope.profile = {edit_mode:false, showCredibility:false};
 
 
     $scope.initHourlyMax = function() {
@@ -147,13 +147,11 @@ angular.module('uguru.guru.controllers')
       $scope.profile.edit_mode = !$scope.profile.edit_mode
     }
 
-
-    $scope.showActionSheetProfilePhoto = function() {
+    $scope.showActionSheetTranscriptPhoto = function() {
 
       //desktop only
       if (!$scope.platform.mobile) {
-          console.log('sup this is shown');
-          $scope.takePhoto(0);
+          $scope.takeTranscriptPhoto(0);
           return;
       }
 
@@ -171,7 +169,7 @@ angular.module('uguru.guru.controllers')
             $scope.closeAttachActionSheet();
         },
        buttonClicked: function(index) {
-          $scope.takePhoto(index);
+          $scope.takeTranscriptPhoto(index);
 
           $timeout(function() {
               $scope.closeAttachActionSheet();
@@ -180,7 +178,38 @@ angular.module('uguru.guru.controllers')
      });
     }
 
-    $scope.takePhoto = function(index) {
+    $scope.showActionSheetProfilePhoto = function() {
+
+      //desktop only
+      if (!$scope.platform.mobile) {
+          $scope.takeProfilePhoto(0);
+          return;
+      }
+
+      var options = [{ text: 'Choose from Library' }];
+      if ($scope.platform.mobile) {
+        options.push({text: 'Take a Photo'})
+      }
+
+
+     // Show the action sheet
+     $scope.closeAttachActionSheet = $ionicActionSheet.show({
+       buttons: options,
+       cancelText: 'Cancel',
+       cancel: function() {
+            $scope.closeAttachActionSheet();
+        },
+       buttonClicked: function(index) {
+          $scope.takeProfilePhoto(index);
+          $timeout(function() {
+              $scope.closeAttachActionSheet();
+          }, 500);
+       }
+     });
+    }
+
+
+    $scope.takeProfilePhoto = function(index) {
 
 
       if ($scope.platform.mobile) {
@@ -191,7 +220,18 @@ angular.module('uguru.guru.controllers')
       }
     }
 
-    $scope.file_changed = function(element) {
+    $scope.takeTranscriptPhoto = function(index) {
+
+
+      if ($scope.platform.mobile) {
+        Camera.takePicture($scope, index, true, $scope.user.id);
+      } else {
+        var element = document.getElementById('file-input-guru-add-transcript');
+        element.click();
+      }
+    }
+
+    $scope.file_changed_profile = function(element) {
         var photofile = element.files[0];
 
         var reader = new FileReader();
@@ -221,6 +261,41 @@ angular.module('uguru.guru.controllers')
           $scope.success.show(0, 1500, 'Saved!');
         }
 
+        $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
+    };
+
+    $scope.file_changed_transcript = function(element) {
+        var photofile = element.files[0];
+
+        var reader = new FileReader();
+
+
+        var image = document.getElementById('become-guru-profile');
+
+        reader.onload = function(e) {
+            if ($scope.user.transcript_file) {
+              $scope.user.transcript_file.url = e.target.result;
+            }
+        };
+
+        reader.readAsDataURL(photofile);
+
+
+        var formData = new FormData();
+
+        formData.append('file', photofile);
+        formData.append('transcript_url', $scope.user.id);
+
+        formData.append('filename', name);
+
+        $scope.file_index += 1;
+
+        $scope.loader.show();
+        callbackSuccess = function() {
+          $scope.loader.hide();
+          $scope.success.show(0, 1500, 'Saved!');
+        }
+        $scope.root.vars.transcript_url_changed = true;
         $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
     };
 

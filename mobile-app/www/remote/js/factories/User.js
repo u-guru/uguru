@@ -1052,6 +1052,11 @@ angular.module('uguru.user', [])
                                 $scope.proposal.files.push(file.plain());
 
                             }
+                            else if ($scope.root.vars.transcript_url_changed) {
+                                $scope.root.vars.transcript_url_changed = false;
+                                $scope.user.transcript_file = file.plain();
+                                $localstorage.setObject('user', $scope.user);
+                            }
                             else {
                                 $scope.user.profile_url = file.plain().url;
                                 $localstorage.setObject('user', $scope.user);
