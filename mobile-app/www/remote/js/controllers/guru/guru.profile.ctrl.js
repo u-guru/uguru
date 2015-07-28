@@ -333,7 +333,29 @@ angular.module('uguru.guru.controllers')
     };
 
 
+    $scope.showPopupEditPhoneNumber = function() {
+      $scope.data = {phone:$scope.user.phone_number, token:$scope.user.phone_number_token};
 
+      $scope.inputPopup = $ionicPopup.show({
+          template: '<input style="padding:2px 4px;" type="text" ng-model="data.name" autofocus>',
+          title: 'Change your try identity',
+          subTitle: 'Try not to troll too hard',
+          scope: $scope,
+          buttons: [
+            { text: 'Cancel' },
+            {
+              text: '<b>Save</b>',
+              type: 'button-positive',
+              onTap: function(e) {
+                $scope.inputPopup.close();
+                $scope.user.name = $scope.data.name;
+                $scope.user.updateAttr('name', $scope.user, $scope.user.name, null, $scope);
+                $scope.success.show(0, 1000, 'Saved!');
+              }
+            }
+          ]
+        });
+    }
 
     $scope.showPopupEditName = function() {
 

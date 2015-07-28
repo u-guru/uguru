@@ -13,6 +13,7 @@ if (LOCAL) {
 
   // BASE_URL = 'http://localhost:8100/';
   REST_URL = 'http://localhost:5000';
+  BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 
 } else {
   img_base = '/static/'
