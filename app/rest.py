@@ -480,8 +480,9 @@ class UserOneView(restful.Resource):
                 abort(404)
             else:
                 language_obj = Language.query.get(int(language_id))
-                user.guru_languages.append(language_obj)
-                db_session.commit()
+                if language_obj:
+                    user.guru_languages.append(language_obj)
+                    db_session.commit()
 
 
         if request.json.get('add_user_major'):
@@ -583,9 +584,9 @@ class UserOneView(restful.Resource):
             language_id = language_json.get('id')
             language = Language.query.get(int(language_id))
 
-            if language in user.guru_languages:
+            if language and language in user.guru_languages:
                 user.guru_languages.remove(language)
-            db_session.commit()
+                db_session.commit()
 
         #
         if request.json.get('submit_referral_code'):
