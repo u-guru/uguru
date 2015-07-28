@@ -1,7 +1,7 @@
 <ion-view hide-nav-bar='true' class='request' id='guru-home'>
 
   <ion-header-bar align-title="center" class='dark-bg-header item-icon-right'>
-      <h1 class="title">Tasks</h1>
+      <h1 class="title">GURU MODE</h1>
         <div class="buttons" ng-show='user.balance && user.balance > 0'>
           <a ng-click='goToCashOut()'>
             <i class='icon bold green font-1em'>
@@ -93,14 +93,14 @@
             </div>
             <div class='flex-item-c pure-g center j-start'>
                 <div class='pure-u-1 padding-half' style='padding-left:1em; padding-right:1em; margin-top:0.5em;'>
-                  <a href='#/ranking' style='min-height:3.3em; line-height:3.3em;' nav-direction='forward' class='button button-full light-blue-bg button-footer white-text uppercase no-margin'>Edit Profile</a>
+                  <a href='#/guru-profile' style='min-height:3.3em; line-height:3.3em;' nav-direction='swap' class='button button-full light-blue-bg button-footer white-text uppercase no-margin'>Edit Profile</a>
                 </div>
-                <div class='pure-u-1 item-icon-right' style='padding-left:1em; padding-right:1em;'>
+                <a class='pure-u-1 item-icon-right' style='padding-left:1em; padding-right:1em; outline:none; text-decoration:none;' nav-direction='forward' href='#/ranking'>
                   <p class='opacity-1-2 grey-text normal no-margin'>
                     See all incentives
                   </p>
 
-                </div>
+                </a>
             </div>
           </div>
         <!-- <ion-scroll>
@@ -345,18 +345,18 @@
   <!-- <a class="tab-item" id='guru-courses-button' ng-click='checkCourses()'>
     <img class='pure-img icon' src='{{img_base}}./img/request/guru_book_outline.svg'></i>
   </a> -->
-  <a class="tab-item" href='#/guru-questions' nav-direction='swap' id='courses-button' ng-show='user.active_questions'>
+  <!-- <a class="tab-item" href='#/guru-questions' nav-direction='swap' id='courses-button' ng-show='user.active_questions'>
     <img class='pure-img icon' src='{{img_base}}./img/icons/question.svg'></i>
   </a>
   <a class="tab-item" id='tasks-button' nav-direction='swap' href='#/guru-tasks'>
     <img class='pure-img icon' src='{{img_base}}./img/icons/task.svg'></i>
-  </a>
+  </a> -->
   <a class="tab-item" id='profile-tab-button' nav-direction='swap' href='#/guru-profile'>
     <i class='icon ion-person'> </i>
   </a>
-  <!-- <a class="tab-item" id='profile-tab-button' nav-direction='swap' href='#/guru-conversations'>
-    <i class='icon ion-email'> </i>
-  </a> -->
+  <a class="tab-item" id='guru-courses-button' nav-direction='swap' href='#/guru-conversations'>
+    <img class='pure-img icon' src='{{img_base}}./img/request/guru_book_outline.svg'></i>
+  </a>
   <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
     <img class='pure-img icon' src='{{img_base}}./img/settings-tab-guru.svg'/>
   </a>

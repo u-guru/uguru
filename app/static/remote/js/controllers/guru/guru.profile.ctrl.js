@@ -19,7 +19,7 @@ angular.module('uguru.guru.controllers')
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
   $ionicActionSheet) {
 
-    $scope.profile = {edit_mode:false, showCredibility:false};
+    $scope.profile = {edit_mode:false, showCredibility:true};
 
 
     $scope.initHourlyMax = function() {

@@ -1,0 +1,60 @@
+
+
+<div class='pure-g-c flex-column flex-space-between credibility'>
+  <div class='flex-item-c pure-g j-start'>
+    <div class='pure-u-1 full-width'>
+      <ul class="list">
+
+      <li class="item item-checkbox item-avatar-left item-icon-right">
+         <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/credibility/facebook.svg'/>
+          <p class='font-18'> Connect with Facebook </p>
+          <p class='micro-text regular opacity-3-5'>Verify that you are human</p>
+         <label class="checkbox hide ng-class:{'show':user.fb_id_confirmed}">
+           <input type="checkbox" ng-model='user.fb_id_confirmed' ng-change="skypeFriendlyChanged()">
+         </label>
+         <i class="icon ion-plus hide blue ng-class:{'show':!user.fb_id_confirmed}"> </i>
+      </li>
+      <li class="item item-checkbox item-avatar-left item-icon-right">
+         <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/credibility/transcript.svg'/>
+          <p class='font-18'> Upload your transcript</p>
+          <p class='micro-text regular opacity-3-5'>Can increase hourly pay + ranking</p>
+         <label class="checkbox hide ng-class:{'show':user.guru_transcript_confirmed}">
+           <input type="checkbox" ng-model='user.guru_transcript_confirmed'>
+         </label>
+         <i class="icon ion-plus hide blue ng-class:{'show':!user.guru_transcript_confirmed}"> </i>
+      </li>
+      <li class="item item-checkbox item-avatar-left item-icon-right">
+         <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/credibility/network.svg'/>
+          <p class='font-18'>Other tutoring platform urls</p>
+          <p class='micro-text regular opacity-3-5'>Can increase hourly pay + ranking</p>
+          <label class="checkbox hide ng-class:{'show':user.guru_transcript_confirmed}">
+           <input type="checkbox" ng-model='user.guru_platforms_confirmed'>
+         </label>
+         <i class="icon ion-plus hide blue ng-class:{'show':!user.guru_transcript_confirmed}"> </i>
+      </li>
+
+      <li class="item item-checkbox item-avatar-left item-icon-right">
+         <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/remote/phone.svg'/>
+          <p class='font-18'> Confirm your phone number</p>
+          <p class='micro-text regular opacity-3-5 white-space-normal'>We will NEVER provide this without your consent</p>
+          <label class="checkbox hide ng-class:{'show':user.phone_number_confirmed}">
+           <input type="checkbox" ng-model='user.phone_number_confirmed'>
+         </label>
+         <i class="icon ion-plus hide blue ng-class:{'show':!user.phone_number_confirmed}"> </i>
+      </li>
+
+      <li class="item item-checkbox item-avatar-left item-icon-right">
+         <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/credibility/school_email.svg'/>
+          <p class='font-18'>Confirm your school email</p>
+          <p class='micro-text regular opacity-3-5 white-space-normal'>Required for connecting with college students</p>
+          <label class="checkbox hide ng-class:{'show':user.school_email_confirmed}">
+           <input type="checkbox" ng-model='user.school_email_confirmed'>
+         </label>
+         <i class="icon ion-plus hide blue ng-class:{'show':!user.school_email_confirmed}"> </i>
+      </li>
+
+  </ul>
+    </div>
+  </div>
+</div>
+

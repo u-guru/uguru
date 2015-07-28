@@ -2110,3 +2110,18 @@ a.button-footer:visited, a.button-footer:hover {
 
 label.item-floating-label {
   letter-spacing: normal; }
+
+.credibility .micro-text {
+  margin-top: -5px; }
+
+.credibility .item-avatar-left img {
+  height: auto;
+  border-radius: initial;
+  width: 1.75em;
+  top: 33%;
+  opacity: 0.7; }
+
+.credibility .item-icon-right .ion-plus {
+  top: 35%;
+  font-size: 150%;
+  opacity: 0.8; }
