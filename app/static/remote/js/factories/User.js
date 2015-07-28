@@ -851,6 +851,12 @@ angular.module('uguru.user', [])
                     'email_friendly': obj
                 }
               }
+
+              if (arg === 'fb_id') {
+                return {
+                    'fb_id': obj
+                }
+              }
         },
         getUserFromServer: function($scope, callback, $state) {
 

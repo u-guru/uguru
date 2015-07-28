@@ -430,6 +430,18 @@ class UserOneView(restful.Resource):
         if 'profile_url' in request.json:
             user.profile_url = request.json.get('profile_url')
 
+        if 'fb_id' in request.json:
+            if not user.fb_id:
+                fb_id = request.json.get('fb_id')
+                previous_user = User.query.filter_by(fb_id=fb_id).all()
+                if user not in previous_user:
+                    user.fb_id = request.json.get('fb_id')
+                    db_session.commit()
+                else:
+                    print "previous user exists"
+                    return user, 401
+
+
         if 'email_notifications' in request.json:
             user.email_notifications = request.json.get('email_notifications')
 

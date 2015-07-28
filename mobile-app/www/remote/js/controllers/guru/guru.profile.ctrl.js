@@ -15,9 +15,10 @@ angular.module('uguru.guru.controllers')
   'Camera',
   '$ionicSideMenuDelegate',
   '$ionicActionSheet',
+  '$cordovaFacebook',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
-  $ionicActionSheet) {
+  $ionicActionSheet, $cordovaFacebook) {
 
     $scope.profile = {edit_mode:false, showCredibility:true};
 
@@ -108,6 +109,27 @@ angular.module('uguru.guru.controllers')
 
     $scope.transitionToGuruCourses = function() {
       $state.go('^.guru-courses-container');
+    }
+
+    $scope.connectWithFacebook = function() {
+      $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
+
+        $scope.loader.show();
+
+        var successCallback = function() {
+          $scope.loader.hide();
+          $scope.success.show(0, 1000, 'FB Account Saved');
+        }
+        var failureCallback = function(err) {
+          $scope.loader.hide();
+          if (err.status === 401) {
+            $scope.signupForm.password = '';
+            $scope.success.show(0, 1000, 'FB Account has another account - please contact support');
+          }
+        }
+        console.log(success.authResponse);
+        $scope.user.updateAttr('fb_id', $scope.user, success.authResponse.accessToken, successCallback , $scope, failureCallback);
+      })
     }
 
     $ionicSideMenuDelegate.canDragContent(false);
