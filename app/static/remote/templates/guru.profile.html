@@ -1,6 +1,6 @@
 
 
-<ion-view hide-nav-bar='true' class='ranking guru-profile'>
+<ion-view hide-nav-bar='true' class='ranking guru-profile' cache-view="false">
 
   <ion-header-bar class='dark-bg-header'>
       <h1 class='title'>Profile</h1>
@@ -175,17 +175,19 @@
                 </div>
               </div>
               <div class='pure-u-1-2 padding-half'>
-                <div class='attribute-card'>
+                <a class='attribute-card' ng-click='profile.edit_mode && transitionToGuruExperiences()'>
                     <div class="title-container mdl-card--expand grey-bg center">
                       <h5 class="title white-text uppercase semibold padding-horizontal-only padding-1em">Teaching Experience</h5>
                     </div>
                     <div class="card-body">
                       <h2 class='opacity-1-2' style='font-size:150%'>
-                        <div>TA </div>
-                        <div>Lab Assistant</div>
+                        <div class="hide ng-class:{'show':user.guru_experiences.length > 0}" ng-repeat='experience in user.guru_experiences'>{{experience.name}} - {{experience.years}} years</div>
+                        <div class='uppercase semibold no-margin blue hide ng-class:{"show":user.guru_experiences.length === 0}'>
+                          + Add an experience
+                        </div>
                       </h2>
                     </div>
-                </div>
+                </a>
               </div>
               <div class='pure-u-1-2 padding-half inline'>
                 <a class='attribute-card' ng-click='profile.edit_mode && transitionToGuruRemote()'>

@@ -2100,3 +2100,13 @@ a.button-footer:visited, a.button-footer:hover {
 
 .font-18 {
   font-size: 18px !important; }
+
+.white-text {
+  color: white !important; }
+
+.guru-profile select option {
+  background-color: white !important;
+  color: #68A7CF !important; }
+
+label.item-floating-label {
+  letter-spacing: normal; }

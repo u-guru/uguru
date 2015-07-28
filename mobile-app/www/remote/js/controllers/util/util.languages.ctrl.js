@@ -25,7 +25,6 @@ angular.module('uguru.util.controllers')
 
     $scope.backToEditProfile = function(is_saved) {
 
-
       if (is_saved) {
         $scope.success.show(0, 1500);
       } else {
@@ -47,7 +46,6 @@ angular.module('uguru.util.controllers')
       if ($state.current.name === 'root.become-guru' && !confirm('Remove ' + language.name + '?')) {
         return;
       }
-
 
       $scope.user.guru_languages.splice(index, 1);
 

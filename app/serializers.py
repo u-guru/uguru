@@ -238,6 +238,7 @@ guru_language_fields['name'] = fields.String(attribute='name')
 guru_experience_fields = {}
 guru_experience_fields['id'] = fields.Integer(attribute='id')
 guru_experience_fields['name'] = fields.String(attribute='name')
+guru_experience_fields['description'] = fields.String(attribute='description')
 guru_experience_fields['years'] = fields.Integer(attribute='years')
 guru_experience_fields['admin_approved'] = fields.Boolean(attribute='admin_approved')
 

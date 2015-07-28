@@ -98,6 +98,10 @@ angular.module('uguru.guru.controllers')
       $state.go('^.guru-remote');
     }
 
+    $scope.transitionToGuruExperiences = function() {
+      $state.go('^.guru-experiences');
+    }
+
     $scope.transitionToGuruLanguages = function() {
       $state.go('^.guru-languages');
     }
@@ -242,7 +246,7 @@ angular.module('uguru.guru.controllers')
 
      $scope.$on('$ionicView.enter', function() {
 
-
+        $scope.$apply();
         if ($scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
 
                     $ionicViewSwitcher.nextDirection('enter');

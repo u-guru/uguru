@@ -304,9 +304,11 @@ class UserOneView(restful.Resource):
             db_session.commit()
 
         if request.json.get('add_guru_experience'):
+            print 'guru_experience_received'
             guru_experience_json = request.json.get('add_guru_experience')
             experience_name = guru_experience_json.get('name')
             experience_years = guru_experience_json.get('years')
+            experience_description = guru_experience_json.get('description')
 
             guru_experience_names = []
             if user.guru_experiences:
@@ -314,13 +316,15 @@ class UserOneView(restful.Resource):
 
             if experience_name not in guru_experience_names:
                 experience = Experience()
-                experience.user_id = user.id
+                experience.contributed_user_id = user.id
                 experience.university_id = user.university_id
                 experience.time_created = datetime.now()
+                experience.description = experience_description
                 experience.name = experience_name
                 experience.years = experience_years
                 experience.last_updated = datetime.now()
                 experience.time_created = datetime.now()
+
                 db_session.add(experience)
                 db_session.commit()
 
@@ -331,6 +335,7 @@ class UserOneView(restful.Resource):
             experience = Experience.query.get(guru_experience_id)
             experience.name = guru_experience_json.get('name')
             experience.years = guru_experience_json.get('years')
+            experience.description = guru_experience_json.get('description')
             experience.last_updated = datetime.now()
 
             db_session.commit()

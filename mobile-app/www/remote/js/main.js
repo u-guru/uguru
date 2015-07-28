@@ -207,6 +207,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
     templateUrl: BASE + 'templates/guru.languages.container.html',
     controller: 'LanguagesController'
   }).
+  state('root.guru-experiences', {
+    url:'/guru-experiences',
+    templateUrl: BASE + 'templates/guru.experiences.container.html',
+    controller: 'ExperiencesController'
+  }).
   state('root.payments', {
         url: '/payments:cardObj',
         templateUrl: BASE + 'templates/payments.html',
