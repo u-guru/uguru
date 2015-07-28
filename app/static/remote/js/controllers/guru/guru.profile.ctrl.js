@@ -111,6 +111,39 @@ angular.module('uguru.guru.controllers')
       $state.go('^.guru-courses-container');
     }
 
+    $scope.saveTutoringPlatformsAndCloseModal = function() {
+      $scope.loader.show();
+      $timeout(function() {
+        $scope.tutoringPlatformsModal.hide();
+      }, 500);
+
+      var successCallback = function() {
+        $scope.loader.hide();
+        $scope.success.show(0, 1000, 'Saved!');
+      }
+      $scope.user.updateAttr('tutoring_platforms_description', $scope.user, $scope.user.tutoring_platforms_description, successCallback , $scope);
+    }
+
+     $scope.launchAddTutoringPlatformsModal = function(experience) {
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.tutor-platforms.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.tutoringPlatformsModal = modal;
+            $scope.tutoringPlatformsModal.show();
+      });
+    }
+
+    $scope.$on('modal.shown', function() {
+      if ($scope.tutoringPlatformsModal.isShown()) {
+        $timeout(function() {
+          var tutorPlatformsInput = document.getElementById('tutoring-platforms-input');
+          tutorPlatformsInput.focus();
+        }, 500)
+      }
+    });
+
     $scope.connectWithFacebook = function() {
       $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
 

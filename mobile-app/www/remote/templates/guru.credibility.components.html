@@ -23,15 +23,15 @@
          </label>
          <i class="icon ion-plus hide blue ng-class:{'show':!user.transcript_file.url}"> </i>
       </a>
-      <li class="item item-checkbox item-avatar-left item-icon-right">
+      <a class="item item-checkbox item-avatar-left item-icon-right" ng-click="launchAddTutoringPlatformsModal()">
          <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/credibility/network.svg'/>
           <p class='font-18'>Other tutoring platform urls</p>
           <p class='micro-text regular opacity-3-5'>Can increase hourly pay + ranking</p>
-          <label class="checkbox hide ng-class:{'show':user.guru_transcript_confirmed}">
-           <input type="checkbox" ng-model='user.guru_platforms_confirmed'>
+          <label class="checkbox hide ng-class:{'show':user.tutoring_platforms_description.length}">
+           <input type="checkbox" checked>
          </label>
-         <i class="icon ion-plus hide blue ng-class:{'show':!user.guru_transcript_confirmed}"> </i>
-      </li>
+         <i class="icon ion-plus hide blue ng-class:{'show':!user.tutoring_platforms_description.length}"> </i>
+      </a>
 
       <li class="item item-checkbox item-avatar-left item-icon-right">
          <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/remote/phone.svg'/>

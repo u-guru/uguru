@@ -378,6 +378,9 @@ class UserOneView(restful.Resource):
         if 'uber_friendly' in request.json:
             user.uber_friendly = request.json.get('uber_friendly')
 
+        if 'tutoring_platforms_description' in request.json:
+            user.tutoring_platforms_description = request.json.get('tutoring_platforms_description')
+
         if 'outside_university' in request.json:
             user.outside_university = request.json.get('outside_university')
 

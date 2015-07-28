@@ -402,6 +402,7 @@ angular.module('uguru.user', [])
         $scope.user.guru_skills = user.guru_skills;
         $scope.user.transcript_file = user.transcript_file;
         $scope.user.transcript_verified_by_admin = user.transcript_verified_by_admin;
+        $scope.user.tutoring_platforms_description = user.tutoring_platforms_description;
 
         $scope.user.email_friendly = user.email_friendly;
         $scope.user.facetime_friendly = user.facetime_friendly;
@@ -672,6 +673,11 @@ angular.module('uguru.user', [])
               if (arg === 'profile_url') {
                 return {
                     'profile_url': obj
+                }
+              }
+              if (arg === 'tutoring_platforms_description') {
+                return {
+                    'tutoring_platforms_description': obj
                 }
               }
               if (arg === 'university_id') {
@@ -1048,9 +1054,7 @@ angular.module('uguru.user', [])
                                 $scope.request.files.push(file.plain());
                             }
                             else if ($state.current.name === 'root.guru-questions') {
-
                                 $scope.proposal.files.push(file.plain());
-
                             }
                             else if ($scope.root.vars.transcript_url_changed) {
                                 $scope.root.vars.transcript_url_changed = false;

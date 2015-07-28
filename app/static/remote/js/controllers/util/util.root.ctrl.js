@@ -103,8 +103,12 @@ angular.module('uguru.util.controllers')
                       $localstorage.setObject('version', $scope.root.vars.version);
                       console.log('updating version to', serverVersionNumber, '...');
 
-                      window.location = BASE_URL;
-                      window.location.reload(true);
+                      if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i)) {
+                          window.location.replace(BASE_URL);
+                      } else {
+                          window.location = BASE_URL;
+                          window.location.reload(true);
+                      }
 
                 }
 
@@ -565,8 +569,13 @@ angular.module('uguru.util.controllers')
                             $localstorage.setObject('version', $scope.root.vars.version);
                             console.log('updating version to', serverVersionNumber, '...');
 
-                            window.location = BASE_URL;
-                            window.location.reload(true);
+                            //if windows
+                            if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i)) {
+                              window.location.replace(BASE_URL);
+                            } else {
+                              window.location = BASE_URL;
+                              window.location.reload(true);
+                            }
 
                       } else {
                         User.getUserFromServer($scope, null, $state);

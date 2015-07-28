@@ -4,7 +4,7 @@
 
   <ion-header-bar class='dark-bg-header'>
       <h1 class='title'>Profile</h1>
-      <div class="buttons">
+      <div class="buttons hide ng-class:{'show': !profile.showCredibility}">
         <button class="button button-clear button-header-link button-blue hide ng-class:{'show':!profile.edit_mode}" ng-click='profile.edit_mode = !profile.edit_mode'>
           Edit
         </button>
