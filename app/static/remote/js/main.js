@@ -2,6 +2,8 @@
 
 var LOCAL = false; //local to the 8100 codebasebirbirs
 
+
+
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 var REST_URL = 'http://uguru-rest.herokuapp.com'
 
@@ -17,6 +19,13 @@ if (LOCAL) {
 
 } else {
   img_base = '/static/'
+}
+
+// windows special case
+if (WINDOWS || navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT') {
+  var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
+  var REST_URL = 'http://uguru-rest.herokuapp.com'
+  BASE = '/remote';
 }
 
 mixpanel = window.mixpanel || null;
@@ -330,12 +339,10 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
                       Version.setVersion(1.0);
                     }
 
-                    if (LOCAL) {
-                      console.log('it gets here');
-                      $templateCache.removeAll();
-                    }
+
 
                     if (serverVersionNumber != currentVersion) {
+
 
                       console.log('versions are different...\n');
 
