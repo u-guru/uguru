@@ -21,11 +21,11 @@ if (LOCAL) {
   img_base = '/static/'
 }
 
-if (WINDOWS) {
-  var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
-  var REST_URL = 'http://uguru-rest.herokuapp.com';
-  BASE = 'remote/';
-}
+// if (WINDOWS) {
+//   var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
+//   var REST_URL = 'http://uguru-rest.herokuapp.com';
+//   BASE = 'remote/';
+// }
 
 // windows special case
 // if (WINDOWS || navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT') {
