@@ -24,6 +24,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
   $scope.root.vars.guru_rank_initialized = false;
   $scope.showActive = true;
+  $ionicSideMenuDelegate.canDragContent(false);
 
   document.addEventListener("deviceready", function () {
     $scope.turnStatusBarWhiteText = function() {
@@ -56,7 +57,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }
 
   }
-
+  $scope.goToRankings = function() {
+    $state.go('^.ranking');
+  }
 
   // functions relevant to these sections
       $scope.goToSessionDetails = function(session) {
@@ -722,7 +725,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               color: startColor,
               strokeWidth: 10,
               trailWidth: 10,
-              duration: 3000,
+              duration: 500,
               text: {
                   value: '0'
               },
@@ -754,7 +757,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               var startColor = '#68A7CF';
               var endColor = '#68A7CF';
               // var endColor = '#6FD57F';
-              animateProgress($scope.guruRankProgress, 0.99, startColor, endColor);
+              $timeout(function() {
+                animateProgress($scope.guruRankProgress, 0.99, startColor, endColor);
+              }, 500)
             }
 
 
@@ -792,8 +797,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }, false);
 
 
-
-
+        $scope.guru_rank_pending = [
+          {buttonText: 'Go To Settings', descriptionText: "turning push notifications ON. Students ain't got time for email!", link:'guru-profile'},
+          {buttonText: 'Complete Your Profile', descriptionText: 'adding a profile image, description, and verifying school email', link:'guru-profile'},
+          {buttonText: 'Increase Your Credibility', descriptionText: 'uploading your transcript, 3rd-party tutoring profiles, and verify .edu email', link:'guru-profile'},
+          {buttonText: 'Add Bank Info', descriptionText: "linking your bank account so we know you're serious about earning $$$", link:'add-payment'},
+          {buttonText: 'Confirm Commitment', descriptionText: "depositing $10. If you don't make $100 your first month - you'll get it back.", link:'add-payment'}
+        ];
   }
 
 ]);

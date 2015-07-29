@@ -4,7 +4,7 @@
 
   <ion-header-bar class='dark-bg-header'>
       <h1 class='title'>Profile</h1>
-      <div class="buttons hide ng-class:{'show': !profile.showCredibility}">
+      <div class="buttons">
         <button class="button button-clear button-header-link button-blue hide ng-class:{'show':!profile.edit_mode}" ng-click='profile.edit_mode = !profile.edit_mode'>
           Edit
         </button>
@@ -232,11 +232,9 @@
       </div>
     </div>
   </ion-scroll>
-  <input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed_profile(this)" style='display:none'/>
-  <input type='file' id='file-input-guru-add-transcript' onchange="angular.element(this).scope().file_changed_transcript(this)" style='display:none'/>
-
-  <div class='pure-g-c flex-column flex-space-between full-height' ng-show='profile.showCredibility'>
-    <div ng-include="img_base + 'templates/guru.credibility.components.html'" class='full-height'>
+  <input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed(this)" style='display:none'/>
+  <div class='pure-g-c flex-column flex-space-between' ng-show='profile.showCredibility'>
+    <div ng-include="img_base + 'templates/guru.credibility.components.html'">
     </div>
   </div>
 
