@@ -15,18 +15,23 @@ if (LOCAL) {
 
   // BASE_URL = 'http://localhost:8100/';
   REST_URL = 'http://localhost:5000';
-  BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
+  // BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 
 } else {
   img_base = '/static/'
 }
 
-// windows special case
-if (WINDOWS || navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT') {
+if (WINDOWS) {
   var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
-  var REST_URL = 'http://uguru-rest.herokuapp.com'
-  BASE = '/remote';
+  var REST_URL = 'http://uguru-rest.herokuapp.com';
 }
+
+// windows special case
+// if (WINDOWS || navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT') {
+//   var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
+//   var REST_URL = 'http://uguru-rest.herokuapp.com'
+//   BASE = '/remote';
+// }
 
 mixpanel = window.mixpanel || null;
 

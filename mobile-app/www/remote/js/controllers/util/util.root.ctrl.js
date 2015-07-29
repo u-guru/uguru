@@ -89,7 +89,7 @@ angular.module('uguru.util.controllers')
                 console.log('local', local_version, typeof(local_version));
 
                 if (local_version !== serverVersionNumber) {
-                      if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.show) {
+                      if (($scope.platform.mobile || WINDOWS) && $cordovaSplashscreen && $cordovaSplashscreen.show) {
                         $cordovaSplashscreen.show();
                       }
 
@@ -103,7 +103,7 @@ angular.module('uguru.util.controllers')
                       $localstorage.setObject('version', $scope.root.vars.version);
                       console.log('updating version to', serverVersionNumber, '...');
 
-                      if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i)) {
+                      if (WINDOWS) {
                           window.location.replace(BASE_URL);
                       } else {
                           window.location = BASE_URL;
