@@ -295,6 +295,23 @@ class UserOneView(restful.Resource):
                 user.phone_number = request.json.get('phone_number')
 
 
+        if request.json.get('phone_number_generate'):
+            phone_number = request.json.get('phone_number_generate')
+            from texts import send_text_message
+            import random
+            user.phone_number_token = str(random.randrange(1000,10000))
+            user.phone_number = phone_number
+            message = '[Uguru] Hi %s, your phone number confirmation code is %s' % (user.name.split(' ')[0].title(), user.phone_number_token)
+            send_text_message(phone_number, message)
+            print message
+            db_session.commit()
+
+        if request.json.get('phone_number_check_token'):
+            phone_number_token = request.json.get('phone_number_check_token')
+            user.phone_number_confirmed = (user.phone_number_token == phone_number_token)
+            print user.phone_number_token
+            db_session.commit()
+
         if request.json.get('profile_info'):
             profile_info_dict = request.json.get('profile_info')
             email = profile_info_dict.get('email')

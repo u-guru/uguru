@@ -33,15 +33,16 @@
          <i class="icon ion-plus hide blue ng-class:{'show':!user.tutoring_platforms_description.length}"> </i>
       </a>
 
-      <li class="item item-checkbox item-avatar-left item-icon-right">
+      <a class="item item-checkbox item-avatar-left item-icon-right" ng-click='!user.phone_number_confirmed && showPopupEditPhoneNumber()'>
          <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/remote/phone.svg'/>
           <p class='font-18'> Confirm your phone number</p>
-          <p class='micro-text regular opacity-3-5 white-space-normal'>We will NEVER provide this without your consent</p>
+          <p class='micro-text regular opacity-3-5 white-space-normal hide ng-class:{"show": !user.phone_number_confirmed}'>We will NEVER provide this without your consent</p>
+          <p class='micro-text regular opacity-3-5 white-space-normal hide ng-class:{"show": user.phone_number_confirmed}'>You confirmed <strong> {{user.phone_number}} </strong></p>
           <label class="checkbox hide ng-class:{'show':user.phone_number_confirmed}">
-           <input type="checkbox" ng-model='user.phone_number_confirmed'>
+           <input type="checkbox" checked>
          </label>
          <i class="icon ion-plus hide blue ng-class:{'show':!user.phone_number_confirmed}"> </i>
-      </li>
+      </a>
 
       <li class="item item-checkbox item-avatar-left item-icon-right">
          <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/credibility/school_email.svg'/>

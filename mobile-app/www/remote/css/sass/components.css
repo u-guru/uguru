@@ -2125,3 +2125,10 @@ label.item-floating-label {
   top: 35%;
   font-size: 150%;
   opacity: 0.8; }
+
+button.button.button-popup {
+  padding: 0 4px;
+  font-size: 85%; }
+
+.popup-open .popup {
+  margin-bottom: 40%; }

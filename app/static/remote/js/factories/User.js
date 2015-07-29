@@ -867,6 +867,17 @@ angular.module('uguru.user', [])
                     'fb_id': obj
                 }
               }
+
+              if (arg === 'phone_number_generate') {
+                return {
+                    'phone_number_generate': obj
+                }
+              }
+              if (arg === 'phone_number_check_token') {
+                return {
+                    'phone_number_check_token': obj
+                }
+              }
         },
         getUserFromServer: function($scope, callback, $state) {
 

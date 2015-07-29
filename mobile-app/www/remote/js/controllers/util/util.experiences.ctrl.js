@@ -75,7 +75,6 @@ angular.module('uguru.util.controllers')
             $scope.guruExperiencesModal = modal;
             $scope.guruExperiencesModal.show();
       });
-
     }
 
     $scope.$on('modal.shown', function() {

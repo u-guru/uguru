@@ -332,25 +332,77 @@ angular.module('uguru.guru.controllers')
         $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
     };
 
+    var generatePhonePopupHtml = function() {
+      return '<input style="padding:2px 6px; margin-bottom:0.5em" type="text" ng-model="data.phone" placeholder="123-456-7890">\
+      <input style="padding:2px 6px;" type="text" ng-show="user.phone_number && user.phone_number.length" ng-model="data.token" placeholder="Enter 4-digit numerical code ">'
+    }
 
     $scope.showPopupEditPhoneNumber = function() {
       $scope.data = {phone:$scope.user.phone_number, token:$scope.user.phone_number_token};
 
       $scope.inputPopup = $ionicPopup.show({
-          template: '<input style="padding:2px 4px;" type="text" ng-model="data.name" autofocus>',
-          title: 'Change your try identity',
+          template: generatePhonePopupHtml(),
+          title: 'Enter your phone number',
           subTitle: 'Try not to troll too hard',
           scope: $scope,
           buttons: [
-            { text: 'Cancel' },
-            {
-              text: '<b>Save</b>',
-              type: 'button-positive',
+            { text: 'Close',
+              type:'button-popup'
+            },
+            { text: 'Resend',
+              type:'button-popup',
               onTap: function(e) {
-                $scope.inputPopup.close();
-                $scope.user.name = $scope.data.name;
-                $scope.user.updateAttr('name', $scope.user, $scope.user.name, null, $scope);
-                $scope.success.show(0, 1000, 'Saved!');
+                if (!$scope.data.phone || !($scope.data.phone.length >= 10)) {
+                  alert('Please enter valid phone number');
+                  return;
+                }
+                  $scope.user.updateAttr('phone_number_generate', $scope.user, $scope.data.phone, null, $scope);
+                  var msg = 'New code re-sent to ' + $scope.data.phone;
+                  $scope.success.show(0, 1500, msg);
+              }
+            },
+            {
+              text: '<b>Verify</b>',
+              type: 'button-positive button-popup',
+              onTap: function(e) {
+                if (!$scope.data.phone || !($scope.data.phone.length >= 10)) {
+                  alert('Please enter valid phone number');
+                  return;
+                }
+
+                if ($scope.user.phone_number && (!$scope.data.token || $scope.data.token.length < 4)) {
+                  alert('Please enter a 4 digit code');
+                  return;
+                }
+
+                if ($scope.user.phone_number && !$scope.data.token) {
+
+                  $timeout(function() {
+                    $scope.user.phone_number = $scope.data.phone;
+                  }, 500)
+                  $scope.user.updateAttr('phone_number_generate', $scope.user, $scope.data.phone, null, $scope);
+                  var msg = 'Code sent to ' + $scope.data.phone;
+                  $scope.success.show(0, 1500, msg);
+
+                }
+
+                if ($scope.user.phone_number && $scope.data.token) {
+
+                  var callbackSuccess = function() {
+                    $scope.loader.hide();
+                    if ($scope.user.phone_number_confirmed) {
+                      $scope.success.show(0, 2000, 'Verification Code confirmed!')
+                    } else {
+                      $scope.success.show(0, 2000, 'Invalid Code - please try again?');
+                    }
+                    return;
+                  }
+
+                  $scope.loader.show();
+                  $scope.user.updateAttr('phone_number_check_token', $scope.user, $scope.data.token, callbackSuccess, $scope);
+
+                }
+
               }
             }
           ]
