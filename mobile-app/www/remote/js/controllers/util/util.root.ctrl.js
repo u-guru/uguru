@@ -103,8 +103,8 @@ angular.module('uguru.util.controllers')
                       $localstorage.setObject('version', $scope.root.vars.version);
                       console.log('updating version to', serverVersionNumber, '...');
 
-                      if (WINDOWS) {
-                          window.location.replace(BASE_URL);
+                      if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT') {
+                            window.location.replace(BASE_URL);
                       } else {
                           window.location = BASE_URL;
                           window.location.reload(true);
@@ -543,7 +543,7 @@ angular.module('uguru.util.controllers')
                 // console.log('device is resuming....');
                 // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
                 // console.log('device resumed');
-
+                local_version = $localstorage.getObject('version');
                 Version.getUpdatedVersionNum().then(
               //if user gets the right version
                     function(response) {
@@ -555,7 +555,7 @@ angular.module('uguru.util.controllers')
                       console.log('local', local_version, typeof(local_version));
 
                       if (local_version !== serverVersionNumber) {
-                            if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.show) {
+                            if (($scope.platform.mobile || WINDOWS) && $cordovaSplashscreen && $cordovaSplashscreen.show) {
                               $cordovaSplashscreen.show();
                             }
 
