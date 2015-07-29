@@ -24,6 +24,7 @@ if (LOCAL) {
 if (WINDOWS) {
   var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
   var REST_URL = 'http://uguru-rest.herokuapp.com';
+  BASE = 'remote/';
 }
 
 // windows special case
