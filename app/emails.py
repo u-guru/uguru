@@ -90,7 +90,7 @@ def send_campaign_email(campaign_name, template_name,
 
     return result
 
-def send_transactional_email(subject, content, receiver, tags):
+def send_transactional_email(subject, content, receiver, tags, email=None):
 
     if receiver.email:
         receiver_info = [{
@@ -98,6 +98,9 @@ def send_transactional_email(subject, content, receiver, tags):
             'name':receiver.name,
             'type': 'to'
         }]
+
+    if email:
+        receiver_info[0]['email'] = email
 
     message = {
         'subject': subject,
@@ -113,15 +116,15 @@ def send_transactional_email(subject, content, receiver, tags):
         'html': content
     }
 
-    if not os.environ.get('PRODUCTION'):
+    # if not os.environ.get('PRODUCTION'):
 
-        print "testing: email skipped intended for", receiver.email, subject, tags
+    #     print "testing: email skipped intended for", receiver.email, subject, tags
 
-    else:
-        print "production: email turned off for now", receiver.email, subject, tags
+    # else:
+    #     print "production: email turned off for now", receiver.email, subject, tags
 
-        # result = mandrill_client.messages.send(message=message)
-        # return result
+    result = mandrill_client.messages.send(message=message)
+    return result
 
 def compose_email_notif_message(notif_key, args_tuple):
     return str(email_notif_copy[notif_key] % args_tuple)

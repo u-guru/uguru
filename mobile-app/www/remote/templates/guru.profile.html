@@ -234,8 +234,9 @@
   </ion-scroll>
   <input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed_profile(this)" style='display:none'/>
   <input type='file' id='file-input-guru-add-transcript' onchange="angular.element(this).scope().file_changed_transcript(this)" style='display:none'/>
-  <div class='pure-g-c flex-column flex-space-between' ng-show='profile.showCredibility'>
-    <div ng-include="img_base + 'templates/guru.credibility.components.html'">
+
+  <div class='pure-g-c flex-column flex-space-between full-height' ng-show='profile.showCredibility'>
+    <div ng-include="img_base + 'templates/guru.credibility.components.html'" class='full-height'>
     </div>
   </div>
 

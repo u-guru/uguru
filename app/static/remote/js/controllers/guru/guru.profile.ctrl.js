@@ -175,6 +175,8 @@ angular.module('uguru.guru.controllers')
       }, 500);
     }
 
+
+
     $scope.saveGuruProfile = function() {
       $scope.success.show(0, 1500, 'Profile Successfully Saved');
       $scope.profile.edit_mode = !$scope.profile.edit_mode
@@ -408,6 +410,40 @@ angular.module('uguru.guru.controllers')
           ]
         });
     }
+
+    $scope.showPopupEditEmail = function() {
+
+      if ($scope.user.email && $scope.user.email.indexOf('.edu') !== -1) {
+        $scope.user.school_email = $scope.user.email;
+        $scope.user.updateAttr('school_email', $scope.user, $scope.user.school_email, null, $scope);
+      }
+
+      $scope.data = {email: $scope.user.school_email};
+
+      $scope.inputPopup = $ionicPopup.show({
+          template: '<input style="padding:2px 4px;" type="text" ng-model="data.email">',
+          title: 'Confirm Email',
+          subTitle: 'Please enter your <strong> school email </strong> <br>(.edu one)',
+          scope: $scope,
+          buttons: [
+            { text: 'Cancel' },
+            {
+              text: '<b>Send</b>',
+              type: 'button-positive',
+              onTap: function(e) {
+                if (!$scope.data.email) {
+                  alert('Please enter a valid email');
+                  return;
+                }
+                $scope.inputPopup.close();
+                $scope.user.school_email = $scope.data.email;
+                $scope.user.updateAttr('confirm_school_email', $scope.user, $scope.data.email, null, $scope);
+                $scope.success.show(0, 2000, 'Email sent to ' + $scope.data.email);
+              }
+            }
+          ]
+        });
+    };
 
     $scope.showPopupEditName = function() {
 

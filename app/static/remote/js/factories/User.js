@@ -418,6 +418,8 @@ angular.module('uguru.user', [])
         $scope.user.text_notifications = user.text_notifications;
         $scope.user.email_notifications = user.email_notifications;
         $scope.user.email = user.email;
+        $scope.user.school_email = user.school_email;
+        $scope.user.school_email_confirmed = user.school_email_confirmed;
         $scope.user.push_notifications = user.push_notifications;
         $scope.user.phone_number = user.phone_number;
         $scope.user.phone_number_token = user.phone_number_token;
@@ -876,6 +878,12 @@ angular.module('uguru.user', [])
               if (arg === 'phone_number_check_token') {
                 return {
                     'phone_number_check_token': obj
+                }
+              }
+
+              if (arg === 'confirm_school_email') {
+                return {
+                    'confirm_school_email': obj
                 }
               }
         },

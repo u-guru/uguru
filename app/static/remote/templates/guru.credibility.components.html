@@ -1,5 +1,10 @@
 
-
+<ion-scroll class='full-height'>
+  <ion-refresher
+    pulling-icon="ion-arrow-down-c"
+    spinner="circles"
+    on-refresh="doRefresh()">
+  </ion-refresher>
 <div class='pure-g-c flex-column flex-space-between credibility'>
   <div class='flex-item-c pure-g j-start'>
     <div class='pure-u-1 full-width'>
@@ -44,7 +49,7 @@
          <i class="icon ion-plus hide blue ng-class:{'show':!user.phone_number_confirmed}"> </i>
       </a>
 
-      <li class="item item-checkbox item-avatar-left item-icon-right">
+      <a class="item item-checkbox item-avatar-left item-icon-right" ng-click='!user.school_email_confirmed && showPopupEditEmail()'>
          <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/credibility/school_email.svg'/>
           <p class='font-18'>Confirm your school email</p>
           <p class='micro-text regular opacity-3-5 white-space-normal'>Required for connecting with college students</p>
@@ -52,10 +57,11 @@
            <input type="checkbox" ng-model='user.school_email_confirmed'>
          </label>
          <i class="icon ion-plus hide blue ng-class:{'show':!user.school_email_confirmed}"> </i>
-      </li>
+      </a>
 
   </ul>
     </div>
   </div>
 </div>
 
+</ion-scroll>

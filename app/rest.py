@@ -290,6 +290,33 @@ class UserOneView(restful.Resource):
             if not user.email:
                 user.email = request.json.get('email_address')
 
+        if request.json.get('confirm_school_email'):
+            from emails import send_transactional_email
+            from hashlib import md5
+            import random
+            user.school_email = request.json.get('confirm_school_email')
+
+            user.school_email_token = md5(str(random.randrange(1000, 10000))).hexdigest()
+
+            base_url = "uguru.me"
+            if not os.environ.get('PRODUCTION'):
+                base_url = "0.0.0.0:5000"
+
+            link = 'http://' + base_url + '/auth/school_email/' + user.school_email_token
+            db_session.commit()
+
+
+            msg_args = (user.name.split(' ')[0], link)
+            msg = """Hi %s,<br><br>Please click this <a href="%s">link</a> to confirm your email <br><br>Best,<br> The Uguru Team""" % msg_args
+            send_transactional_email("[Uguru] Please Authenticate Your School Email", msg, user, "school-email-auth", user.school_email)
+
+
+
+        if request.json.get('check_school_email_code'):
+            school_code = request.json.get('check_school_email_code')
+            user.school_email_confirmed = (school_code == user.school_email_token)
+            db_session.commit()
+
         if not user.phone_number:
             if request.json.get('phone_number'):
                 user.phone_number = request.json.get('phone_number')

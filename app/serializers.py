@@ -264,6 +264,8 @@ UserSerializer = {
     'id': fields.Integer,
     'name':   fields.String,
     'email': fields.String,
+    'school_email': fields.String,
+    'school_email_confirmed': fields.Boolean,
     'tutoring_platforms_description': fields.String,
     'profile_url': fields.String,
     'is_a_guru': fields.Boolean,
