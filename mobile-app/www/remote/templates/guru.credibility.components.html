@@ -1,16 +1,15 @@
-
 <ion-scroll class='full-height'>
-  <ion-refresher
-    pulling-icon="ion-arrow-down-c"
-    spinner="circles"
-    on-refresh="doRefresh()">
-  </ion-refresher>
+<ion-refresher
+        pulling-icon="ion-arrow-down-c"
+        spinner="circles"
+        on-refresh="doRefresh()">
+</ion-refresher>
+
 <div class='pure-g-c flex-column flex-space-between credibility'>
   <div class='flex-item-c pure-g j-start'>
-    <div class='pure-u-1 full-width'>
+    <div class='pure-u-1 full-width full-height'>
       <ul class="list">
-
-      <a class="item item-checkbox item-avatar-left item-icon-right" ng-click='!user.fb_id && connectWithFacebook()'>
+        <a class="item item-checkbox item-avatar-left item-icon-right" ng-click='!user.fb_id && connectWithFacebook()'>
          <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/credibility/facebook.svg'/>
           <p class='font-18'> Connect with Facebook </p>
           <p class='micro-text regular opacity-3-5'>Verify that you are human</p>
@@ -63,5 +62,4 @@
     </div>
   </div>
 </div>
-
 </ion-scroll>

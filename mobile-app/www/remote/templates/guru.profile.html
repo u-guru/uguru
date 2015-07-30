@@ -26,7 +26,7 @@
     Edit Mode: Tap any component to edit!
   </div>
 
-<ion-content class='white-bg standard-bg' style='bottom:50px; top:88px;'>
+<ion-content class='white-bg standard-bg' style='bottom:50px; top:88px;' scroll="false">
     <div class='pure-g-c flex-column flex-space-between' ng-show='!profile.showCredibility'>
 
       <ion-slide-box class='guru-profile-slide-box'>
@@ -233,8 +233,8 @@
     </div>
   </ion-scroll>
   <input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed(this)" style='display:none'/>
-  <div class='pure-g-c flex-column flex-space-between' ng-show='profile.showCredibility'>
-    <div ng-include="img_base + 'templates/guru.credibility.components.html'">
+  <div class='pure-g-c flex-column flex-space-between full-height' ng-show='profile.showCredibility'>
+    <div ng-include="img_base + 'templates/guru.credibility.components.html'" class='full-height'>
     </div>
   </div>
 
