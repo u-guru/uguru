@@ -16,7 +16,9 @@ angular.module('uguru.util.controllers')
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
     $ionicSideMenuDelegate) {
-
+    if ($scope.static.courses && $scope.static.courses.length > 0 && (!$scope.courses || !$scope.courses.length)) {
+      $scope.courses = $scope.static.courses;
+    }
     $scope.shouldShowDelete = false;
     $scope.listCanSwipe = true;
     $ionicSideMenuDelegate.canDragContent(false);
@@ -153,6 +155,28 @@ angular.module('uguru.util.controllers')
       }
 
     }
+
+    $scope.$on('$ionicView.enter', function() {
+
+
+      $timeout(function() {
+        console.log('view has entered');
+        //add event listener
+        $scope.guruCourseInput = document.getElementById('guru-course-input');
+        console.log($scope.guruCourseInput);
+        if ($scope.guruCourseInput) {
+
+          $scope.guruCourseInput.addEventListener("keyup", function() {
+
+            console.log($scope.guruCourseInput.value.length);
+
+          });
+
+        }
+
+      }, 1000);
+
+    });
 
 
 

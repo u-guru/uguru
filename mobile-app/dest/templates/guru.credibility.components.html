@@ -11,7 +11,7 @@
       <ul class="list">
         <a class="item item-checkbox item-avatar-left item-icon-right" ng-click='!user.fb_id && connectWithFacebook()'>
          <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/credibility/facebook.svg'/>
-          <p class='font-18'> Connect with Facebook </p>
+          <p class='font-18 white-space-normal'> Connect with Facebook </p>
           <p class='micro-text regular opacity-3-5 white-space-normal'>Verify that you are human</p>
          <label class="checkbox hide ng-class:{'show':user.fb_id}">
            <input type="checkbox" checked>
@@ -20,7 +20,7 @@
       </a>
       <a class="item item-checkbox item-avatar-left item-icon-right" ng-click='!user.transcript_file.url && showActionSheetTranscriptPhoto()'>
          <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/credibility/transcript.svg'/>
-          <p class='font-18'> Upload your transcript</p>
+          <p class='font-18 white-space-normal'> Upload your transcript</p>
           <p class='micro-text regular opacity-3-5 white-space-normal'>Can increase hourly pay + ranking</p>
          <label class="checkbox hide ng-class:{'show':user.transcript_file.url}">
            <input type="checkbox" checked>
@@ -29,7 +29,7 @@
       </a>
       <a class="item item-checkbox item-avatar-left item-icon-right" ng-click="launchAddTutoringPlatformsModal()">
          <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/credibility/network.svg'/>
-          <p class='font-18'>Other tutoring platform urls</p>
+          <p class='font-18 white-space-normal'>Other tutoring platform urls</p>
           <p class='micro-text regular opacity-3-5 white-space-normal'>Can increase hourly pay + ranking</p>
           <label class="checkbox hide ng-class:{'show':user.tutoring_platforms_description.length}">
            <input type="checkbox" checked>
@@ -39,7 +39,7 @@
 
       <a class="item item-checkbox item-avatar-left item-icon-right" ng-click='!user.phone_number_confirmed && showPopupEditPhoneNumber()'>
          <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/remote/phone.svg'/>
-          <p class='font-18'> Confirm your phone number</p>
+          <p class='font-18 white-space-normal'> Confirm your phone number</p>
           <p class='micro-text regular opacity-3-5 white-space-normal white-space-normal hide ng-class:{"show": !user.phone_number_confirmed}'>We will NEVER provide this without your consent</p>
           <p class='micro-text regular opacity-3-5 white-space-normal hide ng-class:{"show": user.phone_number_confirmed}'>You confirmed <strong> {{user.phone_number}} </strong></p>
           <label class="checkbox hide ng-class:{'show':user.phone_number_confirmed}">
@@ -50,7 +50,7 @@
 
       <a class="item item-checkbox item-avatar-left item-icon-right" ng-click='!user.school_email_confirmed && showPopupEditEmail()'>
          <img class='pure-img opacity-4-5 remote-img' ng-src='{{img_base}}./img/credibility/school_email.svg'/>
-          <p class='font-18'>Confirm your school email</p>
+          <p class='font-18 white-space-normal'>Confirm your school email</p>
           <p class='micro-text regular opacity-3-5 white-space-normal'>Required for connecting with college students</p>
           <label class="checkbox hide ng-class:{'show':user.school_email_confirmed}">
            <input type="checkbox" ng-model='user.school_email_confirmed'>
