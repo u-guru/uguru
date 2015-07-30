@@ -285,10 +285,10 @@ class UserOneView(restful.Resource):
         if request.json.get('university_id'):
             user.university_id = request.json.get('university_id')
 
-        if request.json.get('email'):
+        # if request.json.get('email'):
 
-            if not user.email:
-                user.email = request.json.get('email_address')
+        #     if not user.email:
+        #         user.email = request.json.get('email_address')
 
         if request.json.get('confirm_school_email'):
             from emails import send_transactional_email
@@ -431,6 +431,18 @@ class UserOneView(restful.Resource):
 
         if 'email' in request.json:
             user.email = request.json.get('email')
+
+        if 'change_email' in request.json:
+            email = request.json.get('change_email')
+
+            ## check if email already exists
+            user_already_exists = User.query.filter_by(email=email).first()
+            if user_already_exists and user.id != user_already_exists.id:
+                abort(401)
+            else:
+                user.email = email
+                db_session.commit()
+
 
         if 'name' in request.json:
             user.name = request.json.get('name')

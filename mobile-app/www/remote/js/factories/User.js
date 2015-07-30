@@ -822,6 +822,12 @@ angular.module('uguru.user', [])
                 }
               }
 
+              if (arg === 'change_email') {
+                return {
+                    'change_email': obj
+                }
+              }
+
               if (arg === 'push_notifications') {
                 return {
                     'push_notifications': obj

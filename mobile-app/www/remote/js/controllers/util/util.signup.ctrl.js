@@ -285,8 +285,23 @@ angular.module('uguru.util.controllers')
                 $scope.inputPopup.close();
                 $scope.user.email = $scope.data.email;
 
-                $scope.user.updateAttr('email', $scope.user, $scope.user.email, null, $scope);
-                $scope.success.show(0, 1000, 'Saved!');
+
+                var failureCallback = function(err) {
+                  if (err.status === 401) {
+                    $scope.loader.hide();
+                    $scope.signupForm.password = '';
+                    alert('Another account already exists with this email. Please login with that email or try again.');
+                  }
+                }
+
+                var successCallback = function() {
+                  $scope.loader.hide();
+                  $scope.success.show(0, 1000, 'Saved!');
+                }
+                $scope.loader.show();
+
+                $scope.user.updateAttr('change_email', $scope.user, $scope.user.email, successCallback, $scope, failureCallback);
+
               }
             }
           ]
