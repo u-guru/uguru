@@ -46,14 +46,14 @@
                   <div class='pure-u-1 padding-half'>
                     <p class='uppercase opacity-1-2 micro-text bold grey' style='color:grey;'> My Majors<br>
                     </p>
-                    <div class='micro-text regular grey padding-half white' style='opacity:1'>(Tap & Hold to Remove)</div>
+                    <div class='micro-text regular grey padding-half white' style='opacity:1'>(Double tap to Remove)</div>
                   </div>
                 </div>
 
                 <div class='pure-g'>
 
                   <div class='pure-u-1'>
-                    <a class='course-tag major-tag white-bg orange' on-hold="removeMajor(user_major)" style='font-size:80%;' ng-repeat="user_major in user.majors">{{user_major.name}} &nbsp; &nbsp; <i class='icon ion-checkmark'></i></a>
+                    <a class='course-tag major-tag white-bg orange' on-double-tap="removeMajor(user_major)" style='font-size:80%;' ng-repeat="user_major in user.majors">{{user_major.name}} &nbsp; &nbsp; <i class='icon ion-checkmark'></i></a>
                   </div>
                 </div>
 
