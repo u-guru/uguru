@@ -26,9 +26,10 @@
     Edit Mode: Tap any component to edit!
   </div>
 
-<ion-content class='white-bg standard-bg' style='bottom:50px; top:88px;'>
-    <div class='pure-g-c flex-column flex-space-between' ng-show='!profile.showCredibility'>
+<ion-content class='white-bg standard-bg guru-profile-content has-header' style='bottom:50px; top:88px;' scroll="false">
 
+    <div class='pure-g-c flex-column flex-space-between full-height' ng-show='!profile.showCredibility'>
+      <ion-scroll>
       <ion-slide-box class='guru-profile-slide-box'>
         <ion-slide style='min-height:200px;'>
           <div class='profile-banner-bg full-height' style='background-image:url({{img_base}}./img/profile/library.png)'>
@@ -232,9 +233,10 @@
       </div>
     </div>
   </ion-scroll>
+</ion-scroll>
   <input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed(this)" style='display:none'/>
-  <div class='pure-g-c flex-column flex-space-between' ng-show='profile.showCredibility'>
-    <div ng-include="img_base + 'templates/guru.credibility.components.html'">
+  <div class='full-height' ng-show='profile.showCredibility' style='top:88px;'>
+    <div ng-include="img_base + 'templates/guru.credibility.components.html'" class='full-height'>
     </div>
   </div>
 

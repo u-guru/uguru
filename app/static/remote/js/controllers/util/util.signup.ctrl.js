@@ -269,10 +269,10 @@ angular.module('uguru.util.controllers')
 
     $scope.showPopupEditEmail = function() {
 
-      $scope.data = {name:$scope.user.email};
+      $scope.data = {email:$scope.user.email};
 
       $scope.inputPopup = $ionicPopup.show({
-          template: '<input style="padding:2px 4px;" type="text" ng-model="data.name" autofocus>',
+          template: '<input style="padding:2px 4px;" type="text" ng-model="data.email" autofocus>',
           title: 'Edit email',
           subTitle: 'Please your main school one',
           scope: $scope,
@@ -295,10 +295,13 @@ angular.module('uguru.util.controllers')
 
     $scope.showPopupEditPassword = function() {
       $scope.data = {email: $scope.user.email}
-
+      template = '<input style="padding:2px 4px; margin-bottom:4px;" type="password" ng-model="data.old_password" placeholder="old password" autofocus><input style="padding:2px 4px;" type="password" ng-model="data.new_password" placeholder="new password">'
+      if ($scope.user.fb_id && !$scope.user.password) {
+        template = '<input style="padding:2px 4px; margin-bottom:4px;" type="password" ng-model="data.old_password" placeholder="new password" autofocus><input style="padding:2px 4px;" type="password" ng-model="data.new_password" placeholder="confirm password">'
+      }
 
       $scope.inputPopup = $ionicPopup.show({
-          template: '<input style="padding:2px 4px; margin-bottom:4px;" type="password" ng-model="data.old_password" placeholder="old password" autofocus><input style="padding:2px 4px;" type="password" ng-model="data.new_password" placeholder="new password">',
+          template: template,
           title: 'Change your password',
           subTitle: 'Must be longer than 6 characters',
           scope: $scope,
@@ -375,7 +378,9 @@ angular.module('uguru.util.controllers')
     $scope.editAccountInfoActionSheet = function() {
 
       var options = [{text: 'Edit Name'},{text: 'Edit Email'}];
-      if (!$scope.user.fb_id) {
+      if ($scope.user.fb_id && !$scope.user.password){
+        options.push({text: 'Create Password'});
+      } else {
         options.push({text: 'Edit Password'});
       }
         // Show the action sheet
