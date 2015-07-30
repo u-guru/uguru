@@ -160,7 +160,7 @@ angular.module('uguru.guru.controllers')
             $scope.success.show(0, 1000, 'FB Account has another account - please contact support');
           }
         }
-        console.log(success.authResponse);
+
         $scope.user.updateAttr('fb_id', $scope.user, success.authResponse.accessToken, successCallback , $scope, failureCallback);
       })
     }
