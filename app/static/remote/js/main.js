@@ -159,9 +159,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
 
   if (ionic.Platform.isWindowsPhone()) {
-
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|chrome-extension|x-wmapp.?):|data:image\//);
-
   }
 
   // })
@@ -283,8 +281,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/browse.html',
         // controller: 'BrowseController'
   }).
-  state('root.ranking', {
-        url: '/ranking',
+  state('root.guru-ranking', {
+        url: '/guru-ranking',
         templateUrl: BASE + 'templates/guru.ranking.html',
         controller: 'GuruRankingController'
   }).

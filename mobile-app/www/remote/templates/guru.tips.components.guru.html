@@ -1,5 +1,5 @@
-<ion-slide-box show-pager='true && {{guru_rank_pending.length > 1}}' class='guru-home-tip-slider'>
-  <ion-slide ng-repeat="rank in guru_rank_pending track by $index">
+<ion-slide-box show-pager='true && {{root.vars.guru_rank_pending.length > 1}}' class='guru-home-tip-slider'>
+  <ion-slide ng-repeat="rank in root.vars.guru_rank_pending">
       <div class='flex-item-c pure-g center j-center'>
         <div class='container tip-of-day-container' style='padding:10% 0% 2.5% 0%'>
           <div class='pure-u-1 padding-1em'>
@@ -16,7 +16,7 @@
           </div>
       </div>
   </ion-slide>
-  <ion-slide ng-if="guru_rank_pending.length === 1">
+  <ion-slide ng-if="root.vars.guru_rank_pending.length === 1">
       <div class='flex-item-c pure-g center j-center'>
         <div class='container tip-of-day-container' style='padding:10% 0% 2.5% 0%'>
           <div class='pure-u-1 padding-1em'>

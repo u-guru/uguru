@@ -16,10 +16,10 @@
 
   <div class="tabs home-request-tabs-top tabs-top">
       <a class="tab-item uppercase ng-class:{'blue-bg white-text':!profile.showCredibility, 'opacity-1-2':profile.showCredibility}" ng-click='profile.showCredibility = false;'>
-        Profile
+        Profile <span class='align-left semibold opacity-4-5' ng-if="user.current_profile_percent">&nbsp;&nbsp;-&nbsp;&nbsp;{{user.current_profile_percent}}%</span>
       </a>
       <a class="tab-item uppercase ng-class:{'blue-bg white-text':profile.showCredibility, 'opacity-1-2':!profile.showCredibility}" ng-click='profile.showCredibility = true;'>
-        Credibility
+        Credibility <span class='align-left semibold opacity-4-5' ng-if="user.current_credibility_percent">&nbsp;&nbsp;-&nbsp;&nbsp;{{user.current_credibility_percent}}%</span>
       </a>
   </div>
    <div class="tabs home-request-tabs-top tabs-top white-text bg-edit-mode center hide ng-class:{'show':profile.edit_mode}" style='height:44px'>

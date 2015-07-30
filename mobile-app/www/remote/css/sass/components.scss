@@ -2355,14 +2355,17 @@ button.button-full.ratings-footer-button {
     background-size: cover;
     position:absolute;
     z-index:0;
-    width:100%;
+    top:-5px;
+    left:-5px;
+    width:105%;
     height:100%;
     min-height:200px;
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+    opacity:0.8;
 }
 
 .guru-profile-img-wrapper {
@@ -2635,6 +2638,7 @@ input.bill-student-input {
 .ranking-num {
     background-color: rgba(0,0,0,0.3) !important;
     padding-bottom: 0.5em;
+    font-size:90%;
 }
 
 .university-banner-text span {

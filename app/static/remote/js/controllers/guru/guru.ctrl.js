@@ -41,7 +41,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
   $scope.showPreviousActions = function(index) {
       if (!$scope.user.previous_proposals || $scope.user.previous_proposals.length === 0) {
-        $scope.success.show(0, 2000, 'Sorry! No history yet. Update your profile to get more requests!');
+        $scope.success.show(0, 2000, 'Sorry! No incoming yet. Once the semester starts - we got you!');
       } else {
         $scope.showActiveToggle(index);
       }
@@ -58,7 +58,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
   }
   $scope.goToRankings = function() {
-    $state.go('^.ranking');
+    $state.go('^.guru-ranking');
   }
 
   // functions relevant to these sections
@@ -758,7 +758,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               var endColor = '#68A7CF';
               // var endColor = '#6FD57F';
               $timeout(function() {
-                animateProgress($scope.guruRankProgress, 0.99, startColor, endColor);
+                animateProgress($scope.guruRankProgress, ($scope.user.current_guru_ranking / 100.0), startColor, endColor);
               }, 500)
             }
 
@@ -797,9 +797,18 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }, false);
 
 
-        $scope.guru_rank_pending = [
-          {buttonText: 'Go To Settings', descriptionText: "turning push notifications ON. Students ain't got time for email!", link:'guru-profile'},
-          {buttonText: 'Complete Your Profile', descriptionText: 'adding a profile image, description, and verifying school email', link:'guru-profile'},
+        $scope.root.vars.guru_rank_pending = [
+          {
+            buttonText: 'Go To Settings',
+            descriptionText: "turning push notifications ON. Students ain't got time for email!",
+            link:'guru-profile'
+          },
+          {
+            buttonText: 'Complete Your Profile',
+            descriptionText: 'adding a profile image, description, and verifying school email',
+            link:'guru-profile',
+            is_complete: ($scope.user.current_profile_percent === 100)
+          },
           {buttonText: 'Increase Your Credibility', descriptionText: 'uploading your transcript, 3rd-party tutoring profiles, and verify .edu email', link:'guru-profile'},
           {buttonText: 'Add Bank Info', descriptionText: "linking your bank account so we know you're serious about earning $$$", link:'add-payment'},
           {buttonText: 'Confirm Commitment', descriptionText: "depositing $10. If you don't make $100 your first month - you'll get it back.", link:'add-payment'}

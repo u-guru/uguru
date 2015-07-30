@@ -35,6 +35,101 @@ angular.module('uguru.user', [])
                 return result;
     }
 
+    var calcProfileCompleteness = function(user) {
+        var default_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100";
+        var base = 60; //40%
+        var num_items = 8;
+        var default_item_weight = 10;
+        // var mini_item_weight = 2;
+        var max_points = 170; //base (60) + (9 * 10) + (3 * 10)
+
+        if (!user.is_a_guru) {
+            return 0;
+        }
+
+        if (user.profile_url && (user.profile_url !== default_url)) {
+            base += (2 * default_item_weight);
+        }
+        if (user.university_id && user.university.title) {
+            base += default_item_weight;
+        }
+        if (user.majors && user.majors.length) {
+            base += default_item_weight
+        }
+        if (user.guru_courses && user.guru_courses.length) {
+            base += (2 * default_item_weight)
+        }
+        if (user.skype_friendly || user.facetime_friendly || user.hangouts_friendly || user.messenger_friendly || user.phone_friendly || user.text_friendly || user.email_friendly) {
+            base += default_item_weight;
+        }
+        if (user.guru_languages && user.guru_languages.length) {
+            base += default_item_weight;
+        }
+        if (user.guru_experiences && user.guru_experiences.length) {
+            base += (2 * default_item_weight)
+        }
+        if (user.guru_introduction && user.guru_introduction.length) {
+            base += default_item_weight;
+        }
+        var percentage = parseInt((base  / (max_points * 1.0)) * 100);
+
+        return percentage;
+    }
+
+    var calcCredibilityCompleteness = function(user) {
+        var base = 0; //40%
+        var num_items = 5;
+        var default_item_weight = 20;
+        var max_points = 100;
+
+        if (user.fb_id) {
+            base += default_item_weight;
+        }
+        if (user.transcript_file && user.transcript_file.url.length) {
+            base += default_item_weight;
+        }
+        if (user.tutoring_platforms_description) {
+            base += default_item_weight;
+        }
+        if (user.school_email_confirmed) {
+            base += default_item_weight;
+        }
+        if (user.phone_number_confirmed) {
+            base += default_item_weight;
+        }
+        var percentage = parseInt((base  / (max_points * 1.0)) * 100);
+        return percentage;
+    }
+
+    var calcGuruCurrentRanking = function(user) {
+        var base = 25; //40%
+        var num_items = 5;
+        var max_points = 100;
+        var guru_ranking;
+
+
+        if (user.default_transfer_card) {
+            base += 6
+        }
+        if (user.current_credibility_percent) {
+            base += ((user.current_credibility_percent / 100.0) * 16);
+        }
+        if (user.current_profile_percent) {
+            base += ((user.current_profile_percent / 100.0) * 22);
+        }
+        if (user.push_notifications || user.text_notifications) {
+            base += 20;
+        }
+        if (user.deposit_confirmed) {
+            base += 11;
+        }
+
+
+        return base - 1;
+    }
+
+
+
     var processStudentRequestCalendar = function(index_request) {
         if (index_request.student_calendar && index_request.student_calendar.length > 0 &&
             index_request.student_calendar[0].calendar_events && index_request.student_calendar[0].calendar_events.length > 0) {
@@ -120,9 +215,7 @@ angular.module('uguru.user', [])
               var index_request = user_requests[i];
                 if (index_request.status === 0) {
                     index_request.formatted_time = RootService.time.since(new Date(index_request.time_created));
-
                     index_request = processStudentRequestCalendar(index_request);
-
                     user.active_requests.push(index_request);
                 }
                 else if (index_request.status === 1) {
@@ -465,6 +558,9 @@ angular.module('uguru.user', [])
         $scope.user.support_tickets = user.support_tickets;
         $scope.user.max_hourly = parseInt(user.max_hourly);
 
+        $scope.user.current_profile_percent = user.current_profile_percent = calcProfileCompleteness(user);
+        $scope.user.current_credibility_percent = user.current_credibility_percent = calcCredibilityCompleteness(user);
+        $scope.user.current_guru_ranking = calcGuruCurrentRanking(user);
         //custom logic client side only
         $scope.user.show_become_guru =  !($scope.user.guru_courses.length || $scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);
         $scope.user.is_a_guru = !$scope.user.show_become_guru;

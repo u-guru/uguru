@@ -11,42 +11,65 @@
 
 <ion-content class='white-bg standard-bg has-header'>
 
-    <div class='pure-g-c flex-column'>
-      <div class='pure-u-1 padding-2em center' style='margin-top:5%'>
-         <div class='pure-u-1-2 relative margin-auto'>
-                    <div class='ranking-container margin-auto full-width relative'>
-
-                      <span class='light text absolute' >
-                        <span class='font-200'>9</span><span class='micro-text uppercase semibold'>th</span>
-                      </span>
-                        <!-- <div class='row'>
-
-                        </div>
-                        <h1 class='white-text' style='position:absolute'></h1> -->
-
-                    </div>
-          </div>
-      </div>
-    </div>
-
-
     <ion-list class='standard-bg'>
-      <ion-item class='request-item item-icon-left item-icon-right relative' ng-repeat='opportunity in user.guru_score_opportunities'>
-        <i class='icon ion-person'> </i>
-        <div class='item-container'>
-          <p class='no-margin white-space-normal' style='font-size:110%;'>
-            {{opportunity.details.title}}
-          </p>
-          <p class='opacity-4-5 no-margin white-space-normal'>
-            {{opportunity.details.description}}
-          </p>
-        </div>
-          <i class='icon ion-chevron-right opacity-1-2 icon-small'> </i>
+      <ion-toggle ng-change="requestPushNotifications()" ng-model="user.push_notifications" ng-show='platform.mobile' toggle-class="toggle-calm">
+        <p class='no-margin white-space-normal semibold'>
+            Turn on Push Notifications
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text'>
+          Ain't no student got time to wait for emails
+        </p>
+      </ion-toggle>
+
+      <ion-toggle ng-change="updateTextNotifications()" ng-model="user.text_notifications" ng-show='!platform.mobile' toggle-class="toggle-calm" >
+        <p class='no-margin white-space-normal semibold'>
+            Turn on Text Notifications
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='!user.phone_number'>
+            Tap here to add your phone number & confirm
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='user.phone_number && !user.phone_number_confirmed'>
+            Tap here to confirm your phone number
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text ' ng-show='user.phone_number && user.phone_number_confirmed'>
+            Texts will be sent to {{user.phone_number}}
+        </p>
+      </ion-toggle>
+      <ion-item href='#/guru-profile' class='item-icon-right' nav-direction='enter'>
+        <p class='no-margin white-space-normal semibold'>
+            Complete your guru profile
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text'>
+            Your guru profile is not complete yet
+        </p>
+        <i class='icon icon-small ion-chevron-right opacity-4-5'> </i>
       </ion-item>
-      <!-- <ion-item ng-repeat="opportunity in user.guru_score_opportunities">
-
-
-        <span class="badge badge-positive">{{opportunity.impact_level}}</span>
-      </ion-item> -->
-    </ion-list
+      <ion-item href='#/guru-profile' class='item-icon-right' nav-direction='enter'>
+        <p class='no-margin white-space-normal semibold'>
+            Increase your credibility to 100%
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text'>
+            You could be more credible so students trust you
+        </p>
+        <i class='icon icon-small ion-chevron-right opacity-4-5'> </i>
+      </ion-item>
+      <ion-item href='#/payments' class='item-icon-right' nav-direction='forward'>
+        <p class='no-margin white-space-normal semibold'>
+            Add Your Bank Info
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text'>
+            linking your bank account so we know you're serious about earning $$$
+        </p>
+        <i class='icon icon-small ion-plus opacity-4-5'> </i>
+      </ion-item>
+      <ion-item ng-click='confirmCommitment()' class='item-icon-right' nav-direction='forward'>
+        <p class='no-margin white-space-normal semibold'>
+            Confirm Commitment
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text'>
+            Deposit <strong class='regular'> $10 </strong> to confirm full interest. You'll receive it back @ the end of the month.
+        </p>
+        <i class='icon icon-small ion-plus opacity-4-5'> </i>
+      </ion-item>
+    </ion-list>
 </ion-view>
