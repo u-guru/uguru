@@ -400,10 +400,11 @@ class UserOneView(restful.Resource):
                 password=md5(change_password_dict.get('old_password')).hexdigest()
                 ).first()
 
-            if not user_exists:
+            fb_create_account = (user_exists and user.fb_id and not user.password)
+            if not user_exists and not fb_create_account:
                 abort(401)
 
-            user.password = md5(request.json.get('new_password')).hexdigest()
+            user.password = md5(change_password_dict.get('new_password')).hexdigest()
             db_session.commit()
 
 
