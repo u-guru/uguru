@@ -125,6 +125,9 @@ angular.module('uguru.util.controllers')
 
           $scope.logoutUser = function() {
             if (confirm('Are you sure you want to log out?')) {
+              if ($scope.settings && $scope.settings.icons) {
+                $scope.settings.icons.profile = false;
+              }
               $scope.loader.show();
               $localstorage.setObject('user', []);
               // $scope.user = null;;
