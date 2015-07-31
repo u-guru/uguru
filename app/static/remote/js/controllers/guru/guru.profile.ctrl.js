@@ -180,7 +180,7 @@ angular.module('uguru.guru.controllers')
 
     $scope.saveGuruProfile = function() {
       $scope.success.show(0, 1500, 'Profile Successfully Saved');
-      $scope.profile.edit_mode = !$scope.profile.edit_mode
+      $scope.root.vars.profile.edit_mode = !$scope.root.vars.profile.edit_mode;
     }
 
     $scope.showActionSheetTranscriptPhoto = function() {

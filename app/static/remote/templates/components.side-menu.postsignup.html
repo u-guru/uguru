@@ -47,10 +47,10 @@
               <div class='pure-u-1 padding-half'>
                 <div class='pure-g'>
                   <div class='pure-u-1'>
-                    <h4 class='uppercase opacity bold no-margin' style='opacity:0.3; font-size:90%;'>Your Courses</h4>
+                    <h4 class='uppercase opacity bold no-margin hide ng-class:{"show":!root.vars.guru_mode}' style='opacity:0.3; font-size:90%;'>Your Courses</h4>
                   </div>
                 </div>
-                <div class='pure-u-1 padding-1em' style='padding-left:0px; padding-right:0px;'>
+                <div class='pure-u-1 padding-1em hide ng-class:{"show":!root.vars.guru_mode}' style='padding-left:0px; padding-right:0px;'>
                     <span ng-repeat='course in user.student_courses' class='course-tag student-settings inline white-space-normal' style='letter-spacing:0em'>{{course.short_name}}</span><span ng-click='goToEditCourses()' class='button course-tag student-settings inline white-space-normal inverted hide ng-class:{"show-inline":user.student_courses.length > 0}'>Edit</span>
                     <span ng-click='goToEditCourses()' class='button course-tag student-settings inline white-space-normal inverted hide ng-class:{"show-inline":user.student_courses.length === 0}'>Add A Class</span>
                 </div>

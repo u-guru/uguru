@@ -132,6 +132,34 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.cancelStudentAddCourse = function() {
+      $scope.showCourseInput = !$scope.showCourseInput;
+      $scope.studentCourseInput.value = "";
+    }
+
+    $scope.addSelectedStudentCourse = function(course, input_text, $index) {
+
+
+
+
+      $scope.search_text = '';
+
+      //set the course text to what it should be
+      $scope.studentCourseInput.value = '';
+      $scope.course_search_text = course.short_name
+
+      $scope.user.student_courses.push(course);
+
+      if ($scope.user.id) {
+        //adds to database for user
+        $scope.user.updateAttr('add_student_course', $scope.user, course, null, $scope);
+      } else {
+        //add to local cache so we can loop through it when it is time to update aduser
+        $scope.root.vars.remote_cache.push({'add_student_course': course});
+      }
+
+    }
+
     $scope.addSelectedGuruCourse = function(course, input_text, $index) {
 
 
@@ -150,7 +178,7 @@ angular.module('uguru.util.controllers')
         //adds to database for user
         $scope.user.updateAttr('add_guru_course', $scope.user, course, null, $scope);
       } else {
-        //add to local cache so we can loop through it when it is time to update user
+        //add to local cache so we can loop through it when it is time to update aduser
         $scope.root.vars.remote_cache.push({'add_guru_course': course});
       }
 
@@ -163,16 +191,14 @@ angular.module('uguru.util.controllers')
         console.log('view has entered');
         //add event listener
         $scope.guruCourseInput = document.getElementById('guru-course-input');
-        console.log($scope.guruCourseInput);
-        if ($scope.guruCourseInput) {
+        $scope.studentCourseInput = document.getElementById('student-course-input');
+        // if ($scope.studentCourseInput) {
 
-          $scope.guruCourseInput.addEventListener("keyup", function() {
+        //   $scope.studentCourseInput.addEventListener("keyup", function() {
+        //     alert($scope.studentCourseInput.value.length);
+        //   });
 
-            console.log($scope.guruCourseInput.value.length);
-
-          });
-
-        }
+        // }
 
       }, 1000);
 
