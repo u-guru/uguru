@@ -515,7 +515,8 @@ angular.module('uguru.user', [])
         $scope.user.school_email_confirmed = user.school_email_confirmed;
         $scope.user.push_notifications = user.push_notifications;
         $scope.user.phone_number = user.phone_number;
-        $scope.user.phone_number_token = user.phone_number_token;
+        $scope.user.phone_number_token = (user.phone_number_token && true); // dont let user get access to
+
         $scope.user.phone_number_confirmed = user.phone_number_confirmed;
         $scope.user.active_proposals = user.active_proposals;
         $scope.user.impact_events = user.impact_events;

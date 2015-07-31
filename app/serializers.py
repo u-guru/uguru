@@ -318,7 +318,7 @@ UserSerializer = {
     'cards': fields.List(fields.Nested(card_fields)),
     'phone_number': fields.String,
     'phone_number_token': fields.String,
-    'phone_number_confirmed': fields.String,
+    'phone_number_confirmed': fields.Boolean,
     'student_transactions': fields.List(fields.Nested(transaction_fields)),
     'guru_transactions': fields.List(fields.Nested(transaction_fields)),
     'transfer_transactions': fields.List(fields.Nested(transaction_fields)),

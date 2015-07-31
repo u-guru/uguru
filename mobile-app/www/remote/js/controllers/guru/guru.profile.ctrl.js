@@ -372,7 +372,7 @@ angular.module('uguru.guru.controllers')
                 }
 
                 //if user hasn't received a token yet & is sending for the first time [resend doesn't exist]
-                if ($scope.data.phone && !$scope.user.phone_number_token && !scope.data.token) {
+                if ($scope.data.phone && !$scope.user.phone_number_token && !$scope.data.token) {
                   $scope.user.phone_number_token = true;
                   $timeout(function() {
                     $scope.user.phone_number = $scope.data.phone;
@@ -408,6 +408,7 @@ angular.module('uguru.guru.controllers')
 
           if ($scope.user.phone_number_token) {
             buttons.push(resendButtonDict);
+            buttons.push(verifyButtonDict);
           } else {
             buttons.push(verifyButtonDict);
           }
