@@ -1060,25 +1060,22 @@ angular.module('uguru.util.controllers')
       $scope.signupForm.guru_mode = false;
       $scope.loader.show();
       User.create($scope.signupForm).then(function(user) {
+
           var processed_user = User.process_results(user.plain());
-
-          console.log(JSON.stringify($scope.user));
-
           User.assign_properties_to_root_scope($scope, processed_user);
-
           $scope.user.guru_mode = false;
-
           $localstorage.setObject('user', $scope.user);
 
-          //signup normally from sidebar
+
+          $scope.settings.icons.profile = true;
+          $scope.root.vars.settings = {icons : {profile : true}}
+
+
           if ($state.current.name === 'root.signup') {
-            $scope.loader.show();
-            $scope.show_account_fields = false;
-            $ionicSideMenuDelegate.toggleRight();
+            $scope.success.show(0, 1000, 'Account Successfully Created!');
             $timeout(function() {
-              $scope.loader.hide();
-              $scope.success.show(0, 1000, 'Account Successfully Created!');
-            }, 750);
+              $ionicSideMenuDelegate.toggleRight();
+            }, 500);
           }
 
           if ($state.current.name === 'root.home') {
