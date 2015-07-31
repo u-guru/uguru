@@ -706,7 +706,7 @@ angular.module('uguru.util.controllers')
           $state.go('^.guru');
           $scope.root.vars.guru_mode = true;
       }, 500);
-    }
+  }
 
     $scope.goToStudentMode = function() {
       $scope.root.vars.guru_mode = false;
@@ -720,6 +720,14 @@ angular.module('uguru.util.controllers')
     $scope.connectWithFacebook = function () {
 
         $scope.loader.show();
+
+
+        if ($scope.platform.web) {
+          var appID = 1416375518604557;
+          var fbVersion = "v2.2";
+          facebookConnectPlugin.browserInit(appID,fbVersion);
+        }
+
         $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
         // $cordovaFacebook.login(["user_education_history", "friends_education_history"]).then(function (success) {
         $scope.loginInfo = success;
