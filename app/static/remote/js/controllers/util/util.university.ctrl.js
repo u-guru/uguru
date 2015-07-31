@@ -17,10 +17,11 @@ angular.module('uguru.util.controllers', [])
   '$ionicViewSwitcher',
   '$cordovaGeolocation',
   '$ionicSideMenuDelegate',
+  '$ionicSlideBoxDelegate',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $q, University,
   $cordovaKeyboard, $ionicLoading, $cordovaStatusbar,
-  $ionicViewSwitcher, $cordovaGeolocation, $ionicSideMenuDelegate) {
+  $ionicViewSwitcher, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicSlideBoxDelegate) {
     $scope.data = {};
     $scope.search_text = '';
     $scope.keyboard_force_off = false;
@@ -424,6 +425,9 @@ angular.module('uguru.util.controllers', [])
       }
 
     });
+
+        //add event listener
+
     //case 1: if universities do not exist in local storage ... go get them
     //case 2: if user has ios && user has not been prompted... , prompt the display to get access
     //case 3: if coordinates are available && nearest_universities are not displayed..., calculate the nearest gps
