@@ -380,6 +380,10 @@ angular.module('uguru.util.controllers')
               text: '<b>Save</b>',
               type: 'button-positive',
               onTap: function(e) {
+                if (!$scope.data.name || $scope.data.name.length < 2) {
+                  alert('Please enter a valid name');
+                  return;
+                }
                 $scope.inputPopup.close();
                 $scope.user.name = $scope.data.name;
                 $scope.user.updateAttr('name', $scope.user, $scope.user.name, null, $scope);
