@@ -1,4 +1,4 @@
-<div ng-show='settings.icons.profile && user.id' class='relative full-height hide ng-class:{"show": settings.icons.profile && user.id}'>
+<div class='relative full-height hide ng-class:{"show": (settings.icons.profile || root.vars.settings.icons.profile) && user.id}'>
         <div ng-show='user && user.id'class="bar bar-header dark-bg-header mini-header uppercase relative" style='width:auto;'>
           <h1 class="title bold">Student Profile</h1>
           <div class='buttons'>

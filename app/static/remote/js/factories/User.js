@@ -85,7 +85,7 @@ angular.module('uguru.user', [])
         if (user.fb_id) {
             base += default_item_weight;
         }
-        if (user.transcript_file && user.transcript_file.url.length) {
+        if (user.transcript_file && user.transcript_file.url && user.transcript_file.url.length) {
             base += default_item_weight;
         }
         if (user.tutoring_platforms_description) {

@@ -51,6 +51,7 @@ angular.module('uguru.util.controllers')
     $scope.setSettingsToIndex = function(index) {
 
 
+      $scope.root.vars.settings = {icons : {profile : false}};
 
       for (var i = 0; i < Object.keys($scope.settings.icons).length; i++ ) {
 
@@ -766,8 +767,15 @@ angular.module('uguru.util.controllers')
           $scope.loader.hide();
         }, 500)
 
+
         $scope.loader.show();
-        $state.go('^.home');
+
+        if ($scope.root.vars.guru_mode) {
+          $state.go('^.guru');
+        } else {
+          $state.go('^.home');
+        }
+
 
       }
     }
@@ -1002,6 +1010,8 @@ angular.module('uguru.util.controllers')
 
           $scope.success.show(0, 1250, 'Login Successful!');
           $scope.settings.icons.profile = true;
+          $scope.root.vars.settings = {icons : {profile : true}};
+
 
           if ($state.current.name === 'root.home') {
             $timeout(function() {
@@ -1059,7 +1069,6 @@ angular.module('uguru.util.controllers')
           $scope.user.guru_mode = false;
 
           $localstorage.setObject('user', $scope.user);
-
 
           //signup normally from sidebar
           if ($state.current.name === 'root.signup') {
