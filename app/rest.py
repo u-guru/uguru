@@ -1913,7 +1913,8 @@ class UserNewView(restful.Resource):
             device = Device.query.get(current_device_id)
 
         if fb_user:
-            fb_user.name = request.json.get('name')
+            if not fb_user.name:
+                fb_user.name = request.json.get('name')
 
             if request.json.get('email'):
                 fb_user.email = request.json.get('email')
