@@ -27,8 +27,7 @@
     <!-- the initial i have no tasks screen -->
     <div class='pure-g-c flex-column flex-space-between' ng-hide='((user.pending_proposals && user.pending_proposals.length > 0)) || !showActive || (user.active_guru_sessions && user.active_guru_sessions.length > 0)' style='padding-bottom:55px;' >
         <div class='pure-g j-start relative' style='min-height:180px; height:180px;' ng-click='goToRankings()'>
-          <!-- <div class='profile-banner-bg full-height'  style='background-image:url({{img_base}}./img/guru/university-banner.png); min-height:180px; height:180px;'> -->
-          <div class='profile-banner-bg full-height'  style='background-image:url({{img_base}}./img/guru/university-banner.png); min-height:180px; height:180px;'>
+          <div class='profile-banner-bg full-height'  ng-style='{"background-image":"url({{data.university_banner}})", "min-height":"180px", "height":"180px"}'>
           </div>
             <div class='pure-g-c flex-column j-start guru-profile-img-wrapper full-width relative' style='height:50%;top:0%; opacity:1; min-height:180px;'>
               <div class='pure-g'>
@@ -244,7 +243,7 @@
 
             <!-- 2.  padding 2em h1 format bold, SemiBold, relative-->
             <ion-item class='padding-2em absolute padding-vertical-1em float-center visible-overflow center'>
-              <img class='home-card-profile pure-img profile-img sidebar-img inline no-border'  src='{{session.request.student.profile_url}}'/>
+              <img class='home-card-profile pure-img profile-img sidebar-img inline no-border'  ng-src='{{session.request.student.profile_url}}'/>
               <!-- <h2> &nbsp; </h2> -->
               <h2 style='margin-top:0.5em;'>Session with <strong>{{session.request.student.name.split(' ')[0]}}</strong></h2>
             <!-- 3. Absolute positioning item, jack it from settings -->
@@ -257,19 +256,19 @@
                   <span class='blue request-tag' ng-repeat='tag in session.request.tags'>#{{tag.name}}
                   </span>
                 </p>
-              <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='{{img_base}}./img/icons/paperclip-outline-blue.svg' style='margin-right: 0.33em; margin-top:0.4em;'>
+              <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' ng-src='{{img_base}}./img/icons/paperclip-outline-blue.svg' style='margin-right: 0.33em; margin-top:0.4em;'>
 
             </ion-item>
 
             <ion-item class='item-avatar-left card-item-left'>
-              <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/clock.svg'>
+              <img class='icon ion-plus-custom blue custom-icon pure-img' ng-src='{{img_base}}./img/icons/clock.svg'>
               <p class='inline'> Starts in </p>
               <p class='inline time-until' style='padding-left:1em'> {{session.request.schedule_time}} minutes </p>
             </ion-item>
 
             <!-- 5.  Same old but no orange> -->
             <ion-item class='item-avatar-left card-item-left'>
-              <img class='icon ion-plus-custom blue custom-icon pure-img' src='{{img_base}}./img/icons/marker.svg'>
+              <img class='icon ion-plus-custom blue custom-icon pure-img' ng-src='{{img_base}}./img/icons/marker.svg'>
               <p class='inline'> Meet up </p>
               <p class='inline black' style='padding-left:1em'> {{session.request.address}} </p>
             </ion-item>
@@ -290,16 +289,16 @@
     <!-- bottom tabs -->
 <div class="tabs tabs-icon-only white-bg" id='guru-tab-bar'>
   <a class="tab-item" id='home-button'>
-    <img class='pure-img icon' src='{{img_base}}./img/request/house-icon-blue.svg'></i>
+    <img class='pure-img icon' ng-src='{{img_base}}./img/request/house-icon-blue.svg'></i>
   </a>
   <!-- <a class="tab-item" id='guru-courses-button' ng-click='checkCourses()'>
-    <img class='pure-img icon' src='{{img_base}}./img/request/guru_book_outline.svg'></i>
+    <img class='pure-img icon' ng-src='{{img_base}}./img/request/guru_book_outline.svg'></i>
   </a> -->
   <!-- <a class="tab-item" href='#/guru-questions' nav-direction='swap' id='courses-button' ng-show='user.active_questions'>
-    <img class='pure-img icon' src='{{img_base}}./img/icons/question.svg'></i>
+    <img class='pure-img icon' ng-src='{{img_base}}./img/icons/question.svg'></i>
   </a>
   <a class="tab-item" id='tasks-button' nav-direction='swap' href='#/guru-tasks'>
-    <img class='pure-img icon' src='{{img_base}}./img/icons/task.svg'></i>
+    <img class='pure-img icon' ng-src='{{img_base}}./img/icons/task.svg'></i>
   </a> -->
   <a class="tab-item" id='profile-tab-button' nav-direction='swap' href='#/guru-profile'>
     <i class='icon ion-person'> </i>

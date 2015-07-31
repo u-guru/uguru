@@ -337,22 +337,13 @@ angular.module('uguru.guru.controllers')
 
     var generatePhonePopupHtml = function() {
       return '<input style="padding:2px 6px; margin-bottom:0.5em" type="text" ng-model="data.phone" placeholder="123-456-7890">\
-      <input style="padding:2px 6px;" type="text" ng-show="user.phone_number && user.phone_number.length" ng-model="data.token" placeholder="Enter 4-digit numerical code ">'
+      <input style="padding:2px 6px;" type="text" ng-show="user.phone_number && user.phone_number.length && user.phone_number_token" ng-model="data.token" placeholder="Enter 4-digit numerical code ">'
     }
 
     $scope.showPopupEditPhoneNumber = function() {
-      $scope.data = {phone:$scope.user.phone_number, token:$scope.user.phone_number_token};
-
-      $scope.inputPopup = $ionicPopup.show({
-          template: generatePhonePopupHtml(),
-          title: 'Enter your phone number',
-          subTitle: 'Try not to troll too hard',
-          scope: $scope,
-          buttons: [
-            { text: 'Close',
-              type:'button-popup'
-            },
-            { text: 'Resend',
+      $scope.data = {phone:$scope.user.phone_number, token:''};
+          var closeButtonDict = { text: 'Close', type:'button-popup'};
+          var resendButtonDict = { text: 'Resend',
               type:'button-popup',
               onTap: function(e) {
                 if (!$scope.data.phone || !($scope.data.phone.length >= 10)) {
@@ -363,23 +354,26 @@ angular.module('uguru.guru.controllers')
                   var msg = 'New code re-sent to ' + $scope.data.phone;
                   $scope.success.show(0, 1500, msg);
               }
-            },
-            {
+          }
+          //TODO SAMIR CLEAN THIS UP
+          var verifyButtonDict = {
               text: '<b>Verify</b>',
               type: 'button-positive button-popup',
               onTap: function(e) {
+                //if user hasn't typed in a phone number  [resend exists]
                 if (!$scope.data.phone || !($scope.data.phone.length >= 10)) {
                   alert('Please enter valid phone number');
                   return;
                 }
-
+                //if user hasn't typed in a token & clicked verify [resend exists]
                 if ($scope.user.phone_number && (!$scope.data.token || $scope.data.token.length < 4)) {
                   alert('Please enter a 4 digit code');
                   return;
                 }
 
-                if ($scope.user.phone_number && !$scope.data.token) {
-
+                //if user hasn't received a token yet & is sending for the first time [resend doesn't exist]
+                if ($scope.data.phone && !$scope.user.phone_number_token && !scope.data.token) {
+                  $scope.user.phone_number_token = true;
                   $timeout(function() {
                     $scope.user.phone_number = $scope.data.phone;
                   }, 500)
@@ -388,8 +382,8 @@ angular.module('uguru.guru.controllers')
                   $scope.success.show(0, 1500, msg);
 
                 }
-
-                if ($scope.user.phone_number && $scope.data.token) {
+                //if user has a token &&
+                if ($scope.user.phone_number && $scope.data.token && $scope.data.token.length === 4) {
 
                   var callbackSuccess = function() {
                     $scope.loader.hide();
@@ -407,9 +401,25 @@ angular.module('uguru.guru.controllers')
                 }
 
               }
-            }
-          ]
-        });
+          }
+
+          buttons = [];
+          buttons.push(closeButtonDict);
+
+          if ($scope.user.phone_number_token) {
+            buttons.push(resendButtonDict);
+          } else {
+            buttons.push(verifyButtonDict);
+          }
+
+
+          $scope.inputPopup = $ionicPopup.show({
+            template: generatePhonePopupHtml(),
+            title: 'Enter your phone number',
+            subTitle: 'Try not to troll too hard',
+            scope: $scope,
+            buttons: buttons
+          });
     }
 
     $scope.showPopupEditEmail = function() {
