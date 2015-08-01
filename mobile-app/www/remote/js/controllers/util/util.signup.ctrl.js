@@ -43,7 +43,7 @@ angular.module('uguru.util.controllers')
       support: false,
       guru: false,
       groceries:false,
-      presignup: ($scope.user && !$scope.user.id),
+      presignup: !($scope.user && $scope.user.id),
     }
 
     $scope.selectedCurrentHourly = 10;

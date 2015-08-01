@@ -1,5 +1,5 @@
 
-<ion-modal-view class='side-menu-right' id="side_menu" ng-controller='SignupController'>
+<ion-view class='side-menu-right' id="side_menu" ng-controller='SignupController' cache-view="false">
 
 
   <ion-content class='ios-status-bar-dark' scroll='false' style='margin-top:-1px;'>
@@ -19,7 +19,7 @@
                 <img class='pure-img hide ng-class:{"show": (!settings.icons.profile && !root.vars.settings.icon.profile)}' ng-src='{{img_base}}./img/settings/profile-outline.svg'/>
               </div>
 
-              <div ng-show='user && !user.id' style='padding-top:10px;'>
+              <div ng-show='!(user && user.id)' style='padding-top:10px;'>
                 <img class='pure-img padding-eight' ng-src='{{img_base}}./img/verbs/session.svg' />
               </div>
 
@@ -113,4 +113,4 @@
     </ion-footer-bar> -->
 
   </ion-content>
-</ion-modal-view>
+</ion-view>
