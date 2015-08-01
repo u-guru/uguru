@@ -46,6 +46,15 @@ angular.module('uguru.util.controllers')
       presignup: !($scope.user && $scope.user.id),
     }
 
+    $scope.resetSettingsIcons = function() {
+      $scope.settings.icons.profile = true;
+      $scope.settings.icons.notifications = false;
+      $scope.settings.icons.card = false;
+      $scope.settings.icons.support = false;
+      $scope.settings.icons.guru = false;
+      $scope.settings.icons.groceries = false;
+    }
+
     $scope.selectedCurrentHourly = 10;
 
     $scope.setSettingsToIndex = function(index) {
@@ -642,7 +651,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.goToSignupFromSideBar = function() {
-
+      $scope.resetSettingsIcons();
       $scope.loader.show();
       $state.go('^.signup');
 
