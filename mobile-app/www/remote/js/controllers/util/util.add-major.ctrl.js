@@ -12,9 +12,42 @@ angular.module('uguru.util.controllers')
   '$q',
   '$cordovaKeyboard',
   'University',
+  '$ionicSideMenuDelegate',
   function($scope, $state, $timeout, $localstorage,
   $ionicModal, $ionicTabsDelegate, $q,
-  $cordovaKeyboard, University) {
+  $cordovaKeyboard, University, $ionicSideMenuDelegate) {
+
+    $scope.showMainBody = true;
+
+    $scope.search_text = '';
+
+    $scope.backToStudentEditProfile = function(is_saved) {
+
+
+      if (is_saved) {
+        $scope.success.show(0, 1500);
+      } else {
+        $scope.loader.show();
+      }
+
+      if ($scope.root.vars.guru_mode) {
+
+        $state.go('^.guru-profile');
+
+      } else {
+
+        $timeout(function() {
+          $ionicSideMenuDelegate.toggleRight();
+        }, 500);
+
+      }
+
+
+      $timeout(function() {
+        $scope.loader.hide();
+
+      }, 500);
+    }
 
 
     $scope.keyboard_force_off = false;
@@ -97,7 +130,7 @@ angular.module('uguru.util.controllers')
 
     };
 
-    // $scope.majors = $scope.static.majors || GetMajorsList();
+    $scope.majors = $scope.static.majors || GetMajorsList();
 
     // console.log($scope.static.majors);
 
@@ -117,11 +150,21 @@ angular.module('uguru.util.controllers')
 
     $scope.removeMajor = function(major, index) {
 
-      var confirmCallback = function() {
-        $scope.success.show(0, 2000, major.name + ' successfully removed');
+      if ($state.current.name === 'root.become-guru' && !confirm('Remove ' + major.name + '?')) {
+        return;
       }
 
-      $scope.user.updateAttr('remove_major', $scope.user, major, confirmCallback, $scope);
+      var confirmCallback = function() {
+        $scope.loader.hide();
+        $scope.success.show(0, 1000, major.name + ' successfully removed');
+      }
+
+      $scope.loader.show();
+
+      $timeout(function() {
+        $scope.user.updateAttr('remove_major', $scope.user, major, confirmCallback, $scope);
+      }, 1000);
+
     }
 
     $scope.updateMajorProgress = function(text) {
@@ -136,12 +179,25 @@ angular.module('uguru.util.controllers')
     $scope.major_progress = false;
 
 
-    $scope.majorSelected = function(major, $event) {
+    $scope.majorSelected = function(major, $event, $index) {
+
+      console.log('major selected');
+
+      $scope.static.popular_majors.splice($index, 1);
+
+
+
 
 
       if (!$scope.user.majors) {
           $scope.user.majors = [];
       }
+
+
+      if ($scope.majorInput) {
+        $scope.majorInput.value = '';
+      }
+      $scope.showMainBody = true;
 
       $scope.search_text = '';
       $scope.keyboard_force_off = true;
@@ -150,10 +206,34 @@ angular.module('uguru.util.controllers')
 
       $scope.user.majors.push(major)
 
-
     }
+
+
+    $scope.$on('$ionicView.enter', function() {
+
+
+      $timeout(function() {
+
+        //add event listener
+        $scope.majorInput = document.getElementById('major-input');
+
+        $scope.majorInput.addEventListener("keyup", function() {
+
+          console.log($scope.majorInput.value.length);
+
+          // console.log('keyup callback', $scope.majorInput.value, $scope.showMainBody);
+
+
+        }, 500);
+
+
+      }, 1000);
+
+    });
+
 
   }
 
 
 ])
+

@@ -1,6 +1,8 @@
 // Uguru upp
 
-var LOCAL = true; //local to the 8100 codebasebirbirs
+var LOCAL = false; //local to the 8100 codebasebirbirs
+
+
 
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 var REST_URL = 'http://uguru-rest.herokuapp.com'
@@ -8,16 +10,38 @@ var REST_URL = 'http://uguru-rest.herokuapp.com'
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
+<<<<<<< HEAD
   BASE_URL = 'http://192.168.42.83:8100/remote';
  // REST_URL = 'http://192.168.42.66:5000';
 
   // BASE_URL = 'http://localhost:8100/';
   var REST_URL = 'http://uguru-rest.herokuapp.com'
 
+=======
+  BASE_URL = 'http://192.168.42.66:8100';
+ REST_URL = 'http://192.168.42.66:5000';
+
+  // BASE_URL = 'http://localhost:8100/';
+  // REST_URL = 'http://localhost:5000';
+  // BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
+>>>>>>> 930665a9f70af8198f9486e8fc5d2c8153340941
 
 } else {
   img_base = '/static/'
 }
+
+// if (WINDOWS) {
+//   var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
+//   var REST_URL = 'http://uguru-rest.herokuapp.com';
+//   BASE = 'remote/';
+// }
+
+// windows special case
+// if (WINDOWS || navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT') {
+//   var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
+//   var REST_URL = 'http://uguru-rest.herokuapp.com'
+//   BASE = '/remote';
+// }
 
 mixpanel = window.mixpanel || null;
 
@@ -152,9 +176,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
 
   if (ionic.Platform.isWindowsPhone()) {
-
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|chrome-extension|x-wmapp.?):|data:image\//);
-
   }
 
   // })
@@ -186,13 +208,43 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/university.html',
         controller: 'HomeController'
   }).
+  state('root.university-container', {
+        url: '/university-container',
+        templateUrl: BASE + 'templates/university.container.html',
+        controller: 'AddUniversityController'
+  }).
+  state('root.majors-container', {
+        url: '/majors-container',
+        templateUrl: BASE + 'templates/majors.container.html',
+        controller: 'AddMajorController'
+  }).
+  state('root.guru-courses-container', {
+        url: '/guru-courses-container',
+        templateUrl: BASE + 'templates/guru.courses.container.html',
+        controller: 'CoursesController'
+  }).
   state('root.signup', {
         url: '/signup',
         templateUrl: BASE + 'templates/signup.html',
         controller: 'SignupController'
   }).
+  state('root.guru-remote', {
+    url:'/guru-remote',
+    templateUrl: BASE + 'templates/guru.remote.html',
+    controller: 'GuruRemoteController'
+  }).
+  state('root.guru-languages', {
+    url:'/guru-languages',
+    templateUrl: BASE + 'templates/guru.languages.container.html',
+    controller: 'LanguagesController'
+  }).
+  state('root.guru-experiences', {
+    url:'/guru-experiences',
+    templateUrl: BASE + 'templates/guru.experiences.container.html',
+    controller: 'ExperiencesController'
+  }).
   state('root.payments', {
-        url: '/payments',
+        url: '/payments:cardObj',
         templateUrl: BASE + 'templates/payments.html',
         controller: 'PaymentsController'
   }).
@@ -246,8 +298,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/browse.html',
         // controller: 'BrowseController'
   }).
-  state('root.ranking', {
-        url: '/ranking',
+  state('root.guru-ranking', {
+        url: '/guru-ranking',
         templateUrl: BASE + 'templates/guru.ranking.html',
         controller: 'GuruRankingController'
   }).
@@ -308,12 +360,10 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
                       Version.setVersion(1.0);
                     }
 
-                    if (LOCAL) {
-                      console.log('it gets here');
-                      $templateCache.removeAll();
-                    }
+
 
                     if (serverVersionNumber != currentVersion) {
+
 
                       console.log('versions are different...\n');
 
@@ -333,9 +383,18 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
 
                       Version.setVersion(serverVersionNumber);
                       $localstorage.set('recently_updated', true);
+
+
+
                       console.log('V' + serverVersionNumber + 'stored to user');
+
+
+
+
                       window.location.href = BASE_URL;
                       window.location.replace(true);
+
+
                     }
                },
 

@@ -160,7 +160,7 @@ else window.addEventListener('load', __ldinsp, false);
 
 
     <script>
-
+      WINDOWS = null;
       function getMobileOperatingSystem() {
           var userAgent = navigator.userAgent || navigator.vendor || window.opera;
           if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
@@ -182,10 +182,12 @@ else window.addEventListener('load', __ldinsp, false);
 
             return 'Android';
           }
-          else if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i)) {
+          else if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT') {
             console.log('injecting windows specific css & js');
             injectJs('windows.cordova.js');
             injectCss('windows.css');
+            WINDOWS = true;
+            return 'Windows'
           }
           else
           {

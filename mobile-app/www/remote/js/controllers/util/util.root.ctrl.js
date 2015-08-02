@@ -89,7 +89,7 @@ angular.module('uguru.util.controllers')
                 console.log('local', local_version, typeof(local_version));
 
                 if (local_version !== serverVersionNumber) {
-                      if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.show) {
+                      if (($scope.platform.mobile || WINDOWS) && $cordovaSplashscreen && $cordovaSplashscreen.show) {
                         $cordovaSplashscreen.show();
                       }
 
@@ -103,8 +103,12 @@ angular.module('uguru.util.controllers')
                       $localstorage.setObject('version', $scope.root.vars.version);
                       console.log('updating version to', serverVersionNumber, '...');
 
-                      window.location = BASE_URL;
-                      window.location.reload(true);
+                      if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT') {
+                            window.location.replace(BASE_URL);
+                      } else {
+                          window.location = BASE_URL;
+                          window.location.reload(true);
+                      }
 
                 }
 
@@ -121,6 +125,9 @@ angular.module('uguru.util.controllers')
 
           $scope.logoutUser = function() {
             if (confirm('Are you sure you want to log out?')) {
+              if ($scope.settings && $scope.settings.icons) {
+                $scope.settings.icons.profile = false;
+              }
               $scope.loader.show();
               $localstorage.setObject('user', []);
               // $scope.user = null;;
@@ -277,7 +284,6 @@ angular.module('uguru.util.controllers')
               }, 1000);
             }
           }
-
           $scope.requestPushNotifications = function() {
 
               if (!$scope.user.push_notifications) {
@@ -330,7 +336,7 @@ angular.module('uguru.util.controllers')
           //returns empty array of length
           $scope.getNumber = function(num) {
             if (!num) {
-              return new Array(1);
+              return new Array(0);
             }
             if (typeof(num) === "string") {
               num = parseInt(num) | 0;
@@ -599,7 +605,7 @@ angular.module('uguru.util.controllers')
                 // console.log('device is resuming....');
                 // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
                 // console.log('device resumed');
-
+                local_version = $localstorage.getObject('version');
                 Version.getUpdatedVersionNum().then(
               //if user gets the right version
                     function(response) {
@@ -611,7 +617,7 @@ angular.module('uguru.util.controllers')
                       console.log('local', local_version, typeof(local_version));
 
                       if (local_version !== serverVersionNumber) {
-                            if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.show) {
+                            if (($scope.platform.mobile || WINDOWS) && $cordovaSplashscreen && $cordovaSplashscreen.show) {
                               $cordovaSplashscreen.show();
                             }
 
@@ -625,8 +631,13 @@ angular.module('uguru.util.controllers')
                             $localstorage.setObject('version', $scope.root.vars.version);
                             console.log('updating version to', serverVersionNumber, '...');
 
-                            window.location = BASE_URL;
-                            window.location.reload(true);
+                            //if windows
+                            if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT') {
+                              window.location.replace(BASE_URL);
+                            } else {
+                              window.location = BASE_URL;
+                              window.location.reload(true);
+                            }
 
                       } else {
                         User.getUserFromServer($scope, null, $state);

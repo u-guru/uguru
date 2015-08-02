@@ -27,6 +27,12 @@ student_courses_table = Table('student-course_assoc',
     Column('course_id', Integer, ForeignKey('course.id'))
     )
 
+guru_languages_table = Table('guru-language_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('language_id', Integer, ForeignKey('language.id'))
+    )
+
 user_major_table = Table('user-major_assoc',
     Base.metadata,
     Column('user_id', Integer, ForeignKey('user.id')),
@@ -101,6 +107,15 @@ class User(Base):
     profile_url = Column(String, default="https://graph.facebook.com/10152573868267292/picture?width=100&height=100")
 
 
+    #credibility confirmation
+    school_email = Column(String)
+    school_email_token = Column(String)
+    school_email_confirmed = Column(Boolean, default = False)
+
+
+
+
+
     #admin fields
     is_admin = Column(Boolean)
     is_support_admin = Column(Boolean)
@@ -130,7 +145,6 @@ class User(Base):
     summer_15 = Column(Boolean)
     outside_university = Column(Boolean)
 
-
     #Student fields
     student_introduction = Column(String)
     student_courses = relationship("Course",
@@ -140,6 +154,11 @@ class User(Base):
 
     guru_skills = relationship("Skill",
         secondary = guru_skill_table,
+        backref= backref('gurus', lazy='dynamic')
+    )
+
+    guru_languages = relationship("Language",
+        secondary = guru_languages_table,
         backref= backref('gurus', lazy='dynamic')
     )
 
@@ -201,9 +220,13 @@ class User(Base):
     email_notifications = Column(Boolean, default = True)
     text_notifications = Column(Boolean, default = False)
 
+    debit_card_confirmed = Column(Boolean, default = False)
+    tutoring_platforms_description = Column(String)
+    tutoring_platforms_verified_by_admin = Column(Boolean, default=False)
 
     phone_number = Column(String)
-    phone_number_confirmed = Column(Boolean)
+    phone_number_confirmed = Column(Boolean, default = False)
+    phone_number_token = Column(String)
     lower_pay_rate = Column(Float)
     upper_pay_rate = Column(Float)
 
@@ -224,8 +247,19 @@ class User(Base):
 
     guru_score = Column(Float)
 
+    email_friendly = Column(Boolean, default = False)
+    hangouts_friendly = Column(Boolean, default = False)
+    skype_friendly = Column(Boolean, default = False)
+    phone_friendly = Column(Boolean, default = False)
+    facetime_friendly = Column(Boolean, default = False)
+    messenger_friendly = Column(Boolean, default = False)
+    text_friendly = Column(Boolean, default = False)
+
     #referral stuff
     referral_code = Column(String)
+
+    transcript_file = relationship("File", uselist=False)
+    transcript_verified_by_admin = Column(Boolean, default = False)
 
     #referred_by
     referred_by_id = Column(Integer, ForeignKey('user.id'))
@@ -235,6 +269,8 @@ class User(Base):
     deactivated = Column(Boolean, default=False)
 
     last_position = relationship("Position", uselist=False)
+
+    guru_latest_time = Column(Integer)
 
     def __init__(self, name=None, email=None, profile_url=None, \
         fb_id=None, password=None, gender=None):
@@ -631,7 +667,8 @@ class Support(Base):
     time_created = Column(DateTime)
     time_resolved = Column(DateTime)
     time_updated = Column(DateTime)
-
+    # category --> add the string
+    # status --> ad more
 
 
     @staticmethod
@@ -808,9 +845,39 @@ class Resource(Base):
     course_string = Column(String)
 
 
+class Language(Base):
+    __tablename__ ='language'
+    id = Column(Integer, primary_key = True)
+    time_created = Column(DateTime)
+    last_updated = Column(DateTime)
+    name = Column(String)
+
+class Experience(Base):
+    __tablename__ ='experience'
+    id = Column(Integer, primary_key = True)
+    time_created = Column(DateTime)
+    last_updated = Column(DateTime)
+    name = Column(String)
+    description = Column(String)
+    years = Column(Integer)
+
+    admin_approved = Column(Boolean, default=False)
+    school_specific = Column(Boolean, default=False)
+
+    university_id = Column(Integer, ForeignKey('university.id'))
+    university = relationship("University",
+        primaryjoin="University.id==Experience.university_id",
+        backref='guru_experiences')
+
+    contributed_user_id = Column(Integer, ForeignKey('user.id'))
+    contributed_user = relationship("User",
+        primaryjoin="User.id==Experience.contributed_user_id",
+        backref='guru_experiences')
+
+
 class Stats(Base):
     __tablename__ ='stats'
-    id = Column(Integer, primary_key = True)    
+    id = Column(Integer, primary_key = True)
     last_updated = Column(DateTime)
     total_courses = Column(Integer, default=0)
     total_universities = Column(Integer, default=0)

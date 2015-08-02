@@ -8,7 +8,8 @@ angular.module('uguru.root.services')
     '$cordovaDialogs',
     'Popup',
     '$ionicPlatform',
-    function($localstorage, $timeout, $cordovaPush, $cordovaMedia, $cordovaDialogs, Popup, $ionicPlatform) {
+    'User',
+    function($localstorage, $timeout, $cordovaPush, $cordovaMedia, $cordovaDialogs, Popup, $ionicPlatform, User) {
 
         var iosConfig = {
           "badge": true,
@@ -105,7 +106,11 @@ angular.module('uguru.root.services')
                     $scope.user = $localstorage.getObject('user');
                 }
 
-                if (!$scope.user.current_device && $scope.platform && $scope.user) {
+                if (!$scope.user.createObj) {
+                    $scope.user.createObj = User.createObj;
+                }
+
+                if ($scope.user.createObj && !$scope.user.current_device && $scope.platform && $scope.user) {
                       $scope.user.current_device = ionic.Platform.device();
                       $scope.user.current_device.user_id = $scope.user.id;
                       $scope.user.createObj($scope.user, 'device', $scope.user.current_device, $scope);

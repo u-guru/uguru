@@ -486,6 +486,17 @@ def uguru_faqs():
 def uguru_terms():
     return render_template("web/content/terms.html")
 
+@app.route('/auth/school_email/<confirm_email_token>')
+def school_email_check(confirm_email_token):
+    user = User.query.filter_by(school_email_token=confirm_email_token).first()
+    if user:
+        user.school_email_confirmed = True
+        db_session.commit()
+        result = "<script> alert('School email " + user.school_email + " confirmed!'); window.location.href = 'http://uguru.me';</script>"
+        return result
+    else:
+        return 404
+
 @app.route('/')
 def app_student_home():
     from lib.university_data import supported_universities

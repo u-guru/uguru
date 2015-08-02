@@ -68,6 +68,14 @@ angular.module('uguru.guru.controllers')
      });
     }
 
+    $scope.confirmCommitment = function() {
+      if (!$scope.user.default_transfer_card) {
+        alert('Please add a bank card or account first!');
+        return;
+      }
+
+    }
+
 
 
     $scope.takePhoto = function(index) {

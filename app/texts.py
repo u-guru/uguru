@@ -23,6 +23,7 @@ def send_text_message(phone_number, message):
         print '-'*60
         traceback.print_exc(file=sys.stdout)
         print '-'*60
+        return False
 
 def compose_text_message(notif_key, args_tuple):
     if args_tuple:

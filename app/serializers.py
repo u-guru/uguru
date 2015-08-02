@@ -231,6 +231,19 @@ session_fields['transaction'] = fields.Nested(transaction_fields)
 session_fields['messages'] = fields.List(fields.Nested(message_fields))
 session_fields['time_estimate'] = fields.Integer(attribute='time_estimate')
 
+guru_language_fields = {}
+guru_language_fields['id'] = fields.Integer(attribute='id')
+guru_language_fields['name'] = fields.String(attribute='name')
+
+guru_experience_fields = {}
+guru_experience_fields['id'] = fields.Integer(attribute='id')
+guru_experience_fields['name'] = fields.String(attribute='name')
+guru_experience_fields['description'] = fields.String(attribute='description')
+guru_experience_fields['years'] = fields.Integer(attribute='years')
+guru_experience_fields['admin_approved'] = fields.Boolean(attribute='admin_approved')
+
+
+
 rating_fields = {}
 rating_fields['guru_id'] = fields.Integer(attribute='guru_id')
 rating_fields['student_id'] = fields.Integer(attribute='student_id')
@@ -251,9 +264,13 @@ UserSerializer = {
     'id': fields.Integer,
     'name':   fields.String,
     'email': fields.String,
+    'school_email': fields.String,
+    'school_email_confirmed': fields.Boolean,
+    'tutoring_platforms_description': fields.String,
     'profile_url': fields.String,
     'is_a_guru': fields.Boolean,
     'files': fields.List(fields.Nested(file_fields)),
+    'transcript_file': fields.Nested(file_fields),
     'is_admin': fields.Boolean,
     'is_support_admin': fields.Boolean,
     'guru_mode': fields.Boolean,
@@ -261,14 +278,25 @@ UserSerializer = {
     'customer_id': fields.String,
     'recipient_id': fields.String,
     'auth_token': fields.String,
+    'email_friendly': fields.Boolean,
+    'hangouts_friendly': fields.Boolean,
+    'skype_friendly': fields.Boolean,
+    'phone_friendly': fields.Boolean,
+    'facetime_friendly':fields.Boolean,
+    'messenger_friendly': fields.Boolean,
+    'text_friendly': fields.Boolean,
     'fb_id': fields.String,
     'password': fields.String,
+    'guru_latest_time':fields.Integer,
     'guru_introduction': fields.String,
     'tos_version': fields.Integer,
     'university_id': fields.Integer,
     'university': fields.Nested(university_fields),
     'recent_latitude': fields.Float,
     'recent_longitude': fields.Float,
+    'max_hourly': fields.Float,
+    'guru_languages': fields.List(fields.Nested(guru_language_fields)),
+    'guru_experiences': fields.List(fields.Nested(guru_experience_fields)),
     'location_services_enabled': fields.Boolean,
     'majors': fields.List(fields.Nested(major_fields)),
     'guru_courses': fields.List(fields.Nested(course_fields)),
@@ -289,6 +317,8 @@ UserSerializer = {
     'proposals': fields.List(fields.Nested(proposal_fields)),
     'cards': fields.List(fields.Nested(card_fields)),
     'phone_number': fields.String,
+    'phone_number_token': fields.String,
+    'phone_number_confirmed': fields.Boolean,
     'student_transactions': fields.List(fields.Nested(transaction_fields)),
     'guru_transactions': fields.List(fields.Nested(transaction_fields)),
     'transfer_transactions': fields.List(fields.Nested(transaction_fields)),
@@ -418,6 +448,8 @@ AdminUniversityDeptSerializer = {
 AdminUniversityDeptCourseSerializer = {
     'id': fields.Integer,
     'time_added': fields.DateTime,
+    'department_id': fields.Integer,
+    'university_id': fields.Integer,
     'name': fields.String,
     'short_name': fields.String,
     'is_popular': fields.Boolean,

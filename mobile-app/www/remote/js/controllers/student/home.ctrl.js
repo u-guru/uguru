@@ -25,8 +25,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $scope.showUpcoming = true;
   $scope.root.vars.show_price_fields = false;
 
-
-
   $scope.showPreviousRequests = function() {
       if (!$scope.user.previous_requests || $scope.user.previous_requests.length === 0) {
         $scope.success.show(0, 2000, 'Sorry! Please make a request first.');
@@ -758,9 +756,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
      $scope.$on('$ionicView.enter', function() {
 
-        $timeout(function() {
-          $ionicSideMenuDelegate.toggleRight();
-        }, 500)
+        // $timeout(function() {
+        //   $ionicSideMenuDelegate.toggleRight();
+        // }, 500)
 
         if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
             $scope.processIncomingRequests($scope.user.incoming_requests);

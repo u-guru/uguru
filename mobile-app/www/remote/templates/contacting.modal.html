@@ -118,13 +118,13 @@
 
                 <ion-item class='item-wrap-text item-icon-left' ng-show='root.vars.request.tags.length > 0' style='padding:12px 0px 10px 44px;'>
                     <!-- <div class='pure-g'> -->
-                      <img style='margin-top: 4%; 'class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/tags.svg'/>
+                      <img style='margin-top: 4%; 'class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' ng-src='{{img_base}}./img/icons/tags.svg'/>
                       <p class='blue'><span class='inline'ng-repeat='tag in root.vars.request.tags'>#{{tag}}</span></p>
                     <!-- </div> -->
                 </ion-item>
 
                 <ion-item class='item-wrap-text item-icon-left' ng-show='root.vars.request.type.task'>
-                  <img style='margin-top:0.4em;' class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/location.svg'/>
+                  <img style='margin-top:0.4em;' class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' ng-src='{{img_base}}./img/icons/location.svg'/>
                   <p class='request-description'>
                     {{root.vars.request.address}}
                   </p>

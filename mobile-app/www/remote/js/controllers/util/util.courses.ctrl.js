@@ -16,7 +16,9 @@ angular.module('uguru.util.controllers')
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
     $ionicSideMenuDelegate) {
-
+    if ($scope.static.courses && $scope.static.courses.length > 0 && (!$scope.courses || !$scope.courses.length)) {
+      $scope.courses = $scope.static.courses;
+    }
     $scope.shouldShowDelete = false;
     $scope.listCanSwipe = true;
     $ionicSideMenuDelegate.canDragContent(false);
@@ -24,6 +26,44 @@ angular.module('uguru.util.controllers')
     if ($scope.root.vars.guru_mode || $state.current.name === 'root.become-guru') {
       $scope.editCourseMode = false;
       $scope.course_search_text = '';
+    }
+
+    $scope.swipeRightGoBack = function() {
+      if (confirm('Exit become guru process?')) {
+        $scope.loader.show();
+        $ionicSideMenuDelegate.toggleRight();
+        $timeout(function() {
+          $scope.loader.hide();
+        }, 500)
+      }
+    }
+
+    $scope.backToStudentEditProfile = function(is_saved) {
+
+
+      if (is_saved) {
+        $scope.success.show(0, 1500);
+      } else {
+        $scope.loader.show();
+      }
+
+      if ($scope.root.vars.guru_mode) {
+
+        $state.go('^.guru-profile');
+
+      } else {
+
+        $timeout(function() {
+          $ionicSideMenuDelegate.toggleRight();
+        }, 500);
+
+      }
+
+
+      $timeout(function() {
+        $scope.loader.hide();
+
+      }, 500);
     }
 
     $scope.toggleEditGuru = function() {
@@ -61,15 +101,25 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    $scope.removeGuruCourseAndUpdate = function(index) {
+    $scope.removeGuruCourseAndUpdate = function(course, index) {
+
+      if ($state.current.name === 'root.become-guru' && !confirm('Remove ' + course.short_name + '?')) {
+        return;
+      }
 
 
-      var guru_course = $scope.user.guru_courses[index];
       $scope.user.guru_courses.splice(index, 1);
-      $scope.user.updateAttr('remove_guru_course', $scope.user, guru_course, null, $scope);
+
+      var confirmCallback = function() {
+        $scope.loader.hide();
+        $scope.success.show(0, 1000, course.short_name + ' successfully removed');
+      }
+      $scope.loader.show();
+
+      $scope.user.updateAttr('remove_guru_course', $scope.user, course, confirmCallback, $scope);
     }
 
-    $scope.addSelectedGuruSkill = function(skill, input_text) {
+    $scope.addSelectedGuruSkill = function(skill, input_text, $index) {
       $scope.user.guru_skills.push(skill);
 
        if ($scope.user.id) {
@@ -82,40 +132,77 @@ angular.module('uguru.util.controllers')
 
     }
 
-    $scope.addSelectedGuruCourse = function(course, input_text) {
-      // $scope.course_search_text = course.short_name.toUpperCase();
+    $scope.cancelStudentAddCourse = function() {
+      $scope.showCourseInput = !$scope.showCourseInput;
+      $scope.studentCourseInput.value = "";
+    }
+
+    $scope.addSelectedStudentCourse = function(course, input_text, $index) {
+
+
+
+
+      $scope.search_text = '';
+
+      //set the course text to what it should be
+      $scope.studentCourseInput.value = '';
+      $scope.course_search_text = course.short_name
+
+      $scope.user.student_courses.push(course);
+
+      if ($scope.user.id) {
+        //adds to database for user
+        $scope.user.updateAttr('add_student_course', $scope.user, course, null, $scope);
+      } else {
+        //add to local cache so we can loop through it when it is time to update aduser
+        $scope.root.vars.remote_cache.push({'add_student_course': course});
+      }
+
+    }
+
+    $scope.addSelectedGuruCourse = function(course, input_text, $index) {
 
 
       //set the variable to this
+      $scope.static.popular_courses.splice($index, 1);
 
       $scope.search_text = '';
 
       //set the course text to what it should be
       document.getElementById('guru-course-input').value = '';
       $scope.course_search_text = course.short_name
-      //make progress false so we can hide all other elements
-      // $scope.progress = false;
 
-      //TODO JASON ADD TEST CASE: check if course is already in their courses
-
-
-      //add to user local
       $scope.user.guru_courses.push(course);
-
-      //JASON ADD TEST CASE: Check if length of student courses is now longer than one
-
-      //if user is already logged in
-      // $scope.course_search_text = '';
 
       if ($scope.user.id) {
         //adds to database for user
         $scope.user.updateAttr('add_guru_course', $scope.user, course, null, $scope);
       } else {
-        //add to local cache so we can loop through it when it is time to update user
+        //add to local cache so we can loop through it when it is time to update aduser
         $scope.root.vars.remote_cache.push({'add_guru_course': course});
       }
 
     }
+
+    $scope.$on('$ionicView.enter', function() {
+
+
+      $timeout(function() {
+        console.log('view has entered');
+        //add event listener
+        $scope.guruCourseInput = document.getElementById('guru-course-input');
+        $scope.studentCourseInput = document.getElementById('student-course-input');
+        // if ($scope.studentCourseInput) {
+
+        //   $scope.studentCourseInput.addEventListener("keyup", function() {
+        //     alert($scope.studentCourseInput.value.length);
+        //   });
+
+        // }
+
+      }, 1000);
+
+    });
 
 
 

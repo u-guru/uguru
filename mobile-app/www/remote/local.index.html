@@ -24,6 +24,39 @@
      <script>
     LOCAL = true;
     BASE = '/remote';
+    WINDOWS = null;
+    function getMobileOperatingSystem() {
+          var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i)) {
+                    console.log('injecting windows specific css & js');
+                    injectJs('windows.cordova.js');
+                    injectCss('windows.css');
+                  }
+                  else
+                  {
+                    console.log('hard to determine identifies')
+                    // injectCss('web.css')
+                    return 'unknown';
+            }
+    }
+
+      function injectJs(link) {
+          var scr = document.createElement('script');
+          scr.type="text/javascript";
+          scr.src=link;
+          document.getElementsByTagName('head')[0].appendChild(scr)
+      }
+
+      function injectCss(file) {
+        var link = document.createElement("link");
+        link.href = file;
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        document.getElementsByTagName("head")[0].appendChild(link);
+      }
+
+      getMobileOperatingSystem();
+
     </script>
       <!-- start Mixpanel -->
 
@@ -168,6 +201,7 @@
     <script type="text/javascript" src="remote/js/controllers/guru/guru.task.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.profile.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.bill-student.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.remote.ctrl.js"></script>
 
     <!--      New Uguru Student Controllers -->
     <script type="text/javascript" src="remote/js/controllers/student/home.ctrl.js"></script>
@@ -203,6 +237,8 @@
     <script type="text/javascript" src="remote/js/controllers/util/util.description.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.tags.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.onboarding.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.languages.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.experiences.ctrl.js"></script>
 
     <script type="text/javascript" src="remote/js/controllers/util/util.root.ctrl.js"></script>
 

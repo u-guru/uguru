@@ -285,16 +285,59 @@ class UserOneView(restful.Resource):
         if request.json.get('university_id'):
             user.university_id = request.json.get('university_id')
 
-        if request.json.get('email'):
+        # if request.json.get('email'):
 
-            if not user.email:
-                user.email = request.json.get('email_address')
+        #     if not user.email:
+        #         user.email = request.json.get('email_address')
+
+        if request.json.get('confirm_school_email'):
+            from emails import send_transactional_email
+            from hashlib import md5
+            import random
+            user.school_email = request.json.get('confirm_school_email')
+
+            user.school_email_token = md5(str(random.randrange(1000, 10000))).hexdigest()
+
+            base_url = "uguru.me"
+            if not os.environ.get('PRODUCTION'):
+                base_url = "0.0.0.0:5000"
+
+            link = 'http://' + base_url + '/auth/school_email/' + user.school_email_token
+            db_session.commit()
+
+
+            msg_args = (user.name.split(' ')[0], link)
+            msg = """Hi %s,<br><br>Please click this <a href="%s">link</a> to confirm your email <br><br>Best,<br> The Uguru Team""" % msg_args
+            send_transactional_email("[Uguru] Please Authenticate Your School Email", msg, user, "school-email-auth", user.school_email)
+
+
+
+        if request.json.get('check_school_email_code'):
+            school_code = request.json.get('check_school_email_code')
+            user.school_email_confirmed = (school_code == user.school_email_token)
+            db_session.commit()
 
         if not user.phone_number:
             if request.json.get('phone_number'):
                 user.phone_number = request.json.get('phone_number')
 
 
+        if request.json.get('phone_number_generate'):
+            phone_number = request.json.get('phone_number_generate')
+            from texts import send_text_message
+            import random
+            user.phone_number_token = str(random.randrange(1000,10000))
+            user.phone_number = phone_number
+            message = '[Uguru] Hi %s, your phone number confirmation code is %s' % (user.name.split(' ')[0].title(), user.phone_number_token)
+            send_text_message(phone_number, message)
+            print message
+            db_session.commit()
+
+        if request.json.get('phone_number_check_token'):
+            phone_number_token = request.json.get('phone_number_check_token')
+            user.phone_number_confirmed = (user.phone_number_token == phone_number_token)
+            print user.phone_number_token
+            db_session.commit()
 
         if request.json.get('profile_info'):
             profile_info_dict = request.json.get('profile_info')
@@ -302,6 +345,43 @@ class UserOneView(restful.Resource):
             name = profile_info_dict.get('first_name').title() + ' ' + profile_info_dict.get('last_name').title()
             user.email = email
             user.name = name
+            db_session.commit()
+
+        if request.json.get('add_guru_experience'):
+            print 'guru_experience_received'
+            guru_experience_json = request.json.get('add_guru_experience')
+            experience_name = guru_experience_json.get('name')
+            experience_years = guru_experience_json.get('years')
+            experience_description = guru_experience_json.get('description')
+
+            guru_experience_names = []
+            if user.guru_experiences:
+                guru_experience_names = [experience.name for experience in user.guru_experiences]
+
+            if experience_name not in guru_experience_names:
+                experience = Experience()
+                experience.contributed_user_id = user.id
+                experience.university_id = user.university_id
+                experience.time_created = datetime.now()
+                experience.description = experience_description
+                experience.name = experience_name
+                experience.years = experience_years
+                experience.last_updated = datetime.now()
+                experience.time_created = datetime.now()
+
+                db_session.add(experience)
+                db_session.commit()
+
+        if request.json.get('update_guru_experience') and request.json.get('update_guru_experience').get('id'):
+            guru_experience_json = request.json.get('update_guru_experience')
+            guru_experience_id = guru_experience_json.get('id')
+
+            experience = Experience.query.get(guru_experience_id)
+            experience.name = guru_experience_json.get('name')
+            experience.years = guru_experience_json.get('years')
+            experience.description = guru_experience_json.get('description')
+            experience.last_updated = datetime.now()
+
             db_session.commit()
 
         if request.json.get('change_password'):
@@ -320,10 +400,11 @@ class UserOneView(restful.Resource):
                 password=md5(change_password_dict.get('old_password')).hexdigest()
                 ).first()
 
-            if not user_exists:
+            fb_create_account = (user_exists and user.fb_id and not user.password)
+            if not user_exists and not fb_create_account:
                 abort(401)
 
-            user.password = md5(request.json.get('new_password')).hexdigest()
+            user.password = md5(change_password_dict.get('new_password')).hexdigest()
             db_session.commit()
 
 
@@ -333,12 +414,38 @@ class UserOneView(restful.Resource):
         if 'current_hourly' in request.json:
             print 'woohoo current hourly'
             user.current_hourly = int(request.json.get('current_hourly'))
+        print request.json
+        if 'max_hourly' in request.json:
+
+            user.max_hourly = request.json.get('max_hourly')
+            db_session.commit()
 
         if 'uber_friendly' in request.json:
             user.uber_friendly = request.json.get('uber_friendly')
 
+        if 'tutoring_platforms_description' in request.json:
+            user.tutoring_platforms_description = request.json.get('tutoring_platforms_description')
+
         if 'outside_university' in request.json:
             user.outside_university = request.json.get('outside_university')
+
+        if 'email' in request.json:
+            user.email = request.json.get('email')
+
+        if 'change_email' in request.json:
+            email = request.json.get('change_email')
+
+            ## check if email already exists
+            user_already_exists = User.query.filter_by(email=email).first()
+            if user_already_exists and user.id != user_already_exists.id:
+                abort(401)
+            else:
+                user.email = email
+                db_session.commit()
+
+
+        if 'name' in request.json:
+            user.name = request.json.get('name')
 
         if 'summer_15' in request.json:
             user.summer_15 = request.json.get('summer_15')
@@ -355,6 +462,45 @@ class UserOneView(restful.Resource):
         if 'text_notifications' in request.json:
             user.text_notifications = request.json.get('text_notifications')
             print 'coming soon!'
+
+        if 'guru_latest_time' in request.json:
+            user.guru_latest_time = request.json.get('guru_latest_time')
+
+        if 'email_friendly' in request.json:
+            user.email_friendly = request.json.get('email_friendly')
+
+        if 'hangouts_friendly' in request.json:
+            user.hangouts_friendly = request.json.get('hangouts_friendly')
+
+        if 'phone_friendly' in request.json:
+            user.phone_friendly = request.json.get('phone_friendly')
+
+        if 'facetime_friendly' in request.json:
+            user.facetime_friendly = request.json.get('facetime_friendly')
+
+        if 'messenger_friendly' in request.json:
+            user.messenger_friendly = request.json.get('messenger_friendly')
+
+        if 'text_friendly' in request.json:
+            user.text_friendly = request.json.get('text_friendly')
+
+        if 'skype_friendly' in request.json:
+            user.skype_friendly = request.json.get('skype_friendly')
+
+        if 'profile_url' in request.json:
+            user.profile_url = request.json.get('profile_url')
+
+        if 'fb_id' in request.json:
+            if not user.fb_id:
+                fb_id = request.json.get('fb_id')
+                previous_user = User.query.filter_by(fb_id=fb_id).all()
+                if user not in previous_user:
+                    user.fb_id = request.json.get('fb_id')
+                    db_session.commit()
+                else:
+                    print "previous user exists"
+                    return user, 401
+
 
         if 'email_notifications' in request.json:
             user.email_notifications = request.json.get('email_notifications')
@@ -379,9 +525,25 @@ class UserOneView(restful.Resource):
                 user.student_courses.append(c)
                 db_session.commit()
 
+        if request.json.get('guru_introduction'):
+            user.guru_introduction = request.json.get('guru_introduction')
+
+
         if request.json.get('add_guru_intro'):
             user.guru_introduction = request.json.get('introduction')
             print user.guru_introduction
+
+        if request.json.get('add_guru_language'):
+            language_json = request.json.get('add_guru_language')
+            language_id = language_json.get('id')
+            if not language_id:
+                abort(404)
+            else:
+                language_obj = Language.query.get(int(language_id))
+                if language_obj:
+                    user.guru_languages.append(language_obj)
+                    db_session.commit()
+
 
         if request.json.get('add_user_major'):
             major = request.json.get('major')
@@ -400,6 +562,7 @@ class UserOneView(restful.Resource):
             print request.json.get('add_guru_skill')
             skill_json = request.json.get('skill')
             skill_id = skill_json.get('id')
+
             if skill_id:
                 skill = Skill.query.get(int(skill_id))
                 if skill:
@@ -407,8 +570,6 @@ class UserOneView(restful.Resource):
                     user.guru_skills.append(skill)
                     db_session.commit()
                     print 'length of user skills', len(user.guru_skills)
-
-
 
 
         if request.json.get('add_guru_course'):
@@ -441,22 +602,33 @@ class UserOneView(restful.Resource):
             user.current_device_id = request.json.get('current_device_id')
 
 
+        if request.json.get('remove_guru_language'):
+            language_json = request.json.get('remove_guru_language')
+            language_id = language_json.get('id')
+            language = Language.query.get(language_id)
+            print "NOT WORKING YET"
+            # if language in user.guru_languages:
+            #     user.guru_languages.remove(language)
+            #     db_session.commit()
+
+
         if request.json.get('remove_guru_course'):
             course = request.json.get('course')
             course_id = course.get('id')
             print course, course_id
             c = Course.query.get(int(course_id))
-            if user in c.gurus:
-                # c.gurus.remove(user)
-                from app.models import guru_courses_table
-                db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == user.id and guru_courses_table.c.course_id == c.id))
-                # user.guru_courses.remove(c)
-            # for user_course in user.guru_courses:
-            #     if user_course.id == c.id:
-            #         user_course.student_id = None
-            #         db_session.commit()
-            #         print c.short_name, 'removed'
-            db_session.commit()
+            print "not working yet!"
+            # if user in c.gurus:
+            #     # c.gurus.remove(user)
+            #     from app.models import guru_courses_table
+            #     db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == user.id and guru_courses_table.c.course_id == c.id))
+            #     # user.guru_courses.remove(c)
+            # # for user_course in user.guru_courses:
+            # #     if user_course.id == c.id:
+            # #         user_course.student_id = None
+            # #         db_session.commit()
+            # #         print c.short_name, 'removed'
+            # db_session.commit()
 
         if request.json.get('remove_major'):
             major = request.json.get('major')
@@ -466,6 +638,15 @@ class UserOneView(restful.Resource):
             if m in user.majors:
                 user.majors.remove(m)
             db_session.commit()
+
+        if request.json.get('remove_language'):
+            language_json = request.json.get('remove_language')
+            language_id = language_json.get('id')
+            language = Language.query.get(int(language_id))
+
+            if language and language in user.guru_languages:
+                user.guru_languages.remove(language)
+                db_session.commit()
 
         #
         if request.json.get('submit_referral_code'):
@@ -1150,6 +1331,14 @@ class FileView(restful.Resource):
                 print user.name,'saved', file_obj.url
                 db_session.commit()
 
+            if request.values.get('transcript_url'):
+                print request.values.get('transcript_url')
+                user = User.query.get(int(request.values.get('transcript_url')))
+
+                user.transcript_file = file_obj
+                print user.name,'saved', file_obj.url
+                db_session.commit()
+
             return file_obj, 200
 
 
@@ -1724,7 +1913,8 @@ class UserNewView(restful.Resource):
             device = Device.query.get(current_device_id)
 
         if fb_user:
-            fb_user.name = request.json.get('name')
+            if not fb_user.name:
+                fb_user.name = request.json.get('name')
 
             if request.json.get('email'):
                 fb_user.email = request.json.get('email')
@@ -2418,11 +2608,11 @@ class AdminUniversityView(restful.Resource):
     @marshal_with(AdminUniversitySerializer)
     def post(self, auth_token):
         if auth_token and auth_token in APPROVED_ADMIN_TOKENS:
-            
+
             # parse the response
             request_json = json.loads(request.json)
 
-            
+
             university_name = request_json.get('name')
 
             u = University.query.filter_by(name=university_name).first()
@@ -2435,7 +2625,7 @@ class AdminUniversityView(restful.Resource):
             u.num_courses = int(num_classes)
 
             # u.num_depts = int(num_dept)
-            
+
             u.short_name = request_json.get('short_name')
             u.last_updated = datetime.now()
             db_session.add(u)
@@ -2446,16 +2636,17 @@ class AdminUniversityView(restful.Resource):
         return "UNAUTHORIZED", 201
 
 class AdminUniversityDeptCoursesView(restful.Resource):
-    
-        
+
+
     @marshal_with(AdminUniversityDeptCourseSerializer)
     def post(self, auth_token, uni_id, dept_id):
+
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
 
 
         if auth_token and auth_token in APPROVED_ADMIN_TOKENS:
-            
+
             u = University.query.get(uni_id)
             if not u:
                 return "MISSING DATA", 202
@@ -2466,27 +2657,37 @@ class AdminUniversityDeptCoursesView(restful.Resource):
 
             # parse the response
             course_list_json = json.loads(request.json)
-            
+            course_names = [course.name for course in u.courses]
+
+            already_exists_course = 0
             for course_json in course_list_json:
-                pprint(dept_json)
+                if course_json['name'] in course_names:
+                    already_exists_course += 1
+                    continue
 
                 course = Course()
                 course.department_id = d.id
                 course.university_id = u.id
-                course.variations = "|".join(course_json.get('variations'))
+                # course.variations = "|".join(course_json.get('variations'))
                 course.is_popular = course_json.get('is_popular')
-                
+                course.source_url = course_json.get('course_url')
+                course.short_name = course_json.get('code')
+                course.time_added = datetime.now()
+                course.name = course_json.get('name')
+
                 db_session.add(course)
-            
+
             db_session.commit()
-            
+            d.num_courses = len(d.courses)
+            u.num_courses = len(u.courses)
+
             return d.courses, 200
-        
+
         return "UNAUTHORIZED", 201
 
 # create a department
 class AdminUniversityDeptView(restful.Resource):
-    
+
     @marshal_with(AdminUniversityDeptSerializer)
     def post(self, auth_token, uni_id):
         if not auth_token in APPROVED_ADMIN_TOKENS:
@@ -2494,20 +2695,26 @@ class AdminUniversityDeptView(restful.Resource):
 
 
         if auth_token and auth_token in APPROVED_ADMIN_TOKENS:
-            
+
             u = University.query.get(uni_id)
             if not u:
                 return "MISSING DATA", 202
 
             print u.name, u.num_depts, u.num_courses
-            from pprint import pprint
 
-            # parse the response
+
             dept_list_request_json = json.loads(request.json)
-            
-            
-            for dept_json in dept_list_request_json[0:1]:
-                pprint(dept_json)
+            dept_names = [dept.name for dept in u.departments]
+
+            already_exists_dept = 0
+            for dept_json in dept_list_request_json:
+
+                if dept_json['name'] in dept_names:
+                    already_exists_dept += 1
+                    continue
+
+
+                # pprint(dept_json)
 
                 dept = Department()
                 dept.num_courses = dept_json.get('num_courses')
@@ -2516,17 +2723,22 @@ class AdminUniversityDeptView(restful.Resource):
                 dept.source = 'chegg'
                 dept.source_url = dept_json.get('source')
                 dept.university_id = u.id
+                dept.name = dept_json.get('name')
+
                 db_session.add(dept)
-            
+
+            u.num_depts = len(u.departments)
+
             db_session.commit()
-            
+
+            # update num depts, update num universities
             return u.departments, 200
-        
+
         return "UNAUTHORIZED", 201
-        
+
 
 ####################
-### END (OFFICIAL) #
+### END ADMIN API(OFFICIAL) #
 ####################
 
 api.add_resource(UserView, '/api/v1/users')
@@ -2562,7 +2774,7 @@ api.add_resource(AdminUserView, '/api/admin/users/')
 api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/university/<int:uni_id>/courses')
 api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts')
-api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/university/<int:uni_id>/depts/<int:dept_id>/courses')
+api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts/<int:dept_id>/courses')
 api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients')
 api.add_resource(AdminSendView, '/api/admin/<string:auth_token>/send_test')
 api.add_resource(AdminAppUpdateView, '/api/admin/app/update')

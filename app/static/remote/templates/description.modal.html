@@ -15,7 +15,7 @@
         <ion-list class='standard-bg flex-item-c pure-g j-start bg-transparent'>
           <ion-item class='pure-u-1 item-icon-right relative description-wrapper-item' ng-hide='progress'>
                 <a ng-click='showAttachActionSheet()'>
-                  <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' src='{{img_base}}./img/icons/paperclip.svg'>
+                  <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' ng-src='{{img_base}}./img/icons/paperclip.svg'>
                 </a>
                 <textarea id='description-input'  style='padding-right:3em; font-size:1.25em;' rows="10" class='full-width' ng-model='request.description' placeholder='Describe your problem (optional)'></textarea>
           </ion-item>
@@ -39,7 +39,7 @@
       </div>
     <div class='pure-u-1 tag-input-wrapper'>
         <label class="item item-input relative" ng-click='launchTagsModal()'>
-          <img style='margin-top:0.4em;'class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' src='{{img_base}}./img/icons/tags.svg'>
+          <img style='margin-top:0.4em;'class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' ng-src='{{img_base}}./img/icons/tags.svg'>
           <p class='empty-tags-placeholder opacity-1-2' style='margin-top:0.4em;' ng-show='!request.tags || request.tags.length === 0'>Add some tags (optional)</p>
           <p class='tags-wrapper'>&nbsp;<span class='blue request-tag' ng-repeat='tag in request.tags'>#{{tag}} </span> </p>
         </label>

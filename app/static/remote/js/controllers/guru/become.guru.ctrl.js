@@ -25,6 +25,9 @@ angular.module('uguru.guru.controllers')
     $scope.courses = $scope.static.courses;
     console.log($scope.majors.length);
 
+    // $ionicConfigProvider.views.swipeBackEnabled(true);
+
+
     $scope.major_input=  {search_text:'', majors:$scope.root.vars.majors};
 
     $scope.slideHasChanged = function(index) {

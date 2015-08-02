@@ -13,13 +13,6 @@
 
 <ion-content>
     <ion-scroll class='has-header'>
-          <div class='pure-g'>
-            <div class='pure-u-1 padding-1em center'>
-              <button class='button button-full button-black micro-text fb-blue-bg'  ng-click='signupFacebook()'>Continue with Facebook</button>
-              <br>
-              <a class='center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();'> Or </a>
-            </div>
-          </div>
               <div class='container' style='padding-left:1em; padding-right:1em;' ng-click='this.style.opacity = 0.1;'>
                 <div class='pure-g'>
                   <div class='pure-u-1-2' ng-show='!loginMode'>
@@ -51,19 +44,29 @@
 
                 <div class='pure-g' ng-show='!loginMode'>
                   <div class='pure-u-1' style='padding-left:1em; padding-right:1em;'>
-                    <a style='line-height:4em' ng-click='completeSignup()' class='button button-full light-blue-bg button-footer white-text uppercase'>Create Account</a>
+                    <a style='line-height:3.5em' ng-click='completeSignup()' class='button button-full light-blue-bg button-footer white-text uppercase'>Create Account</a>
                   </div>
                 </div>
 
                 <div class='pure-g' ng-show='loginMode'>
-                  <div class='pure-u-1' style='padding-left:1em; padding-right:1em;'>
+                  <div class='pure-u-1' style='padding-left:1em; padding-right:1em; margin-top:1em;'>
                     <a style='line-height:3.5em' ng-click='completeSignup()' class='button button-full light-blue-bg button-footer white-text uppercase'>Log In</a>
                   </div>
                 </div>
 
 
-                <div class='pure-u-1 padding-half' style='font-size:150%; opacity:0.5;margin-top:-0.5em;' >
-                  <div class='pure-u-1 padding-half center' id="E2E_SwitchLog" ng-show='user && !user.id'>
+                <div class='pure-g'>
+                  <div class='pure-u-1 padding-1em center' style='padding-top:0em; padding-bottom:0em;'>
+                    <div class='pure-u-1 padding-half'>
+                      <a class='center grey uppercase semibold nano-text padding-1em'> Or </a>
+                    </div>
+
+                    <a class='button button-full button-black uppercase fb-blue-bg'  ng-click='signupFacebook()' style='line-height:3.5em; font-size:90%;'>Continue with Facebook</a>
+
+                  </div>
+                </div>
+                <div class='pure-u-1' style='font-size:150%; padding-left:1em; padding-right:1em;' >
+                  <div class='pure-u-1 center' id="E2E_SwitchLog" ng-show='user && !user.id'>
                       <a class='button button-full button-stable-outlined center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();' ng-show='!loginMode'> Already have an account? </a>
                       <a class='button button-full button-stable-outlined center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();' ng-show='loginMode'> or Sign Up Here </a>
                   </div>
