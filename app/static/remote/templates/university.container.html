@@ -42,7 +42,7 @@
                   {{university.miles}}
                 </div>
       </ion-item>
-      <ion-item class='item-button-right request-form-item'  id='location-filled-item' ng-repeat="university in static.nearest_universities.slice(0, 8)" ng-click="universitySelected(university, $event)">
+      <ion-item class='item-button-right request-form-item'  id='location-filled-item' ng-repeat="university in static.nearest_universities.slice(0, 8)" ng-click="saveUniversityFromStudentProfileSideBar(university)">
                   <p class='semibold'>{{university.title}}<br>
                     <span class='nano-text'>
 

@@ -62,8 +62,13 @@ angular.module('uguru.root.services')
 
                           if (is_transcript) {
                             formData.append('transcript_url', is_transcript);
+                            $scope.root.vars.transcript_url_changed = true;
                           }
-                          $scope.root.vars.transcript_url_changed = true;
+
+                          if ($scope.root.vars.profile_url_changed) {
+                            formData.append('profile_url', $scope.user.id);
+                          }
+
                           $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
 
                         }, function(err) {
