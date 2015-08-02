@@ -12,11 +12,19 @@ exports.config = {
         //   {'browserName': 'phantomjs'}
         // ],
         specs: [
-            '../test_case/Release_One_Mobile/onboarding/onboarding_test.js'
+            //'../test_case/Release_One_Mobile/onboarding/onboarding_test.js',
+            '../test_case/Release_One_Mobile/onboarding/swiping.js',
+            '../test_case/Release_One_Mobile/onboarding/slect_bg.js',
+            '../test_case/Release_One_Mobile/onboarding/manual_school.js'
+
+
         ],
         suites:
         {
- 
+            s  : '../test_case/Release_One_Mobile/onboarding/swiping.js',
+            bg : '../test_case/Release_One_Mobile/onboarding/slect_bg.js',
+            m  : '../test_case/Release_One_Mobile/onboarding/manual_school.js'
+
         },
         resultJsonOutputFile: 'www/remote/tests/e2e/result.json',
         rootElement: "[ng-app]" ,
@@ -59,6 +67,12 @@ exports.config = {
             protractor.get = require('../test_case/globals.js').globals;
             protractor.run = require('../test_case/globals.js').run;
             browser.driver.manage().window().setSize(414, 736);
+            browser.driver.get('http://localhost:8100/#/onboarding');
+            browser.sleep(2000);
+            // browser.wait(function() 
+            //   { 
+            //     return !browser.driver.isElementPresent(by.css('.loading')); 
+            //   }, 8000);
         }
         
 };

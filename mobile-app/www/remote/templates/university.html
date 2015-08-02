@@ -64,7 +64,7 @@
                 <select ng-model="selectedBg" id='role-select' class='ng-class:{"student-width": selectedBg.name === "student", "professional-width": selectedBg.name === "professional", "hs-student-width": selectedBg.name === "HS student"}' ng-change="unFocusSelect()" ng-options="background.name for background in user_bgs">
                   
                 </select>
-                <span ng-show='selectedBg.name==="student"'>attending</span><span ng-show='selectedBg.name==="professional"'>who attended</span><span ng-show='selectedBg.name==="HS student"'>aspiring to attend</span>
+                <span id="E2E-student" ng-show='selectedBg.name==="student"'>attending</span><span id="E2E-prof" ng-show='selectedBg.name==="professional"'>who attended</span><span id="E2E-hs" ng-show='selectedBg.name==="HS student"'>aspiring to attend</span>
               </p>
             </div>
 
