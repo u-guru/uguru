@@ -367,7 +367,7 @@ angular.module('uguru.guru.controllers')
                   return;
                 }
                 //if user hasn't typed in a token & clicked verify [resend exists]
-                if ($scope.user.phone_number && (!$scope.data.token || $scope.data.token.length < 4)) {
+                if ($scope.user.phone_number && $scope.user.phone_number_token && (!$scope.data.token || $scope.data.token.length < 4)) {
                   alert('Please enter a 4 digit code');
                   return;
                 }
