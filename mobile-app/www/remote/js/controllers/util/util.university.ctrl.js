@@ -251,7 +251,11 @@ angular.module('uguru.util.controllers', [])
           $timeout(function() {
             $scope.loader.hide();
             $ionicViewSwitcher.nextDirection('forward');
-            $state.go('^.home')
+            if ($state.current.name === 'root.university-container') {
+              $scope.backToStudentEditProfile(true);
+            } else {
+              $state.go('^.home')
+            }
           }, 1000);
         }
 
@@ -299,7 +303,11 @@ angular.module('uguru.util.controllers', [])
           $timeout(function() {
             $scope.loader.hide();
             $ionicViewSwitcher.nextDirection('forward');
-            $state.go('^.home')
+            if ($state.current.name === 'root.university-container') {
+              $scope.backToStudentEditProfile(true);
+            } else {
+              $state.go('^.home')
+            }
         }, 1000);
 
 
@@ -414,7 +422,7 @@ angular.module('uguru.util.controllers', [])
 
     $scope.$on('$ionicView.enter', function() {
 
-      if ($state.current.name === 'root.university-container') {
+      if ($state.current.name === 'root.university-container' && (!$scope.static.nearest_universities || !$scope.static.nearest_universities.length)) {
         $timeout(function() {
           $scope.setFocus();
         }, 1250)
