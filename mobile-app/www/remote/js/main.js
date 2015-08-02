@@ -10,21 +10,17 @@ var REST_URL = 'http://uguru-rest.herokuapp.com'
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-<<<<<<< HEAD
-  BASE_URL = 'http://192.168.42.83:8100/remote';
- // REST_URL = 'http://192.168.42.66:5000';
+//   BASE_URL = 'http://192.168.42.83:8100/remote';
+//  // REST_URL = 'http://192.168.42.66:5000';
 
-  // BASE_URL = 'http://localhost:8100/';
-  var REST_URL = 'http://uguru-rest.herokuapp.com'
-
-=======
+//   // BASE_URL = 'http://localhost:8100/';
+//   var REST_URL = 'http://uguru-rest.herokuapp.com'
   BASE_URL = 'http://192.168.42.66:8100';
  REST_URL = 'http://192.168.42.66:5000';
 
   // BASE_URL = 'http://localhost:8100/';
   // REST_URL = 'http://localhost:5000';
   // BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
->>>>>>> 930665a9f70af8198f9486e8fc5d2c8153340941
 
 } else {
   img_base = '/static/'
