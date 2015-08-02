@@ -249,6 +249,7 @@ angular.module('uguru.guru.controllers')
 
 
       if ($scope.platform.mobile) {
+        $scope.root.vars.profile_url_changed = true;
         Camera.takePicture($scope, index, true);
       } else {
         var element = document.getElementById('file-input-guru-edit-profile')

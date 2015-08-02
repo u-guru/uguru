@@ -66,6 +66,7 @@ angular.module('uguru.guru.controllers')
 
     $scope.takePhoto = function(index) {
       if ($scope.platform.mobile) {
+        $scope.root.vars.profile_url_changed = true;
         Camera.takePicture($scope, index, $scope.takePhotoCallbackSuccess);
       } else {
         var element = document.getElementById('file-input-web')

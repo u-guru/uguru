@@ -1180,6 +1180,11 @@ angular.module('uguru.user', [])
                             else if ($state.current.name === 'root.guru-questions') {
                                 $scope.proposal.files.push(file.plain());
                             }
+                            else if ($scope.root.vars.profile_url_changed) {
+                                $scope.root.vars.profile_url_changed = false;
+                                $scope.user.profile_url = file.plain();
+                                $localstorage.setObject('user', $scope.user);
+                            }
                             else if ($scope.root.vars.transcript_url_changed) {
                                 $scope.root.vars.transcript_url_changed = false;
                                 $scope.user.transcript_file = file.plain();
