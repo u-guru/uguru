@@ -80,6 +80,20 @@ angular.module('uguru.guru.controllers')
         $scope.user.guru_latest_time = e.selectedIndex;
         $scope.user.updateAttr('guru_latest_time', $scope.user, $scope.user.guru_latest_time, null, $scope);
       }, 500);
+
+
+        var options = document.getElementsByTagName('option');
+        var selIndex = document.getElementById("late-night-select").selectedIndex;
+
+        for (var i = 0, length = options.length; i < length; i++) {
+             if(i==selIndex) {
+                options[i].style.backgroundColor = 'white';
+             }
+             else {
+                options[i].style.backgroundColor = 'white';
+             }
+        }
+
     }
 
     $scope.maxHourlyOnChange = function(options) {
@@ -89,8 +103,20 @@ angular.module('uguru.guru.controllers')
         var strUser = e.options[e.selectedIndex].text;
         $scope.user.max_hourly = parseInt(strUser);
         $scope.user.updateAttr('max_hourly', $scope.user, $scope.user.max_hourly, null, $scope);
+
+        var options = document.getElementsByTagName('option');
+        var selIndex = document.getElementById("max-hourly-select").selectedIndex;
+
+        for (var i = 0, length = options.length; i < length; i++) {
+             if(i==selIndex) {
+                options[i].style.backgroundColor = 'white';
+             }
+             else {
+                options[i].style.backgroundColor = 'white';
+             }
+        }
       }, 500);
-    }
+    };
 
     $scope.transitionToMajor = function() {
       $state.go('^.majors-container');
@@ -504,7 +530,14 @@ angular.module('uguru.guru.controllers')
 
                     $ionicViewSwitcher.nextDirection('enter');
                     $state.go('^.guru');
-          }
+        }
+
+        var options = document.getElementsByTagName('option');
+
+
+        for (var i = 0, length = options.length; i < length; i++) {
+            options[i].style.backgroundColor = 'white';
+        }
 
 
     });

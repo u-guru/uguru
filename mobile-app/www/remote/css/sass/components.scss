@@ -2867,8 +2867,8 @@ a.button-footer:visited, a.button-footer:hover {
     color:white !important;
 }
 
-.guru-profile select option {
-    background-color:white !important;
+.guru-profile select, .guru-profile select option {
+    background-color:transparent !important;
     color:$blue !important;
 }
 
@@ -2937,9 +2937,9 @@ p.progressbar-text {
     top:108px !important;
 }
 
-.guru-profile .guru-profile-slide-box .slider-slides {
-    width:200% !important;
-}
+// .guru-profile .guru-profile-slide-box .slider-slides {
+//     width:200% !important;
+// }
 
 .guru-profile-slide-box ion-slide {
     width:50% !important;
