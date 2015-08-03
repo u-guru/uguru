@@ -906,9 +906,9 @@ angular.module('uguru.util.controllers')
       }
       var fbCheckStatusCallback = function(response) {
 
-        if (mobileWeb && $scope.platform.web) {
+        if ((mobileWeb && $scope.platform.web) || $scope.isWindowsPlatform()) {
               if (response.status === "unknown") {
-                var login_redirect_uri = "http://localhost:5000/app/";
+                var login_redirect_uri = "http://uguru.me/app/";
                 var login_response_type = 'token';
                 var loginURL = 'https://www.facebook.com/dialog/oauth?client_id=' + 1416375518604557 + '&redirect_uri=' + login_redirect_uri + '&response_type=' + login_response_type;
                 $localstorage.set('mobile-web-auth', true);
