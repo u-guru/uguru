@@ -1,6 +1,6 @@
 // Uguru upp
 
-var LOCAL = true; //local to the 8100 codebasebirbirs
+var LOCAL = false; //local to the 8100 codebasebirbirs
 
 
 
@@ -11,10 +11,10 @@ var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
   BASE_URL = 'http://192.168.42.66:8100';
- REST_URL = 'http://192.168.42.66:5000';
+ // REST_URL = 'http://192.168.42.66:5000';
 
   // BASE_URL = 'http://localhost:8100/';
-  // REST_URL = 'http://localhost:5000';
+  REST_URL = 'http://localhost:5000';
   // BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 
 } else {
