@@ -1,14 +1,28 @@
-Running E2E-test
-Setup
-1. Using The .bash_profile for best test
+**Setup**
+- % npm install -g protractor
+- % web-driver update
 
-Commands for Onboarding Test : 
-run eniter test : %po
+**Running**
+- Open 3 tabs
+ - % zsh
+ - % source ~/.bash_profile 
+ - % um 
+- First Tab:
+ - % ionic serve
+- Second Tab:
+ - $ ws 
 
-Options (for running Specific test case)
-Swipping Test :
-	%po --suite s               
-Backgroud Test (Student, Professional, HS student):
-	%po --suite bg              
-Manuel Choose University test:
-	%po --suite m               
+**Thrid Tab ( the one u gonna use for start the protractor)**
+-
+
+**Onboarding Test :**
+- Commands : 
+	- run enitered test :
+		- %po
+- Options (for running Specific test case)
+ - Swipping Test :
+	- %po --suite s               
+ - Backgroud Test (Student, Professional, HS student):
+	- %po --suite bg              
+ - Manuel Choose University test:
+	- %po --suite m               
