@@ -893,6 +893,10 @@ angular.module('uguru.util.controllers')
   }
   }
 
+  $scope.isWindowsPlatform = function() {
+    return (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT');
+  };
+
     $scope.fbAuthBrowser = function() {
       var appID = 1416375518604557;
       var fbVersion = "v2.2";
