@@ -900,7 +900,7 @@ angular.module('uguru.util.controllers')
     $scope.fbAuthBrowser = function() {
       var appID = 1416375518604557;
       var fbVersion = "v2.2";
-      var mobileWeb = $scope.platform.web && (ionic.Platform.isIOS() || ionic.Platform.isAndroid() || $scope.isWindowsPlatform() );
+      var mobileWeb = ($scope.platform.web && (ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone())) || $scope.isWindowsPlatform();
       if (!facebookConnectPlugin) {
         var facebookConnectPlugin = initFacebookConnect();
       }
