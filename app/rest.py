@@ -272,6 +272,19 @@ class UserOneView(restful.Resource):
         #     abort(400)
 
         user = User.query.get(_id)
+        if not user and request.json.get('email') and request.json.get('forgot_password'):
+            email_user = User.query.filter_by(email=request.json.get('email')).first()
+            if email_user:
+                from hashlib import md5
+                import uuid
+                raw_password = uuid.uuid4().hex[0:5]
+                email_user.password = md5(raw_password).hexdigest()
+                db_session.commit()
+                from app.emails import send_reset_password_email
+                send_reset_password_email(email_user, raw_password)
+                return 201
+            else:
+                abort(404)
         if not user:
             abort(400)
 
