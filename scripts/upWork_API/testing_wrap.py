@@ -54,20 +54,19 @@ job_key = '~014754850f959aacfa'
 context = {'related_jobcategory': '40'}
 cover_message = 'Hello guys! I will be sending over google docs, shortly'
 # upwork_wrapper.cancel_a_job(job_key,'2')
-
-
-
-with open('user_name_applications.json') as send_message:
-	get_me_data = json.load(send_message)
-	for item in get_me_data:
-		get_me_worker_id = item[1]['participants']
-		for send_message in get_me_worker_id:
-			username = send_message['username']
-				#upwork_wrapper.send_message('2405c762',username,'Regarding the new job', 'Hello there! I have got a very reasonable pricing job for you!, I apologise as I couldnt get back to you regarding my early job posting, here is the link to the new job posting /https://www.upwork.com/jobs/Colleges-Data-Scraping-Data-Collection-Data-Entry_~~f12cd1aa02b2bdde/, its a perfect deal')
-			upwork_wrapper.send_client_offer('Data Scraping','fixed-price',1.0,description,'1850815','r9gf7hijszllyinylk0xrg',context=context,contractor_username = username,milestones=milestones )
-			print "offer sent to", username
-
-
+# upwork_wrapper.get_milestone_submission_list()
+#pwork_wrapper.get_milestone_submission_list()
+# with open('user_name_applications.json') as send_message:
+# 	get_me_data = json.load(send_message)
+# 	for item in get_me_data:
+# 		get_me_worker_id = item[1]['participants']
+# 		for send_message in get_me_worker_id:
+# 			username = send_message['username']
+# 				#upwork_wrapper.send_message('2405c762',username,'Regarding the new job', 'Hello there! I have got a very reasonable pricing job for you!, I apologise as I couldnt get back to you regarding my early job posting, here is the link to the new job posting /https://www.upwork.com/jobs/Colleges-Data-Scraping-Data-Collection-Data-Entry_~~f12cd1aa02b2bdde/, its a perfect deal')
+# 			upwork_wrapper.send_client_offer('Data Scraping','fixed-price',1.0,description,'1850815','r9gf7hijszllyinylk0xrg',context=context,contractor_username = username,milestones=milestones )
+# 			print "offer sent to", username
+#~01482ead7845bf6cea
+upwork_wrapper.send_message('2405c762','rashidhussain157','Regarding the new job', 'Hello there! Excellent job, all you need to do is paste your work on the respective google doc I sent you instead of excel sheet! for me to confirm things and pay you!, Thank you!')
 # milestones = 
 # [
 #    	{"milestone_description":"Get the needed field data in the google sheet(https://docs.google.com/spreadsheets/d/1673EIcylaWhUSEFK0SglZ1YKQaqmn5fgQJ_icsMd_bQ/edit?usp=sharing) direction is written in job post and description above!\n\n Deadline: Sunday, July 23rd 2015(California) by the end of the day", "deposit_amount":"1", "due_date":"07-23-2015"},

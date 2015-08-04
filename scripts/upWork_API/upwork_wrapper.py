@@ -63,7 +63,7 @@ def save_user_name():
 		with open('user_name_applications.json', 'w') as fp:
 			json.dump(user_name,fp,indent = 4)
 		print "usernames successfully saved!"
-save_user_name()
+#save_user_name()
 
 
 # with open('user_name_applications.json') as send_message:
@@ -188,7 +188,23 @@ description = 'I am looking to hire someone who can WEB RESEARCH + DATA ENTRY fo
 # 				print "offer sent to", username
 #'r9gf7hijszllyinylk0xrg'
 #client.offers.send_client_offer('Data Scraping','fixed-price',1.0,description,'1850815','r9gf7hijszllyinylk0xrg',contractor_username = 'rashidhussain157',context=context,milestones=milestones )
+# get_active_milestone = client.hr_v3.get_active_milestone24be7d51a90a8e3d0f6cfd59ca9ff689(15226376)
+# pp = pprint.PrettyPrinter(indent = 4)
+# pp.pprint(get_active_milestone)
 
+# object_oreinted = client.hr.get_engagements()
+# pp = pprint.PrettyPrinter(indent = 4)
+# pp.pprint(object_oreinted)
+
+# object_oreinted = client.hr_v3.get_milestone_submissions('15226376')
+# pp = pprint.PrettyPrinter(indent = 4)
+# pp.pprint(object_oreinted)
+
+# object_oreinted = client.hr_v3.get_active_milestone(15226376)
+# object_oreinted = client.hr_v3.get_milestone_submissions(969406)
+# pp = pprint.PrettyPrinter(indent = 4)
+# pp.pprint(object_oreinted)
+# client.hr_v3.get_active_milestone(contract_reference)
 
 def get_engangements():
 		contract_reference = client.hr.get_engagements()
@@ -211,6 +227,9 @@ def get_submission_ids():
 				json.dump(big_array,submission_id,indent = 4)
 			print "Id's are saved!"
 			return upwork_wrapper.get_submission_ids()
+
+
+
 
 def get_milestone_submission_list():
 
