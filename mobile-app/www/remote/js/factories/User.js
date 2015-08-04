@@ -989,6 +989,13 @@ angular.module('uguru.user', [])
                     'confirm_school_email': obj
                 }
               }
+
+              if (arg === 'forgot_password') {
+                return {
+                    'email': obj,
+                    'forgot_password': true
+                }
+              }
         },
         getUserFromServer: function($scope, callback, $state) {
 
@@ -1415,19 +1422,25 @@ angular.module('uguru.user', [])
 
         },
         updateAttrUser: function(arg, user, obj, success_callback, $scope, failure_callback) {
-            if (!user.id) {
+            if (!user.id && arg !== 'forgot_password') {
               console.log('user has not created an account yet.')
               return
             }
 
             var payload = User.getPayload(arg, user, obj);
+
+            if (!user.id) {
+                user.id = 1;
+            }
+
             User.updateAttr(payload, user.id).then(function(user) {
 
-                var processed_user = processResults(user.plain());
-
-                assignPropertiesToRootScope($scope, processed_user)
-                delegateActionsFromProcessedUser($scope);
-                $localstorage.setObject('user', $scope.user);
+                if (arg !== 'forgot_password') {
+                    var processed_user = processResults(user.plain());
+                    assignPropertiesToRootScope($scope, processed_user)
+                    delegateActionsFromProcessedUser($scope);
+                    $localstorage.setObject('user', $scope.user);
+                }
 
                 if (success_callback) {
                     success_callback();

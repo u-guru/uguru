@@ -130,16 +130,23 @@ angular.module('uguru.util.controllers')
         return;
       }
 
-      $scope.user.updateAttr('reset_password', $scope.user, $scope.user.email, successCallback, $scope, failureCallback);
+      var successCallback = function() {
+          $scope.loader.hide();
+          alert("Reset Successful.\nPlease check " + $scope.signupForm.email.toLowerCase() + ' for more details!');
+          $scope.signupForm.email = '';
+      }
+
+      var failureCallback = function(err) {
+        if (err && err.status === 404) {
+          alert('The email ' + $scope.signupForm.email + ' does not exist in our records.\n Try again?');
+        }
+      }
+
+      $scope.user.updateAttr('forgot_password', $scope.user, $scope.signupForm.email, successCallback, $scope, failureCallback);
       $scope.loader.show();
       $timeout(function() {
         $scope.toggleBackToLoginMode();
       }, 500)
-      $timeout(function() {
-        $scope.loader.hide();
-        alert("Reset Successful.\nPlease check " + $scope.signupForm.email.toLowerCase() + ' for more details!');
-      }, 1000);
-
     }
 
     $scope.toggleResetModeFromLogin = function() {
