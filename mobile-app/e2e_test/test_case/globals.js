@@ -24,7 +24,7 @@ var describeButton = element(by.id("E2E-describe"));
 var tagButton = element(by.id("E2E-tag"));
 
 var email = element(by.id('email-input'));
-var SubmitButton = element(by.id('done-button'));
+var SubmitButton = element(by.css('[ng-click="completeSignup()"]'));
 var ErrorMsg = element(by.id('E2E-show'));
 var FindUniversity =  element(by.id('E2E-university')); 
 var taskButton = element(by.css('[ng-click="launchTaskVerbModal()"]'));

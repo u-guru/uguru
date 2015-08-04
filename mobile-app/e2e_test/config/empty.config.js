@@ -15,20 +15,7 @@ exports.config = {
         ],
         suites:
         {
-          //setting
-          o :'www/remote/tests/e2e/onboarding_test.js',
-          //onboarding
-          l :'www/remote/tests/e2e/sign_test.js',
-          //Setting
-          sf:'www/remote/tests/e2e/setting_test_fb.js',
-          se:'www/remote/tests/e2e/setting_test_email.js',
-          //school
-          uf:'www/remote/tests/e2e/university_test_fb.js',
-          //uguru
-          ugf :'www/remote/tests/e2e/uguru_test_fb.js',
-          bgf :'www/remote/tests/e2e/become_test.js',
-          epf :'www/remote/tests/e2e/uguru_edit_fb.js'
-
+            
         },
         resultJsonOutputFile: 'www/remote/tests/e2e/result.json',
         rootElement: "[ng-app]" ,
@@ -68,8 +55,8 @@ exports.config = {
                     },
                     customProcessors: []
                 }));
-            protractor.get = require('./www/remote/tests/e2e/globals.js').globals;
-            protractor.run = require('./www/remote/tests/e2e/globals.js').run;
+            protractor.get = require('../test_case/globals.js').globals;
+            protractor.run = require('../test_case/globals.js').run;
             browser.driver.manage().window().setSize(414, 736);
         }
         

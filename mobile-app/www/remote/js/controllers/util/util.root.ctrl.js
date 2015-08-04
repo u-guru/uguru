@@ -388,7 +388,7 @@ angular.module('uguru.util.controllers')
                   message = 'Saved!';
               }
               $ionicLoading.show({
-                template: '<span class="capitalized">'  + message + '</span>',
+                template: '<span id="E2E-msg" value="' + message + '" class="capitalized">'  + message + '</span>',
                 delay: delay,
                 duration: duration
               });
