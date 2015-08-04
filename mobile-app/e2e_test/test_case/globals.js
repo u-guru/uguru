@@ -4,6 +4,7 @@ var settingButton = element(by.id('settings-button'));
 var connectFB = element(by.css('[ng-click="connectWithFacebook()"]'));
 var signFB = element(by.css('[ng-click="signupFacebook()"]'));
 
+var msg = element(by.id('E2E-msg'));
 
 
 var request = element(by.id('request-button'));
@@ -37,7 +38,9 @@ var SearchUniversity = element(by.id('E2E-manuelUni'));
 var roleSelect = element(by.id('role-select'));
 //account
 var viaEmail= element(by.id('E2E_Email'));
-var logoff = element(by.id('E2E-logoff'));
+// var logoff = element(by.id('E2E-logoff'));
+var logoff = element(by.css('[ng-click="logoutUser()"]'));
+
 var usrProfile = element(by.id('E2E-profile'));
 //Course
 var editCourses = element(by.css('[ng-click="goToEditCourses()"]'));
@@ -227,14 +230,21 @@ exports.run =
         var d = new Date();
         var sec = d.getSeconds();
         var hr = d.getHours();
+        var ms = d.getMilliseconds();
         firstName.sendKeys('John');
         lastName.sendKeys('hair');
         if (isNew== true)
-            email.sendKeys(Date.UTC(2012,02,30,hr,sec)+'@jason-test.edu')
+            email.sendKeys(Date.UTC(2012,02,30,hr,sec,ms)+'@jason-test.edu')
         else
             email.sendKeys('jason@berkeley.edu');
         password.sendKeys('test');
-        SubmitButton.click();
+        SubmitButton.click().then(function()
+            {
+                msg.getAttribute('value').then(function(value )
+                    {
+                        expect(value).toBe("Account Successfully Created!");
+                    });
+            });
 
      },
      LogIn: function (id, pw, repeat)
@@ -251,7 +261,13 @@ exports.run =
          logoff.click();
      	 browser.sleep(1000);
 		 var alertDialog = browser.switchTo().alert();
-		 alertDialog.accept();  // Use to accept (simulate clicking ok)
+		 alertDialog.accept().then(function()
+         {
+                msg.getAttribute('value').then(function(value )
+                    {
+                        expect(value).toBe("You have been successfully logged out!");
+                    });
+         });  // Use to accept (simulate clicking ok)
      },
       Description : function ()
      {

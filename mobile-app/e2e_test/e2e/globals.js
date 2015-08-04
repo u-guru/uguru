@@ -3,6 +3,7 @@ var settingButton = element(by.id('settings-button'));
 
 var connectFB = element(by.css('[ng-click="connectWithFacebook()"]'));
 var signFB = element(by.css('[ng-click="signupFacebook()"]'));
+var msg = element(by.id('E2E-msg'));
 
 
 
@@ -111,7 +112,8 @@ exports.globals =
         guruCourse : guruCourse,
         guruMajor  : guruMajor,
         guruSkill  : guruSkill,
-        guruPhoto  : guruPhoto
+        guruPhoto  : guruPhoto,
+        msg : msg
     };
 exports.run =
 {

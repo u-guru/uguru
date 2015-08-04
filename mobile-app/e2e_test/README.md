@@ -33,5 +33,7 @@
 		- %pe
 - Options (for running Specific test case)
  - Log in Test :
-	- %pe --suite l             
+	- %pe --suite l  
+ - Sign up Test:  
+	- %pe --suite s            
  

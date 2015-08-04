@@ -13,7 +13,7 @@ describe('Unit Test : User logs in with email address', function ()
 			{
 				msg.getAttribute('value').then(function(value )
 				{
-					expect(value).toBe("Please fill in all the field");
+					expect(value).toBe("Please fill in all fields!");
 				});
 			});
     	});
