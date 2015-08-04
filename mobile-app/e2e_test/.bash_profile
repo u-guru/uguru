@@ -4,8 +4,11 @@ alias uw="cd ~/Git/uguru"
 alias um="cd ~/Git/uguru/mobile-app"
 alias s="subl"
 alias ba="um && sh scripts/android_build.sh"
+# E2E 
 alias rp="protractor e2e_test/config/protractor.config.js"
 alias po="protractor e2e_test/config/onboarding.config.js"
+alias pe="protractor e2e_test/config/email.config.js"
+
 alias rph="protractor e2e_test/config/protractor.config.headless.js"
 alias ws="webdriver-manager start"
 alias wu="webdriver-manager update"

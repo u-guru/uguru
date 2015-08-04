@@ -26,3 +26,12 @@
 	- %po --suite bg              
  - Manuel Choose University test:
 	- %po --suite m               
+
+**Log Test :**
+- Commands : 
+	- run enitered test :
+		- %pe
+- Options (for running Specific test case)
+ - Log in Test :
+	- %pe --suite l             
+ 
