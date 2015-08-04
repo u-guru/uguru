@@ -30,6 +30,7 @@ angular.module('uguru.util.controllers')
     $scope.root.vars.show_account_fields = false;
     $scope.loginMode = false;
     $scope.headerText = 'Sign Up';
+    $scope.resetMode = false;
 
 
     $scope.support_index = 0;
@@ -113,6 +114,62 @@ angular.module('uguru.util.controllers')
     $scope.goToEditCourses = function() {
       $scope.loader.show();
       $state.go('^.courses');
+      $timeout(function() {
+        $scope.loader.hide();
+      }, 750);
+    }
+
+    $scope.attemptToResetPassword = function() {
+      function validateEmail(email) {
+          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(email);
+      }
+
+      if (!validateEmail($scope.signupForm.email)) {
+        alert('Please enter valid email');
+        return;
+      }
+
+      $scope.user.updateAttr('reset_password', $scope.user, $scope.user.email, successCallback, $scope, failureCallback);
+      $scope.loader.show();
+      $timeout(function() {
+        $scope.toggleBackToLoginMode();
+      }, 500)
+      $timeout(function() {
+        $scope.loader.hide();
+        alert("Reset Successful.\nPlease check " + $scope.signupForm.email.toLowerCase() + ' for more details!');
+      }, 1000);
+
+    }
+
+    $scope.toggleResetModeFromLogin = function() {
+      $scope.loginMode = false;
+      $scope.resetMode = !$scope.loginMode;
+      if (!$scope.loginMode && !$scope.signupMode) {
+        $scope.headerText = 'Reset Password';
+      }
+      $timeout(function() {
+        var email_input = document.getElementById('email-input')
+          if (email_input) {
+            email_input.focus();
+          }
+      }, 500)
+      $timeout(function() {
+        $scope.loader.hide();
+      }, 750);
+    }
+
+    $scope.toggleBackToLoginMode = function() {
+      $scope.loginMode = true;
+      $scope.resetMode = !$scope.loginMode;
+      $scope.headerText = 'Log In';
+      $scope.loader.show();
+      $timeout(function() {
+        var email_input = document.getElementById('email-input')
+          if (email_input) {
+            email_input.focus();
+          }
+      }, 500)
       $timeout(function() {
         $scope.loader.hide();
       }, 750);
@@ -926,8 +983,10 @@ angular.module('uguru.util.controllers')
                 facebookConnectPlugin.api('/me', null, successCallback);
             }
         } else {
-          facebookConnectPlugin.login( ["email","public_profile","user_friends"],facebookAuthSuccessCallback,
-          facebookAuthFailureCallback);
+          // facebookConnectPlugin.login( ["email","public_profile","user_friends"],facebookAuthSuccessCallback,
+          // facebookAuthFailureCallback);
+            $cordovaFacebook.login(["email","public_profile","user_friends"])
+                  .then(facebookAuthSuccessCallback, facebookAuthFailureCallback);
         }
       }
 

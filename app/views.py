@@ -53,7 +53,7 @@ def admin_login():
         session.pop('error')
 
     if session.get('user'):
-        return redirect(url_for('admin_members'))
+        return redirect(url_for('admin_team_calendar'))
 
     return render_template("new_admin/login.html", error=error)
 
@@ -179,7 +179,7 @@ def admin_testing():
     support_tickets = Support.query.all()
     return render_template("new_admin/admin.support.tickets.html", support_tickets=support_tickets[::-1])
 
-@app.route('/admin/')
+
 @app.route('/admin/team/members/')
 def admin_members():
     from app.lib.admin import admin_info
@@ -195,9 +195,8 @@ def admin_routine():
     return render_template("new_admin/admin.team-routine.html", team=admin_info)
 
 
-@app.route('/admin/')
-@app.route('/admin/team/')
-@app.route('/admin/home/')
+
+@app.route('/admin/expectations/')
 def admin_expectations():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
@@ -209,11 +208,11 @@ def admin_team():
         return redirect(url_for('admin_login'))
     return render_template("new_admin/team-project-items.html", team=[])
 
-@app.route('/admin/team/action/')
-def admin_team():
-    if not session.get('user'):
-        return redirect(url_for('admin_login'))
-    return render_template("new_admin/team-action-items.html", team=[])
+# @app.route('/admin/team/action/')
+# def admin_team():
+#     if not session.get('user'):
+#         return redirect(url_for('admin_login'))
+#     return render_template("new_admin/team-action-items.html", team=[])
 
 
 
@@ -229,6 +228,8 @@ def admin_dev_guidelines():
         return redirect(url_for('admin_login'))
     return render_template("new_admin/development-guidelines.html", team=[])
 
+@app.route('/admin/')
+@app.route('/admin/team/')
 @app.route('/admin/team/calendar/')
 def admin_team_calendar():
     if not session.get('user'):
