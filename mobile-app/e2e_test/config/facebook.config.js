@@ -13,7 +13,7 @@ exports.config = {
         // ],
         specs: 
           [
-          '../test_case/Release_One_Mobile/email_login/fb_login.js',
+          '../test_case/Release_One_Mobile/facebook_login/fb_login.js',
           ],
         suites:
         {
