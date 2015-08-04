@@ -35,5 +35,16 @@
  - Log in Test :
 	- %pe --suite l  
  - Sign up Test:  
-	- %pe --suite s            
+	- %pe --suite s   
+
+**Facebook Test :**
+- Commands : 
+	- run enitered test :
+		- %pf
+- Options (for running Specific test case)
+ - Log in Test :
+	- %pe --suite l  
+ - Sign up Test:  
+	- %pe --suite s   
+
  
