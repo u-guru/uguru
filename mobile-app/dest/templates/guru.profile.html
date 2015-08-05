@@ -5,10 +5,10 @@
   <ion-header-bar class='dark-bg-header'>
       <h1 class='title'>Profile</h1>
       <div class="buttons">
-        <button class="button button-clear button-header-link button-blue hide ng-class:{'show':!root.vars.profile.edit_mode}" ng-click='root.vars.profile.edit_mode = !root.vars.profile.edit_mode'>
+        <button ng-if="!root.vars.profile.edit_mode" class="button button-clear button-header-link button-blue" ng-click='root.vars.profile.edit_mode = !root.vars.profile.edit_mode'>
           Edit
         </button>
-        <button class="button button-clear button-header-link button-submit cancel-button button-blue hide ng-class:{'show':root.vars.profile.edit_mode}" ng-click='saveGuruProfile()'>
+        <button ng-if="root.vars.profile.edit_mode"class="button button-clear button-header-link button-submit cancel-button button-blue" ng-click='saveGuruProfile()'>
           Save
         </button>
       </div>
@@ -67,7 +67,7 @@
                         </h5>
                       </a>
                       <a ng-click='root.vars.profile.edit_mode && showMaxHourlyClicked()'>
-                        <div class='container relative'>
+                        <div class='container relative max-hourly-container'>
                           <h1 class='uppercase light bold' style='margin-top:8px;'>
                             ${{selectedOption.id}} <span class='profile-15m-text'>/ hour</span>
                           </h1>
@@ -167,7 +167,7 @@
                     <div class="title-container mdl-card--expand grey-bg center">
                       <h5 class="title white-text uppercase semibold">Late night friendly</h5>
                     </div>
-                    <div class="card-body center relative">
+                    <div class="card-body center relative late-night-container">
                       <h2 class='opacity-1-2' style='font-size:150%'>
                         I'm up until <br> <strong> {{selectedOptionLateNight.name}} </strong>
                       </h2>
@@ -235,7 +235,7 @@
   </ion-scroll>
 </ion-scroll>
   <input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed(this)" style='display:none'/>
-  <div class='full-height' ng-show='profile.showCredibility' style='top:88px;'>
+  <div class='full-height windows-top-margin' ng-show='profile.showCredibility' style='top:88px;'>
     <div ng-include="img_base + 'templates/guru.credibility.components.html'" class='full-height'>
     </div>
   </div>

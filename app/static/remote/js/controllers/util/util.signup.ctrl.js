@@ -992,8 +992,12 @@ angular.module('uguru.util.controllers')
         } else {
           // facebookConnectPlugin.login( ["email","public_profile","user_friends"],facebookAuthSuccessCallback,
           // facebookAuthFailureCallback);
-            $cordovaFacebook.login(["email","public_profile","user_friends"])
+            if ($cordovaFacebook && $cordovaFacebook.login) {
+              $cordovaFacebook.login(["email","public_profile","user_friends"])
                   .then(facebookAuthSuccessCallback, facebookAuthFailureCallback);
+            } else {
+              facebookConnectPlugin.login(["email","public_profile","user_friends"], fbCheckStatusCallback, facebookAuthFailureCallback);
+            }
         }
       }
 
