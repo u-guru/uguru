@@ -185,6 +185,8 @@ class DeviceView(restful.Resource):
             device.push_notif_enabled = request.json.get('push_notif_enabled')
             if device.user:
                 device.user.push_notifications = True
+                if 'push_notif' in request.json:
+                    device.user.push_notifications_enabled = True
 
         if 'push_notif' in request.json:
             device.push_notif = request.json.get('push_notif')

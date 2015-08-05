@@ -2172,3 +2172,12 @@ p.fake-placeholder-text {
 
 #support-input-fake:hover {
   outline: none; }
+
+.item-percentage-right {
+  position: absolute;
+  right: 0;
+  top: 38%;
+  font-size: 125%;
+  font-family: OpenSans-SemiBold;
+  opacity: 0.4;
+  right: 2%; }

@@ -317,7 +317,8 @@ angular.module('uguru.util.controllers')
                     $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
 
                     payload = {
-                      'push_notifications': true
+                      'push_notifications': true,
+                      'push_notifications_enabled': true
                     }
                     $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
                 }
@@ -326,7 +327,8 @@ angular.module('uguru.util.controllers')
                 console.log(JSON.stringify(err));
                 $scope.user.push_notifications = false;
                 payload = {
-                      'push_notifications': false
+                      'push_notifications': false,
+                      'push_notifications_enabled': false
                     }
                 $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
                 alert('Please turn your Push Notifications ON in your settings.');
@@ -433,6 +435,12 @@ angular.module('uguru.util.controllers')
               $cordovaSplashscreen.hide();
             }
 
+            if ($scope.platform && $scope.user) {
+              $scope.user.current_device = ionic.Platform.device();
+              $scope.user.current_device.user_id = $scope.user.id;
+              $scope.user.createObj($scope.user, 'device', $scope.user.current_device, $scope);
+            }
+
             if ($scope.platform.android) {
 
                   var androidConfig = {
@@ -457,7 +465,8 @@ angular.module('uguru.util.controllers')
                     if ($scope.user && $scope.user.id) {
 
                       payload = {
-                        'push_notifications': true
+                        'push_notifications': true,
+                        'push_notifications_enabled': true
                       }
                       $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
 
@@ -486,8 +495,19 @@ angular.module('uguru.util.controllers')
 
                   console.log();
                   var uri = event.uri;
-                  console.log("channelHandler uri: " + uri);
 
+                  CordovaPushWrapper.received($rootScope, event, notification);
+                  if ($scope.user && $scope.user.id) {
+
+                    payload = {
+                      'push_notifications': true,
+                      'push_notifications_enabled': true
+                    }
+                    $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
+
+
+
+                  }
               }
               function errorHandler(error) {
                  // document.getElementById('app-status-ul').appendChild(document.createElement(error));
@@ -515,12 +535,6 @@ angular.module('uguru.util.controllers')
                   console.log("ERROR: ", error.message);
               }
 
-            }
-
-            if ($scope.platform && $scope.user) {
-              $scope.user.current_device = ionic.Platform.device();
-              $scope.user.current_device.user_id = $scope.user.id;
-              $scope.user.createObj($scope.user, 'device', $scope.user.current_device, $scope);
             }
 
 

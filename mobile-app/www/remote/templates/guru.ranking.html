@@ -12,7 +12,7 @@
 <ion-content class='white-bg standard-bg has-header'>
 
     <ion-list class='standard-bg'>
-      <ion-toggle ng-change="requestPushNotifications()" ng-model="user.push_notifications" ng-show='platform.mobile' toggle-class="toggle-calm">
+    <ion-toggle ng-change="requestPushNotifications()" ng-model="data.push_notifications" ng-show='platform.mobile' toggle-class="toggle-calm">
         <p class='no-margin white-space-normal semibold'>
             Turn on Push Notifications
         </p>
@@ -21,18 +21,18 @@
         </p>
       </ion-toggle>
 
-      <ion-toggle ng-change="updateTextNotifications()" ng-model="user.text_notifications" ng-show='!platform.mobile' toggle-class="toggle-calm" >
+      <ion-toggle ng-change="updateTextNotifications()" ng-model="data.text_notifications" ng-show='!platform.mobile' toggle-class="toggle-calm" >
         <p class='no-margin white-space-normal semibold'>
             Turn on Text Notifications
         </p>
-        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='!user.phone_number'>
-            Tap here to add your phone number & confirm
+        <p class='opacity-4-5 no-margin white-space-normal micro-text'  ng-show='!user.phone_number'>
+            Toggle here to add your phone number & confirm
         </p>
-        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='user.phone_number && !user.phone_number_confirmed'>
-            Tap here to confirm your phone number
+        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='user.phone_number && !user.phone_number_confirmed' ng-click=>
+            Toggle here to confirm your phone number
         </p>
         <p class='opacity-4-5 no-margin white-space-normal micro-text ' ng-show='user.phone_number && user.phone_number_confirmed'>
-            Texts will be sent to {{user.phone_number}}
+            Toggle will be sent to {{user.phone_number}}
         </p>
       </ion-toggle>
       <ion-item href='#/guru-profile' class='item-icon-right' nav-direction='enter'>
@@ -42,7 +42,9 @@
         <p class='opacity-4-5 no-margin white-space-normal micro-text'>
             Your guru profile is not complete yet
         </p>
-        <i class='icon icon-small ion-chevron-right opacity-4-5'> </i>
+        <span class='align-right item-percentage-right'>
+          {{user.current_profile_percent}}%
+        </span>
       </ion-item>
       <ion-item href='#/guru-profile' class='item-icon-right' nav-direction='enter'>
         <p class='no-margin white-space-normal semibold'>
@@ -51,7 +53,9 @@
         <p class='opacity-4-5 no-margin white-space-normal micro-text'>
             You could be more credible so students trust you
         </p>
-        <i class='icon icon-small ion-chevron-right opacity-4-5'> </i>
+        <span class='align-right item-percentage-right'>
+          {{user.current_credibility_percent}}%
+        </span>
       </ion-item>
       <ion-item href='#/payments' class='item-icon-right' nav-direction='forward'>
         <p class='no-margin white-space-normal semibold'>
@@ -60,16 +64,16 @@
         <p class='opacity-4-5 no-margin white-space-normal micro-text'>
             linking your bank account so we know you're serious about earning $$$
         </p>
-        <i class='icon icon-small ion-plus opacity-4-5'> </i>
+        <i class='icon icon-small ion-chevron-right opacity-4-5'> </i>
       </ion-item>
       <ion-item ng-click='confirmCommitment()' class='item-icon-right' nav-direction='forward'>
         <p class='no-margin white-space-normal semibold'>
-            Confirm Commitment
+            Confirm Commitment & Be the 1ST
         </p>
         <p class='opacity-4-5 no-margin white-space-normal micro-text'>
             Deposit <strong class='regular'> $10 </strong> to confirm full interest. You'll receive it back @ the end of the month.
         </p>
-        <i class='icon icon-small ion-plus opacity-4-5'> </i>
+        <i class='icon icon-small ion-chevron-right opacity-4-5'> </i>
       </ion-item>
     </ion-list>
 </ion-view>
