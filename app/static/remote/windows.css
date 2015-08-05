@@ -53,3 +53,8 @@ select::-ms-expand {
     z-index: 3;
     margin-top: -25px;
 }
+
+.windows-top-margin .scroll-view .scroll {
+    transform:auto !important;
+    height:100% !important;
+}
