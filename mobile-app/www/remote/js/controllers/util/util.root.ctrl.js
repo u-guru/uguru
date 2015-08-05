@@ -232,7 +232,7 @@ angular.module('uguru.util.controllers')
           $scope.loader = {
             show: function() {
               $ionicLoading.show({
-                template: '<ion-spinner icon="lines" class="spinner-positive"></ion-spinner>'
+                template: '<ion-spinner id="E2E-spinner" icon="lines" class="spinner-positive"></ion-spinner>'
               });
               $scope.root.vars.loaderOn = true;
             },

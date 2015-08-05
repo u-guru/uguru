@@ -34,8 +34,6 @@ describe('Unit Test : User sign up with email address', function ()
 		{
 			protractor.run.SignUp(true);
 			protractor.run.logoff();
-		
-
 
 		});
 

@@ -167,6 +167,10 @@ exports.run =
             browser.driver.findElement(by.id('u_0_2')).click();
             // go back to the main window
             browser.switchTo().window(handles[0]);
+            //  msg.getAttribute('value').then(function(value )
+            // {
+            //     expect(value).toBe("Login Successful!");
+            // });
         });
     },
     KeyIn : function(title,location,detail,tag)
