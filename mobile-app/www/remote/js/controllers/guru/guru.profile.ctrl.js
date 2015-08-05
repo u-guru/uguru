@@ -79,6 +79,7 @@ angular.module('uguru.guru.controllers')
         var e = document.getElementById("late-night-select");
         $scope.user.guru_latest_time = e.selectedIndex;
         $scope.user.updateAttr('guru_latest_time', $scope.user, $scope.user.guru_latest_time, null, $scope);
+        e.blur():
       }, 500);
 
 
@@ -114,7 +115,9 @@ angular.module('uguru.guru.controllers')
              else {
                 options[i].style.backgroundColor = 'white';
              }
+
         }
+        e.blur():
       }, 500);
     };
 

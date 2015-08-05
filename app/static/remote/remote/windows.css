@@ -1,7 +1,7 @@
 .guru-bg-img {
   max-width: 33%;
   height:33%;
-  margin: 0 auto;
+  margin: 0 auto 0 auto;
 }
 
 .verb-modal .icon-wrapper {
@@ -26,4 +26,35 @@ select::-ms-expand {
 
 .platform-windowsphone .menu-content{
     margin-bottom:-20px;
+}
+
+.max-hourly-container, .late-night-container {
+    width:80% !important;
+    margin-left:10% !important;
+    overflow: hidden !important;
+}
+
+.max-hourly-container select, .late-night-container select {
+    width:150% !important;
+    left:-40px !important;
+    text-align: center !important;
+}
+
+.windows-top-margin {
+    margin-top:88px !important;
+    top:0px !important;
+}
+
+.item.item-checkbox .checkbox {
+    position: absolute;
+    top: 50%;
+    left:auto !important;
+    right: 8px;
+    z-index: 3;
+    margin-top: -25px;
+}
+
+.windows-top-margin .scroll-view .scroll {
+    transform:auto !important;
+    height:100% !important;
 }
