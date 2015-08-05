@@ -5,10 +5,10 @@
   <ion-header-bar class='dark-bg-header'>
       <h1 class='title'>Profile</h1>
       <div class="buttons">
-        <button ng-if="!root.vars.profile.edit_mode" class="button button-clear button-header-link button-blue" ng-click='root.vars.profile.edit_mode = !root.vars.profile.edit_mode'>
+        <button id='E2E-editProfile' ng-if="!root.vars.profile.edit_mode" class="button button-clear button-header-link button-blue" ng-click='root.vars.profile.edit_mode = !root.vars.profile.edit_mode'>
           Edit
         </button>
-        <button ng-if="root.vars.profile.edit_mode"class="button button-clear button-header-link button-submit cancel-button button-blue" ng-click='saveGuruProfile()'>
+        <button id='E2E-saveProfile'ng-if="root.vars.profile.edit_mode"class="button button-clear button-header-link button-submit cancel-button button-blue" ng-click='saveGuruProfile()'>
           Save
         </button>
       </div>
@@ -49,16 +49,16 @@
 
                   <div class='pure-u-1-2 relative' style='padding-top:1em;'>
                     <div class='center no-margin'>
-                      <a ng-click='root.vars.profile.edit_mode && showPopupEditName()'>
+                      <a id="E2E-editProfile-editName" ng-click='root.vars.profile.edit_mode && showPopupEditName()'>
                         <h1 class='title light uppercase margin-half'>{{user.name.split(' ')[0] + ' ' + user.name.split(' ')[1][0].toUpperCase()}}.</h1>
                       </a>
-                      <a ng-click='root.vars.profile.edit_mode && goToUniversity()'>
+                      <a id="E2E-editProfile-editSchool"  ng-click='root.vars.profile.edit_mode && goToUniversity()'>
                         <h5 class='white-text bold no-margin uppercase'>
                           {{user.university.title}}
                         </h5>
                       </a>
 
-                      <a ng-click='root.vars.profile.edit_mode && transitionToMajor()'>
+                      <a id="E2E-editProfile-editMajor"  ng-click='root.vars.profile.edit_mode && transitionToMajor()'>
                         <h5 class='uppercase guru-profile-major-text light no-margin hide ng-class:{"show":user.majors.length > 0}'>
                           {{user.majors[0].name}}
                         </h5>

@@ -12,14 +12,14 @@ exports.config = {
         //   {'browserName': 'phantomjs'}
         // ],
         specs: [
-              '../test_case/Release_One_Mobile/guru_profile/Account/*',
+              '../test_case/Release_One_Mobile/guru_profile/*',
             //  '../test_case/Release_One_Mobile/guru_profile/*',
 
 
         ],
         suites:
         {
-            
+            eN : '../test_case/Release_One_Mobile/guru_profile/edit_Name.js'
         },
         resultJsonOutputFile: 'www/remote/tests/e2e/result.json',
         rootElement: "[ng-app]" ,
@@ -62,6 +62,12 @@ exports.config = {
             protractor.get = require('../test_case/globals.js').globals;
             protractor.run = require('../test_case/globals.js').run;
             browser.driver.manage().window().setSize(414, 736);
+            //facebook log in
+            protractor.run.setUp("http://localhost:8100/#/new-home","jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+            browser.sleep(800);
+            protractor.get.closeBar.click();    
+            browser.driver.get('http://localhost:8100/#/guru-profile');
+            element(by.id('E2E-editProfile')).click();
         }
         
 };

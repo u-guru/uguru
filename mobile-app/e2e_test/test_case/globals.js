@@ -124,12 +124,11 @@ exports.run =
         browser.driver.manage().window().setSize(414, 736);
         //browser.driver.get('http://localhost:8100/#/new-home');
         browser.driver.get(address);
-        browser.waitForAngular();
-
+        browser.sleep(2000);
         settingButton.click();
 
         //expect(connectFB.isEnabled()).toBe(true);
-        connectFB.click();
+        element.all(by.css("[ng-click=\"connectWithFacebook()\"]")).first().click();
         //Switch Screen
         browser.getAllWindowHandles().then(function (handles) {
             // switch to the popup
@@ -145,8 +144,11 @@ exports.run =
 
         return browser.driver.wait(function () {
             return browser.driver.getCurrentUrl().then(function (url) {
-                console.log(/remote/.test(url));
-                return url;
+                console.log(url);
+                console.log(/#/.test(url));
+//                return url;
+                return /#/.test(url);
+
             });
         }, 10000);
     },
