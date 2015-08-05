@@ -44,3 +44,12 @@ select::-ms-expand {
     margin-top:88px !important;
     top:0px !important;
 }
+
+.item.item-checkbox .checkbox {
+    position: absolute;
+    top: 50%;
+    left:auto !important;
+    right: 8px;
+    z-index: 3;
+    margin-top: -25px;
+}
