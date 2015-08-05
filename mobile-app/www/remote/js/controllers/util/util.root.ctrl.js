@@ -103,7 +103,7 @@ angular.module('uguru.util.controllers')
                       $localstorage.setObject('version', $scope.root.vars.version);
                       console.log('updating version to', serverVersionNumber, '...');
 
-                      if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT') {
+                      if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT' || WINDOWS) {
                             window.location.replace(BASE_URL);
                       } else {
                           window.location = BASE_URL;
@@ -632,7 +632,7 @@ angular.module('uguru.util.controllers')
                             console.log('updating version to', serverVersionNumber, '...');
 
                             //if windows
-                            if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT') {
+                            if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT' || WINDOWS) {
                               window.location.replace(BASE_URL);
                             } else {
                               window.location = BASE_URL;

@@ -714,6 +714,20 @@ angular.module('uguru.util.controllers')
       }, 750);
     }
 
+    $scope.launchSupportDescriptionModal = function() {
+
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/support.description.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.supportDescriptionModal = modal;
+            $scope.supportDescriptionModal.show();
+        });
+
+    }
+
+
     $scope.goToSignupFromSideBar = function() {
       $scope.resetSettingsIcons();
       $scope.loader.show();
@@ -992,8 +1006,12 @@ angular.module('uguru.util.controllers')
         } else {
           // facebookConnectPlugin.login( ["email","public_profile","user_friends"],facebookAuthSuccessCallback,
           // facebookAuthFailureCallback);
-            $cordovaFacebook.login(["email","public_profile","user_friends"])
+            if ($cordovaFacebook && $cordovaFacebook.login) {
+              $cordovaFacebook.login(["email","public_profile","user_friends"])
                   .then(facebookAuthSuccessCallback, facebookAuthFailureCallback);
+            } else {
+              facebookConnectPlugin.login(["email","public_profile","user_friends"], fbCheckStatusCallback, facebookAuthFailureCallback);
+            }
         }
       }
 

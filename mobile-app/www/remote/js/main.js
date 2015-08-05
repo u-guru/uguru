@@ -10,6 +10,7 @@ var REST_URL = 'http://uguru-rest.herokuapp.com'
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
+<<<<<<< HEAD
 //   BASE_URL = 'http://192.168.42.83:8100/remote';
 //  // REST_URL = 'http://192.168.42.66:5000';
 

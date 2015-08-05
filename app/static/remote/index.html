@@ -182,7 +182,7 @@ else window.addEventListener('load', __ldinsp, false);
 
             return 'Android';
           }
-          else if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT') {
+          else if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT' || (!(window.ActiveXObject) && "ActiveXObject" in window) || "ActiveXObject" in window) {
             console.log('injecting windows specific css & js');
             injectJs('windows.cordova.js');
             injectCss('windows.css');
