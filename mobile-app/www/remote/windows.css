@@ -54,7 +54,7 @@ select::-ms-expand {
     margin-top: -25px;
 }
 
-.windows-top-margin .scroll-view .scroll {
-    transform:auto !important;
+.windows-top-margin .scroll {
+    transform:none !important;
     height:100% !important;
 }
