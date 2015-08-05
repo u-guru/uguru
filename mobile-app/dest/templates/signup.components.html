@@ -1,0 +1,89 @@
+<ion-header-bar align-title="center" class='dark-bg-header no-background-image'>
+      <div class="buttons">
+        <button ng-if="!resetMode" class="button button-clear button-header-link grey-text light nano-text" ng-click='goBack()'>Cancel</button>
+        <button ng-if="resetMode" class="button button-clear button-header-link grey-text light nano-text" ng-click='toggleBackToLoginMode()'>Back</button>
+      </div>
+      <h1 class="title micro-text">{{headerText}}</h1>
+        <!-- <span ng-show='!loginMode'>Sign Up</span> -->
+      <div class="buttons">
+        <button class="button button-clear button-header-link submit-button" id='done-button' ng-click='completeSignup()'>
+          <span class='ng-class:{"grey-text":signupForm.email.length === 0 || signupForm.password.length === 0 || signupForm.first_name.length === 0 || signupForm.last_name.length === 0}'>Submit</span>
+        </button>
+      </div>
+    </ion-header-bar>
+
+<ion-content>
+    <ion-scroll class='has-header' style='overflow:visible'>
+              <div class='container' style='padding-left:1em; padding-right:1em; margin-top:-5%;' ng-click='this.style.opacity = 0.1;'>
+                <div class='pure-g'>
+                  <a class='pure-u-1 padding-1em center micro-text semibold blue' style='padding-bottom:0px;' ng-show="loginMode" ng-click="toggleResetModeFromLogin()">
+                      <p>Forgot your password?</p>
+                  </a>
+                </div>
+                <div class='pure-g' style='padding-top:1em;'>
+                  <div class='pure-u-1-2' ng-show='!loginMode && !resetMode'>
+                    <label class="item item-input item-icon-right">
+                      <input type="text" class='capitalized' id='first-name-input' ng-model='signupForm.first_name'  placeholder='First Name'></input>
+                    </label>
+                  </div>
+                  <div class='pure-u-1-2' ng-show='!loginMode && !resetMode'>
+                    <label class="item item-input item-icon-right">
+                      <input type="text" class='capitalized' id='last-name-input' ng-model='signupForm.last_name' placeholder='Last Name'></input>
+                    </label>
+                  </div>
+                </div>
+                <div class='pure-g'>
+                  <div class='pure-u-1'>
+                    <label class="item item-input">
+                      <input type="email" id='email-input' ng-model='signupForm.email' placeholder='Email'></input>
+                    </label>
+                  </div>
+                </div>
+                <div class='pure-g' ng-show="!resetMode">
+                  <div class='pure-u-1'>
+                    <label class="item item-input">
+                      <input type="password" id='password-input' ng-model='signupForm.password' placeholder='Password'></input>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+                <div class='pure-g' ng-show='!loginMode && !resetMode'>
+                  <div class='pure-u-1' style='padding-left:1em; padding-right:1em;'>
+                    <a style='line-height:3.5em' ng-click='completeSignup()' class='button button-full light-blue-bg button-footer white-text uppercase'>Create Account</a>
+                  </div>
+                </div>
+
+                <div class='pure-g' ng-show='loginMode && !resetMode'>
+                  <div class='pure-u-1' style='padding-left:1em; padding-right:1em; margin-top:1em;'>
+                    <a style='line-height:3.5em' ng-click='completeSignup()' class='button button-full light-blue-bg button-footer white-text uppercase'>Log In</a>
+                  </div>
+                </div>
+
+                <div class='pure-g' ng-show='resetMode'>
+                  <div class='pure-u-1' style='padding-left:1em; padding-right:1em; margin-top:1em;'>
+                    <a style='line-height:3.5em' ng-click='attemptToResetPassword()' class='button button-full light-blue-bg button-footer white-text uppercase'>Reset Password</a>
+                  </div>
+                </div>
+
+
+                <div class='pure-g' ng-show="!resetMode">
+                  <div class='pure-u-1 padding-1em center' style='padding-top:0em; padding-bottom:0em;'>
+                    <div class='pure-u-1 padding-half'>
+                      <a class='center grey uppercase semibold nano-text padding-1em'> Or </a>
+                    </div>
+
+                    <a class='button button-full button-black uppercase fb-blue-bg'  ng-click='signupFacebook()' style='line-height:3.5em; font-size:90%;'>Continue with Facebook</a>
+
+                  </div>
+                </div>
+                <div class='pure-u-1' style='font-size:150%; padding-left:1em; padding-right:1em;' ng-show='!resetMode'>
+                  <div class='pure-u-1 center' id="E2E_SwitchLog" ng-show='user && !user.id'>
+                      <a class='button button-full button-stable-outlined center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();' ng-show='!loginMode'> Already have an account? </a>
+                      <a class='button button-full button-stable-outlined center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();' ng-show='loginMode'> or Sign Up Here </a>
+                  </div>
+                </div>
+
+
+    </ion-scroll>
+  </ion-content>

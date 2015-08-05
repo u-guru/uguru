@@ -77,7 +77,7 @@ angular.module('uguru.guru.controllers')
       $scope.success.show(0, 750, 'Saved!');
       $timeout(function() {
         var e = document.getElementById("late-night-select");
-        e.blur():
+        e.blur();
         $scope.user.guru_latest_time = e.selectedIndex;
         $scope.user.updateAttr('guru_latest_time', $scope.user, $scope.user.guru_latest_time, null, $scope);
 

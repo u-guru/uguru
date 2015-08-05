@@ -1,34 +1,16 @@
-<ion-modal-view ng-controller='AddUniversityController'>
-    <ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)">
+<ion-modal-view ng-controller='AddUniversityController' class='university-modal'>
+      <ion-header-bar>
         <h1 class="title">Select University</h1>
-        <button ng-click="hideUniversityModal()" class="button button-clear button-positive">Cancel</button>
+        <a class='button button-clear'ng-click="hideUniversityModal()">Cancel</a>
       </ion-header-bar>
       <ion-content>
 
-        <div class="list">
-          <li class="item" ng-repeat="university in matchingUniversities" ng-click="universitySelected(university)">
+        <ion-list class="list">
+          <ion-item ng-repeat="university in matchingUniversities" class='university-list'ng-click="universitySelected(university, $event)">
             <h2>{{university.title}}</h2>
             <p>{{university.city}}, {{university.state}}</p>
-          </li>
-        </div>
-
-      <div class="list list-inset" ng-show="nearest_universities" style="margin-top:15%">
-           <label class="item item-radio" ng-repeat="university in nearest_universities | limitTo:10" style="margin:0px 5px;">
-              <input name="university_radio" ng-change="onSubmitUniversity(university)" ng-model="university.checked" value="{{university}}" type="radio">
-              <div class="item-content">
-                <h2>{{university.title}}</h2>
-                <p>
-                  {{university.location.city}}, {{university.location.state}}
-                </p>
-              </div>
-              <i class="radio-icon ion-checkmark"></i>
-            </label>
-            <li class="item item-icon-left" ng-click="toggleNearestUniversities()" style="margin-top:0px;">
-              <i class="icon ion-search"></i>
-              <span class="regular-text">Search a university</span>
-            </li>
-      </div>
-
+          </ion-item>
+        </ion-list>
 
     </ion-content>
 
@@ -36,9 +18,9 @@
     <ion-footer-bar class="bar-footer item-input-inset" keyboard-attach>
 
           <label class="item-input-wrapper">
-              <i class="icon ion-ios7-search placeholder-icon"></i>
+              <i class="icon ion-search placeholder-icon"></i>
 
-              <input type="search" name="university-input" class="form-control"
+              <input type="search" name="university-input" id='university-input'class="form-control"
                       fast-matcher
                       fast-matcher-source="universities"
                       fast-matcher-output="matchingUniversities"
@@ -53,7 +35,7 @@
               />
           </label>
 
-          <button class="button button-clear button-positive" ng-show="search_text.length" ng-click="clearSearchInput()">
+          <button class="button button-clear button-positive search-button" ng-show="search_text.length" ng-click="clearSearchInput()">
           Clear
           </button>
 
