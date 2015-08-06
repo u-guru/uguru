@@ -23,7 +23,7 @@ angular.module('uguru.guru.controllers')
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $cordovaStatusbar, $ionicViewSwitcher,
     $ionicActionSheet, $ionicHistory, $ionicPopup, CordovaPushWrapper) {
-
+    console.log($scope.user.cards);
     $scope.data = {
       text_notifications:false || $scope.user.text_notifications,
       push_notifications: false || ($scope.user.push_notifications && $scope.user.push_notifications_enabled && $scope.user.devices.length)
@@ -42,6 +42,14 @@ angular.module('uguru.guru.controllers')
       <input style="padding:2px 6px;" type="text" ng-show="user.phone_number && user.phone_number.length && user.phone_number_token" ng-model="data.token" placeholder="Enter 4-digit numerical code ">'
     }
 
+    $scope.goToPayments = function() {
+      $scope.root.vars.previous_page_ranking = true;
+      $ionicViewSwitcher.nextDirection('forward');
+      $scope.loader.show();
+      $timeout(function() {
+        $state.go('^.payments');
+      }, 250)
+    }
 
 
     $scope.goBack = function() {
@@ -80,11 +88,16 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.confirmCommitment = function() {
-      if (!$scope.user.default_transfer_card) {
+      if (!$scope.user.default_transfer_card && !$scope.user.transfer_cards.length) {
         alert('Please add a bank card or account first!');
         return;
       }
-
+      var default_card = $scope.user.transfer_cards[0];
+      if (confirm("I give Uguru permission to \nbill $10 to " +  default_card.card_type + " **" +  default_card.card_last4)) {
+        $scope.loader.show()
+        $scope.success.show(500, 1000, "Success!")
+        $scope.user.guru_deposit = true;
+      }
     }
 
 

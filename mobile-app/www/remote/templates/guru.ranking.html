@@ -4,7 +4,7 @@
 
   <ion-header-bar class='dark-bg-header'>
       <div class="buttons">
-        <button class="button button-clear button-header-link cancel-button" ng-click='goBack()'>back</button>
+        <button class="button button-clear button-header-link cancel-button" ng-click='goBack()'>Back</button>
       </div>
       <h1 class="title">Progress & Ranking </h1>
   </ion-header-bar>
@@ -57,23 +57,35 @@
           {{user.current_credibility_percent}}%
         </span>
       </ion-item>
-      <ion-item href='#/payments' class='item-icon-right' nav-direction='forward'>
+      <ion-item ng-click='goToPayments()' style='padding-left: 16px;' class='item item-icon-right ng-class:{"item-checkbox":user.transfer_cards.length}'>
         <p class='no-margin white-space-normal semibold'>
             Add Your Bank Info
         </p>
-        <p class='opacity-4-5 no-margin white-space-normal micro-text'>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='!user.transfer_cards.length'>
             linking your bank account so we know you're serious about earning $$$
         </p>
-        <i class='icon icon-small ion-chevron-right opacity-4-5'> </i>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='user.transfer_cards.length'>
+            {{user.transfer_cards[0].card_type}} Debit Card **-{{user.transfer_cards[0].card_last4}}
+        </p>
+        <i class='icon icon-small ion-chevron-right opacity-4-5 hide ng-class{"show":!user.transfer_cards.length}'> </i>
+        <label class="checkbox hide ng-class:{'show':user.transfer_cards.length}">
+           <input type="checkbox" checked>
+         </label>
       </ion-item>
-      <ion-item ng-click='confirmCommitment()' class='item-icon-right' nav-direction='forward'>
+      <ion-item ng-click='confirmCommitment()' style='padding-left: 16px;' class='item item-icon-right ng-class:{"item-checkbox":user.guru_deposit}'>
         <p class='no-margin white-space-normal semibold'>
             Confirm Commitment & Be the 1ST
         </p>
-        <p class='opacity-4-5 no-margin white-space-normal micro-text'>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='!user.guru_deposit'>
             Deposit <strong class='regular'> $10 </strong> to confirm full interest. You'll receive it back @ the end of the month.
         </p>
-        <i class='icon icon-small ion-chevron-right opacity-4-5'> </i>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='user.guru_deposit'>
+            You deposited $10 with {{user.transfer_cards[0].card_type}} Debit Card **-{{user.transfer_cards[0].card_last4}}
+        </p>
+        <i class='icon icon-small ion-chevron-right opacity-4-5 hide ng-class{"show":!user.guru_deposit}'> </i>
+        <label class="checkbox hide ng-class:{'show':user.guru_deposit}">
+           <input type="checkbox" checked>
+         </label>
       </ion-item>
     </ion-list>
 </ion-view>
