@@ -53,7 +53,7 @@
                         <h1 class='title light uppercase margin-half'>{{user.name.split(' ')[0] + ' ' + user.name.split(' ')[1][0].toUpperCase()}}.</h1>
                       </a>
                       <a id="E2E-editProfile-editSchool"  ng-click='root.vars.profile.edit_mode && goToUniversity()'>
-                        <h5 class='white-text bold no-margin uppercase'>
+                        <h5 id = "E2E-schoolName" class='white-text bold no-margin uppercase' value={{user.university.title}}>
                           {{user.university.title}}
                         </h5>
                       </a>

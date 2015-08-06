@@ -1,16 +1,20 @@
 describe('Account Unit Test : Edit Uni', function () {
-	
+	var schoolName ; 
+	var editSchool = element(by.id('E2E-editProfile-editSchool'));
+
+	beforeEach(function()
+		{
+			element(by.id("E2E-schoolName")).getAttribute('value').then(function(value){
+			//s	console.log("Path :"+src);
+			schoolName = value;
+			console.log("Check" + schoolName);
+
+			});	
+			editSchool.click();
+		});
 	it ("edit School",function()
 			{
-				var schoolName ; 
-				element(by.id("E2E-schoolName")).getAttribute('value').then(function(value){
-				//s	console.log("Path :"+src);
-					schoolName = value;
-					console.log("Check" + schoolName);
-
-				});	
-				editSchool.click();
-	
+				
 				element(by.id('university-input')).clear().then(function(){
 					if(schoolName !="San Jose State University")
 						element(by.id('university-input')).sendKeys("San Jose State University");

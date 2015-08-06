@@ -19,7 +19,8 @@ exports.config = {
         ],
         suites:
         {
-            eN : '../test_case/Release_One_Mobile/guru_profile/edit_Name.js'
+            n : '../test_case/Release_One_Mobile/guru_profile/edit_name.js',
+            s : '../test_case/Release_One_Mobile/guru_profile/edit_school.js'
         },
         resultJsonOutputFile: 'www/remote/tests/e2e/result.json',
         rootElement: "[ng-app]" ,

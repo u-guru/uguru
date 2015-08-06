@@ -144,8 +144,8 @@ exports.run =
 
         return browser.driver.wait(function () {
             return browser.driver.getCurrentUrl().then(function (url) {
-                console.log(url);
-                console.log(/#/.test(url));
+                // console.log(url);
+                // console.log(/#/.test(url));
 //                return url;
                 return /#/.test(url);
 
