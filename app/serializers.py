@@ -111,6 +111,9 @@ device_fields['push_notif_enabled'] = fields.Boolean(attribute='push_notif_enabl
 device_fields['background_location_enabled'] = fields.Boolean(attribute='background_location_enabled')
 device_fields['location_enabled'] = fields.Boolean(attribute='location_enabled')
 device_fields['camera_enabled'] = fields.Boolean(attribute='camera_enabled')
+device_fields['body_load_time'] = fields.Float(attribute='body_load_time')
+device_fields['update_load_time'] = fields.Float(attribute='update_load_time')
+device_fields['is_test_device'] = fields.Boolean(attribute='is_test_device')
 
 request_fields = {}
 request_fields['time_created'] = fields.DateTime(attribute='time_created')
@@ -273,6 +276,7 @@ UserSerializer = {
     'transcript_file': fields.Nested(file_fields),
     'is_admin': fields.Boolean,
     'is_support_admin': fields.Boolean,
+    'guru_deposit': fields.Boolean,
     'guru_mode': fields.Boolean,
     'gender': fields.String,
     'customer_id': fields.String,

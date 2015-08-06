@@ -462,6 +462,7 @@ angular.module('uguru.user', [])
         $scope.user.location_services_enabled = user.location_services_enabled;
         $scope.user.majors = user.majors
         $scope.user.guru_courses = user.guru_courses;
+
         $scope.user.student_courses = user.student_courses;
         $scope.user.student_sessions = user.student_sessions;
         $scope.user.guru_sessions = user.guru_sessions;
@@ -473,6 +474,7 @@ angular.module('uguru.user', [])
         $scope.user.sessions = user.sessions;
         $scope.user.proposals = user.proposals;
         $scope.user.cards = user.cards;
+        $scope.user.guru_committed = user.guru_committed;
         $scope.user.student_transactions = user.student_transactions;
         $scope.user.guru_transactions = user.guru_transactions;
         $scope.user.transfer_transactions = user.transfer_transactions;
@@ -707,6 +709,12 @@ angular.module('uguru.user', [])
                       course: obj,
                       'add_student_course': true
                   }
+              }
+
+              if (arg === 'guru_committed') {
+                return{
+                    'guru_committed': obj
+                }
               }
 
               if (arg === 'add_guru_course') {
