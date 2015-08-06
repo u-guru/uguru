@@ -133,6 +133,8 @@ class User(Base):
 
     auth_token = Column(String)
 
+    guru_deposit = Column(Boolean)
+
     #Last active time
     last_active = Column(DateTime)
     time_created = Column(DateTime)
@@ -1660,6 +1662,9 @@ class Device(Base):
 
     time_created = Column(DateTime)
     last_accessed = Column(DateTime)
+
+    body_load_time = Column(DateTime)
+    update_load_time = Column(Float)
 
     push_notif = Column(String)
     push_notif_enabled = Column(Boolean)
