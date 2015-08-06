@@ -8,6 +8,8 @@ from flask.ext.restful import reqparse, Api
 from flask.ext.bcrypt import Bcrypt
 from flask.ext.httpauth import HTTPBasicAuth
 from flask.ext.compress import Compress
+import logging
+from logging.handlers import SMTPHandler
 
 # import newrelic.agent
 
@@ -35,7 +37,21 @@ flask_bcrypt = Bcrypt(app)
 
 compress = Compress(app)
 
-# new_relic = newrelic.agent.WSGIApplicationWrapper(app)
+class MandrillHandler(SMTPHandler):
+    """ Send's an email using BOTO SES.
+    """
+    def emit(self,record):
+        from emails import send_errors_email
+        from lib.github_client import init_github, create_issue
+        gh = init_github('uguru')
+        create_issue(gh, ['PRODUCTION SERVER ERROR'], 'UGURU PRODUCTION ERROR', self.format(record))
+        send_errors_email(self.format(record))
+
+
+logger = logging.getLogger()
+mail_handler = MandrillHandler(mailhost="",fromaddr='<do-not-reply@uguru.me>',toaddrs="<samir@uguru.me>", subject='Production Error')
+mail_handler.setLevel(logging.ERROR)
+logger.addHandler(mail_handler)
 
 # flash-httpauth
 auth = HTTPBasicAuth()

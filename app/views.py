@@ -57,6 +57,9 @@ def admin_login():
 
     return render_template("new_admin/login.html", error=error)
 
+@app.route('/500-test')
+def internal_test():
+    return render_template("<b>500</b>")
 
 @app.route('/admin/statistics/')
 def admin_statistics():
