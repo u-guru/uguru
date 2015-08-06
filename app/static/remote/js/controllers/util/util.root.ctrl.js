@@ -135,16 +135,17 @@ angular.module('uguru.util.controllers')
               $ionicHistory.clearHistory();
               //toggle in the middle
               $timeout(function() {
-                  $ionicSideMenuDelegate.toggleRight();
-              }, 1000);
-              $timeout(function() {
                 $scope.loader.hide();
                 $scope.user = User.getLocal();
                 $scope.user.updateAttr = User.updateAttrUser;
                 $scope.user.createObj = User.createObj;
                 $scope.user.updateObj = User.updateObj;
                 $scope.root.vars.settings = {icons : {profile : true}};
-                $scope.success.show(500, 1500, 'You have been successfully logged out!');
+                $scope.success.show(500, 2000, 'You have been successfully logged out!');
+                $timeout(function(){
+                  $ionicSideMenuDelegate.toggleRight();
+                  $state.go('^.home');
+                }, 600)
               }, 2000);
 
             }

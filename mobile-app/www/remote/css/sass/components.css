@@ -1337,11 +1337,11 @@ select.current-hourly-price {
   left: 16.6%;
   top: 12.5%; }
 
-#profile-tab-button {
+#profile-tab-button, #ranking-tab-button {
   margin-top: -4px;
   padding-top: 0px;
   opacity: 0.3; }
-  #profile-tab-button .icon {
+  #profile-tab-button .icon, #ranking-tab-button .icon {
     font-size: 2.2em !important;
     margin-left: 0.2em; }
 
