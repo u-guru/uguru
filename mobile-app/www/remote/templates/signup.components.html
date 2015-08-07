@@ -83,6 +83,11 @@
                       <a class='button button-full button-stable-outlined center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();' ng-show='loginMode'> or Sign Up Here </a>
                   </div>
                 </div>
+                <div class='pure-u-1'>
+                  <a class='padding-1em center micro-text semibold' style='padding-bottom:0px;' ng-show="!loginMode" >
+                      <a ng-click='launchPrivacyPolicy()'><p class='regular normal center micro-text'style='opacity:0.4;'> By signing up, you agree to our <strong>terms & privacy policy</strong></p></a>
+                  </a>
+                </div>
 
 
     </ion-scroll>

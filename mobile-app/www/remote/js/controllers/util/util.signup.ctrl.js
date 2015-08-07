@@ -729,6 +729,19 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.launchPrivacyPolicy = function() {
+
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/privacy-terms.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.termsModal = modal;
+            $scope.termsModal.show();
+        });
+
+    }
+
 
     $scope.goToSignupFromSideBar = function() {
       $scope.resetSettingsIcons();
