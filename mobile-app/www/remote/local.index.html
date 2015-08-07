@@ -6,6 +6,8 @@
     <title></title>
     <script type="text/javascript">
       var start_dom_time = (new Date()).getTime();
+      var deviceReadyLoadTime;
+      var bodyLoadTime;
       var calcTimeSinceInit = function() {
         if (start_dom_time) {
             var current_time = (new Date()).getTime();

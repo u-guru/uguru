@@ -94,8 +94,22 @@ angular.module('uguru.guru.controllers')
       var default_card = $scope.user.transfer_cards[0];
       if (confirm("I give Uguru permission to \nbill $10 to " +  default_card.card_type + " **" +  default_card.card_last4)) {
         $scope.loader.show()
-        $scope.success.show(500, 1000, "Success!")
-        $scope.user.guru_deposit = true;
+        var successCallback = function () {
+          $scope.loader.hide();
+          $scope.success.show(500, 1000, "Your payment is successful!");
+        }
+        var failureFunction = function(err) {
+          $scope.loader.hide();
+          if (err.status === 403) {
+            $scope.success.show(0, 2000, "There was an error with charging your card. Please contact customer support")
+          }
+
+        }
+        var default_guru_deposit = 10;
+        $scope.user.updateAttr('guru_deposit', $scope.user, default_guru_deposit, successCallback, $scope);
+
+
+
       }
     }
 

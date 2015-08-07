@@ -188,8 +188,18 @@ class DeviceView(restful.Resource):
                 if 'push_notif' in request.json:
                     device.user.push_notifications_enabled = True
 
+        if 'network_speed' in request.json:
+            device.network_speed = request.json.get('network_speed')
+        if 'body_load_time' in request.json:
+            device.body_load_time = request.json.get('body_load_time')
+        if 'device_load_time' in request.json:
+            device.device_load_time = request.json.get('device_load_time')
         if 'push_notif' in request.json:
             device.push_notif = request.json.get('push_notif')
+        if 'typical_network_speed' in request.json:
+            device.typical_network_speed = request.json.get('typical_network_speed')
+        if 'is_test_device' in request.json:
+            device.is_test_device = request.json.get('is_test_device')
 
         if 'location_enabled' in request.json:
             device.location_enabled = request.json.get('location_enabled')
@@ -464,6 +474,41 @@ class UserOneView(restful.Resource):
 
         if 'summer_15' in request.json:
             user.summer_15 = request.json.get('summer_15')
+
+        if 'guru_deposit' in request.json:
+            transfer_card = None
+            deposit_amount = request.json.get('guru_deposit')
+
+            all_transfer_cards = user.get_transfer_cards()
+
+            if not all_transfer_cards:
+                abort(401)
+
+            for card in all_transfer_cards:
+                if card.is_default_transfer:
+                    transfer_card = card
+                    break
+
+            if not transfer_card:
+                abort(401)
+
+            from app.lib.stripe_client import charge_customer
+            stripe_charge = charge_customer(user, int(deposit_amount))
+            if type(stripe_charge) is str:
+                abort(404)
+
+            transaction = Transaction.chargeGuruDeposit(deposit_amount, transfer_card, user, stripe_charge)
+            if transaction.guru_amount > 0:
+                user.guru_deposit = True
+                db_session.commit()
+
+
+            ## Make sure they have one
+            ## make sure their card is valid
+            ## charge $10
+            ## set guru deposit to true
+
+
 
         if 'recent_position' in request.json:
             recent_position_json = request.json.get('recent_position')

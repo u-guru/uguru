@@ -1,8 +1,8 @@
 angular.module('uguru.user', [])
 .factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory', 'RootService',
-    '$ionicSideMenuDelegate',
+    '$ionicSideMenuDelegate', '$cordovaNetwork',
     function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService,
-        $ionicSideMenuDelegate) {
+        $ionicSideMenuDelegate, $cordovaNetwork) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -498,6 +498,7 @@ angular.module('uguru.user', [])
         $scope.user.transcript_file = user.transcript_file;
         $scope.user.transcript_verified_by_admin = user.transcript_verified_by_admin;
         $scope.user.tutoring_platforms_description = user.tutoring_platforms_description;
+        $scope.user.guru_deposit = user.guru_deposit;
 
         $scope.user.email_friendly = user.email_friendly;
         $scope.user.facetime_friendly = user.facetime_friendly;
@@ -709,6 +710,12 @@ angular.module('uguru.user', [])
                       course: obj,
                       'add_student_course': true
                   }
+              }
+
+              if (arg === 'guru_deposit') {
+                return {
+                    'guru_deposit': obj
+                }
               }
 
               if (arg === 'guru_committed') {
@@ -1271,6 +1278,20 @@ angular.module('uguru.user', [])
                     .then(function(device){
                         $scope.user.current_device = device;
                         $localstorage.setObject('user', $scope.user);
+
+                        if (deviceReadyLoadTime) {
+                            $scope.user.current_device.device_load_time = deviceReadyLoadTime;
+                        }
+                        if (bodyLoadTime) {
+                            $scope.user.current_device.body_load_time = bodyLoadTime;
+                        }
+
+                        if ($cordovaNetwork && getNetworkSpeed) {
+                            $scope.user.current_device.network_speed = getNetworkSpeed();
+                        }
+
+                        $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
+
 
                     }, function(err){
                         console.log(err);

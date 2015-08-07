@@ -9,7 +9,7 @@ var REST_URL = 'http://uguru-rest.herokuapp.com'
 
 var BASE = '';
 if (LOCAL) {
-  BASE = 'remote/';
+BASE = 'remote/';
   BASE_URL = 'http://192.168.42.66:8100';
  // REST_URL = 'http://192.168.42.66:5000';
 
@@ -41,7 +41,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   document.addEventListener("deviceready", function () {
         // console.log('list of all plugins checkpoint 2', JSON.stringify(cordova.require("cordova/plugin_list").metadata));
         if (calcTimeSinceInit) {
-          var deviceReadyLoadTime = calcTimeSinceInit();
+          deviceReadyLoadTime = calcTimeSinceInit();
           console.log('Device ready load time:', deviceReadyLoadTime, 'seconds');
         }
 
@@ -161,7 +161,15 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         gh_title += ' in file ' + exception.location
       }
       var gh_body = '*Line*: ' + exception.line + '\n' + '*Column*: ' + exception.column + '\n*File*: ' + exception.location + '\n*File URL*: ' + exception.sourceURL + '\n\n*Message*: ' + exception.message + ', where the cause is _' + JSON.stringify(cause) + '_\n\n*Exception Type*: ' + exception.name + '\n\n*Full Error Object*: \n\n' + JSON.stringify(exception) + '\n\n\n*Full Stack Trace*: \n\n' + exception.stack;
-      var user_details = $injector.get("$localstorage").getObject("user");
+      var user = $injector.get("$localstorage").getObject("user");
+      var user_info = {
+        id: user.id,
+        name: user.name,
+        guru_courses: user.guru_courses,
+        devices: user.devices,
+        age: user.time_created,
+        last_updated: user.last_active
+      }
       var device_details = {
                 ios: ionic.Platform.isIOS(),
                 android: ionic.Platform.isAndroid(),
@@ -175,7 +183,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         issue_title: gh_title,
         issue_body: gh_body,
         user_agent: navigator.userAgent,
-        user_details: user_details,
+        user_details: user_info,
         device_info: device_details
       }
 

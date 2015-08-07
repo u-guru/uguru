@@ -2311,6 +2311,25 @@ class Transaction(Base):
         backref = 'transactions'
         )
 
+
+    @staticmethod
+    def chargeGuruDeposit(deposit_amount, transfer_card, user, charge_id):
+        transaction = Transaction()
+        transaction.time_created = datetime.now()
+        transaction.card_id = transfer_card.id
+        transaction._type = 3
+
+        transaction.guru_amount = deposit_amount
+
+        transaction.guru = user
+
+        transaction.charge_id = charge_id
+        transaction.profit = deposit_amount
+        transaction.guru_id = user.id
+        db_session.add(transaction)
+        db_session.commit()
+        return transaction
+
     @staticmethod
     def calculateStudentPriceFromSession(_session):
         minutes = _session.minutes

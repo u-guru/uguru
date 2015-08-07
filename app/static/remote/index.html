@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script type="text/javascript">
+      var start_dom_time = (new Date()).getTime();
+      var deviceReadyLoadTime;
+      var bodyLoadTime;
+      var calcTimeSinceInit = function() {
+        if (start_dom_time) {
+            var current_time = (new Date()).getTime();
+            var time_ms = current_time - start_dom_time;
+            var time_s = (time_ms / 1000.0).toPrecision(3)
+            var loadTime = time_s;
+            return loadTime
+        }
+      }
+      var onBodyLoad = function() {
+        var bodyLoadTime = calcTimeSinceInit();
+        console.log('Body dom load complete, load time:', bodyLoadTime, 'seconds');
+      }
+    </script>
     <!-- Begin Inspectlet Embed Code -->
     <script type="text/javascript">
       console.log('dom begins');

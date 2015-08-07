@@ -114,6 +114,9 @@ device_fields['camera_enabled'] = fields.Boolean(attribute='camera_enabled')
 device_fields['body_load_time'] = fields.Float(attribute='body_load_time')
 device_fields['update_load_time'] = fields.Float(attribute='update_load_time')
 device_fields['is_test_device'] = fields.Boolean(attribute='is_test_device')
+device_fields['device_load_time'] = fields.Float(attribute='device_load_time')
+device_fields['network_speed'] = fields.String(attribute='network_speed')
+device_fields['typical_network_speed'] = fields.String(attribute='typical_network_speed')
 
 request_fields = {}
 request_fields['time_created'] = fields.DateTime(attribute='time_created')
