@@ -113,6 +113,12 @@ def admin_create():
         return redirect(url_for('admin_login'))
     return render_template("new_admin/create-campaign.html")
 
+@app.route('/admin/design/style/')
+def admin_create():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("style/index.html")
+
 @app.route('/admin/users/<_id>/')
 def admin_users(_id):
     if not session.get('user'):

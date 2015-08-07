@@ -72,14 +72,13 @@ angular.module('uguru.guru.controllers')
 
      // Show the action sheet
      $scope.closeAttachActionSheet = $ionicActionSheet.show({
-       buttons: options,
-       cancelText: 'Cancel',
-       cancel: function() {
+        buttons: options,
+        cancelText: 'Cancel',
+        cancel: function() {
             $scope.closeAttachActionSheet();
         },
-       buttonClicked: function(index) {
+        buttonClicked: function(index) {
           $scope.takePhoto(index);
-
           $timeout(function() {
               $scope.closeAttachActionSheet();
           }, 500);

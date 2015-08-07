@@ -1,0 +1,309 @@
+@mixin opacity($opacity) {
+	filter: alpha(opacity=$opacity * 100);
+	opacity: $opacity;
+}
+@mixin transition($transition) {
+	-webkit-transition: all $transition;
+	-o-transition: all $transition;
+	-ms-transition: all $transition;
+	-moz-transition: all $transition;
+	transition: all $transition;
+}
+@mixin round {
+	border-radius: 1000px;
+}
+@mixin center-x {
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+@mixin center-y {
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+@mixin center-xy {
+	top: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+}
+@mixin flex {
+	-ms-box-orient: horizontal;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: flex;
+}
+@mixin flex-wrap {
+	-ms-flex-flow: row wrap;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+}
+@mixin flex-center {
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+	align-items: center;
+	justify-content: center;
+}
+@mixin listless {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+@mixin blur($blur) {
+	filter: blur($blur+px);
+	-webkit-filter: blur($blur+px);
+	-moz-filter: blur($blur+px);
+	-o-filter: blur($blur+px);
+	-ms-filter: blur($blur+px);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{$blur}');
+}
+@mixin rotate($angle) {
+	-webkit-transform: rotate($angle+deg);
+	-moz-transform: rotate($angle+deg);
+	-ms-transform: rotate($angle+deg);
+	-o-transform: rotate($angle+deg);
+	transform: rotate($angle+deg);
+}
+
+$links: 'a:active, a:focus, a:hover';
+
+$charcoal: #2B3234;
+$midnight: #363C3E;
+$metal: #B2B2B2;
+$smoke: #F5F5F5;
+$campus: #8A9EA3;
+$shamrock: #69B3A5;
+$azure: #65A6D1;
+$gold: #F9D57B;
+$cerise: #DB1988;
+
+$font: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+
+body {
+	font-family: $font;
+	font-size: 18px;
+	color: $charcoal;
+	background: #f9f9f9;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+a {
+	color: $shamrock;
+	text-decoration: none;
+}
+#{$links} {
+	color: $cerise;
+}
+*:focus {
+	outline: none;
+}
+
+#top {
+	max-width: 90%;
+	margin: 0 auto;
+	padding: 50px 0;
+	text-align: center;
+	h1 {
+		color: $midnight;
+		font-size: 96px;
+		font-weight: 900;
+		letter-spacing: 2px;
+		text-transform: lowercase;
+	}
+	h2 {
+		color: $metal;
+		font-weight: 300;
+		letter-spacing: 3px;
+		text-transform: uppercase;
+	}
+}
+
+#main {
+	max-width: 90%;
+	margin: 0 auto;
+	padding-bottom: 50px;
+	#main-menu {
+		ul {
+			@include listless;
+			margin: -5px 0;
+			padding-right: 50px;
+			li {
+				margin: 5px 0;
+				font-size: 14px;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+				a {
+					display: block;
+					position: relative;
+				}
+				.active {
+					color: $midnight;
+					font-weight: 600;
+					&:after {
+						@include round;
+						@include center-y;
+						content: "";
+						display: block;
+						position: absolute;
+						right: 0;
+						width: 4px;
+						height: 4px;
+						background: $midnight;
+					}
+				}
+			}
+		}
+	}
+	#main-content {
+		margin-top: -10px;
+		article {
+			margin-bottom: 50px;
+			header {
+				h1 {
+					font-size: 48px;
+					font-weight: 900;
+					text-transform: lowercase;
+					color: $campus;
+				}
+			}
+			footer {
+				text-align: right;
+			}
+			&#type {
+				#type-font {
+					span {
+						display: block;
+					}
+					.type-sq {
+						margin-bottom: 25px;
+						h1 {
+							font-size: 48px;
+						}
+						h2 {
+							font-size: 18px;
+							text-transform: uppercase;
+						}
+						span {
+							font-size: 14px;
+						}
+						&#type-sq-200 {
+							h1, h2, span {
+								font-weight: 200!important;
+							}
+						}
+						&#type-sq-300 {
+							h1, h2, span {
+								font-weight: 300!important;
+							}
+						}
+						&#type-sq-400 {
+							h1, h2, span {
+								font-weight: 400!important;
+							}
+						}
+						&#type-sq-600 {
+							h1, h2, span {
+								font-weight: 600!important;
+							}
+						}
+						&#type-sq-700 {
+							h1, h2, span {
+								font-weight: 700!important;
+							}
+						}
+						&#type-sq-900 {
+							h1, h2, span {
+								font-weight: 900!important;
+							}
+						}
+					}
+				}
+				#type-headers {
+					h1, h2, h3, h4, p {
+						margin: 0;
+					}
+					h1, h2, h3, h4 {
+						text-transform: uppercase;
+					}
+					h1 {
+						font-size: 36px;
+						font-weight: 900;
+					}
+					aside {
+						margin: 5px 0 25px;
+						color: $metal;
+						font-size: 14px;
+						text-transform: uppercase;
+						&:last-child {
+							margin-bottom: 0;
+						}
+					}
+				}
+			}
+			&#color {
+				.color-sq {
+					position: relative;
+					height: 150px;
+					color: white;
+					text-align: center;
+					.color-info {
+						position: absolute;
+						bottom: 0;
+						width: 100%;
+						padding-bottom: 20px;
+						span {
+							display: block;
+							font-size: smaller;
+						}
+					}
+					&#color-sq-charcoal {
+						background: $charcoal;
+					}
+					&#color-sq-midnight {
+						background: $midnight;
+					}
+					&#color-sq-metal {
+						background: $metal;
+					}
+					&#color-sq-white {
+						background: white;
+						color: $charcoal;
+					}
+					&#color-sq-smoke {
+						background: $smoke;
+						color: $charcoal;
+					}
+					&#color-sq-campus {
+						background: $campus;
+					}
+					&#color-sq-shamrock {
+						background: $shamrock;
+					}
+					&#color-sq-azure {
+						background: $azure;
+					}
+					&#color-sq-gold {
+						background: $gold;
+						color: $charcoal;
+					}
+					&#color-sq-cerise {
+						background: $cerise;
+					}
+				}
+			}
+		}
+	}
+}

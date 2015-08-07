@@ -21,7 +21,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher, $ionicActionSheet)     {
 
-
+  // var n = x + 1;
   $scope.showUpcoming = true;
   $scope.root.vars.show_price_fields = false;
 
