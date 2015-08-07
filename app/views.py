@@ -114,10 +114,22 @@ def admin_create():
     return render_template("new_admin/create-campaign.html")
 
 @app.route('/admin/design/style/')
-def admin_create():
+def admin_style_guide():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
     return render_template("style/index.html")
+
+@app.route('/admin/design/inspired/')
+def admin_components():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/admin-coming-soon.html")
+
+@app.route('/admin/design/moodboards/')
+def admin_components():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/admin-coming-soon.html")
 
 @app.route('/admin/users/<_id>/')
 def admin_users(_id):

@@ -11,10 +11,10 @@ var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
   BASE_URL = 'http://192.168.42.66:8100';
- REST_URL = 'http://192.168.42.66:5000';
+ // REST_URL = 'http://192.168.42.66:5000';
 
   // BASE_URL = 'http://localhost:8100/';
-  // REST_URL = 'http://localhost:5000';
+  REST_URL = 'http://localhost:5000';
   // BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 
 } else {
@@ -40,7 +40,10 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
   document.addEventListener("deviceready", function () {
         // console.log('list of all plugins checkpoint 2', JSON.stringify(cordova.require("cordova/plugin_list").metadata));
-
+        if (calcTimeSinceInit) {
+          var deviceReadyLoadTime = calcTimeSinceInit();
+          console.log('Device ready load time:', deviceReadyLoadTime, 'seconds');
+        }
 
           if ($cordovaSplashscreen && $cordovaSplashscreen.hide) {
 
@@ -98,10 +101,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
 
                 //grabbing nextwork speed
-                if ($cordovaNetwork) {
-                  $rootScope.network_speed = getNetworkSpeed();
-                  console.log('2. grabbing network speed which is: ', $rootScope.network_speed, '\n\n');
-                }
 
 
                 //save device
@@ -135,7 +134,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
-  $cordovaFacebookProvider, $ionicConfigProvider, $compileProvider, uiGmapGoogleMapApiProvider) {
+  $cordovaFacebookProvider, $ionicConfigProvider, $compileProvider, uiGmapGoogleMapApiProvider,
+  $provide) {
 
   uiGmapGoogleMapApiProvider.configure({
         //    key: 'your api key',
@@ -143,6 +143,55 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         libraries: 'places'
     });
 
+  $provide.decorator("$exceptionHandler", function($delegate, $injector) {
+    return function(exception, cause) {
+      var gh_title;
+      if (exception.message) {
+        gh_title =  '"' +  exception.message;
+      }
+      if (cause) {
+        gh_title += '" since "' + JSON.stringify(cause);
+      }
+      if (exception.line) {
+        gh_title += '". See line ' + exception.line
+      }
+      if (exception.sourceURL) {
+        var exceptionUrlSplit = exception.sourceURL.split('/');
+        exception.location = exceptionUrlSplit[exceptionUrlSplit.length - 1];
+        gh_title += ' in file ' + exception.location
+      }
+      var gh_body = '*Line*: ' + exception.line + '\n' + '*Column*: ' + exception.column + '\n*File*: ' + exception.location + '\n*File URL*: ' + exception.sourceURL + '\n\n*Message*: ' + exception.message + ', where the cause is _' + JSON.stringify(cause) + '_\n\n*Exception Type*: ' + exception.name + '\n\n*Full Error Object*: \n\n' + JSON.stringify(exception) + '\n\n\n*Full Stack Trace*: \n\n' + exception.stack;
+      var user_details = $injector.get("$localstorage").getObject("user");
+      var device_details = {
+                ios: ionic.Platform.isIOS(),
+                android: ionic.Platform.isAndroid(),
+                windows: ionic.Platform.isWindowsPhone(),
+                mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone(),
+                web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone()),
+                device: ionic.Platform.device(),
+              }
+
+      ghObj = {
+        issue_title: gh_title,
+        issue_body: gh_body,
+        user_agent: navigator.userAgent,
+        user_details: user_details,
+        device_info: device_details
+      }
+
+      var GithubHTTP = $injector.get("Github");
+      GithubHTTP.post(ghObj).then(
+        function(response) {
+          console.log(response);
+        },
+        function(err) {
+          console.log(JSON.stringify(err));
+        }
+      )
+
+      $delegate(exception, cause);
+    };
+  });
 
 
   if (ionic.Platform.isWindowsPhone()) {
@@ -301,6 +350,13 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '/bill-student',
         templateUrl: BASE + 'templates/guru.bill-student.html',
         controller: 'BillStudentController'
+  }).
+  state('root.test-error', {
+        url: '/test-error',
+        templateUrl: BASE + 'templates/guru.bill-student.html',
+        controller: function($scope) {
+          throw "Test error";
+        }
   }).
   state('root.guru-conversations', {
         url: '/guru-conversations',

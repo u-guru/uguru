@@ -27,15 +27,21 @@ angular.module('uguru.util.controllers')
   'Major',
   'Skill',
   'Profession',
+  '$cordovaDevice',
+  '$cordovaNetwork',
   function($ionicPlatform, $scope, $state, $localstorage, User,
           RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
           CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
           $cordovaSplashscreen, $timeout, Geolocation, $cordovaPush,
           $ionicSideMenuDelegate, $ionicViewSwitcher, $cordovaGeolocation, Major,
-          Skill, Profession, $cordovaDevice) {
+          Skill, Profession, $cordovaDevice, $cordovaNetwork) {
 
           // console.log('1. checking for app updates\n');
           // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
+
+          document.addEventListener('DOMContentLoaded', function(event) {
+              console.log('dom has loaded');
+          }, false);
 
 
           $scope.network_speed = null;
@@ -175,6 +181,7 @@ angular.module('uguru.util.controllers')
             $ionicSideMenuDelegate.toggleRight();
           };
 
+
           console.log('getting most up to date universities + user from server..')
           var local_universities = $localstorage.getObject('universities');
           if (!local_universities || local_universities.length === 0) {
@@ -226,9 +233,6 @@ angular.module('uguru.util.controllers')
             $scope.static.popular_professions = local_popular_professions;
             console.log('professions already loaded');
           }
-
-
-
 
           $scope.loader = {
             show: function() {
@@ -315,7 +319,7 @@ angular.module('uguru.util.controllers')
                     $scope.user.push_notifications = true;
                     $scope.user.current_device.push_notif = deviceToken;
                     $scope.user.current_device.push_notif_enabled = true;
-                    $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
+                    $scope.user.updateObj($scope.user.current_device, 'device', $scope.user.current_device, $scope);
 
                     payload = {
                       'push_notifications': true,
@@ -409,10 +413,6 @@ angular.module('uguru.util.controllers')
             ios: false
           }
 
-
-
-          // $ionicPlatform.ready(function() {
-
           document.addEventListener("deviceready", function () {
             // console.log('ENDING MOBILE ONLY tasks below \n\n');
             $scope.platform = {
@@ -435,11 +435,17 @@ angular.module('uguru.util.controllers')
             if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.hide) {
               $cordovaSplashscreen.hide();
             }
-
             if ($scope.platform && $scope.user) {
-              $scope.user.current_device = ionic.Platform.device();
-              $scope.user.current_device.user_id = $scope.user.id;
-              $scope.user.createObj($scope.user, 'device', $scope.user.current_device, $scope);
+                $scope.user.current_device = ionic.Platform.device();
+                $scope.user.current_device.user_id = $scope.user.id;
+                if ($cordovaNetwork) {
+                  $rootScope.network_speed = getNetworkSpeed();
+                  $scope.user.current_device.network_speed = $rootScope.network_speed;
+                  console.log('network speed is currently', $rootScope.network_speed);
+                  console.log('2. grabbing network speed which is: ', $rootScope.network_speed, '\n\n');
+                }
+
+                $scope.user.createObj($scope.user, 'device', $scope.user.current_device, $scope);
             }
 
             if ($scope.platform.android) {
@@ -479,7 +485,7 @@ angular.module('uguru.util.controllers')
                     Major, Skill, Profession);
 
               }
-
+            //all windows-specific device ready
             if ($scope.platform.windows && $cordovaPush) {
                 console.log('we are updating the push notifications on windows device')
                   $cordovaPush.register(
@@ -536,6 +542,12 @@ angular.module('uguru.util.controllers')
                   console.log("ERROR: ", error.message);
               }
 
+            }
+
+
+            //update all new attribuets
+            if ($scope.user && $scope.user.current_device) {
+              $scope.user.updateObj($scope.user.current_device, 'device', $scope.user.current_device, $scope);
             }
 
 

@@ -1666,9 +1666,10 @@ class Device(Base):
     body_load_time = Column(Float)
     update_load_time = Column(Float)
     is_test_device = Column(Boolean)
-    # device_load_time = Column(Float)
-    # network_speed = Column(String) TODO SAMIR
-    # typical_network_speed = Column(String)
+
+    device_load_time = Column(Float)
+    network_speed = Column(String)
+    typical_network_speed = Column(String)
 
     push_notif = Column(String)
     push_notif_enabled = Column(Boolean)

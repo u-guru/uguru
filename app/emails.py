@@ -141,8 +141,10 @@ def send_reset_password_email(user, raw_password):
     print result
 
 
-def send_errors_email(body):
-    email_subject = 'Uguru Production Error'
+def send_errors_email(body, client_only=False):
+    email_subject = 'Uguru Production Server Error'
+    if client_only:
+        email_subject = 'Uguru Production Client Error'
     email_content = body
     receiver_info = [{
             'email':'samir@uguru.me',

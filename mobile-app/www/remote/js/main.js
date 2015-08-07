@@ -1,6 +1,6 @@
 // Uguru upp
 
-var LOCAL = true; //local to the 8100 codebasebirbirs
+var LOCAL = false; //local to the 8100 codebasebirbirs
 
 
 
@@ -143,17 +143,52 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         libraries: 'places'
     });
 
-  $provide.decorator("$exceptionHandler", function($delegate) {
+  $provide.decorator("$exceptionHandler", function($delegate, $injector) {
     return function(exception, cause) {
-      // alert(exception.message);
-      var exceptionUrlSplit = exception.sourceURL.split('/');
-      exception.location = exceptionUrlSplit[exceptionUrlSplit.length - 1];
-      var gh_title =  '"' +  exception.message + '" since "' + JSON.stringify(cause) + '". See line ' + exception.line + ' in file ' + exception.location;
+      var gh_title;
+      if (exception.message) {
+        gh_title =  '"' +  exception.message;
+      }
+      if (cause) {
+        gh_title += '" since "' + JSON.stringify(cause);
+      }
+      if (exception.line) {
+        gh_title += '". See line ' + exception.line
+      }
+      if (exception.sourceURL) {
+        var exceptionUrlSplit = exception.sourceURL.split('/');
+        exception.location = exceptionUrlSplit[exceptionUrlSplit.length - 1];
+        gh_title += ' in file ' + exception.location
+      }
       var gh_body = '*Line*: ' + exception.line + '\n' + '*Column*: ' + exception.column + '\n*File*: ' + exception.location + '\n*File URL*: ' + exception.sourceURL + '\n\n*Message*: ' + exception.message + ', where the cause is _' + JSON.stringify(cause) + '_\n\n*Exception Type*: ' + exception.name + '\n\n*Full Error Object*: \n\n' + JSON.stringify(exception) + '\n\n\n*Full Stack Trace*: \n\n' + exception.stack;
+      var user_details = $injector.get("$localstorage").getObject("user");
+      var device_details = {
+                ios: ionic.Platform.isIOS(),
+                android: ionic.Platform.isAndroid(),
+                windows: ionic.Platform.isWindowsPhone(),
+                mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone(),
+                web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone()),
+                device: ionic.Platform.device(),
+              }
+
       ghObj = {
         issue_title: gh_title,
-        issue_body: gh_body
+        issue_body: gh_body,
+        user_agent: navigator.userAgent,
+        user_details: user_details,
+        device_info: device_details
       }
+
+      var GithubHTTP = $injector.get("Github");
+      GithubHTTP.post(ghObj).then(
+        function(response) {
+          console.log(response);
+        },
+        function(err) {
+          console.log(JSON.stringify(err));
+        }
+      )
+
       $delegate(exception, cause);
     };
   });
@@ -315,6 +350,13 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '/bill-student',
         templateUrl: BASE + 'templates/guru.bill-student.html',
         controller: 'BillStudentController'
+  }).
+  state('root.test-error', {
+        url: '/test-error',
+        templateUrl: BASE + 'templates/guru.bill-student.html',
+        controller: function($scope) {
+          throw "Test error";
+        }
   }).
   state('root.guru-conversations', {
         url: '/guru-conversations',

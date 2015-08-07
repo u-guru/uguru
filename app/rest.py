@@ -2594,6 +2594,33 @@ class AdminUniversityAddRecipientsView(restful.Resource):
         results = {'message': str(len(new_db_objs)) + ' objects processed'}
         return jsonify(success=results)
 
+class GithubIssueView(restful.Resource):
+    def post(self):
+
+        issue_title = 'JS PRODUCTION ERROR:' + request.json.get('issue_title')
+        issue_body = request.json.get('issue_body')
+        device_details = request.json.get('device_info')
+        user_details = request.json.get('user_details')
+        user_agent = request.json.get('user_agent')
+
+        issue_body += ('\n\n\n**User Info**\n\n%s\n\n**Device Details**\n\n%s\n\n\n**Agent Details**\n\n%s' % (user_details, device_details, user_agent))
+        issues_arr = ['PRODUCTION CLIENT ERROR', 'bug']
+
+        if device_details.get('ios'):
+            issues_arr.append('Platform : IOS')
+        if device_details.get('android'):
+            issues_arr.append('Platform : Android')
+        if device_details.get('windows'):
+            issues_arr.append('Platform: Windows Phone')
+        if device_details.get('web'):
+            issues_arr.append('Platform: Web')
+
+        from lib.github_client import init_github, create_issue
+        from emails import send_errors_email
+        gh = init_github('uguru')
+        create_issue(gh, issues_arr, issue_title, issue_body)
+        send_errors_email(issue_body, True)
+        return jsonify(success=[True])
 
 
 ################################
@@ -2782,6 +2809,7 @@ api.add_resource(CourseListView, '/api/v1/courses')
 api.add_resource(SkillListView, '/api/v1/skills')
 api.add_resource(ProfessionListView, '/api/v1/professions')
 api.add_resource(UserEmailView, '/api/v1/user_emails')
+api.add_resource(GithubIssueView, '/api/v1/github')
 
 # Admin views
 api.add_resource(AdminSessionView, '/api/admin')

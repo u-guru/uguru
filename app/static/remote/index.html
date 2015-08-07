@@ -2,6 +2,17 @@
 <html>
   <head>
     <!-- Begin Inspectlet Embed Code -->
+    <script type="text/javascript">
+      console.log('dom begins');
+      var start_dom_time = (new Date()).getTime()
+      var calcBodyLoad = function(start_dom_time) {
+        console.log(start_dom_time)
+        var current_time = (new Date()).getTime();
+        var time_ms = current_time - start_dom_time;
+        var time_s = parseInt(time_ms % 1000.0)
+        console.log(time_s)
+      }
+    </script>
 <script type="text/javascript" id="inspectletjs">
 window.__insp = window.__insp || [];
 __insp.push(['wid', 2099970349]);
@@ -222,9 +233,8 @@ else window.addEventListener('load', __ldinsp, false);
     <script src="cordova.js"></script>-->
     <script src="js/app.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
-
   </head>
-  <body ng-app="uguru" animation="slide-left-right-ios7">
+  <body ng-app="uguru" animation="slide-left-right-ios7" onload="calcBodyLoad()">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
