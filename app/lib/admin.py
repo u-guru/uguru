@@ -1,3 +1,4 @@
+import os
 admin_info = {
     'samir@uguru.me': {
         'name': 'Samir Makhani',
@@ -7,17 +8,17 @@ admin_info = {
         'name': 'Ben Dalal',
         'profile_url': 'http://i.imgur.com/xk6aKRJ.png'
     },
+    'gabrielle@uguru.me': {
+        'name': 'Gabrielle Wee',
+        'profile_url': '/static/img/admin/gabrielle.png'
+    },
+    'jeselle@uguru.me': {
+        'name': 'Jeselle Obina',
+        'profile_url': '/static/img/admin/jeselle.png'
+    },
     'jason@uguru.me': {
         'name': 'Jason Huang',
         'profile_url': 'http://i.imgur.com/NzlBCRz.png'
-    },
-    'jourdon@uguru.me': {
-        'name': 'Jourdon Ahn',
-        'profile_url': 'http://i.imgur.com/yNXLxrn.png'
-    },
-    'randy@uguru.me': {
-        'name': 'Randy Kim',
-        'profile_url': 'http://i.imgur.com/LwxPXtm.png'
     },
     'investors@uguru.me': {
         'name': 'Uguru Investor',

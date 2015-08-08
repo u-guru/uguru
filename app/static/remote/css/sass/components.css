@@ -2109,8 +2109,8 @@ a.button-footer:visited, a.button-footer:hover {
 .white-text {
   color: white !important; }
 
-.guru-profile select option {
-  background-color: white !important;
+.guru-profile select, .guru-profile select option {
+  background-color: transparent !important;
   color: #68A7CF !important; }
 
 label.item-floating-label {
@@ -2163,12 +2163,12 @@ p.progressbar-text {
 .platform-ios ion-content.guru-profile-content.white-bg.standard-bg.guru-profile-content.scroll-content.ionic-scroll.scroll-content-false.has-header {
   top: 108px !important; }
 
-.guru-profile .guru-profile-slide-box .slider-slides {
-  width: 200% !important; }
-
 .guru-profile-slide-box ion-slide {
   width: 50% !important; }
 
 p.fake-placeholder-text {
   font-size: 1em;
   margin-left: -0.25em; }
+
+#support-input-fake:hover {
+  outline: none; }

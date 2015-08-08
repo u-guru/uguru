@@ -21,6 +21,8 @@ angular.module('uguru.guru.controllers')
   $ionicActionSheet, $cordovaFacebook) {
 
     $scope.profile = {edit_mode:false, showCredibility:false};
+    $scope.root.vars.guru_mode = true;
+
     if (!$scope.root.vars.profile) {
       $scope.root.vars.profile = false;
     }
@@ -77,8 +79,10 @@ angular.module('uguru.guru.controllers')
       $scope.success.show(0, 750, 'Saved!');
       $timeout(function() {
         var e = document.getElementById("late-night-select");
+        e.blur();
         $scope.user.guru_latest_time = e.selectedIndex;
         $scope.user.updateAttr('guru_latest_time', $scope.user, $scope.user.guru_latest_time, null, $scope);
+
       }, 500);
 
 
@@ -100,6 +104,7 @@ angular.module('uguru.guru.controllers')
       $scope.success.show(0, 750, 'Saved!');
       $timeout(function() {
         var e = document.getElementById("max-hourly-select");
+        e.blur();
         var strUser = e.options[e.selectedIndex].text;
         $scope.user.max_hourly = parseInt(strUser);
         $scope.user.updateAttr('max_hourly', $scope.user, $scope.user.max_hourly, null, $scope);

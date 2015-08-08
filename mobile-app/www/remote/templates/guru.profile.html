@@ -5,10 +5,10 @@
   <ion-header-bar class='dark-bg-header'>
       <h1 class='title'>Profile</h1>
       <div class="buttons">
-        <button class="button button-clear button-header-link button-blue hide ng-class:{'show':!root.vars.profile.edit_mode}" ng-click='root.vars.profile.edit_mode = !root.vars.profile.edit_mode'>
+        <button id='E2E-editProfile' ng-if="!root.vars.profile.edit_mode" class="button button-clear button-header-link button-blue" ng-click='root.vars.profile.edit_mode = !root.vars.profile.edit_mode'>
           Edit
         </button>
-        <button class="button button-clear button-header-link button-submit cancel-button button-blue hide ng-class:{'show':root.vars.profile.edit_mode}" ng-click='saveGuruProfile()'>
+        <button id='E2E-saveProfile'ng-if="root.vars.profile.edit_mode"class="button button-clear button-header-link button-submit cancel-button button-blue" ng-click='saveGuruProfile()'>
           Save
         </button>
       </div>
@@ -39,8 +39,8 @@
                 <div class='pure-g'>
                   <div class='pure-u-1-2'>
                     <div class='padding-1em' style='padding-left:2em;'>
-                      <a ng-click='root.vars.profile.edit_mode && showActionSheetProfilePhoto()'>
-                        <img class='pure-img profile-img sidebar-img guru-profile-img inline'  ng-src='{{user.profile_url}}'/>
+                      <a id="E2E-editProfile-editPhoto" ng-click='root.vars.profile.edit_mode && showActionSheetProfilePhoto()'>
+                        <img id = "E2E-editProfile-imgUrl" class='pure-img profile-img sidebar-img guru-profile-img inline'  ng-src='{{user.profile_url}}'/>
                       </a>
                     </div>
                     <div ng-include="img_base + 'templates/ratings.components.guru.html'">
@@ -49,16 +49,16 @@
 
                   <div class='pure-u-1-2 relative' style='padding-top:1em;'>
                     <div class='center no-margin'>
-                      <a ng-click='root.vars.profile.edit_mode && showPopupEditName()'>
+                      <a id="E2E-editProfile-editName" ng-click='root.vars.profile.edit_mode && showPopupEditName()'>
                         <h1 class='title light uppercase margin-half'>{{user.name.split(' ')[0] + ' ' + user.name.split(' ')[1][0].toUpperCase()}}.</h1>
                       </a>
-                      <a ng-click='root.vars.profile.edit_mode && goToUniversity()'>
-                        <h5 class='white-text bold no-margin uppercase'>
+                      <a id="E2E-editProfile-editSchool"  ng-click='root.vars.profile.edit_mode && goToUniversity()'>
+                        <h5 id = "E2E-schoolName" class='white-text bold no-margin uppercase' value={{user.university.title}}>
                           {{user.university.title}}
                         </h5>
                       </a>
 
-                      <a ng-click='root.vars.profile.edit_mode && transitionToMajor()'>
+                      <a id="E2E-editProfile-editMajor"  ng-click='root.vars.profile.edit_mode && transitionToMajor()'>
                         <h5 class='uppercase guru-profile-major-text light no-margin hide ng-class:{"show":user.majors.length > 0}'>
                           {{user.majors[0].name}}
                         </h5>
@@ -67,7 +67,7 @@
                         </h5>
                       </a>
                       <a ng-click='root.vars.profile.edit_mode && showMaxHourlyClicked()'>
-                        <div class='container relative'>
+                        <div class='container relative max-hourly-container'>
                           <h1 class='uppercase light bold' style='margin-top:8px;'>
                             ${{selectedOption.id}} <span class='profile-15m-text'>/ hour</span>
                           </h1>
@@ -143,7 +143,7 @@
        <div class='pure-g-c flex-column j-center center'>
 
         <div class='pure-g'>
-          <a class='pure-u-1 center' ng-click='root.vars.profile.edit_mode && transitionToGuruCourses()'>
+          <a id="E2E-editProfile-editCourse" class='pure-u-1 center' ng-click='root.vars.profile.edit_mode && transitionToGuruCourses()'>
             <div class='pure-u-1 padding-half light-border-bottom'>
               <div class='pure-g'>
                   <h4 class='semibold uppercase flex-item-c' style='color:rgba(0,0,0,0.3)'>
@@ -167,7 +167,7 @@
                     <div class="title-container mdl-card--expand grey-bg center">
                       <h5 class="title white-text uppercase semibold">Late night friendly</h5>
                     </div>
-                    <div class="card-body center relative">
+                    <div id="E2E-editProfile-editLateNight" class="card-body center relative late-night-container">
                       <h2 class='opacity-1-2' style='font-size:150%'>
                         I'm up until <br> <strong> {{selectedOptionLateNight.name}} </strong>
                       </h2>
@@ -235,7 +235,7 @@
   </ion-scroll>
 </ion-scroll>
   <input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed(this)" style='display:none'/>
-  <div class='full-height' ng-show='profile.showCredibility' style='top:88px;'>
+  <div class='full-height windows-top-margin' ng-show='profile.showCredibility' style='top:88px;'>
     <div ng-include="img_base + 'templates/guru.credibility.components.html'" class='full-height'>
     </div>
   </div>

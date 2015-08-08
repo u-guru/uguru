@@ -297,14 +297,15 @@
 
                 </div>
               <div class='pure-g'>
-                <div class='pure-u-1' keyboard-attach>
+                <div class='pure-u-1'>
 
                   <ion-list class='list-inset standard-bg'>
 
 
                     <ion-list class='standard-bg flex-item-c pure-g j-start bg-transparent'>
-                      <ion-item class='pure-u-1 item-icon-right relative description-wrapper-item' ng-hide='progress'>
-                            <textarea id='description-input'  style='font-size:1em;' rows="5" class='full-width' ng-model='supportTicket.description' placeholder='How can we help?'></textarea>
+                      <ion-item ng-click="launchSupportDescriptionModal()" class='pure-u-1 item-icon-right relative description-wrapper-item'>
+                            <textarea id='support-input-fake'  style='font-size:1em;' rows="5" class='full-width center' ng-model='supportTicket.description' placeholder='How can we help?'>
+                            </textarea>
                       </ion-item>
                     </ion-list>
 
@@ -313,7 +314,7 @@
                         <p class='empty-tags-placeholder opacity-1-2'>Add some tags (optional)</p>
                     </ion-item> -->
                   </ion-list>
-                  <button class='button button-full button-black light-blue-bg' ng-click='submitSupport()' style='font-size:80%;'>
+                  <button class='button button-full button-black light-blue-bg' ng-show="supportTicket.description.length && support_index" ng-click='submitSupport()' style='font-size:80%;' >
                     Submit
                   </button>
 
