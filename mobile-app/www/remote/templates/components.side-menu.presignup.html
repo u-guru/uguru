@@ -5,7 +5,7 @@
 
 
     <!-- default settings page for user who has not signed up -->
-    <div ng-show='settings.icons.presignup && !user.id' class='relative' style='height:90%;'>
+   <!--  <div ng-show='settings.icons.presignup && !user.id' class='relative' style='height:90%;'>
 
         <div ng-show='user && !user.id' class="bar bar-header dark-bg-header mini-header uppercase relative" style='width:auto;'>
             <h1 class="title bold">Welcome</h1>
@@ -43,11 +43,11 @@
 
         </div>
     </div>
+ -->
 
 
 
-
-      <div class='relative full-height hide ng-class:{"show":settings.icons.profile && !user.id}' style='height:90%;'>
+      <div class='relative full-height hide ng-class:{"show":(settings.icons.profile)}' style='height:90%;'>
         <div class="bar bar-header dark-bg-header mini-header uppercase relative" style='width:auto;'>
           <h1 class="title bold">Request Help</h1>
         </div>
@@ -96,13 +96,12 @@
                     <button class='button button-full button-black micro-text fb-blue-bg'  ng-click='connectWithFacebook()'>Continue with Facebook
                     </button>
                   </div>
-                  <div class='pure-u-1 padding-half center' id="E2E_Email">
-                        <a class='center grey nano-text normal' id="email" ng-click='goToSignupFromSideBar()'> <strong class='uppercase'>sign up</strong> or <strong class='uppercase'>login</strong> with email </a>
+                  <div class='pure-u-1 padding-half center' id="E2E_Email" style='margin-top:0.5em;'>
+                        <a class='center grey nano-text normal' style='font-size:100%;' id="email" ng-click='goToSignupFromSideBar()'> <strong class='uppercase'>sign up</strong> or <strong class='uppercase'>login</strong> via email </a>
                   </div>
                 </div>
               </div>
             </div>
-
         </div>
       </div>
 

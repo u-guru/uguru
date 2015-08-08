@@ -135,6 +135,11 @@ angular.module('uguru.util.controllers', [])
       $scope.view = index;
       if (index === 2) {
         $scope.root.slider.hide();
+
+        if ($scope.platform.ios && $cordovaKeyboard.hideAccessoryBar) {
+          $cordovaKeyboard.hideAccessoryBar(true);
+        }
+
         $timeout(function() {
 
           var element = document.getElementById("university-input")
@@ -148,6 +153,9 @@ angular.module('uguru.util.controllers', [])
 
         }, 300);
       } else {
+        if ($scope.platform.ios && $cordovaKeyboard.hideAccessoryBar) {
+            $cordovaKeyboard.hideAccessoryBar(false);
+        }
         $scope.root.slider.show();
         if ($scope.platform.mobile && $cordovaKeyboard.isVisible()) {
           $cordovaKeyboard.close();

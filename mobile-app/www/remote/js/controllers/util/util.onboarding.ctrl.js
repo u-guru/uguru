@@ -19,7 +19,6 @@ angular.module('uguru.util.controllers')
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $cordovaStatusbar, $ionicSlideBoxDelegate) {
 
-
     document.addEventListener("deviceready", function () {
 
       if ($scope.platform.ios && $cordovaKeyboard.hideAccessoryBar) {
@@ -46,9 +45,14 @@ angular.module('uguru.util.controllers')
 
           $scope.universityInput.addEventListener("keyup", function() {
             if ($scope.universityInput.value && $scope.universityInput.value.length) {
-              $ionicSlideBoxDelegate.enableSlide(false);
+              if ($scope.platform.ios && $cordovaKeyboard.hideAccessoryBar) {
+                $cordovaKeyboard.hideAccessoryBar(true);
+              }
             } else {
               $ionicSlideBoxDelegate.enableSlide(true);
+              if ($scope.platform.ios && $cordovaKeyboard.hideAccessoryBar) {
+                $cordovaKeyboard.hideAccessoryBar(true);
+              }
             }
           });
 
