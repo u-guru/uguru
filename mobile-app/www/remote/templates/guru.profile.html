@@ -39,8 +39,8 @@
                 <div class='pure-g'>
                   <div class='pure-u-1-2'>
                     <div class='padding-1em' style='padding-left:2em;'>
-                      <a ng-click='root.vars.profile.edit_mode && showActionSheetProfilePhoto()'>
-                        <img class='pure-img profile-img sidebar-img guru-profile-img inline'  ng-src='{{user.profile_url}}'/>
+                      <a id="E2E-editProfile-editPhoto" ng-click='root.vars.profile.edit_mode && showActionSheetProfilePhoto()'>
+                        <img id = "E2E-editProfile-imgUrl" class='pure-img profile-img sidebar-img guru-profile-img inline'  ng-src='{{user.profile_url}}'/>
                       </a>
                     </div>
                     <div ng-include="img_base + 'templates/ratings.components.guru.html'">
@@ -143,7 +143,7 @@
        <div class='pure-g-c flex-column j-center center'>
 
         <div class='pure-g'>
-          <a class='pure-u-1 center' ng-click='root.vars.profile.edit_mode && transitionToGuruCourses()'>
+          <a id="E2E-editProfile-editCourse" class='pure-u-1 center' ng-click='root.vars.profile.edit_mode && transitionToGuruCourses()'>
             <div class='pure-u-1 padding-half light-border-bottom'>
               <div class='pure-g'>
                   <h4 class='semibold uppercase flex-item-c' style='color:rgba(0,0,0,0.3)'>
@@ -167,7 +167,7 @@
                     <div class="title-container mdl-card--expand grey-bg center">
                       <h5 class="title white-text uppercase semibold">Late night friendly</h5>
                     </div>
-                    <div class="card-body center relative late-night-container">
+                    <div id="E2E-editProfile-editLateNight" class="card-body center relative late-night-container">
                       <h2 class='opacity-1-2' style='font-size:150%'>
                         I'm up until <br> <strong> {{selectedOptionLateNight.name}} </strong>
                       </h2>

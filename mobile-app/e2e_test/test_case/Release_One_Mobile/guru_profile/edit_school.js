@@ -1,6 +1,7 @@
-describe('Account Unit Test : Edit Uni', function () {
+describe('Account Unit Test : Edit University', function () {
 	var schoolName ; 
 	var editSchool = element(by.id('E2E-editProfile-editSchool'));
+	var msg = element(by.id('E2E-msg'));
 
 	beforeEach(function()
 		{
@@ -35,6 +36,13 @@ describe('Account Unit Test : Edit Uni', function () {
 				     	return alert.accept();
 				      }
 				});
-
+				msg.getAttribute('value').then(function(value )
+				{
+					expect(value).toBe("Saved!");
+				});
 			});
+	// it("Edit Empty School",function()
+	// 	{
+			
+	// 	});
 });
