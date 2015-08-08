@@ -704,8 +704,10 @@ angular.module('uguru.util.controllers')
       if (payment) {
         console.log('passing payments', payment);
         $scope.root.vars.editCardClicked = true;
+        $ionicViewSwitcher.nextDirection('back');
         $state.go('^.payments', {cardObj:JSON.stringify(payment)})
       } else {
+        $ionicViewSwitcher.nextDirection('back');
         $state.go('^.payments');
       }
 
@@ -744,8 +746,10 @@ angular.module('uguru.util.controllers')
 
 
     $scope.goToSignupFromSideBar = function() {
+
       $scope.resetSettingsIcons();
       $scope.loader.show();
+      $ionicViewSwitcher.nextDirection('forward');
       $state.go('^.signup');
 
       $timeout(function() {

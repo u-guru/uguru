@@ -43,7 +43,7 @@
         // Show the action sheet
         $scope.closeAttachActionSheet = $ionicActionSheet.show({
             buttons: options,
-            titleText: '<span class="semibold uppercase">Edit Card **-' + card.card_last4 + '</span>',
+            // titleText: '<span class="semibold uppercase">Edit Card **-' + card.card_last4 + '</span>',
             cancelText: 'Cancel',
             cancel: function() {
                 $scope.closeAttachActionSheet();
@@ -461,8 +461,9 @@
               $scope.card_details.number = '****-****-****-' + $scope.card.card_last4;
               $timeout(function() {
                 $scope.fireKeyUpEvent();
-              }, 500);
+              }, 750);
             }
+            $scope.initCardAndFocusInput(callback);
           }, 500);
         }
 

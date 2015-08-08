@@ -182,6 +182,7 @@ angular.module('uguru.util.controllers')
           };
 
 
+
           console.log('getting most up to date universities + user from server..')
           var local_universities = $localstorage.getObject('universities');
           if (!local_universities || local_universities.length === 0) {

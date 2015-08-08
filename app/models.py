@@ -1685,6 +1685,13 @@ class Device(Base):
         backref = "devices"
     )
 
+    @staticmethod
+    def getTestDevices():
+        return Device.query.filter_by(is_test_device=True).all()
+    @staticmethod
+    def getNonTestDevices():
+        return Device.query.filter_by(is_test_device=None).all()
+
 class Rating(Base):
     __tablename__ = 'rating'
     id = Column(Integer, primary_key=True)

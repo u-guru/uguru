@@ -414,6 +414,17 @@ if arg == 'parse_uni_updated':
     with open('web_university4.json', 'wb') as fp:
         json.dump(result_schools, fp, indent = 4)
 
+if arg =='init_test_devices':
+    from app.models import *
+    from app.database import *
+    for u in User.query.all():
+        if u.devices and u.is_admin:
+            for device in u.devices:
+                device.is_test_device = True
+                db_session.commit()
+    print 'test devices initiated'
+
+
 
 if arg =='init_skills':
     from app.models import *

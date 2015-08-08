@@ -186,7 +186,7 @@
                   <p class='uppercase opacity-3-4 micro-text'> Bank Cards </p>
                 </div>
 
-                <ion-item class='request-item item-icon-right relative' ng-show='user && user.is_a_guru' ng-click='goToPaymentsFromSideBar()'>
+                <ion-item class='request-item item-icon-right relative' ng-show='user && user.is_a_guru && root.vars.guru_mode' ng-click='goToPaymentsFromSideBar()'>
                   <p class='opacity-4-5 no-margin' style='padding-left:0.3em; font-size:80%;'>
                     Add A New Bank Account </p>
                   <span class='card-icons-right'>

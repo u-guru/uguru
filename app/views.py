@@ -68,6 +68,15 @@ def admin_statistics():
     stats = Stats.query.get(1)
     return render_template("new_admin/admin.statistics.html", stats=stats)
 
+@app.route('/admin/stats/devices/')
+def admin_statistics():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    test_devices = sorted(Device.getTestDevices(), key=lambda d:d.last_accessed, reverse=True)
+    regular_devices = sorted(Device.getNonTestDevices(), key=lambda d:d.last_accessed, reverse=True)
+    return render_template("new_admin/admin.stats.devices.html", test_devices=test_devices, \
+        regular_devices=regular_devices)
+
 ###############
 ## Investors ##
 ###############
