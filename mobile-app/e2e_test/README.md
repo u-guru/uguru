@@ -47,4 +47,22 @@
  - Sign up Test:  
 	- %pe --suite s   
 
- 
+ **Guru Edit Profile Test :**
+- Commands : 
+	- run enitered test :
+		- %pgp
+- Options (for running Specific test case)
+ - CourseTest :
+	- %pe --suite c  
+ - Major Test:  
+	- %pe --suite m   
+ - Name Test:  
+	- %pe --suite n   
+ - Pay Test :
+	- %pe --suite p  
+ - Picture Test:  
+	- %pe --suite pic   
+ - Schoo; Test :
+	- %pe --suite s  
+ - Schedules Test:  
+	- %pe --suite sch   
