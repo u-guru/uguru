@@ -153,8 +153,13 @@
                           <td style='text-align:center;'>{{device.id}}</td>
                           <td style='text-align:center;'>{{device.last_accessed.strftime('%b %d')}}</td>
                           <td style='text-align:center;'>
-                            {% if device.user %}
-                              <a href="/admin/users/{{device.user.id}}" target='_blank'> {{device.user.name.split(' ')[0]}} </a>
+                            {% if device.user and device.user.id %}
+                              <a href="/admin/users/{{device.user.id}}" target='_blank'>
+                                {% if device.user.name %}
+                                  {{device.user.name.split(' ')[0]}} </a>
+                                {% else %}
+                                  -
+                                {% endif %}
                             {% else %}
                               NA
                             {% endif %}

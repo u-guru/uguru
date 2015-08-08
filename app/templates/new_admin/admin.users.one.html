@@ -37,13 +37,20 @@
                   <img style = 'display:inline-block' class='img-circle' height="100" width="100" src='{{user.profile_url}}'></img>
                   <h3>{{user.name}}</h3>
                   <p><strong>{{user.email}}</strong></p>
+                  <p>Studying @ {{user.university.name}}</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bar"></i>
                 </div>
                 <a href="#" class="small-box-footer">
-                  <span style='float:left'> &nbsp;&nbsp;Born {{user.time_created.strftime('%b %d')}}&nbsp;</span>
-
+                  <div class='row' style='padding:0em 2em;'>
+                    <span style='float:left'> &nbsp;&nbsp;Born {{user.time_created.strftime('%b %d')}}&nbsp;</span>
+                    {% if user.last_active %}
+                    <span style='float:right'>
+                      Last Seen <strong>{{user.last_active.strftime('%a, %b %d at %I:%M%p')}} </strong>
+                    </span>
+                    {% endif %}
+                  </div>
                 </a>
               </div>
             </div>
