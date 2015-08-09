@@ -10,7 +10,8 @@ alias po="protractor e2e_test/config/onboarding.config.js"
 alias pe="protractor e2e_test/config/email.config.js"
 alias pf="protractor e2e_test/config/facebook.config.js"
 alias pgp="protractor e2e_test/config/guruProf.config.js"
-									  
+alias pw="protractor e2e_test/config/workflow.config.js"
+
 
 alias rph="protractor e2e_test/config/protractor.config.headless.js"
 alias ws="webdriver-manager start"
