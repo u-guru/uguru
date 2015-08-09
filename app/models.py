@@ -1692,6 +1692,22 @@ class Device(Base):
     def getNonTestDevices():
         return Device.query.filter_by(is_test_device=None).all()
 
+    def isWindows(self):
+        if not self.platform:
+            return False
+        return 'win32nt' in self.platform.lower()
+
+    def isIOS(self):
+        if not self.platform:
+            return False
+        return 'ios' in self.platform.lower()
+
+    def isAndroid(self):
+        if not self.platform:
+            return False
+        return 'android' in self.platform.lower()
+
+
 class Rating(Base):
     __tablename__ = 'rating'
     id = Column(Integer, primary_key=True)

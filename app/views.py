@@ -77,6 +77,25 @@ def admin_statistics():
     return render_template("new_admin/admin.stats.devices.html", test_devices=test_devices, \
         regular_devices=regular_devices)
 
+@app.route('/admin/stats/universities/')
+def admin_statistics():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    # test_devices = sorted(Device.getTestDevices(), key=lambda d:d.last_accessed, reverse=True)
+    # regular_devices = sorted(Device.getNonTestDevices(), key=lambda d:d.last_accessed, reverse=True)
+    universities = University.query.all()
+    uni_length = len(universities) * 1.0
+    stats = {
+        'latitude': ((uni_length - len(University.query.filter_by(latitude=None).all())) / uni_length) * 100,
+        'website': ((uni_length - len(University.query.filter_by(website=None).all())) / uni_length) * 100,
+        'population': ((uni_length - len(University.query.filter_by(population=None).all())) / uni_length) * 100,
+        'school_mascot_name': ((uni_length - len(University.query.filter_by(school_mascot_name=None).all())) / uni_length) * 100,
+        'school_casual_name': ((uni_length - len(University.query.filter_by(school_casual_name=None).all())) / uni_length) * 100,
+        'logo_url': ((uni_length - len(University.query.filter_by(logo_url=None).all())) / uni_length) * 100,
+        'school_colors': ((uni_length - len(University.query.filter_by(school_color_one=None).all())) / uni_length) * 100
+    }
+    return render_template("new_admin/admin.stats.universities.html", universities =universities, stats=stats)
+
 ###############
 ## Investors ##
 ###############
@@ -257,6 +276,12 @@ def admin_dev_guidelines():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
     return render_template("new_admin/development-guidelines.html", team=[])
+
+@app.route('/admin/development/api/')
+def admin_dev_guidelines():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/admin.development.api.html")
 
 @app.route('/admin/')
 @app.route('/admin/team/')

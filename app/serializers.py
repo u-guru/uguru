@@ -432,7 +432,17 @@ AdminUniversitySerializer = {
     'num_courses': fields.Integer,
     'num_depts': fields.Integer,
     'name': fields.String,
-    'short_name': fields.String
+    'short_name': fields.String,
+    'latitude': fields.Float,
+    'longitude': fields.Float,
+    'website': fields.String,
+    'population': fields.Integer,
+    'school_mascot_name': fields.String,
+    'school_casual_name': fields.String,
+    'logo_url': fields.String,
+    'school_color_one': fields.String,
+    'school_color_two': fields.String,
+    'is_public':fields.Boolean
 }
 
 AdminUniversityDeptSerializer = {

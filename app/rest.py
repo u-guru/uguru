@@ -2475,7 +2475,51 @@ class AdminViewUsersList(restful.Resource):
 
 class AdminViewUniversitiesList(restful.Resource):
 
-    @marshal_with(UniversitySerializer)
+    @marshal_with(AdminUniversitySerializer)
+    def post(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED"
+
+
+
+        if not request or not request.json or 'school_name' not in request.json:
+            abort(401)
+
+        school = request.json.get('school_name')
+
+        # from static.data.universities_efficient import universities_arr
+        from fuzzywuzzy import fuzz, process
+
+        previous_university_titles = [university.name for university in University.query.all()]
+
+        matches = []
+        for title in previous_university_titles:
+            if fuzz.partial_ratio(school.lower(), title.replace('-', ' ').lower()) >= 80:
+                matches.append((title, school))
+
+        #part 2
+        highest_index = 0
+        highest_score = 0
+        index = 0
+        for match in matches:
+            current_match_score = fuzz.ratio(match[0], match[1])
+            print current_match_score
+            if current_match_score > highest_score:
+                highest_score = current_match_score
+                highest_index = index
+            index += 1
+
+
+        if 'all' in request.json:
+            all_queries = [University.query.filter_by(name=match[0]).first() for match in matches]
+            return all_queries
+        else:
+            query = University.query.filter_by(name=matches[highest_index][0])
+            return query.first()
+
+        abort(401)
+
+    @marshal_with(AdminUniversitySerializer)
     def get(self, auth_token):
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
@@ -2672,6 +2716,33 @@ class GithubIssueView(restful.Resource):
 ### START ADMIN API (OFFICIAL) #
 ################################
 
+
+class AdminDevicePushTestView(restful.Resource):
+
+    def post(self, auth_token, device_id):
+        if not device_id:
+            abort(401)
+        device = Device.query.get(device_id)
+        if not device or not device.push_notif or not device.push_notif_enabled or not device.is_test_device:
+            abort(401)
+
+        message = 'TEST'
+        token = device.push_notif
+
+        if device.isWindows():
+            from lib.push_notif import send_windows_notification
+            send_windows_notification(message, token)
+
+        if device.isIOS():
+            from lib.push_notif import send_ios_notification
+            send_ios_notification(message, token)
+
+        if device.isAndroid():
+            from lib.push_notif import send_android_notification
+            send_android_notification(message, token)
+
+        return jsonify(success=[True])
+
 class AdminUniversityCourseView(restful.Resource):
     def post(self, auth_token, uni_id):
         if not auth_token in APPROVED_ADMIN_TOKENS:
@@ -2684,6 +2755,85 @@ class AdminUniversityCourseView(restful.Resource):
             return "UNAUTHORIZED", 401
 
         return jsonify(success=[True])
+
+class AdminOneUniversityView(restful.Resource):
+    @marshal_with(AdminUniversitySerializer)
+    def put(self, auth_token, uni_id):
+        if auth_token and auth_token in APPROVED_ADMIN_TOKENS and uni_id:
+
+            # parse the response
+            # request_json = json.loads(request.json)
+            u = University.query.get(uni_id)
+
+            if not u:
+                abort(401)
+
+            if 'latitude' in request.json:
+                latitude = request.json.get('latitude')
+                if type(latitude) != float:
+                    abort(401)
+                u.latitude = latitude
+
+            if 'longitude' in request.json:
+                longitude = request.json.get('longitude')
+                if type(longitude) != float:
+                    abort(401)
+                u.longitude = longitude
+
+            if 'website' in request.json:
+                website = request.json.get('website')
+                if type(website) != str:
+                    abort(401)
+                u.website = website
+
+            if 'population' in request.json:
+                population = request.json.get('population')
+                if type(population) != int:
+                    abort(401)
+                u.population = population
+
+
+            if 'school_mascot_name' in request.json:
+                school_mascot_name = request.json.get('school_mascot_name')
+                if type(school_mascot_name) != str:
+                    abort(401)
+                u.school_mascot_name = school_mascot_name
+
+            if 'school_casual_name' in request.json:
+                school_casual_name = request.json.get('school_casual_name')
+                if type(school_casual_name) != str:
+                    abort(401)
+                u.school_casual_name = school_casual_name
+
+            if 'logo_url' in request.json:
+                logo_url = request.json.get('logo_url')
+                if type(logo_url) != str:
+                    abort(401)
+                u.logo_url = logo_url
+
+            if 'school_color_one' in request.json:
+                school_color_one = request.json.get('school_color_one')
+                if type(school_color_one) != str:
+                    abort(401)
+                u.school_color_one = school_color_one
+
+            if 'school_color_two' in request.json:
+                school_color_two = request.json.get('school_color_two')
+                if type(school_color_two) != str:
+                    abort(401)
+                u.school_color_two = school_color_two
+
+            if 'is_public' in request.json:
+                is_public = request.json.get('is_public')
+                if type(is_public) != bool:
+                    abort(401)
+                u.is_public = is_public
+
+            db_session.commit()
+
+            return u, 200
+
+        return "UNAUTHORIZED", 201
 
 class AdminUniversityView(restful.Resource):
     def get(self):
@@ -2858,8 +3008,10 @@ api.add_resource(GithubIssueView, '/api/v1/github')
 
 # Admin views
 api.add_resource(AdminSessionView, '/api/admin')
+api.add_resource(AdminDevicePushTestView, '/api/admin/<string:auth_token>/devices/<int:device_id>/push_test')
 api.add_resource(AdminUserView, '/api/admin/users/')
-api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
+# api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
+api.add_resource(AdminOneUniversityView, '/api/admin/<string:auth_token>/universities/<int:uni_id>')
 api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/university/<int:uni_id>/courses')
 api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts')
 api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts/<int:dept_id>/courses')
@@ -2870,7 +3022,7 @@ api.add_resource(AdminMandrillTemplatesView, '/api/admin/<string:auth_token>/man
 api.add_resource(AdminMandrillCampaignsView, '/api/admin/<string:auth_token>/mandrill/campaigns')
 api.add_resource(AdminMandrillCampaignDetailedView, '/api/admin/<string:auth_token>/mandrill/campaigns/<string:tag>')
 api.add_resource(AdminViewEmailsList, '/api/admin/<string:auth_token>/emails')
-api.add_resource(AdminViewUsersList, '/api/admin/<string:auth_token>/users')
+api.add_resource(AdminViewUsersList, '/api/admin/<string:apiuth_token>/users')
 api.add_resource(AdminViewUniversitiesList, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminViewUserList, '/api/admin/<string:auth_token>/user/<int:_id>')
 
