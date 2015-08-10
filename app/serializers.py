@@ -442,7 +442,10 @@ AdminUniversitySerializer = {
     'logo_url': fields.String,
     'school_color_one': fields.String,
     'school_color_two': fields.String,
-    'is_public':fields.Boolean
+    'is_public':fields.Boolean,
+    'fa15_start': fields.DateTime,
+    'fa15_end': fields.DateTime,
+    'population': fields.Integer
 }
 
 AdminUniversityDeptSerializer = {
