@@ -2789,6 +2789,13 @@ class AdminOneUniversityView(restful.Resource):
                     abort(401)
                 u.population = population
 
+            if 'fa15_start' in request.json:
+                fa15_start = request.json.get('fa15_start')
+                u.fa15_start = fa15_start
+
+            if 'fa15_end' in request.json:
+                fa15_end = request.json.get('fa15_start')
+                u.fa15_end = fa15_end
 
             if 'school_mascot_name' in request.json:
                 school_mascot_name = request.json.get('school_mascot_name')
