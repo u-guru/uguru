@@ -45,7 +45,7 @@
           </div>
 
           <div class='row'>
-            <div class='col-md-6'>
+            <div class='col-md-12'>
               <div class="box box-info">
                 <div class="box-header with-border">
                   <h3 class="box-title">Universities Statistics</h3>
@@ -61,6 +61,66 @@
                         <tr>
                           <th style='text-align:center;'>Parameter</th>
                           <th style='text-align:center;'>Percentage</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style='text-align:center;'>Latitude/Longitude</td>
+                          <td style='text-align:center;'>{{stats['latitude']|int}}%</td>
+                        </tr>
+                        <tr>
+                          <td style='text-align:center;'>Website</td>
+                          <td style='text-align:center;'>{{stats['website']|int}}%</td>
+                        </tr>
+                        <tr>
+                          <td style='text-align:center;'>Population</td>
+                          <td style='text-align:center;'>{{stats['population']|int}}%</td>
+                        </tr>
+                        <tr>
+                          <td style='text-align:center;'>School Mascot Name</td>
+                          <td style='text-align:center;'>{{stats['school_mascot_name']|int}}%</td>
+                        </tr>
+                        <tr>
+                          <td style='text-align:center;'>School Casual Name</td>
+                          <td style='text-align:center;'>{{stats['school_casual_name']|int}}%</td>
+                        </tr>
+                        <tr>
+                          <td style='text-align:center;'>Logo Url</td>
+                          <td style='text-align:center;'>{{stats['logo_url']|int}}%</td>
+                        </tr>
+                        <tr>
+                          <td style='text-align:center;'>School Colors</td>
+                          <td style='text-align:center;'>{{stats['school_colors']|int}}%</td>
+                        </tr>
+                        <tr>
+                          <td style='text-align:center;'>Fa15 Dates</td>
+                          <td style='text-align:center;'>{{stats['fa15_start']|int}}%</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='col-md-12'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Upcoming Targeted Universities</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th style='text-align:center;'>University</th>
+                          <th style='text-align:center;'>Start Date</th>
                         </tr>
                       </thead>
                       <tbody>

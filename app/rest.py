@@ -2762,6 +2762,7 @@ class AdminOneUniversityView(restful.Resource):
             # request_json = json.loads(request.json)
             u = University.query.get(uni_id)
 
+
             if not u:
                 abort(401)
 

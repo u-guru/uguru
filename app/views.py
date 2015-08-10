@@ -85,14 +85,23 @@ def admin_statistics():
     # regular_devices = sorted(Device.getNonTestDevices(), key=lambda d:d.last_accessed, reverse=True)
     universities = University.query.all()
     uni_length = len(universities) * 1.0
+    latitudes = University.query.filter_by(latitude=None).all()
+    websites = University.query.filter_by(website=None).all()
+    populations = University.query.filter_by(population=None).all()
+    school_mascots = University.query.filter_by(school_mascot_name=None).all()
+    school_casuals = University.query.filter_by(school_casual_name=None).all()
+    logo_urls = University.query.filter_by(logo_url=None).all()
+    school_colors = University.query.filter_by(school_color_one=None).all()
+    fa_starts = University.query.filter_by(fa15_start=None).all()
     stats = {
-        'latitude': ((uni_length - len(University.query.filter_by(latitude=None).all())) / uni_length) * 100,
-        'website': ((uni_length - len(University.query.filter_by(website=None).all())) / uni_length) * 100,
-        'population': ((uni_length - len(University.query.filter_by(population=None).all())) / uni_length) * 100,
-        'school_mascot_name': ((uni_length - len(University.query.filter_by(school_mascot_name=None).all())) / uni_length) * 100,
-        'school_casual_name': ((uni_length - len(University.query.filter_by(school_casual_name=None).all())) / uni_length) * 100,
-        'logo_url': ((uni_length - len(University.query.filter_by(logo_url=None).all())) / uni_length) * 100,
-        'school_colors': ((uni_length - len(University.query.filter_by(school_color_one=None).all())) / uni_length) * 100
+        'latitude': ((uni_length - len(latitudes)) / uni_length) * 100,
+        'website': ((uni_length - len(websites)) / uni_length) * 100,
+        'population': ((uni_length - len(populations)) / uni_length) * 100,
+        'school_mascot_name': ((uni_length - len(school_mascots)) / uni_length) * 100,
+        'school_casual_name': ((uni_length - len(school_casuals)) / uni_length) * 100,
+        'logo_url': ((uni_length - len(logo_urls)) / uni_length) * 100,
+        'school_colors': ((uni_length - len(school_colors)) / uni_length) * 100,
+        'fa15_start': ((uni_length - len(fa_starts)) / uni_length) * 100
     }
     return render_template("new_admin/admin.stats.universities.html", universities =universities, stats=stats)
 

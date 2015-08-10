@@ -539,6 +539,7 @@ class University(Base):
     num_emails = Column(Integer, default =0)
 
     ready_to_launch = Column(Boolean)
+    is_targetted = Column(Boolean, default=False)
 
     # new
     email_attributes = Column(String)
@@ -563,6 +564,15 @@ class University(Base):
     def admin_create(args_dict, _id):
         u = University.admin_update(University(_id=_id), args_dict)
         return u
+
+    @staticmethod
+    def is_university_targetted(university):
+        from datetime import datetime
+        recent_month = datetime(year=2015, month=7, day =24)
+        if university.fa15_start and university.fa15_start <= recent_month:
+            university.is_targetted = True
+            db_session.commit()
+
 
     @staticmethod
     def admin_update(u, args):

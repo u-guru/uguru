@@ -13,6 +13,49 @@ def init():
     init_db()
 
 
+def get_best_matching_universty(name):
+    from app.models import *
+    previous_university_titles = [university.name for university in University.query.all()]
+    matches = []
+    for title in previous_university_titles:
+        if fuzz.partial_ratio(school.lower(), title.replace('-', ' ').lower()) >= 80:
+            matches.append((title, school))
+    highest_index = 0
+    highest_score = 0
+    index = 0
+    for match in matches:
+        current_match_score = fuzz.ratio(match[0], match[1])
+        print current_match_score
+        if current_match_score > highest_score:
+            highest_score = current_match_score
+            highest_index = index
+        index += 1
+    return matches[highest_index][0]
+
+def init_university_dates(name):
+    req = urllib2.Request("https://drive.google.com/uc?export=download&id=0By5VIgFdqFHddHdBT1U4YWZ2VkE", None)
+    opener = urllib2.build_opener()
+    f = opener.open(req)
+    universities = simplejson.load(f)
+    errors = []
+    for info in universities:
+        try:
+            name = info[info.keys()[2]]
+            start_date = info[info.keys()[3]].replace('2015','15').replace('2014', '14').replace('2016', '16')
+            end_date = info[info.keys()[4]].replace('2015','15').replace('2014', '14').replace('2016', '16')
+            uni_obj = get_best_matching_universty(name)
+            start_date_obj = datetime.datetime.strptime(start_date, '%m/%d/%y')
+            end_date_obj = datetime.datetime.strptime(end_date, '%m/%d/%y')
+            uni_obj.fa15_start = start_date_obj
+            uni_obj.fa15_end = end_date_obj
+            db_session.commit()
+            print uni_obj.id, uni_obj.name, uni_obj.fa15_start, uni_obj.fa15_end
+        except:
+            errors.append(uni_obj)
+            continue
+
+
+
 def seed_db_local():
     init_db()
     v = Version()
