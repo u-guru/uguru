@@ -555,7 +555,7 @@ if arg == 'update_targetted':
     from app.models import University
     from app.database import db_session
     recent_month = datetime(year=2015, month=7, day =24)
-    for u in University.query.all():
+    for u in University.query.filter_by(is_targetted=True).all():
         if u.fa15_start and u.fa15_start >= recent_month and u.us_news_ranking > 0 and u.population > 1999:
             u.is_targetted = True
         else:
