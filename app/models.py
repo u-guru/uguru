@@ -503,6 +503,11 @@ class University(Base):
     logo_url = Column(String)
     last_updated = Column(DateTime)
 
+    fa15_start = Column(DateTime)
+    fa15_end = Column(DateTime)
+    sp15_start = Column(DateTime)
+    sp15_end = Column(DateTime)
+
     gurus = relationship("User",
         primaryjoin = "(User.university_id==University.id) & "\
                         "(User.is_a_guru==True)")

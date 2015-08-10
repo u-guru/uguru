@@ -2480,8 +2480,6 @@ class AdminViewUniversitiesList(restful.Resource):
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED"
 
-
-
         if not request or not request.json or 'school_name' not in request.json:
             abort(401)
 
@@ -2508,7 +2506,6 @@ class AdminViewUniversitiesList(restful.Resource):
                 highest_score = current_match_score
                 highest_index = index
             index += 1
-
 
         if 'all' in request.json:
             all_queries = [University.query.filter_by(name=match[0]).first() for match in matches]
