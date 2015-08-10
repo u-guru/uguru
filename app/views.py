@@ -93,6 +93,8 @@ def admin_statistics():
     logo_urls = University.query.filter_by(logo_url=None).all()
     school_colors = University.query.filter_by(school_color_one=None).all()
     fa_starts = University.query.filter_by(fa15_start=None).all()
+    target_universities = University.query.filter_by(is_targetted=True).all()
+    target_universities = sorted(target_universities, key=lambda d:d.fa15_start)
     stats = {
         'latitude': ((uni_length - len(latitudes)) / uni_length) * 100,
         'website': ((uni_length - len(websites)) / uni_length) * 100,
@@ -103,7 +105,8 @@ def admin_statistics():
         'school_colors': ((uni_length - len(school_colors)) / uni_length) * 100,
         'fa15_start': ((uni_length - len(fa_starts)) / uni_length) * 100
     }
-    return render_template("new_admin/admin.stats.universities.html", universities =universities, stats=stats)
+    return render_template("new_admin/admin.stats.universities.html", universities =universities, stats=stats,\
+        target_universities=target_universities)
 
 ###############
 ## Investors ##

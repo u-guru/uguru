@@ -120,38 +120,18 @@
                       <thead>
                         <tr>
                           <th style='text-align:center;'>University</th>
+                          <th style='text-align:center'>Location</th>
                           <th style='text-align:center;'>Start Date</th>
                         </tr>
                       </thead>
                       <tbody>
+                        {% for university in target_universities[:50] %}
                         <tr>
-                          <td style='text-align:center;'>Latitude/Longitude</td>
-                          <td style='text-align:center;'>{{stats['latitude']}}</td>
+                          <td style='text-align:center;'>{{university.name}}</td>
+                          <td style='text-align:center;'>{{university.city}}, {{university.state}}</td>
+                          <td style='text-align:center;'>{{university.fa15_start.strftime('%b %d')}}</td>
                         </tr>
-                        <tr>
-                          <td style='text-align:center;'>Website</td>
-                          <td style='text-align:center;'>{{stats['website']}}</td>
-                        </tr>
-                        <tr>
-                          <td style='text-align:center;'>Population</td>
-                          <td style='text-align:center;'>{{stats['population']}}</td>
-                        </tr>
-                        <tr>
-                          <td style='text-align:center;'>School Mascot Name</td>
-                          <td style='text-align:center;'>{{stats['school_mascot_name']}}</td>
-                        </tr>
-                        <tr>
-                          <td style='text-align:center;'>School Casual Name</td>
-                          <td style='text-align:center;'>{{stats['school_casual_name']}}</td>
-                        </tr>
-                        <tr>
-                          <td style='text-align:center;'>Logo Url</td>
-                          <td style='text-align:center;'>{{stats['logo_url']}}</td>
-                        </tr>
-                        <tr>
-                          <td style='text-align:center;'>School Colors</td>
-                          <td style='text-align:center;'>{{stats['school_colors']}}</td>
-                        </tr>
+                        {% endfor %}
                       </tbody>
                     </table>
                   </div><!-- /.table-responsive -->

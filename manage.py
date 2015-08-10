@@ -12,9 +12,29 @@ else:
 def init():
     init_db()
 
+def update_universities_forbes():
+    from app.static.data.universities import universities_dict
+    from app.database import db_session
+    from app.models import University
+    uni_names = universities_dict.keys()
+    index = 0
+    for uni in uni_names:
+        uni_dict = universities_dict[uni]
+        if uni_dict.get('forbes_rank') and uni_dict.get('logo_url'):
+            forbes_rank = uni_dict.get('forbes_rank')
+            logo_url = uni_dict.get('forbes_rank')
+            uni_obj = get_best_matching_universty(uni)
+            if uni_obj:
+                uni_obj.us_news_ranking = int(forbes_rank)
+                uni_obj.logo_url = logo_url
+                index += 1
+                db_session.commit()
+                print index, 'updated', uni
+    print index, 'universities updated with forbes & logo'
 
-def get_best_matching_universty(name):
-    from app.models import *
+def get_best_matching_universty(school):
+    from app.models import University
+    from fuzzywuzzy import fuzz, process
     previous_university_titles = [university.name for university in University.query.all()]
     matches = []
     for title in previous_university_titles:
@@ -25,12 +45,13 @@ def get_best_matching_universty(name):
     index = 0
     for match in matches:
         current_match_score = fuzz.ratio(match[0], match[1])
-        print current_match_score
         if current_match_score > highest_score:
             highest_score = current_match_score
             highest_index = index
         index += 1
-    return matches[highest_index][0]
+    if matches or highest_index:
+        return University.query.filter_by(name=matches[highest_index][0]).first()
+    return None
 
 def init_university_dates(name):
     req = urllib2.Request("https://drive.google.com/uc?export=download&id=0By5VIgFdqFHddHdBT1U4YWZ2VkE", None)
@@ -246,6 +267,9 @@ def seed_db():
 
 if arg == 'initialize':
     init()
+
+if arg =='update_forbes':
+    update_universities_forbes()
 
 if arg =="seed":
     seed_db()
@@ -524,6 +548,17 @@ if arg == 'init_languages':
         db_session.commit()
 
     print len(Language.query.all()), 'created'
+
+if arg == 'update_targetted':
+    from app.models import University
+    from app.database import db_session
+    recent_month = datetime(year=2015, month=7, day =24)
+    for u in University.query.all():
+        if u.fa15_start and u.fa15_start >= recent_month and u.us_news_ranking > 0:
+            u.is_targetted = True
+            print u.id, u.name, 'saved'
+            db_session.commit()
+    print len(University.query.filter_by(is_targetted=True).all())
 
 if arg == 'save_languages':
     languages_arr = []
