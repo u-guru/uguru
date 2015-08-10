@@ -22,11 +22,13 @@ def update_universities_forbes():
         uni_dict = universities_dict[uni]
         if uni_dict.get('forbes_rank') and uni_dict.get('logo_url'):
             forbes_rank = uni_dict.get('forbes_rank')
-            logo_url = uni_dict.get('forbes_rank')
+            logo_url = uni_dict.get('logo_url')
+            population = int(uni_dict.get('population').replace(',',''))
             uni_obj = get_best_matching_universty(uni)
             if uni_obj:
                 uni_obj.us_news_ranking = int(forbes_rank)
                 uni_obj.logo_url = logo_url
+                uni_obj.population = population
                 index += 1
                 db_session.commit()
                 print index, 'updated', uni
@@ -554,10 +556,12 @@ if arg == 'update_targetted':
     from app.database import db_session
     recent_month = datetime(year=2015, month=7, day =24)
     for u in University.query.all():
-        if u.fa15_start and u.fa15_start >= recent_month and u.us_news_ranking > 0:
+        if u.fa15_start and u.fa15_start >= recent_month and u.us_news_ranking > 0 and u.population > 1999:
             u.is_targetted = True
-            print u.id, u.name, 'saved'
-            db_session.commit()
+        else:
+            u.is_targetted = False
+        print u.id, u.name, 'saved'
+        db_session.commit()
     print len(University.query.filter_by(is_targetted=True).all())
 
 if arg == 'save_languages':
