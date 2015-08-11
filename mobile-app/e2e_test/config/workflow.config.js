@@ -16,7 +16,9 @@ exports.config = {
         ],
         suites:
         {
+          workflow: ['../test_case/WorkFlows/workflow_one.js','../test_case/WorkFlows/workflow_two.js'],
        		one :   '../test_case/WorkFlows/workflow_one.js',
+          load :   '../test_case/WorkFlows/#545.js',
        		two :   '../test_case/WorkFlows/workflow_two.js'
 
         },
@@ -62,7 +64,7 @@ exports.config = {
             protractor.run = require('../test_case/globals.js').run;
             browser.driver.manage().window().setSize(414, 736);
 	          //facebook log in
-   			protractor.run.setUp("http://localhost:8100/#/new-home","jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+       			protractor.run.setUp("http://localhost:8100/#/new-home","jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
             browser.sleep(800);     
         }
         

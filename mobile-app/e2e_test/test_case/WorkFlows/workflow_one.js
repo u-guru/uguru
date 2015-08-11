@@ -1,3 +1,4 @@
+
 describe('Workflow Test : One', function () {
 	var editCourse = element(by.id('E2E-editProfile-editCourse'));
 	var msg = element(by.id('E2E-msg'));
@@ -8,6 +9,7 @@ describe('Workflow Test : One', function () {
 	var id = "4242424242424242";
 	var date = "0915";
 	var cardcount = 0; 
+	var EC = protractor.ExpectedConditions;
 
 	// it("Student signs in Facebook",function()
 	// 	{
@@ -29,7 +31,7 @@ describe('Workflow Test : One', function () {
       
 		// protractor.get.doneButton.click().then(function()
 		element.all(by.id('done-button')).first().click();
-		browser.sleep(2000);
+		browser.wait(EC.presenceOf(msg),5000);
 		msg.getAttribute('value').then(function(value)
 		{
 			expect(value).toBe("Your card has been successfully added");
@@ -53,10 +55,11 @@ describe('Workflow Test : One', function () {
 	});
 	it("Verify that the card has been set to default (the green check is showing)",function()
 	{
-		var rows = element.all(by.repeater('payment_card in user.payment_cards'));
+ 		var latest = element.all(by.repeater('payment_card in user.payment_cards')).last();
+ 		var check = latest.element(by.css('.icon.ion-checkmark'));
+ 		expect(check.isDisplayed()).toBeTruthy;
 
-			expect(rows.first().element(by.css('ng-show="payment_card.is_default_payment"')).isDisplayed()).toBeTruthy();
-		
+
 	});
 	it("Click the item & try to edit",function()
 	{
@@ -65,19 +68,24 @@ describe('Workflow Test : One', function () {
 			cards[0].click();
       	});
 	});
+
 	it(" Check the top says 'Edit Payment'",function()
 	{
 		expect(element(by.id("E2E-payment-addPayment")).isDisplayed()).toBeTruthy();
 	});
+
 	it("  Make sure 'set to default' isn't an option (since there is one card)",function()
 	{
+		browser.sleep(2000);
 		element(by.css('[ng-click="paymentCardActionSheetOptions()"]')).click().then(function()
 			{
 					element.all(by.repeater('b in buttons')).count().then(function (count)
 					{
 						expect(count).toBe(1);
 			      	});
-			});
+	      			element(by.css('[ng-click="cancel()"]')).click();
 
+			});
+		element(by.css('[ng-click="goBack()"]')).click();
 	});
 });

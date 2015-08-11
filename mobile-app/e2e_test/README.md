@@ -65,4 +65,4 @@
  - Schoo; Test :
 	- %pe --suite s  
  - Schedules Test:  
-	- %pe --suite sch   
+	- %pe --suite sch  
