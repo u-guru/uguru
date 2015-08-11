@@ -55,6 +55,11 @@ def get_best_matching_universty(school):
         return University.query.filter_by(name=matches[highest_index][0]).first()
     return None
 
+def init_mailgun_lists():
+    from app.lib.mailgun import *
+    for u in University.query.all()[0:1]:
+        if u.is_targetted and u.population:
+            print create_mailing_list(u)
 def init_university_dates(name):
     req = urllib2.Request("https://drive.google.com/uc?export=download&id=0By5VIgFdqFHddHdBT1U4YWZ2VkE", None)
     opener = urllib2.build_opener()
@@ -272,6 +277,9 @@ if arg == 'initialize':
 
 if arg =='update_forbes':
     update_universities_forbes()
+
+if arg =='init_mailgun':
+    init_mailgun_lists()
 
 if arg =="seed":
     seed_db()
