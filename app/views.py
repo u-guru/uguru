@@ -77,6 +77,30 @@ def admin_devices():
     return render_template("new_admin/admin.stats.devices.html", test_devices=test_devices, \
         regular_devices=regular_devices)
 
+@app.route('/admin/stats/campaigns/')
+def admin_stats_campaigns():
+    import requests, json
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    response = requests.get(
+        "https://api.mailgun.net/v2/lists",
+        auth=('api', 'key-bfe01b1e2cb76d45e086c2fa5e813781'),
+        )
+    arr = json.loads(response.text)
+    university_arr = []
+    for list_info in arr['items']:
+        description = list_info['description']
+        description_parsed = description.split('|')
+        university_arr.append({
+            'id': description_parsed[1].split(':')[1],
+            'name': description_parsed[0].split(':')[1],
+            'count': float(list_info['members_count']),
+            'population': float(description_parsed[2].split(':')[1]),
+            'percentage': int((float(list_info['members_count'])) / (float(description_parsed[2].split(':')[1]) * 1.0) * 100)
+        })
+    university_arr = sorted(university_arr, key=lambda u:u['count'], reverse=True)
+    return render_template("new_admin/admin.stats.campaigns.html", university_arr=university_arr)
+
 @app.route('/admin/stats/universities/')
 def admin_statistics():
     if not session.get('user'):
@@ -94,7 +118,7 @@ def admin_statistics():
     school_colors = University.query.filter_by(school_color_one=None).all()
     fa_starts = University.query.filter_by(fa15_start=None).all()
     target_universities = University.query.filter_by(is_targetted=True).all()
-    target_universities = sorted(target_universities, key=lambda d:d.fa15_start)
+    target_universities = sorted(target_universities, key=lambda d:(d.fa15_start or datetime.now()) )
     stats = {
         'latitude': ((uni_length - len(latitudes)) / uni_length) * 100,
         'website': ((uni_length - len(websites)) / uni_length) * 100,
