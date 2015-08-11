@@ -1776,296 +1776,692 @@ angular.module('ngCordova.plugins.facebookAds', [])
 
 angular.module('ngCordova.plugins.file', [])
 
-//Filesystem (checkDir, createDir, checkFile, creatFile, removeFile, writeFile, readFile)
-  .factory('$cordovaFile', ['$q', '$window', '$log', '$timeout', function ($q, $window, $log, $timeout) {
+  .constant("$cordovaFileError", {
+    1: 'NOT_FOUND_ERR',
+    2: 'SECURITY_ERR',
+    3: 'ABORT_ERR',
+    4: 'NOT_READABLE_ERR',
+    5: 'ENCODING_ERR',
+    6: 'NO_MODIFICATION_ALLOWED_ERR',
+    7: 'INVALID_STATE_ERR',
+    8: 'SYNTAX_ERR',
+    9: 'INVALID_MODIFICATION_ERR',
+    10: 'QUOTA_EXCEEDED_ERR',
+    11: 'TYPE_MISMATCH_ERR',
+    12: 'PATH_EXISTS_ERR'
+  })
 
-    return {
-      checkDir: function (dir) {
-        return getDirectory(dir, {create: false});
-      },
+  .provider('$cordovaFile', [function () {
 
-      createDir: function (dir, replaceBOOL) {
-        return getDirectory(dir, {create: true, exclusive: replaceBOOL});
-      },
+    this.$get = ['$q', '$window', '$cordovaFileError', function ($q, $window, $cordovaFileError) {
 
-      listDir: function (filePath) {
-        var q = $q.defer();
+      return {
 
-        getDirectory(filePath, {create: false}).then(function (parent) {
-          var reader = parent.createReader();
-          reader.readEntries(
-            function (entries) {
-              q.resolve(entries);
-            },
-            function () {
-              q.reject('DIR_READ_ERROR : ' + filePath);
-            });
-        }, function () {
-          q.reject('DIR_NOT_FOUND : ' + filePath);
-        });
+        getFreeDiskSpace: function () {
+          var q = $q.defer();
+          cordova.exec(function (result) {
+            q.resolve(result);
+          }, function (error) {
+            q.reject(error);
+          }, "File", "getFreeDiskSpace", []);
+          return q.promise;
+        },
 
-        return q.promise;
-      },
+        checkDir: function (path, dir) {
+          var q = $q.defer();
 
-      checkFile: function (filePath) {
-        // Backward compatibility for previous function checkFile(dir, file)
-        if (arguments.length == 2) {
-          filePath = '/' + filePath + '/' + arguments[1];
-        }
-
-        return getFileEntry(filePath, {create: false});
-      },
-
-      createFile: function (filePath, replaceBOOL) {
-        // Backward compatibility for previous function createFile(filepath replaceBOOL)
-        if (arguments.length == 3) {
-          filePath = '/' + filePath + '/' + arguments[1];
-          replaceBOOL = arguments[2];
-        }
-
-        return getFileEntry(filePath, {create: true, exclusive: replaceBOOL});
-      },
-
-      removeFile: function (filePath) {
-        var q = $q.defer();
-
-        // Backward compatibility for previous function removeFile(dir, file)
-        if (arguments.length == 2) {
-          filePath = '/' + filePath + '/' + arguments[1];
-        }
-
-        getFileEntry(filePath, {create: false}).then(function (fileEntry) {
-          fileEntry.remove(q.resolve, q.reject);
-        }, q.reject);
-
-        return q.promise;
-      },
-
-      // options is a dict with possible keys :
-      // - append : true/false (if true, append data on EOF)
-      writeFile: function (filePath, data, options) {
-        var q = $q.defer();
-
-        getFileWriter(filePath, {create: true}).then(function (fileWriter) {
-          if (options && options['append'] === true) {
-            // Start write position at EOF.
-            fileWriter.seek(fileWriter.length);
+          if ((/^\//.test(dir))) {
+            q.reject("directory cannot start with \/");
           }
-          fileWriter.onwriteend = function (evt) {
-            if (this.error)
-              q.reject(this.error);
-            else
-              q.resolve(evt);
+
+          try {
+            var directory = path + dir;
+            $window.resolveLocalFileSystemURL(directory, function (fileSystem) {
+              if (fileSystem.isDirectory === true) {
+                q.resolve(fileSystem);
+              } else {
+                q.reject({code: 13, message: "input is not a directory"});
+              }
+            }, function (error) {
+              error.message = $cordovaFileError[error.code];
+              q.reject(error);
+            });
+          } catch (err) {
+            err.message = $cordovaFileError[err.code];
+            q.reject(err);
+          }
+
+          return q.promise;
+        },
+
+        checkFile: function (path, file) {
+          var q = $q.defer();
+
+          if ((/^\//.test(file))) {
+            q.reject("directory cannot start with \/");
+          }
+
+          try {
+            var directory = path + file;
+            $window.resolveLocalFileSystemURL(directory, function (fileSystem) {
+              if (fileSystem.isFile === true) {
+                q.resolve(fileSystem);
+              } else {
+                q.reject({code: 13, message: "input is not a file"});
+              }
+            }, function (error) {
+              error.message = $cordovaFileError[error.code];
+              q.reject(error);
+            });
+          } catch (err) {
+            err.message = $cordovaFileError[err.code];
+            q.reject(err);
+          }
+
+          return q.promise;
+        },
+
+        createDir: function (path, dirName, replaceBool) {
+          var q = $q.defer();
+
+          if ((/^\//.test(dirName))) {
+            q.reject("directory cannot start with \/");
+          }
+
+          replaceBool = replaceBool ? false : true;
+
+          var options = {
+            create: true,
+            exclusive: replaceBool
+          };  
+
+          try {
+            console.log("The Path : " + path);
+
+            $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+              console.log("fileSystem : "+ JSON.stringify(fileSystem));
+            //  console.log("fileSystem : "+ JSON.stringify(fileSystem.getDirectory()));
+
+              fileSystem.getDirectory(dirName, options, function (result) {
+                q.resolve(result);
+              }, function (error) {
+                error.message = $cordovaFileError[error.code];
+                q.reject(error);
+              });
+            }, function (err) {
+              err.message = $cordovaFileError[err.code];
+              q.reject(err);
+            });
+          } catch (e) {
+            e.message = $cordovaFileError[e.code];
+            q.reject(e);
+          }
+
+          return q.promise;
+        },
+
+        createFile: function (path, fileName, replaceBool) {
+          var q = $q.defer();
+
+          if ((/^\//.test(fileName))) {
+            q.reject("file-name cannot start with \/");
+          }
+
+          replaceBool = replaceBool ? false : true;
+
+          var options = {
+            create: true,
+            exclusive: replaceBool
           };
-          fileWriter.write(data);
-        }, q.reject);
 
-        return q.promise;
-      },
+          try {
+            $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+              fileSystem.getFile(fileName, options, function (result) {
+                q.resolve(result);
+              }, function (error) {
+                error.message = $cordovaFileError[error.code];
+                q.reject(error);
+              });
+            }, function (err) {
+              err.message = $cordovaFileError[err.code];
+              q.reject(err);
+            });
+          } catch (e) {
+            e.message = $cordovaFileError[e.code];
+            q.reject(e);
+          }
+          return q.promise;
+        },
 
-      readFile: function (filePath) {  /// now deprecated in new ng-cordova version
-        $log.log('readFile is now deprecated as of v0.1.4-alpha, use readAsText instead');
-        return this.readAsText(filePath);
-      },
+        removeDir: function (path, dirName) {
+          var q = $q.defer();
 
-      readAsText: function (filePath) {
-        var q = $q.defer();
+          if ((/^\//.test(dirName))) {
+            q.reject("file-name cannot start with \/");
+          }
 
-        // Backward compatibility for previous function readFile(dir, file)
-        if (arguments.length == 2) {
-          filePath = '/' + filePath + '/' + arguments[1];
+          try {
+            $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+              fileSystem.getDirectory(dirName, {create: false}, function (dirEntry) {
+                dirEntry.remove(function () {
+                  q.resolve({success: true, fileRemoved: dirEntry});
+                }, function (error) {
+                  error.message = $cordovaFileError[error.code];
+                  q.reject(error);
+                });
+              }, function (err) {
+                err.message = $cordovaFileError[err.code];
+                q.reject(err);
+              });
+            }, function (er) {
+              er.message = $cordovaFileError[er.code];
+              q.reject(er);
+            });
+          } catch (e) {
+            e.message = $cordovaFileError[e.code];
+            q.reject(e);
+          }
+          return q.promise;
+        },
+
+        removeFile: function (path, fileName) {
+          var q = $q.defer();
+
+          if ((/^\//.test(fileName))) {
+            q.reject("file-name cannot start with \/");
+          }
+
+          try {
+            $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+              fileSystem.getFile(fileName, {create: false}, function (fileEntry) {
+                fileEntry.remove(function () {
+                  q.resolve({success: true, fileRemoved: fileEntry});
+                }, function (error) {
+                  error.message = $cordovaFileError[error.code];
+                  q.reject(error);
+                });
+              }, function (err) {
+                err.message = $cordovaFileError[err.code];
+                q.reject(err);
+              });
+            }, function (er) {
+              er.message = $cordovaFileError[er.code];
+              q.reject(er);
+            });
+          } catch (e) {
+            e.message = $cordovaFileError[e.code];
+            q.reject(e);
+          }
+          return q.promise;
+        },
+
+        removeRecursively: function (path, dirName) {
+          var q = $q.defer();
+
+          if ((/^\//.test(dirName))) {
+            q.reject("file-name cannot start with \/");
+          }
+
+          try {
+            $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+              fileSystem.getDirectory(dirName, {create: false}, function (dirEntry) {
+                dirEntry.removeRecursively(function () {
+                  q.resolve({success: true, fileRemoved: dirEntry});
+                }, function (error) {
+                  error.message = $cordovaFileError[error.code];
+                  q.reject(error);
+                });
+              }, function (err) {
+                err.message = $cordovaFileError[err.code];
+                q.reject(err);
+              });
+            }, function (er) {
+              er.message = $cordovaFileError[er.code];
+              q.reject(er);
+            });
+          } catch (e) {
+            e.message = $cordovaFileError[e.code];
+            q.reject(e);
+          }
+          return q.promise;
+        },
+
+        writeFile: function (path, fileName, text, replaceBool) {
+          var q = $q.defer();
+
+          if ((/^\//.test(fileName))) {
+            q.reject("file-name cannot start with \/");
+          }
+
+          replaceBool = replaceBool ? false : true;
+
+          var options = {
+            create: true,
+            exclusive: replaceBool
+          };
+
+          try {
+            $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+              fileSystem.getFile(fileName, options, function (fileEntry) {
+                fileEntry.createWriter(function (writer) {
+                  if (options.append === true) {
+                    writer.seek(writer.length);
+                  }
+
+                  if (options.truncate) {
+                    writer.truncate(options.truncate);
+                  }
+
+                  writer.onwriteend = function (evt) {
+                    if (this.error) {
+                      q.reject(this.error);
+                    } else {
+                      q.resolve(evt);
+                    }
+                  };
+
+                  writer.write(text);
+
+                  q.promise.abort = function () {
+                    writer.abort();
+                  };
+                });
+              }, function (error) {
+                error.message = $cordovaFileError[error.code];
+                q.reject(error);
+              });
+            }, function (err) {
+              err.message = $cordovaFileError[err.code];
+              q.reject(err);
+            });
+          } catch (e) {
+            e.message = $cordovaFileError[e.code];
+            q.reject(e);
+          }
+
+          return q.promise;
+        },
+
+        writeExistingFile: function (path, fileName, text) {
+          var q = $q.defer();
+
+          if ((/^\//.test(fileName))) {
+            q.reject("file-name cannot start with \/");
+          }
+
+          try {
+            $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+              fileSystem.getFile(fileName, {create: false}, function (fileEntry) {
+                fileEntry.createWriter(function (writer) {
+                  writer.seek(writer.length);
+
+                  writer.onwriteend = function (evt) {
+                    if (this.error) {
+                      q.reject(this.error);
+                    } else {
+                      q.resolve(evt);
+                    }
+                  };
+
+                  writer.write(text);
+
+                  q.promise.abort = function () {
+                    writer.abort();
+                  };
+                });
+              }, function (error) {
+                error.message = $cordovaFileError[error.code];
+                q.reject(error);
+              });
+            }, function (err) {
+              err.message = $cordovaFileError[err.code];
+              q.reject(err);
+            });
+          } catch (e) {
+            e.message = $cordovaFileError[e.code];
+            q.reject(e);
+          }
+
+          return q.promise;
+        },
+
+        readAsText: function (path, file) {
+          var q = $q.defer();
+
+          if ((/^\//.test(file))) {
+            q.reject("file-name cannot start with \/");
+          }
+
+          try {
+            $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+              fileSystem.getFile(file, {create: false}, function (fileEntry) {
+                fileEntry.file(function (fileData) {
+                  var reader = new FileReader();
+
+                  reader.onloadend = function (evt) {
+                    if (evt.target.result !== undefined || evt.target.result !== null) {
+                      q.resolve(evt.target.result);
+                    } else if (evt.target.error !== undefined || evt.target.error !== null) {
+                      q.reject(evt.target.error);
+                    } else {
+                      q.reject({code: null, message: 'READER_ONLOADEND_ERR'});
+                    }
+                  };
+
+                  reader.readAsText(fileData);
+                });
+              }, function (error) {
+                error.message = $cordovaFileError[error.code];
+                q.reject(error);
+              });
+            }, function (err) {
+              err.message = $cordovaFileError[err.code];
+              q.reject(err);
+            });
+          } catch (e) {
+            e.message = $cordovaFileError[e.code];
+            q.reject(e);
+          }
+
+          return q.promise;
+        },
+
+        readAsDataURL: function (path, file) {
+          var q = $q.defer();
+
+          if ((/^\//.test(file))) {
+            q.reject("file-name cannot start with \/");
+          }
+
+          try {
+            $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+              fileSystem.getFile(file, {create: false}, function (fileEntry) {
+                fileEntry.file(function (fileData) {
+                  var reader = new FileReader();
+                  reader.onloadend = function (evt) {
+                    if (evt.target.result !== undefined || evt.target.result !== null) {
+                      q.resolve(evt.target.result);
+                    } else if (evt.target.error !== undefined || evt.target.error !== null) {
+                      q.reject(evt.target.error);
+                    } else {
+                      q.reject({code: null, message: 'READER_ONLOADEND_ERR'});
+                    }
+                  };
+                  reader.readAsDataURL(fileData);
+                });
+              }, function (error) {
+                error.message = $cordovaFileError[error.code];
+                q.reject(error);
+              });
+            }, function (err) {
+              err.message = $cordovaFileError[err.code];
+              q.reject(err);
+            });
+          } catch (e) {
+            e.message = $cordovaFileError[e.code];
+            q.reject(e);
+          }
+
+          return q.promise;
+        },
+
+        readAsBinaryString: function (path, file) {
+          var q = $q.defer();
+
+          if ((/^\//.test(file))) {
+            q.reject("file-name cannot start with \/");
+          }
+
+          try {
+            $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+              fileSystem.getFile(file, {create: false}, function (fileEntry) {
+                fileEntry.file(function (fileData) {
+                  var reader = new FileReader();
+                  reader.onloadend = function (evt) {
+                    if (evt.target.result !== undefined || evt.target.result !== null) {
+                      q.resolve(evt.target.result);
+                    } else if (evt.target.error !== undefined || evt.target.error !== null) {
+                      q.reject(evt.target.error);
+                    } else {
+                      q.reject({code: null, message: 'READER_ONLOADEND_ERR'});
+                    }
+                  };
+                  reader.readAsBinaryString(fileData);
+                });
+              }, function (error) {
+                error.message = $cordovaFileError[error.code];
+                q.reject(error);
+              });
+            }, function (err) {
+              err.message = $cordovaFileError[err.code];
+              q.reject(err);
+            });
+          } catch (e) {
+            e.message = $cordovaFileError[e.code];
+            q.reject(e);
+          }
+
+          return q.promise;
+        },
+
+        readAsArrayBuffer: function (path, file) {
+          var q = $q.defer();
+
+          if ((/^\//.test(file))) {
+            q.reject("file-name cannot start with \/");
+          }
+
+          try {
+            $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+              fileSystem.getFile(file, {create: false}, function (fileEntry) {
+                fileEntry.file(function (fileData) {
+                  var reader = new FileReader();
+                  reader.onloadend = function (evt) {
+                    if (evt.target.result !== undefined || evt.target.result !== null) {
+                      q.resolve(evt.target.result);
+                    } else if (evt.target.error !== undefined || evt.target.error !== null) {
+                      q.reject(evt.target.error);
+                    } else {
+                      q.reject({code: null, message: 'READER_ONLOADEND_ERR'});
+                    }
+                  };
+                  reader.readAsArrayBuffer(fileData);
+                });
+              }, function (error) {
+                error.message = $cordovaFileError[error.code];
+                q.reject(error);
+              });
+            }, function (err) {
+              err.message = $cordovaFileError[err.code];
+              q.reject(err);
+            });
+          } catch (e) {
+            e.message = $cordovaFileError[e.code];
+            q.reject(e);
+          }
+
+          return q.promise;
+        },
+
+        moveFile: function (path, fileName, newPath, newFileName) {
+          var q = $q.defer();
+
+          newFileName = newFileName || fileName;
+
+          if ((/^\//.test(fileName)) || (/^\//.test(newFileName))) {
+            q.reject("file-name cannot start with \/");
+          }
+
+          try {
+            $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+              fileSystem.getFile(fileName, {create: false}, function (fileEntry) {
+                $window.resolveLocalFileSystemURL(newPath, function (newFileEntry) {
+                  fileEntry.moveTo(newFileEntry, newFileName, function (result) {
+                    q.resolve(result);
+                  }, function (error) {
+                    q.reject(error);
+                  });
+                }, function (err) {
+                  q.reject(err);
+                });
+              }, function (err) {
+                q.reject(err);
+              });
+            }, function (er) {
+              q.reject(er);
+            });
+          } catch (e) {
+            q.reject(e);
+          }
+          return q.promise;
+        },
+
+        moveDir: function (path, dirName, newPath, newDirName) {
+          var q = $q.defer();
+
+          newDirName = newDirName || dirName;
+
+          if (/^\//.test(dirName) || (/^\//.test(newDirName))) {
+            q.reject("file-name cannot start with \/");
+          }
+
+          try {
+            $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+              fileSystem.getDirectory(dirName, {create: false}, function (dirEntry) {
+                $window.resolveLocalFileSystemURL(newPath, function (newDirEntry) {
+                  dirEntry.moveTo(newDirEntry, newDirName, function (result) {
+                    q.resolve(result);
+                  }, function (error) {
+                    q.reject(error);
+                  });
+                }, function (erro) {
+                  q.reject(erro);
+                });
+              }, function (err) {
+                q.reject(err);
+              });
+            }, function (er) {
+              q.reject(er);
+            });
+          } catch (e) {
+            q.reject(e);
+          }
+          return q.promise;
+        },
+
+        copyDir: function (path, dirName, newPath, newDirName) {
+          var q = $q.defer();
+
+          newDirName = newDirName || dirName;
+
+          if (/^\//.test(dirName) || (/^\//.test(newDirName))) {
+            q.reject("file-name cannot start with \/");
+          }
+
+          try {
+            $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+              fileSystem.getDirectory(dirName, {create: false, exclusive: false}, function (dirEntry) {
+
+                $window.resolveLocalFileSystemURL(newPath, function (newDirEntry) {
+                  dirEntry.copyTo(newDirEntry, newDirName, function (result) {
+                    q.resolve(result);
+                  }, function (error) {
+                    error.message = $cordovaFileError[error.code];
+                    q.reject(error);
+                  });
+                }, function (erro) {
+                  erro.message = $cordovaFileError[erro.code];
+                  q.reject(erro);
+                });
+              }, function (err) {
+                err.message = $cordovaFileError[err.code];
+                q.reject(err);
+              });
+            }, function (er) {
+              er.message = $cordovaFileError[er.code];
+              q.reject(er);
+            });
+          } catch (e) {
+            e.message = $cordovaFileError[e.code];
+            q.reject(e);
+          }
+          return q.promise;
+        },
+
+        copyFile: function (path, fileName, newPath, newFileName) {
+          var q = $q.defer();
+
+          newFileName = newFileName || fileName;
+
+          if ((/^\//.test(fileName))) {
+            q.reject("file-name cannot start with \/");
+          }
+
+          try {
+            $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+              fileSystem.getFile(fileName, {create: false, exclusive: false}, function (fileEntry) {
+
+                $window.resolveLocalFileSystemURL(newPath, function (newFileEntry) {
+                  fileEntry.copyTo(newFileEntry, newFileName, function (result) {
+                    q.resolve(result);
+                  }, function (error) {
+                    error.message = $cordovaFileError[error.code];
+                    q.reject(error);
+                  });
+                }, function (erro) {
+                  erro.message = $cordovaFileError[erro.code];
+                  q.reject(erro);
+                });
+              }, function (err) {
+                err.message = $cordovaFileError[err.code];
+                q.reject(err);
+              });
+            }, function (er) {
+              er.message = $cordovaFileError[er.code];
+              q.reject(er);
+            });
+          } catch (e) {
+            e.message = $cordovaFileError[e.code];
+            q.reject(e);
+          }
+          return q.promise;
         }
 
-        getFile(filePath, {create: false}).then(function (file) {
-          getPromisedFileReader(q).readAsText(file);
-        }, q.reject);
-
-        return q.promise;
-      },
-
-
-      readAsDataURL: function (filePath) {
-        var q = $q.defer();
-
-        // Backward compatibility for previous function readFile(dir, file)
-        if (arguments.length == 2) {
-          filePath = '/' + filePath + '/' + arguments[1];
-        }
-
-        getFile(filePath, {create: false}).then(function (file) {
-          getPromisedFileReader(q).readAsDataURL(file);
-        }, q.reject);
-
-        return q.promise;
-      },
-
-      readAsBinaryString: function (filePath) {
-        var q = $q.defer();
-
-        // Backward compatibility for previous function readFile(dir, file)
-        if (arguments.length == 2) {
-          filePath = '/' + filePath + '/' + arguments[1];
-        }
-
-        getFile(filePath, {create: false}).then(function (file) {
-          getPromisedFileReader(q).readAsBinaryString(file);
-        }, q.reject);
-
-        return q.promise;
-      },
-
-      readAsArrayBuffer: function (filePath) {
-        var q = $q.defer();
-
-        // Backward compatibility for previous function readFile(dir, file)
-        if (arguments.length == 2) {
-          filePath = '/' + filePath + '/' + arguments[1];
-        }
-
-        getFile(filePath, {create: false}).then(function (file) {
-          getPromisedFileReader(q).readAsArrayBuffer(file);
-        }, q.reject);
-
-        return q.promise;
-      },
-
-      readFileMetadata: function (filePath) {
-        return getFile(filePath, {create: false});
-      },
-
-      readFileAbsolute: function (filePath) {
-        var q = $q.defer();
-        getAbsoluteFile(filePath).then(function (file) {
-          getPromisedFileReader(q).readAsText(file);
-        }, q.reject);
-        return q.promise;
-      },
-
-      readFileMetadataAbsolute: function (filePath) {
-        return getAbsoluteFile(filePath);
-      },
-
-      downloadFile: function (source, filePath, trustAllHosts, options) {
-        var q = $q.defer();
-        var fileTransfer = new FileTransfer();
-        var uri = encodeURI(source);
-
-        fileTransfer.onprogress = q.notify;
-        fileTransfer.download(uri, filePath, q.resolve, q.reject, trustAllHosts, options);
-        return q.promise;
-      },
-
-      uploadFile: function (server, filePath, options) {
-        var q = $q.defer();
-        var fileTransfer = new FileTransfer();
-        var uri = encodeURI(server);
-
-        if (options.timeout !== undefined && options.timeout !== null) {
-          $timeout(function () {
-            fileTransfer.abort();
-          }, options.timeout);
-          options.timeout = null;
-        }
-
-        fileTransfer.onprogress = q.notify;
-        fileTransfer.upload(filePath, uri, q.resolve, q.reject, options);
-        return q.promise;
-      }
-
-    };
-
-    /*
-     * Returns a new FileReader that will resolve the provided Deferred with
-     * the result of the next method called on the FileReader, or reject it
-     * if an error occurs while attempting to complete that operation.
-     */
-    function getPromisedFileReader(deferred) {
-      var reader = new FileReader();
-      reader.onloadend = function () {
-        if (this.error)
-          deferred.reject(this.error);
-        else
-          deferred.resolve(this.result);
+        /*
+         listFiles: function (path, dir) {
+         },
+         listDir: function (path, dirName) {
+         var q = $q.defer();
+         try {
+         $window.resolveLocalFileSystemURL(path, function (fileSystem) {
+         fileSystem.getDirectory(dirName, options, function (parent) {
+         var reader = parent.createReader();
+         reader.readEntries(function (entries) {
+         q.resolve(entries);
+         }, function () {
+         q.reject('DIR_READ_ERROR : ' + path + dirName);
+         });
+         }, function (error) {
+         error.message = $cordovaFileError[error.code];
+         q.reject(error);
+         });
+         }, function (err) {
+         err.message = $cordovaFileError[err.code];
+         q.reject(err);
+         });
+         } catch (e) {
+         e.message = $cordovaFileError[e.code];
+         q.reject(e);
+         }
+         return q.promise;
+         },
+         readFileMetadata: function (filePath) {
+         //return getFile(filePath, {create: false});
+         }
+         */
       };
-      return reader;
-    }
 
-    /*
-     * Returns a promise that will be resolved with the requested File object
-     * or rejected if an error occurs attempting to retreive it.
-     */
-    function getFile(path, options) {
-      var q = $q.defer();
-      getFileEntry(path, options).then(function (fileEntry) {
-        fileEntry.file(q.resolve, q.reject);
-      }, q.reject);
-      return q.promise;
-    }
-
-    /*
-     * Returns a promise that will either be resolved with a FileWriter bound to the file identified
-     * in the provided path or rejected if an error occurs while attempting to initialize
-     * the writer.
-     */
-    function getFileWriter(path, options) {
-      var q = $q.defer();
-      getFileEntry(path, options).then(function (fileEntry) {
-        fileEntry.createWriter(q.resolve, q.reject);
-      }, q.reject);
-      return q.promise;
-    }
-
-    /*
-     * Returns a promise that will either be resolved with the FileEntry instance that corresponds
-     * to the provided path or rejected if an error occurs while attempting to retrieve the
-     * FileEntry.
-     */
-    function getFileEntry(path, options) {
-      var q = $q.defer();
-      getFilesystem().then(function (filesystem) {
-        filesystem.root.getFile(path, options, q.resolve, q.reject);
-      }, q.reject);
-      return q.promise;
-    }
-
-    /*
-     * Returns a promise that will either be resolved with the File object associated with the requested
-     * absolute path, or rejected if an error occurs while trying to initialize that File object.
-     */
-    function getAbsoluteFile(path) {
-      var q = $q.defer();
-      $window.resolveLocalFileSystemURL(path, function (fileEntry) {
-        fileEntry.file(q.resolve, q.reject);
-      }, q.reject);
-      return q.promise;
-    }
-
-    /*
-     * Returns a promise that will either be resolved with the Directory object associated with
-     * the requested directory or rejected if an error occurs while atempting to access that directory.
-     */
-    function getDirectory(dir, options) {
-      var q = $q.defer();
-      getFilesystem().then(function (filesystem) {
-        filesystem.root.getDirectory(dir, options, q.resolve, q.reject);
-      }, q.reject);
-      return q.promise;
-    }
-
-    /*
-     * Returns a Promise that will be either resolved with the FileSystem object associated
-     * with the device's persistent file system and with 1MB of storage reserved for it,
-     * or rejected if an error occurs while trying to accessing the FileSystem
-     */
-    function getFilesystem() {
-      var q = $q.defer();
-      try {
-        $window.requestFileSystem($window.PERSISTENT, 1024 * 1024, q.resolve, q.reject);
-      } catch (err) {
-        q.reject(err);
-      }
-      return q.promise;
-    }
+    }];
   }]);
 
 // install   :     cordova plugin add https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git

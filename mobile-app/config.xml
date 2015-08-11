@@ -8,6 +8,7 @@
       Uguru team
     </author>
   <access origin="*"/>
+  <allow-navigation href="http://*/*"/>
   <content src="remote/local.index.html"/>
   <preference name="orientation" value="portrait"/>
   <preference name="webviewbounce" value="false"/>

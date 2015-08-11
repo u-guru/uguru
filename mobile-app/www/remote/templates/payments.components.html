@@ -2,8 +2,8 @@
       <div class="buttons">
         <button class="button button-clear button-header-link grey-text light nano-text" ng-click='goBack()'>Back</button>
       </div>
-      <h1 class="title micro-text hide ng-class:{'show': !data.card_exists }">Add Payment</h1>
-      <h1 class="title micro-text hide ng-class:{'show': data.card_exists }">Edit Payment</h1>
+      <h1 id="E2E-payment-addTitle" class="title micro-text hide ng-class:{'show': !data.card_exists }">Add Payment</h1>
+      <h1 id="E2E-payment-addPayment" class="title micro-text hide ng-class:{'show': data.card_exists }">Edit Payment</h1>
       <div class="buttons">
         <button class="button button-clear button-header-link  submit-button" ng-if="!data.card_exists" id='done-button' ng-click='savePayment()'>
           <span class='ng-class:{"grey-text":card_details.number.length === 0}'>Add</span>

@@ -32,7 +32,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ugur
 
     //Only when the app is opened after its been closed
     document.addEventListener("deviceready", function () {
-
       //Set platform in local store
       var device = ionic.Platform.device();
       var platform = ionic.Platform.platform();
