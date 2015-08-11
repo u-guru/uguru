@@ -69,7 +69,7 @@ def admin_statistics():
     return render_template("new_admin/admin.statistics.html", stats=stats)
 
 @app.route('/admin/stats/devices/')
-def admin_statistics():
+def admin_devices():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
     test_devices = sorted(Device.getTestDevices(), key=lambda d:d.last_accessed, reverse=True)
