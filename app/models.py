@@ -2361,11 +2361,15 @@ class Transaction(Base):
 
         transaction.guru = user
 
-        transaction.charge_id = charge_id
+        transaction.charge_id = charge_id.id
         transaction.profit = deposit_amount
         transaction.guru_id = user.id
         db_session.add(transaction)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return transaction
 
     @staticmethod
