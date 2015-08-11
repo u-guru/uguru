@@ -19,7 +19,8 @@ exports.config = {
           workflow: ['../test_case/WorkFlows/workflow_one.js','../test_case/WorkFlows/workflow_two.js'],
        		one :   '../test_case/WorkFlows/workflow_one.js',
           load :   '../test_case/WorkFlows/#545.js',
-       		two :   '../test_case/WorkFlows/workflow_two.js'
+       		two :   '../test_case/WorkFlows/workflow_two.js',
+          three :   '../test_case/WorkFlows/workflow_three.js'
 
         },
         resultJsonOutputFile: 'www/remote/tests/e2e/result.json',
