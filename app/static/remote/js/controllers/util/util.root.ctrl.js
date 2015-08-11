@@ -238,7 +238,7 @@ angular.module('uguru.util.controllers')
           $scope.loader = {
             show: function() {
               $ionicLoading.show({
-                template: '<ion-spinner icon="lines" class="spinner-positive"></ion-spinner>'
+                template: '<ion-spinner id="E2E-spinner" icon="lines" class="spinner-positive"></ion-spinner>'
               });
               $scope.root.vars.loaderOn = true;
             },
@@ -396,7 +396,7 @@ angular.module('uguru.util.controllers')
                   message = 'Saved!';
               }
               $ionicLoading.show({
-                template: '<span class="capitalized">'  + message + '</span>',
+                template: '<span id="E2E-msg" value="' + message + '" class="capitalized">'  + message + '</span>',
                 delay: delay,
                 duration: duration
               });
@@ -486,7 +486,6 @@ angular.module('uguru.util.controllers')
                     Major, Skill, Profession);
 
               }
-            //all windows-specific device ready
             if ($scope.platform.windows && $cordovaPush) {
                 console.log('we are updating the push notifications on windows device')
                   $cordovaPush.register(
