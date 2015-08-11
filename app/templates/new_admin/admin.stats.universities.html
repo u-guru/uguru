@@ -1,0 +1,217 @@
+{% extends 'new_admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/new_admin/plugins/ionslider/ion.rangeSlider.css" rel="stylesheet" type="text/css" />
+    <!-- ion slider Nice -->
+    <link href="/static/new_admin/plugins/ionslider/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css" />
+    <link href="/static/new_admin/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="/static/new_admin/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+
+      <div class="content-wrapper" style="min-height: 918px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Devices
+            <small>All devices on our platform</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-bar-chart-o"></i> Home</a></li>
+            <li>Stats</li>
+            <li class="active">Devices</li>
+          </ol>
+        </section>
+
+
+        <section class="content">
+
+
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+              <!-- small box -->
+              <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3>{{universities|length}}</h3>
+                  <p># Universities</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div><!-- ./col -->
+          </div>
+
+          <div class='row'>
+            <div class='col-md-12'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Universities Statistics</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th style='text-align:center;'>Parameter</th>
+                          <th style='text-align:center;'>Percentage</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style='text-align:center;'>Latitude/Longitude</td>
+                          <td style='text-align:center;'>{{stats['latitude']|int}}%</td>
+                        </tr>
+                        <tr>
+                          <td style='text-align:center;'>Website</td>
+                          <td style='text-align:center;'>{{stats['website']|int}}%</td>
+                        </tr>
+                        <tr>
+                          <td style='text-align:center;'>Population</td>
+                          <td style='text-align:center;'>{{stats['population']|int}}%</td>
+                        </tr>
+                        <tr>
+                          <td style='text-align:center;'>School Mascot Name</td>
+                          <td style='text-align:center;'>{{stats['school_mascot_name']|int}}%</td>
+                        </tr>
+                        <tr>
+                          <td style='text-align:center;'>School Casual Name</td>
+                          <td style='text-align:center;'>{{stats['school_casual_name']|int}}%</td>
+                        </tr>
+                        <tr>
+                          <td style='text-align:center;'>Logo Url</td>
+                          <td style='text-align:center;'>{{stats['logo_url']|int}}%</td>
+                        </tr>
+                        <tr>
+                          <td style='text-align:center;'>School Colors</td>
+                          <td style='text-align:center;'>{{stats['school_colors']|int}}%</td>
+                        </tr>
+                        <tr>
+                          <td style='text-align:center;'>Fa15 Dates</td>
+                          <td style='text-align:center;'>{{stats['fa15_start']|int}}%</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='col-md-6'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Upcoming Targeted Large Universities</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th style='text-align:center;'>University</th>
+                          <th style='text-align:center'>Population</th>
+                          <th style='text-align:center;'>Start Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for university in target_universities %}
+                        {% if university.population > 15000 %}
+                        <tr>
+                          <td style='text-align:center;'><img src='{{university.logo_url}}' height="30" width="30"> &nbsp; &nbsp;&nbsp; &nbsp;{{university.name}}
+                            <br><span style='font-size:85%; margin-left:25px;'> {{university.city}}, {{university.state}} </span>
+                          </td>
+                          <td style='text-align:center;'>{{university.population}}</td>
+                          <td style='text-align:center;'>{{university.fa15_start.strftime('%b %d')}}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+            <div class='col-md-6'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Upcoming Targeted Top 100 Universities</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th style='text-align:center;'>University</th>
+                          <th style='text-align:center'>Ranking</th>
+                          <th style='text-align:center;'>Start Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for university in target_universities %}
+                        {% if university.us_news_ranking < 100 %}
+                        <tr>
+                          <td style='text-align:center;'><img src='{{university.logo_url}}' height="30" width="30"> &nbsp; &nbsp;&nbsp; &nbsp;{{university.name}}
+                            <br><span style='font-size:85%; margin-left:25px;'> {{university.city}}, {{university.state}} </span>
+                          </td>
+                          <td style='text-align:center;'>{{university.us_news_ranking}}th</td>
+                          <td style='text-align:center;'>{{university.fa15_start.strftime('%b %d')}}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/new_admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/new_admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/new_admin/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="/static/new_admin/plugins/timepicker/bootstrap-timepicker.js" type="text/javascript"></script>
+<script src="/static/js/new_admin/mandrill.js" type="text/javascript"></script>
+<script>
+  var testDevicePushToken = function(device_id) {
+    BASE_URL = "/api/admin/";
+    auth_token = "fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6";
+
+    $.ajax({
+      url: BASE_URL + auth_token + "/devices/" + device_id.toString() + '/push_test' ,
+      type: 'POST',
+      dataType: 'json',
+      data: {},
+      success: function(resp){
+        alert("Check yo phone");
+      },
+      error: function(err){
+        alert("Error tell Samir!");
+        console.log(err);
+      }
+    });
+  }
+</script>
+
+{% endblock %}

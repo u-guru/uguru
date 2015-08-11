@@ -27,15 +27,21 @@ angular.module('uguru.util.controllers')
   'Major',
   'Skill',
   'Profession',
+  '$cordovaDevice',
+  '$cordovaNetwork',
   function($ionicPlatform, $scope, $state, $localstorage, User,
           RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
           CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
           $cordovaSplashscreen, $timeout, Geolocation, $cordovaPush,
           $ionicSideMenuDelegate, $ionicViewSwitcher, $cordovaGeolocation, Major,
-          Skill, Profession, $cordovaDevice) {
+          Skill, Profession, $cordovaDevice, $cordovaNetwork) {
 
           // console.log('1. checking for app updates\n');
           // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
+
+          document.addEventListener('DOMContentLoaded', function(event) {
+              console.log('dom has loaded');
+          }, false);
 
 
           $scope.network_speed = null;
@@ -135,16 +141,17 @@ angular.module('uguru.util.controllers')
               $ionicHistory.clearHistory();
               //toggle in the middle
               $timeout(function() {
-                  $ionicSideMenuDelegate.toggleRight();
-              }, 1000);
-              $timeout(function() {
                 $scope.loader.hide();
                 $scope.user = User.getLocal();
                 $scope.user.updateAttr = User.updateAttrUser;
                 $scope.user.createObj = User.createObj;
                 $scope.user.updateObj = User.updateObj;
                 $scope.root.vars.settings = {icons : {profile : true}};
-                $scope.success.show(500, 1500, 'You have been successfully logged out!');
+                $scope.success.show(500, 2000, 'You have been successfully logged out!');
+                $timeout(function(){
+                  $ionicSideMenuDelegate.toggleRight();
+                  $state.go('^.home');
+                }, 600)
               }, 2000);
 
             }
@@ -173,6 +180,8 @@ angular.module('uguru.util.controllers')
           $scope.toggleRightSideMenu = function() {
             $ionicSideMenuDelegate.toggleRight();
           };
+
+
 
           console.log('getting most up to date universities + user from server..')
           var local_universities = $localstorage.getObject('universities');
@@ -225,9 +234,6 @@ angular.module('uguru.util.controllers')
             $scope.static.popular_professions = local_popular_professions;
             console.log('professions already loaded');
           }
-
-
-
 
           $scope.loader = {
             show: function() {
@@ -314,10 +320,11 @@ angular.module('uguru.util.controllers')
                     $scope.user.push_notifications = true;
                     $scope.user.current_device.push_notif = deviceToken;
                     $scope.user.current_device.push_notif_enabled = true;
-                    $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
+                    $scope.user.updateObj($scope.user.current_device, 'device', $scope.user.current_device, $scope);
 
                     payload = {
-                      'push_notifications': true
+                      'push_notifications': true,
+                      'push_notifications_enabled': true
                     }
                     $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
                 }
@@ -326,7 +333,8 @@ angular.module('uguru.util.controllers')
                 console.log(JSON.stringify(err));
                 $scope.user.push_notifications = false;
                 payload = {
-                      'push_notifications': false
+                      'push_notifications': false,
+                      'push_notifications_enabled': false
                     }
                 $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
                 alert('Please turn your Push Notifications ON in your settings.');
@@ -406,10 +414,6 @@ angular.module('uguru.util.controllers')
             ios: false
           }
 
-
-
-          // $ionicPlatform.ready(function() {
-
           document.addEventListener("deviceready", function () {
             // console.log('ENDING MOBILE ONLY tasks below \n\n');
             $scope.platform = {
@@ -431,6 +435,18 @@ angular.module('uguru.util.controllers')
 
             if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.hide) {
               $cordovaSplashscreen.hide();
+            }
+            if ($scope.platform && $scope.user) {
+                $scope.user.current_device = ionic.Platform.device();
+                $scope.user.current_device.user_id = $scope.user.id;
+                if ($cordovaNetwork) {
+                  $rootScope.network_speed = getNetworkSpeed();
+                  $scope.user.current_device.network_speed = $rootScope.network_speed;
+                  console.log('network speed is currently', $rootScope.network_speed);
+                  console.log('2. grabbing network speed which is: ', $rootScope.network_speed, '\n\n');
+                }
+
+                $scope.user.createObj($scope.user, 'device', $scope.user.current_device, $scope);
             }
 
             if ($scope.platform.android) {
@@ -457,7 +473,8 @@ angular.module('uguru.util.controllers')
                     if ($scope.user && $scope.user.id) {
 
                       payload = {
-                        'push_notifications': true
+                        'push_notifications': true,
+                        'push_notifications_enabled': true
                       }
                       $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
 
@@ -469,66 +486,6 @@ angular.module('uguru.util.controllers')
                     Major, Skill, Profession);
 
               }
-
-            //create the local storage
-            // $localstorage.saveToDisk(device.platform);
-              //$localstorage.init();
-            //   var logOb;
-
-            //     window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(dir) {
-            //       console.log("got main dir",dir);
-            //       dir.getFile("log.txt", {create:true}, function(file) {
-            //         console.log("got the file", file);
-            //         logOb = file;
-            //         writeLog("App started");      
-            //       });
-            //     });
-              
-            // //console.log("Log :" + JSON.stringify(logs));
-            //     //Ok, normal stuff for actionOne here
-            //     //
-            //     //Now log it
-            //     writeLog("actionOne fired");
-
-            //     //Ok, normal stuff for actionTwo here
-            //     //
-            //     //Now log it
-            //     writeLog("actionTwo fired");
-            //     justForTesting();
-
-
-            //   function fail(e) {
-            //     console.log("FileSystem Error");
-            //     console.dir(e);
-            //   }
-            //     function justForTesting() {
-            //       logOb.file(function(file) {
-            //         var reader = new FileReader();
-
-            //         reader.onloadend = function(e) {
-            //           console.log(this.result);
-            //         };
-
-            //         reader.readAsText(file);
-            //       }, fail);
-
-            //     }
-
-            //   function writeLog(str) {
-                
-            //     if(!logOb) return;
-            //     var log = str + " [" + (new Date()) + "]\n";
-            //     console.log("going to log "+log);
-            //     logOb.createWriter(function(fileWriter) {
-                  
-            //       fileWriter.seek(fileWriter.length);
-                  
-            //       var blob = new Blob([log], {type:'text/plain'});
-            //       fileWriter.write(blob);
-            //       console.log("ok, in theory i worked");
-            //     }, fail);
-            //   }
-
             if ($scope.platform.windows && $cordovaPush) {
                 console.log('we are updating the push notifications on windows device')
                   $cordovaPush.register(
@@ -545,8 +502,19 @@ angular.module('uguru.util.controllers')
 
                   console.log();
                   var uri = event.uri;
-                  console.log("channelHandler uri: " + uri);
 
+                  CordovaPushWrapper.received($rootScope, event, notification);
+                  if ($scope.user && $scope.user.id) {
+
+                    payload = {
+                      'push_notifications': true,
+                      'push_notifications_enabled': true
+                    }
+                    $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
+
+
+
+                  }
               }
               function errorHandler(error) {
                  // document.getElementById('app-status-ul').appendChild(document.createElement(error));
@@ -576,10 +544,10 @@ angular.module('uguru.util.controllers')
 
             }
 
-            if ($scope.platform && $scope.user) {
-              $scope.user.current_device = ionic.Platform.device();
-              $scope.user.current_device.user_id = $scope.user.id;
-              $scope.user.createObj($scope.user, 'device', $scope.user.current_device, $scope);
+
+            //update all new attribuets
+            if ($scope.user && $scope.user.current_device) {
+              $scope.user.updateObj($scope.user.current_device, 'device', $scope.user.current_device, $scope);
             }
 
 

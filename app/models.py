@@ -133,6 +133,8 @@ class User(Base):
 
     auth_token = Column(String)
 
+    guru_deposit = Column(Boolean)
+
     #Last active time
     last_active = Column(DateTime)
     time_created = Column(DateTime)
@@ -501,6 +503,11 @@ class University(Base):
     logo_url = Column(String)
     last_updated = Column(DateTime)
 
+    fa15_start = Column(DateTime)
+    fa15_end = Column(DateTime)
+    sp15_start = Column(DateTime)
+    sp15_end = Column(DateTime)
+
     gurus = relationship("User",
         primaryjoin = "(User.university_id==University.id) & "\
                         "(User.is_a_guru==True)")
@@ -532,6 +539,7 @@ class University(Base):
     num_emails = Column(Integer, default =0)
 
     ready_to_launch = Column(Boolean)
+    is_targetted = Column(Boolean, default=False)
 
     # new
     email_attributes = Column(String)
@@ -556,6 +564,15 @@ class University(Base):
     def admin_create(args_dict, _id):
         u = University.admin_update(University(_id=_id), args_dict)
         return u
+
+    @staticmethod
+    def is_university_targetted(university):
+        from datetime import datetime
+        recent_month = datetime(year=2015, month=7, day =24)
+        if university.fa15_start and university.fa15_start <= recent_month:
+            university.is_targetted = True
+            db_session.commit()
+
 
     @staticmethod
     def admin_update(u, args):
@@ -1661,6 +1678,14 @@ class Device(Base):
     time_created = Column(DateTime)
     last_accessed = Column(DateTime)
 
+    body_load_time = Column(Float)
+    update_load_time = Column(Float)
+    is_test_device = Column(Boolean)
+
+    device_load_time = Column(Float)
+    network_speed = Column(String)
+    typical_network_speed = Column(String)
+
     push_notif = Column(String)
     push_notif_enabled = Column(Boolean)
     location_enabled = Column(Boolean)
@@ -1674,6 +1699,29 @@ class Device(Base):
         primaryjoin = "User.id == Device.user_id",
         backref = "devices"
     )
+
+    @staticmethod
+    def getTestDevices():
+        return Device.query.filter_by(is_test_device=True).all()
+    @staticmethod
+    def getNonTestDevices():
+        return Device.query.filter_by(is_test_device=None).all()
+
+    def isWindows(self):
+        if not self.platform:
+            return False
+        return 'win32nt' in self.platform.lower()
+
+    def isIOS(self):
+        if not self.platform:
+            return False
+        return 'ios' in self.platform.lower()
+
+    def isAndroid(self):
+        if not self.platform:
+            return False
+        return 'android' in self.platform.lower()
+
 
 class Rating(Base):
     __tablename__ = 'rating'
@@ -2300,6 +2348,25 @@ class Transaction(Base):
         primaryjoin = "Card.id == Transaction.card_id",
         backref = 'transactions'
         )
+
+
+    @staticmethod
+    def chargeGuruDeposit(deposit_amount, transfer_card, user, charge_id):
+        transaction = Transaction()
+        transaction.time_created = datetime.now()
+        transaction.card_id = transfer_card.id
+        transaction._type = 3
+
+        transaction.guru_amount = deposit_amount
+
+        transaction.guru = user
+
+        transaction.charge_id = charge_id
+        transaction.profit = deposit_amount
+        transaction.guru_id = user.id
+        db_session.add(transaction)
+        db_session.commit()
+        return transaction
 
     @staticmethod
     def calculateStudentPriceFromSession(_session):

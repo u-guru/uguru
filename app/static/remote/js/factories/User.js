@@ -1,8 +1,8 @@
 angular.module('uguru.user', [])
 .factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory', 'RootService',
-    '$ionicSideMenuDelegate',
+    '$ionicSideMenuDelegate', '$cordovaNetwork',
     function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService,
-        $ionicSideMenuDelegate) {
+        $ionicSideMenuDelegate, $cordovaNetwork) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -462,6 +462,7 @@ angular.module('uguru.user', [])
         $scope.user.location_services_enabled = user.location_services_enabled;
         $scope.user.majors = user.majors
         $scope.user.guru_courses = user.guru_courses;
+
         $scope.user.student_courses = user.student_courses;
         $scope.user.student_sessions = user.student_sessions;
         $scope.user.guru_sessions = user.guru_sessions;
@@ -473,6 +474,7 @@ angular.module('uguru.user', [])
         $scope.user.sessions = user.sessions;
         $scope.user.proposals = user.proposals;
         $scope.user.cards = user.cards;
+        $scope.user.guru_committed = user.guru_committed;
         $scope.user.student_transactions = user.student_transactions;
         $scope.user.guru_transactions = user.guru_transactions;
         $scope.user.transfer_transactions = user.transfer_transactions;
@@ -496,6 +498,7 @@ angular.module('uguru.user', [])
         $scope.user.transcript_file = user.transcript_file;
         $scope.user.transcript_verified_by_admin = user.transcript_verified_by_admin;
         $scope.user.tutoring_platforms_description = user.tutoring_platforms_description;
+        $scope.user.guru_deposit = user.guru_deposit;
 
         $scope.user.email_friendly = user.email_friendly;
         $scope.user.facetime_friendly = user.facetime_friendly;
@@ -707,6 +710,18 @@ angular.module('uguru.user', [])
                       course: obj,
                       'add_student_course': true
                   }
+              }
+
+              if (arg === 'guru_deposit') {
+                return {
+                    'guru_deposit': obj
+                }
+              }
+
+              if (arg === 'guru_committed') {
+                return{
+                    'guru_committed': obj
+                }
               }
 
               if (arg === 'add_guru_course') {
@@ -1263,6 +1278,20 @@ angular.module('uguru.user', [])
                     .then(function(device){
                         $scope.user.current_device = device;
                         $localstorage.setObject('user', $scope.user);
+
+                        if (deviceReadyLoadTime) {
+                            $scope.user.current_device.device_load_time = deviceReadyLoadTime;
+                        }
+                        if (bodyLoadTime) {
+                            $scope.user.current_device.body_load_time = bodyLoadTime;
+                        }
+
+                        if ($cordovaNetwork && getNetworkSpeed) {
+                            $scope.user.current_device.network_speed = getNetworkSpeed();
+                        }
+
+                        $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
+
 
                     }, function(err){
                         console.log(err);

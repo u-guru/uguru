@@ -73,7 +73,7 @@
                       <a class='center grey uppercase semibold nano-text padding-1em'> Or </a>
                     </div>
 
-                    <a class='button button-full button-black uppercase fb-blue-bg'  ng-click='signupFacebook()' style='line-height:3.5em; font-size:90%;'>Continue with Facebook</a>
+                    <a class='button button-full button-black uppercase fb-blue-bg'  ng-click='connectWithFacebook()' style='line-height:3.5em; font-size:90%;'>Continue with Facebook</a>
 
                   </div>
                 </div>
@@ -82,6 +82,11 @@
                       <a class='button button-full button-stable-outlined center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();' ng-show='!loginMode'> Already have an account? </a>
                       <a class='button button-full button-stable-outlined center grey uppercase semibold nano-text'  ng-click='toggleLoginMode();' ng-show='loginMode'> or Sign Up Here </a>
                   </div>
+                </div>
+                <div class='pure-u-1'>
+                  <a class='padding-1em center micro-text semibold' style='padding-bottom:0px;' ng-show="!loginMode" >
+                      <a ng-click='launchPrivacyPolicy()'><p class='regular normal center micro-text'style='opacity:0.4;'> By signing up, you agree to our <strong>terms & privacy policy</strong></p></a>
+                  </a>
                 </div>
 
 

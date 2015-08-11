@@ -185,9 +185,21 @@ class DeviceView(restful.Resource):
             device.push_notif_enabled = request.json.get('push_notif_enabled')
             if device.user:
                 device.user.push_notifications = True
+                if 'push_notif' in request.json:
+                    device.user.push_notifications_enabled = True
 
+        if 'network_speed' in request.json:
+            device.network_speed = request.json.get('network_speed')
+        if 'body_load_time' in request.json:
+            device.body_load_time = request.json.get('body_load_time')
+        if 'device_load_time' in request.json:
+            device.device_load_time = request.json.get('device_load_time')
         if 'push_notif' in request.json:
             device.push_notif = request.json.get('push_notif')
+        if 'typical_network_speed' in request.json:
+            device.typical_network_speed = request.json.get('typical_network_speed')
+        if 'is_test_device' in request.json:
+            device.is_test_device = request.json.get('is_test_device')
 
         if 'location_enabled' in request.json:
             device.location_enabled = request.json.get('location_enabled')
@@ -462,6 +474,41 @@ class UserOneView(restful.Resource):
 
         if 'summer_15' in request.json:
             user.summer_15 = request.json.get('summer_15')
+
+        if 'guru_deposit' in request.json:
+            transfer_card = None
+            deposit_amount = request.json.get('guru_deposit')
+
+            all_transfer_cards = user.get_transfer_cards()
+
+            if not all_transfer_cards:
+                abort(401)
+
+            for card in all_transfer_cards:
+                if card.is_default_transfer:
+                    transfer_card = card
+                    break
+
+            if not transfer_card:
+                abort(401)
+
+            from app.lib.stripe_client import charge_customer
+            stripe_charge = charge_customer(user, int(deposit_amount))
+            if type(stripe_charge) is str:
+                abort(404)
+
+            transaction = Transaction.chargeGuruDeposit(deposit_amount, transfer_card, user, stripe_charge)
+            if transaction.guru_amount > 0:
+                user.guru_deposit = True
+                db_session.commit()
+
+
+            ## Make sure they have one
+            ## make sure their card is valid
+            ## charge $10
+            ## set guru deposit to true
+
+
 
         if 'recent_position' in request.json:
             recent_position_json = request.json.get('recent_position')
@@ -2428,7 +2475,48 @@ class AdminViewUsersList(restful.Resource):
 
 class AdminViewUniversitiesList(restful.Resource):
 
-    @marshal_with(UniversitySerializer)
+    @marshal_with(AdminUniversitySerializer)
+    def post(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED"
+
+        if not request or not request.json or 'school_name' not in request.json:
+            abort(401)
+
+        school = request.json.get('school_name')
+
+        # from static.data.universities_efficient import universities_arr
+        from fuzzywuzzy import fuzz, process
+
+        previous_university_titles = [university.name for university in University.query.all()]
+
+        matches = []
+        for title in previous_university_titles:
+            if fuzz.partial_ratio(school.lower(), title.replace('-', ' ').lower()) >= 80:
+                matches.append((title, school))
+
+        #part 2
+        highest_index = 0
+        highest_score = 0
+        index = 0
+        for match in matches:
+            current_match_score = fuzz.ratio(match[0], match[1])
+            print current_match_score
+            if current_match_score > highest_score:
+                highest_score = current_match_score
+                highest_index = index
+            index += 1
+
+        if 'all' in request.json:
+            all_queries = [University.query.filter_by(name=match[0]).first() for match in matches]
+            return all_queries
+        else:
+            query = University.query.filter_by(name=matches[highest_index][0])
+            return query.first()
+
+        abort(401)
+
+    @marshal_with(AdminUniversitySerializer)
     def get(self, auth_token):
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
@@ -2592,11 +2680,65 @@ class AdminUniversityAddRecipientsView(restful.Resource):
         results = {'message': str(len(new_db_objs)) + ' objects processed'}
         return jsonify(success=results)
 
+class GithubIssueView(restful.Resource):
+    def post(self):
+
+        issue_title = 'JS PRODUCTION ERROR:' + request.json.get('issue_title')
+        issue_body = request.json.get('issue_body')
+        device_details = request.json.get('device_info')
+        user_details = request.json.get('user_details')
+        user_agent = request.json.get('user_agent')
+
+        issue_body += ('\n\n\n**User Info**\n\n%s\n\n**Device Details**\n\n%s\n\n\n**Agent Details**\n\n%s' % (user_details, device_details, user_agent))
+        issues_arr = ['PRODUCTION CLIENT ERROR', 'bug']
+
+        if device_details.get('ios'):
+            issues_arr.append('Platform : IOS')
+        if device_details.get('android'):
+            issues_arr.append('Platform : Android')
+        if device_details.get('windows'):
+            issues_arr.append('Platform: Windows Phone')
+        if device_details.get('web'):
+            issues_arr.append('Platform: Web')
+
+        from lib.github_client import init_github, create_issue
+        from emails import send_errors_email
+        gh = init_github('uguru')
+        create_issue(gh, issues_arr, issue_title, issue_body)
+        send_errors_email(issue_body, True)
+        return jsonify(success=[True])
 
 
 ################################
 ### START ADMIN API (OFFICIAL) #
 ################################
+
+
+class AdminDevicePushTestView(restful.Resource):
+
+    def post(self, auth_token, device_id):
+        if not device_id:
+            abort(401)
+        device = Device.query.get(device_id)
+        if not device or not device.push_notif or not device.push_notif_enabled or not device.is_test_device:
+            abort(401)
+
+        message = 'TEST'
+        token = device.push_notif
+
+        if device.isWindows():
+            from lib.push_notif import send_windows_notification
+            send_windows_notification(message, token)
+
+        if device.isIOS():
+            from lib.push_notif import send_ios_notification
+            send_ios_notification(message, token)
+
+        if device.isAndroid():
+            from lib.push_notif import send_android_notification
+            send_android_notification(message, token)
+
+        return jsonify(success=[True])
 
 class AdminUniversityCourseView(restful.Resource):
     def post(self, auth_token, uni_id):
@@ -2610,6 +2752,93 @@ class AdminUniversityCourseView(restful.Resource):
             return "UNAUTHORIZED", 401
 
         return jsonify(success=[True])
+
+class AdminOneUniversityView(restful.Resource):
+    @marshal_with(AdminUniversitySerializer)
+    def put(self, auth_token, uni_id):
+        if auth_token and auth_token in APPROVED_ADMIN_TOKENS and uni_id:
+
+            # parse the response
+            # request_json = json.loads(request.json)
+            u = University.query.get(uni_id)
+
+
+            if not u:
+                abort(401)
+
+            if 'latitude' in request.json:
+                latitude = request.json.get('latitude')
+                if type(latitude) != float:
+                    abort(401)
+                u.latitude = latitude
+
+            if 'longitude' in request.json:
+                longitude = request.json.get('longitude')
+                if type(longitude) != float:
+                    abort(401)
+                u.longitude = longitude
+
+            if 'website' in request.json:
+                website = request.json.get('website')
+                if type(website) != str:
+                    abort(401)
+                u.website = website
+
+            if 'population' in request.json:
+                population = request.json.get('population')
+                if type(population) != int:
+                    abort(401)
+                u.population = population
+
+            if 'fa15_start' in request.json:
+                fa15_start = request.json.get('fa15_start')
+                u.fa15_start = fa15_start
+
+            if 'fa15_end' in request.json:
+                fa15_end = request.json.get('fa15_start')
+                u.fa15_end = fa15_end
+
+            if 'school_mascot_name' in request.json:
+                school_mascot_name = request.json.get('school_mascot_name')
+                if type(school_mascot_name) != str:
+                    abort(401)
+                u.school_mascot_name = school_mascot_name
+
+            if 'school_casual_name' in request.json:
+                school_casual_name = request.json.get('school_casual_name')
+                if type(school_casual_name) != str:
+                    abort(401)
+                u.school_casual_name = school_casual_name
+
+            if 'logo_url' in request.json:
+                logo_url = request.json.get('logo_url')
+                if type(logo_url) != str:
+                    abort(401)
+                u.logo_url = logo_url
+
+            if 'school_color_one' in request.json:
+                school_color_one = request.json.get('school_color_one')
+                if type(school_color_one) != str:
+                    abort(401)
+                u.school_color_one = school_color_one
+
+            if 'school_color_two' in request.json:
+                school_color_two = request.json.get('school_color_two')
+                if type(school_color_two) != str:
+                    abort(401)
+                u.school_color_two = school_color_two
+
+            if 'is_public' in request.json:
+                is_public = request.json.get('is_public')
+                if type(is_public) != bool:
+                    abort(401)
+                u.is_public = is_public
+
+            db_session.commit()
+
+            return u, 200
+
+        return "UNAUTHORIZED", 201
 
 class AdminUniversityView(restful.Resource):
     def get(self):
@@ -2780,11 +3009,14 @@ api.add_resource(CourseListView, '/api/v1/courses')
 api.add_resource(SkillListView, '/api/v1/skills')
 api.add_resource(ProfessionListView, '/api/v1/professions')
 api.add_resource(UserEmailView, '/api/v1/user_emails')
+api.add_resource(GithubIssueView, '/api/v1/github')
 
 # Admin views
 api.add_resource(AdminSessionView, '/api/admin')
+api.add_resource(AdminDevicePushTestView, '/api/admin/<string:auth_token>/devices/<int:device_id>/push_test')
 api.add_resource(AdminUserView, '/api/admin/users/')
-api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
+# api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
+api.add_resource(AdminOneUniversityView, '/api/admin/<string:auth_token>/universities/<int:uni_id>')
 api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/university/<int:uni_id>/courses')
 api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts')
 api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts/<int:dept_id>/courses')
@@ -2795,7 +3027,7 @@ api.add_resource(AdminMandrillTemplatesView, '/api/admin/<string:auth_token>/man
 api.add_resource(AdminMandrillCampaignsView, '/api/admin/<string:auth_token>/mandrill/campaigns')
 api.add_resource(AdminMandrillCampaignDetailedView, '/api/admin/<string:auth_token>/mandrill/campaigns/<string:tag>')
 api.add_resource(AdminViewEmailsList, '/api/admin/<string:auth_token>/emails')
-api.add_resource(AdminViewUsersList, '/api/admin/<string:auth_token>/users')
+api.add_resource(AdminViewUsersList, '/api/admin/<string:apiuth_token>/users')
 api.add_resource(AdminViewUniversitiesList, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminViewUserList, '/api/admin/<string:auth_token>/user/<int:_id>')
 

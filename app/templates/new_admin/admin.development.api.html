@@ -1,0 +1,166 @@
+{% extends 'new_admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/new_admin/plugins/ionslider/ion.rangeSlider.css" rel="stylesheet" type="text/css" />
+    <!-- ion slider Nice -->
+    <link href="/static/new_admin/plugins/ionslider/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css" />
+    <link href="/static/new_admin/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="/static/new_admin/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+
+      <div class="content-wrapper" style="min-height: 918px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            ADMIN API
+            <small>How to save data to our api</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-bar-chart-o"></i> Home</a></li>
+            <li>Development</li>
+            <li class="active">API</li>
+          </ol>
+        </section>
+    <!--     ## website [string]
+    ## website [string]
+    ## latitude [longitude]
+    ## latitude [float]
+    ## population [integer]
+    ## school_mascot_name [string]
+    ## school_casual_name [string]
+    ## logo_url [string]
+    ## school_color_two [string]
+    ## school_color_one [string]
+    ## is_public [boolean] -->
+
+
+        <section class="content">
+
+          <div class='row'>
+            <div class='col-md-12'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Universities HTTP API</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th style='text-align:center;'></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <strong>
+                            POST /admin/api/9c1185a5c5e9fc54612808977ee8f548b2258d31/universities
+                            </strong><br>
+                            Returns a list or just one of all matched universities
+                            <br>
+                          </td>
+                          <td style='text-align:center;'>
+                            <table class="table" style='padding-top:0px; margin-top:-7px;'>
+                              <thead style='text-align:center'>
+                                <th style='text-align:center'>Parameters</th>
+                                <th style='text-align:center'>Type</th>
+                              </thead>
+                              <tbody>
+                                <tr style='text-align:center'><td>school_name</td><td>String</td></tr>
+                                <tr style='text-align:center'><td>all</td><td>Boolean</td></tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>
+                            GET /admin/api/9c1185a5c5e9fc54612808977ee8f548b2258d31/universities
+                            </strong><br>
+                            Returns a JSON list of all universities
+                            <br>
+                          </td>
+                          <td style='text-align:center;'>
+                            None
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>
+                            PUT /admin/api/9c1185a5c5e9fc54612808977ee8f548b2258d31/universities/id
+                            </strong><br>
+                            Updates particular university fields
+                            <br>
+                          </td>
+                          <td style='text-align:center;'>
+                            <table class="table" style='padding-top:0px; margin-top:-7px;'>
+                              <thead style='text-align:center'>
+                                <th style='text-align:center'>Parameters</th>
+                                <th style='text-align:center'>Type</th>
+                              </thead>
+                              <tbody>
+                                <tr style='text-align:center'><td>latitude</td><td>Float</td></tr>
+                                <tr style='text-align:center'><td>longitude</td><td>Float</td></tr>
+                                <tr style='text-align:center'><td>website</td><td>String</td></tr>
+                                <tr style='text-align:center'><td>population</td><td>Integer</td></tr>
+                                <tr style='text-align:center'><td>school_mascot_name</td><td>String</td></tr>
+                                <tr style='text-align:center'><td>school_casual_name</td><td>String</td></tr>
+                                <tr style='text-align:center'><td>logo_url</td><td>String</td></tr>
+                                <tr style='text-align:center'><td>school_color_one</td><td>String</td></tr>
+                                <tr style='text-align:center'><td>school_color_two</td><td>String</td></tr>
+                                <tr style='text-align:center'><td>is_public</td><td>Boolean</td></tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/new_admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/new_admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/new_admin/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="/static/new_admin/plugins/timepicker/bootstrap-timepicker.js" type="text/javascript"></script>
+<script src="/static/js/new_admin/mandrill.js" type="text/javascript"></script>
+<script>
+  var testDevicePushToken = function(device_id) {
+    BASE_URL = "/api/admin/";
+    auth_token = "fe78e1c1cddfe4b132c7963136243aa51ac5609fb17839bf65a446d6";
+
+    $.ajax({
+      url: BASE_URL + auth_token + "/devices/" + device_id.toString() + '/push_test' ,
+      type: 'POST',
+      dataType: 'json',
+      data: {},
+      success: function(resp){
+        alert("Check yo phone");
+      },
+      error: function(err){
+        alert("Error tell Samir!");
+        console.log(err);
+      }
+    });
+  }
+</script>
+
+{% endblock %}

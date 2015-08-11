@@ -37,16 +37,98 @@
                   <img style = 'display:inline-block' class='img-circle' height="100" width="100" src='{{user.profile_url}}'></img>
                   <h3>{{user.name}}</h3>
                   <p><strong>{{user.email}}</strong></p>
+                  <p>Studying @ {{user.university.name}}</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bar"></i>
                 </div>
                 <a href="#" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-down"></i>
+                  <div class='row' style='padding:0em 2em;'>
+                    <span style='float:left'> &nbsp;&nbsp;Born {{user.time_created.strftime('%b %d')}}&nbsp;</span>
+                    {% if user.last_active %}
+                    <span style='float:right'>
+                      Last Seen <strong>{{user.last_active.strftime('%a, %b %d at %I:%M%p')}} </strong>
+                    </span>
+                    {% endif %}
+                  </div>
                 </a>
               </div>
             </div>
         </div>
+
+        <div class='row'>
+            <div class='col-md-12'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">
+                    {% if user.name %}
+                      {{user.name.split(' ')[0]|title}}'s
+                    {% endif %}
+                    Devices</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th style='text-align:center;'>ID</th>
+                          <th style='text-align:center;'>Recent</th>
+                          <th style='text-align:center;'>User</th>
+                          <th style='text-align:center;'>Info</th>
+                          <th style='text-align:center;'>Network</th>
+                          <th style='text-align:center;'>Body/Device</th>
+                          <th style='text-align:center;'>Push?</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for device in user.devices %}
+                        <tr>
+                          <td style='text-align:center;'>{{device.id}}</td>
+                          <td style='text-align:center;'>{{device.last_accessed.strftime('%b %d')}}</td>
+                          <td style='text-align:center;'>
+                            {% if device.user %}
+                              <a href="/admin/users/{{device.user.id}}" target='_blank'> {{device.user.name.split(' ')[0]}} </a>
+                            {% else %}
+                              NA
+                            {% endif %}
+                          </td>
+                          <td style='text-align:center;'>
+                            {% if device.platform == 'iOS'%}
+                              <i class="fa fa-apple"></i>
+
+                            {% elif device.platform|lower == 'android'%}
+                              <i class="fa fa-android"></i>
+                              {% elif device.platform|lower == 'windows'%}
+                            {% else %}
+                              {{device.platform}}
+                            {% endif %}
+                            v{{device.version}}
+                          </td>
+                          <td style='text-align:center'><span class="label label-success">{{device.network_speed}}</span></td>
+                          <td style='text-align:center;'>
+                            {% if device.body_load_time %} {{device.body_load_time}}s {% else %} NA {% endif %} /
+                            {% if device.device_load_time %} {{device.device_load_time}}s {% else %} NA {% endif %}
+                          </td>
+                          <td style='text-align:center'>
+                            {% if device.push_notif %}
+                            Test
+                            {% else %}
+                            -
+                            {% endif %}
+                          </td>
+                        {% endfor %}
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+          </div>
 
 
         <div class="row">

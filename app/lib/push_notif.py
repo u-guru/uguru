@@ -1,5 +1,7 @@
 import time, os
 from apns import APNs, Frame, Payload
+from mpns import MPNSTile, MPNSToast, MPNSRaw
+
 
 from gcm import GCM
 ANDROID_API_KEY = "AIzaSyDwyrdLCMru6MrmFZqAjIDEwRsPTON4lPc"
@@ -12,13 +14,20 @@ apns_client = APNs(cert_file='app/lib/certs/PushUguruCert.pem', key_file='app/li
 ### Edge Test Push Cases:
 ### 1. User has multiple devices (they receive all of them)
 
+def send_windows_notification(message, user_mpns_token):
+    toast = MPNSToast()
+    toast.send(user_mpns_token, {"text1": message})
+
+
 def send_ios_notification(message, user_apns_token):
     token_hex = user_apns_token
+
+    if not os.environ.get('PRODUCTION'):
+        message = 'ADMIN: ' + message
+
     payload = Payload(alert=message, sound="default", badge=1)
+    apns_client.gateway_server.send_notification(user_apns_token, payload)
 
-
-    if os.environ.get('PRODUCTION'):
-        apns_client.gateway_server.send_notification(user_apns_token, payload)
 
 
 def send_android_notification(message, registration_id):

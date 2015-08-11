@@ -1,6 +1,6 @@
 // Uguru upp
 
-var LOCAL = true; //local to the 8100 codebasebirbirs
+var LOCAL = false; //local to the 8100 codebasebirbirs
 
 
 
@@ -10,33 +10,14 @@ var REST_URL = 'http://uguru-rest.herokuapp.com'
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-//   BASE_URL = 'http://192.168.42.83:8100/remote';
-//  // REST_URL = 'http://192.168.42.66:5000';
+  BASE_URL = 'http://192.168.42.66:8100';
 
- BASE_URL = 'http://localhost:8100/';
-//   var REST_URL = 'http://uguru-rest.herokuapp.com'
- // REST_URL = 'http://192.168.42.66:5000';
-
-  // BASE_URL = 'http://localhost:8100/';
- // REST_URL = 'http://localhost:5000';
-  // BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
+  REST_URL = 'http://localhost:5000';
+  // var REST_URL = 'http://uguru-rest.herokuapp.com'
 
 } else {
   img_base = '/static/'
 }
-
-// if (WINDOWS) {
-//   var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
-//   var REST_URL = 'http://uguru-rest.herokuapp.com';
-//   BASE = 'remote/';
-// }
-
-// windows special case
-// if (WINDOWS || navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT') {
-//   var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
-//   var REST_URL = 'http://uguru-rest.herokuapp.com'
-//   BASE = '/remote';
-// }
 
 mixpanel = window.mixpanel || null;
 
@@ -57,7 +38,10 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
   document.addEventListener("deviceready", function () {
         // console.log('list of all plugins checkpoint 2', JSON.stringify(cordova.require("cordova/plugin_list").metadata));
-
+        if (calcTimeSinceInit) {
+          deviceReadyLoadTime = calcTimeSinceInit();
+          console.log('Device ready load time:', deviceReadyLoadTime, 'seconds');
+        }
 
           if ($cordovaSplashscreen && $cordovaSplashscreen.hide) {
 
@@ -115,10 +99,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
 
                 //grabbing nextwork speed
-                if ($cordovaNetwork) {
-                  $rootScope.network_speed = getNetworkSpeed();
-                  console.log('2. grabbing network speed which is: ', $rootScope.network_speed, '\n\n');
-                }
 
 
                 //Local Storage
@@ -160,7 +140,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
-  $cordovaFacebookProvider, $ionicConfigProvider, $compileProvider, uiGmapGoogleMapApiProvider) {
+  $cordovaFacebookProvider, $ionicConfigProvider, $compileProvider, uiGmapGoogleMapApiProvider,
+  $provide) {
 
   uiGmapGoogleMapApiProvider.configure({
         //    key: 'your api key',
@@ -168,6 +149,63 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         libraries: 'places'
     });
 
+  $provide.decorator("$exceptionHandler", function($delegate, $injector) {
+    return function(exception, cause) {
+      var gh_title;
+      if (exception.message) {
+        gh_title =  '"' +  exception.message;
+      }
+      if (cause) {
+        gh_title += '" since "' + JSON.stringify(cause);
+      }
+      if (exception.line) {
+        gh_title += '". See line ' + exception.line
+      }
+      if (exception.sourceURL) {
+        var exceptionUrlSplit = exception.sourceURL.split('/');
+        exception.location = exceptionUrlSplit[exceptionUrlSplit.length - 1];
+        gh_title += ' in file ' + exception.location
+      }
+      var gh_body = '*Line*: ' + exception.line + '\n' + '*Column*: ' + exception.column + '\n*File*: ' + exception.location + '\n*File URL*: ' + exception.sourceURL + '\n\n*Message*: ' + exception.message + ', where the cause is _' + JSON.stringify(cause) + '_\n\n*Exception Type*: ' + exception.name + '\n\n*Full Error Object*: \n\n' + JSON.stringify(exception) + '\n\n\n*Full Stack Trace*: \n\n' + exception.stack;
+      var user = $injector.get("$localstorage").getObject("user");
+      var user_info = {
+        id: user.id,
+        name: user.name,
+        guru_courses: user.guru_courses,
+        devices: user.devices,
+        age: user.time_created,
+        last_updated: user.last_active
+      }
+      var device_details = {
+                ios: ionic.Platform.isIOS(),
+                android: ionic.Platform.isAndroid(),
+                windows: ionic.Platform.isWindowsPhone(),
+                mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone(),
+                web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone()),
+                device: ionic.Platform.device(),
+              }
+
+      ghObj = {
+        issue_title: gh_title,
+        issue_body: gh_body,
+        user_agent: navigator.userAgent,
+        user_details: user_info,
+        device_info: device_details
+      }
+
+      var GithubHTTP = $injector.get("Github");
+      GithubHTTP.post(ghObj).then(
+        function(response) {
+          console.log(response);
+        },
+        function(err) {
+          console.log(JSON.stringify(err));
+        }
+      )
+
+      $delegate(exception, cause);
+    };
+  });
 
 
   if (ionic.Platform.isWindowsPhone()) {
@@ -326,6 +364,13 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         url: '/bill-student',
         templateUrl: BASE + 'templates/guru.bill-student.html',
         controller: 'BillStudentController'
+  }).
+  state('root.test-error', {
+        url: '/test-error',
+        templateUrl: BASE + 'templates/guru.bill-student.html',
+        controller: function($scope) {
+          throw "Test error";
+        }
   }).
   state('root.guru-conversations', {
         url: '/guru-conversations',

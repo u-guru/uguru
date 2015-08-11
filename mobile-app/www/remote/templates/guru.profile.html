@@ -5,6 +5,7 @@
   <ion-header-bar class='dark-bg-header'>
       <h1 class='title'>Profile</h1>
       <div class="buttons">
+
         <button id='E2E-editProfile' ng-if="!root.vars.profile.edit_mode" class="button button-clear button-header-link button-blue" ng-click='root.vars.profile.edit_mode = !root.vars.profile.edit_mode'>
           Edit
         </button>
@@ -19,7 +20,7 @@
         Profile <span class='align-left semibold opacity-4-5' ng-if="user.current_profile_percent">&nbsp;&nbsp;-&nbsp;&nbsp;{{user.current_profile_percent}}%</span>
       </a>
       <a class="tab-item uppercase ng-class:{'blue-bg white-text':profile.showCredibility, 'opacity-1-2':!profile.showCredibility}" ng-click='profile.showCredibility = true;'>
-        Credibility <span class='align-left semibold opacity-4-5' ng-if="user.current_credibility_percent">&nbsp;&nbsp;-&nbsp;&nbsp;{{user.current_credibility_percent}}%</span>
+        Credibility <span class='align-left semibold opacity-4-5' ng-if="user.current_credibility_percent >= 0">&nbsp;&nbsp;-&nbsp;&nbsp;{{user.current_credibility_percent}}%</span>
       </a>
   </div>
    <div class="tabs home-request-tabs-top tabs-top white-text bg-edit-mode center hide ng-class:{'show':root.vars.profile.edit_mode}" style='height:44px'>
@@ -235,6 +236,7 @@
   </ion-scroll>
 </ion-scroll>
   <input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed(this)" style='display:none'/>
+  <input type='file' id='file-input-guru-add-transcript' onchange="angular.element(this).scope().file_changed(this)" style='display:none'/>
   <div class='full-height windows-top-margin' ng-show='profile.showCredibility' style='top:88px;'>
     <div ng-include="img_base + 'templates/guru.credibility.components.html'" class='full-height'>
     </div>
@@ -249,8 +251,11 @@
   <a class="tab-item" id='profile-tab-button' nav-direction='swap' href='#/guru-profile'>
     <i class='icon ion-person blue'> </i>
   </a>
-  <a class="tab-item" id='guru-courses-button' nav-direction='swap' href='#/guru-conversations'>
+  <!-- <a class="tab-item" id='guru-courses-button' nav-direction='swap' href='#/guru-conversations'>
     <img class='pure-img icon' ng-src='{{img_base}}./img/request/guru_book_outline.svg'></i>
+  </a> -->
+  <a class="tab-item" id='ranking-tab-button' nav-direction='swap' href='#/guru-ranking'>
+    <i class='icon ion-connection-bars'> </i>
   </a>
   <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
     <img class='pure-img icon' ng-src='{{img_base}}./img/settings-tab-guru.svg'/>

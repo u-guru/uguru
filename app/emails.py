@@ -4,7 +4,8 @@ from models import *
 
 
 
-MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
+# MANDRILL_API_KEY = os.environ['MANDRILL_PASSWORD']
+MANDRILL_API_KEY = 'OcPNDCSHlOHoIXnrdKFgeA'
 MANDRILL_API_TEST_KEY = "E3JtFuPUZC466EFpJY9-ag"
 
 mandrill_client = mandrill.Mandrill(MANDRILL_API_KEY)
@@ -92,7 +93,7 @@ def send_campaign_email(campaign_name, template_name,
 
 def send_transactional_email(subject, content, receiver, tags, email=None):
 
-    if receiver.email:
+    if not email and receiver.email:
         receiver_info = [{
             'email':receiver.email,
             'name':receiver.name,
@@ -100,6 +101,7 @@ def send_transactional_email(subject, content, receiver, tags, email=None):
         }]
 
     if email:
+        receiver_info = receiver
         receiver_info[0]['email'] = email
 
     message = {
@@ -137,6 +139,44 @@ def send_reset_password_email(user, raw_password):
     email_tags = "student-reset-password"
     result = send_transactional_email(email_subject, email_message, email_receiver, email_tags)
     print result
+
+
+def send_errors_email(body, client_only=False):
+    email_subject = 'Uguru Production Server Error'
+    if client_only:
+        email_subject = 'Uguru Production Client Error'
+    email_content = body
+    receiver_info = [{
+            'email':'samir@uguru.me',
+            'name':'Uguru Tech Support',
+            'type': 'to'
+    }]
+    email_tags = 'production-error'
+
+    from_name = "UGURU SERVER ERROR"
+    testing_precursor = "[TESTING] "
+    production_precursor = "[PRODUCTION] "
+    if not os.environ.get('PRODUCTION'):
+        from_name = testing_precursor + from_name
+    else:
+        from_name = production_precursor + from_name
+
+    message = {
+        'subject': email_subject,
+        'from_email': "do-not-reply@uguru.me",
+        'from_name': from_name,
+        'to': receiver_info,
+        'important': True,
+        'track_opens': True,
+        'track_clicks': True,
+        'preserve_recipients':False,
+        'tags':email_tags.split(' '),
+        'text': email_content.replace('\n', '\n\n')
+    }
+
+    result = mandrill_client.messages.send(message=message)
+    print result
+    return result
 
 
 def send_message_to_receiver_support(sender, receiver):

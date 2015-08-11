@@ -38,7 +38,7 @@ angular.module('uguru.util.controllers')
 
     $scope.settings = {}
     $scope.settings.icons = {
-      profile: ($scope.user && $scope.user.id),
+      profile: true,
       notifications: false,
       card: false,
       support: false,
@@ -118,6 +118,8 @@ angular.module('uguru.util.controllers')
         $scope.loader.hide();
       }, 750);
     }
+
+
 
     $scope.attemptToResetPassword = function() {
       function validateEmail(email) {
@@ -702,8 +704,10 @@ angular.module('uguru.util.controllers')
       if (payment) {
         console.log('passing payments', payment);
         $scope.root.vars.editCardClicked = true;
+        $ionicViewSwitcher.nextDirection('back');
         $state.go('^.payments', {cardObj:JSON.stringify(payment)})
       } else {
+        $ionicViewSwitcher.nextDirection('back');
         $state.go('^.payments');
       }
 
@@ -727,10 +731,25 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.launchPrivacyPolicy = function() {
+
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/privacy-terms.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.termsModal = modal;
+            $scope.termsModal.show();
+        });
+
+    }
+
 
     $scope.goToSignupFromSideBar = function() {
+
       $scope.resetSettingsIcons();
       $scope.loader.show();
+      $ionicViewSwitcher.nextDirection('forward');
       $state.go('^.signup');
 
       $timeout(function() {

@@ -21,6 +21,8 @@ angular.module('uguru.guru.controllers')
   $ionicActionSheet, $cordovaFacebook) {
 
     $scope.profile = {edit_mode:false, showCredibility:false};
+    $scope.root.vars.guru_mode = true;
+
     if (!$scope.root.vars.profile) {
       $scope.root.vars.profile = false;
     }

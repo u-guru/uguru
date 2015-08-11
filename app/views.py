@@ -57,6 +57,9 @@ def admin_login():
 
     return render_template("new_admin/login.html", error=error)
 
+@app.route('/500-test')
+def internal_test():
+    return render_template("<b>500</b>")
 
 @app.route('/admin/statistics/')
 def admin_statistics():
@@ -64,6 +67,46 @@ def admin_statistics():
         return redirect(url_for('admin_login'))
     stats = Stats.query.get(1)
     return render_template("new_admin/admin.statistics.html", stats=stats)
+
+@app.route('/admin/stats/devices/')
+def admin_devices():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    test_devices = sorted(Device.getTestDevices(), key=lambda d:d.last_accessed, reverse=True)
+    regular_devices = sorted(Device.getNonTestDevices(), key=lambda d:d.last_accessed, reverse=True)
+    return render_template("new_admin/admin.stats.devices.html", test_devices=test_devices, \
+        regular_devices=regular_devices)
+
+@app.route('/admin/stats/universities/')
+def admin_statistics():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    # test_devices = sorted(Device.getTestDevices(), key=lambda d:d.last_accessed, reverse=True)
+    # regular_devices = sorted(Device.getNonTestDevices(), key=lambda d:d.last_accessed, reverse=True)
+    universities = University.query.all()
+    uni_length = len(universities) * 1.0
+    latitudes = University.query.filter_by(latitude=None).all()
+    websites = University.query.filter_by(website=None).all()
+    populations = University.query.filter_by(population=None).all()
+    school_mascots = University.query.filter_by(school_mascot_name=None).all()
+    school_casuals = University.query.filter_by(school_casual_name=None).all()
+    logo_urls = University.query.filter_by(logo_url=None).all()
+    school_colors = University.query.filter_by(school_color_one=None).all()
+    fa_starts = University.query.filter_by(fa15_start=None).all()
+    target_universities = University.query.filter_by(is_targetted=True).all()
+    target_universities = sorted(target_universities, key=lambda d:d.fa15_start)
+    stats = {
+        'latitude': ((uni_length - len(latitudes)) / uni_length) * 100,
+        'website': ((uni_length - len(websites)) / uni_length) * 100,
+        'population': ((uni_length - len(populations)) / uni_length) * 100,
+        'school_mascot_name': ((uni_length - len(school_mascots)) / uni_length) * 100,
+        'school_casual_name': ((uni_length - len(school_casuals)) / uni_length) * 100,
+        'logo_url': ((uni_length - len(logo_urls)) / uni_length) * 100,
+        'school_colors': ((uni_length - len(school_colors)) / uni_length) * 100,
+        'fa15_start': ((uni_length - len(fa_starts)) / uni_length) * 100
+    }
+    return render_template("new_admin/admin.stats.universities.html", universities =universities, stats=stats,\
+        target_universities=target_universities)
 
 ###############
 ## Investors ##
@@ -109,6 +152,24 @@ def admin_create():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
     return render_template("new_admin/create-campaign.html")
+
+@app.route('/admin/design/style/')
+def admin_style_guide():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("style/index.html")
+
+@app.route('/admin/design/inspired/')
+def admin_components():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/admin-coming-soon.html")
+
+@app.route('/admin/design/moodboards/')
+def admin_components():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/admin-coming-soon.html")
 
 @app.route('/admin/users/<_id>/')
 def admin_users(_id):
@@ -227,6 +288,12 @@ def admin_dev_guidelines():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
     return render_template("new_admin/development-guidelines.html", team=[])
+
+@app.route('/admin/development/api/')
+def admin_dev_guidelines():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("new_admin/admin.development.api.html")
 
 @app.route('/admin/')
 @app.route('/admin/team/')
