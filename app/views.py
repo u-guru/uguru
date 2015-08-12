@@ -77,6 +77,10 @@ def admin_devices():
     return render_template("new_admin/admin.stats.devices.html", test_devices=test_devices, \
         regular_devices=regular_devices)
 
+@app.route('/gabrielle/')
+def new_home_page():
+    return render_template("gabrielle/index.html")
+
 @app.route('/admin/stats/campaigns/')
 def admin_stats_campaigns():
     import requests, json
@@ -99,7 +103,8 @@ def admin_stats_campaigns():
             'percentage': int((float(list_info['members_count'])) / (float(description_parsed[2].split(':')[1]) * 1.0) * 100)
         })
     university_arr = sorted(university_arr, key=lambda u:u['count'], reverse=True)
-    return render_template("new_admin/admin.stats.campaigns.html", university_arr=university_arr)
+    _sum = sum([uni['count'] for uni in university_arr])
+    return render_template("new_admin/admin.stats.campaigns.html", university_arr=university_arr, sum=_sum)
 
 @app.route('/admin/stats/universities/')
 def admin_statistics():

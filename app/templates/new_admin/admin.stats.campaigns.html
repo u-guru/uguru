@@ -28,6 +28,32 @@
 
         <section class="content">
 
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+              <!-- small box -->
+              <div class="small-box bg-blue">
+                <div class="inner">
+                  <h3>{{sum|int}}</h3>
+                  <p># of Emails Scraped</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-6 col-md-6 col-xs-12">
+              <!-- small box -->
+              <div class="small-box bg-olive">
+                <div class="inner">
+                  <h3>{{(sum|int) / ((university_arr|length) * 1.0)}}</h3>
+                  <p>Average # Emails per Targetted University</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
+              </div>
+            </div><!-- ./col -->
+          </div>
           <div class='row'>
             <div class='col-md-12'>
               <div class="box box-info">

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>uguru.me</title>
+	
+	<link rel="shortcut icon" href="/static/images/favicon.ico">
+	<link rel="stylesheet" href="/static/css/base-min.css"/>
+	<link rel="stylesheet" href="/static/css/grids-min.css"/>
+	<link rel="stylesheet" href="/static/css/grids-responsive-min.css"/>
+	<link rel="stylesheet" href="/static/css/style.css"/>
+	<script src="/static/js/modernizr.js"></script>
+</head>
+<body>
+	<header id="top">
+		<div id="top-banner"></div>
+		<nav id="top-menu">
+			<ul>
+				<li><a id="top-link-menu" class="btn-round btn-ghost" href="#"><span>Menu</span></a></li>
+				<li><a id="top-link-login" class="btn-round btn-ghost" href="#"><span>Log In</span></a></li>
+			</ul>
+		</nav>
+		<a id="top-logo" href="/">
+			<svg id="top-school-banner" width="216px" height="304px" viewBox="0 0 216 304" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+		        <g id="content" transform="translate(8.000000, 8.000000)">
+		            <path d="M0,272.209991 L100,232.899994 L200,272.209991 L200,290.208092 L100,250.901734 L0,290.208092 L0,272.209991 Z" id="border-outer" fill="#69B3A5" sketch:type="MSShapeGroup"></path>
+		            <path d="M0,268.209991 L100,228.899994 L200,268.209991 L200,283.208092 L100,243.899994 L0,283.209991 L0,268.209991 Z" id="border-inner" fill="#363C3E" sketch:type="MSShapeGroup"></path>
+		            <path d="M0,0 L200,0 L200,268.208092 L100,228.899994 L0,268.209991 L0,0 Z" id="banner" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+		        </g>
+			</svg>
+			<img id="top-school-logo" src="/static/svg/logo-shamrock.svg" alt="uguru"/>
+		</a>
+	</header>
+	<section id="main">
+		
+<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		
+		// Add the missing url to the text
+		$("#url").text(window.location.pathname);
+		
+		// Fix the css locations dynamically
+		$("head link").each(function() {
+			for (var i=0; i<window.location.pathname.split(/\//g).length-2; i++)
+				$(this).attr("href", "../" + $(this).attr("href"));
+		});
+		
+	})
+</script>
+
+<p>
+	Sorry the page <b id="url"></b> could not be found on this server.
+</p>
+
+	</section>
+
+	
+		<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+		<script>
+		  WebFont.load({
+			google: {
+			  families: ['Source Sans Pro:200,300,400,600,700,900']
+			}
+		  });
+		</script>
+		<script src="/static/js/jquery.min.js"></script>
+		<script src="/static/js/main.js"></script>
+	
+</body>
+</html>
