@@ -11,11 +11,8 @@
 - Goto Postgres.app's preferences, and set it to "automatically open after login"
 - Append the following to your .bash_profile
 - %  '/Applications/Postgres.app/Contents/Versions/9.4/bin'
-- % sudo pip install -U psycopg2
-- % sudo pip install Flask-SQLAlchemy
 - % sudo pip install -r requirements.txt
-- % sudo pip install Pillow==2.4.0
-    ^^ on mac you may receive an error regarding X11, if thats the case, type this in
+    ^^ when installing Pillow on mac you may receive an error regarding X11, if thats the case, type this in
  	- % xcode-select --install
 
 **Set up local DB**
