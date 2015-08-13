@@ -1,42 +1,71 @@
 <!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui=yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	
 	<title>uguru.me</title>
-
+	
 	<link rel="shortcut icon" href="/static/gabrielle/images/favicon.ico">
 	<link rel="stylesheet" href="/static/gabrielle/css/base-min.css"/>
 	<link rel="stylesheet" href="/static/gabrielle/css/grids-min.css"/>
 	<link rel="stylesheet" href="/static/gabrielle/css/grids-responsive-min.css"/>
 	<link rel="stylesheet" href="/static/gabrielle/css/style.css"/>
+
 	<script src="/static/gabrielle/js/modernizr.js"></script>
 </head>
 <body>
+	<div id="banner"></div>
 	<header id="top">
-		<div id="top-banner"></div>
 		<nav id="top-menu">
 			<ul>
 				<li><a id="top-link-menu" class="btn-round btn-ghost" href="#"><span>Menu</span></a></li>
+				<li>
+					<a id="top-logo" href="/">
+						<svg id="top-school-banner" width="200px" height="291px" viewBox="0 0 200 291" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					        <g id="content">
+					            <path d="M0,272.209991 L100,232.899994 L200,272.209991 L200,290.208092 L100,250.901734 L0,290.208092 L0,272.209991 Z" id="border-outer" fill="#69B3A5"></path>
+					            <path d="M0,268.209991 L100,228.899994 L200,268.209991 L200,283.208092 L100,243.899994 L0,283.209991 L0,268.209991 Z" id="border-inner" fill="#363C3E"></path>
+					            <path d="M0,0 L200,0 L200,268.208092 L100,228.899994 L0,268.209991 L0,0 Z" fill="#FFFFFF"></path>
+					        </g>
+						</svg>
+						<img id="top-school-logo" src="/static/gabrielle/svg/logo-shamrock.svg" alt="uguru"/>
+					</a>
+				</li>
 				<li><a id="top-link-login" class="btn-round btn-ghost" href="#"><span>Log In</span></a></li>
 			</ul>
 		</nav>
-		<a id="top-logo" href="/">
-			<svg id="top-school-banner" width="216px" height="304px" viewBox="0 0 216 304" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-		        <g id="content" transform="translate(8.000000, 8.000000)">
-		            <path d="M0,272.209991 L100,232.899994 L200,272.209991 L200,290.208092 L100,250.901734 L0,290.208092 L0,272.209991 Z" id="border-outer" fill="#69B3A5" sketch:type="MSShapeGroup"></path>
-		            <path d="M0,268.209991 L100,228.899994 L200,268.209991 L200,283.208092 L100,243.899994 L0,283.209991 L0,268.209991 Z" id="border-inner" fill="#363C3E" sketch:type="MSShapeGroup"></path>
-		            <path d="M0,0 L200,0 L200,268.208092 L100,228.899994 L0,268.209991 L0,0 Z" id="banner" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
-		        </g>
-			</svg>
-			<img id="top-school-logo" src="/static/gabrielle/svg/logo-shamrock.svg" alt="uguru"/>
-		</a>
 	</header>
+	<nav id="slide-breadcrumbs">
+		<ul>
+			<li>
+				<a class="active" href="#search" data-number="0"></a>
+			</li>
+			<li>
+				<a href="#values" data-number="1"></a>
+			</li>
+			<li>
+				<a href="#earn" data-number="2"></a>
+			</li>
+			<li>
+				<a href="#adapt" data-number="3"></a>
+			</li>
+			<li>
+				<a href="#rewards" data-number="4"></a>
+			</li>
+			<li>
+				<a href="#info" data-number="5"></a>
+			</li>
+		</ul>
+	</nav>
 	<section id="main">
-
-	<div id="search" class="slide">
+		
+	<div id="search">
 		<div id="search-box">
 			<p>Peers helping peers for free, barter, or side cash.</p>
 			<div id="search-container">
@@ -127,33 +156,102 @@
 			</ul>
 		</div>
 	</div>
-	<div id="about" class="slide">
+	<div id="values" class="slide" data-number="1">
 		<div class="inside">
-			<h1>About Uguru</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			<div class="inside-text">
+				<h1>uguru</h1>
+				<p>Literally make $$$ on anything that you're good at</p>
+				<ul id="values-steps">
+					<li>
+						<p><button disabled class="value-number">1</button></p>
+						<p><span>Get our app</span> on all major platforms</p>
+					</li>
+					<li>
+						<p><button disabled class="value-number">2</button></p>
+						<p><span>Add your skills</span> and we’ll promote you</p>
+					</li>
+					<li>
+						<p><button disabled class="value-number">3</button></p>
+						<p><span>Make $$$</span> easier than ever before</p>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
-	<div id="flow" class="slide">
+	<div id="earn" class="slide" data-number="2">
 		<div class="inside">
-			<h1>App Flow</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			<div class="app-phone">
+				<div class="app-wf">
+					<div class="app-wf-top"><div></div></div>
+					<div class="app-wf-scr">
+						<img src="/static/gabrielle/images/mock/open.png" alt=""/>
+					</div>
+					<div class="app-wf-bot"><div></div></div>
+				</div>
+			</div>
+			<div id="earn-text" class="inside-text">
+				<div class="inside-prop"></div>
+				<h2>Make more moolah than <br/>any part-time job.</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
 		</div>
 	</div>
-	<div id="stats" class="slide">
+	<div id="adapt" class="slide" data-number="3">
 		<div class="inside">
-			<h1>Our Stats</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			<div class="app-phone">
+				<div class="app-wf">
+					<div class="app-wf-top"><div></div></div>
+					<div class="app-wf-scr">
+						<img src="/static/gabrielle/images/mock/open.png" alt=""/>
+					</div>
+					<div class="app-wf-bot"><div></div></div>
+				</div>
+			</div>
+			<div id="adapt-text" class="inside-text">
+				<div class="inside-prop"></div>
+				<h2>Flexible where you are, <br/>whenever you are.</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
 		</div>
 	</div>
-	<div id="bottom" class="slide">
+	<div id="rewards" class="slide" data-number="4">
 		<div class="inside">
-			<h1>Platform &amp; Footer</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			<div class="app-phone">
+				<div class="app-wf">
+					<div class="app-wf-top"><div></div></div>
+					<div class="app-wf-scr">
+						<img src="/static/gabrielle/images/mock/open.png" alt=""/>
+					</div>
+					<div class="app-wf-bot"><div></div></div>
+				</div>
+			</div>
+			<div id="adapt-text" class="inside-text">
+				<div class="inside-prop"></div>
+				<h2>Win great rewards <br/>and work your way up.</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
 		</div>
 	</div>
+	<div id="info" class="slide" data-number="5">
+		<div class="inside">
+			<div class="inside-text">
+				<div id="info-sub">
+					<div class="inside-prop"></div>
+					<h2>Get Info</h2>
+					<input placeholder="enter your email address"/>
+					<button class="btn-round">Subscribe</button>
+				</div>
+				<div id="info-download">
+					<h2>Download</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	</section>
 
-
+	
 		<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
 		<script>
 		  WebFont.load({
@@ -163,7 +261,8 @@
 		  });
 		</script>
 		<script src="/static/gabrielle/js/jquery.min.js"></script>
+		<script src="/static/gabrielle/js/plugins.js"></script>
 		<script src="/static/gabrielle/js/main.js"></script>
-
+	
 </body>
 </html>
