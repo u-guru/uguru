@@ -12,6 +12,7 @@ import logging, json, urllib2, importlib
 from lib.api_utils import json_response
 from pprint import pprint
 
+
 APPROVED_ADMIN_TOKENS = ['9c1185a5c5e9fc54612808977ee8f548b2258d31']
 
 @auth.verify_password
@@ -2756,15 +2757,24 @@ class AdminUniversityCourseView(restful.Resource):
 class AdminOneUniversityView(restful.Resource):
     @marshal_with(AdminUniversitySerializer)
     def put(self, auth_token, uni_id):
+        print auth_token, uni_id
         if auth_token and auth_token in APPROVED_ADMIN_TOKENS and uni_id:
 
             # parse the response
             # request_json = json.loads(request.json)
             u = University.query.get(uni_id)
-
+            print request.json
 
             if not u:
                 abort(401)
+
+            if 'university_banner' in request.json:
+                banner_src = request.json.get('university_banner')
+                if type(banner_src) != str:
+                    abort(401)
+
+                u.banner_url = banner_src
+
 
             if 'latitude' in request.json:
                 latitude = request.json.get('latitude')

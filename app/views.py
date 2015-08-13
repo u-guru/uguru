@@ -579,6 +579,19 @@ def app_flex():
 def uguru_faqs():
     return render_template("web/content/faq.html")
 
+@app.route('/admin/flickr/<university_id>')
+def flicker_university_process(university_id):
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+
+    u = University.query.get(university_id)
+    from lib.flickr_wrapper import *
+    flickr_response = str(search_university_response_api(u))
+    photos_arr = parse_flickr_response(flickr_response)
+    processed_arr = process_returned_photos(photos_arr)
+    processed_arr = sorted(processed_arr, key=lambda k:k['views'], reverse=True)[:20]
+    return render_template('new_admin/admin.design.flickr.html', flickr_photos=processed_arr,  university=u)
+
 @app.route('/terms/')
 def uguru_terms():
     return render_template("web/content/terms.html")
