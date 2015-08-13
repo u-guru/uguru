@@ -7,6 +7,7 @@ def scrape_all_universities(university_names):
     university_results = []
     index = 0
     errors = 0
+    error_arr = []
     length = len(university_names)
     for university_name in university_names:
         try:
@@ -19,15 +20,18 @@ def scrape_all_universities(university_names):
             else:
                 print 'no results for', university_name
                 errors += 1
-            index += 1
             print index, '/' , length, 'processed.', errors, 'errors.'
 
+            save_results(university_results, 'wikipedia_university_data_2.json')
+
         except:
-            save_results(university_results, 'wikipedia_university_data.json')
+            save_results(university_results, 'wikipedia_university_data_2.json')
+            error_arr.append(university_name)
+            save_results(error_arr, 'wikipedia_errors_2.json')
             print "error for", university_name
             errors += 1
+        index += 1
 
-    save_results(university_results, 'wikipedia_university_data.json')
     return university_results
 
 def get_normalized_title(arg):
@@ -237,12 +241,48 @@ def save_results(structure, filename):
     with open(filename, 'wb') as fp:
         json.dump(structure, fp, indent = 4)
 
+def count_unprocessed():
+    file = open('wikipedia_university_data_processed.json')
+    arr = json.load(file)
+    processed_ids = [uni['id'] for uni in arr]
+    print len(arr), 'already processed'
+
+    count = 0
+    unprocessed_universities = []
+    for u in University.query.all():
+        if u.id not in processed_ids:
+            count += 1
+            unprocessed_universities.append({
+                'name': u.name,
+                'id':u.id
+                })
+    print len(unprocessed_universities), 'universities not processed'
+    save_results(unprocessed_universities, 'wiki_unprocessed.json')
+    return
+
 
 if __name__ == '__main__':
+    import sys, json
+    from app.models import *
     args = sys.argv
-    start = int(args[1])
-    end = int(args[2])
-    # Iterates through chegg
-    index = start
-    SCHOOLS = sorted(University.query.all(), key=lambda k:k.id)
-    scrape_all_universities(SCHOOLS[start:end])
+
+    # start = int(args[1])
+    # end = int(args[2])
+    # # Iterates through chegg
+    # index = start
+    # SCHOOLS = sorted(University.query.all(), key=lambda k:k.id)
+    # SCHOOLS = [school.name for school in SCHOOLS]
+    # scrape_all_universities(SCHOOLS)
+    uni_arr = json.load(open('wiki_unprocessed.json'))
+
+    # reparse all the names
+    for uni in uni_arr:
+        uni['name'] = uni['name'].replace('Of', 'of').replace('At', 'at').replace(' & ', 'and').replace('The', 'the').replace('And', 'and').replace('-', ' ').replace('/', ' ').replace("'","")
+    uni_names = [uni['name'] for uni in uni_arr]
+    from pprint import pprint
+    scrape_all_universities(uni_names)
+
+
+
+    # with open('wikipedia_university_data_2.json', 'wr') as fp:
+    #     json.dump(arr, fp, indent = 4)

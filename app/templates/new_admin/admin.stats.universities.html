@@ -164,13 +164,13 @@
                       </thead>
                       <tbody>
                         {% for university in target_universities %}
-                        {% if university.us_news_ranking < 100 %}
+                        {% if university.us_news_ranking < 100%}
                         <tr>
                           <td style='text-align:center;'><img src='{{university.logo_url}}' height="30" width="30"> &nbsp; &nbsp;&nbsp; &nbsp;{{university.name}} <a href='/admin/flickr/{{university.id}}' target='_blank'><span style='opacity:0.5' class='glyphicon glyphicon-new-window'> </span> </a>
                             <br><span style='font-size:85%; margin-left:25px;'> {{university.city}}, {{university.state}} </span>
                           </td>
                           <td style='text-align:center;'>{{university.us_news_ranking}}th</td>
-                          <td style='text-align:center;'>{{university.fa15_start.strftime('%b %d')}}</td>
+                          <td style='text-align:center;'>{% if university.fa15_start %} {{university.fa15_start.strftime('%b %d')}} {% endif %} </td>
                         </tr>
                         {% endif %}
                         {% endfor %}

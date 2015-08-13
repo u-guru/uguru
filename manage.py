@@ -12,6 +12,36 @@ else:
 def init():
     init_db()
 
+def update_us_news():
+    from app.models import *
+    import requests
+    from bs4 import BeautifulSoup
+    index = 0
+    pages = 11
+    us_news_url = 'http://colleges.usnews.rankingsandreviews.com/best-colleges/rankings/national-universities/data/page+'
+
+    results = []
+
+    soup = BeautifulSoup(requests.get(us_news_url).text)
+    college_names = soup.select('td.college_name a')[1:]
+    populations = soup.select('.total_all_students')[1:]
+    for page in range(1, 12):
+        if page > 1:
+            soup = BeautifulSoup(requests.get(us_news_url + str(page)).text)
+            college_names += soup.select('.college_name')[1:]
+            populations += soup.select('.total_all_students')[1:]
+        for name in college_names:
+            index += 1
+            results.append({
+                'rank': index,
+                'name': name.string,
+                'population': populations[index - 1].text
+                })
+
+
+
+
+
 def update_universities_forbes():
     from app.static.data.universities import universities_dict
     from app.database import db_session
@@ -275,6 +305,9 @@ def seed_db():
 
 if arg == 'initialize':
     init()
+
+if arg =='update_us_news':
+    update_us_news()
 
 if arg =='update_forbes':
     update_universities_forbes()
