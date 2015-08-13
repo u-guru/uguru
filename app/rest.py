@@ -2727,9 +2727,9 @@ class AdminDevicePushTestView(restful.Resource):
         message = 'TEST'
         token = device.push_notif
 
-        if device.isWindows():
-            from lib.push_notif import send_windows_notification
-            send_windows_notification(message, token)
+        # if device.isWindows():
+        #     from lib.push_notif import send_windows_notification
+        #     send_windows_notification(message, token)
 
         if device.isIOS():
             from lib.push_notif import send_ios_notification

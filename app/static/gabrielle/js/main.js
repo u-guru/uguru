@@ -44,7 +44,24 @@ menuStyle = function() {
 	});
 }
 
+// alert(document.userAgent);
+safariMobileEdgeCase = function() {
+
+	var userAgent = navigator.userAgent;
+	var is_safari_mobile = (userAgent.indexOf("Safari") > -1) && (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i));
+	if (is_safari_mobile) {
+		FastClick.attach(document.body);
+		$('#main').on('touchstart touchend', function(e) {
+			// e.preventDefault();
+			offset_header_left = $('header')[0].getBoundingClientRect().left;
+			$('#top-menu')[0].style.left = (offset_header_left * -1).toString() + 'px';
+		})
+	}
+}
+
+
 $(document).ready(function () {
+	safariMobileEdgeCase();// initSafariMobileCase();
 	slideLeft();
 	menuStyle();
 	$(window).resize(function(){
