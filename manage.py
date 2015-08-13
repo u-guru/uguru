@@ -12,35 +12,21 @@ else:
 def init():
     init_db()
 
+# def decode_string(string):
+#     return string.decode('unicode_escape')
+
 def update_us_news():
-    from app.models import *
-    import requests
-    from bs4 import BeautifulSoup
-    index = 0
-    pages = 11
-    us_news_url = 'http://colleges.usnews.rankingsandreviews.com/best-colleges/rankings/national-universities/data/page+'
-
-    results = []
-
-    soup = BeautifulSoup(requests.get(us_news_url).text)
-    college_names = soup.select('td.college_name a')[1:]
-    populations = soup.select('.total_all_students')[1:]
-    for page in range(1, 12):
-        if page > 1:
-            soup = BeautifulSoup(requests.get(us_news_url + str(page)).text)
-            college_names += soup.select('.college_name')[1:]
-            populations += soup.select('.total_all_students')[1:]
-        for name in college_names:
-            index += 1
-            results.append({
-                'rank': index,
-                'name': name.string,
-                'population': populations[index - 1].text
-                })
-
-
-
-
+    import json
+    uni_rank_arr = json.load(open('app/static/data/us_news_2015.json'))
+    for uni in uni_rank_arr:
+        try:
+            university = get_best_matching_universty(uni['name'])
+            university.us_news_ranking = uni['rank']
+            university.population = uni['population']
+            db_session.commit()
+            print university.id, university.name, university.us_news_ranking, university.population, 'saved'
+        except:
+            print 'ERROR: could not find', uni['name']
 
 def update_universities_forbes():
     from app.static.data.universities import universities_dict
