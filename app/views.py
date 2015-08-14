@@ -77,9 +77,13 @@ def admin_devices():
     return render_template("new_admin/admin.stats.devices.html", test_devices=test_devices, \
         regular_devices=regular_devices)
 
-@app.route('/gabrielle/')
+@app.route('/staging/')
 def new_home_page():
     return render_template("gabrielle/index.html")
+
+@app.route('/staging/profile')
+def profile_page():
+    return render_template("gabrielle/profile.html")
 
 @app.route('/admin/stats/campaigns/')
 def admin_stats_campaigns():
