@@ -72,22 +72,26 @@ $(function () {
 			});
 		});
 		$("#search-bar").blur(function(){
-			$("#search-results").slideUp();
-			$("#top-school-logo, #top-school-banner").css("width", "100%");
-			$("#search-box").css({
-				"-webkit-transform": "translateX(-50%)",
-				"-moz-transform": "translateX(-50%)",
-				"-ms-transform": "translateX(-50%)",
-				"-o-transform": "translateX(-50%)",
-				"transform": "translateX(-50%)"
-			});
+			setTimeout(function() {
+
+				$("#search-results").slideUp();
+				$("#top-school-logo, #top-school-banner").css("width", "100%");
+				$("#search-box").css({
+					"-webkit-transform": "translateX(-50%)",
+					"-moz-transform": "translateX(-50%)",
+					"-ms-transform": "translateX(-50%)",
+					"-o-transform": "translateX(-50%)",
+					"transform": "translateX(-50%)"
+				});
+
+			}, 100);
 		});
 		$("#search-results").on("click", "li", function(e) {
 			$("#search-box").slideUp();
 			$("#border-outer").css("fill", "white");
 			if ($(this).is('#search-harvard')) {
 				var color = "#A41034";
-				$("#top-school-logo").attr('src', '/static/images/school/harvard.svg');
+				$("#top-school-logo").attr('src', '/static/gabrielle/images/school/harvard.svg');
 				$("#search-results-harvard").slideDown();
 				$("#border-inner").css("fill", color);
 				$("#search-results-harvard").css("border-bottom-color", color);
@@ -95,7 +99,7 @@ $(function () {
 				$("#search-results-harvard button").css("background", color);
 			} else if ($(this).is('#search-stanford')) {
 				var color = "#8C1515";
-				$("#top-school-logo").attr('src', '/static/images/school/stanford.svg');
+				$("#top-school-logo").attr('src', '/static/gabrielle/images/school/stanford.svg');
 				$("#search-results-stanford").slideDown();
 				$("#border-inner").css("fill", color);
 				$("#search-results-stanford").css("border-bottom-color", color);
@@ -103,7 +107,7 @@ $(function () {
 				$("#search-results-stanford button").css("background", color);
 			} else if ($(this).is('#search-cambridge')) {
 				var color = "#A3C1AD";
-				$("#top-school-logo").attr('src', '/static/images/school/cambridge.svg');
+				$("#top-school-logo").attr('src', '/static/gabrielle/images/school/cambridge.svg');
 				$("#search-results-cambridge").slideDown();
 				$("#border-inner").css("fill", color);
 				$("#search-results-cambridge").css("border-bottom-color", color);
