@@ -1,6 +1,6 @@
 <ion-view hide-nav-bar='true' class='request' id='home-page'>
   <ion-header-bar align-title="center" class='dark-bg-header item-icon-right'>
-        <h1 class="title">Requests</h1>
+        <h1 id="title" class="title">Requests</h1>
         <div class="buttons">
           <img class='icon ion-plus-custom blue custom-icon' style='top:0.33em !important;' src='{{img_base}}./img/icons/blue_add.svg'></img>
         </div>
@@ -194,7 +194,7 @@
                   <img class='pure-img' ng-src='{{img_base}}./img/verbs/{{request.verb_image}}' />
                   <div class='request-card-content'>
                     <p class='course-text'>
-                      <span class="ng-class: {'card-font-small': request.course.short_name.length > 8 && request.course.short_name.length < 11, 'card-font-xs': request.course.short_name.length >= 11}" ng-show='request._type === 0 || request._type === 1'>
+                      <span id="E2E-className"  class="ng-class: {'card-font-small': request.course.short_name.length > 8 && request.course.short_name.length < 11, 'card-font-xs': request.course.short_name.length >= 11}" ng-show='request._type === 0 || request._type === 1'>
                         {{request.course.short_name}}
                       </span>
                       <span ng-show='request._type === 2' class='transform-capitalize'>

@@ -12,14 +12,12 @@ exports.config = {
         //   {'browserName': 'phantomjs'}
         // ],
         specs: [
-              '../test_case/Release_One_Mobile/Request/*'
+              '../test_case/Error/*'
         ],
         suites:
         {
-          init :   '../test_case/Release_One_Mobile/Request/first_course.js',
-          add  :   '../test_case/Release_One_Mobile/Request/add_course.js',
-          addS : [ '../test_case/WorkFlows/workflow_three.js','../test_case/Release_One_Mobile/Request/delete_session.js'],
-          d : [ '../test_case/backHome.js','../test_case/Release_One_Mobile/Request/delete_session.js']
+          swipe: '../test_case/Error/#825.js',
+         
 
         },
         resultJsonOutputFile: 'www/remote/tests/e2e/result.json',
@@ -64,7 +62,9 @@ exports.config = {
             protractor.run = require('../test_case/globals.js').run;
             browser.driver.manage().window().setSize(414, 736);
 	          //facebook log in
-       			protractor.run.setUp("http://localhost:8100/#/new-home","jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+              browser.driver.get("http://localhost:8100/#/new-home");
+
+       			//protractor.run.setUp("http://localhost:8100/#/new-home","jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
             browser.sleep(800);     
         }
         

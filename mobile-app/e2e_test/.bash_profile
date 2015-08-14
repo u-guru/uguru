@@ -13,6 +13,7 @@ alias pgp="protractor e2e_test/config/guruProf.config.js"
 alias pr="protractor e2e_test/config/ranking.config.js"
 alias pw="protractor e2e_test/config/workflow.config.js"
 alias pc="protractor e2e_test/config/course.config.js"
+alias pe="protractor e2e_test/config/error.config.js"
 
 
 alias rph="protractor e2e_test/config/protractor.config.headless.js"
