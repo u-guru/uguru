@@ -93,11 +93,23 @@ $(function () {
 
 			}, 100);
 		});
-		$(".top-link-menu").on("click", function(e) {
+		// SAMIR - SIDEBAR
+		// Should also be a way to click on #overlay
+		$(".top-link-menu").click(function() {
+			// e.preventDefault();
 			$("#side-menu, #overlay").toggleClass("active");
 		});
+		$(".top-link-start").on("click", function(e) {
+			$("#start-modal, #overlay").toggleClass("active");
+			e.preventDefault();
+		});
+		$(".top-link-close").on("click", function(e) {
+			$("#side-menu, #overlay, #start-modal").removeClass("active");
+			e.preventDefault();
+		});
+
 		$("#search-results").on("click", "li", function(e) {
-			/* ELEMENTS THAT NEED TO CHANGE
+			/* SAMIR - ELEMENTS THAT NEED TO CHANGE
 				#top-school-logo - src (svg)
 				#border-inner - fill (color)
 				.search-results-top - background (color)
