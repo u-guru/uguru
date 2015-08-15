@@ -1,147 +1,5 @@
-@mixin opacity($opacity) {
-	filter: alpha(opacity=$opacity * 100);
-	opacity: $opacity;
-}
-@mixin transition($transition) {
-	-webkit-transition: all $transition;
-	-o-transition: all $transition;
-	-ms-transition: all $transition;
-	-moz-transition: all $transition;
-	transition: all $transition;
-}
-@mixin transition-type($type, $transition) {
-	-webkit-transition: $type $transition;
-	-o-transition: $type $transition;
-	-ms-transition: $type $transition;
-	-moz-transition: $type $transition;
-	transition: $type $transition;
-}
-@mixin round {
-	border-radius: 1000px;
-}
-@mixin border-radius($radius) {
-	border-radius: $radius+px;
-}
-@mixin center-x {
-	left: 50%;
-	-webkit-transform: translateX(-50%);
-	-moz-transform: translateX(-50%);
-	-ms-transform: translateX(-50%);
-	-o-transform: translateX(-50%);
-	transform: translateX(-50%);
-}
-@mixin center-y {
-	top: 50%;
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
-	transform: translateY(-50%);
-}
-@mixin center-xy {
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%,-50%);
-	-moz-transform: translate(-50%,-50%);
-	-ms-transform: translate(-50%,-50%);
-	-o-transform: translate(-50%,-50%);
-	transform: translate(-50%,-50%);
-}
-@mixin pos-xy($xpos, $ypos) {
-	top: percentage($ypos);
-	left: percentage($xpos);
-	-webkit-transform: translate(-(percentage($xpos)),-(percentage($ypos)));
-	-moz-transform: translate(-(percentage($xpos)),-(percentage($ypos)));
-	-ms-transform: translate(-(percentage($xpos)),-(percentage($ypos)));
-	-o-transform: translate(-(percentage($xpos)),-(percentage($ypos)));
-	transform: translate(-(percentage($xpos)),-(percentage($ypos)));
-}
-@mixin tri-down($size, $color, $radius, $padding) {
-	@include border-radius($radius);
-	position: relative;
-	background: $color;
-	padding: $padding;
-	margin-top: ($size * 2)+px;
-	&:before {
-		@include center-x;
-		content: "";
-		display: block;
-		position: absolute;
-		top: -($size * 2 - 1)+px;
-		width: 0;
-		height: 0;
-		border: $size+px solid transparent;
-		border-bottom: $size+px solid $color;
-	}
-}
-@mixin flex {
-	-ms-box-orient: horizontal;
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -moz-flex;
-	display: -webkit-flex;
-	display: flex;
-}
-@mixin flex-wrap {
-	-ms-flex-flow: row wrap;
-	-webkit-flex-flow: row wrap;
-	flex-flow: row wrap;
-}
-@mixin flex-center {
-	-webkit-align-items: center;
-	-webkit-box-align: center;
-	align-items: center;
-	justify-content: center;
-}
-@mixin listless {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-@mixin blur($blur) {
-	filter: blur($blur+px);
-	-webkit-filter: blur($blur+px);
-	-moz-filter: blur($blur+px);
-	-o-filter: blur($blur+px);
-	-ms-filter: blur($blur+px);
-	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{$blur}');
-}
-@mixin rotate($angle) {
-	-webkit-transform: rotate($angle+deg);
-	-moz-transform: rotate($angle+deg);
-	-ms-transform: rotate($angle+deg);
-	-o-transform: rotate($angle+deg);
-	transform: rotate($angle+deg);
-}
-
-$links: 'a:active, a:focus, a:hover';
-
-$charcoal: #2B3234;
-$slate: #40484B;
-$taupe: #757575;
-$smoke: #F1F1F1;
-$campus: #8A9EA3;
-$shamrock: #69B3A5;
-$moola: #81B566;
-$lake: #50A5DD;
-$azure: #55A4B7;
-$orange: #E5753C;
-$gold: #F9D57B;
-$cerise: #DB1988;
-$eggplant: #9A5BC5;
-
-$moola-mute: #92AC84;
-$lake-mute: #6F98B5;
-$azure-mute: #7DA7B2;
-$orange-mute: #D99675;
-$gold-mute: #E8D3A3;
-$cerise-mute: #C56E9C;
-$eggplant-mute: #907D9E;
-
-$icon-bg: no-repeat center center;
-
-$font: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+@import 'mixin';
+@import 'default';
 
 * {
 	-webkit-backface-visibility: hidden;
@@ -175,6 +33,7 @@ a {
 }
 
 button, a[class*=btn] {
+	@include transition(.15s ease-in);
 	display: inline-block;
 	padding: 10px 20px;
 	border: 0;
@@ -184,7 +43,7 @@ button, a[class*=btn] {
 	font-weight: 600;
 	text-transform: uppercase;
 }
-button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:focus, a[class*=btn]:hover {
+#{$buttons} {
 	background: $slate;
 	color: white;
 }
@@ -214,7 +73,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 	background: white;
 	#mobile-inside {
 		@include center-xy;
-		position: absolute;
 		width: 100%;
 		padding: 20px;
 		box-sizing: border-box;
@@ -255,7 +113,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 	width: 100%;
 	#top-menu {
 		position: relative;
-		z-index: 999999;
+		z-index: 99999;
 		padding: 10px;
 		box-sizing: border-box;
 		ul {
@@ -299,46 +157,36 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 	}
 }
 
-#slide-breadcrumbs {
-	position: fixed;
-	bottom: 20px;
-	right: 10px;
-	z-index: 99999;
-	ul {
-		@include listless;
-		@include flex;
-		@include flex-center;
-		li {
-			@include round;
-			display: block;
-			margin: 0 7px;
-			border: 2px solid rgba(0,0,0,.5);
-			a {
-				@include round;
-				position: relative;
-				display: block;
-				width: 12px;
-				height: 12px;
-				background: white;
-				&:after {
-					@include round;
-					content: "";
-					display: block;
-					width: 8px;
-					height: 8px;
-					position: absolute;
-					top: 0;
-					margin: 2px;
-				}
-				&.active:after {
-					background: $shamrock;
-				}
-				&.inactive:after {
-					background: $taupe;
-				}
-			}
-		}
+#overlay {
+	display: none;
+	position: absolute;
+	z-index: 999999;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: $charcoal;
+	&.active {
+		display: block;
 	}
+}
+#side-menu {
+	@include transition(.15s ease-in);
+	@include opacity(0);
+	> a {
+		margin: 10px;
+	}
+	&.active {
+		@include opacity(1);
+	}
+	ul {
+		background: red;
+		@include listless;
+	}
+}
+
+#slide-breadcrumbs {
+	display: none;
 }
 
 #main {
@@ -357,7 +205,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 		.inside {
 			@include center-xy;
 			display: table;
-			position: absolute;
 			width: 100%;
 			height: 100%;
 			box-sizing: border-box;
@@ -511,6 +358,48 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 	#banner {
 		display: block!important;
 	}
+	#slide-breadcrumbs {
+		display: block!important;
+		position: fixed;
+		bottom: 20px;
+		right: 10px;
+		z-index: 99999;
+		ul {
+			@include listless;
+			@include flex;
+			@include flex-center;
+			li {
+				@include round;
+				display: block;
+				margin: 0 7px;
+				border: 2px solid rgba(0,0,0,.5);
+				a {
+					@include round;
+					position: relative;
+					display: block;
+					width: 12px;
+					height: 12px;
+					background: white;
+					&:after {
+						@include round;
+						content: "";
+						display: block;
+						width: 8px;
+						height: 8px;
+						position: absolute;
+						top: 0;
+						margin: 2px;
+					}
+					&.active:after {
+						background: $shamrock;
+					}
+					&.inactive:after {
+						background: $taupe;
+					}
+				}
+			}
+		}
+	}
 	#top {
 		display: block!important;
 		#top-logo {
@@ -586,14 +475,10 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 			display: block;
 			#search-box, .search-results {
 				@include transition(.15s ease-in);
-				@include center-x;
-				position: absolute;
-				top: 50%;
 				z-index: 999;
 				margin: auto;
 				width: 60%;
-				background: rgba(255,255,255,.9);
-				border-bottom: 10px solid $cerise-mute;
+				background: white;
 			}
 			p {
 				margin: 0 0 25px;
@@ -601,60 +486,117 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 				text-align: center;
 			}
 			#search-box {
+				@include center-x;
+				top: 50%;
 				padding: 35px 50px 45px;
+				border-bottom: 10px solid $cerise-mute;
 			}
 			.search-results {
-				padding: 25px 50px;
-				.search-results-header {
-					margin: 0;
-					font-size: 24px;
-					font-weight: 600;
-					letter-spacing: 3px;
-					text-transform: uppercase;
-				}
-				h1 {
-					color: $slate;
-					font-size: 36px;
-					font-weight: 900;
-					letter-spacing: 3px;
-					text-align: center;
-					text-transform: uppercase;
-				}
-				ul {
-					@include listless;
-					display: table;
-					margin-top: 25px;
-					width: 100%;
-					text-align: center;
-					li {
-						display: table-cell;
-						vertical-align: middle;
-						p {
-							margin: 0;
-							font-size: 18px;
-							font-weight: 600;
-							letter-spacing: 2px;
-							text-transform: uppercase;
-						}
-						h2 {
-							font-size: 60px;
-							text-transform: uppercase;
-						}
-						h3 {
-							margin-bottom: 15px;
-							font-size: 28px;
-							font-weight: 400;
-						}
+				@include center-xy;
+				.search-results-top {
+					padding: 25px 50px;
+					background: $cerise-mute;
+					color: white;
+					.search-results-header {
+						margin: 0;
+						font-size: 24px;
+						font-weight: 600;
+						letter-spacing: 3px;
+						text-transform: uppercase;
 					}
-					.search-results-student, .search-results-guru {
-						width: 35%;
+					h1 {
+						color: white;
+						font-size: 36px;
+						font-weight: 900;
+						letter-spacing: 3px;
+						text-transform: uppercase;
 					}
-					.search-results-start {
-						width: 30%;
+					button {
+						margin-top: 20px;
+						padding: 20px 40px;
+						font-size: 18px;
+					}
+					#{$buttons} {
+						background: white;
 					}
 				}
-				button:active, button:focus, button:hover {
-					background: $slate!important;
+				.search-results-bottom {
+					> div {
+						position: relative;
+					}
+					.search-results-map {
+						background: url(/static/gabrielle/images/maps.png) no-repeat center center;
+						.search-results-gurus {
+							@include round;
+							@include center-xy;
+							display: table;
+							background: $cerise-mute;
+							width: 175px;
+							height: 175px;
+							h2 {
+								display: table-cell;
+								vertical-align: middle;
+								line-height: 1;
+								color: white;
+								b, span {
+									display: block;
+								}
+								b {
+									font-size: 60px;
+								}
+								span {
+									font-weight: 400;
+									font-size: 18px;
+								}
+							}
+						}
+					}
+					.search-results-courses {
+						ul {
+							@include listless;
+							li {
+								box-sizing: border-box;
+								padding: 10px;
+								background: $slate;
+								color: white;
+								font-size: 18px;
+								font-weight: 400;
+							}
+							li:nth-child(1) {
+								background: $shamrock;
+							}
+							li:nth-child(2) {
+								background: $eggplant-mute;
+							}
+							li:nth-child(3) {
+								background: $cerise-mute;
+							}
+							li:nth-child(4) {
+								background: $azure-mute;
+							}
+							li:nth-child(5) {
+								background: $moola-mute;
+							}
+							li:nth-child(6) {
+								background: $orange-mute;
+							}
+							li:nth-child(7) {
+								background: $lake-mute;
+							}
+							li:nth-child(8) {
+								background: $cerise-mute;
+							}
+							li:nth-child(9) {
+								background: $eggplant-mute;
+							}
+							li:nth-child(10) {
+								background: $shamrock;
+							}
+							li:nth-child(11) {
+								background: $orange-mute;
+							}
+						}
+					}
 				}
 			}
 			#search-container {
@@ -767,7 +709,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 		#info {
 			.inside {
 				@include center-xy;
-				position: absolute;
 				height: auto;
 				.inside-text {
 					display: block;
@@ -797,7 +738,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 		.app-wf {
 			@include center-y;
 			@include border-radius(30);
-			position: absolute;
 			right: 15%;
 			width: 256px;
 			height: 552px;
@@ -811,7 +751,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 				div {
 					@include center-xy;
 					@include round;
-					position: absolute;
 					width: 48px;
 					height: 4px;
 					border: 2px solid rgba(255,255,255,.2);
@@ -825,7 +764,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 				div {
 					@include center-xy;
 					@include round;
-					position: absolute;
 					width: 40px;
 					height: 40px;
 					border: 2px solid rgba(255,255,255,.2);
@@ -833,7 +771,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 			}
 			.app-wf-scr {
 				@include center-xy;
-				position: absolute;
 				img {
 					display: block;
 					height: 400px;
@@ -862,7 +799,20 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 				padding: 70px 100px 90px;
 			}
 			.search-results {
-				padding: 50px 100px;
+				.search-results-top {
+					padding: 50px 100px;
+				}
+				.search-results-bottom {
+					.search-results-courses {
+						ul {
+							@include listless;
+							li {
+								padding: 15px;
+								font-size: 24px;
+							}
+						}
+					}
+				}
 			}
 			#search-container {
 				#search-results {

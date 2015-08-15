@@ -82,33 +82,45 @@ $(function () {
 				"transform": "translateX(-50%)"
 			});
 		});
+		$(".top-link-menu").on("click", function(e) {
+			$("#side-menu, #overlay").toggleClass("active");
+		});
 		$("#search-results").on("click", "li", function(e) {
+			/* ELEMENTS THAT NEED TO CHANGE
+				#top-school-logo - src (svg)
+				#border-inner - fill (color)
+				.search-results-top - background (color)
+				.search-results-guru - background (color)
+				.search-results-map - background (map, depends on static vs. dynamic)
+				#banner - background (school photo from flickr)
+				#search-school-name - text (school name)
+				#search-guru-number - text (number of gurus)
+				.search-results-courses ul li - text (course names), background (see index.html comments)
+			*/
 			$("#search-box").slideUp();
 			$("#border-outer").css("fill", "white");
+			$("#top-school-logo, #top-school-banner").css("width", "40%");
 			if ($(this).is('#search-harvard')) {
 				var color = "#A41034";
-				$("#top-school-logo").attr('src', '/static/images/school/harvard.svg');
-				$("#search-results-harvard").slideDown();
+				$("#top-school-logo").attr('src', '/static/gabrielle/images/school/harvard.svg');
+				$(".search-results").slideDown();
 				$("#border-inner").css("fill", color);
-				$("#search-results-harvard").css("border-bottom-color", color);
-				$("#search-results-harvard h1").css("color", color);
-				$("#search-results-harvard button").css("background", color);
+				$(".search-results-top, .search-results-gurus").css("background", color);
+				$("#search-school-name").text("Harvard University");
 			} else if ($(this).is('#search-stanford')) {
 				var color = "#8C1515";
-				$("#top-school-logo").attr('src', '/static/images/school/stanford.svg');
-				$("#search-results-stanford").slideDown();
+				$("#top-school-logo").attr('src', '/static/gabrielle/images/school/stanford.svg');
+				$(".search-results").slideDown();
 				$("#border-inner").css("fill", color);
-				$("#search-results-stanford").css("border-bottom-color", color);
-				$("#search-results-stanford h1").css("color", color);
-				$("#search-results-stanford button").css("background", color);
+				$(".search-results-top, .search-results-gurus").css("background", color);
+				$("#search-school-name").text("Stanford University");
 			} else if ($(this).is('#search-cambridge')) {
 				var color = "#A3C1AD";
-				$("#top-school-logo").attr('src', '/static/images/school/cambridge.svg');
-				$("#search-results-cambridge").slideDown();
+				$("#top-school-logo").attr('src', '/static/gabrielle/images/school/cambridge.svg');
+				$(".search-results").slideDown();
 				$("#border-inner").css("fill", color);
-				$("#search-results-cambridge").css("border-bottom-color", color);
-				$("#search-results-cambridge h1").css("color", color);
-				$("#search-results-cambridge button").css("background", color);
+				$(".search-results-top, .search-results-gurus").css("background", color);
+				$("#search-school-name").text("Cambridge University");
 			}
 		});
 		$('.value-number').each(function() {

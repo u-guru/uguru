@@ -8,9 +8,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui=yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
-
+	
 	<title>uguru.me</title>
-
+	
 	<link rel="shortcut icon" href="/static/gabrielle/images/favicon.ico">
 	<link rel="stylesheet" href="/static/gabrielle/css/base-min.css"/>
 	<link rel="stylesheet" href="/static/gabrielle/css/grids-min.css"/>
@@ -20,17 +20,10 @@
 	<script src="/static/gabrielle/js/modernizr.js"></script>
 </head>
 <body>
-	<div id="mobile-start">
-		<div id="mobile-inside">
-			<img src="/static/gabrielle/svg/logo-shamrock.svg" alt="uguru"/>
-			<p>For an easy A, swipe away!<em>To the right, to the right.</em></p>
-		</div>
-	</div>
-	<div id="banner"></div>
 	<header id="top">
 		<nav id="top-menu">
 			<ul>
-				<li><a id="top-link-menu" class="btn-round btn-ghost" href="#"><span>Menu</span></a></li>
+				<li><a class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a></li>
 				<li>
 					<a id="top-logo" href="/">
 						<svg id="top-school-banner" width="200px" height="291px" viewBox="0 0 200 291" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -43,34 +36,56 @@
 						<img id="top-school-logo" src="/static/gabrielle/svg/logo-shamrock.svg" alt="uguru"/>
 					</a>
 				</li>
-				<li><a id="top-link-login" class="btn-round btn-ghost" href="#"><span>Log In</span></a></li>
+				<li><a class="top-link-start btn-round btn-ghost" href="#"><span>Get Started</span></a></li>
 			</ul>
 		</nav>
 	</header>
-	<nav id="slide-breadcrumbs">
-		<ul>
-			<li>
-				<a class="active" href="#search" data-number="0"></a>
-			</li>
-			<li>
-				<a href="#values" data-number="1"></a>
-			</li>
-			<li>
-				<a href="#earn" data-number="2"></a>
-			</li>
-			<li>
-				<a href="#adapt" data-number="3"></a>
-			</li>
-			<li>
-				<a href="#rewards" data-number="4"></a>
-			</li>
-			<li>
-				<a href="#info" data-number="5"></a>
-			</li>
-		</ul>
-	</nav>
-	<section id="main">
+	<div id="overlay">
+		<nav id="side-menu">
+			<a class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/">About</a></li>
+				<li><a href="/">FAQ</a></li>
+				<li><a href="/">Link</a></li>
+				<li><a href="/">Link</a></li>
+				<li><a href="/">Link</a></li>
+			</ul>
+		</nav>
+	</div>
 
+	
+<nav id="slide-breadcrumbs">
+	<ul>
+		<li>
+			<a class="active" href="#search" data-number="0"></a>
+		</li>
+		<li>
+			<a href="#values" data-number="1"></a>
+		</li>
+		<li>
+			<a href="#earn" data-number="2"></a>
+		</li>
+		<li>
+			<a href="#adapt" data-number="3"></a>
+		</li>
+		<li>
+			<a href="#rewards" data-number="4"></a>
+		</li>
+		<li>
+			<a href="#info" data-number="5"></a>
+		</li>
+	</ul>
+</nav>
+<div id="mobile-start">
+	<div id="mobile-inside">
+		<img src="/static/gabrielle/svg/logo-shamrock.svg" alt="uguru"/>
+		<p>For an easy A, swipe away!<em>To the right, to the right.</em></p>
+	</div>
+</div>
+<div id="banner"></div>
+
+<section id="main">
 	<div id="search">
 		<div id="search-box">
 			<p>Peers helping peers for free, barter, or side cash.</p>
@@ -107,59 +122,51 @@
 				</ul>
 			</div>
 		</div>
-		<div id="search-results-harvard" class="search-results">
-			<p class="search-results-header"><small>Uguru is now at</small></p>
-			<h1>Harvard University</h1>
-			<ul>
-				<li class="search-results-student">
-					<h3>Get a tutor,<br/>ace the course</h3>
-					<button class="btn-round">Get started</button>
-				</li>
-				<li class="search-results-start">
-					<p><small>Classes start</small></p>
-					<h2>Aug 01</h2>
-				</li>
-				<li class="search-results-guru">
-					<h3>Make money<br/>tutoring today</h3>
-					<button class="btn-round">Become a Guru</button>
-				</li>
-			</ul>
-		</div>
-		<div id="search-results-stanford" class="search-results">
-			<p class="search-results-header"><small>Uguru is now at</small></p>
-			<h1>Stanford University</h1>
-			<ul>
-				<li class="search-results-student">
-					<h3>Get a tutor,<br/>ace the course</h3>
-					<button class="btn-round">Get started</button>
-				</li>
-				<li class="search-results-start">
-					<p><small>Classes start</small></p>
-					<h2>Aug 01</h2>
-				</li>
-				<li class="search-results-guru">
-					<h3>Make money<br/>tutoring today</h3>
-					<button class="btn-round">Become a Guru</button>
-				</li>
-			</ul>
-		</div>
-		<div id="search-results-cambridge" class="search-results">
-			<p class="search-results-header"><small>Uguru is now at</small></p>
-			<h1>Cambridge University</h1>
-			<ul>
-				<li class="search-results-student">
-					<h3>Get a tutor,<br/>ace the course</h3>
-					<button class="btn-round">Get started</button>
-				</li>
-				<li class="search-results-start">
-					<p><small>Classes start</small></p>
-					<h2>Aug 01</h2>
-				</li>
-				<li class="search-results-guru">
-					<h3>Make money<br/>tutoring today</h3>
-					<button class="btn-round">Become a Guru</button>
-				</li>
-			</ul>
+		<!--
+			There's a problem with the banner - it's too big for the school popup,
+			but when I scroll down on the school popup, the width changes
+			Ask for explanation if needed (JS needs to change)
+		-->
+		<div class="search-results">
+			<header class="search-results-top text-center">
+				<p class="search-results-header"><small>Uguru is now at</small></p>
+				<h1 id="search-school-name">School Name</h1>
+				<button class="btn-round btn-ghost">Become a Guru</button>
+			</header>
+			<footer class="search-results-bottom pure-g">
+				<div class="search-results-map text-center uppercase pure-u-1-2">
+					<!--
+						The background for .search-results-map should be either a static or dynamic map of where gurus are located
+					-->
+					<div class="search-results-gurus">
+						<h2>
+							<b id="search-guru-number">340</b>
+							<span>gurus</span>
+						</h2>
+					</div>
+				</div>
+				<div class="search-results-courses pure-u-1-2">
+					<ul class="pure-g text-center">
+						<!--
+							Colored either
+								(1)	Randomly based on color scheme or
+								(2)	Based on colors we choose to represent broad categories i.e. math, science, etc
+						-->
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">and more</li>
+					</ul>
+				</div>
+			</footer>
 		</div>
 	</div>
 	<div id="values" class="slide" data-number="1">
@@ -245,7 +252,7 @@
 					<div class="inside-prop"></div>
 					<h2>Get Info</h2>
 					<input placeholder="enter your email address"/>
-					<button class="btn-round">Subscribe</button>
+					<button class="btn-round btn-shamrock">Subscribe</button>
 				</div>
 				<div id="info-download">
 					<h2>Download</h2>
@@ -254,21 +261,21 @@
 			</div>
 		</div>
 	</div>
+</section>
 
-	</section>
 
-
-		<!-- <script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+	
+		<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
 		<script>
 		  WebFont.load({
 			google: {
 			  families: ['Source Sans Pro:200,300,400,600,700,900']
 			}
 		  });
-		</script> -->
+		</script>
 		<script src="/static/gabrielle/js/jquery.min.js"></script>
 		<script src="/static/gabrielle/js/plugins.js"></script>
 		<script src="/static/gabrielle/js/main.js"></script>
-
+	
 </body>
 </html>
