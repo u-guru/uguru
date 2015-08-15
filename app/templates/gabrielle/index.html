@@ -8,9 +8,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui=yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	
+
 	<title>uguru.me</title>
-	
+
 	<link rel="shortcut icon" href="/static/gabrielle/images/favicon.ico">
 	<link rel="stylesheet" href="/static/gabrielle/css/base-min.css"/>
 	<link rel="stylesheet" href="/static/gabrielle/css/grids-min.css"/>
@@ -43,18 +43,28 @@
 	<div id="overlay">
 		<nav id="side-menu">
 			<a class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a>
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/">About</a></li>
-				<li><a href="/">FAQ</a></li>
-				<li><a href="/">Link</a></li>
-				<li><a href="/">Link</a></li>
-				<li><a href="/">Link</a></li>
+			<a class="top-link-close" href="#"><span>&times;</span></a>
+			</ul>
+			<ul id="side-menu-links">
+				<li><a class="active" href="/">Home</a></li>
+				<li><a href="/">Why Uguru</a></li>
+				<li><a href="/">How it Works</a></li>
+				<li><a href="/">Community</a></li>
+				<li><a href="/">Safety Center</a></li>
 			</ul>
 		</nav>
+		<div id="start-modal">
+			<h1>Download</h1>
+			<ul id="start-modal-platforms" class="pure-g">
+				<li class="pure-u-1-3"><img src="/static/gabrielle/svg/platform/apple-color.svg" alt="Apple"/></li>
+				<li class="pure-u-1-3"><img src="/static/gabrielle/svg/platform/microsoft-color.svg" alt="Windows"/></li>
+				<li class="pure-u-1-3"><img src="/static/gabrielle/svg/platform/play-color.svg" alt="Google Play"/></li>
+			</ul>
+			<h1>Send app link to phone</h1>
+		</div>
 	</div>
 
-	
+
 <nav id="slide-breadcrumbs">
 	<ul>
 		<li>
@@ -122,7 +132,7 @@
 				</ul>
 			</div>
 		</div>
-		<!--
+		<!-- SAMIR -
 			There's a problem with the banner - it's too big for the school popup,
 			but when I scroll down on the school popup, the width changes
 			Ask for explanation if needed (JS needs to change)
@@ -135,7 +145,7 @@
 			</header>
 			<footer class="search-results-bottom pure-g">
 				<div class="search-results-map text-center uppercase pure-u-1-2">
-					<!--
+					<!-- SAMIR -
 						The background for .search-results-map should be either a static or dynamic map of where gurus are located
 					-->
 					<div class="search-results-gurus">
@@ -147,7 +157,7 @@
 				</div>
 				<div class="search-results-courses pure-u-1-2">
 					<ul class="pure-g text-center">
-						<!--
+						<!-- SAMIR -
 							Colored either
 								(1)	Randomly based on color scheme or
 								(2)	Based on colors we choose to represent broad categories i.e. math, science, etc
@@ -264,7 +274,7 @@
 </section>
 
 
-	
+
 		<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
 		<script>
 		  WebFont.load({
@@ -276,6 +286,6 @@
 		<script src="/static/gabrielle/js/jquery.min.js"></script>
 		<script src="/static/gabrielle/js/plugins.js"></script>
 		<script src="/static/gabrielle/js/main.js"></script>
-	
+
 </body>
 </html>

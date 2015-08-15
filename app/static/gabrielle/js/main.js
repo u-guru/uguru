@@ -82,11 +82,23 @@ $(function () {
 				"transform": "translateX(-50%)"
 			});
 		});
+		// SAMIR - SIDEBAR
+		// Should also be a way to click on #overlay
 		$(".top-link-menu").on("click", function(e) {
 			$("#side-menu, #overlay").toggleClass("active");
+			e.preventDefault();
 		});
+		$(".top-link-start").on("click", function(e) {
+			$("#start-modal, #overlay").toggleClass("active");
+			e.preventDefault();
+		});
+		$(".top-link-close").on("click", function(e) {
+			$("#side-menu, #overlay, #start-modal").removeClass("active");
+			e.preventDefault();
+		});
+
 		$("#search-results").on("click", "li", function(e) {
-			/* ELEMENTS THAT NEED TO CHANGE
+			/* SAMIR - ELEMENTS THAT NEED TO CHANGE
 				#top-school-logo - src (svg)
 				#border-inner - fill (color)
 				.search-results-top - background (color)
@@ -102,21 +114,21 @@ $(function () {
 			$("#top-school-logo, #top-school-banner").css("width", "40%");
 			if ($(this).is('#search-harvard')) {
 				var color = "#A41034";
-				$("#top-school-logo").attr('src', '/static/gabrielle/images/school/harvard.svg');
+				$("#top-school-logo").attr('src', '/static/images/school/harvard.svg');
 				$(".search-results").slideDown();
 				$("#border-inner").css("fill", color);
 				$(".search-results-top, .search-results-gurus").css("background", color);
 				$("#search-school-name").text("Harvard University");
 			} else if ($(this).is('#search-stanford')) {
 				var color = "#8C1515";
-				$("#top-school-logo").attr('src', '/static/gabrielle/images/school/stanford.svg');
+				$("#top-school-logo").attr('src', '/static/images/school/stanford.svg');
 				$(".search-results").slideDown();
 				$("#border-inner").css("fill", color);
 				$(".search-results-top, .search-results-gurus").css("background", color);
 				$("#search-school-name").text("Stanford University");
 			} else if ($(this).is('#search-cambridge')) {
 				var color = "#A3C1AD";
-				$("#top-school-logo").attr('src', '/static/gabrielle/images/school/cambridge.svg');
+				$("#top-school-logo").attr('src', '/static/images/school/cambridge.svg');
 				$(".search-results").slideDown();
 				$("#border-inner").css("fill", color);
 				$(".search-results-top, .search-results-gurus").css("background", color);
