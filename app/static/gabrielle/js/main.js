@@ -73,7 +73,7 @@ $(function () {
 				});
 			}
 		});
-		$('#search-bar').keyup(function() {
+		$('#search-bar').keypress(function() {
 			if ($('#search-bar').val().length > 0) {
 				$('#search-results').hide();
 			}
