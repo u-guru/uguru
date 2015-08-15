@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @mixin opacity($opacity) {
 	filter: alpha(opacity=$opacity * 100);
 	opacity: $opacity;
@@ -142,6 +143,10 @@ $eggplant-mute: #907D9E;
 $icon-bg: no-repeat center center;
 
 $font: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+=======
+@import 'mixin';
+@import 'default';
+>>>>>>> 9df86d541a36379851ecc0cb162f6cb5411641bc
 
 * {
 	-webkit-backface-visibility: hidden;
@@ -175,6 +180,7 @@ a {
 }
 
 button, a[class*=btn] {
+	@include transition(.15s ease-in);
 	display: inline-block;
 	padding: 10px 20px;
 	border: 0;
@@ -184,7 +190,7 @@ button, a[class*=btn] {
 	font-weight: 600;
 	text-transform: uppercase;
 }
-button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:focus, a[class*=btn]:hover {
+#{$buttons} {
 	background: $slate;
 	color: white;
 }
@@ -214,7 +220,10 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 	background: white;
 	#mobile-inside {
 		@include center-xy;
+<<<<<<< HEAD
 		position: absolute;
+=======
+>>>>>>> 9df86d541a36379851ecc0cb162f6cb5411641bc
 		width: 100%;
 		padding: 20px;
 		box-sizing: border-box;
@@ -243,7 +252,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 	height: 100%;
 	z-index: 9;
 	box-sizing: border-box;
-	background: url("/static/images/cambridge.jpg") center center / cover;
+	background: url("/static/gabrielle/images/cambridge.jpg") center center / cover;
 }
 
 #top {
@@ -255,7 +264,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 	width: 100%;
 	#top-menu {
 		position: relative;
-		z-index: 999999;
+		z-index: 99999;
 		padding: 10px;
 		box-sizing: border-box;
 		ul {
@@ -299,46 +308,36 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 	}
 }
 
-#slide-breadcrumbs {
-	position: fixed;
-	bottom: 20px;
-	right: 10px;
-	z-index: 99999;
-	ul {
-		@include listless;
-		@include flex;
-		@include flex-center;
-		li {
-			@include round;
-			display: block;
-			margin: 0 7px;
-			border: 2px solid rgba(0,0,0,.5);
-			a {
-				@include round;
-				position: relative;
-				display: block;
-				width: 12px;
-				height: 12px;
-				background: white;
-				&:after {
-					@include round;
-					content: "";
-					display: block;
-					width: 8px;
-					height: 8px;
-					position: absolute;
-					top: 0;
-					margin: 2px;
-				}
-				&.active:after {
-					background: $shamrock;
-				}
-				&.inactive:after {
-					background: $taupe;
-				}
-			}
-		}
+#overlay {
+	display: none;
+	position: absolute;
+	z-index: 999999;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: $charcoal;
+	&.active {
+		display: block;
 	}
+}
+#side-menu {
+	@include transition(.15s ease-in);
+	@include opacity(0);
+	> a {
+		margin: 10px;
+	}
+	&.active {
+		@include opacity(1);
+	}
+	ul {
+		background: red;
+		@include listless;
+	}
+}
+
+#slide-breadcrumbs {
+	display: none;
 }
 
 #main {
@@ -357,7 +356,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 		.inside {
 			@include center-xy;
 			display: table;
-			position: absolute;
 			width: 100%;
 			height: 100%;
 			box-sizing: border-box;
@@ -511,6 +509,51 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 	#banner {
 		display: block!important;
 	}
+<<<<<<< HEAD
+=======
+	#slide-breadcrumbs {
+		display: block!important;
+		position: fixed;
+		bottom: 20px;
+		right: 10px;
+		z-index: 99999;
+		ul {
+			@include listless;
+			@include flex;
+			@include flex-center;
+			li {
+				@include round;
+				display: block;
+				margin: 0 7px;
+				border: 2px solid rgba(0,0,0,.5);
+				a {
+					@include round;
+					position: relative;
+					display: block;
+					width: 12px;
+					height: 12px;
+					background: white;
+					&:after {
+						@include round;
+						content: "";
+						display: block;
+						width: 8px;
+						height: 8px;
+						position: absolute;
+						top: 0;
+						margin: 2px;
+					}
+					&.active:after {
+						background: $shamrock;
+					}
+					&.inactive:after {
+						background: $taupe;
+					}
+				}
+			}
+		}
+	}
+>>>>>>> 9df86d541a36379851ecc0cb162f6cb5411641bc
 	#top {
 		display: block!important;
 		#top-logo {
@@ -541,7 +584,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 
 @media screen and (min-width:48em) {
 	#banner {
-		background: url("/static/images/cambridge@2x.jpg") center center / cover;
+		background: url("/static/gabrielle/images/cambridge@2x.jpg") center center / cover;
 	}
 	#top {
 		#top-logo {
@@ -586,14 +629,10 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 			display: block;
 			#search-box, .search-results {
 				@include transition(.15s ease-in);
-				@include center-x;
-				position: absolute;
-				top: 50%;
 				z-index: 999;
 				margin: auto;
 				width: 60%;
-				background: rgba(255,255,255,.9);
-				border-bottom: 10px solid $cerise-mute;
+				background: white;
 			}
 			p {
 				margin: 0 0 25px;
@@ -601,60 +640,117 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 				text-align: center;
 			}
 			#search-box {
+				@include center-x;
+				top: 50%;
 				padding: 35px 50px 45px;
+				border-bottom: 10px solid $cerise-mute;
 			}
 			.search-results {
-				padding: 25px 50px;
-				.search-results-header {
-					margin: 0;
-					font-size: 24px;
-					font-weight: 600;
-					letter-spacing: 3px;
-					text-transform: uppercase;
-				}
-				h1 {
-					color: $slate;
-					font-size: 36px;
-					font-weight: 900;
-					letter-spacing: 3px;
-					text-align: center;
-					text-transform: uppercase;
-				}
-				ul {
-					@include listless;
-					display: table;
-					margin-top: 25px;
-					width: 100%;
-					text-align: center;
-					li {
-						display: table-cell;
-						vertical-align: middle;
-						p {
-							margin: 0;
-							font-size: 18px;
-							font-weight: 600;
-							letter-spacing: 2px;
-							text-transform: uppercase;
-						}
-						h2 {
-							font-size: 60px;
-							text-transform: uppercase;
-						}
-						h3 {
-							margin-bottom: 15px;
-							font-size: 28px;
-							font-weight: 400;
-						}
+				@include center-xy;
+				.search-results-top {
+					padding: 25px 50px;
+					background: $cerise-mute;
+					color: white;
+					.search-results-header {
+						margin: 0;
+						font-size: 24px;
+						font-weight: 600;
+						letter-spacing: 3px;
+						text-transform: uppercase;
 					}
-					.search-results-student, .search-results-guru {
-						width: 35%;
+					h1 {
+						color: white;
+						font-size: 36px;
+						font-weight: 900;
+						letter-spacing: 3px;
+						text-transform: uppercase;
 					}
-					.search-results-start {
-						width: 30%;
+					button {
+						margin-top: 20px;
+						padding: 20px 40px;
+						font-size: 18px;
+					}
+					#{$buttons} {
+						background: white;
 					}
 				}
-				button:active, button:focus, button:hover {
-					background: $slate!important;
+				.search-results-bottom {
+					> div {
+						position: relative;
+					}
+					.search-results-map {
+						background: url(/static/gabrielle/images/maps.png) no-repeat center center;
+						.search-results-gurus {
+							@include round;
+							@include center-xy;
+							display: table;
+							background: $cerise-mute;
+							width: 175px;
+							height: 175px;
+							h2 {
+								display: table-cell;
+								vertical-align: middle;
+								line-height: 1;
+								color: white;
+								b, span {
+									display: block;
+								}
+								b {
+									font-size: 60px;
+								}
+								span {
+									font-weight: 400;
+									font-size: 18px;
+								}
+							}
+						}
+					}
+					.search-results-courses {
+						ul {
+							@include listless;
+							li {
+								box-sizing: border-box;
+								padding: 10px;
+								background: $slate;
+								color: white;
+								font-size: 18px;
+								font-weight: 400;
+							}
+							li:nth-child(1) {
+								background: $shamrock;
+							}
+							li:nth-child(2) {
+								background: $eggplant-mute;
+							}
+							li:nth-child(3) {
+								background: $cerise-mute;
+							}
+							li:nth-child(4) {
+								background: $azure-mute;
+							}
+							li:nth-child(5) {
+								background: $moola-mute;
+							}
+							li:nth-child(6) {
+								background: $orange-mute;
+							}
+							li:nth-child(7) {
+								background: $lake-mute;
+							}
+							li:nth-child(8) {
+								background: $cerise-mute;
+							}
+							li:nth-child(9) {
+								background: $eggplant-mute;
+							}
+							li:nth-child(10) {
+								background: $shamrock;
+							}
+							li:nth-child(11) {
+								background: $orange-mute;
+							}
+						}
+					}
 				}
 			}
 			#search-container {
@@ -767,7 +863,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 		#info {
 			.inside {
 				@include center-xy;
-				position: absolute;
 				height: auto;
 				.inside-text {
 					display: block;
@@ -797,7 +892,10 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 		.app-wf {
 			@include center-y;
 			@include border-radius(30);
+<<<<<<< HEAD
 			position: absolute;
+=======
+>>>>>>> 9df86d541a36379851ecc0cb162f6cb5411641bc
 			right: 15%;
 			width: 256px;
 			height: 552px;
@@ -811,7 +909,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 				div {
 					@include center-xy;
 					@include round;
-					position: absolute;
 					width: 48px;
 					height: 4px;
 					border: 2px solid rgba(255,255,255,.2);
@@ -825,7 +922,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 				div {
 					@include center-xy;
 					@include round;
-					position: absolute;
 					width: 40px;
 					height: 40px;
 					border: 2px solid rgba(255,255,255,.2);
@@ -833,7 +929,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 			}
 			.app-wf-scr {
 				@include center-xy;
-				position: absolute;
 				img {
 					display: block;
 					height: 400px;
@@ -862,7 +957,20 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 				padding: 70px 100px 90px;
 			}
 			.search-results {
-				padding: 50px 100px;
+				.search-results-top {
+					padding: 50px 100px;
+				}
+				.search-results-bottom {
+					.search-results-courses {
+						ul {
+							@include listless;
+							li {
+								padding: 15px;
+								font-size: 24px;
+							}
+						}
+					}
+				}
 			}
 			#search-container {
 				#search-results {

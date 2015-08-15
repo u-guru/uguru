@@ -16,53 +16,9 @@
 	<link rel="stylesheet" href="/static/gabrielle/css/grids-min.css"/>
 	<link rel="stylesheet" href="/static/gabrielle/css/grids-responsive-min.css"/>
 	<link rel="stylesheet" href="/static/gabrielle/css/style.css"/>
+	<link rel="stylesheet" href="/static/gabrielle/css/samir.css"/>
 
 	<script src="/static/gabrielle/js/modernizr.js"></script>
-	<style>
-	 .twitter-typeahead {
-	 	width:100%;
-	 }
-	 .tt-dropdown-menu {
-	  border: 2px solid #3D9988;
-	  background-color: white;
-	  width: 100%;
-	  color: rgba(0, 0, 0, 0.5);
-	  font-family: "OpenSans-Regular"; }
-
-	.tt-suggestion {
-	  position: relative;
-	  z-index: 20;
-	  padding: 0em 1.5em;
-	  text-align: left;
-	  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-	  .tt-suggestion .title {
-	    font-size: 120%;
-	    display: block;
-	    margin-bottom: 0.25em;
-	    color: rgba(0, 0, 0, 0.8);
-	    width: 80%;
-	    overflow: ellipsis; }
-	  .tt-suggestion a {
-	    text-decoration: none;
-	    color: inherit; }
-	  .tt-suggestion img {
-	    position: absolute;
-	    right: 1em;
-	    top: 0.75em;
-	    max-height: 50px; }
-	  .tt-suggestion p {
-	    padding: 0.75em;
-	    margin: 0; }
-
-	.tt-suggestion.tt-cursor {
-	  background-color: #3D9988;
-	  margin-top: 0px;
-	  padding-top: 0px;
-	  color: white;
-	  font-family: "OpenSans-Semibold"; }
-	  .tt-suggestion.tt-cursor .title {
-	    color: white; }
-	</style>
 </head>
 <body>
 	<div id="mobile-start">
@@ -75,7 +31,7 @@
 	<header id="top">
 		<nav id="top-menu">
 			<ul>
-				<li><a id="top-link-menu" class="btn-round btn-ghost" href="#"><span>Menu</span></a></li>
+				<li><a class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a></li>
 				<li>
 					<a id="top-logo" href="/">
 						<svg id="top-school-banner" width="200px" height="291px" viewBox="0 0 200 291" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -88,7 +44,7 @@
 						<img id="top-school-logo" src="/static/gabrielle/svg/logo-shamrock.svg" alt="uguru"/>
 					</a>
 				</li>
-				<li><a id="top-link-login" class="btn-round btn-ghost" href="#"><span>Log In</span></a></li>
+				<li><a class="top-link-start btn-round btn-ghost" href="#"><span>Get Started</span></a></li>
 			</ul>
 		</nav>
 	</header>
@@ -116,6 +72,52 @@
 	</nav>
 	<section id="main">
 
+	<div id="overlay">
+		<nav id="side-menu">
+			<a class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/">About</a></li>
+				<li><a href="/">FAQ</a></li>
+				<li><a href="/">Link</a></li>
+				<li><a href="/">Link</a></li>
+				<li><a href="/">Link</a></li>
+			</ul>
+		</nav>
+	</div>
+
+
+<nav id="slide-breadcrumbs">
+	<ul>
+		<li>
+			<a class="active" href="#search" data-number="0"></a>
+		</li>
+		<li>
+			<a href="#values" data-number="1"></a>
+		</li>
+		<li>
+			<a href="#earn" data-number="2"></a>
+		</li>
+		<li>
+			<a href="#adapt" data-number="3"></a>
+		</li>
+		<li>
+			<a href="#rewards" data-number="4"></a>
+		</li>
+		<li>
+			<a href="#info" data-number="5"></a>
+		</li>
+	</ul>
+</nav>
+<div id="mobile-start">
+	<div id="mobile-inside">
+		<img src="/static/gabrielle/svg/logo-shamrock.svg" alt="uguru"/>
+		<p>For an easy A, swipe away!<em>To the right, to the right.</em></p>
+	</div>
+</div>
+<div id="banner"></div>
+
+<section id="main">
 	<div id="search">
 		<div id="search-box">
 			<p>Peers helping peers for free, barter, or side cash.</p>
@@ -152,59 +154,51 @@
 				</ul>
 			</div>
 		</div>
-		<div id="search-results-harvard" class="search-results">
-			<p class="search-results-header"><small>Uguru is now at</small></p>
-			<h1>Harvard University</h1>
-			<ul>
-				<li class="search-results-student">
-					<h3>Get a tutor,<br/>ace the course</h3>
-					<button class="btn-round">Get started</button>
-				</li>
-				<li class="search-results-start">
-					<p><small>Classes start</small></p>
-					<h2>Aug 01</h2>
-				</li>
-				<li class="search-results-guru">
-					<h3>Make money<br/>tutoring today</h3>
-					<button class="btn-round">Become a Guru</button>
-				</li>
-			</ul>
-		</div>
-		<div id="search-results-stanford" class="search-results">
-			<p class="search-results-header"><small>Uguru is now at</small></p>
-			<h1>Stanford University</h1>
-			<ul>
-				<li class="search-results-student">
-					<h3>Get a tutor,<br/>ace the course</h3>
-					<button class="btn-round">Get started</button>
-				</li>
-				<li class="search-results-start">
-					<p><small>Classes start</small></p>
-					<h2>Aug 01</h2>
-				</li>
-				<li class="search-results-guru">
-					<h3>Make money<br/>tutoring today</h3>
-					<button class="btn-round">Become a Guru</button>
-				</li>
-			</ul>
-		</div>
-		<div id="search-results-cambridge" class="search-results">
-			<p class="search-results-header"><small>Uguru is now at</small></p>
-			<h1>Cambridge University</h1>
-			<ul>
-				<li class="search-results-student">
-					<h3>Get a tutor,<br/>ace the course</h3>
-					<button class="btn-round">Get started</button>
-				</li>
-				<li class="search-results-start">
-					<p><small>Classes start</small></p>
-					<h2>Aug 01</h2>
-				</li>
-				<li class="search-results-guru">
-					<h3>Make money<br/>tutoring today</h3>
-					<button class="btn-round">Become a Guru</button>
-				</li>
-			</ul>
+		<!--
+			There's a problem with the banner - it's too big for the school popup,
+			but when I scroll down on the school popup, the width changes
+			Ask for explanation if needed (JS needs to change)
+		-->
+		<div class="search-results">
+			<header class="search-results-top text-center">
+				<p class="search-results-header"><small>Uguru is now at</small></p>
+				<h1 id="search-school-name">School Name</h1>
+				<button class="btn-round btn-ghost">Become a Guru</button>
+			</header>
+			<footer class="search-results-bottom pure-g">
+				<div class="search-results-map text-center uppercase pure-u-1-2">
+					<!--
+						The background for .search-results-map should be either a static or dynamic map of where gurus are located
+					-->
+					<div class="search-results-gurus">
+						<h2>
+							<b id="search-guru-number">340</b>
+							<span>gurus</span>
+						</h2>
+					</div>
+				</div>
+				<div class="search-results-courses pure-u-1-2">
+					<ul class="pure-g text-center">
+						<!--
+							Colored either
+								(1)	Randomly based on color scheme or
+								(2)	Based on colors we choose to represent broad categories i.e. math, science, etc
+						-->
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">and more</li>
+					</ul>
+				</div>
+			</footer>
 		</div>
 	</div>
 	<div id="values" class="slide" data-number="1">
@@ -290,7 +284,7 @@
 					<div class="inside-prop"></div>
 					<h2>Get Info</h2>
 					<input placeholder="enter your email address"/>
-					<button class="btn-round">Subscribe</button>
+					<button class="btn-round btn-shamrock">Subscribe</button>
 				</div>
 				<div id="info-download">
 					<h2>Download</h2>
@@ -299,9 +293,7 @@
 			</div>
 		</div>
 	</div>
-
-	</section>
-
+</section>
 
 		<!-- Start gabrielle Scripts -->
 		<script src="/static/gabrielle/js/jquery.min.js"></script>
