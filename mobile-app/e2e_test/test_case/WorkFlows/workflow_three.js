@@ -7,7 +7,11 @@ describe('Workflow Test III: Sumbit a request', function ()
 
  	it('Go Session page',function()
  		{
-            protractor.get.closeBar.click();  
+       		browser.wait(EC.visibilityOf(protractor.get.closeBar),3000).then(function()
+       			{
+	              protractor.get.closeBar.click();  
+
+       			});
             browser.sleep(500); 
  			protractor.get.request.click();
     		protractor.get.sessionButton.click();

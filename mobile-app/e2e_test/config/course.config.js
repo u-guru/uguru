@@ -18,7 +18,10 @@ exports.config = {
         {
           init :   '../test_case/Release_One_Mobile/Request/first_course.js',
           add  :   '../test_case/Release_One_Mobile/Request/add_course.js',
-          addS : [ '../test_case/WorkFlows/workflow_three.js','../test_case/Release_One_Mobile/Request/delete_session.js'],
+          addS : [
+                   '../test_case/WorkFlows/workflow_three.js',
+                   '../test_case/Release_One_Mobile/Request/delete_session.js'
+                  ],
           d : [ '../test_case/backHome.js','../test_case/Release_One_Mobile/Request/delete_session.js']
 
         },
@@ -65,7 +68,7 @@ exports.config = {
             browser.driver.manage().window().setSize(414, 736);
 	          //facebook log in
        			protractor.run.setUp("http://localhost:8100/#/new-home","jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
-            browser.sleep(800);     
+            // browser.sleep(800);     
         }
         
 };
