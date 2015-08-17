@@ -70,7 +70,6 @@
 			</li>
 		</ul>
 	</nav>
-
 	<div id="overlay">
 		<nav id="side-menu">
 			<a class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a>
@@ -95,308 +94,273 @@
 		</div>
 	</div>
 
-
-<nav id="slide-breadcrumbs">
-	<ul>
-		<li>
-			<a class="active" href="#search" data-number="0"></a>
-		</li>
-		<li>
-			<a href="#values" data-number="1"></a>
-		</li>
-		<li>
-			<a href="#earn" data-number="2"></a>
-		</li>
-		<li>
-			<a href="#adapt" data-number="3"></a>
-		</li>
-		<li>
-			<a href="#rewards" data-number="4"></a>
-		</li>
-		<li>
-			<a href="#info" data-number="5"></a>
-		</li>
-	</ul>
-</nav>
-<div id="mobile-start">
-	<div id="mobile-inside">
-		<img src="/static/gabrielle/svg/logo-shamrock.svg" alt="uguru"/>
-		<p>For an easy A, swipe away!<em>To the right, to the right.</em></p>
-	</div>
-</div>
-<div id="banner"></div>
-
-<section id="main">
-	<div id="search">
-		<div id="search-box">
-			<p>Peers helping peers for free, barter, or side cash.</p>
-			<div id="search-container">
-				<input id="search-bar" class='typeahead' type="text" placeholder="Search for your university"/>
-				<ul id="search-results">
-					<li id="search-harvard">
-						<div>
-							<img src="/static/gabrielle/images/school/harvard.svg" alt=""/>
-						</div>
-						<div>
-							<h2>Harvard University</h2>
-							<p>Cambridge, MA, USA</p>
-						</div>
-					</li>
-					<li id="search-stanford">
-						<div>
-							<img src="/static/gabrielle/images/school/stanford.svg" alt=""/>
-						</div>
-						<div>
-							<h2>Stanford University</h2>
-							<p>Stanford, CA, USA</p>
-						</div>
-					</li>
-					<li id="search-cambridge">
-						<div>
-							<img src="/static/gabrielle/images/school/cambridge.svg" alt=""/>
-						</div>
-						<div>
-							<h2>University of Cambridge</h2>
-							<p>Cambridge, UK</p>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<!-- SAMIR -
-			There's a problem with the banner - it's too big for the school popup,
-			but when I scroll down on the school popup, the width changes
-			Ask for explanation if needed (JS needs to change)
-		-->
-		<div class="search-results">
-			<header class="search-results-top text-center">
-				<p class="search-results-header"><small>Uguru is now at</small></p>
-				<h1 id="search-school-name">School Name</h1>
-				<button class="btn-round btn-ghost">Become a Guru</button>
-			</header>
-			<footer class="search-results-bottom pure-g">
-				<div class="search-results-map text-center uppercase pure-u-1-2">
-					<!-- SAMIR -
-						The background for .search-results-map should be either a static or dynamic map of where gurus are located
-					-->
-					<div class="search-results-gurus">
-						<h2>
-							<b id="search-guru-number">340</b>
-							<span>gurus</span>
-						</h2>
-					</div>
-				</div>
-				<div class="search-results-courses pure-u-1-2">
-					<ul class="pure-g text-center">
-						<!-- SAMIR -
-							Colored either
-								(1)	Randomly based on color scheme or
-								(2)	Based on colors we choose to represent broad categories i.e. math, science, etc
-						-->
-						<li class="pure-u-1-2">CALC 312</li>
-						<li class="pure-u-1-2">CALC 312</li>
-						<li class="pure-u-1-2">CALC 312</li>
-						<li class="pure-u-1-2">CALC 312</li>
-						<li class="pure-u-1-2">CALC 312</li>
-						<li class="pure-u-1-2">CALC 312</li>
-						<li class="pure-u-1-2">CALC 312</li>
-						<li class="pure-u-1-2">CALC 312</li>
-						<li class="pure-u-1-2">CALC 312</li>
-						<li class="pure-u-1-2">CALC 312</li>
-						<li class="pure-u-1-2">CALC 312</li>
-						<li class="pure-u-1-2">and more</li>
+	<section id="main">
+		<div id="search">
+			<div id="search-box">
+				<p>Peers helping peers for free, barter, or side cash.</p>
+				<div id="search-container">
+					<input id="search-bar" class='typeahead' type="text" placeholder="Search for your university"/>
+					<ul id="search-results">
+						<li id="search-harvard">
+							<div>
+								<img src="/static/gabrielle/images/school/harvard.svg" alt=""/>
+							</div>
+							<div>
+								<h2>Harvard University</h2>
+								<p>Cambridge, MA, USA</p>
+							</div>
+						</li>
+						<li id="search-stanford">
+							<div>
+								<img src="/static/gabrielle/images/school/stanford.svg" alt=""/>
+							</div>
+							<div>
+								<h2>Stanford University</h2>
+								<p>Stanford, CA, USA</p>
+							</div>
+						</li>
+						<li id="search-cambridge">
+							<div>
+								<img src="/static/gabrielle/images/school/cambridge.svg" alt=""/>
+							</div>
+							<div>
+								<h2>University of Cambridge</h2>
+								<p>Cambridge, UK</p>
+							</div>
+						</li>
 					</ul>
 				</div>
-			</footer>
-		</div>
-	</div>
-	<div id="values" class="slide" data-number="1">
-		<div class="inside">
-			<div class="inside-text">
-				<h1>uguru</h1>
-				<p>Literally make $$$ on anything that you're good at</p>
-				<ul id="values-steps">
-					<li>
-						<p><button disabled class="value-number">1</button></p>
-						<p><span>Get our app</span> on all major platforms</p>
-					</li>
-					<li>
-						<p><button disabled class="value-number">2</button></p>
-						<p><span>Add your skills</span> and we’ll promote you</p>
-					</li>
-					<li>
-						<p><button disabled class="value-number">3</button></p>
-						<p><span>Make $$$</span> easier than ever before</p>
-					</li>
-				</ul>
+			</div>
+			<!-- SAMIR -
+				There's a problem with the banner - it's too big for the school popup,
+				but when I scroll down on the school popup, the width changes
+				Ask for explanation if needed (JS needs to change)
+			-->
+			<div class="search-results">
+				<header class="search-results-top text-center">
+					<p class="search-results-header"><small>Uguru is now at</small></p>
+					<h1 id="search-school-name">School Name</h1>
+					<button class="btn-round btn-ghost">Become a Guru</button>
+				</header>
+				<footer class="search-results-bottom pure-g">
+					<div class="search-results-map text-center uppercase pure-u-1-2">
+						<!-- SAMIR -
+							The background for .search-results-map should be either a static or dynamic map of where gurus are located
+						-->
+						<div class="search-results-gurus">
+							<h2>
+								<b id="search-guru-number">340</b>
+								<span>gurus</span>
+							</h2>
+						</div>
+					</div>
+					<div class="search-results-courses pure-u-1-2">
+						<ul class="pure-g text-center">
+							<!-- SAMIR -
+								Colored either
+									(1)	Randomly based on color scheme or
+									(2)	Based on colors we choose to represent broad categories i.e. math, science, etc
+							-->
+							<li class="pure-u-1-2">CALC 312</li>
+							<li class="pure-u-1-2">CALC 312</li>
+							<li class="pure-u-1-2">CALC 312</li>
+							<li class="pure-u-1-2">CALC 312</li>
+							<li class="pure-u-1-2">CALC 312</li>
+							<li class="pure-u-1-2">CALC 312</li>
+							<li class="pure-u-1-2">CALC 312</li>
+							<li class="pure-u-1-2">CALC 312</li>
+							<li class="pure-u-1-2">CALC 312</li>
+							<li class="pure-u-1-2">CALC 312</li>
+							<li class="pure-u-1-2">CALC 312</li>
+							<li class="pure-u-1-2">and more</li>
+						</ul>
+					</div>
+				</footer>
 			</div>
 		</div>
-	</div>
-	<div id="earn" class="slide" data-number="2">
-		<div class="inside">
-			<div class="app-phone">
-				<div class="app-wf">
-					<div class="app-wf-top"><div></div></div>
-					<div class="app-wf-scr">
-						<img src="/static/gabrielle/images/mock/open.png" alt=""/>
-					</div>
-					<div class="app-wf-bot"><div></div></div>
+		<div id="values" class="slide" data-number="1">
+			<div class="inside">
+				<div class="inside-text">
+					<h1>uguru</h1>
+					<p>Literally make $$$ on anything that you're good at</p>
+					<ul id="values-steps">
+						<li>
+							<p><button disabled class="value-number">1</button></p>
+							<p><span>Get our app</span> on all major platforms</p>
+						</li>
+						<li>
+							<p><button disabled class="value-number">2</button></p>
+							<p><span>Add your skills</span> and we’ll promote you</p>
+						</li>
+						<li>
+							<p><button disabled class="value-number">3</button></p>
+							<p><span>Make $$$</span> easier than ever before</p>
+						</li>
+					</ul>
 				</div>
 			</div>
-			<div id="earn-text" class="inside-text">
-				<div class="inside-prop"></div>
-				<h2>Make more moolah than <br/>any part-time job.</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			</div>
 		</div>
-	</div>
-	<div id="adapt" class="slide" data-number="3">
-		<div class="inside">
-			<div class="app-phone">
-				<div class="app-wf">
-					<div class="app-wf-top"><div></div></div>
-					<div class="app-wf-scr">
-						<img src="/static/gabrielle/images/mock/open.png" alt=""/>
+		<div id="earn" class="slide" data-number="2">
+			<div class="inside">
+				<div class="app-phone">
+					<div class="app-wf">
+						<div class="app-wf-top"><div></div></div>
+						<div class="app-wf-scr">
+							<img src="/static/gabrielle/images/mock/open.png" alt=""/>
+						</div>
+						<div class="app-wf-bot"><div></div></div>
 					</div>
-					<div class="app-wf-bot"><div></div></div>
 				</div>
-			</div>
-			<div id="adapt-text" class="inside-text">
-				<div class="inside-prop"></div>
-				<h2>Flexible where you are, <br/>whenever you are.</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			</div>
-		</div>
-	</div>
-	<div id="rewards" class="slide" data-number="4">
-		<div class="inside">
-			<div class="app-phone">
-				<div class="app-wf">
-					<div class="app-wf-top"><div></div></div>
-					<div class="app-wf-scr">
-						<img src="/static/gabrielle/images/mock/open.png" alt=""/>
-					</div>
-					<div class="app-wf-bot"><div></div></div>
-				</div>
-			</div>
-			<div id="adapt-text" class="inside-text">
-				<div class="inside-prop"></div>
-				<h2>Win great rewards <br/>and work your way up.</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			</div>
-		</div>
-	</div>
-	<div id="info" class="slide" data-number="5">
-		<div class="inside">
-			<div class="inside-text">
-				<div id="info-sub">
+				<div id="earn-text" class="inside-text">
 					<div class="inside-prop"></div>
-					<h2>Get Info</h2>
-					<input placeholder="enter your email address"/>
-					<button class="btn-round btn-shamrock">Subscribe</button>
-				</div>
-				<div id="info-download">
-					<h2>Download</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					<h2>Make more moolah than <br/>any part-time job.</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
-		<!-- Start gabrielle Scripts -->
-		<script src="/static/gabrielle/js/jquery.min.js"></script>
-		<script src="/static/gabrielle/js/plugins.js"></script>
-		<script src="/static/gabrielle/js/main.js"></script>
-		<!-- End gabrielle Scripts -->
+		<div id="adapt" class="slide" data-number="3">
+			<div class="inside">
+				<div class="app-phone">
+					<div class="app-wf">
+						<div class="app-wf-top"><div></div></div>
+						<div class="app-wf-scr">
+							<img src="/static/gabrielle/images/mock/open.png" alt=""/>
+						</div>
+						<div class="app-wf-bot"><div></div></div>
+					</div>
+				</div>
+				<div id="adapt-text" class="inside-text">
+					<div class="inside-prop"></div>
+					<h2>Flexible where you are, <br/>whenever you are.</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				</div>
+			</div>
+		</div>
+		<div id="rewards" class="slide" data-number="4">
+			<div class="inside">
+				<div class="app-phone">
+					<div class="app-wf">
+						<div class="app-wf-top"><div></div></div>
+						<div class="app-wf-scr">
+							<img src="/static/gabrielle/images/mock/open.png" alt=""/>
+						</div>
+						<div class="app-wf-bot"><div></div></div>
+					</div>
+				</div>
+				<div id="adapt-text" class="inside-text">
+					<div class="inside-prop"></div>
+					<h2>Win great rewards <br/>and work your way up.</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				</div>
+			</div>
+		</div>
+		<div id="info" class="slide" data-number="5">
+			<div class="inside">
+				<div class="inside-text">
+					<div id="info-sub">
+						<div class="inside-prop"></div>
+						<h2>Get Info</h2>
+						<input placeholder="enter your email address"/>
+						<button class="btn-round btn-shamrock">Subscribe</button>
+					</div>
+					<div id="info-download">
+						<h2>Download</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Start gabrielle Scripts -->
+	<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+	<script>
+	  WebFont.load({
+		google: {
+		  families: ['Source Sans Pro:200,300,400,600,700,900']
+		}
+	  });
+	</script>
+	<script src="/static/gabrielle/js/jquery.min.js"></script>
+	<script src="/static/gabrielle/js/plugins.js"></script>
+	<script src="/static/gabrielle/js/main.js"></script>
+	<!-- End gabrielle Scripts -->
 
-		<!-- start Samir's scripts -->
-		<script src="/static/js/web/lib/typeahead.min.js"></script>
-	    <script src="/static/js/web/lib/fastmatcher.js"></script>
+	<!-- start Samir's scripts -->
+	<script src="/static/js/web/lib/typeahead.min.js"></script>
+    <script src="/static/js/web/lib/fastmatcher.js"></script>
 
-	    <script src="/static/js/web/lib/handlebars.js"></script>
-	    <script>
+    <script src="/static/js/web/lib/handlebars.js"></script>
+    <script>
+		var all_universities;
 
-			    // var all_universities;
+		var matcher;
 
-		     //    var matcher;
+		$(document).ready(function() {
+		    universities_arr = readAndParseJSON('/static/data/universities_web3.json');
+		    matcher = initMatcher(universities_arr);
+		    initTypeahead(matcher, universities_arr);
+		});
 
-		     //    $(document).ready(function() {
-		     //        universities_arr = readAndParseJSON('/static/data/universities_web3.json');
-		     //        matcher = initMatcher(universities_arr);
-		     //        initTypeahead(matcher, universities_arr);
-		     //    });
+		function readAndParseJSON(file) {
+		    var request = new XMLHttpRequest();
+		    request.open('GET', file, false);
+		    request.send(null);
+		    if (request.status == 200)
+		        universities_arr = JSON.parse(request.responseText);
+		    return universities_arr;
+		}
 
-		     //    function readAndParseJSON(file) {
-		     //        var request = new XMLHttpRequest();
-		     //        request.open('GET', file, false);
-		     //        request.send(null);
-		     //        if (request.status == 200)
-		     //            universities_arr = JSON.parse(request.responseText);
-		     //            return universities_arr;
-		     //    }
+		var initMatcher = function(arr) {
+		    var matcher = new FastMatcher(arr, {
+		        // the property, or array of properties, to base matches on
+		        selector: 'title',
 
-		     //    var initMatcher = function(arr) {
-		     //        var matcher = new FastMatcher(arr, {
-		     //          // the property, or array of properties, to base matches on
-		     //          selector: 'title',
+		        // duh, what do you think this does?
+		        caseInsensitive: true,
 
-		     //          // duh, what do you think this does?
-		     //          caseInsensitive: true,
+		        // return matches in their original order
+		        preserveOrder: false,
 
-		     //          // return matches in their original order
-		     //          preserveOrder: false,
+		        // whether to match against any word (not just first) for each string
+		        anyWord: true,
 
-		     //          // whether to match against any word (not just first) for each string
-		     //          anyWord: true,
+		        // how many matches to find at a time
+		        limit: 5
+		    });
+		    return matcher;
+		}
 
-		     //          // how many matches to find at a time
-		     //          limit: 5
-		     //        });
-		     //        return matcher;
-		     //    }
+		{% raw %}
+		var initTypeahead = function(matcher, source) {
 
-		     //    {% raw %}
-		     //        var initTypeahead = function(matcher, source) {
+		    $('.typeahead').typeahead({
+		        minLength: 1,
+		        highlight: true,
+		        hint: true
+		    }, {
+		        displayKey: 'title',
+		        source: function(q, cb) {
+		            cb(matcher.getMatches(q))
+		        },
+		        templates: {
+		            //if no results show
+		            empty: [
+		                '<div class="tt-suggestion">',
+		                '<a href="http://goo.gl/forms/UQ7WcYl3sb" class="university-link" target="_blank"><div><img class="pure-img" src="/static/img/guru-logo-red.svg"/></div><div><h2><span class="title">No results found (yet!) </span> Click to Bring Uguru to Your University / School</h2></div></a>',
+		                '</div>'
+		            ].join('\n'),
+		            suggestion: Handlebars.compile("<div><img src='{{thumbnail.source}}' alt=''/></div><div><h2>{{title}}</h2><p>{{city}}, {{state}}, USA</p></div>")
+		        }
+		    }).on('typeahead:selected', function(event, suggested, dataset_name) {
+		        console.log('yo')
+		            //make it wobble
+		    }).on('typeahead:cursorchanged', function(event, suggested, dataset_name) {
+		        $('.tt-suggestion.tt-cursor img').addClass('animated wobble');
+		    });
+		};
 
-		     //            $('.typeahead').typeahead({
-		     //                minLength: 1,
-		     //                highlight:true,
-		     //                hint:true
-		     //            }, {
-		     //                displayKey: 'title',
-		     //                source: function(q, cb) {cb(matcher.getMatches(q))},
-		     //                templates: {
-		     //                //if no results show
-		     //                empty: [
-		     //                  '<div class="tt-suggestion">',
-
-		     //                  '<a href="http://goo.gl/forms/UQ7WcYl3sb" class="university-link" target="_blank"><p><span class="title">No results found (yet!) </span> Click to Bring Uguru to Your University / School<img class="pure-img" src="/static/img/guru-logo-red.svg"/></p></a>',
-		     //                  '</div>'
-		     //                ].join('\n'),
-		     //                	suggestion: Handlebars.compile("<li><div><img src='{{thumbnail.source}}' alt=''/></div/div><div><h2>{{title}}</h2><p>{{city}}, {{state}}, USA</p></div></li>")
-		     //                }
-		     //            }).on('typeahead:selected', function(event, suggested, dataset_name){
-		     //            	console.log('yo')
-		     //            //make it wobble
-		     //            }).on('typeahead:cursorchanged', function(event, suggested, dataset_name) {
-		     //                $('.tt-suggestion.tt-cursor img').addClass('animated wobble');
-		     //            });
-		     //        };
-
-
-       //      {% endraw %}
-       //  </script>
-	    <!-- end Samir's scripts -->
-		<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
-		<script>
-		  WebFont.load({
-			google: {
-			  families: ['Source Sans Pro:200,300,400,600,700,900']
-			}
-		  });
-		</script>
-		<script src="/static/gabrielle/js/jquery.min.js"></script>
-		<script src="/static/gabrielle/js/plugins.js"></script>
-		<script src="/static/gabrielle/js/main.js"></script>
+		{% endraw %}
+   </script>
+    <!-- end Samir's scripts -->
 </body>
 </html>

@@ -229,6 +229,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         transform: translateX(-50%);
         content: "";
         display: block;
+        position: absolute;
         top: -29px;
         width: 0;
         height: 0;
@@ -248,8 +249,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
   height: 100%;
   z-index: 9;
   box-sizing: border-box;
-  background: url("../../../static/gabrielle/images/cambridge.jpg") center center/cover;
-}
+  background: url("../../../static/gabrielle/images/cambridge.jpg") center center/cover; }
 
 #top {
   display: none;
@@ -455,8 +455,8 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         display: table-cell;
         vertical-align: middle;
         width: 100%; }
-  /*#main #search {
-    display: none; }*/
+  #main #search {
+    display: none; }
   #main #values {
     background: #69B3A5;
     text-align: center; }
@@ -609,8 +609,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       height: 200px; } }
 
 @media screen and (min-width: 48em) {
-  #banner {
-    background: url("../../../static/gabrielle/images/cambridge.jpg") center center/cover; }
   #top #top-logo {
     position: absolute;
     left: 50%;
@@ -704,7 +702,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       #main #search .search-results .search-results-bottom > div {
         position: relative; }
       #main #search .search-results .search-results-bottom .search-results-map {
-        background: url('../../../static/gabrielle/images/maps.png') no-repeat center center; }
+        background: url(../../../static/gabrielle/images/maps.png) no-repeat center center; }
         #main #search .search-results .search-results-bottom .search-results-map .search-results-gurus {
           border-radius: 1000px;
           position: absolute;
@@ -781,6 +779,37 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         color: #ddd; }
       #main #search #search-container :-ms-input-placeholder {
         color: #ddd; }
+      #main #search #search-container .tt-dropdown-menu {
+        background: white;
+        width: 100%; }
+        #main #search #search-container .tt-dropdown-menu .tt-suggestion {
+          display: table !important;
+          width: 100%;
+          cursor: pointer;
+          box-sizing: border-box;
+          border: 1px solid #ddd;
+          border-top: 0;
+          background: white; }
+          #main #search #search-container .tt-dropdown-menu .tt-suggestion h2 {
+            font-size: 28px; }
+          #main #search #search-container .tt-dropdown-menu .tt-suggestion p {
+            margin: 0;
+            text-align: left !important;
+            font-size: 18px !important; }
+          #main #search #search-container .tt-dropdown-menu .tt-suggestion div {
+            display: table-cell;
+            vertical-align: middle; }
+            #main #search #search-container .tt-dropdown-menu .tt-suggestion div:first-child {
+              width: 70px; }
+              #main #search #search-container .tt-dropdown-menu .tt-suggestion div:first-child img {
+                display: block;
+                box-sizing: border-box;
+                width: 100%;
+                padding: 10px 10px 10px 20px; }
+            #main #search #search-container .tt-dropdown-menu .tt-suggestion div:last-child {
+              padding: 10px 30px 10px 10px; }
+        #main #search #search-container .tt-dropdown-menu .tt-suggestion:hover {
+          background: #F1F1F1; }
       #main #search #search-container #search-results {
         list-style: none;
         margin: 0;
@@ -955,6 +984,10 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     #main #search .search-results .search-results-bottom .search-results-courses ul li {
       padding: 15px;
       font-size: 24px; }
+  #main #search #search-container .tt-dropdown-menu .tt-suggestion div:first-child img {
+    padding: 20px 10px 20px 20px; }
+  #main #search #search-container .tt-dropdown-menu .tt-suggestion div:last-child {
+    padding: 20px 30px 20px 10px; }
   #main #search #search-container #search-results li div:first-child img {
     padding: 20px 10px 20px 20px; }
   #main #search #search-container #search-results li div:last-child {
