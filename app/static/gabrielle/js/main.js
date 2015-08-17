@@ -62,31 +62,42 @@ $(function () {
 			$("#top-school-logo, #top-school-banner").css("width", "60%");
 		});
 		$('#search-bar').focus(function(e) {
-			$("#search-results").slideDown();
-			$("#search-box").css({
-				"-webkit-transform": "translate(-50%,-50%)",
-				"-moz-transform": "translate(-50%,-50%)",
-				"-ms-transform": "translate(-50%,-50%)",
-				"-o-transform": "translate(-50%,-50%)",
-				"transform": "translate(-50%,-50%)"
-			});
+			if ($('#search-bar').val().length === 0) {
+				$("#search-results").slideDown();
+				$("#search-box").css({
+					"-webkit-transform": "translate(-50%,-50%)",
+					"-moz-transform": "translate(-50%,-50%)",
+					"-ms-transform": "translate(-50%,-50%)",
+					"-o-transform": "translate(-50%,-50%)",
+					"transform": "translate(-50%,-50%)"
+				});
+			}
+		});
+		$('#search-bar').keypress(function() {
+			if ($('#search-bar').val().length > 0) {
+				$('#search-results').hide();
+			}
 		});
 		$("#search-bar").blur(function(){
-			$("#search-results").slideUp();
-			$("#top-school-logo, #top-school-banner").css("width", "100%");
-			$("#search-box").css({
-				"-webkit-transform": "translateX(-50%)",
-				"-moz-transform": "translateX(-50%)",
-				"-ms-transform": "translateX(-50%)",
-				"-o-transform": "translateX(-50%)",
-				"transform": "translateX(-50%)"
-			});
+			setTimeout(function() {
+
+				$("#search-results").slideUp();
+				$("#top-school-logo, #top-school-banner").css("width", "100%");
+				$("#search-box").css({
+					"-webkit-transform": "translateX(-50%)",
+					"-moz-transform": "translateX(-50%)",
+					"-ms-transform": "translateX(-50%)",
+					"-o-transform": "translateX(-50%)",
+					"transform": "translateX(-50%)"
+				});
+
+			}, 100);
 		});
 		// SAMIR - SIDEBAR
 		// Should also be a way to click on #overlay
-		$(".top-link-menu").on("click", function(e) {
+		$(".top-link-menu").click(function() {
+			// e.preventDefault();
 			$("#side-menu, #overlay").toggleClass("active");
-			e.preventDefault();
 		});
 		$(".top-link-start").on("click", function(e) {
 			$("#start-modal, #overlay").toggleClass("active");
@@ -114,21 +125,24 @@ $(function () {
 			$("#top-school-logo, #top-school-banner").css("width", "40%");
 			if ($(this).is('#search-harvard')) {
 				var color = "#A41034";
-				$("#top-school-logo").attr('src', '/static/images/school/harvard.svg');
+				$("#top-school-logo").attr('src', '/static/gabrielle/images/school/harvard.svg');
+				$("#search-results-harvard").slideDown();
 				$(".search-results").slideDown();
 				$("#border-inner").css("fill", color);
 				$(".search-results-top, .search-results-gurus").css("background", color);
 				$("#search-school-name").text("Harvard University");
 			} else if ($(this).is('#search-stanford')) {
 				var color = "#8C1515";
-				$("#top-school-logo").attr('src', '/static/images/school/stanford.svg');
+				$("#top-school-logo").attr('src', '/static/gabrielle/images/school/stanford.svg');
+				$("#search-results-stanford").slideDown();
 				$(".search-results").slideDown();
 				$("#border-inner").css("fill", color);
 				$(".search-results-top, .search-results-gurus").css("background", color);
 				$("#search-school-name").text("Stanford University");
 			} else if ($(this).is('#search-cambridge')) {
 				var color = "#A3C1AD";
-				$("#top-school-logo").attr('src', '/static/images/school/cambridge.svg');
+				$("#top-school-logo").attr('src', '/static/gabrielle/images/school/cambridge.svg');
+				$("#search-results-cambridge").slideDown();
 				$(".search-results").slideDown();
 				$("#border-inner").css("fill", color);
 				$(".search-results-top, .search-results-gurus").css("background", color);

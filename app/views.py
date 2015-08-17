@@ -77,9 +77,13 @@ def admin_devices():
     return render_template("new_admin/admin.stats.devices.html", test_devices=test_devices, \
         regular_devices=regular_devices)
 
-@app.route('/gabrielle/')
+@app.route('/staging/')
 def new_home_page():
     return render_template("gabrielle/index.html")
+
+@app.route('/staging/profile')
+def profile_page():
+    return render_template("gabrielle/profile.html")
 
 @app.route('/admin/stats/campaigns/')
 def admin_stats_campaigns():
@@ -578,6 +582,19 @@ def app_flex():
 @app.route('/faqs/')
 def uguru_faqs():
     return render_template("web/content/faq.html")
+
+@app.route('/admin/flickr/<university_id>')
+def flicker_university_process(university_id):
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+
+    u = University.query.get(university_id)
+    from lib.flickr_wrapper import *
+    flickr_response = str(search_university_response_api(u))
+    photos_arr = parse_flickr_response(flickr_response)
+    processed_arr = process_returned_photos(photos_arr)
+    processed_arr = sorted(processed_arr, key=lambda k:k['views'], reverse=True)[:20]
+    return render_template('new_admin/admin.design.flickr.html', flickr_photos=processed_arr,  university=u)
 
 @app.route('/terms/')
 def uguru_terms():

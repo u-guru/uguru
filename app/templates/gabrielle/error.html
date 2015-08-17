@@ -8,18 +8,35 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui=yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	
+
 	<title>uguru.me</title>
+<<<<<<< HEAD
+
+	<link rel="shortcut icon" href="/static/gabrielle/images/favicon.ico">
+	<link rel="stylesheet" href="/static/gabrielle/css/base-min.css"/>
+	<link rel="stylesheet" href="/static/gabrielle/css/grids-min.css"/>
+	<link rel="stylesheet" href="/static/gabrielle/css/grids-responsive-min.css"/>
+	<link rel="stylesheet" href="/static/gabrielle/css/style.css"/>
+=======
 	
 	<link rel="shortcut icon" href="/static/images/favicon.ico">
 	<link rel="stylesheet" href="/static/css/base-min.css"/>
 	<link rel="stylesheet" href="/static/css/grids-min.css"/>
 	<link rel="stylesheet" href="/static/css/grids-responsive-min.css"/>
 	<link rel="stylesheet" href="/static/css/style.css"/>
+>>>>>>> 33c2177f7bf83e33e474f74d5300d90f7a4506b5
 
 	<script src="/static/js/modernizr.js"></script>
 </head>
 <body>
+	<div id="mobile-start">
+		<div id="mobile-inside">
+			<img src="/static/gabrielle/svg/logo-shamrock.svg" alt="uguru"/>
+			<p>For an easy A, swipe away!<em>To the right, to the right.</em></p>
+		</div>
+	</div>
+	<div id="banner"></div>
+
 	<header id="top">
 		<nav id="top-menu">
 			<ul>
@@ -64,21 +81,21 @@
 		</div>
 	</div>
 
-	
+
 <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function() {
-		
+
 		// Add the missing url to the text
 		$("#url").text(window.location.pathname);
-		
+
 		// Fix the css locations dynamically
 		$("head link").each(function() {
 			for (var i=0; i<window.location.pathname.split(/\//g).length-2; i++)
 				$(this).attr("href", "../" + $(this).attr("href"));
 		});
-		
+
 	})
 </script>
 
@@ -87,18 +104,26 @@
 </p>
 
 
-	
-		<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+
+		<!-- <script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
 		<script>
 		  WebFont.load({
 			google: {
 			  families: ['Source Sans Pro:200,300,400,600,700,900']
 			}
 		  });
+<<<<<<< HEAD
+		</script> -->
+		<script src="/static/gabrielle/js/jquery.min.js"></script>
+		<script src="/static/gabrielle/js/plugins.js"></script>
+		<script src="/static/gabrielle/js/main.js"></script>
+
+=======
 		</script>
 		<script src="/static/js/jquery.min.js"></script>
 		<script src="/static/js/plugins.js"></script>
 		<script src="/static/js/main.js"></script>
 	
+>>>>>>> 33c2177f7bf83e33e474f74d5300d90f7a4506b5
 </body>
 </html>

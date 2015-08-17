@@ -476,8 +476,7 @@ Uguru Home Page
                       '<div class="tt-suggestion">',
 
                       '<a href="http://goo.gl/forms/UQ7WcYl3sb" class="university-link" target="_blank"><p><span class="title">No results found (yet!) </span> Click to Bring Uguru to Your University / School<img class="pure-img" src="/static/img/guru-logo-red.svg"/></p></a>',
-                      '</div>'
-                    ].join('\n'),
+                      '</div>'].join('\n'),
                         suggestion: Handlebars.compile("<a class='university-link' href='javascript:void(0);'><p><span class='title'>{{title}}</span>{{city}}, {{state}} <img class='pure-img' src='{{thumbnail.source}}'/></p></a>")
                     }
                 }).on('typeahead:selected', function(event, suggested, dataset_name){

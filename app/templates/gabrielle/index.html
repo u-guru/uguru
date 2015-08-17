@@ -16,10 +16,18 @@
 	<link rel="stylesheet" href="/static/gabrielle/css/grids-min.css"/>
 	<link rel="stylesheet" href="/static/gabrielle/css/grids-responsive-min.css"/>
 	<link rel="stylesheet" href="/static/gabrielle/css/style.css"/>
+	<link rel="stylesheet" href="/static/gabrielle/css/samir.css"/>
 
 	<script src="/static/gabrielle/js/modernizr.js"></script>
 </head>
 <body>
+	<div id="mobile-start">
+		<div id="mobile-inside">
+			<img src="/static/gabrielle/svg/logo-shamrock.svg" alt="uguru"/>
+			<p>For an easy A, swipe away!<em>To the right, to the right.</em></p>
+		</div>
+	</div>
+	<div id="banner"></div>
 	<header id="top">
 		<nav id="top-menu">
 			<ul>
@@ -40,6 +48,29 @@
 			</ul>
 		</nav>
 	</header>
+	<nav id="slide-breadcrumbs">
+		<ul>
+			<li>
+				<a class="active" href="#search" data-number="0"></a>
+			</li>
+			<li>
+				<a href="#values" data-number="1"></a>
+			</li>
+			<li>
+				<a href="#earn" data-number="2"></a>
+			</li>
+			<li>
+				<a href="#adapt" data-number="3"></a>
+			</li>
+			<li>
+				<a href="#rewards" data-number="4"></a>
+			</li>
+			<li>
+				<a href="#info" data-number="5"></a>
+			</li>
+		</ul>
+	</nav>
+
 	<div id="overlay">
 		<nav id="side-menu">
 			<a class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a>
@@ -100,7 +131,7 @@
 		<div id="search-box">
 			<p>Peers helping peers for free, barter, or side cash.</p>
 			<div id="search-container">
-				<input id="search-bar" placeholder="Search for your university"/>
+				<input id="search-bar" class='typeahead' type="text" placeholder="Search for your university"/>
 				<ul id="search-results">
 					<li id="search-harvard">
 						<div>
@@ -272,9 +303,90 @@
 		</div>
 	</div>
 </section>
+		<!-- Start gabrielle Scripts -->
+		<script src="/static/gabrielle/js/jquery.min.js"></script>
+		<script src="/static/gabrielle/js/plugins.js"></script>
+		<script src="/static/gabrielle/js/main.js"></script>
+		<!-- End gabrielle Scripts -->
+
+		<!-- start Samir's scripts -->
+		<script src="/static/js/web/lib/typeahead.min.js"></script>
+	    <script src="/static/js/web/lib/fastmatcher.js"></script>
+
+	    <script src="/static/js/web/lib/handlebars.js"></script>
+	    <script>
+
+			    // var all_universities;
+
+		     //    var matcher;
+
+		     //    $(document).ready(function() {
+		     //        universities_arr = readAndParseJSON('/static/data/universities_web3.json');
+		     //        matcher = initMatcher(universities_arr);
+		     //        initTypeahead(matcher, universities_arr);
+		     //    });
+
+		     //    function readAndParseJSON(file) {
+		     //        var request = new XMLHttpRequest();
+		     //        request.open('GET', file, false);
+		     //        request.send(null);
+		     //        if (request.status == 200)
+		     //            universities_arr = JSON.parse(request.responseText);
+		     //            return universities_arr;
+		     //    }
+
+		     //    var initMatcher = function(arr) {
+		     //        var matcher = new FastMatcher(arr, {
+		     //          // the property, or array of properties, to base matches on
+		     //          selector: 'title',
+
+		     //          // duh, what do you think this does?
+		     //          caseInsensitive: true,
+
+		     //          // return matches in their original order
+		     //          preserveOrder: false,
+
+		     //          // whether to match against any word (not just first) for each string
+		     //          anyWord: true,
+
+		     //          // how many matches to find at a time
+		     //          limit: 5
+		     //        });
+		     //        return matcher;
+		     //    }
+
+		     //    {% raw %}
+		     //        var initTypeahead = function(matcher, source) {
+
+		     //            $('.typeahead').typeahead({
+		     //                minLength: 1,
+		     //                highlight:true,
+		     //                hint:true
+		     //            }, {
+		     //                displayKey: 'title',
+		     //                source: function(q, cb) {cb(matcher.getMatches(q))},
+		     //                templates: {
+		     //                //if no results show
+		     //                empty: [
+		     //                  '<div class="tt-suggestion">',
+
+		     //                  '<a href="http://goo.gl/forms/UQ7WcYl3sb" class="university-link" target="_blank"><p><span class="title">No results found (yet!) </span> Click to Bring Uguru to Your University / School<img class="pure-img" src="/static/img/guru-logo-red.svg"/></p></a>',
+		     //                  '</div>'
+		     //                ].join('\n'),
+		     //                	suggestion: Handlebars.compile("<li><div><img src='{{thumbnail.source}}' alt=''/></div/div><div><h2>{{title}}</h2><p>{{city}}, {{state}}, USA</p></div></li>")
+		     //                }
+		     //            }).on('typeahead:selected', function(event, suggested, dataset_name){
+		     //            	console.log('yo')
+		     //            //make it wobble
+		     //            }).on('typeahead:cursorchanged', function(event, suggested, dataset_name) {
+		     //                $('.tt-suggestion.tt-cursor img').addClass('animated wobble');
+		     //            });
+		     //        };
 
 
-
+       //      {% endraw %}
+       //  </script>
+	    <!-- end Samir's scripts -->
 		<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
 		<script>
 		  WebFont.load({
@@ -286,6 +398,5 @@
 		<script src="/static/gabrielle/js/jquery.min.js"></script>
 		<script src="/static/gabrielle/js/plugins.js"></script>
 		<script src="/static/gabrielle/js/main.js"></script>
-
 </body>
 </html>

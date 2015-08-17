@@ -537,6 +537,7 @@ class University(Base):
     num_depts = Column(Integer, default =0)
     num_majors = Column(Integer, default =0)
     num_emails = Column(Integer, default =0)
+    banner_url = Column(String)
 
     ready_to_launch = Column(Boolean)
     is_targetted = Column(Boolean, default=False)

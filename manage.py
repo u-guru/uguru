@@ -12,6 +12,22 @@ else:
 def init():
     init_db()
 
+# def decode_string(string):
+#     return string.decode('unicode_escape')
+
+def update_us_news():
+    import json
+    uni_rank_arr = json.load(open('app/static/data/us_news_2015.json'))
+    for uni in uni_rank_arr:
+        try:
+            university = get_best_matching_universty(uni['name'])
+            university.us_news_ranking = uni['rank']
+            university.population = uni['population']
+            db_session.commit()
+            print university.id, university.name, university.us_news_ranking, university.population, 'saved'
+        except:
+            print 'ERROR: could not find', uni['name']
+
 def update_universities_forbes():
     from app.static.data.universities import universities_dict
     from app.database import db_session
@@ -275,6 +291,9 @@ def seed_db():
 
 if arg == 'initialize':
     init()
+
+if arg =='update_us_news':
+    update_us_news()
 
 if arg =='update_forbes':
     update_universities_forbes()

@@ -20,6 +20,10 @@ admin_info = {
         'name': 'Jason Huang',
         'profile_url': 'http://i.imgur.com/NzlBCRz.png'
     },
+    'nick@uguru.me': {
+        'name': 'Nick Lam',
+        'profile_url': '/static/img/admin/nicklam.png'
+    },
     'investors@uguru.me': {
         'name': 'Uguru Investor',
         'profile_url': 'https://graph.facebook.com/10152573868267292/picture?width=100&height=100'

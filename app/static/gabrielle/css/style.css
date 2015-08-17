@@ -229,7 +229,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         transform: translateX(-50%);
         content: "";
         display: block;
-        position: absolute;
         top: -29px;
         width: 0;
         height: 0;
@@ -249,7 +248,8 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
   height: 100%;
   z-index: 9;
   box-sizing: border-box;
-  background: url("../../../static/gabrielle/images/cambridge.jpg") center center/cover; }
+  background: url("../../../static/gabrielle/images/cambridge.jpg") center center/cover;
+}
 
 #top {
   display: none;
@@ -455,8 +455,8 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         display: table-cell;
         vertical-align: middle;
         width: 100%; }
-  #main #search {
-    display: none; }
+  /*#main #search {
+    display: none; }*/
   #main #values {
     background: #69B3A5;
     text-align: center; }
@@ -609,6 +609,8 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       height: 200px; } }
 
 @media screen and (min-width: 48em) {
+  #banner {
+    background: url("../../../static/gabrielle/images/cambridge.jpg") center center/cover; }
   #top #top-logo {
     position: absolute;
     left: 50%;
@@ -702,7 +704,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       #main #search .search-results .search-results-bottom > div {
         position: relative; }
       #main #search .search-results .search-results-bottom .search-results-map {
-        background: url(../../../static/gabrielle/images/maps.png) no-repeat center center; }
+        background: url('../../../static/gabrielle/images/maps.png') no-repeat center center; }
         #main #search .search-results .search-results-bottom .search-results-map .search-results-gurus {
           border-radius: 1000px;
           position: absolute;
