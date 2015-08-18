@@ -1,0 +1,144 @@
+@import 'mixin';
+@import 'default';
+
+#top {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	width: 100%;
+	#top-logo {
+		position: relative;
+		display: block;
+		margin: -10px auto 0;
+		text-align: center;
+		svg {
+			@include transition-type(width, .15s ease-in);
+			display: block;
+			margin: 10px auto;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	#top-menu {
+		position: relative;
+		z-index: 99999;
+		padding: 10px;
+		box-sizing: border-box;
+		ul {
+			@include listless;
+			display: table;
+			width: 100%;
+			li {
+				display: table-cell;
+				vertical-align: top;
+				width: 33.33333%;
+				&:last-child {
+					text-align: right;
+				}
+			}
+		}
+	}
+	#desktop-start-link {
+		display: none;
+	}
+}
+
+#overlay {
+	@include opacity(0);
+	position: fixed;
+	//z-index: 999999;
+	z-index: 0;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba($charcoal, .9);
+	&.active {
+		@include opacity(1);
+		z-index: 999999;
+	}
+}
+#start-modal {
+	@include opacity(0);
+	@include center-xy;
+	background: white;
+	h1 {
+		background: $shamrock;
+		color: white;
+		padding: 10px;
+		font-size: 14px;
+		font-weight: 400;
+		letter-spacing: 2px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	#start-modal-platforms {
+		@include listless;
+	}
+	&.active {
+		@include opacity(1);
+	}
+}
+#side-menu {
+	@include transition(.15s ease-in);
+	@include opacity(0);
+	position: relative;
+	width: 100%;
+	max-width: 300px;
+	height: 100%;
+	background: $slate;
+	&.active {
+		@include opacity(1);
+	}
+	ul {
+		@include listless;
+	}
+	.top-link-menu {
+		margin: 10px 10px 20px;
+	}
+	.top-link-close {
+		display: block;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		color: white;
+		font-size: 40px;
+		font-weight: 400;
+		line-height: 1;
+	}
+	#side-menu-links {
+		li {
+			a {
+				display: block;
+				padding: 15px 10px;
+				border-right: 4px solid $slate;
+				color: white;
+				font-weight: 600;
+				font-size: 18px;
+				text-transform: uppercase;
+				&.active {
+					border-right: 4px solid $shamrock;
+				}
+			}
+			#{$links} {
+				background: rgba(white, .1);
+				border-right: 4px solid $azure;
+				&.active {
+					border-right: 4px solid $taupe;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width:36em) {
+	#top {
+		#desktop-start-link {
+			display: inline-block;
+		}
+		#mobile-start-link {
+			display: none;
+		}
+	}
+}

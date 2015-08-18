@@ -1,5 +1,4 @@
-@import 'mixin';
-@import 'default';
+@import 'menu';
 
 * {
 	-webkit-backface-visibility: hidden;
@@ -105,142 +104,34 @@ button, a[class*=btn] {
 }
 
 #top {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 999;
-	width: 100%;
-	#top-menu {
-		position: relative;
-		z-index: 99999;
-		padding: 10px;
-		box-sizing: border-box;
-		ul {
-			@include listless;
-			display: table;
-			width: 100%;
-			li {
-				display: table-cell;
-				vertical-align: top;
-				width: 33.33333%;
-				&:last-child {
-					text-align: right;
-				}
-			}
-		}
-	}
 	#top-logo {
-		position: relative;
-		display: block;
-		margin: -10px auto 0;
-		text-align: center;
+		#top-school-banner {
+			@include opacity(0);
+		}
 		svg {
-			@include transition-type(width, .15s ease-in);
-			display: block;
 			margin: 0 auto;
 			width: 50%;
 			height: 50%;
 			max-width: 200px;
 			min-width: 80px;
 		}
-		img {
+		#top-school-logo {
 			@include transition-type(width, .15s ease-in);
 			@include pos-xy(1/2, 3/10);
-			display: block;
+			@include opacity(0);
 			position: absolute;
 			width: 50%;
 			height: 50%;
 			max-width: 110px;
 			min-width: 80px;
 		}
-	}
-}
-
-#overlay {
-	@include opacity(0);
-	position: fixed;
-	//z-index: 999999;
-	z-index: 0;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba($charcoal, .9);
-	&.active {
-		@include opacity(1);
-		z-index: 999999;
-	}
-}
-#start-modal {
-	@include opacity(0);
-	@include center-xy;
-	background: white;
-	h1 {
-		background: $shamrock;
-		color: white;
-		padding: 10px;
-		font-size: 14px;
-		font-weight: 400;
-		letter-spacing: 2px;
-		text-align: center;
-		text-transform: uppercase;
-	}
-	#start-modal-platforms {
-		@include listless;
-	}
-	&.active {
-		@include opacity(1);
-	}
-}
-#side-menu {
-	@include transition(.15s ease-in);
-	@include opacity(0);
-	position: relative;
-	width: 100%;
-	max-width: 300px;
-	height: 100%;
-	background: $slate;
-	&.active {
-		@include opacity(1);
-	}
-	ul {
-		@include listless;
-	}
-	.top-link-menu {
-		margin: 10px 10px 20px;
-	}
-	.top-link-close {
-		display: block;
-		position: absolute;
-		top: 10px;
-		right: 10px;
-		color: white;
-		font-size: 40px;
-		font-weight: 400;
-		line-height: 1;
-	}
-	#side-menu-links {
-		li {
-			a {
-				display: block;
-				padding: 15px 10px;
-				border-right: 4px solid $slate;
-				color: white;
-				font-weight: 600;
-				font-size: 18px;
-				text-transform: uppercase;
-				&.active {
-					border-right: 4px solid $shamrock;
-				}
-			}
-			#{$links} {
-				background: rgba(white, .1);
-				border-right: 4px solid $azure;
-				&.active {
-					border-right: 4px solid $taupe;
-				}
-			}
+		#top-mobile-logo {
+			@include opacity(1);
+			@include center-x;
+			top: 10px;
+			z-index: 9999;
+			width: 42px;
+			height: 42px;
 		}
 	}
 }
@@ -304,40 +195,15 @@ button, a[class*=btn] {
 	#values {
 		background: $shamrock;
 		text-align: center;
-		h1 {
-			display: none;
-		}
 		p {
 			font-size: 24px;
 			text-align: left;
 		}
-		#values-steps {
-			@include listless;
-			li {
-				display: table;
-				margin-bottom: 20px;
-				.value-number {
-					@include round;
-					padding: 0;
-					width: 50px;
-					height: 50px;
-					background: rgba(white,.2);
-					font-size: 24px;
-				}
-				p {
-					display: table-cell;
-					vertical-align: middle;
-					font-size: 24px!important;
-					text-align: left!important;
-					span {
-						font-weight: 400;
-					}
-					&:first-child {
-						width: 50px;
-					}
-					&:last-child {
-						padding-left: 20px;
-					}
+		.inside {
+			.inside-text {
+				padding: 0!important;
+				#values-categories-desktop {
+					display: none;
 				}
 			}
 		}
@@ -463,16 +329,28 @@ button, a[class*=btn] {
 	#top {
 		display: block!important;
 		#top-logo {
+			#top-school-banner {
+				@include opacity(1);
+			}
 			svg, img {
 				width: 100%;
 				max-width: 40px!important;
+			}
+			#top-school-logo {
+				@include opacity(1);
+			}
+			#top-mobile-logo {
+				@include opacity(0);
+				&.visible {
+					@include opacity(1);
+				}
 			}
 		}
 	}
 	#main {
 		.slide {
 			.inside {
-				padding: 112px 30px 30px;
+				padding: 62px 30px 30px;
 				p {
 					font-size: 24px!important;
 				}
@@ -506,7 +384,7 @@ button, a[class*=btn] {
 	#main {
 		.slide {
 			.inside {
-				padding: 112px 50px 50px;
+				padding: 62px 50px 50px;
 				.inside-text {
 					padding-right: 10%;
 					width: 60%;
@@ -681,6 +559,9 @@ button, a[class*=btn] {
 				:-ms-input-placeholder {
 				   color: #ddd;
 				}
+				.twitter-typeahead {
+					display: block!important;
+				}
 				.tt-dropdown-menu {
 					background: white;
 					width: 100%;
@@ -768,38 +649,40 @@ button, a[class*=btn] {
 		#values {
 			.inside {
 				p {
-					font-size: 28px;
+					font-size: 24px;
 					text-align: center;
 				}
-				#values-steps {
-					display: table;
-					width: 100%;
-					margin: 0 auto;
-					li {
-						display: table-cell;
-						width: 33.333333%;
-						.value-number {
-							@include round;
-							display: block;
-							padding: 0;
-							margin: 0 auto!important;
-							width: 50%;
-							font-size: 84px;
-						}
-						p {
-							display: block;
-							font-size: 24px!important;
-							text-align: center!important;
-							span {
-								font-size: 28px;
-								display: block;
-								text-transform: uppercase;
+				.inside-text {
+					padding: 0!important;
+					#values-categories-desktop {
+						@include listless;
+						display: block!important;
+						.value-category {
+							box-sizing: border-box;
+							padding: 0 10px 10px;
+							img {
+								max-width: 80px;
 							}
-							&:first-child {
-								width: auto;
-							}
-							&:last-child {
-								padding-left: 0;
+							ul {
+								@include listless;
+								@include tri-down(10, white, 5, 0 10px);
+								margin: 10px auto;
+								max-width: 300px;
+								background: white;
+								color: $slate;
+								li {
+									padding: 7px 10px;
+									border-bottom: 1px solid $shamrock;
+									font-size: 12px;
+									font-weight: 400;
+									&:last-child {
+										border-bottom: 0;
+									}
+									h3 {
+										font-size: 14px;
+										text-transform: uppercase;
+									}
+								}
 							}
 						}
 					}
@@ -947,24 +830,25 @@ button, a[class*=btn] {
 		}
 		#values {
 			.inside {
-				background: $shamrock;
-				text-align: center;
-				h1 {
-					font-size: 96px;
-				}
 				p {
-					font-size: 48px!important;
+					font-size: 36px!important;
 				}
-				#values-steps {
-					li {
-						.value-number {
-							width: 60%;
-							font-size: 100px;
-						}
-						p {
-							font-size: 34px!important;
-							span {
-								font-size: 44px;
+				.inside-text {
+					#values-categories-desktop {
+						.value-category {
+							padding-bottom: 15px;
+							img {
+								max-width: 120px;
+							}
+							ul {
+								@include tri-down(15, white, 10, 0 15px);
+								li {
+									padding: 10px 15px;
+									font-size: 14px;
+									h3 {
+										font-size: 16px;
+									}
+								}
 							}
 						}
 					}

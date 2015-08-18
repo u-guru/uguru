@@ -50,6 +50,16 @@
 	-o-transform: translate(-50%,-50%);
 	transform: translate(-50%,-50%);
 }
+@mixin reset-pos {
+	position: static;
+	top: auto;
+	left: auto;
+	-webkit-transform: none;
+	-moz-transform: none;
+	-ms-transform: none;
+	-o-transform: none;
+	transform: none;
+}
 @mixin pos-xy($xpos, $ypos) {
 	top: percentage($ypos);
 	left: percentage($xpos);

@@ -1,0 +1,433 @@
+@import 'menu';
+
+* {
+	box-sizing: border-box;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+*:focus {
+	outline: none;
+}
+
+body {
+	font-family: $font;
+	font-size: 24px;
+	font-weight: 200!important;
+	color: $charcoal;
+	background: white;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+a {
+	@include transition(.15s ease-in);
+	color: $shamrock;
+	text-decoration: none;
+}
+#{$links} {
+	color: $cerise-mute;
+}
+
+button, a[class*=btn] {
+	display: inline-block;
+	padding: 10px 20px;
+	border: 0;
+	background: $taupe;
+	color: white;
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:focus, a[class*=btn]:hover {
+	background: $slate;
+	color: white;
+}
+.btn-ghost {
+	border: 2px solid white!important;
+	background: transparent!important;
+	color: white!important;
+}
+.btn-ghost:active, .btn-ghost:focus, .btn-ghost:hover {
+	background: $slate!important;
+	color: white!important;
+}
+.btn-round {
+	@include round;
+}
+.btn-shamrock {
+	background: $shamrock;
+	color: white;
+}
+
+#top {
+	#top-logo {
+		width: 42px;
+		height: 42px;
+		svg {
+			margin: 10px auto;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+#overlay {
+	.top-link-menu {
+		color: white!important;
+		border-color: white!important;
+	}
+	.top-link-menu:active, .top-link-menu:focus, .top-link-menu:hover {
+		color: $slate!important;
+		background: white!important;
+		border-color: white!important;
+	}
+}
+
+.contact-btn {
+	width: 100%;
+	padding: 15px;
+	font-size: 36px;
+	letter-spacing: 2px;
+	font-weight: 900;
+}
+
+#profile {
+	padding-top: 62px;
+	background: $charcoal;
+	color: white;
+	font-size: 18px;
+	#profile-desc {
+		padding: 30px 0 0;
+		#profile-icon {
+			@include round;
+			display: block;
+			padding: 0 30px 30px;
+			img {
+				@include round;
+				display: block;
+				margin: 0 auto;
+				width: 100%;
+				max-width: 150px;
+				padding: 5px;
+				background: rgba(255,255,255,.5);
+			}
+		}
+		#profile-list {
+			text-align: center;
+			ul {
+				@include listless;
+				#profile-name {
+					h1 {
+						margin-top: -15px;
+						padding: 0 10px 3px;
+						line-height: 1;
+						text-transform: uppercase;
+						font-size: 28px;
+						span:last-child {
+							svg {
+								display: none;
+							}
+						}
+					}
+					h1.verified {
+						span {
+							display: inline;
+							svg {
+								display: inline!important;
+								width: 20px;
+								height: 20px;
+								margin-left: 5px;
+								path:first-child {
+									fill: $lake;
+								}
+							}
+						}
+					}
+				}
+				#profile-school {
+					font-size: 24px;
+					font-weight: 400;
+				}
+				#profile-blurb {
+					margin: 30px;
+					font-weight: 400;
+				}
+			}
+		}
+		#profile-bars {
+			#profile-rating, #profile-links {
+				@include listless;
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				font-size: 24px;
+				li {
+					position: relative;
+					width: 100%;
+					span {
+						@include center-xy;
+						display: block;
+						position: absolute;
+					}
+				}
+				.fill:after {
+					@include center-xy;
+					position: absolute;
+					content: "\2605";
+				}
+			}
+			#profile-rating {
+				height: 75px;
+				padding: 20px;
+			}
+			#profile-links {
+				margin: 30px 0 0;
+				li {
+					width: 100%;
+				}
+				a {
+					display: block;
+					width: 100%;
+					font-weight: 400;
+					svg {
+						position: relative;
+						display: block;
+						width: 100%;
+						.background {
+							@include transition(.15s ease-in);
+							@include opacity(.7);
+						}
+					}
+				}
+				#{$links} {
+					svg {
+						.background {
+							@include opacity(1);
+						}
+					}
+				}
+			}
+		}
+	}
+	#profile-info {
+		position: relative;
+		.profile-inside {
+			padding-bottom: 75px;
+			overflow: auto;
+			#profile-courses {
+				h1 {
+					background: $slate;
+				}
+				ul {
+					@include listless;
+					@include flex;
+					@include flex-wrap;
+					text-align: center;
+					li {
+						padding: 10px 15px;
+						width: 50%;
+						font-weight: 600;
+					}
+					li:nth-child(1){
+						background: $lake-mute;
+					}
+					li:nth-child(2){
+						background: $azure-mute;
+					}
+					li:nth-child(3){
+						background: $shamrock;
+					}
+					li:nth-child(4){
+						background: $eggplant-mute;
+					}
+					li:nth-child(5){
+						background: $cerise-mute;
+					}
+					li:nth-child(6){
+						background: $moola-mute;
+					}
+				}
+			}
+			h1 {
+				padding: 10px;
+				font-size: 14px;
+				font-weight: 400;
+				letter-spacing: 2px;
+				text-align: center;
+				text-transform: uppercase;
+			}
+			#profile-other {
+				> div {
+					background: $slate;
+					div {
+						background: rgba(255,255,255,.1);
+						ul {
+							@include listless;
+							li {
+								padding: 10px;
+								text-align: center;
+							}
+							li:nth-child(even) {
+								background: rgba(255,255,255,.1);
+							}
+						}
+					}
+				}
+				#profile-cal {
+					@include flex;
+					font-size: 14px;
+					li {
+						flex-grow: 1;
+						width: 100%;
+					}
+					li:nth-child(even) {
+						background: rgba(255,255,255,.1);
+					}
+					h2 {
+						font-size: 16px;
+						font-weight: 400;
+						letter-spacing: 1px;
+						text-transform: uppercase;
+					}
+				}
+			}
+		}
+		button {
+			position: absolute;
+			bottom: 0;
+		}
+	}
+}
+
+.js #profile {
+	display: none;
+}
+
+@media screen and (min-width:768px) {
+	#profile {
+		margin-top: 62px;
+		padding-top: 0!important;
+	}
+}
+
+@media screen and (min-width:48em) {
+	#mobile-contact {
+		display: none!important;
+	}
+	#top {
+		position: fixed;
+	}
+	#profile {
+		#profile-desc {
+			position: relative;
+			#profile-bars {
+				#profile-links {
+					position: absolute;
+					width: 100%;
+					left: 0;
+					bottom: 75px;
+					font-size: 28px!important;
+				}
+				#profile-rating {
+					position: absolute;
+					width: 100%;
+					left: 0;
+					bottom: 0;
+					font-size: 28px!important;
+					background: rgba(255,255,255,.2);
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width:1280px) {
+	#profile {
+		@include center-x;
+		margin-top: 0!important;
+		padding-top: 0!important;
+		max-width: 1000px;
+		border-radius: 10px;
+		top: 62px;
+		position: absolute;
+		width: 100%;
+		overflow: hidden;
+	}
+}
+
+@media screen and (min-width:80em) {
+	#profile {
+		@include center-xy;
+		#profile-info {
+			.profile-inside {
+				#profile-courses {
+					ul {
+						li {
+							width: 33.33333%;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* USER DEFINED VARIABLES */
+a {
+	color: $moola;
+}
+#{$links} {
+	color: $moola-mute;
+}
+body {
+	background: url() center center;
+}
+button {
+	background: $moola!important;
+}
+button:active, button:focus, button:hover {
+	background: $moola-mute!important;
+	color: white;
+}
+.btn-ghost {
+	border: 2px solid $moola!important;
+	background: transparent!important;
+	color: $moola!important;
+}
+.btn-ghost:active, .btn-ghost:focus, .btn-ghost:hover {
+	border-color: $moola-mute!important;
+	background: $moola-mute!important;
+	color: white!important;
+}
+#top {
+	#top-logo {
+		svg {
+			path {
+				fill: $moola;
+			}
+		}
+	}
+	#top-logo:active, #top-logo:focus, #top-logo:hover {
+		svg {
+			path {
+				fill: $moola-mute;
+			}
+		}
+	}
+}
+#profile {
+	#profile-list {
+		ul {
+			#profile-name {
+				h1 {
+					color: $moola;
+				}
+			}
+		}
+	}
+}

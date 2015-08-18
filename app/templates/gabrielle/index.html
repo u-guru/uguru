@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui=yes">
-	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>uguru.me</title>
 
@@ -16,351 +12,423 @@
 	<link rel="stylesheet" href="/static/gabrielle/css/grids-min.css"/>
 	<link rel="stylesheet" href="/static/gabrielle/css/grids-responsive-min.css"/>
 	<link rel="stylesheet" href="/static/gabrielle/css/style.css"/>
-	<link rel="stylesheet" href="/static/gabrielle/css/samir.css"/>
-
 	<script src="/static/gabrielle/js/modernizr.js"></script>
 </head>
 <body>
-	<div id="mobile-start">
-		<div id="mobile-inside">
-			<img src="/static/gabrielle/svg/logo-shamrock.svg" alt="uguru"/>
-			<p>For an easy A, swipe away!<em>To the right, to the right.</em></p>
-		</div>
-	</div>
-	<div id="banner"></div>
-	<header id="top">
-		<nav id="top-menu">
-			<ul>
-				<li><a class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a></li>
-				<li>
-					<a id="top-logo" href="/">
-						<svg id="top-school-banner" width="200px" height="291px" viewBox="0 0 200 291" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-					        <g id="content">
-					            <path d="M0,272.209991 L100,232.899994 L200,272.209991 L200,290.208092 L100,250.901734 L0,290.208092 L0,272.209991 Z" id="border-outer" fill="#69B3A5"></path>
-					            <path d="M0,268.209991 L100,228.899994 L200,268.209991 L200,283.208092 L100,243.899994 L0,283.209991 L0,268.209991 Z" id="border-inner" fill="#363C3E"></path>
-					            <path d="M0,0 L200,0 L200,268.208092 L100,228.899994 L0,268.209991 L0,0 Z" fill="#FFFFFF"></path>
-					        </g>
-						</svg>
-						<img id="top-school-logo" src="/static/gabrielle/svg/logo-shamrock.svg" alt="uguru"/>
-					</a>
-				</li>
-				<li><a class="top-link-start btn-round btn-ghost" href="#"><span>Get Started</span></a></li>
-			</ul>
-		</nav>
-	</header>
-	<nav id="slide-breadcrumbs">
+<header id="top">
+	<nav id="top-menu">
 		<ul>
+			<li><a class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a></li>
 			<li>
-				<a class="active" href="#search" data-number="0"></a>
+				<a id="top-logo" href="/">
+					<img id="top-mobile-logo" src="/static/gabrielle/svg/logo-white.svg" alt="uguru"/>
+					<svg id="top-school-banner" width="200px" height="291px" viewBox="0 0 200 291" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+				        <g id="content">
+				            <path d="M0,272.209991 L100,232.899994 L200,272.209991 L200,290.208092 L100,250.901734 L0,290.208092 L0,272.209991 Z" id="border-outer" fill="#69B3A5"></path>
+				            <path d="M0,268.209991 L100,228.899994 L200,268.209991 L200,283.208092 L100,243.899994 L0,283.209991 L0,268.209991 Z" id="border-inner" fill="#363C3E"></path>
+				            <path d="M0,0 L200,0 L200,268.208092 L100,228.899994 L0,268.209991 L0,0 Z" fill="#FFFFFF"></path>
+				        </g>
+					</svg>
+					<img id="top-school-logo" src="/static/gabrielle/svg/logo-shamrock.svg" alt="uguru"/>
+				</a>
 			</li>
 			<li>
-				<a href="#values" data-number="1"></a>
-			</li>
-			<li>
-				<a href="#earn" data-number="2"></a>
-			</li>
-			<li>
-				<a href="#adapt" data-number="3"></a>
-			</li>
-			<li>
-				<a href="#rewards" data-number="4"></a>
-			</li>
-			<li>
-				<a href="#info" data-number="5"></a>
+				<a id="desktop-start-link" class="top-link-start btn-round btn-ghost" href="#"><span>Get Started</span></a>
+				<a id="mobile-start-link" class="top-link-start btn-round btn-ghost" href="#"><span>Start</span></a>
 			</li>
 		</ul>
 	</nav>
-	<div id="overlay">
-		<nav id="side-menu">
-			<a class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a>
-			<a class="top-link-close" href="#"><span>&times;</span></a>
-			</ul>
-			<ul id="side-menu-links">
-				<li><a class="active" href="/">Home</a></li>
-				<li><a href="/">Why Uguru</a></li>
-				<li><a href="/">How it Works</a></li>
-				<li><a href="/">Community</a></li>
-				<li><a href="/">Safety Center</a></li>
-			</ul>
-		</nav>
-		<div id="start-modal">
-			<h1>Download</h1>
-			<ul id="start-modal-platforms" class="pure-g">
-				<li class="pure-u-1-3"><img src="/static/gabrielle/svg/platform/apple-color.svg" alt="Apple"/></li>
-				<li class="pure-u-1-3"><img src="/static/gabrielle/svg/platform/microsoft-color.svg" alt="Windows"/></li>
-				<li class="pure-u-1-3"><img src="/static/gabrielle/svg/platform/play-color.svg" alt="Google Play"/></li>
-			</ul>
-			<h1>Send app link to phone</h1>
+</header>
+<div id="overlay">
+	<nav id="side-menu">
+		<a class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a>
+		<a class="top-link-close" href="#"><span>&times;</span></a>
+		</ul>
+		<ul id="side-menu-links">
+			<li><a class="active" href="/">Home</a></li>
+			<li><a href="/">Why Uguru</a></li>
+			<li><a href="/">How it Works</a></li>
+			<li><a href="/">Community</a></li>
+			<li><a href="/">Safety Center</a></li>
+		</ul>
+	</nav>
+	<div id="start-modal">
+		<h1>Download</h1>
+		<ul id="start-modal-platforms" class="pure-g">
+			<li class="pure-u-1-3"><img src="/svg/platform/apple-color.svg" alt="Apple"/></li>
+			<li class="pure-u-1-3"><img src="/svg/platform/microsoft-color.svg" alt="Windows"/></li>
+			<li class="pure-u-1-3"><img src="/svg/platform/play-color.svg" alt="Google Play"/></li>
+		</ul>
+		<h1>Send app link to phone</h1>
+	</div>
+</div>
+
+<nav id="slide-breadcrumbs">
+	<ul>
+		<li>
+			<a class="active" href="#search" data-number="0"></a>
+		</li>
+		<li>
+			<a href="#values" data-number="1"></a>
+		</li>
+		<li>
+			<a href="#earn" data-number="2"></a>
+		</li>
+		<li>
+			<a href="#adapt" data-number="3"></a>
+		</li>
+		<li>
+			<a href="#rewards" data-number="4"></a>
+		</li>
+		<li>
+			<a href="#info" data-number="5"></a>
+		</li>
+	</ul>
+</nav>
+<div id="mobile-start">
+	<div id="mobile-inside">
+		<img src="/static/gabrielle/svg/logo-shamrock.svg" alt="uguru"/>
+		<p>For an easy A, swipe away!<em>To the right, to the right.</em></p>
+	</div>
+</div>
+<div id="banner"></div>
+
+<section id="main">
+	<div id="search">
+		<div id="search-box">
+			<p>Peers helping peers for free, barter, or side cash.</p>
+			<div id="search-container">
+				<input id="search-bar" class='typeahead' type="text" placeholder="Search for your university"/>
+				<ul id="search-results">
+					<li id="search-harvard">
+						<div>
+							<img src="/static/gabrielle/images/school/harvard.svg" alt=""/>
+						</div>
+						<div>
+							<h2>Harvard University</h2>
+							<p>Cambridge, MA, USA</p>
+						</div>
+					</li>
+					<li id="search-stanford">
+						<div>
+							<img src="/static/gabrielle/images/school/stanford.svg" alt=""/>
+						</div>
+						<div>
+							<h2>Stanford University</h2>
+							<p>Stanford, CA, USA</p>
+						</div>
+					</li>
+					<li id="search-cambridge">
+						<div>
+							<img src="/static/gabrielle/images/school/cambridge.svg" alt=""/>
+						</div>
+						<div>
+							<h2>University of Cambridge</h2>
+							<p>Cambridge, UK</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- SAMIR -
+			There's a problem with the banner - it's too big for the school popup,
+			but when I scroll down on the school popup, the width changes
+			Ask for explanation if needed (JS needs to change)
+		-->
+		<div class="search-results">
+			<header class="search-results-top text-center">
+				<p class="search-results-header"><small>Uguru is now at</small></p>
+				<h1 id="search-school-name">School Name</h1>
+				<button class="btn-round btn-ghost">Become a Guru</button>
+			</header>
+			<footer class="search-results-bottom pure-g">
+				<div class="search-results-map text-center uppercase pure-u-1-2">
+					<!-- SAMIR -
+						The background for .search-results-map should be either a static or dynamic map of where gurus are located
+					-->
+					<div class="search-results-gurus">
+						<h2>
+							<b id="search-guru-number">340</b>
+							<span>gurus</span>
+						</h2>
+					</div>
+				</div>
+				<div class="search-results-courses pure-u-1-2">
+					<ul class="pure-g text-center">
+						<!-- SAMIR -
+							Colored either
+								(1)	Randomly based on color scheme or
+								(2)	Based on colors we choose to represent broad categories i.e. math, science, etc
+						-->
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">CALC 312</li>
+						<li class="pure-u-1-2">and more</li>
+					</ul>
+				</div>
+			</footer>
 		</div>
 	</div>
-
-	<section id="main">
-		<div id="search">
-			<div id="search-box">
-				<p>Peers helping peers for free, barter, or side cash.</p>
-				<div id="search-container">
-					<input id="search-bar" class='typeahead' type="text" placeholder="Search for your university"/>
-					<ul id="search-results">
-						<li id="search-harvard">
-							<div>
-								<img src="/static/gabrielle/images/school/harvard.svg" alt=""/>
-							</div>
-							<div>
-								<h2>Harvard University</h2>
-								<p>Cambridge, MA, USA</p>
-							</div>
-						</li>
-						<li id="search-stanford">
-							<div>
-								<img src="/static/gabrielle/images/school/stanford.svg" alt=""/>
-							</div>
-							<div>
-								<h2>Stanford University</h2>
-								<p>Stanford, CA, USA</p>
-							</div>
-						</li>
-						<li id="search-cambridge">
-							<div>
-								<img src="/static/gabrielle/images/school/cambridge.svg" alt=""/>
-							</div>
-							<div>
-								<h2>University of Cambridge</h2>
-								<p>Cambridge, UK</p>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<!-- SAMIR -
-				There's a problem with the banner - it's too big for the school popup,
-				but when I scroll down on the school popup, the width changes
-				Ask for explanation if needed (JS needs to change)
-			-->
-			<div class="search-results">
-				<header class="search-results-top text-center">
-					<p class="search-results-header"><small>Uguru is now at</small></p>
-					<h1 id="search-school-name">School Name</h1>
-					<button class="btn-round btn-ghost">Become a Guru</button>
-				</header>
-				<footer class="search-results-bottom pure-g">
-					<div class="search-results-map text-center uppercase pure-u-1-2">
-						<!-- SAMIR -
-							The background for .search-results-map should be either a static or dynamic map of where gurus are located
-						-->
-						<div class="search-results-gurus">
-							<h2>
-								<b id="search-guru-number">340</b>
-								<span>gurus</span>
-							</h2>
-						</div>
-					</div>
-					<div class="search-results-courses pure-u-1-2">
-						<ul class="pure-g text-center">
-							<!-- SAMIR -
-								Colored either
-									(1)	Randomly based on color scheme or
-									(2)	Based on colors we choose to represent broad categories i.e. math, science, etc
-							-->
-							<li class="pure-u-1-2">CALC 312</li>
-							<li class="pure-u-1-2">CALC 312</li>
-							<li class="pure-u-1-2">CALC 312</li>
-							<li class="pure-u-1-2">CALC 312</li>
-							<li class="pure-u-1-2">CALC 312</li>
-							<li class="pure-u-1-2">CALC 312</li>
-							<li class="pure-u-1-2">CALC 312</li>
-							<li class="pure-u-1-2">CALC 312</li>
-							<li class="pure-u-1-2">CALC 312</li>
-							<li class="pure-u-1-2">CALC 312</li>
-							<li class="pure-u-1-2">CALC 312</li>
-							<li class="pure-u-1-2">and more</li>
+	<div id="values" class="slide" data-number="1">
+		<div class="inside">
+			<div class="inside-text">
+				<p>Literally make $$$ on anything that you're good at</p>
+				<ul id="values-categories-desktop" class="pure-g">
+					<li class="value-category pure-u-1-4">
+						<img src="/static/gabrielle/svg/category/academic.svg" alt=""/>
+						<ul>
+							<li><h3>Academic Courses</h3></li>
+							<li>Tutor peers</li>
+							<li>Answer questions online</li>
+							<li>Create free content</li>
+							<li>Form study groups</li>
 						</ul>
-					</div>
-				</footer>
+					</li>
+					<li class="value-category pure-u-1-4">
+						<img src="/static/gabrielle/svg/category/consulting.svg" alt=""/>
+						<ul>
+							<li><h3>Consulting &amp; Freelancing</h3></li>
+							<li>Design &amp programming</li>
+							<li>Interview help</li>
+							<li>Resume editing</li>
+							<li>Skill building</li>
+						</ul>
+					</li>
+					<li class="value-category pure-u-1-4">
+						<img src="/static/gabrielle/svg/category/baking.svg" alt=""/>
+						<ul>
+							<li><h3>Baking</h3></li>
+							<li>Brownies</li>
+							<li>Cupcakes</li>
+							<li>Caramel flan</li>
+							<li>Anything delicious</li>
+						</ul>
+					</li>
+					<li class="value-category pure-u-1-4">
+						<img src="/static/gabrielle/svg/category/photography.svg" alt=""/>
+						<ul>
+							<li><h3>Photography</h3></li>
+							<li>Graduation photos</li>
+							<li>Professional headshots</li>
+							<li>Athletic &amp; action images</li>
+							<li>Outdoor scenery</li>
+						</ul>
+					</li>
+					<li class="value-category pure-u-1-4">
+						<img src="/static/gabrielle/svg/category/household.svg" alt=""/>
+						<ul>
+							<li><h3>Household</h3></li>
+							<li>Laundry</li>
+							<li>Vacuuming &amp; deep cleaning</li>
+							<li>Furniture assembly</li>
+							<li>Dishes</li>
+						</ul>
+					</li>
+					<li class="value-category pure-u-1-4">
+						<img src="/static/gabrielle/svg/category/technology.svg" alt=""/>
+						<ul>
+							<li><h3>Technology &amp; IT</h3></li>
+							<li>Phone repair</li>
+							<li>Computer &amp; laptop repair</li>
+							<li>WiFi setup</li>
+							<li>Virus removal</li>
+						</ul>
+					</li>
+					<li class="value-category pure-u-1-4">
+						<img src="/static/gabrielle/svg/category/sports.svg" alt=""/>
+						<ul>
+							<li><h3>Sports &amp; Muscle</h3></li>
+							<li>Moving help</li>
+							<li>Furniture assembly</li>
+							<li>Personal trainer</li>
+							<li>Triathalon</li>
+						</ul>
+					</li>
+					<li class="value-category pure-u-1-4">
+						<img src="/static/gabrielle/svg/category/delivery.svg" alt=""/>
+						<ul>
+							<li><h3>On-demand Delivery</h3></li>
+							<li>Food delivery</li>
+							<li>Car borrow</li>
+							<li>Truck borrow</li>
+							<li>Ridesharing</li>
+						</ul>
+					</li>
+				</ul>
 			</div>
 		</div>
-		<div id="values" class="slide" data-number="1">
-			<div class="inside">
-				<div class="inside-text">
-					<h1>uguru</h1>
-					<p>Literally make $$$ on anything that you're good at</p>
-					<ul id="values-steps">
-						<li>
-							<p><button disabled class="value-number">1</button></p>
-							<p><span>Get our app</span> on all major platforms</p>
-						</li>
-						<li>
-							<p><button disabled class="value-number">2</button></p>
-							<p><span>Add your skills</span> and we’ll promote you</p>
-						</li>
-						<li>
-							<p><button disabled class="value-number">3</button></p>
-							<p><span>Make $$$</span> easier than ever before</p>
-						</li>
-					</ul>
+	</div>
+	<div id="earn" class="slide" data-number="2">
+		<div class="inside">
+			<div class="app-phone">
+				<div class="app-wf">
+					<div class="app-wf-top"><div></div></div>
+					<div class="app-wf-scr">
+						<img src="/static/gabrielle/images/mock/open.png" alt=""/>
+					</div>
+					<div class="app-wf-bot"><div></div></div>
 				</div>
 			</div>
+			<div id="earn-text" class="inside-text">
+				<div class="inside-prop"></div>
+				<h2>Make more moolah than <br/>any part-time job.</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
 		</div>
-		<div id="earn" class="slide" data-number="2">
-			<div class="inside">
-				<div class="app-phone">
-					<div class="app-wf">
-						<div class="app-wf-top"><div></div></div>
-						<div class="app-wf-scr">
-							<img src="/static/gabrielle/images/mock/open.png" alt=""/>
-						</div>
-						<div class="app-wf-bot"><div></div></div>
+	</div>
+	<div id="adapt" class="slide" data-number="3">
+		<div class="inside">
+			<div class="app-phone">
+				<div class="app-wf">
+					<div class="app-wf-top"><div></div></div>
+					<div class="app-wf-scr">
+						<img src="/static/gabrielle/images/mock/open.png" alt=""/>
 					</div>
+					<div class="app-wf-bot"><div></div></div>
 				</div>
-				<div id="earn-text" class="inside-text">
+			</div>
+			<div id="adapt-text" class="inside-text">
+				<div class="inside-prop"></div>
+				<h2>Flexible where you are, <br/>whenever you are.</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+		</div>
+	</div>
+	<div id="rewards" class="slide" data-number="4">
+		<div class="inside">
+			<div class="app-phone">
+				<div class="app-wf">
+					<div class="app-wf-top"><div></div></div>
+					<div class="app-wf-scr">
+						<img src="/static/gabrielle/images/mock/open.png" alt=""/>
+					</div>
+					<div class="app-wf-bot"><div></div></div>
+				</div>
+			</div>
+			<div id="adapt-text" class="inside-text">
+				<div class="inside-prop"></div>
+				<h2>Win great rewards <br/>and work your way up.</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+		</div>
+	</div>
+	<div id="info" class="slide" data-number="5">
+		<div class="inside">
+			<div class="inside-text">
+				<div id="info-sub">
 					<div class="inside-prop"></div>
-					<h2>Make more moolah than <br/>any part-time job.</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<h2>Get Info</h2>
+					<input placeholder="enter your email address"/>
+					<button class="btn-round btn-shamrock">Subscribe</button>
+				</div>
+				<div id="info-download">
+					<h2>Download</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 			</div>
 		</div>
-		<div id="adapt" class="slide" data-number="3">
-			<div class="inside">
-				<div class="app-phone">
-					<div class="app-wf">
-						<div class="app-wf-top"><div></div></div>
-						<div class="app-wf-scr">
-							<img src="/static/gabrielle/images/mock/open.png" alt=""/>
-						</div>
-						<div class="app-wf-bot"><div></div></div>
-					</div>
-				</div>
-				<div id="adapt-text" class="inside-text">
-					<div class="inside-prop"></div>
-					<h2>Flexible where you are, <br/>whenever you are.</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-				</div>
-			</div>
-		</div>
-		<div id="rewards" class="slide" data-number="4">
-			<div class="inside">
-				<div class="app-phone">
-					<div class="app-wf">
-						<div class="app-wf-top"><div></div></div>
-						<div class="app-wf-scr">
-							<img src="/static/gabrielle/images/mock/open.png" alt=""/>
-						</div>
-						<div class="app-wf-bot"><div></div></div>
-					</div>
-				</div>
-				<div id="adapt-text" class="inside-text">
-					<div class="inside-prop"></div>
-					<h2>Win great rewards <br/>and work your way up.</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-				</div>
-			</div>
-		</div>
-		<div id="info" class="slide" data-number="5">
-			<div class="inside">
-				<div class="inside-text">
-					<div id="info-sub">
-						<div class="inside-prop"></div>
-						<h2>Get Info</h2>
-						<input placeholder="enter your email address"/>
-						<button class="btn-round btn-shamrock">Subscribe</button>
-					</div>
-					<div id="info-download">
-						<h2>Download</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Start gabrielle Scripts -->
-	<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
-	<script>
-	  WebFont.load({
-		google: {
-		  families: ['Source Sans Pro:200,300,400,600,700,900']
-		}
-	  });
-	</script>
-	<script src="/static/gabrielle/js/jquery.min.js"></script>
-	<script src="/static/gabrielle/js/plugins.js"></script>
-	<script src="/static/gabrielle/js/main.js"></script>
-	<!-- End gabrielle Scripts -->
+	</div>
+</section>
 
-	<!-- start Samir's scripts -->
-	<script src="/static/js/web/lib/typeahead.min.js"></script>
-    <script src="/static/js/web/lib/fastmatcher.js"></script>
+<!-- Start gabrielle Scripts -->
+<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+<script>
+  WebFont.load({
+	google: {
+	  families: ['Source Sans Pro:200,300,400,600,700,900']
+	}
+  });
+</script>
+<script src="/static/gabrielle/js/jquery.min.js"></script>
+<script src="/static/gabrielle/js/plugins.js"></script>
+<script src="/static/gabrielle/js/main.js"></script>
+<!-- End gabrielle Scripts -->
 
-    <script src="/static/js/web/lib/handlebars.js"></script>
-    <script>
-		var all_universities;
+<!-- start Samir's scripts -->
+<script src="/static/js/web/lib/typeahead.min.js"></script>
+<script src="/static/js/web/lib/fastmatcher.js"></script>
 
-		var matcher;
+<script src="/static/js/web/lib/handlebars.js"></script>
+<script>
+	var all_universities;
 
-		$(document).ready(function() {
-		    universities_arr = readAndParseJSON('/static/data/universities_web3.json');
-		    matcher = initMatcher(universities_arr);
-		    initTypeahead(matcher, universities_arr);
-		});
+	var matcher;
 
-		function readAndParseJSON(file) {
-		    var request = new XMLHttpRequest();
-		    request.open('GET', file, false);
-		    request.send(null);
-		    if (request.status == 200)
-		        universities_arr = JSON.parse(request.responseText);
-		    return universities_arr;
-		}
+	$(document).ready(function() {
+	    universities_arr = readAndParseJSON('/static/data/universities_web3.json');
+	    matcher = initMatcher(universities_arr);
+	    initTypeahead(matcher, universities_arr);
+	});
 
-		var initMatcher = function(arr) {
-		    var matcher = new FastMatcher(arr, {
-		        // the property, or array of properties, to base matches on
-		        selector: 'title',
+	function readAndParseJSON(file) {
+	    var request = new XMLHttpRequest();
+	    request.open('GET', file, false);
+	    request.send(null);
+	    if (request.status == 200)
+	        universities_arr = JSON.parse(request.responseText);
+	    return universities_arr;
+	}
 
-		        // duh, what do you think this does?
-		        caseInsensitive: true,
+	var initMatcher = function(arr) {
+	    var matcher = new FastMatcher(arr, {
+	        // the property, or array of properties, to base matches on
+	        selector: 'title',
 
-		        // return matches in their original order
-		        preserveOrder: false,
+	        // duh, what do you think this does?
+	        caseInsensitive: true,
 
-		        // whether to match against any word (not just first) for each string
-		        anyWord: true,
+	        // return matches in their original order
+	        preserveOrder: false,
 
-		        // how many matches to find at a time
-		        limit: 5
-		    });
-		    return matcher;
-		}
+	        // whether to match against any word (not just first) for each string
+	        anyWord: true,
 
-		{% raw %}
-		var initTypeahead = function(matcher, source) {
+	        // how many matches to find at a time
+	        limit: 5
+	    });
+	    return matcher;
+	}
 
-		    $('.typeahead').typeahead({
-		        minLength: 1,
-		        highlight: true,
-		        hint: true
-		    }, {
-		        displayKey: 'title',
-		        source: function(q, cb) {
-		            cb(matcher.getMatches(q))
-		        },
-		        templates: {
-		            //if no results show
-		            empty: [
-		                '<div class="tt-suggestion">',
-		                '<a href="http://goo.gl/forms/UQ7WcYl3sb" class="university-link" target="_blank"><div><img class="pure-img" src="/static/img/guru-logo-red.svg"/></div><div><h2><span class="title">No results found (yet!) </span> Click to Bring Uguru to Your University / School</h2></div></a>',
-		                '</div>'
-		            ].join('\n'),
-		            suggestion: Handlebars.compile("<div><img src='{{thumbnail.source}}' alt=''/></div><div><h2>{{title}}</h2><p>{{city}}, {{state}}, USA</p></div>")
-		        }
-		    }).on('typeahead:selected', function(event, suggested, dataset_name) {
-		        console.log('yo')
-		            //make it wobble
-		    }).on('typeahead:cursorchanged', function(event, suggested, dataset_name) {
-		        $('.tt-suggestion.tt-cursor img').addClass('animated wobble');
-		    });
-		};
+	{% raw %}
+	var initTypeahead = function(matcher, source) {
 
-		{% endraw %}
-   </script>
-    <!-- end Samir's scripts -->
+	    $('.typeahead').typeahead({
+	        minLength: 1,
+	        highlight: true,
+	        hint: true
+	    }, {
+	        displayKey: 'title',
+	        source: function(q, cb) {
+	            cb(matcher.getMatches(q))
+	        },
+	        templates: {
+	            //if no results show
+	            empty: [
+	                '<div class="tt-suggestion">',
+	                '<a href="http://goo.gl/forms/UQ7WcYl3sb" class="university-link" target="_blank"><div><img class="pure-img" src="/static/img/guru-logo-red.svg"/></div><div><h2><span class="title">No results found (yet!) </span> Click to Bring Uguru to Your University / School</h2></div></a>',
+	                '</div>'
+	            ].join('\n'),
+	            suggestion: Handlebars.compile("<div><img src='{{thumbnail.source}}' alt=''/></div><div><h2>{{title}}</h2><p>{{city}}, {{state}}, USA</p></div>")
+	        }
+	    }).on('typeahead:selected', function(event, suggested, dataset_name) {
+	        console.log('yo')
+	            //make it wobble
+	    }).on('typeahead:cursorchanged', function(event, suggested, dataset_name) {
+	        $('.tt-suggestion.tt-cursor img').addClass('animated wobble');
+	    });
+	};
+
+	{% endraw %}
+</script>
+<!-- end Samir's scripts -->
+
 </body>
 </html>

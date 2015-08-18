@@ -1,108 +1,5 @@
-@mixin opacity($opacity) {
-	filter: alpha(opacity=$opacity * 100);
-	opacity: $opacity;
-}
-@mixin transition($transition) {
-	-webkit-transition: all $transition;
-	-o-transition: all $transition;
-	-ms-transition: all $transition;
-	-moz-transition: all $transition;
-	transition: all $transition;
-}
-@mixin transition-type($type, $transition) {
-	-webkit-transition: $type $transition;
-	-o-transition: $type $transition;
-	-ms-transition: $type $transition;
-	-moz-transition: $type $transition;
-	transition: $type $transition;
-}
-@mixin round {
-	border-radius: 1000px;
-}
-@mixin center-x {
-	left: 50%;
-	-webkit-transform: translateX(-50%);
-	-moz-transform: translateX(-50%);
-	-ms-transform: translateX(-50%);
-	-o-transform: translateX(-50%);
-	transform: translateX(-50%);
-}
-@mixin center-y {
-	top: 50%;
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
-	transform: translateY(-50%);
-}
-@mixin center-xy {
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%,-50%);
-	-moz-transform: translate(-50%,-50%);
-	-ms-transform: translate(-50%,-50%);
-	-o-transform: translate(-50%,-50%);
-	transform: translate(-50%,-50%);
-}
-@mixin flex {
-	-ms-box-orient: horizontal;
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -moz-flex;
-	display: -webkit-flex;
-	display: flex;
-}
-@mixin flex-wrap {
-	-ms-flex-flow: row wrap;
-	-webkit-flex-flow: row wrap;
-	flex-flow: row wrap;
-}
-@mixin flex-center {
-	-webkit-align-items: center;
-	-webkit-box-align: center;
-	align-items: center;
-	justify-content: center;
-}
-@mixin listless {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-@mixin blur($blur) {
-	filter: blur($blur+px);
-	-webkit-filter: blur($blur+px);
-	-moz-filter: blur($blur+px);
-	-o-filter: blur($blur+px);
-	-ms-filter: blur($blur+px);
-	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{$blur}');
-}
-@mixin rotate($angle) {
-	-webkit-transform: rotate($angle+deg);
-	-moz-transform: rotate($angle+deg);
-	-ms-transform: rotate($angle+deg);
-	-o-transform: rotate($angle+deg);
-	transform: rotate($angle+deg);
-}
-
-$links: 'a:active, a:focus, a:hover';
-
-$charcoal: #2B3234;
-$midnight: #363C3E;
-$metal: #B2B2B2;
-$smoke: #F1F1F1;
-$campus: #8A9EA3;
-$shamrock: #69B3A5;
-$moola: #81B566;
-$lake: #65A6D1;
-$azure: #5CA9F7;
-$orange: #E5753C;
-$gold: #F9D57B;
-$cerise: #DB1988;
-$eggplant: #9E77B7;
-$icon-bg: no-repeat center center;
-
-$font: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+@import 'mixin';
+@import 'default';
 
 body {
 	font-family: $font;
@@ -131,14 +28,14 @@ a {
 	padding: 50px 0;
 	text-align: center;
 	h1 {
-		color: $midnight;
+		color: $slate;
 		font-size: 96px;
 		font-weight: 900;
 		letter-spacing: 2px;
 		text-transform: lowercase;
 	}
 	h2 {
-		color: $metal;
+		color: $taupe;
 		font-weight: 300;
 		letter-spacing: 3px;
 		text-transform: uppercase;
@@ -163,7 +60,7 @@ a {
 					position: relative;
 				}
 				.active {
-					color: $midnight;
+					color: $slate;
 					font-weight: 600;
 					&:after {
 						@include round;
@@ -174,7 +71,7 @@ a {
 						right: 0;
 						width: 4px;
 						height: 4px;
-						background: $midnight;
+						background: $slate;
 					}
 				}
 			}
@@ -207,7 +104,7 @@ a {
 					box-sizing: border-box;
 				}
 				div:nth-child(1) img {
-					background: $midnight;
+					background: $slate;
 				}
 				div:nth-child(2) img {
 					background: white;
@@ -282,7 +179,7 @@ a {
 					}
 					aside {
 						margin: 5px 0 25px;
-						color: $metal;
+						color: $taupe;
 						font-size: 14px;
 						text-transform: uppercase;
 						&:last-child {
@@ -292,6 +189,9 @@ a {
 				}
 			}
 			&#color {
+				#color-mute {
+					margin-top: 50px;
+				}
 				.color-sq {
 					position: relative;
 					height: 150px;
@@ -310,11 +210,11 @@ a {
 					&#color-sq-charcoal {
 						background: $charcoal;
 					}
-					&#color-sq-midnight {
-						background: $midnight;
+					&#color-sq-slate {
+						background: $slate;
 					}
-					&#color-sq-metal {
-						background: $metal;
+					&#color-sq-taupe {
+						background: $taupe;
 					}
 					&#color-sq-white {
 						background: white;
@@ -331,7 +231,7 @@ a {
 						background: $shamrock;
 					}
 					&#color-sq-moola {
-						background: $moola
+						background: $moola;
 					}
 					&#color-sq-lake {
 						background: $lake;
@@ -351,6 +251,32 @@ a {
 					}
 					&#color-sq-eggplant {
 						background: $eggplant;
+					}
+
+					&#color-sq-shamrock-mute {
+						background: $shamrock;
+					}
+					&#color-sq-moola-mute {
+						background: $moola-mute;
+					}
+					&#color-sq-lake-mute {
+						background: $lake-mute;
+					}
+					&#color-sq-azure-mute {
+						background: $azure-mute;
+					}
+					&#color-sq-gold-mute {
+						background: $gold-mute;
+						color: $charcoal;
+					}
+					&#color-sq-orange-mute {
+						background: $orange-mute;
+					}
+					&#color-sq-cerise-mute {
+						background: $cerise-mute;
+					}
+					&#color-sq-eggplant-mute {
+						background: $eggplant-mute;
 					}
 				}
 			}
@@ -385,135 +311,135 @@ a {
 					&#icons-cat {
 						margin-bottom: 50px;
 						#icon-bw-spray {
-							background: $smoke url('/static/svg/icons/icon-001.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-001.svg') $icon-bg;
 						}
 						#icon-bw-spray-solid {
-							background: $smoke url('/static/svg/icons/icon-002.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-002.svg') $icon-bg;
 						}
 						#icon-bw-utensil {
-							background: $smoke url('/static/svg/icons/icon-003.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-003.svg') $icon-bg;
 						}
 						#icon-bw-utensil-solid {
-							background: $smoke url('/static/svg/icons/icon-004.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-004.svg') $icon-bg;
 						}
 						#icon-bw-cart {
-							background: $smoke url('/static/svg/icons/icon-005.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-005.svg') $icon-bg;
 						}
 						#icon-bw-cart-solid {
-							background: $smoke url('/static/svg/icons/icon-006.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-006.svg') $icon-bg;
 						}
 						#icon-bw-sci {
-							background: $smoke url('/static/svg/icons/icon-007.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-007.svg') $icon-bg;
 						}
 						#icon-bw-sci-solid {
-							background: $smoke url('/static/svg/icons/icon-008.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-008.svg') $icon-bg;
 						}
 						#icon-bw-book {
-							background: $smoke url('/static/svg/icons/icon-009.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-009.svg') $icon-bg;
 						}
 						#icon-bw-book-solid {
-							background: $smoke url('/static/svg/icons/icon-010.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-010.svg') $icon-bg;
 						}
 						#icon-co-spray-green {
-							background: $charcoal url('/static/svg/icons/icon-022.svg') $icon-bg;
+							background: $charcoal url('../../../static/gabrielle/svg/icons/icon-022.svg') $icon-bg;
 						}
 						#icon-co-spray-green-solid {
-							background: $charcoal url('/static/svg/icons/icon-023.svg') $icon-bg;
+							background: $charcoal url('../../../static/gabrielle/svg/icons/icon-023.svg') $icon-bg;
 						}
 						#icon-co-spray-shamrock {
-							background: $midnight url('/static/svg/icons/icon-025.svg') $icon-bg;
+							background: $slate url('../../../static/gabrielle/svg/icons/icon-025.svg') $icon-bg;
 						}
 						#icon-co-spray-shamrock-solid {
-							background: $midnight url('/static/svg/icons/icon-024.svg') $icon-bg;
+							background: $slate url('../../../static/gabrielle/svg/icons/icon-024.svg') $icon-bg;
 						}
 						#icon-co-utensil-orange {
-							background: $charcoal url('/static/svg/icons/icon-026.svg') $icon-bg;
+							background: $charcoal url('../../../static/gabrielle/svg/icons/icon-026.svg') $icon-bg;
 						}
 						#icon-co-utensil-orange-solid {
-							background: $charcoal url('/static/svg/icons/icon-027.svg') $icon-bg;
+							background: $charcoal url('../../../static/gabrielle/svg/icons/icon-027.svg') $icon-bg;
 						}
 						#icon-co-utensil-gold {
-							background: $midnight url('/static/svg/icons/icon-029.svg') $icon-bg;
+							background: $slate url('../../../static/gabrielle/svg/icons/icon-029.svg') $icon-bg;
 						}
 						#icon-co-utensil-gold-solid {
-							background: $midnight url('/static/svg/icons/icon-028.svg') $icon-bg;
+							background: $slate url('../../../static/gabrielle/svg/icons/icon-028.svg') $icon-bg;
 						}
 						#icon-co-cart-blue {
-							background: $charcoal url('/static/svg/icons/icon-030.svg') $icon-bg;
+							background: $charcoal url('../../../static/gabrielle/svg/icons/icon-030.svg') $icon-bg;
 						}
 						#icon-co-cart-blue-solid {
-							background: $charcoal url('/static/svg/icons/icon-031.svg') $icon-bg;
+							background: $charcoal url('../../../static/gabrielle/svg/icons/icon-031.svg') $icon-bg;
 						}
 						#icon-co-cart-azure {
-							background: $midnight url('/static/svg/icons/icon-033.svg') $icon-bg;
+							background: $slate url('../../../static/gabrielle/svg/icons/icon-033.svg') $icon-bg;
 						}
 						#icon-co-cart-azure-solid {
-							background: $midnight url('/static/svg/icons/icon-032.svg') $icon-bg;
+							background: $slate url('../../../static/gabrielle/svg/icons/icon-032.svg') $icon-bg;
 						}
 						#icon-co-sci-cerise {
-							background: $midnight url('/static/svg/icons/icon-034.svg') $icon-bg;
+							background: $slate url('../../../static/gabrielle/svg/icons/icon-034.svg') $icon-bg;
 						}
 						#icon-co-sci-cerise-solid {
-							background: $midnight url('/static/svg/icons/icon-035.svg') $icon-bg;
+							background: $slate url('../../../static/gabrielle/svg/icons/icon-035.svg') $icon-bg;
 						}
 						#icon-co-book-azure {
-							background: $midnight url('/static/svg/icons/icon-036.svg') $icon-bg;
+							background: $slate url('../../../static/gabrielle/svg/icons/icon-036.svg') $icon-bg;
 						}
 						#icon-co-book-azure-solid {
-							background: $midnight url('/static/svg/icons/icon-037.svg') $icon-bg;
+							background: $slate url('../../../static/gabrielle/svg/icons/icon-037.svg') $icon-bg;
 						}
 					}
 					&#icons-nav {
 						#icon-nav-bw-book {
-							background: $smoke url('/static/svg/icons/icon-011.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-011.svg') $icon-bg;
 						}
 						#icon-nav-bw-help {
-							background: $smoke url('/static/svg/icons/icon-012.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-012.svg') $icon-bg;
 						}
 						#icon-nav-bw-help-circle {
-							background: $smoke url('/static/svg/icons/icon-013.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-013.svg') $icon-bg;
 						}
 						#icon-nav-bw-place {
-							background: $smoke url('/static/svg/icons/icon-014.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-014.svg') $icon-bg;
 						}
 						#icon-nav-bw-clock {
-							background: $smoke url('/static/svg/icons/icon-015.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-015.svg') $icon-bg;
 						}
 						#icon-nav-bw-tube {
-							background: $smoke url('/static/svg/icons/icon-016.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-016.svg') $icon-bg;
 						}
 						#icon-nav-bw-star {
-							background: $smoke url('/static/svg/icons/icon-017.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-017.svg') $icon-bg;
 						}
 						#icon-nav-bw-home {
-							background: $smoke url('/static/svg/icons/icon-018.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-018.svg') $icon-bg;
 						}
 						#icon-nav-bw-gear {
-							background: $smoke url('/static/svg/icons/icon-019.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-019.svg') $icon-bg;
 						}
 						#icon-nav-bw-clip-circle {
-							background: $smoke url('/static/svg/icons/icon-020.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-020.svg') $icon-bg;
 						}
 						#icon-nav-bw-clip {
-							background: $smoke url('/static/svg/icons/icon-021.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-021.svg') $icon-bg;
 						}
 						#icon-nav-bw-down {
-							background: $smoke url('/static/svg/icons/icon-054.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-054.svg') $icon-bg;
 						}
 						#icon-nav-bw-up {
-							background: $smoke url('/static/svg/icons/icon-055.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-055.svg') $icon-bg;
 						}
 						#icon-nav-bw-left {
-							background: $smoke url('/static/svg/icons/icon-056.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-056.svg') $icon-bg;
 						}
 						#icon-nav-bw-right {
-							background: $smoke url('/static/svg/icons/icon-057.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-057.svg') $icon-bg;
 						}
 						#icon-nav-bw-cash {
-							background: $smoke url('/static/svg/icons/icon-058.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-058.svg') $icon-bg;
 						}
 						#icon-nav-bw-warning {
-							background: $smoke url('/static/svg/icons/icon-059.svg') $icon-bg;
+							background: $smoke url('../../../static/gabrielle/svg/icons/icon-059.svg') $icon-bg;
 						}
 					}
 				}
@@ -580,11 +506,11 @@ button.btn-lg-pri-normal, button.btn-lg-pri-over:active, button.btn-lg-pri-over:
 	color: white;
 }
 button.btn-lg-sec-normal, button.btn-lg-sec-over:active, button.btn-lg-sec-over:focus, button.btn-lg-sec-over:hover {
-	background: $metal;
+	background: $taupe;
 	color: white;
 }
 button.btn-lg-pri-over, button.btn-lg-pri-normal:active, button.btn-lg-pri-normal:focus, button.btn-lg-pri-normal:hover {
-	background: $midnight;
+	background: $slate;
 	color: rgba(255,255,255,.3);
 }
 button.btn-lg-sec-over, button.btn-lg-sec-normal:active, button.btn-lg-sec-normal:focus, button.btn-lg-sec-normal:hover {
@@ -605,7 +531,7 @@ button.btn-lg-slide-pri-over, button.btn-lg-slide-pri-normal:active, button.btn-
 	color: rgba(255,255,255,.3);
 }
 button.btn-lg-slide-sec-over, button.btn-lg-slide-sec-normal:active, button.btn-lg-slide-sec-normal:focus, button.btn-lg-slide-sec-normal:hover {
-	background: $midnight;
+	background: $slate;
 	color: rgba(255,255,255,.3);
 }
 /* small buttons 198px */
@@ -640,7 +566,7 @@ button[class*=btn-sm] {
 		vertical-align: middle;
 		width: 25%;
 		height: 98px;
-		border: 1px solid $metal;
+		border: 1px solid $taupe;
 		font-size: 36px;
 		font-weight: 600;
 		text-align: center;
@@ -654,7 +580,7 @@ button[class*=btn-sm] {
 button[class*=btn-pill] {
 	@include round;
 	font-size: 24px;
-	color: $metal;
+	color: $taupe;
 	margin: 0 auto;
 	img {
 		width: 46px;
