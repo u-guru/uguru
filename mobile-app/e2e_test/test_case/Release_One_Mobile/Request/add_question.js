@@ -7,7 +7,7 @@ describe('Request Test : Sumbit a Question', function ()
 
  	it('Go Session page',function()
  		{
-       		browser.wait(EC.visibilityOf(protractor.get.closeBar),3000).then(function()
+	        browser.wait(EC.visibilityOf(protractor.get.closeBar),3000).then(function()
        			{
 	              protractor.get.closeBar.click();  
 

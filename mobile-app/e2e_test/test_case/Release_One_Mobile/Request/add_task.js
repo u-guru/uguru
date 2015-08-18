@@ -12,13 +12,13 @@ describe('Request Test : Sumbit a Question', function ()
 	              protractor.get.closeBar.click();  
 
        			});
-            browser.sleep(00); 
+            browser.sleep(800); 
  			if(EC.invisibilityOf(protractor.get.request))
             	element(by.css('[ng-click="launchVerbModal()"]')).click();
             else
  				protractor.get.request.click();
-        	element(by.css('[ng-click="launchRequestModal()"]')).click();
-        	element(by.css('[ng-click="launchRequestModal(2,1)""]')).click();
+        	element(by.css('[ng-click="launchTaskVerbModal()"]')).click();
+        	element(by.css('[ng-click="launchRequestModal(2,1)"]')).click();
     		expect(title.getText()).toBe('Request a Task');
  		});
  	it('Enter Course',function()

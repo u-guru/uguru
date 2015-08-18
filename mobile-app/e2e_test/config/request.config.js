@@ -21,6 +21,7 @@ exports.config = {
           addS :   '../test_case/WorkFlows/workflow_three.js',
           add_session : '../test_case/Release_One_Mobile/Request/add_session.js',
           add_question : '../test_case/Release_One_Mobile/Request/add_question.js',
+          add_task : '../test_case/Release_One_Mobile/Request/add_task.js',
 
           delete_session_Hold : [ '../test_case/backHome.js','../test_case/Release_One_Mobile/Request/delete_session_Hold.js'],
           delete_session_Click: [ '../test_case/backHome.js','../test_case/Release_One_Mobile/Request/delete_session_Click.js']
