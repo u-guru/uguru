@@ -16,6 +16,10 @@ admin_info = {
         'name': 'Jeselle Obina',
         'profile_url': '/static/img/admin/jeselle.png'
     },
+    'nick@uguru.me': {
+        'name': 'Nick Lam',
+        'profile_url': '/static/img/admin/nicklam.png'
+    },
     'jason@uguru.me': {
         'name': 'Jason Huang',
         'profile_url': 'http://i.imgur.com/NzlBCRz.png'

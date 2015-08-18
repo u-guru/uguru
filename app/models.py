@@ -537,6 +537,7 @@ class University(Base):
     num_depts = Column(Integer, default =0)
     num_majors = Column(Integer, default =0)
     num_emails = Column(Integer, default =0)
+    banner_url = Column(String)
 
     ready_to_launch = Column(Boolean)
     is_targetted = Column(Boolean, default=False)
@@ -2361,11 +2362,15 @@ class Transaction(Base):
 
         transaction.guru = user
 
-        transaction.charge_id = charge_id
+        transaction.charge_id = charge_id.id
         transaction.profit = deposit_amount
         transaction.guru_id = user.id
         db_session.add(transaction)
-        db_session.commit()
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
         return transaction
 
     @staticmethod

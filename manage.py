@@ -12,6 +12,22 @@ else:
 def init():
     init_db()
 
+# def decode_string(string):
+#     return string.decode('unicode_escape')
+
+def update_us_news():
+    import json
+    uni_rank_arr = json.load(open('app/static/data/us_news_2015.json'))
+    for uni in uni_rank_arr:
+        try:
+            university = get_best_matching_universty(uni['name'])
+            university.us_news_ranking = uni['rank']
+            university.population = uni['population']
+            db_session.commit()
+            print university.id, university.name, university.us_news_ranking, university.population, 'saved'
+        except:
+            print 'ERROR: could not find', uni['name']
+
 def update_universities_forbes():
     from app.static.data.universities import universities_dict
     from app.database import db_session
@@ -54,6 +70,12 @@ def get_best_matching_universty(school):
     if matches or highest_index:
         return University.query.filter_by(name=matches[highest_index][0]).first()
     return None
+
+def init_mailgun_lists():
+    from app.lib.mailgun import *
+    for u in University.query.all():
+        if u.is_targetted and u.population:
+            print create_mailing_list(u)
 
 def init_university_dates(name):
     req = urllib2.Request("https://drive.google.com/uc?export=download&id=0By5VIgFdqFHddHdBT1U4YWZ2VkE", None)
@@ -270,8 +292,14 @@ def seed_db():
 if arg == 'initialize':
     init()
 
+if arg =='update_us_news':
+    update_us_news()
+
 if arg =='update_forbes':
     update_universities_forbes()
+
+if arg =='init_mailgun':
+    init_mailgun_lists()
 
 if arg =="seed":
     seed_db()
