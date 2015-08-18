@@ -88,6 +88,18 @@ def admin_devices():
 def new_home_page():
     return render_template("gabrielle/index.html")
 
+@app.route('/faq/')
+def faq():
+    return render_template("gabrielle/faq.html")
+
+@app.route('/manifest/')
+def manifest():
+    return render_template("gabrielle/manifest.html")
+
+@app.route('/team/')
+def team():
+    return render_template("gabrielle/team.html")
+
 @app.route('/staging/profile')
 def profile_page():
     return render_template("gabrielle/profile.html")

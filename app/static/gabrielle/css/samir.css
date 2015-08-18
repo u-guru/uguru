@@ -2,6 +2,47 @@
     width:100%;
 }
 
-/*.tt-dropdown {
-    display:none !important;
-}*/
+.full-width-height {
+    height:100%;
+    width:100%;
+}
+
+.center {
+    text-align: center;
+}
+
+.bold {
+    font-weight:bold;
+}
+
+.white-text {
+    color:white;
+}
+
+.absolute {
+    position:absolute;
+}
+
+#manifest {
+    background: #F1F1F1;
+    bottom:0;
+    top: 60px;
+}
+
+#faq {
+    background: #8A9EA3;
+    bottom:0;
+    top: 60px;
+}
+#team {
+    background: #40484B;
+    bottom:0;
+    top: 60px;
+}
+
+#manifest-main-container,
+#faq-main-container,
+#team-main-container {
+    margin-top: 20%;
+    padding: 0% 10%;
+}
