@@ -58,18 +58,27 @@ describe('Request Test : Sumbit a Question', function ()
 		{	    
 		    element(by.css('[ng-click="saveDescriptionAndCloseModal()"]')).click();
 		});
-	it("Pick an amount",function()
-		{
-		    var set0 = element(by.css('[ng-click="setPriceOption(0)"]'));
-	        var set1 = element(by.css('[ng-click="setPriceOption(1)"]'));
-	        var set2 = element(by.css('[ng-click="setPriceOption(2)"]'));
-	        var set5 = element(by.css('[ng-click="setPriceOption(3)"]'));
-	        set0.click();
 
-		});
 	it("Submit",function()
 	{	    
         element(by.css('[ng-click="submitRequest()"]')).click();
+	});
+	it("Pick an amount",function()
+	{
+	    var set0 = element(by.css('[ng-click="setPriceOption(0)"]'));
+        var set1 = element(by.css('[ng-click="setPriceOption(1)"]'));
+        var set2 = element(by.css('[ng-click="setPriceOption(2)"]'));
+        var set5 = element(by.css('[ng-click="setPriceOption(3)"]'));
+   		browser.wait(EC.visibilityOf(set0),10000).then(function()
+		{
+      		 set0.click();
+
+		});
+	});
+	it("Confirm",function()
+	{	    
+        element.all(by.css('[ng-click="submitRequest()"]')).last().click();
+		browser.wait(EC.visibilityOf(element(by.id('E2E-submit'))),3000);
 		browser.wait(EC.invisibilityOf(element(by.id('E2E-submit'))),3000);
 	});
  });	
