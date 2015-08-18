@@ -47,6 +47,7 @@ menuStyle = function() {
 }
 
 $(document).ready(function () {
+	
 	slideLeft();
 	menuStyle();
 	$(window).resize(function(){
