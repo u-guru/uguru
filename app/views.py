@@ -28,6 +28,12 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 ## NEW ADMIN ##
 ###############
 
+@app.route('/admin/staging/')
+def admin_statistics():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return redirect(url_for('new_home_page'))
+
 @app.route('/admin/login/')
 def admin_login():
     error = None
@@ -77,6 +83,7 @@ def admin_devices():
     return render_template("new_admin/admin.stats.devices.html", test_devices=test_devices, \
         regular_devices=regular_devices)
 
+@app.route('/')
 @app.route('/staging/')
 def new_home_page():
     return render_template("gabrielle/index.html")
@@ -611,7 +618,7 @@ def school_email_check(confirm_email_token):
     else:
         return 404
 
-@app.route('/')
+@app.route('/old/')
 def app_student_home():
     from lib.university_data import supported_universities
     from random import sample
