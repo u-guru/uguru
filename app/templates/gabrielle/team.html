@@ -10,6 +10,25 @@
                 Meet the team
             </h1>
         </div>
+        <div class='pure-u-1 padding-1em padding-top-2em'>
+            <div class='pure-g'>
+                {% for member in team_members %}
+                <div class='pure-u-1-{{team_members|length}}'>
+                    <div class='photo-container center'>
+                        <img src='{{member["profile_url"]}}' height="100" width="100"/>
+                    </div>
+                    <h5 class='team-member-name white-text center'>
+                        {{member['name']}}
+                    </h5>
+                    <a class='white-text' target="_blank" href='/team/profiles/{{member["name"].split(" ")[0]|lower}}'>
+                        <p class='center no-margin no-padding'>
+                            Read more
+                        </p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

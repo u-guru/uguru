@@ -96,9 +96,26 @@ def faq():
 def manifest():
     return render_template("gabrielle/manifest.html")
 
+@app.route('/team/profiles/<name>')
+def team_profiles(name):
+
+    from lib.admin import admin_info
+    team_names_lower = [admin_info[key]['name'].split(' ')[0].lower() for key in admin_info.keys()]
+
+    if name.lower() not in team_names_lower:
+        return redirect(url_for('team'))
+
+    member = name.lower()
+    member_index = team_names_lower.index(member)
+    member_dict = admin_info[admin_info.keys()[member_index]]
+
+    return render_template("gabrielle/user-profile.html", member=member_dict)
+
 @app.route('/team/')
 def team():
-    return render_template("gabrielle/team.html")
+    from lib.admin import admin_info
+    team_members = [admin_info[key] for key in admin_info.keys() if not key == 'investors@uguru.me']
+    return render_template("gabrielle/team.html", team_members=team_members)
 
 @app.route('/staging/profile')
 def profile_page():
