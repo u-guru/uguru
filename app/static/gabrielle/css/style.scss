@@ -161,19 +161,19 @@ button, a[class*=btn] {
 			box-sizing: border-box;
 			padding: 20px;
 			color: white;
+			.inside-text {
+				display: block;
+				width: 100%;
+			}
 			h2 {
-				margin-top: 1em;
+				margin: 1em 0;
 				font-size: 24px;
-				font-weight: 400;
-				text-transform: uppercase;
+				font-weight: 300;
 				width: 100%;
 			}
 			p {
 				font-size: 20px;
 				font-weight: 300;
-			}
-			h2 + p {
-				margin: 5px 0 0;
 			}
 			.inside-prop {
 				@include round;
@@ -182,26 +182,16 @@ button, a[class*=btn] {
 				height: 100px;
 				background: rgba(white,.2);
 			}
-			.inside-text {
-				display: table-cell;
-				vertical-align: middle;
-				width: 100%;
-			}
 		}
 	}
 	#search {
 		display: none;
 	}
 	#values {
-		background: $shamrock;
+		background: $charcoal;
 		text-align: center;
-		p {
-			font-size: 24px;
-			text-align: left;
-		}
 		.inside {
 			.inside-text {
-				padding: 0!important;
 				#values-categories-desktop {
 					display: none;
 				}
@@ -209,21 +199,11 @@ button, a[class*=btn] {
 		}
 	}
 	#earn {
-		background: $charcoal;
-	}
-	#adapt {
 		background: $slate;
 	}
-	#rewards {
-		background: $campus;
-	}
 	#info {
-		background: $smoke;
+		background: $campus;
 		.inside {
-			color: $slate;
-			.inside-prop {
-				background: rgba(black,.2);
-			}
 			#info-download {
 				margin-top: 30px;
 			}
@@ -233,38 +213,37 @@ button, a[class*=btn] {
 				background: none;
 				box-sizing: border-box;
 				border: 0;
-				border-bottom: 1px solid;
+				border-bottom: 1px solid rgba(white,.5);
 				border-radius: 0!important;
-				color: $campus;
 				font-size: 18px;
 				font-weight: 400;
 			}
 			::-webkit-input-placeholder {
-			   color: $campus;
+			   color: rgba(white,.5);
 			}
 			:-moz-placeholder {
-			   color: $campus;
+			   color: rgba(white,.5);
 			}
 			::-moz-placeholder {
-			   color: $campus;
+			   color: rgba(white,.5);
 			}
 			:-ms-input-placeholder {
-			   color: $campus;
+			   color: rgba(white,.5);
 			}
 			input:focus {
-				color: $slate;
-				border-color: $slate;
+				color: white;
+				border-color: white;
 				&::-webkit-input-placeholder {
-				   color: $slate;
+				   color: white;
 				}
 				&:-moz-placeholder {
-				   color: $slate;
+				   color: white;
 				}
 				&::-moz-placeholder {
-				   color: $slate;
+				   color: white;
 				}
 				&:-ms-input-placeholder {
-				   color: $slate;
+				   color: white;
 				}
 			}
 			button {
@@ -354,9 +333,6 @@ button, a[class*=btn] {
 				p {
 					font-size: 24px!important;
 				}
-				h2 + p {
-					margin: 15px 0 0;
-				}
 				.inside-prop {
 					width: 200px;
 					height: 200px;
@@ -385,27 +361,12 @@ button, a[class*=btn] {
 		.slide {
 			.inside {
 				padding: 62px 50px 50px;
-				.inside-text {
-					padding-right: 10%;
-					width: 60%;
-				}
 				.inside-prop {
 					display: none;
-				}
-				h2 {
-					margin-top: 0!important;
-					font-size: 40px;
-					font-weight: 300;
-					letter-spacing: 1px;
-					text-transform: uppercase;
-					width: 100%;
 				}
 				p {
 					font-size: 24px;
 					font-weight: 300;
-				}
-				h2 + p {
-					margin: 15px 0 0;
 				}
 			}
 		}
@@ -463,7 +424,7 @@ button, a[class*=btn] {
 						position: relative;
 					}
 					.search-results-map {
-						background: url(../../../static/gabrielle/images/maps.png) no-repeat center center;
+						background: url(/static/images/maps.png) no-repeat center center;
 						.search-results-gurus {
 							@include round;
 							@include center-xy;
@@ -648,31 +609,69 @@ button, a[class*=btn] {
 		}
 		#values {
 			.inside {
-				p {
-					font-size: 24px;
-					text-align: center;
-				}
 				.inside-text {
-					padding: 0!important;
 					#values-categories-desktop {
 						@include listless;
 						display: block!important;
 						.value-category {
 							box-sizing: border-box;
 							padding: 0 10px 10px;
-							img {
+							svg {
 								max-width: 80px;
+								max-height: 80px;
+								path {
+									fill: white;
+								}
+							}
+							#category-academic {
+								circle {
+									fill: $cerise
+								}
+							}
+							#category-consulting {
+								circle {
+									fill: $orange;
+								}
+							}
+							#category-baking {
+								circle {
+									fill: $gold;
+								}
+							}
+							#category-photography {
+								circle {
+									fill: $moola;
+								}
+							}
+							#category-household {
+								circle {
+									fill: $shamrock;
+								}
+							}
+							#category-technology {
+								circle {
+									fill: $lake;
+								}
+							}
+							#category-sports {
+								circle {
+									fill: $eggplant;
+								}
+							}
+							#category-delivery {
+								circle {
+									fill: $campus;
+								}
 							}
 							ul {
 								@include listless;
-								@include tri-down(10, white, 5, 0 10px);
+								@include tri-down(10, $slate, 5, 0 10px);
 								margin: 10px auto;
 								max-width: 300px;
-								background: white;
-								color: $slate;
+								background: $slate;
 								li {
 									padding: 7px 10px;
-									border-bottom: 1px solid $shamrock;
+									border-bottom: 1px solid $charcoal;
 									font-size: 12px;
 									font-weight: 400;
 									&:last-child {
@@ -689,21 +688,37 @@ button, a[class*=btn] {
 				}
 			}
 		}
+		#earn {
+			h2 {
+				text-align: center;
+			}
+			#earn-inside {
+				display: table;
+				width: 100%;
+				max-width: 1000px;
+				margin: 15% auto 0;
+				#earn-text, .app-phone {
+					box-sizing: border-box;
+					display: table-cell!important;
+					vertical-align: middle;
+					width: 50%;
+				}
+			}
+		}
 		#info {
 			.inside {
 				@include center-xy;
 				height: auto;
-				.inside-text {
-					display: block;
-					width: 100%;
-				}
 				#info-download {
 					margin-top: 100px;
 				}
 				input {
-					border-bottom: 2px solid;
+					border-bottom: 2px solid rgba(white,.5);
 					font-size: 60px;
 					font-weight: 300;
+				}
+				input:focus {
+					border-color: white;
 				}
 				button {
 					margin-top: 25px;
@@ -715,40 +730,38 @@ button, a[class*=btn] {
 		}
 	}
 	.app-phone {
-		display: table-cell!important;
 		position: relative;
-		width: 40%!important;
 		.app-wf {
 			@include center-y;
-			@include border-radius(30);
+			@include border-radius(22);
 			right: 15%;
-			width: 256px;
-			height: 552px;
+			width: 192px;
+			height: 414px;
 			border-collapse: collapse;
 			border: 2px solid rgba(white,.2);
 			.app-wf-top {
 				position: absolute;
 				top: 0;
-				height: 76px;
+				height: 57px;
 				width: 100%;
 				div {
 					@include center-xy;
 					@include round;
-					width: 48px;
-					height: 4px;
+					width: 36px;
+					height: 3px;
 					border: 2px solid rgba(white,.2);
 				}
 			}
 			.app-wf-bot {
 				position: absolute;
 				bottom: 0;
-				height: 76px;
+				height: 57px;
 				width: 100%;
 				div {
 					@include center-xy;
 					@include round;
-					width: 40px;
-					height: 40px;
+					width: 30px;
+					height: 30px;
 					border: 2px solid rgba(white,.2);
 				}
 			}
@@ -756,7 +769,7 @@ button, a[class*=btn] {
 				@include center-xy;
 				img {
 					display: block;
-					height: 400px;
+					height: 300px;
 				}
 			}
 		}
@@ -766,11 +779,8 @@ button, a[class*=btn] {
 @media screen and (min-width:84em) {
 	#main {
 		.inside {
-			.inside-text {
-				padding-right: 15%;
-			}
 			h2 {
-				font-size: 48px!important;
+				font-size: 36px!important;
 				font-weight: 200!important;
 			}
 			p {
@@ -830,18 +840,16 @@ button, a[class*=btn] {
 		}
 		#values {
 			.inside {
-				p {
-					font-size: 36px!important;
-				}
 				.inside-text {
 					#values-categories-desktop {
 						.value-category {
 							padding-bottom: 15px;
-							img {
+							svg {
 								max-width: 120px;
+								max-height: 120px;
 							}
 							ul {
-								@include tri-down(15, white, 10, 0 15px);
+								@include tri-down(15, $slate, 10, 0 15px);
 								li {
 									padding: 10px 15px;
 									font-size: 14px;
@@ -866,6 +874,32 @@ button, a[class*=btn] {
 					margin-top: 50px;
 					font-size: 28px;
 					padding: 20px 40px;
+				}
+			}
+		}
+	}
+	.app-phone {
+		.app-wf {
+			@include border-radius(30);
+			width: 256px;
+			height: 552px;
+			.app-wf-top {
+				height: 76px;
+				div {
+					width: 48px;
+					height: 4px;
+				}
+			}
+			.app-wf-bot {
+				height: 76px;
+				div {
+					width: 40px;
+					height: 40px;
+				}
+			}
+			.app-wf-scr {
+				img {
+					height: 400px;
 				}
 			}
 		}

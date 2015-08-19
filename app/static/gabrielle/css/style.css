@@ -467,85 +467,67 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       box-sizing: border-box;
       padding: 20px;
       color: white; }
+      #main .slide .inside .inside-text {
+        display: block;
+        width: 100%; }
       #main .slide .inside h2 {
-        margin-top: 1em;
+        margin: 1em 0;
         font-size: 24px;
-        font-weight: 400;
-        text-transform: uppercase;
+        font-weight: 300;
         width: 100%; }
       #main .slide .inside p {
         font-size: 20px;
         font-weight: 300; }
-      #main .slide .inside h2 + p {
-        margin: 5px 0 0; }
       #main .slide .inside .inside-prop {
         border-radius: 1000px;
         margin: 0 auto;
         width: 100px;
         height: 100px;
         background: rgba(255, 255, 255, 0.2); }
-      #main .slide .inside .inside-text {
-        display: table-cell;
-        vertical-align: middle;
-        width: 100%; }
   #main #search {
     display: none; }
   #main #values {
-    background: #69B3A5;
+    background: #2B3234;
     text-align: center; }
-    #main #values p {
-      font-size: 24px;
-      text-align: left; }
-    #main #values .inside .inside-text {
-      padding: 0 !important; }
-      #main #values .inside .inside-text #values-categories-desktop {
-        display: none; }
+    #main #values .inside .inside-text #values-categories-desktop {
+      display: none; }
   #main #earn {
-    background: #2B3234; }
-  #main #adapt {
     background: #40484B; }
-  #main #rewards {
-    background: #8A9EA3; }
   #main #info {
-    background: #F1F1F1; }
-    #main #info .inside {
-      color: #40484B; }
-      #main #info .inside .inside-prop {
-        background: rgba(0, 0, 0, 0.2); }
-      #main #info .inside #info-download {
-        margin-top: 30px; }
-      #main #info .inside input {
-        display: block;
-        width: 100%;
-        background: none;
-        box-sizing: border-box;
-        border: 0;
-        border-bottom: 1px solid;
-        border-radius: 0 !important;
-        color: #8A9EA3;
-        font-size: 18px;
-        font-weight: 400; }
-      #main #info .inside ::-webkit-input-placeholder {
-        color: #8A9EA3; }
-      #main #info .inside :-moz-placeholder {
-        color: #8A9EA3; }
-      #main #info .inside ::-moz-placeholder {
-        color: #8A9EA3; }
-      #main #info .inside :-ms-input-placeholder {
-        color: #8A9EA3; }
-      #main #info .inside input:focus {
-        color: #40484B;
-        border-color: #40484B; }
-        #main #info .inside input:focus::-webkit-input-placeholder {
-          color: #40484B; }
-        #main #info .inside input:focus:-moz-placeholder {
-          color: #40484B; }
-        #main #info .inside input:focus::-moz-placeholder {
-          color: #40484B; }
-        #main #info .inside input:focus:-ms-input-placeholder {
-          color: #40484B; }
-      #main #info .inside button {
-        margin-top: 15px; }
+    background: #8A9EA3; }
+    #main #info .inside #info-download {
+      margin-top: 30px; }
+    #main #info .inside input {
+      display: block;
+      width: 100%;
+      background: none;
+      box-sizing: border-box;
+      border: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 0 !important;
+      font-size: 18px;
+      font-weight: 400; }
+    #main #info .inside ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #main #info .inside :-moz-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #main #info .inside ::-moz-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #main #info .inside :-ms-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #main #info .inside input:focus {
+      color: white;
+      border-color: white; }
+      #main #info .inside input:focus::-webkit-input-placeholder {
+        color: white; }
+      #main #info .inside input:focus:-moz-placeholder {
+        color: white; }
+      #main #info .inside input:focus::-moz-placeholder {
+        color: white; }
+      #main #info .inside input:focus:-ms-input-placeholder {
+        color: white; }
+    #main #info .inside button {
+      margin-top: 15px; }
 
 .app-phone {
   display: none !important; }
@@ -624,8 +606,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     padding: 62px 30px 30px; }
     #main .slide .inside p {
       font-size: 24px !important; }
-    #main .slide .inside h2 + p {
-      margin: 15px 0 0; }
     #main .slide .inside .inside-prop {
       width: 200px;
       height: 200px; } }
@@ -646,23 +626,11 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       max-width: 200px !important; }
   #main .slide .inside {
     padding: 62px 50px 50px; }
-    #main .slide .inside .inside-text {
-      padding-right: 10%;
-      width: 60%; }
     #main .slide .inside .inside-prop {
       display: none; }
-    #main .slide .inside h2 {
-      margin-top: 0 !important;
-      font-size: 40px;
-      font-weight: 300;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      width: 100%; }
     #main .slide .inside p {
       font-size: 24px;
       font-weight: 300; }
-    #main .slide .inside h2 + p {
-      margin: 15px 0 0; }
   #main #search {
     display: block; }
     #main #search #search-box, #main #search .search-results {
@@ -724,7 +692,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       #main #search .search-results .search-results-bottom > div {
         position: relative; }
       #main #search .search-results .search-results-bottom .search-results-map {
-        background: url(../../../static/gabrielle/images/maps.png) no-repeat center center; }
+        background: url(/static/images/maps.png) no-repeat center center; }
         #main #search .search-results .search-results-bottom .search-results-map .search-results-gurus {
           border-radius: 1000px;
           position: absolute;
@@ -869,60 +837,85 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
               padding: 10px 30px 10px 10px; }
         #main #search #search-container #search-results li:hover {
           background: #F1F1F1; }
-  #main #values .inside p {
-    font-size: 24px;
+  #main #values .inside .inside-text #values-categories-desktop {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: block !important; }
+    #main #values .inside .inside-text #values-categories-desktop .value-category {
+      box-sizing: border-box;
+      padding: 0 10px 10px; }
+      #main #values .inside .inside-text #values-categories-desktop .value-category svg {
+        max-width: 80px;
+        max-height: 80px; }
+        #main #values .inside .inside-text #values-categories-desktop .value-category svg path {
+          fill: white; }
+      #main #values .inside .inside-text #values-categories-desktop .value-category #category-academic circle {
+        fill: #DB1988; }
+      #main #values .inside .inside-text #values-categories-desktop .value-category #category-consulting circle {
+        fill: #E5753C; }
+      #main #values .inside .inside-text #values-categories-desktop .value-category #category-baking circle {
+        fill: #F9D57B; }
+      #main #values .inside .inside-text #values-categories-desktop .value-category #category-photography circle {
+        fill: #81B566; }
+      #main #values .inside .inside-text #values-categories-desktop .value-category #category-household circle {
+        fill: #69B3A5; }
+      #main #values .inside .inside-text #values-categories-desktop .value-category #category-technology circle {
+        fill: #50A5DD; }
+      #main #values .inside .inside-text #values-categories-desktop .value-category #category-sports circle {
+        fill: #9A5BC5; }
+      #main #values .inside .inside-text #values-categories-desktop .value-category #category-delivery circle {
+        fill: #8A9EA3; }
+      #main #values .inside .inside-text #values-categories-desktop .value-category ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border-radius: 5px;
+        position: relative;
+        background: #40484B;
+        padding: 0 10px;
+        margin-top: 20px;
+        margin: 10px auto;
+        max-width: 300px;
+        background: #40484B; }
+        #main #values .inside .inside-text #values-categories-desktop .value-category ul:before {
+          position: absolute;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+          content: "";
+          display: block;
+          position: absolute;
+          top: -19px;
+          width: 0;
+          height: 0;
+          border: 10px solid transparent;
+          border-bottom: 10px solid #40484B; }
+        #main #values .inside .inside-text #values-categories-desktop .value-category ul li {
+          padding: 7px 10px;
+          border-bottom: 1px solid #2B3234;
+          font-size: 12px;
+          font-weight: 400; }
+          #main #values .inside .inside-text #values-categories-desktop .value-category ul li:last-child {
+            border-bottom: 0; }
+          #main #values .inside .inside-text #values-categories-desktop .value-category ul li h3 {
+            font-size: 14px;
+            text-transform: uppercase; }
+  #main #earn h2 {
     text-align: center; }
-  #main #values .inside .inside-text {
-    padding: 0 !important; }
-    #main #values .inside .inside-text #values-categories-desktop {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: block !important; }
-      #main #values .inside .inside-text #values-categories-desktop .value-category {
-        box-sizing: border-box;
-        padding: 0 10px 10px; }
-        #main #values .inside .inside-text #values-categories-desktop .value-category img {
-          max-width: 80px; }
-        #main #values .inside .inside-text #values-categories-desktop .value-category ul {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          border-radius: 5px;
-          position: relative;
-          background: white;
-          padding: 0 10px;
-          margin-top: 20px;
-          margin: 10px auto;
-          max-width: 300px;
-          background: white;
-          color: #40484B; }
-          #main #values .inside .inside-text #values-categories-desktop .value-category ul:before {
-            position: absolute;
-            left: 50%;
-            -webkit-transform: translateX(-50%);
-            -moz-transform: translateX(-50%);
-            -ms-transform: translateX(-50%);
-            -o-transform: translateX(-50%);
-            transform: translateX(-50%);
-            content: "";
-            display: block;
-            position: absolute;
-            top: -19px;
-            width: 0;
-            height: 0;
-            border: 10px solid transparent;
-            border-bottom: 10px solid white; }
-          #main #values .inside .inside-text #values-categories-desktop .value-category ul li {
-            padding: 7px 10px;
-            border-bottom: 1px solid #69B3A5;
-            font-size: 12px;
-            font-weight: 400; }
-            #main #values .inside .inside-text #values-categories-desktop .value-category ul li:last-child {
-              border-bottom: 0; }
-            #main #values .inside .inside-text #values-categories-desktop .value-category ul li h3 {
-              font-size: 14px;
-              text-transform: uppercase; }
+  #main #earn #earn-inside {
+    display: table;
+    width: 100%;
+    max-width: 1000px;
+    margin: 15% auto 0; }
+    #main #earn #earn-inside #earn-text, #main #earn #earn-inside .app-phone {
+      box-sizing: border-box;
+      display: table-cell !important;
+      vertical-align: middle;
+      width: 50%; }
   #main #info .inside {
     position: absolute;
     top: 50%;
@@ -933,24 +926,21 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     height: auto; }
-    #main #info .inside .inside-text {
-      display: block;
-      width: 100%; }
     #main #info .inside #info-download {
       margin-top: 100px; }
     #main #info .inside input {
-      border-bottom: 2px solid;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.5);
       font-size: 60px;
       font-weight: 300; }
+    #main #info .inside input:focus {
+      border-color: white; }
     #main #info .inside button {
       margin-top: 25px;
       font-size: 24px;
       letter-spacing: 1px;
       padding: 15px 30px; }
   .app-phone {
-    display: table-cell !important;
-    position: relative;
-    width: 40% !important; }
+    position: relative; }
     .app-phone .app-wf {
       position: absolute;
       top: 50%;
@@ -959,16 +949,16 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       -ms-transform: translateY(-50%);
       -o-transform: translateY(-50%);
       transform: translateY(-50%);
-      border-radius: 30px;
+      border-radius: 22px;
       right: 15%;
-      width: 256px;
-      height: 552px;
+      width: 192px;
+      height: 414px;
       border-collapse: collapse;
       border: 2px solid rgba(255, 255, 255, 0.2); }
       .app-phone .app-wf .app-wf-top {
         position: absolute;
         top: 0;
-        height: 76px;
+        height: 57px;
         width: 100%; }
         .app-phone .app-wf .app-wf-top div {
           position: absolute;
@@ -980,13 +970,13 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
           -o-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
           border-radius: 1000px;
-          width: 48px;
-          height: 4px;
+          width: 36px;
+          height: 3px;
           border: 2px solid rgba(255, 255, 255, 0.2); }
       .app-phone .app-wf .app-wf-bot {
         position: absolute;
         bottom: 0;
-        height: 76px;
+        height: 57px;
         width: 100%; }
         .app-phone .app-wf .app-wf-bot div {
           position: absolute;
@@ -998,8 +988,8 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
           -o-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
           border-radius: 1000px;
-          width: 40px;
-          height: 40px;
+          width: 30px;
+          height: 30px;
           border: 2px solid rgba(255, 255, 255, 0.2); }
       .app-phone .app-wf .app-wf-scr {
         position: absolute;
@@ -1012,13 +1002,11 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         transform: translate(-50%, -50%); }
         .app-phone .app-wf .app-wf-scr img {
           display: block;
-          height: 400px; } }
+          height: 300px; } }
 
 @media screen and (min-width: 84em) {
-  #main .inside .inside-text {
-    padding-right: 15%; }
   #main .inside h2 {
-    font-size: 48px !important;
+    font-size: 36px !important;
     font-weight: 200 !important; }
   #main .inside p {
     font-size: 28px !important; }
@@ -1041,16 +1029,15 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     padding: 20px 10px 20px 20px; }
   #main #search #search-container #search-results li div:last-child {
     padding: 20px 30px 20px 10px; }
-  #main #values .inside p {
-    font-size: 36px !important; }
   #main #values .inside .inside-text #values-categories-desktop .value-category {
     padding-bottom: 15px; }
-    #main #values .inside .inside-text #values-categories-desktop .value-category img {
-      max-width: 120px; }
+    #main #values .inside .inside-text #values-categories-desktop .value-category svg {
+      max-width: 120px;
+      max-height: 120px; }
     #main #values .inside .inside-text #values-categories-desktop .value-category ul {
       border-radius: 10px;
       position: relative;
-      background: white;
+      background: #40484B;
       padding: 0 15px;
       margin-top: 30px; }
       #main #values .inside .inside-text #values-categories-desktop .value-category ul:before {
@@ -1068,7 +1055,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         width: 0;
         height: 0;
         border: 15px solid transparent;
-        border-bottom: 15px solid white; }
+        border-bottom: 15px solid #40484B; }
       #main #values .inside .inside-text #values-categories-desktop .value-category ul li {
         padding: 10px 15px;
         font-size: 14px; }
@@ -1082,7 +1069,23 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     #main #info .inside button {
       margin-top: 50px;
       font-size: 28px;
-      padding: 20px 40px; } }
+      padding: 20px 40px; }
+  .app-phone .app-wf {
+    border-radius: 30px;
+    width: 256px;
+    height: 552px; }
+    .app-phone .app-wf .app-wf-top {
+      height: 76px; }
+      .app-phone .app-wf .app-wf-top div {
+        width: 48px;
+        height: 4px; }
+    .app-phone .app-wf .app-wf-bot {
+      height: 76px; }
+      .app-phone .app-wf .app-wf-bot div {
+        width: 40px;
+        height: 40px; }
+    .app-phone .app-wf .app-wf-scr img {
+      height: 400px; } }
 
 .js #search-box, .js .search-results {
   display: none; }
