@@ -1,5 +1,4 @@
 @import 'mixin';
-@import 'default';
 
 #top {
 	position: fixed;
@@ -87,7 +86,7 @@
 	width: 100%;
 	max-width: 300px;
 	height: 100%;
-	background: $slate;
+	background: rgba($slate,.5);
 	&.active {
 		@include opacity(1);
 	}
@@ -112,20 +111,53 @@
 			a {
 				display: block;
 				padding: 15px 10px;
-				border-right: 4px solid $slate;
+				border-right: 4px solid rgba($slate,0);
 				color: white;
 				font-weight: 600;
 				font-size: 18px;
 				text-transform: uppercase;
-				&.active {
-					border-right: 4px solid $shamrock;
-				}
+				cursor: pointer;
 			}
 			#{$links} {
 				background: rgba(white, .1);
-				border-right: 4px solid $azure;
-				&.active {
-					border-right: 4px solid $taupe;
+				border-right-color: $taupe;
+			}
+			#link-home:active, #link-home:focus, #link-home:hover {
+				border-right-color: $shamrock;
+			}
+			#link-search:active, #link-search:focus, #link-search:hover {
+				border-right-color: $azure;
+			}
+			#link-earn:active, #link-earn:focus, #link-earn:hover {
+				border-right-color: $charcoal;
+			}
+			#link-work:active, #link-work:focus, #link-work:hover {
+				border-right-color: $slate;
+			}
+			#link-why:active, #link-why:focus, #link-why:hover {
+				border-right-color: $campus;
+			}
+			#link-start:active, #link-start:focus, #link-start:hover {
+				border-right-color: $shamrock;
+			}
+			#link-faq:active, #link-faq:focus, #link-faq:hover {
+				border-right-color: $lake;
+			}
+			#link-manifest:active, #link-manifest:focus, #link-manifest:hover {
+				border-right-color: $eggplant;
+			}
+			#link-team:active, #link-team:focus, #link-team:hover {
+				border-right-color: $cerise;
+			}
+			#link-support:active, #link-support:focus, #link-support:hover {
+				border-right-color: $orange;
+			}
+			ul {
+				li {
+					a {
+						padding: 10px 5px 10px 20px;
+						font-size: 14px;
+					}
 				}
 			}
 		}

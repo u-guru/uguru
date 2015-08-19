@@ -1,33 +1,31 @@
 {% extends 'gabrielle/layout/base.html' %}
+{% block pagetype %}page-eggplant{% endblock %}
 {% block header_scripts %}
-<link rel="stylesheet" href="/static/gabrielle/css/samir.css"/>
+<link rel="stylesheet" href="/static/gabrielle/css/page.css"/>
 {% endblock %}
+
 {% block content %}
-<div id="team" class='absolute full-width-height'>
-    <div id='team-main-container'>
-        <div class='pure-u-1'>
-            <h1 class='center bold white-text'>
-                Meet the team
-            </h1>
-        </div>
-        <div class='pure-u-1 padding-1em padding-top-2em'>
-            <div class='pure-g'>
-                {% for member in team_members %}
-                <div class='pure-u-1-{{team_members|length}}'>
-                    <div class='photo-container center'>
-                        <img src='{{member["profile_url"]}}' height="100" width="100"/>
-                    </div>
-                    <h5 class='team-member-name white-text center'>
-                        {{member['name']}}
-                    </h5>
-                    <a class='white-text' target="_blank" href='/team/profiles/{{member["name"].split(" ")[0]|lower}}'>
-                        <p class='center no-margin no-padding'>
-                            Read more
-                        </p>
-                    </a>
+<div id="team" class="main pure-g">
+    <header class="pure-u-1">
+	    <h1 class="text-center">Meet the team</h1>
+	</header>
+    <div class='pure-u-1 padding-1em padding-top-2em'>
+        <div class='pure-g'>
+            {% for member in team_members %}
+            <div class='pure-u-1-{{team_members|length}}'>
+                <div class='photo-container center'>
+                    <img src='{{member["profile_url"]}}' height="100" width="100"/>
                 </div>
-                {% endfor %}
+                <h5 class='team-member-name white-text center'>
+                    {{member['name']}}
+                </h5>
+                <a class='white-text' target="_blank" href='/team/profiles/{{member["name"].split(" ")[0]|lower}}'>
+                    <p class='center no-margin no-padding'>
+                        Read more
+                    </p>
+                </a>
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>

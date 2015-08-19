@@ -1,4 +1,5 @@
-@import 'menu';
+@import 'mixin';
+@import 'default';
 
 * {
 	-webkit-backface-visibility: hidden;
@@ -187,24 +188,27 @@ button, a[class*=btn] {
 	#search {
 		display: none;
 	}
-	#values {
+	#earn {
 		background: $charcoal;
 		text-align: center;
 		.inside {
 			.inside-text {
-				#values-categories-desktop {
+				#earn-categories-desktop {
 					display: none;
 				}
 			}
 		}
 	}
-	#earn {
+	#work {
 		background: $slate;
 	}
-	#info {
+	#why {
 		background: $campus;
+	}
+	#start {
+		background: $shamrock;
 		.inside {
-			#info-download {
+			#start-download {
 				margin-top: 30px;
 			}
 			input {
@@ -607,13 +611,13 @@ button, a[class*=btn] {
 				}
 			}
 		}
-		#values {
+		#earn {
 			.inside {
 				.inside-text {
-					#values-categories-desktop {
+					#earn-categories-desktop {
 						@include listless;
 						display: block!important;
-						.value-category {
+						.earn-category {
 							box-sizing: border-box;
 							padding: 0 10px 10px;
 							svg {
@@ -688,16 +692,16 @@ button, a[class*=btn] {
 				}
 			}
 		}
-		#earn {
+		#work {
 			h2 {
 				text-align: center;
 			}
-			#earn-inside {
+			#work-inside {
 				display: table;
 				width: 100%;
 				max-width: 1000px;
 				margin: 15% auto 0;
-				#earn-text, .app-phone {
+				#work-text, .app-phone {
 					box-sizing: border-box;
 					display: table-cell!important;
 					vertical-align: middle;
@@ -705,11 +709,11 @@ button, a[class*=btn] {
 				}
 			}
 		}
-		#info {
+		#start {
 			.inside {
 				@include center-xy;
 				height: auto;
-				#info-download {
+				#start-download {
 					margin-top: 100px;
 				}
 				input {
@@ -838,11 +842,11 @@ button, a[class*=btn] {
 				}
 			}
 		}
-		#values {
+		#earn {
 			.inside {
 				.inside-text {
-					#values-categories-desktop {
-						.value-category {
+					#earn-categories-desktop {
+						.earn-category {
 							padding-bottom: 15px;
 							svg {
 								max-width: 120px;
@@ -863,7 +867,7 @@ button, a[class*=btn] {
 				}
 			}
 		}
-		#info {
+		#start {
 			.inside {
 				max-width: 80%;
 				input {

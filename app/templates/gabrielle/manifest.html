@@ -1,15 +1,16 @@
 {% extends 'gabrielle/layout/base.html' %}
+{% block pagetype %}page-eggplant{% endblock %}
 {% block header_scripts %}
-<link rel="stylesheet" href="/static/gabrielle/css/samir.css"/>
+<link rel="stylesheet" href="/static/gabrielle/css/page.css"/>
 {% endblock %}
+
 {% block content %}
-<div id="manifest" class='absolute full-width-height'>
-    <div id='manifest-main-container'>
-        <div class='pure-u-1'>
-            <h1 class='center bold'>
-                Uguru's Manifest
-            </h1>
-        </div>
-    </div>
+<div id="manifest" class="main pure-g">
+    <header class="pure-u-1">
+	    <h1 class="text-center">Manifesto</h1>
+	</header>
+	<div class="pure-u-1">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</div>
 </div>
 {% endblock %}
