@@ -337,7 +337,10 @@ Uguru Home
 	        console.log('yo')
 	            //make it wobble
 	    }).on('typeahead:cursorchanged', function(event, suggested, dataset_name) {
-	        $('.tt-suggestion.tt-cursor img').addClass('animated wobble');
+	        $('.tt-suggestion').css('background-color', 'white');
+	        var suggestedTypeaheadListItem = document.querySelectorAll('.tt-suggestion.tt-cursor')[dataset_name];
+	        suggestedTypeaheadListItem.style.backgroundColor = 'rgba(0,0,0,0.1)';
+	        // event.target.style.backgroundColor = 'rgba(0,0,0,0.1)';
 	    });
 	};
 
