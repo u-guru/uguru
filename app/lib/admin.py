@@ -28,6 +28,10 @@ admin_info = {
         'location': 'Santa Clara, CA',
         'university': 'University of Chicago'
     },
+    'nick@uguru.me': {
+        'name': 'Nick Lam',
+        'profile_url': '/static/img/admin/nicklam.png'
+    },
     'jason@uguru.me': {
         'name': 'Jason Huang',
         'profile_url': 'http://i.imgur.com/NzlBCRz.png',

@@ -24,10 +24,10 @@ angular.module('uguru.guru.controllers')
     $ionicPlatform, $cordovaStatusbar, $ionicViewSwitcher,
     $ionicActionSheet, $ionicHistory, $ionicPopup, CordovaPushWrapper) {
     console.log($scope.user.cards);
-    $scope.data = {
-      text_notifications:false || $scope.user.text_notifications,
-      push_notifications: false || ($scope.user.push_notifications && $scope.user.push_notifications_enabled && $scope.user.devices.length)
-    };
+    // $scope.data = {
+    //   text_notifications:false || $scope.user.text_notifications,
+    //   push_notifications: false || ($scope.user.push_notifications && $scope.user.push_notifications_enabled && $scope.user.devices.length)
+    // };
 
     $scope.takePhotoCallbackSuccess = function($scope) {
 
