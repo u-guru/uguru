@@ -3,6 +3,9 @@
 {% block title_text %}
 Uguru Home
 {% endblock %}
+{% block header_scripts %}
+	<link rel="stylesheet" href="/static/gabrielle/css/samir.css"/>
+{% endblock %}
 
 {% block logo %}
 	<img id="top-mobile-logo" src="/static/gabrielle/svg/logo-white.svg" alt="uguru"/>
@@ -15,7 +18,6 @@ Uguru Home
 	</svg>
 	<img id="top-school-logo" src="/static/gabrielle/svg/logo-shamrock.svg" alt="uguru"/>
 {% endblock %}
-
 {% block content %}
 <nav id="slide-breadcrumbs">
 	<ul>
@@ -133,8 +135,8 @@ Uguru Home
 			<div class="inside-text">
 				<h2>Earn sidecash doing literally anything that you're good at.</h2>
 				<ul id="earn-categories-desktop">
-					<li class="earn-category">
-						<div id="earn-category-academic" class="earn-category-front">
+					<li class="earn-category" id='earn-category-1'>
+						<div id="earn-category-academic" class="earn-category-front front">
 							<div class="earn-category-overlay"></div>
 							<svg id="category-academic" width="250px" height="250px" viewBox="0 0 250 250" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 							    <circle class="background" cx="125" cy="125" r="125" fill="#FFFFFF"></circle>
@@ -142,7 +144,7 @@ Uguru Home
 							</svg>
 							<h3>Academic Courses</h3>
 						</div>
-						<div hidden class="earn-category-back">
+						<div class="earn-category-back back">
 							<ul>
 								<li>Tutor peers</li>
 								<li>Answer questions online</li>
@@ -327,6 +329,9 @@ Uguru Home
 <script src="/static/js/web/lib/fastmatcher.js"></script>
 
 <script src="/static/js/web/lib/handlebars.js"></script>
+
+<script src="/static/gabrielle/js/lib/jquery.flip.min.js"></script>
+<script src="/static/gabrielle/js/lib/phonenumber.js"></script>
 <script>
 	var all_universities;
 
@@ -392,7 +397,10 @@ Uguru Home
 	        console.log('yo')
 	            //make it wobble
 	    }).on('typeahead:cursorchanged', function(event, suggested, dataset_name) {
-	        $('.tt-suggestion.tt-cursor img').addClass('animated wobble');
+	        $('.tt-suggestion').css('background-color', 'white');
+	        var suggestedTypeaheadListItem = document.querySelectorAll('.tt-suggestion.tt-cursor')[dataset_name];
+	        suggestedTypeaheadListItem.style.backgroundColor = 'rgba(0,0,0,0.1)';
+	        // event.target.style.backgroundColor = 'rgba(0,0,0,0.1)';
 	    });
 	};
 
