@@ -424,11 +424,15 @@ button, a[class*=btn] {
 					}
 				}
 				.search-results-bottom {
+					@include flex;
+					@include flex-wrap;
+					width: 100%;
 					> div {
+						width: 50%;
 						position: relative;
 					}
 					.search-results-map {
-						background: url(/static/images/maps.png) no-repeat center center;
+						background: url(../../../static/gabrielle/images/maps.png) no-repeat center center;
 						.search-results-gurus {
 							@include round;
 							@include center-xy;
@@ -457,7 +461,11 @@ button, a[class*=btn] {
 					.search-results-courses {
 						ul {
 							@include listless;
+							@include flex;
+							@include flex-wrap;
+							width: 100%;
 							li {
+								width: 50%;
 								box-sizing: border-box;
 								padding: 10px;
 								background: $slate;
@@ -616,10 +624,60 @@ button, a[class*=btn] {
 				.inside-text {
 					#earn-categories-desktop {
 						@include listless;
-						display: block!important;
+						@include flex;
+						@include flex-wrap;
+						box-sizing: border-box;
+						width: 100%;
+						margin: -10px 0;
 						.earn-category {
+							width: 25%;
 							box-sizing: border-box;
-							padding: 0 10px 10px;
+							.earn-category-front {
+								@include border-radius(5);
+								overflow: hidden;
+								position: relative;
+								box-sizing: border-box;
+								background: $slate;
+								margin: 10px;
+								padding: 40px 10px;
+								h3 {
+									margin-top: 5px;
+									font-size: 18px;
+									text-transform: uppercase;
+								}
+								.earn-category-overlay {
+									position: absolute;
+									top: 0;
+									left: 0;
+									width: 100%;
+									height: 100%;
+									background: rgba($charcoal, .5);
+								}
+							}
+							#earn-category-academic {
+								background: url(../../../static/gabrielle/images/category/academic.jpg) no-repeat center center / cover;
+							}
+							#earn-category-consulting {
+								background: url(../../../static/gabrielle/images/category/consulting.jpg) no-repeat center center / cover;
+							}
+							#earn-category-baking {
+								background: url(../../../static/gabrielle/images/category/baking.jpg) no-repeat center center / cover;
+							}
+							#earn-category-photography {
+								background: url(../../../static/gabrielle/images/category/photography.jpg) no-repeat center center / cover;
+							}
+							#earn-category-household {
+								background: url(../../../static/gabrielle/images/category/household.jpg) no-repeat center center / cover;
+							}
+							#earn-category-technology {
+								background: url(../../../static/gabrielle/images/category/technology.jpg) no-repeat center center / cover;
+							}
+							#earn-category-sports {
+								background: url(../../../static/gabrielle/images/category/sports.jpg) no-repeat center center / cover;
+							}
+							#earn-category-delivery {
+								background: url(../../../static/gabrielle/images/category/delivery.jpg) no-repeat center center / cover;
+							}
 							svg {
 								max-width: 80px;
 								max-height: 80px;
@@ -806,6 +864,7 @@ button, a[class*=btn] {
 							li {
 								padding: 15px;
 								font-size: 24px;
+								width: 50%;
 							}
 						}
 					}
