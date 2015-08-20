@@ -63,8 +63,18 @@ exports.config = {
 
 
        			// protractor.run.setUp("http://localhost:8100/#/new-home","jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
-            // browser.sleep(800);     
+            // browser.sleep(800);
+
+            global.protractor = protractor;
+            global.browser = browser;
+            global.$ = browser.$;
+            global.$$ = browser.$$;
+            global.element = browser.element;     
             global.dv = browser.driver;
+            
+            global.isAngularSite = function(flag){
+                browser.ignoreSynchronization = !flag;
+            };
 
         }
         
