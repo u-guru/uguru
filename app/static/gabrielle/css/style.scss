@@ -70,7 +70,7 @@ button, a[class*=btn] {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: white;
+	background: $shamrock;
 	#mobile-inside {
 		@include center-xy;
 		width: 100%;
@@ -79,14 +79,26 @@ button, a[class*=btn] {
 		img {
 			display: block;
 			margin: 0 auto;
+			max-width: 200px;
 		}
 		p {
-			@include tri-down(15, #eee, 10, 10px 20px);
+			@include tri-down(15, white, 10, 10px 20px);
+			font-size: 22px;
 			font-weight: 300;
 			text-align: center;
 			em {
 				display: block;
 				font-size: 18px;
+			}
+		}
+	}
+}
+
+@media screen and (min-width:375px) {
+	#mobile-start {
+		#mobile-inside {
+			img {
+				max-width: none;
 			}
 		}
 	}
@@ -106,6 +118,7 @@ button, a[class*=btn] {
 
 #top {
 	#top-logo {
+		display: none!important;
 		#top-school-banner {
 			@include opacity(0);
 		}
@@ -115,6 +128,7 @@ button, a[class*=btn] {
 			height: 50%;
 			max-width: 200px;
 			min-width: 80px;
+			margin: 0 auto!important;
 		}
 		#top-school-logo {
 			@include transition-type(width, .15s ease-in);
@@ -312,6 +326,7 @@ button, a[class*=btn] {
 	#top {
 		display: block!important;
 		#top-logo {
+			display: block!important;
 			#top-school-banner {
 				@include opacity(1);
 			}

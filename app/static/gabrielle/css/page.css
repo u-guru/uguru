@@ -185,13 +185,15 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
   background: #69B3A5;
   color: white; }
 
-#top #top-logo {
-  width: 42px;
-  height: 42px; }
-  #top #top-logo svg {
-    margin: 10px auto;
-    width: 100%;
-    height: 100%; }
+#top {
+  background: white; }
+  #top #top-logo {
+    width: 42px;
+    height: 42px; }
+    #top #top-logo svg {
+      margin: 10px auto;
+      width: 100%;
+      height: 100%; }
 
 .main {
   margin: 0 auto;
