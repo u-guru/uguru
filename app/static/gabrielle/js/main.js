@@ -113,29 +113,42 @@ $(function () {
 				startButton, // Arg #1 element where to transition from
 				modalToFire, // Arg #2 what to transition into
 				{            // Arg #3 options
-					duration:0.3 //
+					duration:0.3, // duration of animation
+					targetShowDuration:0, //duration for target element to become visible, if hidden initially
+					relativeToWindow:false //set to true if your target element is relative & position w.r.t window
+
 				},
-				function()   // Arg #3 (OPTIONAL) callbacks
+				function()   // Arg #4 (OPTIONAL) callbacks
 					{
-						setTimeout(function() {
-							$("#overlay").toggleClass("active");
-							$('#overlay').css('opacity', 0.4);
-						},100) //seconds afterwards
+						console.log('callback for cta modal executed')
+						// setTimeout(function() {
+						// 	$("#overlay").toggleClass("active");
+						// },100) //seconds afterwards
 
 					}
 			);
 
 		});
-		$('#home-modal-close-link').on("click", function(e) {
-			$('#start-modal').toggleClass('active');
-			$('#overlay').toggleClass('active');
+		$('#home-modal-close-link, #home-modal-submit-close-link').on("click", function(e) {
 			closeCtaAnimatedModal();
+			$('#start-modal').toggleClass('active');
 			e.preventDefault();
 		})
 		$(".top-link-close").on("click", function(e) {
 			$("#side-menu, #overlay, #start-modal").removeClass("active");
 			e.preventDefault();
 		});
+
+		$('#link-support').on("click", function(e) {
+			document.querySelector('.intercom-launcher-button').click();
+		});
+
+		$('#overlay-right:visible').on("click", function(e){
+			$('#overlay').toggleClass('active');
+			if ($('#start-modal').is(":visible")) {
+				$('#start-modal').toggleClass('active');
+			}
+		})
 
 		$("#search-results").on("click", "li", function(e) {
 			/* SAMIR - ELEMENTS THAT NEED TO CHANGE
@@ -175,6 +188,64 @@ $(function () {
 				$("#search-school-name").text("Cambridge University");
 			}
 		});
+		$('#home-modal-send-text').click(function(e) {
+			var phoneNumberInputValue = $('#home-modal-phone-input').val();
+			//add phone number regex
+			//check for length
+			if (!(phoneNumberInputValue.length && phoneNumberInputValue.length > 9)) {
+				alert('Please enter valid phone number');
+				$('#home-modal-phone-input').val('').focus();
+				return;
+			}
+
+
+			if(!isPhoneNumberValid(phoneNumberInputValue)){
+				alert('not valid phone number format');
+				$('#home-modal-phone-input').val('').focus();
+				return;
+			}
+
+			$('#modal-content').toggleClass('active');
+			$('#modal-loader-container').toggleClass('active');
+
+			//TODO: replace this with actual ajax call
+			//
+			setTimeout(function() {
+				$('#modal-loader-container').toggleClass('active');
+				$('#modal-content-submit').toggleClass('active');
+			}, 1500)
+
+		});
+		$('#home-modal-send-email').click(function(e) {
+			function validateEmail(email) {
+			    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+			    return re.test(email);
+			}
+			var phoneEmailInputValue = $('#home-modal-email-input').val();
+			//add phone number regex
+			//check for length
+			if (!(phoneEmailInputValue.length && phoneEmailInputValue.length > 9)) {
+				alert('Please enter valid email');
+				$('#home-modal-email-input').val('').focus();
+				return;
+			}
+
+			if(!validateEmail(phoneEmailInputValue)){
+				alert('Please enter valid email');
+				$('#home-modal-email-input').val('').focus();
+				return;
+			}
+			//hide the main body
+			$('#modal-content').toggleClass('active');
+			$('#modal-loader-container').toggleClass('active');
+
+			//TODO: replace this with actual ajax call
+			//
+			setTimeout(function() {
+				$('#modal-loader-container').toggleClass('active');
+				$('#modal-content-submit').toggleClass('active');
+			}, 1500)
+
+		});
 	}
-	$('#earn-category-1').flip({axis:'y', trigger:'hover'});
 });
