@@ -5,7 +5,6 @@ Uguru Home
 {% endblock %}
 {% block header_scripts %}
 <link rel="stylesheet" href="/static/gabrielle/css/style.css"/>
-<link rel="stylesheet" href="/static/gabrielle/css/samir.css"/>
 {% endblock %}
 
 {% block logo %}
@@ -389,7 +388,7 @@ Uguru Home
 	            //if no results show
 	            empty: [
 	                '<div class="tt-suggestion">',
-	                '<a href="http://goo.gl/forms/UQ7WcYl3sb" class="university-link" target="_blank"><div><img class="pure-img" src="/static/img/guru-logo-red.svg"/></div><div><h2><span class="title">No results found (yet!) </span> Click to Bring Uguru to Your University / School</h2></div></a>',
+	                '<a href="http://goo.gl/forms/UQ7WcYl3sb" class="university-link" target="_blank"><div><img class="pure-img" src="/static/img/guru-logo-red.svg"/></div><div><h2><span class="title">No results found (yet!)</span> Click to Bring Uguru to Your University / School</h2></div></a>',
 	                '</div>'
 	            ].join('\n'),
 	            suggestion: Handlebars.compile("<div><img src='{{thumbnail.source}}' alt=''/></div><div><h2>{{title}}</h2><p>{{city}}, {{state}}, USA</p></div>")

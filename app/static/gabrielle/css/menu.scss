@@ -174,3 +174,114 @@
 		}
 	}
 }
+
+#start-modal.show {
+    visibility: visible;
+    opacity:1;
+}
+
+#start-modal.active {
+    display:block;
+}
+
+#start-modal {
+    /*visability:hidden !important;*/
+    display:none;
+    z-index:1000001;
+    width:50%;
+    background-color:#69B3A5 !important;
+    height:30%;
+}
+
+#start-modal a {
+    color:white;
+    text-align:center;
+}
+.front, .back {
+    height:100%;
+    width:auto;
+}
+
+.intercom-sheet-header-minimize-button {
+    display:none !important;
+}
+
+.hide {
+    display:none;
+}
+
+#modal-loader-container.active {
+    display:block;
+}
+
+#modal-content,
+#modal-content-submit {
+    display:none;
+}
+
+#modal-content.active,
+#modal-content-submit.active {
+    display:block;
+}
+
+#start-modal .svg-container {
+    margin: 0 auto;
+    text-align: center;
+    height: 100%;
+    margin-top: 20%;
+}
+#start-modal.show {
+    visibility:  visible;
+    opacity: 1;
+}
+
+#start-modal.active {
+    display: block;
+}
+
+#start-modal {
+    /*visability: hidden !important;*/
+    display: none;
+    z-index: 1000001;
+    width: 50%;
+    background-color: #69B3A5 !important;
+    height: 30%;
+}
+
+#start-modal a {
+    color: white;
+    text-align: center;
+}
+.front, .back {
+    height: 100%;
+    width: auto;
+}
+
+.intercom-sheet-header-minimize-button {
+    display: none !important;
+}
+
+.hide {
+    display: none;
+}
+
+#modal-loader-container.active {
+    display: block;
+}
+
+#modal-content,
+#modal-content-submit {
+    display: none;
+}
+
+#modal-content.active,
+#modal-content-submit.active {
+    display: block;
+}
+
+#start-modal .svg-container {
+    margin:  0 auto;
+    text-align:  center;
+    height:  100%;
+    margin-top:  20%;
+}

@@ -667,7 +667,8 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       #main #search #search-container :-ms-input-placeholder {
         color: #ddd; }
       #main #search #search-container .twitter-typeahead {
-        display: block !important; }
+        display: block !important;
+        width: 100%; }
       #main #search #search-container .tt-dropdown-menu {
         background: white;
         width: 100%; }
