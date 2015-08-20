@@ -4,7 +4,9 @@
 {% block title_text %}
 Uguru Home
 {% endblock %}
-
+{% block header_scripts %}
+	<link rel="stylesheet" href="/static/gabrielle/css/samir.css"/>
+{% endblock %}
 {% block content %}
 <nav id="slide-breadcrumbs">
 	<ul>
@@ -272,6 +274,7 @@ Uguru Home
 <script src="/static/js/web/lib/fastmatcher.js"></script>
 
 <script src="/static/js/web/lib/handlebars.js"></script>
+<script src="/static/gabrielle/js/lib/cta.min.js"></script>
 <script>
 	var all_universities;
 

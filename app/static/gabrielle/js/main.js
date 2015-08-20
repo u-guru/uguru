@@ -47,7 +47,7 @@ menuStyle = function() {
 }
 
 $(document).ready(function () {
-	
+
 	slideLeft();
 	menuStyle();
 	$(window).resize(function(){
@@ -101,9 +101,37 @@ $(function () {
 			e.preventDefault();
 		});
 		$(".top-link-start").on("click", function(e) {
-			$("#start-modal, #overlay").toggleClass("active");
-			e.preventDefault();
+
+			var modalToFire = document.querySelector('#start-modal');
+			var startButton = this;
+
+			$('#start-modal').toggleClass('active');
+
+			//call to action tool
+			//once CTA object is instantiate, it returns a function that can reverse it
+			closeCtaAnimatedModal = cta(
+				startButton, // Arg #1 element where to transition from
+				modalToFire, // Arg #2 what to transition into
+				{            // Arg #3 options
+					duration:0.3 //
+				},
+				function()   // Arg #3 (OPTIONAL) callbacks
+					{
+						setTimeout(function() {
+							$("#overlay").toggleClass("active");
+							$('#overlay').css('opacity', 0.4);
+						},100) //seconds afterwards
+
+					}
+			);
+
 		});
+		$('#home-modal-close-link').on("click", function(e) {
+			$('#start-modal').toggleClass('active');
+			$('#overlay').toggleClass('active');
+			closeCtaAnimatedModal();
+			e.preventDefault();
+		})
 		$(".top-link-close").on("click", function(e) {
 			$("#side-menu, #overlay, #start-modal").removeClass("active");
 			e.preventDefault();
