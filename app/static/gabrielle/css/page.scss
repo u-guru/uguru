@@ -1,0 +1,243 @@
+@import 'mixin';
+@import 'default';
+
+* {
+	box-sizing: border-box;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+*:focus {
+	outline: none;
+}
+
+body {
+	font-family: $font;
+	font-size: 24px;
+	font-weight: 200!important;
+	color: $charcoal;
+	background: white;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+a {
+	@include transition(.15s ease-in);
+	color: $shamrock;
+	text-decoration: none;
+}
+#{$links} {
+	color: $cerise-mute;
+}
+
+button, a[class*=btn] {
+	display: inline-block;
+	padding: 10px 20px;
+	border: 0;
+	background: $taupe;
+	color: white;
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:focus, a[class*=btn]:hover {
+	background: $slate;
+	color: white;
+}
+.btn-ghost {
+	border: 2px solid white!important;
+	background: transparent!important;
+	color: white!important;
+}
+.btn-ghost:active, .btn-ghost:focus, .btn-ghost:hover {
+	background: $slate!important;
+	color: white!important;
+}
+.btn-round {
+	@include round;
+}
+.btn-shamrock {
+	background: $shamrock;
+	color: white;
+}
+
+#top {
+	#top-logo {
+		width: 42px;
+		height: 42px;
+		svg {
+			margin: 10px auto;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+.main {
+	margin: 0 auto;
+	padding: 82px 10px 0;
+	max-width: 1000px;
+	dl {
+		dt {
+			background: $lake;
+			color: white;
+			padding: 20px 30px;
+			font-weight: 400;
+		}
+		dd {
+			margin: 10px 30px 0;
+			font-size: 18px;
+		}
+	}
+}
+
+#page-moola {
+	a {
+		color: $moola;
+	}
+	#{$links} {
+		color: $moola-mute;
+	}
+	body {
+		background: url() center center;
+	}
+	button {
+		background: $moola!important;
+	}
+	button:active, button:focus, button:hover {
+		background: $moola-mute!important;
+		color: white;
+	}
+	.btn-ghost {
+		border: 2px solid $moola!important;
+		background: transparent!important;
+		color: $moola!important;
+	}
+	.btn-ghost:active, .btn-ghost:focus, .btn-ghost:hover {
+		border-color: $moola-mute!important;
+		background: $moola-mute!important;
+		color: white!important;
+	}
+	#top {
+		#top-logo {
+			svg {
+				path {
+					fill: $moola;
+				}
+			}
+		}
+		#top-logo:active, #top-logo:focus, #top-logo:hover {
+			svg {
+				path {
+					fill: $moola-mute;
+				}
+			}
+		}
+	}
+}
+
+#page-lake {
+	a {
+		color: $lake;
+	}
+	#{$links} {
+		color: $lake-mute;
+	}
+	body {
+		background: url() center center;
+	}
+	button {
+		background: $lake!important;
+	}
+	button:active, button:focus, button:hover {
+		background: $lake-mute!important;
+		color: white;
+	}
+	.btn-ghost {
+		border: 2px solid $lake!important;
+		background: transparent!important;
+		color: $lake!important;
+	}
+	.btn-ghost:active, .btn-ghost:focus, .btn-ghost:hover {
+		border-color: $lake-mute!important;
+		background: $lake-mute!important;
+		color: white!important;
+	}
+	#top {
+		#top-logo {
+			svg {
+				path {
+					fill: $lake;
+				}
+			}
+		}
+		#top-logo:active, #top-logo:focus, #top-logo:hover {
+			svg {
+				path {
+					fill: $lake-mute;
+				}
+			}
+		}
+	}
+}
+
+#page-eggplant {
+	a {
+		color: $eggplant;
+	}
+	#{$links} {
+		color: $eggplant-mute;
+	}
+	body {
+		background: url() center center;
+	}
+	button {
+		background: $eggplant!important;
+	}
+	button:active, button:focus, button:hover {
+		background: $eggplant-mute!important;
+		color: white;
+	}
+	.btn-ghost {
+		border: 2px solid $eggplant!important;
+		background: transparent!important;
+		color: $eggplant!important;
+	}
+	.btn-ghost:active, .btn-ghost:focus, .btn-ghost:hover {
+		border-color: $eggplant-mute!important;
+		background: $eggplant-mute!important;
+		color: white!important;
+	}
+	#top {
+		#top-logo {
+			svg {
+				path {
+					fill: $eggplant;
+				}
+			}
+		}
+		#top-logo:active, #top-logo:focus, #top-logo:hover {
+			svg {
+				path {
+					fill: $eggplant-mute;
+				}
+			}
+		}
+	}
+}
+
+#overlay {
+	.top-link-menu {
+		color: white!important;
+		border-color: white!important;
+	}
+	.top-link-menu:active, .top-link-menu:focus, .top-link-menu:hover {
+		color: $slate!important;
+		background: white!important;
+		border-color: white!important;
+	}
+}

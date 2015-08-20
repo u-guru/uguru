@@ -176,4 +176,5 @@ $(function () {
 			}
 		});
 	}
+	$('#earn-category-1').flip({axis:'y', trigger:'hover'});
 });
