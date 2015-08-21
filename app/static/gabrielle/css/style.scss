@@ -175,18 +175,23 @@ button, a[class*=btn] {
 			box-sizing: border-box;
 			color: white;
 			.inside-text {
-				display: block;
+				display: table;
 				width: 100%;
 			}
 			h2 {
 				display: table-cell;
 				vertical-align: middle;
 				margin: 0;
+				width: 100%;
+				padding: 62px 10px 0;
 				font-size: 14px;
 				font-weight: 300;
-				width: 100%;
-				height: 168px;
-				padding: 62px 20px 0;
+				text-align: center;
+				span {
+					display: block;
+					width: 100%;
+					text-align: center;
+				}
 			}
 			p {
 				font-size: 20px;
@@ -221,6 +226,7 @@ button, a[class*=btn] {
 			position: absolute;
 			width: 100%;
 			bottom: 0;
+			left: 0;
 			ul {
 				@include listless;
 				@include tri-down(10, white, 0, 5px);
@@ -351,16 +357,46 @@ button, a[class*=btn] {
 	}
 	#work {
 		background: $slate;
+		#work-text {
+			padding: 0 20px;
+			p {
+				font-size: 16px;
+			}
+		}
 	}
 	#why {
 		background: $campus;
+		#why-text {
+			padding: 0 20px;
+			p {
+				font-size: 16px;
+			}
+		}
 	}
 	#start {
 		background: $shamrock;
+		#start-text {
+			padding: 0 20px;
+			p {
+				font-size: 16px;
+			}
+		}
 	}
 }
 .app-phone {
 	display: none!important;
+}
+
+@media screen and (min-height:568px) {
+	#main {
+		.slide {
+			.inside {
+				h2 {
+					height: 168px;
+				}
+			}
+		}
+	}
 }
 
 @media screen and (min-width:375px) {
@@ -469,9 +505,32 @@ button, a[class*=btn] {
 				p {
 					font-size: 24px!important;
 				}
-				.inside-prop {
-					width: 200px;
-					height: 200px;
+				.inside-text {
+					display: block;
+				}
+			}
+		}
+		#work {
+			#work-text {
+				padding: 0;
+				p {
+					font-size: 20px;
+				}
+			}
+		}
+		#why {
+			#why-text {
+				padding: 0;
+				p {
+					font-size: 20px;
+				}
+			}
+		}
+		#start {
+			#start-text {
+				padding: 0;
+				p {
+					font-size: 20px;
 				}
 			}
 		}

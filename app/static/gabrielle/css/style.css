@@ -212,17 +212,21 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       box-sizing: border-box;
       color: white; }
       #main .slide .inside .inside-text {
-        display: block;
+        display: table;
         width: 100%; }
       #main .slide .inside h2 {
         display: table-cell;
         vertical-align: middle;
         margin: 0;
+        width: 100%;
+        padding: 62px 10px 0;
         font-size: 14px;
         font-weight: 300;
-        width: 100%;
-        height: 168px;
-        padding: 62px 20px 0; }
+        text-align: center; }
+        #main .slide .inside h2 span {
+          display: block;
+          width: 100%;
+          text-align: center; }
       #main .slide .inside p {
         font-size: 20px;
         font-weight: 300; }
@@ -255,7 +259,8 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       flex-flow: row wrap;
       position: absolute;
       width: 100%;
-      bottom: 0; }
+      bottom: 0;
+      left: 0; }
       #main #earn #earn-categories-mobile ul {
         list-style: none;
         margin: 0;
@@ -382,13 +387,29 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
             top: auto !important; }
   #main #work {
     background: #40484B; }
+    #main #work #work-text {
+      padding: 0 20px; }
+      #main #work #work-text p {
+        font-size: 16px; }
   #main #why {
     background: #8A9EA3; }
+    #main #why #why-text {
+      padding: 0 20px; }
+      #main #why #why-text p {
+        font-size: 16px; }
   #main #start {
     background: #69B3A5; }
+    #main #start #start-text {
+      padding: 0 20px; }
+      #main #start #start-text p {
+        font-size: 16px; }
 
 .app-phone {
   display: none !important; }
+
+@media screen and (min-height: 568px) {
+  #main .slide .inside h2 {
+    height: 168px; } }
 
 @media screen and (min-width: 375px) {
   #main #earn #earn-categories-mobile .earn-category-mobile {
@@ -503,9 +524,20 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       font-size: 24px; }
     #main .slide .inside p {
       font-size: 24px !important; }
-    #main .slide .inside .inside-prop {
-      width: 200px;
-      height: 200px; } }
+    #main .slide .inside .inside-text {
+      display: block; }
+  #main #work #work-text {
+    padding: 0; }
+    #main #work #work-text p {
+      font-size: 20px; }
+  #main #why #why-text {
+    padding: 0; }
+    #main #why #why-text p {
+      font-size: 20px; }
+  #main #start #start-text {
+    padding: 0; }
+    #main #start #start-text p {
+      font-size: 20px; } }
 
 @media screen and (min-width: 48em) {
   #top #top-logo {
