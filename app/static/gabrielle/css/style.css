@@ -265,37 +265,17 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         list-style: none;
         margin: 0;
         padding: 0;
-        border-radius: 0px;
-        position: relative;
-        background: white;
-        padding: 5px;
-        margin-top: 20px;
         box-sizing: border-box;
         position: absolute;
         z-index: 999;
-        top: 80px;
+        top: 0;
         width: 100%;
         height: 100px;
+        padding: 5px;
         background: white;
         color: #40484B;
         font-size: 12px;
         font-weight: 400; }
-        #main #earn #earn-categories-mobile ul:before {
-          position: absolute;
-          left: 50%;
-          -webkit-transform: translateX(-50%);
-          -moz-transform: translateX(-50%);
-          -ms-transform: translateX(-50%);
-          -o-transform: translateX(-50%);
-          transform: translateX(-50%);
-          content: "";
-          display: block;
-          position: absolute;
-          top: -19px;
-          width: 0;
-          height: 0;
-          border: 10px solid transparent;
-          border-bottom: 10px solid white; }
         #main #earn #earn-categories-mobile ul li {
           padding: 4px 0;
           border-bottom: 1px solid; }
@@ -307,84 +287,63 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         position: relative;
         width: 33.3333%;
         height: 100px; }
-        #main #earn #earn-categories-mobile .earn-category-mobile div {
-          position: absolute;
-          top: 50%;
-          -webkit-transform: translateY(-50%);
-          -moz-transform: translateY(-50%);
-          -ms-transform: translateY(-50%);
-          -o-transform: translateY(-50%);
-          transform: translateY(-50%);
-          width: 100%; }
-          #main #earn #earn-categories-mobile .earn-category-mobile div svg {
+        #main #earn #earn-categories-mobile .earn-category-mobile > div {
+          top: 0;
+          width: 100%;
+          overflow-y: hidden; }
+          #main #earn #earn-categories-mobile .earn-category-mobile > div div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+          #main #earn #earn-categories-mobile .earn-category-mobile > div svg {
             width: 80px;
             height: 80px; }
-            #main #earn #earn-categories-mobile .earn-category-mobile div svg circle {
+            #main #earn #earn-categories-mobile .earn-category-mobile > div svg circle {
               fill: none; }
-          #main #earn #earn-categories-mobile .earn-category-mobile div h3 {
+          #main #earn #earn-categories-mobile .earn-category-mobile > div h3 {
             margin: -15px 0 15px;
             width: 100%;
             font-size: 16px;
             font-weight: 600; }
-        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(1) {
+        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(1) div {
           background: #DB1988; }
-          #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(1) ul li {
-            border-color: #DB1988; }
-        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(2) {
+        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(1) ul li {
+          border-color: #DB1988; }
+        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(2) div {
           background: #E5753C; }
-          #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(2) ul li {
-            border-color: #E5753C; }
-        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(3) {
+        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(2) ul li {
+          border-color: #E5753C; }
+        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(3) div {
           background: #F9D57B; }
-          #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(3) ul li {
-            border-color: #F9D57B; }
-        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(4) {
+        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(3) ul li {
+          border-color: #F9D57B; }
+        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(4) div {
           background: #81B566; }
-          #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(4) ul li {
-            border-color: #81B566; }
-        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(5) {
+        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(4) ul li {
+          border-color: #81B566; }
+        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(5) div {
           background: #69B3A5; }
-          #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(5) ul li {
-            border-color: #69B3A5; }
-        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(6) {
+        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(5) ul li {
+          border-color: #69B3A5; }
+        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(6) div {
           background: #50A5DD; }
-          #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(6) ul li {
-            border-color: #50A5DD; }
-        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(7) {
+        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(6) ul li {
+          border-color: #50A5DD; }
+        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(7) div {
           background: #9A5BC5; }
-          #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(7) ul li {
-            border-color: #9A5BC5; }
-        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(8) {
+        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(7) ul li {
+          border-color: #9A5BC5; }
+        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(8) div {
           background: #8A9EA3; }
-          #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(8) ul li {
-            border-color: #8A9EA3; }
+        #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(8) ul li {
+          border-color: #8A9EA3; }
         #main #earn #earn-categories-mobile .earn-category-mobile:nth-child(9) div h3 {
           margin: 0; }
-        #main #earn #earn-categories-mobile .earn-category-mobile.list-bottom ul {
-          border-radius: 0px;
-          position: relative;
-          background: white;
-          padding: 5px;
-          margin-bottom: 20px;
-          top: -120px; }
-          #main #earn #earn-categories-mobile .earn-category-mobile.list-bottom ul:before {
-            position: absolute;
-            left: 50%;
-            -webkit-transform: translateX(-50%);
-            -moz-transform: translateX(-50%);
-            -ms-transform: translateX(-50%);
-            -o-transform: translateX(-50%);
-            transform: translateX(-50%);
-            content: "";
-            display: block;
-            position: absolute;
-            bottom: -19px;
-            width: 0;
-            height: 0;
-            border: 10px solid transparent;
-            border-top: 10px solid white; }
-          #main #earn #earn-categories-mobile .earn-category-mobile.list-bottom ul:before {
-            top: auto !important; }
   #main #work {
     background: #40484B; }
     #main #work #work-text {
@@ -415,30 +374,8 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
   #main #earn #earn-categories-mobile .earn-category-mobile {
     height: 134px; }
   #main #earn #earn-categories-mobile ul {
-    border-radius: 0px;
-    position: relative;
-    background: white;
-    padding: 5px;
-    margin-top: 30px;
-    top: 104px;
     height: 134px;
     font-size: 14px; }
-    #main #earn #earn-categories-mobile ul:before {
-      position: absolute;
-      left: 50%;
-      -webkit-transform: translateX(-50%);
-      -moz-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-      -o-transform: translateX(-50%);
-      transform: translateX(-50%);
-      content: "";
-      display: block;
-      position: absolute;
-      top: -29px;
-      width: 0;
-      height: 0;
-      border: 15px solid transparent;
-      border-bottom: 15px solid white; }
     #main #earn #earn-categories-mobile ul li {
       padding: 6px 0; } }
 

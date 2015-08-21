@@ -229,13 +229,13 @@ button, a[class*=btn] {
 			left: 0;
 			ul {
 				@include listless;
-				@include tri-down(10, white, 0, 5px);
 				box-sizing: border-box;
 				position: absolute;
 				z-index: 999;
-				top: 80px;
+				top: 0;
 				width: 100%;
 				height: 100px;
+				padding: 5px;
 				background: white;
 				color: $slate;
 				font-size: 12px;
@@ -255,9 +255,13 @@ button, a[class*=btn] {
 				position: relative;
 				width: 33.3333%;
 				height: 100px;
-				div {
-					@include center-y;
+				> div {
+					top: 0;
 					width: 100%;
+					overflow-y: hidden;
+					div {
+						@include center-xy;
+					}
 					svg {
 						width: 80px;
 						height: 80px;
@@ -273,7 +277,9 @@ button, a[class*=btn] {
 					}
 				}
 				&:nth-child(1) {
-					background: $cerise;
+					div {
+						background: $cerise;
+					}
 					ul {
 						li {
 							border-color: $cerise;
@@ -281,7 +287,9 @@ button, a[class*=btn] {
 					}
 				}
 				&:nth-child(2) {
-					background: $orange;
+					div {
+						background: $orange;
+					}
 					ul {
 						li {
 							border-color: $orange;
@@ -289,7 +297,9 @@ button, a[class*=btn] {
 					}
 				}
 				&:nth-child(3) {
-					background: $gold;
+					div {
+						background: $gold;
+					}
 					ul {
 						li {
 							border-color: $gold;
@@ -297,7 +307,9 @@ button, a[class*=btn] {
 					}
 				}
 				&:nth-child(4) {
-					background: $moola;
+					div {
+						background: $moola;
+					}
 					ul {
 						li {
 							border-color: $moola;
@@ -305,7 +317,9 @@ button, a[class*=btn] {
 					}
 				}
 				&:nth-child(5) {
-					background: $shamrock;
+					div {
+						background: $shamrock;
+					}
 					ul {
 						li {
 							border-color: $shamrock;
@@ -313,7 +327,9 @@ button, a[class*=btn] {
 					}
 				}
 				&:nth-child(6) {
-					background: $lake;
+					div {
+						background: $lake;
+					}
 					ul {
 						li {
 							border-color: $lake;
@@ -321,7 +337,9 @@ button, a[class*=btn] {
 					}
 				}
 				&:nth-child(7) {
-					background: $eggplant;
+					div {
+						background: $eggplant;
+					}
 					ul {
 						li {
 							border-color: $eggplant;
@@ -329,7 +347,9 @@ button, a[class*=btn] {
 					}
 				}
 				&:nth-child(8) {
-					background: $campus;
+					div {
+						background: $campus;
+					}
 					ul {
 						li {
 							border-color: $campus;
@@ -340,15 +360,6 @@ button, a[class*=btn] {
 					div {
 						h3 {
 							margin: 0;
-						}
-					}
-				}
-				&.list-bottom {
-					ul {
-						@include tri-up(10, white, 0, 5px);
-						top: -120px;
-						&:before {
-							top: auto!important;
 						}
 					}
 				}
@@ -407,8 +418,6 @@ button, a[class*=btn] {
 					height: 134px;
 				}
 				ul {
-					@include tri-down(15, white, 0, 5px);
-					top: 104px;
 					height: 134px;
 					font-size: 14px;
 					li {
