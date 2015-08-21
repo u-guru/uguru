@@ -390,39 +390,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     background: #8A9EA3; }
   #main #start {
     background: #69B3A5; }
-    #main #start .inside #start-download {
-      margin-top: 30px; }
-    #main #start .inside input {
-      display: block;
-      width: 100%;
-      background: none;
-      box-sizing: border-box;
-      border: 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 0 !important;
-      font-size: 18px;
-      font-weight: 400; }
-    #main #start .inside ::-webkit-input-placeholder {
-      color: rgba(255, 255, 255, 0.5); }
-    #main #start .inside :-moz-placeholder {
-      color: rgba(255, 255, 255, 0.5); }
-    #main #start .inside ::-moz-placeholder {
-      color: rgba(255, 255, 255, 0.5); }
-    #main #start .inside :-ms-input-placeholder {
-      color: rgba(255, 255, 255, 0.5); }
-    #main #start .inside input:focus {
-      color: white;
-      border-color: white; }
-      #main #start .inside input:focus::-webkit-input-placeholder {
-        color: white; }
-      #main #start .inside input:focus:-moz-placeholder {
-        color: white; }
-      #main #start .inside input:focus::-moz-placeholder {
-        color: white; }
-      #main #start .inside input:focus:-ms-input-placeholder {
-        color: white; }
-    #main #start .inside button {
-      margin-top: 15px; }
 
 .app-phone {
   display: none !important; }
@@ -523,6 +490,8 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       max-width: 200px !important; }
   #main .slide .inside {
     padding: 62px 50px 50px; }
+    #main .slide .inside h2 {
+      text-align: center; }
     #main .slide .inside .inside-prop {
       display: none; }
     #main .slide .inside p {
@@ -778,6 +747,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     width: 100%;
     margin: -10px 0; }
     #main #earn .inside .inside-text #earn-categories-desktop .earn-category {
+      cursor: pointer;
       width: 25%;
       box-sizing: border-box;
       position: relative !important;
@@ -793,8 +763,10 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         padding: 40px 10px; }
         #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 {
           margin-top: 5px;
-          font-size: 18px;
+          font-size: 14px;
           text-transform: uppercase; }
+          #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 span {
+            display: none; }
         #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front .earn-category-overlay {
           position: absolute;
           top: 0;
@@ -824,9 +796,9 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
           padding: 10px;
           box-sizing: border-box !important; }
           #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li {
-            padding: 12px 15px;
+            padding: 7px 0;
             border-bottom: 1px solid #2B3234;
-            font-size: 16px;
+            font-size: 12px;
             font-weight: 400; }
             #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li:last-child {
               border-bottom: 0; }
@@ -867,41 +839,75 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         fill: #9A5BC5; }
       #main #earn .inside .inside-text #earn-categories-desktop .earn-category #category-delivery circle {
         fill: #8A9EA3; }
-  #main #work h2 {
-    text-align: center; }
   #main #work #work-inside {
     display: table;
     width: 100%;
     max-width: 1000px;
     margin: 15% auto 0; }
-    #main #work #work-inside #work-text, #main #work #work-inside .app-phone {
+    #main #work #work-inside #work-infograph, #main #work #work-inside #work-text {
       box-sizing: border-box;
       display: table-cell !important;
       vertical-align: middle;
       width: 50%; }
-  #main #start .inside {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    height: auto; }
-    #main #start .inside #start-download {
-      margin-top: 100px; }
-    #main #start .inside input {
-      border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-      font-size: 60px;
-      font-weight: 300; }
-    #main #start .inside input:focus {
-      border-color: white; }
-    #main #start .inside button {
-      margin-top: 25px;
-      font-size: 24px;
-      letter-spacing: 1px;
-      padding: 15px 30px; }
+    #main #work #work-inside #work-infograph {
+      position: relative; }
+      #main #work #work-inside #work-infograph div {
+        border-radius: 1000px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        background: rgba(255, 255, 255, 0.5); }
+  #main #why #why-inside {
+    display: table;
+    width: 100%;
+    max-width: 1000px;
+    margin: 15% auto 0; }
+    #main #why #why-inside #why-text, #main #why #why-inside .app-phone {
+      box-sizing: border-box;
+      display: table-cell !important;
+      vertical-align: middle;
+      width: 50%; }
+  #main #start .inside ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    font-weight: 300;
+    counter-reset: li; }
+    #main #start .inside ol li {
+      width: 33.3333%;
+      padding: 0;
+      text-align: center; }
+      #main #start .inside ol li:before {
+        border-radius: 1000px;
+        display: block;
+        margin: 0 auto 5px;
+        text-align: center;
+        content: counter(li);
+        counter-increment: li;
+        width: 50px !important;
+        height: 50px !important;
+        background: white;
+        color: #69B3A5;
+        font-size: 24px;
+        font-weight: 900;
+        line-height: 50px; }
   .app-phone {
     position: relative; }
     .app-phone .app-wf {
@@ -967,6 +973,21 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
           display: block;
           height: 300px; } }
 
+@media screen and (min-width: 990px) {
+  #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 span {
+    display: inline; } }
+
+@media screen and (min-width: 1080px) {
+  #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 {
+    font-size: 14px; }
+  #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li {
+    padding: 10px 0;
+    font-size: 14px; } }
+
+@media screen and (min-width: 1200px) {
+  #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 {
+    font-size: 18px; } }
+
 @media screen and (min-width: 84em) {
   #main .inside h2 {
     font-size: 36px !important;
@@ -999,16 +1020,8 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 {
     font-size: 24px; }
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li {
+    padding: 10px 0;
     font-size: 18px !important; }
-  #main #start .inside {
-    max-width: 80%; }
-    #main #start .inside input {
-      font-size: 96px;
-      font-weight: 200; }
-    #main #start .inside button {
-      margin-top: 50px;
-      font-size: 28px;
-      padding: 20px 40px; }
   .app-phone .app-wf {
     border-radius: 30px;
     width: 256px;

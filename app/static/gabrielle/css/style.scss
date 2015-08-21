@@ -221,53 +221,6 @@ button, a[class*=btn] {
 	}
 	#start {
 		background: $shamrock;
-		.inside {
-			#start-download {
-				margin-top: 30px;
-			}
-			input {
-				display: block;
-				width: 100%;
-				background: none;
-				box-sizing: border-box;
-				border: 0;
-				border-bottom: 1px solid rgba(white,.5);
-				border-radius: 0!important;
-				font-size: 18px;
-				font-weight: 400;
-			}
-			::-webkit-input-placeholder {
-			   color: rgba(white,.5);
-			}
-			:-moz-placeholder {
-			   color: rgba(white,.5);
-			}
-			::-moz-placeholder {
-			   color: rgba(white,.5);
-			}
-			:-ms-input-placeholder {
-			   color: rgba(white,.5);
-			}
-			input:focus {
-				color: white;
-				border-color: white;
-				&::-webkit-input-placeholder {
-				   color: white;
-				}
-				&:-moz-placeholder {
-				   color: white;
-				}
-				&::-moz-placeholder {
-				   color: white;
-				}
-				&:-ms-input-placeholder {
-				   color: white;
-				}
-			}
-			button {
-				margin-top: 15px;
-			}
-		}
 	}
 }
 .app-phone {
@@ -380,6 +333,9 @@ button, a[class*=btn] {
 		.slide {
 			.inside {
 				padding: 62px 50px 50px;
+				h2 {
+					text-align: center;
+				}
 				.inside-prop {
 					display: none;
 				}
@@ -646,6 +602,7 @@ button, a[class*=btn] {
 						width: 100%;
 						margin: -10px 0;
 						.earn-category {
+							cursor: pointer;
 							width: 25%;
 							box-sizing: border-box;
 							position: relative!important;
@@ -662,8 +619,11 @@ button, a[class*=btn] {
 								padding: 40px 10px;
 								h3 {
 									margin-top: 5px;
-									font-size: 18px;
+									font-size: 14px;
 									text-transform: uppercase;
+									span {
+										display: none;
+									}
 								}
 								.earn-category-overlay {
 									position: absolute;
@@ -687,9 +647,9 @@ button, a[class*=btn] {
 									padding: 10px;
 									box-sizing: border-box!important;
 									li {
-										padding: 12px 15px;
+										padding: 7px 0;
 										border-bottom: 1px solid $charcoal;
-										font-size: 16px;
+										font-size: 12px;
 										font-weight: 400;
 										&:last-child {
 											border-bottom: 0;
@@ -774,15 +734,36 @@ button, a[class*=btn] {
 			}
 		}
 		#work {
-			h2 {
-				text-align: center;
-			}
 			#work-inside {
 				display: table;
 				width: 100%;
 				max-width: 1000px;
 				margin: 15% auto 0;
-				#work-text, .app-phone {
+				#work-infograph, #work-text {
+					box-sizing: border-box;
+					display: table-cell!important;
+					vertical-align: middle;
+					width: 50%;
+				}
+				#work-infograph {
+					position: relative;
+					div {
+						@include round;
+						@include center-xy;
+						width: 200px;
+						height: 200px;
+						background: rgba(white, .5);
+					}
+				}
+			}
+		}
+		#why {
+			#why-inside {
+				display: table;
+				width: 100%;
+				max-width: 1000px;
+				margin: 15% auto 0;
+				#why-text, .app-phone {
 					box-sizing: border-box;
 					display: table-cell!important;
 					vertical-align: middle;
@@ -792,24 +773,32 @@ button, a[class*=btn] {
 		}
 		#start {
 			.inside {
-				@include center-xy;
-				height: auto;
-				#start-download {
-					margin-top: 100px;
-				}
-				input {
-					border-bottom: 2px solid rgba(white,.5);
-					font-size: 60px;
+				ol {
+					@include listless;
+					@include flex;
+					@include flex-wrap;
 					font-weight: 300;
-				}
-				input:focus {
-					border-color: white;
-				}
-				button {
-					margin-top: 25px;
-					font-size: 24px;
-					letter-spacing: 1px;
-					padding: 15px 30px;
+					counter-reset: li;
+					li {
+						width: 33.3333%;
+						padding: 0;
+						text-align: center;
+						&:before {
+							@include round;
+							display: block;
+							margin: 0 auto 5px;
+							text-align: center;
+							content: counter(li);
+							counter-increment: li;
+							width: 50px!important;
+							height: 50px!important;
+							background: white;
+							color: $shamrock;
+							font-size: 24px;
+							font-weight: 900;
+							line-height: 50px;
+						}
+					}
 				}
 			}
 		}
@@ -855,6 +844,76 @@ button, a[class*=btn] {
 				img {
 					display: block;
 					height: 300px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width:990px) {
+	#main {
+		#earn {
+			.inside {
+				.inside-text {
+					#earn-categories-desktop {
+						.earn-category {
+							.earn-category-front {
+								h3 {
+									span {
+										display: inline;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width:1080px) {
+	#main {
+		#earn {
+			.inside {
+				.inside-text {
+					#earn-categories-desktop {
+						.earn-category {
+							.earn-category-front {
+								h3 {
+									font-size: 14px;
+								}
+							}
+							.earn-category-back {
+								ul {
+									li {
+										padding: 10px 0;
+										font-size: 14px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width:1200px) {
+	#main {
+		#earn {
+			.inside {
+				.inside-text {
+					#earn-categories-desktop {
+						.earn-category {
+							.earn-category-front {
+								h3 {
+									font-size: 18px;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -941,26 +1000,13 @@ button, a[class*=btn] {
 							.earn-category-back {
 								ul {
 									li {
+										padding: 10px 0;
 										font-size: 18px!important;
 									}
 								}
 							}
 						}
 					}
-				}
-			}
-		}
-		#start {
-			.inside {
-				max-width: 80%;
-				input {
-					font-size: 96px;
-					font-weight: 200;
-				}
-				button {
-					margin-top: 50px;
-					font-size: 28px;
-					padding: 20px 40px;
 				}
 			}
 		}
