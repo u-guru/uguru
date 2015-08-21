@@ -65,6 +65,7 @@
 #start-modal {
 	@include opacity(0);
 	@include center-xy;
+	position: fixed;
 	display: none;
 	/*visibility: hidden !important;*/
 	z-index: 1000001;

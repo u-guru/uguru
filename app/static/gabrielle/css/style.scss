@@ -173,17 +173,20 @@ button, a[class*=btn] {
 			width: 100%;
 			height: 100%;
 			box-sizing: border-box;
-			padding: 20px;
 			color: white;
 			.inside-text {
 				display: block;
 				width: 100%;
 			}
 			h2 {
-				margin: 1em 0;
-				font-size: 24px;
+				display: table-cell;
+				vertical-align: middle;
+				margin: 0;
+				font-size: 14px;
 				font-weight: 300;
 				width: 100%;
+				height: 168px;
+				padding: 62px 20px 0;
 			}
 			p {
 				font-size: 20px;
@@ -211,6 +214,140 @@ button, a[class*=btn] {
 				}
 			}
 		}
+		#earn-categories-mobile {
+			@include listless;
+			@include flex;
+			@include flex-wrap;
+			position: absolute;
+			width: 100%;
+			bottom: 0;
+			ul {
+				@include listless;
+				@include tri-down(10, white, 0, 5px);
+				box-sizing: border-box;
+				position: absolute;
+				z-index: 999;
+				top: 80px;
+				width: 100%;
+				height: 100px;
+				background: white;
+				color: $slate;
+				font-size: 12px;
+				font-weight: 400;
+				li {
+					padding: 4px 0;
+					border-bottom: 1px solid;
+					&:first-child {
+						margin-top: -3px;
+					}
+					&:last-child {
+						border-bottom: 0;
+					}
+				}
+			}
+			.earn-category-mobile {
+				position: relative;
+				width: 33.3333%;
+				height: 100px;
+				div {
+					@include center-y;
+					width: 100%;
+					svg {
+						width: 80px;
+						height: 80px;
+						circle {
+							fill: none;
+						}
+					}
+					h3 {
+						margin: -15px 0 15px;
+						width: 100%;
+						font-size: 16px;
+						font-weight: 600;
+					}
+				}
+				&:nth-child(1) {
+					background: $cerise;
+					ul {
+						li {
+							border-color: $cerise;
+						}
+					}
+				}
+				&:nth-child(2) {
+					background: $orange;
+					ul {
+						li {
+							border-color: $orange;
+						}
+					}
+				}
+				&:nth-child(3) {
+					background: $gold;
+					ul {
+						li {
+							border-color: $gold;
+						}
+					}
+				}
+				&:nth-child(4) {
+					background: $moola;
+					ul {
+						li {
+							border-color: $moola;
+						}
+					}
+				}
+				&:nth-child(5) {
+					background: $shamrock;
+					ul {
+						li {
+							border-color: $shamrock;
+						}
+					}
+				}
+				&:nth-child(6) {
+					background: $lake;
+					ul {
+						li {
+							border-color: $lake;
+						}
+					}
+				}
+				&:nth-child(7) {
+					background: $eggplant;
+					ul {
+						li {
+							border-color: $eggplant;
+						}
+					}
+				}
+				&:nth-child(8) {
+					background: $campus;
+					ul {
+						li {
+							border-color: $campus;
+						}
+					}
+				}
+				&:nth-child(9) {
+					div {
+						h3 {
+							margin: 0;
+						}
+					}
+				}
+				&.list-bottom {
+					ul {
+						@include tri-up(10, white, 0, 5px);
+						top: -120px;
+						&:before {
+							top: auto!important;
+						}
+					}
+				}
+			}
+		}
 	}
 	#work {
 		background: $slate;
@@ -224,6 +361,27 @@ button, a[class*=btn] {
 }
 .app-phone {
 	display: none!important;
+}
+
+@media screen and (min-width:35.5em) {
+	#main {
+		#earn {
+			#earn-categories-mobile {
+				.earn-category-mobile {
+					height: 134px;
+				}
+				ul {
+					@include tri-down(15, white, 0, 5px);
+					top: 104px;
+					height: 134px;
+					font-size: 14px;
+					li {
+						padding: 6px 0;
+					}
+				}
+			}
+		}
+	}
 }
 
 @media screen and (min-width:35.5em) {
@@ -301,6 +459,13 @@ button, a[class*=btn] {
 		.slide {
 			.inside {
 				padding: 62px 30px 30px;
+				h2 {
+					display: block;
+					margin: 1em 0;
+					height: auto;
+					padding: 0;
+					font-size: 24px;
+				}
 				p {
 					font-size: 24px!important;
 				}
@@ -620,12 +785,16 @@ button, a[class*=btn] {
 								background: $slate;
 								padding: 40px 10px;
 								h3 {
+									position: relative;
 									margin-top: 5px;
 									font-size: 14px;
 									text-transform: uppercase;
 									span {
 										display: none;
 									}
+								}
+								svg {
+									position: relative;
 								}
 								.earn-category-overlay {
 									position: absolute;
@@ -690,42 +859,42 @@ button, a[class*=btn] {
 									fill: white;
 								}
 							}
-							#category-academic {
+							.category-academic {
 								circle {
 									fill: $cerise
 								}
 							}
-							#category-consulting {
+							.category-consulting {
 								circle {
 									fill: $orange;
 								}
 							}
-							#category-baking {
+							.category-baking {
 								circle {
 									fill: $gold;
 								}
 							}
-							#category-photography {
+							.category-photography {
 								circle {
 									fill: $moola;
 								}
 							}
-							#category-household {
+							.category-household {
 								circle {
 									fill: $shamrock;
 								}
 							}
-							#category-technology {
+							.category-technology {
 								circle {
 									fill: $lake;
 								}
 							}
-							#category-sports {
+							.category-sports {
 								circle {
 									fill: $eggplant;
 								}
 							}
-							#category-delivery {
+							.category-delivery {
 								circle {
 									fill: $campus;
 								}
