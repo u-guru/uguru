@@ -469,8 +469,14 @@ Uguru Home
 <script src="/static/gabrielle/js/lib/jquery.flip.min.js"></script>
 <script src="/static/gabrielle/js/lib/phonenumber.js"></script>
 <script>
-	$(".earn-category").flip({trigger: 'hover'});
-	$(".earn-category-mobile").not("#and-more").flip({trigger: 'hover'});
+	$(".earn-category").flip({
+		axis: 'y',
+		trigger: 'hover'
+	});
+	$(".earn-category-mobile").not("#and-more").flip({
+		axis: 'x',
+		trigger: 'hover'
+	});
 	var all_universities;
 
 	var matcher;
