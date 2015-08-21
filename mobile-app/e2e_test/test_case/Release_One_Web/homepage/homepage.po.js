@@ -1,14 +1,23 @@
 
-var AngularHomepage = function() {
-  this.schoolInput = browser.driver.findElement(by.id('search-bar'));
+var uguruHomepage = function() {
   
   this.get = function() {
-    browser.get('http://staging.uguru.me');
+    dv.get('http://staging.uguru.me/');
   };
 
-  this.setName = function(name) {
-    this.schoolInput.sendKeys(name);
+  this.clickElement = function(name) {
+  		dv.findElement(name).click();
   };
+  this.getElement = function(name)
+  {
+  	return dv.findElement(name);
+  }
+  this.checkAlertMsg = function(msg)
+  {
+    var alertDialog = browser.switchTo().alert();
+	expect(alertDialog.getText()).toEqual(msg); 
+    alertDialog.accept();  // Use to accept (simulate clicking ok)
+  }
 
 };
-module.exports = AngularHomepage;
+module.exports = new uguruHomepage();

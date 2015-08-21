@@ -17,8 +17,9 @@ exports.config = {
         suites:
         {
           // search :     ['../test_case/Release_One_Web/homepage/search_box.js'],
-          // breadcrumb : ['../test_case/Release_One_Web/homepage/breadcrumb.js'],
-          team : '../test_case/Release_One_Web/team/team.js'
+           // breadcrumb : ['../test_case/Release_One_Web/homepage/breadcrumb.js'],
+          //team : '../test_case/Release_One_Web/team/team.js',
+          home : '../test_case/Release_One_Web/homepage/started_box.js'
         },
         // resultJsonOutputFile: '../test_case/Release_One_Web/result.json',
         // rootElement: "[ng-app]" ,
@@ -71,7 +72,8 @@ exports.config = {
             global.$$ = browser.$$;
             global.element = browser.element;     
             global.dv = browser.driver;
-            
+            global.EC = protractor.ExpectedConditions;
+
             global.isAngularSite = function(flag){
                 browser.ignoreSynchronization = !flag;
             };
