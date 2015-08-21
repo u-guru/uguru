@@ -1,5 +1,4 @@
 @import 'mixin';
-@import 'default';
 
 * {
 	-webkit-backface-visibility: hidden;
@@ -594,6 +593,9 @@ button, a[class*=btn] {
 		#earn {
 			.inside {
 				.inside-text {
+					#earn-categories-mobile {
+						display: none;
+					}
 					#earn-categories-desktop {
 						@include listless;
 						@include flex;

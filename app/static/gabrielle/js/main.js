@@ -139,7 +139,7 @@ $(function () {
 			e.preventDefault();
 		});
 
-		$('#link-support').on("click", function(e) {
+		$('.top-link-chat').on("click", function(e) {
 			document.querySelector('.intercom-launcher-button').click();
 		});
 
