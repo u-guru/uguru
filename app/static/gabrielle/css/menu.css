@@ -36,8 +36,9 @@
         width: 33.33333%; }
         #top #top-menu ul li:last-child {
           text-align: right; }
-  #top #desktop-start-link {
-    display: none; }
+
+#desktop-start-link, #desktop-chat-link {
+  display: none; }
 
 #overlay {
   filter: alpha(opacity=0);
@@ -49,6 +50,8 @@
   width: 100%;
   height: 100%;
   background: rgba(43, 50, 52, 0.9); }
+  #overlay * {
+    box-sizing: border-box; }
   #overlay.active {
     filter: alpha(opacity=100);
     opacity: 1;
@@ -65,7 +68,19 @@
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  background: white; }
+  display: none;
+  /*visibility: hidden !important;*/
+  z-index: 1000001;
+  background: white;
+  width: 100%;
+  height: 100%;
+  max-width: 852px;
+  overflow: hidden; }
+  #start-modal.show {
+    visibility: visible;
+    opacity: 1; }
+  #start-modal.active {
+    display: block; }
   #start-modal h1 {
     background: #69B3A5;
     color: white;
@@ -75,10 +90,93 @@
     letter-spacing: 2px;
     text-align: center;
     text-transform: uppercase; }
-  #start-modal #start-modal-platforms {
+  #start-modal header {
+    position: relative; }
+    #start-modal header a {
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+      right: 10px;
+      color: white;
+      font-size: 30px; }
+  #start-modal .start-modal-platforms {
     list-style: none;
     margin: 0;
-    padding: 0; }
+    padding: 0;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex; }
+    #start-modal .start-modal-platforms#start-modal-platforms-mobile {
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap; }
+      #start-modal .start-modal-platforms#start-modal-platforms-mobile li {
+        box-sizing: border-box;
+        width: 33.3333%;
+        padding: 20px; }
+        #start-modal .start-modal-platforms#start-modal-platforms-mobile li svg {
+          display: block;
+          margin: 0 auto;
+          box-sizing: border-box;
+          width: 100%;
+          height: 100%;
+          max-width: 80px;
+          max-height: 80px; }
+        #start-modal .start-modal-platforms#start-modal-platforms-mobile li a {
+          color: #2B3234; }
+          #start-modal .start-modal-platforms#start-modal-platforms-mobile li a span {
+            display: none; }
+          #start-modal .start-modal-platforms#start-modal-platforms-mobile li a svg path {
+            -webkit-transition: all 0.15s ease-in;
+            -o-transition: all 0.15s ease-in;
+            -ms-transition: all 0.15s ease-in;
+            -moz-transition: all 0.15s ease-in;
+            transition: all 0.15s ease-in; }
+        #start-modal .start-modal-platforms#start-modal-platforms-mobile li a:active, #start-modal .start-modal-platforms#start-modal-platforms-mobile li a:focus, #start-modal .start-modal-platforms#start-modal-platforms-mobile li a:hover {
+          color: #69B3A5; }
+          #start-modal .start-modal-platforms#start-modal-platforms-mobile li a:active svg path, #start-modal .start-modal-platforms#start-modal-platforms-mobile li a:focus svg path, #start-modal .start-modal-platforms#start-modal-platforms-mobile li a:hover svg path {
+            fill: #69B3A5; }
+    #start-modal .start-modal-platforms#start-modal-platforms-wear li {
+      box-sizing: border-box;
+      padding: 20px; }
+      #start-modal .start-modal-platforms#start-modal-platforms-wear li svg {
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        height: auto;
+        max-height: 30px; }
+  #start-modal input {
+    -webkit-appearance: none;
+    border: 0;
+    box-shadow: none;
+    background: #eee;
+    padding: 10px; }
+  #start-modal input:focus {
+    background: #F1F1F1; }
+  #start-modal .start-modal-link {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    width: 100%;
+    box-sizing: border-box; }
+    #start-modal .start-modal-link input, #start-modal .start-modal-link button {
+      box-sizing: border-box;
+      width: 100%; }
   #start-modal.active {
     filter: alpha(opacity=100);
     opacity: 1; }
@@ -150,40 +248,60 @@
     padding: 10px 5px 10px 20px;
     font-size: 14px; }
 
-@media screen and (min-width: 36em) {
-  #top #desktop-start-link {
+@media screen and (min-width: 35.5em) {
+  #desktop-start-link, #desktop-chat-link {
     display: inline-block; }
-  #top #mobile-start-link {
-    display: none; } }
+  #mobile-start-link, #mobile-chat-link {
+    display: none; }
+  #start-modal {
+    height: auto !important;
+    border-radius: 10px; }
+    #start-modal .start-modal-platforms#start-modal-platforms-mobile li svg {
+      max-width: 100px;
+      max-height: 100px; }
+    #start-modal .start-modal-platforms#start-modal-platforms-mobile li a span {
+      display: block;
+      margin-top: 15px;
+      font-weight: 400;
+      line-height: 1.2; }
+      #start-modal .start-modal-platforms#start-modal-platforms-mobile li a span h3 {
+        text-transform: uppercase; }
+      #start-modal .start-modal-platforms#start-modal-platforms-mobile li a span small {
+        display: block;
+        margin-top: 5px;
+        font-size: 14px; }
+    #start-modal .start-modal-platforms#start-modal-platforms-wear {
+      display: none; }
+    #start-modal .start-modal-link input {
+      width: 66.6666%; }
+    #start-modal .start-modal-link input:hover, #start-modal .start-modal-link input:focus {
+      font-size: 200%; }
+    #start-modal .start-modal-link button {
+      width: 33.3333%; } }
 
-#start-modal.show {
-  visibility: visible;
-  opacity: 1; }
+#footer {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 9999999999; }
 
-#start-modal.active {
-  display: block; }
+@media screen and (min-width: 48em) {
+  #start-modal .start-modal-platforms#start-modal-platforms-mobile li svg {
+    max-width: 120px;
+    max-height: 120px; }
+  #start-modal .start-modal-platforms#start-modal-platforms-wear li svg {
+    max-height: 60px; } }
 
-#start-modal {
-  /*visability:hidden !important;*/
-  display: none;
-  z-index: 1000001;
-  width: 50%;
-  background-color: #69B3A5 !important;
-  height: 30%; }
-
-#start-modal a {
-  color: white;
-  text-align: center; }
+@media screen and (min-width: 84em) {
+  #start-modal .start-modal-platforms#start-modal-platforms-mobile li svg {
+    max-width: 150px;
+    max-height: 150px; }
+  #start-modal .start-modal-platforms#start-modal-platforms-wear li svg {
+    max-height: 100px; } }
 
 .front, .back {
   height: 100%;
   width: auto; }
-
-.intercom-sheet-header-minimize-button {
-  display: none !important; }
-
-.hide {
-  display: none; }
 
 #modal-loader-container.active {
   display: block; }
@@ -202,34 +320,12 @@
   height: 100%;
   margin-top: 20%; }
 
-#start-modal.show {
-  visibility: visible;
-  opacity: 1; }
-
-#start-modal.active {
-  display: block; }
-
-#start-modal {
-  /*visability: hidden !important;*/
-  display: none;
-  z-index: 1000001;
-  width: 50%;
-  background-color: #69B3A5 !important;
-  height: 30%; }
-
-#start-modal a {
-  color: white;
-  text-align: center; }
-
 .front, .back {
   height: 100%;
   width: auto; }
 
 .intercom-sheet-header-minimize-button {
   display: none !important; }
-
-.hide {
-  display: none; }
 
 #modal-loader-container.active {
   display: block; }
@@ -247,3 +343,24 @@
   text-align: center;
   height: 100%;
   margin-top: 20%; }
+
+.intercom-launcher-button, .intercom-launcher-preview, .intercom-sheet-header-minimize-button {
+  display: none !important; }
+
+.intercom-reset div, .intercom-reset span, .intercom-reset applet, .intercom-reset object, .intercom-reset iframe, .intercom-reset h1, .intercom-reset h2, .intercom-reset h3, .intercom-reset h4, .intercom-reset h5, .intercom-reset h6, .intercom-reset p, .intercom-reset blockquote, .intercom-reset pre, .intercom-reset a, .intercom-reset abbr, .intercom-reset acronym, .intercom-reset address, .intercom-reset big, .intercom-reset cite, .intercom-reset code, .intercom-reset del, .intercom-reset dfn, .intercom-reset em, .intercom-reset img, .intercom-reset ins, .intercom-reset kbd, .intercom-reset q, .intercom-reset s, .intercom-reset samp, .intercom-reset small, .intercom-reset strike, .intercom-reset strong, .intercom-reset sub, .intercom-reset sup, .intercom-reset tt, .intercom-reset var, .intercom-reset b, .intercom-reset u, .intercom-reset i, .intercom-reset center, .intercom-reset dl, .intercom-reset dt, .intercom-reset dd, .intercom-reset ol, .intercom-reset ul, .intercom-reset li, .intercom-reset fieldset, .intercom-reset form, .intercom-reset div.form, .intercom-reset label, .intercom-reset legend, .intercom-reset table, .intercom-reset caption, .intercom-reset tbody, .intercom-reset tfoot, .intercom-reset thead, .intercom-reset tr, .intercom-reset th, .intercom-reset td, .intercom-reset article, .intercom-reset aside, .intercom-reset canvas, .intercom-reset details, .intercom-reset figcaption, .intercom-reset figure, .intercom-reset footer, .intercom-reset header, .intercom-reset hgroup, .intercom-reset menu, .intercom-reset nav, .intercom-reset section, .intercom-reset summary, .intercom-reset time, .intercom-reset mark, .intercom-reset audio, .intercom-reset video, .intercom-reset button, .intercom-reset textarea, .intercom-reset input, .intercom-reset input[type] {
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+
+::-webkit-input-placeholder {
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+
+:-moz-placeholder {
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+
+::-moz-placeholder {
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+
+:-ms-input-placeholder {
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+
+* {
+  box-shadow: none !important; }

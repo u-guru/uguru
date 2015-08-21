@@ -38,12 +38,15 @@
 			}
 		}
 	}
-	#desktop-start-link {
-		display: none;
-	}
+}
+#desktop-start-link, #desktop-chat-link {
+	display: none;
 }
 
 #overlay {
+	* {
+		box-sizing: border-box;
+	}
 	@include opacity(0);
 	position: fixed;
 	//z-index: 999999;
@@ -58,10 +61,25 @@
 		z-index: 999999;
 	}
 }
+
 #start-modal {
 	@include opacity(0);
 	@include center-xy;
+	display: none;
+	/*visibility: hidden !important;*/
+	z-index: 1000001;
 	background: white;
+	width: 100%;
+	height: 100%;
+	max-width: 852px;
+	overflow: hidden;
+	&.show {
+	    visibility:  visible;
+	    opacity: 1;
+	}
+	&.active {
+	    display: block;
+	}
 	h1 {
 		background: $shamrock;
 		color: white;
@@ -72,8 +90,87 @@
 		text-align: center;
 		text-transform: uppercase;
 	}
-	#start-modal-platforms {
+	header {
+		position: relative;
+		a {
+			@include center-y;
+			right: 10px;
+			color: white;
+			font-size: 30px;
+		}
+	}
+	.start-modal-platforms {
 		@include listless;
+		@include flex;
+		&#start-modal-platforms-mobile {
+			@include flex-wrap;
+			li {
+				box-sizing: border-box;
+				width: 33.3333%;
+				padding: 20px;
+				svg {
+					display: block;
+					margin: 0 auto;
+					box-sizing: border-box;
+					width: 100%;
+					height: 100%;
+					max-width: 80px;
+					max-height: 80px;
+				}
+				a {
+					color: $charcoal;
+					span {
+						display: none;
+					}
+					svg {
+						path {
+							@include transition(.15s ease-in);
+						}
+					}
+				}
+				#{$links} {
+					color: $shamrock;
+					svg {
+						path {
+							fill: $shamrock;
+						}
+					}
+				}
+			}
+		}
+		&#start-modal-platforms-wear {
+			li {
+				box-sizing: border-box;
+				padding: 20px;
+				svg {
+					display: block;
+					box-sizing: border-box;
+					width: 100%;
+					height: auto;
+					max-height: 30px;
+				}
+			}
+		}
+	}
+	input {
+		-webkit-appearance: none;
+		border: 0;
+		box-shadow: none;
+		background: #eee;
+		padding: 10px;
+	}
+	input:focus {
+		background: $smoke;
+	}
+	.start-modal-link {
+		@include flex;
+		@include flex-wrap;
+		width: 100%;
+		box-sizing: border-box;
+		input, button {
+			box-sizing: border-box;
+			width: 100%;
+		}
 	}
 	&.active {
 		@include opacity(1);
@@ -164,64 +261,127 @@
 	}
 }
 
-@media screen and (min-width:36em) {
-	#top {
-		#desktop-start-link {
-			display: inline-block;
+@media screen and (min-width:35.5em) {
+	#desktop-start-link, #desktop-chat-link {
+		display: inline-block;
+	}
+	#mobile-start-link, #mobile-chat-link {
+		display: none;
+	}
+	#start-modal {
+		height: auto!important;
+		border-radius: 10px;
+		.start-modal-platforms {
+			&#start-modal-platforms-mobile {
+				li {
+					svg {
+						max-width: 100px;
+						max-height: 100px;
+					}
+					a {
+						span {
+							display: block;
+							margin-top: 15px;
+							font-weight: 400;
+							line-height: 1.2;
+							h3 {
+								text-transform: uppercase;
+							}
+							small {
+								display: block;
+								margin-top: 5px;
+								font-size: 14px;
+							}
+						}
+					}
+				}
+			}
+			&#start-modal-platforms-wear {
+				display: none;
+			}
 		}
-		#mobile-start-link {
-			display: none;
+		.start-modal-link {
+			input {
+				width: 66.6666%;
+			}
+			input:hover, input:focus {
+				font-size: 200%;
+			}
+			button {
+				width: 33.3333%;
+			}
 		}
 	}
 }
 
-#start-modal.show {
-    visibility: visible;
-    opacity:1;
+#footer {
+	position: fixed;
+	bottom: 10px;
+	left: 10px;
+	z-index: 9999999999;
 }
 
-#start-modal.active {
-    display:block;
+@media screen and (min-width:48em) {
+	#start-modal {
+		.start-modal-platforms {
+			&#start-modal-platforms-mobile {
+				li {
+					svg {
+						max-width: 120px;
+						max-height: 120px;
+					}
+				}
+			}
+			&#start-modal-platforms-wear {
+				li {
+					svg {
+						max-height: 60px;
+					}
+				}
+			}
+		}
+	}
 }
 
-#start-modal {
-    /*visability:hidden !important;*/
-    display:none;
-    z-index:1000001;
-    width:50%;
-    background-color:#69B3A5 !important;
-    height:30%;
+@media screen and (min-width:84em) {
+	#start-modal {
+		.start-modal-platforms {
+			&#start-modal-platforms-mobile {
+				li {
+					svg {
+						max-width: 150px;
+						max-height: 150px;
+					}
+				}
+			}
+			&#start-modal-platforms-wear {
+				li {
+					svg {
+						max-height: 100px;
+					}
+				}
+			}
+		}
+	}
 }
 
-#start-modal a {
-    color:white;
-    text-align:center;
-}
 .front, .back {
-    height:100%;
-    width:auto;
-}
-
-.intercom-sheet-header-minimize-button {
-    display:none !important;
-}
-
-.hide {
-    display:none;
+    height: 100%;
+    width: auto;
 }
 
 #modal-loader-container.active {
-    display:block;
+    display: block;
 }
 
 #modal-content,
 #modal-content-submit {
-    display:none;
+    display: none;
 }
 
 #modal-content.active,
 #modal-content-submit.active {
-    display:block;
+    display: block;
 }
 
 #start-modal .svg-container {
@@ -230,28 +390,7 @@
     height: 100%;
     margin-top: 20%;
 }
-#start-modal.show {
-    visibility:  visible;
-    opacity: 1;
-}
 
-#start-modal.active {
-    display: block;
-}
-
-#start-modal {
-    /*visability: hidden !important;*/
-    display: none;
-    z-index: 1000001;
-    width: 50%;
-    background-color: #69B3A5 !important;
-    height: 30%;
-}
-
-#start-modal a {
-    color: white;
-    text-align: center;
-}
 .front, .back {
     height: 100%;
     width: auto;
@@ -259,10 +398,6 @@
 
 .intercom-sheet-header-minimize-button {
     display: none !important;
-}
-
-.hide {
-    display: none;
 }
 
 #modal-loader-container.active {
@@ -284,4 +419,29 @@
     text-align:  center;
     height:  100%;
     margin-top:  20%;
+}
+
+
+.intercom-launcher-button, .intercom-launcher-preview, .intercom-sheet-header-minimize-button {
+	display: none!important;
+}
+
+.intercom-reset div, .intercom-reset span, .intercom-reset applet, .intercom-reset object, .intercom-reset iframe, .intercom-reset h1, .intercom-reset h2, .intercom-reset h3, .intercom-reset h4, .intercom-reset h5, .intercom-reset h6, .intercom-reset p, .intercom-reset blockquote, .intercom-reset pre, .intercom-reset a, .intercom-reset abbr, .intercom-reset acronym, .intercom-reset address, .intercom-reset big, .intercom-reset cite, .intercom-reset code, .intercom-reset del, .intercom-reset dfn, .intercom-reset em, .intercom-reset img, .intercom-reset ins, .intercom-reset kbd, .intercom-reset q, .intercom-reset s, .intercom-reset samp, .intercom-reset small, .intercom-reset strike, .intercom-reset strong, .intercom-reset sub, .intercom-reset sup, .intercom-reset tt, .intercom-reset var, .intercom-reset b, .intercom-reset u, .intercom-reset i, .intercom-reset center, .intercom-reset dl, .intercom-reset dt, .intercom-reset dd, .intercom-reset ol, .intercom-reset ul, .intercom-reset li, .intercom-reset fieldset, .intercom-reset form, .intercom-reset div.form, .intercom-reset label, .intercom-reset legend, .intercom-reset table, .intercom-reset caption, .intercom-reset tbody, .intercom-reset tfoot, .intercom-reset thead, .intercom-reset tr, .intercom-reset th, .intercom-reset td, .intercom-reset article, .intercom-reset aside, .intercom-reset canvas, .intercom-reset details, .intercom-reset figcaption, .intercom-reset figure, .intercom-reset footer, .intercom-reset header, .intercom-reset hgroup, .intercom-reset menu, .intercom-reset nav, .intercom-reset section, .intercom-reset summary, .intercom-reset time, .intercom-reset mark, .intercom-reset audio, .intercom-reset video, .intercom-reset button, .intercom-reset textarea, .intercom-reset input, .intercom-reset input[type] {
+	font-family: $font!important;
+}
+
+::-webkit-input-placeholder {
+   font-family: $font!important;
+}
+:-moz-placeholder {
+   font-family: $font!important;
+}
+::-moz-placeholder {
+   font-family: $font!important;
+}
+:-ms-input-placeholder {
+   font-family: $font!important;
+}
+* {
+	box-shadow: none!important;
 }
