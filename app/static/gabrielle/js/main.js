@@ -47,9 +47,10 @@ menuStyle = function() {
 }
 
 $(document).ready(function () {
-
+	hideIntercomShit();
 	slideLeft();
 	menuStyle();
+	initParallax();
 	$(window).resize(function(){
 		slideLeft();
 		menuStyle();
@@ -139,8 +140,11 @@ $(function () {
 			e.preventDefault();
 		});
 
-		$('.top-link-chat').on("click", function(e) {
+		$('.top-link-chat, #link-support').on("click", function(e) {
 			document.querySelector('.intercom-launcher-button').click();
+			setTimeout(function() {
+				$('#side-menu, #overlay').removeClass('active');
+			}, 500)
 		});
 
 		$('#overlay-right:visible').on("click", function(e){
@@ -189,5 +193,30 @@ $(function () {
 			}
 		});
 
+
 	}
 });
+
+var hideIntercomShit = function() {
+	var intercomElement = document.getElementById('intercom-launcher')
+	if (intercomElement) {
+		document.getElementById('intercom-launcher').style.height = 0;
+		document.getElementById('intercom-launcher').style.width = 0;
+		return;
+	} else {
+		setTimeout(function() {
+			hideIntercomShit();
+		}, 1000)
+	}
+}
+var initParallax = function() {
+	//check if loaded properly
+	if (!Parallax) {
+		return;
+	}
+	var scene = document.getElementById('main');
+	var parallax = new Parallax(scene);
+	//custom for each element
+	var searchBox = document.getElementById("search-box");
+	if (searchBox) searchBox.style.marginTop ='50%';
+}
