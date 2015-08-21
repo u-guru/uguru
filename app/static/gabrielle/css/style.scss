@@ -644,11 +644,15 @@ button, a[class*=btn] {
 						@include flex-wrap;
 						box-sizing: border-box;
 						width: 100%;
-						margin: -10px 0 0;
+						margin: -10px 0;
 						.earn-category {
 							width: 25%;
 							box-sizing: border-box;
 							position: relative!important;
+							padding: 10px;
+							.earn-category-inside {
+								position: relative;
+							}
 							.earn-category-front {
 								@include border-radius(5);
 								overflow: hidden;
@@ -678,20 +682,17 @@ button, a[class*=btn] {
 								box-sizing: border-box!important;
 								ul {
 									@include listless;
+									@include center-xy;
 									width: 100%;
 									padding: 10px;
 									box-sizing: border-box!important;
 									li {
 										padding: 12px 15px;
 										border-bottom: 1px solid $charcoal;
-										font-size: 18px;
+										font-size: 16px;
 										font-weight: 400;
 										&:last-child {
 											border-bottom: 0;
-										}
-										h3 {
-											font-size: 14px;
-											text-transform: uppercase;
 										}
 									}
 								}
@@ -940,7 +941,7 @@ button, a[class*=btn] {
 							.earn-category-back {
 								ul {
 									li {
-										font-size: 24px!important;
+										font-size: 18px!important;
 									}
 								}
 							}

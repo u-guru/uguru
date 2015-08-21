@@ -776,11 +776,14 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     flex-flow: row wrap;
     box-sizing: border-box;
     width: 100%;
-    margin: -10px 0 0; }
+    margin: -10px 0; }
     #main #earn .inside .inside-text #earn-categories-desktop .earn-category {
       width: 25%;
       box-sizing: border-box;
-      position: relative !important; }
+      position: relative !important;
+      padding: 10px; }
+      #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-inside {
+        position: relative; }
       #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front {
         border-radius: 5px;
         overflow: hidden;
@@ -809,19 +812,24 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
           list-style: none;
           margin: 0;
           padding: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
           width: 100%;
           padding: 10px;
           box-sizing: border-box !important; }
           #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li {
             padding: 12px 15px;
             border-bottom: 1px solid #2B3234;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 400; }
             #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li:last-child {
               border-bottom: 0; }
-            #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li h3 {
-              font-size: 14px;
-              text-transform: uppercase; }
       #main #earn .inside .inside-text #earn-categories-desktop .earn-category #earn-category-academic {
         background: url(../../../static/gabrielle/images/category/academic.jpg) no-repeat center center/cover; }
       #main #earn .inside .inside-text #earn-categories-desktop .earn-category #earn-category-consulting {
@@ -991,7 +999,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 {
     font-size: 24px; }
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li {
-    font-size: 24px !important; }
+    font-size: 18px !important; }
   #main #start .inside {
     max-width: 80%; }
     #main #start .inside input {
