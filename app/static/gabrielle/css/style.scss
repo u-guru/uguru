@@ -73,7 +73,7 @@ button, a[class*=btn] {
 	#mobile-inside {
 		@include center-xy;
 		width: 100%;
-		padding: 20px;
+		padding: 62px 20px 20px;
 		box-sizing: border-box;
 		img {
 			display: block;
@@ -91,6 +91,10 @@ button, a[class*=btn] {
 			}
 		}
 	}
+}
+
+input {
+	color: black!important;
 }
 
 @media screen and (min-width:375px) {
@@ -526,6 +530,98 @@ button, a[class*=btn] {
 					font-size: 20px;
 				}
 			}
+			#work-inside {
+				#work-infograph {
+					position: relative;
+					div {
+						@include round;
+						@include center-xy;
+						width: 200px;
+						height: 200px;
+						background: rgba(white, .5);
+					}
+				}
+				#work-text {
+					h3 {
+						font-size: 40px!important;
+					}
+					p {
+						margin: 5px 0 0;
+						font-size: 28px!important;
+						span {
+							display: block;
+						}
+					}
+					#work-slider {
+						ul {
+							@include listless;
+							@include flex;
+							@include flex-wrap;
+							li {
+								width: 25%;
+								svg {
+									display: block;
+									margin: 0 auto;
+									width: 100px;
+									height: 100px;
+								}
+								&:nth-child(1) {
+									svg {
+										circle {
+											fill: $moola;
+										}
+									}
+								}
+								&:nth-child(2) {
+									svg {
+										circle {
+											fill: $lake;
+										}
+									}
+								}
+								&:nth-child(3) {
+									svg {
+										circle {
+											fill: $eggplant;
+										}
+									}
+								}
+								&:nth-child(4) {
+									svg {
+										circle {
+											fill: $campus;
+										}
+									}
+								}
+							}
+						}
+						#slider-bar {
+							@include round;
+							display: block;
+							position: relative;
+							box-sizing: border-box;
+							margin: 30px 0 10px;
+							height: 5px;
+							background: white;
+							#slider-triangle {
+								display: block;
+								position: absolute;
+								left: 0;
+								-webkit-transform: translateX(200%);
+								-moz-transform: translateX(200%);
+								-ms-transform: translateX(200%);
+								-o-transform: translateX(200%);
+								transform: translateX(200%);
+								top: -30px;
+								width: 0;
+								height: 0;
+								border: 15px solid transparent;
+								border-bottom-color: white;
+							}
+						}
+					}
+				}
+			}
 		}
 		#why {
 			#why-text {
@@ -575,13 +671,29 @@ button, a[class*=btn] {
 					font-size: 24px;
 					font-weight: 300;
 				}
+				.cta-desktop {
+					margin-top: 30px;
+					button {
+						font-size: 24px;
+						background: white;
+						margin: 20px;
+						padding: 20px 30px;
+						color: $charcoal;
+					}
+					button:hover {
+						background: $taupe;
+						color: white;
+					}
+				}
 			}
 		}
 		#search {
 			display: block;
 			#search-box, .search-results {
+				@include border-radius(10);
 				@include transition(.15s ease-in);
 				z-index: 999;
+				overflow: hidden;
 				margin: auto;
 				width: 60%;
 				background: white;
@@ -599,6 +711,7 @@ button, a[class*=btn] {
 			}
 			.search-results {
 				@include center-xy;
+				overflow: hidden;
 				.search-results-top {
 					padding: 25px 50px;
 					background: $cerise-mute;
@@ -974,25 +1087,20 @@ button, a[class*=btn] {
 		}
 		#work {
 			#work-inside {
+				@include center-xy;
 				display: table;
 				width: 100%;
 				max-width: 1000px;
-				margin: 15% auto 0;
 				#work-infograph, #work-text {
 					box-sizing: border-box;
 					display: table-cell!important;
 					vertical-align: middle;
-					width: 50%;
 				}
 				#work-infograph {
-					position: relative;
-					div {
-						@include round;
-						@include center-xy;
-						width: 200px;
-						height: 200px;
-						background: rgba(white, .5);
-					}
+					width: 40%;
+				}
+				#work-text {
+					width: 60%;
 				}
 			}
 		}
@@ -1163,7 +1271,7 @@ button, a[class*=btn] {
 	#main {
 		.inside {
 			h2 {
-				font-size: 36px!important;
+				font-size: 48px!important;
 				font-weight: 200!important;
 			}
 			p {
@@ -1227,6 +1335,7 @@ button, a[class*=btn] {
 				.inside-text {
 					#earn-categories-desktop {
 						.earn-category {
+							padding: 20px;
 							svg {
 								max-width: 120px;
 								max-height: 120px;

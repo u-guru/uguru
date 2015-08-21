@@ -83,7 +83,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     width: 100%;
-    padding: 20px;
+    padding: 62px 20px 20px;
     box-sizing: border-box; }
     #mobile-start #mobile-inside img {
       display: block;
@@ -117,6 +117,9 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       #mobile-start #mobile-inside p em {
         display: block;
         font-size: 18px; }
+
+input {
+  color: black !important; }
 
 @media screen and (min-width: 375px) {
   #mobile-start #mobile-inside img {
@@ -467,6 +470,79 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     padding: 0; }
     #main #work #work-text p {
       font-size: 20px; }
+  #main #work #work-inside #work-infograph {
+    position: relative; }
+    #main #work #work-inside #work-infograph div {
+      border-radius: 1000px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.5); }
+  #main #work #work-inside #work-text h3 {
+    font-size: 40px !important; }
+  #main #work #work-inside #work-text p {
+    margin: 5px 0 0;
+    font-size: 28px !important; }
+    #main #work #work-inside #work-text p span {
+      display: block; }
+  #main #work #work-inside #work-text #work-slider ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap; }
+    #main #work #work-inside #work-text #work-slider ul li {
+      width: 25%; }
+      #main #work #work-inside #work-text #work-slider ul li svg {
+        display: block;
+        margin: 0 auto;
+        width: 100px;
+        height: 100px; }
+      #main #work #work-inside #work-text #work-slider ul li:nth-child(1) svg circle {
+        fill: #81B566; }
+      #main #work #work-inside #work-text #work-slider ul li:nth-child(2) svg circle {
+        fill: #50A5DD; }
+      #main #work #work-inside #work-text #work-slider ul li:nth-child(3) svg circle {
+        fill: #9A5BC5; }
+      #main #work #work-inside #work-text #work-slider ul li:nth-child(4) svg circle {
+        fill: #8A9EA3; }
+  #main #work #work-inside #work-text #work-slider #slider-bar {
+    border-radius: 1000px;
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    margin: 30px 0 10px;
+    height: 5px;
+    background: white; }
+    #main #work #work-inside #work-text #work-slider #slider-bar #slider-triangle {
+      display: block;
+      position: absolute;
+      left: 0;
+      -webkit-transform: translateX(200%);
+      -moz-transform: translateX(200%);
+      -ms-transform: translateX(200%);
+      -o-transform: translateX(200%);
+      transform: translateX(200%);
+      top: -30px;
+      width: 0;
+      height: 0;
+      border: 15px solid transparent;
+      border-bottom-color: white; }
   #main #why #why-text {
     padding: 0; }
     #main #why #why-text p {
@@ -499,15 +575,28 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     #main .slide .inside p {
       font-size: 24px;
       font-weight: 300; }
+    #main .slide .inside .cta-desktop {
+      margin-top: 30px; }
+      #main .slide .inside .cta-desktop button {
+        font-size: 24px;
+        background: white;
+        margin: 20px;
+        padding: 20px 30px;
+        color: #2B3234; }
+      #main .slide .inside .cta-desktop button:hover {
+        background: #757575;
+        color: white; }
   #main #search {
     display: block; }
     #main #search #search-box, #main #search .search-results {
+      border-radius: 10px;
       -webkit-transition: all 0.15s ease-in;
       -o-transition: all 0.15s ease-in;
       -ms-transition: all 0.15s ease-in;
       -moz-transition: all 0.15s ease-in;
       transition: all 0.15s ease-in;
       z-index: 999;
+      overflow: hidden;
       margin: auto;
       width: 60%;
       background: white; }
@@ -534,7 +623,8 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       -moz-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
       -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%); }
+      transform: translate(-50%, -50%);
+      overflow: hidden; }
       #main #search .search-results .search-results-top {
         padding: 25px 50px;
         background: #C56E9C;
@@ -847,30 +937,25 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       #main #earn .inside .inside-text #earn-categories-desktop .earn-category .category-delivery circle {
         fill: #8A9EA3; }
   #main #work #work-inside {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     display: table;
     width: 100%;
-    max-width: 1000px;
-    margin: 15% auto 0; }
+    max-width: 1000px; }
     #main #work #work-inside #work-infograph, #main #work #work-inside #work-text {
       box-sizing: border-box;
       display: table-cell !important;
-      vertical-align: middle;
-      width: 50%; }
+      vertical-align: middle; }
     #main #work #work-inside #work-infograph {
-      position: relative; }
-      #main #work #work-inside #work-infograph div {
-        border-radius: 1000px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        width: 200px;
-        height: 200px;
-        background: rgba(255, 255, 255, 0.5); }
+      width: 40%; }
+    #main #work #work-inside #work-text {
+      width: 60%; }
   #main #why #why-inside {
     display: table;
     width: 100%;
@@ -997,7 +1082,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
 
 @media screen and (min-width: 84em) {
   #main .inside h2 {
-    font-size: 36px !important;
+    font-size: 48px !important;
     font-weight: 200 !important; }
   #main .inside p {
     font-size: 28px !important; }
@@ -1021,14 +1106,16 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     padding: 20px 10px 20px 20px; }
   #main #search #search-container #search-results li div:last-child {
     padding: 20px 30px 20px 10px; }
-  #main #earn .inside .inside-text #earn-categories-desktop .earn-category svg {
-    max-width: 120px;
-    max-height: 120px; }
-  #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 {
-    font-size: 24px; }
-  #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li {
-    padding: 10px 0;
-    font-size: 18px !important; }
+  #main #earn .inside .inside-text #earn-categories-desktop .earn-category {
+    padding: 20px; }
+    #main #earn .inside .inside-text #earn-categories-desktop .earn-category svg {
+      max-width: 120px;
+      max-height: 120px; }
+    #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 {
+      font-size: 24px; }
+    #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li {
+      padding: 10px 0;
+      font-size: 18px !important; }
   .app-phone .app-wf {
     border-radius: 30px;
     width: 256px;
