@@ -1,47 +1,76 @@
-<div id="start-modal" class='relative'>
-    <div class='modal-loading hide absolute full-width-height' id='modal-loader-container'>
-        <div class='svg-container'>
-            {% include 'gabrielle/components/svg-loader.svg'%}
-        </div>
-    </div>
-    <div class='pure-g text-center hide absolute full-width-height' id='modal-content-submit'>
-        <div class='pure-u-1 white-text' style='padding-top:17.5%'>
-            <p>
-                <strong> You're all set! </strong>
-            </p>
-        </div>
-        <div class='pure-u-1 white-text'>
-            <h1>
-                <a id='home-modal-submit-close-link' href='#'> Close </a>
-            </h1>
-        </div>
-    </div>
-    <div class='pure-g text-center active' id='modal-content'>
-        <div class='pure-u-1'>
-            <h1>Choose a platform to download</h1>
-        </div>
-        <div class='pure-u-1'>
-            <h1>Send download link to email</h1>
-            <input type='email' id='home-modal-email-input' placeholder="enter your email address"/>
-        </div>
-        <div class='pure-u-1'>
-            <h1>Send app link to phone</h1>
-            <input type='tel' placeholder="(415) 122 - 1211" id='home-modal-phone-input'/>
-        </div>
-        <div class='pure-u-1 text-center relative full-width-height'>
-            <div class='absolute pure-u-1-2' style='bottom:5%; left:25%;'>
-                <div class='container'>
-                    <a id='home-modal-send-text' href='javascript:void(0)'>
-                        <strong> text </strong>
-                    </a>
-                    <a id='home-modal-send-email' href='javascript:void(0)'>
-                    | <strong> email </strong>
-                    </a>
-                    <a id='home-modal-close-link' href='javascript:void(0)'>
-                    | close
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+<div id="start-modal">
+	<div id="modal-loader-container" class="modal-loading hide absolute full-width-height">
+		<div id="modal-content-submit" class="svg-container">
+			{% include "gabrielle/components/svg-loader.svg" %}
+		</div>
+	</div>
+	<div class="text-center hide absolute full-width-height">
+		<div id="modal-content" class="white-text">
+			<p>
+				<strong>You're all set!</strong>
+			</p>
+		</div>
+		<div class="white-text">
+			<h1>
+				<a id="home-modal-submit-close-link" href="#">Close</a>
+			</h1>
+		</div>
+	</div>
+	<div class="text-center active">
+		<header>
+			<h1>Choose a platform<a id="home-modal-close-link" href="javascript:void(0)">&times;</a></h1>
+		</header>
+		<ul id="start-modal-platforms-mobile" class="start-modal-platforms">
+			<li>
+				<a href="javascript:void(0)">
+					{% include "gabrielle/components/platform/apple-color.svg" %}
+					<span>
+						Available on the <h3>App Store</h3>
+						<small>Compatible with Watch</small>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)">
+					{% include "gabrielle/components/platform/microsoft-color.svg" %}
+					<span>Download on <h3>Windows Store</h3></span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)">
+					{% include "gabrielle/components/platform/play-color.svg" %}
+					<span>
+						Get it on <h3>Google Play</h3>
+						<small>Compatible with Wear</small>
+					</span>
+				</a>
+			</li>
+		</ul>
+		<ul id="start-modal-platforms-wear" class="start-modal-platforms">
+			<li>
+				<a href="javascript:void(0)">
+					{% include "gabrielle/components/platform/apple-watch.svg" %}
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)">
+					{% include "gabrielle/components/platform/android-wear.svg" %}
+				</a>
+			</li>
+		</ul>
+		<div>
+			<h1>Send download link to email</h1>
+			<div class="start-modal-link">
+				<input type="email" id="home-modal-email-input" placeholder="enter your email address"/>
+				<button id="home-modal-send-email">Email</button>
+			</div>
+		</div>
+		<div>
+			<h1>Send app link to phone</h1>
+			<div class="start-modal-link">
+				<input type="tel" placeholder="(415) 122-1211" id="home-modal-phone-input"/>
+				<button id="home-modal-send-text">Text</button>
+			</div>
+		</div>
+	</div>
 </div>

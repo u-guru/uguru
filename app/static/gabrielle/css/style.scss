@@ -1,5 +1,4 @@
 @import 'mixin';
-@import 'default';
 
 * {
 	-webkit-backface-visibility: hidden;
@@ -174,17 +173,25 @@ button, a[class*=btn] {
 			width: 100%;
 			height: 100%;
 			box-sizing: border-box;
-			padding: 20px;
 			color: white;
 			.inside-text {
-				display: block;
+				display: table;
 				width: 100%;
 			}
 			h2 {
-				margin: 1em 0;
-				font-size: 24px;
-				font-weight: 300;
+				display: table-cell;
+				vertical-align: middle;
+				margin: 0;
 				width: 100%;
+				padding: 62px 10px 0;
+				font-size: 14px;
+				font-weight: 300;
+				text-align: center;
+				span {
+					display: block;
+					width: 100%;
+					text-align: center;
+				}
 			}
 			p {
 				font-size: 20px;
@@ -212,60 +219,177 @@ button, a[class*=btn] {
 				}
 			}
 		}
+		#earn-categories-mobile {
+			@include listless;
+			@include flex;
+			@include flex-wrap;
+			position: absolute;
+			width: 100%;
+			bottom: 0;
+			left: 0;
+			ul {
+				@include listless;
+				box-sizing: border-box;
+				position: absolute;
+				z-index: 999;
+				top: 0;
+				width: 100%;
+				height: 100px;
+				padding: 5px;
+				background: white;
+				color: $slate;
+				font-size: 12px;
+				font-weight: 400;
+				li {
+					padding: 4px 0;
+					border-bottom: 1px solid;
+					&:first-child {
+						margin-top: -3px;
+					}
+					&:last-child {
+						border-bottom: 0;
+					}
+				}
+			}
+			.earn-category-mobile {
+				position: relative;
+				width: 33.3333%;
+				height: 100px;
+				> div {
+					top: 0;
+					width: 100%;
+					overflow-y: hidden;
+					div {
+						@include center-xy;
+					}
+					svg {
+						width: 80px;
+						height: 80px;
+						circle {
+							fill: none;
+						}
+					}
+					h3 {
+						margin: -15px 0 15px;
+						width: 100%;
+						font-size: 16px;
+						font-weight: 600;
+					}
+				}
+				&:nth-child(1) {
+					div {
+						background: $cerise;
+					}
+					ul {
+						li {
+							border-color: $cerise;
+						}
+					}
+				}
+				&:nth-child(2) {
+					div {
+						background: $orange;
+					}
+					ul {
+						li {
+							border-color: $orange;
+						}
+					}
+				}
+				&:nth-child(3) {
+					div {
+						background: $gold;
+					}
+					ul {
+						li {
+							border-color: $gold;
+						}
+					}
+				}
+				&:nth-child(4) {
+					div {
+						background: $moola;
+					}
+					ul {
+						li {
+							border-color: $moola;
+						}
+					}
+				}
+				&:nth-child(5) {
+					div {
+						background: $shamrock;
+					}
+					ul {
+						li {
+							border-color: $shamrock;
+						}
+					}
+				}
+				&:nth-child(6) {
+					div {
+						background: $lake;
+					}
+					ul {
+						li {
+							border-color: $lake;
+						}
+					}
+				}
+				&:nth-child(7) {
+					div {
+						background: $eggplant;
+					}
+					ul {
+						li {
+							border-color: $eggplant;
+						}
+					}
+				}
+				&:nth-child(8) {
+					div {
+						background: $campus;
+					}
+					ul {
+						li {
+							border-color: $campus;
+						}
+					}
+				}
+				&:nth-child(9) {
+					div {
+						h3 {
+							margin: 0;
+						}
+					}
+				}
+			}
+		}
 	}
 	#work {
 		background: $slate;
+		#work-text {
+			padding: 0 20px;
+			p {
+				font-size: 16px;
+			}
+		}
 	}
 	#why {
 		background: $campus;
+		#why-text {
+			padding: 0 20px;
+			p {
+				font-size: 16px;
+			}
+		}
 	}
 	#start {
 		background: $shamrock;
-		.inside {
-			#start-download {
-				margin-top: 30px;
-			}
-			input {
-				display: block;
-				width: 100%;
-				background: none;
-				box-sizing: border-box;
-				border: 0;
-				border-bottom: 1px solid rgba(white,.5);
-				border-radius: 0!important;
-				font-size: 18px;
-				font-weight: 400;
-			}
-			::-webkit-input-placeholder {
-			   color: rgba(white,.5);
-			}
-			:-moz-placeholder {
-			   color: rgba(white,.5);
-			}
-			::-moz-placeholder {
-			   color: rgba(white,.5);
-			}
-			:-ms-input-placeholder {
-			   color: rgba(white,.5);
-			}
-			input:focus {
-				color: white;
-				border-color: white;
-				&::-webkit-input-placeholder {
-				   color: white;
-				}
-				&:-moz-placeholder {
-				   color: white;
-				}
-				&::-moz-placeholder {
-				   color: white;
-				}
-				&:-ms-input-placeholder {
-				   color: white;
-				}
-			}
-			button {
-				margin-top: 15px;
+		#start-text {
+			padding: 0 20px;
+			p {
+				font-size: 16px;
 			}
 		}
 	}
@@ -274,7 +398,38 @@ button, a[class*=btn] {
 	display: none!important;
 }
 
-@media screen and (min-width:36em) {
+@media screen and (min-height:568px) {
+	#main {
+		.slide {
+			.inside {
+				h2 {
+					height: 168px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width:375px) {
+	#main {
+		#earn {
+			#earn-categories-mobile {
+				.earn-category-mobile {
+					height: 134px;
+				}
+				ul {
+					height: 134px;
+					font-size: 14px;
+					li {
+						padding: 6px 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width:35.5em) {
 	#mobile-start {
 		display: none!important;
 	}
@@ -349,12 +504,42 @@ button, a[class*=btn] {
 		.slide {
 			.inside {
 				padding: 62px 30px 30px;
+				h2 {
+					display: block;
+					margin: 1em 0;
+					height: auto;
+					padding: 0;
+					font-size: 24px;
+				}
 				p {
 					font-size: 24px!important;
 				}
-				.inside-prop {
-					width: 200px;
-					height: 200px;
+				.inside-text {
+					display: block;
+				}
+			}
+		}
+		#work {
+			#work-text {
+				padding: 0;
+				p {
+					font-size: 20px;
+				}
+			}
+		}
+		#why {
+			#why-text {
+				padding: 0;
+				p {
+					font-size: 20px;
+				}
+			}
+		}
+		#start {
+			#start-text {
+				padding: 0;
+				p {
+					font-size: 20px;
 				}
 			}
 		}
@@ -380,6 +565,9 @@ button, a[class*=btn] {
 		.slide {
 			.inside {
 				padding: 62px 50px 50px;
+				h2 {
+					text-align: center;
+				}
 				.inside-prop {
 					display: none;
 				}
@@ -549,6 +737,7 @@ button, a[class*=btn] {
 				}
 				.twitter-typeahead {
 					display: block!important;
+					width: 100%;
 				}
 				.tt-dropdown-menu {
 					background: white;
@@ -637,6 +826,9 @@ button, a[class*=btn] {
 		#earn {
 			.inside {
 				.inside-text {
+					#earn-categories-mobile {
+						display: none;
+					}
 					#earn-categories-desktop {
 						@include listless;
 						@include flex;
@@ -645,20 +837,32 @@ button, a[class*=btn] {
 						width: 100%;
 						margin: -10px 0;
 						.earn-category {
+							cursor: pointer;
 							width: 25%;
 							box-sizing: border-box;
+							position: relative!important;
+							padding: 10px;
+							.earn-category-inside {
+								position: relative;
+							}
 							.earn-category-front {
 								@include border-radius(5);
 								overflow: hidden;
-								position: relative;
+								position: relative!important;
 								box-sizing: border-box;
 								background: $slate;
-								margin: 10px;
 								padding: 40px 10px;
 								h3 {
+									position: relative;
 									margin-top: 5px;
-									font-size: 18px;
+									font-size: 14px;
 									text-transform: uppercase;
+									span {
+										display: none;
+									}
+								}
+								svg {
+									position: relative;
 								}
 								.earn-category-overlay {
 									position: absolute;
@@ -667,6 +871,29 @@ button, a[class*=btn] {
 									width: 100%;
 									height: 100%;
 									background: rgba($charcoal, .5);
+								}
+							}
+							.earn-category-back {
+								@include border-radius(5);
+								background: $slate;
+								position: absolute!important;
+								top: 0!important;
+								box-sizing: border-box!important;
+								ul {
+									@include listless;
+									@include center-xy;
+									width: 100%;
+									padding: 10px;
+									box-sizing: border-box!important;
+									li {
+										padding: 7px 0;
+										border-bottom: 1px solid $charcoal;
+										font-size: 12px;
+										font-weight: 400;
+										&:last-child {
+											border-bottom: 0;
+										}
+									}
 								}
 							}
 							#earn-category-academic {
@@ -700,64 +927,44 @@ button, a[class*=btn] {
 									fill: white;
 								}
 							}
-							#category-academic {
+							.category-academic {
 								circle {
 									fill: $cerise
 								}
 							}
-							#category-consulting {
+							.category-consulting {
 								circle {
 									fill: $orange;
 								}
 							}
-							#category-baking {
+							.category-baking {
 								circle {
 									fill: $gold;
 								}
 							}
-							#category-photography {
+							.category-photography {
 								circle {
 									fill: $moola;
 								}
 							}
-							#category-household {
+							.category-household {
 								circle {
 									fill: $shamrock;
 								}
 							}
-							#category-technology {
+							.category-technology {
 								circle {
 									fill: $lake;
 								}
 							}
-							#category-sports {
+							.category-sports {
 								circle {
 									fill: $eggplant;
 								}
 							}
-							#category-delivery {
+							.category-delivery {
 								circle {
 									fill: $campus;
-								}
-							}
-							ul {
-								@include listless;
-								@include tri-down(10, $slate, 5, 0 10px);
-								margin: 10px auto;
-								max-width: 300px;
-								background: $slate;
-								li {
-									padding: 7px 10px;
-									border-bottom: 1px solid $charcoal;
-									font-size: 12px;
-									font-weight: 400;
-									&:last-child {
-										border-bottom: 0;
-									}
-									h3 {
-										font-size: 14px;
-										text-transform: uppercase;
-									}
 								}
 							}
 						}
@@ -766,15 +973,36 @@ button, a[class*=btn] {
 			}
 		}
 		#work {
-			h2 {
-				text-align: center;
-			}
 			#work-inside {
 				display: table;
 				width: 100%;
 				max-width: 1000px;
 				margin: 15% auto 0;
-				#work-text, .app-phone {
+				#work-infograph, #work-text {
+					box-sizing: border-box;
+					display: table-cell!important;
+					vertical-align: middle;
+					width: 50%;
+				}
+				#work-infograph {
+					position: relative;
+					div {
+						@include round;
+						@include center-xy;
+						width: 200px;
+						height: 200px;
+						background: rgba(white, .5);
+					}
+				}
+			}
+		}
+		#why {
+			#why-inside {
+				display: table;
+				width: 100%;
+				max-width: 1000px;
+				margin: 15% auto 0;
+				#why-text, .app-phone {
 					box-sizing: border-box;
 					display: table-cell!important;
 					vertical-align: middle;
@@ -784,24 +1012,32 @@ button, a[class*=btn] {
 		}
 		#start {
 			.inside {
-				@include center-xy;
-				height: auto;
-				#start-download {
-					margin-top: 100px;
-				}
-				input {
-					border-bottom: 2px solid rgba(white,.5);
-					font-size: 60px;
+				ol {
+					@include listless;
+					@include flex;
+					@include flex-wrap;
 					font-weight: 300;
-				}
-				input:focus {
-					border-color: white;
-				}
-				button {
-					margin-top: 25px;
-					font-size: 24px;
-					letter-spacing: 1px;
-					padding: 15px 30px;
+					counter-reset: li;
+					li {
+						width: 33.3333%;
+						padding: 0;
+						text-align: center;
+						&:before {
+							@include round;
+							display: block;
+							margin: 0 auto 5px;
+							text-align: center;
+							content: counter(li);
+							counter-increment: li;
+							width: 50px!important;
+							height: 50px!important;
+							background: white;
+							color: $shamrock;
+							font-size: 24px;
+							font-weight: 900;
+							line-height: 50px;
+						}
+					}
 				}
 			}
 		}
@@ -847,6 +1083,76 @@ button, a[class*=btn] {
 				img {
 					display: block;
 					height: 300px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width:990px) {
+	#main {
+		#earn {
+			.inside {
+				.inside-text {
+					#earn-categories-desktop {
+						.earn-category {
+							.earn-category-front {
+								h3 {
+									span {
+										display: inline;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width:1080px) {
+	#main {
+		#earn {
+			.inside {
+				.inside-text {
+					#earn-categories-desktop {
+						.earn-category {
+							.earn-category-front {
+								h3 {
+									font-size: 14px;
+								}
+							}
+							.earn-category-back {
+								ul {
+									li {
+										padding: 10px 0;
+										font-size: 14px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width:1200px) {
+	#main {
+		#earn {
+			.inside {
+				.inside-text {
+					#earn-categories-desktop {
+						.earn-category {
+							.earn-category-front {
+								h3 {
+									font-size: 18px;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -921,37 +1227,25 @@ button, a[class*=btn] {
 				.inside-text {
 					#earn-categories-desktop {
 						.earn-category {
-							padding-bottom: 15px;
 							svg {
 								max-width: 120px;
 								max-height: 120px;
 							}
-							ul {
-								@include tri-down(15, $slate, 10, 0 15px);
-								li {
-									padding: 10px 15px;
-									font-size: 14px;
-									h3 {
-										font-size: 16px;
+							.earn-category-front {
+								h3 {
+									font-size: 24px;
+								}
+							}
+							.earn-category-back {
+								ul {
+									li {
+										padding: 10px 0;
+										font-size: 18px!important;
 									}
 								}
 							}
 						}
 					}
-				}
-			}
-		}
-		#start {
-			.inside {
-				max-width: 80%;
-				input {
-					font-size: 96px;
-					font-weight: 200;
-				}
-				button {
-					margin-top: 50px;
-					font-size: 28px;
-					padding: 20px 40px;
 				}
 			}
 		}

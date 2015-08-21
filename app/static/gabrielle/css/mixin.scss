@@ -87,6 +87,24 @@
 		border-bottom: $size+px solid $color;
 	}
 }
+@mixin tri-up($size, $color, $radius, $padding) {
+	@include border-radius($radius);
+	position: relative;
+	background: $color;
+	padding: $padding;
+	margin-bottom: ($size * 2)+px;
+	&:before {
+		@include center-x;
+		content: "";
+		display: block;
+		position: absolute;
+		bottom: -($size * 2 - 1)+px;
+		width: 0;
+		height: 0;
+		border: $size+px solid transparent;
+		border-top: $size+px solid $color;
+	}
+}
 @mixin flex {
 	-ms-box-orient: horizontal;
 	display: -webkit-box;

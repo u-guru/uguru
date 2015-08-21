@@ -58,7 +58,7 @@ $(document).ready(function () {
 });
 
 $(function () {
-	$('.inside h2').fitText(1.2, { maxFontSize: '40px' });
+	$('.inside h2').fitText(1.2, { maxFontSize: '40px', minFontSize: '24px' });
 	if ($(window).width() >= 768) {
 		$("#search-box").slideDown();
 		$('#search-bar').focus(function(e) {
@@ -139,7 +139,7 @@ $(function () {
 			e.preventDefault();
 		});
 
-		$('#link-support').on("click", function(e) {
+		$('.top-link-chat').on("click", function(e) {
 			document.querySelector('.intercom-launcher-button').click();
 		});
 
