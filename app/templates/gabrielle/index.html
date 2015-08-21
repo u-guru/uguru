@@ -369,6 +369,10 @@ Uguru Home
 						</div>
 					</li>
 				</ul>
+				<div class="cta-desktop">
+					<button class="btn-round">Be one of the first!</button>
+					<button class="btn-round">Don't see your skill?</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -382,7 +386,41 @@ Uguru Home
 					<div></div>
 				</div>
 				<div id="work-text">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<div id="work-slider">
+						<ul>
+							<li>
+								{% include "gabrielle/components/work/wage.svg" %}
+							</li>
+							<li>
+								{% include "gabrielle/components/work/popular.svg" %}
+							</li>
+							<li>
+								{% include "gabrielle/components/work/schedule.svg" %}
+							</li>
+							<li>
+								{% include "gabrielle/components/work/blessed.svg" %}
+							</li>
+						</ul>
+						<span id="slider-bar">
+							<span id="slider-triangle"></span>
+						</span>
+					</div>
+					<div>
+						<h3>Awesome pay.</h3>
+						<p>Cash in on sharing your expertise on campus. <span>The more you guru, the more your rate will increase.</span></p>
+					</div>
+					<div hidden>
+						<h3>Be the cool kid.</h3>
+						<p>We’ll give you the tools to skyrocket into Uguru fame. <span>Craigslist posts, Facebook ads, and more - all to help you get more customers.</span></p>
+					</div>
+					<div hidden>
+						<h3>Easy scheduling.</h3>
+						<p>Get instant scheduling when it’s best for you. <span>Just upload your available time slots and students will fill them.</span></p>
+					</div>
+					<div hidden>
+						<h3>#blessed</h3>
+						<p>Score access to cool stuff, like free Uber rides. <span>We’ll be there for you when you need it most.</span></p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -403,15 +441,15 @@ Uguru Home
 				<div id="why-text">
 					<div>
 						<h3>Always make more $$ than before.</h3>
-						<p>Good reviews increase your hourly rate to more than $40/hr. Good work = great earnings.</p>
+						<p>Good reviews increase your rate to more than $40/hr. Good work = great earnings.</p>
 					</div>
 					<div hidden>
 						<h3>24/7 flexibility.</h3>
-						<p>Work whenever you feel like it. Early mornings, 2am, or Saturdays only.</p>
+						<p>Work whenever you feel like it - even if it's at 2am.</p>
 					</div>
 					<div hidden>
-						<h3>Remote friendly.</h3>
-						<p>Skype, FaceTime and work-from-home, all the time with options like video chat and online paid Q&amp;A</p>
+						<h3>Work in your pajamas.</h3>
+						<p>Connect from wherever you are using tools like video chat support and online paid Q&amp;A.</p>
 					</div>
 					<div hidden>
 						<h3>Zero transaction fees, always.</h3>
@@ -424,7 +462,7 @@ Uguru Home
 					<div hidden>
 						<h3>Cross-platform.</h3>
 						<p>We support all popular browsers, mobile platforms, and even watches*!</p>
-						<p><small>Currently in beta.</small></p>
+						<p><small>*Currently in beta.</small></p>
 					</div>
 					<div hidden>
 						<h3>You’re the boss.</h3>
@@ -450,7 +488,7 @@ Uguru Home
 					<li>Earn $$ by accepting requests.</li>
 				</ol>
 
-				<h3 class="text-center" style="padding-top: 10%;">Or, enter your email &amp; university to stay in touch.</h3>
+				<h3 class="text-center" style="padding-top: 10%;">Or, enter your <input placeholder="email"/> &amp; <input placeholder="university"/> to stay in touch.</h3>
 				<input hidden placeholder="enter your email address"/>
 				<button hidden class="btn-round btn-ghost">Subscribe</button>
 			</div>
