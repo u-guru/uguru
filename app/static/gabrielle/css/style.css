@@ -390,7 +390,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
 .app-phone {
   display: none !important; }
 
-@media screen and (min-width: 35.5em) {
+@media screen and (min-width: 375px) {
   #main #earn #earn-categories-mobile .earn-category-mobile {
     height: 134px; }
   #main #earn #earn-categories-mobile ul {
