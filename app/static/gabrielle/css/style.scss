@@ -393,6 +393,7 @@ input {
 		#start-text {
 			padding: 0 20px;
 			p {
+				margin: 0;
 				font-size: 16px;
 			}
 		}
@@ -523,9 +524,6 @@ input {
 					div {
 						@include round;
 						margin: 0 auto 30px;
-						width: 150px;
-						height: 150px;
-						background: rgba(white, .5);
 					}
 				}
 				#work-text {
@@ -586,22 +584,25 @@ input {
 							position: relative;
 							box-sizing: border-box;
 							margin: 30px 0 20px;
-							height: 5px;
-							background: white;
+							height: 4px;
+							background: $charcoal;
 							#slider-triangle {
 								display: block;
 								position: absolute;
 								left: 0;
-								-webkit-transform: translateX(200%);
-								-moz-transform: translateX(200%);
-								-ms-transform: translateX(200%);
-								-o-transform: translateX(200%);
-								transform: translateX(200%);
-								top: -29px;
-								width: 0;
-								height: 0;
-								border: 15px solid transparent;
-								border-bottom-color: white;
+								top: 50%;
+								-webkit-transform: translate(450%, -50%);
+								-moz-transform: translate(450%, -50%);
+								-ms-transform: translate(450%, -50%);
+								-o-transform: translate(450%, -50%);
+								transform: translate(450%, -50%);
+								svg {
+									width: 15px;
+									height: 21px;
+									path {
+										fill: $moola;
+									}
+								}
 							}
 						}
 					}
@@ -649,7 +650,29 @@ input {
 			#start-text {
 				padding: 0;
 				p {
+					margin: 0;
 					font-size: 20px;
+				}
+				h3 {
+					font-weight: 400;
+				}
+				input {
+					background: transparent;
+					border: 0;
+					border-bottom: 2px solid rgba(white, .5);
+					color: white!important;
+				}
+				::-webkit-input-placeholder {
+				   color: rgba(white, .5);
+				}
+				:-moz-placeholder {
+				   color: rgba(white, .5);
+				}
+				::-moz-placeholder {
+				   color: rgba(white, .5);
+				}
+				:-ms-input-placeholder {
+				   color: rgba(white, .5);
 				}
 			}
 		}
@@ -691,19 +714,19 @@ input {
 					font-size: 24px;
 					font-weight: 300;
 				}
-				.cta-desktop {
-					margin-top: 30px;
-					button {
-						font-size: 24px;
-						background: white;
-						margin: 20px;
-						padding: 20px 30px;
-						color: $charcoal;
-					}
-					button:hover {
-						background: $taupe;
-						color: white;
-					}
+			}
+			.cta-desktop {
+				@include center-x;
+				bottom: 0;
+				button {
+					font-size: 24px;
+					margin: 20px;
+					padding: 20px 30px;
+					background: white;
+				}
+				button:active, button:focus, button:hover {
+					background: rgba(white,.1);
+					color: white!important;
 				}
 			}
 		}
@@ -957,6 +980,11 @@ input {
 			}
 		}
 		#earn {
+			.cta-desktop {
+				button {
+					color: $charcoal;
+				}
+			}
 			.inside {
 				.inside-text {
 					#earn-categories-mobile {
@@ -1106,6 +1134,11 @@ input {
 			}
 		}
 		#work {
+			.cta-desktop {
+				button {
+					color: $slate;
+				}
+			}
 			#work-inside {
 				@include center-xy;
 				display: table;
@@ -1119,11 +1152,15 @@ input {
 				#work-infograph {
 					position: relative;
 					width: 40%;
-					div {
+					div, img {
 						@include center-xy;
 						margin: 0;
-						width: 200px;
-						height: 200px;
+					}
+					img {
+						width: 100%;
+						height: 100%;
+						max-width: 70%;
+						max-height: 70%;
 					}
 				}
 				#work-text {
@@ -1151,6 +1188,11 @@ input {
 			}
 		}
 		#why {
+			.cta-desktop {
+				button {
+					color: $campus;
+				}
+			}
 			#why-inside {
 				@include center-xy;
 				display: table;
@@ -1186,7 +1228,7 @@ input {
 					@include flex-wrap;
 					font-weight: 300;
 					counter-reset: li;
-					li {
+					> li {
 						width: 33.3333%;
 						padding: 0;
 						text-align: center;
@@ -1205,6 +1247,20 @@ input {
 							font-weight: 900;
 							line-height: 50px;
 						}
+					}
+					ul, div {
+						@include listless;
+						@include flex;
+						@include flex-wrap;
+						margin: 5% 10% 0;
+						li {
+							width: 33.3333%;
+						}
+					}
+					div {
+						@include round;
+						background: rgba(white, .5);
+						height: 100px;
 					}
 				}
 			}

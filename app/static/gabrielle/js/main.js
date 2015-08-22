@@ -60,6 +60,7 @@ $(function () {
 	} else if ($(window).width() <= 1280) {
 		$('.inside h2').fitText(2, { maxFontSize: '36px', minFontSize: '24px' });
 	}
+	$('#start-text h3').fitText(2, { maxFontSize: '36px', minFontSize: '24px' });
 	$("#search-box").slideDown();
 	$('#search-bar').focus(function(e) {
 		$("#top-school-banner").css("width", "60%");
@@ -79,6 +80,9 @@ $(function () {
 			$('#search-results').hide();
 		}
 	});
+	$("#search-bar").focus(function(){
+		$('#top-school-banner').css('width','30%');
+	});
 	$("#search-bar").blur(function(){
 		setTimeout(function() {
 			$("#search-results").slideUp();
@@ -95,7 +99,7 @@ $(function () {
 	// SAMIR - SIDEBAR
 	// Should also be a way to click on #overlay
 	$(".top-link-menu").on("click", function(e) {
-		$("#side-menu, #overlay").toggleClass("active");
+		$("#side-menu, #overlay").addClass("active");
 		e.preventDefault();
 	});
 	$(".top-link-start").on("click", function(e) {
@@ -103,7 +107,7 @@ $(function () {
 		var modalToFire = document.querySelector('#start-modal');
 		var startButton = this;
 
-		$('#start-modal').toggleClass('active');
+		$('#start-modal').addClass('active');
 
 		//call to action tool
 		//once CTA object is instantiate, it returns a function that can reverse it
@@ -149,9 +153,10 @@ $(function () {
 	});
 
 	$('#overlay-right:visible').on("click", function(e){
-		$('#overlay').toggleClass('active');
+		$('#overlay').removeClass('active');
 		if ($('#start-modal').is(":visible")) {
-			$('#start-modal').toggleClass('active');
+			$('#start-modal').removeClass('active');
+			$('#side-menu').removeClass('active')
 		}
 	})
 	$("#search-results").on("click", "li", function(e) {
@@ -220,3 +225,30 @@ var initParallax = function() {
 	var searchBox = document.getElementById("search-box");
 	// if (searchBox) searchBox.style.marginTop ='30%';
 }
+
+$(document).ready(function () {
+	$(".earn-category").flip({
+		axis: 'y',
+		trigger: 'hover'
+	});
+	$(".earn-category-mobile").not("#and-more").flip({
+		axis: 'x',
+		trigger: 'hover'
+	});
+
+	$('.work-infograph').easyPieChart({
+	    size: 200,
+	    lineWidth: 8,
+	    trackColor: false,
+	    scaleColor: false,
+	    scaleLength: false
+	});
+
+	$('#work-infograph-bg').easyPieChart({
+	    size: 196,
+	    lineWidth: 4,
+	    trackColor: "#2B3234",
+	    scaleColor: false,
+	    scaleLength: false
+	});
+});
