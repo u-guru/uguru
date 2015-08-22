@@ -589,7 +589,8 @@ Uguru Home
 	    }).on('typeahead:selected', function(event, suggested, dataset_name) {
 	    	$("#search-box").slideUp();
 	    	$("#border-outer").css("fill", "white");
-	    	$("#top-school-logo, #top-school-banner").css("width", "20%");
+	    	$("#top-school-banner").css("width", "20%");
+			$('#top-school-logo').css("width","auto");
 	    	customizeSearchResults(suggested, showSearchResultsCallback);
 	            //make it wobble
 	    }).on('typeahead:cursorchanged', function(event, suggested, dataset_name) {
@@ -611,9 +612,30 @@ Uguru Home
 		schoolBannerInnerBorder = document.getElementById('border-inner');
 		searchResultsBgBannerElement = document.querySelector('.search-results-top');
 		searchResultsGuruElement = document.querySelector('.search-results-gurus');
+		bannerElement = document.querySelector('#banner');
+		popularCoursesParent = document.querySelector('.search-results-courses ul.text-center');
+		console.log(uni_data)
+
+		if (popularCoursesParent && uni_data.popular_courses && uni_data.popular_courses.length) {
+			popularCoursesParent.innerHTML = '';
+			popularCourses = uni_data.popular_courses;
+
+			if (popularCourses.length > 12) {
+				popularCourses = popularCourses.slice(0,12);
+			}
+
+			for (var i = 0 ; i < popularCourses.length; i ++) {
+				var courseNode = document.createElement("li");
+				courseNode.innerHTML = popularCourses[i];
+				popularCoursesParent.appendChild(courseNode);
+			}
+		}
 
 		if (schoolNameElement && uni_data.name) {
 			schoolNameElement.innerHTML = uni_data.name;
+		}
+		if (bannerElement && uni_data.banner_url) {
+			bannerElement.style.backgroundImage = 'url(' + uni_data.banner_url + ')';
 		}
 		if (schoolLogoElement && uni_data.logo_url) {
 			schoolLogoElement.src = uni_data.logo_url;
@@ -636,11 +658,12 @@ Uguru Home
 			}
 		}
 
-		//banner
-		//background hex color
-		//city state
+
 		//popular courses
+		//city state
+		//population
 		//latitude longitude
+		//button hover
 
 		// $(".search-results-top, .search-results-gurus").css("background", color);
 
