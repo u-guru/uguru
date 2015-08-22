@@ -383,10 +383,6 @@ input {
       padding: 6px 0; } }
 
 @media screen and (min-width: 35.5em) {
-  #mobile-start {
-    display: none !important; }
-  #banner {
-    display: block !important; }
   #slide-breadcrumbs {
     display: block !important;
     position: fixed;
@@ -466,93 +462,106 @@ input {
       font-size: 24px !important; }
     #main .slide .inside .inside-text {
       display: block; }
-  #main #work #work-text {
-    padding: 0; }
-    #main #work #work-text p {
-      font-size: 20px; }
-  #main #work #work-inside #work-infograph {
-    position: relative; }
-    #main #work #work-inside #work-infograph div {
-      border-radius: 1000px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      width: 200px;
-      height: 200px;
-      background: rgba(255, 255, 255, 0.5); }
-  #main #work #work-inside #work-text h3 {
-    font-size: 40px !important; }
-  #main #work #work-inside #work-text p {
-    margin: 5px 0 0;
-    font-size: 28px !important; }
-    #main #work #work-inside #work-text p span {
-      display: block; }
-  #main #work #work-inside #work-text #work-slider ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap; }
-    #main #work #work-inside #work-text #work-slider ul li {
-      width: 25%; }
-      #main #work #work-inside #work-text #work-slider ul li svg {
-        display: block;
-        margin: 0 auto;
-        width: 100px;
-        height: 100px; }
-      #main #work #work-inside #work-text #work-slider ul li:nth-child(1) svg circle {
-        fill: #81B566; }
-      #main #work #work-inside #work-text #work-slider ul li:nth-child(2) svg circle {
-        fill: #50A5DD; }
-      #main #work #work-inside #work-text #work-slider ul li:nth-child(3) svg circle {
-        fill: #9A5BC5; }
-      #main #work #work-inside #work-text #work-slider ul li:nth-child(4) svg circle {
-        fill: #8A9EA3; }
-  #main #work #work-inside #work-text #work-slider #slider-bar {
+  #main #work #work-inside #work-infograph div {
     border-radius: 1000px;
-    display: block;
-    position: relative;
-    box-sizing: border-box;
-    margin: 30px 0 10px;
-    height: 5px;
-    background: white; }
-    #main #work #work-inside #work-text #work-slider #slider-bar #slider-triangle {
+    margin: 0 auto 30px;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.5); }
+  #main #work #work-inside #work-text {
+    padding: 0; }
+    #main #work #work-inside #work-text p {
+      margin: 5px 0 0;
+      font-size: 20px; }
+      #main #work #work-inside #work-text p span {
+        display: block; }
+    #main #work #work-inside #work-text #work-slider ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap; }
+      #main #work #work-inside #work-text #work-slider ul li {
+        width: 25%; }
+        #main #work #work-inside #work-text #work-slider ul li svg {
+          display: block;
+          margin: 0 auto;
+          width: 80px;
+          height: 80px; }
+        #main #work #work-inside #work-text #work-slider ul li:nth-child(1) svg circle {
+          fill: #81B566; }
+        #main #work #work-inside #work-text #work-slider ul li:nth-child(2) svg circle {
+          fill: #50A5DD; }
+        #main #work #work-inside #work-text #work-slider ul li:nth-child(3) svg circle {
+          fill: #9A5BC5; }
+        #main #work #work-inside #work-text #work-slider ul li:nth-child(4) svg circle {
+          fill: #8A9EA3; }
+    #main #work #work-inside #work-text #work-slider #slider-bar {
+      border-radius: 1000px;
       display: block;
-      position: absolute;
-      left: 0;
-      -webkit-transform: translateX(200%);
-      -moz-transform: translateX(200%);
-      -ms-transform: translateX(200%);
-      -o-transform: translateX(200%);
-      transform: translateX(200%);
-      top: -30px;
-      width: 0;
-      height: 0;
-      border: 15px solid transparent;
-      border-bottom-color: white; }
+      position: relative;
+      box-sizing: border-box;
+      margin: 30px 0 20px;
+      height: 5px;
+      background: white; }
+      #main #work #work-inside #work-text #work-slider #slider-bar #slider-triangle {
+        display: block;
+        position: absolute;
+        left: 0;
+        -webkit-transform: translateX(200%);
+        -moz-transform: translateX(200%);
+        -ms-transform: translateX(200%);
+        -o-transform: translateX(200%);
+        transform: translateX(200%);
+        top: -29px;
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-bottom-color: white; }
   #main #why #why-text {
     padding: 0; }
     #main #why #why-text p {
-      font-size: 20px; }
+      font-size: 20px;
+      margin: 5px 0 0; }
+      #main #why #why-text p span {
+        display: block; }
+    #main #why #why-text a {
+      filter: alpha(opacity=50);
+      opacity: 0.5;
+      display: block;
+      margin: 10px auto;
+      text-align: center; }
+      #main #why #why-text a svg circle {
+        fill: none; }
+    #main #why #why-text #arrow-down svg {
+      -webkit-transform: scaleY(-1);
+      -moz-transform: scaleY(-1);
+      -ms-transform: scaleY(-1);
+      -o-transform: scaleY(-1);
+      transform: scaleY(-1);
+      filter: FlipV;
+      -ms-filter: "FlipV"; }
+    #main #why #why-text a:active, #main #why #why-text a:focus, #main #why #why-text a:hover {
+      filter: alpha(opacity=100);
+      opacity: 1; }
   #main #start #start-text {
     padding: 0; }
     #main #start #start-text p {
       font-size: 20px; } }
 
 @media screen and (min-width: 48em) {
+  #mobile-start {
+    display: none !important; }
+  #banner {
+    display: block !important; }
   #top #top-logo {
     position: absolute;
     left: 50%;
@@ -953,19 +962,57 @@ input {
       display: table-cell !important;
       vertical-align: middle; }
     #main #work #work-inside #work-infograph {
+      position: relative;
       width: 40%; }
+      #main #work #work-inside #work-infograph div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        margin: 0;
+        width: 200px;
+        height: 200px; }
     #main #work #work-inside #work-text {
       width: 60%; }
+      #main #work #work-inside #work-text h3 {
+        font-size: 40px !important; }
+      #main #work #work-inside #work-text p {
+        font-size: 28px !important; }
+        #main #work #work-inside #work-text p span {
+          display: block; }
+      #main #work #work-inside #work-text #work-slider ul li svg {
+        width: 100px;
+        height: 100px; }
   #main #why #why-inside {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     display: table;
     width: 100%;
-    max-width: 1000px;
-    margin: 15% auto 0; }
+    max-width: 1000px; }
     #main #why #why-inside #why-text, #main #why #why-inside .app-phone {
       box-sizing: border-box;
       display: table-cell !important;
-      vertical-align: middle;
-      width: 50%; }
+      vertical-align: middle; }
+      #main #why #why-inside #why-text h3, #main #why #why-inside .app-phone h3 {
+        font-size: 40px !important; }
+      #main #why #why-inside #why-text p, #main #why #why-inside .app-phone p {
+        font-size: 28px !important; }
+        #main #why #why-inside #why-text p span, #main #why #why-inside .app-phone p span {
+          display: block; }
+    #main #why #why-inside .app-phone {
+      width: 40%; }
+    #main #why #why-inside #why-text {
+      width: 60%; }
   #main #start .inside ol {
     list-style: none;
     margin: 0;
