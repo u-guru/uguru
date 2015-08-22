@@ -217,5 +217,5 @@ var initParallax = function() {
 	var parallax = new Parallax(scene);
 	//custom for each element
 	var searchBox = document.getElementById("search-box");
-	if (searchBox) searchBox.style.marginTop ='50%';
+	if (searchBox) searchBox.style.marginTop ='25%';
 }
