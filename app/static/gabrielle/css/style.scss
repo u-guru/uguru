@@ -434,12 +434,6 @@ input {
 }
 
 @media screen and (min-width:35.5em) {
-	#mobile-start {
-		display: none!important;
-	}
-	#banner {
-		display: block!important;
-	}
 	#slide-breadcrumbs {
 		display: block!important;
 		position: fixed;
@@ -524,30 +518,21 @@ input {
 			}
 		}
 		#work {
-			#work-text {
-				padding: 0;
-				p {
-					font-size: 20px;
-				}
-			}
 			#work-inside {
 				#work-infograph {
-					position: relative;
 					div {
 						@include round;
-						@include center-xy;
-						width: 200px;
-						height: 200px;
+						margin: 0 auto 30px;
+						width: 150px;
+						height: 150px;
 						background: rgba(white, .5);
 					}
 				}
 				#work-text {
-					h3 {
-						font-size: 40px!important;
-					}
+					padding: 0;
 					p {
 						margin: 5px 0 0;
-						font-size: 28px!important;
+						font-size: 20px;
 						span {
 							display: block;
 						}
@@ -562,8 +547,8 @@ input {
 								svg {
 									display: block;
 									margin: 0 auto;
-									width: 100px;
-									height: 100px;
+									width: 80px;
+									height: 80px;
 								}
 								&:nth-child(1) {
 									svg {
@@ -600,7 +585,7 @@ input {
 							display: block;
 							position: relative;
 							box-sizing: border-box;
-							margin: 30px 0 10px;
+							margin: 30px 0 20px;
 							height: 5px;
 							background: white;
 							#slider-triangle {
@@ -612,7 +597,7 @@ input {
 								-ms-transform: translateX(200%);
 								-o-transform: translateX(200%);
 								transform: translateX(200%);
-								top: -30px;
+								top: -29px;
 								width: 0;
 								height: 0;
 								border: 15px solid transparent;
@@ -628,6 +613,35 @@ input {
 				padding: 0;
 				p {
 					font-size: 20px;
+					margin: 5px 0 0;
+					span {
+						display: block;
+					}
+				}
+				a {
+					@include opacity(.5);
+					display: block;
+					margin: 10px auto;
+					text-align: center;
+					svg {
+						circle {
+							fill: none;
+						}
+					}
+				}
+				#arrow-down {
+					svg {
+				        -webkit-transform: scaleY(-1);
+				        -moz-transform: scaleY(-1);
+				        -ms-transform: scaleY(-1);
+				        -o-transform: scaleY(-1);
+				        transform: scaleY(-1);
+				        filter: FlipV;
+				        -ms-filter: "FlipV";
+				    }
+				}
+				#{$links} {
+					@include opacity(1);
 				}
 			}
 		}
@@ -646,6 +660,12 @@ input {
 //	#banner {
 //		background: url("../../../static/gabrielle/images/cambridge@2x.jpg") center center / cover;
 //	}
+	#mobile-start {
+		display: none!important;
+	}
+	#banner {
+		display: block!important;
+	}
 	#top {
 		#top-logo {
 			@include center-x;
@@ -1097,24 +1117,64 @@ input {
 					vertical-align: middle;
 				}
 				#work-infograph {
+					position: relative;
 					width: 40%;
+					div {
+						@include center-xy;
+						margin: 0;
+						width: 200px;
+						height: 200px;
+					}
 				}
 				#work-text {
 					width: 60%;
+					h3 {
+						font-size: 40px!important;
+					}
+					p {
+						font-size: 28px!important;
+						span {
+							display: block;
+						}
+					}
+					#work-slider {
+						ul {
+							li {
+								svg {
+									width: 100px;
+									height: 100px;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 		#why {
 			#why-inside {
+				@include center-xy;
 				display: table;
 				width: 100%;
 				max-width: 1000px;
-				margin: 15% auto 0;
 				#why-text, .app-phone {
 					box-sizing: border-box;
 					display: table-cell!important;
 					vertical-align: middle;
-					width: 50%;
+					h3 {
+						font-size: 40px!important;
+					}
+					p {
+						font-size: 28px!important;
+						span {
+							display: block;
+						}
+					}
+				}
+				.app-phone {
+					width: 40%;
+				}
+				#why-text {
+					width: 60%;
 				}
 			}
 		}

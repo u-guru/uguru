@@ -231,6 +231,51 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 	}
 }
 
+#page-cerise {
+	a {
+		color: $cerise;
+	}
+	#{$links} {
+		color: $cerise-mute;
+	}
+	body {
+		background: url() center center;
+	}
+	button {
+		background: $cerise!important;
+	}
+	button:active, button:focus, button:hover {
+		background: $cerise-mute!important;
+		color: white;
+	}
+	.btn-ghost {
+		border: 2px solid $cerise!important;
+		background: transparent!important;
+		color: $cerise!important;
+	}
+	.btn-ghost:active, .btn-ghost:focus, .btn-ghost:hover {
+		border-color: $cerise-mute!important;
+		background: $cerise-mute!important;
+		color: white!important;
+	}
+	#top {
+		#top-logo {
+			svg {
+				path {
+					fill: $cerise;
+				}
+			}
+		}
+		#top-logo:active, #top-logo:focus, #top-logo:hover {
+			svg {
+				path {
+					fill: $cerise-mute;
+				}
+			}
+		}
+	}
+}
+
 #overlay {
 	.top-link-menu {
 		color: white!important;

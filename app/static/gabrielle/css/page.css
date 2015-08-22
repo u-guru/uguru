@@ -121,6 +121,31 @@
 .bg-cerise {
   background: #DB1988; }
 
+.hide {
+  display: none; }
+
+.full-width-height {
+  height: 100%;
+  width: 100%; }
+
+.absolute {
+  position: absolute; }
+
+.no-margin {
+  margin: 0px; }
+
+.no-padding {
+  padding: 0px; }
+
+.padding-1em {
+  padding: 1em; }
+
+.padding-2em {
+  padding: 2em; }
+
+.padding-top-2em {
+  padding-top: 2em; }
+
 * {
   box-sizing: border-box;
   -webkit-backface-visibility: hidden;
@@ -303,6 +328,38 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 
 #page-eggplant #top #top-logo:active svg path, #page-eggplant #top #top-logo:focus svg path, #page-eggplant #top #top-logo:hover svg path {
   fill: #907D9E; }
+
+#page-cerise a {
+  color: #DB1988; }
+
+#page-cerise a:active, #page-cerise a:focus, #page-cerise a:hover {
+  color: #C56E9C; }
+
+#page-cerise body {
+  background: url() center center; }
+
+#page-cerise button {
+  background: #DB1988 !important; }
+
+#page-cerise button:active, #page-cerise button:focus, #page-cerise button:hover {
+  background: #C56E9C !important;
+  color: white; }
+
+#page-cerise .btn-ghost {
+  border: 2px solid #DB1988 !important;
+  background: transparent !important;
+  color: #DB1988 !important; }
+
+#page-cerise .btn-ghost:active, #page-cerise .btn-ghost:focus, #page-cerise .btn-ghost:hover {
+  border-color: #C56E9C !important;
+  background: #C56E9C !important;
+  color: white !important; }
+
+#page-cerise #top #top-logo svg path {
+  fill: #DB1988; }
+
+#page-cerise #top #top-logo:active svg path, #page-cerise #top #top-logo:focus svg path, #page-cerise #top #top-logo:hover svg path {
+  fill: #C56E9C; }
 
 #overlay .top-link-menu {
   color: white !important;
