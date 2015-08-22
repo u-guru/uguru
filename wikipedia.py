@@ -25,7 +25,7 @@ def scrape_all_universities(university_names, iteration_num):
             save_results(university_results, 'wikipedia_university_data_%s.json' % iteration_num)
 
         except:
-            save_results(university_results, 'wikipedia_university_data_%s.json' % iteration_num)            
+            save_results(university_results, 'wikipedia_university_data_%s.json' % iteration_num)
             error_arr.append(university_name)
             save_results(error_arr, 'wikipedia_errors_%s.json' %iteration_num)
             print "error for", university_name
@@ -262,9 +262,9 @@ def count_unprocessed():
 
 def uni_obj_to_arr(uni):
     result_dict = {
-        'id':uni.id, 
-        'city':uni.city, 
-        'state':uni.state, 
+        'id':uni.id,
+        'city':uni.city,
+        'state':uni.state,
         'name': uni.name.replace('Of', 'of').replace('At', 'at').replace(' & ', 'and').replace('The', 'the').replace('And', 'and').replace('-', ' ').replace('/', ' ').replace("'",""),
         'latitude': uni.latitude,
         'longitude': uni.longitude,
@@ -304,7 +304,7 @@ def update_outdated_universities():
     with open('wiki_og_rank.json', 'wr') as fp:
         json.dump(ranked_unis, fp, indent = 4)
 
-    
+
     print count
 
 def update_flicker():
@@ -318,7 +318,7 @@ def update_flicker():
         processed_arr = process_returned_photos(photos_arr)
         processed_arr = sorted(processed_arr, key=lambda k:k['views'], reverse=True)[:20]
         if processed_arr:
-            count += 1 
+            count += 1
             u.banner_url = str(processed_arr[0]['url'])
             print u.id, u.name, u.banner_url
     from app.database import *
@@ -336,7 +336,7 @@ def recent_to_update_rank():
             continue
         u = University.query.get(int(uni['id']))
         if u and u.us_news_ranking > 0:
-            
+
             all_images = uni['images']['all']
             logo_images = uni['images']['logo']
             seal_images = uni['images']['seal']
@@ -358,7 +358,7 @@ def recent_to_update_rank():
                 # count += 1
                 # # print u.us_news_ranking, len(images),'images', len(hex_color), 'colors'
 
-    from app.database import db_session    
+    from app.database import db_session
     db_session.commit()
     print count
 
@@ -396,7 +396,7 @@ def calc_stats_uni_arr(uni_arr):
     total_populations = len([uni.get('populations') for uni in uni_arr if uni.get('population')])
     start_dates = len([uni.get('fa15_start') for uni in uni_arr if uni.get('fa15_start')])
     banner_urls = len([uni.get('banner_url') for uni in uni_arr if uni.get('banner_url')])
-    print 'total:', total 
+    print 'total:', total
     print 'num cities', "%d/%d" % (total_cities, total)
     print 'num state', "%d/%d" % (total_states, total)
     print 'num ranks', "%d/%d" % (total_ranks, total)
@@ -407,9 +407,9 @@ def calc_stats_uni_arr(uni_arr):
     print 'num start_dates', "%d/%d" % (start_dates, total), '-', '%d' % (int((start_dates / (total * 1.0)) *100)) + '%'
     print 'num flickr', "%d/%d" % (banner_urls, total), '-', '%d' % (int((banner_urls / (total * 1.0)) *100)) + '%'
     print 'num popular courses', "%d/%d" % (total_courses, total), '-', '%d' % int((total_courses / (total * 1.0)) *100) + '%'
-    print 
+    print
     print 'num_targetted', "%d/%d" % (total_targetted, total), '-', '%d' % int((total_targetted / (total * 1.0)) *100) + '%'
-    
+
 
 def generate_universities_dump():
     from app.lib.all_schools_updated import school_dict
@@ -429,13 +429,13 @@ if __name__ == '__main__':
 
     # start = int(args[1])
     # end = int(args[2])
-    # count = 0    
+    # count = 0
 
-    #for all schools that have 
+    #for all schools that have
 
     ## 1. popular courses [-]
     ## 2. name [x]
-    ## 3. city [x] 
+    ## 3. city [x]
     ## 4. state [x]
     ## 8. us news rating [x]
     ## 5. hex color [-]
@@ -447,7 +447,7 @@ if __name__ == '__main__':
     ## 1. targetted universities
     ## 2. most popular
     ## 3. us ranked
-    ## 4. manage.py 
+    ## 4. manage.py
     ## 5. link staging db with uguru-rest
     ## 6. create new universities.json script that works with the home page
     ## 7. home page
@@ -469,5 +469,5 @@ if __name__ == '__main__':
     #     uni['name'] = uni['name'].replace('Of', 'of').replace('At', 'at').replace(' & ', 'and').replace('The', 'the').replace('And', 'and').replace('-', ' ').replace('/', ' ').replace("'","")
     # uni_names = [uni['name'] for uni in uni_arr]
     # from pprint import pprint
-    
+
 
