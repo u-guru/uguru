@@ -44,7 +44,7 @@ menuStyle = function() {
 
 $(document).ready(function () {
 	hideIntercomShit();
-	initParallax();
+	// initParallax();
 	slideLeft();
 	menuStyle();
 	$(window).resize(function(){
@@ -62,7 +62,7 @@ $(function () {
 	}
 	$("#search-box").slideDown();
 	$('#search-bar').focus(function(e) {
-		$("#top-school-logo, #top-school-banner").css("width", "60%");
+		$("#top-school-banner").css("width", "60%");
 		if ($('#search-bar').val().length === 0) {
 			$("#search-results").slideDown();
 			$("#search-box").css({
@@ -82,7 +82,7 @@ $(function () {
 	$("#search-bar").blur(function(){
 		setTimeout(function() {
 			$("#search-results").slideUp();
-			$("#top-school-logo, #top-school-banner").css("width", "100%");
+			// $("#top-school-logo, #top-school-banner").css("width", "100%");
 			$("#search-box").css({
 				"-webkit-transform": "translateX(-50%)",
 				"-moz-transform": "translateX(-50%)",
@@ -168,7 +168,8 @@ $(function () {
 		*/
 		$("#search-box").slideUp();
 		$("#border-outer").css("fill", "white");
-		$("#top-school-logo, #top-school-banner").css("width", "40%");
+		$("#top-school-banner").css("width", "20%");
+		$('#top-school-logo').css("width","auto");
 		if ($(this).is('#search-harvard')) {
 			var color = "#A41034";
 			$("#top-school-logo").attr('src', '/static/gabrielle/images/school/harvard.svg');
@@ -217,5 +218,5 @@ var initParallax = function() {
 	var parallax = new Parallax(scene);
 	//custom for each element
 	var searchBox = document.getElementById("search-box");
-	if (searchBox) searchBox.style.marginTop ='30%';
+	// if (searchBox) searchBox.style.marginTop ='30%';
 }

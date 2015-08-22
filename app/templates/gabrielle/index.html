@@ -40,7 +40,8 @@ Uguru Home
 </div>
 <div id="banner"></div>
 
-<section id="main" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15" style='z-index:10'>
+<!-- PARALLAX <section id="main" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15" style='z-index:10'> -->
+<section id="main">
 	<div id="search" class='layer' data-depth="0.2">
 		<div id="search-box" style='overflow:visible'>
 			<p>Peers helping peers for free, barter, or side cash.</p>
@@ -82,7 +83,11 @@ Uguru Home
 			but when I scroll down on the school popup, the width changes
 			Ask for explanation if needed (JS needs to change)
 		-->
-		<div class="search-results" style='margin-top:30%;'>
+		<!--
+			init parallax version
+			<div class="search-results" style='margin-top:30%;'>
+		-->
+		<div class="search-results">
 			<header class="search-results-top text-center">
 				<p class="search-results-header"><small>Uguru is now at</small></p>
 				<h1 id="search-school-name">School Name</h1>
@@ -526,7 +531,7 @@ Uguru Home
 	var matcher;
 
 	$(document).ready(function() {
-	    universities_arr = readAndParseJSON('/static/data/universities_web3.json');
+	    universities_arr = readAndParseJSON('/static/data/fa15_targetted.json');
 	    matcher = initMatcher(universities_arr);
 	    initTypeahead(matcher, universities_arr);
 	});
@@ -543,7 +548,7 @@ Uguru Home
 	var initMatcher = function(arr) {
 	    var matcher = new FastMatcher(arr, {
 	        // the property, or array of properties, to base matches on
-	        selector: 'title',
+	        selector: ['name', 'city', 'state'],
 
 	        // duh, what do you think this does?
 	        caseInsensitive: true,
@@ -579,10 +584,14 @@ Uguru Home
 	                '<a href="http://goo.gl/forms/UQ7WcYl3sb" class="university-link" target="_blank"><div><img src="/static/gabrielle/svg/logo-shamrock.svg"/></div><div><h2><span class="title">No results found (yet!)</span> Click to Bring Uguru to Your University / School</h2></div></a>',
 	                '</div>'
 	            ].join('\n'),
-	            suggestion: Handlebars.compile("<div><img src='{{thumbnail.source}}' alt=''/></div><div><h2>{{title}}</h2><p>{{city}}, {{state}}, USA</p></div>")
+	            suggestion: Handlebars.compile("<div><img src='{{logo_url}}' alt=''/></div><div><h2>{{name}}</h2><p>{{city}}, {{state}}, USA</p></div>")
 	        }
 	    }).on('typeahead:selected', function(event, suggested, dataset_name) {
-	        console.log('yo')
+	    	$("#search-box").slideUp();
+	    	$("#border-outer").css("fill", "white");
+	    	$("#top-school-banner").css("width", "20%");
+			$('#top-school-logo').css("width","auto");
+	    	customizeSearchResults(suggested, showSearchResultsCallback);
 	            //make it wobble
 	    }).on('typeahead:cursorchanged', function(event, suggested, dataset_name) {
 	        $('.tt-suggestion').css('background-color', 'white');
@@ -593,5 +602,76 @@ Uguru Home
 	};
 
 	{% endraw %}
+	var showSearchResultsCallback = function() {
+		$(".search-results").slideDown();
+	}
+	var customizeSearchResults = function(uni_data, postSearchCallback) {
+		schoolNameElement = document.getElementById('search-school-name');
+		schoolLogoElement = document.getElementById('top-school-logo');
+		schoolBannerOuterBorder = document.getElementById('border-outer');
+		schoolBannerInnerBorder = document.getElementById('border-inner');
+		searchResultsBgBannerElement = document.querySelector('.search-results-top');
+		searchResultsGuruElement = document.querySelector('.search-results-gurus');
+		bannerElement = document.querySelector('#banner');
+		popularCoursesParent = document.querySelector('.search-results-courses ul.text-center');
+		console.log(uni_data)
+
+		if (popularCoursesParent && uni_data.popular_courses && uni_data.popular_courses.length) {
+			popularCoursesParent.innerHTML = '';
+			popularCourses = uni_data.popular_courses;
+
+			if (popularCourses.length > 12) {
+				popularCourses = popularCourses.slice(0,12);
+			}
+
+			for (var i = 0 ; i < popularCourses.length; i ++) {
+				var courseNode = document.createElement("li");
+				courseNode.innerHTML = popularCourses[i];
+				popularCoursesParent.appendChild(courseNode);
+			}
+		}
+
+		if (schoolNameElement && uni_data.name) {
+			schoolNameElement.innerHTML = uni_data.name;
+		}
+		if (bannerElement && uni_data.banner_url) {
+			bannerElement.style.backgroundImage = 'url(' + uni_data.banner_url + ')';
+		}
+		if (schoolLogoElement && uni_data.logo_url) {
+			schoolLogoElement.src = uni_data.logo_url;
+		}
+		if (searchResultsBgBannerElement && uni_data.school_color_one) {
+			searchResultsBgBannerElement.style.backgroundColor = uni_data.school_color_one;
+		}
+		if (schoolBannerOuterBorder && uni_data.school_color_one) {
+			schoolBannerOuterBorder.style.fill = uni_data.school_color_one;
+		}
+		if (schoolBannerInnerBorder && uni_data.school_color_two) {
+			schoolBannerInnerBorder.style.fill = uni_data.school_color_two;
+		} else {
+			schoolBannerInnerBorder.style.fill = uni_data.school_color_one;
+		}
+		if (searchResultsGuruElement && (uni_data.school_color_one || uni_data.school_color_two)) {
+			searchResultsGuruElement.style.backgroundColor = uni_data.school_color_one;
+			if (uni_data.school_color_two) {
+				searchResultsGuruElement.style.backgroundColor = uni_data.school_color_two;
+			}
+		}
+
+
+		//popular courses
+		//city state
+		//population
+		//latitude longitude
+		//button hover
+
+		// $(".search-results-top, .search-results-gurus").css("background", color);
+
+
+		if (postSearchCallback) {
+			postSearchCallback();
+		}
+	}
+
 </script>
 {% endblock %}
