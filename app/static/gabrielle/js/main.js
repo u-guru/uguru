@@ -43,6 +43,8 @@ menuStyle = function() {
 }
 
 $(document).ready(function () {
+	hideIntercomShit();
+	initParallax();
 	slideLeft();
 	menuStyle();
 	$(window).resize(function(){
@@ -135,6 +137,13 @@ $(function () {
 		e.preventDefault();
 	});
 
+	$('.top-link-chat, #link-support').on("click", function(e) {
+		document.querySelector('.intercom-launcher-button').click();
+		setTimeout(function() {
+			$('#side-menu, #overlay').removeClass('active');
+		}, 500)
+	});
+
 	$('.top-link-chat').on("click", function(e) {
 		document.querySelector('.intercom-launcher-button').click();
 	});
@@ -145,7 +154,6 @@ $(function () {
 			$('#start-modal').toggleClass('active');
 		}
 	})
-
 	$("#search-results").on("click", "li", function(e) {
 		/* SAMIR - ELEMENTS THAT NEED TO CHANGE
 			#top-school-logo - src (svg)
@@ -184,4 +192,30 @@ $(function () {
 			$("#search-school-name").text("Cambridge University");
 		}
 	});
+
+
 });
+
+var hideIntercomShit = function() {
+	var intercomElement = document.getElementById('intercom-launcher')
+	if (intercomElement) {
+		document.getElementById('intercom-launcher').style.height = 0;
+		document.getElementById('intercom-launcher').style.width = 0;
+		return;
+	} else {
+		setTimeout(function() {
+			hideIntercomShit();
+		}, 1000)
+	}
+}
+var initParallax = function() {
+	//check if loaded properly
+	if (!Parallax) {
+		return;
+	}
+	var scene = document.getElementById('main');
+	var parallax = new Parallax(scene);
+	//custom for each element
+	var searchBox = document.getElementById("search-box");
+	if (searchBox) searchBox.style.marginTop ='30%';
+}

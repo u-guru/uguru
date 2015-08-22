@@ -394,10 +394,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       //before guru is matched
       if (session.request.status === 0) {
-
         $scope.cancelRequest(session.request);
         return;
-
       }
 
       $scope.root.vars.active_session = session;

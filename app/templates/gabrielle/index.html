@@ -40,9 +40,9 @@ Uguru Home
 </div>
 <div id="banner"></div>
 
-<section id="main">
-	<div id="search">
-		<div id="search-box">
+<section id="main" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15" style='z-index:10'>
+	<div id="search" class='layer' data-depth="0.2">
+		<div id="search-box" style='overflow:visible'>
 			<p>Peers helping peers for free, barter, or side cash.</p>
 			<div id="search-container">
 				<input id="search-bar" class="typeahead" type="text" placeholder="Search for your university"/>
@@ -82,7 +82,7 @@ Uguru Home
 			but when I scroll down on the school popup, the width changes
 			Ask for explanation if needed (JS needs to change)
 		-->
-		<div class="search-results">
+		<div class="search-results" style='margin-top:30%;'>
 			<header class="search-results-top text-center">
 				<p class="search-results-header"><small>Uguru is now at</small></p>
 				<h1 id="search-school-name">School Name</h1>

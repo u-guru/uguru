@@ -147,35 +147,35 @@ def check_proposal_status(proposal_id, previous_status):
     ## Active users
     ## Active gurus
 
-@periodic_task(run_every=crontab(minute=0, hour=0), name="tasks.update_university_guru_rankings")
-def update_university_guru_rankings():
-    for u in University.query.all():
-        # if the university has gurus, calculate their rankings
-        if u.gurus:
-            from app.lib.guru_rank import calculate_university_guru_scores
+# @periodic_task(run_every=crontab(minute=0, hour=0), name="tasks.update_university_guru_rankings")
+# def update_university_guru_rankings():
+#     for u in University.query.all():
+#         # if the university has gurus, calculate their rankings
+#         if u.gurus:
+#             from app.lib.guru_rank import calculate_university_guru_scores
 
-            university_guru_scores = calculate_university_guru_scores(u)
+#             university_guru_scores = calculate_university_guru_scores(u)
 
-            #update university gurus count
-            u.num_gurus = len(u.gurus)
+#             #update university gurus count
+#             u.num_gurus = len(u.gurus)
 
-            rank_position = 1
-            for guru, score in university_guru_scores:
-                previous_rank = guru.official_guru_rank
-                previous_score = guru.official_guru_score
+#             rank_position = 1
+#             for guru, score in university_guru_scores:
+#                 previous_rank = guru.official_guru_rank
+#                 previous_score = guru.official_guru_score
 
-                guru.official_guru_rank = rank_position
-                guru.official_guru_score = score
-                guru.official_guru_rank_last_updated = datetime.now()
-                guru.estimated_guru_rank_last_updated = None
+#                 guru.official_guru_rank = rank_position
+#                 guru.official_guru_score = score
+#                 guru.official_guru_rank_last_updated = datetime.now()
+#                 guru.estimated_guru_rank_last_updated = None
 
-                rank_position += 1
+#                 rank_position += 1
 
-                #create event to track
-                event = Event.initGuruRankEvent(guru_id=guru.id, off_rank_before=previous_rank, off_rank_after=guru.official_guru_rank)
+#                 #create event to track
+#                 event = Event.initGuruRankEvent(guru_id=guru.id, off_rank_before=previous_rank, off_rank_after=guru.official_guru_rank)
 
 
-            db_session.commit()
+#             db_session.commit()
 
 ##################
 # PERIODIC TASKS #
