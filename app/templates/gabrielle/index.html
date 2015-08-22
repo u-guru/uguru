@@ -98,6 +98,13 @@ Uguru Home
 					<!-- SAMIR -
 						The background for .search-results-map should be either a static or dynamic map of where gurus are located
 					-->
+					<iframe
+					  width="100%"
+					  height="100%"
+					  style='position:absolute;'
+					  frameborder="0" style="border:0"
+					  src="http://www.google.com/maps/embed/v1/place?key=AIzaSyD97om7R6sYXaUUgdNMdVjXWXviAFCF0u4&q=Space+Needle,Seattle+WA" allowfullscreen>
+					</iframe>
 					<div class="search-results-gurus">
 						<h2>
 							<b id="search-guru-number">340</b>
@@ -531,7 +538,7 @@ Uguru Home
 	var matcher;
 
 	$(document).ready(function() {
-	    universities_arr = readAndParseJSON('/static/data/fa15_targetted.json');
+	    universities_arr = readAndParseJSON('http://staging.uguru.me/static/data/fa15_targetted.json');
 	    matcher = initMatcher(universities_arr);
 	    initTypeahead(matcher, universities_arr);
 	});
@@ -605,6 +612,17 @@ Uguru Home
 	var showSearchResultsCallback = function() {
 		$(".search-results").slideDown();
 	}
+	var isColorDark = function(c) {
+		var c = c.substring(1);      // strip #
+		var rgb = parseInt(c, 16);   // convert rrggbb to decimal
+		var r = (rgb >> 16) & 0xff;  // extract red
+		var g = (rgb >>  8) & 0xff;  // extract green
+		var b = (rgb >>  0) & 0xff;  // extract blue
+
+		var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+
+		return (luma < 40);
+	}
 	var customizeSearchResults = function(uni_data, postSearchCallback) {
 		schoolNameElement = document.getElementById('search-school-name');
 		schoolLogoElement = document.getElementById('top-school-logo');
@@ -613,6 +631,7 @@ Uguru Home
 		searchResultsBgBannerElement = document.querySelector('.search-results-top');
 		searchResultsGuruElement = document.querySelector('.search-results-gurus');
 		bannerElement = document.querySelector('#banner');
+		numGurusElement = document.querySelector('#search-guru-number');
 		popularCoursesParent = document.querySelector('.search-results-courses ul.text-center');
 		console.log(uni_data)
 
@@ -620,8 +639,8 @@ Uguru Home
 			popularCoursesParent.innerHTML = '';
 			popularCourses = uni_data.popular_courses;
 
-			if (popularCourses.length > 12) {
-				popularCourses = popularCourses.slice(0,12);
+			if (popularCourses.length > 11) {
+				popularCourses = popularCourses.slice(0,11);
 			}
 
 			for (var i = 0 ; i < popularCourses.length; i ++) {
@@ -629,6 +648,9 @@ Uguru Home
 				courseNode.innerHTML = popularCourses[i];
 				popularCoursesParent.appendChild(courseNode);
 			}
+			var courseNode = document.createElement("li");
+			courseNode.innerHTML = 'and more';
+			popularCoursesParent.appendChild(courseNode);
 		}
 
 		if (schoolNameElement && uni_data.name) {
@@ -639,6 +661,18 @@ Uguru Home
 		}
 		if (schoolLogoElement && uni_data.logo_url) {
 			schoolLogoElement.src = uni_data.logo_url;
+		}
+		if (numGurusElement && uni_data.population) {
+			populationString = uni_data.population.toString();
+			if (populationString.length == 5) {
+				numGurusElement.innerHTML = populationString.substring(0,2) + 'k';
+			} else {
+				numGurusElement.innerHTML = populationString.substring(0,1) + 'k';
+			}
+
+			guruTextSpan = document.querySelector('.search-results-gurus span')
+
+			guruTextSpan.innerHTML = 'students';
 		}
 		if (searchResultsBgBannerElement && uni_data.school_color_one) {
 			searchResultsBgBannerElement.style.backgroundColor = uni_data.school_color_one;
@@ -653,19 +687,14 @@ Uguru Home
 		}
 		if (searchResultsGuruElement && (uni_data.school_color_one || uni_data.school_color_two)) {
 			searchResultsGuruElement.style.backgroundColor = uni_data.school_color_one;
-			if (uni_data.school_color_two) {
-				searchResultsGuruElement.style.backgroundColor = uni_data.school_color_two;
+			if (uni_data.school_color_two && uni_data.school_color_two.length) {
+				searchResultsGuruElement.style.backgroundColor = uni_data.school_color_one;
 			}
 		}
 
 
-		//popular courses
-		//city state
 		//population
-		//latitude longitude
-		//button hover
-
-		// $(".search-results-top, .search-results-gurus").css("background", color);
+		//Map latitude longitude
 
 
 		if (postSearchCallback) {
