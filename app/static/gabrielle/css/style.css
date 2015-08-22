@@ -364,6 +364,7 @@ input {
     #main #start #start-text {
       padding: 0 20px; }
       #main #start #start-text p {
+        margin: 0;
         font-size: 16px; }
 
 .app-phone {
@@ -464,10 +465,7 @@ input {
       display: block; }
   #main #work #work-inside #work-infograph div {
     border-radius: 1000px;
-    margin: 0 auto 30px;
-    width: 150px;
-    height: 150px;
-    background: rgba(255, 255, 255, 0.5); }
+    margin: 0 auto 30px; }
   #main #work #work-inside #work-text {
     padding: 0; }
     #main #work #work-inside #work-text p {
@@ -510,22 +508,23 @@ input {
       position: relative;
       box-sizing: border-box;
       margin: 30px 0 20px;
-      height: 5px;
-      background: white; }
+      height: 4px;
+      background: #2B3234; }
       #main #work #work-inside #work-text #work-slider #slider-bar #slider-triangle {
         display: block;
         position: absolute;
         left: 0;
-        -webkit-transform: translateX(200%);
-        -moz-transform: translateX(200%);
-        -ms-transform: translateX(200%);
-        -o-transform: translateX(200%);
-        transform: translateX(200%);
-        top: -29px;
-        width: 0;
-        height: 0;
-        border: 15px solid transparent;
-        border-bottom-color: white; }
+        top: 50%;
+        -webkit-transform: translate(450%, -50%);
+        -moz-transform: translate(450%, -50%);
+        -ms-transform: translate(450%, -50%);
+        -o-transform: translate(450%, -50%);
+        transform: translate(450%, -50%); }
+        #main #work #work-inside #work-text #work-slider #slider-bar #slider-triangle svg {
+          width: 15px;
+          height: 21px; }
+          #main #work #work-inside #work-text #work-slider #slider-bar #slider-triangle svg path {
+            fill: #81B566; }
   #main #why #why-text {
     padding: 0; }
     #main #why #why-text p {
@@ -555,7 +554,23 @@ input {
   #main #start #start-text {
     padding: 0; }
     #main #start #start-text p {
-      font-size: 20px; } }
+      margin: 0;
+      font-size: 20px; }
+    #main #start #start-text h3 {
+      font-weight: 400; }
+    #main #start #start-text input {
+      background: transparent;
+      border: 0;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+      color: white !important; }
+    #main #start #start-text ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #main #start #start-text :-moz-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #main #start #start-text ::-moz-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #main #start #start-text :-ms-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); } }
 
 @media screen and (min-width: 48em) {
   #mobile-start {
@@ -584,17 +599,23 @@ input {
     #main .slide .inside p {
       font-size: 24px;
       font-weight: 300; }
-    #main .slide .inside .cta-desktop {
-      margin-top: 30px; }
-      #main .slide .inside .cta-desktop button {
-        font-size: 24px;
-        background: white;
-        margin: 20px;
-        padding: 20px 30px;
-        color: #2B3234; }
-      #main .slide .inside .cta-desktop button:hover {
-        background: #757575;
-        color: white; }
+  #main .slide .cta-desktop {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    bottom: 0; }
+    #main .slide .cta-desktop button {
+      font-size: 24px;
+      margin: 20px;
+      padding: 20px 30px;
+      background: white; }
+    #main .slide .cta-desktop button:active, #main .slide .cta-desktop button:focus, #main .slide .cta-desktop button:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: white !important; }
   #main #search {
     display: block; }
     #main #search #search-box, #main #search .search-results {
@@ -830,6 +851,8 @@ input {
               padding: 10px 30px 10px 10px; }
         #main #search #search-container #search-results li:hover {
           background: #F1F1F1; }
+  #main #earn .cta-desktop button {
+    color: #2B3234; }
   #main #earn .inside .inside-text #earn-categories-mobile {
     display: none; }
   #main #earn .inside .inside-text #earn-categories-desktop {
@@ -945,6 +968,8 @@ input {
         fill: #9A5BC5; }
       #main #earn .inside .inside-text #earn-categories-desktop .earn-category .category-delivery circle {
         fill: #8A9EA3; }
+  #main #work .cta-desktop button {
+    color: #40484B; }
   #main #work #work-inside {
     position: absolute;
     top: 50%;
@@ -964,7 +989,7 @@ input {
     #main #work #work-inside #work-infograph {
       position: relative;
       width: 40%; }
-      #main #work #work-inside #work-infograph div {
+      #main #work #work-inside #work-infograph div, #main #work #work-inside #work-infograph img {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -973,9 +998,12 @@ input {
         -ms-transform: translate(-50%, -50%);
         -o-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
-        margin: 0;
-        width: 200px;
-        height: 200px; }
+        margin: 0; }
+      #main #work #work-inside #work-infograph img {
+        width: 100%;
+        height: 100%;
+        max-width: 70%;
+        max-height: 70%; }
     #main #work #work-inside #work-text {
       width: 60%; }
       #main #work #work-inside #work-text h3 {
@@ -987,6 +1015,8 @@ input {
       #main #work #work-inside #work-text #work-slider ul li svg {
         width: 100px;
         height: 100px; }
+  #main #why .cta-desktop button {
+    color: #8A9EA3; }
   #main #why #why-inside {
     position: absolute;
     top: 50%;
@@ -1029,11 +1059,11 @@ input {
     flex-flow: row wrap;
     font-weight: 300;
     counter-reset: li; }
-    #main #start .inside ol li {
+    #main #start .inside ol > li {
       width: 33.3333%;
       padding: 0;
       text-align: center; }
-      #main #start .inside ol li:before {
+      #main #start .inside ol > li:before {
         border-radius: 1000px;
         display: block;
         margin: 0 auto 5px;
@@ -1047,6 +1077,27 @@ input {
         font-size: 24px;
         font-weight: 900;
         line-height: 50px; }
+    #main #start .inside ol ul, #main #start .inside ol div {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      margin: 5% 10% 0; }
+      #main #start .inside ol ul li, #main #start .inside ol div li {
+        width: 33.3333%; }
+    #main #start .inside ol div {
+      border-radius: 1000px;
+      background: rgba(255, 255, 255, 0.5);
+      height: 100px; }
   .app-phone {
     position: relative; }
     .app-phone .app-wf {

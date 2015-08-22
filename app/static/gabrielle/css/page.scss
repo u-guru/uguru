@@ -82,22 +82,27 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 	margin: 0 auto;
 	padding: 82px 10px 0;
 	max-width: 1000px;
+	h1 {
+		margin-bottom: 15px;
+	}
 	dl {
 		dt {
 			background: $lake;
 			color: white;
 			padding: 20px 30px;
-			font-weight: 400;
+			font-size: 32px;
+			font-weight: 300;
 		}
 		dd {
 			margin: 10px 30px 0;
-			font-size: 18px;
+			font-size: 20px;
+			line-height: 1.4;
 		}
 	}
 }
 
 #page-moola {
-	a {
+	a, h1 {
 		color: $moola;
 	}
 	#{$links} {
@@ -142,7 +147,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 }
 
 #page-lake {
-	a {
+	a, h1 {
 		color: $lake;
 	}
 	#{$links} {
@@ -187,7 +192,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 }
 
 #page-eggplant {
-	a {
+	a, h1 {
 		color: $eggplant;
 	}
 	#{$links} {
@@ -232,7 +237,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 }
 
 #page-cerise {
-	a {
+	a, h1 {
 		color: $cerise;
 	}
 	#{$links} {

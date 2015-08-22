@@ -60,6 +60,7 @@ $(function () {
 	} else if ($(window).width() <= 1280) {
 		$('.inside h2').fitText(2, { maxFontSize: '36px', minFontSize: '24px' });
 	}
+	$('#start-text h3').fitText(2, { maxFontSize: '36px', minFontSize: '24px' });
 	$("#search-box").slideDown();
 	$('#search-bar').focus(function(e) {
 		$("#top-school-banner").css("width", "60%");
@@ -220,3 +221,30 @@ var initParallax = function() {
 	var searchBox = document.getElementById("search-box");
 	// if (searchBox) searchBox.style.marginTop ='30%';
 }
+
+$(document).ready(function () {
+	$(".earn-category").flip({
+		axis: 'y',
+		trigger: 'hover'
+	});
+	$(".earn-category-mobile").not("#and-more").flip({
+		axis: 'x',
+		trigger: 'hover'
+	});
+
+	$('.work-infograph').easyPieChart({
+	    size: 200,
+	    lineWidth: 8,
+	    trackColor: false,
+	    scaleColor: false,
+	    scaleLength: false
+	});
+
+	$('#work-infograph-bg').easyPieChart({
+	    size: 196,
+	    lineWidth: 4,
+	    trackColor: "#2B3234",
+	    scaleColor: false,
+	    scaleLength: false
+	});
+});

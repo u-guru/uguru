@@ -224,16 +224,20 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
   margin: 0 auto;
   padding: 82px 10px 0;
   max-width: 1000px; }
+  .main h1 {
+    margin-bottom: 15px; }
   .main dl dt {
     background: #50A5DD;
     color: white;
     padding: 20px 30px;
-    font-weight: 400; }
+    font-size: 32px;
+    font-weight: 300; }
   .main dl dd {
     margin: 10px 30px 0;
-    font-size: 18px; }
+    font-size: 20px;
+    line-height: 1.4; }
 
-#page-moola a {
+#page-moola a, #page-moola h1 {
   color: #81B566; }
 
 #page-moola a:active, #page-moola a:focus, #page-moola a:hover {
@@ -265,7 +269,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 #page-moola #top #top-logo:active svg path, #page-moola #top #top-logo:focus svg path, #page-moola #top #top-logo:hover svg path {
   fill: #92AC84; }
 
-#page-lake a {
+#page-lake a, #page-lake h1 {
   color: #50A5DD; }
 
 #page-lake a:active, #page-lake a:focus, #page-lake a:hover {
@@ -297,7 +301,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 #page-lake #top #top-logo:active svg path, #page-lake #top #top-logo:focus svg path, #page-lake #top #top-logo:hover svg path {
   fill: #6F98B5; }
 
-#page-eggplant a {
+#page-eggplant a, #page-eggplant h1 {
   color: #9A5BC5; }
 
 #page-eggplant a:active, #page-eggplant a:focus, #page-eggplant a:hover {
@@ -329,7 +333,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 #page-eggplant #top #top-logo:active svg path, #page-eggplant #top #top-logo:focus svg path, #page-eggplant #top #top-logo:hover svg path {
   fill: #907D9E; }
 
-#page-cerise a {
+#page-cerise a, #page-cerise h1 {
   color: #DB1988; }
 
 #page-cerise a:active, #page-cerise a:focus, #page-cerise a:hover {

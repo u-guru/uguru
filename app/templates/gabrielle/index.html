@@ -381,11 +381,10 @@ Uguru Home
 						</div>
 					</li>
 				</ul>
-				<div class="cta-desktop">
-					<button class="btn-round">Be one of the first!</button>
-					<button class="btn-round">Don't see your skill?</button>
-				</div>
 			</div>
+		</div>
+		<div class="cta-desktop">
+			<button class="btn-round">Be one of the first!</button>
 		</div>
 	</div>
 	<div id="work" class="slide" data-number="2">
@@ -395,26 +394,48 @@ Uguru Home
 			</div>
 			<div id="work-inside">
 				<div id="work-infograph">
-					<div></div>
+					<!-- SAMIR
+						Percentages:
+							Wage - 38% #81B566
+							Popular - 21% #50A5DD
+							Schedule - 18% #9A5BC5
+							Blassed - 23% #8A9EA3
+					-->
+					<div id="work-infograph-bg" data-rotate="0" data-percent="0"></div>
+					<div class="work-infograph" data-rotate="50" data-percent="36" data-bar-color="#81B566"></div>
+					<img src="/static/gabrielle/svg/work/wage.svg" alt=""/>
+					<img hidden src="/static/gabrielle/svg/work/popular.svg" alt=""/>
+					<img hidden src="/static/gabrielle/svg/work/schedule.svg" alt=""/>
+					<img hidden src="/static/gabrielle/svg/work/blessed.svg" alt=""/>
 				</div>
 				<div id="work-text">
 					<div id="work-slider">
 						<ul>
 							<li>
-								{% include "gabrielle/components/work/wage.svg" %}
+								<a href="#">
+									{% include "gabrielle/components/work/wage.svg" %}
+								</a>
 							</li>
 							<li>
-								{% include "gabrielle/components/work/popular.svg" %}
+								<a href="#">
+									{% include "gabrielle/components/work/popular.svg" %}
+								</a>
 							</li>
 							<li>
-								{% include "gabrielle/components/work/schedule.svg" %}
+								<a href="#">
+									{% include "gabrielle/components/work/schedule.svg" %}
+								</a>
 							</li>
 							<li>
-								{% include "gabrielle/components/work/blessed.svg" %}
+								<a href="#">
+									{% include "gabrielle/components/work/blessed.svg" %}
+								</a>
 							</li>
 						</ul>
 						<span id="slider-bar">
-							<span id="slider-triangle"></span>
+							<span id="slider-triangle">
+								{% include "gabrielle/components/tear.svg" %}
+							</span>
 						</span>
 					</div>
 					<div>
@@ -436,6 +457,9 @@ Uguru Home
 				</div>
 			</div>
 		</div>
+		<div class="cta-desktop">
+			<button class="btn-round">Be one of the first!</button>
+		</div>
 	</div>
 	<div id="why" class="slide" data-number="3">
 		<div class="inside">
@@ -446,7 +470,9 @@ Uguru Home
 				<div class="app-phone">
 					<div class="app-wf">
 						<div class="app-wf-top"><div></div></div>
-						<div class="app-wf-scr"></div>
+						<div class="app-wf-scr">
+							<img src="/static/gabrielle/images/mock/aced.png" alt=""/>
+						</div>
 						<div class="app-wf-bot"><div></div></div>
 					</div>
 				</div>
@@ -493,6 +519,9 @@ Uguru Home
 				</div>
 			</div>
 		</div>
+		<div class="cta-desktop">
+			<button class="btn-round">Be one of the first!</button>
+		</div>
 	</div>
 	<div id="start" class="slide" data-number="4">
 		<div class="inside">
@@ -501,9 +530,28 @@ Uguru Home
 			</div>
 			<div id="start-text">
 				<ol>
-					<li>Choose a platform.</li>
-					<li>Add skills &amp; a profile.</li>
-					<li>Earn $$ by accepting requests.</li>
+					<li>
+						<p>Choose a platform.</p>
+						<ul>
+							<li>
+								{% include "gabrielle/components/platform/apple-white.svg" %}
+							</li>
+							<li>
+								{% include "gabrielle/components/platform/microsoft-white.svg" %}
+							</li>
+							<li>
+								{% include "gabrielle/components/platform/play-white.svg" %}
+							</li>
+						</ul>
+					</li>
+					<li>
+						<p>Add skills &amp; a profile.</p>
+						<div></div>
+					</li>
+					<li>
+						<p>Earn $$ by accepting requests.</p>
+						<div></div>
+					</li>
 				</ol>
 
 				<h3 class="text-center" style="padding-top: 10%;">Or, enter your <input placeholder="email"/> &amp; <input placeholder="university"/> to stay in touch.</h3>
@@ -525,14 +573,6 @@ Uguru Home
 <script src="/static/gabrielle/js/lib/jquery.flip.min.js"></script>
 <script src="/static/gabrielle/js/lib/phonenumber.js"></script>
 <script>
-	$(".earn-category").flip({
-		axis: 'y',
-		trigger: 'hover'
-	});
-	$(".earn-category-mobile").not("#and-more").flip({
-		axis: 'x',
-		trigger: 'hover'
-	});
 	var all_universities;
 
 	var matcher;
