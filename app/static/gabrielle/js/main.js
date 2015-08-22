@@ -44,7 +44,7 @@ menuStyle = function() {
 
 $(document).ready(function () {
 	hideIntercomShit();
-	initParallax();
+	// initParallax();
 	slideLeft();
 	menuStyle();
 	$(window).resize(function(){
@@ -82,7 +82,7 @@ $(function () {
 	$("#search-bar").blur(function(){
 		setTimeout(function() {
 			$("#search-results").slideUp();
-			$("#top-school-logo, #top-school-banner").css("width", "100%");
+			// $("#top-school-logo, #top-school-banner").css("width", "100%");
 			$("#search-box").css({
 				"-webkit-transform": "translateX(-50%)",
 				"-moz-transform": "translateX(-50%)",
@@ -168,7 +168,7 @@ $(function () {
 		*/
 		$("#search-box").slideUp();
 		$("#border-outer").css("fill", "white");
-		$("#top-school-logo, #top-school-banner").css("width", "40%");
+		$("#top-school-logo, #top-school-banner").css("width", "20%");
 		if ($(this).is('#search-harvard')) {
 			var color = "#A41034";
 			$("#top-school-logo").attr('src', '/static/gabrielle/images/school/harvard.svg');
@@ -217,5 +217,5 @@ var initParallax = function() {
 	var parallax = new Parallax(scene);
 	//custom for each element
 	var searchBox = document.getElementById("search-box");
-	if (searchBox) searchBox.style.marginTop ='30%';
+	// if (searchBox) searchBox.style.marginTop ='30%';
 }
