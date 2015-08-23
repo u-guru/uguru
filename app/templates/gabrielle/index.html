@@ -231,7 +231,7 @@ Uguru Home
 						</ul>
 					</li>
 					<li id="and-more" class="earn-category-mobile">
-						<div><div>
+						<div><div class="link-start">
 							<h3>and more!</h3>
 						</div></div>
 					</li>
@@ -661,7 +661,7 @@ Uguru Home
 		default_zoom = 17;
 		height = document.querySelector('.search-results-map').offsetHeight;
 		width = document.querySelector('.search-results-map').offsetWidth;
-		size = width + 'x'  + height;
+		size = width * 2 + 'x'  + height * 2;
 		return 'url(' +  'https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + _long + '&size=' + size +'&zoom=' + default_zoom + '&maptype=roadmap)';
 
 	}

@@ -384,16 +384,18 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 @media screen and (min-width: 48em) {
   .main#team ul li {
     width: 50%; }
-  .main#manifest > div h2 {
-    background: none;
-    padding: 0;
-    color: #2B3234;
-    font-weight: 700;
-    font-size: 36px; }
-  .main#manifest > div p {
-    padding: 0;
-    font-size: 20px;
-    font-weight: 300; }
+  .main#manifest > div {
+    padding: 0 10px; }
+    .main#manifest > div h2 {
+      background: none;
+      padding: 0;
+      color: #2B3234;
+      font-weight: 700;
+      font-size: 36px; }
+    .main#manifest > div p {
+      padding: 0;
+      font-size: 20px;
+      font-weight: 300; }
   .main#faq dl dt h3 {
     font-size: 32px;
     font-weight: 300; }
