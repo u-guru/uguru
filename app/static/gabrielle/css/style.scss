@@ -589,13 +589,8 @@ input {
 							#slider-triangle {
 								display: block;
 								position: absolute;
-								left: 0;
-								top: 50%;
-								-webkit-transform: translate(450%, -50%);
-								-moz-transform: translate(450%, -50%);
-								-ms-transform: translate(450%, -50%);
-								-o-transform: translate(450%, -50%);
-								transform: translate(450%, -50%);
+								left:11%;
+								margin-top:-2.5%;
 								svg {
 									width: 15px;
 									height: 21px;
