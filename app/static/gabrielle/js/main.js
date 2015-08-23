@@ -88,6 +88,9 @@ $(function () {
 			$('#search-results').hide();
 		}
 	});
+	$("#search-bar").focus(function(){
+		$('#top-school-banner').css('width','30%');
+	});
 	$("#search-bar").blur(function(){
 		setTimeout(function() {
 			$("#search-results").slideUp();
@@ -104,7 +107,7 @@ $(function () {
 	// SAMIR - SIDEBAR
 	// Should also be a way to click on #overlay
 	$(".top-link-menu").on("click", function(e) {
-		$("#side-menu, #overlay").toggleClass("active");
+		$("#side-menu, #overlay").addClass("active");
 		e.preventDefault();
 	});
 	$(".top-link-start").on("click", function(e) {
@@ -112,7 +115,7 @@ $(function () {
 		var modalToFire = document.querySelector('#start-modal');
 		var startButton = this;
 
-		$('#start-modal').toggleClass('active');
+		$('#start-modal').addClass('active');
 
 		//call to action tool
 		//once CTA object is instantiate, it returns a function that can reverse it
@@ -158,10 +161,35 @@ $(function () {
 	});
 
 	$('#overlay-right:visible').on("click", function(e){
-		$('#overlay').toggleClass('active');
+		$('#overlay').removeClass('active');
 		if ($('#start-modal').is(":visible")) {
-			$('#start-modal').toggleClass('active');
+			$('#start-modal').removeClass('active');
+			$('#side-menu').removeClass('active')
 		}
+	})
+	$('.work-icon-link').on("click", function(e) {
+		sliderItem = document.querySelector('#slider-triangle');
+		destinationLink = this;
+
+		currentSliderRect = sliderItem.getBoundingClientRect();
+		currentPosX = currentSliderRect.left;
+		currentSliderWidth = currentSliderRect.width / 2;
+
+		destinationLinkRect = destinationLink.getBoundingClientRect() ;
+		if (destinationLinkRect.left > currentPosX) {
+			translateXOffset = destinationLinkRect.left + (destinationLinkRect.width / 2) - currentSliderWidth - currentPosX;
+		} else {
+			translateXOffset = destinationLinkRect.left - currentPosX -  (destinationLinkRect.width / 2) + currentSliderWidth;
+		}
+
+
+
+		 translateXOffset = translateXOffset.toString() + 'px';
+		 console.log(translateXOffset);
+		initialProperties = {
+			translateX: translateXOffset
+		}
+		$(sliderItem).velocity(initialProperties);
 	})
 	$("#search-results").on("click", "li", function(e) {
 		/* SAMIR - ELEMENTS THAT NEED TO CHANGE

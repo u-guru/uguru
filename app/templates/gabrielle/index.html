@@ -98,13 +98,6 @@ Uguru Home
 					<!-- SAMIR -
 						The background for .search-results-map should be either a static or dynamic map of where gurus are located
 					-->
-					<iframe
-					  width="100%"
-					  height="100%"
-					  style='position:absolute;'
-					  frameborder="0" style="border:0"
-					  src="http://www.google.com/maps/embed/v1/place?key=AIzaSyD97om7R6sYXaUUgdNMdVjXWXviAFCF0u4&q=Space+Needle,Seattle+WA" allowfullscreen>
-					</iframe>
 					<div class="search-results-gurus">
 						<h2>
 							<b id="search-guru-number">340</b>
@@ -412,22 +405,22 @@ Uguru Home
 					<div id="work-slider">
 						<ul>
 							<li>
-								<a href="#">
+								<a href="#" id='work-wage' class='work-icon-link'>
 									{% include "gabrielle/components/work/wage.svg" %}
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="#" id='popular-wage' class='work-icon-link'>
 									{% include "gabrielle/components/work/popular.svg" %}
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="#" id='schedule-wage' class='work-icon-link'>
 									{% include "gabrielle/components/work/schedule.svg" %}
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="#" id='blessed-wage' class='work-icon-link'>
 									{% include "gabrielle/components/work/blessed.svg" %}
 								</a>
 							</li>
@@ -438,19 +431,19 @@ Uguru Home
 							</span>
 						</span>
 					</div>
-					<div>
+					<div id='wage-work-content' class='work-content'>
 						<h3>Awesome pay.</h3>
 						<p>Cash in on sharing your expertise on campus. <span>The more you guru, the more your rate will increase.</span></p>
 					</div>
-					<div hidden>
+					<div id='popular-work-content' class='work-content hide'>
 						<h3>Be the cool kid.</h3>
 						<p>We’ll give you the tools to skyrocket into Uguru fame. <span>Craigslist posts, Facebook ads, and more - all to help you get more customers.</span></p>
 					</div>
-					<div hidden>
+					<div id='schedule-work-content' class='work-content hide'>
 						<h3>Easy scheduling.</h3>
 						<p>Get instant scheduling when it’s best for you. <span>Just upload your available time slots and students will fill them.</span></p>
 					</div>
-					<div hidden>
+					<div id='blessed-work-content' class='work-content hide'>
 						<h3>#blessed</h3>
 						<p>Score access to cool stuff, like free Uber rides. <span>We’ll be there for you when you need it most.</span></p>
 					</div>
@@ -663,6 +656,16 @@ Uguru Home
 
 		return (luma < 40);
 	}
+
+	var constructStaticGMapBackground = function(lat, _long) {
+		default_zoom = 17;
+		height = document.querySelector('.search-results-map').offsetHeight;
+		width = document.querySelector('.search-results-map').offsetWidth;
+		size = width + 'x'  + height;
+		return 'url(' +  'https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + _long + '&size=' + size +'&zoom=' + default_zoom + '&maptype=roadmap)';
+
+	}
+
 	var customizeSearchResults = function(uni_data, postSearchCallback) {
 		schoolNameElement = document.getElementById('search-school-name');
 		schoolLogoElement = document.getElementById('top-school-logo');
@@ -672,6 +675,7 @@ Uguru Home
 		searchResultsGuruElement = document.querySelector('.search-results-gurus');
 		bannerElement = document.querySelector('#banner');
 		numGurusElement = document.querySelector('#search-guru-number');
+		searchResultsBackgroundMap = document.querySelector('.search-results-map');
 		popularCoursesParent = document.querySelector('.search-results-courses ul.text-center');
 		console.log(uni_data)
 
@@ -739,6 +743,11 @@ Uguru Home
 
 		if (postSearchCallback) {
 			postSearchCallback();
+			setTimeout(function() {
+				if (searchResultsBackgroundMap && uni_data.latitude && uni_data.longitude)  {
+					searchResultsBackgroundMap.style.backgroundImage = constructStaticGMapBackground(uni_data.latitude, uni_data.longitude);
+				}
+			}, 200)
 		}
 	}
 
