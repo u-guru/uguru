@@ -170,16 +170,21 @@ $(function () {
 	$('.work-icon-link').on("click", function(e) {
 		sliderItem = document.querySelector('#slider-triangle');
 		destinationLink = this;
-
+		var index = $('#work-slider ul li').index($(this).parent());
 		currentSliderRect = sliderItem.getBoundingClientRect();
 		currentPosX = currentSliderRect.left;
 		currentSliderWidth = currentSliderRect.width / 2;
 
 		destinationLinkRect = destinationLink.getBoundingClientRect() ;
 		if (destinationLinkRect.left > currentPosX) {
-			translateXOffset = destinationLinkRect.left + (destinationLinkRect.width / 2) - currentSliderWidth - currentPosX;
+			translateXOffset = destinationLinkRect.left + (destinationLinkRect.width / 2) - currentPosX;
+			if (index > 1) {
+				// translateXOffset += 135;
+			} else {
+				translateXOffset -= currentSliderWidth;
+			}
 		} else {
-			translateXOffset = destinationLinkRect.left - currentPosX -  (destinationLinkRect.width / 2) + currentSliderWidth;
+			translateXOffset = destinationLinkRect.left - currentPosX + (destinationLinkRect.width / 2) + (135 * (index + 1)) ;
 		}
 
 
