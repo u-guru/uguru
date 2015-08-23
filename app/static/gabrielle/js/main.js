@@ -55,12 +55,20 @@ $(document).ready(function () {
 });
 
 $(function () {
+	$("#faq dl dt a").each(function(e){
+		$(this).on("click", function(e) {
+			$(this).parent().parent().toggleClass("active");
+			e.preventDefault();
+		});
+	});
 	if ($(window).width() > 1280) {
 		$('.inside h2').fitText(1.2, { maxFontSize: '48px', minFontSize: '24px' });
 	} else if ($(window).width() <= 1280) {
 		$('.inside h2').fitText(2, { maxFontSize: '36px', minFontSize: '24px' });
 	}
 	$('#start-text h3').fitText(2, { maxFontSize: '36px', minFontSize: '24px' });
+	$('.main h1').fitText(1.5, { maxFontSize: '48px', minFontSize: '24px' });
+
 	$("#search-box").slideDown();
 	$('#search-bar').focus(function(e) {
 		$("#top-school-banner").css("width", "60%");

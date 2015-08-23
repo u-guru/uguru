@@ -93,7 +93,7 @@
 	background: $color;
 	padding: $padding;
 	margin-bottom: ($size * 2)+px;
-	&:before {
+	&:after {
 		@include center-x;
 		content: "";
 		display: block;

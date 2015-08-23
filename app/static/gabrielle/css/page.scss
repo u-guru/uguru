@@ -66,7 +66,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 }
 
 #top {
-	background: white;
+	background: rgba(white, .8);
 	#top-logo {
 		width: 42px;
 		height: 42px;
@@ -80,23 +80,226 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 
 .main {
 	margin: 0 auto;
-	padding: 82px 10px 0;
-	max-width: 1000px;
+	padding: 82px 0 50px;
+	max-width: 900px;
 	h1 {
-		margin-bottom: 15px;
+		margin-bottom: 30px;
 	}
-	dl {
-		dt {
-			background: $lake;
-			color: white;
-			padding: 20px 30px;
-			font-size: 32px;
-			font-weight: 300;
+	h2 {
+		margin: 50px 0 0;
+	}
+	h2:first-child {
+		margin-top: 0;
+	}
+	p {
+		margin: 15px 0;
+	}
+	&#team {
+		max-width: 1200px;
+		ul {
+			@include listless;
+			@include flex;
+			@include flex-wrap;
+			li {
+				box-sizing: border-box;
+				width: 100%;
+				margin-bottom: 30px;
+				padding: 0 20px;
+				img {
+					@include round;
+					display: block;
+					margin: 0 auto;
+					width: 120px;
+					height: 120px;
+				}
+				div {
+					@include tri-down(15, #eee, 10, 0);
+					&:before {
+						border-bottom-color: $slate;
+					}
+					> * {
+						box-sizing: border-box;
+						padding: 10px 15px;
+					}
+					h3 {
+						background: $slate;
+						border-radius: 10px 10px 0 0;
+						color: white;
+						font-size: 24px;
+						font-weight: 900;
+						text-transform: uppercase;
+					}
+					q {
+						display: block;
+						position: relative;
+						quotes: none;
+						text-align: left;
+						font-size: 24px;
+						height: 82px;
+						&:before {
+							content: "\201D";
+							position: absolute;
+							display: block;
+							top: 0;
+							right: 0;
+							color: rgba(black, .05);
+							font-size: 200px;
+							line-height: .8;
+						}
+						&:after {
+							content: ".";
+						}
+					}
+					> a {
+						display: block;
+						border-radius: 0 0 10px 10px;
+						font-size: 16px;
+						font-weight: 400;
+						text-transform: uppercase;
+						background: $campus;
+						color: white;
+					}
+					> #{$links} {
+						background: $slate;
+					}
+				}
+			}
 		}
-		dd {
-			margin: 10px 30px 0;
-			font-size: 20px;
-			line-height: 1.4;
+	}
+	&#manifest {
+		> div {
+			h2 {
+				background: $eggplant;
+				padding: 20px 30px;
+				color: white;
+				font-size: 24px;
+				font-weight: 600;
+			}
+			p {
+				padding: 0 30px;
+				font-size: 18px;
+				font-weight: 400;
+				line-height: 1.4;
+			}
+		}
+	}
+	&#faq {
+		dl {
+			margin: 0;
+			dt {
+				position: relative;
+				background: $lake;
+				color: white;
+				padding: 20px 30px;
+				a {
+					display: table;
+					width: 100%;
+					color: white!important;
+				}
+				span {
+					display: table-cell;
+					vertical-align: middle;
+					&:first-child {
+						width: 100%;
+					}
+				}
+				h3 {
+					font-size: 18px;
+					font-weight: 400;
+				}
+				svg {
+					@include transition(.15s ease-in-out);
+					display: table-cell;
+					vertical-align: middle;
+					width: 30px;
+					height: 30px;
+					circle {
+						fill: none;
+					}
+				}
+			}
+			dd {
+				margin: 0 30px;
+				font-size: 18px;
+				font-weight: 400;
+				line-height: 1.4;
+				height: 1px;
+				overflow: hidden;
+			}
+			&.active {
+				dt {
+					svg {
+						-webkit-transform: rotate(45deg);
+						-moz-transform: rotate(45deg);
+						-ms-transform: rotate(45deg);
+						-o-transform: rotate(45deg);
+						transform: rotate(45deg);
+					}
+				}
+				dd {
+					margin-top: 10px;
+					margin-bottom: 15px;
+					height: auto;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width:48em) {
+	.main {
+		&#team {
+			ul {
+				li {
+					width: 50%;
+				}
+			}
+		}
+		&#manifest {
+			> div {
+				h2 {
+					background: none;
+					padding: 0;
+					color: $charcoal;
+					font-weight: 700;
+					font-size: 36px;
+				}
+				p {
+					padding: 0;
+					font-size: 20px;
+					font-weight: 300;
+				}
+			}
+		}
+		&#faq {
+			dl {
+				dt {
+					h3 {
+						font-size: 32px;
+						font-weight: 300;
+					}
+					svg {
+						width: 50px;
+						height: 50px;
+					}
+				}
+				dd {
+					font-size: 20px;
+					font-weight: 300;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width:1200px) {
+	.main {
+		&#team {
+			ul {
+				li {
+					width: 33.3333%;
+				}
+			}
 		}
 	}
 }
@@ -145,7 +348,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 		}
 	}
 }
-
 #page-lake {
 	a, h1 {
 		color: $lake;
@@ -190,7 +392,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 		}
 	}
 }
-
 #page-eggplant {
 	a, h1 {
 		color: $eggplant;
@@ -235,7 +436,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 		}
 	}
 }
-
 #page-cerise {
 	a, h1 {
 		color: $cerise;
@@ -290,5 +490,293 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 		color: $slate!important;
 		background: white!important;
 		border-color: white!important;
+	}
+}
+
+// PROFILE
+.contact-btn {
+	width: 100%;
+	padding: 15px;
+	font-size: 36px;
+	letter-spacing: 2px;
+	font-weight: 900;
+}
+
+.profile {
+	position: absolute;
+	top: 0;
+	padding-top: 62px;
+	background: $charcoal;
+	color: white;
+	font-size: 18px;
+	.profile-desc {
+		padding: 30px 0 0;
+		.profile-icon {
+			@include round;
+			display: block;
+			padding: 0 30px 30px;
+			img {
+				@include round;
+				display: block;
+				margin: 0 auto;
+				width: 100%;
+				max-width: 150px;
+				padding: 5px;
+				background: rgba(white, .5);
+			}
+		}
+		.profile-list {
+			text-align: center;
+			ul {
+				@include listless;
+				.profile-name {
+					h1 {
+						margin-top: -15px;
+						padding: 0 10px 3px;
+						line-height: 1;
+						text-transform: uppercase;
+						font-size: 28px;
+						color: white!important;
+						span:last-child {
+							svg {
+								display: none;
+							}
+						}
+					}
+					h1.verified {
+						span {
+							display: inline;
+							svg {
+								display: inline!important;
+								width: 20px;
+								height: 20px;
+								margin-left: 5px;
+								path:first-child {
+									fill: $lake;
+								}
+							}
+						}
+					}
+				}
+				.profile-school {
+					font-size: 24px;
+					font-weight: 400;
+				}
+				.profile-blurb {
+					margin: 30px;
+					font-weight: 400;
+				}
+			}
+		}
+		.profile-bars {
+			.profile-rating, .profile-links {
+				@include listless;
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				font-size: 24px;
+				li {
+					position: relative;
+					width: 100%;
+					span {
+						@include center-xy;
+						display: block;
+						position: absolute;
+					}
+				}
+				.fill:after {
+					@include center-xy;
+					position: absolute;
+					content: "\2605";
+				}
+			}
+			.profile-rating {
+				height: 75px;
+				padding: 20px;
+			}
+			.profile-links {
+				margin: 30px 0 0;
+				li {
+					width: 100%;
+				}
+				a {
+					display: block;
+					width: 100%;
+					font-weight: 400;
+					svg {
+						position: relative;
+						display: block;
+						width: 100%;
+						.background {
+							@include transition(.15s ease-in);
+							@include opacity(.7);
+						}
+					}
+				}
+				#{$links} {
+					svg {
+						.background {
+							@include opacity(1);
+						}
+					}
+				}
+			}
+		}
+	}
+	.profile-info {
+		position: relative;
+		.profile-inside {
+			padding-bottom: 75px;
+			overflow: auto;
+			.profile-courses {
+				h1 {
+					background: $slate;
+					color: white!important;
+				}
+				ul {
+					@include listless;
+					@include flex;
+					@include flex-wrap;
+					text-align: center;
+					li {
+						padding: 10px 15px;
+						width: 50%;
+						font-weight: 600;
+					}
+					li:nth-child(1){
+						background: $lake-mute;
+					}
+					li:nth-child(2){
+						background: $azure-mute;
+					}
+					li:nth-child(3){
+						background: $shamrock;
+					}
+					li:nth-child(4){
+						background: $eggplant-mute;
+					}
+					li:nth-child(5){
+						background: $cerise-mute;
+					}
+					li:nth-child(6){
+						background: $moola-mute;
+					}
+				}
+			}
+			h1 {
+				padding: 10px;
+				font-size: 14px;
+				font-weight: 400;
+				letter-spacing: 2px;
+				text-align: center;
+				text-transform: uppercase;
+				color: white!important;
+			}
+			.profile-other {
+				> div {
+					background: $slate;
+					div {
+						background: rgba(255,255,255,.1);
+						ul {
+							@include listless;
+							li {
+								padding: 10px;
+								text-align: center;
+							}
+							li:nth-child(even) {
+								background: rgba(255,255,255,.1);
+							}
+						}
+					}
+				}
+				.profile-cal {
+					@include flex;
+					font-size: 14px;
+					li {
+						flex-grow: 1;
+						width: 100%;
+					}
+					li:nth-child(even) {
+						background: rgba(255,255,255,.1);
+					}
+					h2 {
+						font-size: 16px;
+						font-weight: 400;
+						letter-spacing: 1px;
+						text-transform: uppercase;
+					}
+				}
+			}
+		}
+		button {
+			position: absolute;
+			bottom: 0;
+		}
+	}
+}
+
+@media screen and (min-width:768px) {
+	.profile {
+		margin-top: 62px;
+		padding-top: 0!important;
+	}
+}
+
+@media screen and (min-width:48em) {
+	.mobile-contact {
+		display: none!important;
+	}
+	.profile {
+		.profile-desc {
+			position: relative;
+			.profile-bars {
+				.profile-links {
+					position: absolute;
+					width: 100%;
+					left: 0;
+					bottom: 75px;
+					font-size: 28px!important;
+				}
+				.profile-rating {
+					position: absolute;
+					width: 100%;
+					left: 0;
+					bottom: 0;
+					font-size: 28px!important;
+					background: rgba(255,255,255,.2);
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width:1280px) {
+	.profile {
+		@include center-x;
+		margin-top: 0!important;
+		padding-top: 0!important;
+		max-width: 1000px;
+		border-radius: 10px;
+		top: 62px;
+		position: absolute;
+		width: 100%;
+		overflow: hidden;
+	}
+}
+
+@media screen and (min-width:80em) {
+	.profile {
+		@include center-xy;
+		.profile-info {
+			.profile-inside {
+				.profile-courses {
+					ul {
+						li {
+							width: 33.33333%;
+						}
+					}
+				}
+			}
+		}
 	}
 }
