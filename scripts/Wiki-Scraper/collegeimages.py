@@ -51,7 +51,8 @@ for college_url in SHCHOOL_ARRAY:
 							school['Chancellor'] = Chancellorz
 
 			  
-						if row.th.text == "Location":
+						if row.th.text == "Location
+                        ":
 							longitude_latitude = {}
 							location = []
 							college_location = soup.find('span', attrs = {'class':'plainlinks nourlexpansion'})

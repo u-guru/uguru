@@ -1,0 +1,20 @@
+import json, requests
+from bs4 import BeautifulSoup
+
+
+
+output = 'central_oklahama_data.json'
+array = []
+names_array = ['michael','ben']
+for names in names_array:
+	url  = 'http://www2.uco.edu/centraldirectory/FSSearch.aspx?__LASTFOCUS=&__EVENTTARGET=&__EVENTARGUMENT=&__VIEWSTATE=%2FwEPDwUKLTg3MDk0ODc1Mg9kFgJmD2QWCgIFDxYGHglpbm5lcmh0bWwFajx1bCBjbGFzcz1jcnVtYl90cmFpbD48bGk%2BPGEgaHJlZj0nRGVmYXVsdC5hc3B4Jz5DZW50cmFsIERpcmVjdG9yeTwvYT48L2xpPjxsaT5GYWN1bHR5IGFuZCBTdGFmZjwvbGk%2BPC91bD4eBXN0eWxlBQ5kaXNwbGF5OmJsb2NrOx4HVmlzaWJsZWdkAgcPZBYCAgEPZBYCAgMPPCsADQEADxYCHwJoZGQCCQ8WAh8CaGQCCw8WBh8BBShkaXNwbGF5OmJsb2NrO3Bvc2l0aW9uOnJlbGF0aXZlO3RvcDoyZW07HwAF0gQ8dWwgc3R5bGU9J21hcmdpbi1ib3R0b206IDAnPjxsaSBjbGFzcz0nZmlyc3QtY2hpbGQnPjxhIGhyZWY9J2h0dHA6Ly93d3cudWNvLmVkdS8nID4mbmJzcDtIb21lJm5ic3A7PC9hPjwvbGk%2BPGxpPjxhIGhyZWY9J2h0dHA6Ly93d3cudWNvLmVkdS9hZG1pbmlzdHJhdGlvbi9odW1hbi1yZXNvdXJjZXMvaW5kZXguYXNwJz4mbmJzcDtIdW1hbiBSZXNvdXJjZXMmbmJzcDs8L2E%2BPC9saT48bGk%2BPGEgaHJlZj0naHR0cDovL3d3dy51Y28uZWR1L2RpcmVjdG9yeSc%2BJm5ic3A7Q2FtcHVzIERpcmVjdG9yeSZuYnNwOzwvYT48L2xpPjxsaT48YSBocmVmPSdodHRwOi8vd3d3LnVjby5lZHUvcmVzb3VyY2VzL21hcHMuYXNwJz4mbmJzcDtDYW1wdXMgTWFwcyZuYnNwOzwvYT48L2xpPjxsaT48YSBocmVmPSdodHRwOi8vd3d3LnVjby5lZHUvdGVjaG5vbG9neS9zdXBwb3J0L2luZGV4LmFzcCc%2BJm5ic3A7VGVjaCBTdXBwb3J0Jm5ic3A7PC9hPjwvbGk%2BPGxpIGNsYXNzPSdsYXN0LWNoaWxkJz48YSBocmVmPSdodHRwOi8vd3d3LnVjby5lZHUvbGVnYWxfYW5kX3BvbGljaWVzLmFzcCcgPiZuYnNwO1BvbGljeSBDZW50cmFsJm5ic3A7PC9hPjwvbGk%2BPC91bD4fAmdkAg4PDxYCHgRUZXh0BQowOS8zMC8yMDExZGQYAQUjY3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRndlJlc3VsdHMPZ2Sl2tJNwuBf59%2Frh7FInSEk4QSqKg%3D%3D&__VIEWSTATEGENERATOR=35105D61&__SCROLLPOSITIONX=0&__SCROLLPOSITIONY=32&__EVENTVALIDATION=%2FwEWBQK%2FvNTmCALozcS4CQKEtJirCQKGvurtAQL3uvOGApjVnPl0idfJQgRlKHJQx3wCJYrw&ctl00%24ContentPlaceHolder1%24txtFirstName='+names+'&ctl00%24ContentPlaceHolder1%24txtLastName=&ctl00%24ContentPlaceHolder1%24txtDepartment=&ctl00%24ContentPlaceHolder1%24btnSearch=Run+Search'
+	soup = BeautifulSoup(requests.get(url).text)
+	main_wrapper = soup.findAll('table', attrs = {'class':'tbl results'})
+	for wrapper in main_wrapper:
+		email = wrapper.findAll('a')
+		for email_info in email:
+			email_dict = {}
+			email_dict['email'] = email_info['href'].replace('mailto:',' ')
+			array.append(email_dict)
+		with open(output,'wb') as outfile:
+			json.dump(array,outfile,indent = 4)
