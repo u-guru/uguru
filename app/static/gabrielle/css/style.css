@@ -200,6 +200,8 @@ input {
     height: 100%;
     z-index: 9;
     overflow-y: hidden; }
+    #main .slide .cta-desktop {
+      display: none; }
     #main .slide .inside {
       position: absolute;
       top: 50%;
@@ -280,6 +282,7 @@ input {
         font-size: 12px;
         font-weight: 400; }
         #main #earn #earn-categories-mobile ul li {
+          cursor: pointer;
           padding: 4px 0;
           border-bottom: 1px solid; }
           #main #earn #earn-categories-mobile ul li:first-child {
@@ -291,6 +294,7 @@ input {
         width: 33.3333%;
         height: 100px; }
         #main #earn #earn-categories-mobile .earn-category-mobile > div {
+          cursor: pointer;
           top: 0;
           width: 100%;
           overflow-y: hidden; }
@@ -349,10 +353,74 @@ input {
           margin: 0; }
   #main #work {
     background: #40484B; }
-    #main #work #work-text {
+    #main #work #work-inside #work-infograph {
+      position: relative;
+      height: 150px; }
+      #main #work #work-inside #work-infograph div, #main #work #work-inside #work-infograph img {
+        border-radius: 1000px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        margin: 0; }
+      #main #work #work-inside #work-infograph img {
+        width: 150px;
+        height: 150px; }
+    #main #work #work-inside #work-text {
       padding: 0 20px; }
-      #main #work #work-text p {
+      #main #work #work-inside #work-text p {
         font-size: 16px; }
+      #main #work #work-inside #work-text #work-slider ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap; }
+        #main #work #work-inside #work-text #work-slider ul li {
+          width: 25%; }
+          #main #work #work-inside #work-text #work-slider ul li svg {
+            display: block;
+            margin: 0 auto;
+            width: 80px;
+            height: 80px; }
+          #main #work #work-inside #work-text #work-slider ul li:nth-child(1) svg circle {
+            fill: #81B566; }
+          #main #work #work-inside #work-text #work-slider ul li:nth-child(2) svg circle {
+            fill: #50A5DD; }
+          #main #work #work-inside #work-text #work-slider ul li:nth-child(3) svg circle {
+            fill: #9A5BC5; }
+          #main #work #work-inside #work-text #work-slider ul li:nth-child(4) svg circle {
+            fill: #8A9EA3; }
+      #main #work #work-inside #work-text #work-slider #slider-bar {
+        border-radius: 1000px;
+        display: block;
+        position: relative;
+        box-sizing: border-box;
+        margin: 30px 0 20px;
+        height: 4px;
+        background: #2B3234; }
+        #main #work #work-inside #work-text #work-slider #slider-bar #slider-triangle {
+          display: block;
+          position: absolute;
+          left: 11%;
+          margin-top: -2.5%; }
+          #main #work #work-inside #work-text #work-slider #slider-bar #slider-triangle svg {
+            width: 15px;
+            height: 21px; }
+            #main #work #work-inside #work-text #work-slider #slider-bar #slider-triangle svg path {
+              fill: #81B566; }
   #main #why {
     background: #8A9EA3; }
     #main #why #why-text {
@@ -385,10 +453,16 @@ input {
 
 @media screen and (min-width: 35.5em) {
   #slide-breadcrumbs {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
     display: block !important;
     position: fixed;
     bottom: 20px;
-    right: 10px;
     z-index: 99999; }
     #slide-breadcrumbs ul {
       list-style: none;
@@ -463,9 +537,6 @@ input {
       font-size: 24px !important; }
     #main .slide .inside .inside-text {
       display: block; }
-  #main #work #work-inside #work-infograph div {
-    border-radius: 1000px;
-    margin: 0 auto 30px; }
   #main #work #work-inside #work-text {
     padding: 0; }
     #main #work #work-inside #work-text p {
@@ -514,8 +585,7 @@ input {
         display: block;
         position: absolute;
         left: 11%;
-        margin-top:-2.5%;
-      }
+        margin-top: -2.5%; }
         #main #work #work-inside #work-text #work-slider #slider-bar #slider-triangle svg {
           width: 15px;
           height: 21px; }
@@ -603,7 +673,8 @@ input {
     -ms-transform: translateX(-50%);
     -o-transform: translateX(-50%);
     transform: translateX(-50%);
-    bottom: 0; }
+    display: block;
+    bottom: 25px; }
     #main .slide .cta-desktop button {
       font-size: 24px;
       margin: 20px;
@@ -985,16 +1056,6 @@ input {
     #main #work #work-inside #work-infograph {
       position: relative;
       width: 40%; }
-      #main #work #work-inside #work-infograph div, #main #work #work-inside #work-infograph img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        margin: 0; }
       #main #work #work-inside #work-infograph img {
         width: 100%;
         height: 100%;

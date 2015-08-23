@@ -171,6 +171,9 @@ input {
 		height: 100%;
 		z-index: 9;
 		overflow-y: hidden;
+		.cta-desktop {
+			display: none;
+		}
 		.inside {
 			@include center-xy;
 			display: table;
@@ -245,6 +248,7 @@ input {
 				font-size: 12px;
 				font-weight: 400;
 				li {
+					cursor: pointer;
 					padding: 4px 0;
 					border-bottom: 1px solid;
 					&:first-child {
@@ -260,6 +264,7 @@ input {
 				width: 33.3333%;
 				height: 100px;
 				> div {
+					cursor: pointer;
 					top: 0;
 					width: 100%;
 					overflow-y: hidden;
@@ -372,10 +377,91 @@ input {
 	}
 	#work {
 		background: $slate;
-		#work-text {
-			padding: 0 20px;
-			p {
-				font-size: 16px;
+		#work-inside {
+			#work-infograph {
+				position: relative;
+				height: 150px;
+				div, img {
+					@include round;
+					@include center-xy;
+					margin: 0;
+				}
+				img {
+					width: 150px;
+					height: 150px;
+				}
+			}
+			#work-text {
+				padding: 0 20px;
+				p {
+					font-size: 16px;
+				}
+				#work-slider {
+					ul {
+						@include listless;
+						@include flex;
+						@include flex-wrap;
+						li {
+							width: 25%;
+							svg {
+								display: block;
+								margin: 0 auto;
+								width: 80px;
+								height: 80px;
+							}
+							&:nth-child(1) {
+								svg {
+									circle {
+										fill: $moola;
+									}
+								}
+							}
+							&:nth-child(2) {
+								svg {
+									circle {
+										fill: $lake;
+									}
+								}
+							}
+							&:nth-child(3) {
+								svg {
+									circle {
+										fill: $eggplant;
+									}
+								}
+							}
+							&:nth-child(4) {
+								svg {
+									circle {
+										fill: $campus;
+									}
+								}
+							}
+						}
+					}
+					#slider-bar {
+						@include round;
+						display: block;
+						position: relative;
+						box-sizing: border-box;
+						margin: 30px 0 20px;
+						height: 4px;
+						background: $charcoal;
+						#slider-triangle {
+							display: block;
+							position: absolute;
+							left:11%;
+							margin-top:-2.5%;
+							svg {
+								width: 15px;
+								height: 21px;
+								path {
+									fill: $moola;
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -436,10 +522,10 @@ input {
 
 @media screen and (min-width:35.5em) {
 	#slide-breadcrumbs {
+		@include center-x;
 		display: block!important;
 		position: fixed;
 		bottom: 20px;
-		right: 10px;
 		z-index: 99999;
 		ul {
 			@include listless;
@@ -520,12 +606,6 @@ input {
 		}
 		#work {
 			#work-inside {
-				#work-infograph {
-					div {
-						@include round;
-						margin: 0 auto 30px;
-					}
-				}
 				#work-text {
 					padding: 0;
 					p {
@@ -712,7 +792,8 @@ input {
 			}
 			.cta-desktop {
 				@include center-x;
-				bottom: 0;
+				display: block;
+				bottom: 25px;
 				button {
 					font-size: 24px;
 					margin: 20px;
@@ -1147,10 +1228,6 @@ input {
 				#work-infograph {
 					position: relative;
 					width: 40%;
-					div, img {
-						@include center-xy;
-						margin: 0;
-					}
 					img {
 						width: 100%;
 						height: 100%;
