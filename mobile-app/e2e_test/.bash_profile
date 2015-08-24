@@ -24,7 +24,14 @@ alias wu="webdriver-manager update"
 
 export PATH=${PATH}:~/dev/android-sdk-linux/tools
 export PATH=${PATH}:~/dev/android-sdk-linux/platform-tools
+NPM_PACKAGES="${HOME}/.npm-packages"
+PATH="$NPM_PACKAGES/bin:$PATH"
+# Unset manpath so we can inherit from /etc/manpath via the `manpath`
+# command
+unset MANPATH # delete if you already modified MANPATH elsewhere in your config
+MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 ANDROID_HOME=~/dev/android-sdk-linux
+NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
 #export PATH=${PATH}:~/w-dev/android-sdk-linux/tools
 #export PATH=${PATH}:~/w-dev/android-sdk-linux/platform-tools

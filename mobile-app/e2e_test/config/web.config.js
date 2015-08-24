@@ -11,15 +11,21 @@ exports.config = {
         //   {'browserName': 'firefox'},
         //   {'browserName': 'phantomjs'}
         // ],
-        specs: [
-         //     '../test_case/Release_One_Web/homepage/*'
-        ],
-        suites:
-        {
-          // search :     ['../test_case/Release_One_Web/homepage/search_box.js'],
-           // breadcrumb : ['../test_case/Release_One_Web/homepage/breadcrumb.js'],
-          //team : '../test_case/Release_One_Web/team/team.js',
-          home : '../test_case/Release_One_Web/homepage/started_box.js'
+        // specs: [
+        //  //     '../test_case/Release_One_Web/homepage/*'
+        // ],
+        // suites:
+        // {
+        //   // search :     ['../test_case/Release_One_Web/homepage/search_box.js'],
+        //    // breadcrumb : ['../test_case/Release_One_Web/homepage/breadcrumb.js'],
+        //   //team : '../test_case/Release_One_Web/team/team.js',
+          
+        // },
+        suites: {
+                // start_one : '../test_case/Release_One_Web/homepage/started_box.js',
+                // start_two : '../test_case/Release_One_Web/homepage/started_box_2.js',
+                // breadcrumb : ['../test_case/Release_One_Web/homepage/breadcrumb.js'],
+                loading : '../test_case/Release_One_Web/homepage/loading.js'
         },
         // resultJsonOutputFile: '../test_case/Release_One_Web/result.json',
         // rootElement: "[ng-app]" ,
@@ -33,8 +39,8 @@ exports.config = {
                           print: function() {}
 
                           },
-        getPageTimeout: 10000,
-        allScriptsTimeout: 400000,
+        // getPageTimeout: 10000,
+         allScriptsTimeout: 5000,
         onPrepare: function () {
             var SpecReporter = require('jasmine-spec-reporter');
             // add jasmine spec reporter
@@ -73,7 +79,7 @@ exports.config = {
             global.element = browser.element;     
             global.dv = browser.driver;
             global.EC = protractor.ExpectedConditions;
-
+            global.web =require('../test_case/Release_One_Web/global.po.js');
             global.isAngularSite = function(flag){
                 browser.ignoreSynchronization = !flag;
             };

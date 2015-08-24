@@ -6,67 +6,52 @@ describe('Breadcrumbs Test', function () {
 
 	it("Go Homepage",function()
 		{
-			dv.get('http://staging.uguru.me');
-
+			web.get('http://staging.uguru.me');
 		});
     // var SchoolInput = dv.findElement(by.id('search-bar'));
     // var list = 		dv.findElement(by.css('.tt-suggestions'));
 	it("Check Page : search ",function()
 	{
-	   //  dv.findElement(by.id('slide-breadcrumbs')).click().then(function()
-    // 	{
-    // 		dv.findElements(by.tagName('a')).then(function(results){ 
-		  //     	results[0].click();
-				// expect(dv.getCurrentUrl()).toEqual("http://staging.uguru.me/#search");
-		  //   });
+		// web.findElements(by.id('slide-breadcrumbs'),by.tagName('a')).then(function(results)
+		// {
+		// 	results[0].click();
+		// 	expect(web.getCurrent()).toEqual("http://staging.uguru.me/#search");
+		// });
+      web.clickSameElement(by.id('slide-breadcrumbs'),by.tagName('a'),0);
+      expect(web.getCurrent()).toEqual("http://staging.uguru.me/#search");
 
-    // 	});
-     		dv.findElement(by.id('slide-breadcrumbs')).findElements(by.tagName('a')).then(function(results)
-     		{ 
-		      	results[0].click();
-				expect(dv.getCurrentUrl()).toEqual("http://staging.uguru.me/#search");
-		    });
    	});
 
-	it("Check Page : values ",function()
-	{
-     		dv.findElement(by.id('slide-breadcrumbs')).findElements(by.tagName('a')).then(function(results)
-     		{ 
-		      	results[1].click();
-				expect(dv.getCurrentUrl()).toEqual("http://staging.uguru.me/#values");
-		    });
-   	});
+	// it("Check Page : values ",function()
+	// {
+ //      web.clickSameElement(by.id('slide-breadcrumbs'),by.tagName('a'),1);
+ //      expect(dv.getCurrentUrl()).toEqual("http://staging.uguru.me/#values");
+ //   	});
 	it("Check Page : earn ",function()
 	{
-     		dv.findElement(by.id('slide-breadcrumbs')).findElements(by.tagName('a')).then(function(results)
-     		{
-		      	results[2].click();
-				expect(dv.getCurrentUrl()).toEqual("http://staging.uguru.me/#earn");
-		    });
+      web.clickSameElement(by.id('slide-breadcrumbs'),by.tagName('a'),1);
+	  expect(dv.getCurrentUrl()).toEqual("http://staging.uguru.me/#earn");
    	});
-	it("Check Page : adapt ",function()
+	// it("Check Page : adapt ",function()
+	// {
+ //      web.clickSameElement(by.id('slide-breadcrumbs'),by.tagName('a'),3);
+	//   expect(dv.getCurrentUrl()).toEqual("http://staging.uguru.me/#adapt");
+ //   	});
+	it("Check Page : work ",function()
 	{
-		dv.findElement(by.id('slide-breadcrumbs')).findElements(by.tagName('a')).then(function(results)
-     		{
-		      	results[3].click();
-				expect(dv.getCurrentUrl()).toEqual("http://staging.uguru.me/#adapt");
-    	});
+      web.clickSameElement(by.id('slide-breadcrumbs'),by.tagName('a'),2);
+	  expect(dv.getCurrentUrl()).toEqual("http://staging.uguru.me/#work");
    	});
-	it("Check Page : rewards ",function()
+	it("Check Page : why ",function()
 	{
-		dv.findElement(by.id('slide-breadcrumbs')).findElements(by.tagName('a')).then(function(results)
-     		{
-		      	results[4].click();
-				expect(dv.getCurrentUrl()).toEqual("http://staging.uguru.me/#rewards");
-    	});
+      web.clickSameElement(by.id('slide-breadcrumbs'),by.tagName('a'),3);
+      expect(dv.getCurrentUrl()).toEqual("http://staging.uguru.me/#why");
    	});
 	it("Check Page : info ",function()
 	{
-		dv.findElement(by.id('slide-breadcrumbs')).findElements(by.tagName('a')).then(function(results)
-     		{
-		      	results[5].click();
-				expect(dv.getCurrentUrl()).toEqual("http://staging.uguru.me/#info");
-    	});
+      web.clickSameElement(by.id('slide-breadcrumbs'),by.tagName('a'),4);
+	  expect(dv.getCurrentUrl()).toEqual("http://staging.uguru.me/#info");
+
    	});
 
 });
