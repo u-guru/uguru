@@ -1,4 +1,9 @@
+//default globals
 var itemSelectedGlobal = false;
+var UFColor = "rgb(255, 74, 0)";
+var TuftsColor = '#417dc1';
+var CalColor = "rgb(0, 50, 98)";
+
 slideLeft = function() {
 	$('.slide').each(function() {
 		var left = $(window).width();
@@ -223,12 +228,10 @@ $(function () {
 			translateXOffset = destinationLinkRect.left - currentPosX + (destinationLinkRect.width / 2) + (135 * (index + 1)) ;
 		}
 
-
-
 		 translateXOffset = translateXOffset.toString() + 'px';
 		 console.log(translateXOffset);
 		initialProperties = {
-			translateX: translateXOffset
+				translateX: translateXOffset
 		}
 		$(sliderItem).velocity(initialProperties);
 	});
@@ -236,19 +239,19 @@ $(function () {
 	$('#search-box').on("mouseover", function(e) {
 		//check if mouse is still over the bar after 500 seconds
 		setTimeout(function(){
-			if ($('#search-box').is(':hover') && 
-				!$('#search-bar').val().length) 
+			if ($('#search-box').is(':hover') &&
+				!$('#search-bar').val().length)
 			{
 				$('#search-bar').focus();
-			} 
-		}, 200)
+			}
+		}, 500);
 	});
 	$('#search-box').on("mouseleave", function(e) {
 		setTimeout(function() {
 			if (!$('#search-box').is(':hover') && !$('#search-bar').val().length && !itemSelectedGlobal) {
 				$('#search-bar').blur();
 				$('#top-school-banner').css("width", "60%");
-			} 
+			}
 		}, 500)
 	});
 	$("#search-results").on("click", "li", function(e) {
@@ -268,7 +271,6 @@ $(function () {
 		numGurusElement = document.querySelector('#search-guru-number');
 		popularCoursesParent = document.querySelector('.search-results-courses ul.text-center');
 		popularCoursesParent.innerHTML ='';
-		$("#search-box").slideUp();
 		$("#border-outer").css("fill", "white");
 		$("#top-school-banner").css("width", "20%");
 		$('#top-school-logo').css("width","auto");
@@ -276,7 +278,6 @@ $(function () {
 			var color = "rgb(0, 50, 98)";
 			$('#banner').css("background-image", "url(" + 'https://farm8.staticflickr.com/7143/6841501153_7eb07da0c4_b.jpg' + ")");
 			$("#top-school-logo").attr('src', 'http://i.forbesimg.com/media/lists/colleges/university-of-california-berkeley_50x50.jpg');
-			$(".search-results").slideDown();
 			$("#border-inner").css("fill", color);
 			$(".search-results-top, .search-results-gurus").css("background", color);
 			$("#search-school-name").text("UC BERKELEY");
@@ -284,7 +285,7 @@ $(function () {
 			numGurusElement.innerHTML = '30k+';
 			popularCourses = ["STATS20", "ASTROC10", "COS126", "ASTRONC10", "CHEM3A", "CHEM3AL",
             	"MCB61", "PSYCHC19","CS61A", "BIO 1A", "PSYCH 1"];
-			
+
 			for (var i = 0 ; i < popularCourses.length; i ++) {
 				var courseNode = document.createElement("li");
 				courseNode.innerHTML = popularCourses[i];
@@ -293,17 +294,20 @@ $(function () {
 			var courseNode = document.createElement("li");
 			courseNode.innerHTML = 'and more';
 			popularCoursesParent.appendChild(courseNode);
-			
-			setTimeout(function() {	
-				searchResultsBackgroundMap.style.backgroundImage = constructStaticGMapBackground(37.8718992,-122.2585399);
-			}, 200)
+
+			var successCallback = function() {
+				setTimeout(function() {
+					searchResultsBackgroundMap.style.backgroundImage = constructStaticGMapBackground(37.8718992,-122.2585399);
+				}, 200)
+			}
+
+			animateSearchBoxResults(CalColor, successCallback);
 
 
 		} else if ($(this).is('#search-florida')) {
 			var color = "rgb(255, 74, 0)";
 			$('#banner').css("background-image", "url(" + 'https://farm8.staticflickr.com/7206/6858631913_1fee1210b4_b.jpg' + ")");
 			$("#top-school-logo").attr('src', 'http://i.forbesimg.com/media/lists/colleges/university-of-florida_50x50.jpg');
-			$(".search-results").slideDown();
 			$("#border-inner").css("fill", color);
 			$(".search-results-top, .search-results-gurus").css("background", color);
 			$("#search-school-name").text("University of Florida");
@@ -318,14 +322,18 @@ $(function () {
 			var courseNode = document.createElement("li");
 			courseNode.innerHTML = 'and more';
 			popularCoursesParent.appendChild(courseNode);
-			setTimeout(function() {	
-				searchResultsBackgroundMap.style.backgroundImage = constructStaticGMapBackground(29.6436325,-82.3549302);
-			}, 200)
+
+			var successCallback = function() {
+				setTimeout(function() {
+					searchResultsBackgroundMap.style.backgroundImage = constructStaticGMapBackground(29.6436325,-82.3549302);
+				}, 200)
+			}
+
+			animateSearchBoxResults(UFColor, successCallback);
 		} else if ($(this).is('#search-tufts')) {
 			var color = "#417dc1";
 			$('#banner').css("background-image", "url(" + 'http://c2.staticflickr.com/6/5097/5514096962_ee022a89d4_b.jpg' + ")");
 			$("#top-school-logo").attr('src', 'http://i.forbesimg.com/media/lists/colleges/tufts-university_50x50.jpg');
-			$(".search-results").slideDown();
 			$("#border-inner").css("fill", color);
 			$(".search-results-top, .search-results-gurus").css("background", color);
 			$("#search-school-name").text("Tufts University");
@@ -339,10 +347,14 @@ $(function () {
 			var courseNode = document.createElement("li");
 			courseNode.innerHTML = 'and more';
 			popularCoursesParent.appendChild(courseNode);
-			
-			setTimeout(function() {	
-				searchResultsBackgroundMap.style.backgroundImage = constructStaticGMapBackground(42.4074843,-71.1190232);
-			}, 200)
+
+			var successCallback = function() {
+				setTimeout(function() {
+					searchResultsBackgroundMap.style.backgroundImage = constructStaticGMapBackground(42.4074843,-71.1190232);
+				}, 200)
+			}
+
+			animateSearchBoxResults(UFColor, successCallback);
 		}
 	});
 

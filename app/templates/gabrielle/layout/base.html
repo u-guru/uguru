@@ -18,7 +18,8 @@
     <link rel="stylesheet" href="/static/gabrielle/css/default.css"/>
     <link rel="stylesheet" href="/static/gabrielle/css/menu.css"/>
     <link rel="stylesheet" href="/static/gabrielle/css/samir.css"/>
-    
+    <link rel="stylesheet" href="/static/gabrielle/css/animate.css"/>
+
     <script>
         document.addEventListener("DOMContentLoaded", function(e) {
                 onDomLoadSuccess();
@@ -28,12 +29,10 @@
 <body id="{% block pagetype %}{% endblock %}">
 
 <script>
-var bodyLoadingDiv = document.createElement('div');
-bodyLoadingDiv.className += bodyLoadingDiv.className + 'body-loading-div'
-// document.body.style.visibility = "hidden";
-document.body.appendChild(bodyLoadingDiv);
-bodyLoadingDiv.innerHTML = '<div> {% include "gabrielle/components/logo-white.svg"%} </div><div> {% include "gabrielle/components/svg-loader.svg"%} </div>'
-
+    var bodyLoadingDiv = document.createElement('div');
+    bodyLoadingDiv.className += bodyLoadingDiv.className + 'body-loading-div'
+    document.body.appendChild(bodyLoadingDiv);
+    bodyLoadingDiv.innerHTML = '<div> {% include "gabrielle/components/logo-white.svg"%} </div><div> {% include "gabrielle/components/svg-loader.svg"%} </div>'
 </script>
 <header id="top">
     <nav id="top-menu">
@@ -79,7 +78,6 @@ bodyLoadingDiv.innerHTML = '<div> {% include "gabrielle/components/logo-white.sv
 <script src="/static/gabrielle/js/lib/parallax.min.js"></script>
 <script src="/static/gabrielle/js/main.js"></script>
 <script src="/static/gabrielle/js/lib/velocity.js"></script>
-<script src="/static/gabrielle/css/lib/animate.css"></script>
 
 <!-- start intercom scripts -->
 <script>

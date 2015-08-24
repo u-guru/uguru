@@ -43,8 +43,10 @@ Uguru Home
 <!-- PARALLAX <section id="main" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15" style='z-index:10'> -->
 <section id="main">
 	<div id="search">
-		<div class='relative'>
 			<div id="search-box" style='overflow:visible'>
+				<div id="search-box-loader">
+					{% include 'gabrielle/components/svg-loader.svg' %}
+				</div>
 				<p>Peers helping peers for free, barter, or side cash.</p>
 				<div id="search-container">
 					<input id="search-bar" class="typeahead" type="text" placeholder="Search for your university"/>
@@ -79,11 +81,6 @@ Uguru Home
 					</ul>
 				</div>
 			</div>
-			<div id="search-box-loader">
-				
-			</div>
-		</div>
-	</div>
 		<!-- SAMIR -
 			There's a problem with the banner - it's too big for the school popup,
 			but when I scroll down on the school popup, the width changes
@@ -633,11 +630,15 @@ Uguru Home
 	            suggestion: Handlebars.compile("<div><img src='{{logo_url}}' alt=''/></div><div><h2>{{name}}</h2><p>{{city}}, {{state}}, USA</p></div>")
 	        }
 	    }).on('typeahead:selected', function(event, suggested, dataset_name) {
-	    	$("#search-box").slideUp();
-	    	$("#border-outer").css("fill", "white");
+	    	// $("#search-box").slideUp();
+	    	// $("#border-outer").css("fill", "white");
 	    	$("#top-school-banner").css("width", "20%");
 			$('#top-school-logo').css("width","auto");
-	    	customizeSearchResults(suggested, showSearchResultsCallback);
+			var successCallback = function() {
+				itemSelectedGlobal = true;
+				showSearchResultsCallback(suggested);
+			}
+	    	customizeSearchResults(suggested, successCallback);
 	            //make it wobble
 	    }).on('typeahead:cursorchanged', function(event, suggested, dataset_name) {
 	        $('.tt-suggestion').css('background-color', 'white');
@@ -648,8 +649,14 @@ Uguru Home
 	};
 
 	{% endraw %}
-	var showSearchResultsCallback = function() {
-		$(".search-results").slideDown();
+	var showSearchResultsCallback = function(uni_data) {
+		var successCallback = function() {
+			setTimeout(function() {
+				searchResultsBackgroundMap.style.backgroundImage = constructStaticGMapBackground(uni_data.latitude,uni_data.longitude);
+			}, 200)
+		}
+
+		animateSearchBoxResults(uni_data.school_color_one, successCallback);
 	}
 	var isColorDark = function(c) {
 		var c = c.substring(1);      // strip #
@@ -743,10 +750,9 @@ Uguru Home
 		}
 
 
+
 		//population
 		//Map latitude longitude
-
-
 		if (postSearchCallback) {
 			postSearchCallback();
 			setTimeout(function() {
