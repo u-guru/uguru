@@ -209,31 +209,27 @@ $(function () {
 		}
 	})
 	$('.work-icon-link').on("click", function(e) {
-		sliderItem = document.querySelector('#slider-triangle');
-		destinationLink = this;
-		var index = $('#work-slider ul li').index($(this).parent());
-		currentSliderRect = sliderItem.getBoundingClientRect();
-		currentPosX = currentSliderRect.left;
-		currentSliderWidth = currentSliderRect.width / 2;
+		var descriptionToShow;
+		sliderElem = document.querySelector('#slider-triangle');
+		targetElem = this;
 
-		destinationLinkRect = destinationLink.getBoundingClientRect() ;
-		if (destinationLinkRect.left > currentPosX) {
-			translateXOffset = destinationLinkRect.left + (destinationLinkRect.width / 2) - currentPosX;
-			if (index > 1) {
-				// translateXOffset += 135;
-			} else {
-				translateXOffset -= currentSliderWidth;
-			}
-		} else {
-			translateXOffset = destinationLinkRect.left - currentPosX + (destinationLinkRect.width / 2) + (135 * (index + 1)) ;
-		}
+		var index = $('.work-icon-link').index(this) + 1;
 
-		 translateXOffset = translateXOffset.toString() + 'px';
-		 console.log(translateXOffset);
-		initialProperties = {
-				translateX: translateXOffset
+		svgCircle = $(this).find('svg circle')[0]
+		svgColor = $(svgCircle).css('fill');
+
+		$('.work-infograph').data('easyPieChart').options.barColor = svgColor;
+		$('.work-infograph').data('easyPieChart').update(index * 25)
+
+		var successCallback = function() {
+			descriptionToShow = $(targetElem).attr('id') + '-content'
+			previousWorkContent = $('.work-content:visible').addClass('animated fadeOut')
+			setTimeout(function() {
+				$(previousWorkContent).removeClass('animated fadeOut').hide()
+				$('#' + descriptionToShow).addClass('animated fadeIn show').show();
+			}, 750);
 		}
-		$(sliderItem).velocity(initialProperties);
+		moveHorizontalSlider(sliderElem, targetElem, successCallback);
 	});
 
 	$('#search-box').on("mouseover", function(e) {
