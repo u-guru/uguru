@@ -1,3 +1,4 @@
+var itemSelectedGlobal = false;
 slideLeft = function() {
 	$('.slide').each(function() {
 		var left = $(window).width();
@@ -230,7 +231,26 @@ $(function () {
 			translateX: translateXOffset
 		}
 		$(sliderItem).velocity(initialProperties);
-	})
+	});
+
+	$('#search-box').on("mouseover", function(e) {
+		//check if mouse is still over the bar after 500 seconds
+		setTimeout(function(){
+			if ($('#search-box').is(':hover') && 
+				!$('#search-bar').val().length) 
+			{
+				$('#search-bar').focus();
+			} 
+		}, 200)
+	});
+	$('#search-box').on("mouseleave", function(e) {
+		setTimeout(function() {
+			if (!$('#search-box').is(':hover') && !$('#search-bar').val().length && !itemSelectedGlobal) {
+				$('#search-bar').blur();
+				$('#top-school-banner').css("width", "60%");
+			} 
+		}, 500)
+	});
 	$("#search-results").on("click", "li", function(e) {
 		/* SAMIR - ELEMENTS THAT NEED TO CHANGE
 			#top-school-logo - src (svg)
@@ -243,31 +263,86 @@ $(function () {
 			#search-guru-number - text (number of gurus)
 			.search-results-courses ul li - text (course names), background (see index.html comments)
 		*/
+		itemSelectedGlobal = true;
+		searchResultsBackgroundMap = document.querySelector('.search-results-map');
+		numGurusElement = document.querySelector('#search-guru-number');
+		popularCoursesParent = document.querySelector('.search-results-courses ul.text-center');
+		popularCoursesParent.innerHTML ='';
 		$("#search-box").slideUp();
 		$("#border-outer").css("fill", "white");
 		$("#top-school-banner").css("width", "20%");
 		$('#top-school-logo').css("width","auto");
-		if ($(this).is('#search-harvard')) {
-			var color = "#A41034";
-			$("#top-school-logo").attr('src', '/static/gabrielle/images/school/harvard.svg');
+		if ($(this).is('#search-berkeley')) {
+			var color = "rgb(0, 50, 98)";
+			$('#banner').css("background-image", "url(" + 'https://farm8.staticflickr.com/7143/6841501153_7eb07da0c4_b.jpg' + ")");
+			$("#top-school-logo").attr('src', 'http://i.forbesimg.com/media/lists/colleges/university-of-california-berkeley_50x50.jpg');
 			$(".search-results").slideDown();
 			$("#border-inner").css("fill", color);
 			$(".search-results-top, .search-results-gurus").css("background", color);
-			$("#search-school-name").text("Harvard University");
-		} else if ($(this).is('#search-stanford')) {
-			var color = "#8C1515";
-			$("#top-school-logo").attr('src', '/static/gabrielle/images/school/stanford.svg');
+			$("#search-school-name").text("UC BERKELEY");
+
+			numGurusElement.innerHTML = '30k+';
+			popularCourses = ["STATS20", "ASTROC10", "COS126", "ASTRONC10", "CHEM3A", "CHEM3AL",
+            	"MCB61", "PSYCHC19","CS61A", "BIO 1A", "PSYCH 1"];
+			
+			for (var i = 0 ; i < popularCourses.length; i ++) {
+				var courseNode = document.createElement("li");
+				courseNode.innerHTML = popularCourses[i];
+				popularCoursesParent.appendChild(courseNode);
+			}
+			var courseNode = document.createElement("li");
+			courseNode.innerHTML = 'and more';
+			popularCoursesParent.appendChild(courseNode);
+			
+			setTimeout(function() {	
+				searchResultsBackgroundMap.style.backgroundImage = constructStaticGMapBackground(37.8718992,-122.2585399);
+			}, 200)
+
+
+		} else if ($(this).is('#search-florida')) {
+			var color = "rgb(255, 74, 0)";
+			$('#banner').css("background-image", "url(" + 'https://farm8.staticflickr.com/7206/6858631913_1fee1210b4_b.jpg' + ")");
+			$("#top-school-logo").attr('src', 'http://i.forbesimg.com/media/lists/colleges/university-of-florida_50x50.jpg');
 			$(".search-results").slideDown();
 			$("#border-inner").css("fill", color);
 			$(".search-results-top, .search-results-gurus").css("background", color);
-			$("#search-school-name").text("Stanford University");
-		} else if ($(this).is('#search-cambridge')) {
-			var color = "#A3C1AD";
-			$("#top-school-logo").attr('src', '/static/gabrielle/images/school/cambridge.svg');
+			$("#search-school-name").text("University of Florida");
+			numGurusElement.innerHTML = '49k';
+			popularCourses = ["SOP2772","PSY2012","PHY2012","SOP3723","PSY2000","ANT2511","ANT2000", "CGS2100",
+            "CGS2100C","CGS3200","CNT3004"];
+            for (var i = 0 ; i < popularCourses.length; i ++) {
+				var courseNode = document.createElement("li");
+				courseNode.innerHTML = popularCourses[i];
+				popularCoursesParent.appendChild(courseNode);
+			}
+			var courseNode = document.createElement("li");
+			courseNode.innerHTML = 'and more';
+			popularCoursesParent.appendChild(courseNode);
+			setTimeout(function() {	
+				searchResultsBackgroundMap.style.backgroundImage = constructStaticGMapBackground(29.6436325,-82.3549302);
+			}, 200)
+		} else if ($(this).is('#search-tufts')) {
+			var color = "#417dc1";
+			$('#banner').css("background-image", "url(" + 'http://c2.staticflickr.com/6/5097/5514096962_ee022a89d4_b.jpg' + ")");
+			$("#top-school-logo").attr('src', 'http://i.forbesimg.com/media/lists/colleges/tufts-university_50x50.jpg');
 			$(".search-results").slideDown();
 			$("#border-inner").css("fill", color);
 			$(".search-results-top, .search-results-gurus").css("background", color);
-			$("#search-school-name").text("Cambridge University");
+			$("#search-school-name").text("Tufts University");
+			popularCourses = ["ECON102","MICRO101", "ECON1","EC005", "CHEM01", "CHEM1,2", "PS061","PS0061", "ECON5", "PS189-04", "EC0N2"];
+			numGurusElement.innerHTML = '10k';
+			for (var i = 0 ; i < popularCourses.length; i ++) {
+				var courseNode = document.createElement("li");
+				courseNode.innerHTML = popularCourses[i];
+				popularCoursesParent.appendChild(courseNode);
+			}
+			var courseNode = document.createElement("li");
+			courseNode.innerHTML = 'and more';
+			popularCoursesParent.appendChild(courseNode);
+			
+			setTimeout(function() {	
+				searchResultsBackgroundMap.style.backgroundImage = constructStaticGMapBackground(42.4074843,-71.1190232);
+			}, 200)
 		}
 	});
 

@@ -42,42 +42,48 @@ Uguru Home
 
 <!-- PARALLAX <section id="main" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15" style='z-index:10'> -->
 <section id="main">
-	<div id="search" class='layer' data-depth="0.2">
-		<div id="search-box" style='overflow:visible'>
-			<p>Peers helping peers for free, barter, or side cash.</p>
-			<div id="search-container">
-				<input id="search-bar" class="typeahead" type="text" placeholder="Search for your university"/>
-				<ul id="search-results">
-					<li id="search-harvard">
-						<div>
-							<img src="/static/gabrielle/images/school/harvard.svg" alt=""/>
-						</div>
-						<div>
-							<h2>Harvard University</h2>
-							<p>Cambridge, MA, USA</p>
-						</div>
-					</li>
-					<li id="search-stanford">
-						<div>
-							<img src="/static/gabrielle/images/school/stanford.svg" alt=""/>
-						</div>
-						<div>
-							<h2>Stanford University</h2>
-							<p>Stanford, CA, USA</p>
-						</div>
-					</li>
-					<li id="search-cambridge">
-						<div>
-							<img src="/static/gabrielle/images/school/cambridge.svg" alt=""/>
-						</div>
-						<div>
-							<h2>University of Cambridge</h2>
-							<p>Cambridge, UK</p>
-						</div>
-					</li>
-				</ul>
+	<div id="search">
+		<div class='relative'>
+			<div id="search-box" style='overflow:visible'>
+				<p>Peers helping peers for free, barter, or side cash.</p>
+				<div id="search-container">
+					<input id="search-bar" class="typeahead" type="text" placeholder="Search for your university"/>
+					<ul id="search-results">
+						<li id="search-berkeley">
+							<div>
+								<img src="http://i.forbesimg.com/media/lists/colleges/university-of-california-berkeley_50x50.jpg" alt=""/>
+							</div>
+							<div>
+								<h2>University of California, Berkeley</h2>
+								<p>Berkeley, CA</p>
+							</div>
+						</li>
+						<li id="search-florida">
+							<div>
+								<img src="http://i.forbesimg.com/media/lists/colleges/university-of-florida_50x50.jpg" alt=""/>
+							</div>
+							<div>
+								<h2>University of Florida</h2>
+								<p>Gainesville, FL</p>
+							</div>
+						</li>
+						<li id="search-tufts">
+							<div>
+								<img src="http://i.forbesimg.com/media/lists/colleges/tufts-university_50x50.jpg" alt=""/>
+							</div>
+							<div>
+								<h2>Tufts University</h2>
+								<p>Medford, MA</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="search-box-loader">
+				
 			</div>
 		</div>
+	</div>
 		<!-- SAMIR -
 			There's a problem with the banner - it's too big for the school popup,
 			but when I scroll down on the school popup, the width changes
@@ -101,7 +107,7 @@ Uguru Home
 					<div class="search-results-gurus">
 						<h2>
 							<b id="search-guru-number">340</b>
-							<span>gurus</span>
+							<span>students</span>
 						</h2>
 					</div>
 				</div>
@@ -571,7 +577,7 @@ Uguru Home
 	var matcher;
 
 	$(document).ready(function() {
-	    universities_arr = readAndParseJSON('http://staging.uguru.me/static/data/fa15_targetted.json');
+	    universities_arr = readAndParseJSON('/static/data/fa15_targetted.json');
 	    matcher = initMatcher(universities_arr);
 	    initTypeahead(matcher, universities_arr);
 	});
@@ -658,7 +664,7 @@ Uguru Home
 	}
 
 	var constructStaticGMapBackground = function(lat, _long) {
-		default_zoom = 17;
+		default_zoom = 16;
 		height = document.querySelector('.search-results-map').offsetHeight;
 		width = document.querySelector('.search-results-map').offsetWidth;
 		size = width * 2 + 'x'  + height * 2;
