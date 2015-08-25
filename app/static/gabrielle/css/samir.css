@@ -79,3 +79,128 @@
 #work-slider {
     position:relative;
 }
+
+.why-uguru-content {
+    min-height:130px;
+}
+
+.cta-image-wrapper svg {
+    width:40px;
+}
+
+.cta-image-wrapper ol li ul li {
+    width:25% !important;
+}
+
+#cta-email-input {
+    text-align: center;
+    width: 10%;
+    display:inline-block;
+    font-size:36px;
+}
+
+.paper-input__wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 2rem;
+    display:inline;
+}
+
+.paper-input {
+    display: block;
+    width: 100%;
+    margin: 0;
+    border: none;
+    border-bottom: 1px solid #666;
+    font-size: 1rem;
+    /*padding: 0.5rem 0;*/
+
+    &[disabled] {
+        border-bottom: 1px dashed rgba(0,0,0, 0.12);
+        background-color: transparent;
+    }
+}
+
+.paper-input:focus,
+.paper-input.has-focus {
+    outline: none;
+
+    & ~ label::after {
+        visibility: visible;
+        width: 100%;
+        left: 0;
+    }
+}
+
+.paper-input ~ label {
+    font-size: 1rem;
+    width: 100%;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 0.625rem;
+    bottom: 0;
+    color: white;
+    visibility:hidden;
+
+    &::after {
+        content: '';
+        background-color: #3f51b5;
+        height: 2px;
+        width: 0.625rem;
+        bottom: 0;
+        left: 45%;
+        visibility: hidden;
+        position: absolute;
+        transition: 0.2s ease all;
+    }
+}
+
+.paper-input--touched ~ label {
+    visibility: hidden;
+}
+
+// Floating
+.paper-input--floating ~ label {
+    transition: 0.2s ease all;
+}
+.paper-input__wrapper label{
+    color:white !important;
+}
+
+.paper-input--floating:focus ~ label,
+.paper-input--floating.paper-input--touched ~ label {
+    visibility: visible;
+    top: 3.5rem;
+    font-size: 0.75rem;
+    color: #3f51b5;
+}
+
+// Errors
+.paper-input__error {
+    float: left;
+    margin-top: 3px;
+    color: #d34336;
+    font-size: 0.75rem;
+    visibility: hidden;
+}
+
+.paper-input--floating.paper-input--dirty:invalid ~ label {
+    top: -0.625rem;
+    font-size: 0.75rem;
+    color: #d34336;
+}
+
+.paper-input--dirty:invalid ~ label:after {
+    background-color: #d34336;
+}
+
+.paper-input--dirty:invalid ~ .paper-input__error {
+    visibility: visible;
+}
+
+.paper-input--dirty:invalid {
+    box-shadow: none;
+    border-color: #d34336;
+}
+

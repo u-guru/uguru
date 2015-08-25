@@ -208,6 +208,89 @@ $(function () {
 			$('#side-menu').removeClass('active')
 		}
 	})
+
+	var paperElement = $('.paper-input')
+	paperElement.on('keydown keyup focus blur', function() {
+	    if($(this).val() != '') {
+	        $(this).addClass('paper-input--touched');
+	    } else{
+	        $(this).removeClass('paper-input--touched');
+	    }
+	});
+
+	paperElement.on('keyup blur', function() {
+   		$(this).addClass('paper-input--dirty');
+	});
+
+	$('#cta-email-input').on("focusin", function() {
+		$('#cta-email-input').css({'width': '25%'});
+	})
+
+	$('#cta-email-input').on('mouseover', function() {
+		$('#cta-email-input').focus();
+	})
+
+	$('#cta-email-input').on("blur", function() {
+		$('#cta-email-input').css({'width': '9%'});
+	});
+
+	// $('#cta-email-input').on("focusout", function() {
+	// 	if (!$('#cta-email-input').val().length === 0) {
+	// 		$('#cta-email-input').css({'width': '9%', 'text-align': 'center'});
+	// 	}
+	// })
+
+	$('#arrow-up').on("click", function(e) {
+		// visibleDescription = $('#')
+		visibleContentElem = $('.why-uguru-content:visible');
+		visibleImageElem = $('.why-uguru-image:visible');
+		allContentElems = $('.why-uguru-content')
+		contentIndex = allContentElems.index(visibleContentElem);
+
+		if (contentIndex <= 0) {
+			visibleContentElem.addClass('animated shake')
+			setTimeout(function() {
+				visibleContentElem.removeClass('animated shake');
+			}, 1000);
+		} else {
+			visibleContentElem.addClass('animated fadeOut');
+			visibleImageElem.addClass('animated fadeOut');
+			setTimeout(function() {
+				visibleContentElem.removeClass('animated fadeOut');
+				visibleImageElem.removeClass('animated fadeOut');
+				visibleImageElem.hide()
+				visibleContentElem.hide();
+				$($('.why-uguru-content')[contentIndex - 1]).addClass('animated fadeIn show').show();
+				$($('.why-uguru-image')[contentIndex - 1]).addClass('animated fadeIn show').show();
+			}, 750)
+		}
+	});
+	$('#arrow-down').on("click", function(e) {
+
+		visibleContentElem = $('.why-uguru-content:visible');
+		visibleImageElem = $('.why-uguru-image:visible');
+		allContentElems = $('.why-uguru-content');
+		contentIndex = allContentElems.index(visibleContentElem)
+		if (contentIndex >= 7) {
+			visibleContentElem.addClass('animated shake');
+			setTimeout(function() {
+				visibleContentElem.removeClass('animated shake');
+			}, 1000);
+		} else {
+			visibleImageElem.addClass('animated fadeOut');
+			visibleContentElem.addClass('animated fadeOut');
+			setTimeout(function() {
+				visibleContentElem.removeClass('animated fadeOut');
+				visibleContentElem.hide();
+				visibleImageElem.removeClass('animated fadeOut');
+				visibleImageElem.hide()
+				$($('.why-uguru-content')[contentIndex + 1]).addClass('animated fadeIn show').show();
+				$($('.why-uguru-image')[contentIndex + 1]).addClass('animated fadeIn show').show();
+			}, 750)
+
+		}
+
+	})
 	$('.work-icon-link').on("click", function(e) {
 		var descriptionToShow;
 		sliderElem = document.querySelector('#slider-triangle');
@@ -217,6 +300,10 @@ $(function () {
 
 		svgCircle = $(this).find('svg circle')[0]
 		svgColor = $(svgCircle).css('fill');
+
+		setTimeout(function() {
+			sliderElemColor = $('#slider-triangle svg path').css('fill', svgColor);
+		}, 500)
 
 		$('.work-infograph').data('easyPieChart').options.barColor = svgColor;
 		$('.work-infograph').data('easyPieChart').update(index * 25)

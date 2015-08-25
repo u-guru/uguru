@@ -1217,7 +1217,7 @@ input {
         -o-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%); }
         .app-phone .app-wf .app-wf-scr img {
-          display: block;
+          /*display: block;*/
           height: 300px; } }
 
 @media screen and (min-width: 990px) {
