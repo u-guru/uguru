@@ -537,26 +537,67 @@ Uguru Home
 						<p>Choose a platform.</p>
 						<ul>
 							<li>
-								{% include "gabrielle/components/platform/apple-white.svg" %}
+
+									{% include "gabrielle/components/platform/apple-white.svg" %}
+									<span class='icon-title block'>
+										IOS
+									</span>
+
 							</li>
 							<li>
 								{% include "gabrielle/components/platform/microsoft-white.svg" %}
+								<span class='icon-title block'>
+									Windows
+								</span>
 							</li>
 							<li>
 								{% include "gabrielle/components/platform/play-white.svg" %}
+								<span class='icon-title block'>
+									Google
+								</span>
 							</li>
-							<li>
+							<li style='padding-top:8px'>
 								{% include "gabrielle/components/platform/desktop-white.svg" %}
+								<span class='icon-title block' style='margin-top:-8px'>
+									Desktop
+								</span>
 							</li>
 						</ul>
 					</li>
 					<li>
 						<p>Add skills &amp; a profile.</p>
-						<div></div>
+						<span >
+							{% include "gabrielle/components/platform/profile-white.svg" %}
+						</span>
+						<div class='pure-g'>
+							<div class='pure-u-1 skill-tag-wrapper'>
+								<span class='skill-tag'>
+									CS10
+								</span>
+								<span class='skill-tag'>
+									Bio 1A
+								</span>
+								<span class='skill-tag'>
+									&nbsp;&nbsp;I make awesome baked goods&nbsp;&nbsp;
+								</span>
+							</div>
+						</div>
 					</li>
 					<li>
 						<p>Earn $$ by accepting requests.</p>
-						<div></div>
+						<div class='pure-g' style='padding: 0% 20%; overflow:hidden;'>
+							<div class='pure-u-1 relative earn-money-wrapper'>
+								<div class='money-svg-wrapper animated slideOutDown infinite'>
+									{% include "gabrielle/components/platform/money-white.svg" %}
+								</div>
+								<div class='excited-svg-wrapper animated tada infinite'>
+									{% include "gabrielle/components/platform/excited-white.svg" %}
+								</div>
+								<div class='money-svg-wrapper-2 animated slideOutDown infinite'>
+									{% include "gabrielle/components/platform/money-white.svg" %}
+								</div>
+							</div>
+						</span>
 					</li>
 				</ol>
 				<h3 class="text-center" style="padding-top: 10%;">or enter your

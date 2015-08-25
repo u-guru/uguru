@@ -86,6 +86,17 @@
 
 .cta-image-wrapper svg {
     width:40px;
+    height: 60px;
+    margin-top: 20px;
+}
+
+.icon-title {
+    font-weight:400;
+    font-size:70%;
+}
+
+.block {
+    display:block;
 }
 
 .cta-image-wrapper ol li ul li {
@@ -204,3 +215,29 @@
     border-color: #d34336;
 }
 
+.skill-tag {
+    padding:2% 4%;
+    border: 2px solid white;
+    background-color:#69B3A5;
+    margin: 1% auto;
+    text-align:center;
+    color:white;
+    font-size:60%;
+    font-weight:400;
+    border-radius:10px;
+}
+
+.skill-tag-wrapper {
+    padding:0 10% !important;
+    margin-top:-10% !important;
+}
+
+.earn-money-wrapper {
+    position:relative;
+    padding:5%;
+    text-align: center;
+}
+
+.money-svg-wrapper {
+    margin-left:-20px;
+}
