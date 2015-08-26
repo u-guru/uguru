@@ -1,7 +1,7 @@
-{% extends 'new_admin/base.html' %}
+{% extends 'admin/base.html' %}
 
 {% block header_scripts %}
-<link href="/static/new_admin/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="/static/admin/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
             Daily Action Items<br>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="/new_admin/"><i class="fa fa-dashboard"></i> Home </a></li>
+            <li><a href="/admin/"><i class="fa fa-dashboard"></i> Home </a></li>
             <li>Team</li>
             <li>Weekly Team Projects</li>
           </ol>
@@ -35,9 +35,9 @@
 
 {% block footer_scripts %}
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
-<script src="/static/new_admin/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-<script src="/static/new_admin/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-<script src="/static/js/new_admin/tables.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="/static/js/admin/tables.js" type="text/javascript"></script>
 
 <script>
     TRELLO_API_KEY = '5c2c46b0d7987a904b459330e2edd41a';
