@@ -42,6 +42,7 @@ for college_url in SHCHOOL_ARRAY:
 						if row.th.text == "Chancellor":
 							Chancellorz = []
 							a = row.td.findAll('a')
+                            
 							for chance in a:
 								try:
 									href = chance['title']
