@@ -6,13 +6,7 @@ $("#search-box").slideDown();
         $("#top-school-banner").css("width", "60%");
         if ($('#search-bar').val().length === 0) {
             $("#search-results").slideDown();
-            $("#search-box").css({
-                "-webkit-transform": "translate(-50%,-50%)",
-                "-moz-transform": "translate(-50%,-50%)",
-                "-ms-transform": "translate(-50%,-50%)",
-                "-o-transform": "translate(-50%,-50%)",
-                "transform": "translate(-50%,-50%)"
-            });
+            $("#search-box").css('top', '30%');
         }
     });
     $('#search-bar').keypress(function() {

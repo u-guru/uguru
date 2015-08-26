@@ -123,7 +123,9 @@ input {
 
 @media screen and (min-width: 375px) {
   #mobile-start #mobile-inside img {
-    max-width: none; } }
+    max-width: none;
+    }
+}
 
 #banner {
   filter: alpha(opacity=50);
@@ -241,8 +243,12 @@ input {
         width: 100px;
         height: 100px;
         background: rgba(255, 255, 255, 0.2); }
-  #main #search {
-    display: none; }
+  #main #search #search-box,
+  #main #search .search-results
+  {
+    display: none;
+    visibility: hidden
+  }
   #main #earn {
     background: #2B3234;
     text-align: center; }
@@ -453,6 +459,10 @@ input {
       padding: 6px 0; } }
 
 @media screen and (min-width: 35.5em) {
+  #main #search #search-box,
+  #main #search .search-results {
+    visibility:visible;
+  }
   #slide-breadcrumbs {
     position: absolute;
     left: 50%;
