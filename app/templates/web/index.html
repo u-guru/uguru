@@ -1,0 +1,825 @@
+{% extends 'web/layout/base.html' %}
+
+{% block title_text %}
+Uguru Home
+{% endblock %}
+{% block header_scripts %}
+<link rel="stylesheet" href="/static/web/css/style.css"/>
+{% endblock %}
+
+{% block logo %}
+	<img id="top-mobile-logo" src="/static/web/svg/logo-white.svg" alt="uguru"/>
+	{% include "web/components/logo-banner.svg" %}
+	<img id="top-school-logo" src="/static/web/svg/logo-shamrock.svg" alt="uguru"/>
+{% endblock %}
+{% block content %}
+<nav id="slide-breadcrumbs">
+	<ul>
+		<li>
+			<a class="active" href="#search" data-number="0"></a>
+		</li>
+		<li>
+			<a href="#earn" data-number="1"></a>
+		</li>
+		<li>
+			<a href="#work" data-number="2"></a>
+		</li>
+		<li>
+			<a href="#why" data-number="3"></a>
+		</li>
+		<li>
+			<a href="#start" data-number="4"></a>
+		</li>
+	</ul>
+</nav>
+<div id="mobile-start">
+	<div id="mobile-inside">
+		<img src="/static/web/svg/logo-white.svg" alt="uguru"/>
+		<p>To earn an A, swipe away!<em>To the right, to the right.</em></p>
+	</div>
+</div>
+<div id="banner"></div>
+
+<!-- PARALLAX <section id="main" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15" style='z-index:10'> -->
+<section id="main">
+	<ul class='carousel'>
+
+	<li id="search" class='slide'>
+			<div id="search-box" style='overflow:visible'>
+				<div id="search-box-loader">
+					{% include 'web/components/svg-loader.svg' %}
+				</div>
+				<p>Peers helping peers for free, barter, or side cash.</p>
+				<div id="search-container">
+					<input id="search-bar" class="typeahead" type="text" placeholder="Search for your university"/>
+					<ul id="search-results">
+						<li id="search-berkeley">
+							<div>
+								<img src="http://i.forbesimg.com/media/lists/colleges/university-of-california-berkeley_50x50.jpg" alt=""/>
+							</div>
+							<div>
+								<h2>University of California, Berkeley</h2>
+								<p>Berkeley, CA</p>
+							</div>
+						</li>
+						<li id="search-florida">
+							<div>
+								<img src="http://i.forbesimg.com/media/lists/colleges/university-of-florida_50x50.jpg" alt=""/>
+							</div>
+							<div>
+								<h2>University of Florida</h2>
+								<p>Gainesville, FL</p>
+							</div>
+						</li>
+						<li id="search-tufts">
+							<div>
+								<img src="http://i.forbesimg.com/media/lists/colleges/tufts-university_50x50.jpg" alt=""/>
+							</div>
+							<div>
+								<h2>Tufts University</h2>
+								<p>Medford, MA</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		<!-- SAMIR -
+			There's a problem with the banner - it's too big for the school popup,
+			but when I scroll down on the school popup, the width changes
+			Ask for explanation if needed (JS needs to change)
+		-->
+		<!--
+			init parallax version
+			<div class="search-results" style='margin-top:30%;'>
+		-->
+		<div class="search-results">
+			<header class="search-results-top text-center">
+				<p class="search-results-header"><small>Uguru is now at</small></p>
+				<h1 id="search-school-name">School Name</h1>
+				<button class="btn-round btn-ghost">Become a Guru</button>
+			</header>
+			<footer class="search-results-bottom">
+				<div class="search-results-map text-center uppercase">
+					<!-- SAMIR -
+						The background for .search-results-map should be either a static or dynamic map of where gurus are located
+					-->
+					<div class="search-results-gurus">
+						<h2>
+							<b id="search-guru-number">340</b>
+							<span>students</span>
+						</h2>
+					</div>
+				</div>
+				<div class="search-results-courses">
+					<ul class="text-center">
+						<!-- SAMIR -
+							Colored either
+								(1)	Randomly based on color scheme or
+								(2)	Based on colors we choose to represent broad categories i.e. math, science, etc
+						-->
+						<li>CALC 312</li>
+						<li>CALC 312</li>
+						<li>CALC 312</li>
+						<li>CALC 312</li>
+						<li>CALC 312</li>
+						<li>CALC 312</li>
+						<li>CALC 312</li>
+						<li>CALC 312</li>
+						<li>CALC 312</li>
+						<li>CALC 312</li>
+						<li>CALC 312</li>
+						<li>and more</li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+	</li>
+	<li id="earn" class="slide" data-number="1">
+		<div class="inside">
+			<div class="inside-text">
+				<h2><span>Earn sidecash doing literally anything that you're good at.</span></h2>
+				<ul id="earn-categories-mobile">
+					<li class="earn-category-mobile">
+						<div class="front"><div>
+							{% include "web/components/category/academic-small.svg" %}
+							<h3>Academic</h3>
+						</div></div>
+						<ul class="back">
+							<li>Tutor peers</li>
+							<li>Answer questions</li>
+							<li>Create free content</li>
+							<li>Form study groups</li>
+						</ul>
+					</li>
+					<li class="earn-category-mobile">
+						<div class="front"><div>
+							{% include "web/components/category/consulting-small.svg" %}
+							<h3>Consulting</h3>
+						</div></div>
+						<ul class="back">
+							<li>Design &amp; coding</li>
+							<li>Interview help</li>
+							<li>Resume editing</li>
+							<li>Skill building</li>
+						</ul>
+					</li>
+					<li class="earn-category-mobile">
+						<div class="front"><div>
+							{% include "web/components/category/baking-small.svg" %}
+							<h3>Baking</h3>
+						</div></div>
+						<ul class="back">
+							<li>Brownies</li>
+							<li>Cupcakes</li>
+							<li>Caramel flan</li>
+							<li>Anything delicious</li>
+						</ul>
+					</li>
+					<li class="earn-category-mobile">
+						<div class="front"><div>
+							{% include "web/components/category/photography-small.svg" %}
+							<h3>Photography</h3>
+						</div></div>
+						<ul class="back">
+							<li>Graduation</li>
+							<li>Headshots</li>
+							<li>Athletic</li>
+							<li>Outdoor</li>
+						</ul>
+					</li>
+					<li class="earn-category-mobile">
+						<div class="front"><div>
+							{% include "web/components/category/household-small.svg" %}
+							<h3>Household</h3>
+						</div></div>
+						<ul class="back">
+							<li>Laundry</li>
+							<li>Vacuuming</li>
+							<li>Furniture</li>
+							<li>Dishes</li>
+						</ul>
+					</li>
+					<li class="earn-category-mobile">
+						<div class="front"><div>
+							{% include "web/components/category/technology-small.svg" %}
+							<h3>Technology</h3>
+						</div></div>
+						<ul class="back">
+							<li>Phone repair</li>
+							<li>Computer repair</li>
+							<li>WiFi setup</li>
+							<li>Virus removal</li>
+						</ul>
+					</li>
+					<li class="earn-category-mobile list-bottom">
+						<div class="front"><div>
+							{% include "web/components/category/sports-small.svg" %}
+							<h3>Muscle</h3>
+						</div></div>
+						<ul class="back">
+							<li>Moving help</li>
+							<li>Furniture</li>
+							<li>Personal trainer</li>
+							<li>Triathalon</li>
+						</ul>
+					</li>
+					<li class="earn-category-mobile list-bottom">
+						<div class="front"><div>
+							{% include "web/components/category/delivery-small.svg" %}
+							<h3>Delivery</h3>
+						</div></div>
+						<ul class="back">
+							<li>Food delivery</li>
+							<li>Car borrow</li>
+							<li>Truck borrow</li>
+							<li>Ridesharing</li>
+						</ul>
+					</li>
+					<li id="and-more" class="earn-category-mobile">
+						<div><div class="link-start">
+							<h3>and more!</h3>
+						</div></div>
+					</li>
+				</ul>
+				<ul id="earn-categories-desktop">
+					<li class="earn-category">
+						<div class="earn-category-inside">
+							<div id="earn-category-academic" class="earn-category-front front">
+								<div class="earn-category-overlay"></div>
+								{% include "web/components/category/academic.svg" %}
+								<h3>Academic Courses</h3>
+							</div>
+							<div class="earn-category-back back">
+								<ul>
+									<li>Tutor peers</li>
+									<li>Answer questions online</li>
+									<li>Create free content</li>
+									<li>Form study groups</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li class="earn-category">
+						<div class="earn-category-inside">
+							<div id="earn-category-consulting" class="earn-category-front front">
+								<div class="earn-category-overlay"></div>
+								{% include "web/components/category/consulting.svg" %}
+								<h3>Consulting<span> &amp; Freelancing</span></h3>
+							</div>
+							<div class="earn-category-back back">
+								<ul>
+									<li>Design &amp; programming</li>
+									<li>Interview help</li>
+									<li>Resume editing</li>
+									<li>Skill building</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li class="earn-category">
+						<div class="earn-category-inside">
+							<div id="earn-category-baking" class="earn-category-front front">
+								<div class="earn-category-overlay"></div>
+								{% include "web/components/category/baking.svg" %}
+								<h3>Baking</h3>
+							</div>
+							<div class="earn-category-back back">
+								<ul>
+									<li>Brownies</li>
+									<li>Cupcakes</li>
+									<li>Caramel flan</li>
+									<li>Anything delicious</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li class="earn-category">
+						<div class="earn-category-inside">
+							<div id="earn-category-photography" class="earn-category-front front">
+								<div class="earn-category-overlay"></div>
+								{% include "web/components/category/photography.svg" %}
+								<h3>Photography</h3>
+							</div>
+							<div class="earn-category-back back">
+								<ul>
+									<li>Graduation photos</li>
+									<li>Professional headshots</li>
+									<li>Athletic &amp; action images</li>
+									<li>Outdoor scenery</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li class="earn-category">
+						<div class="earn-category-inside">
+							<div id="earn-category-household" class="earn-category-front front">
+								<div class="earn-category-overlay"></div>
+								{% include "web/components/category/household.svg" %}
+								<h3>Household</h3>
+							</div>
+							<div class="earn-category-back back">
+								<ul>
+									<li>Laundry</li>
+									<li>Vacuuming &amp; cleaning</li>
+									<li>Furniture assembly</li>
+									<li>Dishes</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li class="earn-category">
+						<div class="earn-category-inside">
+							<div id="earn-category-technology" class="earn-category-front front">
+								<div class="earn-category-overlay"></div>
+								{% include "web/components/category/technology.svg" %}
+								<h3>Technology &amp; IT</h3>
+							</div>
+							<div class="earn-category-back back">
+								<ul>
+									<li>Phone repair</li>
+									<li>Computer repair</li>
+									<li>WiFi setup</li>
+									<li>Virus removal</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li class="earn-category">
+						<div class="earn-category-inside">
+							<div id="earn-category-sports" class="earn-category-front front">
+								<div class="earn-category-overlay"></div>
+								{% include "web/components/category/sports.svg" %}
+								<h3>Sports &amp; Muscle</h3>
+							</div>
+							<div class="earn-category-back back">
+								<ul>
+									<li>Moving help</li>
+									<li>Furniture assembly</li>
+									<li>Personal trainer</li>
+									<li>Triathalon</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li class="earn-category">
+						<div class="earn-category-inside">
+							<div id="earn-category-delivery" class="earn-category-front front">
+								<div class="earn-category-overlay"></div>
+								{% include "web/components/category/delivery.svg" %}
+								<h3><span>On-demand </span>Delivery</h3>
+							</div>
+							<div class="earn-category-back back">
+								<ul>
+									<li>Food delivery</li>
+									<li>Car borrow</li>
+									<li>Truck borrow</li>
+									<li>Ridesharing</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="cta-desktop">
+			<button class="btn-round">Be one of the first!</button>
+		</div>
+	</li>
+	<li id="work" class="slide" data-number="2">
+		<div class="inside">
+			<div class="inside-text">
+				<h2><span>Greater pay &amp; rewards for helping students.</span></h2>
+			</div>
+			<div id="work-inside">
+				<div id="work-infograph">
+					<!-- SAMIR
+						Percentages:
+							Wage - 38% #81B566
+							Popular - 21% #50A5DD
+							Schedule - 18% #9A5BC5
+							Blassed - 23% #8A9EA3
+					-->
+					<div id="work-infograph-bg" data-rotate="0" data-percent="0"></div>
+					<div class="work-infograph" data-rotate="50" data-percent="36" data-bar-color="#81B566"></div>
+					<img src="/static/web/svg/work/wage.svg" alt=""/>
+					<img hidden src="/static/web/svg/work/popular.svg" alt=""/>
+					<img hidden src="/static/web/svg/work/schedule.svg" alt=""/>
+					<img hidden src="/static/web/svg/work/blessed.svg" alt=""/>
+				</div>
+				<div id="work-text">
+					<div id="work-slider">
+						<ul>
+							<li>
+								<a href="#" id='work-wage' class='work-icon-link'>
+									{% include "web/components/work/wage.svg" %}
+								</a>
+							</li>
+							<li>
+								<a href="#" id='popular-wage' class='work-icon-link'>
+									{% include "web/components/work/popular.svg" %}
+								</a>
+							</li>
+							<li>
+								<a href="#" id='schedule-wage' class='work-icon-link'>
+									{% include "web/components/work/schedule.svg" %}
+								</a>
+							</li>
+							<li>
+								<a href="#" id='blessed-wage' class='work-icon-link'>
+									{% include "web/components/work/blessed.svg" %}
+								</a>
+							</li>
+						</ul>
+						<span id="slider-bar">
+							<span id="slider-triangle">
+								{% include "web/components/tear.svg" %}
+							</span>
+						</span>
+					</div>
+					<div id='work-wage-content' class='work-content'>
+						<h3>Awesome pay.</h3>
+						<p>Cash in on sharing your expertise on campus. <span>The more you guru, the more your rate will increase.</span></p>
+					</div>
+					<div id='popular-wage-content' class='work-content hide'>
+						<h3>Be the cool kid.</h3>
+						<p>We’ll give you the tools to skyrocket into Uguru fame. <span>Craigslist posts, Facebook ads, and more - all to help you get more customers.</span></p>
+					</div>
+					<div id='schedule-wage-content' class='work-content hide'>
+						<h3>Easy scheduling.</h3>
+						<p>Get instant scheduling when it’s best for you. <span>Just upload your available time slots and students will fill them.</span></p>
+					</div>
+					<div id='blessed-wage-content' class='work-content hide'>
+						<h3>#blessed</h3>
+						<p>Score access to cool stuff, like free Uber rides. <span>We’ll be there for you when you need it most.</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="cta-desktop">
+			<button class="btn-round">Be one of the first!</button>
+		</div>
+	</li>
+	<li id="why" class="slide" data-number="3">
+		<div class="inside">
+			<div class="inside-text">
+				<h2><span>Why Uguru?</span></h2>
+			</div>
+			<div id="why-inside">
+				<div class="app-phone">
+					<div class="app-wf">
+						<div class="app-wf-top"><div></div></div>
+						<div class="app-wf-scr">
+							<img class='why-uguru-image' src="/static/web/images/mock/aced.png" alt=""/>
+							<img class='why-uguru-image hide' src="/static/web/images/mock/checkout.png" alt=""/>
+							<img class='why-uguru-image hide' src="/static/web/images/mock/fingertips.png" alt=""/>
+							<img class='why-uguru-image hide' src="/static/web/images/mock/open.png" alt=""/>
+							<img class='why-uguru-image hide' src="/static/web/images/mock/aced.png" alt=""/>
+							<img class='why-uguru-image hide' src="/static/web/images/mock/checkout.png" alt=""/>
+							<img class='why-uguru-image hide' src="/static/web/images/mock/fingertips.png" alt=""/>
+							<img class='why-uguru-image hide' src="/static/web/images/mock/open.png" alt=""/>
+						</div>
+						<div class="app-wf-bot"><div></div></div>
+					</div>
+				</div>
+				<div id="why-text">
+					<a id="arrow-up" href="javascript:void(0)">
+						{% include "web/components/nav/arrow.svg" %}
+					</a>
+					<div class='why-uguru-content'>
+						<h3>Always make more $ than before.</h3>
+						<p>Good reviews increase your rate to more than $40/hr. <span>Good work = great earnings.</span></p>
+					</div>
+					<div class='hide why-uguru-content'>
+						<h3>24/7 flexibility.</h3>
+						<p>Work whenever you feel like it - even if it's at 2am.</p>
+					</div>
+					<div class='hide why-uguru-content'>
+						<h3>Work in your pajamas.</h3>
+						<p>Connect from wherever you are using tools like <span>video chat support and online paid Q&amp;A.</span></p>
+					</div>
+					<div class='hide why-uguru-content'>
+						<h3>Zero transaction fees, always.</h3>
+						<p>Earnings go to straight to your bank. <span>Watch numbers rise and leave Mom surprised.</span></p>
+					</div>
+					<div class='hide why-uguru-content'>
+						<h3>Customizable profile.</h3>
+						<p>Change colors and skills; leverage your Guru code <span>to have your friends spread the word.</span></p>
+					</div>
+					<div class='hide why-uguru-content'>
+						<h3>Cross-platform.</h3>
+						<p>We support all popular browsers, mobile platforms, and even watches*!</p>
+						<p><small>*Currently in beta.</small></p>
+					</div>
+					<div class='hide why-uguru-content'>
+						<h3>You’re the boss.</h3>
+						<p>Unless you fire yourself, of course. Turn Guru mode <span>on/off anytime, like during your midterms.</span></p>
+					</div>
+					<div class='hide why-uguru-content'>
+						<h3>Unlimited schools and courses.</h3>
+						<p>The more you add, the higher chance you have of <span>increasing your incoming requests.</span></p>
+					</div>
+					<a id="arrow-down" href="javascript:void(0)">
+						{% include "web/components/nav/arrow.svg" %}
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="cta-desktop">
+			<button class="btn-round">Be one of the first!</button>
+		</div>
+	</li>
+	<li id="start" class="slide" data-number="4">
+		<div class="inside">
+			<div class="inside-text">
+				<h2>Next Steps</h2>
+			</div>
+			<div id="start-text" class='cta-image-wrapper'>
+				<ol>
+					<li>
+						<p>Choose a platform.</p>
+						<ul>
+							<li>
+
+									{% include "web/components/platform/apple-white.svg" %}
+									<span class='icon-title block'>
+										IOS
+									</span>
+
+							</li>
+							<li>
+								{% include "web/components/platform/microsoft-white.svg" %}
+								<span class='icon-title block'>
+									Windows
+								</span>
+							</li>
+							<li>
+								{% include "web/components/platform/play-white.svg" %}
+								<span class='icon-title block'>
+									Google
+								</span>
+							</li>
+							<li style='padding-top:8px'>
+								{% include "web/components/platform/desktop-white.svg" %}
+								<span class='icon-title block' style='margin-top:-8px'>
+									Desktop
+								</span>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<p>Add skills &amp; a profile.</p>
+						<span >
+							{% include "web/components/platform/profile-white.svg" %}
+						</span>
+						<div class='pure-g'>
+							<div class='pure-u-1 skill-tag-wrapper'>
+								<span class='skill-tag'>
+									CS10
+								</span>
+								<span class='skill-tag'>
+									Bio 1A
+								</span>
+								<span class='skill-tag'>
+									&nbsp;&nbsp;I make awesome baked goods&nbsp;&nbsp;
+								</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<p>Earn $$ by accepting requests.</p>
+						<div class='pure-g' style='padding: 0% 20%; overflow:hidden; margin: 0 auto;'>
+							<div class='pure-u-1 relative earn-money-wrapper'>
+								<div class='money-svg-wrapper animated slideOutDown infinite'>
+									{% include "web/components/platform/money-white.svg" %}
+								</div>
+								<div class='excited-svg-wrapper animated tada infinite'>
+									{% include "web/components/platform/excited-white.svg" %}
+								</div>
+								<div class='money-svg-wrapper-2 animated slideOutDown infinite'>
+									{% include "web/components/platform/money-white.svg" %}
+								</div>
+							</div>
+						</span>
+					</li>
+				</ol>
+				<h3 class="text-center" style="padding-top: 10%;">or enter your
+					<div class="paper-input__wrapper"><input placeholder='email' id='cta-email-input' class="paper-input paper-input--floating" type="text" /><label>.edu school email ONLY</label></div>
+				to stay in touch.</h3>
+				<input hidden placeholder="enter your email address"/>
+				<button hidden class="btn-round btn-ghost">Subscribe</button>
+			</div>
+		</div>
+	</li>
+</ul>
+</section>
+{% endblock %}
+
+{% block footer_scripts %}
+<!-- start Samir's scripts -->
+<script src="/static/js/web/lib/typeahead.min.js"></script>
+<script src="/static/js/web/lib/fastmatcher.js"></script>
+
+<script src="/static/js/web/lib/handlebars.js"></script>
+
+<script src="/static/web/js/lib/jquery.flip.min.js"></script>
+<script src="/static/web/js/lib/phonenumber.js"></script>
+<script src="/static/web/js/lib/hammer.js"></script>
+<script src="/static/web/js/carousel.js"></script>
+
+<script>
+	var all_universities;
+
+	var matcher;
+
+	$(document).ready(function() {
+	    universities_arr = readAndParseJSON('/static/data/fa15_targetted.json');
+	    matcher = initMatcher(universities_arr);
+	    initTypeahead(matcher, universities_arr);
+	});
+
+	function readAndParseJSON(file) {
+	    var request = new XMLHttpRequest();
+	    request.open('GET', file, false);
+	    request.send(null);
+	    if (request.status == 200)
+	        universities_arr = JSON.parse(request.responseText);
+	    return universities_arr;
+	}
+
+	var initMatcher = function(arr) {
+	    var matcher = new FastMatcher(arr, {
+	        // the property, or array of properties, to base matches on
+	        selector: ['name', 'city', 'state'],
+
+	        // duh, what do you think this does?
+	        caseInsensitive: true,
+
+	        // return matches in their original order
+	        preserveOrder: false,
+
+	        // whether to match against any word (not just first) for each string
+	        anyWord: true,
+
+	        // how many matches to find at a time
+	        limit: 5
+	    });
+	    return matcher;
+	}
+
+	{% raw %}
+	var initTypeahead = function(matcher, source) {
+
+	    $('.typeahead').typeahead({
+	        minLength: 1,
+	        highlight: true,
+	        hint: true
+	    }, {
+	        displayKey: 'title',
+	        source: function(q, cb) {
+	            cb(matcher.getMatches(q))
+	        },
+	        templates: {
+	            //if no results show
+	            empty: [
+	                '<div class="tt-suggestion">',
+	                '<a href="http://goo.gl/forms/UQ7WcYl3sb" class="university-link" target="_blank"><div><img src="/static/web/svg/logo-shamrock.svg"/></div><div><h2><span class="title">No results found (yet!)</span> Click to Bring Uguru to Your University / School</h2></div></a>',
+	                '</div>'
+	            ].join('\n'),
+	            suggestion: Handlebars.compile("<div><img src='{{logo_url}}' alt=''/></div><div><h2>{{name}}</h2><p>{{city}}, {{state}}, USA</p></div>")
+	        }
+	    }).on('typeahead:selected', function(event, suggested, dataset_name) {
+	    	// $("#search-box").slideUp();
+	    	// $("#border-outer").css("fill", "white");
+	    	$("#top-school-banner").css("width", "20%");
+			$('#top-school-logo').css("width","auto");
+			var successCallback = function() {
+				itemSelectedGlobal = true;
+				showSearchResultsCallback(suggested);
+			}
+	    	customizeSearchResults(suggested, successCallback);
+	            //make it wobble
+	    }).on('typeahead:cursorchanged', function(event, suggested, dataset_name) {
+	        $('.tt-suggestion').css('background-color', 'white');
+	        var suggestedTypeaheadListItem = document.querySelectorAll('.tt-suggestion.tt-cursor')[dataset_name];
+	        suggestedTypeaheadListItem.style.backgroundColor = 'rgba(0,0,0,0.1)';
+	        // event.target.style.backgroundColor = 'rgba(0,0,0,0.1)';
+	    });
+	};
+
+	{% endraw %}
+	var showSearchResultsCallback = function(uni_data) {
+		var successCallback = function() {
+			setTimeout(function() {
+				searchResultsBackgroundMap.style.backgroundImage = constructStaticGMapBackground(uni_data.latitude,uni_data.longitude);
+			}, 200)
+		}
+
+		animateSearchBoxResults(uni_data.school_color_one, successCallback);
+	}
+	var isColorDark = function(c) {
+		var c = c.substring(1);      // strip #
+		var rgb = parseInt(c, 16);   // convert rrggbb to decimal
+		var r = (rgb >> 16) & 0xff;  // extract red
+		var g = (rgb >>  8) & 0xff;  // extract green
+		var b = (rgb >>  0) & 0xff;  // extract blue
+
+		var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+
+		return (luma < 40);
+	}
+
+	var constructStaticGMapBackground = function(lat, _long) {
+		default_zoom = 16;
+		height = document.querySelector('.search-results-map').offsetHeight;
+		width = document.querySelector('.search-results-map').offsetWidth;
+		size = width * 2 + 'x'  + height * 2;
+		return 'url(' +  'https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + _long + '&size=' + size +'&zoom=' + default_zoom + '&maptype=roadmap)';
+
+	}
+
+	var customizeSearchResults = function(uni_data, postSearchCallback) {
+		schoolNameElement = document.getElementById('search-school-name');
+		schoolLogoElement = document.getElementById('top-school-logo');
+		schoolBannerOuterBorder = document.getElementById('border-outer');
+		schoolBannerInnerBorder = document.getElementById('border-inner');
+		searchResultsBgBannerElement = document.querySelector('.search-results-top');
+		searchResultsGuruElement = document.querySelector('.search-results-gurus');
+		bannerElement = document.querySelector('#banner');
+		numGurusElement = document.querySelector('#search-guru-number');
+		searchResultsBackgroundMap = document.querySelector('.search-results-map');
+		popularCoursesParent = document.querySelector('.search-results-courses ul.text-center');
+		console.log(uni_data)
+
+		if (popularCoursesParent && uni_data.popular_courses && uni_data.popular_courses.length) {
+			popularCoursesParent.innerHTML = '';
+			popularCourses = uni_data.popular_courses;
+
+			if (popularCourses.length > 11) {
+				popularCourses = popularCourses.slice(0,11);
+			}
+
+			for (var i = 0 ; i < popularCourses.length; i ++) {
+				var courseNode = document.createElement("li");
+				courseNode.innerHTML = popularCourses[i];
+				popularCoursesParent.appendChild(courseNode);
+			}
+			var courseNode = document.createElement("li");
+			courseNode.innerHTML = 'and more';
+			popularCoursesParent.appendChild(courseNode);
+		}
+
+		if (schoolNameElement && uni_data.name) {
+			schoolNameElement.innerHTML = uni_data.name;
+		}
+		if (bannerElement && uni_data.banner_url) {
+			bannerElement.style.backgroundImage = 'url(' + uni_data.banner_url + ')';
+		}
+		if (schoolLogoElement && uni_data.logo_url) {
+			schoolLogoElement.src = uni_data.logo_url;
+		}
+		if (numGurusElement && uni_data.population) {
+			populationString = uni_data.population.toString();
+			if (populationString.length == 5) {
+				numGurusElement.innerHTML = populationString.substring(0,2) + 'k';
+			} else {
+				numGurusElement.innerHTML = populationString.substring(0,1) + 'k';
+			}
+
+			guruTextSpan = document.querySelector('.search-results-gurus span')
+
+			guruTextSpan.innerHTML = 'students';
+		}
+		if (searchResultsBgBannerElement && uni_data.school_color_one) {
+			searchResultsBgBannerElement.style.backgroundColor = uni_data.school_color_one;
+		}
+		if (schoolBannerOuterBorder && uni_data.school_color_one) {
+			schoolBannerOuterBorder.style.fill = uni_data.school_color_one;
+		}
+		if (schoolBannerInnerBorder && uni_data.school_color_two) {
+			schoolBannerInnerBorder.style.fill = uni_data.school_color_two;
+		} else {
+			schoolBannerInnerBorder.style.fill = uni_data.school_color_one;
+		}
+		if (searchResultsGuruElement && (uni_data.school_color_one || uni_data.school_color_two)) {
+			searchResultsGuruElement.style.backgroundColor = uni_data.school_color_one;
+			if (uni_data.school_color_two && uni_data.school_color_two.length) {
+				searchResultsGuruElement.style.backgroundColor = uni_data.school_color_one;
+			}
+		}
+
+
+
+		//population
+		//Map latitude longitude
+		if (postSearchCallback) {
+			postSearchCallback();
+			setTimeout(function() {
+				if (searchResultsBackgroundMap && uni_data.latitude && uni_data.longitude)  {
+					searchResultsBackgroundMap.style.backgroundImage = constructStaticGMapBackground(uni_data.latitude, uni_data.longitude);
+				}
+			}, 200)
+		}
+	}
+
+</script>
+{% endblock %}
