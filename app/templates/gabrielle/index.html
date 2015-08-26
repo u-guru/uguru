@@ -28,7 +28,7 @@ Uguru Home
 			<a href="#why" data-number="3"></a>
 		</li>
 		<li>
-			<a href="#info" data-number="4"></a>
+			<a href="#start" data-number="4"></a>
 		</li>
 	</ul>
 </nav>
@@ -42,7 +42,9 @@ Uguru Home
 
 <!-- PARALLAX <section id="main" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15" style='z-index:10'> -->
 <section id="main">
-	<div id="search">
+	<ul class='carousel'>
+
+	<li id="search" class='slide'>
 			<div id="search-box" style='overflow:visible'>
 				<div id="search-box-loader">
 					{% include 'gabrielle/components/svg-loader.svg' %}
@@ -131,8 +133,8 @@ Uguru Home
 				</div>
 			</footer>
 		</div>
-	</div>
-	<div id="earn" class="slide" data-number="1">
+	</li>
+	<li id="earn" class="slide" data-number="1">
 		<div class="inside">
 			<div class="inside-text">
 				<h2><span>Earn sidecash doing literally anything that you're good at.</span></h2>
@@ -382,8 +384,8 @@ Uguru Home
 		<div class="cta-desktop">
 			<button class="btn-round">Be one of the first!</button>
 		</div>
-	</div>
-	<div id="work" class="slide" data-number="2">
+	</li>
+	<li id="work" class="slide" data-number="2">
 		<div class="inside">
 			<div class="inside-text">
 				<h2><span>Greater pay &amp; rewards for helping students.</span></h2>
@@ -456,8 +458,8 @@ Uguru Home
 		<div class="cta-desktop">
 			<button class="btn-round">Be one of the first!</button>
 		</div>
-	</div>
-	<div id="why" class="slide" data-number="3">
+	</li>
+	<li id="why" class="slide" data-number="3">
 		<div class="inside">
 			<div class="inside-text">
 				<h2><span>Why Uguru?</span></h2>
@@ -525,8 +527,8 @@ Uguru Home
 		<div class="cta-desktop">
 			<button class="btn-round">Be one of the first!</button>
 		</div>
-	</div>
-	<div id="start" class="slide" data-number="4">
+	</li>
+	<li id="start" class="slide" data-number="4">
 		<div class="inside">
 			<div class="inside-text">
 				<h2>Next Steps</h2>
@@ -585,7 +587,7 @@ Uguru Home
 					</li>
 					<li>
 						<p>Earn $$ by accepting requests.</p>
-						<div class='pure-g' style='padding: 0% 20%; overflow:hidden;'>
+						<div class='pure-g' style='padding: 0% 20%; overflow:hidden; margin: 0 auto;'>
 							<div class='pure-u-1 relative earn-money-wrapper'>
 								<div class='money-svg-wrapper animated slideOutDown infinite'>
 									{% include "gabrielle/components/platform/money-white.svg" %}
@@ -607,7 +609,8 @@ Uguru Home
 				<button hidden class="btn-round btn-ghost">Subscribe</button>
 			</div>
 		</div>
-	</div>
+	</li>
+</ul>
 </section>
 {% endblock %}
 
@@ -620,6 +623,9 @@ Uguru Home
 
 <script src="/static/gabrielle/js/lib/jquery.flip.min.js"></script>
 <script src="/static/gabrielle/js/lib/phonenumber.js"></script>
+<script src="/static/gabrielle/js/lib/hammer.js"></script>
+<script src="/static/gabrielle/js/carousel.js"></script>
+
 <script>
 	var all_universities;
 

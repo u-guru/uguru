@@ -4,49 +4,49 @@ var UFColor = "rgb(255, 74, 0)";
 var TuftsColor = '#417dc1';
 var CalColor = "rgb(0, 50, 98)";
 
-slideLeft = function() {
-	$('.slide').each(function() {
-		var left = $(window).width();
-		var number = $(this).attr("data-number");
-		$(this).css("left", left * number);
-	});
-}
-menuBG = function() {
-	var left = $(window).width();
-	var scroll = $(window).scrollLeft();
-	if (scroll > left / 2) {
-		$("#top-school-logo, #top-school-banner").fadeOut();
-		$("#top-mobile-logo").addClass("visible");
-	} else if (scroll < left / 2) {
-		$("#top-school-logo, #top-school-banner").fadeIn();
-		$("#top-mobile-logo").removeClass("visible");
-	} else {
-		$("#top-school-logo, #top-school-banner").fadeIn();
-		$("#top-mobile-logo").removeClass("visible");
-	}
-}
-menuStyle = function() {
-	$("#top").css("width", $(window).width());
-	$("#slide-breadcrumbs").css({
-		"bottom": "auto",
-		"top": $(window).height() - 28
-	});
-	$(window).scroll(function(){
-		var left = $(window).width();
-		var scroll = $(window).scrollLeft();
-		menuBG();
-		$('.slide').each(function() {
-			var number = $(this).attr("data-number");
-			if (scroll >= left * number) {
-				$("a[data-number=" + number + "]").addClass("active");
-				$("a").not("a[data-number=" + number + "]").removeClass("active");
-			} else if (scroll < left) {
-				$("a[data-number=0]").addClass("active");
-				$("a").not("a[data-number=0]").removeClass("active");
-			}
-		});
-	});
-}
+// slideLeft = function() {
+// 	$('.slide').each(function() {
+// 		var left = $(window).width();
+// 		var number = $(this).attr("data-number");
+// 		$(this).css("left", left * number);
+// 	});
+// }
+// menuBG = function() {
+// 	var left = $(window).width();
+// 	var scroll = $(window).scrollLeft();
+// 	if (scroll > left / 2) {
+// 		$("#top-school-logo, #top-school-banner").fadeOut();
+// 		$("#top-mobile-logo").addClass("visible");
+// 	} else if (scroll < left / 2) {
+// 		$("#top-school-logo, #top-school-banner").fadeIn();
+// 		$("#top-mobile-logo").removeClass("visible");
+// 	} else {
+// 		$("#top-school-logo, #top-school-banner").fadeIn();
+// 		$("#top-mobile-logo").removeClass("visible");
+// 	}
+// }
+// menuStyle = function() {
+// 	$("#top").css("width", $(window).width());
+// 	$("#slide-breadcrumbs").css({
+// 		"bottom": "auto",
+// 		"top": $(window).height() - 28
+// 	});
+// 	$(window).scroll(function(){
+// 		var left = $(window).width();
+// 		var scroll = $(window).scrollLeft();
+// 		menuBG();
+// 		$('.slide').each(function() {
+// 			var number = $(this).attr("data-number");
+// 			if (scroll >= left * number) {
+// 				$("a[data-number=" + number + "]").addClass("active");
+// 				$("a").not("a[data-number=" + number + "]").removeClass("active");
+// 			} else if (scroll < left) {
+// 				$("a[data-number=0]").addClass("active");
+// 				$("a").not("a[data-number=0]").removeClass("active");
+// 			}
+// 		});
+// 	});
+// }
 workSlider = function() {
 	if ($(window).width() > 768) {
 		$('.work-infograph').easyPieChart({
@@ -84,13 +84,13 @@ workSlider = function() {
 $(document).ready(function () {
 	hideIntercomShit();
 	// initParallax();
-	slideLeft();
-	menuStyle();
+	// slideLeft();
+	// menuStyle();
 	workSlider();
 	$(window).resize(function(){
-		slideLeft();
-		menuStyle();
-		menuBG();
+		// slideLeft();
+		// menuStyle();
+		// menuBG();
 		workSlider();
 	});
 });
