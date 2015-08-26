@@ -90,11 +90,11 @@ def new_home_page():
 
 @app.route('/faq/')
 def faq():
-    return render_template("web/faq.html")
+    return render_template("web/pages/faq.html")
 
 @app.route('/manifest/')
 def manifest():
-    return render_template("web/manifest.html")
+    return render_template("web/pages/manifest.html")
 
 @app.route('/team/profiles/<name>')
 def team_profiles(name):
@@ -115,7 +115,7 @@ def team_profiles(name):
 def team():
     from lib.admin import admin_info
     team_members = [admin_info[key] for key in admin_info.keys() if not key == 'investors@uguru.me']
-    return render_template("web/team.html", team_members=team_members)
+    return render_template("web/pages/team.html", team_members=team_members)
 
 @app.route('/staging/profile')
 def profile_page():
