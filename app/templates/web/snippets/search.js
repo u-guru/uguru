@@ -19,6 +19,7 @@ $("#search-box").slideDown();
     });
     $("#search-bar").blur(function(){
         setTimeout(function() {
+            $("#search-box").css('top', '50%');
             $("#search-results").slideUp();
             // $("#top-school-logo, #top-school-banner").css("width", "100%");
             $("#search-box").css({
@@ -47,7 +48,7 @@ $("#search-box").slideDown();
                 $('#search-bar').blur();
                 $('#top-school-banner').css("width", "60%");
             }
-        }, 500)
+        }, 250)
     });
     $("#search-results").on("click", "li", function(e) {
         /* SAMIR - ELEMENTS THAT NEED TO CHANGE
