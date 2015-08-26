@@ -1,0 +1,344 @@
+{% extends 'admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/admin/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            View Campaigns<br>
+            <small>This is where we can view campaign results & status</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/admin/"><i class="fa fa-envelope"></i> Home </a></li>
+            <li><a href="/admin/campaigns/">View Campaigns</a></li>
+            <li class="active">{{tag_name|title}}</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+              <div class="box box-default">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Browser Usage</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body" style="display: block;">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="chart-responsive">
+                        <canvas id="pieChart" height="290" width="131" style="width: 131px; height: 290px;"></canvas>
+                      </div><!-- ./chart-responsive -->
+                    </div><!-- /.col -->
+                    <div class="col-md-4">
+                      <ul class="chart-legend clearfix">
+                        <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
+                        <li><i class="fa fa-circle-o text-green"></i> Safari</li>
+                        <li><i class="fa fa-circle-o text-yellow"></i> FireFox</li>
+                        <li><i class="fa fa-circle-o text-aqua"></i>IE</li>
+                        <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
+                        <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
+                      </ul>
+                    </div><!-- /.col -->
+                  </div><!-- /.row -->
+                </div><!-- /.box-body -->
+                <div class="box-footer no-padding" style="display: block;">
+                  <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Chrome <span class="pull-right"><i class="fa fa-chrome"></i><span id="chrome-click-percentage">12</span>%</span></a></li>
+                    <li><a href="#">Safari <span class="pull-right"><i class="fa safari"></i><span id="safari-click-percentage">4</span>%</span></a></li>
+                  </ul>
+                </div><!-- /.footer -->
+              </div><!-- /.box -->
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <div class="box box-default">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Browser Usage</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body" style="display: block;">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="chart-responsive">
+                        <canvas id="pieChart2" height="290" width="131" style="width: 131px; height: 290px;"></canvas>
+                      </div><!-- ./chart-responsive -->
+                    </div><!-- /.col -->
+                    <div class="col-md-4">
+                      <ul class="chart-legend clearfix">
+                        <li><i class="fa fa-circle-o text-red"></i> Desktop</li>
+                        <li><i class="fa fa-circle-o text-green"></i> Mobile </li>
+                      </ul>
+                    </div><!-- /.col -->
+                  </div><!-- /.row -->
+                </div><!-- /.box-body -->
+                <div class="box-footer no-padding" style="display: block;">
+                  <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Mobile <span class="pull-right"><i class="fa fa-chrome"></i><span id="mobile-click-percentage">12</span>%</span></a></li>
+                    <li><a href="#">Desktop<span class="pull-right"><i class="fa safari"></i><span id="desktop-click-percentage">4</span>%</span></a></li>
+                  </ul>
+                </div><!-- /.footer -->
+              </div><!-- /.box -->
+            </div>
+        </div>
+
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">{{tag_name}}</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                  <table class="table table-hover bootstrap-database" id="view-campaigns">
+
+                  </table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div>
+          </div>
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/admin/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/chartjs/Chart.min.js" type="text/javascript"></script>
+<script src="/static/js/admin/tables.js" type="text/javascript"></script>
+<script src="/static/js/admin/mandrill.js" type="text/javascript"></script>
+
+
+<script>
+    $(document).ready(function() {
+        var tag_name_to_query_messages = "{{tag_name}}";
+        var browserChart;
+        var mandrill_payload = {
+            "key": "JgZAGUHchIAIlJmOCrE_4w",
+            "tags": ["{{tag_name}}"]
+        }
+
+        //ajax for message data
+        $.ajax({
+            url: "https://mandrillapp.com/api/1.0/messages/search.json",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify(mandrill_payload),
+            success: function(all_msg){
+                opens_details_processed = {};
+                opens_details_processed = {};
+                var opened_messages_processed = [];
+                for (var i = 0; i < all_msg.length; i++) {
+                    current_msg = all_msg[i];
+                    browser_user_agent = null;
+                    if (current_msg.clicks_detail.length > 0) {
+                        browser_user_agent = parse_mandrill_user_agent(current_msg.clicks_detail[0].ua);
+
+
+                        desktop_or_mobile = browser_user_agent[0];
+                        browser_name = browser_user_agent[1];
+
+                        for (var j = 0; j < TemplatePieData.length; j++) {
+                            templateField = TemplatePieData[j];
+                            if (templateField.label === desktop_or_mobile || templateField.label === browser_name ) {
+                                templateField.value += 1;
+                            }
+                        }
+                    }
+                    if (current_msg.opens_detail.length > 0) {
+                         email_client_user_agent = current_msg.opens_detail[0].ua;
+                         current_msg.email_agent = email_client_user_agent;
+                         current_msg.browser_agent = browser_user_agent;
+                         opened_messages_processed.push(current_msg);
+                    }
+                }
+
+
+                browserChart = create_pie_chart('#pieChart', TemplatePieData.slice(2,TemplatePieData.length));
+                chrome_total = browserChart.segments[0].value;
+                safari_total = browserChart.segments[3].value;
+                chrome_percentage = chrome_total / (chrome_total + safari_total);
+                final_chrome_percentage = Math.round(chrome_percentage * 100);
+                safari_percentage = safari_total / (chrome_total + safari_total);
+                final_safari_percentage = Math.round(safari_percentage * 100);
+
+                $('#chrome-click-percentage').text(final_chrome_percentage);
+                $('#safari-click-percentage').text(final_safari_percentage);
+
+                desktopMobileChart = create_pie_chart('#pieChart2', TemplatePieData.slice(0,2));
+                mobile_total = desktopMobileChart.segments[0].value;
+                desktop_total = desktopMobileChart.segments[1].value;
+                mobile_percentage = mobile_total / (mobile_total + desktop_total);
+                desktop_percentage = desktop_total / (mobile_total + desktop_total);
+                final_mobile_percentage = Math.round(mobile_percentage * 100);
+                final_desktop_percentage = Math.round(desktop_percentage * 100);
+                console.log(browserChart);
+                $('#mobile-click-percentage').text(final_mobile_percentage);
+                $('#desktop-click-percentage').text(final_desktop_percentage);
+
+
+                // -- Clicks data
+                //% Mobile Browsers
+                //% Mobile Browsers
+                //% Breakdown of Browsers Mobile & Desktop
+                //%
+
+                //chart 2: hour by hour breakdown [2]
+                var new_table = create_table(['User Email', 'Opens', 'Clicks',
+                    'Email Agent', 'Browser Agent'], opened_messages_processed,
+                    {
+                        "email":true,
+                        "opens": true,
+                        "clicks":true,
+                        "email_agent": true,
+                        "browser_agent":true
+                    }
+                );
+
+
+
+                $('#view-campaigns').append(new_table);
+                $('#view-campaigns').DataTable({
+                    "bInfo": true,
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "aaSorting": [[2, 'desc']]
+                });
+            },
+            error: function (request) {
+                alert('Incorrect username or password, please try again');
+            }
+        });
+
+        var filter_tags = function(tags_list, process_extra) {
+
+            var unwanted_tags = ['ucla', 'test', 'support', 'student-signup'];
+            var wanted_tags = [];
+            for (var i = 0; i < tags_list.length; i ++ ) {
+                current_tag_name = tags_list[i].tag.toLowerCase();
+                //check if current_tag_name is one of the unwanted
+                var unwanted_found = false;
+                for (var j = 0; j < unwanted_tags.length; j++) {
+                    current_unwanted_tag = unwanted_tags[j]
+                    //if it does exist
+                    if (current_tag_name.indexOf(current_unwanted_tag) !== -1) {
+                        unwanted_found = true;
+                    }
+                }
+                if (!unwanted_found) {
+                    if (process_extra) {
+
+                        tags_list[i]["open_rate"] = Math.round(tags_list[i]["unique_opens"] /  tags_list[i]["sent"] * 100);
+                        tags_list[i]["click_through"] = Math.round(tags_list[i]["unique_clicks"] /  tags_list[i]["sent"] * 100);
+                        tags_list[i]["ctor"] = Math.round(tags_list[i]["click_through"] / tags_list[i]["open_rate"] * 100);
+                    }
+                    wanted_tags.push(tags_list[i]);
+                }
+            }
+            return wanted_tags;
+        }
+    } );
+
+    var TemplatePieData = [
+          {
+            value: 0,
+            color: "#f56954",
+            highlight: "#f56954",
+            label: "Mobile"
+          },
+          {
+            value: 0,
+            color: "#00a65a",
+            highlight: "#00a65a",
+            label: "Desktop"
+          },
+          {
+            value: 0,
+            color: "#f56954",
+            highlight: "#f56954",
+            label: "Chrome"
+          },
+          {
+            value: 0,
+            color: "#00a65a",
+            highlight: "#00a65a",
+            label: "IE"
+          },
+          {
+            value: 0,
+            color: "#f39c12",
+            highlight: "#f39c12",
+            label: "FireFox"
+          },
+          {
+            value: 0,
+            color: "#00c0ef",
+            highlight: "#00c0ef",
+            label: "Safari"
+          },
+          {
+            value: 0,
+            color: "#3c8dbc",
+            highlight: "#3c8dbc",
+            label: "Opera"
+          },
+          {
+            value: 0,
+            color: "#d2d6de",
+            highlight: "#d2d6de",
+            label: "Navigator"
+          }
+        ];
+
+    var create_pie_chart = function(target_element, pie_data) {
+    //-------------
+        //- PIE CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var pieChartCanvas = $(target_element).get(0).getContext("2d");
+        var pieChart = new Chart(pieChartCanvas);
+        var pieOptions = {
+          //Boolean - Whether we should show a stroke on each segment
+          segmentShowStroke: true,
+          //String - The colour of each segment stroke
+          segmentStrokeColor: "#fff",
+          //Number - The width of each segment stroke
+          segmentStrokeWidth: 2,
+          //Number - The percentage of the chart that we cut out of the middle
+          percentageInnerCutout: 25, // This is 0 for Pie charts
+          //Number - Amount of animation steps
+          animationSteps: 100,
+          //String - Animation easing effect
+          animationEasing: "easeOutBounce",
+          //Boolean - Whether we animate the rotation of the Doughnut
+          animateRotate: true,
+          //Boolean - Whether we animate scaling the Doughnut from the centre
+          animateScale: false,
+          //Boolean - whether to make the chart responsive to window resizing
+          responsive: true,
+          // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+          maintainAspectRatio: false,
+          showScaleLabels: true
+          //String - A legend template
+        };
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        browserChart = pieChart.Doughnut(pie_data, pieOptions);
+        return browserChart;
+    }
+
+</script>
+
+{% endblock %}

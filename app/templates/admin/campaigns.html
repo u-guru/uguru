@@ -1,0 +1,363 @@
+{% extends 'admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/admin/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            View Campaigns<br>
+            <small>This is where we can view campaign results & status</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/admin/"><i class="fa fa-dashboard"></i> Home </a></li>
+            <li class="active">Campaigns</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Campaign Statistics 2015</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                  <table class="table table-hover bootstrap-database" id="view-campaigns">
+
+                  </table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div>
+          </div>
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/admin/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="/static/js/admin/mandrill.js" type="text/javascript"></script>
+<script src="/static/js/admin/tables.js" type="text/javascript"></script>
+
+<script>
+    next_hundred_emails = [];
+    batch_results_dict = {};
+    batch_limit_reached = false;
+    var highest_batch_number_mandrill;
+    $(document).ready(function() {
+        $.ajax({
+            url: "https://mandrillapp.com/api/1.0/tags/list.json",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify({key: MANDRILL_API_KEY}),
+            success: function(all_tags){
+
+            }
+
+        })
+
+        var query_mandrill_by_metadata = function(batch_id) {
+
+        }
+
+        var get_batch_length = function() {
+            return 20;
+        }
+
+        // $.ajax({
+        //     url: "https://mandrillapp.com/api/1.0/tags/list.json",
+        //     type: "POST",
+        //     contentType: 'application/json',
+        //     data: JSON.stringify({key: MANDRILL_API_KEY}),
+        //     success: function(all_tags){
+        //         wanted_tags = filter_tags(all_tags, true);
+        //         var new_table = create_table(['Campaign Name', 'Emails Sent', 'Unique Opens', 'Unique Clicks', 'Open Rate %', "Click Rate %"], wanted_tags,
+        //             {
+        //                 "tag":true,
+        //                 "sent": true,
+        //                 "unique_opens":true,
+        //                 "unique_clicks": true,
+        //                 "click_through":true,
+        //                 "open_rate": true,
+        //             }
+        //         );
+
+        //         $('#view-campaigns').append(new_table);
+        //         $('#view-campaigns').DataTable({
+        //             "bInfo": false,
+        //             "bPaginate": false,
+        //             "bLengthChange": false,
+        //             "bFilter": false,
+        //             "aaSorting": [[1, 'desc']]
+        //         });
+        //     },
+        //     error: function (request) {
+        //         alert('Incorrect username or password, please try again');
+        //     }
+        // });
+
+        var filter_tags = function(tags_list, process_extra) {
+
+            var unwanted_tags = ['ucla', 'test', 'support', 'student-signup'];
+            var wanted_tags = [];
+            for (var i = 0; i < tags_list.length; i ++ ) {
+                current_tag_name = tags_list[i].tag.toLowerCase();
+                //check if current_tag_name is one of the unwanted
+                var unwanted_found = false;
+                for (var j = 0; j < unwanted_tags.length; j++) {
+                    current_unwanted_tag = unwanted_tags[j]
+                    //if it does exist
+                    if (current_tag_name.indexOf(current_unwanted_tag) !== -1) {
+                        unwanted_found = true;
+                    }
+                }
+                if (!unwanted_found) {
+                    if (process_extra) {
+
+                        tags_list[i]["open_rate"] = Math.round(tags_list[i]["unique_opens"] /  tags_list[i]["sent"] * 100);
+                        tags_list[i]["click_through"] = Math.round(tags_list[i]["unique_clicks"] /  tags_list[i]["sent"] * 100);
+                        tags_list[i]["ctor"] = Math.round(tags_list[i]["click_through"] / tags_list[i]["open_rate"] * 100);
+                    }
+                    wanted_tags.push(tags_list[i]);
+                }
+            }
+            wanted_tags.splice(0,2);
+            return wanted_tags;
+        }
+
+        // $('#example').dataTable( {
+        //       "ajax": {
+        //         "url": "https://mandrillapp.com/api/1.0/tags/list.json",
+        //         "type": "POST",
+        //         "contentType": 'application/json',
+        //         "data": JSON.stringify({key: "JgZAGUHchIAIlJmOCrE_4w"}),
+        //         "dataSrc": "",
+        //         success: function(result) {
+        //             console.log(result);
+        //         },
+        //         error: function(result) {
+        //             alert(result);
+        //         }
+        //       }
+        //     } );
+
+        console.log('waiting 3 seconds for first poll...');
+        setTimeout(function(){
+            pollForBatchResults();
+        }, 3000)
+
+        // highest_batch_number_mandrill = 13;
+        get_highest_batch_number_mandrill(13);
+
+    } );
+
+    var pollForBatchResults = function() {
+        setTimeout(function(){
+            if (Object.keys(batch_results_dict).length === highest_batch_number_mandrill) {
+                console.log(batch_results_dict);
+                console.log('limit reached!');
+                create_batch_table(batch_results_dict);
+                return;
+            } else {
+                pollForBatchResults();
+            }
+      }, 1000);
+    }
+
+    var getBatchEmails = function(batch_name, batch_id) {
+          //if old batch id
+          if (!batch_name) {
+            old_batch_dict = batch_filter[(batch_id + 1) + ''];
+            searchMandrillMessage(null, old_batch_dict.date_from, old_batch_dict.date_to, old_batch_dict.start, old_batch_dict.end, processOldBatchResults, batch_id);
+          }
+        }
+
+    batch_filter = {
+      '1': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 0, end:100},
+      '2': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 100, end:200},
+      '3': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 200, end:300},
+      '4': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 300, end:400},
+      '5': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 400, end:500},
+      '6': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 500, end:600},
+      '7': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 600, end:700},
+      '8': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 0, end:100},
+      '9': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 100, end:200},
+      '10': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 200, end:300},
+      '11': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 300, end:400},
+      '12': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 400, end:500}
+    }
+
+    var batch_filter_arr = ['hey-fname-i-have-a-question-for-you', 'uva-platform-10-free-access-code', 'uva-alert-new-jobs-for-20-hour', 'uva-alert-new-platform-launched', 'free-10-to-try-exclusive-uva-platform', 'hear-about-the-uva-kid-who-partied-too-hard', 'average-uva-work-study-12-this-one-is', 't8-hear-about-the-uva-kid-who-partied-too-hard', 't9-uva-it-s-like-cheating-but-we-encourage-i', 't10-frats-use-this-to-get-perfect-grades', 't11-perfect-grades-and-parties-at-the-same-damn', 't12-urgent-uva-students-needed-at-20-hour'];
+
+    var searchMandrillMessage = function(query, date_from, date_to, start, end, callback, batch_id) {
+          console.log(query, date_from, date_to, start, end);
+          payload = {
+            key: MANDRILL_API_KEY,
+            date_from: date_from,
+            date_to: date_to,
+            limit: 1000
+          }
+
+          $.ajax({
+            url: "https://mandrillapp.com/api/1.0/messages/search.json",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify(payload),
+            success: function(result) {
+              if (callback) {
+                callback(result.slice(start, end), batch_id);
+              }
+            }
+          });
+        }
+
+    var processOldBatchResults = function(results, batch_id) {
+          next_hundred_emails = [];
+          batch_results_dict[(batch_id + 1) + ''] = {
+            emails: results
+          }
+          // if (Object.keys(batch_results_dict).length === 12) {
+          //   create_batch_table(batch_results_dict, 12);
+          // }
+          return next_hundred_emails;
+    }
+
+    var getAllBatchStatistics = function() {
+            default_batch_length  = highest_batch_number_mandrill;
+            results = [];
+
+            current_batch_length = highest_batch_number_mandrill
+
+            for (var i = 1; i < (current_batch_length + 1); i ++) {
+                if (i < 13) {
+                    all_emails = getBatchEmails(null, (i - 1));
+                }
+                else {
+                    if (batch_limit_reached) {
+                        console.log('no more batches released');
+                        return;
+                    } else {
+                        searchMandrillByBatch(i);
+                    }
+                }
+            }
+        }
+
+    var create_batch_table = function(results_dict, num_batches) {
+
+            header_columns = ['Batch Number', 'Subject', 'Size', 'Unique Opens', 'Clicks', 'Open Rate', 'Click Rate'];
+            unique_opens = 0;
+            unique_clicks = 0;
+            batches = [];
+            for (var i = 1; i < Object.keys(results_dict).length + 1; i ++) {
+                result_emails = results_dict[i + ''].emails;
+                unique_opens = 0;
+                unique_clicks = 0;
+                for (var j = 0; j < result_emails.length; j++) {
+                    current_email = result_emails[j];
+                    if (current_email["opens"] > 0) {
+                        unique_opens += 1
+                    }
+
+                    if (current_email["clicks"] > 0) {
+                        unique_clicks += 1
+                    }
+                }
+                batches.push({
+                    "batch_num": i,
+                    "subject": result_emails[0].subject,
+                    "batch_size": result_emails.length,
+                    "unique_opens": unique_opens,
+                    "unique_clicks": unique_clicks,
+                    "open_rate": Math.round(unique_opens/result_emails.length * 100),
+                    "click_rate": Math.round(unique_clicks/result_emails.length * 100),
+                })
+            }
+            var new_table = create_table(header_columns, batches,
+                    {
+                        "batch_num":true,
+                        "subject": true,
+                        "batch_size": true,
+                        "unique_opens":true,
+                        "unique_clicks": true,
+                        "click_rate":true,
+                        "open_rate": true,
+                    }
+                );
+
+                $('#view-campaigns').append(new_table);
+                $('#view-campaigns').DataTable({
+                    "bInfo": false,
+                    "bPaginate": false,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "aaSorting": [[5, 'desc']]
+                });
+
+        }
+
+    var get_highest_batch_number_mandrill = function(index) {
+        if (highest_batch_number_mandrill) {
+          return
+        }
+        payload = {
+          key: MANDRILL_API_KEY,
+          query: "u_batch_id:" + index
+        }
+        $.ajax({
+          url: "https://mandrillapp.com/api/1.0/messages/search.json",
+          type: "POST",
+          contentType: 'application/json',
+          data: JSON.stringify(payload),
+          success: function(result) {
+            if (result.length === 0) {
+              highest_batch_number_mandrill = (index - 1);
+              console.log('highest_batch_number_mandrill', highest_batch_number_mandrill);
+              getAllBatchStatistics();
+
+              return;
+            } else {
+              get_highest_batch_number_mandrill(index + 1);
+            }
+          }
+        });
+    }
+
+    var searchMandrillByBatch = function(batch_id) {
+        payload = {
+            key: MANDRILL_API_KEY,
+            query: 'u_batch_id:' + batch_id,
+            limit: 1000
+          }
+
+          $.ajax({
+            url: "https://mandrillapp.com/api/1.0/messages/search.json",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify(payload),
+            success: function(result) {
+
+                console.log('batch_result', batch_id, result.length);
+                if (result.length > 0) {
+                    batch_results_dict[(batch_id) + ''] = {
+                        emails: result
+                    }
+                }
+
+            },
+            error: function(err) {
+                console.log(err);
+            }
+          });
+    }
+</script>
+
+{% endblock %}
