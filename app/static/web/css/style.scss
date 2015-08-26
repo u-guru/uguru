@@ -213,9 +213,12 @@ input {
 			}
 		}
 	}
-	#search {
-		display: none;
-	}
+	#search #search-box,
+  	#search .search-results
+  	{
+    	display: none;
+    	visibility: hidden
+  	}
 	#earn {
 		background: $charcoal;
 		text-align: center;
@@ -521,6 +524,10 @@ input {
 }
 
 @media screen and (min-width:35.5em) {
+	#main #search #search-box,
+  	#main #search .search-results {
+    	visibility:visible;
+  	}
 	#slide-breadcrumbs {
 		@include center-x;
 		display: block!important;
