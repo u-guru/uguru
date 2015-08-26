@@ -3,6 +3,7 @@ var itemSelectedGlobal = false;
 var UFColor = "rgb(255, 74, 0)";
 var TuftsColor = '#417dc1';
 var CalColor = "rgb(0, 50, 98)";
+var carouselShowPaneLock;
 //end defaults
 
 workSlider = function() {
@@ -269,4 +270,10 @@ $(document).ready(function () {
 		axis: 'x',
 		trigger: 'hover'
 	});
+
 });
+
+
+$(window).scroll(function() {
+		console.log('user is scrolling');
+	})
