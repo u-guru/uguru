@@ -16,10 +16,13 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch'
-    'ui.router'
+    // 'ui.router'
   ])
   .config(function ($routeProvider) {
     $routeProvider
+      .when('/manifest',{
+        templateUrl: 'templates/manifest.html'
+      })
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
