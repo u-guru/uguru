@@ -22,6 +22,31 @@
             <li><a id="link-team" href="/team">Team</a></li>
             <li><a id="link-support">Support</a></li>
         </ul>
+        <div class='pure-g menu-icons'>
+            <div class='pure-u-1 center-text get-started-text'>
+                Tap to Start
+            </div>
+            <div class='pure-u-1-4'> 
+                <a href='/itunes/app/' target='_blank'>
+                {% include "web/components/platform/apple-white.svg" %}
+                </a>
+            </div>
+            <div class='pure-u-1-4'>
+                <a href='/itunes/app/' target='_blank'>
+                    {% include "web/components/platform/microsoft-white.svg" %}
+                </a>
+            </div>
+            <div class='pure-u-1-4'>
+                <a href='/android/app/' target='_blank'>
+                    {% include "web/components/platform/play-white.svg" %}
+                </a>
+            </div>
+            <div class='pure-u-1-4 desktop-wrapper'>
+                <a href='/hybrid-app/' target='_blank'>
+                    {% include "web/components/platform/desktop-white.svg" %}
+                </a>
+            </div>
+        </div>
     </nav>
 </div>
 {% include 'web/layout/modal.html' %}

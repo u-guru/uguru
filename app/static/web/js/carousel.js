@@ -189,7 +189,7 @@
         currentIndex = $('#slide-breadcrumbs li a').index($('#slide-breadcrumbs li a.active'));
 
         //if mousewheel is going left
-        if (delta > 100 && !carouselShowPaneLock) {
+        if (delta > 50 && !carouselShowPaneLock) {
             $('.carousel li').removeClass('active');
             carouselShowPaneLock = true;
             carousel.showPane(currentIndex - 1);
@@ -198,7 +198,7 @@
             }, 500)
         }
         //if mousewheel is going left
-        else if (delta < -100 && !carouselShowPaneLock) {
+        else if (delta < -50 && !carouselShowPaneLock) {
             $('.carousel li').removeClass('active');
 
             carouselShowPaneLock = true;
@@ -207,4 +207,5 @@
                 carouselShowPaneLock = 0;
             }, 500)
         }
+        e.preventDefault();
     });
