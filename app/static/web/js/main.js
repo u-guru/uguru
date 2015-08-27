@@ -67,7 +67,7 @@ $(function () {
 	$('#start-text h3').fitText(2, { maxFontSize: '36px', minFontSize: '24px' });
 	$('.main h1').fitText(1.5, { maxFontSize: '48px', minFontSize: '24px' });
 
-	$('#full-overlay').on("click", function(e) {
+	$('#full-overlay, #side-menu-wrapper.active').on("click", function(e) {
 		$('.top-link-close').trigger('click');
 	})
 	$(".top-link-menu").on("click", function(e) {

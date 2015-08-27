@@ -1787,3 +1787,12 @@ html, body, #main, #main ul.carousel, #main li.slide {
   opacity: 0.8;
   position:absolute;
 }
+
+#side-menu-wrapper {
+  width:auto !important;
+}
+
+#side-menu {
+  z-index:50;
+  min-width:300px;
+}
