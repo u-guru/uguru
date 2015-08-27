@@ -1,0 +1,694 @@
+{% extends 'admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/admin/plugins/ionslider/ion.rangeSlider.css" rel="stylesheet" type="text/css" />
+    <!-- ion slider Nice -->
+    <link href="/static/admin/plugins/ionslider/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css" />
+    <link href="/static/admin/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="/static/admin/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Create a Campaign<br>
+            <small>Create a campaign & send to a university</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/admin/"><i class="fa fa-dashboard"></i> Home </a></li>
+            <li class="/campaigns/">Campaigns</li>
+            <li class="#">Create</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+          <div class="row">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+              <div class="row">
+                <div class="col-xs-12 col-md-6">
+                  <div class="box box-success">
+                    <div class="box-header">
+                      <h3 class="box-title">Step 1.1:
+                        <strong> Select university & size</strong>
+                      </h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>University of Virginia</option>
+                            </select>
+                        </div>
+                        <input id="num_emails" type="text" name="num_emails" value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-md-6">
+                  <div class="box box-success">
+                    <div class="box-header">
+                      <h3 class="box-title">Step 1.2:
+                        <strong> Select Previous Batch </strong>
+                      </h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <select class="form-control" id='campaign-batches'>
+
+                            </select>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+                <div class="box box-success">
+                  <div class="box-header">
+                    <h3 class="box-title">Step 2:
+                      <strong> Select Relevant Tags</strong>
+                    </h3>
+                  </div>
+                  <div class="box-body">
+                        <h6> <u>Popular tags</u></h6>
+                        <div class="row padding">
+
+                              &nbsp;
+                              <button class="btn btn-xs bg-gray margin popular-tag">Brackets</button>
+                              <button class="btn btn-xs bg-gray popular-tag">Urgent</button>
+                              <button class="btn btn-xs bg-gray margin popular-tag">Gossip</button>
+                              <button class="btn btn-xs bg-gray popular-tag">Risky</button>
+                              <button class="btn btn-xs bg-gray margin popular-tag">Memes</button>
+                              <button class="btn btn-xs bg-gray popular-tag">Students</button>
+                              <button class="btn btn-xs bg-gray margin popular-tag">Gurus</button>
+                              <br>
+                              &nbsp;
+                              <button class="btn btn-xs bg-gray margin popular-tag">Informative</button>
+                              <button class="btn btn-xs bg-gray popular-tag">News</button>
+                              <br>
+                              &nbsp;
+                        </div>
+                        <div class="row">
+                          <div class="col-xs-6">
+                            <div class="input-group input-group-md">
+                              <input type="text" id="add-custom-tag-input" class="form-control" placeholder="Add Custom Tag">
+                              <span class="input-group-btn">
+                                <button class="btn btn-success btn-flat" id="add-custom-tag" type="button">Add</button>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <hr>
+                        <div class="text-center">Blue = default, yellow = custom, pink = used before</div>
+                        <div class="row padding" id="button-tags">
+                            &nbsp;
+                            <button class="btn btn-md bg-navy margin tag">virginia</button>
+                            <button class="btn btn-md bg-navy tag">100-emails</button>
+                            <button class="btn btn-md bg-navy margin tag">Mar-26-2014</button>
+                            <br>
+                            &nbsp;
+                        </div>
+                  </div>
+                </div>
+                <div class="box box-success">
+                    <div class="box-header">
+                      <h3 class="box-title">Step 3:
+                        <strong> Choose Subject & Template </strong>
+                      </h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="alert alert-danger alert-dismissable" style="display:none;" id ='mailchimp-template-subject-alert'>
+                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                          <h4>  <i class="icon fa fa-ban"></i> No subject defined</h4>
+                          Go <a href='https://mandrillapp.com/templates/'>here</a> and define one. <br> <strong>username</strong>: uguru@mandrill.com <br> <strong>password:</strong> JgZAGUHchIAIlJmOCrE_4w
+                        </div>
+                        <div class="form-group">
+                            <label>Mailchimp Template</label>
+                            <select class="form-control" id="mailchimp-templates">
+                                <option>Choose a template</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                          <label>Template Subject <i class="fa fa-check bg-olive" id='template-subject-check' style="display:none;"></i></label>
+                          <input type="text" class="form-control" id="email-template-subject" placeholder="Enter ..." disabled>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="box box-success">
+                    <div class="box-header">
+                      <h3 class="box-title">Step 4:
+                        <strong> Modify Email Attributes </strong>
+                      </h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Sender Email</label>
+                          <input type="email" class="form-control" id="sender-email" placeholder="@uguru.me" value="chloe@uguru.me">
+                        </div>
+                        <div class="form-group">
+                          <label>Sender Name</label>
+                          <input type="text" class="form-control" id="sender-name" placeholder="First Name" value="Chloe">
+                        </div>
+                        <div class="form-group">
+                          <label>Reply - To Email</label>
+                          <input type="text" class="form-control" id="reply-to-email" placeholder="Email recipient replies to" value="chloe@uguru.me">
+                        </div>
+                        <div class="form-group">
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox" checked id="important-checkbox">
+                              Flag as important
+                            </label>
+                          </div>
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox" checked id="track-clicks-checkbox">
+                              Track Clicks
+                            </label>
+                          </div>
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox" checked id="track-opens-checkbox">
+                              Track Opens
+                            </label>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-md-6">
+                    <div class="box box-success">
+                        <div class="row" id='test-email-success-modal' style="margin-top:25px;display:none;">
+                          <div class="col-xs-12">
+                            <div class="box box-solid box-info">
+                              <div class="box-header">
+                                  <h3 class="box-title">Test Message Sent!</h3>
+                              </div><!-- /.box-header -->
+                              <div class="box-body">
+                                Good job you're valuable!
+                              </div><!-- /.box-body -->
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-header">
+                          <h3 class="box-title">Step 5.1:
+                            <strong> Send Test </strong>
+                          </h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Recipient Email</label>
+                              <input type="email" class="form-control" id="test-email-input"placeholder="riakhmerov@gmail.com" value="riakhmerov@gmail.com">
+                            </div>
+                            <div class="form-group">
+                              <label>Receiver Name</label>
+                              <input type="text" class="form-control" id="test-email-name" placeholder="Samir" value="Richard">
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" id="send-test-email" class="btn btn-warning">Send Test Email</button>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-md-6">
+                    <div class="box box-success">
+                      <div class="row" id='test-email-success-modal-2' style="margin-top:25px;display:none;">
+                          <div class="col-xs-12 col-sm-6">
+                            <div class="box box-solid box-info">
+                              <div class="box-header">
+                                  <h3 class="box-title">Test Message Sent!</h3>
+                              </div><!-- /.box-header -->
+                              <div class="box-body">
+                                Good job you're valuable!
+                              </div><!-- /.box-body -->
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-header">
+                          <h3 class="box-title">Step 5.2:
+                            <strong> Schedule Time & Send</strong>
+                          </h3>
+                        </div>
+                        <div class="box-body">
+
+                            <div class="form-group">
+                                <label>Date range:</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" id="calendar">
+                                </div><!-- /.input group -->
+                            </div>
+
+                            <div class="bootstrap-timepicker">
+                                <div class="form-group">
+                                  <label>Time picker:</label>
+                                  <div class="input-group">
+                                    <div class="input-group-addon">
+                                      <i class="fa fa-clock-o"></i>
+                                    </div>
+                                    <input type="text" class="form-control timepicker"/>
+                                  </div><!-- /.input group -->
+                                </div><!-- /.form group -->
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary" id="send-campaign-email">Send New Email</button>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/ionslider/ion.rangeSlider.min.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/timepicker/bootstrap-timepicker.js" type="text/javascript"></script>
+<script src="/static/js/admin/mandrill.js" type="text/javascript"></script>
+<script>
+
+    //1.
+    //2. Show the scheduled emails in the tab
+    //3. Allow Richard to cancel future scheduled email
+    //4. Allow Richard to cancel future scheduled email
+
+    // == For getting hourly & displaying
+    //1. Api call to get data
+    //2. Choose graph that can display without making it look too nice
+    //3.
+
+    // ==
+    //1. Upload emails to list management service
+    //2. Grab the number of emails from slider
+    //3. Generate campaigns
+    //4. Write function to format that data
+
+    // == Bonus ==
+    // 0. Sort templates by last updated
+    // 0.1 View scheduled campaigns should show if it's going over the limit
+    // 1. Refresh templates function
+    // 2.0 Add the 'who's sending' field
+    // 2.1 Show university sending limits, percentages so far
+    // 3. Show modal + progress as emails are sending
+    var next_hundred_emails;
+    var total_emails_remaining;
+    var highest_batch_number_mandrill;
+    var highest_campaign_number_mandrill;
+    var is_drip = false;
+    var drip_batch_id;
+    $(document).ready(function() {
+        $("#num_emails").ionRangeSlider({
+          min: 100,
+          max: 100,
+          from: 0,
+          type: 'single',
+          to:100,
+          step: 100,
+          // hasGrid: true,
+          postfix: " emails"
+        });
+        $(".timepicker").timepicker({
+          showInputs: false
+        });
+        $("#calendar").datepicker({
+            autoclose:true
+        });
+
+        $("#mailchimp-templates").change(function() {
+          var mandrill_template = MANDRILL_TEMPLATES[$('#mailchimp-templates').val()];
+          if (!mandrill_template.subject) {
+            $('#mailchimp-template-subject-alert').show();
+            $('#template-subject-check').hide();
+          } else {
+            $('#mailchimp-template-subject-alert').hide();
+            $('#template-subject-check').show();
+            $('#email-template-subject').val(mandrill_template.subject);
+          }
+        });
+
+        $('#campaign-batches').change(function() {
+          index_option = parseInt($('#campaign-batches').find(":selected").attr('value'));
+          drip_batch_id = index_option + 1;
+          is_drip = true;
+          getBatchEmails(null, index_option);
+        });
+
+
+        var retrieve_emails_from_server = function(num_emails) {
+          return [{
+              'email': 'makhani.samir@gmail.com',
+              'name': 'Samira',
+              'type': 'to'
+          }]
+        }
+
+        var format_emails_to_send = function(emails_arr) {
+          return emails_arr;
+        }
+
+        var generate_tags_from_dropdown = function(is_test) {
+          if (is_test) {
+            return ["TEST"];
+          } else {
+            return grab_all_tags();
+          }
+        }
+
+        var grab_all_tags = function() {
+          all_tags = [];
+          $('#button-tags').children('button').each(function(index, element) {
+            all_tags.push($(this).text().trim());
+          });
+          all_tags.push(all_tags.join('|'));
+          return all_tags;
+        }
+
+        var send_email = function(is_test) {
+          if (!$('#email-template-subject').val()) {
+            alert('Step 3:Email subject not defined, please fill in.');
+            return;
+          }
+          if (is_test && !$('#test-email-name').val() || !$('#test-email-input').val()) {
+            alert('Step:5 Test email recipient recipients not filled in, please fill in.');
+            return;
+          }
+
+          if ($('#mailchimp-templates').val() === 'Choose a template') {
+            alert('Step 3: Please choose a template from dropdown.');
+            return;
+          }
+
+          test_email_options = {
+            message: {
+              'subject': $('#email-template-subject').val(),
+              'from_email': $('#sender-email').val(),
+              'from_name': $('#sender-name').val(),
+              'headers': {'Reply-To': $('#reply-to-email').val()},
+              'important': $('#important-checkbox').is(':checked'),
+              'track_opens': $('#track-opens-checkbox').is(':checked'),
+              'track_clicks': $('#track-clicks-checkbox').is(':checked'),
+              'preserve_recipients': false,
+              'tags': generate_tags_from_dropdown(is_test)
+            }
+          }
+
+          //extra ones for just test
+          if (is_test) {
+            test_email_options.message.to = [{
+              'email': $('#test-email-input').val(),
+              'name': $('#test-email-name').val(),
+              'type': 'to'
+            }];
+          } else {
+            var num_emails_to_be_sent = 100;
+
+            // format date
+            var formatted_time = $(".timepicker").data("timepicker").getTime().split(" ")[0] + ':00';
+            var am_or_pm = $(".timepicker").data("timepicker").getTime().split(" ")[1];
+            result_date = $("#calendar").datepicker('getUTCDate');
+            result_date_formatted = result_date.getFullYear() + '-' + (result_date.getMonth() + 1) + '-' + (result_date.getDate() + 1);
+            full_date_formatted_utc = result_date_formatted + ' ' + formatted_time;
+
+            new_date = new Date(full_date_formatted_utc)
+            console.log(new_date);
+
+            if (am_or_pm.toLowerCase() == 'pm') {
+              new_date = new Date(new_date.getTime() + 12 * 60000 * 60);
+            }
+
+            test_email_options.send_at = new_date.toJSON().toString();
+
+          }
+
+          test_email_options.template_name = $('#mailchimp-templates option:selected').attr('value');
+          test_email_options.template_content = [];
+          test_email_options.key = MANDRILL_API_KEY;
+          return test_email_options
+
+        }
+
+        // $('#mailchimp-templates option').on('selected', function() {
+        //   alert('shit was selected');
+        // })
+
+        $('#send-test-email').click(function() {
+          var test_email_options = send_email(true);
+          postMandrillAPI(test_email_options, true);
+        });
+
+        $('#send-campaign-email').click(function() {
+          var test_email_options = send_email();
+          console.log(test_email_options);
+          // YYYY-MM-DD HH:MM:SS
+          var num_emails = parseInt($("#num_emails").val())
+          postMandrillAPI(test_email_options, false, num_emails);
+        });
+
+        getMandrillTemplateList();
+        getMailgunList('virginia');
+        get_highest_batch_number_mandrill(13);
+        get_highest_campaign_number_mandrill(13);
+
+        $('#button-tags').on('click', '.remove-tag', function() {
+          $(this).remove();
+        });
+
+        $('#add-custom-tag').click(function() {
+          custom_tag_text = $('#add-custom-tag-input').val();
+
+          var custom_btn_string = "<button class='btn btn-md remove-tag bg-yellow margin tag'>" + custom_tag_text + "&nbsp;&nbsp;<i class='fa fa-remove padding'></i></button>"
+          $('#button-tags').append(custom_btn_string);
+          custom_tag_text = $('#add-custom-tag-input').val('');
+        });
+
+        $('.popular-tag').click(function() {
+          var custom_btn_string = "<button class='btn btn-md remove-tag bg-maroon margin tag'>" + $(this).text() + "&nbsp;&nbsp;<i class='fa fa-remove padding'></i></button>"
+          $('#button-tags').append(custom_btn_string);
+        });
+
+        //Add batcher filter to select
+        for (var i = 0; i < batch_filter_arr.length; i++) {
+          current_batch_name = batch_filter_arr[i];
+          $("#campaign-batches").append('<option value="' + i + '"> Batch ' + (i + 1) + ': ' +  current_batch_name.split("-").join(" ") + '</option>');
+        }
+
+    } );
+
+
+    var getMailgunList = function(university_name, callback) {
+      var url = "https://api:key-bfe01b1e2cb76d45e086c2fa5e813781@api.mailgun.net/v2/lists/" + university_name +"@nationalacademicresearch.org/members";
+      console.log(url);
+      $.ajax({
+        url: url,
+        type: "GET",
+        beforeSend: function (xhr){
+          xhr.setRequestHeader('Authorization', "Basic " + btoa("api" + ":" + "key-bfe01b1e2cb76d45e086c2fa5e813781"));
+        },
+        success: function(response) {
+          next_hundred_emails = response.items;
+          total_emails_remaining = response.total_count;
+        },
+        error: function(error) {
+          alert(JSON.parse(error.responseText).message);
+        }
+      });
+    }
+
+
+    var processOldBatchResults = function(results) {
+      next_hundred_emails = [];
+      for (var i = 0; i < results.length; i ++) {
+        info_dict = {
+          address: results[i].email
+        };
+        if (results[i].name) {
+          info_dict.name = results[i].name;
+        }
+        next_hundred_emails.push(info_dict);
+      }
+      return next_hundred_emails;
+    }
+
+    var getBatchEmails = function(batch_name, batch_id) {
+      //if old batch id
+      if (!batch_name) {
+        old_batch_dict = batch_filter[(batch_id + 1) + ''];
+        searchMandrillMessage(null, old_batch_dict.date_from, old_batch_dict.date_to, old_batch_dict.start, old_batch_dict.end, processOldBatchResults);
+      }
+    }
+
+    var get_highest_batch_number_mandrill = function(index) {
+        if (highest_batch_number_mandrill) {
+          return
+        }
+        payload = {
+          key: MANDRILL_API_KEY,
+          query: "u_batch_id:" + index
+        }
+        $.ajax({
+          url: "https://mandrillapp.com/api/1.0/messages/search.json",
+          type: "POST",
+          contentType: 'application/json',
+          data: JSON.stringify(payload),
+          success: function(result) {
+            if (result.length === 0) {
+              highest_batch_number_mandrill = index;
+              return;
+            } else {
+              get_highest_batch_number_mandrill(index + 1);
+            }
+          }
+        });
+    }
+
+    var get_highest_campaign_number_mandrill = function(index) {
+        if (highest_campaign_number_mandrill) {
+          return
+        }
+        payload = {
+          key: MANDRILL_API_KEY,
+          query: "u_campaign_id:" + index
+        }
+        $.ajax({
+          url: "https://mandrillapp.com/api/1.0/messages/search.json",
+          type: "POST",
+          contentType: 'application/json',
+          data: JSON.stringify(payload),
+          success: function(result) {
+            if (result.length === 0) {
+              highest_campaign_number_mandrill = index;
+              return;
+            } else {
+              get_highest_campaign_number_mandrill(index + 1);
+            }
+          }
+        });
+    }
+
+    var deleteMailGunMembers = function(arr_emails, university_name) {
+      for (var i = 0; i < arr_emails.length; i ++) {
+        var email_to_delete = arr_emails[i].email;
+        var url = "https://api:key-bfe01b1e2cb76d45e086c2fa5e813781@api.mailgun.net/v2/lists/" + university_name +"@nationalacademicresearch.org/members/" + email_to_delete;
+        $.ajax({
+          url: url,
+          type: "DELETE",
+          success: function(response) {
+            console.log(email_to_delete, 'deleted');
+            if (i === 100) {
+              $('#test-email-success-modal-2').show();
+              window.replace.location('/admin/campaigns/scheduled/')
+            }
+          },
+          error: function(error) {
+            alert(JSON.parse(error.responseText).message);
+          }
+        });
+      }
+    }
+
+
+
+    batch_filter = {
+      '1': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 0, end:100},
+      '2': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 100, end:200},
+      '3': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 200, end:300},
+      '4': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 300, end:400},
+      '5': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 400, end:500},
+      '6': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 500, end:600},
+      '7': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 600, end:700},
+      '8': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 0, end:100},
+      '9': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 100, end:200},
+      '10': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 200, end:300},
+      '11': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 300, end:400},
+      '12': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 400, end:500}
+    }
+
+    var batch_filter_arr = ['hey-fname-i-have-a-question-for-you', 'uva-platform-10-free-access-code', 'uva-alert-new-jobs-for-20-hour', 'uva-alert-new-platform-launched', 'free-10-to-try-exclusive-uva-platform', 'hear-about-the-uva-kid-who-partied-too-hard', 'average-uva-work-study-12-this-one-is', 't8-hear-about-the-uva-kid-who-partied-too-hard', 't9-uva-it-s-like-cheating-but-we-encourage-i', 't10-frats-use-this-to-get-perfect-grades', 't11-perfect-grades-and-parties-at-the-same-damn', 't12-urgent-uva-students-needed-at-20-hour'];
+
+    var processVirginiaEmailsMailgun = function(email_objs) {
+      mandrill_result_format = [];
+      for (var i = 0; i < email_objs.length; i ++) {
+        email_obj = email_objs[i];
+        if (email_obj.address) {
+          info_dict = {
+            email: email_obj.address
+          }
+          if (email_obj.name) {
+            info_dict.name = email_obj.name.split(' ')[1];
+          }
+          mandrill_result_format.push(info_dict);
+        }
+      }
+      return mandrill_result_format;
+    }
+
+    var postMandrillAPI = function(payload, is_test, num_emails) {
+      //brand new one
+      if (! is_test && is_drip) {
+        payload.message.to = processVirginiaEmailsMailgun(next_hundred_emails);
+        payload.message.metadata = {
+          batch_size: next_hundred_emails.length,
+          tags: payload.message.tags.join(" "),
+          batch_id: drip_batch_id,
+          campaign_id: highest_campaign_number_mandrill + 1,
+          batch_campaign_id: 2,
+          university: "virginia"
+        }
+      }
+
+      //sending to new batch
+      if (! is_test && !is_drip) {
+        payload.message.to = processVirginiaEmailsMailgun(next_hundred_emails);
+        payload.message.metadata = {
+          batch_size: next_hundred_emails.length,
+          tags: payload.message.tags.join(" "),
+          batch_id: highest_batch_number_mandrill + 1,
+          campaign_id: highest_campaign_number_mandrill + 1,
+          batch_campaign_id: 1,
+          university: "virginia"
+        }
+        payload.message.to.push({email:'batch-' + highest_batch_number_mandrill + '@uguru.me', name:'uguru batch tracker'})
+      }
+
+      if (is_test) {
+        payload.message.tags = ['TEST']
+      }
+      console.log(payload);
+
+      $.ajax({
+        url: "https://mandrillapp.com/api/1.0/messages/send-template.json",
+        type: "POST",
+        contentType: 'application/json',
+        data: JSON.stringify(payload),
+        success: function(response) {
+          if (is_drip) {
+            window.replace.location('/admin/campaigns/scheduled/');
+          }
+          if (! is_test && !is_drip) {
+            deleteMailGunMembers(payload.message.to, 'virginia');
+          } else {
+            $('#test-email-success-modal').show();
+          }
+        },
+        error: function(error) {
+          alert(JSON.parse(error.responseText).message);
+        }
+      });
+
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,406 @@
+{% extends 'admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/admin/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            View Campaigns<br>
+            <small>This is where we can view campaign results & status</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/admin/"><i class="fa fa-dashboard"></i> Home </a></li>
+            <li class="active">Campaigns</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Let the fun & games begin</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                  <table class="table table-hover bootstrap-database" id="view-campaigns">
+
+                  </table>
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" id="cancel-scheduled-email" class="btn btn-danger">Cancel All</button>
+                </div>
+              </div><!-- /.box -->
+            </div>
+          </div>
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="/static/admin/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="/static/js/admin/mandrill.js" type="text/javascript"></script>
+<script src="/static/js/admin/tables.js" type="text/javascript"></script>
+
+<script>
+    batch_results_dict = {};
+    var all_scheduled_batch_ids = [];
+    next_hundred_emails = [];
+    batch_results_dict = {};
+    scheduled_batch_results_dict_count = 0;
+    batch_limit_reached = false;
+    var highest_batch_number_mandrill;
+    var first_part_accomplished = false;
+
+    $(document).ready(function() {
+
+      console.log('waiting 3 seconds for first poll...');
+        setTimeout(function(){
+            pollForBatchResults();
+        }, 3000)
+
+
+      get_highest_batch_number_mandrill(13);
+
+        // 1. get unique subjects
+        // 2. get an email address with that subject, and look for messages sent in the past
+        // 3. filter by templates
+        // 4. get batch number, multiply it by size of dict from array 1
+
+    } );
+
+    var pollForBatchResults = function() {
+        setTimeout(function(){
+            console.log('polling once more...');
+            if (Object.keys(batch_results_dict).length === highest_batch_number_mandrill && !first_part_accomplished) {
+                console.log(batch_results_dict);
+                console.log('limit reached!');
+                var batch_results_keys = Object.keys(batch_results_dict)
+                var sample_email_arr_batch = [];
+                for (var i = 0; i < batch_results_keys.length; i ++) {
+                  email = batch_results_dict[(i + 1) + ''].emails[0];
+                  sample_email_arr_batch.push(email);
+                }
+                check_scheduled_emails_from_batch(sample_email_arr_batch);
+                first_part_accomplished = true;
+                pollForBatchResults();
+
+            } else if (Object.keys(batch_results_dict).length === highest_batch_number_mandrill && scheduled_batch_results_dict_count === highest_batch_number_mandrill)
+            {
+
+              console.log(batch_results_dict);
+              console.log('final limits reached!');
+              create_scheduled_batch_table(all_scheduled_batch_ids);
+
+              return;
+            }else {
+                pollForBatchResults();
+            }
+      }, 1000);
+    }
+
+
+    var cancel_all_scheduled = function() {
+          $('tbody tr').each(
+            function(index, element) {
+              var message_id = $(this).children('td:first').text().trim();
+            $.ajax({
+                url: "https://mandrillapp.com/api/1.0/messages/cancel-scheduled.json",
+                type: "POST",
+                contentType: 'application/json',
+                data: JSON.stringify({key: MANDRILL_API_KEY, id:message_id}),
+                success: function(scheduled_msgs){
+                  // window.location.replace('/admin/campaigns/scheduled/');
+                },
+                error: function(error) {
+                  console.log(JSON.stringify(error));
+                }
+              });
+            })
+
+        }
+
+        var getAllBatchStatistics = function() {
+            default_batch_length  = highest_batch_number_mandrill;
+            results = [];
+
+            current_batch_length = highest_batch_number_mandrill
+
+            for (var i = 1; i < (current_batch_length + 1); i ++) {
+                if (i < 13) {
+                    all_emails = getBatchEmails(null, (i - 1));
+                }
+                else {
+                    if (batch_limit_reached) {
+                        console.log('no more batches released');
+                        return;
+                    } else {
+                        searchMandrillByBatch(i);
+                    }
+                }
+            }
+        }
+
+        var getBatchEmails = function(batch_name, batch_id) {
+          //if old batch id
+          if (!batch_name) {
+            old_batch_dict = batch_filter[(batch_id + 1) + ''];
+            searchMandrillMessage(null, old_batch_dict.date_from, old_batch_dict.date_to, old_batch_dict.start, old_batch_dict.end, processOldBatchResults, batch_id);
+          }
+        }
+
+        var processOldBatchResults = function(results, batch_id) {
+          next_hundred_emails = [];
+          batch_results_dict[(batch_id + 1) + ''] = {
+            emails: results
+          }
+          // if (Object.keys(batch_results_dict).length === 12) {
+            // var batch_results_keys = Object.keys(batch_results_dict)
+            // var sample_email_arr_batch = [];
+            // for (var i = 0; i < batch_results_keys.length; i ++) {
+            //   email = batch_results_dict[(i + 1) + ''].emails[0];
+            //   sample_email_arr_batch.push(email);
+            // }
+          //   check_scheduled_emails_from_batch(sample_email_arr_batch);
+          // }
+          return next_hundred_emails;
+        }
+
+        var get_highest_batch_number_mandrill = function(index) {
+            if (highest_batch_number_mandrill) {
+              return
+            }
+            payload = {
+              key: MANDRILL_API_KEY,
+              query: "u_batch_id:" + index
+            }
+            $.ajax({
+              url: "https://mandrillapp.com/api/1.0/messages/search.json",
+              type: "POST",
+              contentType: 'application/json',
+              data: JSON.stringify(payload),
+              success: function(result) {
+                if (result.length === 0) {
+                  highest_batch_number_mandrill = (index - 1);
+                  console.log('highest_batch_number_mandrill', highest_batch_number_mandrill);
+                  getAllBatchStatistics();
+                  return;
+                } else {
+                  get_highest_batch_number_mandrill(index + 1);
+                }
+              }
+            });
+        }
+
+        var create_scheduled_batch_table = function(scheduled_batch_ids) {
+
+            header_columns = ['Batch Number', 'Subject', 'Time Scheduled','Time Created', 'Size', 'Cancel?'];
+            unique_opens = 0;
+            unique_clicks = 0;
+            batches = [];
+
+            console.log('starting table...', scheduled_batch_ids);
+            for (var i = 0; i < scheduled_batch_ids.length; i ++) {
+                result_emails = batch_results_dict[scheduled_batch_ids[i] + ''].scheduled_emails;
+                batch_num = scheduled_batch_ids[i];
+
+                gmt_send_at = new Date(result_emails[0].send_at);
+                pst_send_at = new Date(gmt_send_at);
+                pst_send_at.setHours(gmt_send_at.getHours() - 7);
+
+                gmt_created_at = new Date(result_emails[0].created_at);
+                pst_created_at = new Date(gmt_created_at);
+                pst_created_at.setHours(gmt_created_at.getHours() - 7);
+
+                batches.push({
+                    "batch_num": batch_num,
+                    "subject": result_emails[0].subject,
+                    "send_at": pst_send_at,
+                    "created_at": pst_created_at,
+                    "batch_size": batch_results_dict[batch_num + ''].emails.length,
+                    "cancel": "<a href'#' class='cancel-batch-schedule'>cancel</a>"
+                })
+            }
+            var new_table = create_table(header_columns, batches,
+                    {
+                        "batch_num":true,
+                        "subject": true,
+                        "send_at": true,
+                        "created_at": true,
+                        "batch_size": true,
+                        "cancel": true
+                    }
+                );
+
+                $('#view-campaigns').append(new_table);
+                $('#view-campaigns').DataTable({
+                    "bInfo": false,
+                    "bPaginate": false,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "aaSorting": [[1, 'desc']]
+                });
+
+        }
+
+        //create function checks whether there is a scheduled batch to be
+        // sent out based on one email sent
+        var check_scheduled_emails_from_batch = function(batch_email_arr) {
+          for (var i = 0 ; i < batch_email_arr.length; i ++) {
+
+            current_email = batch_email_arr[i].email;
+
+            payload = {
+              key: MANDRILL_API_KEY,
+              to: current_email
+            }
+            console.log('attempting', current_email, 'from batch', i);
+            check_email_if_scheduled(current_email, i);
+          }
+
+        }
+
+        var check_email_if_scheduled = function(email, index) {
+          $.ajax({
+              url: "https://mandrillapp.com/api/1.0/messages/list-scheduled.json",
+              type: "POST",
+              contentType: 'application/json',
+              data: JSON.stringify(payload),
+              success: function(scheduled_msgs){
+                  batch_results_dict[(index + 1) + ''].scheduled_emails = scheduled_msgs;
+                  scheduled_batch_results_dict_count += 1;
+                  console.log('count for checking scheduled',scheduled_batch_results_dict_count);
+                  if (scheduled_msgs.length > 0) {
+                    all_scheduled_batch_ids.push((index + 1));
+                  }
+              }
+            });
+        }
+
+  batch_filter = {
+      '1': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 0, end:100},
+      '2': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 100, end:200},
+      '3': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 200, end:300},
+      '4': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 300, end:400},
+      '5': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 400, end:500},
+      '6': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 500, end:600},
+      '7': {'date_from': '2015-03-24', date_to:'2015-03-26', start: 600, end:700},
+      '8': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 0, end:100},
+      '9': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 100, end:200},
+      '10': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 200, end:300},
+      '11': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 300, end:400},
+      '12': {'date_from': '2015-03-27', date_to:'2015-03-28', start: 400, end:500}
+    }
+
+    var batch_filter_arr = ['hey-fname-i-have-a-question-for-you', 'uva-platform-10-free-access-code', 'uva-alert-new-jobs-for-20-hour', 'uva-alert-new-platform-launched', 'free-10-to-try-exclusive-uva-platform', 'hear-about-the-uva-kid-who-partied-too-hard', 'average-uva-work-study-12-this-one-is', 't8-hear-about-the-uva-kid-who-partied-too-hard', 't9-uva-it-s-like-cheating-but-we-encourage-i', 't10-frats-use-this-to-get-perfect-grades', 't11-perfect-grades-and-parties-at-the-same-damn', 't12-urgent-uva-students-needed-at-20-hour'];
+
+    var processVirginiaEmailsMailgun = function(email_objs) {
+      mandrill_result_format = [];
+      for (var i = 0; i < email_objs.length; i ++) {
+        email_obj = email_objs[i];
+        if (email_obj.address) {
+          info_dict = {
+            email: email_obj.address
+          }
+          if (email_obj.name) {
+            info_dict.name = email_obj.name.split(' ')[1];
+          }
+          mandrill_result_format.push(info_dict);
+        }
+      }
+      return mandrill_result_format;
+    }
+
+    var postMandrillAPI = function(payload, is_test, num_emails) {
+      if (! is_test) {
+        payload.message.to = processVirginiaEmailsMailgun(next_hundred_emails);
+        payload.message.metadata = {
+          batch_size: next_hundred_emails.length,
+          tags: payload.message.tags.join(" "),
+          batch_campaign_id: 2,
+          university: "virginia"
+        }
+      }
+
+      $.ajax({
+        url: "https://mandrillapp.com/api/1.0/messages/send-template.json",
+        type: "POST",
+        contentType: 'application/json',
+        data: JSON.stringify(payload),
+        success: function(response) {
+          if (is_drip) {
+            window.replace.location('/admin/campaigns/scheduled/');
+          }
+          if (! is_test && !is_drip) {
+            deleteMailGunMembers(payload.message.to, 'virginia');
+          } else {
+            $('#test-email-success-modal').show();
+          }
+        },
+        error: function(error) {
+          alert(JSON.parse(error.responseText).message);
+        }
+      });
+
+    }
+
+    var searchMandrillByBatch = function(batch_id) {
+        payload = {
+            key: MANDRILL_API_KEY,
+            query: 'u_batch_id:' + batch_id,
+            limit: 1000
+          }
+
+          $.ajax({
+            url: "https://mandrillapp.com/api/1.0/messages/search.json",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify(payload),
+            success: function(result) {
+
+                console.log('batch_result', batch_id, result.length);
+                if (result.length > 0) {
+                    batch_results_dict[(batch_id) + ''] = {
+                        emails: result
+                    }
+                }
+
+            },
+            error: function(err) {
+                console.log(err);
+            }
+          });
+    }
+
+    var searchMandrillMessage = function(query, date_from, date_to, start, end, callback, batch_id) {
+          payload = {
+            key: MANDRILL_API_KEY,
+            date_from: date_from,
+            date_to: date_to,
+            limit: 1000
+          }
+
+          $.ajax({
+            url: "https://mandrillapp.com/api/1.0/messages/search.json",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify(payload),
+            success: function(result) {
+              // getAllBatchStatistics();
+              if (callback) {
+                callback(result.slice(start, end), batch_id);
+              }
+            }
+          });
+        }
+</script>
+
+{% endblock %}

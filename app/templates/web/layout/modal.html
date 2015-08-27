@@ -1,0 +1,76 @@
+<div id="start-modal" style='position:relative;'>
+	<div id="modal-loader-container" class="modal-loading hide absolute full-width-height">
+		<div id="modal-content-submit" class="svg-container">
+			{% include "web/components/svg-loader.svg" %}
+		</div>
+	</div>
+	<div class="text-center hide absolute full-width-height">
+		<div id="modal-content" class="white-text">
+			<p>
+				<strong>You're all set!</strong>
+			</p>
+		</div>
+		<div class="white-text">
+			<h1>
+				<a id="home-modal-submit-close-link" href="#">Close</a>
+			</h1>
+		</div>
+	</div>
+	<div class="text-center active modal-main-container" style='background-color:white;'>
+		<header>
+			<h1>Choose a platform<a id="home-modal-close-link" href="javascript:void(0)">&times;</a></h1>
+		</header>
+		<ul id="start-modal-platforms-mobile" class="start-modal-platforms">
+			<li>
+				<a href="javascript:void(0)">
+					{% include "web/components/platform/apple-color.svg" %}
+					<span>
+						Available on the <h3>App Store</h3>
+						<!-- <small>Compatible with Watch</small> -->
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)">
+					{% include "web/components/platform/microsoft-color.svg" %}
+					<span>Download on <h3>Windows Store</h3></span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)">
+					{% include "web/components/platform/play-color.svg" %}
+					<span>
+						Get it on <h3>Google Play</h3>
+						<!-- <small>Compatible with Wear</small> -->
+					</span>
+				</a>
+			</li>
+		</ul>
+		<ul id="start-modal-platforms-wear" class="start-modal-platforms">
+			<li>
+				<a href="javascript:void(0)">
+					{% include "web/components/platform/apple-watch.svg" %}
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0)">
+					{% include "web/components/platform/android-wear.svg" %}
+				</a>
+			</li>
+		</ul>
+		<div>
+			<h1>Send download link to email</h1>
+			<div class="start-modal-link">
+				<input type="email" id="home-modal-email-input" placeholder="enter your email address"/>
+				<button id="home-modal-send-email">Email</button>
+			</div>
+		</div>
+		<div>
+			<h1>Send app link to phone</h1>
+			<div class="start-modal-link">
+				<input type="tel" placeholder="(415) 122-1211" id="home-modal-phone-input"/>
+				<button id="home-modal-send-text">Text</button>
+			</div>
+		</div>
+	</div>
+</div>
