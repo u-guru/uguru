@@ -33,7 +33,7 @@ var initMatcher = function(arr) {
         anyWord: true,
 
         // how many matches to find at a time
-        limit: 5
+        limit: 3
     });
     return matcher;
 }

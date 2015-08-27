@@ -1640,7 +1640,7 @@ html, body, #main, #main ul.carousel, #main li.slide {
 }
 
 #top {
-    z-index:10;
+    z-index:11 !important;
 }
 
 #top-mobile-logo {
@@ -1659,4 +1659,7 @@ html, body, #main, #main ul.carousel, #main li.slide {
     animation-duration: 2s;
 }
 
-/* end samir-recent */
+#top-logo {
+  position:absolute !important;
+  width:30%;
+}
