@@ -124,6 +124,12 @@ $(function () {
 		);
 
 	});
+	$('.cta-desktop').on('click', function() {
+		carousel.showPane(0);
+		setTimeout(function() {
+			$('#search-bar').trigger('focus');
+		}, 500)
+	})
 	// $('#home-modal-close-link, #home-modal-submit-close-link').on("click", function(e) {
 	// 	closeCtaAnimatedModal();
 	// 	$('#start-modal').toggleClass('active');
