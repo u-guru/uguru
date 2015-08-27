@@ -83,14 +83,14 @@ $(function () {
 
 	$(".top-link-close").on("click", function(e) {
 		$('#full-overlay').addClass("animated fadeOut");
-		$('#side-menu').addClass("animated slideOutLeft").one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', 
+		$('#side-menu').addClass("animated slideOutLeft").one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
 		function() {
 		 	$('#full-overlay').removeClass('animated fadeOut active');
 		 	$('#side-menu-wrapper').removeClass('active');
 		 	setTimeout(function() {
 		 		$('#side-menu').removeClass('animated slideOutLeft active');
 		 	}, 500)
-		});;		
+		});;
 		// $("#side-menu, #overlay, #start-modal").removeClass("active");
 		// e.preventDefault();
 	});
@@ -124,11 +124,11 @@ $(function () {
 		);
 
 	});
-	$('#home-modal-close-link, #home-modal-submit-close-link').on("click", function(e) {
-		closeCtaAnimatedModal();
-		$('#start-modal').toggleClass('active');
-		e.preventDefault();
-	})
+	// $('#home-modal-close-link, #home-modal-submit-close-link').on("click", function(e) {
+	// 	closeCtaAnimatedModal();
+	// 	$('#start-modal').toggleClass('active');
+	// 	e.preventDefault();
+	// })
 
 	$('.top-link-chat, #link-support').on("click", function(e) {
 		document.querySelector('.intercom-launcher-button').click();
@@ -300,6 +300,12 @@ $(document).ready(function () {
 		axis: 'y',
 		trigger: 'hover'
 	});
+
+	$('.search-results').flip({
+		axis: 'y',
+		trigger: 'click'
+	});
+
 	$(".earn-category-mobile").not("#and-more").flip({
 		axis: 'x',
 		trigger: 'hover'
