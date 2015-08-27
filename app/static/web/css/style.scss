@@ -2006,7 +2006,7 @@ html, body, #main, #main ul.carousel, #main li.slide {
 }
 
 #top {
-	z-index:10;
+    z-index:11 !important;
 }
 
 #top-mobile-logo {
@@ -2024,5 +2024,13 @@ html, body, #main, #main ul.carousel, #main li.slide {
 	-webkit-animation-duration: 2s;
 	animation-duration: 2s;
 }
+#top-logo {
+  position:absolute !important;
+  width:30%;
+}
 
 /* end samir-recent */
+
+#overlay {
+  opacity:1;
+}

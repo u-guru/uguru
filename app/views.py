@@ -408,6 +408,11 @@ def admin_logout():
 
 
 
+@app.route('/admin/universities/flickr/')
+def flicker_targetted_universities():
+    target_universities = University.query.filter_by(is_targetted=True).all()
+    return render_template('new_admin/admin.universities.flickr.html', universities=target_universities)
+
 @app.route('/admin/flickr/<university_id>')
 def flicker_university_process(university_id):
     if not session.get('user'):

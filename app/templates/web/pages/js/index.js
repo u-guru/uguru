@@ -7,6 +7,20 @@ $(document).ready(function() {
     universities_arr = readAndParseJSON('/static/data/fa15_targetted.json');
     matcher = initMatcher(universities_arr);
     initTypeahead(matcher, universities_arr);
+
+    $('#search-results-close-link, #home-modal-close-link').on('click', function() {
+
+        $('.search-results').addClass('animated zoomOut').hide();
+        setTimeout(function() {
+            $('.search-results').removeClass('animated zoomOut');
+            hideUniversityModalShowSearchBox();
+        }, 500);
+    })
+
+    $("#become-guru-cta-button").on('click', function() {
+        $('.search-results .front').trigger('click');
+    });
+
 });
 
 function readAndParseJSON(file) {
@@ -33,7 +47,7 @@ var initMatcher = function(arr) {
         anyWord: true,
 
         // how many matches to find at a time
-        limit: 5
+        limit: 3
     });
     return matcher;
 }
@@ -120,7 +134,7 @@ var customizeSearchResults = function(uni_data, postSearchCallback) {
     numGurusElement = document.querySelector('#search-guru-number');
     searchResultsBackgroundMap = document.querySelector('.search-results-map');
     popularCoursesParent = document.querySelector('.search-results-courses ul.text-center');
-    console.log(uni_data)
+
 
     if (popularCoursesParent && uni_data.popular_courses && uni_data.popular_courses.length) {
         popularCoursesParent.innerHTML = '';

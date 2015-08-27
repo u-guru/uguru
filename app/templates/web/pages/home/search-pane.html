@@ -46,45 +46,52 @@
             init parallax version
             <div class="search-results" style='margin-top:30%;'>
         -->
-        <div class="search-results">
-            <header class="search-results-top text-center">
-                <p class="search-results-header"><small>Uguru is now at</small></p>
-                <h1 id="search-school-name">School Name</h1>
-                <button class="btn-round btn-ghost">Become a Guru</button>
-            </header>
-            <footer class="search-results-bottom">
-                <div class="search-results-map text-center uppercase">
-                    <!-- SAMIR -
-                        The background for .search-results-map should be either a static or dynamic map of where gurus are located
-                    -->
-                    <div class="search-results-gurus">
-                        <h2>
-                            <b id="search-guru-number">340</b>
-                            <span>students</span>
-                        </h2>
-                    </div>
+            <div class="search-results" style='position:absolute !important; height:100%;'>
+                <div class='front'>
+                    <header class="search-results-top text-center">
+                        <p class="search-results-header"><small>Uguru is now at</small></p>
+                        <h1 id="search-school-name">School Name</h1>
+                        <button id='become-guru-cta-button'class="btn-round btn-ghost">Become a Guru</button>
+                        <a id="search-results-close-link" href="javascript:void(0)" style="backface-visibility: hidden;">×</a>
+                    </header>
+                    <footer class="search-results-bottom">
+                        <div class="search-results-map text-center uppercase">
+                            <!-- SAMIR -
+                                The background for .search-results-map should be either a static or dynamic map of where gurus are located
+                            -->
+                            <div class="search-results-gurus">
+                                <h2>
+                                    <b id="search-guru-number">340</b>
+                                    <span>students</span>
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="search-results-courses">
+                            <ul class="text-center">
+                                <!-- SAMIR -
+                                    Colored either
+                                        (1) Randomly based on color scheme or
+                                        (2) Based on colors we choose to represent broad categories i.e. math, science, etc
+                                -->
+                                <li>CALC 312</li>
+                                <li>CALC 312</li>
+                                <li>CALC 312</li>
+                                <li>CALC 312</li>
+                                <li>CALC 312</li>
+                                <li>CALC 312</li>
+                                <li>CALC 312</li>
+                                <li>CALC 312</li>
+                                <li>CALC 312</li>
+                                <li>CALC 312</li>
+                                <li>CALC 312</li>
+                                <li>and more</li>
+                            </ul>
+                        </div>
+                    </footer>
                 </div>
-                <div class="search-results-courses">
-                    <ul class="text-center">
-                        <!-- SAMIR -
-                            Colored either
-                                (1) Randomly based on color scheme or
-                                (2) Based on colors we choose to represent broad categories i.e. math, science, etc
-                        -->
-                        <li>CALC 312</li>
-                        <li>CALC 312</li>
-                        <li>CALC 312</li>
-                        <li>CALC 312</li>
-                        <li>CALC 312</li>
-                        <li>CALC 312</li>
-                        <li>CALC 312</li>
-                        <li>CALC 312</li>
-                        <li>CALC 312</li>
-                        <li>CALC 312</li>
-                        <li>CALC 312</li>
-                        <li>and more</li>
-                    </ul>
+                <div class='back'>
+                    {% include 'web/layout/modal.html' %}
                 </div>
-            </footer>
+            </div>
         </div>
     </li>

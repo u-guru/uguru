@@ -18,13 +18,31 @@ var animateSearchBoxResults = function(color, callback) {
 
     setTimeout(function() {
         $("#search-box").addClass('animated zoomOut');
+        $('#search-box-loader').css('visibility','hidden');
     }, 1000);
 
     setTimeout(function() {
         $('#top-school-banner').css("width","20%");
+        $('#search-box').hide().removeClass('animated zoomOut')
         $(".search-results").show().addClass('animated bounceInDown');
         callback();
     }, 1600);
+}
+
+var hideUniversityModalShowSearchBox = function() {
+    // $(".search-results").hide();
+    $('#search-box').css('display', 'block');
+    $('#search-box').css('display', 'block');
+    $('#search-box').addClass('animated slideInUp active').show();
+    $('#search-box p').show();
+    $('#search-container').show();
+    // $('#search-box-loader').css('visibility','visible');
+
+    // $('#search-box-loader svg').css('fill', color);
+
+    setTimeout(function() {
+        $("#search-box").removeClass('animated slideInUp');
+    }, 250);
 }
 
 var moveElement = function(elem, xOffset, yOffset, options) {

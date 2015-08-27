@@ -1,3 +1,26 @@
+    var updateBreadCrumbIndex = function(index) {
+
+            setTimeout(function() {
+                if (index === 0) {
+                    window.location.hash = '#search'
+                }
+                if (index === 1) {
+                    window.location.hash = '#earn'
+                }
+                if (index === 2) {
+                    window.location.hash ='#work'
+                }
+                if (index === 3) {
+                    window.location.hash ='#why'
+                }
+
+                if (index === 4) {
+                    window.location.hash ='#start'
+                }
+            }, 500);
+
+    }
+
     /**
     * super simple carousel
     * animation between panes happens with css transitions
@@ -51,6 +74,9 @@
             //update the breadcrumb
             $('#slide-breadcrumbs li a').removeClass('active');
             $($('#slide-breadcrumbs li a')[index]).addClass('active');
+
+            updateBreadCrumbIndex(index);
+
             if (index >= 1) {
                 $('#top').css('z-index', 11);
                 $('#top-school-banner').hide();
@@ -104,9 +130,9 @@
 
 
         function handleHammer(ev) {
-            // console.log(ev);
+            console.log(ev);
             // disable browser scrolling
-            // ev.gesture.preventDefault();
+            ev.gesture.preventDefault();
 
             switch(ev.type) {
                 case 'drag':
@@ -162,7 +188,7 @@
         }
 
         element.hammer({ drag_lock_to_axis: true })
-            .on("release dragleft dragright dragup dragdown swipeleft mouseleft mouseright swiperight", handleHammer);
+            .on("release dragleft dragright dragup dragdown swipeleft swiperight", handleHammer);
     }
 
 
@@ -174,38 +200,5 @@
         $('#slide-breadcrumbs li a').removeClass('active');
         $(this).addClass('active');
         indexClicked = $('#slide-breadcrumbs li a').index(this);
-        carousel.showPane(indexClicked);
-    });
-
-    $('#menu-home-links-container .menu-home-link').on('click', function() {
-        indexClicked = $('#menu-home-links-container .menu-home-link').index(this);
-        carousel.showPane(indexClicked);
-    });
-
-    //handles all the scroll shifts
-    $('html').on('mousewheel', function (e) {
-        var delta = e.originalEvent.wheelDelta;
-
-        currentIndex = $('#slide-breadcrumbs li a').index($('#slide-breadcrumbs li a.active'));
-
-        //if mousewheel is going left
-        if (delta > 50 && !carouselShowPaneLock) {
-            $('.carousel li').removeClass('active');
-            carouselShowPaneLock = true;
-            carousel.showPane(currentIndex - 1);
-            setTimeout(function() {
-                carouselShowPaneLock = null;
-            }, 500)
-        }
-        //if mousewheel is going left
-        else if (delta < -50 && !carouselShowPaneLock) {
-            $('.carousel li').removeClass('active');
-
-            carouselShowPaneLock = true;
-            carousel.showPane(currentIndex + 1);
-            setTimeout(function() {
-                carouselShowPaneLock = 0;
-            }, 500)
-        }
-        e.preventDefault();
+        updateBreadCrumbIndex(indexClicked);
     });
