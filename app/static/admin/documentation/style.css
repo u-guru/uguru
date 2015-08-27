@@ -7,7 +7,7 @@
 }
 
 #components > h3 {
-  font-size: 25px;  
+  font-size: 25px;
   color: #000;
 }
 
@@ -24,7 +24,7 @@ ul {
   position: relative;
   z-index: 1;
   font-size: 30px;
-}  
+}
 .page-header span,
 .page-header a {
   z-index: 5;
@@ -41,11 +41,11 @@ ul {
 }
 .page-header:before,
 #components > h3:before {
-  display: block; 
-  content: " "; 
-  margin-top: -60px; 
-  height: 60px; 
-  visibility: hidden; 
+  display: block;
+  content: " ";
+  margin-top: -60px;
+  height: 60px;
+  visibility: hidden;
 }
 
 .lead {
@@ -239,3 +239,4 @@ li.L7,
 li.L9 {
   /* */
 }
+

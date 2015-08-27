@@ -48,7 +48,7 @@ $("#search-box").slideDown();
                 $('#search-bar').blur();
                 $('#top-school-banner').css("width", "60%");
             }
-        }, 250)
+        }, 500)
     });
     $("#search-results").on("click", "li", function(e) {
         /* SAMIR - ELEMENTS THAT NEED TO CHANGE

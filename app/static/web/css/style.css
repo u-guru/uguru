@@ -1630,3 +1630,33 @@ html, body, #main, #main ul.carousel, #main li.slide {
   width:30%;
 }
 /*end samir-recent*/
+
+.team-role {
+  text-align:center !important;
+}
+
+#overlay {
+  opacity:1 !important;
+}
+
+#overlay.active {
+  z-index: 1000 !important;
+}
+
+#side-menu-wrapper {
+  /*visibility: hidden;*/
+  z-index:1000;
+  /*opacity:0;*/
+  position:fixed;
+  width:100%;
+  height:100%;
+}
+
+#full-overlay {
+  width:100%;
+  height:100%;
+  position:absolute;
+  background-color:black;
+  opacity:0.3;
+  visibility: hidden;
+}

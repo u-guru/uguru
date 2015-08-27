@@ -41,6 +41,7 @@ workSlider = function() {
 }
 
 $(document).ready(function () {
+	checkForRedirectHashes()
 	hideIntercomShit();
 	// initParallax();
 	workSlider();
@@ -48,6 +49,7 @@ $(document).ready(function () {
 		// slideLeft();
 		workSlider();
 	});
+
 });
 
 $(function () {
@@ -66,12 +68,22 @@ $(function () {
 	$('.main h1').fitText(1.5, { maxFontSize: '48px', minFontSize: '24px' });
 
 
-	// SAMIR - SIDEBAR
-	// Should also be a way to click on #overlay
 	$(".top-link-menu").on("click", function(e) {
-		$("#side-menu, #overlay").addClass("active");
+		$('#side-menu').addClass('active animated bounceInLeft');
+		setTimeout(function() {
+			$("#overlay").addClass("active animated fadeIn");
+		}, 1000)
+		setTimeout(function() {
+			$('#side-menu').removeClass('animated bounceInLeft');
+		}, 1000)
 		e.preventDefault();
 	});
+
+	$(".top-link-close").on("click", function(e) {
+		$("#side-menu, #overlay, #start-modal").removeClass("active");
+		e.preventDefault();
+	});
+
 	$(".top-link-start, .link-start").on("click", function(e) {
 
 		var modalToFire = document.querySelector('#start-modal');
@@ -106,10 +118,6 @@ $(function () {
 		$('#start-modal').toggleClass('active');
 		e.preventDefault();
 	})
-	$(".top-link-close").on("click", function(e) {
-		$("#side-menu, #overlay, #start-modal").removeClass("active");
-		e.preventDefault();
-	});
 
 	$('.top-link-chat, #link-support').on("click", function(e) {
 		document.querySelector('.intercom-launcher-button').click();
@@ -259,6 +267,21 @@ var initParallax = function() {
 	//custom for each element
 	var searchBox = document.getElementById("search-box");
 	// if (searchBox) searchBox.style.marginTop ='30%';
+}
+
+var checkForRedirectHashes = function() {
+	currentHash = window.location.hash;
+	if (currentHash.length && currentHash.indexOf('-pane') !== -1) {
+		homePanes = ['search', 'earn', 'work', 'why', 'start'];
+		pageRedirectName = currentHash.split('-')[0].substring(1);
+		paneIndex = homePanes.indexOf(pageRedirectName);
+		if (paneIndex !== -1 && carousel) {
+			carousel.showPane(paneIndex);
+			setTimeout(function() {
+				location.hash = '';
+			}, 500)
+		}
+	}
 }
 
 $(document).ready(function () {
