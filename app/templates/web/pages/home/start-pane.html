@@ -1,82 +1,54 @@
 <li id="start" class="slide" data-number="4">
-    <div class="inside">
-        <div class="inside-text">
-            <h2>Next Steps</h2>
-        </div>
-        <div id="start-text" class='cta-image-wrapper'>
-            <ol>
-                <li>
-                    <p>Choose a platform.</p>
-                    <ul>
-                        <li>
-
-                                {% include "web/components/platform/apple-white.svg" %}
-                                <span class='icon-title block'>
-                                    IOS
-                                </span>
-
-                        </li>
-                        <li>
-                            {% include "web/components/platform/microsoft-white.svg" %}
-                            <span class='icon-title block'>
-                                Windows
-                            </span>
-                        </li>
-                        <li>
-                            {% include "web/components/platform/play-white.svg" %}
-                            <span class='icon-title block'>
-                                Google
-                            </span>
-                        </li>
-                        <li style='padding-top:8px'>
-                            {% include "web/components/platform/desktop-white.svg" %}
-                            <span class='icon-title block' style='margin-top:-8px'>
-                                Desktop
-                            </span>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <p>Add skills &amp; a profile.</p>
-                    <span >
-                        {% include "web/components/platform/profile-white.svg" %}
-                    </span>
-                    <div class='pure-g'>
-                        <div class='pure-u-1 skill-tag-wrapper'>
-                            <span class='skill-tag'>
-                                CS10
-                            </span>
-                            <span class='skill-tag'>
-                                Bio 1A
-                            </span>
-                            <span class='skill-tag'>
-                                &nbsp;&nbsp;I make awesome baked goods&nbsp;&nbsp;
-                            </span>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <p>Earn $$ by accepting requests.</p>
-                    <div class='pure-g' style='padding: 0% 20%; overflow:hidden; margin: 0 auto;'>
-                        <div class='pure-u-1 relative earn-money-wrapper'>
-                            <div class='money-svg-wrapper animated slideOutDown infinite'>
-                                {% include "web/components/platform/money-white.svg" %}
-                            </div>
-                            <div class='excited-svg-wrapper animated tada infinite'>
-                                {% include "web/components/platform/excited-white.svg" %}
-                            </div>
-                            <div class='money-svg-wrapper-2 animated slideOutDown infinite'>
-                                {% include "web/components/platform/money-white.svg" %}
-                            </div>
-                        </div>
-                    </span>
-                </li>
-            </ol>
-            <h3 class="text-center" style="padding-top: 10%;">or enter your
-                <div class="paper-input__wrapper"><input placeholder='email' id='cta-email-input' class="paper-input paper-input--floating" type="text" /><label>.edu school email ONLY</label></div>
-            to stay in touch.</h3>
-            <input hidden placeholder="enter your email address"/>
-            <button hidden class="btn-round btn-ghost">Subscribe</button>
-        </div>
-    </div>
+	<div class="inside">
+		<div class="inside-text">
+			<h2>Next Steps<br/></h2>
+		</div>
+		<div id="start-text" class='cta-image-wrapper'>
+			<ol>
+				<li>
+					<p>Choose a platform.</p>
+					<ul>
+						<li>
+							{% include "web/components/platform/apple-white.svg" %}
+							<p class='icon-title block'>
+								iOS
+							</p>
+						</li>
+						<li>
+							{% include "web/components/platform/microsoft-white.svg" %}
+							<p class='icon-title block'>
+								Windows
+							</p>
+						</li>
+						<li>
+							{% include "web/components/platform/play-white.svg" %}
+							<p class='icon-title block'>
+								Google
+							</p>
+						</li>
+						<li>
+							{% include "web/components/platform/desktop-white.svg" %}
+							<p class='icon-title block'>
+								Desktop
+							</p>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<p>Add skills &amp; a profile.</p>
+					<div><img src="/static/web/images/profile.png" alt=""/></div>
+				</li>
+				<li class="dollar">
+					<p>Earn $$ by accepting requests.</p>
+					<div>{% include "web/components/platform/dollar.svg" %}</div>
+					</span>
+				</li>
+			</ol>
+			<h3 id="subscribe" class="text-center">or enter your
+				<div class="paper-input__wrapper"><input placeholder='email' id='cta-email-input' class="paper-input paper-input--floating" type="text" /><label>.edu school email ONLY</label></div>
+			to stay in touch.</h3>
+			<input hidden placeholder="enter your email address"/>
+			<button hidden class="btn-round btn-ghost">Subscribe</button>
+		</div>
+	</div>
 </li>

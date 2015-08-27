@@ -57,9 +57,9 @@ $(function () {
 			e.preventDefault();
 		});
 	});
-	if ($(window).width() > 1280) {
+	if ($(window).width() > 1400) {
 		$('.inside h2').fitText(1.2, { maxFontSize: '48px', minFontSize: '24px' });
-	} else if ($(window).width() <= 1280) {
+	} else if ($(window).width() <= 1400) {
 		$('.inside h2').fitText(2, { maxFontSize: '36px', minFontSize: '24px' });
 	}
 	$('#start-text h3').fitText(2, { maxFontSize: '36px', minFontSize: '24px' });
