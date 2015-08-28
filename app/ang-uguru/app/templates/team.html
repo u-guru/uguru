@@ -1,11 +1,7 @@
 <!-- {% extends 'web/layout/base.html' %} --> -->
 <!-- {% block pagetype %}page-cerise{% endblock %} -->
 <!-- {% block header_scripts %} -->
-<link rel="stylesheet" href="/static/web/css/style.css"/>
-<link rel="stylesheet" href="/static/web/css/page.css"/>
 <!-- {% endblock %} -->
-
-
 <!-- {% block content %} -->
 <div id="team" class="main pure-g " style='width:100%; height:100%'>
     <header class="pure-u-1">
@@ -17,12 +13,12 @@
             <!-- {% for member in team_members %} -->
             <li class="text-center" ng-repeat="member in team_members">
                 <!-- <img src='/static/web/images/team/{{member["name"] | split(" ")[0]|lower}}.png' height="200" width="200"/> -->
-                <img src='/static/web/images/team/{{(member["name"] | lowercase)| split:" ":0 }}.png' height="200" width="200"/>
+                <img src='images/team/{{(member["name"] | lowercase)| split:" ":0 }}.png' height="200" width="200"/>
                 <!-- <img src='{{member["profile_url"]}}' height="200" width="200"/> -->
                 <div>
 	                <h3>{{member['name']}}</h3>
 	                <q class='team-role'>{{member["role"]}}</q>
-					<a hidden class='launch-profile-link' href='javascript:void(0);'>Read more</a>
+					<!-- <a hidden class='launch-profile-link' href='javascript:void(0);'>Read more</a> -->
                 </div>
             </li>
             <!-- {% endfor %} -->
@@ -31,13 +27,12 @@
 </div>
 
 <!-- {% for member in team_members %} -->
-<section class="profile team-profile" ng-repeat="member in team_members">
+<section class="profile team-profile hide" ng-repeat="member in team_members">
 	<div class="pure-g">
 		<div class="profile-desc pure-u-1 pure-u-md-1-3">
 			<div class="profile-inside">
 				<div class="profile-icon">
-	                <img src='/static/web/images/team/{{(member["name"] | lowercase)| split:" ":0 }}.png'/>
-
+	                <img src='images/team/{{(member["name"] | lowercase)| split:" ":0 }}.png'/>
 				</div>
 				<nav class="profile-list">
 					<ul>
@@ -208,6 +203,6 @@
 <!-- {% endfor %} -->
 <!-- {% endblock %} -->
 <!-- {% block footer_scripts %} -->
-	<script src="/static/web/js/lib/jquery.flip.min.js"></script>
-	<script src="/static/web/js/team.js"></script>
+<!-- <script src="/static/web/js/lib/jquery.flip.min.js"></script>
+		<script src="/static/web/js/team.js"></script> -->
 <!-- {% endblock %}

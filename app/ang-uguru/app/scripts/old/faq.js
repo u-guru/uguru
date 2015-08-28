@@ -1,4 +1,4 @@
-<script>
+'use strict';
 $(function () {
     $("#faq dl dt a").each(function(e){
         $(this).on("click", function(e) {
@@ -7,4 +7,3 @@ $(function () {
         });
     });
 });
-</script>
