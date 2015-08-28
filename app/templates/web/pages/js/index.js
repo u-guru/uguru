@@ -119,6 +119,9 @@ var initTypeahead = function(matcher, source) {
         var successCallback = function() {
             itemSelectedGlobal = true;
             showSearchResultsCallback(suggested);
+            setTimeout(function() {
+                $('.search-results .front, .search-results').unbind('click');
+            }, 1000);
         }
         console.log(suggested);
         customizeSearchResults(suggested, successCallback);
