@@ -22,11 +22,11 @@ angular
     $routeProvider
       .when('/manifest',{
         templateUrl: 'templates/manifest.html',
-        // controller : 'js/manifestoCtrl.js'
+        controller : 'teamCtrl'
       })
        .when('/team',{
         templateUrl: 'templates/team.html',
-        // controller : 'js/manifestoCtrl.js'
+        controller : 'teamCtrl'
       })
       .when('/', {
         templateUrl: 'views/main.html',
