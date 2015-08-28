@@ -1,0 +1,43 @@
+
+var button_clicked = false;
+//jquery shiz
+$(document).ready(function() {
+    $('.go-to-call-action').click(function() {
+        $(document.body).animate({
+            'scrollTop':   $('#get-started-university').offset().top
+        }, 2000, function() {console.log('action to go here')})
+    } );
+
+    $('#submit-university-email').click(function() {
+        var email_string = $('#university-email-input').val();
+        sendEmailToServer(email_string);
+    })
+
+    $('#get-app-button-clicked').click(function() {
+        email_address_str = $('#get-app-button-clicked').data().attrEmail;
+        if (email_address_str && email_address_str.length > 0) {
+            sendEmailToServer(email_address_str);
+        }
+        button_clicked = true;
+         $(".main").moveTo(5);
+    });
+});
+
+var sendEmailToServer = function(email_text)  {
+
+    $.ajax({
+
+        url: "/api/v1/user_emails",
+        type: "PUT",
+        contentType: 'application/json',
+        data: JSON.stringify({email_address: email_text}),
+        success: function(request){
+            $('#get-started-university').hide();
+            $('#post-started-university').show();
+        },
+        error: function (request) {
+            alert('Incorrect username or password, please try again');
+        }
+
+    });
+}

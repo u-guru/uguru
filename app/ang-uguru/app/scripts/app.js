@@ -21,7 +21,12 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/manifest',{
-        templateUrl: 'templates/manifest.html'
+        templateUrl: 'templates/manifest.html',
+        // controller : 'js/manifestoCtrl.js'
+      })
+       .when('/team',{
+        templateUrl: 'templates/team.html',
+        // controller : 'js/manifestoCtrl.js'
       })
       .when('/', {
         templateUrl: 'views/main.html',
