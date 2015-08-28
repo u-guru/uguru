@@ -29,9 +29,24 @@ angular
         controller : 'teamCtrl'
       })
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        templateUrl: 'templates/search-pane.html',
+        controller: 'MainCtrl'
+      })
+      .when('/earn-pane', {
+        templateUrl: 'templates/earn-pane.html',
+        controller: 'MainCtrl'
+      })
+      .when('/start-pane', {
+        templateUrl: 'templates/start-pane.html',
+        controller: 'MainCtrl'
+      })
+      .when('/why-pane', {
+        templateUrl: 'templates/why-pane.html',
+        controller: 'MainCtrl'
+      })      
+      .when('/work-pane', {
+        templateUrl: 'templates/work-pane.html',
+        controller: 'MainCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
