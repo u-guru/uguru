@@ -58,10 +58,11 @@
     z-index: 999999; }
 
 #start-modal {
-  filter: alpha(opacity=0);
+  filter: alpha(opacity=100);
+  opacity: 1;
   opacity: 1;
   position: absolute;
-  top: 32%;
+  top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -69,6 +70,7 @@
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   position: fixed;
+  display: block;
   /*visibility: hidden !important;*/
   z-index: 1000001;
   background: transparent;
@@ -157,10 +159,7 @@
     -webkit-appearance: none;
     border: 0;
     box-shadow: none;
-    background: #eee;
     padding: 10px; }
-  #start-modal input:focus {
-    background: #F1F1F1; }
   #start-modal .start-modal-link {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -250,12 +249,14 @@
 @media screen and (min-width: 35.5em) {
   #desktop-start-link, #desktop-chat-link {
     display: inline-block; }
+
   #mobile-start-link, #mobile-chat-link {
     display: none; }
+
   #side-menu {
     max-width: 300px; }
+
   #start-modal {
-    height: auto !important;
     border-radius: 10px; }
     #start-modal .start-modal-platforms#start-modal-platforms-mobile li svg {
       max-width: 100px;
@@ -272,14 +273,7 @@
         margin-top: 5px;
         font-size: 14px; }
     #start-modal .start-modal-platforms#start-modal-platforms-wear {
-      display: none; }
-    #start-modal .start-modal-link input {
-      width: 66.6666%; }
-    #start-modal .start-modal-link input:hover, #start-modal .start-modal-link input:focus {
-      font-size: 200%; }
-    #start-modal .start-modal-link button {
-      width: 33.3333%; } }
-
+      display: none; } }
 #footer {
   position: fixed;
   bottom: 10px;
@@ -292,14 +286,12 @@
     max-height: 120px; }
   #start-modal .start-modal-platforms#start-modal-platforms-wear li svg {
     max-height: 60px; } }
-
 @media screen and (min-width: 84em) {
   #start-modal .start-modal-platforms#start-modal-platforms-mobile li svg {
     max-width: 150px;
     max-height: 150px; }
   #start-modal .start-modal-platforms#start-modal-platforms-wear li svg {
     max-height: 100px; } }
-
 .front, .back {
   height: 100%;
   width: auto; }
@@ -365,3 +357,5 @@
 
 * {
   box-shadow: none !important; }
+
+/*# sourceMappingURL=menu.css.map */

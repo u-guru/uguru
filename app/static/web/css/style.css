@@ -118,9 +118,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         display: block;
         font-size: 18px; }
 
-input {
-  color: black !important; }
-
 @media screen and (min-width: 375px) {
   #mobile-start #mobile-inside img {
     max-width: none; } }
@@ -1770,5 +1767,72 @@ html, body, #main, #main ul.carousel, #main li.slide {
 #side-menu {
   z-index: 50;
   min-width: 300px; }
+
+.start-modal-link {
+  min-height: 130px;
+  background-color: #69B3A5; }
+
+.download-link-wrapper {
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px; }
+  .download-link-wrapper .email-cta-wrapper, .download-link-wrapper .phone-cta-wrapper {
+    display: none; }
+    .download-link-wrapper .email-cta-wrapper.active, .download-link-wrapper .phone-cta-wrapper.active {
+      display: block; }
+  .download-link-wrapper .start-modal-link {
+    position: relative; }
+    .download-link-wrapper .start-modal-link .phone-icon {
+      position: absolute;
+      left: 7%;
+      bottom: 5%;
+      font-size: 105%;
+      opacity: 0.5; }
+      .download-link-wrapper .start-modal-link .phone-icon.active {
+        opacity: 1; }
+    .download-link-wrapper .start-modal-link .mail-icon {
+      position: absolute;
+      left: 2%;
+      bottom: 5%;
+      opacity: 0.5; }
+      .download-link-wrapper .start-modal-link .mail-icon.active {
+        opacity: 1; }
+    .download-link-wrapper .start-modal-link .material-text-wrapper {
+      margin: 0;
+      position: absolute;
+      bottom: 30%;
+      text-align: center; }
+      .download-link-wrapper .start-modal-link .material-text-wrapper input {
+        background: #69B3A5;
+        color: white;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.5) !important;
+        text-align: center;
+        font-size: 150%; }
+      .download-link-wrapper .start-modal-link .material-text-wrapper ::-webkit-input-placeholder {
+        color: rgba(255, 255, 255, 0.5);
+        text-align: center; }
+      .download-link-wrapper .start-modal-link .material-text-wrapper :-moz-placeholder {
+        color: rgba(255, 255, 255, 0.5);
+        text-align: center; }
+      .download-link-wrapper .start-modal-link .material-text-wrapper ::-moz-placeholder {
+        color: rgba(255, 255, 255, 0.5);
+        text-align: center; }
+      .download-link-wrapper .start-modal-link .material-text-wrapper :-ms-input-placeholder {
+        color: rgba(255, 255, 255, 0.5);
+        text-align: center; }
+      .download-link-wrapper .start-modal-link .material-text-wrapper label {
+        visibility: hidden;
+        left: 30%;
+        top: 115%;
+        color: #F1F1F1; }
+      .download-link-wrapper .start-modal-link .material-text-wrapper label.active#school-email-input-label,
+      .download-link-wrapper .start-modal-link .material-text-wrapper label.active#school-phone-input-label {
+        text-align: center;
+        visibility: visible;
+        width: 40%;
+        text-transform: lowercase;
+        opacity: 0.7; }
+
+.icon {
+  color: white; }
 
 /*# sourceMappingURL=style.css.map */

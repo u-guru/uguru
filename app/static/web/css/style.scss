@@ -93,10 +93,6 @@ button, a[class*=btn] {
 	}
 }
 
-input {
-	color: black!important;
-}
-
 @media screen and (min-width: 375px) {
 	#mobile-start {
 		#mobile-inside {
@@ -2217,4 +2213,100 @@ html, body, #main, #main ul.carousel, #main li.slide {
 #side-menu {
   z-index:50;
   min-width:300px;
+}
+
+.start-modal-link {
+	min-height:130px;
+	background-color: $shamrock;
+}
+
+.download-link-wrapper {
+	border-bottom-right-radius:20px;
+	border-bottom-left-radius:20px;
+	.email-cta-wrapper, .phone-cta-wrapper {
+		display:none;
+		&.active {
+			display:block;
+		}
+	}
+	.start-modal-link {
+		position:relative;
+
+		.phone-icon {
+			position:absolute;
+			left:7%;
+			bottom:5%;
+			font-size:105%;
+			opacity:0.5;
+			&.active {
+				opacity:1;
+			}
+		}
+
+		.mail-icon {
+			position:absolute;
+			left:2%;
+			bottom:5%;
+			opacity:0.5;
+			&.active {
+				opacity:1;
+			}
+		}
+
+		.material-text-wrapper {
+			margin:0;
+			position: absolute;
+		    bottom: 30%;
+		    text-align: center;
+
+			input {
+				background:$shamrock;
+				color:white;
+				border-bottom: 2px solid rgba(255,255,255,0.5) !important;
+				text-align:center;
+				font-size:150%;
+			}
+
+			// input:focus {
+			// 	border-bottom:0px solid white !important;
+			// }
+
+			::-webkit-input-placeholder {
+				color:rgba(255,255,255,0.5);
+				text-align:center;
+			}
+			:-moz-placeholder {
+				color:rgba(255,255,255,0.5);
+				text-align:center;
+			}
+			::-moz-placeholder {
+				color:rgba(255,255,255,0.5);
+				text-align:center;
+			}
+			:-ms-input-placeholder {
+				color:rgba(255,255,255,0.5);
+				text-align:center;
+			}
+
+			label {
+				visibility:hidden;
+				left: 30%;
+			    top: 115%;
+			    color: $smoke;
+			}
+
+			label.active#school-email-input-label,
+			label.active#school-phone-input-label {
+			    text-align: center;
+			    visibility: visible;
+			    width: 40%;
+			    text-transform: lowercase;
+			    opacity:0.7;
+			}
+		}
+	}
+}
+
+.icon {
+	color:white;
 }

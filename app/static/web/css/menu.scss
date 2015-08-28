@@ -158,11 +158,7 @@
 		-webkit-appearance: none;
 		border: 0;
 		box-shadow: none;
-		background: #eee;
 		padding: 10px;
-	}
-	input:focus {
-		background: $smoke;
 	}
 	.start-modal-link {
 		@include flex;
@@ -273,7 +269,6 @@
 		max-width: 300px;
 	}
 	#start-modal {
-		height: auto!important;
 		border-radius: 10px;
 		.start-modal-platforms {
 			&#start-modal-platforms-mobile {
@@ -302,17 +297,6 @@
 			}
 			&#start-modal-platforms-wear {
 				display: none;
-			}
-		}
-		.start-modal-link {
-			input {
-				width: 66.6666%;
-			}
-			input:hover, input:focus {
-				font-size: 200%;
-			}
-			button {
-				width: 33.3333%;
 			}
 		}
 	}
