@@ -703,10 +703,6 @@ if arg =='migrate':
             db_session.rollback()
             continue
 
-
-
-
-
             # 'skills': get_user_skills(user),
             # 'conversations': get_user_conversations(user),
             # 'payments': get_user_payments(user),
