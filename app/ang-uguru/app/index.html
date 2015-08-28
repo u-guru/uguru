@@ -27,9 +27,17 @@
     <link rel="stylesheet" href="styles/animate.css"/>
 
     <script>
+        var onDomLoadSuccess = function() {
+            setTimeout(function() {
+                bodyLoadingDiv.parentNode.removeChild(bodyLoadingDiv);
+            }, 2000);
+        }
+
         document.addEventListener("DOMContentLoaded", function(e) {
                 onDomLoadSuccess();
         });
+
+
     
     </script>
     <link media="all" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
@@ -145,7 +153,7 @@
 <!-- <section id="main">
     <ul class='carousel'>
  -->
-     <div ui-view></div>
+     <div id="main" ui-view style="min-height:100%; min-width:100%;"></div>
 
 <!--      <div ng-include src="'templates/home/search-pane.html'"></div>
      <div ng-include src="'templates/home/earn-pane.html'"></div>
@@ -229,7 +237,7 @@
 <script src="scripts/old/lib/jquery.flip.min.js"></script>
 <script src="scripts/old/lib/phonenumber.js"></script>
 <script src="scripts/old/lib/hammer.min.js"></script>
-<script src="scripts/old/carousel.js"></script>
+<!-- <script src="scripts/old/carousel.js"></script> -->
 <script src="scripts/old/index.js"></script>
 
 
