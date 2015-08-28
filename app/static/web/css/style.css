@@ -121,6 +121,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
 @media screen and (min-width: 375px) {
   #mobile-start #mobile-inside img {
     max-width: none; } }
+
 #banner {
   filter: alpha(opacity=50);
   opacity: 0.5;
@@ -521,6 +522,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
 @media screen and (min-height: 568px) {
   #main .slide .inside h2 {
     padding-bottom: 40px; } }
+
 @media screen and (min-width: 375px) {
   #main #earn #earn-categories-mobile .earn-category-mobile {
     height: 134px; }
@@ -529,9 +531,9 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     font-size: 14px; }
     #main #earn #earn-categories-mobile ul li {
       padding: 6px 0; }
-
   #top-school-banner {
     opacity: 0; } }
+
 @media screen and (min-width: 35.5em) {
   #top {
     display: block !important; }
@@ -550,7 +552,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       #top #top-logo #top-mobile-logo.visible {
         filter: alpha(opacity=100);
         opacity: 1; }
-
   #main .slide .inside {
     padding: 62px 30px 30px; }
     #main .slide .inside h2 {
@@ -646,9 +647,11 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       color: rgba(255, 255, 255, 0.5); }
     #main #start #start-text :-ms-input-placeholder {
       color: rgba(255, 255, 255, 0.5); } }
+
 @media screen and (max-width: 48em) {
   #top #top-logo #top-logo {
     opacity: 0; } }
+
 @media screen and (min-width: 48em) {
   #top #top-logo {
     display: block;
@@ -656,10 +659,8 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     #top #top-logo #top-school-banner {
       display: block;
       opacity: 1; }
-
   #subscribe {
     padding-top: 50px; }
-
   #slide-breadcrumbs {
     position: absolute;
     left: 50%;
@@ -714,13 +715,10 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
             background: #69B3A5; }
           #slide-breadcrumbs ul li a.inactive:after {
             background: #757575; }
-
   #mobile-start {
     display: none !important; }
-
   #banner {
     display: block !important; }
-
   #top #top-logo {
     position: absolute;
     left: 50%;
@@ -734,7 +732,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       width: 100%;
       min-width: 0 !important;
       max-width: 200px !important; }
-
   #main .slide .inside {
     padding: 62px 50px 50px; }
     #main .slide .inside h2 {
@@ -775,8 +772,14 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       overflow: hidden;
       margin: auto;
       width: 60%;
-      background: white;
+      background: rgba(43, 50, 52, 0.9);
       visibility: visible; }
+    #main #search #search-box-loader + p {
+      color: white !important; }
+      #main #search #search-box-loader + p span {
+        display: block; }
+      #main #search #search-box-loader + p span:first-child {
+        font-weight: 600; }
     #main #search p {
       margin: 0 0 25px;
       font-size: 36px;
@@ -790,8 +793,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       -o-transform: translateX(-50%);
       transform: translateX(-50%);
       top: 50%;
-      padding: 35px 50px 45px;
-      border-bottom: 10px solid #C56E9C; }
+      padding: 35px 50px 45px; }
     #main #search .search-results {
       position: absolute;
       top: 50%;
@@ -919,7 +921,8 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         width: 100%;
         padding: 20px 30px;
         box-sizing: border-box;
-        border: 1px solid #ddd;
+        border: 0;
+        border-bottom: 5px solid #50A5DD;
         font-size: 24px; }
       #main #search #search-container ::-webkit-input-placeholder {
         color: #ddd; }
@@ -1194,7 +1197,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     display: block;
     width: 100%;
     height: 150px; }
-
   .app-phone {
     position: relative; }
     .app-phone .app-wf {
@@ -1258,25 +1260,31 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         transform: translate(-50%, -50%); }
         .app-phone .app-wf .app-wf-scr img {
           height: 300px; } }
+
 @media screen and (min-width: 990px) {
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 span {
     display: inline; } }
+
 @media screen and (min-width: 1080px) {
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 {
     font-size: 14px; }
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li {
     padding: 10px 0;
     font-size: 14px; } }
+
 @media screen and (min-width: 1200px) {
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 {
     font-size: 18px; } }
+
 @media screen and (min-width: 1280px) and (min-height: 900px) {
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front {
     padding: 40px 10px !important; } }
+
 @media screen and (min-width: 84em) and (min-height: 800px) {
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category svg {
     max-width: 120px;
     max-height: 120px; } }
+
 @media screen and (min-width: 84em) {
   #main .slide .inside h2 {
     font-size: 48px;
@@ -1313,7 +1321,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li {
       padding: 10px 0;
       font-size: 18px !important; }
-
   .app-phone .app-wf {
     border-radius: 30px;
     width: 256px;
@@ -1330,11 +1337,13 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         height: 40px; }
     .app-phone .app-wf .app-wf-scr img {
       height: 400px; } }
+
 @media screen and (min-width: 1600px) {
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front {
     padding: 40px 10px; }
     #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 {
       font-size: 24px; } }
+
 .js #search-box, .js .search-results {
   display: none; }
 
@@ -1585,10 +1594,10 @@ html, body, #main, #main ul.carousel, #main li.slide {
   -webkit-transform-style: preserve-3d; }
 
 #main ul.carousel.animate {
-  -webkit-transition: all .3s;
-  -moz-transition: all .3s;
-  -o-transition: all .3s;
-  transition: all .3s; }
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s; }
 
 #main ul.carousel {
   -webkit-transform: translate3d(0%, 0, 0) scale3d(1, 1, 1);
@@ -1834,5 +1843,3 @@ html, body, #main, #main ul.carousel, #main li.slide {
 
 .icon {
   color: white; }
-
-/*# sourceMappingURL=style.css.map */
