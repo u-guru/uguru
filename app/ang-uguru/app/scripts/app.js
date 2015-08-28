@@ -57,6 +57,16 @@ angular
       url: "/faq",
       templateUrl: "templates/faq.html",
       controller: "MainCtrl"
+    })
+    .state("team", {
+      url: "/team",
+      templateUrl: "templates/team.html",
+      controller: "teamCtrl"
+    })
+    .state("manifest", {
+      url: "/manifest",
+      templateUrl: "templates/manifest.html",
+      controller: "MainCtrl"
     });
 
 
