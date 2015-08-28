@@ -572,7 +572,8 @@ def app_route():
         return redirect('http://u.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
-        return redirect('http://localhost:8100/')
+        # return redirect('http://localhost:8100/')
+        return redirect('http://localhost:5000/static/remote/index.html?version=' + str(version) + str(02323))
     # return redirect('http://192.168.0.104:5000/static/remote/index.html')
     # return redirect('http://192.168.42.66:8100/remote/')
 

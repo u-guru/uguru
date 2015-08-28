@@ -4,6 +4,8 @@ var UFColor = "rgb(255, 74, 0)";
 var TuftsColor = '#417dc1';
 var CalColor = "rgb(0, 50, 98)";
 var carouselShowPaneLock;
+var isDesktop = $(window).width() > 768;
+var isMobile = !isDesktop;
 //end defaults
 
 workSlider = function() {
@@ -67,17 +69,21 @@ $(function () {
 	$('#start-text h3').fitText(2, { maxFontSize: '36px', minFontSize: '24px' });
 	$('.main h1').fitText(1.5, { maxFontSize: '48px', minFontSize: '24px' });
 
-	$('#full-overlay, #side-menu-wrapper.active').on("click", function(e) {
-		$('.top-link-close').trigger('click');
-	})
-	$(".top-link-menu").on("click", function(e) {
+	$("header .top-link-menu").on("click", function(e) {
 		$('#side-menu-wrapper').addClass('active');
 		$('#side-menu').addClass('active animated slideInLeft');
 		$("#full-overlay").addClass("active animated fadeIn");
-		setTimeout(function() {
-			$('#side-menu').removeClass('animated slideInLeft');
-			$("#full-overlay").removeClass("animated fadeIn");
-		}, 1000);
+		$('#side-menu').one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
+			function() {
+				setTimeout(function() {
+					$('#side-menu').removeClass('animated slideInLeft');
+					$("#full-overlay").removeClass("animated fadeIn");
+				}, 200);
+				$('#full-overlay').one("click", function(e) {
+
+					$('.top-link-close').trigger('click');
+				})
+			})
 		e.preventDefault();
 	});
 
@@ -287,7 +293,7 @@ var initParallax = function() {
 }
 
 var checkForRedirectHashes = function() {
-	currentHash = window.location.hash;
+	currentHash = location.hash;
 	if (currentHash.length && currentHash.indexOf('-pane') !== -1) {
 		homePanes = ['search', 'earn', 'work', 'why', 'start'];
 		pageRedirectName = currentHash.split('-')[0].substring(1);
