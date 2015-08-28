@@ -1,8 +1,16 @@
+<!-- 
+
+<div id="banner"></div>
+<section id="main">
+    <ul class='carousel'> -->
+
 <li id="earn" class="slide" data-number="1">
     <div class="inside">
         <div class="inside-text">
             <h2><span>Earn sidecash doing literally anything that you're good at.</span></h2>
-            <ul id="earn-categories-mobile">
+            
+<!-- this is for mobile, fill in later -->
+           <!--  <ul id="earn-categories-mobile">
                 <li class="earn-category-mobile">
                     <div class="front"><div>
                         {% include "web/components/category/academic-small.svg" %}
@@ -104,13 +112,20 @@
                         <h3>and more!</h3>
                     </div></div>
                 </li>
-            </ul>
+            </ul> -->
+
+
+<!-- THIS IS FOR DESKTOP -->
             <ul id="earn-categories-desktop">
                 <li class="earn-category">
                     <div class="earn-category-inside">
                         <div id="earn-category-academic" class="earn-category-front front">
                             <div class="earn-category-overlay"></div>
-                            {% include "web/components/category/academic.svg" %}
+
+                            <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 250 250" height="250px" width="250px" class="category-academic" style="backface-visibility: hidden;">
+                                <circle fill="#000000" r="125" cy="125" cx="125" class="background" style="backface-visibility: hidden;"/>
+                                <path fill="#FFFFFF" class="icon" d="svg/category/academic.svg" style="backface-visibility: hidden;"/>
+                            </svg>
                             <h3>Academic Courses</h3>
                         </div>
                         <div class="earn-category-back back">
@@ -127,7 +142,12 @@
                     <div class="earn-category-inside">
                         <div id="earn-category-consulting" class="earn-category-front front">
                             <div class="earn-category-overlay"></div>
-                            {% include "web/components/category/consulting.svg" %}
+                            
+                                <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 250 250" height="250px" width="250px" class="category-consulting" style="backface-visibility: hidden;">
+                                    <circle fill="#000000" r="125" cy="125" cx="125" class="background" style="backface-visibility: hidden;"/>
+                                    <path fill="#FFFFFF" class="icon" d="svg/category/consulting.svg" style="backface-visibility: hidden;"/>
+                                </svg>
+
                             <h3>Consulting<span> &amp; Freelancing</span></h3>
                         </div>
                         <div class="earn-category-back back">
@@ -144,7 +164,10 @@
                     <div class="earn-category-inside">
                         <div id="earn-category-baking" class="earn-category-front front">
                             <div class="earn-category-overlay"></div>
-                            {% include "web/components/category/baking.svg" %}
+                                <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 250 250" height="250px" width="250px" class="category-baking" style="backface-visibility: hidden;">
+    <circle fill="#000000" r="125" cy="125" cx="125" class="background" style="backface-visibility: hidden;"/>
+    <path fill="#FFFFFF" class="icon" d="svg/category/baking.svg" style="backface-visibility: hidden;"/>
+</svg>
                             <h3>Baking</h3>
                         </div>
                         <div class="earn-category-back back">
@@ -161,7 +184,10 @@
                     <div class="earn-category-inside">
                         <div id="earn-category-photography" class="earn-category-front front">
                             <div class="earn-category-overlay"></div>
-                            {% include "web/components/category/photography.svg" %}
+                                <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 250 250" height="250px" width="250px" class="category-photography" style="backface-visibility: hidden;">
+    <circle fill="#000000" r="125" cy="125" cx="125" class="background" style="backface-visibility: hidden;"/>
+    <path fill="#FFFFFF" class="icon" d="svg/category/photography.svg" fill-rule="evenodd" style="backface-visibility: hidden;"/>
+</svg>
                             <h3>Photography</h3>
                         </div>
                         <div class="earn-category-back back">
@@ -178,7 +204,10 @@
                     <div class="earn-category-inside">
                         <div id="earn-category-household" class="earn-category-front front">
                             <div class="earn-category-overlay"></div>
-                            {% include "web/components/category/household.svg" %}
+                                <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 250 250" height="250px" width="250px" class="category-household" style="backface-visibility: hidden;">
+    <circle fill="#000000" r="125" cy="125" cx="125" class="background" style="backface-visibility: hidden;"/>
+    <path fill="#FFFFFF" class="icon" d="svg/category/household.svg" style="backface-visibility: hidden;"/>
+</svg>
                             <h3>Household</h3>
                         </div>
                         <div class="earn-category-back back">
@@ -195,7 +224,10 @@
                     <div class="earn-category-inside">
                         <div id="earn-category-technology" class="earn-category-front front">
                             <div class="earn-category-overlay"></div>
-                            {% include "web/components/category/technology.svg" %}
+                                <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 250 250" height="250px" width="250px" class="category-technology" style="backface-visibility: hidden;">
+    <circle fill="#000000" r="125" cy="125" cx="125" class="background" style="backface-visibility: hidden;"/>
+    <path fill="#FFFFFF" class="icon" d="svg/category/technology" style="backface-visibility: hidden;"/>
+</svg>
                             <h3>Technology &amp; IT</h3>
                         </div>
                         <div class="earn-category-back back">
@@ -212,7 +244,10 @@
                     <div class="earn-category-inside">
                         <div id="earn-category-sports" class="earn-category-front front">
                             <div class="earn-category-overlay"></div>
-                            {% include "web/components/category/sports.svg" %}
+                                <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 250 250" height="250px" width="250px" class="category-sports" style="backface-visibility: hidden;">
+    <circle fill="#000000" r="125" cy="125" cx="125" class="background" style="backface-visibility: hidden;"/>
+    <path fill="#FFFFFF" class="icon" d="svg/category/sports" style="backface-visibility: hidden;"/>
+</svg>
                             <h3>Sports &amp; Muscle</h3>
                         </div>
                         <div class="earn-category-back back">
@@ -229,7 +264,10 @@
                     <div class="earn-category-inside">
                         <div id="earn-category-delivery" class="earn-category-front front">
                             <div class="earn-category-overlay"></div>
-                            {% include "web/components/category/delivery.svg" %}
+                                <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 250 250" height="250px" width="250px" class="category-sports" style="backface-visibility: hidden;">
+    <circle fill="#000000" r="125" cy="125" cx="125" class="background" style="backface-visibility: hidden;"/>
+    <path fill="#FFFFFF" class="icon" d="svg/category/delivery.svg" style="backface-visibility: hidden;"/>
+</svg>
                             <h3><span>On-demand </span>Delivery</h3>
                         </div>
                         <div class="earn-category-back back">
@@ -249,3 +287,7 @@
         <button class="btn-round">Be one of the first!</button>
     </div>
 </li>
+<!-- 
+</ul>
+</section>
+ -->

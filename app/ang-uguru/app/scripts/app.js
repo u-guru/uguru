@@ -15,7 +15,6 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
     'ui.router'
   ])
   .config(["$compileProvider", function($compileProvider) {
@@ -34,7 +33,7 @@ angular
 
     .state("search", {
       url: "/search-pane",
-      templateUrl: "templates/home/search-pane.html",
+      templateUrl: "templates/home/home.html",
       controller: "MainCtrl"
     })
    .state("earn", {

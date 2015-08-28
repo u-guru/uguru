@@ -290,9 +290,9 @@ var initParallax = function() {
 var checkForRedirectHashes = function() {
 	var currentHash = window.location.hash;
 	if (currentHash.length && currentHash.indexOf('-pane') !== -1) {
-		homePanes = ['search', 'earn', 'work', 'why', 'start'];
-		pageRedirectName = currentHash.split('-')[0].substring(1);
-		paneIndex = homePanes.indexOf(pageRedirectName);
+	var	homePanes = ['search', 'earn', 'work', 'why', 'start'];
+	var	pageRedirectName = currentHash.split('-')[0].substring(1);
+	var	paneIndex = homePanes.indexOf(pageRedirectName);
 		if (paneIndex !== -1 && carousel) {
 			carousel.showPane(paneIndex);
 			setTimeout(function() {

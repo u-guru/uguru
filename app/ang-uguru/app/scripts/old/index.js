@@ -4,9 +4,9 @@ var all_universities;
 var matcher;
 
 $(document).ready(function() {
-    universities_arr = readAndParseJSON('/static/data/fa15_targetted.json');
-    matcher = initMatcher(universities_arr);
-    initTypeahead(matcher, universities_arr);
+    // universities_arr = readAndParseJSON('/static/data/fa15_targetted.json');
+    // matcher = initMatcher(universities_arr);
+    // initTypeahead(matcher, universities_arr);
 
     $('#search-results-close-link, #home-modal-close-link').on('click', function() {
 
