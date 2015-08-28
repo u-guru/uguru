@@ -1,4 +1,4 @@
-<script>
+'use strict';
 var all_universities;
 
 var matcher;
@@ -15,7 +15,7 @@ $(document).ready(function() {
             $('.search-results').removeClass('animated zoomOut');
             hideUniversityModalShowSearchBox();
         }, 500);
-    })
+    });
 
     $("#become-guru-cta-button").on('click', function() {
         $('.search-results .front').trigger('click');
@@ -27,7 +27,7 @@ function readAndParseJSON(file) {
     var request = new XMLHttpRequest();
     request.open('GET', file, false);
     request.send(null);
-    if (request.status == 200)
+    if (request.status === 200)
         universities_arr = JSON.parse(request.responseText);
     return universities_arr;
 }
@@ -50,9 +50,9 @@ var initMatcher = function(arr) {
         limit: 3
     });
     return matcher;
-}
+};
 
-{% raw %}
+// {% raw %}
 var initTypeahead = function(matcher, source) {
 
     $('.typeahead').typeahead({
@@ -62,7 +62,7 @@ var initTypeahead = function(matcher, source) {
     }, {
         displayKey: 'title',
         source: function(q, cb) {
-            cb(matcher.getMatches(q))
+            cb(matcher.getMatches(q));
         },
         templates: {
             //if no results show
@@ -81,7 +81,7 @@ var initTypeahead = function(matcher, source) {
         var successCallback = function() {
             itemSelectedGlobal = true;
             showSearchResultsCallback(suggested);
-        }
+        };
         customizeSearchResults(suggested, successCallback);
             //make it wobble
     }).on('typeahead:cursorchanged', function(event, suggested, dataset_name) {
@@ -92,18 +92,18 @@ var initTypeahead = function(matcher, source) {
     });
 };
 
-{% endraw %}
+// {% endraw %}
 var showSearchResultsCallback = function(uni_data) {
     var successCallback = function() {
         setTimeout(function() {
             searchResultsBackgroundMap.style.backgroundImage = constructStaticGMapBackground(uni_data.latitude,uni_data.longitude);
-        }, 200)
-    }
+        }, 200);
+    };
 
     animateSearchBoxResults(uni_data.school_color_one, successCallback);
-}
+};
 var isColorDark = function(c) {
-    var c = c.substring(1);      // strip #
+    var cStrip = cStrip.substring(1);      // strip #
     var rgb = parseInt(c, 16);   // convert rrggbb to decimal
     var r = (rgb >> 16) & 0xff;  // extract red
     var g = (rgb >>  8) & 0xff;  // extract green
@@ -112,7 +112,7 @@ var isColorDark = function(c) {
     var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
 
     return (luma < 40);
-}
+};
 
 var constructStaticGMapBackground = function(lat, _long) {
     default_zoom = 16;
@@ -121,7 +121,7 @@ var constructStaticGMapBackground = function(lat, _long) {
     size = width * 2 + 'x'  + height * 2;
     return 'url(' +  'https://maps.googleapis.com/maps/api/staticmap?center='+ lat + ',' + _long + '&size=' + size +'&zoom=' + default_zoom + '&maptype=roadmap)';
 
-}
+};
 
 var customizeSearchResults = function(uni_data, postSearchCallback) {
     schoolNameElement = document.getElementById('search-school-name');
@@ -165,13 +165,13 @@ var customizeSearchResults = function(uni_data, postSearchCallback) {
     }
     if (numGurusElement && uni_data.population) {
         populationString = uni_data.population.toString();
-        if (populationString.length == 5) {
+        if (populationString.length === 5) {
             numGurusElement.innerHTML = populationString.substring(0,2) + 'k';
         } else {
             numGurusElement.innerHTML = populationString.substring(0,1) + 'k';
         }
 
-        guruTextSpan = document.querySelector('.search-results-gurus span')
+        guruTextSpan = document.querySelector('.search-results-gurus span');
 
         guruTextSpan.innerHTML = 'students';
     }
@@ -200,7 +200,6 @@ var customizeSearchResults = function(uni_data, postSearchCallback) {
             if (searchResultsBackgroundMap && uni_data.latitude && uni_data.longitude)  {
                 searchResultsBackgroundMap.style.backgroundImage = constructStaticGMapBackground(uni_data.latitude, uni_data.longitude);
             }
-        }, 200)
+        }, 200);
     }
-}
-</script>
+};

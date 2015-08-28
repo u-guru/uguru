@@ -11,24 +11,156 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- <link rel="stylesheet" href="styles/main.css"> -->
+    
+    
+
+    <link rel="stylesheet" href="styles/base-min.css"/>
+    <link rel="stylesheet" href="styles/grids-min.css"/>
+    <link rel="stylesheet" href="styles/grids-responsive-min.css"/>
+
+
+    <script src="scripts/old/lib/modernizr.js"></script>
+    <link rel="stylesheet" href="styles/style.css"/>
+    <link rel="stylesheet" href="styles/page.css"/>
+    <link rel="stylesheet" href="styles/default.css"/>
+    <link rel="stylesheet" href="styles/menu.css"/>
+    <link rel="stylesheet" href="styles/samir.css"/>
+    <link rel="stylesheet" href="styles/animate.css"/>
+    <link rel="stylesheet" href="styles/material.components.css"/>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(e) {
+                onDomLoadSuccess();
+        });
+    
+    </script>
+    <link media="all" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
+
+
+
     <!-- endbuild -->
   </head>
-  <body ng-app="angUguruApp">
+  <body id="page-lake" ng-app="app">
+    
+  <script>
+    var bodyLoadingDiv = document.createElement('div');
+    bodyLoadingDiv.className += bodyLoadingDiv.className + 'body-loading-div'
+    document.body.appendChild(bodyLoadingDiv);
+    bodyLoadingDiv.innerHTML = '<div> <svg xmlns="http://www.w3.org/2000/svg" width="234" height="312" viewBox="0 0 234 312" version="1.1"><g transform="translate(-39.000000, 0.000000)" fill="#ffffff"><path d="M249.7 69.9C237.3 28.7 199 0 155.8 0 113.2 0 75.3 27.9 62.4 68.3 54.9 69.1 47.1 70.4 39 72.3L41.4 88C43.7 88 47.6 88.9 47.7 93.3 48.4 110.1 50.8 122.8 56.7 131.4 54.9 132.9 53.6 134.6 53.1 136.5 53.1 136.5 60.5 136.3 61.2 137.2 61.2 137.2 50.2 156.6 51.9 169.3L58.5 165.3C58.5 165.3 54.6 196 61.6 205.6 61.6 205.6 67 197.7 68.3 196.6 68.3 196.6 73.4 226.4 77.9 232.4 77.9 232.4 82 226.5 83.9 225 83.9 225 86.1 244.1 95.7 254.9L99.9 248.2C99.9 248.2 110.1 272.4 107.5 284 107.5 284 115.2 277.8 115.2 275.8 115.2 275.8 116.1 289 132.4 296.4 132.4 296.4 132.1 290.5 133.7 288.8 133.7 288.8 150 302.6 141 311.9 141 311.9 152.7 313.6 156.3 303.6 160 313.6 171.6 311.9 171.6 311.9 162.6 302.6 178.9 288.8 178.9 288.8 180.5 290.5 180.2 296.4 180.2 296.4 196.5 289 197.4 275.8 197.4 275.8 197.4 277.8 205.1 284 205.1 284 202.5 272.4 212.7 248.2 212.7 248.2L216.9 254.9C226.5 244.1 228.7 225 228.7 225 230.6 226.5 234.8 232.4 234.8 232.4 239.2 226.4 244.3 196.6 244.3 196.6 245.6 197.7 251 205.6 251 205.6 258 196 254.1 165.3 254.1 165.3L260.8 169.2C262.5 156.5 251.4 137.1 251.4 137.1 252.2 136.2 259.6 136.3 259.6 136.3 259 134.1 257.5 132.3 255.3 130.7 261.1 120.1 261.2 106 264.4 95.7 265.6 92 266.9 90 271 89.9L273 74.3C265.4 72.6 257.6 71.1 249.7 69.9M155.8 6C195.4 6 230.7 31.7 243.1 69.1 225.3 67 206.1 67.2 183.9 72.8 174.9 75.1 164.6 77.4 155.4 77.1 149.9 76.9 144.7 75.6 139.7 74.5 115.7 68.9 93.4 65.8 69 67.7 81.8 31.1 116.7 6 155.8 6M172.3 123.4C171.2 123.4 170.1 123.8 169.1 123.8L169.1 123.8C164.1 123.8 165.4 127.9 155.8 127.9 151.6 127.9 148.2 124 145.6 123.9 144 123.7 140.2 123.5 140.2 123.5 140.2 123.5 140.2 123.4 140.2 123.4 138.6 123.3 137.7 121.6 138.6 120.2 143.9 111.7 146.2 103.1 147.2 97.9 148.4 91.1 151.9 90.4 155.8 90.3 162.8 90.1 163.6 95.2 164.8 98.3 168.2 106.8 171.2 113.9 174.3 119.7 175.1 121.2 174.1 123.3 172.3 123.4M50.5 82.3C47.2 82.3 44.5 81.6 44.5 80.8 44.5 79.9 47.2 79.3 50.5 79.3 53.8 79.3 56.5 80 56.5 80.8 56.5 81.6 53.8 82.3 50.5 82.3M92.9 139.8C67.4 139.8 60 135.1 56.6 105.4 56.6 85.4 55.3 73.7 93.1 73.8 118.6 76.3 145.4 76 135.1 106.5 128.7 125.4 118.7 139.1 92.9 139.8M188.6 164.2C184 174.8 171.2 182.2 156.1 182.2 140.9 182.2 128 174.9 123.4 164.3 121.6 160.2 124.7 155.9 129.2 155.9L182.9 155.9C187.3 155.9 190.4 160.1 188.6 164.2M255.7 105.4C252.3 135.1 244.9 139.8 219.4 139.8 193.7 139.1 183.6 125.4 177.3 106.5 166.9 76 193.7 76.3 219.2 73.8 257 73.8 255.7 85.4 255.7 105.4M262.1 83.8C258.8 83.8 256.2 83.2 256.2 82.3 256.2 81.5 258.8 80.8 262.1 80.8 265.4 80.8 268.1 81.5 268.1 82.3 268.1 83.2 265.4 83.8 262.1 83.8"/></g></svg> </div><div> <svg width="120" height="30" class="loader" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg" fill="black"><circle cx="15" cy="15" r="15"><animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite" /> <animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite" /> </circle><circle cx="60" cy="15" r="9" fill-opacity="0.3"> <animate attributeName="r" from="9" to="9" begin="0s" dur="0.8s" values="9;15;9" calcMode="linear" repeatCount="indefinite" /><animate attributeName="fill-opacity" from="0.5" to="0.5" begin="0s" dur="0.8s" values=".5;1;.5" calcMode="linear" repeatCount="indefinite" /> </circle><circle cx="105" cy="15" r="15"> <animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite" /> <animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite" /> </circle></svg> </div>'
+  </script>
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
 
+<!-- ==========HEADER=========== -->
+<header id="top">
+        <nav id="top-menu">
+            <ul>
+                <li><a class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a></li>
+                <li>
+                    <a id="top-logo" href="/">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="234" height="312" viewBox="0 0 234 312" version="1.1">
+                  <g transform="translate(-39.000000, 0.000000)" fill="#FFFFFF">
+                    <path d="M249.7 69.9C237.3 28.7 199 0 155.8 0 113.2 0 75.3 27.9 62.4 68.3 54.9 69.1 47.1 70.4 39 72.3L41.4 88C43.7 88 47.6 88.9 47.7 93.3 48.4 110.1 50.8 122.8 56.7 131.4 54.9 132.9 53.6 134.6 53.1 136.5 53.1 136.5 60.5 136.3 61.2 137.2 61.2 137.2 50.2 156.6 51.9 169.3L58.5 165.3C58.5 165.3 54.6 196 61.6 205.6 61.6 205.6 67 197.7 68.3 196.6 68.3 196.6 73.4 226.4 77.9 232.4 77.9 232.4 82 226.5 83.9 225 83.9 225 86.1 244.1 95.7 254.9L99.9 248.2C99.9 248.2 110.1 272.4 107.5 284 107.5 284 115.2 277.8 115.2 275.8 115.2 275.8 116.1 289 132.4 296.4 132.4 296.4 132.1 290.5 133.7 288.8 133.7 288.8 150 302.6 141 311.9 141 311.9 152.7 313.6 156.3 303.6 160 313.6 171.6 311.9 171.6 311.9 162.6 302.6 178.9 288.8 178.9 288.8 180.5 290.5 180.2 296.4 180.2 296.4 196.5 289 197.4 275.8 197.4 275.8 197.4 277.8 205.1 284 205.1 284 202.5 272.4 212.7 248.2 212.7 248.2L216.9 254.9C226.5 244.1 228.7 225 228.7 225 230.6 226.5 234.8 232.4 234.8 232.4 239.2 226.4 244.3 196.6 244.3 196.6 245.6 197.7 251 205.6 251 205.6 258 196 254.1 165.3 254.1 165.3L260.8 169.2C262.5 156.5 251.4 137.1 251.4 137.1 252.2 136.2 259.6 136.3 259.6 136.3 259 134.1 257.5 132.3 255.3 130.7 261.1 120.1 261.2 106 264.4 95.7 265.6 92 266.9 90 271 89.9L273 74.3C265.4 72.6 257.6 71.1 249.7 69.9M155.8 6C195.4 6 230.7 31.7 243.1 69.1 225.3 67 206.1 67.2 183.9 72.8 174.9 75.1 164.6 77.4 155.4 77.1 149.9 76.9 144.7 75.6 139.7 74.5 115.7 68.9 93.4 65.8 69 67.7 81.8 31.1 116.7 6 155.8 6M172.3 123.4C171.2 123.4 170.1 123.8 169.1 123.8L169.1 123.8C164.1 123.8 165.4 127.9 155.8 127.9 151.6 127.9 148.2 124 145.6 123.9 144 123.7 140.2 123.5 140.2 123.5 140.2 123.5 140.2 123.4 140.2 123.4 138.6 123.3 137.7 121.6 138.6 120.2 143.9 111.7 146.2 103.1 147.2 97.9 148.4 91.1 151.9 90.4 155.8 90.3 162.8 90.1 163.6 95.2 164.8 98.3 168.2 106.8 171.2 113.9 174.3 119.7 175.1 121.2 174.1 123.3 172.3 123.4M50.5 82.3C47.2 82.3 44.5 81.6 44.5 80.8 44.5 79.9 47.2 79.3 50.5 79.3 53.8 79.3 56.5 80 56.5 80.8 56.5 81.6 53.8 82.3 50.5 82.3M92.9 139.8C67.4 139.8 60 135.1 56.6 105.4 56.6 85.4 55.3 73.7 93.1 73.8 118.6 76.3 145.4 76 135.1 106.5 128.7 125.4 118.7 139.1 92.9 139.8M188.6 164.2C184 174.8 171.2 182.2 156.1 182.2 140.9 182.2 128 174.9 123.4 164.3 121.6 160.2 124.7 155.9 129.2 155.9L182.9 155.9C187.3 155.9 190.4 160.1 188.6 164.2M255.7 105.4C252.3 135.1 244.9 139.8 219.4 139.8 193.7 139.1 183.6 125.4 177.3 106.5 166.9 76 193.7 76.3 219.2 73.8 257 73.8 255.7 85.4 255.7 105.4M262.1 83.8C258.8 83.8 256.2 83.2 256.2 82.3 256.2 81.5 258.8 80.8 262.1 80.8 265.4 80.8 268.1 81.5 268.1 82.3 268.1 83.2 265.4 83.8 262.1 83.8"/>
+                  </g>
+                </svg>
+                    </a>
+                </li>
+                <li>
+                    <a id="desktop-chat-link" class="top-link-chat btn-round btn-ghost" href="#"><span>Chat with us</span></a>
+            <a id="mobile-start-link" class="top-link-start btn-round btn-ghost" href="#"><span>Start</span></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+<!-- ==========SIDE MENU=========== -->
+    <div class='absolute full-width' id='full-overlay'>
+
+    </div>
+    <div id="side-menu-wrapper" class='relative'>
+        <nav id="side-menu">
+            <a class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a>
+            <a class="top-link-close" href="#"><span>&times;</span></a>
+            </ul>
+            <ul id="side-menu-links">
+                <li>
+                    <a id="link-home" class="active" href="/">Home</a>
+                    <ul id='menu-home-links-container'>
+                        <li><a class='menu-link menu-home-link' ui-sref='search' href='/search-pane'id="link-search" data-number="0">Find your university</a></li>
+                        <li><a class='menu-link menu-home-link' ui-sref='earn' href='/#earn-pane' id="link-earn"  data-number="1">Many ways to earn</a></li>
+                        <li><a class='menu-link menu-home-link' ui-sref='work' href='/#work-pane' id="link-work" data-number="2">Work your way up</a></li>
+                        <li><a class='menu-link menu-home-link' ui-sref='why' href='/#why-pane' id="link-why"  data-number="3">Why Uguru</a></li>
+                        <li><a class='menu-link menu-home-link' ui-sref='start' href='/#start-pane' id="link-start" data-number="4">Start to guru</a></li>
+                    </ul>
+                </li>
+                <li><a id="link-faq" ui-sref="faq" href="/faq">FAQ</a></li>
+                <li><a id="link-manifest" href="/manifest">Manifesto</a></li>
+                <li><a id="link-team" href="/team">Team</a></li>
+                <li><a id="link-support">Support</a></li>
+            </ul>
+            <div class='pure-g menu-icons'>
+                <div class='pure-u-1 center-text get-started-text'>
+                    Tap to Start
+                </div>
+                <div class='pure-u-1-3'>
+                    <a href='/itunes/app/' target='_blank'>
+                        <svg width="82px" height="100px" viewBox="0 0 82 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <path d="M68.4838995,53.1268571 C68.6254156,68.2600228 81.8534511,73.2959591 82,73.3602364 C81.8881507,73.7153984 79.8863806,80.5369387 75.0308423,87.5831023 C70.8334433,93.6748682 66.4770966,99.7443185 59.6145634,99.870022 C52.8714382,99.9933986 50.7031472,95.8993765 42.993846,95.8993765 C35.2868735,95.8993765 32.8778035,99.7443085 26.4946845,99.9933986 C19.870599,100.242307 14.8264274,93.4059611 10.5941462,87.3365109 C1.94599234,74.9212458 -4.66298665,52.2538885 4.2112016,36.9530524 C8.61970903,29.3545954 16.4980451,24.5429349 25.0492743,24.4195488 C31.553957,24.2963415 37.6936044,28.76499 41.6699993,28.76499 C45.6438729,28.76499 53.1048511,23.3910486 60.9483025,24.1802799 C64.2318391,24.3159853 73.4487801,25.4973402 79.3672315,34.0996571 C78.8903501,34.3932141 68.3695339,40.4749762 68.4838995,53.1268714 M55.8109752,15.9664988 C59.3277466,11.739443 61.6947365,5.85499058 61.048996,0 C55.9798343,0.202305925 49.8500786,3.35425711 46.2140818,7.57898719 C42.9555303,11.3201825 40.1017717,17.3082041 40.8717653,23.0473117 C46.5219412,23.4813922 52.2940307,20.1962425 55.8109752,15.9665056" fill="#ffffff"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class='pure-u-1-3'>
+                    <a href='/itunes/app/' target='_blank'>
+                        <svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <path d="M100,48 L52,48 L52,0 L100,0 L100,48 Z M48,48 L0,48 L0,0 L48,0 L48,48 Z M48,100 L0,100 L0,52 L48,52 L48,100 Z M100,100 L52,100 L52,52 L100,52 L100,100 Z" fill="#ffffff"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class='pure-u-1-3'>
+                    <a href='/android/app/' target='_blank'>
+                        <svg width="92px" height="100px" viewBox="0 0 92 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <path d="M52.5,48.3744147 L4.13,0.0044146645 C5.177,-0.0405853355 6.36,0.257414665 7.615,0.945414665 L67.143,33.7324147 L52.5,48.3744147 L52.5,48.3744147 Z" fill="#FFFFFF"></path>
+                            <path d="M1.257,1.37441466 C0.464,2.31041466 0,3.69641466 0,5.45441466 L0.011,94.3284147 C0.011,96.5124147 0.724,98.1014147 1.886,98.9894147 L50.379,50.4964147 L1.257,1.37441466 L1.257,1.37441466 Z" fill="#FFFFFF"></path>
+                            <path d="M88.863,45.6954147 L69.879,35.2394147 L54.622,50.4964147 L69.099,64.9734147 L88.863,54.0874147 C93.052,51.7724147 93.052,48.0054147 88.863,45.6954147 L88.863,45.6954147 L88.863,45.6954147 Z" fill="#FFFFFF"></path>
+                            <path d="M5.455,99.6634147 C6.14,99.5194147 6.863,99.2534147 7.615,98.8404147 L66.363,66.4804147 L52.5,52.6174147 L5.455,99.6634147 L5.455,99.6634147 Z" fill="#FFFFFF"></path>
+                        </svg>
+                    </a>
+                </div>
+                <!-- <div class='pure-u-1-4 desktop-wrapper'>
+                    <a href='/hybrid-app/' target='_blank'>
+                        {% include "web/components/platform/desktop-white.svg" %}
+                    </a>
+                </div> -->
+            </div>
+        </nav>
+    </div>
 
 
-
-          <ui-view>
-          </ui-view>
-
+<!-- ==========MAIN CONTENT=========== -->
+  <div ui-view></div>
 
 
+  
+
+<!-- start intercom scripts -->
+<script>
+  window.intercomSettings = {
+    app_id: "yoz6vu28"
+  };
+</script>
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/yoz6vu28';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()
+    Intercom('boot', {
+        app_id: 'yoz6vu28',
+        // email: 'random@uguru.me',
+        // created_at: (new Date()).getTime(),
+        // name: 'Student'
+    });
+
+</script>
+<!-- end intercom scripts -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -42,9 +174,38 @@
     </script>
 
     <!-- build:js(.) scripts/vendor.js -->
+    <script src="scripts/old/lib/jquery.min.js"></script>
+
+
+    <script src="scripts/old/lib/plugins.js"></script>
+    <script src="scripts/old/lib/easypiechart.min.js"></script>
+    <script src="scripts/old/lib/parallax.min.js"></script>
+
+        <script src="scripts/old/main.js"></script>
+
+        <script src="scripts/old/lib/velocity"></script>
+
+    <script src="scripts/old/lib/cta.min.js"></script>
+    <script src="scripts/old/components/modal.js"></script>
+    <script src="scripts/old/lib/uguru-animate.js"></script>
+
+
+
+  <script src="/static/web/js/lib/typeahead.min.js"></script>
+<script src="/static/web/js/lib/fastmatcher.js"></script>
+<script src="/static/web/js/lib/handlebars.js"></script>
+
+<script src="scripts/old/lib/jquery.flip.min.js"></script>
+<script src="scripts/old/lib/phonenumber.js"></script>
+
+
+
+<script src="scripts/old/search.js"></script>
+    
+
+    <script src="bower_components/angular/angular.js"></script>
     <script src="libs/angular-ui-router-min.js"></script>
     <!-- bower:js -->
-    <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -57,7 +218,13 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+        
+
+
+        <!-- old scrips to be rebuilt -->
+
+
+
         <!-- endbuild -->
 </body>
 </html>
