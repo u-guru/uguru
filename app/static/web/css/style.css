@@ -1782,8 +1782,61 @@ html, body, #main, #main ul.carousel, #main li.slide {
   background-color: #69B3A5; }
 
 .download-link-wrapper {
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px; }
+  position: relative;
+  background-color: transparent; }
+  .download-link-wrapper #submit-info-loader.svg-container {
+    margin: 0 auto;
+    text-align: center;
+    height: 100%;
+    margin-top: 0;
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    display: none; }
+    .download-link-wrapper #submit-info-loader.svg-container svg {
+      fill: white; }
+    .download-link-wrapper #submit-info-loader.svg-container.active {
+      display: block; }
+  .download-link-wrapper #submit-info-button {
+    color: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0.5;
+    font-size: 100%;
+    height: 100%;
+    padding: 0 2%;
+    font-weight: 400;
+    display: none; }
+    .download-link-wrapper #submit-info-button .ion-checkmark {
+      color: white; }
+    .download-link-wrapper #submit-info-button.active.validated .ion-checkmark:hover {
+      color: #69B3A5; }
+    .download-link-wrapper #submit-info-button.active.validated .ion-checkmark {
+      color: #69B3A5; }
+    .download-link-wrapper #submit-info-button .submit-text {
+      padding-bottom: 60%; }
+    .download-link-wrapper #submit-info-button.active {
+      background-color: rgba(105, 179, 165, 0.5);
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: column-reverse;
+      flex-direction: column-reverse; }
+    .download-link-wrapper #submit-info-button.active.validated {
+      background-color: white;
+      opacity: 1;
+      color: #69B3A5; }
+    .download-link-wrapper #submit-info-button.active.validated:hover {
+      background-color: #69B3A5;
+      opacity: 0.8;
+      color: white;
+      border: 1px solid white;
+      cursor: pointer; }
   .download-link-wrapper .email-cta-wrapper, .download-link-wrapper .phone-cta-wrapper {
     display: none; }
     .download-link-wrapper .email-cta-wrapper.active, .download-link-wrapper .phone-cta-wrapper.active {

@@ -2230,8 +2230,66 @@ html, body, #main, #main ul.carousel, #main li.slide {
 }
 
 .download-link-wrapper {
-	border-bottom-right-radius:20px;
-	border-bottom-left-radius:20px;
+	position:relative;
+	background-color:transparent;
+	#submit-info-loader.svg-container {
+		svg {
+			fill:white;
+		}
+		margin: 0 auto;
+	    text-align: center;
+	    height: 100%;
+	    margin-top: 0;
+	    position: absolute;
+	    top: 40%;
+	    width: 100%;
+		display:none;
+		&.active {
+			display:block;
+		}
+	}
+	#submit-info-button {
+		color:white;
+		position:absolute;
+		bottom:0;
+		right:0;
+		opacity:0.5;
+		font-size:100%;
+		height:100%;
+		padding:0 2%;
+		font-weight: 400;
+		display:none;
+		.ion-checkmark {
+			color:white;
+		}
+		&.active.validated .ion-checkmark:hover{
+			color:$shamrock;
+		}
+		&.active.validated .ion-checkmark {
+			color:$shamrock;
+		}
+		.submit-text {
+			padding-bottom:60%;
+		}
+		&.active {
+			background-color:rgba(105, 179, 165, 0.5);
+			@include flex;
+			-webkit-flex-direction: column-reverse;
+			flex-direction:column-reverse;
+		}
+		&.active.validated {
+			background-color:white;
+			opacity: 1;
+			color:$shamrock;
+		}
+		&.active.validated:hover {
+			background-color:$shamrock;
+			opacity:0.8;
+			color:white;
+			border: 1px solid white;
+			cursor:pointer;
+		}
+	}
 	.email-cta-wrapper, .phone-cta-wrapper {
 		display:none;
 		&.active {
