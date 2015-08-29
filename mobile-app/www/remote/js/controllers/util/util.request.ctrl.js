@@ -144,7 +144,27 @@ angular.module('uguru.util.controllers')
         show_tags: true,
         title: 'Request a Task',
         initial_status: "getting help"
+      },
+      //verb 4 --> course
+      {
+        img: 'session.svg',
+        course_placeholder: 'Enter course',
+        description_placeholder: "Describe your task in more detail",
+        show_location: false,
+        show_urgency: false,
+        show_estimate: false,
+        show_availability: false,
+        show_divider_one: false,
+        show_divider_two: false,
+        show_description: false,
+        show_tags: false,
+        show_grade: true,
+        show_units: true,
+        title: 'Add a course',
+        initial_status: "getting help"
       }
+
+
     ];
 
     $scope.request_fields = verb_arr[$scope.root.vars.last_verb_index_clicked];
@@ -153,7 +173,7 @@ angular.module('uguru.util.controllers')
     if ($scope.request.type.task) {
       $scope.request.category = detailed_categories[$scope.root.vars.detailed_verbs_index_clicked];
     }
-
+    
 
     $scope.launchLocationModal = function() {
       !$scope.request.availability_edit || $scope.toggleAvailability();
