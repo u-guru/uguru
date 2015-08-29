@@ -240,7 +240,6 @@ $(function () {
 
 		svgCircle = $(this).find('svg circle')[0]
 		svgColor = $(svgCircle).css('fill');
-
 		setTimeout(function() {
 			sliderElemColor = $('#slider-triangle svg path').css('fill', svgColor);
 		}, 500)
@@ -256,6 +255,7 @@ $(function () {
 				$('#' + descriptionToShow).addClass('animated fadeIn show').show();
 			}, 750);
 		}
+		console.log("HI");
 		moveHorizontalSlider(sliderElem, targetElem, successCallback);
 	});
 

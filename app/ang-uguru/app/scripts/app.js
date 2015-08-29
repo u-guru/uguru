@@ -33,8 +33,8 @@ angular
 
     .state("search", {
       url: "/search-pane",
-      templateUrl: "templates/home/search-pane.html",
-      controller: "MainCtrl"
+      templateUrl: "templates/home/work-pane.html",
+      controller: "workCtrl"
     })
    .state("earn", {
       url: "/earn-pane",
@@ -44,7 +44,7 @@ angular
    .state("work", {
       url: "/work-pane",
       templateUrl: "templates/home/work-pane.html",
-      controller: "MainCtrl"
+      controller: "workCtrl"
     })
    .state("why", {
       url: "/why-pane",
