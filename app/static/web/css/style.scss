@@ -901,8 +901,17 @@ button, a[class*=btn] {
 				overflow: hidden;
 				margin: auto;
 				width: 60%;
-				background: white;
+				background: rgba($charcoal,.9);
 				visibility: visible;
+			}
+			#search-box-loader + p {
+				color: white!important;
+				span {
+					display: block;
+				}
+				span:first-child {
+					font-weight: 600;
+				}
 			}
 			p {
 				margin: 0 0 25px;
@@ -913,7 +922,6 @@ button, a[class*=btn] {
 				@include center-x;
 				top: 50%;
 				padding: 35px 50px 45px;
-				border-bottom: 10px solid $cerise-mute;
 			}
 			.search-results {
 				@include center-xy;
@@ -1039,7 +1047,8 @@ button, a[class*=btn] {
 					width: 100%;
 					padding: 20px 30px;
 					box-sizing: border-box;
-					border: 1px solid #ddd;
+					border: 0;
+					border-bottom: 5px solid $lake;
 					font-size: 24px;
 				}
 				::-webkit-input-placeholder {
