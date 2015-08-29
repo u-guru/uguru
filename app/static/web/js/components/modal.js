@@ -1,9 +1,5 @@
 $(document).ready(function () {
     $('#home-modal-send-email').click(function(e) {
-        function validateEmail(email) {
-            var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-            return re.test(email);
-        }
         var phoneEmailInputValue = $('#home-modal-email-input').val();
         //add phone number regex
         //check for length

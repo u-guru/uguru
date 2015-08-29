@@ -26,6 +26,7 @@ $(document).ready(function() {
         $('.phone-icon').removeClass('active');
         $('.phone-cta-wrapper').removeClass('active');
         $('.email-cta-wrapper').addClass('active');
+        $('#submit-info-button').removeClass('active validated');
     })
 
     $('.cta-phone-link').click(function() {
@@ -33,6 +34,7 @@ $(document).ready(function() {
         $('.mail-icon').removeClass('active');
         $('.phone-cta-wrapper').addClass('active');
         $('.email-cta-wrapper').removeClass('active');
+        $('#submit-info-button').removeClass('active validated');
     })
 
     $(".download-link-wrapper").on('click', function(e) {
@@ -40,21 +42,67 @@ $(document).ready(function() {
     })
 
     $("#school-email-input").on('focus', function() {
+        $('.search-results .front, .search-results').unbind('click');
         $("#school-email-input-label").addClass('active');
     })
 
     $("#school-phone-input").on('focus', function() {
+        $('.search-results .front, .search-results').unbind('click');
         $("#school-phone-input-label").addClass('active');
     })
 
     $("#school-email-input").on('blur', function() {
         if (!$(this).val().length) {
+            $('.search-results .front, .search-results').bind('click');
             $("#school-email-input-label").removeClass('active');
         }
     })
 
+    $('#school-email-input').on('keyup', function() {
+        // if input is focused && no input
+        if (!$(this).val().length) {
+            $('#submit-info-button').removeClass('active');
+        }
+
+        // if input has focus && letter is typed
+        if ($(this).val().length && !$('#submit-info-button').hasClass('active')) {
+            $('#submit-info-button').addClass('active');
+        }
+
+        if (validateEmail($(this).val())) {
+            $('#submit-info-button').addClass('validated');
+            $('#submit-info-button .ion-checkmark, #submit-info-button .submit-text').addClass('animated tada');
+            setTimeout(function() {
+                $('#submit-info-button .ion-checkmark, #submit-info-button .submit-text').removeClass('animated tada');
+            }, 1000)
+        } else {
+            $('#submit-info-button').removeClass('validated')
+        }
+
+    })
+
+    $('#school-phone-input').on('keyup', function() {
+        // if input is focused && no input
+        if (!$(this).val().length) {
+            $('#submit-info-button').removeClass('active');
+        }
+
+        // if input has focus && letter is typed
+        if ($(this).val().length && !$('#submit-info-button').hasClass('active')) {
+            $('#submit-info-button').addClass('active');
+        }
+
+        if (isPhoneNumberValid($(this).val())) {
+            $('#submit-info-button').addClass('validated');
+        } else {
+            $('#submit-info-button').removeClass('validated')
+        }
+
+    })
+
     $("#school-phone-input").on('blur', function() {
         if (!$(this).val().length) {
+            $('.search-results .front, .search-results').bind('click');
             $("#school-phone-input-label").removeClass('active');
         }
     })
@@ -119,11 +167,7 @@ var initTypeahead = function(matcher, source) {
         var successCallback = function() {
             itemSelectedGlobal = true;
             showSearchResultsCallback(suggested);
-            setTimeout(function() {
-                $('.search-results .front, .search-results').unbind('click');
-            }, 1000);
         }
-        console.log(suggested);
         customizeSearchResults(suggested, successCallback);
             //make it wobble
     }).on('typeahead:cursorchanged', function(event, suggested, dataset_name) {
