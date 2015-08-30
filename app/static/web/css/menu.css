@@ -83,10 +83,11 @@
     opacity: 1; }
   #start-modal.active {
     display: block; }
+  #start-modal header h1 {
+    padding: 10px; }
   #start-modal h1 {
     background: #69B3A5;
     color: white;
-    padding: 10px;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 2px;
@@ -292,10 +293,6 @@
     max-height: 150px; }
   #start-modal .start-modal-platforms#start-modal-platforms-wear li svg {
     max-height: 100px; } }
-.front, .back {
-  height: 100%;
-  width: auto; }
-
 #modal-loader-container.active {
   display: block; }
 
@@ -310,12 +307,18 @@
 #start-modal .svg-container {
   margin: 0 auto;
   text-align: center;
-  height: 100%;
-  margin-top: 20%; }
+  height: 100%; }
 
 .front, .back {
-  height: 100%;
-  width: auto; }
+  width: auto;
+  overflow: hidden;
+  border-radius: 20px; }
+
+#search .front, #search .back {
+  height: 65% !important; }
+
+.back {
+  background-color: #69B3A5; }
 
 .intercom-sheet-header-minimize-button {
   display: none !important; }

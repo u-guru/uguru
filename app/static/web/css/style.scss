@@ -2167,8 +2167,6 @@ html, body, #main, #main ul.carousel, #main li.slide {
 
 .search-results .back {
     transform: rotateY(0deg);
-    height: 100%;
-    width: 100%;
     backface-visibility: hidden;
     transform-style: preserve-3d;
     position: absolute;
@@ -2177,7 +2175,6 @@ html, body, #main, #main ul.carousel, #main li.slide {
     visibility: visible;
     overflow: visible;
     top: 0px;
-    background-color: transparent;
 }
 
 /*#start-modal {
@@ -2195,6 +2192,7 @@ html, body, #main, #main ul.carousel, #main li.slide {
 .modal-main-container {
     backface-visibility: hidden;
     background-color: white;
+    height:100%;
 }
 
 .search-results-map {
@@ -2230,8 +2228,9 @@ html, body, #main, #main ul.carousel, #main li.slide {
 }
 
 .download-link-wrapper {
-	position:relative;
-	background-color:transparent;
+	position:absolute;
+	background-color:$shamrock;
+	width:100%;
 	#submit-info-loader.svg-container {
 		svg {
 			fill:white;
@@ -2241,11 +2240,31 @@ html, body, #main, #main ul.carousel, #main li.slide {
 	    height: 100%;
 	    margin-top: 0;
 	    position: absolute;
-	    top: 40%;
+	    top: 45%;
 	    width: 100%;
 		display:none;
 		&.active {
 			display:block;
+		}
+	}
+	#post-submit-info-wrapper {
+		margin: 0 auto;
+	    text-align: center;
+	    height: 100%;
+	    margin-top: 0;
+	    position: absolute;
+	    top: 30%;
+	    width: 100%;
+		display:none;
+		.message-content {
+			color:white;
+			font-weight:500;
+		}
+		&.active {
+			display:block;
+		}
+		.ion-checkmark {
+			font-size:200%;
 		}
 	}
 	#submit-info-button {
@@ -2261,9 +2280,6 @@ html, body, #main, #main ul.carousel, #main li.slide {
 		display:none;
 		.ion-checkmark {
 			color:white;
-		}
-		&.active.validated .ion-checkmark:hover{
-			color:$shamrock;
 		}
 		&.active.validated .ion-checkmark {
 			color:$shamrock;
@@ -2283,15 +2299,16 @@ html, body, #main, #main ul.carousel, #main li.slide {
 			color:$shamrock;
 		}
 		&.active.validated:hover {
-			background-color:$shamrock;
-			opacity:0.8;
-			color:white;
-			border: 1px solid white;
-			cursor:pointer;
+			opacity:0.5;
 		}
 	}
 	.email-cta-wrapper, .phone-cta-wrapper {
+		h1 {
+			padding-top:2%;
+			padding-bottom:5%;
+		}
 		display:none;
+		background-color:$shamrock;
 		&.active {
 			display:block;
 		}

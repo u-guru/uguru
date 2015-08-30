@@ -129,7 +129,6 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.$on('$ionicView.enter', function() {
-      $localstorage.setObject('userGPACourseList', []);
       $timeout(function() {
         $scope.userCourses = $localstorage.getObject('userGPACourseList');
         $scope.gpaPage.gpa = calculateGpa($scope.userCourses);
