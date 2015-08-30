@@ -5,7 +5,7 @@
       <button class="button button-clear button-header-link cancel-button button-left" ng-click='addCourseGPAModal.hide()'>Back</button>
     </div>
     <h1 class="title dont-modify-bounds">Add a Course</h1>
-    <div class="buttons">
+    <div class="buttons buttons-right">
       <button class="button button-clear button-header-link submit-button button-right" id='done-button' ng-click='validateAndSaveCourse(tempCourse)'>
         Done
       </button>
@@ -17,9 +17,9 @@
         <div class="gpa-sc-content">
           <ul class="add-sc-list">
             <li class="padding-15-xy">
-              <input type="text" ng-model='tempCourse.courseName' placeholder="Enter a Course"/>
+              <input type="text" id='course-modal-input' ng-model='tempCourse.courseName' placeholder="Enter a Course"/>
             </li>
-            <li class="padding-15-xy">
+            <li class="padding-15-xy modal-add-course-option">
               <select class="text-center" ng-model='tempCourse.courseGrade'>
                 <option disabled selected hidden>-</option>
                 <option>A</option>
@@ -30,7 +30,7 @@
               </select>
               <label>Select a grade</label>
             </li>
-            <li class="padding-15-xy">
+            <li class="padding-15-xy modal-add-course-option">
               <select class="text-center" ng-model='tempCourse.courseCredit'>
                 <option disabled selected hidden>-</option>
                 <option>1</option>
@@ -42,7 +42,7 @@
               <label>Number of credits</label>
             </li>
             <li ng-show='tempCourse.removeButton'>
-              <button class='button button-full button-positive' ng-click='removeCourseList(tempCourse)'>
+              <button class='button button-full remove-button' ng-click='removeCourseList(tempCourse)'>
                 Delete course
               </button>
             </li>

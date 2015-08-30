@@ -24,17 +24,26 @@ angular.module('uguru.util.controllers')
     $scope.userCourses = [];
 
     $scope.validateAndSaveCourse = function(courseDict) {
-      console.log(courseDict);
       //case one --> user did not select a course || grade || did not finis
-      if (!validateCourseInput(courseDict)) {
+      validateResult = validateCourseInput(courseDict, $scope.userCourses);
+      if (validateResult === false) {
         alert('please fill out all fields!');
         return;
       }
+      if (validateResult === 0) {
+        return;
+      }
 
-      $scope.userCourses.push(courseDict);
+      var newCourseObj = {
+        courseName: courseDict.courseName,
+        courseGrade: courseDict.courseGrade,
+        courseCredit: courseDict.courseCredit
+      }
+
+      $scope.userCourses.push(newCourseObj);
       $localstorage.setObject('userGPACourseList', $scope.userCourses);
       $scope.gpaPage.gpa = calculateGpa($scope.userCourses);
-
+      $scope.tempCourse.courseName = '';
       $scope.success.show(0, 1000, 'Saved!');
       $scope.addCourseGPAModal.hide();
 
@@ -54,7 +63,16 @@ angular.module('uguru.util.controllers')
 
     }
 
-    var validateCourseInput = function(courseDict) {
+    var validateCourseInput = function(courseDict, courseList) {
+      for (i = 0; i < courseList.length; i++) {
+        courseAlreadyAdded = courseList[i];
+        if (courseAlreadyAdded.courseName.toLowerCase()
+          === courseDict.courseName.toLowerCase()) {
+          $scope.success.show(0, 1500, 'You have already added ' + courseDict.courseName + '!')
+          $scope.tempCourse.courseName = '';
+          return 0;
+        }
+      }
       return (courseDict.courseName && courseDict.courseCredit && courseDict.courseGrade);
     }
 
@@ -90,7 +108,8 @@ angular.module('uguru.util.controllers')
       }
       $scope.success.show(0, 2000, 'Course ' + tempCourse.courseName + ' removed!');
       $localstorage.setObject('userGPACourseList', $scope.userCourses);
-      $scope.tempCourse = {courseGrade:'C', courseCredit:4, courseName:''};
+      $scope.tempCourse.courseName = '';
+      $scope.tempCourse.removeButton = null;
       $scope.addCourseGPAModal.hide();
     }
 
@@ -110,6 +129,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.$on('$ionicView.enter', function() {
+      $localstorage.setObject('userGPACourseList', []);
       $timeout(function() {
         $scope.userCourses = $localstorage.getObject('userGPACourseList');
         $scope.gpaPage.gpa = calculateGpa($scope.userCourses);

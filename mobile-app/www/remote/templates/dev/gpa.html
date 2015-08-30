@@ -1,8 +1,8 @@
-<ion-view hide-nav-bar='true' class='courses' >
-  <ion-header-bar class='dark-bg-header item-button-left item-icon-right'>
-<h1 class="title">GPA Guru</h1>
+<ion-view hide-nav-bar='true' class='gpa-page' >
+  <ion-header-bar class='dark-bg-header item-button-left item-icon-right gpa-header'>
+    <h1 class="title">GPA GURU</h1>
   </ion-header-bar>
-<ion-content class='gpa-body' scroll='false'>
+<ion-content class='gpa-page-body' scroll='false'>
     <div id="home-sc" class="gpa-sc" ng-show='!userCourses.length'>
       <div class="gpa-sc-content text-center padding-15-xy">
         <div class="guru padding-15-bottom">
@@ -52,7 +52,6 @@
               <span class="text-center">{{course.courseGrade}}</span>
             </a>
           </li>
-
         </ul>
       </div>
     </div>

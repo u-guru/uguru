@@ -503,17 +503,127 @@ button {
 .gpa-header {
   height:64px;
   padding: 0.5em 0;
+  border-bottom: 0px;
 }
 
-.gpa-modal .gpa-modal-body {
+.gpa-header h1.title {
+    top: 15%;
+    font-weight: 700;
+    font-size: 120%;
+    text-transform: capitalize;
+}
+
+.gpa-modal .gpa-modal-body,
+.gpa-page .gpa-page-body {
   top:64px;
 }
-.gpa-body {
+.gpa-page-body {
   background-color:#40484B;
 }
 
-.gpa-body h2,
-.gpa-body #gpa-total-number h1 {
+.gpa-page-body h2,
+.gpa-page-body #gpa-total-number h1 {
   color:white;
-  font-weight:700;
+  font-weight:700!important;
+  text-transform: capitalize;
+}
+
+.gpa-modal .button-left, .button-right {
+  color: white !important;
+}
+
+.gpa-modal .buttons.buttons-right {
+  top: 17%;
+}
+
+#add-sc input {
+  line-height:normal;
+}
+#add-sc #add-sc-list li label{
+  font-size:24px;
+}
+
+li.modal-add-course-option label{
+  font-size:24px;
+  font-weight:400;
+}
+
+li.modal-add-course-option select {
+  font-size:24px !important;
+}
+
+button.button.button-full.remove-button {
+    color: #fff;
+    background: #DB1988;
+    border-color: #DB1988;
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 24px;
+    margin:0;
+}
+
+button.button.button-full.remove-button.active,
+button.button.button-full.remove-button.activated, {
+  background-color:white !important;
+  color:#DB1988 !important;
+}
+
+#course-modal-input {
+  text-transform: uppercase;
+  font-weight:700 !important;
+}
+
+.gpa-page ion-scroll {
+  overflow:scroll;
+}
+
+html,
+body,
+ion-content,
+ {
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 24px;
+  font-weight: 200 !important;
+  color: white;
+}
+
+label {
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+  letter-spacing:0em;
+}
+
+::-webkit-input-placeholder {
+   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+   text-transform: capitalize !important;
+   font-weight:600 !important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+   text-transform: capitalize !important;
+   font-weight:600 !important;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+   text-transform: capitalize !important;
+   font-weight:600 !important;
+}
+
+:-ms-input-placeholder {
+   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+   text-transform: capitalize !important;
+   font-weight:600 !important;
+}
+
+.gpa-page .gpa-header {
+  text-transform: uppercase;
+}
+
+.home-sc-message {
+  color:white;
 }
