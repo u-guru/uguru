@@ -44,7 +44,7 @@ workSlider = function() {
 
 $(document).ready(function () {
 	checkForRedirectHashes()
-	hideIntercomShit();
+	// hideIntercomShit();
 	// initParallax();
 	workSlider();
 	$(window).resize(function(){
@@ -271,8 +271,8 @@ $(function () {
 var hideIntercomShit = function() {
 	var intercomElement = document.getElementById('intercom-launcher')
 	if (intercomElement) {
-		document.getElementById('intercom-launcher').style.height = 0;
-		document.getElementById('intercom-launcher').style.width = 0;
+		document.getElementById('intercom-launcher').style.height = 'initial';
+		document.getElementById('intercom-launcher').style.width = 'initial';
 		return;
 	} else {
 		setTimeout(function() {
@@ -280,6 +280,9 @@ var hideIntercomShit = function() {
 		}, 1000)
 	}
 }
+
+
+
 var initParallax = function() {
 	//check if loaded properly
 	if (!Parallax) {

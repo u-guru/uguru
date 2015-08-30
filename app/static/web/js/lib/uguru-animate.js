@@ -2,6 +2,9 @@
 var onDomLoadSuccess = function() {
 	setTimeout(function() {
 		bodyLoadingDiv.parentNode.removeChild(bodyLoadingDiv);
+        setTimeout(function() {
+            $('#intercom-container').addClass('active');
+        }, 500)
 	}, 2000);
 }
 // how to create angular
