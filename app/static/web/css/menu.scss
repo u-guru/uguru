@@ -465,8 +465,12 @@
 	}
 	.intercom-launcher-preview {
 		position: absolute;
-    	bottom: -8px;
+    	bottom: -15px;
     	right: 70px;
+	}
+	.intercom-launcher-preview-body {
+		line-height:1em;
+		text-align: center;
 	}
   	&.active {
     	display:block !important;

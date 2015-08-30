@@ -374,8 +374,11 @@
       z-index: 5 !important; }
   #intercom-container .intercom-launcher-preview {
     position: absolute;
-    bottom: -8px;
+    bottom: -15px;
     right: 70px; }
+  #intercom-container .intercom-launcher-preview-body {
+    line-height: 1em;
+    text-align: center; }
   #intercom-container.active {
     display: block !important; }
 

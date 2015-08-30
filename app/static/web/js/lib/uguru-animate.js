@@ -4,7 +4,7 @@ var onDomLoadSuccess = function() {
 		bodyLoadingDiv.parentNode.removeChild(bodyLoadingDiv);
         setTimeout(function() {
             $('#intercom-container').addClass('active');
-            $('#intercome-container').css('display', 'block');
+            $('#intercom-container').css('display', 'block');
         }, 500)
 	}, 2000);
 }
