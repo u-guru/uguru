@@ -464,9 +464,9 @@
 	    }
 	}
 	.intercom-launcher-preview {
-		position: absolute;
-    	bottom: -15px;
-    	right: 70px;
+		position: absolute !important;
+    	bottom: -12px !important;
+    	right: 70px !important;
 	}
 	.intercom-launcher-preview-body {
 		line-height:1em;

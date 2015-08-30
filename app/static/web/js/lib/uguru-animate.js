@@ -3,10 +3,22 @@ var onDomLoadSuccess = function() {
 	setTimeout(function() {
 		bodyLoadingDiv.parentNode.removeChild(bodyLoadingDiv);
         setTimeout(function() {
-            $('#intercom-container').addClass('active');
-            $('#intercom-container').css('display', 'block');
-        }, 500)
+            launchIntercomeSetActive()
+        }, 2000);
 	}, 2000);
+}
+
+var launchIntercomeSetActive = function() {
+    if (!$('#intercom-container:visible').length) {
+        console.log('setting intercom to active..');
+        $('#intercom-container').addClass('active');
+        $('#intercom-container').css('display', 'block');
+    } else {
+        console.log('intercome still does not exist.. trying again');
+        setTimeout(function() {
+            launchIntercomeSetActive();
+        }, 1000)
+    }
 }
 // how to create angular
 // 1. Render the dom once
