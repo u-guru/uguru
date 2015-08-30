@@ -445,6 +445,7 @@
 
 #desktop-chat-link {
 	opacity:0;
+	display:none;
 }
 
 #intercom-container {
@@ -461,6 +462,11 @@
 	    	position:absolute !important;
 	    	z-index:5 !important;
 	    }
+	}
+	.intercom-launcher-preview {
+		position: absolute;
+    	bottom: -8px;
+    	right: 70px;
 	}
   	&.active {
     	display:block !important;

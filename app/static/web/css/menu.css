@@ -356,7 +356,8 @@
   box-shadow: none !important; }
 
 #desktop-chat-link {
-  opacity: 0; }
+  opacity: 0;
+  display: none; }
 
 #intercom-container {
   display: none; }
@@ -371,6 +372,10 @@
       bottom: auto !important;
       position: absolute !important;
       z-index: 5 !important; }
+  #intercom-container .intercom-launcher-preview {
+    position: absolute;
+    bottom: -8px;
+    right: 70px; }
   #intercom-container.active {
     display: block !important; }
 
