@@ -89,6 +89,12 @@ var moveHorizontalSlider = function(sliderElem, targetElem, successCallback) {
     }
 }
 
+var countupElement = function(elemId, start, end, duration) {
+    var countAnimation = new CountUp(elemId, start, end, 1, duration);
+    $(elemId).show();
+    countAnimation.start();
+}
+
 
 
 // sliderItem = document.querySelector('#slider-triangle');

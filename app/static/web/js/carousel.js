@@ -138,9 +138,9 @@
                             self.next();
                         }
                     }
-                    else {
-                        self.showPane(current_pane, true);
-                    }
+                    // else {
+                    //     self.showPane(current_pane, true);
+                    // }
                     break;
             }
         }
@@ -171,6 +171,7 @@
 
     //handles all the scroll shifts
     $('html').on('mousewheel', function (e) {
+        console.log('mousewheel');
         var delta = e.originalEvent.wheelDelta;
 
         currentIndex = $('#slide-breadcrumbs li a').index($('#slide-breadcrumbs li a.active'));
@@ -226,11 +227,13 @@ var onTransitionStartCarousel = function(index) {
         $('#top-school-banner').css('opacity', 1);
     }
     if (index === 1) {
+
     }
     if (index === 2) {
         currentProgress = parseInt($('.work-infograph')[0].getAttribute('data-percent'));
         if (!currentProgress) {
             $('.work-infograph').data('easyPieChart').update(25);
+            countupElement('work-wage-animation', 0, 60, 5);
         }
     }
     if (index === 3) {
