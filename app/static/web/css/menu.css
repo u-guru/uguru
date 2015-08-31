@@ -250,13 +250,10 @@
 @media screen and (min-width: 35.5em) {
   #desktop-start-link, #desktop-chat-link {
     display: inline-block; }
-
   #mobile-start-link, #mobile-chat-link {
     display: none; }
-
   #side-menu {
     max-width: 300px; }
-
   #start-modal {
     border-radius: 10px; }
     #start-modal .start-modal-platforms#start-modal-platforms-mobile li svg {
@@ -275,6 +272,7 @@
         font-size: 14px; }
     #start-modal .start-modal-platforms#start-modal-platforms-wear {
       display: none; } }
+
 #footer {
   position: fixed;
   bottom: 10px;
@@ -287,12 +285,14 @@
     max-height: 120px; }
   #start-modal .start-modal-platforms#start-modal-platforms-wear li svg {
     max-height: 60px; } }
+
 @media screen and (min-width: 84em) {
   #start-modal .start-modal-platforms#start-modal-platforms-mobile li svg {
     max-width: 150px;
     max-height: 150px; }
   #start-modal .start-modal-platforms#start-modal-platforms-wear li svg {
     max-height: 100px; } }
+
 #modal-loader-container.active {
   display: block; }
 
@@ -312,7 +312,7 @@
 .front, .back {
   width: auto;
   overflow: hidden;
-  border-radius: 20px; }
+  border-radius: 10px; }
 
 #search .front, #search .back {
   height: 65% !important; }
@@ -381,5 +381,3 @@
     text-align: center; }
   #intercom-container.active {
     display: block !important; }
-
-/*# sourceMappingURL=menu.css.map */
