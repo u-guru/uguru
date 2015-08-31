@@ -145,9 +145,9 @@ def admin_statistics():
     # regular_devices = sorted(Device.getNonTestDevices(), key=lambda d:d.last_accessed, reverse=True)
     import json
     uni_targetted_arr = json.load(open('app/static/data/fa15_targetted.json'))
-    
+
     all_university_arr = json.load(open('app/static/data/fa15_all.json'))
-    
+
     all_targetted_names = [uni['name'] for uni in uni_targetted_arr]
     remaining_unis = [uni for uni in all_university_arr if uni['name'] not in all_targetted_names]
     for u in remaining_unis:
@@ -171,7 +171,7 @@ def admin_statistics():
     # school_colors = [uni for uni in remaining_unis if uni.get('school_color')]
     # fa_starts = [uni for uni in remaining_unis if uni.get('fa15_start')]
     # uni_length = len(all_university_arr)
-    
+
     # stats = {
     #     'latitude': (len(latitudes) / uni_length) * 100,
     #     'population': (len(populations) / uni_length) * 100,
@@ -182,7 +182,7 @@ def admin_statistics():
     # }
     uni_targetted_arr = sorted(uni_targetted_arr, key=lambda k:k['rank'])
     remaining_unis = sorted(remaining_unis, key=lambda k:k['rank'])
-    return render_template("admin/admin.stats.universities.html", 
+    return render_template("admin/admin.stats.universities.html",
         target_universities=uni_targetted_arr, remainder_universities=remaining_unis)
 
 ###############
@@ -418,7 +418,9 @@ def admin_logout():
 
 @app.route('/admin/universities/flickr/')
 def flicker_targetted_universities():
-    target_universities = University.query.filter_by(is_targetted=True).all()
+    import json
+    target_universities = json.load(open('app/static/data/fa15_all.json'))
+    # target_universities = University.query.filter_by(is_targetted=True).all()
     return render_template('new_admin/admin.universities.flickr.html', universities=target_universities)
 
 @app.route('/admin/flickr/<university_id>')
