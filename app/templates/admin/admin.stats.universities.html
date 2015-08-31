@@ -15,8 +15,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Devices
-            <small>All devices on our platform</small>
+            Universities Stats
+            <small>How many we have left to polish</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-bar-chart-o"></i> Home</a></li>
@@ -30,80 +30,30 @@
 
 
           <div class="row">
-            <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="col-lg-6 col-md-6 col-xs-12">
               <!-- small box -->
-              <div class="small-box bg-aqua">
+              <div class="small-box bg-olive">
                 <div class="inner">
-                  <h3>{{universities|length}}</h3>
-                  <p># Universities</p>
+                  <h3>{{target_universities|length}}</h3>
+                  <p>Total #of Targetted Universities</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-document"></i>
                 </div>
               </div>
             </div><!-- ./col -->
-          </div>
-
-          <div class='row'>
-            <div class='col-md-12'>
-              <div class="box box-info">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Universities Statistics</h3>
-                  <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                  </div>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <div class="table-responsive">
-                    <table class="table no-margin">
-                      <thead>
-                        <tr>
-                          <th style='text-align:center;'>Parameter</th>
-                          <th style='text-align:center;'>Percentage</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td style='text-align:center;'>Latitude/Longitude</td>
-                          <td style='text-align:center;'>{{stats['latitude']|int}}%</td>
-                        </tr>
-                        <tr>
-                          <td style='text-align:center;'>Website</td>
-                          <td style='text-align:center;'>{{stats['website']|int}}%</td>
-                        </tr>
-                        <tr>
-                          <td style='text-align:center;'>Population</td>
-                          <td style='text-align:center;'>{{stats['population']|int}}%</td>
-                        </tr>
-                        <tr>
-                          <td style='text-align:center;'>School Mascot Name</td>
-                          <td style='text-align:center;'>{{stats['school_mascot_name']|int}}%</td>
-                        </tr>
-                        <tr>
-                          <td style='text-align:center;'>School Casual Name</td>
-                          <td style='text-align:center;'>{{stats['school_casual_name']|int}}%</td>
-                        </tr>
-                        <tr>
-                          <td style='text-align:center;'>Logo Url</td>
-                          <td style='text-align:center;'>{{stats['logo_url']|int}}%</td>
-                        </tr>
-                        <tr>
-                          <td style='text-align:center;'>School Colors</td>
-                          <td style='text-align:center;'>{{stats['school_colors']|int}}%</td>
-                        </tr>
-                        <tr>
-                          <td style='text-align:center;'>Fa15 Dates</td>
-                          <td style='text-align:center;'>{{stats['fa15_start']|int}}%</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div><!-- /.table-responsive -->
-                </div><!-- /.box-body -->
+            <div class="col-lg-6 col-md-6 col-xs-12">
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <h3>{{remainder_universities|length}}</h3>
+                  <p>Total Unfinished Universities</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-document"></i>
+                </div>
               </div>
             </div>
           </div>
-
           <div class='row'>
             <div class='col-md-6'>
               <div class="box box-info">
@@ -119,23 +69,22 @@
                     <table class="table no-margin">
                       <thead>
                         <tr>
+                          <th >US News</th>
                           <th style='text-align:center;'>University</th>
-                          <th style='text-align:center'>Population</th>
-                          <th style='text-align:center;'>Start Date</th>
+                          <th >Population</th>
                         </tr>
                       </thead>
                       <tbody>
                         {% for university in target_universities %}
-                        {% if university.population > 15000 %}
                         <tr>
-                          <td style='text-align:center;'><img src='{{university.logo_url}}' height="30" width="30"> &nbsp; &nbsp;&nbsp; &nbsp;{{university.name}}&nbsp;&nbsp;
-                            <a href='/admin/flickr/{{university.id}}' target='_blank'><span style='opacity:0.5' class='glyphicon glyphicon-new-window'> </span> </a>
-                            <br><span style='font-size:85%; margin-left:25px;'> {{university.city}}, {{university.state}} </span>
+                          <td>
+                            {{university['rank']}}
                           </td>
-                          <td style='text-align:center;'>{{university.population}}</td>
-                          <td style='text-align:center;'>{{university.fa15_start.strftime('%b %d')}}</td>
+                          <td><img src='{{university.logo_url}}' height="30" width="30"> &nbsp; &nbsp;&nbsp; &nbsp;{{university.name}}&nbsp;&nbsp;
+                            <a href='/admin/flickr/{{university.id}}' target='_blank'><span style='opacity:0.5' class='glyphicon glyphicon-new-window'> </span> </a>
+                          </td>
+                          <td>{{university['population']}}</td>
                         </tr>
-                        {% endif %}
                         {% endfor %}
                       </tbody>
                     </table>
@@ -146,7 +95,7 @@
             <div class='col-md-6'>
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Upcoming Targeted Top 100 Universities</h3>
+                  <h3 class="box-title">Universities Left</h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -157,22 +106,21 @@
                     <table class="table no-margin">
                       <thead>
                         <tr>
-                          <th style='text-align:center;'>University</th>
-                          <th style='text-align:center'>Ranking</th>
-                          <th style='text-align:center;'>Start Date</th>
+                          <th>Ranking</th>
+                          <th style='text-align:center'>University</th>
+                          <th>Population</th>
+                          <th>Fields Remaining</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {% for university in target_universities %}
-                        {% if university.us_news_ranking < 100%}
+                        {% for university in remainder_universities %}
                         <tr>
-                          <td style='text-align:center;'><img src='{{university.logo_url}}' height="30" width="30"> &nbsp; &nbsp;&nbsp; &nbsp;{{university.name}} <a href='/admin/flickr/{{university.id}}' target='_blank'><span style='opacity:0.5' class='glyphicon glyphicon-new-window'> </span> </a>
-                            <br><span style='font-size:85%; margin-left:25px;'> {{university.city}}, {{university.state}} </span>
+                          <td style='text-align:center;'>{{university['rank']}}th</td>
+                          <td style='text-align:center;'><img src='{{university.logo_url}}' height="30" width="30"> &nbsp; &nbsp;&nbsp; &nbsp;{{university['name']}} <a href='/admin/flickr/{{university.id}}' target='_blank'><span style='opacity:0.5' class='glyphicon glyphicon-new-window'> </span> </a>
                           </td>
-                          <td style='text-align:center;'>{{university.us_news_ranking}}th</td>
-                          <td style='text-align:center;'>{% if university.fa15_start %} {{university.fa15_start.strftime('%b %d')}} {% endif %} </td>
+                          <td style="text-align:center">{{university.population}}</td>
+                          <td style="text-align:center">{{university['fields_remaining']}}</td>
                         </tr>
-                        {% endif %}
                         {% endfor %}
                       </tbody>
                     </table>

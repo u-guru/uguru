@@ -15,13 +15,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Campaigns
-            <small>Shows Success of Our Email Campaigns at Particular Universities</small>
+            Email Scraping Progress
+            <small>Bens successes scraping emails</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-bar-chart-o"></i> Home</a></li>
             <li>Stats</li>
-            <li class="active">Campaigns</li>
+            <li class="active">Scraping</li>
           </ol>
         </section>
 
@@ -55,10 +55,10 @@
             </div><!-- ./col -->
           </div>
           <div class='row'>
-            <div class='col-md-12'>
+            <div class='col-md-6'>
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Email Campaign Status</h3>
+                  <h1 style='text-align:center !important; font-size:200%;'class="box-title center-text"><strong>{{university_arr|length}} </strong>schools scraped</h1>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -69,21 +69,87 @@
                     <table class="table no-margin">
                       <thead>
                         <tr>
-                          <th style='text-align:center;'>ID</th>
+                          <th style='text-align:center;'>US News Rank</th>
                           <th style='text-align:center;'>Name</th>
                           <th style='text-align:center;'>Population</th>
                           <th style='text-align:center;'>Count</th>
-                          <th style='text-align:center;'>Percentage</th>
                         </tr>
                       </thead>
                       <tbody>
                         {% for university in university_arr %}
                         <tr>
-                          <td style='text-align:center;'>{{university['id']}}</td>
+                          <td style='text-align:center;'>{{university['rank']}}</td>
                           <td style='text-align:center;'>{{university['name']}}</td>
                           <td style='text-align:center;'>{{university['population']}}</td>
-                          <td style='text-align:center;'>{{university['count']}}</td>
-                          <td style='text-align:center;'>{{university['percentage']}}%</td>
+                          <td style='text-align:center;'>{{university['count']|int}}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h1 style='text-align:center !important; font-size:200%;'class="box-title center-text"><strong>{{not_scrapeable|length}} </strong>Left to Scrape (by priority)</h1>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th style='text-align:center;'>US News Rank</th>
+                          <th style='text-align:center;'>Name</th>
+                          <th style='text-align:center;'>Population</th>
+                          <th style='text-align:center;'>Count</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for university in not_scrapeable %}
+                        <tr>
+                          <td style='text-align:center;'>{{university['rank']}}</td>
+                          <td style='text-align:center;'>{{university['name']}}</td>
+                          <td style='text-align:center;'>{{university['population']}}</td>
+                          <td style='text-align:center;'>{{university['count']|int}}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+              </div>
+            </div>
+            <div class='col-md-6'>
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h1 style='text-align:center !important; font-size:200%;'class="box-title center-text"><strong>{{remainder_arr|length}} </strong>schools remaining</h1>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th style='text-align:center;'>US News Rank</th>
+                          <th style='text-align:center;'>Name</th>
+                          <th style='text-align:center;'>Population</th>
+                          <th style='text-align:center;'>Count</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for university in remainder_arr %}
+                        <tr>
+                          <td style='text-align:center;'>{{university['rank']}}</td>
+                          <td style='text-align:center;'>{{university['name']}}</td>
+                          <td style='text-align:center;'>{{university['population']}}</td>
+                          <td style='text-align:center;'>{{university['count']|int}}</td>
                         </tr>
                         {% endfor %}
                       </tbody>
@@ -93,6 +159,7 @@
               </div>
             </div>
           </div>
+
 
 
 

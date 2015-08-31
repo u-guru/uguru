@@ -126,25 +126,16 @@ def admin_stats_campaigns():
     import requests, json
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    response = requests.get(
-        "https://api.mailgun.net/v2/lists",
-        auth=('api', 'key-bfe01b1e2cb76d45e086c2fa5e813781'),
-        )
-    arr = json.loads(response.text)
-    university_arr = []
-    for list_info in arr['items']:
-        description = list_info['description']
-        description_parsed = description.split('|')
-        university_arr.append({
-            'id': description_parsed[1].split(':')[1],
-            'name': description_parsed[0].split(':')[1],
-            'count': float(list_info['members_count']),
-            'population': float(description_parsed[2].split(':')[1]),
-            'percentage': int((float(list_info['members_count'])) / (float(description_parsed[2].split(':')[1]) * 1.0) * 100)
-        })
-    university_arr = sorted(university_arr, key=lambda u:u['count'], reverse=True)
-    _sum = sum([uni['count'] for uni in university_arr])
-    return render_template("admin/admin.stats.campaigns.html", university_arr=university_arr, sum=_sum)
+
+    from lib.mailgun import get_all_university_progress
+    results_arr, no_results_arr = get_all_university_progress()
+
+    results_arr = sorted(results_arr, key=lambda u:int(u['rank']))
+    no_results_arr = sorted(no_results_arr, key=lambda u:int(u['rank']))
+    _sum = sum([uni['count'] for uni in results_arr])
+    not_scrapeable = []
+    return render_template("admin/admin.stats.campaigns.html", university_arr=results_arr, sum=_sum, \
+        remainder_arr=no_results_arr, not_scrapeable=not_scrapeable)
 
 @app.route('/admin/stats/universities/')
 def admin_statistics():
@@ -152,30 +143,47 @@ def admin_statistics():
         return redirect(url_for('admin_login'))
     # test_devices = sorted(Device.getTestDevices(), key=lambda d:d.last_accessed, reverse=True)
     # regular_devices = sorted(Device.getNonTestDevices(), key=lambda d:d.last_accessed, reverse=True)
-    universities = University.query.all()
-    uni_length = len(universities) * 1.0
-    latitudes = University.query.filter_by(latitude=None).all()
-    websites = University.query.filter_by(website=None).all()
-    populations = University.query.filter_by(population=None).all()
-    school_mascots = University.query.filter_by(school_mascot_name=None).all()
-    school_casuals = University.query.filter_by(school_casual_name=None).all()
-    logo_urls = University.query.filter_by(logo_url=None).all()
-    school_colors = University.query.filter_by(school_color_one=None).all()
-    fa_starts = University.query.filter_by(fa15_start=None).all()
-    target_universities = University.query.filter_by(is_targetted=True).all()
-    target_universities = sorted(target_universities, key=lambda d:(d.fa15_start or datetime.now()) )
-    stats = {
-        'latitude': ((uni_length - len(latitudes)) / uni_length) * 100,
-        'website': ((uni_length - len(websites)) / uni_length) * 100,
-        'population': ((uni_length - len(populations)) / uni_length) * 100,
-        'school_mascot_name': ((uni_length - len(school_mascots)) / uni_length) * 100,
-        'school_casual_name': ((uni_length - len(school_casuals)) / uni_length) * 100,
-        'logo_url': ((uni_length - len(logo_urls)) / uni_length) * 100,
-        'school_colors': ((uni_length - len(school_colors)) / uni_length) * 100,
-        'fa15_start': ((uni_length - len(fa_starts)) / uni_length) * 100
-    }
-    return render_template("admin/admin.stats.universities.html", universities =universities, stats=stats,\
-        target_universities=target_universities)
+    import json
+    uni_targetted_arr = json.load(open('app/static/data/fa15_targetted.json'))
+    
+    all_university_arr = json.load(open('app/static/data/fa15_all.json'))
+    
+    all_targetted_names = [uni['name'] for uni in uni_targetted_arr]
+    remaining_unis = [uni for uni in all_university_arr if uni['name'] not in all_targetted_names]
+    for u in remaining_unis:
+        fields_remaining = ""
+        if not u.get('latitude'):
+            fields_remaining += 'lat/long '
+        if not u.get('fa15_start'):
+            fields_remaining += 'fa15_start '
+        if not u.get('logo_url'):
+            fields_remaining += 'logo_url '
+        if not u.get('school_color_one'):
+            fields_remaining += 'school_colors '
+        if not u.get('population'):
+            fields_remaining += 'population '
+        u['fields_remaining'] = fields_remaining
+
+    # latitudes = [uni for uni in remaining_unis if uni.get('latitude')]
+    # populations = [uni for uni in remaining_unis if uni.get('population')]
+    # banner_urls = [uni for uni in remaining_unis if uni.get('banner_url')]
+    # logo_urls = [uni for uni in remaining_unis if uni.get('logo_url')]
+    # school_colors = [uni for uni in remaining_unis if uni.get('school_color')]
+    # fa_starts = [uni for uni in remaining_unis if uni.get('fa15_start')]
+    # uni_length = len(all_university_arr)
+    
+    # stats = {
+    #     'latitude': (len(latitudes) / uni_length) * 100,
+    #     'population': (len(populations) / uni_length) * 100,
+    #     'logo_url': (len(logo_urls) / uni_length) * 100,
+    #     'banner_urls': (len(banner_urls) / uni_length) * 100,
+    #     'school_colors': (len(school_colors) / uni_length) * 100,
+    #     'fa15_start': (len(fa_starts) / uni_length) * 100
+    # }
+    uni_targetted_arr = sorted(uni_targetted_arr, key=lambda k:k['rank'])
+    remaining_unis = sorted(remaining_unis, key=lambda k:k['rank'])
+    return render_template("admin/admin.stats.universities.html", 
+        target_universities=uni_targetted_arr, remainder_universities=remaining_unis)
 
 ###############
 ## Investors ##

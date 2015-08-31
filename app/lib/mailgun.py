@@ -48,22 +48,28 @@ def add_students_to_mailing_list(university_name, student_objs):
 def get_all_university_progress():
     import json
     results_arr = []
+    no_results_arr = []
     response = requests.get(
         "https://api.mailgun.net/v2/lists",
         auth=('api', 'key-bfe01b1e2cb76d45e086c2fa5e813781')
         )
     arr = json.loads(response.text)
-    print len(arr['items'])
-    print '\nretrieving ...\n'
     for list_info in arr['items']:
         count = float(list_info['members_count'])
         description = list_info['description']
         description_parsed = description.split('|')
         uni_name = description_parsed[0].split(':')[1]
         uni_id = description_parsed[1].split(':')[1]
-        # uni_population = float(description_parsed[2].split(':')[1])
+        if 'rank' in description:
+            list_info['rank'] = description_parsed[-2].split(':')[1]
+        else:
+            list_info['rank'] = 220
+        uni_population = str(description_parsed[2].split(':')[1])
         # percentage = int(count / (uni_population * 1.0) * 100)
-        if count > 0: results_arr.append({'name': uni_name,'count': count})
+        if count > 0: 
+            results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
+        else:
+            no_results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
         # print uni_name, ' || ', str(int(count)) + ' out of ' + str(int(uni_population)) + ' students',' || ', str(percentage) + '% complete'
 
     response = requests.get(
@@ -73,17 +79,24 @@ def get_all_university_progress():
         )
 
     arr = json.loads(response.text)
-    print '\nretrieving ... ...\n'
-    print len(arr['items'])
+    # print '\nretrieving ... ...\n'
+    # print len(arr['items'])
     for list_info in arr['items']:
         count = float(list_info['members_count'])
         description = list_info['description']
         description_parsed = description.split('|')
         uni_name = description_parsed[0].split(':')[1]
         uni_id = description_parsed[1].split(':')[1]
-        # uni_population = float(description_parsed[2].split(':')[1])
+        if 'rank' in description:
+            list_info['rank'] = description_parsed[-2].split(':')[1]
+        else:
+            list_info['rank'] = 220
+        uni_population = str(description_parsed[2].split(':')[1])
         # percentage = int(count / (uni_population * 1.0) * 100)
-        if count > 0: results_arr.append({'name': uni_name,'count': count})
+        if count > 0: 
+            results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
+        else:
+            no_results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
         # print uni_name, ' || ', str(int(count)) + ' out of ' + str(int(uni_population)) + ' students',' || ', str(percentage) + '% complete'
 
 
@@ -102,18 +115,27 @@ def get_all_university_progress():
         description_parsed = description.split('|')
         uni_name = description_parsed[0].split(':')[1]
         uni_id = description_parsed[1].split(':')[1]
-        # uni_population = float(description_parsed[2].split(':')[1])
+        if 'rank' in description:
+            list_info['rank'] = description_parsed[-2].split(':')[1]
+        else:
+            list_info['rank'] = 220
+        uni_population = str(description_parsed[2].split(':')[1])
         # percentage = int(count / (uni_population * 1.0) * 100)
-        if count > 0: results_arr.append({'name': uni_name,'count': count})
+        if count > 0: 
+            results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
+        else:
+            no_results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
         # print uni_name, ' || ', str(int(count)) + ' out of ' + str(int(uni_population)) + ' students',' || ', str(percentage) + '% complete'
 
     if results_arr:
         results_arr = sorted(results_arr, key=lambda r:r['count'], reverse=True)
         print '# of universities with emails:', len(results_arr), '\n'
-        index = 1
-        for result in results_arr:
-            print '#%d. %s has %d students' % (index, result['name'], result['count'])
-            index+=1
+        print '# of universities with emails:', len(no_results_arr), '\n'
+        # index = 1
+        # for result in results_arr:
+            # print '#%d. %s has %d students' % (index, result['name'], result['count'])
+            # index+=1
+    return results_arr, no_results_arr
 
 
 def get_university_progress(university_name):
