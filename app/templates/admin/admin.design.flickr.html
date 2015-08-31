@@ -56,6 +56,18 @@
             </div>
           </div> -->
           <div class="row">
+              <div class='col-md-12'>
+                <div class="box box-solid" style='max-height:350px'>
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><strong>Current {{university.name}} Banner</strong></h3>
+                    <div class="box-body" >
+                        <img style='width:100%; height:80%; max-height:300px;' src='{{university.banner_url}}'/>
+                    </div><!-- /.box-body -->
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="row">
             {% for photo in flickr_photos %}
             <div class="col-md-6">
               <div class="box box-solid" style='max-height:350px'>
