@@ -1,6 +1,6 @@
 import tor_client, json,time
 from bs4 import BeautifulSoup
-
+from mailgun import *
 
 
 huge_arr = []
@@ -9,24 +9,28 @@ for names in names_arr:
 
 	url = 'https://iris.reed.edu/directory/search/public_search?utf8=%E2%9C%93&public_name_typeahead='+names+'&q%5Bin_department%5D=&commit=Search'
 	time.sleep(5)
-	soup = BeautifulSoup(tor_client.get(url).text)
-	main_wrapper = soup.findAll('ul', attrs = {'id':'people'})
-	for wrapper in main_wrapper:
-		name = wrapper.findAll('div', attrs = {'class':'public_results_name'})
-		type_student = wrapper.findAll('div', attrs = {'class':'public_results_title'})
-		email = wrapper.findAll('a')
-		for name_1, type_student_1, email_1 in zip(name,type_student,email):
-			dictionary = {}
-			dictionary['name'] = name_1.text.replace('\n','')
-			type_info = type_student_1.text
-			if "Student" not in type_info:
-				dictionary['type'] = None
-				pass
-			else:
-				dictionary['type'] = type_info.replace('\n','')
-			dictionary['email'] = email_1.text
-			dictionary['first_name'] = name_1.text.split(' ')[12]
-			dictionary['last_name'] = name_1.text.split(' ')[13]
-			huge_arr.append(dictionary)
-	with open('reed_college_data.json','wb') as outfile:
-		json.dump(huge_arr,outfile,indent=4)
+	try:
+		soup = BeautifulSoup(tor_client.get(url).text)
+		main_wrapper = soup.findAll('ul', attrs = {'id':'people'})
+		for wrapper in main_wrapper:
+			name = wrapper.findAll('div', attrs = {'class':'public_results_name'})
+			type_student = wrapper.findAll('div', attrs = {'class':'public_results_title'})
+			email = wrapper.findAll('a')
+			for name_1, type_student_1, email_1 in zip(name,type_student,email):
+				dictionary = {}
+				dictionary['name'] = name_1.text.replace('\n','')
+				# type_info = type_student_1.text
+				# if "Student" not in type_info:
+				# 	# dictionary['type'] = None
+				# 	pass
+				# else:
+				# 	# dictionary['type'] = type_info.replace('\n','')
+				dictionary['email'] = email_1.text
+				# dictionary['first_name'] = name_1.text.split(' ')[12]
+				# dictionary['last_name'] = name_1.text.split(' ')[13]
+				huge_arr.append(dictionary)
+		with open('reed_college_data.json','wb') as outfile:
+			json.dump(huge_arr,outfile,indent=4)
+			add_students_to_mailing_list('Reed College',huge_arr)
+	except ConnectionError:
+		continue

@@ -1,6 +1,6 @@
 import tor_client, json,time
 from bs4 import BeautifulSoup
-
+from mailgun import*
 
 output = 'central_oklahama_data.json'
 huge_arr = []
@@ -8,20 +8,23 @@ names_arr = ["Michael", "Christopher", "Matthew", "Joshua", "Tyler", "Brandon", 
 for names in names_arr:
 	url  = 'http://www2.uco.edu/centraldirectory/FSSearch.aspx?__LASTFOCUS=&__EVENTTARGET=&__EVENTARGUMENT=&__VIEWSTATE=%2FwEPDwUKLTg3MDk0ODc1Mg9kFgJmD2QWCgIFDxYGHglpbm5lcmh0bWwFajx1bCBjbGFzcz1jcnVtYl90cmFpbD48bGk%2BPGEgaHJlZj0nRGVmYXVsdC5hc3B4Jz5DZW50cmFsIERpcmVjdG9yeTwvYT48L2xpPjxsaT5GYWN1bHR5IGFuZCBTdGFmZjwvbGk%2BPC91bD4eBXN0eWxlBQ5kaXNwbGF5OmJsb2NrOx4HVmlzaWJsZWdkAgcPZBYCAgEPZBYCAgMPPCsADQEADxYCHwJoZGQCCQ8WAh8CaGQCCw8WBh8BBShkaXNwbGF5OmJsb2NrO3Bvc2l0aW9uOnJlbGF0aXZlO3RvcDoyZW07HwAF0gQ8dWwgc3R5bGU9J21hcmdpbi1ib3R0b206IDAnPjxsaSBjbGFzcz0nZmlyc3QtY2hpbGQnPjxhIGhyZWY9J2h0dHA6Ly93d3cudWNvLmVkdS8nID4mbmJzcDtIb21lJm5ic3A7PC9hPjwvbGk%2BPGxpPjxhIGhyZWY9J2h0dHA6Ly93d3cudWNvLmVkdS9hZG1pbmlzdHJhdGlvbi9odW1hbi1yZXNvdXJjZXMvaW5kZXguYXNwJz4mbmJzcDtIdW1hbiBSZXNvdXJjZXMmbmJzcDs8L2E%2BPC9saT48bGk%2BPGEgaHJlZj0naHR0cDovL3d3dy51Y28uZWR1L2RpcmVjdG9yeSc%2BJm5ic3A7Q2FtcHVzIERpcmVjdG9yeSZuYnNwOzwvYT48L2xpPjxsaT48YSBocmVmPSdodHRwOi8vd3d3LnVjby5lZHUvcmVzb3VyY2VzL21hcHMuYXNwJz4mbmJzcDtDYW1wdXMgTWFwcyZuYnNwOzwvYT48L2xpPjxsaT48YSBocmVmPSdodHRwOi8vd3d3LnVjby5lZHUvdGVjaG5vbG9neS9zdXBwb3J0L2luZGV4LmFzcCc%2BJm5ic3A7VGVjaCBTdXBwb3J0Jm5ic3A7PC9hPjwvbGk%2BPGxpIGNsYXNzPSdsYXN0LWNoaWxkJz48YSBocmVmPSdodHRwOi8vd3d3LnVjby5lZHUvbGVnYWxfYW5kX3BvbGljaWVzLmFzcCcgPiZuYnNwO1BvbGljeSBDZW50cmFsJm5ic3A7PC9hPjwvbGk%2BPC91bD4fAmdkAg4PDxYCHgRUZXh0BQowOS8zMC8yMDExZGQYAQUjY3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSRndlJlc3VsdHMPZ2Sl2tJNwuBf59%2Frh7FInSEk4QSqKg%3D%3D&__VIEWSTATEGENERATOR=35105D61&__SCROLLPOSITIONX=0&__SCROLLPOSITIONY=32&__EVENTVALIDATION=%2FwEWBQK%2FvNTmCALozcS4CQKEtJirCQKGvurtAQL3uvOGApjVnPl0idfJQgRlKHJQx3wCJYrw&ctl00%24ContentPlaceHolder1%24txtFirstName='+names+'&ctl00%24ContentPlaceHolder1%24txtLastName=&ctl00%24ContentPlaceHolder1%24txtDepartment=&ctl00%24ContentPlaceHolder1%24btnSearch=Run+Search'
 	time.sleep(5)
-	soup = BeautifulSoup(tor_client.get(url).text)
-	main_wrapper = soup.findAll('table', attrs = {'class':'tbl results'})
-	for wrapper in main_wrapper:
-		name = wrapper.findAll('tr')
-		for name_info in name:
-			first_name = name_info.findAll('td', attrs = {'align':'left'})[1:2]
-			last_name = name_info.findAll('td', attrs = {'align':'left'})[0:1]
-			email = name_info.findAll('a')
-			for first_name_text,last_name_text,email_text in zip(first_name,last_name,email):
-				dictionary = {}
-				dictionary['first_name'] = first_name_text.text
-				dictionary['last_name'] = last_name_text.text
-				dictionary['email'] = email_text.text
-				huge_arr.append(dictionary)
-			with open(output,'wb') as outfile:
-				json.dump(huge_arr,outfile,indent = 4)
-				
+	try:
+		soup = BeautifulSoup(tor_client.get(url).text)
+		main_wrapper = soup.findAll('table', attrs = {'class':'tbl results'})
+		for wrapper in main_wrapper:
+			name = wrapper.findAll('tr')
+			for name_info in name:
+				first_name = name_info.findAll('td', attrs = {'align':'left'})[1:2]
+				last_name = name_info.findAll('td', attrs = {'align':'left'})[0:1]
+				email = name_info.findAll('a')
+				for first_name_text,last_name_text,email_text in zip(first_name,last_name,email):
+					dictionary = {}
+					# dictionary['first_name'] = first_name_text.text
+					# dictionary['last_name'] = last_name_text.text
+					dictionary['email'] = email_text.text
+					huge_arr.append(dictionary)
+				with open(output,'wb') as outfile:
+					json.dump(huge_arr,outfile,indent = 4)
+					add_students_to_mailing_list('Oklahoma State University',huge_arr)
+	except ConnectionError:
+		continue

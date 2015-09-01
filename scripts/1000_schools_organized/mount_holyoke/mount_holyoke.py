@@ -1,4 +1,4 @@
-import requests, json
+import requests, json,time
 from bs4 import BeautifulSoup
 
 huge_arr = []
@@ -6,6 +6,7 @@ names_arr = ["Michael", "Christopher", "Matthew", "Joshua", "Tyler", "Brandon", 
 for names in names_arr:
 
 	params = {'search_for_whom':names,'facstaff_Search':'search'}
+	time.sleep(5)
 	soup = BeautifulSoup(requests.post('https://webmail.mtholyoke.edu/horde/webshell/phd/open-phd-student.php',params).text)
 	main_wrapper = soup.findAll('td',attrs = {'colspan':'1'})
 	for wrapper in main_wrapper:

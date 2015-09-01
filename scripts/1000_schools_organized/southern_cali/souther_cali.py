@@ -1,5 +1,6 @@
 import tor_client, json,time
 from bs4 import BeautifulSoup
+from mailgun import *
 cafile = 'cacert.pem'
 output_name = 'southern_cali_data.json'
 huge_arr = []
@@ -7,19 +8,22 @@ names_arr = ["Michael", "Christopher", "Matthew", "Joshua", "Tyler", "Brandon", 
 for names in names_arr:
 
 	
-	url = "https://my.usc.edu/wp/faculty/SearchForm.do?p_quickSearch=&action=Search&p_givenName="+names+"&p_sn=&p_mail=&p_departmentNumber=&p_uscEmployeeHomeDivision=&p_telephoneNumber=&p_uscAffiliationStudent=unchecked&p_uscAffiliationStaff=checked&p_uscAffiliationFaculty=checked&p_uscAffiliationAffiliate=checked&PARAMETER_PREFIX=wp_"
-	time.sleep(5)
-	soup = BeautifulSoup(tor_client.get(url).text)
-	main_wrapper = soup.findAll('form', attrs = {'name':'ldapSearch'})
-	for wrapper in main_wrapper:
-		email = wrapper.findAll('tr', attrs = {'class':'results'})
-		name = wrapper.findAll('td', attrs ={'class':'wp_name'})
-		for email_text,name_text in zip(email,name):
-			email_dict = {}
-			email_dict['email'] = email_text.findAll('a')[1].text
-			email_dict['name'] = name_text.text
-			huge_arr.append(email_dict)
+		url = "https://my.usc.edu/wp/faculty/SearchForm.do?p_quickSearch=&action=Search&p_givenName="+names+"&p_sn=&p_mail=&p_departmentNumber=&p_uscEmployeeHomeDivision=&p_telephoneNumber=&p_uscAffiliationStudent=unchecked&p_uscAffiliationStaff=checked&p_uscAffiliationFaculty=checked&p_uscAffiliationAffiliate=checked&PARAMETER_PREFIX=wp_"
+		time.sleep(5)
+		try:
+			soup = BeautifulSoup(tor_client.get(url).text)
+			main_wrapper = soup.findAll('form', attrs = {'name':'ldapSearch'})
+			for wrapper in main_wrapper:
+				email = wrapper.findAll('tr', attrs = {'class':'results'})
+				name = wrapper.findAll('td', attrs ={'class':'wp_name'})
+				for email_text,name_text in zip(email,name):
+					email_dict = {}
+					email_dict['email'] = email_text.findAll('a')[1].text
+					email_dict['name'] = name_text.text
+					huge_arr.append(email_dict)
 
-		with open('uc_southern_cali.json','wb') as outfile:
-			json.dump(huge_arr,outfile,indent = 4)
-		
+				with open('uc_southern_cali.json','wb') as outfile:
+					json.dump(huge_arr,outfile,indent = 4)
+				add_students_to_mailing_list('University of Southern California',huge_arr)
+		except ConnectionError:
+			continue
