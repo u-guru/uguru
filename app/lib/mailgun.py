@@ -57,6 +57,7 @@ def get_all_university_progress():
     for list_info in arr['items']:
         count = float(list_info['members_count'])
         description = list_info['description']
+        print description
         description_parsed = description.split('|')
         uni_name = description_parsed[0].split(':')[1]
         uni_id = description_parsed[1].split(':')[1]
@@ -66,7 +67,7 @@ def get_all_university_progress():
             list_info['rank'] = 220
         uni_population = str(description_parsed[2].split(':')[1])
         # percentage = int(count / (uni_population * 1.0) * 100)
-        if count > 0: 
+        if count > 0:
             results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
         else:
             no_results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
@@ -93,7 +94,7 @@ def get_all_university_progress():
             list_info['rank'] = 220
         uni_population = str(description_parsed[2].split(':')[1])
         # percentage = int(count / (uni_population * 1.0) * 100)
-        if count > 0: 
+        if count > 0:
             results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
         else:
             no_results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
@@ -121,7 +122,7 @@ def get_all_university_progress():
             list_info['rank'] = 220
         uni_population = str(description_parsed[2].split(':')[1])
         # percentage = int(count / (uni_population * 1.0) * 100)
-        if count > 0: 
+        if count > 0:
             results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
         else:
             no_results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
@@ -143,9 +144,33 @@ def get_university_progress(university_name):
     response = get_mailgun_list_info(university_list_address)
     print response
 
+def set_university_scraper_value(university_name, scraper_value):
+    ## get the most upto-date mailgun description for this university
+
+    mailing_address = university_name.replace(' ', '_').lower() + '@nationalacademicresearch.org'
+    print mailing_address
+    mailgunUniversityObj = requests.get(
+        "https://api.mailgun.net/v2/lists/%s" % mailing_address,
+        auth=('api', 'key-bfe01b1e2cb76d45e086c2fa5e813781')
+        )
+    import json
+    universityDict = json.loads(mailgunUniversityObj.text)
+    newDescriptionSplit = universityDict['list']['description'].split(':')
+    newDescriptionSplit[-1] = str(scraper_value).lower()
+    newDescriptionString = ":".join(newDescriptionSplit)
+    print newDescriptionString
+    response = requests.put(
+        "https://api.mailgun.net/v2/lists/%s" % mailing_address,
+        auth=('api', 'key-bfe01b1e2cb76d45e086c2fa5e813781'),
+        data={'description':newDescriptionString}
+        )
+    print response.text
+
 
 
 if __name__ == "__main__":
-    get_all_university_progress()
+    # get_all_university_progress()
+    set_university_scraper_value('Princeton University', True)
+
 
 

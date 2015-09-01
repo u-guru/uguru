@@ -73,15 +73,18 @@
                           <th style='text-align:center;'>Name</th>
                           <th style='text-align:center;'>Population</th>
                           <th style='text-align:center;'>Count</th>
+                          <th style='text-align:center;'>Percentage</th>
                         </tr>
                       </thead>
                       <tbody>
                         {% for university in university_arr %}
-                        <tr>
+                          {% set percentage = ((university['count'] / (university['population'])|int) * 100)|round(2, 'floor') %}
+                        <tr class='{% if percentage > 10 %} bg-warning {% elif percentage > 50 %} success bg-olive {% else %} bg-danger {% endif %}'>
                           <td style='text-align:center;'>{{university['rank']}}</td>
                           <td style='text-align:center;'>{{university['name']}}</td>
                           <td style='text-align:center;'>{{university['population']}}</td>
                           <td style='text-align:center;'>{{university['count']|int}}</td>
+                          <td style='text-align:center;'>{{percentage}}%</td>
                         </tr>
                         {% endfor %}
                       </tbody>
