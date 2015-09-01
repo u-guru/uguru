@@ -220,6 +220,9 @@ button, a[class*=btn] {
 	#earn {
 		background: $charcoal;
 		text-align: center;
+		i {
+			font-style: normal!important;
+		}
 		.inside {
 			.inside-text {
 				#earn-categories-desktop {
@@ -262,8 +265,11 @@ button, a[class*=btn] {
 			}
 			.earn-category-mobile {
 				position: relative;
-				width: 33.3333%;
+				width: calc(100%/3);
 				height: 100px;
+				.front, .back {
+					border-radius: 0!important;
+				}
 				> div {
 					cursor: pointer;
 					top: 0;
@@ -1048,8 +1054,10 @@ button, a[class*=btn] {
 					padding: 20px 30px;
 					box-sizing: border-box;
 					border: 0;
-					border-bottom: 5px solid $lake;
+					border-bottom: 5px solid $shamrock;
+					background: $slate;
 					font-size: 24px;
+					color: white;
 				}
 				::-webkit-input-placeholder {
 				   color: #ddd;
@@ -1063,6 +1071,20 @@ button, a[class*=btn] {
 				:-ms-input-placeholder {
 				   color: #ddd;
 				}
+				input:active, input:focus, input:hover {
+					&::-webkit-input-placeholder {
+					   color: white;
+					}
+					&:-moz-placeholder {
+					   color: white;
+					}
+					&::-moz-placeholder {
+					   color: white;
+					}
+					&:-ms-input-placeholder {
+					   color: white;
+					}
+				}
 				.twitter-typeahead {
 					display: block!important;
 					width: 100%;
@@ -1071,6 +1093,7 @@ button, a[class*=btn] {
 					background: white;
 					width: 100%;
 					.tt-suggestion {
+						position: relative!important;
 						display: table!important;
 						width: 100%;
 						cursor: pointer;
@@ -1103,8 +1126,20 @@ button, a[class*=btn] {
 							}
 						}
 					}
-					.tt-suggestion:hover {
-						background: $smoke;
+					.tt-suggestion:after {
+						content: "";
+						display: block;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+					}
+					.tt-suggestion:hover:after {
+						background: rgba(0,0,0,.05);
+					}
+					#tt-no-results {
+						font-weight: 400!important;
 					}
 				}
 				#search-results {
@@ -1113,6 +1148,7 @@ button, a[class*=btn] {
 					position: absolute;
 					width: 100%;
 					li {
+						position: relative;
 						display: table;
 						width: 100%;
 						cursor: pointer;
@@ -1145,8 +1181,17 @@ button, a[class*=btn] {
 							}
 						}
 					}
-					li:hover {
-						background: $smoke;
+					li:after {
+						content: "";
+						display: block;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+					}
+					li:hover:after {
+						background: rgba(0,0,0,.05);
 					}
 				}
 			}
@@ -1215,17 +1260,21 @@ button, a[class*=btn] {
 								ul {
 									@include listless;
 									@include center-xy;
+									@include flex;
+									@include flex-wrap;
+									@include flex-center;
 									width: 100%;
-									padding: 10px;
+									height: 100%;
 									box-sizing: border-box!important;
 									li {
-										padding: 7px 0;
-										border-bottom: 1px solid $charcoal;
+										@include flex;
+										@include flex-wrap;
+										@include flex-center;
+										box-sizing: border-box;
+										width: 50%;
+										height: 50%;
 										font-size: 12px;
 										font-weight: 400;
-										&:last-child {
-											border-bottom: 0;
-										}
 									}
 								}
 							}
@@ -1393,7 +1442,7 @@ button, a[class*=btn] {
 			.inside {
 				ol {
 					> li {
-						width: 33.3333%;
+						width: calc(100%/3);
 					}
 					ul, div {
 						li {
@@ -1500,8 +1549,7 @@ button, a[class*=btn] {
 							}
 							.earn-category-back {
 								ul {
-									li {
-										padding: 10px 0;
+									li {;
 										font-size: 14px;
 									}
 								}
@@ -2417,5 +2465,34 @@ html, body, #main, #main ul.carousel, #main li.slide {
 		    margin-top: 2px;
 		    text-transform: uppercase;
 		}
+	}
+}
+
+#intercom-container {
+	* {
+		box-shadow: none!important;
+	}
+	.intercom-launcher-preview {
+		&::before {
+			background: none!important;
+		}
+	}
+	.intercom-launcher-button {
+		border: 0!important;
+		background-color: rgba(white,.2)!important;
+	}
+	.intercom-launcher-preview-body {
+		position: relative;
+		padding-left: 15px;
+	}
+	.intercom-launcher-preview-body:after {
+		@include round;
+		@include center-y;
+		left: 0;
+		content: "";
+		display: block;
+		width: 8px;
+		height: 8px;
+		background: $moola;
 	}
 }
