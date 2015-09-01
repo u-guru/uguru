@@ -221,6 +221,48 @@ class DeviceView(restful.Resource):
         return device, 200
 
 
+class HomeSubscribeView(restful.Resource):
+
+    def post(self):
+        if request.json.get('phone_number'):
+            phone_number = request.json.get('phone_number')
+            from texts import send_text_message
+            message = '[Uguru] Download the Uguru App here: http://uguru.me/app/'
+            result = send_text_message(phone_number, message)
+            if not (result):
+                return 422
+            return 200
+
+        if request.json.get('email'):
+            email = request.json.get('email')
+            print request.json.get('email')
+            from emails import send_web_reminder_email
+            subject = 're: following up - got a min?'
+            message = """
+            <br><br>
+            Just wanted to take a sec & personally invite you to the platform!
+            <br> <br>
+            Plz let me know if you ...
+            <br><br>
+            &nbsp;&nbsp;&nbsp;1. Have any questions<br>
+            &nbsp;&nbsp;&nbsp;2. This email was entered by mistake<br>
+            &nbsp;&nbsp;&nbsp;3. Want an access code for our app
+            <br><br><br>
+            Have a good one!<br><br>
+            --<br>
+            Samir<br>
+            Founding Guru<br>
+            <br><br><br>
+            sent w/ iPhone, if iTypos... iApologhiz
+            """
+
+            result = send_web_reminder_email(email, subject, message)
+            if not (result):
+                return 422
+            return 200
+
+
+        abort(400)
 
 class UserPhoneView(restful.Resource):
     def post(self):
@@ -2556,6 +2598,8 @@ class AdminViewGithubLabels(restful.Resource):
         pass
 
 
+
+
 class AdminViewGithubIssues(restful.Resource):
 
     #get all issues + labels
@@ -3020,6 +3064,7 @@ api.add_resource(SkillListView, '/api/v1/skills')
 api.add_resource(ProfessionListView, '/api/v1/professions')
 api.add_resource(UserEmailView, '/api/v1/user_emails')
 api.add_resource(GithubIssueView, '/api/v1/github')
+api.add_resource(HomeSubscribeView, '/api/v1/web/home/subscribe')
 
 # Admin views
 api.add_resource(AdminSessionView, '/api/admin')

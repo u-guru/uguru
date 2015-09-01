@@ -14,7 +14,6 @@ if (LOCAL) {
   BASE_URL = 'http://localhost:8100'
  // REST_URL = 'http://localhost:5000';
   REST_URL = 'http://uguru-rest.herokuapp.com'
-
 } else {
   img_base = '/static/'
 }
@@ -311,6 +310,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/courses.html',
         controller: 'CoursesController'
   }).
+  state('root.gpa', {
+        url: '/gpa',
+        templateUrl: BASE + 'templates/dev/gpa.html',
+        controller: 'gpaController'
+  }). 
   state('root.student-session', {
         url: '/student-session:sessionObj',
         templateUrl: BASE + 'templates/student.session.html',

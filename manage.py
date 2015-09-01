@@ -23,6 +23,7 @@ def update_us_news():
             university = get_best_matching_universty(uni['name'])
             university.us_news_ranking = uni['rank']
             university.population = uni['population']
+            university.is_targetted = True
             db_session.commit()
             print university.id, university.name, university.us_news_ranking, university.population, 'saved'
         except:
@@ -702,10 +703,6 @@ if arg =='migrate':
             print "error with", user['email']
             db_session.rollback()
             continue
-
-
-
-
 
             # 'skills': get_user_skills(user),
             # 'conversations': get_user_conversations(user),

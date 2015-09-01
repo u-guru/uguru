@@ -1,0 +1,56 @@
+{% extends 'admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/admin/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Design Guidelines<br>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/admin/"><i class="fa fa-dashboard"></i> Home </a></li>
+            <li>Design</li>
+            <li>Guidelines</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+
+            <div class="col-md-12">
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <i class="fa fa-list"></i>
+                  <h3 style='text-align:center;'>Each Individual Workflow, Screen, or Component must follow these rules:</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <ul>
+                    <li>As simple as possible. Each component must serve a purpose</li>
+                    <li>Design should look great independent of any dependencies that involve animations</li>
+                    <li>Padding should follow an example on Jon's flintos'.</li>
+                    <li>Colors should feel like they are in place. Nothing appears dull at first glance. Contrasts should be immediately apparent.
+                    </li>
+                    <li>For anything that we dont have an example from our guide / Jon's flintos, you must find a popular, well-designed app to start as a foundation. Then apply the previous steps above this bullet point.
+                    </li>
+                  </ul>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div>
+
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="/static/js/admin/tables.js" type="text/javascript"></script>
+{% endblock %}
