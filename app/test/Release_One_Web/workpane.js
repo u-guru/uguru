@@ -57,6 +57,7 @@ describe('workpane Test', function () {
 
 			web.findElements(by.id("work-slider"),by.tagName('li')).then(function(elements)
 			{
+				console.log(elements.length);
 				elements[1].click();
 				elements[0].click();
 				elements[1].click();
