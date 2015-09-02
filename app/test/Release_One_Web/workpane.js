@@ -61,7 +61,7 @@ describe('workpane Test', function () {
 				elements[0].click();
 				elements[1].click();
 			 	expect(web.getElement(by.id('work-wage-content')).isDisplayed()).toBe(false);
-	 			browser.sleep(10000);
+	 			// browser.sleep(10000);
 
 			});
 			// web.getElement(by.id('work-wage')).click();

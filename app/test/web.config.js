@@ -26,9 +26,10 @@ exports.config = {
                 // start_two : '../test_case/Release_One_Web/homepage/started_box_2.js',
                 // breadcrumb : ['../test_case/Release_One_Web/homepage/breadcrumb.js'],
                 // loading : 'Release_One_Web/homepage/loading.js'
-                   // faq : 'Release_One_Web/faq.js',
-                   // workpane :'Release_One_Web/workpane.js'
-                   // // whypane : 'Release_One_Web/whypane.js',
+                  
+                    faq : 'Release_One_Web/faq.js',
+                     workpane :'Release_One_Web/workpane.js',
+                    whypane : 'Release_One_Web/whypane.js',
                     searchpane : 'Release_One_Web/searchpane.js'
 
         },
@@ -40,8 +41,8 @@ exports.config = {
                           defaultTimeoutInterval: 400000,
                           isVerbose: true,
                           silent: true
-                          // ,
-                          // print: function() {}
+                          ,
+                          print: function() {}
 
                           },
         // getPageTimeout: 10000,
