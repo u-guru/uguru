@@ -285,7 +285,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         font-size: 12px;
         font-weight: 400; }
         #main #earn #earn-categories-mobile ul li {
-          cursor: pointer;
           padding: 4px 0;
           border-bottom: 1px solid; }
           #main #earn #earn-categories-mobile ul li:first-child {
@@ -299,7 +298,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         #main #earn #earn-categories-mobile .earn-category-mobile .front, #main #earn #earn-categories-mobile .earn-category-mobile .back {
           border-radius: 0 !important; }
         #main #earn #earn-categories-mobile .earn-category-mobile > div {
-          cursor: pointer;
           top: 0;
           width: 100%;
           overflow-y: hidden; }
@@ -537,6 +535,10 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       padding: 6px 0; }
   #top-school-banner {
     opacity: 0; } }
+
+@media screen and (max-width: 35.5em) {
+  .intercom-launcher-preview {
+    display: none !important; } }
 
 @media screen and (min-width: 35.5em) {
   #top {
@@ -799,15 +801,9 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       top: 50%;
       padding: 35px 50px 45px; }
     #main #search .search-results {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      overflow: hidden; }
+      position: relative !important;
+      overflow: hidden;
+      height: 100%; }
       #main #search .search-results .search-results-top {
         padding: 25px 50px;
         background: #C56E9C;
@@ -1057,7 +1053,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     width: 100%;
     margin: -10px 0; }
     #main #earn .inside .inside-text #earn-categories-desktop .earn-category {
-      cursor: pointer;
       width: 25%;
       box-sizing: border-box;
       position: relative !important;
@@ -1435,10 +1430,12 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
   -webkit-justify-content: center;
   justify-content: center; }
 
+/*
 .body-loading-div svg.loader {
-  height: 80%;
-  width: auto; }
-
+	height: 80%;
+	width: auto;
+}
+*/
 .body-loading-div svg,
 .body-loading-div svg g {
   fill: #69B3A5;
@@ -1801,17 +1798,6 @@ html, body, #main, #main ul.carousel, #main li.slide {
   overflow: visible;
   top: 0px; }
 
-/*#start-modal {
-    backface-visibility: hidden;
-    visibility: visible;
-    opacity: 1;
-    display:block;
-    z-index: 10;
-    height: 100%;
-    top: 50%;
-    top:32%;
-    background-color: transparent;
-}*/
 .modal-main-container {
   backface-visibility: hidden;
   background-color: white;
