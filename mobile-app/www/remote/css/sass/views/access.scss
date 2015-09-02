@@ -1,0 +1,36 @@
+
+.uguru-view {
+
+    &.access-view {
+
+        input {
+            line-height:normal;
+            height:inherit;
+        }
+
+    }
+
+    &.how-it-works-view {
+        header {
+
+            position:relative;
+
+            h1 {
+                font-size: 32px;
+                font-weight: 600;
+                text-transform: uppercase;
+                color:white;
+            }
+
+            .left-buttons {
+                position: absolute;
+                left: 5%;
+                top: 20px;
+                opacity: 0.3;
+                a {
+                    color:white;
+                }
+            }
+        }
+    }
+}

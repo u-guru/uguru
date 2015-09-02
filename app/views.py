@@ -88,6 +88,9 @@ def admin_devices():
 def new_home_page():
     return render_template("web/index.html")
 
+
+
+
 @app.route('/faq/')
 def faq():
     return render_template("web/pages/faq.html")
@@ -123,6 +126,7 @@ def profile_page():
 
 @app.route('/admin/stats/campaigns/')
 def admin_stats_campaigns():
+    ### all logic
     import requests, json
     if not session.get('user'):
         return redirect(url_for('admin_login'))
@@ -130,10 +134,16 @@ def admin_stats_campaigns():
     from lib.mailgun import get_all_university_progress
     results_arr, no_results_arr = get_all_university_progress()
 
+    from pprint import pprint
+    pprint(results_arr)
+
     results_arr = sorted(results_arr, key=lambda u:int(u['rank']))
     no_results_arr = sorted(no_results_arr, key=lambda u:int(u['rank']))
     _sum = sum([uni['count'] for uni in results_arr])
     not_scrapeable = []
+
+    ### take all the information & inject it into the html
+
     return render_template("admin/admin.stats.campaigns.html", university_arr=results_arr, sum=_sum, \
         remainder_arr=no_results_arr, not_scrapeable=not_scrapeable)
 
@@ -413,13 +423,37 @@ def admin_logout():
 
 
 
+@app.route('/admin/milestones/sept/1')
+def admin_milestones_sept():
 
+    ### all logic
+    import requests, json
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+
+    from lib.mailgun import get_all_university_progress
+    results_arr, no_results_arr = get_all_university_progress()
+
+    stats = {
+        'completed_data': len(json.load(open('app/static/data/fa15_all.json'))),
+        'pending_data': len(json.load(open('app/static/data/fa15_targetted.json'))),
+        'completed_emails': len(results_arr),
+        'pending_emails': len(no_results_arr),
+    }
+
+
+    return render_template('new_admin/admin.milestones.sept.html', stats=stats)
 
 
 @app.route('/admin/universities/flickr/')
 def flicker_targetted_universities():
     import json
     target_universities = json.load(open('app/static/data/fa15_all.json'))
+    for uni in target_universities:
+        if uni.get('banner_url'):
+            uni['banner_url'] = uni['banner_url'].replace('b.jpg','n.jpg')
+        else:
+            uni['banner_url'] = '#'
     # target_universities = University.query.filter_by(is_targetted=True).all()
     return render_template('new_admin/admin.universities.flickr.html', universities=target_universities)
 
@@ -427,13 +461,20 @@ def flicker_targetted_universities():
 def flicker_university_process(university_id):
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-
-    u = University.query.get(university_id)
+    try:
+        u = University.query.get(university_id)
+    except:
+        db_session.rollback()
+        return "ERROR --> record it for now Samir will fix it later"
     from lib.flickr_wrapper import *
     flickr_response = str(search_university_response_api(u))
     photos_arr = parse_flickr_response(flickr_response)
     processed_arr = process_returned_photos(photos_arr)
     processed_arr = sorted(processed_arr, key=lambda k:k['views'], reverse=True)[:20]
+
+    for uni in processed_arr:
+        uni['url'] = uni['url'].replace('z.jpg','n.jpg')
+
     return render_template('admin/admin.design.flickr.html', flickr_photos=processed_arr,  university=u)
 
 @app.route('/terms/')
