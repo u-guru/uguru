@@ -88,6 +88,9 @@ def admin_devices():
 def new_home_page():
     return render_template("web/index.html")
 
+
+
+
 @app.route('/faq/')
 def faq():
     return render_template("web/pages/faq.html")
@@ -420,7 +423,26 @@ def admin_logout():
 
 
 
+@app.route('/admin/milestones/sept/1')
+def admin_milestones_sept():
 
+    ### all logic
+    import requests, json
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+
+    from lib.mailgun import get_all_university_progress
+    results_arr, no_results_arr = get_all_university_progress()
+
+    stats = {
+        'completed_data': len(json.load(open('app/static/data/fa15_all.json'))),
+        'pending_data': len(json.load(open('app/static/data/fa15_targetted.json'))),
+        'completed_emails': len(results_arr),
+        'pending_emails': len(no_results_arr),
+    }
+
+
+    return render_template('new_admin/admin.milestones.sept.html', stats=stats)
 
 
 @app.route('/admin/universities/flickr/')

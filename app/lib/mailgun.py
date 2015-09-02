@@ -57,7 +57,6 @@ def get_all_university_progress():
     for list_info in arr['items']:
         count = float(list_info['members_count'])
         description = list_info['description']
-        print description
         description_parsed = description.split('|')
         uni_name = description_parsed[0].split(':')[1]
         uni_id = description_parsed[1].split(':')[1]
