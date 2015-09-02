@@ -38,7 +38,7 @@ angular.module('uguru.util.controllers')
 
     $scope.settings = {}
     $scope.settings.icons = {
-      profile: true,
+      profile: $scope.user && $scope.user.id,
       notifications: false,
       card: false,
       support: false,
