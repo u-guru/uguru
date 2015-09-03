@@ -193,11 +193,14 @@
             }, 500)
         }
         //if mousewheel is going left
-        else if (delta < -50 && !carouselShowPaneLock && currentIndex<3) {
+        else if (delta < -50 && !carouselShowPaneLock) {
             $('.carousel li').removeClass('active');
-            console.log(currentIndex);
             carouselShowPaneLock = true;
-            carousel.showPane(currentIndex + 1);
+            if(currentIndex +1 == 4)
+                carousel.showPane(currentIndex -4);
+            else
+                carousel.showPane(currentIndex + 1);
+
             setTimeout(function() {
                 carouselShowPaneLock = 0;
             }, 500)

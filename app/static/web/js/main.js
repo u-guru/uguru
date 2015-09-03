@@ -49,6 +49,7 @@ $(document).ready(function () {
 	workSlider();
 	$(window).resize(function(){
 		// slideLeft();
+		
 		workSlider();
 	});
 
