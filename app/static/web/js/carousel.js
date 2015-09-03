@@ -203,7 +203,7 @@
 
 
     //handles left and right arrow keys
-    $('html').on('keydown', function (e) {
+    $(document).on('keydown', function (e) {
 
         console.log('arrows');
 
@@ -230,7 +230,7 @@
                 carouselShowPaneLock = 0;
             }, 500)
         }
-        e.preventDefault();
+        // e.preventDefault();
     });
 
 var updateSchoolBanner = function(index) {
