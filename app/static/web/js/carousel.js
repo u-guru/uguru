@@ -179,6 +179,7 @@
 
         //if mousewheel is going left
         if (delta > 50 && !carouselShowPaneLock) {
+            console.log("mousewheel left");
             $('.carousel li').removeClass('active');
             carouselShowPaneLock = true;
             carousel.showPane(currentIndex - 1);
@@ -186,8 +187,41 @@
                 carouselShowPaneLock = null;
             }, 500)
         }
-        //if mousewheel is going left
+        //if mousewheel is going right
         else if (delta < -50 && !carouselShowPaneLock) {
+            console.log("mousewheel right");
+            $('.carousel li').removeClass('active');
+
+            carouselShowPaneLock = true;
+            carousel.showPane(currentIndex + 1);
+            setTimeout(function() {
+                carouselShowPaneLock = 0;
+            }, 500)
+        }
+        e.preventDefault();
+    });
+
+
+    //handles left and right arrow keys
+    $('html').on('keydown', function (e) {
+
+        console.log('arrows');
+
+        currentIndex = $('#slide-breadcrumbs li a').index($('#slide-breadcrumbs li a.active'));
+
+        //if left arrow is pressed
+        if (e.which === 37) {
+            console.log("left");
+            $('.carousel li').removeClass('active');
+            carouselShowPaneLock = true;
+            carousel.showPane(currentIndex - 1);
+            setTimeout(function() {
+                carouselShowPaneLock = null;
+            }, 500)
+        }
+        //if right arrow is pressed
+        else if (e.which === 39) {
+            console.log("right");
             $('.carousel li').removeClass('active');
 
             carouselShowPaneLock = true;
