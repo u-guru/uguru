@@ -194,6 +194,7 @@ $(function () {
 		contentIndex = allContentElems.index(visibleContentElem);
 
 		if (contentIndex <= 0) {
+			visibleContentElem.removeClass('animated fadeIn');
 			visibleContentElem.addClass('animated shake')
 			setTimeout(function() {
 				visibleContentElem.removeClass('animated shake');
@@ -218,6 +219,7 @@ $(function () {
 		allContentElems = $('.why-uguru-content');
 		contentIndex = allContentElems.index(visibleContentElem)
 		if (contentIndex >= 7) {
+			visibleContentElem.removeClass('animated fadeIn');
 			visibleContentElem.addClass('animated shake');
 			setTimeout(function() {
 				visibleContentElem.removeClass('animated shake');
