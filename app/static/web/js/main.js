@@ -198,6 +198,10 @@ $(function () {
 			visibleContentElem.addClass('animated shake')
 			setTimeout(function() {
 				visibleContentElem.removeClass('animated shake');
+				if($($('.why-uguru-content')[0]).css("display")==="none") {
+					$($('.why-uguru-content')[0]).addClass('animated fadeIn show').show();
+					$($('.why-uguru-image')[0]).addClass('animed fadeIn show').show();
+				}
 			}, 1000);
 		} else {
 			visibleContentElem.addClass('animated fadeOut');
@@ -223,6 +227,10 @@ $(function () {
 			visibleContentElem.addClass('animated shake');
 			setTimeout(function() {
 				visibleContentElem.removeClass('animated shake');
+				if($($('.why-uguru-content')[7]).css("display")==="none") {
+					$($('.why-uguru-content')[7]).addClass('animated fadeIn show').show();
+					$($('.why-uguru-image')[7]).addClass('animed fadeIn show').show();
+				}
 			}, 1000);
 		} else {
 			visibleImageElem.addClass('animated fadeOut');
