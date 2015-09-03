@@ -231,11 +231,12 @@ var onTransitionStartCarousel = function(index) {
 
     }
     if (index === 2) {
-        currentProgress = parseInt($('.work-infograph')[0].getAttribute('data-percent'));
-        if (!currentProgress) {
-            $('.work-infograph').data('easyPieChart').update(25);
-            countupElement('work-wage-animation', 0, 60, 5);
-        }
+         currentProgress = parseInt($('.work-infograph')[0].getAttribute('data-percent'));
+
+         if (!currentProgress) {
+             $('.work-infograph').data('easyPieChart').update(25);
+             countupElement('work-wage-animation', 0, 60, 5);
+         }
     }
     if (index === 3) {
     }
