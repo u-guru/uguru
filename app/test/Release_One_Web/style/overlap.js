@@ -43,7 +43,6 @@ describe('#14 Carousel slide 3 components overlap in smaller windows.', function
 					expect( (textBanner.x <iconPosition.x < (textBanner.x+size.width) && (textBanner.y <iconPosition.y < (textBanner.y+size.height) ))).toBe(false);
 
 				});
-			browser.sleep(10000);
 		});
 
 

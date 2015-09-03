@@ -2,7 +2,7 @@
 describe('FAQ Test', function () {
     // var UguruHomepage = new AngularHomepage();
     // var SchoolInput = dv.findElement(by.id('search-bar'));
-	describe('FAQ Test', function () {
+	describe("#28 FAQ question bars don't always expand.", function () {
 
 		it("Loading Homepage",function()
 		{
@@ -35,7 +35,6 @@ describe('FAQ Test', function () {
 		it("Check Side Menu",function()
 		{
 	 		expect(web.getElement(by.css('.top-link-menu.btn-round.btn-ghost')).isDisplayed()).toBe(false);
-	 		browser.sleep(10000);
 		});
 	});
 });
