@@ -1,5 +1,6 @@
 !.gitignore
 !app/static/data/fa15_targetted.json
+!app/static/data/fa15_*.json
 .elasticbeanstalk/
 venv
 app.db

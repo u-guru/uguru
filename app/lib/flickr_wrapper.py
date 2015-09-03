@@ -8,7 +8,7 @@ flickr_api.set_keys(api_key = FLICKR_API_KEY, api_secret = FLICKR_API_SECRET)
 from flickr_api.api import flickr
 
 def generate_flickr_url(farm_id, server_id, photo_id, secret):
-    return "https://farm%s.staticflickr.com/%s/%s_%s_b.jpg" %(farm_id, server_id, photo_id, secret)
+    return "https://farm%s.staticflickr.com/%s/%s_%s_z.jpg" %(farm_id, server_id, photo_id, secret)
 
 def search_university_response_api(university):
     response = flickr.photos.search(

@@ -2,7 +2,23 @@
 var onDomLoadSuccess = function() {
 	setTimeout(function() {
 		bodyLoadingDiv.parentNode.removeChild(bodyLoadingDiv);
+        setTimeout(function() {
+            launchIntercomeSetActive()
+        }, 2000);
 	}, 2000);
+}
+
+var launchIntercomeSetActive = function() {
+    if (!$('#intercom-container:visible').length) {
+        console.log('setting intercom to active..');
+        $('#intercom-container').addClass('active');
+        $('#intercom-container').css('display', 'block');
+    } else {
+        console.log('intercome still does not exist.. trying again');
+        setTimeout(function() {
+            launchIntercomeSetActive();
+        }, 1000)
+    }
 }
 // how to create angular
 // 1. Render the dom once
@@ -71,6 +87,12 @@ var moveHorizontalSlider = function(sliderElem, targetElem, successCallback) {
     if (successCallback) {
         successCallback();
     }
+}
+
+var countupElement = function(elemId, start, end, duration) {
+    var countAnimation = new CountUp(elemId, start, end, 1, duration);
+    $(elemId).show();
+    countAnimation.start();
 }
 
 

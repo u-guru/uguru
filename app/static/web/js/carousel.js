@@ -49,32 +49,16 @@
             // between the bounds
 
             //update the breadcrumb
-            $('#slide-breadcrumbs li a').removeClass('active');
-            $($('#slide-breadcrumbs li a')[index]).addClass('active');
-            if (index >= 1) {
-                $('#top').css('z-index', 11);
-                $('#top-school-banner').hide();
-                if (index === 1) {
-                    $('#top-mobile-logo').css('opacity', 1);
-                    $('#top-mobile-logo').addClass('animated flipInY');
-                    setTimeout(function() {
-                        $('#top-mobile-logo').removeClass('animated flipInY');
-                    }, 1500)
-                }
-
-            } else {
-                $('#slide-breadcrumbs li a').removeClass('active');
-                $($('#slide-breadcrumbs li a')[0]).addClass('active');
-
-                $('#top').css('z-index', 5);
-                $('#top-school-banner').show();
-                $('#top-mobile-logo').css('opacity', 0);
-            }
+            updateSchoolBanner(index);
 
             index = Math.max(0, Math.min(index, pane_count-1));
             current_pane = index;
 
             var offset = -((100/pane_count)*current_pane);
+            onTransitionStartCarousel(index);
+            setTimeout(function() {
+                onTransitionCompleteCarousel(index);
+            }, 500)
             setContainerOffset(offset, true);
         };
 
@@ -154,9 +138,9 @@
                             self.next();
                         }
                     }
-                    else {
-                        self.showPane(current_pane, true);
-                    }
+                    // else {
+                    //     self.showPane(current_pane, true);
+                    // }
                     break;
             }
         }
@@ -178,12 +162,17 @@
     });
 
     $('#menu-home-links-container .menu-home-link').on('click', function() {
+        $('.top-link-close').trigger('click');
         indexClicked = $('#menu-home-links-container .menu-home-link').index(this);
+        setTimeout(function() {
+            checkForRedirectHashes(indexClicked);
+        }, 200)
         carousel.showPane(indexClicked);
     });
 
     //handles all the scroll shifts
     $('html').on('mousewheel', function (e) {
+        console.log('mousewheel');
         var delta = e.originalEvent.wheelDelta;
 
         currentIndex = $('#slide-breadcrumbs li a').index($('#slide-breadcrumbs li a.active'));
@@ -209,3 +198,71 @@
         }
         e.preventDefault();
     });
+
+var updateSchoolBanner = function(index) {
+    $('#slide-breadcrumbs li a').removeClass('active');
+    $($('#slide-breadcrumbs li a')[index]).addClass('active');
+    if (index >= 1) {
+        $('#top').css('z-index', 11);
+        $('#top-school-banner').hide();
+        if (index === 1) {
+            $('#top-mobile-logo').css('opacity', 1);
+            $('#top-mobile-logo').addClass('animated bouceInDown');
+            setTimeout(function() {
+                $('#top-mobile-logo').removeClass('animated bounceInDown');
+            }, 1500)
+        }
+
+    } else {
+        $('#slide-breadcrumbs li a').removeClass('active');
+        $($('#slide-breadcrumbs li a')[0]).addClass('active');
+
+        $('#top').css('z-index', 5);
+        $('#top-school-banner').show();
+        $('#top-mobile-logo').css('opacity', 0);
+    }
+}
+
+var onTransitionStartCarousel = function(index) {
+    if (index === 0) {
+        $('#top-school-banner').css('opacity', 1);
+    }
+    if (index === 1) {
+
+    }
+    if (index === 2) {
+        currentProgress = parseInt($('.work-infograph')[0].getAttribute('data-percent'));
+        if (!currentProgress) {
+            $('.work-infograph').data('easyPieChart').update(25);
+            countupElement('work-wage-animation', 0, 60, 5);
+        }
+    }
+    if (index === 3) {
+    }
+}
+
+var onTransitionCompleteCarousel = function(index) {
+    if (index === 0) {
+        //insert search-pane post transition (500ms after)
+    }
+    if (index === 1) {
+        //insert earn-pane post transition (500ms after)
+    }
+    if (index === 2) {
+        //insert work-pane post transition (500ms after)
+        //insert work-pane post transition (500ms after)
+    }
+    if (index === 3) {
+        console.log(index, 'finished transition to three');
+    }
+    if (index === 4) {
+        console.log(index, 'finished transition to four');
+    }
+    if (index === 5) {
+        console.log(index, 'finished transition to five');
+    }
+    if (index >= 1) {
+        $('#top-logo #top-mobile-logo').css('opacity', 1);
+        $('#top-school-banner').css('opacity', 0);
+    }
+}

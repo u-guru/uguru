@@ -7,20 +7,6 @@ $(document).ready(function() {
     universities_arr = readAndParseJSON('/static/data/fa15_targetted.json');
     matcher = initMatcher(universities_arr);
     initTypeahead(matcher, universities_arr);
-
-    $('#search-results-close-link, #home-modal-close-link').on('click', function() {
-
-        $('.search-results').addClass('animated zoomOut').hide();
-        setTimeout(function() {
-            $('.search-results').removeClass('animated zoomOut');
-            hideUniversityModalShowSearchBox();
-        }, 500);
-    })
-
-    $("#become-guru-cta-button").on('click', function() {
-        $('.search-results .front').trigger('click');
-    });
-
 });
 
 function readAndParseJSON(file) {
@@ -68,7 +54,7 @@ var initTypeahead = function(matcher, source) {
             //if no results show
             empty: [
                 '<div class="tt-suggestion">',
-                '<a href="http://goo.gl/forms/UQ7WcYl3sb" class="university-link" target="_blank"><div><img src="/static/web/svg/logo-shamrock.svg"/></div><div><h2><span class="title">No results found (yet!)</span> Click to Bring Uguru to Your University / School</h2></div></a>',
+                '<a href="http://goo.gl/forms/UQ7WcYl3sb" class="university-link" target="_blank"><div><img src="/static/web/svg/logo-shamrock.svg"/></div><div><h2 id="tt-no-results"><span class="title">No results found (yet!)</span> Click to bring Uguru to your university or school.</h2></div></a>',
                 '</div>'
             ].join('\n'),
             suggestion: Handlebars.compile("<div><img src='{{logo_url}}' alt=''/></div><div><h2>{{name}}</h2><p>{{city}}, {{state}}, USA</p></div>")

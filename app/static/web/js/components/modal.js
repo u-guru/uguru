@@ -1,83 +1,168 @@
 $(document).ready(function () {
-    $('#home-modal-send-email').click(function(e) {
-        function validateEmail(email) {
-            var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-            return re.test(email);
-        }
-        var phoneEmailInputValue = $('#home-modal-email-input').val();
-        //add phone number regex
-        //check for length
-        if (!(phoneEmailInputValue.length && phoneEmailInputValue.length > 9)) {
-            alert('Please enter valid email');
-            $('#home-modal-email-input').val('').focus();
-            return;
-        }
 
-        if(!validateEmail(phoneEmailInputValue)){
-            alert('Please enter valid email');
-            $('#home-modal-email-input').val('').focus();
-            return;
-        }
-        //hide the main body
-        $('#modal-content').toggleClass('active');
-        $('#modal-loader-container').toggleClass('active');
+    $('#search-results-close-link, #home-modal-close-link').on('click', function() {
 
-        //TODO: replace this with actual ajax call
-        //
+        $('.search-results').addClass('animated zoomOut').hide();
         setTimeout(function() {
-            $('#modal-loader-container').toggleClass('active');
-            $('#modal-content-submit').toggleClass('active');
-        }, 1500)
+            $('.search-results').removeClass('animated zoomOut');
+            hideUniversityModalShowSearchBox();
+        }, 500);
+    })
+
+    $("#become-guru-cta-button").on('click', function() {
+        $('.search-results .front').trigger('click');
     });
-    $('#home-modal-send-text').click(function(e) {
-            var phoneNumberInputValue = $('#home-modal-phone-input').val();
-            //add phone number regex
-            //check for length
-            if (!(phoneNumberInputValue.length && phoneNumberInputValue.length > 9)) {
-                alert('Please enter valid phone number');
-                $('#home-modal-phone-input').val('').focus();
-                return;
+
+    $('.cta-email-link').click(function() {
+        $('.mail-icon').addClass('active');
+        $('.phone-icon').removeClass('active');
+        $('.phone-cta-wrapper').removeClass('active');
+        $('.email-cta-wrapper').addClass('active');
+        $('#submit-info-button').removeClass('active validated');
+    })
+
+    $('.cta-phone-link').click(function() {
+        $('.phone-icon').addClass('active');
+        $('.mail-icon').removeClass('active');
+        $('.phone-cta-wrapper').addClass('active');
+        $('.email-cta-wrapper').removeClass('active');
+        $('#submit-info-button').removeClass('active validated');
+    })
+
+    $(".download-link-wrapper").on('click', function(e) {
+        e.preventDefault();
+    })
+
+    $('#submit-info-button').on('click', function(e) {
+        if ($(this).hasClass('active validated')) {
+            $('#school-email-input, #school-phone-input').unbind('keyup');
+            $('.email-cta-wrapper, .phone-cta-wrapper').children().removeClass('active');
+            $('#submit-info-button').removeClass('active');
+            var emailCTAHeight = $('.email-cta-wrapper').height();
+            var phoneCTAHeight = $('.phone-cta-wrapper').height();
+            $('.email-cta-wrapper').css('height', emailCTAHeight+'px');
+            $('.phone-cta-wrapper').css('height', phoneCTAHeight+'px');
+            $('.email-cta-wrapper').children().hide();
+            $('.phone-cta-wrapper').children().hide();
+            $('#submit-info-loader').addClass('active');
+            sendReminderToUser();
+        }
+    });
+
+    $("#school-email-input").on('focus', function() {
+        $('.search-results .front, .search-results').unbind('click');
+        $("#school-email-input-label").addClass('active');
+    })
+
+    $("#school-phone-input").on('focus', function() {
+        $('.search-results .front, .search-results').unbind('click');
+        $("#school-phone-input-label").addClass('active');
+    })
+
+    $("#school-email-input").on('blur', function() {
+        if (!$(this).val().length) {
+            $('.search-results .front, .search-results').bind('click');
+            $("#school-email-input-label").removeClass('active');
+        }
+    })
+
+    $('#school-email-input').on('keyup', function(e) {
+        // if input is focused && no input
+        if (!$(this).val().length) {
+            $('#submit-info-button').removeClass('active');
+        }
+
+        // if input has focus && letter is typed
+        if ($(this).val().length && !$('#submit-info-button').hasClass('active')) {
+            $('#submit-info-button').addClass('active');
+        }
+
+        if (validateEmail($(this).val())) {
+            var keycode = (e.keyCode ? e.keyCode : e.which);
+            if (keycode == '13'){
+                $('#submit-info-button').trigger('click');
+            } else {
+
+                $('#submit-info-button').addClass('validated');
+                $('#submit-info-button .ion-checkmark, #submit-info-button .submit-text').addClass('animated tada');
+                setTimeout(function() {
+                    $('#submit-info-button .ion-checkmark, #submit-info-button .submit-text').removeClass('animated tada');
+
+                }, 500);
+
             }
 
+        } else {
+            $('#submit-info-button').removeClass('validated')
+        }
 
-            if(!isPhoneNumberValid(phoneNumberInputValue)){
-                alert('not valid phone number format');
-                $('#home-modal-phone-input').val('').focus();
-                return;
+    })
+
+    $('#school-phone-input').on('keyup', function(e) {
+        // if input is focused && no input
+        if (!$(this).val().length) {
+            $('#submit-info-button').removeClass('active');
+        }
+
+        // if input has focus && letter is typed
+        if ($(this).val().length && !$('#submit-info-button').hasClass('active')) {
+            $('#submit-info-button').addClass('active');
+        }
+
+        if (isPhoneNumberValid($(this).val())) {
+            var keycode = (e.keyCode ? e.keyCode : e.which);
+            if (keycode == '13'){
+                $('#submit-info-button').trigger('click');
+            } else {
+
+                $('#submit-info-button').addClass('validated');
+                $('#submit-info-button .ion-checkmark, #submit-info-button .submit-text').addClass('animated tada');
+                setTimeout(function() {
+                    $('#submit-info-button .ion-checkmark, #submit-info-button .submit-text').removeClass('animated tada');
+
+                }, 500);
+
             }
 
-            $('#modal-content').toggleClass('active');
-            $('#modal-loader-container').toggleClass('active');
+        } else {
+            $('#submit-info-button').removeClass('validated')
+        }
 
-            //TODO: replace this with actual ajax call
-            //
-            // setTimeout(function() {
-            //     $('#modal-loader-container').toggleClass('active');
-            //     $('#modal-content-submit').toggleClass('active');
-            // }, 1500)
-            sendReminderToUser(true, phoneNumberInputValue);
+    })
 
-    });
+    $("#school-phone-input").on('blur', function() {
+        if (!$(this).val().length) {
+            $('.search-results .front, .search-results').bind('click');
+            $("#school-phone-input-label").removeClass('active');
+        }
+    })
+
 });
 
-var sendReminderToUser = function(is_text, value) {
-    if (is_text) {
-        payload = {phone_number: value}
-    } else {
-        payload = {email: value}
+var sendReminderToUser = function() {
+    payload = {
+        phone_number: $('#school-phone-input').val(),
+        email: $('#school-email-input').val()
     }
-
     url = "/api/v1/web/home/subscribe"
     var successCallback = function(resp) {
-        alert('was successful');
-        $('#modal-loader-container').toggleClass('active');
-        $('#modal-content-submit').toggleClass('active');
+        $('#post-submit-info-wrapper .message-content').text('Thanks! We sent you an email.')
+        setTimeout(function() {
+            $('#submit-info-loader').removeClass('active');
+            $('#post-submit-info-wrapper').addClass('active');
+        }, 1000)
+
     }
 
     var failureCallback = function(err) {
         if (err.status === 422) {
-            alert('invalid phone number - please try again');
+            console.log('invalid phone number - please try again');
         }
+        $('#post-submit-info-wrapper .message-content').text('Thanks! We sent you a text.')
+        setTimeout(function() {
+            $('#submit-info-loader').removeClass('active');
+            $('#post-submit-info-wrapper').addClass('active');
+        }, 1000)
     }
 
     ajaxPostJSON(url, payload, successCallback, failureCallback);

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Spotify Demo</title>
+
+	<link rel="stylesheet" href="/static/css/style.css"/>
+	<script src="/static/js/modernizr.js"></script>
+</head>
+<body>
+	<div id="container">
+		<div id="screen">
+			<nav id="main-menu">
+				<div id="main-background"></div>
+				<ul id="main-links">
+					<li>
+						<a href="#">
+							<span>Search</span>
+						</a>
+					</li>
+					<li class="active">
+						<a href="#">
+							<span>Browse</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span>Running</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span>Activity</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span>Radio</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span>Your Music</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span>Settings</span>
+						</a>
+					</li>
+				</ul>
+				<ul id="main-profile">
+					<li id="main-icon">
+						<a href="#"><img src="/static/images/icon.jpg" alt=""/></a>
+					</li>
+					<li id="main-name">
+						<a href="#">Gabrielle Wee</a>
+					</li>
+				</ul>
+			</nav>
+			<header id="status-bar">
+				12:55 PM
+			</header>
+			<nav id="nav-bar">
+				<a id="nav-menu" href="#">
+					<img src="/static/svg/menu.svg" alt=""/>
+				</a>
+				<h1>Browse</h1>
+			</nav>
+			<div id="music">
+				<section id="album-slider">
+					<h2>And the weekend begins!</h2>
+					<ul>
+						<li>
+							<img src="/static/images/artwork/another-eternity.jpg" alt=""/>
+							<span>Another Eternity</span>
+						</li>
+						<li>
+							<img src="/static/images/artwork/bastion.jpg" alt=""/>
+							<span>Bastion</span>
+						</li>
+						<li>
+							<img src="/static/images/artwork/fez.png" alt=""/>
+							<span>FEZ OST</span>
+						</li>
+						<li>
+							<img src="/static/images/artwork/journey.jpg" alt=""/>
+							<span>Journey</span>
+						</li>
+						<li>
+							<img src="/static/images/artwork/monument-valley.jpg" alt=""/>
+							<span>Monument Valley</span>
+						</li>
+						<li>
+							<img src="/static/images/artwork/sworcery.jpg" alt=""/>
+							<span>Swords &amp; Sworcery</span>
+						</li>
+						<li>
+							<img src="/static/images/artwork/thousand-thursday.jpg" alt=""/>
+							<span>Thousand Thursday</span>
+						</li>
+						<li>&nbsp;</li>
+					</ul>
+				</section>
+				<section id="info-list">
+					<ul>
+						<li>
+							<img src="/static/svg/charts.svg" alt=""/>
+							<a href="">Charts</a>
+						</li>
+						<li>
+							<img src="/static/svg/releases.svg" alt=""/>
+							<a href="">New Releases</a>
+						</li>
+						<li>
+							<img src="/static/svg/discover.svg" alt=""/>
+							<a href="">Discover</a>
+						</li>
+					</ul>
+				</section>
+				<section id="genre-list">
+					<h3>Genres &amp; Moods</h3>
+					<ul>
+						<li>
+							<div class="genre-thumbnail">
+								<img src="/static/images/genre/clouds.jpg" alt=""/>
+								<div class="genre-icon">
+									<span>
+										<img src="/static/svg/chill.svg" alt=""/>
+										<h4>Chill</h4>
+									</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="genre-thumbnail">
+								<img src="/static/images/genre/people.jpg" alt=""/>
+								<div class="genre-icon">
+									<span>
+										<img src="/static/svg/party.svg" alt=""/>
+										<h4>Party</h4>
+									</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="genre-thumbnail">
+								<img src="/static/images/genre/flowers.jpg" alt=""/>
+								<div class="genre-icon">
+									<span>
+										<img src="/static/svg/pop.svg" alt=""/>
+										<h4>Pop</h4>
+									</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="genre-thumbnail">
+								<img src="/static/images/genre/mountain.jpg" alt=""/>
+								<div class="genre-icon">
+									<span>
+										<img src="/static/svg/workout.svg" alt=""/>
+										<h4>Workout</h4>
+									</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="genre-thumbnail">
+								<img src="/static/images/genre/ocean.jpg" alt=""/>
+								<div class="genre-icon">
+									<span>
+										<img src="/static/svg/dance.svg" alt=""/>
+										<h4>EDM/Dance</h4>
+									</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="genre-thumbnail">
+								<img src="/static/images/genre/wheat.jpg" alt=""/>
+								<div class="genre-icon">
+									<span>
+										<img src="/static/svg/mood.svg" alt=""/>
+										<h4>Mood</h4>
+									</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="genre-thumbnail">
+								<img src="/static/images/genre/road.jpg" alt=""/>
+								<div class="genre-icon">
+									<span>
+										<img src="/static/svg/hip-hop.svg" alt=""/>
+										<h4>Hip Hop</h4>
+									</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="genre-thumbnail">
+								<img src="/static/images/genre/coffee.jpg" alt=""/>
+								<div class="genre-icon">
+									<span>
+										<img src="/static/svg/focus.svg" alt=""/>
+										<h4>Focus</h4>
+									</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="genre-thumbnail">
+								<img src="/static/images/genre/waves.jpg" alt=""/>
+								<div class="genre-icon">
+									<span>
+										<img src="/static/svg/country.svg" alt=""/>
+										<h4>Country</h4>
+									</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="genre-thumbnail">
+								<img src="/static/images/genre/street.jpg" alt=""/>
+								<div class="genre-icon">
+									<span>
+										<img src="/static/svg/rock.svg" alt=""/>
+										<h4>Rock</h4>
+									</span>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</section>
+			</div>
+			<nav id="play-bar">
+				<img id="play-background" src="/static/images/artwork/another-eternity.jpg" alt=""/>
+				<div id="play-overlay"></div>
+				<a id="play-artwork" class="play-popup" href="#">
+					<img src="/static/images/artwork/another-eternity.jpg" alt=""/>
+				</a>
+				<a id="play-info" class="play-popup" href="#">
+					<ul>
+						<li>heartsigh</li>
+						<li>Purity Ring</li>
+					</ul>
+				</a>
+				<a id="play-button" href="#">
+					<img id="play-button-play" class="active" src="/static/svg/play.svg" alt=""/>
+					<img id="play-button-pause" src="/static/svg/pause.svg" alt=""/>
+				</a>
+			</nav>
+			<div id="now-playing">
+				<img id="now-background" src="/static/images/artwork/another-eternity.jpg" alt=""/>
+				<div id="now-overlay"></div>
+				<div id="now-player">
+					<a id="now-popdown" href="#"><img src="/static/svg/down.svg" alt=""/></a>
+					<h3>Playing From Album</h3>
+					<h4 id="now-album">another eternity</h4>
+					<div id="now-artwork">
+						<img src="/static/images/artwork/another-eternity.jpg" alt=""/>
+					</div>
+					<div id="now-info">
+						<a id="now-save">
+							<img src="/static/svg/save.svg" alt=""/>
+						</a>
+						<a id="now-options">
+							<img src="/static/svg/options.svg" alt=""/>
+						</a>
+						<h1 id="now-song">heartsigh</h1>
+						<h2 id="now-artist">Purity Ring</h2>
+					</div>
+					<div id="now-track">
+						<span id="now-start">0:03</span>
+						<span id="now-line">
+							<span id="now-duration">
+								<span id="now-time"></span>
+							</span>
+						</span>
+						<span id="now-end">-3:27</span>
+					</div>
+					<ul id="now-controls">
+						<li id="now-shuffle" class="now-type">
+							<a href="#">
+								<img src="/static/svg/shuffle.svg" alt=""/>
+								<img class="active" src="/static/svg/shuffle-green.svg" alt=""/>
+							</a>
+						</li>
+						<li id="now-prev">
+							<a href="#">
+								<img src="/static/svg/prev.svg" alt=""/>
+							</a>
+						</li>
+						<li id="now-play">
+							<a href="#">
+								<img src="/static/svg/play.svg" alt=""/>
+							</a>
+						</li>
+						<li id="now-next">
+							<a href="#">
+								<img src="/static/svg/next.svg" alt=""/>
+							</a>
+						</li>
+						<li id="now-repeat" class="now-type">
+							<a href="#">
+								<img class="active" src="/static/svg/repeat.svg" alt=""/>
+								<img src="/static/svg/repeat-green.svg" alt=""/>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+		<script src="/static/js/jquery.min.js"></script>
+		<script src="/static/js/main.js"></script>
+	
+</body>
+</html>

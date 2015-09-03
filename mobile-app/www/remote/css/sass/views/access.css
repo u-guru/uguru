@@ -1,0 +1,19 @@
+.uguru-view.access-view input {
+  line-height: normal;
+  height: inherit; }
+.uguru-view.how-it-works-view header {
+  position: relative; }
+  .uguru-view.how-it-works-view header h1 {
+    font-size: 32px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white; }
+  .uguru-view.how-it-works-view header .left-buttons {
+    position: absolute;
+    left: 5%;
+    top: 20px;
+    opacity: 0.3; }
+    .uguru-view.how-it-works-view header .left-buttons a {
+      color: white; }
+
+/*# sourceMappingURL=access.css.map */

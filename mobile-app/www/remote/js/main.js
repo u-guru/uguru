@@ -13,7 +13,7 @@ if (LOCAL) {
   BASE_URL = 'http://localhost:8100';
 
   REST_URL = 'http://localhost:5000';
-  // var REST_URL = 'http://uguru-rest.herokuapp.com'
+   // var REST_URL = 'http://uguru-rest.herokuapp.com'
 
 } else {
   img_base = '/static/'
@@ -116,7 +116,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
                 //keyboard settings for android / ios
                 // console.log('4. Setting up ios keyboard default + status bars..');
-                if (window.cordova.plugins.Keyboard) {
+                if (cordova.plugins.Keyboard && cordova.plugins.Keyboard.hideKeyboardAccessoryBar) {
                   cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                   cordova.plugins.Keyboard.disableScroll(true);
                 }
@@ -151,57 +151,57 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
   $provide.decorator("$exceptionHandler", function($delegate, $injector) {
     return function(exception, cause) {
-      var gh_title;
-      if (exception.message) {
-        gh_title =  '"' +  exception.message;
-      }
-      if (cause) {
-        gh_title += '" since "' + JSON.stringify(cause);
-      }
-      if (exception.line) {
-        gh_title += '". See line ' + exception.line
-      }
-      if (exception.sourceURL) {
-        var exceptionUrlSplit = exception.sourceURL.split('/');
-        exception.location = exceptionUrlSplit[exceptionUrlSplit.length - 1];
-        gh_title += ' in file ' + exception.location
-      }
-      var gh_body = '*Line*: ' + exception.line + '\n' + '*Column*: ' + exception.column + '\n*File*: ' + exception.location + '\n*File URL*: ' + exception.sourceURL + '\n\n*Message*: ' + exception.message + ', where the cause is _' + JSON.stringify(cause) + '_\n\n*Exception Type*: ' + exception.name + '\n\n*Full Error Object*: \n\n' + JSON.stringify(exception) + '\n\n\n*Full Stack Trace*: \n\n' + exception.stack;
-      var user = $injector.get("$localstorage").getObject("user");
-      var user_info = {
-        id: user.id,
-        name: user.name,
-        guru_courses: user.guru_courses,
-        devices: user.devices,
-        age: user.time_created,
-        last_updated: user.last_active
-      }
-      var device_details = {
-                ios: ionic.Platform.isIOS(),
-                android: ionic.Platform.isAndroid(),
-                windows: ionic.Platform.isWindowsPhone(),
-                mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone(),
-                web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone()),
-                device: ionic.Platform.device(),
-              }
+      // var gh_title;
+      // if (exception.message) {
+      //   gh_title =  '"' +  exception.message;
+      // }
+      // if (cause) {
+      //   gh_title += '" since "' + JSON.stringify(cause);
+      // }
+      // if (exception.line) {
+      //   gh_title += '". See line ' + exception.line
+      // }
+      // if (exception.sourceURL) {
+      //   var exceptionUrlSplit = exception.sourceURL.split('/');
+      //   exception.location = exceptionUrlSplit[exceptionUrlSplit.length - 1];
+      //   gh_title += ' in file ' + exception.location
+      // }
+      // var gh_body = '*Line*: ' + exception.line + '\n' + '*Column*: ' + exception.column + '\n*File*: ' + exception.location + '\n*File URL*: ' + exception.sourceURL + '\n\n*Message*: ' + exception.message + ', where the cause is _' + JSON.stringify(cause) + '_\n\n*Exception Type*: ' + exception.name + '\n\n*Full Error Object*: \n\n' + JSON.stringify(exception) + '\n\n\n*Full Stack Trace*: \n\n' + exception.stack;
+      // var user = $injector.get("$localstorage").getObject("user");
+      // var user_info = {
+      //   id: user.id,
+      //   name: user.name,
+      //   guru_courses: user.guru_courses,
+      //   devices: user.devices,
+      //   age: user.time_created,
+      //   last_updated: user.last_active
+      // }
+      // var device_details = {
+      //           ios: ionic.Platform.isIOS(),
+      //           android: ionic.Platform.isAndroid(),
+      //           windows: ionic.Platform.isWindowsPhone(),
+      //           mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone(),
+      //           web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone()),
+      //           device: ionic.Platform.device(),
+      //         }
 
-      ghObj = {
-        issue_title: gh_title,
-        issue_body: gh_body,
-        user_agent: navigator.userAgent,
-        user_details: user_info,
-        device_info: device_details
-      }
+      // ghObj = {
+      //   issue_title: gh_title,
+      //   issue_body: gh_body,
+      //   user_agent: navigator.userAgent,
+      //   user_details: user_info,
+      //   device_info: device_details
+      // }
 
-      var GithubHTTP = $injector.get("Github");
-      GithubHTTP.post(ghObj).then(
-        function(response) {
-          console.log(response);
-        },
-        function(err) {
-          console.log(JSON.stringify(err));
-        }
-      )
+      // var GithubHTTP = $injector.get("Github");
+      // GithubHTTP.post(ghObj).then(
+      //   function(response) {
+      //     console.log(response);
+      //   },
+      //   function(err) {
+      //     console.log(JSON.stringify(err));
+      //   }
+      // )
 
       $delegate(exception, cause);
     };
@@ -311,6 +311,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/courses.html',
         controller: 'CoursesController'
   }).
+  state('root.gpa', {
+        url: '/gpa',
+        templateUrl: BASE + 'templates/dev/gpa.html',
+        controller: 'gpaController'
+  }).
   state('root.student-session', {
         url: '/student-session:sessionObj',
         templateUrl: BASE + 'templates/student.session.html',
@@ -371,6 +376,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         controller: function($scope) {
           throw "Test error";
         }
+  }).
+  state('root.access', {
+        url: '/access',
+        templateUrl: BASE + 'templates/access.html',
+        controller: 'AccessController'
   }).
   state('root.guru-conversations', {
         url: '/guru-conversations',
