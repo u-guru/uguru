@@ -140,6 +140,28 @@ def send_reset_password_email(user, raw_password):
     result = send_transactional_email(email_subject, email_message, email_receiver, email_tags)
     print result
 
+def send_web_reminder_email(email, subject, message):
+    receiver_info = [{
+        'email':email,
+        'type': 'to'
+    }]
+    email_tags = ['welcome-email-fa15']
+    from_name = 'samir'
+    message = {
+        'subject':subject,
+        'from_email': 'samir@uguru.me',
+        'from_name': from_name,
+        'to': receiver_info,
+        'important': True,
+        'preserve_recipients': False,
+        'track_opens': False,
+        'tags': email_tags,
+        'html':message,
+        'text':message.replace('<br>', '').replace('&nbsp;', ' ')
+    }
+    result = mandrill_client.messages.send(message=message)
+    return result
+
 
 def send_errors_email(body, client_only=False):
     email_subject = 'Uguru Production Server Error'

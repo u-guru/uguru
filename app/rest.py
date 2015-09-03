@@ -234,11 +234,29 @@ class HomeSubscribeView(restful.Resource):
             return 200
 
         if request.json.get('email'):
-            phone_number = request.json.get('phone_number')
-
+            email = request.json.get('email')
+            print request.json.get('email')
             from emails import send_web_reminder_email
+            subject = 're: following up - got a min?'
+            message = """
+            <br><br>
+            Just wanted to take a sec & personally invite you to the platform!
+            <br> <br>
+            Plz let me know if you ...
+            <br><br>
+            &nbsp;&nbsp;&nbsp;1. Have any questions<br>
+            &nbsp;&nbsp;&nbsp;2. This email was entered by mistake<br>
+            &nbsp;&nbsp;&nbsp;3. Want an access code for our app
+            <br><br><br>
+            Have a good one!<br><br>
+            --<br>
+            Samir<br>
+            Founding Guru<br>
+            <br><br><br>
+            sent w/ iPhone, if iTypos... iApologhiz
+            """
 
-            result = send_web_reminder_email(phone_number, message)
+            result = send_web_reminder_email(email, subject, message)
             if not (result):
                 return 422
             return 200

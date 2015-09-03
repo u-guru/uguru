@@ -4,6 +4,8 @@ var UFColor = "rgb(255, 74, 0)";
 var TuftsColor = '#417dc1';
 var CalColor = "rgb(0, 50, 98)";
 var carouselShowPaneLock;
+var isDesktop = $(window).width() > 768;
+var isMobile = !isDesktop;
 //end defaults
 
 workSlider = function() {
@@ -42,7 +44,7 @@ workSlider = function() {
 
 $(document).ready(function () {
 	checkForRedirectHashes()
-	hideIntercomShit();
+	// hideIntercomShit();
 	// initParallax();
 	workSlider();
 	$(window).resize(function(){
@@ -53,7 +55,7 @@ $(document).ready(function () {
 });
 
 $(function () {
-	$("#faq dl dt a").each(function(e){
+	$("#faq dl dt").each(function(e){
 		$(this).on("click", function(e) {
 			$(this).parent().parent().toggleClass("active");
 			e.preventDefault();
@@ -67,17 +69,21 @@ $(function () {
 	$('#start-text h3').fitText(2, { maxFontSize: '36px', minFontSize: '24px' });
 	$('.main h1').fitText(1.5, { maxFontSize: '48px', minFontSize: '24px' });
 
-	$('#full-overlay, #side-menu-wrapper.active').on("click", function(e) {
-		$('.top-link-close').trigger('click');
-	})
-	$(".top-link-menu").on("click", function(e) {
+	$("header .top-link-menu").on("click", function(e) {
 		$('#side-menu-wrapper').addClass('active');
 		$('#side-menu').addClass('active animated slideInLeft');
 		$("#full-overlay").addClass("active animated fadeIn");
-		setTimeout(function() {
-			$('#side-menu').removeClass('animated slideInLeft');
-			$("#full-overlay").removeClass("animated fadeIn");
-		}, 1000);
+		$('#side-menu').one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
+			function() {
+				setTimeout(function() {
+					$('#side-menu').removeClass('animated slideInLeft');
+					$("#full-overlay").removeClass("animated fadeIn");
+				}, 200);
+				$('#full-overlay').one("click", function(e) {
+
+					$('.top-link-close').trigger('click');
+				})
+			})
 		e.preventDefault();
 	});
 
@@ -188,6 +194,7 @@ $(function () {
 		contentIndex = allContentElems.index(visibleContentElem);
 
 		if (contentIndex <= 0) {
+			visibleContentElem.removeClass('animated fadeIn');
 			visibleContentElem.addClass('animated shake')
 			setTimeout(function() {
 				visibleContentElem.removeClass('animated shake');
@@ -212,6 +219,7 @@ $(function () {
 		allContentElems = $('.why-uguru-content');
 		contentIndex = allContentElems.index(visibleContentElem)
 		if (contentIndex >= 7) {
+			visibleContentElem.removeClass('animated fadeIn');
 			visibleContentElem.addClass('animated shake');
 			setTimeout(function() {
 				visibleContentElem.removeClass('animated shake');
@@ -265,8 +273,8 @@ $(function () {
 var hideIntercomShit = function() {
 	var intercomElement = document.getElementById('intercom-launcher')
 	if (intercomElement) {
-		document.getElementById('intercom-launcher').style.height = 0;
-		document.getElementById('intercom-launcher').style.width = 0;
+		document.getElementById('intercom-launcher').style.height = 'initial';
+		document.getElementById('intercom-launcher').style.width = 'initial';
 		return;
 	} else {
 		setTimeout(function() {
@@ -274,6 +282,9 @@ var hideIntercomShit = function() {
 		}, 1000)
 	}
 }
+
+
+
 var initParallax = function() {
 	//check if loaded properly
 	if (!Parallax) {
@@ -287,7 +298,7 @@ var initParallax = function() {
 }
 
 var checkForRedirectHashes = function() {
-	currentHash = window.location.hash;
+	currentHash = location.hash;
 	if (currentHash.length && currentHash.indexOf('-pane') !== -1) {
 		homePanes = ['search', 'earn', 'work', 'why', 'start'];
 		pageRedirectName = currentHash.split('-')[0].substring(1);
@@ -316,5 +327,6 @@ $(document).ready(function () {
 		axis: 'x',
 		trigger: 'hover'
 	});
+
 
 });
