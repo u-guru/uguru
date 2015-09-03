@@ -82,7 +82,14 @@
             }
         }
 
-        this.next = function() { return this.showPane(current_pane+1, true); };
+        this.next = function()
+        { 
+            if(current_pane+1 < 4)
+            return this.showPane(current_pane+1, true); 
+            return this.showPane(current_pane, true); 
+
+        };
+
         this.prev = function() { return this.showPane(current_pane-1, true); };
 
 
@@ -186,9 +193,9 @@
             }, 500)
         }
         //if mousewheel is going left
-        else if (delta < -50 && !carouselShowPaneLock) {
+        else if (delta < -50 && !carouselShowPaneLock && currentIndex<3) {
             $('.carousel li').removeClass('active');
-
+            console.log(currentIndex);
             carouselShowPaneLock = true;
             carousel.showPane(currentIndex + 1);
             setTimeout(function() {
