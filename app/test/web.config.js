@@ -3,14 +3,14 @@ exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
 
 
-         capabilities: {
-                 'browserName': 'chrome'
-         },
-        //   multiCapabilities: [
-        //   {'browserName': 'chrome'},
-        //   {'browserName': 'firefox'},
-        //   {'browserName': 'phantomjs'}
-        // ],
+         // capabilities: {
+         //         'browserName': 'chrome'
+         // },
+          multiCapabilities: [
+          {'browserName': 'chrome'},
+          {'browserName': 'firefox'},
+          // {'browserName': 'phantomjs'}
+        ],
         // specs: [
         //  //     '../test_case/Release_One_Web/homepage/*'
         // ],
@@ -27,13 +27,13 @@ exports.config = {
                 // breadcrumb : ['../test_case/Release_One_Web/homepage/breadcrumb.js'],
                 // loading : 'Release_One_Web/homepage/loading.js'
                   
-                   //  faq : 'Release_One_Web/faq.js',
-                    // workpane :'Release_One_Web/workpane.js',
+                    faq : 'Release_One_Web/faq.js',
+                    workpane :'Release_One_Web/workpane.js',
                      whypane : 'Release_One_Web/whypane.js',
-                    // searchpane : 'Release_One_Web/searchpane.js',
-                    //splash : 'Release_One_Web/style/splashPosition.js',
-                    //button : 'Release_One_Web/style/button.js',
-                    // overlap: 'Release_One_Web/style/overlap.js'
+                    searchpane : 'Release_One_Web/searchpane.js',
+                    splash : 'Release_One_Web/style/splashPosition.js',
+                    button : 'Release_One_Web/style/button.js',
+                    overlap: 'Release_One_Web/style/overlap.js'
         },
         // resultJsonOutputFile: '../test_case/Release_One_Web/result.json',
         // rootElement: "[ng-app]" ,
