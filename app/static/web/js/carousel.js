@@ -162,7 +162,6 @@
     });
 
     $('#menu-home-links-container .menu-home-link').on('click', function() {
-        $('.top-link-close').trigger('click');
         indexClicked = $('#menu-home-links-container .menu-home-link').index(this);
         setTimeout(function() {
             checkForRedirectHashes(indexClicked);
@@ -176,7 +175,7 @@
         var delta = e.originalEvent.wheelDelta;
 
         currentIndex = $('#slide-breadcrumbs li a').index($('#slide-breadcrumbs li a.active'));
-
+        // close first
         //if mousewheel is going left
         if (delta > 50 && !carouselShowPaneLock) {
             $('.carousel li').removeClass('active');

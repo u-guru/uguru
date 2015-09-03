@@ -82,7 +82,7 @@ $(function () {
 		e.preventDefault();
 	});
 
-	$(".top-link-close").on("click", function(e) {
+	$(".top-link-close").on("click", function(e) {z
 		$('#full-overlay').addClass("animated fadeOut");
 		$('#side-menu').addClass("animated slideOutLeft").one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
 		function() {
