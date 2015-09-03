@@ -261,6 +261,8 @@ $(function () {
 			previousWorkContent = $('.work-content:visible').addClass('animated fadeOut')
 			setTimeout(function() {
 				$(previousWorkContent).removeClass('animated fadeOut').hide()
+				previousWorkContent = $('.work-content:visible').addClass('animated fadeOut')
+				$(previousWorkContent).removeClass('animated fadeOut').hide()
 				$('#' + descriptionToShow).addClass('animated fadeIn show').show();
 			}, 750);
 		}
