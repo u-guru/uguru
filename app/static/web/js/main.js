@@ -87,10 +87,7 @@ $(function () {
 			})
 		e.preventDefault();
 	});
-	// $('#side-menu').on('mousewheel',function(e)
-	// {
-	// 	console.log("whhhhhhel")
-	// });
+
 	$('#full-overlay').on("mousewheel", function(e) {
 		 if($('#full-overlay').hasClass('active'))
 		 {
@@ -102,7 +99,7 @@ $(function () {
 			 	$('#full-overlay').removeClass('animated fadeOut active');
 			 	$('#side-menu-wrapper').removeClass('active');
 			 	setTimeout(function() {
-			 		$('#side-menu').removeClass('animated slideOutLeft active').hide();
+			 		$('#side-menu').removeClass('animated slideOutLeft active');
 			 	}, 500)
 			});
 		 }
