@@ -82,7 +82,14 @@
             }
         }
 
-        this.next = function() { return this.showPane(current_pane+1, true); };
+        this.next = function()
+        { 
+            if(current_pane+1 < 4)
+            return this.showPane(current_pane+1, true); 
+            return this.showPane(current_pane, true); 
+
+        };
+
         this.prev = function() { return this.showPane(current_pane-1, true); };
 
 
@@ -162,7 +169,6 @@
     });
 
     $('#menu-home-links-container .menu-home-link').on('click', function() {
-        $('.top-link-close').trigger('click');
         indexClicked = $('#menu-home-links-container .menu-home-link').index(this);
         setTimeout(function() {
             checkForRedirectHashes(indexClicked);
@@ -172,22 +178,23 @@
 
     //handles all the scroll shifts
     $('html').on('mousewheel wheel', function (e) {
-        console.log('wheel');
-        var delta = null;
-        
-        if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
-                // console.log('mousewheel X '+  e.originalEvent.deltaX  );
-                 console.log('mousewheel Y '+  e.originalEvent.deltaY  );
-                // console.log('mousewheel Z '+  e.originalEvent.deltaZ  );
-                delta = e.originalEvent.deltaY * -30;
-            } else {
-                delta = e.originalEvent.wheelDelta;       
-            }
-         
 
+        console.log('mousewheel ');
+        var delta
+
+        if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1)
+        {
+            // console.log('mousewheel X '+  e.originalEvent.deltaX  );
+            // console.log('mousewheel Y '+  e.originalEvent.deltaY  );
+            // console.log('mousewheel Z '+  e.originalEvent.deltaZ  );
+            delta = e.originalEvent.deltaY * -30
+        }
+        else
+         delta = e.originalEvent.wheelDelta;
+       
 
         currentIndex = $('#slide-breadcrumbs li a').index($('#slide-breadcrumbs li a.active'));
-
+        // close first
         //if mousewheel is going left
         if (delta > 50 && !carouselShowPaneLock) {
             console.log("mousewheel left");
@@ -202,9 +209,12 @@
         else if (delta < -50 && !carouselShowPaneLock) {
             console.log("mousewheel right");
             $('.carousel li').removeClass('active');
-
             carouselShowPaneLock = true;
-            carousel.showPane(currentIndex + 1);
+            if(currentIndex +1 == 4)
+                carousel.showPane(currentIndex -4);
+            else
+                carousel.showPane(currentIndex + 1);
+
             setTimeout(function() {
                 carouselShowPaneLock = 0;
             }, 500)

@@ -49,6 +49,7 @@ $(document).ready(function () {
 	workSlider();
 	$(window).resize(function(){
 		// slideLeft();
+		
 		workSlider();
 	});
 
@@ -86,7 +87,29 @@ $(function () {
 			})
 		e.preventDefault();
 	});
+	// $('#side-menu').on('mousewheel',function(e)
+	// {
+	// 	console.log("whhhhhhel")
+	// });
+	$('#full-overlay').on("mousewheel", function(e) {
+		 if($('#full-overlay').hasClass('active'))
+		 {
+ 			 console.log("Remove side-menu")
 
+		 	$('#full-overlay').addClass("animated fadeOut");
+			$('#side-menu').addClass("animated slideOutLeft").one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
+			function() {
+			 	$('#full-overlay').removeClass('animated fadeOut active');
+			 	$('#side-menu-wrapper').removeClass('active');
+			 	setTimeout(function() {
+			 		$('#side-menu').removeClass('animated slideOutLeft active');
+			 	}, 500)
+			});
+		 }
+		
+	});
+
+	
 	$(".top-link-close").on("click", function(e) {
 		$('#full-overlay').addClass("animated fadeOut");
 		$('#side-menu').addClass("animated slideOutLeft").one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
@@ -100,6 +123,9 @@ $(function () {
 		// $("#side-menu, #overlay, #start-modal").removeClass("active");
 		// e.preventDefault();
 	});
+	// $(".top-link-close").on("", function(e) {
+	// 		console.log("test");
+	// });
 
 	$(".top-link-start, .link-start").on("click", function(e) {
 
@@ -256,7 +282,6 @@ $(function () {
 
 		svgCircle = $(this).find('svg circle')[0]
 		svgColor = $(svgCircle).css('fill');
-
 		setTimeout(function() {
 			sliderElemColor = $('#slider-triangle svg path').css('fill', svgColor);
 		}, 500)
@@ -274,6 +299,7 @@ $(function () {
 				$('#' + descriptionToShow).addClass('animated fadeIn show').show();
 			}, 750);
 		}
+		console.log("HI");
 		moveHorizontalSlider(sliderElem, targetElem, successCallback);
 	});
 
@@ -327,7 +353,7 @@ $(document).ready(function () {
 		axis: 'y',
 		trigger: 'hover'
 	});
-
+	
 	$('.search-results').flip({
 		axis: 'y',
 		trigger: 'click'
