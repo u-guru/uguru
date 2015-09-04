@@ -756,6 +756,8 @@ body {
   background: #2B3234;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased; }
+  body > section, body > div, body > main {
+    height: 100%; }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0; }
@@ -775,6 +777,52 @@ a:active, a:focus, a:hover {
 
 ::selection {
   background: rgba(43, 50, 52, 0.1); }
+
+#main-menu {
+  position: fixed;
+  bottom: 0;
+  background: #2B3234;
+  height: 64px;
+  width: 100%; }
+  #main-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 100%; }
+    #main-menu ul li {
+      position: relative;
+      width: 25%;
+      height: 64px; }
+      #main-menu ul li span {
+        border-radius: 1000px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        display: block;
+        width: 32px;
+        height: 32px;
+        background: rgba(255, 255, 255, 0.2); }
 
 h1.verified span svg {
   display: inline !important;
@@ -920,9 +968,62 @@ h1.verified span svg {
     .start#how #how-cards .how-card:nth-child(7) .how-card-media {
       background: #9A5BC5; }
 
+progress, .progress {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: absolute;
+  top: 0;
+  z-index: 9;
+  width: 100%;
+  height: 5px;
+  border: 0;
+  color: #69B3A5;
+  background: #40484B; }
+  progress::-webkit-progress-bar, .progress::-webkit-progress-bar {
+    background: #40484B; }
+  progress::-webkit-progress-value, progress span, .progress::-webkit-progress-value, .progress span {
+    -webkit-transition: all 0.15s ease-in-out;
+    -o-transition: all 0.15s ease-in-out;
+    -ms-transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+    display: block;
+    height: 100%;
+    background: #69B3A5; }
+  progress::-moz-progress-bar, .progress::-moz-progress-bar {
+    -webkit-transition: all 0.15s ease-in-out;
+    -o-transition: all 0.15s ease-in-out;
+    -ms-transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+    background: #69B3A5; }
+  progress span[data-value="2"], .progress span[data-value="2"] {
+    width: 2%; }
+  progress span[data-value="30"], .progress span[data-value="30"] {
+    width: 25%; }
+  progress span[data-value="50"], .progress span[data-value="50"] {
+    width: 40%; }
+  progress span[data-value="80"], .progress span[data-value="80"] {
+    width: 80%; }
+  progress span[data-value="85"], .progress span[data-value="85"] {
+    width: 85%; }
+  progress span[data-value="95"], .progress span[data-value="95"] {
+    width: 95%; }
+  progress span[data-value="99"], .progress span[data-value="99"] {
+    width: 86%; }
+
 .onboarding header {
   position: relative;
-  height: 245px; }
+  height: calc(100% / 3);
+  box-sizing: border-box; }
   .onboarding header .header-nav {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -933,7 +1034,8 @@ h1.verified span svg {
     display: flex;
     -ms-flex-flow: row wrap;
     -webkit-flex-flow: row wrap;
-    flex-flow: row wrap; }
+    flex-flow: row wrap;
+    padding-top: 5px; }
     .onboarding header .header-nav a {
       width: 50%; }
       .onboarding header .header-nav a h1 {
@@ -970,7 +1072,8 @@ h1.verified span svg {
     width: 100%;
     font-size: 24px;
     text-align: center;
-    text-transform: none; }
+    text-transform: none;
+    line-height: 1.25; }
   .onboarding header .onboarding-search {
     position: absolute;
     bottom: 0;
@@ -1019,7 +1122,7 @@ h1.verified span svg {
       height: 20px; }
 
 .onboarding .onboarding-list {
-  height: 506px;
+  height: calc(100% / 3 * 2);
   overflow: auto; }
   .onboarding .onboarding-list ul {
     list-style: none;
@@ -1031,6 +1134,194 @@ h1.verified span svg {
       color: white; }
     .onboarding .onboarding-list ul li a:active, .onboarding .onboarding-list ul li a:focus, .onboarding .onboarding-list ul li a:hover {
       background: rgba(255, 255, 255, 0.2); }
+
+.onboarding#demographic header {
+  height: calc(100% / 3);
+  position: relative; }
+  .onboarding#demographic header:before {
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(/static/images/school.jpg) no-repeat center center/cover; }
+  .onboarding#demographic header .demographic-header {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+    .onboarding#demographic header .demographic-header h1 {
+      padding-top: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 24px; }
+
+.onboarding#demographic #demographic-grid > ul > li:not(.active) {
+  filter: alpha(opacity=30);
+  opacity: 0.3; }
+
+.onboarding#demographic #demographic-grid ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  height: 100%; }
+  .onboarding#demographic #demographic-grid ul li {
+    position: relative;
+    width: 50%;
+    height: 50%;
+    font-weight: 600; }
+    .onboarding#demographic #demographic-grid ul li a {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      width: 100%;
+      height: 100%;
+      background: none; }
+      .onboarding#demographic #demographic-grid ul li a .demographic-icon span {
+        border-radius: 1000px;
+        display: block;
+        margin: 0 auto 10px;
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.4); }
+    .onboarding#demographic #demographic-grid ul li a:active, .onboarding#demographic #demographic-grid ul li a:focus, .onboarding#demographic #demographic-grid ul li a:hover {
+      background: none; }
+    .onboarding#demographic #demographic-grid ul li .demographic-popup {
+      border-radius: 0px;
+      position: relative;
+      background: white;
+      padding: 0;
+      margin-top: 30px;
+      position: absolute;
+      z-index: 9;
+      bottom: -100%;
+      background: white;
+      height: 100%;
+      width: 200%; }
+      .onboarding#demographic #demographic-grid ul li .demographic-popup:before {
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        content: "";
+        display: block;
+        position: absolute;
+        top: -29px;
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-bottom: 15px solid white; }
+      .onboarding#demographic #demographic-grid ul li .demographic-popup ul li a {
+        border: 1px solid; }
+      .onboarding#demographic #demographic-grid ul li .demographic-popup ul li:nth-child(1) {
+        padding: 5px 0 0 5px; }
+        .onboarding#demographic #demographic-grid ul li .demographic-popup ul li:nth-child(1) a {
+          border-top: 0;
+          border-left: 0; }
+      .onboarding#demographic #demographic-grid ul li .demographic-popup ul li:nth-child(2) {
+        padding: 5px 5px 0 0; }
+        .onboarding#demographic #demographic-grid ul li .demographic-popup ul li:nth-child(2) a {
+          border-top: 0;
+          border-right: 0; }
+      .onboarding#demographic #demographic-grid ul li .demographic-popup ul li:nth-child(3) {
+        padding: 0 0 5px 5px; }
+        .onboarding#demographic #demographic-grid ul li .demographic-popup ul li:nth-child(3) a {
+          border-bottom: 0;
+          border-left: 0; }
+      .onboarding#demographic #demographic-grid ul li .demographic-popup ul li:nth-child(4) {
+        padding: 0 5px 5px 0; }
+        .onboarding#demographic #demographic-grid ul li .demographic-popup ul li:nth-child(4) a {
+          border-bottom: 0;
+          border-right: 0; }
+    .onboarding#demographic #demographic-grid ul li:nth-child(1) .demographic-popup:before {
+      left: 25%;
+      -webkit-transform: translateX(-25%);
+      -moz-transform: translateX(-25%);
+      -ms-transform: translateX(-25%);
+      -o-transform: translateX(-25%);
+      transform: translateX(-25%); }
+    .onboarding#demographic #demographic-grid ul li:nth-child(1) .demographic-popup li a {
+      color: #8A9EA3;
+      border-color: rgba(138, 158, 163, 0.1); }
+    .onboarding#demographic #demographic-grid ul li:nth-child(1) .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li:nth-child(1) .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li:nth-child(1) .demographic-popup li a:hover {
+      background: rgba(138, 158, 163, 0.05); }
+    .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup {
+      left: -100%; }
+      .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup:before {
+        left: 75%;
+        -webkit-transform: translateX(-75%);
+        -moz-transform: translateX(-75%);
+        -ms-transform: translateX(-75%);
+        -o-transform: translateX(-75%);
+        transform: translateX(-75%); }
+      .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup li a {
+        color: #69B3A5;
+        border-color: rgba(105, 179, 165, 0.1); }
+      .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup li a:hover {
+        background: rgba(105, 179, 165, 0.05); }
+    .onboarding#demographic #demographic-grid ul li:nth-child(3) .demographic-popup:before {
+      left: 25%;
+      -webkit-transform: translateX(-25%);
+      -moz-transform: translateX(-25%);
+      -ms-transform: translateX(-25%);
+      -o-transform: translateX(-25%);
+      transform: translateX(-25%); }
+    .onboarding#demographic #demographic-grid ul li:nth-child(3) .demographic-popup li a {
+      color: #55A4B7;
+      border-color: rgba(85, 164, 183, 0.1); }
+    .onboarding#demographic #demographic-grid ul li:nth-child(3) .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li:nth-child(3) .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li:nth-child(3) .demographic-popup li a:hover {
+      background: rgba(85, 164, 183, 0.05); }
+    .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup {
+      left: -100%; }
+      .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup:before {
+        left: 75%;
+        -webkit-transform: translateX(-75%);
+        -moz-transform: translateX(-75%);
+        -ms-transform: translateX(-75%);
+        -o-transform: translateX(-75%);
+        transform: translateX(-75%); }
+      .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup li a {
+        color: #50A5DD;
+        border-color: rgba(80, 165, 221, 0.1); }
+      .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup li a:hover {
+        background: rgba(80, 165, 221, 0.05); }
 
 .onboarding#start {
   background: #40484B; }
@@ -1044,14 +1335,12 @@ h1.verified span svg {
     transform: translateY(-50%);
     padding-bottom: 64px;
     color: #69B3A5;
+    font-size: 28px;
     text-align: center; }
-
-.onboarding#photo header {
-  background: #69B3A5; }
 
 .onboarding#photo #photo-container #profile-icon {
   position: relative;
-  height: 245px;
+  height: calc(100% / 2);
   text-align: center; }
   .onboarding#photo #photo-container #profile-icon h1 {
     position: absolute;
@@ -1154,10 +1443,12 @@ h1.verified span svg {
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  margin: 0 1px; }
+  padding: 0 1px 1px;
+  height: 100%; }
   .onboarding#skill #skills-list ul li {
     box-sizing: border-box;
     width: 50%;
+    height: 25%;
     padding: 1px; }
     .onboarding#skill #skills-list ul li a {
       -ms-box-orient: horizontal;
@@ -1177,7 +1468,7 @@ h1.verified span svg {
       -webkit-justify-content: center;
       justify-content: center;
       box-sizing: border-box;
-      height: 124.5px;
+      height: 100%;
       font-size: 18px;
       font-weight: 400;
       line-height: 24px;
@@ -1250,7 +1541,7 @@ h1.verified span svg {
       border: 15px solid transparent;
       border-bottom: 15px solid white; }
     .onboarding#skill-list .onboarding-list > div ul {
-      height: 506px;
+      height: calc(100% / 3 * 2);
       overflow: auto; }
       .onboarding#skill-list .onboarding-list > div ul li > span {
         position: relative;
@@ -1335,6 +1626,18 @@ h1.verified span svg {
     .onboarding#course #courses-list ul li input:checked + label {
       background: #55A4B7; }
 
+.onboarding#school header:before {
+  filter: alpha(opacity=30);
+  opacity: 0.3;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(/static/images/school.jpg) no-repeat center center/cover; }
+
 .onboarding#school #school-list ul li a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1415,9 +1718,6 @@ h1.verified span svg {
 
 .onboarding#major #major-list ul .major-math a {
   border-color: #DB1988; }
-
-.request#request-empty header {
-  background: #69B3A5; }
 
 .request#request-empty #request-message {
   -ms-box-orient: horizontal;
@@ -1505,7 +1805,7 @@ h1.verified span svg {
       text-transform: uppercase; }
 
 .request#request header {
-  height: 245px;
+  height: calc(100% / 3);
   position: relative; }
   .request#request header:before {
     filter: alpha(opacity=30);
@@ -1568,12 +1868,15 @@ h1.verified span svg {
         -o-transform: rotate(45deg);
         transform: rotate(45deg); }
 
+.request#request #request-content {
+  height: calc(100% / 3 * 2); }
+
 .request#request #request-list {
   list-style: none;
   margin: 0;
   padding: 0;
+  height: calc(100% - 64px);
   background: #40484B;
-  height: 374px;
   overflow: auto; }
   .request#request #request-list li {
     -ms-box-orient: horizontal;
@@ -1645,12 +1948,12 @@ h1.verified span svg {
       width: 100%;
       color: white;
       padding: 10px;
-      min-height: 64px; }
+      height: 64px; }
     .request #request-tabs ul li.active a {
       background: #40484B; }
     .request #request-tabs ul li h3 {
       width: 100%;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 600;
       text-align: center;
       text-transform: uppercase; }
@@ -1734,7 +2037,7 @@ h1.verified span svg {
 #credibility #credit-content {
   position: relative;
   background: #40484B;
-  height: 506px;
+  height: calc(100% / 3 * 2);
   padding: 15px;
   text-align: center; }
   #credibility #credit-content h1 {

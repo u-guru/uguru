@@ -155,6 +155,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       -ms-transition: width 0.15s ease-in;
       -moz-transition: width 0.15s ease-in;
       transition: width 0.15s ease-in;
+      position: absolute;
       top: 30%;
       left: 50%;
       -webkit-transform: translate(-50%, -30%);
@@ -2008,3 +2009,13 @@ html, body, #main, #main ul.carousel, #main li.slide {
   width: 8px;
   height: 8px;
   background: #81B566; }
+
+@media all and (-ms-high-contrast: none) {
+  #search-box {
+    -ms-transform: none !important;
+    transform: none !important; }
+  #top #top-logo svg {
+    margin: -10px auto 0 !important; }
+  .search-results-gurus {
+    -ms-transform: translate(-50%, -85%) !important;
+    transform: translate(-50%, -85%) !important; } }

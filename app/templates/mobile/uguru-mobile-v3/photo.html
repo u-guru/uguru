@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="shortcut icon" href="/static/images/favicon.ico">
+	<link rel="shortcut icon" href="static/images/favicon.ico">
 
-	<link rel="stylesheet" href="/static/css/style.css">
+	<link rel="stylesheet" href="static/css/style.css">
 
 	
 	<title>UGURU</title>
@@ -17,7 +17,16 @@
 <body>
 	
 <section id="photo" class="onboarding">
-	<header class="header-back">
+	<progress value="85" max="100">
+		<div class="progress"><span data-value="90"></span></div>
+	</progress>
+	<script>
+		setTimeout(setValue, 200);
+		function setValue() {
+		    document.getElementsByTagName("progress")[0].setAttribute("value", "90");
+		}
+	</script>
+	<header>
 		<div class="header-nav">
 			<a class="header-nav-back" href="account.html">
 				<svg width="12px" height="23px" viewBox="0 0 12 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -34,7 +43,7 @@
 		</div>
 		<h1 class="onboarding-message">Add a snazzy photo of yourself.</h1>
 	</header>
-	<div id="photo-container" class="onboarding-list">
+	<div id="photo-container" class="onboarding-list bg-slate">
 		<div id="profile-icon">
 			<h1>Take<br/>Photo</h1>
 			<svg width="115px" height="115px" viewBox="0 0 115 115" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -112,9 +121,9 @@
 </section>
 
 
-	
-		<script src="/static/js/jquery.min.js"></script>
-		<script src="/static/js/main.js"></script>
-	
+	<!--
+		<script src="static/js/jquery.min.js"></script>
+		<script src="static/js/main.js"></script>
+	-->
 </body>
 </html>

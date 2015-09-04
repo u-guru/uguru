@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="shortcut icon" href="/static/images/favicon.ico">
+	<link rel="shortcut icon" href="static/images/favicon.ico">
 
-	<link rel="stylesheet" href="/static/css/style.css">
+	<link rel="stylesheet" href="static/css/style.css">
 
 	
 	<title>UGURU</title>
@@ -17,7 +17,16 @@
 <body>
 	
 <section id="account" class="onboarding">
-	<header class="bg-shamrock">
+	<progress value="80" max="100">
+		<div class="progress"><span data-value="85"></span></div>
+	</progress>
+	<script>
+		setTimeout(setValue, 200);
+		function setValue() {
+		    document.getElementsByTagName("progress")[0].setAttribute("value", "85");
+		}
+	</script>
+	<header>
 		<div class="header-nav">
 			<a class="header-nav-back" href="complete.html">
 				<svg width="12px" height="23px" viewBox="0 0 12 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -34,7 +43,7 @@
 		</div>
 		<h1 class="onboarding-message">Just a few more details.</h1>
 	</header>
-	<div id="account-form" class="onboarding-list">
+	<div id="account-form" class="onboarding-list bg-slate">
 		<input class="input-ghost" type="text" placeholder="Name"/>
 		<input class="input-ghost" type="email" placeholder="Email"/>
 		<input class="input-ghost" type="password" placeholder="Password"/>
@@ -47,9 +56,9 @@
 <button class="btn-caps-fixed-bold bottom-0 bg-shamrock" onclick="window.location.href='/photo.html'">Next</button>
 
 
-	
-		<script src="/static/js/jquery.min.js"></script>
-		<script src="/static/js/main.js"></script>
-	
+	<!--
+		<script src="static/js/jquery.min.js"></script>
+		<script src="static/js/main.js"></script>
+	-->
 </body>
 </html>

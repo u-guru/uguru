@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="shortcut icon" href="/static/images/favicon.ico">
+	<link rel="shortcut icon" href="static/images/favicon.ico">
 
-	<link rel="stylesheet" href="/static/css/style.css">
+	<link rel="stylesheet" href="static/css/style.css">
 
 	
 	<title>UGURU</title>
@@ -17,7 +17,16 @@
 <body>
 	
 <section id="profile" class="complete">
-	<button disabled class="bg-white-10 lowercase">
+	<progress value="50" max="100">
+		<div class="progress"><span data-value="80"></span></div>
+	</progress>
+	<script>
+		setTimeout(setValue, 200);
+		function setValue() {
+		    document.getElementsByTagName("progress")[0].setAttribute("value", "80");
+		}
+	</script>
+	<button disabled class="bg-white-20 lowercase">
 		Your profile is almost complete!
 	</button>
 	<div id="profile-desc">
@@ -123,9 +132,9 @@
 <button class="btn-caps-fixed-bold bottom-0 bg-shamrock-90" onclick="window.location.href='/account.html'">Create Your Account</button>
 
 
-	
-		<script src="/static/js/jquery.min.js"></script>
-		<script src="/static/js/main.js"></script>
-	
+	<!--
+		<script src="static/js/jquery.min.js"></script>
+		<script src="static/js/main.js"></script>
+	-->
 </body>
 </html>

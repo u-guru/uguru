@@ -2488,3 +2488,21 @@ html, body, #main, #main ul.carousel, #main li.slide {
 		background: $moola;
 	}
 }
+
+@media all and (-ms-high-contrast:none) {
+	#search-box {
+		-ms-transform: none!important;
+		transform: none!important;
+	}
+	#top {
+		#top-logo {
+			svg {
+				margin: -10px auto 0!important;
+			}
+		}
+	}
+	.search-results-gurus {
+		-ms-transform: translate(-50%,-85%)!important;
+		transform: translate(-50%,-85%)!important;
+	}
+}
