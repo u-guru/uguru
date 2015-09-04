@@ -82,7 +82,7 @@ var getElemHeight = function(elem) {
 var moveHorizontalSlider = function(sliderElem, targetElem, successCallback) {
 
     transitionOffsetX =  targetElem.offsetLeft + targetElem.getBoundingClientRect().width/2 - sliderElem.offsetLeft - sliderElem.getBoundingClientRect().width/2;
-
+    // console.log ( transitionOffsetX +" = "+ targetElem.offsetLeft+"+ "+targetElem.getBoundingClientRect().width/2+" - "+sliderElem.offsetLeft+" - "+sliderElem.getBoundingClientRect().width/2)
     moveElement(sliderElem, transitionOffsetX);
     if (successCallback) {
         successCallback();
