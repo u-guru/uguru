@@ -343,7 +343,7 @@ $(document).ready(function () {
 		axis: 'y',
 		trigger: 'hover'
 	});
-
+	
 	$('.search-results').flip({
 		axis: 'y',
 		trigger: 'click'

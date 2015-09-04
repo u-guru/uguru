@@ -177,10 +177,20 @@
     });
 
     //handles all the scroll shifts
-    $('html').on('mousewheel', function (e) {
-        console.log('mousewheel');
-        var delta = e.originalEvent.wheelDelta;
+    $('html').on('mousewheel wheel', function (e) {
+        console.log('mousewheel ');
+        var delta
 
+        if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1)
+        {
+            // console.log('mousewheel X '+  e.originalEvent.deltaX  );
+            // console.log('mousewheel Y '+  e.originalEvent.deltaY  );
+            // console.log('mousewheel Z '+  e.originalEvent.deltaZ  );
+            delta = e.originalEvent.deltaY * -30
+        }
+        else
+         delta = e.originalEvent.wheelDelta;
+       
         currentIndex = $('#slide-breadcrumbs li a').index($('#slide-breadcrumbs li a.active'));
         // close first
         //if mousewheel is going left
