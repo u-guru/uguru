@@ -279,8 +279,19 @@ var onTransitionStartCarousel = function(index) {
          currentProgress = parseInt($('.work-infograph')[0].getAttribute('data-percent'));
 
          if (!currentProgress) {
-             $('.work-infograph').data('easyPieChart').update(25);
-             countupElement('work-wage-animation', 0, 60, 5);
+            try {
+                $('.work-infograph').data('easyPieChart').update(25);
+                countupElement('work-wage-animation', 0, 60, 5);   
+            } catch (err){
+                setTimeout(function() {
+                    console.log("err: " + err);
+                    console.log("error loading easyPieChart.update(), trying again...")
+                    $('.work-infograph').data('easyPieChart').update(25);
+                    countupElement('work-wage-animation', 0, 60, 5);   
+                }, 700);
+                
+            } 
+             
          }
     }
     if (index === 3) {
