@@ -1271,12 +1271,12 @@ progress, .progress {
           border-bottom: 0;
           border-right: 0; }
     .onboarding#demographic #demographic-grid ul li:nth-child(1) .demographic-popup:before {
-      left: 25%;
-      -webkit-transform: translateX(-25%);
+      left: 23%;
+      -webkit-transform: translateX(-23%);
       -moz-transform: translateX(-25%);
       -ms-transform: translateX(-25%);
       -o-transform: translateX(-25%);
-      transform: translateX(-25%); }
+      transform: translateX(-23%); }
     .onboarding#demographic #demographic-grid ul li:nth-child(1) .demographic-popup li a {
       color: #8A9EA3;
       border-color: rgba(138, 158, 163, 0.1); }
