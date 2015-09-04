@@ -23,18 +23,18 @@
     <link rel="stylesheet" href="/static/web/css/ionicons.min.css"/>
 
     <script>
-        // document.addEventListener("DOMContentLoaded", function(e) {
-        //         onDomLoadSuccess();
-        // });
+        document.addEventListener("DOMContentLoaded", function(e) {
+                onDomLoadSuccess();
+        });
     </script>
 </head>
 <body id="{% block pagetype %}{% endblock %}">
 
 <script>
-    // var bodyLoadingDiv = document.createElement('div');
-    // bodyLoadingDiv.className += bodyLoadingDiv.className + 'body-loading-div'
-    // document.body.appendChild(bodyLoadingDiv);
-    // bodyLoadingDiv.innerHTML = '<div> {% include "web/components/logo-white.svg"%} </div><div> {% include "web/components/svg-loader.svg"%} </div>'
+    var bodyLoadingDiv = document.createElement('div');
+    bodyLoadingDiv.className += bodyLoadingDiv.className + 'body-loading-div'
+    document.body.appendChild(bodyLoadingDiv);
+    bodyLoadingDiv.innerHTML = '<div> {% include "web/components/logo-white.svg"%} </div><div> {% include "web/components/svg-loader.svg"%} </div>'
 </script>
 <header id="top">
     <nav id="top-menu">
