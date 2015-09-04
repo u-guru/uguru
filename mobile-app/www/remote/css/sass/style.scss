@@ -345,6 +345,7 @@ h1.verified {
 					width: 100%;
 					text-align: left;
 					padding: 15px 38px;
+					color:white;
 				}
 			}
 			.header-nav-next {
@@ -370,6 +371,7 @@ h1.verified {
 			font-size: 24px;
 			text-align: center;
 			text-transform: none;
+			color:white;
 		}
 		.onboarding-search {
 			position: absolute;
@@ -635,7 +637,7 @@ h1.verified {
 				right: 15px;
 			}
 		}
-		#onboarding-skill {
+		#onboarding-skill{
 			@include center-xy;
 			.onboarding-prop {
 				@include reset-pos;
@@ -657,11 +659,11 @@ h1.verified {
 					overflow: auto;
 					li {
 						> span {
-							position: relative;
 							@include flex;
 							@include flex-center;
 							background: white;
 							color: $slate;
+							position:relative;
 							height: 61px;
 							border-bottom: 1px solid $slate;
 							label {
@@ -691,6 +693,11 @@ h1.verified {
 							}
 							input:checked + span {
 							    background: $gold url("/static/svg/check.svg") center center no-repeat;
+							}
+							input + span svg {
+								position:absolute;
+							    right:3.5%;
+							    top:33%;
 							}
 						}
 					}
@@ -758,7 +765,10 @@ h1.verified {
 							@include flex;
 							@include flex-center;
 							@include flex-wrap;
-							padding-left: 10px;
+							padding-right: 10%;
+							width:83%;
+							white-space: nowrap;
+							text-overflow: ellipsis;
 							b, i {
 								display: block;
 								width: 100%;
@@ -766,6 +776,9 @@ h1.verified {
 							}
 							b {
 								font-weight: 400;
+							    white-space: nowrap;
+							    text-overflow: ellipsis;
+							    overflow: hidden;
 							}
 							i {
 								font-size: 16px;
@@ -810,6 +823,24 @@ h1.verified {
 						background: rgba(white,.2);
 					}
 				}
+				.major-item {
+					border-color: $lake;
+					position:relative;
+					padding:0px;
+				}
+				.major-item.selected{
+					position:relative;
+					.icon {
+						right: 5%;
+    					top: 30%;
+						position:absolute;
+					}
+
+					a{
+						padding-right:20%;
+					}
+
+				}
 				.major-business {
 					a {
 						border-color: $lake;
@@ -839,6 +870,19 @@ h1.verified {
 	&#request-empty {
 		.header-back {
 			background: $shamrock;
+			h1 {
+				color:white;
+			}
+		}
+		button {
+			bottom: 0;
+			background: whitesmoke;
+			color:$shamrock;
+			left:0;
+		}
+		button:active {
+			background: rgba(white,0.4);
+			color:$shamrock;
 		}
 		#request-message {
 			@include flex;
@@ -846,7 +890,7 @@ h1.verified {
 			@include flex-center;
 			padding: 15px;
 			width: 100%;
-			height: 637px;
+			height: 100%;
 			background: $slate;
 			> div {
 				> svg {
@@ -1353,4 +1397,94 @@ h1.verified {
 	}
 }
 
+
+// start samir
+.hide {
+	display:none !important;
 }
+
+.show {
+	display:block !important;
+}
+
+	section {
+		header {
+			&.header-nav {
+				a.header-nav-back {
+					h1 {
+						color:white !important;
+					}
+				}
+			}
+		}
+	}
+}
+
+.smaller-list-font {
+	font-size:85%;
+}
+
+.uguru-view .request#request-empty #request-message > div h2 {
+    width: 100%;
+    color:white;
+    font-size: 18px;
+    font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.slider-pager {
+	display:none;
+}
+
+.full-height {
+	height:100%;
+}
+
+// .has-footer {
+// 	margin-bottom:64px;
+// }
+
+.content {
+	height: 100%;
+	&.footer-exists {
+		padding-bottom: 64px;
+	}
+}
+
+.uguru-view.category-skills-modal {
+	top:245px;
+}
+
+#skill.onboarding {
+	header {
+		position:relative;
+	}
+	#category-active-default {
+		position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    padding-top: 17%;
+		@include center-xy;
+		position: absolute;
+	    -webkit-transform: translate(-50%, -50%);
+	    -moz-transform: translate(-50%, -50%);
+	    -ms-transform: translate(-50%, -50%);
+	    -o-transform: translate(-50%, -50%);
+	    .onboarding-prop {
+	    	position: relative;
+    		margin-bottom: -17%;
+	    }
+		h1 {
+			padding: 10px 0 0;
+			text-align: center;
+			color:white;
+			width:100%;
+		}
+	}
+
+}
+
+button.disabled {
+	opacity:0.4;
+}
+
+//end samir

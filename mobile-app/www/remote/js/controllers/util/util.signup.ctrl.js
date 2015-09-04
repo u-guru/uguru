@@ -596,22 +596,27 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.resetAccount = function() {
-      if ($scope.user.is_admin && confirm('Are you sure you want to reset your admin account?')) {
+      if (confirm('Are you sure you want to reset your admin account?')) {
 
         $scope.loader.show();
-        User.clearAttr($scope.user, $scope.user.id).then(
-          function(user) {
+        $timeout(function() {
+          $scope.loader.hide();
+        }, 1000);
+        $scope.user.university_id = null;
+        $scope.user.university = null;
+        $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
+        $ionicSideMenuDelegate.toggleRight();
+        $scope.logoutUser();
+        $localstorage.setObject('user', $scope.user);
+        $scope.goToBeginning();
+        // User.clearAttr($scope.user, $scope.user.id).then(
+        //   function(user) {
 
-            $scope.loader.hide();
-            $scope.user.university_id = null;
-            $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
-            $ionicSideMenuDelegate.toggleRight();
-            $scope.logoutUser();
-            $scope.goToBeginning();
-          },
-          function(err) {
-            console.log(err)
-          });
+
+        //   },
+        //   function(err) {
+        //     console.log(err)
+        //   });
 
 
         // $scope.loader.show();
@@ -635,7 +640,8 @@ angular.module('uguru.util.controllers')
         $scope.user.university_id = null;
         $localstorage.setObject('user', $scope.user);
         $timeout(function() {
-          $state.go('^.onboarding');
+          $ionicViewSwitcher.nextDirection('back');
+          $state.go('^.access');
         }, 500)
       }
     }

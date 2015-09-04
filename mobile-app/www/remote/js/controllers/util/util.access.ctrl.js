@@ -10,9 +10,38 @@ angular.module('uguru.util.controllers')
   '$ionicModal',
   '$cordovaStatusbar',
   '$ionicPlatform',
+  '$ionicViewSwitcher',
   function($scope, $state, $timeout, $localstorage,
-    $ionicModal, $cordovaStatusbar, $ionicPlatform) {
+    $ionicModal, $cordovaStatusbar, $ionicPlatform,
+    $ionicViewSwitcher) {
 
+
+    $scope.access = {
+      codeInput: '',
+      errorInputMsg: null,
+      data: {
+        genericAccessCode: 'cool'
+      }
+    }
+
+    $scope.launchSignupModal = function() {
+      $scope.signupModal.show();
+    }
+
+    $scope.checkAccessCode = function(code) {
+
+      if (code === $scope.access.data.genericAccessCode) {
+        $scope.success.show(0, 1000,'Access Granted');
+        $scope.access.codeInput ='';
+        $ionicViewSwitcher.nextDirection('forward');
+        $state.go('^.university');
+      } else {
+        $scope.access.errorInputMsg = 'Incorrect access code';
+      }
+    }
+
+    // 1. on enter
+    // 2. show error
 
     $ionicPlatform.ready(function() {
 
@@ -30,6 +59,13 @@ angular.module('uguru.util.controllers')
         animation: 'slide-in-up'
     }).then(function(modal) {
         $scope.howItWorksModal = modal;
+    });
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.signupModal = modal;
     });
 
     $scope.launchHowItWorksModal = function() {
