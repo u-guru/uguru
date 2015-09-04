@@ -102,7 +102,7 @@ $(function () {
 			 	$('#full-overlay').removeClass('animated fadeOut active');
 			 	$('#side-menu-wrapper').removeClass('active');
 			 	setTimeout(function() {
-			 		$('#side-menu').removeClass('animated slideOutLeft active');
+			 		$('#side-menu').removeClass('animated slideOutLeft active').hide();
 			 	}, 500)
 			});
 		 }
