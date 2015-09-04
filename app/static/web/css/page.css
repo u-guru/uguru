@@ -328,6 +328,11 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
     color: white;
     font-size: 24px;
     font-weight: 600; }
+    .main#manifest {
+      -webkit-user-select: none;  
+      -moz-user-select: none;     
+      -ms-user-select: none;      
+      user-select: none; }
   .main#manifest > div p {
     padding: 0 30px;
     font-size: 18px;
@@ -335,6 +340,12 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
     line-height: 1.4; }
   .main#faq dl {
     margin: 0; }
+    .main#faq {
+      -webkit-user-select: none;  
+      -moz-user-select: none;     
+      -ms-user-select: none;      
+      user-select: none; }
+    }
     .main#faq dl dt {
       position: relative;
       background: #50A5DD;

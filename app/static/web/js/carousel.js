@@ -171,8 +171,8 @@
     });
 
     //handles all the scroll shifts
-    $('html').on('mousewheel', function (e) {
-        console.log('mousewheel');
+    $('html').on('wheel', function (e) {
+        console.log('wheel');
         var delta = e.originalEvent.wheelDelta;
 
         currentIndex = $('#slide-breadcrumbs li a').index($('#slide-breadcrumbs li a.active'));
