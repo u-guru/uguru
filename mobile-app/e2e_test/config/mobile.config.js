@@ -20,7 +20,6 @@ exports.config = {
             workflow: ['../test_case/workflows/workflow_1.js'],
 
         },
-        // resultJsonOutputFile: 'www/remote/tests/e2e/result.json',
         rootElement: "[ng-app]" ,
        // rootElement: 'uguru' ,
         jasmineNodeOpts: {
@@ -58,8 +57,6 @@ exports.config = {
                     },
                     customProcessors: []
                 }));
-            require('jasmine-bail-fast');
-            jasmine.getEnv().bailFast();
 
     
             protractor.get = require('../test_case/globals.js').globals;

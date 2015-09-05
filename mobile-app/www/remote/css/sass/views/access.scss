@@ -1,4 +1,5 @@
-
+$smoke: #F1F1F1;
+$shamrock: #69B3A5;
 .uguru-view {
 
     &.access-view {
@@ -33,4 +34,23 @@
             }
         }
     }
+}
+
+#access.start.full-xy.flex-start {
+    -o-align-items: flex-start;
+    -moz-align-items:flex-start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+}
+
+.uguru-view .start#access svg.max-width-33 {
+    height: 200px;
+    max-width:100px;
+    margin-top:15%;
+}
+
+#access .keyboard-button {
+    margin-bottom:30px;
+    color:$shamrock;
+    background:$smoke !important;
 }
