@@ -5,8 +5,8 @@ var FIRST_PAGE='^.home';
 
 
 
-var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
-var REST_URL = 'http://uguru-rest.herokuapp.com'
+var BASE_URL = 'https://uguru-rest.herokuapp.com/production/app/';
+var REST_URL = 'https://uguru-rest.herokuapp.com'
 
 var BASE = '';
 if (LOCAL) {
@@ -14,7 +14,7 @@ if (LOCAL) {
   BASE_URL = 'http://localhost:8100';
 
   // REST_URL = 'http://localhost:5000';
-   var REST_URL = 'http://uguru-rest.herokuapp.com'
+   //var REST_URL = 'http://uguru-rest.herokuapp.com'
 
 } else {
   img_base = '/static/'
