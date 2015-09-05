@@ -1,10 +1,31 @@
-<ion-header-bar align-title="center" class='dark-bg-header no-background-image'>
+<ion-view class='uguru-view'>
+<section id="account" class="onboarding">
+  <header>
+    <div class='left-buttons'>
+        <a ng-click='signupModal.hide()'>
+            <i class='icon ion-chevron-down'> </i>
+        </a>
+    </div>
+    <h1>How it Works</h1>
+  </header>
+  <div id="account-form" class="onboarding-list">
+    <input type="text" placeholder="Name"/>
+    <input type="email" placeholder="Email"/>
+    <input type="password" placeholder="Password"/>
+    <a id="tos" ng-click='launchPrivacyPolicy()'>Terms &amp; Conditions</a>
+    <div id="social-login">
+      <button>CREATE OR LOGIN</button>
+    </div>
+  </div>
+</section>
+</ion-view>
+
+<!-- <ion-header-bar align-title="center" class='dark-bg-header no-background-image'>
       <div class="buttons">
         <button ng-if="!resetMode" class="button button-clear button-header-link grey-text light nano-text" ng-click='goBack()'>Cancel</button>
         <button ng-if="resetMode" class="button button-clear button-header-link grey-text light nano-text" ng-click='toggleBackToLoginMode()'>Back</button>
       </div>
       <h1 class="title micro-text">{{headerText}}</h1>
-        <!-- <span ng-show='!loginMode'>Sign Up</span> -->
       <div class="buttons">
         <button class="button button-clear button-header-link submit-button" id='done-button' ng-click='completeSignup()'>
           <span class='ng-class:{"grey-text":signupForm.email.length === 0 || signupForm.password.length === 0 || signupForm.first_name.length === 0 || signupForm.last_name.length === 0}'>Submit</span>
@@ -92,3 +113,4 @@
 
     </ion-scroll>
   </ion-content>
+ -->

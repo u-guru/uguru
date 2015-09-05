@@ -40,6 +40,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $scope.showUpcoming = !$scope.showUpcoming;
     }
 
+    $scope.goBackToStudentHome = function() {
+      $ionicViewSwitcher.nextDirection('back');
+      $state.go('^.home');
+    }
+
     $scope.cancelRequest = function(request) {
       if (confirm('Are you sure you want to cancel this request?')) {
         request.status = 4;
@@ -133,7 +138,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
 
 
-
+    $scope.goToBecomeGuru = function() {
+      $ionicViewSwitcher.nextDirection('forward');
+      $state.go('^.become-guru');
+    }
     $scope.cancelStudentActiveSession = function(session) {
 
               //guru goes back to session 'pending', maybe clicked start by accident

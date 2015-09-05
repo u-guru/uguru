@@ -1,116 +1,41 @@
 
-<ion-view class='side-menu-right' id="side_menu" ng-controller='SignupController' cache-view="false">
+<ion-view ng-controller='SignupController'>
 
+<ion-list class='side-menu-list'>
+  <ion-item class='item-icon-right hide ng-class:{"show":root.vars.guru_mode}' ng-click='goToGuru()'>
+    Student Mode
+    <i class='icon ion-arrow-swap'> </i>
+  </ion-item>
+  <ion-item class='item-icon-right hide ng-class:{"show":!root.vars.guru_mode}' ng-click='goToGuru()'>
+    Guru Mode
+    <i class='icon ion-arrow-swap'> </i>
+  </ion-item>
+  <ion-item class='item-icon-right' ng-click='launchPrivacyPolicy()'>
+    Terms
+    <i class='icon ion-document'> </i>
+  </ion-item>
+  <ion-item class='item-icon-right' ng-click='launchFAQModal()'>
+    FAQ
+    <i class='icon ion-help'> </i>
+  </ion-item>
+  <ion-item class='item-icon-right' ng-show='!user || !user.id'>
+    Support
+    <i class='icon ion-help-buoy'> </i>
+  </ion-item>
+  <ion-item class='item-icon-right' ng-click='goToSignupFromSideBar()'>
+    Signup
+    <i class='icon ion-heart'> </i>
+  </ion-item>
+  <ion-item class='item-icon-right' ng-show='user && user.id'
+  ng-click='logoutUser()'>
+    Logout
+    <i class='icon ion-power'> </i>
+  </ion-item>
+  <ion-item class='item-icon-right'
+  ng-click='resetAccount()'>
+    Delete Account
+    <i class='icon ion-close'> </i>
+  </ion-item>
+</ion-list>
 
-  <ion-content class='ios-status-bar-dark' scroll='false' style='margin-top:-1px;'>
-    <div class='pure-g full-height' style='margin-top:-1px;'>
-      <div class='pure-u-1-5 dark-bg full-height left-icon-menu-bar' style='z-index:1000;'>
-        <div class='pure-g-c flex-column flex-space-between dark-bg' style='padding-top:10px; background-color: #2B3233 !important;'>
-
-          <div class='flex-item-c center'>
-            <a class='pure-u-1 padding-3-4em dark-bg' style='background-color:#2B3233 !important;' ng-click='setSettingsToIndex(1)'>
-
-              <!-- For logged in users they can see the settings options-->
-              <div ng-show='user && user.id'>
-                <img class='pure-img animated pulse hide ng-class:{"show":settings.icons.profile || root.vars.settings.icons.profile}' ng-src='{{img_base}}./img/settings/profile.svg'/>
-
-
-
-                <img class='pure-img hide ng-class:{"show": (!settings.icons.profile && !root.vars.settings.icon.profile)}' ng-src='{{img_base}}./img/settings/profile-outline.svg'/>
-              </div>
-
-              <div ng-show='!(user && user.id)' style='padding-top:10px;'>
-                <img class='pure-img padding-eight' ng-src='{{img_base}}./img/verbs/session.svg' />
-              </div>
-
-            </a>
-          </div>
-          <div class='flex-item-c center'>
-            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(2)' ng-show='user && user.id'>
-                <img class='pure-img animated pulse ng-class:{"hide":!settings.icons.notifications}' ng-src='{{img_base}}./img/settings/notification.svg'/>
-
-                <img class='pure-img ng-class:{"hide":settings.icons.notifications}' ng-src='{{img_base}}./img/settings/notification-outline.svg'>
-            </a>
-
-            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(2)' ng-show='user && !user.id'>
-
-                <img class='pure-img padding-eight' ng-src='{{img_base}}./img/verbs/guru.svg' />
-            </a>
-          </div>
-          <div class='flex-item-c center'>
-            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(3)'>
-              <div ng-show='user && user.id'>
-                <img class='pure-img animated pulse ng-class:{"hide":!settings.icons.card}' ng-src='{{img_base}}./img/settings/card.svg'/>
-
-                <img class='pure-img ng-class:{"hide":settings.icons.card}' ng-src='{{img_base}}./img/settings/card-outline.svg'>
-              </div>
-              <div ng-show='user && !user.id'>
-                <img class='pure-img padding-eight' ng-src='{{img_base}}./img/verbs/chores.svg' />
-              </div>
-            </a>
-          </div>
-          <div class='flex-item-c center'>
-            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(4)'>
-              <div ng-show='user && user.id'>
-                <img class='pure-img animated pulse ng-class:{"hide":!settings.icons.support}' ng-src='{{img_base}}./img/settings/support.svg'/>
-
-                <img class='pure-img ng-class:{"hide":settings.icons.support}' ng-src='{{img_base}}./img/settings/support-outline.svg'>
-              </div>
-              <div ng-show='user && !user.id'>
-                <img class='pure-img padding-eight' ng-src='{{img_base}}./img/verbs/food.svg' />
-              </div>
-            </a>
-          </div>
-          <div class='flex-item-c center' ng-show='user && !user.id'>
-            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(5)'>
-              <div>
-                <img class='pure-img padding-eight' ng-src='{{img_base}}./img/verbs/skilled.svg'/>
-              </div>
-            </a>
-          </div>
-
-          <div class='flex-item-c center' ng-show='user && !user.id'>
-            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(6)'>
-              <div>
-                <img class='pure-img' ng-src='{{img_base}}./img/verbs/items.svg'/>
-              </div>
-            </a>
-          </div>
-
-          <a ng-click='logoutUser()' class='flex-item-c center' ng-show='user && user.id'>
-            <div class='pure-u-1 padding-3-4em'>
-                <img class='pure-img' ng-src='{{img_base}}./img/settings/logout.svg'/>
-            </div>
-          </a>
-          <a id = "E2E-closeBar" ng-click='closeSideBar()' class='flex-item-c center' style='background-color:rgba(255,255,255,0.1)'>
-            <div class='pure-u-1' style='padding:1.5em;'>
-                <img class='pure-img' ng-src='{{img_base}}./img/settings/settings-back.svg'/>
-            </div>
-          </a>
-
-        </div>
-      </div>
-
-      <div class='pure-u-4-5 full-height settings-view-container'>
-
-      <!-- [Profile] settings icon section -->
-
-          <div class='full-height' ng-show='user && !user.id' ng-include="img_base + 'templates/components.side-menu.presignup.html'"> </div>
-
-          <div class='full-height' ng-show='user && user.id' ng-include="img_base + 'templates/components.side-menu.postsignup.html'"> </div>
-
-
-
-      </div>
-
-
-
-    </div>
-   <!--  <ion-footer-bar ng-show='root.vars.version && !settings.icons.support' class='side-menu-footer-bar' style='padding-left:20%; background-color:transparent;'>
-      <a class='pure-u-1 nano-text center' ng-click='resetAccount()'>
-          v1.0.{{root.vars.version}}
-      </a>
-    </ion-footer-bar> -->
-
-  </ion-content>
 </ion-view>

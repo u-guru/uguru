@@ -91,7 +91,7 @@
             // console.log(ev);
             // disable browser scrolling
             // ev.gesture.preventDefault();
-
+            console.log(ev);
             switch(ev.type) {
                 case 'drag':
                 case 'dragdown':

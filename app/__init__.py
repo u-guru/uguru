@@ -42,9 +42,9 @@ class MandrillHandler(SMTPHandler):
     """
     def emit(self,record):
         from emails import send_errors_email
-        from lib.github_client import init_github, create_issue
-        gh = init_github('uguru')
-        create_issue(gh, ['PRODUCTION SERVER ERROR'], 'UGURU PRODUCTION ERROR', self.format(record))
+        # from lib.github_client import init_github, create_issue
+        # gh = init_github('uguru')
+        # create_issue(gh, ['PRODUCTION SERVER ERROR'], 'UGURU PRODUCTION ERROR', self.format(record))
         send_errors_email(self.format(record))
 
 
