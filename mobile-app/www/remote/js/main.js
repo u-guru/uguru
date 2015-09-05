@@ -2,7 +2,7 @@
 // --> config.xml
 // --> 
 var LOCAL = true; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.home';
+var FIRST_PAGE='^.access';
 
 
 
