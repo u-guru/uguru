@@ -1,5 +1,6 @@
 // Uguru upp
-
+// --> config.xml
+// --> 
 var LOCAL = true; //local to the 8100 codebasebirbirs
 var FIRST_PAGE='^.home';
 
@@ -10,12 +11,12 @@ var REST_URL = 'https://uguru-rest.herokuapp.com'
 
 var BASE = '';
 if (LOCAL) {
+  
   BASE = 'remote/';
 
-
-
-  //BASE_URL = 'http://192.168.42.66:8100';
-  BASE_URL = 'http://localhost:8100'
+  BASE_URL = 'http://192.168.42.124:8100';
+   //BASE_URL = 'http://localhost:8100'
+  // REST_URL = 'http://192.168.42.78:5000'
   //REST_URL = 'https://uguru-rest.herokuapp.com'
 
 
@@ -37,7 +38,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   $templateCache, Device, User, $cordovaLocalNotification,
   $cordovaGeolocation, $cordovaDevice) {
 
-
+  var openKeyboard = null; 
 // $ionicPlatform.ready(function() {
 
   document.addEventListener("deviceready", function () {
@@ -71,7 +72,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
             console.log(JSON.stringify($rootScope.platform));
 
 
-            if ($cordovaDevice && $cordovaDevice.getPlatform() === 'Win32NT') {
+            if (device.cordova && $cordovaDevice.getPlatform() === 'Win32NT') {
               $rootScope.platform.windows = true;
               $rootScope.platform.mobile = true;
               $rootScope.platform.web = false;
