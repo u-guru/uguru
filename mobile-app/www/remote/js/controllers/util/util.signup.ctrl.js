@@ -21,11 +21,12 @@ angular.module('uguru.util.controllers')
   '$ionicPopup',
   'Camera',
   'Support',
+  '$ionicPlatform',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
-  Camera, Support) {
+  Camera, Support, $ionicPlatform) {
 
     $scope.root.vars.show_account_fields = false;
     $scope.loginMode = false;
@@ -724,6 +725,60 @@ angular.module('uguru.util.controllers')
       }, 750);
     }
 
+    $scope.launchFAQModal = function() {
+        // var animationOptions = {
+        //   "duration"       :  600, // in milliseconds (ms), default 400
+        //   "iosdelay"       :   50, // ms to wait for the iOS webview to update before animation kicks in, default 60
+        //   "androiddelay"   :  100
+        // };
+        // window.plugins.nativepagetransitions.fade(
+        //   animationOptions,
+        //   function (msg) {console.log("success: " + msg)}, // called when the animation has finished
+        //   function (msg) {alert("error: " + msg)} // called in case you pass in weird values
+        // );
+
+
+        var url = 'https://www.uguru.me/faq/';
+        var target ='_blank';
+        var options = 'location=no';
+        if ($scope.platform.android) {
+          options += ',hardwareback=no';
+        }
+        console.log("options: " + options);
+
+        var ref = cordova.InAppBrowser.open(url, target, options);
+    };
+
+    $scope.launchPrivacyPolicy = function() {
+
+
+
+
+      var url = 'https://www.uguru.me/manifest/';
+      var target ='_blank';
+      var options = 'location=no';
+      if ($scope.platform.android) {
+        options += ',hardwareback=no';
+      }
+
+      var ref = cordova.InAppBrowser.open(url, target, options);
+
+
+    };
+
+    // $scope.launchPrivacyPolicy = function() {
+
+
+    //   $ionicModal.fromTemplateUrl(BASE + 'templates/privacy-terms.modal.html', {
+    //         scope: $scope,
+    //         animation: 'slide-in-up'
+    //     }).then(function(modal) {
+    //         $scope.termsModal = modal;
+    //         $scope.termsModal.show();
+    //     });
+
+    // }
+
     $scope.launchSupportDescriptionModal = function() {
 
 
@@ -736,20 +791,6 @@ angular.module('uguru.util.controllers')
         });
 
     }
-
-    $scope.launchPrivacyPolicy = function() {
-
-
-      $ionicModal.fromTemplateUrl(BASE + 'templates/privacy-terms.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.termsModal = modal;
-            $scope.termsModal.show();
-        });
-
-    }
-
 
     $scope.goToSignupFromSideBar = function() {
 
