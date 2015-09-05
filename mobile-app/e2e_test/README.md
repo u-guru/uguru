@@ -5,9 +5,6 @@
 
 **Running**
 - Open 3 tabs
- - % zsh
- - % source ~/.bash_profile 
- - % um 
 - First Tab:
  - % Run You Local Host
  	- EX: % ionic serve
@@ -18,3 +15,4 @@
   - EX :
   	- $ protractor protractor e2e_test/config/mobile.config.js
   	- $ protractor protractor e2e_test/config/mobile.config.js --suite workflow  
+  	

@@ -2,7 +2,7 @@
 var global = function() {
   /**********************************************************
   *checkMsg 
-  *arg : msg - message you wanna compare
+  *arg : msg - message you wanna check
   *desc: check the system show the message you want to see
   ***********************************************************/
   this.checkMsg = function(msg)
@@ -36,7 +36,7 @@ var global = function() {
   this.checkList = function(name,typeEle,attriName)
   {
     element.all(by.repeater(name)).then(function (items) {
-          expect(items.length).toBe(5);
+          // expect(items.length).toBe(5);
           var temp;
           items[0].element(typeEle).getAttribute(attriName).then(function(value)
           {
