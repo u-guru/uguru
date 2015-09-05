@@ -31,7 +31,7 @@ describe('Workflow Test : One', function () {
       
 		// protractor.get.doneButton.click().then(function()
 		element.all(by.id('done-button')).first().click();
-		browser.wait(EC.presenceOf(msg),5000);
+		browser.wait(EC.presenceOf(msg),3000);
 		msg.getAttribute('value').then(function(value)
 		{
 			expect(value).toBe("Your card has been successfully added");

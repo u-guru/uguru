@@ -66,3 +66,15 @@
 	- %pe --suite s  
  - Schedules Test:  
 	- %pe --suite sch  
+
+ **Workflow Test :**
+- Commands : 
+	- run enitered test :
+		- %pw
+- Options (for running Specific test case)
+ - Workflow I & II : (It will run workflow I, After I is finish it will contiue run workflow II)
+	- %pw --suite workflow
+ - Workflow one : 
+	- %pw --suite one
+ - Workflow two : (If you just wanna test add new card and set it to default then just run this)  
+	- %pw --suite two

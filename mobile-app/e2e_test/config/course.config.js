@@ -12,16 +12,17 @@ exports.config = {
         //   {'browserName': 'phantomjs'}
         // ],
         specs: [
-              '../test_case/WorkFlows/*'
+              '../test_case/Release_One_Mobile/Request/*'
         ],
         suites:
         {
-          workflow: ['../test_case/WorkFlows/workflow_one.js','../test_case/WorkFlows/workflow_two.js'],
-       		one :   '../test_case/WorkFlows/workflow_one.js',
-          load :   '../test_case/WorkFlows/#545.js',
-       		two :   '../test_case/WorkFlows/workflow_two.js',
-          three :   '../test_case/WorkFlows/workflow_three.js',
-          four :  '../test_case/Release_One_Mobile/Request/first_course.js'
+          init :   '../test_case/Release_One_Mobile/Request/first_course.js',
+          add  :   '../test_case/Release_One_Mobile/Request/add_course.js',
+          addS : [
+                   '../test_case/WorkFlows/workflow_three.js',
+                   '../test_case/Release_One_Mobile/Request/delete_session.js'
+                  ],
+          d : [ '../test_case/backHome.js','../test_case/Release_One_Mobile/Request/delete_session.js']
 
         },
         resultJsonOutputFile: 'www/remote/tests/e2e/result.json',
@@ -67,7 +68,7 @@ exports.config = {
             browser.driver.manage().window().setSize(414, 736);
 	          //facebook log in
        			protractor.run.setUp("http://localhost:8100/#/new-home","jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
-            browser.sleep(800);     
+            // browser.sleep(800);     
         }
         
 };

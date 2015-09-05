@@ -1,3 +1,7 @@
 web: python run.py runserver
+<<<<<<< HEAD
 worker: celery -A app.tasks.celery worker -B -E --loglevel=info -n w1.%h
 
+=======
+worker: celery -A app.tasks.celery worker -B -E --loglevel=info -n w1.%h
+>>>>>>> 806fbada7be8fa6b2eecaba435a490264824a679

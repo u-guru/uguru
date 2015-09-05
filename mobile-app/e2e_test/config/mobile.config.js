@@ -1,6 +1,6 @@
 exports.config = {
     framework: 'jasmine2',
-    // seleniumAddress: 'http://localhost:4444/wd/hub',
+     seleniumAddress: 'http://localhost:4444/wd/hub',
 
 
          capabilities: {
@@ -11,20 +11,16 @@ exports.config = {
         //   {'browserName': 'firefox'},
         //   {'browserName': 'phantomjs'}
         // ],
-        specs: [
-              '../test_case/WorkFlows/*'
+        specs:
+        [
+
         ],
         suites:
         {
-          workflow: ['../test_case/WorkFlows/workflow_one.js','../test_case/WorkFlows/workflow_two.js'],
-       		one :   '../test_case/WorkFlows/workflow_one.js',
-          load :   '../test_case/WorkFlows/#545.js',
-       		two :   '../test_case/WorkFlows/workflow_two.js',
-          three :   '../test_case/WorkFlows/workflow_three.js',
-          four :  '../test_case/Release_One_Mobile/Request/first_course.js'
+            workflow: ['../test_case/workflows/workflow_1.js'],
 
         },
-        resultJsonOutputFile: 'www/remote/tests/e2e/result.json',
+        // resultJsonOutputFile: 'www/remote/tests/e2e/result.json',
         rootElement: "[ng-app]" ,
        // rootElement: 'uguru' ,
         jasmineNodeOpts: {
@@ -65,9 +61,11 @@ exports.config = {
             protractor.get = require('../test_case/globals.js').globals;
             protractor.run = require('../test_case/globals.js').run;
             browser.driver.manage().window().setSize(414, 736);
-	          //facebook log in
-       			protractor.run.setUp("http://localhost:8100/#/new-home","jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
-            browser.sleep(800);     
+             browser.driver.get("http://localhost:8100/#/");
+             browser.sleep(1000);
+
+
+
         }
         
 };

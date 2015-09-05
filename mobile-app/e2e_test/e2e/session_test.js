@@ -30,7 +30,7 @@ var LogIn = function()
 }
 
 
-/*
+
 describe('Session Workflow with facebook login', function () {
 	beforeEach(function () {
 		            browser.driver.ignoreSynchronization = true;
@@ -116,7 +116,7 @@ describe('Session Workflow with facebook login', function () {
            browser.sleep(5000);
 	});
 });
-*/
+
 describe('Session Workflow without facebook login', function () {
 	beforeEach(function () {
 		browser.driver.ignoreSynchronization = true;

@@ -121,7 +121,7 @@ exports.run =
     setUp: function (address,id, pw)
     {
       //  browser.driver.ignoreSynchronization = true;
-        browser.driver.manage().window().setSize(414, 736);
+        // browser.driver.manage().window().setSize(414, 736);
         //browser.driver.get('http://localhost:8100/#/new-home');
         browser.driver.get(address);
         browser.sleep(2000);
@@ -142,13 +142,9 @@ exports.run =
             browser.switchTo().window(handles[0]);
         });
 
-        return browser.driver.wait(function () {
+         browser.driver.wait(function () {
             return browser.driver.getCurrentUrl().then(function (url) {
-                // console.log(url);
-                // console.log(/#/.test(url));
-//                return url;
                 return /#/.test(url);
-
             });
         }, 10000);
     },

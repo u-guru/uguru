@@ -1,9 +1,9 @@
 var EC = protractor.ExpectedConditions;
-
+var msg = element(by.id('E2E-msg'));
+var load= element(by.id('E2E-spinner'));
 describe('Workflow Test : Two', function () {
 	var editCourse = element(by.id('E2E-editProfile-editCourse'));
-	var msg = element(by.id('E2E-msg'));
-	var load= element(by.id('E2E-spinner'))
+
 	var profile = element(by.css('[ng-click="setSettingsToIndex(1)"]'));
 	var editcard = element(by.css('[ng-click="setSettingsToIndex(3)"]'));
 	var addCreditCard = element(by.css('[ng-click="goToPaymentsFromSideBar()"]'));
@@ -23,38 +23,12 @@ describe('Workflow Test : Two', function () {
       
 		// protractor.get.doneButton.click().then(function()
 		element.all(by.id('done-button')).first().click();
-		browser.wait(EC.presenceOf(msg),5000);
+		browser.wait(EC.presenceOf(msg),3000);
 		msg.getAttribute('value').then(function(value)
 		{
 			expect(value).toBe("Your card has been successfully added");
 		});		
 	});
-
-	// it(" Student adds a card",function()
-	// {
-	// 	browser.refresh().then(function()
-	// 	{
-	// 		brower.refresh();
-	// 		sleep(800);
-	// 		browser.protractor.settingButton();
-	// 		editcard.click();
-	// 		addCreditCard.click().then(function()
-	// 		{
-	// 			expect(browser.getCurrentUrl()).toBe("http://localhost:8100/#/payments");
-	// 			element(by.id('card-input')).sendKeys("4242424242424242");
-	// 			element(by.id('expiry-input')).sendKeys("0915");
-	// 		});
-
-	// 		// protractor.get.doneButton.click().then(function()
-	// 		element.all(by.id('done-button')).first().click();
-	// 		browser.sleep(2000);
-	// 		msg.getAttribute('value').then(function(value)
-	// 		{
-	// 			expect(value).toBe("Your card has been successfully added");
-	// 		});		
-	// 	});
-
-	// });
 
 	it("Make sure the default card is still the first one",function()
 	{

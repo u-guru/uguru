@@ -11,21 +11,24 @@ exports.config = {
         //   {'browserName': 'firefox'},
         //   {'browserName': 'phantomjs'}
         // ],
-        specs: [
-              '../test_case/WorkFlows/*'
-        ],
-        suites:
-        {
-          workflow: ['../test_case/WorkFlows/workflow_one.js','../test_case/WorkFlows/workflow_two.js'],
-       		one :   '../test_case/WorkFlows/workflow_one.js',
-          load :   '../test_case/WorkFlows/#545.js',
-       		two :   '../test_case/WorkFlows/workflow_two.js',
-          three :   '../test_case/WorkFlows/workflow_three.js',
-          four :  '../test_case/Release_One_Mobile/Request/first_course.js'
-
+        // specs: [
+        //  //     '../test_case/Release_One_Web/homepage/*'
+        // ],
+        // suites:
+        // {
+        //   // search :     ['../test_case/Release_One_Web/homepage/search_box.js'],
+        //    // breadcrumb : ['../test_case/Release_One_Web/homepage/breadcrumb.js'],
+        //   //team : '../test_case/Release_One_Web/team/team.js',
+          
+        // },
+        suites: {
+                // start_one : '../test_case/Release_One_Web/homepage/started_box.js',
+                // start_two : '../test_case/Release_One_Web/homepage/started_box_2.js',
+                // breadcrumb : ['../test_case/Release_One_Web/homepage/breadcrumb.js'],
+                loading : '../test_case/Release_One_Web/homepage/loading.js'
         },
-        resultJsonOutputFile: 'www/remote/tests/e2e/result.json',
-        rootElement: "[ng-app]" ,
+        // resultJsonOutputFile: '../test_case/Release_One_Web/result.json',
+        // rootElement: "[ng-app]" ,
        // rootElement: 'uguru' ,
         jasmineNodeOpts: {
                           showColors: true,
@@ -36,8 +39,8 @@ exports.config = {
                           print: function() {}
 
                           },
-        getPageTimeout: 10000,
-        allScriptsTimeout: 400000,
+        // getPageTimeout: 10000,
+         allScriptsTimeout: 5000,
         onPrepare: function () {
             var SpecReporter = require('jasmine-spec-reporter');
             // add jasmine spec reporter
@@ -62,12 +65,25 @@ exports.config = {
                     },
                     customProcessors: []
                 }));
-            protractor.get = require('../test_case/globals.js').globals;
-            protractor.run = require('../test_case/globals.js').run;
-            browser.driver.manage().window().setSize(414, 736);
-	          //facebook log in
-       			protractor.run.setUp("http://localhost:8100/#/new-home","jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
-            browser.sleep(800);     
+            // protractor.get = require('../test_case/globals.js').globals;
+            // protractor.run = require('../test_case/globals.js').run;
+
+
+       			// protractor.run.setUp("http://localhost:8100/#/new-home","jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+            // browser.sleep(800);
+
+            global.protractor = protractor;
+            global.browser = browser;
+            global.$ = browser.$;
+            global.$$ = browser.$$;
+            global.element = browser.element;     
+            global.dv = browser.driver;
+            global.EC = protractor.ExpectedConditions;
+            global.web =require('../test_case/Release_One_Web/global.po.js');
+            global.isAngularSite = function(flag){
+                browser.ignoreSynchronization = !flag;
+            };
+
         }
         
 };

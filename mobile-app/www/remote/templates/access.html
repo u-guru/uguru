@@ -9,7 +9,7 @@
         </div>
     </div>
     <div id="access-start" class="text-center full-x" keyboard-attach>
-        <p class='hide ng-class:{"show":access.errorInputMsg}'>{{access.errorInputMsg}}</p>
+        <p id="E2E-msg" class='hide ng-class:{"show":access.errorInputMsg}'>{{access.errorInputMsg}}</p>
         <button class="btn-caps btn-bold ng-class:{'disabled':access.codeInput.length < 4, 'show':access.codeInput.length >= 4}" ng-click="checkAccessCode(access.codeInput)">Redeem</button>
         <!-- <button class="btn-caps btn-bold ng-class:{'hide':access.codeInput.length}" ng-click="launchHowItWorksModal()">How it works</button> -->
     </div>
