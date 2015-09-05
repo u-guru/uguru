@@ -26,10 +26,10 @@
     </script>
 
     <link href="remote/css/ionic.app.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="remote/css/pure-min.css">
+    <link href="remote/css/pure-min.css" rel="stylesheet">
     <link href="remote/css/animate.css" rel="stylesheet">
     <link href="remote/css/sass/new.css" rel="stylesheet">
-    <link href="remote/css/web.css" rel="stylesheet">
+    <!-- <link href="remote/css/web.css" rel="stylesheet"> -->
     <!-- <link href="remote/css/uguru-animate.css" rel="stylesheet"> -->
     <!-- <link href="remote/css/android.css" rel="stylesheet"> -->
     <!-- <link href="remote/css/ios.css" rel="stylesheet"> -->
@@ -37,8 +37,15 @@
     <link href="remote/css/sass/components.css" rel="stylesheet">
     <link href="remote/css/spinning-wheel.css" rel="stylesheet">
     <link href="remote/css/responsive.css" rel="stylesheet">
-    <link href="remote/css/gpa.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,900' rel='stylesheet' type='text/css'>
+    <link href="remote/css/sass/responsive.css" rel="stylesheet">
+    <link href="remote/css/sass/style.css" rel="stylesheet">
+    <link href="remote/css/sass/views/access.css" rel="stylesheet">
+    <link href="remote/css/sass/views/home.css" rel="stylesheet">
+    <link href="remote/css/sass/views/side-menu.css" rel="stylesheet">
+    <link href="remote/css/sass/views/university.css" rel="stylesheet">
+
+    <!-- <link href="remote/css/gpa.css" rel="stylesheet"> -->
+    <!-- <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,900' rel='stylesheet' type='text/css'> -->
 
      <script>
     LOCAL = true;
@@ -263,8 +270,11 @@
     <script type="text/javascript" src="remote/js/controllers/util/util.onboarding.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.languages.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.experiences.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.categories.ctrl.js"></script>
 
     <script type="text/javascript" src="remote/js/controllers/util/util.root.ctrl.js"></script>
+
+    <script type="text/javascript" src="remote/js/controllers/util/util.access.ctrl.js"></script>
 
 
     <!-- Uguru Student settings controller -->
@@ -275,6 +285,7 @@
     <script type="text/javascript" src="remote/js/controllers/student/settings/settings.edit-courses.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/settings/settings.edit-university.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/settings/settings.transactions.ctrl.js"></script>
+
       <!-- Dev Controler -->
      <script type="text/javascript" src="remote/js/controllers/dev/gpa.ctrl.js"></script>
   </head>
@@ -290,7 +301,7 @@
 
 
 
-    <ion-nav-bar class="transparent-bg no-background-image no-border nav-bar-text bold-font">
+    <ion-nav-bar class="transparent-bg no-background-image no-border nav-bar-text bold-font" style='display:none;'>
       <ion-nav-back-button class="button-clear">
           <!-- <img src="./img/left-chevron.png" class='uguru-back-button'/> -->
       </ion-nav-back-button>
@@ -311,7 +322,7 @@
 
             </ion-side-menu-content>
 
-            <ion-side-menu side="right" width='window.width * 1'>
+            <ion-side-menu side="right" width='window.width * 0.5'>
               <div ng-include="'remote/templates/components.side-menu.html'"></div>
             </ion-side-menu>
       </ion-side-menus>

@@ -121,6 +121,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
 @media screen and (min-width: 375px) {
   #mobile-start #mobile-inside img {
     max-width: none; } }
+
 #banner {
   filter: alpha(opacity=50);
   opacity: 0.5;
@@ -246,6 +247,8 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
   #main #earn {
     background: #2B3234;
     text-align: center; }
+    #main #earn i {
+      font-style: normal !important; }
     #main #earn .inside .inside-text #earn-categories-desktop {
       display: none; }
     #main #earn #earn-categories-mobile {
@@ -291,8 +294,10 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
             border-bottom: 0; }
       #main #earn #earn-categories-mobile .earn-category-mobile {
         position: relative;
-        width: 33.3333%;
+        width: calc(100%/3);
         height: 100px; }
+        #main #earn #earn-categories-mobile .earn-category-mobile .front, #main #earn #earn-categories-mobile .earn-category-mobile .back {
+          border-radius: 0 !important; }
         #main #earn #earn-categories-mobile .earn-category-mobile > div {
           cursor: pointer;
           top: 0;
@@ -521,6 +526,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
 @media screen and (min-height: 568px) {
   #main .slide .inside h2 {
     padding-bottom: 40px; } }
+
 @media screen and (min-width: 375px) {
   #main #earn #earn-categories-mobile .earn-category-mobile {
     height: 134px; }
@@ -529,9 +535,9 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     font-size: 14px; }
     #main #earn #earn-categories-mobile ul li {
       padding: 6px 0; }
-
   #top-school-banner {
     opacity: 0; } }
+
 @media screen and (min-width: 35.5em) {
   #top {
     display: block !important; }
@@ -550,7 +556,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       #top #top-logo #top-mobile-logo.visible {
         filter: alpha(opacity=100);
         opacity: 1; }
-
   #main .slide .inside {
     padding: 62px 30px 30px; }
     #main .slide .inside h2 {
@@ -646,9 +651,11 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       color: rgba(255, 255, 255, 0.5); }
     #main #start #start-text :-ms-input-placeholder {
       color: rgba(255, 255, 255, 0.5); } }
+
 @media screen and (max-width: 48em) {
   #top #top-logo #top-logo {
     opacity: 0; } }
+
 @media screen and (min-width: 48em) {
   #top #top-logo {
     display: block;
@@ -656,10 +663,8 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     #top #top-logo #top-school-banner {
       display: block;
       opacity: 1; }
-
   #subscribe {
     padding-top: 50px; }
-
   #slide-breadcrumbs {
     position: absolute;
     left: 50%;
@@ -714,13 +719,10 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
             background: #69B3A5; }
           #slide-breadcrumbs ul li a.inactive:after {
             background: #757575; }
-
   #mobile-start {
     display: none !important; }
-
   #banner {
     display: block !important; }
-
   #top #top-logo {
     position: absolute;
     left: 50%;
@@ -734,7 +736,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       width: 100%;
       min-width: 0 !important;
       max-width: 200px !important; }
-
   #main .slide .inside {
     padding: 62px 50px 50px; }
     #main .slide .inside h2 {
@@ -925,8 +926,10 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         padding: 20px 30px;
         box-sizing: border-box;
         border: 0;
-        border-bottom: 5px solid #50A5DD;
-        font-size: 24px; }
+        border-bottom: 5px solid #69B3A5;
+        background: #40484B;
+        font-size: 24px;
+        color: white; }
       #main #search #search-container ::-webkit-input-placeholder {
         color: #ddd; }
       #main #search #search-container :-moz-placeholder {
@@ -935,6 +938,14 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         color: #ddd; }
       #main #search #search-container :-ms-input-placeholder {
         color: #ddd; }
+      #main #search #search-container input:active::-webkit-input-placeholder, #main #search #search-container input:focus::-webkit-input-placeholder, #main #search #search-container input:hover::-webkit-input-placeholder {
+        color: white; }
+      #main #search #search-container input:active:-moz-placeholder, #main #search #search-container input:focus:-moz-placeholder, #main #search #search-container input:hover:-moz-placeholder {
+        color: white; }
+      #main #search #search-container input:active::-moz-placeholder, #main #search #search-container input:focus::-moz-placeholder, #main #search #search-container input:hover::-moz-placeholder {
+        color: white; }
+      #main #search #search-container input:active:-ms-input-placeholder, #main #search #search-container input:focus:-ms-input-placeholder, #main #search #search-container input:hover:-ms-input-placeholder {
+        color: white; }
       #main #search #search-container .twitter-typeahead {
         display: block !important;
         width: 100%; }
@@ -942,6 +953,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         background: white;
         width: 100%; }
         #main #search #search-container .tt-dropdown-menu .tt-suggestion {
+          position: relative !important;
           display: table !important;
           width: 100%;
           cursor: pointer;
@@ -967,8 +979,18 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
                 padding: 10px 10px 10px 20px; }
             #main #search #search-container .tt-dropdown-menu .tt-suggestion div:last-child {
               padding: 10px 30px 10px 10px; }
-        #main #search #search-container .tt-dropdown-menu .tt-suggestion:hover {
-          background: #F1F1F1; }
+        #main #search #search-container .tt-dropdown-menu .tt-suggestion:after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%; }
+        #main #search #search-container .tt-dropdown-menu .tt-suggestion:hover:after {
+          background: rgba(0, 0, 0, 0.05); }
+        #main #search #search-container .tt-dropdown-menu #tt-no-results {
+          font-weight: 400 !important; }
       #main #search #search-container #search-results {
         list-style: none;
         margin: 0;
@@ -977,6 +999,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         position: absolute;
         width: 100%; }
         #main #search #search-container #search-results li {
+          position: relative;
           display: table;
           width: 100%;
           cursor: pointer;
@@ -1002,8 +1025,16 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
                 padding: 10px 10px 10px 20px; }
             #main #search #search-container #search-results li div:last-child {
               padding: 10px 30px 10px 10px; }
-        #main #search #search-container #search-results li:hover {
-          background: #F1F1F1; }
+        #main #search #search-container #search-results li:after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%; }
+        #main #search #search-container #search-results li:hover:after {
+          background: rgba(0, 0, 0, 0.05); }
   #main #earn .cta-desktop button {
     color: #2B3234; }
   #main #earn .inside .inside-text #earn-categories-mobile {
@@ -1074,16 +1105,47 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
           -ms-transform: translate(-50%, -50%);
           -o-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -ms-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
           width: 100%;
-          padding: 10px;
+          height: 100%;
           box-sizing: border-box !important; }
           #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li {
-            padding: 7px 0;
-            border-bottom: 1px solid #2B3234;
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -ms-flex-flow: row wrap;
+            -webkit-flex-flow: row wrap;
+            flex-flow: row wrap;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            box-sizing: border-box;
+            width: 50%;
+            height: 50%;
             font-size: 12px;
             font-weight: 400; }
-            #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li:last-child {
-              border-bottom: 0; }
       #main #earn .inside .inside-text #earn-categories-desktop .earn-category #earn-category-academic {
         background: url(../../../static/web/images/category/academic.jpg) no-repeat center center/cover; }
       #main #earn .inside .inside-text #earn-categories-desktop .earn-category #earn-category-consulting {
@@ -1188,7 +1250,7 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     #main #why #why-inside #why-text {
       width: 60%; }
   #main #start .inside ol > li {
-    width: 33.3333%; }
+    width: calc(100%/3); }
   #main #start .inside ol ul li svg, #main #start .inside ol div li svg {
     height: 100px; }
   #main #start .inside ol ul img, #main #start .inside ol div img {
@@ -1200,7 +1262,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     display: block;
     width: 100%;
     height: 150px; }
-
   .app-phone {
     position: relative; }
     .app-phone .app-wf {
@@ -1264,25 +1325,30 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         transform: translate(-50%, -50%); }
         .app-phone .app-wf .app-wf-scr img {
           height: 300px; } }
+
 @media screen and (min-width: 990px) {
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 span {
     display: inline; } }
+
 @media screen and (min-width: 1080px) {
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 {
     font-size: 14px; }
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li {
-    padding: 10px 0;
     font-size: 14px; } }
+
 @media screen and (min-width: 1200px) {
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 {
     font-size: 18px; } }
+
 @media screen and (min-width: 1280px) and (min-height: 900px) {
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front {
     padding: 40px 10px !important; } }
+
 @media screen and (min-width: 84em) and (min-height: 800px) {
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category svg {
     max-width: 120px;
     max-height: 120px; } }
+
 @media screen and (min-width: 84em) {
   #main .slide .inside h2 {
     font-size: 48px;
@@ -1319,7 +1385,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li {
       padding: 10px 0;
       font-size: 18px !important; }
-
   .app-phone .app-wf {
     border-radius: 30px;
     width: 256px;
@@ -1336,11 +1401,13 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         height: 40px; }
     .app-phone .app-wf .app-wf-scr img {
       height: 400px; } }
+
 @media screen and (min-width: 1600px) {
   #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front {
     padding: 40px 10px; }
     #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 {
       font-size: 24px; } }
+
 .js #search-box, .js .search-results {
   display: none; }
 
@@ -1591,10 +1658,10 @@ html, body, #main, #main ul.carousel, #main li.slide {
   -webkit-transform-style: preserve-3d; }
 
 #main ul.carousel.animate {
-  -webkit-transition: all .3s;
-  -moz-transition: all .3s;
-  -o-transition: all .3s;
-  transition: all .3s; }
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s; }
 
 #main ul.carousel {
   -webkit-transform: translate3d(0%, 0, 0) scale3d(1, 1, 1);
@@ -1926,4 +1993,32 @@ html, body, #main, #main ul.carousel, #main li.slide {
       margin-top: 2px;
       text-transform: uppercase; }
 
-/*# sourceMappingURL=style.css.map */
+#intercom-container * {
+  box-shadow: none !important; }
+
+#intercom-container .intercom-launcher-preview::before {
+  background: none !important; }
+
+#intercom-container .intercom-launcher-button {
+  border: 0 !important;
+  background-color: rgba(255, 255, 255, 0.2) !important; }
+
+#intercom-container .intercom-launcher-preview-body {
+  position: relative;
+  padding-left: 15px; }
+
+#intercom-container .intercom-launcher-preview-body:after {
+  border-radius: 1000px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 0;
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: #81B566; }

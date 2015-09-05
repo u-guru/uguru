@@ -42,6 +42,8 @@ var EC = protractor.ExpectedConditions;
 			// protractor.get.doneButton.click().then(function()
 			element.all(by.id('done-button')).first().click();
 			browser.wait(EC.presenceOf	(msg),5000);
+			browser.sleep(15000)
+
 			msg.getAttribute('value').then(function(value)
 			{
 				expect(value).toBe("Your card has been successfully added");

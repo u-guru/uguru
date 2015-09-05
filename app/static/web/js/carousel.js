@@ -91,7 +91,7 @@
             // console.log(ev);
             // disable browser scrolling
             // ev.gesture.preventDefault();
-
+            console.log(ev);
             switch(ev.type) {
                 case 'drag':
                 case 'dragdown':
@@ -162,6 +162,7 @@
     });
 
     $('#menu-home-links-container .menu-home-link').on('click', function() {
+        $('.top-link-close').trigger('click');
         indexClicked = $('#menu-home-links-container .menu-home-link').index(this);
         setTimeout(function() {
             checkForRedirectHashes(indexClicked);
