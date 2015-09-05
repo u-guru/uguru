@@ -17,7 +17,7 @@
                 fast-matcher
                 fast-matcher-output="matchingUniversities"
                 fast-matcher-source="universities"
-                fast-matcher-properties="title, keywords"
+                fast-matcher-properties="name, city, state"
                 fast-matcher-any-word="true"
                 fast-matcher-limit="5"
                 fast-matcher-preserve-order="true"
@@ -30,12 +30,12 @@
   <div id="school-list" class="onboarding-list">
     <ul>
       <li class="school-harvard" ng-repeat='university in matchingUniversities'>
-        <a ng-click='universitySelected(university, $event)'>
+        <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
           <span class="school-icon">
-            <img src="{{img_base}}./img/svg/schools/harvard.svg" alt=""/>
+            <img src="{{university.seal_url || university.forbes_url}}" alt=""/>
           </span>
           <span class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
-            <b>{{university.title}}<i>{{university.city}}, {{university.state}}</i></b>
+            <b>{{university.name}}<i>{{university.city}}, {{university.state}}</i></b>
           </span>
         </a>
       </li>

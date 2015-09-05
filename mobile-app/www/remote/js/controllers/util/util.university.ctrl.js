@@ -32,6 +32,8 @@ angular.module('uguru.util.controllers', [])
       $state.go('^.access');
     }
 
+
+
     $scope.backToStudentEditProfile = function(is_saved) {
 
 
@@ -226,8 +228,9 @@ angular.module('uguru.util.controllers', [])
         }
     });
 
-    $scope.universities = GetUniversityList();
-
+    //see if local if not grab from server;
+    $scope.universities = University.getTargetted() || GetUniversityList();
+    console.log($scope.universities);
 
 
     $scope.clearSearchInput = function() {
