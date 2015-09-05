@@ -658,6 +658,17 @@ header h1 {
   font-weight: 600;
   text-transform: uppercase; }
 
+header:before {
+  filter: alpha(opacity=30);
+  opacity: 0.3;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
 button, input {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -733,6 +744,33 @@ button {
     color: white; }
   .input-outline:active:-ms-input-placeholder, .input-outline:focus:-ms-input-placeholder {
     color: white; }
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .list li {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 100%; }
+    .list li a {
+      display: block;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white; }
+    .list li a:active, .list li a:focus, .list li a:hover {
+      background: rgba(255, 255, 255, 0.2); }
 
 * {
   box-sizing: border-box;
@@ -1124,30 +1162,11 @@ progress, .progress {
 .onboarding .onboarding-list {
   height: calc(100% / 3 * 2);
   overflow: auto; }
-  .onboarding .onboarding-list ul {
-    list-style: none;
-    margin: 0;
-    padding: 0; }
-    .onboarding .onboarding-list ul li a {
-      display: block;
-      background: rgba(255, 255, 255, 0.1);
-      color: white; }
-    .onboarding .onboarding-list ul li a:active, .onboarding .onboarding-list ul li a:focus, .onboarding .onboarding-list ul li a:hover {
-      background: rgba(255, 255, 255, 0.2); }
 
 .onboarding#demographic header {
   height: calc(100% / 3);
   position: relative; }
   .onboarding#demographic header:before {
-    filter: alpha(opacity=30);
-    opacity: 0.3;
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     background: url(/static/images/school.jpg) no-repeat center center/cover; }
   .onboarding#demographic header .demographic-header {
     position: absolute;
@@ -1270,57 +1289,41 @@ progress, .progress {
         .onboarding#demographic #demographic-grid ul li .demographic-popup ul li:nth-child(4) a {
           border-bottom: 0;
           border-right: 0; }
-    .onboarding#demographic #demographic-grid ul li:nth-child(1) .demographic-popup:before {
-      left: 23%;
-      -webkit-transform: translateX(-23%);
-      -moz-transform: translateX(-25%);
-      -ms-transform: translateX(-25%);
-      -o-transform: translateX(-25%);
-      transform: translateX(-23%); }
-    .onboarding#demographic #demographic-grid ul li:nth-child(1) .demographic-popup li a {
-      color: #8A9EA3;
-      border-color: rgba(138, 158, 163, 0.1); }
-    .onboarding#demographic #demographic-grid ul li:nth-child(1) .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li:nth-child(1) .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li:nth-child(1) .demographic-popup li a:hover {
-      background: rgba(138, 158, 163, 0.05); }
-    .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup {
+    .onboarding#demographic #demographic-grid ul li.bg-campus .demographic-popup {
+      left: 0; }
+      .onboarding#demographic #demographic-grid ul li.bg-campus .demographic-popup:before {
+        left: 25%; }
+      .onboarding#demographic #demographic-grid ul li.bg-campus .demographic-popup li a {
+        color: #8A9EA3;
+        border-color: rgba(138, 158, 163, 0.1); }
+      .onboarding#demographic #demographic-grid ul li.bg-campus .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li.bg-campus .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li.bg-campus .demographic-popup li a:hover {
+        background: rgba(138, 158, 163, 0.05); }
+    .onboarding#demographic #demographic-grid ul li.bg-shamrock .demographic-popup {
       left: -100%; }
-      .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup:before {
-        left: 75%;
-        -webkit-transform: translateX(-75%);
-        -moz-transform: translateX(-75%);
-        -ms-transform: translateX(-75%);
-        -o-transform: translateX(-75%);
-        transform: translateX(-75%); }
-      .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup li a {
+      .onboarding#demographic #demographic-grid ul li.bg-shamrock .demographic-popup:before {
+        left: 75%; }
+      .onboarding#demographic #demographic-grid ul li.bg-shamrock .demographic-popup li a {
         color: #69B3A5;
         border-color: rgba(105, 179, 165, 0.1); }
-      .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup li a:hover {
+      .onboarding#demographic #demographic-grid ul li.bg-shamrock .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li.bg-shamrock .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li.bg-shamrock .demographic-popup li a:hover {
         background: rgba(105, 179, 165, 0.05); }
-    .onboarding#demographic #demographic-grid ul li:nth-child(3) .demographic-popup:before {
-      left: 25%;
-      -webkit-transform: translateX(-25%);
-      -moz-transform: translateX(-25%);
-      -ms-transform: translateX(-25%);
-      -o-transform: translateX(-25%);
-      transform: translateX(-25%); }
-    .onboarding#demographic #demographic-grid ul li:nth-child(3) .demographic-popup li a {
-      color: #55A4B7;
-      border-color: rgba(85, 164, 183, 0.1); }
-    .onboarding#demographic #demographic-grid ul li:nth-child(3) .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li:nth-child(3) .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li:nth-child(3) .demographic-popup li a:hover {
-      background: rgba(85, 164, 183, 0.05); }
-    .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup {
+    .onboarding#demographic #demographic-grid ul li.bg-azure .demographic-popup {
+      left: 0; }
+      .onboarding#demographic #demographic-grid ul li.bg-azure .demographic-popup:before {
+        left: 25%; }
+      .onboarding#demographic #demographic-grid ul li.bg-azure .demographic-popup li a {
+        color: #55A4B7;
+        border-color: rgba(85, 164, 183, 0.1); }
+      .onboarding#demographic #demographic-grid ul li.bg-azure .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li.bg-azure .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li.bg-azure .demographic-popup li a:hover {
+        background: rgba(85, 164, 183, 0.05); }
+    .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup {
       left: -100%; }
-      .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup:before {
-        left: 75%;
-        -webkit-transform: translateX(-75%);
-        -moz-transform: translateX(-75%);
-        -ms-transform: translateX(-75%);
-        -o-transform: translateX(-75%);
-        transform: translateX(-75%); }
-      .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup li a {
+      .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup:before {
+        left: 75%; }
+      .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a {
         color: #50A5DD;
         border-color: rgba(80, 165, 221, 0.1); }
-      .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li:nth-child(2) .demographic-popup li a:hover {
+      .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:hover {
         background: rgba(80, 165, 221, 0.05); }
 
 .onboarding#start {
@@ -1627,15 +1630,6 @@ progress, .progress {
       background: #55A4B7; }
 
 .onboarding#school header:before {
-  filter: alpha(opacity=30);
-  opacity: 0.3;
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background: url(/static/images/school.jpg) no-repeat center center/cover; }
 
 .onboarding#school #school-list ul li a {
@@ -1719,6 +1713,9 @@ progress, .progress {
 .onboarding#major #major-list ul .major-math a {
   border-color: #DB1988; }
 
+.request#request-empty #request-content {
+  height: calc(100% - 50px - 64px); }
+
 .request#request-empty #request-message {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1738,7 +1735,7 @@ progress, .progress {
   justify-content: center;
   padding: 15px;
   width: 100%;
-  height: 637px;
+  height: 100%;
   background: #40484B; }
   .request#request-empty #request-message > div > svg {
     display: block;
@@ -1872,26 +1869,9 @@ progress, .progress {
   height: calc(100% / 3 * 2); }
 
 .request#request #request-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   height: calc(100% - 64px);
-  background: #40484B;
   overflow: auto; }
   .request#request #request-list li {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
     padding: 15px;
     border-bottom: 1px solid #2B3234; }
     .request#request #request-list li .request-info {
