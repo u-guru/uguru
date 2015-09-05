@@ -61,7 +61,8 @@ exports.config = {
     
             protractor.get = require('../test_case/globals.js').globals;
             protractor.run = require('../test_case/globals.js').run;
-
+            global.doc =require('../test_case/newGlobals.js');
+            global.EC  = protractor.ExpectedConditions;
             browser.driver.manage().window().setSize(414, 736);
              browser.driver.get("http://localhost:8100/#/");
              browser.sleep(1000);
