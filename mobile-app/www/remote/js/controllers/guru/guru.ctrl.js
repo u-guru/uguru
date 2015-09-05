@@ -39,6 +39,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
   });
 
+  console.log($scope.user);
+
   $scope.showPreviousActions = function(index) {
       if (!$scope.user.previous_proposals || $scope.user.previous_proposals.length === 0) {
         $scope.success.show(0, 2000, 'Sorry! No incoming yet. Once the semester starts - we got you!');

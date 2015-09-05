@@ -580,7 +580,8 @@ body .uguru-view {
       .uguru-view .onboarding .header-back .header-nav a h1 {
         width: 100%;
         text-align: left;
-        padding: 15px 38px; }
+        padding: 15px 38px;
+        color: white; }
     .uguru-view .onboarding .header-back .header-nav .header-nav-next h1 {
       text-align: right; }
     .uguru-view .onboarding .header-back .header-nav .header-nav-next svg {
@@ -611,7 +612,8 @@ body .uguru-view {
     width: 100%;
     font-size: 24px;
     text-align: center;
-    text-transform: none; }
+    text-transform: none;
+    color: white; }
   .uguru-view .onboarding .header-back .onboarding-search {
     position: absolute;
     bottom: 0;
@@ -919,7 +921,6 @@ body .uguru-view {
       height: 506px;
       overflow: auto; }
       .uguru-view .onboarding#skill-list .onboarding-list > div ul li > span {
-        position: relative;
         -ms-box-orient: horizontal;
         display: -webkit-box;
         display: -moz-box;
@@ -935,6 +936,7 @@ body .uguru-view {
         justify-content: center;
         background: white;
         color: #40484B;
+        position: relative;
         height: 61px;
         border-bottom: 1px solid #40484B; }
         .uguru-view .onboarding#skill-list .onboarding-list > div ul li > span label {
@@ -962,6 +964,10 @@ body .uguru-view {
           cursor: pointer; }
         .uguru-view .onboarding#skill-list .onboarding-list > div ul li > span input:checked + span {
           background: #F9D57B url("/static/svg/check.svg") center center no-repeat; }
+        .uguru-view .onboarding#skill-list .onboarding-list > div ul li > span input + span svg {
+          position: absolute;
+          right: 3.5%;
+          top: 33%; }
 .uguru-view .onboarding#course #courses-list ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1035,13 +1041,19 @@ body .uguru-view {
     -ms-flex-flow: row wrap;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
-    padding-left: 10px; }
+    padding-right: 10%;
+    width: 83%;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
     .uguru-view .onboarding#school #school-list ul li a .school-name b, .uguru-view .onboarding#school #school-list ul li a .school-name i {
       display: block;
       width: 100%;
       line-height: 1.2; }
     .uguru-view .onboarding#school #school-list ul li a .school-name b {
-      font-weight: 400; }
+      font-weight: 400;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden; }
     .uguru-view .onboarding#school #school-list ul li a .school-name i {
       font-size: 16px;
       font-style: normal;
@@ -1061,6 +1073,18 @@ body .uguru-view {
   border-left: 5px solid white; }
 .uguru-view .onboarding#major #major-list ul li a:active, .uguru-view .onboarding#major #major-list ul li a:focus, .uguru-view .onboarding#major #major-list ul li a:hover {
   background: rgba(255, 255, 255, 0.2); }
+.uguru-view .onboarding#major #major-list ul .major-item {
+  border-color: #50A5DD;
+  position: relative;
+  padding: 0px; }
+.uguru-view .onboarding#major #major-list ul .major-item.selected {
+  position: relative; }
+  .uguru-view .onboarding#major #major-list ul .major-item.selected .icon {
+    right: 5%;
+    top: 30%;
+    position: absolute; }
+  .uguru-view .onboarding#major #major-list ul .major-item.selected a {
+    padding-right: 20%; }
 .uguru-view .onboarding#major #major-list ul .major-business a {
   border-color: #50A5DD; }
 .uguru-view .onboarding#major #major-list ul .major-arts a {
@@ -1071,6 +1095,16 @@ body .uguru-view {
   border-color: #DB1988; }
 .uguru-view .request#request-empty .header-back {
   background: #69B3A5; }
+  .uguru-view .request#request-empty .header-back h1 {
+    color: white; }
+.uguru-view .request#request-empty button {
+  bottom: 0;
+  background: whitesmoke;
+  color: #69B3A5;
+  left: 0; }
+.uguru-view .request#request-empty button:active {
+  background: rgba(255, 255, 255, 0.4);
+  color: #69B3A5; }
 .uguru-view .request#request-empty #request-message {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1090,7 +1124,7 @@ body .uguru-view {
   justify-content: center;
   padding: 15px;
   width: 100%;
-  height: 637px;
+  height: 100%;
   background: #40484B; }
   .uguru-view .request#request-empty #request-message > div > svg {
     display: block;
@@ -1647,5 +1681,66 @@ body .uguru-view {
         background: #DB1988; }
       .uguru-view #profile #profile-info .profile-inside #profile-other #profile-languages div ul li:nth-child(2) {
         background: #E5753C; }
+.uguru-view .hide {
+  display: none !important; }
+.uguru-view .show {
+  display: block !important; }
+.uguru-view section header.header-nav a.header-nav-back h1 {
+  color: white !important; }
+
+.smaller-list-font {
+  font-size: 85%; }
+
+.uguru-view .request#request-empty #request-message > div h2 {
+  width: 100%;
+  color: white;
+  font-size: 18px;
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; }
+
+.slider-pager {
+  display: none; }
+
+.full-height {
+  height: 100%; }
+
+.content {
+  height: 100%; }
+  .content.footer-exists {
+    padding-bottom: 64px; }
+
+.uguru-view.category-skills-modal {
+  top: 245px; }
+
+#skill.onboarding header {
+  position: relative; }
+#skill.onboarding #category-active-default {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding-top: 17%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%); }
+  #skill.onboarding #category-active-default .onboarding-prop {
+    position: relative;
+    margin-bottom: -17%; }
+  #skill.onboarding #category-active-default h1 {
+    padding: 10px 0 0;
+    text-align: center;
+    color: white;
+    width: 100%; }
+
+button.disabled {
+  opacity: 0.4; }
 
 /*# sourceMappingURL=style.css.map */

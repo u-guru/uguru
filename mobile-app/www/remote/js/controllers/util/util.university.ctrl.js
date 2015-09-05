@@ -27,6 +27,11 @@ angular.module('uguru.util.controllers', [])
     $scope.keyboard_force_off = false;
     $scope.view = 1;
 
+    $scope.goToAccess = function() {
+      $ionicViewSwitcher.nextDirection('back');
+      $state.go('^.access');
+    }
+
     $scope.backToStudentEditProfile = function(is_saved) {
 
 

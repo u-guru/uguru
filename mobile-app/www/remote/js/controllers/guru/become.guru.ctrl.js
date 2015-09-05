@@ -15,9 +15,11 @@ angular.module('uguru.guru.controllers')
   '$ionicPlatform',
   '$cordovaStatusbar',
   '$ionicSlideBoxDelegate',
+  '$ionicViewSwitcher',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
-    $ionicPlatform, $cordovaStatusbar, $ionicSlideBoxDelegate) {
+    $ionicPlatform, $cordovaStatusbar, $ionicSlideBoxDelegate,
+    $ionicViewSwitcher) {
 
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
@@ -25,6 +27,19 @@ angular.module('uguru.guru.controllers')
     $scope.courses = $scope.static.courses;
 
 
+    $scope.nextSlide = function() {
+      $ionicSlideBoxDelegate.next();
+    }
+
+    $scope.goBackToStudentHome = function() {
+      $ionicViewSwitcher.nextDirection('back');
+      $state.go('^.home');
+    }
+
+
+    $scope.previousSlide = function() {
+      $ionicSlideBoxDelegate.previous();
+    }
 
     $scope.major_input=  {search_text:'', majors:$scope.root.vars.majors};
 
@@ -35,6 +50,11 @@ angular.module('uguru.guru.controllers')
 
     $scope.goToUniversity = function() {
       $state.go('^.university');
+    }
+
+    $scope.goToGuruMode = function() {
+      $scope.root.vars.guru_mode = true;
+      $state.go('^.guru');
     }
 
     $ionicSideMenuDelegate.canDragContent(false);
