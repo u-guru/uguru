@@ -783,6 +783,7 @@ button {
 	width: 100%;
 	border: 0;
 	border-bottom: 1px solid rgba(white,.5);
+	border-radius: 0;
 	padding-bottom: 5px;
 	background: none;
 	color: white;
@@ -819,6 +820,7 @@ button {
 	border: 0;
 	border: 1px solid rgba($charcoal, .1);
 	border-bottom-width: 5px;
+	border-radius: 0;
 	background: rgba($charcoal, .1);
 	color: white;
 	font-size: 24px;
@@ -853,6 +855,60 @@ button {
 	}
 }
 
+.input-search-ghost {
+	input {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		-ms-appearance: none;
+		-o-appearance: none;
+		appearance: none;
+		display: block;
+		width: 100%;
+		padding: 10px 0 5px 25px;
+		border: 0;
+		border-bottom: 1px solid rgba(white,.5);
+		border-radius: 0;
+		background: none;
+		color: white;
+		font-family: $font;
+		font-size: 20px;
+		&::-webkit-input-placeholder {
+		   color: rgba(white, .5);
+		}
+		&:-moz-placeholder {
+		   color: rgba(white, .5);
+		}
+		&::-moz-placeholder {
+		   color: rgba(white, .5);
+		}
+		&:-ms-input-placeholder {
+		   color: rgba(white, .5);
+		}
+	}
+	input:active, input:focus {
+		border-bottom-color: white;
+		&::-webkit-input-placeholder {
+		   color: white;
+		}
+		&:-moz-placeholder {
+		   color: white;
+		}
+		&::-moz-placeholder {
+		   color: white;
+		}
+		&:-ms-input-placeholder {
+		   color: white;
+		}
+	}
+	&:before {
+		@include center-y;
+		display: block;
+		content: url("../svg/search.svg");
+		width: 20px;
+		height: 20px;
+	}
+}
+
 .list {
 	@include listless;
 	li {
@@ -867,6 +923,107 @@ button {
 		}
 		#{$links} {
 			background: rgba(white,.2);
+		}
+	}
+}
+.list-item-half {
+	li {
+		width: 50%;
+	}
+}
+.list-item-border {
+	a {
+		border-left: 5px solid white;
+	}
+}
+
+.checklist {
+	li {
+		> span {
+			@include flex;
+			@include flex-center;
+			position: relative;
+			background: white;
+			color: $slate;
+			width: 100%;
+			height: 61px;
+			border-bottom: 1px solid $slate;
+			label {
+				width: calc(100% - 60px);
+				padding: 0 15px 0 30px;
+				font-size: 18px;
+				font-weight: 400;
+			}
+			input {
+				@include opacity(0);
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				-ms-appearance: none;
+				-o-appearance: none;
+				appearance: none;
+				position: absolute;
+				z-index: 99;
+				top: 0;
+				margin: 0;
+				left: 0;
+				width: 100%;
+				height: 60px;
+				cursor: pointer;
+			}
+			input + span {
+			    display: block;
+				width: 60px;
+				height: 60px;
+			    vertical-align:middle;
+			    background: $smoke center center no-repeat;
+			    cursor: pointer;
+			}
+			input:checked + span {
+			    background: url("../svg/check.svg") center center no-repeat;
+			}
+		}
+	}
+}
+
+.photo-grid {
+	@include flex;
+	@include flex-wrap;
+	padding: 0 1px 1px;
+	li {
+		position: relative;
+		width: 33.3333333%;
+		img {
+			display: block;
+			width: 100%;
+			padding: 1px;
+		}
+		svg {
+			@include center-xy;
+			@include opacity(0);
+		}
+		input {
+			@include opacity(0);
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			-ms-appearance: none;
+			-o-appearance: none;
+			appearance: none;
+			position: absolute;
+			z-index: 99;
+			top: 0;
+			margin: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			cursor: pointer;
+		}
+		input:checked + div {
+			img {
+		    	@include opacity(.3);
+			}
+			svg {
+				@include opacity(1);
+			}
 		}
 	}
 }
