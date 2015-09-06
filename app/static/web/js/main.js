@@ -49,15 +49,16 @@ $(document).ready(function () {
 	workSlider();
 	$(window).resize(function(){
 		// slideLeft();
+		
 		workSlider();
 	});
 
 });
 
 $(function () {
-	$("#faq dl dt").each(function(e){
+	$("#faq dl dt ").each(function(e){
 		$(this).on("click", function(e) {
-			$(this).parent().parent().toggleClass("active");
+			$(this).parent().toggleClass("active");
 			e.preventDefault();
 		});
 	});
@@ -71,7 +72,7 @@ $(function () {
 
 	$("header .top-link-menu").on("click", function(e) {
 		$('#side-menu-wrapper').addClass('active');
-		$('#side-menu').addClass('active animated slideInLeft');
+		$('#side-menu').addClass('active animated slideInLeft').show();
 		$("#full-overlay").addClass("active animated fadeIn");
 		$('#side-menu').one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
 			function() {
@@ -87,6 +88,25 @@ $(function () {
 		e.preventDefault();
 	});
 
+	$('#full-overlay').on("mousewheel", function(e) {
+		 if($('#full-overlay').hasClass('active'))
+		 {
+ 			 console.log("Remove side-menu")
+
+		 	$('#full-overlay').addClass("animated fadeOut");
+			$('#side-menu').addClass("animated slideOutLeft").one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
+			function() {
+			 	$('#full-overlay').removeClass('animated fadeOut active');
+			 	$('#side-menu-wrapper').removeClass('active');
+			 	setTimeout(function() {
+			 		$('#side-menu').removeClass('animated slideOutLeft active');
+			 	}, 500)
+			});
+		 }
+		
+	});
+
+	
 	$(".top-link-close").on("click", function(e) {
 		$('#full-overlay').addClass("animated fadeOut");
 		$('#side-menu').addClass("animated slideOutLeft").one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
@@ -94,12 +114,15 @@ $(function () {
 		 	$('#full-overlay').removeClass('animated fadeOut active');
 		 	$('#side-menu-wrapper').removeClass('active');
 		 	setTimeout(function() {
-		 		$('#side-menu').removeClass('animated slideOutLeft active');
+		 		$('#side-menu').removeClass('animated slideOutLeft active').hide();
 		 	}, 500)
-		});;
+		});
 		// $("#side-menu, #overlay, #start-modal").removeClass("active");
 		// e.preventDefault();
 	});
+	// $(".top-link-close").on("", function(e) {
+	// 		console.log("test");
+	// });
 
 	$(".top-link-start, .link-start").on("click", function(e) {
 
@@ -198,6 +221,10 @@ $(function () {
 			visibleContentElem.addClass('animated shake')
 			setTimeout(function() {
 				visibleContentElem.removeClass('animated shake');
+				if($($('.why-uguru-content')[0]).css("display")==="none") {
+					$($('.why-uguru-content')[0]).addClass('animated fadeIn show').show();
+					$($('.why-uguru-image')[0]).addClass('animed fadeIn show').show();
+				}
 			}, 1000);
 		} else {
 			visibleContentElem.addClass('animated fadeOut');
@@ -223,6 +250,10 @@ $(function () {
 			visibleContentElem.addClass('animated shake');
 			setTimeout(function() {
 				visibleContentElem.removeClass('animated shake');
+				if($($('.why-uguru-content')[7]).css("display")==="none") {
+					$($('.why-uguru-content')[7]).addClass('animated fadeIn show').show();
+					$($('.why-uguru-image')[7]).addClass('animed fadeIn show').show();
+				}
 			}, 1000);
 		} else {
 			visibleImageElem.addClass('animated fadeOut');
@@ -248,7 +279,6 @@ $(function () {
 
 		svgCircle = $(this).find('svg circle')[0]
 		svgColor = $(svgCircle).css('fill');
-
 		setTimeout(function() {
 			sliderElemColor = $('#slider-triangle svg path').css('fill', svgColor);
 		}, 500)
@@ -261,9 +291,12 @@ $(function () {
 			previousWorkContent = $('.work-content:visible').addClass('animated fadeOut')
 			setTimeout(function() {
 				$(previousWorkContent).removeClass('animated fadeOut').hide()
+				previousWorkContent = $('.work-content:visible').addClass('animated fadeOut')
+				$(previousWorkContent).removeClass('animated fadeOut').hide()
 				$('#' + descriptionToShow).addClass('animated fadeIn show').show();
 			}, 750);
 		}
+		console.log("HI");
 		moveHorizontalSlider(sliderElem, targetElem, successCallback);
 	});
 
@@ -317,7 +350,7 @@ $(document).ready(function () {
 		axis: 'y',
 		trigger: 'hover'
 	});
-
+	
 	$('.search-results').flip({
 		axis: 'y',
 		trigger: 'click'

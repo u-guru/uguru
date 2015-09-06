@@ -4,7 +4,7 @@ $(function () {
 $("#search-box").slideDown();
     $('#search-bar').focus(function(e) {
         $("#top-school-banner").css("width", "60%");
-        if ($('#search-bar').val().length === 0) {
+        if ($('#search-bar').val().length >= 0) {
             $("#search-results").slideDown();
             $("#search-box").css('top', '30%');
         }
@@ -35,8 +35,9 @@ $("#search-box").slideDown();
     $('#search-box').on("mouseover", function(e) {
         //check if mouse is still over the bar after 500 seconds
         setTimeout(function(){
-            if ($('#search-box').is(':hover') &&
-                !$('#search-bar').val().length)
+            if ($('#search-box').is(':hover') 
+                //&& !$('#search-bar').val().length 
+                )
             {
                 $('#search-bar').focus();
             }

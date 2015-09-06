@@ -768,6 +768,12 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
       color: white !important; }
   #main #search {
     display: block; }
+    #search-box p {
+      -webkit-user-select: none;  
+      -moz-user-select: none;     
+      -ms-user-select: none;      
+      user-select: none; 
+    }
     #main #search #search-box, #main #search .search-results {
       border-radius: 10px;
       -webkit-transition: all 0.15s ease-in;
@@ -1034,6 +1040,12 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
           background: rgba(0, 0, 0, 0.05); }
   #main #earn .cta-desktop button {
     color: #2B3234; }
+    #main #earn {
+      -webkit-user-select: none;  
+      -moz-user-select: none;     
+      -ms-user-select: none;      
+      user-select: none; 
+    }
   #main #earn .inside .inside-text #earn-categories-mobile {
     display: none; }
   #main #earn .inside .inside-text #earn-categories-desktop {
@@ -1054,6 +1066,10 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     width: 100%;
     margin: -10px 0; }
     #main #earn .inside .inside-text #earn-categories-desktop .earn-category {
+<<<<<<< HEAD
+      cursor: default;
+=======
+>>>>>>> staging
       width: 25%;
       box-sizing: border-box;
       position: relative !important;
@@ -1182,6 +1198,10 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
   #main #work .cta-desktop button {
     color: #40484B; }
   #main #work #work-inside {
+    -webkit-user-select: none;  
+    -moz-user-select: none;     
+    -ms-user-select: none;      
+    user-select: none; 
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1220,6 +1240,10 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
   #main #why .cta-desktop button {
     color: #8A9EA3; }
   #main #why #why-inside {
+    -webkit-user-select: none;  
+    -moz-user-select: none;     
+    -ms-user-select: none;      
+    user-select: none; 
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1736,7 +1760,7 @@ html, body, #main, #main ul.carousel, #main li.slide {
 #full-overlay {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
   z-index: 0; }
