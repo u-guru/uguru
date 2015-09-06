@@ -72,11 +72,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
             console.log(JSON.stringify($rootScope.platform));
 
 
-            if (device.cordova && $cordovaDevice.getPlatform() === 'Win32NT') {
-              $rootScope.platform.windows = true;
-              $rootScope.platform.mobile = true;
-              $rootScope.platform.web = false;
-            }
+            // if (device.cordova && device.cordova.getPlatform() === 'Win32NT') {
+            //   $rootScope.platform.windows = true;
+            //   $rootScope.platform.mobile = true;
+            //   $rootScope.platform.web = false;
+            // }
 
             console.log('user is on device:', ionic.Platform.platform());
             if (ionic.Platform.isWindowsPhone()) {

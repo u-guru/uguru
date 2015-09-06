@@ -29,12 +29,13 @@ angular.module('uguru.util.controllers')
   'Profession',
   '$cordovaDevice',
   '$cordovaNetwork',
+  '$cordovaNgCardIO',
   function($ionicPlatform, $scope, $state, $localstorage, User,
           RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
           CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
           $cordovaSplashscreen, $timeout, Geolocation, $cordovaPush,
           $ionicSideMenuDelegate, $ionicViewSwitcher, $cordovaGeolocation, Major,
-          Skill, Profession, $cordovaDevice, $cordovaNetwork) {
+          Skill, Profession, $cordovaDevice, $cordovaNetwork, $cordovaNgCardIO) {
 
           // console.log('1. checking for app updates\n');
           // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
@@ -426,12 +427,36 @@ angular.module('uguru.util.controllers')
             }
 
             console.log('device is ready from the root controller');
+            console.log("window.open works well");
+            console.log(navigator.camera);
 
-            if ($cordovaDevice && $cordovaDevice.getPlatform() === 'Win32NT') {
-              $scope.platform.windows = true;
-              $scope.platform.mobile = true;
-              $scope.platform.web = false;
+              console.log('media is ready: ', Media);
+
+             console.log("cardIO: ",$cordovaNgCardIO);
+                
+             $scope.scanCard = function() {     
+              $cordovaNgCardIO.scanCard()
+                    .then(function (response) {
+                      console.log("success: " , response);
+
+                            //Success response - it`s an object with card data
+                          },
+                          function (response) {
+                            console.log("error: ", response);
+                            //We will go there only when user cancel a scanning.
+                            //response always null 
+                          }
+                    );
             }
+
+
+
+
+            // if ($cordovaDevice && $cordovaDevice.getPlatform() === 'Win32NT') {
+            //   $scope.platform.windows = true;
+            //   $scope.platform.mobile = true;
+            //   $scope.platform.web = false;
+            // }
 
             if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.hide) {
               $cordovaSplashscreen.hide();

@@ -11,9 +11,10 @@ angular.module('uguru.util.controllers')
   '$cordovaStatusbar',
   '$ionicPlatform',
   '$ionicViewSwitcher',
+  '$cordovaNgCardIO',
   function($scope, $state, $timeout, $localstorage,
     $ionicModal, $cordovaStatusbar, $ionicPlatform,
-    $ionicViewSwitcher) {
+    $ionicViewSwitcher, $cordovaNgCardIO) {
 
     //Sanitized
 
@@ -54,7 +55,7 @@ angular.module('uguru.util.controllers')
       } else {
         $scope.access.errorInputMsg = 'Incorrect access code';
       }
-    }
+    };
 
 
     /* This is where all cordova plugins MUST go
@@ -82,10 +83,13 @@ angular.module('uguru.util.controllers')
 
       // NICK TODO --> location
       document.addEventListener("deviceready", function () {
+       
+
 
         //all mobile specific plugins
         if ($scope.platform.mobile) {
           console.log("window.open works well");
+          console.log(navigator.camera);
 
 
           if ($scope.platform.ios) {

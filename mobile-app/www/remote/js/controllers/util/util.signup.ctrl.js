@@ -737,7 +737,6 @@ angular.module('uguru.util.controllers')
         //   function (msg) {alert("error: " + msg)} // called in case you pass in weird values
         // );
 
-
         var url = 'https://www.uguru.me/faq/';
         var target ='_blank';
         var options = 'location=no';
@@ -751,9 +750,6 @@ angular.module('uguru.util.controllers')
 
     $scope.launchPrivacyPolicy = function() {
 
-
-
-
       var url = 'https://www.uguru.me/manifest/';
       var target ='_blank';
       var options = 'location=no';
@@ -763,8 +759,140 @@ angular.module('uguru.util.controllers')
 
       var ref = cordova.InAppBrowser.open(url, target, options);
 
-
     };
+
+    $scope.launchCamera = function() {
+
+      function cameraSuccess(imageData) {
+        console.log("camera success: " );
+      }
+      function cameraError(err) {
+        console.log("camera failed: " + err);
+      }
+
+      var cameraOptions = {
+        quality: 75,
+        destinationType: 0, //DATA_URL
+        sourceType: 1, //CAMERA
+        targetWidth: 640,
+        targetHeight: 640,
+        cameraDirection: 0 //BACK CAMERA
+      }
+
+      navigator.camera.getPicture(cameraSuccess, cameraError, cameraOptions);
+    };
+
+    var src = 'myrecording.amr';
+    
+    $scope.launchMicrophone = function() {
+      console.log("pressed launchMicrophone");
+      function mediaSuccess() {
+        console.log("media succes: ");
+      }
+      function mediaError(err) {
+        console.log("media error: ", err);
+      }
+      var mediaRec = new Media(src, mediaSuccess, mediaError);
+      mediaRec.startRecord();
+
+      setTimeout(function() {
+        mediaRec.stopRecord();
+        mediaRec.play();
+
+      }, 5000);
+    };
+    var myMedia = null;
+    $scope.playMusic = function() {
+      console.log("pressed playMusic");
+      function musicSuccess() {
+        console.log("music success: ");
+
+      }
+      function musicError(err) {
+        console.log("media error: ", err);
+      }
+
+      var url = 'http://tendownloads.net/mp3files/jay-z-hello-brooklyn-marvin-gaye-sample-6604051441-5mSeqJyYsJ2hZMWol5mon6Nml6M.mp3';
+      myMedia = new Media(url, musicSuccess, musicError);
+        myMedia.play();
+
+
+
+      setTimeout(function() {
+        myMedia.seekTo(35000);
+
+
+      }, 3000);
+    };
+
+    $scope.stopMusic = function () {
+      myMedia.stop();
+      myMedia.release();
+    };
+
+    // var cardIOResponseFields = [
+    //   "card_type",
+    //   "redacted_card_number",
+    //   "card_number",
+    //   "expiry_month",
+    //   "expiry_year",
+    //   "cvv",
+    //   "zip"
+    // ];
+ 
+    // function onCardIOComplete(response) {
+    //   console.log("card.io scan complete");
+    //   for (var i = 0, len = $scope.cardIOResponseFields.length; i < len; i++) {
+    //     var field = $scope.cardIOResponseFields[i];
+    //     console.log(field + ": " + response[field]);
+    //   }
+    // }
+    // function onCardIOCancel(result) {
+    //   console.log("card.io scan cancelled: " + result);
+    // }
+
+   
+    // $scope.scanCard = function(e) {
+    //   CardIO.scan({
+    //       "expiry": true,
+    //       "cvv": true,
+    //       "zip": true,
+    //       "suppressManual": true,
+    //       "suppressConfirm": false,
+    //       "hideLogo": true
+    //     },
+    //     onCardIOComplete,
+    //     onCardIOCancel
+    //   );
+    // };
+
+
+
+    // $scope.scanCard = function() {
+
+    //   function onCardIOComplete(response) {
+    //     console.log("card.io scan complete");
+    //     for (var i = 0, len = $scope.cardIOResponseFields.length; i < len; i++) {
+    //       var field = $scope.cardIOResponseFields[i];
+    //       console.log(field + ": " + response[field]);
+    //     }
+    //   }
+    //   function onCardIOCancel() {
+    //     console.log("card.io scan cancelled");
+    //   }
+
+    //   CardIO.scan({
+    //       "collect_expiry": true,
+    //       "collect_cvv": true,
+    //       "collect_zip": true,
+    //       "shows_first_use_alert": true,
+    //       "disable_manual_entry_buttons": false
+    //     },
+    //     onCardIOComplete,
+    //     onCardIOCancel
+    //   );
+        
+    // };
 
     // $scope.launchPrivacyPolicy = function() {
 
