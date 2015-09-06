@@ -252,7 +252,6 @@ button, a[class*=btn] {
 				font-size: 12px;
 				font-weight: 400;
 				li {
-					cursor: pointer;
 					padding: 4px 0;
 					border-bottom: 1px solid;
 					&:first-child {
@@ -271,7 +270,6 @@ button, a[class*=btn] {
 					border-radius: 0!important;
 				}
 				> div {
-					cursor: pointer;
 					top: 0;
 					width: 100%;
 					overflow-y: hidden;
@@ -607,7 +605,11 @@ button, a[class*=btn] {
 	}
 }
 
-
+@media screen and (max-width: 35.5em) {
+	.intercom-launcher-preview {
+		display: none!important;
+	}
+}
 
 @media screen and (min-width: 35.5em) {
 	#top {
@@ -930,8 +932,9 @@ button, a[class*=btn] {
 				padding: 35px 50px 45px;
 			}
 			.search-results {
-				@include center-xy;
+				position: relative!important;
 				overflow: hidden;
+				height: 100%;
 				.search-results-top {
 					padding: 25px 50px;
 					background: $cerise-mute;
@@ -1215,7 +1218,6 @@ button, a[class*=btn] {
 						width: 100%;
 						margin: -10px 0;
 						.earn-category {
-							cursor: pointer;
 							width: 25%;
 							box-sizing: border-box;
 							position: relative!important;
@@ -1791,10 +1793,12 @@ button, a[class*=btn] {
 	justify-content: center;
 }
 
+/*
 .body-loading-div svg.loader {
 	height: 80%;
 	width: auto;
 }
+*/
 
 
 
@@ -2225,18 +2229,6 @@ html, body, #main, #main ul.carousel, #main li.slide {
     top: 0px;
 }
 
-/*#start-modal {
-    backface-visibility: hidden;
-    visibility: visible;
-    opacity: 1;
-    display:block;
-    z-index: 10;
-    height: 100%;
-    top: 50%;
-    top:32%;
-    background-color: transparent;
-}*/
-
 .modal-main-container {
     backface-visibility: hidden;
     background-color: white;
@@ -2494,5 +2486,23 @@ html, body, #main, #main ul.carousel, #main li.slide {
 		width: 8px;
 		height: 8px;
 		background: $moola;
+	}
+}
+
+@media all and (-ms-high-contrast:none) {
+	#search-box {
+		-ms-transform: none!important;
+		transform: none!important;
+	}
+	#top {
+		#top-logo {
+			svg {
+				margin: -10px auto 0!important;
+			}
+		}
+	}
+	.search-results-gurus {
+		-ms-transform: translate(-50%,-85%)!important;
+		transform: translate(-50%,-85%)!important;
 	}
 }
