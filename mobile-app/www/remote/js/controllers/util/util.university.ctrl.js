@@ -115,12 +115,23 @@ angular.module('uguru.util.controllers', [])
 
       }, function(error) {
           //show & let them know we couldn't find it
+          //in case android/ios/windows user turned it off
+          $scope.initialUniversities = $scope.universities;
           $scope.loader.hide()
           $scope.user.recent_position = null;
           alert('Sorry! Please check your privacy settings check your GPS signal.');
       });
 
     };
+
+    $scope.universities = University.getTargetted();
+
+    if ($scope.platform.android) {
+      $scope.getGPSCoords();
+    } else {
+      $scope.initialUniversities = filterByTopRankedUniversities($scope.universities);
+    }
+
 
   }
 
