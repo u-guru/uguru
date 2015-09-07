@@ -2,17 +2,18 @@
 
 var LOCAL = false; //local to the 8100 codebasebirbirs
 
+
+
 var BASE_URL = 'http://uguru-rest.herokuapp.com/production/app/';
 var REST_URL = 'http://uguru-rest.herokuapp.com'
 
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.42.66:8100';
- // REST_URL = 'http://192.168.42.66:5000';
+  BASE_URL = 'http://localhost:8100';
 
-  // BASE_URL = 'http://localhost:8100/';
   REST_URL = 'http://localhost:5000';
+  // var REST_URL = 'http://uguru-rest.herokuapp.com'
 
 } else {
   img_base = '/static/'
@@ -37,7 +38,10 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
   document.addEventListener("deviceready", function () {
         // console.log('list of all plugins checkpoint 2', JSON.stringify(cordova.require("cordova/plugin_list").metadata));
-
+        if (calcTimeSinceInit) {
+          deviceReadyLoadTime = calcTimeSinceInit();
+          console.log('Device ready load time:', deviceReadyLoadTime, 'seconds');
+        }
 
           if ($cordovaSplashscreen && $cordovaSplashscreen.hide) {
 
@@ -95,10 +99,14 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
 
                 //grabbing nextwork speed
-                if ($cordovaNetwork) {
-                  $rootScope.network_speed = getNetworkSpeed();
-                  console.log('2. grabbing network speed which is: ', $rootScope.network_speed, '\n\n');
-                }
+
+
+                //Local Storage
+                 // $localstorage.saveToDisk(device.platform);
+               //$localstorage.updateDisk();
+               //console.log("LOG "+$localstorage.getFreeDiskSpace());
+
+
 
 
                 //save device
@@ -132,7 +140,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
-  $cordovaFacebookProvider, $ionicConfigProvider, $compileProvider, uiGmapGoogleMapApiProvider) {
+  $cordovaFacebookProvider, $ionicConfigProvider, $compileProvider, uiGmapGoogleMapApiProvider,
+  $provide) {
 
   uiGmapGoogleMapApiProvider.configure({
         //    key: 'your api key',
@@ -140,12 +149,67 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         libraries: 'places'
     });
 
+  $provide.decorator("$exceptionHandler", function($delegate, $injector) {
+    return function(exception, cause) {
+      var gh_title;
+      if (exception.message) {
+        gh_title =  '"' +  exception.message;
+      }
+      if (cause) {
+        gh_title += '" since "' + JSON.stringify(cause);
+      }
+      if (exception.line) {
+        gh_title += '". See line ' + exception.line
+      }
+      if (exception.sourceURL) {
+        var exceptionUrlSplit = exception.sourceURL.split('/');
+        exception.location = exceptionUrlSplit[exceptionUrlSplit.length - 1];
+        gh_title += ' in file ' + exception.location
+      }
+      var gh_body = '*Line*: ' + exception.line + '\n' + '*Column*: ' + exception.column + '\n*File*: ' + exception.location + '\n*File URL*: ' + exception.sourceURL + '\n\n*Message*: ' + exception.message + ', where the cause is _' + JSON.stringify(cause) + '_\n\n*Exception Type*: ' + exception.name + '\n\n*Full Error Object*: \n\n' + JSON.stringify(exception) + '\n\n\n*Full Stack Trace*: \n\n' + exception.stack;
+      var user = $injector.get("$localstorage").getObject("user");
+      var user_info = {
+        id: user.id,
+        name: user.name,
+        guru_courses: user.guru_courses,
+        devices: user.devices,
+        age: user.time_created,
+        last_updated: user.last_active
+      }
+      var device_details = {
+                ios: ionic.Platform.isIOS(),
+                android: ionic.Platform.isAndroid(),
+                windows: ionic.Platform.isWindowsPhone(),
+                mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone(),
+                web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone()),
+                device: ionic.Platform.device(),
+              }
+
+      ghObj = {
+        issue_title: gh_title,
+        issue_body: gh_body,
+        user_agent: navigator.userAgent,
+        user_details: user_info,
+        device_info: device_details
+      }
+
+      var GithubHTTP = $injector.get("Github");
+      GithubHTTP.post(ghObj).then(
+        function(response) {
+          console.log(response);
+        },
+        function(err) {
+          console.log(JSON.stringify(err));
+        }
+      )
+
+      $delegate(exception, cause);
+    };
+  });
 
 
   if (ionic.Platform.isWindowsPhone()) {
-
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|chrome-extension|x-wmapp.?):|data:image\//);
-
   }
 
   // })
@@ -187,10 +251,30 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/majors.container.html',
         controller: 'AddMajorController'
   }).
+  state('root.guru-courses-container', {
+        url: '/guru-courses-container',
+        templateUrl: BASE + 'templates/guru.courses.container.html',
+        controller: 'CoursesController'
+  }).
   state('root.signup', {
         url: '/signup',
         templateUrl: BASE + 'templates/signup.html',
         controller: 'SignupController'
+  }).
+  state('root.guru-remote', {
+    url:'/guru-remote',
+    templateUrl: BASE + 'templates/guru.remote.html',
+    controller: 'GuruRemoteController'
+  }).
+  state('root.guru-languages', {
+    url:'/guru-languages',
+    templateUrl: BASE + 'templates/guru.languages.container.html',
+    controller: 'LanguagesController'
+  }).
+  state('root.guru-experiences', {
+    url:'/guru-experiences',
+    templateUrl: BASE + 'templates/guru.experiences.container.html',
+    controller: 'ExperiencesController'
   }).
   state('root.payments', {
         url: '/payments:cardObj',
@@ -247,8 +331,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/browse.html',
         // controller: 'BrowseController'
   }).
-  state('root.ranking', {
-        url: '/ranking',
+  state('root.guru-ranking', {
+        url: '/guru-ranking',
         templateUrl: BASE + 'templates/guru.ranking.html',
         controller: 'GuruRankingController'
   }).
@@ -281,6 +365,13 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         templateUrl: BASE + 'templates/guru.bill-student.html',
         controller: 'BillStudentController'
   }).
+  state('root.test-error', {
+        url: '/test-error',
+        templateUrl: BASE + 'templates/guru.bill-student.html',
+        controller: function($scope) {
+          throw "Test error";
+        }
+  }).
   state('root.guru-conversations', {
         url: '/guru-conversations',
         templateUrl: BASE + 'templates/guru.conversations.html'
@@ -309,12 +400,10 @@ var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $loca
                       Version.setVersion(1.0);
                     }
 
-                    if (LOCAL) {
-                      console.log('it gets here');
-                      $templateCache.removeAll();
-                    }
+
 
                     if (serverVersionNumber != currentVersion) {
+
 
                       console.log('versions are different...\n');
 

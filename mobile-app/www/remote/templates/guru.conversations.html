@@ -75,26 +75,29 @@
 
 
 <div class="tabs tabs-icon-only white-bg" id='guru-tab-bar'>
-      <a class="tab-item" id='home-button'>
-        <img class='pure-img icon' src='{{img_base}}./img/request/house-icon-blue.svg'></i>
+      <a class="tab-item" id='home-button' nav-direction='swap' href='#/guru'>
+        <img class='pure-img icon' ng-src='{{img_base}}./img/request/house-icon-outline.svg'></i>
       </a>
       <!-- <a class="tab-item" id='guru-courses-button' ng-click='checkCourses()'>
         <img class='pure-img icon' src='{{img_base}}./img/request/guru_book_outline.svg'></i>
       </a> -->
-      <a class="tab-item" href='#/guru-questions' nav-direction='swap' id='courses-button' ng-show='user.active_questions'>
+      <!-- <a class="tab-item" href='#/guru-questions' nav-direction='swap' id='courses-button' ng-show='user.active_questions'>
         <img class='pure-img icon' src='{{img_base}}./img/icons/question.svg'></i>
       </a>
       <a class="tab-item" id='tasks-button' nav-direction='swap' href='#/guru-tasks'>
         <img class='pure-img icon' src='{{img_base}}./img/icons/task.svg'></i>
-      </a>
+      </a> -->
       <a class="tab-item" id='profile-tab-button' nav-direction='swap' href='#/guru-profile'>
         <i class='icon ion-person'> </i>
       </a>
-      <a class="tab-item" id='profile-tab-button' nav-direction='swap' href='#/guru-conversations'>
+      <!-- <a class="tab-item" id='profile-tab-button' nav-direction='swap' href='#/guru-conversations'>
         <i class='icon ion-email'> </i>
+      </a> -->
+      <a class="tab-item" id='guru-courses-button' nav-direction='swap' href='#/guru-conversations'>
+        <img class='pure-img icon' ng-src='{{img_base}}./img/request/guru_book_blue.svg'></i>
       </a>
       <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
-        <img class='pure-img icon' src='{{img_base}}./img/settings-tab-guru.svg'/>
+        <img class='pure-img icon' ng-src='{{img_base}}./img/settings-tab-guru.svg'/>
       </a>
 </div>
 

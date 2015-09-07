@@ -1,0 +1,53 @@
+{% extends 'admin/base.html' %}
+
+{% block header_scripts %}
+<link href="/static/admin/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="/static/admin/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+<link href="/static/admin/plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css" media='print' />
+<link href="/static/admin/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+ <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Team Calendar<br>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/admin/"><i class="fa fa-dashboard"></i> Home </a></li>
+            <li>Team</li>
+            <li>Action Items</li>
+          </ol>
+        </section>
+        <!-- Test Calendar -->
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-md-offset-1 col-md-10 col-sm-12">
+              <div class="box box-primary">
+                <div class="box-body no-padding">
+                  <iframe src="https://www.google.com/calendar/embed?title=Uguru%20Anti%20Calendar%20OOO-Only&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=edv1b7tufsk6f9rlk680mn0nu8%40group.calendar.google.com&amp;color=%23A32929&amp;ctz=America%2FLos_Angeles" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                </div><!-- /.box-body -->
+              </div><!-- /. box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+
+    <!-- Add Possible Trello to do list for later-->
+
+    <!-- Calendar Ends Here -->
+    <!-- Main content -->
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="/static/admin/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="/static/js/admin/tables.js" type="text/javascript"></script>
+
+</script>
+
+{% endblock %}

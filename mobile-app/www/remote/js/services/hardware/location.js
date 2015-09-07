@@ -11,12 +11,12 @@ angular.module('uguru.root.services')
 
         var failureCallbackLocal = function($scope, $state) {
           $scope.loader.hide();
-          $state.go('^.prompt-location');
+          // $state.go('^.prompt-location');
         }
 
         var callbackSuccessLocal = function($scope, $state) {
           $scope.loader.hide();
-          $state.go('^.onboarding-nearest-university');
+          // $state.go('^.onboarding-nearest-university');
         }
 
 

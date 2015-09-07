@@ -8,10 +8,10 @@ UGURU_TEAM = ['Samir', 'Jasmine', 'Anand', 'Rob', 'Umi', 'Geet', 'Shun', 'Varada
 URGENCY_SCALE = 10
 
 #returns github_user
-def init_github():
+def init_github(repo_name='uguru'):
     g = Github(GITHUB_USERNAME, GITHUB_PASSWORD)
     g_user = g.get_user()
-    repo = g_user.get_repo('uguru-mobile')
+    repo = g_user.get_repo(repo_name)
     return repo
 
 def get_user(client):

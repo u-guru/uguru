@@ -12,6 +12,95 @@ else:
 def init():
     init_db()
 
+# def decode_string(string):
+#     return string.decode('unicode_escape')
+
+def update_us_news():
+    import json
+    uni_rank_arr = json.load(open('app/static/data/us_news_2015.json'))
+    for uni in uni_rank_arr:
+        try:
+            university = get_best_matching_universty(uni['name'])
+            university.us_news_ranking = uni['rank']
+            university.population = uni['population']
+            university.is_targetted = True
+            db_session.commit()
+            print university.id, university.name, university.us_news_ranking, university.population, 'saved'
+        except:
+            print 'ERROR: could not find', uni['name']
+
+def update_universities_forbes():
+    from app.static.data.universities import universities_dict
+    from app.database import db_session
+    from app.models import University
+    uni_names = universities_dict.keys()
+    index = 0
+    for uni in uni_names:
+        uni_dict = universities_dict[uni]
+        if uni_dict.get('forbes_rank') and uni_dict.get('logo_url'):
+            forbes_rank = uni_dict.get('forbes_rank')
+            logo_url = uni_dict.get('logo_url')
+            population = int(uni_dict.get('population').replace(',',''))
+            uni_obj = get_best_matching_universty(uni)
+            if uni_obj:
+                uni_obj.us_news_ranking = int(forbes_rank)
+                uni_obj.logo_url = logo_url
+                uni_obj.population = population
+                index += 1
+                db_session.commit()
+                print index, 'updated', uni
+    print index, 'universities updated with forbes & logo'
+
+def get_best_matching_universty(school):
+    from app.models import University
+    from fuzzywuzzy import fuzz, process
+    previous_university_titles = [university.name for university in University.query.all()]
+    matches = []
+    for title in previous_university_titles:
+        if fuzz.partial_ratio(school.lower(), title.replace('-', ' ').lower()) >= 80:
+            matches.append((title, school))
+    highest_index = 0
+    highest_score = 0
+    index = 0
+    for match in matches:
+        current_match_score = fuzz.ratio(match[0], match[1])
+        if current_match_score > highest_score:
+            highest_score = current_match_score
+            highest_index = index
+        index += 1
+    if matches or highest_index:
+        return University.query.filter_by(name=matches[highest_index][0]).first()
+    return None
+
+def init_mailgun_lists():
+    from app.lib.mailgun import *
+    for u in University.query.all():
+        if u.is_targetted and u.population:
+            print create_mailing_list(u)
+
+def init_university_dates(name):
+    req = urllib2.Request("https://drive.google.com/uc?export=download&id=0By5VIgFdqFHddHdBT1U4YWZ2VkE", None)
+    opener = urllib2.build_opener()
+    f = opener.open(req)
+    universities = simplejson.load(f)
+    errors = []
+    for info in universities:
+        try:
+            name = info[info.keys()[2]]
+            start_date = info[info.keys()[3]].replace('2015','15').replace('2014', '14').replace('2016', '16')
+            end_date = info[info.keys()[4]].replace('2015','15').replace('2014', '14').replace('2016', '16')
+            uni_obj = get_best_matching_universty(name)
+            start_date_obj = datetime.datetime.strptime(start_date, '%m/%d/%y')
+            end_date_obj = datetime.datetime.strptime(end_date, '%m/%d/%y')
+            uni_obj.fa15_start = start_date_obj
+            uni_obj.fa15_end = end_date_obj
+            db_session.commit()
+            print uni_obj.id, uni_obj.name, uni_obj.fa15_start, uni_obj.fa15_end
+        except:
+            errors.append(uni_obj)
+            continue
+
+
 
 def seed_db_local():
     init_db()
@@ -203,6 +292,15 @@ def seed_db():
 
 if arg == 'initialize':
     init()
+
+if arg =='update_us_news':
+    update_us_news()
+
+if arg =='update_forbes':
+    update_universities_forbes()
+
+if arg =='init_mailgun':
+    init_mailgun_lists()
 
 if arg =="seed":
     seed_db()
@@ -414,6 +512,17 @@ if arg == 'parse_uni_updated':
     with open('web_university4.json', 'wb') as fp:
         json.dump(result_schools, fp, indent = 4)
 
+if arg =='init_test_devices':
+    from app.models import *
+    from app.database import *
+    for u in User.query.all():
+        if u.devices and u.is_admin:
+            for device in u.devices:
+                device.is_test_device = True
+                db_session.commit()
+    print 'test devices initiated'
+
+
 
 if arg =='init_skills':
     from app.models import *
@@ -457,6 +566,43 @@ if arg == 'init_professions':
         db_session.commit()
 
     print len(professions),  'all skills successfully added'
+
+if arg == 'init_languages':
+    from datetime import datetime
+    languages_arr = json.load(open('scripts/languages/languages.json'))
+    for lang_str in languages_arr:
+        language = Language()
+        language.name = lang_str
+        language.time_created = datetime.now()
+        language.time_updated = datetime.now()
+        db_session.add(language)
+        db_session.commit()
+
+    print len(Language.query.all()), 'created'
+
+if arg == 'update_targetted':
+    from app.models import University
+    from app.database import db_session
+    recent_month = datetime(year=2015, month=7, day =24)
+    for u in University.query.filter_by(is_targetted=True).all():
+        if u.fa15_start and u.fa15_start >= recent_month and u.us_news_ranking > 0 and u.population > 1999:
+            u.is_targetted = True
+        else:
+            u.is_targetted = False
+        print u.id, u.name, 'saved'
+        db_session.commit()
+    print len(University.query.filter_by(is_targetted=True).all())
+
+if arg == 'save_languages':
+    languages_arr = []
+    for language in Language.query.all():
+        languages_arr.append({'name': language.name, 'id': language.id})
+
+    with open('scripts/languages/languages_id.json', 'wb') as fp:
+        json.dump(languages_arr, fp)
+    print len(languages_arr), 'saved'
+
+
 
 if arg =='migrate':
 
@@ -557,10 +703,6 @@ if arg =='migrate':
             print "error with", user['email']
             db_session.rollback()
             continue
-
-
-
-
 
             # 'skills': get_user_skills(user),
             # 'conversations': get_user_conversations(user),

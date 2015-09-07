@@ -236,3 +236,13 @@ def save_results(structure, filename):
     import json
     with open(filename, 'wb') as fp:
         json.dump(structure, fp, indent = 4)
+
+
+if __name__ == '__main__':
+    args = sys.argv
+    start = int(args[1])
+    end = int(args[2])
+    # Iterates through chegg
+    index = start
+    SCHOOLS = sorted(University.query.all(), key=lambda k:k.id)
+    scrape_all_universities(SCHOOLS[start:end])

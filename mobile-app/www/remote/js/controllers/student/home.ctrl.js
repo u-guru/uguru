@@ -21,7 +21,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher, $ionicActionSheet)     {
 
-
+  // var n = x + 1;
   $scope.showUpcoming = true;
   $scope.root.vars.show_price_fields = false;
 
@@ -38,6 +38,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     $scope.showUpcomingToggle = function() {
       $scope.showUpcoming = !$scope.showUpcoming;
+    }
+
+    $scope.goBackToStudentHome = function() {
+      $ionicViewSwitcher.nextDirection('back');
+      $state.go('^.home');
     }
 
     $scope.cancelRequest = function(request) {
@@ -133,7 +138,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
 
 
-
+    $scope.goToBecomeGuru = function() {
+      $ionicViewSwitcher.nextDirection('forward');
+      $state.go('^.become-guru');
+    }
     $scope.cancelStudentActiveSession = function(session) {
 
               //guru goes back to session 'pending', maybe clicked start by accident
@@ -394,10 +402,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       //before guru is matched
       if (session.request.status === 0) {
-
         $scope.cancelRequest(session.request);
         return;
-
       }
 
       $scope.root.vars.active_session = session;
@@ -756,9 +762,12 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
      $scope.$on('$ionicView.enter', function() {
 
-        // $timeout(function() {
-        //   $ionicSideMenuDelegate.toggleRight();
-        // }, 500)
+        $timeout(function() {
+          $ionicSideMenuDelegate.toggleRight();
+        }, 500)
+       $timeout(function() {
+        $scope.loader.hide();
+       }, 1500)
 
         if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
             $scope.processIncomingRequests($scope.user.incoming_requests);

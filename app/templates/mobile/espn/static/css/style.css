@@ -1,0 +1,254 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+*:focus {
+  outline: none; }
+
+em {
+  font-style: italic; }
+
+* {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden; }
+
+body {
+  font: 24px/1 "Source Sans Pro", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin-y: 0;
+  overflow-y: hidden;
+  background: #ccc; }
+
+a {
+  text-decoration: none; }
+
+#container {
+  position: relative;
+  margin: 50px auto;
+  width: 640px;
+  height: 1136px; }
+
+#screen {
+  position: fixed;
+  width: 640px;
+  height: 100%;
+  overflow: hidden;
+  background: white; }
+  #screen #status-bar {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    height: 40px;
+    width: 640px;
+    font-weight: 700; }
+  #screen .black {
+    background: rgba(0, 0, 0, 0.1) !important;
+    color: white !important; }
+  #screen .nav-bar {
+    z-index: 9999;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    padding-top: 40px;
+    height: 128px;
+    width: 640px; }
+    #screen .nav-bar h1 {
+      font-size: 34px;
+      font-weight: 900; }
+  #screen button {
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    -ms-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    display: block;
+    font-family: "Source Sans Pro", sans-serif;
+    -webkit-appearance: none;
+    max-width: 100%;
+    height: 96px;
+    font-size: 34px;
+    border: 0;
+    box-shadow: none; }
+  #screen #login-bg {
+    filter: blur(30px);
+    -webkit-filter: blur(30px);
+    -moz-filter: blur(30px);
+    -o-filter: blur(30px);
+    -ms-filter: blur(30px);
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='30');
+    filter: alpha(opacity=20);
+    opacity: 0.2;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    width: 1280px;
+    height: 2272px;
+    background: url("/static/images/mia.jpg") center center; }
+  #screen #main {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    max-width: 640px;
+    height: 1096px; }
+    #screen #main #login img {
+      display: block;
+      margin: 280px auto 0;
+      width: 100%;
+      max-width: 450px; }
+    #screen #main #login #login-buttons {
+      margin-top: 320px; }
+      #screen #main #login #login-buttons button {
+        width: 540px;
+        margin: 0 auto 25px;
+        border-radius: 10px;
+        box-sizing: border-box; }
+        #screen #main #login #login-buttons button.btn-blue, #screen #main #login #login-buttons button.btn-ghost:hover {
+          border: 0;
+          background: #0066cc;
+          color: white; }
+        #screen #main #login #login-buttons button.btn-ghost, #screen #main #login #login-buttons button.btn-blue:hover {
+          border: 3px solid #bdbdbd;
+          background: white;
+          color: black; }
+      #screen #main #login #login-buttons a {
+        display: block;
+        text-align: center;
+        font-size: 28px; }
+    #screen #main #scores {
+      display: none;
+      position: fixed;
+      top: 0;
+      height: 1136px;
+      width: 640px;
+      z-index: 9;
+      padding: 128px 0 0; }
+      #screen #main #scores .nav-bar {
+        background: #cc0000; }
+        #screen #main #scores .nav-bar img {
+          height: 45px; }
+      #screen #main #scores #score-nav {
+        text-transform: uppercase; }
+        #screen #main #scores #score-nav ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-align-items: center;
+          -webkit-box-align: center;
+          align-items: center;
+          justify-content: center;
+          padding: 0 100px;
+          width: 100%; }
+          #screen #main #scores #score-nav ul li {
+            width: 33.333333%; }
+            #screen #main #scores #score-nav ul li a {
+              display: block;
+              text-align: center;
+              padding: 25px 0;
+              font-size: 28px;
+              color: #48494d; }
+              #screen #main #scores #score-nav ul li a.active, #screen #main #scores #score-nav ul li a:hover {
+                color: #cc0000;
+                border-bottom: 3px solid; }
+      #screen #main #scores #score-info {
+        position: absolute;
+        top: 210px;
+        background: #f2f2f2;
+        width: 640px;
+        height: 925px;
+        padding: 25px; }
+        #screen #main #scores #score-info h1 {
+          font-size: 40px;
+          font-weight: 200; }
+    #screen #main .box {
+      background: #fff;
+      border: 1px solid #ddd;
+      margin: 20px 0; }
+      #screen #main .box ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: table;
+        width: 100%; }
+        #screen #main .box ul li {
+          display: table-cell;
+          vertical-align: middle;
+          width: 50%; }
+          #screen #main .box ul li img {
+            display: block;
+            width: 150px;
+            margin: 20px auto 10px; }
+          #screen #main .box ul li h3 {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 200; }
+      #screen #main .box time {
+        margin-top: 20px;
+        border-top: 1px solid #ddd;
+        display: block;
+        text-align: center;
+        padding: 20px;
+        font-size: 48px; }

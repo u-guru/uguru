@@ -1,4 +1,7 @@
 !.gitignore
+!app/static/data/fa15_targetted.json
+!app/static/data/fa15_*.json
+!app/static/data/*.json
 .elasticbeanstalk/
 venv
 app.db
@@ -94,9 +97,9 @@ build/Release
 node_modules
 
 mobile-app/platforms
+mobile-app/plugins
 .sass-cache*
 app.css.map
 node_modules*
 *json
-
-
+run.py

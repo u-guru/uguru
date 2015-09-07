@@ -30,14 +30,23 @@ angular.module('uguru.util.controllers')
         $scope.loader.show();
       }
 
-      $timeout(function() {
-        $ionicSideMenuDelegate.toggleRight();
-      }, 500);
+      if ($scope.root.vars.guru_mode) {
+
+        $state.go('^.guru-profile');
+
+      } else {
+
+        $timeout(function() {
+          $ionicSideMenuDelegate.toggleRight();
+        }, 500);
+
+      }
+
 
       $timeout(function() {
         $scope.loader.hide();
 
-      }, 1000);
+      }, 500);
     }
 
 

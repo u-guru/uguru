@@ -17,10 +17,11 @@ angular.module('uguru.util.controllers', [])
   '$ionicViewSwitcher',
   '$cordovaGeolocation',
   '$ionicSideMenuDelegate',
+  '$ionicSlideBoxDelegate',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $q, University,
   $cordovaKeyboard, $ionicLoading, $cordovaStatusbar,
-  $ionicViewSwitcher, $cordovaGeolocation, $ionicSideMenuDelegate) {
+  $ionicViewSwitcher, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicSlideBoxDelegate) {
     $scope.data = {};
     $scope.search_text = '';
     $scope.keyboard_force_off = false;
@@ -35,14 +36,25 @@ angular.module('uguru.util.controllers', [])
         $scope.loader.show();
       }
 
-      $timeout(function() {
-        $ionicSideMenuDelegate.toggleRight();
-      }, 500);
+      if ($scope.root.vars.guru_mode) {
 
+        $state.go('^.guru-profile');
+
+      } else {
+
+
+        //toggle the side menu to the right
+        $timeout(function() {
+          $ionicSideMenuDelegate.toggleRight();
+        }, 500);
+
+      }
+
+      //close the loader
       $timeout(function() {
         $scope.loader.hide();
-
       }, 1000);
+
     }
 
     $scope.saveUniversityFromStudentProfileSideBar = function(university) {
@@ -123,6 +135,11 @@ angular.module('uguru.util.controllers', [])
       $scope.view = index;
       if (index === 2) {
         $scope.root.slider.hide();
+
+        if ($scope.platform.ios && $cordovaKeyboard.hideAccessoryBar) {
+          $cordovaKeyboard.hideAccessoryBar(true);
+        }
+
         $timeout(function() {
 
           var element = document.getElementById("university-input")
@@ -136,6 +153,9 @@ angular.module('uguru.util.controllers', [])
 
         }, 300);
       } else {
+        if ($scope.platform.ios && $cordovaKeyboard.hideAccessoryBar) {
+            $cordovaKeyboard.hideAccessoryBar(false);
+        }
         $scope.root.slider.show();
         if ($scope.platform.mobile && $cordovaKeyboard.isVisible()) {
           $cordovaKeyboard.close();
@@ -239,7 +259,11 @@ angular.module('uguru.util.controllers', [])
           $timeout(function() {
             $scope.loader.hide();
             $ionicViewSwitcher.nextDirection('forward');
-            $state.go('^.home')
+            if ($state.current.name === 'root.university-container') {
+              $scope.backToStudentEditProfile(true);
+            } else {
+              $state.go('^.home')
+            }
           }, 1000);
         }
 
@@ -287,7 +311,11 @@ angular.module('uguru.util.controllers', [])
           $timeout(function() {
             $scope.loader.hide();
             $ionicViewSwitcher.nextDirection('forward');
-            $state.go('^.home')
+            if ($state.current.name === 'root.university-container') {
+              $scope.backToStudentEditProfile(true);
+            } else {
+              $state.go('^.home')
+            }
         }, 1000);
 
 
@@ -402,7 +430,7 @@ angular.module('uguru.util.controllers', [])
 
     $scope.$on('$ionicView.enter', function() {
 
-      if ($state.current.name === 'root.university-container') {
+      if ($state.current.name === 'root.university-container' && (!$scope.static.nearest_universities || !$scope.static.nearest_universities.length)) {
         $timeout(function() {
           $scope.setFocus();
         }, 1250)
@@ -413,6 +441,9 @@ angular.module('uguru.util.controllers', [])
       }
 
     });
+
+        //add event listener
+
     //case 1: if universities do not exist in local storage ... go get them
     //case 2: if user has ios && user has not been prompted... , prompt the display to get access
     //case 3: if coordinates are available && nearest_universities are not displayed..., calculate the nearest gps

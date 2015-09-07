@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="../../static/images/favicon.ico">
+	<link rel="stylesheet" href="../../static/css/gpa.css">
+	
+	<title>UGURU</title>
+	
+
+</head>
+<body>
+	
+<main id="add-sc" class="gpa-sc edit-sc">
+	<header>
+		<ul>
+			<li class="padding-15left">
+				<a href="index.html">Back</a>
+			</li>
+			<li>
+				<h1 class="text-center">Add a course</h1>
+			</li>
+			<li class="padding-15right">
+				<a href="gpa.html">Save</a>
+			</li>
+		</ul>
+	</header>
+	<div class="gpa-sc-content">
+		<ul class="add-sc-list">
+			<li>
+				<label for="course" class="padding-15x">Course Name</label>
+				<input name="course" type="text" placeholder="Enter a Course" class="padding-15xy" autofocus/>
+			</li>
+			<li>
+				<label for="grade" class="padding-15x">Letter Grade</label>
+				<ul>
+					<li>
+						<input name="grade" class="plus-letter" type="radio" value="A+"/>
+						<input name="grade" class="whole-letter" type="radio" value="A"/>
+						<input name="grade" class="minus-letter" type="radio" value="A-"/>
+						<span class="grade-visual">
+							<span class="plus-visual"><b>+</b></span>
+							<span class="whole-visual"><b>A</b></span>
+							<span class="minus-visual"><b>-</b></span>
+						</span>
+					</li>
+					<li>
+						<input name="grade" class="plus-letter" type="radio" value="B+" checked/>
+						<input name="grade" class="whole-letter" type="radio" value="B"/>
+						<input name="grade" class="minus-letter" type="radio" value="B-"/>
+						<span class="grade-visual">
+							<span class="plus-visual"><b>+</b></span>
+							<span class="whole-visual"><b>B</b></span>
+							<span class="minus-visual"><b>-</b></span>
+						</span>
+					</li>
+					<li>
+						<input name="grade" class="plus-letter" type="radio" value="C+"/>
+						<input name="grade" class="whole-letter" type="radio" value="C"/>
+						<input name="grade" class="minus-letter" type="radio" value="C-"/>
+						<span class="grade-visual">
+							<span class="plus-visual"><b>+</b></span>
+							<span class="whole-visual"><b>C</b></span>
+							<span class="minus-visual"><b>-</b></span>
+						</span>
+					</li>
+					<li>
+						<input name="grade" class="plus-letter" type="radio" value="D+"/>
+						<input name="grade" class="whole-letter" type="radio" value="D"/>
+						<input name="grade" class="minus-letter" type="radio" value="D-"/>
+						<span class="grade-visual">
+							<span class="plus-visual"><b>+</b></span>
+							<span class="whole-visual"><b>D</b></span>
+							<span class="minus-visual"><b>-</b></span>
+						</span>
+					</li>
+					<li>
+						<input name="grade" class="whole-letter" type="radio" value="F"/>
+						<span class="grade-visual">
+							<span class="whole-visual"><b>F</b></span>
+						</span>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<label for="credit" class="padding-15x">Number of credits</label>
+				<ul>
+					<li>
+						<input name="credit" class="credit" type="radio" value="1"/>
+						<span class="credit-visual">
+							<b>1</b>
+						</span>
+					</li>
+					<li>
+						<input name="credit" class="credit" type="radio" value="2"/>
+						<span class="credit-visual">
+							<b>2</b>
+						</span>
+					</li>
+					<li>
+						<input name="credit" class="credit" type="radio" value="3" checked/>
+						<span class="credit-visual">
+							<b>3</b>
+						</span>
+					</li>
+					<li>
+						<input name="credit" class="credit" type="radio" value="4"/>
+						<span class="credit-visual">
+							<b>4</b>
+						</span>
+					</li>
+					<li>
+						<input name="credit" class="credit" type="radio" value="5"/>
+						<span class="credit-visual">
+							<b>5</b>
+						</span>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<label for="term" class="padding-15x">Term</label>
+				<div>
+					<input name="term" class="term-fall" type="radio" value="Fall 2015" checked/>
+					<input name="term" class="term-spring" type="radio" value="Spring 2015"/>
+					<span class="term-visual text-center">
+						<span class="fall-visual padding-15xy"><b>Fall 2015</b></span>
+						<span class="spring-visual padding-15xy"><b>Spring 2015</b></span>
+					</span>
+				</div>
+			</li>
+		</ul>
+	</div>
+</main>
+
+	
+		<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+		<script>
+		  WebFont.load({
+			google: {
+			  families: ['Source Sans Pro:200,300,400,600,700,900']
+			}
+		  });
+		</script><!--
+		<script src="../../static/js/jquery.min.js"></script>
+		<script src="../../static/js/main.js"></script>
+	-->
+</body>
+</html>

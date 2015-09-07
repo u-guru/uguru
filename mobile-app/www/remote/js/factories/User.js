@@ -1,8 +1,8 @@
 angular.module('uguru.user', [])
 .factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory', 'RootService',
-    '$ionicSideMenuDelegate',
+    '$ionicSideMenuDelegate', '$cordovaNetwork',
     function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService,
-        $ionicSideMenuDelegate) {
+        $ionicSideMenuDelegate, $cordovaNetwork) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -34,6 +34,101 @@ angular.module('uguru.user', [])
                 result = (result / ratings_arr.length).toFixed(2);
                 return result;
     }
+
+    var calcProfileCompleteness = function(user) {
+        var default_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100";
+        var base = 60; //40%
+        var num_items = 8;
+        var default_item_weight = 10;
+        // var mini_item_weight = 2;
+        var max_points = 170; //base (60) + (9 * 10) + (3 * 10)
+
+        if (!user.is_a_guru) {
+            return 0;
+        }
+
+        if (user.profile_url && (user.profile_url !== default_url)) {
+            base += (2 * default_item_weight);
+        }
+        if (user.university_id && user.university.title) {
+            base += default_item_weight;
+        }
+        if (user.majors && user.majors.length) {
+            base += default_item_weight
+        }
+        if (user.guru_courses && user.guru_courses.length) {
+            base += (2 * default_item_weight)
+        }
+        if (user.skype_friendly || user.facetime_friendly || user.hangouts_friendly || user.messenger_friendly || user.phone_friendly || user.text_friendly || user.email_friendly) {
+            base += default_item_weight;
+        }
+        if (user.guru_languages && user.guru_languages.length) {
+            base += default_item_weight;
+        }
+        if (user.guru_experiences && user.guru_experiences.length) {
+            base += (2 * default_item_weight)
+        }
+        if (user.guru_introduction && user.guru_introduction.length) {
+            base += default_item_weight;
+        }
+        var percentage = parseInt((base  / (max_points * 1.0)) * 100);
+
+        return percentage;
+    }
+
+    var calcCredibilityCompleteness = function(user) {
+        var base = 0; //40%
+        var num_items = 5;
+        var default_item_weight = 20;
+        var max_points = 100;
+
+        if (user.fb_id) {
+            base += default_item_weight;
+        }
+        if (user.transcript_file && user.transcript_file.url && user.transcript_file.url.length) {
+            base += default_item_weight;
+        }
+        if (user.tutoring_platforms_description) {
+            base += default_item_weight;
+        }
+        if (user.school_email_confirmed) {
+            base += default_item_weight;
+        }
+        if (user.phone_number_confirmed) {
+            base += default_item_weight;
+        }
+        var percentage = parseInt((base  / (max_points * 1.0)) * 100);
+        return percentage;
+    }
+
+    var calcGuruCurrentRanking = function(user) {
+        var base = 25; //40%
+        var num_items = 5;
+        var max_points = 100;
+        var guru_ranking;
+
+
+        if (user.default_transfer_card) {
+            base += 6
+        }
+        if (user.current_credibility_percent) {
+            base += ((user.current_credibility_percent / 100.0) * 16);
+        }
+        if (user.current_profile_percent) {
+            base += ((user.current_profile_percent / 100.0) * 22);
+        }
+        if (user.push_notifications || user.text_notifications) {
+            base += 20;
+        }
+        if (user.deposit_confirmed) {
+            base += 11;
+        }
+
+
+        return base - 1;
+    }
+
+
 
     var processStudentRequestCalendar = function(index_request) {
         if (index_request.student_calendar && index_request.student_calendar.length > 0 &&
@@ -120,9 +215,7 @@ angular.module('uguru.user', [])
               var index_request = user_requests[i];
                 if (index_request.status === 0) {
                     index_request.formatted_time = RootService.time.since(new Date(index_request.time_created));
-
                     index_request = processStudentRequestCalendar(index_request);
-
                     user.active_requests.push(index_request);
                 }
                 else if (index_request.status === 1) {
@@ -369,6 +462,7 @@ angular.module('uguru.user', [])
         $scope.user.location_services_enabled = user.location_services_enabled;
         $scope.user.majors = user.majors
         $scope.user.guru_courses = user.guru_courses;
+
         $scope.user.student_courses = user.student_courses;
         $scope.user.student_sessions = user.student_sessions;
         $scope.user.guru_sessions = user.guru_sessions;
@@ -380,6 +474,7 @@ angular.module('uguru.user', [])
         $scope.user.sessions = user.sessions;
         $scope.user.proposals = user.proposals;
         $scope.user.cards = user.cards;
+        $scope.user.guru_committed = user.guru_committed;
         $scope.user.student_transactions = user.student_transactions;
         $scope.user.guru_transactions = user.guru_transactions;
         $scope.user.transfer_transactions = user.transfer_transactions;
@@ -400,12 +495,32 @@ angular.module('uguru.user', [])
         $scope.user.active_questions = user.active_questions;
         $scope.user.active_tasks = user.active_tasks;
         $scope.user.guru_skills = user.guru_skills;
+        $scope.user.transcript_file = user.transcript_file;
+        $scope.user.transcript_verified_by_admin = user.transcript_verified_by_admin;
+        $scope.user.tutoring_platforms_description = user.tutoring_platforms_description;
+        $scope.user.guru_deposit = user.guru_deposit;
+
+        $scope.user.email_friendly = user.email_friendly;
+        $scope.user.facetime_friendly = user.facetime_friendly;
+        $scope.user.guru_latest_time = user.guru_latest_time;
+        $scope.user.hangouts_friendly = user.hangouts_friendly;
+        $scope.user.messenger_friendly = user.messenger_friendly;
+        $scope.user.phone_friendly = user.phone_friendly;
+        $scope.user.skype_friendly = user.skype_friendly;
+        $scope.user.text_friendly = user.text_friendly;
+        $scope.user.guru_experiences = user.guru_experiences;
+        $scope.user.guru_languages = user.guru_languages;
 
         $scope.user.text_notifications = user.text_notifications;
         $scope.user.email_notifications = user.email_notifications;
         $scope.user.email = user.email;
+        $scope.user.school_email = user.school_email;
+        $scope.user.school_email_confirmed = user.school_email_confirmed;
         $scope.user.push_notifications = user.push_notifications;
         $scope.user.phone_number = user.phone_number;
+        $scope.user.phone_number_token = (user.phone_number_token && true); // dont let user get access to
+
+        $scope.user.phone_number_confirmed = user.phone_number_confirmed;
         $scope.user.active_proposals = user.active_proposals;
         $scope.user.impact_events = user.impact_events;
         if (user.pending_proposals && user.pending_proposals.length > 0) {
@@ -445,7 +560,11 @@ angular.module('uguru.user', [])
         $scope.user.skills = user.skills;
         $scope.user.professions = user.professions;
         $scope.user.support_tickets = user.support_tickets;
+        $scope.user.max_hourly = parseInt(user.max_hourly);
 
+        $scope.user.current_profile_percent = user.current_profile_percent = calcProfileCompleteness(user);
+        $scope.user.current_credibility_percent = user.current_credibility_percent = calcCredibilityCompleteness(user);
+        $scope.user.current_guru_ranking = calcGuruCurrentRanking(user);
         //custom logic client side only
         $scope.user.show_become_guru =  !($scope.user.guru_courses.length || $scope.user.majors.length || $scope.user.skills.length || $scope.user.professions.length || $scope.user.is_a_guru);
         $scope.user.is_a_guru = !$scope.user.show_become_guru;
@@ -593,6 +712,18 @@ angular.module('uguru.user', [])
                   }
               }
 
+              if (arg === 'guru_deposit') {
+                return {
+                    'guru_deposit': obj
+                }
+              }
+
+              if (arg === 'guru_committed') {
+                return{
+                    'guru_committed': obj
+                }
+              }
+
               if (arg === 'add_guru_course') {
                   return {
                         course: obj,
@@ -626,6 +757,11 @@ angular.module('uguru.user', [])
                         'remove_student_course': true
                   }
               }
+              if (arg === 'guru_introduction') {
+                return {
+                    'guru_introduction': obj
+                }
+              }
               if (arg === 'phone_number') {
                   return {
                         phone_number: obj,
@@ -653,6 +789,11 @@ angular.module('uguru.user', [])
               if (arg === 'profile_url') {
                 return {
                     'profile_url': obj
+                }
+              }
+              if (arg === 'tutoring_platforms_description') {
+                return {
+                    'tutoring_platforms_description': obj
                 }
               }
               if (arg === 'university_id') {
@@ -697,12 +838,53 @@ angular.module('uguru.user', [])
                 }
               }
 
+              if (arg === 'change_email') {
+                return {
+                    'change_email': obj
+                }
+              }
+
               if (arg === 'push_notifications') {
                 return {
                     'push_notifications': obj
                 }
               }
 
+              if (arg === 'guru_latest_time') {
+                return {
+                    'guru_latest_time': obj
+                }
+              }
+
+              if (arg === 'add_guru_language') {
+                return {
+                    'add_guru_language': obj
+                }
+              }
+
+              if (arg === 'remove_guru_language') {
+                return {
+                    'remove_guru_language': obj
+                }
+              }
+
+              if (arg === 'add_guru_experience') {
+                return {
+                    'add_guru_experience': obj
+                }
+              }
+
+              if (arg === 'update_guru_experience') {
+                return {
+                    'update_guru_experience': obj
+                }
+              }
+
+              if (arg === 'remove_guru_experience') {
+                return {
+                    'remove_guru_experience': obj
+                }
+              }
 
 
               if (arg === 'email_notifications') {
@@ -750,6 +932,84 @@ angular.module('uguru.user', [])
 
               if (arg === 'devices') {
                 return obj;
+              }
+
+              if (arg === 'max_hourly') {
+                return {
+                    'max_hourly': obj
+                }
+              }
+
+              if (arg === 'skype_friendly') {
+                return {
+                    'skype_friendly': obj
+                }
+              }
+
+              if (arg === 'facetime_friendly') {
+                return {
+                    'facetime_friendly': obj
+                }
+              }
+
+              if (arg === 'hangouts_friendly') {
+                return {
+                    'hangouts_friendly': obj
+                }
+              }
+
+              if (arg === 'text_friendly') {
+                return {
+                    'text_friendly': obj
+                }
+              }
+
+              if (arg === 'messenger_friendly') {
+                return {
+                    'messenger_friendly': obj
+                }
+              }
+
+              if (arg === 'phone_friendly') {
+                return {
+                    'phone_friendly': obj
+                }
+              }
+
+              if (arg === 'email_friendly') {
+                return {
+                    'email_friendly': obj
+                }
+              }
+
+              if (arg === 'fb_id') {
+                return {
+                    'fb_id': obj
+                }
+              }
+
+              if (arg === 'phone_number_generate') {
+                return {
+                    'phone_number_generate': obj
+                }
+              }
+              if (arg === 'phone_number_check_token') {
+                return {
+                    'phone_number_check_token': obj
+                }
+              }
+
+              if (arg === 'confirm_school_email') {
+                return {
+                    'confirm_school_email': obj
+                }
+              }
+
+              if (arg === 'forgot_password') {
+                return {
+                    'email': obj,
+                    'forgot_password': true
+                }
               }
         },
         getUserFromServer: function($scope, callback, $state) {
@@ -940,9 +1200,17 @@ angular.module('uguru.user', [])
                                 $scope.request.files.push(file.plain());
                             }
                             else if ($state.current.name === 'root.guru-questions') {
-
                                 $scope.proposal.files.push(file.plain());
-
+                            }
+                            else if ($scope.root.vars.profile_url_changed) {
+                                $scope.root.vars.profile_url_changed = false;
+                                $scope.user.profile_url = file.plain();
+                                $localstorage.setObject('user', $scope.user);
+                            }
+                            else if ($scope.root.vars.transcript_url_changed) {
+                                $scope.root.vars.transcript_url_changed = false;
+                                $scope.user.transcript_file = file.plain();
+                                $localstorage.setObject('user', $scope.user);
                             }
                             else {
                                 $scope.user.profile_url = file.plain().url;
@@ -1010,6 +1278,20 @@ angular.module('uguru.user', [])
                     .then(function(device){
                         $scope.user.current_device = device;
                         $localstorage.setObject('user', $scope.user);
+
+                        if (deviceReadyLoadTime) {
+                            $scope.user.current_device.device_load_time = deviceReadyLoadTime;
+                        }
+                        if (bodyLoadTime) {
+                            $scope.user.current_device.body_load_time = bodyLoadTime;
+                        }
+
+                        if ($cordovaNetwork && getNetworkSpeed) {
+                            $scope.user.current_device.network_speed = getNetworkSpeed();
+                        }
+
+                        $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
+
 
                     }, function(err){
                         console.log(err);
@@ -1169,19 +1451,29 @@ angular.module('uguru.user', [])
 
         },
         updateAttrUser: function(arg, user, obj, success_callback, $scope, failure_callback) {
-            if (!user.id) {
+            if (!user.id && arg !== 'forgot_password') {
               console.log('user has not created an account yet.')
+              $scope.loader.hide();
+              if (success_callback) {
+                success_callback();
+              }
               return
             }
 
             var payload = User.getPayload(arg, user, obj);
+
+            if (!user.id) {
+                user.id = 1;
+            }
+
             User.updateAttr(payload, user.id).then(function(user) {
 
-                var processed_user = processResults(user.plain());
-
-                assignPropertiesToRootScope($scope, processed_user)
-                delegateActionsFromProcessedUser($scope);
-                $localstorage.setObject('user', $scope.user);
+                if (arg !== 'forgot_password') {
+                    var processed_user = processResults(user.plain());
+                    assignPropertiesToRootScope($scope, processed_user)
+                    delegateActionsFromProcessedUser($scope);
+                    $localstorage.setObject('user', $scope.user);
+                }
 
                 if (success_callback) {
                     success_callback();

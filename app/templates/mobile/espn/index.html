@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>ESPN Demo</title>
+
+	<link rel="stylesheet" href="/static/css/style.css"/>
+	<script src="/static/js/modernizr.js"></script>
+</head>
+<body>
+	<div id="container">
+		<div id="screen">
+			<header id="status-bar">
+				12:55 PM
+			</header>
+			<div id="login-bg"></div>
+			<div id="main">
+				<div id="login">
+					<img src="/static/svg/logo.svg" alt="ESPN"/>
+					<div id="login-buttons">
+						<button id="sign-up" class="btn-blue">Sign Up</button>
+						<button id="log-in" class="btn-ghost">Log In</button>
+						<a id="sign-up-later">Sign Up Later</a>
+					</div>
+				</div>
+				<div id="scores">
+					<div class="nav-bar">
+						<img src="/static/svg/logo-white.svg" alt="ESPN"/>
+					</div>
+					<nav id="score-nav">
+						<ul>
+							<li><a href="#" class="active">Scores</a></li>
+							<li><a href="#">News</a></li>
+							<li><a href="#">Now</a></li>
+						</ul>
+					</nav>
+					<div id="score-info">
+						<h1>Barclays Premier League</h1>
+						<div class="box">
+							<ul id="score-teams">
+								<li>
+									<img src="/static/images/mc.png" alt=""/>
+									<h3>Manchester City</h3>
+								</li>
+								<li>
+									<img src="/static/images/wb.png" alt=""/>
+									<h3>West Bromwich Albion</h3>
+								</li>
+							</ul>
+							<time id="match-time">12:00 PM</time>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+		<script src="/static/js/jquery.min.js"></script>
+		<script src="/static/js/main.js"></script>
+	
+</body>
+</html>

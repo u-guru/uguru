@@ -30,6 +30,7 @@ angular.module('uguru.util.controllers')
     $scope.root.vars.show_account_fields = false;
     $scope.loginMode = false;
     $scope.headerText = 'Sign Up';
+    $scope.resetMode = false;
 
 
     $scope.support_index = 0;
@@ -37,13 +38,22 @@ angular.module('uguru.util.controllers')
 
     $scope.settings = {}
     $scope.settings.icons = {
-      profile: ($scope.user && $scope.user.id),
+      profile: true,
       notifications: false,
       card: false,
       support: false,
       guru: false,
       groceries:false,
-      presignup: ($scope.user && !$scope.user.id),
+      presignup: !($scope.user && $scope.user.id),
+    }
+
+    $scope.resetSettingsIcons = function() {
+      $scope.settings.icons.profile = true;
+      $scope.settings.icons.notifications = false;
+      $scope.settings.icons.card = false;
+      $scope.settings.icons.support = false;
+      $scope.settings.icons.guru = false;
+      $scope.settings.icons.groceries = false;
     }
 
     $scope.selectedCurrentHourly = 10;
@@ -51,6 +61,7 @@ angular.module('uguru.util.controllers')
     $scope.setSettingsToIndex = function(index) {
 
 
+      $scope.root.vars.settings = {icons : {profile : false}};
 
       for (var i = 0; i < Object.keys($scope.settings.icons).length; i++ ) {
 
@@ -103,6 +114,71 @@ angular.module('uguru.util.controllers')
     $scope.goToEditCourses = function() {
       $scope.loader.show();
       $state.go('^.courses');
+      $timeout(function() {
+        $scope.loader.hide();
+      }, 750);
+    }
+
+
+
+    $scope.attemptToResetPassword = function() {
+      function validateEmail(email) {
+          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(email);
+      }
+
+      if (!validateEmail($scope.signupForm.email)) {
+        alert('Please enter valid email');
+        return;
+      }
+
+      var successCallback = function() {
+          $scope.loader.hide();
+          alert("Reset Successful.\nPlease check " + $scope.signupForm.email.toLowerCase() + ' for more details!');
+          $scope.signupForm.email = '';
+      }
+
+      var failureCallback = function(err) {
+        if (err && err.status === 404) {
+          alert('The email ' + $scope.signupForm.email + ' does not exist in our records.\n Try again?');
+        }
+      }
+
+      $scope.user.updateAttr('forgot_password', $scope.user, $scope.signupForm.email, successCallback, $scope, failureCallback);
+      $scope.loader.show();
+      $timeout(function() {
+        $scope.toggleBackToLoginMode();
+      }, 500)
+    }
+
+    $scope.toggleResetModeFromLogin = function() {
+      $scope.loginMode = false;
+      $scope.resetMode = !$scope.loginMode;
+      if (!$scope.loginMode && !$scope.signupMode) {
+        $scope.headerText = 'Reset Password';
+      }
+      $timeout(function() {
+        var email_input = document.getElementById('email-input')
+          if (email_input) {
+            email_input.focus();
+          }
+      }, 500)
+      $timeout(function() {
+        $scope.loader.hide();
+      }, 750);
+    }
+
+    $scope.toggleBackToLoginMode = function() {
+      $scope.loginMode = true;
+      $scope.resetMode = !$scope.loginMode;
+      $scope.headerText = 'Log In';
+      $scope.loader.show();
+      $timeout(function() {
+        var email_input = document.getElementById('email-input')
+          if (email_input) {
+            email_input.focus();
+          }
+      }, 500)
       $timeout(function() {
         $scope.loader.hide();
       }, 750);
@@ -269,10 +345,10 @@ angular.module('uguru.util.controllers')
 
     $scope.showPopupEditEmail = function() {
 
-      $scope.data = {name:$scope.user.email};
+      $scope.data = {email:$scope.user.email};
 
       $scope.inputPopup = $ionicPopup.show({
-          template: '<input style="padding:2px 4px;" type="text" ng-model="data.name" autofocus>',
+          template: '<input style="padding:2px 4px;" type="text" ng-model="data.email" autofocus>',
           title: 'Edit email',
           subTitle: 'Please your main school one',
           scope: $scope,
@@ -285,8 +361,23 @@ angular.module('uguru.util.controllers')
                 $scope.inputPopup.close();
                 $scope.user.email = $scope.data.email;
 
-                $scope.user.updateAttr('email', $scope.user, $scope.user.email, null, $scope);
-                $scope.success.show(0, 1000, 'Saved!');
+
+                var failureCallback = function(err) {
+                  if (err.status === 401) {
+                    $scope.loader.hide();
+                    $scope.signupForm.password = '';
+                    alert('Another account already exists with this email. Please login with that email or try again.');
+                  }
+                }
+
+                var successCallback = function() {
+                  $scope.loader.hide();
+                  $scope.success.show(0, 1000, 'Saved!');
+                }
+                $scope.loader.show();
+
+                $scope.user.updateAttr('change_email', $scope.user, $scope.user.email, successCallback, $scope, failureCallback);
+
               }
             }
           ]
@@ -295,10 +386,13 @@ angular.module('uguru.util.controllers')
 
     $scope.showPopupEditPassword = function() {
       $scope.data = {email: $scope.user.email}
-
+      template = '<input style="padding:2px 4px; margin-bottom:4px;" type="password" ng-model="data.old_password" placeholder="old password" autofocus><input style="padding:2px 4px;" type="password" ng-model="data.new_password" placeholder="new password">'
+      if ($scope.user.fb_id && !$scope.user.password) {
+        template = '<input style="padding:2px 4px; margin-bottom:4px;" type="password" ng-model="data.old_password" placeholder="new password" autofocus><input style="padding:2px 4px;" type="password" ng-model="data.new_password" placeholder="confirm password">'
+      }
 
       $scope.inputPopup = $ionicPopup.show({
-          template: '<input style="padding:2px 4px; margin-bottom:4px;" type="password" ng-model="data.old_password" placeholder="old password" autofocus><input style="padding:2px 4px;" type="password" ng-model="data.new_password" placeholder="new password">',
+          template: template,
           title: 'Change your password',
           subTitle: 'Must be longer than 6 characters',
           scope: $scope,
@@ -361,6 +455,10 @@ angular.module('uguru.util.controllers')
               text: '<b>Save</b>',
               type: 'button-positive',
               onTap: function(e) {
+                if (!$scope.data.name || $scope.data.name.length < 2) {
+                  alert('Please enter a valid name');
+                  return;
+                }
                 $scope.inputPopup.close();
                 $scope.user.name = $scope.data.name;
                 $scope.user.updateAttr('name', $scope.user, $scope.user.name, null, $scope);
@@ -375,7 +473,9 @@ angular.module('uguru.util.controllers')
     $scope.editAccountInfoActionSheet = function() {
 
       var options = [{text: 'Edit Name'},{text: 'Edit Email'}];
-      if (!$scope.user.fb_id) {
+      if ($scope.user.fb_id && !$scope.user.password){
+        options.push({text: 'Create Password'});
+      } else {
         options.push({text: 'Edit Password'});
       }
         // Show the action sheet
@@ -604,8 +704,10 @@ angular.module('uguru.util.controllers')
       if (payment) {
         console.log('passing payments', payment);
         $scope.root.vars.editCardClicked = true;
+        $ionicViewSwitcher.nextDirection('back');
         $state.go('^.payments', {cardObj:JSON.stringify(payment)})
       } else {
+        $ionicViewSwitcher.nextDirection('back');
         $state.go('^.payments');
       }
 
@@ -616,9 +718,38 @@ angular.module('uguru.util.controllers')
       }, 750);
     }
 
+    $scope.launchSupportDescriptionModal = function() {
+
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/support.description.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.supportDescriptionModal = modal;
+            $scope.supportDescriptionModal.show();
+        });
+
+    }
+
+    $scope.launchPrivacyPolicy = function() {
+
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/privacy-terms.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.termsModal = modal;
+            $scope.termsModal.show();
+        });
+
+    }
+
+
     $scope.goToSignupFromSideBar = function() {
 
+      $scope.resetSettingsIcons();
       $scope.loader.show();
+      $ionicViewSwitcher.nextDirection('forward');
       $state.go('^.signup');
 
       $timeout(function() {
@@ -685,7 +816,7 @@ angular.module('uguru.util.controllers')
           $state.go('^.guru');
           $scope.root.vars.guru_mode = true;
       }, 500);
-    }
+  }
 
     $scope.goToStudentMode = function() {
       $scope.root.vars.guru_mode = false;
@@ -696,30 +827,239 @@ angular.module('uguru.util.controllers')
       }, 500);
     }
 
-    $scope.connectWithFacebook = function () {
+    var initFacebookConnect = function() {
+      return {
+        getLoginStatus: function (s, f) {
+      // Try will catch errors when SDK has not been init
+      try {
+        FB.getLoginStatus(function (response) {
+          s(response);
+        });
+      } catch (error) {
+        if (!f) {
+          console.error(error.message);
+        } else {
+          f(error.message);
+        }
+      }
+    },
 
-        $scope.loader.show();
-        $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
+    showDialog: function (options, s, f) {
+
+      if (!options.name) {
+        options.name = "";
+      }
+      if (!options.message) {
+        options.message = "";
+      }
+      if (!options.caption) {
+        options.caption = "";
+      }
+      if (!options.description) {
+        options.description = "";
+      }
+      if (!options.link) {
+        options.link = "";
+      }
+      if (!options.picture) {
+        options.picture = "";
+      }
+
+      // Try will catch errors when SDK has not been init
+      try {
+        FB.ui({
+            method: options.method,
+            message: options.message,
+            name: options.name,
+            caption: options.caption,
+            description: (
+              options.description
+              ),
+            link: options.link,
+            // JS SDK expects href and not link
+            href: options.link,
+            picture: options.picture
+          },
+          function (response) {
+            if (response && (response.request || !response.error_code)) {
+              s(response);
+            } else {
+              f(response);
+            }
+          });
+      } catch (error) {
+        if (!f) {
+          console.error(error.message);
+        } else {
+          f(error.message);
+        }
+      }
+    },
+    // Attach this to a UI element, this requires user interaction.
+    login: function (permissions, s, f) {
+      // JS SDK takes an object here but the native SDKs use array.
+
+      var permissionObj = {};
+      if (permissions && permissions.length > 0) {
+        permissionObj.scope = permissions.toString();
+      }
+
+
+      FB.login(function (response) {
+        if (response.authResponse) {
+          s(response);
+        } else {
+          f(response.status);
+        }
+      }, permissionObj);
+    },
+
+    getAccessToken: function (s, f) {
+      var response = FB.getAccessToken();
+      if (!response) {
+        if (!f) {
+          console.error("NO_TOKEN");
+        } else {
+          f("NO_TOKEN");
+        }
+      } else {
+        s(response);
+      }
+    },
+
+    logEvent: function (eventName, params, valueToSum, s, f) {
+      // AppEvents are not avaliable in JS.
+      s();
+    },
+
+    logPurchase: function (value, currency, s, f) {
+      // AppEvents are not avaliable in JS.
+      s();
+    },
+
+    logout: function (s, f) {
+      // Try will catch errors when SDK has not been init
+      try {
+        FB.logout(function (response) {
+          s(response);
+        });
+      } catch (error) {
+        if (!f) {
+          console.error(error.message);
+        } else {
+          f(error.message);
+        }
+      }
+    },
+
+    api: function (graphPath, permissions, s, f) {
+      // JS API does not take additional permissions
+
+      // Try will catch errors when SDK has not been init
+      try {
+        FB.api(graphPath, function (response) {
+          if (response.error) {
+            f(response);
+          } else {
+            s(response);
+          }
+        });
+      } catch (error) {
+        if (!f) {
+          console.error(error.message);
+        } else {
+          f(error.message);
+        }
+      }
+    },
+
+    // Browser wrapper API ONLY
+    browserInit: function (appId, version) {
+      if (!version) {
+        version = "v2.0";
+      }
+      console.log(appId);
+      console.log(version);
+      FB.init({
+        appId: appId,
+        cookie: true,
+        xfbml: true,
+        version: version
+      });
+    }
+  }
+  }
+
+  $scope.isWindowsPlatform = function() {
+    return (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT');
+  };
+
+    $scope.fbAuthBrowser = function() {
+      var appID = 1416375518604557;
+      var fbVersion = "v2.2";
+      var mobileWeb = ($scope.platform.web && (ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone())) || $scope.isWindowsPlatform();
+      if (!facebookConnectPlugin) {
+        var facebookConnectPlugin = initFacebookConnect();
+      }
+      var fbCheckStatusCallback = function(response) {
+
+        if ((mobileWeb && $scope.platform.web) || $scope.isWindowsPlatform()) {
+              if (response.status === "unknown") {
+                var login_redirect_uri = "http://uguru.me/app/";
+                var login_response_type = 'token';
+                var loginURL = 'https://www.facebook.com/dialog/oauth?client_id=' + 1416375518604557 + '&redirect_uri=' + login_redirect_uri + '&response_type=' + login_response_type;
+                $localstorage.set('mobile-web-auth', true);
+                window.location.replace(loginURL);
+              } else if (response.status === "connected"){
+                $scope.loader.show();
+                var successCallback = function(success) {
+                  var postSuccessCallback = function() {
+                    $scope.loader.hide();
+                    $scope.success.show(0, 1000, 'Login Successful!');
+                    $scope.settings.icons.profile = true;
+                  }
+                  $scope.postFbGraphApiSuccess(success, postSuccessCallback)
+                }
+                facebookConnectPlugin.api('/me', null, successCallback);
+            }
+        } else {
+          // facebookConnectPlugin.login( ["email","public_profile","user_friends"],facebookAuthSuccessCallback,
+          // facebookAuthFailureCallback);
+            if ($cordovaFacebook && $cordovaFacebook.login) {
+              $cordovaFacebook.login(["email","public_profile","user_friends"])
+                  .then(facebookAuthSuccessCallback, facebookAuthFailureCallback);
+            } else {
+              facebookConnectPlugin.login(["email","public_profile","user_friends"], fbCheckStatusCallback, facebookAuthFailureCallback);
+            }
+        }
+      }
+
+
+      facebookConnectPlugin.browserInit(appID,fbVersion);
+      facebookConnectPlugin.getLoginStatus(fbCheckStatusCallback, facebookAuthFailureCallback);
+
+
+
+    };
+
+    var facebookAuthSuccessCallback = function (success) {
         // $cordovaFacebook.login(["user_education_history", "friends_education_history"]).then(function (success) {
+
         $scope.loginInfo = success;
         console.log('success', success);
 
         var successCallback = function() {
-          $timeout(function(){
             $scope.loader.hide();
+            $scope.loader.hide();
+            $scope.success.show(0, 1500, 'Login Successful!');
             $scope.settings.icons.profile = true;
-            $timeout(function() {
-              $scope.success.show(0, 1500, 'Login Successful!');
-            }, 1000)
-          }, 1000);
         }
         $scope.facebookApiGetDetails(successCallback);
         console.log('Getting Facebook information...');
+    }
 
-        //get user information
-      },
-      //error function
-      function (error) {
+    var facebookAuthFailureCallback = function(error) {
+        $scope.loader.hide();
         $scope.error = error;
         console.log('FB CONNECT FAILED...');
         console.log('Error from logging from facebook:' + JSON.stringify(error));
@@ -727,9 +1067,27 @@ angular.module('uguru.util.controllers')
         if ($cordovaFacebook) {
           $cordovaFacebook.logout();
         }
-        $scope.loader.hide();
-        // $scope.logout();
-      });
+
+
+    }
+
+    $scope.fbAuthNative = function() {
+      $cordovaFacebook.login(["email","public_profile","user_friends"])
+      .then(facebookAuthSuccessCallback, facebookAuthFailureCallback);
+    }
+
+    $scope.connectWithFacebook = function () {
+
+        $scope.loader.show();
+
+
+        if ($scope.platform.web || $scope.platform.windows || $scope.isWindowsPlatform()) {
+          // $scope.fbAuthNative();
+          $scope.fbAuthBrowser();
+        } else {
+          $scope.fbAuthNative();
+        }
+
 
     };
 
@@ -746,16 +1104,21 @@ angular.module('uguru.util.controllers')
           $scope.loader.hide();
         }, 500)
 
+
         $scope.loader.show();
-        $state.go('^.home');
+
+        if ($scope.root.vars.guru_mode) {
+          $state.go('^.guru');
+        } else {
+          $state.go('^.home');
+        }
+
 
       }
     }
 
-
-     $scope.facebookApiGetDetails = function (callback) {
-      $cordovaFacebook.api("/me", null).then(function (success) {
-
+    $scope.postFbGraphApiSuccess = function(success, callback) {
+        console.log(success);
         $scope.user.first_name = success.first_name;
         $scope.user.last_name = success.last_name;
         $scope.user.name = success.name;
@@ -776,8 +1139,13 @@ angular.module('uguru.util.controllers')
         if (callback) {
           callback();
         }
+    }
 
-      }, function (error) {
+     $scope.facebookApiGetDetails = function (callback) {
+      var successCallback = function(success) {
+        $scope.postFbGraphApiSuccess(success, callback)
+      }
+      $cordovaFacebook.api("/me", null).then(successCallback, function (error) {
         $scope.error = error;
         console.log(error);
       });
@@ -982,6 +1350,8 @@ angular.module('uguru.util.controllers')
 
           $scope.success.show(0, 1250, 'Login Successful!');
           $scope.settings.icons.profile = true;
+          $scope.root.vars.settings = {icons : {profile : true}};
+
 
           if ($state.current.name === 'root.home') {
             $timeout(function() {
@@ -1030,26 +1400,22 @@ angular.module('uguru.util.controllers')
       $scope.signupForm.guru_mode = false;
       $scope.loader.show();
       User.create($scope.signupForm).then(function(user) {
+
           var processed_user = User.process_results(user.plain());
-
-          console.log(JSON.stringify($scope.user));
-
           User.assign_properties_to_root_scope($scope, processed_user);
-
           $scope.user.guru_mode = false;
-
           $localstorage.setObject('user', $scope.user);
 
 
-          //signup normally from sidebar
+          $scope.settings.icons.profile = true;
+          $scope.root.vars.settings = {icons : {profile : true}}
+
+
           if ($state.current.name === 'root.signup') {
-            $scope.loader.show();
-            $scope.show_account_fields = false;
-            $ionicSideMenuDelegate.toggleRight();
+            $scope.success.show(0, 1000, 'Account Successfully Created!');
             $timeout(function() {
-              $scope.loader.hide();
-              $scope.success.show(0, 1000, 'Account Successfully Created!');
-            }, 750);
+              $ionicSideMenuDelegate.toggleRight();
+            }, 500);
           }
 
           if ($state.current.name === 'root.home') {
@@ -1165,6 +1531,31 @@ angular.module('uguru.util.controllers')
         }
     });
 
+
+    if ($localstorage.get('mobile-web-auth')) {
+      $localstorage.removeObject('mobile-web-auth');
+      var postFbCheckStatusCallback = function(response) {
+        $scope.loader.show();
+        var successCallback = function(success) {
+          var postSuccessCallback = function() {
+            $scope.loader.hide();
+            $scope.success.show(0, 2500, 'Login Successful!');
+            $scope.settings.icons.profile = true;
+            $ionicSideMenuDelegate.toggleRight();
+          }
+          $scope.postFbGraphApiSuccess(success, postSuccessCallback)
+        }
+        facebookConnectPlugin.api('/me', null, successCallback);
+      }
+
+      if (!facebookConnectPlugin) {
+        var facebookConnectPlugin = initFacebookConnect();
+      }
+      facebookConnectPlugin.getLoginStatus(postFbCheckStatusCallback, facebookAuthFailureCallback);
+    }
+              // 2.onboarding check local storage
+                // 3. check fbCheckStatus callback
+                // 4. Autu log them in
 
 
 

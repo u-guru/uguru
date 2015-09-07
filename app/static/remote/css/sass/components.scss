@@ -1559,7 +1559,7 @@ p.university-header {
     font-size:120%;
 }
 
-.university select {
+.university select, .guru-profile select {
     background-color: transparent;
     color: inherit;
     outline: none;
@@ -1571,6 +1571,15 @@ p.university-header {
     border-radius:0px;
     line-height:1.33em;
     font-family: "OpenSans-SemiBold";
+}
+
+.guru-profile select {
+    border-width: 0px !important;
+    color:transparent !important;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
 }
 
 .student-width {
@@ -1887,7 +1896,7 @@ position: absolute;
     top: 12.5%;
 }
 
-#profile-tab-button {
+#profile-tab-button, #ranking-tab-button {
 
     margin-top: -4px;
     padding-top:0px;
@@ -2346,14 +2355,17 @@ button.button-full.ratings-footer-button {
     background-size: cover;
     position:absolute;
     z-index:0;
-    width:100%;
+    top:-5px;
+    left:-5px;
+    width:105%;
     height:100%;
     min-height:200px;
-    -webkit-filter: blur(1px);
-    -moz-filter: blur(1px);
-    -o-filter: blur(1px);
-    -ms-filter: blur(1px);
-    filter: blur(1px);
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+    opacity:0.8;
 }
 
 .guru-profile-img-wrapper {
@@ -2626,12 +2638,13 @@ input.bill-student-input {
 .ranking-num {
     background-color: rgba(0,0,0,0.3) !important;
     padding-bottom: 0.5em;
+    font-size:90%;
 }
 
 .university-banner-text span {
     background-color: rgba(0,0,0,0.4);
     padding:0.2em 0.6em;
-    font-size:115%;
+    font-size:80%;
 }
 
 #guru-home .guru-profile-img-wrapper {
@@ -2720,12 +2733,237 @@ a.button-footer:visited, a.button-footer:hover {
 }
 
 .progressbar-text {
-    color:#68A7CF !important;
+    color:#2B3233 !important;
     font-size:40px;
+    opacity:0.9;
     font-family: "OpenSans-SemiBold";
 }
 
 
 .guru-ranking-progress-container {
     margin-top:-15%;
+}
+
+.light-border-bottom {
+    border:1px solid #ccc;
+}
+
+.attribute-card {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 400;
+    overflow: hidden;
+    z-index: 1;
+    position: relative;
+    background: #fff;
+    border-radius: 2px;
+    box-sizing: border-box;
+    .title-container {
+        flex-grow:1;
+        color: #fff;
+        background-color:$blue;
+    }
+    .card-title {
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            color: #000;
+            display: block;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: stretch;
+            -webkit-justify-content: stretch;
+            -ms-flex-pack: stretch;
+            justify-content: stretch;
+            line-height: normal;
+            padding: 16px;
+            -webkit-perspective-origin: 165px 56px;
+            perspective-origin: 165px 56px;
+            -webkit-transform-origin: 165px 56px;
+            -ms-transform-origin: 165px 56px;
+            transform-origin: 165px 56px;
+            box-sizing: border-box;
+    }
+    .card-body {
+            color: rgba(0,0,0,.54);
+            font-size: 13px;
+            line-height: 18px;
+            overflow: hidden;
+            padding: 16px;
+            width: 90%;
+    }
+}
+
+.rating-num {
+    font-size:80%;
+    line-height:130%;
+    opacity:0.5;
+    margin-left:-0.2em;
+}
+
+.sidebar-img.guru-profile-img {
+    max-height:100px;
+}
+
+.guru-profile-major-text {
+
+    width: 100%;
+    white-space: normal;
+    padding: 0.25em 0.5em;
+    font-size: 90%;
+
+}
+
+.no-margin-bottom {
+    margin-bottom:0px;
+}
+
+.regular {
+    font-family: "OpenSans-Regular";
+}
+
+.item.item-checkbox .checkbox {
+    position: absolute;
+    top: 50%;
+    left:initial;
+    right: 8px;
+    z-index: 3;
+    margin-top: -25px;
+}
+
+.item.item-checkbox {
+    padding-right: 60px;
+    padding-left:60px;
+    padding-bottom:1em;
+    padding-top:1em;
+}
+
+.checkbox input:checked + .checkbox-icon:before, .checkbox input:checked:before {
+    background: $blue;
+    border-color: $blue;
+}
+
+.remote .remote-img {
+    height:35% !important;
+}
+
+.font-18 {
+    font-size:18px !important;
+}
+
+.white-text {
+    color:white !important;
+}
+
+.guru-profile select, .guru-profile select option {
+    background-color:transparent !important;
+    color:$blue !important;
+}
+
+label.item-floating-label {
+    letter-spacing: normal;
+}
+
+.credibility .micro-text {
+    margin-top:-5px;
+}
+
+.credibility .item-avatar-left img {
+    height: auto;
+    border-radius: initial;
+    width: 1.75em;
+    top: 33%;
+    opacity: 0.7;
+}
+
+.credibility .item-icon-right .ion-plus {
+    top:35%;
+    font-size:150%;
+    opacity:0.8;
+}
+
+button.button.button-popup {
+    padding:0 4px;
+    font-size:85%;
+}
+
+.popup-open .popup {
+    margin-bottom: 40%;
+}
+
+.guru-home-tip-slider .slider-pager {
+    top:34%;
+    .slider-pager-page {
+        color:rgba(0,0,0,0.15);
+        opacity:1;
+    }
+    .slider-pager-page.active {
+        color:rgba(0,0,0,0.4);
+    }
+}
+
+.th-text.absolute {
+    font-size: 85%;
+    letter-spacing: 0.083em;
+    font-family: OpenSans-Bold;
+    opacity: 0.44;
+    top: 47%;
+    left: 60%;
+    text-transform: uppercase;
+}
+
+p.progressbar-text {
+    left:47% !important;
+    top:48% !important;
+    opacity:0.75;
+}
+
+// .guru-profile-content .scroll {
+//     height:100% !important;
+// }
+.platform-ios ion-content.guru-profile-content.white-bg.standard-bg.guru-profile-content.scroll-content.ionic-scroll.scroll-content-false.has-header {
+    top:108px !important;
+}
+
+// .guru-profile .guru-profile-slide-box .slider-slides {
+//     width:200% !important;
+// }
+
+.guru-profile-slide-box ion-slide {
+    width:50% !important;
+}
+
+p.fake-placeholder-text {
+    font-size: 1em;
+    margin-left: -0.25em;
+}
+
+#support-input-fake:hover{
+    outline:none;
+}
+
+.item-percentage-right {
+    position: absolute;
+    right: 0;
+    top: 38%;
+    font-size: 125%;
+    font-family: OpenSans-SemiBold;
+    opacity: 0.4;
+    right: 2%;
+}
+
+.root-ion-side-menus.pane, .ion-side-menus-content.pane {
+    background-color: transparent;
 }

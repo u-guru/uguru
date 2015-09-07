@@ -14,9 +14,18 @@ angular.module('uguru.util.controllers')
   '$ionicSideMenuDelegate',
   '$ionicPlatform',
   '$cordovaStatusbar',
+  '$ionicSlideBoxDelegate',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
-    $ionicPlatform, $cordovaStatusbar) {
+    $ionicPlatform, $cordovaStatusbar, $ionicSlideBoxDelegate) {
+
+    document.addEventListener("deviceready", function () {
+
+      if ($scope.platform.ios && $cordovaKeyboard.hideAccessoryBar) {
+        $cordovaKeyboard.hideAccessoryBar(false);
+      }
+
+    });
 
 
     $scope.activeSlideIndex = 0;
@@ -28,6 +37,28 @@ angular.module('uguru.util.controllers')
 
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;
+
+
+      if (index === 1) {
+        $scope.universityInput = document.getElementById('university-input');
+        if ($scope.universityInput) {
+
+          $scope.universityInput.addEventListener("keyup", function() {
+            if ($scope.universityInput.value && $scope.universityInput.value.length) {
+              if ($scope.platform.ios && $cordovaKeyboard.hideAccessoryBar) {
+                $cordovaKeyboard.hideAccessoryBar(true);
+              }
+            } else {
+              $ionicSlideBoxDelegate.enableSlide(true);
+              if ($scope.platform.ios && $cordovaKeyboard.hideAccessoryBar) {
+                $cordovaKeyboard.hideAccessoryBar(true);
+              }
+            }
+          });
+
+        }
+      }
+
     }
 
     $scope.goToUniversity = function() {
@@ -35,6 +66,7 @@ angular.module('uguru.util.controllers')
     }
 
     $ionicSideMenuDelegate.canDragContent(false);
+
 
     $ionicPlatform.ready(function() {
 
@@ -59,6 +91,14 @@ angular.module('uguru.util.controllers')
 
         $scope.turnStatusBarWhite();
 
+    });
+
+
+
+    $scope.$on('$ionicView.afterLeave', function(){
+      if ($scope.platform.ios && $cordovaKeyboard.hideAccessoryBar) {
+        $cordovaKeyboard.hideAccessoryBar(true);
+      }
     });
 
     $scope.$on('$ionicView.loaded', function(){

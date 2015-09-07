@@ -3,50 +3,107 @@
 <ion-view hide-nav-bar='true' class='ranking'>
 
   <ion-header-bar class='dark-bg-header'>
-      <div class="buttons">
-        <button class="button button-clear button-header-link cancel-button" ng-click='goBack()'>back</button>
-      </div>
+      <!-- <div class="buttons">
+        <button class="button button-clear button-header-link cancel-button" ng-click='goBack()'>Back</button>
+      </div> -->
       <h1 class="title">Progress & Ranking </h1>
   </ion-header-bar>
 
 <ion-content class='white-bg standard-bg has-header'>
 
-    <div class='pure-g-c flex-column'>
-      <div class='pure-u-1 padding-2em center' style='margin-top:5%'>
-         <div class='pure-u-1-2 relative margin-auto'>
-                    <div class='ranking-container margin-auto full-width relative'>
-
-                      <span class='light text absolute' >
-                        <span class='font-200'>9</span><span class='micro-text uppercase semibold'>th</span>
-                      </span>
-                        <!-- <div class='row'>
-
-                        </div>
-                        <h1 class='white-text' style='position:absolute'></h1> -->
-
-                    </div>
-          </div>
-      </div>
-    </div>
-
-
     <ion-list class='standard-bg'>
-      <ion-item class='request-item item-icon-left item-icon-right relative' ng-repeat='opportunity in user.guru_score_opportunities'>
-        <i class='icon ion-person'> </i>
-        <div class='item-container'>
-          <p class='no-margin white-space-normal' style='font-size:110%;'>
-            {{opportunity.details.title}}
-          </p>
-          <p class='opacity-4-5 no-margin white-space-normal'>
-            {{opportunity.details.description}}
-          </p>
-        </div>
-          <i class='icon ion-chevron-right opacity-1-2 icon-small'> </i>
+    <ion-toggle ng-change="requestPushNotifications()" ng-model="data.push_notifications" ng-show='platform.mobile' toggle-class="toggle-calm">
+        <p class='no-margin white-space-normal semibold'>
+            Turn on Push Notifications
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text'>
+          Ain't no student got time to wait for emails
+        </p>
+      </ion-toggle>
+
+      <ion-toggle ng-change="updateTextNotifications()" ng-model="data.text_notifications" ng-show='!platform.mobile' toggle-class="toggle-calm" >
+        <p class='no-margin white-space-normal semibold'>
+            Turn on Text Notifications
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text'  ng-show='!user.phone_number'>
+            Toggle here to add your phone number & confirm
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='user.phone_number && !user.phone_number_confirmed' ng-click=>
+            Toggle here to confirm your phone number
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text ' ng-show='user.phone_number && user.phone_number_confirmed'>
+            Toggle will be sent to {{user.phone_number}}
+        </p>
+      </ion-toggle>
+      <ion-item href='#/guru-profile' class='item-icon-right' nav-direction='enter'>
+        <p class='no-margin white-space-normal semibold'>
+            Complete your guru profile
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text'>
+            Your guru profile is not complete yet
+        </p>
+        <span class='align-right item-percentage-right'>
+          {{user.current_profile_percent}}%
+        </span>
       </ion-item>
-      <!-- <ion-item ng-repeat="opportunity in user.guru_score_opportunities">
-
-
-        <span class="badge badge-positive">{{opportunity.impact_level}}</span>
-      </ion-item> -->
-    </ion-list
+      <ion-item href='#/guru-profile' class='item-icon-right' nav-direction='enter'>
+        <p class='no-margin white-space-normal semibold'>
+            Increase your credibility to 100%
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text'>
+            You could be more credible so students trust you
+        </p>
+        <span class='align-right item-percentage-right'>
+          {{user.current_credibility_percent}}%
+        </span>
+      </ion-item>
+      <ion-item ng-click='goToPayments()' style='padding-left: 16px;' class='item item-icon-right ng-class:{"item-checkbox":user.transfer_cards.length}'>
+        <p class='no-margin white-space-normal semibold'>
+            Add Your Bank Info
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='!user.transfer_cards.length'>
+            linking your bank account so we know you're serious about earning $$$
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='user.transfer_cards.length'>
+            {{user.transfer_cards[0].card_type}} Debit Card **-{{user.transfer_cards[0].card_last4}}
+        </p>
+        <i class='icon icon-small ion-chevron-right opacity-4-5 hide ng-class{"show":!user.transfer_cards.length}'> </i>
+        <label class="checkbox hide ng-class:{'show':user.transfer_cards.length}">
+           <input type="checkbox" checked>
+         </label>
+      </ion-item>
+      <ion-item ng-click='confirmCommitment()' style='padding-left: 16px;' class='item item-icon-right ng-class:{"item-checkbox":user.guru_deposit}'>
+        <p class='no-margin white-space-normal semibold'>
+            Confirm Commitment & Be the 1ST
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='!user.guru_deposit'>
+            Deposit <strong class='regular'> $10 </strong> to confirm full interest. You'll receive it back @ the end of the month.
+        </p>
+        <p class='opacity-4-5 no-margin white-space-normal micro-text' ng-show='user.guru_deposit'>
+            You deposited $10 with {{user.transfer_cards[0].card_type}} Debit Card **-{{user.transfer_cards[0].card_last4}}
+        </p>
+        <i class='icon icon-small ion-chevron-right opacity-4-5 hide ng-class{"show":!user.guru_deposit}'> </i>
+        <label class="checkbox hide ng-class:{'show':user.guru_deposit}">
+           <input type="checkbox" checked>
+         </label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <div class="tabs tabs-icon-only white-bg" id='guru-tab-bar'>
+    <a class="tab-item" id='home-button' href='#/guru' nav-direction='home'>
+      <img class='pure-img icon' ng-src='{{img_base}}./img/request/house-icon-outline.svg'></i>
+    </a>
+    <a class="tab-item" id='profile-tab-button' nav-direction='swap' href='#/guru-profile'>
+      <i class='icon ion-person'> </i>
+    </a>
+    <!-- <a class="tab-item" id='guru-courses-button' nav-direction='swap' href='#/guru-conversations'>
+      <img class='pure-img icon' ng-src='{{img_base}}./img/request/guru_book_outline.svg'></i>
+    </a> -->
+    <a class="tab-item" id='ranking-tab-button' nav-direction='swap' href='#/guru-ranking'>
+      <i class='icon ion-connection-bars blue'> </i>
+    </a>
+    <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
+      <img class='pure-img icon' ng-src='{{img_base}}./img/settings-tab-guru.svg'/>
+    </a>
+  </div>
 </ion-view>

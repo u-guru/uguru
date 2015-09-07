@@ -21,9 +21,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
   $ionicActionSheet)     {
-
+  $scope.data = {university_banner: $scope.img_base + "./img/guru/university-banner.png"};
   $scope.root.vars.guru_rank_initialized = false;
   $scope.showActive = true;
+  $ionicSideMenuDelegate.canDragContent(false);
 
   document.addEventListener("deviceready", function () {
     $scope.turnStatusBarWhiteText = function() {
@@ -38,9 +39,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
   });
 
+  console.log($scope.user);
+
   $scope.showPreviousActions = function(index) {
       if (!$scope.user.previous_proposals || $scope.user.previous_proposals.length === 0) {
-        $scope.success.show(0, 2000, 'Sorry! No history yet. Update your profile to get more requests!');
+        $scope.success.show(0, 2000, 'Sorry! No incoming yet. Once the semester starts - we got you!');
       } else {
         $scope.showActiveToggle(index);
       }
@@ -56,7 +59,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }
 
   }
-
+  $scope.goToRankings = function() {
+    $state.go('^.guru-ranking');
+  }
 
   // functions relevant to these sections
       $scope.goToSessionDetails = function(session) {
@@ -722,7 +727,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               color: startColor,
               strokeWidth: 10,
               trailWidth: 10,
-              duration: 3000,
+              duration: 500,
               text: {
                   value: '0'
               },
@@ -754,7 +759,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               var startColor = '#68A7CF';
               var endColor = '#68A7CF';
               // var endColor = '#6FD57F';
-              animateProgress($scope.guruRankProgress, 0.99, startColor, endColor);
+              $timeout(function() {
+                animateProgress($scope.guruRankProgress, ($scope.user.current_guru_ranking / 100.0), startColor, endColor);
+              }, 500)
             }
 
 
@@ -792,8 +799,22 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }, false);
 
 
-
-
+        $scope.root.vars.guru_rank_pending = [
+          {
+            buttonText: 'Go To Settings',
+            descriptionText: "turning push notifications ON. Students ain't got time for email!",
+            link:'guru-profile'
+          },
+          {
+            buttonText: 'Complete Your Profile',
+            descriptionText: 'adding a profile image, description, and verifying school email',
+            link:'guru-profile',
+            is_complete: ($scope.user.current_profile_percent === 100)
+          },
+          {buttonText: 'Increase Your Credibility', descriptionText: 'uploading your transcript, 3rd-party tutoring profiles, and verify .edu email', link:'guru-profile'},
+          {buttonText: 'Add Bank Info', descriptionText: "linking your bank account so we know you're serious about earning $$$", link:'add-payment'},
+          {buttonText: 'Confirm Commitment', descriptionText: "depositing $10. If you don't make $100 your first month - you'll get it back.", link:'add-payment'}
+        ];
   }
 
 ]);

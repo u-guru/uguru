@@ -12,6 +12,7 @@ import logging, json, urllib2, importlib
 from lib.api_utils import json_response
 from pprint import pprint
 
+
 APPROVED_ADMIN_TOKENS = ['9c1185a5c5e9fc54612808977ee8f548b2258d31']
 
 @auth.verify_password
@@ -185,9 +186,21 @@ class DeviceView(restful.Resource):
             device.push_notif_enabled = request.json.get('push_notif_enabled')
             if device.user:
                 device.user.push_notifications = True
+                if 'push_notif' in request.json:
+                    device.user.push_notifications_enabled = True
 
+        if 'network_speed' in request.json:
+            device.network_speed = request.json.get('network_speed')
+        if 'body_load_time' in request.json:
+            device.body_load_time = request.json.get('body_load_time')
+        if 'device_load_time' in request.json:
+            device.device_load_time = request.json.get('device_load_time')
         if 'push_notif' in request.json:
             device.push_notif = request.json.get('push_notif')
+        if 'typical_network_speed' in request.json:
+            device.typical_network_speed = request.json.get('typical_network_speed')
+        if 'is_test_device' in request.json:
+            device.is_test_device = request.json.get('is_test_device')
 
         if 'location_enabled' in request.json:
             device.location_enabled = request.json.get('location_enabled')
@@ -208,6 +221,48 @@ class DeviceView(restful.Resource):
         return device, 200
 
 
+class HomeSubscribeView(restful.Resource):
+
+    def post(self):
+        if request.json.get('phone_number'):
+            phone_number = request.json.get('phone_number')
+            from texts import send_text_message
+            message = '[Uguru] Download the Uguru App here: http://uguru.me/app/'
+            result = send_text_message(phone_number, message)
+            if not (result):
+                return 422
+            return 200
+
+        if request.json.get('email'):
+            email = request.json.get('email')
+            print request.json.get('email')
+            from emails import send_web_reminder_email
+            subject = 're: following up - got a min?'
+            message = """
+            <br><br>
+            Just wanted to take a sec & personally invite you to the platform!
+            <br> <br>
+            Plz let me know if you ...
+            <br><br>
+            &nbsp;&nbsp;&nbsp;1. Have any questions<br>
+            &nbsp;&nbsp;&nbsp;2. This email was entered by mistake<br>
+            &nbsp;&nbsp;&nbsp;3. Want an access code for our app
+            <br><br><br>
+            Have a good one!<br><br>
+            --<br>
+            Samir<br>
+            Founding Guru<br>
+            <br><br><br>
+            sent w/ iPhone, if iTypos... iApologhiz
+            """
+
+            result = send_web_reminder_email(email, subject, message)
+            if not (result):
+                return 422
+            return 200
+
+
+        abort(400)
 
 class UserPhoneView(restful.Resource):
     def post(self):
@@ -272,6 +327,19 @@ class UserOneView(restful.Resource):
         #     abort(400)
 
         user = User.query.get(_id)
+        if not user and request.json.get('email') and request.json.get('forgot_password'):
+            email_user = User.query.filter_by(email=request.json.get('email')).first()
+            if email_user:
+                from hashlib import md5
+                import uuid
+                raw_password = uuid.uuid4().hex[0:5]
+                email_user.password = md5(raw_password).hexdigest()
+                db_session.commit()
+                from app.emails import send_reset_password_email
+                send_reset_password_email(email_user, raw_password)
+                return 201
+            else:
+                abort(404)
         if not user:
             abort(400)
 
@@ -285,16 +353,59 @@ class UserOneView(restful.Resource):
         if request.json.get('university_id'):
             user.university_id = request.json.get('university_id')
 
-        if request.json.get('email'):
+        # if request.json.get('email'):
 
-            if not user.email:
-                user.email = request.json.get('email_address')
+        #     if not user.email:
+        #         user.email = request.json.get('email_address')
+
+        if request.json.get('confirm_school_email'):
+            from emails import send_transactional_email
+            from hashlib import md5
+            import random
+            user.school_email = request.json.get('confirm_school_email')
+
+            user.school_email_token = md5(str(random.randrange(1000, 10000))).hexdigest()
+
+            base_url = "uguru.me"
+            if not os.environ.get('PRODUCTION'):
+                base_url = "0.0.0.0:5000"
+
+            link = 'http://' + base_url + '/auth/school_email/' + user.school_email_token
+            db_session.commit()
+
+
+            msg_args = (user.name.split(' ')[0], link)
+            msg = """Hi %s,<br><br>Please click this <a href="%s">link</a> to confirm your email <br><br>Best,<br> The Uguru Team""" % msg_args
+            send_transactional_email("[Uguru] Please Authenticate Your School Email", msg, user, "school-email-auth", user.school_email)
+
+
+
+        if request.json.get('check_school_email_code'):
+            school_code = request.json.get('check_school_email_code')
+            user.school_email_confirmed = (school_code == user.school_email_token)
+            db_session.commit()
 
         if not user.phone_number:
             if request.json.get('phone_number'):
                 user.phone_number = request.json.get('phone_number')
 
 
+        if request.json.get('phone_number_generate'):
+            phone_number = request.json.get('phone_number_generate')
+            from texts import send_text_message
+            import random
+            user.phone_number_token = str(random.randrange(1000,10000))
+            user.phone_number = phone_number
+            message = '[Uguru] Hi %s, your phone number confirmation code is %s' % (user.name.split(' ')[0].title(), user.phone_number_token)
+            send_text_message(phone_number, message)
+            print message
+            db_session.commit()
+
+        if request.json.get('phone_number_check_token'):
+            phone_number_token = request.json.get('phone_number_check_token')
+            user.phone_number_confirmed = (user.phone_number_token == phone_number_token)
+            print user.phone_number_token
+            db_session.commit()
 
         if request.json.get('profile_info'):
             profile_info_dict = request.json.get('profile_info')
@@ -302,6 +413,43 @@ class UserOneView(restful.Resource):
             name = profile_info_dict.get('first_name').title() + ' ' + profile_info_dict.get('last_name').title()
             user.email = email
             user.name = name
+            db_session.commit()
+
+        if request.json.get('add_guru_experience'):
+            print 'guru_experience_received'
+            guru_experience_json = request.json.get('add_guru_experience')
+            experience_name = guru_experience_json.get('name')
+            experience_years = guru_experience_json.get('years')
+            experience_description = guru_experience_json.get('description')
+
+            guru_experience_names = []
+            if user.guru_experiences:
+                guru_experience_names = [experience.name for experience in user.guru_experiences]
+
+            if experience_name not in guru_experience_names:
+                experience = Experience()
+                experience.contributed_user_id = user.id
+                experience.university_id = user.university_id
+                experience.time_created = datetime.now()
+                experience.description = experience_description
+                experience.name = experience_name
+                experience.years = experience_years
+                experience.last_updated = datetime.now()
+                experience.time_created = datetime.now()
+
+                db_session.add(experience)
+                db_session.commit()
+
+        if request.json.get('update_guru_experience') and request.json.get('update_guru_experience').get('id'):
+            guru_experience_json = request.json.get('update_guru_experience')
+            guru_experience_id = guru_experience_json.get('id')
+
+            experience = Experience.query.get(guru_experience_id)
+            experience.name = guru_experience_json.get('name')
+            experience.years = guru_experience_json.get('years')
+            experience.description = guru_experience_json.get('description')
+            experience.last_updated = datetime.now()
+
             db_session.commit()
 
         if request.json.get('change_password'):
@@ -320,10 +468,11 @@ class UserOneView(restful.Resource):
                 password=md5(change_password_dict.get('old_password')).hexdigest()
                 ).first()
 
-            if not user_exists:
+            fb_create_account = (user_exists and user.fb_id and not user.password)
+            if not user_exists and not fb_create_account:
                 abort(401)
 
-            user.password = md5(request.json.get('new_password')).hexdigest()
+            user.password = md5(change_password_dict.get('new_password')).hexdigest()
             db_session.commit()
 
 
@@ -333,9 +482,17 @@ class UserOneView(restful.Resource):
         if 'current_hourly' in request.json:
             print 'woohoo current hourly'
             user.current_hourly = int(request.json.get('current_hourly'))
+        print request.json
+        if 'max_hourly' in request.json:
+
+            user.max_hourly = request.json.get('max_hourly')
+            db_session.commit()
 
         if 'uber_friendly' in request.json:
             user.uber_friendly = request.json.get('uber_friendly')
+
+        if 'tutoring_platforms_description' in request.json:
+            user.tutoring_platforms_description = request.json.get('tutoring_platforms_description')
 
         if 'outside_university' in request.json:
             user.outside_university = request.json.get('outside_university')
@@ -343,11 +500,58 @@ class UserOneView(restful.Resource):
         if 'email' in request.json:
             user.email = request.json.get('email')
 
+        if 'change_email' in request.json:
+            email = request.json.get('change_email')
+
+            ## check if email already exists
+            user_already_exists = User.query.filter_by(email=email).first()
+            if user_already_exists and user.id != user_already_exists.id:
+                abort(401)
+            else:
+                user.email = email
+                db_session.commit()
+
+
         if 'name' in request.json:
             user.name = request.json.get('name')
 
         if 'summer_15' in request.json:
             user.summer_15 = request.json.get('summer_15')
+
+        if 'guru_deposit' in request.json:
+            transfer_card = None
+            deposit_amount = request.json.get('guru_deposit')
+
+            all_transfer_cards = user.get_transfer_cards()
+
+            if not all_transfer_cards:
+                abort(401)
+
+            for card in all_transfer_cards:
+                if card.is_default_transfer:
+                    transfer_card = card
+                    break
+
+            if not transfer_card:
+                abort(401)
+
+            from app.lib.stripe_client import charge_customer
+            stripe_charge = charge_customer(user, int(deposit_amount))
+            if type(stripe_charge) is str:
+                abort(404)
+
+            transaction = Transaction.chargeGuruDeposit(deposit_amount, transfer_card, user, stripe_charge)
+            if transaction.guru_amount > 0:
+                user.guru_deposit = True
+                db_session.commit()
+
+
+            ## Make sure they have one
+            ## make sure their card is valid
+            ## charge $10
+            ## set guru deposit to true
+
+
 
         if 'recent_position' in request.json:
             recent_position_json = request.json.get('recent_position')
@@ -362,8 +566,44 @@ class UserOneView(restful.Resource):
             user.text_notifications = request.json.get('text_notifications')
             print 'coming soon!'
 
+        if 'guru_latest_time' in request.json:
+            user.guru_latest_time = request.json.get('guru_latest_time')
+
+        if 'email_friendly' in request.json:
+            user.email_friendly = request.json.get('email_friendly')
+
+        if 'hangouts_friendly' in request.json:
+            user.hangouts_friendly = request.json.get('hangouts_friendly')
+
+        if 'phone_friendly' in request.json:
+            user.phone_friendly = request.json.get('phone_friendly')
+
+        if 'facetime_friendly' in request.json:
+            user.facetime_friendly = request.json.get('facetime_friendly')
+
+        if 'messenger_friendly' in request.json:
+            user.messenger_friendly = request.json.get('messenger_friendly')
+
+        if 'text_friendly' in request.json:
+            user.text_friendly = request.json.get('text_friendly')
+
+        if 'skype_friendly' in request.json:
+            user.skype_friendly = request.json.get('skype_friendly')
+
         if 'profile_url' in request.json:
             user.profile_url = request.json.get('profile_url')
+
+        if 'fb_id' in request.json:
+            if not user.fb_id:
+                fb_id = request.json.get('fb_id')
+                previous_user = User.query.filter_by(fb_id=fb_id).all()
+                if user not in previous_user:
+                    user.fb_id = request.json.get('fb_id')
+                    db_session.commit()
+                else:
+                    print "previous user exists"
+                    return user, 401
+
 
         if 'email_notifications' in request.json:
             user.email_notifications = request.json.get('email_notifications')
@@ -388,9 +628,25 @@ class UserOneView(restful.Resource):
                 user.student_courses.append(c)
                 db_session.commit()
 
+        if request.json.get('guru_introduction'):
+            user.guru_introduction = request.json.get('guru_introduction')
+
+
         if request.json.get('add_guru_intro'):
             user.guru_introduction = request.json.get('introduction')
             print user.guru_introduction
+
+        if request.json.get('add_guru_language'):
+            language_json = request.json.get('add_guru_language')
+            language_id = language_json.get('id')
+            if not language_id:
+                abort(404)
+            else:
+                language_obj = Language.query.get(int(language_id))
+                if language_obj:
+                    user.guru_languages.append(language_obj)
+                    db_session.commit()
+
 
         if request.json.get('add_user_major'):
             major = request.json.get('major')
@@ -409,6 +665,7 @@ class UserOneView(restful.Resource):
             print request.json.get('add_guru_skill')
             skill_json = request.json.get('skill')
             skill_id = skill_json.get('id')
+
             if skill_id:
                 skill = Skill.query.get(int(skill_id))
                 if skill:
@@ -416,8 +673,6 @@ class UserOneView(restful.Resource):
                     user.guru_skills.append(skill)
                     db_session.commit()
                     print 'length of user skills', len(user.guru_skills)
-
-
 
 
         if request.json.get('add_guru_course'):
@@ -450,22 +705,33 @@ class UserOneView(restful.Resource):
             user.current_device_id = request.json.get('current_device_id')
 
 
+        if request.json.get('remove_guru_language'):
+            language_json = request.json.get('remove_guru_language')
+            language_id = language_json.get('id')
+            language = Language.query.get(language_id)
+            print "NOT WORKING YET"
+            # if language in user.guru_languages:
+            #     user.guru_languages.remove(language)
+            #     db_session.commit()
+
+
         if request.json.get('remove_guru_course'):
             course = request.json.get('course')
             course_id = course.get('id')
             print course, course_id
             c = Course.query.get(int(course_id))
-            if user in c.gurus:
-                # c.gurus.remove(user)
-                from app.models import guru_courses_table
-                db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == user.id and guru_courses_table.c.course_id == c.id))
-                # user.guru_courses.remove(c)
-            # for user_course in user.guru_courses:
-            #     if user_course.id == c.id:
-            #         user_course.student_id = None
-            #         db_session.commit()
-            #         print c.short_name, 'removed'
-            db_session.commit()
+            print "not working yet!"
+            # if user in c.gurus:
+            #     # c.gurus.remove(user)
+            #     from app.models import guru_courses_table
+            #     db_session.execute(guru_courses_table.delete(guru_courses_table.c.user_id == user.id and guru_courses_table.c.course_id == c.id))
+            #     # user.guru_courses.remove(c)
+            # # for user_course in user.guru_courses:
+            # #     if user_course.id == c.id:
+            # #         user_course.student_id = None
+            # #         db_session.commit()
+            # #         print c.short_name, 'removed'
+            # db_session.commit()
 
         if request.json.get('remove_major'):
             major = request.json.get('major')
@@ -475,6 +741,15 @@ class UserOneView(restful.Resource):
             if m in user.majors:
                 user.majors.remove(m)
             db_session.commit()
+
+        if request.json.get('remove_language'):
+            language_json = request.json.get('remove_language')
+            language_id = language_json.get('id')
+            language = Language.query.get(int(language_id))
+
+            if language and language in user.guru_languages:
+                user.guru_languages.remove(language)
+                db_session.commit()
 
         #
         if request.json.get('submit_referral_code'):
@@ -1159,6 +1434,14 @@ class FileView(restful.Resource):
                 print user.name,'saved', file_obj.url
                 db_session.commit()
 
+            if request.values.get('transcript_url'):
+                print request.values.get('transcript_url')
+                user = User.query.get(int(request.values.get('transcript_url')))
+
+                user.transcript_file = file_obj
+                print user.name,'saved', file_obj.url
+                db_session.commit()
+
             return file_obj, 200
 
 
@@ -1733,7 +2016,8 @@ class UserNewView(restful.Resource):
             device = Device.query.get(current_device_id)
 
         if fb_user:
-            fb_user.name = request.json.get('name')
+            if not fb_user.name:
+                fb_user.name = request.json.get('name')
 
             if request.json.get('email'):
                 fb_user.email = request.json.get('email')
@@ -2234,7 +2518,48 @@ class AdminViewUsersList(restful.Resource):
 
 class AdminViewUniversitiesList(restful.Resource):
 
-    @marshal_with(UniversitySerializer)
+    @marshal_with(AdminUniversitySerializer)
+    def post(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED"
+
+        if not request or not request.json or 'school_name' not in request.json:
+            abort(401)
+
+        school = request.json.get('school_name')
+
+        # from static.data.universities_efficient import universities_arr
+        from fuzzywuzzy import fuzz, process
+
+        previous_university_titles = [university.name for university in University.query.all()]
+
+        matches = []
+        for title in previous_university_titles:
+            if fuzz.partial_ratio(school.lower(), title.replace('-', ' ').lower()) >= 80:
+                matches.append((title, school))
+
+        #part 2
+        highest_index = 0
+        highest_score = 0
+        index = 0
+        for match in matches:
+            current_match_score = fuzz.ratio(match[0], match[1])
+            print current_match_score
+            if current_match_score > highest_score:
+                highest_score = current_match_score
+                highest_index = index
+            index += 1
+
+        if 'all' in request.json:
+            all_queries = [University.query.filter_by(name=match[0]).first() for match in matches]
+            return all_queries
+        else:
+            query = University.query.filter_by(name=matches[highest_index][0])
+            return query.first()
+
+        abort(401)
+
+    @marshal_with(AdminUniversitySerializer)
     def get(self, auth_token):
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
@@ -2271,6 +2596,8 @@ class AdminViewGithubLabels(restful.Resource):
             return "UNAUTHORIZED", 401
 
         pass
+
+
 
 
 class AdminViewGithubIssues(restful.Resource):
@@ -2398,11 +2725,65 @@ class AdminUniversityAddRecipientsView(restful.Resource):
         results = {'message': str(len(new_db_objs)) + ' objects processed'}
         return jsonify(success=results)
 
+class GithubIssueView(restful.Resource):
+    def post(self):
+
+        issue_title = 'JS PRODUCTION ERROR:' + request.json.get('issue_title')
+        issue_body = request.json.get('issue_body')
+        device_details = request.json.get('device_info')
+        user_details = request.json.get('user_details')
+        user_agent = request.json.get('user_agent')
+
+        issue_body += ('\n\n\n**User Info**\n\n%s\n\n**Device Details**\n\n%s\n\n\n**Agent Details**\n\n%s' % (user_details, device_details, user_agent))
+        issues_arr = ['PRODUCTION CLIENT ERROR', 'bug']
+
+        if device_details.get('ios'):
+            issues_arr.append('Platform : IOS')
+        if device_details.get('android'):
+            issues_arr.append('Platform : Android')
+        if device_details.get('windows'):
+            issues_arr.append('Platform: Windows Phone')
+        if device_details.get('web'):
+            issues_arr.append('Platform: Web')
+
+        from lib.github_client import init_github, create_issue
+        from emails import send_errors_email
+        gh = init_github('uguru')
+        create_issue(gh, issues_arr, issue_title, issue_body)
+        send_errors_email(issue_body, True)
+        return jsonify(success=[True])
 
 
 ################################
 ### START ADMIN API (OFFICIAL) #
 ################################
+
+
+class AdminDevicePushTestView(restful.Resource):
+
+    def post(self, auth_token, device_id):
+        if not device_id:
+            abort(401)
+        device = Device.query.get(device_id)
+        if not device or not device.push_notif or not device.push_notif_enabled or not device.is_test_device:
+            abort(401)
+
+        message = 'TEST'
+        token = device.push_notif
+
+        # if device.isWindows():
+        #     from lib.push_notif import send_windows_notification
+        #     send_windows_notification(message, token)
+
+        if device.isIOS():
+            from lib.push_notif import send_ios_notification
+            send_ios_notification(message, token)
+
+        if device.isAndroid():
+            from lib.push_notif import send_android_notification
+            send_android_notification(message, token)
+
+        return jsonify(success=[True])
 
 class AdminUniversityCourseView(restful.Resource):
     def post(self, auth_token, uni_id):
@@ -2416,6 +2797,102 @@ class AdminUniversityCourseView(restful.Resource):
             return "UNAUTHORIZED", 401
 
         return jsonify(success=[True])
+
+class AdminOneUniversityView(restful.Resource):
+    @marshal_with(AdminUniversitySerializer)
+    def put(self, auth_token, uni_id):
+        print auth_token, uni_id
+        if auth_token and auth_token in APPROVED_ADMIN_TOKENS and uni_id:
+
+            # parse the response
+            # request_json = json.loads(request.json)
+            u = University.query.get(uni_id)
+            print request.json
+
+            if not u:
+                abort(401)
+
+            if 'university_banner' in request.json:
+                banner_src = request.json.get('university_banner')
+                if type(banner_src) != str:
+                    abort(401)
+
+                u.banner_url = banner_src
+
+
+            if 'latitude' in request.json:
+                latitude = request.json.get('latitude')
+                if type(latitude) != float:
+                    abort(401)
+                u.latitude = latitude
+
+            if 'longitude' in request.json:
+                longitude = request.json.get('longitude')
+                if type(longitude) != float:
+                    abort(401)
+                u.longitude = longitude
+
+            if 'website' in request.json:
+                website = request.json.get('website')
+                if type(website) != str:
+                    abort(401)
+                u.website = website
+
+            if 'population' in request.json:
+                population = request.json.get('population')
+                if type(population) != int:
+                    abort(401)
+                u.population = population
+
+            if 'fa15_start' in request.json:
+                fa15_start = request.json.get('fa15_start')
+                u.fa15_start = fa15_start
+
+            if 'fa15_end' in request.json:
+                fa15_end = request.json.get('fa15_start')
+                u.fa15_end = fa15_end
+
+            if 'school_mascot_name' in request.json:
+                school_mascot_name = request.json.get('school_mascot_name')
+                if type(school_mascot_name) != str:
+                    abort(401)
+                u.school_mascot_name = school_mascot_name
+
+            if 'school_casual_name' in request.json:
+                school_casual_name = request.json.get('school_casual_name')
+                if type(school_casual_name) != str:
+                    abort(401)
+                u.school_casual_name = school_casual_name
+
+            if 'logo_url' in request.json:
+                logo_url = request.json.get('logo_url')
+                if type(logo_url) != str:
+                    abort(401)
+                u.logo_url = logo_url
+
+            if 'school_color_one' in request.json:
+                school_color_one = request.json.get('school_color_one')
+                if type(school_color_one) != str:
+                    abort(401)
+                u.school_color_one = school_color_one
+
+            if 'school_color_two' in request.json:
+                school_color_two = request.json.get('school_color_two')
+                if type(school_color_two) != str:
+                    abort(401)
+                u.school_color_two = school_color_two
+
+            if 'is_public' in request.json:
+                is_public = request.json.get('is_public')
+                if type(is_public) != bool:
+                    abort(401)
+                u.is_public = is_public
+
+            db_session.commit()
+
+            return u, 200
+
+        return "UNAUTHORIZED", 201
 
 class AdminUniversityView(restful.Resource):
     def get(self):
@@ -2586,11 +3063,15 @@ api.add_resource(CourseListView, '/api/v1/courses')
 api.add_resource(SkillListView, '/api/v1/skills')
 api.add_resource(ProfessionListView, '/api/v1/professions')
 api.add_resource(UserEmailView, '/api/v1/user_emails')
+api.add_resource(GithubIssueView, '/api/v1/github')
+api.add_resource(HomeSubscribeView, '/api/v1/web/home/subscribe')
 
 # Admin views
 api.add_resource(AdminSessionView, '/api/admin')
+api.add_resource(AdminDevicePushTestView, '/api/admin/<string:auth_token>/devices/<int:device_id>/push_test')
 api.add_resource(AdminUserView, '/api/admin/users/')
-api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
+# api.add_resource(AdminUniversityView, '/api/admin/<string:auth_token>/universities')
+api.add_resource(AdminOneUniversityView, '/api/admin/<string:auth_token>/universities/<int:uni_id>')
 api.add_resource(AdminUniversityCourseView, '/api/admin/<string:auth_token>/university/<int:uni_id>/courses')
 api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts')
 api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts/<int:dept_id>/courses')
@@ -2601,7 +3082,7 @@ api.add_resource(AdminMandrillTemplatesView, '/api/admin/<string:auth_token>/man
 api.add_resource(AdminMandrillCampaignsView, '/api/admin/<string:auth_token>/mandrill/campaigns')
 api.add_resource(AdminMandrillCampaignDetailedView, '/api/admin/<string:auth_token>/mandrill/campaigns/<string:tag>')
 api.add_resource(AdminViewEmailsList, '/api/admin/<string:auth_token>/emails')
-api.add_resource(AdminViewUsersList, '/api/admin/<string:auth_token>/users')
+api.add_resource(AdminViewUsersList, '/api/admin/<string:apiuth_token>/users')
 api.add_resource(AdminViewUniversitiesList, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminViewUserList, '/api/admin/<string:auth_token>/user/<int:_id>')
 

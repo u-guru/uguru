@@ -1,4 +1,4 @@
-<div ng-show='settings.icons.profile && user.id' class='relative full-height hide ng-class:{"show": settings.icons.profile && user.id}'>
+<div class='relative full-height hide ng-class:{"show": (settings.icons.profile || root.vars.settings.icons.profile) && user.id}'>
         <div ng-show='user && user.id'class="bar bar-header dark-bg-header mini-header uppercase relative" style='width:auto;'>
           <h1 class="title bold">Student Profile</h1>
           <div class='buttons'>
@@ -11,7 +11,7 @@
             <div class='pure-g flex-item-c center no-margin relative full-width'>
               <div class='pure-u-1 center float-center relative center'>
                 <div class='absolute settings-profile-image-container padding-1em auto-margin full-width' style='position:absolute'>
-                  <img ng-show='user && user.profile_url' style='width:130px; height:130px;'class='pure-img profile-img sidebar-img inline'style='margin-top:2%;' id='sidebar-student-profile-photo'value = '{{user.profile_url}}'src='{{user.profile_url}}'/>
+                  <img ng-show='user && user.profile_url' style='width:130px; height:130px;'class='pure-img profile-img sidebar-img inline'style='margin-top:2%;' id='sidebar-student-profile-photo' src='{{user.profile_url}}'/>
                 </div>
                 <div class='white-bg' style='margin-top:35%; padding-top:20%; padding-bottom:5%;'>
                   <div class='pure-u-1 regular'>
@@ -47,10 +47,10 @@
               <div class='pure-u-1 padding-half'>
                 <div class='pure-g'>
                   <div class='pure-u-1'>
-                    <h4 class='uppercase opacity bold no-margin' style='opacity:0.3; font-size:90%;'>Your Courses</h4>
+                    <h4 class='uppercase opacity bold no-margin hide ng-class:{"show":!root.vars.guru_mode}' style='opacity:0.3; font-size:90%;'>Your Courses</h4>
                   </div>
                 </div>
-                <div class='pure-u-1 padding-1em' style='padding-left:0px; padding-right:0px;'>
+                <div class='pure-u-1 padding-1em hide ng-class:{"show":!root.vars.guru_mode}' style='padding-left:0px; padding-right:0px;'>
                     <span ng-repeat='course in user.student_courses' class='course-tag student-settings inline white-space-normal' style='letter-spacing:0em'>{{course.short_name}}</span><span ng-click='goToEditCourses()' class='button course-tag student-settings inline white-space-normal inverted hide ng-class:{"show-inline":user.student_courses.length > 0}'>Edit</span>
                     <span ng-click='goToEditCourses()' class='button course-tag student-settings inline white-space-normal inverted hide ng-class:{"show-inline":user.student_courses.length === 0}'>Add A Class</span>
                 </div>
@@ -75,6 +75,11 @@
                         Switch to Student Mode
                       </button>
                      </div>
+                  </div>
+                </div>
+                <div class='pure-u-1'>
+                  <div class='padding-1em center micro-text semibold' style='padding-top:0.25m; font-size:90%;' ng-show="!loginMode" >
+                        <a ng-click='launchPrivacyPolicy()'><p class='regular normal center micro-text'style='opacity:0.4;'> Our <strong>terms & privacy policy.</strong></p></a>
                   </div>
                 </div>
               </div>
@@ -149,11 +154,9 @@
           <div class='pure-g flex-item-c relative'>
               <ion-list class='standard-bg full-width'>
 
-
                 <div class='item item-divider course-divider'>
                   <p class='uppercase opacity-3-4 micro-text'> Payment Cards </p>
                 </div>
-
 
                 <ion-item class='request-item item-icon-right relative' ng-click='goToPaymentsFromSideBar()'>
                   <p class='opacity-4-5 no-margin' style='padding-left:0.3em; font-size:80%;'>
@@ -181,7 +184,7 @@
                   <p class='uppercase opacity-3-4 micro-text'> Bank Cards </p>
                 </div>
 
-                <ion-item class='request-item item-icon-right relative' ng-show='user && user.is_a_guru' ng-click='goToPaymentsFromSideBar()'>
+                <ion-item class='request-item item-icon-right relative' ng-show='user && user.is_a_guru && root.vars.guru_mode' ng-click='goToPaymentsFromSideBar()'>
                   <p class='opacity-4-5 no-margin' style='padding-left:0.3em; font-size:80%;'>
                     Add A New Bank Account </p>
                   <span class='card-icons-right'>
@@ -297,14 +300,15 @@
 
                 </div>
               <div class='pure-g'>
-                <div class='pure-u-1' keyboard-attach>
+                <div class='pure-u-1'>
 
                   <ion-list class='list-inset standard-bg'>
 
 
                     <ion-list class='standard-bg flex-item-c pure-g j-start bg-transparent'>
-                      <ion-item class='pure-u-1 item-icon-right relative description-wrapper-item' ng-hide='progress'>
-                            <textarea id='description-input'  style='font-size:1em;' rows="5" class='full-width' ng-model='supportTicket.description' placeholder='How can we help?'></textarea>
+                      <ion-item ng-click="launchSupportDescriptionModal()" class='pure-u-1 item-icon-right relative description-wrapper-item'>
+                            <textarea id='support-input-fake'  style='font-size:1em;' rows="5" class='full-width center' ng-model='supportTicket.description' placeholder='How can we help?'>
+                            </textarea>
                       </ion-item>
                     </ion-list>
 
@@ -313,7 +317,7 @@
                         <p class='empty-tags-placeholder opacity-1-2'>Add some tags (optional)</p>
                     </ion-item> -->
                   </ion-list>
-                  <button class='button button-full button-black light-blue-bg' ng-click='submitSupport()' style='font-size:80%;'>
+                  <button class='button button-full button-black light-blue-bg' ng-show="supportTicket.description.length && support_index" ng-click='submitSupport()' style='font-size:80%;' >
                     Submit
                   </button>
 

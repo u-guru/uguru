@@ -1,0 +1,76 @@
+{% extends 'web/layout/base.html' %}
+
+{% block title_text %}
+Uguru Home
+{% endblock %}
+{% block header_scripts %}
+<link rel="stylesheet" href="/static/web/css/style.css"/>
+{% endblock %}
+
+{% block logo %}
+	<img id="top-mobile-logo" src="/static/web/svg/logo-white.svg" alt="uguru"/>
+	{% include "web/components/logo-banner.svg" %}
+	<img id="top-school-logo" src="/static/web/svg/logo-shamrock.svg" alt="uguru"/>
+{% endblock %}
+{% block content %}
+<nav id="slide-breadcrumbs">
+	<ul>
+		<li>
+			<a class="active" data-number="0"></a>
+		</li>
+		<li>
+			<a data-number="1"></a>
+		</li>
+		<li>
+			<a data-number="2"></a>
+		</li>
+		<li>
+			<a data-number="3"></a>
+		</li>
+		<!-- <li>
+			<a data-number="4"></a>
+		</li> -->
+	</ul>
+</nav>
+<div id="mobile-start">
+	<div id="mobile-inside">
+		<img src="/static/web/svg/logo-white.svg" alt="uguru"/>
+		<p>To earn an A, swipe away!<em>To the right, to the right.</em></p>
+	</div>
+</div>
+<div id="banner"></div>
+
+<!-- PARALLAX <section id="main" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15" style='z-index:10'> -->
+<section id="main">
+	<ul class='carousel'>
+
+	{% include 'web/pages/home/search-pane.html' %}
+
+	{% include 'web/pages/home/earn-pane.html' %}
+
+	{% include 'web/pages/home/work-pane.html' %}
+
+	{% include 'web/pages/home/why-pane.html' %}
+
+
+
+	</ul>
+</section>
+{% endblock %}
+
+{% block footer_scripts %}
+<!-- start Samir's scripts -->
+<script src="/static/web/js/lib/typeahead.min.js"></script>
+<script src="/static/web/js/lib/fastmatcher.js"></script>
+<script src="/static/web/js/lib/handlebars.js"></script>
+
+<script src="/static/web/js/lib/jquery.flip.min.js"></script>
+<script src="/static/web/js/lib/phonenumber.js"></script>
+<script src="/static/web/js/lib/hammer.js"></script>
+<script src="/static/web/js/carousel.js"></script>
+<script src="/static/web/js/utils.js"></script>
+<script src="/static/web/js/lib/countup.min.js"></script>
+
+{% include 'web/pages/js/index.js' %}
+{% include 'web/snippets/search.js' %}
+{% endblock %}

@@ -1,25 +1,25 @@
 
-<ion-modal-view class='side-menu-right' id="side_menu" ng-controller='SignupController'>
+<ion-view class='side-menu-right' id="side_menu" ng-controller='SignupController' cache-view="false">
 
 
   <ion-content class='ios-status-bar-dark' scroll='false' style='margin-top:-1px;'>
     <div class='pure-g full-height' style='margin-top:-1px;'>
       <div class='pure-u-1-5 dark-bg full-height left-icon-menu-bar' style='z-index:1000;'>
-        <div class='pure-g-c flex-column flex-space-between' style='padding-top:10px;'>
+        <div class='pure-g-c flex-column flex-space-between dark-bg' style='padding-top:10px; background-color: #2B3233 !important;'>
 
           <div class='flex-item-c center'>
-            <a class='pure-u-1 padding-3-4em' ng-click='setSettingsToIndex(1)'>
+            <a class='pure-u-1 padding-3-4em dark-bg' style='background-color:#2B3233 !important;' ng-click='setSettingsToIndex(1)'>
 
               <!-- For logged in users they can see the settings options-->
               <div ng-show='user && user.id'>
-                <img class='pure-img animated pulse ng-class:{"hide":!settings.icons.profile && !root.vars.settings.icons.profile}' ng-src='{{img_base}}./img/settings/profile.svg'/>
+                <img class='pure-img animated pulse hide ng-class:{"show":settings.icons.profile || root.vars.settings.icons.profile}' ng-src='{{img_base}}./img/settings/profile.svg'/>
 
 
 
-                <img class='pure-img ng-class:{"hide":(settings.icons.profile || root.vars.settings.icons.profile)}' ng-src='{{img_base}}./img/settings/profile-outline.svg'/>
+                <img class='pure-img hide ng-class:{"show": (!settings.icons.profile && !root.vars.settings.icon.profile)}' ng-src='{{img_base}}./img/settings/profile-outline.svg'/>
               </div>
 
-              <div ng-show='user && !user.id' style='padding-top:10px;'>
+              <div ng-show='!(user && user.id)' style='padding-top:10px;'>
                 <img class='pure-img padding-eight' ng-src='{{img_base}}./img/verbs/session.svg' />
               </div>
 
@@ -82,7 +82,7 @@
                 <img class='pure-img' ng-src='{{img_base}}./img/settings/logout.svg'/>
             </div>
           </a>
-          <a ng-click='closeSideBar()' class='flex-item-c center' style='background-color:rgba(255,255,255,0.1)'>
+          <a id = "E2E-closeBar" ng-click='closeSideBar()' class='flex-item-c center' style='background-color:rgba(255,255,255,0.1)'>
             <div class='pure-u-1' style='padding:1.5em;'>
                 <img class='pure-img' ng-src='{{img_base}}./img/settings/settings-back.svg'/>
             </div>
@@ -97,7 +97,7 @@
 
           <div class='full-height' ng-show='user && !user.id' ng-include="img_base + 'templates/components.side-menu.presignup.html'"> </div>
 
-          <div class='full-height' ng-include="img_base + 'templates/components.side-menu.postsignup.html'"> </div>
+          <div class='full-height' ng-show='user && user.id' ng-include="img_base + 'templates/components.side-menu.postsignup.html'"> </div>
 
 
 
@@ -113,4 +113,4 @@
     </ion-footer-bar> -->
 
   </ion-content>
-</ion-modal-view>
+</ion-view>

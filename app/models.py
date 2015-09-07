@@ -27,6 +27,12 @@ student_courses_table = Table('student-course_assoc',
     Column('course_id', Integer, ForeignKey('course.id'))
     )
 
+guru_languages_table = Table('guru-language_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('language_id', Integer, ForeignKey('language.id'))
+    )
+
 user_major_table = Table('user-major_assoc',
     Base.metadata,
     Column('user_id', Integer, ForeignKey('user.id')),
@@ -101,6 +107,15 @@ class User(Base):
     profile_url = Column(String, default="https://graph.facebook.com/10152573868267292/picture?width=100&height=100")
 
 
+    #credibility confirmation
+    school_email = Column(String)
+    school_email_token = Column(String)
+    school_email_confirmed = Column(Boolean, default = False)
+
+
+
+
+
     #admin fields
     is_admin = Column(Boolean)
     is_support_admin = Column(Boolean)
@@ -118,6 +133,8 @@ class User(Base):
 
     auth_token = Column(String)
 
+    guru_deposit = Column(Boolean)
+
     #Last active time
     last_active = Column(DateTime)
     time_created = Column(DateTime)
@@ -130,7 +147,6 @@ class User(Base):
     summer_15 = Column(Boolean)
     outside_university = Column(Boolean)
 
-
     #Student fields
     student_introduction = Column(String)
     student_courses = relationship("Course",
@@ -140,6 +156,11 @@ class User(Base):
 
     guru_skills = relationship("Skill",
         secondary = guru_skill_table,
+        backref= backref('gurus', lazy='dynamic')
+    )
+
+    guru_languages = relationship("Language",
+        secondary = guru_languages_table,
         backref= backref('gurus', lazy='dynamic')
     )
 
@@ -201,9 +222,13 @@ class User(Base):
     email_notifications = Column(Boolean, default = True)
     text_notifications = Column(Boolean, default = False)
 
+    debit_card_confirmed = Column(Boolean, default = False)
+    tutoring_platforms_description = Column(String)
+    tutoring_platforms_verified_by_admin = Column(Boolean, default=False)
 
     phone_number = Column(String)
-    phone_number_confirmed = Column(Boolean)
+    phone_number_confirmed = Column(Boolean, default = False)
+    phone_number_token = Column(String)
     lower_pay_rate = Column(Float)
     upper_pay_rate = Column(Float)
 
@@ -224,8 +249,19 @@ class User(Base):
 
     guru_score = Column(Float)
 
+    email_friendly = Column(Boolean, default = False)
+    hangouts_friendly = Column(Boolean, default = False)
+    skype_friendly = Column(Boolean, default = False)
+    phone_friendly = Column(Boolean, default = False)
+    facetime_friendly = Column(Boolean, default = False)
+    messenger_friendly = Column(Boolean, default = False)
+    text_friendly = Column(Boolean, default = False)
+
     #referral stuff
     referral_code = Column(String)
+
+    transcript_file = relationship("File", uselist=False)
+    transcript_verified_by_admin = Column(Boolean, default = False)
 
     #referred_by
     referred_by_id = Column(Integer, ForeignKey('user.id'))
@@ -235,6 +271,8 @@ class User(Base):
     deactivated = Column(Boolean, default=False)
 
     last_position = relationship("Position", uselist=False)
+
+    guru_latest_time = Column(Integer)
 
     def __init__(self, name=None, email=None, profile_url=None, \
         fb_id=None, password=None, gender=None):
@@ -465,6 +503,11 @@ class University(Base):
     logo_url = Column(String)
     last_updated = Column(DateTime)
 
+    fa15_start = Column(DateTime)
+    fa15_end = Column(DateTime)
+    sp15_start = Column(DateTime)
+    sp15_end = Column(DateTime)
+
     gurus = relationship("User",
         primaryjoin = "(User.university_id==University.id) & "\
                         "(User.is_a_guru==True)")
@@ -494,8 +537,10 @@ class University(Base):
     num_depts = Column(Integer, default =0)
     num_majors = Column(Integer, default =0)
     num_emails = Column(Integer, default =0)
+    banner_url = Column(String)
 
     ready_to_launch = Column(Boolean)
+    is_targetted = Column(Boolean, default=False)
 
     # new
     email_attributes = Column(String)
@@ -520,6 +565,15 @@ class University(Base):
     def admin_create(args_dict, _id):
         u = University.admin_update(University(_id=_id), args_dict)
         return u
+
+    @staticmethod
+    def is_university_targetted(university):
+        from datetime import datetime
+        recent_month = datetime(year=2015, month=7, day =24)
+        if university.fa15_start and university.fa15_start <= recent_month:
+            university.is_targetted = True
+            db_session.commit()
+
 
     @staticmethod
     def admin_update(u, args):
@@ -807,6 +861,36 @@ class Resource(Base):
     professor_name = Column(String)
 
     course_string = Column(String)
+
+
+class Language(Base):
+    __tablename__ ='language'
+    id = Column(Integer, primary_key = True)
+    time_created = Column(DateTime)
+    last_updated = Column(DateTime)
+    name = Column(String)
+
+class Experience(Base):
+    __tablename__ ='experience'
+    id = Column(Integer, primary_key = True)
+    time_created = Column(DateTime)
+    last_updated = Column(DateTime)
+    name = Column(String)
+    description = Column(String)
+    years = Column(Integer)
+
+    admin_approved = Column(Boolean, default=False)
+    school_specific = Column(Boolean, default=False)
+
+    university_id = Column(Integer, ForeignKey('university.id'))
+    university = relationship("University",
+        primaryjoin="University.id==Experience.university_id",
+        backref='guru_experiences')
+
+    contributed_user_id = Column(Integer, ForeignKey('user.id'))
+    contributed_user = relationship("User",
+        primaryjoin="User.id==Experience.contributed_user_id",
+        backref='guru_experiences')
 
 
 class Stats(Base):
@@ -1595,6 +1679,14 @@ class Device(Base):
     time_created = Column(DateTime)
     last_accessed = Column(DateTime)
 
+    body_load_time = Column(Float)
+    update_load_time = Column(Float)
+    is_test_device = Column(Boolean)
+
+    device_load_time = Column(Float)
+    network_speed = Column(String)
+    typical_network_speed = Column(String)
+
     push_notif = Column(String)
     push_notif_enabled = Column(Boolean)
     location_enabled = Column(Boolean)
@@ -1608,6 +1700,29 @@ class Device(Base):
         primaryjoin = "User.id == Device.user_id",
         backref = "devices"
     )
+
+    @staticmethod
+    def getTestDevices():
+        return Device.query.filter_by(is_test_device=True).all()
+    @staticmethod
+    def getNonTestDevices():
+        return Device.query.filter_by(is_test_device=None).all()
+
+    def isWindows(self):
+        if not self.platform:
+            return False
+        return 'win32nt' in self.platform.lower()
+
+    def isIOS(self):
+        if not self.platform:
+            return False
+        return 'ios' in self.platform.lower()
+
+    def isAndroid(self):
+        if not self.platform:
+            return False
+        return 'android' in self.platform.lower()
+
 
 class Rating(Base):
     __tablename__ = 'rating'
@@ -2234,6 +2349,29 @@ class Transaction(Base):
         primaryjoin = "Card.id == Transaction.card_id",
         backref = 'transactions'
         )
+
+
+    @staticmethod
+    def chargeGuruDeposit(deposit_amount, transfer_card, user, charge_id):
+        transaction = Transaction()
+        transaction.time_created = datetime.now()
+        transaction.card_id = transfer_card.id
+        transaction._type = 3
+
+        transaction.guru_amount = deposit_amount
+
+        transaction.guru = user
+
+        transaction.charge_id = charge_id.id
+        transaction.profit = deposit_amount
+        transaction.guru_id = user.id
+        db_session.add(transaction)
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+        return transaction
 
     @staticmethod
     def calculateStudentPriceFromSession(_session):

@@ -28,6 +28,12 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 ## NEW ADMIN ##
 ###############
 
+@app.route('/admin/staging/')
+def admin_statistics():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return redirect(url_for('new_home_page'))
+
 @app.route('/admin/login/')
 def admin_login():
     error = None
@@ -53,17 +59,141 @@ def admin_login():
         session.pop('error')
 
     if session.get('user'):
-        return redirect(url_for('admin_members'))
+        return redirect(url_for('admin_team_calendar'))
 
-    return render_template("new_admin/login.html", error=error)
+    return render_template("admin/login.html", error=error)
 
+@app.route('/500-test')
+def internal_test():
+    return render_template("<b>500</b>")
 
 @app.route('/admin/statistics/')
 def admin_statistics():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
     stats = Stats.query.get(1)
-    return render_template("new_admin/admin.statistics.html", stats=stats)
+    return render_template("admin/admin.statistics.html", stats=stats)
+
+@app.route('/admin/stats/devices/')
+def admin_devices():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    test_devices = sorted(Device.getTestDevices(), key=lambda d:d.last_accessed, reverse=True)
+    regular_devices = sorted(Device.getNonTestDevices(), key=lambda d:d.last_accessed, reverse=True)
+    return render_template("admin/admin.stats.devices.html", test_devices=test_devices, \
+        regular_devices=regular_devices)
+
+@app.route('/')
+@app.route('/staging/')
+def new_home_page():
+    return render_template("web/index.html")
+
+
+
+
+@app.route('/faq/')
+def faq():
+    return render_template("web/pages/faq.html")
+
+@app.route('/manifest/')
+def manifest():
+    return render_template("web/pages/manifest.html")
+
+@app.route('/team/profiles/<name>')
+def team_profiles(name):
+
+    from lib.admin import admin_info
+    team_names_lower = [admin_info[key]['name'].split(' ')[0].lower() for key in admin_info.keys()]
+
+    if name.lower() not in team_names_lower:
+        return redirect(url_for('team'))
+
+    member = name.lower()
+    member_index = team_names_lower.index(member)
+    member_dict = admin_info[admin_info.keys()[member_index]]
+
+    return render_template("web/user-profile.html", member=member_dict)
+
+@app.route('/team/')
+def team():
+    from lib.admin import admin_info
+    team_members = [admin_info[key] for key in admin_info.keys() if not key == 'investors@uguru.me']
+    return render_template("web/pages/team.html", team_members=team_members)
+
+@app.route('/staging/profile')
+def profile_page():
+    return render_template("web/profile.html")
+
+@app.route('/admin/stats/campaigns/')
+def admin_stats_campaigns():
+    ### all logic
+    import requests, json
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+
+    from lib.mailgun import get_all_university_progress
+    results_arr, no_results_arr = get_all_university_progress()
+
+    from pprint import pprint
+    pprint(results_arr)
+
+    results_arr = sorted(results_arr, key=lambda u:int(u['rank']))
+    no_results_arr = sorted(no_results_arr, key=lambda u:int(u['rank']))
+    _sum = sum([uni['count'] for uni in results_arr])
+    not_scrapeable = []
+
+    ### take all the information & inject it into the html
+
+    return render_template("admin/admin.stats.campaigns.html", university_arr=results_arr, sum=_sum, \
+        remainder_arr=no_results_arr, not_scrapeable=not_scrapeable)
+
+@app.route('/admin/stats/universities/')
+def admin_statistics():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    # test_devices = sorted(Device.getTestDevices(), key=lambda d:d.last_accessed, reverse=True)
+    # regular_devices = sorted(Device.getNonTestDevices(), key=lambda d:d.last_accessed, reverse=True)
+    import json
+    uni_targetted_arr = json.load(open('app/static/data/fa15_targetted.json'))
+
+    all_university_arr = json.load(open('app/static/data/fa15_all.json'))
+
+    all_targetted_names = [uni['name'] for uni in uni_targetted_arr]
+    remaining_unis = [uni for uni in all_university_arr if uni['name'] not in all_targetted_names]
+    for u in remaining_unis:
+        fields_remaining = ""
+        if not u.get('latitude'):
+            fields_remaining += 'lat/long '
+        if not u.get('fa15_start'):
+            fields_remaining += 'fa15_start '
+        if not u.get('logo_url'):
+            fields_remaining += 'logo_url '
+        if not u.get('school_color_one'):
+            fields_remaining += 'school_colors '
+        if not u.get('population'):
+            fields_remaining += 'population '
+        u['fields_remaining'] = fields_remaining
+
+    # latitudes = [uni for uni in remaining_unis if uni.get('latitude')]
+    # populations = [uni for uni in remaining_unis if uni.get('population')]
+    # banner_urls = [uni for uni in remaining_unis if uni.get('banner_url')]
+    # logo_urls = [uni for uni in remaining_unis if uni.get('logo_url')]
+    # school_colors = [uni for uni in remaining_unis if uni.get('school_color')]
+    # fa_starts = [uni for uni in remaining_unis if uni.get('fa15_start')]
+    # uni_length = len(all_university_arr)
+
+    # stats = {
+    #     'latitude': (len(latitudes) / uni_length) * 100,
+    #     'population': (len(populations) / uni_length) * 100,
+    #     'logo_url': (len(logo_urls) / uni_length) * 100,
+    #     'banner_urls': (len(banner_urls) / uni_length) * 100,
+    #     'school_colors': (len(school_colors) / uni_length) * 100,
+    #     'fa15_start': (len(fa_starts) / uni_length) * 100
+    # }
+    uni_targetted_arr = sorted(uni_targetted_arr, key=lambda k:k['rank'])
+    remaining_unis = sorted(remaining_unis, key=lambda k:k['rank'])
+    return render_template("admin/admin.stats.universities.html",
+        target_universities=uni_targetted_arr, remainder_universities=remaining_unis)
 
 ###############
 ## Investors ##
@@ -73,25 +203,25 @@ def admin_statistics():
 def admin_investor_stats():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/admin.investors.statistics.html")
+    return render_template("admin/admin.investors.statistics.html")
 
 @app.route('/admin/i/product/')
 def admin_view_campaigns():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/admin.investors.product.html")
+    return render_template("admin/admin.investors.product.html")
 
 @app.route('/admin/i/competition/')
 def admin_investors_competition():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/admin.investors.competition.html")
+    return render_template("admin/admin.investors.competition.html")
 
 @app.route('/admin/i/biz-model/')
 def admin_investors_biz_model():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/admin.investors.business-model.html")
+    return render_template("admin/admin.investors.business-model.html")
 
 
 ###################
@@ -102,13 +232,31 @@ def admin_investors_biz_model():
 def admin_view_campaigns():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/campaigns.html")
+    return render_template("admin/campaigns.html")
 
 @app.route('/admin/campaigns/create/')
 def admin_create():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/create-campaign.html")
+    return render_template("admin/create-campaign.html")
+
+@app.route('/admin/design/style/')
+def admin_style_guide():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("style/index.html")
+
+@app.route('/admin/design/inspired/')
+def admin_components():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("admin/admin-coming-soon.html")
+
+@app.route('/admin/design/moodboards/')
+def admin_components():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("admin/admin-coming-soon.html")
 
 @app.route('/admin/users/<_id>/')
 def admin_users(_id):
@@ -116,7 +264,7 @@ def admin_users(_id):
         return redirect(url_for('admin_login'))
     from app.models import User
     user = User.query.get(_id)
-    return render_template("new_admin/admin.users.one.html", user=user)
+    return render_template("admin/admin.users.one.html", user=user)
 
 
 
@@ -132,44 +280,44 @@ def admin_requests():
     for _request in unfiltered_requests:
         if _request.id in real_before_220 or _request.id > 226:
             student_requests.append(_request)
-    return render_template('new_admin/student.requests.html', requests=student_requests[::-1])
+    return render_template('admin/student.requests.html', requests=student_requests[::-1])
 
 
 @app.route('/admin/campaigns/scheduled/')
 def admin_scheduled():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/scheduled-campaigns.html")
+    return render_template("admin/scheduled-campaigns.html")
 
 @app.route('/admin/campaigns/<campaign_name>/')
 def admin_one_campaign(campaign_name):
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/one_campaign.html", tag_name=campaign_name)
+    return render_template("admin/one_campaign.html", tag_name=campaign_name)
 
 @app.route('/admin/coming-soon/')
 def admin_coming_soon():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/admin-coming-soon.html")
+    return render_template("admin/admin-coming-soon.html")
 
 @app.route('/admin/product/releases/')
 def admin_product_releases():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/admin.product.releases.html")
+    return render_template("admin/admin.product.releases.html")
 
 @app.route('/admin/product/practices/')
 def admin_best_practices():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/admin.product.practices.html")
+    return render_template("admin/admin.product.practices.html")
 
 @app.route('/admin/i/statistics/')
 def admin_best_practices():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/admin.investors.statistics.html")
+    return render_template("admin/admin.investors.statistics.html")
 
 @app.route('/admin/support/tickets/')
 def admin_testing():
@@ -177,43 +325,42 @@ def admin_testing():
         return redirect(url_for('admin_login'))
     from app.models import Support
     support_tickets = Support.query.all()
-    return render_template("new_admin/admin.support.tickets.html", support_tickets=support_tickets[::-1])
+    return render_template("admin/admin.support.tickets.html", support_tickets=support_tickets[::-1])
 
-@app.route('/admin/')
+
 @app.route('/admin/team/members/')
 def admin_members():
     from app.lib.admin import admin_info
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/admin.team-members.html", team=admin_info)
+    return render_template("admin/admin.team-members.html", team=admin_info)
 
 @app.route('/admin/team/routine/')
 def admin_routine():
     from app.lib.admin import admin_info
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/admin.team-routine.html", team=admin_info)
+    return render_template("admin/admin.team-routine.html", team=admin_info)
 
 
-@app.route('/admin/')
-@app.route('/admin/team/')
-@app.route('/admin/home/')
+
+@app.route('/admin/expectations/')
 def admin_expectations():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/admin.team-expectations.html", team=[])
+    return render_template("admin/admin.team-expectations.html", team=[])
 
 @app.route('/admin/team/project/')
 def admin_team():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/team-project-items.html", team=[])
+    return render_template("admin/team-project-items.html", team=[])
 
-@app.route('/admin/team/action/')
-def admin_team():
-    if not session.get('user'):
-        return redirect(url_for('admin_login'))
-    return render_template("new_admin/team-action-items.html", team=[])
+# @app.route('/admin/team/action/')
+# def admin_team():
+#     if not session.get('user'):
+#         return redirect(url_for('admin_login'))
+#     return render_template("admin/team-action-items.html", team=[])
 
 
 
@@ -221,44 +368,52 @@ def admin_team():
 def admin_design_guidelines():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/design-guidelines.html", team=[])
+    return render_template("admin/design-guidelines.html", team=[])
 
 @app.route('/admin/development/guidelines/')
 def admin_dev_guidelines():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/development-guidelines.html", team=[])
+    return render_template("admin/development-guidelines.html", team=[])
 
+@app.route('/admin/development/api/')
+def admin_dev_guidelines():
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    return render_template("admin/admin.development.api.html")
+
+@app.route('/admin/')
+@app.route('/admin/team/')
 @app.route('/admin/team/calendar/')
 def admin_team_calendar():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/team-calendar.html")
+    return render_template("admin/team-calendar.html")
 
 @app.route('/lte/')
 def lte_theme():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return redirect("/static/new_admin/index2.html")
+    return redirect("/static/admin/index2.html")
 
 
 @app.route('/admin/bugs/')
 def admin_bugs():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/bugs.admin.html", team=[])
+    return render_template("admin/bugs.admin.html", team=[])
 
 @app.route('/admin/bugs/view/')
 def admin_bugs_view():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/bugs.view.admin.html", team=[])
+    return render_template("admin/bugs.view.admin.html", team=[])
 
 @app.route('/admin/development/style/')
 def admin_development_style():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
-    return render_template("new_admin/style.development.admin.html", team=[])
+    return render_template("admin/style.development.admin.html", team=[])
 
 @app.route('/admin/logout/')
 def admin_logout():
@@ -267,247 +422,75 @@ def admin_logout():
     return redirect(url_for('admin_login'))
 
 
-@app.route('/old_admin/home/')
-@app.route('/login/')
-def default():
-    if('admin' in session and session["admin"] == True):
 
-        statistics = {
-            'universities': {'count': len(University.query.all())},
-            'users': {'count': len(User.query.all())},
-            'courses': {'count': 758719},
-            'departments': {'count': 21361},
-        }
+@app.route('/admin/milestones/sept/1')
+def admin_milestones_sept():
 
-        return render_template("admin/index.html", os=os, statistics=statistics)
-    else:
-        return render_template("admin/login.html", os=os)
+    ### all logic
+    import requests, json
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
 
-@app.route('/index.html')
-def index():
-    if(session.get("admin")):
-        return redirect(url_for('default'))
-    else:
-        return render_template("admin/login.html", os=os)
+    from lib.mailgun import get_all_university_progress
+    results_arr, no_results_arr = get_all_university_progress()
 
-# @app.route('/old_admin/users/')
-# def admin_users():
-#     if(session.get("admin")):
-#         return render_template("admin/admin.users.html", os=os)
-#     else:
-#         return render_template("admin/login.html", os=os)
-
-@app.route('/old_admin/campaigns/')
-def old_admin():
-    return render_template("admin/campaigns.html")
+    stats = {
+        'completed_data': len(json.load(open('app/static/data/fa15_all.json'))),
+        'pending_data': len(json.load(open('app/static/data/fa15_targetted.json'))),
+        'completed_emails': len(results_arr),
+        'pending_emails': len(no_results_arr),
+    }
 
 
-@app.route('/old_admin/universities/')
-def admin_universities():
-    if(session.get("admin")):
-        return render_template("admin/admin.universities.html", os=os)
-    else:
-        return render_template("admin/login.html", os=os)
+    return render_template('new_admin/admin.milestones.sept.html', stats=stats)
 
-@app.route('/old_admin/emails/')
-def admin_emails():
-    if(session.get("admin")):
-        return render_template("admin/admin.emails.html")
-    else:
-        return render_template("admin/login.html", os=os)
 
-@app.route('/old_admin/universities/<_id>')
-def admin_university(_id):
-    if(session.get("admin")):
-        university = University.query.get(_id)
-        return render_template("admin/admin.university.html", os=os, university=university)
-    else:
-        return render_template("admin/login.html", os=os)
+@app.route('/admin/universities/flickr/')
+def flicker_targetted_universities():
+    import json
+    target_universities = json.load(open('app/static/data/fa15_all.json'))
+    for uni in target_universities:
+        if uni.get('banner_url'):
+            uni['banner_url'] = uni['banner_url'].replace('b.jpg','n.jpg')
+        else:
+            uni['banner_url'] = '#'
+    # target_universities = University.query.filter_by(is_targetted=True).all()
+    return render_template('new_admin/admin.universities.flickr.html', universities=target_universities)
 
-@app.route('/old_admin/user/<_id>/')
-def admin_user(_id):
-    if(session.get("admin")):
-        user = User.query.get(_id)
-        return render_template("admin/admin.user.html", user=user, os=os)
-    else:
-        return render_template("admin/login.html", os=os)
+@app.route('/admin/flickr/<university_id>')
+def flicker_university_process(university_id):
+    if not session.get('user'):
+        return redirect(url_for('admin_login'))
+    try:
+        u = University.query.get(university_id)
+    except:
+        db_session.rollback()
+        return "ERROR --> record it for now Samir will fix it later"
+    from lib.flickr_wrapper import *
+    flickr_response = str(search_university_response_api(u))
+    photos_arr = parse_flickr_response(flickr_response)
+    processed_arr = process_returned_photos(photos_arr)
+    processed_arr = sorted(processed_arr, key=lambda k:k['views'], reverse=True)[:20]
 
-@app.route('/emails.html')
-def emails():
-    if(session.get("admin")):
-        return render_template("admin/emails.html", os=os)
-    else:
-        return render_template("admin/login.html", os=os)
+    for uni in processed_arr:
+        uni['url'] = uni['url'].replace('z.jpg','n.jpg')
 
-@app.route('/campaigns.html')
-def campaigns():
-    if(session.get("admin")):
-        return render_template("admin/campaigns.html", os=os)
-    else:
-        return render_template("admin/login.html", os=os)
-
-@app.route('/createcampaigns.html')
-def createcampaigns():
-    if(session.get("admin")):
-        return render_template("admin/createcampaigns.html", os=os)
-    else:
-        return render_template('admin/login.html', os=os)
-
-@app.route('/messages.html')
-def messages():
-    if(session.get("admin")):
-        return render_template("admin/messages.html", os=os)
-    else:
-        return render_template("admin/login.html", os=os)
-
-@app.route('/tasks.html')
-def tasks():
-    if(session.get("admin")):
-        return render_template("admin/tasks.html", os=os)
-    else:
-        return render_template("admin/login.html", os=os)
-
-@app.route('/ui.html')
-def users():
-    if(session.get("admin")):
-        return render_template("admin/ui.html", os=os)
-    else:
-        return render_template("admin/login.html", os=os)
-
-@app.route('/widgets.html')
-def widgets():
-    if(session.get("admin")):
-        return render_template("admin/widgets.html", os=os)
-    else:
-        return render_template("admin/login.html", os=os)
-
-# @app.route('/ui.html')
-# def ui():
-#     if(session.get("admin")):
-#         return render_template("admin/ui.html", os=os)
-#     else:
-#         return render_template("admin/login.html", os=os)
-
-@app.route('/submenu.html')
-def submenu():
-    if(session.get("admin")):
-        return render_template('admin/submenu.html', os=os)
-    else:
-        return render_template("admin/login.html", os=os)
-
-@app.route('/submenu2.html')
-def submenu2():
-    if(session.get("admin")):
-        return render_template('admin/submenu2.html', os=os)
-    else:
-        return render_template("admin/login.html", os=os)
-
-@app.route('/submenu3.html')
-def submenu3():
-    if(session.get('admin')):
-        return render_template('admin/submenu3.html', os=os)
-    else:
-        return render_template("admin/login.html", os=os)
-
-@app.route('/form.html')
-def form():
-    if(session.get("admin")):
-        return render_template('admin/form.html', os=os)
-    else:
-        return render_template("admin/login.html", os=os)
-
-@app.route('/chart.html')
-def chart():
-    if(session.get("admin")):
-        return render_template('admin/chart.html', os=os)
-    else:
-        return render_template("admin/login.html", os=os)
-
-@app.route('/typography.html')
-def typo():
-    if(session.get("admin")):
-        return render_template('admin/typography.html', os=os)
-    else:
-        return render_template("admin/login.html", os=os)
-
-@app.route('/gallery.html')
-def gallery():
-    if(session.get("admin")):
-        return render_template('admin/gallery.html', os=os)
-    else:
-        return render_template("admin/login.html", os=os)
-
-@app.route('/table.html')
-def table():
-    if(session.get("admin")):
-        return render_template('admin/table.html', os=os)
-    else:
-        return render_template("admin/login.html", os=os)
-
-@app.route('/calendar.html')
-def calendar():
-    if(session.get("admin")):
-        return render_template('admin/calendar.html', os=os)
-    else:
-        return render_template("admin/login.html", os=os)
-
-@app.route('/file-manager.html')
-def filemanager():
-    if(session.get("admin")):
-        return render_template('admin/file-manager.html')
-    else:
-        return render_template("admin/login.html", os=os)
-
-@app.route('/icon.html')
-def icon():
-    if(session.get("admin")):
-        return render_template('admin/icon.html', os=os)
-    else:
-        return render_template("admin/login.html", os=os)
-
-@app.route('/logout.html')
-def login():
-    session.pop("admin")
-    return render_template("login.html")
-
-@app.route('/university/')
-def app_flex():
-
-    from lib.university_data import supported_universities
-    university_names = supported_universities.keys()
-
-    return render_template("web/university.html", university=supported_universities['virginia'])
-
-@app.route('/faqs/')
-def uguru_faqs():
-    return render_template("web/content/faq.html")
+    return render_template('admin/admin.design.flickr.html', flickr_photos=processed_arr,  university=u)
 
 @app.route('/terms/')
 def uguru_terms():
     return render_template("web/content/terms.html")
 
-@app.route('/')
-def app_student_home():
-    from lib.university_data import supported_universities
-    from random import sample
-    from app.lib.gen_departments import departments
-
-    if 'investors' in request.url:
-        return redirect(url_for('admin_login'))
-
-    university_names = supported_universities.keys()
-
-
-    departments = sample(departments, 12)
-
-    university_statistics = {
-        "schools": len(university_names),
-        "courses": 753986,
-        "gurus": 100,
-        "rating": 4.8
-    }
-
-    return render_template("web/student_home.index.html", university_statistics=university_statistics, university=supported_universities['virginia'], departments=departments)
+@app.route('/auth/school_email/<confirm_email_token>')
+def school_email_check(confirm_email_token):
+    user = User.query.filter_by(school_email_token=confirm_email_token).first()
+    if user:
+        user.school_email_confirmed = True
+        db_session.commit()
+        result = "<script> alert('School email " + user.school_email + " confirmed!'); window.location.href = 'http://uguru.me';</script>"
+        return result
+    else:
+        return 404
 
 @app.route('/guru/')
 def guru_home():
@@ -525,13 +508,13 @@ def parse_user_agent(ua_str):
     else:
         return 'web'
 
-@app.route('/hybrid-app/')
-def hybrid_app():
+# @app.route('/hybrid-app/')
+# def hybrid_app():
 
-    from lib.university_data import supported_universities
-    university_names = supported_universities.keys()
+#     from lib.university_data import supported_universities
+#     university_names = supported_universities.keys()
 
-    return render_template('web/hybrid.app.html', university=supported_universities['virginia'])
+#     return render_template('web/hybrid.app.html', university=supported_universities['virginia'])
 
 @app.route('/new/dev/m/<name>/', methods=["GET"])
 def one_university_mobile_dev(name):
@@ -614,16 +597,6 @@ def one_university(name, _id):
 
 
 
-
-
-@app.route('/universities/')
-def app_home():
-
-    from app.static.data.universities_efficient import universities_arr
-    u_titles = [university['title'].lower() for university in universities_arr]
-
-    return render_template("web/universities.html", universities=u_titles)
-
 @app.route('/itunes/app/')
 def itunes_app():
     return redirect('https://itunes.com/apps/uguru')
@@ -644,140 +617,16 @@ def app_route():
     print '\n\n\n\n\nrequest headers'
     print request.headers, type(request.headers)
     if 'iPad' in str(request.headers) and 'Safari' in str(request.headers):
-        return redirect(url_for('hybrid_app'))
+        return redirect(url_for('itunes_app'))
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
         return redirect('http://u.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
-        return redirect('http://localhost:5000/static/remote/index.html?version=' + str(version) + str(13213))
+        # return redirect('http://localhost:8100/')
+        return redirect('http://localhost:5000/static/remote/index.html?version=' + str(version) + str(02323))
     # return redirect('http://192.168.0.104:5000/static/remote/index.html')
     # return redirect('http://192.168.42.66:8100/remote/')
-
-@app.route('/old_admin/campaigns/results/')
-def admin_campaign_results():
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
-    return render_template('admin/admin.campaigns.html')
-
-@app.route('/old_admin/campaigns/create/')
-def admin_campaign_create():
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
-    return render_template('admin/admin.create-, os=oscampaigns.html')
-
-@app.route('/old_admin/campaigns/<name>/')
-def admin_campaigns_detailed(name):
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
-    return render_template('admin/campaign-detailed.html', name=name)
-
-@app.route('/old_admin/development/')
-def admin_development():
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
-    version = Version.query.get(1)
-    return render_template('admin/development.html', os=os, version=version)
-
-@app.route('/old_admin/issues/')
-def admin_issues():
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
-    version = Version.query.get(1)
-    return render_template('admin/admin.issues.html', os=os, version=version)
-
-@app.route('/old_admin/web/')
-def index():
-    return render_template('index.html')
-
-
-
-@app.route('/old_admin/form/')
-@app.route('/old_admin/home/')
-def admin_dashboard_home():
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
-    universities = [
-            {
-                'name': 'UCLA',
-                'emails_sent': 1000,
-                'total_emails': 10000
-            },
-
-            {
-                'name': 'Berkeley',
-                'emails_sent': 0,
-                'total_emails': 7000
-            },
-
-            {
-                'name': 'UT Austin',
-                'emails_sent': 1000,
-                'total_emails': 12000
-            },
-
-            {
-                'name': 'U Michigan',
-                'emails_sent': 1000,
-                'total_emails': 15000
-            }
-
-            ]
-
-    from emails import mandrill_client
-    templates = sorted(mandrill_client.templates.list(),
-        key=lambda t:datetime.strptime(t['updated_at'], "%Y-%m-%d %H:%M:%S.%f"), reverse=True)
-    template_names = [t['name'] for t in templates]
-
-    return render_template('admin/form.html', os=os,
-        mandrill_client=mandrill_client,
-        available_universities=universities,
-        template_names=template_names)
-
-@app.route('/old_admin/api/')
-def admin_api():
-    if not session.get('admin'):
-        return redirect(url_for('admin'))
-    return render_template('admin/api.html', os=os)
-
-@app.route('/old_admin/dashboard/')
-def admin_dashboard():
-
-    if not session.get('admin'):
-        return redirect(url_for('admin'))
-
-    from emails import mandrill_client, DEFAULT_SENDER_EMAIL, DEFAULT_SENDER_NAME
-
-    templates = mandrill_client.templates.list()
-    batches = Batch.query.all()
-    test_accounts = Recipient.query.filter_by(admin_account=True).all()
-
-
-    default_args = {
-        'default_sender_email': DEFAULT_SENDER_EMAIL,
-        'default_sender_name': DEFAULT_SENDER_NAME
-    }
-
-    return render_template('admin.dashboard.html',\
-        templates=templates, batches=batches, test_accounts=test_accounts\
-        ,default_args=default_args)
-
-@app.route('/old_admin/accounts/')
-def admin_accounts():
-    if not session.get('admin'):
-        return redirect(url_for('admin'))
-
-    from app.models import *
-    from app.database import db_session
-    ADMIN_NAMES = ["Samir Makhani", "Jasmine Mir", "Shun Kurosaki", "Robert Neivert", "Matias Baglieri"]
-    admin_users = []
-    for name in ADMIN_NAMES:
-        u = User.query.filter_by(name=name).first()
-        if not u:
-            continue
-        else:
-            admin_users.append(u)
-    return render_template('admin-users.html', admin_users=admin_users)
 
 
 def check_admin_password(email, password):

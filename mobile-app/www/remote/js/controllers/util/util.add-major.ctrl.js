@@ -30,14 +30,23 @@ angular.module('uguru.util.controllers')
         $scope.loader.show();
       }
 
-      $timeout(function() {
-        $ionicSideMenuDelegate.toggleRight();
-      }, 500);
+      if ($scope.root.vars.guru_mode) {
+
+        $state.go('^.guru-profile');
+
+      } else {
+
+        $timeout(function() {
+          $ionicSideMenuDelegate.toggleRight();
+        }, 500);
+
+      }
+
 
       $timeout(function() {
         $scope.loader.hide();
 
-      }, 1000);
+      }, 500);
     }
 
 
@@ -139,6 +148,14 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    $scope.removeCheckedMajor = function(major, index, event)  {
+      if (confirm('Remove ' + major.name + '?')) {
+          $scope.removeMajor(major, index);
+      }
+    }
+
+    $scope.preIndexedMajors = $scope.majors.slice(0, 10);
+
     $scope.removeMajor = function(major, index) {
 
       if ($state.current.name === 'root.become-guru' && !confirm('Remove ' + major.name + '?')) {
@@ -199,9 +216,24 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.removeUserMajorsFromMaster = function() {
+      if ($scope.static.majors && $scope.user.majors) {
+        for (var i = 0; i < $scope.static.majors; i ++) {
+          var indexMajor = $scope.static.majors[i];
+          for (var j = 0; j < $scope.user.majors; j++) {
+            var userMajor = 0;
+            if (indexMajor.id === userMajor.id) {
+              console.log($scope.static.majors.length);
+              $scope.static.majors.slice(i, i+1);
+              console.log($scope.static.majors.length);
+            }
+          }
+        }
+      }
+    }
 
     $scope.$on('$ionicView.enter', function() {
-
+      $scope.removeUserMajorsFromMaster();
 
       $timeout(function() {
 

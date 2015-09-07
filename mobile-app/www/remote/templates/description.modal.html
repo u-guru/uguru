@@ -15,7 +15,7 @@
         <ion-list class='standard-bg flex-item-c pure-g j-start bg-transparent'>
           <ion-item class='pure-u-1 item-icon-right relative description-wrapper-item' ng-hide='progress'>
                 <a ng-click='showAttachActionSheet()'>
-                  <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' ng-src='{{img_base}}./img/icons/paperclip.svg'>
+                  <img id="E2E-open-action" class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' ng-src='{{img_base}}./img/icons/paperclip.svg'>
                 </a>
                 <textarea id='description-input'  style='padding-right:3em; font-size:1.25em;' rows="10" class='full-width' ng-model='request.description' placeholder='Describe your problem (optional)'></textarea>
           </ion-item>
