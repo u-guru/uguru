@@ -22,24 +22,24 @@ describe('Workflow Test : One', function () {
 		});
 	});
 
-	// describe("Check Icon are the same",function()
-	// {
-	// 	it("has different icon",function()
-	// 	{	
-	// 		doc.checkList('university in matchingUniversities',by.tagName('img'),'src');
-	// 	});
+	describe("Check Icon are the same",function()
+	{
+		it("has different icon",function()
+		{	
+			doc.checkList('university in matchingUniversities',by.tagName('img'),'src');
+		});
 
-	// });
-	// describe("Select a university lead to home page",function()
-	// {
-	// 	it("choose a university",function()
-	// 	{
-	// 		doc.pickList('university in matchingUniversities')
-	// 	});
-	// 	it("check the current position",function()
-	// 	{
-	// 		expect(browser.getCurrentUrl()).toBe("http://localhost:8100/#/new-home");
-	// 	});
-	// });
+	});
+	describe("Select a university lead to home page",function()
+	{
+		it("choose a university",function()
+		{
+			doc.pickList('university in matchingUniversities')
+		});
+		it("check the current position",function()
+		{
+			expect(browser.getCurrentUrl()).toBe("http://localhost:8100/#/new-home");
+		});
+	});
 
 });

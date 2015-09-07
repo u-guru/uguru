@@ -19,7 +19,7 @@ exports.config = {
         {
             access: ['../test_case/workflows/access.js'],
             university: ['../test_case/workflows/university.js'],
-
+            
         },
         rootElement: "[ng-app]" ,
        // rootElement: 'uguru' ,
