@@ -750,6 +750,23 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.launchFAQModal = function() {
+
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/faq.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.faqModal = modal;
+            $scope.faqModal.show();
+            $scope.loader.show();
+            $timeout(function() {
+              $scope.loader.hide();
+            }, 1500)
+        });
+
+    }
+
 
     $scope.goToSignupFromSideBar = function() {
 
