@@ -762,9 +762,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
      $scope.$on('$ionicView.enter', function() {
 
-        // $timeout(function() {
-        //   $ionicSideMenuDelegate.toggleRight();
-        // }, 500)
+        $timeout(function() {
+          $ionicSideMenuDelegate.toggleRight();
+        }, 500)
        $timeout(function() {
         $scope.loader.hide();
        }, 1500)

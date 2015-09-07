@@ -9,9 +9,12 @@
             <h1>&nbsp;</h1>
           </a>
       </div>
-      <div class="onboarding-prop"></div>
-      <div class="onboarding-search item-icon-right">
-        <input type="search" placeholder="Search universities..."
+      <div class="onboarding-prop">
+        <h2> Find Your Community </h2>
+      </div>
+      <div class="onboarding-search input-search-ghost">
+        <input type="search" class=''
+                placeholder="Search for my university"
                 fast-matcher
                 fast-matcher-output="matchingUniversities"
                 fast-matcher-source="universities"
@@ -23,17 +26,17 @@
                 placeholder="Search Your University"
                 ng-model="search_text"
         />
-        <a ng-click='getGPSCoords()'>
+       <!--  <a ng-click='getGPSCoords()'>
           <i class='icon ion-navigate'></i>
-        </a>
+        </a> -->
       </div>
     </header>
   <div id="school-list" class="onboarding-list">
-    <ul>
+    <ul class='list list-item-border'>
       <!--Searhced Universities-->
-      <li class="school-harvard" ng-repeat='university in matchingUniversities'>
+      <li class="list-item school-harvard" ng-repeat='university in matchingUniversities'>
         <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
-          <span class="school-icon">
+          <span class="school-icon list-icon-left">
             <img ng-src="{{university.seal_url || university.forbes_url}}" style='border-bottom-left:2px solid {{university.school_color_one}}' alt=""/>
           </span>
           <span class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
@@ -43,9 +46,9 @@
       </li>
 
       <!-- Location based universities -->
-      <li class="school-harvard" ng-repeat='university in nearestUniversities'>
+      <li class="list-item school-harvard" ng-repeat='university in nearestUniversities'>
         <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
-          <span class="school-icon">
+          <span class="school-icon list-icon-left">
             <img ng-src="{{university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
           </span>
           <span class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
@@ -55,13 +58,13 @@
       </li>
 
       <!-- Initial universities -->
-      <li class="school-harvard" ng-repeat='university in initialUniversities'>
+      <li class="list-item school-harvard" ng-repeat='university in initialUniversities'>
         <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
-          <span class="school-icon">
+          <span class="school-icon list-icon-left">
             <img ng-src="{{university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
           </span>
           <span class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
-            <b>{{university.name}}<i class='university-subheader'>{{university.city}}, {{university.state}} </i></b></span>
+            <b>{{university.name}}<i>{{university.city}}, {{university.state}} </i></b></span>
           </span>
         </a>
       </li>
