@@ -13,11 +13,11 @@
     Terms
     <i class='icon ion-document'> </i>
   </ion-item>
-  <ion-item class='item-icon-right' ng-show='!user || !user.id'>
+  <ion-item class='item-icon-right' ng-click='launchSupportModal()'ng-show='!user || !user.id'>
     Support
     <i class='icon ion-help-buoy'> </i>
   </ion-item>
-  <ion-item ng-if='!user.id' class='item-icon-right' ng-click='goToSignupFromSideBar()'>
+  <ion-item ng-if='!user.id' class='item-icon-right' ng-click='launchSignupModal()'>
     Signup
     <i class='icon ion-heart'> </i>
   </ion-item>

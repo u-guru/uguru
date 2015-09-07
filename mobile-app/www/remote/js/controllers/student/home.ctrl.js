@@ -760,6 +760,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       });
 
 
+      $scope.comingSoon = function() {
+        $scope.success.show(0, 1500, 'Coming Soon!');
+      }
+
      $scope.$on('$ionicView.enter', function() {
 
         $timeout(function() {
