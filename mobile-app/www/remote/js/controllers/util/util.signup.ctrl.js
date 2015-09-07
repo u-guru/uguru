@@ -726,27 +726,108 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.launchFAQModal = function() {
-        // var animationOptions = {
-        //   "duration"       :  600, // in milliseconds (ms), default 400
-        //   "iosdelay"       :   50, // ms to wait for the iOS webview to update before animation kicks in, default 60
-        //   "androiddelay"   :  100
-        // };
-        // window.plugins.nativepagetransitions.fade(
-        //   animationOptions,
-        //   function (msg) {console.log("success: " + msg)}, // called when the animation has finished
-        //   function (msg) {alert("error: " + msg)} // called in case you pass in weird values
-        // );
-
+        //var url = BASE + 'templates/faq.modal.html';
         var url = 'https://www.uguru.me/faq/';
         var target ='_blank';
-        var options = 'location=no';
+        var options = 'location=no,hidden=no';
         if ($scope.platform.android) {
           options += ',hardwareback=no';
+          options += ',zoom=no';
         }
+        options+= ',clearcache=yes';
+        options+= ',clearsessioncache=yes';
+
         console.log("options: " + options);
 
         var ref = cordova.InAppBrowser.open(url, target, options);
+
+        ref.addEventListener('loadstop', addHeader);
+       
+        // function replaceHeaderImage() {
+        //     iabRef.executeScript({
+        //         code: "var img=document.querySelector('#header img'); img.src='http://cordova.apache.org/images/cordova_bot.png';"
+        //     }, function() {
+        //         alert("Image Element Successfully Hijacked");
+        //     });
+        // }
+
+        function addHeader() {
+          
+          ref.insertCSS({
+            code: '#intercom-launcher {display:none !important;}'
+            });
+
+          ref.executeScript({
+            code: 'var header = document.getElementById("top"); \
+              document.getElementById("top").style.backgroundColor = "#2B3234"; \
+              document.querySelectorAll("#top-menu ul li a")[0].setAttribute("class", ""); \
+              document.querySelectorAll("#top-menu ul li a span")[0].textContent = "Uguru FAQ"; \
+              document.querySelectorAll("#top-menu ul li a span")[0].style.color = "white"; \
+              document.querySelectorAll("#top-menu ul li")[0].style.textAlign = "center"; \
+              document.querySelectorAll("#top-menu ul li")[1].parentNode.removeChild(document.querySelectorAll("#top-menu ul li")[1]); \
+              document.querySelectorAll("#top-menu ul li")[1].parentNode.removeChild(document.querySelectorAll("#top-menu ul li")[1]);'
+
+              // var intercom = document.getElementById("intercom-container"); \
+              // document.body.removeChild(intercom); \
+              // var logo = document.querySelectorAll("#top-menu ul li")[1]; \
+              // var li2 = document.querySelectorAll("#top-menu ul li")[1]; \
+              // logo.parentNode.removeChild(logo); \
+              // li2.parentNode.removeChild(li2); \
+
+            }, function() {
+          });
+
+        }
+
+        // var header = document.getElementById("top");
+        // //var intercom = document.getElementById("intercom-container");
+        // //document.body.removeChild(intercom);
+        // var logo = document.querySelectorAll("#top-menu ul li")[1];
+        // logo.parentNode.removeChild(logo);
+
+        // var intercom = document.querySelectorAll("#top-menu ul li")[1];
+        // intercom.parentNode.removeChild(intercom);
+        // // document.querySelectorAll("#top-menu ul li")[1].parentNode.removeChild(document.querySelectorAll("#top-menu ul li")[1])
+        // document.querySelectorAll("#top-menu ul li a")[0].setAttribute('class', '');
+        // document.querySelectorAll("#top-menu ul li a span")[0].textContent = 'FAQ';
+        // document.querySelectorAll("#top-menu ul li")[0].style.textAlign = 'center'
+
+        // var headerText = document.querySelectorAll("#top-menu")[0]
+        // header.style.backgroundColor
+
+
+
+
+        // var divHeader = document.createElement("div");
+        // var headerTitle = document.createElement("h2");
+        // var title = document.createTextNode("FAQ");
+        // headerTitle.appendChild(title);
+        // divHeader.appendChild(headerTitle);
+
+        // var theFirstChild = document.body.firstChild;
+        // console.log("theFirstChild: " + theFirstChild);
+        // document.body.insertBefore(divHeader, theFirstChild);
+
+
     };
+
+
+    // $scope.launchFAQModal = function() {
+
+
+    //   $ionicModal.fromTemplateUrl(BASE + 'templates/faq.modal.html', {
+    //         scope: $scope,
+    //         animation: 'slide-in-up'
+    //     }).then(function(modal) {
+    //         $scope.faqModal = modal;
+    //         $scope.faqModal.show();
+    //         $scope.loader.show();
+    //         $timeout(function() {
+    //           $scope.loader.hide();
+    //         }, 1500)
+    //     });
+
+    // };
 
     $scope.launchPrivacyPolicy = function() {
 
@@ -782,130 +863,6 @@ angular.module('uguru.util.controllers')
       navigator.camera.getPicture(cameraSuccess, cameraError, cameraOptions);
     };
 
-    var src = 'myrecording.amr';
-    
-    $scope.launchMicrophone = function() {
-      console.log("pressed launchMicrophone");
-      function mediaSuccess() {
-        console.log("media succes: ");
-      }
-      function mediaError(err) {
-        console.log("media error: ", err);
-      }
-      var mediaRec = new Media(src, mediaSuccess, mediaError);
-      mediaRec.startRecord();
-
-      setTimeout(function() {
-        mediaRec.stopRecord();
-        mediaRec.play();
-
-      }, 5000);
-    };
-    var myMedia = null;
-    $scope.playMusic = function() {
-      console.log("pressed playMusic");
-      function musicSuccess() {
-        console.log("music success: ");
-
-      }
-      function musicError(err) {
-        console.log("media error: ", err);
-      }
-
-      var url = 'http://tendownloads.net/mp3files/jay-z-hello-brooklyn-marvin-gaye-sample-6604051441-5mSeqJyYsJ2hZMWol5mon6Nml6M.mp3';
-      myMedia = new Media(url, musicSuccess, musicError);
-        myMedia.play();
-
-
-
-      setTimeout(function() {
-        myMedia.seekTo(35000);
-
-
-      }, 3000);
-    };
-
-    $scope.stopMusic = function () {
-      myMedia.stop();
-      myMedia.release();
-    };
-
-    // var cardIOResponseFields = [
-    //   "card_type",
-    //   "redacted_card_number",
-    //   "card_number",
-    //   "expiry_month",
-    //   "expiry_year",
-    //   "cvv",
-    //   "zip"
-    // ];
- 
-    // function onCardIOComplete(response) {
-    //   console.log("card.io scan complete");
-    //   for (var i = 0, len = $scope.cardIOResponseFields.length; i < len; i++) {
-    //     var field = $scope.cardIOResponseFields[i];
-    //     console.log(field + ": " + response[field]);
-    //   }
-    // }
-    // function onCardIOCancel(result) {
-    //   console.log("card.io scan cancelled: " + result);
-    // }
-
-   
-    // $scope.scanCard = function(e) {
-    //   CardIO.scan({
-    //       "expiry": true,
-    //       "cvv": true,
-    //       "zip": true,
-    //       "suppressManual": true,
-    //       "suppressConfirm": false,
-    //       "hideLogo": true
-    //     },
-    //     onCardIOComplete,
-    //     onCardIOCancel
-    //   );
-    // };
-
-
-
-    // $scope.scanCard = function() {
-
-    //   function onCardIOComplete(response) {
-    //     console.log("card.io scan complete");
-    //     for (var i = 0, len = $scope.cardIOResponseFields.length; i < len; i++) {
-    //       var field = $scope.cardIOResponseFields[i];
-    //       console.log(field + ": " + response[field]);
-    //     }
-    //   }
-    //   function onCardIOCancel() {
-    //     console.log("card.io scan cancelled");
-    //   }
-
-    //   CardIO.scan({
-    //       "collect_expiry": true,
-    //       "collect_cvv": true,
-    //       "collect_zip": true,
-    //       "shows_first_use_alert": true,
-    //       "disable_manual_entry_buttons": false
-    //     },
-    //     onCardIOComplete,
-    //     onCardIOCancel
-    //   );
-        
-    // };
-
-    // $scope.launchPrivacyPolicy = function() {
-
-
-    //   $ionicModal.fromTemplateUrl(BASE + 'templates/privacy-terms.modal.html', {
-    //         scope: $scope,
-    //         animation: 'slide-in-up'
-    //     }).then(function(modal) {
-    //         $scope.termsModal = modal;
-    //         $scope.termsModal.show();
-    //     });
-
-    // }
 
     $scope.launchSupportDescriptionModal = function() {
 
@@ -919,6 +876,7 @@ angular.module('uguru.util.controllers')
         });
 
     }
+
 
     $scope.goToSignupFromSideBar = function() {
 

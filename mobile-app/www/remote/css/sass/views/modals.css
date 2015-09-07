@@ -1,0 +1,16 @@
+.terms-modal, .faq-modal {
+  color: #2B3234; }
+  .terms-modal p, .faq-modal p {
+    font-size: 13px;
+    margin: 10px 0px; }
+  .terms-modal .header-nav, .faq-modal .header-nav {
+    position: relative; }
+    .terms-modal .header-nav a, .faq-modal .header-nav a {
+      display: inline-block;
+      position: absolute;
+      left: 15px;
+      top: 15px; }
+  .terms-modal .has-header, .faq-modal .has-header {
+    top: 54px; }
+
+/*# sourceMappingURL=modals.css.map */

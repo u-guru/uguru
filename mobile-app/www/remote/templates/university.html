@@ -1,6 +1,5 @@
 <ion-view class='uguru-view university-view' ng-controller='AddUniversityController'>
 <section id="school" class="onboarding" >
-  <!-- <header class="header-back" style='background: url("{{img_base}}./img/onboarding/campus.jpg") center/cover;'> -->
     <header>
       <div class="header-nav">
         <a class="header-nav-back" ng-click='goToAccess()'>
@@ -10,9 +9,12 @@
             <h1>&nbsp;</h1>
           </a>
       </div>
-      <div class="onboarding-prop"></div>
-      <div class="onboarding-search item-icon-right">
-        <input type="search" placeholder="Search universities..."
+      <div class="onboarding-prop">
+        <h2> Find Your Community </h2>
+      </div>
+      <div class="onboarding-search input-search-ghost">
+        <input type="search" class=''
+                placeholder="Search for my university"
                 fast-matcher
                 fast-matcher-output="matchingUniversities"
                 fast-matcher-source="universities"
@@ -24,17 +26,17 @@
                 placeholder="Search Your University"
                 ng-model="search_text"
         />
-        <a ng-click='getGPSCoords()'>
+       <!--  <a ng-click='getGPSCoords()'>
           <i class='icon ion-navigate'></i>
-        </a>
+        </a> -->
       </div>
     </header>
   <div id="school-list" class="onboarding-list">
-    <ul>
+    <ul class='list list-item-border'>
       <!--Searhced Universities-->
-      <li class="school-harvard" ng-repeat='university in matchingUniversities'>
+      <li class="list-item school-harvard" ng-repeat='university in matchingUniversities'>
         <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
-          <span class="school-icon">
+          <span class="school-icon list-icon-left">
             <img ng-src="{{university.seal_url || university.forbes_url}}" style='border-bottom-left:2px solid {{university.school_color_one}}' alt=""/>
           </span>
           <span class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
@@ -44,9 +46,9 @@
       </li>
 
       <!-- Location based universities -->
-      <li class="school-harvard" ng-repeat='university in nearestUniversities'>
+      <li class="list-item school-harvard" ng-repeat='university in nearestUniversities'>
         <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
-          <span class="school-icon">
+          <span class="school-icon list-icon-left">
             <img ng-src="{{university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
           </span>
           <span class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
@@ -56,13 +58,13 @@
       </li>
 
       <!-- Initial universities -->
-      <li class="school-harvard" ng-repeat='university in initialUniversities'>
+      <li class="list-item school-harvard" ng-repeat='university in initialUniversities'>
         <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
-          <span class="school-icon">
+          <span class="school-icon list-icon-left">
             <img ng-src="{{university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
           </span>
           <span class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
-            <b>{{university.name}}<i class='university-subheader'>{{university.city}}, {{university.state}} </i></b></span>
+            <b>{{university.name}}<i>{{university.city}}, {{university.state}} </i></b></span>
           </span>
         </a>
       </li>
@@ -71,101 +73,3 @@
   </div>
 </section>
 </ion-view>
-<!--
-<ion-view hide-nav-bar='true' class='university' ng-controller='AddUniversityController'>
-  <ion-content class='white-text subdark-bg university-view-2' scroll='false' ng-show='view === 2' style='top:0px;'>
-    <div class='pure-g'>
-      <div class="list pure-u-1">
-        <label class="item item-input bg-transparent university-label no-margin no-border no-box-shadow view-2">
-              <i class='icon ion-search onboarding-search-icon' ng-hide="search_text.length > 0"></i>
-              <input id='university-input' type="text" class='ng-class:{"align-left-start":search_text.length > 0}'
-              fast-matcher
-                      fast-matcher-source="universities"
-                      fast-matcher-output="matchingUniversities"
-                      fast-matcher-properties="title, keywords"
-                      fast-matcher-any-word="true"
-                      fast-matcher-limit="5"
-                      fast-matcher-preserve-order="true"
-                      fast-matcher-case-insensitive="true"
-                      placeholder="Search Your University"
-                      ng-model="search_text"
-                      />
-        </label>
-      </div>
-    </div>
-    <ion-list>
-      <ion-scroll>
-      <ion-item class='item-button-right request-form-item'  id='location-filled-item' ng-repeat="university in matchingUniversities" ng-click="universitySelected(university, $event)">
-                  <p class='semibold'>{{university.title}}<br>
-                    <span class='nano-text'>
-
-                      {{university.city}}, {{university.state}}
-                    </span>
-                  </p>
-                <div class='button button-clear' style='margin-right: -8px; font-size:80%' ng-show='university.miles'>
-                  {{university.miles}}
-                </div>
-      </ion-item>
-      <ion-item class='item-button-right request-form-item'  id='location-filled-item' ng-repeat="university in static.nearest_universities.slice(0, 8)" ng-click="universitySelected(university, $event)">
-                  <p class='semibold'>{{university.title}}<br>
-                    <span class='nano-text'>
-
-                      {{university.city}}, {{university.state}}
-                    </span>
-                  </p>
-                <div class='button button-clear nano-text blue' style='margin-right: -8px; font-size:80%' ng-show='university.miles'>
-                  {{university.miles}}m
-                </div>
-      </ion-item>
-    </ion-list>
-    </ion-scroll>
-    <ion-footer-bar style='margin-bottom: 15%;' class='transparent-bg'>
-      <button class='button button-full button-clear uppercase opacity-1-2 uppercase white-text opacity-1-2 cancel-clear-button'  ng-click='toggleView(1)'>Cancel</button>
-    </ion-footer-bar>
-  </ion-content>
-  <ion-content class='white-text dark-bg' scroll='false' ng-show='view === 1' style='top:0px;'>
-      <div class='pure-g-c flex-column flex-space-between'>
-        <div class='flex-item-c center'>
-        </div>
-        <div class='flex-item-c center j-start'>
-
-          <div class='pure-g'>
-
-            <div class='pure-u-1'>
-              <p class='standard university-header'>
-                I am a
-                <select ng-model="selectedBg" id='role-select' class='ng-class:{"student-width": selectedBg.name === "student", "professional-width": selectedBg.name === "professional", "hs-student-width": selectedBg.name === "HS student"}' ng-change="unFocusSelect()" ng-options="background.name for background in user_bgs">
-
-                </select>
-                <span id="E2E-student" ng-show='selectedBg.name==="student"'>attending</span><span id="E2E-prof" ng-show='selectedBg.name==="professional"'>who attended</span><span id="E2E-hs" ng-show='selectedBg.name==="HS student"'>aspiring to attend</span>
-              </p>
-            </div>
-
-
-          </div>
-        </div>
-
-        <div class='flex-item-c j-start'>
-          <div class='pure-g'>
-                  <div class="list pure-u-1 padding-half-horizontal">
-                    <ion-item id='E2E-manuelUni' class='item-icon-left fake-university-input' ng-click='toggleView(2)' style='font-size:100%'>
-                        <i class='icon ion-search'></i>
-                        <p class='fake-placeholder-text'>
-                          Enter your university
-                        </p>
-                      </span>
-                    </label>
-                  </div>
-          </div>
-
-        </div>
-
-        <div class='flex-item-c j-center center' ng-show='platform.mobile'>
-          <div class='pure-u-1 padding-2em item-icon-right'>
-            <button id= 'E2E-university' class='button button-full light-blue-bg button-footer white-text' ng-click='getLocation()'>Search By Location <i class='icon ion-navigate font-small' style='top:3px'> </i></button>
-          </div>
-        </div>
-
-      </div>
-  </ion-content>
-</ion-view> -->

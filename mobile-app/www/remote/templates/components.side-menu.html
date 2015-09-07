@@ -6,56 +6,36 @@
     Student Mode
     <i class='icon ion-arrow-swap'> </i>
   </ion-item>
-  <ion-item class='item-icon-right hide ng-class:{"show":!root.vars.guru_mode}' ng-click='goToGuru()'>
-    Guru Mode
-    <i class='icon ion-arrow-swap'> </i>
-  </ion-item>
-  <ion-item class='item-icon-right' ng-click='launchCamera()'>
-    Camera
-    <i class='icon ion-document'> </i>
-  </ion-item>
-  <ion-item class='item-icon-right' ng-click='launchMicrophone()'>
-    Record
-    <i class='icon ion-document'> </i>
-  </ion-item>
-  <ion-item class='item-icon-right' ng-click='playMusic()'>
-    Playback
-    <i class='icon ion-document'> </i>
-  </ion-item>
-    <ion-item class='item-icon-right' ng-click='stopMusic()'>
-    Stop music
-    <i class='icon ion-document'> </i>
-  </ion-item>
-  <ion-item  class='item-icon-right'>
-  <button id='scanBtn' ng-click='scanCard()'>scan now</button>
-    Card
-    <i class='icon ion-document'> </i>
-  </ion-item>
-  <ion-item class='item-icon-right' ng-click='launchPrivacyPolicy()'>
-    Terms
-    <i class='icon ion-document'> </i>
-  </ion-item>
   <ion-item class='item-icon-right' ng-click='launchFAQModal()'>
     FAQ
     <i class='icon ion-help'> </i>
+  </ion-item>
+
+  <ion-item class='item-icon-right' ng-click='launchPrivacyPolicy()'>
+    Terms
+    <i class='icon ion-document'> </i>
   </ion-item>
   <ion-item class='item-icon-right' ng-show='!user || !user.id'>
     Support
     <i class='icon ion-help-buoy'> </i>
   </ion-item>
-  <ion-item class='item-icon-right' ng-click='goToSignupFromSideBar()'>
+  <ion-item ng-if='!user.id' class='item-icon-right' ng-click='goToSignupFromSideBar()'>
     Signup
     <i class='icon ion-heart'> </i>
   </ion-item>
-  <ion-item class='item-icon-right' ng-show='user && user.id'
+  <ion-item class='item-icon-right' ng-if='true || user && user.id'
   ng-click='logoutUser()'>
     Logout
     <i class='icon ion-power'> </i>
   </ion-item>
-  <ion-item class='item-icon-right'
+  <ion-item class='item-icon-right' ng-if='user.id && user.is_admin'
   ng-click='resetAccount()'>
     Delete Account
     <i class='icon ion-close'> </i>
+  </ion-item>
+  <ion-item class='item-icon-right hide ng-class:{"show":!root.vars.guru_mode && user.is_a_guru}' ng-click='goToGuru()'>
+    Guru Mode
+    <i class='icon ion-arrow-swap'> </i>
   </ion-item>
 </ion-list>
 </ion-view>

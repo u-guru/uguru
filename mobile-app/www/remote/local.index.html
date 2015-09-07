@@ -3,8 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-     <!--    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
- -->
     <title></title>
     <script type="text/javascript">
       var start_dom_time = (new Date()).getTime();
@@ -25,24 +23,28 @@
       }
     </script>
 
+    <!-- ARCHIVE To get rid of soon! -->
     <link href="remote/css/ionic.app.min.css" rel="stylesheet">
-    <link href="remote/css/pure-min.css" rel="stylesheet">
-    <link href="remote/css/animate.css" rel="stylesheet">
+    <link href="remote/css/archive/pure-min.css" rel="stylesheet">
+    <link href="remote/css/archive/animate.css" rel="stylesheet">
     <link href="remote/css/sass/new.css" rel="stylesheet">
-    <!-- <link href="remote/css/web.css" rel="stylesheet"> -->
-    <!-- <link href="remote/css/uguru-animate.css" rel="stylesheet"> -->
-    <!-- <link href="remote/css/android.css" rel="stylesheet"> -->
-    <!-- <link href="remote/css/ios.css" rel="stylesheet"> -->
-
+    <link href="remote/css/archive/web.css" rel="stylesheet">
+    <link href="remote/css/archive/android.css" rel="stylesheet">
+    <link href="remote/css/archive/ios.css" rel="stylesheet">
     <link href="remote/css/sass/components.css" rel="stylesheet">
-    <link href="remote/css/spinning-wheel.css" rel="stylesheet">
-    <link href="remote/css/responsive.css" rel="stylesheet">
-    <link href="remote/css/sass/responsive.css" rel="stylesheet">
+    <link href="remote/css/archive/spinning-wheel.css" rel="stylesheet">
+    <link href="remote/css/archive/responsive.css" rel="stylesheet">
+    <!-- end archive -->
+
+    <!-- The main css file -->
     <link href="remote/css/sass/style.css" rel="stylesheet">
+    <!-- Page specific -->
     <link href="remote/css/sass/views/access.css" rel="stylesheet">
     <link href="remote/css/sass/views/home.css" rel="stylesheet">
     <link href="remote/css/sass/views/side-menu.css" rel="stylesheet">
     <link href="remote/css/sass/views/university.css" rel="stylesheet">
+    <link href="remote/css/sass/views/modals.css" rel="stylesheet">
+    <link href="remote/css/sass/samir.css" rel="stylesheet">
 
     <!-- <link href="remote/css/gpa.css" rel="stylesheet"> -->
     <!-- <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,900' rel='stylesheet' type='text/css'> -->
@@ -323,87 +325,23 @@
 
             </ion-side-menu-content>
 
-            <ion-side-menu side="right" width='window.width * 0.5'>
+            <ion-side-menu side="right" width='window.width * 0.8'>
               <div ng-include="'remote/templates/components.side-menu.html'"></div>
             </ion-side-menu>
       </ion-side-menus>
     </script>
 
-    <script id="templates/student-root.html" type="text/ng-template">
-      <ion-nav-view animation="slide-left-right">
-      </ion-nav-view>
-    </script>
-    <script id="templates/web-root.html" type="text/ng-template">
-      <ion-nav-view animation="slide-left-right">
-      </ion-nav-view>
-    </script>
 
-    <script id="templates/guru-root.html" type="text/ng-template">
-      <ion-nav-view animation="slide-left-right">
-      </ion-nav-view>
-    </script>
 
-    <script id="templates/wizard-root.html" type="text/ng-template">
-      <ion-nav-view animation="slide-left-right">
-      </ion-nav-view>
-    </script>
 
-    <script id="templates/gettingStartedPopover.html" type="text/ng-template">
-      <ion-popover-view id='student-web-popover' class='uguru-popover platform-ios platform web platform-arrow'>
-        <ion-header-bar>
-          <h1 class="title">Tap to get started.</h1>
-        </ion-header-bar>
-        <ion-content scroll='false' class='pure-white'>
-          <div class="pure-g-c flex-column">
-            <div class="flex-item-c">
-              <p>Just enter a course code. Uguru uses
-              your university course catalogs to help
-              keep things simple</p>
-            </div>
-            <div class="flex-item-c">
-              <button ng-click="closePopover();"class='button button-full button-positive button-popover'>Got it.</button>
-            </div>
-          </div>
-        </ion-content>
-      </ion-popover-view>
+    <script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+        <script>
+          WebFont.load({
+            google: {
+              families: ['Source Sans Pro:200,300,400,600,700,900']
+            }
+          });
     </script>
-
-    <script id="templates/generalPopup.html" type="text/ng-template">
-      <ion-popover-view id='general-popup' class='uguru-popover platform-ios platform web platform-arrow'>
-        <ion-header-bar>
-          <h1 class="title">{{genPopup.options.header}}</h1>
-        </ion-header-bar>
-        <ion-content scroll='false' class='pure-white {{genPopup.options.targetName}}'>
-          <div class="pure-g-c flex-column">
-            <div class="flex-item-c">
-              <p>{{genPopup.options.body}}</p>
-            </div>
-            <div class="flex-item-c">
-              <button ng-click="closeGenPopup();"class='button button-full button-positive button-popover'>{{genPopup.options.closeButtonText}}</button>
-            </div>
-          </div>
-        </ion-content>
-      </ion-popover-view>
-    </script>
-
-    <script id="templates/gettingStartedRequestHelpPopover.html" type="text/ng-template">
-      <ion-popover-view id='student-request-help-popover' class='uguru-popover platform-ios platform web platform-arrow'>
-        <ion-header-bar>
-          <h1 class="title">Tap to request help.</h1>
-        </ion-header-bar>
-        <ion-content scroll='false' class='pure-white'>
-          <div class="pure-g-c flex-column">
-            <div class="flex-item-c">
-              <p>Any time you need help in <strong>{{user.student_courses[0].short_name}}</strong>,<br> we got your back!</p>
-            </div>
-            <div class="flex-item-c">
-              <button ng-click="closePopoverTwo();"class='button button-full button-positive button-popover'>Got it.</button>
-            </div>
-          </div>
-        </ion-content>
-      </ion-popover-view>
-    </script>
-
 
   </body>
 
