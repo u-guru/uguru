@@ -61,6 +61,7 @@
 	transform: none;
 }
 @mixin pos-xy($xpos, $ypos) {
+	position: absolute;
 	top: percentage($ypos);
 	left: percentage($xpos);
 	-webkit-transform: translate(-(percentage($xpos)),-(percentage($ypos)));
@@ -176,4 +177,4 @@ $eggplant-mute: #907D9E;
 
 $icon-bg: no-repeat center center;
 
-$font: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+$font: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;

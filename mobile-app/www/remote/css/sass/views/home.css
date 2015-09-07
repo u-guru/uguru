@@ -2,8 +2,12 @@
   position: relative; }
   .home-view .header-nav .header-nav-next {
     position: absolute;
-    top: 10px;
+    top: 12px;
+    opacity: 0.7;
     right: 15px;
-    font-size: 133%; }
+    font-size: 110%; }
+
+.uguru-view .request#request-empty .become-guru-button {
+  background: #55A4B7; }
 
 /*# sourceMappingURL=home.css.map */

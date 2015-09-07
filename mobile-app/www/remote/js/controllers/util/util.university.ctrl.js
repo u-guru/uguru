@@ -61,23 +61,22 @@ angular.module('uguru.util.controllers', [])
       //update user to locat storage
       $scope.rootUser.updateLocal($scope.user);
 
-      var successCallback = function() {
+      var payload = {
+        'university_id': $scope.user.university_id
+      };
 
-
-        payload = {
-          'university_id': $scope.user.university_id
-        };
-
-        //save university
-        var postUniversitySelectedCallback = function() {
+      //save university
+      var postUniversitySelectedCallback = function() {
           $timeout(function() {
             $scope.loader.hide();
             $ionicViewSwitcher.nextDirection('forward');
               $state.go('^.home')
           }, 1000);
-        }
-        $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
-      };
+      }
+
+
+      $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
+
     };
 
     $scope.getGPSCoords = function() {
