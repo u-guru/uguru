@@ -9,8 +9,8 @@ var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
   BASE_URL = 'http://localhost:8100';
-  REST_URL = 'http://localhost:5000';
-   // var REST_URL = 'http://uguru-rest.herokuapp.com'
+ // REST_URL = 'http://localhost:5000';
+  REST_URL = 'https://uguru-rest.herokuapp.com'
 } else {
   img_base = '/static/'
 }

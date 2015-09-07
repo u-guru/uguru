@@ -16,14 +16,23 @@ var global = function() {
   };
   /*************************************
   *isListEmpty 
-  *arg : name of ng-repeater
-  *desc: check if the list is showed.
+  *arg :          name1 of ng-repeater
+  *      [Option] name2 of ng-repeater
+  *desc: check if the list is showed. 
+         and the list 2 you don't wanna show 
+         when list 1 is showing
   **************************************/
-  this.isListShow = function(name)
+  this.isListShow = function(name1,name2)
   {
-    var List = element(by.repeater(name));
-        browser.wait(EC.visibilityOf(List),3000);
-        expect(List.isDisplayed()).toBe(true);
+    var List1 = element(by.repeater(name1));
+    var List2 = null
+    browser.wait(EC.visibilityOf(List1),3000);
+    expect(List1.isDisplayed()).toBe(true);
+
+    if (name2 != null){
+        List2 = element(by.repeater(name2));
+        expect(List2.isDisplayed()).toBe(false,"Element : "+ name2 +" should be hidden");
+    }
   }
   /****************************************************
   * checkList 
