@@ -750,8 +750,18 @@ angular.module('uguru.util.controllers')
 
     }
 
-    $scope.launchFAQModal = function() {
+    $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+      }).then(function(modal) {
+          $scope.signupModal = modal;
+    });
 
+    $scope.launchSignupModal = function() {
+        $scope.signupModal.show();
+    }
+
+    $scope.launchFAQModal = function() {
 
       $ionicModal.fromTemplateUrl(BASE + 'templates/faq.modal.html', {
             scope: $scope,
@@ -812,37 +822,6 @@ angular.module('uguru.util.controllers')
         $scope.root.vars.guru_mode = false;
       }, 1000)
     }
-
-    $scope.closeSignupModal = function(callback) {
-      $scope.loader.hide();
-      if ($scope.platform.mobile && $scope.signupModal &&  $scope.root.keyboard.isVisible()) {
-        $scope.root.keyboard.close();
-        $timeout(function() {
-          $scope.signupModal.hide();
-          if (callback) {
-            callback();
-          }
-        }, 300)
-      } else {
-        $scope.signupModal.hide();
-        if (callback) {
-          callback();
-        }
-      }
-      $scope.resetSignupForm();
-
-    }
-
-
-
-    $scope.comingSoon = function() {
-      $scope.success.show(0, 1500, 'Coming Soon!');
-    }
-
-
-
-
-
 
     $scope.goToGuruMode = function() {
 
