@@ -605,21 +605,10 @@ angular.module('uguru.util.controllers')
         $scope.user.university_id = null;
         $scope.user.university = null;
         $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
-        $ionicSideMenuDelegate.toggleRight();
+
         $scope.logoutUser();
         $localstorage.setObject('user', $scope.user);
         $scope.goToBeginning();
-        // User.clearAttr($scope.user, $scope.user.id).then(
-        //   function(user) {
-
-
-        //   },
-        //   function(err) {
-        //     console.log(err)
-        //   });
-
-
-        // $scope.loader.show();
       }
     }
 
@@ -759,6 +748,7 @@ angular.module('uguru.util.controllers')
 
     $scope.launchSignupModal = function() {
         $scope.signupModal.show();
+
     }
 
     $scope.launchFAQModal = function() {
@@ -1032,6 +1022,9 @@ angular.module('uguru.util.controllers')
                     $scope.loader.hide();
                     $scope.success.show(0, 1000, 'Login Successful!');
                     $scope.settings.icons.profile = true;
+                    if ($scope.signupModal && $scope.signupModal.isShown()) {
+                      $scope.signupModal.hide();
+                    }
                   }
                   $scope.postFbGraphApiSuccess(success, postSuccessCallback)
                 }
@@ -1068,6 +1061,9 @@ angular.module('uguru.util.controllers')
             $scope.loader.hide();
             $scope.success.show(0, 1500, 'Login Successful!');
             $scope.settings.icons.profile = true;
+            if ($scope.signupModal && $scope.signupModal.isShown()) {
+              $scope.signupModal.hide();
+            }
         }
         $scope.facebookApiGetDetails(successCallback);
         console.log('Getting Facebook information...');
@@ -1078,9 +1074,14 @@ angular.module('uguru.util.controllers')
         $scope.error = error;
         console.log('FB CONNECT FAILED...');
         console.log('Error from logging from facebook:' + JSON.stringify(error));
+        $scope.success.show(0, 1500, 'Something weird happened.. Please contact support!');
         $cordovaFacebook.logout();
         if ($cordovaFacebook) {
           $cordovaFacebook.logout();
+        }
+
+        if ($scope.signupModal && $scope.signupModal.isShown()) {
+            $scope.signupModal.hide();
         }
 
 

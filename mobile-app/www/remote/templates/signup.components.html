@@ -3,7 +3,7 @@
 <section id="account" class="onboarding full-xy">
   <header>
     <div class="header-nav">
-      <a class="header-nav-back" href="signupModal.close()">
+      <a class="header-nav-back" ng-click="signupModal.hide()">
         <i class='icon ion-chevron-down'>
         </i>
       </a>
@@ -14,9 +14,9 @@
     <input class="input-ghost" type="text" placeholder="Name">
     <input class="input-ghost" type="email" placeholder="Email">
     <input class="input-ghost" type="password" placeholder="Password">
-    <a id="tos" href="">Terms &amp; Conditions</a>
+    <a id="tos" ng-click='launchPrivacyPolicy()'>Terms &amp; Conditions</a>
     <div id="social-login">
-      <button class="weight-600 bg-fb">Sign in with Facebook</button>
+      <button class="weight-600 bg-fb" ng-click='connectWithFacebook()'>Sign in with Facebook</button>
     </div>
   </div>
 </section>
