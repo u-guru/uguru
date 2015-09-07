@@ -21,15 +21,15 @@
     Signup
     <i class='icon ion-heart'> </i>
   </ion-item>
-  <ion-item class='item-icon-right' ng-if='true || user && user.id'
-  ng-click='logoutUser()'>
-    Logout
-    <i class='icon ion-power'> </i>
-  </ion-item>
   <ion-item class='item-icon-right' ng-if='user.id && user.is_admin'
   ng-click='resetAccount()'>
     Delete Account
     <i class='icon ion-close'> </i>
+  </ion-item>
+  <ion-item class='item-icon-right' ng-if='true || user && user.id'
+  ng-click='logoutUser()'>
+    Logout
+    <i class='icon ion-power'> </i>
   </ion-item>
   <ion-item class='item-icon-right hide ng-class:{"show":!root.vars.guru_mode && user.is_a_guru}' ng-click='goToGuru()'>
     Guru Mode
