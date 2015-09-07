@@ -28,6 +28,9 @@ $charcoal: #2B3234;
     .onboarding#account #account-form input {
         margin: 30px 0 15px;
         font-size: 20px;
+        &.name-input {
+            text-transform: capitalize;
+        }
     }
 
 
@@ -38,7 +41,7 @@ $charcoal: #2B3234;
 
     .input-ghost {
         box-sizing: border-box !important;
-        display: block !important;
+        display: block;
         width: 100%;
         border: 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.5);

@@ -262,8 +262,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.signupForm = {
-      first_name: null,
-      last_name: null,
+      full_name: null,
       email: null,
       password:null
     }
@@ -1262,7 +1261,7 @@ angular.module('uguru.util.controllers')
           return re.test(email);
       }
 
-      if (!formDict.first_name) {
+      if (!formDict.full_name) {
         $scope.success.show(0,2000,'Please fill in all fields!');
         document.getElementsByName('signup-first-name')[0].focus();
 
@@ -1273,7 +1272,14 @@ angular.module('uguru.util.controllers')
         }, 950);
         return false;
       } else {
-        $scope.user.first_name = $scope.signupForm.first_name;
+        var nameComponents = $scope.signupForm.full_name.split(' ')
+        var first_name = nameComponents[0];
+        var last_name = nameComponents[nameComponents.length - 1];
+        $scope.signupForm.first_name = first_name;
+        $scope.signupForm.last_name = last_name;
+        $scope.user.first_name = first_name
+        $scope.user.last_name = last_name
+        $scope.user.name = first_name + ' ' + last_name;
       }
 
       if (!formDict.last_name) {
@@ -1365,24 +1371,10 @@ angular.module('uguru.util.controllers')
           $localstorage.setObject('user', $scope.user);
 
           $scope.success.show(0, 1250, 'Login Successful!');
-          $scope.settings.icons.profile = true;
-          $scope.root.vars.settings = {icons : {profile : true}};
 
-
-          if ($state.current.name === 'root.home') {
-            $timeout(function() {
-              $scope.loader.hide();
-            }, 500);
-            $ionicHistory.goBack();
+          if ($scope.signupModal.isShown()) {
+            $scope.signupModal.hide();
           }
-
-          if ($state.current.name === 'root.signup') {
-            $timeout(function() {
-              $ionicSideMenuDelegate.toggleRight();
-            }, 500);
-          }
-
-
 
       }, function(err) {
         if (err.status === 401) {
@@ -1394,10 +1386,6 @@ angular.module('uguru.util.controllers')
 
     $scope.completeSignup = function() {
 
-      if ($scope.loginMode) {
-        $scope.loginUser();
-        return;
-      }
 
       if (!$scope.user.fb_id && !$scope.validateSignupForm()) {
         return;
@@ -1422,23 +1410,11 @@ angular.module('uguru.util.controllers')
           $scope.user.guru_mode = false;
           $localstorage.setObject('user', $scope.user);
 
-
-          $scope.settings.icons.profile = true;
-          $scope.root.vars.settings = {icons : {profile : true}}
-
-
-          if ($state.current.name === 'root.signup') {
-            $scope.success.show(0, 1000, 'Account Successfully Created!');
+          $scope.success.show(0, 1500, 'Account Successfully Created')
+          if ($scope.signupModal.isShown()) {
             $timeout(function() {
-              $ionicSideMenuDelegate.toggleRight();
-            }, 500);
-          }
-
-          if ($state.current.name === 'root.home') {
-            $scope.loader.show();
-            if ($scope.signupModal && $scope.signupModal.isShown()) {
               $scope.signupModal.hide();
-            }
+            }, 750)
           }
           //if we are about to create a request
           if ($state.current.name === 'root.student-request') {

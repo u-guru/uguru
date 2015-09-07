@@ -19,9 +19,11 @@
 .signup-modal .onboarding#account #account-form input {
   margin: 30px 0 15px;
   font-size: 20px; }
+  .signup-modal .onboarding#account #account-form input.name-input {
+    text-transform: capitalize; }
 .signup-modal .input-ghost {
   box-sizing: border-box !important;
-  display: block !important;
+  display: block;
   width: 100%;
   border: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
