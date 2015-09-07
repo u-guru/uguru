@@ -767,6 +767,19 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.launchSupportModal = function() {
+
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/support.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.supportModal = modal;
+            $scope.supportModal.show();
+        });
+
+    }
+
 
     $scope.goToSignupFromSideBar = function() {
 
