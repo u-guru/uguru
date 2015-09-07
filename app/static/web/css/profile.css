@@ -366,136 +366,103 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 
 #page-moola a, #page-moola h1 {
   color: #81B566; }
-
 #page-moola a:active, #page-moola a:focus, #page-moola a:hover {
   color: #92AC84; }
-
 #page-moola body {
   background: url() center center; }
-
 #page-moola button {
   background: #81B566 !important; }
-
 #page-moola button:active, #page-moola button:focus, #page-moola button:hover {
   background: #92AC84 !important;
   color: white; }
-
 #page-moola .btn-ghost {
   border: 2px solid #81B566 !important;
   background: transparent !important;
   color: #81B566 !important; }
-
 #page-moola .btn-ghost:active, #page-moola .btn-ghost:focus, #page-moola .btn-ghost:hover {
   border-color: #92AC84 !important;
   background: #92AC84 !important;
   color: white !important; }
-
 #page-moola #top #top-logo svg path {
   fill: #81B566; }
-
 #page-moola #top #top-logo:active svg path, #page-moola #top #top-logo:focus svg path, #page-moola #top #top-logo:hover svg path {
   fill: #92AC84; }
 
 #page-lake a, #page-lake h1 {
   color: #50A5DD; }
-
 #page-lake a:active, #page-lake a:focus, #page-lake a:hover {
   color: #6F98B5; }
-
 #page-lake body {
   background: url() center center; }
-
 #page-lake button {
   background: #50A5DD !important; }
-
 #page-lake button:active, #page-lake button:focus, #page-lake button:hover {
   background: #6F98B5 !important;
   color: white; }
-
 #page-lake .btn-ghost {
   border: 2px solid #50A5DD !important;
   background: transparent !important;
   color: #50A5DD !important; }
-
 #page-lake .btn-ghost:active, #page-lake .btn-ghost:focus, #page-lake .btn-ghost:hover {
   border-color: #6F98B5 !important;
   background: #6F98B5 !important;
   color: white !important; }
-
 #page-lake #top #top-logo svg path {
   fill: #50A5DD; }
-
 #page-lake #top #top-logo:active svg path, #page-lake #top #top-logo:focus svg path, #page-lake #top #top-logo:hover svg path {
   fill: #6F98B5; }
 
 #page-eggplant a, #page-eggplant h1 {
   color: #9A5BC5; }
-
 #page-eggplant a:active, #page-eggplant a:focus, #page-eggplant a:hover {
   color: #907D9E; }
-
 #page-eggplant body {
   background: url() center center; }
-
 #page-eggplant button {
   background: #9A5BC5 !important; }
-
 #page-eggplant button:active, #page-eggplant button:focus, #page-eggplant button:hover {
   background: #907D9E !important;
   color: white; }
-
 #page-eggplant .btn-ghost {
   border: 2px solid #9A5BC5 !important;
   background: transparent !important;
   color: #9A5BC5 !important; }
-
 #page-eggplant .btn-ghost:active, #page-eggplant .btn-ghost:focus, #page-eggplant .btn-ghost:hover {
   border-color: #907D9E !important;
   background: #907D9E !important;
   color: white !important; }
-
 #page-eggplant #top #top-logo svg path {
   fill: #9A5BC5; }
-
 #page-eggplant #top #top-logo:active svg path, #page-eggplant #top #top-logo:focus svg path, #page-eggplant #top #top-logo:hover svg path {
   fill: #907D9E; }
 
 #page-cerise a, #page-cerise h1 {
   color: #DB1988; }
-
 #page-cerise a:active, #page-cerise a:focus, #page-cerise a:hover {
   color: #C56E9C; }
-
 #page-cerise body {
   background: url() center center; }
-
 #page-cerise button {
   background: #DB1988 !important; }
-
 #page-cerise button:active, #page-cerise button:focus, #page-cerise button:hover {
   background: #C56E9C !important;
   color: white; }
-
 #page-cerise .btn-ghost {
   border: 2px solid #DB1988 !important;
   background: transparent !important;
   color: #DB1988 !important; }
-
 #page-cerise .btn-ghost:active, #page-cerise .btn-ghost:focus, #page-cerise .btn-ghost:hover {
   border-color: #C56E9C !important;
   background: #C56E9C !important;
   color: white !important; }
-
 #page-cerise #top #top-logo svg path {
   fill: #DB1988; }
-
 #page-cerise #top #top-logo:active svg path, #page-cerise #top #top-logo:focus svg path, #page-cerise #top #top-logo:hover svg path {
   fill: #C56E9C; }
 
 #overlay .top-link-menu {
   color: white !important;
   border-color: white !important; }
-
 #overlay .top-link-menu:active, #overlay .top-link-menu:focus, #overlay .top-link-menu:hover {
   color: #40484B !important;
   background: white !important;
@@ -714,10 +681,10 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
   #profile {
     margin-top: 62px;
     padding-top: 0 !important; } }
-
 @media screen and (min-width: 48em) {
   #mobile-contact {
     display: none !important; }
+
   #profile #profile-desc {
     position: relative; }
     #profile #profile-desc #profile-bars #profile-links {
@@ -733,7 +700,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
       bottom: 0;
       font-size: 28px !important;
       background: rgba(255, 255, 255, 0.2); } }
-
 @media screen and (min-width: 1280px) {
   #profile {
     position: absolute;
@@ -751,7 +717,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
     position: absolute;
     width: 100%;
     overflow: hidden; } }
-
 @media screen and (min-width: 80em) {
   #profile {
     position: absolute;
@@ -764,3 +729,5 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
     transform: translate(-50%, -50%); }
     #profile #profile-info .profile-inside #profile-courses ul li {
       width: 33.33333%; } }
+
+/*# sourceMappingURL=profile.css.map */

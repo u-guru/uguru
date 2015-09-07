@@ -82,7 +82,14 @@
             }
         }
 
-        this.next = function() { return this.showPane(current_pane+1, true); };
+        this.next = function()
+        { 
+            if(current_pane+1 < 4)
+            return this.showPane(current_pane+1, true); 
+            return this.showPane(current_pane, true); 
+
+        };
+
         this.prev = function() { return this.showPane(current_pane-1, true); };
 
 
@@ -171,14 +178,27 @@
     });
 
     //handles all the scroll shifts
-    $('html').on('mousewheel', function (e) {
-        console.log('mousewheel');
-        var delta = e.originalEvent.wheelDelta;
+    $('html').on('mousewheel wheel', function (e) {
+
+        console.log('mousewheel ');
+        var delta
+
+        if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1)
+        {
+            // console.log('mousewheel X '+  e.originalEvent.deltaX  );
+            // console.log('mousewheel Y '+  e.originalEvent.deltaY  );
+            // console.log('mousewheel Z '+  e.originalEvent.deltaZ  );
+            delta = e.originalEvent.deltaY * -30
+        }
+        else
+         delta = e.originalEvent.wheelDelta;
+       
 
         currentIndex = $('#slide-breadcrumbs li a').index($('#slide-breadcrumbs li a.active'));
-
+        // close first
         //if mousewheel is going left
         if (delta > 50 && !carouselShowPaneLock) {
+            console.log("mousewheel left");
             $('.carousel li').removeClass('active');
             carouselShowPaneLock = true;
             carousel.showPane(currentIndex - 1);
@@ -186,8 +206,44 @@
                 carouselShowPaneLock = null;
             }, 500)
         }
-        //if mousewheel is going left
+        //if mousewheel is going right
         else if (delta < -50 && !carouselShowPaneLock) {
+            console.log("mousewheel right");
+            $('.carousel li').removeClass('active');
+            carouselShowPaneLock = true;
+            if(currentIndex +1 == 4)
+                carousel.showPane(currentIndex -4);
+            else
+                carousel.showPane(currentIndex + 1);
+
+            setTimeout(function() {
+                carouselShowPaneLock = 0;
+            }, 500)
+        }
+        e.preventDefault();
+    });
+
+
+    //handles left and right arrow keys
+    $(document).on('keydown', function (e) {
+
+        console.log('arrows');
+
+        currentIndex = $('#slide-breadcrumbs li a').index($('#slide-breadcrumbs li a.active'));
+
+        //if left arrow is pressed
+        if (e.which === 37) {
+            console.log("left");
+            $('.carousel li').removeClass('active');
+            carouselShowPaneLock = true;
+            carousel.showPane(currentIndex - 1);
+            setTimeout(function() {
+                carouselShowPaneLock = null;
+            }, 500)
+        }
+        //if right arrow is pressed
+        else if (e.which === 39) {
+            console.log("right");
             $('.carousel li').removeClass('active');
 
             carouselShowPaneLock = true;
@@ -196,7 +252,7 @@
                 carouselShowPaneLock = 0;
             }, 500)
         }
-        e.preventDefault();
+        // e.preventDefault();
     });
 
 var updateSchoolBanner = function(index) {
@@ -231,11 +287,23 @@ var onTransitionStartCarousel = function(index) {
 
     }
     if (index === 2) {
-        currentProgress = parseInt($('.work-infograph')[0].getAttribute('data-percent'));
-        if (!currentProgress) {
-            $('.work-infograph').data('easyPieChart').update(25);
-            countupElement('work-wage-animation', 0, 60, 5);
-        }
+         currentProgress = parseInt($('.work-infograph')[0].getAttribute('data-percent'));
+
+         if (!currentProgress) {
+            try {
+                $('.work-infograph').data('easyPieChart').update(25);
+                countupElement('work-wage-animation', 0, 60, 5);   
+            } catch (err){
+                setTimeout(function() {
+                    console.log("err: " + err);
+                    console.log("error loading easyPieChart.update(), trying again...")
+                    $('.work-infograph').data('easyPieChart').update(25);
+                    countupElement('work-wage-animation', 0, 60, 5);   
+                }, 700);
+                
+            } 
+             
+         }
     }
     if (index === 3) {
     }

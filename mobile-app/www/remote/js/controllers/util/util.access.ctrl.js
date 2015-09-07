@@ -46,19 +46,19 @@ angular.module('uguru.util.controllers')
     /* This is where all cordova plugins MUST go
        EVENTUALLY TODO: Put all device readys in a service
     */
-     window.addEventListener('native.keyboardshow', keyboardShowHandler);
+     // window.addEventListener('native.keyboardshow', keyboardShowHandler);
 
-      function keyboardShowHandler(e){
-          if ($scope.platform.mobile) {
-            $scope.access.keyboardShown = true;
-          }
+     //  function keyboardShowHandler(e){
+     //      if ($scope.platform.mobile) {
+     //        $scope.access.keyboardShown = true;
+     //      }
+     //  }
+
+      $scope.accessInputOnFocus = function() {
+        if ($scope.platform.mobile) {
+          $scope.access.keyboardShown = true;
+        }
       }
-
-      // $scope.accessInputOnFocus = function() {
-      //   if ($scope.platform.mobile) {
-      //     $scope.access.keyboardShown = true;
-      //   }
-      // }
 
       $scope.accessInputOnBlur = function() {
         if ($scope.platform.mobile) {
