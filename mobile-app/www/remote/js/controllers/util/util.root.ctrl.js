@@ -430,9 +430,9 @@ angular.module('uguru.util.controllers')
             console.log("window.open works well");
             console.log(navigator.camera);
 
-              console.log('media is ready: ', Media);
+              console.log('media is ready: ' + Media);
 
-             console.log("cardIO: ",$cordovaNgCardIO);
+             console.log("cardIO: " + $cordovaNgCardIO);
                 
              $scope.scanCard = function() {     
               $cordovaNgCardIO.scanCard()

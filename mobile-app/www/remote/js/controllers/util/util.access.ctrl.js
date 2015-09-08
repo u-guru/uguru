@@ -9,12 +9,12 @@ angular.module('uguru.util.controllers')
   '$localstorage',
   '$ionicModal',
   '$cordovaStatusbar',
-  '$ionicPlatform',
   '$ionicViewSwitcher',
   '$cordovaNgCardIO',
+  'DeviceService',
   function($scope, $state, $timeout, $localstorage,
-    $ionicModal, $cordovaStatusbar, $ionicPlatform,
-    $ionicViewSwitcher, $cordovaNgCardIO) {
+    $ionicModal, $cordovaStatusbar,
+    $ionicViewSwitcher, $cordovaNgCardIO, DeviceService) {
 
     //Sanitized
 
@@ -41,7 +41,6 @@ angular.module('uguru.util.controllers')
         "winphonedelay"  :  150 // same as above but for Windows Phone, default 200
       };
 
-
       if (code === $scope.access.data.genericAccessCode) {
         $scope.success.show(0, 1000,'Access Granted');
         $scope.access.codeInput ='';
@@ -55,55 +54,25 @@ angular.module('uguru.util.controllers')
       } else {
         $scope.access.errorInputMsg = 'Incorrect access code';
       }
-    };
+    }
 
+    DeviceService.readyDevice();
 
-    /* This is where all cordova plugins MUST go
-       EVENTUALLY TODO: Put all device readys in a service
-    */
-     // window.addEventListener('native.keyboardshow', keyboardShowHandler);
-
-     //  function keyboardShowHandler(e){
-     //      if ($scope.platform.mobile) {
-     //        $scope.access.keyboardShown = true;
-     //      }
-     //  }
-
-      $scope.accessInputOnFocus = function() {
-        if ($scope.platform.mobile) {
-          $scope.access.keyboardShown = true;
-        }
+    $scope.accessInputOnFocus = function() {
+      if (DeviceService.isMobile()) {
+        $scope.access.keyboardShown = true;
       }
+    }
 
-      $scope.accessInputOnBlur = function() {
-        if ($scope.platform.mobile) {
-          $scope.access.keyboardShown = false;
-        }
+    $scope.accessInputOnBlur = function() {
+      if (DeviceService.isMobile()) {
+        $scope.access.keyboardShown = false;
       }
+    }
 
-      function onDeviceReady() {
-        
-        if($scope.platform.mobile) {
-          console.log("navigator.geolocation works well");
-          console.log("window.open works well");
-          console.log(navigator.camera);
+      
 
-          if($scope.platform.ios) {
-            if (window.StatusBar) {
-              StatusBar.styleLightContent();
-              StatusBar.overlaysWebView(true);
-            }
-            if (cordova.plugins.Keyboard) {
-              cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            }
-          }
 
-          if ($scope.platform.android) {
-
-          }
-        }
-      }
-      document.addEventListener("deviceready", onDeviceReady);
 
     /*
       Initialize all the modals & render the controllers & views
