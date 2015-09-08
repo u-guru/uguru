@@ -1,16 +1,35 @@
-.terms-modal, .faq-modal {
+.terms-modal, .faq-modal, .signup-modal {
   color: #2B3234; }
-  .terms-modal p, .faq-modal p {
+  .terms-modal p, .faq-modal p, .signup-modal p {
     font-size: 13px;
     margin: 10px 0px; }
-  .terms-modal .header-nav, .faq-modal .header-nav {
+  .terms-modal .header-nav, .faq-modal .header-nav, .signup-modal .header-nav {
     position: relative; }
-    .terms-modal .header-nav a, .faq-modal .header-nav a {
+    .terms-modal .header-nav a, .faq-modal .header-nav a, .signup-modal .header-nav a {
       display: inline-block;
       position: absolute;
       left: 15px;
       top: 15px; }
-  .terms-modal .has-header, .faq-modal .has-header {
+  .terms-modal .has-header, .faq-modal .has-header, .signup-modal .has-header {
     top: 54px; }
+
+.signup-modal .header-nav a {
+  top: 10px;
+  opacity: 0.5; }
+.signup-modal .onboarding#account #account-form input {
+  margin: 30px 0 15px;
+  font-size: 20px; }
+  .signup-modal .onboarding#account #account-form input.name-input {
+    text-transform: capitalize; }
+.signup-modal .input-ghost {
+  box-sizing: border-box !important;
+  display: block;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0;
+  padding-bottom: 5px;
+  background: none;
+  color: white !important; }
 
 /*# sourceMappingURL=modals.css.map */

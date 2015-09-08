@@ -81,37 +81,29 @@ angular.module('uguru.util.controllers')
         }
       }
 
-      // NICK TODO --> location
-      document.addEventListener("deviceready", function () {
-       
-
-
-        //all mobile specific plugins
-        if ($scope.platform.mobile) {
+      function onDeviceReady() {
+        
+        if($scope.platform.mobile) {
+          console.log("navigator.geolocation works well");
           console.log("window.open works well");
           console.log(navigator.camera);
 
-
-          if ($scope.platform.ios) {
-
+          if($scope.platform.ios) {
             if (window.StatusBar) {
-
               StatusBar.styleLightContent();
               StatusBar.overlaysWebView(true);
-
             }
-
             if (cordova.plugins.Keyboard) {
               cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
-
           }
 
           if ($scope.platform.android) {
-            //handle android case here
+
           }
         }
-      })
+      }
+      document.addEventListener("deviceready", onDeviceReady);
 
     /*
       Initialize all the modals & render the controllers & views
