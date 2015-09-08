@@ -790,8 +790,25 @@ angular.module('uguru.util.controllers')
           $scope.signupModal = modal;
     });
 
+
     $scope.launchSignupModal = function() {
         $scope.signupModal.show();
+    }
+
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.howItWorksModal = modal;
+    });
+
+
+
+    $scope.launchHowItWorksModal = function() {
+      if ($scope.signupModal) {
+        //show
+      }
     }
 
 
