@@ -7,6 +7,11 @@
           li.major-business {
             line-height:1.2em;
             &.selected  {
+                a {
+                    border-color:white !important;
+                    color:inherit !important;
+                    font-weight:500;
+                }
                 position:relative;
                 i.icon {
                     position:absolute;

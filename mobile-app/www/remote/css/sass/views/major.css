@@ -6,6 +6,10 @@
     line-height: 1.2em; }
     .major-view #major-list li.major-business.selected {
       position: relative; }
+      .major-view #major-list li.major-business.selected a {
+        border-color: white !important;
+        color: inherit !important;
+        font-weight: 500; }
       .major-view #major-list li.major-business.selected i.icon {
         position: absolute;
         top: 30%;

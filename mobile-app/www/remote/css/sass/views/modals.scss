@@ -51,3 +51,32 @@ $charcoal: #2B3234;
         color: white !important;
     }
 }
+
+.category-skills-modal {
+    top:33% !important;
+    overflow: visible;
+    #skills-list.onboarding-list > div ul li > span input:checked + span {
+        background-color: #F9D57B;
+    }
+
+    .checklist li > span input:checked + span {
+        background: url(../../../img/svg/check.svg) center center no-repeat;
+    }
+
+    .onboarding#skill-list .onboarding-list > div:before {
+        position: absolute !important;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        content: "";
+        display: block;
+        top: -29px;
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-bottom: 15px solid white;
+    }
+}
