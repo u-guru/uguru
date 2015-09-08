@@ -19,7 +19,8 @@ exports.config = {
         {
             access: ['../test_case/workflows/access.js'],
             university: ['../test_case/workflows/university.js'],
-            
+            sign: ['../test_case/workflows/sidemenu/signup.js'],
+
         },
         rootElement: "[ng-app]" ,
        // rootElement: 'uguru' ,

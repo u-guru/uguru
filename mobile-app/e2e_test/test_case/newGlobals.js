@@ -1,5 +1,35 @@
 
 var global = function() {
+  /***********************************************************
+  *
+  *
+  *
+  ************************************************************/
+  this.socialButton = function(index,name)
+  {
+     var group = element(by.id('social-login'))
+      group.element(by.tagName('button')).then(function(buttons)
+      {
+//            expect(buttons[index].isDisplayed()).toBe(true);
+            expect(buttons[index].getText()).toBe(name,"Button : '"+ name+"' is not showed").then(function(){
+                  buttons[index].click();
+            });
+      });
+  }
+  /************************************************************
+  * pickSideMenu
+  * arg : inex - index i
+  *       name - name to match ion-item name
+  * desc : check the side meun name and pick that one
+  *************************************************************/
+  this.pickSideMenu = function(index,name)
+  {
+    element.all(by.css('.side-menu-list ion-item')).then(function(items)
+      {
+            expect(items[index].getText()).toBe(name);
+            items[index].click();
+      });
+  }
   /**********************************************************
   *checkMsg 
   *arg : msg - message you wanna check
@@ -15,7 +45,7 @@ var global = function() {
     }); 
   };
   /*************************************
-  *isListEmpty 
+  *isListShow 
   *arg :          name1 of ng-repeater
   *      [Option] name2 of ng-repeater
   *desc: check if the list is showed. 
@@ -75,20 +105,55 @@ var global = function() {
   }
   /**********************************************
   *setInput
-  *arg : a string u wannt search
+  *arg : str - a string u wannt search
+  *      [option] index - which input u wannat choose first will be default
   *desc: enter character 
   *      and check the result is the same or not
   ***********************************************/
-  this.setInput = function(str)
+  this.setInput = function(str,index)
   {
-    var input = element.all(by.tagName("input")).last();
-    input.clear();
-    input.sendKeys(str);
-    input.getAttribute('value').then(function(result)
-    {
-      expect(result).toBe(str);
-    });
+    var i = 0;
+    if (index != null)
+      i = index;
+    element.all(by.tagName("input")).then(function(inputs)
+      {
+        inputs[i].clear();
+        inputs[i].sendKeys(str);
+        inputs[i].getAttribute('value').then(function(result)
+        {
+          expect(result).toBe(str);
+        });
+      });
   } 
+   /**********************************************
+  *emptyInput
+  *arg : index - index of inputs 
+  *desc: empty a specific Input Value
+  ***********************************************/
+  this.emptyInput = function(index)
+  {
+    element.all(by.tagName("input")).then(function(inputs)
+      {
+          inputs[index].clear();
+          inputs[index].getAttribute('value').then(function(result)
+              {
+                expect(result).toBe("");
+              });     
+      });
+
+  
+  };
+  /*******************************************************************************
+  *generateRandomEmail
+  *arg :
+  *return : random number@jason-test.edu
+  *desc : generate random email 
+  *********************************************************************************/
+  this.generateRandomEmail =function()
+  {
+      return Date.UTC(2012,02,30,hr,sec,ms)+'@jason-test.edu';
+  }
+
   /*******************************************************************************
   *generateRandomString
   *arg :   speclist - your custom list, put [] if u have nothing wanna put
@@ -105,5 +170,36 @@ var global = function() {
       templist.push(correct);
     return templist
   }
+
+  /*************************************************************************************
+  *connectFB
+  *arg : id -Fb account
+  *      pw -Fb Password
+  *desc: connect with fb
+  **************************************************************************************/
+  this.connectFB = function (id, pw)
+  {
+      element.all(by.css('[ng-click="connectWithFacebook()"]')).first().click();
+      //Switch Screen
+      browser.getAllWindowHandles().then(function (handles) {
+          // switch to the popup
+          browser.switchTo().window(handles[1]);
+
+          // do stuff with the popup
+          browser.driver.findElement(by.id('email')).sendKeys(id);
+          browser.driver.findElement(by.id('pass')).sendKeys(pw);
+          browser.driver.findElement(by.id('u_0_2')).click();
+          // go back to the main window
+          browser.switchTo().window(handles[0]);
+      });
+
+       browser.driver.wait(function () {
+          return browser.driver.getCurrentUrl().then(function (url) {
+              return /#/.test(url);
+          });
+      }, 10000);
+  }
+  //End of the Functions
 };
+
 module.exports = new global();
