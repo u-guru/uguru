@@ -783,25 +783,6 @@ angular.module('uguru.util.controllers')
 
     };
 
-
-    $scope.launchCamera = function() {
-
-      function cameraSuccess(imageData) {
-        console.log("camera success: " );
-      }
-      function cameraError(err) {
-        console.log("camera failed: " + err);
-      }
-
-      var cameraOptions = {
-        quality: 75,
-        destinationType: 0, //DATA_URL
-        sourceType: 1, //CAMERA
-        targetWidth: 640,
-        targetHeight: 640,
-        cameraDirection: 0 //BACK CAMERA
-      }
-
     $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
           scope: $scope,
           animation: 'slide-in-up'
