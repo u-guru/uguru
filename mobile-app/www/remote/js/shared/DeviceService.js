@@ -47,21 +47,6 @@ function DeviceService() {
   				break;
 		  }
 		  
-		  
-		//   if($scope.platform.ios) {
-		//     if (window.StatusBar) {
-		//       StatusBar.styleLightContent();
-		//       StatusBar.overlaysWebView(true);
-		//     }
-		//     if (cordova.plugins.Keyboard) {
-		//       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-		//     }
-		//   }
-
-		//   if ($scope.platform.android) {
-
-		//   }
-		// }
 		}
 
 	}
