@@ -1,0 +1,14 @@
+.major-view {
+  background: #2B3234; }
+  .major-view .onboarding-prop {
+    top: 45% !important; }
+  .major-view #major-list li.major-business {
+    line-height: 1.2em; }
+    .major-view #major-list li.major-business.selected {
+      position: relative; }
+      .major-view #major-list li.major-business.selected i.icon {
+        position: absolute;
+        top: 30%;
+        right: 3%; }
+
+/*# sourceMappingURL=major.css.map */
