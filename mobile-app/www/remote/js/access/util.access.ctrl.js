@@ -25,7 +25,6 @@ function AccessController($scope, $state, $ionicViewSwitcher,
 
     if(AccessService.validate(code)){
       LoadingService.show(0, 1000, 'Access Granted');
-      //$scope.success.show(0, 1000,'Access Granted');
       $scope.access.codeInput = '';
       $ionicViewSwitcher.nextDirection('forward');
       AnimationService.flip();

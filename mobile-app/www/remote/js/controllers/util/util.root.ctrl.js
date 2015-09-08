@@ -30,12 +30,13 @@ angular.module('uguru.util.controllers')
   '$cordovaDevice',
   '$cordovaNetwork',
   '$cordovaNgCardIO',
+  'DeviceService',
   function($ionicPlatform, $scope, $state, $localstorage, User,
           RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
           CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
           $cordovaSplashscreen, $timeout, Geolocation, $cordovaPush,
           $ionicSideMenuDelegate, $ionicViewSwitcher, $cordovaGeolocation, Major,
-          Skill, Profession, $cordovaDevice, $cordovaNetwork, $cordovaNgCardIO) {
+          Skill, Profession, $cordovaDevice, $cordovaNetwork, $cordovaNgCardIO, DeviceService) {
 
           // console.log('1. checking for app updates\n');
           // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
@@ -67,7 +68,70 @@ angular.module('uguru.util.controllers')
             $scope.img_base = '';
           }
 
+          $rootScope.on_app_open_retrieve_objects = function($scope, $state, $localstorage, University, callback, Geolocation, Major, Skill, Profession) {
+            console.log('getting university from server');
+            // $cordovaSplashscreen.hide();
+            University.get().then(
+                function(universities) {
+                    console.log('universities successfully loaded');
+                    universities = JSON.parse(universities);
+                    $scope.static.universities = universities;
+                    $localstorage.setObject('universities', $scope.static.universities);
+                    console.log($scope.static.universities.length + ' universities successfully loaded');
+                    if ($scope.user && $scope.user.position && $scope.user.position.coords) {
+                    getNearestUniversity($scope.user.position.coords.latitude, $scope.user.position.coords.longitude, $scope.static.universities, 100,
+                        $localstorage, $scope, callback, $state);
+                    } else
+                    if ($scope && $scope.platform && $scope.platform.android) {
+                      Geolocation.getUserPosition($scope, null, null, $state);
+                    }
+                },
+                function() {
+                    console.log('Universities NOT successfully loaded');
+                }
+            );
 
+            Major.get().then(
+              function(majors) {
+                  console.log('Majors successfully loaded');
+                  majors = JSON.parse(majors)["majors"];
+
+                  $scope.static.majors = majors;
+                  $localstorage.setObject('majors', majors);
+                  $scope.static.popular_majors = majors.slice(0,16);
+                  $localstorage.setObject('popular_majors', $scope.static.popular_majors);
+              },
+              function() {
+                  console.log('Majors NOT successfully loaded');
+              }
+            );
+
+            Skill.get().then(function(skills) {
+              var skills = skills.plain();
+              $scope.static.skills = skills;
+              $localstorage.setObject('skills', skills);
+              $scope.static.popular_skills = skills.slice(0, 16);
+              $localstorage.setObject('popular_skills', $scope.static.popular_skills);
+              processSkills($scope);
+
+            },
+            function() {
+              console.log('Skills NOT successfully loaded');
+            })
+
+            Profession.get().then(function(professions) {
+              var professions = professions.plain();
+              $scope.static.professions = professions;
+              $scope.static.popular_professions = professions.slice(0, 16);
+              $localstorage.setObject('professions', $scope.static.professions);
+              $localstorage.setObject('popular_professions', $scope.static.popular_professions);
+              console.log(professions.length, 'professions loaded')
+            },
+            function() {
+              console.log('professions NOT successfully loaded');
+            })
+
+          }
 
           $scope.rootUser = User;
           $scope.root = RootService;
@@ -189,7 +253,7 @@ angular.module('uguru.util.controllers')
           if (!local_universities || local_universities.length === 0) {
 
             User.getUserFromServer($scope, null, $state);
-            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
+            $scope.on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
               Major, Skill, Profession);
           } else {
             $scope.static.universities = $localstorage.getObject('universities')
@@ -204,7 +268,7 @@ angular.module('uguru.util.controllers')
           var local_popular_majors = $localstorage.getObject('popular_majors');
           if (!local_majors || local_majors.length === 0 || !local_popular_majors || local_popular_majors.length === 0) {
             console.log('getting majors');
-            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
+            $scope.on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
               Major, Skill, Profession);
           } else {
             $scope.root.vars.majors = local_majors;
@@ -387,10 +451,6 @@ angular.module('uguru.util.controllers')
               }
             }
 
-
-
-
-
           $scope.success = {
             show: function(delay, duration, message) {
               if (!message) {
@@ -415,43 +475,16 @@ angular.module('uguru.util.controllers')
             ios: false
           }
 
+          DeviceService.readyDevice();
+
           document.addEventListener("deviceready", function () {
-            // console.log('ENDING MOBILE ONLY tasks below \n\n');
-            $scope.platform = {
-                ios: ionic.Platform.isIOS(),
-                android: ionic.Platform.isAndroid(),
-                windows: ionic.Platform.isWindowsPhone(),
-                mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone(),
-                web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone()),
-                device: ionic.Platform.device(),
-            }
+
+            $scope.platform.mobile = DeviceService.isMobile();
+            $scope.platform.web = DeviceService.isWeb();
+            $scope.platform.device = DeviceService.getDevice();
 
             console.log('device is ready from the root controller');
-            console.log("window.open works well");
-            console.log(navigator.camera);
-
-              console.log('media is ready: ' + Media);
-
-             console.log("cardIO: " + $cordovaNgCardIO);
-                
-             $scope.scanCard = function() {     
-              $cordovaNgCardIO.scanCard()
-                    .then(function (response) {
-                      console.log("success: " , response);
-
-                            //Success response - it`s an object with card data
-                          },
-                          function (response) {
-                            console.log("error: ", response);
-                            //We will go there only when user cancel a scanning.
-                            //response always null 
-                          }
-                    );
-            }
-
-
-
-
+              
             // if ($cordovaDevice && $cordovaDevice.getPlatform() === 'Win32NT') {
             //   $scope.platform.windows = true;
             //   $scope.platform.mobile = true;
@@ -462,7 +495,7 @@ angular.module('uguru.util.controllers')
               $cordovaSplashscreen.hide();
             }
             if ($scope.platform && $scope.user) {
-                $scope.user.current_device = ionic.Platform.device();
+                $scope.user.current_device = $scope.platform.device;
                 $scope.user.current_device.user_id = $scope.user.id;
                 if ($cordovaNetwork) {
                   $rootScope.network_speed = getNetworkSpeed();
@@ -474,110 +507,88 @@ angular.module('uguru.util.controllers')
                 $scope.user.createObj($scope.user, 'device', $scope.user.current_device, $scope);
             }
 
-            if ($scope.platform.android) {
+            switch($scope.platform.device) {
 
-                  var androidConfig = {
-                    "senderID": "413826461390",
-                    'ecb': "angular.element(document.body).injector().get('$cordovaPush').onNotification"
-                  }
-
-                  $cordovaPush.register(androidConfig).then(function(deviceToken) {
-
-                    console.log('android notifications', deviceToken);
-
-                  }, function(err){
-
-                    console.log(err);
-
-                  });
-
-                  console.log('Extra #2. Android push notifications need to be registered')
-                  $rootScope.$on('pushNotificationReceived', function(event, notification) {
-                    CordovaPushWrapper.received($rootScope, event, notification);
-                    console.log('android notifications registered',event, notification);
-                    if ($scope.user && $scope.user.id) {
-
-                      payload = {
-                        'push_notifications': true,
-                        'push_notifications_enabled': true
-                      }
-                      $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
-
-                    }
-                  });
-
-                  //grab geolocation super early for android devices
-                  on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
-                    Major, Skill, Profession);
-
-              }
-            if ($scope.platform.windows && $cordovaPush) {
-                console.log('we are updating the push notifications on windows device')
-                  $cordovaPush.register(
-                      channelHandler,
-                      errorHandler,
-                      {
-                          "channelName": "123723560",
-                          "ecb": "onNotificationWP8",
-                          "uccb": "channelHandler",
-                          "errcb": "jsonErrorHandler"
-                      });
-
-              function channelHandler(event) {
-
-                  console.log();
-                  var uri = event.uri;
-
+              case "android":              
+                var androidConfig = {
+                  "senderID": "413826461390",
+                  'ecb': "angular.element(document.body).injector().get('$cordovaPush').onNotification"
+                }
+                $cordovaPush.register(androidConfig).then(function(deviceToken) {
+                  console.log('android notifications', deviceToken);
+                }, function(err){
+                  console.log(err);
+                });
+                console.log('Extra #2. Android push notifications need to be registered')
+                $rootScope.$on('pushNotificationReceived', function(event, notification) {
                   CordovaPushWrapper.received($rootScope, event, notification);
+                  console.log('android notifications registered',event, notification);
                   if ($scope.user && $scope.user.id) {
-
                     payload = {
                       'push_notifications': true,
                       'push_notifications_enabled': true
                     }
                     $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
 
-
-
                   }
-              }
-              function errorHandler(error) {
-                 // document.getElementById('app-status-ul').appendChild(document.createElement(error));
-                  console.log("Error Handle :" ,error);
-              }
-              function onNotificationWP8(e) {
+                });
+                //grab geolocation super early for android devices
+                on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
+                  Major, Skill, Profession);
+                break;
 
-                  if (e.type == "toast" && e.jsonContent) {
-                      pushNotification.showToastNotification(successHandler, errorHandler,
-                      {
-                          "Title": e.jsonContent["wp:Text1"],
-                          "Subtitle": e.jsonContent["wp:Text2"],
-                          "NavigationUri": e.jsonContent["wp:Param"]
-                      });
+              case "windows":
+                  if($cordovaPush) {
+                    console.log('we are updating the push notifications on windows device');
+                    $cordovaPush.register(channelHandler, errorHandler,{
+                            "channelName": "123723560",
+                            "ecb": "onNotificationWP8",
+                            "uccb": "channelHandler",
+                            "errcb": "jsonErrorHandler"}
+                    );
+                    function channelHandler(event) {
+                      var uri = event.uri;
+                      CordovaPushWrapper.received($rootScope, event, notification);
+                      if ($scope.user && $scope.user.id) {
+                        payload = {
+                          'push_notifications': true,
+                          'push_notifications_enabled': true
+                        }
+                        $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
+                      }
+                    }
+                    function errorHandler(error) {
+                      // document.getElementById('app-status-ul').appendChild(document.createElement(error));
+                      console.log("Error Handle :" ,error);
+                    }
+                    function onNotificationWP8(e) {
+                        if (e.type == "toast" && e.jsonContent) {
+                            pushNotification.showToastNotification(successHandler, errorHandler,
+                            {
+                                "Title": e.jsonContent["wp:Text1"],
+                                "Subtitle": e.jsonContent["wp:Text2"],
+                                "NavigationUri": e.jsonContent["wp:Param"]
+                            });
+                        }
+                        if (e.type == "raw" && e.jsonContent) {
+                            alert(e.jsonContent.Body);
+                        }
+                    }
+                    function jsonErrorHandler(error) {
+                        //document.getElementById('app-status-ul').appendChild(document.createElement(error.code));
+                        //document.getElementById('app-status-ul').appendChild(document.createElement(error.message));
+                        console.log("ERROR: ", error.code);
+                        console.log("ERROR: ", error.message);
+                    }
                   }
-
-                  if (e.type == "raw" && e.jsonContent) {
-                      alert(e.jsonContent.Body);
-                  }
-              }
-              function jsonErrorHandler(error) {
-                  //document.getElementById('app-status-ul').appendChild(document.createElement(error.code));
-                  //document.getElementById('app-status-ul').appendChild(document.createElement(error.message));
-                  console.log("ERROR: ", error.code);
-                  console.log("ERROR: ", error.message);
-              }
-
-            }
-
+                }
 
             //update all new attribuets
             if ($scope.user && $scope.user.current_device) {
               $scope.user.updateObj($scope.user.current_device, 'device', $scope.user.current_device, $scope);
             }
 
-
           });
-
 
           document.addEventListener("deviceready", function () {
             // console.log(JSON.stringify(ionic.Platform.device()));
