@@ -1,16 +1,16 @@
 // Uguru upp
 
 var LOCAL = true; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.home';
-var BASE_URL = 'https://uguru-rest.herokuapp.com/production/app/';
-var REST_URL = 'https://uguru-rest.herokuapp.com'
+var FIRST_PAGE='^.access';
+var BASE_URL = 'https://www.uguru.me/production/app/';
+var REST_URL = 'https://www.uguru.me'
 
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
   BASE_URL = 'http://localhost:8100';
  // REST_URL = 'http://localhost:5000';
-  REST_URL = 'https://uguru-rest.herokuapp.com'
+  //REST_URL = 'https://uguru-rest.herokuapp.com'
 } else {
   img_base = '/static/'
 }
@@ -19,8 +19,8 @@ mixpanel = window.mixpanel || null;
 
 if (mixpanel) mixpanel.track("App Launch");
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
-  'ngAnimate', 'uguru.onboarding.controllers', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
-  'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
+  'ngAnimate', 'uguru.util.controllers', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
+  'uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
   'uguru.directives', 'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap'])
 
 .run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
@@ -345,6 +345,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   state('root.guru-profile', {
         url: '/guru-profile',
         templateUrl: BASE + 'templates/guru.profile.html',
+        controller: 'GuruProfileController'
+  }).
+  state('root.guru-credibility', {
+        url: '/guru-credibility',
+        templateUrl: BASE + 'templates/guru.credibility.html',
         controller: 'GuruProfileController'
   }).
   state('root.guru-courses', {

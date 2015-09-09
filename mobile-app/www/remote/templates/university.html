@@ -1,5 +1,5 @@
 <ion-view class='uguru-view university-view' ng-controller='AddUniversityController'>
-<section id="school" class="onboarding" >
+<section id="school" class="onboarding">
     <header>
       <div class="header-nav">
         <a class="header-nav-back" ng-click='goToAccess()'>
@@ -26,9 +26,9 @@
                 placeholder="Search Your University"
                 ng-model="search_text"
         />
-       <!--  <a ng-click='getGPSCoords()'>
+        <a ng-click='getGPSCoords()' class='geolocation-icon'>
           <i class='icon ion-navigate'></i>
-        </a> -->
+        </a>
       </div>
     </header>
   <div id="school-list" class="onboarding-list">
@@ -40,7 +40,7 @@
             <img ng-src="{{university.seal_url || university.forbes_url}}" style='border-bottom-left:2px solid {{university.school_color_one}}' alt=""/>
           </span>
           <span class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
-            <b>{{university.name}}<i>{{university.city}}, {{university.state}}</i></b>
+            <b><span class='university-name'>{{university.name}}</span><i>{{university.city}}, {{university.state}}</i></b>
           </span>
         </a>
       </li>
@@ -52,7 +52,7 @@
             <img ng-src="{{university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
           </span>
           <span class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
-            <b>{{university.name}}<i class='university-subheader'>{{university.city}}, {{university.state}} <span ng-if="$index < 10" class='text-right'>{{university.miles}}mi</span></i></b></span>
+            <b><span class='university-name'>{{university.name}}</span><i class='university-subheader'>{{university.city}}, {{university.state}} <span ng-if="$index < 10" class='text-right mileage-text'>{{university.miles}}mi</span></i></b></span>
           </span>
         </a>
       </li>
@@ -64,7 +64,7 @@
             <img ng-src="{{university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
           </span>
           <span class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
-            <b>{{university.name}}<i>{{university.city}}, {{university.state}} </i></b></span>
+            <b><span class='university-name'>{{university.name}}</span><i>{{university.city}}, {{university.state}} </i></b></span>
           </span>
         </a>
       </li>

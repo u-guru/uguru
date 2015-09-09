@@ -15,9 +15,11 @@ angular.module('uguru.util.controllers')
   '$ionicPlatform',
   '$cordovaStatusbar',
   '$ionicSlideBoxDelegate',
+  '$ionicViewSwitcher',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
-    $ionicPlatform, $cordovaStatusbar, $ionicSlideBoxDelegate) {
+    $ionicPlatform, $cordovaStatusbar, $ionicSlideBoxDelegate,
+    $ionicViewSwitcher) {
 
     document.addEventListener("deviceready", function () {
 
@@ -26,6 +28,8 @@ angular.module('uguru.util.controllers')
       }
 
     });
+
+
 
 
     $scope.activeSlideIndex = 0;

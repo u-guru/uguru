@@ -50,6 +50,7 @@
     "gulp-uglify": "^1.1.0",
     "gulp-util": "^2.2.14",
     "jasmine-core": "^2.2.0",
+    "jasmine-spec-reporter": "^2.4.0",
     "karma": "^0.12.31",
     "karma-chrome-launcher": "^0.1.7",
     "karma-firefox-launcher": "^0.1.4",
@@ -62,8 +63,7 @@
     "source-map": "^0.4.1",
     "strip-css-comments": "^2.0.1",
     "through2": "^0.6.3",
-    "vinyl-sourcemaps-apply": "^0.1.4",
-    "jasmine-spec-reporter": "~2.4.0"
+    "vinyl-sourcemaps-apply": "^0.1.4"
   },
   "cordovaPlugins": [],
   "cordovaPlatforms": []

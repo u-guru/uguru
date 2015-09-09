@@ -28,7 +28,6 @@ angular.module('uguru.guru.controllers')
       $scope.success.show(0, 2000, "Awesome! You're all set.");
       $ionicViewSwitcher.nextDirection('forward');
       $state.go('^.guru');
-
     }
 
 
@@ -73,7 +72,6 @@ angular.module('uguru.guru.controllers')
         element.click();
       }
     }
-
 
     $scope.closeAttachActionSheet = function() {
       $scope.closeAttachActionSheet();
