@@ -5,14 +5,14 @@ var global = function() {
   *
   *
   ************************************************************/
-  this.socialButton = function(index,name,bool)
+  this.socialButton = function(index,name)
   {
     var bool = true;
-    if (bool ! = null)
-      this.bool = bool
+    // if (bool != null)
+    //   this.bool = bool
       element.all(by.css('#social-login button')).then(function (buttons) {
         // body...
-            expect(buttons[index].isDisplayed()).toBe(this.bool );
+            expect(buttons[index].isDisplayed()).toBe(true );
             expect(buttons[index].getText()).toBe(name,"Button : '"+ name+"' is not showed");
             buttons[index].click();
       });
@@ -119,9 +119,9 @@ var global = function() {
   this.setInput = function(str,index,clear)
   {
     var i = 0;
-    var check = false
+    var check = true
     if (clear != null)
-      check = clear
+      check = false
     if (index != null)
       i = index;
     element.all(by.tagName("input")).then(function(inputs)
@@ -167,7 +167,11 @@ var global = function() {
   *********************************************************************************/
   this.generateRandomEmail =function()
   {
-      return Date.UTC(2012,02,30,hr,sec,ms)+'@jason-test.edu';
+        var d = new Date();
+        var sec = d.getSeconds();
+        var hr = d.getHours();
+        var ms =d.getMilliseconds();
+      return Date.UTC(2012,02,30,hr,sec,ms)+' ';
   }
 
   /*******************************************************************************

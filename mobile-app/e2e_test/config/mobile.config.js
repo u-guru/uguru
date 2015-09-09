@@ -66,7 +66,7 @@ exports.config = {
             global.doc =require('../test_case/newGlobals.js');
             global.EC  = protractor.ExpectedConditions;
             browser.driver.manage().window().setSize(414, 736);
-           return  browser.driver.get("http://localhost:8100/remote/#/");
+           return  browser.driver.get("http://localhost:8100/#/");
             browser.sleep(1000);
 
 

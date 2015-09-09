@@ -52,7 +52,7 @@ angular.module('uguru.util.controllers')
         skill.active = false;
         return;
       }
-      category.active_skills_count += skill.val ? 1 : -1;
+      category.active_skills_count += skill.active ? 1 : -1;
     }
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
       guru_courses = [];
@@ -70,7 +70,7 @@ angular.module('uguru.util.controllers')
     $scope.static.categories = [
       {
         name: 'Academic Courses',
-        _class: '',
+        _class: 'bg-cerise',
         active:true,
         active_skills_count:0,
         skills: mapGuruCoursesToCategoriesObj($scope.user.guru_courses),
@@ -79,7 +79,7 @@ angular.module('uguru.util.controllers')
       },
       {
         name: 'Freelancing',
-        _class: '',
+        _class: 'bg-orange',
         active: false,
         active_skills_count:0,
         skills: ['Resume editing', 'Interview Preparation','Build a Website',
@@ -90,7 +90,7 @@ angular.module('uguru.util.controllers')
       },
       {
         name: 'Baking',
-        _class: '',
+        _class: 'bg-gold',
         active: false,
         active_skills_count:0,
         skills: ['Brownies', 'Flan','Pie'],
@@ -99,7 +99,7 @@ angular.module('uguru.util.controllers')
       },
       {
         name: 'Photography',
-        _class: '',
+        _class: 'bg-moola',
         active: false,
         active_skills_count:0,
         skills: ['Professional', 'Outdoors','Headshot', 'Graduation', 'Fashion', '#Selfie'],
@@ -108,7 +108,7 @@ angular.module('uguru.util.controllers')
       },
       {
         name: 'Household',
-        _class: '',
+        _class: 'bg-shamrock',
         active: false,
         active_skills_count:0,
         skills: ['Laundry', 'Build Furniture (Ikea)', 'I have a Vacuum', 'Dirty Dishes',
@@ -118,7 +118,7 @@ angular.module('uguru.util.controllers')
       },
       {
         name: 'Technology & IT',
-        _class: '',
+        _class: 'bg-azure',
         active: false,
         active_skills_count:0,
         skills: ['Laptop Repair','Hardware Upgrade', 'iPhone Screen Repair',
@@ -128,7 +128,7 @@ angular.module('uguru.util.controllers')
       },
       {
         name: 'Sports & Muscle',
-        _class: '',
+        _class: 'bg-lake',
         active: false,
         active_skills_count:0,
         skills: ['Athletic Training','Specialized Dance', 'Help student move in/out',
@@ -138,7 +138,7 @@ angular.module('uguru.util.controllers')
       },
       {
         name: 'On-demand Delivery',
-        _class: '',
+        _class: 'bg-eggplant',
         active: false,
         active_skills_count:0,
         skills: ['Walgreens', 'Local Convenience Stores',

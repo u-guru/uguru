@@ -3,8 +3,10 @@ describe('Sign-up test', function () {
 	var sideMenuList = element(by.css('.side-menu-list.disable-user-behavior'))
 	it("go to the new-home page",function()
 	{
-        browser.driver.get("http://localhost:8100/remote/#/new-home");
- 		expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/remote/#/new-home");
+        browser.driver.get("http://localhost:8100/#/home");
+                browser.wait(EC.elementToBeClickable(sideMenuList),3000);
+
+		expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/home");
 	});
 	it("open the side menu",function()
 	{
@@ -56,6 +58,7 @@ describe('Sign-up test', function () {
 		it("Connect to Facebook",function()
 		{
 			doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+
 		});
 		it("Loading Status",function()
 		{
@@ -94,8 +97,8 @@ describe('Sign-up test', function () {
 		});
 		it("Enter Email & Password",function()
 		{
-			doc.setInput('jason@sjsu.edu',1,true);
-			doc.setInput('test',2,true);
+			doc.setInput('jason@sjsu.edu',1);
+			doc.setInput('test',2);
 		});
 		it("Log in",function()
 		{
@@ -128,32 +131,41 @@ describe('Sign-up test', function () {
 	});
 	describe("SIgn up with Email",function()
 	{
-		it("Check current page Sign-up",function()
+		it('Switch To Sign up',function()
 		{
-			doc.pickSideMenu(4,"Signup");
-			expect(element(by.id('account')).isDisplayed()).toBe(true);
-		});
+		    doc.socialButton(4,"Or Create an Account");
 
-		it('Enter Name : ' + str[index],function()
-		{
-			doc.setInput('jason',0,true);
 		});
-		it('Enter Email : ' + str[index],function()
+		it('Enter Name : ',function()
+		{
+			doc.setInput('jason',0);
+		});
+		it('Enter Email : ',function()
 		{
 			doc.setInput(doc.generateRandomEmail(),1,true);
 		});
-		it('Enter Password : ' + str[index],function()
+		it('Enter Password : ',function()
 		{
 			doc.setInput('test',2);
 		});
 		it('Create account',function()
 		{
-			element(by.css('[ng-click="completeSignup()"]'));
+		    doc.socialButton(1,"Create an Account");
 		});
 		it('check Sign up successful',function()
 		{
 			doc.checkMsg("Account Successfully Created");
+			browser.sleep(10000);
 		})
+		it("Log off",function () {
+		 	doc.pickSideMenu(4,"Logout");
+		 	browser.sleep(100);
+		 	var alertDialog = browser.switchTo().alert();
+			alertDialog.accept();  // Use to accept (simulate clicking ok)
+		});
+		it ("Log out Successful",function(){
+			doc.checkMsg("You have been successfully logged out!");
+		});
 	});
 	
 	
