@@ -6,8 +6,9 @@ var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
 
 var BASE = '';
+
 if (LOCAL) {
-  BASE = 'remote/';
+  BASE = '/remote/';
   BASE_URL = 'http://localhost:8100';
  // REST_URL = 'http://localhost:5000';
   //REST_URL = 'https://uguru-rest.herokuapp.com'

@@ -7,14 +7,16 @@ var global = function() {
   ************************************************************/
   this.socialButton = function(index,name)
   {
-     var group = element(by.id('social-login'))
-      group.element(by.tagName('button')).then(function(buttons)
-      {
-//            expect(buttons[index].isDisplayed()).toBe(true);
-            expect(buttons[index].getText()).toBe(name,"Button : '"+ name+"' is not showed").then(function(){
-                  buttons[index].click();
-            });
+      element.all(by.css('#social-login button')).then(function (buttons) {
+        // body...
+            expect(buttons[index].isDisplayed()).toBe(true);
+            expect(buttons[index].getText()).toBe(name,"Button : '"+ name+"' is not showed");
+            buttons[index].click();
       });
+//       group.element.all(by.tagName('button')).then(function(buttons)
+//       {
+// //         
+//       });
   }
   /************************************************************
   * pickSideMenu
@@ -107,16 +109,27 @@ var global = function() {
   *setInput
   *arg : str - a string u wannt search
   *      [option] index - which input u wannat choose first will be default
+  *      [option] check it is clear or not 
   *desc: enter character 
   *      and check the result is the same or not
   ***********************************************/
-  this.setInput = function(str,index)
+  this.setInput = function(str,index,clear)
   {
     var i = 0;
+    var check = false
+    if (clear != null)
+      check = clear
     if (index != null)
       i = index;
     element.all(by.tagName("input")).then(function(inputs)
       {
+        if (check == true)
+         {
+           inputs[i].getAttribute('value').then(function(result)
+            {
+              expect(result).toBe('');
+            });
+         }  
         inputs[i].clear();
         inputs[i].sendKeys(str);
         inputs[i].getAttribute('value').then(function(result)
@@ -180,11 +193,12 @@ var global = function() {
   this.connectFB = function (id, pw)
   {
       element.all(by.css('[ng-click="connectWithFacebook()"]')).first().click();
+      browser.sleep(800);
       //Switch Screen
       browser.getAllWindowHandles().then(function (handles) {
           // switch to the popup
           browser.switchTo().window(handles[1]);
-
+          // browser.driver.wait(EC.presenceOf(browser.driver.findElement(by.id('email'))),5000);
           // do stuff with the popup
           browser.driver.findElement(by.id('email')).sendKeys(id);
           browser.driver.findElement(by.id('pass')).sendKeys(pw);
