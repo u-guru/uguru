@@ -74,8 +74,9 @@ angular.module('uguru.util.controllers', [])
           }, 1000);
       }
 
-
-      $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
+      $timeout(function() {
+        $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
+      }, 500)
 
     };
 

@@ -33,12 +33,17 @@ angular.module('uguru.util.controllers')
     $scope.checkAccessCode = function(code) {
 
       if (code === $scope.access.data.genericAccessCode) {
-        $scope.success.show(0, 1000,'Access Granted');
+        $scope.success.show(0, 2000,'Access Granted');
         $scope.access.codeInput ='';
         $ionicViewSwitcher.nextDirection('forward');
-        $state.go('^.university');
+        $timeout(function() {
+          $state.go('^.university');
+        }, 750)
       } else {
         $scope.access.errorInputMsg = 'Incorrect access code';
+        $timeout(function() {
+          $scope.access.errorInputMsg = '';
+        }, 1500);
       }
     }
 
@@ -125,8 +130,18 @@ angular.module('uguru.util.controllers')
 
     //View-specific event for when the view-specific
     // assets are rendered
-    $scope.$on('$ionicView.loaded', function() {
+    $scope.$on('$ionicView.enter', function() {
 
+      //TEMPORARY-PLZ REMOVE
+      $scope.user.university_id = null;
+      var accessCodeInput = document.getElementById('access-code-bar');
+      accessCodeInput.onkeyup = function (e) {
+          e = e || window.event;
+          if (e.keyCode === 13)  {
+            console.log('checking', e.target.value)
+            $scope.checkAccessCode(e.target.value);
+          }
+        };
       // $scope.launchHowItWorksModal();
 
     });

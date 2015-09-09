@@ -887,6 +887,10 @@ button {
 body, html {
   height: 100%; }
 
+a, a:hover, a:active, a:visited {
+  color: white;
+  text-decoration: none; }
+
 i {
   font-style: normal; }
 
@@ -905,11 +909,11 @@ body {
 .uguru-view h1, .uguru-view h2, .uguru-view h3, .uguru-view h4, .uguru-view h5, .uguru-view h6 {
   margin: 0;
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+.uguru-view div {
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
 .uguru-view a {
   color: #69B3A5;
   text-decoration: none; }
-.uguru-view a:active, .uguru-view a:focus, .uguru-view a:hover {
-  color: #C56E9C; }
 .uguru-view ::-webkit-selection {
   background: rgba(43, 50, 52, 0.1); }
 .uguru-view ::-moz-selection {
@@ -2096,44 +2100,6 @@ body {
       .uguru-view #profile #profile-info .profile-inside h1 {
         background: rgba(255, 255, 255, 0.05);
         color: white; }
-      .uguru-view #profile #profile-info .profile-inside #profile-ranking #profile-ranking-chart {
-        position: relative;
-        box-sizing: content-box;
-        padding: 15px 0;
-        height: 160px;
-        overflow: hidden;
-        text-align: center; }
-        .uguru-view #profile #profile-info .profile-inside #profile-ranking #profile-ranking-chart #percentile {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          -webkit-transform: translate(-50%, -50%);
-          -moz-transform: translate(-50%, -50%);
-          -ms-transform: translate(-50%, -50%);
-          -o-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-          margin-top: -5px; }
-          .uguru-view #profile #profile-info .profile-inside #profile-ranking #profile-ranking-chart #percentile #percentile-ranking {
-            position: relative;
-            font-size: 48px;
-            font-weight: 600;
-            line-height: 1; }
-            .uguru-view #profile #profile-info .profile-inside #profile-ranking #profile-ranking-chart #percentile #percentile-ranking:after {
-              content: "th";
-              display: block;
-              position: absolute;
-              top: 0;
-              right: -5px;
-              font-size: 14px;
-              font-weight: 400;
-              line-height: 28px;
-              text-transform: uppercase; }
-          .uguru-view #profile #profile-info .profile-inside #profile-ranking #profile-ranking-chart #percentile #percentile-label {
-            font-size: 12px;
-            font-weight: 400;
-            letter-spacing: 1px;
-            line-height: 15px;
-            text-transform: uppercase; }
       .uguru-view #profile #profile-info .profile-inside #profile-courses ul {
         list-style: none;
         margin: 0;

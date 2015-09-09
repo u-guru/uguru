@@ -1,7 +1,7 @@
 // Uguru upp
 
 var LOCAL = true; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.access';
+var FIRST_PAGE='^.university';
 
 
 
@@ -350,6 +350,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   state('root.guru-profile', {
         url: '/guru-profile',
         templateUrl: BASE + 'templates/guru.profile.html',
+        controller: 'GuruProfileController'
+  }).
+  state('root.guru-credibility', {
+        url: '/guru-credibility',
+        templateUrl: BASE + 'templates/guru.credibility.html',
         controller: 'GuruProfileController'
   }).
   state('root.guru-courses', {
