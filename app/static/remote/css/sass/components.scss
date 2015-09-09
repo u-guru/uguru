@@ -333,15 +333,15 @@ textarea {
     opacity:0.8;
 }
 
-#location-filled-item, .major-item, .location-item {
+// #location-filled-item, .major-item, .location-item {
 
-    padding:8px 12px 6px 12px;
-    p {
-        line-height:1.0em;
-        opacity:1.0;
-        margin:0;
-    }
-}
+//     padding:8px 12px 6px 12px;
+//     p {
+//         line-height:1.0em;
+//         opacity:1.0;
+//         margin:0;
+//     }
+// }
 
 .toggle input:checked+.track {
   border-color: #68A7CF;
@@ -2000,7 +2000,7 @@ position: absolute;
 }
 
 .major-item {
-    padding:12px 12px !important;
+    // padding:12px 12px !important;
     p {
         overflow:visible !important;
     }

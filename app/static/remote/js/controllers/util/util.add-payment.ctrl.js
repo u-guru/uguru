@@ -290,24 +290,25 @@
 
       if ($scope.debitCardOnly) {
 
-        for (var i = 0; i < $scope.user.transfer_cards.length; i++) {
-          if (user_card.id != $scope.user.transfer_cards[i].id) {
-            $scope.user.transfer_cards[i].is_default_transfer = false;
+          for (var i = 0; i < $scope.user.transfer_cards.length; i++) {
+            if (user_card.id != $scope.user.transfer_cards[i].id) {
+              $scope.user.transfer_cards[i].is_default_transfer = false;
+            }
           }
-        }
 
-        cardInfo.default_transfer = true;
-      } else {
-
-        for (var i = 0; i < $scope.user.payment_cards.length; i++) {
-          if (user_card.id != $scope.user.payment_cards[i].id) {
-            $scope.user.payment_cards[i].is_default_payment = false;
-          }
-        }
-        cardInfo.default_payment = true;
+          cardInfo.default_transfer = true;
 
       }
 
+      else {
+
+          for (var i = 0; i < $scope.user.payment_cards.length; i++) {
+              if (user_card.id != $scope.user.payment_cards[i].id) {
+                  $scope.user.payment_cards[i].is_default_payment = false;
+              }
+          }
+          cardInfo.default_payment = true;
+      }
       $scope.user.updateObj($scope.user, 'cards', cardInfo, $scope);
       alert('Card Default Set!');
       $ionicHistory.goBack();
@@ -439,7 +440,6 @@
       elem.dispatchEvent(e);
     }
 
-
     $scope.$on('$ionicView.enter', function(){
 
         if ($scope.root.vars.previous_page_ranking) {
@@ -457,7 +457,7 @@
           $timeout(function() {
             var callback = function() {
               $scope.card = JSON.parse($stateParams.cardObj);
-              $scope.card_details.expiry = '** / **'
+              $scope.card_details.expiry = '** / **';
               $scope.card_details.number = '****-****-****-' + $scope.card.card_last4;
               $timeout(function() {
                 $scope.fireKeyUpEvent();

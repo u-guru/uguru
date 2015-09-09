@@ -19,6 +19,9 @@ angular.module('uguru.util.controllers')
     if ($scope.static.courses && $scope.static.courses.length > 0 && (!$scope.courses || !$scope.courses.length)) {
       $scope.courses = $scope.static.courses;
     }
+
+
+
     $scope.shouldShowDelete = false;
     $scope.listCanSwipe = true;
     $ionicSideMenuDelegate.canDragContent(false);
@@ -108,7 +111,8 @@ angular.module('uguru.util.controllers')
       }
 
 
-      $scope.user.guru_courses.splice(index, 1);
+      var removedCourse = $scope.user.guru_courses.splice(index, 1);
+      $scope.courses.push(removeCourse)
 
       var confirmCallback = function() {
         $scope.loader.hide();
@@ -164,13 +168,22 @@ angular.module('uguru.util.controllers')
 
 
       //set the variable to this
-      $scope.static.popular_courses.splice($index, 1);
+      if ($index < 40) {
+        var removedCourseFromPreselected = $scope.preSelectedGuruCourses.splice($index, 1);
+        var removedCourseFromMain = $scope.courses.splice($index, 1);
+      } else {
+        var removedCourseFromMain = $scope.courses.splice($index, 1);
+      }
 
-      $scope.search_text = '';
 
-      //set the course text to what it should be
-      document.getElementById('guru-course-input').value = '';
-      $scope.course_search_text = course.short_name
+      // $scope.search_text = '';
+
+      // //set the course text to what it should be
+      // document.getElementById('guru-course-input').value = '';
+      // $scope.course_search_text = course.short_name
+      if (!$scope.user.guru_courses) {
+        $scope.user.guru_courses = [];
+      }
 
       $scope.user.guru_courses.push(course);
 
@@ -184,6 +197,11 @@ angular.module('uguru.util.controllers')
 
     }
 
+
+     if ($scope.courses && $scope.courses.length > 0) {
+        $scope.preSelectedGuruCourses = $scope.courses.slice(0, 40);
+    }
+
     $scope.$on('$ionicView.enter', function() {
 
 
@@ -192,6 +210,10 @@ angular.module('uguru.util.controllers')
         //add event listener
         $scope.guruCourseInput = document.getElementById('guru-course-input');
         $scope.studentCourseInput = document.getElementById('student-course-input');
+
+
+
+
         // if ($scope.studentCourseInput) {
 
         //   $scope.studentCourseInput.addEventListener("keyup", function() {

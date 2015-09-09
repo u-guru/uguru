@@ -887,6 +887,10 @@ button {
 body, html {
   height: 100%; }
 
+a, a:hover, a:active, a:visited {
+  color: white;
+  text-decoration: none; }
+
 i {
   font-style: normal; }
 
@@ -905,11 +909,11 @@ body {
 .uguru-view h1, .uguru-view h2, .uguru-view h3, .uguru-view h4, .uguru-view h5, .uguru-view h6 {
   margin: 0;
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+.uguru-view div {
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
 .uguru-view a {
   color: #69B3A5;
   text-decoration: none; }
-.uguru-view a:active, .uguru-view a:focus, .uguru-view a:hover {
-  color: #C56E9C; }
 .uguru-view ::-webkit-selection {
   background: rgba(43, 50, 52, 0.1); }
 .uguru-view ::-moz-selection {
@@ -1111,7 +1115,6 @@ body {
   -o-appearance: none;
   appearance: none;
   position: absolute;
-  top: 0;
   z-index: 9;
   width: 100%;
   height: 5px;
@@ -1429,6 +1432,8 @@ body {
     color: #69B3A5; }
   .uguru-view .onboarding#account #account-form #social-login {
     margin-top: 50px; }
+.uguru-view .onboarding#skill header:before {
+  background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat; }
 .uguru-view .onboarding#skill #skills-list ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1444,8 +1449,7 @@ body {
   height: 100%; }
   .uguru-view .onboarding#skill #skills-list ul li {
     box-sizing: border-box;
-    height: 25%;
-    padding: 1px; }
+    height: 25%; }
     .uguru-view .onboarding#skill #skills-list ul li a {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -1463,6 +1467,7 @@ body {
       align-items: center;
       -webkit-justify-content: center;
       justify-content: center;
+      background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
       height: 100%;
       font-size: 18px;
@@ -1539,6 +1544,8 @@ body {
       overflow: auto; }
       .uguru-view .onboarding#skill-list .onboarding-list > div ul li > span input:checked + span {
         background-color: #F9D57B; }
+.uguru-view .onboarding#course header:before {
+  background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat; }
 .uguru-view .onboarding#course #courses-list ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1579,7 +1586,7 @@ body {
     .uguru-view .onboarding#course #courses-list ul li input:checked + label {
       background: #55A4B7; }
 .uguru-view .onboarding#school header:before {
-  background: url(../images/school.jpg) no-repeat center center/cover; }
+  background: url(../../img/onboarding/school.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat; }
 .uguru-view .onboarding#school #school-list ul li a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1634,6 +1641,8 @@ body {
   border-color: #8C1515; }
 .uguru-view .onboarding#school #school-list ul .school-cambridge a {
   border-color: #A3C1AD; }
+.uguru-view .onboarding#major header:before {
+  background: url(../../img/onboarding/major.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat; }
 .uguru-view .onboarding#major #major-list ul li a {
   margin-bottom: 1px;
   font-weight: 300;
@@ -2096,44 +2105,6 @@ body {
       .uguru-view #profile #profile-info .profile-inside h1 {
         background: rgba(255, 255, 255, 0.05);
         color: white; }
-      .uguru-view #profile #profile-info .profile-inside #profile-ranking #profile-ranking-chart {
-        position: relative;
-        box-sizing: content-box;
-        padding: 15px 0;
-        height: 160px;
-        overflow: hidden;
-        text-align: center; }
-        .uguru-view #profile #profile-info .profile-inside #profile-ranking #profile-ranking-chart #percentile {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          -webkit-transform: translate(-50%, -50%);
-          -moz-transform: translate(-50%, -50%);
-          -ms-transform: translate(-50%, -50%);
-          -o-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-          margin-top: -5px; }
-          .uguru-view #profile #profile-info .profile-inside #profile-ranking #profile-ranking-chart #percentile #percentile-ranking {
-            position: relative;
-            font-size: 48px;
-            font-weight: 600;
-            line-height: 1; }
-            .uguru-view #profile #profile-info .profile-inside #profile-ranking #profile-ranking-chart #percentile #percentile-ranking:after {
-              content: "th";
-              display: block;
-              position: absolute;
-              top: 0;
-              right: -5px;
-              font-size: 14px;
-              font-weight: 400;
-              line-height: 28px;
-              text-transform: uppercase; }
-          .uguru-view #profile #profile-info .profile-inside #profile-ranking #profile-ranking-chart #percentile #percentile-label {
-            font-size: 12px;
-            font-weight: 400;
-            letter-spacing: 1px;
-            line-height: 15px;
-            text-transform: uppercase; }
       .uguru-view #profile #profile-info .profile-inside #profile-courses ul {
         list-style: none;
         margin: 0;
@@ -2239,7 +2210,6 @@ body {
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
     display: block;
-    content: url("../svg/search.svg");
     width: 14px;
     height: 14px; }
   .uguru-view .header-nav a svg {
@@ -2256,5 +2226,10 @@ body {
     .uguru-view #account-form input {
       margin-top: 20px !important;
       font-size: 18px !important; } }
+
+body.platform-ios {
+  background-color: #2B3234; }
+  body.platform-ios header {
+    padding-top: 20px; }
 
 /*# sourceMappingURL=style.css.map */

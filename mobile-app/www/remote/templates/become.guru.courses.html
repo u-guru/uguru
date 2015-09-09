@@ -1,6 +1,16 @@
-<ion-view class='uguru-view courses-view guru-courses-view'>
+<ion-view class='uguru-view courses-view guru-courses-view' ng-controller='CoursesController'>
 
-    <section id="course" class="onboarding">
+    <section id="course" class="onboarding charcoal-bg">
+      <progress value="2" max="100">
+        <div class="progress"><span data-value="30"></span></div>
+      </progress>
+      <script>
+        setTimeout(setValue, 200);
+        function setValue() {
+            document.getElementsByTagName("progress")[0].setAttribute("value", "30");
+        }
+      </script>
+
       <header class="header-back">
         <div class="header-nav">
           <a class="header-nav-back" ng-click='previousSlide()'>
@@ -16,13 +26,17 @@
             </svg>
           </a>
         </div>
-        <div class="onboarding-prop"></div>
-        <div class="onboarding-search">
+        <div class="onboarding-prop">
+          <h2> Add Courses</h2></div>
+        <div class="onboarding-search input-search-ghost">
+          <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path d="M8.41512973,15.2860269 C4.48265083,15.2860269 1.29477962,12.1537981 1.29477962,8.2838387 C1.29477962,4.41387934 4.48265083,1.27539856 8.41512973,1.27539856 C12.3476086,1.27539856 15.536105,4.41387934 15.536105,8.2838387 C15.536105,12.1537981 12.3476086,15.2860269 8.41512973,15.2860269 L8.41512973,15.2860269 Z M19.811191,18.9121601 L14.6477024,13.8293217 C15.9993748,12.3601125 16.8302595,10.4220069 16.8302595,8.2838387 C16.8302595,3.70740857 13.0628321,0 8.41512973,0 C3.76742732,0 0,3.70740857 0,8.2838387 C0,12.8540169 3.76742732,16.5614254 8.41512973,16.5614254 C10.4232573,16.5614254 12.2650828,15.8674586 13.7117849,14.7108471 L18.895905,19.8124414 C19.1491091,20.0625195 19.5586121,20.0625195 19.811191,19.8124414 C20.0643951,19.5686152 20.0643951,19.1622382 19.811191,18.9121601 L19.811191,18.9121601 Z" fill="#FFFFFF"></path>
+          </svg>
           <input type="search" placeholder="My courses are..."
                   fast-matcher
                   fast-matcher-source="courses"
                   fast-matcher-output="matchingCourses"
-                  fast-matcher-properties="short_name, title"
+                  fast-matcher-properties="short_name"
                   fast-matcher-any-word="true"
                   fast-matcher-limit="30"
                   fast-matcher-preserve-order="true"
@@ -32,12 +46,16 @@
         </div>
       </header>
       <div id="courses-list" class="onboarding-list">
-        <ul>
-          <li ng-repeat='course in user.guru_courses' ng-click='remove(course, course_search_text)'>
-              <p class='semibold'> {{course.short_name}} <span class='course-title'> {{course.title}} </span>
-              </p>
+        <ul class='list'>
+          <li ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
+              <input type="checkbox" checked>
+              <label>{{course.short_name}}</label>
           </li>
-          <li ng-repeat='course in matchingCourses' ng-click='removeGuruCourseAndUpdate(course, course_search_text)'>
+          <li ng-repeat='course in preSelectedGuruCourses' ng-hide='search_text.length > 0'ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
+              <input type="checkbox">
+              <label>{{course.short_name}}</label>
+          </li>
+          <li ng-repeat='course in matchingCourses' ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
               <input type="checkbox">
               <label>{{course.short_name}}</label>
           </li>

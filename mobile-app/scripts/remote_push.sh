@@ -44,9 +44,9 @@ echo 'updating ios plugins'
 # cp mobile-app/platforms/ios/www/cordova.js app/static/remote/ios.cordova.js && cp mobile-app/platforms/ios/www/cordova_plugins.js app/static/remote/ios.cordova_plugins.js
 cp -r mobile-app/platforms/ios/www/plugins/ app/static/remote/plugins/ && cp -r mobile-app/www/remote/* app/static/remote/
 echo 'copying ios.css, windows, android file into the root remote'
-cp mobile-app/www/remote/css/ios.css app/static/remote/
-cp mobile-app/www/remote/css/android.css app/static/remote/
-cp mobile-app/www/remote/windows.css app/static/remote/
+# cp mobile-app/www/remote/css/ios.css app/static/remote/
+# cp mobile-app/www/remote/css/android.css app/static/remote/
+# cp mobile-app/www/remote/windows.css app/static/remote/
 echo 'calling git add -A .'
 git add -A .
 git commit -m "{$msg}"
@@ -61,7 +61,7 @@ echo
 echo 'pushing to heroku, to the master branch'
 echo
 echo
-git push rest master
+git push rest staging:master
 echo
 echo
 echo 'last part: restarting servers & updating database'

@@ -8,13 +8,6 @@
     background: #2B3234;
 }
 
-
-
-.onboarding#school header:before {
-    background: url(../../../img/onboarding/school.jpg) no-repeat center center/cover !important;
-}
-
-
 .onboarding header .onboarding-search:before {
     position: absolute;
     top: 50%;
@@ -24,20 +17,30 @@
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
     display: block;
-    content: url(../../../img/svg/search.svg);
     width: 14px;
     height: 14px;
 }
 
 
 
-header .ion-navigate {
-    color:white !important;
-    opacity:0.6;
+
+
+header a.geolocation-icon {
+    position:absolute;
+    z-index:0;
+    height: 20px;
     position: absolute;
-    top:0px !important;
-    right: 3px !important;
-    font-size: 100% !important;
+    bottom: 28%;
+    right: 5%;
+    opacity: 0.5;
+    .ion-navigate {
+        color:white !important;
+        opacity:0.6;
+        // position: absolute;
+        top:0px !important;
+        right: 3px !important;
+        font-size: 100% !important;
+    }
 }
 
 header .ion-navigate.active,
@@ -99,19 +102,40 @@ header .ion-navigate.activated, {
     padding: 10px;
 }
 
+.list-item.school-harvard {
+    position:relative;
+}
 
 .uguru-view .onboarding#school #school-list ul li a
     {
         .school-name {
+            -webkit-justify-content: left;
+            justify-content: left;
+            width:100%;
             padding-left:20px;
-            b {
+            b:before {
                 white-space:nowrap;
                 text-overflow: ellipsis;
             }
+
+            .mileage-text {
+                position: absolute;
+                right: 20px;
+                font-size: 12px;
+                bottom: 13px;
+                font-weight: 600;
+                opacity: 0.7;
+            }
+
+            .university-name {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow-x: hidden;
+                width: 75%;
+                display: block;
+            }
         }
         .school-icon {
-        // max-height:54px;
-        // width: 54px;
         padding:8px 0px 5px 10px ;
         // border-radius:50%;
         img {
@@ -136,11 +160,13 @@ section#school header {
 }
 .onboarding-prop {
     position:absolute;
+    top: 45% !important;
     h2 {
         font-size:20px !important;
-        font-weight:600 !important;
+        text-transform: uppercase;
+        font-weight: 500 !important;
+        letter-spacing:0.15em;
     }
-    top:15% !important;
     width:100%;
     text-align: center;
 }

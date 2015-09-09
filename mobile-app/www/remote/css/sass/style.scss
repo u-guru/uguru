@@ -17,6 +17,10 @@ body, html {
 	height: 100%;
 
 }
+a, a:hover, a:active, a:visited {
+	color:white;
+	text-decoration:none;
+}
 
 i {
 	font-style: normal;
@@ -43,12 +47,16 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 	font-family:$font;
 }
+div {
+	font-family:$font;
+}
 a {
 	color: $shamrock;
 	text-decoration: none;
 }
 #{$links} {
-	color: $cerise-mute;
+	//why?>??
+	// color: $cerise-mute;
 }
 
 ::-webkit-selection {
@@ -239,7 +247,6 @@ progress, .progress {
 	-o-appearance: none;
 	appearance: none;
 	position: absolute;
-	top: 0;
 	z-index: 9;
 	width: 100%;
 	height: 5px;
@@ -567,6 +574,11 @@ progress, .progress {
 		}
 	}
 	&#skill {
+		header {
+			&:before {
+				background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover,url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat;
+			}
+		}
 		#skills-list {
 			ul {
 				@include flex;
@@ -576,11 +588,12 @@ progress, .progress {
 				li {
 					box-sizing: border-box;
 					height: 25%;
-					padding: 1px;
+					// padding: 1px; WHY!?!!? lol
 					a {
 						@include flex;
 						@include flex-wrap;
 						@include flex-center;
+						background-color: rgba(0,0,0,0.5);
 						box-sizing: border-box;
 						height: 100%;
 						font-size: 18px;
@@ -650,6 +663,11 @@ progress, .progress {
 		}
 	}
 	&#course {
+		header {
+			&:before {
+				background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover,url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat;
+			}
+		}
 		#courses-list {
 			ul {
 				@include flex;
@@ -691,7 +709,7 @@ progress, .progress {
 	&#school {
 		header {
 			&:before {
-				background: url(../images/school.jpg) no-repeat center center / cover;
+				background: url(../../img/onboarding/school.jpg) no-repeat center center/cover,url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat;
 			}
 		}
 		#school-list {
@@ -754,6 +772,11 @@ progress, .progress {
 		}
 	}
 	&#major {
+		header {
+			&:before {
+				background: url(../../img/onboarding/major.jpg) no-repeat center center/cover,url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat;
+			}
+		}
 		#major-list {
 			ul {
 				li {
@@ -1167,44 +1190,6 @@ progress, .progress {
 				background: rgba(white,.05);
 				color: white;
 			}
-			#profile-ranking {
-				#profile-ranking-chart {
-					position: relative;
-					box-sizing: content-box;
-					padding: 15px 0;
-					height: 160px;
-					overflow: hidden;
-					text-align: center;
-					#percentile {
-						@include center-xy;
-						margin-top: -5px;
-						#percentile-ranking {
-							position: relative;
-							font-size: 48px;
-							font-weight: 600;
-							line-height: 1;
-							&:after {
-								content: "th";
-								display: block;
-								position: absolute;
-								top: 0;
-								right: -5px;
-								font-size: 14px;
-								font-weight: 400;
-								line-height: 28px;
-								text-transform: uppercase;
-							}
-						}
-						#percentile-label {
-							font-size: 12px;
-							font-weight: 400;
-							letter-spacing: 1px;
-							line-height: 15px;
-							text-transform: uppercase;
-						}
-					}
-				}
-			}
 			#profile-courses {
 				ul {
 					@include listless;
@@ -1339,7 +1324,7 @@ progress, .progress {
 		&:before {
 			@include center-y;
 			display: block;
-			content: url("../svg/search.svg");
+			// content: url("../svg/search.svg");
 			width: 14px;
 			height: 14px;
 		}
@@ -1366,4 +1351,12 @@ progress, .progress {
 		}
 	}
 }
+}
+
+body.platform-ios
+ {
+	background-color:$charcoal;
+	header {
+		padding-top:20px;
+	}
 }

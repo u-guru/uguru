@@ -17,9 +17,8 @@
   <preference name="BackupWebStorage" value="local"/>
   <preference name="AutoHideSplashScreen" value="false"/>
   <preference name="KeyboardDisplayRequiresUserAction" value="false"/>
-  <preference name="xwalkVersion" value="14+"/>
-  <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect"/>
-  <preference name="xwalkMode" value="embedded"/>
+  <preference name="StatusBarOverlaysWebView" value="true"/>
+  <preference name="StatusBarStyle" value="lightcontent"/>
   <platform name="android">
     <preference name="SplashScreen" value="screen"/>
     <preference name="SplashScreenDelay" value="10000"/>
