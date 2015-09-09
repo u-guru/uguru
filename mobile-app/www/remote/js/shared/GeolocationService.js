@@ -3,107 +3,53 @@ angular.module('uguru.root.services')
     [
     '$localstorage',
     '$timeout',
-    '$cordovaGeolocation',
-    'Popup',
-    'University',
     'Utilities',
     'Settings',
     Geolocation]);
 
-function Geolocation($localstorage, $timeout, $cordovaGeolocation, 
-  Popup, University, Utilities, Settings) {
+function Geolocation($localstorage, $timeout,
+  Utilities, Settings) {
 
   var deviceGPS = {
-    getNearestUniversity: getNearestUniversity,
-    getLocation: getLocation,
+    sortByLocation: sortByLocation,
     enableGPS: enableGPS
   };
 
   return deviceGPS;
 
   function enableGPS(device) {
-    Settings.location = true;
     if (device==='ios') {
       iOSService.enableGPS();
     }
     else {
-      getLocation();
+      Settings.location = true;
     }
   }
 
-  var getLocation = function() {
-    var posOptions = {
-        timeout: 10000,
-        enableHighAccuracy: false, //may cause high errors if true
+  function getCurrentLocation() {
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, options);
+
+    function geoSuccess(position) {
+        
     }
+  }
 
-    $cordovaGeolocation.getCurrentPosition(posOptions)
-      .then(function (position) {
-        console.log('user is at ' + position.coords.latitude + ',' + position.coords.longitude);
-        //getNearestUniversity(position.coords.latitude, position.coords.longitude, University.getTargetted());
-        // if ($scope.user && $scope.user.current_device) {
-        //   Settings.location = true;
-        //   $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
-        // }
-        // if ($scope.static.universities && $scope.static.universities.length > 0) {
-        //   console.log('universities already loaded! Calculating nearest university...')
-        //   if (!successCallback) {
-        //     successCallback = callbackSuccessLocal;
-        //   }
-        //   getNearestUniversity(position.coords.latitude, position.coords.longitude);
-        // } else {
-        //   console.log('universities not loaded :( :( trying to get again..')
-        //   //on_app_open_retrieve_objects($scope, $state, $localstorage, University, callbackSuccessLocal, $cordovaGeolocation);
-        // }
-        //TODO: user.last_positions.append(position + THE CURRENT TIME)
-      }, function(err) {
-        Utilities.readError("geolocation", err.code);
-    });
+  function sortByLocation(userLat, userLong, list) {
+    for(var i=0; i<list.length; i++) {
+      list[i].miles = Math.round(Utilities.getDistanceInMiles(
+                                    userLat, userLong, 
+                                    list[i].latitude, list[i].longitude));
+    }
+    function compareDistance(a, b) {
+      if (a.miles < b.miles)
+        return -1;
+      if (a.miles > b.miles)
+        return 1;
+      return 0;
+    }
+    return list.sort(compareDistance);
+  }
 
-  };
 
-  function getNearestUniversity(lat, long, list) {
-    
-
-      var sort = function(array) {
-        var len = array.length;
-        if(len < 2) {
-          return array;
-        }
-        var pivot = Math.ceil(len/2);
-        var results = merge(sort(array.slice(0,pivot)), sort(array.slice(pivot)));
-        return results;
-      };
-
-      var merge = function(left, right) {
-        var result = [];
-        while((left.length > 0) && (right.length > 0)) {
-
-              uni_1_lat = left[0].location.latitude;
-              uni_1_long = left[0].location.longitude;
-              uni_2_lat = right[0].location.latitude;
-              uni_2_long = right[0].location.longitude;
-
-              d1 = Utilities.getDistanceFromLatLonInKm(user_lat, user_long, uni_1_lat, uni_1_long);
-              d2 = Utilities.getDistanceFromLatLonInKm(user_lat, user_long, uni_2_lat, uni_2_long);
-              left[0].miles = parseInt(d1 / 0.62 * 10) / 10;
-              right[0].miles = parseInt(d2 / 0.62 * 10) / 10;
-              if ( d1 < d2 ) {
-                  result.push(left.shift());
-              }
-              else {
-                result.push(right.shift());
-              }
-        }
-
-        result = result.concat(left, right);
-        return result;
-      };
-
-      var sortedList = sort(list);
-
-      return sortedList.slice(0,10);
-
-  };
 
 }

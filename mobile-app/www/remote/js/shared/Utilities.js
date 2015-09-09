@@ -12,7 +12,7 @@ function Utilities($cordovaSplashscreen, $cordovaNgCardIO, Settings) {
 	return {
 		getNetworkSpeed: getNetworkSpeed,
 		deg2rad: deg2rad,
-		getDistanceFromLatLonInKm: getDistanceFromLatLonInKm,
+		getDistanceInMiles: getDistanceInMiles,
 		readError: readError
 	}
 
@@ -34,11 +34,11 @@ function Utilities($cordovaSplashscreen, $cordovaNgCardIO, Settings) {
 	    return networkState;
 	}
 
-	function deg2rad() {
+	function deg2rad(deg) {
   		return deg * (Math.PI/180);
 	}
 
-	function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+	function getDistanceInMiles(lat1,lon1,lat2,lon2) {
 		var R = 6371; // Radius of the earth in km
 		var dLat = deg2rad(lat2-lat1);  // deg2rad below
 		var dLon = deg2rad(lon2-lon1);
@@ -49,7 +49,8 @@ function Utilities($cordovaSplashscreen, $cordovaNgCardIO, Settings) {
 
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 		var d = R * c; // Distance in km
-		return d;
+		var miles = d * 0.621371; // Convert to miles
+		return miles;
 	}
 
 	function readError(type, code) {

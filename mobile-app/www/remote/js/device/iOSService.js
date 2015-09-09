@@ -53,7 +53,8 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 	        },
 	        onSuccess: function() {
 	          console.log('succeeded in getting device location');
-	          Geolocation.getLocation();
+	          Settings.location = true;
+	          Geolocation.getCurrentPosition();
 	        },
 	      })
 	    }

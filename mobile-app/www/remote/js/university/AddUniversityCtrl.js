@@ -9,27 +9,22 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   '$localstorage',
   'University',
   '$ionicViewSwitcher',
-  '$cordovaGeolocation',
+  'Geolocation',
+  'Settings',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
- 	University,
-  $ionicViewSwitcher, $cordovaGeolocation) {
+ 	University, $ionicViewSwitcher, Geolocation, Settings) {
 
-    //scope variables
     $scope.search_text = '';
+    $scope.location = false;
+    $scope.universities = University.getTargetted();
 
     //back button
     $scope.goToAccess = function() {
       console.log("pressed goToAccess()");
       $ionicViewSwitcher.nextDirection('back');
       $state.go('^.access');
-    }
-
-    $scope.location = true;
-
-    $scope.searched = function() {
-      return ($scope.search_text.length > 0);
     }
 
     var sortByRank = function(list) {
@@ -43,7 +38,6 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
       return list.sort(compareRank);
     }
     
-
     $scope.universitySelected = function(university, $event) {
 
       //if user is switching universities
@@ -80,49 +74,40 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
     };
 
     $scope.getGPSCoords = function() {
-
+      //STILL NEED TO DO FOR IOS
+      // if(DeviceService.getDevice()==="ios") {
+      //   Geolocation.enableGPS();
+      //   return;
+      // }
         var posOptions = {
           timeout: 10000,
           enableHighAccuracy: false, //may cause high errors if true
         }
 
         $scope.search_text ='';
+
+        navigator.geolocation.getCurrentPosition(geoSuccess, geoError, posOptions);
         $scope.loader.show();
-        $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
 
-            console.log('location found!', position.coords.latitude, position.coords.longitude);
+        function geoSuccess(position) {
+          $scope.loader.hide();
+          console.log('location found!', position.coords.latitude, position.coords.longitude);
 
-            if ($state.current.name === 'root.university') {
-              //show the loader
-              $scope.loader.show();
-
-              var successCallback = function() {
-                $scope.loader.hide();
-              }
-                //grabs the nearest universities
-                $scope.nearestUniversities = getNearestUniversity(
-                                        position.coords.latitude,
-                                        position.coords.longitude,
-                                        $scope.universities,
-                                        null,
-                                        successCallback);
-                $scope.universities = $scope.nearestUniversities;
-                $localstorage.setObject('nearest-universities', $scope.universities);
-
-          }
-
-      }, function(error) {
-          //show & let them know we couldn't find it
-          //in case android/ios/windows user turned it off
-          $scope.initialUniversities = $scope.universities;
-          $scope.loader.hide()
-          $scope.user.recent_position = null;
-          alert('Sorry! Please check your privacy settings check your GPS signal.');
-      });
-
+          $scope.nearestUniversities = Geolocation.sortByLocation(
+                                  position.coords.latitude,
+                                  position.coords.longitude,
+                                  $scope.universities);
+          $scope.universities = $scope.nearestUniversities;
+          $scope.location = true;
+          $localstorage.setObject('nearest-universities', $scope.universities);
+        } 
+        function geoError(error) {
+            $scope.location = true;
+            $scope.loader.hide()
+            alert('Sorry! Please check your privacy settings check your GPS signal.');
+        }
     };
 
-    $scope.universities = University.getTargetted();
 
     if ($scope.platform.android) {
       $scope.getGPSCoords();

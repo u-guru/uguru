@@ -48,6 +48,10 @@ angular.module('uguru.util.controllers')
       presignup: !($scope.user && $scope.user.id),
     }
 
+    $scope.addUniversity = function() {
+      $state.go('^.university');
+    }
+
     $scope.resetSettingsIcons = function() {
       $scope.settings.icons.profile = true;
       $scope.settings.icons.notifications = false;
