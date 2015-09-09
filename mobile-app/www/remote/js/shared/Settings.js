@@ -6,9 +6,11 @@ angular
 
 function Settings() {
 //TODO: implement localstorage so that settings are actually saved
+//Also a cached version of nearest universities once they activate gps
 	var Settings = {
 		location: null,
-		setLocation: setLocation
+		setLocation: setLocation,
+		nearestUnis: []
 	}
 
 	return Settings;
@@ -22,5 +24,6 @@ function Settings() {
 		else Settings.location = false;
 		console.log("location setting changed to: " + Settings.location);
 	}
+
 
 }

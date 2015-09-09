@@ -40,7 +40,7 @@ function Geolocation($localstorage, $timeout, $cordovaGeolocation,
     $cordovaGeolocation.getCurrentPosition(posOptions)
       .then(function (position) {
         console.log('user is at ' + position.coords.latitude + ',' + position.coords.longitude);
-        getNearestUniversity(position.coords.latitude, position.coords.longitude);
+        //getNearestUniversity(position.coords.latitude, position.coords.longitude, University.getTargetted());
         // if ($scope.user && $scope.user.current_device) {
         //   Settings.location = true;
         //   $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
@@ -62,7 +62,8 @@ function Geolocation($localstorage, $timeout, $cordovaGeolocation,
 
   };
 
-  function getNearestUniversity(lat,long) {
+  function getNearestUniversity(lat, long, list) {
+    
 
       var sort = function(array) {
         var len = array.length;
@@ -99,15 +100,9 @@ function Geolocation($localstorage, $timeout, $cordovaGeolocation,
         return result;
       };
 
-      var largeList = sort(uni_list);
+      var sortedList = sort(list);
 
-      // $scope.nearest_universities = largeList;
-      $scope.static.nearest_universities = largeList;
-      if (callback) {
-        callback($scope, $state);
-      }
-
-      return largeList.slice(0,10);
+      return sortedList.slice(0,10);
 
   };
 

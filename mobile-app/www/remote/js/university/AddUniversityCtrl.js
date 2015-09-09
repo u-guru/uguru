@@ -36,6 +36,12 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
       }
       return results;
     }
+    $scope.location = true;
+
+    $scope.searched = function() {
+      return ($scope.search_text.length > 0);
+    }
+    
 
     $scope.universitySelected = function(university, $event) {
 
@@ -67,7 +73,6 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
               $state.go('^.home')
           }, 1000);
       }
-
 
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
 
@@ -103,7 +108,6 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
                 $scope.universities = $scope.nearestUniversities;
                 $localstorage.setObject('nearest-universities', $scope.universities);
 
-
           }
 
       }, function(error) {
@@ -127,52 +131,3 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
 
 
 }
-
-
-function getNearestUniversity(user_lat, user_long, uni_list, limit, callback) {
-
-    var sort = function(array) {
-      var len = array.length;
-      if(len < 2) {
-        return array;
-      }
-      var pivot = Math.ceil(len/2);
-      var results = merge(sort(array.slice(0,pivot)), sort(array.slice(pivot)));
-      return results;
-    };
-
-    var merge = function(left, right) {
-      var result = [];
-      while((left.length > 0) && (right.length > 0)) {
-
-
-            uni_1_lat = left[0].latitude;
-            uni_1_long = left[0].longitude;
-            uni_2_lat = right[0].latitude;
-            uni_2_long = right[0].longitude;
-
-            d1 = getDistanceFromLatLonInKm(user_lat, user_long, uni_1_lat, uni_1_long);
-            d2 = getDistanceFromLatLonInKm(user_lat, user_long, uni_2_lat, uni_2_long);
-            left[0].miles = parseInt(d1 / 0.62 * 10) / 10;
-            right[0].miles = parseInt(d2 / 0.62 * 10) / 10;
-            if ( d1 < d2 ) {
-                result.push(left.shift());
-            }
-            else {
-              result.push(right.shift());
-            }
-      }
-
-      result = result.concat(left, right);
-      return result;
-    };
-
-    var largeList = sort(uni_list);
-
-    if (callback) {
-      callback();
-    }
-
-    return largeList;
-
-};
