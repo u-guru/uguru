@@ -26,20 +26,21 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
       $state.go('^.access');
     }
 
-    var filterByTopRankedUniversities = function(universities_arr) {
-      results = [];
-      for (var i = 0; i < universities_arr.length; i ++) {
-        university = universities_arr[i];
-        if (university.rank <= 20) {
-          results.push(university)
-        }
-      }
-      return results;
-    }
     $scope.location = true;
 
     $scope.searched = function() {
       return ($scope.search_text.length > 0);
+    }
+
+    var sortByRank = function(list) {
+      function compareRank(a, b) {
+        if (a.rank < b.rank)
+          return -1;
+        if (a.rank > b.rank)
+          return 1;
+        return 0;
+      }
+      return list.sort(compareRank);
     }
     
 
@@ -126,8 +127,9 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
     if ($scope.platform.android) {
       $scope.getGPSCoords();
     } else {
-      $scope.initialUniversities = filterByTopRankedUniversities($scope.universities);
+      $scope.universities = sortByRank($scope.universities);
     }
+
 
 
 }

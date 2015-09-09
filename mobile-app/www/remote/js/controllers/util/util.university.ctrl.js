@@ -18,10 +18,11 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   '$cordovaGeolocation',
   '$ionicSideMenuDelegate',
   '$ionicSlideBoxDelegate',
+  'Utilities',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $q, University,
   $cordovaKeyboard, $ionicLoading, $cordovaStatusbar,
-  $ionicViewSwitcher, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicSlideBoxDelegate) {
+  $ionicViewSwitcher, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicSlideBoxDelegate, Utilities) {
 
     //scope variables
     $scope.search_text = '';
@@ -161,8 +162,8 @@ function getNearestUniversity(user_lat, user_long, uni_list, limit, callback) {
             uni_2_lat = right[0].latitude;
             uni_2_long = right[0].longitude;
 
-            d1 = getDistanceFromLatLonInKm(user_lat, user_long, uni_1_lat, uni_1_long);
-            d2 = getDistanceFromLatLonInKm(user_lat, user_long, uni_2_lat, uni_2_long);
+            d1 = Utilities.getDistanceFromLatLonInKm(user_lat, user_long, uni_1_lat, uni_1_long);
+            d2 = Utilities.getDistanceFromLatLonInKm(user_lat, user_long, uni_2_lat, uni_2_long);
             left[0].miles = parseInt(d1 / 0.62 * 10) / 10;
             right[0].miles = parseInt(d2 / 0.62 * 10) / 10;
             if ( d1 < d2 ) {
