@@ -1,7 +1,7 @@
 // Uguru upp
 
 var LOCAL = true; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.access';
+var FIRST_PAGE='^.become-guru';
 var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
 
@@ -120,11 +120,14 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
                 //styling status bars
                 if ($rootScope.platform.ios) {
-
+                  console.log('ay');
                   if (window.StatusBar) {
+                    console.log('ayer');
+                    window.StatusBar.styleDefault();
                     // console.log('Extra #1. Styling iOS status bar to black \n\n');
                     StatusBar.styleDefault();
                     StatusBar.overlaysWebView(true);
+                    // $cordovaStatusbar.overlaysWebView(true);
                   }
 
                 }
@@ -279,7 +282,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         controller: 'PaymentsController'
   }).
   state('root.home', {
-        url: '/new-home',
+        url: '/home',
         templateUrl: BASE + 'templates/home.html',
         controller: 'HomeController'
   }).

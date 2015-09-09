@@ -425,6 +425,8 @@ angular.module('uguru.util.controllers')
                 device: ionic.Platform.device(),
             }
 
+
+
             console.log('device is ready from the root controller');
 
             if ($cordovaDevice && $cordovaDevice.getPlatform() === 'Win32NT') {
@@ -564,10 +566,11 @@ angular.module('uguru.util.controllers')
 
               if (window.StatusBar) {
                 StatusBar.styleLightContent();
+                StatusBar.overlaysWebView(true);
               }
 
             }
-
+            $scope.toggleLightStatusBar();
             document.addEventListener("resume", function() {
 
                 // console.log('device is resuming....');

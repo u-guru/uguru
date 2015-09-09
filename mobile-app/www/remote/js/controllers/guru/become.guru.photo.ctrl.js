@@ -77,6 +77,13 @@ angular.module('uguru.guru.controllers')
       $scope.closeAttachActionSheet();
     }
 
+    $scope.userPhotoList = [];
+    $scope.samplePhotoList = [{src: '/img/onboarding/profile1.jpg'},
+      {src: '/img/onboarding/profile2.jpg'},
+      {src: '/img/onboarding/profile3.jpg'},
+      {src: '/img/onboarding/profile4.jpg'},
+    ]
+
 
 
     $scope.file_changed = function(element) {

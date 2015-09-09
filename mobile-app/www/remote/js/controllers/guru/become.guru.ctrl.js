@@ -27,6 +27,7 @@ angular.module('uguru.guru.controllers')
     $scope.courses = $scope.static.courses;
 
 
+
     $scope.nextSlide = function() {
       $ionicSlideBoxDelegate.next();
     }
