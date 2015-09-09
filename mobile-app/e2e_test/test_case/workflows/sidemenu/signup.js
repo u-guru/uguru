@@ -1,11 +1,13 @@
 describe('Sign-up test', function () {
 	var sideMenuButton= element(by.css('[ng-click="toggleRightSideMenu()"]'));
 	var sideMenuList = element(by.css('.side-menu-list.disable-user-behavior'))
+	beforeAll(function()
+	{
+	    browser.get("http://localhost:8100/#/home");
+	});
 	it("go to the new-home page",function()
 	{
-        browser.driver.get("http://localhost:8100/#/home");
-                browser.wait(EC.elementToBeClickable(sideMenuList),3000);
-
+        browser.wait(EC.elementToBeClickable(sideMenuList),3000);
 		expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/home");
 	});
 	it("open the side menu",function()
@@ -31,7 +33,7 @@ describe('Sign-up test', function () {
 				{
 	        		it('Enter A key on : ' + str[index],function()
 					{
-						doc.setInput('d',index);
+						doc.setInput('d',index,true	);
 					});
 
 					it('Check Facebook is hidden',function()
@@ -134,7 +136,6 @@ describe('Sign-up test', function () {
 		it('Switch To Sign up',function()
 		{
 		    doc.socialButton(4,"Or Create an Account");
-
 		});
 		it('Enter Name : ',function()
 		{

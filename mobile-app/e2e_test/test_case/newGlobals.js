@@ -43,7 +43,7 @@ var global = function() {
   this.checkMsg = function(msg)
   {
     var newMsg = element(by.css(".loading-container")).element(by.tagName('span'));
-    browser.wait(EC.presenceOf(newMsg),3000);
+    browser.wait(EC.presenceOf(newMsg),5000);
     newMsg.getAttribute('value').then(function(value)
     {
       expect(value).toBe(msg);
@@ -170,8 +170,7 @@ var global = function() {
         var d = new Date();
         var sec = d.getSeconds();
         var hr = d.getHours();
-        var ms =d.getMilliseconds();
-      return Date.UTC(2012,02,30,hr,sec,ms)+' ';
+      return Date.UTC(2012,02,30,hr,sec)+'@jason-test.edu';
   }
 
   /*******************************************************************************
