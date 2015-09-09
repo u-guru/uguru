@@ -1,27 +1,20 @@
 angular.module('uguru.util.controllers', ['sharedServices'])
 
-.controller('AddUniversityController', [
+.controller('AddUniversityCtrl', [
 
   //All imported packages go here
   '$scope',
   '$state',
   '$timeout',
   '$localstorage',
-  '$ionicModal',
-  '$cordovaProgress',
-  '$q',
   'University',
-  '$cordovaKeyboard',
-  '$ionicLoading',
-  '$cordovaStatusbar',
   '$ionicViewSwitcher',
   '$cordovaGeolocation',
-  '$ionicSideMenuDelegate',
-  '$ionicSlideBoxDelegate',
-  function($scope, $state, $timeout, $localstorage,
- 	$ionicModal, $cordovaProgress, $q, University,
-  $cordovaKeyboard, $ionicLoading, $cordovaStatusbar,
-  $ionicViewSwitcher, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicSlideBoxDelegate) {
+  AddUniversityCtrl]);
+
+function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
+ 	University,
+  $ionicViewSwitcher, $cordovaGeolocation) {
 
     //scope variables
     $scope.search_text = '';
@@ -133,13 +126,10 @@ angular.module('uguru.util.controllers', ['sharedServices'])
     }
 
 
-  }
-
-])
+}
 
 
 function getNearestUniversity(user_lat, user_long, uni_list, limit, callback) {
-
 
     var sort = function(array) {
       var len = array.length;

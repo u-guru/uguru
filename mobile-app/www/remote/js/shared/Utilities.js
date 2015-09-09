@@ -3,15 +3,17 @@ angular
 .factory("Utilities", [
 	'$cordovaSplashscreen',
 	'$cordovaNgCardIO',
+	'Settings',
 	Utilities
 	]);
 
-function Utilities($cordovaSplashscreen, $cordovaNgCardIO) {
+function Utilities($cordovaSplashscreen, $cordovaNgCardIO, Settings) {
 
 	return {
 		getNetworkSpeed: getNetworkSpeed,
 		deg2rad: deg2rad,
-		getDistanceFromLatLonInKm: getDistanceFromLatLonInKm
+		getDistanceFromLatLonInKm: getDistanceFromLatLonInKm,
+		readError: readError
 	}
 
 	function getNetworkSpeed() {
@@ -48,6 +50,20 @@ function Utilities($cordovaSplashscreen, $cordovaNgCardIO) {
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 		var d = R * c; // Distance in km
 		return d;
+	}
+
+	function readError(type, code) {
+		if(type==='geolocation') {
+			switch(code) {
+				case 1: console.log('user denied permission');
+					break;
+				case 2: console.log('user position is unavailable');
+					break;
+				case 3: console.log('GPS timed out');
+					break;		
+			}
+			Settings.location = false;
+		}
 	}
 
 
