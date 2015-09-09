@@ -620,7 +620,7 @@ def app_route():
         return redirect(url_for('itunes_app'))
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
-        return redirect('http://u.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
+        return redirect('https://www.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
         # return redirect('http://localhost:8100/')
