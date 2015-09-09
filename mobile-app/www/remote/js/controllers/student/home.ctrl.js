@@ -57,14 +57,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           var cancelMsg = request.category +  ' Task request canceled';
         }
 
-
-
         $scope.success.show(0, 2000, cancelMsg);
         $scope.root.util.removeObjectByKey($scope.user.active_requests, 'id', request.id);
       }
     }
-
-
 
 
   $scope.goToSessionDetails = function(session) {
@@ -121,7 +117,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                   $scope.studentRatingsModal = modal;
                   $scope.studentRatingsModal.show();
               });
-
     }
 
     $scope.closeStudentRatingsModal = function() {

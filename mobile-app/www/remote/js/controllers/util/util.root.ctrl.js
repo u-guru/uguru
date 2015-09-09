@@ -69,7 +69,8 @@ angular.module('uguru.util.controllers')
             $scope.img_base = '';
           }
 
-          $rootScope.on_app_open_retrieve_objects = function($scope, $state, $localstorage, University, callback, Geolocation, Major, Skill, Profession) {
+          $rootScope.on_app_open_retrieve_objects = function($scope, $state, $localstorage, 
+            University, callback, Geolocation, Major, Skill, Profession) {
             console.log('getting university from server');
             // $cordovaSplashscreen.hide();
             University.get().then(
@@ -161,8 +162,8 @@ angular.module('uguru.util.controllers')
                 console.log('local', local_version, typeof(local_version));
 
                 if (local_version !== serverVersionNumber) {
-                      if (($scope.platform.mobile || WINDOWS) && $cordovaSplashscreen && $cordovaSplashscreen.show) {
-                        $cordovaSplashscreen.show();
+                      if ((DeviceService.isMobile() || WINDOWS) && $cordovaSplashscreen && $cordovaSplashscreen.show) {
+                        //$cordovaSplashscreen.show();
                       }
 
                       $ionicHistory.clearCache();
