@@ -61,7 +61,7 @@ echo
 echo 'pushing to heroku, to the master branch'
 echo
 echo
-git push rest master
+git push rest staging:master
 echo
 echo
 echo 'last part: restarting servers & updating database'
