@@ -30,9 +30,9 @@
     </header>
     <div id="skills-list" class="onboarding-list">
       <ul class='list list-item-half'>
-        <li ng-repeat='category in static.categories'>
-          <a ng-click='launchCategoryModal(category)'>
-            <span class="skill-icon" ng-show="!category.active_skills_count"></span>
+        <li ng-repeat='category in static.categories' style='background:url({{category.bg_url}})'>
+          <a class='skill-item-link'ng-click='launchCategoryModal(category)'>
+            <span style='background:url({{category.icon_url}})' ></span>
             <span class="skill-label ng-class:{'count-exists':category.active_skills_count > 0}">{{category.name}}</span>
             <span class="skill-count" ng-show='category.active_skills_count > 1'>{{category.active_skills_count}} items</span>
             <span class="skill-count" ng-show='category.active_skills_count === 1'>{{category.active_skills_count}} item</span>
