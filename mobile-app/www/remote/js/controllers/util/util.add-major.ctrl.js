@@ -162,6 +162,10 @@ angular.module('uguru.util.controllers')
         return;
       }
 
+
+      var removedMajor = $scope.user.majors.splice(index,index+1);
+      $scope.majors.push(removedMajor);
+
       var confirmCallback = function() {
         $scope.loader.hide();
         $scope.success.show(0, 1000, major.name + ' successfully removed');
@@ -189,11 +193,9 @@ angular.module('uguru.util.controllers')
 
     $scope.majorSelected = function(major, $event, $index) {
 
-      console.log('major selected');
 
-      $scope.static.popular_majors.splice($index, 1);
-
-
+      $scope.majors.splice($index, 1);
+      $scope.preIndexedMajors.splice($index, 1);
 
 
 
@@ -202,9 +204,9 @@ angular.module('uguru.util.controllers')
       }
 
 
-      if ($scope.majorInput) {
-        $scope.majorInput.value = '';
-      }
+      // if ($scope.majorInput) {
+      //   $scope.majorInput.value = '';
+      // }
       $scope.showMainBody = true;
 
       $scope.search_text = '';

@@ -508,13 +508,13 @@ def parse_user_agent(ua_str):
     else:
         return 'web'
 
-@app.route('/hybrid-app/')
-def hybrid_app():
+# @app.route('/hybrid-app/')
+# def hybrid_app():
 
-    from lib.university_data import supported_universities
-    university_names = supported_universities.keys()
+#     from lib.university_data import supported_universities
+#     university_names = supported_universities.keys()
 
-    return render_template('web/hybrid.app.html', university=supported_universities['virginia'])
+#     return render_template('web/hybrid.app.html', university=supported_universities['virginia'])
 
 @app.route('/new/dev/m/<name>/', methods=["GET"])
 def one_university_mobile_dev(name):
@@ -617,10 +617,10 @@ def app_route():
     print '\n\n\n\n\nrequest headers'
     print request.headers, type(request.headers)
     if 'iPad' in str(request.headers) and 'Safari' in str(request.headers):
-        return redirect(url_for('hybrid_app'))
+        return redirect(url_for('itunes_app'))
     if os.environ.get('PRODUCTION'):
         print "woohoo we're in production"
-        return redirect('http://u.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
+        return redirect('https://www.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
         # return redirect('http://localhost:8100/')

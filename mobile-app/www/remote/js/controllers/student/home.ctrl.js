@@ -1,4 +1,4 @@
-angular.module('uguru.student.controllers')
+angular.module('uguru.student.controllers', [])
 
 //ALL student controllers
 .controller('HomeController', [
@@ -760,9 +760,17 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       });
 
 
-     $scope.$on('$ionicView.enter', function() {
+      $scope.comingSoon = function() {
+        $scope.success.show(0, 1500, 'Coming Soon!');
+      }
 
-        // $timeout(function() {
+     $scope.$on('$ionicView.enter', function() {
+      // console.log(JSON.stringify(window.StatusBar));
+      // window.StatusBar.overlaysWebView(false);
+
+
+        // $timeout(function() {r
+
         //   $ionicSideMenuDelegate.toggleRight();
         // }, 500)
        $timeout(function() {

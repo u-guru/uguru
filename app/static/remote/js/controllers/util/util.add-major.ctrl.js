@@ -148,11 +148,23 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    $scope.removeCheckedMajor = function(major, index, event)  {
+      if (confirm('Remove ' + major.name + '?')) {
+          $scope.removeMajor(major, index);
+      }
+    }
+
+    $scope.preIndexedMajors = $scope.majors.slice(0, 10);
+
     $scope.removeMajor = function(major, index) {
 
       if ($state.current.name === 'root.become-guru' && !confirm('Remove ' + major.name + '?')) {
         return;
       }
+
+
+      var removedMajor = $scope.user.majors.splice(index,index+1);
+      $scope.majors.push(removedMajor);
 
       var confirmCallback = function() {
         $scope.loader.hide();
@@ -181,11 +193,9 @@ angular.module('uguru.util.controllers')
 
     $scope.majorSelected = function(major, $event, $index) {
 
-      console.log('major selected');
 
-      $scope.static.popular_majors.splice($index, 1);
-
-
+      $scope.majors.splice($index, 1);
+      $scope.preIndexedMajors.splice($index, 1);
 
 
 
@@ -194,9 +204,9 @@ angular.module('uguru.util.controllers')
       }
 
 
-      if ($scope.majorInput) {
-        $scope.majorInput.value = '';
-      }
+      // if ($scope.majorInput) {
+      //   $scope.majorInput.value = '';
+      // }
       $scope.showMainBody = true;
 
       $scope.search_text = '';
@@ -208,9 +218,24 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $scope.removeUserMajorsFromMaster = function() {
+      if ($scope.static.majors && $scope.user.majors) {
+        for (var i = 0; i < $scope.static.majors; i ++) {
+          var indexMajor = $scope.static.majors[i];
+          for (var j = 0; j < $scope.user.majors; j++) {
+            var userMajor = 0;
+            if (indexMajor.id === userMajor.id) {
+              console.log($scope.static.majors.length);
+              $scope.static.majors.slice(i, i+1);
+              console.log($scope.static.majors.length);
+            }
+          }
+        }
+      }
+    }
 
     $scope.$on('$ionicView.enter', function() {
-
+      $scope.removeUserMajorsFromMaster();
 
       $timeout(function() {
 

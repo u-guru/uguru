@@ -50,18 +50,21 @@ $(document).ready(function () {
     });
 
     $("#school-email-input").on('focus', function() {
-        $('.search-results .front, .search-results').unbind('click');
+        $('.search-results').unbind('click');
         $("#school-email-input-label").addClass('active');
     })
 
     $("#school-phone-input").on('focus', function() {
-        $('.search-results .front, .search-results').unbind('click');
+        $('.search-results').unbind('click');
         $("#school-phone-input-label").addClass('active');
     })
 
     $("#school-email-input").on('blur', function() {
         if (!$(this).val().length) {
-            $('.search-results .front, .search-results').bind('click');
+            $('.search-results').bind('click', function() {
+                    console.log("hi");
+                    $('.search-results').flip('toggle');
+            });
             $("#school-email-input-label").removeClass('active');
         }
     })
@@ -132,7 +135,7 @@ $(document).ready(function () {
 
     $("#school-phone-input").on('blur', function() {
         if (!$(this).val().length) {
-            $('.search-results .front, .search-results').bind('click');
+            $('.search-results').bind('click');
             $("#school-phone-input-label").removeClass('active');
         }
     })

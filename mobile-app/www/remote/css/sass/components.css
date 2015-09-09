@@ -221,13 +221,6 @@ textarea {
   font-size: 0.66em;
   opacity: 0.8; }
 
-#location-filled-item, .major-item, .location-item {
-  padding: 8px 12px 6px 12px; }
-  #location-filled-item p, .major-item p, .location-item p {
-    line-height: 1em;
-    opacity: 1;
-    margin: 0; }
-
 .toggle input:checked + .track {
   border-color: #68A7CF;
   background-color: #68A7CF;

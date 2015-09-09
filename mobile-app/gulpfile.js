@@ -143,20 +143,24 @@ gulp.task('styles', function() {
   var options = build ?
                 { style: 'compressed' } :
                 { style: 'expanded' };
-  var cssStream2 = gulp
-    .src('www/remote/css/ionic.app.min.css');
-  var cssStream3 = gulp
-  .src('www/remote/css/pure-min.css');
-  var cssStream4 = gulp
-  .src('www/remote/css/animate.css');
-  var cssStream5 = gulp
-  .src('www/remote/css/sass/new.css');
-  var cssStream6 = gulp
-  .src('www/remote/css/sass/components.css');
-  var cssStream7 = gulp
-  .src('www/remote/css/spinning-wheel.css');
-  var cssStream8 = gulp
-  .src('www/remote/css/responsive.css');
+  var cssStream2 = gulp.src('www/remote/css/ionic.app.min.css');
+  var cssStream3 = gulp.src('www/remote/css/pure-min.css');
+  var cssStream4 = gulp.src('www/remote/css/sass/grids-responsive-min.css');
+  var cssStream5 = gulp.src('www/remote/css/sass/style.css');
+  var cssStream6 = gulp.src('www/remote/css/sass/views/access.css');
+  var cssStream7 = gulp.src('www/remote/css/sass/views/home.css');
+  var cssStream8 = gulp.src('www/remote/css/sass/views/side-menu.css')
+  var cssStream9 = gulp.src('www/remote/css/sass/views/university.css')
+  var cssStream10 = gulp.src('www/remote/css/sass/views/modals.css')
+  var cssStream11 = gulp.src('www/remote/css/sass/views/skills.css')
+  var cssStream12 = gulp.src('www/remote/css/sass/views/major.css')
+  var cssStream13 = gulp.src('www/remote/css/sass/views/courses.css')
+  var cssStream14 = gulp.src('www/remote/css/sass/views/photo.css')
+  var cssStream15 = gulp.src('www/remote/css/sass/views/guru.css')
+  var cssStream16 = gulp.src('www/remote/css/sass/samir.css')
+  var cssStream17 = gulp.src('www/remote/css/sass/views/guru-profile.css')
+  var cssStream18 = gulp.src('www/remote/css/sass/views/guru-credibility.css')
+  // .src('www/remote/css/responsive.css');
   // var cssStream3 = gulp
   // .src('www/remote/css/angular-strap.css');
   // var cssStream4 = gulp
@@ -168,8 +172,10 @@ gulp.task('styles', function() {
   // var cssStream6 = gulp
   // .src('www/remote/css/animate.css');
 
-  return streamqueue({ objectMode: true }, cssStream2, cssStream3, cssStream4, cssStream5, cssStream6, cssStream7, cssStream8)
-    .pipe(plugins.concat('main.css'))
+  return streamqueue({ objectMode: true }, cssStream2, cssStream3,
+    cssStream4, cssStream5, cssStream6, cssStream7, cssStream8,
+    cssStream9, cssStream10, cssStream11, cssStream12, cssStream13,
+    cssStream14, cssStream15, cssStream16, cssStream17, cssStream18).pipe(plugins.concat('main.css'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
     .pipe(minifyCSS())
     .pipe(plugins.if(build, plugins.rev()))
@@ -195,8 +201,16 @@ gulp.task('scripts', function() {
   var templateStream = gulp
       .src([
         'templates/root.html',
-        'templates/student.home.html',
-        'templates/student.home.body.html',
+        'templates/access.html',
+        'templates/university.html',
+        'templates/university.container.html',
+        'templates/majors.container.html',
+        'templates/guru.courses.container.html',
+        'templates/signup.html',
+        'templates/guru.remote.html',
+        'templates/guru.languages.container.html',
+        'templates/guru.experiences.container.html',
+        'templates/payments.html',
         'templates/student.guru-book.html',
         'templates/student.settings.html',
         'templates/student.settings.html',
@@ -204,13 +218,13 @@ gulp.task('scripts', function() {
         'templates/add-university.modal.html',
         'templates/university.modal.html',
         'templates/signup.modal.html',
-        'templates/become-guru.modal.html',
+        // 'templates/become-guru.modal.html',
         'templates/offline.html',
         'templates/*html',
-        'templates/guru/*html',
+        // 'templates/guru/*html',
         // 'templates/components/modals/*html',
-        'templates/components/details/*html',
-        'templates/components/inputs/*html'
+        // 'templates/components/details/*html',
+        // 'templates/components/inputs/*html'
       ], { cwd: 'www/remote' })
 
     .pipe(plugins.angularTemplatecache('templates.js', {
@@ -247,15 +261,15 @@ gulp.task('scripts', function() {
       "js/services/RootService.js",
       "js/services/*.js",
       "js/services/hardware/*.js",
-      "js/controllers/student/student.home.ctrl.js",
+      "js/controllers/student/home.ctrl.js",
       "js/controllers/student/*.js",
-      "js/controllers/guru/guru.onboarding.ctrl.js",
+      "js/controllers/guru/guru.ctrl.js",
       "js/controllers/guru/*.js",
-      "js/controllers/student/settings/*.js",
+      // "js/controllers/student/settings/*.js",
       "js/controllers/util/util.university.ctrl.js",
       "js/controllers/util/*.js",
-      "js/controllers/onboarding/onboarding.request-location.ctrl.js",
-      "js/controllers/onboarding/*.js"
+      // "js/controllers/onboarding/onboarding.request-location.ctrl.js",
+      // "js/controllers/onboarding/*.js"
       ], { cwd: 'www/remote' })
     // .src(['templates.js', 'app.js', '**/*.js'], { cwd: 'app/scripts' })
 

@@ -35,7 +35,7 @@ class VersionView(restful.Resource):
 
 class MajorListView(restful.Resource):
     def get(self):
-        from static.data.majors_general import majors
+        from app.static.data.majors_general import majors
 
         return json.dumps({"majors":majors}), 200
 

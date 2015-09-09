@@ -28,7 +28,6 @@ angular.module('uguru.guru.controllers')
       $scope.success.show(0, 2000, "Awesome! You're all set.");
       $ionicViewSwitcher.nextDirection('forward');
       $state.go('^.guru');
-
     }
 
 
@@ -74,10 +73,16 @@ angular.module('uguru.guru.controllers')
       }
     }
 
-
     $scope.closeAttachActionSheet = function() {
       $scope.closeAttachActionSheet();
     }
+
+    $scope.userPhotoList = [];
+    $scope.samplePhotoList = [{src: '/img/onboarding/profile1.jpg'},
+      {src: '/img/onboarding/profile2.jpg'},
+      {src: '/img/onboarding/profile3.jpg'},
+      {src: '/img/onboarding/profile4.jpg'},
+    ]
 
 
 

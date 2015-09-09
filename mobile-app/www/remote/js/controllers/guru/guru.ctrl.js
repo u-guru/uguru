@@ -1,4 +1,4 @@
-angular.module('uguru.guru.controllers')
+angular.module('uguru.guru.controllers', [])
 
 //ALL student controllers
 .controller('GuruController', [
@@ -749,31 +749,31 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
         $scope.$on('$ionicView.enter', function() {
-            console.log('checking for pending actions...');
+            // console.log('checking for pending actions...');
 
-            if (!$scope.root.vars.guru_rank_initialized) {
-              $scope.guruRankProgress = $scope.initGuruRankProgress('#guru-ranking-progress');
+            // if (!$scope.root.vars.guru_rank_initialized) {
+            //   $scope.guruRankProgress = $scope.initGuruRankProgress('#guru-ranking-progress');
 
-              $scope.root.vars.guru_rank_initialized = true;
+            //   $scope.root.vars.guru_rank_initialized = true;
 
-              var startColor = '#68A7CF';
-              var endColor = '#68A7CF';
-              // var endColor = '#6FD57F';
-              $timeout(function() {
-                animateProgress($scope.guruRankProgress, ($scope.user.current_guru_ranking / 100.0), startColor, endColor);
-              }, 500)
-            }
-
-
-            $scope.doRefresh();
-
-            if ($scope.user && $scope.user.active_guru_sessions && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
+            //   var startColor = '#68A7CF';
+            //   var endColor = '#68A7CF';
+            //   // var endColor = '#6FD57F';
+            //   $timeout(function() {
+            //     animateProgress($scope.guruRankProgress, ($scope.user.current_guru_ranking / 100.0), startColor, endColor);
+            //   }, 500)
+            // }
 
 
-                    $scope.root.vars.launchPendingActions();
-                  // }, 1000)
+            // $scope.doRefresh();
 
-            }
+            // if ($scope.user && $scope.user.active_guru_sessions && ($scope.user.active_guru_sessions.length > 0) || $scope.user.pending_student_ratings.length > 0) {
+
+
+            //         $scope.root.vars.launchPendingActions();
+            //       // }, 1000)
+
+            // }
 
 
         });

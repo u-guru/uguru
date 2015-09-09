@@ -654,7 +654,7 @@ angular.module('uguru.util.controllers')
                   $scope.user.active_student_sessions.length > 0))
               ) {
               $ionicViewSwitcher.nextDirection('enter');
-              $state.go('^.home');
+              $state.go(FIRST_PAGE);
           } else if (($scope.user.active_proposals && $scope.user.active_proposals.length > 0) ||
           $scope.user.active_guru_sessions && $scope.user.active_guru_sessions.length > 0 )
           {
@@ -676,7 +676,7 @@ angular.module('uguru.util.controllers')
           else if ($scope.user && $scope.user.university_id) {
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
-            $state.go('^.home');
+            $state.go(FIRST_PAGE);
             $timeout(function() {
               $scope.loader.hide();
             }, 1000);
