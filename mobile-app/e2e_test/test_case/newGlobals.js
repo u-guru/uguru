@@ -5,11 +5,14 @@ var global = function() {
   *
   *
   ************************************************************/
-  this.socialButton = function(index,name)
+  this.socialButton = function(index,name,bool)
   {
+    var bool = true;
+    if (bool ! = null)
+      this.bool = bool
       element.all(by.css('#social-login button')).then(function (buttons) {
         // body...
-            expect(buttons[index].isDisplayed()).toBe(true);
+            expect(buttons[index].isDisplayed()).toBe(this.bool );
             expect(buttons[index].getText()).toBe(name,"Button : '"+ name+"' is not showed");
             buttons[index].click();
       });

@@ -17,36 +17,37 @@ describe('Sign-up test', function () {
 		doc.pickSideMenu(4,"Signup");
 		expect(element(by.id('account')).isDisplayed()).toBe(true);
 	});
-	// describe("Check Facebook is disabled", function()
-	// {
-	// 	var str =['Name','Email','Password']
 
-	// 	for( i = 0; i < 3; ++ i)
-	// 	{
-	//         (function(index) {
-	//         	describe("Input: "+ str[index],function()
-	// 			{
-	//         		it('Enter A key on : ' + str[index],function()
-	// 				{
-	// 					doc.setInput('d',index);
-	// 				});
+	describe("Check Facebook is disabled", function()
+	{
+		var str =['Name','Email','Password']
 
-	// 				it('Check Facebook is hidden',function()
-	// 				{
-	// 					expect(element(by.css('[ng-click="connectWithFacebook()"]')).isDisplayed()).toBe(false);
-	// 				});
-	// 				it('Clear Word',function()
-	// 				{
-	// 					doc.emptyInput(index);
-	// 				});
-	// 				it('Check Facebook is back and showed',function()
-	// 				{
-	// 					expect(element(by.css('[ng-click="connectWithFacebook()"]')).isDisplayed()).toBe(true);
-	// 				});
-	// 			});
-	//         })(i);
-	//     }
-	// });
+		for( i = 0; i < 3; ++ i)
+		{
+	        (function(index) {
+	        	describe("Input: "+ str[index],function()
+				{
+	        		it('Enter A key on : ' + str[index],function()
+					{
+						doc.setInput('d',index);
+					});
+
+					it('Check Facebook is hidden',function()
+					{
+						expect(element(by.css('[ng-click="connectWithFacebook()"]')).isDisplayed()).toBe(false);
+					});
+					it('Clear Word',function()
+					{
+						doc.emptyInput(index);
+					});
+					it('Check Facebook is back and showed',function()
+					{
+						expect(element(by.css('[ng-click="connectWithFacebook()"]')).isDisplayed()).toBe(true);
+					});
+				});
+	        })(i);
+	    }
+	});
 
 	
 
@@ -81,7 +82,6 @@ describe('Sign-up test', function () {
 		{
 			doc.pickSideMenu(4,"Signup");
 			expect(element(by.id('account')).isDisplayed()).toBe(true);
-			browser.sleep(10000)
 		});
 		
 	});		
@@ -123,13 +123,12 @@ describe('Sign-up test', function () {
 		{
 			doc.pickSideMenu(4,"Signup");
 			expect(element(by.id('account')).isDisplayed()).toBe(true);
-			browser.sleep(10000)
 		});
 
 	});
 	describe("SIgn up with Email",function()
 	{
-		it("Active Sign-up",function()
+		it("Check current page Sign-up",function()
 		{
 			doc.pickSideMenu(4,"Signup");
 			expect(element(by.id('account')).isDisplayed()).toBe(true);
@@ -137,11 +136,11 @@ describe('Sign-up test', function () {
 
 		it('Enter Name : ' + str[index],function()
 		{
-			doc.setInput('jason',0);
+			doc.setInput('jason',0,true);
 		});
 		it('Enter Email : ' + str[index],function()
 		{
-			doc.setInput(doc.generateRandomEmail(),1);
+			doc.setInput(doc.generateRandomEmail(),1,true);
 		});
 		it('Enter Password : ' + str[index],function()
 		{
