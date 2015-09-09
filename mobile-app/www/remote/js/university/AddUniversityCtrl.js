@@ -11,10 +11,11 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   '$ionicViewSwitcher',
   'Geolocation',
   'Settings',
+  'Utilities',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
- 	University, $ionicViewSwitcher, Geolocation, Settings) {
+ 	University, $ionicViewSwitcher, Geolocation, Settings, Utilities) {
 
     $scope.search_text = '';
     $scope.location = false;
@@ -36,6 +37,10 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
         return 0;
       }
       return list.sort(compareRank);
+    }
+
+    $scope.query = function(input) {
+      $scope.universities = Utilities.nickMatcher(input, University.getTargetted());
     }
     
     $scope.universitySelected = function(university, $event) {

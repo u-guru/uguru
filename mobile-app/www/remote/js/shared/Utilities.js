@@ -13,7 +13,8 @@ function Utilities($cordovaSplashscreen, $cordovaNgCardIO, Settings) {
 		getNetworkSpeed: getNetworkSpeed,
 		deg2rad: deg2rad,
 		getDistanceInMiles: getDistanceInMiles,
-		readError: readError
+		readError: readError,
+		nickMatcher: nickMatcher
 	}
 
 	function getNetworkSpeed() {
@@ -65,6 +66,16 @@ function Utilities($cordovaSplashscreen, $cordovaNgCardIO, Settings) {
 			}
 			Settings.location = false;
 		}
+	}
+
+	function nickMatcher(input, list) {
+		var matchedList = [];
+		for(var i=0; i<list.length; i++) {
+			if(list[i].name.includes(input)) {
+				matchedList.push(list[i]);
+			}
+		}
+		return matchedList;
 	}
 
 

@@ -282,7 +282,7 @@ angular.module('uguru.util.controllers')
           var local_skills = $localstorage.getObject('skills');
           var local_popular_skills = $localstorage.getObject('local_popular_skills');
           if (!local_skills || local_skills.length === 0) {
-            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
+            $scope.on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
               Major, Skill, Profession);
           } else {
             $scope.static.skills = local_skills;
@@ -294,7 +294,7 @@ angular.module('uguru.util.controllers')
           var local_professions = $localstorage.getObject('professions');
           var local_popular_professions = $localstorage.getObject('local_professions');
           if (!local_professions || local_professions.length === 0) {
-            on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
+            $scope.on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
               Major, Skill, Profession);
           } else {
             $scope.static.professions = local_professions;
