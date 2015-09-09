@@ -20,6 +20,7 @@ exports.config = {
             access: ['../test_case/workflows/access.js'],
             university: ['../test_case/workflows/university.js'],
             sign: ['../test_case/workflows/sidemenu/signup.js'],
+            side: ['../test_case/workflows/sidemenu/sidemenu.js'],
 
         },
         rootElement: "[ng-app]" ,
