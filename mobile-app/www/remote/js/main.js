@@ -1,10 +1,7 @@
 // Uguru upp
 
 var LOCAL = true; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.access';
-
-
-
+var FIRST_PAGE='^.home';
 var BASE_URL = 'https://uguru-rest.herokuapp.com/production/app/';
 var REST_URL = 'https://uguru-rest.herokuapp.com'
 
@@ -12,9 +9,8 @@ var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
   BASE_URL = 'http://localhost:8100';
-
-  REST_URL = 'http://localhost:5000';
-   // var REST_URL = 'http://uguru-rest.herokuapp.com'
+ // REST_URL = 'http://localhost:5000';
+  REST_URL = 'https://uguru-rest.herokuapp.com'
 } else {
   img_base = '/static/'
 }

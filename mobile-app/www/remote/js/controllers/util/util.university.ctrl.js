@@ -110,6 +110,7 @@ angular.module('uguru.util.controllers', [])
                 $localstorage.setObject('nearest-universities', $scope.universities);
 
 
+
           }
 
       }, function(error) {
@@ -124,15 +125,18 @@ angular.module('uguru.util.controllers', [])
     };
 
     $scope.universities = University.getTargetted();
-
+   
     if ($scope.platform.android) {
       $scope.getGPSCoords();
     } else {
       $scope.initialUniversities = filterByTopRankedUniversities($scope.universities);
     }
+      if($scope.search_text != ''){
+        console.log("check");
+        $scope.initialUniversities.hide();
+      }
 
-
-  }
+   }
 
 ])
 

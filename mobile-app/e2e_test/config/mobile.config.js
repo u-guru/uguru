@@ -17,7 +17,9 @@ exports.config = {
         ],
         suites:
         {
-            workflow: ['../test_case/workflows/workflow_1.js'],
+            access: ['../test_case/workflows/access.js'],
+            university: ['../test_case/workflows/university.js'],
+            sign: ['../test_case/workflows/sidemenu/signup.js'],
 
         },
         rootElement: "[ng-app]" ,
