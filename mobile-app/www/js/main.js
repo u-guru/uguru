@@ -53,13 +53,10 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ugur
       if ($cordovaNetwork.isOnline()) {
         console.log('device is online..going straight to the app ');
         navigator.splashscreen.show();
-<<<<<<< HEAD
-        window.location = "http://192.168.42.124:8100/remote";
-        // window.location = "http://u.uguru.me/app/production/";
-=======
+
         // window.location = "http://192.168.42.66:5000/app/production/";
         window.location = "https://www.uguru.me/app/production/";
->>>>>>> 65257836e8000a558f18adfca0123a34800b4954
+
         console.log('this is to test whether things are logged after window.location');
 
 
