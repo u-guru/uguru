@@ -1,13 +1,19 @@
-<ion-modal-view  class='description-modal' ng-controller='DescriptionController'>
+<ion-modal-view  class='uguru-view terms-modal'>
 
-  <ion-header-bar align-title="center" class='dark-bg-header calendar-top-header mini-header' hide-nav-bar='true'>
-    <a class="button button-clear button-blue button-header-link " ng-click='termsModal.hide()'>
-        Close
-    </a>
-    <h1 class="title micro-text modal-header-text" style='padding-left:5px;'>Terms & Privacy Policy</h1>
-  </ion-header-bar>
+<section class="full-xy">
 
-  <ion-content class='white-bg'>
+    <header class="bg-charcoal">
+      <div class="header-nav">
+        <a class="header-nav-back" ng-click='termsModal.hide()'>
+          <i class='icon ion-chevron-down'></i>
+        </a>
+        <div class='header-nav-center'>
+          <h1 class="text-center">Terms & Policy</h1>
+        </div>
+      </div>
+    </header>
+
+  <ion-content class='white-bg has-header'>
   <div class="pure-g micro-text opacity-1-2">
         <div class="pure-u-1 padding-2em">
 
@@ -83,4 +89,5 @@
         </div>
     </div>
   </ion-content>
+</section>
 </ion-modal-view>

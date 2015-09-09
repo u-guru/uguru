@@ -1,4 +1,4 @@
-angular.module('uguru.guru.controllers')
+angular.module('uguru.guru.controllers', [])
 
 //ALL student controllers
 .controller('GuruController', [

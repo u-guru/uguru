@@ -38,7 +38,7 @@ angular.module('uguru.util.controllers')
 
     $scope.settings = {}
     $scope.settings.icons = {
-      profile: true,
+      profile: $scope.user && $scope.user.id,
       notifications: false,
       card: false,
       support: false,
@@ -262,8 +262,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.signupForm = {
-      first_name: null,
-      last_name: null,
+      full_name: null,
       email: null,
       password:null
     }
@@ -596,25 +595,19 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.resetAccount = function() {
-      if ($scope.user.is_admin && confirm('Are you sure you want to reset your admin account?')) {
+      if (confirm('Are you sure you want to reset your admin account?')) {
 
         $scope.loader.show();
-        User.clearAttr($scope.user, $scope.user.id).then(
-          function(user) {
+        $timeout(function() {
+          $scope.loader.hide();
+        }, 1000);
+        $scope.user.university_id = null;
+        $scope.user.university = null;
+        $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
 
-            $scope.loader.hide();
-            $scope.user.university_id = null;
-            $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
-            $ionicSideMenuDelegate.toggleRight();
-            $scope.logoutUser();
-            $scope.goToBeginning();
-          },
-          function(err) {
-            console.log(err)
-          });
-
-
-        // $scope.loader.show();
+        $scope.logoutUser();
+        $localstorage.setObject('user', $scope.user);
+        $scope.goToBeginning();
       }
     }
 
@@ -635,7 +628,8 @@ angular.module('uguru.util.controllers')
         $scope.user.university_id = null;
         $localstorage.setObject('user', $scope.user);
         $timeout(function() {
-          $state.go('^.onboarding');
+          $ionicViewSwitcher.nextDirection('back');
+          $state.go('^.access');
         }, 500)
       }
     }
@@ -744,6 +738,47 @@ angular.module('uguru.util.controllers')
 
     }
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+      }).then(function(modal) {
+          $scope.signupModal = modal;
+    });
+
+    $scope.launchSignupModal = function() {
+        $scope.signupModal.show();
+
+    }
+
+    $scope.launchFAQModal = function() {
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/faq.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.faqModal = modal;
+            $scope.faqModal.show();
+            $scope.loader.show();
+            $timeout(function() {
+              $scope.loader.hide();
+            }, 1500)
+        });
+
+    }
+
+    $scope.launchSupportModal = function() {
+
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/support.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.supportModal = modal;
+            $scope.supportModal.show();
+        });
+
+    }
+
 
     $scope.goToSignupFromSideBar = function() {
 
@@ -776,37 +811,6 @@ angular.module('uguru.util.controllers')
         $scope.root.vars.guru_mode = false;
       }, 1000)
     }
-
-    $scope.closeSignupModal = function(callback) {
-      $scope.loader.hide();
-      if ($scope.platform.mobile && $scope.signupModal &&  $scope.root.keyboard.isVisible()) {
-        $scope.root.keyboard.close();
-        $timeout(function() {
-          $scope.signupModal.hide();
-          if (callback) {
-            callback();
-          }
-        }, 300)
-      } else {
-        $scope.signupModal.hide();
-        if (callback) {
-          callback();
-        }
-      }
-      $scope.resetSignupForm();
-
-    }
-
-
-
-    $scope.comingSoon = function() {
-      $scope.success.show(0, 1500, 'Coming Soon!');
-    }
-
-
-
-
-
 
     $scope.goToGuruMode = function() {
 
@@ -1017,6 +1021,9 @@ angular.module('uguru.util.controllers')
                     $scope.loader.hide();
                     $scope.success.show(0, 1000, 'Login Successful!');
                     $scope.settings.icons.profile = true;
+                    if ($scope.signupModal && $scope.signupModal.isShown()) {
+                      $scope.signupModal.hide();
+                    }
                   }
                   $scope.postFbGraphApiSuccess(success, postSuccessCallback)
                 }
@@ -1053,6 +1060,9 @@ angular.module('uguru.util.controllers')
             $scope.loader.hide();
             $scope.success.show(0, 1500, 'Login Successful!');
             $scope.settings.icons.profile = true;
+            if ($scope.signupModal && $scope.signupModal.isShown()) {
+              $scope.signupModal.hide();
+            }
         }
         $scope.facebookApiGetDetails(successCallback);
         console.log('Getting Facebook information...');
@@ -1063,9 +1073,14 @@ angular.module('uguru.util.controllers')
         $scope.error = error;
         console.log('FB CONNECT FAILED...');
         console.log('Error from logging from facebook:' + JSON.stringify(error));
+        $scope.success.show(0, 1500, 'Something weird happened.. Please contact support!');
         $cordovaFacebook.logout();
         if ($cordovaFacebook) {
           $cordovaFacebook.logout();
+        }
+
+        if ($scope.signupModal && $scope.signupModal.isShown()) {
+            $scope.signupModal.hide();
         }
 
 
@@ -1246,7 +1261,7 @@ angular.module('uguru.util.controllers')
           return re.test(email);
       }
 
-      if (!formDict.first_name) {
+      if (!formDict.full_name) {
         $scope.success.show(0,2000,'Please fill in all fields!');
         document.getElementsByName('signup-first-name')[0].focus();
 
@@ -1257,7 +1272,14 @@ angular.module('uguru.util.controllers')
         }, 950);
         return false;
       } else {
-        $scope.user.first_name = $scope.signupForm.first_name;
+        var nameComponents = $scope.signupForm.full_name.split(' ')
+        var first_name = nameComponents[0];
+        var last_name = nameComponents[nameComponents.length - 1];
+        $scope.signupForm.first_name = first_name;
+        $scope.signupForm.last_name = last_name;
+        $scope.user.first_name = first_name
+        $scope.user.last_name = last_name
+        $scope.user.name = first_name + ' ' + last_name;
       }
 
       if (!formDict.last_name) {
@@ -1349,24 +1371,10 @@ angular.module('uguru.util.controllers')
           $localstorage.setObject('user', $scope.user);
 
           $scope.success.show(0, 1250, 'Login Successful!');
-          $scope.settings.icons.profile = true;
-          $scope.root.vars.settings = {icons : {profile : true}};
 
-
-          if ($state.current.name === 'root.home') {
-            $timeout(function() {
-              $scope.loader.hide();
-            }, 500);
-            $ionicHistory.goBack();
+          if ($scope.signupModal.isShown()) {
+            $scope.signupModal.hide();
           }
-
-          if ($state.current.name === 'root.signup') {
-            $timeout(function() {
-              $ionicSideMenuDelegate.toggleRight();
-            }, 500);
-          }
-
-
 
       }, function(err) {
         if (err.status === 401) {
@@ -1378,10 +1386,6 @@ angular.module('uguru.util.controllers')
 
     $scope.completeSignup = function() {
 
-      if ($scope.loginMode) {
-        $scope.loginUser();
-        return;
-      }
 
       if (!$scope.user.fb_id && !$scope.validateSignupForm()) {
         return;
@@ -1406,23 +1410,11 @@ angular.module('uguru.util.controllers')
           $scope.user.guru_mode = false;
           $localstorage.setObject('user', $scope.user);
 
-
-          $scope.settings.icons.profile = true;
-          $scope.root.vars.settings = {icons : {profile : true}}
-
-
-          if ($state.current.name === 'root.signup') {
-            $scope.success.show(0, 1000, 'Account Successfully Created!');
+          $scope.success.show(0, 1500, 'Account Successfully Created')
+          if ($scope.signupModal.isShown()) {
             $timeout(function() {
-              $ionicSideMenuDelegate.toggleRight();
-            }, 500);
-          }
-
-          if ($state.current.name === 'root.home') {
-            $scope.loader.show();
-            if ($scope.signupModal && $scope.signupModal.isShown()) {
               $scope.signupModal.hide();
-            }
+            }, 750)
           }
           //if we are about to create a request
           if ($state.current.name === 'root.student-request') {

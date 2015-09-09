@@ -1453,6 +1453,10 @@ angular.module('uguru.user', [])
         updateAttrUser: function(arg, user, obj, success_callback, $scope, failure_callback) {
             if (!user.id && arg !== 'forgot_password') {
               console.log('user has not created an account yet.')
+
+              if (success_callback) {
+                success_callback();
+              }
               return
             }
 

@@ -1,4 +1,4 @@
-angular.module('uguru.student.controllers')
+angular.module('uguru.student.controllers', [])
 
 //ALL student controllers
 .controller('HomeController', [
@@ -38,6 +38,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     $scope.showUpcomingToggle = function() {
       $scope.showUpcoming = !$scope.showUpcoming;
+    }
+
+    $scope.goBackToStudentHome = function() {
+      $ionicViewSwitcher.nextDirection('back');
+      $state.go('^.home');
     }
 
     $scope.cancelRequest = function(request) {
@@ -133,7 +138,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
 
 
-
+    $scope.goToBecomeGuru = function() {
+      $ionicViewSwitcher.nextDirection('forward');
+      $state.go('^.become-guru');
+    }
     $scope.cancelStudentActiveSession = function(session) {
 
               //guru goes back to session 'pending', maybe clicked start by accident
@@ -394,10 +402,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       //before guru is matched
       if (session.request.status === 0) {
-
         $scope.cancelRequest(session.request);
         return;
-
       }
 
       $scope.root.vars.active_session = session;
@@ -753,6 +759,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       });
 
+
+      $scope.comingSoon = function() {
+        $scope.success.show(0, 1500, 'Coming Soon!');
+      }
 
      $scope.$on('$ionicView.enter', function() {
 
