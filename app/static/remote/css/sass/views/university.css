@@ -6,9 +6,6 @@
 .university-view {
   background: #2B3234; }
 
-.onboarding#school header:before {
-  background: url(../../../img/onboarding/school.jpg) no-repeat center center/cover !important; }
-
 .onboarding header .onboarding-search:before {
   position: absolute;
   top: 50%;
@@ -22,7 +19,7 @@
   width: 14px;
   height: 14px; }
 
-header a {
+header a.geolocation-icon {
   position: absolute;
   z-index: 0;
   height: 20px;
@@ -30,7 +27,7 @@ header a {
   bottom: 28%;
   right: 5%;
   opacity: 0.5; }
-  header a .ion-navigate {
+  header a.geolocation-icon .ion-navigate {
     color: white !important;
     opacity: 0.6;
     top: 0px !important;

@@ -8,13 +8,6 @@
     background: #2B3234;
 }
 
-
-
-.onboarding#school header:before {
-    background: url(../../../img/onboarding/school.jpg) no-repeat center center/cover !important;
-}
-
-
 .onboarding header .onboarding-search:before {
     position: absolute;
     top: 50%;
@@ -31,7 +24,7 @@
 
 
 
-header a {
+header a.geolocation-icon {
     position:absolute;
     z-index:0;
     height: 20px;
