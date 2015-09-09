@@ -31,12 +31,13 @@ angular.module('uguru.util.controllers')
   '$cordovaNetwork',
   '$cordovaNgCardIO',
   'DeviceService',
+  'Utilities',
   function($ionicPlatform, $scope, $state, $localstorage, User,
           RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
           CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
           $cordovaSplashscreen, $timeout, Geolocation, $cordovaPush,
           $ionicSideMenuDelegate, $ionicViewSwitcher, $cordovaGeolocation, Major,
-          Skill, Profession, $cordovaDevice, $cordovaNetwork, $cordovaNgCardIO, DeviceService) {
+          Skill, Profession, $cordovaDevice, $cordovaNetwork, $cordovaNgCardIO, DeviceService, Utilities) {
 
           // console.log('1. checking for app updates\n');
           // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
@@ -498,7 +499,7 @@ angular.module('uguru.util.controllers')
                 $scope.user.current_device = $scope.platform.device;
                 $scope.user.current_device.user_id = $scope.user.id;
                 if ($cordovaNetwork) {
-                  $rootScope.network_speed = getNetworkSpeed();
+                  $rootScope.network_speed = Utilities.getNetworkSpeed();
                   $scope.user.current_device.network_speed = $rootScope.network_speed;
                   console.log('network speed is currently', $rootScope.network_speed);
                   console.log('2. grabbing network speed which is: ', $rootScope.network_speed, '\n\n');
@@ -520,18 +521,18 @@ angular.module('uguru.util.controllers')
                   console.log(err);
                 });
                 console.log('Extra #2. Android push notifications need to be registered')
-                $rootScope.$on('pushNotificationReceived', function(event, notification) {
-                  CordovaPushWrapper.received($rootScope, event, notification);
-                  console.log('android notifications registered',event, notification);
-                  if ($scope.user && $scope.user.id) {
-                    payload = {
-                      'push_notifications': true,
-                      'push_notifications_enabled': true
-                    }
-                    $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
+                // $rootScope.$on('pushNotificationReceived', function(event, notification) {
+                //   CordovaPushWrapper.received($rootScope, event, notification);
+                //   console.log('android notifications registered',event, notification);
+                //   if ($scope.user && $scope.user.id) {
+                //     payload = {
+                //       'push_notifications': true,
+                //       'push_notifications_enabled': true
+                //     }
+                //     $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
 
-                  }
-                });
+                //   }
+                // });
                 //grab geolocation super early for android devices
                 on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
                   Major, Skill, Profession);

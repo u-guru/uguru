@@ -36,97 +36,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   $cordovaGeolocation, $cordovaDevice, DeviceService) {
 
   var openKeyboard = null; 
-// $ionicPlatform.ready(function() {
 
   DeviceService.readyDevice();
-
-  document.addEventListener("deviceready", function () {
-        // console.log('list of all plugins checkpoint 2', JSON.stringify(cordova.require("cordova/plugin_list").metadata));
-
-            $rootScope.platform = {
-                ios: ionic.Platform.isIOS(),
-                android: ionic.Platform.isAndroid(),
-                windows: ionic.Platform.isWindowsPhone(),
-                mobile: ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone(),
-                web: !(ionic.Platform.isIOS() || ionic.Platform.isAndroid() || ionic.Platform.isWindowsPhone()),
-                device: ionic.Platform.device(),
-            }
-
-            console.log("main.js (60): " + JSON.stringify($rootScope.platform));
-
-
-            // if (device.cordova && device.cordova.getPlatform() === 'Win32NT') {
-            //   $rootScope.platform.windows = true;
-            //   $rootScope.platform.mobile = true;
-            //   $rootScope.platform.web = false;
-            // }
-
-            console.log('user is on device:', DeviceService.getDevice());
-            if (ionic.Platform.isWindowsPhone()) {
-              console.log('woooooo we detected were on windows niggaaa');
-            }
-            //performing mobile tasks
-            // console.log('STARTING MOBILE ONLY tasks below \n\n');
-
-            if (!window.cordova) {
-              // console.log('sorry aint no cordova up in here');
-            }
-
-            if (window.cordova && $rootScope.platform.mobile) {
-
-                //hiding the splash screen
-                console.log('1. hiding splashscreen on mobile devices \n\n');
-
-                if (navigator.splashscreen) {
-                  // console.log('hide the splash screen on ios via cordova navigator v2');
-                  navigator.splashscreen.hide();
-                  // $cordovaSplashscreen.hide();
-                } else {
-                  // console.log('did not hide the splash screen on device since there is none?');
-                }
-
-
-                //grabbing nextwork speed
-
-
-                //Local Storage
-                 // $localstorage.saveToDisk(device.platform);
-               //$localstorage.updateDisk();
-               //console.log("LOG "+$localstorage.getFreeDiskSpace());
-
-
-
-
-                //save device
-                // console.log('3. Saving device to server:', $rootScope.platform.device.model, '\n\n')
-                $rootScope.current_device = ionic.Platform.device();
-
-
-                //keyboard settings for android / ios
-                // console.log('4. Setting up ios keyboard default + status bars..');
-                if (cordova.plugins.Keyboard && cordova.plugins.Keyboard.hideKeyboardAccessoryBar) {
-                  cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-                  cordova.plugins.Keyboard.disableScroll(true);
-                }
-
-                //styling status bars
-                if ($rootScope.platform.ios) {
-
-                  if (window.StatusBar) {
-                    // console.log('Extra #1. Styling iOS status bar to black \n\n');
-                    StatusBar.styleDefault();
-                    StatusBar.overlaysWebView(true);
-                  }
-
-                }
-          }
-
-    });
-//end of device ready //
-
-
-    // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-  // });
 
 })
 
@@ -146,13 +57,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
       $delegate(exception, cause);
     };
   });
-
-
-  if (ionic.Platform.isWindowsPhone()) {
-    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|chrome-extension|x-wmapp.?):|data:image\//);
-  }
-
-  // })
 
   if (!window.cordova) {
       var appID = 1416375518604557;
@@ -334,69 +238,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
 });
 
-var checkForAppUpdates = function (Version, $ionicHistory, $templateCache, $localstorage) {
-
-            Version.getUpdatedVersionNum().then(
-              //if user gets the right version
-              function(response) {
-                    var serverVersionNumber = JSON.parse(response).version;
-                    console.log('server number', serverVersionNumber);
-                    var currentVersion = Version.getVersion();
-
-                    //if brand new user with no version set
-                    if ((typeof currentVersion) === "undefined") {
-                      // console.log('First time opening app - set version to 1.0');
-                      currentVersion = 1.0;
-                      Version.setVersion(1.0);
-                    }
-
-
-
-                    if (serverVersionNumber != currentVersion) {
-
-
-                      console.log('versions are different...\n');
-
-                      $ionicHistory.clearCache();
-                      $ionicHistory.clearHistory();
-                      $localstorage.removeObject('user');
-                      $localstorage.removeObject('courses');
-                      $localstorage.removeObject('universities');
-
-                      if ($cordovaSplashscreen) {
-                        $cordovaSplashscreen.show();
-                      }
-                      $templateCache.removeAll();
-                      window.localStorage.clear();
-                      //remove all angular templates
-
-
-                      Version.setVersion(serverVersionNumber);
-                      $localstorage.set('recently_updated', true);
-
-
-
-                      console.log('V' + serverVersionNumber + 'stored to user');
-
-
-
-
-                      window.location.href = BASE_URL;
-                      window.location.replace(true);
-
-
-                    }
-               },
-
-               //connectivity issues
-              function(error) {
-                  console.log(error);
-                  console.log('Version not loaded');
-              }
-          );
-        };
 //background loading stuff
-
 
 var processSkills = function($scope) {
 
@@ -426,93 +268,3 @@ var processSkills = function($scope) {
     console.log('skills processed');
 }
 
-
-
-function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
-  var R = 6371; // Radius of the earth in km
-  var dLat = deg2rad(lat2-lat1);  // deg2rad below
-  var dLon = deg2rad(lon2-lon1);
-
-  var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-  Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-  Math.sin(dLon/2) * Math.sin(dLon/2);
-
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-  var d = R * c; // Distance in km
-  return d;
-}
-
-var getNetworkSpeed = function() {
-
-    var networkState = navigator.connection.type;
-
-    var states = {};
-    states[Connection.UNKNOWN]  = 'Unknown connection';
-    states[Connection.ETHERNET] = 'Ethernet connection';
-    states[Connection.WIFI]     = 'WiFi connection';
-    states[Connection.CELL_2G]  = 'Cell 2G connection';
-    states[Connection.CELL_3G]  = 'Cell 3G connection';
-    states[Connection.CELL_4G]  = 'Cell 4G connection';
-    states[Connection.CELL]     = 'Cell generic connection';
-    states[Connection.NONE]     = 'No network connection';
-
-    console.log('Connection type: ' + states[networkState]);
-
-    return networkState;
-
-}
-
-function deg2rad(deg) {
-  return deg * (Math.PI/180);
-}
-
-function getNearestUniversity(user_lat, user_long, uni_list, limit, local_storage, $scope, callback, $state) {
-
-
-    var sort = function(array) {
-      var len = array.length;
-      if(len < 2) {
-        return array;
-      }
-      var pivot = Math.ceil(len/2);
-      var results = merge(sort(array.slice(0,pivot)), sort(array.slice(pivot)));
-      return results;
-    };
-
-    var merge = function(left, right) {
-      var result = [];
-      while((left.length > 0) && (right.length > 0)) {
-
-
-            uni_1_lat = left[0].location.latitude;
-            uni_1_long = left[0].location.longitude;
-            uni_2_lat = right[0].location.latitude;
-            uni_2_long = right[0].location.longitude;
-
-            d1 = getDistanceFromLatLonInKm(user_lat, user_long, uni_1_lat, uni_1_long);
-            d2 = getDistanceFromLatLonInKm(user_lat, user_long, uni_2_lat, uni_2_long);
-            left[0].miles = parseInt(d1 / 0.62 * 10) / 10;
-            right[0].miles = parseInt(d2 / 0.62 * 10) / 10;
-            if ( d1 < d2 ) {
-                result.push(left.shift());
-            }
-            else {
-              result.push(right.shift());
-            }
-      }
-
-      result = result.concat(left, right);
-      return result;
-    };
-
-    var largeList = sort(uni_list);
-
-    // $scope.nearest_universities = largeList;
-    $scope.static.nearest_universities = largeList;
-    if (callback) {
-      callback($scope, $state);
-    }
-
-    return largeList.slice(0,10);
-
-};
