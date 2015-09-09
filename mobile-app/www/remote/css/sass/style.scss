@@ -318,7 +318,12 @@ progress, .progress {
 		}
 		.onboarding-prop {
 			@include center-xy;
-
+			h5 {
+				color:white;
+				font-weight:400;
+				text-transform: uppercase;
+				margin:5px;
+			}
 			// @include round;
 			// width: 80px;
 			// height: 80px;
@@ -1351,12 +1356,4 @@ progress, .progress {
 		}
 	}
 }
-}
-
-body.platform-ios
- {
-	background-color:$charcoal;
-	header {
-		padding-top:20px;
-	}
 }
