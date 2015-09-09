@@ -49,10 +49,6 @@
     }
 }
 
-.uguru-view.category-skills-modal {
-    top:245px;
-}
-
 .view-container {
     position: inherit;
 }
@@ -100,4 +96,17 @@ section {
 h1, h2 {
     color:white;
     font-weight:500;
+}
+
+/**Hide intercom shit**/
+#intercom-launcher {
+    display:none !important;
+}
+
+.intercom-parent-container {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    margin-top: -54px;
 }

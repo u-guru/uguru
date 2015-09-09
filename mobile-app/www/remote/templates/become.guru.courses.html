@@ -1,6 +1,16 @@
-<ion-view class='uguru-view courses-view guru-courses-view'>
+<ion-view class='uguru-view courses-view guru-courses-view' ng-controller='CoursesController'>
 
-    <section id="course" class="onboarding">
+    <section id="course" class="onboarding charcoal-bg">
+      <progress value="2" max="100">
+        <div class="progress"><span data-value="30"></span></div>
+      </progress>
+      <script>
+        setTimeout(setValue, 200);
+        function setValue() {
+            document.getElementsByTagName("progress")[0].setAttribute("value", "30");
+        }
+      </script>
+
       <header class="header-back">
         <div class="header-nav">
           <a class="header-nav-back" ng-click='previousSlide()'>
@@ -16,13 +26,14 @@
             </svg>
           </a>
         </div>
-        <div class="onboarding-prop"></div>
-        <div class="onboarding-search">
+        <div class="onboarding-prop">
+          <h2> Add Courses</h2></div>
+        <div class="onboarding-search input-search-ghost">
           <input type="search" placeholder="My courses are..."
                   fast-matcher
                   fast-matcher-source="courses"
                   fast-matcher-output="matchingCourses"
-                  fast-matcher-properties="short_name, title"
+                  fast-matcher-properties="short_name"
                   fast-matcher-any-word="true"
                   fast-matcher-limit="30"
                   fast-matcher-preserve-order="true"
@@ -32,12 +43,16 @@
         </div>
       </header>
       <div id="courses-list" class="onboarding-list">
-        <ul>
-          <li ng-repeat='course in user.guru_courses' ng-click='remove(course, course_search_text)'>
-              <p class='semibold'> {{course.short_name}} <span class='course-title'> {{course.title}} </span>
-              </p>
+        <ul class='list'>
+          <li ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
+              <input type="checkbox" checked>
+              <label>{{course.short_name}}</label>
           </li>
-          <li ng-repeat='course in matchingCourses' ng-click='removeGuruCourseAndUpdate(course, course_search_text)'>
+          <li ng-repeat='course in preSelectedGuruCourses' ng-hide='search_text.length > 0'ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
+              <input type="checkbox">
+              <label>{{course.short_name}}</label>
+          </li>
+          <li ng-repeat='course in matchingCourses' ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
               <input type="checkbox">
               <label>{{course.short_name}}</label>
           </li>

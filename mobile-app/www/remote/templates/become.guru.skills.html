@@ -1,6 +1,15 @@
 <ion-view class='uguru-view skills-view' ng-controller='CategoriesController'>
   <section id="skill" class="onboarding">
-    <header class="header-back">
+    <progress value="60" max="100">
+      <div class="progress"><span data-value="50"></span></div>
+    </progress>
+    <script>
+      setTimeout(setValue, 200);
+      function setValue() {
+          document.getElementsByTagName("progress")[0].setAttribute("value", "50");
+      }
+    </script>
+    <header>
       <div class="header-nav">
         <a class="header-nav-back" ng-click='previousSlide()'>
           <svg width="12px" height="23px" viewBox="0 0 12 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -15,17 +24,18 @@
           </svg>
         </a>
       </div>
-      <div id="category-active-default">
-        <div class="onboarding-prop"></div>
-        <h1>{{active_category.name}}</h1>
+      <div class="onboarding-prop">
+          <h2>{{active_category.name}}</h2>
       </div>
     </header>
     <div id="skills-list" class="onboarding-list">
-      <ul>
+      <ul class='list list-item-half'>
         <li ng-repeat='category in static.categories'>
           <a ng-click='launchCategoryModal(category)'>
-            <span class="skill-icon"></span>
-            <span class="skill-label">{{category.name}}</span>
+            <span class="skill-icon" ng-show="!category.active_skills_count"></span>
+            <span class="skill-label ng-class:{'count-exists':category.active_skills_count > 0}">{{category.name}}</span>
+            <span class="skill-count" ng-show='category.active_skills_count > 1'>{{category.active_skills_count}} items</span>
+            <span class="skill-count" ng-show='category.active_skills_count === 1'>{{category.active_skills_count}} item</span>
           </a>
         </li>
 
