@@ -29,7 +29,7 @@ describe('Major Test', function () {
 		});
 		it('check delete',function()
 		{
-
+			doc.checkMsg('successfully removed')
 		});
 	});
 

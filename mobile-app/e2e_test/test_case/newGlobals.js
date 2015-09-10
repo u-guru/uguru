@@ -189,7 +189,9 @@ var global = function() {
      str = '#'+id+' li:not(.ng-hide)';
      element.all(by.css(str)).then(function (items) {
         var temp = Math.floor((Math.random() * (items.length-1)));
+        console.log( items[temp].getText();)
         items[temp].click();
+
     }
   }
   /**********************************************
@@ -281,7 +283,7 @@ var global = function() {
   ****************************************************************/
   this.switchAlert() = function()
   {
-       rowser.wait(EC.alertIsPresent(), 4000);
+      browser.wait(EC.alertIsPresent(), 4000);
        var alertDialog = browser.switchTo().alert();
        alertDialog.accept();  // Use to accept (simulate clicking ok)
   }
