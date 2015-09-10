@@ -18,12 +18,13 @@ angular.module('uguru.util.controllers', ['sharedServices'])
 function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
  	University, $ionicViewSwitcher, Geolocation, Settings, Utilities, DeviceService) {
 
+    var schoolList = document.querySelectorAll('#school-list')[0];
+
     $scope.search_text = '';
     $scope.location = false;
     $scope.universities = University.getTargetted();
     sortByRank(University.getTargetted());
     
-    $scope.limit = 10;
     $scope.increaseLimit = function() {
       if($scope.limit < $scope.universities.length) {
         $scope.limit += 10;
@@ -100,7 +101,7 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
       if($scope.location) {
         
         $scope.location = false;
-        sortByRank(University.getTargetted());
+        //sortByRank(University.getTargetted());
         document.querySelector('header a.geolocation-icon .ion-navigate').style.color = 'white';
         console.log("$scope.location is now: " + $scope.location);
       
@@ -109,14 +110,19 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
         Geolocation.getLocation();        
         document.querySelector('header a.geolocation-icon .ion-navigate').style.color = '#46FF00';
         $timeout(function() {
-            $scope.limit = 10; 
+            $scope.defaultLimit();
+            schoolList.scrollTop = 0;
             $scope.location = true;
             console.log("$scope.location is now: " + $scope.location);
-            Geolocation.getLocation();
+
           }, 1500);
       }
 
     };
+
+    $scope.defaultLimit = function() {
+      $scope.limit = 10;
+    }
 
         
       $scope.getGPSCoords = function() {
