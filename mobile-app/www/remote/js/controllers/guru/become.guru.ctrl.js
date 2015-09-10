@@ -46,7 +46,6 @@ angular.module('uguru.guru.controllers')
 
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;
-      console.log(index);
     }
 
     $scope.goToUniversity = function() {

@@ -79,7 +79,8 @@ angular.module('uguru.util.controllers')
 
 
           if ($scope.platform.ios) {
-
+            StatusBar.styleLightContent();
+            StatusBar.overlaysWebView(true);
             if (window.StatusBar) {
 
               StatusBar.styleLightContent();

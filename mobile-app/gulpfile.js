@@ -160,6 +160,7 @@ gulp.task('styles', function() {
   var cssStream16 = gulp.src('www/remote/css/sass/samir.css')
   var cssStream17 = gulp.src('www/remote/css/sass/views/guru-profile.css')
   var cssStream18 = gulp.src('www/remote/css/sass/views/guru-credibility.css')
+  var cssStream19 = gulp.src('www/remote/css/sass/views/ios.css')
   // .src('www/remote/css/responsive.css');
   // var cssStream3 = gulp
   // .src('www/remote/css/angular-strap.css');

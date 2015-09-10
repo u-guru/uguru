@@ -77,6 +77,13 @@ angular.module('uguru.guru.controllers')
       $scope.closeAttachActionSheet();
     }
 
+    $scope.userPhotoList = [];
+    $scope.samplePhotoList = [{src: '/img/onboarding/profile1.jpg'},
+      {src: '/img/onboarding/profile2.jpg'},
+      {src: '/img/onboarding/profile3.jpg'},
+      {src: '/img/onboarding/profile4.jpg'},
+    ]
+
 
 
     $scope.file_changed = function(element) {
@@ -97,8 +104,12 @@ angular.module('uguru.guru.controllers')
         var formData = new FormData();
 
         formData.append('file', photofile);
-        formData.append('profile_url', $scope.user.id);
+        if ($scope.user.id) {
+          formData.append('profile_url', $scope.user.id);
+          $scope.root.vars.profile_url_changed = true;
+        }
 
+        name = new Date().getTime().toString();
         formData.append('filename', name);
 
         $scope.file_index += 1;

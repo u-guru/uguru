@@ -247,7 +247,6 @@ progress, .progress {
 	-o-appearance: none;
 	appearance: none;
 	position: absolute;
-	top: 0;
 	z-index: 9;
 	width: 100%;
 	height: 5px;
@@ -319,7 +318,12 @@ progress, .progress {
 		}
 		.onboarding-prop {
 			@include center-xy;
-
+			h5 {
+				color:white;
+				font-weight:400;
+				text-transform: uppercase;
+				margin:5px;
+			}
 			// @include round;
 			// width: 80px;
 			// height: 80px;
@@ -575,6 +579,11 @@ progress, .progress {
 		}
 	}
 	&#skill {
+		header {
+			&:before {
+				background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover,url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat;
+			}
+		}
 		#skills-list {
 			ul {
 				@include flex;
@@ -584,11 +593,12 @@ progress, .progress {
 				li {
 					box-sizing: border-box;
 					height: 25%;
-					padding: 1px;
+					// padding: 1px; WHY!?!!? lol
 					a {
 						@include flex;
 						@include flex-wrap;
 						@include flex-center;
+						background-color: rgba(0,0,0,0.5);
 						box-sizing: border-box;
 						height: 100%;
 						font-size: 18px;
@@ -658,6 +668,11 @@ progress, .progress {
 		}
 	}
 	&#course {
+		header {
+			&:before {
+				background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover,url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat;
+			}
+		}
 		#courses-list {
 			ul {
 				@include flex;
@@ -762,6 +777,11 @@ progress, .progress {
 		}
 	}
 	&#major {
+		header {
+			&:before {
+				background: url(../../img/onboarding/major.jpg) no-repeat center center/cover,url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat;
+			}
+		}
 		#major-list {
 			ul {
 				li {
@@ -1309,7 +1329,7 @@ progress, .progress {
 		&:before {
 			@include center-y;
 			display: block;
-			content: url("../svg/search.svg");
+			// content: url("../svg/search.svg");
 			width: 14px;
 			height: 14px;
 		}
@@ -1337,4 +1357,3 @@ progress, .progress {
 	}
 }
 }
-

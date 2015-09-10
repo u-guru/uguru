@@ -28,7 +28,7 @@
         </div>
         <div class="onboarding-prop">
           <h2> Add Courses</h2>
-          <h5 ng-show='user.guru_courses && user.guru_courses.length'> <strong>{{user.majors.length}} selected </strong></h5>
+          <h5 ng-show='user.guru_courses && user.guru_courses.length'> <strong>{{user.guru_courses.length}} selected </strong></h5>
         </div>
         <div class="onboarding-search input-search-ghost">
           <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -49,11 +49,12 @@
       </header>
       <div id="courses-list" class="onboarding-list">
         <ul class='list'>
-          <li ng-show='search_text.length === 0' ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
+          <li ng-hide='search_text.length > 0 || user.guru_courses.length == 0' ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
               <input type="checkbox" checked>
-              <label>{{course.short_name}}</label>
+              <label>{{course.short_name}} &nbsp;&nbsp; <i class='icon ion-checkmark'></i></label>
           </li>
-          <li ng-repeat='course in preSelectedGuruCourses' ng-hide='search_text.length > 0'ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
+          <!--   -->
+          <li ng-repeat='course in preSelectedGuruCourses' ng-show='!user.matchingCourses || search_text.length === 0'ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
               <input type="checkbox">
               <label>{{course.short_name}}</label>
           </li>

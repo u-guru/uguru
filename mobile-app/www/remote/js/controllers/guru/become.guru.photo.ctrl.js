@@ -104,8 +104,12 @@ angular.module('uguru.guru.controllers')
         var formData = new FormData();
 
         formData.append('file', photofile);
-        formData.append('profile_url', $scope.user.id);
+        if ($scope.user.id) {
+          formData.append('profile_url', $scope.user.id);
+          $scope.root.vars.profile_url_changed = true;
+        }
 
+        name = new Date().getTime().toString();
         formData.append('filename', name);
 
         $scope.file_index += 1;
