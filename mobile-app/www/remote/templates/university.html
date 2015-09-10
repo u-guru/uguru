@@ -67,7 +67,7 @@
             <img ng-src="{{university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
           </span>
           <span class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
-            <b><span class='university-name'>{{university.name}}</span><i>{{university.city}}, {{university.state}} </i></b></span>
+            <b><span class='university-name'>{{university.name}}</span><i><span class='university-city'>{{university.city}}</span>, {{university.state}} </i></b></span>
           </span>
         </a>
       </li>

@@ -1,6 +1,6 @@
 // Uguru upp
 
-var LOCAL = false; //local to the 8100 codebasebirbirs
+var LOCAL = true; //local to the 8100 codebasebirbirs
 var FIRST_PAGE='^.access';
 
 
