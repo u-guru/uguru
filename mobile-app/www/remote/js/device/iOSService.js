@@ -11,26 +11,34 @@ angular
 	iOSService
 	]);
 
-function iOSService($rootScope, $state, $localstorage, $cordovaPush, 
+function iOSService($rootScope, $state, $localstorage, $cordovaPush,
   Geolocation, Settings, Popup) {
 
 	return {
 		ready: ready,
+		showStatusBar: showStatusBar,
 		enableGPS: enableGPS
 	}
 
 	function ready() {
 	    if(window.StatusBar) {
 			StatusBar.styleLightContent();
-			StatusBar.overlaysWebView(true);
+			StatusBar.hide();
 		}
 		if(cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 			cordova.plugins.Keyboard.disableScroll(true);
 		}
-		if(window.StatusBar) {
+		if(StatusBar) {
 			StatusBar.styleDefault();
 			StatusBar.overlaysWebView(true);
+		}
+	}
+
+	function showStatusBar() {
+		if(window.StatusBar) {
+			StatusBar.styleLightContent();
+			StatusBar.show();
 		}
 	}
 

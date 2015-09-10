@@ -16,7 +16,8 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 		readyDevice: readyDevice,
 		getDevice: getDevice,
 		isMobile: isMobile,
-		isWeb: isWeb
+		isWeb: isWeb,
+        ios: iOSService
 	}
 
 	function isMobile() {

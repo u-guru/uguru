@@ -1,7 +1,7 @@
 // Uguru upp
 // --> config.xml
 // -->
-var LOCAL = true; //local to the 8100 codebasebirbirs
+var LOCAL = false; //local to the 8100 codebasebirbirs
 var FIRST_PAGE='^.access';
 
 

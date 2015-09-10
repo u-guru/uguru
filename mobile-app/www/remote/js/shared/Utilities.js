@@ -75,18 +75,9 @@ function Utilities($cordovaSplashscreen, $cordovaNgCardIO, Settings) {
 			var nameLowerCase = list[i].name.toLowerCase();
 			var inputLowerCase = input.toLowerCase();
 
-			try{
-				if( list[i].name.toLowerCase().includes(input.toLowerCase()) ) {
-					matchedList.push(list[i]);
-				}
-			} catch (err) {
-				if(nameLowerCase.indexOf(inputLowerCase) !== -1) {
-					matchedList.push(list[i]);
-				}
-			}
-			// if( list[i].name.toLowerCase().includes(input.toLowerCase()) ) {
-			// 	matchedList.push(list[i]);
-			// }
+			if(nameLowerCase.indexOf(inputLowerCase) !== -1) {
+				matchedList.push(list[i]);
+			};
 		}
 		return matchedList;
 	}

@@ -8,13 +8,18 @@ angular.module('uguru.util.controllers')
   'AccessService',
   'AnimationService',
   '$templateCache',
+  '$ionicSideMenuDelegate',
   AccessController
   ]);
 
 function AccessController($scope, $state, $ionicViewSwitcher,
-  DeviceService, LoadingService, AccessService, AnimationService, $templateCache) {
+  DeviceService, LoadingService, AccessService, AnimationService,
+  $templateCache, $ionicSideMenuDelegate) {
 
   DeviceService.readyDevice();
+
+  //this prevents side bar from coming
+  $ionicSideMenuDelegate.canDragContent(false);
 
   $scope.access = {
     codeInput: '',

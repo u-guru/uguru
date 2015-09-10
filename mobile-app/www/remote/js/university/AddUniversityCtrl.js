@@ -22,7 +22,7 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
     $scope.location = false;
     $scope.universities = University.getTargetted();
     sortByRank(University.getTargetted());
-    
+
     $scope.limit = 10;
     $scope.increaseLimit = function() {
       if($scope.limit < $scope.universities.length) {
@@ -51,7 +51,7 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
     $scope.query = function(input) {
       $scope.universities = Utilities.nickMatcher(input, University.getTargetted());
     }
-    
+
     $scope.universitySelected = function(university, $event) {
 
       //if user is switching universities
@@ -88,7 +88,7 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
     };
     console.log("$scope.location is currenty: " + $scope.location);
 
-    
+
     var isTimeout = false;
     var getGPS = function() {
       // //STILL NEED TO DO FOR IOS
@@ -98,18 +98,18 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
       // // }
       console.log("$scope.location is currenty: " + $scope.location);
       if($scope.location) {
-        
+
         $scope.location = false;
         sortByRank(University.getTargetted());
         document.querySelector('header a.geolocation-icon .ion-navigate').style.color = 'white';
         console.log("$scope.location is now: " + $scope.location);
-      
+
       } else if(!$scope.location){
-        
-        Geolocation.getLocation();        
+
+        Geolocation.getLocation();
         document.querySelector('header a.geolocation-icon .ion-navigate').style.color = '#46FF00';
         $timeout(function() {
-            $scope.limit = 10; 
+            $scope.limit = 10;
             $scope.location = true;
             console.log("$scope.location is now: " + $scope.location);
             Geolocation.getLocation();
@@ -118,7 +118,7 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
 
     };
 
-        
+
       $scope.getGPSCoords = function() {
         if(!isTimeout) {
           isTimeout = true;
@@ -126,8 +126,14 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
           $timeout(function() { isTimeout = false;}, 4000);
         } else {
           console.log("still waiting for $timeout to clear, please try again shortly");
-        }     
+        }
       }
+
+      $scope.$on('$ionicView.enter', function() {
+          if (DeviceService.getDevice().platform ==='iOS') {
+            DeviceService.ios.showStatusBar();
+          }
+      })
 
     // if (DeviceService.getDevice()==='android') {
     //   $scope.getGPSCoords();
