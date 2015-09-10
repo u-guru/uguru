@@ -22,6 +22,14 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
     $scope.location = false;
     $scope.universities = University.getTargetted();
     sortByRank(University.getTargetted());
+    
+    $scope.limit = 10;
+    $scope.increaseLimit = function() {
+      if($scope.limit < $scope.universities.length) {
+        $scope.limit += 10;
+      }
+    }
+
     //back button
     $scope.goToAccess = function() {
       console.log("pressed goToAccess()");
@@ -90,24 +98,30 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
       // // }
       console.log("$scope.location is currenty: " + $scope.location);
       if($scope.location) {
+        
         $scope.location = false;
         sortByRank(University.getTargetted());
         document.querySelector('header a.geolocation-icon .ion-navigate').style.color = 'white';
+        console.log("$scope.location is now: " + $scope.location);
+      
       } else if(!$scope.location){
-        Geolocation.getLocation();
-        $scope.location = true;        
-        document.querySelector('header a.geolocation-icon .ion-navigate').style.color = '#46FF00';
         
+        Geolocation.getLocation();        
+        document.querySelector('header a.geolocation-icon .ion-navigate').style.color = '#46FF00';
+        $timeout(function() { 
+            $scope.location = true;
+            console.log("$scope.location is now: " + $scope.location);
+          }, 1500);
       }
-      console.log("$scope.location is now: " + $scope.location);
+
     };
 
         
       $scope.getGPSCoords = function() {
         if(!isTimeout) {
           isTimeout = true;
-          $timeout(getGPS, 1000);
-          $timeout(function() { isTimeout = false;}, 5000);
+          getGPS();
+          $timeout(function() { isTimeout = false;}, 4000);
         } else {
           console.log("still waiting for $timeout to clear, please try again shortly");
         }     

@@ -26,9 +26,9 @@
         </a>
       </div>
     </header>
-  <div id="school-list" class="onboarding-list">
+  <div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list">
     <ul class='list list-item-border'>
-      <li  class="list-item school-harvard" ng-repeat='university in universities | limitTo: 10'>
+      <li  class="list-item school-harvard" ng-repeat='university in universities | limitTo: limit'>
         <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
           <span class="school-icon list-icon-left">
             <img ng-src="{{university.seal_URI || university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
