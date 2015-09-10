@@ -25,7 +25,7 @@ angular.module('uguru.util.controllers', [])
 
     //scope variables
     $scope.search_text = '';
-
+    $ionicSideMenuDelegate.canDragContent(false);
     //back button
     $scope.goToAccess = function() {
       $ionicViewSwitcher.nextDirection('back');

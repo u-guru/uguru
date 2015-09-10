@@ -54,7 +54,7 @@
               <label>{{course.short_name}} &nbsp;&nbsp; <i class='icon ion-checkmark'></i></label>
           </li>
           <!--   -->
-          <li ng-repeat='course in preSelectedGuruCourses' ng-show='!user.matchingCourses || search_text.length === 0'ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
+          <li ng-repeat='course in preSelectedGuruCourses' ng-show='search_text.length === 0'ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
               <input type="checkbox">
               <label>{{course.short_name}}</label>
           </li>

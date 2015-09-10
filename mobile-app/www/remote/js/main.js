@@ -13,7 +13,7 @@ if (LOCAL) {
   BASE = 'remote/';
   BASE_URL = 'http://localhost:8100';
 
-  REST_URL = 'http://localhost:5000';
+  // REST_URL = 'http://localhost:5000';
    // var REST_URL = 'http://uguru-rest.herokuapp.com'
 
 } else {
@@ -24,11 +24,11 @@ mixpanel = window.mixpanel || null;
 
 if (mixpanel) mixpanel.track("App Launch");
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
-  'ngAnimate', 'uguru.util.controllers', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
+  'ngAnimate', 'angular-velocity', 'uguru.util.controllers', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
   'uguru.directives', 'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap'])
 
-.run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
+.run(function($ionicPlatform, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
   $cordovaDialogs, Version, $rootScope, $cordovaSplashscreen,
   $templateCache, Device, User, $cordovaLocalNotification,
@@ -124,11 +124,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
                 //styling status bars
                 if ($rootScope.platform.ios) {
-                  console.log('ay');
+
                   if (window.StatusBar) {
-                    console.log('ayer');
                     window.StatusBar.styleDefault();
-                    // console.log('Extra #1. Styling iOS status bar to black \n\n');
                     StatusBar.styleDefault();
                     StatusBar.overlaysWebView(true);
                     // $cordovaStatusbar.overlaysWebView(true);

@@ -11,10 +11,12 @@ angular.module('uguru.util.controllers')
   '$cordovaStatusbar',
   '$ionicPlatform',
   '$ionicViewSwitcher',
+  '$ionicSideMenuDelegate',
   function($scope, $state, $timeout, $localstorage,
     $ionicModal, $cordovaStatusbar, $ionicPlatform,
-    $ionicViewSwitcher) {
+    $ionicViewSwitcher, $ionicSideMenuDelegate) {
 
+    $ionicSideMenuDelegate.canDragContent(false);
     //Sanitized
 
     //DATA
@@ -51,23 +53,77 @@ angular.module('uguru.util.controllers')
     /* This is where all cordova plugins MUST go
        EVENTUALLY TODO: Put all device readys in a service
     */
-     // window.addEventListener('native.keyboardshow', keyboardShowHandler);
+     window.addEventListener('native.keyboardshow', keyboardShowHandler);
 
-     //  function keyboardShowHandler(e){
-     //      if ($scope.platform.mobile) {
-     //        $scope.access.keyboardShown = true;
-     //      }
-     //  }
+      function keyboardShowHandler(e){
+          if ($scope.platform.mobile) {
+            $scope.keyboardHeight = e.keyboardHeight;
+            Velocity(
+              document.querySelector('#redeem-button'),
+              {
+                translateY:"-" + $scope.keyboardHeight + 'px',
+                height: "*=0.75"
 
+              },
+              {duration:1000},
+              "ease-in-out"
+            );
+            // alert(e.keyboardHeight);
+            // $scope.access.keyboardShown = true;
+          }
+      }
       $scope.accessInputOnFocus = function() {
         if ($scope.platform.mobile) {
           $scope.access.keyboardShown = true;
+          cordova.plugins.Keyboard.disableScroll(true)
+          Velocity(
+            document.querySelector('#access-logo svg'),
+            {
+              scale:0.66,
+              translateY:"-140px"
+            },
+            {duration:500},
+            "easeInSine"
+          );
+
+          Velocity(
+            document.querySelector('#access-code-bar'),
+            {translateY:"-120px"},
+            {duration:500},
+            "ease-in-out"
+          );
+          // Velocity(
+          //   document.querySelector('#access-code-bar'),
+          //   {translateY:"200px"},
+          //   {duration:50},
+          //   "easeInSine"
+          // );
         }
       }
 
       $scope.accessInputOnBlur = function() {
         if ($scope.platform.mobile) {
           $scope.access.keyboardShown = false;
+          Velocity(
+            document.querySelector('#access-logo svg'),
+            {scale:1, translateY:"0px"},
+            {duration:500},
+            "easeInSine"
+          );
+
+          Velocity(
+            document.querySelector('#access-code-bar'),
+            {translateY:"25px"},
+            {duration:500},
+            "easeInSine"
+          );
+          console.log ($scope.keyboardHeight);
+          Velocity(
+            document.querySelector('#redeem-button'),
+            {translateY:"0px", height: "/=0.75"},
+            {duration:200},
+            "easeInSine"
+          );
         }
       }
 
@@ -76,7 +132,7 @@ angular.module('uguru.util.controllers')
 
         //all mobile specific plugins
         if ($scope.platform.mobile) {
-
+          cordova.plugins.Keyboard.disableScroll(true);
 
           if ($scope.platform.ios) {
             StatusBar.styleLightContent();
@@ -95,6 +151,7 @@ angular.module('uguru.util.controllers')
           }
 
           if ($scope.platform.android) {
+
             //handle android case here
           }
         }
