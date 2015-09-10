@@ -14,8 +14,7 @@ function Utilities($cordovaSplashscreen, $cordovaNgCardIO, Settings) {
 		deg2rad: deg2rad,
 		getDistanceInMiles: getDistanceInMiles,
 		readError: readError,
-		nickMatcher: nickMatcher,
-		debounce: debounce
+		nickMatcher: nickMatcher
 	}
 
 	function getNetworkSpeed() {
