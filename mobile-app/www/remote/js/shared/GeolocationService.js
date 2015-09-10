@@ -41,6 +41,7 @@ function Geolocation($localstorage, $timeout, University,
       nearestResults = sortByLocation( position.coords.latitude,
                                 position.coords.longitude,
                                 University.getTargetted());
+
       return nearestResults;
       //$localstorage.setObject('nearest-universities', $scope.universities);
     } 

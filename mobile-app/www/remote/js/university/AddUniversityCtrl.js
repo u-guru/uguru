@@ -21,7 +21,7 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
     $scope.search_text = '';
     $scope.location = false;
     $scope.universities = University.getTargetted();
-
+    sortByRank(University.getTargetted());
     //back button
     $scope.goToAccess = function() {
       console.log("pressed goToAccess()");
@@ -29,7 +29,7 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
       $state.go('^.access');
     }
 
-    var sortByRank = function(list) {
+    function sortByRank(list) {
       function compareRank(a, b) {
         if (a.rank < b.rank)
           return -1;
@@ -78,57 +78,46 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
 
     };
+    console.log("$scope.location is currenty: " + $scope.location);
 
-    $scope.getGPSCoords = function() {
+    
+    var isTimeout = false;
+    var getGPS = function() {
       // //STILL NEED TO DO FOR IOS
       // // if(DeviceService.getDevice()==="ios") {
       // //   Geolocation.enableGPS();
       // //   return;
       // // }
+      console.log("$scope.location is currenty: " + $scope.location);
       if($scope.location) {
         $scope.location = false;
-        sortByRank($scope.universities);
-      } else {
-        $scope.location = true;
-        Geolocation.getLocation();  
+        sortByRank(University.getTargetted());
+        document.querySelector('header a.geolocation-icon .ion-navigate').style.color = 'white';
+      } else if(!$scope.location){
+        Geolocation.getLocation();
+        $scope.location = true;        
+        document.querySelector('header a.geolocation-icon .ion-navigate').style.color = '#46FF00';
+        
       }
-      
-      //   var posOptions = {
-      //     timeout: 10000,
-      //     enableHighAccuracy: false, //may cause high errors if true
-      //   }
-
-      //   $scope.search_text ='';
-
-      //   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, posOptions);
-      //   $scope.loader.show();
-
-      //   function geoSuccess(position) {
-      //     $scope.loader.hide();
-      //     console.log('location found!', position.coords.latitude, position.coords.longitude);
-
-      //     $scope.nearestUniversities = Geolocation.sortByLocation(
-      //                             position.coords.latitude,
-      //                             position.coords.longitude,
-      //                             $scope.universities);
-      //     $scope.universities = $scope.nearestUniversities;
-      //     $scope.location = true;
-      //     $localstorage.setObject('nearest-universities', $scope.universities);
-      //   } 
-      //   function geoError(error) {
-      //       $scope.location = true;
-      //       $scope.loader.hide()
-      //       alert('Sorry! Please check your privacy settings check your GPS signal.');
-      //   }
+      console.log("$scope.location is now: " + $scope.location);
     };
 
+        
+      $scope.getGPSCoords = function() {
+        if(!isTimeout) {
+          isTimeout = true;
+          $timeout(getGPS, 1000);
+          $timeout(function() { isTimeout = false;}, 5000);
+        } else {
+          console.log("still waiting for $timeout to clear, please try again shortly");
+        }     
+      }
 
-    if (DeviceService.getDevice()==='android') {
-      $scope.getGPSCoords();
-    } else {
-      $scope.universities = sortByRank($scope.universities);
-    }
-
+    // if (DeviceService.getDevice()==='android') {
+    //   $scope.getGPSCoords();
+    // } else {
+    //   $scope.universities = sortByRank($scope.universities);
+    // }
 
 
 }

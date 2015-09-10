@@ -15,7 +15,8 @@ if (LOCAL) {
   
   BASE = 'remote/';
 
-  BASE_URL = 'http://192.168.42.124:8100';
+  //BASE_URL = 'http://192.168.42.124:8100';
+  BASE_URL = 'http://192.168.43.155:8100';
    //BASE_URL = 'http://localhost:8100'
   // REST_URL = 'http://192.168.42.78:5000'
   //REST_URL = 'https://uguru-rest.herokuapp.com'
