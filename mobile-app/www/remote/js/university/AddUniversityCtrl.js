@@ -108,9 +108,11 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
         
         Geolocation.getLocation();        
         document.querySelector('header a.geolocation-icon .ion-navigate').style.color = '#46FF00';
-        $timeout(function() { 
+        $timeout(function() {
+            $scope.limit = 10; 
             $scope.location = true;
             console.log("$scope.location is now: " + $scope.location);
+            Geolocation.getLocation();
           }, 1500);
       }
 
