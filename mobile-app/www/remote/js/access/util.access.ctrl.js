@@ -7,11 +7,12 @@ angular.module('uguru.util.controllers')
   'LoadingService',
   'AccessService',
   'AnimationService',
+  '$templateCache',
   AccessController
   ]);
 
 function AccessController($scope, $state, $ionicViewSwitcher, 
-  DeviceService, LoadingService, AccessService, AnimationService) {
+  DeviceService, LoadingService, AccessService, AnimationService, $templateCache) {
 
   DeviceService.readyDevice();
 
@@ -21,13 +22,14 @@ function AccessController($scope, $state, $ionicViewSwitcher,
     keyboardShown:false,
   };
 
-  $scope.checkAccessCode = function(code) {
 
+  $scope.checkAccessCode = function(code) {
+    var code = 'cool';
     if(AccessService.validate(code)){
-      LoadingService.show(0, 1000, 'Access Granted');
+      //LoadingService.show(0, 5000, 'Access Granted');
       $scope.access.codeInput = '';
       $ionicViewSwitcher.nextDirection('forward');
-      AnimationService.flip();
+      //AnimationService.flip();
       $state.go('^.university');
     } else {
       $scope.access.errorInputMsg = 'Incorrect access code';

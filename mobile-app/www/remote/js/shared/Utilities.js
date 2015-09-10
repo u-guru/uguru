@@ -71,7 +71,7 @@ function Utilities($cordovaSplashscreen, $cordovaNgCardIO, Settings) {
 	function nickMatcher(input, list) {
 		var matchedList = [];
 		for(var i=0; i<list.length; i++) {
-			if(list[i].name.includes(input)) {
+			if(list[i].name.toLowerCase().includes(input.toLowerCase())) {
 				matchedList.push(list[i]);
 			}
 		}

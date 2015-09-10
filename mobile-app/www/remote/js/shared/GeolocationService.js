@@ -3,16 +3,18 @@ angular.module('uguru.root.services')
     [
     '$localstorage',
     '$timeout',
+    'University',
     'Utilities',
     'Settings',
     Geolocation]);
 
-function Geolocation($localstorage, $timeout,
+function Geolocation($localstorage, $timeout, University,
   Utilities, Settings) {
 
   var deviceGPS = {
     sortByLocation: sortByLocation,
-    enableGPS: enableGPS
+    enableGPS: enableGPS,
+    getLocation: getLocation
   };
 
   return deviceGPS;
@@ -26,11 +28,24 @@ function Geolocation($localstorage, $timeout,
     }
   }
 
-  function getCurrentLocation() {
-    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, options);
+  function getLocation() {
+    var posOptions = {
+      timeout: 10000,
+      enableHighAccuracy: false, //may cause high errors if true
+    }
+    return navigator.geolocation.getCurrentPosition(geoSuccess, geoError, posOptions);
 
     function geoSuccess(position) {
-        
+      console.log('location found!', position.coords.latitude, position.coords.longitude);
+      var nearestResults = [];
+      nearestResults = sortByLocation( position.coords.latitude,
+                                position.coords.longitude,
+                                University.getTargetted());
+      return nearestResults;
+      //$localstorage.setObject('nearest-universities', $scope.universities);
+    } 
+    function geoError(error) {
+        alert('Sorry! Please check your privacy settings check your GPS signal.');
     }
   }
 

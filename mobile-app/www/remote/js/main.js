@@ -87,7 +87,10 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   state('root.university', {
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
-        controller: 'HomeController'
+        controller: 'HomeController',
+        resolve: {
+          
+        }
   }).
   state('root.university-container', {
         url: '/university-container',
