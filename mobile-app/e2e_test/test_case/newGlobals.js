@@ -22,6 +22,29 @@ var global = function() {
 //       });
   }
   /************************************************************
+  *
+  *
+  *
+  ************************************************************/
+  this.checkItemDisplay= function(name,isDisplay,command)
+  {
+      element.all(by.css('.side-menu-list ion-item')).filter(function(elem, index) 
+      {
+          return elem.getText().then(function(text)
+          {
+              return text === name;
+          });
+      }).then(function(filteredElements) 
+        {
+           var length = filteredElements.length;
+            expect(length == 1).toBe(isDisplay);
+             if (length === 1 && isDisplay===true &&command ==='click')
+                 filteredElements[0].click();
+            // else if (length > 1)
+            //     expect(length > 1).toBe(false )
+        });
+  }
+  /************************************************************
   * pickSideMenu
   * arg : inex - index i
   *       name - name to match ion-item name
@@ -35,6 +58,19 @@ var global = function() {
             items[index].click();
       });
   }
+  /*********************************************************
+  *
+  *
+  *
+  ***********************************************************/
+  this.checkTitle = function(title)
+  {
+     element.all(by.css('.header-nav-center h1')).last().getText().then(function(value)
+      {
+        expect(value.toLowerCase()).toBe(title);
+      });
+  };
+
   /**********************************************************
   *checkMsg 
   *arg : msg - message you wanna check

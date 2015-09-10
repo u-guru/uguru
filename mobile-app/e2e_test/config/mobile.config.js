@@ -60,6 +60,8 @@ exports.config = {
                     },
                     customProcessors: []
                 }));
+       
+
 
     
             protractor.get = require('../test_case/globals.js').globals;
@@ -67,11 +69,11 @@ exports.config = {
             global.doc =require('../test_case/newGlobals.js');
             global.EC  = protractor.ExpectedConditions;
             browser.driver.manage().window().setSize(414, 736);
-           return  browser.driver.get("http://localhost:8100/#/");
-            browser.sleep(1000);
 
 
-
+     
+            browser.get("http://localhost:8100/#/")
+            browser.sleep(2000);
         }
         
 };
