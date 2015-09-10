@@ -83,10 +83,10 @@
         }
 
         this.next = function()
-        { 
+        {
             if(current_pane+1 < 4)
-            return this.showPane(current_pane+1, true); 
-            return this.showPane(current_pane, true); 
+            return this.showPane(current_pane+1, true);
+            return this.showPane(current_pane, true);
 
         };
 
@@ -192,7 +192,7 @@
         }
         else
          delta = e.originalEvent.wheelDelta;
-       
+
 
         currentIndex = $('#slide-breadcrumbs li a').index($('#slide-breadcrumbs li a.active'));
         // close first
@@ -287,23 +287,23 @@ var onTransitionStartCarousel = function(index) {
 
     }
     if (index === 2) {
-         currentProgress = parseInt($('.work-infograph')[0].getAttribute('data-percent'));
+         /* currentProgress = parseInt($('.work-infograph')[0].getAttribute('data-percent'));
 
          if (!currentProgress) {
             try {
                 $('.work-infograph').data('easyPieChart').update(25);
-                countupElement('work-wage-animation', 0, 60, 5);   
+                countupElement('work-wage-animation', 0, 60, 5);
             } catch (err){
                 setTimeout(function() {
                     console.log("err: " + err);
                     console.log("error loading easyPieChart.update(), trying again...")
                     $('.work-infograph').data('easyPieChart').update(25);
-                    countupElement('work-wage-animation', 0, 60, 5);   
+                    countupElement('work-wage-animation', 0, 60, 5);
                 }, 700);
-                
-            } 
-             
-         }
+
+            }
+
+         } */
     }
     if (index === 3) {
     }

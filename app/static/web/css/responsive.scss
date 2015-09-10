@@ -1,0 +1,260 @@
+// misc
+@media screen and (max-width: 35.5em) {
+	.intercom-launcher-preview {
+		display: none!important;
+	}
+}
+
+@media screen and (min-width: 375px) {
+	#mobile-start {
+		#mobile-inside {
+			img {
+				max-width: none;
+			}
+		}
+	}
+}
+
+// #EARN
+@media screen and (min-width: 375px) {
+	#main {
+		#earn {
+			#earn-categories-mobile {
+				ul {
+					font-size: 14px;
+					li {
+						padding: 6px 0;
+					}
+				}
+			}
+		}
+	}
+	#top-school-banner {
+		opacity: 0;
+	}
+}
+
+@media screen and (min-width: 1080px) {
+	#main {
+		#earn {
+			.inside {
+				.inside-text {
+					#earn-categories-desktop {
+						.earn-category {
+							.earn-category-front {
+								h3 {
+									font-size: 18px;
+								}
+							}
+							.earn-category-back {
+								ul {
+									li {;
+										font-size: 14px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	#main {
+		#earn {
+			.inside {
+				.inside-text {
+					#earn-categories-desktop {
+						.earn-category {
+							.earn-category-front {
+								h3 {
+									span {
+										display: inline;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 84em) and (min-height: 800px) {
+	#main {
+		#earn {
+			.inside {
+				.inside-text {
+					#earn-categories-desktop {
+						.earn-category {
+							svg {
+								max-width: 120px;
+								max-height: 120px;
+							}
+							.earn-category-front {
+								h3 {
+									font-size: 22px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1600px) {
+	#main {
+		#earn {
+			.inside {
+				.inside-text {
+					#earn-categories-desktop {
+						.earn-category {
+							.earn-category-front {
+								padding: 40px 10px;
+								h3 {
+									font-size: 24px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// #WORK
+@media screen and (max-width: 320px) {
+	#main {
+		#work {
+			#work-panes {
+				> li {
+					.work-popup {
+						.work-popup-info {
+							ul {
+								li {
+									div {
+										h4 {
+											font-size: 16px;
+										}
+										p {
+											font-size: 14px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 64em) and (min-height: 700px) {
+	#main {
+		#work {
+			#work-panes {
+				> li {
+					.work-popup {
+						.work-popup-info {
+							ul {
+								li {
+									.work-popup-icon {
+										width: 80px;
+										height: 80px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 64em) and (min-height: 800px) {
+	#main {
+		#work {
+			#work-panes {
+				> li {
+					.work-popup {
+						.work-popup-info {
+							ul {
+								li {
+									.work-popup-icon {
+										width: 100px;
+										height: 100px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 64em) and (min-height: 900px) {
+	#main {
+		#work {
+			#work-panes {
+				> li {
+					.work-popup {
+						.work-popup-info {
+							ul {
+								li {
+									.work-popup-icon {
+										width: 150px;
+										height: 150px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// #WHY
+@media screen and (max-width: 320px) {
+	#main {
+		#why {
+			#why-list {
+				li {
+					.why-list-icon {
+						width: 50px;
+						height: 50px;
+					}
+					h3 {
+						font-size: 14px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	#main {
+		#why {
+			h2 {
+				position: relative;
+				top: auto;
+				left: auto;
+				padding-top: calc(.25em + 62px);
+				width: auto;
+				max-width: 1000px;
+			}
+		}
+	}
+}

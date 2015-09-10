@@ -1,79 +1,126 @@
 <li id="work" class="slide" data-number="2">
         <div class="inside">
             <div class="inside-text">
-                <h2><span>Greater pay &amp; rewards for helping students.</span></h2>
-            </div>
-            <div id="work-inside">
-                <div id="work-infograph">
-                    <!-- SAMIR
-                        Percentages:
-                            Wage - 38% #81B566
-                            Popular - 21% #50A5DD
-                            Schedule - 18% #9A5BC5
-                            Blassed - 23% #8A9EA3
-                    -->
-                    <div id="work-infograph-bg" data-rotate="0" data-percent="0"></div>
-                    <div class="work-infograph" data-rotate="50" data-percent="0" data-bar-color="#81B566"></div>
-                    <div id='work-pane-animation-container'>
-                        <div class='work-wage-animation-wrapper'>
-                            <div class='count-up-text'>
-                                <span class="dollar-text">$</span>
-                                <span id='work-wage-animation'></span>
-                                <span class='hour-text'>an hour</span>
-                            </div>
-                        </div>
-                    </div>
-                    <img hidden src="/static/web/svg/work/popular.svg" alt=""/>
-                    <img hidden src="/static/web/svg/work/schedule.svg" alt=""/>
-                    <img hidden src="/static/web/svg/work/blessed.svg" alt=""/>
-                </div>
-                <div id="work-text">
-                    <div id="work-slider">
-                        <ul>
-                            <li>
-                                <a href="#" id='work-wage' class='work-icon-link'>
-                                    {% include "web/components/work/wage.svg" %}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" id='popular-wage' class='work-icon-link'>
-                                    {% include "web/components/work/popular.svg" %}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" id='schedule-wage' class='work-icon-link'>
-                                    {% include "web/components/work/schedule.svg" %}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" id='blessed-wage' class='work-icon-link'>
-                                    {% include "web/components/work/blessed.svg" %}
-                                </a>
-                            </li>
-                        </ul>
-                        <span id="slider-bar">
-                            <span id="slider-triangle">
-                                {% include "web/components/tear.svg" %}
-                            </span>
-                        </span>
-                    </div>
-                    <div id='work-wage-content' class='work-content'>
-                        <h3>Awesome pay.</h3>
-                        <p>The more you guru, the more your rate will increase.</p>
-                    </div>
-                    <div id='popular-wage-content' class='work-content hide'>
-                        <h3>Be the cool kid.</h3>
-                        <p>We’ll give you the tools to skyrocket into Uguru fame.</p>
-                    </div>
-                    <div id='schedule-wage-content' class='work-content hide'>
-                        <h3>Easy scheduling.</h3>
-                        <p>Get instant scheduling when it’s best for you.</p>
-                    </div>
-                    <div id='blessed-wage-content' class='work-content hide'>
-                        <h3>#blessed</h3>
-                        <p>Score access to cool stuff, like free Uber rides.</p>
-                    </div>
-                </div>
+                <h2><span>A platform made for college students.</span></h2>
+                <ul id="work-panes">
+	                <li>
+	                	<a class="work-pane-link" href="#"><h3>Money lorem ipsum.</h3></a>
+	                	<div class="work-popup active">
+		                	<div class="work-popup-bg"></div>
+		                	<div class="work-popup-info">
+			                	<h3>
+				                	Money lorem ipsum.
+				                	<a href="#">
+					                	<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										    <path d="M10.1941364,8.77825 L17.2674453,1.70725 C17.6575175,1.31625 17.6575175,0.68325 17.2674453,0.29325 C16.876373,-0.09775 16.2432558,-0.09775 15.8521834,0.29325 L8.77987471,7.36425 L1.70756598,0.29325 C1.3174938,-0.09775 0.683376458,-0.09775 0.293304276,0.29325 C-0.0977680919,0.68325 -0.0977680919,1.31625 0.293304276,1.70725 L7.365613,8.77825 L0.293304276,15.84925 C-0.0977680919,16.23925 -0.0977680919,16.87225 0.293304276,17.26325 C0.683376458,17.65425 1.3174938,17.65425 1.70756598,17.26325 L8.77987471,10.19225 L15.8521834,17.26325 C16.2432558,17.65425 16.876373,17.65425 17.2664451,17.26325 C17.6575175,16.87225 17.6575175,16.23925 17.2664451,15.84925 L10.1941364,8.77825" fill="#FFFFFF"></path>
+										</svg>
+				                	</a>
+				                </h3>
+			                	<ul>
+				                	<li>
+				                		<span class="work-popup-icon"></span>
+				                		<div>
+					                		<h4>This is a value prop.</h4>
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+				                		</div>
+				                	</li>
+				                	<li>
+				                		<span class="work-popup-icon"></span>
+				                		<div>
+					                		<h4>This is a value prop.</h4>
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+				                		</div>
+				                	</li>
+				                	<li>
+				                		<span class="work-popup-icon"></span>
+				                		<div>
+					                		<h4>This is a value prop.</h4>
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+				                		</div>
+				                	</li>
+			                	</ul>
+		                	</div>
+	                	</div>
+	                </li>
+	                <li>
+	                	<a class="work-pane-link" href="#"><h3>Flexibility dol words.</h3></a>
+	                	<div class="work-popup">
+		                	<div class="work-popup-bg"></div>
+		                	<div class="work-popup-info">
+			                	<h3>
+				                	Flexibility dol words.
+				                	<a href="#">
+					                	<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										    <path d="M10.1941364,8.77825 L17.2674453,1.70725 C17.6575175,1.31625 17.6575175,0.68325 17.2674453,0.29325 C16.876373,-0.09775 16.2432558,-0.09775 15.8521834,0.29325 L8.77987471,7.36425 L1.70756598,0.29325 C1.3174938,-0.09775 0.683376458,-0.09775 0.293304276,0.29325 C-0.0977680919,0.68325 -0.0977680919,1.31625 0.293304276,1.70725 L7.365613,8.77825 L0.293304276,15.84925 C-0.0977680919,16.23925 -0.0977680919,16.87225 0.293304276,17.26325 C0.683376458,17.65425 1.3174938,17.65425 1.70756598,17.26325 L8.77987471,10.19225 L15.8521834,17.26325 C16.2432558,17.65425 16.876373,17.65425 17.2664451,17.26325 C17.6575175,16.87225 17.6575175,16.23925 17.2664451,15.84925 L10.1941364,8.77825" fill="#FFFFFF"></path>
+										</svg>
+				                	</a>
+				                </h3>
+			                	<ul>
+				                	<li>
+				                		<span class="work-popup-icon"></span>
+				                		<div>
+					                		<h4>This is a value prop.</h4>
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+				                		</div>
+				                	</li>
+				                	<li>
+				                		<span class="work-popup-icon"></span>
+				                		<div>
+					                		<h4>This is a value prop.</h4>
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+				                		</div>
+				                	</li>
+				                	<li>
+				                		<span class="work-popup-icon"></span>
+				                		<div>
+					                		<h4>This is a value prop.</h4>
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+				                		</div>
+				                	</li>
+			                	</ul>
+		                	</div>
+	                	</div>
+	                </li>
+	                <li>
+	                	<a class="work-pane-link" href="#"><h3>Connections lorem tag.</h3></a>
+	                	<div class="work-popup">
+		                	<div class="work-popup-bg"></div>
+		                	<div class="work-popup-info">
+			                	<h3>
+				                	Connections lorem tag.
+				                	<a href="#">
+					                	<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										    <path d="M10.1941364,8.77825 L17.2674453,1.70725 C17.6575175,1.31625 17.6575175,0.68325 17.2674453,0.29325 C16.876373,-0.09775 16.2432558,-0.09775 15.8521834,0.29325 L8.77987471,7.36425 L1.70756598,0.29325 C1.3174938,-0.09775 0.683376458,-0.09775 0.293304276,0.29325 C-0.0977680919,0.68325 -0.0977680919,1.31625 0.293304276,1.70725 L7.365613,8.77825 L0.293304276,15.84925 C-0.0977680919,16.23925 -0.0977680919,16.87225 0.293304276,17.26325 C0.683376458,17.65425 1.3174938,17.65425 1.70756598,17.26325 L8.77987471,10.19225 L15.8521834,17.26325 C16.2432558,17.65425 16.876373,17.65425 17.2664451,17.26325 C17.6575175,16.87225 17.6575175,16.23925 17.2664451,15.84925 L10.1941364,8.77825" fill="#FFFFFF"></path>
+										</svg>
+				                	</a>
+				                </h3>
+			                	<ul>
+				                	<li>
+				                		<span class="work-popup-icon"></span>
+				                		<div>
+					                		<h4>This is a value prop.</h4>
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+				                		</div>
+				                	</li>
+				                	<li>
+				                		<span class="work-popup-icon"></span>
+				                		<div>
+					                		<h4>This is a value prop.</h4>
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+				                		</div>
+				                	</li>
+				                	<li>
+				                		<span class="work-popup-icon"></span>
+				                		<div>
+					                		<h4>This is a value prop.</h4>
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+				                		</div>
+				                	</li>
+			                	</ul>
+		                	</div>
+	                	</div>
+	                </li>
+                </ul>
             </div>
         </div>
         <div class="cta-desktop">
