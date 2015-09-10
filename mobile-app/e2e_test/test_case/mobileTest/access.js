@@ -15,7 +15,7 @@ describe('Workflow Test : One', function () {
 			{
 	           it("Enter Access Code : "+ testSpec,function()
 				{
-					doc.setInput(testSpec);
+					doc.setInput(testSpec,0,false);
 				});
 	 
 
@@ -28,7 +28,7 @@ describe('Workflow Test : One', function () {
 					}
 					else
 					{
-						browser.wait(EC.presenceOf(startButton.element(by.tagName("p"))),3000);
+						browser.wait(EC.invisibilityOf(startButton.element(by.tagName("p"))),10000);
 						startButton.element(by.tagName("p")).getText().then(function(value)
 						{
 							expect(value).toBe("Incorrect access code");

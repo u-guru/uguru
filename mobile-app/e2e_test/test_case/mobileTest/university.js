@@ -1,11 +1,11 @@
 describe('Workflow Test : One', function () {
- 	browser.driver.get("http://localhost:8100/#/university");
+ 	//browser.driver.get("http://localhost:8100/#/university");
  
  	describe("university page should have famous school list",function()
 	{
 		it("Popular List is enable",function()
 			{
-		 		browser.pause();
+		 		//browser.pause();
 				doc.isListShow("university in initialUniversities");
 			});
 	});
@@ -14,7 +14,8 @@ describe('Workflow Test : One', function () {
 	{
 		it("Key in a letter",function()
 			{
-				doc.setInput("a");
+
+				doc.setInput("a",1);
 			});
 		it("check matchingUniversities is show &  Initial Universities is hidde",function()
 		{

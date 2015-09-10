@@ -131,6 +131,46 @@ var global = function() {
           });           
     });
   }
+
+  this.checkLists = function(id,binding)
+  { 
+    str = '#'+id+' li:not(.ng-hide)';
+    element.all(by.css(str)).then(function (items) {
+          var length = items.length;
+          var dataName;
+          var name
+          var groupName;
+          var tempName;
+          var tempGroupName;
+
+           for(var j = 0 ; j < length; ++j)
+           {
+                  name= items[j].element(by.binding(binding)).getText().then(function(text){
+                    return text;
+                  });
+                  //class type 
+                  groupName=items[j].getAttribute('ng-repeat').then(function(value){
+                    return value;
+                  });
+
+                  for(var i = j+1; i < length ; i++)
+                  {
+                        //cmopare name
+                      tempName= items[i].element(by.binding(binding)).getText().then(function(text){
+                         return text;
+                      });
+
+                      //class type 
+                      tempGroupName= items[i].getAttribute('ng-repeat').then(function(value){
+                        return value;
+                      });
+                     expect(name).not.toBe(tempName, "Data Repeating");
+                     expect(groupName).toBe(tempGroupName, "Difrerent ng Group");
+                  }
+            } 
+               
+    });
+  }
   /****************************************************
   * pickList 
   * arg : name - name of the ng-repeat, 
@@ -139,10 +179,18 @@ var global = function() {
   this.pickList = function(name)
   {
     element.all(by.repeater(name)).then(function (items) {
-              expect(items.length).toBe(5);
+              // expect(items.length).toBe(5);
             var temp = Math.floor((Math.random() * (items.length-1)));
             items[temp].click();
     });
+  }
+  this.newPickList = function(name)
+  {
+     str = '#'+id+' li:not(.ng-hide)';
+     element.all(by.css(str)).then(function (items) {
+        var temp = Math.floor((Math.random() * (items.length-1)));
+        items[temp].click();
+    }
   }
   /**********************************************
   *setInput
@@ -162,6 +210,7 @@ var global = function() {
       i = index;
     element.all(by.tagName("input")).then(function(inputs)
       {
+        // console.log(inputs.length);
         if (check == true)
          {
            inputs[i].getAttribute('value').then(function(result)
@@ -225,7 +274,17 @@ var global = function() {
       templist.push(correct);
     return templist
   }
-
+  /*************************************************************
+  *
+  *
+  *
+  ****************************************************************/
+  this.switchAlert() = function()
+  {
+       rowser.wait(EC.alertIsPresent(), 4000);
+       var alertDialog = browser.switchTo().alert();
+       alertDialog.accept();  // Use to accept (simulate clicking ok)
+  }
   /*************************************************************************************
   *connectFB
   *arg : id -Fb account

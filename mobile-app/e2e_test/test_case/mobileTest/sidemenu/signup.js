@@ -1,10 +1,10 @@
 describe('Sign-up test', function () {
 	var sideMenuButton= element(by.css('[ng-click="toggleRightSideMenu()"]'));
 	var sideMenuList = element(by.css('.side-menu-list.disable-user-behavior'))
-	beforeAll(function()
-	{
-	    browser.get("http://localhost:8100/#/home");
-	});
+	// beforeAll(function()
+	// {
+	//     browser.get("http://localhost:8100/#/home");
+	// });
 	it("go to the new-home page",function()
 	{
         browser.wait(EC.elementToBeClickable(sideMenuList),3000);
@@ -26,7 +26,7 @@ describe('Sign-up test', function () {
 	{
 		var str =['Name','Email','Password']
 
-		for( i = 0; i < 3; ++ i)
+		for( i = 2; i < 5; ++ i)
 		{
 	        (function(index) {
 	        	describe("Input: "+ str[index],function()
@@ -159,7 +159,8 @@ describe('Sign-up test', function () {
 			browser.sleep(10000);
 		})
 		it("Log off",function () {
-		 	doc.pickSideMenu(4,"Logout");
+		 	// doc.pickSideMenu(4,"Logout");
+		 	doc.checkItemDisplay("Logout",true,"click");
 		 	browser.sleep(100);
 		 	var alertDialog = browser.switchTo().alert();
 			alertDialog.accept();  // Use to accept (simulate clicking ok)

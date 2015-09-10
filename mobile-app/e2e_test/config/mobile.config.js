@@ -17,11 +17,29 @@ exports.config = {
         ],
         suites:
         {
-            access: ['../test_case/workflows/access.js'],
-            university: ['../test_case/workflows/university.js'],
-            sign: ['../test_case/workflows/sidemenu/signup.js'],
-            side: ['../test_case/workflows/sidemenu/sidemenu.js'],
+            access: ['../test_case/mobileTest/access.js'],
+            
+            university: ['../test_case/mobileTest/workflows/access.js',
+                         '../test_case/mobileTest/university.js'
+                        ],
 
+            sign:   ['../test_case/mobileTest/workflows/access.js',
+                   '../test_case/mobileTest/workflows/university.js', 
+                   '../test_case/mobileTest/sidemenu/signup.js'
+                    ],
+
+            side:   [ '../test_case/mobileTest/workflows/access.js',
+                   '../test_case/mobileTest/workflows/university.js', 
+                    '../test_case/mobileTest/sidemenu/sidemenu.js'
+                    ],
+            major:  [ '../test_case/mobileTest/workflows/access.js',
+                      '../test_case/mobileTest/workflows/university.js', 
+                      '../test_case/mobileTest/becomeGuru/major.js'
+                    ],
+            course:  [   '../test_case/mobileTest/workflows/access.js',
+                        '../test_case/mobileTest/workflows/university.js', 
+                        '../test_case/mobileTest/workflows/major.js',
+                    ]
         },
         rootElement: "[ng-app]" ,
        // rootElement: 'uguru' ,
@@ -69,11 +87,8 @@ exports.config = {
             global.doc =require('../test_case/newGlobals.js');
             global.EC  = protractor.ExpectedConditions;
             browser.driver.manage().window().setSize(414, 736);
-
-
-     
             browser.get("http://localhost:8100/#/")
-            browser.sleep(2000);
+            browser.sleep(3000);
         }
         
 };
