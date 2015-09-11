@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+
+exitstatus=0
+committed=`git diff-index --cached --name-only HEAD`
+
+# jshint only if js files have been edited
+if echo "$committed" | grep '.js$' >/dev/null 2>&1; then
+     node_modules/jshint/bin/jshint --reporter node_modules/jshint-stylish mobile-app >/dev/null 2>&1
+
+    if [ "$?" -ne "0" ]; then
+         node_modules/jshint/bin/jshint --reporter node_modules/jshint-stylish mobile-app
+
+        echo "Found issues in javascript."
+        exitstatus=1
+    fi
+fi
+
+if [ "$exitstatus" -eq 0 ]; then
+    venv/bin/flake8 . >/dev/null 2>&1
+
+    if [ "$?" -ne "0" ]; then
+        venv/bin/flake8 .
+
+        echo "Found issues in python."
+        exitstatus=1
+    fi
+fi
+
+if [ "$exitstatus" -ne 0 ]; then
+    echo "Commit aborted."
+fi
+
+exit $exitstatus
