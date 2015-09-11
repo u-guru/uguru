@@ -15,4 +15,3 @@
   - EX :
   	- $ protractor protractor e2e_test/config/mobile.config.js
   	- $ protractor protractor e2e_test/config/mobile.config.js --suite workflow  
-  	

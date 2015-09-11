@@ -160,6 +160,7 @@ gulp.task('styles', function() {
   var cssStream16 = gulp.src('www/remote/css/sass/samir.css')
   var cssStream17 = gulp.src('www/remote/css/sass/views/guru-profile.css')
   var cssStream18 = gulp.src('www/remote/css/sass/views/guru-credibility.css')
+  var cssStream19 = gulp.src('www/remote/css/sass/ios.css')
   // .src('www/remote/css/responsive.css');
   // var cssStream3 = gulp
   // .src('www/remote/css/angular-strap.css');
@@ -175,7 +176,7 @@ gulp.task('styles', function() {
   return streamqueue({ objectMode: true }, cssStream2, cssStream3,
     cssStream4, cssStream5, cssStream6, cssStream7, cssStream8,
     cssStream9, cssStream10, cssStream11, cssStream12, cssStream13,
-    cssStream14, cssStream15, cssStream16, cssStream17, cssStream18).pipe(plugins.concat('main.css'))
+    cssStream14, cssStream15, cssStream16, cssStream17, cssStream18, cssStream19).pipe(plugins.concat('main.css'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
     .pipe(minifyCSS())
     .pipe(plugins.if(build, plugins.rev()))
@@ -250,15 +251,24 @@ gulp.task('scripts', function() {
       'lib/progressbar/*.js',
       'lib/interact/interact.min.js',
       'lib/spinningwheel/spinning-wheel.min.js',
+      'lib/velocity/velocity.min.js',
+      'lib/velocity/velocity.ui.min.js',
+      'lib/velocity/angular-velocity.min.js',
       'lib/card/card.js',
       // 'cordova.js',
       // 'plugins/*/www/*.js',
       "js/main.js",
-      "js/directives/*.js",
       "js/factories/LocalStorage.js",
       "js/factories/University.js",
       "js/factories/*.js",
+      "js/shared/DeviceService.js",
+      "js/device/*.js",
       "js/services/RootService.js",
+      "js/shared/Settings.js",
+      "js/shared/Utilities.js",
+      "js/shared/*.js",
+      "js/university/*.js",
+      "js/access/*.js",
       "js/services/*.js",
       "js/services/hardware/*.js",
       "js/controllers/student/home.ctrl.js",
@@ -266,7 +276,7 @@ gulp.task('scripts', function() {
       "js/controllers/guru/guru.ctrl.js",
       "js/controllers/guru/*.js",
       // "js/controllers/student/settings/*.js",
-      "js/controllers/util/util.university.ctrl.js",
+      // "js/controllers/util/util.university.ctrl.js",
       "js/controllers/util/*.js",
       // "js/controllers/onboarding/onboarding.request-location.ctrl.js",
       // "js/controllers/onboarding/*.js"

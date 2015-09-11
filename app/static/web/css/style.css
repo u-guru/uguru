@@ -1056,6 +1056,10 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
     width: 100%;
     margin: -10px 0; }
     #main #earn .inside .inside-text #earn-categories-desktop .earn-category {
+<<<<<<< HEAD
+      cursor: default;
+=======
+>>>>>>> 791cc767d0467accb9cbe98236795029baffa84d
       width: 25%;
       box-sizing: border-box;
       position: relative !important;

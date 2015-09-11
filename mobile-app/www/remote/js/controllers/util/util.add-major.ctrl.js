@@ -247,10 +247,7 @@ angular.module('uguru.util.controllers')
 
         $scope.majorInput.addEventListener("keyup", function() {
 
-          console.log($scope.majorInput.value.length);
-
           // console.log('keyup callback', $scope.majorInput.value, $scope.showMainBody);
-
 
         }, 500);
 

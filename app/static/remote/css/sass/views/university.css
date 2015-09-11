@@ -15,7 +15,6 @@
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
   display: block;
-  content: url(../../../img/svg/search.svg);
   width: 14px;
   height: 14px; }
 
@@ -28,7 +27,7 @@ header a.geolocation-icon {
   right: 5%;
   opacity: 0.5; }
   header a.geolocation-icon .ion-navigate {
-    color: white !important;
+    color: white;
     opacity: 0.6;
     top: 0px !important;
     right: 3px !important;
@@ -133,7 +132,9 @@ section#school header {
     letter-spacing: 0.15em; }
 
 .input-search-ghost input {
-  padding-left: 30px;
+  padding-left: 30px; }
+
+.university-city {
   text-transform: capitalize; }
 
 /*# sourceMappingURL=university.css.map */

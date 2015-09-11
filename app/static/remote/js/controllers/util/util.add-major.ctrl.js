@@ -55,7 +55,6 @@ angular.module('uguru.util.controllers')
     $scope.setMajorFocus = function(target) {
       if ($scope.major_input.search_text.length === 0 && !$scope.keyboard_force_off) {
         document.getElementById("major-input").focus();
-
       }
     };
 
@@ -194,27 +193,31 @@ angular.module('uguru.util.controllers')
     $scope.majorSelected = function(major, $event, $index) {
 
 
-      $scope.majors.splice($index, 1);
-      $scope.preIndexedMajors.splice($index, 1);
+      $scope.loader.show();
+
+      //t == 0
+      $timeout(function() {
+        $scope.majors.splice($index, 1);
+        $scope.preIndexedMajors.splice($index, 1);
+      }, 250)
 
 
+      //update the server
+      $scope.search_text = '';
+      $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
 
+      // t == 1
+      $timeout(function() {
+        $scope.loader.hide();
+      }, 500)
+
+      // t == 2 --> update local regardless of server
       if (!$scope.user.majors) {
           $scope.user.majors = [];
       }
-
-
-      // if ($scope.majorInput) {
-      //   $scope.majorInput.value = '';
-      // }
-      $scope.showMainBody = true;
-
-      $scope.search_text = '';
-      $scope.keyboard_force_off = true;
-
-      $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
-
-      $scope.user.majors.push(major)
+      $timeout(function() {
+        $scope.user.majors.push(major);
+      }, 500)
 
     }
 
@@ -244,10 +247,7 @@ angular.module('uguru.util.controllers')
 
         $scope.majorInput.addEventListener("keyup", function() {
 
-          console.log($scope.majorInput.value.length);
-
           // console.log('keyup callback', $scope.majorInput.value, $scope.showMainBody);
-
 
         }, 500);
 
