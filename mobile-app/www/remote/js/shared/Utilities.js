@@ -14,7 +14,8 @@ function Utilities($cordovaSplashscreen, $cordovaNgCardIO, Settings) {
 		deg2rad: deg2rad,
 		getDistanceInMiles: getDistanceInMiles,
 		readError: readError,
-		nickMatcher: nickMatcher
+		nickMatcher: nickMatcher,
+		getFileName: getFileName
 	}
 
 	function getNetworkSpeed() {
@@ -85,6 +86,13 @@ function Utilities($cordovaSplashscreen, $cordovaNgCardIO, Settings) {
 			}
 		}
 		return matchedList;
+	}
+
+	function getFileName(URI) {
+		var indexSlash = URI.lastIndexOf("/");
+		var fileName = URI.substring(indexSlash + 1);
+
+		return fileName;
 	}
 
     

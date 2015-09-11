@@ -1,55 +1,63 @@
 angular.module('cm', [])
 .factory('CacheMoneyService', [
+	'Utilities',
 	CacheMoneyService
 	]);
 
-function CacheMoneyService() {
+function CacheMoneyService(Utilities) {
 
 	// The directory to store data, make sure deviceready runs before this service is used
-	var store = cordova.file.dataDirectory;
+	var directory = cordova.file.dataDirectory;
 
 	return {
-		isCached: isCached,
-		cacheFile: cacheFile,
-		useCachedFile: useCachedFile
+		isSaved: isSaved,
+		downloadAsset: downloadAsset,
+		useSavedFile: useSavedFile
 	}
+
+	var assetURL;
+	var fileName;
 
 	// Check if image is already cached
-	function isCached(src, callback) {
+	function isSaved(src, callback) {
+
+		assetURL = src;
+		fileName = Utilities.getFileName(assetURL);
 
 		// Check for the file
-		window.resolveLocalFileSystemURL(store + fileName, appStart, downloadAsset);
+		// resolveLocalFileSystemURL(URL, successCallback(returns fileName obj), errorCallback)
+		window.resolveLocalFileSystemURL(directory + fileName, useSavedFile, downloadAsset);
 
 	}
 
+	// Download the img from source and save it to device
 	function downloadAsset() {
 		var fileTransfer = new FileTransfer();
-		console.log("About ot start transfer");
-		fileTransfer.download(assetURL, store + fileName,
+		console.log("About to start transfer");
+		fileTransfer.download(assetURL, directory + fileName,
 			function(entry) {
 				console.log("Success!");
-				appStart();
+				
+				// TODO: Need to place logic here to save in right location, grab new URI
+				// and have useCachedFile() call it properly
+
+				useSavedFile();
 			},
 			function(err) {
 				console.log("Error");
 				console.dir(err);
-			});
+			},
+			// Boolean for trustAllHosts which accepts all security certs and is useful
+			// since Android rejects self-signed security certs. 
+			// Not recomemended for production use.
+			true);
 	}
 
-	function appStart() {
-		$status.innerHTML = "App ready!";
-	}
-
-	
-	// Download the img from source and save it to device
-	function cacheFile() {
-
-	}
 
 	// Replace the current img source with the cached location
-	function useCachedFile() {
+	function useSavedFile() {
 
-		attrs.$set('src', 'file location URI');
+		attrs.$set('src', unknownSource.toString());
 	}
 
 

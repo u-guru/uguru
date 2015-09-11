@@ -71,8 +71,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
   $ionicConfigProvider.tabs.position("bottom");
-  $ionicConfigProvider.views.maxCache(20);
-  $ionicConfigProvider.views.forwardCache(true);
+  $ionicConfigProvider.views.maxCache(0);  //Default is 10
+  $ionicConfigProvider.views.forwardCache(false);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
