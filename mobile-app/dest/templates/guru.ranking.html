@@ -21,7 +21,7 @@
         </p>
       </ion-toggle>
 
-      <ion-toggle ng-change="updateTextNotifications()" ng-model="data.text_notifications" ng-show='!platform.mobile' toggle-class="toggle-calm" >
+      <ion-toggle id="E2E-rank-toggle" ng-change="updateTextNotifications()" ng-model="data.text_notifications" ng-show='!platform.mobile' toggle-class="toggle-calm" >
         <p class='no-margin white-space-normal semibold'>
             Turn on Text Notifications
         </p>
@@ -35,7 +35,7 @@
             Toggle will be sent to {{user.phone_number}}
         </p>
       </ion-toggle>
-      <ion-item href='#/guru-profile' class='item-icon-right' nav-direction='enter'>
+      <ion-item id="E2E-rank-profile"href='#/guru-profile' class='item-icon-right' nav-direction='enter'>
         <p class='no-margin white-space-normal semibold'>
             Complete your guru profile
         </p>
@@ -46,7 +46,7 @@
           {{user.current_profile_percent}}%
         </span>
       </ion-item>
-      <ion-item href='#/guru-profile' class='item-icon-right' nav-direction='enter'>
+      <ion-item  id="E2E-rank-credibilty" href='#/guru-profile' class='item-icon-right' nav-direction='enter'>
         <p class='no-margin white-space-normal semibold'>
             Increase your credibility to 100%
         </p>

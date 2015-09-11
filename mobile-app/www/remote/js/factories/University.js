@@ -494,6 +494,7 @@ var targettedUniversities = [
         ],
         "latitude": 41.9197689,
         "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Duke_University_Logo.svg/64px-Duke_University_Logo.svg.png",
+        'seal_URI': BASE + '/img/university/duke-university_50x50.jpg',
         "nickname": "blue devils",
         "id": 1856,
         "population": 15465
@@ -533,6 +534,7 @@ var targettedUniversities = [
         ],
         "latitude": 29.7173941,
         "logo_url": "http://i.forbesimg.com/media/lists/colleges/rice-university_50x50.jpg",
+        'seal_URI': BASE + '/img/university/Rice_University_seal.svg.png',
         "nickname": "owls",
         "id": 1869,
         "forbes_url": "http://i.forbesimg.com/media/lists/colleges/rice-university_50x50.jpg",
@@ -650,6 +652,7 @@ var targettedUniversities = [
         ],
         "latitude": 40.3439888,
         "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0e/Princeton_logo.svg/64px-Princeton_logo.svg.png",
+        "seal_URI": BASE + "img/university/princeton-university_50x50.jpg",
         "nickname": "tigers",
         "id": 2502,
         "population": 8014
@@ -1426,6 +1429,7 @@ var targettedUniversities = [
         ],
         "latitude": 37.4274745,
         "logo_url": "http://i.forbesimg.com/media/lists/colleges/stanford-university_50x50.jpg",
+        'seal_URI': BASE + '/img/university/Stanford_University_seal_2003.svg.png',
         "nickname": "cardinal",
         "id": 249,
         "forbes_url": "http://i.forbesimg.com/media/lists/colleges/stanford-university_50x50.jpg",
@@ -2504,6 +2508,7 @@ var targettedUniversities = [
         ],
         "latitude": 40.8075355,
         "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/66/ColumbiaU_Wordmarklogo.svg/64px-ColumbiaU_Wordmarklogo.svg.png",
+        "seal_URI": BASE + "/img/university/columbia-university-in-the-city-of-new-york_50x50.jpg",
         "nickname": null,
         "id": 1146,
         "population": 23606
@@ -2543,6 +2548,7 @@ var targettedUniversities = [
         ],
         "latitude": 41.7055716,
         "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/b/be/University_of_Notre_Dame_logo.png/64px-University_of_Notre_Dame_logo.png",
+        'seal_URI': BASE + 'img/university/duke-university_50x50.jpg',
         "nickname": "fighting irish",
         "id": 1174,
         "forbes_url": "http://i.forbesimg.com/media/lists/colleges/university-of-notre-dame_50x50.jpg",
@@ -2743,6 +2749,7 @@ var targettedUniversities = [
         ],
         "latitude": 36.1447034,
         "logo_url": "http://i.forbesimg.com/media/lists/colleges/vanderbilt-university_50x50.jpg",
+        'seal_URI': BASE + '/img/university/vanderbilt-university_50x50.jpg',
         "nickname": "commodores",
         "id": 1442,
         "population": 12757
@@ -3582,6 +3589,7 @@ var targettedUniversities = [
         ],
         "latitude": 34.1376576,
         "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/e/ef/Caltech_logo.svg/64px-Caltech_logo.svg.png",
+        'seal_URI': BASE + '/img/university/california-institute-of-technology_50x50.jpg',
         "nickname": "beavers",
         "id": 2498,
         "population": 2181
@@ -3895,6 +3903,7 @@ var targettedUniversities = [
         ],
         "latitude": 38.6487895,
         "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/Washington_University_in_St._Louis_logo.png/64px-Washington_University_in_St._Louis_logo.png",
+        'seal_URI': BASE + 'img/university/washington-university-in-st-louis_50x50.jpg',
         "nickname": "bears",
         "id": 75,
         "population": 14032
@@ -4390,6 +4399,7 @@ var targettedUniversities = [
         ],
         "latitude": 42.4534492,
         "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/Cornell_University_logo.svg/64px-Cornell_University_logo.svg.png",
+        'seal_URI': BASE + '/img/university/Cornell_Seal.svg.png',
         "nickname": "big red",
         "id": 1015,
         "forbes_url": "http://i.forbesimg.com/media/lists/colleges/cornell-university_50x50.jpg",

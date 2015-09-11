@@ -135,3 +135,49 @@ h1, h2 {
 .center, .text-center {
     text-align:center;
 }
+
+$charcoal: #2B3234;
+$slate: #40484B;
+$taupe: #757575;
+$smoke: #F1F1F1;
+$campus: #8A9EA3;
+$moola: #81B566;
+$lake: #50A5DD;
+$azure: #55A4B7;
+$orange: #E5753C;
+$gold: #F9D57B;
+$eggplant: #9A5BC5;
+$shamrock: #69B3A5;
+$cerise: #DB1988;
+
+.bg-orange.important {
+    background-color: $orange !important;
+}
+
+.bg-moola.important {
+    background-color: $moola !important;
+}
+
+.bg-cerise.important {
+    background-color: $cerise !important;
+}
+
+.bg-gold.important {
+    background-color: $gold !important;
+}
+
+.bg-shamrock.important {
+    background-color: $shamrock !important;
+}
+
+.bg-lake.important {
+    background-color: $lake !important;
+}
+
+.bg-azure.important {
+    background-color: $azure !important;
+}
+
+.bg-eggplant.important {
+    background-color: $eggplant !important;
+}

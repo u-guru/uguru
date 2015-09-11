@@ -903,7 +903,6 @@ button {
 	&:before {
 		@include center-y;
 		display: block;
-		content: url("../svg/search.svg");
 		width: 20px;
 		height: 20px;
 	}

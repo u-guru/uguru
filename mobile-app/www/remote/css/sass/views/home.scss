@@ -9,6 +9,12 @@
             font-size: 110%;
         }
     }
+    button.home-footer-button.active,
+    button.home-footer-button.activated,
+    {
+        opacity:0.5;
+    }
+
 }
 
 .uguru-view .request#request-empty .become-guru-button {

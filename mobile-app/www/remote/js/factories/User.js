@@ -1286,8 +1286,8 @@ angular.module('uguru.user', [])
                             $scope.user.current_device.body_load_time = bodyLoadTime;
                         }
 
-                        if ($cordovaNetwork && getNetworkSpeed) {
-                            $scope.user.current_device.network_speed = getNetworkSpeed();
+                        if ($cordovaNetwork && Utilities.getNetworkSpeed) {
+                            $scope.user.current_device.network_speed = Utilities.getNetworkSpeed();
                         }
 
                         $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);

@@ -732,7 +732,6 @@ button {
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
   display: block;
-  content: url("../svg/search.svg");
   width: 20px;
   height: 20px; }
 
@@ -1189,6 +1188,11 @@ body {
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
+    .uguru-view .onboarding header .onboarding-prop h5 {
+      color: white;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin: 5px; }
   .uguru-view .onboarding header .onboarding-message {
     position: absolute;
     top: 50%;
@@ -2226,10 +2230,5 @@ body {
     .uguru-view #account-form input {
       margin-top: 20px !important;
       font-size: 18px !important; } }
-
-body.platform-ios {
-  background-color: #2B3234; }
-  body.platform-ios header {
-    padding-top: 20px; }
 
 /*# sourceMappingURL=style.css.map */

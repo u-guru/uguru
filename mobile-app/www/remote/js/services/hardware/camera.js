@@ -65,7 +65,7 @@ angular.module('uguru.root.services')
                             $scope.root.vars.transcript_url_changed = true;
                           }
 
-                          if ($scope.root.vars.profile_url_changed) {
+                          if ($scope.root.vars.profile_url_changed && $scope.user.id) {
                             formData.append('profile_url', $scope.user.id);
                           }
 

@@ -122,7 +122,7 @@ class OneDeviceView(restful.Resource):
     @marshal_with(DeviceSerializer)
     def post(self):
 
-
+        print request.json
         uuid = request.json.get('uuid')
         print request.json
 
