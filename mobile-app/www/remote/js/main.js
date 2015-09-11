@@ -23,7 +23,7 @@ if (LOCAL) {
    //BASE_URL = 'http://localhost:8100'
   // REST_URL = 'http://192.168.42.78:5000'
   //REST_URL = 'https://uguru-rest.herokuapp.com'
-// >>>>>>> cc89578ee3cc1f9926d026022b956d3b1e391598
+
 
 } else {
   img_base = '/static/'
@@ -32,10 +32,10 @@ if (LOCAL) {
 mixpanel = window.mixpanel || null;
 
 if (mixpanel) mixpanel.track("App Launch");
-angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
+angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
-  'uguru.directives', 'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap', 'sharedServices'])
+  'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap', 'sharedServices'])
 
 .run(function($ionicPlatform, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
@@ -257,6 +257,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 //background loading stuff
 
 var processSkills = function($scope) {
+  if (!$scope.static) {
+    $scope.static = {skills: []}
+  }
 
   if ($scope.static.skills && $scope.static.skills.length > 0) {
 

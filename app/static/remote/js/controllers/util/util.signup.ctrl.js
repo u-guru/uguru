@@ -21,11 +21,12 @@ angular.module('uguru.util.controllers')
   '$ionicPopup',
   'Camera',
   'Support',
+  '$ionicPlatform',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
-  Camera, Support) {
+  Camera, Support, $ionicPlatform) {
 
     $scope.root.vars.show_account_fields = false;
     $scope.loginMode = false;
@@ -45,6 +46,10 @@ angular.module('uguru.util.controllers')
       guru: false,
       groceries:false,
       presignup: !($scope.user && $scope.user.id),
+    }
+
+    $scope.addUniversity = function() {
+      $state.go('^.university');
     }
 
     $scope.resetSettingsIcons = function() {
@@ -712,6 +717,105 @@ angular.module('uguru.util.controllers')
       }, 750);
     }
 
+    $scope.launchFAQModal = function() {
+        //var url = BASE + 'templates/faq.modal.html';
+        var url = 'https://www.uguru.me/faq/';
+        var target ='_blank';
+        var options = 'location=no,hidden=no';
+        if ($scope.platform.android) {
+          options += ',hardwareback=no';
+          options += ',zoom=no';
+        }
+        options+= ',clearcache=yes';
+        options+= ',clearsessioncache=yes';
+
+        console.log("options: " + options);
+
+        var ref = cordova.InAppBrowser.open(url, target, options);
+
+        ref.addEventListener('loadstop', addHeader);
+       
+        // function replaceHeaderImage() {
+        //     iabRef.executeScript({
+        //         code: "var img=document.querySelector('#header img'); img.src='http://cordova.apache.org/images/cordova_bot.png';"
+        //     }, function() {
+        //         alert("Image Element Successfully Hijacked");
+        //     });
+        // }
+
+        function addHeader() {
+          
+          ref.insertCSS({
+            code: '#intercom-launcher {display:none !important;}'
+            });
+
+          ref.executeScript({
+            code: 'var header = document.getElementById("top"); \
+              document.getElementById("top").style.backgroundColor = "#2B3234"; \
+              document.querySelectorAll("#top-menu ul li a")[0].setAttribute("class", ""); \
+              document.querySelectorAll("#top-menu ul li a span")[0].textContent = "Uguru FAQ"; \
+              document.querySelectorAll("#top-menu ul li a span")[0].style.color = "white"; \
+              document.querySelectorAll("#top-menu ul li")[0].style.textAlign = "center"; \
+              document.querySelectorAll("#top-menu ul li")[1].parentNode.removeChild(document.querySelectorAll("#top-menu ul li")[1]); \
+              document.querySelectorAll("#top-menu ul li")[1].parentNode.removeChild(document.querySelectorAll("#top-menu ul li")[1]);'
+
+              // var intercom = document.getElementById("intercom-container"); \
+              // document.body.removeChild(intercom); \
+              // var logo = document.querySelectorAll("#top-menu ul li")[1]; \
+              // var li2 = document.querySelectorAll("#top-menu ul li")[1]; \
+              // logo.parentNode.removeChild(logo); \
+              // li2.parentNode.removeChild(li2); \
+
+            }, function() {
+          });
+
+        }
+
+    };
+
+
+    $scope.launchPrivacyPolicy = function() {
+
+      var url = 'https://www.uguru.me/manifest/';
+      var target ='_blank';
+      var options = 'location=no';
+      if ($scope.platform.android) {
+        options += ',hardwareback=no';
+      }
+
+      var ref = cordova.InAppBrowser.open(url, target, options);
+
+    };
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+      }).then(function(modal) {
+          $scope.signupModal = modal;
+    });
+
+
+    $scope.launchSignupModal = function() {
+        $scope.signupModal.show();
+    }
+
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.howItWorksModal = modal;
+    });
+
+
+
+    $scope.launchHowItWorksModal = function() {
+      if ($scope.signupModal) {
+        //show
+      }
+    }
+
+
     $scope.launchSupportDescriptionModal = function() {
 
 
@@ -721,47 +825,6 @@ angular.module('uguru.util.controllers')
         }).then(function(modal) {
             $scope.supportDescriptionModal = modal;
             $scope.supportDescriptionModal.show();
-        });
-
-    }
-
-    $scope.launchPrivacyPolicy = function() {
-
-
-      $ionicModal.fromTemplateUrl(BASE + 'templates/privacy-terms.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.termsModal = modal;
-            $scope.termsModal.show();
-        });
-
-    }
-
-    $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
-          scope: $scope,
-          animation: 'slide-in-up'
-      }).then(function(modal) {
-          $scope.signupModal = modal;
-    });
-
-    $scope.launchSignupModal = function() {
-        $scope.signupModal.show();
-
-    }
-
-    $scope.launchFAQModal = function() {
-
-      $ionicModal.fromTemplateUrl(BASE + 'templates/faq.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.faqModal = modal;
-            $scope.faqModal.show();
-            $scope.loader.show();
-            $timeout(function() {
-              $scope.loader.hide();
-            }, 1500)
         });
 
     }

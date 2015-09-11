@@ -57,14 +57,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           var cancelMsg = request.category +  ' Task request canceled';
         }
 
-
-
         $scope.success.show(0, 2000, cancelMsg);
         $scope.root.util.removeObjectByKey($scope.user.active_requests, 'id', request.id);
       }
     }
-
-
 
 
   $scope.goToSessionDetails = function(session) {
@@ -121,7 +117,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                   $scope.studentRatingsModal = modal;
                   $scope.studentRatingsModal.show();
               });
-
     }
 
     $scope.closeStudentRatingsModal = function() {
@@ -259,7 +254,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         return;
 
       }
-
       //see if any sessions are going on right now
 
       for (var i = 0 ; i < $scope.user.active_student_sessions.length; i ++) {
@@ -281,7 +275,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }
 
     }
-
     $scope.launchPendingActions = $scope.root.vars.launchPendingActions;
 
   $ionicPlatform.ready(function() {
@@ -295,7 +288,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           }
 
         }
-
         $scope.turnStatusBarBlack = function() {
           if (window.StatusBar) {
                       // console.log('Extra #1. Styling iOS status bar to black \n\n');
@@ -306,7 +298,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
         $scope.turnStatusBarWhite();
-
     });
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/verb.home.modal.html', {
@@ -330,8 +321,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.taskVerbModal = modal;
     });
 
-
-
     $scope.launchTaskVerbModal = function() {
       $timeout(function() {
         $scope.closeVerbModal();
@@ -354,8 +343,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     $scope.launchRequestModal = function(index, verb_index) {
       //UNDO
       // if ($scope.root.vars.courses) {
-
-
 
           $scope.root.vars.last_verb_index_clicked = index;
           if (verb_index) {
@@ -387,9 +374,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       //   alert('courses are not loaded yet');
       // }
     }
-
-
-
 
 
     $scope.launchContactingModal = function() {
@@ -449,14 +433,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             dialogCallBackSuccess();
         }
       }
-
       else {
           $scope.root.dialog.confirm(dialog.message, dialog.title, dialog.button_arr, dialog.callback_arr);
       }
 
     }
-
-
 
     $scope.closeContactingModal = function() {
       $scope.contactingModal.hide();
@@ -466,9 +447,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }, 1000);
       }
     }
-
-
-
 
     $scope.closeVerbModal = function() {
       $scope.verbModal.hide();
@@ -484,7 +462,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.incomingGuruModal = modal;
             $scope.incomingGuruModal.show();
         });
-
     }
 
     $scope.processTimeEstimate = function(minutes) {
@@ -531,7 +508,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         // $scope.incoming_request.tags = ['milleniumfalcon'];
 
         $scope.root.vars.active_processing = false;
-
 
       }, 2500);
 
@@ -633,7 +609,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
     }
 
-
     //todo
     $scope.rejectIncomingGuru = function() {
 
@@ -707,7 +682,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       } else {
             $scope.root.dialog.confirm(dialog_message, dialog_title, button_arr, [null, acceptQuestionCallback])
       }
-
     }
 
     $scope.rejectIncomingQuestion = function() {
@@ -752,8 +726,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
               $scope.showGoogleMap();
 
             }, 100);
-
-
 
           }
 

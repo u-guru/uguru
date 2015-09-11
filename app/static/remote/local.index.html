@@ -53,7 +53,7 @@
     <link href="remote/css/sass/samir.css" rel="stylesheet">
     <link href="remote/css/sass/views/guru-profile.css" rel="stylesheet">
     <link href="remote/css/sass/views/guru-credibility.css" rel="stylesheet">
-    <!-- <link href="remote/css/sass/ios.css" rel="stylesheet"> -->
+    <link href="remote/css/sass/ios.css" rel="stylesheet">
 
     <!-- <link href="remote/css/gpa.css" rel="stylesheet"> -->
     <!-- <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,900' rel='stylesheet' type='text/css'> -->
@@ -126,7 +126,7 @@
     <script src='remote/lib/spinningwheel/spinning-wheel.min.js'></script>
     <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 
-    <!--<script src='//maps.googleapis.com/maps/api/js?sensor=false'></script> -->
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
     <!--<script src="remote/lib/angular-google-maps/angular-google-maps.min.js"></script> -->
     <script src="lib/restangular/dist/restangular.js"></script>
     <script src="remote/lib/interact/interact.min.js"></script>
@@ -186,6 +186,7 @@
     <!-- uguru app directives -->
     <script type="text/javascript" src="remote/js/directives/angularFastMatcher.js"></script>
     <script type="text/javascript" src="remote/js/directives/customDirectives.js"></script>
+    <script type="text/javascript" src="remote/js/directives/bufferedScroll.js"></script>
 
     <!-- uguru app factories-->
     <script type="text/javascript" src="remote/js/factories/Session.js"></script>
@@ -209,7 +210,7 @@
     <script type="text/javascript" src="remote/js/services/Popup.js"></script>
     <script type="text/javascript" src="remote/js/services/Popover.js"></script>
     <script type="text/javascript" src="remote/js/services/hardware/camera.js"></script>
-    <script type="text/javascript" src="remote/js/services/hardware/location.js"></script>
+    <script type="text/javascript" src="remote/js/shared/GeolocationService.js"></script>
     <script type="text/javascript" src="remote/js/services/hardware/push.js"></script>
 
      <script type="text/javascript" src="remote/js/controllers/student/home.ctrl.js"></script>
@@ -255,12 +256,28 @@
 
 
     <script type="text/javascript" src="remote/js/controllers/util/util.university.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/university/AddUniversityCtrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.calendar.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.add-course.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.add-major.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.add-guru-bio.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.add-note.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.request-location.ctrl.js"></script>
+
+    <!-- Shared Services module, initiated in DeviceService -->
+    <script type="text/javascript" src="remote/js/shared/DeviceService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/Utilities.js"></script>
+    <script type="text/javascript" src="remote/js/shared/LoadingService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/AnimationService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/Settings.js"></script>
+    <!-- Specific Device Services, still under SharedService module -->
+    <script type="text/javascript" src="remote/js/device/AndroidService.js"></script>
+    <script type="text/javascript" src="remote/js/device/WindowsService.js"></script>
+    <script type="text/javascript" src="remote/js/device/iOSService.js"></script>
+
+
+
+    <script type="text/javascript" src="remote/js/services/ngCardIO.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.signup.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.add-payment.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.contact-guru.ctrl.js"></script>
@@ -284,7 +301,9 @@
 
     <script type="text/javascript" src="remote/js/controllers/util/util.root.ctrl.js"></script>
 
-    <script type="text/javascript" src="remote/js/controllers/util/util.access.ctrl.js"></script>
+    <!-- Access Component -->
+    <script type="text/javascript" src="remote/js/access/AccessService.js"></script>
+    <script type="text/javascript" src="remote/js/access/util.access.ctrl.js"></script>
 
 
     <!-- Uguru Student settings controller -->
