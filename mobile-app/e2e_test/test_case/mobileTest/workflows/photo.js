@@ -1,6 +1,5 @@
 describe('Photo test', function () {
-	var nextStep = element.all(by.css('[ng-click="nextSlide()"]'));
-	var guruButton = element (by.css('[ng-click="goToBecomeGuru()"]'));
+	var nextStep = element(by.css('[ng-click="goToGuruMode()"]'));
 	var photoButton = element(by.id("photo-container"));
 	var photoIcon = element(by.id('profile-icon')).element(by.tagName('img'));
 
@@ -11,15 +10,9 @@ describe('Photo test', function () {
 			var absolutePath = path.resolve(__dirname, fileToUpload);
 		    element(by.id('file-input-web')).sendKeys(absolutePath);
 		});
-	it ("check sample photo",function()
+	it('Next page',function()
 	{
-		var samplePic = element(by.css('#photo-list li'));
-		expect(samplePic.isPresent()).toBe(false);	});
-	it ("check sample msg",function()
-	{
-		var sampleMsg = element(by.css('#photo-list div'));
-		expect(sampleMsg.isPresent()).toBe(false);
-
+			nextStep.click();
 	});
 		
 });

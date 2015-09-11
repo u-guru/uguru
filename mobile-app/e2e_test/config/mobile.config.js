@@ -55,7 +55,7 @@ exports.config = {
                          '../test_case/mobileTest/workflows/course.js',
                          '../test_case/mobileTest/workflows/category.js',
                          '../test_case/mobileTest/becomeGuru/photo.js'
-                      ]
+                    ]
 
         },
         rootElement: "[ng-app]" ,

@@ -156,7 +156,7 @@ describe('Sign-up test', function () {
 		it('check Sign up successful',function()
 		{
 			doc.checkMsg("Account Successfully Created");
-			browser.sleep(10000);
+			// browser.sleep(10000);
 		})
 		it("Log off",function () {
 		 	// doc.pickSideMenu(4,"Logout");
