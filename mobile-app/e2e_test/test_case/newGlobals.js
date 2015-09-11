@@ -142,7 +142,6 @@ var global = function() {
           var groupName;
           var tempName;
           var tempGroupName;
-
            for(var j = 0 ; j < length; ++j)
            {
                   name= items[j].element(by.binding(binding)).getText().then(function(text){

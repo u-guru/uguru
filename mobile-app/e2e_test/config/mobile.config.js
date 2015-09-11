@@ -36,10 +36,19 @@ exports.config = {
                       '../test_case/mobileTest/workflows/university.js', 
                       '../test_case/mobileTest/becomeGuru/major.js'
                     ],
-            course:  [   '../test_case/mobileTest/workflows/access.js',
+            course: [  '../test_case/mobileTest/workflows/access.js',
                         '../test_case/mobileTest/workflows/university.js', 
                         '../test_case/mobileTest/workflows/major.js',
-                    ]
+                        '../test_case/mobileTest/becomeGuru/course.js',
+                    ],
+            category:[
+                        '../test_case/mobileTest/workflows/access.js',
+                        '../test_case/mobileTest/workflows/university.js', 
+                        '../test_case/mobileTest/workflows/major.js',
+                        '../test_case/mobileTest/workflows/course.js',
+                        '../test_case/mobileTest/becomeGuru/category.js'
+                     ]
+
         },
         rootElement: "[ng-app]" ,
        // rootElement: 'uguru' ,

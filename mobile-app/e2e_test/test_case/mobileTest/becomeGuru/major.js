@@ -2,10 +2,11 @@ describe('Major Test', function () {
 	var guruButton = element (by.css('[ng-click="goToBecomeGuru()"]'));
 	var nextStep = element(by.css('[ng-click="nextSlide()"]'));
 
-	// afterEach(function()
-	// {
-	// 	doc.checkLists("major-list","major.name")
-	// });
+	afterEach(function()
+	{
+		doc.checkLists("major-list","major.name")
+	});
+	
 	it ('Open The Request',function()
 	{
 		guruButton.click();
