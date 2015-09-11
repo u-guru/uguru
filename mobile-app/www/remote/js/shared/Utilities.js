@@ -70,8 +70,17 @@ function Utilities($cordovaSplashscreen, $cordovaNgCardIO, Settings) {
 
 	function nickMatcher(input, list) {
 		var matchedList = [];
+		var inputLowerCase = input.toLowerCase();
 		for(var i=0; i<list.length; i++) {
-			if(list[i].name.toLowerCase().includes(input.toLowerCase())) {
+
+			var nameLowerCase = list[i].name.toLowerCase();
+			
+			//Give priority to schools that start with the input
+
+			if(nameLowerCase.indexOf(inputLowerCase) === 0) {
+					matchedList.unshift(list[i]);
+				}
+			else if(nameLowerCase.indexOf(inputLowerCase) !== -1) {
 				matchedList.push(list[i]);
 			}
 		}

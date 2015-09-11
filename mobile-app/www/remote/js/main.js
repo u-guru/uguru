@@ -71,6 +71,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
   $ionicConfigProvider.tabs.position("bottom");
+  $ionicConfigProvider.views.maxCache(20);
+  $ionicConfigProvider.views.forwardCache(true);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
@@ -88,10 +90,12 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
   state('root.university', {
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
-        controller: 'HomeController',
         resolve: {
-          
-        }
+          deviceInfo: function(DeviceService) {
+            return DeviceService.getDevice();
+          }
+        },
+        controller: 'AddUniversityCtrl'
   }).
   state('root.university-container', {
         url: '/university-container',

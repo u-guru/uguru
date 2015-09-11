@@ -15,26 +15,7 @@ angular.module('uguru.directives')
 		});
 	};
 })
-// .directive('scrollToTop', function ($parse) {
-// 	return function ($scope, element, attrs) {
-// 		var handler = $parse(attrs.scrollToTop);
-// 		console.log("directive element: " + element);
-// 		angular.element(element)[0].scrollTop = 0;
-// 	};
-// })
 
-// .directive('scrollToTop', function ($parse) {
-// 	return {
-// 		scope: {
-// 			add: '&',
-// 		},
-// 		link: function(scope, elem) {
-// 			scope.$watch('trigger', function() {
-// 				angular.element(element)[0].scrollTop = 0;
-// 			});
-// 		}
-// 	};
-// })
 
 
 

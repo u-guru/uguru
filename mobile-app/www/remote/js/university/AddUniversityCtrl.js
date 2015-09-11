@@ -13,11 +13,27 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'Settings',
   'Utilities',
   'DeviceService',
+  'deviceInfo',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
- 	University, $ionicViewSwitcher, Geolocation, Settings, Utilities, DeviceService) {
+ 	University, $ionicViewSwitcher, Geolocation, Settings, Utilities, DeviceService, deviceInfo) {
+    console.log("passed deviceInfo: " + deviceInfo);
 
+    $scope.getGPSCoords = function() {
+      if(!isTimeout) {
+        isTimeout = true;
+        getGPS();
+        $timeout(function() { isTimeout = false;}, 4000);
+      } else {
+        console.log("still waiting for $timeout to clear, please try again shortly");
+      }     
+    }
+
+    // if (deviceInfo==='android') {
+    //   $scope.getGPSCoords();
+    // }
+    
     var schoolList = document.querySelectorAll('#school-list')[0];
 
     $scope.search_text = '';
@@ -44,6 +60,7 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
           return -1;
         if (a.rank > b.rank)
           return 1;
+
         return 0;
       }
       return list.sort(compareRank);
@@ -91,7 +108,7 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
 
     
     var isTimeout = false;
-    var getGPS = function() {
+    function getGPS() {
       // //STILL NEED TO DO FOR IOS
       // // if(DeviceService.getDevice()==="ios") {
       // //   Geolocation.enableGPS();
@@ -125,21 +142,7 @@ function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
     }
 
         
-      $scope.getGPSCoords = function() {
-        if(!isTimeout) {
-          isTimeout = true;
-          getGPS();
-          $timeout(function() { isTimeout = false;}, 4000);
-        } else {
-          console.log("still waiting for $timeout to clear, please try again shortly");
-        }     
-      }
 
-    // if (DeviceService.getDevice()==='android') {
-    //   $scope.getGPSCoords();
-    // } else {
-    //   $scope.universities = sortByRank($scope.universities);
-    // }
 
 
 }
