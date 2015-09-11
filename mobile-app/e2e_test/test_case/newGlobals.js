@@ -165,7 +165,7 @@ var global = function() {
                         return value;
                       });
                      expect(name).not.toBe(tempName, "Data Repeating");
-                     expect(groupName).toBe(tempGroupName, "Difrerent ng Group");
+                   //  expect(groupName).toBe(tempGroupName, "Difrerent ng Group");
                   }
             } 
                
@@ -184,15 +184,19 @@ var global = function() {
             items[temp].click();
     });
   }
-  this.newPickList = function(name)
+  this.newPickList = function(id,random)
   {
+    var length;
      str = '#'+id+' li:not(.ng-hide)';
      element.all(by.css(str)).then(function (items) {
-        var temp = Math.floor((Math.random() * (items.length-1)));
-        console.log( items[temp].getText();)
+      if (random != null)      
+        var temp = random;
+      else
+      var temp = Math.floor((Math.random() * (items.length-1)));
         items[temp].click();
-
-    }
+        this.length = items.length;
+    });
+     return length
   }
   /**********************************************
   *setInput
@@ -281,11 +285,11 @@ var global = function() {
   *
   *
   ****************************************************************/
-  this.switchAlert() = function()
+  this.switchAlert = function()
   {
       browser.wait(EC.alertIsPresent(), 4000);
-       var alertDialog = browser.switchTo().alert();
-       alertDialog.accept();  // Use to accept (simulate clicking ok)
+     var alertDialog = browser.switchTo().alert();
+     alertDialog.accept();  // Use to accept (simulate clicking ok)
   }
   /*************************************************************************************
   *connectFB
