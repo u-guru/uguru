@@ -707,7 +707,6 @@ angular.module('uguru.util.controllers')
 
     $scope.goToPaymentsFromSideBar = function(payment) {
 
-
       $scope.loader.show();
       if (payment) {
         console.log('passing payments', payment);
@@ -718,7 +717,6 @@ angular.module('uguru.util.controllers')
         $ionicViewSwitcher.nextDirection('back');
         $state.go('^.payments');
       }
-
 
       $timeout(function() {
         $ionicSideMenuDelegate.toggleRight();
@@ -734,16 +732,9 @@ angular.module('uguru.util.controllers')
 
 
     $scope.launchPrivacyPolicy = function() {
-
       var url = 'https://www.uguru.me/manifest/';
-      var target ='_blank';
-      var options = 'location=no';
-      if ($scope.platform.android) {
-        options += ',hardwareback=no';
-      }
-
-      var ref = cordova.InAppBrowser.open(url, target, options);
-
+      var title = 'Uguru Manifest';
+      InAppBrowser.open(url, title);
     };
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
