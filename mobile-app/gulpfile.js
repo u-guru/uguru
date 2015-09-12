@@ -261,6 +261,8 @@ gulp.task('scripts', function() {
       "js/factories/LocalStorage.js",
       "js/factories/University.js",
       "js/factories/*.js",
+      "js/directives/customDirectives.js",
+      "js/directives/*.js",
       "js/shared/DeviceService.js",
       "js/device/*.js",
       "js/services/RootService.js",

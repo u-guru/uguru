@@ -13,7 +13,8 @@ function Utilities($cordovaSplashscreen, Settings) {
 		deg2rad: deg2rad,
 		getDistanceInMiles: getDistanceInMiles,
 		readError: readError,
-		nickMatcher: nickMatcher
+		nickMatcher: nickMatcher,
+		getFileName: getFileName
 	}
 
 	function getNetworkSpeed() {
@@ -69,12 +70,15 @@ function Utilities($cordovaSplashscreen, Settings) {
 
 	function nickMatcher(input, list) {
 		var matchedList = [];
+		var inputLowerCase = input.toLowerCase();
 		for(var i=0; i<list.length; i++) {
 
 			var nameLowerCase = list[i].name.toLowerCase();
+
 			var inputLowerCase = input.toLowerCase();
 
 			if(nameLowerCase.indexOf(inputLowerCase) !== -1) {
+
 				matchedList.push(list[i]);
 			};
 		}
@@ -82,6 +86,12 @@ function Utilities($cordovaSplashscreen, Settings) {
 	}
 
 
+	function getFileName(URI) {
+		var indexSlash = URI.lastIndexOf("/");
+		var fileName = URI.substring(indexSlash + 1);
+
+		return fileName;
+	}
 
 
 }
