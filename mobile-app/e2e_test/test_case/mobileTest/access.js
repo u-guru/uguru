@@ -24,11 +24,11 @@ describe('Workflow Test : One', function () {
 					startButton.click();
 					if(testSpec == 'cool')
 					{
-						doc.checkMsg("Access Granted");
+						doc.checkMsg("Access Granted"unive);
 					}
 					else
 					{
-						browser.wait(EC.invisibilityOf(startButton.element(by.tagName("p"))),10000);
+						browser.wait(EC.visibilityOf(startButton.element(by.tagName("p"))),10000);
 						startButton.element(by.tagName("p")).getText().then(function(value)
 						{
 							expect(value).toBe("Incorrect access code");

@@ -28,10 +28,11 @@ describe('Major Test', function () {
 		});
 		it('clear a key',function()
 		{
-				element.all(by.tagName("input")).then(function(inputs)
-      	{
-      		inputs[2].clear();
-      	});
+			element.all(by.tagName("input")).then(function(inputs)
+	      	{
+	      		inputs[2].clear();
+	      	});
+	      	
 		});
 
 	});

@@ -115,7 +115,8 @@ var global = function() {
   *******************************************************/
   this.checkList = function(name,typeEle,attriName)
   {
-    element.all(by.repeater(name)).then(function (items) {
+      str = '#'+name+' li:not(.ng-hide)';
+    element.all(by.css(str)).then(function (items) {
           // expect(items.length).toBe(5);
           var temp;
           items[0].element(typeEle).getAttribute(attriName).then(function(value)
@@ -215,7 +216,7 @@ var global = function() {
       i = index;
     element.all(by.tagName("input")).then(function(inputs)
       {
-        // console.log(inputs.length);
+         console.log(inputs.length);
         if (check == true)
          {
            inputs[i].getAttribute('value').then(function(result)

@@ -17,27 +17,55 @@ describe('Side Menu test', function () {
         browser.wait(EC.visibilityOf(sideMenuList),3000);
         expect(sideMenuList.isDisplayed()).toBe(true);
 	});
-	it("Check Logout is not enable",function()
+	describe("Buttons should not be shown",function()
 	{
-		// doc.pickSideMenu(4,"Signup");
-		doc.checkItemDisplay("Logout",false);
-		// expect(element(by.id('account')).isDisplayed()).toBe(true);
+		it("Logout",function()
+			{
+				// doc.pickSideMenu(4,"Signup");
+				doc.checkItemDisplay("Logout",false);
+				// expect(element(by.id('account')).isDisplayed()).toBe(true);
+			});
 	});
-
-	// describe("FAQ",function()
-	// {
-	// 	it("Open FAQ",function()
-	// 		{
-	// 			doc.checkItemDisplay("FAQ",true,'click');
-	// 		    doc.checkTitle("uguru faq");
-	// 		});
-	// 	it("close FAQ",function()
-	// 	    {
-	// 			// body...
-	// 			browser.wait(EC.elementToBeClickable(closed),2000);
-	// 			closed.click();
-	// 		});
-	// });
+	
+	describe("Add University",function()
+	{
+		it ("Click Add University",function()
+		{
+			doc.checkItemDisplay("Add University",true,'click');
+		});
+		it("Check The Page",function()
+		{
+			expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/university");
+		});
+		it("check Side bar close",function()
+		{
+			expect(element(by.tagName('ion-side-menu')).isDisplayed()).toBe(false);
+		});
+		it('back to home page',function(){
+			doc.newPickList('school-list')
+			doc.switchAlert();
+		});
+		it('Open Side Menu',function()
+		{
+			sideMenuButton.click();
+		    browser.wait(EC.visibilityOf(sideMenuList),3000);
+		    expect(sideMenuList.isDisplayed()).toBe(true);
+		});
+	});
+	describe("FAQ",function()
+	{
+		it("Open FAQ",function()
+			{
+				doc.checkItemDisplay("FAQ",true,'click');
+			    doc.checkTitle("uguru faq");
+			});
+		it("close FAQ",function()
+		    {
+				// body...
+				browser.wait(EC.elementToBeClickable(closed),2000);
+				closed.click();
+			});
+	});
 	describe("Terms",function()
 	{
 		it("Open Terms",function()

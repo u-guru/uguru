@@ -18,7 +18,9 @@ describe('Sign-up test', function () {
 	});
 	it("Active Sign-up",function()
 	{
-		doc.pickSideMenu(5,"Signup");
+		// doc.pickSideMenu(5,"Signup");
+		doc.checkItemDisplay("Signup",true,'click');
+
 		expect(element(by.id('account')).isDisplayed()).toBe(true);
 	});
 	describe("check term & condition paging",function()
@@ -39,7 +41,7 @@ describe('Sign-up test', function () {
 	{
 		var str =['Name','Email','Password']
 
-		for( i = 2; i < 5; ++ i)
+		for( i = 0; i < 3; ++ i)
 		{
 	        (function(index) {
 	        	describe("Input: "+ str[index],function()
@@ -81,7 +83,9 @@ describe('Sign-up test', function () {
 		});
 		it("Log in Status & and Log Out",function()
 		{
-			doc.pickSideMenu(5,"Logout");
+			// doc.pickSideMenu(5,"Logout");
+			doc.checkItemDisplay("Logout",true,'click');
+
 			browser.wait(EC.alertIsPresent(), 4000);
 			 var alertDialog = browser.switchTo().alert();
 			 alertDialog.accept();  // Use to accept (simulate clicking ok)
@@ -98,7 +102,7 @@ describe('Sign-up test', function () {
 		});
 		it("Active Sign-up",function()
 		{
-			doc.pickSideMenu(4,"Signup");
+			doc.checkItemDisplay("Signup",true,'click');
 			expect(element(by.id('account')).isDisplayed()).toBe(true);
 		});
 		
@@ -121,7 +125,9 @@ describe('Sign-up test', function () {
 			 doc.checkMsg("Login Successful!");
 		});
 		it("Log off",function () {
-		 	doc.pickSideMenu(4,"Logout");
+		 	// doc.pickSideMenu(4,"Logout");
+			doc.checkItemDisplay("Logout",true,'click');
+
 		 	browser.sleep(100);
 		 	var alertDialog = browser.switchTo().alert();
 			alertDialog.accept();  // Use to accept (simulate clicking ok)
@@ -139,49 +145,51 @@ describe('Sign-up test', function () {
 		});
 		it("Active Sign-up",function()
 		{
-			doc.pickSideMenu(4,"Signup");
+			// doc.pickSideMenu(4,"Signup");
+			doc.checkItemDisplay("Signup",true,'click');
+
 			expect(element(by.id('account')).isDisplayed()).toBe(true);
 		});
 
 	});
-	describe("SIgn up with Email",function()
-	{
-		it('Switch To Sign up',function()
-		{
-		    doc.socialButton(4,"Or Create an Account");
-		});
-		it('Enter Name : ',function()
-		{
-			doc.setInput('jason',0);
-		});
-		it('Enter Email : ',function()
-		{
-			doc.setInput(doc.generateRandomEmail(),1,true);
-		});
-		it('Enter Password : ',function()
-		{
-			doc.setInput('test',2);
-		});
-		it('Create account',function()
-		{
-		    doc.socialButton(1,"Create an Account");
-		});
-		it('check Sign up successful',function()
-		{
-			doc.checkMsg("Account Successfully Created");
-			// browser.sleep(10000);
-		})
-		it("Log off",function () {
-		 	// doc.pickSideMenu(4,"Logout");
-		 	doc.checkItemDisplay("Logout",true,"click");
-		 	browser.sleep(100);
-		 	var alertDialog = browser.switchTo().alert();
-			alertDialog.accept();  // Use to accept (simulate clicking ok)
-		});
-		it ("Log out Successful",function(){
-			doc.checkMsg("You have been successfully logged out!");
-		});
-	});
+	// describe("SIgn up with Email",function()
+	// {
+	// 	it('Switch To Sign up',function()
+	// 	{
+	// 	    doc.socialButton(4,"Or Create an Account");
+	// 	});
+	// 	it('Enter Name : ',function()
+	// 	{
+	// 		doc.setInput('jason',0);
+	// 	});
+	// 	it('Enter Email : ',function()
+	// 	{
+	// 		doc.setInput(doc.generateRandomEmail(),1,true);
+	// 	});
+	// 	it('Enter Password : ',function()
+	// 	{
+	// 		doc.setInput('test',2);
+	// 	});
+	// 	it('Create account',function()
+	// 	{
+	// 	    doc.socialButton(1,"Create an Account");
+	// 	});
+	// 	it('check Sign up successful',function()
+	// 	{
+	// 		doc.checkMsg("Account Successfully Created");
+	// 		// browser.sleep(10000);
+	// 	})
+	// 	it("Log off",function () {
+	// 	 	// doc.pickSideMenu(4,"Logout");
+	// 	 	doc.checkItemDisplay("Logout",true,"click");
+	// 	 	browser.sleep(100);
+	// 	 	var alertDialog = browser.switchTo().alert();
+	// 		alertDialog.accept();  // Use to accept (simulate clicking ok)
+	// 	});
+	// 	it ("Log out Successful",function(){
+	// 		doc.checkMsg("You have been successfully logged out!");
+	// 	});
+	// });
 	
 	
 

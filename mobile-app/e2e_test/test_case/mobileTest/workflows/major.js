@@ -1,5 +1,5 @@
 describe('Workflow : Major page', function () {
-	var nextStep = element.all(by.css('[ng-click="nextSlide()"]'));
+	var nextStep = element(by.css('[ng-click="nextSlide()"]'));
 	var guruButton = element (by.css('[ng-click="goToBecomeGuru()"]'));
 
 	it ('Open The Request',function()
@@ -12,9 +12,12 @@ describe('Workflow : Major page', function () {
 	});
 	it('Next page',function()
 	{
-			nextStep.then(function(items)
-			{
-				items[0].click();
-			});
+		nextStep.click();
+		
+			// nextStep.then(function(items)
+			// {
+			// 	console.log(items.length());
+			// 	items[0].click();
+			// });
 	});
 });

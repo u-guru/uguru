@@ -26,7 +26,7 @@ describe('Course Test', function () {
 	{
 		it('send a key',function()
 		{
-	    	doc.setInput('b',3.0);
+	    	doc.setInput('b',0);
 
 		});
 		it('Check the Search result is not empty',function()
@@ -36,11 +36,8 @@ describe('Course Test', function () {
 	    	});
 		});
 		it('clear a key',function()
-		{
-			 element.all(by.tagName("input")).then(function(inputs)
-	      	{
-	      		inputs[3].clear();
-	      	});
+		{	
+			 element(by.tagName("input")).clear();
 		});
 
 	});

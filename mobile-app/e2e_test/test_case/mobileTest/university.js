@@ -1,6 +1,7 @@
 describe('Workflow Test : One', function () {
  	//browser.driver.get("http://localhost:8100/#/university");
- 		afterEach(function()
+	
+	afterEach(function()
 	{
 		doc.checkLists("school-list","university.name")
 	});
@@ -9,20 +10,35 @@ describe('Workflow Test : One', function () {
 		it("Popular List is enable",function()
 			{
 		 		//browser.pause();
-				doc.isListShow("university in initialUniversities");
+				element.all(by.css('#school-list li:not(.ng-hide)')).then(function (items) {
+		    		expect(items.length).not.toBe(0,"no result found");
+		    	});
 			});
 	});
-
+ 	
+	describe("Check GPS",function()
+	{
+		var gps = element(by.css('[ng-click="getGPSCoords()"]'));
+		it('click GPS',function()
+		{
+			gps.click();
+		});
+		it('chheck miles shows',function()
+		{
+			expect(element(by.binding('university.miles | number')).isDisplayed()).toBe(true);	
+		});
+	});
 	describe("Type in one letter",function()
 	{
 		it("Key in a letter",function()
 			{
-
-				doc.setInput("a",1);
+				doc.setInput("a",0);
 			});
-		it("check matchingUniversities is show &  Initial Universities is hidde",function()
+		it("Check list is show",function()
 		{
-			doc.isListShow("university in matchingUniversities","university in initialUniversities");
+			element.all(by.css('#school-list li:not(.ng-hide)')).then(function (items) {
+	    		expect(items.length).not.toBe(0,"no result found");
+	    	});
 		});
 	});
 
@@ -30,19 +46,20 @@ describe('Workflow Test : One', function () {
 	{
 		it("has different icon",function()
 		{	
-			doc.checkList('university in matchingUniversities',by.tagName('img'),'src');
+			doc.checkList('school-list',by.tagName('img'),'src');
 		});
 
 	});
+
 	describe("Select a university lead to home page",function()
 	{
 		it("choose a university",function()
 		{
-			doc.pickList('university in matchingUniversities')
+			doc.newPickList('school-list')
 		});
 		it("check the current position",function()
 		{
-			expect(browser.getCurrentUrl()).toBe("http://localhost:8100/#/new-home");
+			expect(browser.getCurrentUrl()).toBe("http://localhost:8100/#/home");
 		});
 	});
 
