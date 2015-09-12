@@ -53,7 +53,7 @@ echo
 echo 'pushing to git, to the master branch'
 echo
 echo
-git push origin master
+git push origin staging
 echo
 echo
 echo 'pushing to heroku, to the master branch'

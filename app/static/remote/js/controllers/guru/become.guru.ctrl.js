@@ -163,7 +163,7 @@ angular.module('uguru.guru.controllers')
     $scope.$on('$ionicView.beforeEnter', function(){
 
 
-      initProgressBar('become-guru-progress', window.innerWidth);
+      // initProgressBar('become-guru-progress', window.innerWidth);
 
     });
 
@@ -173,10 +173,6 @@ angular.module('uguru.guru.controllers')
         $scope.initiateSkillEventListeners();
       }, 500);
 
-      $timeout(function(){
-        console.log('calling incrementProgressBar')
-        incrementProgressBar('become-guru-progress', 30);
-      }, 500);
 
 
       $scope.slidebox_handle = $ionicSlideBoxDelegate.$getByHandle('become-guru-slide-box');

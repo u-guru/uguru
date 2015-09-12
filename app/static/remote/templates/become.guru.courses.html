@@ -1,16 +1,6 @@
 <ion-view class='uguru-view courses-view guru-courses-view' ng-controller='CoursesController'>
 
     <section id="course" class="onboarding charcoal-bg">
-      <progress class='become-guru-progress' value="2" max="100">
-        <div class="progress"><span data-value="30"></span></div>
-      </progress>
-      <script>
-        setTimeout(setValue, 200);
-        function setValue() {
-            document.getElementsByTagName("progress")[0].setAttribute("value", "30");
-        }
-      </script>
-
       <header class="header-back">
         <div class="header-nav">
           <a class="header-nav-back" ng-click='previousSlide()'>
