@@ -65,5 +65,33 @@ describe('Side Menu test', function () {
 				browser.wait(EC.elementToBeClickable(closed),2000);
 				closed.click();
 			});
+		describe("modal backdrop keep adding up when you open support and close",function()
+		{
+			for (var i =0; i <8; ++i)
+			{
+				it("Open Support #"+i,function()
+				{
+					doc.checkItemDisplay("Support",true,'click');
+				    doc.checkTitle("uguru support");
+				});
+				it("close Support",function()
+			    {
+					// body...
+					browser.wait(EC.elementToBeClickable(closed),2000);
+					closed.click();
+				});
+			}
+			it ('check modal shoudn not be more than 4 (max)',function()
+				{
+					element.all(by.css('.modal-backdrop')).then(function(items)
+						{
+							expect(items.length< 5).toBe(true);
+						});
+				});
+		});
 	});
+
+
+
+
 });

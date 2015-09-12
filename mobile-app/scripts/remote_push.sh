@@ -33,6 +33,7 @@ echo
 echo 'saving.....'
 echo
 echo 'minifying + compressing local assets..'
+gulp preprocess-regular
 gulp -b
 echo 'compiling all local assets..'
 cp dest/scripts/*.js www/remote/js/app.js && cp dest/styles/*.css www/remote/css/app_version.css
@@ -42,33 +43,30 @@ echo 'copying new files from uguru-mobile'
 cp -r mobile-app/www/remote/* app/static/remote/
 echo 'updating ios plugins'
 # cp mobile-app/platforms/ios/www/cordova.js app/static/remote/ios.cordova.js && cp mobile-app/platforms/ios/www/cordova_plugins.js app/static/remote/ios.cordova_plugins.js
-cp -r mobile-app/platforms/ios/www/plugins/ app/static/remote/plugins/ && cp -r mobile-app/www/remote/* app/static/remote/
+# cp -r mobile-app/platforms/ios/www/plugins/ app/static/remote/plugins/ && cp -r mobile-app/www/remote/* app/static/remote/
 echo 'copying ios.css, windows, android file into the root remote'
-# cp mobile-app/www/remote/css/ios.css app/static/remote/
-# cp mobile-app/www/remote/css/android.css app/static/remote/
-# cp mobile-app/www/remote/windows.css app/static/remote/
 echo 'calling git add -A .'
-# git add -A .
-# git commit -m "{$msg}"
+git add -A .
+git commit -m "{$msg}"
 echo
 echo
 echo 'pushing to git, to the master branch'
 echo
 echo
-# git push origin master
+git push origin master
 echo
 echo
 echo 'pushing to heroku, to the master branch'
 echo
 echo
-# git push rest staging:master
+git push rest staging:master
 echo
 echo
 echo 'last part: restarting servers & updating database'
 echo
 echo
-# honcho run python manage.py update
-# heroku run honcho run python manage.py update --app uguru-rest
-# heroku run honcho run python manage.py init_test_devices --app uguru-rest
-#heroku restart --app uguru-rest
+honcho run python manage.py update
+heroku run honcho run python manage.py update --app uguru-rest
+heroku run honcho run python manage.py init_test_devices --app uguru-rest
+# heroku restart --app uguru-rest
 # heroku run honcho run python manage.py init_admin --app uguru-rest

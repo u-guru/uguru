@@ -22,7 +22,7 @@ if (mixpanel) mixpanel.track("App Launch");
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
-  'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap', 'sharedServices'])
+  'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap', 'sharedServices', 'uguru.directives'])
 
 .run(function($ionicPlatform, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
@@ -61,6 +61,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
   $ionicConfigProvider.tabs.position("bottom");
+  $ionicConfigProvider.views.maxCache(0);  //Default is 10
+  $ionicConfigProvider.views.forwardCache(false);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
@@ -78,10 +80,12 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   state('root.university', {
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
-        controller: 'HomeController',
         resolve: {
-
-        }
+          deviceInfo: function(DeviceService) {
+            return DeviceService.getDevice();
+          }
+        },
+        controller: 'AddUniversityCtrl'
   }).
   state('root.university-container', {
         url: '/university-container',

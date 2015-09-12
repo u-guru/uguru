@@ -1,6 +1,3 @@
-// Uguru upp
-// --> config.xml
-// -->
 var LOCAL = false; //local to the 8100 codebasebirbirs
 var FIRST_PAGE='^.access';
 
@@ -16,14 +13,6 @@ if (LOCAL) {
   BASE = 'remote/';
 
   REST_URL = 'http://localhost:5000';
-   // var REST_URL = 'http://uguru-rest.herokuapp.com'
-
-  // BASE_URL = 'http://192.168.42.124:8100';
-  //BASE_URL = 'http://192.168.43.155:8100';
-   //BASE_URL = 'http://localhost:8100'
-  // REST_URL = 'http://192.168.42.78:5000'
-  //REST_URL = 'https://uguru-rest.herokuapp.com'
-
 
 } else {
   img_base = '/static/'
@@ -35,7 +24,7 @@ if (mixpanel) mixpanel.track("App Launch");
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
-  'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap', 'sharedServices'])
+  'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap', 'sharedServices', 'uguru.directives'])
 
 .run(function($ionicPlatform, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
@@ -74,6 +63,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
   $ionicConfigProvider.tabs.position("bottom");
+  $ionicConfigProvider.views.maxCache(0);  //Default is 10
+  $ionicConfigProvider.views.forwardCache(false);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
@@ -91,10 +82,12 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   state('root.university', {
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
-        controller: 'HomeController',
         resolve: {
-
-        }
+          deviceInfo: function(DeviceService) {
+            return DeviceService.getDevice();
+          }
+        },
+        controller: 'AddUniversityCtrl'
   }).
   state('root.university-container', {
         url: '/university-container',

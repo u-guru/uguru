@@ -16,6 +16,8 @@ alias pc="protractor e2e_test/config/course.config.js"
 alias pe="protractor e2e_test/config/error.config.js"
 alias pre="protractor e2e_test/config/request.config.js"
 alias pweb="protractor e2e_test/config/web.config.js"
+alias pm="protractor e2e_test/config/mobile.config.js"
+
 
 
 alias rph="protractor e2e_test/config/protractor.config.headless.js"

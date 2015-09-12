@@ -34,7 +34,7 @@ describe('Sign-up test', function () {
 			///////////////////// don't know the element name or it
 		});
 	});
-	
+
 	describe("Check Facebook is disabled", function()
 	{
 		var str =['Name','Email','Password']

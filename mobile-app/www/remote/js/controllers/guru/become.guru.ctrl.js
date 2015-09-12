@@ -16,10 +16,11 @@ angular.module('uguru.guru.controllers')
   '$cordovaStatusbar',
   '$ionicSlideBoxDelegate',
   '$ionicViewSwitcher',
+  '$window',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $cordovaStatusbar, $ionicSlideBoxDelegate,
-    $ionicViewSwitcher) {
+    $ionicViewSwitcher, $window) {
 
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
@@ -125,9 +126,33 @@ angular.module('uguru.guru.controllers')
 
     }
 
+    var incrementProgressBar = function(elemId, value) {
+      console.log(document.querySelector('#become-guru-progress'));
+      document.querySelector('#become-guru-progress').setAttribute("value", value);
+    }
+
+    var initProgressBar = function(elemId,width, value) {
+      var progressBarTag = document.getElementById(elemId);
+      progressBarTag.style.width = width + 'px';
+    }
+
+
+    $scope.$on('$ionicView.beforeEnter', function(){
+
+
+      initProgressBar('become-guru-progress', window.innerWidth);
+
+    });
+
     $scope.$on('$ionicView.enter', function(){
+
       $timeout(function() {
         $scope.initiateSkillEventListeners();
+      }, 500);
+
+      $timeout(function(){
+        console.log('calling incrementProgressBar')
+        incrementProgressBar('become-guru-progress', 30);
       }, 500);
 
 

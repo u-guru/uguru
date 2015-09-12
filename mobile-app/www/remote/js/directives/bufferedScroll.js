@@ -7,12 +7,15 @@ angular.module('uguru.directives')
 			var scrollTop = element[0].scrollTop;
 			var scrollHeight = element[0].scrollHeight;
 			var offsetHeight = element[0].offsetHeight;
-			if(scrollTop === (scrollHeight - offsetHeight)) {
+			if(scrollTop >= (scrollHeight - offsetHeight) * (0.20) ) {
 				$scope.$apply(function() {
 					handler($scope);
 				});
 			}
 		});
 	};
-});
+})
+
+
+
 

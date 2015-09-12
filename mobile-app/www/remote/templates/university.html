@@ -1,4 +1,4 @@
-<ion-view class='uguru-view university-view' ng-controller='AddUniversityCtrl'>
+<ion-view class='uguru-view university-view' >
 <section id="school" class="onboarding" >
     <header>
       <div class="header-nav">
@@ -26,39 +26,18 @@
         </a>
       </div>
     </header>
-  <div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list">
+    <div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list" ng-init='limit = 10'>
     <ul class='list list-item-border'>
       <li  class="list-item school-harvard" ng-repeat='university in universities | limitTo: limit'>
         <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
           <span class="school-icon list-icon-left">
-            <img ng-src="{{university.seal_URI || university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
+            <img image-saver ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
           </span>
           <span ng-if='!location' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
             <b>{{university.name}}<i>{{university.city}}, {{university.state}}</i></b>
           </span>
-        </a>
-      </li>
-
-      <!-- Location based universities -->
-      <li class="list-item school-harvard" ng-repeat='university in nearestUniversities'>
-        <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
-          <span class="school-icon list-icon-left">
-            <img ng-src="{{university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
-          </span>
-          <span class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
-            <b><span class='university-name'>{{university.name}}</span><i class='university-subheader'><span class='university-city'>{{university.city}}</span>, {{university.state}} <span ng-if="$index < 10" class='text-right mileage-text'>{{university.miles}}mi</span></i></b></span>
-          </span>
-        </a>
-      </li>
-
-      <!-- Initial universities -->
-      <li ng-show='!matchingUniversities || matchingUniversities.length === 0' class="list-item school-harvard" ng-repeat='university in initialUniversities'>
-        <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
-          <span class="school-icon list-icon-left">
-            <img ng-src="{{university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
-          </span>
-          <span class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
-            <b><span class='university-name'>{{university.name}}</span><i><span class='university-city'>{{university.city}}</span>, {{university.state}} </i></b></span>
+          <span ng-if='location' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
+            <b>{{university.name}}<i class='university-subheader'>{{university.city}}, {{university.state}} <span class='text-right'>{{university.miles | number}} mi</span></i></b>
           </span>
         </a>
       </li>

@@ -1,15 +1,6 @@
 <ion-view class='uguru-view major-view' ng-controller='AddMajorController'>
     <section id="major" class="onboarding  charcoal-bg">
-        <progress class='become-guru-progress' value="0" max="100">
-          <div class="progress"><span data-value="2"></span></div>
-        </progress>
-        <!-- TODO: Nest this script into $ionicView.enter view-specific callback -->
-        <script>
-          setTimeout(setValue, 200);
-          function setValue() {
-              document.getElementsByTagName("progress")[0].setAttribute("value", "2");
-          }
-        </script>
+
         <header>
           <div class="header-nav">
             <a class="header-nav-back" ng-click='goBackToStudentHome()'>
