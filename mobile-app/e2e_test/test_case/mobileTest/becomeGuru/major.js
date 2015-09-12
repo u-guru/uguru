@@ -10,14 +10,30 @@ describe('Major Test', function () {
 	it ('Open The Request',function()
 	{
 		guruButton.click();
+
 	});
-	it ('Send A key',function()
+
+	describe('Check Search Results',function()
 	{
-		doc.setInput('b',2);
-		 element.all(by.tagName("input")).then(function(inputs)
+		it('send a key',function()
+		{
+	    	doc.setInput('b',2);
+
+		});
+		it('Check the Search result is not empty',function()
+		{
+			element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
+	    		expect(items.length).not.toBe(0,"no Search result found");
+	    	});
+		});
+		it('clear a key',function()
+		{
+				element.all(by.tagName("input")).then(function(inputs)
       	{
       		inputs[2].clear();
       	});
+		});
+
 	});
 
 	describe('delete a major and see it back to list',function()
@@ -49,6 +65,15 @@ describe('Major Test', function () {
 		    });
 		});
 	});
+		describe('check how many select',function()
+	{
+		it('check match number of selected ',function()
+		{
+			element(by.binding('user.majors.length')).getText().then(function(text){
+                    console.log("TEST: " +text) ;
+         	 }	);
+		});
+	});
 	describe('delete 1 major and see other major is gone too',function()
 	{
 		var count = 5;
@@ -59,6 +84,12 @@ describe('Major Test', function () {
 		    doc.newPickList('major-list',2);
 	        doc.newPickList('major-list',3);
 		    doc.newPickList('major-list',4);
+		});
+		it('check match number of selected ',function()
+		{
+			element(by.binding('user.majors.length')).getText().then(function(text){
+				expect(text).toContain(count);
+			});
 		});
 		it('delete a major',function()
 		{

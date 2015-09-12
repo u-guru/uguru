@@ -14,7 +14,9 @@ describe('Photo test', function () {
 	it ("check sample photo",function()
 	{
 		var samplePic = element(by.css('#photo-list li'));
-		expect(samplePic.isPresent()).toBe(false);	});
+		expect(samplePic.isPresent()).toBe(false);	
+	});
+	
 	it ("check sample msg",function()
 	{
 		var sampleMsg = element(by.css('#photo-list div'));

@@ -59,9 +59,9 @@ var global = function() {
       });
   }
   /*********************************************************
+  * checkTitle 
   *
-  *
-  *
+  * desc :  check the title of the current page
   ***********************************************************/
   this.checkTitle = function(title)
   {
@@ -280,9 +280,9 @@ var global = function() {
     return templist
   }
   /*************************************************************
+  * switchAlert 
   *
-  *
-  *
+  * desc : switch to alert msg and confirm it.
   ****************************************************************/
   this.switchAlert = function()
   {

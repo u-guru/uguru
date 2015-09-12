@@ -1,6 +1,9 @@
 describe('Workflow Test : One', function () {
  	//browser.driver.get("http://localhost:8100/#/university");
- 
+ 		afterEach(function()
+	{
+		doc.checkLists("school-list","university.name")
+	});
  	describe("university page should have famous school list",function()
 	{
 		it("Popular List is enable",function()

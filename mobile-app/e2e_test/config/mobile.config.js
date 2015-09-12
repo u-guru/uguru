@@ -13,6 +13,11 @@ exports.config = {
         // ],
         specs:
         [
+          '../test_case/mobileTest/access.js',
+          '../test_case/mobileTest/university.js',
+          '../test_case/mobileTest/sidemenu/signup.js'
+
+
 
         ],
         suites:

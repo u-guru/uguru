@@ -39,13 +39,17 @@ describe('Category Test', function () {
 					};
 					clickCanvas (100,50)
         		})
-        		// it('check select',function()
-        		// {
-        		// 	element(by.binding('category.active_skills_count')).getAttribute('value').then(function(text)
-        		// 	{
-	        	// 		expect(count).toBe(text);
-        		// 	});
-        		// });
+        		// check which index
+        		it('check select',function()
+        		{
+			     // element.all(by.css(str)).then(function (items) {
+
+        			element.all(by.binding('category.active_skills_count')).then(function(items)
+        			{
+	        			expect(items[index*2].getText()).toContain(count);
+
+        			});
+        		});
 			});
         })(i);
 	}

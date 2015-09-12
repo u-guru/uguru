@@ -1,11 +1,11 @@
-describe('Sign-up test', function () {
+describe('Side Menu test', function () {
 	var sideMenuButton= element(by.css('[ng-click="toggleRightSideMenu()"]'));
 	var sideMenuList = element(by.css('.side-menu-list.disable-user-behavior'))
 	var closed = element.all(by.css('.header-nav-back')).last();
-	beforeAll(function()
-	{
-	    browser.get("http://localhost:8100/#/home");
-	});
+	// beforeAll(function()
+	// {
+	//     browser.get("http://localhost:8100/#/home");
+	// });
 	it("go to the new-home page",function()
 	{
         browser.wait(EC.elementToBeClickable(sideMenuList),3000);

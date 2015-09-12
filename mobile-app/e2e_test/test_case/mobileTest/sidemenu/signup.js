@@ -18,10 +18,23 @@ describe('Sign-up test', function () {
 	});
 	it("Active Sign-up",function()
 	{
-		doc.pickSideMenu(4,"Signup");
+		doc.pickSideMenu(5,"Signup");
 		expect(element(by.id('account')).isDisplayed()).toBe(true);
 	});
-
+	describe("check term & condition paging",function()
+	{
+		it('check term & condition is working',function()
+		{
+			element(by.id('tos')).click();
+			browser.sleep(4000);
+		});
+		it('check error msg', function()
+		{
+			expect(element(by.css('.modal-backdrop')).isPresent()).toBe(true);
+			///////////////////// don't know the element name or it
+		});
+	});
+	
 	describe("Check Facebook is disabled", function()
 	{
 		var str =['Name','Email','Password']
