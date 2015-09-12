@@ -30,7 +30,7 @@ function DownloadService(Utilities) {
 			console.log("downloadURL: " + downloadURL);
 			fileTransfer.download(downloadURL, filePath,
 				function(entry) {
-					console.log("Successfully downloaded file: " + filePath):
+					console.log("Successfully downloaded file: " + filePath);
 				},
 				function(error) {
 					console.log("Error downloading file. Code: " + error.code);

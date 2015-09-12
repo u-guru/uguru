@@ -21,6 +21,8 @@ if (LOCAL) {
   BASE = 'remote/';
   BASE_URL = 'http://192.168.42.124:8100';
 
+  //BASE_URL = 'http://192.168.43.155:8100';
+
   //uncomment to install direct to device
   //make sure to remove 'remote/' in the local.index.html script sources
   //also make sure to toggle <content> in config.xml
@@ -78,8 +80,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
   $ionicConfigProvider.tabs.position("bottom");
-  $ionicConfigProvider.views.maxCache(0);  //Default is 10
-  $ionicConfigProvider.views.forwardCache(false);
+  $ionicConfigProvider.views.maxCache(20);  //Default is 10
+  $ionicConfigProvider.views.forwardCache(true);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
