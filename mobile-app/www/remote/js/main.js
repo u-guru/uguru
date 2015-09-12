@@ -48,7 +48,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
   $provide.decorator("$exceptionHandler", function($delegate, $injector) {
     return function(exception, cause) {
-
       $delegate(exception, cause);
     };
   });
