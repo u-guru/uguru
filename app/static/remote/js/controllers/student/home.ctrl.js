@@ -737,6 +737,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }
 
      $scope.$on('$ionicView.enter', function() {
+      $ionicSideMenuDelegate.canDragContent(true);
       // console.log(JSON.stringify(window.StatusBar));
       // window.StatusBar.overlaysWebView(false);
 

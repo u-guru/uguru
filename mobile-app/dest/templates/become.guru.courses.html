@@ -35,30 +35,18 @@
             <path d="M8.41512973,15.2860269 C4.48265083,15.2860269 1.29477962,12.1537981 1.29477962,8.2838387 C1.29477962,4.41387934 4.48265083,1.27539856 8.41512973,1.27539856 C12.3476086,1.27539856 15.536105,4.41387934 15.536105,8.2838387 C15.536105,12.1537981 12.3476086,15.2860269 8.41512973,15.2860269 L8.41512973,15.2860269 Z M19.811191,18.9121601 L14.6477024,13.8293217 C15.9993748,12.3601125 16.8302595,10.4220069 16.8302595,8.2838387 C16.8302595,3.70740857 13.0628321,0 8.41512973,0 C3.76742732,0 0,3.70740857 0,8.2838387 C0,12.8540169 3.76742732,16.5614254 8.41512973,16.5614254 C10.4232573,16.5614254 12.2650828,15.8674586 13.7117849,14.7108471 L18.895905,19.8124414 C19.1491091,20.0625195 19.5586121,20.0625195 19.811191,19.8124414 C20.0643951,19.5686152 20.0643951,19.1622382 19.811191,18.9121601 L19.811191,18.9121601 Z" fill="#FFFFFF"></path>
           </svg>
           <input type="search" placeholder="My courses are..."
-                  fast-matcher
-                  fast-matcher-source="courses"
-                  fast-matcher-output="matchingCourses"
-                  fast-matcher-properties="short_name"
-                  fast-matcher-any-word="true"
-                  fast-matcher-limit="30"
-                  fast-matcher-preserve-order="true"
-                  fast-matcher-case-insensitive="true"
-                  placeholder="Search Available Courses"
-                  ng-model = "search_text"/>
+                  ng-model="search_text"
+                  ng-keyup="query(search_text)"
+                  >
         </div>
       </header>
       <div id="courses-list" class="onboarding-list">
         <ul class='list'>
-          <li ng-hide='search_text.length > 0 || user.guru_courses.length == 0' ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
+          <li ng-if='search_text.length === 0 || user.guru_courses.length == 0' ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
               <input type="checkbox" checked>
               <label>{{course.short_name}} &nbsp;&nbsp; <i class='icon ion-checkmark'></i></label>
           </li>
-          <!--   -->
-          <li ng-repeat='course in preSelectedGuruCourses' ng-show='search_text.length === 0'ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
-              <input type="checkbox">
-              <label>{{course.short_name}}</label>
-          </li>
-          <li ng-repeat='course in matchingCourses' ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
+          <li ng-repeat='course in courses' ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
               <input type="checkbox">
               <label>{{course.short_name}}</label>
           </li>
@@ -67,82 +55,3 @@
     </section>
 
 </ion-view>
- <!-- <ion-view hide-nav-bar='true' class='subdark-bg' cache-view='false' >
-  <ion-content class='white-text subdark-bg university-view-2' scroll='false' style='top:0px; bottom:10%;' ng-controller='CoursesController' on-swipe-right="swipeRightGoBack()">
-      <div class='pure-g'>
-        <div class="list pure-u-1">
-          <label class="item item-input bg-transparent university-label no-margin no-border no-box-shadow view-2">
-                  <i class='icon ion-search onboarding-search-icon' ng-hide="search_text.length > 0"></i>
-                      <input id='guru-course-input' type="text" class='ng-class:{"align-left-start":search_text.length > 0}'
-                        fast-matcher
-                        fast-matcher-source="courses"
-                        fast-matcher-output="matchingCourses"
-                        fast-matcher-properties="short_name, title"
-                        fast-matcher-any-word="true"
-                        fast-matcher-limit="10"
-                        fast-matcher-preserve-order="true"
-                        fast-matcher-case-insensitive="true"
-                        placeholder="Search Available Courses"
-                        ng-model = "search_text"
-                      />
-                  </span>
-                </label>
-              </div>
-            </div>
-
-            <ion-list ng-show='search_text.length > 0'>
-              <ion-scroll>
-                <ion-item class='item-button-right request-form-item course-item major-item' ng-repeat='course in matchingCourses' ng-click='addSelectedGuruCourse(course, course_search_text)'>
-                  <p class='semibold'> {{course.short_name}} <span class='course-title'> {{course.title}} </span> </p>
-                </ion-item>
-              </ion-scroll>
-            </ion-list>
-
-            <div class='pure-g-c flex-column flex-space-between' ng-show='!search_text || search_text.length === 0'>
-
-              <div class='flex-item-c center j-end' ng-show='user.guru_courses.length > 0'>
-                <div class='pure-g'>
-
-                  <div class='pure-u-1'>
-                    <p class='uppercase opacity-1-2 micro-text bold sans-bold'> <strong> My Courses </strong> <br>
-                    </p>
-                    <div class='micro-text regular' style='opacity:1'>(Double tap to Remove)</div>
-                  </div>
-                </div>
-
-                <div class='pure-g'>
-
-                  <div class='pure-u-1'>
-                    <a class='course-tag major-tag white-bg orange' on-double-tap="removeGuruCourseAndUpdate(guru_course, $index)" style='font-size:80%;' ng-repeat="guru_course in user.guru_courses track by $index">{{guru_course.short_name}} &nbsp; &nbsp; <i class='icon ion-checkmark'></i></a>
-                  </div>
-                </div>
-
-              </div>
-
-              <div class='flex-item-c center'>
-              </div>
-              <div class='flex-item-c center j-start'>
-
-                <div class='pure-g'>
-
-                  <div class='pure-u-1 padding-1em'>
-                    <p class='uppercase sans-bold bold micro-text opacity-1-2'>
-                      Tap Any Popular Course
-                    </p>
-                  </div>
-                  <div class='pure-u-1'>
-                    <a class='course-tag popular-course-tag' ng-click='addSelectedGuruCourse(popular_course, course_search_text, $index)' style='font-size:60%;' ng-repeat='popular_course in static.popular_courses'>{{popular_course.short_name}}</a>
-                  </div>
-
-
-                </div>
-              </div>
-
-              <div class='flex-item-c j-start'>
-
-              </div>
-            </div>
-        </ion-content>
-
-
-</ion-view> -->

@@ -229,6 +229,7 @@ gulp.task('scripts', function() {
       "js/shared/Settings.js",
       "js/shared/Utilities.js",
       "js/shared/*.js",
+      "js/university/AddUniversityCtrl.js",
       "js/university/*.js",
       "js/access/*.js",
       "js/services/*.js",

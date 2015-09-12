@@ -70,6 +70,9 @@ function Utilities($cordovaSplashscreen, Settings) {
 
 	function nickMatcher(input, list) {
 		var matchedList = [];
+		if (!input) {
+			return;
+		}
 		var inputLowerCase = input.toLowerCase();
 		for(var i=0; i<list.length; i++) {
 

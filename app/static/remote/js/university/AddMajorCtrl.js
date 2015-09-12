@@ -65,7 +65,7 @@ angular.module('uguru.util.controllers')
     }
 
 
-    $scope.majors = $scope.static.majors || GetMajorsList();
+    // $scope.majors = $scope.static.majors || GetMajorsList();
 
     $scope.removeCheckedMajor = function(major, index, event)  {
       if (confirm('Remove ' + major.name + '?')) {

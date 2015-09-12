@@ -45,8 +45,31 @@ angular.module('uguru.guru.controllers')
 
     $scope.major_input=  {search_text:'', majors:$scope.root.vars.majors};
 
+    $scope.getCoursesFromServer = function() {
+            University.getCourses(2732).then(
+                  function(courses) {
+                      $scope.loader.hide();
+                      $localstorage.setObject('courses', courses);
+                      $scope.root.vars.courses = courses;
+                      $scope.root.vars.popular_courses = $scope.root.vars.courses.slice(0, 16);
+                      $scope.static.courses = $scope.root.vars.courses;
+                      $scope.static.popular_courses = $scope.root.vars.popular_courses;
+
+                },
+                  function(error) {
+                      console.log('Courses NOT successfully loaded');
+                      console.log(error);
+                      alert('Something went wrong - please contact support for further, quick assistance!')
+                }
+        );
+      }
+
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;
+      if (index === 0) {
+        console.log('grabbing courses from server')
+        $scope.getCoursesFromServer();
+      }
     }
 
     $scope.goToUniversity = function() {
@@ -140,23 +163,23 @@ angular.module('uguru.guru.controllers')
     $scope.$on('$ionicView.beforeEnter', function(){
 
 
-      // initProgressBar('become-guru-progress', window.innerWidth);
+      initProgressBar('become-guru-progress', window.innerWidth);
 
     });
 
     $scope.$on('$ionicView.enter', function(){
 
-      // $timeout(function() {
-      //   $scope.initiateSkillEventListeners();
-      // }, 500);
+      $timeout(function() {
+        $scope.initiateSkillEventListeners();
+      }, 500);
 
-      // $timeout(function(){
-      //   console.log('calling incrementProgressBar')
-      //   incrementProgressBar('become-guru-progress', 30);
-      // }, 500);
+      $timeout(function(){
+        console.log('calling incrementProgressBar')
+        incrementProgressBar('become-guru-progress', 30);
+      }, 500);
 
 
-      // $scope.slidebox_handle = $ionicSlideBoxDelegate.$getByHandle('become-guru-slide-box');
+      $scope.slidebox_handle = $ionicSlideBoxDelegate.$getByHandle('become-guru-slide-box');
 
 
     });
