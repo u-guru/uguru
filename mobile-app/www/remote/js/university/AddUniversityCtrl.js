@@ -6,18 +6,16 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   '$scope',
   '$state',
   '$timeout',
-  '$localstorage',
   'University',
   '$ionicViewSwitcher',
   'Geolocation',
   'Settings',
   'Utilities',
-  'DeviceService',
   'deviceInfo',
   AddUniversityCtrl]);
 
-function AddUniversityCtrl($scope, $state, $timeout, $localstorage,
- 	University, $ionicViewSwitcher, Geolocation, Settings, Utilities, DeviceService, deviceInfo) {
+function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher, 
+  Geolocation, Settings, Utilities, deviceInfo) {
     console.log("passed deviceInfo: " + deviceInfo);
 
     $scope.getGPSCoords = function() {

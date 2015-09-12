@@ -2,12 +2,11 @@ angular
 .module('sharedServices')
 .factory("Utilities", [
 	'$cordovaSplashscreen',
-	'$cordovaNgCardIO',
 	'Settings',
 	Utilities
 	]);
 
-function Utilities($cordovaSplashscreen, $cordovaNgCardIO, Settings) {
+function Utilities($cordovaSplashscreen, Settings) {
 
 	return {
 		getNetworkSpeed: getNetworkSpeed,
