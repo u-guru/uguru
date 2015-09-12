@@ -29,7 +29,7 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 ###############
 
 @app.route('/admin/staging/')
-def admin_statistics():
+def admin_statistics_staging():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
     return redirect(url_for('new_home_page'))
@@ -148,7 +148,7 @@ def admin_stats_campaigns():
         remainder_arr=no_results_arr, not_scrapeable=not_scrapeable)
 
 @app.route('/admin/stats/universities/')
-def admin_statistics():
+def admin_statistics_universities():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
     # test_devices = sorted(Device.getTestDevices(), key=lambda d:d.last_accessed, reverse=True)
@@ -206,7 +206,7 @@ def admin_investor_stats():
     return render_template("admin/admin.investors.statistics.html")
 
 @app.route('/admin/i/product/')
-def admin_view_campaigns():
+def admin_view_campaigns_product():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.investors.product.html")
@@ -247,7 +247,7 @@ def admin_style_guide():
     return render_template("style/index.html")
 
 @app.route('/admin/design/inspired/')
-def admin_components():
+def admin_components_inspired():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin-coming-soon.html")
@@ -308,7 +308,7 @@ def admin_product_releases():
     return render_template("admin/admin.product.releases.html")
 
 @app.route('/admin/product/practices/')
-def admin_best_practices():
+def admin_best_practices_product():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.product.practices.html")
@@ -377,7 +377,7 @@ def admin_dev_guidelines():
     return render_template("admin/development-guidelines.html", team=[])
 
 @app.route('/admin/development/api/')
-def admin_dev_guidelines():
+def admin_dev_api():
     if not session.get('user'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.development.api.html")
@@ -624,7 +624,7 @@ def app_route():
     else:
         print "aww im local"
         # return redirect('http://localhost:8100/')
-        return redirect('http://localhost:5000/static/remote/index.html?version=' + str(version) + str(02323))
+        return redirect('http://192.168.42.124:5000/static/remote/index.html?version=' + str(version) + str(02323))
     # return redirect('http://192.168.0.104:5000/static/remote/index.html')
     # return redirect('http://192.168.42.66:8100/remote/')
 

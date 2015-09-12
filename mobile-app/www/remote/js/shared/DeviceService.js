@@ -59,6 +59,8 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 			console.log("navigator.camera works well " + navigator.camera);
    			console.log("cardIO: " + $cordovaNgCardIO);
    			console.log('media is ready: ' + Media);
+   			console.log("cordova.file is ready: " + cordova.file);
+   			console.log("fileTransfer is ready: " + FileTransfer);
 
    			if(navigator.splashscreen) {
    				navigator.splashscreen.hide();

@@ -1,6 +1,7 @@
 // Uguru upp
 // --> config.xml
 // --> 
+//  cp -r mobile-app/www/remote/* app/static/nick/
 var LOCAL = true; //local to the 8100 codebasebirbirs
 var FIRST_PAGE='^.access';
 
@@ -13,13 +14,19 @@ var REST_URL = 'https://www.uguru.me'
 var BASE = '';
 if (LOCAL) {
   
-  BASE = 'remote/';
+  //uncomment to use live reload
+  //make sure to readd 'remote/' in the local.index.html script sources
+  //also make sure to toggle <content> in config.xml
 
+  BASE = 'remote/';
   BASE_URL = 'http://192.168.42.124:8100';
-  //BASE_URL = 'http://192.168.43.155:8100';
-   //BASE_URL = 'http://localhost:8100'
-  // REST_URL = 'http://192.168.42.78:5000'
-  //REST_URL = 'https://uguru-rest.herokuapp.com'
+
+  //uncomment to install direct to device
+  //make sure to remove 'remote/' in the local.index.html script sources
+  //also make sure to toggle <content> in config.xml
+  
+  // BASE_URL = 'http://192.168.42.124:5000/static/nick';
+  
 
 } else {
   img_base = '/static/'
