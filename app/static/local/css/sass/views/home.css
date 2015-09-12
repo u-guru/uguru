@@ -1,0 +1,16 @@
+.home-view .header-nav {
+  position: relative; }
+  .home-view .header-nav .header-nav-next {
+    position: absolute;
+    top: 12px;
+    opacity: 0.7;
+    right: 15px;
+    font-size: 110%; }
+.home-view button.home-footer-button.active,
+.home-view button.home-footer-button.activated {
+  opacity: 0.5; }
+
+.uguru-view .request#request-empty .become-guru-button {
+  background: #55A4B7; }
+
+/*# sourceMappingURL=home.css.map */

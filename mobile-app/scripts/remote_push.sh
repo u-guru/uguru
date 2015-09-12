@@ -33,6 +33,7 @@ echo
 echo 'saving.....'
 echo
 echo 'minifying + compressing local assets..'
+gulp preprocess-regular
 gulp -b
 echo 'compiling all local assets..'
 cp dest/scripts/*.js www/remote/js/app.js && cp dest/styles/*.css www/remote/css/app_version.css
