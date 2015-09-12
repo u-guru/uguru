@@ -121,7 +121,22 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 
                   console.log('V' + serverVersionNumber + 'stored to user');
 
-                  window.location.href = BASE_URL;
+                  if ($cordovaSplashscreen) {
+                    $cordovaSplashscreen.show();
+                  }
+
+                  if (isAdmin) {
+                    if (confirm('Is this the URL you want to update from?\n' + LOCAL_URL))
+                        window.location.href = LOCAL_URL;
+                    else {
+                        $localstorage.set('recently_updated', false);
+                        Version.setVersion(currentVersion);
+                        alert('auto-update canceled');
+                        return;
+                    }
+                  } else {
+                    window.location.href = BASE_URL;
+                  }
                   window.location.replace(true);
 
                 }

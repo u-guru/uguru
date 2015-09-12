@@ -33,7 +33,7 @@ echo
 echo 'saving.....'
 echo
 echo 'minifying + compressing local assets..'
-gulp preprocess-regular
+# gulp preprocess-regular
 gulp -b
 echo 'compiling all local assets..'
 cp dest/scripts/*.js www/remote/js/app.js && cp dest/styles/*.css www/remote/css/app_version.css
@@ -42,8 +42,8 @@ cd ..
 echo 'copying new files from uguru-mobile'
 cp -r mobile-app/www/remote/* app/static/remote/
 echo 'updating ios plugins'
-# cp mobile-app/platforms/ios/www/cordova.js app/static/remote/ios.cordova.js && cp mobile-app/platforms/ios/www/cordova_plugins.js app/static/remote/ios.cordova_plugins.js
-# cp -r mobile-app/platforms/ios/www/plugins/ app/static/remote/plugins/ && cp -r mobile-app/www/remote/* app/static/remote/
+cp mobile-app/platforms/ios/www/cordova.js app/static/remote/ios.cordova.js && cp mobile-app/platforms/ios/www/cordova_plugins.js app/static/remote/ios.cordova_plugins.js
+cp -r mobile-app/platforms/ios/www/plugins/ app/static/remote/plugins/ && cp -r mobile-app/www/remote/* app/static/remote/
 echo 'copying ios.css, windows, android file into the root remote'
 echo 'calling git add -A .'
 git add -A .

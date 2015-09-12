@@ -740,7 +740,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       // console.log(JSON.stringify(window.StatusBar));
       // window.StatusBar.overlaysWebView(false);
 
-
         // $timeout(function() {r
 
         //   $ionicSideMenuDelegate.toggleRight();

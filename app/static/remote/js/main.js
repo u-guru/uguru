@@ -1,5 +1,10 @@
 var LOCAL = false; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.access';
+var FIRST_PAGE='^.become-guru';
+
+// // @if ADMIN
+// isAdmin = true;
+// LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
+// // @endif
 
 
 
@@ -12,7 +17,7 @@ if (LOCAL) {
 
   BASE = 'remote/';
 
-  REST_URL = 'http://localhost:5000';
+  REST_URL = 'http://192.168.42.78:5000/';
 
 } else {
   img_base = '/static/'
@@ -50,7 +55,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
   $provide.decorator("$exceptionHandler", function($delegate, $injector) {
     return function(exception, cause) {
-
       $delegate(exception, cause);
     };
   });
