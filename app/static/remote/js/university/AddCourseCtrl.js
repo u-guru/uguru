@@ -20,7 +20,7 @@ angular.module('uguru.util.controllers')
 
     $scope.courses = [];
 
-    $scope.search_text = '';
+    $scope.course_search_text = '';
 
     $scope.shouldShowDelete = false;
     $scope.listCanSwipe = true;
@@ -80,7 +80,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.query = function(input) {
-      $scope.query = Utilities.nickMatcher(input, $scope.courses);
+      $scope.courses = Utilities.nickMatcher(input, $scope.originalCourses);
     }
 
 
@@ -110,7 +110,7 @@ angular.module('uguru.util.controllers')
 
     $scope.removeGuruCourseAndUpdate = function(course, index) {
 
-      if ($state.current.name === 'root.become-guru' && !confirm('Remove ' + course.short_name + '?')) {
+      if ($state.current.name === 'root.become-guru' && !confirm('Remove ' + course.name + '?')) {
         return;
       }
 
@@ -120,7 +120,7 @@ angular.module('uguru.util.controllers')
 
       var confirmCallback = function() {
         $scope.loader.hide();
-        $scope.success.show(0, 1000, course.short_name + ' successfully removed');
+        $scope.success.show(0, 1000, course.name + ' successfully removed');
       }
       $scope.loader.show();
 
@@ -154,7 +154,7 @@ angular.module('uguru.util.controllers')
 
       //set the course text to what it should be
       $scope.studentCourseInput.value = '';
-      $scope.course_search_text = course.short_name
+      $scope.course_search_text = course.name
 
       $scope.user.student_courses.push(course);
 
@@ -219,14 +219,17 @@ angular.module('uguru.util.controllers')
         // they are already loaded
         var localStorageCourses = $localstorage.getObject('courses')
         if ($scope.courses && $scope.courses.length > 0) {
+          $scope.originalCourses = $scope.courses.slice();
           // why forty? idk seems about right lol; feel free to change
           return;
         }else if (localStorageCourses && localStorageCourses.length > 0) {
           $scope.courses = localStorageCourses;
+          $scope.originalCourses = $scope.courses.slice();
         } else if ($scope.static.courses && $scope.static.courses.length > 0) {
-            $scope.courses = localStorageCourses;
+            $scope.courses = $scope.static.courses;
+            $scope.originalCourses = $scope.courses.slice();
         } else {
-          $scope.courses = [{short_name: 'loading', title:null}];
+          $scope.courses = [{name: 'loading', title:null}];
           $scope.checkCourses(localStorageCourses);
         }
       }
@@ -240,6 +243,8 @@ angular.module('uguru.util.controllers')
                       $scope.root.vars.popular_courses = $scope.root.vars.courses.slice(0, 16);
                       $scope.static.courses = $scope.root.vars.courses;
                       $scope.static.popular_courses = $scope.root.vars.popular_courses;
+                      $scope.courses = $scope.static.courses;
+                      $scope.originalCourses = $scope.courses.slice();
 
                 },
                   function(error) {

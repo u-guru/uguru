@@ -54,11 +54,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         libraries: 'places'
     });
 
-  $provide.decorator("$exceptionHandler", function($delegate, $injector) {
-    return function(exception, cause) {
-      $delegate(exception, cause);
-    };
-  });
+  // $provide.decorator("$exceptionHandler", function($delegate, $injector) {
+  //   return function(exception, cause) {
+  //     $delegate(exception, cause);
+  //   };
+  // });
 
   if (!window.cordova) {
       var appID = 1416375518604557;

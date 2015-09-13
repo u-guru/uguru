@@ -817,7 +817,7 @@ button {
     background: #F1F1F1 center center no-repeat;
     cursor: pointer; }
   .checklist li > span input:checked + span {
-    background: url("../svg/check.svg") center center no-repeat; }
+    background: url(../img/svg/check.svg) center center no-repeat, url(/static/remote/img/svg/check.svg) center center no-repeat; }
 
 .photo-grid {
   -ms-box-orient: horizontal;

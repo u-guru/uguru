@@ -978,7 +978,7 @@ button {
 			    cursor: pointer;
 			}
 			input:checked + span {
-			    background: url("../svg/check.svg") center center no-repeat;
+			    background: url(../img/svg/check.svg) center center no-repeat, url(/static/remote/img/svg/check.svg) center center no-repeat;
 			}
 		}
 	}

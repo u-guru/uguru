@@ -28,7 +28,18 @@ angular.module('uguru.guru.controllers')
     $scope.majors = $scope.static.majors;
     $scope.courses = $scope.static.courses;
 
-
+    var mapGuruCoursesToCategoriesObj = function(guru_courses) {
+      guruCategoryCourses = [];
+      for (var i = 0; i < guru_courses.length; i++) {
+        var guru_course = guru_courses[i];
+        guruCategoryCourses.push({
+          name: guru_course.name,
+          id: guru_course.id,
+          active: true
+        });
+      }
+      return guruCategoryCourses;
+    }
 
     $scope.nextSlide = function() {
       $ionicSlideBoxDelegate.next();
@@ -71,6 +82,15 @@ angular.module('uguru.guru.controllers')
       if (index === 0) {
         console.log('grabbing courses from server')
         $scope.getCoursesFromServer();
+        $ionicSideMenuDelegate.canDragContent(false);
+      }
+      if (index === 2) {
+        $ionicSideMenuDelegate.canDragContent(true);
+        $scope.static.categories[0].skills = mapGuruCoursesToCategoriesObj($scope.user.guru_courses);
+        $scope.static.categories[0].active_skills_count = $scope.static.categories[0].skills.length;
+        console.log('processing this shit', $scope.static.categories[0]);
+      } else {
+        $ionicSideMenuDelegate.canDragContent(true);
       }
     }
 
