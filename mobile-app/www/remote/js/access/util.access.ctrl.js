@@ -29,7 +29,6 @@ function AccessController($scope, $state, $ionicViewSwitcher,
 
 
   $scope.checkAccessCode = function(code) {
-    var code = 'cool';
     if(AccessService.validate(code)){
       //LoadingService.show(0, 5000, 'Access Granted');
       $scope.access.codeInput = '';
