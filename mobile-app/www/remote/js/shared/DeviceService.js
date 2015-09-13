@@ -112,6 +112,11 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
                   if ($cordovaSplashscreen) {
                     $cordovaSplashscreen.show();
                   }
+
+                  //doesn't work so here's my attempt
+                  if (navigator && navigator.splashscreen && navigator.splashscreen.show) {
+                    navigator.splashscreen.show();
+                  }
                   $templateCache.removeAll();
                   window.localStorage.clear();
                   //remove all angular templates
@@ -120,10 +125,6 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
                   $localstorage.set('recently_updated', true);
 
                   console.log('V' + serverVersionNumber + 'stored to user');
-
-                  if ($cordovaSplashscreen) {
-                    $cordovaSplashscreen.show();
-                  }
 
                   if (isAdmin) {
                     if (confirm('Is this the URL you want to update from?\n' + LOCAL_URL))
