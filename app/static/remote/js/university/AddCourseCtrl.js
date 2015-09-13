@@ -177,7 +177,6 @@ angular.module('uguru.util.controllers')
       //set the variable to this
       $timeout(function() {
         if (index < 40) {
-          var removedCourseFromPreselected = $scope.preSelectedGuruCourses.splice(index, 1);
           var removedCourseFromMain = $scope.courses.splice(index, 1);
         } else {
           var removedCourseFromMain = $scope.courses.splice(index, 1);
@@ -208,6 +207,12 @@ angular.module('uguru.util.controllers')
         // TODO WHAT IF THEY HAVE NO INTERNET?? Save to dictionary and continually try to update server
         // A server cache ..
 
+    }
+
+    $scope.increaseLimit = function() {
+      if($scope.courses && $scope.limit < $scope.courses.length) {
+        $scope.limit += 10;
+      }
     }
 
     var initializeCourses = function() {

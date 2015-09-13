@@ -30,15 +30,15 @@
                   >
         </div>
       </header>
-      <div id="courses-list" class="onboarding-list">
+      <div id="courses-list" class="onboarding-list" buffered-scroll='increaseLimit()' ng-init='limit = 20'>
         <ul class='list'>
           <li ng-if='search_text.length === 0 || user.guru_courses.length == 0' ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
               <input type="checkbox" checked>
-              <label>{{course.short_name}} &nbsp;&nbsp; <i class='icon ion-checkmark'></i></label>
+              <label>{{course.name}} &nbsp;&nbsp; <i class='icon ion-checkmark'></i></label>
           </li>
-          <li ng-repeat='course in courses' ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
+          <li ng-repeat='course in courses | limitTo: limit' ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
               <input type="checkbox">
-              <label>{{course.short_name}}</label>
+              <label>{{course.name}}</label>
           </li>
         </ul>
       </div>

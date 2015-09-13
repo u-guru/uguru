@@ -17,10 +17,11 @@ angular.module('uguru.guru.controllers')
   '$ionicSlideBoxDelegate',
   '$ionicViewSwitcher',
   '$window',
+  'University',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $cordovaStatusbar, $ionicSlideBoxDelegate,
-    $ionicViewSwitcher, $window) {
+    $ionicViewSwitcher, $window, University) {
 
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
@@ -49,6 +50,7 @@ angular.module('uguru.guru.controllers')
             University.getCourses(2732).then(
                   function(courses) {
                       $scope.loader.hide();
+
                       $localstorage.setObject('courses', courses);
                       $scope.root.vars.courses = courses;
                       $scope.root.vars.popular_courses = $scope.root.vars.courses.slice(0, 16);
@@ -160,25 +162,7 @@ angular.module('uguru.guru.controllers')
     }
 
 
-    $scope.$on('$ionicView.beforeEnter', function(){
 
-
-      // initProgressBar('become-guru-progress', window.innerWidth);
-
-    });
-
-    $scope.$on('$ionicView.enter', function(){
-
-      $timeout(function() {
-        $scope.initiateSkillEventListeners();
-      }, 500);
-
-
-
-      $scope.slidebox_handle = $ionicSlideBoxDelegate.$getByHandle('become-guru-slide-box');
-
-
-    });
 
 
   }
