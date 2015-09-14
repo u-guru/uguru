@@ -222,7 +222,7 @@ angular.module('uguru.util.controllers')
                 $scope.success.show(500, 2000, 'You have been successfully logged out!');
                 $timeout(function(){
                   $ionicSideMenuDelegate.toggleRight();
-                  $state.go('^.home');
+                  $state.go('^.access');
                 }, 600)
               }, 2000);
 

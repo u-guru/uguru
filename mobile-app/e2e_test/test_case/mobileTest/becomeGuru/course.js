@@ -20,7 +20,10 @@ describe('Course Test', function () {
 	// 		});
 	// 	});
 	// })
-	
+	it("check the page",function()
+	{
+		//
+	});
 	
 	describe('Check Search Results',function()
 	{

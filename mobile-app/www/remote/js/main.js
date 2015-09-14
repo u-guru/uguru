@@ -1,8 +1,11 @@
-// Uguru upp
-// --> config.xml
-// -->
 var LOCAL = true; //local to the 8100 codebasebirbirs
 var FIRST_PAGE='^.access';
+var img_base;
+
+// // @if ADMIN
+// isAdmin = true;
+// LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
+// // @endif
 var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
 var BASE = '';
@@ -46,11 +49,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         libraries: 'places'
     });
 
-  $provide.decorator("$exceptionHandler", function($delegate, $injector) {
-    return function(exception, cause) {
-      $delegate(exception, cause);
-    };
-  });
+  // $provide.decorator("$exceptionHandler", function($delegate, $injector) {
+  //   return function(exception, cause) {
+  //     $delegate(exception, cause);
+  //   };
+  // });
 
   if (!window.cordova) {
       var appID = 1416375518604557;

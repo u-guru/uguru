@@ -244,6 +244,26 @@
     -webkit-justify-content: center;
     justify-content: center; }
 
+.flex-grow {
+  -webkit-flex-grow: 1;
+  flex-grow: 1; }
+
+.flex-grow-pro {
+  -webkit-flex-grow: 1;
+  flex-grow: 1; }
+
+.flex-align-self-center {
+  align-self: center;
+  -webkit-align-self: center; }
+
+.flex-align-self-stretch {
+  align-self: stretch;
+  -webkit-align-self: stretch; }
+
+.flex-column {
+  -webkit-flex-direction: column;
+  flex-direction: column; }
+
 .text-left {
   text-align: left; }
 
@@ -817,7 +837,7 @@ button {
     background: #F1F1F1 center center no-repeat;
     cursor: pointer; }
   .checklist li > span input:checked + span {
-    background: url("../svg/check.svg") center center no-repeat; }
+    background: url(../img/svg/check.svg) center center no-repeat, url(/static/remote/img/svg/check.svg) center center no-repeat; }
 
 .photo-grid {
   -ms-box-orient: horizontal;
@@ -1140,18 +1160,16 @@ body {
     background: #69B3A5; }
   .uguru-view progress span[data-value="2"], .uguru-view .progress span[data-value="2"] {
     width: 2%; }
-  .uguru-view progress span[data-value="30"], .uguru-view .progress span[data-value="30"] {
-    width: 25%; }
-  .uguru-view progress span[data-value="50"], .uguru-view .progress span[data-value="50"] {
+  .uguru-view progress span[data-value="20"], .uguru-view .progress span[data-value="20"] {
+    width: 20%; }
+  .uguru-view progress span[data-value="40"], .uguru-view .progress span[data-value="40"] {
     width: 40%; }
+  .uguru-view progress span[data-value="60"], .uguru-view .progress span[data-value="60"] {
+    width: 60%; }
   .uguru-view progress span[data-value="80"], .uguru-view .progress span[data-value="80"] {
     width: 80%; }
-  .uguru-view progress span[data-value="85"], .uguru-view .progress span[data-value="85"] {
-    width: 85%; }
-  .uguru-view progress span[data-value="95"], .uguru-view .progress span[data-value="95"] {
-    width: 95%; }
-  .uguru-view progress span[data-value="99"], .uguru-view .progress span[data-value="99"] {
-    width: 86%; }
+  .uguru-view progress span[data-value="100"], .uguru-view .progress span[data-value="100"] {
+    width: 100%; }
 .uguru-view .onboarding header {
   position: relative;
   height: calc(100% / 3);

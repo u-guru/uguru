@@ -24,7 +24,7 @@ describe('Workflow Test : One', function () {
 					startButton.click();
 					if(testSpec == 'cool')
 					{
-						doc.checkMsg("Access Granted"unive);
+						doc.checkMsg("Access Granted");
 					}
 					else
 					{

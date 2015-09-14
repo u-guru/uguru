@@ -137,12 +137,15 @@ var global = function() {
   { 
     str = '#'+id+' li:not(.ng-hide)';
     element.all(by.css(str)).then(function (items) {
-          var length = items.length;
+          var length = (items.length+1)/ 2 ;
+          var length2 = items.length - length;
           var dataName;
           var name
           var groupName;
           var tempName;
           var tempGroupName;
+
+          console.log (length);
            for(var j = 0 ; j < length; ++j)
            {
                   name= items[j].element(by.binding(binding)).getText().then(function(text){
@@ -164,6 +167,34 @@ var global = function() {
                       tempGroupName= items[i].getAttribute('ng-repeat').then(function(value){
                         return value;
                       });
+
+                     expect(name).not.toBe(tempName, "Data Repeating");
+                   //  expect(groupName).toBe(tempGroupName, "Difrerent ng Group");
+                  }
+            } 
+
+           for(var j = length ; j < length2; ++j)
+           {
+                  name= items[j].element(by.binding(binding)).getText().then(function(text){
+                    return text;
+                  });
+                  //class type 
+                  groupName=items[j].getAttribute('ng-repeat').then(function(value){
+                    return value;
+                  });
+
+                  for(var i = j+1; i < length2 ; i++)
+                  {
+                        //cmopare name
+                      tempName= items[i].element(by.binding(binding)).getText().then(function(text){
+                         return text;
+                      });
+
+                      //class type 
+                      tempGroupName= items[i].getAttribute('ng-repeat').then(function(value){
+                        return value;
+                      });
+
                      expect(name).not.toBe(tempName, "Data Repeating");
                    //  expect(groupName).toBe(tempGroupName, "Difrerent ng Group");
                   }
@@ -216,7 +247,7 @@ var global = function() {
       i = index;
     element.all(by.tagName("input")).then(function(inputs)
       {
-         console.log(inputs.length);
+         //console.log(inputs.length);
         if (check == true)
          {
            inputs[i].getAttribute('value').then(function(result)

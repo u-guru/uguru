@@ -738,7 +738,7 @@ angular.module('uguru.util.controllers')
         var ref = cordova.InAppBrowser.open(url, target, options);
 
         ref.addEventListener('loadstop', addHeader);
-       
+
         // function replaceHeaderImage() {
         //     iabRef.executeScript({
         //         code: "var img=document.querySelector('#header img'); img.src='http://cordova.apache.org/images/cordova_bot.png';"
@@ -748,7 +748,7 @@ angular.module('uguru.util.controllers')
         // }
 
         function addHeader() {
-          
+
           ref.insertCSS({
             code: '#intercom-launcher {display:none !important;}'
             });

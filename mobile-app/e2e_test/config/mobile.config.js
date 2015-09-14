@@ -1,11 +1,21 @@
+"use strict";
+
 exports.config = {
     framework: 'jasmine2',
-     seleniumAddress: 'http://localhost:4444/wd/hub',
+     // seleniumAddress: 'http://localhost:4444/wd/hub',
 
+     seleniumAddress: 'http://localhost:4723/wd/hub',
 
-         capabilities: {
-                 'browserName': 'chrome'
-         },
+         // capabilities: {
+         //         'browserName': 'chrome'
+         // },
+           capabilities: {
+            browserName: 'chrome',
+            'appium-version': '1.4.10',
+            platformName: 'Android',
+            platformVersion: '4.4.2',
+            deviceName: 'Android Emulator',
+          },
         //   multiCapabilities: [
         //   {'browserName': 'chrome'},
         //   {'browserName': 'firefox'},
@@ -100,7 +110,10 @@ exports.config = {
                     },
                     customProcessors: []
                 }));
-       
+          var wd = require('wd'),
+            protractor = require('protractor'),
+             wdBridge = require('wd-bridge')(protractor, wd);
+            wdBridge.initFromProtractor(exports.config);
 
 
     

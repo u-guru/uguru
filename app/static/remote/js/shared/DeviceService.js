@@ -112,6 +112,11 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
                   if ($cordovaSplashscreen) {
                     $cordovaSplashscreen.show();
                   }
+
+                  //doesn't work so here's my attempt
+                  if (navigator && navigator.splashscreen && navigator.splashscreen.show) {
+                    navigator.splashscreen.show();
+                  }
                   $templateCache.removeAll();
                   window.localStorage.clear();
                   //remove all angular templates
@@ -121,7 +126,18 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 
                   console.log('V' + serverVersionNumber + 'stored to user');
 
-                  window.location.href = BASE_URL;
+                  if (isAdmin) {
+                    if (confirm('Is this the URL you want to update from?\n' + LOCAL_URL))
+                        window.location.href = LOCAL_URL;
+                    else {
+                        $localstorage.set('recently_updated', false);
+                        Version.setVersion(currentVersion);
+                        alert('auto-update canceled');
+                        return;
+                    }
+                  } else {
+                    window.location.href = BASE_URL;
+                  }
                   window.location.replace(true);
 
                 }

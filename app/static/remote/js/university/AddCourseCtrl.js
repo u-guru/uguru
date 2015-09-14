@@ -13,15 +13,14 @@ angular.module('uguru.util.controllers')
   '$ionicTabsDelegate',
   '$ionicSideMenuDelegate',
   'University',
-
+  'Utilities',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
-    $ionicSideMenuDelegate, University) {
-    if ($scope.static.courses && $scope.static.courses.length > 0 && (!$scope.courses || !$scope.courses.length)) {
-      $scope.courses = $scope.static.courses;
-    }
+    $ionicSideMenuDelegate, University, Utilities) {
 
-    $scope.search_text = '';
+    $scope.courses = [];
+
+    $scope.course_search_text = '';
 
     $scope.shouldShowDelete = false;
     $scope.listCanSwipe = true;
@@ -80,6 +79,10 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    $scope.query = function(input) {
+      $scope.courses = Utilities.nickMatcher(input, $scope.originalCourses);
+    }
+
 
     $scope.editCourses = function() {
       console.log('show delete should be here');
@@ -107,7 +110,7 @@ angular.module('uguru.util.controllers')
 
     $scope.removeGuruCourseAndUpdate = function(course, index) {
 
-      if ($state.current.name === 'root.become-guru' && !confirm('Remove ' + course.short_name + '?')) {
+      if ($state.current.name === 'root.become-guru' && !confirm('Remove ' + course.name + '?')) {
         return;
       }
 
@@ -117,7 +120,7 @@ angular.module('uguru.util.controllers')
 
       var confirmCallback = function() {
         $scope.loader.hide();
-        $scope.success.show(0, 1000, course.short_name + ' successfully removed');
+        $scope.success.show(0, 1000, course.name + ' successfully removed');
       }
       $scope.loader.show();
 
@@ -151,7 +154,7 @@ angular.module('uguru.util.controllers')
 
       //set the course text to what it should be
       $scope.studentCourseInput.value = '';
-      $scope.course_search_text = course.short_name
+      $scope.course_search_text = course.name
 
       $scope.user.student_courses.push(course);
 
@@ -174,7 +177,6 @@ angular.module('uguru.util.controllers')
       //set the variable to this
       $timeout(function() {
         if (index < 40) {
-          var removedCourseFromPreselected = $scope.preSelectedGuruCourses.splice(index, 1);
           var removedCourseFromMain = $scope.courses.splice(index, 1);
         } else {
           var removedCourseFromMain = $scope.courses.splice(index, 1);
@@ -207,36 +209,42 @@ angular.module('uguru.util.controllers')
 
     }
 
-      var initializeCourses = function() {
+    $scope.increaseLimit = function() {
+      if($scope.courses && $scope.limit < $scope.courses.length) {
+        $scope.limit += 10;
+      }
+    }
+
+    var initializeCourses = function() {
         // they are already loaded
         var localStorageCourses = $localstorage.getObject('courses')
         if ($scope.courses && $scope.courses.length > 0) {
+          $scope.originalCourses = $scope.courses.slice();
           // why forty? idk seems about right lol; feel free to change
-          console.log($scope.courses.length);
-          $scope.preSelectedGuruCourses = $scope.courses.splice(0, 40);
-          console.log($scope.preSelectedGuruCourses.length, $scope.courses.length);
+          return;
+        }else if (localStorageCourses && localStorageCourses.length > 0) {
+          $scope.courses = localStorageCourses;
+          $scope.originalCourses = $scope.courses.slice();
         } else if ($scope.static.courses && $scope.static.courses.length > 0) {
-            $scope.courses = localStorageCourses;
-            $scope.preSelectedGuruCourses = $scope.courses.slice(0, 40);
+            $scope.courses = $scope.static.courses;
+            $scope.originalCourses = $scope.courses.slice();
         } else {
-          // 1. go fetch the courses
-          // 2. in the meanwhile, keep this array empty so fastmatcher doesn't
-          // throw an error
-          $scope.getCoursesFromServer();
-          $scope.courses = [];
+          $scope.courses = [{name: 'loading', title:null}];
           $scope.checkCourses(localStorageCourses);
-
         }
       }
 
       $scope.getCoursesFromServer = function() {
             University.getCourses(2732).then(
                   function(courses) {
+                      $scope.loader.hide();
                       $localstorage.setObject('courses', courses);
                       $scope.root.vars.courses = courses;
                       $scope.root.vars.popular_courses = $scope.root.vars.courses.slice(0, 16);
                       $scope.static.courses = $scope.root.vars.courses;
                       $scope.static.popular_courses = $scope.root.vars.popular_courses;
+                      $scope.courses = $scope.static.courses;
+                      $scope.originalCourses = $scope.courses.slice();
 
                 },
                   function(error) {
@@ -247,26 +255,32 @@ angular.module('uguru.util.controllers')
         );
       }
 
-
       $scope.checkCourses = function() {
           lsCourses = $localstorage.getObject('courses');
           //possible that is already cashed
           var is_courses_loaded = $scope.root.vars && $scope.root.vars.courses && $scope.root.vars.courses.length > 0;
-          $scope.success.show(0, 500, 'Loading courses ...')
-          $timeout(function() {
-            $scope.loader.show();
-          }, 500)
 
-          // if
-          if ($scope.static.courses) {
-            $scope.courses = $scope.static.courses;
+          //only show if the university page is shown & we don't have coursers
+          if ($scope.activeSlideIndex === 1) {
+              $timeout(function() {
+                  $scope.success.show(0, 500, 'Loading courses ...')
+                  $scope.loader.show();
+              }, 600)
           }
-          // if its in the cash
-          else if (lsCourses) {
-            $scope.courses = $scope.root.var.courses;
-          }else {
-            // TODO --> call server & just try to get it anyways
-            $scope.success.show(0, 1000, 'One moment...');
+
+          if (is_courses_loaded) {
+            $scope.courses = lsCourses;
+            $scope.loader.hide();
+          } else if ($scope.static.courses) {
+            $scope.courses = $scope.static.courses;
+            $scope.loader.hide();
+          }
+          else {
+            console.log('grabbing courses from server');
+            $scope.getCoursesFromServer();
+            if ($scope.activeSlideIndex === 1) {
+              $scope.success.show(0, 1000, 'One moment...');
+            }
             $timeout(function() {
               $scope.checkCourses();
             }, 1500);
@@ -277,8 +291,10 @@ angular.module('uguru.util.controllers')
     }
     $scope.guruCourseInput = document.getElementById('guru-course-input');
     $scope.studentCourseInput = document.getElementById('student-course-input');
-    initializeCourses();
 
+    $timeout(function() {
+      initializeCourses();
+    }, 500)
 
   }
 
