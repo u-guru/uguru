@@ -269,23 +269,20 @@ progress, .progress {
 	span[data-value="2"] {
 		width: 2%;
 	}
-	span[data-value="30"] {
-		width: 25%;
+	span[data-value="20"] {
+		width: 20%;
 	}
-	span[data-value="50"] {
+	span[data-value="40"] {
 		width: 40%;
+	}
+	span[data-value="60"] {
+		width: 60%;
 	}
 	span[data-value="80"] {
 		width: 80%;
 	}
-	span[data-value="85"] {
-		width: 85%;
-	}
-	span[data-value="95"] {
-		width: 95%;
-	}
-	span[data-value="99"] {
-		width: 86%;
+	span[data-value="100"] {
+		width: 100%;
 	}
 }
 

@@ -244,6 +244,26 @@
     -webkit-justify-content: center;
     justify-content: center; }
 
+.flex-grow {
+  -webkit-flex-grow: 1;
+  flex-grow: 1; }
+
+.flex-grow-pro {
+  -webkit-flex-grow: 1;
+  flex-grow: 1; }
+
+.flex-align-self-center {
+  align-self: center;
+  -webkit-align-self: center; }
+
+.flex-align-self-stretch {
+  align-self: stretch;
+  -webkit-align-self: stretch; }
+
+.flex-column {
+  -webkit-flex-direction: column;
+  flex-direction: column; }
+
 .text-left {
   text-align: left; }
 

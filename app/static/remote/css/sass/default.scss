@@ -301,6 +301,30 @@
 	}
 }
 
+.flex-grow {
+	-webkit-flex-grow:1;
+	flex-grow:1;
+}
+
+.flex-grow-pro {
+	-webkit-flex-grow:1;
+	flex-grow:1;
+}
+
+.flex-align-self-center {
+	align-self:center;
+	-webkit-align-self:center;
+}
+.flex-align-self-stretch {
+	align-self:stretch;
+	-webkit-align-self:stretch;
+}
+
+.flex-column {
+	-webkit-flex-direction:column;
+	flex-direction:column;
+}
+
 // TEXT STYLES
 .text-left {
 	text-align: left;
@@ -766,7 +790,7 @@ button, input {
 	-o-appearance: none;
 	appearance: none;
 	box-sizing: border-box;
-	font-family: $font;
+font-family: $font;
 }
 button {
 	cursor: pointer;
