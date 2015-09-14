@@ -13,11 +13,10 @@ angular.module('uguru.root.services')
     [
     '$localstorage',
     '$timeout',
-    '$cordovaCamera',
     '$state',
-    function($localstorage, $timeout, $cordovaCamera, $state) {
+    function($localstorage, $timeout, $state) {
 
-        deviceCamera = {
+        return {
                     takePicture: function($scope, index, elemId, callbackSuccess) {
 
                       // if ($scope.platform.mobile) {
@@ -25,7 +24,7 @@ angular.module('uguru.root.services')
                       // }
 
 
-                        var options = {
+                        var cameraOptions = {
                           quality: 15,
                           destinationType: Camera.DestinationType.DATA_URL,
                           sourceType: index,
@@ -37,10 +36,9 @@ angular.module('uguru.root.services')
                           saveToPhotoAlbum: false
                         };
 
-                          $cordovaCamera.getPicture(options).then(function(imageData) {
+                        navigator.camera.getPicture(cameraSuccess, cameraError, cameraOptions);
 
-
-                          // render to the html page
+                        function cameraSuccess(imageData) {
                           var image = document.getElementById(elemId);
 
                           image.src = 'data:image/jpeg;base64,' + imageData;
@@ -68,16 +66,54 @@ angular.module('uguru.root.services')
                           $timeout(function() {
                             $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
                           }, 500)
+                        }
 
-                        }, function(err) {
+                        function cameraError(message) {
                           console.log(err);
                           if ('No camera available' === err) {
                             alert('Sorry! It appears that there is no Camera or Photo Library Accessible. Please contact support.');
                           }
-                        });
+                        }
+
+                        //   $cordovaCamera.getPicture(options).then(function(imageData) {
+
+                        //   // render to the html page
+                        //   var image = document.getElementById(elemId);
+
+                        //   image.src = 'data:image/jpeg;base64,' + imageData;
+
+                        //   $scope.photoUploaded = true;
+
+                        //   //package up imageData to save to server
+                        //   var formData = new FormData();
+                        //   formData.append('file', imageData);
+                        //   var file_name = new Date().getTime().toString();
+                        //   formData.append('filename', file_name);
+
+
+                        //   //if user is uploading a transcript
+                        //   if ($scope.root.vars.profile_url_changed) {
+                        //     formData.append('transcript_url', is_transcript);
+                        //   }
+                        //   //if user is logged in
+                        //   if ($scope.root.vars.profile_url_changed && $scope.user.id) {
+                        //     formData.append('profile_url', $scope.user.id);
+                        //   }
+
+                        //   $scope.success.show(0, 1500, 'Saving...');
+
+                        //   $timeout(function() {
+                        //     $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
+                        //   }, 500)
+
+                        // }, function(err) {
+                        //   console.log(err);
+                        //   if ('No camera available' === err) {
+                        //     alert('Sorry! It appears that there is no Camera or Photo Library Accessible. Please contact support.');
+                        //   }
+                        // });
                     }
                 };
 
-        return deviceCamera;
 
 }]);

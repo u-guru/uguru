@@ -23,7 +23,7 @@ angular.module('uguru.guru.controllers')
     $ionicActionSheet, Camera) {
 
 
-    $scope.takePhotoCallbackSuccess = function($scope) {
+    function takePhotoCallbackSuccess($scope) {
 
       $scope.success.show(0, 2000, "Awesome! You're all set.");
       $ionicViewSwitcher.nextDirection('forward');
@@ -54,7 +54,7 @@ angular.module('uguru.guru.controllers')
             $scope.closeAttachActionSheet();
         },
        buttonClicked: function(index) {
-          $scope.takePhoto(index);
+          takePhoto(index);
 
           $timeout(function() {
               $scope.closeAttachActionSheet();
@@ -65,12 +65,12 @@ angular.module('uguru.guru.controllers')
 
 
 
-    $scope.takePhoto = function(index) {
+    function takePhoto(index) {
       if ($scope.platform.mobile) {
         if ($scope.user.id) {
           $scope.root.vars.profile_url_changed = true;
         }
-        Camera.takePicture($scope, index, 'user-instant-photo', $scope.takePhotoCallbackSuccess);
+        Camera.takePicture($scope, index, 'user-instant-photo', takePhotoCallbackSuccess);
       } else {
         var element = document.getElementById('file-input-web')
         element.click();
@@ -124,7 +124,7 @@ angular.module('uguru.guru.controllers')
 
         $scope.success.show(0, 1500, 'Saving...');
         $timeout(function() {
-          $scope.user.createObj($scope.user, 'files', formData, $scope, $scope.takePhotoCallbackSuccess);
+          $scope.user.createObj($scope.user, 'files', formData, $scope, takePhotoCallbackSuccess);
         }, 500);
     };
 
