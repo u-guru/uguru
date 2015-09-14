@@ -52,7 +52,7 @@ function UniversityMatcher(University) {
 	//we're going to keep calling $scope.query = UniversityMatcher.match(input) on every keyup
 	//however we'll handle the actual uni list in this service for caching
 	function cachedMatch(input) {
-
+		var input = input.toLowerCase();
 		if(input.length===0) {
 			console.log("empty input, returning whole list");
 			return list;
@@ -126,16 +126,18 @@ function UniversityMatcher(University) {
 		}
 		var matchedList = [];
 		var inputLowerCase = input.toLowerCase();
+		var firstLetterList = [];
 		for(var i=0; i<list.length; i++) {
 			var nameLowerCase = list[i].name.toLowerCase();
 			//Give priority to schools that start with the input
 			if(nameLowerCase.indexOf(inputLowerCase) === 0) {
-					matchedList.push(list[i]);
-				}
+				firstLetterList.push(list[i]);
+			}
 			else if(nameLowerCase.indexOf(inputLowerCase) !== -1) {
 				matchedList.push(list[i]);
 			}
 		}
+		matchedList = firstLetterList.concat(matchedList);
 		return matchedList;
 	}
 
