@@ -9,14 +9,10 @@ function UniversityMatcher(University) {
 	
 	var list = University.getTargetted();
 	sortByRank(list);
-	var uniDictionary = {};
+	var uniDictionary = null;
 	init();
 	console.log("before the return");
-	var cacheCounter = 0;
-	function cacheObject() {
-		
-	}
-	var savedCacheArray = [];
+
 	var cachedInput = null;
 	var cachedDictionary = null;
 
@@ -41,6 +37,7 @@ function UniversityMatcher(University) {
 	}
 	
 	function init() {
+		uniDictionary = {};
 		console.log("init inside universityMatcher");
 		var alphabet = "abcdefghijklmnopqrstuvwxyz";
 		console.log("alphabet.length: " + alphabet.length);
@@ -52,16 +49,6 @@ function UniversityMatcher(University) {
 		console.log("uniDictionary properties number: " + Object.keys(uniDictionary).length);
 	}
 
-	function createCacheObject(cacheList) {
-		cacheCounter++;
-
-		var cache = new cacheObject();
-		cache.point = cacheCounter;
-		cache.list = cacheList;
-
-		savedCacheArray.push(cache);
-	}
-
 	//we're going to keep calling $scope.query = UniversityMatcher.match(input) on every keyup
 	//however we'll handle the actual uni list in this service for caching
 	function cachedMatch(input) {
@@ -70,17 +57,16 @@ function UniversityMatcher(University) {
 			console.log("empty input, returning whole list");
 			return list;
 		}
-		// if input is just one letter then we can return the matching list from the uniDictionary property
-		// then we also store that list in a cachedDictionary
+		// if input is just one letter then we can return the matching list from the uniDictionary 
+		// property then we also store that list in a cachedDictionary
 		else if(input.length===1) {
 			console.log("single letter input: " + input);
 			cachedInput = input;
 			return uniDictionary[input];
 		}
 		// if the user continues to type without deleting then we will continue to search
-		// from within the cacheDictionary, and then replace it with the results and return it
-		// we are also saving cache points along the way for quick retrieval in the event the user
-		// backspaces
+		// from within the cacheDictionary, and then replace it with the results while
+		// saving it to the uniDictionary
 		else if(input.length > cachedInput.length && input.indexOf(cachedInput) === 0) {
 
 			cachedInput = input;
@@ -97,12 +83,11 @@ function UniversityMatcher(University) {
 				console.log("subInput: " + subInput);
 				uniDictionary[input] = match(input, uniDictionary[subInput]);
 				cachedDictionary = uniDictionary[input]
-				//createCacheObject(cachedDictionary);
 				return cachedDictionary;
 			}
 		}
-		// if the user backspaces a part of the input but still keeps at least the first two letters
-		// then we can roll back to the specific cache point
+		// if the user backspaces a part of the input then we can lookup the previous caches
+		// if none was found then we can just search the entire list and create a new cache
 		else if(input.length > 1 && input.length < cachedInput.length && cachedInput.indexOf(input) === 0) {
 
 			cachedInput = input;
@@ -117,36 +102,21 @@ function UniversityMatcher(University) {
 				cachedDictionary = uniDictionary[input]
 				return cachedDictionary;
 			}
-			// var point = cachedInput.length - input.length;
-			// cachedInput = input;
-			// retrieveCache();
-			// function retrieveCache() {
-			// 	cacheCounter--;
-			// 	savedCacheArray.pop();
-			// 	savedCacheArray.forEach(function(cacheItem, index, array) {
-			// 		if(cacheItem.point === point) {
-			// 			cachedDictionary = match(input, array[index]);
-			// 			return cachedDictionary;
-			// 		}		
-			// 	})
-			// }
 		} 
 		// in the event they do some weird stuff then we can just go back to searching by the first letter
 		else if(input.length > 1) {
 			console.log("this should never fire");
-			clearCache();
 			cachedInput = input;
-			var firstChar = input.charAt(0);
-			cachedDictionary = match(input, uniDictionary[firstChar]);
+			uniDictionary[input] = match(input, list);
+			cachedDictionary = uniDictionary[input];
 			return cachedDictionary;
 		}
 
 	}
 	function clearCache() {
-		cacheCounter = 0;
-		savedCachePoints = [];
 		cachedInput = null;
 		cachedDictionary = null;
+		uniDictionary = null;
 	}
 
 	function match(input, list) {
