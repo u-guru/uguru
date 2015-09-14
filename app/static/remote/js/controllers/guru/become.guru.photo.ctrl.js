@@ -27,7 +27,9 @@ angular.module('uguru.guru.controllers')
 
       $scope.success.show(0, 2000, "Awesome! You're all set.");
       $ionicViewSwitcher.nextDirection('forward');
-      $state.go('^.guru');
+      $timeout(function() {
+        $state.go('^.guru');
+      }, 1000)
     }
 
 
@@ -65,8 +67,10 @@ angular.module('uguru.guru.controllers')
 
     $scope.takePhoto = function(index) {
       if ($scope.platform.mobile) {
-        $scope.root.vars.profile_url_changed = true;
-        Camera.takePicture($scope, index, $scope.takePhotoCallbackSuccess);
+        if ($scope.user.id) {
+          $scope.root.vars.profile_url_changed = true;
+        }
+        Camera.takePicture($scope, index, 'user-instant-photo', $scope.takePhotoCallbackSuccess);
       } else {
         var element = document.getElementById('file-input-web')
         element.click();
@@ -77,33 +81,51 @@ angular.module('uguru.guru.controllers')
       $scope.closeAttachActionSheet();
     }
 
+    $scope.userPhotoList = [];
+    $scope.samplePhotoList = [{src: '/img/onboarding/profile1.jpg'},
+      {src: '/img/onboarding/profile2.jpg'},
+      {src: '/img/onboarding/profile3.jpg'},
+      {src: '/img/onboarding/profile4.jpg'},
+    ]
 
 
+    //on web interface
     $scope.file_changed = function(element) {
+
         var photofile = element.files[0];
 
         var reader = new FileReader();
 
 
-        var image = document.getElementById('sidebar-student-profile-photo');
+
+        var image = document.getElementById('user-instant-photo');
 
         reader.onload = function(e) {
-            $scope.user.profile_url = e.target.result;
+            if (image) {
+              image.src = e.target.result;
+              $scope.user.profile_url = image.src;
+            }
         };
 
         reader.readAsDataURL(photofile);
-
+        $scope.photoUploaded = true;
 
         var formData = new FormData();
 
         formData.append('file', photofile);
-        formData.append('profile_url', $scope.user.id);
+        if ($scope.user.id) {
+          formData.append('profile_url', $scope.user.id);
+          $scope.root.vars.profile_url_changed = true;
+        }
 
+        name = new Date().getTime().toString();
         formData.append('filename', name);
 
-        $scope.file_index += 1;
 
-        $scope.user.createObj($scope.user, 'files', formData, $scope, $scope.takePhotoCallbackSuccess);
+        $scope.success.show(0, 1500, 'Saving...');
+        $timeout(function() {
+          $scope.user.createObj($scope.user, 'files', formData, $scope, $scope.takePhotoCallbackSuccess);
+        }, 500);
     };
 
   }

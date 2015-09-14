@@ -26,12 +26,13 @@
         </a>
       </div>
     </header>
-  <div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list" ng-init='limit = 10'>
+    <div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list" ng-init='limit = 10'>
     <ul class='list list-item-border'>
       <li  class="list-item school-harvard" ng-repeat='university in universities | limitTo: limit'>
         <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
           <span class="school-icon list-icon-left">
-            <img image-saver ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
+            <img ng-if='platform.mobile' image-saver ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
+            <img ng-if='platform.web' ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}'/>
           </span>
           <span ng-if='!location' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
             <b>{{university.name}}<i>{{university.city}}, {{university.state}}</i></b>

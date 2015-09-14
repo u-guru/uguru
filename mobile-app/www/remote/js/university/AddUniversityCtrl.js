@@ -17,6 +17,7 @@ angular.module('uguru.util.controllers', ['sharedServices'])
 
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher, 
   Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher) {
+
     console.log("passed deviceInfo: " + deviceInfo);
 
     $scope.getGPSCoords = function() {
@@ -26,20 +27,20 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         $timeout(function() { isTimeout = false;}, 4000);
       } else {
         console.log("still waiting for $timeout to clear, please try again shortly");
-      }     
+      }
     }
 
     // if (deviceInfo==='android') {
     //   $scope.getGPSCoords();
     // }
-    
+
     var schoolList = document.querySelectorAll('#school-list')[0];
 
     $scope.search_text = '';
     $scope.location = false;
     $scope.universities = University.getTargetted();
     sortByRank(University.getTargetted());
-    
+    $scope.limit = 10;
     $scope.increaseLimit = function() {
       if($scope.limit < $scope.universities.length) {
         $scope.limit += 10;
@@ -69,7 +70,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       //$scope.universities = Utilities.nickMatcher(input, University.getTargetted());
       $scope.universities = UniversityMatcher.cachedMatch(input);
     }
-    
+
     $scope.universitySelected = function(university, $event) {
 
       //if user is switching universities
@@ -106,7 +107,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     };
     console.log("$scope.location is currenty: " + $scope.location);
 
-    
+
     var isTimeout = false;
     function getGPS() {
       // //STILL NEED TO DO FOR IOS
@@ -116,15 +117,15 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       // // }
       console.log("$scope.location is currenty: " + $scope.location);
       if($scope.location) {
-        
+
         $scope.location = false;
         //sortByRank(University.getTargetted());
         document.querySelector('header a.geolocation-icon .ion-navigate').style.color = 'white';
         console.log("$scope.location is now: " + $scope.location);
-      
+
       } else if(!$scope.location){
-        
-        Geolocation.getLocation();        
+
+        Geolocation.getLocation();
         document.querySelector('header a.geolocation-icon .ion-navigate').style.color = '#46FF00';
         $timeout(function() {
             $scope.limit = 10;
@@ -138,8 +139,11 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     };
 
 
-        
-
+    $scope.$on('$ionicView.enter', function() {
+        if (devinceInfo ==='iOS') {
+          DeviceService.ios.showStatusBar();
+        }
+    });
 
 
 }

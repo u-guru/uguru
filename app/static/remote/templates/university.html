@@ -1,5 +1,5 @@
-<ion-view class='uguru-view university-view' ng-controller='AddUniversityController'>
-<section id="school" class="onboarding">
+<ion-view class='uguru-view university-view' >
+<section id="school" class="onboarding" >
     <header>
       <div class="header-nav">
         <a class="header-nav-back" ng-click='goToAccess()'>
@@ -13,58 +13,32 @@
         <h2> Find Your Community </h2>
       </div>
       <div class="onboarding-search input-search-ghost">
+        <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path d="M8.41512973,15.2860269 C4.48265083,15.2860269 1.29477962,12.1537981 1.29477962,8.2838387 C1.29477962,4.41387934 4.48265083,1.27539856 8.41512973,1.27539856 C12.3476086,1.27539856 15.536105,4.41387934 15.536105,8.2838387 C15.536105,12.1537981 12.3476086,15.2860269 8.41512973,15.2860269 L8.41512973,15.2860269 Z M19.811191,18.9121601 L14.6477024,13.8293217 C15.9993748,12.3601125 16.8302595,10.4220069 16.8302595,8.2838387 C16.8302595,3.70740857 13.0628321,0 8.41512973,0 C3.76742732,0 0,3.70740857 0,8.2838387 C0,12.8540169 3.76742732,16.5614254 8.41512973,16.5614254 C10.4232573,16.5614254 12.2650828,15.8674586 13.7117849,14.7108471 L18.895905,19.8124414 C19.1491091,20.0625195 19.5586121,20.0625195 19.811191,19.8124414 C20.0643951,19.5686152 20.0643951,19.1622382 19.811191,18.9121601 L19.811191,18.9121601 Z" fill="#FFFFFF"></path>
+        </svg>
         <input type="search" class=''
                 placeholder="Search for my university"
-                fast-matcher
-                fast-matcher-output="matchingUniversities"
-                fast-matcher-source="universities"
-                fast-matcher-properties="name, city, state"
-                fast-matcher-any-word="true"
-                fast-matcher-limit="5"
-                fast-matcher-preserve-order="true"
-                fast-matcher-case-insensitive="true"
-                placeholder="Search Your University"
                 ng-model="search_text"
+                ng-keyup="query(search_text)"
         />
         <a ng-click='getGPSCoords()' class='geolocation-icon'>
           <i class='icon ion-navigate'></i>
         </a>
       </div>
     </header>
-  <div id="school-list" class="onboarding-list">
+    <div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list" ng-init='limit = 10'>
     <ul class='list list-item-border'>
-      <!--Searhced Universities-->
-      <li class="list-item school-harvard" ng-repeat='university in matchingUniversities'>
+      <li  class="list-item school-harvard" ng-repeat='university in universities | limitTo: limit'>
         <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
           <span class="school-icon list-icon-left">
-            <img ng-src="{{university.seal_url || university.forbes_url}}" style='border-bottom-left:2px solid {{university.school_color_one}}' alt=""/>
+            <img ng-if='platform.mobile' image-saver ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
+            <img ng-if='platform.web' ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}'/>
           </span>
-          <span class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
-            <b><span class='university-name'>{{university.name}}</span><i>{{university.city}}, {{university.state}}</i></b>
+          <span ng-if='!location' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
+            <b>{{university.name}}<i>{{university.city}}, {{university.state}}</i></b>
           </span>
-        </a>
-      </li>
-
-      <!-- Location based universities -->
-      <li class="list-item school-harvard" ng-repeat='university in nearestUniversities'>
-        <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
-          <span class="school-icon list-icon-left">
-            <img ng-src="{{university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
-          </span>
-          <span class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
-            <b><span class='university-name'>{{university.name}}</span><i class='university-subheader'>{{university.city}}, {{university.state}} <span ng-if="$index < 10" class='text-right mileage-text'>{{university.miles}}mi</span></i></b></span>
-          </span>
-        </a>
-      </li>
-
-      <!-- Initial universities -->
-      <li ng-show='!matchingUniversities || matchingUniversities.length === 0' class="list-item school-harvard" ng-repeat='university in initialUniversities'>
-        <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
-          <span class="school-icon list-icon-left">
-            <img ng-src="{{university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
-          </span>
-          <span class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
-            <b><span class='university-name'>{{university.name}}</span><i>{{university.city}}, {{university.state}} </i></b></span>
+          <span ng-if='location' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
+            <b>{{university.name}}<i class='university-subheader'>{{university.city}}, {{university.state}} <span class='text-right'>{{university.miles | number}} mi</span></i></b>
           </span>
         </a>
       </li>

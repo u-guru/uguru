@@ -1,9 +1,11 @@
-// Uguru upp
-// --> config.xml
-// --> 
-//  cp -r mobile-app/www/remote/* app/static/nick/
-var LOCAL = true; //local to the 8100 codebasebirbirs
+var LOCAL = false; //local to the 8100 codebasebirbirs
 var FIRST_PAGE='^.access';
+var img_base;
+
+// // @if ADMIN
+// isAdmin = true;
+// LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
+// // @endif
 
 
 
@@ -13,10 +15,6 @@ var REST_URL = 'https://www.uguru.me'
 
 var BASE = '';
 if (LOCAL) {
-  
-  //uncomment to use live reload
-  //make sure to readd 'remote/' in the local.index.html script sources
-  //also make sure to toggle <content> in config.xml
 
   BASE = 'remote/';
   BASE_URL = 'http://192.168.42.124:8100';
@@ -30,6 +28,9 @@ if (LOCAL) {
   // BASE_URL = 'http://192.168.42.124:5000/static/nick';
   
 
+  REST_URL = 'http://localhost:5000';
+
+
 } else {
   img_base = '/static/'
 }
@@ -37,19 +38,18 @@ if (LOCAL) {
 mixpanel = window.mixpanel || null;
 
 if (mixpanel) mixpanel.track("App Launch");
-angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fastMatcher',
-  'ngAnimate', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
+angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
+  'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
-  'uguru.directives', 'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap', 'sharedServices'])
+  'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap', 'sharedServices', 'uguru.directives'])
 
-.run(function($ionicPlatform, $cordovaStatusbar, $localstorage,
+.run(function($ionicPlatform, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
   $cordovaDialogs, Version, $rootScope, $cordovaSplashscreen,
   $templateCache, Device, User, $cordovaLocalNotification,
   $cordovaGeolocation, $cordovaDevice, DeviceService) {
 
-  var openKeyboard = null; 
-
+  var openKeyboard = null;
 
   DeviceService.readyDevice();
 
@@ -65,12 +65,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
         libraries: 'places'
     });
 
-  $provide.decorator("$exceptionHandler", function($delegate, $injector) {
-    return function(exception, cause) {
-
-      $delegate(exception, cause);
-    };
-  });
+  // $provide.decorator("$exceptionHandler", function($delegate, $injector) {
+  //   return function(exception, cause) {
+  //     $delegate(exception, cause);
+  //   };
+  // });
 
   if (!window.cordova) {
       var appID = 1416375518604557;
@@ -267,6 +266,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'fast
 //background loading stuff
 
 var processSkills = function($scope) {
+  if (!$scope.static) {
+    $scope.static = {skills: []}
+  }
 
   if ($scope.static.skills && $scope.static.skills.length > 0) {
 

@@ -17,10 +17,11 @@
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
     display: block;
-    content: url(../../../img/svg/search.svg);
     width: 14px;
     height: 14px;
 }
+
+
 
 
 
@@ -173,5 +174,8 @@ section#school header {
 
 .input-search-ghost input {
     padding-left:30px;
-    text-transform: capitalize;
+}
+
+.university-city {
+    text-transform:capitalize;
 }

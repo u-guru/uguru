@@ -39,7 +39,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
   });
 
-  console.log($scope.user);
+  $scope.progressBarInitialized = null;
 
   $scope.showPreviousActions = function(index) {
       if (!$scope.user.previous_proposals || $scope.user.previous_proposals.length === 0) {
@@ -718,37 +718,103 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         });
 
-        $scope.initGuruRankProgress = function(selector) {
-          var startColor = '#68A7CF';
-          var endColor = '#6FD57F';
+
+
+        $scope.launchWelcomeGuruPopup = function() {
+
+          var homeCenterComponent = document.getElementById('guru-home');
+          var uguruPopup = document.getElementById('home-uguru-popup');
+          $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {duration:1},
+            function (modal){
+              modal.classList.add('show');
+            }
+          );
+          $scope.closeWelcomePopup = function() {
+            if ($scope.reverseAnimatePopup) {
+              $scope.reverseAnimatePopup();
+            }
+            var uguruPopup = document.getElementById('home-uguru-popup');
+            uguruPopup.classList.remove('show');
+
+          }
+        }
+
+        var initGuruRankProgress = function(selector) {
           var circle = new ProgressBar.Circle(selector, {
-              fill: 'rgba(255,255,255,.97)',
-              trailColor: '#FFF',
-              color: startColor,
-              strokeWidth: 10,
-              trailWidth: 10,
-              duration: 500,
+              color: "rgba(255,255,255,1)",
+              strokeWidth: 5,
+              trailWidth: 5,
+              trailColor:"rgba(255,255,255,0.3)",
+              duration: 1000,
               text: {
                   value: '0'
               },
               step: function(state, bar) {
                   bar.setText((bar.value() * 100).toFixed(0));
-                  bar.path.setAttribute('stroke', state.color);
               }
           });
-
           return circle;
 
         }
 
-        var animateProgress = function(progressObj, percent, startColor, endColor) {
-          progressObj.animate(percent, {
-              from: {color: startColor},
-              to: {color: endColor}
+        var initGuruHorizontalProgress = function(selector, percentTextId) {
+          var textElem = document.getElementById(percentTextId);
+          console.log(textElem);
+          var line = new ProgressBar.Line(selector, {
+              color: "rgba(255,255,255,1)",
+              strokeWidth: 8,
+              trailWidth: 8,
+              trailColor:"rgba(255,255,255,0.3)",
+              duration: 1000,
+              text: {
+                  value: '0'
+              },
+              step: function(state, bar) {
+                  textElem.innerHTML = (bar.value() * 100).toFixed(0);
+                  // bar.setText((bar.value() * 100).toFixed(0));
+              }
           });
+          return line;
+        }
+
+        var initializeProgressBars = function() {
+          $scope.guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar');
+          $scope.guruRankingCircle.animate(0.75);
+
+          $scope.guruCredibilityBar = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
+          $scope.guruCredibilityBar.animate(0.20);
+
+          $scope.guruProfileBar = initGuruHorizontalProgress('#guru-profile-progress-bar', 'profile-percent')
+          $scope.guruProfileBar.animate(0.65);
+
+          $scope.guruHourlyBar = initGuruHorizontalProgress('#guru-hourly-progress-bar', 'hourly-rate');
+          $scope.guruHourlyBar.animate(0.39);
+        }
+
+        var checkOnboardingStatus = function() {
+
+          var appOnboardingObj = $localstorage.getObject('appOnboarding');
+          if (!appOnboardingObj) {
+            appOnboardingObj = {guruWelcome:true}
+            $localstorage.setObject('appOnboarding', appOnboardingObj);
+          }
+          else if (appOnboardingObj && !appOnboardingObj.guruWelcome) {
+            $scope.launchWelcomeGuruPopup();
+            appOnboardingObj.guruWelcome = true;
+            $localstorage.setObject('appOnboarding', appOnboardingObj);
+          }
+
         }
 
         $scope.$on('$ionicView.enter', function() {
+            $timeout(function() {
+              checkOnboardingStatus();
+            }, 1000)
+
+            $timeout(function() {
+              initializeProgressBars();
+            }, 1000)
+
             // console.log('checking for pending actions...');
 
             // if (!$scope.root.vars.guru_rank_initialized) {

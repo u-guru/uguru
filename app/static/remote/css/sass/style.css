@@ -244,6 +244,26 @@
     -webkit-justify-content: center;
     justify-content: center; }
 
+.flex-grow {
+  -webkit-flex-grow: 1;
+  flex-grow: 1; }
+
+.flex-grow-pro {
+  -webkit-flex-grow: 1;
+  flex-grow: 1; }
+
+.flex-align-self-center {
+  align-self: center;
+  -webkit-align-self: center; }
+
+.flex-align-self-stretch {
+  align-self: stretch;
+  -webkit-align-self: stretch; }
+
+.flex-column {
+  -webkit-flex-direction: column;
+  flex-direction: column; }
+
 .text-left {
   text-align: left; }
 
@@ -732,7 +752,6 @@ button {
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
   display: block;
-  content: url("../svg/search.svg");
   width: 20px;
   height: 20px; }
 
@@ -818,7 +837,7 @@ button {
     background: #F1F1F1 center center no-repeat;
     cursor: pointer; }
   .checklist li > span input:checked + span {
-    background: url("../svg/check.svg") center center no-repeat; }
+    background: url(../img/svg/check.svg) center center no-repeat, url(/static/remote/img/svg/check.svg) center center no-repeat; }
 
 .photo-grid {
   -ms-box-orient: horizontal;
@@ -1115,7 +1134,6 @@ body {
   -o-appearance: none;
   appearance: none;
   position: absolute;
-  top: 0;
   z-index: 9;
   width: 100%;
   height: 5px;
@@ -1142,18 +1160,16 @@ body {
     background: #69B3A5; }
   .uguru-view progress span[data-value="2"], .uguru-view .progress span[data-value="2"] {
     width: 2%; }
-  .uguru-view progress span[data-value="30"], .uguru-view .progress span[data-value="30"] {
-    width: 25%; }
-  .uguru-view progress span[data-value="50"], .uguru-view .progress span[data-value="50"] {
+  .uguru-view progress span[data-value="20"], .uguru-view .progress span[data-value="20"] {
+    width: 20%; }
+  .uguru-view progress span[data-value="40"], .uguru-view .progress span[data-value="40"] {
     width: 40%; }
+  .uguru-view progress span[data-value="60"], .uguru-view .progress span[data-value="60"] {
+    width: 60%; }
   .uguru-view progress span[data-value="80"], .uguru-view .progress span[data-value="80"] {
     width: 80%; }
-  .uguru-view progress span[data-value="85"], .uguru-view .progress span[data-value="85"] {
-    width: 85%; }
-  .uguru-view progress span[data-value="95"], .uguru-view .progress span[data-value="95"] {
-    width: 95%; }
-  .uguru-view progress span[data-value="99"], .uguru-view .progress span[data-value="99"] {
-    width: 86%; }
+  .uguru-view progress span[data-value="100"], .uguru-view .progress span[data-value="100"] {
+    width: 100%; }
 .uguru-view .onboarding header {
   position: relative;
   height: calc(100% / 3);
@@ -1190,6 +1206,11 @@ body {
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
+    .uguru-view .onboarding header .onboarding-prop h5 {
+      color: white;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin: 5px; }
   .uguru-view .onboarding header .onboarding-message {
     position: absolute;
     top: 50%;
@@ -1433,6 +1454,8 @@ body {
     color: #69B3A5; }
   .uguru-view .onboarding#account #account-form #social-login {
     margin-top: 50px; }
+.uguru-view .onboarding#skill header:before {
+  background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat; }
 .uguru-view .onboarding#skill #skills-list ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1448,8 +1471,7 @@ body {
   height: 100%; }
   .uguru-view .onboarding#skill #skills-list ul li {
     box-sizing: border-box;
-    height: 25%;
-    padding: 1px; }
+    height: 25%; }
     .uguru-view .onboarding#skill #skills-list ul li a {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -1467,6 +1489,7 @@ body {
       align-items: center;
       -webkit-justify-content: center;
       justify-content: center;
+      background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
       height: 100%;
       font-size: 18px;
@@ -1543,6 +1566,8 @@ body {
       overflow: auto; }
       .uguru-view .onboarding#skill-list .onboarding-list > div ul li > span input:checked + span {
         background-color: #F9D57B; }
+.uguru-view .onboarding#course header:before {
+  background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat; }
 .uguru-view .onboarding#course #courses-list ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1638,6 +1663,8 @@ body {
   border-color: #8C1515; }
 .uguru-view .onboarding#school #school-list ul .school-cambridge a {
   border-color: #A3C1AD; }
+.uguru-view .onboarding#major header:before {
+  background: url(../../img/onboarding/major.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat; }
 .uguru-view .onboarding#major #major-list ul li a {
   margin-bottom: 1px;
   font-weight: 300;
@@ -2205,7 +2232,6 @@ body {
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
     display: block;
-    content: url("../svg/search.svg");
     width: 14px;
     height: 14px; }
   .uguru-view .header-nav a svg {

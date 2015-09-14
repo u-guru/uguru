@@ -244,6 +244,26 @@
     -webkit-justify-content: center;
     justify-content: center; }
 
+.flex-grow {
+  -webkit-flex-grow: 1;
+  flex-grow: 1; }
+
+.flex-grow-pro {
+  -webkit-flex-grow: 1;
+  flex-grow: 1; }
+
+.flex-align-self-center {
+  align-self: center;
+  -webkit-align-self: center; }
+
+.flex-align-self-stretch {
+  align-self: stretch;
+  -webkit-align-self: stretch; }
+
+.flex-column {
+  -webkit-flex-direction: column;
+  flex-direction: column; }
+
 .text-left {
   text-align: left; }
 
@@ -732,7 +752,6 @@ button {
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
   display: block;
-  content: url("../svg/search.svg");
   width: 20px;
   height: 20px; }
 
@@ -818,7 +837,7 @@ button {
     background: #F1F1F1 center center no-repeat;
     cursor: pointer; }
   .checklist li > span input:checked + span {
-    background: url("../svg/check.svg") center center no-repeat; }
+    background: url(../img/svg/check.svg) center center no-repeat, url(/static/remote/img/svg/check.svg) center center no-repeat; }
 
 .photo-grid {
   -ms-box-orient: horizontal;

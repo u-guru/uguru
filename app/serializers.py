@@ -22,7 +22,7 @@ tag_fields['name'] = fields.String(attribute='name')
 
 course_fields = {}
 course_fields['id'] = fields.Integer(attribute='id')
-course_fields['short_name'] = fields.String(attribute='short_name')
+course_fields['name'] = fields.String(attribute='short_name')
 course_fields['title'] = fields.String(attribute='full_name')
 
 position_fields = {}
@@ -383,10 +383,10 @@ SessionSerializer = {
 }
 
 CourseSerializer = {
-    'short_name': fields.String,
+    # 'short_name': fields.String,
     'title': fields.String(attribute='full_name'),
     'code': fields.String(attribute='code'),
-    'name': fields.String(attribute='name'),
+    'name': fields.String(attribute='short_name'),
     'id': fields.Integer
 }
 

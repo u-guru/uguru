@@ -1,4 +1,4 @@
-<ion-modal-view class='uguru-view category-skills-modal' >
+<ion-modal-view class='uguru-view category-skills-modal' on-drag-down="categorySkillsModal.hide()" on-swipe-down="categorySkillsModal.hide()">
     <section id='skill-list' class='onboarding'>
         <div id="skills-list" class="onboarding-list">
             <div>
@@ -6,7 +6,7 @@
                     <li ng-repeat='skill in active_category.skills'class='ng-class:{"active":active_category.active}'>
                         <span>
                             <label>{{skill.name}}</label>
-                            <input type="checkbox" ng-model='skill.active'ng-change='updateCategoryCount(active_category, skill.active, $index)'>
+                            <input type="checkbox" ng-model='skill.active'ng-change='updateCategoryCount(active_category, skill, $index)'>
                             <span>
                             </span>
                         </span>

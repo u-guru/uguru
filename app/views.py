@@ -623,10 +623,8 @@ def app_route():
         return redirect('https://www.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
+        return redirect('192.168.42.78:5000/static/remote/index.html?version=13123')
         # return redirect('http://localhost:8100/')
-        return redirect('http://192.168.42.124:5000/static/remote/index.html?version=' + str(version) + str(02323))
-    # return redirect('http://192.168.0.104:5000/static/remote/index.html')
-    # return redirect('http://192.168.42.66:8100/remote/')
 
 
 def check_admin_password(email, password):

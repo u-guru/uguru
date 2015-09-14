@@ -1,14 +1,8 @@
 <ion-view class='uguru-view skills-view' ng-controller='CategoriesController'>
-  <section id="skill" class="onboarding">
-    <progress value="60" max="100">
-      <div class="progress"><span data-value="50"></span></div>
+  <progress value="0" max="100">
+      <div class="progress"><span data-value="60"></span></div>
     </progress>
-    <script>
-      setTimeout(setValue, 200);
-      function setValue() {
-          document.getElementsByTagName("progress")[0].setAttribute("value", "50");
-      }
-    </script>
+  <section id="skill" class="onboarding">
     <header>
       <div class="header-nav">
         <a class="header-nav-back" ng-click='previousSlide()'>
@@ -30,9 +24,9 @@
     </header>
     <div id="skills-list" class="onboarding-list">
       <ul class='list list-item-half'>
-        <li ng-repeat='category in static.categories'>
-          <a ng-click='launchCategoryModal(category)'>
-            <span class="skill-icon" ng-show="!category.active_skills_count"></span>
+        <li ng-repeat='category in static.categories' style='background:url({{category.bg_url}})'>
+          <a class='skill-item-link {{category._class}} ng-class:{"important":category.active_skills_count > 0}' ng-click='launchCategoryModal(category)'>
+            <img ='background:url({{category.icon_url}})' ></span>
             <span class="skill-label ng-class:{'count-exists':category.active_skills_count > 0}">{{category.name}}</span>
             <span class="skill-count" ng-show='category.active_skills_count > 1'>{{category.active_skills_count}} items</span>
             <span class="skill-count" ng-show='category.active_skills_count === 1'>{{category.active_skills_count}} item</span>
@@ -44,54 +38,3 @@
   </section>
 
 </ion-view>
-
-<!--  <ion-view hide-nav-bar='true' ng-controller='CoursesController' class='subdark-bg'>
-  <ion-content class='white-text subdark-bg has-subheader' scroll='false' style='top:0px; bottom:10%'>
-
-
-      <h3 class='uppercase white-text semibold center' style='margin-top:10%;'>
-        Tap skills that apply
-      </h3>
-      <h6 class='uppercase white-text bold center opacity-1-2 nano-text'>
-        Make money on errthang.
-      </h5>
-
-      <div class='pure-g-c flex-column flex-space-between'>
-        <div class='flex-item-c center'>
-        </div>
-        <div class='flex-item-c center j-start'>
-
-          <div class='pure-g'>
-
-
-            <div class='pure-u-1 professional-wrapper'>
-                <a ng-click='addSelectedGuruSkill(professional_skill)' class='course-tag skill-tag' ng-repeat='professional_skill in static.professional_skills'>{{professional_skill.name.toUpperCase()}}</a>
-            </div>
-
-
-            <div class='pure-u-1 skilled-wrapper'>
-                <a class='course-tag skill-tag' ng-click='addSelectedGuruSkill(specialized_skill)' ng-repeat='specialized_skill in static.specialized_skills'>{{specialized_skill.name.toUpperCase()}}</a>
-            </div>
-
-            <div class='pure-u-1 chores-wrapper'>
-              <a class='course-tag skill-tag' ng-click='addSelectedGuruSkill(chores_skill)' ng-repeat='chores_skill in static.chores_skills'>{{chores_skill.name.toUpperCase()}}</a>
-            </div>
-
-            <div class='pure-u-1 labor-wrapper' >
-                <a class='course-tag skill-tag' ng-click='addSelectedGuruSkill(labor_skill)' ng-repeat='labor_skill in static.labor_skills'>{{labor_skill.name.toUpperCase()}}</a>
-            </div>
-
-
-          </div>
-        </div>
-
-        <div class='flex-item-c j-start'>
-
-        </div>
-      </div>
-
-
-  </ion-content>
-
-
-</ion-view> -->

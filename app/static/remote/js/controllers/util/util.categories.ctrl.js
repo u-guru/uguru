@@ -17,6 +17,12 @@ angular.module('uguru.util.controllers')
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
     $ionicSideMenuDelegate) {
 
+    if (!img_base || !img_base.length) {
+      categories_img_base = 'remote/';
+    } else {
+      categories_img_base = img_base + 'remote/';
+    }
+
     $scope.active_category = {name:'Select category', active:false};
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/category.skills.modal.html', {
@@ -25,11 +31,30 @@ angular.module('uguru.util.controllers')
     }).then(function(modal) {
         $scope.categorySkillsModal = modal;
     });
+    $scope.onSwipeDown = function() {
+      alert('user swiped down')
+    }
+    $scope.onDragDown = function() {
+      alert('user swiped down')
+    }
 
     $scope.launchCategoryModal = function(category) {
       $scope.active_category.active = true;
       $scope.active_category = category;
       $scope.categorySkillsModal.show();
+    }
+
+    var mapGuruCoursesToCategoriesObj = function(guru_courses) {
+      guruCategoryCourses = [];
+      for (var i = 0; i < guru_courses.length; i++) {
+        var guru_course = guru_courses[i];
+        guruCategoryCourses.push({
+          name: guru_course.name,
+          id: guru_course.id,
+          active: true
+        });
+      }
+      return guruCategoryCourses;
     }
 
     $scope.updateCategoryCount = function(category, skill, index) {
@@ -45,86 +70,92 @@ angular.module('uguru.util.controllers')
           }
         }
         skill.active = false;
+        category.active_skills_count += skill.active ? 1 : -1;
         return;
       }
-      category.active_skills_count += skill.val ? 1 : -1;
+      category.active_skills_count += skill.active ? 1 : -1;
     }
-    var mapGuruCoursesToCategoriesObj = function(guru_courses) {
-      guru_courses = [];
-      guruCategoryCourses = [];
-      for (var i = 0; i < guru_courses.length; i++) {
-        var guru_course = guru_courses[i];
-        guruCategoryCourses.push({
-          name: guru_course.short_name,
-          id: guru_course.id,
-          active: true
-        });
-      }
-      return guruCategoryCourses;
-    }
+
+
     $scope.static.categories = [
       {
         name: 'Academic Courses',
-        _class: '',
+        _class: 'bg-cerise',
         active:true,
         active_skills_count:0,
-        skills: mapGuruCoursesToCategoriesObj($scope.user.guru_courses)
+        skills: mapGuruCoursesToCategoriesObj($scope.user.guru_courses),
+        bg_url: categories_img_base +'./img/categories/bg/academic.jpg',
+        icon_url: categories_img_base + './img/categories/icon/academic.svg'
       },
       {
         name: 'Freelancing',
-        _class: '',
+        _class: 'bg-orange',
         active: false,
         active_skills_count:0,
         skills: ['Resume editing', 'Interview Preparation','Build a Website',
         'Design', 'Professional Writing/Copy Writing', 'Programming Questions',
-        'Internship Mentorship']
+        'Internship Mentorship'],
+        bg_url: categories_img_base +'./img/categories/bg/consulting.jpg',
+        icon_url: categories_img_base + './img/categories/icon/consulting-small.svg'
       },
       {
         name: 'Baking',
-        _class: '',
+        _class: 'bg-gold',
         active: false,
         active_skills_count:0,
         skills: ['Brownies', 'Flan','Pie'],
+        bg_url: categories_img_base +'./img/categories/bg/baking.jpg',
+        icon_url: categories_img_base + './img/categories/icon/baking-small.svg'
       },
       {
         name: 'Photography',
-        _class: '',
+        _class: 'bg-moola',
         active: false,
         active_skills_count:0,
         skills: ['Professional', 'Outdoors','Headshot', 'Graduation', 'Fashion', '#Selfie'],
+        bg_url: categories_img_base +'./img/categories/bg/photography.jpg',
+        icon_url: categories_img_base + './img/categories/icon/photography-small.svg'
       },
       {
         name: 'Household',
-        _class: '',
+        _class: 'bg-shamrock',
         active: false,
         active_skills_count:0,
         skills: ['Laundry', 'Build Furniture (Ikea)', 'I have a Vacuum', 'Dirty Dishes',
-        'Ironing/Drycleaning']
+        'Ironing/Drycleaning'],
+        bg_url: categories_img_base +'./img/categories/bg/household.jpg',
+        icon_url: categories_img_base + './img/categories/icon/household-small.svg'
       },
       {
         name: 'Technology & IT',
-        _class: '',
+        _class: 'bg-azure',
         active: false,
         active_skills_count:0,
         skills: ['Laptop Repair','Hardware Upgrade', 'iPhone Screen Repair',
-        'Sell iPhone Charges (we wholesale)', 'Software Performance']
+        'Sell iPhone Charges (we wholesale)', 'Software Performance'],
+        bg_url: categories_img_base +'./img/categories/bg/tech.jpg',
+        icon_url: categories_img_base + './img/categories/icon/technology-small.svg'
       },
       {
         name: 'Sports & Muscle',
-        _class: '',
+        _class: 'bg-lake',
         active: false,
         active_skills_count:0,
         skills: ['Athletic Training','Specialized Dance', 'Help student move in/out',
-        'Sell iPhone Charges (we wholesale)', 'Software Performance']
+        'Sell iPhone Charges (we wholesale)', 'Software Performance'],
+        bg_url: categories_img_base +'./img/categories/bg/sports.jpg',
+        icon_url: categories_img_base + './img/categories/icon/sports-small.svg'
       },
       {
         name: 'On-demand Delivery',
-        _class: '',
+        _class: 'bg-eggplant',
         active: false,
         active_skills_count:0,
         skills: ['Walgreens', 'Local Convenience Stores',
         'Exam books', 'Textbooks', 'Late night coffee',
-        'School supplies']
+        'School supplies'],
+        bg_url: categories_img_base +'./img/categories/bg/delivery.jpg',
+        icon_url: categories_img_base + './img/categories/icon/delivery-small.svg'
       }
     ];
 

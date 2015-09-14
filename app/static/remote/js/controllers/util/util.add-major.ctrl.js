@@ -11,11 +11,13 @@ angular.module('uguru.util.controllers')
   '$ionicTabsDelegate',
   '$q',
   '$cordovaKeyboard',
-  'University',
+  'Major',
   '$ionicSideMenuDelegate',
+  'Utilities',
   function($scope, $state, $timeout, $localstorage,
   $ionicModal, $ionicTabsDelegate, $q,
-  $cordovaKeyboard, University, $ionicSideMenuDelegate) {
+  $cordovaKeyboard, Major, $ionicSideMenuDelegate,
+  Utilities) {
 
     $scope.showMainBody = true;
 
@@ -55,7 +57,6 @@ angular.module('uguru.util.controllers')
     $scope.setMajorFocus = function(target) {
       if ($scope.major_input.search_text.length === 0 && !$scope.keyboard_force_off) {
         document.getElementById("major-input").focus();
-
       }
     };
 
@@ -63,98 +64,14 @@ angular.module('uguru.util.controllers')
       $scope.major_search_text = '';
     }
 
-    $scope.getMajorsFromServer = function(promise) {
-        var university_title = $scope.user.university.title;
-        var msg_details = "Retrieving all " + university_title + ' majors'
-
-        $scope.loader.show()
-
-        University.getMajors($scope.user.university_id).then(
-                function(majors) {
-                  // $cordovaProgress.hide();
-                  $scope.loader.hide()
-                  $scope.progress = false;
-                    console.log(majors.length + ' majors uploaded from ' + $scope.user.university.title);
-
-                  $timeout(function() {
-                      var majorSuccessMsg = majors.length + ' majors Found!';
-                      // $scope.showSuccess(majorSuccessMsg);
-                  }, 500)
-
-                    if (promise) {
-                    promise.resolve(majors);
-                }
-
-              $scope.majors = majors;
-              $localstorage.setObject('majors', $scope.majors);
-
-                },
-                function(error) {
-                    console.log('majors NOT successfully loaded');
-                    console.log(error);
-                }
-        );
-
-    }
-
-    var GetMajorsList = function() {
-
-      var majorsLoaded = $q.defer();
-
-      if ($localstorage.getObject('majors').length > 0) {
-
-          return $localstorage.getObject('majors');
-
-      };
-
-      if ($localstorage.getObject('majors').length === 0 && $scope.user.university_id) {
-
-            $scope.getMajorsFromServer(majorsLoaded);
-      }
-
-
-        if ($localstorage.getObject('majors').length > 0) {
-
-
-          return $localstorage.getObject('majors');
-
-
-        } else {
-
-          $scope.getMajorsFromServer(majorsLoaded);
-        }
-
-
-        return majorsLoaded.promise;
-
-
-    };
 
     $scope.majors = $scope.static.majors || GetMajorsList();
-
-    // console.log($scope.static.majors);
-
-    $scope.hidemajorModal = function() {
-      if ($scope.platform.mobile && $cordovaKeyboard.isVisible()) {
-
-        $scope.keyboard_force_off = true;
-        $scope.major_search_text = '';
-        $scope.closeKeyboard();
-        $timeout(function() {
-          $scope.addMajorModal.hide();
-        }, 300)
-      } else {
-        $scope.addMajorModal.hide();
-      }
-    }
 
     $scope.removeCheckedMajor = function(major, index, event)  {
       if (confirm('Remove ' + major.name + '?')) {
           $scope.removeMajor(major, index);
       }
     }
-
-    $scope.preIndexedMajors = $scope.majors.slice(0, 10);
 
     $scope.removeMajor = function(major, index) {
 
@@ -179,43 +96,42 @@ angular.module('uguru.util.controllers')
 
     }
 
-    $scope.updateMajorProgress = function(text) {
-      $scope.major_progress = text.length > 0;
-      if ($scope.major_progress) {
-        console.log('text is typed in', $scope.static.majors.length);
-      } else {
-        console.log('text is not typed in', $scope.static.majors.length);
-      }
-    }
 
-    $scope.major_progress = false;
 
 
     $scope.majorSelected = function(major, $event, $index) {
 
 
-      $scope.majors.splice($index, 1);
-      $scope.preIndexedMajors.splice($index, 1);
+      $scope.loader.show();
+
+      //t == 0
+      $timeout(function() {
+        $scope.majors.splice($index, 1);
+        $scope.preIndexedMajors.splice($index, 1);
+      }, 250)
 
 
+      //update the server
+      $scope.search_text = '';
+      $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
 
+      // t == 1
+      $timeout(function() {
+        $scope.loader.hide();
+      }, 500)
+
+      // t == 2 --> update local regardless of server
       if (!$scope.user.majors) {
           $scope.user.majors = [];
       }
+      $timeout(function() {
+        $scope.user.majors.push(major);
+      }, 500)
 
+    }
 
-      // if ($scope.majorInput) {
-      //   $scope.majorInput.value = '';
-      // }
-      $scope.showMainBody = true;
-
-      $scope.search_text = '';
-      $scope.keyboard_force_off = true;
-
-      $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
-
-      $scope.user.majors.push(major)
-
+    $scope.query = function(input) {
+      $scope.majors = Utilities.nickMatcher(input, Major.getGeneral());
     }
 
     $scope.removeUserMajorsFromMaster = function() {
@@ -224,15 +140,12 @@ angular.module('uguru.util.controllers')
           var indexMajor = $scope.static.majors[i];
           for (var j = 0; j < $scope.user.majors; j++) {
             var userMajor = 0;
-            if (indexMajor.id === userMajor.id) {
-              console.log($scope.static.majors.length);
+            if (indexMajor.id === userMajor.id)
               $scope.static.majors.slice(i, i+1);
-              console.log($scope.static.majors.length);
             }
           }
         }
       }
-    }
 
     $scope.$on('$ionicView.enter', function() {
       $scope.removeUserMajorsFromMaster();
@@ -244,10 +157,6 @@ angular.module('uguru.util.controllers')
 
         $scope.majorInput.addEventListener("keyup", function() {
 
-          console.log($scope.majorInput.value.length);
-
-          // console.log('keyup callback', $scope.majorInput.value, $scope.showMainBody);
-
 
         }, 500);
 
@@ -256,6 +165,7 @@ angular.module('uguru.util.controllers')
 
     });
 
+    $scope.majors = Major.getGeneral();
 
   }
 

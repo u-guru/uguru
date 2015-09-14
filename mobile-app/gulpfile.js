@@ -21,17 +21,19 @@ var sass = require('gulp-sass');
 var rename = require('gulp-rename');
 var gutil = require('gulp-util');
 var karma = require('karma').server;
-
+var preprocess = require('gulp-preprocess');
 
 /**
  * Parse arguments
  */
 var args = require('yargs')
+    .alias('uld', 'update-local-device')
     .alias('b', 'build')
     .default('build', false)
     .argv;
 
 var build = args.build;
+var uld = args.uld;
 var targetDir = path.resolve('dest');
 
 gulp.task('express', function() {
@@ -42,36 +44,6 @@ gulp.task('express', function() {
   app.listen(4000);
 });
 
-// var tinylr;
-// gulp.task('livereload', function() {
-//   tinylr = require('tiny-lr')();
-//   tinylr.listen(4002);
-// });
-
-// function notifyLiveReload(event) {
-//   var fileName = require('path').relative(__dirname, event.path);
-
-//   tinylr.changed({
-//     body: {
-//       files: [fileName]
-//     }
-//   });
-// }
-
-// gulp.task('styles', function() {
-//       return gulp.src('www/remote/css/sass/*.scss')
-//         .pipe(sass({ style: 'expanded' }))
-//         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
-//         .pipe(gulp.dest('css'))
-//         .pipe(rename({suffix: '.min'}))
-//         .pipe(minifycss())
-//         .pipe(gulp.dest('css'));
-// });
-
-// gulp.task('watch', function() {
-//   gulp.watch('www/remote/css/sass/*.scss', ['sass']);
-//   // gulp.watch('www/remote/css/sass/*.scss', notifyLiveReload);
-// });
 
 var IS_WATCH = false;
 gulp.task('watch', function() {
@@ -160,22 +132,15 @@ gulp.task('styles', function() {
   var cssStream16 = gulp.src('www/remote/css/sass/samir.css')
   var cssStream17 = gulp.src('www/remote/css/sass/views/guru-profile.css')
   var cssStream18 = gulp.src('www/remote/css/sass/views/guru-credibility.css')
-  // .src('www/remote/css/responsive.css');
-  // var cssStream3 = gulp
-  // .src('www/remote/css/angular-strap.css');
-  // var cssStream4 = gulp
-  // .src('www/remote/css/app.css');
-  // var cssStream5 = gulp
-  // .src('www/remote/css/style.css');
-  // var cssStream6 = gulp
-  // .src('www/remote/css/animate.css');
-  // var cssStream6 = gulp
-  // .src('www/remote/css/animate.css');
+  var cssStream19 = gulp.src('www/remote/css/sass/ios.css')
+  var cssStream20 = gulp.src('www/remote/css/sass/components/uguru-popup.css')
+
 
   return streamqueue({ objectMode: true }, cssStream2, cssStream3,
     cssStream4, cssStream5, cssStream6, cssStream7, cssStream8,
     cssStream9, cssStream10, cssStream11, cssStream12, cssStream13,
-    cssStream14, cssStream15, cssStream16, cssStream17, cssStream18).pipe(plugins.concat('main.css'))
+    cssStream14, cssStream15, cssStream16, cssStream17, cssStream18,
+    cssStream19, cssStream20).pipe(plugins.concat('main.css'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
     .pipe(minifyCSS())
     .pipe(plugins.if(build, plugins.rev()))
@@ -183,8 +148,6 @@ gulp.task('styles', function() {
     .on('error', errorHandler);
 });
 
-
-// build templatecache, copy scripts.
 // if build: concat, minsafe, uglify and versionize
 gulp.task('scripts', function() {
   var dest = path.join(targetDir, 'scripts');
@@ -241,6 +204,7 @@ gulp.task('scripts', function() {
       'lib/angular-ui-custom/ui-bootstrap-custom*.min.js',
       'lib/lodash/dist/lodash.js',
       'lib/stripe/stripe.js',
+      'lib/cta/cta*.js',
       'lib/angular-google-maps/angular-google-maps.min.js',
       'lib/restangular/dist/restangular.js',
       'lib/angular-strap/angular-strap.min.js',
@@ -250,15 +214,27 @@ gulp.task('scripts', function() {
       'lib/progressbar/*.js',
       'lib/interact/interact.min.js',
       'lib/spinningwheel/spinning-wheel.min.js',
+      'lib/velocity/velocity.min.js',
+      'lib/velocity/velocity.ui.min.js',
+      'lib/velocity/angular-velocity.min.js',
       'lib/card/card.js',
       // 'cordova.js',
       // 'plugins/*/www/*.js',
       "js/main.js",
-      "js/directives/*.js",
       "js/factories/LocalStorage.js",
       "js/factories/University.js",
       "js/factories/*.js",
+      "js/directives/customDirectives.js",
+      "js/directives/*.js",
+      "js/shared/DeviceService.js",
+      "js/device/*.js",
       "js/services/RootService.js",
+      "js/shared/Settings.js",
+      "js/shared/Utilities.js",
+      "js/shared/*.js",
+      "js/university/AddUniversityCtrl.js",
+      "js/university/*.js",
+      "js/access/*.js",
       "js/services/*.js",
       "js/services/hardware/*.js",
       "js/controllers/student/home.ctrl.js",
@@ -266,7 +242,7 @@ gulp.task('scripts', function() {
       "js/controllers/guru/guru.ctrl.js",
       "js/controllers/guru/*.js",
       // "js/controllers/student/settings/*.js",
-      "js/controllers/util/util.university.ctrl.js",
+      // "js/controllers/util/util.university.ctrl.js",
       "js/controllers/util/*.js",
       // "js/controllers/onboarding/onboarding.request-location.ctrl.js",
       // "js/controllers/onboarding/*.js"
@@ -377,58 +353,6 @@ gulp.task('images', function() {
     .on('error', errorHandler);
 });
 
-// // concatenate and minify vendor sources
-// gulp.task('vendor', function() {
-//   var vendorFiles = require('./vendor.json');
-
-//   return gulp.src(vendorFiles)
-//     .pipe(plugins.concat('vendor.js'))
-//     .pipe(plugins.if(build, plugins.uglify()))
-//     .pipe(plugins.if(build, plugins.rev()))
-
-//     .pipe(gulp.dest(targetDir))
-
-//     .on('error', errorHandler);
-// });
-
-
-// inject the files in index.html
-// gulp.task('index', function() {
-
-//   // build has a '-versionnumber' suffix
-//   var cssNaming = build ? 'styles/main-*' : 'styles/main*';
-
-//   // injects 'src' into index.html at position 'tag'
-//   var _inject = function(src, tag) {
-//     return plugins.inject(src, {
-//       starttag: '<!-- inject:' + tag + ':{{ext}} -->',
-//       read: false,
-//       addRootSlash: false
-//     });
-//   };
-
-//   // get all our javascript sources
-//   // in development mode, it's better to add each file seperately.
-//   // it makes debugging easier.
-//   var _getAllScriptSources = function() {
-//     var scriptStream = gulp.src(['scripts/app.js', 'scripts/**/*.js'], { cwd: targetDir });
-//     return streamqueue({ objectMode: true }, scriptStream);
-//   };
-
-//   return gulp.src('app/index.html')
-//     // inject css
-//     .pipe(_inject(gulp.src(cssNaming, { cwd: targetDir }), 'app-styles'))
-//     // inject vendor.js
-//     .pipe(_inject(gulp.src('vendor*.js', { cwd: targetDir }), 'vendor'))
-//     // inject app.js (build) or all js files indivually (dev)
-//     .pipe(plugins.if(build,
-//       _inject(gulp.src('app*.js', { cwd: targetDir }), 'app'),
-//       _inject(_getAllScriptSources(), 'app')
-//     ))
-
-//     .pipe(gulp.dest(targetDir))
-//     .on('error', errorHandler);
-// });
 
 
 
@@ -455,18 +379,31 @@ gulp.task('noop', function() {});
 gulp.task('default', function(done) {
   runSequence(
     'clean',
-    // 'iconfont',
     [
-      // 'fonts',
       'templates',
       'styles',
-      // 'images',
       'jsHint',
       'scripts'
-      // 'vendor'
     ],
     // 'index',
     build ? 'noop' : 'watchers',
     build ? 'noop' : 'serve',
     done);
+});
+
+gulp.task('preprocess-regular', function() {
+    return gulp.src(['js/main.js'], { cwd: 'www/remote' })
+    .pipe(preprocess({context: {ADMIN:false}}))
+    .pipe(gulp.dest('www/remote/js/'))
+})
+
+gulp.task('preprocess-admin', function() {
+    return gulp.src(['js/main.js'], { cwd: 'www/remote' })
+    .pipe(preprocess({context: {ADMIN:true}}))
+    .pipe(gulp.dest('www/remote/js/admin/'))
+})
+
+gulp.task('uld', function(done) {
+  var runSequence = require('run-sequence').use(gulp);
+  runSequence(['preprocess-admin']);
 });

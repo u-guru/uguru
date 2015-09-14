@@ -41,7 +41,12 @@ angular.module('uguru.util.controllers')
 
           // console.log('1. checking for app updates\n');
           // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
-
+          $scope.static = {
+            skills: [],
+            majors: [],
+            professions: [],
+            universities: []
+          }
           document.addEventListener('DOMContentLoaded', function(event) {
               console.log('dom has loaded');
           }, false);
@@ -69,7 +74,7 @@ angular.module('uguru.util.controllers')
             $scope.img_base = '';
           }
 
-          $rootScope.on_app_open_retrieve_objects = function($scope, $state, $localstorage, 
+          $rootScope.on_app_open_retrieve_objects = function($scope, $state, $localstorage,
             University, callback, Geolocation, Major, Skill, Profession) {
             console.log('getting university from server');
             // $cordovaSplashscreen.hide();
@@ -217,7 +222,7 @@ angular.module('uguru.util.controllers')
                 $scope.success.show(500, 2000, 'You have been successfully logged out!');
                 $timeout(function(){
                   $ionicSideMenuDelegate.toggleRight();
-                  $state.go('^.home');
+                  $state.go('^.access');
                 }, 600)
               }, 2000);
 
@@ -231,6 +236,7 @@ angular.module('uguru.util.controllers')
           if (!$scope.root.vars.courses) {
             University.getCourses(2732).then(
                   function(courses) {
+                      $localstorage.setObject('courses',courses);
                       $scope.root.vars.courses = courses;
                       $scope.root.vars.popular_courses = $scope.root.vars.courses.slice(0, 16);
                       $scope.static.courses = $scope.root.vars.courses;
@@ -488,7 +494,7 @@ angular.module('uguru.util.controllers')
 
 
             console.log('device is ready from the root controller');
-              
+
             // if ($cordovaDevice && $cordovaDevice.getPlatform() === 'Win32NT') {
             //   $scope.platform.windows = true;
             //   $scope.platform.mobile = true;
@@ -513,7 +519,7 @@ angular.module('uguru.util.controllers')
 
             switch($scope.platform.device) {
 
-              case "android":              
+              case "android":
                 var androidConfig = {
                   "senderID": "413826461390",
                   'ecb': "angular.element(document.body).injector().get('$cordovaPush').onNotification"

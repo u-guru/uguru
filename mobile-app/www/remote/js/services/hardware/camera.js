@@ -18,7 +18,7 @@ angular.module('uguru.root.services')
     function($localstorage, $timeout, $cordovaCamera, $state) {
 
         deviceCamera = {
-                    takePicture: function($scope, index, has_callback, is_transcript) {
+                    takePicture: function($scope, index, elemId, callbackSuccess) {
 
                       // if ($scope.platform.mobile) {
                         var source_type = 1;
@@ -39,37 +39,35 @@ angular.module('uguru.root.services')
 
                           $cordovaCamera.getPicture(options).then(function(imageData) {
 
-                          //guru profile
-                          // guru profile #2
-                          //student profile #1
-                          var callbackSuccess;
 
-                          if (has_callback) {
-                            $scope.loader.show();
+                          // render to the html page
+                          var image = document.getElementById(elemId);
 
-                            var callbackSuccess = function() {
-                              $scope.loader.hide();
-                            }
-                          }
+                          image.src = 'data:image/jpeg;base64,' + imageData;
 
+                          $scope.photoUploaded = true;
 
-
+                          //package up imageData to save to server
                           var formData = new FormData();
-
                           formData.append('file', imageData);
                           var file_name = new Date().getTime().toString();
                           formData.append('filename', file_name);
 
-                          if (is_transcript) {
-                            formData.append('transcript_url', is_transcript);
-                            $scope.root.vars.transcript_url_changed = true;
-                          }
 
+                          //if user is uploading a transcript
                           if ($scope.root.vars.profile_url_changed) {
+                            formData.append('transcript_url', is_transcript);
+                          }
+                          //if user is logged in
+                          if ($scope.root.vars.profile_url_changed && $scope.user.id) {
                             formData.append('profile_url', $scope.user.id);
                           }
 
-                          $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
+                          $scope.success.show(0, 1500, 'Saving...');
+
+                          $timeout(function() {
+                            $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
+                          }, 500)
 
                         }, function(err) {
                           console.log(err);

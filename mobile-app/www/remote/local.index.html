@@ -54,6 +54,7 @@
     <link href="remote/css/sass/views/guru-profile.css" rel="stylesheet">
     <link href="remote/css/sass/views/guru-credibility.css" rel="stylesheet">
     <link href="remote/css/sass/ios.css" rel="stylesheet">
+    <link href="remote/css/sass/components/uguru-popup.css" rel="stylesheet">
 
     <!-- <link href="remote/css/gpa.css" rel="stylesheet"> -->
     <!-- <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,900' rel='stylesheet' type='text/css'> -->
@@ -125,8 +126,9 @@
     <script src='remote/lib/angular-google-maps/angular-google-maps.min.js'></script>
     <script src='remote/lib/spinningwheel/spinning-wheel.min.js'></script>
     <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    <script type="text/javascript" src="remote/lib/cta/cta.min.js"></script>
 
-    <!--<script src='//maps.googleapis.com/maps/api/js?sensor=false'></script> -->
+
     <!--<script src="remote/lib/angular-google-maps/angular-google-maps.min.js"></script> -->
     <script src="remote/lib/restangular/dist/restangular.js"></script>
     <script src="remote/lib/interact/interact.min.js"></script>
@@ -139,6 +141,10 @@
     <script src="remote/lib/progressbar/progressbar.min.js"></script>
     <script src="remote/lib/ionic/contrib/ionic.contrib.frost.js"></script>
     <script src="remote/lib/angular-google-maps/ion-google-place.js"></script>
+    <script src="remote/lib/velocity/velocity.min.js"></script>
+    <script src="remote/lib/velocity/velocity.ui.min.js"></script>
+    <script src="remote/lib/velocity/angular-velocity.min.js"></script>
+
     <script src="remote/lib/card/card.js"></script>
 
     <script type="text/javascript" src="remote/lib/stripe/stripe.js"></script>
@@ -253,10 +259,9 @@
 
 
     <script type="text/javascript" src="remote/js/university/AddUniversityCtrl.js"></script>
+    <script type="text/javascript" src="remote/js/university/AddMajorCtrl.js"></script>
+    <script type="text/javascript" src="remote/js/university/AddCourseCtrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.calendar.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.add-course.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.add-major.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.add-guru-bio.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.add-note.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.request-location.ctrl.js"></script>
 
@@ -274,8 +279,8 @@
     <script type="text/javascript" src="remote/js/device/AndroidService.js"></script>
     <script type="text/javascript" src="remote/js/device/WindowsService.js"></script>
     <script type="text/javascript" src="remote/js/device/iOSService.js"></script>
-    
-    
+
+
 
     <script type="text/javascript" src="remote/js/services/ngCardIO.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.signup.ctrl.js"></script>
@@ -286,7 +291,7 @@
     <script type="text/javascript" src="remote/js/controllers/util/util.ratings.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.request.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.browse.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/util/util.courses.ctrl.js"></script>
+
     <script type="text/javascript" src="remote/js/controllers/util/util.availability.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.gurubook.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.studentbook.ctrl.js"></script>
@@ -304,6 +309,7 @@
     <!-- Access Component -->
     <script type="text/javascript" src="remote/js/access/AccessService.js"></script>
     <script type="text/javascript" src="remote/js/access/AccessCtrl.js"></script>
+
 
 
     <!-- Uguru Student settings controller -->
@@ -352,12 +358,7 @@
     </script>
 
 
-    <script>
-      window.intercomSettings = {
-        app_id: "yoz6vu28"
-      };
-    </script>
-    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/yoz6vu28';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+
 
 
 
@@ -374,6 +375,7 @@
     <script id="templates/university.html" type="text/ng-template"></script>
 
   </body>
+
 
     <!--
       The views will be rendered in the <ion-nav-view> directive below

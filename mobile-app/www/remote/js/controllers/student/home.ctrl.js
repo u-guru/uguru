@@ -17,9 +17,11 @@ angular.module('uguru.student.controllers', [])
   '$ionicBackdrop',
   '$ionicViewSwitcher',
   '$ionicActionSheet',
+  '$ionicPopover',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
-  $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher, $ionicActionSheet)     {
+  $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
+  $ionicActionSheet, $ionicPopover)     {
 
   // var n = x + 1;
   $scope.showUpcoming = true;
@@ -230,6 +232,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                   }
             });
     }
+
+
 
     $scope.root.vars.launchPendingActions = function() {
 
@@ -736,15 +740,55 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $scope.success.show(0, 1500, 'Coming Soon!');
       }
 
+
+
+      $scope.launchWelcomeStudentPopup = function() {
+
+        var homeCenterComponent = document.getElementById('home-content-header');
+        var uguruPopup = document.getElementById('home-uguru-popup');
+        $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {duration:1},
+          function (modal){
+            modal.classList.add('show');
+          }
+        );
+        $scope.closeWelcomePopup = function() {
+          if ($scope.reverseAnimatePopup) {
+            $scope.reverseAnimatePopup();
+          }
+          var uguruPopup = document.getElementById('home-uguru-popup');
+          uguruPopup.classList.remove('show');
+
+        }
+      }
+
+      var checkOnboardingStatus = function() {
+
+        var appOnboardingObj = $localstorage.getObject('appOnboarding');
+        if (!appOnboardingObj) {
+          appOnboardingObj = {studentWelcome:true}
+          $localstorage.setObject('appOnboarding', appOnboardingObj);
+        }
+        else if (appOnboardingObj && !appOnboardingObj.studentWelcome) {
+          $scope.launchWelcomeStudentPopup();
+          appOnboardingObj.studentWelcome = true;
+          $localstorage.setObject('appOnboarding', appOnboardingObj);
+        }
+
+      }
+
+
+      $scope.$on('$ionicView.loaded', function() {
+
+          $timeout(function() {
+            checkOnboardingStatus()
+          }, 1000)
+      });
+
      $scope.$on('$ionicView.enter', function() {
-      // console.log(JSON.stringify(window.StatusBar));
-      // window.StatusBar.overlaysWebView(false);
+      $ionicSideMenuDelegate.canDragContent(true);
 
 
-        // $timeout(function() {r
 
-        //   $ionicSideMenuDelegate.toggleRight();
-        // }, 500)
        $timeout(function() {
         $scope.loader.hide();
        }, 1500)
