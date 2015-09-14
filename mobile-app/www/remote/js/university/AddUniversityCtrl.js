@@ -30,6 +30,17 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       }
     }
 
+    var queryTimeout = false;
+    $scope.query = function(input) {
+      if(!queryTimeout) {
+        queryTimeout = true;
+        //$scope.universities = Utilities.nickMatcher(input, University.getTargetted());
+        $scope.universities = UniversityMatcher.cachedMatch(input);
+        $timeout(function() {queryTimeout = false;}, 500);
+      }
+
+    }
+
     // if (deviceInfo==='android') {
     //   $scope.getGPSCoords();
     // }
@@ -64,11 +75,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         return 0;
       }
       return list.sort(compareRank);
-    }
-
-    $scope.query = function(input) {
-      //$scope.universities = Utilities.nickMatcher(input, University.getTargetted());
-      $scope.universities = UniversityMatcher.cachedMatch(input);
     }
 
     $scope.universitySelected = function(university, $event) {
