@@ -119,15 +119,16 @@ function UniversityMatcher(University) {
 		uniDictionary = null;
 	}
 
-	function match(input, list) {
+	function match(input, passedList) {
+		var list = passedList;
+		if(!(list instanceof Array)) {
+			list = University.getTargetted();
+		}
 		var matchedList = [];
 		var inputLowerCase = input.toLowerCase();
 		for(var i=0; i<list.length; i++) {
-
 			var nameLowerCase = list[i].name.toLowerCase();
-			
 			//Give priority to schools that start with the input
-
 			if(nameLowerCase.indexOf(inputLowerCase) === 0) {
 					matchedList.push(list[i]);
 				}
