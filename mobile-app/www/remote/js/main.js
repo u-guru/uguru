@@ -99,6 +99,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
         resolve: {
+          loadCache: function($templateCache) {
+            $templateCache.get(BASE + 'templates/university.html');
+          },
           deviceInfo: function(DeviceService) {
             return DeviceService.getPlatform();
           }

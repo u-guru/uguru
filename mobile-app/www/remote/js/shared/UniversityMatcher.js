@@ -38,15 +38,15 @@ function UniversityMatcher(University) {
 	
 	function init() {
 		uniDictionary = {};
-		console.log("init inside universityMatcher");
+		//console.log("init inside universityMatcher");
 		var alphabet = "abcdefghijklmnopqrstuvwxyz";
-		console.log("alphabet.length: " + alphabet.length);
+		//console.log("alphabet.length: " + alphabet.length);
 		for(var i=0; i<alphabet.length; i++) {
 			var letter = alphabet[i];
 			uniDictionary[letter] = match(letter, list);
-			console.log("uniDictionary." + letter + ": " + uniDictionary[letter].length);
+			//console.log("uniDictionary." + letter + ": " + uniDictionary[letter].length);
 		}
-		console.log("uniDictionary properties number: " + Object.keys(uniDictionary).length);
+		//console.log("uniDictionary properties number: " + Object.keys(uniDictionary).length);
 	}
 
 	//we're going to keep calling $scope.query = UniversityMatcher.match(input) on every keyup

@@ -47,22 +47,19 @@ angular.module('uguru.guru.controllers')
       }
 
      // Show the action sheet
-     $scope.closeAttachActionSheet = $ionicActionSheet.show({
+     var closeAttachActionSheet = $ionicActionSheet.show({
        buttons: options,
        cancelText: 'Cancel',
        cancel: function() {
-            $scope.closeAttachActionSheet();
         },
        buttonClicked: function(index) {
           takePhoto(index);
-
           $timeout(function() {
-              $scope.closeAttachActionSheet();
+            return true;
           }, 500);
        }
      });
     }
-
 
 
     function takePhoto(index) {
@@ -75,10 +72,6 @@ angular.module('uguru.guru.controllers')
         var element = document.getElementById('file-input-web')
         element.click();
       }
-    }
-
-    $scope.closeAttachActionSheet = function() {
-      $scope.closeAttachActionSheet();
     }
 
     $scope.userPhotoList = [];

@@ -98,6 +98,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           $timeout(function() {
             $scope.loader.hide();
             $ionicViewSwitcher.nextDirection('forward');
+            UniversityMatcher.clearCache();
               $state.go('^.home')
           }, 1000);
       }
