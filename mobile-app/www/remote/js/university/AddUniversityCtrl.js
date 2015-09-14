@@ -140,7 +140,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
 
     $scope.$on('$ionicView.enter', function() {
-        if (devinceInfo ==='iOS') {
+        if (devinceInfo ==='ios') {
           DeviceService.ios.showStatusBar();
         }
     });

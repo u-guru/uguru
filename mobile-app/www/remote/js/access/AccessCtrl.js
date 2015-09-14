@@ -30,6 +30,7 @@ function AccessController($scope, $state, $ionicViewSwitcher,
 
   $scope.checkAccessCode = function(code) {
     if(AccessService.validate(code)){
+      console.log("AccessService.validate(code)" + AccessService.validate(code));
       //LoadingService.show(0, 5000, 'Access Granted');
       $scope.access.codeInput = '';
       $ionicViewSwitcher.nextDirection('forward');

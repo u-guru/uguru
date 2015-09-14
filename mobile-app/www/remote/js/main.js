@@ -1,4 +1,4 @@
-var LOCAL = false; //local to the 8100 codebasebirbirs
+var LOCAL = true; //local to the 8100 codebasebirbirs
 var FIRST_PAGE='^.access';
 var img_base;
 
@@ -28,7 +28,7 @@ if (LOCAL) {
   // BASE_URL = 'http://192.168.42.124:5000/static/nick';
   
 
-  REST_URL = 'http://localhost:5000';
+  //REST_URL = 'http://localhost:5000';
 
 
 } else {
@@ -100,7 +100,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         templateUrl: BASE + 'templates/university.html',
         resolve: {
           deviceInfo: function(DeviceService) {
-            return DeviceService.getDevice();
+            return DeviceService.getPlatform();
           }
         },
         controller: 'AddUniversityCtrl'

@@ -15,9 +15,10 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 	return {
 		readyDevice: readyDevice,
 		getDevice: getDevice,
+    getPlatform: getPlatform,
 		isMobile: isMobile,
 		isWeb: isWeb,
-        ios: iOSService
+    ios: iOSService,
 	}
 
 	function isMobile() {
@@ -29,9 +30,14 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 	}
 
 	function getDevice() {
-		console.log("getPlatform() returns: " + ionic.Platform.device());
+		console.log("getDevice() returns: " + ionic.Platform.device());
 		return ionic.Platform.device();
 	}
+
+  function getPlatform() {
+    console.log("getPlatform() returns: " + ionic.Platform.platform());
+    return ionic.Platform.platform();
+  }
 
 	function readyDevice(callback) {
 		document.addEventListener("deviceready", onDeviceReady);
@@ -66,7 +72,7 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
    				navigator.splashscreen.hide();
    			}
 
-	 		var mobileOS = getDevice().platform.toLowerCase();
+	 		var mobileOS = getPlatform().toLowerCase();
 		  	switch(mobileOS) {
 		  		case "ios":
 		  			iOSService.ready();
@@ -79,7 +85,7 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 	  				break;
 		  	}
 
-		  	console.log("detected device: " + getDevice());
+		  	console.log("detected platform: " + getPlatform());
 		}
 		if(typeof callback === 'function') {
 			callback();
