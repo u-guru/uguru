@@ -12,10 +12,11 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'Settings',
   'Utilities',
   'deviceInfo',
+  'UniversityMatcher',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher, 
-  Geolocation, Settings, Utilities, deviceInfo) {
+  Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher) {
     console.log("passed deviceInfo: " + deviceInfo);
 
     $scope.getGPSCoords = function() {
@@ -65,7 +66,8 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     }
 
     $scope.query = function(input) {
-      $scope.universities = Utilities.nickMatcher(input, University.getTargetted());
+      //$scope.universities = Utilities.nickMatcher(input, University.getTargetted());
+      $scope.universities = UniversityMatcher.cachedMatch(input);
     }
     
     $scope.universitySelected = function(university, $event) {

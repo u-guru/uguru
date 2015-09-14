@@ -1,0 +1,171 @@
+angular
+.module('sharedServices')
+.factory("UniversityMatcher", [
+	'University',
+	UniversityMatcher
+	]);
+
+function UniversityMatcher(University) {
+	
+	var list = University.getTargetted();
+	sortByRank(list);
+	var uniDictionary = {};
+	init();
+	console.log("before the return");
+	var cacheCounter = 0;
+	function cacheObject() {
+		
+	}
+	var savedCacheArray = [];
+	var cachedInput = null;
+	var cachedDictionary = null;
+
+	return {
+		match: match,
+		init: init,
+		cachedMatch: cachedMatch,
+		clearCache: clearCache,
+		list: list
+	}
+
+	function sortByRank(list) {
+	  function compareRank(a, b) {
+	    if (a.rank < b.rank)
+	      return -1;
+	    if (a.rank > b.rank)
+	      return 1;
+
+	    return 0;
+	  }
+	  return list.sort(compareRank);
+	}
+	
+	function init() {
+		console.log("init inside universityMatcher");
+		var alphabet = "abcdefghijklmnopqrstuvwxyz";
+		console.log("alphabet.length: " + alphabet.length);
+		for(var i=0; i<alphabet.length; i++) {
+			var letter = alphabet[i];
+			uniDictionary[letter] = match(letter, list);
+			console.log("uniDictionary." + letter + ": " + uniDictionary[letter].length);
+		}
+		console.log("uniDictionary properties number: " + Object.keys(uniDictionary).length);
+	}
+
+	function createCacheObject(cacheList) {
+		cacheCounter++;
+
+		var cache = new cacheObject();
+		cache.point = cacheCounter;
+		cache.list = cacheList;
+
+		savedCacheArray.push(cache);
+	}
+
+	//we're going to keep calling $scope.query = UniversityMatcher.match(input) on every keyup
+	//however we'll handle the actual uni list in this service for caching
+	function cachedMatch(input) {
+
+		if(input.length===0) {
+			console.log("empty input, returning whole list");
+			return list;
+		}
+		// if input is just one letter then we can return the matching list from the uniDictionary property
+		// then we also store that list in a cachedDictionary
+		else if(input.length===1) {
+			console.log("single letter input: " + input);
+			cachedInput = input;
+			return uniDictionary[input];
+		}
+		// if the user continues to type without deleting then we will continue to search
+		// from within the cacheDictionary, and then replace it with the results and return it
+		// we are also saving cache points along the way for quick retrieval in the event the user
+		// backspaces
+		else if(input.length > cachedInput.length && input.indexOf(cachedInput) === 0) {
+
+			cachedInput = input;
+			console.log('uniDictionary[input]: ' + uniDictionary[input]);
+			if(uniDictionary[input]!== undefined) {
+				console.log("extending");
+				console.log("found matching dictionary: uniDictionary['" + input + "']");
+				cachedDictionary = uniDictionary[input];
+				return cachedDictionary;
+			} else {
+				console.log("input extended and creating new cache dictionary");
+				cachedInput = input;
+				var subInput = input.substring(0, input.length -1);
+				console.log("subInput: " + subInput);
+				uniDictionary[input] = match(input, uniDictionary[subInput]);
+				cachedDictionary = uniDictionary[input]
+				//createCacheObject(cachedDictionary);
+				return cachedDictionary;
+			}
+		}
+		// if the user backspaces a part of the input but still keeps at least the first two letters
+		// then we can roll back to the specific cache point
+		else if(input.length > 1 && input.length < cachedInput.length && cachedInput.indexOf(input) === 0) {
+
+			cachedInput = input;
+			console.log('uniDictionary[input]: ' + uniDictionary[input]);
+			if(uniDictionary[input]!== undefined) {
+				console.log("found matching dictionary: uniDictionary['" + input + "']");
+				cachedDictionary = uniDictionary[input];
+				return cachedDictionary;
+			} else {
+				console.log("couldn't match dictionary: uniDictionary['" + input + "']");
+				uniDictionary[input] = match(input, list);
+				cachedDictionary = uniDictionary[input]
+				return cachedDictionary;
+			}
+			// var point = cachedInput.length - input.length;
+			// cachedInput = input;
+			// retrieveCache();
+			// function retrieveCache() {
+			// 	cacheCounter--;
+			// 	savedCacheArray.pop();
+			// 	savedCacheArray.forEach(function(cacheItem, index, array) {
+			// 		if(cacheItem.point === point) {
+			// 			cachedDictionary = match(input, array[index]);
+			// 			return cachedDictionary;
+			// 		}		
+			// 	})
+			// }
+		} 
+		// in the event they do some weird stuff then we can just go back to searching by the first letter
+		else if(input.length > 1) {
+			console.log("this should never fire");
+			clearCache();
+			cachedInput = input;
+			var firstChar = input.charAt(0);
+			cachedDictionary = match(input, uniDictionary[firstChar]);
+			return cachedDictionary;
+		}
+
+	}
+	function clearCache() {
+		cacheCounter = 0;
+		savedCachePoints = [];
+		cachedInput = null;
+		cachedDictionary = null;
+	}
+
+	function match(input, list) {
+		var matchedList = [];
+		var inputLowerCase = input.toLowerCase();
+		for(var i=0; i<list.length; i++) {
+
+			var nameLowerCase = list[i].name.toLowerCase();
+			
+			//Give priority to schools that start with the input
+
+			if(nameLowerCase.indexOf(inputLowerCase) === 0) {
+					matchedList.push(list[i]);
+				}
+			else if(nameLowerCase.indexOf(inputLowerCase) !== -1) {
+				matchedList.push(list[i]);
+			}
+		}
+		return matchedList;
+	}
+
+}
