@@ -39,6 +39,18 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
   });
 
+  $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+      }).then(function(modal) {
+          $scope.signupModal = modal;
+    });
+
+
+  $scope.launchSignupModal = function() {
+      $scope.signupModal.show();
+  }
+
   $scope.progressBarInitialized = null;
 
   $scope.showPreviousActions = function(index) {

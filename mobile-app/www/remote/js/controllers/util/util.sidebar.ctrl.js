@@ -1,6 +1,6 @@
 angular.module('uguru.util.controllers')
 
-.controller('SignupController', [
+.controller('SidebarController', [
 
   //All imported packages go here
   '$scope',
@@ -47,7 +47,6 @@ angular.module('uguru.util.controllers')
       groceries:false,
       presignup: !($scope.user && $scope.user.id),
     }
-
 
     $scope.addUniversity = function() {
       $state.go('^.university');
@@ -787,8 +786,6 @@ angular.module('uguru.util.controllers')
       var ref = cordova.InAppBrowser.open(url, target, options);
 
     };
-
-
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
         scope: $scope,
