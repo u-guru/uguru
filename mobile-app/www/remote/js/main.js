@@ -17,7 +17,9 @@ var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.42.124:8100';
+  //BASE_URL = 'http://192.168.42.124:8100';
+
+  BASE_URL = 'http://192.168.1.99:8100';
 
   //BASE_URL = 'http://192.168.43.155:8100';
 

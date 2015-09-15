@@ -48,8 +48,8 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       $ionicViewSwitcher.nextDirection('forward');
       //AnimationService.flip();
       
-        $ionicSlideBoxDelegate.next();
-      
+      //$ionicSlideBoxDelegate.select( $ionicSlideBoxDelegate.next() );
+      $ionicSlideBoxDelegate.next();
       // $state.go('^.university');
     } else {
       $scope.access.errorInputMsg = 'Incorrect access code';
