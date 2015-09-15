@@ -2,7 +2,17 @@
 - % npm install -g protractor
 - % npm install jasmine-spec-reporter --save-dev
 - % web-driver update
-
+- add following script to your bash
+```
+run_test() { 
+	if [ "$1" != "" ] && [ "$2" != "" ];then
+	  protractor e2e_test/config/mobile.config.js --suite=major,course,category,photo  --params.screenSize.w "$1"  --params.screenSize.h "$2" 
+	else
+	  protractor e2e_test/config/mobile.config.js --suite=major,course,category,photo 
+	fi
+}
+}
+ ```
 **Running**
 - Open 3 tabs
 - First Tab:
@@ -12,17 +22,8 @@
  - $webdriver-manager start
 
 - Thrid Tab ( the one u gonna use for start the protractor)
-- add following command to your bash
-```
-run_all() { 
-	if [ "$1" != "" ] && [ "$2" != "" ];then
-	  protractor e2e_test/config/mobile.config.js --suite=major,course,category,photo  --params.screenSize.w "$1"  --params.screenSize.h "$2" 
-	else
-	  protractor e2e_test/config/mobile.config.js --suite=major,course,category,photo 
-	fi
-}
-}
- ```
+- Run Following Command (default Window Size 414 * 736)
+% run_test() Width[Option] Height[Option] 
 
 For Developer:
  - $ protractor "Your Config Location" [--suite] [suite case]
