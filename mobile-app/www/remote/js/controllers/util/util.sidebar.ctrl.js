@@ -1,6 +1,6 @@
 angular.module('uguru.util.controllers')
 
-.controller('SignupController', [
+.controller('SidebarController', [
 
   //All imported packages go here
   '$scope',
@@ -47,7 +47,6 @@ angular.module('uguru.util.controllers')
       groceries:false,
       presignup: !($scope.user && $scope.user.id),
     }
-
 
     $scope.addUniversity = function() {
       $state.go('^.university');
@@ -407,40 +406,36 @@ angular.module('uguru.util.controllers')
               text: '<b>Save</b>',
               type: 'button-positive',
               onTap: function(e) {
-              
-                if (!$scope.data.old_password || !$scope.data.new_password)
-                {
-                      alert('Please fill in all fields');
+
+                if (!$scope.data.old_password || !$scope.data.new_password || $scope.data.new_password.length < 7) {
+                  alert('Please fill in all fields');
                   return;
                 }
-                else
-                {
-                  if ($scope.data.new_password.length < 7)
-                  {
-                    alert('Please create a password longer than 6 characters');
-                    return;
-                  } 
-                  else
-                  {
-                     var successCallback = function() {
-                      $scope.inputPopup.close();
-                      $timeout(function() {
-                        $scope.success.show(0, 1000, 'Saved!');
-                      }, 500);
-                      }
 
-                    var failureCallback = function() {
-                      alert('Incorrect Password - try again?');
-                    }
-
-                    var payload = {
-                      email : $scope.user.email,
-                      new_password : $scope.data.new_password,
-                      old_password: $scope.data.old_password
-                    }
-                     $scope.user.updateAttr('change_password', $scope.user, payload, successCallback, $scope, failureCallback);
-                  }
+                if ($scope.data.new_password.length < 7) {
+                  alert('Please create a password longer than 6 characters');
+                  return;
                 }
+
+                var successCallback = function() {
+                  $scope.inputPopup.close();
+                  $timeout(function() {
+                    $scope.success.show(0, 1000, 'Saved!');
+                  }, 500);
+                }
+
+                var failureCallback = function() {
+                  alert('Incorrect Password - try again?');
+                }
+
+                var payload = {
+                  email : $scope.user.email,
+                  new_password : $scope.data.new_password,
+                  old_password: $scope.data.old_password
+                }
+
+                $scope.user.updateAttr('change_password', $scope.user, payload, successCallback, $scope, failureCallback);
+
               }
             }
           ]
@@ -454,7 +449,7 @@ angular.module('uguru.util.controllers')
       $scope.data = {name:$scope.user.name};
 
       $scope.inputPopup = $ionicPopup.show({
-          template: '<input id="E2E-editName" value = {{data.name}} style="padding:2px 4px;" type="text" ng-model="data.name" autofocus>',
+          template: '<input style="padding:2px 4px;" type="text" ng-model="data.name" autofocus>',
           title: 'Change your try identity',
           subTitle: 'Try not to troll too hard',
           scope: $scope,
@@ -792,8 +787,6 @@ angular.module('uguru.util.controllers')
 
     };
 
-
-
     $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
         scope: $scope,
         animation: 'slide-in-up'
@@ -1128,7 +1121,7 @@ angular.module('uguru.util.controllers')
     var facebookAuthFailureCallback = function(error) {
         $scope.loader.hide();
         $scope.error = error;
-        console.error('FB CONNECT FAILED...');
+        console.log('FB CONNECT FAILED...');
         console.log('Error from logging from facebook:' + JSON.stringify(error));
         $scope.success.show(0, 1500, 'Something weird happened.. Please contact support!');
         $cordovaFacebook.logout();

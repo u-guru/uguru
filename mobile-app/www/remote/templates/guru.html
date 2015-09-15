@@ -13,7 +13,7 @@
       <div class='header-ranking text-center'>
         <div class='pure-g full-y flex-column'>
             <div class='pure-u-1'>
-              <h1>At {{user.university.name}}</h1>
+              <h1>At {{user.university.title}}</h1>
             </div>
             <div class='pure-u-1 flex-grow-pro flex-align-self-center'>
               <div class='pure-g full-x flex-align-self-stretch'>
@@ -78,7 +78,9 @@
     </div>
 
   </section>
-  <button class='button bg-shamrock guru-home-footer-button'>Launch my profile</button>
+
+  <button ng-click='launchSignupModal()' class='button bg-shamrock guru-home-footer-button'>Launch my profile</button>
+
   <div ng-show='user && user.id' class="tabs tabs-icon-only guru-tabs bg-white bg-charcoal" id='guru-tab-bar'>
     <a class="tab-item active" nav-direction='swap' href='#/guru'>
       <i class='icon ion-home'> </i>
