@@ -167,7 +167,7 @@ exports.config = {
             global.EC  = protractor.ExpectedConditions;
             console.log( "W : "+ browser.params.screenSize.w+ " H :"+browser.params.screenSize.h)
             browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);
-            browser.get("http://localhost:8100/#/")
+            browser.driver.get("http://localhost:8100/#/")
             browser.sleep(3000);
         }
         

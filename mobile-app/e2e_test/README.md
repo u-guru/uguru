@@ -2,7 +2,12 @@
 - % npm install -g protractor
 - % npm install jasmine-spec-reporter --save-dev
 - % web-driver update
+For Safari Testing:
+- Download SafariDriver
+- % http://selenium-release.storage.googleapis.com/2.45/SafariDriver.safariextz
+
 - add following script to your bash
+
 ```
 run_test() { 
 	if [ "$1" != "" ] && [ "$2" != "" ];then
@@ -13,6 +18,8 @@ run_test() {
 }
 }
  ```
+
+
 **Running**
 - Open 3 tabs
 - First Tab:
