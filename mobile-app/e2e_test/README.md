@@ -2,9 +2,7 @@
 - % npm install -g protractor
 - % npm install jasmine-spec-reporter --save-dev
 - % web-driver update
-
-[For Safari Testing]:
-- Download SafariDriver
+- [For Safari Testing] Download SafariDriver
   - % http://selenium-release.storage.googleapis.com/2.45/SafariDriver.safariextz
 
 - add following script to your bash
@@ -16,7 +14,6 @@ run_test() {
 	else
 	  protractor e2e_test/config/mobile.config.js --suite=major,course,category,photo 
 	fi
-}
 }
  ```
 
