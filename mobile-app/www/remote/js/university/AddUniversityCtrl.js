@@ -69,7 +69,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       }
     }
 
-    
+    $ionicSlideBoxDelegate.update();
     //back button
     $scope.goToAccess = function() {
       // console.log("pressed goToAccess()");

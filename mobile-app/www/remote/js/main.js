@@ -263,7 +263,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
 
 
-  $urlRouterProvider.otherwise('/access');
+  $urlRouterProvider.otherwise('/university');
 
 
 });

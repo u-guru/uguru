@@ -38,7 +38,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     errorInputMsg: null,
   };
 
-
+$ionicSlideBoxDelegate.update();
   $scope.checkAccessCode = function(code) {
     if(AccessService.validate(code)){
       console.log("AccessService.validate(code)" + AccessService.validate(code));
@@ -51,7 +51,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       console.log('moveee');
       //$ionicSlideBoxDelegate.select( $ionicSlideBoxDelegate.next() );
       $ionicSlideBoxDelegate.next();
-      console.log('slideBoxDelegate: ' + $ionicSlideBoxDelegate);
+      console.log('slideBoxDelegate: ' + $ionicSlideBoxDelegate.currentIndex());
 
       // $state.go('^.university');
     } else {
