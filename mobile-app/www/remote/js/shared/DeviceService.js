@@ -28,12 +28,12 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 	function isWeb() {
 		return !isMobile();
 	}
-
+  // returns object
 	function getDevice() {
 		console.log("getDevice() returns: " + ionic.Platform.device());
 		return ionic.Platform.device();
 	}
-
+  // returns string value
   function getPlatform() {
     console.log("getPlatform() returns: " + ionic.Platform.platform());
     return ionic.Platform.platform();

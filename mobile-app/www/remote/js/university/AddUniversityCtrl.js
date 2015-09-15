@@ -69,13 +69,14 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       }
     }
 
+    
     //back button
     $scope.goToAccess = function() {
       // console.log("pressed goToAccess()");
       // $ionicViewSwitcher.nextDirection('back');
       // $state.go('^.access');
 
-      $ionicSlideBoxDelegate.select( $ionicSlideBoxDelegate.previous() )
+    $ionicSlideBoxDelegate.previous();
     }
 
     function sortByRank(list) {

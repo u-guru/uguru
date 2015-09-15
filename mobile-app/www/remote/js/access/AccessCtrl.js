@@ -44,12 +44,15 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       console.log("AccessService.validate(code)" + AccessService.validate(code));
       //LoadingService.show(0, 5000, 'Access Granted');
       $scope.access.codeInput = '';
-      accessInput.removeEventListener('keyup', submitListener);
-      $ionicViewSwitcher.nextDirection('forward');
+      //accessInput.removeEventListener('keyup', submitListener);
+      //$ionicViewSwitcher.nextDirection('forward');
       //AnimationService.flip();
       
+      console.log('moveee');
       //$ionicSlideBoxDelegate.select( $ionicSlideBoxDelegate.next() );
       $ionicSlideBoxDelegate.next();
+      console.log('slideBoxDelegate: ' + $ionicSlideBoxDelegate);
+
       // $state.go('^.university');
     } else {
       $scope.access.errorInputMsg = 'Incorrect access code';

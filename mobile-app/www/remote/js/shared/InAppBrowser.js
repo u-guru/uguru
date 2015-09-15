@@ -14,7 +14,7 @@ function InAppBrowser(DeviceService) {
 
 	function open(url, title) {
 
-		var device = DeviceService.getDevice();
+		var device = DeviceService.getPlatform();
 		var options = 'location=no,hidden=no';
 	        if (device === 'android') {
 	          options += ',hardwareback=no';
