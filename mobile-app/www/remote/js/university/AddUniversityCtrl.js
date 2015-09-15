@@ -13,10 +13,11 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'Utilities',
   'deviceInfo',
   'UniversityMatcher',
+  '$ionicSlideBoxDelegate',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher, 
-  Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher) {
+  Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher, $ionicSlideBoxDelegate) {
 
     console.log("passed deviceInfo: " + deviceInfo);
 
@@ -30,13 +31,23 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       }
     }
 
+
+
     var queryTimeout = false;
+    var emptyTimeout = false;
     $scope.query = function(input) {
       if(!queryTimeout) {
         queryTimeout = true;
         //$scope.universities = Utilities.nickMatcher(input, University.getTargetted());
         $scope.universities = UniversityMatcher.cachedMatch(input);
-        $timeout(function() {queryTimeout = false;}, 500);
+        $timeout(function() {queryTimeout = false;}, 600);
+      }
+      else if(input.length === 0) {
+        if(!emptyTimeout) {
+          emptyTimeout = true;
+          $scope.universities = UniversityMatcher.cachedMatch(input);  
+          $timeout(function() {emptyTimeout = false;}, 600);
+        }       
       }
 
     }

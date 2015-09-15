@@ -1,6 +1,7 @@
 angular.module('uguru.util.controllers')
 .controller('AccessController', [
   '$scope',
+  '$timeout',
   '$state',
   '$ionicViewSwitcher',
   'DeviceService',
@@ -10,14 +11,24 @@ angular.module('uguru.util.controllers')
   '$templateCache',
   '$ionicSideMenuDelegate',
   'DeviceService',
+  'DownloadService',
+  'UniversityMatcher',
+  '$ionicSlideBoxDelegate',
   AccessController
   ]);
 
-function AccessController($scope, $state, $ionicViewSwitcher,
+function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   DeviceService, LoadingService, AccessService, AnimationService,
-  $templateCache, $ionicSideMenuDelegate, DeviceService) {
+  $templateCache, $ionicSideMenuDelegate, DeviceService, DownloadService, UniversityMatcher, $ionicSlideBoxDelegate) {
 
   DeviceService.readyDevice();
+
+  // var list = UniversityMatcher.list;
+  // for (var i=0; i<10; i++) {
+  //   var preCache = list[i].seal_url || list[i].forbes_url;
+  //   console.log("preCache: " + preCache);
+  //   DownloadService.downloadFile(preCache);
+  // }
 
   //this prevents side bar from coming
   $ionicSideMenuDelegate.canDragContent(false);
@@ -36,7 +47,10 @@ function AccessController($scope, $state, $ionicViewSwitcher,
       accessInput.removeEventListener('keyup', submitListener);
       $ionicViewSwitcher.nextDirection('forward');
       //AnimationService.flip();
-      $state.go('^.university');
+      
+        $ionicSlideBoxDelegate.next();
+      
+      // $state.go('^.university');
     } else {
       $scope.access.errorInputMsg = 'Incorrect access code';
     }
@@ -65,7 +79,7 @@ function AccessController($scope, $state, $ionicViewSwitcher,
   // };
 
   window.addEventListener('native.keyboardshow', keyboardShowHandler);
-
+// cordova.plugins.Keyboard.disableScroll(true);
   window.addEventListener('native.keyboardhide', keyboardHideHandler);
 
   var accessInput = document.getElementById('access-code-bar');
@@ -75,7 +89,9 @@ function AccessController($scope, $state, $ionicViewSwitcher,
     //console.log('input field: ' + $scope.access.codeInput);
     var key = e.keyCode || e.key || e.which;
     if (key === 13) {
-      $scope.checkAccessCode($scope.access.codeInput);
+      cordova.plugins.Keyboard.close();
+      $timeout(function() {$scope.checkAccessCode($scope.access.codeInput)}, 400);
+
     }
     e.preventDefault();
   }
