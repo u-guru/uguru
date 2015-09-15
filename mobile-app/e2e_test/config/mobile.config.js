@@ -41,13 +41,7 @@ exports.config = {
           multiCapabilities: 
           [
          
-         // {'browserName': 'chrome',
-         //    params: {
-         //        screenSize: {
-         //          width: 414,
-         //          length: 736.
-         //        }
-         //  },
+         {'browserName': 'chrome'},
          {
           'browserName': 'firefox'
           // Additional spec files to be run on this capability only.
@@ -56,9 +50,9 @@ exports.config = {
           // {'browserName': 'phantomjs'}
         ],
          params: {
-          login: {
-            user: 'Jane',
-            password: '1234'
+          screenSize: {
+            w: 414,
+            h: 736
           }
         },
         // specs:
@@ -171,7 +165,8 @@ exports.config = {
             protractor.run = require('../test_case/globals.js').run;
             global.doc =require('../test_case/newGlobals.js');
             global.EC  = protractor.ExpectedConditions;
-            browser.driver.manage().window().setSize(414, 736);
+            console.log( "W : "+ browser.params.screenSize.w+ " H :"+browser.params.screenSize.h)
+            browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);
             browser.get("http://localhost:8100/#/")
             browser.sleep(3000);
         }

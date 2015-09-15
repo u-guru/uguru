@@ -15,7 +15,7 @@ describe('Access Page Test', function () {
 			{
 				// it("check",function()
 				// {
-				//     expect(browser.params.params.login.user).toBe('1111	');
+				//     expect(browser.params.screenSize.w).toBe('1234');
 
 				// });
 	           it("Enter Access Code : "+ testSpec,function()

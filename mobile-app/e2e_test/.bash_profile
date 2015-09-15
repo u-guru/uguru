@@ -1,10 +1,8 @@
-
-### all your alias's
 alias uw="cd ~/Git/uguru"
 alias um="cd ~/Git/uguru/mobile-app"
 alias s="subl"
 alias ba="um && sh scripts/android_build.sh"
-# E2E 
+# E2E
 alias rp="protractor e2e_test/config/protractor.config.js"
 alias po="protractor e2e_test/config/onboarding.config.js"
 alias pe="protractor e2e_test/config/email.config.js"
@@ -17,12 +15,29 @@ alias pe="protractor e2e_test/config/error.config.js"
 alias pre="protractor e2e_test/config/request.config.js"
 alias pweb="protractor e2e_test/config/web.config.js"
 alias pm="protractor e2e_test/config/mobile.config.js"
+#alias run_all="protractor e2e_test/config/mobile.config.js --suite=access,university,major,course,category,photo"
+
+defaults() { 
+#/path/to/bar "$@" fixed args; 
+  protractor e2e_test/config/mobile.config.js --suite=major,course,category,photo
+ }
+alias 'run_all'= defaults() 
+#--params.screenSize.w 800 --params.screeSize.h 800
+
+#pm   --suite=major,course,category,photo
+
+
 
 
 
 alias rph="protractor e2e_test/config/protractor.config.headless.js"
 alias ws="webdriver-manager start"
 alias wu="webdriver-manager update"
+export ANDROID_HOME=/home/twfob/dev/android-sdk-linux
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+#export PATH=${PATH}:~/android-sdk-linux/tools
+#export PATH=${PATH}:~/android-sdk-linux/platform-tools
 
 export PATH=${PATH}:~/dev/android-sdk-linux/tools
 export PATH=${PATH}:~/dev/android-sdk-linux/platform-tools
