@@ -1,18 +1,23 @@
 
-describe('Workflow Test : One', function () {
+describe('Access Page Test', function () {
 	// var accessInput = element(by.id("access-code-bar"));
 	var accessInput = element(by.tagName("input"));
 	var startButton = element(by.id("access-start"));
 	var load= element(by.id('E2E-spinner'))
 	var back = element(by.css('[ng-click="goToAccess()"]'))
 	var listOfCase =  doc.generateRandomString(["","1"],5,"cool")
-	
+   
 	
 	for( i = 0; i < listOfCase.length; ++ i)
 	{
         (function(testSpec) {
         	describe('Test Access Code #'+i,function()
 			{
+				// it("check",function()
+				// {
+				//     expect(browser.params.params.login.user).toBe('1111	');
+
+				// });
 	           it("Enter Access Code : "+ testSpec,function()
 				{
 					doc.setInput(testSpec,0,false);
@@ -28,7 +33,7 @@ describe('Workflow Test : One', function () {
 					}
 					else
 					{
-						browser.wait(EC.visibilityOf(startButton.element(by.tagName("p"))),10000);
+						browser.wait(EC.visibilityOf(startButton.element(by.tagName("p"))),800);
 						startButton.element(by.tagName("p")).getText().then(function(value)
 						{
 							expect(value).toBe("Incorrect access code");

@@ -1,35 +1,75 @@
 "use strict";
-
+// for (var i = 0; i < 4; i++) {
+//         switch (i) {
+//             case 0:
+//                 //set resolution 1
+//                 browser.manage().window().setSize(320, 480);
+//                 break;
+//             case 1:
+//                 //set resolution 2
+//                 browser.manage().window().setSize(600, 800);
+//                 break;
+//             case 2:
+//                 //set resolution 3
+//                 browser.manage().window().setSize(768, 1024);
+//                 break;
+//             case 3:
+//                 //set resolution 4
+//                 browser.manage().window().setSize(1080, 1920);
+//                 break;
+//             default:
+//                 return;
+//         }
+//     }
 exports.config = {
     framework: 'jasmine2',
-     // seleniumAddress: 'http://localhost:4444/wd/hub',
+     seleniumAddress: 'http://localhost:4444/wd/hub',
+       baseUrl: 'http://localhost:8000',
+     // seleniumAddress: 'http://localhost:4723/wd/hub',
 
-     seleniumAddress: 'http://localhost:4723/wd/hub',
+         capabilities: {
+                 'browserName': 'chrome'
+         },
 
-         // capabilities: {
-         //         'browserName': 'chrome'
-         // },
-           capabilities: {
-            browserName: 'chrome',
-            'appium-version': '1.4.10',
-            platformName: 'Android',
-            platformVersion: '4.4.2',
-            deviceName: 'Android Emulator',
-          },
-        //   multiCapabilities: [
-        //   {'browserName': 'chrome'},
-        //   {'browserName': 'firefox'},
-        //   {'browserName': 'phantomjs'}
-        // ],
-        specs:
-        [
-          '../test_case/mobileTest/access.js',
-          '../test_case/mobileTest/university.js',
-          '../test_case/mobileTest/sidemenu/signup.js'
-
-
-
+          //  capabilities: {
+          //   browserName: 'chrome',
+          //   'appium-version': '1.4.10',
+          //   platformName: 'Android',
+          //   platformVersion: '4.4.2',
+          //   deviceName: 'Android Emulator',
+          // },414, 736
+          multiCapabilities: 
+          [
+         
+         // {'browserName': 'chrome',
+         //    params: {
+         //        screenSize: {
+         //          width: 414,
+         //          length: 736.
+         //        }
+         //  },
+         {
+          'browserName': 'firefox'
+          // Additional spec files to be run on this capability only.
+        
+         }
+          // {'browserName': 'phantomjs'}
         ],
+         params: {
+          login: {
+            user: 'Jane',
+            password: '1234'
+          }
+        },
+        // specs:
+        // [
+        //   '../test_case/mobileTest/access.js',
+        //   '../test_case/mobileTest/university.js',
+        //   '../test_case/mobileTest/sidemenu/signup.js'
+
+
+
+        // ],
         suites:
         {
             access: ['../test_case/mobileTest/access.js'],
@@ -70,7 +110,17 @@ exports.config = {
                          '../test_case/mobileTest/workflows/course.js',
                          '../test_case/mobileTest/workflows/category.js',
                          '../test_case/mobileTest/becomeGuru/photo.js'
-                    ]
+                    ],
+              guruHome:[
+                          // '../test_case/mobileTest/workflows/access.js',
+                          // '../test_case/mobileTest/workflows/university.js', 
+                          // '../test_case/mobileTest/workflows/major.js',
+                          // '../test_case/mobileTest/workflows/course.js',
+                          // '../test_case/mobileTest/workflows/category.js',
+                          // '../test_case/mobileTest/workflows/photo.js',
+                          '../test_case/mobileTest/guruProfile/home.js'
+                     ]
+
 
         },
         rootElement: "[ng-app]" ,
@@ -110,10 +160,10 @@ exports.config = {
                     },
                     customProcessors: []
                 }));
-          var wd = require('wd'),
-            protractor = require('protractor'),
-             wdBridge = require('wd-bridge')(protractor, wd);
-            wdBridge.initFromProtractor(exports.config);
+          // var wd = require('wd'),
+          //   protractor = require('protractor'),
+          //    wdBridge = require('wd-bridge')(protractor, wd);
+          //   wdBridge.initFromProtractor(exports.config);
 
 
     

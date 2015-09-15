@@ -2,22 +2,25 @@ describe('Major Test', function () {
 	var guruButton = element (by.css('[ng-click="goToBecomeGuru()"]'));
 	var nextStep = element(by.css('[ng-click="nextSlide()"]'));
 
-	afterEach(function()
-	{
-		doc.checkLists("major-list","major.name")
-	});
+	// afterEach(function()
+	// {
+	// 	doc.checkLists("major-list","major.name")
+	// });
 	
 	it ('Open The Request',function()
 	{
 		guruButton.click();
 
 	});
-
+		it('check Data repeating',function()
+	{
+		doc.checkLists('major-list','major.name');
+	});
 	describe('Check Search Results',function()
 	{
 		it('send a key',function()
 		{
-	    	doc.setInput('b',2);
+	    	doc.setInput('b',0);
 
 		});
 		it('Check the Search result is not empty',function()
@@ -30,7 +33,7 @@ describe('Major Test', function () {
 		{
 			element.all(by.tagName("input")).then(function(inputs)
 	      	{
-	      		inputs[2].clear();
+	      		inputs[0].clear();
 	      	});
 	      	
 		});

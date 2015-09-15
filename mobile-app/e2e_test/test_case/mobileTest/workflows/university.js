@@ -1,4 +1,4 @@
-describe('Workflow : University page', function () {
+describe('@Workflow : University page', function () {
  	//browser.driver.get("http://localhost:8100/#/university");
 	it("choose a university",function()
 	{

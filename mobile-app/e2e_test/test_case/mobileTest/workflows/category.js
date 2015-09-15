@@ -1,4 +1,4 @@
-describe('Workflow : category page', function () {
+describe('@Workflow : category page', function () {
 	var nextStep = element.all(by.css('[ng-click="nextSlide()"]'));
 	var skillPage = element (by.id('skill'));
 

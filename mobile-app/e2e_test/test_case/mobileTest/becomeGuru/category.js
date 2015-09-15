@@ -6,6 +6,10 @@ describe('Category Test', function () {
 	        describe('Click the Category #'+index,function()
 	        {
 	        	var count = 0;
+	        	it('Check a Category Title',function()
+	        	{
+	        		expect(element(by.binding('category.name')).getText()).toBe("SELECT CATEGORY")
+	        	});
         		it('Open a Category',function()
 				{
 					doc.newPickList('skills-list',index);
@@ -22,6 +26,10 @@ describe('Category Test', function () {
 			        		for (var i = 0 ; i<items.length ; ++i)
 			        		{
 			        			items[i].click();
+			        			if (index===0)
+			        			{
+        							doc.switchAlert();	
+			        			}
 			        			++ count
 			        		}
 			        	});	

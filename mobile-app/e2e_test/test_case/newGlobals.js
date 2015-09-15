@@ -79,7 +79,7 @@ var global = function() {
   this.checkMsg = function(msg)
   {
     var newMsg = element(by.css(".loading-container")).element(by.tagName('span'));
-    browser.wait(EC.presenceOf(newMsg),5000);
+    browser.wait(EC.presenceOf(newMsg),1000);
     newMsg.getAttribute('value').then(function(value)
     {
       expect(value).toBe(msg);
@@ -137,7 +137,7 @@ var global = function() {
   { 
     str = '#'+id+' li:not(.ng-hide)';
     element.all(by.css(str)).then(function (items) {
-          var length = (items.length+1)/ 2 ;
+          var length = (items.length)
           var length2 = items.length - length;
           var dataName;
           var name
@@ -145,7 +145,7 @@ var global = function() {
           var tempName;
           var tempGroupName;
 
-          console.log (length);
+          // console.log (length);
            for(var j = 0 ; j < length; ++j)
            {
                   name= items[j].element(by.binding(binding)).getText().then(function(text){
@@ -173,32 +173,32 @@ var global = function() {
                   }
             } 
 
-           for(var j = length ; j < length2; ++j)
-           {
-                  name= items[j].element(by.binding(binding)).getText().then(function(text){
-                    return text;
-                  });
-                  //class type 
-                  groupName=items[j].getAttribute('ng-repeat').then(function(value){
-                    return value;
-                  });
+           // for(var j = length ; j < length2; ++j)
+           // {
+           //        name= items[j].element(by.binding(binding)).getText().then(function(text){
+           //          return text;
+           //        });
+           //        //class type 
+           //        groupName=items[j].getAttribute('ng-repeat').then(function(value){
+           //          return value;
+           //        });
 
-                  for(var i = j+1; i < length2 ; i++)
-                  {
-                        //cmopare name
-                      tempName= items[i].element(by.binding(binding)).getText().then(function(text){
-                         return text;
-                      });
+           //        for(var i = j+1; i < length2 ; i++)
+           //        {
+           //              //cmopare name
+           //            tempName= items[i].element(by.binding(binding)).getText().then(function(text){
+           //               return text;
+           //            });
 
-                      //class type 
-                      tempGroupName= items[i].getAttribute('ng-repeat').then(function(value){
-                        return value;
-                      });
+           //            //class type 
+           //            tempGroupName= items[i].getAttribute('ng-repeat').then(function(value){
+           //              return value;
+           //            });
 
-                     expect(name).not.toBe(tempName, "Data Repeating");
-                   //  expect(groupName).toBe(tempGroupName, "Difrerent ng Group");
-                  }
-            } 
+           //           expect(name).not.toBe(tempName, "Data Repeating");
+           //         //  expect(groupName).toBe(tempGroupName, "Difrerent ng Group");
+           //        }
+           //  } 
                
     });
   }

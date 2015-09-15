@@ -1,11 +1,17 @@
-describe('Workflow : Major page', function () {
+describe('@Workflow : Major page', function () {
 	var nextStep = element(by.css('[ng-click="nextSlide()"]'));
 	var guruButton = element (by.css('[ng-click="goToBecomeGuru()"]'));
 
 
 	it ('Open The Request',function()
 	{
-		guruButton.click();
+		guruButton.isPresent().then(function(result)
+		{
+			console.log("test"+result);
+			if(result)
+				guruButton.click();
+
+		})
 	});
 	it('check Data repeating',function()
 	{
@@ -41,7 +47,7 @@ describe('Workflow : Major page', function () {
 		it('Pick a Course',function()
 		{
 			browser.wait(EC.visibilityOf(element(by.id('major-list'))),20000);
-		    doc.newPickList('major-list');
+		    doc.newPickList('major-list',5);
 		});
 		it('Next page',function()
 		{

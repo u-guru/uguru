@@ -1,4 +1,4 @@
-describe('Workflow : Course page', function () {
+describe('@Workflow : Course page', function () {
 	var nextStep = element.all(by.css('[ng-click="nextSlide()"]'));
 	var guruButton = element (by.css('[ng-click="goToBecomeGuru()"]'));
 	
@@ -7,8 +7,7 @@ describe('Workflow : Course page', function () {
 	{
 		it('send a key',function()
 		{
-	    	doc.setInput('b',0);
-
+	    	doc.setInput('c',1);
 		});
 		it('Check the Search result is not empty',function()
 		{
@@ -18,7 +17,10 @@ describe('Workflow : Course page', function () {
 		});
 		it('clear a key',function()
 		{	
-			 element(by.tagName("input")).clear();
+			 element.all(by.tagName("input")).then(function(items)
+			 	{
+			 		items[1].clear();
+			 	});
 		});
 
 	});

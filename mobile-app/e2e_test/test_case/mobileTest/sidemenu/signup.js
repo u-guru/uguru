@@ -86,7 +86,7 @@ describe('Sign-up test', function () {
 			// doc.pickSideMenu(5,"Logout");
 			doc.checkItemDisplay("Logout",true,'click');
 
-			browser.wait(EC.alertIsPresent(), 4000);
+			browser.wait(EC.alertIsPresent(), 8000);
 			 var alertDialog = browser.switchTo().alert();
 			 alertDialog.accept();  // Use to accept (simulate clicking ok)
 		});
@@ -95,9 +95,9 @@ describe('Sign-up test', function () {
 		});
 		it("open the side menu",function()
 		{
-	        browser.wait(EC.visibilityOf(sideMenuButton),3000);
+	        browser.wait(EC.visibilityOf(sideMenuButton),8000);
 			sideMenuButton.click();
-	        browser.wait(EC.visibilityOf(sideMenuList),3000);
+	        browser.wait(EC.visibilityOf(sideMenuList),8000);
 	        expect(sideMenuList.isDisplayed()).toBe(true);
 		});
 		it("Active Sign-up",function()

@@ -20,16 +20,16 @@ describe('Course Test', function () {
 	// 		});
 	// 	});
 	// })
-	it("check the page",function()
-	{
-		//
-	});
+	// it("check the page",function()
+	// {
+	// 	//
+	// });
 	
 	describe('Check Search Results',function()
 	{
 		it('send a key',function()
 		{
-	    	doc.setInput('b',0);
+	    	doc.setInput('b',1);
 
 		});
 		it('Check the Search result is not empty',function()
@@ -40,8 +40,13 @@ describe('Course Test', function () {
 		});
 		it('clear a key',function()
 		{	
-			 element(by.tagName("input")).clear();
+			element.all(by.tagName("input")).then(function(inputs)
+	      	{
+	      		inputs[1].clear();
+	      	});
+
 		});
+
 
 	});
 	describe('Check Chosen Course is showing',function()
@@ -65,7 +70,6 @@ describe('Course Test', function () {
 		var elements =  element.all(by.css('#courses-list li:not(.ng-hide)'))
 		it('Pick a couse',function()
 		{
-
 		    doc.newPickList('courses-list');
 		    elements.then(function(items)
 		    	{
@@ -75,6 +79,9 @@ describe('Course Test', function () {
 		it('delete a major',function()
 		{
 			doc.newPickList('courses-list',0);
+		});
+		it('Confirm Deleted',function()
+		{
 			doc.switchAlert();
 		});
 		it('check delete',function()

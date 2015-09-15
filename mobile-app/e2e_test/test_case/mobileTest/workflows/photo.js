@@ -1,4 +1,4 @@
-describe('Photo test', function () {
+describe('@Photo test', function () {
 	var nextStep = element(by.css('[ng-click="goToGuruMode()"]'));
 	var photoButton = element(by.id("photo-container"));
 	var photoIcon = element(by.id('profile-icon')).element(by.tagName('img'));
