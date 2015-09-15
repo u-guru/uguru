@@ -41,7 +41,6 @@ exports.config = {
           multiCapabilities: 
           [
          
-         {'browserName': 'chrome'},
          {
           'browserName': 'firefox'
           // Additional spec files to be run on this capability only.
