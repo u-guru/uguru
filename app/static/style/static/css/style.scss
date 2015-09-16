@@ -1,0 +1,412 @@
+@import 'mixin';
+@import 'default';
+
+body {
+	background: $charcoal;
+	color: white;
+}
+a {
+	color: $shamrock;
+	text-decoration: none;
+}
+#{$links} {
+	color: $cerise;
+}
+::-webkit-selection {
+    background: rgba(white,.2);
+}
+::-moz-selection {
+    background: rgba(white,.2);
+}
+::selection {
+    background: rgba(white,.2);
+}
+code, pre {
+	font-family: "Source Code Pro", monospace;
+}
+pre {
+	word-wrap: break-word;
+	margin: 0;
+	padding: 0;
+}
+
+body > section {
+	@include opacity(0);
+	@include flex;
+	@include flex-wrap;
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding: 30px;
+	overflow: hidden;
+	article {
+		width: 60%;
+		header {
+			h1 {
+				font-weight: 900;
+				text-transform: uppercase;
+			}
+			h1:only-child {
+				margin-bottom: 15px;
+			}
+			p {
+				margin-top: 0;
+				margin-bottom: 15px;
+			}
+		}
+		p {
+			font-size: 18px;
+			margin: 20px 0;
+		}
+		ol, ul {
+			font-size: 18px;
+		}
+		code {
+			background: rgba(white,.1);
+		}
+		pre {
+			span {
+				display: inline-block;
+				font-size: 0px;
+				width: 0px;
+				height: 0px;
+			}
+		}
+	}
+	article:only-child {
+		width: 100%;
+	}
+	aside {
+		@include flex;
+		@include flex-center;
+		position: relative;
+		width: 40%;
+		.mobile {
+			@include center-xy;
+			width: 316px;
+			height: 650px;
+			border-collapse: collapse;
+			border-radius: 30px;
+			border: 2px solid rgba(white, .2);
+			.mobile-top {
+				position: absolute;
+				top: 0;
+				height: 78px;
+				width: 100%;
+				&:before {
+					@include center-xy;
+					@include round;
+					content: "";
+					display: block;
+					width: 50px;
+					height: 7px;
+					border: 2px solid rgba(white, .2);
+				}
+			}
+			.mobile-content {
+				@include center-xy;
+				width: 278px;
+				height: 494px;
+			}
+			.mobile-bot {
+				position: absolute;
+				bottom: 0;
+				height: 78px;
+				width: 100%;
+				&:after {
+					@include center-xy;
+					@include round;
+					content: "";
+					display: block;
+					width: 50px;
+					height: 50px;
+					border: 2px solid rgba(white, .2);
+				}
+			}
+		}
+	}
+}
+
+#header {
+	@include flex-center;
+	h1 {
+		font-size: 84px;
+		font-weight: 900;
+		text-transform: uppercase;
+	}
+	h2 {
+		font-size: 52px;
+		font-weight: 200;
+	}
+}
+
+#type {
+	ul {
+		margin: -5px -5px 5px;
+		font-family: "Source Code Pro", monospace;
+		font-size: 18px;
+		li {
+			h2 {
+				font-size: 20px;
+				text-transform: uppercase;
+			}
+			span {
+				display: block;
+				font-size: 18px;
+			}
+			ul {
+				@include listless;
+			}
+		}
+	}
+}
+
+#grid {
+	ul {
+		margin: -5px -5px 15px;
+		font-family: "Source Code Pro", monospace;
+		font-size: 18px;
+		li {
+			span {
+				display: block;
+				height: 33px;
+			}
+			.container {
+				height: 150px;
+				.inside {
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+	}
+	p {
+		font-size: 18px;
+	}
+	.ugrid-5 {
+		font-size: 16px;
+	}
+}
+
+#color {
+	padding: 0;
+	article {
+		height: 100%;
+		ul {
+			height: 100%;
+			li {
+				height: 100%;
+				div {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					text-align: center;
+					h2, span {
+						width: 100%;
+					}
+					span {
+						display: block;
+						font-family: "Source Code Pro", monospace;
+						font-size: 18px;
+					}
+				}
+				.bg-charcoal, .bg-slate, .bg-campus, .bg-white, .bg-smoke, .bg-taupe {
+					height: calc(100% / 3);
+				}
+				.bg-moola, .bg-azure, .bg-lake {
+					height:  20%;
+				}
+				.bg-shamrock {
+					height:  40%;
+				}
+				.bg-eggplant, .bg-cerise, .bg-orange, .bg-gold {
+					height: 25%;
+				}
+			}
+		}
+	}
+}
+
+#opacity {
+	padding: 0;
+	font-family: "Source Code Pro", monospace;
+	font-size: 14px;
+	article {
+		height: 100%;
+		ul {
+			height: 100%;
+			li {
+				height: 100%;
+				div {
+					@include flex;
+					@include flex-center;
+					height: calc(100% / 8);
+				}
+			}
+		}
+	}
+}
+
+#graphic {
+	ul {
+		margin: -1px;
+		li {
+			line-height: .7;
+			padding: 1px;
+			svg {
+				width: 100%;
+				height: 100%;
+				background: rgba(white, .2);
+			}
+		}
+	}
+	li:not(.social) {
+		svg {
+			padding: 30px;
+		}
+	}
+}
+
+#misc {
+	ul {
+		margin: -5px -5px 5px;
+		font-family: "Source Code Pro", monospace;
+		font-size: 18px;
+		small {
+			font-size: 14px;
+		}
+	}
+	.example {
+		li {
+			height: 150px;
+			.bg-white-20p {
+				position: relative;
+				height: 100%;
+				.bg-slate-75p {
+					width: 90%;
+					height: 80%;
+				}
+			}
+		}
+	}
+}
+
+#headers {
+	.mobile-content {
+		.third {
+			height: 148px;
+		}
+	}
+	.bg-eggplant {
+		&:before {
+			background: url(../images/bg.jpg) no-repeat center center / cover;
+		}
+	}
+	pre {
+		font-size: 13px;
+	}
+}
+
+#input {
+	pre {
+		font-size: 13px;
+	}
+	.mobile-content {
+		.input-search-ghost {
+			position: absolute;
+			padding: 15px;
+			input {
+				padding: 5px 0 5px 15px;
+				font-size: 18px;
+			}
+			&:before {
+				width: 14px;
+				height: 14px;
+			}
+		}
+	}
+}
+
+#list {
+	.mobile-content {
+		.list {
+			font-size: 20px;
+		}
+	}
+	pre {
+		font-size: 13px;
+	}
+}
+
+#checkbox {
+	ol {
+		list-style: none;
+		padding: 0;
+		margin-bottom: 0;
+		font-size: 16px;
+	}
+	pre {
+		font-size: 13px;
+		line-height: normal;
+	}
+}
+
+#progress {
+	pre {
+		font-size: 13px;
+	}
+}
+
+.mobile-content {
+	header {
+		.header-nav a {
+			svg {
+				height: 20px!important;
+				width: auto!important;
+			}
+			h1 {
+				font-size: 18px!important;
+				font-weight: 400!important;
+				padding: 15px 36px!important;
+			}
+		}
+	}
+	input, button {
+		font-size: 20px;
+	}
+}
+
+@media screen and (max-width:1200px) {
+	#small {
+		@include flex;
+		@include flex-center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+@media screen and (min-width:1201px) {
+	section {
+		filter: alpha(opacity=100)!important;
+		opacity: 1!important;
+		height: 100%!important;
+	}
+	#small {
+		display: none;
+	}
+}
+
+@media screen and (max-height:715px) {
+	body > section {
+		.mobile {
+			-webkit-transform: translate(-50%,-50%) scale(.95)!important;
+			-moz-transform: translate(-50%,-50%) scale(.95)!important;
+			-ms-transform: translate(-50%,-50%) scale(.95)!important;
+			-o-transform: translate(-50%,-50%) scale(.95)!important;
+			transform: translate(-50%,-50%) scale(.95)!important;
+		}
+	}
+}
