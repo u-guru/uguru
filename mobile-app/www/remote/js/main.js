@@ -1,6 +1,6 @@
-var LOCAL = false; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.access';
-var img_base = '';
+var LOCAL = true; //local to the 8100 codebasebirbirs
+var FIRST_PAGE='^.home';
+// var img_base = '';
 
 // // @if ADMIN
 // isAdmin = true;
@@ -18,7 +18,8 @@ if (LOCAL) {
 
   BASE = 'remote/';
 
-  REST_URL = 'http://192.168.42.78:5000';
+  // REST_URL = 'http://192.168.42.78:5000';
+  var REST_URL = 'https://www.uguru.me'
 
 } else {
   img_base = '/static/'

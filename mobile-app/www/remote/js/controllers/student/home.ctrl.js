@@ -738,6 +738,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
      $scope.$on('$ionicView.enter', function() {
       $ionicSideMenuDelegate.canDragContent(true);
+      
+
+
+
       // console.log(JSON.stringify(window.StatusBar));
       // window.StatusBar.overlaysWebView(false);
 
@@ -746,8 +750,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         //   $ionicSideMenuDelegate.toggleRight();
         // }, 500)
        $timeout(function() {
-        $scope.loader.hide();
-       }, 1500)
+        $ionicSideMenuDelegate.toggleRight();
+       }, 250)
 
         if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
             $scope.processIncomingRequests($scope.user.incoming_requests);
