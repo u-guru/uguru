@@ -1,5 +1,5 @@
 var LOCAL = true; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.guru';
+var FIRST_PAGE='^.home';
 var img_base;
 
 // // @if ADMIN
@@ -22,7 +22,7 @@ if (LOCAL) {
   BASE_URL = 'http://192.168.1.43:8100';
   REST_URL = "http://localhost:5000"
   //BASE_URL = 'http://192.168.43.155:8100';
-  
+
 
 } else {
   img_base = '/static/'

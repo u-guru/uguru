@@ -26,6 +26,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $scope.showActive = true;
   $ionicSideMenuDelegate.canDragContent(false);
 
+  //temporary
+  $scope.current_hourly = 15;
+  $scope.tip_of_day = 'Your profile is not complete. Completing your profile will increase your ranking by a lot'
+
+
   document.addEventListener("deviceready", function () {
     $scope.turnStatusBarWhiteText = function() {
       $timeout(function() {
@@ -51,7 +56,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $scope.signupModal.show();
   }
 
-  $scope.progressBarInitialized = null;
+
 
   $scope.showPreviousActions = function(index) {
       if (!$scope.user.previous_proposals || $scope.user.previous_proposals.length === 0) {
@@ -819,13 +824,12 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
         $scope.$on('$ionicView.enter', function() {
-            
-            $timeout(function() {
-              initializeProgressBars();
-            }, 500);
+            // $timeout(function() {
+            //   initializeProgressBars();
+            // }, 500);
 
-            
-            //reasoning 
+
+            //reasoning
             $timeout(function() {
               checkOnboardingStatus();
             }, 2500);

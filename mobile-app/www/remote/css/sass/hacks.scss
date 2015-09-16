@@ -1,8 +1,54 @@
 #become-guru-slidebox-container {
-	
+
 	header h1 {
 		padding-top: 25%;
 	}
 
+}
+
+#profile.guru-profile {
+    header {
+        position:absolute;
+        height:50px;
+        width:100%;
+    }
+
+    header.relative {
+        position:relative;
+    }
+
+    header a{
+        position:relative;
+    }
+
+    header a.edit-button h1{
+        position: absolute;
+        right:0px;
+    }
+
+    header a.save-button h1{
+        position: absolute;
+        right:0px;
+    }
+}
+
+
+.side-menu-profile {
+
+    img.side-menu-profile-img {
+        height:100px;
+        width:100px;
+        margin:0 auto;
+    }
+}
+
+.uguru-view.skills-view .onboarding#skill #skills-list ul {
+    height: 100%;
+    padding: 0 !important;
+    li {
+        width: 50%;
+        display: inline-flex;
+        padding: 0!important;
+    }
 }
 

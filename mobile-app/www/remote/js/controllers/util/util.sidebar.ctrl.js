@@ -783,7 +783,9 @@ angular.module('uguru.util.controllers')
         options += ',hardwareback=no';
       }
 
-      var ref = cordova.InAppBrowser.open(url, target, options);
+      if (cordova) {
+        var ref = cordova.InAppBrowser.open(url, target, options);
+      }
 
     };
 
