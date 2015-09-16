@@ -23,6 +23,10 @@ angular.module('uguru.guru.controllers')
     $scope.profile = {edit_mode:false, showCredibility:false};
     $scope.root.vars.guru_mode = true;
 
+    $scope.user_skills = [{name: "CSS3"}, {name: "Javascript"}, {name: "Photoshop"}, {name: "HTML5"}];
+    console.log($scope.user.skills);
+    $scope.user.languages = $scope.user.languages || [{name:"English"}, {name:"Chinese"}];
+
     if (!$scope.root.vars.profile) {
       $scope.root.vars.profile = false;
     }
@@ -167,6 +171,20 @@ angular.module('uguru.guru.controllers')
       });
     }
 
+    $scope.launchMajorModal = function() {
+      $scope.loader.show();
+      $ionicModal.fromTemplateUrl(BASE + 'templates/majors.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.majorModal = modal;
+            $timeout(function() {
+              $scope.loader.hide();
+            }, 500)
+            $scope.majorModal.show();
+      });
+    }
+
     $scope.$on('modal.shown', function() {
       if ($scope.tutoringPlatformsModal.isShown()) {
         $timeout(function() {
@@ -212,6 +230,9 @@ angular.module('uguru.guru.controllers')
     $scope.saveGuruProfile = function() {
       $scope.success.show(0, 1500, 'Profile Successfully Saved');
       $scope.root.vars.profile.edit_mode = !$scope.root.vars.profile.edit_mode;
+      $timeout(function() {
+        $scope.profile.edit_mode = false;
+      }, 500)
     }
 
     $scope.showActionSheetTranscriptPhoto = function() {
@@ -287,6 +308,8 @@ angular.module('uguru.guru.controllers')
         element.click();
       }
     }
+
+
 
     $scope.takeTranscriptPhoto = function(index) {
 

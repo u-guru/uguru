@@ -12,11 +12,13 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'Settings',
   'Utilities',
   'deviceInfo',
-  'DeviceService',
+  'UniversityMatcher',
+  '$ionicSlideBoxDelegate',
   AddUniversityCtrl]);
 
-function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
-  Geolocation, Settings, Utilities, deviceInfo, DeviceService) {
+function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher, 
+  Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher, $ionicSlideBoxDelegate) {
+
     console.log("passed deviceInfo: " + deviceInfo);
 
     $scope.getGPSCoords = function() {
@@ -27,6 +29,27 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       } else {
         console.log("still waiting for $timeout to clear, please try again shortly");
       }
+    }
+
+
+
+    var queryTimeout = false;
+    var emptyTimeout = false;
+    $scope.query = function(input) {
+      if(!queryTimeout) {
+        queryTimeout = true;
+        //$scope.universities = Utilities.nickMatcher(input, University.getTargetted());
+        $scope.universities = UniversityMatcher.cachedMatch(input);
+        $timeout(function() {queryTimeout = false;}, 600);
+      }
+      else if(input.length === 0) {
+        if(!emptyTimeout) {
+          emptyTimeout = true;
+          $scope.universities = UniversityMatcher.cachedMatch(input);  
+          $timeout(function() {emptyTimeout = false;}, 600);
+        }       
+      }
+
     }
 
     // if (deviceInfo==='android') {
@@ -46,11 +69,14 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       }
     }
 
+    $ionicSlideBoxDelegate.update();
     //back button
     $scope.goToAccess = function() {
-      console.log("pressed goToAccess()");
-      $ionicViewSwitcher.nextDirection('back');
-      $state.go('^.access');
+      // console.log("pressed goToAccess()");
+      // $ionicViewSwitcher.nextDirection('back');
+      // $state.go('^.access');
+
+    $ionicSlideBoxDelegate.previous();
     }
 
     function sortByRank(list) {
@@ -63,10 +89,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         return 0;
       }
       return list.sort(compareRank);
-    }
-
-    $scope.query = function(input) {
-      $scope.universities = Utilities.nickMatcher(input, University.getTargetted());
     }
 
     $scope.universitySelected = function(university, $event) {
@@ -96,6 +118,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           $timeout(function() {
             $scope.loader.hide();
             $ionicViewSwitcher.nextDirection('forward');
+            UniversityMatcher.clearCache();
               $state.go('^.home')
           }, 1000);
       }
@@ -127,7 +150,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         document.querySelector('header a.geolocation-icon .ion-navigate').style.color = '#46FF00';
         $timeout(function() {
             $scope.limit = 10;
-            $scope.defaultLimit();
             schoolList.scrollTop = 0;
             $scope.location = true;
             console.log("$scope.location is now: " + $scope.location);
@@ -137,16 +159,5 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
     };
 
-
-
-      $scope.$on('$ionicView.enter', function() {
-          if (DeviceService.getDevice().platform ==='iOS') {
-            DeviceService.ios.showStatusBar();
-          }
-      })
-
-    $scope.defaultLimit = function() {
-      $scope.limit = 10;
-    }
 
 }

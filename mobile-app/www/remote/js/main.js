@@ -1,5 +1,5 @@
 var LOCAL = true; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.guru';
+var FIRST_PAGE='^.home';
 var img_base;
 
 // // @if ADMIN
@@ -9,7 +9,6 @@ var img_base;
 var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
 var BASE = '';
-
 if (LOCAL) {
   BASE = '/remote/';
   BASE_URL = 'http://localhost:8100';
@@ -63,8 +62,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
   $ionicConfigProvider.tabs.position("bottom");
-  $ionicConfigProvider.views.maxCache(0);  //Default is 10
-  $ionicConfigProvider.views.forwardCache(false);
+  $ionicConfigProvider.views.maxCache(20);  //Default is 10
+  $ionicConfigProvider.views.forwardCache(true);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
@@ -76,15 +75,18 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   .state('root', {
         url: '',
         abstract: true,
-        templateUrl: 'templates/root.html',
+        templateUrl: BASE + 'templates/root.html',
         controller: 'RootController'
   }).
   state('root.university', {
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
         resolve: {
+          loadCache: function($templateCache) {
+            $templateCache.get(BASE + 'templates/university.html');
+          },
           deviceInfo: function(DeviceService) {
-            return DeviceService.getDevice();
+            return DeviceService.getPlatform();
           }
         },
         controller: 'AddUniversityCtrl'
@@ -242,7 +244,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
 
 
-  $urlRouterProvider.otherwise('/access');
+  $urlRouterProvider.otherwise('/university');
 
 
 });

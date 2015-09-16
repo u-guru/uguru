@@ -1,79 +1,39 @@
 <ion-view class='uguru-view guru-view bg-charcoal'>
 
-  <section id="guru-home"class="request student-home">
-   <header>
-      <div class="header-nav">
-        <div class='header-nav-center'>
-          <h1 class="text-center">Your Ranking</h1>
-        </div>
-        <a class="header-nav-next" ng-click='toggleRightSideMenu()'>
-          <i class='icon ion-navicon'></i>
-        </a>
-      </div>
-      <div class='header-ranking text-center'>
-        <div class='pure-g full-y flex-column'>
-            <div class='pure-u-1'>
-              <h1>At {{user.university.title}}</h1>
-            </div>
-            <div class='pure-u-1 flex-grow-pro flex-align-self-center'>
-              <div class='pure-g full-x flex-align-self-stretch'>
-                <div class='pure-u-1-2 flex-align-self-center guru-ranking-container'>
-                  <!-- 75th percentile -->
-                  <div id='guru-ranking-progress-bar' class='full-xy'>
+  <section id="guru-home">
 
-                  </div>
-                </div>
-                <div class='pure-u-1-2 flex-align-self-center'>
-                  <div class='pure-g full-xy'>
-                    <div class='pure-u-1 progress-bar-container'>
-                      <h4><strong><span id='credibility-percent'>20</span>%</strong> <span class='uppercase-text'> CRED </span></h4>
-                      <div id='guru-credibility-progress-bar' class='full-xy'>
-                        &nbsp;
-                      </div>
-                    </div>
-                    <div class='pure-u-1 progress-bar-container'>
-                      <h4><strong><span id='profile-percent'>65</span>%</strong> <span class='uppercase-text'> Profile </span></h4>
-                      <div id='guru-profile-progress-bar' class='full-xy'>
-                        &nbsp;
-                      </div>
-                    </div>
-                    <div class='pure-u-1 progress-bar-container'>
-                      <h4><strong>$<span id='hourly-rate'>39</span></strong> <span class='uppercase-text'> Hour </span></h4>
-                      <div id='guru-hourly-progress-bar' class='full-xy'>
-                        &nbsp;
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <header class="bg-azure">
+      <h1 class="text-center">Guru Ranking</h1>
+      <a class="header-close" href="#">
 
-          </div>
-        </div>
-      </div>
+      </a>
     </header>
-    <div id="guru-home-content">
-        <div class='pure-g tip-container text-center full-xy'>
-          <ion-slide-box on-slide-changed="slideHasChanged($index)" class='guru-home-tips full-xy'>
-            <ion-slide class='full-xy bg-charcoal'>
-              <div class='pure-g'>
-                <div class='pure-u-1 bg-charcoal'>
-                  <h2>
-                    Tip of the day
-                  </h2>
-                  <p>
-                    Complete your profile to unlock access to your Guru customizer
-                  </p>
-                </div>
-              </div>
-            </ion-slide>
-            <ion-slide>
-              <div class="box yellow"><h1>YELLOW</h1></div>
-            </ion-slide>
-            <ion-slide>
-              <div class="box pink"><h1>PINK</h1></div>
-            </ion-slide>
-          </ion-slide-box>
+
+    <div class='ugrid'>
+      <h1 class='text-center'> {{user.university.title}} </h1>
+        <div class='ugrid-3 text-center p20x-p30y'>
+          <h4>
+            Credibility </br>
+            {{user.current_credibility_percent}}%
+          </h4>
+          <h4>
+            Profile </br>
+            {{user.current_profile_percent}}%
+          </h4>
+          <h4>
+            Ranking </br>
+            {{user.current_guru_ranking}}%
+          </h4>
+        </div>
+        <div class='ugrid text-center p10xy'>
+          <h3> Current Hourly </h3>
+            ${{current_hourly}}</h1>
+        </div>
+        <div class='tip-of-day ugrid flex-center bg-shamrock p10xy'>
+          <div class='container text-center p20x-p5y'>
+            <h2 class='p10xy'>Tip of Day</h2>
+            <p> {{tip_of_day}} </p>
+          </div>
         </div>
     </div>
 

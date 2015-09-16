@@ -25,11 +25,9 @@ var launchIntercomeSetActive = function() {
 
 var animateSearchBoxResults = function(color, callback) {
 
-    $('#search-box').css('height', $('#search-box').height() + 'px');
     $('#search-box p').hide();
     $('#search-container').hide();
     $('#search-box-loader').css('visibility','visible');
-
     $('#search-box-loader svg').css('fill', color);
 
     setTimeout(function() {
@@ -46,14 +44,13 @@ var animateSearchBoxResults = function(color, callback) {
 }
 
 var hideUniversityModalShowSearchBox = function() {
+
     // $(".search-results").hide();
-    $('#search-box').css('display', 'block');
-    $('#search-box').css('display', 'block');
+    $('#search-box').show();
     $('#search-box').addClass('animated slideInUp active').show();
     $('#search-box p').show();
     $('#search-container').show();
     // $('#search-box-loader').css('visibility','visible');
-
     // $('#search-box-loader svg').css('fill', color);
 
     setTimeout(function() {
