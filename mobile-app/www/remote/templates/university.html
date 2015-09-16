@@ -1,8 +1,8 @@
-<ion-slide-box delegate-handle='access-university-slide-box'>
-  <ion-slide>
+<u-slide-box delegate-handle='access-university-slide-box'>
+  <u-slide>
     <div ng-include="img_base + BASE + 'templates/access.html'"></div>
-  </ion-slide>
-  <ion-slide>
+  </u-slide>
+  <u-slide u-before-enter='testBefore()' u-after-enter='testAfter()'>
     <ion-view class='uguru-view university-view' >
     <section id="school" class="onboarding" >
         <header>
@@ -52,5 +52,5 @@
       </div>
     </section>
     </ion-view>
-  </ion-slide>
-</ion-slide-box>
+  </u-slide>
+</u-slide-box>

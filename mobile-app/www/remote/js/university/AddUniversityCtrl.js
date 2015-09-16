@@ -19,6 +19,14 @@ angular.module('uguru.util.controllers', ['sharedServices'])
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher, 
   Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher, $ionicSlideBoxDelegate) {
 
+    $scope.testBefore = function() {
+      console.log('called beforeEnter');
+    };
+
+    $scope.testAfter = function() {
+      console.log("called afterEnter");
+    };
+
     console.log("passed deviceInfo: " + deviceInfo);
 
     $scope.getGPSCoords = function() {

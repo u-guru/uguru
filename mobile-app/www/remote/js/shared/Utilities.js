@@ -14,7 +14,10 @@ function Utilities($cordovaSplashscreen, Settings) {
 		getDistanceInMiles: getDistanceInMiles,
 		readError: readError,
 		nickMatcher: nickMatcher,
-		getFileName: getFileName
+		getFileName: getFileName,
+		isElementInViewport: isElementInViewport,
+		transitionEndEventName: transitionEndEventName,
+		fireBeforeEnter: fireBeforeEnter
 	}
 
 	function getNetworkSpeed() {
@@ -97,5 +100,46 @@ function Utilities($cordovaSplashscreen, Settings) {
 		return fileName;
 	}
 
+	function isElementInViewport (el) {
+	    var rect = el[0].getBoundingClientRect();
+
+	    return (
+	        rect.top >= 0 &&
+	        rect.left >= 0 &&
+	        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+	        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+	    );
+	}
+
+	function transitionEndEventName() {
+	    var i,
+	        undefined,
+	        el = document.createElement('div'),
+	        transitions = {
+	            'transition':'transitionend',
+	            'OTransition':'otransitionend',  // oTransitionEnd in very old Opera
+	            'MozTransition':'transitionend',
+	            'WebkitTransition':'webkitTransitionEnd'
+	        };
+
+	    for (i in transitions) {
+	        if (transitions.hasOwnProperty(i) && el.style[i] !== undefined) {
+	            return transitions[i];
+	        }
+	    }
+	}
+
+	var BeforeEnterEvent = new CustomEvent("beforeEnter");
+
+	function fireBeforeEnter() {
+		return BeforeEnterEvent;
+	}
+
+	
+
 
 }
+
+
+
+

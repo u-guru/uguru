@@ -1,0 +1,23 @@
+.photo-view {
+  background: #2B3234; }
+  .photo-view .onboarding-prop {
+    top: 45% !important; }
+  .photo-view img.user-photo-img {
+    max-height: 200px;
+    width: auto;
+    border-radius: 50%; }
+  .photo-view li.sample-photo {
+    display: inline; }
+    .photo-view li.sample-photo img {
+      width: 23%;
+      margin-left: 0.5%; }
+  .photo-view #photo-list {
+    position: absolute;
+    bottom: 2.5%; }
+    .photo-view #photo-list p {
+      font-size: 14px;
+      text-align: center;
+      font-weight: 400;
+      opacity: 0.5; }
+
+/*# sourceMappingURL=photo.css.map */
