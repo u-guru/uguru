@@ -2,11 +2,8 @@
 
   <section id="request-empty" class="request full-xy student-home">
     <header class="bg-charcoal">
-      <div class="header-nav">
-        <div class='header-nav-center'>
-          <h1 class="text-center">Student Home</h1>
-        </div>
-        <a class="header-nav-next" ng-click='toggleRightSideMenu()'>
+        <h1 class="text-center">Student Home</h1>
+        <a class="header-link header-menu" ng-click='toggleRightSideMenu()'>
           <i class='icon ion-navicon'></i>
         </a>
       </div>
@@ -31,7 +28,7 @@
     <button class="home-footer-button btn-caps-fixed-bold bottom-0 bg-azure" ng-click='goToBecomeGuru()'>Become a Guru</button>
   </section>
 
-  <div ng-if='launchWelcomePopup' ng-click='closeWelcomePopup()'class='uguru-popup' ng-click='closeWelcome' id='home-uguru-popup' ng-include="img_base + 'templates/welcome.popup.html'"> </div>
+  <div ng-click='closeWelcomePopup()'class='uguru-popup' ng-click='closeWelcome' id='home-uguru-popup' ng-include="img_base + 'templates/welcome.popup.html'"> </div>
 
 
 </ion-view>

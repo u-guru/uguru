@@ -819,13 +819,16 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
         $scope.$on('$ionicView.enter', function() {
-            $timeout(function() {
-              checkOnboardingStatus();
-            }, 1000)
-
+            
             $timeout(function() {
               initializeProgressBars();
-            }, 1000)
+            }, 500);
+
+            
+            //reasoning 
+            $timeout(function() {
+              checkOnboardingStatus();
+            }, 2500);
 
             // console.log('checking for pending actions...');
 

@@ -8,55 +8,33 @@ var isDesktop = $(window).width() > 768;
 var isMobile = !isDesktop;
 //end defaults
 
-workSlider = function() {
-	if ($(window).width() > 768) {
-		$('.work-infograph').easyPieChart({
-		    size: 200,
-		    lineWidth: 8,
-		    trackColor: false,
-		    scaleColor: false,
-		    scaleLength: false
+workPopup = function() {
+	if ($(window).width() >= 768) {
+		$(".work-pane-link").each(function(e){
+			$(this).on("click", function(e) {
+				$(".work-popup").removeClass("active");
+				$(this).parent().children(".work-popup").addClass("active");
+				e.preventDefault();
+			});
 		});
-		$('#work-infograph-bg').easyPieChart({
-		    size: 196,
-		    lineWidth: 4,
-		    trackColor: "#2B3234",
-		    scaleColor: false,
-		    scaleLength: false
+	} else if ($(window).width() < 768) {
+		$(".work-pane-link").each(function(e){
+			$(this).on("click", function(e) {
+				$(this).parent().children(".work-popup").fadeIn();
+				e.preventDefault();
+			});
 		});
-	} else if ($(window).width() <= 768) {
-		$('.work-infograph').easyPieChart({
-		    size: 150,
-		    lineWidth: 8,
-		    trackColor: false,
-		    scaleColor: false,
-		    scaleLength: false
-		});
-		$('#work-infograph-bg').easyPieChart({
-		    size: 146,
-		    lineWidth: 4,
-		    trackColor: "#2B3234",
-		    scaleColor: false,
-		    scaleLength: false
+		$(".work-popup-info h3 a").each(function(e){
+			$(this).on("click", function(e) {
+				$(this).parent().parent().parent().fadeOut();
+				e.preventDefault();
+			});
 		});
 	}
 }
 
-$(document).ready(function () {
-	checkForRedirectHashes()
-	// hideIntercomShit();
-	// initParallax();
-	workSlider();
-	$(window).resize(function(){
-		// slideLeft();
-		
-		workSlider();
-	});
-
-});
-
 $(function () {
-	$("#faq dl dt ").each(function(e){
+	$("#faq dl dt").each(function(e){
 		$(this).on("click", function(e) {
 			$(this).parent().toggleClass("active");
 			e.preventDefault();
@@ -89,10 +67,8 @@ $(function () {
 	});
 
 	$('#full-overlay').on("mousewheel", function(e) {
-		 if($('#full-overlay').hasClass('active'))
-		 {
+		 if($('#full-overlay').hasClass('active')) {
  			 console.log("Remove side-menu")
-
 		 	$('#full-overlay').addClass("animated fadeOut");
 			$('#side-menu').addClass("animated slideOutLeft").one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
 			function() {
@@ -102,11 +78,9 @@ $(function () {
 			 		$('#side-menu').removeClass('animated slideOutLeft active');
 			 	}, 500)
 			});
-		 }
-		
+		}
 	});
 
-	
 	$(".top-link-close").on("click", function(e) {
 		$('#full-overlay').addClass("animated fadeOut");
 		$('#side-menu').addClass("animated slideOutLeft").one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
@@ -125,12 +99,9 @@ $(function () {
 	// });
 
 	$(".top-link-start, .link-start").on("click", function(e) {
-
 		var modalToFire = document.querySelector('#start-modal');
 		var startButton = this;
-
 		$('#start-modal').addClass('active');
-
 		//call to action tool
 		//once CTA object is instantiate, it returns a function that can reverse it
 		closeCtaAnimatedModal = cta(
@@ -143,15 +114,13 @@ $(function () {
 
 			},
 			function()   // Arg #4 (OPTIONAL) callbacks
-				{
-					console.log('callback for cta modal executed')
-					// setTimeout(function() {
-					// 	$("#overlay").toggleClass("active");
-					// },100) //seconds afterwards
-
-				}
+			{
+				console.log('callback for cta modal executed')
+				// setTimeout(function() {
+				// 	$("#overlay").toggleClass("active");
+				// },100) //seconds afterwards
+			}
 		);
-
 	});
 	$('.cta-desktop').on('click', function() {
 		carousel.showPane(0);
@@ -159,11 +128,6 @@ $(function () {
 			$('#search-bar').trigger('focus');
 		}, 500)
 	})
-	// $('#home-modal-close-link, #home-modal-submit-close-link').on("click", function(e) {
-	// 	closeCtaAnimatedModal();
-	// 	$('#start-modal').toggleClass('active');
-	// 	e.preventDefault();
-	// })
 
 	$('.top-link-chat, #link-support').on("click", function(e) {
 		document.querySelector('.intercom-launcher-button').click();
@@ -208,99 +172,6 @@ $(function () {
 	$('#cta-email-input').on("blur", function() {
 		$('#cta-email-input').css({'width': '9%'});
 	});
-
-	$('#arrow-up').on("click", function(e) {
-		// visibleDescription = $('#')
-		visibleContentElem = $('.why-uguru-content:visible');
-		visibleImageElem = $('.why-uguru-image:visible');
-		allContentElems = $('.why-uguru-content')
-		contentIndex = allContentElems.index(visibleContentElem);
-
-		if (contentIndex <= 0) {
-			visibleContentElem.removeClass('animated fadeIn');
-			visibleContentElem.addClass('animated shake')
-			setTimeout(function() {
-				visibleContentElem.removeClass('animated shake');
-				if($($('.why-uguru-content')[0]).css("display")==="none") {
-					$($('.why-uguru-content')[0]).addClass('animated fadeIn show').show();
-					$($('.why-uguru-image')[0]).addClass('animed fadeIn show').show();
-				}
-			}, 1000);
-		} else {
-			visibleContentElem.addClass('animated fadeOut');
-			visibleImageElem.addClass('animated fadeOut');
-			setTimeout(function() {
-				visibleContentElem.removeClass('animated fadeOut');
-				visibleImageElem.removeClass('animated fadeOut');
-				visibleImageElem.hide()
-				visibleContentElem.hide();
-				$($('.why-uguru-content')[contentIndex - 1]).addClass('animated fadeIn show').show();
-				$($('.why-uguru-image')[contentIndex - 1]).addClass('animated fadeIn show').show();
-			}, 750)
-		}
-	});
-	$('#arrow-down').on("click", function(e) {
-
-		visibleContentElem = $('.why-uguru-content:visible');
-		visibleImageElem = $('.why-uguru-image:visible');
-		allContentElems = $('.why-uguru-content');
-		contentIndex = allContentElems.index(visibleContentElem)
-		if (contentIndex >= 7) {
-			visibleContentElem.removeClass('animated fadeIn');
-			visibleContentElem.addClass('animated shake');
-			setTimeout(function() {
-				visibleContentElem.removeClass('animated shake');
-				if($($('.why-uguru-content')[7]).css("display")==="none") {
-					$($('.why-uguru-content')[7]).addClass('animated fadeIn show').show();
-					$($('.why-uguru-image')[7]).addClass('animed fadeIn show').show();
-				}
-			}, 1000);
-		} else {
-			visibleImageElem.addClass('animated fadeOut');
-			visibleContentElem.addClass('animated fadeOut');
-			setTimeout(function() {
-				visibleContentElem.removeClass('animated fadeOut');
-				visibleContentElem.hide();
-				visibleImageElem.removeClass('animated fadeOut');
-				visibleImageElem.hide()
-				$($('.why-uguru-content')[contentIndex + 1]).addClass('animated fadeIn show').show();
-				$($('.why-uguru-image')[contentIndex + 1]).addClass('animated fadeIn show').show();
-			}, 750)
-
-		}
-
-	})
-	$('.work-icon-link').on("click", function(e) {
-		var descriptionToShow;
-		sliderElem = document.querySelector('#slider-triangle');
-		targetElem = this;
-
-		var index = $('.work-icon-link').index(this) + 1;
-
-		svgCircle = $(this).find('svg circle')[0]
-		svgColor = $(svgCircle).css('fill');
-		setTimeout(function() {
-			sliderElemColor = $('#slider-triangle svg path').css('fill', svgColor);
-		}, 500)
-
-		$('.work-infograph').data('easyPieChart').options.barColor = svgColor;
-		$('.work-infograph').data('easyPieChart').update(index * 25)
-
-		var successCallback = function() {
-			descriptionToShow = $(targetElem).attr('id') + '-content'
-			previousWorkContent = $('.work-content:visible').addClass('animated fadeOut')
-			setTimeout(function() {
-				$(previousWorkContent).removeClass('animated fadeOut').hide()
-				previousWorkContent = $('.work-content:visible').addClass('animated fadeOut')
-				$(previousWorkContent).removeClass('animated fadeOut').hide()
-				$('#' + descriptionToShow).addClass('animated fadeIn show').show();
-			}, 750);
-		}
-		console.log("HI");
-		moveHorizontalSlider(sliderElem, targetElem, successCallback);
-	});
-
-
 });
 
 var hideIntercomShit = function() {
@@ -346,11 +217,15 @@ var checkForRedirectHashes = function() {
 }
 
 $(document).ready(function () {
+	workPopup();
+	$(window).resize(function(){
+		workPopup();
+	});
 	$(".earn-category").flip({
 		axis: 'y',
 		trigger: 'hover'
 	});
-	
+
 	$('.search-results').flip({
 		axis: 'y',
 		trigger: 'click'

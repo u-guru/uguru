@@ -764,34 +764,21 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       var checkOnboardingStatus = function() {
 
         var appOnboardingObj = $localstorage.getObject('appOnboarding');
-        if (!appOnboardingObj) {
+        if (!appOnboardingObj || appOnboardingObj === {} || !appOnboardingObj.studentWelcome) {
           appOnboardingObj = {studentWelcome:true}
           $localstorage.setObject('appOnboarding', appOnboardingObj);
-        }
-        else if (appOnboardingObj && !appOnboardingObj.studentWelcome) {
           $scope.launchWelcomeStudentPopup();
-          appOnboardingObj.studentWelcome = true;
-          $localstorage.setObject('appOnboarding', appOnboardingObj);
         }
-
       }
 
 
-      $scope.$on('$ionicView.loaded', function() {
-
-          $timeout(function() {
-            checkOnboardingStatus()
-          }, 1000)
-      });
 
      $scope.$on('$ionicView.enter', function() {
       $ionicSideMenuDelegate.canDragContent(true);
 
-
-
-       $timeout(function() {
-        $scope.loader.hide();
-       }, 1500)
+        $timeout(function() {
+            checkOnboardingStatus()
+        }, 1000)
 
         if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
             $scope.processIncomingRequests($scope.user.incoming_requests);
