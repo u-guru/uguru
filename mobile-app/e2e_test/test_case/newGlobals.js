@@ -1,5 +1,27 @@
 
 var global = function() {
+
+  /***********************************************************
+  * slideView 
+  * arg : index the page you awnna swipe
+  * desc: swip the page to left or right.
+  ************************************************************/
+  this.slideView = function(index,direction)
+  {
+    var xV = 0
+    var yV = 0;
+    if (direction === 'left')
+      xV = -200;
+    else if (direction === 'right')
+      xV =  200;
+    var ele = element.all(by.tagName("ion-slide"));
+    ele.then(function(items)
+    {
+        browser.actions().
+        dragAndDrop(items[index], {x: xV, y: yV}).
+        perform();
+    }); 
+  }
   /***********************************************************
   *
   *

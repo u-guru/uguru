@@ -28,7 +28,8 @@ exports.config = {
      // seleniumAddress: 'http://localhost:4723/wd/hub',
 
          capabilities: {
-                 'browserName': 'chrome'
+                 'browserName': 'chrome',
+                 'chromeOptions': {'args': ['show-fps-counter=true']}
          },
 
           //  capabilities: {
@@ -38,17 +39,17 @@ exports.config = {
           //   platformVersion: '4.4.2',
           //   deviceName: 'Android Emulator',
           // },414, 736
-          multiCapabilities: 
-          [
+        //   multiCapabilities: 
+        //   [
          
-         {'browserName': 'chrome'},
-         {
-          'browserName': 'firefox'
-          // Additional spec files to be run on this capability only.
+        //  {'browserName': 'chrome'},
+        //  {
+        //   'browserName': 'firefox'
+        //   // Additional spec files to be run on this capability only.
         
-         }
-          // {'browserName': 'phantomjs'}
-        ],
+        //  }
+        //   // {'browserName': 'phantomjs'}
+        // ],
          params: {
           screenSize: {
             w: 414,
@@ -169,6 +170,8 @@ exports.config = {
             browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);
             browser.driver.get("http://localhost:8100/#/")
             browser.sleep(3000);
+            browser.waitForAngular();
+
         }
         
 };

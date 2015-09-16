@@ -1,6 +1,7 @@
 describe('Major Test', function () {
 	var guruButton = element (by.css('[ng-click="goToBecomeGuru()"]'));
 	var nextStep = element(by.css('[ng-click="nextSlide()"]'));
+	var ele = element.all(by.tagName("ion-slide"));
 
 	// afterEach(function()
 	// {
@@ -12,7 +13,12 @@ describe('Major Test', function () {
 		guruButton.click();
 
 	});
-		it('check Data repeating',function()
+	// it('Slide',function()
+	// {
+	// 	doc.slideView(0,'left');
+	// 	browser.sleep(10000);
+	// });
+	it('check Data repeating',function()
 	{
 		doc.checkLists('major-list','major.name');
 	});
