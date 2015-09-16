@@ -93,16 +93,6 @@ button, a[class*=btn] {
 	}
 }
 
-@media screen and (min-width: 375px) {
-	#mobile-start {
-		#mobile-inside {
-			img {
-				max-width: none;
-			}
-		}
-	}
-}
-
 #banner {
 	@include opacity(0.5);
 	display: none;
@@ -180,18 +170,20 @@ button, a[class*=btn] {
 			box-sizing: border-box;
 			color: white;
 			.inside-text {
-				display: table;
 				width: 100%;
+				height: 100%;
 			}
 			h2 {
-				display: table-cell;
-				vertical-align: middle;
+				@include flex;
+				@include flex-center;
+				box-sizing: border-box;
 				margin: 0;
-				width: 100%;
-				padding: 62px 10px 0;
+				padding: 22px 10px 0;
+				height: 40%;
 				font-size: 14px;
 				font-weight: 300;
 				text-align: center;
+				background: $charcoal;
 				span {
 					display: block;
 					width: 100%;
@@ -234,23 +226,23 @@ button, a[class*=btn] {
 			@include listless;
 			@include flex;
 			@include flex-wrap;
-			position: absolute;
 			width: 100%;
-			bottom: 0;
-			left: 0;
-			ul {
-				@include listless;
+			height: 60%;
+			.back {
 				box-sizing: border-box;
 				position: absolute;
 				z-index: 999;
 				top: 0;
 				width: 100%;
-				height: 100px;
 				padding: 5px;
 				background: white;
 				color: $slate;
 				font-size: 12px;
 				font-weight: 400;
+			}
+			ul {
+				@include listless;
+				width: 100%;
 				li {
 					padding: 4px 0;
 					border-bottom: 1px solid;
@@ -264,10 +256,15 @@ button, a[class*=btn] {
 			}
 			.earn-category-mobile {
 				position: relative;
-				width: calc(100%/3);
-				height: 100px;
+				width: calc(100% / 3);
+				height: calc(100% / 3);
 				.front, .back {
 					border-radius: 0!important;
+				}
+				.back {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
 				}
 				> div {
 					top: 0;
@@ -291,7 +288,7 @@ button, a[class*=btn] {
 					}
 				}
 				&:nth-child(1) {
-					div {
+					.front {
 						background: $cerise;
 					}
 					ul {
@@ -301,7 +298,7 @@ button, a[class*=btn] {
 					}
 				}
 				&:nth-child(2) {
-					div {
+					.front {
 						background: $orange;
 					}
 					ul {
@@ -311,7 +308,7 @@ button, a[class*=btn] {
 					}
 				}
 				&:nth-child(3) {
-					div {
+					.front {
 						background: $gold;
 					}
 					ul {
@@ -321,7 +318,7 @@ button, a[class*=btn] {
 					}
 				}
 				&:nth-child(4) {
-					div {
+					.front {
 						background: $moola;
 					}
 					ul {
@@ -331,7 +328,7 @@ button, a[class*=btn] {
 					}
 				}
 				&:nth-child(5) {
-					div {
+					.front {
 						background: $shamrock;
 					}
 					ul {
@@ -341,7 +338,7 @@ button, a[class*=btn] {
 					}
 				}
 				&:nth-child(6) {
-					div {
+					.front {
 						background: $lake;
 					}
 					ul {
@@ -351,7 +348,7 @@ button, a[class*=btn] {
 					}
 				}
 				&:nth-child(7) {
-					div {
+					.front {
 						background: $eggplant;
 					}
 					ul {
@@ -361,7 +358,7 @@ button, a[class*=btn] {
 					}
 				}
 				&:nth-child(8) {
-					div {
+					.front {
 						background: $campus;
 					}
 					ul {
@@ -382,126 +379,163 @@ button, a[class*=btn] {
 	}
 	#work {
 		background: $slate;
-		#work-inside {
-			#work-infograph {
-				position: relative;
-				height: 150px;
-				margin-bottom: 20px;
-				div, img {
-					@include round;
-					@include center-xy;
-					margin: 0;
+		#work-panes {
+			@include listless;
+			height: 60%;
+			> li {
+				height: calc(100% / 3);
+				a {
+					@include flex;
+					@include flex-center;
+					width: 100%;
+					height: 100%;
+					color: white;
 				}
-				img {
-					width: 150px;
-					height: 150px;
+				#{$links} {
+					background: rgba(white, .1);
 				}
-			}
-			#work-text {
-				padding: 20px 20px 0;
-				p {
-					font-size: 16px;
+				h3 {
+					font-size: 20px;
+					font-weight: 600;
 				}
-				#work-slider {
-					ul {
-						@include listless;
-						@include flex;
-						@include flex-wrap;
-						li {
-							width: 25%;
-							svg {
+				.work-popup {
+					display: none;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					.work-popup-bg {
+						height: 40%;
+					}
+					.work-popup-info {
+						@include tri-down(15, $slate, 0, 0);
+						margin-top: 0;
+						height: 60%;
+						h3 {
+							position: relative;
+							background: $slate;
+							text-align: center;
+							padding: 15px 15px 14px;
+							a {
+								@include center-y;
 								display: block;
-								margin: 0 auto;
-								width: 80px;
-								height: 80px;
+								right: 15px;
+								width: 18px;
+								height: 18px;
 							}
-							&:nth-child(1) {
-								svg {
-									circle {
-										fill: $moola;
-									}
+							#{$links} {
+								background: none;
+							}
+						}
+						ul {
+							@include listless;
+							position: relative;
+							background: $slate;
+							height: calc(100% - 54px);
+							li {
+								@include flex;
+								@include flex-center;
+								box-sizing: border-box;
+								height: calc(100% / 3);
+								padding: 0 15px;
+								background: $charcoal;
+								border-top: 1px solid $slate;
+								.work-popup-icon {
+									@include round;
+									display: block;
+									width: 64px;
+									height: 64px;
+									background: $slate;
 								}
-							}
-							&:nth-child(2) {
-								svg {
-									circle {
-										fill: $lake;
+								div {
+									box-sizing: border-box;
+									padding-left: 15px;
+									width: calc(100% - 64px);
+									h4 {
+										margin: 0;
+										font-size: 18px;
+										font-weight: 600;
+										text-transform: uppercase;
 									}
-								}
-							}
-							&:nth-child(3) {
-								svg {
-									circle {
-										fill: $eggplant;
-									}
-								}
-							}
-							&:nth-child(4) {
-								svg {
-									circle {
-										fill: $campus;
+									p {
+										margin: 0;
+										font-size: 18px;
 									}
 								}
 							}
 						}
 					}
-					#slider-bar {
-						@include round;
-						display: block;
-						position: relative;
-						box-sizing: border-box;
-						margin: 30px 0 20px;
-						height: 4px;
-						background: $charcoal;
-						#slider-triangle {
-							display: block;
-							position: absolute;
-							left: 11%;
-							margin-top: -2.5%;
-							svg {
-								width: 15px;
-								height: 21px;
-								path {
-									fill: $moola;
-								}
-							}
-						}
-					}
+				}
+				&:nth-child(1), &:nth-child(1) .work-popup-bg {
+					background: $eggplant;
+				}
+				&:nth-child(2), &:nth-child(2) .work-popup-bg {
+					background: $cerise;
+				}
+				&:nth-child(3), &:nth-child(3) .work-popup-bg {
+					background: $orange;
 				}
 			}
 		}
 	}
 	#why {
 		background: $campus;
-		#why-text {
-			padding: 0 20px;
-			p {
-				font-size: 16px;
+		h2 {
+			position: relative;
+			&:before {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 20px;
+				background: #E8D3A3;
 			}
-			a {
-				@include opacity(.5);
-				display: block;
-				margin: 10px auto;
-				text-align: center;
-				svg {
-					circle {
-						fill: none;
+			&:after {
+				@include round;
+				content: "";
+				position: absolute;
+				bottom: 20px;
+				right: 15px;
+				width: 10%;
+				height: 10px;
+				background: white;
+			}
+		}
+		#why-list {
+			@include listless;
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			width: 100%;
+			height: 60%;
+			li {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				width: calc(100% / 3);
+				.why-list-icon {
+					@include round;
+					display: block;
+					margin: 0 auto 10px;
+					width: 64px;
+					height: 64px;
+					background: rgba(white,.5);
+				}
+				h3 {
+					font-size: 16px;
+					font-weight: 600;
+					text-align: center;
+					width: 100%;
+					b {
+						display: block;
+						font-weight: 600;
 					}
 				}
-			}
-			#arrow-down {
-				svg {
-					-webkit-transform: scaleY(-1);
-					-moz-transform: scaleY(-1);
-					-ms-transform: scaleY(-1);
-					-o-transform: scaleY(-1);
-					transform: scaleY(-1);
-					filter: FlipV;
-					-ms-filter: "FlipV";
+				p {
+					display: none;
 				}
-			}
-			#{$links} {
-				@include opacity(1);
 			}
 		}
 	}
@@ -567,49 +601,6 @@ button, a[class*=btn] {
 		}
 	}
 }
-.app-phone {
-	display: none!important;
-}
-
-@media screen and (min-height: 568px) {
-	#main {
-		.slide {
-			.inside {
-				h2 {
-					padding-bottom: 40px;
-				}
-			}
-		}
-	}
-}
-
-@media screen and (min-width: 375px) {
-	#main {
-		#earn {
-			#earn-categories-mobile {
-				.earn-category-mobile {
-					height: 134px;
-				}
-				ul {
-					height: 134px;
-					font-size: 14px;
-					li {
-						padding: 6px 0;
-					}
-				}
-			}
-		}
-	}
-	#top-school-banner {
-		opacity:0;
-	}
-}
-
-@media screen and (max-width: 35.5em) {
-	.intercom-launcher-preview {
-		display: none!important;
-	}
-}
 
 @media screen and (min-width: 35.5em) {
 	#top {
@@ -634,120 +625,10 @@ button, a[class*=btn] {
 		}
 	}
 	#main {
-		.slide {
-			.inside {
-				padding: 62px 30px 30px;
-				h2 {
-					display: block;
-					margin: 1em 0;
-					height: auto;
-					padding: 0;
-					font-size: 24px;
-				}
-				p {
-					font-size: 24px!important;
-				}
-				.inside-text {
-					display: block;
-				}
-			}
-		}
 		#search {
 			#search-box, .search-results{
 			    visibility: hidden;
 		    }
-		}
-		#work {
-			#work-inside {
-				#work-text {
-					padding: 0;
-					p {
-						margin: 5px 0 0;
-						font-size: 20px;
-						span {
-							display: block;
-						}
-					}
-					#work-slider {
-						ul {
-							@include listless;
-							@include flex;
-							@include flex-wrap;
-							li {
-								width: 25%;
-								svg {
-									display: block;
-									margin: 0 auto;
-									width: 80px;
-									height: 80px;
-								}
-								&:nth-child(1) {
-									svg {
-										circle {
-											fill: $moola;
-										}
-									}
-								}
-								&:nth-child(2) {
-									svg {
-										circle {
-											fill: $lake;
-										}
-									}
-								}
-								&:nth-child(3) {
-									svg {
-										circle {
-											fill: $eggplant;
-										}
-									}
-								}
-								&:nth-child(4) {
-									svg {
-										circle {
-											fill: $campus;
-										}
-									}
-								}
-							}
-						}
-						#slider-bar {
-							@include round;
-							display: block;
-							position: relative;
-							box-sizing: border-box;
-							margin: 30px 0 20px;
-							height: 4px;
-							background: $charcoal;
-							#slider-triangle {
-								display: block;
-								position: absolute;
-								left: 11%;
-								margin-top: -2.5%;
-								svg {
-									width: 15px;
-									height: 21px;
-									path {
-										fill: $moola;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		#why {
-			#why-text {
-				padding: 0;
-				p {
-					font-size: 20px;
-					margin: 5px 0 0;
-					span {
-						display: block;
-					}
-				}
-			}
 		}
 		#start {
 			#start-text {
@@ -782,31 +663,7 @@ button, a[class*=btn] {
 	}
 }
 
-@media screen and (max-width: 48em) {
-
-	#top {
-		#top-logo  {
-			#top-logo {
-				opacity:0;
-			}
-		}
-	}
-
-}
-
 @media screen and (min-width: 48em) {
-//	#banner {
-//		background: url("../../../static/web/images/cambridge@2x.jpg") center center / cover;
-//	}
-	#top #top-logo {
-		display:block;
-		opacity:1;
-		#top-school-banner {
-			display:block;
-			opacity: 1;
-		}
-	}
-
 	#subscribe {
 		padding-top: 50px;
 	}
@@ -860,8 +717,14 @@ button, a[class*=btn] {
 	}
 	#top {
 		#top-logo {
+			@include opacity(1);
 			@include center-x;
+			display: block;
 			position: fixed;
+			#top-school-banner {
+				display: block;
+				opacity: 1;
+			}
 			svg, img {
 				width: 100%;
 				min-width: 0!important;
@@ -874,7 +737,13 @@ button, a[class*=btn] {
 			.inside {
 				padding: 62px 50px 50px;
 				h2 {
+					display: block;
+					margin: .25em 0 1em;
+					height: auto;
+					padding: 0;
+					font-size: 24px;
 					text-align: center;
+					background: none;
 				}
 				.inside-prop {
 					display: none;
@@ -882,6 +751,9 @@ button, a[class*=btn] {
 				p {
 					font-size: 24px;
 					font-weight: 300;
+				}
+				.inside-text {
+					display: block;
 				}
 			}
 			.cta-desktop {
@@ -902,23 +774,46 @@ button, a[class*=btn] {
 		}
 		#search {
 			display: block;
+			#search-box {
+				position: relative;
+				top: 50%;
+				padding: 45px 60px 60px;
+				min-height: 150px;
+				-webkit-transform: none!important;
+				-moz-transform: none!important;
+				-ms-transform: none!important;
+				-o-transform: none!important;
+				transform: none!important;
+			}
 			#search-box, .search-results {
 				@include border-radius(10);
 				@include transition(.15s ease-in);
+				box-sizing: border-box;
+				margin-left: 20px;
 				z-index: 999;
-				overflow: hidden;
 				margin: auto;
-				width: 60%;
+				width: calc(100% - 40px);
+				max-width: 1000px;
 				background: rgba($charcoal,.9);
 				visibility: visible;
 			}
-			#search-box-loader + p {
-				color: white!important;
-				span {
-					display: block;
+			#search-box-loader {
+				@include center-xy;
+				@include flex;
+				@include flex-center;
+				visibility: hidden;
+				z-index: 100;
+				svg {
+					fill: #69B3A5;
 				}
-				span:first-child {
-					font-weight: 600;
+				+ p {
+					color: white!important;
+					span {
+						display: block;
+					}
+					span:first-child {
+						font-weight: 600;
+					}
 				}
 			}
 			p {
@@ -926,15 +821,21 @@ button, a[class*=btn] {
 				font-size: 36px;
 				text-align: center;
 			}
-			#search-box {
-				@include center-x;
-				top: 50%;
-				padding: 35px 50px 45px;
+			#search-results-close-link {
+				@include opacity(.8);
+				position: absolute;
+				backface-visibility: hidden;
+				top: 15px;
+				right: 15px;
+				width: 18px;
+				height: 18px;
 			}
 			.search-results {
 				position: relative!important;
+				top: 25%;
 				overflow: hidden;
 				height: 100%;
+				background: transparent;
 				.search-results-top {
 					padding: 25px 50px;
 					background: $cerise-mute;
@@ -966,12 +867,14 @@ button, a[class*=btn] {
 					@include flex;
 					@include flex-wrap;
 					width: 100%;
+					height: 50%;
 					> div {
 						width: 50%;
 						position: relative;
 					}
 					.search-results-map {
 						background: url(../../../static/web/images/maps.png) no-repeat center center;
+						border-bottom-left-radius: 15px;
 						.search-results-gurus {
 							@include round;
 							@include center-xy;
@@ -998,55 +901,72 @@ button, a[class*=btn] {
 						}
 					}
 					.search-results-courses {
+						height: 100%;
+						border-bottom-right-radius: 15px;
+						overflow: hidden;
 						ul {
 							@include listless;
 							@include flex;
 							@include flex-wrap;
 							width: 100%;
+							height: 100%;
 							li {
+								@include flex;
+								@include flex-center;
 								width: 50%;
+								height: calc(100% / 6);
 								box-sizing: border-box;
-								padding: 10px;
 								background: $slate;
 								color: white;
 								font-size: 18px;
 								font-weight: 400;
 							}
-							li: nth-child(1) {
+							li:nth-child(1) {
 								background: $shamrock;
 							}
-							li: nth-child(2) {
+							li:nth-child(2) {
 								background: $eggplant-mute;
 							}
-							li: nth-child(3) {
+							li:nth-child(3) {
 								background: $cerise-mute;
 							}
-							li: nth-child(4) {
+							li:nth-child(4) {
 								background: $azure-mute;
 							}
-							li: nth-child(5) {
+							li:nth-child(5) {
 								background: $moola-mute;
 							}
-							li: nth-child(6) {
+							li:nth-child(6) {
 								background: $orange-mute;
 							}
-							li: nth-child(7) {
+							li:nth-child(7) {
 								background: $lake-mute;
 							}
-							li: nth-child(8) {
+							li:nth-child(8) {
 								background: $cerise-mute;
 							}
-							li: nth-child(9) {
+							li:nth-child(9) {
 								background: $eggplant-mute;
 							}
-							li: nth-child(10) {
+							li:nth-child(10) {
 								background: $shamrock;
 							}
-							li: nth-child(11) {
+							li:nth-child(11) {
 								background: $orange-mute;
 							}
 						}
 					}
+				}
+				.back {
+				    transform: rotateY(0deg);
+				    backface-visibility: hidden;
+				    transform-style: preserve-3d;
+				    position: absolute;
+				    z-index: 1;
+				    transition: all 0.5s ease-out;
+				    visibility: visible;
+				    overflow: visible;
+				    top: 0px;
 				}
 			}
 			#search-container {
@@ -1211,21 +1131,29 @@ button, a[class*=btn] {
 						display: none;
 					}
 					#earn-categories-desktop {
+						@include center-xy;
 						@include listless;
 						@include flex;
 						@include flex-wrap;
 						box-sizing: border-box;
 						width: 100%;
-						margin: -10px 0;
+						max-width: 1500px;
+						height: 60%;
+						padding: 0 10px;
 						.earn-category {
 							width: 25%;
+							height: 50%;
 							box-sizing: border-box;
 							position: relative!important;
 							padding: 10px;
 							.earn-category-inside {
 								position: relative;
+								height: 100%;
 							}
 							.earn-category-front {
+								@include flex;
+								@include flex-wrap;
+								@include flex-center;
 								@include border-radius(5);
 								overflow: hidden;
 								position: relative!important;
@@ -1234,8 +1162,9 @@ button, a[class*=btn] {
 								padding: 30px 10px;
 								h3 {
 									position: relative;
+									width: 100%;
 									margin-top: 5px;
-									font-size: 14px;
+									font-size: 16px;
 									text-transform: uppercase;
 									span {
 										display: none;
@@ -1362,44 +1291,103 @@ button, a[class*=btn] {
 					color: $slate;
 				}
 			}
-			#work-inside {
+			#work-panes {
 				@include center-xy;
-				display: table;
-				width: 100%;
+				@include border-radius(10);
+				@include flex;
+				box-sizing: border-box;
+				overflow: hidden;
+				width: calc(100% - 40px);
 				max-width: 1000px;
-				#work-infograph, #work-text {
-					box-sizing: border-box;
-					display: table-cell!important;
-					vertical-align: middle;
-				}
-				#work-infograph {
-					margin-bottom: 0;
-					position: relative;
-					width: 40%;
-					img {
-						width: 100%;
-						height: 100%;
-						max-width: 70%;
-						max-height: 70%;
-					}
-				}
-				#work-text {
-					width: 60%;
-					h3 {
-						font-size: 40px!important;
-					}
-					p {
-						font-size: 28px!important;
-						span {
-							display: block;
+				height: 60%;
+				> li:nth-child(1) {
+					.work-popup {
+						.work-popup-info {
+							&:before {
+								left: calc(100% / 6);
+							}
 						}
 					}
-					#work-slider {
-						ul {
-							li {
-								svg {
-									width: 100px;
-									height: 100px;
+				}
+				> li:nth-child(2) {
+					.work-popup {
+						.work-popup-info {
+							&:before {
+								left: 50%;
+							}
+						}
+					}
+				}
+				> li:nth-child(3) {
+					.work-popup {
+						.work-popup-info {
+							&:before {
+								left: calc(100% / 6 * 5);
+							}
+						}
+					}
+				}
+				> li {
+					height: 35%;
+					width: calc(100% / 3);
+					.work-popup {
+						@include transition(.15s ease-in-out);
+						@include opacity(0);
+						display: block;
+						bottom: 0;
+						top: auto;
+						height: 65%;
+						&.active {
+							@include opacity(1);
+						}
+						.work-popup-bg {
+							display: none;
+						}
+						.work-popup-info {
+							height: 100%;
+							background: $charcoal;
+							&:before {
+								-webkit-transform: none;
+								-moz-transform: none;
+								-ms-transform: none;
+								-o-transform: none;
+								transform: none;
+								border-bottom-color: $charcoal;
+								margin-left: -15px;
+							}
+							h3 {
+								background: none;
+								padding-bottom: 15px;
+								a {
+									display: none;
+								}
+							}
+							ul {
+								@include flex;
+								background: none;
+								li {
+									@include flex-wrap;
+									background: none;
+									width: calc(100% / 3);
+									height: 100%;
+									border-top: 0;
+									padding-bottom: 15px;
+									.work-popup-icon {
+										width: 50px;
+										height: 50px;
+									}
+									div {
+										padding: 0;
+										width: 100%;
+										text-align: center;
+										h4 {
+											margin-top: 5px;
+											margin-bottom: 5px;
+										}
+										p {
+											font-size: 18px!important;
+										}
+									}
 								}
 							}
 						}
@@ -1413,30 +1401,42 @@ button, a[class*=btn] {
 					color: $campus;
 				}
 			}
-			#why-inside {
-				@include center-xy;
-				display: table;
+			h2 {
+				background: $charcoal;
+				height: 40%;
+				position: absolute;
+				top: 0;
+				left: 0;
 				width: 100%;
+				margin: -62px auto 0;
+				padding-top: calc(2em + 62px);
+				&:before {
+					width: 102%;
+					margin-left: -1%;
+				}
+				&:after {
+					width: 7%;
+				}
+			}
+			#why-list {
+				@include center-xy;
+				margin-top: 5.5%;
+				width: calc(100% - 40px);
 				max-width: 1000px;
-				#why-text, .app-phone {
-					box-sizing: border-box;
-					display: table-cell!important;
-					vertical-align: middle;
+				height: 40%;
+				> li {
+					width: 25%;
 					h3 {
-						font-size: 40px!important;
-					}
-					p {
-						font-size: 28px!important;
-						span {
-							display: block;
+						b {
+							display: inline!important;
 						}
 					}
-				}
-				.app-phone {
-					width: 40%;
-				}
-				#why-text {
-					width: 60%;
+					p {
+						display: block;
+						font-size: 14px;
+						text-align: center;
+						margin: 5px 0 0;
+					}
 				}
 			}
 		}
@@ -1468,152 +1468,26 @@ button, a[class*=btn] {
 			}
 		}
 	}
-	.app-phone {
-		position: relative;
-		.app-wf {
-			@include center-y;
-			@include border-radius(22);
-			right: 15%;
-			width: 192px;
-			height: 414px;
-			border-collapse: collapse;
-			border: 2px solid rgba(white,.2);
-			.app-wf-top {
-				position: absolute;
-				top: 0;
-				height: 57px;
-				width: 100%;
-				div {
-					@include center-xy;
-					@include round;
-					width: 36px;
-					height: 3px;
-					border: 2px solid rgba(white,.2);
-				}
-			}
-			.app-wf-bot {
-				position: absolute;
-				bottom: 0;
-				height: 57px;
-				width: 100%;
-				div {
-					@include center-xy;
-					@include round;
-					width: 30px;
-					height: 30px;
-					border: 2px solid rgba(white,.2);
-				}
-			}
-			.app-wf-scr {
-				@include center-xy;
-				img {
-					// display: block;
-					height: 300px;
+}
+
+@media screen and (min-width: 64em) {
+	#main {
+		#slide {
+			.inside {
+				h2 {
+					margin: 1em 0;
 				}
 			}
 		}
-	}
-}
-
-@media screen and (min-width: 990px) {
-	#main {
-		#earn {
-			.inside {
-				.inside-text {
-					#earn-categories-desktop {
-						.earn-category {
-							.earn-category-front {
-								h3 {
-									span {
-										display: inline;
-									}
-								}
-							}
-						}
+		#why {
+			#why-list {
+				height: 50%;
+				> li {
+					h3 {
+						font-size: 22px;
 					}
-				}
-			}
-		}
-	}
-}
-
-@media screen and (min-width: 1080px) {
-	#main {
-		#earn {
-			.inside {
-				.inside-text {
-					#earn-categories-desktop {
-						.earn-category {
-							.earn-category-front {
-								h3 {
-									font-size: 14px;
-								}
-							}
-							.earn-category-back {
-								ul {
-									li {;
-										font-size: 14px;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-@media screen and (min-width: 1200px) {
-	#main {
-		#earn {
-			.inside {
-				.inside-text {
-					#earn-categories-desktop {
-						.earn-category {
-							.earn-category-front {
-								h3 {
-									font-size: 18px;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-@media screen and (min-width: 1280px) and (min-height: 900px) {
-	#main {
-		#earn {
-			.inside {
-				.inside-text {
-					#earn-categories-desktop {
-						.earn-category {
-							.earn-category-front {
-								padding: 40px 10px!important;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-@media screen and (min-width: 84em) and (min-height: 800px) {
-	#main {
-		#earn {
-			.inside {
-				.inside-text {
-					#earn-categories-desktop {
-						.earn-category {
-							svg {
-								max-width: 120px;
-								max-height: 120px;
-							}
-						}
+					p {
+						font-size: 20px;
 					}
 				}
 			}
@@ -1642,9 +1516,6 @@ button, a[class*=btn] {
 			}
 		}
 		#search {
-			#search-box {
-				padding: 70px 100px 90px;
-			}
 			.search-results {
 				.search-results-top {
 					padding: 50px 100px;
@@ -1654,7 +1525,6 @@ button, a[class*=btn] {
 						ul {
 							@include listless;
 							li {
-								padding: 15px;
 								font-size: 24px;
 								width: 50%;
 							}
@@ -1693,65 +1563,23 @@ button, a[class*=btn] {
 				}
 			}
 		}
-		#earn {
-			.inside {
-				.inside-text {
-					#earn-categories-desktop {
-						.earn-category {
-							padding: 20px;
-							.earn-category-back {
-								ul {
-									li {
-										padding: 10px 0;
-										font-size: 18px!important;
-									}
-								}
+		#work {
+			#work-panes {
+				> li {
+					.work-popup {
+						.work-popup-info {
+							h3 {
+								font-size: 24px;
 							}
-						}
-					}
-				}
-			}
-		}
-	}
-	.app-phone {
-		.app-wf {
-			@include border-radius(30);
-			width: 256px;
-			height: 552px;
-			.app-wf-top {
-				height: 76px;
-				div {
-					width: 48px;
-					height: 4px;
-				}
-			}
-			.app-wf-bot {
-				height: 76px;
-				div {
-					width: 40px;
-					height: 40px;
-				}
-			}
-			.app-wf-scr {
-				img {
-					height: 400px;
-				}
-			}
-		}
-	}
-}
-
-@media screen and (min-width: 1600px) {
-	#main {
-		#earn {
-			.inside {
-				.inside-text {
-					#earn-categories-desktop {
-						.earn-category {
-							.earn-category-front {
-								padding: 40px 10px;
-								h3 {
-									font-size: 24px;
+							ul {
+								height: calc(100% - 62px);
+								li {
+									div {
+										h4 {
+											font-size: 20px;
+											margin-bottom: 5px;
+										}
+									}
 								}
 							}
 						}
@@ -1793,15 +1621,6 @@ button, a[class*=btn] {
 	justify-content: center;
 }
 
-/*
-.body-loading-div svg.loader {
-	height: 80%;
-	width: auto;
-}
-*/
-
-
-
 .body-loading-div svg,
 .body-loading-div svg g{
 	fill: #69B3A5;
@@ -1812,61 +1631,7 @@ button, a[class*=btn] {
 	width: 5em;
 }
 
-#search-box-loader {
-	visibility: hidden;
-	position: absolute;
-	z-index: 100;
-	display: -webkit-box;
-	display:-moz-box;
-	display:-ms-flexbox;
-	display:-moz-flex;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-align-items: center;
-	-webkit-flex-direction: column;
-	flex-direction: column;
-	align-items: center;
-	-webkit-justify-content: center;
-	justify-content: center;
-	width: 100%;
-	margin-left: -50px;
-	height: 100%;
-	margin-top: -35px;
-}
-
-
-#search-box-loader svg{
-	fill: #69B3A5;
-}
-
 .show {
-	display: block;
-}
-
-.search-results {
-	left: 20%!important;
-	top: 25%!important;
-}
-
-#search-box {
-	left: 15%!important;
-	padding: 35px 5% 45px!important;
-	-webkit-transform: initial!important;
-	-moz-transform: initial!important;
-	-ms-transform: initial!important;
-	-o-transform: initial!important;
-	 transform: initial!important;
-}
-
-#work-slider {
-	position: relative;
-}
-
-.why-uguru-content {
-	min-height: 130px;
-}
-
-.block {
 	display: block;
 }
 
@@ -2062,29 +1827,6 @@ html, body, #main, #main ul.carousel, #main li.slide {
 	-webkit-transform-style: preserve-3d;
 }
 
-#main ul.carousel.animate {
-	-webkit-transition: all .3s;
-	-moz-transition: all .3s;
-	-o-transition: all .3s;
-	transition: all .3s;
-}
-
-#main ul.carousel  {
-	-webkit-transform: translate3d(0%,0,0) scale3d(1,1,1);
-	-moz-transform: translate3d(0%,0,0) scale3d(1,1,1);
-	-ms-transform: translate3d(0%,0,0) scale3d(1,1,1);
-	-o-transform: translate3d(0%,0,0) scale3d(1,1,1);
-	transform: translate3d(0%,0,0) scale3d(1,1,1);
-	overflow: hidden;
-	-webkit-backface-visibility: hidden;
-	-webkit-transform-style: preserve-3d;
-}
-
-#main ul.carousel {
-	box-shadow: 0 0 20px rgba(0,0,0,.2);
-	position: relative;
-}
-
 #banner {
 	z-index: 0;
 }
@@ -2133,7 +1875,6 @@ html, body, #main, #main ul.carousel, #main li.slide {
 }
 
 #side-menu-wrapper {
-
   /*z-index:0;*/
   /*opacity:0;*/
   z-index:0;
@@ -2185,10 +1926,6 @@ html, body, #main, #main ul.carousel, #main li.slide {
   animation-duration: 0.25s;
 }
 
-.search-results {
-  background:transparent !important;
-}
-
 .menu-icons {
   position:absolute;
   bottom:0px;
@@ -2213,21 +1950,8 @@ html, body, #main, #main ul.carousel, #main li.slide {
   margin-bottom:-5%;
 }
 
-.search-results {
-  left:0% !important;
-}
 
-.search-results .back {
-    transform: rotateY(0deg);
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-    position: absolute;
-    z-index: 1;
-    transition: all 0.5s ease-out;
-    visibility: visible;
-    overflow: visible;
-    top: 0px;
-}
+
 
 .modal-main-container {
     backface-visibility: hidden;
@@ -2235,23 +1959,6 @@ html, body, #main, #main ul.carousel, #main li.slide {
     height:100%;
 }
 
-.search-results-map {
-  border-bottom-left-radius: 15px;
-}
-
-.search-results-courses {
-  border-bottom-right-radius: 15px;
-}
-
-#search-results-close-link {
-  backface-visibility: hidden;
-  top: 1%;
-  right: 2%;
-  color: white;
-  font-weight: bold;
-  opacity: 0.8;
-  position:absolute;
-}
 
 #side-menu-wrapper {
   width:auto !important;
@@ -2432,32 +2139,7 @@ html, body, #main, #main ul.carousel, #main li.slide {
 }
 
 .icon {
-	color:white;
-}
-
-// start work-pane animations
-#work-pane-animation-container {
-	width:100%;
-	.work-wage-animation-wrapper {
-		width: 100%;
-    	height: 100%;
-	}
-	.count-up-text {
-		margin-top:2%;
-		.dollar-text, #work-wage-animation {
-			font-weight:700;
-			font-size:2.5em;
-			color: white;
-		}
-		.hour-text {
-			display: block;
-		    font-size: 0.75em;
-		    font-weight: 300;
-		    text-align: center;
-		    margin-top: 2px;
-		    text-transform: uppercase;
-		}
-	}
+	color: white;
 }
 
 #intercom-container {

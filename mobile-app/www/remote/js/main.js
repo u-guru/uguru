@@ -20,18 +20,9 @@ if (LOCAL) {
   //BASE_URL = 'http://192.168.42.124:8100';
 
   BASE_URL = 'http://192.168.1.43:8100';
-
+  REST_URL = "http://localhost:5000"
   //BASE_URL = 'http://192.168.43.155:8100';
-
-  //uncomment to install direct to device
-  //make sure to remove 'remote/' in the local.index.html script sources
-  //also make sure to toggle <content> in config.xml
-
-  // BASE_URL = 'http://192.168.42.124:5000/static/nick';
-
-
-  //REST_URL = 'http://localhost:5000';
-
+  
 
 } else {
   img_base = '/static/'
