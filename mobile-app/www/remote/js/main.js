@@ -19,16 +19,16 @@ if (LOCAL) {
   BASE = 'remote/';
   //BASE_URL = 'http://192.168.42.124:8100';
 
-  BASE_URL = 'http://192.168.1.99:8100';
+  BASE_URL = 'http://192.168.42.78:8100';
 
   //BASE_URL = 'http://192.168.43.155:8100';
 
   //uncomment to install direct to device
   //make sure to remove 'remote/' in the local.index.html script sources
   //also make sure to toggle <content> in config.xml
-  
+
   // BASE_URL = 'http://192.168.42.124:5000/static/nick';
-  
+
 
   //REST_URL = 'http://localhost:5000';
 
@@ -94,7 +94,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   .state('root', {
         url: '',
         abstract: true,
-        templateUrl: 'templates/root.html',
+        templateUrl: BASE + 'templates/root.html',
         controller: 'RootController'
   }).
   state('root.university', {

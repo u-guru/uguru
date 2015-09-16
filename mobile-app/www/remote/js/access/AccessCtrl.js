@@ -19,7 +19,8 @@ angular.module('uguru.util.controllers')
 
 function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   DeviceService, LoadingService, AccessService, AnimationService,
-  $templateCache, $ionicSideMenuDelegate, DeviceService, DownloadService, UniversityMatcher, $ionicSlideBoxDelegate) {
+  $templateCache, $ionicSideMenuDelegate, DeviceService, DownloadService, UniversityMatcher,
+  $ionicSlideBoxDelegate) {
 
   DeviceService.readyDevice();
 
@@ -38,7 +39,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     errorInputMsg: null,
   };
 
-$ionicSlideBoxDelegate.update();
+// $ionicSlideBoxDelegate.update();
   $scope.checkAccessCode = function(code) {
     if(AccessService.validate(code)){
       console.log("AccessService.validate(code)" + AccessService.validate(code));
@@ -47,11 +48,12 @@ $ionicSlideBoxDelegate.update();
       //accessInput.removeEventListener('keyup', submitListener);
       //$ionicViewSwitcher.nextDirection('forward');
       //AnimationService.flip();
-      
+
       console.log('moveee');
       //$ionicSlideBoxDelegate.select( $ionicSlideBoxDelegate.next() );
-      $ionicSlideBoxDelegate.next();
-      console.log('slideBoxDelegate: ' + $ionicSlideBoxDelegate.currentIndex());
+      $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
+      // $ionicSlideBoxDelegate.next();
+      console.log('slideBoxDelegate: ' + $ionicSlideBoxDelegate.currentIndex(), $state.current.name);
 
       // $state.go('^.university');
     } else {
@@ -92,14 +94,14 @@ $ionicSlideBoxDelegate.update();
     //console.log('input field: ' + $scope.access.codeInput);
     var key = e.keyCode || e.key || e.which;
     if (key === 13) {
-      cordova.plugins.Keyboard.close();
+      // cordova.plugins.Keyboard.close();
       $timeout(function() {$scope.checkAccessCode($scope.access.codeInput)}, 400);
-
+      e.preventDefault();
     }
-    e.preventDefault();
+
   }
 
-  
+
   var redeemButton = document.getElementById('redeem-button')
   function keyboardShowHandler(height) {
     if(DeviceService.getPlatform() === 'android') {
