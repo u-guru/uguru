@@ -2,9 +2,8 @@
 - % npm install -g protractor
 - % npm install jasmine-spec-reporter --save-dev
 - % web-driver update
-For Safari Testing:
-- Download SafariDriver
-- % http://selenium-release.storage.googleapis.com/2.45/SafariDriver.safariextz
+- [For Safari Testing] Download SafariDriver
+  - % http://selenium-release.storage.googleapis.com/2.45/SafariDriver.safariextz
 
 - add following script to your bash
 
@@ -16,12 +15,12 @@ run_test() {
 	  protractor e2e_test/config/mobile.config.js --suite=major,course,category,photo 
 	fi
 }
-}
  ```
 
 
 **Running**
-- Open 3 tabs
+
+Open 3 tabs
 - First Tab:
  - % Run You Local Host
  	- EX: % ionic serve
@@ -30,7 +29,7 @@ run_test() {
 
 - Thrid Tab ( the one u gonna use for start the protractor)
 - Run Following Command (default Window Size 414 * 736)
-% run_test() Width[Option] Height[Option] 
+   - % run_test() Width[Option] Height[Option] 
 
 For Developer:
  - $ protractor "Your Config Location" [--suite] [suite case]
