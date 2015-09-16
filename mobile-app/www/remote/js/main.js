@@ -1,5 +1,5 @@
 var LOCAL = true; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.university';
+var FIRST_PAGE='^.guru';
 var img_base;
 
 // // @if ADMIN
@@ -19,7 +19,7 @@ if (LOCAL) {
   BASE = 'remote/';
   //BASE_URL = 'http://192.168.42.124:8100';
 
-  BASE_URL = 'http://192.168.42.78:8100';
+  BASE_URL = 'http://192.168.1.43:8100';
 
   //BASE_URL = 'http://192.168.43.155:8100';
 

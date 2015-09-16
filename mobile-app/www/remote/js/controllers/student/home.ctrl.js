@@ -777,16 +777,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }
 
 
-      $scope.$on('$ionicView.loaded', function() {
-
-          $timeout(function() {
-            checkOnboardingStatus()
-          }, 1000)
-      });
 
      $scope.$on('$ionicView.enter', function() {
       $ionicSideMenuDelegate.canDragContent(true);
 
+        $timeout(function() {
+            checkOnboardingStatus()
+        }, 1000)
 
 
        $timeout(function() {

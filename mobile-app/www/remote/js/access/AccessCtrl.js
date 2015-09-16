@@ -49,10 +49,17 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       //$ionicViewSwitcher.nextDirection('forward');
       //AnimationService.flip();
 
-      console.log('moveee');
+      
       //$ionicSlideBoxDelegate.select( $ionicSlideBoxDelegate.next() );
-      $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
-      // $ionicSlideBoxDelegate.next();
+
+      if ($scope.platform.mobile) {
+        cordova.plugins.Keyboard.close();
+      }
+
+      $timeout(function() {
+        $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
+      }, 250);
+
       console.log('slideBoxDelegate: ' + $ionicSlideBoxDelegate.currentIndex(), $state.current.name);
 
       // $state.go('^.university');
@@ -61,27 +68,27 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     }
   };
 
-  // $scope.accessInputOnFocus = function() {
-  //   if (DeviceService.isMobile()) {
-  //     cordova.plugins.Keyboard.disableScroll(false);
-  //     Velocity(
-  //       document.querySelector('#access-logo svg'),
-  //       {
-  //         scale:0.66,
-  //         translateY:"-140px"
-  //       },
-  //       {duration:500},
-  //       "easeInSine"
-  //     );
+  $scope.accessInputOnFocus = function() {
+    if (DeviceService.isMobile()) {
+      // cordova.plugins.Keyboard.disableScroll(false);
+      Velocity(
+        document.querySelector('#access-logo svg'),
+        {
+          scale:0.66,
+          translateY:"-33%"
+        },
+        {duration:500},
+        "easeInSine"
+      );
 
-  //     Velocity(
-  //       document.querySelector('#access-code-bar'),
-  //       {translateY:"-120px"},
-  //       {duration:500},
-  //       "ease-in-out"
-  //     );
-  //   }
-  // };
+      Velocity(
+        document.querySelector('#access-code-bar'),
+        {translateY:"-120px"},
+        {duration:500},
+        "ease-in-out"
+      );
+    }
+  };
 
   window.addEventListener('native.keyboardshow', keyboardShowHandler);
 // cordova.plugins.Keyboard.disableScroll(true);
@@ -112,50 +119,55 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   function keyboardHideHandler(e) {
     accessInput.blur();
     redeemButton.style.visibility = 'visible';
-    //$scope.accessInputOnBlur();
+    $scope.accessInputOnBlur();
   }
 
 
 
-  // function keyboardShowHandler(e){
-  //     if (DeviceService.isMobile()) {
-  //       $scope.keyboardHeight = e.keyboardHeight;
-  //       Velocity(
-  //         document.querySelector('#redeem-button'),
-  //         {
-  //           translateY:"-" + $scope.keyboardHeight + 'px',
-  //           height: "*=0.75"
+  function keyboardShowHandler(e){
+      if (DeviceService.isMobile()) {
+        $scope.keyboardHeight = e.keyboardHeight;
+        Velocity(
+          document.querySelector('#redeem-button'),
+          {
+            translateY:"-" + $scope.keyboardHeight + 'px',
+            height: "*=0.75"
 
-  //         },
-  //         {duration:500},
-  //         "ease-in-out"
-  //       );
-  //     }
-  // }
+          },
+          {duration:500},
+          "ease-in-out"
+        );
+      }
+  }
 
-  // $scope.accessInputOnBlur = function() {
-  //   if (DeviceService.isMobile()) {
-  //     Velocity(
-  //           document.querySelector('#access-logo svg'),
-  //           {scale:1, translateY:"0px"},
-  //           {duration:500},
-  //           "easeInSine"
-  //         );
+  $scope.accessInputOnBlur = function() {
+    if (DeviceService.isMobile()) {
+      Velocity(
+            document.querySelector('#access-logo svg'),
+            {scale:1, translateY:"0px"},
+            {duration:500},
+            "easeInSine"
+          );
 
-  //     Velocity(
-  //       document.querySelector('#access-code-bar'),
-  //       {translateY:"25px"},
-  //       {duration:500},
-  //       "easeInSine"
-  //     );
+      Velocity(
+        document.querySelector('#access-code-bar'),
+        {translateY:"25px"},
+        {duration:500},
+        "easeInSine"
+      );
 
-  //     Velocity(
-  //       document.querySelector('#redeem-button'),
-  //       {translateY:"0px", height: "/=0.75"},
-  //       {duration:200},
-  //       "easeInSine"
-  //     );
-  //   }
-  // };
+      if (cordova.plugins.Keyboard && cordova.plugins.Keyboard.isVisible) {
+
+          Velocity(
+            document.querySelector('#redeem-button'),
+            {translateY:"0px", height: "/= 0.75"},
+            {duration:200},
+            "easeInSine"
+          );
+
+      }
+
+    }
+  };
 
 }
