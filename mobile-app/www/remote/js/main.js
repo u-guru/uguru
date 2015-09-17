@@ -31,7 +31,7 @@ if (LOCAL) {
 mixpanel = window.mixpanel || null;
 
 if (mixpanel) mixpanel.track("App Launch");
-angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
+angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ngIOS9UIWebViewPatch',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
   'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap', 'sharedServices', 'uguru.directives'])
