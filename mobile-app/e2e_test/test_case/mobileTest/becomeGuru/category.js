@@ -61,6 +61,9 @@ describe('Category Test', function () {
 			});
         })(i);
 	}
-
+	it('Slide to Next Page',function()
+	{
+		doc.slideView(4,'left');
+	});
 
 });

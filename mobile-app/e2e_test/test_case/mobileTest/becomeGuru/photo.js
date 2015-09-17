@@ -23,5 +23,8 @@ describe('Photo test', function () {
 		expect(sampleMsg.isPresent()).toBe(false);
 
 	});
-		
+	it('Slide to Next Page',function()
+	{
+		doc.slideView(5,'left');
+	});
 });

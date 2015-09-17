@@ -29,7 +29,7 @@ describe('Course Test', function () {
 	{
 		it('send a key',function()
 		{
-	    	doc.setInput('b',1);
+	    	doc.setInput('b',3);
 
 		});
 		it('Check the Search result is not empty',function()
@@ -42,7 +42,7 @@ describe('Course Test', function () {
 		{	
 			element.all(by.tagName("input")).then(function(inputs)
 	      	{
-	      		inputs[1].clear();
+	      		inputs[3].clear();
 	      	});
 
 		});
@@ -101,6 +101,13 @@ describe('Course Test', function () {
 		});
 	});
 
-
+	it('Slide to Next Page',function()
+	{
+		doc.slideView(3,'left');
+	});
+	it('Check Page title : Category',function()
+	{
+		expect(element(by.binding('category.name')).getText()).toBe("SELECT CATEGORY")
+	});
 
 });

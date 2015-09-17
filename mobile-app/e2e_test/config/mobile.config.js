@@ -29,7 +29,7 @@ exports.config = {
 
          capabilities: {
                  'browserName': 'chrome',
-                 'chromeOptions': {'args': ['show-fps-counter=true']}
+                 // 'chromeOptions': {'args': ['show-fps-counter=true']}
          },
 
           //  capabilities: {
@@ -114,7 +114,15 @@ exports.config = {
                           // '../test_case/mobileTest/workflows/category.js',
                           // '../test_case/mobileTest/workflows/photo.js',
                           '../test_case/mobileTest/guruProfile/home.js'
-                     ]
+                     ],
+              becomeGuru:[
+                         '../test_case/mobileTest/workflows/access.js',
+                         '../test_case/mobileTest/workflows/university.js', 
+                         '../test_case/mobileTest/becomeGuru/major.js',
+                         '../test_case/mobileTest/becomeGuru/course.js',
+                         '../test_case/mobileTest/becomeGuru/category.js',
+                         '../test_case/mobileTest/becomeGuru/photo.js'
+                         ]
 
 
         },

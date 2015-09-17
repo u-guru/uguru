@@ -17,6 +17,7 @@ var global = function() {
     var ele = element.all(by.tagName("ion-slide"));
     ele.then(function(items)
     {
+        console.log("slides :"+ items.length)
         browser.actions().
         dragAndDrop(items[index], {x: xV, y: yV}).
         perform();
@@ -267,6 +268,7 @@ var global = function() {
       check = false
     if (index != null)
       i = index;
+
     element.all(by.tagName("input")).then(function(inputs)
       {
          //console.log(inputs.length);
