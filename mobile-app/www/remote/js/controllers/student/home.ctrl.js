@@ -341,7 +341,12 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
 
     $scope.toggleRightSideMenu = function() {
+
       $ionicSideMenuDelegate.toggleRight();
+      $timeout(function() {
+        $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();
+      }, 250);
+
     };
 
     $scope.launchRequestModal = function(index, verb_index) {

@@ -23,6 +23,9 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
+p {
+	line-height: 1.25;
+}
 
 // GRID
 [class*="ugrid-"] {
@@ -1057,16 +1060,16 @@ header {
 				right: 15px;
 			}
 		}
+		svg {
+			@include center-y;
+			left: 15px;
+		}
 	}
 	a:not(.header-link) {
 		@include flex;
 		@include flex-center;
 		position: relative;
 		color: white!important;
-	}
-	svg {
-		@include center-y;
-		left: 15px;
 	}
 	.header-close, .header-menu {
 		display: block;
@@ -1523,6 +1526,9 @@ progress, [class*="progress"]:not(.progress-circle) {
 			overflow: hidden;
 			background: white;
 		}
+		span {
+			width: 0;
+		}
 		&::-moz-progress-bar {
 			@include round;
 			@include transition(.15s ease-in-out);
@@ -1825,6 +1831,60 @@ progress, [class*="progress"]:not(.progress-circle) {
 			}
 			svg {
 				@include opacity(1);
+			}
+		}
+	}
+}
+
+
+.section-header {
+	background: rgba(white,.05);
+	color: white;
+	padding: 10px;
+	font-size: 14px;
+	font-weight: 400;
+	letter-spacing: 2px;
+	text-align: center;
+	text-transform: uppercase;
+	color: white;
+}
+
+.chart {
+	.bg {
+		@include opacity(.3);
+	}
+	.chart-percent circle {
+		display: none;
+	    -webkit-transform-origin: center center;
+	    -moz-transform-origin: center center;
+	    -ms-transform-origin: center center;
+	    -o-transform-origin: center center;
+	    transform-origin: center center;
+		stroke-dasharray: 3px, 380px;
+		stroke-linecap: round;
+	}
+	circle {
+		cx: 60px;
+		cy: 60px;
+		r: 60px;
+	}
+}
+
+.chart-percent {
+	@for $j from 1 through 100 {
+		circle:nth-child(#{$j}) {
+			@include rotate((360/100*$j));
+		}
+	}
+}
+
+@for $p from 1 through 100 {
+	.chart[data-value="#{$p}"] {
+		.chart-percent {
+			@for $j from 1 through $p {
+				circle:nth-child(#{$j}) {
+					display: block;
+				}
 			}
 		}
 	}
