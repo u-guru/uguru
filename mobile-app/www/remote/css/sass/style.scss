@@ -1220,70 +1220,156 @@ body {
 }
 
 // SIDEBAR
-.side-menu-profile {
-	@include flex;
-	@include flex-center;
-	position: absolute;
-	width: 100%;
-	height: calc(100% - 320px);
-	font-weight: 400;
-	line-height: 1.25;
-	text-align: center;
-	ul {
-		position: relative;
-		z-index: 9;
-	}
-	.side-menu-icon {
-		position: relative;
-		margin-bottom: 10px;
-		span {
-			@include center-xy;
-			font-size: 18px;
-			font-weight: 600;
-		}
-	}
-	.side-menu-name {
-		font-weight: 600;
-		text-transform: uppercase;
-	}
-	.side-menu-year {
-		font-size: 20px;
-	}
-	&:after {
-		@include opacity(.3);
-		content: "";
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		background: url(../../img/onboarding/school.jpg) repeat center center / cover;
-	}
-}
 .side-menu-list {
-	position: absolute;
-	bottom: 0;
 	width: 100%;
-	background: $slate;
+	height: 100%;
+	.list {
+		height: 100%;
+	}
 	.list-item {
 		height: 64px;
+		font-size: 18px;
 		font-weight: 600;
 		text-transform: uppercase;
-		&:hover {
-			cursor: pointer;
-		}
-		&:active {
-			background: $shamrock;
-		}
 		.list-item-icon {
 			height: 64px;
 			width: 64px;
 			svg {
-				padding: 10px;
+				padding: 15px;
+				width: auto;
+				path, circle {
+					stroke-width: 4px;
+					stroke-linecap: round;
+					stroke-linejoin: round;
+				}
+				circle {
+					stroke-dasharray: 3px, 10px;
+				}
 			}
 		}
 		.list-item-detail {
-			padding: 0 15px 0 5px;
+			padding: 0 15px 0 0;
+		}
+	}
+	.list-item-profile {
+		@include flex-wrap;
+		height: calc(100% - 384px);
+		.list-item-detail {
+			span {
+				display: block;
+			}
+			span:first-child {
+				font-size: 20px!important;
+			}
+			span:last-child {
+				font-size: 14px!important;
+			}
+		}
+	}
+	.list-item-agenda {
+		display: none;
+	}
+}
+
+@media screen and (min-height:540px) {
+	.side-menu-list {
+		.list-item-profile {
+			height: 84px;
+		}
+		.list-item-agenda {
+			@include flex;
+			height: calc(100% - 384px - 84px);
+			text-transform: none;
+		}
+	}
+}
+
+.menu-guru {
+	.list {
+		background: $slate;
+	}
+	.list-item {
+		&:hover, &:active {
+			background: $campus;
+		}
+		.list-item-icon {
+			svg {
+				path, circle {
+					stroke: #fff;
+				}
+			}
+		}
+	}
+	.list-item-profile {
+		background: rgba($campus, .75);
+	}
+	.list-item-agenda {
+		background: white;
+		color: $charcoal;
+		&:active, &:hover {
+			background: rgba(white, .9);
+		}
+	}
+	.list-item-guru {
+		display: none;
+	}
+	.list-item-student {
+		background: rgba($campus, .75);
+	}
+}
+
+.menu-student {
+	.list {
+		background: white;
+	}
+	.list-item {
+		color: $slate;
+		.list-item-icon {
+			svg {
+				path {
+					stroke: $slate;
+				}
+			}
+		}
+		&:active, &:hover {
+			background: rgba($azure, .75);
+			color: white;
+			svg {
+				path {
+					stroke: white;
+				}
+			}
+		}
+	}
+	.list-item-profile {
+		background: $azure;
+		color: white;
+		.list-item-icon {
+			svg {
+				circle {
+					stroke: white;
+				}
+			}
+		}
+	}
+	.list-item-agenda {
+		background: $slate;
+		&:active, &:hover {
+			background: rgba($slate, .9);
+		}
+	}
+	.list-item-student {
+		display: none;
+	}
+	.list-item-guru {
+		background: $azure;
+		color: white;
+		.list-item-icon {
+			svg {
+				path {
+					stroke: white;
+				}
+			}
 		}
 	}
 }
@@ -1312,17 +1398,17 @@ body {
 				margin-top: -5px;
 				#percentile-ranking {
 					position: relative;
-					font-size: 48px;
+					font-size: 44px;
 					font-weight: 600;
 					line-height: 1;
-					padding-left: 5px;
+					text-align: center;
 					&:after {
 						content: "th";
 						display: block;
 						position: absolute;
-						top: 0;
-						right: 0;
-						font-size: 14px;
+						top: -1px;
+						right: -1px;
+						font-size: 12px;
 						font-weight: 400;
 						line-height: 28px;
 						text-transform: uppercase;
