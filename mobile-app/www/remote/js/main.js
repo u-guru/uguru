@@ -31,7 +31,7 @@ if (mixpanel) mixpanel.track("App Launch");
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
-  'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap', 'sharedServices', 'uguru.directives'])
+  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
 
 .run(function($ionicPlatform, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
