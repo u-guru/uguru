@@ -6,7 +6,10 @@ describe('Access Page Test', function () {
 	var load= element(by.id('E2E-spinner'))
 	var back = element(by.css('[ng-click="goToAccess()"]'))
 	var listOfCase =  doc.generateRandomString(["","1"],5,"cool")
-   	
+   	describe("Check Guru animates",function()
+   	{
+
+   	});
    	describe("Is Page Dragalbe",function()
    	{
    		it("drag left",function()
@@ -24,7 +27,7 @@ describe('Access Page Test', function () {
    				{
 		   			expect(result.x).toBe(0);
    				});
-   			browser.sleep(10000);
+   			// browser.sleep(10000);
    		});
    		it('Go Bakc Access',function()
    		{
@@ -32,7 +35,31 @@ describe('Access Page Test', function () {
    		})
 
    	});
-	
+	describe('When access code is typed in, press the enter key, & it should transition',function()
+    {
+   		it('Fresh page and Go Back Access',function()
+   		{
+   			browser.refresh();
+   		})
+   		it('send key',function()
+   		{
+			doc.setInput("cool",0,false);
+
+   		});
+   		it('Press Enter Key',function()
+   		{
+   			element(by.id('access-code-bar')).sendKeys(protractor.Key.ENTER);
+   			browser.sleep(1000);	
+   		});
+   		it('Check page Change',function()
+   		{
+			doc.checkMsg("Access Granted");
+   		});
+		it('Go Bakc Access',function()
+   		{
+   			browser.refresh();
+   		})
+    });
 	for( i = 0; i < listOfCase.length; ++ i)
 	{
         (function(testSpec) {
@@ -69,6 +96,7 @@ describe('Access Page Test', function () {
 			});
         })(listOfCase[i]);
     }	
+
 	describe('Check back Access Code is Empty',function()
 	{
 		it("Go back button",function()

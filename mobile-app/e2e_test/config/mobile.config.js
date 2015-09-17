@@ -178,7 +178,6 @@ exports.config = {
             browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);
             browser.driver.get("http://localhost:8100/#/")
             browser.sleep(3000);
-            browser.waitForAngular();
 
         }
         
