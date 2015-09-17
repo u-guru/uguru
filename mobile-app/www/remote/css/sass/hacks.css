@@ -29,4 +29,15 @@
     display: inline-flex;
     padding: 0 !important; }
 
+.uguru-view.faq-modal {
+  background-color: whitesmoke !important;
+  z-index: 1000;
+  background-color: white; }
+  .uguru-view.faq-modal header {
+    overflow: hidden; }
+  .uguru-view.faq-modal .ion-chevron-down {
+    position: absolute;
+    top: 10px;
+    left: 10px; }
+
 /*# sourceMappingURL=hacks.css.map */

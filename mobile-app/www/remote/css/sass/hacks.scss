@@ -52,3 +52,18 @@
     }
 }
 
+
+.uguru-view.faq-modal {
+    background-color:whitesmoke !important;
+    z-index: 1000;
+    header {
+        overflow:hidden;
+    }
+    background-color:white;
+    .ion-chevron-down {
+        position:absolute;
+        top:10px;
+        left:10px; 
+    }
+
+}

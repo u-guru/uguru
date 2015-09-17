@@ -1254,9 +1254,9 @@ body {
     height: 64px;
     font-weight: 600;
     text-transform: uppercase; }
-    .side-menu-list .list-item:hover {
+    .side-menu-list .list-item:hover, .side-menu-list .list-item.activated {
       cursor: pointer; }
-    .side-menu-list .list-item:active {
+    .side-menu-list .list-item:active, .side-menu-list .list-item.active {
       background: #69B3A5; }
     .side-menu-list .list-item .list-item-icon {
       height: 64px;

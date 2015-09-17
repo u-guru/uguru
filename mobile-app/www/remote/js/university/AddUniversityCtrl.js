@@ -160,4 +160,16 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     };
 
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.howItWorksModal = modal;
+    });
+
+    $scope.launchHowItWorksModal = function() {
+      $scope.howItWorksModal.show();
+    }
+
+
 }

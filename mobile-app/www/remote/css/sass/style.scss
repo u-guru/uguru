@@ -1269,10 +1269,10 @@ body {
 		height: 64px;
 		font-weight: 600;
 		text-transform: uppercase;
-		&:hover {
+		&:hover, &.activated {
 			cursor: pointer;
 		}
-		&:active {
+		&:active, &.active {
 			background: $shamrock;
 		}
 		.list-item-icon {
