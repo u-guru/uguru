@@ -340,9 +340,25 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $scope.verbModal.show();
     }
 
-    $scope.toggleRightSideMenu = function() {
-      $ionicSideMenuDelegate.toggleRight();
-    };
+    //UGH I HATE MY LIFE FUCK YOU IONIC 
+    var getIonicSideMenuOpenRatio = function() {
+      var openRatio = $ionicSideMenuDelegate.getOpenRatio();
+      return openRatio;
+    }
+
+    var isSideMenuOpen = function(ratio) {
+      console.log(ratio);
+      if (!ratio && ratio !== -1) {
+        $scope.sideMenuActive = false;
+      } else {
+        $timeout(function() {
+          $scope.sideMenuActive = true;
+        }, 250)
+      }
+    }
+
+    $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
+
 
     $scope.launchRequestModal = function(index, verb_index) {
       //UNDO
@@ -430,7 +446,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
      $scope.$on('$ionicView.enter', function() {
       $ionicSideMenuDelegate.canDragContent(true);
-
         // $timeout(function() {
         //   $ionicSideMenuDelegate.toggleRight();
         // }, 250)

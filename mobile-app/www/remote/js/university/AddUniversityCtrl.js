@@ -14,10 +14,12 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'deviceInfo',
   'UniversityMatcher',
   '$ionicSlideBoxDelegate',
+  '$ionicModal',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher, 
-  Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher, $ionicSlideBoxDelegate) {
+  Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher,
+  $ionicSlideBoxDelegate, $ionicModal) {
 
     console.log("passed deviceInfo: " + deviceInfo);
 

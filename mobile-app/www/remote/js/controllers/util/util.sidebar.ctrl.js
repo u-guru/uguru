@@ -22,11 +22,12 @@ angular.module('uguru.util.controllers')
   'Camera',
   'Support',
   '$ionicPlatform',
+  '$ionicBackdrop',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
-  Camera, Support, $ionicPlatform) {
+  Camera, Support, $ionicPlatform, $ionicBackdrop) {
 
     $scope.root.vars.show_account_fields = false;
     $scope.loginMode = false;
@@ -189,6 +190,16 @@ angular.module('uguru.util.controllers')
         $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
     };
 
+    $scope.toggleBackDrop = function() {
+
+      if ($scope.backdropActive) {
+        $scope.backdropActive = false;
+        $ionicBackdrop.release();
+      } else {
+        $ionicBackdrop.retain();
+      }
+
+    }
 
     $scope.showPopupEditEmail = function() {
 
