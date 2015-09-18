@@ -38,6 +38,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
   //this prevents side bar from coming
   $ionicSideMenuDelegate.canDragContent(false);
+  $ionicSlideBoxDelegate.enableSlide(false)
 
   $scope.access = {
     codeInput: '',
@@ -74,11 +75,13 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       $scope.access.codeInput = '';
       //accessInput.removeEventListener('keyup', submitListener);
 
+
       if ($scope.platform.mobile) {
         cordova.plugins.Keyboard.close();
       }
       ga('send', 'event', 'Access Code', 'action');
       $timeout(function() {
+        $ionicSlideBoxDelegate.enableSlide(true);
         $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
       }, 250);
 

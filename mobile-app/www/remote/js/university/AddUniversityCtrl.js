@@ -15,11 +15,12 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'UniversityMatcher',
   '$ionicSlideBoxDelegate',
   'DeviceService',
+  '$ionicModal',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher, 
   Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher, $ionicSlideBoxDelegate,
-  DeviceService) {
+  DeviceService, $ionicModal) {
 
 
   //uuid
@@ -202,6 +203,18 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       }
 
     };
+
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.howItWorksModal = modal;
+    });
+
+    $scope.launchHowItWorksModal = function() {
+      $scope.howItWorksModal.show();
+    }
 
 
 }

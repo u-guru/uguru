@@ -95,6 +95,10 @@ def new_home_page():
 def faq():
     return render_template("web/pages/faq.html")
 
+@app.route('/faq-only/')
+def faq_body():
+    return render_template("web/pages/faq_only.html")
+
 @app.route('/manifest/')
 def manifest():
     return render_template("web/pages/manifest.html")

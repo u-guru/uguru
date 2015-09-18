@@ -1,5 +1,4 @@
 {% extends 'web/layout/base.html' %}
-{% block pagetype %}page-lake{% endblock %}
 {% block header_scripts %}
 <link rel="stylesheet" href="/static/web/css/style.css"/>
 <link rel="stylesheet" href="/static/web/css/page.css"/>
@@ -9,15 +8,18 @@
 		height:100%;
 		z-index: 100000000000;
 	}
+
+	#intercom-container {
+		display:none !important;
+		opacity:0;
+		height:0;
+		width:0;
+	}
 </style>
 {% endblock %}
 
 {% block content %}
 <div id="faq" class="main pure-g">
-    <header class="pure-u-1">
-	    <h4 class="text-center">UGURU</h4>
-	    <h1 class="text-center">Frequently Asked Questions</h1>
-	</header>
 	{% include 'web/components/faq_body.html' %}
 </div>
 {% endblock %}

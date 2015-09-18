@@ -251,7 +251,11 @@ angular.module('uguru.util.controllers')
           }
 
           $scope.toggleRightSideMenu = function() {
+            console.log('this is called');
             $ionicSideMenuDelegate.toggleRight();
+            $timeout(function() {
+              $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();
+            }, 250);
           };
 
 
@@ -706,7 +710,7 @@ angular.module('uguru.util.controllers')
           $scope.user.active_guru_sessions && $scope.user.active_guru_sessions.length > 0 )
           {
             $ionicViewSwitcher.nextDirection('enter');
-            $state.go('^.guru')
+            $state.go('^.home')
 
           }
         //if previous in guru mode
@@ -714,7 +718,7 @@ angular.module('uguru.util.controllers')
 
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
-            $state.go('^.guru');
+            $state.go('^.home');
             $timeout(function() {
               $scope.loader.hide();
             }, 1000);

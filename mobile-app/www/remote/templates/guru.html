@@ -1,87 +1,152 @@
 <ion-view class='uguru-view guru-view bg-charcoal'>
+	<section id="guru-home" class="request full-xy student-home">
+		<header class="third">
+			<h1 class="full-x text-center">Guru Home</h1>
+			<ul id="guru-ranking" class="ugrid">
+				<li id="guru-chart">
+					<svg class="chart" data-value="75" width="130px" height="130px" viewBox="0 0 130 130">
+					    <g stroke="#FFFFFF" stroke-width="10" transform="translate(5.000000, 5.000000)" fill="none">
+					        <circle class="bg"></circle>
+					        <g class="chart-percent">
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						        <circle></circle>
+						    </g>
+					    </g>
+					</svg>
+					<div id="percentile">
+						<div id="percentile-ranking">75</div>
+						<div id="percentile-label">Percentile</div>
+					</div>
+				</li>
+				<li id="guru-stats">
+					<div>
+						<h2>20% cred</h2>
+						<progress class="white-round height-10" value="20" max="100">
+						    <div class="progress white-round height-10"><span data-value="20" style="width:20%"></span></div>
+						</progress>
+						<h2>65% profile</h2>
+						<progress class="white-round height-10" value="65" max="100">
+						    <div class="progress white-round height-10"><span data-value="65" style="width:65%"></span></div>
+						</progress>
+						<h2>$39/hour</h2>
+						<progress class="white-round height-10" value="39" max="40">
+						    <div class="progress white-round height-10"><span data-value="99" style="width:99%"></span></div>
+						</progress>
+					</div>
+				</li>
+			</ul>
+		</header>
 
-  <section id="guru-home"class="request student-home">
-   <header>
-      <div class="header-nav">
-        <div class='header-nav-center'>
-          <h1 class="text-center">Your Ranking</h1>
-        </div>
-        <a class="header-nav-next" ng-click='toggleRightSideMenu()'>
-          <i class='icon ion-navicon'></i>
-        </a>
-      </div>
-      <div class='header-ranking text-center'>
-        <div class='pure-g full-y flex-column'>
-            <div class='pure-u-1'>
-              <h1>At {{user.university.title}}</h1>
-            </div>
-            <div class='pure-u-1 flex-grow-pro flex-align-self-center'>
-              <div class='pure-g full-x flex-align-self-stretch'>
-                <div class='pure-u-1-2 flex-align-self-center guru-ranking-container'>
-                  <!-- 75th percentile -->
-                  <div id='guru-ranking-progress-bar' class='full-xy'>
-
-                  </div>
-                </div>
-                <div class='pure-u-1-2 flex-align-self-center'>
-                  <div class='pure-g full-xy'>
-                    <div class='pure-u-1 progress-bar-container'>
-                      <h4><strong><span id='credibility-percent'>20</span>%</strong> <span class='uppercase-text'> CRED </span></h4>
-                      <div id='guru-credibility-progress-bar' class='full-xy'>
-                        &nbsp;
-                      </div>
-                    </div>
-                    <div class='pure-u-1 progress-bar-container'>
-                      <h4><strong><span id='profile-percent'>65</span>%</strong> <span class='uppercase-text'> Profile </span></h4>
-                      <div id='guru-profile-progress-bar' class='full-xy'>
-                        &nbsp;
-                      </div>
-                    </div>
-                    <div class='pure-u-1 progress-bar-container'>
-                      <h4><strong>$<span id='hourly-rate'>39</span></strong> <span class='uppercase-text'> Hour </span></h4>
-                      <div id='guru-hourly-progress-bar' class='full-xy'>
-                        &nbsp;
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </header>
-    <div id="guru-home-content">
-        <div class='pure-g tip-container text-center full-xy'>
-          <ion-slide-box on-slide-changed="slideHasChanged($index)" class='guru-home-tips full-xy'>
-            <ion-slide class='full-xy bg-charcoal'>
-              <div class='pure-g'>
-                <div class='pure-u-1 bg-charcoal'>
-                  <h2>
-                    Tip of the day
-                  </h2>
-                  <p>
-                    Complete your profile to unlock access to your Guru customizer
-                  </p>
-                </div>
-              </div>
-            </ion-slide>
-            <ion-slide>
-              <div class="box yellow"><h1>YELLOW</h1></div>
-            </ion-slide>
-            <ion-slide>
-              <div class="box pink"><h1>PINK</h1></div>
-            </ion-slide>
-          </ion-slide-box>
-        </div>
-    </div>
+		<div id="guru-home-content" class="two-thirds">
+			<h2 class="section-header">Your University Guru Ranking</h2>
+		    <div class='tip-container text-center p15xy'>
+		        <h2 class="m05bottom">Tip of the day</h2>
+		        <p>Complete your profile to unlock access to your Guru customizer</p>
+		    </div>
+		</div>
 
   </section>
+  <div class="tabs tabs-icon-only guru-tabs bg-slate" id='guru-tab-bar'>
 
-  <button ng-click='launchSignupModal()' class='button bg-shamrock guru-home-footer-button'>Launch my profile</button>
-
-  <div ng-show='user && user.id' class="tabs tabs-icon-only guru-tabs bg-white bg-charcoal" id='guru-tab-bar'>
     <a class="tab-item active" nav-direction='swap' href='#/guru'>
       <i class='icon ion-home'> </i>
     </a>
@@ -97,8 +162,8 @@
     </a>
   </div>
 
-  <div ng-if='launchWelcomeGuruPopup' ng-click='closeWelcomePopup()'class='uguru-popup' ng-click='closeWelcome' id='home-uguru-popup' ng-include="img_base + 'templates/welcome.guru.popup.html'"> </div>
 
+  <div ng-if='launchWelcomeGuruPopup' ng-click='closeWelcomePopup()'class='uguru-popup' ng-click='closeWelcome' id='home-uguru-popup' ng-include="img_base + 'templates/welcome.guru.popup.html'"> </div>
 </ion-view>
 
 
