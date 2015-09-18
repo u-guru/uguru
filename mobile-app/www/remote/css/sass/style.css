@@ -27,7 +27,7 @@ body {
   background: rgba(255, 255, 255, 0.2); }
 
 .uguru-view * {
-  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important; }
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
 .uguru-view #main-menu {
   position: fixed;
   bottom: 0;
@@ -211,23 +211,23 @@ body {
       background: #50A5DD; }
     .uguru-view .start#how #how-cards .how-card:nth-child(7) .how-card-media {
       background: #9A5BC5; }
-.uguru-view progress, .uguru-view .progress {
+.uguru-view .onboarding progress, .uguru-view .onboarding .progress {
   position: absolute;
   top: 0;
   z-index: 9; }
-  .uguru-view progress span[data-value="2"], .uguru-view .progress span[data-value="2"] {
+  .uguru-view .onboarding progress span[data-value="2"], .uguru-view .onboarding .progress span[data-value="2"] {
     width: 2%; }
-  .uguru-view progress span[data-value="30"], .uguru-view .progress span[data-value="30"] {
+  .uguru-view .onboarding progress span[data-value="30"], .uguru-view .onboarding .progress span[data-value="30"] {
     width: 25%; }
-  .uguru-view progress span[data-value="50"], .uguru-view .progress span[data-value="50"] {
+  .uguru-view .onboarding progress span[data-value="50"], .uguru-view .onboarding .progress span[data-value="50"] {
     width: 40%; }
-  .uguru-view progress span[data-value="80"], .uguru-view .progress span[data-value="80"] {
+  .uguru-view .onboarding progress span[data-value="80"], .uguru-view .onboarding .progress span[data-value="80"] {
     width: 80%; }
-  .uguru-view progress span[data-value="85"], .uguru-view .progress span[data-value="85"] {
+  .uguru-view .onboarding progress span[data-value="85"], .uguru-view .onboarding .progress span[data-value="85"] {
     width: 85%; }
-  .uguru-view progress span[data-value="95"], .uguru-view .progress span[data-value="95"] {
+  .uguru-view .onboarding progress span[data-value="95"], .uguru-view .onboarding .progress span[data-value="95"] {
     width: 95%; }
-  .uguru-view progress span[data-value="99"], .uguru-view .progress span[data-value="99"] {
+  .uguru-view .onboarding progress span[data-value="99"], .uguru-view .onboarding .progress span[data-value="99"] {
     width: 86%; }
 .uguru-view .onboarding header .onboarding-prop {
   position: absolute;
@@ -665,7 +665,7 @@ body {
   width: 100%;
   height: 100%;
   background: #40484B; }
-  .uguru-view .request#request-empty #request-message > div > svg {
+  .uguru-view .request#request-empty #request-message > div > div svg {
     display: block;
     margin: 0 auto;
     width: 50%;
@@ -1174,7 +1174,7 @@ body {
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
     display: block;
-    content: url("../svg/search.svg");
+    background: url(../../img/svg/search.svg) no-repeat center center/cover, url(/static/remote/img/svg/search.svg) center/cover no-repeat;
     width: 14px;
     height: 14px; }
   .uguru-view .header-nav a svg {
@@ -1208,7 +1208,7 @@ body {
   justify-content: center;
   position: absolute;
   width: 100%;
-  height: calc(100% - 320px);
+  height: calc(100% / 11 * 5);
   font-weight: 400;
   line-height: 1.25;
   text-align: center; }
@@ -1229,8 +1229,8 @@ body {
       transform: translate(-50%, -50%);
       font-size: 18px;
       font-weight: 600; }
-  .side-menu-profile .side-menu-name {
-    font-weight: 600;
+  .side-menu-profile .side-menu-name, .side-menu-profile .side-menu-university {
+    font-weight: 700;
     text-transform: uppercase; }
   .side-menu-profile .side-menu-year {
     font-size: 20px; }
@@ -1249,21 +1249,99 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
+  height: calc(100% / 11 * 6);
   background: #40484B; }
   .side-menu-list .list-item {
     height: 64px;
     font-weight: 600;
     text-transform: uppercase; }
-    .side-menu-list .list-item:hover {
+    .side-menu-list .list-item:hover, .side-menu-list .list-item.activated {
       cursor: pointer; }
-    .side-menu-list .list-item:active {
+    .side-menu-list .list-item:active, .side-menu-list .list-item.active {
       background: #69B3A5; }
     .side-menu-list .list-item .list-item-icon {
       height: 64px;
       width: 64px; }
       .side-menu-list .list-item .list-item-icon svg {
-        padding: 10px; }
+        padding: 15px; }
     .side-menu-list .list-item .list-item-detail {
       padding: 0 15px 0 5px; }
+
+#guru-home header:before {
+  background: url(../../img/onboarding/school.jpg) no-repeat center center/cover; }
+#guru-home #guru-ranking {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  z-index: 9;
+  width: 100%;
+  height: calc(100% - 50px);
+  padding: 0 30px; }
+  #guru-home #guru-ranking #guru-chart {
+    position: relative;
+    width: 130px; }
+    #guru-home #guru-ranking #guru-chart #percentile {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      margin-top: -5px; }
+      #guru-home #guru-ranking #guru-chart #percentile #percentile-ranking {
+        position: relative;
+        font-size: 48px;
+        font-weight: 600;
+        line-height: 1;
+        padding-left: 5px; }
+        #guru-home #guru-ranking #guru-chart #percentile #percentile-ranking:after {
+          content: "th";
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 28px;
+          text-transform: uppercase; }
+      #guru-home #guru-ranking #guru-chart #percentile #percentile-label {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        line-height: 15px;
+        text-transform: uppercase; }
+  #guru-home #guru-ranking #guru-stats {
+    padding-left: 30px;
+    width: calc(100% - 130px); }
+    #guru-home #guru-ranking #guru-stats h2 {
+      margin: 0 0 5px;
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: uppercase; }
+    #guru-home #guru-ranking #guru-stats progress, #guru-home #guru-ranking #guru-stats .progress {
+      vertical-align: top;
+      width: 100%; }
+
+.tip-container p {
+  font-size: 18px; }
+
+.tabs {
+  border: 0; }
 
 /*# sourceMappingURL=style.css.map */

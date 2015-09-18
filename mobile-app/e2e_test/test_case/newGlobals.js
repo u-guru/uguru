@@ -102,7 +102,7 @@ var global = function() {
   this.checkMsg = function(msg)
   {
     var newMsg = element(by.css(".loading-container")).element(by.tagName('span'));
-    browser.wait(EC.presenceOf(newMsg),1000,"Can't Find Message : "+msg);
+    browser.wait(EC.presenceOf(newMsg),3000,"Can't Find Message : "+msg);
     newMsg.getAttribute('value').then(function(value)
     {
       expect(value).toBe(msg);

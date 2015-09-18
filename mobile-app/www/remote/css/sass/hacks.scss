@@ -1,4 +1,4 @@
-#become-guru-slidebox-container {
+#become-guru-slidebox-container, .university-view {
 
 	header h1 {
 		padding-top: 25%;
@@ -52,3 +52,77 @@
     }
 }
 
+
+.uguru-view.faq-modal {
+    background-color:whitesmoke !important;
+    z-index: 1000;
+    header {
+        overflow:hidden;
+    }
+    background-color:white;
+    .ion-chevron-down {
+        position:absolute;
+        top:10px;
+        left:10px; 
+    }
+
+}
+.university-view {
+
+    .input-search-ghost input {
+        text-align: left;
+        padding-left: 45px;
+    }
+
+    // svg {
+    //     bottom
+    // }
+}
+
+.uguru-view .input-search-ghost {
+    &:before {
+        width: 18px !important;
+        height: 18px !important;
+        left: 5% !important;
+        top:40%;
+    }
+
+    input {
+        font-size:20px!important;
+            line-height: 18px;
+    }
+}
+
+// flexified this, kept it centered for now but up to you entirely
+.side-menu-list.with-icon {
+    -webkit-display:flex;
+    display: flex;
+    -webkit-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    -webkit-align-items: inherit;
+    align-items: inherit;
+    -webkit-align-content: inherit;
+    align-content: center;
+    -webkit-align-content: baseline;
+    justify-content: center;
+    -webkit-justify-content: center;
+    z-index:20;
+}
+
+#side-menu {
+    position:relative;
+    z-index:20;
+}
+
+.white-guru-svg {
+    padding:3px;
+}
+
+#side-menu-left-overlay.active {
+    background-color:rgba(0,0,0,0.7);
+    width:20%;
+    height:100%;
+    z-index:20;
+    position:absolute;
+    right:0px;
+}

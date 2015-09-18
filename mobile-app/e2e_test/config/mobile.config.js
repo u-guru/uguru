@@ -24,7 +24,7 @@
 exports.config = {
     framework: 'jasmine2',
      seleniumAddress: 'http://localhost:4444/wd/hub',
-       baseUrl: 'http://localhost:8000',
+       baseUrl: 'http://192.168.0.105:8100/',
      // seleniumAddress: 'http://localhost:4723/wd/hub',
 
          capabilities: {
@@ -36,9 +36,9 @@ exports.config = {
           //   browserName: 'chrome',
           //   'appium-version': '1.4.10',
           //   platformName: 'Android',
-          //   platformVersion: '4.4.2',
+          //   // platformVersion: '4.4.4',
           //   deviceName: 'Android Emulator',
-          // },414, 736
+          // },
         //   multiCapabilities: 
         //   [
          
@@ -140,6 +140,11 @@ exports.config = {
         getPageTimeout: 10000,
         allScriptsTimeout: 400000,
         onPrepare: function () {
+           var wd = require('wd'),
+                   protractor = require('protractor'),
+                    wdBridge = require('wd-bridge')(protractor, wd);
+                   wdBridge.initFromProtractor(exports.config);
+
             var SpecReporter = require('jasmine-spec-reporter');
             // add jasmine spec reporter
             jasmine.getEnv().addReporter(new SpecReporter(
@@ -163,10 +168,7 @@ exports.config = {
                     },
                     customProcessors: []
                 }));
-          // var wd = require('wd'),
-          //   protractor = require('protractor'),
-          //    wdBridge = require('wd-bridge')(protractor, wd);
-          //   wdBridge.initFromProtractor(exports.config);
+         
 
 
     

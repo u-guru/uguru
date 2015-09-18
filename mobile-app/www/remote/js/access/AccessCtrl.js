@@ -33,6 +33,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
   //this prevents side bar from coming
   $ionicSideMenuDelegate.canDragContent(false);
+  $ionicSlideBoxDelegate.enableSlide(false)
 
   $scope.access = {
     codeInput: '',
@@ -49,7 +50,8 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       //$ionicViewSwitcher.nextDirection('forward');
       //AnimationService.flip();
 
-      
+
+
       //$ionicSlideBoxDelegate.select( $ionicSlideBoxDelegate.next() );
 
       if ($scope.platform.mobile) {
@@ -57,6 +59,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       }
 
       $timeout(function() {
+        $ionicSlideBoxDelegate.enableSlide(true);
         $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
       }, 250);
 

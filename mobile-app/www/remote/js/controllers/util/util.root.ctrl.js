@@ -251,7 +251,11 @@ angular.module('uguru.util.controllers')
           }
 
           $scope.toggleRightSideMenu = function() {
+            console.log('this is called');
             $ionicSideMenuDelegate.toggleRight();
+            $timeout(function() {
+              $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();
+            }, 250);
           };
 
 

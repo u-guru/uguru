@@ -8,7 +8,18 @@ describe('Access Page Test', function () {
 	var listOfCase =  doc.generateRandomString(["","1"],5,"cool")
    	describe("Check Guru animates",function()
    	{
+   		it ("check Guru Logo",function()
+   		{
 
+   		});
+   		it("Check Input Box ",function()
+   		{
+
+   		});
+   		it("Redeem Button",function()
+   		{
+   			
+   		});
    	});
    	describe("Is Page Dragalbe",function()
    	{
@@ -51,7 +62,7 @@ describe('Access Page Test', function () {
    			element(by.id('access-code-bar')).sendKeys(protractor.Key.ENTER);
    			browser.sleep(1000);	
    		});
-   		it('Check page Change',function()
+   		it('Check page Change,Check Message is shown :Access Granted',function()
    		{
 			doc.checkMsg("Access Granted");
    		});
@@ -97,34 +108,5 @@ describe('Access Page Test', function () {
         })(listOfCase[i]);
     }	
 
-	describe('Check back Access Code is Empty',function()
-	{
-		it("Go back button",function()
-		{
-			back.click();
-		});
-		it("Check Empty",function()
-		{
-			accessInput.getAttribute('value').then(function(result)
-			{
-				expect(result).toBe("");
-			});	
-		});
-		it("Enter Access Code : cool ",function()
-		{
-			accessInput.sendKeys('cool');
-			accessInput.getAttribute('value').then(function(result)
-			{
-				expect(result).toBe("cool");
 
-			});
-		});
-
-		it("Check Message is shown :Access Granted",function()
-		{
-			startButton.click();
-			doc.checkMsg("Access Granted");
-	
-		});
-	});
 });
