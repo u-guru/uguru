@@ -1,3 +1,18 @@
+::-webkit-input-placeholder {
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+
+:-moz-placeholder {
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+
+::-moz-placeholder {
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+
+:-ms-input-placeholder {
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+
+* {
+  box-shadow: none !important; }
+
 #top {
   position: fixed;
   top: 0;
@@ -40,22 +55,27 @@
 #desktop-start-link, #desktop-chat-link {
   display: none; }
 
-#overlay {
+#full-overlay {
   filter: alpha(opacity=0);
   opacity: 0;
-  position: fixed;
+  position: absolute;
   z-index: 0;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(43, 50, 52, 0.3); }
-  #overlay * {
-    box-sizing: border-box; }
-  #overlay.active {
+  background-color: rgba(43, 50, 52, 0.5); }
+  #full-overlay.active {
     filter: alpha(opacity=100);
     opacity: 1;
-    z-index: 999999; }
+    z-index: 20; }
+  #full-overlay.animated.fadeIn, #full-overlay.animated.fadeOut {
+    -webkit-animation-delay: 0.25s;
+    -moz-animation-delay: 0.25s;
+    -o-animation-delay: 0.25s;
+    animation-delay: 0.25s;
+    -webkit-animation-duration: 0.25s;
+    -moz-animation-duration: 0.25s;
+    -o-animation-duration: 0.25s;
+    animation-duration: 0.25s; }
 
 #start-modal {
   filter: alpha(opacity=100);
@@ -177,21 +197,35 @@
     filter: alpha(opacity=100);
     opacity: 1; }
 
+#side-menu-wrapper {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  position: fixed;
+  z-index: 0;
+  width: 100%;
+  height: 100%; }
+  #side-menu-wrapper.active {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    z-index: 25; }
+
 #side-menu {
   -webkit-transition: all 0.15s ease-in;
   -o-transition: all 0.15s ease-in;
   -ms-transition: all 0.15s ease-in;
   -moz-transition: all 0.15s ease-in;
   transition: all 0.15s ease-in;
-  filter: alpha(opacity=0);
-  opacity: 0;
+  display: block !important;
   position: relative;
   width: 100%;
   height: 100%;
   background: rgba(64, 72, 75, 0.8); }
-  #side-menu.active {
-    filter: alpha(opacity=100);
-    opacity: 1; }
+  #side-menu.animated.slideInLeft,
+  #side-menu.animated.slideOutLeft {
+    -webkit-animation-duration: 0.25s;
+    -moz-animation-duration: 0.25s;
+    -o-animation-duration: 0.25s;
+    animation-duration: 0.25s; }
   #side-menu ul {
     list-style: none;
     margin: 0;
@@ -310,15 +344,6 @@
   overflow: hidden;
   border-radius: 10px; }
 
-#search .front, #search .back {
-  height: 65% !important; }
-
-.back {
-  background-color: #69B3A5; }
-
-.intercom-sheet-header-minimize-button {
-  display: none !important; }
-
 #modal-loader-container.active {
   display: block; }
 
@@ -336,44 +361,88 @@
   height: 100%;
   margin-top: 20%; }
 
-::-webkit-input-placeholder {
+.intercom-reset div, .intercom-reset span, .intercom-reset applet, .intercom-reset object, .intercom-reset iframe, .intercom-reset h1, .intercom-reset h2, .intercom-reset h3, .intercom-reset h4, .intercom-reset h5, .intercom-reset h6, .intercom-reset p, .intercom-reset blockquote, .intercom-reset pre, .intercom-reset a, .intercom-reset abbr, .intercom-reset acronym, .intercom-reset address, .intercom-reset big, .intercom-reset cite, .intercom-reset code, .intercom-reset del, .intercom-reset dfn, .intercom-reset em, .intercom-reset img, .intercom-reset ins, .intercom-reset kbd, .intercom-reset q, .intercom-reset s, .intercom-reset samp, .intercom-reset small, .intercom-reset strike, .intercom-reset strong, .intercom-reset sub, .intercom-reset sup, .intercom-reset tt, .intercom-reset var, .intercom-reset b, .intercom-reset u, .intercom-reset i, .intercom-reset center, .intercom-reset dl, .intercom-reset dt, .intercom-reset dd, .intercom-reset ol, .intercom-reset ul, .intercom-reset li, .intercom-reset fieldset, .intercom-reset form, .intercom-reset div.form, .intercom-reset label, .intercom-reset legend, .intercom-reset table, .intercom-reset caption, .intercom-reset tbody, .intercom-reset tfoot, .intercom-reset thead, .intercom-reset tr, .intercom-reset th, .intercom-reset td, .intercom-reset article, .intercom-reset aside, .intercom-reset canvas, .intercom-reset details, .intercom-reset figcaption, .intercom-reset figure, .intercom-reset footer, .intercom-reset header, .intercom-reset hgroup, .intercom-reset menu, .intercom-reset nav, .intercom-reset section, .intercom-reset summary, .intercom-reset time, .intercom-reset mark, .intercom-reset audio, .intercom-reset video, .intercom-reset button, .intercom-reset textarea, .intercom-reset input, .intercom-reset input[type] {
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
 
-:-moz-placeholder {
-  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+.intercom-sheet-header-minimize-button {
+  display: none !important; }
 
-::-moz-placeholder {
-  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
-
-:-ms-input-placeholder {
-  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
-
-* {
+#intercom-container * {
   box-shadow: none !important; }
 
-#desktop-chat-link {
-  opacity: 0;
-  display: none; }
+#intercom-container .intercom-launcher {
+  right: 10px !important;
+  top: 0 !important;
+  right: 0 !important; }
 
-#intercom-container {
-  display: none; }
-  #intercom-container .intercom-launcher {
-    right: 10px !important;
-    top: 0 !important;
-    right: 0 !important;
-    bottom: auto; }
-    #intercom-container .intercom-launcher .intercom-launcher-button {
-      top: 10px !important;
-      right: 10px !important;
-      bottom: auto !important;
-      position: absolute !important;
-      z-index: 5 !important; }
-  #intercom-container .intercom-launcher-preview {
-    position: absolute !important;
-    bottom: -7px !important;
-    right: 70px !important; }
-  #intercom-container .intercom-launcher-preview-body {
-    line-height: 1em;
-    text-align: center; }
-  #intercom-container.active {
-    display: block !important; }
+#intercom-container .intercom-launcher-preview::before {
+  background: none !important; }
+
+#intercom-container .intercom-launcher-button {
+  -webkit-transition: all 0.15s ease-in;
+  -o-transition: all 0.15s ease-in;
+  -ms-transition: all 0.15s ease-in;
+  -moz-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  top: 10px !important;
+  right: 10px !important;
+  z-index: 5 !important;
+  border: 2px solid white !important;
+  background: transparent !important;
+  height: 42px !important;
+  width: 76px !important;
+  border-radius: 1000px !important; }
+  #intercom-container .intercom-launcher-button:after {
+    -webkit-transition: all 0.15s ease-in;
+    -o-transition: all 0.15s ease-in;
+    -ms-transition: all 0.15s ease-in;
+    -moz-transition: all 0.15s ease-in;
+    transition: all 0.15s ease-in;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    content: "Chat" !important;
+    color: white !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important; }
+  #intercom-container .intercom-launcher-button.active {
+    display: none !important; }
+  #intercom-container .intercom-launcher-button:hover, #intercom-container .intercom-launcher-button:active, #intercom-container .intercom-launcher-button:focus {
+    background: white !important; }
+    #intercom-container .intercom-launcher-button:hover:after, #intercom-container .intercom-launcher-button:active:after, #intercom-container .intercom-launcher-button:focus:after {
+      color: #2B3234 !important; }
+
+#intercom-container .intercom-launcher-preview {
+  position: absolute !important;
+  bottom: -7px !important;
+  right: 70px !important; }
+
+#intercom-container .intercom-launcher-preview-body {
+  position: relative;
+  padding-left: 15px; }
+
+#intercom-container .intercom-launcher-preview-body:after {
+  border-radius: 1000px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 0;
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: #81B566; }
+
+@media screen and (min-width: 35.5em) {
+  #intercom-container .intercom-launcher-button.active {
+    display: block !important; } }
