@@ -14,10 +14,36 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'deviceInfo',
   'UniversityMatcher',
   '$ionicSlideBoxDelegate',
+  'DeviceService',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher, 
-  Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher, $ionicSlideBoxDelegate) {
+  Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher, $ionicSlideBoxDelegate,
+  DeviceService) {
+
+
+  //uuid
+  ga('set', 'dimension1', DeviceService.getUUID());
+
+  ga('set', 'dimension2', DeviceService.getModel());
+  ga('set', 'dimension3', DeviceService.getPlatform());
+  ga('set', 'dimension4', DeviceService.getVersion());
+
+
+  var appLoadTime;
+  console.log("from the accessCtrl");
+  $scope.getLoadTime = function() {
+
+        var current_time = (new Date()).getTime();
+        var time_ms = current_time - start_dom_time;
+        var time_s = (time_ms / 1000.0).toPrecision(3)
+        var loadTime = time_s;
+        appLoadTime = loadTime;
+        console.log("appLoadTime: " + appLoadTime);
+        ga('set', 'dimension5', appLoadTime);
+  }
+
+
 
     $scope.testBefore = function() {
       console.log('called beforeEnter');
@@ -28,6 +54,15 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     };
 
     console.log("passed deviceInfo: " + deviceInfo);
+// mixpanel.track("Video play");
+
+    // console.log("GA getUrl(): " + Analytics.getUrl());
+    // console.log("clientId: " + ga);
+    // ga(function(tracker) {
+    //   var clientId = tracker.get('clientId');
+    //   console.log("clientId: " + clientId);
+    // });   
+    
 
     $scope.getGPSCoords = function() {
       if(!isTimeout) {
@@ -101,6 +136,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
     $scope.universitySelected = function(university, $event) {
 
+      ga('send', 'event', 'Selected University', 'action', university.name);
       //if user is switching universities
       if ($scope.user.university_id
           && university.id !== $scope.user.university_id

@@ -17,7 +17,7 @@ var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.0.103:8100';
+  BASE_URL = 'http://192.168.42.124:8100';
   //BASE_URL = 'http://192.168.42.124:8100';
 
   //REST_URL = "http://localhost:5000"
@@ -28,13 +28,14 @@ if (LOCAL) {
   img_base = '/static/'
 }
 
-mixpanel = window.mixpanel || null;
+// mixpanel = window.mixpanel || null;
 
-if (mixpanel) mixpanel.track("App Launch");
+// if (mixpanel) mixpanel.track("App Launch");
+
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ngIOS9UIWebViewPatch',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
-  'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap', 'sharedServices', 'uguru.directives'])
+  'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap', 'sharedServices', 'uguru.directives', 'admin'])
 
 .run(function($ionicPlatform, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
@@ -45,12 +46,73 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ngIO
   var openKeyboard = null;
 
   DeviceService.readyDevice();
+  
+  console.log("Firing event start to GA");
 
+  ga('create', 'UA-67802516-1', { 'userId': '4084955' });
+  ga('send', 'event', 'App Start', 'action');
+  ga('send', 'pageview');
+
+  mixpanel.init('bf3d658c75736d4e4de90d2f2043f4f3', {persistence: 'localStorage'});
+  
+  
+  
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
   $cordovaFacebookProvider, $ionicConfigProvider, $compileProvider, uiGmapGoogleMapApiProvider,
   $provide) {
+
+
+//   // Set up Google Analytics here
+//   AnalyticsProvider.setAccount({
+//   tracker: 'UA-67802516-1',
+//   name: "tracker1",
+//   // cookieConfig: {
+//   //   cookieDomain: 'foo.example.com',
+//   //   cookieName: 'myNewName',
+//   //   cookieExpires: 20000
+//   // },
+//   // crossDomainLinker: true,
+//   // crossLinkDomains: ['domain-1.com', 'domain-2.com'],
+//   displayFeatures: false, // enables the advertising plugin
+//   enhancedLinkAttribution: true, // allows us to identify the exact source of an event
+//   trackEvent: true, // do we want event tracking? hell yeah we do!
+//   trackEcommerce: false // we ain't cafepress, get outta here!
+// });
+
+//   //GA Route Tracking Behaviors
+
+//   // Track all routes (default is true).
+//    AnalyticsProvider.trackPages(true);
+
+//    // Track all URL query params (default is false).
+//    AnalyticsProvider.trackUrlParams(true);
+
+//    // Ignore first page view (default is false).
+//    // Helpful when using hashes and whenever your bounce rate looks obscenely low.
+//    AnalyticsProvider.ignoreFirstPageLoad(true);
+
+//    // URL prefix (default is empty).
+//    // Helpful when the app doesn't run in the root directory.
+//    //AnalyticsProvider.trackPrefix('my-application');
+
+//    // Change the default page event name.
+//    // Helpful when using ui-router, which fires $stateChangeSuccess instead of $routeChangeSuccess.
+//    AnalyticsProvider.setPageEvent('$stateChangeSuccess');
+
+//    // RegEx to scrub location before sending to analytics.
+//    // Internally replaces all matching segments with an empty string.
+//    //AnalyticsProvider.setRemoveRegExp(/\/\d+?$/);
+
+//    // Set the domain name
+//    // Use the string 'none' for testing on localhost.
+//    AnalyticsProvider.setDomainName('https://www.uguru.me');
+
+//    // Log all outbound calls to an in-memory array accessible via ```Analytics.log``` (default is false).
+//    // This is useful for troubleshooting and seeing the order of calls with parameters.
+//    AnalyticsProvider.logAllCalls(true);
+
 
   uiGmapGoogleMapApiProvider.configure({
         //    key: 'your api key',
@@ -82,6 +144,18 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ngIO
   // RestangularProvider.setBaseUrl('http://10.193.138.226:5000/api/v1');
   //Client-side router
   $stateProvider
+  .state('admin', {
+    url: '/admin',
+    abstract: true,
+    templateUrl: BASE + 'templates/admin.html',
+    controller: 'AdminCtrl'
+  })
+  .state('admin.home', {
+    url: '/admin/home',
+    abstract: true,
+    templateUrl: BASE + 'templates/admin.home.html',
+    controller: 'AdminCtrl'
+  })
   .state('root', {
         url: '',
         abstract: true,

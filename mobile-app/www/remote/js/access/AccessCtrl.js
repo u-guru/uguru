@@ -24,6 +24,11 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
   DeviceService.readyDevice();
 
+
+
+  
+  
+
   // var list = UniversityMatcher.list;
   // for (var i=0; i<10; i++) {
   //   var preCache = list[i].seal_url || list[i].forbes_url;
@@ -39,6 +44,28 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     errorInputMsg: null,
   };
 
+ 
+  // var stats = new Stats();
+  // stats.setMode(0);
+  // stats.domElement.style.position = 'absolute';
+  // stats.domElement.style.left = '0px';
+  // stats.domElement.style.top = '0px';
+  // stats.domElement.style.zIndex = '10';
+  // document.body.insertBefore( stats.domElement, document.body.childNodes[0] );
+
+  // var update = function () {
+
+  //     stats.begin();
+  //     $timeout(function() {
+  //       $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
+  //     }, 2000);
+
+  //     stats.end();
+  //     requestAnimationFrame( update );
+  // };
+  // requestAnimationFrame( update );
+
+
 // $ionicSlideBoxDelegate.update();
   $scope.checkAccessCode = function(code) {
     if(AccessService.validate(code)){
@@ -50,11 +77,10 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       if ($scope.platform.mobile) {
         cordova.plugins.Keyboard.close();
       }
-
+      ga('send', 'event', 'Access Code', 'action');
       $timeout(function() {
         $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
       }, 250);
-
 
     } else {
       $scope.access.errorInputMsg = 'Incorrect access code';

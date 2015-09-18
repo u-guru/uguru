@@ -17,10 +17,19 @@ function($parse, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $ion
       onSlideChanged: '&',
       activeSlide: '=?'
     },
+    link: function() {
+    },
+
     controller: ['$scope', '$element', '$attrs', function($scope, $element, $attrs, Utilities) {
       var _this = this;
 
       var continuous = $scope.$eval($scope.doesContinue) === true;
+
+      // //var slidesArray = document.querySelectorAll('u-slide');
+      // var slidesArray = document.getElementsByTagName('u-slide');
+      // console.log("slidesArray: " + slidesArray);
+      // console.log("slidesArray.length: " + slidesArray.length);
+      
 
       var slider = new ionic.views.Slider({
         el: $element[0],
@@ -32,9 +41,18 @@ function($parse, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $ion
           // Try to trigger a digest
           $timeout(function() {});
         },
+
+        // TODO: implement querySelectorAll on the first slide load, that way we already
+        // have the references for each slide index (in an array) and don't need to query everytime 
+        // the callback runs
+
+        // http://codepen.io/32bitkid/blog/understanding-delegated-javascript-events
+        // holy grail in that link above
         callback: function(slideIndex) {
 
-    		var slide = document.querySelectorAll('u-slide')[slideIndex];
+        var slidesArray = document.querySelectorAll('u-slide');
+    		var slide = slidesArray[slideIndex];
+        console.log("slide: " + slide);
     		var BeforeEnterEvent = new CustomEvent("beforeEnter");
     		slide.dispatchEvent(BeforeEnterEvent);
     				

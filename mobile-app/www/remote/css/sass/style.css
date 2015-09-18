@@ -467,7 +467,7 @@ body {
   .uguru-view .onboarding#account #account-form #social-login {
     margin-top: 50px; }
 .uguru-view .onboarding#skill header:before {
-  background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat; }
+  background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover; }
 .uguru-view .onboarding#skill #skills-list ul {
   padding: 0 1px 1px;
   height: 100%; }

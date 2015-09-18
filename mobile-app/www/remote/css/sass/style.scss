@@ -480,8 +480,8 @@ body {
 		&#skill {
 			header {
 				&:before {
-					background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover,
-								url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat;
+					background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover
+								;
 				}
 			}
 			#skills-list {
