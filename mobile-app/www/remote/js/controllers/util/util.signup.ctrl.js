@@ -38,24 +38,12 @@ angular.module('uguru.util.controllers')
 
 
     $scope.root.vars.show_account_fields = false;
-    $scope.loginMode = false;
     $scope.headerText = 'Sign Up';
     $scope.resetMode = false;
 
 
     $scope.support_index = 0;
     $scope.supportTicket = {};
-
-    $scope.settings = {}
-    $scope.settings.icons = {
-      profile: $scope.user && $scope.user.id,
-      notifications: false,
-      card: false,
-      support: false,
-      guru: false,
-      groceries:false,
-      presignup: !($scope.user && $scope.user.id),
-    }
 
 
     $scope.addUniversity = function() {
@@ -116,8 +104,8 @@ angular.module('uguru.util.controllers')
 
 
 
-    if (!$scope.loginMode) {
-      $scope.loginMode = false;
+    if (!$scope.root.vars.loginMode) {
+      $scope.root.vars.loginMode = false;
     }
 
     $scope.toggleAccountView = function() {
@@ -167,9 +155,9 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.toggleResetModeFromLogin = function() {
-      $scope.loginMode = false;
-      $scope.resetMode = !$scope.loginMode;
-      if (!$scope.loginMode && !$scope.signupMode) {
+      $scope.root.vars.loginMode = false;
+      $scope.resetMode = !$scope.root.vars.loginMode;
+      if (!$scope.root.vars.loginMode && !$scope.signupMode) {
         $scope.headerText = 'Reset Password';
       }
       $timeout(function() {
@@ -184,8 +172,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.toggleBackToLoginMode = function() {
-      $scope.loginMode = true;
-      $scope.resetMode = !$scope.loginMode;
+      $scope.root.vars.loginMode = true;
+      $scope.resetMode = !$scope.root.vars.loginMode;
       $scope.headerText = 'Log In';
       $scope.loader.show();
       $timeout(function() {
@@ -200,8 +188,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.toggleLoginMode = function() {
-      $scope.loginMode = !$scope.loginMode;
-      if (!$scope.loginMode) {
+      $scope.root.vars.loginMode = !$scope.root.vars.loginMode;
+      if (!$scope.root.vars.loginMode) {
         $scope.headerText = 'Sign Up';
 
       } else {
@@ -210,7 +198,7 @@ angular.module('uguru.util.controllers')
 
       $timeout(function() {
 
-        if (!$scope.loginMode) {
+        if (!$scope.root.vars.loginMode) {
         var first_name_input = document.getElementById('first-name-input')
           if (first_name_input) {
             first_name_input.focus();
@@ -276,11 +264,6 @@ angular.module('uguru.util.controllers')
 
     }
 
-    $scope.signupForm = {
-      full_name: null,
-      email: null,
-      password:null
-    }
 
     $scope.showActionSheetProfilePhoto = function() {
 
@@ -725,7 +708,7 @@ angular.module('uguru.util.controllers')
       }, 750);
     }
 
-    $scope.launchFAQModal = function() {  
+    $scope.launchFAQModal = function() {
       var url = 'https://www.uguru.me/faq/';
       var title = 'Uguru FAQ';
       InAppBrowser.open(url, title);
@@ -835,9 +818,9 @@ angular.module('uguru.util.controllers')
     }
 
     var initFacebookConnect = function() {
-      
+
       return {
-      
+
         getLoginStatus: function (s, f) {
           // Try will catch errors when SDK has not been init
           try {
@@ -1058,7 +1041,6 @@ angular.module('uguru.util.controllers')
         // $cordovaFacebook.login(["user_education_history", "friends_education_history"]).then(function (success) {
 
         $scope.loginInfo = success;
-        console.log('success', success);
 
         var successCallback = function() {
             $scope.loader.hide();
@@ -1176,26 +1158,6 @@ angular.module('uguru.util.controllers')
       $scope.login();
     };
 
-    $scope.$on('modal.shown', function() {
-
-
-      // if (window.StatusBar) {
-      //     StatusBar.styleDefault();
-      // }
-
-
-      if ($scope.signupModal && $scope.signupModal.isShown()) {
-        // console.log('modal is shown');
-        // $scope.root.keyboard.show('signup-first-name', 500);
-        if ($scope.userClickedLoginModal) {
-          $scope.loginMode = true;
-        } else {
-          $scope.loginMode = false;
-        }
-      }
-
-    });
-
     $scope.signupFacebook = function() {
       console.log('printing user', JSON.stringify($scope.user));
       $scope.login();
@@ -1204,53 +1166,57 @@ angular.module('uguru.util.controllers')
 
 
     $scope.validateLoginForm = function() {
-      var formDict = $scope.signupForm;
 
       function validateEmail(email) {
           var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           return re.test(email);
       }
 
-      if (!formDict.email) {
-        $scope.success.show(0,2000,'Please enter your email');
-        document.getElementsByName('login-email')[0].focus();
+      if (!$scope.signupForm.email || !$scope.signupForm.email.length) {
+        $scope.success.show(0,1000,'Please enter your email');
 
-        var shake = document.getElementById('input_email_login')
-        shake.classList.add('animated', 'shake');
-        setTimeout(function() {
-          shake.classList.remove('animated', 'shake');
-        }, 950);
+        $timeout(function() {
+          var emailInput = document.getElementById('email-input')
+          if (emailInput) {
+            emailInput.focus();
+          }
+        }, 1250)
+
         return false;
       }
 
 
-      if (!validateEmail(formDict.email)) {
-        document.getElementsByName('login-email')[0].focus();
+      if (!validateEmail($scope.signupForm.email)) {
+        $scope.success.show(0,1000,'Please enter a valid email');
+        $scope.signupForm.email = '';
+        $timeout(function() {
+          var emailInput = document.getElementById('email-input');
+          if (emailInput) {
+            emailInput.focus();
+          }
+        }, 1250)
 
-        var shake = document.getElementById('input_email_login')
-        shake.classList.add('animated', 'shake');
-        setTimeout(function() {
-          shake.classList.remove('animated', 'shake');
-        }, 950);
         return false;
       } else {
         $scope.user.email = $scope.signupForm.email;
       }
 
-      if (!formDict.password) {
-        document.getElementsByName('login-password')[0].focus();
+      if (!$scope.signupForm.password) {
+        $scope.success.show(0,1000,'Please enter a password');
 
-        var shake = document.getElementById('input_password_login')
-        shake.classList.add('animated', 'shake');
-        setTimeout(function() {
-          shake.classList.remove('animated', 'shake');
-        }, 950);
+        $timeout(function() {
+          var passwordInput = document.getElementById('password-input');
+          if (passwordInput) {
+            passwordInput.focus();
+          }
+        }, 1250);
+
         return false;
       } else {
         $scope.user.password = $scope.signupForm.password;
       }
 
-      $scope.user.last_name = $scope.signupForm.last_name;
+      // bind it to the scope for now
       $scope.user.email = $scope.signupForm.email;
       $scope.user.password = $scope.signupForm.password;
 
@@ -1385,6 +1351,12 @@ angular.module('uguru.util.controllers')
         if (err.status === 401) {
             $scope.signupForm.password = '';
             $scope.success.show(0, 1000, 'Incorrect username or password');
+            $timeout(function() {
+              var passwordInput = document.getElementById('password-input')
+              if (passwordInput) {
+                passwordInput.focus();
+              }
+            }, 1250)
         }
       });
     }
@@ -1485,49 +1457,6 @@ angular.module('uguru.util.controllers')
 
     }
 
-    $scope.$on('$ionicView.enter', function() {
-      if (!$scope.loginMode) {
-        var first_name_input = document.getElementById('first-name-input')
-        if (first_name_input) {
-          first_name_input.focus();
-
-        }
-      } else {
-        var email_input = document.getElementById('email-input')
-        if (email_input) {
-          email_input.focus();
-
-        }
-      }
-    });
-
-    $scope.$on('modal.shown', function() {
-
-
-        if ($scope.signupModal && $scope.signupModal.isShown()) {
-
-
-            if (!$scope.loginMode) {
-              var first_name_input = document.getElementById('first-name-input')
-              if (first_name_input) {
-                $timeout(function() {
-                  first_name_input.focus();
-
-                }, 500)
-              }
-            } else {
-              var email_input = document.getElementById('email-input')
-              if (email_input) {
-                $timeout(function() {
-                  email_input.focus();
-
-                }, 500)
-              }
-            }
-
-        }
-    });
-
 
     if ($localstorage.get('mobile-web-auth')) {
       $localstorage.removeObject('mobile-web-auth');
@@ -1555,6 +1484,11 @@ angular.module('uguru.util.controllers')
                 // 4. Autu log them in
 
 
+    $scope.signupForm = {
+      full_name: null,
+      email: null,
+      password:null
+    }
 
 
   }

@@ -216,7 +216,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
     width: 42px;
     height: 42px; }
     #top #top-logo svg {
-      margin: 10px auto;
+      margin: 10px auto !important;
       width: 100%;
       height: 100%; }
 
@@ -298,7 +298,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
             display: block;
             position: relative;
             quotes: none;
-            text-align: left;
+            text-align: center;
             font-size: 24px;
             height: 82px; }
             .main#team ul li div q:before {
@@ -328,11 +328,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
     color: white;
     font-size: 24px;
     font-weight: 600; }
-    .main#manifest {
-      -webkit-user-select: none;  
-      -moz-user-select: none;     
-      -ms-user-select: none;      
-      user-select: none; }
   .main#manifest > div p {
     padding: 0 30px;
     font-size: 18px;
@@ -340,11 +335,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
     line-height: 1.4; }
   .main#faq dl {
     margin: 0; }
-    .main#faq {
-      -webkit-user-select: none;  
-      -moz-user-select: none;     
-      -ms-user-select: none;      
-      user-select: none; }
     .main#faq dl dt {
       position: relative;
       background: #50A5DD;
@@ -427,9 +417,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 #page-moola a:active, #page-moola a:focus, #page-moola a:hover {
   color: #92AC84; }
 
-#page-moola body {
-  background: url() center center; }
-
 #page-moola button {
   background: #81B566 !important; }
 
@@ -437,15 +424,28 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
   background: #92AC84 !important;
   color: white; }
 
-#page-moola .btn-ghost {
+#page-moola .btn-ghost:not(#side-link-menu), #page-moola #intercom-container .intercom-launcher-button:not(.active) {
   border: 2px solid #81B566 !important;
   background: transparent !important;
   color: #81B566 !important; }
 
-#page-moola .btn-ghost:active, #page-moola .btn-ghost:focus, #page-moola .btn-ghost:hover {
+#page-moola #intercom-container .intercom-launcher-button:not(.active):after {
+  color: #81B566 !important; }
+
+#page-moola .btn-ghost:active, #page-moola .btn-ghost:focus, #page-moola .btn-ghost:hover,
+#page-moola #intercom-container .intercom-launcher-button:active,
+#page-moola #intercom-container .intercom-launcher-button:focus,
+#page-moola #intercom-container .intercom-launcher-button:hover,
+#page-moola #top-link-menu:active, #page-moola #top-link-menu:focus, #page-moola #top-link-menu:hover {
   border-color: #92AC84 !important;
   background: #92AC84 !important;
   color: white !important; }
+  #page-moola .btn-ghost:active:after, #page-moola .btn-ghost:focus:after, #page-moola .btn-ghost:hover:after,
+  #page-moola #intercom-container .intercom-launcher-button:active:after,
+  #page-moola #intercom-container .intercom-launcher-button:focus:after,
+  #page-moola #intercom-container .intercom-launcher-button:hover:after,
+  #page-moola #top-link-menu:active:after, #page-moola #top-link-menu:focus:after, #page-moola #top-link-menu:hover:after {
+    color: white !important; }
 
 #page-moola #top #top-logo svg path {
   fill: #81B566; }
@@ -459,9 +459,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 #page-lake a:active, #page-lake a:focus, #page-lake a:hover {
   color: #6F98B5; }
 
-#page-lake body {
-  background: url() center center; }
-
 #page-lake button {
   background: #50A5DD !important; }
 
@@ -469,15 +466,28 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
   background: #6F98B5 !important;
   color: white; }
 
-#page-lake .btn-ghost {
+#page-lake .btn-ghost:not(#side-link-menu), #page-lake #intercom-container .intercom-launcher-button:not(.active) {
   border: 2px solid #50A5DD !important;
   background: transparent !important;
   color: #50A5DD !important; }
 
-#page-lake .btn-ghost:active, #page-lake .btn-ghost:focus, #page-lake .btn-ghost:hover {
+#page-lake #intercom-container .intercom-launcher-button:not(.active):after {
+  color: #50A5DD !important; }
+
+#page-lake .btn-ghost:active, #page-lake .btn-ghost:focus, #page-lake .btn-ghost:hover,
+#page-lake #intercom-container .intercom-launcher-button:active,
+#page-lake #intercom-container .intercom-launcher-button:focus,
+#page-lake #intercom-container .intercom-launcher-button:hover,
+#page-lake #top-link-menu:active, #page-lake #top-link-menu:focus, #page-lake #top-link-menu:hover {
   border-color: #6F98B5 !important;
   background: #6F98B5 !important;
   color: white !important; }
+  #page-lake .btn-ghost:active:after, #page-lake .btn-ghost:focus:after, #page-lake .btn-ghost:hover:after,
+  #page-lake #intercom-container .intercom-launcher-button:active:after,
+  #page-lake #intercom-container .intercom-launcher-button:focus:after,
+  #page-lake #intercom-container .intercom-launcher-button:hover:after,
+  #page-lake #top-link-menu:active:after, #page-lake #top-link-menu:focus:after, #page-lake #top-link-menu:hover:after {
+    color: white !important; }
 
 #page-lake #top #top-logo svg path {
   fill: #50A5DD; }
@@ -491,9 +501,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 #page-eggplant a:active, #page-eggplant a:focus, #page-eggplant a:hover {
   color: #907D9E; }
 
-#page-eggplant body {
-  background: url() center center; }
-
 #page-eggplant button {
   background: #9A5BC5 !important; }
 
@@ -501,15 +508,28 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
   background: #907D9E !important;
   color: white; }
 
-#page-eggplant .btn-ghost {
+#page-eggplant .btn-ghost:not(#side-link-menu), #page-eggplant #intercom-container .intercom-launcher-button:not(.active) {
   border: 2px solid #9A5BC5 !important;
   background: transparent !important;
   color: #9A5BC5 !important; }
 
-#page-eggplant .btn-ghost:active, #page-eggplant .btn-ghost:focus, #page-eggplant .btn-ghost:hover {
+#page-eggplant #intercom-container .intercom-launcher-button:not(.active):after {
+  color: #9A5BC5 !important; }
+
+#page-eggplant .btn-ghost:active, #page-eggplant .btn-ghost:focus, #page-eggplant .btn-ghost:hover,
+#page-eggplant #intercom-container .intercom-launcher-button:active,
+#page-eggplant #intercom-container .intercom-launcher-button:focus,
+#page-eggplant #intercom-container .intercom-launcher-button:hover,
+#page-eggplant #top-link-menu:active, #page-eggplant #top-link-menu:focus, #page-eggplant #top-link-menu:hover {
   border-color: #907D9E !important;
   background: #907D9E !important;
   color: white !important; }
+  #page-eggplant .btn-ghost:active:after, #page-eggplant .btn-ghost:focus:after, #page-eggplant .btn-ghost:hover:after,
+  #page-eggplant #intercom-container .intercom-launcher-button:active:after,
+  #page-eggplant #intercom-container .intercom-launcher-button:focus:after,
+  #page-eggplant #intercom-container .intercom-launcher-button:hover:after,
+  #page-eggplant #top-link-menu:active:after, #page-eggplant #top-link-menu:focus:after, #page-eggplant #top-link-menu:hover:after {
+    color: white !important; }
 
 #page-eggplant #top #top-logo svg path {
   fill: #9A5BC5; }
@@ -523,9 +543,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 #page-cerise a:active, #page-cerise a:focus, #page-cerise a:hover {
   color: #C56E9C; }
 
-#page-cerise body {
-  background: url() center center; }
-
 #page-cerise button {
   background: #DB1988 !important; }
 
@@ -533,15 +550,28 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
   background: #C56E9C !important;
   color: white; }
 
-#page-cerise .btn-ghost {
+#page-cerise .btn-ghost:not(#side-link-menu), #page-cerise #intercom-container .intercom-launcher-button:not(.active) {
   border: 2px solid #DB1988 !important;
   background: transparent !important;
   color: #DB1988 !important; }
 
-#page-cerise .btn-ghost:active, #page-cerise .btn-ghost:focus, #page-cerise .btn-ghost:hover {
+#page-cerise #intercom-container .intercom-launcher-button:not(.active):after {
+  color: #DB1988 !important; }
+
+#page-cerise .btn-ghost:active, #page-cerise .btn-ghost:focus, #page-cerise .btn-ghost:hover,
+#page-cerise #intercom-container .intercom-launcher-button:active,
+#page-cerise #intercom-container .intercom-launcher-button:focus,
+#page-cerise #intercom-container .intercom-launcher-button:hover,
+#page-cerise #top-link-menu:active, #page-cerise #top-link-menu:focus, #page-cerise #top-link-menu:hover {
   border-color: #C56E9C !important;
   background: #C56E9C !important;
   color: white !important; }
+  #page-cerise .btn-ghost:active:after, #page-cerise .btn-ghost:focus:after, #page-cerise .btn-ghost:hover:after,
+  #page-cerise #intercom-container .intercom-launcher-button:active:after,
+  #page-cerise #intercom-container .intercom-launcher-button:focus:after,
+  #page-cerise #intercom-container .intercom-launcher-button:hover:after,
+  #page-cerise #top-link-menu:active:after, #page-cerise #top-link-menu:focus:after, #page-cerise #top-link-menu:hover:after {
+    color: white !important; }
 
 #page-cerise #top #top-logo svg path {
   fill: #DB1988; }

@@ -1,4 +1,4 @@
-<ion-modal-view  class='uguru-view faq-modal'>
+<ion-modal-view class='uguru-view faq-modal'>
 <style>
   .uguru-view.faq-modal {
     #top-menu {
@@ -9,16 +9,17 @@
 </style>
 <section class="full-xy">
 
-    <header class="bg-charcoal white-white">
-      <h1 class="text-center">UGURU FAQS</h1>
-      <div class='header-nav-back '>
-      <a ng-click='faqModal.hide()'>
-        <i class='icon ion-chevron-down'></i>
-      </a>
+    <header class="bg-charcoal white">
+      <div class="header-nav">
+        <a class="header-nav-back" ng-click="faqModal.hide()">
+          <i class='icon ion-chevron-down'>
+          </i>
+        </a>
       </div>
+      <h1 class="onboarding-message text-center">Uguru FAQs</h1>
     </header>
 
-  <ion-content class='white-bg has-header full-height' scroll='false'>
+  <ion-content class='white-bg has-header' scroll='false'>
     <iframe name="Uguru FAQ" ng-src="http://0.0.0.0:5000/faq-only/"></iframe>
   </ion-content>
 </section>

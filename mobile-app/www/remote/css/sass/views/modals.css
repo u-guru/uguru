@@ -1,16 +1,18 @@
-.terms-modal, .faq-modal, .signup-modal {
+.terms-modal, .faq-modal, .signup-modal, .support-modal {
   color: #2B3234; }
-  .terms-modal p, .faq-modal p, .signup-modal p {
+  .terms-modal p, .faq-modal p, .signup-modal p, .support-modal p {
     font-size: 13px;
     margin: 10px 0px; }
-  .terms-modal .header-nav, .faq-modal .header-nav, .signup-modal .header-nav {
+  .terms-modal .header-nav, .faq-modal .header-nav, .signup-modal .header-nav, .support-modal .header-nav {
     position: relative; }
-    .terms-modal .header-nav a, .faq-modal .header-nav a, .signup-modal .header-nav a {
+    .terms-modal .header-nav a, .faq-modal .header-nav a, .signup-modal .header-nav a, .support-modal .header-nav a {
       display: inline-block;
       position: absolute;
       left: 15px;
-      top: 15px; }
-  .terms-modal .has-header, .faq-modal .has-header, .signup-modal .has-header {
+      top: 7px;
+      opacity: 0.7;
+      font-size: 20px; }
+  .terms-modal .has-header, .faq-modal .has-header, .signup-modal .has-header, .support-modal .has-header {
     top: 54px; }
 
 .signup-modal .header-nav a {
@@ -54,5 +56,27 @@
     height: 0;
     border: 15px solid transparent;
     border-bottom: 15px solid white; }
+
+.faq-modal header.bg-charcoal {
+  z-index: 1000 !important; }
+  .faq-modal header.bg-charcoal h1.onboarding-message.text-center {
+    width: 50%;
+    margin: 0 auto; }
+.faq-modal iframe {
+  min-height: 150%;
+  top: 0;
+  position: static;
+  margin-top: -2%;
+  width: 100%; }
+  .faq-modal iframe header#top {
+    display: none !important; }
+.faq-modal .has-header.full-height {
+  top: 0;
+  z-index: 0; }
+
+.terms-modal header .header-nav .ion-chevron-down, .support-modal header .header-nav .ion-chevron-down {
+  position: absolute;
+  top: 10px;
+  left: 0px; }
 
 /*# sourceMappingURL=modals.css.map */

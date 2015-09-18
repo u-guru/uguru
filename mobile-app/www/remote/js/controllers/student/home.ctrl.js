@@ -340,7 +340,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $scope.verbModal.show();
     }
 
-    //UGH I HATE MY LIFE FUCK YOU IONIC 
+    //UGH I HATE MY LIFE FUCK YOU IONIC
     var getIonicSideMenuOpenRatio = function() {
       var openRatio = $ionicSideMenuDelegate.getOpenRatio();
       return openRatio;
@@ -396,7 +396,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
 
 
-    
+
 
     $scope.closeContactingModal = function() {
       $scope.contactingModal.hide();
@@ -411,7 +411,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $scope.verbModal.hide();
     }
 
-  
+
 
      $scope.launchWelcomeStudentPopup = function() {
 
@@ -446,9 +446,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
      $scope.$on('$ionicView.enter', function() {
       $ionicSideMenuDelegate.canDragContent(true);
-        // $timeout(function() {
-        //   $ionicSideMenuDelegate.toggleRight();
-        // }, 250)
+        $timeout(function() {
+          $ionicSideMenuDelegate.toggleRight();
+        }, 250)
         //welcome to student mode screen
         $timeout(function() {
             checkOnboardingStatus()
@@ -458,6 +458,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
       });
+
+     $scope.user.university = {name: 'UC Berkeley'}
 
   }
 

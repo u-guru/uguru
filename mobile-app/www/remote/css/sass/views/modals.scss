@@ -1,5 +1,5 @@
 $charcoal: #2B3234;
-.terms-modal, .faq-modal, .signup-modal {
+.terms-modal, .faq-modal, .signup-modal, .support-modal {
     color: $charcoal;
     p {
         font-size: 13px;
@@ -9,11 +9,13 @@ $charcoal: #2B3234;
     .header-nav {
         position:relative;
         a {
-            display:inline-block;
-            position:absolute;
-            left:15px;
-            top:15px;
-        }
+            display: inline-block;
+            position: absolute;
+            left: 15px;
+            top: 7px;
+            opacity: 0.7;
+            font-size: 20px;
+            }
     }
     .has-header {
         top:54px;
@@ -78,5 +80,42 @@ $charcoal: #2B3234;
         height: 0;
         border: 15px solid transparent;
         border-bottom: 15px solid white;
+    }
+}
+
+.faq-modal {
+    header.bg-charcoal {
+        z-index:1000 !important;
+        h1.onboarding-message.text-center {
+            width: 50%;
+            margin: 0 auto;
+        }
+    }
+    iframe {
+        min-height: 150%;
+        top: 0;
+        position: static;
+        margin-top: -2%;
+        width: 100%;
+        header#top {
+            display:none !important;
+        }
+    }
+
+    .has-header.full-height {
+        top:0;
+        z-index:0;
+    }
+
+
+}
+
+.terms-modal, .support-modal {
+    header .header-nav {
+        .ion-chevron-down {
+            position:absolute;
+            top:10px;
+            left:0px;
+        }
     }
 }

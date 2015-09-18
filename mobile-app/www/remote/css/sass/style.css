@@ -457,15 +457,17 @@ body {
     display: block;
     color: white;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 1px;
     line-height: 1;
     text-align: center;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    opacity: 0.6; }
   .uguru-view .onboarding#account #account-form #tos:active, .uguru-view .onboarding#account #account-form #tos:focus {
     color: #69B3A5; }
   .uguru-view .onboarding#account #account-form #social-login {
-    margin-top: 50px; }
+    margin-top: 30px;
+    margin-bottom: 20px; }
 .uguru-view .onboarding#skill header:before {
   background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat; }
 .uguru-view .onboarding#skill #skills-list ul {
@@ -1192,80 +1194,102 @@ body {
       margin-top: 20px !important;
       font-size: 18px !important; } }
 
-.side-menu-profile {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  position: absolute;
-  width: 100%;
-  height: calc(100% / 11 * 5);
-  font-weight: 400;
-  line-height: 1.25;
-  text-align: center; }
-  .side-menu-profile ul {
-    position: relative;
-    z-index: 9; }
-  .side-menu-profile .side-menu-icon {
-    position: relative;
-    margin-bottom: 10px; }
-    .side-menu-profile .side-menu-icon span {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      font-size: 18px;
-      font-weight: 600; }
-  .side-menu-profile .side-menu-name, .side-menu-profile .side-menu-university {
-    font-weight: 700;
-    text-transform: uppercase; }
-  .side-menu-profile .side-menu-year {
-    font-size: 20px; }
-  .side-menu-profile:after {
-    filter: alpha(opacity=30);
-    opacity: 0.3;
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: url(../../img/onboarding/school.jpg) repeat center center/cover; }
-
 .side-menu-list {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  height: calc(100% / 11 * 6);
-  background: #40484B; }
+  height: 100%; }
+  .side-menu-list .list {
+    height: 100%; }
   .side-menu-list .list-item {
     height: 64px;
+    font-size: 18px;
     font-weight: 600;
     text-transform: uppercase; }
-    .side-menu-list .list-item:hover, .side-menu-list .list-item.activated {
-      cursor: pointer; }
-    .side-menu-list .list-item:active, .side-menu-list .list-item.active {
-      background: #69B3A5; }
     .side-menu-list .list-item .list-item-icon {
       height: 64px;
       width: 64px; }
       .side-menu-list .list-item .list-item-icon svg {
-        padding: 15px; }
+        padding: 15px;
+        width: auto; }
+        .side-menu-list .list-item .list-item-icon svg path, .side-menu-list .list-item .list-item-icon svg circle {
+          stroke-width: 4px;
+          stroke-linecap: round;
+          stroke-linejoin: round; }
+        .side-menu-list .list-item .list-item-icon svg circle {
+          stroke-dasharray: 3px, 10px; }
     .side-menu-list .list-item .list-item-detail {
-      padding: 0 15px 0 5px; }
+      padding: 0 15px 0 0; }
+  .side-menu-list .list-item-profile {
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    height: calc(100% - 384px); }
+    .side-menu-list .list-item-profile .list-item-detail span {
+      display: block; }
+    .side-menu-list .list-item-profile .list-item-detail span:first-child {
+      font-size: 20px !important; }
+    .side-menu-list .list-item-profile .list-item-detail span:last-child {
+      font-size: 14px !important; }
+  .side-menu-list .list-item-agenda {
+    display: none; }
+
+@media screen and (min-height: 540px) {
+  .side-menu-list .list-item-profile {
+    height: 84px; }
+  .side-menu-list .list-item-agenda {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    height: calc(100% - 384px - 84px);
+    text-transform: none; } }
+.menu-guru .list {
+  background: #40484B; }
+.menu-guru .list-item.active, .menu-guru .list-item.activated {
+  background: #8A9EA3; }
+.menu-guru .list-item .list-item-icon svg path, .menu-guru .list-item .list-item-icon svg circle {
+  stroke: #fff; }
+.menu-guru .list-item-profile {
+  background: rgba(138, 158, 163, 0.75); }
+.menu-guru .list-item-agenda {
+  background: white;
+  color: #2B3234; }
+  .menu-guru .list-item-agenda.active, .menu-guru .list-item-agenda.activated {
+    background: rgba(255, 255, 255, 0.9); }
+.menu-guru .list-item-guru {
+  display: none; }
+.menu-guru .list-item-student {
+  background: rgba(138, 158, 163, 0.75); }
+
+.menu-student .list {
+  background: white; }
+.menu-student .list-item {
+  color: #40484B; }
+  .menu-student .list-item .list-item-icon svg path {
+    stroke: #40484B; }
+  .menu-student .list-item.activated, .menu-student .list-item.active {
+    background: rgba(85, 164, 183, 0.75);
+    color: white; }
+    .menu-student .list-item.activated svg path, .menu-student .list-item.active svg path {
+      stroke: white; }
+.menu-student .list-item-profile {
+  background: #55A4B7;
+  color: white; }
+  .menu-student .list-item-profile .list-item-icon svg circle {
+    stroke: white; }
+.menu-student .list-item-agenda {
+  background: #40484B; }
+  .menu-student .list-item-agenda:active, .menu-student .list-item-agenda:hover {
+    background: rgba(64, 72, 75, 0.9); }
+.menu-student .list-item-student {
+  display: none; }
+.menu-student .list-item-guru {
+  background: #55A4B7;
+  color: white; }
+  .menu-student .list-item-guru .list-item-icon svg path {
+    stroke: white; }
 
 #guru-home header:before {
   background: url(../../img/onboarding/school.jpg) no-repeat center center/cover; }
@@ -1306,17 +1330,17 @@ body {
       margin-top: -5px; }
       #guru-home #guru-ranking #guru-chart #percentile #percentile-ranking {
         position: relative;
-        font-size: 48px;
+        font-size: 44px;
         font-weight: 600;
         line-height: 1;
-        padding-left: 5px; }
+        text-align: center; }
         #guru-home #guru-ranking #guru-chart #percentile #percentile-ranking:after {
           content: "th";
           display: block;
           position: absolute;
-          top: 0;
-          right: 0;
-          font-size: 14px;
+          top: -1px;
+          right: -1px;
+          font-size: 12px;
           font-weight: 400;
           line-height: 28px;
           text-transform: uppercase; }

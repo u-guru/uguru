@@ -128,6 +128,19 @@
 	-webkit-justify-content: center;
 	justify-content: center;
 }
+@mixin flex-reset {
+	-ms-box-orient: none;
+	display: inherit;
+	-ms-flex-flow: none;
+	-webkit-flex-flow: none;
+	flex-flow: none;
+	-webkit-flex-direction: none;
+	flex-direction: none;
+	-webkit-align-items: none;
+	align-items: none;
+	-webkit-justify-content: none;
+	justify-content: none;
+}
 @mixin listless {
 	list-style: none;
 	margin: 0;

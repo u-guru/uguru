@@ -30,7 +30,7 @@ angular.module('uguru.util.controllers')
   Camera, Support, $ionicPlatform, $ionicBackdrop) {
 
     $scope.root.vars.show_account_fields = false;
-    $scope.loginMode = false;
+    $scope.root.vars.loginMode = false;
 
 
     // pre-render these immediately
@@ -55,20 +55,46 @@ angular.module('uguru.util.controllers')
         $scope.privacyModal = modal;
     });
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.signupModal = modal;
+    });
+
     $scope.launchFAQModal = function() {
       $scope.faqModal.show();
     }
 
+    var initSupportChatEnterHandler = function() {
+
+      var chatInputEnterButton = document.querySelectorAll('.intercom-composer-send-button')[0]
+      if (chatInputEnterButton) {
+        console.log(chatInputEnterButton);
+        chatInputEnterButton.click();
+      }
+
+    }
+
     $scope.launchSupportModal = function() {
       $scope.supportModal.show();
+      $timeout(function() {
+        initSupportChatEnterHandler()
+      }, 500);
+      $scope.init
     }
 
     $scope.launchPrivacyModal = function() {
       $scope.privacyModal.show();
     }
 
-  
-  
+    $scope.launchSignupModal = function(loginMode) {
+      if (loginMode)  {
+        $scope.root.vars.loginMode = true;
+      }
+      $scope.signupModal.show();
+    }
+
     $scope.attemptToResetPassword = function() {
       function validateEmail(email) {
           var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -100,9 +126,9 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.toggleResetModeFromLogin = function() {
-      $scope.loginMode = false;
-      $scope.resetMode = !$scope.loginMode;
-      if (!$scope.loginMode && !$scope.signupMode) {
+      $scope.root.vars.loginMode = false;
+      $scope.resetMode = !$scope.root.vars.loginMode;
+      if (!$scope.root.vars.loginMode && !$scope.signupMode) {
         $scope.headerText = 'Reset Password';
       }
       $timeout(function() {
@@ -114,7 +140,7 @@ angular.module('uguru.util.controllers')
       $timeout(function() {
         $scope.loader.hide();
       }, 750);
-    }  
+    }
 
     $scope.showActionSheetProfilePhoto = function() {
 
@@ -444,7 +470,7 @@ angular.module('uguru.util.controllers')
       });
     }
 
-  
+
 
     $scope.resetAccount = function() {
       if (confirm('Are you sure you want to reset your admin account?')) {
@@ -491,7 +517,7 @@ angular.module('uguru.util.controllers')
 
     $scope.goToStudent = function() {
 
-      //show the loader immediately 
+      //show the loader immediately
       $scope.loader.show();
       $state.go('^.home');
 
@@ -507,9 +533,9 @@ angular.module('uguru.util.controllers')
       }, 1000)
     }
 
- 
 
-    
+
+
 
     $scope.showComingSoon = function() {
       $scope.progress_active = true;
