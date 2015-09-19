@@ -279,6 +279,70 @@ angular.module('uguru.util.controllers')
         });
     };
 
+
+    var saveEditNamePopup, closeEditStudentNamePopup;
+    $scope.launchEditStudentNamePopup = function() {
+
+        var homeCenterComponent = document.getElementById('student-sidebar-profile');
+        var uguruPopup = document.getElementById('edit-name-uguru-popup');
+        var editNameInput = document.getElementById('user-edit-name-input')
+        var uguruPopupCloseLink = document.getElementById('edit-name-close-popup-link');
+        var uguruPopupSaveLink = document.getElementById('edit-name-save-popup-link');
+        uguruPopupCloseLink.addEventListener("click", function(event) {
+          var uguruPopup = document.getElementById('edit-name-uguru-popup');
+          uguruPopup.classList.remove('show');
+        })
+        uguruPopupSaveLink.addEventListener("click", function(event) {
+          var editNameInput = document.getElementById('user-edit-name-input')
+
+            if (editNameInput && editNameInput.value.length) {
+                $scope.user.name = editNameInput.value;
+            } else {
+              alert('Please enter your full name');
+              return;
+            }
+            $scope.user.updateAttr('name', $scope.user, $scope.user.name, null, $scope);
+            $scope.success.show(0, 1000, 'Saved!');
+            var uguruPopup = document.getElementById('edit-name-uguru-popup');
+            uguruPopup.classList.remove('show');
+        })
+        //todo learn how to inject inputs in
+        if (editNameInput) {
+          editNameInput.value = $scope.user.name;
+        }
+        $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {duration:1},
+          function (modal){
+            modal.classList.add('show');
+          }
+        );
+        
+        var closeEditStudentNamePopup = function() {
+          if ($scope.reverseAnimatePopup) {
+            $scope.reverseAnimatePopup();
+          }
+          var uguruPopup = document.getElementById('edit-name-uguru-popup');
+          uguruPopup.classList.remove('show');
+        }
+
+
+        var saveEditNamePopup = function() {
+
+            var editNameInput = document.getElementById('user-edit-name-input')
+
+            if (editNameInput && editNameInput.value.length) {
+                $scope.user.name = editNameInput.value;
+            } else {
+              alert('Please enter your full name');
+              return;
+            }
+            $scope.user.updateAttr('name', $scope.user, $scope.user.name, null, $scope);
+            $scope.success.show(0, 1000, 'Saved!');
+            var uguruPopup = document.getElementById('edit-name-uguru-popup');
+            uguruPopup.classList.remove('show');
+        }
+
+      }
+
     $scope.showPopupEditPassword = function() {
       $scope.data = {email: $scope.user.email}
       template = '<input style="padding:2px 4px; margin-bottom:4px;" type="password" ng-model="data.old_password" placeholder="old password" autofocus><input style="padding:2px 4px;" type="password" ng-model="data.new_password" placeholder="new password">'
@@ -364,6 +428,8 @@ angular.module('uguru.util.controllers')
         });
     };
 
+    
+
     //settings info
     $scope.editAccountInfoActionSheet = function() {
 
@@ -387,7 +453,7 @@ angular.module('uguru.util.controllers')
               if (index === 0) {
                 $scope.closeAttachActionSheet();
                 $timeout(function() {
-                  $scope.showPopupEditName();
+                  $scope.launchEditStudentNamePopup();
                 }, 500);
               }
 
@@ -436,7 +502,7 @@ angular.module('uguru.util.controllers')
 
     $scope.showStudentEditActionSheet = function() {
 
-        var options = [{text: 'Profile Photo'},{text: 'University'}, {text: 'Major'}, {text: 'Account Information'}];
+        var options = [{text: 'Profile Photo'},{text: 'University'}, {text: 'Account Information'}];
 
         // Show the action sheet
         $scope.closeAttachActionSheet = $ionicActionSheet.show({
@@ -466,10 +532,6 @@ angular.module('uguru.util.controllers')
               }
 
               if (index === 2) {
-                $scope.goToMajorPage();
-              }
-
-              if (index === 3) {
                 $scope.closeAttachActionSheet();
                 $timeout(function() {
                   $scope.editAccountInfoActionSheet();
