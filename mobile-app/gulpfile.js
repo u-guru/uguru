@@ -133,12 +133,14 @@ gulp.task('styles', function() {
   var cssStream17 = gulp.src('www/remote/css/sass/views/guru-profile.css')
   var cssStream18 = gulp.src('www/remote/css/sass/views/guru-credibility.css')
   var cssStream19 = gulp.src('www/remote/css/sass/ios.css')
+  var cssStream20 = gulp.src('www/remote/css/sass/components/uguru-popup.css')
 
 
   return streamqueue({ objectMode: true }, cssStream2, cssStream3,
     cssStream4, cssStream5, cssStream6, cssStream7, cssStream8,
     cssStream9, cssStream10, cssStream11, cssStream12, cssStream13,
-    cssStream14, cssStream15, cssStream16, cssStream17, cssStream18, cssStream19).pipe(plugins.concat('main.css'))
+    cssStream14, cssStream15, cssStream16, cssStream17, cssStream18,
+    cssStream19, cssStream20).pipe(plugins.concat('main.css'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
     .pipe(minifyCSS())
     .pipe(plugins.if(build, plugins.rev()))
@@ -202,6 +204,7 @@ gulp.task('scripts', function() {
       'lib/angular-ui-custom/ui-bootstrap-custom*.min.js',
       'lib/lodash/dist/lodash.js',
       'lib/stripe/stripe.js',
+      'lib/cta/cta*.js',
       'lib/angular-google-maps/angular-google-maps.min.js',
       'lib/restangular/dist/restangular.js',
       'lib/angular-strap/angular-strap.min.js',

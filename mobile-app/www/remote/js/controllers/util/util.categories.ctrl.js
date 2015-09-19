@@ -20,7 +20,7 @@ angular.module('uguru.util.controllers')
     if (!img_base || !img_base.length) {
       categories_img_base = 'remote/';
     } else {
-      categories_img_base = img_base;
+      categories_img_base = img_base + 'remote/';
     }
 
     $scope.active_category = {name:'Select category', active:false};
@@ -31,11 +31,30 @@ angular.module('uguru.util.controllers')
     }).then(function(modal) {
         $scope.categorySkillsModal = modal;
     });
+    $scope.onSwipeDown = function() {
+      alert('user swiped down')
+    }
+    $scope.onDragDown = function() {
+      alert('user swiped down')
+    }
 
     $scope.launchCategoryModal = function(category) {
       $scope.active_category.active = true;
       $scope.active_category = category;
       $scope.categorySkillsModal.show();
+    }
+
+    var mapGuruCoursesToCategoriesObj = function(guru_courses) {
+      guruCategoryCourses = [];
+      for (var i = 0; i < guru_courses.length; i++) {
+        var guru_course = guru_courses[i];
+        guruCategoryCourses.push({
+          name: guru_course.name,
+          id: guru_course.id,
+          active: true
+        });
+      }
+      return guruCategoryCourses;
     }
 
     $scope.updateCategoryCount = function(category, skill, index) {
@@ -51,23 +70,13 @@ angular.module('uguru.util.controllers')
           }
         }
         skill.active = false;
+        category.active_skills_count += skill.active ? 1 : -1;
         return;
       }
       category.active_skills_count += skill.active ? 1 : -1;
     }
-    var mapGuruCoursesToCategoriesObj = function(guru_courses) {
-      guru_courses = [];
-      guruCategoryCourses = [];
-      for (var i = 0; i < guru_courses.length; i++) {
-        var guru_course = guru_courses[i];
-        guruCategoryCourses.push({
-          name: guru_course.short_name,
-          id: guru_course.id,
-          active: true
-        });
-      }
-      return guruCategoryCourses;
-    }
+
+
     $scope.static.categories = [
       {
         name: 'Academic Courses',

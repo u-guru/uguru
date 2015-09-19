@@ -23,11 +23,13 @@ angular.module('uguru.guru.controllers')
     $ionicActionSheet, Camera) {
 
 
-    $scope.takePhotoCallbackSuccess = function($scope) {
+    function takePhotoCallbackSuccess($scope) {
 
       $scope.success.show(0, 2000, "Awesome! You're all set.");
       $ionicViewSwitcher.nextDirection('forward');
-      $state.go('^.guru');
+      $timeout(function() {
+        $state.go('^.guru');
+      }, 1000)
     }
 
 
@@ -45,36 +47,31 @@ angular.module('uguru.guru.controllers')
       }
 
      // Show the action sheet
-     $scope.closeAttachActionSheet = $ionicActionSheet.show({
+     var closeAttachActionSheet = $ionicActionSheet.show({
        buttons: options,
        cancelText: 'Cancel',
        cancel: function() {
-            $scope.closeAttachActionSheet();
         },
        buttonClicked: function(index) {
-          $scope.takePhoto(index);
-
+          takePhoto(index);
           $timeout(function() {
-              $scope.closeAttachActionSheet();
+            return true;
           }, 500);
        }
      });
     }
 
 
-
-    $scope.takePhoto = function(index) {
+    function takePhoto(index) {
       if ($scope.platform.mobile) {
-        $scope.root.vars.profile_url_changed = true;
-        Camera.takePicture($scope, index, $scope.takePhotoCallbackSuccess);
+        if ($scope.user.id) {
+          $scope.root.vars.profile_url_changed = true;
+        }
+        Camera.takePicture($scope, index, 'user-instant-photo', takePhotoCallbackSuccess);
       } else {
         var element = document.getElementById('file-input-web')
         element.click();
       }
-    }
-
-    $scope.closeAttachActionSheet = function() {
-      $scope.closeAttachActionSheet();
     }
 
     $scope.userPhotoList = [];
@@ -85,21 +82,26 @@ angular.module('uguru.guru.controllers')
     ]
 
 
-
+    //on web interface
     $scope.file_changed = function(element) {
+
         var photofile = element.files[0];
 
         var reader = new FileReader();
 
 
-        var image = document.getElementById('sidebar-student-profile-photo');
+
+        var image = document.getElementById('user-instant-photo');
 
         reader.onload = function(e) {
-            $scope.user.profile_url = e.target.result;
+            if (image) {
+              image.src = e.target.result;
+              $scope.user.profile_url = image.src;
+            }
         };
 
         reader.readAsDataURL(photofile);
-
+        $scope.photoUploaded = true;
 
         var formData = new FormData();
 
@@ -112,9 +114,11 @@ angular.module('uguru.guru.controllers')
         name = new Date().getTime().toString();
         formData.append('filename', name);
 
-        $scope.file_index += 1;
 
-        $scope.user.createObj($scope.user, 'files', formData, $scope, $scope.takePhotoCallbackSuccess);
+        $scope.success.show(0, 1500, 'Saving...');
+        $timeout(function() {
+          $scope.user.createObj($scope.user, 'files', formData, $scope, takePhotoCallbackSuccess);
+        }, 500);
     };
 
   }

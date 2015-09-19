@@ -146,6 +146,7 @@
 
   </section>
   <div class="tabs tabs-icon-only guru-tabs bg-slate" id='guru-tab-bar'>
+
     <a class="tab-item active" nav-direction='swap' href='#/guru'>
       <i class='icon ion-home'> </i>
     </a>
@@ -160,6 +161,9 @@
       <i class='icon ion-gear-a'> </i>
     </a>
   </div>
+
+
+  <div ng-if='launchWelcomeGuruPopup' ng-click='closeWelcomePopup()'class='uguru-popup' ng-click='closeWelcome' id='home-uguru-popup' ng-include="img_base + 'templates/welcome.guru.popup.html'"> </div>
 </ion-view>
 
 

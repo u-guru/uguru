@@ -1,6 +1,6 @@
 var LOCAL = true; //local to the 8100 codebasebirbirs
 var FIRST_PAGE='^.home';
-// var img_base = '';
+var img_base;
 
 // // @if ADMIN
 // isAdmin = true;
@@ -17,9 +17,13 @@ var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
+  //BASE_URL = 'http://192.168.42.124:8100';
 
-  // REST_URL = 'http://192.168.42.78:5000';
-  var REST_URL = 'https://www.uguru.me'
+  // BASE_URL = 'http://192.168.1.43:8100';
+  REST_URL = "http://localhost:5000"
+  REST_URL = 'https://www.uguru.me'
+  //BASE_URL = 'http://192.168.43.155:8100';
+
 
 } else {
   img_base = '/static/'
@@ -55,11 +59,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         libraries: 'places'
     });
 
-  $provide.decorator("$exceptionHandler", function($delegate, $injector) {
-    return function(exception, cause) {
-      $delegate(exception, cause);
-    };
-  });
+  // $provide.decorator("$exceptionHandler", function($delegate, $injector) {
+  //   return function(exception, cause) {
+  //     $delegate(exception, cause);
+  //   };
+  // });
 
   if (!window.cordova) {
       var appID = 1416375518604557;
@@ -69,8 +73,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
   $ionicConfigProvider.tabs.position("bottom");
-  $ionicConfigProvider.views.maxCache(0);  //Default is 10
-  $ionicConfigProvider.views.forwardCache(false);
+  $ionicConfigProvider.views.maxCache(20);  //Default is 10
+  $ionicConfigProvider.views.forwardCache(true);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
@@ -82,15 +86,18 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   .state('root', {
         url: '',
         abstract: true,
-        templateUrl: 'templates/root.html',
+        templateUrl: BASE + 'templates/root.html',
         controller: 'RootController'
   }).
   state('root.university', {
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
         resolve: {
+          loadCache: function($templateCache) {
+            $templateCache.get(BASE + 'templates/university.html');
+          },
           deviceInfo: function(DeviceService) {
-            return DeviceService.getDevice();
+            return DeviceService.getPlatform();
           }
         },
         controller: 'AddUniversityCtrl'
@@ -248,7 +255,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
 
 
-  $urlRouterProvider.otherwise('/access');
+  $urlRouterProvider.otherwise('/university');
 
 
 });

@@ -17,17 +17,29 @@ angular.module('uguru.guru.controllers')
   '$ionicSlideBoxDelegate',
   '$ionicViewSwitcher',
   '$window',
+  'University',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $cordovaStatusbar, $ionicSlideBoxDelegate,
-    $ionicViewSwitcher, $window) {
+    $ionicViewSwitcher, $window, University) {
 
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
     $scope.majors = $scope.static.majors;
     $scope.courses = $scope.static.courses;
 
-
+    var mapGuruCoursesToCategoriesObj = function(guru_courses) {
+      guruCategoryCourses = [];
+      for (var i = 0; i < guru_courses.length; i++) {
+        var guru_course = guru_courses[i];
+        guruCategoryCourses.push({
+          name: guru_course.name,
+          id: guru_course.id,
+          active: true
+        });
+      }
+      return guruCategoryCourses;
+    }
 
     $scope.nextSlide = function() {
       $ionicSlideBoxDelegate.next();
@@ -49,6 +61,7 @@ angular.module('uguru.guru.controllers')
             University.getCourses(2732).then(
                   function(courses) {
                       $scope.loader.hide();
+
                       $localstorage.setObject('courses', courses);
                       $scope.root.vars.courses = courses;
                       $scope.root.vars.popular_courses = $scope.root.vars.courses.slice(0, 16);
@@ -69,6 +82,15 @@ angular.module('uguru.guru.controllers')
       if (index === 0) {
         console.log('grabbing courses from server')
         $scope.getCoursesFromServer();
+        $ionicSideMenuDelegate.canDragContent(false);
+      }
+      if (index === 2) {
+        $ionicSideMenuDelegate.canDragContent(true);
+        $scope.static.categories[0].skills = mapGuruCoursesToCategoriesObj($scope.user.guru_courses);
+        $scope.static.categories[0].active_skills_count = $scope.static.categories[0].skills.length;
+        console.log('processing this shit', $scope.static.categories[0]);
+      } else {
+        $ionicSideMenuDelegate.canDragContent(true);
       }
     }
 
@@ -160,25 +182,7 @@ angular.module('uguru.guru.controllers')
     }
 
 
-    $scope.$on('$ionicView.beforeEnter', function(){
 
-
-      // initProgressBar('become-guru-progress', window.innerWidth);
-
-    });
-
-    $scope.$on('$ionicView.enter', function(){
-
-      $timeout(function() {
-        $scope.initiateSkillEventListeners();
-      }, 500);
-
-
-
-      $scope.slidebox_handle = $ionicSlideBoxDelegate.$getByHandle('become-guru-slide-box');
-
-
-    });
 
 
   }

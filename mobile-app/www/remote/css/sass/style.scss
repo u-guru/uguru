@@ -32,7 +32,7 @@ body {
 
 .uguru-view {
 	* {
-		font-family: $font!important;
+		font-family: $font;
 	}
 	#main-menu {
 		position: fixed;
@@ -460,19 +460,21 @@ body {
 				}
 				#tos {
 					display: block;
-					color: white;
-					font-size: 14px;
-					font-weight: 600;
-					letter-spacing: 1px;
-					line-height: 1;
-					text-align: center;
-					text-transform: uppercase;
+				    color: white;
+				    font-size: 14px;
+				    font-weight: 700;
+				    letter-spacing: 1px;
+				    line-height: 1;
+				    text-align: center;
+				    text-transform: uppercase;
+				    opacity: 0.6;
 				}
 				#tos:active, #tos:focus {
 					color: $shamrock;
 				}
 				#social-login {
-					margin-top: 50px;
+					margin-top: 30px;
+					margin-bottom:20px;
 				}
 			}
 		}
@@ -608,14 +610,14 @@ body {
 				}
 			}
 		}
-		&#school {
+		&#school, &#school-modal {
 			header {
 				&:before {
 					background: url(../../img/onboarding/school.jpg) no-repeat center center/cover,
 								url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat;
 				}
 			}
-			#school-list {
+			#school-list, #school-list-modal {
 				ul {
 					li {
 						a {
@@ -705,7 +707,7 @@ body {
 				height: 100%;
 				background: $slate;
 				> div {
-					> svg {
+					> div svg {
 						display: block;
 						margin: 0 auto;
 						width: 50%;
@@ -1190,7 +1192,8 @@ body {
 			&:before {
 				@include center-y;
 				display: block;
-				content: url("../svg/search.svg");
+				background: url(../../img/svg/search.svg) no-repeat center center/cover,
+								url(/static/remote/img/svg/search.svg) center/cover no-repeat;
 				width: 14px;
 				height: 14px;
 			}
@@ -1220,9 +1223,19 @@ body {
 }
 
 // SIDEBAR
+#side-menu-left-overlay.active {
+    background: rgba($charcoal, .8);
+    width: 20%;
+    height: 100%;
+    z-index: 20;
+    position: absolute;
+    right: 0;
+}
 .side-menu-list {
+    position: relative;
 	width: 100%;
 	height: 100%;
+    z-index: 20;
 	.list {
 		height: 100%;
 	}
@@ -1253,6 +1266,7 @@ body {
 	}
 	.list-item-profile {
 		@include flex-wrap;
+		@include flex-center;
 		height: calc(100% - 384px);
 		.list-item-detail {
 			span {
@@ -1270,6 +1284,7 @@ body {
 		display: none;
 	}
 }
+
 
 @media screen and (min-height:540px) {
 	.side-menu-list {
@@ -1289,7 +1304,7 @@ body {
 		background: $slate;
 	}
 	.list-item {
-		&:hover, &:active {
+		&.active, &.activated {
 			background: $campus;
 		}
 		.list-item-icon {
@@ -1306,7 +1321,7 @@ body {
 	.list-item-agenda {
 		background: white;
 		color: $charcoal;
-		&:active, &:hover {
+		&.active, &.activated {
 			background: rgba(white, .9);
 		}
 	}
@@ -1331,7 +1346,7 @@ body {
 				}
 			}
 		}
-		&:active, &:hover {
+		&.activated, &.active {
 			background: rgba($azure, .75);
 			color: white;
 			svg {
@@ -1344,7 +1359,22 @@ body {
 	.list-item-profile {
 		background: $azure;
 		color: white;
+		.list-item-detail {
+			span {
+				white-space: nowrap;
+			    overflow-x: hidden;
+			    text-overflow: ellipsis;
+			}
+			.student-profile-name {
+				font-weight: 700;
+			}
+		}
 		.list-item-icon {
+			img {
+				@include round;
+				width: 34px;
+				height: 34px;
+			}
 			svg {
 				circle {
 					stroke: white;
@@ -1359,8 +1389,15 @@ body {
 		}
 	}
 	.list-item-student {
-		display: none;
+		background: $slate;
+		color: white;
+		svg {
+			path {
+				stroke: white;
+			}
+		}
 	}
+
 	.list-item-guru {
 		background: $azure;
 		color: white;
@@ -1447,4 +1484,21 @@ body {
 
 .tabs {
 	border: 0;
+}
+
+// style the main action sheet
+.action-sheet-wrapper.action-sheet-up {
+	background-color: white;
+	color:$campus;
+	button {
+		text-align:left;
+		color:$slate;
+		opacity:0.8;
+		font-size:16px;
+		font-weight:600;
+		padding-left:10px;
+		border:1px solid rgba(0,0,0,0.1);
+		border-left:0px;
+		border-right:0px;
+	}
 }

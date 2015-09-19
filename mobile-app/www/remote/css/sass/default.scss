@@ -347,6 +347,9 @@ p {
 .inline {
 	display: inline;
 }
+.inline-block {
+	display: inline-block;
+}
 .block {
 	display: block;
 }
@@ -417,6 +420,30 @@ p {
 	&[class*="-center"] {
 		@include flex-center;
 	}
+}
+
+.flex-grow {
+	-webkit-flex-grow:1;
+	flex-grow:1;
+}
+
+.flex-grow-pro {
+	-webkit-flex-grow:1;
+	flex-grow:1;
+}
+
+.flex-align-self-center {
+	align-self:center;
+	-webkit-align-self:center;
+}
+.flex-align-self-stretch {
+	align-self:stretch;
+	-webkit-align-self:stretch;
+}
+
+.flex-column {
+	-webkit-flex-direction:column;
+	flex-direction:column;
 }
 
 // TEXT STYLES
@@ -1091,7 +1118,7 @@ button, input {
 	-o-appearance: none;
 	appearance: none;
 	box-sizing: border-box;
-	font-family: $font;
+font-family: $font;
 }
 button {
 	cursor: pointer;
@@ -1230,7 +1257,8 @@ button {
 		@include center-y;
 		display: block;
 		content: "";
-		background: url(../svg/search.svg) no-repeat center center / cover;
+		background: url(../../img/svg/search.svg) no-repeat center center/cover,
+					url(/static/remote/img/svg/search.svg) center/cover no-repeat;
 		width: 18px;
 		height: 18px;
 	}
@@ -1279,7 +1307,7 @@ button {
 			    cursor: pointer;
 			}
 			input:checked + span {
-			    background: $gold url("../svg/check.svg") center center no-repeat;
+			    background: url(../img/svg/check.svg) center center no-repeat, url(/static/remote/img/svg/check.svg) center center no-repeat;
 			}
 		}
 	}

@@ -1,0 +1,42 @@
+{% extends 'web/layout/base.html' %}
+{% block header_scripts %}
+<link rel="stylesheet" href="/static/web/css/style.css"/>
+<link rel="stylesheet" href="/static/web/css/page.css"/>
+<style>
+	.body-loading-div {
+		width:100%;
+		height:100%;
+		z-index: 0;
+		visibility:0 !important;
+		display:none !important;
+	}
+
+
+
+	#intercom-container {
+		display:none !important;
+		opacity:0;
+		height:0;
+		width:0;
+	}
+
+	.main {
+    	padding: 0px!important;
+	}
+
+	header#top {
+		display: none !important;
+	}
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="faq" class="main pure-g">
+	{% include 'web/components/faq_body.html' %}
+</div>
+{% endblock %}
+
+{% block footer_scripts %}
+	{% include 'web/pages/js/faq.js' %}
+{% endblock %}

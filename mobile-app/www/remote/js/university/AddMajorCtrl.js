@@ -107,7 +107,6 @@ angular.module('uguru.util.controllers')
       //t == 0
       $timeout(function() {
         $scope.majors.splice($index, 1);
-        $scope.preIndexedMajors.splice($index, 1);
       }, 250)
 
 
@@ -164,6 +163,12 @@ angular.module('uguru.util.controllers')
       }, 1000);
 
     });
+
+    $scope.increaseLimit = function() {
+      if($scope.majors && $scope.limit < $scope.majors.length) {
+        $scope.limit += 10;
+      }
+    }
 
     $scope.majors = Major.getGeneral();
 

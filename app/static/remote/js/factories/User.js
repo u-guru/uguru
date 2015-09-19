@@ -576,19 +576,6 @@ angular.module('uguru.user', [])
 
     var delegateActionsFromProcessedUser = function($scope) {
 
-        //student actionsif ($scope.user.incoming_requests.length > 0 && !$scope.user.guru_mode) {
-        //     var first_incoming_request = $scope.user.incoming_requests[0];
-        //     var paramPayload = {
-        //         requestObj:JSON.stringify(first_incoming_request),
-        //     }
-        //     if ($state.current.name != 'root.student.guru-available') {
-        //          $state.go('^.^.student.guru-available', paramPayload);
-        //     } else {
-        //         $state.go('^.guru-available', paramPayload);
-        //     }
-        // }
-        //
-
         if ($scope.user.impact_events.length > 0) {
             var impact_event = $scope.user.impact_events[0];
             if (impact_event.impacted_user_id === $scope.user.id && !impact_event.impacted_user_notified) {
@@ -610,31 +597,6 @@ angular.module('uguru.user', [])
                 $scope.user.impact_events.splice(0, 1);
             }
         }
-
-        //student proposals
-        // if ($scope.user.guru_mode && $scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
-
-        //     $timeout(function() {
-        //       var first_active_proposal = $scope.user.active_proposals[0];
-        //       var paramPayload = {
-        //         requestObj:JSON.stringify(first_active_proposal.request),
-        //         proposalObj: JSON.stringify(first_active_proposal)
-        //       }
-
-        //         if ($state.current.name === 'root.guru.home') {
-        //             $state.go('^.student-available', paramPayload);
-        //         }
-        //     }, 500)
-        // }
-
-        //otherwise they're already home
-        // if ($scope.user.guru_mode && $state.current.name === 'root.student.home') {
-        //     $state.go('^.^.guru.home');
-        // }
-
-        // if (!$scope.user.guru_mode && $state.current.name === 'root.guru.home') {
-        //     $state.go('^.^.student.home');
-        // }
 
     }
 
@@ -1216,13 +1178,17 @@ angular.module('uguru.user', [])
                                 $scope.user.profile_url = file.plain().url;
                                 $localstorage.setObject('user', $scope.user);
                             }
-                            $scope.loader.hide();
+
                             if ($state.current.name !== 'root.request-description') {
                                 $scope.success.show(0, 1500);
+                                $scope.loader.hide();
                             }
 
                             if (callback_success) {
                                 callback_success($scope, $state);
+                                $timeout(function() {
+                                    $scope.loader.hide();
+                                }, 1500);
                             };
 
 

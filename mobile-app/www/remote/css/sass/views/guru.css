@@ -1,87 +1,102 @@
-.guru-view header, .credibility-view header, .guru-profile-view header {
-  position: relative; }
-.guru-view #guru-home header:before, .credibility-view #guru-home header:before, .guru-profile-view #guru-home header:before {
-  background: url(../../../img/onboarding/school.jpg) no-repeat center center/cover !important; }
-.guru-view #guru-home header, .credibility-view #guru-home header, .guru-profile-view #guru-home header {
-  position: relative;
-  height: calc(100% / 2);
-  box-sizing: border-box; }
-  .guru-view #guru-home header .bottom-header, .credibility-view #guru-home header .bottom-header, .guru-profile-view #guru-home header .bottom-header {
-    position: absolute;
-    bottom: 7%;
-    text-align: center;
+.guru-view, .credibility-view, .guru-profile-view {
+  height: 100%; }
+  .guru-view header, .credibility-view header, .guru-profile-view header {
+    position: relative; }
+  .guru-view button.bg-shamrock.button.guru-home-footer-button, .credibility-view button.bg-shamrock.button.guru-home-footer-button, .guru-profile-view button.bg-shamrock.button.guru-home-footer-button {
+    height: 49px;
+    line-height: 49px;
+    border-color: #69B3A5;
+    font-weight: 700;
+    text-transform: uppercase; }
+  .guru-view button.bg-shamrock.button.guru-home-footer-button.active,
+  .guru-view button.bg-shamrock.button.guru-home-footer-button.activated,
+  .guru-view button.bg-shamrock.button.guru-home-footer-button:hover,
+  .guru-view button.bg-shamrock.button.guru-home-footer-button:visited,
+  .guru-view button.bg-shamrock.button.guru-home-footer-button:focus, .credibility-view button.bg-shamrock.button.guru-home-footer-button.active,
+  .credibility-view button.bg-shamrock.button.guru-home-footer-button.activated,
+  .credibility-view button.bg-shamrock.button.guru-home-footer-button:hover,
+  .credibility-view button.bg-shamrock.button.guru-home-footer-button:visited,
+  .credibility-view button.bg-shamrock.button.guru-home-footer-button:focus, .guru-profile-view button.bg-shamrock.button.guru-home-footer-button.active,
+  .guru-profile-view button.bg-shamrock.button.guru-home-footer-button.activated,
+  .guru-profile-view button.bg-shamrock.button.guru-home-footer-button:hover,
+  .guru-profile-view button.bg-shamrock.button.guru-home-footer-button:visited,
+  .guru-profile-view button.bg-shamrock.button.guru-home-footer-button:focus {
+    text-decoration: none;
+    height: 49px;
+    line-height: 49px;
+    border-color: #69B3A5 !important;
+    background-color: #69B3A5 !important;
+    color: white !important;
+    font-weight: 700;
     text-transform: uppercase;
-    width: 100%;
-    font-weight: 600;
-    font-size: 70%;
-    color: white; }
-  .guru-view #guru-home header .header-nav, .credibility-view #guru-home header .header-nav, .guru-profile-view #guru-home header .header-nav {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap; }
-    .guru-view #guru-home header .header-nav a, .credibility-view #guru-home header .header-nav a, .guru-profile-view #guru-home header .header-nav a {
-      width: 50%; }
-      .guru-view #guru-home header .header-nav a h1, .credibility-view #guru-home header .header-nav a h1, .guru-profile-view #guru-home header .header-nav a h1 {
-        width: 100%;
-        text-align: left;
-        padding: 15px 38px; }
-    .guru-view #guru-home header .header-nav .header-nav-next h1, .credibility-view #guru-home header .header-nav .header-nav-next h1, .guru-profile-view #guru-home header .header-nav .header-nav-next h1 {
-      text-align: right; }
-    .guru-view #guru-home header .header-nav .header-nav-next svg, .credibility-view #guru-home header .header-nav .header-nav-next svg, .guru-profile-view #guru-home header .header-nav .header-nav-next svg {
-      left: auto;
-      right: 15px; }
-  .guru-view #guru-home header .onboarding-prop, .credibility-view #guru-home header .onboarding-prop, .guru-profile-view #guru-home header .onboarding-prop {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    position: absolute;
-    top: 10% !important; }
-    .guru-view #guru-home header .onboarding-prop h2, .credibility-view #guru-home header .onboarding-prop h2, .guru-profile-view #guru-home header .onboarding-prop h2 {
-      font-weight: 700 !important;
-      text-transform: uppercase !important; }
-  .guru-view #guru-home header .header-nav-center, .credibility-view #guru-home header .header-nav-center, .guru-profile-view #guru-home header .header-nav-center {
-    width: 100%;
-    background-color: #2B3234 !important;
-    z-index: 10; }
-    .guru-view #guru-home header .header-nav-center h1, .credibility-view #guru-home header .header-nav-center h1, .guru-profile-view #guru-home header .header-nav-center h1 {
-      text-align: center; }
-  .guru-view #guru-home header #profile-ranking, .credibility-view #guru-home header #profile-ranking, .guru-profile-view #guru-home header #profile-ranking {
-    position: relative;
-    top: 25%;
-    align-self: center;
+    opacity: 0.7; }
+  .guru-view #guru-home, .credibility-view #guru-home, .guru-profile-view #guru-home {
+    height: calc(100% - 49px);
     width: 100%; }
-    .guru-view #guru-home header #profile-ranking h1.guru-ranking-header, .credibility-view #guru-home header #profile-ranking h1.guru-ranking-header, .guru-profile-view #guru-home header #profile-ranking h1.guru-ranking-header {
-      padding: 10px;
-      font-size: 14px;
-      font-weight: 400;
-      letter-spacing: 2px;
-      text-align: center;
-      text-transform: uppercase;
-      color: white; }
-    .guru-view #guru-home header #profile-ranking #profile-ranking-chart, .credibility-view #guru-home header #profile-ranking #profile-ranking-chart, .guru-profile-view #guru-home header #profile-ranking #profile-ranking-chart {
+    .guru-view #guru-home header:before, .credibility-view #guru-home header:before, .guru-profile-view #guru-home header:before {
+      background: url(../../../img/onboarding/school.jpg) no-repeat center center/cover !important; }
+    .guru-view #guru-home header, .credibility-view #guru-home header, .guru-profile-view #guru-home header {
+      height: calc(100% / 5 * 3);
       position: relative;
-      box-sizing: content-box;
-      padding: 15px 0;
-      min-height: 200px;
-      height: auto;
-      overflow: hidden;
-      text-align: center; }
-      .guru-view #guru-home header #profile-ranking #profile-ranking-chart svg, .credibility-view #guru-home header #profile-ranking #profile-ranking-chart svg, .guru-profile-view #guru-home header #profile-ranking #profile-ranking-chart svg {
-        left: 25%;
-        top: 50%; }
-      .guru-view #guru-home header #profile-ranking #profile-ranking-chart #percentile, .credibility-view #guru-home header #profile-ranking #profile-ranking-chart #percentile, .guru-profile-view #guru-home header #profile-ranking #profile-ranking-chart #percentile {
+      box-sizing: border-box; }
+      .guru-view #guru-home header .bottom-header, .credibility-view #guru-home header .bottom-header, .guru-profile-view #guru-home header .bottom-header {
+        position: absolute;
+        bottom: 7%;
+        text-align: center;
+        text-transform: uppercase;
+        width: 100%;
+        font-weight: 600;
+        font-size: 70%;
+        color: white; }
+      .guru-view #guru-home header .header-nav, .credibility-view #guru-home header .header-nav, .guru-profile-view #guru-home header .header-nav {
+        position: relative;
+        background: transparent; }
+        .guru-view #guru-home header .header-nav h1, .credibility-view #guru-home header .header-nav h1, .guru-profile-view #guru-home header .header-nav h1 {
+          font-weight: 700; }
+        .guru-view #guru-home header .header-nav .header-nav-next, .credibility-view #guru-home header .header-nav .header-nav-next, .guru-profile-view #guru-home header .header-nav .header-nav-next {
+          position: absolute;
+          top: 12px;
+          opacity: 0.7;
+          right: 15px;
+          font-size: 110%; }
+      .guru-view #guru-home header .header-ranking, .credibility-view #guru-home header .header-ranking, .guru-profile-view #guru-home header .header-ranking {
+        position: relative;
+        height: calc(100% - 50px); }
+        .guru-view #guru-home header .header-ranking h1, .credibility-view #guru-home header .header-ranking h1, .guru-profile-view #guru-home header .header-ranking h1 {
+          text-transform: capitalize;
+          font-weight: 400;
+          font-size: 26px;
+          margin: 15px 5px 15px 5px; }
+        .guru-view #guru-home header .header-ranking .guru-ranking-container, .credibility-view #guru-home header .header-ranking .guru-ranking-container, .guru-profile-view #guru-home header .header-ranking .guru-ranking-container {
+          padding: 5px 5px 15px 5px;
+          position: relative; }
+          .guru-view #guru-home header .header-ranking .guru-ranking-container p.progressbar-text, .credibility-view #guru-home header .header-ranking .guru-ranking-container p.progressbar-text, .guru-profile-view #guru-home header .header-ranking .guru-ranking-container p.progressbar-text {
+            font-weight: 700 !important;
+            font-size: 40px !important;
+            position: absolute;
+            top: 50%;
+            left: calc(50% + 10px) !important;
+            width: 100% !important;
+            padding: 0px;
+            margin: 0px;
+            transform: translate(-50%, -50%);
+            color: white; }
+        .guru-view #guru-home header .header-ranking .progress-bar-container, .credibility-view #guru-home header .header-ranking .progress-bar-container, .guru-profile-view #guru-home header .header-ranking .progress-bar-container {
+          padding: 7px 10px; }
+          .guru-view #guru-home header .header-ranking .progress-bar-container svg, .credibility-view #guru-home header .header-ranking .progress-bar-container svg, .guru-profile-view #guru-home header .header-ranking .progress-bar-container svg {
+            width: 75%;
+            left: 20%;
+            border-radius: 15px; }
+          .guru-view #guru-home header .header-ranking .progress-bar-container p.progressbar-text, .credibility-view #guru-home header .header-ranking .progress-bar-container p.progressbar-text, .guru-profile-view #guru-home header .header-ranking .progress-bar-container p.progressbar-text {
+            display: none !important; }
+          .guru-view #guru-home header .header-ranking .progress-bar-container h4, .credibility-view #guru-home header .header-ranking .progress-bar-container h4, .guru-profile-view #guru-home header .header-ranking .progress-bar-container h4 {
+            color: white;
+            font-size: 22px !important;
+            text-align: left !important;
+            padding-left: 20%; }
+            .guru-view #guru-home header .header-ranking .progress-bar-container h4 span.uppercase-text, .credibility-view #guru-home header .header-ranking .progress-bar-container h4 span.uppercase-text, .guru-profile-view #guru-home header .header-ranking .progress-bar-container h4 span.uppercase-text {
+              text-transform: uppercase; }
+      .guru-view #guru-home header .onboarding-prop, .credibility-view #guru-home header .onboarding-prop, .guru-profile-view #guru-home header .onboarding-prop {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -89,53 +104,99 @@
         -moz-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
         -o-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%); }
-        .guru-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-ranking, .credibility-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-ranking, .guru-profile-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-ranking {
-          position: relative;
-          font-size: 48px;
-          font-weight: 600;
-          line-height: 1; }
-          .guru-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-ranking:after, .credibility-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-ranking:after, .guru-profile-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-ranking:after {
-            content: "th";
-            display: block;
-            position: absolute;
-            top: 0;
-            right: -5px;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 28px;
-            text-transform: uppercase; }
-        .guru-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-label, .credibility-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-label, .guru-profile-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-label {
-          font-size: 12px;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 10% !important; }
+        .guru-view #guru-home header .onboarding-prop h2, .credibility-view #guru-home header .onboarding-prop h2, .guru-profile-view #guru-home header .onboarding-prop h2 {
+          font-weight: 700 !important;
+          text-transform: uppercase !important; }
+      .guru-view #guru-home header .header-nav-center, .credibility-view #guru-home header .header-nav-center, .guru-profile-view #guru-home header .header-nav-center {
+        width: 100%; }
+        .guru-view #guru-home header .header-nav-center h1, .credibility-view #guru-home header .header-nav-center h1, .guru-profile-view #guru-home header .header-nav-center h1 {
+          text-align: center; }
+      .guru-view #guru-home header #profile-ranking, .credibility-view #guru-home header #profile-ranking, .guru-profile-view #guru-home header #profile-ranking {
+        position: relative;
+        top: 25%;
+        align-self: center;
+        width: 100%; }
+        .guru-view #guru-home header #profile-ranking h1.guru-ranking-header, .credibility-view #guru-home header #profile-ranking h1.guru-ranking-header, .guru-profile-view #guru-home header #profile-ranking h1.guru-ranking-header {
+          padding: 10px;
+          font-size: 14px;
           font-weight: 400;
-          letter-spacing: 1px;
-          line-height: 15px;
-          text-transform: uppercase; }
-.guru-view #guru-home #guru-home-content, .credibility-view #guru-home #guru-home-content, .guru-profile-view #guru-home #guru-home-content {
-  height: 50%; }
-  .guru-view #guru-home #guru-home-content .pure-g.stats-container, .credibility-view #guru-home #guru-home-content .pure-g.stats-container, .guru-profile-view #guru-home #guru-home-content .pure-g.stats-container {
-    height: 33%;
-    padding: 0.5em 0em; }
-  .guru-view #guru-home #guru-home-content .tip-container, .credibility-view #guru-home #guru-home-content .tip-container, .guru-profile-view #guru-home #guru-home-content .tip-container {
-    height: 77%;
-    background: rgba(255, 255, 255, 0.1); }
-    .guru-view #guru-home #guru-home-content .tip-container .pure-u-1, .credibility-view #guru-home #guru-home-content .tip-container .pure-u-1, .guru-profile-view #guru-home #guru-home-content .tip-container .pure-u-1 {
-      padding: 1em; }
-      .guru-view #guru-home #guru-home-content .tip-container .pure-u-1 h2, .credibility-view #guru-home #guru-home-content .tip-container .pure-u-1 h2, .guru-profile-view #guru-home #guru-home-content .tip-container .pure-u-1 h2 {
-        font-weight: 600;
-        font-size: 1.3em; }
-      .guru-view #guru-home #guru-home-content .tip-container .pure-u-1 p, .credibility-view #guru-home #guru-home-content .tip-container .pure-u-1 p, .guru-profile-view #guru-home #guru-home-content .tip-container .pure-u-1 p {
-        letter-spacing: 0px;
-        margin: 15px;
-        line-height: 20px;
-        font-size: 14px;
-        font-weight: 400; }
-.guru-view .guru-tabs a.tab-item i, .credibility-view .guru-tabs a.tab-item i, .guru-profile-view .guru-tabs a.tab-item i {
-  color: white !important;
-  font-size: 24px !important;
-  opacity: 0.5 !important; }
-.guru-view .guru-tabs a.tab-item.active i, .credibility-view .guru-tabs a.tab-item.active i, .guru-profile-view .guru-tabs a.tab-item.active i {
-  color: #6F98B5 !important;
-  opacity: 1 !important; }
+          letter-spacing: 2px;
+          text-align: center;
+          text-transform: uppercase;
+          color: white; }
+        .guru-view #guru-home header #profile-ranking #profile-ranking-chart, .credibility-view #guru-home header #profile-ranking #profile-ranking-chart, .guru-profile-view #guru-home header #profile-ranking #profile-ranking-chart {
+          position: relative;
+          box-sizing: content-box;
+          padding: 15px 0;
+          min-height: 200px;
+          height: auto;
+          overflow: hidden;
+          text-align: center; }
+          .guru-view #guru-home header #profile-ranking #profile-ranking-chart svg, .credibility-view #guru-home header #profile-ranking #profile-ranking-chart svg, .guru-profile-view #guru-home header #profile-ranking #profile-ranking-chart svg {
+            left: 25%;
+            top: 50%; }
+          .guru-view #guru-home header #profile-ranking #profile-ranking-chart #percentile, .credibility-view #guru-home header #profile-ranking #profile-ranking-chart #percentile, .guru-profile-view #guru-home header #profile-ranking #profile-ranking-chart #percentile {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+            .guru-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-ranking, .credibility-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-ranking, .guru-profile-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-ranking {
+              position: relative;
+              font-size: 48px;
+              font-weight: 600;
+              line-height: 1; }
+              .guru-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-ranking:after, .credibility-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-ranking:after, .guru-profile-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-ranking:after {
+                content: "th";
+                display: block;
+                position: absolute;
+                top: 0;
+                right: -5px;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 28px;
+                text-transform: uppercase; }
+            .guru-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-label, .credibility-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-label, .guru-profile-view #guru-home header #profile-ranking #profile-ranking-chart #percentile #percentile-label {
+              font-size: 12px;
+              font-weight: 400;
+              letter-spacing: 1px;
+              line-height: 15px;
+              text-transform: uppercase; }
+    .guru-view #guru-home #guru-home-content, .credibility-view #guru-home #guru-home-content, .guru-profile-view #guru-home #guru-home-content {
+      height: calc(100% / 5 * 2); }
+      .guru-view #guru-home #guru-home-content .pure-g.stats-container, .credibility-view #guru-home #guru-home-content .pure-g.stats-container, .guru-profile-view #guru-home #guru-home-content .pure-g.stats-container {
+        height: 33%;
+        padding: 0.5em 0em; }
+      .guru-view #guru-home #guru-home-content .tip-container, .credibility-view #guru-home #guru-home-content .tip-container, .guru-profile-view #guru-home #guru-home-content .tip-container {
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1); }
+        .guru-view #guru-home #guru-home-content .tip-container .slider-pager, .credibility-view #guru-home #guru-home-content .tip-container .slider-pager, .guru-profile-view #guru-home #guru-home-content .tip-container .slider-pager {
+          display: block; }
+        .guru-view #guru-home #guru-home-content .tip-container .pure-u-1, .credibility-view #guru-home #guru-home-content .tip-container .pure-u-1, .guru-profile-view #guru-home #guru-home-content .tip-container .pure-u-1 {
+          padding: 1em; }
+          .guru-view #guru-home #guru-home-content .tip-container .pure-u-1 h2, .credibility-view #guru-home #guru-home-content .tip-container .pure-u-1 h2, .guru-profile-view #guru-home #guru-home-content .tip-container .pure-u-1 h2 {
+            font-weight: 600;
+            font-size: 1.3em; }
+          .guru-view #guru-home #guru-home-content .tip-container .pure-u-1 p, .credibility-view #guru-home #guru-home-content .tip-container .pure-u-1 p, .guru-profile-view #guru-home #guru-home-content .tip-container .pure-u-1 p {
+            letter-spacing: 0px;
+            margin: 15px;
+            line-height: 20px;
+            font-size: 14px;
+            font-weight: 400; }
+  .guru-view .guru-tabs, .credibility-view .guru-tabs, .guru-profile-view .guru-tabs {
+    z-index: 0; }
+    .guru-view .guru-tabs a.tab-item i, .credibility-view .guru-tabs a.tab-item i, .guru-profile-view .guru-tabs a.tab-item i {
+      color: white !important;
+      font-size: 24px !important;
+      opacity: 0.5 !important; }
+    .guru-view .guru-tabs a.tab-item.active i, .credibility-view .guru-tabs a.tab-item.active i, .guru-profile-view .guru-tabs a.tab-item.active i {
+      color: #6F98B5 !important;
+      opacity: 1 !important; }
 
 /*# sourceMappingURL=guru.css.map */

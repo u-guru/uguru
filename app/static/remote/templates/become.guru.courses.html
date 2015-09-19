@@ -1,6 +1,9 @@
 <ion-view class='uguru-view courses-view guru-courses-view' ng-controller='CoursesController'>
-
+    <progress value="0" max="100">
+      <div class="progress"><span data-value="40"></span></div>
+    </progress>
     <section id="course" class="onboarding charcoal-bg">
+
       <header class="header-back">
         <div class="header-nav">
           <a class="header-nav-back" ng-click='previousSlide()'>
@@ -25,20 +28,20 @@
             <path d="M8.41512973,15.2860269 C4.48265083,15.2860269 1.29477962,12.1537981 1.29477962,8.2838387 C1.29477962,4.41387934 4.48265083,1.27539856 8.41512973,1.27539856 C12.3476086,1.27539856 15.536105,4.41387934 15.536105,8.2838387 C15.536105,12.1537981 12.3476086,15.2860269 8.41512973,15.2860269 L8.41512973,15.2860269 Z M19.811191,18.9121601 L14.6477024,13.8293217 C15.9993748,12.3601125 16.8302595,10.4220069 16.8302595,8.2838387 C16.8302595,3.70740857 13.0628321,0 8.41512973,0 C3.76742732,0 0,3.70740857 0,8.2838387 C0,12.8540169 3.76742732,16.5614254 8.41512973,16.5614254 C10.4232573,16.5614254 12.2650828,15.8674586 13.7117849,14.7108471 L18.895905,19.8124414 C19.1491091,20.0625195 19.5586121,20.0625195 19.811191,19.8124414 C20.0643951,19.5686152 20.0643951,19.1622382 19.811191,18.9121601 L19.811191,18.9121601 Z" fill="#FFFFFF"></path>
           </svg>
           <input type="search" placeholder="My courses are..."
-                  ng-model="search_text"
-                  ng-keyup="query(search_text)"
+                  ng-model="course_search_text"
+                  ng-keyup="query(course_search_text)"
                   >
         </div>
       </header>
-      <div id="courses-list" class="onboarding-list">
+      <div id="courses-list" class="onboarding-list" buffered-scroll='increaseLimit()' ng-init='limit = 20'>
         <ul class='list'>
-          <li ng-if='search_text.length === 0 || user.guru_courses.length == 0' ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
+          <li ng-show='course_search_text.length === 0 || user.guru_courses.length == 0' ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
               <input type="checkbox" checked>
-              <label>{{course.short_name}} &nbsp;&nbsp; <i class='icon ion-checkmark'></i></label>
+              <label>{{course.name}} &nbsp;&nbsp; <i class='icon ion-checkmark'></i></label>
           </li>
-          <li ng-repeat='course in courses' ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
+          <li ng-repeat='course in courses | limitTo: limit' ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>
               <input type="checkbox">
-              <label>{{course.short_name}}</label>
+              <label>{{course.name}}</label>
           </li>
         </ul>
       </div>
