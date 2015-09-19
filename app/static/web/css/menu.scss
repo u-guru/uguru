@@ -1,5 +1,21 @@
 @import 'mixin';
 
+::-webkit-input-placeholder {
+   font-family: $font!important;
+}
+:-moz-placeholder {
+   font-family: $font!important;
+}
+::-moz-placeholder {
+   font-family: $font!important;
+}
+:-ms-input-placeholder {
+   font-family: $font!important;
+}
+* {
+	box-shadow: none!important;
+}
+
 #top {
 	position: fixed;
 	top: 0;
@@ -43,22 +59,26 @@
 	display: none;
 }
 
-#overlay {
-	* {
-		box-sizing: border-box;
-	}
+#full-overlay {
 	@include opacity(0);
-	position: fixed;
-	//z-index: 999999;
+	position: absolute;
 	z-index: 0;
-	top: 0;
-	left: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba($charcoal, .3);
+	background-color: rgba($charcoal, .5);
 	&.active {
 		@include opacity(1);
-		z-index: 999999;
+		z-index: 20;
+	}
+	&.animated.fadeIn, &.animated.fadeOut {
+		-webkit-animation-delay: 0.25s;
+		-moz-animation-delay: 0.25s;
+		-o-animation-delay: 0.25s;
+		animation-delay: 0.25s;
+		-webkit-animation-duration: 0.25s;
+		-moz-animation-duration: 0.25s;
+		-o-animation-duration: 0.25s;
+		animation-duration: 0.25s;
 	}
 }
 
@@ -92,7 +112,7 @@
 	}
 	header {
 		position: relative;
-		a {
+		#home-modal-close-link {
 			@include center-y;
 			right: 10px;
 			color: white;
@@ -102,8 +122,10 @@
 	.start-modal-platforms {
 		@include listless;
 		@include flex;
+		@include flex-center;
 		&#start-modal-platforms-mobile {
 			@include flex-wrap;
+			height: calc(60% - 38px);
 			li {
 				box-sizing: border-box;
 				width: 33.3333%;
@@ -162,6 +184,7 @@
 		@include flex;
 		@include flex-wrap;
 		width: 100%;
+		height: 50%;
 		box-sizing: border-box;
 		input, button {
 			box-sizing: border-box;
@@ -172,15 +195,30 @@
 		@include opacity(1);
 	}
 }
+#side-menu-wrapper {
+	@include opacity(0);
+	position: fixed;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	&.active {
+		@include opacity(1);
+		z-index: 999999999999;
+	}
+}
 #side-menu {
 	@include transition(.15s ease-in);
-	@include opacity(0);
+	display: block!important;
 	position: relative;
 	width: 100%;
 	height: 100%;
 	background: rgba($slate,.8);
-	&.active {
-		@include opacity(1);
+	&.animated.slideInLeft,
+	&.animated.slideOutLeft {
+		-webkit-animation-duration: 0.25s;
+		-moz-animation-duration: 0.25s;
+		-o-animation-duration: 0.25s;
+		animation-duration: 0.25s;
 	}
 	ul {
 		@include listless;
@@ -199,6 +237,7 @@
 		line-height: 1;
 	}
 	#side-menu-links {
+		height: calc(100% - 150px);
 		li {
 			a {
 				display: block;
@@ -267,6 +306,7 @@
 		max-width: 300px;
 	}
 	#start-modal {
+		position: relative;
 		border-radius: 10px;
 		.start-modal-platforms {
 			&#start-modal-platforms-mobile {
@@ -351,7 +391,6 @@
 	}
 }
 
-
 #modal-loader-container.active {
     display: block;
 }
@@ -372,25 +411,10 @@
     height: 100%;
 }
 
-
 .front, .back {
     width: auto;
     overflow: hidden;
     border-radius: 10px;
-}
-
-#search {
-	.front, .back {
-		height: 65% !important;
-	}
-}
-
-.back {
-	background-color:$shamrock;
-}
-
-.intercom-sheet-header-minimize-button {
-    display: none !important;
 }
 
 #modal-loader-container.active {
@@ -414,61 +438,248 @@
     margin-top:  20%;
 }
 
-
-// .intercom-launcher-button, .intercom-launcher-preview, .intercom-sheet-header-minimize-button {
-// 	display: none!important;
-// }
-
-// .intercom-reset div, .intercom-reset span, .intercom-reset applet, .intercom-reset object, .intercom-reset iframe, .intercom-reset h1, .intercom-reset h2, .intercom-reset h3, .intercom-reset h4, .intercom-reset h5, .intercom-reset h6, .intercom-reset p, .intercom-reset blockquote, .intercom-reset pre, .intercom-reset a, .intercom-reset abbr, .intercom-reset acronym, .intercom-reset address, .intercom-reset big, .intercom-reset cite, .intercom-reset code, .intercom-reset del, .intercom-reset dfn, .intercom-reset em, .intercom-reset img, .intercom-reset ins, .intercom-reset kbd, .intercom-reset q, .intercom-reset s, .intercom-reset samp, .intercom-reset small, .intercom-reset strike, .intercom-reset strong, .intercom-reset sub, .intercom-reset sup, .intercom-reset tt, .intercom-reset var, .intercom-reset b, .intercom-reset u, .intercom-reset i, .intercom-reset center, .intercom-reset dl, .intercom-reset dt, .intercom-reset dd, .intercom-reset ol, .intercom-reset ul, .intercom-reset li, .intercom-reset fieldset, .intercom-reset form, .intercom-reset div.form, .intercom-reset label, .intercom-reset legend, .intercom-reset table, .intercom-reset caption, .intercom-reset tbody, .intercom-reset tfoot, .intercom-reset thead, .intercom-reset tr, .intercom-reset th, .intercom-reset td, .intercom-reset article, .intercom-reset aside, .intercom-reset canvas, .intercom-reset details, .intercom-reset figcaption, .intercom-reset figure, .intercom-reset footer, .intercom-reset header, .intercom-reset hgroup, .intercom-reset menu, .intercom-reset nav, .intercom-reset section, .intercom-reset summary, .intercom-reset time, .intercom-reset mark, .intercom-reset audio, .intercom-reset video, .intercom-reset button, .intercom-reset textarea, .intercom-reset input, .intercom-reset input[type] {
-// 	font-family: $font!important;
-// }
-
-::-webkit-input-placeholder {
-   font-family: $font!important;
-}
-:-moz-placeholder {
-   font-family: $font!important;
-}
-::-moz-placeholder {
-   font-family: $font!important;
-}
-:-ms-input-placeholder {
-   font-family: $font!important;
-}
-* {
-	box-shadow: none!important;
+.intercom-reset div, .intercom-reset span, .intercom-reset applet, .intercom-reset object, .intercom-reset iframe, .intercom-reset h1, .intercom-reset h2, .intercom-reset h3, .intercom-reset h4, .intercom-reset h5, .intercom-reset h6, .intercom-reset p, .intercom-reset blockquote, .intercom-reset pre, .intercom-reset a, .intercom-reset abbr, .intercom-reset acronym, .intercom-reset address, .intercom-reset big, .intercom-reset cite, .intercom-reset code, .intercom-reset del, .intercom-reset dfn, .intercom-reset em, .intercom-reset img, .intercom-reset ins, .intercom-reset kbd, .intercom-reset q, .intercom-reset s, .intercom-reset samp, .intercom-reset small, .intercom-reset strike, .intercom-reset strong, .intercom-reset sub, .intercom-reset sup, .intercom-reset tt, .intercom-reset var, .intercom-reset b, .intercom-reset u, .intercom-reset i, .intercom-reset center, .intercom-reset dl, .intercom-reset dt, .intercom-reset dd, .intercom-reset ol, .intercom-reset ul, .intercom-reset li, .intercom-reset fieldset, .intercom-reset form, .intercom-reset div.form, .intercom-reset label, .intercom-reset legend, .intercom-reset table, .intercom-reset caption, .intercom-reset tbody, .intercom-reset tfoot, .intercom-reset thead, .intercom-reset tr, .intercom-reset th, .intercom-reset td, .intercom-reset article, .intercom-reset aside, .intercom-reset canvas, .intercom-reset details, .intercom-reset figcaption, .intercom-reset figure, .intercom-reset footer, .intercom-reset header, .intercom-reset hgroup, .intercom-reset menu, .intercom-reset nav, .intercom-reset section, .intercom-reset summary, .intercom-reset time, .intercom-reset mark, .intercom-reset audio, .intercom-reset video, .intercom-reset button, .intercom-reset textarea, .intercom-reset input, .intercom-reset input[type] {
+ 	font-family: $font!important;
 }
 
-#desktop-chat-link {
-	opacity:0;
-	display:none;
+.intercom-sheet-header-minimize-button {
+    display: none!important;
 }
-
 #intercom-container {
-	display:none;
+	* {
+		box-shadow: none!important;
+	}
 	.intercom-launcher {
-	    right:10px !important;
-	    top: 0 !important;
-    	right: 0 !important;
-		bottom: auto;
-	    .intercom-launcher-button {
-	    	top: 10px !important;
-    		right: 10px !important;
-	    	bottom: auto !important;
-	    	position:absolute !important;
-	    	z-index:5 !important;
-	    }
+	    right: 10px!important;
+	    top: 0!important;
+    	right: 0!important;
+    }
+	.intercom-launcher-preview {
+		&::before {
+			background: none!important;
+		}
+	}
+	.intercom-launcher-button {
+		@include transition(.15s ease-in);
+    	top: 10px!important;
+		right: 10px!important;
+    	z-index: 5!important;
+		border: 2px solid white!important;
+		background: transparent!important;
+		height: 42px!important;
+		width: 76px!important;
+		border-radius: 1000px!important;
+		&:after {
+			@include transition(.15s ease-in);
+			@include center-xy;
+			content: "Chat"!important;
+			color: white!important;
+			font-size: 14px!important;
+			font-weight: 600!important;
+			text-transform: uppercase!important;
+		}
+		&.active {
+			display: none!important;
+		}
+		&:hover, &:active, &:focus {
+			background: white!important;
+			&:after {
+				color: $charcoal!important;
+			}
+		}
 	}
 	.intercom-launcher-preview {
-		position: absolute !important;
-    	bottom: -7px !important;
-    	right: 70px !important;
+    	bottom: -7px!important;
+    	right: 110px!important;
+    	max-width: 111px!important;
 	}
 	.intercom-launcher-preview-body {
-		line-height:1em;
-		text-align: center;
+		position: relative;
+		padding-left: 15px;
 	}
-  	&.active {
-    	display:block !important;
-    }
+	.intercom-launcher-preview-body:after {
+		@include round;
+		@include center-y;
+		left: 0;
+		content: "";
+		display: block;
+		width: 8px;
+		height: 8px;
+		background: $moola;
+	}
+}
+
+#menu-icons {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	li {
+		width: calc(100% / 3);
+		box-sizing: border-box;
+		a {
+			display: block;
+			text-align: center;
+			svg {
+				width: auto;
+				max-width: 50px;
+				height: 100%;
+				max-height: 50px;
+				path, * {
+					@include transition(.15s ease-in);
+				}
+			}
+		}
+		#{$links} {
+			svg {
+				path, * {
+					fill: $shamrock;
+				}
+			}
+		}
+	}
+}
+
+.modal-main-container {
+    backface-visibility: hidden;
+    background: white;
+    height: 100%;
+}
+
+.download-link-wrapper {
+	position: relative;
+	height: 40%;
+	section {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		height: calc(100% - 38px);
+	}
+	#submit-info-loader.svg-container {
+		display: none;
+	    width: 100%;
+	    height: 100%;
+		margin: 0 auto;
+	    text-align: center;
+		&.active {
+			display: block;
+		}
+		svg {
+			* {
+				fill: $shamrock;
+			}
+		}
+	}
+	#post-submit-info-wrapper {
+		margin: 0 auto;
+	    text-align: center;
+	    height: 100%;
+	    margin-top: 0;
+	    position: absolute;
+	    top: 30%;
+	    width: 100%;
+		display:none;
+		.message-content {
+			color: $shamrock;
+			font-weight: 600;
+		}
+		&.active {
+			display: block;
+		}
+		.ion-checkmark {
+			font-size: 200%;
+		}
+	}
+	#submit-info-button {
+		@include opacity(.5);
+		display: none;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		padding: 0 2%;
+		height: calc(100% - 38px);
+		color: $shamrock;
+		font-size: 100%;
+		font-weight: 400;
+		.ion-checkmark {
+			color: $shamrock;
+		}
+		&.active.validated .ion-checkmark {
+			color: white;
+		}
+		&.active {
+			@include flex;
+			@include flex-center;
+			background: rgba($shamrock, 0.5);
+		}
+		&.active.validated {
+			@include opacity(1);
+			color: white;
+			background: rgba($shamrock, 0.75);
+		}
+		&.active.validated:hover {
+			@include opacity(.75);
+		}
+	}
+	.email-cta-wrapper, .phone-cta-wrapper {
+		display: none;
+		height: 100%;
+		cursor: pointer;
+		&.active {
+			display: block;
+		}
+	}
+	.start-modal-link {
+		.start-modal-switcher {
+			width: 100%;
+			font-size: 36px;
+			.phone-icon, .mail-icon {
+				@include opacity(.5);
+				padding: 0 10px;
+				&.active {
+					@include opacity(1);
+				}
+			}
+		}
+		.material-text-wrapper {
+			margin: 0;
+		    text-align: center;
+			input {
+				color: $shamrock;
+				border-bottom: 2px solid rgba($shamrock, .5)!important;
+				font-size: 150%;
+				text-align: center;
+			}
+
+			::-webkit-input-placeholder {
+				color:rgba($shamrock, .5);
+				text-align:center;
+			}
+			:-moz-placeholder {
+				color:rgba($shamrock, .5);
+				text-align:center;
+			}
+			::-moz-placeholder {
+				color:rgba($shamrock, .5);
+				text-align:center;
+			}
+			:-ms-input-placeholder {
+				color:rgba($shamrock, .5);
+				text-align:center;
+			}
+
+			label {
+				position: static;
+				visibility: hidden;
+			    color: $shamrock;
+			}
+
+			label.active#school-email-input-label,
+			label.active#school-phone-input-label {
+				@include opacity(.7);
+			    visibility: visible;
+			    text-align: center;
+			    text-transform: lowercase;
+			}
+		}
+	}
 }

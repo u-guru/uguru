@@ -92,4 +92,35 @@
     color: rgba(255, 255, 255, 0.8);
     font-size: 80%; }
 
+.uguru-popup.sidebar-popup.show {
+  padding-top: 5%; }
+.uguru-popup.sidebar-popup .uguru-popup-content {
+  top: 10%;
+  height: 40%; }
+  .uguru-popup.sidebar-popup .uguru-popup-content .content-wrapper h2 {
+    margin-top: 0px; }
+  .uguru-popup.sidebar-popup .uguru-popup-content .content-wrapper p {
+    margin-top: -5px; }
+  .uguru-popup.sidebar-popup .uguru-popup-content input {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    font-size: 24px;
+    text-align: center; }
+.uguru-popup.sidebar-popup .guru-logo-container {
+  width: 60%;
+  height: auto;
+  margin: 0 auto; }
+  .uguru-popup.sidebar-popup .guru-logo-container div.svg-logo-wrapper {
+    padding-top: 0%; }
+    .uguru-popup.sidebar-popup .guru-logo-container div.svg-logo-wrapper svg {
+      border: 3px solid #69B3A5;
+      max-width: 100px;
+      background-color: white;
+      max-height: 100px;
+      padding: 10%;
+      border-radius: 50%;
+      padding-top: 10%;
+      z-index: 3; }
+
 /*# sourceMappingURL=uguru-popup.css.map */

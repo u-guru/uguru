@@ -10,7 +10,7 @@ $(document).ready(function () {
     })
 
     $("#become-guru-cta-button").on('click', function() {
-        $('.search-results .front').trigger('click');
+        $('#search .front').trigger('click');
     });
 
     $('.cta-email-link').click(function() {

@@ -1,4 +1,4 @@
-<div id="start-modal" style='position:relative;'>
+<div id="start-modal">
 	<div id="modal-loader-container" class="modal-loading hide absolute full-width-height">
 		<div id="modal-content-submit" class="svg-container">
 			{% include "web/components/svg-loader.svg" %}
@@ -16,7 +16,7 @@
 			</h1>
 		</div>
 	</div>
-	<div class="text-center active modal-main-container" style='background-color:white;'>
+	<div class="modal-main-container text-center active">
 		<header>
 			<h1>Choose a platform<a id="home-modal-close-link" href="javascript:void(0)">&times;</a></h1>
 		</header>
@@ -60,42 +60,50 @@
 		</ul>
 		<div class='download-link-wrapper'>
 			<div class='email-cta-wrapper active'>
-				<h1>Send download link to <strong>email</strong></h1>
-				<div class="start-modal-link">
-					<div class="material-text-wrapper">
-				    	<input id='school-email-input' type="text" placeholder='name@school.edu' required>
-				    	<span class="highlight"></span>
-				    	<span class="bar"></span>
-				    	<label id='school-email-input-label'>Your .edu email only</label>
-				  	</div>
-					<!-- <input type="email" id="home-modal-email-input" placeholder="enter your email address"/>
-					<button id="home-modal-send-email">Email</button> -->
-					<a class='cta-email-link'>
-						<span class='icon mail-icon ion-android-mail active'></span>
-					</a>
-					<a class='cta-phone-link'>
-						<span class='icon phone-icon ion-ios-telephone'></span>
-					</a>
-				</div>
+				<header>
+					<h1>Send download link to <strong>email</strong></h1>
+				</header>
+				<section>
+					<div class="start-modal-link">
+					  	<div class="start-modal-switcher">
+							<a class='cta-email-link'>
+								<span class='icon mail-icon ion-android-mail active'></span>
+							</a>
+							<a class='cta-phone-link'>
+								<span class='icon phone-icon ion-ios-telephone'></span>
+							</a>
+					  	</div>
+						<div class="material-text-wrapper">
+					    	<input id='school-email-input' type="text" placeholder='name@school.edu' required>
+					    	<span class="highlight"></span>
+					    	<span class="bar"></span>
+					    	<label id='school-email-input-label'>Your .edu email only</label>
+					  	</div>
+					</div>
+				</section>
 			</div>
 			<div class='phone-cta-wrapper'>
-				<h1>Send download link to <strong>phone</strong></h1>
-				<div class="start-modal-link">
-					<div class="material-text-wrapper">
-				    	<input id='school-phone-input' type="text" placeholder='(415) 123 - 4567' required>
-				    	<span class="highlight"></span>
-				    	<span class="bar"></span>
-				    	<label id='school-phone-input-label'>We'll text you a link</label>
-				  	</div>
-					<!-- <input type="email" id="home-modal-email-input" placeholder="enter your email address"/>
-					<button id="home-modal-send-email">Email</button> -->
-					<a class='cta-email-link'>
-						<span class='icon mail-icon ion-android-mail active'></span>
-					</a>
-					<a class='cta-phone-link'>
-						<span class='icon phone-icon ion-ios-telephone'></span>
-					</a>
-				</div>
+				<header>
+					<h1>Send download link to <strong>phone</strong></h1>
+				</header>
+				<section>
+					<div class="start-modal-link">
+					  	<div class="start-modal-switcher">
+							<a class='cta-email-link'>
+								<span class='icon mail-icon ion-android-mail active'></span>
+							</a>
+							<a class='cta-phone-link'>
+								<span class='icon phone-icon ion-ios-telephone'></span>
+							</a>
+					  	</div>
+						<div class="material-text-wrapper">
+					    	<input id='school-phone-input' type="text" placeholder='(415) 123 - 4567' required>
+					    	<span class="highlight"></span>
+					    	<span class="bar"></span>
+					    	<label id='school-phone-input-label'>We'll text you a link</label>
+					  	</div>
+					</div>
+				</section>
 			</div>
 			<div id="submit-info-loader" class="svg-container">
 				{% include "web/components/svg-loader.svg" %}

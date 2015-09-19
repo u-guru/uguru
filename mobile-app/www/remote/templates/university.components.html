@@ -1,9 +1,3 @@
-<u-slide-box id='access-uni-slide' disable-scroll='true' delegate-handle='access-university-slide-box' performance="access-university" performance-beacon="remote/img/beacon.png">
-  <u-slide>
-    <div ng-include="img_base + BASE + 'templates/access.html'"></div>
-  </u-slide>
-  <u-slide u-before-enter='testBefore()' u-after-enter='testAfter()'>
-    <ion-view class='uguru-view university-view' >
 
     <section id="school" class="onboarding" >
       <header class="third">
@@ -28,7 +22,6 @@
             </a>
         </div>
       </header>
-
         <div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list" ng-init='limit = 10'>
         <ul class='list list-item-border'>
           <li  class="list-item school-harvard" ng-repeat='university in universities | limitTo: limit'>
@@ -49,6 +42,3 @@
         </ul>
       </div>
     </section>
-    </ion-view>
-  </u-slide>
-</u-slide-box>

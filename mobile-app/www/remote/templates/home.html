@@ -6,7 +6,9 @@
     <header class="bg-charcoal">
         <h1 class="text-center">Student Home</h1>
         <a class="header-link header-menu" ng-click='toggleRightSideMenu()'>
-          <i class='icon ion-navicon'></i>
+        	<svg viewBox="0 0 100 100">
+			    <path d="M14,77 L86,77 M14,50 L86,50 M14,23 L86,23" stroke="#fff" stroke-width="7" stroke-linecap="round"></path>
+			</svg>
         </a>
       </div>
     </header>
@@ -17,9 +19,10 @@
           <h2>Aww, you haven't made any requests yet.<br/>Need anything?</h2>
           <div><span id='home-content-header'></span></div>
         <div>
-        <a id="request-button" ng-click='success.show(0, 1000, "Being Worked On")'>
-          <span>
-            <svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+        <a id="request-button" ng-click='comingSoon()'>
+          <span class="m15bottom">
+            <svg viewBox="0 0 18 18">
                 <path d="M10.1941364,8.77825 L17.2674453,1.70725 C17.6575175,1.31625 17.6575175,0.68325 17.2674453,0.29325 C16.876373,-0.09775 16.2432558,-0.09775 15.8521834,0.29325 L8.77987471,7.36425 L1.70756598,0.29325 C1.3174938,-0.09775 0.683376458,-0.09775 0.293304276,0.29325 C-0.0977680919,0.68325 -0.0977680919,1.31625 0.293304276,1.70725 L7.365613,8.77825 L0.293304276,15.84925 C-0.0977680919,16.23925 -0.0977680919,16.87225 0.293304276,17.26325 C0.683376458,17.65425 1.3174938,17.65425 1.70756598,17.26325 L8.77987471,10.19225 L15.8521834,17.26325 C16.2432558,17.65425 16.876373,17.65425 17.2664451,17.26325 C17.6575175,16.87225 17.6575175,16.23925 17.2664451,15.84925 L10.1941364,8.77825" fill="#FFFFFF"></path>
             </svg>
           </span>
@@ -30,7 +33,8 @@
     <button class="home-footer-button btn-caps-fixed-bold bottom-0 bg-azure" ng-click='goToBecomeGuru()'>Become a Guru</button>
   </section>
 
-  <div ng-click='closeWelcomePopup()'class='uguru-popup' ng-click='closeWelcome' id='home-uguru-popup' ng-include="img_base + 'templates/welcome.popup.html'"> </div>
+  <!-- Make this into a directive -->
+  <div ng-click='closeWelcomePopup()'class='uguru-popup' ng-click='closeWelcomePopup()' id='home-uguru-popup' ng-include="img_base + 'templates/welcome.popup.html'"> </div>
 
 
 </ion-view>

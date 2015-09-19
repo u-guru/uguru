@@ -26,7 +26,7 @@ if (LOCAL) {
   //REST_URL = "http://localhost:5000"
 
   // BASE_URL = 'http://192.168.1.43:8100';
-  
+
   //BASE_URL = 'http://192.168.43.155:8100';
 
 

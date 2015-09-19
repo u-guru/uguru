@@ -9,15 +9,16 @@
 		height:100%;
 		z-index: 100000000000;
 	}
+
+	#faq.main.pure-g {
+		padding: 0px !important;
+	}
+
 </style>
 {% endblock %}
 
 {% block content %}
-<div id="faq" class="main pure-g">
-    <header class="pure-u-1">
-	    <h4 class="text-center">UGURU</h4>
-	    <h1 class="text-center">Frequently Asked Questions</h1>
-	</header>
+<div id="faq" class="main pure-g" style='padding:'>
 	{% include 'web/components/faq_body.html' %}
 </div>
 {% endblock %}
