@@ -135,9 +135,11 @@ var Stats = function () {
 
 			frames ++;
 
-			if ( time > prevTime + 1000 ) {
+			// interval of frame check
+			if ( time > prevTime + 10 ) {
 
 				fps = Math.round( ( frames * 1000 ) / ( time - prevTime ) );
+
 				fpsMin = Math.min( fpsMin, fps );
 				fpsMax = Math.max( fpsMax, fps );
 
@@ -165,6 +167,10 @@ var Stats = function () {
 
 			return time;
 
+		},
+
+		getFPS: function() {
+			return fps;
 		},
 
 		update: function () {

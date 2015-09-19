@@ -44,13 +44,44 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         ga('set', 'dimension5', appLoadTime);
   }
 
-
+  var stopLoop = false;
+  var stats = new Stats();
 
     $scope.testBefore = function() {
+      stopLoop = false;
+      var fpsArray = [];
+      function update() {
+        stats.begin();  
+        stats.end();
+        fpsArray.push(stats.getFPS());
+        // console.log("FPS: " + stats.getFPS());
+        if(!stopLoop) {
+          requestAnimationFrame(update);          
+        } else {
+          var total = 0;    
+          for(var i=0; i<fpsArray.length; i++) {
+            total += fpsArray[i];
+          }
+          //we are disregarding the first value since it's most likely 0 due to initial transition
+          fpsArray.shift();
+          var meanFPS = Math.round(total / (fpsArray.length));
+          console.log("meanFPS: " + meanFPS);
+          console.log("fpsArray: " + fpsArray);
+          var fpsValue = "meanFPS: " + meanFPS + "/ fpsArray: " + fpsArray.toString();
+          //console.log("fpsValue: " + fpsValue);
+          ga('set', 'dimension6', fpsValue);
+
+        }
+      }
+      requestAnimationFrame(update);
       console.log('called beforeEnter');
     };
 
     $scope.testAfter = function() {
+
+      stopLoop = true;
+
+
       console.log("called afterEnter");
     };
 

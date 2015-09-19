@@ -19,7 +19,7 @@ var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.42.124:8100';
+  BASE_URL = 'http://192.168.0.108:8100';
   //BASE_URL = 'http://192.168.42.124:8100';
 
 
@@ -56,7 +56,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ngIO
   
   console.log("Firing event start to GA");
 
-  ga('create', 'UA-67802516-1', { 'userId': '4084955' });
+  ga('create', 'UA-67802516-1', 'auto');
   ga('send', 'event', 'App Start', 'action');
   ga('send', 'pageview');
 

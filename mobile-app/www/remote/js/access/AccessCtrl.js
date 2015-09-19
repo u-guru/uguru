@@ -25,10 +25,6 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   DeviceService.readyDevice();
 
 
-
-  
-  
-
   // var list = UniversityMatcher.list;
   // for (var i=0; i<10; i++) {
   //   var preCache = list[i].seal_url || list[i].forbes_url;
@@ -57,12 +53,14 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   // var update = function () {
 
   //     stats.begin();
-  //     $timeout(function() {
-  //       $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
-  //     }, 2000);
-
-  //     stats.end();
+  //     // $timeout(function() {
+  //     //   $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
+  //     // }, 2000);
+  //     // $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
+  //     // stats.end();
+  //     console.log("FPS: " + stats.getFPS());
   //     requestAnimationFrame( update );
+
   // };
   // requestAnimationFrame( update );
 
@@ -81,9 +79,10 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       }
       ga('send', 'event', 'Access Code', 'action');
       $timeout(function() {
-        $ionicSlideBoxDelegate.enableSlide(true);
+        // $ionicSlideBoxDelegate.enableSlide(true);
+
         $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
-      }, 250);
+      }, 550);
 
     } else {
       $scope.access.errorInputMsg = 'Incorrect access code';
