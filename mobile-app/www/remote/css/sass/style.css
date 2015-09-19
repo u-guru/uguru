@@ -611,23 +611,23 @@ body {
       cursor: pointer; }
     .uguru-view .onboarding#course #courses-list ul li input:checked + label {
       background: #55A4B7; }
-.uguru-view .onboarding#school header:before {
+.uguru-view .onboarding#school header:before, .uguru-view .onboarding#school-modal header:before {
   background: url(../../img/onboarding/school.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat; }
-.uguru-view .onboarding#school #school-list ul li a {
+.uguru-view .onboarding#school #school-list ul li a, .uguru-view .onboarding#school #school-list-modal ul li a, .uguru-view .onboarding#school-modal #school-list ul li a, .uguru-view .onboarding#school-modal #school-list-modal ul li a {
   font-weight: 300; }
-  .uguru-view .onboarding#school #school-list ul li a .school-icon img {
+  .uguru-view .onboarding#school #school-list ul li a .school-icon img, .uguru-view .onboarding#school #school-list-modal ul li a .school-icon img, .uguru-view .onboarding#school-modal #school-list ul li a .school-icon img, .uguru-view .onboarding#school-modal #school-list-modal ul li a .school-icon img {
     padding: 10px; }
-  .uguru-view .onboarding#school #school-list ul li a .school-name b, .uguru-view .onboarding#school #school-list ul li a .school-name i {
+  .uguru-view .onboarding#school #school-list ul li a .school-name b, .uguru-view .onboarding#school #school-list ul li a .school-name i, .uguru-view .onboarding#school #school-list-modal ul li a .school-name b, .uguru-view .onboarding#school #school-list-modal ul li a .school-name i, .uguru-view .onboarding#school-modal #school-list ul li a .school-name b, .uguru-view .onboarding#school-modal #school-list ul li a .school-name i, .uguru-view .onboarding#school-modal #school-list-modal ul li a .school-name b, .uguru-view .onboarding#school-modal #school-list-modal ul li a .school-name i {
     display: block;
     width: 100%;
     line-height: 1.2; }
-  .uguru-view .onboarding#school #school-list ul li a .school-name b {
+  .uguru-view .onboarding#school #school-list ul li a .school-name b, .uguru-view .onboarding#school #school-list-modal ul li a .school-name b, .uguru-view .onboarding#school-modal #school-list ul li a .school-name b, .uguru-view .onboarding#school-modal #school-list-modal ul li a .school-name b {
     font-weight: 400; }
-  .uguru-view .onboarding#school #school-list ul li a .school-name i {
+  .uguru-view .onboarding#school #school-list ul li a .school-name i, .uguru-view .onboarding#school #school-list-modal ul li a .school-name i, .uguru-view .onboarding#school-modal #school-list ul li a .school-name i, .uguru-view .onboarding#school-modal #school-list-modal ul li a .school-name i {
     font-size: 16px;
     font-style: normal;
     font-weight: 300; }
-.uguru-view .onboarding#school #school-list ul li a:active, .uguru-view .onboarding#school #school-list ul li a:focus, .uguru-view .onboarding#school #school-list ul li a:hover {
+.uguru-view .onboarding#school #school-list ul li a:active, .uguru-view .onboarding#school #school-list ul li a:focus, .uguru-view .onboarding#school #school-list ul li a:hover, .uguru-view .onboarding#school #school-list-modal ul li a:active, .uguru-view .onboarding#school #school-list-modal ul li a:focus, .uguru-view .onboarding#school #school-list-modal ul li a:hover, .uguru-view .onboarding#school-modal #school-list ul li a:active, .uguru-view .onboarding#school-modal #school-list ul li a:focus, .uguru-view .onboarding#school-modal #school-list ul li a:hover, .uguru-view .onboarding#school-modal #school-list-modal ul li a:active, .uguru-view .onboarding#school-modal #school-list-modal ul li a:focus, .uguru-view .onboarding#school-modal #school-list-modal ul li a:hover {
   background: rgba(255, 255, 255, 0.2); }
 .uguru-view .onboarding#major header:before {
   background: url(../../img/onboarding/major.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat; }

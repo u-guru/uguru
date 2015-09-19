@@ -447,7 +447,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       $scope.$on('$ionicView.loaded', function() {
 
-        $scope.root.vars.guru_mode = false; 
+        $scope.root.vars.guru_mode = false;
 
       })
 
@@ -456,6 +456,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $timeout(function() {
           $ionicSideMenuDelegate.toggleRight();
         }, 250)
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 562143cc307ec819f4c28f501187770c3319489a
         //welcome to student mode screen
         $timeout(function() {
             checkOnboardingStatus()
