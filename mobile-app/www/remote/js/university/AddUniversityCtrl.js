@@ -130,6 +130,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     sortByRank(University.getTargetted());
     $scope.limit = 10;
     $scope.increaseLimit = function() {
+      console.log("increaseLimit!");
       if($scope.limit < $scope.universities.length) {
         $scope.limit += 10;
       }
