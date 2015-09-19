@@ -33,6 +33,16 @@ angular.module('uguru.util.controllers')
     $scope.loginMode = false;
 
 
+//use for abstract
+    // $scope.openAdmin = function() {
+    //   $state.go('admin.admin-home');
+    // }
+
+    $scope.openAdmin = function() {
+      $state.go('^.admin');
+    }
+
+
     // pre-render these immediately
     $ionicModal.fromTemplateUrl(BASE + 'templates/faq.modal.html', {
             scope: $scope,

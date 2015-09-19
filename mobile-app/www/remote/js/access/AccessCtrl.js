@@ -57,6 +57,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       $timeout(function() {
         // $ionicSlideBoxDelegate.enableSlide(true);
 
+        
         $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
       }, 550);
 

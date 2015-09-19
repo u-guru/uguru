@@ -36,7 +36,7 @@ if (LOCAL) {
 
 mixpanel = window.mixpanel || null;
 
- if (mixpanel) mixpanel.track("App Launch");
+ //if (mixpanel) mixpanel.track("App Launch");
 
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ngIOS9UIWebViewPatch',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
@@ -98,22 +98,33 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ngIO
   // RestangularProvider.setBaseUrl('http://10.193.138.226:5000/api/v1');
   //Client-side router
   $stateProvider
-  .state('admin', {
-    url: '/admin',
-    abstract: true,
-    templateUrl: BASE + 'templates/admin/admin.html',
-    controller: 'AdminCtrl'
-  })
-  .state('admin.home', {
-    url: '/admin/home',
-    templateUrl: BASE + 'templates/admin/admin.home.html',
-    controller: 'AdminCtrl'
-  })
+  // .state('admin', {
+  //   url: '/admin',
+  //   abstract: true,
+  //   templateUrl: BASE + 'templates/admin/admin.html',
+  //   controller: 'AdminCtrl'
+  // })
+  // .state('admin.admin-home', {
+  //   url: '/admin/admin-home',
+  //   templateUrl: BASE + 'templates/admin/admin.home.html',
+  //   controller: 'AdminCtrl'
+  // })
+
+
+
+
+
   .state('root', {
         url: '',
         abstract: true,
         templateUrl: BASE + 'templates/root.html',
         controller: 'RootController'
+  }).
+
+  state('root.admin', {
+    url: '/admin',
+    templateUrl: BASE + 'templates/admin/admin.home.html',
+    controller: 'AdminCtrl'
   }).
   state('root.university', {
         url: '/university',

@@ -27,11 +27,15 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   var deviceModel =  DeviceService.getModel();
   var devicePlatform =  DeviceService.getPlatform();
   var deviceVersion = DeviceService.getVersion();
-
+  console.log("deviceUUID: " + deviceUUID);
+  if( deviceUUID===null || deviceUUID===undefined) deviceUUID = 'undefined';
   var mixpanelID = deviceUUID.substring(0,8);
   console.log("mixpanelID: " + mixpanelID);
 
   mixpanel.identify(mixpanelID);
+  
+  mixpanel.track("App Launch");
+  
 
   mixpanel.people.set({
       "$email": "nicholaslam.berkeley@gmail.com",
@@ -184,6 +188,9 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       mixpanel.track("Selected University", {
           "$University": university.name
       });
+      mixpanel.people.set({
+          "$University": university.name,
+      });
       ga('send', 'event', 'Selected University', 'action', university.name);
       //if user is switching universities
       if ($scope.user.university_id
@@ -192,7 +199,12 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       {
           return;
       }
-
+      mixpanel.track("Changed University", {
+          "$University": university.name
+      });
+      mixpanel.people.set({
+          "$University": university.name,
+      });
       $scope.loader.show();
       $scope.user.university_id = university.id;
       $scope.user.university = university;

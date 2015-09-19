@@ -7,6 +7,25 @@ angular.module('admin', [])
 function AdminCtrl() {
 
 
+	var API_KEY = "87a467906004f72e0a99521f67bf40e1";
+
+	var API_SECRET = "970af8524c83081d7e21cbeb78c6f4cf";
+
+	MP.api.setCredentials(API_KEY, API_SECRET);
+
+
+	MP.api.segment('App Launch').done(function(queryResults) {
+	    console.log(queryResults);
+	});
+
+	MP.api.people().done(function(results) {
+	    console.log("people results: " + results);
+	});
+
+	MP.api.people().done(function(results) {
+	    console.log("people results.values(): " + results.values());
+	});
+
 	// function() {
 	//  var data = {
 

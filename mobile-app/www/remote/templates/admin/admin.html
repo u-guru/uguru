@@ -1,12 +1,17 @@
 
+<ion-side-menus class='root-ion-side-menus'>
 
-<ui-view class="admin-container"></ui-view>
+          <ion-side-menu-content class='ion-side-menus-content'>
+              <ion-nav-view animation="slide-left-right">
+              </ion-nav-view>
+              <h1>This is the abstract admin container</h1>
 
+            </ion-side-menu-content>
 
-
-
-
-
+            <ion-side-menu side="right" width='window.width * 0.8'>
+              <div ng-include="'remote/templates/components.side-menu.html'"></div>
+            </ion-side-menu>
+</ion-side-menus>
 
 
 
