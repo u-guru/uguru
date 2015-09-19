@@ -1,6 +1,6 @@
 var LOCAL = true; //local to the 8100 codebasebirbirs
 
-var FIRST_PAGE='^.university';
+var FIRST_PAGE='^.home';
 
 var img_base;
 
@@ -98,17 +98,19 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ngIO
   // RestangularProvider.setBaseUrl('http://10.193.138.226:5000/api/v1');
   //Client-side router
   $stateProvider
-  // .state('admin', {
-  //   url: '/admin',
-  //   abstract: true,
-  //   templateUrl: BASE + 'templates/admin/admin.html',
-  //   controller: 'AdminCtrl'
-  // })
-  // .state('admin.admin-home', {
-  //   url: '/admin/admin-home',
-  //   templateUrl: BASE + 'templates/admin/admin.home.html',
-  //   controller: 'AdminCtrl'
-  // })
+
+//abstract
+  .state('admin', {
+    url: '/admin',
+    abstract: true,
+    templateUrl: BASE + 'templates/admin/admin.html',
+    controller: 'AdminCtrl'
+  })
+  .state('admin.admin-home', {
+    url: '/admin/admin-home',
+    templateUrl: BASE + 'templates/admin/admin.home.html',
+    controller: 'AdminCtrl'
+  })
 
 
 
@@ -121,11 +123,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ngIO
         controller: 'RootController'
   }).
 
-  state('root.admin', {
-    url: '/admin',
-    templateUrl: BASE + 'templates/admin/admin.home.html',
-    controller: 'AdminCtrl'
-  }).
+  // state('root.admin', {
+  //   url: '/admin',
+  //   templateUrl: BASE + 'templates/admin/admin.home.html',
+  //   controller: 'AdminCtrl'
+  // }).
   state('root.university', {
         url: '/university',
         templateUrl: BASE + 'templates/university.html',

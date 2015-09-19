@@ -34,13 +34,15 @@ angular.module('uguru.util.controllers')
 
 
 //use for abstract
-    // $scope.openAdmin = function() {
-    //   $state.go('admin.admin-home');
-    // }
-
     $scope.openAdmin = function() {
-      $state.go('^.admin');
+      $state.go('admin.admin-home');
     }
+
+    // $scope.openAdmin = function() {
+    //   $ionicViewSwitcher.nextDirection('forward');
+    //   $ionicSideMenuDelegate.toggleRight();
+    //   $state.go('^.admin');
+    // }
 
 
     // pre-render these immediately
