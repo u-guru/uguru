@@ -1,6 +1,7 @@
 from yelpapi import YelpAPI
 import json
-
+import requests
+from bs4 import BeautifulSoup
 
 
 
@@ -10,7 +11,7 @@ consumer_secret = 'oXcvu0rV8NFvSMoRgf_FGZf-72Y'
 token = 'So3cdsVQ-4zB0AAD8MF9VnuDF7XFsihw'
 token_secret = 'PAi0q1eI-lFMI9Az0ZWQ_qEFQ_k'
 yelp_api = YelpAPI(consumer_key, consumer_secret, token, token_secret)
-
+output = 'yelp_school_data.json'
 
 city_info = []
 with open('fa15_final.json') as data_file:
@@ -27,9 +28,43 @@ def get_school_data_information(city_info):
 		search_results = yelp_api.search_query(location = loop_cities)
 		dictionary['business_information:'] = search_results
 		city_array.append(dictionary)
-		with open('yelp_school_data','wb') as outfile:
+		with open(output,'wb') as outfile:
 			json.dump(city_array,outfile,indent=4)
 
+with open(output) as second_step_data:
+	load_data_info = json.load(second_step_data)
+	for info in load_data_info:
+		main_wrapper_json = info['business_information:']['businesses']
+		for info in main_wrapper_json:
+			url =  info['mobile_url']
+			soup = BeautifulSoup(requests.get(url).text)
+			today_information = soup.findAll('ul', attrs = {'class':'iconed-list'})#BUSINESS TODAY INFO.
+			for hour_range in today_information:
+				hour_info = hour_range.findAll('span', attrs = {'class':'hour-range'})
+				price_info = hour_range.findAll('dd', attrs = {'class':'nowrap price-description'})
+				menu_hyper_link = hour_range.findAll('div', attrs = {'class':'iconed-list-story'})
+				for a_href in menu_hyper_link:
+					a_link = a_href.findAll('a')
+					for href in a_link:
+						href = href['href']
+						if "/menu" in href:
+							menu_url = "http://www.yelp.com" + href
+							second_request = BeautifulSoup(requests.get(menu_url).text)
+							main_wrapper = second_request.find('div', attrs = {'class':'menu-section'}).findAll('div',attrs = {'class':'menu-item-details'})
+							for name in main_wrapper:
+								#try:
+									name_info = name.find('h3').text
+									item_description = name.find('p', attrs = {'class':'menu-item-details-description'}).text
+									item_price = name.find('li', attrs = {'class':'menu-item-price-amount'})
+									print item_price
+								# except AttributeError:
+								# 	continue
 
-if __name__ == "__main__":
-	get_school_data_information(city_info)
+							
+						# else:
+						# 	print "This college doesn't have menu"
+			# opening_information = soup.findAll('div', attrs = {'class':'ywidget biz-hours'})#OPENING HOURS IN TOTAL	
+			# for opening_info in opening_information:
+			# 	print opening_info.text.replace('Edit business info', ' ')
+#if __name__ == "__main__":
+	
