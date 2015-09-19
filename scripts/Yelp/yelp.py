@@ -43,7 +43,9 @@ with open(output) as second_step_data:
 				hour_info = hour_range.findAll('span', attrs = {'class':'hour-range'})
 				price_info = hour_range.findAll('dd', attrs = {'class':'nowrap price-description'})
 				menu_hyper_link = hour_range.findAll('div', attrs = {'class':'iconed-list-story'})
-				for a_href in menu_hyper_link:
+
+
+				for a_href in menu_hyper_link: #BELOW FROM THIS IS MENU SCRAPING
 					a_link = a_href.findAll('a')
 					for href in a_link:
 						href = href['href']
@@ -52,19 +54,26 @@ with open(output) as second_step_data:
 							second_request = BeautifulSoup(requests.get(menu_url).text)
 							main_wrapper = second_request.find('div', attrs = {'class':'menu-section'}).findAll('div',attrs = {'class':'menu-item-details'})
 							for name in main_wrapper:
-								#try:
+								try:
 									name_info = name.find('h3').text
 									item_description = name.find('p', attrs = {'class':'menu-item-details-description'}).text
-									item_price = name.find('li', attrs = {'class':'menu-item-price-amount'})
-									print item_price
-								# except AttributeError:
-								# 	continue
+									item_price_info = name.find('li', attrs = {'class':'menu-item-price-amount'}).text
+									#print item_price_info
+								except AttributeError:
+									continue
 
-							
-						# else:
-						# 	print "This college doesn't have menu"
-			# opening_information = soup.findAll('div', attrs = {'class':'ywidget biz-hours'})#OPENING HOURS IN TOTAL	
+						else:
+							print "This city doesn't have menu!"
+			#BELOW ARE NOT IN THE FOOR LOOP ABOVE				
+			biz_website = soup.findAll('div',attrs = {'class':'biz-website'})
+			for a_biz in biz_website:
+				get_me_all_link = a_biz.findAll('a')
+				# for text in get_me_all_link:
+				# 	print text.text
+			total_ratings = soup.find('span', attrs = {'class':'review-count rating-qualifier'}).text
+			
+			opening_information = soup.findAll('div', attrs = {'class':'ywidget biz-hours'})#OPENING HOURS IN TOTAL	
 			# for opening_info in opening_information:
-			# 	print opening_info.text.replace('Edit business info', ' ')
+			#  	print opening_info.text.replace('Edit business info', ' ')
 #if __name__ == "__main__":
 	
