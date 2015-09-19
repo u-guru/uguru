@@ -457,7 +457,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           $ionicSideMenuDelegate.toggleRight();
         }, 250)
 
-
         //welcome to student mode screen
         $timeout(function() {
             checkOnboardingStatus()
