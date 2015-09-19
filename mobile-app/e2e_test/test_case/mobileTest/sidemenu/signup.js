@@ -10,8 +10,11 @@ describe('Sign-up test', function () {
         browser.wait(EC.elementToBeClickable(sideMenuList),3000);
 		expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/home");
 	});
+
 	it("open the side menu",function()
 	{
+        browser.wait(EC.visibilityOf(sideMenuList),3000);
+
 		sideMenuButton.click();
         browser.wait(EC.visibilityOf(sideMenuList),3000);
         expect(sideMenuList.isDisplayed()).toBe(true);

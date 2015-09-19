@@ -1,8 +1,5 @@
 describe('university Test', function () {
- 	//browser.driver.get("http://localhost:8100/#/university");
-	
-	// });
-	
+
  	describe("university page should have school list and is scroll able",function()
 	{
 		it("Popular List is enable",function()
@@ -169,10 +166,13 @@ describe('university Test', function () {
 			browser.wait(EC.visibilityOf(gps),3000);
 			gps.click();
 		});
-		// it ('check GPS icon Changed',function()
-		// {
-
-		// });
+		it ('check GPS icon Changed',function()
+		{
+			element(by.css('.icon ion-navigate')).getAttribute('style').then(function(results)
+			{
+				expect(results).toContain("Hi")
+			})
+		});
 		it('chheck miles shows',function()
 		{
 			browser.wait(EC.visibilityOf(element(by.binding('university.miles | number'))),3000,"TEST").then(function(){
