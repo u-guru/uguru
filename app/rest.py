@@ -2104,7 +2104,9 @@ class UserNewView(restful.Resource):
                 abort(404)
 
         if request.json.get('email'):
-            print request.json
+
+            print "USER IS ATTEMPTING TO LOGIN"
+
             from hashlib import md5
             email_user = User.query.filter_by(
                 email=request.json.get('email'),
@@ -2166,7 +2168,7 @@ class UserView(restful.Resource):
     def post(self):
 
         logging.info(request.json)
-
+        print 'ayy'
 
         user_from_fb_id = User.query.filter_by(fb_id=request.json.get("id")).first()
         user_from_email = User.query.filter_by(email=request.json.get("email")).first()
