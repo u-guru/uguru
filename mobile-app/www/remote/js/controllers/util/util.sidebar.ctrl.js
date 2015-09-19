@@ -62,8 +62,19 @@ angular.module('uguru.util.controllers')
         $scope.signupModal = modal;
     });
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.universityModal = modal;
+    });
+
     $scope.launchFAQModal = function() {
       $scope.faqModal.show();
+    }
+
+    $scope.launchUniversityModal = function() {
+      $scope.universityModal.show();
     }
 
     var initSupportChatEnterHandler = function() {
@@ -448,11 +459,10 @@ angular.module('uguru.util.controllers')
               if (index === 1) {
                 $scope.closeAttachActionSheet();
                 $scope.loader.show();
-                $scope.transitionToUniversity()
+                $scope.launchUniversityModal();
                 $timeout(function() {
                   $scope.loader.hide();
-                  $ionicSideMenuDelegate.toggleRight();
-                }, 1000);
+                }, 500);
               }
 
               if (index === 2) {
@@ -499,16 +509,13 @@ angular.module('uguru.util.controllers')
       || ($scope.user.majors.length === 0))  && confirm('Your guru account is not complete. Complete it?')) {
         $state.go('^.become-guru');
       } else {
+        console.log('transitioning to guru mode');
         $state.go('^.guru');
       }
 
 
       $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': true}, null, $scope);
 
-      $timeout(function() {
-        $ionicSideMenuDelegate.toggleRight();
-        $scope.loader.hide();
-      }, 750)
 
       $timeout(function() {
         $scope.root.vars.guru_mode = true;
@@ -524,10 +531,6 @@ angular.module('uguru.util.controllers')
       //let the server know the user was on guru mode for the next time app opens
       $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': false}, null, $scope);
 
-      $timeout(function() {
-        $ionicSideMenuDelegate.toggleRight();
-        $scope.loader.hide();
-      }, 750)
       $timeout(function() {
         $scope.root.vars.guru_mode = false;
       }, 1000)

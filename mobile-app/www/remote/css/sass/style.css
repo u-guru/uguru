@@ -1276,7 +1276,14 @@ body {
       stroke: white; }
 .menu-student .list-item-profile {
   background: #55A4B7;
-  color: white; }
+  color: white;
+  padding-top: 25px; }
+  .menu-student .list-item-profile .list-item-detail span {
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis; }
+  .menu-student .list-item-profile .list-item-detail .student-profile-name {
+    font-weight: 700; }
   .menu-student .list-item-profile .list-item-icon svg circle {
     stroke: white; }
 .menu-student .list-item-agenda {
@@ -1284,7 +1291,10 @@ body {
   .menu-student .list-item-agenda:active, .menu-student .list-item-agenda:hover {
     background: rgba(64, 72, 75, 0.9); }
 .menu-student .list-item-student {
-  display: none; }
+  background: #40484B;
+  color: white; }
+  .menu-student .list-item-student svg path {
+    stroke: white; }
 .menu-student .list-item-guru {
   background: #55A4B7;
   color: white; }
@@ -1367,5 +1377,19 @@ body {
 
 .tabs {
   border: 0; }
+
+.action-sheet-wrapper.action-sheet-up {
+  background-color: white;
+  color: #8A9EA3; }
+  .action-sheet-wrapper.action-sheet-up button {
+    text-align: left;
+    color: #40484B;
+    opacity: 0.8;
+    font-size: 16px;
+    font-weight: 600;
+    padding-left: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 0px;
+    border-right: 0px; }
 
 /*# sourceMappingURL=style.css.map */

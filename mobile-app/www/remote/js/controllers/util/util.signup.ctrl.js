@@ -48,81 +48,7 @@ angular.module('uguru.util.controllers')
 
     $scope.addUniversity = function() {
       $state.go('^.university');
-    }
-
-    $scope.resetSettingsIcons = function() {
-      $scope.settings.icons.profile = true;
-      $scope.settings.icons.notifications = false;
-      $scope.settings.icons.card = false;
-      $scope.settings.icons.support = false;
-      $scope.settings.icons.guru = false;
-      $scope.settings.icons.groceries = false;
-    }
-
-    $scope.selectedCurrentHourly = 10;
-
-    $scope.setSettingsToIndex = function(index) {
-
-
-      $scope.root.vars.settings = {icons : {profile : false}};
-
-      for (var i = 0; i < Object.keys($scope.settings.icons).length; i++ ) {
-
-        var settingsKey = Object.keys($scope.settings.icons)[i];
-
-        //previously true, now false
-        if ($scope.settings.icons[settingsKey]) {
-          $scope.settings.icons[settingsKey] = false;
-        }
-
-        //needs to be true now
-
-        if ((i + 1) === index) {
-          $scope.settings.icons[settingsKey] = true;
-        }
-
-      }
-
-      if (index === 5 && $scope.user.id) {
-        if ($scope.root.vars.guru_mode) {
-
-          $scope.root.vars.guru_mode = false;
-          $scope.goToStudentMode();
-
-        } else {
-          $scope.goToGuru();
-        }
-      }
-
-
-
-    }
-
-    if ($scope.user && $scope.user.current_hourly) {
-      $scope.selectedCurrentHourly = $scope.user.current_hourly + '';
-    }
-
-
-
-    if (!$scope.root.vars.loginMode) {
-      $scope.root.vars.loginMode = false;
-    }
-
-    $scope.toggleAccountView = function() {
-
-      $scope.root.vars.show_account_fields = !$scope.root.vars.show_account_fields;
-
-    }
-
-    $scope.goToEditCourses = function() {
-      $scope.loader.show();
-      $state.go('^.courses');
-      $timeout(function() {
-        $scope.loader.hide();
-      }, 750);
-    }
-
-
+    }    
 
     $scope.attemptToResetPassword = function() {
       function validateEmail(email) {
@@ -768,7 +694,6 @@ angular.module('uguru.util.controllers')
 
     $scope.goToSignupFromSideBar = function() {
 
-      $scope.resetSettingsIcons();
       $scope.loader.show();
       $ionicViewSwitcher.nextDirection('forward');
       $state.go('^.signup');
@@ -996,6 +921,7 @@ angular.module('uguru.util.controllers')
       var fbCheckStatusCallback = function(response) {
 
         if ((mobileWeb && $scope.platform.web) || $scope.isWindowsPlatform()) {
+              $scope.facebookResponseReceived = true;
               if (response.status === "unknown") {
                 var login_redirect_uri = "http://uguru.me/app/";
                 var login_response_type = 'token';
@@ -1008,7 +934,6 @@ angular.module('uguru.util.controllers')
                   var postSuccessCallback = function() {
                     $scope.loader.hide();
                     $scope.success.show(0, 1000, 'Login Successful!');
-                    $scope.settings.icons.profile = true;
                     if ($scope.signupModal && $scope.signupModal.isShown()) {
                       $scope.signupModal.hide();
                     }
@@ -1039,14 +964,13 @@ angular.module('uguru.util.controllers')
 
     var facebookAuthSuccessCallback = function (success) {
         // $cordovaFacebook.login(["user_education_history", "friends_education_history"]).then(function (success) {
-
+          $scope.facebookResponseReceived = true;
         $scope.loginInfo = success;
 
         var successCallback = function() {
             $scope.loader.hide();
             $scope.loader.hide();
             $scope.success.show(0, 1500, 'Login Successful!');
-            $scope.settings.icons.profile = true;
             if ($scope.signupModal && $scope.signupModal.isShown()) {
               $scope.signupModal.hide();
             }
@@ -1056,6 +980,7 @@ angular.module('uguru.util.controllers')
     }
 
     var facebookAuthFailureCallback = function(error) {
+        $scope.facebookResponseReceived = true;
         $scope.loader.hide();
         $scope.error = error;
         console.log('FB CONNECT FAILED...');
@@ -1085,10 +1010,22 @@ angular.module('uguru.util.controllers')
 
         if ($scope.platform.web || $scope.platform.windows || $scope.isWindowsPlatform()) {
           // $scope.fbAuthNative();
+
+          //after five seconds and no fb response --> Say something went wrong
+          $timeout(function() {
+            
+
+            if (!$scope.facebookResponseReceived) {
+              alert('Something went wrong. Please check your browser settings & make sure popups from Facebook.com are allowed');
+            }
+          }, 5000);
+
           $scope.fbAuthBrowser();
         } else {
           $scope.fbAuthNative();
         }
+
+
 
 
     };
@@ -1461,12 +1398,12 @@ angular.module('uguru.util.controllers')
     if ($localstorage.get('mobile-web-auth')) {
       $localstorage.removeObject('mobile-web-auth');
       var postFbCheckStatusCallback = function(response) {
+        $scope.facebookResponseReceived = true;
         $scope.loader.show();
         var successCallback = function(success) {
           var postSuccessCallback = function() {
             $scope.loader.hide();
             $scope.success.show(0, 2500, 'Login Successful!');
-            $scope.settings.icons.profile = true;
             $ionicSideMenuDelegate.toggleRight();
           }
           $scope.postFbGraphApiSuccess(success, postSuccessCallback)

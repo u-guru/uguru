@@ -3,25 +3,23 @@
 	<!-- Toggle between menu-guru and menu-student to switch color modes -->
 	<ion-item class='list-item list-item-profile'>
 		<span class="list-item-icon" ng-if='user.id'>
-			<svg viewBox="0 0 100 100">
+			<img class='sidebar-img-source' src='{{user.profile_url}}'/>
+			<!-- <svg viewBox="0 0 100 100">
 				<g fill="none" fill-rule="evenodd">
 					<circle cx="50" cy="50" r="50"></circle>
 				</g>
-			</svg>
+			</svg> -->
 		</span>
 		<span class="list-item-detail" ng-if='user.id'>
-			<span>Student Name</span>
-			<span>Sophomore</span>
+			<span class='student-profile-name'>{{user.name.split(' ')[0]}} {{user.name.split(' ')[1][0].toUpperCase()}}.</span>
+			<span class='student-profile-year' ng-if='user.id && user.year && user.university.name'>Sophomore</span>
+			<span ng-if='user.id && !user.year && user.university'>{{user.university.name || user.university.title}}</span>
 		</span>
 		<span class="list-item-detail" ng-if='!user.id && user.university.name'>
 			<h3 class='text-center'>{{user.university.name}}</h3>
 		</span>
 	</ion-item>
 	<ion-item class='list-item list-item-agenda'></ion-item>
-	<ion-item class='list-item hide ng-class:{"show":root.vars.guru_mode}' ng-click='goToGuru()'>
-		<span class="list-item-icon"></span>
-		<span class="list-item-detail">Student Mode</span>
-	</ion-item>
 	<ion-item class='list-item hide' ng-click='addUniversity()'>
 		<span class="list-item-icon"></span>
 		<span class="list-item-detail">Add University</span>
@@ -43,7 +41,7 @@
 		</span>
 		<span class="list-item-detail">Terms</span>
 	</ion-item>
-	<ion-item class='list-item' ng-click='launchSupportModal()'ng-show='!user || !user.id'>
+	<ion-item class='list-item' ng-click='launchSupportModal()'>
 		<span class="list-item-icon">
 			<svg viewBox="0 0 100 100">
 			    <path d="M45.1961375,16.7490179 C27.9154271,16.7490179 14,29.565756 14,45.2496141 C14,53.7837074 18.1325133,61.7163003 25.1828404,67.1103074 L26.316625,67.97795 L26.4033893,77.1505893 L35.2543184,72.2947155 L36.3890779,72.5988779 C39.2250018,73.3602586 42.1808358,73.7502103 45.1961375,73.7502103 C62.4768479,73.7502103 76.392275,60.9334722 76.392275,45.2496141 C76.392275,29.565756 62.4768479,16.7490179 45.1961375,16.7490179 M76.9193162,46.8802538 C82.4011664,50.2292669 86,55.9379309 86,62.3880947 C86,67.9692981 83.2973817,73.1571267 78.6865452,76.6847481 L77.9450625,77.2521768 L77.8883196,83.2509821 L72.0999092,80.075294 L71.357789,80.2742129 C69.5031259,80.7721475 67.5700429,81.0271716 65.5980687,81.0271716 C58.9727819,81.0271716 53.1038704,78.1465034 49.3814365,73.6961431" fill="none"></path>
@@ -63,6 +61,12 @@
 	<ion-item class='list-item hide' ng-if='user.id && user.is_admin' ng-click='resetAccount()'>
 		<span class="list-item-icon"></span>
 		<span class="list-item-detail">Delete Account</span>
+	</ion-item>
+	<ion-item class='list-item' ng-if='user && user.id' ng-click='showStudentEditActionSheet()'>
+		<span class="list-item-icon">
+			<i class='icon ion-gear-a'></i>
+		</span>
+		<span class="list-item-detail">Account Settings</span>
 	</ion-item>
 	<ion-item class='list-item' ng-if='user && user.id' ng-click='logoutUser()'>
 		<span class="list-item-icon">
@@ -93,18 +97,19 @@
 		</span>
 		<span class="list-item-detail">Guru Mode</span>
 	</ion-item>
-	<ion-item class='list-item list-item-student' ng-show='user.mode' ng-click='goToStudent()'>
+	<ion-item class='list-item list-item-student bg-slate txt-white' ng-if='root.vars.guru_mode && user.is_a_guru && user.id' ng-click='goToStudent()'>
 		<span class="list-item-icon">
 			<svg viewBox="0 0 100 100">
-			    <g fill="none">
-			        <path d="M29.4845956,42.273876 L17.4830158,50.6684299 L9.5,38.3892642"></path>
-			        <path d="M21.4439147,64.2244662 C26.6881822,74.7544952 37.5187724,82 50,82 C67.6001728,82 81.918101,67.5925239 81.918101,49.8841841"></path>
-			        <path d="M78.5541862,35.7755338 C73.3099187,25.2455048 62.4793285,18 49.9981009,18 C32.397928,18 18.0799999,32.4074761 18.0799999,50.1158159"></path>
-			        <path d="M70.5199966,57.726124 L82.5215765,49.3315701 L90.5045923,61.6107358"></path>
+			    <g fill="none" >
+			        <path d="M29.4845956,42.273876 L17.4830158,50.6684299 L9.5,38.3892642" stroke="white"></path>
+			        <path d="M21.4439147,64.2244662 C26.6881822,74.7544952 37.5187724,82 50,82 C67.6001728,82 81.918101,67.5925239 81.918101,49.8841841" stroke="white"></path>
+			        <path d="M78.5541862,35.7755338 C73.3099187,25.2455048 62.4793285,18 49.9981009,18 C32.397928,18 18.0799999,32.4074761 18.0799999,50.1158159" stroke="white"></path>
+			        <path d="M70.5199966,57.726124 L82.5215765,49.3315701 L90.5045923,61.6107358" stroke="white"></path>
 			    </g>
 			</svg>
 		</span>
 		<span class="list-item-detail">Student Mode</span>
 	</ion-item>
+	<input type='file' id='file-input-web-sidebar' onchange="angular.element(this).scope().file_changed(this)" style='display:none'/>
 </ion-list>
 </ion-view>
