@@ -203,11 +203,26 @@ function AdminCtrl($scope, $state) {
     }
 
     MP.api.people().done(function(results) {
-    	
-        // console.log(JSON.stringify(results.values()));
 
-        var numPeople = results.values().total;
+        // console.log(JSON.stringify(results.values()));
+        var data = results.values();
+        var numPeople = data.total;
+        var androidCount = 0;
+        var iosCount = 0;
+        for(var i=0; i<numPeople; i++) {
+        	console.log("data.results[i]: " + JSON.stringify(data.results[i]));
+        	var platform = data.results[i].$properties.$Device_Platform;
+        	console.log("platform: " + platform);
+        	if(platform = 'android') {
+        		androidCount++;	
+        	} 
+        	else if(platform = 'ios') {
+        		iosCount++;	
+        	} 
+        }
         console.log(JSON.stringify(numPeople));
+        console.log("androidCount: " + androidCount);
+        console.log("iosCount: " + iosCount);
     });
 
 	// function() {

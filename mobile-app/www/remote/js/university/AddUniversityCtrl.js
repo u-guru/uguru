@@ -34,8 +34,16 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   mixpanel.identify(mixpanelID);
   
-  mixpanel.track("App Launch");
-  
+
+  document.addEventListener("pause", lastSearch, false);
+  document.addEventListener("backbutton", lastSearch, false);
+  function lastSearch() {
+    mixpanel.track("Paused/Back", {
+      "$Search_Input": $scope.search_text
+    });
+  }
+
+
 
   mixpanel.people.set({
       "$email": "nicholaslam.berkeley@gmail.com",
@@ -57,7 +65,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   ga('set', 'dimension3', DeviceService.getPlatform());
   ga('set', 'dimension4', DeviceService.getVersion());
 
-
   var appLoadTime;
   console.log("from the accessCtrl");
   $scope.getLoadTime = function() {
@@ -69,6 +76,9 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         appLoadTime = loadTime;
         console.log("appLoadTime: " + appLoadTime);
         ga('set', 'dimension5', appLoadTime);
+        mixpanel.track("App Launch", {
+          "$App_Load_Time": appLoadTime
+        });
   }
 
   var stopLoop = false;
@@ -186,7 +196,8 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
     $scope.universitySelected = function(university, $event) {
       mixpanel.track("Selected University", {
-          "$University": university.name
+          "$University": university.name,
+          "$Search_Input": $scope.search_text
       });
       mixpanel.people.set({
           "$University": university.name,
@@ -200,7 +211,8 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           return;
       }
       mixpanel.track("Changed University", {
-          "$University": university.name
+          "$University": university.name,
+          "$Search_Input": $scope.search_text
       });
       mixpanel.people.set({
           "$University": university.name,
