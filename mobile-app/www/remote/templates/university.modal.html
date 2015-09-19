@@ -1,3 +1,43 @@
-<!-- <ion-modal-view class='uguru-view university-view' >
-    <div ng-controller='AddUniversityCtrl' ng-include="img_base + BASE + 'templates/university.components.html'"></div>
-</ion-modal-view> -->
+<ion-modal-view class='uguru-view bg-charcoal university-modal university-view' >
+
+    <section id='school-modal' class='full-xy absolute'>
+        <header class="third bg-charcoal">
+            <h1 class="text-center full-x">Edit University</h1>
+            <a class="header-nav-back" ng-click="universityModal.hide()">
+                <i class='icon ion-chevron-down'>
+
+                </i>
+            </a>
+            <div class="absolute bottom-0 left-0 full-x input-search-ghost">
+                <input type="search" value="{{user.university.title}}" class=''       id ='university-input'
+                        placeholder="Search for my university"
+                        ng-model="search_text"
+                        ng-keyup="query(search_text)"
+                        ng-click="onTextClick($event)"/>
+                <a ng-click='search_text = "";'>
+                    <i class='icon ion-close-circled absolute right'> </i>
+                </a>
+            </div>
+
+        </header>
+        <div id="school-list-modal" buffered-scroll='increaseLimit()' class="onboarding-list" ng-init='limit = 10'>
+        <ul class='list list-item-border'>
+          <li  class="list-item school-harvard" ng-repeat='university in universities | limitTo: limit'>
+            <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
+              <span class="school-icon list-icon-left">
+                <img ng-if='platform.mobile' image-saver ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
+                <img ng-if='platform.web' ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}'/>
+              </span>
+              <span ng-if='!location' class="school-name  ng-class:{'smaller-list-font':university.title.length >=20 } ">
+                <b>{{university.name}}</b><i>{{university.city}}, {{university.state}}</i>
+              </span>
+              <span ng-if='location' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
+                <b>{{university.name}}<i class='university-subheader'>{{university.city}}, {{university.state}} <span class='text-right'>{{university.miles | number}} mi</span></i></b>
+              </span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+</ion-modal-view>

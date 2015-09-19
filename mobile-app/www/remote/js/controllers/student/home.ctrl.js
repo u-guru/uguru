@@ -447,15 +447,17 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
       $scope.$on('$ionicView.loaded', function() {
 
-        $scope.root.vars.guru_mode = false; 
+        $scope.root.vars.guru_mode = false;
 
       })
 
      $scope.$on('$ionicView.enter', function() {
       $ionicSideMenuDelegate.canDragContent(true);
-        // $timeout(function() {
-        //   $ionicSideMenuDelegate.toggleRight();
-        // }, 250)
+        $timeout(function() {
+          $ionicSideMenuDelegate.toggleRight();
+        }, 250)
+
+
         //welcome to student mode screen
         $timeout(function() {
             checkOnboardingStatus()

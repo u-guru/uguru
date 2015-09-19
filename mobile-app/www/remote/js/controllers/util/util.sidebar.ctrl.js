@@ -21,17 +21,102 @@ angular.module('uguru.util.controllers')
   '$ionicPopup',
   'Camera',
   'Support',
+  'University',
   '$ionicPlatform',
   '$ionicBackdrop',
+  'UniversityMatcher',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
-  Camera, Support, $ionicPlatform, $ionicBackdrop) {
+  Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher) {
 
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
 
+    //temporary --> Learn resolves && inject properly
+    //** Start University Functions ** //
+    var queryTimeout = false;
+    var emptyTimeout = false;
+    $scope.query = function(input) {
+      if(!queryTimeout) {
+        queryTimeout = true;
+        //$scope.universities = Utilities.nickMatcher(input, University.getTargetted());
+        $scope.universities = UniversityMatcher.cachedMatch(input);
+        $timeout(function() {queryTimeout = false;}, 600);
+      }
+      else if(input.length === 0) {
+        if(!emptyTimeout) {
+          emptyTimeout = true;
+          $scope.universities = UniversityMatcher.cachedMatch(input);
+          $timeout(function() {emptyTimeout = false;}, 600);
+        }
+      }
+
+    }
+
+    var schoolList = document.querySelectorAll('#school-list')[0];
+
+    $scope.search_text = $scope.user.university.name || '';
+    $scope.location = false;
+    $scope.universities = University.getTargetted();
+
+    sortByRank(University.getTargetted());
+    $scope.limit = 10;
+    $scope.increaseLimit = function() {
+      if($scope.limit < $scope.universities.length) {
+        $scope.limit += 10;
+      }
+    }
+
+    function sortByRank(list) {
+      function compareRank(a, b) {
+        if (a.rank < b.rank)
+          return -1;
+        if (a.rank > b.rank)
+          return 1;
+
+        return 0;
+      }
+      return list.sort(compareRank);
+    }
+
+    $scope.universitySelected = function(university, $event) {
+
+      //if user is switching universities
+      if ($scope.user.university_id
+          && university.id !== $scope.user.university_id
+          && !confirm('Are you sure? Your current courses will be deactivated'))
+      {
+          return;
+      }
+
+      $scope.loader.show();
+      $scope.user.university_id = university.id;
+      $scope.user.university = university;
+      $scope.search_text = '';
+
+      //update user to locat storage
+      $scope.rootUser.updateLocal($scope.user);
+
+      var payload = {
+        'university_id': $scope.user.university_id
+      };
+
+      //save university
+      var postUniversitySelectedCallback = function() {
+          $timeout(function() {
+            $scope.loader.hide();
+            $scope.success.show('')
+            UniversityMatcher.clearCache();
+            $timeout(function() {
+              $scope.loader.show();
+            }, 500)
+          }, 1000);
+      }
+
+      $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
+    }
 
     // pre-render these immediately
     $ionicModal.fromTemplateUrl(BASE + 'templates/faq.modal.html', {
@@ -69,6 +154,15 @@ angular.module('uguru.util.controllers')
         $scope.universityModal = modal;
     });
 
+    $scope.$on('modal.shown', function() {
+      if ($scope.universityModal.isShown()) {
+        $timeout(function() {
+          var universityInput = document.querySelector('#university-input')
+          universityInput.select();
+        }, 100);
+      }
+    });
+
     $scope.launchFAQModal = function() {
       $scope.faqModal.show();
     }
@@ -76,6 +170,10 @@ angular.module('uguru.util.controllers')
     $scope.launchUniversityModal = function() {
       $scope.universityModal.show();
     }
+
+    $scope.onTextClick = function ($event) {
+      $event.target.select();
+    };
 
     var initSupportChatEnterHandler = function() {
 
@@ -551,5 +649,6 @@ angular.module('uguru.util.controllers')
 
 
   }
+
 
 ]);

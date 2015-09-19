@@ -610,14 +610,14 @@ body {
 				}
 			}
 		}
-		&#school {
+		&#school, &#school-modal {
 			header {
 				&:before {
 					background: url(../../img/onboarding/school.jpg) no-repeat center center/cover,
 								url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat;
 				}
 			}
-			#school-list {
+			#school-list, #school-list-modal {
 				ul {
 					li {
 						a {

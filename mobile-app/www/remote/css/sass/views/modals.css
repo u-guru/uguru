@@ -1,18 +1,23 @@
-.terms-modal, .faq-modal, .signup-modal, .support-modal {
+.terms-modal, .faq-modal, .signup-modal,
+.support-modal {
   color: #2B3234; }
-  .terms-modal p, .faq-modal p, .signup-modal p, .support-modal p {
+  .terms-modal p, .faq-modal p, .signup-modal p,
+  .support-modal p {
     font-size: 13px;
     margin: 10px 0px; }
-  .terms-modal .header-nav, .faq-modal .header-nav, .signup-modal .header-nav, .support-modal .header-nav {
+  .terms-modal .header-nav, .faq-modal .header-nav, .signup-modal .header-nav,
+  .support-modal .header-nav {
     position: relative; }
-    .terms-modal .header-nav a, .faq-modal .header-nav a, .signup-modal .header-nav a, .support-modal .header-nav a {
+    .terms-modal .header-nav a, .faq-modal .header-nav a, .signup-modal .header-nav a,
+    .support-modal .header-nav a {
       display: inline-block;
       position: absolute;
       left: 15px;
       top: 7px;
       opacity: 0.7;
       font-size: 20px; }
-  .terms-modal .has-header, .faq-modal .has-header, .signup-modal .has-header, .support-modal .has-header {
+  .terms-modal .has-header, .faq-modal .has-header, .signup-modal .has-header,
+  .support-modal .has-header {
     top: 54px; }
 
 .signup-modal .header-nav a {
@@ -78,5 +83,39 @@
   position: absolute;
   top: 10px;
   left: 0px; }
+
+.university-modal a.header-nav-back {
+  position: absolute;
+  top: 14px;
+  left: 20px; }
+  .university-modal a.header-nav-back .ion-chevron-down {
+    position: absolute;
+    top: 0; }
+.university-modal .list-item.school-harvard {
+  overflow: auto !important;
+  overflow-y: hidden !important; }
+.university-modal .school-name {
+  overflow-x: hidden;
+  padding-right: 20px; }
+  .university-modal .school-name b {
+    font-size: 22px;
+    font-weight: 700;
+    display: block;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis; }
+  .university-modal .school-name i {
+    font-size: 13px;
+    font-weight: 400; }
+.university-modal header a .ion-close-circled {
+  right: 15px;
+  top: -31px;
+  font-size: 18px;
+  opacity: 0.7; }
+.university-modal .list-item.school-harvard .school-icon img {
+  border: 2px solid #ee7f2d;
+  border-radius: 50%;
+  margin: 0 10px;
+  max-height: 50px; }
 
 /*# sourceMappingURL=modals.css.map */
