@@ -6,7 +6,7 @@ var global = function() {
   * arg : index the page you awnna swipe
   * desc: swip the page to left or right.
   ************************************************************/
-  this.slideView = function(index,direction)
+  this.slideView = function(index,direction,tagName)
   {
     var xV = 0
     var yV = 0;
@@ -14,7 +14,9 @@ var global = function() {
       xV = -200;
     else if (direction === 'right')
       xV =  200;
-    var ele = element.all(by.tagName("ion-slide"));
+      var ele = element.all(by.tagName("ion-slide"));
+    if (tagName != null)
+      ele = element.all(by.tagName(tagName));
     ele.then(function(items)
     {
         console.log("slides :"+ items.length)
@@ -60,7 +62,7 @@ var global = function() {
       }).then(function(filteredElements) 
         {
            var length = filteredElements.length;
-            expect(length == 1).toBe(isDisplay);
+            expect(length == 1).toBe(isDisplay,"Missing :"+ name );
              if (length === 1 && isDisplay===true &&command ==='click')
                  filteredElements[0].click();
             // else if (length > 1)

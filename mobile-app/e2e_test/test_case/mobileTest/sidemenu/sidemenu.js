@@ -1,6 +1,6 @@
 describe('Side Menu test', function () {
 	var sideMenuButton= element(by.css('[ng-click="toggleRightSideMenu()"]'));
-	var sideMenuList = element(by.css('.side-menu-list with-icon menu-student disable-user-behavior'))
+	var sideMenuList = element(by.css('.side-menu-list.with-icon'))
 	var closed = element.all(by.css('.header-nav-back')).last();
 	// beforeAll(function()
 	// {
@@ -28,7 +28,7 @@ describe('Side Menu test', function () {
 	// 	expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/home");
 	// });
 
-	it("open the side menu",function()
+	it("Check the side menu",function()
 	{
   //       browser.wait(EC.elementToBeClickable(sideMenuButton),3000);
 		// sideMenuButton.click();
@@ -36,14 +36,64 @@ describe('Side Menu test', function () {
         expect(sideMenuList.isDisplayed()).toBe(true);
 	});
 
-	// describe("Check Visibile buttons",function()
-	// {
-	// 	it("check buttons list has 5",function()
-	// 	{
+	describe("Check Visibile buttons",function()
+	{
+		var names = ['FAQ','TERMS','SUPPORT','SIgn Up','LOGIN'];
+		for (var i = 0 ;i < 5 ;++ i)
+		{
+	       (function(name) {
+    			it("It has "+ name+ " Section",function()
+				{
+					// element.all(by.css(".list-item.item")).then(function(items)
+					// {
+					// 	expect(items.length).toBe(5)
+					// });
+    				doc.checkItemDisplay(name,true);
+				});
+    	    })(names[i]);
+		}
+		//Skip Bugs
+		it("refresh page [Skip Bug]",function()
+		{
+			browser.refresh();
+	        browser.wait(EC.visibilityOf(sideMenuList),3000);
 
-	// 	});
-	// });
-
+		});
+	});
+	describe("Drag the Homepage",function()
+	{
+		it("drag homepage Right",function()
+		{
+   			doc.slideView(0,"right",'ion-side-menu-content')
+		});
+		it("Check homepage is back",function()
+		{
+			element(by.css('.ion-side-menus-content.menu-content.pane.menu-animated')).getLocation().then(function(result)
+			{
+				expect(result.x).toBe(0);
+   				expect(result.x >= 0).toBe(true,"Homepaage doen't move back");
+			});
+		});
+		it("check side-menu-left-overlay is gone",function()
+		{
+			expect(element(by.id('side-menu-left-overlay')).isDisplayed()).toBe(false,"Ovelay is still there");
+		});
+		it("drag home page left",function()
+		{
+   			doc.slideView(0,"left",'ion-side-menu-content')
+		});
+		it("Check homepage is Gone",function()
+		{
+			element(by.css('.ion-side-menus-content.menu-content.pane.menu-animated')).getLocation().then(function(result)
+			{
+   				expect(result.x < 0).toBe(true,"Homepaage doesn't move away");
+			});
+		});
+		it("browser sleep",function()
+		{
+			browser.sleep(1000000)
+		})
+	});
 
 
 
