@@ -60,8 +60,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ngIO
   ga('send', 'event', 'App Start', 'action');
   ga('send', 'pageview');
 
-  mixpanel.init('bf3d658c75736d4e4de90d2f2043f4f3', {persistence: 'localStorage'});
-  
   
   
 })
@@ -69,57 +67,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ngIO
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
   $cordovaFacebookProvider, $ionicConfigProvider, $compileProvider, uiGmapGoogleMapApiProvider,
   $provide) {
-
-
-//   // Set up Google Analytics here
-//   AnalyticsProvider.setAccount({
-//   tracker: 'UA-67802516-1',
-//   name: "tracker1",
-//   // cookieConfig: {
-//   //   cookieDomain: 'foo.example.com',
-//   //   cookieName: 'myNewName',
-//   //   cookieExpires: 20000
-//   // },
-//   // crossDomainLinker: true,
-//   // crossLinkDomains: ['domain-1.com', 'domain-2.com'],
-//   displayFeatures: false, // enables the advertising plugin
-//   enhancedLinkAttribution: true, // allows us to identify the exact source of an event
-//   trackEvent: true, // do we want event tracking? hell yeah we do!
-//   trackEcommerce: false // we ain't cafepress, get outta here!
-// });
-
-//   //GA Route Tracking Behaviors
-
-//   // Track all routes (default is true).
-//    AnalyticsProvider.trackPages(true);
-
-//    // Track all URL query params (default is false).
-//    AnalyticsProvider.trackUrlParams(true);
-
-//    // Ignore first page view (default is false).
-//    // Helpful when using hashes and whenever your bounce rate looks obscenely low.
-//    AnalyticsProvider.ignoreFirstPageLoad(true);
-
-//    // URL prefix (default is empty).
-//    // Helpful when the app doesn't run in the root directory.
-//    //AnalyticsProvider.trackPrefix('my-application');
-
-//    // Change the default page event name.
-//    // Helpful when using ui-router, which fires $stateChangeSuccess instead of $routeChangeSuccess.
-//    AnalyticsProvider.setPageEvent('$stateChangeSuccess');
-
-//    // RegEx to scrub location before sending to analytics.
-//    // Internally replaces all matching segments with an empty string.
-//    //AnalyticsProvider.setRemoveRegExp(/\/\d+?$/);
-
-//    // Set the domain name
-//    // Use the string 'none' for testing on localhost.
-//    AnalyticsProvider.setDomainName('https://www.uguru.me');
-
-//    // Log all outbound calls to an in-memory array accessible via ```Analytics.log``` (default is false).
-//    // This is useful for troubleshooting and seeing the order of calls with parameters.
-//    AnalyticsProvider.logAllCalls(true);
-
 
   uiGmapGoogleMapApiProvider.configure({
         //    key: 'your api key',

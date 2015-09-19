@@ -86,15 +86,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     };
 
     console.log("passed deviceInfo: " + deviceInfo);
-// mixpanel.track("Video play");
-
-    // console.log("GA getUrl(): " + Analytics.getUrl());
-    // console.log("clientId: " + ga);
-    // ga(function(tracker) {
-    //   var clientId = tracker.get('clientId');
-    //   console.log("clientId: " + clientId);
-    // });   
-    
 
     $scope.getGPSCoords = function() {
       if(!isTimeout) {

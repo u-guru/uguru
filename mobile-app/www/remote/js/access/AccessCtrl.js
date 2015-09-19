@@ -42,30 +42,6 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   };
 
  
-  // var stats = new Stats();
-  // stats.setMode(0);
-  // stats.domElement.style.position = 'absolute';
-  // stats.domElement.style.left = '0px';
-  // stats.domElement.style.top = '0px';
-  // stats.domElement.style.zIndex = '10';
-  // document.body.insertBefore( stats.domElement, document.body.childNodes[0] );
-
-  // var update = function () {
-
-  //     stats.begin();
-  //     // $timeout(function() {
-  //     //   $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
-  //     // }, 2000);
-  //     // $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
-  //     // stats.end();
-  //     console.log("FPS: " + stats.getFPS());
-  //     requestAnimationFrame( update );
-
-  // };
-  // requestAnimationFrame( update );
-
-
-// $ionicSlideBoxDelegate.update();
   $scope.checkAccessCode = function(code) {
     if(AccessService.validate(code)){
 
