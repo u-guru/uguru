@@ -2,6 +2,7 @@ describe('university Test', function () {
  	//browser.driver.get("http://localhost:8100/#/university");
 	
 	// });
+	
  	describe("university page should have school list and is scroll able",function()
 	{
 		it("Popular List is enable",function()
@@ -43,13 +44,16 @@ describe('university Test', function () {
 		}
 		
 	});
-	describe('Check back Button is worked Code is Empty',function()
+	describe('Check back Button is worked && Every Input is Empty',function()
 	{
 		var accessInput = element(by.id("access-code-bar"));
 		var startButton = element(by.id("access-start"));
 		var load= element(by.id('E2E-spinner'))
 		var back = element(by.css('[ng-click="goToAccess()"]'))
-
+		it("Type in O",function()
+			{
+				doc.setInput("O",1);
+			});
 		it("Go back button",function()
 		{
 			back.click();
@@ -78,7 +82,85 @@ describe('university Test', function () {
 			doc.checkMsg("Access Granted");
 	
 		});	
+		it("check university input is clear",function()
+		{
+		    element.all(by.tagName("input")).then(function(inputs)
+		    {
+		    	inputs[1].getAttribute('value').then(function(result)
+				{
+					expect(result).toBe("");
+				});	
+  			  	inputs[1].clear();
+		    });
+
+
+			
+		});
 	});
+
+	describe("Is Page Dragalbe",function()
+   	{
+		var accessInput = element(by.id("access-code-bar"));
+		var startButton = element(by.id("access-start"));
+		var load= element(by.id('E2E-spinner'));
+
+   		it("drag left",function()
+   		{
+				element(by.id('school')).getLocation().then(function(result)
+   				{
+		   			expect(result.x).toBe(0,"location X is moved");
+
+   				});
+   			doc.slideView(1,"left")
+   		});
+   		it('Check element',function()
+   		{
+   			element(by.id('school')).getLocation().then(function(result)
+   				{
+		   			expect(result.x).toBe(0,"location X is moved");
+   				});
+   			// browser.sleep(10000);
+   		});
+		it("drag right",function()
+   		{
+				element(by.id('school')).getLocation().then(function(result)
+   				{
+		   			expect(result.x).toBe(0,"location X is moved");
+
+   				});
+   			doc.slideView(1,"right")
+   		});
+   		it('Check element',function()
+   		{
+   			element(by.id('school')).getLocation().then(function(result)
+   				{
+		   			expect(result.x).toBe(0,"location X is moved");
+   				});
+   			// browser.sleep(10000);
+   		});
+   		it('Go Bakc Access',function()
+   		{
+   			browser.refresh();
+   		})
+   		it("Enter Access Code : cool ",function()
+		{
+			browser.wait(EC.visibilityOf(accessInput),3000)
+			accessInput.sendKeys('cool');
+			accessInput.getAttribute('value').then(function(result)
+			{
+				expect(result).toBe("cool");
+
+			});
+		});
+
+		it("Check Message is shown :Access Granted",function()
+		{
+			startButton.click();
+			doc.checkMsg("Access Granted");
+	
+		});	
+
+   	});
 	describe("Check GPS Button",function()
 	{
 		var gps = element(by.css('[ng-click="getGPSCoords()"]'));
@@ -87,6 +169,10 @@ describe('university Test', function () {
 			browser.wait(EC.visibilityOf(gps),3000);
 			gps.click();
 		});
+		// it ('check GPS icon Changed',function()
+		// {
+
+		// });
 		it('chheck miles shows',function()
 		{
 			browser.wait(EC.visibilityOf(element(by.binding('university.miles | number'))),3000,"TEST").then(function(){
