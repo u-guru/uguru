@@ -63,6 +63,7 @@ describe('university Test', function () {
 		});
 		it("Enter Access Code : cool ",function()
 		{
+			browser.wait(EC.visibilityOf(accessInput),3000)
 			accessInput.sendKeys('cool');
 			accessInput.getAttribute('value').then(function(result)
 			{

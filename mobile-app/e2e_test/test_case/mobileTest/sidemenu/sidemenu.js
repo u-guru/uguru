@@ -6,6 +6,19 @@ describe('Side Menu test', function () {
 	// {
 	//     browser.get("http://localhost:8100/#/home");
 	// });
+	describe("Welcome Pop Up",function()
+	{
+		it('Check Pop up ',function()
+		{
+			browser.wait(EC.visibilityOf(element(by.id('home-uguru-popup'))),3000);
+			// expect(element(by.id('home-uguru-popup')).isDisplayed()).toBe(true);
+		});
+		it('Close Welcome',function()
+		{
+			//element(by.id('home-uguru-popup')).click();
+			element(by.css('[ng-click="closeWelcomePopup()"]')).click();
+		});
+	});
 	it("go to the new-home page",function()
 	{
         browser.wait(EC.elementToBeClickable(sideMenuList),3000);

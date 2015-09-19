@@ -131,8 +131,12 @@ exports.config = {
                          '../test_case/mobileTest/becomeGuru/course.js',
                          '../test_case/mobileTest/becomeGuru/category.js',
                          '../test_case/mobileTest/becomeGuru/photo.js'
-                         ]
+                         ],
+              all : [
+                      '../test_case/mobileTest/access.js',
+                     '../test_case/mobileTest/university.js'
 
+                    ]
 
         },
         rootElement: "[ng-app]" ,

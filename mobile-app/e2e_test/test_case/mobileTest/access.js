@@ -6,21 +6,21 @@ describe('Access Page Test', function () {
 	var load= element(by.id('E2E-spinner'))
 	var back = element(by.css('[ng-click="goToAccess()"]'))
 	var listOfCase =  doc.generateRandomString(["","1"],5,"cool")
-   	describe("Check Guru animates",function()
-   	{
-   		it ("check Guru Logo",function()
-   		{
+   	// describe("Check Guru animates",function()
+   	// {
+   	// 	it ("check Guru Logo",function()
+   	// 	{
 
-   		});
-   		it("Check Input Box ",function()
-   		{
+   	// 	});
+   	// 	it("Check Input Box ",function()
+   	// 	{
 
-   		});
-   		it("Redeem Button",function()
-   		{
+   	// 	});
+   	// 	it("Redeem Button",function()
+   	// 	{
    			
-   		});
-   	});
+   	// 	});
+   	// });
    	describe("Is Page Dragalbe",function()
    	{
    		it("drag left",function()
