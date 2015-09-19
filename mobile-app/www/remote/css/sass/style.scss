@@ -32,7 +32,7 @@ body {
 
 .uguru-view {
 	* {
-		font-family: $font;
+		font-family: $font!important;
 	}
 	#main-menu {
 		position: fixed;
@@ -1222,6 +1222,45 @@ body {
 	}
 }
 
+// ACTION SHEET
+.action-sheet-wrapper.action-sheet-up {
+	background: white;
+	.action-sheet-title {
+		@include flex;
+		@include flex-center;
+		padding: 0 10px;
+		font-size: inherit;
+		height: 50px;
+		span {
+			color: $azure;
+			font-size: 18px;
+			text-transform: none!important;
+		}
+	}
+	.action-sheet-group {
+		margin: 0!important;
+		button, div {
+			border: 0!important;
+			border-bottom: 1px solid $smoke!important;
+		}
+		button {
+			padding: 0 10px;
+			height: 50px;
+			color: $slate;
+			font-size: 16px;
+			font-weight: 600;
+		}
+		button:active {
+			background: $smoke;
+		}
+		&:last-child {
+			> *:last-child {
+				border-bottom: 0!important;
+			}
+		}
+	}
+}
+
 // SIDEBAR
 #side-menu-left-overlay.active {
     background: rgba($charcoal, .8);
@@ -1247,6 +1286,11 @@ body {
 		.list-item-icon {
 			height: 64px;
 			width: 64px;
+			img {
+				@include round;
+				width: 34px;
+				height: 34px;
+			}
 			svg {
 				padding: 15px;
 				width: auto;
@@ -1262,6 +1306,14 @@ body {
 		}
 		.list-item-detail {
 			padding: 0 15px 0 0;
+			span {
+				white-space: nowrap;
+			    overflow-x: hidden;
+			    text-overflow: ellipsis;
+			}
+			.student-profile-name {
+				font-weight: 700;
+			}
 		}
 	}
 	.list-item-profile {
@@ -1293,8 +1345,19 @@ body {
 		}
 		.list-item-agenda {
 			@include flex;
+			position: relative;
 			height: calc(100% - 384px - 84px);
 			text-transform: none;
+			&:before {
+				@include opacity(.3);
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: url(../../img/school.jpg) center center / cover;
+			}
 		}
 	}
 }
@@ -1359,22 +1422,7 @@ body {
 	.list-item-profile {
 		background: $azure;
 		color: white;
-		.list-item-detail {
-			span {
-				white-space: nowrap;
-			    overflow-x: hidden;
-			    text-overflow: ellipsis;
-			}
-			.student-profile-name {
-				font-weight: 700;
-			}
-		}
 		.list-item-icon {
-			img {
-				@include round;
-				width: 34px;
-				height: 34px;
-			}
 			svg {
 				circle {
 					stroke: white;
@@ -1384,6 +1432,7 @@ body {
 	}
 	.list-item-agenda {
 		background: $slate;
+		color: white;
 		&:active, &:hover {
 			background: rgba($slate, .9);
 		}
@@ -1484,21 +1533,4 @@ body {
 
 .tabs {
 	border: 0;
-}
-
-// style the main action sheet
-.action-sheet-wrapper.action-sheet-up {
-	background-color: white;
-	color:$campus;
-	button {
-		text-align:left;
-		color:$slate;
-		opacity:0.8;
-		font-size:16px;
-		font-weight:600;
-		padding-left:10px;
-		border:1px solid rgba(0,0,0,0.1);
-		border-left:0px;
-		border-right:0px;
-	}
 }
