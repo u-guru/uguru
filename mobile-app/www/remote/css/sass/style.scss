@@ -21,13 +21,13 @@ body {
 	}
 }
 ::-webkit-selection {
-    background: rgba(white,.2);
+	background: rgba(white,.2);
 }
 ::-moz-selection {
-    background: rgba(white,.2);
+	background: rgba(white,.2);
 }
 ::selection {
-    background: rgba(white,.2);
+	background: rgba(white,.2);
 }
 
 .uguru-view {
@@ -460,14 +460,14 @@ body {
 				}
 				#tos {
 					display: block;
-				    color: white;
-				    font-size: 14px;
-				    font-weight: 700;
-				    letter-spacing: 1px;
-				    line-height: 1;
-				    text-align: center;
-				    text-transform: uppercase;
-				    opacity: 0.6;
+					color: white;
+					font-size: 14px;
+					font-weight: 700;
+					letter-spacing: 1px;
+					line-height: 1;
+					text-align: center;
+					text-transform: uppercase;
+					opacity: 0.6;
 				}
 				#tos:active, #tos:focus {
 					color: $shamrock;
@@ -557,7 +557,7 @@ body {
 						li {
 							> span {
 								input:checked + span {
-								    background-color: $gold;
+									background-color: $gold;
 								}
 							}
 						}
@@ -1261,20 +1261,131 @@ body {
 	}
 }
 
-// SIDEBAR
-#side-menu-left-overlay.active {
-    background: rgba($charcoal, .8);
-    width: 20%;
-    height: 100%;
-    z-index: 20;
-    position: absolute;
-    right: 0;
+// MODAL POPUP
+.close-popup-link {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	width: 30px;
+	height: 30px;
+	svg {
+		@include rotate(45);
+		path {
+			stroke-width: 5px;
+		}
+	}
 }
-.side-menu-list {
-    position: relative;
+
+.uguru-popup {
+	@include opacity(0);
+	position: fixed;
+	z-index: 10;
+	visibility: hidden;
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
-    z-index: 20;
+	background: rgba($charcoal, .8);
+	pointer-events: none;
+	transition: 250ms ease;
+	.uguru-popup-content {
+		@include transition(250ms ease);
+		margin: 180px 15px 0;
+		z-index: 2;
+		background: white;
+		border-radius: 5px;
+		.content-wrapper {
+			position: relative;
+			padding: 65px 0 0;
+			text-align: center;
+			h2 {
+				color: $slate;
+				margin: 0 15px;
+				color: $charcoal;
+				font-weight: 700;
+				font-size: 20px;
+				text-transform: uppercase;
+			}
+			p {
+				color: $slate;
+				font-weight: 400;
+				font-size: 14px;
+			}
+			button {
+				font-weight: 700;
+				border-radius: 0 0 5px 5px;
+			}
+		}
+
+	}
+	.guru-logo-container {
+		@include flex;
+		@include flex-center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 5;
+		width: 100%;
+		height: auto;
+		margin: 0 auto;
+		div.svg-logo-wrapper {
+			width: 100%;
+			height: auto;
+			padding-top: 135px;
+			text-align: center;
+			svg {
+				@include round;
+				max-width: 180px;
+				max-height: 180px;
+				background: $azure;
+				padding: 15px;
+				z-index: 3;
+				path {
+					fill: white;
+				}
+			}
+		}
+	}
+	&.show {
+		@include opacity(1);
+		visibility: visible;
+		pointer-events: auto;
+	}
+}
+.uguru-popup.sidebar-popup {
+	.uguru-popup-content {
+		margin-top: 60px;
+	}
+	.guru-logo-container {
+		div.svg-logo-wrapper {
+			padding-top: 15px;
+			svg {
+				max-width: 100px;
+				max-height: 100px;
+			}
+		}
+	}
+	input {
+		font-size: 16px;
+		text-align: center;
+		width: calc(100% - 30px);
+	}
+}
+
+// SIDEBAR
+#side-menu-left-overlay.active {
+	background: rgba($charcoal, .8);
+	width: 20%;
+	height: 100%;
+	z-index: 20;
+	position: absolute;
+	right: 0;
+}
+.side-menu-list {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 20;
 	.list {
 		height: 100%;
 	}
@@ -1308,8 +1419,8 @@ body {
 			padding: 0 15px 0 0;
 			span {
 				white-space: nowrap;
-			    overflow-x: hidden;
-			    text-overflow: ellipsis;
+				overflow-x: hidden;
+				text-overflow: ellipsis;
 			}
 			.student-profile-name {
 				font-weight: 700;
