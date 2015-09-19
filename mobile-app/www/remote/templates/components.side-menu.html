@@ -1,4 +1,6 @@
 <ion-view ng-controller='SidebarController'>
+
+
 <ion-list class='side-menu-list with-icon menu-student'>
 	<!-- Toggle between menu-guru and menu-student to switch color modes -->
 	<ion-item class='list-item list-item-profile'>
@@ -10,7 +12,7 @@
 				</g>
 			</svg> -->
 		</span>
-		<span class="list-item-detail" ng-if='user.id'>
+		<span class="list-item-detail" ng-if='user.id' id='student-sidebar-profile'>
 			<span class='student-profile-name'>{{user.name.split(' ')[0]}} {{user.name.split(' ')[1][0].toUpperCase()}}.</span>
 			<span class='student-profile-year' ng-if='user.id && user.year && user.university.name'>Sophomore</span>
 			<span ng-if='user.id && !user.year && user.university'>{{user.university.name || user.university.title}}</span>
