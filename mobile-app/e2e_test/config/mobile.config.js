@@ -23,9 +23,9 @@
 //     }
 exports.config = {
     framework: 'jasmine2',
-     seleniumAddress: 'http://localhost:4444/wd/hub',
-       baseUrl: 'http://192.168.0.105:8100/',
-     // seleniumAddress: 'http://localhost:4723/wd/hub',
+      seleniumAddress: 'http://localhost:4444/wd/hub',
+     baseUrl: 'http://192.168.0.105:8100/',
+     //seleniumAddress: 'http://localhost:4723/wd/hub',
 
          capabilities: {
                  'browserName': 'chrome',
@@ -36,8 +36,17 @@ exports.config = {
           //   browserName: 'chrome',
           //   'appium-version': '1.4.10',
           //   platformName: 'Android',
-          //   // platformVersion: '4.4.4',
+          //    platformVersion: '4.4.4',
           //   deviceName: 'Android Emulator',
+          // },
+
+          //  capabilities: {
+          //   platformName: 'android',
+          //   platformVersion: '4.4.4',
+          //   deviceName: 'Android Emulator',
+          //   browserName: '',
+          //   autoWebview: true,
+          //   app : ''
           // },
         //   multiCapabilities: 
         //   [
