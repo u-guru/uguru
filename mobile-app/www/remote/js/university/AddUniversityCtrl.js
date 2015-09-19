@@ -23,9 +23,32 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   DeviceService, $ionicModal) {
 
 
+  var deviceUUID = DeviceService.getUUID();
+  var deviceModel =  DeviceService.getModel();
+  var devicePlatform =  DeviceService.getPlatform();
+  var deviceVersion = DeviceService.getVersion();
+
+  var mixpanelID = deviceUUID.substring(0,8);
+  console.log("mixpanelID: " + mixpanelID);
+
+  mixpanel.identify(mixpanelID);
+
+  mixpanel.people.set({
+      "$email": "nicholaslam.berkeley@gmail.com",
+      
+      "$created": "2015-09-17 16:53:54",
+      "$last_login": new Date(),
+      '$Device_UUID': deviceUUID,
+      '$Device_Model': deviceModel,
+      '$Device_Platform': devicePlatform,
+      '$Device_Version': deviceVersion,
+      "gender": "Male"                    
+  });
+
+
+
   //uuid
   ga('set', 'dimension1', DeviceService.getUUID());
-
   ga('set', 'dimension2', DeviceService.getModel());
   ga('set', 'dimension3', DeviceService.getPlatform());
   ga('set', 'dimension4', DeviceService.getVersion());
@@ -70,6 +93,11 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           var fpsValue = "meanFPS: " + meanFPS + "/ fpsArray: " + fpsArray.toString();
           //console.log("fpsValue: " + fpsValue);
           ga('set', 'dimension6', fpsValue);
+
+          mixpanel.track("Entered Access Code", {
+              "$Mean_FPS": meanFPS,
+              "$FPS_Array": fpsArray.toString()
+          });
 
         }
       }
@@ -130,7 +158,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     sortByRank(University.getTargetted());
     $scope.limit = 10;
     $scope.increaseLimit = function() {
-      console.log("increaseLimit!");
       if($scope.limit < $scope.universities.length) {
         $scope.limit += 10;
       }
@@ -139,10 +166,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     $ionicSlideBoxDelegate.update();
     //back button
     $scope.goToAccess = function() {
-      // console.log("pressed goToAccess()");
-      // $ionicViewSwitcher.nextDirection('back');
-      // $state.go('^.access');
-
     $ionicSlideBoxDelegate.previous();
     }
 
@@ -152,14 +175,15 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           return -1;
         if (a.rank > b.rank)
           return 1;
-
         return 0;
       }
       return list.sort(compareRank);
     }
 
     $scope.universitySelected = function(university, $event) {
-
+      mixpanel.track("Selected University", {
+          "$University": university.name
+      });
       ga('send', 'event', 'Selected University', 'action', university.name);
       //if user is switching universities
       if ($scope.user.university_id
@@ -194,7 +218,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
 
     };
-    console.log("$scope.location is currenty: " + $scope.location);
+    console.log("$scope.location is currently: " + $scope.location);
 
 
     var isTimeout = false;

@@ -19,7 +19,7 @@ var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.0.108:8100';
+  BASE_URL = 'http://192.168.0.106:8100';
   //BASE_URL = 'http://192.168.42.124:8100';
 
 
@@ -34,9 +34,9 @@ if (LOCAL) {
   img_base = '/static/'
 }
 
-// mixpanel = window.mixpanel || null;
+mixpanel = window.mixpanel || null;
 
-// if (mixpanel) mixpanel.track("App Launch");
+ if (mixpanel) mixpanel.track("App Launch");
 
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ngIOS9UIWebViewPatch',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
@@ -101,13 +101,12 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 'ngIO
   .state('admin', {
     url: '/admin',
     abstract: true,
-    templateUrl: BASE + 'templates/admin.html',
+    templateUrl: BASE + 'templates/admin/admin.html',
     controller: 'AdminCtrl'
   })
   .state('admin.home', {
     url: '/admin/home',
-    abstract: true,
-    templateUrl: BASE + 'templates/admin.home.html',
+    templateUrl: BASE + 'templates/admin/admin.home.html',
     controller: 'AdminCtrl'
   })
   .state('root', {
