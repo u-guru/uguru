@@ -17,7 +17,7 @@ workPopup = function() {
 				e.preventDefault();
 			});
 		});
-	} else if ($(window).width() < 768) {
+	} else {
 		$(".work-pane-link").each(function(e){
 			$(this).on("click", function(e) {
 				$(this).parent().children(".work-popup").fadeIn();

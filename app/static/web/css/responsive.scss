@@ -15,6 +15,34 @@
 	}
 }
 
+@media screen and (min-width: 35.5em) {
+	#intercom-container {
+		.intercom-launcher-button.active {
+			display: block!important;
+		}
+	}
+}
+
+@media screen and (max-height:500px) {
+	#side-menu .top-link-menu {
+		margin-bottom: 10px!important;
+	}
+}
+
+@media screen and (max-height:600px) {
+	#menu-icons {
+		display: none;
+	}
+}
+
+@media screen and (max-height:580px) {
+	#mobile-start {
+		img {
+			max-height: 150px!important;
+		}
+	}
+}
+
 // #EARN
 @media screen and (min-width: 375px) {
 	#main {
@@ -129,7 +157,7 @@
 }
 
 // #WORK
-@media screen and (max-width: 320px) {
+@media screen and (min-width: 375px) and (min-height: 500px) {
 	#main {
 		#work {
 			#work-panes {
@@ -140,15 +168,54 @@
 								li {
 									div {
 										h4 {
-											font-size: 16px;
+											font-size: 16px!important;
 										}
 										p {
-											font-size: 14px;
+											font-size: 14px!important;
 										}
 									}
 								}
 							}
 						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width: 375px) and (min-height: 600px) {
+	#main {
+		#work {
+			#work-panes {
+				> li {
+					.work-popup {
+						.work-popup-info {
+							ul {
+								li {
+									div {
+										h4 {
+											font-size: 18px!important;
+										}
+										p {
+											font-size: 16px!important;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width: 375px) {
+	#main {
+		#work {
+			#work-panes {
+				.work-popup-info {
+					h3 {
+						font-size: 16px;
 					}
 				}
 			}
@@ -226,6 +293,37 @@
 }
 
 // #WHY
+@media screen and (max-height: 500px) {
+	#main {
+		#why {
+			#why-list {
+				li {
+					.why-list-icon {
+						margin-bottom: 5px;
+					}
+					h3 {
+						line-height: 1.1;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 48em) {
+	#main {
+		#why {
+			#why-list {
+				li {
+					h3, p {
+						padding: 0 5px;
+					}
+				}
+			}
+		}
+	}
+}
+
 @media screen and (max-width: 320px) {
 	#main {
 		#why {

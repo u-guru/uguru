@@ -65,6 +65,47 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 	color: white;
 }
 
+
+
+.body-loading-div {
+	@include opacity(1);
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	z-index: 100000000000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: white;
+	text-align: center;
+	div {
+		width: 100%;
+		svg {
+			padding: 1em;
+			width: 5em;
+			height: auto!important;
+		}
+		svg, svg g {
+			fill: $shamrock;
+		}
+	}
+	.logo {
+		svg {
+			display: block;
+			margin: 0 auto;
+			width: 100%!important;
+			max-width: 200px;
+		}
+	}
+	.loader {
+		svg {
+			max-width: 200px;
+		}
+	}
+}
+
 #top {
 	background: rgba(white, .8);
 	#top-logo {
@@ -131,11 +172,12 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 						text-transform: uppercase;
 					}
 					q {
-						display: block;
+						@include flex;
+						@include flex-center;
 						position: relative;
 						quotes: none;
 						text-align: center;
-						font-size: 24px;
+						font-size: 20px;
 						height: 82px;
 						&:before {
 							content: "\201D";
@@ -146,9 +188,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 							color: rgba(black, .05);
 							font-size: 200px;
 							line-height: .8;
-						}
-						&:after {
-							content: ".";
 						}
 					}
 					> a {
@@ -191,7 +230,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 				position: relative;
 				background: $lake;
 				color: white;
-				padding: 20px 30px;
+				padding: 20px 20px 20px 30px;
 				a {
 					display: table;
 					width: 100%;
@@ -277,7 +316,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 			dl {
 				dt {
 					h3 {
-						font-size: 32px;
+						font-size: 26px;
 						font-weight: 300;
 					}
 					svg {
@@ -307,6 +346,13 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 }
 
 #page-moola {
+	.body-loading-div {
+		div {
+			svg, svg g {
+				fill: $moola;
+			}
+		}
+	}
 	a, h1 {
 		color: $moola;
 	}
@@ -358,6 +404,13 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 	}
 }
 #page-lake {
+	.body-loading-div {
+		div {
+			svg, svg g {
+				fill: $lake;
+			}
+		}
+	}
 	a, h1 {
 		color: $lake;
 	}
@@ -409,6 +462,13 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 	}
 }
 #page-eggplant {
+	.body-loading-div {
+		div {
+			svg, svg g {
+				fill: $eggplant;
+			}
+		}
+	}
 	a, h1 {
 		color: $eggplant;
 	}
@@ -460,6 +520,13 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 	}
 }
 #page-cerise {
+	.body-loading-div {
+		div {
+			svg, svg g {
+				fill: $cerise;
+			}
+		}
+	}
 	a, h1 {
 		color: $cerise;
 	}
@@ -741,6 +808,16 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 		button {
 			position: absolute;
 			bottom: 0;
+		}
+	}
+}
+
+@media screen and (min-width: 64em) {
+	.body-loading-div {
+		.logo {
+			svg {
+				max-width: 300px;
+			}
 		}
 	}
 }
