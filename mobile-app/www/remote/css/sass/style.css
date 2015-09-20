@@ -27,7 +27,8 @@ body {
   background: rgba(255, 255, 255, 0.2); }
 
 .uguru-view * {
-  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important; }
+
 .uguru-view #main-menu {
   position: fixed;
   bottom: 0;
@@ -73,12 +74,14 @@ body {
         width: 32px;
         height: 32px;
         background: rgba(255, 255, 255, 0.2); }
+
 .uguru-view h1.verified span svg {
   display: inline !important;
   width: 20px;
   height: 20px; }
   .uguru-view h1.verified span svg path:first-child {
     fill: #50A5DD; }
+
 .uguru-view .start#access {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -110,6 +113,7 @@ body {
     font-size: smaller; }
   .uguru-view .start#access button:active {
     background: rgba(43, 50, 52, 0.3); }
+
 .uguru-view .start#how header {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -129,11 +133,14 @@ body {
     font-size: 32px;
     font-weight: 600;
     text-transform: uppercase; }
+
 .uguru-view .start#how button {
   bottom: 0;
   background: rgba(255, 255, 255, 0.1); }
+
 .uguru-view .start#how button:active {
   background: rgba(255, 255, 255, 0.4); }
+
 .uguru-view .start#how #how-cards {
   list-style: none;
   margin: 0;
@@ -211,6 +218,7 @@ body {
       background: #50A5DD; }
     .uguru-view .start#how #how-cards .how-card:nth-child(7) .how-card-media {
       background: #9A5BC5; }
+
 .uguru-view .onboarding progress, .uguru-view .onboarding .progress {
   position: absolute;
   top: 0;
@@ -229,6 +237,7 @@ body {
     width: 95%; }
   .uguru-view .onboarding progress span[data-value="99"], .uguru-view .onboarding .progress span[data-value="99"] {
     width: 86%; }
+
 .uguru-view .onboarding header .onboarding-prop {
   position: absolute;
   top: 50%;
@@ -243,6 +252,7 @@ body {
     font-weight: 400;
     text-transform: uppercase;
     margin: 5px; }
+
 .uguru-view .onboarding header .onboarding-message {
   position: absolute;
   top: 50%;
@@ -257,16 +267,21 @@ body {
   text-align: center;
   text-transform: none;
   line-height: 1.25; }
+
 .uguru-view .onboarding .onboarding-list {
   height: calc(100% / 3 * 2);
   overflow: auto; }
+
 .uguru-view .onboarding#demographic header:before {
   background: url(../images/school.jpg) no-repeat center center/cover; }
+
 .uguru-view .onboarding#demographic header h1 {
   font-size: 24px; }
+
 .uguru-view .onboarding#demographic #demographic-grid > ul > li:not(.active) {
   filter: alpha(opacity=30);
   opacity: 0.3; }
+
 .uguru-view .onboarding#demographic #demographic-grid ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -404,6 +419,7 @@ body {
         border-color: rgba(80, 165, 221, 0.1); }
       .uguru-view .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:active, .uguru-view .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:focus, .uguru-view .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:hover {
         background: rgba(80, 165, 221, 0.05); }
+
 .uguru-view .onboarding#start {
   background: #40484B; }
   .uguru-view .onboarding#start #start-container {
@@ -418,6 +434,7 @@ body {
     color: #69B3A5;
     font-size: 28px;
     text-align: center; }
+
 .uguru-view .onboarding#photo #photo-container #profile-icon {
   position: relative;
   height: calc(100% / 2);
@@ -447,6 +464,7 @@ body {
     height: 80%;
     max-width: 150px;
     max-height: 150px; }
+
 .uguru-view .onboarding#account #account-form {
   box-sizing: border-box;
   padding: 15px; }
@@ -468,8 +486,10 @@ body {
   .uguru-view .onboarding#account #account-form #social-login {
     margin-top: 30px;
     margin-bottom: 20px; }
+
 .uguru-view .onboarding#skill header:before {
   background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat; }
+
 .uguru-view .onboarding#skill #skills-list ul {
   padding: 0 1px 1px;
   height: 100%; }
@@ -513,9 +533,11 @@ body {
         width: 100%; }
   .uguru-view .onboarding#skill #skills-list ul .active a {
     background: #81B566; }
+
 .uguru-view .onboarding#skill-list header svg {
   left: auto;
   right: 15px; }
+
 .uguru-view .onboarding#skill-list #onboarding-skill {
   position: absolute;
   top: 50%;
@@ -537,6 +559,7 @@ body {
   .uguru-view .onboarding#skill-list #onboarding-skill h1 {
     padding: 10px 0 0;
     text-align: center; }
+
 .uguru-view .onboarding#skill-list .onboarding-list {
   margin-top: -30px;
   height: calc(100% / 3 * 2 + 30px);
@@ -570,8 +593,10 @@ body {
       overflow: auto; }
       .uguru-view .onboarding#skill-list .onboarding-list > div ul li > span input:checked + span {
         background-color: #F9D57B; }
+
 .uguru-view .onboarding#course header:before {
   background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat; }
+
 .uguru-view .onboarding#course #courses-list ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -611,8 +636,10 @@ body {
       cursor: pointer; }
     .uguru-view .onboarding#course #courses-list ul li input:checked + label {
       background: #55A4B7; }
+
 .uguru-view .onboarding#school header:before, .uguru-view .onboarding#school-modal header:before {
   background: url(../../img/onboarding/school.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat; }
+
 .uguru-view .onboarding#school #school-list ul li a, .uguru-view .onboarding#school #school-list-modal ul li a, .uguru-view .onboarding#school-modal #school-list ul li a, .uguru-view .onboarding#school-modal #school-list-modal ul li a {
   font-weight: 300; }
   .uguru-view .onboarding#school #school-list ul li a .school-icon img, .uguru-view .onboarding#school #school-list-modal ul li a .school-icon img, .uguru-view .onboarding#school-modal #school-list ul li a .school-icon img, .uguru-view .onboarding#school-modal #school-list-modal ul li a .school-icon img {
@@ -627,25 +654,35 @@ body {
     font-size: 16px;
     font-style: normal;
     font-weight: 300; }
+
 .uguru-view .onboarding#school #school-list ul li a:active, .uguru-view .onboarding#school #school-list ul li a:focus, .uguru-view .onboarding#school #school-list ul li a:hover, .uguru-view .onboarding#school #school-list-modal ul li a:active, .uguru-view .onboarding#school #school-list-modal ul li a:focus, .uguru-view .onboarding#school #school-list-modal ul li a:hover, .uguru-view .onboarding#school-modal #school-list ul li a:active, .uguru-view .onboarding#school-modal #school-list ul li a:focus, .uguru-view .onboarding#school-modal #school-list ul li a:hover, .uguru-view .onboarding#school-modal #school-list-modal ul li a:active, .uguru-view .onboarding#school-modal #school-list-modal ul li a:focus, .uguru-view .onboarding#school-modal #school-list-modal ul li a:hover {
   background: rgba(255, 255, 255, 0.2); }
+
 .uguru-view .onboarding#major header:before {
   background: url(../../img/onboarding/major.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat; }
+
 .uguru-view .onboarding#major #major-list ul li a {
   margin-bottom: 1px;
   font-weight: 300; }
+
 .uguru-view .onboarding#major #major-list ul li a:active, .uguru-view .onboarding#major #major-list ul li a:focus, .uguru-view .onboarding#major #major-list ul li a:hover {
   background: rgba(255, 255, 255, 0.2); }
+
 .uguru-view .onboarding#major #major-list ul .major-business a {
   border-color: #50A5DD; }
+
 .uguru-view .onboarding#major #major-list ul .major-arts a {
   border-color: #81B566; }
+
 .uguru-view .onboarding#major #major-list ul .major-science a {
   border-color: #F9D57B; }
+
 .uguru-view .onboarding#major #major-list ul .major-math a {
   border-color: #DB1988; }
+
 .uguru-view .request#request-empty #request-content {
   height: calc(100% - 50px - 64px); }
+
 .uguru-view .request#request-empty #request-message {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -730,13 +767,16 @@ body {
       font-weight: 600;
       text-align: center;
       text-transform: uppercase; }
+
 .uguru-view .request#request header:before {
   background: url(../images/school.jpg) no-repeat center center/cover; }
+
 .uguru-view .request#request header .request-header h1 {
   padding-top: 20px;
   width: 100%;
   text-align: center;
   font-size: 24px; }
+
 .uguru-view .request#request header .request-header .request-icon {
   border-radius: 1000px;
   -ms-box-orient: horizontal;
@@ -772,8 +812,10 @@ body {
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg); }
+
 .uguru-view .request#request #request-content {
   height: calc(100% / 3 * 2); }
+
 .uguru-view .request#request #request-list {
   height: calc(100% - 64px);
   overflow: auto; }
@@ -794,6 +836,7 @@ body {
       width: 50px;
       height: 50px;
       background: #8A9EA3; }
+
 .uguru-view .request #request-tabs ul {
   list-style: none;
   margin: 0;
@@ -864,6 +907,7 @@ body {
       color: #2B3234;
       font-size: 12px;
       line-height: 20px; }
+
 .uguru-view #credibility #credit-slider {
   position: relative;
   height: 195px; }
@@ -917,6 +961,7 @@ body {
       color: #69B3A5; }
       .uguru-view #credibility #credit-slider ul .active a .credit-icon {
         background: #69B3A5; }
+
 .uguru-view #credibility #credit-content {
   position: relative;
   background: #40484B;
@@ -941,6 +986,7 @@ body {
     padding: 15px 15px 64px; }
     .uguru-view #credibility #credit-content #credit-facebook button {
       background: #3b5998; }
+
 .uguru-view #profile {
   font-size: 18px; }
   .uguru-view #profile #profile-fixed {
@@ -1148,6 +1194,7 @@ body {
         background: #DB1988; }
       .uguru-view #profile #profile-info .profile-inside #profile-other #profile-languages div ul li:nth-child(2) {
         background: #E5753C; }
+
 @media screen and (max-width: 320px) {
   .uguru-view body, .uguru-view input, .uguru-view button {
     font-size: 20px; }
@@ -1194,9 +1241,58 @@ body {
       margin-top: 20px !important;
       font-size: 18px !important; } }
 
+.action-sheet-wrapper.action-sheet-up {
+  background: white; }
+  .action-sheet-wrapper.action-sheet-up .action-sheet-title {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    padding: 0 10px;
+    font-size: inherit;
+    height: 50px; }
+    .action-sheet-wrapper.action-sheet-up .action-sheet-title span {
+      color: #55A4B7;
+      font-size: 18px;
+      text-transform: none !important; }
+  .action-sheet-wrapper.action-sheet-up .action-sheet-group {
+    margin: 0 !important; }
+    .action-sheet-wrapper.action-sheet-up .action-sheet-group button, .action-sheet-wrapper.action-sheet-up .action-sheet-group div {
+      border: 0 !important;
+      border-bottom: 1px solid #F1F1F1 !important; }
+    .action-sheet-wrapper.action-sheet-up .action-sheet-group button {
+      padding: 0 10px;
+      height: 50px;
+      color: #40484B;
+      font-size: 16px;
+      font-weight: 600; }
+    .action-sheet-wrapper.action-sheet-up .action-sheet-group button:active {
+      background: #F1F1F1; }
+    .action-sheet-wrapper.action-sheet-up .action-sheet-group:last-child > *:last-child {
+      border-bottom: 0 !important; }
+
+#side-menu-left-overlay.active {
+  background: rgba(43, 50, 52, 0.8);
+  width: 20%;
+  height: 100%;
+  z-index: 20;
+  position: absolute;
+  right: 0; }
+
 .side-menu-list {
+  position: relative;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  z-index: 20; }
   .side-menu-list .list {
     height: 100%; }
   .side-menu-list .list-item {
@@ -1207,6 +1303,10 @@ body {
     .side-menu-list .list-item .list-item-icon {
       height: 64px;
       width: 64px; }
+      .side-menu-list .list-item .list-item-icon img {
+        border-radius: 1000px;
+        width: 34px;
+        height: 34px; }
       .side-menu-list .list-item .list-item-icon svg {
         padding: 15px;
         width: auto; }
@@ -1218,10 +1318,22 @@ body {
           stroke-dasharray: 3px, 10px; }
     .side-menu-list .list-item .list-item-detail {
       padding: 0 15px 0 0; }
+      .side-menu-list .list-item .list-item-detail span {
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis; }
+      .side-menu-list .list-item .list-item-detail .student-profile-name {
+        font-weight: 700; }
   .side-menu-list .list-item-profile {
     -ms-flex-flow: row wrap;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
     height: calc(100% - 384px); }
     .side-menu-list .list-item-profile .list-item-detail span {
       display: block; }
@@ -1243,28 +1355,47 @@ body {
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
+    position: relative;
     height: calc(100% - 384px - 84px);
-    text-transform: none; } }
+    text-transform: none; }
+    .side-menu-list .list-item-agenda:before {
+      filter: alpha(opacity=30);
+      opacity: 0.3;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(../../img/school.jpg) center center/cover; } }
+
 .menu-guru .list {
   background: #40484B; }
+
 .menu-guru .list-item.active, .menu-guru .list-item.activated {
   background: #8A9EA3; }
+
 .menu-guru .list-item .list-item-icon svg path, .menu-guru .list-item .list-item-icon svg circle {
   stroke: #fff; }
+
 .menu-guru .list-item-profile {
   background: rgba(138, 158, 163, 0.75); }
+
 .menu-guru .list-item-agenda {
   background: white;
   color: #2B3234; }
   .menu-guru .list-item-agenda.active, .menu-guru .list-item-agenda.activated {
     background: rgba(255, 255, 255, 0.9); }
+
 .menu-guru .list-item-guru {
   display: none; }
+
 .menu-guru .list-item-student {
   background: rgba(138, 158, 163, 0.75); }
 
 .menu-student .list {
   background: white; }
+
 .menu-student .list-item {
   color: #40484B; }
   .menu-student .list-item .list-item-icon svg path {
@@ -1274,27 +1405,25 @@ body {
     color: white; }
     .menu-student .list-item.activated svg path, .menu-student .list-item.active svg path {
       stroke: white; }
+
 .menu-student .list-item-profile {
   background: #55A4B7;
-  color: white;
-  padding-top: 25px; }
-  .menu-student .list-item-profile .list-item-detail span {
-    white-space: nowrap;
-    overflow-x: hidden;
-    text-overflow: ellipsis; }
-  .menu-student .list-item-profile .list-item-detail .student-profile-name {
-    font-weight: 700; }
+  color: white; }
   .menu-student .list-item-profile .list-item-icon svg circle {
     stroke: white; }
+
 .menu-student .list-item-agenda {
-  background: #40484B; }
+  background: #40484B;
+  color: white; }
   .menu-student .list-item-agenda:active, .menu-student .list-item-agenda:hover {
     background: rgba(64, 72, 75, 0.9); }
+
 .menu-student .list-item-student {
   background: #40484B;
   color: white; }
   .menu-student .list-item-student svg path {
     stroke: white; }
+
 .menu-student .list-item-guru {
   background: #55A4B7;
   color: white; }
@@ -1303,6 +1432,7 @@ body {
 
 #guru-home header:before {
   background: url(../../img/onboarding/school.jpg) no-repeat center center/cover; }
+
 #guru-home #guru-ranking {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1377,19 +1507,3 @@ body {
 
 .tabs {
   border: 0; }
-
-.action-sheet-wrapper.action-sheet-up {
-  background-color: white;
-  color: #8A9EA3; }
-  .action-sheet-wrapper.action-sheet-up button {
-    text-align: left;
-    color: #40484B;
-    opacity: 0.8;
-    font-size: 16px;
-    font-weight: 600;
-    padding-left: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-left: 0px;
-    border-right: 0px; }
-
-/*# sourceMappingURL=style.css.map */

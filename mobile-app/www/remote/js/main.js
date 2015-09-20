@@ -1,5 +1,5 @@
 var LOCAL = true; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.home';
+var FIRST_PAGE='^.university';
 var img_base;
 
 // // @if ADMIN

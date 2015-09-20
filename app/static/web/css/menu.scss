@@ -112,7 +112,7 @@
 	}
 	header {
 		position: relative;
-		a {
+		#home-modal-close-link {
 			@include center-y;
 			right: 10px;
 			color: white;
@@ -122,8 +122,10 @@
 	.start-modal-platforms {
 		@include listless;
 		@include flex;
+		@include flex-center;
 		&#start-modal-platforms-mobile {
 			@include flex-wrap;
+			height: calc(60% - 38px);
 			li {
 				box-sizing: border-box;
 				width: 33.3333%;
@@ -182,6 +184,7 @@
 		@include flex;
 		@include flex-wrap;
 		width: 100%;
+		height: 50%;
 		box-sizing: border-box;
 		input, button {
 			box-sizing: border-box;
@@ -200,7 +203,7 @@
 	height: 100%;
 	&.active {
 		@include opacity(1);
-		z-index: 25;
+		z-index: 999999999999;
 	}
 }
 #side-menu {
@@ -234,6 +237,7 @@
 		line-height: 1;
 	}
 	#side-menu-links {
+		height: calc(100% - 150px);
 		li {
 			a {
 				display: block;
@@ -302,6 +306,7 @@
 		max-width: 300px;
 	}
 	#start-modal {
+		position: relative;
 		border-radius: 10px;
 		.start-modal-platforms {
 			&#start-modal-platforms-mobile {
@@ -386,7 +391,6 @@
 	}
 }
 
-
 #modal-loader-container.active {
     display: block;
 }
@@ -406,7 +410,6 @@
     text-align: center;
     height: 100%;
 }
-
 
 .front, .back {
     width: auto;
@@ -486,9 +489,9 @@
 		}
 	}
 	.intercom-launcher-preview {
-		position: absolute!important;
     	bottom: -7px!important;
-    	right: 70px!important;
+    	right: 110px!important;
+    	max-width: 111px!important;
 	}
 	.intercom-launcher-preview-body {
 		position: relative;
@@ -506,10 +509,177 @@
 	}
 }
 
-@media screen and (min-width: 35.5em) {
-	#intercom-container {
-		.intercom-launcher-button.active {
-			display: block!important;
+#menu-icons {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	li {
+		width: calc(100% / 3);
+		box-sizing: border-box;
+		a {
+			display: block;
+			text-align: center;
+			svg {
+				width: auto;
+				max-width: 50px;
+				height: 100%;
+				max-height: 50px;
+				path, * {
+					@include transition(.15s ease-in);
+				}
+			}
+		}
+		#{$links} {
+			svg {
+				path, * {
+					fill: $shamrock;
+				}
+			}
+		}
+	}
+}
+
+.modal-main-container {
+    backface-visibility: hidden;
+    background: white;
+    height: 100%;
+}
+
+.download-link-wrapper {
+	position: relative;
+	height: 40%;
+	section {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		height: calc(100% - 38px);
+	}
+	#submit-info-loader.svg-container {
+		display: none;
+	    width: 100%;
+	    height: 100%;
+		margin: 0 auto;
+	    text-align: center;
+		&.active {
+			display: block;
+		}
+		svg {
+			* {
+				fill: $shamrock;
+			}
+		}
+	}
+	#post-submit-info-wrapper {
+		margin: 0 auto;
+	    text-align: center;
+	    height: 100%;
+	    margin-top: 0;
+	    position: absolute;
+	    top: 30%;
+	    width: 100%;
+		display:none;
+		.message-content {
+			color: $shamrock;
+			font-weight: 600;
+		}
+		&.active {
+			display: block;
+		}
+		.ion-checkmark {
+			font-size: 200%;
+		}
+	}
+	#submit-info-button {
+		@include opacity(.5);
+		display: none;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		padding: 0 2%;
+		height: calc(100% - 38px);
+		color: $shamrock;
+		font-size: 100%;
+		font-weight: 400;
+		.ion-checkmark {
+			color: $shamrock;
+		}
+		&.active.validated .ion-checkmark {
+			color: white;
+		}
+		&.active {
+			@include flex;
+			@include flex-center;
+			background: rgba($shamrock, 0.5);
+		}
+		&.active.validated {
+			@include opacity(1);
+			color: white;
+			background: rgba($shamrock, 0.75);
+		}
+		&.active.validated:hover {
+			@include opacity(.75);
+		}
+	}
+	.email-cta-wrapper, .phone-cta-wrapper {
+		display: none;
+		height: 100%;
+		cursor: pointer;
+		&.active {
+			display: block;
+		}
+	}
+	.start-modal-link {
+		.start-modal-switcher {
+			width: 100%;
+			font-size: 36px;
+			.phone-icon, .mail-icon {
+				@include opacity(.5);
+				padding: 0 10px;
+				&.active {
+					@include opacity(1);
+				}
+			}
+		}
+		.material-text-wrapper {
+			margin: 0;
+		    text-align: center;
+			input {
+				color: $shamrock;
+				border-bottom: 2px solid rgba($shamrock, .5)!important;
+				font-size: 150%;
+				text-align: center;
+			}
+
+			::-webkit-input-placeholder {
+				color:rgba($shamrock, .5);
+				text-align:center;
+			}
+			:-moz-placeholder {
+				color:rgba($shamrock, .5);
+				text-align:center;
+			}
+			::-moz-placeholder {
+				color:rgba($shamrock, .5);
+				text-align:center;
+			}
+			:-ms-input-placeholder {
+				color:rgba($shamrock, .5);
+				text-align:center;
+			}
+
+			label {
+				position: static;
+				visibility: hidden;
+			    color: $shamrock;
+			}
+
+			label.active#school-email-input-label,
+			label.active#school-phone-input-label {
+				@include opacity(.7);
+			    visibility: visible;
+			    text-align: center;
+			    text-transform: lowercase;
+			}
 		}
 	}
 }

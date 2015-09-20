@@ -315,7 +315,8 @@ angular.module('uguru.util.controllers')
           $scope.loader = {
             show: function() {
               $ionicLoading.show({
-                template: '<div ng-include="' + $scope.img_base + 'templates/default.progress.spinner.html"></div>'
+                // template: '<div ng-include="' + $scope.img_base + 'templates/default.progress.spinner.html"></div>'
+                template: 'Loading ...'
               });
               $scope.root.vars.loaderOn = true;
             },

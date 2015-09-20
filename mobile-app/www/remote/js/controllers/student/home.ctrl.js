@@ -453,9 +453,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
      $scope.$on('$ionicView.enter', function() {
       $ionicSideMenuDelegate.canDragContent(true);
-        $timeout(function() {
-          $ionicSideMenuDelegate.toggleRight();
-        }, 250)
+        // $timeout(function() {
+        //   $ionicSideMenuDelegate.toggleRight();
+        // }, 250)
 
         //welcome to student mode screen
         $timeout(function() {

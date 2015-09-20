@@ -210,6 +210,49 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
   background: #69B3A5;
   color: white; }
 
+.body-loading-div {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  z-index: 100000000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  text-align: center; }
+  .body-loading-div div {
+    width: 100%; }
+    .body-loading-div div svg {
+      padding: 1em;
+      width: 5em;
+      height: auto !important; }
+    .body-loading-div div svg, .body-loading-div div svg g {
+      fill: #69B3A5; }
+  .body-loading-div .logo svg {
+    display: block;
+    margin: 0 auto;
+    width: 100% !important;
+    max-width: 200px; }
+  .body-loading-div .loader svg {
+    max-width: 200px; }
+
 #top {
   background: rgba(255, 255, 255, 0.8); }
   #top #top-logo {
@@ -295,11 +338,23 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
             font-weight: 900;
             text-transform: uppercase; }
           .main#team ul li div q {
-            display: block;
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
             position: relative;
             quotes: none;
             text-align: center;
-            font-size: 24px;
+            font-size: 20px;
             height: 82px; }
             .main#team ul li div q:before {
               content: "\201D";
@@ -310,8 +365,6 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
               color: rgba(0, 0, 0, 0.05);
               font-size: 200px;
               line-height: .8; }
-            .main#team ul li div q:after {
-              content: "."; }
           .main#team ul li div > a {
             display: block;
             border-radius: 0 0 10px 10px;
@@ -339,7 +392,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
       position: relative;
       background: #50A5DD;
       color: white;
-      padding: 20px 30px; }
+      padding: 20px 20px 20px 30px; }
       .main#faq dl dt a {
         display: table;
         width: 100%;
@@ -398,7 +451,7 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
       font-size: 20px;
       font-weight: 300; }
   .main#faq dl dt h3 {
-    font-size: 32px;
+    font-size: 26px;
     font-weight: 300; }
   .main#faq dl dt svg {
     width: 50px;
@@ -410,6 +463,9 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 @media screen and (min-width: 1200px) {
   .main#team ul li {
     width: 33.3333%; } }
+
+#page-moola .body-loading-div div svg, #page-moola .body-loading-div div svg g {
+  fill: #81B566; }
 
 #page-moola a, #page-moola h1 {
   color: #81B566; }
@@ -453,6 +509,9 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 #page-moola #top #top-logo:active svg path, #page-moola #top #top-logo:focus svg path, #page-moola #top #top-logo:hover svg path {
   fill: #92AC84; }
 
+#page-lake .body-loading-div div svg, #page-lake .body-loading-div div svg g {
+  fill: #50A5DD; }
+
 #page-lake a, #page-lake h1 {
   color: #50A5DD; }
 
@@ -495,6 +554,9 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 #page-lake #top #top-logo:active svg path, #page-lake #top #top-logo:focus svg path, #page-lake #top #top-logo:hover svg path {
   fill: #6F98B5; }
 
+#page-eggplant .body-loading-div div svg, #page-eggplant .body-loading-div div svg g {
+  fill: #9A5BC5; }
+
 #page-eggplant a, #page-eggplant h1 {
   color: #9A5BC5; }
 
@@ -536,6 +598,9 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
 
 #page-eggplant #top #top-logo:active svg path, #page-eggplant #top #top-logo:focus svg path, #page-eggplant #top #top-logo:hover svg path {
   fill: #907D9E; }
+
+#page-cerise .body-loading-div div svg, #page-cerise .body-loading-div div svg g {
+  fill: #DB1988; }
 
 #page-cerise a, #page-cerise h1 {
   color: #DB1988; }
@@ -798,6 +863,10 @@ button:active, button:focus, button:hover, a[class*=btn]:active, a[class*=btn]:f
     .profile .profile-info button {
       position: absolute;
       bottom: 0; }
+
+@media screen and (min-width: 64em) {
+  .body-loading-div .logo svg {
+    max-width: 300px; } }
 
 @media screen and (min-width: 768px) {
   .profile {
