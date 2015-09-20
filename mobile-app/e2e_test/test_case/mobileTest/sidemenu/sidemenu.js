@@ -1,5 +1,6 @@
 describe('Side Menu test', function () {
-	var sideMenuButton= element(by.css('[ng-click="toggleRightSideMenu()"]'));
+	// var sideMenuButton= element(by.css('[ng-click="toggleRightSideMenu()"]'));
+	var sideMenuButton= element(by.css('.bg-charcoal'));
 	var sideMenuList = element(by.css('.side-menu-list.with-icon'))
 	var names = ['FAQ','TERMS','SUPPORT','SIGN UP','LOGIN'];
 
@@ -9,19 +10,19 @@ describe('Side Menu test', function () {
 	// });
 
 
-	// describe("Welcome Pop Up",function()
-	// {
-	// 	it('Check Pop up ',function()
-	// 	{
-	// 		browser.wait(EC.visibilityOf(element(by.id('home-uguru-popup'))),3000);
-	// 		// expect(element(by.id('home-uguru-popup')).isDisplayed()).toBe(true);
-	// 	});
-	// 	it('Close Welcome',function()
-	// 	{
-	// 		//element(by.id('home-uguru-popup')).click();
-	// 		element(by.css('[ng-click="closeWelcomePopup()"]')).click();
-	// 	});
-	// });
+	describe("Welcome Pop Up",function()
+	{
+		it('Check Pop up ',function()
+		{
+			browser.wait(EC.visibilityOf(element(by.id('home-uguru-popup'))),3000);
+			// expect(element(by.id('home-uguru-popup')).isDisplayed()).toBe(true);
+		});
+		it('Close Welcome',function()
+		{
+			//element(by.id('home-uguru-popup')).click();
+			element(by.css('[ng-click="closeWelcomePopup()"]')).click();
+		});
+	});
 	// it("go to the new-home page",function()
 	// {
 
@@ -31,8 +32,8 @@ describe('Side Menu test', function () {
 
 	it("Check the side menu",function()
 	{
-  //       browser.wait(EC.elementToBeClickable(sideMenuButton),3000);
-		// sideMenuButton.click();
+  		browser.wait(EC.elementToBeClickable(sideMenuButton),3000);
+		sideMenuButton.click();
         browser.wait(EC.visibilityOf(sideMenuList),3000);
         expect(sideMenuList.isDisplayed()).toBe(true);
 	});
@@ -54,12 +55,47 @@ describe('Side Menu test', function () {
     	    })(names[i]);
 		}
 		//Skip Bugs
-		it("refresh page [Skip Bug]",function()
-		{
-			browser.refresh();
-	        browser.wait(EC.visibilityOf(sideMenuList),3000);
+		// it("refresh page [Skip Bug]",function()
+		// {
+		// 	browser.refresh();
+		// });
+		// it("Enter Access Code : cool ",function()
+		// {
+		// 	var accessInput  = element(by.tagName("input"));
+		// 	accessInput.sendKeys('cool');
+		// 	accessInput.getAttribute('value').then(function(result)
+		// 	{
+		// 		expect(result).toBe("cool");
+		// 	});
+		// });
 
-		});
+		// it("Check Successed",function()
+		// {
+		// 	//browser.wait(EC.elementToBeClickable(startButton),5000);
+		// 	var startButton = element(by.id("redeem-button"));
+
+		// 	browser.sleep(4000);
+		// 	startButton.click();
+		// 	doc.checkMsg("Access Granted");
+		// });
+		// it("choose a university",function()
+		// {
+		// //	doc.pickList('university in initialUniversities');
+		// 	doc.newPickList('school-list')
+		// });
+		// it("check the current position",function()
+		// {
+		// 	expect(browser.getCurrentUrl()).toBe("http://localhost:8100/#/home");
+		// });
+
+		// it("Check the side menu",function()
+		// {
+	 //  		browser.wait(EC.elementToBeClickable(sideMenuButton),3000);
+		// 	sideMenuButton.click();
+	 //        browser.wait(EC.visibilityOf(sideMenuList),3000);
+	 //        expect(sideMenuList.isDisplayed()).toBe(true);
+		// });
+		// End Skip BUG
 	});
 	// Need to work on it
 	// describe("Drag the Homepage",function()
@@ -111,7 +147,7 @@ describe('Side Menu test', function () {
 					{
 	    				doc.checkItemDisplay(name,true,'click');
 					});
-					it('Check it is right page',function()
+					it('Check it popup and has right page',function()
 					{
 						expect(element(by.css('.modal-backdrop.active')).getText()).toContain(name);
 
