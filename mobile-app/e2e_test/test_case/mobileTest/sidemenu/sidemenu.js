@@ -1,7 +1,8 @@
 describe('Side Menu test', function () {
 	var sideMenuButton= element(by.css('[ng-click="toggleRightSideMenu()"]'));
 	var sideMenuList = element(by.css('.side-menu-list.with-icon'))
-	var closed = element.all(by.css('.header-nav-back')).last();
+	var names = ['FAQ','TERMS','SUPPORT','SIGN UP','LOGIN'];
+
 	// beforeAll(function()
 	// {
 	//     browser.get("http://localhost:8100/#/home");
@@ -38,7 +39,7 @@ describe('Side Menu test', function () {
 
 	describe("Check Visibile buttons",function()
 	{
-		var names = ['FAQ','TERMS','SUPPORT','SIgn Up','LOGIN'];
+		// var names = ['FAQ','TERMS','SUPPORT','SIgn Up','LOGIN'];
 		for (var i = 0 ;i < 5 ;++ i)
 		{
 	       (function(name) {
@@ -60,41 +61,81 @@ describe('Side Menu test', function () {
 
 		});
 	});
-	describe("Drag the Homepage",function()
-	{
-		it("drag homepage Right",function()
-		{
-   			doc.slideView(0,"right",'ion-side-menu-content')
-		});
-		it("Check homepage is back",function()
-		{
-			element(by.css('.ion-side-menus-content.menu-content.pane.menu-animated')).getLocation().then(function(result)
-			{
-				expect(result.x).toBe(0);
-   				expect(result.x >= 0).toBe(true,"Homepaage doen't move back");
-			});
-		});
-		it("check side-menu-left-overlay is gone",function()
-		{
-			expect(element(by.id('side-menu-left-overlay')).isDisplayed()).toBe(false,"Ovelay is still there");
-		});
-		it("drag home page left",function()
-		{
-   			doc.slideView(0,"left",'ion-side-menu-content')
-		});
-		it("Check homepage is Gone",function()
-		{
-			element(by.css('.ion-side-menus-content.menu-content.pane.menu-animated')).getLocation().then(function(result)
-			{
-   				expect(result.x < 0).toBe(true,"Homepaage doesn't move away");
-			});
-		});
-		it("browser sleep",function()
-		{
-			browser.sleep(1000000)
-		})
-	});
+	// Need to work on it
+	// describe("Drag the Homepage",function()
+	// {
+	// 	it("drag homepage Right",function()
+	// 	{
+ //   			doc.slideView(0,"right",'request-content')
 
+	// 	});
+	// 	it("Check homepage is back",function()
+	// 	{
+	// 		element(by.tagName('ion-side-menu-content')).getLocation().then(function(result)
+	// 		{
+	// 			// browser.wait(EC.invisibilityOf(element(by.css('.menu.menu-right')),3000));
+	// 			expect(result.x).toBe(0);
+ //   				expect(result.x >= 0).toBe(true,"Homepaage doen't move back");
+	// 		});
+	// 	});
+	// 	it("check side-menu-left-overlay is gone",function()
+	// 	{
+	// 		expect(element(by.id('side-menu-left-overlay')).isDisplayed()).toBe(false,"Ovelay is still there");
+	// 	});
+	// 	it("drag home page left",function()
+	// 	{
+ //   			doc.slideView(0,"left",'ion-side-menu-content')
+	// 	});
+	// 	it("Check homepage is Gone",function()
+	// 	{
+	// 		element(by.css('.ion-side-menus-content.menu-content.pane.menu-animated')).getLocation().then(function(result)
+	// 		{
+ //   				expect(result.x < 0).toBe(true,"Homepaage doesn't move away");
+	// 		});
+	// 	});
+	// 	// it("browser sleep",function()
+	// 	// {
+	// 	// 	browser.sleep(1000000)
+	// 	// })
+	// });
+
+	describe("Check All buttons is clickalbe",function()
+		{
+			var closed = element.all(by.css('.header-nav-back'));
+
+			// var names = ['FAQ','TERMS','SUPPORT','SIgn Up','LOGIN'];
+			for (var i = 0 ;i < 5 ;++ i)
+			{
+		       (function(name) {
+	    			it("Open "+ name+ " Section",function()
+					{
+	    				doc.checkItemDisplay(name,true,'click');
+					});
+					it('Check it is right page',function()
+					{
+						expect(element(by.css('.modal-backdrop.active')).getText()).toContain(name);
+
+					});
+					it('Close '+name + ' Page',function()
+					{
+						closed.then(function(items)
+							{
+								console.log(items.length);
+								browser.wait(EC.elementToBeClickable(closed[0]),2000);
+								closed[0].click();
+							});
+			 			
+					});
+	    	    })(names[i]);
+			}
+			//Skip Bugs
+			// it("refresh page [Skip Bug]",function()
+			// {
+			// 	browser.refresh();
+		 //        browser.wait(EC.visibilityOf(sideMenuList),3000);
+
+			// });
+		});
 
 
 

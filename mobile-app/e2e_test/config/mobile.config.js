@@ -84,6 +84,7 @@ exports.config = {
 
             sign:   ['../test_case/mobileTest/workflows/access.js',
                    '../test_case/mobileTest/workflows/university.js', 
+                   '../test_case/mobileTest/sidemenu/sidemenu.js',
                    '../test_case/mobileTest/sidemenu/signup.js'
                     ],
 

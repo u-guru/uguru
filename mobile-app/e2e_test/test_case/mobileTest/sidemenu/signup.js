@@ -1,42 +1,48 @@
 describe('Sign-up test', function () {
 	var sideMenuButton= element(by.css('[ng-click="toggleRightSideMenu()"]'));
 	var sideMenuList = element(by.css('.side-menu-list.disable-user-behavior'))
+	var closed = element.all(by.css('.header-nav-back')).first();
+
 	// beforeAll(function()
 	// {
 	//     browser.get("http://localhost:8100/#/home");
 	// });
-	it("go to the new-home page",function()
-	{
-        browser.wait(EC.elementToBeClickable(sideMenuList),3000);
-		expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/home");
-	});
+	// it("go to the new-home page",function()
+	// {
+ //        browser.wait(EC.elementToBeClickable(sideMenuList),3000);
+	// 	expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/home");
+	// });
 
-	it("open the side menu",function()
-	{
-        browser.wait(EC.visibilityOf(sideMenuList),3000);
+	// it("open the side menu",function()
+	// {
+ //        browser.wait(EC.visibilityOf(sideMenuList),3000);
 
-		sideMenuButton.click();
-        browser.wait(EC.visibilityOf(sideMenuList),3000);
-        expect(sideMenuList.isDisplayed()).toBe(true);
-	});
+	// 	sideMenuButton.click();
+ //        browser.wait(EC.visibilityOf(sideMenuList),3000);
+ //        expect(sideMenuList.isDisplayed()).toBe(true);
+	// });
 	it("Active Sign-up",function()
 	{
 		// doc.pickSideMenu(5,"Signup");
-		doc.checkItemDisplay("Signup",true,'click');
+		doc.checkItemDisplay("SIGN UP",true,'click');
 
 		expect(element(by.id('account')).isDisplayed()).toBe(true);
 	});
+	//Need to fix closing
 	describe("check term & condition paging",function()
 	{
 		it('check term & condition is working',function()
 		{
 			element(by.id('tos')).click();
-			browser.sleep(4000);
 		});
-		it('check error msg', function()
+		it('check Term Page is shown', function()
 		{
-			expect(element(by.css('.modal-backdrop')).isPresent()).toBe(true);
-			///////////////////// don't know the element name or it
+			expect(element(by.css('.modal-backdrop.active')).getText()).toContain("TERMS & CONDITIONS");
+		});
+		it('Closed Term Page',function()
+		{
+ 			browser.wait(EC.elementToBeClickable(closed),2000);
+			closed.click();
 		});
 	});
 
