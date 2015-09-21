@@ -116,7 +116,7 @@ describe('university Test', function () {
    				{
 		   			expect(result.x).toBe(0,"location X is moved");
    				});
-   			// browser.sleep(10000);
+   			 browser.sleep(10000);
    		});
 		it("drag right",function()
    		{
@@ -166,11 +166,11 @@ describe('university Test', function () {
 			browser.wait(EC.visibilityOf(gps),3000);
 			gps.click();
 		});
-		it ('check GPS icon Changed',function()
+		it ('check GPS icon Changed *Incompelted Yet',function()
 		{
-			element(by.css('.icon ion-navigate')).getAttribute('style').then(function(results)
+			element(by.css('.icon.ion-navigate')).getAttribute('style').then(function(results)
 			{
-				expect(results).toContain("Hi")
+				expect(results).toContain("(70, 255, 0)")
 			})
 		});
 		it('chheck miles shows',function()
@@ -232,26 +232,26 @@ describe('university Test', function () {
 	});
 
 
-	describe("Check Icon are the same",function()
-	{
-		it("has different icon",function()
-		{	
-			doc.checkList('school-list',by.tagName('img'),'src');
-		});
-
-	});
-
-	describe("Select a university lead to home page",function()
-	{
-		it("choose a university",function()
+		describe("Check Icon are the same",function()
 		{
-			doc.newPickList('school-list')
+			it("has different icon",function()
+			{	
+				doc.checkList('school-list',by.tagName('img'),'src');
+			});
 
 		});
-		it("check the current position",function()
+
+		describe("Select a university lead to home page",function()
 		{
-			expect(browser.getCurrentUrl()).toBe("http://localhost:8100/#/home");
+			it("choose a university",function()
+			{
+				doc.newPickList('school-list')
+
+			});
+			it("check the current position",function()
+			{
+				expect(browser.getCurrentUrl()).toBe("http://localhost:8100/#/home");
+			});
 		});
-	});
 
 });

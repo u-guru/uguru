@@ -42,7 +42,7 @@ exports.config = {
 
           //  capabilities: {
           //   platformName: 'android',
-          //   platformVersion: '4.4.4',
+          //   platformVersion: '4.4.2',
           //   deviceName: 'Android Emulator',
           //   browserName: '',
           //   autoWebview: true,

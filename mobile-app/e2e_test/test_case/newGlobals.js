@@ -11,9 +11,9 @@ var global = function() {
     var xV = 0
     var yV = 0;
     if (direction === 'left')
-      xV = -500;
+      xV = -200;
     else if (direction === 'right')
-      xV =  500;
+      xV =  200;
       var ele = element.all(by.tagName("ion-slide"));
     if (tagName != null)
       ele = element.all(by.css('#request-content'));
