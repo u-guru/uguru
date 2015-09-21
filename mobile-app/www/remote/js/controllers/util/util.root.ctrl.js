@@ -47,6 +47,9 @@ angular.module('uguru.util.controllers')
             professions: [],
             universities: []
           }
+
+          $scope.isLocalServer = LOCAL || false;
+
           document.addEventListener('DOMContentLoaded', function(event) {
               console.log('dom has loaded');
           }, false);
@@ -222,7 +225,7 @@ angular.module('uguru.util.controllers')
                 $scope.success.show(500, 2000, 'You have been successfully logged out!');
                 $timeout(function(){
                   $ionicSideMenuDelegate.toggleRight();
-                  $state.go('^.access');
+                  $state.go('^.university');
                 }, 600)
               }, 2000);
 

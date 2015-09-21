@@ -44,6 +44,44 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
   });
 
+
+  function setProgressValueVertical(elemId,value, index) {
+
+      if (index >= value) {
+        return;
+      } else {
+        document.getElementById(elemId).setAttribute("value", index);
+        $scope.user.current_profile_percent = index;
+        setTimeout(function() {
+          setProgressValueVertical(elemId,value, index + 1)
+        }, 50)
+      }
+  }
+
+  $scope.animateVerticalProgressBars = function() {
+
+    setProgressValueVertical('credibility-progress',$scope.user.current_credibility_percent, 0);
+    setProgressValueVertical('profile-progress', $scope.user.current_profile_percent || 40, 0);
+    setProgressValueVertical('hourly-progress', 10, 0);
+  }
+
+  $scope.setProgressValueCircular = function(value, index) {
+
+    if (index >= value) {
+      return;
+    } else {
+      $scope.guruRankingProgress.push(0)
+      setTimeout(function() {
+        $scope.setProgressValueCircular(value, index + 1);
+      }, 10);
+    }
+
+  }
+
+  $scope.animateVerticalProgressBars();
+  $scope.guruRankingProgress = [];
+  $scope.setProgressValueCircular(75, 0);
+
   $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
           scope: $scope,
           animation: 'slide-in-up'

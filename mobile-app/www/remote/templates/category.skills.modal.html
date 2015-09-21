@@ -1,8 +1,9 @@
-<ion-modal-view class='uguru-view category-skills-modal' on-drag-down="categorySkillsModal.hide()" on-swipe-down="categorySkillsModal.hide()">
+<ion-modal-view class='uguru-view category-skills-modal bg-white' id='skills-modal' on-drag-down="skillsModalDrag($event)" on-swipe-down="skillsModalDrag($event)" draggable="true">
     <section id='skill-list' class='onboarding'>
         <div id="skills-list" class="onboarding-list">
             <div>
-                <ul class='list checklist'>
+                <ul class='list checklist p60bottom' style='height:calc(60px * {{active_category.skills.length}}); padding-bottom:60px;'>
+
                     <li ng-repeat='skill in active_category.skills'class='ng-class:{"active":active_category.active}'>
                         <span>
                             <label>{{skill.name}}</label>

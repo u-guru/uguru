@@ -1,117 +1,13 @@
 <ion-view class='uguru-view guru-view bg-charcoal'>
 	<section id="guru-home" class="request full-xy student-home">
-		<header class="third">
-			<h1 class="full-x text-center">Guru Home</h1>
-			<ul id="guru-ranking" class="ugrid">
+    <header class="half">
+			<div class='u-grid' style='padding:0px 10px 5px 10px'>
+        <h1 class='text-center'>Guru Home</h1>
+      </div>
+      <ul id="guru-ranking" class="ugrid">
 				<li id="guru-chart">
-					<svg class="chart" data-value="75" width="130px" height="130px" viewBox="0 0 130 130">
-					    <g stroke="#FFFFFF" stroke-width="10" transform="translate(5.000000, 5.000000)" fill="none">
-					        <circle class="bg"></circle>
-					        <g class="chart-percent">
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						        <circle></circle>
-						    </g>
-					    </g>
-					</svg>
+
+          <div ng-include="img_base + 'templates/progress.circle.empty.svg.html'"></div>
 					<div id="percentile">
 						<div id="percentile-ranking">75</div>
 						<div id="percentile-label">Percentile</div>
@@ -119,16 +15,16 @@
 				</li>
 				<li id="guru-stats">
 					<div>
-						<h2>20% cred</h2>
-						<progress class="white-round height-10" value="20" max="100">
+						<h2>{{user.current_profile_percent}}% cred</h2>
+						<progress id='credibility-progress' class="white-round height-10" value="0" max="100">
 						    <div class="progress white-round height-10"><span data-value="20" style="width:20%"></span></div>
 						</progress>
 						<h2>65% profile</h2>
-						<progress class="white-round height-10" value="65" max="100">
+						<progress id='profile-progress' class="white-round height-10" value="0" max="100">
 						    <div class="progress white-round height-10"><span data-value="65" style="width:65%"></span></div>
 						</progress>
 						<h2>$39/hour</h2>
-						<progress class="white-round height-10" value="39" max="40">
+						<progress id='hourly-progress' class="white-round height-10" value="0" max="40">
 						    <div class="progress white-round height-10"><span data-value="99" style="width:99%"></span></div>
 						</progress>
 					</div>

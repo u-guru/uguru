@@ -112,7 +112,7 @@
     }
 }
 
-.uguru-popup.sidebar-popup 
+.uguru-popup.sidebar-popup
     {
         &.show {
             padding-top:5%;
@@ -158,6 +158,11 @@
                     z-index: 3;
                 }
             }
-            
+
         }
+    }
+
+    #edit-password-uguru-popup
+    .uguru-popup-content {
+        height:52%;
     }
