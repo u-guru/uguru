@@ -45,7 +45,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   $scope.checkAccessCode = function(code) {
     if(AccessService.validate(code)){
 
-      //LoadingService.show(0, 5000, 'Access Granted');
+      LoadingService.show(0, 700, 'Access Granted');
       $scope.access.codeInput = '';
       //accessInput.removeEventListener('keyup', submitListener);
 

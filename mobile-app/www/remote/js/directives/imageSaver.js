@@ -39,7 +39,7 @@ angular.module('uguru.directives')
 						var downloadTime = endTime - startTime;
 						entry.file(function(fileObj) {
 							var file = Utilities.getFileName(downloadURL);
-							var size = (fileObj.size/1000) + " kb");
+							var size = ( (fileObj.size/1000) + " kb");
 							console.log(file + " took " + downloadTime + " ms to download " + size);
 							var downloadLog = file + " time: " + downloadTime + " ms size: " + size + "/";
 							

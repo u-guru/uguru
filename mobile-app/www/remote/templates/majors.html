@@ -30,11 +30,11 @@
       <div id="major-list" buffered-scroll='increaseLimit()' class="onboarding-list" ng-init='limit = 10'>
         <ul class="list list-item-border no-icon">
           <li ng-if="search_text.length === 0 && user.majors.length > 0" class="major-item major-business selected" ng-repeat='major in user.majors'>
-            <a ng-click='removeCheckedMajor(major, $index)'>{{major.name}}</a>
+            <a ng-click='removeMajor(major, $index)'>{{major.name}}</a>
             <i class='icon ion-checkmark-round'> </i>
           </li>
           <li class="major-item major-business" ng-repeat='major in majors | limitTo: limit'>
-            <a ng-click='majorSelected(major, $event, $index)'>{{major.name}}</a>
+            <a ng-click='majorSelected(major, $index)'>{{major.name}}</a>
           </li>
         </ul>
       </div>

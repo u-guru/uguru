@@ -22,7 +22,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher, $ionicSlideBoxDelegate,
   DeviceService, $ionicModal) {
 
-  var networkState = navigator.connection.type;
+  //var networkState = navigator.connection.type;
   var deviceUUID = DeviceService.getUUID();
   var deviceModel =  DeviceService.getModel();
   var devicePlatform =  DeviceService.getPlatform();
@@ -54,7 +54,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       '$Device_Model': deviceModel,
       '$Device_Platform': devicePlatform,
       '$Device_Version': deviceVersion,
-      '$network_state': networkState,
+      //'$network_state': networkState,
       "gender": "Male"                    
   });
 
