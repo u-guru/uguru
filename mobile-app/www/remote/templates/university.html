@@ -21,7 +21,7 @@
             <input type="search" class=''
                     placeholder="Search for my university"
                     ng-model="search_text"
-                    ng-keyup="query(search_text)"
+                    ng-keyup="query(search_text)"2
             />
             <a ng-click='getGPSCoords()' class='geolocation-icon'>
               <i class='icon ion-navigate'></i>
@@ -29,7 +29,7 @@
         </div>
       </header>
 
-        <div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list" >
+        <div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list">
         <ul class='list list-item-border'>
           <li  class="list-item school-harvard" ng-repeat='university in universities | limitTo: limit'>
             <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>

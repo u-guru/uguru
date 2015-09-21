@@ -349,7 +349,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
 
     var isSideMenuOpen = function(ratio) {
-      console.log(ratio);
       if (!ratio && ratio !== -1) {
         $scope.sideMenuActive = false;
       } else {
@@ -453,9 +452,9 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
      $scope.$on('$ionicView.enter', function() {
       $ionicSideMenuDelegate.canDragContent(true);
-        $timeout(function() {
-          $ionicSideMenuDelegate.toggleRight();
-        }, 250)
+        // $timeout(function() {
+        //   $ionicSideMenuDelegate.toggleRight();
+        // }, 250)
 
         //welcome to student mode screen
         $timeout(function() {

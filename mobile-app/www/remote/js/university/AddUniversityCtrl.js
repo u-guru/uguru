@@ -128,6 +128,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       console.log("called afterEnter");
     };
 
+
     console.log("passed deviceInfo: " + deviceInfo);
 
     $scope.getGPSCoords = function() {
@@ -144,6 +145,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
     var queryTimeout = false;
     var emptyTimeout = false;
+    $scope.limit = 10;
     $scope.query = function(input) {
       if(!queryTimeout) {
         queryTimeout = true;
@@ -154,18 +156,13 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       else if(input.length === 0) {
         if(!emptyTimeout) {
           emptyTimeout = true;
-          $scope.universities = UniversityMatcher.cachedMatch(input);  
+          $scope.universities = UniversityMatcher.cachedMatch(input);
           $timeout(function() {emptyTimeout = false;}, 600);
-        }       
+        }
       }
 
     }
 
-    // if (deviceInfo==='android') {
-    //   $scope.getGPSCoords();
-    // }
-
-    var schoolList = document.querySelectorAll('#school-list')[0];
 
     $scope.search_text = '';
     $scope.location = false;
@@ -175,10 +172,11 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     $scope.increaseLimit = function() {
       if($scope.limit < $scope.universities.length) {
         $scope.limit += 10;
+        console.log('limit increased is being called', $scope.limit, $scope.universities.length);
       }
     }
 
-    $ionicSlideBoxDelegate.update();
+    // $ionicSlideBoxDelegate.update();
     //back button
     $scope.goToAccess = function() {
     $ionicSlideBoxDelegate.previous();
@@ -248,12 +246,10 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
     var isTimeout = false;
     function getGPS() {
-      // //STILL NEED TO DO FOR IOS
-      // // if(DeviceService.getDevice()==="ios") {
-      // //   Geolocation.enableGPS();
-      // //   return;
-      // // }
-      console.log("$scope.location is currenty: " + $scope.location);
+
+
+      var schoolList = document.querySelectorAll('#school-list')[0];
+
       if($scope.location) {
 
         $scope.location = false;

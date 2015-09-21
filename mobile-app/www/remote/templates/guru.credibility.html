@@ -1,47 +1,81 @@
 <ion-view class='uguru-view credibility-view bg-charcoal'>
   <section id="credibility">
-    <header class="header-back">
-      <a >
-        <svg width="12px" height="22px" viewBox="0 0 12 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <path d="M10.1692224,0.295060681 L0.29073238,10.2342043 C-0.096918216,10.6242351 -0.0969097142,11.2540818 0.290751411,11.6441021 L10.2907514,21.7049585 C10.6800892,22.0966656 11.3132513,22.0985864 11.7049585,21.7092486 C12.0966656,21.3199108 12.0985864,20.6867487 11.7092486,20.2950415 L1.70924859,10.2341851 L1.70926762,11.6440829 L11.5877577,1.70493932 C11.9770849,1.31322163 11.9751471,0.680059615 11.5834294,0.29073238 C11.1917117,-0.0985948553 10.5585497,-0.0966570089 10.1692224,0.295060681 L10.1692224,0.295060681 Z" fill="#FFFFFF"></path>
-        </svg>
-        <h1>Building Your Credibility</h1>
-      </a>
+    <header class="bg-charcoal">
+      <h1 class="text-center">Increase Credibility</h1>
     </header>
     <nav id="credit-slider">
       <ul>
-        <li class="active">
-          <a href="#">
-            <span class="credit-icon"></span>
-            <span class="credit-label">Facebook</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
+        <li class="ng-class: {'active': activeTabIndex === 0}">
+          <a ng-click='activeTabIndex = 0;'>
             <span class="credit-icon"></span>
             <span class="credit-label">Grades</span>
           </a>
         </li>
-        <li>
-          <a href="#">
+        <li class="ng-class: {'active': activeTabIndex === 1}">
+          <a ng-click='activeTabIndex = 1;'>
             <span class="credit-icon"></span>
-            <span class="credit-label">Tutors</span>
+            <span class="credit-label">Facebook</span>
           </a>
         </li>
-        <li>
-          <a href="#">
+        <li class="ng-class: {'active': activeTabIndex === 2}">
+          <a ng-click='activeTabIndex = 2;'>
             <span class="credit-icon"></span>
-            <span class="credit-label">More</span>
+            <span class="credit-label">Phone</span>
+          </a>
+        </li>
+        <li class="ng-class: {'active': activeTabIndex === 3}">
+          <a ng-click='activeTabIndex = 3;'>
+            <span class="credit-icon"></span>
+            <span class="credit-label">Email</span>
+          </a>
+        </li>
+        <li class="ng-class: {'active': activeTabIndex === 4}"> 
+          <a ng-click='activeTabIndex = 4;'>
+            <span class="credit-icon"></span>
+            <span class="credit-label">Experience</span>
           </a>
         </li>
       </ul>
     </nav>
-    <div id="credit-content">
-      <div id="credit-facebook" class="credit-content-slide">
+    <div id="credibility-content-wrapper">
+      
+      <!-- Transcript upload -->
+      <div id="credit-transcript" class="credit-content-slide ng-class:{'active': activeTabIndex === 0}">
+        <h1>Upload your transcript</h1>
+        <p>We will never share your data w/o your permission first</p>
+        <button class="btn-bold">Upload your transcript</button>
+      </div>
+
+
+      <!-- Facebook slide -->
+      <div id="credit-facebook" class="credit-content-slide ng-class:{'active': activeTabIndex === 1}">
         <h1>Find Your Facebook Friends</h1>
         <p>Connect now to see <br/>which Gurus you know!</p>
         <button class="btn-bold">Connect with Facebook</button>
       </div>
+
+      <!-- Phone Auth -->
+      <div id="phone-number-auth" class="credit-content-slide ng-class:{'active': activeTabIndex === 2}">
+        <h1>Verify your phone</h1>
+        <p>We won't share this with anyone</p>
+        <button class="btn-bold">Add my number</button>
+      </div>
+
+      <!-- Email Auth -->
+      <div id="phone-number-auth" class="credit-content-slide ng-class:{'active': activeTabIndex === 3}">
+        <h1>Verify your .edu email</h1>
+        <p>We won't share this with anyone</p>
+        <button class="btn-bold bg-shamrock">Add my number</button>
+      </div>
+
+      <!-- Experience Auth -->
+      <div id="former-experience" class="credit-content-slide ng-class:{'active': activeTabIndex === 4}">
+        <h1>Add Relevant Experience</h1>
+        <p>We won't share this with anyone</p>
+        <button class="btn-bold bg-shamrock">Add Item</button>
+      </div>
+
+
     </div>
   </section>
   <div class="tabs tabs-icon-only guru-tabs bg-white bg-charcoal" id='guru-tab-bar'>

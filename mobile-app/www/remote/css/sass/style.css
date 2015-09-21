@@ -28,7 +28,6 @@ body {
 
 .uguru-view * {
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important; }
-
 .uguru-view #main-menu {
   position: fixed;
   bottom: 0;
@@ -74,14 +73,12 @@ body {
         width: 32px;
         height: 32px;
         background: rgba(255, 255, 255, 0.2); }
-
 .uguru-view h1.verified span svg {
   display: inline !important;
   width: 20px;
   height: 20px; }
   .uguru-view h1.verified span svg path:first-child {
     fill: #50A5DD; }
-
 .uguru-view .start#access {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -113,7 +110,6 @@ body {
     font-size: smaller; }
   .uguru-view .start#access button:active {
     background: rgba(43, 50, 52, 0.3); }
-
 .uguru-view .start#how header {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -133,14 +129,11 @@ body {
     font-size: 32px;
     font-weight: 600;
     text-transform: uppercase; }
-
 .uguru-view .start#how button {
   bottom: 0;
   background: rgba(255, 255, 255, 0.1); }
-
 .uguru-view .start#how button:active {
   background: rgba(255, 255, 255, 0.4); }
-
 .uguru-view .start#how #how-cards {
   list-style: none;
   margin: 0;
@@ -218,7 +211,6 @@ body {
       background: #50A5DD; }
     .uguru-view .start#how #how-cards .how-card:nth-child(7) .how-card-media {
       background: #9A5BC5; }
-
 .uguru-view .onboarding progress, .uguru-view .onboarding .progress {
   position: absolute;
   top: 0;
@@ -237,7 +229,6 @@ body {
     width: 95%; }
   .uguru-view .onboarding progress span[data-value="99"], .uguru-view .onboarding .progress span[data-value="99"] {
     width: 86%; }
-
 .uguru-view .onboarding header .onboarding-prop {
   position: absolute;
   top: 50%;
@@ -252,7 +243,6 @@ body {
     font-weight: 400;
     text-transform: uppercase;
     margin: 5px; }
-
 .uguru-view .onboarding header .onboarding-message {
   position: absolute;
   top: 50%;
@@ -267,21 +257,16 @@ body {
   text-align: center;
   text-transform: none;
   line-height: 1.25; }
-
 .uguru-view .onboarding .onboarding-list {
   height: calc(100% / 3 * 2);
   overflow: auto; }
-
 .uguru-view .onboarding#demographic header:before {
   background: url(../images/school.jpg) no-repeat center center/cover; }
-
 .uguru-view .onboarding#demographic header h1 {
   font-size: 24px; }
-
 .uguru-view .onboarding#demographic #demographic-grid > ul > li:not(.active) {
   filter: alpha(opacity=30);
   opacity: 0.3; }
-
 .uguru-view .onboarding#demographic #demographic-grid ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -419,7 +404,6 @@ body {
         border-color: rgba(80, 165, 221, 0.1); }
       .uguru-view .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:active, .uguru-view .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:focus, .uguru-view .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:hover {
         background: rgba(80, 165, 221, 0.05); }
-
 .uguru-view .onboarding#start {
   background: #40484B; }
   .uguru-view .onboarding#start #start-container {
@@ -434,7 +418,6 @@ body {
     color: #69B3A5;
     font-size: 28px;
     text-align: center; }
-
 .uguru-view .onboarding#photo #photo-container #profile-icon {
   position: relative;
   height: calc(100% / 2);
@@ -464,7 +447,6 @@ body {
     height: 80%;
     max-width: 150px;
     max-height: 150px; }
-
 .uguru-view .onboarding#account #account-form {
   box-sizing: border-box;
   padding: 15px; }
@@ -486,10 +468,8 @@ body {
   .uguru-view .onboarding#account #account-form #social-login {
     margin-top: 30px;
     margin-bottom: 20px; }
-
 .uguru-view .onboarding#skill header:before {
   background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat; }
-
 .uguru-view .onboarding#skill #skills-list ul {
   padding: 0 1px 1px;
   height: 100%; }
@@ -533,11 +513,9 @@ body {
         width: 100%; }
   .uguru-view .onboarding#skill #skills-list ul .active a {
     background: #81B566; }
-
 .uguru-view .onboarding#skill-list header svg {
   left: auto;
   right: 15px; }
-
 .uguru-view .onboarding#skill-list #onboarding-skill {
   position: absolute;
   top: 50%;
@@ -559,7 +537,6 @@ body {
   .uguru-view .onboarding#skill-list #onboarding-skill h1 {
     padding: 10px 0 0;
     text-align: center; }
-
 .uguru-view .onboarding#skill-list .onboarding-list {
   margin-top: -30px;
   height: calc(100% / 3 * 2 + 30px);
@@ -593,10 +570,8 @@ body {
       overflow: auto; }
       .uguru-view .onboarding#skill-list .onboarding-list > div ul li > span input:checked + span {
         background-color: #F9D57B; }
-
 .uguru-view .onboarding#course header:before {
   background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat; }
-
 .uguru-view .onboarding#course #courses-list ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -636,10 +611,8 @@ body {
       cursor: pointer; }
     .uguru-view .onboarding#course #courses-list ul li input:checked + label {
       background: #55A4B7; }
-
 .uguru-view .onboarding#school header:before, .uguru-view .onboarding#school-modal header:before {
   background: url(../../img/onboarding/school.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat; }
-
 .uguru-view .onboarding#school #school-list ul li a, .uguru-view .onboarding#school #school-list-modal ul li a, .uguru-view .onboarding#school-modal #school-list ul li a, .uguru-view .onboarding#school-modal #school-list-modal ul li a {
   font-weight: 300; }
   .uguru-view .onboarding#school #school-list ul li a .school-icon img, .uguru-view .onboarding#school #school-list-modal ul li a .school-icon img, .uguru-view .onboarding#school-modal #school-list ul li a .school-icon img, .uguru-view .onboarding#school-modal #school-list-modal ul li a .school-icon img {
@@ -654,35 +627,25 @@ body {
     font-size: 16px;
     font-style: normal;
     font-weight: 300; }
-
 .uguru-view .onboarding#school #school-list ul li a:active, .uguru-view .onboarding#school #school-list ul li a:focus, .uguru-view .onboarding#school #school-list ul li a:hover, .uguru-view .onboarding#school #school-list-modal ul li a:active, .uguru-view .onboarding#school #school-list-modal ul li a:focus, .uguru-view .onboarding#school #school-list-modal ul li a:hover, .uguru-view .onboarding#school-modal #school-list ul li a:active, .uguru-view .onboarding#school-modal #school-list ul li a:focus, .uguru-view .onboarding#school-modal #school-list ul li a:hover, .uguru-view .onboarding#school-modal #school-list-modal ul li a:active, .uguru-view .onboarding#school-modal #school-list-modal ul li a:focus, .uguru-view .onboarding#school-modal #school-list-modal ul li a:hover {
   background: rgba(255, 255, 255, 0.2); }
-
 .uguru-view .onboarding#major header:before {
   background: url(../../img/onboarding/major.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat; }
-
 .uguru-view .onboarding#major #major-list ul li a {
   margin-bottom: 1px;
   font-weight: 300; }
-
 .uguru-view .onboarding#major #major-list ul li a:active, .uguru-view .onboarding#major #major-list ul li a:focus, .uguru-view .onboarding#major #major-list ul li a:hover {
   background: rgba(255, 255, 255, 0.2); }
-
 .uguru-view .onboarding#major #major-list ul .major-business a {
   border-color: #50A5DD; }
-
 .uguru-view .onboarding#major #major-list ul .major-arts a {
   border-color: #81B566; }
-
 .uguru-view .onboarding#major #major-list ul .major-science a {
   border-color: #F9D57B; }
-
 .uguru-view .onboarding#major #major-list ul .major-math a {
   border-color: #DB1988; }
-
 .uguru-view .request#request-empty #request-content {
   height: calc(100% - 50px - 64px); }
-
 .uguru-view .request#request-empty #request-message {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -767,16 +730,13 @@ body {
       font-weight: 600;
       text-align: center;
       text-transform: uppercase; }
-
 .uguru-view .request#request header:before {
   background: url(../images/school.jpg) no-repeat center center/cover; }
-
 .uguru-view .request#request header .request-header h1 {
   padding-top: 20px;
   width: 100%;
   text-align: center;
   font-size: 24px; }
-
 .uguru-view .request#request header .request-header .request-icon {
   border-radius: 1000px;
   -ms-box-orient: horizontal;
@@ -812,10 +772,8 @@ body {
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg); }
-
 .uguru-view .request#request #request-content {
   height: calc(100% / 3 * 2); }
-
 .uguru-view .request#request #request-list {
   height: calc(100% - 64px);
   overflow: auto; }
@@ -836,7 +794,6 @@ body {
       width: 50px;
       height: 50px;
       background: #8A9EA3; }
-
 .uguru-view .request #request-tabs ul {
   list-style: none;
   margin: 0;
@@ -907,10 +864,9 @@ body {
       color: #2B3234;
       font-size: 12px;
       line-height: 20px; }
-
 .uguru-view #credibility #credit-slider {
   position: relative;
-  height: 195px; }
+  height: 110px; }
   .uguru-view #credibility #credit-slider ul {
     list-style: none;
     margin: 0;
@@ -935,8 +891,8 @@ body {
     bottom: 0;
     width: 100%; }
     .uguru-view #credibility #credit-slider ul li {
-      width: 25%;
-      font-size: 20px;
+      width: 20%;
+      font-size: 14px;
       font-weight: 400;
       text-align: center; }
       .uguru-view #credibility #credit-slider ul li a {
@@ -948,8 +904,8 @@ body {
           border-radius: 1000px;
           display: block;
           margin: 0 auto 15px;
-          width: 50px;
-          height: 50px;
+          width: 35px;
+          height: 35px;
           background: white; }
       .uguru-view #credibility #credit-slider ul li a:active, .uguru-view #credibility #credit-slider ul li a:focus, .uguru-view #credibility #credit-slider ul li a:hover {
         border-color: #DB1988;
@@ -961,19 +917,18 @@ body {
       color: #69B3A5; }
       .uguru-view #credibility #credit-slider ul .active a .credit-icon {
         background: #69B3A5; }
-
-.uguru-view #credibility #credit-content {
+.uguru-view #credibility #credibility-content-wrapper {
   position: relative;
   background: #40484B;
   height: calc(100% / 3 * 2);
   padding: 15px;
   text-align: center; }
-  .uguru-view #credibility #credit-content h1 {
+  .uguru-view #credibility #credibility-content-wrapper h1 {
     font-size: 24px;
     text-transform: uppercase; }
-  .uguru-view #credibility #credit-content p {
+  .uguru-view #credibility #credibility-content-wrapper p {
     margin: 15px 0; }
-  .uguru-view #credibility #credit-content #credit-facebook {
+  .uguru-view #credibility #credibility-content-wrapper .credit-content-slide {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -982,11 +937,15 @@ body {
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    display: none;
     width: 100%;
     padding: 15px 15px 64px; }
-    .uguru-view #credibility #credit-content #credit-facebook button {
+    .uguru-view #credibility #credibility-content-wrapper .credit-content-slide button {
+      background: #69B3A5; }
+    .uguru-view #credibility #credibility-content-wrapper .credit-content-slide.active {
+      display: block; }
+    .uguru-view #credibility #credibility-content-wrapper .credit-content-slide#credit-facebook button {
       background: #3b5998; }
-
 .uguru-view #profile {
   font-size: 18px; }
   .uguru-view #profile #profile-fixed {
@@ -1057,7 +1016,7 @@ body {
         display: block;
         margin: 0 auto;
         width: 100%;
-        max-width: 120px;
+        max-width: 100px;
         padding: 5px;
         background: rgba(255, 255, 255, 0.5); }
       .uguru-view #profile #profile-desc #profile-icon svg {
@@ -1117,7 +1076,7 @@ body {
       .uguru-view #profile #profile-info .profile-inside h1 {
         background: rgba(255, 255, 255, 0.05);
         color: white; }
-      .uguru-view #profile #profile-info .profile-inside #profile-courses ul {
+      .uguru-view #profile #profile-info .profile-inside #profile-courses ul.courses {
         list-style: none;
         margin: 0;
         padding: 0;
@@ -1132,22 +1091,42 @@ body {
         -webkit-flex-flow: row wrap;
         flex-flow: row wrap;
         text-align: center; }
-        .uguru-view #profile #profile-info .profile-inside #profile-courses ul li {
+        .uguru-view #profile #profile-info .profile-inside #profile-courses ul.courses li {
           padding: 10px 15px;
           width: 50%;
-          font-weight: 600; }
-        .uguru-view #profile #profile-info .profile-inside #profile-courses ul li:nth-child(1) {
+          font-weight: 600;
+          position: relative; }
+        .uguru-view #profile #profile-info .profile-inside #profile-courses ul.courses li:nth-child(1) {
           background: #50A5DD; }
-        .uguru-view #profile #profile-info .profile-inside #profile-courses ul li:nth-child(2) {
+        .uguru-view #profile #profile-info .profile-inside #profile-courses ul.courses li:nth-child(2) {
           background: #F9D57B; }
-        .uguru-view #profile #profile-info .profile-inside #profile-courses ul li:nth-child(3) {
+        .uguru-view #profile #profile-info .profile-inside #profile-courses ul.courses li:nth-child(3) {
           background: #55A4B7; }
-        .uguru-view #profile #profile-info .profile-inside #profile-courses ul li:nth-child(4) {
+        .uguru-view #profile #profile-info .profile-inside #profile-courses ul.courses li:nth-child(4) {
           background: #E5753C; }
-        .uguru-view #profile #profile-info .profile-inside #profile-courses ul li:nth-child(5) {
+        .uguru-view #profile #profile-info .profile-inside #profile-courses ul.courses li:nth-child(5) {
           background: #69B3A5; }
-        .uguru-view #profile #profile-info .profile-inside #profile-courses ul li:nth-child(6) {
+        .uguru-view #profile #profile-info .profile-inside #profile-courses ul.courses li:nth-child(6) {
           background: #DB1988; }
+      .uguru-view #profile #profile-info .profile-inside #profile-courses ul.default {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        text-align: center; }
+        .uguru-view #profile #profile-info .profile-inside #profile-courses ul.default li {
+          padding: 10px 15px;
+          width: 100%;
+          font-weight: 600; }
       .uguru-view #profile #profile-info .profile-inside h1 {
         padding: 10px;
         font-size: 14px;
@@ -1179,22 +1158,83 @@ body {
               padding: 10px 15px;
               width: 50%;
               font-weight: 600; }
-      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-major div ul li, .uguru-view #profile #profile-info .profile-inside #profile-other #profile-job div ul li {
+      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-major div ul.majors li, .uguru-view #profile #profile-info .profile-inside #profile-other #profile-job div ul.majors li {
         width: 100%;
-        font-weight: 200; }
-      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-skills div ul li:nth-child(1) {
+        font-weight: 200;
+        position: relative; }
+      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-major div ul.default, .uguru-view #profile #profile-info .profile-inside #profile-other #profile-job div ul.default {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        text-align: center; }
+        .uguru-view #profile #profile-info .profile-inside #profile-other #profile-major div ul.default li, .uguru-view #profile #profile-info .profile-inside #profile-other #profile-job div ul.default li {
+          padding: 10px 15px;
+          width: 100%;
+          font-weight: 600; }
+      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-skills div ul.skills li {
+        position: relative; }
+      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(1) {
         background: #50A5DD; }
-      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-skills div ul li:nth-child(2) {
+      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(2) {
         background: #69B3A5; }
-      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-skills div ul li:nth-child(3) {
+      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(3) {
         background: #55A4B7; }
-      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-skills div ul li:nth-child(4) {
+      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-skills div ul.skills li:nth-child(4) {
         background: #81B566; }
-      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-languages div ul li:nth-child(1) {
+      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-skills div ul.default {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        text-align: center; }
+        .uguru-view #profile #profile-info .profile-inside #profile-other #profile-skills div ul.default li {
+          padding: 10px 15px;
+          width: 100%;
+          font-weight: 600; }
+      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-languages div ul.languages li {
+        position: relative; }
+      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-languages div ul.languages li:nth-child(1) {
         background: #DB1988; }
-      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-languages div ul li:nth-child(2) {
+      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-languages div ul.languages li:nth-child(2) {
         background: #E5753C; }
-
+      .uguru-view #profile #profile-info .profile-inside #profile-other #profile-languages div ul.default {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        text-align: center; }
+        .uguru-view #profile #profile-info .profile-inside #profile-other #profile-languages div ul.default li {
+          padding: 10px 15px;
+          width: 100%;
+          font-weight: 600; }
 @media screen and (max-width: 320px) {
   .uguru-view body, .uguru-view input, .uguru-view button {
     font-size: 20px; }
@@ -1368,34 +1408,26 @@ body {
       width: 100%;
       height: 100%;
       background: url(../../img/school.jpg) center center/cover; } }
-
 .menu-guru .list {
   background: #40484B; }
-
 .menu-guru .list-item.active, .menu-guru .list-item.activated {
   background: #8A9EA3; }
-
 .menu-guru .list-item .list-item-icon svg path, .menu-guru .list-item .list-item-icon svg circle {
   stroke: #fff; }
-
 .menu-guru .list-item-profile {
   background: rgba(138, 158, 163, 0.75); }
-
 .menu-guru .list-item-agenda {
   background: white;
   color: #2B3234; }
   .menu-guru .list-item-agenda.active, .menu-guru .list-item-agenda.activated {
     background: rgba(255, 255, 255, 0.9); }
-
 .menu-guru .list-item-guru {
   display: none; }
-
 .menu-guru .list-item-student {
   background: rgba(138, 158, 163, 0.75); }
 
 .menu-student .list {
   background: white; }
-
 .menu-student .list-item {
   color: #40484B; }
   .menu-student .list-item .list-item-icon svg path {
@@ -1405,25 +1437,21 @@ body {
     color: white; }
     .menu-student .list-item.activated svg path, .menu-student .list-item.active svg path {
       stroke: white; }
-
 .menu-student .list-item-profile {
   background: #55A4B7;
   color: white; }
   .menu-student .list-item-profile .list-item-icon svg circle {
     stroke: white; }
-
 .menu-student .list-item-agenda {
   background: #40484B;
   color: white; }
   .menu-student .list-item-agenda:active, .menu-student .list-item-agenda:hover {
     background: rgba(64, 72, 75, 0.9); }
-
 .menu-student .list-item-student {
   background: #40484B;
   color: white; }
   .menu-student .list-item-student svg path {
     stroke: white; }
-
 .menu-student .list-item-guru {
   background: #55A4B7;
   color: white; }
@@ -1432,7 +1460,6 @@ body {
 
 #guru-home header:before {
   background: url(../../img/onboarding/school.jpg) no-repeat center center/cover; }
-
 #guru-home #guru-ranking {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1507,3 +1534,5 @@ body {
 
 .tabs {
   border: 0; }
+
+/*# sourceMappingURL=style.css.map */

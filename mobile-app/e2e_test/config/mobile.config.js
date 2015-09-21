@@ -1,15 +1,25 @@
 exports.config = {
     framework: 'jasmine2',
+    //appium port has to be 4723
      seleniumAddress: 'http://localhost:4723/wd/hub',
 
 
          capabilities: {
-                 'browserName': 'safari',
-                 'appium-version': '1.4.11',
-                 platformName: 'ios',
-                 // deviceID: '0800695a006a24a8',
-                  platformVersion: '8.4',
-                   deviceName: 'iPhone 6',
+
+
+          // //ios settings
+          //        'browserName': 'safari',
+          //        'appium-version': '1.4.11',
+          //        platformName: 'ios',
+          //         platformVersion: '8.4',
+          //          deviceName: 'iPhone 6'
+
+         //android settings
+                'browserName': 'chrome',
+                'appium-version': '1.4.11',
+                platformName: 'android',
+                 platformVersion: '5.1',
+                  deviceName: 'Google Nexus 5'
            
          },
 
