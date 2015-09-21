@@ -3,8 +3,8 @@
 .guru-profile-view li {
   line-height: 1.25em; }
 .guru-profile-view #btn-edit-profile {
-  bottom: 49px;
-  background: rgba(105, 179, 165, 0.8); }
+  bottom: 49px !important;
+  background: #69b3a5 !important; }
 .guru-profile-view #btn-edit-profile.active,
 .guru-profile-view #btn-edit-profile.activated {
   opacity: 1;
@@ -12,5 +12,11 @@
 .guru-profile-view #profile {
   overflow-y: scroll;
   padding-bottom: 49px; }
+
+#guru-profile-img {
+  height: 100px;
+  width: 100px;
+  max-height: 100px;
+  max-width: 100px; }
 
 /*# sourceMappingURL=guru-profile.css.map */

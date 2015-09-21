@@ -349,7 +349,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
 
     var isSideMenuOpen = function(ratio) {
-      console.log(ratio);
       if (!ratio && ratio !== -1) {
         $scope.sideMenuActive = false;
       } else {

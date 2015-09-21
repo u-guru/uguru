@@ -20,7 +20,8 @@
     </header>
 
   <ion-content class='white-bg has-header' scroll='false'>
-    <iframe name="Uguru FAQ" ng-src="http://0.0.0.0:5000/faq-only/"></iframe>
+    <iframe name="Uguru FAQ" ng-if='isLocalServer' ng-src="http://192.168.42.78:5000/faq-only/"></iframe>
+    <iframe name="Uguru FAQ" ng-if='!isLocalServer' ng-src="https://uguru.me/faq-only/"></iframe>
   </ion-content>
 </section>
 </ion-modal-view>

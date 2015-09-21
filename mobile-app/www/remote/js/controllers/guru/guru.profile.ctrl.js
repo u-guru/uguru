@@ -23,6 +23,9 @@ angular.module('uguru.guru.controllers')
     $scope.profile = {edit_mode:false, showCredibility:false};
     $scope.root.vars.guru_mode = true;
 
+    // credibility only variable
+    $scope.activeTabIndex = 0;
+
     $scope.user_skills = [{name: "CSS3"}, {name: "Javascript"}, {name: "Photoshop"}, {name: "HTML5"}];
     console.log($scope.user.skills);
     $scope.user.languages = $scope.user.languages || [{name:"English"}, {name:"Chinese"}];
@@ -226,7 +229,7 @@ angular.module('uguru.guru.controllers')
     }
 
 
-
+    console.log($scope.user)
     $scope.saveGuruProfile = function() {
       $scope.success.show(0, 1500, 'Profile Successfully Saved');
       $scope.root.vars.profile.edit_mode = !$scope.root.vars.profile.edit_mode;

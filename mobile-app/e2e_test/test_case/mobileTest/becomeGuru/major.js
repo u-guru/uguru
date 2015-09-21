@@ -13,10 +13,19 @@ describe('Major Test', function () {
 		guruButton.click();
 
 	});
+	it('Current Page Title: Major',function()
+	{
+		expect(element(by.css('.third.text-center')).getText()).toBe("SELECT YOUR MAJOR")
+	});
+
 	it('check Data repeating',function()
 	{
 		doc.checkLists('major-list','major.name');
 	});
+
+
+
+
 	describe('Check Search Results',function()
 	{
 		it('send a key',function()
