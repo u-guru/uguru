@@ -20,7 +20,7 @@ angular.module('uguru.root.services')
                       // if ($scope.platform.mobile) {
                         var source_type = 1;
                       // }
-                      
+
                         var cameraOptions = {
                           quality: 15,
                           destinationType: Camera.DestinationType.DATA_URL,
@@ -36,9 +36,15 @@ angular.module('uguru.root.services')
                         navigator.camera.getPicture(cameraSuccess, cameraError, cameraOptions);
 
                         function cameraSuccess(imageData) {
-                          var image = document.getElementById(elemId);
 
-                          image.src = 'data:image/jpeg;base64,' + imageData;
+                          if (elemId) {
+
+                            var image = document.getElementById(elemId);
+                            if (image) {
+                              image.src = 'data:image/jpeg;base64,' + imageData;
+                            }
+
+                          }
 
                           $scope.photoUploaded = true;
 
@@ -50,9 +56,9 @@ angular.module('uguru.root.services')
 
 
                           //if user is uploading a transcript
-                          if ($scope.root.vars.profile_url_changed) {
-                            formData.append('transcript_url', is_transcript);
-                          }
+                          // if ($scope.root.vars.profile_url_changed) {
+                          //   formData.append('transcript_url', is_transcript);
+                          // }
                           //if user is logged in
                           if ($scope.root.vars.profile_url_changed && $scope.user.id) {
                             formData.append('profile_url', $scope.user.id);

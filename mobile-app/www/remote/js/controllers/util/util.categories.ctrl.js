@@ -12,10 +12,12 @@ angular.module('uguru.util.controllers')
   '$ionicModal',
   '$ionicTabsDelegate',
   '$ionicSideMenuDelegate',
+  '$ionicGesture',
 
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
-    $ionicSideMenuDelegate) {
+    $ionicSideMenuDelegate, $ionicGesture) {
+
 
     if (!img_base || !img_base.length) {
       categories_img_base = 'remote/';
@@ -41,7 +43,30 @@ angular.module('uguru.util.controllers')
     $scope.launchCategoryModal = function(category) {
       $scope.active_category.active = true;
       $scope.active_category = category;
+      updateMainBackground(category.bg_url);
       $scope.categorySkillsModal.show();
+    }
+
+    var updateMainBackground = function(url) {
+      var headerElem = document.getElementById('category-skills');
+      cssString = "#category-skills:before {background: url(" + url + ") no-repeat center center/cover !important;}";
+
+      style = document.createElement('style');
+      style.type = 'text/css';
+      if (style.styleSheet){
+        style.styleSheet.cssText = cssString;
+      } else {
+        style.appendChild(document.createTextNode(cssString));
+      }
+
+      headerElem.appendChild(style);
+
+    }
+
+    $scope.skillsModalDrag = function(e) {
+      if (e.gesture.deltaY > 175) {
+        $scope.categorySkillsModal.hide();
+      }
     }
 
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
@@ -49,7 +74,7 @@ angular.module('uguru.util.controllers')
       for (var i = 0; i < guru_courses.length; i++) {
         var guru_course = guru_courses[i];
         guruCategoryCourses.push({
-          name: guru_course.name,
+          name: guru_course.short_name || guru_course.name, //old data
           id: guru_course.id,
           active: true
         });
