@@ -25,8 +25,10 @@
         </li>
         <li class="ng-class: {'active': activeTabIndex === 2}">
           <a ng-click='activeTabIndex = 2;'>
-            <span class="credit-icon"></span>
-
+            <span class="credit-icon" ng-if="!user.phone_number_confirmed"></span>
+            <span class='credibility-checkmark' ng-if='user.phone_number_confirmed'> 
+              <i class='icon ion-checkmark'> </i>
+            </span>
             <span class="credit-label">Phone</span>
           </a>
         </li>
@@ -80,9 +82,15 @@
 
       <!-- Phone Auth -->
       <div id="phone-number-auth" class="credit-content-slide ng-class:{'active': activeTabIndex === 2}">
-        <h1>Verify your phone</h1>
-        <p>We won't share this with anyone</p>
-        <button class="btn-bold" ng-click='showPopupEditPhoneNumber()'>Add my number</button>
+        <div ng-if='!user.phone_number_confirmed'>
+          <h1>Verify your phone</h1>
+          <p>We won't share this with anyone</p>
+          <button class="btn-bold" id='launch-phone-confirm-popup' ng-click='confirmPhonePopup()'>Add my number</button>
+        </div>
+        <div ng-if='user.phone_number_confirmed'>
+          <h1><strong>{{user.phone_number}}</strong><br> is connected!</h1>
+          <p>We will not use your phone number without your permission</p>
+        </div>
       </div>
 
       <!-- Email Auth -->
@@ -96,7 +104,7 @@
       <div id="former-experience" class="credit-content-slide ng-class:{'active': activeTabIndex === 4}">
         <h1>Add Relevant Experience</h1>
         <p>We won't share this with anyone</p>
-        <button class="btn-bold bg-shamrock">Add Item</button>
+        <button class="btn-bold bg-shamrock" ng-click=>Add Item</button>
       </div>
 
 
