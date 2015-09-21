@@ -7,19 +7,26 @@
       <ul>
         <li class="ng-class: {'active': activeTabIndex === 0}">
           <a ng-click='activeTabIndex = 0;'>
-            <span class="credit-icon"></span>
+            <span class="credit-icon" ng-if='!user.transcript_file || !user.transcript_file.url'></span>
+            <span class='credibility-checkmark' ng-if='user.transcript_file && user.transcript_file.id'> 
+              <i class='icon ion-checkmark'> </i>
+            </span>
             <span class="credit-label">Grades</span>
           </a>
         </li>
         <li class="ng-class: {'active': activeTabIndex === 1}">
           <a ng-click='activeTabIndex = 1;'>
-            <span class="credit-icon"></span>
+            <span class="credit-icon" ng-if='!user.fb_id'></span>
+            <span class='credibility-checkmark' ng-if='user.fb_id'> 
+              <i class='icon ion-checkmark'> </i>
+            </span>
             <span class="credit-label">Facebook</span>
           </a>
         </li>
         <li class="ng-class: {'active': activeTabIndex === 2}">
           <a ng-click='activeTabIndex = 2;'>
             <span class="credit-icon"></span>
+
             <span class="credit-label">Phone</span>
           </a>
         </li>
@@ -41,31 +48,48 @@
       
       <!-- Transcript upload -->
       <div id="credit-transcript" class="credit-content-slide ng-class:{'active': activeTabIndex === 0}">
-        <h1>Upload your transcript</h1>
-        <p>We will never share your data w/o your permission first</p>
-        <button class="btn-bold">Upload your transcript</button>
+        <!-- if user has no transcript --> 
+        <div ng-if='!user.transcript_file || !user.transcript_file.url'>
+          <h1>Upload your transcript</h1>
+          <p>We will never share your data w/o your permission first</p>
+          <button ng-click='showActionSheetTranscriptPhoto()' class="btn-bold">Upload your transcript</button>
+        </div>
+
+        <!-- If user has no transcript URL -->
+        <div ng-if='user.transcript_file && user.transcript_file.url'>
+          <h1>Transcript Submitted</h1>
+          <p>Thank you for uploading your transcript. We're in the process of verifying.</p>
+          <button ng-click='showActionSheetTranscriptPhoto()' class="btn-bold bg-cerise">Edit your transcript</button>
+        </div>
+
       </div>
 
 
       <!-- Facebook slide -->
       <div id="credit-facebook" class="credit-content-slide ng-class:{'active': activeTabIndex === 1}">
-        <h1>Find Your Facebook Friends</h1>
-        <p>Connect now to see <br/>which Gurus you know!</p>
-        <button class="btn-bold">Connect with Facebook</button>
+        <div ng-if='!user.fb_id'>
+          <h1>Find Your Facebook Friends</h1>
+          <p>Connect now to see <br/>which Gurus you know!</p>
+          <button class="btn-bold" ng-click='connectWithFacebook()'>Connect with Facebook</button>
+        </div>
+         <div ng-if='user.fb_id'>
+          <h1>Your Facebook is connected</h1>
+          <p>Don't worry - we will never post with your permission</p>
+        </div>
       </div>
 
       <!-- Phone Auth -->
       <div id="phone-number-auth" class="credit-content-slide ng-class:{'active': activeTabIndex === 2}">
         <h1>Verify your phone</h1>
         <p>We won't share this with anyone</p>
-        <button class="btn-bold">Add my number</button>
+        <button class="btn-bold" ng-click='showPopupEditPhoneNumber()'>Add my number</button>
       </div>
 
       <!-- Email Auth -->
       <div id="phone-number-auth" class="credit-content-slide ng-class:{'active': activeTabIndex === 3}">
         <h1>Verify your .edu email</h1>
         <p>We won't share this with anyone</p>
-        <button class="btn-bold bg-shamrock">Add my number</button>
+        <button class="btn-bold bg-shamrock">Confirm Your Email</button>
       </div>
 
       <!-- Experience Auth -->
@@ -93,6 +117,8 @@
       <i class='icon ion-gear-a'> </i>
     </a>
   </div>
+
+   <input type='file' id='file-input-guru-add-transcript' onchange="angular.element(this).scope().file_changed_transcript(this)" style='display:none'/>
 
 <!-- <ion-scroll class='full-height'>
 <div class='pure-g-c flex-column flex-space-between credibility'>
