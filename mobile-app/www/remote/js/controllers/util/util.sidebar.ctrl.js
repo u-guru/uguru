@@ -57,7 +57,7 @@ angular.module('uguru.util.controllers')
 
     var schoolList = document.querySelectorAll('#school-list')[0];
 
-    $scope.search_text = $scope.user.university.name || '';
+    $scope.search_text = ($scope.user.university.name || '');
     $scope.location = false;
     $scope.universities = University.getTargetted();
 

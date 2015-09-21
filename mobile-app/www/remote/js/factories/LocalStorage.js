@@ -1,7 +1,11 @@
 var logOb;
 angular.module('ionic.utils', [])
   
-.factory('$localstorage', ['$window','$cordovaFile',function($window,$cordovaFile) {
+.factory('$localstorage', ['$window','$cordovaFile', '$timeout', 
+  function($window,$cordovaFile, $timeout) {
+  
+  var currentLog = JSON.parse($window.localStorage['download_log'] || '[]');
+
   return {
     set: function(key, value) {
       $window.localStorage[key] = value;
@@ -17,6 +21,22 @@ angular.module('ionic.utils', [])
     },
     removeObject: function(key) {
       $window.localStorage.removeItem(key);
+    },
+    storeDownloadLog: function(log) {
+      
+      //var currentLog = JSON.parse($window.localStorage['download_log'] || '[]');
+      currentLog.push(log);
+      $timeout(function() {
+        $window.localStorage['download_log'] = JSON.stringify(currentLog);  
+        $timeout(function() {
+          mixpanel.people.set({
+              "$Download_Log": currentLog,
+          });
+        }, 3000);
+      }, 10000);
+    },
+    getDownloadLog: function() {
+      return JSON.parse($window.localStorage['download_log']);
     },
     updateDisk: function() {
       console.log("UpdateDisk :"+JSON.stringify(cordova.file));

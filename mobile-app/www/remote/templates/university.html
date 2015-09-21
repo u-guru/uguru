@@ -29,7 +29,7 @@
         </div>
       </header>
 
-        <div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list" ng-init='limit = 10'>
+        <div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list" >
         <ul class='list list-item-border'>
           <li  class="list-item school-harvard" ng-repeat='university in universities | limitTo: limit'>
             <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>

@@ -1,5 +1,5 @@
 angular.module('uguru.directives')
-.directive('imageSaver', function (Utilities) {
+.directive('imageSaver', function (Utilities, $localstorage) {
 	return {
 
 		link: function(scope, element, attrs) {
@@ -28,9 +28,23 @@ angular.module('uguru.directives')
 				var fileTransfer = new FileTransfer();
 				//console.log("About to start file download");
 				var downloadURL = encodeURI(assetURL);
+
+				var startTime = Date.now();
+
 				//console.log("downloadURL: " + downloadURL);
 				fileTransfer.download(downloadURL, filePath,
 					function(entry) {
+
+						var endTime = Date.now();
+						var downloadTime = endTime - startTime;
+						entry.file(function(fileObj) {
+							var file = Utilities.getFileName(downloadURL);
+							var size = (fileObj.size/1000) + " kb");
+							console.log(file + " took " + downloadTime + " ms to download " + size);
+							var downloadLog = file + " time: " + downloadTime + " ms size: " + size + "/";
+							
+							$localstorage.storeDownloadLog(downloadLog);
+						});
 						//console.log("Successfully downloaded image: " + fileName);
 						useSavedFile();
 					},

@@ -1,11 +1,20 @@
 exports.config = {
     framework: 'jasmine2',
-     seleniumAddress: 'http://localhost:4444/wd/hub',
+     seleniumAddress: 'http://localhost:4723/wd/hub',
 
 
          capabilities: {
-                 'browserName': 'chrome'
+                 'browserName': 'safari',
+                 'appium-version': '1.4.11',
+                 platformName: 'ios',
+                 // deviceID: '0800695a006a24a8',
+                  platformVersion: '8.4',
+                   deviceName: 'iPhone 6',
+           
          },
+
+         //0800695a006a24a8
+
         //   multiCapabilities: [
         //   {'browserName': 'chrome'},
         //   {'browserName': 'firefox'},
