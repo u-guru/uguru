@@ -2,7 +2,7 @@
   <u-slide>
     <div ng-include="img_base + BASE + 'templates/access.html'"></div>
   </u-slide>
-  <u-slide u-before-enter='testBefore()' u-after-enter='testAfter()'>
+  <u-slide u-before-enter='beforeEnter()' u-after-enter='afterEnter()'>
     <ion-view class='uguru-view university-view' >
 
     <section id="school" class="onboarding" >
@@ -20,8 +20,8 @@
           <div class="absolute bottom-0 left-0 full-x input-search-ghost">
             <input type="search" class=''
                     placeholder="Search for my university"
-                    ng-model="search_text"
-                    ng-keyup="query(search_text)"2
+                    ng-model="input.search_text"
+                    ng-keyup="query(input.search_text)"
             />
             <a ng-click='getGPSCoords()' class='geolocation-icon'>
               <i class='icon ion-navigate'></i>

@@ -96,6 +96,11 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   accessInput.addEventListener('keyup', submitListener);
 
   function submitListener(e) {
+
+    if($scope.access.codeInput.length > 0) {
+      $scope.access.errorInputMsg = '';
+    }
+
     //console.log('input field: ' + $scope.access.codeInput);
     var key = e.keyCode || e.key || e.which;
     if (key === 13) {

@@ -34,16 +34,13 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   mixpanel.identify(mixpanelID);
   
-
   document.addEventListener("pause", lastSearch, false);
   document.addEventListener("backbutton", lastSearch, false);
   function lastSearch() {
     mixpanel.track("Paused/Back", {
-      "$Search_Input": $scope.search_text
+      "$Search_Input": $scope.input.search_text
     });
   }
-
-
 
   mixpanel.people.set({
       "$email": "nicholaslam.berkeley@gmail.com",
@@ -85,7 +82,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   var stopLoop = false;
   var stats = new Stats();
 
-    $scope.testBefore = function() {
+    $scope.beforeEnter = function() {
       stopLoop = false;
       var fpsArray = [];
       function update() {
@@ -120,27 +117,12 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       console.log('called beforeEnter');
     };
 
-    $scope.testAfter = function() {
-
+    $scope.afterEnter = function() {
       stopLoop = true;
-
-
       console.log("called afterEnter");
     };
 
-
     console.log("passed deviceInfo: " + deviceInfo);
-
-    $scope.getGPSCoords = function() {
-      if(!isTimeout) {
-        isTimeout = true;
-        getGPS();
-        $timeout(function() { isTimeout = false;}, 4000);
-      } else {
-        console.log("still waiting for $timeout to clear, please try again shortly");
-      }
-    }
-
 
 
     var queryTimeout = false;
@@ -163,8 +145,9 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
     }
 
-
-    $scope.search_text = '';
+    $scope.input = {
+      search_text: ''
+    }
     $scope.location = false;
     $scope.universities = University.getTargetted();
     sortByRank(University.getTargetted());
@@ -176,10 +159,10 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       }
     }
 
-    // $ionicSlideBoxDelegate.update();
     //back button
     $scope.goToAccess = function() {
-    $ionicSlideBoxDelegate.previous();
+      $scope.input.search_text = '';
+      $ionicSlideBoxDelegate.previous();
     }
 
     function sortByRank(list) {
@@ -196,7 +179,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     $scope.universitySelected = function(university, $event) {
       mixpanel.track("Selected University", {
           "$University": university.name,
-          "$Search_Input": $scope.search_text
+          "$Search_Input": $scope.input.search_text
       });
       mixpanel.people.set({
           "$University": university.name,
@@ -211,7 +194,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       }
       mixpanel.track("Changed University", {
           "$University": university.name,
-          "$Search_Input": $scope.search_text
+          "$Search_Input": $scope.input.search_text
       });
       mixpanel.people.set({
           "$University": university.name,
@@ -219,7 +202,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       $scope.loader.show();
       $scope.user.university_id = university.id;
       $scope.user.university = university;
-      $scope.search_text = '';
+      $scope.input.search_text = '';
 
       //update user to locat storage
       $scope.rootUser.updateLocal($scope.user);
@@ -245,8 +228,17 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
 
     var isTimeout = false;
-    function getGPS() {
+    $scope.getGPSCoords = function() {
+      if(!isTimeout) {
+        isTimeout = true;
+        getGPS();
+        $timeout(function() { isTimeout = false;}, 4000);
+      } else {
+        console.log("still waiting for $timeout to clear, please try again shortly");
+      }
+    }
 
+    function getGPS() {
 
       var schoolList = document.querySelectorAll('#school-list')[0];
 
