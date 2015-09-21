@@ -23,9 +23,9 @@ with open('fa15_final.json') as data_file:
 
 def get_school_data_information(city_info):
 	city_array = []
-	for loop_cities in city_info[0:5]:
+	for loop_cities in city_info[0:2]:
 		dictionary = {}
-		search_results = yelp_api.search_query(location = loop_cities)
+		search_results = yelp_api.search_query(location = loop_cities, limit = 1000)
 		dictionary['business_information:'] = search_results
 		city_array.append(dictionary)
 		with open(output,'wb') as outfile:
@@ -41,7 +41,7 @@ with open(output) as second_step_data:
 			soup = BeautifulSoup(requests.get(url).text)
 			try:
 			
-				business_name = soup.find('h1', attrs = {'class':'biz-page-title embossed-text-white'}).text.replace('\n','').replace('\u2019','')
+				business_name = soup.find('h1', attrs = {'class':'biz-page-title embossed-text-white'}).text.replace('\n','').replace('\u2019','').strip()
 			
 			except AttributeError:
 				continue
@@ -54,8 +54,8 @@ with open(output) as second_step_data:
 				menu_hyper_link = hour_range.findAll('div', attrs = {'class':'iconed-list-story'})
 				for hour_text,price_text in zip(hour_info,price_info):
 					first_dict = {}
-					first_dict['today_hour'] = hour_text.text.replace('\n','')
-					first_dict['price_range'] = price_text.text.replace('\n','')
+					first_dict['today_hour'] = hour_text.text.replace('\n','').strip()
+					first_dict['price_range'] = price_text.text.replace('\n','').strip()
 					biggest_array.append(first_dict)
 				for a_href in menu_hyper_link: #BELOW FROM THIS IS MENU SCRAPING
 					a_link = a_href.findAll('a')
@@ -68,32 +68,37 @@ with open(output) as second_step_data:
 							for name in main_wrapper:
 								try:
 									second_dict = {}
-									second_dict['item_name'] = name.find('h3').text.replace('\n','')
-									second_dict['item_description'] = name.find('p', attrs = {'class':'menu-item-details-description'}).text.replace('\n','')
+									second_dict['item_name'] = name.find('h3').text.replace('\n','').stirp()
+									second_dict['item_description'] = name.find('p', attrs = {'class':'menu-item-details-description'}).text.replace('\n','').strip()
 									biggest_array.append(second_dict)
 								except AttributeError:
+									pass
 									continue
 
 						else:
-							print "This city doesn't have menu!"
-			#BELOW ARE NOT IN THE FOOR LOOP ABOVE				
+							pass
+						
 			biz_website = soup.findAll('div',attrs = {'class':'biz-website'})
 			for a_biz in biz_website:
 				get_me_all_link = a_biz.findAll('a')
 				for text in get_me_all_link:
 					third_dict = {}
-					third_dict['business_url'] = text.text.replace('\n','')
+					third_dict['business_url'] = text.text.replace('\n','').strip()
 					biggest_array.append(third_dict)
 			fourth_dict = {}		
-			fourth_dict['total_rating_for_this_business'] = soup.find('span', attrs = {'class':'review-count rating-qualifier'}).text.replace('\n','')
+			fourth_dict['total_rating_for_this_business'] = soup.find('span', attrs = {'class':'review-count rating-qualifier'}).text.replace('\n','').strip()
 			biggest_array.append(fourth_dict)
 			opening_information = soup.findAll('div', attrs = {'class':'ywidget biz-hours'})#OPENING HOURS IN TOTAL	
 			for opening_info in opening_information:
 				fifth_dict = {}
-			 	fifth_dict['Hours'] = opening_info.text.replace('Edit business info', ' ').replace('\n','')
+			 	fifth_dict['Hours'] = opening_info.text.replace('Edit business info', ' ').replace('\n','').strip()
 			 	biggest_array.append(fifth_dict)
-
-				empty_array[business_name] = biggest_array
+			total_ratings = soup.findAll('div', attrs = {'class':'rating-very-large'})
+			for ratings in total_ratings:
+				sixth_dict = {}
+			 	sixth_dict['average_rating'] = ratings.find('i')['title']
+			 	#biggest_array.append(sixth_dict)
+				empty_array[business_name] = biggest_array	
 			
 			with open('parsed_data.json','wb') as outfile:
 				json.dump(empty_array,outfile,indent=4)	 	
