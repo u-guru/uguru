@@ -116,7 +116,7 @@ describe('university Test', function () {
    				{
 		   			expect(result.x).toBe(0,"location X is moved");
    				});
-   			 browser.sleep(10000);
+   			 // browser.sleep(10000);
    		});
 		it("drag right",function()
    		{

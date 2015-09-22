@@ -20,6 +20,7 @@ var global = function() {
     ele.then(function(items)
     {
         console.log("slides :"+ items.length)
+        browser.wait(EC.visibilityOf(items[index]),1000);
         browser.actions().
         dragAndDrop(items[index], {x: xV, y: yV}).
         perform();
@@ -144,17 +145,22 @@ var global = function() {
     element.all(by.css(str)).then(function (items) {
           // expect(items.length).toBe(5);
           var temp;
-          items[0].element(typeEle).getAttribute(attriName).then(function(value)
+          for(var j = 0 ; j < items.length ; j++)
           {
-            temp = value;
-            for (var i = 0 ; i <items.length ; i++)
+            items[j].element(typeEle).getAttribute(attriName).then(function(value)
             {
-              items[i].element(typeEle).getAttribute(attriName).then(function(value)
+              temp = value;
+
+              for (var i = j+1 ; i <items.length ; i++)
               {
-                expect(value).not.toBe(temp,"should have different address");
-              }); 
-            }
-          });           
+                items[i].element(typeEle).getAttribute(attriName).then(function(value)
+                {
+                  expect(value).not.toBe(temp,"should have different address, Index : "+ j + " " , i);
+                }); 
+              }
+            }); 
+          }
+              
     });
   }
 
