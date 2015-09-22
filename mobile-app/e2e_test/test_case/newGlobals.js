@@ -10,10 +10,17 @@ var global = function() {
   {
     var xV = 0
     var yV = 0;
+    var num =0;
     if (direction === 'left')
+    {
       xV = -200;
+      num = 1
+    }
     else if (direction === 'right')
+    {
+      num = - 1
       xV =  200;
+    }
       var ele = element.all(by.tagName("ion-slide"));
     if (tagName != null)
       ele = element.all(by.css('#request-content'));
@@ -24,6 +31,7 @@ var global = function() {
         browser.actions().
         dragAndDrop(items[index], {x: xV, y: yV}).
         perform();
+        browser.wait(EC.visibilityOf(items[index+num]),1000);
     }); 
   }
   /***********************************************************
@@ -229,15 +237,17 @@ var global = function() {
   {
     var length;
      str = '#'+id+' li:not(.ng-hide)';
+
      element.all(by.css(str)).then(function (items) {
       if (random != null)      
         var temp = random;
       else
-      var temp = Math.floor((Math.random() * (items.length-1)));
+        var temp = Math.floor((Math.random() * (items.length-1)));
+       
+        browser.wait(EC.elementToBeClickable( items[temp]),2000);
         items[temp].click();
-        this.length = items.length;
+        // console.log(items.length)
     });
-     return length
   }
   /**********************************************
   *setInput
@@ -263,7 +273,7 @@ var global = function() {
          {
            inputs[i].getAttribute('value').then(function(result)
             {
-              expect(result).toBe('');
+              expect(result).toBe('','Input does not clear out');
             });
          }  
         inputs[i].clear();
@@ -329,9 +339,9 @@ var global = function() {
   ****************************************************************/
   this.switchAlert = function()
   {
-      browser.wait(EC.alertIsPresent(), 4000);
+     browser.wait(EC.alertIsPresent(), 4000);
      var alertDialog = browser.switchTo().alert();
-     alertDialog.accept();  // Use to accept (simulate clicking ok)
+     browser.switchTo().alert().accept();  // Use to accept (simulate clicking ok)
   }
   /*************************************************************************************
   *connectFB

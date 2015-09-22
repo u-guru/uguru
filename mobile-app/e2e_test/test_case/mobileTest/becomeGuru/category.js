@@ -1,19 +1,27 @@
+var CategoryName = ['Academic Courses','Freelancing','Baking','Photography','Household','Technology & IT','Sports & Muscle','On-demand Delivery']
 describe('Category Test', function () {
 	
 	for (var i = 0 ; i< 8 ; ++i)
 	{
-        (function(index) {
+        (function(index,title) {
 	        describe('Click the Category #'+index,function()
 	        {
 	        	var count = 0;
-	        	it('Check a Category Title',function()
+	        	it('Check a Category Title Back To DeFault',function()
 	        	{
+	        		browser.wait(EC.visibilityOf(element(by.binding('category.name'))),1000);
 	        		expect(element(by.binding('category.name')).getText()).toBe("SELECT CATEGORY")
 	        	});
         		it('Open a Category',function()
 				{
 					doc.newPickList('skills-list',index);
 				});
+        		it('Check Category Title : '+title ,function()
+        		{
+        			expect(element(by.binding('category.name')).getText()).toBe(title.toUpperCase());
+
+        		})
+
 				it('Check element exist',function()
 				{
 					expect(element.all(by.repeater('skill in active_category.skills')).first().isDisplayed()).toBe(true);
@@ -25,11 +33,15 @@ describe('Category Test', function () {
 			        	{
 			        		for (var i = 0 ; i<items.length ; ++i)
 			        		{
-			        			items[i].click();
-			        			if (index===0)
-			        			{
-        							doc.switchAlert();	
-			        			}
+								if(index != 0)
+									{
+					        			items[i].click();
+					        			if (index===0)
+					        			{
+		        							doc.switchAlert();	
+					        			}
+									}
+				        			
 			        			++ count
 			        		}
 			        	});	
@@ -59,7 +71,7 @@ describe('Category Test', function () {
         			});
         		});
 			});
-        })(i);
+        })(i,CategoryName[i]);
 	}
 	it('Slide to Next Page',function()
 	{

@@ -109,11 +109,12 @@ exports.config = {
                         '../test_case/mobileTest/becomeGuru/category.js'
                      ],
              photo:[
-                         '../test_case/mobileTest/workflows/access.js',
-                         '../test_case/mobileTest/workflows/university.js', 
-                         '../test_case/mobileTest/workflows/major.js',
-                         '../test_case/mobileTest/workflows/course.js',
-                         '../test_case/mobileTest/workflows/category.js',
+                          '../test_case/mobileTest/workflows/access.js',
+                          '../test_case/mobileTest/workflows/university.js', 
+                         // '../test_case/mobileTest/workflows/major.js',
+                         // '../test_case/mobileTest/workflows/course.js',
+                         // '../test_case/mobileTest/workflows/category.js',
+                         '../test_case/mobileTest/workflows/lazy.js',
                          '../test_case/mobileTest/becomeGuru/photo.js'
                     ],
               guruHome:[
@@ -176,9 +177,9 @@ exports.config = {
                         pending: 'cyan'
                     },
                     prefixes: {
-                        success: '✓ ',
-                        failure: '✗ ',
-                        pending: '- '
+                        success: ' * ✓ ',
+                        failure: ' * ✗ ',
+                        pending: '  * - '
                     },
                     customProcessors: []
                 }));

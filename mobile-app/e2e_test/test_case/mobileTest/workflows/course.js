@@ -35,7 +35,10 @@ describe('@Workflow : Course page', function () {
 		it('Pick a Course',function()
 		{
 			browser.wait(EC.visibilityOf(element(by.id('courses-list'))),20000);
-		    doc.newPickList('courses-list');
+		    doc.newPickList('courses-list',3);
+		    doc.newPickList('courses-list',4);
+		    doc.newPickList('courses-list',5);
+
 		});
 		it('Next page',function()
 		{

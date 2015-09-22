@@ -8,12 +8,24 @@ describe('Major Test', function () {
 	// {
 	// 	doc.checkLists("major-list","major.name")
 	// });
-	
-	it ('Open The Request',function()
+	describe('Welcome uguru Pop',function()
 	{
-		guruButton.click();
+		it('Check Pop up ',function()
+		{
+			browser.wait(EC.visibilityOf(element(by.id('home-uguru-popup'))),3000);
+			// expect(element(by.id('home-uguru-popup')).isDisplayed()).toBe(true);
+		});
+		it('Close Welcome',function()
+		{
+			//element(by.id('home-uguru-popup')).click();
+			element(by.css('[ng-click="closeWelcomePopup()"]')).click();
+		});	it ('Open The Request',function()
+		{
+			guruButton.click();
 
+		});
 	});
+	
 	it('Current Page Title: Major',function()
 	{
 		expect(element(by.css('#major .third')).getText()).toContain("SELECT YOUR MAJOR")
@@ -296,9 +308,19 @@ describe('Major Test', function () {
 		});
 		it('delete a major',function()
 		{
-			doc.newPickList('major-list',1);
-			doc.switchAlert();
-			doc.switchAlert();
+			// doc.newPickList('major-list',1);
+
+			// browser.sleep(1000);
+			// doc.switchAlert();
+			// doc.switchAlert();
+			element.all(by.repeater('major in user.majors')).then(function (items) {
+					items[1].click();
+		
+
+				doc.switchAlert();
+				doc.switchAlert();
+
+		    });	
 
 		});
 		it('check delete',function()

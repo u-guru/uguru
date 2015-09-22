@@ -1,5 +1,6 @@
 describe('Course Test', function () {
-	
+	var nextStep = element(by.css('[ng-click="nextSlide()"]'));
+	var backStep = element(by.css('[ng-click="goBackToStudentHome()"]'));
 	// afterEach(function()
 	// {
 	// 	doc.checkLists("courses-list","course.short_name")
@@ -31,23 +32,24 @@ describe('Course Test', function () {
 
 	it('check Data repeating',function()
 	{
-		doc.checkLists('course-list','course.name');
+		doc.checkLists('courses-list','course.name');
 	});
-	// 	describe("Infinite Scroll",function()
+	//Need to fix later
+	// describe("Infinite Scroll",function()
 	// {
-	// 	for( i = 8; i < 40; i+=8)
+	// 	for( i = 16; i < 80; i+=16)
 	// 	{
 	// 		(function(index) {
 	//       		it ('Check scrollable ',function()
 	// 	 		{
-	// 	 			element.all(by.css('#course-list li:not(.ng-hide)')).then(function (items) {
+	// 	 			element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
 	// 		    		browser.executeScript('arguments[0].scrollIntoView()', items[index].getWebElement());
 	// 		    	});
 	// 			});
 
 	// 			it('Check more items loaded',function()
 	// 			{
-	// 				element.all(by.css('#course-list li:not(.ng-hide)')).then(function (items) {
+	// 				element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
 	// 		    		expect(items.length > 10).toBe(true,"no data is loading");
 	// 		    	});
 
@@ -60,7 +62,7 @@ describe('Course Test', function () {
 
 	// 			it ('scroll up ',function()
 	// 	 		{
-	// 	 			element.all(by.css('#course-list li:not(.ng-hide)')).then(function (items) {
+	// 	 			element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
 	// 		    		browser.executeScript('arguments[0].scrollIntoView()', items[0].getWebElement());
 	// 		    	});
 	// 			});
@@ -93,7 +95,7 @@ describe('Course Test', function () {
 
 		});
 
-		describe("Send A Key : Computer, and see result is right",function()
+		describe("Send A Key : art, and see result is right",function()
 		{
 			it('send a key : art',function()
 			{
@@ -102,125 +104,201 @@ describe('Course Test', function () {
 
 			it("Check list is right",function()
 			{
-				element.all(by.css('#course-list li:not(.ng-hide)')).then(function (items) {
+				element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
+					expect(items.length != 0).toBe(true,"Now List is shown , List Length : " + items.length );
 					for(var i = 0 ; i < items.length ; ++i)
 		    		expect(items[i].getText()).toContain("ART");
 		    	});
 			});
 			// it('Check Data only as  Computer Science, Computer Science and Engineering ,Linguistics and Computer Science',function()
 			// {
-			// 	doc.checkLists("course-list","major.name",'Computer Science',0)
-			// 	doc.checkLists("course-list","major.name",'Computer Science and Engineering',1)
+			// 	doc.checkLists("courses-list","major.name",'Computer Science',0)
+			// 	doc.checkLists("courses-list","major.name",'Computer Science and Engineering',1)
 			// 	doc.checkLists("major-list","major.name",'Linguistics and Computer Science',2)
 			// });
 		});
 
 		describe('Choose a result and see the searchbar is clear and the chosen one has checkmark.',function()
 		{
-			it('Choose The result',function()
+			
+			it ("Enter ART HIS C117D",function()
 			{
-				browser.wait(EC.visibilityOf(element(by.id('courses-list'))),2000);
-		 	    doc.newPickList('course-list',0);
+		    	doc.setInput('ART HIS C117D',3,true);
+			});
+			it('Choose the search result',function()
+			{
+		 		doc.newPickList('courses-list',0);
+			});
+
+			it('Search result is clear-out and the list return back',function()
+			{
+				element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
+					expect(items.length).not.toBe(0,"No List is showing");
+					for(var i = 1 ; i < items.length ; ++i)
+		    			expect(items[i].getText()).toContain("ECON");
+		    	});
 			});
 			it ("Search Bar is clear",function()
 			{
-				browser.sleep(100000)
-		    	doc.setInput('',3,true);
+		    	doc.setInput('',3);
 			});
-			it('Search result is clear-out and list is back',function()
-			{
-				element.all(by.css('#course-list li:not(.ng-hide)')).then(function (items) {
-					for(var i = 1 ; i < items.length ; ++i)
-		    		expect(items[i].getText()).toContain("ECON");
-		    	});
-			});
+		
 			it ('Course : "ART HIS C117D" Has been Added',function()
 			{
 				element.all(by.repeater('course in user.guru_courses')).then(function (items) {
 			        expect(items.length).toBe(1);
 					expect(items[0].getText()).toBe("ART HIS C117D");			     	
-			    });				
-			});
-			it('clear a key [SKIP BUG]',function()
-			{	
-				element.all(by.tagName("input")).then(function(inputs)
-		      	{
-		      		inputs[3].clear();
-		      	});
+			    });		
 
 			});
+
 			it ('Re type "ART HIS C117D",and see it has taken off from the list.',function()
 			{
+				doc.setInput('ART HIS C117D',3);
 
-		    	doc.setInput('ART HIS C117D',3);
-    			element.all(by.css('#course-list li:not(.ng-hide)')).then(function (items) {
+    			element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
     	    		expect(items.length).toBe(0,"Choosen Result is still in the list");
-    	    	});
-    	    	browser.sleep(100000)
+    	    	});		
 			});
+			//Skip Bug
+			it('Reset [Skip bug]',function()
+			{		
+		    	doc.setInput('a',3,true);
+		    	doc.setInput('',3,true);
+
+			})
 		});
 
 
 	});
-	// describe('Check Chosen Course is showing',function()
+
+	describe('remove one select course and see it return back to list',function()
+	{
+		var elements =  element.all(by.css('#courses-list li:not(.ng-hide)'))
+		var  course ;
+		it('Pick a course',function()
+		{
+			element.all(by.repeater('course in user.guru_courses')).then(function (items) {
+				if(items.length  == 1)
+				{
+					items[0].click();
+					doc.switchAlert();
+				}
+		    });	
+		    doc.newPickList('courses-list',0);
+		});
+		it('Remove a selected Major',function()
+		{
+			element.all(by.repeater('course in user.guru_courses')).then(function (items) {
+				items[0].click();
+				doc.switchAlert();
+
+		    });	
+
+		});
+		it('check delete successfully msg',function()
+		{
+			var newMsg = element(by.css(".loading-container")).element(by.tagName('span'));
+			browser.wait(EC.presenceOf(newMsg),5000);
+			newMsg.getAttribute('value').then(function(value)
+			{
+			  expect(value).toContain('successfully removed');
+			}); 
+		});
+		it('remove course return back list',function()
+		{
+		    element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
+	    	    expect(items.length).toBe(20,'List is not updated yet');
+	    	    expect(items[0].getText()).toBe('ECON 202',"ECON164 is not return back to the list")
+		    });
+		});
+	});
+
+
+	describe('[Testing : Bug need to fix]delete 1 course and see other course is gone too',function()
+	{
+		var count = 5
+		it('Pick 5 course',function()
+		{
+		    doc.newPickList('courses-list',1);
+		    doc.newPickList('courses-list',2);
+	        doc.newPickList('courses-list',3);
+		    doc.newPickList('courses-list',4);
+		    doc.newPickList('courses-list',5);
+
+
+		});
+		// it('check match number of selected ',function()
+		// {
+		// 	element(by.binding('user.majors.length')).getText().then(function(text){
+		// 		expect(text).toContain(count);
+		// 	});
+		// });
+		it('check number of courses selected ',function()
+		{
+			element.all(by.css('.icon.ion-checkmark-round')).then(function(items){
+				expect(items.length).toBe(count,"Totaled Select course is not correct");
+	     	 });
+		});
+		it('delete a course',function()
+		{
+			// doc.newPickList('courses-list',1);
+			// doc.switchAlert();
+			element.all(by.repeater('course in user.guru_courses')).then(function (items) {
+				items[1].click();
+
+				doc.switchAlert();
+
+		    });	
+		});
+		it('check delete',function()
+		{
+			var newMsg = element(by.css(".loading-container")).element(by.tagName('span'));
+			browser.wait(EC.presenceOf(newMsg),5000);
+			newMsg.getAttribute('value').then(function(value)
+			{
+			  expect(value).toContain('successfully removed');
+			}); 
+		});
+		it('check reminding list',function()
+		{
+			element.all(by.repeater('course in user.guru_courses')).then(function (items) {
+		        expect(items.length).toBe(4);
+		    });
+		  
+		});
+	});
+
+	describe("drag left",function()
+	{
+		it('Slide to Next Page',function()
+		{
+			doc.slideView(3,'left');
+		});
+		it('check Page title:CATEGORY',function()
+		{
+			expect(element(by.binding('category.name')).getText()).toBe("SELECT CATEGORY")
+		});
+		// it('Slide to Next Page',function()
+		// {
+		// 	doc.slideView(4,'right');
+		// });
+		// it('Current Page Title: Major',function()
+		// {
+		// 	expect(element(by.css('#course .third')).getText()).toContain("COURSE");
+		// });
+	});
+
+	// it('Next slide',function()
 	// {
-	// 	it('choose an element',function()
-	// 	{	
-	// 		browser.wait(EC.visibilityOf(element(by.id('courses-list'))),20000);
-
-	// 	    doc.newPickList('courses-list');
-
-	// 	});
-	// 	it('check Choosen is displayed',function()
-	// 	{		
-	// 		expect(element(by.repeater('course in user.guru_courses')).isDisplayed()).toBe(true);
-
-	// 	})
-	// })
-
-	// describe('delete a courses and see it back to list',function()
-	// {
-	// 	var elements =  element.all(by.css('#courses-list li:not(.ng-hide)'))
-	// 	it('Pick a couse',function()
-	// 	{
-	// 	    doc.newPickList('courses-list');
-	// 	    elements.then(function(items)
-	// 	    	{
-	// 	    		console.log(items.length);
-	// 	    	});
-	// 	});
-	// 	it('delete a major',function()
-	// 	{
-	// 		doc.newPickList('courses-list',0);
-	// 	});
-	// 	it('Confirm Deleted',function()
-	// 	{
-	// 		doc.switchAlert();
-	// 	});
-	// 	it('check delete',function()
-	// 	{
-	// 		var newMsg = element(by.css(".loading-container")).element(by.tagName('span'));
-	// 		browser.wait(EC.presenceOf(newMsg),5000);
-	// 		newMsg.getAttribute('value').then(function(value)
-	// 		{
-	// 		  expect(value).toContain('successfully removed');
-	// 		}); 
-	// 	});
-	// 	it('check list increase',function()
-	// 	{
-	// 	    element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
-	//     	    expect(items.length).toBe(40);
-	// 	    });
-	// 	});
-	// });
-
-	// it('Slide to Next Page',function()
-	// {
+ //        browser.wait(EC.visibilityOf(nextStep),1000,"Too many Next Step Button");
+	// 	nextStep.click();
 	// 	doc.slideView(3,'left');
 	// });
-	// it('Check Page title : Category',function()
-	// {
-	// 	expect(element(by.binding('category.name')).getText()).toBe("SELECT CATEGORY")
-	// });
-
+	it('Check Page title : Category',function()
+	{
+		expect(element(by.binding('category.name')).getText()).toBe("SELECT CATEGORY")
+		browser.sleep(1000)
+	});
+	
 });
