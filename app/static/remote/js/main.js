@@ -2,10 +2,10 @@ var LOCAL = false; //local to the 8100 codebasebirbirs
 var FIRST_PAGE='^.access';
 var img_base;
 
-// // @if ADMIN
-// isAdmin = true;
-// LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
-// // @endif
+// @if ADMIN
+isAdmin = true;
+LOCAL_URL = 'http://192.168.0.103:5000/app/local/'
+// @endif
 
 
 

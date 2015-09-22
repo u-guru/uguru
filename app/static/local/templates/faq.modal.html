@@ -1,0 +1,27 @@
+<ion-modal-view class='uguru-view faq-modal'>
+<style>
+  .uguru-view.faq-modal {
+    #top-menu {
+      display:none;
+      visibility: hidden;
+    }
+  }
+</style>
+<section class="full-xy">
+
+    <header class="bg-charcoal white">
+      <div class="header-nav">
+        <a class="header-nav-back" ng-click="faqModal.hide()">
+          <i class='icon ion-chevron-down'>
+          </i>
+        </a>
+      </div>
+      <h1 class="onboarding-message text-center">Uguru FAQs</h1>
+    </header>
+
+  <ion-content class='white-bg has-header' scroll='false'>
+    <iframe name="Uguru FAQ" ng-if='isLocalServer' ng-src="http://192.168.42.78:5000/faq-only/"></iframe>
+    <iframe name="Uguru FAQ" ng-if='!isLocalServer' ng-src="https://uguru.me/faq-only/"></iframe>
+  </ion-content>
+</section>
+</ion-modal-view>
