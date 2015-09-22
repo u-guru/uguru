@@ -65,7 +65,7 @@ function UniversityMatcher(University) {
 		// if the user continues to type without deleting then we will continue to search
 		// from within the cacheDictionary, and then replace it with the results while
 		// saving it to the uniDictionary
-		else if(input.length > cachedInput.length && input.indexOf(cachedInput) === 0) {
+		else if(cachedInput && input.length > cachedInput.length && input.indexOf(cachedInput) === 0) {
 
 			cachedInput = input;
 			console.log('uniDictionary[input]: ' + uniDictionary[input]);
@@ -86,7 +86,7 @@ function UniversityMatcher(University) {
 		}
 		// if the user backspaces a part of the input then we can lookup the previous caches
 		// if none was found then we can just search the entire list and create a new cache
-		else if(input.length > 1 && input.length < cachedInput.length && cachedInput.indexOf(input) === 0) {
+		else if(cachedInput && input.length > 1 && input.length < cachedInput.length && cachedInput.indexOf(input) === 0) {
 
 			cachedInput = input;
 			console.log('uniDictionary[input]: ' + uniDictionary[input]);
@@ -103,7 +103,7 @@ function UniversityMatcher(University) {
 		} 
 		// in the event they do some weird stuff then we can just go back to searching by the first letter
 		else if(input.length > 1) {
-			console.log("this should never fire");
+			console.log("query fallback");
 			cachedInput = input;
 			uniDictionary[input] = match(input, list);
 			cachedDictionary = uniDictionary[input];

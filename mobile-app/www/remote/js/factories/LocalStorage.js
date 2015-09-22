@@ -5,7 +5,8 @@ angular.module('ionic.utils', [])
   function($window,$cordovaFile, $timeout) {
   
   var currentLog = JSON.parse($window.localStorage['download_log'] || '[]');
-
+  var downloadRecords = JSON.parse($window.localStorage['download_records'] || '{"files": []}');
+  var downloadPromise = null;
   return {
     set: function(key, value) {
       $window.localStorage[key] = value;
@@ -22,6 +23,34 @@ angular.module('ionic.utils', [])
     removeObject: function(key) {
       $window.localStorage.removeItem(key);
     },
+    storeDownloadRecords: function(obj) {
+      
+      downloadRecords.files.push(obj);
+      if(downloadPromise) {
+        console.log("canceling downloadPromise");
+        $timeout.cancel(downloadPromise);
+      }
+      downloadPromise = $timeout(function() {
+        $window.localStorage['download_records'] = JSON.stringify(downloadRecords);
+
+        var totalSize = 0;
+        var totalTime = 0;
+        for(var i=0; i<downloadRecords.files.length; i++) {
+          totalSize += downloadRecords.files[i].size_kb;
+          totalTime += (downloadRecords.files[i].time_ms / 1000);
+        }
+        var downloadSpeed = totalSize / totalTime;
+        console.log("downloadSpeed: " + totalSize + " / " + totalTime + " = " + downloadSpeed);
+        
+        console.log("sending to mixpanel: " + JSON.stringify(downloadRecords));
+        mixpanel.people.set({
+          "$Download_Records": downloadRecords,
+          "$Download_Speed": downloadSpeed
+        });
+        downloadPromise = null;
+
+      }, 10000);
+    },
     storeDownloadLog: function(log) {
       
       //var currentLog = JSON.parse($window.localStorage['download_log'] || '[]');
@@ -30,7 +59,7 @@ angular.module('ionic.utils', [])
         $window.localStorage['download_log'] = JSON.stringify(currentLog);  
         $timeout(function() {
           mixpanel.people.set({
-              "$Download_Log": currentLog,
+              "$Download_Log": currentLog
           });
         }, 3000);
       }, 10000);

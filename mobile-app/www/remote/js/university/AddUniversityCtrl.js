@@ -130,10 +130,10 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     $scope.limit = 10;
     $scope.query = function(input) {
       if(!queryTimeout) {
-        queryTimeout = true;
+        //queryTimeout = true;
         //$scope.universities = Utilities.nickMatcher(input, University.getTargetted());
         $scope.universities = UniversityMatcher.cachedMatch(input);
-        $timeout(function() {queryTimeout = false;}, 600);
+        //$timeout(function() {queryTimeout = false;}, 600);
       }
       else if(input.length === 0) {
         if(!emptyTimeout) {
