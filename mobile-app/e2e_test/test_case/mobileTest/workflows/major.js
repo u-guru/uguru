@@ -13,49 +13,49 @@ describe('@Workflow : Major page', function () {
 
 		})
 	});
-	it('check Data repeating',function()
-	{
-		doc.checkLists('major-list','major.name');
-	});
-	describe('Check Search Results',function()
-	{
-		it('send a key',function()
-		{
-	    	doc.setInput('b',0);
+	// it('check Data repeating',function()
+	// {
+	// 	doc.checkLists('major-list','major.name');
+	// });
+	// describe('Check Search Results',function()
+	// {
+	// 	it('send a key',function()
+	// 	{
+	//     	doc.setInput('b',0);
 
-		});
-		it('Check the Search result is not empty',function()
-		{
-			element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
-	    		expect(items.length).not.toBe(0,"no Search result found");
-	    	});
-		});
-		it('clear a key',function()
-		{	
-			 element(by.tagName("input")).clear();
-		});
+	// 	});
+	// 	it('Check the Search result is not empty',function()
+	// 	{
+	// 		element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
+	//     		expect(items.length).not.toBe(0,"no Search result found");
+	//     	});
+	// 	});
+	// 	it('clear a key',function()
+	// 	{	
+	// 		 element(by.tagName("input")).clear();
+	// 	});
 
-	});
+	// });
 	describe('Check Data & Go Next Section',function()
 	{
-		it('check the course',function()
-		{
-			element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
-				expect(items.length).not.toBe(0,"no Search result found");
-			});
-		});
-		it('Pick a Course',function()
+		// it('check the course',function()
+		// {
+		// 	element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
+		// 		expect(items.length).not.toBe(0,"no Search result found");
+		// 	});
+		// });
+		it('Pick a Major',function()
 		{
 			browser.wait(EC.visibilityOf(element(by.id('major-list'))),20000);
 		    doc.newPickList('major-list',5);
 		});
-		it('Next page',function()
+		it('Next slide',function()
 		{
 			nextStep.click();
-			// nextStep.then(function(items)
-			// 	{
-			// 		items[1].click();
-			// 	});
+		});
+		it('check Page title:coures',function()
+		{
+			expect(element(by.css('#course .third')).getText()).toContain("COURSE");
 		});
 	});
 

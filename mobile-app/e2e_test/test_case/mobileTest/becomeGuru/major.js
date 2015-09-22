@@ -118,10 +118,10 @@ describe('Major Test', function () {
 			{
 		    	doc.setInput('',2,true);
 			});
-			it('Full list is return',function()
+			it('Search result is clear-out and list is back',function()
 			{
 				element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
-				    		expect(items.length >= 10).toBe(true,"Full List is not showing correct");
+				    		expect(items.length >= 10).toBe(true,"Full List is not showing correct, Total items in the list : ",items.length);
 				    	});
 			});
 			it ('Major : "Computer Science" Has been Added',function()
@@ -131,7 +131,7 @@ describe('Major Test', function () {
 					expect(items[0].getText()).toContain("Computer Science");			     	
 			    });				
 			});
-			it ('Research "Computer Science",and see it has taken off from the list',function()
+			it ('Re type "Computer Science",and see it has taken off from the list.',function()
 			{
 		    	doc.setInput('Computer Science',2);
     			element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
@@ -249,6 +249,7 @@ describe('Major Test', function () {
 			element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
 	    		expect(items.length > 10).toBe(true,"Choosen Result is still in the list");
 	    	});
+
 		});
 		it('Reset',function()
 		{		
@@ -265,7 +266,6 @@ describe('Major Test', function () {
 		var count = 5
 		it('Pick 5 Major',function()
 		{
-			browser.sleep(5000);
 			element.all(by.repeater('major in user.majors')).then(function (items) {
 				if(items.length  == 1)
 				{
@@ -340,7 +340,7 @@ describe('Major Test', function () {
 		});
 		it('check Page title:coures',function()
 		{
-			expect(element(by.css('#major .third')).getText()).toContain("COURSE");
+			expect(element(by.css('#course .third')).getText()).toContain("COURSE");
 		});
 		it('Slide to Next Page',function()
 		{
@@ -358,7 +358,7 @@ describe('Major Test', function () {
 	});
 	it('check Page title:coures',function()
 	{
-		expect(element(by.css('#major .third')).getText()).toContain("COURSE");
+		expect(element(by.css('#course .third')).getText()).toContain("COURSE");
 	});
 	
 
