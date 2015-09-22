@@ -48,7 +48,7 @@ angular.module('uguru.util.controllers')
 
     $scope.addUniversity = function() {
       $state.go('^.university');
-    }    
+    }
 
     $scope.attemptToResetPassword = function() {
       function validateEmail(email) {
@@ -1017,7 +1017,7 @@ angular.module('uguru.util.controllers')
 
           //after five seconds and no fb response --> Say something went wrong
           $timeout(function() {
-            
+
 
             if (!$scope.facebookResponseReceived) {
               alert('Something went wrong. Please check your browser settings & make sure popups from Facebook.com are allowed');
@@ -1276,17 +1276,22 @@ angular.module('uguru.util.controllers')
       }
 
       User.login($scope.loginPayload).then(function(user) {
-
+        //
           var processed_user = User.process_results(user.plain());
           User.assign_properties_to_root_scope($scope, processed_user);
           $scope.user.guru_mode = false;
           $localstorage.setObject('user', $scope.user);
-
+          $timeout(function() {
+            if ($scope.ionicSideMenuDelegate.isOpen()) {
+              $scope.ionicSideMenuDelegate.toggleRight();
+            }
+          }, 500)
           $scope.success.show(0, 1250, 'Login Successful!');
 
           if ($scope.signupModal.isShown()) {
             $scope.signupModal.hide();
           }
+
 
       }, function(err) {
         if (err.status === 401) {

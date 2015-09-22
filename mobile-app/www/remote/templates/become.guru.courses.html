@@ -2,7 +2,9 @@
     <!-- <progress value="0" max="100">
       <div class="progress"><span data-value="40"></span></div>
     </progress> -->
-    <section id="course" class="onboarding charcoal-bg">
+    <span ng-include="img_base + BASE + 'templates/guru.courses.container.html'"></span>
+</ion-view>
+    <!-- <section id="course" class="onboarding charcoal-bg">
       <header class="third">
             <h1 class="text-center">Add Courses</h1>
             <div class="header-nav">
@@ -29,7 +31,7 @@
               </div>
         </header>
       </header>
-      <!-- <header class="header-back">
+      <header class="header-back">
         <div class="header-nav">
           <a class="header-nav-back" ng-click='previousSlide()'>
             <svg width="12px" height="23px" viewBox="0 0 12 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -57,7 +59,7 @@
                   ng-keyup="query(course_search_text)"
                   >
         </div>
-      </header> -->
+      </header>
       <div id="courses-list" class="onboarding-list" buffered-scroll='increaseLimit()' ng-init='limit = 20'>
         <ul class='list'>
           <li ng-show='course_search_text.length === 0 || user.guru_courses.length == 0' ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
@@ -73,3 +75,4 @@
     </section>
 
 </ion-view>
+ -->
