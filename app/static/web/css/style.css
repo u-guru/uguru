@@ -1322,7 +1322,11 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
           #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front h3 span {
             display: none; }
         #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front svg {
-          position: relative; }
+          position: relative;
+          max-width: 80px;
+          max-height: 80px; }
+          #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front svg path {
+            fill: white; }
         #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-front .earn-category-overlay {
           position: absolute;
           top: 0;
@@ -1392,8 +1396,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
             #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li svg {
               width: 50px;
               height: 50px; }
-              #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li svg * {
-                fill: white !important; }
             #main #earn .inside .inside-text #earn-categories-desktop .earn-category .earn-category-back ul li i {
               width: 100%; }
       #main #earn .inside .inside-text #earn-categories-desktop .earn-category #earn-category-academic {
@@ -1412,11 +1414,6 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
         background: url(../../../static/web/images/category/sports.jpg) no-repeat center center/cover; }
       #main #earn .inside .inside-text #earn-categories-desktop .earn-category #earn-category-delivery {
         background: url(../../../static/web/images/category/delivery.jpg) no-repeat center center/cover; }
-      #main #earn .inside .inside-text #earn-categories-desktop .earn-category svg {
-        max-width: 80px;
-        max-height: 80px; }
-        #main #earn .inside .inside-text #earn-categories-desktop .earn-category svg path {
-          fill: white; }
       #main #earn .inside .inside-text #earn-categories-desktop .earn-category .category-academic circle {
         fill: #DB1988; }
       #main #earn .inside .inside-text #earn-categories-desktop .earn-category .category-consulting circle {
