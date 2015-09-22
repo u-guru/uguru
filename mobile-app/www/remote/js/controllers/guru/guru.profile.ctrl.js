@@ -149,6 +149,8 @@ angular.module('uguru.guru.controllers')
       $state.go('^.guru-courses-container');
     }
 
+
+
     $scope.saveTutoringPlatformsAndCloseModal = function() {
       $scope.loader.show();
       $timeout(function() {
@@ -205,6 +207,39 @@ angular.module('uguru.guru.controllers')
             }, 500)
             $scope.majorModal.show();
       });
+    }
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/majors.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.majorModal = modal;
+    });
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.courses.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.guruCoursesModal = modal;
+    })
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.skills.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.guruSkillsModal = modal;
+    })
+
+    $scope.launchGuruSkillsModal = function() {
+      $scope.guruSkillsModal.show();
+    }
+
+    $scope.launchGuruCoursesModal = function() {
+      $scope.guruCoursesModal.show();
+    }
+
+    $scope.launchGuruMajorsModal = function() {
+      $scope.majorModal.show();
     }
 
 

@@ -1,8 +1,10 @@
 <ion-view class='uguru-view profile-view guru-profile-view bg-charcoal'>
 
   <section id="profile" class='guru-profile'>
-  <header class='ng-class:{"relative":profile.edit_mode}'>
-     <a class="header-close save-button bg-cerise" ng-click='saveGuruProfile()'ng-if='profile.edit_mode'>
+  <header ng-if='profile.edit_mode' class='bg-cerise fixed ng-class:{"relative":profile.edit_mode}'>
+
+     <h1 class="text-center margin-auto" style='width:50%;' >Edit Mode</h1>
+     <a class="header-close save-button absolute" ng-click='saveGuruProfile()'ng-if='profile.edit_mode'>
         <svg>
         </svg>
         <h1> Save </h1>
@@ -58,10 +60,10 @@
 
           </li>
         </ul>
-        
+
           <ul class='default' ng-if='!user.guru_courses.length || profile.edit_mode'>
-              <li ng-click='launchEditCoursesModal()'>
-                + Add a course 
+            <li ng-click='launchGuruCoursesModal()'>
+                + Add a course
               </li>
           </ul>
       </div>
@@ -79,7 +81,7 @@
               </li>
             </ul>
             <ul class='default' ng-if='!user.majors.length || profile.edit_mode'>
-              <li ng-click='launchEditMajorsModal()' > + Add a major </li>
+              <li ng-click='launchMajorModal()' > + Add a major </li>
             </ul>
           </div>
         </div>
