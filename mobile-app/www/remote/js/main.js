@@ -18,9 +18,9 @@ if (LOCAL) {
 
   BASE = 'remote/';
   //BASE_URL = 'http://192.168.42.124:8100';
-
   // BASE_URL = 'http://192.168.1.43:8100';
-  REST_URL = "http://192.168.42.119:5000"
+
+  REST_URL = "http://localhost:5000"
   // REST_URL = 'https://www.uguru.me'
   //BASE_URL = 'http://192.168.43.155:8100';
 

@@ -24,10 +24,9 @@ angular.module('uguru.guru.controllers')
     $scope.root.vars.guru_mode = true;
 
     // credibility only variable
-    $scope.activeTabIndex = 2;
+    $scope.activeTabIndex = 4;
 
     $scope.user_skills = [{name: "CSS3"}, {name: "Javascript"}, {name: "Photoshop"}, {name: "HTML5"}];
-    console.log($scope.user.skills);
     $scope.user.languages = $scope.user.languages || [{name:"English"}, {name:"Chinese"}];
 
     if (!$scope.root.vars.profile) {
@@ -173,6 +172,26 @@ angular.module('uguru.guru.controllers')
             $scope.tutoringPlatformsModal.show();
       });
     }
+    console.log($scope.user);
+    $scope.launchAddGuruExperienceModal = function(experience) {
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.experiences.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            if (experience) {
+              $scope.experience = experience;
+            } else {
+              $scope.experience = {
+                name: '',
+                description: '',
+                years: 1
+              }
+            }
+            $scope.guruExperiencesModal = modal;
+            $scope.guruExperiencesModal.show();
+      });
+    }
 
     $scope.launchMajorModal = function() {
       $scope.loader.show();
@@ -188,14 +207,6 @@ angular.module('uguru.guru.controllers')
       });
     }
 
-    $scope.$on('modal.shown', function() {
-      if ($scope.tutoringPlatformsModal.isShown()) {
-        $timeout(function() {
-          var tutorPlatformsInput = document.getElementById('tutoring-platforms-input');
-          tutorPlatformsInput.focus();
-        }, 500)
-      }
-    });
 
     $scope.connectWithFacebook = function() {
       $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
@@ -392,14 +403,53 @@ angular.module('uguru.guru.controllers')
         $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
     };
 
+    // start confirm email popup
+    $scope.launchConfirmEmailPopup = function() {
+        var launchConfirmEmailPopupButton = document.getElementById('launch-email-confirm-popup');
+        var uguruPopup = document.getElementById('confirm-email-uguru-popup');
+
+        var uguruPopupCloseLink = document.getElementById('confirm-email-close-popup-link');
+        var uguruPopupSaveLink = document.getElementById('confirm-email-save-popup-link');
+
+        $scope.reverseAnimatePopup = cta(launchConfirmEmailPopupButton, uguruPopup, {duration:1},
+          function (modal){
+            modal.classList.add('show');
+          }
+        );
+
+        uguruPopupCloseLink.addEventListener("click", function(event) {
+          var uguruPopup = document.getElementById('confirm-email-uguru-popup');
+          uguruPopup.classList.remove('show');
+        })
+
+        uguruPopupSaveLink.addEventListener("click", function(event) {
+          var editEmailInput = document.getElementById('user-confirm-email-input')
+            if (!editEmailInput.value) {
+              alert('Please enter a valid email');
+              return;
+            }
+
+
+            var uguruPopup = document.getElementById('confirm-email-uguru-popup');
+            uguruPopup.classList.remove('show');
+
+            $scope.user.school_email = editEmailInput.value;
+            $scope.user.updateAttr('confirm_school_email', $scope.user, editEmailInput.value, null, $scope);
+            $scope.success.show(0, 1500, 'Email sent to ' + editEmailInput.value);
+
+        })
+
+      }
+    /** end confirm email popup **/
+
 
     /** START Launch confirm phone number popup**/
-    
+
     $scope.confirmPhonePopup = function() {
 
         var launchConfirmPhonePopupButton = document.getElementById('launch-phone-confirm-popup');
         var uguruPopup = document.getElementById('confirm-phone-uguru-popup');
-        
+
         var uguruPopupCloseLink = document.getElementById('confirm-phone-close-popup-link');
 
         //opens the popup
@@ -415,7 +465,7 @@ angular.module('uguru.guru.controllers')
         var initPopupListeners = function() {
 
             if (!$scope.user.phone_number_token) {
-              var sendConfirmCode = document.getElementById('send-confirm-code');  
+              var sendConfirmCode = document.getElementById('send-confirm-code');
 
                 //send the confirmation code
               sendConfirmCode.addEventListener("click", function(event) {
@@ -432,26 +482,26 @@ angular.module('uguru.guru.controllers')
               resendConfirmCode.addEventListener("click", function(event) {
 
                 resendPhoneConfirmation();
-                
+
               });
 
               //verify the confirmation code
               verifyConfirmCode.addEventListener("click", function(event) {
 
                 validateAndSendPhoneConfirmation()
-                
+
               });
 
             }
-            
+
               //close the popup
             uguruPopupCloseLink.addEventListener("click", function(event) {
               var uguruPopup = document.getElementById('confirm-phone-uguru-popup');
               uguruPopup.classList.remove('show');
-            })            
+            })
 
         }
-        
+
 
       }
       /** End phone number confirmation **/
@@ -460,12 +510,12 @@ angular.module('uguru.guru.controllers')
 
       var phoneNumberInput = document.getElementById('phone-number-input');
 
-      //validate 
+      //validate
       if (!phoneNumberInput.value || !(phoneNumberInput.value >= 10)) {
           alert('Please enter valid phone number');
           return;
       }
-          
+
 
           $scope.user.updateAttr('phone_number_generate', $scope.user, phoneNumberInput.value, null, $scope);
           var msg = 'New code re-sent to ' + $scope.data.phone;
@@ -477,16 +527,18 @@ angular.module('uguru.guru.controllers')
       uguruPopup.classList.remove('show');
     }
 
+
+
     var validateAndSendPhoneConfirmation = function() {
       var phoneNumberInput = document.getElementById('phone-number-input');
       var confirmationCodeInput = document.getElementById('confirm-code-input');
       console.log(phoneNumberInput);
-      //validate 
+      //validate
       if (!phoneNumberInput.value || !(phoneNumberInput.value >= 10)) {
           alert('Please enter valid phone number');
           return;
       }
-      
+
       //if user hasn't typed in a token & clicked verify [resend exists]
       if ($scope.user.phone_number && $scope.user.phone_number_token && (!confirmationCodeInput.value || confirmationCodeInput.value.length < 4)) {
         alert('Please enter a 4 digit code');
@@ -504,7 +556,7 @@ angular.module('uguru.guru.controllers')
         $scope.success.show(0, 1500, msg);
         return;
       }
-      //success 
+      //success
       if ($scope.user.phone_number && confirmationCodeInput.value && confirmationCodeInput.value.length === 4) {
 
         var callbackSuccess = function() {

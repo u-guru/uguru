@@ -868,7 +868,7 @@ body {
 	#credibility {
 		#credit-slider {
 			position: relative;
-			height: 195px;
+			height: 110px;
 			ul {
 				@include listless;
 				@include flex;
@@ -878,8 +878,8 @@ body {
 				bottom: 0;
 				width: 100%;
 				li {
-					width: 25%;
-					font-size: 20px;
+					width: 20%;
+					font-size: 14px;
 					font-weight: 400;
 					text-align: center;
 					a {
@@ -891,8 +891,8 @@ body {
 							@include round;
 							display: block;
 							margin: 0 auto 15px;
-							width: 50px;
-							height: 50px;
+							width: 35px;
+							height: 35px;
 							background: white;
 						}
 					}
@@ -915,7 +915,7 @@ body {
 				}
 			}
 		}
-		#credit-content {
+		#credibility-content-wrapper {
 			position: relative;
 			background: $slate;
 			height: calc(100% / 3 * 2);
@@ -928,12 +928,22 @@ body {
 			p {
 				margin: 15px 0;
 			}
-			#credit-facebook {
+			.credit-content-slide {
 				@include center-xy;
+				display: none;
 				width: 100%;
 				padding: 15px 15px 64px;
 				button {
-					background: #3b5998;
+					background: $shamrock;
+				}
+				&.active {
+					display:block;
+				}
+
+				&#credit-facebook {
+					button {
+						background: #3b5998;
+					}
 				}
 			}
 		}
@@ -995,7 +1005,7 @@ body {
 					display: block;
 					margin: 0 auto;
 					width: 100%;
-					max-width: 120px;
+					max-width: 100px;
 					padding: 5px;
 					background: rgba(white, .5);
 				}
@@ -1059,7 +1069,7 @@ body {
 					color: white;
 				}
 				#profile-courses {
-					ul {
+					ul.courses {
 						@include listless;
 						@include flex;
 						@include flex-wrap;
@@ -1068,6 +1078,7 @@ body {
 							padding: 10px 15px;
 							width: 50%;
 							font-weight: 600;
+							position:relative;
 						}
 						li:nth-child(1){
 							background: $lake;
@@ -1086,6 +1097,19 @@ body {
 						}
 						li:nth-child(6){
 							background: $cerise;
+						}
+					}
+
+					ul.default {
+						
+						@include listless;
+						@include flex;
+						@include flex-wrap;
+						text-align: center;
+						li {
+							padding: 10px 15px;
+							width: 100%;
+							font-weight: 600;
 						}
 					}
 				}
@@ -1118,17 +1142,36 @@ body {
 					}
 					#profile-major, #profile-job {
 						div {
-							ul {
+							ul.majors {
 								li {
 									width: 100%;
 									font-weight: 200;
+									position:relative;
+								}
+							}
+
+							ul.default {
+						
+								@include listless;
+								@include flex;
+								@include flex-wrap;
+								text-align: center;
+								li {
+									padding: 10px 15px;
+									width: 100%;
+									font-weight: 600;
 								}
 							}
 						}
 					}
 					#profile-skills {
 						div {
-							ul {
+							ul.skills {
+
+								li {
+									position:relative;
+								}
+
 								li:nth-child(1){
 									background: $lake;
 								}
@@ -1142,16 +1185,45 @@ body {
 									background: $moola;
 								}
 							}
+
+							ul.default {
+							
+								@include listless;
+								@include flex;
+								@include flex-wrap;
+								text-align: center;
+								li {
+									padding: 10px 15px;
+									width: 100%;
+									font-weight: 600;
+								}
+							}
 						}
 					}
 					#profile-languages {
 						div {
-							ul {
+							ul.languages {
+								li {
+									position:relative;
+								}
 								li:nth-child(1){
 									background: $cerise;
 								}
 								li:nth-child(2){
 									background: $orange;
+								}
+							}
+
+							ul.default {
+						
+								@include listless;
+								@include flex;
+								@include flex-wrap;
+								text-align: center;
+								li {
+									padding: 10px 15px;
+									width: 100%;
+									font-weight: 600;
 								}
 							}
 						}

@@ -47,10 +47,6 @@ var generalMajors = [
         "name": "Anthropology"
     },
     {
-        "id": 9,
-        "name": "Anthropology"
-    },
-    {
         "id": 10,
         "name": "Arabic"
     },
