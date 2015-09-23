@@ -1,0 +1,24 @@
+.major-view {
+    background: #2B3234;
+    .onboarding-prop {
+        top:45% !important;
+    }
+    #major-list {
+          li.major-business {
+            line-height:1.2em;
+            &.selected  {
+                a {
+                    border-color:white !important;
+                    color:inherit !important;
+                    font-weight:500;
+                }
+                position:relative;
+                i.icon {
+                    position:absolute;
+                    top:30%;
+                    right:3%;
+                }
+            }
+          }
+    }
+}

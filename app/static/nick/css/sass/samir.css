@@ -1,0 +1,123 @@
+.hide {
+  display: none !important; }
+
+.show {
+  display: block !important; }
+
+section header.header-nav a.header-nav-back h1 {
+  color: white !important; }
+
+.smaller-list-font {
+  font-size: 85%; }
+
+.uguru-view .request#request-empty #request-message > div h2 {
+  width: 100%;
+  color: white;
+  font-size: 18px;
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; }
+
+.slider-pager {
+  display: none; }
+
+.full-height {
+  height: 100%; }
+
+.content {
+  height: 100%; }
+  .content.footer-exists {
+    padding-bottom: 64px; }
+
+.view-container {
+  position: inherit; }
+
+input[type=text].input-outline {
+  padding: 10px;
+  border: 0;
+  border: 1px solid rgba(43, 50, 52, 0.1);
+  border-bottom-width: 5px;
+  border-radius: 0;
+  background: rgba(43, 50, 52, 0.1);
+  color: white;
+  font-size: 24px;
+  font-weight: 300; }
+input[type=text].input-outline:active, input[type=text].input-outline:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2); }
+
+input[type=search], input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=tel], input[type=color], textarea {
+  height: initial;
+  line-height: initial; }
+
+button.disabled {
+  opacity: 0.5; }
+
+section {
+  height: 100%; }
+
+* {
+  box-sizing: border-box !important;
+  -webkit-backface-visibility: hidden !important;
+  -moz-backface-visibility: hidden !important;
+  -o-backface-visibility: hidden !important;
+  backface-visibility: hidden !important; }
+
+h1, h2 {
+  color: white;
+  font-weight: 500; }
+
+/**Hide intercom shit**/
+#intercom-launcher {
+  display: none !important; }
+
+.intercom-parent-container {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  margin-top: -54px; }
+
+.padding-1em {
+  padding: 1em; }
+
+.no-padding-x {
+  padding-left: 0px;
+  padding-right: 0px; }
+
+.stats-small {
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0.66em;
+  text-transform: uppercase; }
+
+.stats-large {
+  font-size: 36px;
+  font-weight: 700; }
+
+.center, .text-center {
+  text-align: center; }
+
+.bg-orange.important {
+  background-color: #E5753C !important; }
+
+.bg-moola.important {
+  background-color: #81B566 !important; }
+
+.bg-cerise.important {
+  background-color: #DB1988 !important; }
+
+.bg-gold.important {
+  background-color: #F9D57B !important; }
+
+.bg-shamrock.important {
+  background-color: #69B3A5 !important; }
+
+.bg-lake.important {
+  background-color: #50A5DD !important; }
+
+.bg-azure.important {
+  background-color: #55A4B7 !important; }
+
+.bg-eggplant.important {
+  background-color: #9A5BC5 !important; }
+
+/*# sourceMappingURL=samir.css.map */

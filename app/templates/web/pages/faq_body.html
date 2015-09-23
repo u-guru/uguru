@@ -1,0 +1,28 @@
+{% extends 'web/layout/base.html' %}
+{% block pagetype %}page-lake{% endblock %}
+{% block header_scripts %}
+<link rel="stylesheet" href="/static/web/css/style.css"/>
+<link rel="stylesheet" href="/static/web/css/page.css"/>
+<style>
+	.body-loading-div svg.loader {
+		width:100%;
+		height:100%;
+		z-index: 100000000000;
+	}
+
+	#faq.main.pure-g {
+		padding: 0px !important;
+	}
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="faq" class="main pure-g" style='padding:'>
+	{% include 'web/components/faq_body.html' %}
+</div>
+{% endblock %}
+
+{% block footer_scripts %}
+	{% include 'web/pages/js/faq.js' %}
+{% endblock %}

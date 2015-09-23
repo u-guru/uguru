@@ -12,7 +12,7 @@ function AnimationService() {
 	function flip(customOptions) {
 
     	var options = {
-	      "direction"      : "up", // 'left|right|up|down', default 'right' (Android currently only supports left and right)
+	      "direction"      : "right", // 'left|right|up|down', default 'right' (Android currently only supports left and right)
 	      "duration"       :  600, // in milliseconds (ms), default 400
 	      "iosdelay"       :   50, // ms to wait for the iOS webview to update before animation kicks in, default 60
 	      "androiddelay"   :  100,  // same as above but for Android, default 70

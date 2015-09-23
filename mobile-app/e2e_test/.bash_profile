@@ -22,8 +22,9 @@ alias rph="protractor e2e_test/config/protractor.config.headless.js"
 alias ws="webdriver-manager start"
 alias wu="webdriver-manager update"
 
-export PATH=${PATH}:~/dev/android-sdk-linux/tools
-export PATH=${PATH}:~/dev/android-sdk-linux/platform-tools
+export ANDROID_HOME=/usr/local/Cellar/android-sdk/24.3.4/
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
 NPM_PACKAGES="${HOME}/.npm-packages"
 PATH="$NPM_PACKAGES/bin:$PATH"
 # Unset manpath so we can inherit from /etc/manpath via the `manpath`

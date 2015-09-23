@@ -17,7 +17,7 @@ workPopup = function() {
 				e.preventDefault();
 			});
 		});
-	} else if ($(window).width() < 768) {
+	} else {
 		$(".work-pane-link").each(function(e){
 			$(this).on("click", function(e) {
 				$(this).parent().children(".work-popup").fadeIn();
@@ -48,24 +48,6 @@ $(function () {
 	$('#start-text h3').fitText(2, { maxFontSize: '36px', minFontSize: '24px' });
 	$('.main h1').fitText(1.5, { maxFontSize: '48px', minFontSize: '24px' });
 
-	$("header .top-link-menu").on("click", function(e) {
-		$('#side-menu-wrapper').addClass('active');
-		$('#side-menu').addClass('active animated slideInLeft').show();
-		$("#full-overlay").addClass("active animated fadeIn");
-		$('#side-menu').one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
-			function() {
-				setTimeout(function() {
-					$('#side-menu').removeClass('animated slideInLeft');
-					$("#full-overlay").removeClass("animated fadeIn");
-				}, 200);
-				$('#full-overlay').one("click", function(e) {
-
-					$('.top-link-close').trigger('click');
-				})
-			})
-		e.preventDefault();
-	});
-
 	$('#full-overlay').on("mousewheel", function(e) {
 		 if($('#full-overlay').hasClass('active')) {
  			 console.log("Remove side-menu")
@@ -81,7 +63,26 @@ $(function () {
 		}
 	});
 
-	$(".top-link-close").on("click", function(e) {
+	$("header .top-link-menu").on("click", function(e) {
+		$(this).hide();
+		$('#side-menu-wrapper, .intercom-launcher-button').addClass('active');
+		$('#side-menu').addClass('active animated slideInLeft').show();
+		$("#full-overlay").addClass("active animated fadeIn");
+		$('#side-menu').one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function() {
+			setTimeout(function() {
+				$('#side-menu').removeClass('animated slideInLeft');
+				$("#full-overlay").removeClass("animated fadeIn");
+			}, 200);
+			$('#full-overlay').one("click", function(e) {
+				$('.top-link-close').trigger('click');
+			})
+		});
+		e.preventDefault();
+	});
+
+	$("#side-menu .top-link-menu, .top-link-close").on("click", function(e) {
+		$('.intercom-launcher-button').removeClass('active');
+		$("header .top-link-menu").show();
 		$('#full-overlay').addClass("animated fadeOut");
 		$('#side-menu').addClass("animated slideOutLeft").one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
 		function() {
@@ -91,12 +92,7 @@ $(function () {
 		 		$('#side-menu').removeClass('animated slideOutLeft active').hide();
 		 	}, 500)
 		});
-		// $("#side-menu, #overlay, #start-modal").removeClass("active");
-		// e.preventDefault();
 	});
-	// $(".top-link-close").on("", function(e) {
-	// 		console.log("test");
-	// });
 
 	$(".top-link-start, .link-start").on("click", function(e) {
 		var modalToFire = document.querySelector('#start-modal');
@@ -116,9 +112,6 @@ $(function () {
 			function()   // Arg #4 (OPTIONAL) callbacks
 			{
 				console.log('callback for cta modal executed')
-				// setTimeout(function() {
-				// 	$("#overlay").toggleClass("active");
-				// },100) //seconds afterwards
 			}
 		);
 	});
@@ -132,21 +125,13 @@ $(function () {
 	$('.top-link-chat, #link-support').on("click", function(e) {
 		document.querySelector('.intercom-launcher-button').click();
 		setTimeout(function() {
-			$('#side-menu, #overlay').removeClass('active');
+			$('#side-menu').removeClass('active');
 		}, 500)
 	});
 
 	$('.top-link-chat').on("click", function(e) {
 		document.querySelector('.intercom-launcher-button').click();
 	});
-
-	$('#overlay-right:visible').on("click", function(e){
-		$('#overlay').removeClass('active');
-		if ($('#start-modal').is(":visible")) {
-			$('#start-modal').removeClass('active');
-			$('#side-menu').removeClass('active')
-		}
-	})
 
 	var paperElement = $('.paper-input')
 	paperElement.on('keydown keyup focus blur', function() {
@@ -187,8 +172,6 @@ var hideIntercomShit = function() {
 	}
 }
 
-
-
 var initParallax = function() {
 	//check if loaded properly
 	if (!Parallax) {
@@ -225,16 +208,12 @@ $(document).ready(function () {
 		axis: 'y',
 		trigger: 'hover'
 	});
-
 	$('.search-results').flip({
 		axis: 'y',
 		trigger: 'click'
 	});
-
 	$(".earn-category-mobile").not("#and-more").flip({
 		axis: 'x',
 		trigger: 'hover'
 	});
-
-
 });

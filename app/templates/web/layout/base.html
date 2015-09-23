@@ -35,12 +35,12 @@
     var bodyLoadingDiv = document.createElement('div');
     bodyLoadingDiv.className += bodyLoadingDiv.className + 'body-loading-div'
     document.body.appendChild(bodyLoadingDiv);
-    bodyLoadingDiv.innerHTML = '<div> {% include "web/components/logo-white.svg"%} </div><div> {% include "web/components/svg-loader.svg"%} </div>'
+    bodyLoadingDiv.innerHTML = '<div><span class="logo"> {% include "web/components/logo-white.svg"%} </span><span class="loader"> {% include "web/components/svg-loader.svg"%} </span></div>'
 </script>
 <header id="top">
     <nav id="top-menu">
         <ul>
-            <li><a class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a></li>
+            <li><a id="top-link-menu" class="top-link-menu btn-round btn-ghost" href="#"><span>Menu</span></a></li>
             <li>
                 <a id="top-logo" href="/">
 	                {% block logo %}

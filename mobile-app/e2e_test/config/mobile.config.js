@@ -1,11 +1,31 @@
 exports.config = {
     framework: 'jasmine2',
-     seleniumAddress: 'http://localhost:4444/wd/hub',
+    //appium port has to be 4723
+     seleniumAddress: 'http://localhost:4723/wd/hub',
 
 
          capabilities: {
-                 'browserName': 'chrome'
+
+
+          //ios settings
+                 'browserName': '',
+                 'appium-version': '1.4.11',
+                 app: '/Users/nlmac/Git/uguru/mobile-app/platforms/ios/build/emulator/uguru.app',
+                 platformName: 'ios',
+                  platformVersion: '8.4',
+                   deviceName: 'iPhone 6'
+
+         // //android settings
+         //        'browserName': 'chrome',
+         //        'appium-version': '1.4.11',
+         //        platformName: 'android',
+         //         platformVersion: '5.1',
+         //          deviceName: 'Google Nexus 5'
+           
          },
+
+         //0800695a006a24a8
+
         //   multiCapabilities: [
         //   {'browserName': 'chrome'},
         //   {'browserName': 'firefox'},

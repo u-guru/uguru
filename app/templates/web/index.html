@@ -27,15 +27,32 @@ Uguru Home
 		<li>
 			<a data-number="3"></a>
 		</li>
-		<!-- <li>
-			<a data-number="4"></a>
-		</li> -->
 	</ul>
 </nav>
 <div id="mobile-start">
 	<div id="mobile-inside">
 		<img src="/static/web/svg/logo-white.svg" alt="uguru"/>
-		<p>To earn an A, swipe away!<em>To the right, to the right.</em></p>
+		<p>
+			<span>uguru</span>
+			<span>To earn an A, swipe away!<em>To the right, to the right.</em></span>
+		</p>
+        <ul id='mobile-platform-icons'>
+            <li>
+                <a href='/itunes/app/' target='_blank'>
+                {% include "web/components/platform/apple-white.svg" %}
+                </a>
+            </li>
+            <li>
+                <a href='/windows/app/' target='_blank'>
+                    {% include "web/components/platform/microsoft-white.svg" %}
+                </a>
+            </li>
+            <li>
+                <a href='/android/app/' target='_blank'>
+                    {% include "web/components/platform/play-white.svg" %}
+                </a>
+            </li>
+        </ul>
 	</div>
 </div>
 <div id="banner"></div>
@@ -51,8 +68,6 @@ Uguru Home
 	{% include 'web/pages/home/work-pane.html' %}
 
 	{% include 'web/pages/home/why-pane.html' %}
-
-
 
 	</ul>
 </section>

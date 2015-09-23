@@ -95,6 +95,10 @@ def new_home_page():
 def faq():
     return render_template("web/pages/faq.html")
 
+@app.route('/faq-only/')
+def faq_body():
+    return render_template("web/pages/faq_only.html")
+
 @app.route('/manifest/')
 def manifest():
     return render_template("web/pages/manifest.html")
@@ -483,7 +487,9 @@ def uguru_terms():
 
 @app.route('/auth/school_email/<confirm_email_token>')
 def school_email_check(confirm_email_token):
+    print confirm_email_token
     user = User.query.filter_by(school_email_token=confirm_email_token).first()
+    print user
     if user:
         user.school_email_confirmed = True
         db_session.commit()
