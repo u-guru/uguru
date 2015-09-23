@@ -26,6 +26,12 @@ body {
 ::selection {
   background: rgba(255, 255, 255, 0.2); }
 
+section {
+  height: 100%; }
+
+.view-container {
+  position: inherit; }
+
 .uguru-view * {
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important; }
 
@@ -81,38 +87,6 @@ body {
   height: 20px; }
   .uguru-view h1.verified span svg path:first-child {
     fill: #50A5DD; }
-
-.uguru-view .start#access {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  background: #69B3A5;
-  padding-bottom: 128px; }
-  .uguru-view .start#access svg {
-    max-width: 200px;
-    max-height: 200px; }
-  .uguru-view .start#access #access-start {
-    position: absolute;
-    bottom: 0;
-    left: 0; }
-  .uguru-view .start#access p {
-    margin: 15px 0;
-    font-size: smaller; }
-  .uguru-view .start#access button:active {
-    background: rgba(43, 50, 52, 0.3); }
 
 .uguru-view .start#how header {
   -ms-box-orient: horizontal;
@@ -218,6 +192,11 @@ body {
       background: #50A5DD; }
     .uguru-view .start#how #how-cards .how-card:nth-child(7) .how-card-media {
       background: #9A5BC5; }
+
+.uguru-view .onboarding .onboarding-search {
+  box-sizing: border-box; }
+  .uguru-view .onboarding .onboarding-search input {
+    width: calc(100% - 20px); }
 
 .uguru-view .onboarding progress, .uguru-view .onboarding .progress {
   position: absolute;
@@ -435,36 +414,6 @@ body {
     font-size: 28px;
     text-align: center; }
 
-.uguru-view .onboarding#photo #photo-container #profile-icon {
-  position: relative;
-  height: calc(100% / 2);
-  text-align: center; }
-  .uguru-view .onboarding#photo #photo-container #profile-icon h1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    font-size: 24px;
-    font-weight: 700;
-    text-transform: uppercase; }
-  .uguru-view .onboarding#photo #photo-container #profile-icon svg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
-    max-width: 150px;
-    max-height: 150px; }
-
 .uguru-view .onboarding#account #account-form {
   box-sizing: border-box;
   padding: 15px; }
@@ -486,287 +435,6 @@ body {
   .uguru-view .onboarding#account #account-form #social-login {
     margin-top: 30px;
     margin-bottom: 20px; }
-
-.uguru-view .onboarding#skill header:before {
-  background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat; }
-
-.uguru-view .onboarding#skill #skills-list ul {
-  padding: 0 1px 1px;
-  height: 100%; }
-  .uguru-view .onboarding#skill #skills-list ul li {
-    height: 25%;
-    padding: 1px; }
-    .uguru-view .onboarding#skill #skills-list ul li a {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      background-color: rgba(0, 0, 0, 0.5);
-      box-sizing: border-box;
-      height: 100%;
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 24px;
-      text-align: center; }
-      .uguru-view .onboarding#skill #skills-list ul li a .skill-icon {
-        border-radius: 1000px;
-        display: block;
-        width: 50px;
-        height: 50px;
-        margin-top: 5px;
-        background: white; }
-      .uguru-view .onboarding#skill #skills-list ul li a .skill-label {
-        margin-top: -30px;
-        display: block;
-        width: 100%; }
-  .uguru-view .onboarding#skill #skills-list ul .active a {
-    background: #81B566; }
-
-.uguru-view .onboarding#skill-list header svg {
-  left: auto;
-  right: 15px; }
-
-.uguru-view .onboarding#skill-list #onboarding-skill {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%); }
-  .uguru-view .onboarding#skill-list #onboarding-skill .onboarding-prop {
-    position: static;
-    top: auto;
-    left: auto;
-    -webkit-transform: none;
-    -moz-transform: none;
-    -ms-transform: none;
-    -o-transform: none;
-    transform: none; }
-  .uguru-view .onboarding#skill-list #onboarding-skill h1 {
-    padding: 10px 0 0;
-    text-align: center; }
-
-.uguru-view .onboarding#skill-list .onboarding-list {
-  margin-top: -30px;
-  height: calc(100% / 3 * 2 + 30px);
-  overflow: none !important; }
-  .uguru-view .onboarding#skill-list .onboarding-list > div {
-    border-radius: 0px;
-    position: relative;
-    background: white;
-    padding: 0;
-    margin-top: 30px;
-    background: #F1F1F1;
-    height: calc(100% - 30px); }
-    .uguru-view .onboarding#skill-list .onboarding-list > div:before {
-      position: absolute;
-      left: 50%;
-      -webkit-transform: translateX(-50%);
-      -moz-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-      -o-transform: translateX(-50%);
-      transform: translateX(-50%);
-      content: "";
-      display: block;
-      position: absolute;
-      top: -29px;
-      width: 0;
-      height: 0;
-      border: 15px solid transparent;
-      border-bottom: 15px solid white; }
-    .uguru-view .onboarding#skill-list .onboarding-list > div ul {
-      height: 100%;
-      overflow: auto; }
-      .uguru-view .onboarding#skill-list .onboarding-list > div ul li > span input:checked + span {
-        background-color: #F9D57B; }
-
-.uguru-view .onboarding#course header:before {
-  background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat; }
-
-.uguru-view .onboarding#course #courses-list ul {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  margin: 0 1px; }
-  .uguru-view .onboarding#course #courses-list ul li {
-    position: relative;
-    width: 50%;
-    border: 1px solid transparent; }
-    .uguru-view .onboarding#course #courses-list ul li label {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 24px;
-      text-align: center; }
-    .uguru-view .onboarding#course #courses-list ul li input {
-      filter: alpha(opacity=0);
-      opacity: 0;
-      position: absolute;
-      z-index: 99;
-      top: 0;
-      left: 0;
-      margin: 0;
-      -webkit-appearance: none;
-      width: 100%;
-      height: 44px;
-      cursor: pointer; }
-    .uguru-view .onboarding#course #courses-list ul li input:checked + label {
-      background: #55A4B7; }
-
-.uguru-view .onboarding#school header:before, .uguru-view .onboarding#school-modal header:before {
-  background: url(../../img/onboarding/school.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat; }
-
-.uguru-view .onboarding#school #school-list ul li a, .uguru-view .onboarding#school #school-list-modal ul li a, .uguru-view .onboarding#school-modal #school-list ul li a, .uguru-view .onboarding#school-modal #school-list-modal ul li a {
-  font-weight: 300; }
-  .uguru-view .onboarding#school #school-list ul li a .school-icon img, .uguru-view .onboarding#school #school-list-modal ul li a .school-icon img, .uguru-view .onboarding#school-modal #school-list ul li a .school-icon img, .uguru-view .onboarding#school-modal #school-list-modal ul li a .school-icon img {
-    padding: 10px; }
-  .uguru-view .onboarding#school #school-list ul li a .school-name b, .uguru-view .onboarding#school #school-list ul li a .school-name i, .uguru-view .onboarding#school #school-list-modal ul li a .school-name b, .uguru-view .onboarding#school #school-list-modal ul li a .school-name i, .uguru-view .onboarding#school-modal #school-list ul li a .school-name b, .uguru-view .onboarding#school-modal #school-list ul li a .school-name i, .uguru-view .onboarding#school-modal #school-list-modal ul li a .school-name b, .uguru-view .onboarding#school-modal #school-list-modal ul li a .school-name i {
-    display: block;
-    width: 100%;
-    line-height: 1.2; }
-  .uguru-view .onboarding#school #school-list ul li a .school-name b, .uguru-view .onboarding#school #school-list-modal ul li a .school-name b, .uguru-view .onboarding#school-modal #school-list ul li a .school-name b, .uguru-view .onboarding#school-modal #school-list-modal ul li a .school-name b {
-    font-weight: 400; }
-  .uguru-view .onboarding#school #school-list ul li a .school-name i, .uguru-view .onboarding#school #school-list-modal ul li a .school-name i, .uguru-view .onboarding#school-modal #school-list ul li a .school-name i, .uguru-view .onboarding#school-modal #school-list-modal ul li a .school-name i {
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 300; }
-
-.uguru-view .onboarding#school #school-list ul li a:active, .uguru-view .onboarding#school #school-list ul li a:focus, .uguru-view .onboarding#school #school-list ul li a:hover, .uguru-view .onboarding#school #school-list-modal ul li a:active, .uguru-view .onboarding#school #school-list-modal ul li a:focus, .uguru-view .onboarding#school #school-list-modal ul li a:hover, .uguru-view .onboarding#school-modal #school-list ul li a:active, .uguru-view .onboarding#school-modal #school-list ul li a:focus, .uguru-view .onboarding#school-modal #school-list ul li a:hover, .uguru-view .onboarding#school-modal #school-list-modal ul li a:active, .uguru-view .onboarding#school-modal #school-list-modal ul li a:focus, .uguru-view .onboarding#school-modal #school-list-modal ul li a:hover {
-  background: rgba(255, 255, 255, 0.2); }
-
-.uguru-view .onboarding#major header:before {
-  background: url(../../img/onboarding/major.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat; }
-
-.uguru-view .onboarding#major #major-list ul li a {
-  margin-bottom: 1px;
-  font-weight: 300; }
-
-.uguru-view .onboarding#major #major-list ul li a:active, .uguru-view .onboarding#major #major-list ul li a:focus, .uguru-view .onboarding#major #major-list ul li a:hover {
-  background: rgba(255, 255, 255, 0.2); }
-
-.uguru-view .onboarding#major #major-list ul .major-business a {
-  border-color: #50A5DD; }
-
-.uguru-view .onboarding#major #major-list ul .major-arts a {
-  border-color: #81B566; }
-
-.uguru-view .onboarding#major #major-list ul .major-science a {
-  border-color: #F9D57B; }
-
-.uguru-view .onboarding#major #major-list ul .major-math a {
-  border-color: #DB1988; }
-
-.uguru-view .request#request-empty #request-content {
-  height: calc(100% - 50px - 64px); }
-
-.uguru-view .request#request-empty #request-message {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  padding: 15px;
-  width: 100%;
-  height: 100%;
-  background: #40484B; }
-  .uguru-view .request#request-empty #request-message > div > div svg {
-    display: block;
-    margin: 0 auto;
-    width: 50%;
-    max-height: 150px; }
-  .uguru-view .request#request-empty #request-message > div h2 {
-    width: 100%;
-    margin: 30px 0;
-    font-size: 20px;
-    font-weight: 400;
-    text-align: center; }
-  .uguru-view .request#request-empty #request-message #request-button {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    color: white; }
-    .uguru-view .request#request-empty #request-message #request-button span {
-      border-radius: 1000px;
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      width: 70px;
-      height: 70px;
-      background: #69B3A5; }
-      .uguru-view .request#request-empty #request-message #request-button span svg {
-        width: 25px;
-        height: 25px;
-        -webkit-transform: rotate(45deg);
-        -moz-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        -o-transform: rotate(45deg);
-        transform: rotate(45deg); }
-    .uguru-view .request#request-empty #request-message #request-button b {
-      display: block;
-      width: 100%;
-      margin-top: 5px;
-      font-size: 24px;
-      font-weight: 600;
-      text-align: center;
-      text-transform: uppercase; }
 
 .uguru-view .request#request header:before {
   background: url(../images/school.jpg) no-repeat center center/cover; }
@@ -1282,9 +950,9 @@ body {
           width: 100%;
           font-weight: 600; }
 
-@media screen and (min-height: 500px) {
-  .uguru-view .start#access svg {
-    max-height: 400px; } }
+@media screen and (min-height: 600px) {
+  .uguru-view .request#request-empty #request-message > div > div svg {
+    max-height: 150px; } }
 
 @media screen and (max-width: 320px) {
   .uguru-view body, .uguru-view input, .uguru-view button {
@@ -1331,6 +999,439 @@ body {
     .uguru-view #account-form input {
       margin-top: 20px !important;
       font-size: 18px !important; } }
+
+.access-view {
+  background: #69B3A5; }
+  .access-view #access-data {
+    height: calc(100% - 64px); }
+  .access-view #access-logo {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -webkit-justify-content: center;
+    justify-content: center;
+    height: 60%; }
+    .access-view #access-logo svg {
+      display: block;
+      max-height: 80%; }
+  .access-view #access-code {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    height: 40%; }
+  .access-view #access-start {
+    position: absolute;
+    bottom: 0;
+    left: 0; }
+  .access-view p {
+    margin: 15px 0;
+    font-size: smaller; }
+  .access-view button:active {
+    background: rgba(43, 50, 52, 0.3); }
+
+.university-view {
+  background: #2B3234; }
+  .university-view header:before {
+    background: url(../../img/onboarding/school.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat; }
+  .university-view header .geolocation-icon {
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding-top: 5px;
+    right: 10px;
+    z-index: 0;
+    height: 18px; }
+    .university-view header .geolocation-icon .ion-navigate {
+      filter: alpha(opacity=60);
+      opacity: 0.6;
+      color: white !important;
+      font-size: 18px !important; }
+    .university-view header .geolocation-icon .ion-navigate.active,
+    .university-view header .geolocation-icon .ion-navigate.activated {
+      filter: alpha(opacity=100);
+      opacity: 1; }
+  .university-view #school-list ul li a, .university-view #school-list-modal ul li a {
+    font-weight: 300; }
+    .university-view #school-list ul li a .school-icon img, .university-view #school-list-modal ul li a .school-icon img {
+      border-radius: 1000px;
+      border: 0 !important;
+      padding: 10px;
+      width: 64px;
+      height: 64px; }
+    .university-view #school-list ul li a .school-name, .university-view #school-list-modal ul li a .school-name {
+      display: block;
+      width: calc(100% - 69px); }
+      .university-view #school-list ul li a .school-name b, .university-view #school-list ul li a .school-name i, .university-view #school-list-modal ul li a .school-name b, .university-view #school-list-modal ul li a .school-name i {
+        display: block;
+        width: 100%;
+        line-height: 1.2; }
+      .university-view #school-list ul li a .school-name b, .university-view #school-list-modal ul li a .school-name b {
+        font-size: 20px;
+        font-weight: 400; }
+      .university-view #school-list ul li a .school-name i, .university-view #school-list-modal ul li a .school-name i {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300; }
+      .university-view #school-list ul li a .school-name .school-title, .university-view #school-list-modal ul li a .school-name .school-title {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; }
+      .university-view #school-list ul li a .school-name .school-city, .university-view #school-list-modal ul li a .school-name .school-city {
+        text-transform: capitalize; }
+      .university-view #school-list ul li a .school-name .school-stat, .university-view #school-list-modal ul li a .school-name .school-stat {
+        text-transform: uppercase; }
+  .university-view #school-list ul li a:active, .university-view #school-list ul li a:focus, .university-view #school-list ul li a:hover, .university-view #school-list-modal ul li a:active, .university-view #school-list-modal ul li a:focus, .university-view #school-list-modal ul li a:hover {
+    background: rgba(255, 255, 255, 0.2); }
+
+.home-view button.active, .home-view button.activated {
+  filter: alpha(opacity=50);
+  opacity: 0.5; }
+
+.home-view #request-content {
+  height: calc(100% - 50px - 64px); }
+
+.home-view #request-message {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+  background: #40484B; }
+  .home-view #request-message > div > div svg {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    max-height: 100px; }
+  .home-view #request-message > div h2 {
+    width: 100%;
+    margin: 30px 0;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center; }
+  .home-view #request-message #request-button {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    color: white; }
+    .home-view #request-message #request-button span {
+      border-radius: 1000px;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: #69B3A5; }
+    .home-view #request-message #request-button b {
+      display: block;
+      width: 100%;
+      margin-top: 5px;
+      font-size: 24px;
+      font-weight: 600;
+      text-align: center;
+      text-transform: uppercase; }
+
+.major-view {
+  background: #2B3234; }
+  .major-view header:before {
+    background: url(../../img/onboarding/major.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat; }
+  .major-view #major-list ul {
+    margin-top: 1px; }
+    .major-view #major-list ul li a {
+      border-color: #50A5DD;
+      margin-bottom: 1px;
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 1.2; }
+    .major-view #major-list ul li a:active, .major-view #major-list ul li a:focus, .major-view #major-list ul li a:hover {
+      background: rgba(255, 255, 255, 0.2); }
+    .major-view #major-list ul li.selected {
+      position: relative; }
+      .major-view #major-list ul li.selected a {
+        border-color: white !important;
+        color: inherit !important;
+        font-weight: 600; }
+      .major-view #major-list ul li.selected svg {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        right: 0;
+        width: 64px;
+        height: 64px;
+        padding: 20px; }
+
+.courses-view {
+  background: #2B3234; }
+  .courses-view header:before {
+    background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat; }
+  .courses-view #courses-list ul {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    margin: 1px 1px 0; }
+    .courses-view #courses-list ul li {
+      position: relative;
+      width: 50%;
+      border: 1px solid transparent; }
+      .courses-view #courses-list ul li label {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: center; }
+      .courses-view #courses-list ul li input {
+        filter: alpha(opacity=0);
+        opacity: 0;
+        position: absolute;
+        z-index: 99;
+        top: 0;
+        left: 0;
+        margin: 0;
+        -webkit-appearance: none;
+        width: 100%;
+        height: 44px;
+        cursor: pointer; }
+      .courses-view #courses-list ul li input:checked + label {
+        background: #55A4B7; }
+
+.skills-view {
+  background: #2B3234; }
+  .skills-view header:before {
+    background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat; }
+  .skills-view #skills-list ul {
+    padding: 1px;
+    height: 100%; }
+    .skills-view #skills-list ul li {
+      height: 25%;
+      border: 1px solid #2B3234; }
+      .skills-view #skills-list ul li a {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        position: relative;
+        margin-bottom: 0;
+        background-color: rgba(43, 50, 52, 0.5);
+        box-sizing: border-box;
+        height: 100%;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: center; }
+        .skills-view #skills-list ul li a div {
+          position: relative;
+          z-index: 9; }
+        .skills-view #skills-list ul li a .skill-label {
+          display: block;
+          width: 100%;
+          font-weight: 600;
+          line-height: 1.25; }
+        .skills-view #skills-list ul li a .skill-count {
+          display: block;
+          font-size: 12px;
+          line-height: 1.25;
+          text-transform: uppercase; }
+    .skills-view #skills-list ul [class*="bg-"]:after {
+      filter: alpha(opacity=70);
+      opacity: 0.7;
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0; }
+    .skills-view #skills-list ul .bg-cerise.important:after {
+      background: #DB1988; }
+    .skills-view #skills-list ul .bg-orange.important:after {
+      background: #E5753C; }
+    .skills-view #skills-list ul .bg-gold.important:after {
+      background: #F9D57B; }
+    .skills-view #skills-list ul .bg-moola.important:after {
+      background: #81B566; }
+    .skills-view #skills-list ul .bg-shamrock.important:after {
+      background: #69B3A5; }
+    .skills-view #skills-list ul .bg-azure.important:after {
+      background: #55A4B7; }
+    .skills-view #skills-list ul .bg-lake.important:after {
+      background: #50A5DD; }
+    .skills-view #skills-list ul .bg-eggplant.important:after {
+      background: #9A5BC5; }
+
+.category-skills-modal {
+  top: calc(100% / 3);
+  overflow: visible; }
+  .category-skills-modal .onboarding-list {
+    margin-top: -30px;
+    height: calc(100% / 3 * 2 + 30px);
+    overflow: none !important; }
+    .category-skills-modal .onboarding-list > div {
+      border-radius: 0px;
+      position: relative;
+      background: white;
+      padding: 0;
+      margin-top: 30px;
+      background: #F1F1F1;
+      height: calc(100% - 30px); }
+      .category-skills-modal .onboarding-list > div:before {
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        content: "";
+        display: block;
+        position: absolute;
+        top: -29px;
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-bottom: 15px solid white; }
+      .category-skills-modal .onboarding-list > div ul {
+        height: 100%;
+        overflow: auto; }
+
+.photo-view {
+  background: #2B3234; }
+  .photo-view #photo-list {
+    position: absolute;
+    bottom: 0;
+    padding: 1px; }
+    .photo-view #photo-list p {
+      font-size: 14px;
+      text-align: center;
+      font-weight: 400;
+      opacity: 0.5; }
+    .photo-view #photo-list li {
+      padding: 1px;
+      box-sizing: border-box; }
+      .photo-view #photo-list li img {
+        display: block;
+        max-width: 100%; }
+  .photo-view #photo-container #profile-icon {
+    position: relative;
+    height: 75%;
+    text-align: center; }
+    .photo-view #photo-container #profile-icon h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      z-index: 9;
+      margin: 0;
+      border: 0;
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase; }
+    .photo-view #photo-container #profile-icon svg, .photo-view #photo-container #profile-icon img {
+      border-radius: 1000px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      filter: alpha(opacity=50);
+      opacity: 0.5;
+      width: 80%;
+      height: 80%;
+      max-width: 150px;
+      max-height: 150px; }
 
 .action-sheet-wrapper.action-sheet-up {
   background: white; }
@@ -1709,3 +1810,54 @@ body {
 
 .tabs {
   border: 0; }
+
+.smaller-list-font {
+  font-size: 85%; }
+
+.slider-pager {
+  display: none; }
+
+.content {
+  height: 100%; }
+  .content.footer-exists {
+    padding-bottom: 64px; }
+
+input[type=text].input-outline {
+  padding: 10px;
+  border: 0;
+  border: 1px solid rgba(43, 50, 52, 0.1);
+  border-bottom-width: 5px;
+  border-radius: 0;
+  background: rgba(43, 50, 52, 0.1);
+  color: white;
+  font-size: 24px;
+  font-weight: 300; }
+
+input[type=text].input-outline:active, input[type=text].input-outline:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2); }
+
+button.disabled {
+  filter: alpha(opacity=50);
+  opacity: 0.5; }
+
+/**Hide intercom shit**/
+#intercom-launcher {
+  display: none !important; }
+
+.intercom-parent-container {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  margin-top: -54px; }
+
+.stats-small {
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0.66em;
+  text-transform: uppercase; }
+
+.stats-large {
+  font-size: 36px;
+  font-weight: 700; }

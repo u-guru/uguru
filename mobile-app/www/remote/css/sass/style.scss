@@ -30,10 +30,18 @@ body {
 	background: rgba(white,.2);
 }
 
+section {
+	height: 100%;
+}
+.view-container {
+	position: inherit;
+}
+
 .uguru-view {
 	* {
 		font-family: $font!important;
 	}
+
 	#main-menu {
 		position: fixed;
 		bottom: 0;
@@ -76,29 +84,6 @@ body {
 	}
 
 	.start {
-		&#access {
-			@include flex;
-			@include flex-wrap;
-			@include flex-center;
-			background: $shamrock;
-			padding-bottom: 128px;
-			svg {
-				max-width: 200px;
-				max-height: 200px;
-			}
-			#access-start {
-				position: absolute;
-				bottom: 0;
-				left: 0;
-			}
-			p {
-				margin: 15px 0;
-				font-size: smaller;
-			}
-			button:active {
-				background: rgba($charcoal,.3);
-			}
-		}
 		&#how {
 			header {
 				@include flex;
@@ -205,6 +190,12 @@ body {
 	}
 
 	.onboarding {
+		.onboarding-search {
+			box-sizing: border-box;
+			input {
+				width: calc(100% - 20px);
+			}
+		}
 		progress, .progress {
 			position: absolute;
 			top: 0;
@@ -426,30 +417,6 @@ body {
 				text-align: center;
 			}
 		}
-		&#availability {
-		}
-		&#photo {
-			#photo-container {
-				#profile-icon {
-					position: relative;
-					height: calc(100% / 2);
-					text-align: center;
-					h1 {
-						@include center-xy;
-						font-size: 24px;
-						font-weight: 700;
-						text-transform: uppercase;
-					}
-					svg {
-						@include center-xy;
-						width: 80%;
-						height: 80%;
-						max-width: 150px;
-						max-height: 150px;
-					}
-				}
-			}
-		}
 		&#account {
 			#account-form {
 				box-sizing: border-box;
@@ -478,283 +445,9 @@ body {
 				}
 			}
 		}
-		&#skill {
-			header {
-				&:before {
-					background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover,
-								url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat;
-				}
-			}
-			#skills-list {
-				ul {
-					padding: 0 1px 1px;
-					height: 100%;
-					li {
-						height: 25%;
-						padding: 1px;
-						a {
-							@include flex;
-							@include flex-wrap;
-							@include flex-center;
-							background-color: rgba(0,0,0,0.5);
-							box-sizing: border-box;
-							height: 100%;
-							font-size: 18px;
-							font-weight: 400;
-							line-height: 24px;
-							text-align: center;
-							.skill-icon {
-								@include round;
-								display: block;
-								width: 50px;
-								height: 50px;
-								margin-top: 5px;
-								background: white;
-							}
-							.skill-label {
-								margin-top: -30px;
-								display: block;
-								width: 100%;
-							}
-						}
-					}
-					.active {
-						a {
-							background: $moola;
-						}
-					}
-				}
-			}
-		}
-		&#skill-list {
-			header {
-				svg {
-					left: auto;
-					right: 15px;
-				}
-			}
-			#onboarding-skill {
-				@include center-xy;
-				.onboarding-prop {
-					@include reset-pos;
-				}
-				h1 {
-					padding: 10px 0 0;
-					text-align: center;
-				}
-			}
-			.onboarding-list {
-				margin-top: -30px;
-				height: calc(100% / 3 * 2 + 30px);
-				overflow: none!important;
-				> div {
-					@include tri-down(15, white, 0, 0);
-					background: $smoke;
-					height: calc(100% - 30px);
-					ul {
-						height: 100%;
-						overflow: auto;
-						li {
-							> span {
-								input:checked + span {
-									background-color: $gold;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		&#course {
-			header {
-				&:before {
-					background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover,
-								url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat;
-				}
-			}
-			#courses-list {
-				ul {
-					@include flex;
-					@include flex-wrap;
-					margin: 0 1px;
-					li {
-						position: relative;
-						width: 50%;
-						border: 1px solid transparent;
-						label {
-							display: block;
-							width: 100%;
-							padding: 10px;
-							background: rgba(white,.1);
-							font-size: 18px;
-							font-weight: 400;
-							line-height: 24px;
-							text-align: center;
-						}
-						input {
-							@include opacity(0);
-							position: absolute;
-							z-index: 99;
-							top: 0;
-							left: 0;
-							margin: 0;
-							-webkit-appearance: none;
-							width: 100%;
-							height: 44px;
-							cursor: pointer;
-						}
-						input:checked + label {
-							background: $azure;
-						}
-					}
-				}
-			}
-		}
-		&#school, &#school-modal {
-			header {
-				&:before {
-					background: url(../../img/onboarding/school.jpg) no-repeat center center/cover,
-								url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat;
-				}
-			}
-			#school-list, #school-list-modal {
-				ul {
-					li {
-						a {
-							font-weight: 300;
-							.school-icon {
-								img {
-									padding: 10px;
-								}
-							}
-							.school-name {
-								b, i {
-									display: block;
-									width: 100%;
-									line-height: 1.2;
-								}
-								b {
-									font-weight: 400;
-								}
-								i {
-									font-size: 16px;
-									font-style: normal;
-									font-weight: 300;
-								}
-							}
-						}
-						#{$links} {
-							background: rgba(white,.2);
-						}
-					}
-				}
-			}
-		}
-		&#major {
-			header {
-				&:before {
-					background: url(../../img/onboarding/major.jpg) no-repeat center center/cover,
-								url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat;
-				}
-			}
-			#major-list {
-				ul {
-					li {
-						a {
-							margin-bottom: 1px;
-							font-weight: 300;
-						}
-						#{$links} {
-							background: rgba(white,.2);
-						}
-					}
-					.major-business {
-						a {
-							border-color: $lake;
-						}
-					}
-					.major-arts {
-						a {
-							border-color: $moola;
-						}
-					}
-					.major-science {
-						a {
-							border-color: $gold;
-						}
-					}
-					.major-math {
-						a {
-							border-color: $cerise;
-						}
-					}
-				}
-			}
-		}
 	}
 
 	.request {
-		&#request-empty {
-			#request-content {
-				height: calc(100% - 50px - 64px);
-			}
-			#request-message {
-				@include flex;
-				@include flex-wrap;
-				@include flex-center;
-				padding: 15px;
-				width: 100%;
-				height: 100%;
-				background: $slate;
-				> div {
-					> div svg {
-						display: block;
-						margin: 0 auto;
-						width: 50%;
-						max-height: 150px;
-					}
-					h2 {
-						width: 100%;
-						margin: 30px 0;
-						font-size: 20px;
-						font-weight: 400;
-						text-align: center;
-					}
-				}
-				#request-button {
-					@include flex;
-					@include flex-wrap;
-					@include flex-center;
-					color: white;
-					span {
-						@include round;
-						@include flex;
-						@include flex-center;
-						width: 70px;
-						height: 70px;
-						background: $shamrock;
-						svg {
-							width: 25px;
-							height: 25px;
-							-webkit-transform: rotate(45deg);
-							-moz-transform: rotate(45deg);
-							-ms-transform: rotate(45deg);
-							-o-transform: rotate(45deg);
-							transform: rotate(45deg);
-						}
-					}
-					b {
-						display: block;
-						width: 100%;
-						margin-top: 5px;
-						font-size: 24px;
-						font-weight: 600;
-						text-align: center;
-						text-transform: uppercase;
-					}
-				}
-			}
-		}
 		&#request {
 			header {
 				&:before {
@@ -1233,11 +926,15 @@ body {
 		}
 	}
 
-	@media screen and (min-height:500px) {
-		.start {
-			&#access {
-				svg {
-					max-height: 400px;
+	@media screen and (min-height:600px) {
+		.request {
+			&#request-empty {
+				#request-message {
+					> div {
+						> div svg {
+							max-height: 150px;
+						}
+					}
 				}
 			}
 		}
@@ -1299,6 +996,423 @@ body {
 			input {
 				margin-top: 20px!important;
 				font-size: 18px!important;
+			}
+		}
+	}
+}
+
+// ACCESS
+.access-view {
+	background: $shamrock;
+	#access-data {
+		height: calc(100% - 64px);
+	}
+	#access-logo {
+		@include flex;
+		@include flex-bottom;
+		height: 60%;
+		svg {
+			display: block;
+			max-height: 80%;
+		}
+	}
+	#access-code {
+		@include flex;
+		@include flex-center;
+		height: 40%;
+	}
+	#access-start {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+	p {
+		margin: 15px 0;
+		font-size: smaller;
+	}
+	button:active {
+		background: rgba($charcoal,.3);
+	}
+}
+
+// UNIVERSITY
+.university-view {
+	background: $charcoal;
+	header {
+		&:before {
+			background: url(../../img/onboarding/school.jpg) no-repeat center center/cover,
+						url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat;
+		}
+		.geolocation-icon {
+			@include opacity(.5);
+			@include center-y;
+			padding-top: 5px;
+			right: 10px;
+			z-index: 0;
+			height: 18px;
+			.ion-navigate {
+				@include opacity(.6);
+				color: white!important;
+				font-size: 18px!important;
+			}
+			.ion-navigate.active,
+			.ion-navigate.activated {
+				@include opacity(1);
+			}
+		}
+	}
+	#school-list, #school-list-modal {
+		ul {
+			li {
+				a {
+					font-weight: 300;
+					.school-icon {
+						img {
+							@include round;
+							border: 0!important;
+							padding: 10px;
+							width: 64px;
+							height: 64px;
+						}
+					}
+					.school-name {
+						display: block;
+						width: calc(100% - 69px);
+						b, i {
+							display: block;
+							width: 100%;
+							line-height: 1.2;
+						}
+						b {
+							font-size: 20px;
+							font-weight: 400;
+						}
+						i {
+							font-size: 16px;
+							font-style: normal;
+							font-weight: 300;
+						}
+						.school-title {
+							display: block;
+							width: 100%;
+							overflow: hidden;
+							white-space: nowrap;
+							text-overflow: ellipsis;
+						}
+						.school-city {
+							text-transform: capitalize;
+						}
+						.school-stat {
+							text-transform: uppercase;
+						}
+					}
+				}
+				#{$links} {
+					background: rgba(white,.2);
+				}
+			}
+		}
+	}
+}
+
+// HOME
+.home-view {
+	button {
+		&.active, &.activated {
+			@include opacity(.5);
+		}
+	}
+	#request-content {
+		height: calc(100% - 50px - 64px);
+	}
+	#request-message {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		padding: 15px;
+		width: 100%;
+		height: 100%;
+		background: $slate;
+		> div {
+			> div svg {
+				display: block;
+				margin: 0 auto;
+				width: 50%;
+				max-height: 100px;
+			}
+			h2 {
+				width: 100%;
+				margin: 30px 0;
+				font-size: 20px;
+				font-weight: 400;
+				text-align: center;
+			}
+		}
+		#request-button {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			color: white;
+			span {
+				@include round;
+				@include flex;
+				@include flex-center;
+				width: 70px;
+				height: 70px;
+				background: $shamrock;
+			}
+			b {
+				display: block;
+				width: 100%;
+				margin-top: 5px;
+				font-size: 24px;
+				font-weight: 600;
+				text-align: center;
+				text-transform: uppercase;
+			}
+		}
+	}
+}
+
+// MAJOR
+.major-view {
+	background: $charcoal;
+	header {
+		&:before {
+			background: url(../../img/onboarding/major.jpg) no-repeat center center/cover,
+						url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat;
+		}
+	}
+	#major-list {
+		ul {
+			margin-top: 1px;
+			li {
+				a {
+					border-color: $lake;
+					margin-bottom: 1px;
+					font-weight: 300;
+					font-size: 20px;
+					line-height: 1.2;
+				}
+				#{$links} {
+					background: rgba(white,.2);
+				}
+				&.selected  {
+					position: relative;
+					a {
+						border-color: white!important;
+						color: inherit!important;
+						font-weight: 600;
+					}
+					svg {
+						@include center-y;
+						right: 0;
+						width: 64px;
+						height: 64px;
+						padding: 20px;
+					}
+				}
+			}
+		}
+	}
+}
+
+// COURSES
+.courses-view {
+	background: $charcoal;
+	header {
+		&:before {
+			background: url(../../img/onboarding/courses.jpg) no-repeat center center/cover,
+						url(/static/remote/img/onboarding/courses.jpg) center/cover no-repeat;
+		}
+	}
+	#courses-list {
+		ul {
+			@include flex;
+			@include flex-wrap;
+			margin: 1px 1px 0;
+			li {
+				position: relative;
+				width: 50%;
+				border: 1px solid transparent;
+				label {
+					display: block;
+					width: 100%;
+					padding: 10px;
+					background: rgba(white,.1);
+					font-size: 18px;
+					font-weight: 400;
+					line-height: 24px;
+					text-align: center;
+				}
+				input {
+					@include opacity(0);
+					position: absolute;
+					z-index: 99;
+					top: 0;
+					left: 0;
+					margin: 0;
+					-webkit-appearance: none;
+					width: 100%;
+					height: 44px;
+					cursor: pointer;
+				}
+				input:checked + label {
+					background: $azure;
+				}
+			}
+		}
+	}
+}
+
+// SKILLS
+.skills-view {
+	background: #2B3234;
+	header {
+		&:before {
+			background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover,
+						url(/static/remote/img/onboarding/skills.jpg) center/cover no-repeat;
+		}
+	}
+	#skills-list {
+		ul {
+			padding: 1px;
+			height: 100%;
+			li {
+				height: 25%;
+				border: 1px solid $charcoal;
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					position: relative;
+					margin-bottom: 0;
+					background-color: rgba($charcoal,.5);
+					box-sizing: border-box;
+					height: 100%;
+					font-size: 18px;
+					font-weight: 400;
+					line-height: 24px;
+					text-align: center;
+					div {
+						position: relative;
+						z-index: 9;
+					}
+					.skill-label {
+						display: block;
+						width: 100%;
+						font-weight: 600;
+						line-height: 1.25;
+					}
+					.skill-count {
+						display: block;
+						font-size: 12px;
+						line-height: 1.25;
+						text-transform: uppercase;
+					}
+				}
+			}
+			[class*="bg-"]:after {
+				@include opacity(.7);
+				position: absolute;
+				content: "";
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+			}
+			.bg-cerise.important:after {
+				background: $cerise;
+			}
+			.bg-orange.important:after {
+				background: $orange;
+			}
+			.bg-gold.important:after {
+				background: $gold;
+			}
+			.bg-moola.important:after {
+				background: $moola;
+			}
+			.bg-shamrock.important:after {
+				background: $shamrock;
+			}
+			.bg-azure.important:after {
+				background: $azure;
+			}
+			.bg-lake.important:after {
+				background: $lake;
+			}
+			.bg-eggplant.important:after {
+				background: $eggplant;
+			}
+		}
+	}
+}
+
+// SKILLS MODAL
+.category-skills-modal {
+	top: calc(100% / 3);
+	overflow: visible;
+	.onboarding-list {
+		margin-top: -30px;
+		height: calc(100% / 3 * 2 + 30px);
+		overflow: none!important;
+		> div {
+			@include tri-down(15, white, 0, 0);
+			background: $smoke;
+			height: calc(100% - 30px);
+			ul {
+				height: 100%;
+				overflow: auto;
+			}
+		}
+	}
+}
+
+// PHOTO
+.photo-view {
+	background: $charcoal;
+	#photo-list {
+		position: absolute;
+		bottom: 0;
+		padding: 1px;
+		p {
+			font-size: 14px;
+			text-align: center;
+			font-weight: 400;
+			opacity: 0.5;
+		}
+		li {
+			padding: 1px;
+			box-sizing: border-box;
+			img {
+				display: block;
+				max-width: 100%;
+			}
+		}
+	}
+	#photo-container {
+		#profile-icon {
+			position: relative;
+			height: 75%;
+			text-align: center;
+			h1 {
+				@include center-xy;
+				z-index: 9;
+				margin: 0;
+				border: 0;
+				font-size: 20px;
+				font-weight: 700;
+				text-transform: uppercase;
+			}
+			svg, img {
+				@include round;
+				@include center-xy;
+				@include opacity(.5);
+				width: 80%;
+				height: 80%;
+				max-width: 150px;
+				max-height: 150px;
 			}
 		}
 	}
@@ -1530,7 +1644,6 @@ body {
 	}
 }
 
-
 @media screen and (min-height:540px) {
 	.side-menu-list {
 		.list-item-profile {
@@ -1588,7 +1701,6 @@ body {
 		background: rgba($campus, .75);
 	}
 }
-
 .menu-student {
 	.list {
 		background: white;
@@ -1726,4 +1838,67 @@ body {
 
 .tabs {
 	border: 0;
+}
+
+// SAMIR'S SHIT
+.smaller-list-font {
+	font-size: 85%;
+}
+
+.slider-pager {
+	display: none;
+}
+
+.content {
+	height: 100%;
+	&.footer-exists {
+		padding-bottom: 64px;
+	}
+}
+// ionic overrides
+input[type=text] {
+	&.input-outline {
+		padding: 10px;
+		border: 0;
+		border: 1px solid rgba($charcoal, .1);
+		border-bottom-width: 5px;
+		border-radius: 0;
+		background: rgba($charcoal, .1);
+		color: white;
+		font-size: 24px;
+		font-weight: 300;
+	}
+	&.input-outline:active, &.input-outline:focus {
+		background: rgba(white, .1);
+		border-color: rgba(white, .2);
+	}
+}
+
+button.disabled {
+	@include opacity(.5);
+}
+
+/**Hide intercom shit**/
+#intercom-launcher {
+	display:none !important;
+}
+
+.intercom-parent-container {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	height: 100%;
+	margin-top: -54px;
+}
+
+.stats-small {
+	font-size: 12px;
+	font-weight: 700;
+	margin: 0.66em;
+	text-transform: uppercase;
+}
+
+.stats-large {
+	font-size: 36px;
+	font-weight: 700;
 }
