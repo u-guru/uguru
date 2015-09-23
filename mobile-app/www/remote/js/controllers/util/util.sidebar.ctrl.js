@@ -25,11 +25,13 @@ angular.module('uguru.util.controllers')
   '$ionicPlatform',
   '$ionicBackdrop',
   'UniversityMatcher',
+  'AnimationService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
-  Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher) {
+  Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
+  AnimationService) {
 
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
@@ -700,14 +702,16 @@ angular.module('uguru.util.controllers')
 
     $scope.goToGuru = function() {
 
-      $scope.loader.show();
+      //$scope.loader.show();
 
       //if no skills, courses, or majors
       if ($scope.user && (($scope.user.guru_courses.length === 0)  || ($scope.user.guru_skills.length === 0)
       || ($scope.user.majors.length === 0))  && confirm('Your guru account is not complete. Complete it?')) {
+        AnimationService.flip();
         $state.go('^.become-guru');
       } else {
         console.log('transitioning to guru mode');
+        AnimationService.flip();
         $state.go('^.guru');
       }
 
@@ -723,7 +727,8 @@ angular.module('uguru.util.controllers')
     $scope.goToStudent = function() {
 
       //show the loader immediately
-      $scope.loader.show();
+      //$scope.loader.show();
+      AnimationService.flip();
       $state.go('^.home');
 
       //let the server know the user was on guru mode for the next time app opens

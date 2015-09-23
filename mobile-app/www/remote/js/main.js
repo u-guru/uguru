@@ -1,4 +1,4 @@
-var LOCAL = false; //local to the 8100 codebasebirbirs
+var LOCAL = true; //local to the 8100 codebasebirbirs
 var FIRST_PAGE='^.university';
 
 var img_base;
@@ -45,16 +45,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   $cordovaGeolocation, $cordovaDevice, DeviceService) {
 
   var openKeyboard = null;
-
-  DeviceService.readyDevice();
-  
-  // console.log("Firing event start to GA");
-
-  // ga('create', 'UA-67802516-1', 'auto');
-  // ga('send', 'event', 'App Start', 'action');
-  // ga('send', 'pageview');
-
-  
   
 })
 

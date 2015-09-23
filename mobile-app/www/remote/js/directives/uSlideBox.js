@@ -131,7 +131,7 @@ function($parse, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $ion
 .directive('uSlide', function() {
   return {
     restrict: 'E',
-    require: '^ionSlideBox',
+    require: '^uSlideBox',
     compile: function(element) {
       element.addClass('slider-slide');
     }
