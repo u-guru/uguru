@@ -16,9 +16,19 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 		readyDevice: readyDevice,
 		getDevice: getDevice,
     getPlatform: getPlatform,
+<<<<<<< HEAD
 		isMobile: isMobile,
 		isWeb: isWeb,
     ios: iOSService,
+=======
+    getModel: getModel,
+    getVersion: getVersion,
+    getUUID: getUUID,
+		isMobile: isMobile,
+		isWeb: isWeb,
+    ios: iOSService,
+    getInfo: getInfo
+>>>>>>> samir-dev
 	}
 
 	function isMobile() {
@@ -38,6 +48,34 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
     console.log("getPlatform() returns: " + ionic.Platform.platform());
     return ionic.Platform.platform();
   }
+<<<<<<< HEAD
+=======
+
+  function getUUID() {
+    console.log("getUUID() returns: " + ionic.Platform.device().uuid);
+    return ionic.Platform.device().uuid;
+  }
+
+  function getVersion() {
+    console.log("getVersion() returns: " + ionic.Platform.device().version);
+    return ionic.Platform.device().version;
+  }
+
+  function getModel() {
+    console.log("getVersion() returns: " + ionic.Platform.device().model);
+    return ionic.Platform.device().model;
+  }
+
+  function getInfo() {
+    var info =  ionic.Platform.device().model + "/" +
+                ionic.Platform.device().platform + "/" +
+                ionic.Platform.device().version + "/" +
+                ionic.Platform.device().uuid
+                                       ;
+  console.log("Device info: " + info);
+    return info;
+  }
+>>>>>>> samir-dev
 
 	function readyDevice(callback) {
 		document.addEventListener("deviceready", onDeviceReady);
@@ -45,6 +83,8 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 
 	function onDeviceReady(callback) {
 		//checkUpdates();
+
+
 
         if (calcTimeSinceInit) {
       		deviceReadyLoadTime = calcTimeSinceInit();
@@ -60,7 +100,8 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
         }
 
 		if(isMobile()) {
-			console.log("DeviceSerivce detects mobile");
+			console.log("DeviceService detects mobile");
+      console.log("device.cordova is ready " + device.cordova);
 	  		console.log("navigator.geolocation works well");
 			console.log("window.open works well");
 			console.log("navigator.camera works well " + navigator.camera);

@@ -2,13 +2,10 @@
 ### uw --> uguru main repo
 ### um --> uguru/mobile-app
 ### app/static/local --> .gitignore
-source ~/.bash_profile
-source ~/.zshrc
-uw
 rm -rf "$(getconf DARWIN_USER_CACHE_DIR)/org.llvm.clang/ModuleCache"
 echo 'cd to uguru-mobile repository'
 ### TODO: RAISE if um is not defined
-um && echo
+cd mobile-app
 echo '================'
 echo '=============='
 echo '==========='

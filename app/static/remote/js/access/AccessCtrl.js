@@ -24,6 +24,10 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
   DeviceService.readyDevice();
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> samir-dev
   // var list = UniversityMatcher.list;
   // for (var i=0; i<10; i++) {
   //   var preCache = list[i].seal_url || list[i].forbes_url;
@@ -40,6 +44,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     errorInputMsg: null,
   };
 
+<<<<<<< HEAD
 // $ionicSlideBoxDelegate.update();
   $scope.checkAccessCode = function(code) {
     if(AccessService.validate(code)){
@@ -53,10 +58,21 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
 
       //$ionicSlideBoxDelegate.select( $ionicSlideBoxDelegate.next() );
+=======
+ 
+  $scope.checkAccessCode = function(code) {
+    if(AccessService.validate(code)){
+
+      LoadingService.show(0, 550, 'Access Granted');
+      $scope.access.codeInput = '';
+      //accessInput.removeEventListener('keyup', submitListener);
+
+>>>>>>> samir-dev
 
       if ($scope.platform.mobile) {
         cordova.plugins.Keyboard.close();
       }
+<<<<<<< HEAD
 
       $timeout(function() {
         $ionicSlideBoxDelegate.enableSlide(true);
@@ -66,6 +82,16 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       console.log('slideBoxDelegate: ' + $ionicSlideBoxDelegate.currentIndex(), $state.current.name);
 
       // $state.go('^.university');
+=======
+      
+      $timeout(function() {
+        // $ionicSlideBoxDelegate.enableSlide(true);
+
+        
+        $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
+      }, 1000);
+
+>>>>>>> samir-dev
     } else {
       $scope.access.errorInputMsg = 'Incorrect access code';
     }
@@ -101,10 +127,24 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   accessInput.addEventListener('keyup', submitListener);
 
   function submitListener(e) {
+<<<<<<< HEAD
     //console.log('input field: ' + $scope.access.codeInput);
     var key = e.keyCode || e.key || e.which;
     if (key === 13) {
       // cordova.plugins.Keyboard.close();
+=======
+
+    if($scope.access.codeInput.length > 0) {
+      $scope.access.errorInputMsg = '';
+    }
+
+    //console.log('input field: ' + $scope.access.codeInput);
+    var key = e.keyCode || e.key || e.which;
+    if (key === 13) {
+      if ($scope.platform.mobile) {
+        cordova.plugins.Keyboard.close();
+      }
+>>>>>>> samir-dev
       $timeout(function() {$scope.checkAccessCode($scope.access.codeInput)}, 400);
       e.preventDefault();
     }

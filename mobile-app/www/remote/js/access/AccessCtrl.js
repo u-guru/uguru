@@ -24,6 +24,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
   DeviceService.readyDevice();
 
+
   // var list = UniversityMatcher.list;
   // for (var i=0; i<10; i++) {
   //   var preCache = list[i].seal_url || list[i].forbes_url;
@@ -40,32 +41,26 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     errorInputMsg: null,
   };
 
-// $ionicSlideBoxDelegate.update();
+ 
   $scope.checkAccessCode = function(code) {
     if(AccessService.validate(code)){
-      console.log("AccessService.validate(code)" + AccessService.validate(code));
-      //LoadingService.show(0, 5000, 'Access Granted');
+
+      LoadingService.show(0, 550, 'Access Granted');
       $scope.access.codeInput = '';
       //accessInput.removeEventListener('keyup', submitListener);
-      //$ionicViewSwitcher.nextDirection('forward');
-      //AnimationService.flip();
 
-
-
-      //$ionicSlideBoxDelegate.select( $ionicSlideBoxDelegate.next() );
 
       if ($scope.platform.mobile) {
         cordova.plugins.Keyboard.close();
       }
-
+      
       $timeout(function() {
-        $ionicSlideBoxDelegate.enableSlide(true);
+        // $ionicSlideBoxDelegate.enableSlide(true);
+
+        
         $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
-      }, 250);
+      }, 1000);
 
-      console.log('slideBoxDelegate: ' + $ionicSlideBoxDelegate.currentIndex(), $state.current.name);
-
-      // $state.go('^.university');
     } else {
       $scope.access.errorInputMsg = 'Incorrect access code';
     }
@@ -101,10 +96,17 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   accessInput.addEventListener('keyup', submitListener);
 
   function submitListener(e) {
+
+    if($scope.access.codeInput.length > 0) {
+      $scope.access.errorInputMsg = '';
+    }
+
     //console.log('input field: ' + $scope.access.codeInput);
     var key = e.keyCode || e.key || e.which;
     if (key === 13) {
-      // cordova.plugins.Keyboard.close();
+      if ($scope.platform.mobile) {
+        cordova.plugins.Keyboard.close();
+      }
       $timeout(function() {$scope.checkAccessCode($scope.access.codeInput)}, 400);
       e.preventDefault();
     }

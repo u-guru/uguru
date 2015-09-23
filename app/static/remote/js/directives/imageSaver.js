@@ -1,5 +1,5 @@
 angular.module('uguru.directives')
-.directive('imageSaver', function (Utilities) {
+.directive('imageSaver', function (Utilities, $localstorage) {
 	return {
 
 		link: function(scope, element, attrs) {
@@ -16,6 +16,10 @@ angular.module('uguru.directives')
 			window.resolveLocalFileSystemURL(filePath, fileSuccess, downloadAsset);
 
 			function fileSuccess() {
+<<<<<<< HEAD
+=======
+				console.log(fileName + " found on device, retrieving from local storage");
+>>>>>>> samir-dev
 				//console.log("Image is already saved on device and will be used: " + filePath);
 				attrs.$set('ng-src', filePath);
 			}
@@ -28,9 +32,34 @@ angular.module('uguru.directives')
 				var fileTransfer = new FileTransfer();
 				//console.log("About to start file download");
 				var downloadURL = encodeURI(assetURL);
+<<<<<<< HEAD
 				//console.log("downloadURL: " + downloadURL);
 				fileTransfer.download(downloadURL, filePath,
 					function(entry) {
+=======
+
+				var startTime = Date.now();
+
+				//console.log("downloadURL: " + downloadURL);
+				fileTransfer.download(downloadURL, filePath,
+					function(entry) {
+
+						var endTime = Date.now();
+						var downloadTime = endTime - startTime;
+						entry.file(function(fileObj) {
+							var file = Utilities.getFileName(downloadURL);
+							var size = ( (fileObj.size/1000) );
+							//console.log(file + " took " + downloadTime + " ms to download " + size);
+							
+							var downloadObj = {
+								name: file, 
+								size_kb: size, 
+								time_ms: downloadTime
+							};
+							//console.log("downloadObj: " + JSON.stringify(downloadObj));
+							$localstorage.storeDownloadRecords(downloadObj);
+						});
+>>>>>>> samir-dev
 						//console.log("Successfully downloaded image: " + fileName);
 						useSavedFile();
 					},

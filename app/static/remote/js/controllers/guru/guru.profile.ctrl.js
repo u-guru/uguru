@@ -176,6 +176,7 @@ angular.module('uguru.guru.controllers')
     }
     console.log($scope.user);
     $scope.launchAddGuruExperienceModal = function(experience) {
+<<<<<<< HEAD
 
       $ionicModal.fromTemplateUrl(BASE + 'templates/guru.experiences.modal.html', {
             scope: $scope,
@@ -215,6 +216,41 @@ angular.module('uguru.guru.controllers')
         }).then(function(modal) {
             $scope.majorModal = modal;
     });
+=======
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.experiences.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            if (experience) {
+              $scope.experience = experience;
+            } else {
+              $scope.experience = {
+                name: '',
+                description: '',
+                years: 1
+              }
+            }
+            $scope.guruExperiencesModal = modal;
+            $scope.guruExperiencesModal.show();
+      });
+    }
+
+    $scope.launchMajorModal = function() {
+      $scope.loader.show();
+      $ionicModal.fromTemplateUrl(BASE + 'templates/majors.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.majorModal = modal;
+            $timeout(function() {
+              $scope.loader.hide();
+            }, 500)
+            $scope.majorModal.show();
+      });
+    }
+
+>>>>>>> samir-dev
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/guru.courses.modal.html', {
             scope: $scope,
@@ -464,6 +500,7 @@ angular.module('uguru.guru.controllers')
               return;
             }
 
+<<<<<<< HEAD
 
             var uguruPopup = document.getElementById('confirm-email-uguru-popup');
             uguruPopup.classList.remove('show');
@@ -472,6 +509,16 @@ angular.module('uguru.guru.controllers')
             $scope.user.updateAttr('confirm_school_email', $scope.user, editEmailInput.value, null, $scope);
             $scope.success.show(0, 1500, 'Email sent to ' + editEmailInput.value);
 
+=======
+
+            var uguruPopup = document.getElementById('confirm-email-uguru-popup');
+            uguruPopup.classList.remove('show');
+
+            $scope.user.school_email = editEmailInput.value;
+            $scope.user.updateAttr('confirm_school_email', $scope.user, editEmailInput.value, null, $scope);
+            $scope.success.show(0, 1500, 'Email sent to ' + editEmailInput.value);
+
+>>>>>>> samir-dev
         })
 
       }
@@ -498,6 +545,7 @@ angular.module('uguru.guru.controllers')
         );
 
         var initPopupListeners = function() {
+<<<<<<< HEAD
 
             if (!$scope.user.phone_number_token) {
               var sendConfirmCode = document.getElementById('send-confirm-code');
@@ -520,6 +568,30 @@ angular.module('uguru.guru.controllers')
 
               });
 
+=======
+
+            if (!$scope.user.phone_number_token) {
+              var sendConfirmCode = document.getElementById('send-confirm-code');
+
+                //send the confirmation code
+              sendConfirmCode.addEventListener("click", function(event) {
+
+                validateAndSendPhoneConfirmation();
+
+              });
+
+            } else {
+              var resendConfirmCode = document.getElementById('resend-confirm-code');
+              var verifyConfirmCode = document.getElementById('verify-confirm-code');
+
+                //resend the confirmation code
+              resendConfirmCode.addEventListener("click", function(event) {
+
+                resendPhoneConfirmation();
+
+              });
+
+>>>>>>> samir-dev
               //verify the confirmation code
               verifyConfirmCode.addEventListener("click", function(event) {
 
@@ -606,10 +678,17 @@ angular.module('uguru.guru.controllers')
 
         var uguruPopup = document.getElementById('confirm-phone-uguru-popup');
         uguruPopup.classList.remove('show');
+<<<<<<< HEAD
 
         $scope.loader.show();
         $scope.user.updateAttr('phone_number_check_token', $scope.user, confirmationCodeInput.value, callbackSuccess, $scope);
 
+=======
+
+        $scope.loader.show();
+        $scope.user.updateAttr('phone_number_check_token', $scope.user, confirmationCodeInput.value, callbackSuccess, $scope);
+
+>>>>>>> samir-dev
       }
     }
 

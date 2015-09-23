@@ -48,7 +48,11 @@ angular.module('uguru.util.controllers')
 
     $scope.addUniversity = function() {
       $state.go('^.university');
+<<<<<<< HEAD
     }
+=======
+    }    
+>>>>>>> samir-dev
 
     $scope.attemptToResetPassword = function() {
       function validateEmail(email) {
@@ -1013,7 +1017,11 @@ angular.module('uguru.util.controllers')
 
           //after five seconds and no fb response --> Say something went wrong
           $timeout(function() {
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> samir-dev
 
             if (!$scope.facebookResponseReceived) {
               alert('Something went wrong. Please check your browser settings & make sure popups from Facebook.com are allowed');

@@ -25,11 +25,20 @@ angular.module('uguru.util.controllers')
   '$ionicPlatform',
   '$ionicBackdrop',
   'UniversityMatcher',
+<<<<<<< HEAD
+=======
+  'AnimationService',
+>>>>>>> samir-dev
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
+<<<<<<< HEAD
   Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher) {
+=======
+  Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
+  AnimationService) {
+>>>>>>> samir-dev
 
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
@@ -115,6 +124,21 @@ angular.module('uguru.util.controllers')
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
     }
 
+<<<<<<< HEAD
+=======
+//use for abstract
+    $scope.openAdmin = function() {
+      $state.go('admin.admin-home');
+    }
+
+    // $scope.openAdmin = function() {
+    //   $ionicViewSwitcher.nextDirection('forward');
+    //   $ionicSideMenuDelegate.toggleRight();
+    //   $state.go('^.admin');
+    // }
+
+
+>>>>>>> samir-dev
     // pre-render these immediately
     $ionicModal.fromTemplateUrl(BASE + 'templates/faq.modal.html', {
             scope: $scope,
@@ -688,14 +712,26 @@ angular.module('uguru.util.controllers')
 
     $scope.goToGuru = function() {
 
+<<<<<<< HEAD
       $scope.loader.show();
+=======
+      //$scope.loader.show();
+>>>>>>> samir-dev
 
       //if no skills, courses, or majors
       if ($scope.user && (($scope.user.guru_courses.length === 0)  || ($scope.user.guru_skills.length === 0)
       || ($scope.user.majors.length === 0))  && confirm('Your guru account is not complete. Complete it?')) {
+<<<<<<< HEAD
         $state.go('^.become-guru');
       } else {
         console.log('transitioning to guru mode');
+=======
+        AnimationService.flip();
+        $state.go('^.become-guru');
+      } else {
+        console.log('transitioning to guru mode');
+        AnimationService.flip();
+>>>>>>> samir-dev
         $state.go('^.guru');
       }
 
@@ -711,7 +747,12 @@ angular.module('uguru.util.controllers')
     $scope.goToStudent = function() {
 
       //show the loader immediately
+<<<<<<< HEAD
       $scope.loader.show();
+=======
+      //$scope.loader.show();
+      AnimationService.flip();
+>>>>>>> samir-dev
       $state.go('^.home');
 
       //let the server know the user was on guru mode for the next time app opens

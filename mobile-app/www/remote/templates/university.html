@@ -1,8 +1,8 @@
-<ion-slide-box delegate-handle='access-university-slide-box'>
-  <ion-slide>
+<u-slide-box id='access-uni-slide' disable-scroll='true' delegate-handle='access-university-slide-box' performance="access-university" performance-beacon="remote/img/beacon.png">
+  <u-slide>
     <div ng-include="img_base + BASE + 'templates/access.html'"></div>
-  </ion-slide>
-  <ion-slide>
+  </u-slide>
+  <u-slide u-before-enter='beforeEnter()' u-after-enter='afterEnter()'>
     <ion-view class='uguru-view university-view' >
 
     <section id="school" class="onboarding" >
@@ -18,19 +18,21 @@
           </div>
 
           <div class="absolute bottom-0 left-0 full-x input-search-ghost">
-            <input type="search" class=''
+            <input type="search" id='university-input' class=''
                     placeholder="Search for my university"
-                    ng-model="search_text"
-                    ng-keyup="query(search_text)"2
+                    ng-model="input.search_text"
+                    ng-keyup="query(input.search_text)"
+                    ng-keydown="measureResponse()"
             />
             <a ng-click='getGPSCoords()' class='geolocation-icon'>
               <i class='icon ion-navigate'></i>
             </a>
         </div>
       </header>
+
         <div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list">
         <ul class='list list-item-border'>
-          <li  class="list-item school-harvard" ng-repeat='university in universities | limitTo: limit'>
+          <li  class="list-item school-harvard" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
             <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
               <span class="school-icon list-icon-left">
                 <img ng-if='platform.mobile' image-saver ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
@@ -49,5 +51,5 @@
       </div>
     </section>
     </ion-view>
-  </ion-slide>
-</ion-slide-box>
+  </u-slide>
+</u-slide-box>
