@@ -1,3 +1,15 @@
+### pp=prepare_production
+### up=update_production
+### fp=force_production
+### lp=local_production
+### sp=staging_production
+### ps=prepare_staging
+### us=update_staging
+### rid=run_ios_device
+### rad=run_android_device
+### ridl=run_ios_device_reload
+### radl=run_android_device_reload
+
 source ~/.bash_profile
 echo "Clearing iOS xCode cache..."
 rm -rf "$(getconf DARWIN_USER_CACHE_DIR)/org.llvm.clang/ModuleCache"
@@ -46,27 +58,27 @@ cp mobile-app/platforms/ios/www/cordova.js app/static/remote/ios.cordova.js && c
 cp -r mobile-app/platforms/ios/www/plugins/ app/static/remote/plugins/ && cp -r mobile-app/www/remote/* app/static/remote/
 echo 'copying ios.css, windows, android file into the root remote'
 echo 'calling git add -A .'
-git add -A .
-git commit -m "{$msg}"
-echo
-echo
-echo 'pushing to git, to the master branch'
-echo
-echo
-git push origin staging
-echo
-echo
-echo 'pushing to heroku, to the master branch'
-echo
-echo
-git push rest staging:master
-echo
-echo
-echo 'last part: restarting servers & updating database'
-echo
-echo
-honcho run python manage.py update
-heroku run honcho run python manage.py update --app uguru-rest
-heroku run honcho run python manage.py init_test_devices --app uguru-rest
-# heroku restart --app uguru-rest
-# heroku run honcho run python manage.py init_admin --app uguru-rest
+# git add -A .
+# git commit -m "{$msg}"
+# echo
+# echo
+# echo 'pushing to git, to the master branch'
+# echo
+# echo
+# git push origin staging
+# echo
+# echo
+# echo 'pushing to heroku, to the master branch'
+# echo
+# echo
+# git push rest staging:master
+# echo
+# echo
+# echo 'last part: restarting servers & updating database'
+# echo
+# echo
+# honcho run python manage.py update
+# heroku run honcho run python manage.py update --app uguru-rest
+# heroku run honcho run python manage.py init_test_devices --app uguru-rest
+# # heroku restart --app uguru-rest
+# # heroku run honcho run python manage.py init_admin --app uguru-rest
