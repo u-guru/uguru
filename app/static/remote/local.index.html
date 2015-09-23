@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
@@ -25,7 +24,7 @@
 
     <!-- ARCHIVE To get rid of soon! -->
     <link href="remote/css/ionic.app.min.css" rel="stylesheet">
-    <link href="remote/css/archive/pure-min.css" rel="stylesheet">
+    <!-- <link href="remote/css/archive/pure-min.css" rel="stylesheet"> -->
     <!-- <link href="remote/css/archive/animate.css" rel="stylesheet"> -->
     <!-- <link href="remote/css/sass/new.css" rel="stylesheet"> -->
     <!-- <link href="remote/css/archive/web.css" rel="stylesheet"> -->
@@ -34,30 +33,38 @@
     <!-- <link href="remote/css/sass/components.css" rel="stylesheet"> -->
     <!-- <link href="remote/css/archive/spinning-wheel.css" rel="stylesheet"> -->
     <!-- <link href="remote/css/archive/responsive.css" rel="stylesheet"> -->
-    <link href='remote/css/sass/grids-responsive-min.css' rel='stylesheet'>
+    <!-- <link href='remote/css/sass/grids-responsive-min.css' rel='stylesheet'> -->
     <!-- end archive -->
 
+
+
     <!-- The main css file -->
+    <link href="remote/css/sass/default.css" rel="stylesheet">
     <link href="remote/css/sass/style.css" rel="stylesheet">
     <!-- Page specific -->
     <link href="remote/css/sass/views/access.css" rel="stylesheet">
     <link href="remote/css/sass/views/home.css" rel="stylesheet">
-    <link href="remote/css/sass/views/side-menu.css" rel="stylesheet">
+    <!--<link href="remote/css/sass/views/side-menu.css" rel="stylesheet">-->
     <link href="remote/css/sass/views/university.css" rel="stylesheet">
     <link href="remote/css/sass/views/modals.css" rel="stylesheet">
     <link href="remote/css/sass/views/skills.css" rel="stylesheet">
     <link href="remote/css/sass/views/major.css" rel="stylesheet">
     <link href="remote/css/sass/views/courses.css" rel="stylesheet">
     <link href="remote/css/sass/views/photo.css" rel="stylesheet">
-    <link href="remote/css/sass/views/guru.css" rel="stylesheet">
+    <!-- <link href="remote/css/sass/views/guru.css" rel="stylesheet"> -->
     <link href="remote/css/sass/samir.css" rel="stylesheet">
     <link href="remote/css/sass/views/guru-profile.css" rel="stylesheet">
     <link href="remote/css/sass/views/guru-credibility.css" rel="stylesheet">
     <link href="remote/css/sass/ios.css" rel="stylesheet">
     <link href="remote/css/sass/components/uguru-popup.css" rel="stylesheet">
+    <link href="remote/css/sass/hacks.css" rel="stylesheet">
 
     <!-- <link href="remote/css/gpa.css" rel="stylesheet"> -->
     <!-- <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,900' rel='stylesheet' type='text/css'> -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/css/reset.css">
+       <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.css">
+
 
      <script>
     LOCAL = true;
@@ -97,31 +104,35 @@
       getMobileOperatingSystem();
 
     </script>
-      <!-- start Mixpanel -->
+
+<!-- google analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-67802516-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+   
+   <script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");  
+     for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="remote/lib/mixpanel/mixpanel.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
 
 
-      <script type="text/javascript">
+        mixpanel.init("cfe34825db9361e6c1d1a16a2b269b07");
+   </script>  
 
-
-               // <!-- start Mixpanel -->
-
-            (function (f, b) {
-            if (!b.__SV) {
-            var a, e, i, g; window.mixpanel = b; b._i = []; b.init = function (a, e, d) {
-            function f(b, h) { var a = h.split("."); 2 == a.length && (b = b[a[0]], h = a[1]); b[h] = function () { b.push([h].concat(Array.prototype.slice.call(arguments, 0))) } } var c = b; "undefined" !== typeof d ? c = b[d] = [] : d = "mixpanel"; c.people = c.people || []; c.toString = function (b) { var a = "mixpanel"; "mixpanel" !== d && (a += "." + d); b || (a += " (stub)"); return a }; c.people.toString = function () { return c.toString(1) + ".people (stub)" }; i = "disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
-                for (g = 0; g < i.length; g++) f(c, i[g]); b._i.push([a, e, d])
-            }; b.__SV = 1.2; a = f.createElement("script"); a.type = "text/javascript"; a.async = !0; a.src = "undefined" !== typeof MIXPANEL_CUSTOM_LIB_URL ? MIXPANEL_CUSTOM_LIB_URL : "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"; e = f.getElementsByTagName("script")[0]; e.parentNode.insertBefore(a, e)
-            }
-            })(document, window.mixpanel || []);
-        mixpanel.init("e64d1b8ce3beb846af8dc9afc8b9d888");
-    </script><!-- end Mixpanel -->
-
-
-      </script>
+    
+     
 
     <script src="remote/lib/windows/winstore-jscompat.js"></script>
     <script src="remote/lib/ionic/js/ionic.bundle.min.js"></script>
-    <script src="lib/angular-ui-custom/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
+
+    
+
     <script src="lib/lodash/dist/lodash.js"></script>
     <script src='remote/lib/angular-google-maps/angular-google-maps.min.js'></script>
     <script src='remote/lib/spinningwheel/spinning-wheel.min.js'></script>
@@ -144,6 +155,10 @@
     <script src="remote/lib/velocity/velocity.min.js"></script>
     <script src="remote/lib/velocity/velocity.ui.min.js"></script>
     <script src="remote/lib/velocity/angular-velocity.min.js"></script>
+    <script src="remote/lib/d3/d3.min.js"></script>
+    <script src="remote/lib/mixpanel/mixpanel.js"></script>
+    <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
+    <!-- <script src="remote/lib/rAF.js"></script> -->
 
     <script src="remote/lib/card/card.js"></script>
 
@@ -174,14 +189,15 @@
       }
   </script>
 
-
-
+   <script type="text/javascript" src="remote/js/shared/stats.js"></script>
     <!-- cordova script (this will be a 404 during development) <script src="cordova_plugins.js"></script> -->
     <script type="text/javascript" src="remote/lib/facebook/facebookConnectPlugin.js"></script>
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="cordova.js"></script>
 
+    <script id="templates/root.html" type="text/ng-template">
 
+    </script>
     <!-- uguru app main js -->
     <script src="remote/js/main.js"></script>
 
@@ -190,7 +206,8 @@
     <script type="text/javascript" src="remote/js/directives/customDirectives.js"></script>
     <script type="text/javascript" src="remote/js/directives/bufferedScroll.js"></script>
     <script type="text/javascript" src="remote/js/directives/imageSaver.js"></script>
-
+    <script type="text/javascript" src="remote/js/directives/uSlideBox.js"></script>
+    
     <!-- uguru app factories-->
     <script type="text/javascript" src="remote/js/factories/Session.js"></script>
     <script type="text/javascript" src="remote/js/factories/User.js"></script>
@@ -256,14 +273,15 @@
 
     <script type="text/javascript" src="remote/js/controllers/guru/guru.questions.ctrl.js"></script>
 
-
-
     <script type="text/javascript" src="remote/js/university/AddUniversityCtrl.js"></script>
     <script type="text/javascript" src="remote/js/university/AddMajorCtrl.js"></script>
     <script type="text/javascript" src="remote/js/university/AddCourseCtrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.calendar.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.add-note.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.request-location.ctrl.js"></script>
+
+    <!--  Admin Controllers -->
+    <!-- <script type="text/javascript" src="remote/js/admin/AdminCtrl.js"></script> --> 
 
     <!-- Shared Services module, initiated in DeviceService -->
     <script type="text/javascript" src="remote/js/shared/DeviceService.js"></script>
@@ -272,6 +290,8 @@
     <script type="text/javascript" src="remote/js/shared/AnimationService.js"></script>
     <script type="text/javascript" src="remote/js/shared/Settings.js"></script>
     <script type="text/javascript" src="remote/js/shared/DownloadService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/InAppBrowser.js"></script>
+    <script type="text/javascript" src="remote/js/shared/UniversityMatcher.js"></script>
 
     <!-- Specific Device Services, still under SharedService module -->
     <script type="text/javascript" src="remote/js/device/AndroidService.js"></script>
@@ -282,6 +302,7 @@
 
     <script type="text/javascript" src="remote/js/services/ngCardIO.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.signup.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.sidebar.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.add-payment.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.contact-guru.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.calendar.ctrl.js"></script>
@@ -306,59 +327,13 @@
 
     <!-- Access Component -->
     <script type="text/javascript" src="remote/js/access/AccessService.js"></script>
-    <script type="text/javascript" src="remote/js/access/util.access.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/access/AccessCtrl.js"></script>
 
-
-
-    <!-- Uguru Student settings controller -->
-
-
-      <!-- Dev Controler -->
 
   </head>
   <body ng-app="uguru" animation="slide-left-right-ios7" onload="onBodyLoad()">
-    <!--
-      The nav bar that will be updated as we navigate between views.
-    -->
 
-
-
-        <ion-nav-view animation="slide-left-right-ios7" style='margin-top:20px;'>
-        </ion-nav-view>
-
-
-
-    <ion-nav-bar style='padding-top:20px;display:none;'class="no-background-image no-border nav-bar-text bold-font">
-      <ion-nav-back-button class="button-clear">
-          <!-- <img src="./img/left-chevron.png" class='uguru-back-button'/> -->
-      </ion-nav-back-button>
-    </ion-nav-bar>
-      <script type="text/javascript">
-    // mixpanel.track_links("#nav a", "click nav link", {
-    //     "referrer": document.referrer
-    // });
-      </script>
-
-    <script id="templates/root.html" type="text/ng-template">
-      <ion-side-menus class='root-ion-side-menus'>
-          <ion-side-menu-content class='ion-side-menus-content'>
-              <ion-nav-view animation="slide-left-right">
-
-              </ion-nav-view>
-
-
-            </ion-side-menu-content>
-
-            <ion-side-menu side="right" width='window.width * 0.8'>
-              <div ng-include="'remote/templates/components.side-menu.html'"></div>
-            </ion-side-menu>
-      </ion-side-menus>
-    </script>
-
-
-
-
-
+    <ui-view></ui-view>
 
     <script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
         <script>
@@ -368,7 +343,6 @@
             }
           });
     </script>
-
   </body>
 
 

@@ -2,6 +2,22 @@ angular.module('uguru.directives', []);
 
     angular.module('uguru.directives')
 
+
+    .directive('onFinishedRender', function($timeout) {
+      return {
+        restrict: 'A',
+        link: function(scope, element, attr) {
+          if(scope.$first || scope.$last) {
+            $timeout(function() {
+              console.log("checky");
+              scope.$emit(attr.onFinishedRender);
+            })
+          }
+        }
+      }
+    })
+
+
     .directive('focusMe', function ($timeout) {
      return {
         link: function(scope, element, attrs) {

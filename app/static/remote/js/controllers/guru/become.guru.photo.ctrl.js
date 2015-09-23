@@ -23,7 +23,7 @@ angular.module('uguru.guru.controllers')
     $ionicActionSheet, Camera) {
 
 
-    $scope.takePhotoCallbackSuccess = function($scope) {
+    function takePhotoCallbackSuccess($scope) {
 
       $scope.success.show(0, 2000, "Awesome! You're all set.");
       $ionicViewSwitcher.nextDirection('forward');
@@ -47,38 +47,31 @@ angular.module('uguru.guru.controllers')
       }
 
      // Show the action sheet
-     $scope.closeAttachActionSheet = $ionicActionSheet.show({
+     var closeAttachActionSheet = $ionicActionSheet.show({
        buttons: options,
        cancelText: 'Cancel',
        cancel: function() {
-            $scope.closeAttachActionSheet();
         },
        buttonClicked: function(index) {
-          $scope.takePhoto(index);
-
+          takePhoto(index);
           $timeout(function() {
-              $scope.closeAttachActionSheet();
+            return true;
           }, 500);
        }
      });
     }
 
 
-
-    $scope.takePhoto = function(index) {
+    function takePhoto(index) {
       if ($scope.platform.mobile) {
         if ($scope.user.id) {
           $scope.root.vars.profile_url_changed = true;
         }
-        Camera.takePicture($scope, index, 'user-instant-photo', $scope.takePhotoCallbackSuccess);
+        Camera.takePicture($scope, index, 'user-instant-photo', takePhotoCallbackSuccess);
       } else {
         var element = document.getElementById('file-input-web')
         element.click();
       }
-    }
-
-    $scope.closeAttachActionSheet = function() {
-      $scope.closeAttachActionSheet();
     }
 
     $scope.userPhotoList = [];
@@ -124,7 +117,7 @@ angular.module('uguru.guru.controllers')
 
         $scope.success.show(0, 1500, 'Saving...');
         $timeout(function() {
-          $scope.user.createObj($scope.user, 'files', formData, $scope, $scope.takePhotoCallbackSuccess);
+          $scope.user.createObj($scope.user, 'files', formData, $scope, takePhotoCallbackSuccess);
         }, 500);
     };
 

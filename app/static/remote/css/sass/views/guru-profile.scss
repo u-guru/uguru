@@ -7,8 +7,8 @@
         line-height:1.25em;
     }
     #btn-edit-profile {
-        bottom:49px;
-        background:rgba(105, 179, 165, 0.8);
+        bottom:49px !important;
+        background:rgba(105, 179, 165, 1) !important;
     }
     #btn-edit-profile.active,
     #btn-edit-profile.activated {
@@ -19,4 +19,11 @@
         overflow-y:scroll;
         padding-bottom:49px;
     }
+}
+
+#guru-profile-img {
+    height:100px;
+    width:100px;
+    max-height:100px;
+    max-width:100px;
 }

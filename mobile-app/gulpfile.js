@@ -97,6 +97,7 @@ gulp.task('run_test', function(done) {
 // global error handler
 var errorHandler = function(error) {
   if (build || prePush) {
+    plugins.util.log(error);
     throw error;
   } else {
     beep(2, 170);
@@ -263,6 +264,10 @@ gulp.task('scripts', function() {
 
     .on('error', errorHandler);
 });
+
+function done() {
+  console.log('im done');
+} 
 
 // lint js sources based on .jshintrc ruleset
 gulp.task('jsHint', function(done) {
