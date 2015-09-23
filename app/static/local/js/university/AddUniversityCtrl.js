@@ -33,7 +33,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   console.log("mixpanelID: " + mixpanelID);
 
   //TODO: current implementation of deviceready() isn't optimal. isn't always ready to provide device info
-  mixpanel.identify('testid_iphone5');
+  mixpanel.identify('test123');
   
   document.addEventListener("pause", lastSearch, false);
   document.addEventListener("backbutton", lastSearch, false);
@@ -61,7 +61,8 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   $scope.getLoadTime = function() {
 
-        appStartTime = (new Date()).getTime();
+        appStartTime = Date.now();
+        console.log("appStartTime: " + appStartTime);
         var time_ms = appStartTime - start_dom_time;
         var time_s = (time_ms / 1000.0).toPrecision(3)
         var loadTime = time_s;
@@ -78,6 +79,15 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   var stopLoop = false;
   var stats = new Stats();
 
+  window._rAF = (function() {
+     return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            function(callback) {
+              window.setTimeout(callback, 16);
+            };
+   })();
+
     $scope.beforeEnter = function() {
       stopLoop = false;
       var fpsArray = [];
@@ -85,9 +95,9 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         stats.begin();  
         stats.end();
         fpsArray.push(stats.getFPS());
-        // console.log("FPS: " + stats.getFPS());
+         console.log("FPS: " + stats.getFPS());
         if(!stopLoop) {
-          requestAnimationFrame(update);          
+          window._rAF(update);          
         } else {
           var total = 0;    
           for(var i=0; i<fpsArray.length; i++) {
@@ -111,12 +121,13 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
         }
       }
-      requestAnimationFrame(update);
+      window._rAF(update);          
       //console.log('called beforeEnter');
     };
 
     $scope.afterEnter = function() {
       stopLoop = true;
+      //$timeout(function() {stopLoop = true}, 300);
       //console.log("called afterEnter");
     };
 

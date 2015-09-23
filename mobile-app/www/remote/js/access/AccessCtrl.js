@@ -45,7 +45,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   $scope.checkAccessCode = function(code) {
     if(AccessService.validate(code)){
 
-      LoadingService.show(0, 700, 'Access Granted');
+      LoadingService.show(0, 550, 'Access Granted');
       $scope.access.codeInput = '';
       //accessInput.removeEventListener('keyup', submitListener);
 
@@ -53,13 +53,13 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       if ($scope.platform.mobile) {
         cordova.plugins.Keyboard.close();
       }
-      ga('send', 'event', 'Access Code', 'action');
+      
       $timeout(function() {
         // $ionicSlideBoxDelegate.enableSlide(true);
 
         
         $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
-      }, 550);
+      }, 1000);
 
     } else {
       $scope.access.errorInputMsg = 'Incorrect access code';
@@ -104,7 +104,9 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     //console.log('input field: ' + $scope.access.codeInput);
     var key = e.keyCode || e.key || e.which;
     if (key === 13) {
-      // cordova.plugins.Keyboard.close();
+      if ($scope.platform.mobile) {
+        cordova.plugins.Keyboard.close();
+      }
       $timeout(function() {$scope.checkAccessCode($scope.access.codeInput)}, 400);
       e.preventDefault();
     }

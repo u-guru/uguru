@@ -3,8 +3,8 @@ var FIRST_PAGE='^.university';
 
 var img_base;
 
-isAdmin = true;
-LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
+// isAdmin = true;
+// LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
 var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
 
@@ -48,11 +48,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
   DeviceService.readyDevice();
   
-  console.log("Firing event start to GA");
+  // console.log("Firing event start to GA");
 
-  ga('create', 'UA-67802516-1', 'auto');
-  ga('send', 'event', 'App Start', 'action');
-  ga('send', 'pageview');
+  // ga('create', 'UA-67802516-1', 'auto');
+  // ga('send', 'event', 'App Start', 'action');
+  // ga('send', 'pageview');
 
   
   
