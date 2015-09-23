@@ -22,6 +22,9 @@ angular.module('ionic.utils', [])
     removeObject: function(key) {
       $window.localStorage.removeItem(key);
     },
+
+    // TODO: Seems like mixpanel allows up to 255 properties per object, so we'll need to create
+    // additional logs to store as the count reaches the limit
     storeDownloadRecords: function(obj) {
       
       downloadRecords.files.push(obj);

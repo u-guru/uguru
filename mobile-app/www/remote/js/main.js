@@ -9,11 +9,14 @@ var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
 
 
+// Toggle console logs. Comment to enable, uncomment to disable.
+console.log = function() {};
+
 var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.0.103:8100';
+  BASE_URL = 'http://192.168.0.101:8100';
   //BASE_URL = 'http://192.168.42.124:8100';
 
 
@@ -28,9 +31,22 @@ if (LOCAL) {
   img_base = '/static/'
 }
 
-mixpanel = window.mixpanel || null;
+// mixpanel = window.mixpanel || null;
 
  //if (mixpanel) mixpanel.track("App Launch");
+
+
+
+ window._rAF = (function() {
+    return window.requestAnimationFrame ||
+           window.webkitRequestAnimationFrame ||
+           window.mozRequestAnimationFrame ||
+           function(callback) {
+             window.setTimeout(callback, 16);
+           };
+  })();
+
+
 
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
@@ -42,10 +58,12 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
   $cordovaDialogs, Version, $rootScope, $cordovaSplashscreen,
   $templateCache, Device, User, $cordovaLocalNotification,
-  $cordovaGeolocation, $cordovaDevice, DeviceService) {
+  $cordovaGeolocation, $cordovaDevice, DeviceService, uTracker) {
 
   var openKeyboard = null;
   
+  uTracker.init('mp');
+
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
