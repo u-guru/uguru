@@ -1,9 +1,3 @@
-#become-guru-slidebox-container, .university-view {
-	header h1 {
-		padding-top: 25%;
-	}
-}
-
 #profile.guru-profile {
     header {
         position: absolute;
@@ -26,16 +20,6 @@
     }
 }
 
-.uguru-view.skills-view .onboarding#skill #skills-list ul {
-    height: 100%;
-    padding: 0!important;
-    li {
-        width: 50%;
-        display: inline-flex;
-        padding: 0!important;
-    }
-}
-
 .uguru-view.faq-modal {
     background-color:whitesmoke !important;
     z-index: 1000;
@@ -49,25 +33,6 @@
         left:10px;
     }
 
-}
-.university-view {
-    .input-search-ghost input {
-        text-align: left;
-        padding-left: 45px;
-    }
-}
-
-.uguru-view .input-search-ghost {
-    &:before {
-        width: 18px!important;
-        height: 18px!important;
-        left: 5%!important;
-        top: 40%;
-    }
-    input {
-        font-size: 20px!important;
-        line-height: 18px;
-    }
 }
 .white-guru-svg {
     padding: 3px;

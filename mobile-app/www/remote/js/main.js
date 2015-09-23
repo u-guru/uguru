@@ -1,11 +1,8 @@
 var LOCAL = true; //local to the 8100 codebasebirbirs
-<<<<<<< HEAD
-var FIRST_PAGE='^.guru-profile';
-=======
+
 var FIRST_PAGE='^.university';
 
->>>>>>> samir-dev
-var img_base;
+
 
 // isAdmin = true;
 // LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
@@ -17,16 +14,7 @@ var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.0.103:8100';
-  //BASE_URL = 'http://192.168.42.124:8100';
-
-
-  //REST_URL = "http://localhost:5000"
-
-  // BASE_URL = 'http://192.168.1.43:8100';
-
-  //BASE_URL = 'http://192.168.43.155:8100';
-
+  BASE_URL = 'http://localhost:8100';
 
 } else {
   img_base = '/static/'
