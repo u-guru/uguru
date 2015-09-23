@@ -357,6 +357,45 @@ var global = function() {
      var alertDialog = browser.switchTo().alert();
      browser.switchTo().alert().accept();  // Use to accept (simulate clicking ok)
   }
+  /***************************************************************
+  **
+  *
+  *
+  ***************************************************************/
+  this.uploadPhoto = function(name)
+  {
+      var path = require('path');
+      var fileToUpload = '../small.jpg';
+      var absolutePath = path.resolve(__dirname, fileToUpload);
+      element(by.id(name)).sendKeys(absolutePath);
+  }
+  /***********************************************************************
+  *
+  *
+  *
+  *************************************************************************/
+  this.openWrapper= function(option1)
+  {      
+
+      browser.wait(EC.visibilityOf(element(by.css('.uguru-popup.high-z-index.sidebar-popup.show'))),3000);
+      element(by.css('.uguru-popup.high-z-index.sidebar-popup.show input')).sendKeys(option1);
+      element(by.css('.uguru-popup.high-z-index.sidebar-popup.show button')).click();
+      browser.wait(function() {
+          return browser.switchTo().alert().then(
+              function() 
+              {
+               expect(browser.switchTo().alert().getText()).toEqual("Please Enter Valid Phone Number");
+               browser.switchTo().alert().accept();
+               return true;
+              }, 
+              function()
+               {
+                this.checkMsg('Saved!');
+                return true;
+               }
+          );
+      },3000);
+  }
   /*************************************************************************************
   *connectFB
   *arg : id -Fb account
