@@ -446,6 +446,11 @@ section {
     -ms-transform: none;
     -o-transform: none;
     transform: none;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
     width: 30px;
     height: 30px;
     -webkit-transform: rotate(45deg);
@@ -874,9 +879,6 @@ section {
     background: url(../../img/svg/search.svg) no-repeat center center/cover, url(/static/remote/img/svg/search.svg) center/cover no-repeat;
     width: 14px;
     height: 14px; }
-  .uguru-view .header-nav a svg {
-    height: 20px !important;
-    width: auto !important; }
   .uguru-view .header-nav a h1 {
     font-size: 18px !important;
     font-weight: 400 !important;
@@ -1268,6 +1270,13 @@ section {
       .category-skills-modal .onboarding-list > div ul {
         height: 100%;
         overflow: auto; }
+
+#experience-modal {
+  position: absolute;
+  top: 0; }
+  #experience-modal .exp-years {
+    height: 86px;
+    overflow: hidden; }
 
 .photo-view {
   background: #2B3234; }

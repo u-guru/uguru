@@ -456,6 +456,7 @@ section {
 						margin: 0 auto;
 						svg {
 							@include reset-pos;
+							@include rotate(45);
 							width: 30px;
 							height: 30px;
 							-webkit-transform: rotate(45deg);
@@ -694,9 +695,7 @@ section {
 							background: $cerise;
 						}
 					}
-
 					ul.default {
-
 						@include listless;
 						@include flex;
 						@include flex-wrap;
@@ -880,10 +879,6 @@ section {
 			}
 		}
 		.header-nav a {
-			svg {
-				height: 20px!important;
-				width: auto!important;
-			}
 			h1 {
 				font-size: 18px!important;
 				font-weight: 400!important;
@@ -1268,6 +1263,16 @@ section {
 				overflow: auto;
 			}
 		}
+	}
+}
+
+// EXPERIENCE MODAL
+#experience-modal {
+	position: absolute;
+	top: 0;
+	.exp-years {
+		height: 86px;
+		overflow: hidden;
 	}
 }
 
