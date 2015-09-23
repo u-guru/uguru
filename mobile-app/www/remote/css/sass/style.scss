@@ -1270,9 +1270,20 @@ section {
 #experience-modal {
 	position: absolute;
 	top: 0;
-	.exp-years {
-		height: 86px;
-		overflow: hidden;
+	.ugrid-3 {
+		margin-top: -10px;
+		padding-bottom: 15px;
+		font-size: 16px;
+		font-weight: 400;
+		li {
+			padding: 0 15px;
+		}
+		li:nth-child(2) {
+			text-align: center;
+		}
+		li:nth-child(3) {
+			text-align: right;
+		}
 	}
 }
 
@@ -1338,23 +1349,21 @@ section {
 		ul {
 			@include listless;
 			@include flex;
-			@include flex-wrap;
-			@include flex-center;
 			position: absolute;
 			bottom: 0;
 			width: 100%;
+			overflow-x: auto;
 			li {
-				width: 20%;
 				font-size: 14px;
 				font-weight: 400;
 				text-align: center;
 				a {
 					display: block;
+					width: calc(320px / 3);
 					padding-bottom: 10px;
 					border-bottom: 5px solid transparent;
 					color: white;
 					.credit-label {
-						font-size: 13px;
 						font-weight: 400;
 					}
 					.credit-icon {
@@ -1362,19 +1371,25 @@ section {
 						@include flex;
 						@include flex-center;
 						@include flex-wrap;
-						margin: 0 auto 15px;
-						width: 35px;
-						height: 35px;
+						margin: 0 auto 5px;
+						width: 50px;
+						height: 50px;
 						background: $slate;
 						svg {
+							stroke-linejoin: round;
+							stroke-linecap: round;
+							stroke-width: 5px;
+							stroke: white;
+							fill-rule: even-odd;
+							fill: none;
 							width: 100%;
 							height: 100%;
-							padding: 5px;
+							padding: 8px;
 						}
 					}
 				}
 				#{$links} {
-					border-color: $cerise;
+					border-bottom: 5px solid $cerise;
 					color: $cerise;
 					.credit-icon {
 						background: $cerise;
@@ -1383,15 +1398,17 @@ section {
 			}
 			.active {
 				&#credit-exp {
-					border-color: $shamrock;
-					color: $shamrock;
-					.credit-icon {
-						background: $shamrock;
+					a {
+						border-bottom: 5px solid $shamrock;
+						color: $shamrock;
+						.credit-icon {
+							background: $shamrock;
+						}
 					}
 				}
 				&#credit-grades {
 					a {
-						border-color: $moola;
+						border-bottom: 5px solid $moola;
 						color: $moola;
 						.credit-icon {
 							background: $moola;
@@ -1400,7 +1417,7 @@ section {
 				}
 				&#credit-fb {
 					a {
-						border-color: #6279B1;
+						border-bottom: 5px solid #6279B1;
 						color: #6279B1;
 						.credit-icon {
 							background: #6279B1;
@@ -1409,7 +1426,7 @@ section {
 				}
 				&#credit-phone {
 					a {
-						border-color: $campus;
+						border-bottom: 5px solid $campus;
 						color: $campus;
 						.credit-icon {
 							background: $campus;
@@ -1418,7 +1435,7 @@ section {
 				}
 				&#credit-email {
 					a {
-						border-color: $lake;
+						border-bottom: 5px solid $lake;
 						color: $lake;
 						.credit-icon {
 							background: $lake;
@@ -1428,7 +1445,7 @@ section {
 			}
 			#credit-exp {
 				#{$links} {
-					border-color: $shamrock;
+					border-bottom: 5px solid $shamrock;
 					color: $shamrock;
 					.credit-icon {
 						background: $shamrock;
@@ -1437,7 +1454,7 @@ section {
 			}
 			#credit-grades {
 				#{$links} {
-					border-color: $moola;
+					border-bottom: 5px solid $moola;
 					color: $moola;
 					.credit-icon {
 						background: $moola;
@@ -1446,7 +1463,7 @@ section {
 			}
 			#credit-fb {
 				#{$links} {
-					border-color: #6279B1;
+					border-bottom: 5px solid #6279B1;
 					color: #6279B1;
 					.credit-icon {
 						background: #6279B1;
@@ -1455,7 +1472,7 @@ section {
 			}
 			#credit-phone {
 				#{$links} {
-					border-color: $campus;
+					border-bottom: 5px solid $campus;
 					color: $campus;
 					.credit-icon {
 						background: $campus;
@@ -1464,7 +1481,7 @@ section {
 			}
 			#credit-email {
 				#{$links} {
-					border-color: $lake;
+					border-bottom: 5px solid $lake;
 					color: $lake;
 					.credit-icon {
 						background: $lake;
@@ -1477,33 +1494,46 @@ section {
 		position: relative;
 		background: $slate;
 		height: calc(100% / 3 * 2);
-		padding: 15px;
 		text-align: center;
-		h1 {
-			margin: 0;
-			font-size: 24px;
-			font-weight: 600;
-			text-transform: uppercase;
-		}
-		p {
-			margin: 10px 0 20px;
-			font-size: 18px;
-		}
 		.credit-content-slide {
-			@include center-xy;
 			display: none;
 			width: 100%;
-			padding: 15px 15px 64px;
-			button {
-				background: $shamrock;
-			}
+			height: 100%;
 			&.active {
 				display: block;
 			}
-
-			&#facebook-auth {
-				button {
-					background: $facebook;
+			> div {
+				height: 100%;
+				.credit-body {
+					height: calc(100% - 36px - 64px - 50px);
+					&:not(ul) {
+						@include flex;
+						@include flex-center;
+						@include flex-wrap;
+					}
+					p {
+						margin: 0;
+						padding: 15px;
+						font-size: 20px;
+					}
+					li {
+						display: block;
+						text-align: left;
+						height: 65px;
+						a {
+							.list-item-detail {
+								h2 {
+									font-size: 20px;
+									font-weight: 600;
+								}
+								span {
+									display: block;
+									font-size: 16px;
+									font-weight: 400;
+								}
+							}
+						}
+					}
 				}
 			}
 		}

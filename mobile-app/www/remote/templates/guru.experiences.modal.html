@@ -20,10 +20,15 @@
           <h1 class="section-header">Years of Experience</h1>
         </label>
         <input type="range" class='full-x p15x-p20y' name="volume" min="0" max="10" value="5" ng-model='experience.years'>
+        <ul class="ugrid-3 exp-years-label">
+	        <li>&lsaquo; 1</li>
+	        <li>5</li>
+	        <li>10 +</li>
+        </ul>
       </div>
 
       <div class='p15xy bg-campus-50p'>
-        <textarea class='input-outline full-x' style='color:rgba(255,255,255,0.3);' placeholder='Role Description'  ng-model='experience.description' >{{experience.description}}</textarea>
+        <textarea class='input-outline full-x' placeholder='Role Description'  ng-model='experience.description' >{{experience.description}}</textarea>
       </div>
     </div>
 	  <div class='absolute bottom-0 full-x semibold'>
