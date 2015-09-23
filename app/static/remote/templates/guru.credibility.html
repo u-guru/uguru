@@ -1,47 +1,143 @@
 <ion-view class='uguru-view credibility-view bg-charcoal'>
   <section id="credibility">
-    <header class="header-back">
-      <a >
-        <svg width="12px" height="22px" viewBox="0 0 12 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <path d="M10.1692224,0.295060681 L0.29073238,10.2342043 C-0.096918216,10.6242351 -0.0969097142,11.2540818 0.290751411,11.6441021 L10.2907514,21.7049585 C10.6800892,22.0966656 11.3132513,22.0985864 11.7049585,21.7092486 C12.0966656,21.3199108 12.0985864,20.6867487 11.7092486,20.2950415 L1.70924859,10.2341851 L1.70926762,11.6440829 L11.5877577,1.70493932 C11.9770849,1.31322163 11.9751471,0.680059615 11.5834294,0.29073238 C11.1917117,-0.0985948553 10.5585497,-0.0966570089 10.1692224,0.295060681 L10.1692224,0.295060681 Z" fill="#FFFFFF"></path>
-        </svg>
-        <h1>Building Your Credibility</h1>
-      </a>
+    <header class="bg-charcoal">
+      <h1 class="text-center">Increase Credibility</h1>
     </header>
     <nav id="credit-slider">
       <ul>
-        <li class="active">
-          <a href="#">
-            <span class="credit-icon"></span>
-            <span class="credit-label">Facebook</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="credit-icon"></span>
+        <li class="ng-class: {'active': activeTabIndex === 0}">
+          <a ng-click='activeTabIndex = 0;'>
+            <span class="credit-icon" ng-if='!user.transcript_file || !user.transcript_file.url'></span>
+            <span class='credibility-checkmark' ng-if='user.transcript_file && user.transcript_file.id'>
+              <i class='icon ion-checkmark'> </i>
+            </span>
             <span class="credit-label">Grades</span>
           </a>
         </li>
-        <li>
-          <a href="#">
-            <span class="credit-icon"></span>
-            <span class="credit-label">Tutors</span>
+        <li class="ng-class: {'active': activeTabIndex === 1}">
+          <a ng-click='activeTabIndex = 1;'>
+            <span class="credit-icon" ng-if='!user.fb_id'></span>
+            <span class='credibility-checkmark' ng-if='user.fb_id'>
+              <i class='icon ion-checkmark'> </i>
+            </span>
+            <span class="credit-label">Facebook</span>
           </a>
         </li>
-        <li>
-          <a href="#">
-            <span class="credit-icon"></span>
-            <span class="credit-label">More</span>
+        <li class="ng-class: {'active': activeTabIndex === 2}">
+          <a ng-click='activeTabIndex = 2;'>
+            <span class="credit-icon" ng-if="!user.phone_number_confirmed"></span>
+            <span class='credibility-checkmark' ng-if='user.phone_number_confirmed'>
+              <i class='icon ion-checkmark'> </i>
+            </span>
+            <span class="credit-label">Phone</span>
+          </a>
+        </li>
+        <li class="ng-class: {'active': activeTabIndex === 3}">
+          <a ng-click='activeTabIndex = 3;'>
+            <span class="credit-icon" ng-if='!user.school_email_confirmed'></span>
+            <span class='credibility-checkmark' ng-if='user.school_email_confirmed'>
+              <i class='icon ion-checkmark'> </i>
+            </span>
+            <span class="credit-label">Email</span>
+          </a>
+        </li>
+        <li class="ng-class: {'active': activeTabIndex === 4}">
+          <a ng-click='activeTabIndex = 4;'>
+            <span class="credit-icon" ng-if='!user.guru_experiences.length'></span>
+            <span class='credibility-checkmark' ng-if='user.guru_experiences.length > 0'>
+              <i class='icon ion-checkmark'> </i>
+            </span>
+            <span class="credit-label">Experience</span>
           </a>
         </li>
       </ul>
     </nav>
-    <div id="credit-content">
-      <div id="credit-facebook" class="credit-content-slide">
-        <h1>Find Your Facebook Friends</h1>
-        <p>Connect now to see <br/>which Gurus you know!</p>
-        <button class="btn-bold">Connect with Facebook</button>
+    <div id="credibility-content-wrapper">
+
+      <!-- Transcript upload -->
+      <div id="credit-transcript" class="credit-content-slide ng-class:{'active': activeTabIndex === 0}">
+        <!-- if user has no transcript -->
+        <div ng-if='!user.transcript_file || !user.transcript_file.url'>
+          <h1>Upload your transcript</h1>
+          <p>We will never share your data w/o your permission first</p>
+          <button ng-click='showActionSheetTranscriptPhoto()' class="btn-bold">Upload your transcript</button>
+        </div>
+
+        <!-- If user has no transcript URL -->
+        <div ng-if='user.transcript_file && user.transcript_file.url'>
+          <h1>Transcript Submitted</h1>
+          <p>Thank you for uploading your transcript. We're in the process of verifying.</p>
+          <button ng-click='showActionSheetTranscriptPhoto()' class="btn-bold bg-cerise">Edit your transcript</button>
+        </div>
+
       </div>
+
+
+      <!-- Facebook slide -->
+      <div id="credit-facebook" class="credit-content-slide ng-class:{'active': activeTabIndex === 1}">
+        <div ng-if='!user.fb_id'>
+          <h1>Find Your Facebook Friends</h1>
+          <p>Connect now to see <br/>which Gurus you know!</p>
+          <button class="btn-bold" ng-click='connectWithFacebook()'>Connect with Facebook</button>
+        </div>
+         <div ng-if='user.fb_id'>
+          <h1>Your Facebook is connected</h1>
+          <p>Don't worry - we will never post with your permission</p>
+        </div>
+      </div>
+
+      <!-- Phone Auth -->
+      <div id="phone-number-auth" class="credit-content-slide ng-class:{'active': activeTabIndex === 2}">
+        <div ng-if='!user.phone_number_confirmed'>
+          <h1>Verify your phone</h1>
+          <p>We won't share this with anyone</p>
+          <button class="btn-bold" id='launch-phone-confirm-popup' ng-click='confirmPhonePopup()'>Add my number</button>
+        </div>
+        <div ng-if='user.phone_number_confirmed'>
+          <h1><strong>{{user.phone_number}}</strong><br> is connected!</h1>
+          <p>We will not use your phone number without your permission</p>
+        </div>
+      </div>
+
+      <!-- Email Auth -->
+      <div id="phone-number-auth" class="credit-content-slide ng-class:{'active': activeTabIndex === 3}">
+        <div ng-if='!user.school_email_confirmed'>
+          <h1>Verify your .edu email</h1>
+          <p>We won't share this with anyone</p>
+          <button id='launch-email-confirm-popup' ng-click='launchConfirmEmailPopup()' class="btn-bold bg-shamrock">Confirm Your Email</button>
+        </div>
+        <div ng-if='user.school_email_confirmed'>
+          <h4> Email <strong>{{user.school_email}}</strong> <br> confirmed! </h3>
+          <p>We won't share this with anyone!</p>
+        </div>
+      </div>
+
+      <!-- Experience Auth -->
+      <div id="former-experience" class="credit-content-slide ng-class:{'active': activeTabIndex === 4}">
+        <div ng-if='!user.guru_experiences || !user.guru_experiences.length'>
+          <h1>Add Relevant Experience</h1>
+          <p>Relevant tutoring roles, jobs, etc</p>
+          <button class="btn-bold bg-shamrock" ng-click="launchAddGuruExperienceModal()">+ Add Item</button>
+        </div>
+        <div ng-if='user.guru_experiences && user.guru_experiences.length > 0'>
+          <h3 class='p20xy'>Your Guru Experiences</h3>
+          <ul class="list with-icon text-left">
+              <li ng-repeat='experience in user.guru_experiences'>
+                  <a ng-click='launchAddGuruExperienceModal(experience)'>
+                      <span class="list-item-detail p05xy">{{experience.name}} <br>
+                        <strong>{{experience.years}}years</strong>
+                      </span>
+                      <span class="list-item-icon">
+                          <i class='icon ion-edit'> </i>
+                      </span>
+                  </a>
+              </li>
+          </ul>
+          <button class="btn-bold bg-shamrock" ng-click="launchAddGuruExperienceModal()">+ Add Item</button>
+        </div>
+      </div>
+
+
     </div>
   </section>
   <div class="tabs tabs-icon-only guru-tabs bg-white bg-charcoal" id='guru-tab-bar'>
@@ -59,6 +155,8 @@
       <i class='icon ion-gear-a'> </i>
     </a>
   </div>
+
+   <input type='file' id='file-input-guru-add-transcript' onchange="angular.element(this).scope().file_changed_transcript(this)" style='display:none'/>
 
 <!-- <ion-scroll class='full-height'>
 <div class='pure-g-c flex-column flex-space-between credibility'>

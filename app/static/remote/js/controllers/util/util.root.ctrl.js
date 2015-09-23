@@ -47,6 +47,9 @@ angular.module('uguru.util.controllers')
             professions: [],
             universities: []
           }
+
+          $scope.isLocalServer = LOCAL || false;
+
           document.addEventListener('DOMContentLoaded', function(event) {
               console.log('dom has loaded');
           }, false);
@@ -222,7 +225,7 @@ angular.module('uguru.util.controllers')
                 $scope.success.show(500, 2000, 'You have been successfully logged out!');
                 $timeout(function(){
                   $ionicSideMenuDelegate.toggleRight();
-                  $state.go('^.access');
+                  $state.go('^.university');
                 }, 600)
               }, 2000);
 
@@ -251,7 +254,11 @@ angular.module('uguru.util.controllers')
           }
 
           $scope.toggleRightSideMenu = function() {
+            console.log('this is called');
             $ionicSideMenuDelegate.toggleRight();
+            $timeout(function() {
+              $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();
+            }, 250);
           };
 
 
@@ -311,7 +318,8 @@ angular.module('uguru.util.controllers')
           $scope.loader = {
             show: function() {
               $ionicLoading.show({
-                template: '<ion-spinner id="E2E-spinner" icon="lines" class="spinner-positive"></ion-spinner>'
+                // template: '<div ng-include="' + $scope.img_base + 'templates/default.progress.spinner.html"></div>'
+                template: 'Loading ...'
               });
               $scope.root.vars.loaderOn = true;
             },
@@ -706,7 +714,7 @@ angular.module('uguru.util.controllers')
           $scope.user.active_guru_sessions && $scope.user.active_guru_sessions.length > 0 )
           {
             $ionicViewSwitcher.nextDirection('enter');
-            $state.go('^.guru')
+            $state.go('^.guru-profile')
 
           }
         //if previous in guru mode
@@ -714,7 +722,7 @@ angular.module('uguru.util.controllers')
 
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
-            $state.go('^.guru');
+            $state.go('^.guru-profile')
             $timeout(function() {
               $scope.loader.hide();
             }, 1000);

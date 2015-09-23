@@ -1,6 +1,6 @@
 angular.module('sharedServices')
 .factory("DownloadService", [
-	Utilities,
+	'Utilities',
 	DownloadService
 	]);
 
@@ -14,7 +14,7 @@ function DownloadService(Utilities) {
 		var fileURL = URL.toString();
 		console.log("fileURL: " + fileURL);
 		var directory = cordova.file.dataDirectory;
-		var fileName = Utilities.getFileName(assetURL);
+		var fileName = Utilities.getFileName(fileURL);
 		console.log("fileName: " + fileName);
 		var filePath = directory + fileName;
 		window.resolveLocalFileSystemURL(filePath, fileSuccess, downloadAsset);

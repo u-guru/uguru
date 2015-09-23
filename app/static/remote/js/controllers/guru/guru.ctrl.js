@@ -26,6 +26,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $scope.showActive = true;
   $ionicSideMenuDelegate.canDragContent(false);
 
+  //temporary
+  $scope.current_hourly = 15;
+  $scope.tip_of_day = 'Your profile is not complete. Completing your profile will increase your ranking by a lot'
+
+
   document.addEventListener("deviceready", function () {
     $scope.turnStatusBarWhiteText = function() {
       $timeout(function() {
@@ -39,7 +44,57 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
   });
 
-  $scope.progressBarInitialized = null;
+
+  function setProgressValueVertical(elemId,value, index) {
+
+      if (index >= value) {
+        return;
+      } else {
+        document.getElementById(elemId).setAttribute("value", index);
+        $scope.user.current_profile_percent = index;
+        setTimeout(function() {
+          setProgressValueVertical(elemId,value, index + 1)
+        }, 50)
+      }
+  }
+
+  $scope.animateVerticalProgressBars = function() {
+
+    setProgressValueVertical('credibility-progress',$scope.user.current_credibility_percent, 0);
+    setProgressValueVertical('profile-progress', $scope.user.current_profile_percent || 40, 0);
+    setProgressValueVertical('hourly-progress', 10, 0);
+  }
+
+  $scope.setProgressValueCircular = function(value, index) {
+
+    if (index >= value) {
+      return;
+    } else {
+      $scope.guruRankingProgress.push(0)
+      setTimeout(function() {
+        $scope.setProgressValueCircular(value, index + 1);
+      }, 10);
+    }
+
+  }
+
+  $scope.animateVerticalProgressBars();
+  $scope.guruRankingProgress = [];
+  $scope.setProgressValueCircular(75, 0);
+
+  $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+      }).then(function(modal) {
+          $scope.signupModal = modal;
+    });
+
+
+  $scope.launchSignupModal = function() {
+      $scope.signupModal.show();
+  }
+
+
 
   $scope.showPreviousActions = function(index) {
       if (!$scope.user.previous_proposals || $scope.user.previous_proposals.length === 0) {
@@ -807,13 +862,15 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         }
 
         $scope.$on('$ionicView.enter', function() {
+            // $timeout(function() {
+            //   initializeProgressBars();
+            // }, 500);
+
+
+            //reasoning
             $timeout(function() {
               checkOnboardingStatus();
-            }, 1000)
-
-            $timeout(function() {
-              initializeProgressBars();
-            }, 1000)
+            }, 2500);
 
             // console.log('checking for pending actions...');
 

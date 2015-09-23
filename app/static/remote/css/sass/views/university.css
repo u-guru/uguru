@@ -6,18 +6,6 @@
 .university-view {
   background: #2B3234; }
 
-.onboarding header .onboarding-search:before {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-  display: block;
-  width: 14px;
-  height: 14px; }
-
 header a.geolocation-icon {
   position: absolute;
   z-index: 0;
@@ -27,7 +15,7 @@ header a.geolocation-icon {
   right: 5%;
   opacity: 0.5; }
   header a.geolocation-icon .ion-navigate {
-    color: white;
+    color: white !important;
     opacity: 0.6;
     top: 0px !important;
     right: 3px !important;

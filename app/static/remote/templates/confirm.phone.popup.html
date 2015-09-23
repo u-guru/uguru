@@ -1,0 +1,22 @@
+    <div class='guru-logo-container'>
+        <div class='svg-logo-wrapper' ng-include="img_base + 'templates/green-guru-svg.html'"> </div>
+    </div>
+    <a class='close-popup-link' id='confirm-phone-close-popup-link'>
+        <i class='icon ion-close-round'> </i>
+    </a>
+    <div class='uguru-popup-content' style='height:60%;'>
+        <div class='content-wrapper'>
+            <h3> Confirm phone number</h3>
+            <input type='tel' placeholder='510-121-1242' id='phone-number-input'>{{user.phone_number}}</input>
+            <input ng-if='user.phone_number_token' placeholder='confirm code' type='password' id='confirm-code-input'></input>
+            <button class='bg-cerise white-text' ng-if='!user.phone_number_token' id='send-confirm-code'>Send</button>
+            <div class='u-grid-2' ng-if='user.phone_number && user.phone_number_token'>
+                <div>
+                    <button class='bg-cerise white-text' id='resend-confirm-code'>Resend</button>
+                </div>
+                <div>
+                    <button class='bg-cerise white-text' id='verify-confirm-code'>Verify</button>
+                </div>
+            </div>
+        </div>
+    </div>

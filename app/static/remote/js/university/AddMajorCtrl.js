@@ -134,20 +134,27 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.removeUserMajorsFromMaster = function() {
-      if ($scope.static.majors && $scope.user.majors) {
-        for (var i = 0; i < $scope.static.majors; i ++) {
-          var indexMajor = $scope.static.majors[i];
-          for (var j = 0; j < $scope.user.majors; j++) {
-            var userMajor = 0;
+      var majorIndicesToSlice = [];
+      if ($scope.majors && $scope.user.majors) {
+        for (var i = 0; i < $scope.majors.length; i ++) {
+          var indexMajor = $scope.majors[i];
+          for (var j = 0; j < $scope.user.majors.length; j++) {
+            userMajor  = $scope.user.majors[j];
             if (indexMajor.id === userMajor.id)
-              $scope.static.majors.slice(i, i+1);
-            }
+              majorIndicesToSlice.push(i);
           }
         }
+        // tricky plz ask;
+        var offset = 0;
+        for (var i = 0; i < majorIndicesToSlice.length; i++) {
+          $scope.majors.splice(i - offset, i - offset + 1);
+          offset++;
+        }
+
       }
+    }
 
     $scope.$on('$ionicView.enter', function() {
-      $scope.removeUserMajorsFromMaster();
 
       $timeout(function() {
 
@@ -171,6 +178,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.majors = Major.getGeneral();
+    $scope.removeUserMajorsFromMaster();
 
   }
 
