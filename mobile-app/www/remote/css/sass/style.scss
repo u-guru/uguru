@@ -223,22 +223,8 @@ section {
 			}
 		}
 		header {
-			.onboarding-prop {
-				@include center-xy;
-				h5 {
-					color: white;
-					font-weight: 400;
-					text-transform: uppercase;
-					margin: 5px;
-				}
-			}
-			.onboarding-message {
-				@include center-xy;
-				width: 100%;
-				font-size: 24px;
+			h1 {
 				text-align: center;
-				text-transform: none;
-				line-height: 1.25;
 			}
 		}
 		.onboarding-list {
@@ -552,90 +538,6 @@ section {
 						color: $charcoal;
 						font-size: 12px;
 						line-height: 20px;
-					}
-				}
-			}
-		}
-	}
-
-	#credibility {
-		#credit-slider {
-			position: relative;
-			height: 110px;
-			ul {
-				@include listless;
-				@include flex;
-				@include flex-wrap;
-				@include flex-center;
-				position: absolute;
-				bottom: 0;
-				width: 100%;
-				li {
-					width: 20%;
-					font-size: 14px;
-					font-weight: 400;
-					text-align: center;
-					a {
-						display: block;
-						padding-bottom: 15px;
-						border-bottom: 5px solid transparent;
-						color: white;
-						.credit-icon {
-							@include round;
-							display: block;
-							margin: 0 auto 15px;
-							width: 35px;
-							height: 35px;
-							background: white;
-						}
-					}
-					#{$links} {
-						border-color: $cerise;
-						color: $cerise;
-						.credit-icon {
-							background: $cerise;
-						}
-					}
-				}
-				.active {
-					a {
-						border-color: $shamrock;
-						color: $shamrock;
-						.credit-icon {
-							background: $shamrock;
-						}
-					}
-				}
-			}
-		}
-		#credibility-content-wrapper {
-			position: relative;
-			background: $slate;
-			height: calc(100% / 3 * 2);
-			padding: 15px;
-			text-align: center;
-			h1 {
-				font-size: 24px;
-				text-transform: uppercase;
-			}
-			p {
-				margin: 15px 0;
-			}
-			.credit-content-slide {
-				@include center-xy;
-				display: none;
-				width: 100%;
-				padding: 15px 15px 64px;
-				button {
-					background: $shamrock;
-				}
-				&.active {
-					display:block;
-				}
-
-				&#credit-facebook {
-					button {
-						background: #3b5998;
 					}
 				}
 			}
@@ -1115,7 +1017,7 @@ section {
 	}
 }
 
-// HOME
+// STUDENT HOME
 .home-view {
 	button {
 		&.active, &.activated {
@@ -1413,6 +1315,191 @@ section {
 				height: 80%;
 				max-width: 150px;
 				max-height: 150px;
+			}
+		}
+	}
+}
+
+// CREDIBILITY
+.credibility-view {
+	header {
+		position: relative;
+	}
+	#credit-slider {
+		position: absolute;
+		bottom: 0;
+		height: calc(100% - 50px);
+		width: 100%;
+		ul {
+			@include listless;
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			li {
+				width: 20%;
+				font-size: 14px;
+				font-weight: 400;
+				text-align: center;
+				a {
+					display: block;
+					padding-bottom: 10px;
+					border-bottom: 5px solid transparent;
+					color: white;
+					.credit-label {
+						font-size: 13px;
+						font-weight: 400;
+					}
+					.credit-icon {
+						@include round;
+						@include flex;
+						@include flex-center;
+						@include flex-wrap;
+						margin: 0 auto 15px;
+						width: 35px;
+						height: 35px;
+						background: $slate;
+						svg {
+							width: 100%;
+							height: 100%;
+							padding: 5px;
+						}
+					}
+				}
+				#{$links} {
+					border-color: $cerise;
+					color: $cerise;
+					.credit-icon {
+						background: $cerise;
+					}
+				}
+			}
+			.active {
+				&#credit-exp {
+					border-color: $shamrock;
+					color: $shamrock;
+					.credit-icon {
+						background: $shamrock;
+					}
+				}
+				&#credit-grades {
+					a {
+						border-color: $moola;
+						color: $moola;
+						.credit-icon {
+							background: $moola;
+						}
+					}
+				}
+				&#credit-fb {
+					a {
+						border-color: #6279B1;
+						color: #6279B1;
+						.credit-icon {
+							background: #6279B1;
+						}
+					}
+				}
+				&#credit-phone {
+					a {
+						border-color: $campus;
+						color: $campus;
+						.credit-icon {
+							background: $campus;
+						}
+					}
+				}
+				&#credit-email {
+					a {
+						border-color: $lake;
+						color: $lake;
+						.credit-icon {
+							background: $lake;
+						}
+					}
+				}
+			}
+			#credit-exp {
+				#{$links} {
+					border-color: $shamrock;
+					color: $shamrock;
+					.credit-icon {
+						background: $shamrock;
+					}
+				}
+			}
+			#credit-grades {
+				#{$links} {
+					border-color: $moola;
+					color: $moola;
+					.credit-icon {
+						background: $moola;
+					}
+				}
+			}
+			#credit-fb {
+				#{$links} {
+					border-color: #6279B1;
+					color: #6279B1;
+					.credit-icon {
+						background: #6279B1;
+					}
+				}
+			}
+			#credit-phone {
+				#{$links} {
+					border-color: $campus;
+					color: $campus;
+					.credit-icon {
+						background: $campus;
+					}
+				}
+			}
+			#credit-email {
+				#{$links} {
+					border-color: $lake;
+					color: $lake;
+					.credit-icon {
+						background: $lake;
+					}
+				}
+			}
+		}
+	}
+	#credibility-content-wrapper {
+		position: relative;
+		background: $slate;
+		height: calc(100% / 3 * 2);
+		padding: 15px;
+		text-align: center;
+		h1 {
+			margin: 0;
+			font-size: 24px;
+			font-weight: 600;
+			text-transform: uppercase;
+		}
+		p {
+			margin: 10px 0 20px;
+			font-size: 18px;
+		}
+		.credit-content-slide {
+			@include center-xy;
+			display: none;
+			width: 100%;
+			padding: 15px 15px 64px;
+			button {
+				background: $shamrock;
+			}
+			&.active {
+				display: block;
+			}
+
+			&#facebook-auth {
+				button {
+					background: $facebook;
+				}
 			}
 		}
 	}
@@ -1766,7 +1853,7 @@ section {
 }
 
 // GURU RANKING
-#guru-home {
+.guru-view {
 	header {
 		&:before {
 			background: url(../../img/onboarding/school.jpg) no-repeat center center / cover;
@@ -1779,8 +1866,19 @@ section {
 		position: relative;
 		z-index: 9;
 		width: 100%;
-		height: calc(100% - 50px);
+		height: calc(100% - 20px);
+		margin-top: -20px;
 		padding: 0 30px;
+		> div {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			-webkit-transform: scale(.8);
+			-moz-transform: scale(.8);
+			-ms-transform: scale(.8);
+			-o-transform: scale(.8);
+			transform: scale(.8);
+		}
 		#guru-chart {
 			position: relative;
 			width: 130px;
@@ -1819,7 +1917,7 @@ section {
 			width: calc(100% - 130px);
 			h2 {
 				margin: 0 0 5px;
-				font-size: 18px;
+				font-size: 16px;
 				font-weight: 600;
 				text-transform: uppercase;
 			}
@@ -1829,10 +1927,23 @@ section {
 			}
 		}
 	}
+	.tip-container {
+		p {
+			font-size: 18px;
+		}
+	}
 }
-.tip-container {
-	p {
-		font-size: 18px;
+@media screen and (min-height:540px) {
+	.guru-view {
+		#guru-ranking {
+			> div {
+				-webkit-transform: none;
+				-moz-transform: none;
+				-ms-transform: none;
+				-o-transform: none;
+				transform: none;
+			}
+		}
 	}
 }
 

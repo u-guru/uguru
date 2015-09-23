@@ -217,35 +217,8 @@ section {
   .uguru-view .onboarding progress span[data-value="99"], .uguru-view .onboarding .progress span[data-value="99"] {
     width: 86%; }
 
-.uguru-view .onboarding header .onboarding-prop {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%); }
-  .uguru-view .onboarding header .onboarding-prop h5 {
-    color: white;
-    font-weight: 400;
-    text-transform: uppercase;
-    margin: 5px; }
-
-.uguru-view .onboarding header .onboarding-message {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 100%;
-  font-size: 24px;
-  text-align: center;
-  text-transform: none;
-  line-height: 1.25; }
+.uguru-view .onboarding header h1 {
+  text-align: center; }
 
 .uguru-view .onboarding .onboarding-list {
   height: calc(100% / 3 * 2);
@@ -575,90 +548,6 @@ section {
       color: #2B3234;
       font-size: 12px;
       line-height: 20px; }
-
-.uguru-view #credibility #credit-slider {
-  position: relative;
-  height: 110px; }
-  .uguru-view #credibility #credit-slider ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%; }
-    .uguru-view #credibility #credit-slider ul li {
-      width: 20%;
-      font-size: 14px;
-      font-weight: 400;
-      text-align: center; }
-      .uguru-view #credibility #credit-slider ul li a {
-        display: block;
-        padding-bottom: 15px;
-        border-bottom: 5px solid transparent;
-        color: white; }
-        .uguru-view #credibility #credit-slider ul li a .credit-icon {
-          border-radius: 1000px;
-          display: block;
-          margin: 0 auto 15px;
-          width: 35px;
-          height: 35px;
-          background: white; }
-      .uguru-view #credibility #credit-slider ul li a:active, .uguru-view #credibility #credit-slider ul li a:focus, .uguru-view #credibility #credit-slider ul li a:hover {
-        border-color: #DB1988;
-        color: #DB1988; }
-        .uguru-view #credibility #credit-slider ul li a:active .credit-icon, .uguru-view #credibility #credit-slider ul li a:focus .credit-icon, .uguru-view #credibility #credit-slider ul li a:hover .credit-icon {
-          background: #DB1988; }
-    .uguru-view #credibility #credit-slider ul .active a {
-      border-color: #69B3A5;
-      color: #69B3A5; }
-      .uguru-view #credibility #credit-slider ul .active a .credit-icon {
-        background: #69B3A5; }
-
-.uguru-view #credibility #credibility-content-wrapper {
-  position: relative;
-  background: #40484B;
-  height: calc(100% / 3 * 2);
-  padding: 15px;
-  text-align: center; }
-  .uguru-view #credibility #credibility-content-wrapper h1 {
-    font-size: 24px;
-    text-transform: uppercase; }
-  .uguru-view #credibility #credibility-content-wrapper p {
-    margin: 15px 0; }
-  .uguru-view #credibility #credibility-content-wrapper .credit-content-slide {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    display: none;
-    width: 100%;
-    padding: 15px 15px 64px; }
-    .uguru-view #credibility #credibility-content-wrapper .credit-content-slide button {
-      background: #69B3A5; }
-    .uguru-view #credibility #credibility-content-wrapper .credit-content-slide.active {
-      display: block; }
-    .uguru-view #credibility #credibility-content-wrapper .credit-content-slide#credit-facebook button {
-      background: #3b5998; }
 
 .uguru-view #profile {
   font-size: 18px; }
@@ -1433,6 +1322,165 @@ section {
       max-width: 150px;
       max-height: 150px; }
 
+.credibility-view header {
+  position: relative; }
+
+.credibility-view #credit-slider {
+  position: absolute;
+  bottom: 0;
+  height: calc(100% - 50px);
+  width: 100%; }
+  .credibility-view #credit-slider ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%; }
+    .credibility-view #credit-slider ul li {
+      width: 20%;
+      font-size: 14px;
+      font-weight: 400;
+      text-align: center; }
+      .credibility-view #credit-slider ul li a {
+        display: block;
+        padding-bottom: 10px;
+        border-bottom: 5px solid transparent;
+        color: white; }
+        .credibility-view #credit-slider ul li a .credit-label {
+          font-size: 13px;
+          font-weight: 400; }
+        .credibility-view #credit-slider ul li a .credit-icon {
+          border-radius: 1000px;
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          -ms-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
+          margin: 0 auto 15px;
+          width: 35px;
+          height: 35px;
+          background: #40484B; }
+          .credibility-view #credit-slider ul li a .credit-icon svg {
+            width: 100%;
+            height: 100%;
+            padding: 5px; }
+      .credibility-view #credit-slider ul li a:active, .credibility-view #credit-slider ul li a:focus, .credibility-view #credit-slider ul li a:hover {
+        border-color: #DB1988;
+        color: #DB1988; }
+        .credibility-view #credit-slider ul li a:active .credit-icon, .credibility-view #credit-slider ul li a:focus .credit-icon, .credibility-view #credit-slider ul li a:hover .credit-icon {
+          background: #DB1988; }
+    .credibility-view #credit-slider ul .active#credit-exp {
+      border-color: #69B3A5;
+      color: #69B3A5; }
+      .credibility-view #credit-slider ul .active#credit-exp .credit-icon {
+        background: #69B3A5; }
+    .credibility-view #credit-slider ul .active#credit-grades a {
+      border-color: #81B566;
+      color: #81B566; }
+      .credibility-view #credit-slider ul .active#credit-grades a .credit-icon {
+        background: #81B566; }
+    .credibility-view #credit-slider ul .active#credit-fb a {
+      border-color: #6279B1;
+      color: #6279B1; }
+      .credibility-view #credit-slider ul .active#credit-fb a .credit-icon {
+        background: #6279B1; }
+    .credibility-view #credit-slider ul .active#credit-phone a {
+      border-color: #8A9EA3;
+      color: #8A9EA3; }
+      .credibility-view #credit-slider ul .active#credit-phone a .credit-icon {
+        background: #8A9EA3; }
+    .credibility-view #credit-slider ul .active#credit-email a {
+      border-color: #50A5DD;
+      color: #50A5DD; }
+      .credibility-view #credit-slider ul .active#credit-email a .credit-icon {
+        background: #50A5DD; }
+    .credibility-view #credit-slider ul #credit-exp a:active, .credibility-view #credit-slider ul #credit-exp a:focus, .credibility-view #credit-slider ul #credit-exp a:hover {
+      border-color: #69B3A5;
+      color: #69B3A5; }
+      .credibility-view #credit-slider ul #credit-exp a:active .credit-icon, .credibility-view #credit-slider ul #credit-exp a:focus .credit-icon, .credibility-view #credit-slider ul #credit-exp a:hover .credit-icon {
+        background: #69B3A5; }
+    .credibility-view #credit-slider ul #credit-grades a:active, .credibility-view #credit-slider ul #credit-grades a:focus, .credibility-view #credit-slider ul #credit-grades a:hover {
+      border-color: #81B566;
+      color: #81B566; }
+      .credibility-view #credit-slider ul #credit-grades a:active .credit-icon, .credibility-view #credit-slider ul #credit-grades a:focus .credit-icon, .credibility-view #credit-slider ul #credit-grades a:hover .credit-icon {
+        background: #81B566; }
+    .credibility-view #credit-slider ul #credit-fb a:active, .credibility-view #credit-slider ul #credit-fb a:focus, .credibility-view #credit-slider ul #credit-fb a:hover {
+      border-color: #6279B1;
+      color: #6279B1; }
+      .credibility-view #credit-slider ul #credit-fb a:active .credit-icon, .credibility-view #credit-slider ul #credit-fb a:focus .credit-icon, .credibility-view #credit-slider ul #credit-fb a:hover .credit-icon {
+        background: #6279B1; }
+    .credibility-view #credit-slider ul #credit-phone a:active, .credibility-view #credit-slider ul #credit-phone a:focus, .credibility-view #credit-slider ul #credit-phone a:hover {
+      border-color: #8A9EA3;
+      color: #8A9EA3; }
+      .credibility-view #credit-slider ul #credit-phone a:active .credit-icon, .credibility-view #credit-slider ul #credit-phone a:focus .credit-icon, .credibility-view #credit-slider ul #credit-phone a:hover .credit-icon {
+        background: #8A9EA3; }
+    .credibility-view #credit-slider ul #credit-email a:active, .credibility-view #credit-slider ul #credit-email a:focus, .credibility-view #credit-slider ul #credit-email a:hover {
+      border-color: #50A5DD;
+      color: #50A5DD; }
+      .credibility-view #credit-slider ul #credit-email a:active .credit-icon, .credibility-view #credit-slider ul #credit-email a:focus .credit-icon, .credibility-view #credit-slider ul #credit-email a:hover .credit-icon {
+        background: #50A5DD; }
+
+.credibility-view #credibility-content-wrapper {
+  position: relative;
+  background: #40484B;
+  height: calc(100% / 3 * 2);
+  padding: 15px;
+  text-align: center; }
+  .credibility-view #credibility-content-wrapper h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase; }
+  .credibility-view #credibility-content-wrapper p {
+    margin: 10px 0 20px;
+    font-size: 18px; }
+  .credibility-view #credibility-content-wrapper .credit-content-slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: none;
+    width: 100%;
+    padding: 15px 15px 64px; }
+    .credibility-view #credibility-content-wrapper .credit-content-slide button {
+      background: #69B3A5; }
+    .credibility-view #credibility-content-wrapper .credit-content-slide.active {
+      display: block; }
+    .credibility-view #credibility-content-wrapper .credit-content-slide#facebook-auth button {
+      background: #3b5998; }
+
 .action-sheet-wrapper.action-sheet-up {
   background: white; }
   .action-sheet-wrapper.action-sheet-up .action-sheet-title {
@@ -1733,10 +1781,10 @@ section {
   .menu-student .list-item-guru .list-item-icon svg path {
     stroke: white; }
 
-#guru-home header:before {
+.guru-view header:before {
   background: url(../../img/onboarding/school.jpg) no-repeat center center/cover; }
 
-#guru-home #guru-ranking {
+.guru-view #guru-ranking {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -1756,12 +1804,35 @@ section {
   position: relative;
   z-index: 9;
   width: 100%;
-  height: calc(100% - 50px);
+  height: calc(100% - 20px);
+  margin-top: -20px;
   padding: 0 30px; }
-  #guru-home #guru-ranking #guru-chart {
+  .guru-view #guru-ranking > div {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    transform: scale(0.8); }
+  .guru-view #guru-ranking #guru-chart {
     position: relative;
     width: 130px; }
-    #guru-home #guru-ranking #guru-chart #percentile {
+    .guru-view #guru-ranking #guru-chart #percentile {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -1771,13 +1842,13 @@ section {
       -o-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
       margin-top: -5px; }
-      #guru-home #guru-ranking #guru-chart #percentile #percentile-ranking {
+      .guru-view #guru-ranking #guru-chart #percentile #percentile-ranking {
         position: relative;
         font-size: 44px;
         font-weight: 600;
         line-height: 1;
         text-align: center; }
-        #guru-home #guru-ranking #guru-chart #percentile #percentile-ranking:after {
+        .guru-view #guru-ranking #guru-chart #percentile #percentile-ranking:after {
           content: "th";
           display: block;
           position: absolute;
@@ -1787,26 +1858,34 @@ section {
           font-weight: 400;
           line-height: 28px;
           text-transform: uppercase; }
-      #guru-home #guru-ranking #guru-chart #percentile #percentile-label {
+      .guru-view #guru-ranking #guru-chart #percentile #percentile-label {
         font-size: 12px;
         font-weight: 400;
         letter-spacing: 1px;
         line-height: 15px;
         text-transform: uppercase; }
-  #guru-home #guru-ranking #guru-stats {
+  .guru-view #guru-ranking #guru-stats {
     padding-left: 30px;
     width: calc(100% - 130px); }
-    #guru-home #guru-ranking #guru-stats h2 {
+    .guru-view #guru-ranking #guru-stats h2 {
       margin: 0 0 5px;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       text-transform: uppercase; }
-    #guru-home #guru-ranking #guru-stats progress, #guru-home #guru-ranking #guru-stats .progress {
+    .guru-view #guru-ranking #guru-stats progress, .guru-view #guru-ranking #guru-stats .progress {
       vertical-align: top;
       width: 100%; }
 
-.tip-container p {
+.guru-view .tip-container p {
   font-size: 18px; }
+
+@media screen and (min-height: 540px) {
+  .guru-view #guru-ranking > div {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none; } }
 
 .tabs {
   border: 0; }

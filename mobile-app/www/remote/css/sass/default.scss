@@ -1031,16 +1031,16 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 	}
 }
 .bg-fb {
-	background: #3b5998;
+	background: $facebook;
 }
 .bg-tw {
-	background: #00aced;
+	background: $twitter;
 }
 .bg-li {
-	background: #007bb6;
+	background: $linkedin;
 }
 .bg-in {
-	background: #517fa4;
+	background: $instagram;
 }
 
 // HEADERS

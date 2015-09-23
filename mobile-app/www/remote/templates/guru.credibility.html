@@ -1,57 +1,72 @@
 <ion-view class='uguru-view credibility-view bg-charcoal'>
   <section id="credibility">
-    <header class="bg-charcoal">
+    <header class="bg-charcoal third">
       <h1 class="text-center">Increase Credibility</h1>
+	    <nav id="credit-slider">
+	      <ul>
+	        <li id="credit-grades" class="ng-class: {'active': activeTabIndex === 0}">
+	          <a ng-click='activeTabIndex = 0;'>
+	            <span class="credit-icon" ng-if='!user.transcript_file || !user.transcript_file.url'></span>
+	            <span class='credit-icon credibility-checkmark' ng-if='user.transcript_file && user.transcript_file.id'>
+					<svg viewBox="0 0 100 100">
+					    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+					</svg>
+
+	            </span>
+	            <span class="credit-label">Grades</span>
+	          </a>
+	        </li>
+	        <li id="credit-fb" class="ng-class: {'active': activeTabIndex === 1}">
+	          <a ng-click='activeTabIndex = 1;'>
+	            <span class="credit-icon" ng-if='!user.fb_id'></span>
+	            <span class='credit-icon credibility-checkmark' ng-if='user.fb_id'>
+					<svg viewBox="0 0 100 100">
+					    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+					</svg>
+
+	            </span>
+	            <span class="credit-label">Facebook</span>
+	          </a>
+	        </li>
+	        <li id="credit-phone" class="ng-class: {'active': activeTabIndex === 2}">
+	          <a ng-click='activeTabIndex = 2;'>
+	            <span class="credit-icon" ng-if="!user.phone_number_confirmed"></span>
+	            <span class='credit-icon credibility-checkmark' ng-if='user.phone_number_confirmed'>
+					<svg viewBox="0 0 100 100">
+					    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+					</svg>
+
+	            </span>
+	            <span class="credit-label">Phone</span>
+	          </a>
+	        </li>
+	        <li id="credit-email" class="ng-class: {'active': activeTabIndex === 3}">
+	          <a ng-click='activeTabIndex = 3;'>
+	            <span class="credit-icon" ng-if='!user.school_email_confirmed'></span>
+	            <span class='credit-icon credibility-checkmark' ng-if='user.school_email_confirmed'>
+					<svg viewBox="0 0 100 100">
+					    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+					</svg>
+
+	            </span>
+	            <span class="credit-label">Email</span>
+	          </a>
+	        </li>
+	        <li id="credit-exp" class="ng-class: {'active': activeTabIndex === 4}">
+	          <a ng-click='activeTabIndex = 4;'>
+	            <span class="credit-icon" ng-if='!user.guru_experiences.length'></span>
+	            <span class='credit-icon credibility-checkmark' ng-if='user.guru_experiences.length > 0'>
+					<svg viewBox="0 0 100 100">
+					    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+					</svg>
+
+	            </span>
+	            <span class="credit-label">Experience</span>
+	          </a>
+	        </li>
+	      </ul>
+	    </nav>
     </header>
-    <nav id="credit-slider">
-      <ul>
-        <li class="ng-class: {'active': activeTabIndex === 0}">
-          <a ng-click='activeTabIndex = 0;'>
-            <span class="credit-icon" ng-if='!user.transcript_file || !user.transcript_file.url'></span>
-            <span class='credibility-checkmark' ng-if='user.transcript_file && user.transcript_file.id'>
-              <i class='icon ion-checkmark'> </i>
-            </span>
-            <span class="credit-label">Grades</span>
-          </a>
-        </li>
-        <li class="ng-class: {'active': activeTabIndex === 1}">
-          <a ng-click='activeTabIndex = 1;'>
-            <span class="credit-icon" ng-if='!user.fb_id'></span>
-            <span class='credibility-checkmark' ng-if='user.fb_id'>
-              <i class='icon ion-checkmark'> </i>
-            </span>
-            <span class="credit-label">Facebook</span>
-          </a>
-        </li>
-        <li class="ng-class: {'active': activeTabIndex === 2}">
-          <a ng-click='activeTabIndex = 2;'>
-            <span class="credit-icon" ng-if="!user.phone_number_confirmed"></span>
-            <span class='credibility-checkmark' ng-if='user.phone_number_confirmed'>
-              <i class='icon ion-checkmark'> </i>
-            </span>
-            <span class="credit-label">Phone</span>
-          </a>
-        </li>
-        <li class="ng-class: {'active': activeTabIndex === 3}">
-          <a ng-click='activeTabIndex = 3;'>
-            <span class="credit-icon" ng-if='!user.school_email_confirmed'></span>
-            <span class='credibility-checkmark' ng-if='user.school_email_confirmed'>
-              <i class='icon ion-checkmark'> </i>
-            </span>
-            <span class="credit-label">Email</span>
-          </a>
-        </li>
-        <li class="ng-class: {'active': activeTabIndex === 4}">
-          <a ng-click='activeTabIndex = 4;'>
-            <span class="credit-icon" ng-if='!user.guru_experiences.length'></span>
-            <span class='credibility-checkmark' ng-if='user.guru_experiences.length > 0'>
-              <i class='icon ion-checkmark'> </i>
-            </span>
-            <span class="credit-label">Experience</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
     <div id="credibility-content-wrapper">
 
       <!-- Transcript upload -->
@@ -74,7 +89,7 @@
 
 
       <!-- Facebook slide -->
-      <div id="credit-facebook" class="credit-content-slide ng-class:{'active': activeTabIndex === 1}">
+      <div id="facebook-auth" class="credit-content-slide ng-class:{'active': activeTabIndex === 1}">
         <div ng-if='!user.fb_id'>
           <h1>Find Your Facebook Friends</h1>
           <p>Connect now to see <br/>which Gurus you know!</p>
