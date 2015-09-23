@@ -198,14 +198,25 @@ describe('Major Test', function () {
 	describe('removed the selected major and see it back to list',function()
 	{
 		var MajorName = null;
-		it('send a key : Computer',function()
+		it('send a key : Computer Science and Engineering',function()
 		{
 	    	doc.setInput('Computer Science and Engineering',2);
 		});
 
 		it('Choose Computer Science and Engineering Major ',function()
 		{
-	 	    doc.newPickList('major-list',0);
+
+			element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
+
+				if(items.length != 1)
+				{
+					expect(items.length).toBe(1,"Opps Something[Choosed Data] shouldn't show up")
+					doc.newPickList('major-list',1);
+				}
+				else
+					doc.newPickList('major-list',0);
+
+	    	});
 		});
 			//Skip Bug
 		it('Reset',function()

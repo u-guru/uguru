@@ -4,6 +4,22 @@ describe('Photo test', function () {
 	var photoButton = element(by.id("photo-container"));
 	var photoIcon = element(by.id('profile-icon')).element(by.tagName('img'));
 
+	describe("Check Drag Left is disabled",function()
+	{
+		it('Drag to Left side',function()
+		{
+			doc.slideView(5,'Left');
+			browser.sleep(3000);
+		});	
+		it('Check Position',function()
+		{
+			
+			element(by.id('major')).getLocation().then(function(result)
+				{
+	   				expect(result.x).toBe(0,"location X is moved");
+				});
+		});
+	});
 
 	it ("check sample photo",function()
 	{

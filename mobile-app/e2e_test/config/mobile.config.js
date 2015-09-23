@@ -126,6 +126,15 @@ exports.config = {
                           // '../test_case/mobileTest/workflows/photo.js',
                           '../test_case/mobileTest/guruProfile/home.js'
                      ],
+             credit:[
+                         // '../test_case/mobileTest/workflows/access.js',
+                         // '../test_case/mobileTest/workflows/university.js', 
+                         // '../test_case/mobileTest/workflows/major.js',
+                         // '../test_case/mobileTest/workflows/course.js',
+                         // '../test_case/mobileTest/workflows/category.js',
+                         // '../test_case/mobileTest/workflows/photo.js',
+                         '../test_case/mobileTest/guruProfile/creditibility.js'
+                    ],
               becomeGuru:[
                          '../test_case/mobileTest/workflows/access.js',
                          '../test_case/mobileTest/workflows/university.js', 
@@ -136,8 +145,11 @@ exports.config = {
                          ],
               all : [
                       '../test_case/mobileTest/access.js',
-                     '../test_case/mobileTest/university.js'
-
+                     '../test_case/mobileTest/university.js',
+                     '../test_case/mobileTest/becomeGuru/major.js',
+                     '../test_case/mobileTest/becomeGuru/course.js',
+                     '../test_case/mobileTest/becomeGuru/category.js',
+                     '../test_case/mobileTest/becomeGuru/photo.js'
                     ]
 
         },

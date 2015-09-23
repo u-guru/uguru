@@ -1,6 +1,20 @@
 
 var global = function() {
+  /**********************************************************
+  *
+  *
+  *
+  ***********************************************************/
+  this.tabBar = function(id,index)
+  {
+    str = '#'+id+' a:not(.ng-hide)';
 
+    element.all(by.css(str)).then(function(items)
+    {
+        browser.wait(EC.visibilityOf(items[index]),3000);
+        items[index].click();
+    });
+  }
   /***********************************************************
   * slideView 
   * arg : index the page you awnna swipe

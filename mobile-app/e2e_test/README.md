@@ -1,7 +1,7 @@
 **Setup**
 - % npm install -g protractor
 - % npm install jasmine-spec-reporter --save-dev
-- % web-driver update
+- % webdriver-manager update
 - [For Safari Testing] Download SafariDriver
   - % http://selenium-release.storage.googleapis.com/2.45/SafariDriver.safariextz
 
@@ -10,11 +10,12 @@
 ```
 run_test() { 
 	if [ "$1" != "" ] && [ "$2" != "" ];then
-	  protractor e2e_test/config/mobile.config.js --suite=major,course,category,photo  --params.screenSize.w "$1"  --params.screenSize.h "$2" 
+	  protractor e2e_test/config/mobile.config.js --suite=all --params.screenSize.w "$1"  --params.screenSize.h "$2" 
 	else
-	  protractor e2e_test/config/mobile.config.js --suite=major,course,category,photo 
+	  protractor e2e_test/config/mobile.config.js --suite=all 
 	fi
 }
+
  ```
 
 
