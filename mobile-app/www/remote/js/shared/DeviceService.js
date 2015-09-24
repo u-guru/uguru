@@ -80,10 +80,11 @@ function DeviceService( $cordovaNgCardIO,
         ionic.DomUtil.ready(function(){
           if(navigator.splashscreen) {
 
+            //offset is to avoid the sidebar showing last second before
             $timeout(function() {
               console.log('Hiding splashscreen @:', calcTimeSinceInit(), 'seconds');
               navigator.splashscreen.hide();
-            }, 2000);
+            }, 3000);
           }
         })
 
