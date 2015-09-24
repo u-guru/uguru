@@ -18,7 +18,7 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   '$ionicModal',
   AddUniversityCtrl]);
 
-function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher, 
+function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher, $ionicSlideBoxDelegate,
   DeviceService, $ionicModal) {
 
@@ -34,7 +34,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   //TODO: current implementation of deviceready() isn't optimal. isn't always ready to provide device info
   mixpanel.identify('test123');
-  
+
   document.addEventListener("pause", lastSearch, false);
   document.addEventListener("backbutton", lastSearch, false);
   function lastSearch() {
@@ -45,14 +45,14 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   mixpanel.people.set({
       "$email": "testphone@gmail.com",
-      
+
       "$created": "2015-09-22 16:53:54",
       "$last_login": new Date(),
       '$Device_UUID': deviceUUID,
       '$Device_Model': deviceModel,
       '$Device_Platform': devicePlatform,
       '$Device_Version': deviceVersion,
-      //'$network_state': networkState,                
+      //'$network_state': networkState,
   });
 
 
@@ -76,6 +76,8 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         });
   }
 
+
+
   var stopLoop = false;
   var stats = new Stats();
 
@@ -92,14 +94,14 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       stopLoop = false;
       var fpsArray = [];
       function update() {
-        stats.begin();  
+        stats.begin();
         stats.end();
         fpsArray.push(stats.getFPS());
          console.log("FPS: " + stats.getFPS());
         if(!stopLoop) {
-          window._rAF(update);          
+          window._rAF(update);
         } else {
-          var total = 0;    
+          var total = 0;
           for(var i=0; i<fpsArray.length; i++) {
             total += fpsArray[i];
           }
@@ -121,7 +123,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
         }
       }
-      window._rAF(update);          
+      window._rAF(update);
       //console.log('called beforeEnter');
     };
 
@@ -142,7 +144,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     var active = true;
     var listEndTime = 0;
     $scope.$on('uniListFinished', function() {
-      
+
       if(active) {
         if($scope.input.search_text.length > 0) {
           listResponseTime = Date.now();
@@ -155,7 +157,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         else if($scope.input.search_text.length === 0) {
           listEndTime = Date.now();
           console.log("listEndTime: " + listEndTime);
-        }  
+        }
       }
     });
 
@@ -170,13 +172,13 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           $scope.universities = UniversityMatcher.cachedMatch($scope.input.search_text);
           //console.log("empty loop");
         // }
-        // $timeout(function() { 
+        // $timeout(function() {
         //   var endTime = Date.now();
         //   var responseTime = endTime - startTime;
         //   console.log("responseTime: " + responseTime);
         //   console.log("listResponseTime in measureResponse: " + (listResponseTime - startTime));
-        // }); 
-        
+        // });
+
       }
     }
 
@@ -202,7 +204,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         }
 
       }
-      
+
 
     }
 

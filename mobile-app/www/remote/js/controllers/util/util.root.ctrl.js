@@ -50,11 +50,6 @@ angular.module('uguru.util.controllers')
 
           $scope.isLocalServer = LOCAL || false;
 
-          document.addEventListener('DOMContentLoaded', function(event) {
-              console.log('dom has loaded');
-          }, false);
-
-
           $scope.network_speed = null;
           $scope.window = {width: document.querySelector('body').getBoundingClientRect().width}
 

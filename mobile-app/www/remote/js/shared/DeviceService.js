@@ -1,16 +1,17 @@
 angular
 .module('sharedServices', ['ionic'])
 .factory("DeviceService", [
-	'$cordovaSplashscreen',
+
 	'$cordovaNgCardIO',
 	'AndroidService',
 	'iOSService',
 	'WindowsService',
+  '$timeout',
 	DeviceService
 	]);
 
-function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
-	AndroidService, iOSService, WindowsService) {
+function DeviceService( $cordovaNgCardIO,
+	AndroidService, iOSService, WindowsService, $timeout) {
 
 	return {
 		readyDevice: readyDevice,
@@ -75,15 +76,21 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 	function onDeviceReady(callback) {
 		//checkUpdates();
 
+        //Ugh --> they overroad the native js OnDOMContentLoaded ...
+        ionic.DomUtil.ready(function(){
+          if(navigator.splashscreen) {
 
+            $timeout(function() {
+              console.log('Hiding splashscreen @:', calcTimeSinceInit(), 'seconds');
+              navigator.splashscreen.hide();
+            }, 1000)
+          }
+        })
 
-        if (calcTimeSinceInit) {
-      		deviceReadyLoadTime = calcTimeSinceInit();
-      		console.log('Device ready load time:', deviceReadyLoadTime, 'seconds');
+        if(navigator.splashscreen) {
+          console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
+          navigator.splashscreen.show();
         }
-		if ($cordovaSplashscreen && $cordovaSplashscreen.hide) {
-			$cordovaSplashscreen.hide();
-		}
 
         var posOptions = {
       		timeout: 2000,
@@ -91,18 +98,21 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
         }
 
 		if(isMobile()) {
-			console.log("DeviceService detects mobile");
-      console.log("device.cordova is ready " + device.cordova);
-	  		console.log("navigator.geolocation works well");
-			console.log("window.open works well");
-			console.log("navigator.camera works well " + navigator.camera);
-   			console.log("cardIO: " + $cordovaNgCardIO);
-   			console.log("cordova.file is ready: " + cordova.file);
-   			console.log("fileTransfer is ready: " + FileTransfer);
 
-   			if(navigator.splashscreen) {
-   				navigator.splashscreen.hide();
-   			}
+
+      // SAMIR --> to refactor
+      //show this until body is loaded
+
+			// console.log("DeviceService detects mobile");
+   //    console.log("device.cordova is ready " + device.cordova);
+	  // 		console.log("navigator.geolocation works well");
+			// console.log("window.open works well");
+			// console.log("navigator.camera works well " + navigator.camera);
+   // 			console.log("cardIO: " + $cordovaNgCardIO);
+   // 			console.log("cordova.file is ready: " + cordova.file);
+   // 			console.log("fileTransfer is ready: " + FileTransfer);
+
+
 
 	 		var mobileOS = getPlatform().toLowerCase();
 		  	switch(mobileOS) {
@@ -153,14 +163,13 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
                   $localstorage.removeObject('courses');
                   $localstorage.removeObject('universities');
 
-                  if ($cordovaSplashscreen) {
-                    $cordovaSplashscreen.show();
-                  }
+
 
                   //doesn't work so here's my attempt
                   if (navigator && navigator.splashscreen && navigator.splashscreen.show) {
                     navigator.splashscreen.show();
                   }
+
                   $templateCache.removeAll();
                   window.localStorage.clear();
                   //remove all angular templates
