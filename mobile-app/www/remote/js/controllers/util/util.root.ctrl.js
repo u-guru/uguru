@@ -165,8 +165,9 @@ angular.module('uguru.util.controllers')
                 console.log('local', local_version, typeof(local_version));
 
                 if (local_version !== serverVersionNumber) {
-                      if ((DeviceService.isMobile() || WINDOWS) && $cordovaSplashscreen && $cordovaSplashscreen.show) {
-                        //$cordovaSplashscreen.show();
+
+                      if (navigator && navigator.splashscreen && navigator.splashscreen.show) {
+                          navigator.splashscreen.show();
                       }
 
                       $ionicHistory.clearCache();
@@ -504,9 +505,9 @@ angular.module('uguru.util.controllers')
             //   $scope.platform.web = false;
             // }
 
-            if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.hide) {
-              $cordovaSplashscreen.hide();
-            }
+            // if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.hide) {
+            //   $cordovaSplashscreen.hide();
+            // }
             if ($scope.platform && $scope.user) {
                 $scope.user.current_device = $scope.platform.device;
                 $scope.user.current_device.user_id = $scope.user.id;
@@ -635,13 +636,17 @@ angular.module('uguru.util.controllers')
                       console.log('local', local_version, typeof(local_version));
 
                       if (local_version !== serverVersionNumber) {
-                            if (($scope.platform.mobile || WINDOWS) && $cordovaSplashscreen && $cordovaSplashscreen.show) {
-                              $cordovaSplashscreen.show();
+
+                            if (navigator && navigator.splashscreen && navigator.splashscreen.show) {
+                                navigator.splashscreen.show();
                             }
 
                             $ionicHistory.clearCache();
                             $ionicHistory.clearHistory();
                             $templateCache.removeAll();
+
+                            Version.setVersion(serverVersionNumber);
+                            $localstorage.set('recently_updated', true);
 
                             // window.localStorage.clear();
                             //remove all angular templates

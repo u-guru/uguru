@@ -158,21 +158,16 @@ function DeviceService( $cordovaNgCardIO,
 
                   console.log('versions are different...\n');
 
-                  $ionicHistory.clearCache();
-                  $ionicHistory.clearHistory();
-                  $localstorage.removeObject('user');
-                  $localstorage.removeObject('courses');
-                  $localstorage.removeObject('universities');
-
-
-
                   //doesn't work so here's my attempt
                   if (navigator && navigator.splashscreen && navigator.splashscreen.show) {
                     navigator.splashscreen.show();
                   }
 
+                  $ionicHistory.clearCache();
+                  $ionicHistory.clearHistory();
                   $templateCache.removeAll();
-                  window.localStorage.clear();
+
+                  // window.localStorage.clear();
                   //remove all angular templates
 
                   Version.setVersion(serverVersionNumber);
@@ -180,22 +175,18 @@ function DeviceService( $cordovaNgCardIO,
 
                   console.log('V' + serverVersionNumber + 'stored to user');
 
-                  if (isAdmin) {
-                    if (confirm('Is this the URL you want to update from?\n' + LOCAL_URL))
-                        window.location.href = LOCAL_URL;
-                    else {
-                        $localstorage.set('recently_updated', false);
-                        Version.setVersion(currentVersion);
-                        alert('auto-update canceled');
-                        return;
-                    }
+                  //if windows
+                  if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT' || WINDOWS) {
+                    window.location.replace(BASE_URL);
                   } else {
-                    window.location.href = BASE_URL;
+                    window.location = BASE_URL;
+                    window.location.reload(true);
                   }
-                  window.location.replace(true);
 
-                }
-           	},
+
+
+           	  }
+          },
            //connectivity issues
           function(error) {
               console.log(error);
