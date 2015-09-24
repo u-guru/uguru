@@ -1,76 +1,14 @@
-.terms-modal, .faq-modal, .signup-modal,
+.terms-modal, .faq-modal,
 .support-modal {
   color: #2B3234; }
-  .terms-modal p, .faq-modal p, .signup-modal p,
+  .terms-modal p, .faq-modal p,
   .support-modal p {
     font-size: 13px;
     margin: 10px 0px; }
-  .terms-modal .header-nav, .faq-modal .header-nav, .signup-modal .header-nav,
-  .support-modal .header-nav {
-    position: relative; }
-    .terms-modal .header-nav a, .faq-modal .header-nav a, .signup-modal .header-nav a,
-    .support-modal .header-nav a {
-      display: inline-block;
-      position: absolute;
-      left: 15px;
-      top: 7px;
-      opacity: 0.7;
-      font-size: 20px; }
-  .terms-modal .has-header, .faq-modal .has-header, .signup-modal .has-header,
+  .terms-modal .has-header, .faq-modal .has-header,
   .support-modal .has-header {
     top: 54px; }
 
-.signup-modal .header-nav a {
-  top: 10px;
-  opacity: 0.5; }
-
-.signup-modal .onboarding#account #account-form input {
-  margin: 30px 0 15px;
-  font-size: 20px; }
-  .signup-modal .onboarding#account #account-form input.name-input {
-    text-transform: capitalize; }
-
-.signup-modal .input-ghost {
-  box-sizing: border-box !important;
-  display: block;
-  width: 100%;
-  border: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 0;
-  padding-bottom: 5px;
-  background: none;
-  color: white !important; }
-
-/*
-.category-skills-modal {
-    top:33% !important;
-    overflow: visible;
-    #skills-list.onboarding-list > div ul li > span input:checked + span {
-        background-color: #F9D57B;
-    }
-
-    .checklist li > span input:checked + span {
-        background: url(../../../img/svg/check.svg) center center no-repeat;
-    }
-
-    .onboarding#skill-list .onboarding-list > div:before {
-        position: absolute !important;
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-        -moz-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-        -o-transform: translateX(-50%);
-        transform: translateX(-50%);
-        content: "";
-        display: block;
-        top: -29px;
-        width: 0;
-        height: 0;
-        border: 15px solid transparent;
-        border-bottom: 15px solid white;
-    }
-}
-*/
 .faq-modal header.bg-charcoal {
   z-index: 1000 !important; }
   .faq-modal header.bg-charcoal h1.onboarding-message.text-center {

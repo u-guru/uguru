@@ -1,5 +1,5 @@
 var LOCAL = true; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.guru-credibility';
+var FIRST_PAGE='^.guru-profile';
 var img_base;
 
 // // @if ADMIN

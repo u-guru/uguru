@@ -223,7 +223,7 @@ section {
 			}
 		}
 		header {
-			h1 {
+			h1:not(header .header-nav a h1) {
 				text-align: center;
 			}
 		}
@@ -403,34 +403,6 @@ section {
 				text-align: center;
 			}
 		}
-		&#account {
-			#account-form {
-				box-sizing: border-box;
-				padding: 15px;
-				input {
-					margin: 30px 0 15px;
-					font-size: 20px;
-				}
-				#tos {
-					display: block;
-					color: white;
-					font-size: 14px;
-					font-weight: 700;
-					letter-spacing: 1px;
-					line-height: 1;
-					text-align: center;
-					text-transform: uppercase;
-					opacity: 0.6;
-				}
-				#tos:active, #tos:focus {
-					color: $shamrock;
-				}
-				#social-login {
-					margin-top: 30px;
-					margin-bottom:20px;
-				}
-			}
-		}
 	}
 
 	.request {
@@ -545,288 +517,6 @@ section {
 		}
 	}
 
-	#profile {
-		font-size: 18px;
-		#profile-fixed {
-			position: fixed;
-			top: 0;
-			z-index: 9;
-			width: 100%;
-			height: 64px;
-			padding: 13px 0;
-			background: rgba($slate,.95);
-			#profile-fixed-inside {
-				@include flex;
-				@include flex-wrap;
-				@include flex-center;
-				#profile-fixed-icon {
-					@include flex;
-					@include flex-center;
-					img {
-						@include round;
-						width: 35px;
-						height: 35px;
-						border: 3px solid rgba(white,.5);
-					}
-				}
-				#profile-fixed-name {
-					padding-left: 10px;
-					h1 {
-						font-size: 24px;
-						line-height: 1;
-						text-transform: uppercase;
-						&.verified {
-							svg {
-								width: 16px;
-								height: 16px;
-							}
-						}
-					}
-					p {
-						margin: 0;
-						font-size: 14px;
-						font-weight: 400;
-						line-height: 1;
-					}
-				}
-			}
-		}
-		#profile-desc {
-			padding: 15px 0 0;
-			#profile-icon {
-				@include round;
-				display: block;
-				img {
-					@include round;
-					display: block;
-					margin: 0 auto;
-					width: 100%;
-					max-width: 100px;
-					padding: 5px;
-					background: rgba(white, .5);
-				}
-				svg {
-					display: block;
-					margin: 0 auto;
-					width: 120px;
-					height: 120px;
-				}
-			}
-			#profile-list {
-				text-align: center;
-				ul {
-					@include listless;
-					#profile-name {
-						h1 {
-							margin-top: 10px;
-							padding: 0 10px 3px;
-							line-height: 1;
-							text-transform: uppercase;
-							font-size: 28px;
-							color: white;
-							span:last-child {
-								svg {
-									display: none;
-								}
-							}
-						}
-					}
-					#profile-school {
-						font-size: 24px;
-						font-weight: 400;
-					}
-				}
-			}
-			#profile-bars {
-				#profile-rating {
-					@include listless;
-					@include flex;
-					@include flex-center;
-					width: 100%;
-					height: 75px;
-					padding: 20px;
-					margin: 15px 0;
-					background: rgba(white, .1);
-					font-size: 24px;
-					li {
-						width: 100%;
-						text-align: center;
-					}
-				}
-			}
-		}
-		#profile-info {
-			margin-top: -15px;
-			.profile-inside {
-				padding-bottom: 64px;
-				overflow: auto;
-				h1 {
-					background: rgba(white,.05);
-					color: white;
-				}
-				#profile-courses {
-					ul.courses {
-						@include listless;
-						@include flex;
-						@include flex-wrap;
-						text-align: center;
-						li {
-							padding: 10px 15px;
-							width: 50%;
-							font-weight: 600;
-							position:relative;
-						}
-						li:nth-child(1){
-							background: $lake;
-						}
-						li:nth-child(2){
-							background: $gold;
-						}
-						li:nth-child(3){
-							background: $azure;
-						}
-						li:nth-child(4){
-							background: $orange;
-						}
-						li:nth-child(5){
-							background: $shamrock;
-						}
-						li:nth-child(6){
-							background: $cerise;
-						}
-					}
-					ul.default {
-						@include listless;
-						@include flex;
-						@include flex-wrap;
-						text-align: center;
-						li {
-							padding: 10px 15px;
-							width: 100%;
-							font-weight: 600;
-						}
-					}
-				}
-				h1 {
-					padding: 10px;
-					font-size: 14px;
-					font-weight: 400;
-					letter-spacing: 2px;
-					text-align: center;
-					text-transform: uppercase;
-					color: white;
-				}
-				#profile-other {
-					> div {
-						background: $charcoal;
-						div {
-							background: rgba(255,255,255,.1);
-							ul {
-								@include listless;
-								@include flex;
-								@include flex-wrap;
-								text-align: center;
-								li {
-									padding: 10px 15px;
-									width: 50%;
-									font-weight: 600;
-								}
-							}
-						}
-					}
-					#profile-major, #profile-job {
-						div {
-							ul.majors {
-								li {
-									width: 100%;
-									font-weight: 200;
-									position:relative;
-								}
-							}
-
-							ul.default {
-
-								@include listless;
-								@include flex;
-								@include flex-wrap;
-								text-align: center;
-								li {
-									padding: 10px 15px;
-									width: 100%;
-									font-weight: 600;
-								}
-							}
-						}
-					}
-					#profile-skills {
-						div {
-							ul.skills {
-
-								li {
-									position:relative;
-								}
-
-								li:nth-child(1){
-									background: $lake;
-								}
-								li:nth-child(2){
-									background: $shamrock;
-								}
-								li:nth-child(3){
-									background: $azure;
-								}
-								li:nth-child(4){
-									background: $moola;
-								}
-							}
-
-							ul.default {
-
-								@include listless;
-								@include flex;
-								@include flex-wrap;
-								text-align: center;
-								li {
-									padding: 10px 15px;
-									width: 100%;
-									font-weight: 600;
-								}
-							}
-						}
-					}
-					#profile-languages {
-						div {
-							ul.languages {
-								li {
-									position:relative;
-								}
-								li:nth-child(1){
-									background: $cerise;
-								}
-								li:nth-child(2){
-									background: $orange;
-								}
-							}
-
-							ul.default {
-
-								@include listless;
-								@include flex;
-								@include flex-wrap;
-								text-align: center;
-								li {
-									padding: 10px 15px;
-									width: 100%;
-									font-weight: 600;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
 	@media screen and (min-height:600px) {
 		.request {
 			&#request-empty {
@@ -845,7 +535,7 @@ section {
 		body, input, button {
 			font-size: 20px;
 		}
-		.onboarding-message, .request-info h3 {
+		.request-info h3 {
 			font-size: 20px!important;
 		}
 		#start-container {
@@ -893,6 +583,349 @@ section {
 			input {
 				margin-top: 20px!important;
 				font-size: 18px!important;
+			}
+		}
+	}
+}
+
+// ACCOUNT MODAL
+.signup-modal {
+	#account-form {
+		box-sizing: border-box;
+		padding: 15px;
+		input {
+			margin: 30px 0 15px;
+			font-size: 20px;
+		}
+		#tos {
+			display: block;
+			color: white;
+			font-size: 14px;
+			font-weight: 700;
+			letter-spacing: 1px;
+			line-height: 1;
+			text-align: center;
+			text-transform: uppercase;
+			opacity: 0.6;
+		}
+		#tos:active, #tos:focus {
+			color: $shamrock;
+		}
+		#social-login {
+			margin-top: 30px;
+			margin-bottom:20px;
+		}
+	}
+}
+
+// GURU PROFILE
+.guru-profile-view {
+	font-size: 18px;
+	#profile {
+		overflow-y: scroll;
+		height: calc(100% - 50px);
+	}
+	#btn-edit-profile, #btn-save-profile {
+		bottom: 50px!important;
+		width: 100%;
+	}
+	#btn-save-profile button {
+		width: 100%;
+	}
+	#profile-fixed {
+		position: fixed;
+		top: 0;
+		z-index: 9;
+		width: 100%;
+		height: 64px;
+		padding: 13px 0;
+		background: rgba($slate,.95);
+		#profile-fixed-inside {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			#profile-fixed-icon {
+				@include flex;
+				@include flex-center;
+				img {
+					@include round;
+					width: 35px;
+					height: 35px;
+					border: 3px solid rgba(white,.5);
+				}
+			}
+			#profile-fixed-name {
+				padding-left: 10px;
+				h1 {
+					font-size: 24px;
+					line-height: 1;
+					text-transform: uppercase;
+					&.verified {
+						svg {
+							width: 16px;
+							height: 16px;
+						}
+					}
+				}
+				p {
+					margin: 0;
+					font-size: 14px;
+					font-weight: 400;
+					line-height: 1;
+				}
+			}
+		}
+	}
+	#profile-desc {
+		padding: 15px 0;
+		#profile-icon {
+			@include round;
+			display: block;
+			img {
+				@include round;
+				display: block;
+				margin: 0 auto;
+				width: 100%;
+				max-width: 100px;
+				padding: 5px;
+				background: rgba(white, .5);
+			}
+			svg {
+				display: block;
+				margin: 0 auto;
+				width: 120px;
+				height: 120px;
+			}
+		}
+		#profile-list {
+			text-align: center;
+			ul {
+				@include listless;
+				#profile-name {
+					h1 {
+						margin-top: 10px;
+						padding: 0 10px 3px;
+						color: white;
+						font-size: 28px;
+						font-weight: 600;
+						line-height: 1;
+						text-transform: uppercase;
+						span:last-child {
+							svg {
+								display: none;
+							}
+						}
+					}
+				}
+				#profile-school {
+					margin-bottom: 3px;
+					font-size: 20px;
+					font-weight: 400;
+				}
+				#profile-loc {
+					font-size: 16px;
+					#profile-loc-city:not(:empty):after {
+						content: ", "
+					}
+				}
+			}
+		}
+		#profile-bars {
+			#profile-rating {
+				@include listless;
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				height: 75px;
+				padding: 20px;
+				margin: 15px 0;
+				background: rgba(white, .1);
+				font-size: 24px;
+				li {
+					width: 100%;
+					text-align: center;
+				}
+			}
+		}
+	}
+	#profile-info {
+		.profile-inside {
+			padding-bottom: 64px;
+			h1 {
+				background: rgba(white,.05);
+				color: white;
+			}
+			li {
+				position: relative;
+				a {
+					position: absolute;
+					right: 0;
+					top: 0;
+					svg {
+						@include rotate(45);
+						width: 35px;
+						height: 40px;
+						padding: 10px;
+						stroke: white;
+						stroke-width: 10;
+						stroke-linecap: round;
+						stroke-linejoin: round;
+					}
+				}
+			}
+			#profile-courses {
+				ul.courses {
+					@include listless;
+					@include flex;
+					@include flex-wrap;
+					text-align: center;
+					li {
+						padding: 10px 15px;
+						width: 50%;
+						font-weight: 600;
+						position:relative;
+					}
+					li:nth-child(1){
+						background: $lake;
+					}
+					li:nth-child(2){
+						background: $gold;
+					}
+					li:nth-child(3){
+						background: $azure;
+					}
+					li:nth-child(4){
+						background: $orange;
+					}
+					li:nth-child(5){
+						background: $shamrock;
+					}
+					li:nth-child(6){
+						background: $cerise;
+					}
+				}
+				ul.default {
+					@include listless;
+					@include flex;
+					@include flex-wrap;
+					text-align: center;
+					li {
+						padding: 10px 15px;
+						width: 100%;
+						font-weight: 600;
+					}
+				}
+			}
+			h1 {
+				padding: 10px;
+				font-size: 14px;
+				font-weight: 400;
+				letter-spacing: 2px;
+				text-align: center;
+				text-transform: uppercase;
+				color: white;
+			}
+			#profile-other {
+				> div {
+					background: $charcoal;
+					div {
+						ul {
+							@include listless;
+							@include flex;
+							@include flex-wrap;
+							text-align: center;
+							li {
+								padding: 10px 15px;
+								width: 50%;
+								font-weight: 600;
+							}
+						}
+					}
+				}
+				#profile-major, #profile-job {
+					div {
+						ul.majors {
+							li {
+								position: relative;
+								width: 100%;
+								font-weight: 200;
+								border-bottom: 1px solid rgba(white, .1);
+								&:last-child {
+									border-bottom: 0;
+								}
+							}
+						}
+						ul.default {
+							@include listless;
+							@include flex;
+							@include flex-wrap;
+							text-align: center;
+							li {
+								padding: 10px 15px;
+								width: 100%;
+								font-weight: 600;
+							}
+						}
+					}
+				}
+				#profile-skills {
+					div {
+						ul.skills {
+							li {
+								position:relative;
+							}
+							li:nth-child(1){
+								background: $lake;
+							}
+							li:nth-child(2){
+								background: $shamrock;
+							}
+							li:nth-child(3){
+								background: $azure;
+							}
+							li:nth-child(4){
+								background: $moola;
+							}
+						}
+						ul.default {
+							@include listless;
+							@include flex;
+							@include flex-wrap;
+							text-align: center;
+							li {
+								padding: 10px 15px;
+								width: 100%;
+								font-weight: 600;
+							}
+						}
+					}
+				}
+				#profile-languages {
+					div {
+						ul.languages {
+							li {
+								position:relative;
+							}
+							li:nth-child(1){
+								background: $cerise;
+							}
+							li:nth-child(2){
+								background: $orange;
+							}
+						}
+						ul.default {
+							@include listless;
+							@include flex;
+							@include flex-wrap;
+							text-align: center;
+							li {
+								padding: 10px 15px;
+								width: 100%;
+								font-weight: 600;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -954,6 +987,8 @@ section {
 
 .uguru-popup {
 	@include opacity(0);
+	@include flex;
+	@include flex-center;
 	position: fixed;
 	z-index: 10;
 	visibility: hidden;
@@ -966,14 +1001,16 @@ section {
 	transition: 250ms ease;
 	.uguru-popup-content {
 		@include transition(250ms ease);
-		margin: 180px 15px 0;
+		position: relative;
+		margin: 0 15px;
 		z-index: 2;
+		width: 100%;
 		background: white;
 		border-radius: 5px;
 		color: $slate;
 		.content-wrapper {
 			position: relative;
-			padding: 65px 0 0;
+			padding: 60px 0 0;
 			text-align: center;
 			h2 {
 				color: $slate;
@@ -987,6 +1024,7 @@ section {
 				color: $slate;
 				font-weight: 400;
 				font-size: 14px;
+				padding: 2px 15px 0;
 			}
 			button {
 				border-radius: 0 0 5px 5px;
@@ -998,8 +1036,7 @@ section {
 		@include flex;
 		@include flex-center;
 		position: absolute;
-		top: 0;
-		left: 0;
+		top: -50px;
 		z-index: 5;
 		width: 100%;
 		height: auto;
@@ -1007,12 +1044,11 @@ section {
 		div.svg-logo-wrapper {
 			width: 100%;
 			height: auto;
-			padding-top: 135px;
 			text-align: center;
 			svg {
 				@include round;
-				max-width: 180px;
-				max-height: 180px;
+				max-width: 100px;
+				max-height: 100px;
 				background: $azure;
 				padding: 15px;
 				z-index: 3;
@@ -1024,22 +1060,9 @@ section {
 	}
 	&.show {
 		@include opacity(1);
+		@include flex;
 		visibility: visible;
 		pointer-events: auto;
-	}
-}
-.uguru-popup.sidebar-popup {
-	.uguru-popup-content {
-		margin-top: 60px;
-	}
-	.guru-logo-container {
-		div.svg-logo-wrapper {
-			padding-top: 15px;
-			svg {
-				max-width: 100px;
-				max-height: 100px;
-			}
-		}
 	}
 	input {
 		font-size: 16px;
@@ -1290,7 +1313,6 @@ section {
 		.geolocation-icon {
 			@include opacity(.5);
 			@include center-y;
-			padding-top: 5px;
 			right: 10px;
 			z-index: 0;
 			height: 18px;
@@ -1647,6 +1669,9 @@ section {
 // PHOTO
 .photo-view {
 	background: $charcoal;
+	h1.text-center {
+		line-height: 1.2!important;
+	}
 	#photo-list {
 		position: absolute;
 		bottom: 0;
@@ -2002,8 +2027,11 @@ section {
 	}
 }
 
+// TAB BAR
 .tabs {
 	border: 0;
+	height: 50px;
+	line-height: 50px;
 }
 
 // SAMIR'S SHIT

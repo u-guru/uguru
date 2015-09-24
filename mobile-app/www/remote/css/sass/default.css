@@ -310,7 +310,7 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 .inline-block {
   display: inline-block; }
 
-.block, .show {
+.block, .show:not(.uguru-popup) {
   display: block !important; }
 
 .hide {
@@ -998,7 +998,7 @@ button {
   display: block;
   width: 100%;
   border: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important;
   border-radius: 0;
   padding-bottom: 5px;
   background: none;
@@ -1013,7 +1013,7 @@ button {
     color: rgba(255, 255, 255, 0.5); }
 
 .input-ghost:active, .input-ghost:focus {
-  border-bottom-color: white; }
+  border-bottom-color: white !important; }
   .input-ghost:active::-webkit-input-placeholder, .input-ghost:focus::-webkit-input-placeholder {
     color: white; }
   .input-ghost:active:-moz-placeholder, .input-ghost:focus:-moz-placeholder {
