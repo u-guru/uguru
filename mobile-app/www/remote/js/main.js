@@ -1,6 +1,8 @@
 var LOCAL = true; //local to the 8100 codebasebirbirs
 
-var FIRST_PAGE='^.university';
+
+
+var FIRST_PAGE='^.access';
 img_base = '';
 
 
@@ -14,7 +16,8 @@ var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  BASE_URL = 'http://localhost:8100';
+  // BASE_URL = 'http://localhost:8100';
+  // REST_URL = 'http://192.168.42.78:5000'
 
 
 } else {
