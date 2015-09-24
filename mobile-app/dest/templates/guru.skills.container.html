@@ -1,5 +1,5 @@
-<section id="skill" class="onboarding">
-    <header id="category-skills" class="third flex-center">
+<section id="skill" class="onboarding full-xy">
+    <header id="category-skills" class="third flex-center" ng-if='!guruSkillsModal.isShown()'>
       <div class="header-nav">
         <a class="header-nav-back" ng-click='previousSlide()'>
           <svg width="12px" height="23px" viewBox="0 0 12 23">
@@ -15,6 +15,12 @@
         </a>
       </div>
       <h1>{{active_category.name}}</h1>
+    </header>
+    <header id="category-skills" class="third flex-center" ng-if='guruSkillsModal.isShown()'>
+      <h1 class="text-center">Edit Skills</h1>
+        <a class="header-nav-back left-0 absolute p10xy top-0" ng-click='guruSkillsModal.hide()'>
+          <i class='icon ion-chevron-down'> </i>
+      </a>
     </header>
     <div id="skills-list" class="onboarding-list">
       <ul class='list list-item-half flex-wrap'>

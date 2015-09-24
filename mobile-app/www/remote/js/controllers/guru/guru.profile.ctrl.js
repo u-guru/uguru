@@ -24,7 +24,7 @@ angular.module('uguru.guru.controllers')
     $scope.root.vars.guru_mode = true;
 
     // credibility only variable
-    $scope.activeTabIndex = 4;
+    $scope.activeTabIndex = 0;
 
     $scope.user_skills = [{name: "CSS3"}, {name: "Javascript"}, {name: "Photoshop"}, {name: "HTML5"}];
     $scope.user.languages = $scope.user.languages || [{name:"English"}, {name:"Chinese"}];
@@ -213,7 +213,7 @@ angular.module('uguru.guru.controllers')
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function(modal) {
-            $scope.majorModal = modal;
+            $scope.guruMajorModal = modal;
     });
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/guru.courses.modal.html', {
@@ -239,7 +239,7 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.launchGuruMajorsModal = function() {
-      $scope.majorModal.show();
+      $scope.guruMajorModal.show();
     }
 
 

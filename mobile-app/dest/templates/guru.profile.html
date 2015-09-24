@@ -55,7 +55,7 @@
 					</li>
 				</ul>
 				<ul class='default' ng-if='!user.guru_courses.length || profile.edit_mode'>
-					<li ng-click='launchEditCoursesModal()'>+ Add a course</li>
+					<li ng-click='launchGuruCoursesModal()'>+ Add a course</li>
 				</ul>
 			</div>
 			<div id="profile-other">
@@ -73,7 +73,7 @@
 							</li>
 						</ul>
 						<ul class='default' ng-if='!user.majors.length || profile.edit_mode'>
-							<li ng-click='launchEditMajorsModal()'>+ Add a major</li>
+							<li ng-click='launchGuruMajorsModal()'>+ Add a major</li>
 						</ul>
 					</div>
 				</div>
@@ -100,7 +100,7 @@
 							</li>
 						</ul>
 						<ul class='default' ng-if='!user.guru_skills.length || profile.edit_mode'>
-							<li ng-click='launchEditSkillsModal()'>+ Add a skill</li>
+							<li ng-click='launchGuruSkillsModal()'>+ Add a skill</li>
 						</ul>
 					</div>
 				</div>

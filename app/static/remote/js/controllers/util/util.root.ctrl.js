@@ -724,7 +724,7 @@ angular.module('uguru.util.controllers')
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
 
-            $state.go('^.home')
+            $state.go('^.guru')
             $timeout(function() {
               $scope.loader.hide();
             }, 1000);
