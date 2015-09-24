@@ -38,10 +38,10 @@
                 <img ng-if='platform.mobile' image-saver ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
                 <img ng-if='platform.web' ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}'/>
               </span>
-              <span ng-if='!location' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
+              <span ng-if='!location.mode' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
                 <b>{{university.name}}<i>{{university.city}}, {{university.state}}</i></b>
               </span>
-              <span ng-if='location' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
+              <span ng-if='location.mode' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
                 <b>{{university.name}}<i class='university-subheader'>{{university.city}}, {{university.state}} <span class='text-right'>{{university.miles | number}} mi</span></i></b>
               </span>
             </a>

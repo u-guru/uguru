@@ -46,7 +46,18 @@ function Geolocation($localstorage, $timeout, University,
       //$localstorage.setObject('nearest-universities', $scope.universities);
     } 
     function geoError(error) {
-        alert('Sorry! Please check your privacy settings check your GPS signal.');
+
+        switch(error.code) {
+          case 1:
+            alert('Sorry! Please enable your GPS settings.');
+            break;
+          case 2:
+            alert('Sorry! Please check your GPS signal.');
+            break;
+          case 3:
+            alert('Sorry! Please check your GPS signal.');
+            break;
+        }
     }
   }
 

@@ -23,6 +23,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher, $ionicSlideBoxDelegate,
   DeviceService, $ionicModal, uTracker) {
 
+
   //var networkState = navigator.connection.type;
   var deviceUUID = DeviceService.getUUID();
   var deviceModel =  DeviceService.getModel();
@@ -43,12 +44,12 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
     //uTracker.track('mp')
 
-    mixpanel.track("Paused/Back", {
+    uTracker.track('mp', "Paused/Back", {
       "$Search_Input": $scope.input.search_text
     });
   }
 
-  mixpanel.people.set({
+  uTracker.set('mp',{
       "$email": "testphone@gmail.com",
       
       "$created": "2015-09-22 16:53:54",
@@ -73,10 +74,10 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         var loadTime = time_s;
         appLoadTime = loadTime;
         console.log("appLoadTime: " + appLoadTime);
-        mixpanel.track("App Launch", {
+        uTracker.track('mp', "App Launch", {
           "$App_Load_Time": appLoadTime
         });
-        mixpanel.people.set({
+        uTracker.set('mp', {
           "$App_Load_Time": appLoadTime
         });
   }
@@ -91,7 +92,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         stats.begin();  
         stats.end();
         fpsArray.push(stats.getFPS());
-         console.log("FPS: " + stats.getFPS());
+        //console.log("FPS: " + stats.getFPS());
         if(!stopLoop) {
           window._rAF(update);          
         } else {
@@ -102,16 +103,16 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           //we are disregarding the first value since it's most likely 0 due to initial transition
           fpsArray.shift();
           var meanFPS = Math.round(total / (fpsArray.length));
-          console.log("meanFPS: " + meanFPS);
-          console.log("fpsArray: " + fpsArray);
+          //console.log("meanFPS: " + meanFPS);
+          //console.log("fpsArray: " + fpsArray);
           //var fpsValue = "meanFPS: " + meanFPS + "/ fpsArray: " + fpsArray.toString();
           //console.log("fpsValue: " + fpsValue);
 
-          mixpanel.track("Entered Access Code", {
+          uTracker.track('mp', "Entered Access Code", {
               "$Mean_FPS": meanFPS,
               "$FPS_Array": fpsArray.toString()
           });
-          mixpanel.people.set({
+          uTracker.set('mp', {
             "$Mean_FPS": meanFPS
           });
 
@@ -188,7 +189,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     $scope.input = {
       search_text: ''
     }
-    $scope.location = false;
+    
     $scope.universities = University.getTargetted();
     sortByRank(University.getTargetted());
     $scope.limit = 10;
@@ -224,18 +225,16 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       var listRenderTime = listEndTime - appStartTime;
       console.log("listRenderTime: " + listRenderTime);
 
-
-
-      mixpanel.track("Selected University", {
+      uTracker.track('mp', "Selected University", {
           "$University": university.name,
           "$Search_Input": $scope.input.search_text
       });
-      mixpanel.people.set({
+      uTracker.set('mp', {
           "$University": university.name,
           "$Search_Response_Time": searchResponseTime,
           "$List_Render_Time": listRenderTime
       });
-      ga('send', 'event', 'Selected University', 'action', university.name);
+      
       //if user is switching universities
       if ($scope.user.university_id
           && university.id !== $scope.user.university_id
@@ -243,11 +242,11 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       {
           return;
       }
-      mixpanel.track("Changed University", {
+      uTracker.track('mp', "Changed University", {
           "$University": university.name,
           "$Search_Input": $scope.input.search_text
       });
-      mixpanel.people.set({
+      uTracker.set('mp', {
           "$University": university.name,
       });
       $scope.loader.show();
@@ -275,8 +274,13 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
 
     };
-    console.log("$scope.location is currently: " + $scope.location);
 
+
+    var locationMode = Settings.get('locationMode');
+
+    $scope.location = {
+      mode: locationMode
+    }
 
     var isTimeout = false;
     $scope.getGPSCoords = function() {
@@ -293,22 +297,22 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
       var schoolList = document.querySelectorAll('#school-list')[0];
 
-      if($scope.location) {
-
-        $scope.location = false;
-        //sortByRank(University.getTargetted());
+      if($scope.location.mode) {
+        Settings.set('locationMode', false);
+        $scope.location.mode = false;
         document.querySelector('header a.geolocation-icon .ion-navigate').style.color = 'white';
-        console.log("$scope.location is now: " + $scope.location);
 
-      } else if(!$scope.location){
+      } 
+      else if(!$scope.location.mode) {
 
         Geolocation.getLocation();
         document.querySelector('header a.geolocation-icon .ion-navigate').style.color = '#46FF00';
         $timeout(function() {
             $scope.limit = 10;
             schoolList.scrollTop = 0;
-            $scope.location = true;
-            console.log("$scope.location is now: " + $scope.location);
+            Settings.set('locationMode', true);
+            $scope.location.mode = true;
+            console.log("$scope.location.mode is now: " + $scope.location.mode);
 
           }, 1500);
       }

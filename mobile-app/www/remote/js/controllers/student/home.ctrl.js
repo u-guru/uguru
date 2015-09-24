@@ -18,14 +18,20 @@ angular.module('uguru.student.controllers', [])
   '$ionicViewSwitcher',
   '$ionicActionSheet',
   '$ionicPopover',
+  'AnimationService',
 function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $ionicModal, $timeout, $q, University, $localstorage,
   $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
-  $ionicActionSheet, $ionicPopover)     {
+  $ionicActionSheet, $ionicPopover, AnimationService)     {
 
   // var n = x + 1;
   $scope.showUpcoming = true;
   $scope.root.vars.show_price_fields = false;
+
+  $scope.comingSoon = function() {
+    console.log("check 123");
+    AnimationService.flip();
+  }
 
   $scope.showPreviousRequests = function() {
       if (!$scope.user.previous_requests || $scope.user.previous_requests.length === 0) {

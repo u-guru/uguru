@@ -1,11 +1,12 @@
 angular.module('sharedServices')
 .factory('uTracker', [
-	'$localStorage',
+	'$localstorage',
+	'DeviceService',
 	uTracker
 	]);
 
-
-function uTracker($localStorage) {
+// TODO: we'll need to find a way to hold/queue the current events and fire for later
+function uTracker($localstorage, DeviceService) {
 
 	var tracker = 	[
 					'mp', // mixpanel
@@ -18,81 +19,88 @@ function uTracker($localStorage) {
 	// or even event properties do not count towards the data limit.  You can send up to
 	// 255 properties per event.
 
-	var dataLimit = $localStorage.get("dataLimit", 0);
+	var dataLimit = $localstorage.get("dataLimit", 0);
 
-	// TODO: we'll need to find a way to hold/queue the current events and fire for later
+	var defaultTokens = {
+		mp: "cfe34825db9361e6c1d1a16a2b269b07"
+	}
 
 	return {
 		init: init,
 		setUser: setUser,
+		set: set,
 		track: track,
 		push: push,
 		get: get
-	}
-
-	var defaultTokens = {
-		mixpanel: "cfe34825db9361e6c1d1a16a2b269b07"
-	}
+	};
 
 	// This sets the API token for the analytics provider
 	// Example: uTracker.init('mp', "cfe34825db9361e6c1d1a16a2b269b07" )
 	function init(tracker, token) {
-		switch(tracker) {
-			case 'mp':
-				mixpanel = window.mixpanel || null;
-				mixpanel.init(token || defaultTokens.mixpanel);
-				break;
+		if(DeviceService.isMobile()) {
+			switch(tracker) {
+				case 'mp':
+					mixpanel = window.mixpanel || null;
+					mixpanel.init(token || defaultTokens.mp);
+					break;
 
-			case 'ga': break;
-			case 'hp': break;
-			default: break;
-		}
+				case 'ga': break;
+				case 'hp': break;
+				default: throw "Invalid tracker name. Refer to uTracker.js";
+			}
+		} else return;
 	}
 
 	// This sets the unique userID for the analytics provider
 	// Example: uTracker.setUser('mp', userID')
 	function setUser(tracker, userID) {
-		switch(tracker) {
-			case 'mp':
-				mixpanel.identify(userID);
-				break;
+		if(DeviceService.isMobile()) {
+			switch(tracker) {
+				case 'mp':
+					mixpanel.identify(userID);
+					break;
 
-			case 'ga': break;
-			case 'hp': break;
-			default: break;
-		}
+				case 'ga': break;
+				case 'hp': break;
+				default: throw "Invalid tracker name. Refer to uTracker.js";
+			}
+		} else return;
 	}
 
 	// This sets the user-level attributes
 	// Can be pass in either a key-value pair, or an entire object
 	function set(tracker, data) {
-		switch(tracker) {	
-			case 'mp':
-				if(typeof data === 'object') {
-					mixpanel.people.set(data);
-				}
-				break;
 
-			case 'ga': break;
-			case 'hp': break;
-			default: break;
-		}
+		if(DeviceService.isMobile()) {
+			switch(tracker) {	
+				case 'mp':
+					if(typeof data === 'object') {
+						mixpanel.people.set(data);
+					}
+					break;
+
+				case 'ga': break;
+				case 'hp': break;
+				default: throw "Invalid tracker name. Refer to uTracker.js";
+			}
+		} else return;
 	}
 
 	// This sets the events that will be fired for as the user navigates through the app
 	// Additional key-value pairs can be passed in as a data object
 	// Example: uTracker.track('mp', 'App Launch', {'App_Load_Time': })
 	function track(tracker, event, data) {
-		switch(tracker) {
-			case 'mp':
-				mixpanel.track(event, data);
-				break;
+		if(DeviceService.isMobile()) {
+			switch(tracker) {
+				case 'mp':
+					mixpanel.track(event, data);
+					break;
 
-			case 'ga': break;
-			case 'hp': break;
-			default: break;
-		}
-
+				case 'ga': break;
+				case 'hp': break;
+				default: throw "Invalid tracker name. Refer to uTracker.js";
+			}
+		} else return;
 	}
 
 	// This retrieves the user-level attributes associated with the current userID

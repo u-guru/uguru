@@ -43,7 +43,7 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 	}
 
 	function enableGPS() {
-	    if (!Settings.location) {
+	    if (!Settings.get('locationMode')) {
 	      Popup.options.show($rootScope, {
 	        header: 'Mind if we use your location?',
 	        body: 'uGuru uses your location to match you up with students on campus.',

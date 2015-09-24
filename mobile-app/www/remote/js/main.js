@@ -1,5 +1,9 @@
-var LOCAL = true; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.university';
+var LOCAL = _local; //local to the 8100 codebasebirbirs
+var FIRST_PAGE='^.' + _startpage;
+
+console.log("_local: " + _local);
+console.log("_startpage: " + _startpage);
+console.log("_ipaddress: " + _ipaddress);
 
 var img_base;
 
@@ -9,14 +13,18 @@ var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
 
 
-// Toggle console logs. Comment to enable, uncomment to disable.
-console.log = function() {};
+// ==============================
+// CONSOLE_SETTINGS: Toggle console logs. Comment to enable, uncomment to disable.
+// console.log("Disabling console logs. To enable: comment out CONSOLE_SETTINGS in main.js");
+// console.log = function() {};
+// ==============================
+
 
 var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.0.101:8100';
+  BASE_URL = _ipaddress;
   //BASE_URL = 'http://192.168.42.124:8100';
 
 
@@ -47,7 +55,6 @@ if (LOCAL) {
   })();
 
 
-
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
@@ -59,6 +66,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   $cordovaDialogs, Version, $rootScope, $cordovaSplashscreen,
   $templateCache, Device, User, $cordovaLocalNotification,
   $cordovaGeolocation, $cordovaDevice, DeviceService, uTracker) {
+
 
   var openKeyboard = null;
   
