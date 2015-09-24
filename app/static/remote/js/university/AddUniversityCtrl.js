@@ -14,14 +14,6 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'deviceInfo',
   'UniversityMatcher',
   '$ionicSlideBoxDelegate',
-<<<<<<< HEAD
-  '$ionicModal',
-  AddUniversityCtrl]);
-
-function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
-  Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher,
-  $ionicSlideBoxDelegate, $ionicModal) {
-=======
   'DeviceService',
   '$ionicModal',
   AddUniversityCtrl]);
@@ -138,7 +130,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       //$timeout(function() {stopLoop = true}, 300);
       //console.log("called afterEnter");
     };
->>>>>>> samir-dev
 
     console.log("passed deviceInfo: " + deviceInfo);
 
@@ -190,32 +181,10 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     }
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> samir-dev
     var queryTimeout = false;
     var emptyTimeout = false;
     $scope.limit = 10;
     $scope.query = function(input) {
-<<<<<<< HEAD
-      if(!queryTimeout) {
-        queryTimeout = true;
-        //$scope.universities = Utilities.nickMatcher(input, University.getTargetted());
-        $scope.universities = UniversityMatcher.cachedMatch(input);
-        $timeout(function() {queryTimeout = false;}, 600);
-      }
-      else if(input.length === 0) {
-        if(!emptyTimeout) {
-          emptyTimeout = true;
-          $scope.universities = UniversityMatcher.cachedMatch(input);
-          $timeout(function() {emptyTimeout = false;}, 600);
-        }
-      }
-
-    }
-
-=======
       if(!measure) {
 
         if(!queryTimeout) {
@@ -236,7 +205,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       
 
     }
->>>>>>> samir-dev
 
     $scope.input = {
       search_text: ''
@@ -252,19 +220,10 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       }
     }
 
-    // $ionicSlideBoxDelegate.update();
     //back button
     $scope.goToAccess = function() {
-<<<<<<< HEAD
-      // console.log("pressed goToAccess()");
-      // $ionicViewSwitcher.nextDirection('back');
-      // $state.go('^.access');
-
-    $ionicSlideBoxDelegate.previous();
-=======
       $scope.input.search_text = '';
       $ionicSlideBoxDelegate.previous();
->>>>>>> samir-dev
     }
 
     function sortByRank(list) {
@@ -353,10 +312,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
     function getGPS() {
 
-<<<<<<< HEAD
-
-=======
->>>>>>> samir-dev
       var schoolList = document.querySelectorAll('#school-list')[0];
 
       if($scope.location) {

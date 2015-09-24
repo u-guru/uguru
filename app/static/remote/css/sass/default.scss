@@ -26,6 +26,10 @@ h1, h2, h3, h4, h5, h6 {
 p {
 	line-height: 1.25;
 }
+input[type=search], input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=tel], input[type=color], textarea {
+    height: initial;
+    line-height: initial;
+}
 
 // GRID
 [class*="ugrid-"] {
@@ -210,6 +214,14 @@ p {
 }
 
 // PADDING
+.padding-1em {
+    padding: 1em;
+}
+.no-padding-x {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 [class*="padding-none"] {
 	padding: 0;
 }
@@ -350,11 +362,11 @@ p {
 .inline-block {
 	display: inline-block;
 }
-.block {
-	display: block;
+.block, .show {
+	display: block!important;
 }
 .hide {
-    display: none;
+    display: none!important;
 }
 
 .absolute {
@@ -379,10 +391,10 @@ p {
 	right: 0!important;
 }
 
-.full-x {
+.full-x, .full-width {
 	width: 100%!important;
 }
-.full-y {
+.full-y, .full-height {
 	height: 100%!important;
 }
 .full-xy {
@@ -453,7 +465,7 @@ p {
 .text-right {
 	text-align: right;
 }
-.text-center {
+.text-center, .center {
 	text-align: center;
 }
 
@@ -1019,16 +1031,16 @@ p {
 	}
 }
 .bg-fb {
-	background: #3b5998;
+	background: $facebook;
 }
 .bg-tw {
-	background: #00aced;
+	background: $twitter;
 }
 .bg-li {
-	background: #007bb6;
+	background: $linkedin;
 }
 .bg-in {
-	background: #517fa4;
+	background: $instagram;
 }
 
 // HEADERS
@@ -1072,7 +1084,7 @@ header {
 		@include flex;
 		@include flex-center;
 		position: relative;
-		color: white!important;
+		color: white;
 	}
 	.header-close, .header-menu {
 		display: block;
@@ -1167,6 +1179,46 @@ button {
 	   color: white;
 	}
 }
+.input-ghost-dark {
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	border: 0;
+	border-bottom: 1px solid rgba($charcoal,.5);
+	border-radius: 0;
+	padding-bottom: 5px;
+	background: none;
+	color: rgba($charcoal, .5);
+	&::-webkit-input-placeholder {
+	   color: rgba($charcoal, .5);
+	}
+	&:-moz-placeholder {
+	   color: rgba($charcoal, .5);
+	}
+	&::-moz-placeholder {
+	   color: rgba($charcoal, .5);
+	}
+	&:-ms-input-placeholder {
+	   color: rgba($charcoal, .5);
+	}
+}
+.input-ghost-dark:active, .input-ghost-dark:focus {
+	color: $charcoal;
+	border-bottom-color: $charcoal;
+	&::-webkit-input-placeholder {
+	   color: $charcoal;
+	}
+	&:-moz-placeholder {
+	   color: $charcoal;
+	}
+	&::-moz-placeholder {
+	   color: $charcoal;
+	}
+	&:-ms-input-placeholder {
+	   color: $charcoal;
+	}
+}
+
 .input-outline {
 	padding: 10px;
 	border: 0;
@@ -1217,7 +1269,7 @@ button {
 		appearance: none;
 		display: block;
 		width: 100%;
-		padding: 5px 0 5px 20px;
+		padding: 5px 0 5px 25px;
 		border: 0;
 		border-bottom: 1px solid rgba(white,.5);
 		border-radius: 0;
@@ -1278,8 +1330,9 @@ button {
 			label {
 				width: calc(100% - 60px);
 				padding: 0 15px 0 30px;
-				font-size: 18px;
+				font-size: 16px;
 				font-weight: 400;
+				line-height: 1.2;
 				text-align: left;
 			}
 			input {
@@ -1307,7 +1360,7 @@ button {
 			    cursor: pointer;
 			}
 			input:checked + span {
-			    background: url(../img/svg/check.svg) center center no-repeat, url(/static/remote/img/svg/check.svg) center center no-repeat;
+			    background: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgPHBhdGggZD0iTTE0LDU0LjIzNTI5NDEgTDM1LjE3NjQ3MDYsNzUuNDExNzY0NyBMODYsMjQuNTg4MjM1MyIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSI+PC9wYXRoPjwvc3ZnPg==) no-repeat center center / 40px 40px;
 			}
 		}
 	}
@@ -1397,7 +1450,7 @@ button {
 [class*="highlight"] {
 	@include flex;
 	@include flex-wrap;
-	margin: 0 1px!important;
+	margin: 0 1px;
 	li {
 		position: relative;
 		border: 1px solid transparent;
@@ -1853,43 +1906,43 @@ progress, [class*="progress"]:not(.progress-circle) {
 	color: white;
 }
 
-.chart {
-	.bg {
-		@include opacity(.3);
-	}
-	.chart-percent circle {
-		@include opacity(0);
-	    -webkit-transform-origin: center center;
-	    -moz-transform-origin: center center;
-	    -ms-transform-origin: center center;
-	    -o-transform-origin: center center;
-	    transform-origin: center center;
-		stroke-dasharray: 3px, 380px;
-		stroke-linecap: round;
-	}
-	circle {
-		cx: 60px;
-		cy: 60px;
-		r: 60px;
-	}
-}
+// .chart {
+// 	.bg {
+// 		@include opacity(.3);
+// 	}
+// 	.chart-percent circle {
+// 		@include opacity(0);
+// 	    -webkit-transform-origin: center center;
+// 	    -moz-transform-origin: center center;
+// 	    -ms-transform-origin: center center;
+// 	    -o-transform-origin: center center;
+// 	    transform-origin: center center;
+// 		stroke-dasharray: 3px, 380px;
+// 		stroke-linecap: round;
+// 	}
+// 	circle {
+// 		cx: 60px;
+// 		cy: 60px;
+// 		r: 60px;
+// 	}
+// }
 
-.chart-percent {
-	@for $j from 1 through 100 {
-		circle:nth-child(#{$j}) {
-			@include rotate((360/100*$j));
-		}
-	}
-}
+// .chart-percent {
+// 	@for $j from 1 through 100 {
+// 		circle:nth-child(#{$j}) {
+// 			@include rotate((360/100*$j));
+// 		}
+// 	}
+// }
 
-@for $p from 1 through 100 {
-	.chart[data-value="#{$p}"] {
-		.chart-percent {
-			@for $j from 1 through $p {
-				circle:nth-child(#{$j}) {
-					@include opacity(1);
-				}
-			}
-		}
-	}
-}
+// @for $p from 1 through 100 {
+// 	.chart[data-value="#{$p}"] {
+// 		.chart-percent {
+// 			@for $j from 1 through $p {
+// 				circle:nth-child(#{$j}) {
+// 					@include opacity(1);
+// 				}
+// 			}
+// 		}
+// 	}
+// }

@@ -1,7 +1,7 @@
-var LOCAL = true; //local to the 8100 codebasebirbirs
+var LOCAL = false; //local to the 8100 codebasebirbirs
 
 var FIRST_PAGE='^.university';
-
+img_base = '';
 
 
 // isAdmin = true;
@@ -15,6 +15,7 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = 'http://localhost:8100';
+  
 
 } else {
   img_base = '/static/'

@@ -16,10 +16,7 @@ angular.module('uguru.directives')
 			window.resolveLocalFileSystemURL(filePath, fileSuccess, downloadAsset);
 
 			function fileSuccess() {
-<<<<<<< HEAD
-=======
 				console.log(fileName + " found on device, retrieving from local storage");
->>>>>>> samir-dev
 				//console.log("Image is already saved on device and will be used: " + filePath);
 				attrs.$set('ng-src', filePath);
 			}
@@ -32,11 +29,6 @@ angular.module('uguru.directives')
 				var fileTransfer = new FileTransfer();
 				//console.log("About to start file download");
 				var downloadURL = encodeURI(assetURL);
-<<<<<<< HEAD
-				//console.log("downloadURL: " + downloadURL);
-				fileTransfer.download(downloadURL, filePath,
-					function(entry) {
-=======
 
 				var startTime = Date.now();
 
@@ -59,7 +51,6 @@ angular.module('uguru.directives')
 							//console.log("downloadObj: " + JSON.stringify(downloadObj));
 							$localstorage.storeDownloadRecords(downloadObj);
 						});
->>>>>>> samir-dev
 						//console.log("Successfully downloaded image: " + fileName);
 						useSavedFile();
 					},

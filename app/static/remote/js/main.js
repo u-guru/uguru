@@ -1,11 +1,8 @@
-var LOCAL = true; //local to the 8100 codebasebirbirs
-<<<<<<< HEAD
-var FIRST_PAGE='^.guru-profile';
-=======
-var FIRST_PAGE='^.university';
+var LOCAL = false; //local to the 8100 codebasebirbirs
 
->>>>>>> samir-dev
-var img_base;
+var FIRST_PAGE='^.university';
+img_base = '';
+
 
 // isAdmin = true;
 // LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
@@ -17,24 +14,8 @@ var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-<<<<<<< HEAD
-  //BASE_URL = 'http://192.168.42.124:8100';
-
-  // BASE_URL = 'http://192.168.1.43:8100';
-  REST_URL = "http://localhost:5000"
-  // REST_URL = 'https://www.uguru.me'
-=======
-  BASE_URL = 'http://192.168.0.103:8100';
-  //BASE_URL = 'http://192.168.42.124:8100';
-
-
-  //REST_URL = "http://localhost:5000"
-
-  // BASE_URL = 'http://192.168.1.43:8100';
-
->>>>>>> samir-dev
-  //BASE_URL = 'http://192.168.43.155:8100';
-
+  BASE_URL = 'http://localhost:8100';
+  
 
 } else {
   img_base = '/static/'
@@ -48,10 +29,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
-<<<<<<< HEAD
-=======
 
->>>>>>> samir-dev
 
 .run(function($ionicPlatform, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,

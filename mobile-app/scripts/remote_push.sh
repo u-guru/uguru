@@ -15,7 +15,7 @@ echo "Clearing iOS xCode cache..."
 rm -rf "$(getconf DARWIN_USER_CACHE_DIR)/org.llvm.clang/ModuleCache"
 echo 'cd to uguru-mobile repository'
 ### TODO: RAISE if um is not defined
-um && echo
+# um && echo
 echo '================'
 echo '=============='
 echo '==========='
@@ -80,5 +80,5 @@ echo 'calling git add -A .'
 # honcho run python manage.py update
 # heroku run honcho run python manage.py update --app uguru-rest
 # heroku run honcho run python manage.py init_test_devices --app uguru-rest
-# # heroku restart --app uguru-rest
-# # heroku run honcho run python manage.py init_admin --app uguru-rest
+# heroku restart --app uguru-rest
+# heroku run honcho run python manage.py init_admin --app uguru-rest

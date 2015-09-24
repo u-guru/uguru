@@ -124,6 +124,12 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 		}
 	}
 	function checkUpdates() {
+
+    // don't update on local
+    if (LOCAL) {
+      return;
+    }
+
 	   Version.getUpdatedVersionNum().then(
           //if user gets the right version
           function(response) {

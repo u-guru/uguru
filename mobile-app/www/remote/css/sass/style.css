@@ -34,7 +34,6 @@ section {
 
 .uguru-view * {
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important; }
-
 .uguru-view #main-menu {
   position: fixed;
   bottom: 0;
@@ -80,14 +79,12 @@ section {
         width: 32px;
         height: 32px;
         background: rgba(255, 255, 255, 0.2); }
-
 .uguru-view h1.verified span svg {
   display: inline !important;
   width: 20px;
   height: 20px; }
   .uguru-view h1.verified span svg path:first-child {
     fill: #50A5DD; }
-
 .uguru-view .start#how header {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -107,14 +104,11 @@ section {
     font-size: 32px;
     font-weight: 600;
     text-transform: uppercase; }
-
 .uguru-view .start#how button {
   bottom: 0;
   background: rgba(255, 255, 255, 0.1); }
-
 .uguru-view .start#how button:active {
   background: rgba(255, 255, 255, 0.4); }
-
 .uguru-view .start#how #how-cards {
   list-style: none;
   margin: 0;
@@ -192,12 +186,10 @@ section {
       background: #50A5DD; }
     .uguru-view .start#how #how-cards .how-card:nth-child(7) .how-card-media {
       background: #9A5BC5; }
-
 .uguru-view .onboarding .onboarding-search {
   box-sizing: border-box; }
   .uguru-view .onboarding .onboarding-search input {
     width: calc(100% - 20px); }
-
 .uguru-view .onboarding progress, .uguru-view .onboarding .progress {
   position: absolute;
   top: 0;
@@ -216,24 +208,18 @@ section {
     width: 95%; }
   .uguru-view .onboarding progress span[data-value="99"], .uguru-view .onboarding .progress span[data-value="99"] {
     width: 86%; }
-
 .uguru-view .onboarding header h1 {
   text-align: center; }
-
 .uguru-view .onboarding .onboarding-list {
   height: calc(100% / 3 * 2);
   overflow: auto; }
-
 .uguru-view .onboarding#demographic header:before {
   background: url(../images/school.jpg) no-repeat center center/cover; }
-
 .uguru-view .onboarding#demographic header h1 {
   font-size: 24px; }
-
 .uguru-view .onboarding#demographic #demographic-grid > ul > li:not(.active) {
   filter: alpha(opacity=30);
   opacity: 0.3; }
-
 .uguru-view .onboarding#demographic #demographic-grid ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -371,7 +357,6 @@ section {
         border-color: rgba(80, 165, 221, 0.1); }
       .uguru-view .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:active, .uguru-view .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:focus, .uguru-view .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:hover {
         background: rgba(80, 165, 221, 0.05); }
-
 .uguru-view .onboarding#start {
   background: #40484B; }
   .uguru-view .onboarding#start #start-container {
@@ -386,7 +371,6 @@ section {
     color: #69B3A5;
     font-size: 28px;
     text-align: center; }
-
 .uguru-view .onboarding#account #account-form {
   box-sizing: border-box;
   padding: 15px; }
@@ -408,16 +392,13 @@ section {
   .uguru-view .onboarding#account #account-form #social-login {
     margin-top: 30px;
     margin-bottom: 20px; }
-
 .uguru-view .request#request header:before {
   background: url(../images/school.jpg) no-repeat center center/cover; }
-
 .uguru-view .request#request header .request-header h1 {
   padding-top: 20px;
   width: 100%;
   text-align: center;
   font-size: 24px; }
-
 .uguru-view .request#request header .request-header .request-icon {
   border-radius: 1000px;
   -ms-box-orient: horizontal;
@@ -453,10 +434,8 @@ section {
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg); }
-
 .uguru-view .request#request #request-content {
   height: calc(100% / 3 * 2); }
-
 .uguru-view .request#request #request-list {
   height: calc(100% - 64px);
   overflow: auto; }
@@ -477,7 +456,6 @@ section {
       width: 50px;
       height: 50px;
       background: #8A9EA3; }
-
 .uguru-view .request #request-tabs ul {
   list-style: none;
   margin: 0;
@@ -548,7 +526,6 @@ section {
       color: #2B3234;
       font-size: 12px;
       line-height: 20px; }
-
 .uguru-view #profile {
   font-size: 18px; }
   .uguru-view #profile #profile-fixed {
@@ -838,11 +815,9 @@ section {
           padding: 10px 15px;
           width: 100%;
           font-weight: 600; }
-
 @media screen and (min-height: 600px) {
   .uguru-view .request#request-empty #request-message > div > div svg {
     max-height: 150px; } }
-
 @media screen and (max-width: 320px) {
   .uguru-view body, .uguru-view input, .uguru-view button {
     font-size: 20px; }
@@ -1001,10 +976,8 @@ section {
 .home-view button.active, .home-view button.activated {
   filter: alpha(opacity=50);
   opacity: 0.5; }
-
 .home-view #request-content {
   height: calc(100% - 50px - 64px); }
-
 .home-view #request-message {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1324,7 +1297,6 @@ section {
 
 .credibility-view header {
   position: relative; }
-
 .credibility-view #credit-slider {
   position: absolute;
   bottom: 0;
@@ -1447,7 +1419,6 @@ section {
       color: #50A5DD; }
       .credibility-view #credit-slider ul #credit-email a:active .credit-icon, .credibility-view #credit-slider ul #credit-email a:focus .credit-icon, .credibility-view #credit-slider ul #credit-email a:hover .credit-icon {
         background: #50A5DD; }
-
 .credibility-view #credibility-content-wrapper {
   position: relative;
   background: #40484B;
@@ -1619,13 +1590,11 @@ section {
 
 .uguru-popup.sidebar-popup .uguru-popup-content {
   margin-top: 60px; }
-
 .uguru-popup.sidebar-popup .guru-logo-container div.svg-logo-wrapper {
   padding-top: 15px; }
   .uguru-popup.sidebar-popup .guru-logo-container div.svg-logo-wrapper svg {
     max-width: 100px;
     max-height: 100px; }
-
 .uguru-popup.sidebar-popup input {
   font-size: 16px;
   text-align: center;
@@ -1719,34 +1688,26 @@ section {
       width: 100%;
       height: 100%;
       background: url(../../img/school.jpg) center center/cover; } }
-
 .menu-guru .list {
   background: #40484B; }
-
 .menu-guru .list-item.active, .menu-guru .list-item.activated {
   background: #8A9EA3; }
-
 .menu-guru .list-item .list-item-icon svg path, .menu-guru .list-item .list-item-icon svg circle {
   stroke: #fff; }
-
 .menu-guru .list-item-profile {
   background: rgba(138, 158, 163, 0.75); }
-
 .menu-guru .list-item-agenda {
   background: white;
   color: #2B3234; }
   .menu-guru .list-item-agenda.active, .menu-guru .list-item-agenda.activated {
     background: rgba(255, 255, 255, 0.9); }
-
 .menu-guru .list-item-guru {
   display: none; }
-
 .menu-guru .list-item-student {
   background: rgba(138, 158, 163, 0.75); }
 
 .menu-student .list {
   background: white; }
-
 .menu-student .list-item {
   color: #40484B; }
   .menu-student .list-item .list-item-icon svg path {
@@ -1756,25 +1717,21 @@ section {
     color: white; }
     .menu-student .list-item.activated svg path, .menu-student .list-item.active svg path {
       stroke: white; }
-
 .menu-student .list-item-profile {
   background: #55A4B7;
   color: white; }
   .menu-student .list-item-profile .list-item-icon svg circle {
     stroke: white; }
-
 .menu-student .list-item-agenda {
   background: #40484B;
   color: white; }
   .menu-student .list-item-agenda:active, .menu-student .list-item-agenda:hover {
     background: rgba(64, 72, 75, 0.9); }
-
 .menu-student .list-item-student {
   background: #40484B;
   color: white; }
   .menu-student .list-item-student svg path {
     stroke: white; }
-
 .menu-student .list-item-guru {
   background: #55A4B7;
   color: white; }
@@ -1783,7 +1740,6 @@ section {
 
 .guru-view header:before {
   background: url(../../img/onboarding/school.jpg) no-repeat center center/cover; }
-
 .guru-view #guru-ranking {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1875,7 +1831,6 @@ section {
     .guru-view #guru-ranking #guru-stats progress, .guru-view #guru-ranking #guru-stats .progress {
       vertical-align: top;
       width: 100%; }
-
 .guru-view .tip-container p {
   font-size: 18px; }
 
@@ -1886,7 +1841,6 @@ section {
     -ms-transform: none;
     -o-transform: none;
     transform: none; } }
-
 .tabs {
   border: 0; }
 
@@ -1911,7 +1865,6 @@ input[type=text].input-outline {
   color: white;
   font-size: 24px;
   font-weight: 300; }
-
 input[type=text].input-outline:active, input[type=text].input-outline:focus {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.2); }
@@ -1940,3 +1893,5 @@ button.disabled {
 .stats-large {
   font-size: 36px;
   font-weight: 700; }
+
+/*# sourceMappingURL=style.css.map */

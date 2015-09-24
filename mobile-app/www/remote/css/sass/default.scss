@@ -1906,43 +1906,43 @@ progress, [class*="progress"]:not(.progress-circle) {
 	color: white;
 }
 
-.chart {
-	.bg {
-		@include opacity(.3);
-	}
-	.chart-percent circle {
-		@include opacity(0);
-	    -webkit-transform-origin: center center;
-	    -moz-transform-origin: center center;
-	    -ms-transform-origin: center center;
-	    -o-transform-origin: center center;
-	    transform-origin: center center;
-		stroke-dasharray: 3px, 380px;
-		stroke-linecap: round;
-	}
-	circle {
-		cx: 60px;
-		cy: 60px;
-		r: 60px;
-	}
-}
+// .chart {
+// 	.bg {
+// 		@include opacity(.3);
+// 	}
+// 	.chart-percent circle {
+// 		@include opacity(0);
+// 	    -webkit-transform-origin: center center;
+// 	    -moz-transform-origin: center center;
+// 	    -ms-transform-origin: center center;
+// 	    -o-transform-origin: center center;
+// 	    transform-origin: center center;
+// 		stroke-dasharray: 3px, 380px;
+// 		stroke-linecap: round;
+// 	}
+// 	circle {
+// 		cx: 60px;
+// 		cy: 60px;
+// 		r: 60px;
+// 	}
+// }
 
-.chart-percent {
-	@for $j from 1 through 100 {
-		circle:nth-child(#{$j}) {
-			@include rotate((360/100*$j));
-		}
-	}
-}
+// .chart-percent {
+// 	@for $j from 1 through 100 {
+// 		circle:nth-child(#{$j}) {
+// 			@include rotate((360/100*$j));
+// 		}
+// 	}
+// }
 
-@for $p from 1 through 100 {
-	.chart[data-value="#{$p}"] {
-		.chart-percent {
-			@for $j from 1 through $p {
-				circle:nth-child(#{$j}) {
-					@include opacity(1);
-				}
-			}
-		}
-	}
-}
+// @for $p from 1 through 100 {
+// 	.chart[data-value="#{$p}"] {
+// 		.chart-percent {
+// 			@for $j from 1 through $p {
+// 				circle:nth-child(#{$j}) {
+// 					@include opacity(1);
+// 				}
+// 			}
+// 		}
+// 	}
+// }

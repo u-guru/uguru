@@ -16,11 +16,6 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 		readyDevice: readyDevice,
 		getDevice: getDevice,
     getPlatform: getPlatform,
-<<<<<<< HEAD
-		isMobile: isMobile,
-		isWeb: isWeb,
-    ios: iOSService,
-=======
     getModel: getModel,
     getVersion: getVersion,
     getUUID: getUUID,
@@ -28,7 +23,6 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 		isWeb: isWeb,
     ios: iOSService,
     getInfo: getInfo
->>>>>>> samir-dev
 	}
 
 	function isMobile() {
@@ -48,8 +42,6 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
     console.log("getPlatform() returns: " + ionic.Platform.platform());
     return ionic.Platform.platform();
   }
-<<<<<<< HEAD
-=======
 
   function getUUID() {
     console.log("getUUID() returns: " + ionic.Platform.device().uuid);
@@ -75,7 +67,6 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
   console.log("Device info: " + info);
     return info;
   }
->>>>>>> samir-dev
 
 	function readyDevice(callback) {
 		document.addEventListener("deviceready", onDeviceReady);
@@ -133,6 +124,12 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 		}
 	}
 	function checkUpdates() {
+
+    // don't update on local
+    if (LOCAL) {
+      return;
+    }
+
 	   Version.getUpdatedVersionNum().then(
           //if user gets the right version
           function(response) {
