@@ -1716,10 +1716,11 @@ section {
     .credibility-view #credit-slider ul li {
       font-size: 14px;
       font-weight: 400;
+      width: 100%;
       text-align: center; }
       .credibility-view #credit-slider ul li a {
         display: block;
-        width: calc(320px / 3);
+        width: calc(320px /3 - 15px);
         padding-bottom: 10px;
         border-bottom: 5px solid transparent;
         color: white; }
@@ -1915,6 +1916,9 @@ section {
     -ms-transform: scale(0.8);
     -o-transform: scale(0.8);
     transform: scale(0.8); }
+  .guru-view #guru-ranking .progressbar-text {
+    background-color: transparent;
+    display: none; }
   .guru-view #guru-ranking #guru-chart {
     position: relative;
     width: 130px; }

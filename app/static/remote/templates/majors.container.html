@@ -1,5 +1,5 @@
     <section id="major" class="onboarding charcoal-bg">
-        <header class="third flex-center-wrap">
+        <header class="third flex-center-wrap" ng-if='!guruMajorModal.isShown();'>
             <h1 class="text-center">Select your major</h1>
             <div class="header-nav">
                 <a class="header-nav-back" ng-click='goBackToStudentHome()'>
@@ -15,12 +15,23 @@
                     </svg>
                 </a>
             </div>
-      <div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
-        <input type="search" placeholder="My major is..."
-        ng-model="search_text"
-        ng-keyup="query(search_text)"/>
-      </div>
-        </header>
+          <div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
+            <input type="search" placeholder="My major is..."
+            ng-model="search_text"
+            ng-keyup="query(search_text)"/>
+          </div>
+      </header>
+      <header ng-if='guruMajorModal.isShown();' class='third flex-center'>
+        <h1 class="text-center">Edit Majors</h1>
+        <a class="header-nav-back left-0 absolute p10xy top-0" ng-click='guruMajorModal.hide()'>
+          <i class='icon ion-chevron-down'> </i>
+        </a>
+          <div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
+            <input type="search" placeholder="My major is..."
+            ng-model="search_text"
+            ng-keyup="query(search_text)"/>
+          </div>
+      </header>
       <div id="major-list" buffered-scroll='increaseLimit()' class="onboarding-list" ng-init='limit = 10'>
         <ul class="list list-item-border no-icon">
           <li ng-if="search_text.length === 0 && user.majors.length > 0" class="major-item selected" ng-repeat='major in user.majors'>

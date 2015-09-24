@@ -1739,10 +1739,11 @@ section {
 			li {
 				font-size: 14px;
 				font-weight: 400;
+				width:100%;
 				text-align: center;
 				a {
 					display: block;
-					width: calc(320px / 3);
+					    width: calc(320px /3 - 15px);
 					padding-bottom: 10px;
 					border-bottom: 5px solid transparent;
 					color: white;
@@ -1960,9 +1961,16 @@ section {
 			-o-transform: scale(.8);
 			transform: scale(.8);
 		}
+		.progressbar-text {
+			background-color:transparent;
+			display:none;
+		}
 		#guru-chart {
 			position: relative;
 			width: 130px;
+
+
+
 			#percentile {
 				@include center-xy;
 				margin-top: -5px;
@@ -1972,6 +1980,7 @@ section {
 					font-weight: 600;
 					line-height: 1;
 					text-align: center;
+
 					&:after {
 						content: "th";
 						display: block;
