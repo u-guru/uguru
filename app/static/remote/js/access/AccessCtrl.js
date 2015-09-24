@@ -41,54 +41,65 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     errorInputMsg: null,
   };
 
-  $scope.focusInput = function() {
-
-    console.log('input is focused');
-
-  }
-
-
   $scope.checkAccessCode = function(code) {
-    if(AccessService.validate(code)){
 
-      LoadingService.show(0, 550, 'Access Granted');
+    if ($scope.keyboardExists && !$scope.redeemRecentlyPressed) {
+      $scope.redeemRecentlyPressed = true;
+      $timeout(function() {
+        $scope.redeemRecentlyPressed = false;
+      }, 500)
+    }
+
+    if(AccessService.validate(code)){
+      $scope.loader.show();
       $scope.access.codeInput = '';
       //accessInput.removeEventListener('keyup', submitListener);
 
-
+      $scope.redeemRecentlyPressed = false;
       if ($scope.platform.mobile) {
         cordova.plugins.Keyboard.close();
       }
 
       $timeout(function() {
-        // $ionicSlideBoxDelegate.enableSlide(true);
-
-
-        $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
-      }, 1000);
+        $scope.loader.hide();
+        LoadingService.show(0, 1500, 'Access Granted');
+        $timeout(function() {
+          $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
+        }, 1000);
+      }, 1500)
 
     } else {
+      Velocity(document.getElementById('input-error-text'), {opacity:1});
       $scope.access.errorInputMsg = 'Incorrect access code';
+      Velocity(accessInput, "callout.shake", function() {
+        accessInput.value = '';
+        setTimeout(function() {
+          Velocity(document.getElementById('input-error-text'), "fadeOut", {duration:1000});
+        }, 500)
+      });
+      //
+
     }
   };
 
   $scope.accessInputOnFocus = function() {
-    if (DeviceService.isMobile()) {
+
+    if (DeviceService.isMobile() && !$scope.redeemRecentlyPressed) {
       // cordova.plugins.Keyboard.disableScroll(false);
       Velocity(
         document.querySelector('#access-logo svg'),
         {
-          scale:0.66,
-          translateY:"-33%"
+          scale:0.5,
+          translateY:"-55%"
         },
-        {duration:500},
+        {duration:400},
         "easeInSine"
       );
 
       Velocity(
-        document.querySelector('#access-code-bar'),
-        {translateY:"-120px"},
-        {duration:500},
+        document.querySelector('#access-code'),
+        {translateY:"-170px"},
+        {duration:250},
         "ease-in-out"
       );
     }
@@ -128,6 +139,13 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   }
 
   function keyboardHideHandler(e) {
+    if ($scope.keyboardExists && $scope.redeemRecentlyPressed) {
+      console.log('keyboardHideHandler prevented');
+      $timeout(function () {
+        accessInput.focus();
+      });
+      return;
+    }
     accessInput.blur();
     redeemButton.style.visibility = 'visible';
     $scope.accessInputOnBlur();
@@ -136,7 +154,8 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
 
   function keyboardShowHandler(e){
-      if (DeviceService.isMobile()) {
+      if (DeviceService.isMobile() && !$scope.redeemRecentlyPressed) {
+        $scope.keyboardExists = true;
         $scope.keyboardHeight = e.keyboardHeight;
         Velocity(
           document.querySelector('#redeem-button'),
@@ -151,7 +170,12 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       }
   }
 
-  $scope.accessInputOnBlur = function() {
+  $scope.accessInputOnBlur = function(e) {
+    if ($scope.keyboardExists && $scope.redeemRecentlyPressed) {
+      console.log('access Input on Blur prevented');
+      return;
+    }
+
     if (DeviceService.isMobile()) {
       Velocity(
             document.querySelector('#access-logo svg'),
@@ -161,8 +185,8 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
           );
 
       Velocity(
-        document.querySelector('#access-code-bar'),
-        {translateY:"25px"},
+        document.querySelector('#access-code'),
+        {translateY:"0"},
         {duration:500},
         "easeInSine"
       );

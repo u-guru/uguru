@@ -259,6 +259,12 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 .hide {
   display: none !important; }
 
+.hide-opacity {
+  opacity: 0; }
+
+.show-opacity {
+  opacity: 1; }
+
 .absolute {
   position: absolute !important; }
 
@@ -368,6 +374,10 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 .flex-column {
   -webkit-flex-direction: column;
   flex-direction: column; }
+
+.flex-column-impt {
+  -webkit-flex-direction: column !important;
+  flex-direction: column !important; }
 
 .text-left {
   text-align: left; }
