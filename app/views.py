@@ -622,7 +622,11 @@ def windows_app():
 @app.route('/app/production/')
 @app.route('/app/')
 def app_route():
-    version = Version.query.get(1).ios
+    version = Version.query.get(1)
+    if version and version.ios:
+        version = version.ios
+    else:
+        version = 1
     print '\n\n\n\n\nrequest headers'
     print request.headers, type(request.headers)
     if 'iPad' in str(request.headers) and 'Safari' in str(request.headers):
