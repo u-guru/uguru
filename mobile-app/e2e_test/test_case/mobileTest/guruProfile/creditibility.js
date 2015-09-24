@@ -59,7 +59,7 @@ describe('Guru Home Test', function () {
 	{	
 		var groupName  = ['TRANSCRIPT','FACEBOOK','PHONE','EMAIL','EXPERIENCE']
 		var groupButton = ['transcript','Facebook','number','Email','Item']
-		for(var i = 0 ; i < 5 ; ++ i)
+		for(var i = 4; i < 5 ; ++ i)
 		{
 			(function(index,title,buttonName)
 			{
@@ -90,7 +90,7 @@ describe('Guru Home Test', function () {
 							{
 								element.all(by.css('#credibility-content-wrapper button')).then(function (items) {
 									expect(items[index].getText()).toContain(buttonName);
-									//items[index].click();
+									items[index].click();
 								});
 							});
 				   		
@@ -101,12 +101,17 @@ describe('Guru Home Test', function () {
 			   		  		    	{
 			   		  		    		it('Upload a large Photo',function()
 			   		  		    		{
-			   		  		    			expect(true).toBe(false,"Not Completed Yet");
+			   		  		    			// expect(true).toBe(false,"Not Completed Yet");
+			   		  		    			doc.uploadPhoto("file-input-guru-add-transcript","large");
+			   		  		    			doc.checkMsg("Saved!");
+
 			   		  		    		});
 			   		  		    		it('upload a small Photo',function()
 			   		  		    		{
-			   		  		    			expect(true).toBe(false,"Not Completed Yet");
-			   		  		    			// doc.uploadPhoto();
+			   		  		    			// expect(true).toBe(false,"Not Completed Yet");
+			   		  		    			doc.uploadPhoto("file-input-guru-add-transcript","small");
+			   		  		    			doc.checkMsg("Saved!");
+
 			   		  		    		});
 
 			   		  		    	});
@@ -116,9 +121,9 @@ describe('Guru Home Test', function () {
 				   		  		    {
 				   		  		    	it('Login Facebook',function()
 				   		  		    	{
-				   		  		    		expect(true).toBe(false,"Not Completed Yet");
-											// doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
-
+				   		  		    		// expect(true).toBe(false,"Not Completed Yet");
+											doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+											doc.checkMsg("Saved!");
 				   		  		    	});
 				   		  		    });
 			   		  		        break;
@@ -127,108 +132,121 @@ describe('Guru Home Test', function () {
 	  	           		  		    {
 	  	           		  		    	it('Enter Empty Number',function()
 	  	           		  		    	{
-	  	           		  		    		expect(true).toBe(false,"Not Completed Yet");
-	  	        							// doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+				   		  	        	    doc.openWrapper('asdff');
 
 	  	           		  		    	});
 	  	           		  		    	it('Enter Number : asdff',function()
 	  	           		  		    	{
-	  	           		  		    		expect(true).toBe(false,"Not Completed Yet");
-	  	        							// doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+				   		  	       			doc.openWrapper('');
 
 	  	           		  		    	});
 	  	           		  		    	it('Enter Number : 123456789',function()
 	  	           		  		    	{
-	  	           		  		    		expect(true).toBe(false,"Not Completed Yet");
-	  	        							// doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+											 doc.openWrapper('123456789')
+											 doc.checkMsg('Saved!');
 
 	  	           		  		    	});
 	  	           		  		    });
-				   		  	        // doc.openWrapper('asdff');
-				   		  	        // doc.openWrapper('');
-			   		  	        	// doc.openWrapper('123456789')
 			   		  	       		break;
 			   		  		    case 3:
 	  		       		  		    describe('Email Test',function()
 	  		       		  		    {
 	  		       		  		   	    it('Enter Empty Email',function()
 	  	           		  		    	{
-	  	           		  		    		expect(true).toBe(false,"Not Completed Yet");
-	  	        							// doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+	  	           		  		    		// expect(true).toBe(false,"Not Completed Yet");
+		    	   		  	        		doc.openWrapper('asdff');
 
 	  	           		  		    	});
 	  	           		  		    	it('Enter Email : asdff',function()
 	  	           		  		    	{
-	  	           		  		    		expect(true).toBe(false,"Not Completed Yet");
-	  	        							// doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+	  	           		  		    		// expect(true).toBe(false,"Not Completed Yet");
+		    	   		  	        		doc.openWrapper('');
 
 	  	           		  		    	});
 	  	           		  		    	it('Enter Email : 123456789',function()
 	  	           		  		    	{
-	  	           		  		    		expect(true).toBe(false,"Not Completed Yet");
-	  	        							// doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+	  	           		  		    		// expect(true).toBe(false,"Not Completed Yet");
+		       		  	        			doc.openWrapper('123456789')
 
 	  	           		  		    	});
 
   	           		  		    		it('Enter Email : 123456789',function()
 	  	           		  		    	{
-	  	           		  		    		expect(true).toBe(false,"Not Completed Yet");
-	  	        							// doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
-
+	  	           		  		    		// expect(true).toBe(false,"Not Completed Yet");
+		       		  	        			 doc.openWrapper('jason@sjsu.edu');
+		       		  	        			 doc.checkMsg('Saved!');
 	  	           		  		    	});
 	  		       		  		    });
-		    	   		  	        // doc.openWrapper('asdff');
-		    	   		  	        // doc.openWrapper('');
-		       		  	        	// doc.openWrapper('123456789')
-		       		  	        	// doc.openWrapper('jason@sjsu.edu');
 			   		  		    	break;
 			   		  		    case 4:
 	  		       		  		    describe('EXPERIENCE Test',function()
 	  		       		  		    {
 	  		       		  		    	it('Check Title is Correct',function()
 	  		       		  		    	{
-	  		       		  		    		expect(element(by.css('.modal-backdrop.active h1')).getText()).toBe("GURU EXPERIENCE","Wrong Page Title");
+	  		       		  		    		expect(element.all(by.css('.modal-backdrop.active h1')).last().getText()).toBe("GURU EXPERIENCES","Wrong Page Title");
 	  		       		  		    	});
 
 	  		       		  		    	it('Empty EXPERIENCE info',function()
 	  		       		  		    	{
-	  		       		  		    		expect(true).toBe(false,"Not Completed Yet");
+	  		       		  		    		// expect(true).toBe(false,"Not Completed Yet");
 	  		    							// doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+	  		    							element(by.css('.modal-backdrop.active button')).click()
+	  		    							doc.checkMsg('Please enter in all fields');
 	  		       		  		    	});
+
 	  		       		  		    	describe('Valid EXPERIENCE INFO',function()
 	  		       		  		    	{
   		    		   		  		    	it('Title info',function()
   		    		   		  		    	{
-  		    		   		  		    		expect(true).toBe(false,"Not Completed Yet");
+  		    		   		  		    		// expect(true).toBe(false,"Not Completed Yet");
   		    									// doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+  		    									element(by.css('.modal-backdrop.active input')).sendKeys("Guru Guy");
   		    		   		  		    	});
-	  		    	   		  		    	it('Year of Experience',function()
+	  		    	   		  		    	it('[No Working For now] Year of Experience',function()
 	  		    	   		  		    	{
-	  		    	   		  		    		expect(true).toBe(false,"Not Completed Yet");
+	  		    	   		  		    		// expect(true).toBe(false,"Not Completed Yet");
 	  		    								// doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+	  		    					
+  		    								    browser.actions()
+  		    								    	.mouseDown(element(by.css('.modal-backdrop.active input')))
+		    								        .mouseMove({x: 100, y: 0}) // try different value of x
+		    								        .mouseUp()
+		    								        .perform();
+  		    								    // dragAndDrop(element(by.css('.modal-backdrop.active input')), {x: 200, y: 0}).
+  		    								    // perform();
 	  		    	   		  		    	});
 	  		    	   		  		    	it('Role Description',function()
 	  		    	   		  		    	{
-	  		    	   		  		    		expect(true).toBe(false,"Not Completed Yet");
-	  		    								// doc.connectFB("jason_dhcxgww_huang@tfbnw.net","jasonhuang1");
+	  		    	   		  		    		//expect(true).toBe(false,"Not Completed Yet");
+	  		    								element.all(by.css('.input-outline')).last().sendKeys("TEST TEST");
+
+	  		    	   		  		    	});
+	  		    	   		  		    	it('Save info',function()
+	  		    	   		  		    	{
+	  		    								element(by.css('.modal-backdrop.active button')).click()
+	  		    								doc.checkMsg('Saved');
 	  		    	   		  		    	});
 	  		       		  		    	});
 	  		       		  		  
-	  		       		  		    	describe('check Modal-back drop increased',function()
+	  		       		  		    	describe('[Incompleted]check Modal-back drop increased',function()
 	  		       		  		    	{
 	  		       		  		    		for(var e = 0 ; e< 5 ; ++ e)
 	  		       		  		    		{
 		  		       		  		    		it("Open",function(){
-		  		       		  		    			expect(true).toBe(false,"Not Completed Yet");
+		  		       		  		    			element.all(by.css('#credibility-content-wrapper button')).then(function (items) {
+		  		       		  		    				items[index].click();
+		  		       		  		    			});
 
 		  		       		  		    		});
 			  		       		  		    	it("closed",function(){
-			  		       		  		    		expect(true).toBe(false,"Not Completed Yet");
-
+			  		       		  		    		element(by.css('.modal-backdrop.active .header-nav-next')).click()
 			  		       		  		    	});
 		  		       		  		    	}
 			  		       		  		    it("Check CLASS : Modal-back should not increased",function(){
-			  		       		  		    	expect(true).toBe(false,"Not Completed Yet");
+			  		       		  		    	element.all(by.css('.modal-backdrop.hide')).then(function(items)
+			  		       		  		    	{
+			  		       		  		    		expect(items.length).toBe(1,"Elemet : Modal-back keep inscreasing");
+			  		       		  		    	})
 
 			  		       		  		    });
 	  		       		  		    	})
