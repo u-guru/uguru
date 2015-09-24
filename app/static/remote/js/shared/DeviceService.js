@@ -83,7 +83,7 @@ function DeviceService( $cordovaNgCardIO,
             $timeout(function() {
               console.log('Hiding splashscreen @:', calcTimeSinceInit(), 'seconds');
               navigator.splashscreen.hide();
-            }, 1000)
+            }, 2000);
           }
         })
 
