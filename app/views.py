@@ -227,10 +227,13 @@ def admin_investors_biz_model():
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.investors.business-model.html")
 
-
 ###################
 ## END Investors ##
 ###################
+
+@app.route('/style/')
+def uguru_style_guide():
+    return redirect('/static/style/index.html')
 
 @app.route('/admin/campaigns/')
 def admin_view_campaigns():
