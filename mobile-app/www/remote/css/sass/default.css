@@ -1028,7 +1028,7 @@ button {
   display: block;
   width: 100%;
   border: 0;
-  border-bottom: 1px solid rgba(43, 50, 52, 0.5);
+  border-bottom: 1px solid rgba(43, 50, 52, 0.5) !important;
   border-radius: 0;
   padding-bottom: 5px;
   background: none;
@@ -1044,7 +1044,7 @@ button {
 
 .input-ghost-dark:active, .input-ghost-dark:focus {
   color: #2B3234;
-  border-bottom-color: #2B3234; }
+  border-bottom-color: #2B3234 !important; }
   .input-ghost-dark:active::-webkit-input-placeholder, .input-ghost-dark:focus::-webkit-input-placeholder {
     color: #2B3234; }
   .input-ghost-dark:active:-moz-placeholder, .input-ghost-dark:focus:-moz-placeholder {

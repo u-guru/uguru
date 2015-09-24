@@ -1191,7 +1191,7 @@ button {
 	display: block;
 	width: 100%;
 	border: 0;
-	border-bottom: 1px solid rgba($charcoal,.5);
+	border-bottom: 1px solid rgba($charcoal,.5)!important;
 	border-radius: 0;
 	padding-bottom: 5px;
 	background: none;
@@ -1211,7 +1211,7 @@ button {
 }
 .input-ghost-dark:active, .input-ghost-dark:focus {
 	color: $charcoal;
-	border-bottom-color: $charcoal;
+	border-bottom-color: $charcoal!important;
 	&::-webkit-input-placeholder {
 	   color: $charcoal;
 	}
