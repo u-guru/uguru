@@ -130,7 +130,7 @@ var global = function() {
     browser.wait(EC.presenceOf(newMsg),3000,"Can't Find Message : "+msg);
     newMsg.getAttribute('value').then(function(value)
     {
-      expect(value).toBe(msg);
+      expect(value).toContain(msg);
     }); 
   };
   /*************************************

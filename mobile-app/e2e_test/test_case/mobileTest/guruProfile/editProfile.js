@@ -103,55 +103,119 @@ describe('Guru Home Test', function () {
 			
 		});	
 		var str = ['course','major','skills','languages'];
-		for(var i = 0; i < 5 ; ++i)
+		for(var i = 0; i < 4; ++i)
 		{
 			(function(index,title)
 				{
 					describe(title,function()
 					{ 
-						var count = 0 ; // 2 cuz deafult values
-						var addButton;
+						var count = 1 ; // 2 cuz deafult values
+						var addButton   = element(by.css('#profile-'+title+ ' .default'));
+						var objList = element.all(by.css('#profile-'+title+ ' li'));
+						var pageTitle = element(by.css('#'+title+' h1'));
+						var pageSearch= element(by.css('#'+title+'input'));
+						var listName    = title+'-list';
+						var closeButton = element.all(by.css('#'+title+' .header-nav-back')).last();
+						var chooseList = element.all(by.repeater(title+' in user.'+title+'s'));
+					 	// var test = title+' in user.'+title+'s';
 						if(title =='course')
-							element(by.css('#profile-'+title+ 's .default'));
-						else
-							element(by.css('#profile-'+title+ ' h1'));
+						{
+							addButton = element(by.css('#profile-'+title+ 's .default'));
+							objList = element.all(by.css('#profile-'+title+'s li'));
+							listName =  title+'s-list';
+ 							chooseList = element.all(by.repeater(title+' in user.guru_'+title+'s'));
+ 							// test = title+' in user.guru_'+title+'s';
+						    //chooseList = element.all(by.css("#"+listName+' .'+'user.guru_'+title+'s li'));
 
+						}
 						describe("Standard Test",function()
 						{
-							it("check Page Title",function()
+							it("Open Page ",function()
 							{
 								// element(by.css('#profile-major li'));
 								addButton.click();
-								expect(element(by.css('#'+title+' h1')).getText()).toContain(title.toUpperCase());
 							});
-							it('check Search Bar',function()
+							it("check Page :"+ title,function()
 							{
-								expect(element(by.css('#'+title+'input')).isPresent()).toBe(true);
+								// element(by.css('#profile-'+title+ ' .default')).click()
+							    expect(pageTitle.getText()).toContain(title.toUpperCase());
 							});
-							it('add course',function()
+							it('[FIX BUGS] check Search Bar',function()
 							{
-								if(title =='course')
-									var tempstr = title+'s-list';
-								else
-									var tempstr = title+'-list'
+								// expect(element(by.css('#'+title+'input')).isPresent()).toBe(true);
+								expect(pageSearch.isPresent()).toBe(true);
+
+							});
+							it('Add '+ title,function()
+							{
 							    // doc.newPickList('courses-list',1);
-							    doc.newPickList('tempstr',1);
-							    ++ count
+							    for(var j = 1 ; j < 3; ++j)
+							    {
+							   		 doc.newPickList(listName,j);
+							   		 ++ count
+							    }
 							})
 							it('close',function()
 							{
-								element(by.css('#'+title+' .header-nav-back')).click()
+								// element(by.css('#'+title+' .header-nav-back')).click()
+								closeButton.click()
 							})
-							it('Count Course',function()
+							it('Count ' + title + ' list',function()
 							{
-								var courseList = element.all(by.css('#profile-'+title+ ' li'));
 								//expect(courseList.isPresent()).toBe(true);
-								courseList.then(function(items)
+								objList.then(function(items)
 								{
 									expect(items.length).toBe(count);
 								});
-								// browser.sleep(1000000);
 							});
+							describe('Delete Data from Edit Profile',function()
+							{
+								it('One Course from Edit Profile',function()
+								{
+									objList.then(function(items)
+									{
+
+										// for(var j = 0 ; j < items.length-1; ++j)
+										// {
+										    browser.wait(EC.elementToBeClickable(items[0]),3000);
+											items[0].click();
+										// }
+										expect(items.length-1).toBe(count-1,"Data Is Not Delted");
+									});
+								});
+							});
+							describe('Delete rest of Data from Select Page',function()
+							{
+								it('Open Page',function()
+								{
+									addButton.click();
+								});
+
+								it('Delete Select Data',function()
+								{
+										browser.sleep(1000);										      
+										chooseList.then(function (items) {
+											expect(items.length/2).toBe(2,"Something Wrong with the Data");
+											 for(j =items.length/2; j < items.length; ++ j)
+											 {
+											 	items[j].click();
+											 }
+									    });	
+								});
+								it("Close",function()
+								{
+									closeButton.click()
+								})
+								it("Confirm",function()
+								{
+									objList.then(function(items)
+									{
+										expect(items.length-1).toBe(0,"Data Is Not Delted");
+									});
+
+								})
+							});
+							
 						});
 						//incompelted
 						// describe("Add 15 course",function()
@@ -196,78 +260,6 @@ describe('Guru Home Test', function () {
 				})(i,str[i]);
 		}
 	
-		// describe('Major',function()
-		// { 
-		// 	var count = 0 ; // 2 cuz deafult values
-		// 	describe("Standard Test",function()
-		// 	{
-		// 		it("check Page Title",function()
-		// 		{
-		// 			major.click();
-		// 			expect(element(by.css('#major h1')).getText()).toContain("Major")
-		// 		});
-		// 		it('check Search Bar',function()
-		// 		{
-		// 			expect(element(by.css('#course input')).isPresent()).toBe(true);
-		// 		});
-		// 		it('add course',function()
-		// 		{
-		// 		    doc.newPickList('major-list',1);
-		// 		    ++ count
-		// 		})
-		// 		it('close',function()
-		// 		{
-		// 			element(by.css('#major .header-nav-back')).click()
-		// 		})
-		// 		it('Count Course',function()
-		// 		{
-		// 			var courseList = element.all(by.css('#profile-major li'));
-		// 			//expect(courseList.isPresent()).toBe(true);
-		// 			courseList.then(function(items)
-		// 			{
-		// 				expect(items.length).toBe(count);
-		// 			});
-		// 		});
-		// 	});
-			//incompelted
-			// describe("Add 15 course",function()
-			// {
-			// 	it("check Page Title",function()
-			// 	{
-			// 		browser.wait(EC.elementToBeClickable(course),3000)
-			// 		course.click();
-			// 		expect(element(by.css('#course h1')).getText()).toContain("ADD COURSES")
-			// 	});
-			// 	it('check Search Bar',function()
-			// 	{
-			// 		expect(element(by.css('#course input')).isDisplayed()).toBe(true);
-			// 	});
-			// 	for(var i = 0; i < 15; ++ i)
-			// 	{
-			// 		(function(index) 
-			// 			{
-			// 				it('#'+index+' add course',function()
-			// 				{
-			// 				    doc.newPickList('courses-list',index);
-			// 				    ++ count
-			// 				})
-			// 			})(i);
-			// 	}
-				
-			// 	it('close',function()
-			// 	{
-			// 		element(by.css('#course .header-nav-back')).click()
-			// 	})
-			// 	it('Count Course',function()
-			// 	{
-			// 		var courseList = element.all(by.css('#profile-courses li'));
-			// 		//expect(courseList.isPresent()).toBe(true);
-			// 		courseList.then(function(items)
-			// 		{
-			// 			expect(items.length).toBe(count);
-			// 		});
-			// 	});
-			// });
-		// });
+		
 	});
 });
