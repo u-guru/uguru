@@ -223,7 +223,7 @@ section {
 			}
 		}
 		header {
-			h1 {
+			h1:not(header .header-nav a h1) {
 				text-align: center;
 			}
 		}
@@ -403,34 +403,6 @@ section {
 				text-align: center;
 			}
 		}
-		&#account {
-			#account-form {
-				box-sizing: border-box;
-				padding: 15px;
-				input {
-					margin: 30px 0 15px;
-					font-size: 20px;
-				}
-				#tos {
-					display: block;
-					color: white;
-					font-size: 14px;
-					font-weight: 700;
-					letter-spacing: 1px;
-					line-height: 1;
-					text-align: center;
-					text-transform: uppercase;
-					opacity: 0.6;
-				}
-				#tos:active, #tos:focus {
-					color: $shamrock;
-				}
-				#social-login {
-					margin-top: 30px;
-					margin-bottom:20px;
-				}
-			}
-		}
 	}
 
 	.request {
@@ -456,6 +428,7 @@ section {
 						margin: 0 auto;
 						svg {
 							@include reset-pos;
+							@include rotate(45);
 							width: 30px;
 							height: 30px;
 							-webkit-transform: rotate(45deg);
@@ -544,290 +517,6 @@ section {
 		}
 	}
 
-	#profile {
-		font-size: 18px;
-		#profile-fixed {
-			position: fixed;
-			top: 0;
-			z-index: 9;
-			width: 100%;
-			height: 64px;
-			padding: 13px 0;
-			background: rgba($slate,.95);
-			#profile-fixed-inside {
-				@include flex;
-				@include flex-wrap;
-				@include flex-center;
-				#profile-fixed-icon {
-					@include flex;
-					@include flex-center;
-					img {
-						@include round;
-						width: 35px;
-						height: 35px;
-						border: 3px solid rgba(white,.5);
-					}
-				}
-				#profile-fixed-name {
-					padding-left: 10px;
-					h1 {
-						font-size: 24px;
-						line-height: 1;
-						text-transform: uppercase;
-						&.verified {
-							svg {
-								width: 16px;
-								height: 16px;
-							}
-						}
-					}
-					p {
-						margin: 0;
-						font-size: 14px;
-						font-weight: 400;
-						line-height: 1;
-					}
-				}
-			}
-		}
-		#profile-desc {
-			padding: 15px 0 0;
-			#profile-icon {
-				@include round;
-				display: block;
-				img {
-					@include round;
-					display: block;
-					margin: 0 auto;
-					width: 100%;
-					max-width: 100px;
-					padding: 5px;
-					background: rgba(white, .5);
-				}
-				svg {
-					display: block;
-					margin: 0 auto;
-					width: 120px;
-					height: 120px;
-				}
-			}
-			#profile-list {
-				text-align: center;
-				ul {
-					@include listless;
-					#profile-name {
-						h1 {
-							margin-top: 10px;
-							padding: 0 10px 3px;
-							line-height: 1;
-							text-transform: uppercase;
-							font-size: 28px;
-							color: white;
-							span:last-child {
-								svg {
-									display: none;
-								}
-							}
-						}
-					}
-					#profile-school {
-						font-size: 24px;
-						font-weight: 400;
-					}
-				}
-			}
-			#profile-bars {
-				#profile-rating {
-					@include listless;
-					@include flex;
-					@include flex-center;
-					width: 100%;
-					height: 75px;
-					padding: 20px;
-					margin: 15px 0;
-					background: rgba(white, .1);
-					font-size: 24px;
-					li {
-						width: 100%;
-						text-align: center;
-					}
-				}
-			}
-		}
-		#profile-info {
-			margin-top: -15px;
-			.profile-inside {
-				padding-bottom: 64px;
-				overflow: auto;
-				h1 {
-					background: rgba(white,.05);
-					color: white;
-				}
-				#profile-courses {
-					ul.courses {
-						@include listless;
-						@include flex;
-						@include flex-wrap;
-						text-align: center;
-						li {
-							padding: 10px 15px;
-							width: 50%;
-							font-weight: 600;
-							position:relative;
-						}
-						li:nth-child(1){
-							background: $lake;
-						}
-						li:nth-child(2){
-							background: $gold;
-						}
-						li:nth-child(3){
-							background: $azure;
-						}
-						li:nth-child(4){
-							background: $orange;
-						}
-						li:nth-child(5){
-							background: $shamrock;
-						}
-						li:nth-child(6){
-							background: $cerise;
-						}
-					}
-
-					ul.default {
-
-						@include listless;
-						@include flex;
-						@include flex-wrap;
-						text-align: center;
-						li {
-							padding: 10px 15px;
-							width: 100%;
-							font-weight: 600;
-						}
-					}
-				}
-				h1 {
-					padding: 10px;
-					font-size: 14px;
-					font-weight: 400;
-					letter-spacing: 2px;
-					text-align: center;
-					text-transform: uppercase;
-					color: white;
-				}
-				#profile-other {
-					> div {
-						background: $charcoal;
-						div {
-							background: rgba(255,255,255,.1);
-							ul {
-								@include listless;
-								@include flex;
-								@include flex-wrap;
-								text-align: center;
-								li {
-									padding: 10px 15px;
-									width: 50%;
-									font-weight: 600;
-								}
-							}
-						}
-					}
-					#profile-major, #profile-job {
-						div {
-							ul.majors {
-								li {
-									width: 100%;
-									font-weight: 200;
-									position:relative;
-								}
-							}
-
-							ul.default {
-
-								@include listless;
-								@include flex;
-								@include flex-wrap;
-								text-align: center;
-								li {
-									padding: 10px 15px;
-									width: 100%;
-									font-weight: 600;
-								}
-							}
-						}
-					}
-					#profile-skills {
-						div {
-							ul.skills {
-
-								li {
-									position:relative;
-								}
-
-								li:nth-child(1){
-									background: $lake;
-								}
-								li:nth-child(2){
-									background: $shamrock;
-								}
-								li:nth-child(3){
-									background: $azure;
-								}
-								li:nth-child(4){
-									background: $moola;
-								}
-							}
-
-							ul.default {
-
-								@include listless;
-								@include flex;
-								@include flex-wrap;
-								text-align: center;
-								li {
-									padding: 10px 15px;
-									width: 100%;
-									font-weight: 600;
-								}
-							}
-						}
-					}
-					#profile-languages {
-						div {
-							ul.languages {
-								li {
-									position:relative;
-								}
-								li:nth-child(1){
-									background: $cerise;
-								}
-								li:nth-child(2){
-									background: $orange;
-								}
-							}
-
-							ul.default {
-
-								@include listless;
-								@include flex;
-								@include flex-wrap;
-								text-align: center;
-								li {
-									padding: 10px 15px;
-									width: 100%;
-									font-weight: 600;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
 	@media screen and (min-height:600px) {
 		.request {
 			&#request-empty {
@@ -846,7 +535,7 @@ section {
 		body, input, button {
 			font-size: 20px;
 		}
-		.onboarding-message, .request-info h3 {
+		.request-info h3 {
 			font-size: 20px!important;
 		}
 		#start-container {
@@ -880,10 +569,6 @@ section {
 			}
 		}
 		.header-nav a {
-			svg {
-				height: 20px!important;
-				width: auto!important;
-			}
 			h1 {
 				font-size: 18px!important;
 				font-weight: 400!important;
@@ -898,6 +583,686 @@ section {
 			input {
 				margin-top: 20px!important;
 				font-size: 18px!important;
+			}
+		}
+	}
+}
+
+// ACCOUNT MODAL
+.signup-modal {
+	#account-form {
+		box-sizing: border-box;
+		padding: 15px;
+		input {
+			margin: 30px 0 15px;
+			font-size: 20px;
+		}
+		#tos {
+			display: block;
+			color: white;
+			font-size: 14px;
+			font-weight: 700;
+			letter-spacing: 1px;
+			line-height: 1;
+			text-align: center;
+			text-transform: uppercase;
+			opacity: 0.6;
+		}
+		#tos:active, #tos:focus {
+			color: $shamrock;
+		}
+		#social-login {
+			margin-top: 30px;
+			margin-bottom:20px;
+		}
+	}
+}
+
+// GURU PROFILE
+.guru-profile-view {
+	font-size: 18px;
+	#profile {
+		overflow-y: scroll;
+		height: calc(100% - 50px);
+	}
+	#btn-edit-profile, #btn-save-profile {
+		bottom: 50px!important;
+		width: 100%;
+	}
+	#btn-save-profile button {
+		width: 100%;
+	}
+	#profile-fixed {
+		position: fixed;
+		top: 0;
+		z-index: 9;
+		width: 100%;
+		height: 64px;
+		padding: 13px 0;
+		background: rgba($slate,.95);
+		#profile-fixed-inside {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			#profile-fixed-icon {
+				@include flex;
+				@include flex-center;
+				img {
+					@include round;
+					width: 35px;
+					height: 35px;
+					border: 3px solid rgba(white,.5);
+				}
+			}
+			#profile-fixed-name {
+				padding-left: 10px;
+				h1 {
+					font-size: 24px;
+					line-height: 1;
+					text-transform: uppercase;
+					&.verified {
+						svg {
+							width: 16px;
+							height: 16px;
+						}
+					}
+				}
+				p {
+					margin: 0;
+					font-size: 14px;
+					font-weight: 400;
+					line-height: 1;
+				}
+			}
+		}
+	}
+	#profile-desc {
+		padding: 15px 0;
+		#profile-icon {
+			@include round;
+			display: block;
+			img {
+				@include round;
+				display: block;
+				margin: 0 auto;
+				width: 100%;
+				max-width: 100px;
+				padding: 5px;
+				background: rgba(white, .5);
+			}
+			svg {
+				display: block;
+				margin: 0 auto;
+				width: 120px;
+				height: 120px;
+			}
+		}
+		#profile-list {
+			text-align: center;
+			ul {
+				@include listless;
+				#profile-name {
+					h1 {
+						margin-top: 10px;
+						padding: 0 10px 3px;
+						color: white;
+						font-size: 28px;
+						font-weight: 600;
+						line-height: 1;
+						text-transform: uppercase;
+						span:last-child {
+							svg {
+								display: none;
+							}
+						}
+					}
+				}
+				#profile-school {
+					margin-bottom: 3px;
+					font-size: 20px;
+					font-weight: 400;
+				}
+				#profile-loc {
+					font-size: 16px;
+					#profile-loc-city:not(:empty):after {
+						content: ", "
+					}
+				}
+			}
+		}
+		#profile-bars {
+			#profile-rating {
+				@include listless;
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				height: 75px;
+				padding: 20px;
+				margin: 15px 0;
+				background: rgba(white, .1);
+				font-size: 24px;
+				li {
+					width: 100%;
+					text-align: center;
+				}
+			}
+		}
+	}
+	#profile-info {
+		.profile-inside {
+			padding-bottom: 64px;
+			h1 {
+				background: rgba(white,.05);
+				color: white;
+			}
+			li {
+				position: relative;
+				a {
+					position: absolute;
+					right: 0;
+					top: 0;
+					svg {
+						@include rotate(45);
+						width: 35px;
+						height: 40px;
+						padding: 10px;
+						stroke: white;
+						stroke-width: 10;
+						stroke-linecap: round;
+						stroke-linejoin: round;
+					}
+				}
+			}
+			#profile-courses {
+				ul.courses {
+					@include listless;
+					@include flex;
+					@include flex-wrap;
+					text-align: center;
+					li {
+						padding: 10px 15px;
+						width: 50%;
+						font-weight: 600;
+						position:relative;
+					}
+					li:nth-child(1){
+						background: $lake;
+					}
+					li:nth-child(2){
+						background: $gold;
+					}
+					li:nth-child(3){
+						background: $azure;
+					}
+					li:nth-child(4){
+						background: $orange;
+					}
+					li:nth-child(5){
+						background: $shamrock;
+					}
+					li:nth-child(6){
+						background: $cerise;
+					}
+				}
+				ul.default {
+					@include listless;
+					@include flex;
+					@include flex-wrap;
+					text-align: center;
+					li {
+						padding: 10px 15px;
+						width: 100%;
+						font-weight: 600;
+					}
+				}
+			}
+			h1 {
+				padding: 10px;
+				font-size: 14px;
+				font-weight: 400;
+				letter-spacing: 2px;
+				text-align: center;
+				text-transform: uppercase;
+				color: white;
+			}
+			#profile-other {
+				> div {
+					background: $charcoal;
+					div {
+						ul {
+							@include listless;
+							@include flex;
+							@include flex-wrap;
+							text-align: center;
+							li {
+								padding: 10px 15px;
+								width: 50%;
+								font-weight: 600;
+							}
+						}
+					}
+				}
+				#profile-major, #profile-job {
+					div {
+						ul.majors {
+							li {
+								position: relative;
+								width: 100%;
+								font-weight: 200;
+								border-bottom: 1px solid rgba(white, .1);
+								&:last-child {
+									border-bottom: 0;
+								}
+							}
+						}
+						ul.default {
+							@include listless;
+							@include flex;
+							@include flex-wrap;
+							text-align: center;
+							li {
+								padding: 10px 15px;
+								width: 100%;
+								font-weight: 600;
+							}
+						}
+					}
+				}
+				#profile-skills {
+					div {
+						ul.skills {
+							li {
+								position:relative;
+							}
+							li:nth-child(1){
+								background: $lake;
+							}
+							li:nth-child(2){
+								background: $shamrock;
+							}
+							li:nth-child(3){
+								background: $azure;
+							}
+							li:nth-child(4){
+								background: $moola;
+							}
+						}
+						ul.default {
+							@include listless;
+							@include flex;
+							@include flex-wrap;
+							text-align: center;
+							li {
+								padding: 10px 15px;
+								width: 100%;
+								font-weight: 600;
+							}
+						}
+					}
+				}
+				#profile-languages {
+					div {
+						ul.languages {
+							li {
+								position:relative;
+							}
+							li:nth-child(1){
+								background: $cerise;
+							}
+							li:nth-child(2){
+								background: $orange;
+							}
+						}
+						ul.default {
+							@include listless;
+							@include flex;
+							@include flex-wrap;
+							text-align: center;
+							li {
+								padding: 10px 15px;
+								width: 100%;
+								font-weight: 600;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// ACTION SHEET
+.action-sheet-wrapper.action-sheet-up {
+	background: white;
+	.action-sheet-title {
+		@include flex;
+		@include flex-center;
+		padding: 0 10px;
+		font-size: inherit;
+		height: 50px;
+		span {
+			color: $azure;
+			font-size: 18px;
+			text-transform: none!important;
+		}
+	}
+	.action-sheet-group {
+		margin: 0!important;
+		button, div {
+			border: 0!important;
+			border-bottom: 1px solid $smoke!important;
+		}
+		button {
+			padding: 0 10px;
+			height: 50px;
+			color: $slate;
+			font-size: 16px;
+			font-weight: 600;
+		}
+		button:active {
+			background: $smoke;
+		}
+		&:last-child {
+			> *:last-child {
+				border-bottom: 0!important;
+			}
+		}
+	}
+}
+
+// MODAL POPUP
+.close-popup-link {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	width: 30px;
+	height: 30px;
+	svg {
+		@include rotate(45);
+		path {
+			stroke-width: 5px;
+		}
+	}
+}
+
+.uguru-popup {
+	@include opacity(0);
+	@include flex;
+	@include flex-center;
+	position: fixed;
+	z-index: 10;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba($charcoal, .8);
+	pointer-events: none;
+	transition: 250ms ease;
+	.uguru-popup-content {
+		@include transition(250ms ease);
+		position: relative;
+		margin: 0 15px;
+		z-index: 2;
+		width: 100%;
+		background: white;
+		border-radius: 5px;
+		color: $slate;
+		.content-wrapper {
+			position: relative;
+			padding: 60px 0 0;
+			text-align: center;
+			h2 {
+				color: $slate;
+				margin: 0 15px;
+				color: $charcoal;
+				font-weight: 700;
+				font-size: 20px;
+				text-transform: uppercase;
+			}
+			p {
+				color: $slate;
+				font-weight: 400;
+				font-size: 14px;
+				padding: 2px 15px 0;
+			}
+			button {
+				border-radius: 0 0 5px 5px;
+			}
+		}
+
+	}
+	.guru-logo-container {
+		@include flex;
+		@include flex-center;
+		position: absolute;
+		top: -50px;
+		z-index: 5;
+		width: 100%;
+		height: auto;
+		margin: 0 auto;
+		div.svg-logo-wrapper {
+			width: 100%;
+			height: auto;
+			text-align: center;
+			svg {
+				@include round;
+				max-width: 100px;
+				max-height: 100px;
+				background: $azure;
+				padding: 15px;
+				z-index: 3;
+				path {
+					fill: white;
+				}
+			}
+		}
+	}
+	&.show {
+		@include opacity(1);
+		@include flex;
+		visibility: visible;
+		pointer-events: auto;
+	}
+	input {
+		font-size: 16px;
+		text-align: center;
+		width: calc(100% - 30px);
+	}
+}
+
+// SIDEBAR
+#side-menu-left-overlay.active {
+	background: rgba($charcoal, .8);
+	width: 20%;
+	height: 100%;
+	z-index: 20;
+	position: absolute;
+	right: 0;
+}
+.side-menu-list {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 20;
+	.list {
+		height: 100%;
+	}
+	.list-item {
+		height: 64px;
+		font-size: 18px;
+		font-weight: 600;
+		text-transform: uppercase;
+		.list-item-icon {
+			height: 64px;
+			width: 64px;
+			img {
+				@include round;
+				width: 34px;
+				height: 34px;
+			}
+			svg {
+				padding: 15px;
+				width: auto;
+				path, circle {
+					stroke-width: 4px;
+					stroke-linecap: round;
+					stroke-linejoin: round;
+				}
+				circle {
+					stroke-dasharray: 3px, 10px;
+				}
+			}
+		}
+		.list-item-detail {
+			padding: 0 15px 0 0;
+			span {
+				white-space: nowrap;
+				overflow-x: hidden;
+				text-overflow: ellipsis;
+			}
+			.student-profile-name {
+				font-weight: 700;
+			}
+		}
+	}
+	.list-item-profile {
+		@include flex-wrap;
+		@include flex-center;
+		height: calc(100% - 384px);
+		.list-item-detail {
+			span {
+				display: block;
+			}
+			span:first-child {
+				font-size: 20px!important;
+			}
+			span:last-child {
+				font-size: 14px!important;
+			}
+		}
+	}
+	.list-item-agenda {
+		display: none;
+	}
+}
+
+@media screen and (min-height:540px) {
+	.side-menu-list {
+		.list-item-profile {
+			height: 84px;
+		}
+		.list-item-agenda {
+			@include flex;
+			position: relative;
+			height: calc(100% - 384px - 84px);
+			text-transform: none;
+			&:before {
+				@include opacity(.3);
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: url(../../img/school.jpg) center center / cover;
+			}
+		}
+	}
+}
+
+.menu-guru {
+	.list {
+		background: $slate;
+	}
+	.list-item {
+		&.active, &.activated {
+			background: $campus;
+		}
+		.list-item-icon {
+			svg {
+				path, circle {
+					stroke: #fff;
+				}
+			}
+		}
+	}
+	.list-item-profile {
+		background: rgba($campus, .75);
+	}
+	.list-item-agenda {
+		background: white;
+		color: $charcoal;
+		&.active, &.activated {
+			background: rgba(white, .9);
+		}
+	}
+	.list-item-guru {
+		display: none;
+	}
+	.list-item-student {
+		background: rgba($campus, .75);
+	}
+}
+.menu-student {
+	.list {
+		background: white;
+	}
+	.list-item {
+		color: $slate;
+		.list-item-icon {
+			svg {
+				path {
+					stroke: $slate;
+				}
+			}
+		}
+		&.activated, &.active {
+			background: rgba($azure, .75);
+			color: white;
+			svg {
+				path {
+					stroke: white;
+				}
+			}
+		}
+	}
+	.list-item-profile {
+		background: $azure;
+		color: white;
+		.list-item-icon {
+			svg {
+				circle {
+					stroke: white;
+				}
+			}
+		}
+	}
+	.list-item-agenda {
+		background: $slate;
+		color: white;
+		&:active, &:hover {
+			background: rgba($slate, .9);
+		}
+	}
+	.list-item-student {
+		background: $slate;
+		color: white;
+		svg {
+			path {
+				stroke: white;
+			}
+		}
+	}
+
+	.list-item-guru {
+		background: $azure;
+		color: white;
+		.list-item-icon {
+			svg {
+				path {
+					stroke: white;
+				}
 			}
 		}
 	}
@@ -948,7 +1313,6 @@ section {
 		.geolocation-icon {
 			@include opacity(.5);
 			@include center-y;
-			padding-top: 5px;
 			right: 10px;
 			z-index: 0;
 			height: 18px;
@@ -1271,9 +1635,43 @@ section {
 	}
 }
 
+// EXPERIENCE MODAL
+#experience-modal {
+	position: absolute;
+	top: 0;
+	.main {
+		height: calc(100% - 50px - 64px);
+		.ugrid-3 {
+			margin-top: -10px;
+			padding-bottom: 15px;
+			font-size: 16px;
+			font-weight: 400;
+			li {
+				padding: 0 15px;
+			}
+			li:nth-child(2) {
+				text-align: center;
+			}
+			li:nth-child(3) {
+				text-align: right;
+			}
+		}
+		#exp-input {
+			height: calc(100% - 87px - 116px);
+		}
+		textarea {
+			font-size: 18px;
+			height: 100%;
+		}
+	}
+}
+
 // PHOTO
 .photo-view {
 	background: $charcoal;
+	h1.text-center {
+		line-height: 1.2!important;
+	}
 	#photo-list {
 		position: absolute;
 		bottom: 0;
@@ -1333,23 +1731,21 @@ section {
 		ul {
 			@include listless;
 			@include flex;
-			@include flex-wrap;
-			@include flex-center;
 			position: absolute;
 			bottom: 0;
 			width: 100%;
+			overflow-x: auto;
 			li {
-				width: 20%;
 				font-size: 14px;
 				font-weight: 400;
 				text-align: center;
 				a {
 					display: block;
+					width: calc(320px / 3);
 					padding-bottom: 10px;
 					border-bottom: 5px solid transparent;
 					color: white;
 					.credit-label {
-						font-size: 13px;
 						font-weight: 400;
 					}
 					.credit-icon {
@@ -1357,19 +1753,25 @@ section {
 						@include flex;
 						@include flex-center;
 						@include flex-wrap;
-						margin: 0 auto 15px;
-						width: 35px;
-						height: 35px;
+						margin: 0 auto 5px;
+						width: 50px;
+						height: 50px;
 						background: $slate;
 						svg {
+							stroke-linejoin: round;
+							stroke-linecap: round;
+							stroke-width: 5px;
+							stroke: white;
+							fill-rule: even-odd;
+							fill: none;
 							width: 100%;
 							height: 100%;
-							padding: 5px;
+							padding: 8px;
 						}
 					}
 				}
 				#{$links} {
-					border-color: $cerise;
+					border-bottom: 5px solid $cerise;
 					color: $cerise;
 					.credit-icon {
 						background: $cerise;
@@ -1378,15 +1780,17 @@ section {
 			}
 			.active {
 				&#credit-exp {
-					border-color: $shamrock;
-					color: $shamrock;
-					.credit-icon {
-						background: $shamrock;
+					a {
+						border-bottom: 5px solid $shamrock;
+						color: $shamrock;
+						.credit-icon {
+							background: $shamrock;
+						}
 					}
 				}
 				&#credit-grades {
 					a {
-						border-color: $moola;
+						border-bottom: 5px solid $moola;
 						color: $moola;
 						.credit-icon {
 							background: $moola;
@@ -1395,7 +1799,7 @@ section {
 				}
 				&#credit-fb {
 					a {
-						border-color: #6279B1;
+						border-bottom: 5px solid #6279B1;
 						color: #6279B1;
 						.credit-icon {
 							background: #6279B1;
@@ -1404,7 +1808,7 @@ section {
 				}
 				&#credit-phone {
 					a {
-						border-color: $campus;
+						border-bottom: 5px solid $campus;
 						color: $campus;
 						.credit-icon {
 							background: $campus;
@@ -1413,7 +1817,7 @@ section {
 				}
 				&#credit-email {
 					a {
-						border-color: $lake;
+						border-bottom: 5px solid $lake;
 						color: $lake;
 						.credit-icon {
 							background: $lake;
@@ -1423,7 +1827,7 @@ section {
 			}
 			#credit-exp {
 				#{$links} {
-					border-color: $shamrock;
+					border-bottom: 5px solid $shamrock;
 					color: $shamrock;
 					.credit-icon {
 						background: $shamrock;
@@ -1432,7 +1836,7 @@ section {
 			}
 			#credit-grades {
 				#{$links} {
-					border-color: $moola;
+					border-bottom: 5px solid $moola;
 					color: $moola;
 					.credit-icon {
 						background: $moola;
@@ -1441,7 +1845,7 @@ section {
 			}
 			#credit-fb {
 				#{$links} {
-					border-color: #6279B1;
+					border-bottom: 5px solid #6279B1;
 					color: #6279B1;
 					.credit-icon {
 						background: #6279B1;
@@ -1450,7 +1854,7 @@ section {
 			}
 			#credit-phone {
 				#{$links} {
-					border-color: $campus;
+					border-bottom: 5px solid $campus;
 					color: $campus;
 					.credit-icon {
 						background: $campus;
@@ -1459,7 +1863,7 @@ section {
 			}
 			#credit-email {
 				#{$links} {
-					border-color: $lake;
+					border-bottom: 5px solid $lake;
 					color: $lake;
 					.credit-icon {
 						background: $lake;
@@ -1472,383 +1876,59 @@ section {
 		position: relative;
 		background: $slate;
 		height: calc(100% / 3 * 2);
-		padding: 15px;
 		text-align: center;
-		h1 {
-			margin: 0;
-			font-size: 24px;
-			font-weight: 600;
-			text-transform: uppercase;
-		}
-		p {
-			margin: 10px 0 20px;
-			font-size: 18px;
-		}
 		.credit-content-slide {
-			@include center-xy;
 			display: none;
 			width: 100%;
-			padding: 15px 15px 64px;
-			button {
-				background: $shamrock;
-			}
+			height: 100%;
 			&.active {
 				display: block;
 			}
-
-			&#facebook-auth {
-				button {
-					background: $facebook;
-				}
-			}
-		}
-	}
-}
-
-// ACTION SHEET
-.action-sheet-wrapper.action-sheet-up {
-	background: white;
-	.action-sheet-title {
-		@include flex;
-		@include flex-center;
-		padding: 0 10px;
-		font-size: inherit;
-		height: 50px;
-		span {
-			color: $azure;
-			font-size: 18px;
-			text-transform: none!important;
-		}
-	}
-	.action-sheet-group {
-		margin: 0!important;
-		button, div {
-			border: 0!important;
-			border-bottom: 1px solid $smoke!important;
-		}
-		button {
-			padding: 0 10px;
-			height: 50px;
-			color: $slate;
-			font-size: 16px;
-			font-weight: 600;
-		}
-		button:active {
-			background: $smoke;
-		}
-		&:last-child {
-			> *:last-child {
-				border-bottom: 0!important;
-			}
-		}
-	}
-}
-
-// MODAL POPUP
-.close-popup-link {
-	position: absolute;
-	top: 6px;
-	right: 6px;
-	width: 30px;
-	height: 30px;
-	svg {
-		@include rotate(45);
-		path {
-			stroke-width: 5px;
-		}
-	}
-}
-
-.uguru-popup {
-	@include opacity(0);
-	position: fixed;
-	z-index: 10;
-	visibility: hidden;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba($charcoal, .8);
-	pointer-events: none;
-	transition: 250ms ease;
-	.uguru-popup-content {
-		@include transition(250ms ease);
-		margin: 180px 15px 0;
-		z-index: 2;
-		background: white;
-		border-radius: 5px;
-		.content-wrapper {
-			position: relative;
-			padding: 65px 0 0;
-			text-align: center;
-			h2 {
-				color: $slate;
-				margin: 0 15px;
-				color: $charcoal;
-				font-weight: 700;
-				font-size: 20px;
-				text-transform: uppercase;
-			}
-			p {
-				color: $slate;
-				font-weight: 400;
-				font-size: 14px;
-			}
-			button {
-				font-weight: 700;
-				border-radius: 0 0 5px 5px;
-			}
-		}
-
-	}
-	.guru-logo-container {
-		@include flex;
-		@include flex-center;
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 5;
-		width: 100%;
-		height: auto;
-		margin: 0 auto;
-		div.svg-logo-wrapper {
-			width: 100%;
-			height: auto;
-			padding-top: 135px;
-			text-align: center;
-			svg {
-				@include round;
-				max-width: 180px;
-				max-height: 180px;
-				background: $azure;
-				padding: 15px;
-				z-index: 3;
-				path {
-					fill: white;
-				}
-			}
-		}
-	}
-	&.show {
-		@include opacity(1);
-		visibility: visible;
-		pointer-events: auto;
-	}
-}
-.uguru-popup.sidebar-popup {
-	.uguru-popup-content {
-		margin-top: 60px;
-	}
-	.guru-logo-container {
-		div.svg-logo-wrapper {
-			padding-top: 15px;
-			svg {
-				max-width: 100px;
-				max-height: 100px;
-			}
-		}
-	}
-	input {
-		font-size: 16px;
-		text-align: center;
-		width: calc(100% - 30px);
-	}
-}
-
-// SIDEBAR
-#side-menu-left-overlay.active {
-	background: rgba($charcoal, .8);
-	width: 20%;
-	height: 100%;
-	z-index: 20;
-	position: absolute;
-	right: 0;
-}
-.side-menu-list {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	z-index: 20;
-	.list {
-		height: 100%;
-	}
-	.list-item {
-		height: 64px;
-		font-size: 18px;
-		font-weight: 600;
-		text-transform: uppercase;
-		.list-item-icon {
-			height: 64px;
-			width: 64px;
-			img {
-				@include round;
-				width: 34px;
-				height: 34px;
-			}
-			svg {
-				padding: 15px;
-				width: auto;
-				path, circle {
-					stroke-width: 4px;
-					stroke-linecap: round;
-					stroke-linejoin: round;
-				}
-				circle {
-					stroke-dasharray: 3px, 10px;
-				}
-			}
-		}
-		.list-item-detail {
-			padding: 0 15px 0 0;
-			span {
-				white-space: nowrap;
-				overflow-x: hidden;
-				text-overflow: ellipsis;
-			}
-			.student-profile-name {
-				font-weight: 700;
-			}
-		}
-	}
-	.list-item-profile {
-		@include flex-wrap;
-		@include flex-center;
-		height: calc(100% - 384px);
-		.list-item-detail {
-			span {
-				display: block;
-			}
-			span:first-child {
-				font-size: 20px!important;
-			}
-			span:last-child {
-				font-size: 14px!important;
-			}
-		}
-	}
-	.list-item-agenda {
-		display: none;
-	}
-}
-
-@media screen and (min-height:540px) {
-	.side-menu-list {
-		.list-item-profile {
-			height: 84px;
-		}
-		.list-item-agenda {
-			@include flex;
-			position: relative;
-			height: calc(100% - 384px - 84px);
-			text-transform: none;
-			&:before {
-				@include opacity(.3);
-				content: "";
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
+			> div {
 				height: 100%;
-				background: url(../../img/school.jpg) center center / cover;
+				.credit-body {
+					height: calc(100% - 36px - 64px - 50px);
+					&:not(ul) {
+						@include flex;
+						@include flex-center;
+						@include flex-wrap;
+					}
+					p {
+						margin: 0;
+						padding: 15px;
+						font-size: 20px;
+					}
+					li {
+						display: block;
+						text-align: left;
+						height: 65px;
+						a {
+							.list-item-detail {
+								h2 {
+									font-size: 20px;
+									font-weight: 600;
+								}
+								span {
+									display: block;
+									font-size: 16px;
+									font-weight: 400;
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
 }
-
-.menu-guru {
-	.list {
-		background: $slate;
-	}
-	.list-item {
-		&.active, &.activated {
-			background: $campus;
-		}
-		.list-item-icon {
-			svg {
-				path, circle {
-					stroke: #fff;
-				}
-			}
-		}
-	}
-	.list-item-profile {
-		background: rgba($campus, .75);
-	}
-	.list-item-agenda {
-		background: white;
-		color: $charcoal;
-		&.active, &.activated {
-			background: rgba(white, .9);
-		}
-	}
-	.list-item-guru {
-		display: none;
-	}
-	.list-item-student {
-		background: rgba($campus, .75);
+#confirm-phone-uguru-popup {
+	.svg-logo-wrapper svg {
+		background: $campus!important;
 	}
 }
-.menu-student {
-	.list {
-		background: white;
-	}
-	.list-item {
-		color: $slate;
-		.list-item-icon {
-			svg {
-				path {
-					stroke: $slate;
-				}
-			}
-		}
-		&.activated, &.active {
-			background: rgba($azure, .75);
-			color: white;
-			svg {
-				path {
-					stroke: white;
-				}
-			}
-		}
-	}
-	.list-item-profile {
-		background: $azure;
-		color: white;
-		.list-item-icon {
-			svg {
-				circle {
-					stroke: white;
-				}
-			}
-		}
-	}
-	.list-item-agenda {
-		background: $slate;
-		color: white;
-		&:active, &:hover {
-			background: rgba($slate, .9);
-		}
-	}
-	.list-item-student {
-		background: $slate;
-		color: white;
-		svg {
-			path {
-				stroke: white;
-			}
-		}
-	}
-
-	.list-item-guru {
-		background: $azure;
-		color: white;
-		.list-item-icon {
-			svg {
-				path {
-					stroke: white;
-				}
-			}
-		}
+#confirm-email-uguru-popup {
+	.svg-logo-wrapper svg {
+		background: $lake!important;
 	}
 }
 
@@ -1947,8 +2027,11 @@ section {
 	}
 }
 
+// TAB BAR
 .tabs {
 	border: 0;
+	height: 50px;
+	line-height: 50px;
 }
 
 // SAMIR'S SHIT

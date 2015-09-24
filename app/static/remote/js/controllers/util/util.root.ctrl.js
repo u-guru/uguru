@@ -50,11 +50,6 @@ angular.module('uguru.util.controllers')
 
           $scope.isLocalServer = LOCAL || false;
 
-          document.addEventListener('DOMContentLoaded', function(event) {
-              console.log('dom has loaded');
-          }, false);
-
-
           $scope.network_speed = null;
           $scope.window = {width: document.querySelector('body').getBoundingClientRect().width}
 
@@ -715,7 +710,7 @@ angular.module('uguru.util.controllers')
           {
             $ionicViewSwitcher.nextDirection('enter');
 
-            $state.go('^.guru-profile')
+            $state.go('^.home')
 
           }
         //if previous in guru mode
@@ -724,7 +719,7 @@ angular.module('uguru.util.controllers')
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
 
-            $state.go('^.guru-profile')
+            $state.go('^.home')
             $timeout(function() {
               $scope.loader.hide();
             }, 1000);

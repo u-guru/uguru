@@ -613,15 +613,6 @@ angular.module('uguru.guru.controllers')
       }
     }
 
-    // LAUNCH MODAL
-     $scope.$on('$ionicView.enter', function() {
-
-      // $timeout(function() {
-      //   $scope.launchAddGuruExperienceModal();
-      // }, 500)
-
-     });
-
 
   }
 

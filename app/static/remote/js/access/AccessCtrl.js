@@ -41,7 +41,13 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     errorInputMsg: null,
   };
 
- 
+  $scope.focusInput = function() {
+
+    console.log('input is focused');
+
+  }
+
+
   $scope.checkAccessCode = function(code) {
     if(AccessService.validate(code)){
 
@@ -53,11 +59,11 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       if ($scope.platform.mobile) {
         cordova.plugins.Keyboard.close();
       }
-      
+
       $timeout(function() {
         // $ionicSlideBoxDelegate.enableSlide(true);
 
-        
+
         $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
       }, 1000);
 

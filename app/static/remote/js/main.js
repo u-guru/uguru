@@ -1,5 +1,7 @@
 var LOCAL = false; //local to the 8100 codebasebirbirs
 
+
+
 var FIRST_PAGE='^.university';
 img_base = '';
 
@@ -15,7 +17,8 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = 'http://localhost:8100';
-  
+  // REST_URL = 'http://192.168.42.78:5000'
+
 
 } else {
   img_base = '/static/'
@@ -25,7 +28,7 @@ mixpanel = window.mixpanel || null;
 
  //if (mixpanel) mixpanel.track("App Launch");
 
-angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 
+angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
@@ -38,7 +41,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   $cordovaGeolocation, $cordovaDevice, DeviceService) {
 
   var openKeyboard = null;
-  
+
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
@@ -74,7 +77,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
   // RestangularProvider.setBaseUrl('http://10.193.138.226:5000/api/v1');
   //Client-side router
-  
+
 
 //abstract
   // .state('admin', {
