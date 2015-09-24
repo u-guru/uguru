@@ -21,13 +21,13 @@ describe('Access Page Test', function () {
    			
    	// 	});
    	// });
-   	describe("Is Page Dragalbe",function()
+   	describe("Check Page is Not Dragalbe",function()
    	{
    		it("drag left",function()
    		{
 				element(by.id('access')).getLocation().then(function(result)
    				{
-		   			expect(result.x).toBe(0,"location X is moved");
+		   			expect(result.x).toBe(0,"location X of Access Page is moved");
 
    				});
    			doc.slideView(0,"left")
@@ -36,13 +36,12 @@ describe('Access Page Test', function () {
    		{
    			element(by.id('access')).getLocation().then(function(result)
    				{
-		   			expect(result.x).toBe(0);
+		   			expect(result.x).toBe(0,"location X of Access Page is moved");
    				});
-   			// browser.sleep(10000);
    		});
    		it('Go Bakc Access',function()
    		{
-   			browser.refresh();
+   			  browser.refresh();
    		})
 
    	});
@@ -74,20 +73,20 @@ describe('Access Page Test', function () {
 	for( i = 0; i < listOfCase.length; ++ i)
 	{
         (function(testSpec) {
-        	describe('Test Access Code #'+i,function()
+        	describe('Test Random Access Code #'+i,function()
 			{
 				// it("check",function()
 				// {
 				//     expect(browser.params.screenSize.w).toBe('1234');
 
 				// });
-	           it("Enter Access Code : "+ testSpec,function()
+       it("Enter Access Code : "+ testSpec,function()
 				{
 					doc.setInput(testSpec,0,false);
 				});
 	 
 
-           		it("Check Message is shown Correct",function()
+     		it("Check Message is shown Correct",function()
 				{
 					startButton.click();
 					if(testSpec == 'cool')
