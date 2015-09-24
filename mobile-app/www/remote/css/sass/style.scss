@@ -1412,6 +1412,7 @@ section {
 				font-size: 20px;
 				font-weight: 400;
 				text-align: center;
+				line-height: 1.2;
 			}
 		}
 		#request-button {
@@ -2008,7 +2009,11 @@ section {
 		}
 	}
 	.tip-container {
+		h2 {
+			font-size: 22px;
+		}
 		p {
+			margin-top: 10px;
 			font-size: 18px;
 		}
 	}

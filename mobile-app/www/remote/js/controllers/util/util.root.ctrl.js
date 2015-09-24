@@ -715,7 +715,7 @@ angular.module('uguru.util.controllers')
           {
             $ionicViewSwitcher.nextDirection('enter');
 
-            $state.go('^.home')
+            $state.go('^.guru')
 
           }
         //if previous in guru mode
@@ -724,7 +724,7 @@ angular.module('uguru.util.controllers')
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
 
-            $state.go('^.home')
+            $state.go('^.guru')
             $timeout(function() {
               $scope.loader.hide();
             }, 1000);
