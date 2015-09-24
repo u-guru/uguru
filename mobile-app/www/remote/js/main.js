@@ -1,9 +1,8 @@
+
 var LOCAL = false; //local to the 8100 codebasebirbirscd
 
-
-
 var FIRST_PAGE='^.home';
-img_base = '';
+var img_base = '';
 
 
 // isAdmin = true;
