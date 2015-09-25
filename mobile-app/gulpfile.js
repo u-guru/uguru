@@ -39,8 +39,6 @@ var build = args.build;
 var uld = args.uld;
 var targetDir = path.resolve('dest');
 
-
-
 gulp.task('replace', function() {
   // Get the environment from the command line
   var env = args.env || 'localdev';
@@ -70,8 +68,6 @@ gulp.task('replace', function() {
     }))
     .pipe(gulp.dest('./www/remote/js/'));
 });
-
-
 
 
 gulp.task('express', function() {

@@ -6,14 +6,16 @@ exports.config = {
 
          capabilities: {
 
-
+//brew install ideviceinstaller
+//appium -U <uuid< --app <app_path>
+//0df70c3eacd748d8d92a882cbec7b26787fa0396
           //ios settings
                  browserName: '',
                  'appium-version': '1.4.11',
                  app: '/Users/nlmac/Git/uguru/mobile-app/platforms/ios/build/emulator/uguru.app',
                  platformName: 'iOS',
-                  platformVersion: '8.4',
-                   deviceName: 'iPhone 6',
+                  platformVersion: '7.2',
+                   deviceName: 'TwFoB Work’s iPhone (7.1.2) [0df70c3eacd748d8d92a882cbec7b26787fa0396]',
                    autoWebview: 'true'
 
          // //android settings
@@ -84,7 +86,7 @@ exports.config = {
             // browser.driver.manage().window().setSize(414, 736);
 
             //may need to uncomment this for IOS. but for sure comment out when on android
-              browser.driver.get("http://localhost:8100/#/");
+               browser.driver.get("http://localhost:8100/#/");
               // browser.sleep(1000);
 
 
