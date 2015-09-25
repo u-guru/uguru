@@ -1,5 +1,6 @@
 var LOCAL = _local; //local to the 8100 codebasebirbirs
 var FIRST_PAGE='^.' + _startpage;
+//var FIRST_PAGE='^.home';
 
 console.log("_local: " + _local);
 console.log("_startpage: " + _startpage);
@@ -66,6 +67,25 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   $cordovaDialogs, Version, $rootScope, $cordovaSplashscreen,
   $templateCache, Device, User, $cordovaLocalNotification,
   $cordovaGeolocation, $cordovaDevice, DeviceService, uTracker) {
+
+
+  // $log.getInstance = function(context) {
+  //   return {
+  //     log: enhanceLogging($log.log, contect),
+  //     info: enhanceLogging($log.info, context),
+  //     warn: enhanceLogging($log.warn, context),
+  //     debug: enhanceLogging($log.debug, context),
+  //     error: enhanceLogging($log.error, context)
+  //   };
+  // };
+
+  // function enhanceLogging(loggingFunc, context) {
+  //   return function() {
+  //     var modifiedArguments = [].slice.call(arguments);
+  //     modifiedArguments[0] = [moment().format("dddd h:mm:ss a") + '::[' + context + ']> '] + modifiedArguments[0];
+  //     loggingFunc.apply(null, modifiedArguments);
+  //   };
+  // }
 
 
   var openKeyboard = null;
@@ -304,7 +324,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
 
 
-  $urlRouterProvider.otherwise('/university');
+  $urlRouterProvider.otherwise('/' + _startpage);
 
 
 });

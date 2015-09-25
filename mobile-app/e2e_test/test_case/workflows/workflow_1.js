@@ -1,6 +1,7 @@
 var EC = protractor.ExpectedConditions;
 
 describe('Workflow Test : One', function () {
+	browser.wait(EC.presenceOf(element(by.id("access-code-bar"))),10000);
 	var accessInput = element(by.id("access-code-bar"));
 	var msg = element(by.id('E2E-msg'));
 	var startButton = element(by.id("access-start"));
