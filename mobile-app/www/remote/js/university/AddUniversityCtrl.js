@@ -17,11 +17,13 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'DeviceService',
   '$ionicModal',
   'uTracker',
+  '$q',
+  'UniversityWorker',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher, $ionicSlideBoxDelegate,
-  DeviceService, $ionicModal, uTracker) {
+  DeviceService, $ionicModal, uTracker,$q, UniversityWorker) {
 
 
   //var networkState = navigator.connection.type;
@@ -120,12 +122,9 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
         }
       }
-<<<<<<< HEAD
+
       window._rAF(update); 
-=======
-      window._rAF(update);
-      //console.log('called beforeEnter');
->>>>>>> 9a1fa76d1acb455844550abc6f5f9ab45907e7db
+
     };
 
     $scope.afterEnter = function() {
@@ -173,14 +172,24 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
     var queryTimeout = false;
     var emptyTimeout = false;
-    $scope.limit = 10;
+    
     $scope.query = function(input) {
       if(!measure) {
 
         if(!queryTimeout) {
           //queryTimeout = true;
-          //$scope.universities = Utilities.nickMatcher(input, University.getTargetted());
-          $scope.universities = UniversityMatcher.cachedMatch(input);
+
+          // return UniversityWorker.startWorker(input).then(function(results) {
+          //   $scope.universities = results;
+          // });
+          
+
+          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch(input)}, 16);
+          
+
+
+
+
           //$timeout(function() {queryTimeout = false;}, 600);
         }
         else if(input.length === 0) {

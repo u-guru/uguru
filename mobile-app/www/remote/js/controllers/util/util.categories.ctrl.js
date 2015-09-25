@@ -41,9 +41,13 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.launchCategoryModal = function(category) {
+
+      if($scope.active_category!==category){
+        $scope.active_category = category;
+        updateMainBackground(category.bg_url);  
+      }
+
       $scope.active_category.active = true;
-      $scope.active_category = category;
-      updateMainBackground(category.bg_url);
       $scope.categorySkillsModal.show();
     }
 

@@ -1,7 +1,6 @@
 angular
 .module('sharedServices', ['ionic'])
 .factory("DeviceService", [
-
 	'$cordovaNgCardIO',
 	'AndroidService',
 	'iOSService',

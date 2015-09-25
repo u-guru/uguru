@@ -62,15 +62,29 @@ function Geolocation($localstorage, $timeout, University,
   }
 
   function sortByLocation(userLat, userLong, list) {
+    var numberFormatter = new Intl.NumberFormat();
     for(var i=0; i<list.length; i++) {
-      list[i].miles = Math.round(Utilities.getDistanceInMiles(
+      list[i].rawMiles = Utilities.getDistanceInMiles(
                                     userLat, userLong, 
-                                    list[i].latitude, list[i].longitude));
+                                    list[i].latitude, list[i].longitude);
+
+      list[i].miles = numberFormatter.format(Math.round(list[i].rawMiles));
     }
+    // ASK HURSHAL ABOUT THIS
+    // for(var i=0; i<list.length; i++) {
+    //   var item = list[i];
+    //   item.rawMiles = Utilities.getDistanceInMiles(
+    //                                 userLat, userLong, 
+    //                                 item.latitude, item.longitude);
+
+    //   item.miles = numberFormatter.format(Math.round(item.rawMiles));
+    // }
+
+
     function compareDistance(a, b) {
-      if (a.miles < b.miles)
+      if (a.rawMiles < b.rawMiles)
         return -1;
-      if (a.miles > b.miles)
+      if (a.rawMiles > b.rawMiles)
         return 1;
       return 0;
     }

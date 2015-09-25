@@ -2,10 +2,11 @@ angular
 .module('sharedServices')
 .factory("UniversityMatcher", [
 	'University',
+	'$q',
 	UniversityMatcher
 	]);
 
-function UniversityMatcher(University) {
+function UniversityMatcher(University, $q) {
 
 	var list = University.getTargetted();
 	sortByRank(list);
@@ -17,11 +18,18 @@ function UniversityMatcher(University) {
 	var cachedDictionary = null;
 
 	return {
+		getMatch: getMatch,
 		match: match,
 		init: init,
 		cachedMatch: cachedMatch,
 		clearCache: clearCache,
 		list: list
+	}
+
+	function getMatch(input) {
+		defer = $q.defer();
+		worker.postMessage(input);
+		return defer.promise;
 	}
 
 	function sortByRank(list) {
@@ -137,6 +145,12 @@ function UniversityMatcher(University) {
 		}
 		matchedList = firstLetterList.concat(matchedList);
 		return matchedList;
+	}
+	
+	onmessage = function(e) {
+		var input = e.data.input
+		var matches = cachedMatch(input);
+		postMessage(matches);
 	}
 
 }

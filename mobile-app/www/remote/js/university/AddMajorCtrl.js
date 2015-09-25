@@ -141,6 +141,7 @@ angular.module('uguru.util.controllers')
 
     });
 
+    $scope.limit = 10;
     $scope.increaseLimit = function() {
       if($scope.majors && $scope.limit < $scope.majors.length) {
         $scope.limit += 10;
