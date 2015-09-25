@@ -431,6 +431,16 @@ section {
 		width: calc(100% - 30px);
 	}
 }
+#confirm-phone-uguru-popup {
+	.svg-logo-wrapper svg {
+		background: $campus!important;
+	}
+}
+#confirm-email-uguru-popup {
+	.svg-logo-wrapper svg {
+		background: $lake!important;
+	}
+}
 
 // MODAL STYLES
 .terms-modal, .faq-modal, .support-modal {
@@ -487,11 +497,21 @@ section {
 			}
 		}
 		#exp-input {
-			height: calc(100% - 87px - 116px);
+			height: calc(100% - 194px);
 		}
 		textarea {
 			font-size: 18px;
 			height: 100%;
+		}
+	}
+}
+@media screen and (min-width:375px) {
+	#experience-modal {
+		.main {
+			textarea {
+				font-size: 20px;
+				height: 100%;
+			}
 		}
 	}
 }
@@ -828,6 +848,17 @@ section {
 	border: 0;
 	height: 50px;
 	line-height: 50px;
+	svg {
+		width: 100%;
+		height: 100%;
+		padding: 8px;
+		fill: none;
+		fill-rule: evenodd;
+		stroke: white;
+		stroke-width: 4px;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
 }
 
 
@@ -1498,6 +1529,13 @@ section {
 		svg {
 			width: 30px;
 			height: 30px;
+			path {
+				stroke: white;
+				stroke-width: 6;
+				stroke-linecap: round;
+				stroke-linejoin: round;
+				fill: none;
+			}
 		}
 	}
 	#profile-fixed {
@@ -1822,11 +1860,11 @@ section {
 			li {
 				font-size: 14px;
 				font-weight: 400;
-				width:100%;
+				width: 100%;
 				text-align: center;
 				a {
 					display: block;
-					    width: calc(320px /3 - 15px);
+					width: 92px;
 					padding-bottom: 10px;
 					border-bottom: 5px solid transparent;
 					color: white;
@@ -1838,14 +1876,14 @@ section {
 						@include flex;
 						@include flex-center;
 						@include flex-wrap;
-						margin: 0 auto 5px;
+						margin: 0 auto 10px;
 						width: 50px;
 						height: 50px;
 						background: $slate;
 						svg {
 							stroke-linejoin: round;
 							stroke-linecap: round;
-							stroke-width: 5px;
+							stroke-width: 4px;
 							stroke: white;
 							fill-rule: even-odd;
 							fill: none;
@@ -1884,10 +1922,10 @@ section {
 				}
 				&#credit-fb {
 					a {
-						border-bottom: 5px solid #6279B1;
-						color: #6279B1;
+						border-bottom: 5px solid $facebook-light;
+						color: $facebook-light;
 						.credit-icon {
-							background: #6279B1;
+							background: $facebook-light;
 						}
 					}
 				}
@@ -1930,10 +1968,10 @@ section {
 			}
 			#credit-fb {
 				#{$links} {
-					border-bottom: 5px solid #6279B1;
-					color: #6279B1;
+					border-bottom: 5px solid $facebook-light;
+					color: $facebook-light;
 					.credit-icon {
-						background: #6279B1;
+						background: $facebook-light;
 					}
 				}
 			}
@@ -1972,7 +2010,7 @@ section {
 			> div {
 				height: 100%;
 				.credit-body {
-					height: calc(100% - 36px - 64px - 50px);
+					height: calc(100% - 34px - 64px - 50px);
 					&:not(ul) {
 						@include flex;
 						@include flex-center;
@@ -1999,6 +2037,11 @@ section {
 									font-weight: 400;
 								}
 							}
+							svg {
+								fill: none;
+								padding: 15px;
+								stroke-width: 3px;
+							}
 						}
 					}
 				}
@@ -2006,14 +2049,41 @@ section {
 		}
 	}
 }
-#confirm-phone-uguru-popup {
-	.svg-logo-wrapper svg {
-		background: $campus!important;
+@media screen and (min-width:375px) {
+	.credibility-view {
+		#credit-slider {
+			ul {
+				li {
+					font-size: 16px;
+					a {
+						width: 108px;
+						.credit-icon {
+							width: 60px;
+							height: 60px;
+						}
+					}
+				}
+			}
+		}
 	}
 }
-#confirm-email-uguru-popup {
-	.svg-logo-wrapper svg {
-		background: $lake!important;
+@media screen and (min-width:414px) {
+	.credibility-view {
+		#credit-slider {
+			ul {
+				li {
+					font-size: 18px;
+					a {
+						display: block;
+						width: 118px;
+						.credit-icon {
+							width: 70px;
+							height: 70px;
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -2045,8 +2115,13 @@ section {
 			transform: scale(.8);
 		}
 		.progressbar-text {
-			background-color:transparent;
-			display:none;
+			display: none;
+		}
+		svg {
+			@include round;
+			* {
+				stroke-linecap: round;
+			}
 		}
 		#guru-chart {
 			position: relative;
@@ -2090,9 +2165,14 @@ section {
 				font-weight: 600;
 				text-transform: uppercase;
 			}
-			progress, .progress {
-				vertical-align: top;
-				width: 100%;
+			.stats-bar {
+				line-height: 10px;
+				font-size: 10px;
+				height: 10px;
+				margin-bottom: 7px;
+				svg {
+					height: 10px;
+				}
 			}
 		}
 	}
@@ -2115,6 +2195,24 @@ section {
 				-ms-transform: none;
 				-o-transform: none;
 				transform: none;
+			}
+			#guru-stats {
+				.stats-bar {
+					margin-bottom: 9px;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:414px) {
+	.guru-view {
+		#guru-ranking {
+			> div {
+				-webkit-transform: scale(1.2);
+				-moz-transform: scale(1.2);
+				-ms-transform: scale(1.2);
+				-o-transform: scale(1.2);
+				transform: scale(1.2);
 			}
 		}
 	}
