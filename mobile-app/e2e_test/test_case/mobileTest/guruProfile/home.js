@@ -5,55 +5,60 @@ describe('Guru Home Test', function () {
 
 
 	var ele = element.all(by.tagName("ion-slide"));
-	beforeAll(function()
+	// beforeAll(function()
+	// {
+	// 	browser.get("http://localhost:8100/#/guru");
+	// 	browser.sleep(2000)
+	// });
+
+	it("check Curret Page",function()
 	{
-		browser.get("http://localhost:8100/#/guru");
-		browser.sleep(2000)
+		expect(browser.getCurrentUrl()).toContain("/#/guru");
 	});
-	describe("Welcome Pop Up",function()
-	{
-		it('Check Pop up ',function()
-		{
-			expect(element(by.css('.content-wrapper')).isDisplayed()).toBe(true);
-		});
-		it('Close Welcome',function()
-		{
-			//element(by.id('home-uguru-popup')).click();
-			element(by.css('[ng-click="closeWelcomePopup()"]')).click();
-		});
-	});
-	describe("Profile page",function()
-	{
-		var rankValue = element(by.css('#percentile-ranking'));
-		var CredValue = element(by.binding('user.current_profile_percent'))
-		var guruStats = element.all(by.css('#guru-stats h2'));
+	// describe("Welcome Pop Up",function()
+	// {
+	// 	it('Check Pop up ',function()
+	// 	{
+	// 		expect(element(by.css('.content-wrapper')).isDisplayed()).toBe(true);
+	// 	});
+	// 	it('Close Welcome',function()
+	// 	{
+	// 		//element(by.id('home-uguru-popup')).click();
+	// 		element(by.css('[ng-click="closeWelcomePopup()"]')).click();
+	// 	});
+	// });
+	// describe("Profile page",function()
+	// {
+	// 	var rankValue = element(by.css('#percentile-ranking'));
+	// 	var CredValue = element(by.binding('user.current_profile_percent'))
+	// 	var guruStats = element.all(by.css('#guru-stats h2'));
 
-		it('Check Rank Level',function()
-		{
-			expect(rankValue.getText()).toEqual('0',"No Data is added yet");
-		});
-		it('Check Cred Level',function()
-		{
-			expect(CredValue.getText()).toContain('0',"No Data is added yet");
+	// 	it('Check Rank Level',function()
+	// 	{
+	// 		expect(rankValue.getText()).toEqual('0',"No Data is added yet");
+	// 	});
+	// 	it('Check Cred Level',function()
+	// 	{
+	// 		expect(CredValue.getText()).toContain('0',"No Data is added yet");
 
-		});		
-		it('Check Profile Level',function()
-		{
-			guruStats.then(function(items)
-			{
-				expect(items[1].getText()).toContain('0',"No Data is added yet");
+	// 	});		
+	// 	it('Check Profile Level',function()
+	// 	{
+	// 		guruStats.then(function(items)
+	// 		{
+	// 			expect(items[1].getText()).toContain('0',"No Data is added yet");
 
-			});
-		});	
-		it('Check Pay Level',function()
-		{
-			guruStats.then(function(items)
-			{
-				expect(items[2].getText()).toContain('0',"No Data is added yet");
+	// 		});
+	// 	});	
+	// 	it('Check Pay Level',function()
+	// 	{
+	// 		guruStats.then(function(items)
+	// 		{
+	// 			expect(items[2].getText()).toContain('0',"No Data is added yet");
 
-			});
-		});	
-	});
+	// 		});
+	// 	});	
+	// });
 	
 	// describe('Check Yellow Page',function()
 	// {

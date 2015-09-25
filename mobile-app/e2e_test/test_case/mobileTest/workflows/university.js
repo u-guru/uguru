@@ -8,7 +8,7 @@ describe('@Workflow : University page', function () {
 	});
 	it("check the current position",function()
 	{
-		expect(browser.getCurrentUrl()).toBe("http://localhost:8100/#/home");
+		expect(browser.getCurrentUrl()).toContain("/#/home");
 	});
-
+	
 });

@@ -10,17 +10,13 @@ describe('@Workflow : access page', function () {
 		// });
 		it("Enter Access Code : cool ",function()
 		{
-			accessInput.sendKeys('cool');
-			accessInput.getAttribute('value').then(function(result)
-			{
-				expect(result).toBe("cool");
-			});
+			doc.setInput('cool',0,false);
+
 		});
 
 		it("Check Successed",function()
 		{
 			//browser.wait(EC.elementToBeClickable(startButton),5000);
-			browser.sleep(4000);
 			startButton.click();
 			doc.checkMsg("Access Granted");
 		});

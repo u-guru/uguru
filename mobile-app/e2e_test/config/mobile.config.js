@@ -158,7 +158,19 @@ exports.config = {
                      '../test_case/mobileTest/becomeGuru/course.js',
                      '../test_case/mobileTest/becomeGuru/category.js',
                      '../test_case/mobileTest/becomeGuru/photo.js'
-                    ]
+                    ],
+              mobile : 
+                       [
+                           '../test_case/mobileTest/workflows/access.js',
+                           '../test_case/mobileTest/workflows/university.js', 
+                          '../test_case/mobileTest/workflows/major.js',
+                           '../test_case/mobileTest/workflows/course.js',
+                           '../test_case/mobileTest/workflows/category.js',
+                           '../test_case/mobileTest/workflows/photo.js',
+                           '../test_case/mobileTest/guruProfile/home.js',
+                           '../test_case/mobileTest/guruProfile/editProfile.js',
+                           '../test_case/mobileTest/guruProfile/creditibility.js'
+                       ]
 
         },
         rootElement: "[ng-app]" ,
@@ -212,9 +224,10 @@ exports.config = {
             protractor.run = require('../test_case/globals.js').run;
             global.doc =require('../test_case/newGlobals.js');
             global.EC  = protractor.ExpectedConditions;
+            global.localhost = '192.168.0.105'
             // console.log( "W : "+ browser.params.screenSize.w+ " H :"+browser.params.screenSize.h)
             // browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);
-            // browser.driver.get("http://localhost:8100/#/")
+             // browser.get("http://localhost:8100/#/")
             // browser.sleep(3000);
 
         }

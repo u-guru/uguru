@@ -2,81 +2,35 @@ describe('@Workflow : Major page', function () {
 	var nextStep = element(by.css('[ng-click="nextSlide()"]'));
 	var guruButton = element (by.css('[ng-click="goToBecomeGuru()"]'));
 
-
-	it ('Open The Request',function()
+	describe('Welcome uguru Pop',function()
 	{
-		guruButton.isPresent().then(function(result)
+		it('Check Pop up ',function()
 		{
-			console.log("test"+result);
-			if(result)
-				guruButton.click();
+			browser.wait(EC.visibilityOf(element(by.id('home-uguru-popup'))),3000);
+			// expect(element(by.id('home-uguru-popup')).isDisplayed()).toBe(true);
+		});
+		it('Close Welcome',function()
+		{
+			//element(by.id('home-uguru-popup')).click();
+			element(by.css('[ng-click="closeWelcomePopup()"]')).click();
+		});	
+		it ('Start Become Guru Process',function()
+		{
+			guruButton.click();
 
-		})
+		});
 	});
-	// it('check Data repeating',function()
-	// {
-	// 	doc.checkLists('major-list','major.name');
-	// });
-	// describe('Check Search Results',function()
-	// {
-	// 	it('send a key',function()
-	// 	{
-	//     	doc.setInput('b',0);
 
-	// 	});
-	// 	it('Check the Search result is not empty',function()
-	// 	{
-	// 		element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
-	//     		expect(items.length).not.toBe(0,"no Search result found");
-	//     	});
-	// 	});
-	// 	it('clear a key',function()
-	// 	{	
-	// 		 element(by.tagName("input")).clear();
-	// 	});
-
-	// });
 	describe('Check Data & Go Next Section',function()
 	{
-		// it('check the course',function()
+		// it('Pick a Major',function()
 		// {
-		// 	element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
-		// 		expect(items.length).not.toBe(0,"no Search result found");
-		// 	});
+		// 	browser.wait(EC.visibilityOf(element(by.id('major-list'))),20000);
+		//     doc.newPickList('major-list',5);
 		// });
-		it('Pick a Major',function()
-		{
-			browser.wait(EC.visibilityOf(element(by.id('major-list'))),20000);
-		    doc.newPickList('major-list',5);
-		});
 		it('Next slide',function()
 		{
 			nextStep.click();
 		});
-		it('check Page title:coures',function()
-		{
-			expect(element(by.css('#course .third')).getText()).toContain("COURSE");
-		});
 	});
-
-
-
-
-
-
-
-	// it('Pick a Major',function()
-	// {
-	// 	doc.newPickList('major-list');
-	// });
-	// it('Next page',function()
-	// {
-	// 	nextStep.click();
-		
-	// 		// nextStep.then(function(items)
-	// 		// {
-	// 		// 	console.log(items.length());
-	// 		// 	items[0].click();
-	// 		// });
-	// });
 });
