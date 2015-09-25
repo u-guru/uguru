@@ -17,10 +17,14 @@
       <h1>{{active_category.name}}</h1>
     </header>
     <header id="category-skills" class="third flex-center" ng-if='guruSkillsModal.isShown()'>
-      <h1 class="text-center">Edit Skills</h1>
-        <a class="header-nav-back left-0 absolute p10xy top-0" ng-click='guruSkillsModal.hide()'>
-          <i class='icon ion-chevron-down'> </i>
-      </a>
+        <div class="header-nav">
+			<a class="header-down" ng-click='guruSkillsModal.hide()'>
+				<svg viewBox="0 0 100 100">
+					<path d="M14,32 L50,68 L86,32"></path>
+				</svg>
+			</a>
+        </div>
+		<h1 class="text-center">Edit Skills</h1>
     </header>
     <div id="skills-list" class="onboarding-list">
       <ul class='list list-item-half flex-wrap'>

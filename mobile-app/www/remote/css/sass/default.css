@@ -1308,7 +1308,7 @@ button.disabled {
 .highlight-campus li input:checked + label {
   background-color: #8A9EA3; }
 
-progress, [class*="progress"]:not(.progress-circle) {
+progress, [class*="progress"] {
   -webkit-transition: all 0.15s ease-in-out;
   -o-transition: all 0.15s ease-in-out;
   -ms-transition: all 0.15s ease-in-out;
@@ -1324,20 +1324,20 @@ progress, [class*="progress"]:not(.progress-circle) {
   border: 0;
   color: #69B3A5;
   background: #40484B; }
-  progress .round, [class*="progress"]:not(.progress-circle) .round {
+  progress .round, [class*="progress"] .round {
     border-radius: 1000px; }
-    progress .round::-webkit-progress-value, progress .round span, [class*="progress"]:not(.progress-circle) .round::-webkit-progress-value, [class*="progress"]:not(.progress-circle) .round span {
+    progress .round::-webkit-progress-value, progress .round span, [class*="progress"] .round::-webkit-progress-value, [class*="progress"] .round span {
       border-radius: 1000px; }
-    progress .round::-moz-progress-bar, [class*="progress"]:not(.progress-circle) .round::-moz-progress-bar {
+    progress .round::-moz-progress-bar, [class*="progress"] .round::-moz-progress-bar {
       border-radius: 1000px; }
-  progress.white-round, [class*="progress"]:not(.progress-circle).white-round {
+  progress.white-round, [class*="progress"].white-round {
     border-radius: 1000px;
     overflow: hidden;
     color: white;
     background: rgba(255, 255, 255, 0.4); }
-    progress.white-round::-webkit-progress-bar, [class*="progress"]:not(.progress-circle).white-round::-webkit-progress-bar {
+    progress.white-round::-webkit-progress-bar, [class*="progress"].white-round::-webkit-progress-bar {
       background: transparent; }
-    progress.white-round::-webkit-progress-value, progress.white-round span, [class*="progress"]:not(.progress-circle).white-round::-webkit-progress-value, [class*="progress"]:not(.progress-circle).white-round span {
+    progress.white-round::-webkit-progress-value, progress.white-round span, [class*="progress"].white-round::-webkit-progress-value, [class*="progress"].white-round span {
       border-radius: 1000px;
       -webkit-transition: all 0.15s ease-in-out;
       -o-transition: all 0.15s ease-in-out;
@@ -1348,9 +1348,9 @@ progress, [class*="progress"]:not(.progress-circle) {
       height: 100%;
       overflow: hidden;
       background: white; }
-    progress.white-round span, [class*="progress"]:not(.progress-circle).white-round span {
+    progress.white-round span, [class*="progress"].white-round span {
       width: 0; }
-    progress.white-round::-moz-progress-bar, [class*="progress"]:not(.progress-circle).white-round::-moz-progress-bar {
+    progress.white-round::-moz-progress-bar, [class*="progress"].white-round::-moz-progress-bar {
       border-radius: 1000px;
       -webkit-transition: all 0.15s ease-in-out;
       -o-transition: all 0.15s ease-in-out;
@@ -1359,13 +1359,13 @@ progress, [class*="progress"]:not(.progress-circle) {
       transition: all 0.15s ease-in-out;
       overflow: hidden;
       background: white; }
-  progress.height-10, [class*="progress"]:not(.progress-circle).height-10 {
+  progress.height-10, [class*="progress"].height-10 {
     height: 10px; }
-  progress.height-15, [class*="progress"]:not(.progress-circle).height-15 {
+  progress.height-15, [class*="progress"].height-15 {
     height: 15px; }
-  progress::-webkit-progress-bar, [class*="progress"]:not(.progress-circle)::-webkit-progress-bar {
+  progress::-webkit-progress-bar, [class*="progress"]::-webkit-progress-bar {
     background: #40484B; }
-  progress::-webkit-progress-value, progress span, [class*="progress"]:not(.progress-circle)::-webkit-progress-value, [class*="progress"]:not(.progress-circle) span {
+  progress::-webkit-progress-value, progress span, [class*="progress"]::-webkit-progress-value, [class*="progress"] span {
     -webkit-transition: all 0.15s ease-in-out;
     -o-transition: all 0.15s ease-in-out;
     -ms-transition: all 0.15s ease-in-out;
@@ -1374,90 +1374,90 @@ progress, [class*="progress"]:not(.progress-circle) {
     display: block;
     height: 100%;
     background: #69B3A5; }
-  progress::-moz-progress-bar, [class*="progress"]:not(.progress-circle)::-moz-progress-bar {
+  progress::-moz-progress-bar, [class*="progress"]::-moz-progress-bar {
     -webkit-transition: all 0.15s ease-in-out;
     -o-transition: all 0.15s ease-in-out;
     -ms-transition: all 0.15s ease-in-out;
     -moz-transition: all 0.15s ease-in-out;
     transition: all 0.15s ease-in-out;
     background: #69B3A5; }
-  progress[class*="bg-white"]::-webkit-progress-bar, [class*="progress"]:not(.progress-circle)[class*="bg-white"]::-webkit-progress-bar {
+  progress[class*="bg-white"]::-webkit-progress-bar, [class*="progress"][class*="bg-white"]::-webkit-progress-bar {
     background: white; }
-  progress[class*="bg-charcoal"]::-webkit-progress-bar, [class*="progress"]:not(.progress-circle)[class*="bg-charcoal"]::-webkit-progress-bar {
+  progress[class*="bg-charcoal"]::-webkit-progress-bar, [class*="progress"][class*="bg-charcoal"]::-webkit-progress-bar {
     background: #2B3234; }
-  progress[class*="bg-slate"]::-webkit-progress-bar, [class*="progress"]:not(.progress-circle)[class*="bg-slate"]::-webkit-progress-bar {
+  progress[class*="bg-slate"]::-webkit-progress-bar, [class*="progress"][class*="bg-slate"]::-webkit-progress-bar {
     background: #40484B; }
-  progress[class*="bg-campus"]::-webkit-progress-bar, [class*="progress"]:not(.progress-circle)[class*="bg-campus"]::-webkit-progress-bar {
+  progress[class*="bg-campus"]::-webkit-progress-bar, [class*="progress"][class*="bg-campus"]::-webkit-progress-bar {
     background: #8A9EA3; }
-  progress[class*="bg-taupe"]::-webkit-progress-bar, [class*="progress"]:not(.progress-circle)[class*="bg-taupe"]::-webkit-progress-bar {
+  progress[class*="bg-taupe"]::-webkit-progress-bar, [class*="progress"][class*="bg-taupe"]::-webkit-progress-bar {
     background: #757575; }
-  progress[class*="bg-moola"]::-webkit-progress-bar, [class*="progress"]:not(.progress-circle)[class*="bg-moola"]::-webkit-progress-bar {
+  progress[class*="bg-moola"]::-webkit-progress-bar, [class*="progress"][class*="bg-moola"]::-webkit-progress-bar {
     background: #81B566; }
-  progress[class*="bg-shamrock"]::-webkit-progress-bar, [class*="progress"]:not(.progress-circle)[class*="bg-shamrock"]::-webkit-progress-bar {
+  progress[class*="bg-shamrock"]::-webkit-progress-bar, [class*="progress"][class*="bg-shamrock"]::-webkit-progress-bar {
     background: #69B3A5; }
-  progress[class*="bg-azure"]::-webkit-progress-bar, [class*="progress"]:not(.progress-circle)[class*="bg-azure"]::-webkit-progress-bar {
+  progress[class*="bg-azure"]::-webkit-progress-bar, [class*="progress"][class*="bg-azure"]::-webkit-progress-bar {
     background: #55A4B7; }
-  progress[class*="bg-lake"]::-webkit-progress-bar, [class*="progress"]:not(.progress-circle)[class*="bg-lake"]::-webkit-progress-bar {
+  progress[class*="bg-lake"]::-webkit-progress-bar, [class*="progress"][class*="bg-lake"]::-webkit-progress-bar {
     background: #50A5DD; }
-  progress[class*="bg-eggplant"]::-webkit-progress-bar, [class*="progress"]:not(.progress-circle)[class*="bg-eggplant"]::-webkit-progress-bar {
+  progress[class*="bg-eggplant"]::-webkit-progress-bar, [class*="progress"][class*="bg-eggplant"]::-webkit-progress-bar {
     background: #9A5BC5; }
-  progress[class*="bg-cerise"]::-webkit-progress-bar, [class*="progress"]:not(.progress-circle)[class*="bg-cerise"]::-webkit-progress-bar {
+  progress[class*="bg-cerise"]::-webkit-progress-bar, [class*="progress"][class*="bg-cerise"]::-webkit-progress-bar {
     background: #DB1988; }
-  progress[class*="bg-orange"]::-webkit-progress-bar, [class*="progress"]:not(.progress-circle)[class*="bg-orange"]::-webkit-progress-bar {
+  progress[class*="bg-orange"]::-webkit-progress-bar, [class*="progress"][class*="bg-orange"]::-webkit-progress-bar {
     background: #E5753C; }
-  progress[class*="bg-gold"]::-webkit-progress-bar, [class*="progress"]:not(.progress-circle)[class*="bg-gold"]::-webkit-progress-bar {
+  progress[class*="bg-gold"]::-webkit-progress-bar, [class*="progress"][class*="bg-gold"]::-webkit-progress-bar {
     background: #F9D57B; }
-  progress[class*="txt-white"]::-webkit-progress-value, progress[class*="txt-white"] span, [class*="progress"]:not(.progress-circle)[class*="txt-white"]::-webkit-progress-value, [class*="progress"]:not(.progress-circle)[class*="txt-white"] span {
+  progress[class*="txt-white"]::-webkit-progress-value, progress[class*="txt-white"] span, [class*="progress"][class*="txt-white"]::-webkit-progress-value, [class*="progress"][class*="txt-white"] span {
     background: white; }
-  progress[class*="txt-white"]::-moz-progress-bar, [class*="progress"]:not(.progress-circle)[class*="txt-white"]::-moz-progress-bar {
+  progress[class*="txt-white"]::-moz-progress-bar, [class*="progress"][class*="txt-white"]::-moz-progress-bar {
     background: white; }
-  progress[class*="txt-charcoal"]::-webkit-progress-value, progress[class*="txt-charcoal"] span, [class*="progress"]:not(.progress-circle)[class*="txt-charcoal"]::-webkit-progress-value, [class*="progress"]:not(.progress-circle)[class*="txt-charcoal"] span {
+  progress[class*="txt-charcoal"]::-webkit-progress-value, progress[class*="txt-charcoal"] span, [class*="progress"][class*="txt-charcoal"]::-webkit-progress-value, [class*="progress"][class*="txt-charcoal"] span {
     background: #2B3234; }
-  progress[class*="txt-charcoal"]::-moz-progress-bar, [class*="progress"]:not(.progress-circle)[class*="txt-charcoal"]::-moz-progress-bar {
+  progress[class*="txt-charcoal"]::-moz-progress-bar, [class*="progress"][class*="txt-charcoal"]::-moz-progress-bar {
     background: #2B3234; }
-  progress[class*="txt-slate"]::-webkit-progress-value, progress[class*="txt-slate"] span, [class*="progress"]:not(.progress-circle)[class*="txt-slate"]::-webkit-progress-value, [class*="progress"]:not(.progress-circle)[class*="txt-slate"] span {
+  progress[class*="txt-slate"]::-webkit-progress-value, progress[class*="txt-slate"] span, [class*="progress"][class*="txt-slate"]::-webkit-progress-value, [class*="progress"][class*="txt-slate"] span {
     background: #40484B; }
-  progress[class*="txt-slate"]::-moz-progress-bar, [class*="progress"]:not(.progress-circle)[class*="txt-slate"]::-moz-progress-bar {
+  progress[class*="txt-slate"]::-moz-progress-bar, [class*="progress"][class*="txt-slate"]::-moz-progress-bar {
     background: #40484B; }
-  progress[class*="txt-campus"]::-webkit-progress-value, progress[class*="txt-campus"] span, [class*="progress"]:not(.progress-circle)[class*="txt-campus"]::-webkit-progress-value, [class*="progress"]:not(.progress-circle)[class*="txt-campus"] span {
+  progress[class*="txt-campus"]::-webkit-progress-value, progress[class*="txt-campus"] span, [class*="progress"][class*="txt-campus"]::-webkit-progress-value, [class*="progress"][class*="txt-campus"] span {
     background: #8A9EA3; }
-  progress[class*="txt-campus"]::-moz-progress-bar, [class*="progress"]:not(.progress-circle)[class*="txt-campus"]::-moz-progress-bar {
+  progress[class*="txt-campus"]::-moz-progress-bar, [class*="progress"][class*="txt-campus"]::-moz-progress-bar {
     background: #8A9EA3; }
-  progress[class*="txt-taupe"]::-webkit-progress-value, progress[class*="txt-taupe"] span, [class*="progress"]:not(.progress-circle)[class*="txt-taupe"]::-webkit-progress-value, [class*="progress"]:not(.progress-circle)[class*="txt-taupe"] span {
+  progress[class*="txt-taupe"]::-webkit-progress-value, progress[class*="txt-taupe"] span, [class*="progress"][class*="txt-taupe"]::-webkit-progress-value, [class*="progress"][class*="txt-taupe"] span {
     background: #757575; }
-  progress[class*="txt-taupe"]::-moz-progress-bar, [class*="progress"]:not(.progress-circle)[class*="txt-taupe"]::-moz-progress-bar {
+  progress[class*="txt-taupe"]::-moz-progress-bar, [class*="progress"][class*="txt-taupe"]::-moz-progress-bar {
     background: #757575; }
-  progress[class*="txt-moola"]::-webkit-progress-value, progress[class*="txt-moola"] span, [class*="progress"]:not(.progress-circle)[class*="txt-moola"]::-webkit-progress-value, [class*="progress"]:not(.progress-circle)[class*="txt-moola"] span {
+  progress[class*="txt-moola"]::-webkit-progress-value, progress[class*="txt-moola"] span, [class*="progress"][class*="txt-moola"]::-webkit-progress-value, [class*="progress"][class*="txt-moola"] span {
     background: #81B566; }
-  progress[class*="txt-moola"]::-moz-progress-bar, [class*="progress"]:not(.progress-circle)[class*="txt-moola"]::-moz-progress-bar {
+  progress[class*="txt-moola"]::-moz-progress-bar, [class*="progress"][class*="txt-moola"]::-moz-progress-bar {
     background: #81B566; }
-  progress[class*="txt-shamrock"]::-webkit-progress-value, progress[class*="txt-shamrock"] span, [class*="progress"]:not(.progress-circle)[class*="txt-shamrock"]::-webkit-progress-value, [class*="progress"]:not(.progress-circle)[class*="txt-shamrock"] span {
+  progress[class*="txt-shamrock"]::-webkit-progress-value, progress[class*="txt-shamrock"] span, [class*="progress"][class*="txt-shamrock"]::-webkit-progress-value, [class*="progress"][class*="txt-shamrock"] span {
     background: #69B3A5; }
-  progress[class*="txt-shamrock"]::-moz-progress-bar, [class*="progress"]:not(.progress-circle)[class*="txt-shamrock"]::-moz-progress-bar {
+  progress[class*="txt-shamrock"]::-moz-progress-bar, [class*="progress"][class*="txt-shamrock"]::-moz-progress-bar {
     background: #69B3A5; }
-  progress[class*="txt-azure"]::-webkit-progress-value, progress[class*="txt-azure"] span, [class*="progress"]:not(.progress-circle)[class*="txt-azure"]::-webkit-progress-value, [class*="progress"]:not(.progress-circle)[class*="txt-azure"] span {
+  progress[class*="txt-azure"]::-webkit-progress-value, progress[class*="txt-azure"] span, [class*="progress"][class*="txt-azure"]::-webkit-progress-value, [class*="progress"][class*="txt-azure"] span {
     background: #55A4B7; }
-  progress[class*="txt-azure"]::-moz-progress-bar, [class*="progress"]:not(.progress-circle)[class*="txt-azure"]::-moz-progress-bar {
+  progress[class*="txt-azure"]::-moz-progress-bar, [class*="progress"][class*="txt-azure"]::-moz-progress-bar {
     background: #55A4B7; }
-  progress[class*="txt-lake"]::-webkit-progress-value, progress[class*="txt-lake"] span, [class*="progress"]:not(.progress-circle)[class*="txt-lake"]::-webkit-progress-value, [class*="progress"]:not(.progress-circle)[class*="txt-lake"] span {
+  progress[class*="txt-lake"]::-webkit-progress-value, progress[class*="txt-lake"] span, [class*="progress"][class*="txt-lake"]::-webkit-progress-value, [class*="progress"][class*="txt-lake"] span {
     background: #50A5DD; }
-  progress[class*="txt-lake"]::-moz-progress-bar, [class*="progress"]:not(.progress-circle)[class*="txt-lake"]::-moz-progress-bar {
+  progress[class*="txt-lake"]::-moz-progress-bar, [class*="progress"][class*="txt-lake"]::-moz-progress-bar {
     background: #50A5DD; }
-  progress[class*="txt-eggplant"]::-webkit-progress-value, progress[class*="txt-eggplant"] span, [class*="progress"]:not(.progress-circle)[class*="txt-eggplant"]::-webkit-progress-value, [class*="progress"]:not(.progress-circle)[class*="txt-eggplant"] span {
+  progress[class*="txt-eggplant"]::-webkit-progress-value, progress[class*="txt-eggplant"] span, [class*="progress"][class*="txt-eggplant"]::-webkit-progress-value, [class*="progress"][class*="txt-eggplant"] span {
     background: #9A5BC5; }
-  progress[class*="txt-eggplant"]::-moz-progress-bar, [class*="progress"]:not(.progress-circle)[class*="txt-eggplant"]::-moz-progress-bar {
+  progress[class*="txt-eggplant"]::-moz-progress-bar, [class*="progress"][class*="txt-eggplant"]::-moz-progress-bar {
     background: #9A5BC5; }
-  progress[class*="txt-cerise"]::-webkit-progress-value, progress[class*="txt-cerise"] span, [class*="progress"]:not(.progress-circle)[class*="txt-cerise"]::-webkit-progress-value, [class*="progress"]:not(.progress-circle)[class*="txt-cerise"] span {
+  progress[class*="txt-cerise"]::-webkit-progress-value, progress[class*="txt-cerise"] span, [class*="progress"][class*="txt-cerise"]::-webkit-progress-value, [class*="progress"][class*="txt-cerise"] span {
     background: #DB1988; }
-  progress[class*="txt-cerise"]::-moz-progress-bar, [class*="progress"]:not(.progress-circle)[class*="txt-cerise"]::-moz-progress-bar {
+  progress[class*="txt-cerise"]::-moz-progress-bar, [class*="progress"][class*="txt-cerise"]::-moz-progress-bar {
     background: #DB1988; }
-  progress[class*="txt-orange"]::-webkit-progress-value, progress[class*="txt-orange"] span, [class*="progress"]:not(.progress-circle)[class*="txt-orange"]::-webkit-progress-value, [class*="progress"]:not(.progress-circle)[class*="txt-orange"] span {
+  progress[class*="txt-orange"]::-webkit-progress-value, progress[class*="txt-orange"] span, [class*="progress"][class*="txt-orange"]::-webkit-progress-value, [class*="progress"][class*="txt-orange"] span {
     background: #E5753C; }
-  progress[class*="txt-orange"]::-moz-progress-bar, [class*="progress"]:not(.progress-circle)[class*="txt-orange"]::-moz-progress-bar {
+  progress[class*="txt-orange"]::-moz-progress-bar, [class*="progress"][class*="txt-orange"]::-moz-progress-bar {
     background: #E5753C; }
-  progress[class*="txt-gold"]::-webkit-progress-value, progress[class*="txt-gold"] span, [class*="progress"]:not(.progress-circle)[class*="txt-gold"]::-webkit-progress-value, [class*="progress"]:not(.progress-circle)[class*="txt-gold"] span {
+  progress[class*="txt-gold"]::-webkit-progress-value, progress[class*="txt-gold"] span, [class*="progress"][class*="txt-gold"]::-webkit-progress-value, [class*="progress"][class*="txt-gold"] span {
     background: #F9D57B; }
-  progress[class*="txt-gold"]::-moz-progress-bar, [class*="progress"]:not(.progress-circle)[class*="txt-gold"]::-moz-progress-bar {
+  progress[class*="txt-gold"]::-moz-progress-bar, [class*="progress"][class*="txt-gold"]::-moz-progress-bar {
     background: #F9D57B; }
 
 input[type=range] {
