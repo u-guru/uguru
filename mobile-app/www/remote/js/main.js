@@ -1,4 +1,4 @@
-var LOCAL = false; //local to the 8100 codebasebirbirscd
+var LOCAL = true; //local to the 8100 codebasebirbirscd
 
 
 
