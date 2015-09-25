@@ -427,6 +427,11 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 	height: calc(100% / 3 * 2);
 	overflow: auto;
 }
+
+.half {
+	height: calc(100% / 2);
+}
+
 .main-50 {
 	height: calc(100% - 50px);
 	overflow: auto;

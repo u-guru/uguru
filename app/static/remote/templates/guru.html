@@ -5,34 +5,42 @@
 		<div id="guru-ranking">
 			<div class="ugrid">
 				<div id="guru-chart">
-          <div id='guru-ranking-progress-bar'>
-					<!-- <div ng-include="img_base + 'templates/progress.circle.empty.svg.html'"></div> -->
-					<div id="percentile">
-						<div id="percentile-ranking">{{page.guru_ranking}}</div>
-						<div id="percentile-label">Percentile</p></div>
-					</div>
-          </div>
-				</div>
-				<div id="guru-stats">
-					<div>
-
-            <!-- credibility percentage -->
-            <h2 class='bottom-0'><span id='credibility-percent'>{{user.current_credibility_percent}}</span>% cred</h2>
-            <div class='white-round height-10' id='guru-credibility-progress-bar'> </div>
-
-						<!-- profile percentage -->
-            <h2 class='top-10 bottom-0'><span id='profile-percent'>{{user.current_profile_percent}}</span>% profile</h2>
-            <div class='white-round height-10' id='guru-profile-progress-bar'> </div>
-
-						<h2>$<span id='hourly-rate'>{{user.current_hourly}}</span>/hour</h2>
-            <div class='white-round height-10' id='guru-hourly-progress-bar'> </div>
-						<!-- <progress id='hourly-progress' class="white-round height-10" value="0" max="40">
-						    <div class="progress white-round height-10"><span data-value="99" style="width:99%"></span></div>
-						</progress> -->
-					</div>
-				</div>
+                        <div id='guru-ranking-progress-bar'>
+					        <div id="percentile">
+						        <div id="percentile-ranking">
+                                    {{page.guru_ranking}}
+                                </div>
+						        <div id="percentile-label">Percentile</div>
+                            </div>
+					    </div>
+                </div>
 			</div>
-		</div>
+			<div id="guru-stats">
+				<div>
+
+                    <!-- credibility percentage -->
+                    <h2 class='bottom-0'>
+
+                        <span id='credibility-percent'>{{user.current_credibility_percent}}
+
+                        </span>
+
+                        % cred
+
+                    </h2>
+
+                    <div class='white-round height-10' id='guru-credibility-progress-bar'>
+                    </div>
+
+            						<!-- profile percentage -->
+                    <h2 class='top-10 bottom-0'><span id='profile-percent'>{{user.current_profile_percent}}</span>% profile</h2>
+                    <div class='white-round height-10' id='guru-profile-progress-bar'> </div>
+
+            		<h2>$<span id='hourly-rate'>{{user.current_hourly}}</span>/hour</h2>
+                    <div class='white-round height-10' id='guru-hourly-progress-bar'> </div>
+            	</div>
+            </div>
+        </div>
 	</header>
 	<div id="guru-home-content" class="two-thirds">
 		<h2 class="section-header">Your University Guru Ranking</h2>
@@ -54,7 +62,7 @@
       <i class='icon ion-person'> </i>
     </a>
 
-    <a class="tab-item" nav-direction='swap' href='#/guru-ranking'>
+    <a class="tab-item" nav-direction='swap' href='#/guru-credibility'>
       <i class='icon ion-pricetag'> </i>
     </a>
     <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>

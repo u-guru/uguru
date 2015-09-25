@@ -702,41 +702,45 @@ angular.module('uguru.util.controllers')
 
     $scope.goToGuru = function() {
 
-      //$scope.loader.show();
+      $scope.loader.show();
 
-      //if no skills, courses, or majors
-      if ($scope.user && (($scope.user.guru_courses.length === 0)  || ($scope.user.guru_skills.length === 0)
-      || ($scope.user.majors.length === 0))  && confirm('Your guru account is not complete. Complete it?')) {
+
+
         AnimationService.flip();
-        $state.go('^.become-guru');
-      } else {
-        console.log('transitioning to guru mode');
-        AnimationService.flip();
+
+        $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': true}, null, $scope);
+        $timeout(function() {
+          $scope.loader.hide();
+        }, 1000)
+
+        $timeout(function() {
+          $scope.root.vars.guru_mode = true;
+          $ionicSideMenuDelegate.toggleRight();
+        }, 500)
+
         $state.go('^.guru');
-      }
-
-
-      $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': true}, null, $scope);
-
-
-      $timeout(function() {
-        $scope.root.vars.guru_mode = true;
-      }, 1000)
     }
 
     $scope.goToStudent = function() {
 
       //show the loader immediately
-      //$scope.loader.show();
-      AnimationService.flip();
-      $state.go('^.home');
+      $scope.loader.show();
+      // AnimationService.flip();
 
       //let the server know the user was on guru mode for the next time app opens
+
       $scope.user.updateAttr('guru_mode', $scope.user, {'guru_mode': false}, null, $scope);
+      $timeout(function() {
+        $scope.loader.hide();
+      }, 1000)
 
       $timeout(function() {
         $scope.root.vars.guru_mode = false;
-      }, 1000)
+        $ionicSideMenuDelegate.toggleRight();
+      }, 500)
+
+      $state.go('^.home');
+
     }
 
 
