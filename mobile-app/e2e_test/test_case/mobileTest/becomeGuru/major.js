@@ -19,7 +19,8 @@ describe('Major Test', function () {
 		{
 			//element(by.id('home-uguru-popup')).click();
 			element(by.css('[ng-click="closeWelcomePopup()"]')).click();
-		});	it ('Open The Request',function()
+		});	
+		it ('Start Become Guru Process',function()
 		{
 			guruButton.click();
 
@@ -41,7 +42,7 @@ describe('Major Test', function () {
 		for( i = 8; i < 40; i+=8)
 		{
 			(function(index) {
-	      		it ('Check scrollable ',function()
+	      		it ('Scroll Down  ',function()
 		 		{
 		 			element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
 			    		browser.executeScript('arguments[0].scrollIntoView()', items[index].getWebElement());
@@ -51,7 +52,7 @@ describe('Major Test', function () {
 				it('Check more items loaded',function()
 				{
 					element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
-			    		expect(items.length > 10).toBe(true,"no data is loading");
+			    		expect(items.length > 10).toBe(true,"no data is loading in #major-list");
 			    	});
 
 				});
@@ -61,7 +62,7 @@ describe('Major Test', function () {
 				// 	doc.checkLists('major-list','major.name');
 				// });
 
-				it ('scroll up ',function()
+				it ('Scroll Back To Top',function()
 		 		{
 		 			element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
 			    		browser.executeScript('arguments[0].scrollIntoView()', items[0].getWebElement());
@@ -75,31 +76,35 @@ describe('Major Test', function () {
 
 	describe('Search Testing',function()
 	{
-		it('send a key : b',function()
+		describe('Search results is displayed when a key is entered',function()
 		{
-	    	doc.setInput('b',2);
+			it('send a key : b',function()
+			{
+		    	doc.setInput('b',2);
 
-		});
-		it('Check the Search result is not empty',function()
-		{
-			element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
-	    		expect(items.length).not.toBe(0,"no Search result found");
-	    	});
-		});
-		// Take out if take too much time
-		// it('check Data repeating',function()
-		// {
-		// 	doc.checkLists('major-list','major.name');
-		// });
+			});
+			it('Check the Search result is not empty',function()
+			{
+				element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
+		    		expect(items.length).not.toBe(0,"no Search result[#major-list] found");
+		    	});
+			});
+			// Take out if take too much time
+			// it('check Data repeating',function()
+			// {
+			// 	doc.checkLists('major-list','major.name');
+			// });
 
-		it('clear a key',function()
-		{
-			element.all(by.tagName("input")).then(function(inputs)
-	      	{
-	      		inputs[2].clear();
-	      	});
+			it('clear a key',function()
+			{
+				element.all(by.tagName("input")).then(function(inputs)
+		      	{
+		      		inputs[2].clear();
+		      	});
+			});
 		});
-		describe("Send A Key : Computer, and see result is right",function()
+		
+		describe("Send A Key word: Computer, and see result is right",function()
 		{
 			it('send a key : Computer',function()
 			{
@@ -118,84 +123,88 @@ describe('Major Test', function () {
 				doc.checkLists("major-list","major.name",'Computer Science and Engineering',1)
 				doc.checkLists("major-list","major.name",'Linguistics and Computer Science',2)
 			});
-		});
 
-		describe('Choose a result and see the searchbar is clear and the chosen one has checkmark.',function()
-		{
-			it('Choose The result',function()
+			describe('Select a search-result and see the searchbar got clear && the selected major has checkmark.',function()
 			{
-		 	    doc.newPickList('major-list',0);
+				it('Select The search- esult',function()
+				{
+			 	    doc.newPickList('major-list',0);
+				});
+				it ("Check Search Input Has Been Clear",function()
+				{
+			    	doc.setInput('',2,true);
+				});
+				it('Search-list is back to default-list',function()
+				{
+					element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
+					    		expect(items.length >= 10).toBe(true,"Major-List is not showing correct, Total items in the Major-list : ",items.length);
+					    	});
+				});
+				it ('Major : "Computer Science" Has Checkmark',function()
+				{
+					element.all(by.repeater('major in user.majors')).then(function (items) {
+				        expect(items.length).toBe(1);
+						expect(items[0].getText()).toContain("Computer Science");
+						expect(items[0].element(by.css('.icon.ion-checkmark-round')).isDisplayed()).toBe(true);			     	
+				    });				
+				});
+				it ('Re Enter "Computer Science",and see it has been taken off from the #major-list.',function()
+				{
+			    	doc.setInput('Computer Science',2);
+	    			element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
+	    	    		expect(items.length).toBe(2,"Computer Science is still in the #major-list");
+	    	    	});
+				});
 			});
-			it ("Search Bar is clear",function()
-			{
-		    	doc.setInput('',2,true);
-			});
-			it('Search result is clear-out and list is back',function()
-			{
-				element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
-				    		expect(items.length >= 10).toBe(true,"Full List is not showing correct, Total items in the list : ",items.length);
-				    	});
-			});
-			it ('Major : "Computer Science" Has been Added',function()
-			{
-				element.all(by.repeater('major in user.majors')).then(function (items) {
-			        expect(items.length).toBe(1);
-					expect(items[0].getText()).toContain("Computer Science");			     	
-			    });				
-			});
-			it ('Re type "Computer Science",and see it has taken off from the list.',function()
-			{
-		    	doc.setInput('Computer Science',2);
-    			element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
-    	    		expect(items.length).toBe(2,"Choosen Result is still in the list");
-    	    	});
-			});
-		});
+
 		
-		describe("Cancel Become Guru Process, and Check everything is set to default",function()
-		{
-			it("Go Cancel Become Guru",function()
+		
+			describe("Cancel Become Guru Process, and Check everything reset back to default",function()
 			{
-				backStep.click();
-			});
-			it('Check Pop up ',function()
-			{
-				browser.wait(EC.visibilityOf(element(by.id('home-uguru-popup'))),3000);
-				// expect(element(by.id('home-uguru-popup')).isDisplayed()).toBe(true);
-			});
-			it('Close Welcome',function()
-			{
-				//element(by.id('home-uguru-popup')).click();
-				element(by.css('[ng-click="closeWelcomePopup()"]')).click();
-			});
-			it ('Open The Request',function()
-			{
-				guruButton.click();
-			});
+				it("Cancel Process of Become Guru",function()
+				{
+					backStep.click();
+				});
 
-			it ('Check Evything is back to default',function()
-			{
-		    	doc.setInput('',2,true);
-	    		expect(element(by.repeater('major in user.majors')).isPresent()).toBe(false,"Choose List doesn't clear out")
-	    		element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
-		    		expect(items.length >= 10).toBe(true,"Full List is not return to default");
-		    	});
-			});
-			//Skip Bug
-			it('Reset',function()
-			{		
-		    	doc.setInput('a',2,true);
-				element.all(by.tagName("input")).then(function(inputs)
-		      	{
-		      		inputs[2].clear();
-		      	});
-			})
+				// it('Check Wrap Pop up ',function()
+				// {
+				// 	browser.wait(EC.visibilityOf(element(by.id('home-uguru-popup'))),3000);
+				// 	// expect(element(by.id('home-uguru-popup')).isDisplayed()).toBe(true);
+				// });
+				// it('Close Welcome',function()
+				// {
+				// 	//element(by.id('home-uguru-popup')).click();
+				// 	element(by.css('[ng-click="closeWelcomePopup()"]')).click();
+				// });
+				it (' Start Become Guru Process',function()
+				{
+					guruButton.click();
+				});
 
+				it ('Check Evything is back to default',function()
+				{
+			    	doc.setInput('',2,true);
+		    		expect(element(by.repeater('major in user.majors')).isPresent()).toBe(false,"Selected-List[ {{user.majors}} ] doesn't clear out")
+		    		element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
+			    		expect(items.length >= 10).toBe(true,"#major-List does not return to default");
+			    	});
+				});
+				//Skip Bug
+				it('Reset Value[Skip Bug]',function()
+				{		
+			    	doc.setInput('a',2,true);
+					element.all(by.tagName("input")).then(function(inputs)
+			      	{
+			      		inputs[2].clear();
+			      	});
+				});
+
+			});
 		});
-
+		// End of Search Test 
 	});
 
-	describe('removed the selected major and see it back to list',function()
+	describe('Removed the selected major and see it back to list',function()
 	{
 		var MajorName = null;
 		it('send a key : Computer Science and Engineering',function()
@@ -210,7 +219,10 @@ describe('Major Test', function () {
 
 				if(items.length != 1)
 				{
-					expect(items.length).toBe(1,"Opps Something[Choosed Data] shouldn't show up")
+					items[0].getText().then(function(text)
+						{
+							expect(items.length).toBe(1,"Search Result should not show Major : "+text)
+						});
 					doc.newPickList('major-list',1);
 				}
 				else
@@ -228,7 +240,7 @@ describe('Major Test', function () {
 	      	});
 		})
 
-		it('Remocve a selected Major',function()
+		it('Remove a selected Major',function()
 		{
 
 			element.all(by.repeater('major in user.majors')).then(function (items) {
@@ -238,20 +250,33 @@ describe('Major Test', function () {
 					items[0].click();
 
 				doc.switchAlert();
-				doc.switchAlert();
-
+				// doc.switchAlert();
+    			  browser.wait(function() {
+				    return browser.switchTo().alert().then(
+				        function() 
+				        {
+				         browser.switchTo().alert().accept();
+				         return false;
+				        }, 
+				        function()
+				         {
+				          return true;
+				         }
+				    );
+				},3000,"Input should not pass");
 		    });	
 		});
-		it('check delete',function()
+		it('Check delete',function()
 		{
 			var newMsg = element(by.css(".loading-container")).element(by.tagName('span'));
 			browser.wait(EC.presenceOf(newMsg),5000);
 			newMsg.getAttribute('value').then(function(value)
 			{
-			  expect(value).toContain('successfully removed');
+			  expect(value).toContain('successfully removed',"No Message is Showing [loading-container]");
 			}); 
 		});
-		it('Search Feature work',function()
+
+		it('Search "Computer Science and Engineering" and Find ',function()
 		{
 	    	doc.setInput('Computer Science and Engineering',2);
 			element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {

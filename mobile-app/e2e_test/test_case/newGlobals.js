@@ -186,7 +186,7 @@ var global = function() {
     });
   }
 
-  this.checkLists = function(id,binding,name,index)
+  this.checkLists = function(id,binding,itemName,index)
   { 
     str = '#'+id+' li:not(.ng-hide)';
     element.all(by.css(str)).then(function (items) {
@@ -197,9 +197,10 @@ var global = function() {
           var groupName;
           var tempName;
           var tempGroupName;
-          if(name != null && index != null)
+
+          if(itemName != null && index != null)
           {
-              expect(items[index].element(by.binding(binding)).getText()).toContain(name)
+              expect(items[index].element(by.binding(binding)).getText()).toContain(itemName)
           }
           else
           {

@@ -1,5 +1,5 @@
 var LOCAL = true; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.guru-profile';
+var FIRST_PAGE='^.university';
 var img_base;
 
 // // @if ADMIN
@@ -10,8 +10,8 @@ var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
 var BASE = '';
 if (LOCAL) {
-  BASE = '/remote/';
-  BASE_URL = 'http://localhost:8100';
+  BASE = 'remote/';
+  BASE_URL = 'http://192.168.0.105:8100';
  // REST_URL = 'http://localhost:5000';
   //REST_URL = 'https://uguru-rest.herokuapp.com'
 } else {
