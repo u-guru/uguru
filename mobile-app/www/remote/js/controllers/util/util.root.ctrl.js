@@ -716,7 +716,7 @@ angular.module('uguru.util.controllers')
           {
             $ionicViewSwitcher.nextDirection('enter');
 
-            $state.go('^.guru-credibility')
+            $state.go('^.university')
 
 
           }
@@ -727,7 +727,7 @@ angular.module('uguru.util.controllers')
             $ionicViewSwitcher.nextDirection('enter');
 
 
-            $state.go('^.guru-credibility')
+            $state.go('^.university')
 
             $timeout(function() {
               $scope.loader.hide();

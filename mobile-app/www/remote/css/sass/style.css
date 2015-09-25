@@ -297,14 +297,10 @@ section {
 @media screen and (max-width: 320px) {
   .uguru-view body, .uguru-view input, .uguru-view button {
     font-size: 20px; }
-  .uguru-view .request-info h3 {
-    font-size: 20px !important; }
   .uguru-view #start-container {
     font-size: 24px !important; }
-  .uguru-view #request-message h2, .uguru-view #skills-list a {
+  .uguru-view #skills-list a {
     font-size: 16px !important; }
-    .uguru-view #request-message h2 i, .uguru-view #skills-list a i {
-      display: none; }
   .uguru-view #request-button span b {
     font-size: 18px !important; }
   .uguru-view #skills-list .skill-icon {
@@ -561,6 +557,7 @@ section {
   .terms-modal h3 {
     font-size: 20px; }
   .terms-modal h4 {
+    font-size: 16px;
     line-height: 1.25; }
   .terms-modal p, .terms-modal ol, .terms-modal ul {
     font-size: 14px;
@@ -875,12 +872,14 @@ section {
     .university-view #school-list ul li a .school-icon img, .university-view #school-list-modal ul li a .school-icon img {
       border-radius: 1000px;
       border: 0 !important;
-      padding: 10px;
-      width: 64px;
-      height: 64px; }
+      margin: 10px;
+      width: 44px;
+      height: 44px;
+      background: white; }
     .university-view #school-list ul li a .school-name, .university-view #school-list-modal ul li a .school-name {
       display: block;
-      width: calc(100% - 69px); }
+      width: calc(100% - 69px);
+      padding-right: 5px; }
       .university-view #school-list ul li a .school-name b, .university-view #school-list ul li a .school-name i, .university-view #school-list-modal ul li a .school-name b, .university-view #school-list-modal ul li a .school-name i {
         display: block;
         width: 100%;
@@ -900,8 +899,10 @@ section {
         text-overflow: ellipsis; }
       .university-view #school-list ul li a .school-name .school-city, .university-view #school-list-modal ul li a .school-name .school-city {
         text-transform: capitalize; }
-      .university-view #school-list ul li a .school-name .school-stat, .university-view #school-list-modal ul li a .school-name .school-stat {
+      .university-view #school-list ul li a .school-name .school-state, .university-view #school-list-modal ul li a .school-name .school-state {
         text-transform: uppercase; }
+      .university-view #school-list ul li a .school-name .school-distance, .university-view #school-list-modal ul li a .school-name .school-distance {
+        float: right; }
   .university-view #school-list ul li a:active, .university-view #school-list ul li a:focus, .university-view #school-list ul li a:hover, .university-view #school-list-modal ul li a:active, .university-view #school-list-modal ul li a:focus, .university-view #school-list-modal ul li a:hover {
     background: rgba(255, 255, 255, 0.2); }
 
@@ -932,7 +933,7 @@ section {
   padding: 15px;
   width: 100%;
   height: 100%;
-  background: #40484B; }
+  color: #40484B; }
   .home-view #request-message > div > div svg {
     display: block;
     margin: 0 auto;
@@ -941,7 +942,7 @@ section {
   .home-view #request-message > div h2 {
     width: 100%;
     margin: 30px 0;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     text-align: center;
     line-height: 1.2; }
@@ -980,7 +981,7 @@ section {
       justify-content: center;
       width: 70px;
       height: 70px;
-      background: #69B3A5; }
+      background: #DB1988; }
     .home-view #request-message #request-button b {
       display: block;
       width: 100%;
@@ -989,6 +990,10 @@ section {
       font-weight: 600;
       text-align: center;
       text-transform: uppercase; }
+
+@media screen and (min-width: 375px) {
+  .home-view #request-message > div h2 {
+    font-size: 20px; } }
 
 @media screen and (min-height: 600px) {
   .request#request-empty #request-message > div > div svg {
@@ -1510,11 +1515,24 @@ section {
         max-width: 100px;
         padding: 5px;
         background: rgba(255, 255, 255, 0.5); }
-      .guru-profile-view #profile-desc #profile-icon svg {
-        display: block;
-        margin: 0 auto;
-        width: 120px;
-        height: 120px; }
+      .guru-profile-view #profile-desc #profile-icon a {
+        position: relative;
+        display: block; }
+        .guru-profile-view #profile-desc #profile-icon a img {
+          filter: alpha(opacity=50);
+          opacity: 0.5; }
+        .guru-profile-view #profile-desc #profile-icon a h1 {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          width: 100px;
+          text-align: center;
+          text-transform: uppercase; }
     .guru-profile-view #profile-desc #profile-list {
       text-align: center; }
       .guru-profile-view #profile-desc #profile-list ul {

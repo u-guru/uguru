@@ -277,17 +277,11 @@ section {
 		body, input, button {
 			font-size: 20px;
 		}
-		.request-info h3 {
-			font-size: 20px!important;
-		}
 		#start-container {
 			font-size: 24px!important;
 		}
-		#request-message h2, #skills-list a {
+		#skills-list a {
 			font-size: 16px!important;
-			i {
-				display: none;
-			}
 		}
 		#request-button span b {
 			font-size: 18px!important;
@@ -553,6 +547,7 @@ section {
 		font-size: 20px;
 	}
 	h4 {
+		font-size: 16px;
 		line-height: 1.25;
 	}
     p, ol, ul {
@@ -932,14 +927,16 @@ section {
 						img {
 							@include round;
 							border: 0!important;
-							padding: 10px;
-							width: 64px;
-							height: 64px;
+							margin: 10px;
+							width: 44px;
+							height: 44px;
+							background: white;
 						}
 					}
 					.school-name {
 						display: block;
 						width: calc(100% - 69px);
+						padding-right: 5px;
 						b, i {
 							display: block;
 							width: 100%;
@@ -964,8 +961,11 @@ section {
 						.school-city {
 							text-transform: capitalize;
 						}
-						.school-stat {
+						.school-state {
 							text-transform: uppercase;
+						}
+						.school-distance {
+							float: right;
 						}
 					}
 				}
@@ -994,7 +994,7 @@ section {
 		padding: 15px;
 		width: 100%;
 		height: 100%;
-		background: $slate;
+		color: $slate;
 		> div {
 			> div svg {
 				display: block;
@@ -1005,7 +1005,7 @@ section {
 			h2 {
 				width: 100%;
 				margin: 30px 0;
-				font-size: 20px;
+				font-size: 16px;
 				font-weight: 400;
 				text-align: center;
 				line-height: 1.2;
@@ -1022,7 +1022,7 @@ section {
 				@include flex-center;
 				width: 70px;
 				height: 70px;
-				background: $shamrock;
+				background: $cerise;
 			}
 			b {
 				display: block;
@@ -1032,6 +1032,17 @@ section {
 				font-weight: 600;
 				text-align: center;
 				text-transform: uppercase;
+			}
+		}
+	}
+}
+@media screen and (min-width:375px) {
+	.home-view {
+		#request-message {
+			> div {
+				h2 {
+					font-size: 20px;
+				}
 			}
 		}
 	}
@@ -1596,11 +1607,18 @@ section {
 				padding: 5px;
 				background: rgba(white, .5);
 			}
-			svg {
+			a {
+				position: relative;
 				display: block;
-				margin: 0 auto;
-				width: 120px;
-				height: 120px;
+				img {
+					@include opacity(.5);
+				}
+				h1 {
+					@include center-xy;
+					width: 100px;
+					text-align: center;
+					text-transform: uppercase;
+				}
 			}
 		}
 		#profile-list {
