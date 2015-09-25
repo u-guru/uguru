@@ -25,7 +25,8 @@ exports.config = {
     framework: 'jasmine2',
 
       // seleniumAddress: 'http://localhost:4444/wd/hub',
-     baseUrl: 'http://10.0.0.2:8000/',
+     // baseUrl: 'http://10.0.0.2:8000/',
+     baseUrl: 'http://192.168.56.101:5555/',
 
     //appium port has to be 4723
 
@@ -72,94 +73,94 @@ exports.config = {
 
 
         ],
-        // suites:
-        // {
-        //     access: ['../test_case/mobileTest/access.js'],
+        suites:
+        {
+            access: ['../test_case/mobileTest/access.js'],
             
-        //     university: ['../test_case/mobileTest/workflows/access.js',
-        //                  '../test_case/mobileTest/university.js'
-        //                 ],
+            university: ['../test_case/mobileTest/workflows/access.js',
+                         '../test_case/mobileTest/university.js'
+                        ],
 
-        //     sign:   ['../test_case/mobileTest/workflows/access.js',
-        //            '../test_case/mobileTest/workflows/university.js', 
-        //            '../test_case/mobileTest/sidemenu/sidemenu.js',
-        //            '../test_case/mobileTest/sidemenu/signup.js'
-        //             ],
+            sign:   ['../test_case/mobileTest/workflows/access.js',
+                   '../test_case/mobileTest/workflows/university.js', 
+                   '../test_case/mobileTest/sidemenu/sidemenu.js',
+                   '../test_case/mobileTest/sidemenu/signup.js'
+                    ],
 
-        //     side:   [ '../test_case/mobileTest/workflows/access.js',
-        //            '../test_case/mobileTest/workflows/university.js', 
-        //             '../test_case/mobileTest/sidemenu/sidemenu.js'
-        //             ],
-        //     major:  [ '../test_case/mobileTest/workflows/access.js',
-        //               '../test_case/mobileTest/workflows/university.js', 
-        //               '../test_case/mobileTest/becomeGuru/major.js'
-        //             ],
-        //     course: [  '../test_case/mobileTest/workflows/access.js',
-        //                 '../test_case/mobileTest/workflows/university.js', 
-        //                 '../test_case/mobileTest/workflows/major.js',
-        //                 '../test_case/mobileTest/becomeGuru/course.js',
-        //             ],
-        //     category:[
-        //                 '../test_case/mobileTest/workflows/access.js',
-        //                 '../test_case/mobileTest/workflows/university.js', 
-        //                 '../test_case/mobileTest/workflows/major.js',
-        //                 '../test_case/mobileTest/workflows/course.js',
-        //                 '../test_case/mobileTest/becomeGuru/category.js'
-        //              ],
-        //      photo:[
-        //                   '../test_case/mobileTest/workflows/access.js',
-        //                   '../test_case/mobileTest/workflows/university.js', 
-        //                  // '../test_case/mobileTest/workflows/major.js',
-        //                  // '../test_case/mobileTest/workflows/course.js',
-        //                  // '../test_case/mobileTest/workflows/category.js',
-        //                  '../test_case/mobileTest/workflows/lazy.js',
-        //                  '../test_case/mobileTest/becomeGuru/photo.js'
-        //             ],
-        //       guruHome:[
-        //                   // '../test_case/mobileTest/workflows/access.js',
-        //                   // '../test_case/mobileTest/workflows/university.js', 
-        //                   // '../test_case/mobileTest/workflows/major.js',
-        //                   // '../test_case/mobileTest/workflows/course.js',
-        //                   // '../test_case/mobileTest/workflows/category.js',
-        //                   // '../test_case/mobileTest/workflows/photo.js',
-        //                   '../test_case/mobileTest/guruProfile/home.js'
-        //              ],
-        //      credit:[
-        //                  // '../test_case/mobileTest/workflows/access.js',
-        //                  // '../test_case/mobileTest/workflows/university.js', 
-        //                  // '../test_case/mobileTest/workflows/major.js',
-        //                  // '../test_case/mobileTest/workflows/course.js',
-        //                  // '../test_case/mobileTest/workflows/category.js',
-        //                  // '../test_case/mobileTest/workflows/photo.js',
-        //                  '../test_case/mobileTest/guruProfile/creditibility.js'
-        //             ],
-        //      editGuru:[
-        //                  // '../test_case/mobileTest/workflows/access.js',
-        //                  // '../test_case/mobileTest/workflows/university.js', 
-        //                  // '../test_case/mobileTest/workflows/major.js',
-        //                  // '../test_case/mobileTest/workflows/course.js',
-        //                  // '../test_case/mobileTest/workflows/category.js',
-        //                  // '../test_case/mobileTest/workflows/photo.js',
-        //                  '../test_case/mobileTest/guruProfile/editProfile.js'
-        //             ],
-        //       becomeGuru:[
-        //                  '../test_case/mobileTest/workflows/access.js',
-        //                  '../test_case/mobileTest/workflows/university.js', 
-        //                  '../test_case/mobileTest/becomeGuru/major.js',
-        //                  '../test_case/mobileTest/becomeGuru/course.js',
-        //                  '../test_case/mobileTest/becomeGuru/category.js',
-        //                  '../test_case/mobileTest/becomeGuru/photo.js'
-        //                  ],
-        //       all : [
-        //               '../test_case/mobileTest/access.js',
-        //              '../test_case/mobileTest/university.js',
-        //              '../test_case/mobileTest/becomeGuru/major.js',
-        //              '../test_case/mobileTest/becomeGuru/course.js',
-        //              '../test_case/mobileTest/becomeGuru/category.js',
-        //              '../test_case/mobileTest/becomeGuru/photo.js'
-        //             ]
+            side:   [ '../test_case/mobileTest/workflows/access.js',
+                   '../test_case/mobileTest/workflows/university.js', 
+                    '../test_case/mobileTest/sidemenu/sidemenu.js'
+                    ],
+            major:  [ '../test_case/mobileTest/workflows/access.js',
+                      '../test_case/mobileTest/workflows/university.js', 
+                      '../test_case/mobileTest/becomeGuru/major.js'
+                    ],
+            course: [  '../test_case/mobileTest/workflows/access.js',
+                        '../test_case/mobileTest/workflows/university.js', 
+                        '../test_case/mobileTest/workflows/major.js',
+                        '../test_case/mobileTest/becomeGuru/course.js',
+                    ],
+            category:[
+                        '../test_case/mobileTest/workflows/access.js',
+                        '../test_case/mobileTest/workflows/university.js', 
+                        '../test_case/mobileTest/workflows/major.js',
+                        '../test_case/mobileTest/workflows/course.js',
+                        '../test_case/mobileTest/becomeGuru/category.js'
+                     ],
+             photo:[
+                          '../test_case/mobileTest/workflows/access.js',
+                          '../test_case/mobileTest/workflows/university.js', 
+                         // '../test_case/mobileTest/workflows/major.js',
+                         // '../test_case/mobileTest/workflows/course.js',
+                         // '../test_case/mobileTest/workflows/category.js',
+                         '../test_case/mobileTest/workflows/lazy.js',
+                         '../test_case/mobileTest/becomeGuru/photo.js'
+                    ],
+              guruHome:[
+                          // '../test_case/mobileTest/workflows/access.js',
+                          // '../test_case/mobileTest/workflows/university.js', 
+                          // '../test_case/mobileTest/workflows/major.js',
+                          // '../test_case/mobileTest/workflows/course.js',
+                          // '../test_case/mobileTest/workflows/category.js',
+                          // '../test_case/mobileTest/workflows/photo.js',
+                          '../test_case/mobileTest/guruProfile/home.js'
+                     ],
+             credit:[
+                         // '../test_case/mobileTest/workflows/access.js',
+                         // '../test_case/mobileTest/workflows/university.js', 
+                         // '../test_case/mobileTest/workflows/major.js',
+                         // '../test_case/mobileTest/workflows/course.js',
+                         // '../test_case/mobileTest/workflows/category.js',
+                         // '../test_case/mobileTest/workflows/photo.js',
+                         '../test_case/mobileTest/guruProfile/creditibility.js'
+                    ],
+             editGuru:[
+                         // '../test_case/mobileTest/workflows/access.js',
+                         // '../test_case/mobileTest/workflows/university.js', 
+                         // '../test_case/mobileTest/workflows/major.js',
+                         // '../test_case/mobileTest/workflows/course.js',
+                         // '../test_case/mobileTest/workflows/category.js',
+                         // '../test_case/mobileTest/workflows/photo.js',
+                         '../test_case/mobileTest/guruProfile/editProfile.js'
+                    ],
+              becomeGuru:[
+                         '../test_case/mobileTest/workflows/access.js',
+                         '../test_case/mobileTest/workflows/university.js', 
+                         '../test_case/mobileTest/becomeGuru/major.js',
+                         '../test_case/mobileTest/becomeGuru/course.js',
+                         '../test_case/mobileTest/becomeGuru/category.js',
+                         '../test_case/mobileTest/becomeGuru/photo.js'
+                         ],
+              all : [
+                      '../test_case/mobileTest/access.js',
+                     '../test_case/mobileTest/university.js',
+                     '../test_case/mobileTest/becomeGuru/major.js',
+                     '../test_case/mobileTest/becomeGuru/course.js',
+                     '../test_case/mobileTest/becomeGuru/category.js',
+                     '../test_case/mobileTest/becomeGuru/photo.js'
+                    ]
 
-        // },
+        },
         rootElement: "[ng-app]" ,
 
        // rootElement: 'uguru' ,
@@ -211,7 +212,7 @@ exports.config = {
             protractor.run = require('../test_case/globals.js').run;
             global.doc =require('../test_case/newGlobals.js');
             global.EC  = protractor.ExpectedConditions;
-            console.log( "W : "+ browser.params.screenSize.w+ " H :"+browser.params.screenSize.h)
+            // console.log( "W : "+ browser.params.screenSize.w+ " H :"+browser.params.screenSize.h)
             // browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);
             // browser.driver.get("http://localhost:8100/#/")
             // browser.sleep(3000);

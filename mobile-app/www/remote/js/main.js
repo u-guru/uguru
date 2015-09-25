@@ -325,7 +325,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
 
 
-  $urlRouterProvider.otherwise('/' + _startpage);
+  $urlRouterProvider.otherwise('/university');
 
 
 });
