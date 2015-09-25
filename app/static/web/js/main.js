@@ -12,10 +12,15 @@ workPopup = function() {
 	if ($(window).width() >= 768) {
 		$(".work-pane-link").each(function(e){
 			$(this).on("click", function(e) {
+				$(".work-pane-link").removeClass("active");
+				$(this).addClass("active");
 				$(".work-popup").removeClass("active");
 				$(this).parent().children(".work-popup").addClass("active");
 				e.preventDefault();
 			});
+		});
+		$(".work-popup-info h3 a").each(function(e){
+				$(this).parent().parent().parent().fadeIn();
 		});
 	} else {
 		$(".work-pane-link").each(function(e){

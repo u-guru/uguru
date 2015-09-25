@@ -1,3 +1,4 @@
+
 var LOCAL = _local; //local to the 8100 codebasebirbirs
 var FIRST_PAGE='^.' + _startpage;
 //var FIRST_PAGE='^.home';
@@ -6,7 +7,8 @@ console.log("_local: " + _local);
 console.log("_startpage: " + _startpage);
 console.log("_ipaddress: " + _ipaddress);
 
-var img_base;
+img_base = '';
+
 
 // isAdmin = true;
 // LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
@@ -20,21 +22,15 @@ var REST_URL = 'https://www.uguru.me'
 // console.log = function() {};
 // ==============================
 
-
 var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  BASE_URL = _ipaddress;
-  //BASE_URL = 'http://192.168.42.124:8100';
 
+  BASE_URL = _ipaddress;
 
   //REST_URL = "http://localhost:5000"
-
-  // BASE_URL = 'http://192.168.1.43:8100';
-
-  //BASE_URL = 'http://192.168.43.155:8100';
-
+  //REST_URL = 'http://192.168.42.78:5000'
 
 } else {
   img_base = '/static/'
@@ -43,8 +39,6 @@ if (LOCAL) {
 // mixpanel = window.mixpanel || null;
 
  //if (mixpanel) mixpanel.track("App Launch");
-
-
 
  window._rAF = (function() {
     return window.requestAnimationFrame ||
@@ -56,7 +50,7 @@ if (LOCAL) {
   })();
 
 
-angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 
+angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
@@ -89,8 +83,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
 
   var openKeyboard = null;
-  
+
   uTracker.init('mp');
+
 
 })
 
@@ -127,7 +122,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
   // RestangularProvider.setBaseUrl('http://10.193.138.226:5000/api/v1');
   //Client-side router
-  
+
 
 //abstract
   // .state('admin', {

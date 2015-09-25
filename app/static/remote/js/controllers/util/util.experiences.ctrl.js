@@ -17,22 +17,6 @@ angular.module('uguru.util.controllers')
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
     $ionicSideMenuDelegate) {
 
-    $scope.backToEditProfile = function(is_saved) {
-
-      if (is_saved) {
-        $scope.success.show(0, 1500);
-      } else {
-        $scope.loader.show();
-      }
-
-      $state.go('^.guru-profile');
-
-      $timeout(function() {
-        $scope.loader.hide();
-
-      }, 500);
-    }
-
     $scope.saveGuruExperience = function() {
       if (!$scope.experience.name.length ||!$scope.experience.years || !$scope.experience.description.length) {
         $scope.success.show(0, 1500,'Please enter in all fields');
@@ -57,25 +41,7 @@ angular.module('uguru.util.controllers')
 
     }
 
-    $scope.launchAddGuruExperienceModal = function(experience) {
 
-      $ionicModal.fromTemplateUrl(BASE + 'templates/guru.experiences.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            if (experience) {
-              $scope.experience = experience;
-            } else {
-              $scope.experience = {
-                name: '',
-                description: '',
-                years: 1
-              }
-            }
-            $scope.guruExperiencesModal = modal;
-            $scope.guruExperiencesModal.show();
-      });
-    }
 
     $scope.$on('modal.shown', function() {
       if ($scope.guruExperiencesModal.isShown() && !$scope.experience.name.length) {

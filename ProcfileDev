@@ -1,11 +1,3 @@
 web: python run.py runserver
-<<<<<<< HEAD
 worker: celery -A app.tasks.celery worker -B -E --loglevel=info -n w1.%h
-<<<<<<< HEAD
-
-=======
-worker: celery -A app.tasks.celery worker -B -E --loglevel=info -n w1.%h
->>>>>>> 806fbada7be8fa6b2eecaba435a490264824a679
-=======
 redis: redis-server
->>>>>>> 791cc767d0467accb9cbe98236795029baffa84d

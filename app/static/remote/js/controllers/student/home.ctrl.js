@@ -35,6 +35,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       }
     }
 
+    console.log($scope.user);
+
 
   //case-specific functions
 
@@ -340,9 +342,24 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       $scope.verbModal.show();
     }
 
-    $scope.toggleRightSideMenu = function() {
-      $ionicSideMenuDelegate.toggleRight();
-    };
+    //UGH I HATE MY LIFE FUCK YOU IONIC
+    var getIonicSideMenuOpenRatio = function() {
+      var openRatio = $ionicSideMenuDelegate.getOpenRatio();
+      return openRatio;
+    }
+
+    var isSideMenuOpen = function(ratio) {
+      if (!ratio && ratio !== -1) {
+        $scope.sideMenuActive = false;
+      } else {
+        $timeout(function() {
+          $scope.sideMenuActive = true;
+        }, 250)
+      }
+    }
+
+    $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
+
 
     $scope.launchRequestModal = function(index, verb_index) {
       //UNDO
@@ -373,75 +390,11 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             }
 
           });
-      //UNDO
-      // } else {
-      //   alert('courses are not loaded yet');
-      // }
-    }
-
-
-    $scope.launchContactingModal = function() {
-
-      $scope.contactingModal.show();
-    }
-
-    $scope.cancelActiveSession = function(session) {
-
-
-      //before guru is matched
-      if (session.request.status === 0) {
-        $scope.cancelRequest(session.request);
-        return;
-      }
-
-      $scope.root.vars.active_session = session;
-
-      //after guru is matched
-      var dialogCallBackSuccess = function() {
-        //guru cancels session
-        $scope.success.show(0, 2000, $scope.root.vars.active_session.request.course_name + ' successfully canceled!');
-        var canceled_session = $scope.root.vars.active_session;
-
-        canceled_session.status = 4;
-
-        var sessionPayload = {session: canceled_session}
-
-        $scope.user.previous_student_sessions.push(canceled_session);
-
-        //remove session locally from active guru session
-        $scope.root.util.removeObjectByKey($scope.user.active_student_sessions, 'id', canceled_session.id);
-
-        //update session locally
-        $scope.root.util.updateObjectByKey($scope.user.student_sessions, 'id', canceled_session.id, 'status', 5);
-          //Mixpanel Track
-
-
-        $scope.user.updateObj($scope.user, 'sessions', sessionPayload, $scope);
-
-        $scope.root.vars.active_session = null;
-
-        if ($state.current.name === 'root.student-session') {
-          $scope.goBack();
-        }
-      }
-
-      var dialog = {
-        message: "Are you sure? This will be closely investigated by us and may impact your Guru ranking.",
-        title: "Cancel Session",
-        button_arr: ['Never Mind', 'Cancel Session'],
-        callback_arr: [null, dialogCallBackSuccess]
-      }
-
-      if ($scope.platform.web) {
-        if (confirm('Are you sure? \n' + dialog.message)) {
-            dialogCallBackSuccess();
-        }
-      }
-      else {
-          $scope.root.dialog.confirm(dialog.message, dialog.title, dialog.button_arr, dialog.callback_arr);
-      }
 
     }
+
+
+
 
     $scope.closeContactingModal = function() {
       $scope.contactingModal.hide();
@@ -457,292 +410,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     }
 
 
-    $scope.initAndShowIncomingRequestModal = function() {
 
-       $ionicModal.fromTemplateUrl(BASE + 'templates/student.request.incoming.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.incomingGuruModal = modal;
-            $scope.incomingGuruModal.show();
-        });
-    }
-
-    $scope.processTimeEstimate = function(minutes) {
-        num_hours = Math.floor(Math.round((minutes / 60.0) * 100) / 100);
-        minutes = minutes % 60;
-        return [num_hours, minutes];
-
-    }
-
-    $scope.root.vars.processIncomingRequests = function(incoming_requests) {
-
-      if (incoming_requests.length === 0) {
-        return;
-      }
-
-      if ($scope.root.vars.active_processing) {
-        console.log('we have already began processing');
-        return;
-      }
-
-      $scope.root.vars.active_processing = true;
-      //get first one out of array
-      var incoming_request = incoming_requests[0];
-      console.log(incoming_request);
-
-      //get rid of the first one
-      incoming_requests.shift();
-
-      //get first one out of array
-      $scope.incoming_request = incoming_request;
-
-      $scope.success.show(0, 2500, '<span class="center">You have 1 new request <br> Loading....  </span>')
-
-      //get first one out of array
-      $timeout(function() {
-        console.log('incoming requests');
-        $scope.initAndShowIncomingRequestModal();
-
-
-        var processed_time = $scope.processTimeEstimate($scope.incoming_request.time_estimate);
-
-        $scope.incoming_request.time_estimate = {hours: processed_time[0], minutes:processed_time[1]};
-
-        // $scope.incoming_request.tags = ['milleniumfalcon'];
-
-        $scope.root.vars.active_processing = false;
-
-      }, 2500);
-
-    }
-
-    $scope.processIncomingRequests = $scope.root.vars.processIncomingRequests;
-
-     $scope.createGoogleLatLng = function(latCoord, longCoord) {
-            return new google.maps.LatLng(latCoord, longCoord);
-      }
-
-
-      $scope.showGoogleMap = function() {
-
-        if (!$scope.incoming_request.position.latitude || !$scope.incoming_request.position.longitude) {
-            $scope.incoming_request.position.latitude = 51.219053;
-            $scope.incoming_request.position.longitude = 4.404418;
-        }
-
-
-        if (!$scope.incoming_request.position || !$scope.incoming_request.position.latitude || !$scope.incoming_request.position.longitude) {
-          console.log('no coordinates... forget about it');
-          return;
-        }
-
-        $scope.map = {center: {latitude: $scope.incoming_request.position.latitude, longitude: $scope.incoming_request.position.longitude }, zoom: 14, control: {} };
-        $scope.options = {scrollwheel: false};
-
-        var mapContainer = document.getElementById("map_canvas");
-        var initMapCoords;
-
-
-        initMapCoords = $scope.createGoogleLatLng(parseFloat($scope.incoming_request.position.latitude),parseFloat($scope.incoming_request.position.longitude))
-        var mapOptions = {
-          center: initMapCoords,
-          zoom: 10,
-          disableDefaultUI: true,
-          draggable: false,
-          zoomControl: false,
-          // zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_CENTER}
-        }
-        actual_map = new google.maps.Map(
-                mapContainer,
-                mapOptions
-        )
-
-        $scope.marker = new google.maps.Marker({
-              position: initMapCoords,
-              map: actual_map
-        });
-
-        $scope.actual_map = actual_map
-      }
-
-    //todo
-    $scope.acceptIncomingGuru = function() {
-
-      var acceptGuruCallback = function() {
-
-        $scope.incoming_request.guru_id = $scope.incoming_request.guru.id;
-        $scope.incoming_request.status = 1;
-
-
-        $scope.loader.show()
-
-        var closeModalAndShowSessionStatus = function($scope, $state) {
-          console.log('closing modal call back from student accept guru')
-          $timeout(function() {
-            $scope.incomingGuruModal.hide();
-          }, 500);
-          $timeout(function() {
-            $scope.loader.hide();
-          }, 1000);
-        }
-
-        $scope.user.createObj($scope.user, 'sessions', $scope.incoming_request, $scope, closeModalAndShowSessionStatus);
-
-
-
-        $scope.incoming_request.status = 2;
-
-      }
-
-      $scope.root.util.removeObjectByKey($scope.user.incoming_requests, 'id', $scope.incoming_request.id);
-
-      //remove request from array
-      dialog_title = "Accept this Guru?";
-      dialog_message = "You will not be billed until the end of the session & 100% satisfaction guaranteed";
-      button_arr = ['Not ready', 'Yes'];
-
-      if ($scope.platform.web) {
-        if (confirm('Are you sure? \n' + dialog_message)) {
-            acceptGuruCallback();
-        }
-
-      } else {
-            $scope.root.dialog.confirm(dialog_message, dialog_title, button_arr, [null, acceptGuruCallback])
-      }
-
-    }
-
-    //todo
-    $scope.rejectIncomingGuru = function() {
-
-      var rejectGuruCallback = function() {
-          requestObj = $scope.incoming_request;
-          requestObj.status = 3;
-
-          //remove request from array
-          $scope.root.util.removeObjectByKey($scope.user.incoming_requests, 'id', $scope.incoming_request.id);
-
-          $scope.root.util.updateObjectByKey($scope.user.requests, 'id', $scope.incoming_request.id, 'status', 0);
-
-          $scope.user.updateObj($scope.user, 'requests', requestObj, $scope);
-          $scope.success.show(0, 2000, 'Guru successfully rejected');
-
-          $scope.incomingGuruModal.hide();
-      }
-
-
-      dialog_title = "Are you sure?";
-      dialog_message = "You may not hear from this Guru again for this request";
-      button_arr = ['Cancel', 'Sure'];
-      if ($scope.platform.web) {
-        if (confirm('Are you sure? \n' + dialog_message)) {
-          rejectGuruCallback();
-        }
-      } else {
-        $scope.root.dialog.confirm(dialog_message, dialog_title, button_arr, [null, rejectGuruCallback])
-      }
-    }
-
-    $scope.acceptIncomingQuestion = function() {
-
-      var acceptQuestionCallback = function() {
-
-        requestObj = $scope.incoming_request;
-        requestObj.status = 15;
-
-          //remove request from array
-        $scope.root.util.removeObjectByKey($scope.user.incoming_requests, 'id', $scope.incoming_request.id);
-
-        // $scope.root.util.updateObjectByKey($scope.user.requests, 'id', $scope.incoming_request.id, 'status', 0);
-
-        $scope.loader.show()
-
-        var closeModalAndShowQuestionComplete = function($scope, $state) {
-          $scope.loader.hide();
-          $scope.incomingGuruModal.hide();
-        }
-
-        $scope.user.updateObj($scope.user, 'requests', requestObj, $scope, closeModalAndShowQuestionComplete);
-
-      }
-
-      //remove request from array
-      dialog_title = "Accept this Question?";
-
-      if ($scope.incoming_request.student_price) {
-        dialog_message = "Your card **-" + $scope.user.default_payment_card.card_last4 + " will be billed $" + parseInt($scope.incoming_request.student_price) + ".";
-      } else {
-        dialog_message = "The guru will be notified & their reputation will be increased!";
-      }
-
-      button_arr = ['Not sure yet', 'Yes'];
-
-      if ($scope.platform.web) {
-        if (confirm('Are you sure? \n' + dialog_message)) {
-            acceptQuestionCallback();
-        }
-
-      } else {
-            $scope.root.dialog.confirm(dialog_message, dialog_title, button_arr, [null, acceptQuestionCallback])
-      }
-    }
-
-    $scope.rejectIncomingQuestion = function() {
-
-      var rejectQuestionCallback = function() {
-          requestObj = $scope.incoming_request;
-          requestObj.status = 3;
-
-          //remove request from array
-          $scope.root.util.removeObjectByKey($scope.user.incoming_requests, 'id', $scope.incoming_request.id);
-
-          $scope.root.util.updateObjectByKey($scope.user.requests, 'id', $scope.incoming_request.id, 'status', 0);
-
-          $scope.user.updateObj($scope.user, 'requests', requestObj, $scope);
-          $scope.success.show(0, 2000, 'Response rejected. Searching for another Guru to reply.');
-
-          $scope.incomingGuruModal.hide();
-      }
-
-
-      dialog_title = "Are you sure?";
-      dialog_message = "We will try our best to get your question answered again!";
-      button_arr = ['Cancel', 'Sure'];
-      if ($scope.platform.web) {
-        if (confirm('Are you sure? \n' + dialog_message)) {
-          rejectQuestionCallback();
-        }
-      } else {
-        $scope.root.dialog.confirm(dialog_message, dialog_title, button_arr, [null, rejectQuestionCallback])
-      }
-    }
-
-    $scope.$on('modal.shown', function() {
-
-          if ($scope.incomingGuruModal && $scope.incomingGuruModal.isShown()) {
-            $timeout(function() {
-              if (window.StatusBar) {
-                StatusBar.overlaysWebView(true);
-                StatusBar.styleLightContent();
-              }
-
-              $scope.showGoogleMap();
-
-            }, 100);
-
-          }
-
-      });
-
-
-      $scope.comingSoon = function() {
-        $scope.success.show(0, 1500, 'Coming Soon!');
-      }
-
-
-
-      $scope.launchWelcomeStudentPopup = function() {
+     $scope.launchWelcomeStudentPopup = function() {
 
         var homeCenterComponent = document.getElementById('home-content-header');
         var uguruPopup = document.getElementById('home-uguru-popup');
@@ -764,68 +433,39 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       var checkOnboardingStatus = function() {
 
         var appOnboardingObj = $localstorage.getObject('appOnboarding');
-        if (!appOnboardingObj) {
+        console.log(appOnboardingObj);
+        if (!appOnboardingObj || appOnboardingObj === {} || !appOnboardingObj.studentWelcome) {
           appOnboardingObj = {studentWelcome:true}
           $localstorage.setObject('appOnboarding', appOnboardingObj);
-        }
-        else if (appOnboardingObj && !appOnboardingObj.studentWelcome) {
           $scope.launchWelcomeStudentPopup();
-          appOnboardingObj.studentWelcome = true;
-          $localstorage.setObject('appOnboarding', appOnboardingObj);
         }
-
       }
+
 
 
       $scope.$on('$ionicView.loaded', function() {
 
-          $timeout(function() {
-            checkOnboardingStatus()
-          }, 1000)
-      });
+        $scope.root.vars.guru_mode = false;
+
+      })
 
      $scope.$on('$ionicView.enter', function() {
       $ionicSideMenuDelegate.canDragContent(true);
+        // $timeout(function() {
+        //   $ionicSideMenuDelegate.toggleRight();
+        // }, 250)
+
+        //welcome to student mode screen
+        $timeout(function() {
+            checkOnboardingStatus()
+        }, 1000);
 
 
 
-       $timeout(function() {
-        $scope.loader.hide();
-       }, 1500)
 
-        if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
-            $scope.processIncomingRequests($scope.user.incoming_requests);
-        }
+      });
 
-        //student specific functions
-        if ($scope.user && $scope.user.active_student_sessions
-          && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)) {
-
-                $scope.root.vars.launchPendingActions();
-
-        }
-
-    });
-
-    document.addEventListener("resume", function() {
-
-
-        console.log('\n\nview has resumed\n\n')
-
-        if ($scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
-
-            $scope.processIncomingRequests($scope.user.incoming_requests);
-        }
-
-        //student specific functions
-        if ($scope.user && $scope.user.active_student_sessions
-          && ($scope.user.active_student_sessions.length > 0 || $scope.user.pending_guru_ratings.length > 0)) {
-
-                $scope.root.vars.launchPendingActions();
-
-        }
-
-    }, false);
+     $scope.user.university = {name: 'UC Berkeley'}
 
   }
 

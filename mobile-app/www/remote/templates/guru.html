@@ -1,47 +1,59 @@
 <ion-view class='uguru-view guru-view bg-charcoal'>
 	<section id="guru-home" class="request full-xy student-home">
-    <header class="half">
-			<div class='u-grid' style='padding:0px 10px 5px 10px'>
-        <h1 class='text-center'>Guru Home</h1>
-      </div>
-      <ul id="guru-ranking" class="ugrid">
-				<li id="guru-chart">
+    <header class="third">
+        <h1 class="text-center">Guru Home</h1>
+		<div id="guru-ranking">
+			<div class="ugrid">
+				<div id="guru-chart">
+                        <div id='guru-ranking-progress-bar'>
+					        <div id="percentile">
+						        <div id="percentile-ranking">
+                                    {{page.guru_ranking}}
+                                </div>
+						        <div id="percentile-label">Percentile</div>
+                            </div>
+					    </div>
+                </div>
+			</div>
+			<div id="guru-stats">
+				<div>
 
-          <div ng-include="img_base + 'templates/progress.circle.empty.svg.html'"></div>
-					<div id="percentile">
-						<div id="percentile-ranking">75</div>
-						<div id="percentile-label">Percentile</div>
-					</div>
-				</li>
-				<li id="guru-stats">
-					<div>
-						<h2>{{user.current_profile_percent}}% cred</h2>
-						<progress id='credibility-progress' class="white-round height-10" value="0" max="100">
-						    <div class="progress white-round height-10"><span data-value="20" style="width:20%"></span></div>
-						</progress>
-						<h2>65% profile</h2>
-						<progress id='profile-progress' class="white-round height-10" value="0" max="100">
-						    <div class="progress white-round height-10"><span data-value="65" style="width:65%"></span></div>
-						</progress>
-						<h2>$39/hour</h2>
-						<progress id='hourly-progress' class="white-round height-10" value="0" max="40">
-						    <div class="progress white-round height-10"><span data-value="99" style="width:99%"></span></div>
-						</progress>
-					</div>
-				</li>
-			</ul>
-		</header>
+                    <!-- credibility percentage -->
+                    <h2 class='bottom-0'>
 
-		<div id="guru-home-content" class="two-thirds">
-			<h2 class="section-header">Your University Guru Ranking</h2>
-		    <div class='tip-container text-center p15xy'>
-		        <h2 class="m05bottom">Tip of the day</h2>
-		        <p>Complete your profile to unlock access to your Guru customizer</p>
-		    </div>
-		</div>
+                        <span id='credibility-percent'>{{user.current_credibility_percent}}
 
+                        </span>
+
+                        % cred
+
+                    </h2>
+
+                    <div class='white-round height-10' id='guru-credibility-progress-bar'>
+                    </div>
+
+            						<!-- profile percentage -->
+                    <h2 class='top-10 bottom-0'><span id='profile-percent'>{{user.current_profile_percent}}</span>% profile</h2>
+                    <div class='white-round height-10' id='guru-profile-progress-bar'> </div>
+
+            		<h2>$<span id='hourly-rate'>{{user.current_hourly}}</span>/hour</h2>
+                    <div class='white-round height-10' id='guru-hourly-progress-bar'> </div>
+            	</div>
+            </div>
+        </div>
+	</header>
+	<div id="guru-home-content" class="two-thirds">
+		<h2 class="section-header">Your University Guru Ranking</h2>
+	    <div class='tip-container text-center p15xy'>
+	        <h2 class="m05bottom">Tip of the day</h2>
+	        <p>Complete your profile to unlock access to your Guru customizer</p>
+	    </div>
+	</div>
   </section>
-  <div class="tabs tabs-icon-only guru-tabs bg-slate" id='guru-tab-bar'>
+
+  <button id="btn-edit-profile" class="btn-caps-fixed semibold bottom-0 left-0 bg-shamrock-90p" ng-if='!user.id' ng-click='launchSignupModal()'>Launch My Profile</button>
+
+  <div class="tabs tabs-icon-only guru-tabs bg-slate" id='guru-tab-bar' ng-if='user && user.id'>
 
     <a class="tab-item active" nav-direction='swap' href='#/guru'>
       <i class='icon ion-home'> </i>
@@ -50,7 +62,7 @@
       <i class='icon ion-person'> </i>
     </a>
 
-    <a class="tab-item" nav-direction='swap' href='#/guru-ranking'>
+    <a class="tab-item" nav-direction='swap' href='#/guru-credibility'>
       <i class='icon ion-pricetag'> </i>
     </a>
     <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
@@ -62,312 +74,3 @@
   <div ng-if='launchWelcomeGuruPopup' ng-click='closeWelcomePopup()'class='uguru-popup' ng-click='closeWelcome' id='home-uguru-popup' ng-include="img_base + 'templates/welcome.guru.popup.html'"> </div>
 </ion-view>
 
-
-<!-- <ion-view hide-nav-bar='true' class='request' id='guru-home'>
-
-  <ion-header-bar align-title="center" class='dark-bg-header item-icon-right'>
-      <h1 class="title">GURU MODE</h1>
-        <div class="buttons" ng-show='user.balance && user.balance > 0'>
-          <a ng-click='goToCashOut()'>
-            <i class='icon bold green font-1em'>
-              ${{user.balance}}
-            </i>
-          </a>
-        </div>
-  </ion-header-bar>
-
-<div class="tabs home-request-tabs-top tabs-top">
-
-      <a class="tab-item uppercase ng-class:{'blue-bg white-text':showActive, 'opacity-1-2':!showActive}" ng-click='showPreviousActions(0);'>
-        My Dashboard
-      </a>
-      <a class="tab-item uppercase ng-class:{'blue-bg white-text':!showActive, 'opacity-1-2':showActive}" ng-click='showPreviousActions(1);'>
-        Incoming Tasks
-      </a>
-</div>
-
-
-<ion-content class='white-bg has-subheader dirty-white-bg' scroll='false'>
-    <div class='pure-g-c flex-column flex-space-between' ng-hide='((user.pending_proposals && user.pending_proposals.length > 0)) || !showActive || (user.active_guru_sessions && user.active_guru_sessions.length > 0)' style='padding-bottom:55px;' >
-        <div class='pure-g j-start relative' style='min-height:180px; height:180px;' ng-click='goToRankings()'>
-          <div class='profile-banner-bg full-height'  ng-style='{"background-image":"url({{data.university_banner}})", "min-height":"180px", "height":"180px"}'>
-          </div>
-            <div class='pure-g-c flex-column j-start guru-profile-img-wrapper full-width relative' style='height:50%;top:0%; opacity:1; min-height:180px;'>
-              <div class='pure-g'>
-                <div class='pure-u-1 padding-2em' style='padding-top:0.75em; z-index:1000; opacity-1'>
-
-                  <div class='grey-container center'>
-                    <h4 class='light regular capitalized university-banner-text' style='margin-top:6.66%;'>  <span class='padding-half'>My <strong class='uppercase'>{{user.university.title}}</strong> Rank</span></h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class='pure-g-c flex-column j-start full-width relative' style='height:50%; top:50%; z-index:100;'>
-              <div class='pure-g'>
-                <div class='pure-u-1 center'>
-                  <div class='pure-u-1-2 relative margin-auto relative'>
-                    <div class='guru-ranking-progress-container full-width padding-1em' style='position:absolute;'>
-                      <div id='guru-ranking-progress' class='relative'>
-                        <span class='th-text absolute'>th</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class='pure-g'>
-                <div class='pure-u-1-3 ranking-box'>
-
-                    <div class='grey-container center padding-half' style='width:105%;'>
-                      <h6 class='light uppercase no-margin semibold'>  <div class='dark-bg bold padding-half opacity-4-5'>Rank</div></h6>
-                      <h4 class='light capitalized no-margin no-padding'>  <div style='padding-top:8px !important;' class='ranking-num'>Top 100</div></h4>
-                    </div>
-
-                </div>
-                <div class='pure-u-1-3 relative'>
-                  &nbsp;
-                </div>
-                <div class='pure-u-1-3 payscale-box'>
-                  <div class='grey-container center padding-half' style='width:105%;'>
-                      <h6 class='light uppercase no-margin semibold'>  <div class='dark-bg bold opacity-4-5 padding-half'>Payscale</div></h6>
-                      <h4 class='light no-margin no-padding'>  <div style='padding-top:8px !important;' class='ranking-num'>$10/hr</div></h4>
-                    </div>
-                </div>
-              </div>
-          </div>
-
-        </div>
-        <div class='pure-g flex-column flex-space-between'>
-
-          <div ng-include="img_base + 'templates/guru.tips.components.guru.html'">
-          </div>
-
-        </div>
-    </div>
-    <div class='pure-g-c flex-column flex-space-between' ng-show='!showActive'>
-
-
-        <ion-scroll class='full-height'>
-
-          <ion-refresher
-            pulling-icon="ion-arrow-down-c"
-            spinner="circles"
-            on-refresh="doRefresh()">
-          </ion-refresher>
-
-            <div class='pure-g'>
-
-               <ion-list class='pure-u-1' can-swipe="true">
-
-                  <div class='active-request-card-item-wrapper' ng-repeat='proposal in user.previous_proposals'>
-                    <ion-item class='item-avatar request-card-item'>
-                      <img class='pure-img' ng-src='{{img_base}}./img/verbs/{{proposal.request.verb_image}}' />
-                      <div class='request-card-content relative'>
-                        <p class='course-text relative'>
-                          <span ng-show='proposal.request._type === 0 || proposal.request._type === 1'>
-                            {{proposal.request.course.short_name}}
-                          </span>
-                          <span ng-show='proposal.request._type === 2' class='transform-capitalize'>
-                            {{proposal.request.task_title}}
-                          </span>
-                          <span class='request-tag-status request-tag-status-completed' ng-show='proposal.status === 4'> STUDENT CANCELED </span>
-                          <span class='request-tag-status request-tag-status-completed' ng-show='proposal.status === 15'> Answered </span>
-                          <span class='request-tag-status request-tag-status-completed' ng-show='proposal.status
-                          === 5'> CANCELED </span>
-                        </p>
-                        <p class='location-text' ng-show='proposal.request._type !== 1'> {{proposal.request.address}}</p>
-                      </div>
-                    </ion-item>
-                  </div>
-
-                  <div class='active-request-card-item-wrapper' ng-repeat='session in user.previous_guru_sessions'>
-                    <ion-item class='item-avatar request-card-item'>
-                      <img class='pure-img' ng-src='{{img_base}}./img/verbs/{{session.request.verb_image}}' />
-                      <div class='request-card-content relative'>
-                        <p class='course-text relative'>
-                          <span ng-show='session.request._type === 0 || session.request._type === 1'>
-                            {{session.request.course.short_name}}
-                          </span>
-                          <span ng-show='session.request._type === 2' class='transform-capitalize'>
-                            {{session.request.task_title}}
-                          </span>
-                          <span class='request-tag-status request-tag-status-completed' ng-show='session.request.status === 4'> STUDENT CANCELED </span>
-                          <span class='request-tag-status request-tag-status-completed' ng-show='session.request.status === 15'> Answered </span>
-                          <span class='request-tag-status request-tag-status-completed' ng-show='session.request.status
-                          === 5'> CANCELED </span>
-                        </p>
-                        <p class='location-text' ng-show='session.request._type !== 1'> {{session.request.address}}</p>
-                      </div>
-                    </ion-item>
-                  </div>
-
-                </ion-list>
-              </div>
-
-        </div>
-
-    </div>
-
-    <div class='pure-g-c flex-column flex-space-between' ng-show='showActive'>
-      <ion-scroll class='full-height' style='padding-top:1em;'>
-
-
-        <ion-refresher
-          pulling-icon="ion-arrow-down-c"
-          spinner="circles"
-          on-refresh="doRefresh()">
-        </ion-refresher>
-
-        <div class='pure-g' ng-show='user && user.pending_proposals && user.pending_proposals.length > 0'>
-
-          <ion-list class='pure-u-1' can-swipe="true">
-
-              <div class='guru-pending-proposal-card active-request-card-item-wrapper' ng-repeat='proposal in user.pending_proposals'>
-                <ion-item class='item-avatar request-card-item' on-hold="cancelProposal(proposal)" ng-click='goToProposalRequestDetails(proposal)'>
-                  <img class='pure-img' ng-src='{{img_base}}./img/verbs/{{proposal.request.verb_image}}' />
-                  <div class='request-card-content relative'>
-                    <p class='course-text relative'>
-                      <span class="ng-class: {'card-font-small': proposal.request.course.short_name.length > 8 && proposal.request.course.short_name.length < 11, 'card-font-xs': proposal.request.course.short_name.length >= 11}"ng-show='proposal.request._type === 0 || proposal.request._type === 1'>
-                        {{proposal.request.course.short_name}}
-                      </span>
-                      <span ng-show='proposal.request._type === 2' class='transform-capitalize'>
-                        {{proposal.request.task_title}}
-                      </span>
-                      <span class='request-tag-status'> AWAITING RESPONSE </span>
-                    </p>
-                    <p class='location-text' ng-show='proposal.request._type !== 1'> {{proposal.request.address}}</p>
-                  </div>
-                </ion-item>
-
-                <ion-item class='item-wrap-text' on-hold="cancelProposal(proposal)" ng-click='goToProposalRequestDetails(proposal)' ng-show='(proposal.request._type === 0 || proposal.request._type === 1) && (proposal.request.student_calendar[0].calendar_events[0].formatted || proposal.request.description.length > 0)'>
-                  <p class='request-description white-space-normal' ng-show='proposal.request._type === 0'>
-
-
-                    <span ng-show='proposal.request.student_calendar &&request.student_calendar.length > 0'>
-
-                      <strong> {{proposal.request.student_calendar[0].calendar_events[0].formatted.day}}, {{proposal.request.student_calendar[0].calendar_events[0].formatted.month}} {{proposal.request.student_calendar[0].calendar_events[0].formatted.date}}
-                      </strong> between
-
-                      <span class='calendar-availability-contact'>
-                        <strong>{{proposal.request.student_calendar[0].calendar_events[0].formatted.start_time_formatted}}-{{proposal.request.student_calendar[0].calendar_events[0].formatted.end_time_formatted}}</strong>
-                      </span>
-                      for <strong>{{proposal.request.student_calendar[0].calendar_events[0].formatted.time_length}} hours</strong>.
-                    </span>
-
-
-
-                     <span ng-show="proposal.request.description">
-                      <strong>Description</strong>
-                     </span>
-
-                     <span ng-show='proposal.request.description && proposal.request.files.length > 0 '>
-                     and
-                     </span>
-
-                      <span ng-show="proposal.request.files.length > 0">
-                        <strong>Attachments</strong>
-                      </span>
-
-                      <span ng-show='proposal.request.description && proposal.request.files.length > 0 '>
-                        have been added.
-                      </span>
-                      <span ng-show='!proposal.request.description && proposal.request.files.length > 0 '>
-                        have been added.
-                      </span>
-                      <span ng-show='proposal.request.description && !proposal.request.files.length > 0 '>
-                        has been added.
-                      </span>
-                  </p>
-                  <p class='request-description white-space-normal' ng-show='proposal.request._type === 1'>
-                    {{proposal.request.description}}
-                      <br>
-                      <span ng-show="proposal.request.files.length === 0">
-                        <strong>Attachments</strong> have been added
-                      </span>
-                  </p>
-                </ion-item>
-              </div>
-
-            </ion-list>
-
-
-        </div>
-
-
-        <div class='pure-g'>
-
-          <ion-list class='list-inset visible-overflow pure-u-1' style='margin-top:-5%; margin-bottom:10%; margin:0em !important; padding:1em; padding-top:10%;' on-hold='cancelActiveSession(session)'ng-repeat='session in user.active_guru_sessions' ng-click='goToSessionDetails(session);'>
-
-
-            <ion-item class='padding-2em absolute padding-vertical-1em float-center visible-overflow center'>
-              <img class='home-card-profile pure-img profile-img sidebar-img inline no-border'  ng-src='{{session.request.student.profile_url}}'/>
-              <h2 style='margin-top:0.5em;'>Session with <strong>{{session.request.student.name.split(' ')[0]}}</strong></h2>
-            </ion-item>
-            <ion-item class='item-avatar item-icon-right session course-details'>
-              <img class='pure-img verb-img' ng-src='{{img_base}}./img/verbs/{{session.request.verb_image}}' />
-                <h2 class='uppercase'>{{session.request.course.short_name}}</h2>
-                <p class='tags-wrapper'>
-                  <span class='blue request-tag' ng-repeat='tag in session.request.tags'>#{{tag.name}}
-                  </span>
-                </p>
-              <img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' ng-src='{{img_base}}./img/icons/paperclip-outline-blue.svg' style='margin-right: 0.33em; margin-top:0.4em;'>
-
-            </ion-item>
-
-            <ion-item class='item-avatar-left card-item-left'>
-              <img class='icon ion-plus-custom blue custom-icon pure-img' ng-src='{{img_base}}./img/icons/clock.svg'>
-              <p class='inline'> Starts in </p>
-              <p class='inline time-until' style='padding-left:1em'> {{session.request.schedule_time}} minutes </p>
-            </ion-item>
-
-            <ion-item class='item-avatar-left card-item-left'>
-              <img class='icon ion-plus-custom blue custom-icon pure-img' ng-src='{{img_base}}./img/icons/marker.svg'>
-              <p class='inline'> Meet up </p>
-              <p class='inline black' style='padding-left:1em'> {{session.request.address}} </p>
-            </ion-item>
-
-            <ion-item class='button-only' style='margin-bottom:1em;'>
-              <button class='button button-full button-bright'>
-                Tap to start session!
-              </button>
-            </ion-item>
-
-
-          </ion-list>
-    </div>
-    </ion-scroll>
-  </div>
-  <div class="tabs tabs-icon-only white-bg" id='guru-tab-bar'>
-  <a class="tab-item" id='home-button'>
-    <img class='pure-img icon' ng-src='{{img_base}}./img/request/house-icon-blue.svg'></i>
-  </a>
-  <a class="tab-item" id='guru-courses-button' ng-click='checkCourses()'>
-    <img class='pure-img icon' ng-src='{{img_base}}./img/request/guru_book_outline.svg'></i>
-  </a>
-  <a class="tab-item" href='#/guru-questions' nav-direction='swap' id='courses-button' ng-show='user.active_questions'>
-    <img class='pure-img icon' ng-src='{{img_base}}./img/icons/question.svg'></i>
-  </a>
-  <a class="tab-item" id='tasks-button' nav-direction='swap' href='#/guru-tasks'>
-    <img class='pure-img icon' ng-src='{{img_base}}./img/icons/task.svg'></i>
-  </a>
-  <a class="tab-item" id='profile-tab-button' nav-direction='swap' href='#/guru-profile'>
-    <i class='icon ion-person'> </i>
-  </a>
-  <a class="tab-item" id='guru-courses-button' nav-direction='swap' href='#/guru-conversations'>
-    <img class='pure-img icon' ng-src='{{img_base}}./img/request/guru_book_outline.svg'></i>
-  </a>
-  <a class="tab-item" id='ranking-tab-button' nav-direction='swap' href='#/guru-ranking'>
-    <i class='icon ion-connection-bars'> </i>
-  </a>
-  <a class="tab-item" ng-click='toggleRightSideMenu()' id='settings-button'>
-    <img class='pure-img icon' ng-src='{{img_base}}./img/settings-tab-guru.svg'/>
-  </a>
-</div>
-
-
-
-</ion-content>
-
-
-</ion-view>
- -->

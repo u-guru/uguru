@@ -11,21 +11,17 @@ var processFileSize = function(file_string) {
 angular.module('uguru.root.services')
 .service('Camera',
     [
-    '$localstorage',
     '$timeout',
-    '$cordovaCamera',
-    '$state',
-    function($localstorage, $timeout, $cordovaCamera, $state) {
+    function($timeout) {
 
-        deviceCamera = {
+        return {
                     takePicture: function($scope, index, elemId, callbackSuccess) {
 
                       // if ($scope.platform.mobile) {
                         var source_type = 1;
                       // }
 
-
-                        var options = {
+                        var cameraOptions = {
                           quality: 15,
                           destinationType: Camera.DestinationType.DATA_URL,
                           sourceType: index,
@@ -37,13 +33,18 @@ angular.module('uguru.root.services')
                           saveToPhotoAlbum: false
                         };
 
-                          $cordovaCamera.getPicture(options).then(function(imageData) {
+                        navigator.camera.getPicture(cameraSuccess, cameraError, cameraOptions);
 
+                        function cameraSuccess(imageData) {
 
-                          // render to the html page
-                          var image = document.getElementById(elemId);
+                          if (elemId) {
 
-                          image.src = 'data:image/jpeg;base64,' + imageData;
+                            var image = document.getElementById(elemId);
+                            if (image) {
+                              image.src = 'data:image/jpeg;base64,' + imageData;
+                            }
+
+                          }
 
                           $scope.photoUploaded = true;
 
@@ -55,9 +56,9 @@ angular.module('uguru.root.services')
 
 
                           //if user is uploading a transcript
-                          if ($scope.root.vars.profile_url_changed) {
-                            formData.append('transcript_url', is_transcript);
-                          }
+                          // if ($scope.root.vars.profile_url_changed) {
+                          //   formData.append('transcript_url', is_transcript);
+                          // }
                           //if user is logged in
                           if ($scope.root.vars.profile_url_changed && $scope.user.id) {
                             formData.append('profile_url', $scope.user.id);
@@ -68,16 +69,16 @@ angular.module('uguru.root.services')
                           $timeout(function() {
                             $scope.user.createObj($scope.user, 'files', formData, $scope, callbackSuccess);
                           }, 500)
+                        }
 
-                        }, function(err) {
+                        function cameraError(message) {
                           console.log(err);
                           if ('No camera available' === err) {
                             alert('Sorry! It appears that there is no Camera or Photo Library Accessible. Please contact support.');
                           }
-                        });
+                        }
                     }
                 };
 
-        return deviceCamera;
 
 }]);
