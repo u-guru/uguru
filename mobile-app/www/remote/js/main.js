@@ -1,9 +1,11 @@
 
-var LOCAL = false; //local to the 8100 codebasebirbirscd
+var LOCAL = _local; //local to the 8100 codebasebirbirscd
 
-var FIRST_PAGE='^.home';
+var FIRST_PAGE= '^.' + _startpage;
 var img_base = '';
 
+console.log("_local: " + _local);
+console.log("_startpage: " + _startpage);
 
 // isAdmin = true;
 // LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
@@ -15,8 +17,10 @@ var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  BASE_URL = 'http://localhost:8100';
-  REST_URL = 'http://192.168.42.78:5000'
+  BASE_URL = _ipaddress;
+
+  console.log("_ipaddress: " + _ipaddress);
+  //REST_URL = 'http://192.168.42.78:5000'
 
 
 } else {
@@ -273,7 +277,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
 
 
-  $urlRouterProvider.otherwise('/university');
+  $urlRouterProvider.otherwise('/' + _startpage);
 
 
 });

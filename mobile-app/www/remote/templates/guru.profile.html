@@ -5,7 +5,7 @@
 			<div id="profile-icon">
 				<img ng-src="{{user.profile_url}}" id='guru-profile-img' ng-if='user.id && user.profile_url && !profile.edit_mode'/>
 				<a ng-click='takeProfilePhoto()' ng-if='!user.id || !user.profile_url || profile.edit_mode'>
-					<div ng-include="img_base + 'templates/empty.profile.svg.html'"> </div>
+					<div ng-include="img_base 'templates/empty.profile.svg.html'"> </div>
 				</a>
 			</div>
 			<nav id="profile-list">
@@ -17,7 +17,7 @@
 						<h1>
 							<span class="inline">{{user.name}}</span>
 							<span class="inline">
-								<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
+								<span ng-include="img_base 'templates/credibility.verified.svg.html'"> </span>
 							</span>
 						</h1>
 					</li>
@@ -30,11 +30,11 @@
 			</nav>
 			<!-- <nav id="profile-bars" class='p20xy'>
 				<ul id="profile-rating">
-					<li ng-include="img_base + 'templates/star.empty.svg.html'"></li>
-					<li ng-include="img_base + 'templates/star.empty.svg.html'"></li>
-					<li ng-include="img_base + 'templates/star.empty.svg.html'"></li>
-					<li ng-include="img_base + 'templates/star.empty.svg.html'"></li>
-					<li ng-include="img_base + 'templates/star.empty.svg.html'"></li>
+					<li ng-include="img_base 'templates/star.empty.svg.html'"></li>
+					<li ng-include="img_base 'templates/star.empty.svg.html'"></li>
+					<li ng-include="img_base 'templates/star.empty.svg.html'"></li>
+					<li ng-include="img_base 'templates/star.empty.svg.html'"></li>
+					<li ng-include="img_base 'templates/star.empty.svg.html'"></li>
 				</ul>
 			</nav> -->
 		</div>
@@ -55,7 +55,11 @@
 					</li>
 				</ul>
 				<ul class='default' ng-if='!user.guru_courses.length || profile.edit_mode'>
-					<li ng-click='launchGuruCoursesModal()'>+ Add a course</li>
+					<li><button class="round" ng-click='launchGuruCoursesModal()'>
+						<svg viewBox="0 0 100 100">
+						    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+						</svg>
+					</button></li>
 				</ul>
 			</div>
 			<div id="profile-other">
@@ -73,7 +77,11 @@
 							</li>
 						</ul>
 						<ul class='default' ng-if='!user.majors.length || profile.edit_mode'>
-							<li ng-click='launchGuruMajorsModal()'>+ Add a major</li>
+							<li><button class="round" ng-click='launchGuruMajorsModal()'>
+								<svg viewBox="0 0 100 100">
+								    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+								</svg>
+							</button></li>
 						</ul>
 					</div>
 				</div>
@@ -100,7 +108,11 @@
 							</li>
 						</ul>
 						<ul class='default' ng-if='!user.guru_skills.length || profile.edit_mode'>
-							<li ng-click='launchGuruSkillsModal()'>+ Add a skill</li>
+							<li><button class="round" ng-click='launchGuruSkillsModal()'>
+								<svg viewBox="0 0 100 100">
+								    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+								</svg>
+							</button></li>
 						</ul>
 					</div>
 				</div>
@@ -118,7 +130,11 @@
 							</li>
 						</ul>
 						<ul class='default' ng-if='!user.guru_skills.length || profile.edit_mode'>
-							<li ng-click='launchEditLanguagesModal()' ng-if='!user.guru_languages.length'>+ Add a language</li>
+							<li><button class="round" ng-click='launchEditLanguagesModal()' ng-if='!user.guru_languages.length'>
+								<svg viewBox="0 0 100 100">
+								    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+								</svg>
+							</button></li>
 						</ul>
 					</div>
 				</div>
@@ -196,14 +212,14 @@
                         <img id = "E2E-editProfile-imgUrl" class='pure-img profile-img sidebar-img guru-profile-img inline'  ng-src='{{user.profile_url}}'/>
                       </a>
                     </div>
-                    <div ng-include="img_base + 'templates/ratings.components.guru.html'">
+                    <div ng-include="img_base 'templates/ratings.components.guru.html'">
                     </div>
                   </div>
 
                   <div class='pure-u-1-2 relative' style='padding-top:1em;'>
                     <div class='center no-margin'>
                       <a id="E2E-editProfile-editName" ng-click='root.vars.profile.edit_mode && showPopupEditName()'>
-                        <h1 class='title light uppercase margin-half'>{{user.name.split(' ')[0] + ' ' + user.name.split(' ')[1][0].toUpperCase()}}.</h1>
+                        <h1 class='title light uppercase margin-half'>{{user.name.split(' ')[0] ' ' user.name.split(' ')[1][0].toUpperCase()}}.</h1>
                       </a>
                       <a id="E2E-editProfile-editSchool"  ng-click='root.vars.profile.edit_mode && goToUniversity()'>
                         <h5 id = "E2E-schoolName" class='white-text bold no-margin uppercase' value={{user.university.title}}>
@@ -216,7 +232,7 @@
                           {{user.majors[0].name}}
                         </h5>
                         <h5 style='padding-top:0.5em;' class='uppercase semibold no-margin blue hide ng-class:{"show":root.vars.profile.edit_mode && user.majors.length === 0}'>
-                          + add a major
+                          add a major
                         </h5>
                       </a>
                       <a ng-click='root.vars.profile.edit_mode && showMaxHourlyClicked()'>
@@ -274,7 +290,7 @@
               <div class='pure-u-1-3 center' style='border-right:1px solid rgba(0,0,0,0.1);'>
                 <div class=' no-margin center padding-half'>
                   <h1 class='no-margin' style='font-size:250%;'>
-                    {{user.response_rate || 0 + '%'}}
+                    {{user.response_rate || 0 '%'}}
                   </h1>
                   <h5 class='opacity-3-4 no-margin semibold' style='font-size:86%; margin-top:0.7em; opacity:0.5'>
                     response rate
@@ -337,7 +353,7 @@
                       <h2 class='opacity-1-2' style='font-size:150%'>
                         <div class="hide ng-class:{'show':user.guru_experiences.length > 0}" ng-repeat='experience in user.guru_experiences'>{{experience.name}} - {{experience.years}} years</div>
                         <div class='uppercase semibold no-margin blue hide ng-class:{"show":user.guru_experiences.length === 0}'>
-                          + Add an experience
+                          Add an experience
                         </div>
                       </h2>
                     </div>
@@ -373,7 +389,7 @@
                       <h2 class='opacity-1-2' style='font-size:150%'>
                         <div ng-repeat='language in user.guru_languages'>{{language.name}}</div>
                         <div class='uppercase semibold no-margin blue hide ng-class:{"show":user.guru_languages.length === 0}'>
-                          + Add a language
+                          Add a language
                         </div>
                       </h2>
                     </div>
@@ -390,7 +406,7 @@
   <input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed(this)" style='display:none'/>
   <input type='file' id='file-input-guru-add-transcript' onchange="angular.element(this).scope().file_changed(this)" style='display:none'/>
   <div class='full-height windows-top-margin' ng-show='profile.showCredibility' style='top:88px;'>
-    <div ng-include="img_base + 'templates/guru.credibility.components.html'" class='full-height'>
+    <div ng-include="img_base 'templates/guru.credibility.components.html'" class='full-height'>
     </div>
   </div>
 
