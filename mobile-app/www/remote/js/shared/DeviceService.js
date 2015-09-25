@@ -16,9 +16,13 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 		readyDevice: readyDevice,
 		getDevice: getDevice,
     getPlatform: getPlatform,
+    getModel: getModel,
+    getVersion: getVersion,
+    getUUID: getUUID,
 		isMobile: isMobile,
 		isWeb: isWeb,
     ios: iOSService,
+    getInfo: getInfo
 	}
 
 	function isMobile() {
@@ -39,17 +43,52 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
     return ionic.Platform.platform();
   }
 
+  function getUUID() {
+    console.log("getUUID() returns: " + ionic.Platform.device().uuid);
+    return ionic.Platform.device().uuid;
+  }
+
+  function getVersion() {
+    console.log("getVersion() returns: " + ionic.Platform.device().version);
+    return ionic.Platform.device().version;
+  }
+
+  function getModel() {
+    console.log("getVersion() returns: " + ionic.Platform.device().model);
+    return ionic.Platform.device().model;
+  }
+
+  function getInfo() {
+    var info =  ionic.Platform.device().model + "/" +
+                ionic.Platform.device().platform + "/" +
+                ionic.Platform.device().version + "/" +
+                ionic.Platform.device().uuid
+                                       ;
+  console.log("Device info: " + info);
+    return info;
+  }
+
 	function readyDevice(callback) {
-		document.addEventListener("deviceready", onDeviceReady);
+    var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+    if(app) {
+      console.log("Running on mobile");
+      document.addEventListener("deviceready", onDeviceReady);  
+    } else {
+      console.log("Detected desktop browser");
+      //onDeviceReady();
+    }
+		
 	}
 
 	function onDeviceReady(callback) {
 		//checkUpdates();
 
-        if (calcTimeSinceInit) {
-      		deviceReadyLoadTime = calcTimeSinceInit();
-      		console.log('Device ready load time:', deviceReadyLoadTime, 'seconds');
-        }
+
+
+    if (calcTimeSinceInit) {
+  		deviceReadyLoadTime = calcTimeSinceInit();
+  		console.log('Device ready load time:', deviceReadyLoadTime, 'seconds');
+    }
 		if ($cordovaSplashscreen && $cordovaSplashscreen.hide) {
 			$cordovaSplashscreen.hide();
 		}
@@ -60,32 +99,39 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
         }
 
 		if(isMobile()) {
-			console.log("DeviceSerivce detects mobile");
-	  		console.log("navigator.geolocation works well");
-			console.log("window.open works well");
-			console.log("navigator.camera works well " + navigator.camera);
-   			console.log("cardIO: " + $cordovaNgCardIO);
-   			console.log("cordova.file is ready: " + cordova.file);
-   			console.log("fileTransfer is ready: " + FileTransfer);
+  		console.log("DeviceService detects mobile");
+      console.log("device.cordova is ready " + device.cordova);
+  		console.log("navigator.geolocation works well");
+  		console.log("window.open works well");
+  		console.log("navigator.camera works well " + navigator.camera);
+ 			console.log("cardIO: " + $cordovaNgCardIO);
+ 			console.log("cordova.file is ready: " + cordova.file);
+ 			console.log("fileTransfer is ready: " + FileTransfer);
 
-   			if(navigator.splashscreen) {
-   				navigator.splashscreen.hide();
-   			}
+      document.addEventListener("offline", onOffline, false);
 
-	 		var mobileOS = getPlatform().toLowerCase();
-		  	switch(mobileOS) {
-		  		case "ios":
-		  			iOSService.ready();
-			  		break;
-		  		case "android":
-		  			AndroidService.ready();
-		  			break;
-	  			case "windows":
-	  				WindowsService.ready();
-	  				break;
-		  	}
+      function onOffline() {
+        
+      }
 
-		  	console.log("detected platform: " + getPlatform());
+  		if(navigator.splashscreen) {
+  			navigator.splashscreen.hide();
+  		}
+
+   		var mobileOS = getPlatform().toLowerCase();
+  	  	switch(mobileOS) {
+  	  		case "ios":
+  	  			iOSService.ready();
+  		  		break;
+  	  		case "android":
+  	  			AndroidService.ready();
+  	  			break;
+    			case "windows":
+    				WindowsService.ready();
+    				break;
+  	  	}
+
+  		  	console.log("detected platform: " + getPlatform());
 		}
 		if(typeof callback === 'function') {
 			callback();

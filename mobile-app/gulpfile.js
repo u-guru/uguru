@@ -23,6 +23,9 @@ var gutil = require('gulp-util');
 var karma = require('karma').server;
 var preprocess = require('gulp-preprocess');
 
+var replace = require('gulp-replace-task');
+var fs = require('fs');
+
 /**
  * Parse arguments
  */
@@ -35,6 +38,41 @@ var args = require('yargs')
 var build = args.build;
 var uld = args.uld;
 var targetDir = path.resolve('dest');
+
+
+
+gulp.task('replace', function() {
+  // Get the environment from the command line
+  var env = args.env || 'localdev';
+  var start = args.page || 'university';
+  var ip = args.ip
+
+  // Read the settings from the right file
+  var filename = env + '.json';
+  var settings = JSON.parse(fs.readFileSync('./config/' + filename, 'utf8'));
+
+  gulp.src('./www/js/constants.js')
+    .pipe(replace({
+      patterns: [
+        {
+          match: 'local',
+          replacement: settings.local
+        },
+        {
+          match: 'startpage',
+          replacement: start
+        },
+        {
+          match: 'ipaddress',
+          replacement: ip
+        }
+      ]
+    }))
+    .pipe(gulp.dest('./www/remote/js/'));
+});
+
+
+
 
 gulp.task('express', function() {
   var express = require('express');
@@ -116,8 +154,8 @@ gulp.task('styles', function() {
                 { style: 'compressed' } :
                 { style: 'expanded' };
   var cssStream2 = gulp.src('www/remote/css/ionic.app.min.css');
-  var cssStream3 = gulp.src('www/remote/css/pure-min.css');
-  var cssStream4 = gulp.src('www/remote/css/sass/grids-responsive-min.css');
+  // var cssStream3 = gulp.src('www/remote/css/pure-min.css');
+  var cssStream4 = gulp.src('www/remote/css/sass/default.css');
   var cssStream5 = gulp.src('www/remote/css/sass/style.css');
   var cssStream6 = gulp.src('www/remote/css/sass/views/access.css');
   var cssStream7 = gulp.src('www/remote/css/sass/views/home.css');
@@ -128,19 +166,20 @@ gulp.task('styles', function() {
   var cssStream12 = gulp.src('www/remote/css/sass/views/major.css')
   var cssStream13 = gulp.src('www/remote/css/sass/views/courses.css')
   var cssStream14 = gulp.src('www/remote/css/sass/views/photo.css')
-  var cssStream15 = gulp.src('www/remote/css/sass/views/guru.css')
+  // var cssStream15 = gulp.src('www/remote/css/sass/views/guru.css')
   var cssStream16 = gulp.src('www/remote/css/sass/samir.css')
   var cssStream17 = gulp.src('www/remote/css/sass/views/guru-profile.css')
   var cssStream18 = gulp.src('www/remote/css/sass/views/guru-credibility.css')
   var cssStream19 = gulp.src('www/remote/css/sass/ios.css')
   var cssStream20 = gulp.src('www/remote/css/sass/components/uguru-popup.css')
+  var cssStream21 = gulp.src('www/remote/css/sass/hacks.css')
 
 
-  return streamqueue({ objectMode: true }, cssStream2, cssStream3,
+  return streamqueue({ objectMode: true }, cssStream2, 
     cssStream4, cssStream5, cssStream6, cssStream7, cssStream8,
     cssStream9, cssStream10, cssStream11, cssStream12, cssStream13,
-    cssStream14, cssStream15, cssStream16, cssStream17, cssStream18,
-    cssStream19, cssStream20).pipe(plugins.concat('main.css'))
+    cssStream14, cssStream16, cssStream17, cssStream18,
+    cssStream19, cssStream20, cssStream21).pipe(plugins.concat('main.css'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
     .pipe(minifyCSS())
     .pipe(plugins.if(build, plugins.rev()))

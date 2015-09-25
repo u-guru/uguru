@@ -8,19 +8,17 @@ angular.module('uguru.guru.controllers')
   '$timeout',
   '$localstorage',
   '$ionicPlatform',
-  '$cordovaKeyboard',
   '$ionicModal',
   '$ionicTabsDelegate',
   '$ionicSideMenuDelegate',
   '$ionicPlatform',
-  '$cordovaStatusbar',
   '$ionicSlideBoxDelegate',
   '$ionicViewSwitcher',
   '$window',
   'University',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
-    $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
-    $ionicPlatform, $cordovaStatusbar, $ionicSlideBoxDelegate,
+    $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
+    $ionicPlatform, $ionicSlideBoxDelegate,
     $ionicViewSwitcher, $window, University) {
 
     $scope.activeSlideIndex = 0;

@@ -14,50 +14,182 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'deviceInfo',
   'UniversityMatcher',
   '$ionicSlideBoxDelegate',
+  'DeviceService',
   '$ionicModal',
+  'uTracker',
   AddUniversityCtrl]);
 
-function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
-  Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher,
-  $ionicSlideBoxDelegate, $ionicModal) {
+function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher, 
+  Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher, $ionicSlideBoxDelegate,
+  DeviceService, $ionicModal, uTracker) {
+
+
+  //var networkState = navigator.connection.type;
+  var deviceUUID = DeviceService.getUUID();
+  var deviceModel =  DeviceService.getModel();
+  var devicePlatform =  DeviceService.getPlatform();
+  var deviceVersion = DeviceService.getVersion();
+  console.log("deviceUUID: " + deviceUUID);
+  if( deviceUUID===null || deviceUUID===undefined) deviceUUID = 'undefined';
+  var mixpanelID = deviceUUID.substring(0,8);
+  console.log("mixpanelID: " + mixpanelID);
+
+  //TODO: current implementation of deviceready() isn't optimal. isn't always ready to provide device info
+  uTracker.setUser('mp', 'uTrackerTester');
+  // mixpanel.identify('test123');
+  
+  document.addEventListener("pause", lastSearch, false);
+  document.addEventListener("backbutton", lastSearch, false);
+  function lastSearch() {
+
+    //uTracker.track('mp')
+
+    uTracker.track('mp', "Paused/Back", {
+      "$Search_Input": $scope.input.search_text
+    });
+  }
+
+  uTracker.set('mp',{
+      "$email": "testphone@gmail.com",
+      
+      "$created": "2015-09-22 16:53:54",
+      "$last_login": new Date(),
+      '$Device_UUID': deviceUUID,
+      '$Device_Model': deviceModel,
+      '$Device_Platform': devicePlatform,
+      '$Device_Version': deviceVersion,
+      //'$network_state': networkState,                
+  });
+
+
+  var appLoadTime;
+  var appStartTime;
+
+  $scope.getLoadTime = function() {
+
+        appStartTime = Date.now();
+        console.log("appStartTime: " + appStartTime);
+        var time_ms = appStartTime - start_dom_time;
+        var time_s = (time_ms / 1000.0).toPrecision(3)
+        var loadTime = time_s;
+        appLoadTime = loadTime;
+        console.log("appLoadTime: " + appLoadTime);
+        uTracker.track('mp', "App Launch", {
+          "$App_Load_Time": appLoadTime
+        });
+        uTracker.set('mp', {
+          "$App_Load_Time": appLoadTime
+        });
+  }
+
+  var stopLoop = false;
+  var stats = new Stats();
+
+    $scope.beforeEnter = function() {
+      stopLoop = false;
+      var fpsArray = [];
+      function update() {
+        stats.begin();  
+        stats.end();
+        fpsArray.push(stats.getFPS());
+        //console.log("FPS: " + stats.getFPS());
+        if(!stopLoop) {
+          window._rAF(update);          
+        } else {
+          var total = 0;    
+          for(var i=0; i<fpsArray.length; i++) {
+            total += fpsArray[i];
+          }
+          //we are disregarding the first value since it's most likely 0 due to initial transition
+          fpsArray.shift();
+          var meanFPS = Math.round(total / (fpsArray.length));
+          //console.log("meanFPS: " + meanFPS);
+          //console.log("fpsArray: " + fpsArray);
+          //var fpsValue = "meanFPS: " + meanFPS + "/ fpsArray: " + fpsArray.toString();
+          //console.log("fpsValue: " + fpsValue);
+
+          uTracker.track('mp', "Entered Access Code", {
+              "$Mean_FPS": meanFPS,
+              "$FPS_Array": fpsArray.toString()
+          });
+          uTracker.set('mp', {
+            "$Mean_FPS": meanFPS
+          });
+
+        }
+      }
+      window._rAF(update); 
+    };
+
+    $scope.afterEnter = function() {
+      stopLoop = true;
+      //$timeout(function() {stopLoop = true}, 300);
+      //console.log("called afterEnter");
+    };
 
     console.log("passed deviceInfo: " + deviceInfo);
 
-    $scope.getGPSCoords = function() {
-      if(!isTimeout) {
-        isTimeout = true;
-        getGPS();
-        $timeout(function() { isTimeout = false;}, 4000);
-      } else {
-        console.log("still waiting for $timeout to clear, please try again shortly");
+    var listResponseTime = 0;
+    var active = true;
+    var listEndTime = 0;
+    $scope.$on('uniListFinished', function() {
+      
+      if(active) {
+        if($scope.input.search_text.length > 0) {
+          listResponseTime = Date.now();
+          console.log("setting listResponseTime: " + listResponseTime);
+          //console.log("listResponseTime in scope.$on: " + listResponseTime);
+          // var measureTime = listResponseTime - startTime;
+          // console.log("measureTime: " + measureTime);
+          active = false;
+        }
+        else if($scope.input.search_text.length === 0) {
+          listEndTime = Date.now();
+          console.log("listEndTime: " + listEndTime);
+        }  
+      }
+    });
+
+    var measure = true;
+    var startTime = 0;
+    $scope.measureResponse = function() {
+      if(measure) {
+        measure = false;
+        startTime = Date.now();
+        console.log("setting startTime: " + startTime);
+        $scope.universities = UniversityMatcher.cachedMatch($scope.input.search_text);
       }
     }
-
 
 
     var queryTimeout = false;
     var emptyTimeout = false;
     $scope.limit = 10;
     $scope.query = function(input) {
-      if(!queryTimeout) {
-        queryTimeout = true;
-        //$scope.universities = Utilities.nickMatcher(input, University.getTargetted());
-        $scope.universities = UniversityMatcher.cachedMatch(input);
-        $timeout(function() {queryTimeout = false;}, 600);
-      }
-      else if(input.length === 0) {
-        if(!emptyTimeout) {
-          emptyTimeout = true;
+      if(!measure) {
+
+        if(!queryTimeout) {
+          //queryTimeout = true;
+          //$scope.universities = Utilities.nickMatcher(input, University.getTargetted());
           $scope.universities = UniversityMatcher.cachedMatch(input);
-          $timeout(function() {emptyTimeout = false;}, 600);
+          //$timeout(function() {queryTimeout = false;}, 600);
         }
+        else if(input.length === 0) {
+          if(!emptyTimeout) {
+            emptyTimeout = true;
+            $scope.universities = UniversityMatcher.cachedMatch(input);
+            $timeout(function() {emptyTimeout = false;}, 600);
+          }
+        }
+
       }
 
     }
 
-
-    $scope.search_text = '';
-    $scope.location = false;
+    $scope.input = {
+      search_text: ''
+    }
+    
     $scope.universities = University.getTargetted();
     sortByRank(University.getTargetted());
     $scope.limit = 10;
@@ -68,14 +200,10 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       }
     }
 
-    // $ionicSlideBoxDelegate.update();
     //back button
     $scope.goToAccess = function() {
-      // console.log("pressed goToAccess()");
-      // $ionicViewSwitcher.nextDirection('back');
-      // $state.go('^.access');
-
-    $ionicSlideBoxDelegate.previous();
+      $scope.input.search_text = '';
+      $ionicSlideBoxDelegate.previous();
     }
 
     function sortByRank(list) {
@@ -84,7 +212,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           return -1;
         if (a.rank > b.rank)
           return 1;
-
         return 0;
       }
       return list.sort(compareRank);
@@ -92,6 +219,22 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
     $scope.universitySelected = function(university, $event) {
 
+      var searchResponseTime = listResponseTime - startTime;
+      console.log("searchResponseTime: " + searchResponseTime);
+
+      var listRenderTime = listEndTime - appStartTime;
+      console.log("listRenderTime: " + listRenderTime);
+
+      uTracker.track('mp', "Selected University", {
+          "$University": university.name,
+          "$Search_Input": $scope.input.search_text
+      });
+      uTracker.set('mp', {
+          "$University": university.name,
+          "$Search_Response_Time": searchResponseTime,
+          "$List_Render_Time": listRenderTime
+      });
+      
       //if user is switching universities
       if ($scope.user.university_id
           && university.id !== $scope.user.university_id
@@ -99,11 +242,17 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       {
           return;
       }
-
+      uTracker.track('mp', "Changed University", {
+          "$University": university.name,
+          "$Search_Input": $scope.input.search_text
+      });
+      uTracker.set('mp', {
+          "$University": university.name,
+      });
       $scope.loader.show();
       $scope.user.university_id = university.id;
       $scope.user.university = university;
-      $scope.search_text = '';
+      $scope.input.search_text = '';
 
       //update user to locat storage
       $scope.rootUser.updateLocal($scope.user);
@@ -125,31 +274,45 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
 
     };
-    console.log("$scope.location is currenty: " + $scope.location);
 
+
+    var locationMode = Settings.get('locationMode');
+
+    $scope.location = {
+      mode: locationMode
+    }
 
     var isTimeout = false;
-    function getGPS() {
+    $scope.getGPSCoords = function() {
+      if(!isTimeout) {
+        isTimeout = true;
+        getGPS();
+        $timeout(function() { isTimeout = false;}, 4000);
+      } else {
+        console.log("still waiting for $timeout to clear, please try again shortly");
+      }
+    }
 
+    function getGPS() {
 
       var schoolList = document.querySelectorAll('#school-list')[0];
 
-      if($scope.location) {
-
-        $scope.location = false;
-        //sortByRank(University.getTargetted());
+      if($scope.location.mode) {
+        Settings.set('locationMode', false);
+        $scope.location.mode = false;
         document.querySelector('header a.geolocation-icon .ion-navigate').style.color = 'white';
-        console.log("$scope.location is now: " + $scope.location);
 
-      } else if(!$scope.location){
+      } 
+      else if(!$scope.location.mode) {
 
         Geolocation.getLocation();
         document.querySelector('header a.geolocation-icon .ion-navigate').style.color = '#46FF00';
         $timeout(function() {
             $scope.limit = 10;
             schoolList.scrollTop = 0;
-            $scope.location = true;
-            console.log("$scope.location is now: " + $scope.location);
+            Settings.set('locationMode', true);
+            $scope.location.mode = true;
+            console.log("$scope.location.mode is now: " + $scope.location.mode);
 
           }, 1500);
       }

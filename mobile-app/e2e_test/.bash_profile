@@ -39,8 +39,9 @@ export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 #export PATH=${PATH}:~/android-sdk-linux/tools
 #export PATH=${PATH}:~/android-sdk-linux/platform-tools
 
-export PATH=${PATH}:~/dev/android-sdk-linux/tools
-export PATH=${PATH}:~/dev/android-sdk-linux/platform-tools
+export ANDROID_HOME=/usr/local/Cellar/android-sdk/24.3.4/
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
 NPM_PACKAGES="${HOME}/.npm-packages"
 PATH="$NPM_PACKAGES/bin:$PATH"
 # Unset manpath so we can inherit from /etc/manpath via the `manpath`

@@ -1,0 +1,60 @@
+#become-guru-slidebox-container header h1, .university-view header h1 {
+  padding-top: 25%; }
+
+#profile.guru-profile header {
+  position: absolute;
+  height: 50px;
+  width: 100%; }
+
+#profile.guru-profile header.relative {
+  position: relative; }
+
+#profile.guru-profile header a {
+  position: relative; }
+
+#profile.guru-profile header a.edit-button h1 {
+  position: absolute;
+  right: 0; }
+
+#profile.guru-profile header a.save-button h1 {
+  position: absolute;
+  right: 0; }
+
+.uguru-view.skills-view .onboarding#skill #skills-list ul {
+  height: 100%;
+  padding: 0 !important; }
+  .uguru-view.skills-view .onboarding#skill #skills-list ul li {
+    width: 50%;
+    display: inline-flex;
+    padding: 0 !important; }
+
+.uguru-view.faq-modal {
+  background-color: whitesmoke !important;
+  z-index: 1000;
+  background-color: white; }
+  .uguru-view.faq-modal header {
+    overflow: hidden; }
+  .uguru-view.faq-modal .ion-chevron-down {
+    position: absolute;
+    top: 10px;
+    left: 10px; }
+
+.university-view .input-search-ghost input {
+  text-align: left;
+  padding-left: 45px; }
+
+.uguru-view .input-search-ghost:before {
+  width: 18px !important;
+  height: 18px !important;
+  left: 5% !important;
+  top: 40%; }
+
+.uguru-view .input-search-ghost input {
+  font-size: 20px !important;
+  line-height: 18px; }
+
+.white-guru-svg {
+  padding: 3px; }
+
+.high-z-index {
+  z-index: 1000000000; }

@@ -1,40 +1,97 @@
 var LOCAL = true; //local to the 8100 codebasebirbirs
 var FIRST_PAGE='^.university';
+//var FIRST_PAGE='^.home';
+
 var img_base;
 
-// // @if ADMIN
 // isAdmin = true;
 // LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
-// // @endif
+
 var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
+
+
+// ==============================
+// CONSOLE_SETTINGS: Toggle console logs. Comment to enable, uncomment to disable.
+// console.log("Disabling console logs. To enable: comment out CONSOLE_SETTINGS in main.js");
+// console.log = function() {};
+// ==============================
+
+
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
+
   BASE_URL = 'http://192.168.0.105:8100';
  // REST_URL = 'http://localhost:5000';
   //REST_URL = 'https://uguru-rest.herokuapp.com'
+
+  //BASE_URL = 'http://192.168.42.124:8100';
+
+
+  //REST_URL = "http://localhost:5000"
+
+  // BASE_URL = 'http://192.168.1.43:8100';
+
+  //BASE_URL = 'http://192.168.43.155:8100';
+
+
+
 } else {
   img_base = '/static/'
 }
 
-mixpanel = window.mixpanel || null;
+// mixpanel = window.mixpanel || null;
 
-if (mixpanel) mixpanel.track("App Launch");
-angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
+ //if (mixpanel) mixpanel.track("App Launch");
+
+
+
+ window._rAF = (function() {
+    return window.requestAnimationFrame ||
+           window.webkitRequestAnimationFrame ||
+           window.mozRequestAnimationFrame ||
+           function(callback) {
+             window.setTimeout(callback, 16);
+           };
+  })();
+
+
+angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
+
 
 .run(function($ionicPlatform, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
   $cordovaDialogs, Version, $rootScope, $cordovaSplashscreen,
   $templateCache, Device, User, $cordovaLocalNotification,
-  $cordovaGeolocation, $cordovaDevice, DeviceService) {
+  $cordovaGeolocation, $cordovaDevice, DeviceService, uTracker) {
+
+
+  // $log.getInstance = function(context) {
+  //   return {
+  //     log: enhanceLogging($log.log, contect),
+  //     info: enhanceLogging($log.info, context),
+  //     warn: enhanceLogging($log.warn, context),
+  //     debug: enhanceLogging($log.debug, context),
+  //     error: enhanceLogging($log.error, context)
+  //   };
+  // };
+
+  // function enhanceLogging(loggingFunc, context) {
+  //   return function() {
+  //     var modifiedArguments = [].slice.call(arguments);
+  //     modifiedArguments[0] = [moment().format("dddd h:mm:ss a") + '::[' + context + ']> '] + modifiedArguments[0];
+  //     loggingFunc.apply(null, modifiedArguments);
+  //   };
+  // }
+
 
   var openKeyboard = null;
-
-  DeviceService.readyDevice();
+  
+  uTracker.init('mp');
 
 })
 
@@ -71,6 +128,24 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
   // RestangularProvider.setBaseUrl('http://10.193.138.226:5000/api/v1');
   //Client-side router
+  
+
+//abstract
+  // .state('admin', {
+  //   url: '/admin',
+  //   abstract: true,
+  //   templateUrl: BASE + 'templates/admin/admin.html',
+  //   controller: 'AdminCtrl'
+  // })
+  // .state('admin.admin-home', {
+  //   url: '/admin/admin-home',
+  //   templateUrl: BASE + 'templates/admin/admin.home.html',
+  //   controller: 'AdminCtrl'
+  // })
+
+
+
+
   $stateProvider
   .state('root', {
         url: '',
@@ -78,6 +153,12 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         templateUrl: BASE + 'templates/root.html',
         controller: 'RootController'
   }).
+
+  // state('root.admin', {
+  //   url: '/admin',
+  //   templateUrl: BASE + 'templates/admin/admin.home.html',
+  //   controller: 'AdminCtrl'
+  // }).
   state('root.university', {
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
@@ -244,7 +325,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
 
 
-  $urlRouterProvider.otherwise('/university');
+  $urlRouterProvider.otherwise('/' + _startpage);
 
 
 });
