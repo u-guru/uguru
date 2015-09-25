@@ -1,4 +1,3 @@
-
 var LOCAL = _local; //local to the 8100 codebasebirbirscd
 
 var FIRST_PAGE= '^.' + _startpage;

@@ -459,12 +459,6 @@ section {
     text-align: center;
     width: calc(100% - 30px); }
 
-#confirm-phone-uguru-popup .svg-logo-wrapper svg {
-  background: #8A9EA3 !important; }
-
-#confirm-email-uguru-popup .svg-logo-wrapper svg {
-  background: #50A5DD !important; }
-
 .terms-modal header h1, .faq-modal header h1, .support-modal header h1 {
   color: white; }
 
@@ -524,15 +518,10 @@ section {
       #experience-modal .main .ugrid-3 li:nth-child(3) {
         text-align: right; }
     #experience-modal .main #exp-input {
-      height: calc(100% - 194px); }
+      height: calc(100% - 87px - 116px); }
     #experience-modal .main textarea {
       font-size: 18px;
       height: 100%; }
-
-@media screen and (min-width: 375px) {
-  #experience-modal .main textarea {
-    font-size: 20px;
-    height: 100%; } }
 
 .signup-modal #account-form {
   box-sizing: border-box;
@@ -785,16 +774,6 @@ section {
   border: 0;
   height: 50px;
   line-height: 50px; }
-  .tabs svg {
-    width: 100%;
-    height: 100%;
-    padding: 8px;
-    fill: none;
-    fill-rule: evenodd;
-    stroke: white;
-    stroke-width: 4px;
-    stroke-linecap: round;
-    stroke-linejoin: round; }
 
 /* ---------- SETTING UP APP */
 .access-view {
@@ -1433,12 +1412,6 @@ section {
     .guru-profile-view .round svg {
       width: 30px;
       height: 30px; }
-      .guru-profile-view .round svg path {
-        stroke: white;
-        stroke-width: 6;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        fill: none; }
   .guru-profile-view #profile-fixed {
     position: fixed;
     top: 0;
@@ -1781,7 +1754,7 @@ section {
       text-align: center; }
       .credibility-view #credit-slider ul li a {
         display: block;
-        width: 92px;
+        width: calc(320px /3 - 15px);
         padding-bottom: 10px;
         border-bottom: 5px solid transparent;
         color: white; }
@@ -1805,14 +1778,14 @@ section {
           -ms-flex-flow: row wrap;
           -webkit-flex-flow: row wrap;
           flex-flow: row wrap;
-          margin: 0 auto 10px;
+          margin: 0 auto 5px;
           width: 50px;
           height: 50px;
           background: #40484B; }
           .credibility-view #credit-slider ul li a .credit-icon svg {
             stroke-linejoin: round;
             stroke-linecap: round;
-            stroke-width: 4px;
+            stroke-width: 5px;
             stroke: white;
             fill-rule: even-odd;
             fill: none;
@@ -1889,7 +1862,7 @@ section {
     .credibility-view #credibility-content-wrapper .credit-content-slide > div {
       height: 100%; }
       .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body {
-        height: calc(100% - 34px - 64px - 50px); }
+        height: calc(100% - 36px - 64px - 50px); }
         .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body:not(ul) {
           -ms-box-orient: horizontal;
           display: -webkit-box;
@@ -1923,24 +1896,11 @@ section {
             font-size: 16px;
             font-weight: 400; }
 
-@media screen and (min-width: 375px) {
-  .credibility-view #credit-slider ul li {
-    font-size: 16px; }
-    .credibility-view #credit-slider ul li a {
-      width: 108px; }
-      .credibility-view #credit-slider ul li a .credit-icon {
-        width: 60px;
-        height: 60px; } }
+#confirm-phone-uguru-popup .svg-logo-wrapper svg {
+  background: #8A9EA3 !important; }
 
-@media screen and (min-width: 414px) {
-  .credibility-view #credit-slider ul li {
-    font-size: 18px; }
-    .credibility-view #credit-slider ul li a {
-      display: block;
-      width: 118px; }
-      .credibility-view #credit-slider ul li a .credit-icon {
-        width: 70px;
-        height: 70px; } }
+#confirm-email-uguru-popup .svg-logo-wrapper svg {
+  background: #50A5DD !important; }
 
 .guru-view header:before {
   background: url(../../img/onboarding/school.jpg) no-repeat center center/cover; }
@@ -1991,11 +1951,8 @@ section {
     -o-transform: scale(0.8);
     transform: scale(0.8); }
   .guru-view #guru-ranking .progressbar-text {
+    background-color: transparent;
     display: none; }
-  .guru-view #guru-ranking svg {
-    border-radius: 1000px; }
-    .guru-view #guru-ranking svg * {
-      stroke-linecap: round; }
   .guru-view #guru-ranking #guru-chart {
     position: relative;
     width: 130px; }
@@ -2038,13 +1995,9 @@ section {
       font-size: 16px;
       font-weight: 600;
       text-transform: uppercase; }
-    .guru-view #guru-ranking #guru-stats .stats-bar {
-      line-height: 10px;
-      font-size: 10px;
-      height: 10px;
-      margin-bottom: 7px; }
-      .guru-view #guru-ranking #guru-stats .stats-bar svg {
-        height: 10px; }
+    .guru-view #guru-ranking #guru-stats progress, .guru-view #guru-ranking #guru-stats .progress {
+      vertical-align: top;
+      width: 100%; }
 
 .guru-view .tip-container h2 {
   font-size: 22px; }
@@ -2059,17 +2012,7 @@ section {
     -moz-transform: none;
     -ms-transform: none;
     -o-transform: none;
-    transform: none; }
-  .guru-view #guru-ranking #guru-stats .stats-bar {
-    margin-bottom: 9px; } }
-
-@media screen and (min-width: 414px) {
-  .guru-view #guru-ranking > div {
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    -o-transform: scale(1.2);
-    transform: scale(1.2); } }
+    transform: none; } }
 
 /* ---------- SAMIR */
 .smaller-list-font {

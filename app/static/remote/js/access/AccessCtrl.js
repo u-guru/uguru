@@ -110,6 +110,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   window.addEventListener('native.keyboardhide', keyboardHideHandler);
 
   var accessInput = document.getElementById('access-code-bar');
+
   accessInput.addEventListener('keyup', submitListener);
 
   function submitListener(e) {
@@ -118,13 +119,10 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       $scope.access.errorInputMsg = '';
     }
 
-    //console.log('input field: ' + $scope.access.codeInput);
     var key = e.keyCode || e.key || e.which;
+    //if enter is pressed;
     if (key === 13) {
-      if ($scope.platform.mobile) {
-        cordova.plugins.Keyboard.close();
-      }
-      $timeout(function() {$scope.checkAccessCode($scope.access.codeInput)}, 400);
+      $scope.checkAccessCode($scope.access.codeInput);
       e.preventDefault();
     }
 

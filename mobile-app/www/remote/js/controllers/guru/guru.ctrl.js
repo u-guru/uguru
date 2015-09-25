@@ -28,8 +28,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   $scope.showActive = true;
   $ionicSideMenuDelegate.canDragContent(false);
 
-  //temporary
-  $scope.current_hourly = 15;
+
   $scope.tip_of_day = 'Your profile is not complete. Completing your profile will increase your ranking by a lot'
 
 
@@ -123,12 +122,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           var index = 0;
           setInterval(function() {
               if (index > percentage) {
-                return
+                return;
               }
-              circle.animate(index / 100, function() {
-                  $scope.page.guru_ranking = index
-              });
-              index ++
+              line.animate(index / 100);
+              index ++;
           }, 20);
         }
 
@@ -155,27 +152,47 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           return line;
         }
 
+        $ionicModal.fromTemplateUrl(BASE + 'templates/privacy-terms.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up',
+            focusFirstInput: false,
+        }).then(function(modal) {
+            $scope.privacyModal = modal;
+        });
+
+        $scope.launchPrivacyModal = function() {
+          $scope.privacyModal.show();
+        }
+
         $scope.initializeProgressBars = function() {
           var guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar');
           animateProgressCircle(guruRankingCircle, $scope.user.guru_ranking);
-          // $scope.guruRankingCircle.animate(0.75);
 
-          $scope.guruCredibilityBar = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
-          $scope.guruCredibilityBar.animate(0.20);
 
-          $scope.guruProfileBar = initGuruHorizontalProgress('#guru-profile-progress-bar', 'profile-percent')
-          $scope.guruProfileBar.animate(0.65);
+          var guruCredibilityLine = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
+          animateProgressLine(guruCredibilityLine, $scope.user.current_credibility_percent || 60);
 
-          $scope.guruHourlyBar = initGuruHorizontalProgress('#guru-hourly-progress-bar', 'hourly-rate');
-          $scope.guruHourlyBar.animate(0.39);
+          var guruProfileLine = initGuruHorizontalProgress('#guru-profile-progress-bar', 'profile-percent');
+          animateProgressLine(guruProfileLine, $scope.user.current_profile_percent || 40);
+
+          var guruHourlyLine = initGuruHorizontalProgress('#guru-hourly-progress-bar', 'hourly-rate');
+          animateProgressLine(guruHourlyLine, $scope.user.current_hourly || 80);
+        }
+
+        var haveProgressBarsBeenInitialized = function() {
+          return document.querySelectorAll('.progressbar-text').length;
         }
 
 
-        $scope.$on('$ionicView.enter', function() {
+        $scope.$on('$ionicView.beforeEnter', function() {
 
-          $timeout(function() {
-            $scope.initializeProgressBars();
-          }, 500)
+          console.log($scope.user);
+
+            if (!haveProgressBarsBeenInitialized()) {
+              $timeout(function() {
+                $scope.initializeProgressBars();
+              }, 500)
+            }
 
         });
 

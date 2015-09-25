@@ -390,10 +390,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             }
 
           });
-      //UNDO
-      // } else {
-      //   alert('courses are not loaded yet');
-      // }
+
     }
 
 
@@ -436,12 +433,14 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       var checkOnboardingStatus = function() {
 
         var appOnboardingObj = $localstorage.getObject('appOnboarding');
+        console.log(appOnboardingObj);
         if (!appOnboardingObj || appOnboardingObj === {} || !appOnboardingObj.studentWelcome) {
           appOnboardingObj = {studentWelcome:true}
           $localstorage.setObject('appOnboarding', appOnboardingObj);
           $scope.launchWelcomeStudentPopup();
         }
       }
+
 
 
       $scope.$on('$ionicView.loaded', function() {
