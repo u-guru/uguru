@@ -587,6 +587,65 @@ section {
   .university-modal .onboarding-search input {
     width: calc(100% - 20px); }
 
+.request-modal .request-content {
+  height: calc(100% - 50px);
+  padding-bottom: 64px;
+  overflow: auto;
+  font-weight: 300; }
+  .request-modal .request-content input[type="text"], .request-modal .request-content textarea {
+    display: block;
+    width: 100%;
+    border: 2px solid #F1F1F1;
+    border-top: 0;
+    border-bottom: 0;
+    color: #40484B;
+    font-size: 18px;
+    font-weight: 300; }
+    .request-modal .request-content input[type="text"]::-ms-expand, .request-modal .request-content textarea::-ms-expand {
+      display: none; }
+    .request-modal .request-content input[type="text"]::-webkit-input-placeholder, .request-modal .request-content textarea::-webkit-input-placeholder {
+      font-weight: 300 !important;
+      color: rgba(64, 72, 75, 0.5); }
+    .request-modal .request-content input[type="text"]:-moz-placeholder, .request-modal .request-content textarea:-moz-placeholder {
+      font-weight: 300 !important;
+      color: rgba(64, 72, 75, 0.5); }
+    .request-modal .request-content input[type="text"]::-moz-placeholder, .request-modal .request-content textarea::-moz-placeholder {
+      font-weight: 300 !important;
+      color: rgba(64, 72, 75, 0.5); }
+    .request-modal .request-content input[type="text"]:-ms-input-placeholder, .request-modal .request-content textarea:-ms-input-placeholder {
+      font-weight: 300 !important;
+      color: rgba(64, 72, 75, 0.5); }
+    .request-modal .request-content input[type="text"]:focus::-webkit-input-placeholder, .request-modal .request-content textarea:focus::-webkit-input-placeholder {
+      color: #40484B; }
+    .request-modal .request-content input[type="text"]:focus:-moz-placeholder, .request-modal .request-content textarea:focus:-moz-placeholder {
+      color: #40484B; }
+    .request-modal .request-content input[type="text"]:focus::-moz-placeholder, .request-modal .request-content textarea:focus::-moz-placeholder {
+      color: #40484B; }
+    .request-modal .request-content input[type="text"]:focus:-ms-input-placeholder, .request-modal .request-content textarea:focus:-ms-input-placeholder {
+      color: #40484B; }
+  .request-modal .request-content .request-course input {
+    font-size: 24px;
+    font-weight: 600; }
+  .request-modal .request-content .request-time .request-time-needed, .request-modal .request-content .request-time .request-time-avail {
+    border: 2px solid #F1F1F1;
+    border-top: 0;
+    border-bottom: 0; }
+    .request-modal .request-content .request-time .request-time-needed h2, .request-modal .request-content .request-time .request-time-avail h2 {
+      font-weight: 600; }
+  .request-modal .request-content .request-desc textarea {
+    font-weight: 600;
+    border-bottom: 2px solid #F1F1F1;
+    height: 150px;
+    width: 100%; }
+  .request-modal .request-content .switch {
+    border: 2px solid #F1F1F1;
+    border-top: 0;
+    border-bottom: 0; }
+    .request-modal .request-content .switch input:checked + label .checked {
+      font-weight: 600; }
+    .request-modal .request-content .switch input:not(:checked) + label .unchecked {
+      font-weight: 600; }
+
 /* ---------- SIDEBAR & MENUS */
 #side-menu-left-overlay.active {
   background: rgba(43, 50, 52, 0.8);
@@ -710,13 +769,13 @@ section {
   .menu-student .list-item .list-item-icon svg path {
     stroke: #40484B; }
   .menu-student .list-item.activated, .menu-student .list-item.active {
-    background: rgba(85, 164, 183, 0.75);
+    background: rgba(80, 165, 221, 0.75);
     color: white; }
     .menu-student .list-item.activated svg path, .menu-student .list-item.active svg path {
       stroke: white; }
 
 .menu-student .list-item-profile {
-  background: #55A4B7;
+  background: #50A5DD;
   color: white; }
   .menu-student .list-item-profile .list-item-icon svg circle {
     stroke: white; }
@@ -734,7 +793,7 @@ section {
     stroke: white !important; }
 
 .menu-student .list-item-guru {
-  background: #55A4B7;
+  background: #50A5DD;
   color: white; }
   .menu-student .list-item-guru .list-item-icon svg path {
     stroke: white; }

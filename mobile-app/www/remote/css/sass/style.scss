@@ -596,6 +596,94 @@ section {
 	}
 }
 
+// REQUESTS MODAL
+.request-modal {
+	.request-content {
+		height: calc(100% - 50px);
+		padding-bottom: 64px;
+		overflow: auto;
+		font-weight: 300;
+		input[type="text"], textarea {
+			display: block;
+			width: 100%;
+			border: 2px solid $smoke;
+			border-top: 0;
+			border-bottom: 0;
+			color: $slate;
+			font-size: 18px;
+			font-weight: 300;
+			&::-ms-expand {
+			    display: none;
+			}
+			&::-webkit-input-placeholder {
+				font-weight: 300!important;
+				color: rgba($slate, .5);
+			}
+			&:-moz-placeholder {
+				font-weight: 300!important;
+				color: rgba($slate, .5);
+			}
+			&::-moz-placeholder {
+				font-weight: 300!important;
+				color: rgba($slate, .5);
+			}
+			&:-ms-input-placeholder {
+				font-weight: 300!important;
+				color: rgba($slate, .5);
+			}
+			&:focus {
+				&::-webkit-input-placeholder {
+					color: $slate;
+				}
+				&:-moz-placeholder {
+					color: $slate;
+				}
+				&::-moz-placeholder {
+					color: $slate;
+				}
+				&:-ms-input-placeholder {
+					color: $slate;
+				}
+			}
+		}
+		.request-course {
+			input {
+				font-size: 24px;
+				font-weight: 600;
+			}
+		}
+		.request-time {
+			.request-time-needed, .request-time-avail {
+				border: 2px solid $smoke;
+				border-top: 0;
+				border-bottom: 0;
+				h2 {
+					font-weight: 600;
+				}
+			}
+		}
+		.request-desc {
+			textarea {
+				font-weight: 600;
+				border-bottom: 2px solid $smoke;
+				height: 150px;
+				width: 100%;
+			}
+
+		}
+		.switch {
+			border: 2px solid $smoke;
+			border-top: 0;
+			border-bottom: 0;
+			input:checked + label .checked {
+				font-weight: 600;
+			}
+			input:not(:checked) + label .unchecked {
+				font-weight: 600;
+			}
+		}
+	}
+}
 
 
 /* ---------- SIDEBAR & MENUS */
@@ -749,7 +837,7 @@ section {
 			}
 		}
 		&.activated, &.active {
-			background: rgba($azure, .75);
+			background: rgba($lake, .75);
 			color: white;
 			svg {
 				path {
@@ -759,7 +847,7 @@ section {
 		}
 	}
 	.list-item-profile {
-		background: $azure;
+		background: $lake;
 		color: white;
 		.list-item-icon {
 			svg {
@@ -787,7 +875,7 @@ section {
 	}
 
 	.list-item-guru {
-		background: $azure;
+		background: $lake;
 		color: white;
 		.list-item-icon {
 			svg {

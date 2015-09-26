@@ -1141,7 +1141,7 @@ header {
 	}
 }
 
-.section-header {
+.section-header, .section-header-dark {
 	padding: 10px;
 	background: rgba(white,.05);
 	font-size: 14px;
@@ -1150,6 +1150,17 @@ header {
 	text-align: center;
 	text-transform: uppercase;
 	color: white;
+}
+
+.section-header-light {
+	padding: 10px;
+	background: $smoke;
+	font-size: 14px;
+	font-weight: 400;
+	letter-spacing: 2px;
+	text-align: center;
+	text-transform: uppercase;
+	color: $slate;
 }
 
 // BUTTONS & INPUT
@@ -1365,6 +1376,30 @@ button.disabled {
 					url(/static/remote/img/svg/search.svg) center/cover no-repeat;
 		width: 18px;
 		height: 18px;
+	}
+}
+
+[class*="switch"] {
+	@include flex;
+	@include flex-center;
+	position: relative;
+	padding: 15px;
+	width: 100%;
+	input {
+		@include center-xy;
+		-webkit-appearance: checkbox;
+	}
+	label {
+		@include flex;
+		@include flex-center;
+		width: 100%;
+		span {
+			display: block;
+			width: 50%;
+		}
+		span:last-child {
+			text-align: right;
+		}
 	}
 }
 
