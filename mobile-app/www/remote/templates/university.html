@@ -19,10 +19,10 @@
           </div>
 
           <div class="absolute bottom-0 left-0 full-x input-search-ghost">
-            <input type="search" id='university-input' class=''
+            <input type="search" id='university-input'
                     placeholder="Search for my university"
                     ng-model="input.search_text"
-                    ng-keyup="query(input.search_text)"
+                    ng-keyup="query(input.search_text, $event.keyCode)"
                     ng-keydown="measureResponse()"
                     ng-focus=""
 
@@ -36,7 +36,7 @@
         <div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list">
         <ul class='list list-item-border'>
           <li  class="list-item school-harvard" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
-            <a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
+            <a ng-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
               <span class="school-icon list-icon-left">
                 <img ng-if='platform.mobile' image-saver ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
                 <img ng-if='platform.web' ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}'/>

@@ -144,9 +144,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         if($scope.input.search_text.length > 0) {
           listResponseTime = Date.now();
           console.log("setting listResponseTime: " + listResponseTime);
-          //console.log("listResponseTime in scope.$on: " + listResponseTime);
-          // var measureTime = listResponseTime - startTime;
-          // console.log("measureTime: " + measureTime);
           active = false;
         }
         else if($scope.input.search_text.length === 0) {
@@ -156,11 +153,11 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       }
     });
 
-    var measure = true;
+    var measureFPS = true;
     var startTime = 0;
     $scope.measureResponse = function() {
-      if(measure) {
-        measure = false;
+      if(measureFPS) {
+        measureFPS = false;
         startTime = Date.now();
         console.log("setting startTime: " + startTime);
 
@@ -169,12 +166,17 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       }
     }
 
-
     var queryTimeout = false;
     var emptyTimeout = false;
     
-    $scope.query = function(input) {
-      if(!measure) {
+    $scope.query = function(input, keyCode) {
+      console.log("event: " + keyCode);
+      if(!measureFPS) {
+
+        if(input.length===0){
+          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.input.search_text)}, 500);          
+        }
+        else
 
         if(!queryTimeout) {
           //queryTimeout = true;
@@ -183,22 +185,17 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           //   $scope.universities = results;
           // });
           
-
-          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch(input)}, 16);
-          
-
-
-
-
+          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.input.search_text)}, 16);
+        
           //$timeout(function() {queryTimeout = false;}, 600);
         }
-        else if(input.length === 0) {
-          if(!emptyTimeout) {
-            emptyTimeout = true;
-            $scope.universities = UniversityMatcher.cachedMatch(input);
-            $timeout(function() {emptyTimeout = false;}, 600);
-          }
-        }
+        // else if(input.length === 0) {
+        //   if(!emptyTimeout) {
+        //     emptyTimeout = true;
+        //     $scope.universities = UniversityMatcher.cachedMatch(input);
+        //     $timeout(function() {emptyTimeout = false;}, 600);
+        //   }
+        // }
 
       }
 
