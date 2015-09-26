@@ -21,7 +21,7 @@ if (LOCAL) {
   BASE_URL = _ipaddress;
 
   // console.log("_ipaddress: " + _ipaddress);
-  REST_URL = 'http://192.168.42.78:5000'
+  // REST_URL = 'http://192.168.42.78:5000'
 
 
 } else {
