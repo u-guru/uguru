@@ -9,7 +9,7 @@ angular.module('uguru.directives', []);
         link: function(scope, element, attr) {
           if(scope.$first || scope.$last) {
             $timeout(function() {
-              console.log("checky");
+              //console.log("finished rendering");
               scope.$emit(attr.onFinishedRender);
             })
           }
