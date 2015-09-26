@@ -4,11 +4,11 @@ describe('Side Menu test', function () {
 	var sideMenuList = element(by.css('.side-menu-list.with-icon'))
 	var names = ['FAQ','TERMS','SUPPORT','SIGN UP','LOGIN'];
 
-	// beforeAll(function()
-	// {
-	//     browser.get("http://localhost:8100/#/home");
-	// });
-
+	beforeAll(function()
+	{
+		if(browser.getCurrentUrl() != "http://"+localhost+":8100/#/home");
+			browser.get("http://"+localhost+":8100/#/home");
+	});
 
 	describe("Welcome Pop Up",function()
 	{
@@ -23,12 +23,6 @@ describe('Side Menu test', function () {
 			element(by.css('[ng-click="closeWelcomePopup()"]')).click();
 		});
 	});
-	// it("go to the new-home page",function()
-	// {
-
- //        browser.wait(EC.elementToBeClickable(sideMenuList),3000);
-	// 	expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/home");
-	// });
 
 	it("Check the side menu",function()
 	{
@@ -46,10 +40,6 @@ describe('Side Menu test', function () {
 	       (function(name) {
     			it("It has "+ name+ " Section",function()
 				{
-					// element.all(by.css(".list-item.item")).then(function(items)
-					// {
-					// 	expect(items.length).toBe(5)
-					// });
     				doc.checkItemDisplay(name,true);
 				});
     	    })(names[i]);
@@ -137,43 +127,57 @@ describe('Side Menu test', function () {
 
 	describe("Check All buttons is clickalbe",function()
 		{
-			var closed = element.all(by.css('.header-nav-back'));
-
+			var close = element.all(by.css('.modal-backdrop.active .icon.ion-chevron-down')).last();
 			// var names = ['FAQ','TERMS','SUPPORT','SIgn Up','LOGIN'];
 			for (var i = 0 ;i < 5 ;++ i)
 			{
-		       (function(name) {
-	    			it("Open "+ name+ " Section",function()
-					{
-	    				doc.checkItemDisplay(name,true,'click');
-					});
-					it('Check it popup and has right page',function()
-					{
-						expect(element(by.css('.modal-backdrop.active')).getText()).toContain(name);
-
-					});
-					it('Close '+name + ' Page',function()
-					{
-						closed.then(function(items)
-							{
-								console.log(items.length);
-								browser.wait(EC.elementToBeClickable(closed[0]),2000);
-								closed[0].click();
-							});
-			 			
-					});
-	    	    })(names[i]);
+		       (function(index,name) {
+			       	describe(name,function(){})
+			       	{
+		    			it("Open "+ name+ " Section",function()
+						{
+		    				doc.checkItemDisplay(name,true,'click');
+						});
+		    			if (i < 2 )
+			    			it('[Not Working] Cehc Page Can Scroll down',function()
+			    			{
+			    				doc.drag(element(by.css('.modal-backdrop.active ion-content')),0,200);
+			    			})
+						it('Check it popup with Right Page',function()
+						{
+							if(name ==="SIGN UP"||name ==="LOGIN")
+								expect(element(by.css('.modal-backdrop.active')).getText()).toContain("JUST A FEW MORE DETAILS.");
+							else
+								expect(element(by.css('.modal-backdrop.active')).getText()).toContain(name);
+						});
+						it('Close '+name + ' Page',function()
+						{
+							if(name ==="SIGN UP"||name ==="LOGIN")
+								element.all(by.css('.modal-backdrop.active .header-nav')).click();
+							else
+								close.click();
+						});
+			       	}
+	    			
+	    	    })(i,names[i]);
 			}
-			//Skip Bugs
-			// it("refresh page [Skip Bug]",function()
-			// {
-			// 	browser.refresh();
-		 //        browser.wait(EC.visibilityOf(sideMenuList),3000);
-
-			// });
 		});
 
+describe("Special Bugs",function()
+{
+	describe("Check #side-menu-wrapper Is Present in the page",function()
+	{
+		it("Open FAQ",function()
+		{
+			doc.checkItemDisplay('FAQ',true,'click');
 
+		});
+		it('Check #side-menu-wrapper is not present',function()
+		{
+			expect(element(by.id('side-menu-wrapper')).isPresent()).toBe(false,"#side-menu-wrapper shouldn't be present")
+		});
+	});
+})
 
 
 

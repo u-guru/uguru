@@ -116,3 +116,35 @@ describe('Guru Home Test', function () {
 
 	
 });
+
+
+// describe("[Need to update test Library ]Welcome Pop Up",function()
+	// {
+	// 	it('Check Pop up ',function()
+	// 	{
+	// 		expect(element(by.css('.content-wrapper')).isDisplayed()).toBe(true);
+	// 	});
+	// 	it('Close Welcome',function()
+	// 	{
+	// 		//element(by.id('home-uguru-popup')).click();
+	// 		element(by.css('[ng-click="closeWelcomePopup()"]')).click();
+	// 	});
+	// });
+	// describe("Check Tab Bar",function()
+	// {
+	// 	it('click Cred Button',function()
+	// 	{
+	// 		doc.tabBar('guru-tab-bar',2)
+	// 		browser.sleep(10000)
+	// 	});
+	// 	it('Check Url',function()
+	// 	{	
+	// 		// expect(browser.getCurrentUrl()).toBe("http://localhost:8100/#/guru-profile");
+	// 		expect(browser.getCurrentUrl()).toContain("/#/guru-profile");
+
+	// 	});
+	// 	it("Check Side Meuns Hide",function()
+	// 	{
+	// 		expect(element(by.tagName('ion-side-menu')).isDisplayed()).toBe(false, "SideBar is showed");
+	// 	});
+	// });

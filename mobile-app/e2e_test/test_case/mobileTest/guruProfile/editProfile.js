@@ -4,6 +4,7 @@ describe('Guru Edit Profile Test', function () {
 	var major = element(by.css('#profile-major li'))
 	var skill = element(by.css('#profile-skills li'))
 	var language = element(by.css('#profile-languages li'))
+	var profileAdd = element.all(by.css('#profile-info .default'));
 
 	var ele = element.all(by.tagName("ion-slide"));
 	beforeAll(function()
@@ -12,63 +13,31 @@ describe('Guru Edit Profile Test', function () {
 		browser.get("http://"+localhost+":8100/#/guru-profile");
 		browser.sleep(2000)
 	});
-	// describe("[Need to update test Library ]Welcome Pop Up",function()
-	// {
-	// 	it('Check Pop up ',function()
-	// 	{
-	// 		expect(element(by.css('.content-wrapper')).isDisplayed()).toBe(true);
-	// 	});
-	// 	it('Close Welcome',function()
-	// 	{
-	// 		//element(by.id('home-uguru-popup')).click();
-	// 		element(by.css('[ng-click="closeWelcomePopup()"]')).click();
-	// 	});
-	// });
-	// describe("Check Tab Bar",function()
-	// {
-	// 	it('click Cred Button',function()
-	// 	{
-	// 		doc.tabBar('guru-tab-bar',2)
-	// 		browser.sleep(10000)
-	// 	});
-	// 	it('Check Url',function()
-	// 	{	
-	// 		// expect(browser.getCurrentUrl()).toBe("http://localhost:8100/#/guru-profile");
-	// 		expect(browser.getCurrentUrl()).toContain("/#/guru-profile");
-
-	// 	});
-	// 	it("Check Side Meuns Hide",function()
-	// 	{
-	// 		expect(element(by.tagName('ion-side-menu')).isDisplayed()).toBe(false, "SideBar is showed");
-	// 	});
-	// });
+	
 	describe('Check all elements is not clickalbe before Edit Mode',function()
 	{
-		var profileAdd = element.all(by.css('#profile-info .default'));
 		var photoClick = element(by.css('#profile-icon a'))
 	 	var str = ['Course','Major','Skills','Languages'];
 
 		it('Element : Photo',function()
 		{
-			photoClick.getAttribute('ng-if').then(function(value)
-			{
-				expect(value).toBe("TESTs","Not sure what value of NG-if should be");
-			});
+			expect(photoClick.getAttribute('ng-if')).toBe("TESTs","Not sure what value of NG-if should be");
 		});
 		for(var j = 0 ; j <4 ; ++ j)
 		{
 			(function(index,name)
+			{
+				it('Element : ' + name,function()
 				{
-					it('Element : ' + name,function()
+					profileAdd.then(function(items)
 					{
-						profileAdd.then(function(items)
-						{
-							expect(items[index].isDisplayed()).toBe(false,"Add "+name+" Should Be Hiden Before Edit Mode");
-						});
+						expect(items[index].isDisplayed()).toBe(false,"Add "+name+" Should Be Hiden Before Edit Mode");
 					});
-				})(j, str[j]);
+				});
+			})(j, str[j]);
 		}
 	});
+	
 	describe("Edit Mode",function()
 	{
 		// describe('Only Save Button can save the profile',function()
@@ -90,7 +59,7 @@ describe('Guru Edit Profile Test', function () {
 			it("Upload Large photo",function()
 			{
 			   //doc.uploadPhoto('file-input-guru-edit-profile');
-			   expect(true).toBe(false,"Not Completed Yet",'large');
+			   doc.uploadPhoto('file-input-guru-edit-profile','large');
 			});
 			
 		});	
@@ -102,21 +71,16 @@ describe('Guru Edit Profile Test', function () {
 					describe(title,function()
 					{ 
 						var count = 1 ; // 2 cuz deafult values
-						var addButton   = element(by.css('#profile-'+title+ ' .default'));
+						var profileAdd = element.all(by.css('#profile-info .default'));
 						var objList = element.all(by.css('#profile-'+title+ ' li'));
 						var pageTitle = element(by.css('#'+title+' h1'));
 						var pageSearch= element(by.css('#'+title+'input'));
 						var listName    = title+'-list';
-						// var closeButton = element.all(by.css('#'+title+' .header-nav-back')).last();
 						var closeButton = element.all(by.css('.modal-backdrop.active .header-nav-back')).last();
-
 						var chooseList = element.all(by.repeater(title+' in user.'+title+'s'));
-					 	// var test = title+' in user.'+title+'s';
-					 			var profileAdd = element.all(by.css('#profile-info .default'));
 
 						if(title =='course')
 						{
-							addButton = element(by.css('#profile-'+title+ 's .default'));
 							objList = element.all(by.css('#profile-'+title+'s li'));
 							listName =  title+'s-list';
  							chooseList = element.all(by.repeater(title+' in user.guru_'+title+'s'));
@@ -142,10 +106,8 @@ describe('Guru Edit Profile Test', function () {
 										// expect(items[index].getLocation()).toBe(0,"The Page is scrolling Down");
 										element(by.id('profile')).getLocation().then(function(result)
 						   				{
-								   			expect(result.y > 0).toBe(true,"The Page is not scrolling Down").then(function()
-								   				{
-								   					items[index].click();
-								   				});
+								   			expect(result.y > 0).toBe(true,"The Page is not scrolling Down")
+						   					items[index].click();
 						   				});
 									}
 									else
@@ -154,7 +116,6 @@ describe('Guru Edit Profile Test', function () {
 							});
 							it("check Page :"+ title,function()
 							{
-								// element(by.css('#profile-'+title+ ' .default')).click()
 							    expect(pageTitle.getText()).toContain(title.toUpperCase());
 							});
 							it('[FIX BUGS] check Search Bar',function()

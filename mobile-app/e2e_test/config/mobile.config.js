@@ -86,9 +86,10 @@ exports.config = {
                    '../test_case/mobileTest/sidemenu/signup.js'
                     ],
 
-            side:   [ '../test_case/mobileTest/workflows/access.js',
-                   '../test_case/mobileTest/workflows/university.js', 
-                    '../test_case/mobileTest/sidemenu/sidemenu.js'
+            side:   [
+                      // '../test_case/mobileTest/workflows/access.js',
+                      // '../test_case/mobileTest/workflows/university.js', 
+                      '../test_case/mobileTest/sidemenu/sidemenu.js'
                     ],
             major:  [ '../test_case/mobileTest/workflows/access.js',
                       '../test_case/mobileTest/workflows/university.js', 
