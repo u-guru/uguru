@@ -16,7 +16,7 @@
                 </a>
             </div>
             <div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
-				<input type="search" placeholder="My courses are..."
+				<input type="search" id='course-input-1' placeholder="My courses are..."
                     ng-model="course_search_text"
                     ng-keyup="query(course_search_text)"
                     >
@@ -29,7 +29,7 @@
         </a>
          <div class="absolute bottom-0 full-x left-0 input-search-ghost">
             <div>
-              <input type="search" placeholder="My courses are..."
+              <input type="search" id='course-input-2' placeholder="My courses are..."
                 ng-model="course_search_text"
                 ng-keyup="query(course_search_text)"
                 >
@@ -38,8 +38,8 @@
       </header>
       <div id="courses-list" class="onboarding-list" buffered-scroll='increaseLimit()' ng-init='limit = 20'>
         <ul class='list'>
-          <li ng-show='course_search_text.length === 0 || user.guru_courses.length == 0' ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
-              <input type="checkbox" checked>
+          <li ng-show='guruCoursesInput.value.length === 0' ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
+              <input type="checkbox" checked ng-change='alwaysTrue = true;' ng-model='alwaysTrue'>
               <label>{{course.name}}</label>
           </li>
           <li ng-repeat='course in courses | limitTo: limit' ng-click='addSelectedGuruCourse(course, course_search_text, $index)'>

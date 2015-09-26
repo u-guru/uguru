@@ -31,6 +31,26 @@ body {
 	background: rgba(white,.2);
 }
 
+body.platform-ios {
+
+
+	ul li {
+		&.active, &.activated {
+			background: rgba(white,.2);
+		}
+		::selection {
+			 background: rgba(255, 255, 255, 0.1);
+		}
+		a.active, a.activated {
+			background: rgba(white,.2);
+		}
+		a:hover, .list .list-item a:hover {
+			 background: rgba(255, 255, 255, 0.1);
+		}
+	}
+}
+
+
 section {
 	height: 100%;
 }
@@ -351,7 +371,7 @@ section {
 	@include flex;
 	@include flex-center;
 	position: fixed;
-	z-index: 10;
+	z-index: 100;
 	visibility: hidden;
 	top: 0;
 	left: 0;
@@ -492,6 +512,7 @@ section {
 		textarea {
 			font-size: 18px;
 			height: 100%;
+			resize:none;
 		}
 	}
 }
@@ -939,7 +960,9 @@ section {
 					}
 				}
 				#{$links} {
-					background: rgba(white,.2);
+					&.active, &.activated {
+						background: rgba(white,.2);
+					}
 				}
 			}
 		}
@@ -1260,7 +1283,9 @@ section {
 					line-height: 1.2;
 				}
 				#{$links} {
-					background: rgba(white,.2);
+					&.active, &.activated {
+						background: rgba(white,.2);
+					}
 				}
 				&.selected  {
 					position: relative;

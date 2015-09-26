@@ -1,10 +1,12 @@
-var LOCAL = _local; //local to the 8100 codebasebirbirscd
+var LOCAL = _local;
 
-var FIRST_PAGE= '^.' + _startpage;
+_startpage = 'guru-credibility';
+var FIRST_PAGE = '^.' + _startpage;
 var img_base = '';
 
 console.log("_local: " + _local);
 console.log("_startpage: " + _startpage);
+console.log("_startpage: " + _ipaddress);
 
 // isAdmin = true;
 // LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
@@ -18,8 +20,8 @@ if (LOCAL) {
   BASE = 'remote/';
   BASE_URL = _ipaddress;
 
-  console.log("_ipaddress: " + _ipaddress);
-  //REST_URL = 'http://192.168.42.78:5000'
+  // console.log("_ipaddress: " + _ipaddress);
+  REST_URL = 'http://192.168.42.78:5000'
 
 
 } else {

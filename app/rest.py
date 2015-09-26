@@ -401,7 +401,9 @@ class UserOneView(restful.Resource):
             print message
             db_session.commit()
 
+        print request.json
         if request.json.get('phone_number_check_token'):
+            print 'this works'
             phone_number_token = request.json.get('phone_number_check_token')
             user.phone_number_confirmed = (user.phone_number_token == phone_number_token)
             print user.phone_number_token
@@ -821,14 +823,24 @@ class UserOneView(restful.Resource):
         user.student_sessions = []
         user.guru_sessions = []
         user.proposals = []
+        user.guru_experiences = []
         # user.guru_courses = []
         user.majors = []
         user.student_ratings = []
+
         user.guru_ratings = []
         user.cards = []
-        user.is_a_guru = False
+        user.is_a_guru = True
         user.current_hourly = None
         user.university_id = None
+        user.phone_number = None
+        user.phone_number_token = None
+        user.school_email_token = None
+        user.school_email_confirmed = None
+        user.phone_number_confirmed = None
+        user.school_email = None
+        user.fb_id = None
+        user.transcript_file = None
 
         if user.proposals:
             user.proposals = []

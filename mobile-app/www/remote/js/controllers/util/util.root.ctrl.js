@@ -200,8 +200,8 @@ angular.module('uguru.util.controllers')
 
 
 
-          $scope.logoutUser = function() {
-            if (confirm('Are you sure you want to log out?')) {
+          $scope.logoutUser = function(showAlert) {
+            if (showAlert || confirm('Are you sure you want to log out?')) {
               if ($scope.settings && $scope.settings.icons) {
                 $scope.settings.icons.profile = false;
               }
@@ -496,19 +496,13 @@ angular.module('uguru.util.controllers')
             $scope.platform.web = DeviceService.isWeb();
             $scope.platform.device = DeviceService.getDevice();
 
-
+            if (DeviceService.getPlatform() === 'ios') {
+              console.log('root.check', 'ios');
+            }
 
             console.log('device is ready from the root controller');
 
-            // if ($cordovaDevice && $cordovaDevice.getPlatform() === 'Win32NT') {
-            //   $scope.platform.windows = true;
-            //   $scope.platform.mobile = true;
-            //   $scope.platform.web = false;
-            // }
 
-            // if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.hide) {
-            //   $cordovaSplashscreen.hide();
-            // }
             if ($scope.platform && $scope.user) {
                 $scope.user.current_device = $scope.platform.device;
                 $scope.user.current_device.user_id = $scope.user.id;
@@ -606,20 +600,7 @@ angular.module('uguru.util.controllers')
           });
 
           document.addEventListener("deviceready", function () {
-            // console.log(JSON.stringify(ionic.Platform.device()));
-            // User.getUserFromServer($scope, null, $state);
 
-
-            $scope.toggleLightStatusBar = function() {
-
-
-              if (window.StatusBar) {
-                StatusBar.styleLightContent();
-                StatusBar.overlaysWebView(true);
-              }
-
-            }
-            $scope.toggleLightStatusBar();
             document.addEventListener("resume", function() {
 
                 // console.log('device is resuming....');
@@ -702,32 +683,15 @@ angular.module('uguru.util.controllers')
           });
 
 
-          //if student has any active sessions even if they are in guru mode
-          if ($scope.user && (
-              ($scope.user.incoming_requests &&
-                $scope.user.incoming_requests.length>0) ||
-                ($scope.user.active_student_sessions &&
-                  $scope.user.active_student_sessions.length > 0))
-              ) {
-              $ionicViewSwitcher.nextDirection('enter');
-              $state.go(FIRST_PAGE);
-          } else if (($scope.user.active_proposals && $scope.user.active_proposals.length > 0) ||
-          $scope.user.active_guru_sessions && $scope.user.active_guru_sessions.length > 0 )
-          {
-            $ionicViewSwitcher.nextDirection('enter');
 
-            $state.go('^.home')
-
-
-          }
         //if previous in guru mode
-          else if ($scope.user && $scope.user.guru_mode) {
+          if ($scope.user && $scope.user.guru_mode) {
 
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
 
 
-            $state.go('^.home')
+            $state.go('^.' + _startpage)
 
             $timeout(function() {
               $scope.loader.hide();
@@ -737,7 +701,7 @@ angular.module('uguru.util.controllers')
           else if ($scope.user && $scope.user.university_id) {
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
-            $state.go(FIRST_PAGE);
+            $state.go('^.' + _startpage);
             $timeout(function() {
               $scope.loader.hide();
             }, 1000);

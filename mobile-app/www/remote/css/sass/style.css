@@ -27,6 +27,15 @@ body {
 ::selection {
   background: rgba(255, 255, 255, 0.2); }
 
+body.platform-ios ul li.active, body.platform-ios ul li.activated {
+  background: rgba(255, 255, 255, 0.2); }
+body.platform-ios ul li ::selection {
+  background: rgba(255, 255, 255, 0.1); }
+body.platform-ios ul li a.active, body.platform-ios ul li a.activated {
+  background: rgba(255, 255, 255, 0.2); }
+body.platform-ios ul li a:hover, body.platform-ios ul li .list .list-item a:hover {
+  background: rgba(255, 255, 255, 0.1); }
+
 section {
   height: 100%; }
 
@@ -36,14 +45,12 @@ section {
 /* ---------- MISCELLANEOUS */
 .uguru-view * {
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important; }
-
 .uguru-view h1.verified span svg {
   display: inline !important;
   width: 20px;
   height: 20px; }
   .uguru-view h1.verified span svg path:first-child {
     fill: #50A5DD; }
-
 .uguru-view .start#how header {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -63,14 +70,11 @@ section {
     font-size: 32px;
     font-weight: 600;
     text-transform: uppercase; }
-
 .uguru-view .start#how button {
   bottom: 0;
   background: rgba(255, 255, 255, 0.1); }
-
 .uguru-view .start#how button:active {
   background: rgba(255, 255, 255, 0.4); }
-
 .uguru-view .start#how #how-cards {
   list-style: none;
   margin: 0;
@@ -148,16 +152,13 @@ section {
       background: #50A5DD; }
     .uguru-view .start#how #how-cards .how-card:nth-child(7) .how-card-media {
       background: #9A5BC5; }
-
 .uguru-view .request#request header:before {
   background: url(../images/school.jpg) no-repeat center center/cover; }
-
 .uguru-view .request#request header .request-header h1 {
   padding-top: 20px;
   width: 100%;
   text-align: center;
   font-size: 24px; }
-
 .uguru-view .request#request header .request-header .request-icon {
   border-radius: 1000px;
   -ms-box-orient: horizontal;
@@ -198,10 +199,8 @@ section {
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg); }
-
 .uguru-view .request#request #request-content {
   height: calc(100% / 3 * 2); }
-
 .uguru-view .request#request #request-list {
   height: calc(100% - 64px);
   overflow: auto; }
@@ -222,7 +221,6 @@ section {
       width: 50px;
       height: 50px;
       background: #8A9EA3; }
-
 .uguru-view .request #request-tabs ul {
   list-style: none;
   margin: 0;
@@ -293,7 +291,6 @@ section {
       color: #2B3234;
       font-size: 12px;
       line-height: 20px; }
-
 @media screen and (max-width: 320px) {
   .uguru-view body, .uguru-view input, .uguru-view button {
     font-size: 20px; }
@@ -369,7 +366,7 @@ section {
   -webkit-justify-content: center;
   justify-content: center;
   position: fixed;
-  z-index: 10;
+  z-index: 100;
   visibility: hidden;
   top: 0;
   left: 0;
@@ -461,7 +458,6 @@ section {
 
 .terms-modal header h1, .faq-modal header h1, .support-modal header h1 {
   color: white; }
-
 .terms-modal ion-content, .faq-modal ion-content, .support-modal ion-content {
   height: calc(100% - 50px);
   margin-top: 50px; }
@@ -567,7 +563,6 @@ section {
 
 .faq-modal header.bg-charcoal {
   z-index: 1000 !important; }
-
 .faq-modal iframe {
   min-height: 100%;
   width: 100%; }
@@ -669,34 +664,26 @@ section {
       width: 100%;
       height: 100%;
       background: url(../../img/school.jpg) center center/cover; } }
-
 .menu-guru .list {
   background: #40484B; }
-
 .menu-guru .list-item.active, .menu-guru .list-item.activated {
   background: #8A9EA3; }
-
 .menu-guru .list-item .list-item-icon svg path, .menu-guru .list-item .list-item-icon svg circle {
   stroke: #fff; }
-
 .menu-guru .list-item-profile {
   background: rgba(138, 158, 163, 0.75); }
-
 .menu-guru .list-item-agenda {
   background: white;
   color: #2B3234; }
   .menu-guru .list-item-agenda.active, .menu-guru .list-item-agenda.activated {
     background: rgba(255, 255, 255, 0.9); }
-
 .menu-guru .list-item-guru {
   display: none; }
-
 .menu-guru .list-item-student {
   background: rgba(138, 158, 163, 0.75); }
 
 .menu-student .list {
   background: white; }
-
 .menu-student .list-item {
   color: #40484B; }
   .menu-student .list-item .list-item-icon svg path {
@@ -706,25 +693,21 @@ section {
     color: white; }
     .menu-student .list-item.activated svg path, .menu-student .list-item.active svg path {
       stroke: white; }
-
 .menu-student .list-item-profile {
   background: #55A4B7;
   color: white; }
   .menu-student .list-item-profile .list-item-icon svg circle {
     stroke: white; }
-
 .menu-student .list-item-agenda {
   background: #40484B;
   color: white; }
   .menu-student .list-item-agenda:active, .menu-student .list-item-agenda:hover {
     background: rgba(64, 72, 75, 0.9); }
-
 .menu-student .list-item-student {
   background: #40484B;
   color: white; }
   .menu-student .list-item-student svg path {
     stroke: white !important; }
-
 .menu-student .list-item-guru {
   background: #55A4B7;
   color: white; }
@@ -881,16 +864,14 @@ section {
         text-transform: capitalize; }
       .university-view #school-list ul li a .school-name .school-stat, .university-view #school-list-modal ul li a .school-name .school-stat {
         text-transform: uppercase; }
-  .university-view #school-list ul li a:active, .university-view #school-list ul li a:focus, .university-view #school-list ul li a:hover, .university-view #school-list-modal ul li a:active, .university-view #school-list-modal ul li a:focus, .university-view #school-list-modal ul li a:hover {
+  .university-view #school-list ul li a:active.active, .university-view #school-list ul li a:active.activated, .university-view #school-list ul li a:focus.active, .university-view #school-list ul li a:focus.activated, .university-view #school-list ul li a:hover.active, .university-view #school-list ul li a:hover.activated, .university-view #school-list-modal ul li a:active.active, .university-view #school-list-modal ul li a:active.activated, .university-view #school-list-modal ul li a:focus.active, .university-view #school-list-modal ul li a:focus.activated, .university-view #school-list-modal ul li a:hover.active, .university-view #school-list-modal ul li a:hover.activated {
     background: rgba(255, 255, 255, 0.2); }
 
 .home-view button.active, .home-view button.activated {
   filter: alpha(opacity=50);
   opacity: 0.5; }
-
 .home-view #request-content {
   height: calc(100% - 50px - 64px); }
-
 .home-view #request-message {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -972,13 +953,11 @@ section {
 @media screen and (min-height: 600px) {
   .request#request-empty #request-message > div > div svg {
     max-height: 150px; } }
-
 /* ---------- GURU ONBOARDING */
 .onboarding .onboarding-search {
   box-sizing: border-box; }
   .onboarding .onboarding-search input {
     width: calc(100% - 20px); }
-
 .onboarding progress, .onboarding .progress {
   position: absolute;
   top: 0;
@@ -997,24 +976,18 @@ section {
     width: 95%; }
   .onboarding progress span[data-value="99"], .onboarding .progress span[data-value="99"] {
     width: 86%; }
-
 .onboarding header h1:not(header .header-nav a h1) {
   text-align: center; }
-
 .onboarding .onboarding-list {
   height: calc(100% / 3 * 2);
   overflow: auto; }
-
 .onboarding#demographic header:before {
   background: url(../images/school.jpg) no-repeat center center/cover; }
-
 .onboarding#demographic header h1 {
   font-size: 24px; }
-
 .onboarding#demographic #demographic-grid > ul > li:not(.active) {
   filter: alpha(opacity=30);
   opacity: 0.3; }
-
 .onboarding#demographic #demographic-grid ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1152,7 +1125,6 @@ section {
         border-color: rgba(80, 165, 221, 0.1); }
       .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:hover {
         background: rgba(80, 165, 221, 0.05); }
-
 .onboarding#start {
   background: #40484B; }
   .onboarding#start #start-container {
@@ -1180,7 +1152,7 @@ section {
       font-weight: 300;
       font-size: 20px;
       line-height: 1.2; }
-    .major-view #major-list ul li a:active, .major-view #major-list ul li a:focus, .major-view #major-list ul li a:hover {
+    .major-view #major-list ul li a:active.active, .major-view #major-list ul li a:active.activated, .major-view #major-list ul li a:focus.active, .major-view #major-list ul li a:focus.activated, .major-view #major-list ul li a:hover.active, .major-view #major-list ul li a:hover.activated {
       background: rgba(255, 255, 255, 0.2); }
     .major-view #major-list ul li.selected {
       position: relative; }
@@ -1726,7 +1698,6 @@ section {
 /* ---------- CREDIBILITY & RANKING */
 .credibility-view header {
   position: relative; }
-
 .credibility-view #credit-slider {
   position: absolute;
   bottom: 0;
@@ -1847,7 +1818,6 @@ section {
       color: #50A5DD; }
       .credibility-view #credit-slider ul #credit-email a:active .credit-icon, .credibility-view #credit-slider ul #credit-email a:focus .credit-icon, .credibility-view #credit-slider ul #credit-email a:hover .credit-icon {
         background: #50A5DD; }
-
 .credibility-view #credibility-content-wrapper {
   position: relative;
   background: #40484B;
@@ -1904,7 +1874,6 @@ section {
 
 .guru-view header:before {
   background: url(../../img/onboarding/school.jpg) no-repeat center center/cover; }
-
 .guru-view #guru-ranking {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1998,10 +1967,8 @@ section {
     .guru-view #guru-ranking #guru-stats progress, .guru-view #guru-ranking #guru-stats .progress {
       vertical-align: top;
       width: 100%; }
-
 .guru-view .tip-container h2 {
   font-size: 22px; }
-
 .guru-view .tip-container p {
   margin-top: 10px;
   font-size: 18px; }
@@ -2013,7 +1980,6 @@ section {
     -ms-transform: none;
     -o-transform: none;
     transform: none; } }
-
 /* ---------- SAMIR */
 .smaller-list-font {
   font-size: 85%; }
@@ -2057,3 +2023,5 @@ section {
     position: absolute;
     top: 10px;
     left: 10px; }
+
+/*# sourceMappingURL=style.css.map */

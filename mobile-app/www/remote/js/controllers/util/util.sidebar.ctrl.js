@@ -686,16 +686,25 @@ angular.module('uguru.util.controllers')
       if (confirm('Are you sure you want to reset your admin account?')) {
 
         $scope.loader.show();
-        $timeout(function() {
-          $scope.loader.hide();
-        }, 1000);
         $scope.user.university_id = null;
         $scope.user.university = null;
-        $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
+        $scope.loader.show();
+        User.clearAttr({}, $scope.user.id).then(function(user) {
+          $scope.loader.hide();
+          $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
+          $scope.logoutUser(true);
+          console.log('cleared user', user.plain());
+          $localstorage.setObject('user', user.plain());
+          $scope.user = user.plain();
+          $state.go('^.university');
 
-        $scope.logoutUser();
-        $localstorage.setObject('user', $scope.user);
-        $scope.goToBeginning();
+        },
+
+        function(err) {
+          console.log(err);
+          alert('Something went wrong - please contact Samir');
+        }
+        )
       }
     }
 

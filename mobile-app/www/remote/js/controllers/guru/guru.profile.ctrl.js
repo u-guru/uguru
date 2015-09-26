@@ -24,7 +24,7 @@ angular.module('uguru.guru.controllers')
     $scope.root.vars.guru_mode = true;
 
     // credibility only variable
-    $scope.activeTabIndex = 0;
+    $scope.activeTabIndex = 4;
 
     $scope.user_skills = [{name: "CSS3"}, {name: "Javascript"}, {name: "Photoshop"}, {name: "HTML5"}];
     $scope.user.languages = $scope.user.languages || [{name:"English"}, {name:"Chinese"}];
@@ -479,55 +479,44 @@ angular.module('uguru.guru.controllers')
 
 
     /** START Launch confirm phone number popup**/
-
+    var launchConfirmPhonePopupButton, uguruPopup, resendConfirmCode, verifyConfirmCode, uguruPopupCloseLink, sendConfirmCode;
     $scope.confirmPhonePopup = function() {
 
-        var launchConfirmPhonePopupButton = document.getElementById('launch-phone-confirm-popup');
-        var uguruPopup = document.getElementById('confirm-phone-uguru-popup');
-
-        var uguruPopupCloseLink = document.getElementById('confirm-phone-close-popup-link');
+        launchConfirmPhonePopupButton = document.getElementById('launch-phone-confirm-popup');
+        uguruPopup = document.getElementById('confirm-phone-uguru-popup');
 
         //opens the popup
-        $scope.reverseAnimatePopup = cta(launchConfirmPhonePopupButton, uguruPopup, {duration:1},
-          function (modal){
-            modal.classList.add('show');
-            $timeout(function() {
-              initPopupListeners();
-            }, 1500);
-          }
-        );
+
 
         var initPopupListeners = function() {
 
-            if (!$scope.user.phone_number_token) {
-              var sendConfirmCode = document.getElementById('send-confirm-code');
-
+          resendConfirmCode = document.getElementById('resend-confirm-code');
+          verifyConfirmCode = document.getElementById('verify-confirm-code');
+          uguruPopupCloseLink = document.getElementById('confirm-phone-close-popup-link');
+          sendConfirmCode = document.getElementById('send-confirm-code');
                 //send the confirmation code
+
+            if (sendConfirmCode) {
               sendConfirmCode.addEventListener("click", function(event) {
 
-                validateAndSendPhoneConfirmation();
+                $scope.validateAndSendPhoneConfirmation();
 
               });
+            }
 
-            } else {
-              var resendConfirmCode = document.getElementById('resend-confirm-code');
-              var verifyConfirmCode = document.getElementById('verify-confirm-code');
-
+            if (resendConfirmCode) {
                 //resend the confirmation code
               resendConfirmCode.addEventListener("click", function(event) {
 
-                resendPhoneConfirmation();
+                $scope.resendPhoneConfirmation();
 
               });
+            }
 
               //verify the confirmation code
               verifyConfirmCode.addEventListener("click", function(event) {
-
-                validateAndSendPhoneConfirmation()
-
+                $scope.validateAndSendPhoneConfirmation()
               });
-
-            }
 
               //close the popup
             uguruPopupCloseLink.addEventListener("click", function(event) {
@@ -537,11 +526,26 @@ angular.module('uguru.guru.controllers')
 
         }
 
+        $scope.reverseAnimatePopup = cta(launchConfirmPhonePopupButton, uguruPopup, {duration:1},
+          function (modal){
+            modal.classList.add('show');
+            $timeout(function() {
+              initPopupListeners();
+            }, 1500);
+          }
+        );
+
+        $timeout(function() {
+          initPopupListeners();
+        }, 500)
+
 
       }
       /** End phone number confirmation **/
 
-    var resendPhoneConfirmation = function() {
+
+
+    $scope.resendPhoneConfirmation = function() {
 
       var phoneNumberInput = document.getElementById('phone-number-input');
 
@@ -553,22 +557,43 @@ angular.module('uguru.guru.controllers')
 
 
           $scope.user.updateAttr('phone_number_generate', $scope.user, phoneNumberInput.value, null, $scope);
-          var msg = 'New code re-sent to ' + $scope.data.phone;
-          $scope.success.show(0, 1500, msg);
+
+          $scope.closeConfirmPhonePopup();
+          $scope.loader.show();
+          $timeout(function() {
+            $scope.loader.hide();
+            var msg = 'New code re-sent to ' + phoneNumberInput.value;
+            $scope.success.show(0, 2500, msg);
+          }, 1000)
     }
 
-    var closeConfirmPhonePopup = function() {
+    $scope.resendCode = function() {
+      $scope.resendPhoneConfirmation();
+    }
+
+    $scope.verifyCode = function() {
+      verifyPhoneCode();
+    }
+
+    $scope.closeUguruPopup = function() {
+
+      var uguruPopup = document.getElementById('confirm-phone-uguru-popup');
+      uguruPopup.classList.remove('show');
+
+    }
+
+    $scope.closeConfirmPhonePopup = function() {
       var uguruPopup = document.getElementById('confirm-phone-uguru-popup');
       uguruPopup.classList.remove('show');
     }
 
 
 
-    var validateAndSendPhoneConfirmation = function() {
+    $scope.validateAndSendPhoneConfirmation = function() {
       var phoneNumberInput = document.getElementById('phone-number-input');
       var confirmationCodeInput = document.getElementById('confirm-code-input');
-      console.log(phoneNumberInput);
       //validate
+
       if (!phoneNumberInput.value || !(phoneNumberInput.value >= 10)) {
           alert('Please enter valid phone number');
           return;
@@ -580,20 +605,17 @@ angular.module('uguru.guru.controllers')
         return;
       }
 
+
       //if user hasn't received a token yet & is sending for the first time [resend doesn't exist]
       if (phoneNumberInput.value && !$scope.user.phone_number_token && !confirmationCodeInput.value) {
-        $scope.user.phone_number_token = true;
-        $timeout(function() {
-          $scope.user.phone_number = phoneNumberInput.value;
-        }, 500)
-        $scope.user.updateAttr('phone_number_generate', $scope.user, phoneNumberInput.value, null, $scope);
-        var msg = 'Code sent to ' + phoneNumberInput.value;
-        $scope.success.show(0, 1500, msg);
+        $scope.resendPhoneConfirmation();
+        console.log('it gets here part 2')
         return;
       }
       //success
-      if ($scope.user.phone_number && confirmationCodeInput.value && confirmationCodeInput.value.length === 4) {
 
+      if ($scope.user.phone_number && confirmationCodeInput.value && confirmationCodeInput.value.length === 4) {
+        console.log('it gets here part 3')
         var callbackSuccess = function() {
           $scope.loader.hide();
           if ($scope.user.phone_number_confirmed) {

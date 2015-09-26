@@ -129,14 +129,22 @@
         <div ng-if='!user.phone_number_confirmed'>
           <h1 class="section-header">Verify your phone</h1>
           <div class="credit-body">
-	          <p>We won't share this with anyone</p>
+	          <p ng-if='!user.phone_number'>We won't share this with anyone</p>
+              <p ng-if='user.phone_number && user.phone_number_token'>We've sent you a code @<strong>{{user.phone_number}}</strong>
+              </p>
+                <div class='text-center block top-0 full-x'  ng-if='user.phone_number && user.phone_number_token'>
+                    <a class='semibold white-text-50' style='opacity:0.5;' ng-click='resendPhoneConfirmation()'>
+                        Resend Code
+                    </a>
+                </div>
           </div>
-          <button class="semibold bg-campus" id='launch-phone-confirm-popup' ng-click='confirmPhonePopup()'>Add my number</button>
+          <button class="semibold bg-campus" id='launch-phone-confirm-popup' ng-if='!user.phone_number' ng-click='confirmPhonePopup()'>Add my number</button>
+          <button class="semibold bg-campus" id='launch-phone-confirm-popup' ng-if='user.phone_number && user.phone_number_token' ng-click='confirmPhonePopup()'>Verify Code</button>
         </div>
         <div ng-if='user.phone_number_confirmed'>
           <h1 class="section-header"><strong>{{user.phone_number}}</strong><br/>is connected!</h1>
           <div class="credit-body">
-	          <p>We will not use your phone number without your permission</p>
+	          <p>We will not use your phone number without your permission. <strong class='block'>You're all set!</strong></p>
           </div>
         </div>
       </div>
@@ -146,7 +154,11 @@
         <div ng-if='!user.school_email_confirmed'>
           <h1 class="section-header">Verify your .edu email</h1>
           <div class="credit-body">
-	          <p>We won't share this with anyone</p>
+	          <p>We won't share this with anyone
+                <br>
+                <strong class='CAPS'>Must be your school.edu email</strong>
+              </p>
+
           </div>
           <button id='launch-email-confirm-popup' ng-click='launchConfirmEmailPopup()' class="semibold bg-lake">Confirm Your Email</button>
         </div>

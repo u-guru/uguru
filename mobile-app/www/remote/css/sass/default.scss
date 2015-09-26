@@ -1951,7 +1951,9 @@ input[type=range]:focus::-ms-fill-upper {
 			color: white;
 		}
 		#{$links} {
-			background: rgba(white,.2);
+			&.active, &.activated {
+				background: rgba(white,.2);
+			}
 		}
 	}
 }
