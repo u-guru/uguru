@@ -1,6 +1,6 @@
 angular.module('sharedServices')
 .factory("DownloadService", [
-	Utilities,
+	'Utilities',
 	DownloadService
 	]);
 
@@ -14,7 +14,7 @@ function DownloadService(Utilities) {
 		var fileURL = URL.toString();
 		console.log("fileURL: " + fileURL);
 		var directory = cordova.file.dataDirectory;
-		var fileName = Utilities.getFileName(assetURL);
+		var fileName = Utilities.getFileName(fileURL);
 		console.log("fileName: " + fileName);
 		var filePath = directory + fileName;
 		window.resolveLocalFileSystemURL(filePath, fileSuccess, downloadAsset);
@@ -27,10 +27,20 @@ function DownloadService(Utilities) {
 			var fileTransfer = new FileTransfer();
 			console.log("About to start file download");
 			var downloadURL = encodeURI(fileURL);
+
+			var startTime = Date.now();
+
+
 			console.log("downloadURL: " + downloadURL);
 			fileTransfer.download(downloadURL, filePath,
 				function(entry) {
-					console.log("Successfully downloaded file: " + filePath);
+
+					var endTime = Date.now();
+					var downloadTime = endTime - startTime;
+					var file = Utilities.getFileName(downloadURL);
+					console.log("downloading " + file + " took " + downloadTime + " ms");
+					var downloadLog = "downloading " + file + " took " + downloadTime + " ms";
+					$localstorage.storeDownloadLog(downloadLog);
 				},
 				function(error) {
 					console.log("Error downloading file. Code: " + error.code);

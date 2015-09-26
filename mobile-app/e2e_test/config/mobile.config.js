@@ -24,12 +24,11 @@
 exports.config = {
     framework: 'jasmine2',
 
-      // seleniumAddress: 'http://localhost:4444/wd/hub',
      // baseUrl: 'http://10.0.0.2:8000/',
      baseUrl: 'http://192.168.56.101:5555/',
 
     //appium port has to be 4723
-
+      // seleniumAddress: 'http://localhost:4444/wd/hub',
      seleniumAddress: 'http://localhost:4723/wd/hub',
 
          // capabilities: {

@@ -128,6 +128,35 @@
 	-webkit-justify-content: center;
 	justify-content: center;
 }
+@mixin flex-right-center {
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: flex-end;
+	justify-content: flex-end;
+}
+@mixin flex-bottom {
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	-webkit-align-items: flex-end;
+	align-items: flex-end;
+	-webkit-justify-content: center;
+	justify-content: center;
+}
+@mixin flex-reset {
+	-ms-box-orient: none;
+	display: inherit;
+	-ms-flex-flow: none;
+	-webkit-flex-flow: none;
+	flex-flow: none;
+	-webkit-flex-direction: none;
+	flex-direction: none;
+	-webkit-align-items: none;
+	align-items: none;
+	-webkit-justify-content: none;
+	justify-content: none;
+}
 @mixin listless {
 	list-style: none;
 	margin: 0;
@@ -166,6 +195,11 @@ $azure: #55A4B7;
 $orange: #E5753C;
 $gold: #F9D57B;
 $eggplant: #9A5BC5;
+
+$facebook: #3b5998;
+$twitter: #00aced;
+$linkedin: #007bb6;
+$instagram: #517fa4;
 
 $moola-mute: #92AC84;
 $lake-mute: #6F98B5;

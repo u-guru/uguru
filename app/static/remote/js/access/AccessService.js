@@ -11,6 +11,7 @@ function AccessService() {
 	}
 
 	function validate(code) {
+		console.log("code entered: " + code);
 		return code === genericAccessCode;
 	}
 

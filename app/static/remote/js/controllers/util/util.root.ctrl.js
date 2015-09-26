@@ -47,10 +47,8 @@ angular.module('uguru.util.controllers')
             professions: [],
             universities: []
           }
-          document.addEventListener('DOMContentLoaded', function(event) {
-              console.log('dom has loaded');
-          }, false);
 
+          $scope.isLocalServer = LOCAL || false;
 
           $scope.network_speed = null;
           $scope.window = {width: document.querySelector('body').getBoundingClientRect().width}
@@ -167,8 +165,9 @@ angular.module('uguru.util.controllers')
                 console.log('local', local_version, typeof(local_version));
 
                 if (local_version !== serverVersionNumber) {
-                      if ((DeviceService.isMobile() || WINDOWS) && $cordovaSplashscreen && $cordovaSplashscreen.show) {
-                        //$cordovaSplashscreen.show();
+
+                      if (navigator && navigator.splashscreen && navigator.splashscreen.show) {
+                          navigator.splashscreen.show();
                       }
 
                       $ionicHistory.clearCache();
@@ -208,6 +207,7 @@ angular.module('uguru.util.controllers')
               }
               $scope.loader.show();
               $localstorage.setObject('user', []);
+              $localstorage.setObject('appOnboarding', null);
               // $scope.user = null;;
               $ionicHistory.clearCache();
               $ionicHistory.clearHistory();
@@ -222,7 +222,7 @@ angular.module('uguru.util.controllers')
                 $scope.success.show(500, 2000, 'You have been successfully logged out!');
                 $timeout(function(){
                   $ionicSideMenuDelegate.toggleRight();
-                  $state.go('^.access');
+                  $state.go('^.university');
                 }, 600)
               }, 2000);
 
@@ -251,7 +251,11 @@ angular.module('uguru.util.controllers')
           }
 
           $scope.toggleRightSideMenu = function() {
+            console.log('this is called');
             $ionicSideMenuDelegate.toggleRight();
+            $timeout(function() {
+              $scope.sideMenuActive = $ionicSideMenuDelegate.isOpen();
+            }, 250);
           };
 
 
@@ -311,7 +315,8 @@ angular.module('uguru.util.controllers')
           $scope.loader = {
             show: function() {
               $ionicLoading.show({
-                template: '<ion-spinner id="E2E-spinner" icon="lines" class="spinner-positive"></ion-spinner>'
+                // template: '<div ng-include="' + $scope.img_base + 'templates/default.progress.spinner.html"></div>'
+                template: 'Loading ...'
               });
               $scope.root.vars.loaderOn = true;
             },
@@ -501,9 +506,9 @@ angular.module('uguru.util.controllers')
             //   $scope.platform.web = false;
             // }
 
-            if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.hide) {
-              $cordovaSplashscreen.hide();
-            }
+            // if ($scope.platform.mobile && $cordovaSplashscreen && $cordovaSplashscreen.hide) {
+            //   $cordovaSplashscreen.hide();
+            // }
             if ($scope.platform && $scope.user) {
                 $scope.user.current_device = $scope.platform.device;
                 $scope.user.current_device.user_id = $scope.user.id;
@@ -632,13 +637,17 @@ angular.module('uguru.util.controllers')
                       console.log('local', local_version, typeof(local_version));
 
                       if (local_version !== serverVersionNumber) {
-                            if (($scope.platform.mobile || WINDOWS) && $cordovaSplashscreen && $cordovaSplashscreen.show) {
-                              $cordovaSplashscreen.show();
+
+                            if (navigator && navigator.splashscreen && navigator.splashscreen.show) {
+                                navigator.splashscreen.show();
                             }
 
                             $ionicHistory.clearCache();
                             $ionicHistory.clearHistory();
                             $templateCache.removeAll();
+
+                            Version.setVersion(serverVersionNumber);
+                            $localstorage.set('recently_updated', true);
 
                             // window.localStorage.clear();
                             //remove all angular templates
@@ -706,7 +715,8 @@ angular.module('uguru.util.controllers')
           $scope.user.active_guru_sessions && $scope.user.active_guru_sessions.length > 0 )
           {
             $ionicViewSwitcher.nextDirection('enter');
-            $state.go('^.guru')
+
+            $state.go('^.home')
 
           }
         //if previous in guru mode
@@ -714,7 +724,8 @@ angular.module('uguru.util.controllers')
 
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
-            $state.go('^.guru');
+
+            $state.go('^.guru')
             $timeout(function() {
               $scope.loader.hide();
             }, 1000);

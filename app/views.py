@@ -227,10 +227,13 @@ def admin_investors_biz_model():
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.investors.business-model.html")
 
-
 ###################
 ## END Investors ##
 ###################
+
+@app.route('/style/')
+def uguru_style_guide():
+    return redirect('/static/style/index.html')
 
 @app.route('/admin/campaigns/')
 def admin_view_campaigns():
@@ -619,7 +622,11 @@ def windows_app():
 @app.route('/app/production/')
 @app.route('/app/')
 def app_route():
-    version = Version.query.get(1).ios
+    version = Version.query.get(1)
+    if version and version.ios:
+        version = version.ios
+    else:
+        version = 1
     print '\n\n\n\n\nrequest headers'
     print request.headers, type(request.headers)
     if 'iPad' in str(request.headers) and 'Safari' in str(request.headers):
@@ -629,7 +636,7 @@ def app_route():
         return redirect('https://www.uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
-        return redirect('192.168.42.78:5000/static/remote/index.html?version=13123')
+        return redirect('/static/remote/index.html')
         # return redirect('http://localhost:8100/')
 
 

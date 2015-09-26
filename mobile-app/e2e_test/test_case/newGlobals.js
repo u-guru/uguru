@@ -7,11 +7,10 @@ var global = function() {
   ***********************************************************/
   this.tabBar = function(id,index)
   {
-    str = '#'+id+' a:not(.ng-hide)';
+    str = '#'+id+' a';
 
     element.all(by.css(str)).then(function(items)
     {
-        browser.wait(EC.visibilityOf(items[index]),3000);
         items[index].click();
     });
   }
@@ -127,7 +126,7 @@ var global = function() {
   this.checkMsg = function(msg)
   {
     var newMsg = element(by.css(".loading-container")).element(by.tagName('span'));
-    browser.wait(EC.presenceOf(newMsg),3000,"Can't Find Message : "+msg);
+    browser.wait(EC.presenceOf(newMsg),3000, "Can't Find Message : "+msg);
     newMsg.getAttribute('value').then(function(value)
     {
       expect(value).toContain(msg);
@@ -347,6 +346,27 @@ var global = function() {
       templist.push(correct);
     return templist
   }
+  /*********************************************************************
+  *
+  *
+  **********************************************************************/
+  this.clickCanvas = function (ele,toRight, toBottom) { 
+      browser.actions()
+        .mouseMove(ele, {x: toRight, y: toBottom})
+        .click()
+        .perform();
+  };
+  /**********************************************
+  *
+  *
+  ***********************************************/
+  this.drag = function(ele,toRight,toBottom)
+  {
+      browser.actions()
+      .dragAndDrop(ele, {x: toRight, y: toBottom})
+      .perform();
+  }
+
   /*************************************************************
   * switchAlert 
   *
@@ -387,8 +407,9 @@ var global = function() {
             return browser.switchTo().alert().then(
                 function() 
                 {
-                 expect(browser.switchTo().alert().getText()).toContain("Please Enter Valid");
+                 expect(browser.switchTo().alert().getText()).toContain("Please enter valid");
                  browser.switchTo().alert().accept();
+
                  return true;
                 }, 
                 function()
@@ -396,7 +417,21 @@ var global = function() {
                   return false;
                  }
             );
-        },3000,"Input should not pass");
+        },3000,"Input-value should not be passed");
+      // else if(option1 === 'close')
+      // {
+      //   element(by.css('.uguru-popup.high-z-index.sidebar-popup.show a')).click();
+      //   expect((element(by.css('.uguru-popup.high-z-index.sidebar-popup.show')).isPresent())).toBe(false);
+      // }
+  }
+  /****************************************************
+  *
+  *
+  *
+  ****************************************************/
+  this.closeWrapper =function()
+  {
+
   }
   /*************************************************************************************
   *connectFB

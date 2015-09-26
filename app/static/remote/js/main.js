@@ -1,14 +1,13 @@
-var LOCAL = false; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.access';
-var img_base;
-
-// @if ADMIN
-isAdmin = true;
-LOCAL_URL = 'http://192.168.0.103:5000/app/local/'
-// @endif
+var LOCAL = false; //local to the 8100 codebasebirbirscd
 
 
 
+var FIRST_PAGE='^.university';
+img_base = '';
+
+
+// isAdmin = true;
+// LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
 var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
 
@@ -17,8 +16,9 @@ var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
+  BASE_URL = 'http://localhost:8100';
+  REST_URL = 'http://192.168.42.78:5000'
 
-  REST_URL = 'http://localhost:5000';
 
 } else {
   img_base = '/static/'
@@ -26,11 +26,13 @@ if (LOCAL) {
 
 mixpanel = window.mixpanel || null;
 
-if (mixpanel) mixpanel.track("App Launch");
+ //if (mixpanel) mixpanel.track("App Launch");
+
 angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
-  'mgcrea.ngStrap', 'ionic.device', 'ui.bootstrap', 'sharedServices', 'uguru.directives'])
+  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
+
 
 .run(function($ionicPlatform, $localstorage,
   $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
@@ -39,8 +41,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   $cordovaGeolocation, $cordovaDevice, DeviceService) {
 
   var openKeyboard = null;
-
-  DeviceService.readyDevice();
 
 })
 
@@ -68,8 +68,8 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
   $ionicConfigProvider.tabs.position("bottom");
-  $ionicConfigProvider.views.maxCache(0);  //Default is 10
-  $ionicConfigProvider.views.forwardCache(false);
+  $ionicConfigProvider.views.maxCache(20);  //Default is 10
+  $ionicConfigProvider.views.forwardCache(true);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
@@ -77,19 +77,46 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
   // RestangularProvider.setBaseUrl('http://10.193.138.226:5000/api/v1');
   //Client-side router
+
+
+//abstract
+  // .state('admin', {
+  //   url: '/admin',
+  //   abstract: true,
+  //   templateUrl: BASE + 'templates/admin/admin.html',
+  //   controller: 'AdminCtrl'
+  // })
+  // .state('admin.admin-home', {
+  //   url: '/admin/admin-home',
+  //   templateUrl: BASE + 'templates/admin/admin.home.html',
+  //   controller: 'AdminCtrl'
+  // })
+
+
+
+
   $stateProvider
   .state('root', {
         url: '',
         abstract: true,
-        templateUrl: 'templates/root.html',
+        templateUrl: BASE + 'templates/root.html',
         controller: 'RootController'
   }).
+
+  // state('root.admin', {
+  //   url: '/admin',
+  //   templateUrl: BASE + 'templates/admin/admin.home.html',
+  //   controller: 'AdminCtrl'
+  // }).
   state('root.university', {
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
         resolve: {
+          loadCache: function($templateCache) {
+            $templateCache.get(BASE + 'templates/university.html');
+          },
           deviceInfo: function(DeviceService) {
-            return DeviceService.getDevice();
+            return DeviceService.getPlatform();
           }
         },
         controller: 'AddUniversityCtrl'
@@ -247,7 +274,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
 
 
-  $urlRouterProvider.otherwise('/access');
+  $urlRouterProvider.otherwise('/university');
 
 
 });

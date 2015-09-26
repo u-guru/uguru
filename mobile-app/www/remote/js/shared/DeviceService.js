@@ -1,16 +1,17 @@
 angular
 .module('sharedServices', ['ionic'])
 .factory("DeviceService", [
-	'$cordovaSplashscreen',
+
 	'$cordovaNgCardIO',
 	'AndroidService',
 	'iOSService',
 	'WindowsService',
+  '$timeout',
 	DeviceService
 	]);
 
-function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
-	AndroidService, iOSService, WindowsService) {
+function DeviceService( $cordovaNgCardIO,
+	AndroidService, iOSService, WindowsService, $timeout) {
 
 	return {
 		readyDevice: readyDevice,
@@ -83,61 +84,70 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 	function onDeviceReady(callback) {
 		//checkUpdates();
 
+        //Ugh --> they overroad the native js OnDOMContentLoaded ...
+        ionic.DomUtil.ready(function(){
+          if(navigator.splashscreen) {
 
-
-    if (calcTimeSinceInit) {
-  		deviceReadyLoadTime = calcTimeSinceInit();
-  		console.log('Device ready load time:', deviceReadyLoadTime, 'seconds');
-    }
-		if ($cordovaSplashscreen && $cordovaSplashscreen.hide) {
-			$cordovaSplashscreen.hide();
-		}
-
+            //offset is to avoid the sidebar showing last second before
+            $timeout(function() {
+              console.log('Hiding splashscreen @:', calcTimeSinceInit(), 'seconds');
+              navigator.splashscreen.hide();
+            }, 3000);
+          }
+        })
+        if(navigator.splashscreen) {
+          console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
+          navigator.splashscreen.show();
+        }
         var posOptions = {
       		timeout: 2000,
   			enableHighAccuracy: false, //may cause high errors if true
         }
 
 		if(isMobile()) {
-  		console.log("DeviceService detects mobile");
-      console.log("device.cordova is ready " + device.cordova);
-  		console.log("navigator.geolocation works well");
-  		console.log("window.open works well");
-  		console.log("navigator.camera works well " + navigator.camera);
- 			console.log("cardIO: " + $cordovaNgCardIO);
- 			console.log("cordova.file is ready: " + cordova.file);
- 			console.log("fileTransfer is ready: " + FileTransfer);
 
-      document.addEventListener("offline", onOffline, false);
 
-      function onOffline() {
-        
-      }
 
-  		if(navigator.splashscreen) {
-  			navigator.splashscreen.hide();
-  		}
+      // SAMIR --> to refactor
+      //show this until body is loaded
 
-   		var mobileOS = getPlatform().toLowerCase();
-  	  	switch(mobileOS) {
-  	  		case "ios":
-  	  			iOSService.ready();
-  		  		break;
-  	  		case "android":
-  	  			AndroidService.ready();
-  	  			break;
-    			case "windows":
-    				WindowsService.ready();
-    				break;
-  	  	}
+			// console.log("DeviceService detects mobile");
+   //    console.log("device.cordova is ready " + device.cordova);
+	  // 		console.log("navigator.geolocation works well");
+			// console.log("window.open works well");
+			// console.log("navigator.camera works well " + navigator.camera);
+   // 			console.log("cardIO: " + $cordovaNgCardIO);
+   // 			console.log("cordova.file is ready: " + cordova.file);
+   // 			console.log("fileTransfer is ready: " + FileTransfer);
 
-  		  	console.log("detected platform: " + getPlatform());
+
+
+	 		var mobileOS = getPlatform().toLowerCase();
+		  	switch(mobileOS) {
+		  		case "ios":
+		  			iOSService.ready();
+			  		break;
+		  		case "android":
+		  			AndroidService.ready();
+		  			break;
+	  			case "windows":
+	  				WindowsService.ready();
+	  				break;
+		  	}
+
+		  	console.log("detected platform: " + getPlatform());
 		}
 		if(typeof callback === 'function') {
 			callback();
 		}
 	}
 	function checkUpdates() {
+
+    // don't update on local
+    if (LOCAL) {
+      return;
+    }
+
 	   Version.getUpdatedVersionNum().then(
           //if user gets the right version
           function(response) {
@@ -155,22 +165,16 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 
                   console.log('versions are different...\n');
 
-                  $ionicHistory.clearCache();
-                  $ionicHistory.clearHistory();
-                  $localstorage.removeObject('user');
-                  $localstorage.removeObject('courses');
-                  $localstorage.removeObject('universities');
-
-                  if ($cordovaSplashscreen) {
-                    $cordovaSplashscreen.show();
-                  }
-
                   //doesn't work so here's my attempt
                   if (navigator && navigator.splashscreen && navigator.splashscreen.show) {
                     navigator.splashscreen.show();
                   }
+
+                  $ionicHistory.clearCache();
+                  $ionicHistory.clearHistory();
                   $templateCache.removeAll();
-                  window.localStorage.clear();
+
+                  // window.localStorage.clear();
                   //remove all angular templates
 
                   Version.setVersion(serverVersionNumber);
@@ -178,22 +182,18 @@ function DeviceService($cordovaSplashscreen, $cordovaNgCardIO,
 
                   console.log('V' + serverVersionNumber + 'stored to user');
 
-                  if (isAdmin) {
-                    if (confirm('Is this the URL you want to update from?\n' + LOCAL_URL))
-                        window.location.href = LOCAL_URL;
-                    else {
-                        $localstorage.set('recently_updated', false);
-                        Version.setVersion(currentVersion);
-                        alert('auto-update canceled');
-                        return;
-                    }
+                  //if windows
+                  if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT' || WINDOWS) {
+                    window.location.replace(BASE_URL);
                   } else {
-                    window.location.href = BASE_URL;
+                    window.location = BASE_URL;
+                    window.location.reload(true);
                   }
-                  window.location.replace(true);
 
-                }
-           	},
+
+
+           	  }
+          },
            //connectivity issues
           function(error) {
               console.log(error);

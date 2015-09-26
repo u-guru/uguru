@@ -1,8 +1,10 @@
-var LOCAL = true; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.university';
-//var FIRST_PAGE='^.home';
+var LOCAL = true; //local to the 8100 codebasebirbirscd
 
-var img_base;
+
+
+var FIRST_PAGE='^.university';
+img_base = '';
+
 
 // isAdmin = true;
 // LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
@@ -21,7 +23,6 @@ var REST_URL = 'https://www.uguru.me'
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-
   BASE_URL = 'http://192.168.0.105:8100';
  // REST_URL = 'http://localhost:5000';
   //REST_URL = 'https://uguru-rest.herokuapp.com'
@@ -37,6 +38,7 @@ if (LOCAL) {
 
 
 
+
 } else {
   img_base = '/static/'
 }
@@ -44,20 +46,7 @@ if (LOCAL) {
 // mixpanel = window.mixpanel || null;
 
  //if (mixpanel) mixpanel.track("App Launch");
-
-
-
- window._rAF = (function() {
-    return window.requestAnimationFrame ||
-           window.webkitRequestAnimationFrame ||
-           window.mozRequestAnimationFrame ||
-           function(callback) {
-             window.setTimeout(callback, 16);
-           };
-  })();
-
-
-angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 
+angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
@@ -90,8 +79,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
 
   var openKeyboard = null;
-  
-  uTracker.init('mp');
 
 })
 
@@ -128,7 +115,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
   // RestangularProvider.setBaseUrl('http://10.193.138.226:5000/api/v1');
   //Client-side router
-  
+
 
 //abstract
   // .state('admin', {
