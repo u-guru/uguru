@@ -632,6 +632,22 @@ section {
     border-bottom: 0; }
     .request-modal .request-content .request-time .request-time-needed h2, .request-modal .request-content .request-time .request-time-avail h2 {
       font-weight: 600; }
+  .request-modal .request-content .request-time .request-time-urgent li {
+    border-left: 2px solid #F1F1F1;
+    border-right: 2px solid #F1F1F1; }
+    .request-modal .request-content .request-time .request-time-urgent li > span {
+      border-bottom: 2px solid #F1F1F1;
+      height: 48px; }
+      .request-modal .request-content .request-time .request-time-urgent li > span label {
+        width: calc(100% - 46px);
+        padding: 0 15px;
+        font-weight: 600; }
+      .request-modal .request-content .request-time .request-time-urgent li > span input + span {
+        width: 46px;
+        height: 46px;
+        background-size: 30px 30px; }
+      .request-modal .request-content .request-time .request-time-urgent li > span input:not(:checked) + span {
+        background-color: #f8f8f8; }
   .request-modal .request-content .request-desc textarea {
     font-weight: 600;
     border-bottom: 2px solid #F1F1F1;

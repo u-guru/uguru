@@ -661,6 +661,29 @@ section {
 					font-weight: 600;
 				}
 			}
+			.request-time-urgent {
+				li {
+					border-left: 2px solid $smoke;
+					border-right: 2px solid $smoke;
+					> span {
+						border-bottom: 2px solid $smoke;
+						height: 48px;
+						label {
+							width: calc(100% - 46px);
+							padding: 0 15px;
+							font-weight: 600;
+						}
+						input + span {
+							width: 46px;
+							height: 46px;
+							background-size: 30px 30px;
+						}
+						input:not(:checked) + span {
+							background-color: #f8f8f8;
+						}
+					}
+				}
+			}
 		}
 		.request-desc {
 			textarea {
@@ -669,7 +692,6 @@ section {
 				height: 150px;
 				width: 100%;
 			}
-
 		}
 		.switch {
 			border: 2px solid $smoke;
