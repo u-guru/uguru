@@ -294,14 +294,10 @@ section {
 @media screen and (max-width: 320px) {
   .uguru-view body, .uguru-view input, .uguru-view button {
     font-size: 20px; }
-  .uguru-view .request-info h3 {
-    font-size: 20px !important; }
   .uguru-view #start-container {
     font-size: 24px !important; }
-  .uguru-view #request-message h2, .uguru-view #skills-list a {
+  .uguru-view #skills-list a {
     font-size: 16px !important; }
-    .uguru-view #request-message h2 i, .uguru-view #skills-list a i {
-      display: none; }
   .uguru-view #request-button span b {
     font-size: 18px !important; }
   .uguru-view #skills-list .skill-icon {
@@ -456,6 +452,12 @@ section {
     text-align: center;
     width: calc(100% - 30px); }
 
+#confirm-phone-uguru-popup .svg-logo-wrapper svg {
+  background: #8A9EA3 !important; }
+
+#confirm-email-uguru-popup .svg-logo-wrapper svg {
+  background: #50A5DD !important; }
+
 .terms-modal header h1, .faq-modal header h1, .support-modal header h1 {
   color: white; }
 .terms-modal ion-content, .faq-modal ion-content, .support-modal ion-content {
@@ -514,11 +516,16 @@ section {
       #experience-modal .main .ugrid-3 li:nth-child(3) {
         text-align: right; }
     #experience-modal .main #exp-input {
-      height: calc(100% - 87px - 116px); }
+      height: calc(100% - 194px); }
     #experience-modal .main textarea {
       font-size: 18px;
-      height: 100%; }
+      height: 100%;
+      resize: none; }
 
+@media screen and (min-width: 375px) {
+  #experience-modal .main textarea {
+    font-size: 20px;
+    height: 100%; } }
 .signup-modal #account-form {
   box-sizing: border-box;
   padding: 15px; }
@@ -546,6 +553,7 @@ section {
   .terms-modal h3 {
     font-size: 20px; }
   .terms-modal h4 {
+    font-size: 16px;
     line-height: 1.25; }
   .terms-modal p, .terms-modal ol, .terms-modal ul {
     font-size: 14px;
@@ -574,6 +582,214 @@ section {
   .university-modal .onboarding-search input {
     width: calc(100% - 20px); }
 
+.request-modal .request-content {
+  height: calc(100% - 50px);
+  padding-bottom: 64px;
+  overflow: auto;
+  font-weight: 300; }
+  .request-modal .request-content input:not([type="text"]) {
+    cursor: pointer; }
+  .request-modal .request-content input[type="text"], .request-modal .request-content textarea {
+    display: block;
+    width: 100%;
+    border: 2px solid #F1F1F1;
+    border-top: 0;
+    border-bottom: 0;
+    color: #40484B;
+    font-size: 18px;
+    font-weight: 300; }
+    .request-modal .request-content input[type="text"]::-ms-expand, .request-modal .request-content textarea::-ms-expand {
+      display: none; }
+    .request-modal .request-content input[type="text"]::-webkit-input-placeholder, .request-modal .request-content textarea::-webkit-input-placeholder {
+      font-weight: 300 !important;
+      color: rgba(64, 72, 75, 0.5); }
+    .request-modal .request-content input[type="text"]:-moz-placeholder, .request-modal .request-content textarea:-moz-placeholder {
+      font-weight: 300 !important;
+      color: rgba(64, 72, 75, 0.5); }
+    .request-modal .request-content input[type="text"]::-moz-placeholder, .request-modal .request-content textarea::-moz-placeholder {
+      font-weight: 300 !important;
+      color: rgba(64, 72, 75, 0.5); }
+    .request-modal .request-content input[type="text"]:-ms-input-placeholder, .request-modal .request-content textarea:-ms-input-placeholder {
+      font-weight: 300 !important;
+      color: rgba(64, 72, 75, 0.5); }
+    .request-modal .request-content input[type="text"]:focus::-webkit-input-placeholder, .request-modal .request-content textarea:focus::-webkit-input-placeholder {
+      color: #40484B; }
+    .request-modal .request-content input[type="text"]:focus:-moz-placeholder, .request-modal .request-content textarea:focus:-moz-placeholder {
+      color: #40484B; }
+    .request-modal .request-content input[type="text"]:focus::-moz-placeholder, .request-modal .request-content textarea:focus::-moz-placeholder {
+      color: #40484B; }
+    .request-modal .request-content input[type="text"]:focus:-ms-input-placeholder, .request-modal .request-content textarea:focus:-ms-input-placeholder {
+      color: #40484B; }
+  .request-modal .request-content .request-course input {
+    font-size: 24px;
+    font-weight: 600; }
+  .request-modal .request-content .request-loc ul {
+    border-left: 1px solid #F1F1F1;
+    border-right: 1px solid #F1F1F1; }
+    .request-modal .request-content .request-loc ul li {
+      position: relative;
+      border-left: 1px solid #F1F1F1;
+      border-right: 1px solid #F1F1F1; }
+      .request-modal .request-content .request-loc ul li input[type="radio"] {
+        position: absolute;
+        z-index: 9;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; }
+      .request-modal .request-content .request-loc ul li div {
+        width: 100%; }
+      .request-modal .request-content .request-loc ul li label {
+        display: block;
+        width: 100%;
+        line-height: 46px; }
+      .request-modal .request-content .request-loc ul li input:not(:checked) + div label {
+        color: rgba(64, 72, 75, 0.5);
+        font-weight: 400; }
+      .request-modal .request-content .request-loc ul li input:checked + div label {
+        background: #50A5DD;
+        color: white;
+        font-weight: 600; }
+      .request-modal .request-content .request-loc ul li .request-loc-address, .request-modal .request-content .request-loc ul li .request-loc-geo {
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        display: none;
+        width: calc(200% + 2px); }
+      .request-modal .request-content .request-loc ul li .request-loc-address {
+        border-top: 1px solid #F1F1F1;
+        border-bottom: 1px solid #F1F1F1; }
+        .request-modal .request-content .request-loc ul li .request-loc-address input {
+          border-left: 0;
+          border-right: 0;
+          border-top: 1px solid #F1F1F1;
+          border-bottom: 1px solid #F1F1F1;
+          font-weight: 600; }
+        .request-modal .request-content .request-loc ul li .request-loc-address .request-loc-state, .request-modal .request-content .request-loc ul li .request-loc-address .request-loc-zip {
+          width: 50%; }
+        .request-modal .request-content .request-loc ul li .request-loc-address .request-loc-state {
+          border-right: 1px solid #F1F1F1; }
+        .request-modal .request-content .request-loc ul li .request-loc-address .request-loc-zip {
+          border-left: 1px solid #F1F1F1; }
+      .request-modal .request-content .request-loc ul li .request-loc-geo {
+        padding: 15px;
+        background: white;
+        border-top: 2px solid #F1F1F1;
+        border-bottom: 2px solid #F1F1F1; }
+        .request-modal .request-content .request-loc ul li .request-loc-geo > span {
+          display: block;
+          width: 100%;
+          border: 0;
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 1.2; }
+        .request-modal .request-content .request-loc ul li .request-loc-geo .request-geo-icon {
+          margin-top: -6px;
+          height: 40px; }
+          .request-modal .request-content .request-loc ul li .request-loc-geo .request-geo-icon svg {
+            width: auto;
+            height: 100%; }
+            .request-modal .request-content .request-loc ul li .request-loc-geo .request-geo-icon svg path {
+              fill: none;
+              stroke: #50A5DD;
+              stroke-width: 5px;
+              stroke-linecap: round;
+              stroke-linejoin: round; }
+      .request-modal .request-content .request-loc ul li .enter-address:checked + div {
+        padding-bottom: 167px; }
+      .request-modal .request-content .request-loc ul li .enter-address:checked + div .request-loc-address {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        position: absolute;
+        z-index: 9999;
+        top: 46px;
+        left: 0; }
+      .request-modal .request-content .request-loc ul li .use-location:checked + div {
+        padding-bottom: 110px; }
+      .request-modal .request-content .request-loc ul li .use-location:checked + div .request-loc-geo {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        position: absolute;
+        z-index: 9999;
+        top: 46px;
+        right: 0; }
+  .request-modal .request-content .request-time .request-time-urgent li {
+    border-left: 2px solid #F1F1F1;
+    border-right: 2px solid #F1F1F1; }
+    .request-modal .request-content .request-time .request-time-urgent li > span {
+      border-bottom: 2px solid #F1F1F1;
+      height: 48px; }
+      .request-modal .request-content .request-time .request-time-urgent li > span label {
+        width: calc(100% - 46px);
+        padding: 0 15px;
+        font-weight: 600; }
+      .request-modal .request-content .request-time .request-time-urgent li > span input + span {
+        width: 46px;
+        height: 46px;
+        background-size: 30px 30px; }
+      .request-modal .request-content .request-time .request-time-urgent li > span input:not(:checked) + span {
+        background-color: #f8f8f8; }
+  .request-modal .request-content .request-time .request-time-needed, .request-modal .request-content .request-time .request-time-avail {
+    border-left: 2px solid #F1F1F1;
+    border-right: 2px solid #F1F1F1; }
+    .request-modal .request-content .request-time .request-time-needed h2, .request-modal .request-content .request-time .request-time-avail h2 {
+      font-weight: 600; }
+  .request-modal .request-content .request-time .request-time-needed ul {
+    border-top: 1px solid #F1F1F1;
+    border-bottom: 1px solid #F1F1F1; }
+    .request-modal .request-content .request-time .request-time-needed ul li {
+      position: relative;
+      border: 1px solid #F1F1F1; }
+      .request-modal .request-content .request-time .request-time-needed ul li:first-child {
+        border-left: 0; }
+      .request-modal .request-content .request-time .request-time-needed ul li:last-child {
+        border-right: 0; }
+      .request-modal .request-content .request-time .request-time-needed ul li input {
+        position: absolute;
+        z-index: 9;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; }
+      .request-modal .request-content .request-time .request-time-needed ul li div {
+        padding: 5px 0;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.2;
+        text-align: center;
+        text-transform: uppercase; }
+        .request-modal .request-content .request-time .request-time-needed ul li div h1 {
+          font-size: 24px;
+          font-weight: 400; }
+      .request-modal .request-content .request-time .request-time-needed ul li input:not(:checked) + div {
+        color: rgba(64, 72, 75, 0.5); }
+      .request-modal .request-content .request-time .request-time-needed ul li input:checked + div {
+        background: #50A5DD;
+        color: white;
+        font-weight: 700; }
+        .request-modal .request-content .request-time .request-time-needed ul li input:checked + div h1 {
+          font-weight: 600; }
+  .request-modal .request-content .request-desc textarea {
+    font-weight: 600;
+    border-bottom: 2px solid #F1F1F1;
+    height: 150px;
+    width: 100%; }
+  .request-modal .request-content .picker {
+    border-top: 2px solid #F1F1F1; }
+
+@media screen and (min-width: 375px) {
+  .request-modal .request-content .request-time .request-time-needed ul li div {
+    padding: 10px 0; } }
 /* ---------- SIDEBAR & MENUS */
 #side-menu-left-overlay.active {
   background: rgba(43, 50, 52, 0.8);
@@ -689,12 +905,12 @@ section {
   .menu-student .list-item .list-item-icon svg path {
     stroke: #40484B; }
   .menu-student .list-item.activated, .menu-student .list-item.active {
-    background: rgba(85, 164, 183, 0.75);
+    background: rgba(80, 165, 221, 0.75);
     color: white; }
     .menu-student .list-item.activated svg path, .menu-student .list-item.active svg path {
       stroke: white; }
 .menu-student .list-item-profile {
-  background: #55A4B7;
+  background: #50A5DD;
   color: white; }
   .menu-student .list-item-profile .list-item-icon svg circle {
     stroke: white; }
@@ -709,7 +925,7 @@ section {
   .menu-student .list-item-student svg path {
     stroke: white !important; }
 .menu-student .list-item-guru {
-  background: #55A4B7;
+  background: #50A5DD;
   color: white; }
   .menu-student .list-item-guru .list-item-icon svg path {
     stroke: white; }
@@ -734,7 +950,7 @@ section {
     font-size: inherit;
     height: 50px; }
     .action-sheet-wrapper.action-sheet-up .action-sheet-title span {
-      color: #55A4B7;
+      color: #50A5DD;
       font-size: 18px;
       text-transform: none !important; }
   .action-sheet-wrapper.action-sheet-up .action-sheet-group {
@@ -757,6 +973,16 @@ section {
   border: 0;
   height: 50px;
   line-height: 50px; }
+  .tabs svg {
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    fill: none;
+    fill-rule: evenodd;
+    stroke: white;
+    stroke-width: 4px;
+    stroke-linecap: round;
+    stroke-linejoin: round; }
 
 /* ---------- SETTING UP APP */
 .access-view {
@@ -837,12 +1063,14 @@ section {
     .university-view #school-list ul li a .school-icon img, .university-view #school-list-modal ul li a .school-icon img {
       border-radius: 1000px;
       border: 0 !important;
-      padding: 10px;
-      width: 64px;
-      height: 64px; }
+      margin: 10px;
+      width: 44px;
+      height: 44px;
+      background: white; }
     .university-view #school-list ul li a .school-name, .university-view #school-list-modal ul li a .school-name {
       display: block;
-      width: calc(100% - 69px); }
+      width: calc(100% - 69px);
+      padding-right: 5px; }
       .university-view #school-list ul li a .school-name b, .university-view #school-list ul li a .school-name i, .university-view #school-list-modal ul li a .school-name b, .university-view #school-list-modal ul li a .school-name i {
         display: block;
         width: 100%;
@@ -862,8 +1090,10 @@ section {
         text-overflow: ellipsis; }
       .university-view #school-list ul li a .school-name .school-city, .university-view #school-list-modal ul li a .school-name .school-city {
         text-transform: capitalize; }
-      .university-view #school-list ul li a .school-name .school-stat, .university-view #school-list-modal ul li a .school-name .school-stat {
+      .university-view #school-list ul li a .school-name .school-state, .university-view #school-list-modal ul li a .school-name .school-state {
         text-transform: uppercase; }
+      .university-view #school-list ul li a .school-name .school-distance, .university-view #school-list-modal ul li a .school-name .school-distance {
+        float: right; }
   .university-view #school-list ul li a:active.active, .university-view #school-list ul li a:active.activated, .university-view #school-list ul li a:focus.active, .university-view #school-list ul li a:focus.activated, .university-view #school-list ul li a:hover.active, .university-view #school-list ul li a:hover.activated, .university-view #school-list-modal ul li a:active.active, .university-view #school-list-modal ul li a:active.activated, .university-view #school-list-modal ul li a:focus.active, .university-view #school-list-modal ul li a:focus.activated, .university-view #school-list-modal ul li a:hover.active, .university-view #school-list-modal ul li a:hover.activated {
     background: rgba(255, 255, 255, 0.2); }
 
@@ -892,7 +1122,7 @@ section {
   padding: 15px;
   width: 100%;
   height: 100%;
-  background: #40484B; }
+  color: #40484B; }
   .home-view #request-message > div > div svg {
     display: block;
     margin: 0 auto;
@@ -901,7 +1131,7 @@ section {
   .home-view #request-message > div h2 {
     width: 100%;
     margin: 30px 0;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     text-align: center;
     line-height: 1.2; }
@@ -940,7 +1170,7 @@ section {
       justify-content: center;
       width: 70px;
       height: 70px;
-      background: #69B3A5; }
+      background: #E5753C; }
     .home-view #request-message #request-button b {
       display: block;
       width: 100%;
@@ -950,6 +1180,9 @@ section {
       text-align: center;
       text-transform: uppercase; }
 
+@media screen and (min-width: 375px) {
+  .home-view #request-message > div h2 {
+    font-size: 20px; } }
 @media screen and (min-height: 600px) {
   .request#request-empty #request-message > div > div svg {
     max-height: 150px; } }
@@ -957,7 +1190,7 @@ section {
 .onboarding .onboarding-search {
   box-sizing: border-box; }
   .onboarding .onboarding-search input {
-    width: calc(100% - 20px); }
+    width: calc(100% - 25px); }
 .onboarding progress, .onboarding .progress {
   position: absolute;
   top: 0;
@@ -1384,6 +1617,12 @@ section {
     .guru-profile-view .round svg {
       width: 30px;
       height: 30px; }
+      .guru-profile-view .round svg path {
+        stroke: white;
+        stroke-width: 6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none; }
   .guru-profile-view #profile-fixed {
     position: fixed;
     top: 0;
@@ -1455,11 +1694,24 @@ section {
         max-width: 100px;
         padding: 5px;
         background: rgba(255, 255, 255, 0.5); }
-      .guru-profile-view #profile-desc #profile-icon svg {
-        display: block;
-        margin: 0 auto;
-        width: 120px;
-        height: 120px; }
+      .guru-profile-view #profile-desc #profile-icon a {
+        position: relative;
+        display: block; }
+        .guru-profile-view #profile-desc #profile-icon a img {
+          filter: alpha(opacity=50);
+          opacity: 0.5; }
+        .guru-profile-view #profile-desc #profile-icon a h1 {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          width: 100px;
+          text-align: center;
+          text-transform: uppercase; }
     .guru-profile-view #profile-desc #profile-list {
       text-align: center; }
       .guru-profile-view #profile-desc #profile-list ul {
@@ -1725,7 +1977,7 @@ section {
       text-align: center; }
       .credibility-view #credit-slider ul li a {
         display: block;
-        width: calc(320px /3 - 15px);
+        width: 92px;
         padding-bottom: 10px;
         border-bottom: 5px solid transparent;
         color: white; }
@@ -1749,14 +2001,14 @@ section {
           -ms-flex-flow: row wrap;
           -webkit-flex-flow: row wrap;
           flex-flow: row wrap;
-          margin: 0 auto 5px;
+          margin: 0 auto 10px;
           width: 50px;
           height: 50px;
           background: #40484B; }
           .credibility-view #credit-slider ul li a .credit-icon svg {
             stroke-linejoin: round;
             stroke-linecap: round;
-            stroke-width: 5px;
+            stroke-width: 4px;
             stroke: white;
             fill-rule: even-odd;
             fill: none;
@@ -1832,7 +2084,7 @@ section {
     .credibility-view #credibility-content-wrapper .credit-content-slide > div {
       height: 100%; }
       .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body {
-        height: calc(100% - 36px - 64px - 50px); }
+        height: calc(100% - 34px - 64px - 50px); }
         .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body:not(ul) {
           -ms-box-orient: horizontal;
           display: -webkit-box;
@@ -1865,13 +2117,28 @@ section {
             display: block;
             font-size: 16px;
             font-weight: 400; }
+          .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body li a svg {
+            fill: none;
+            padding: 15px;
+            stroke-width: 3px; }
 
-#confirm-phone-uguru-popup .svg-logo-wrapper svg {
-  background: #8A9EA3 !important; }
-
-#confirm-email-uguru-popup .svg-logo-wrapper svg {
-  background: #50A5DD !important; }
-
+@media screen and (min-width: 375px) {
+  .credibility-view #credit-slider ul li {
+    font-size: 16px; }
+    .credibility-view #credit-slider ul li a {
+      width: 108px; }
+      .credibility-view #credit-slider ul li a .credit-icon {
+        width: 60px;
+        height: 60px; } }
+@media screen and (min-width: 414px) {
+  .credibility-view #credit-slider ul li {
+    font-size: 18px; }
+    .credibility-view #credit-slider ul li a {
+      display: block;
+      width: 118px; }
+      .credibility-view #credit-slider ul li a .credit-icon {
+        width: 70px;
+        height: 70px; } }
 .guru-view header:before {
   background: url(../../img/onboarding/school.jpg) no-repeat center center/cover; }
 .guru-view #guru-ranking {
@@ -1920,8 +2187,11 @@ section {
     -o-transform: scale(0.8);
     transform: scale(0.8); }
   .guru-view #guru-ranking .progressbar-text {
-    background-color: transparent;
     display: none; }
+  .guru-view #guru-ranking svg {
+    border-radius: 1000px; }
+    .guru-view #guru-ranking svg * {
+      stroke-linecap: round; }
   .guru-view #guru-ranking #guru-chart {
     position: relative;
     width: 130px; }
@@ -1964,9 +2234,13 @@ section {
       font-size: 16px;
       font-weight: 600;
       text-transform: uppercase; }
-    .guru-view #guru-ranking #guru-stats progress, .guru-view #guru-ranking #guru-stats .progress {
-      vertical-align: top;
-      width: 100%; }
+    .guru-view #guru-ranking #guru-stats .stats-bar {
+      line-height: 10px;
+      font-size: 10px;
+      height: 10px;
+      margin-bottom: 7px; }
+      .guru-view #guru-ranking #guru-stats .stats-bar svg {
+        height: 10px; }
 .guru-view .tip-container h2 {
   font-size: 22px; }
 .guru-view .tip-container p {
@@ -1979,7 +2253,16 @@ section {
     -moz-transform: none;
     -ms-transform: none;
     -o-transform: none;
-    transform: none; } }
+    transform: none; }
+  .guru-view #guru-ranking #guru-stats .stats-bar {
+    margin-bottom: 9px; } }
+@media screen and (min-width: 414px) {
+  .guru-view #guru-ranking > div {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2); } }
 /* ---------- SAMIR */
 .smaller-list-font {
   font-size: 85%; }

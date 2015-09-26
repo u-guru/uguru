@@ -24,7 +24,7 @@ angular.module('uguru.guru.controllers')
     $scope.root.vars.guru_mode = true;
 
     // credibility only variable
-    $scope.activeTabIndex = 4;
+    $scope.activeTabIndex = 0;
 
     $scope.user_skills = [{name: "CSS3"}, {name: "Javascript"}, {name: "Photoshop"}, {name: "HTML5"}];
     $scope.user.languages = $scope.user.languages || [{name:"English"}, {name:"Chinese"}];

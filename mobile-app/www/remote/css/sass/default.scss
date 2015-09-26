@@ -1047,6 +1047,9 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 .bg-fb {
 	background: $facebook;
 }
+.bg-fb-light {
+	background: $facebook-light;
+}
 .bg-tw {
 	background: $twitter;
 }
@@ -1138,7 +1141,7 @@ header {
 	}
 }
 
-.section-header {
+.section-header, .section-header-dark {
 	padding: 10px;
 	background: rgba(white,.05);
 	font-size: 14px;
@@ -1147,6 +1150,17 @@ header {
 	text-align: center;
 	text-transform: uppercase;
 	color: white;
+}
+
+.section-header-light {
+	padding: 10px;
+	background: $smoke;
+	font-size: 14px;
+	font-weight: 400;
+	letter-spacing: 2px;
+	text-align: center;
+	text-transform: uppercase;
+	color: $slate;
 }
 
 // BUTTONS & INPUT
@@ -1365,6 +1379,91 @@ button.disabled {
 	}
 }
 
+.picker {
+	font-size: 20px;
+	line-height: 30px;
+	position: relative;
+	&:before, &:after {
+		@include center-xy;
+		content: "";
+		display: block;
+		width: 100%;
+		height: 1px;
+		background: $smoke;
+	}
+	&:before {
+		margin-top: -15px;
+	}
+	&:after {
+		margin-top: 15px;
+	}
+	&.picker-date {
+		@include flex;
+		@include flex-center;
+		.picker-day {
+			width: 25%;
+			text-align: right;
+			padding-right: 2.5%;
+		}
+		.picker-at {
+			width: 15%;
+		}
+		.picker-colon {
+			width: 1%;
+			li {
+				@include flex;
+				@include flex-center;
+				&.active {
+					padding-bottom: 3px;
+				}
+			}
+		}
+		.picker-ampm, .picker-hours, .picker-minutes {
+			width: 10%;
+		}
+	}
+	[class*="picker-"] {
+		@include flex;
+		@include flex-center;
+		@include flex-wrap;
+		text-align: center;
+		height: 150px;
+		overflow: auto;
+		li {
+			width: 100%;
+			height: 30px;
+		}
+		.active {
+			font-weight: 600;
+		}
+		.inactive {
+			@include opacity(0);
+		}
+		.inactive-1 {
+			@include opacity(.45);
+			font-weight: 400;
+		}
+		.inactive-2 {
+			@include opacity(.3);
+		}
+		.inactive-3 {
+			@include opacity(.15);
+		}
+		.inactive-4 {
+			@include opacity(.05);
+		}
+	}
+	.picker-time {
+		width: 100%;
+		&:after {
+			@include center-xy;
+			content: "hours";
+			padding-left: 75px;
+			font-weight: 600;
+		}
+	}
+}
+
 [class*="checklist"] {
 	li {
 		> span {
@@ -1405,7 +1504,8 @@ button.disabled {
 				width: 60px;
 				height: 60px;
 			    vertical-align:middle;
-			    background: $smoke center center no-repeat;
+			    background: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgPHBhdGggZD0iTTE0LDU0LjIzNTI5NDEgTDM1LjE3NjQ3MDYsNzUuNDExNzY0NyBMODYsMjQuNTg4MjM1MyIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSI+PC9wYXRoPjwvc3ZnPg==) no-repeat center center / 40px 40px;
+			    background-color: $smoke;
 			    cursor: pointer;
 			}
 			input:checked + span {
