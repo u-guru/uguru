@@ -476,6 +476,9 @@ angular.module('uguru.student.controllers', [])
             // }, 250)
 
             //welcome to student mode screen
+            // $timeout(function() {
+            //     checkOnboardingStatus()
+            // }, 1000);
             $timeout(function() {
                 $scope.launchRequestModal();
             }, 1000);

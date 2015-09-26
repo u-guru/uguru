@@ -603,6 +603,9 @@ section {
 		padding-bottom: 64px;
 		overflow: auto;
 		font-weight: 300;
+		input:not([type="text"]) {
+			cursor: pointer;
+		}
 		input[type="text"], textarea {
 			display: block;
 			width: 100%;
@@ -652,15 +655,117 @@ section {
 				font-weight: 600;
 			}
 		}
-		.request-time {
-			.request-time-needed, .request-time-avail {
-				border: 2px solid $smoke;
-				border-top: 0;
-				border-bottom: 0;
-				h2 {
-					font-weight: 600;
+		.request-loc {
+			ul {
+				border-left: 1px solid $smoke;
+				border-right: 1px solid $smoke;
+				li {
+					position: relative;
+					border-left: 1px solid $smoke;
+					border-right: 1px solid $smoke;
+					input[type="radio"] {
+						position: absolute;
+						z-index: 9;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+					}
+					div {
+						width: 100%;
+					}
+					label {
+						display: block;
+						width: 100%;
+						line-height: 46px;
+					}
+					input:not(:checked) + div label {
+						color: rgba($slate, .5);
+						font-weight: 400;
+					}
+					input:checked + div label {
+						background: $lake;
+						color: white;
+						font-weight: 600;
+					}
+					.request-loc-address, .request-loc-geo {
+						@include flex-wrap;
+						display: none;
+						width: calc(200% + 2px);
+					}
+					.request-loc-address {
+						border-top: 1px solid $smoke;
+						border-bottom: 1px solid $smoke;
+						input {
+							border-left: 0;
+							border-right: 0;
+							border-top: 1px solid $smoke;
+							border-bottom: 1px solid $smoke;
+							font-weight: 600;
+						}
+						.request-loc-state, .request-loc-zip {
+							width: 50%;
+						}
+						.request-loc-state {
+							border-right: 1px solid $smoke;
+						}
+						.request-loc-zip {
+							border-left: 1px solid $smoke;
+						}
+					}
+					.request-loc-geo {
+						padding: 15px;
+						background: white;
+						border-top: 2px solid $smoke;
+						border-bottom: 2px solid $smoke;
+						> span {
+							display: block;
+							width: 100%;
+							border: 0;
+							font-size: 18px;
+							font-weight: 600;
+							line-height: 1.2;
+						}
+						.request-geo-icon {
+							margin-top: -6px;
+							height: 40px;
+							svg {
+								width: auto;
+								height: 100%;
+								path {
+									fill: none;
+									stroke: $lake;
+									stroke-width: 5px;
+									stroke-linecap: round;
+									stroke-linejoin: round;
+								}
+							}
+						}
+					}
+					.enter-address:checked + div {
+						padding-bottom: 167px;
+					}
+					.enter-address:checked + div .request-loc-address {
+						@include flex;
+						position: absolute;
+						z-index: 9999;
+						top: 46px;
+						left: 0;
+					}
+					.use-location:checked + div {
+						padding-bottom: 110px;
+					}
+					.use-location:checked + div .request-loc-geo {
+						@include flex;
+						position: absolute;
+						z-index: 9999;
+						top: 46px;
+						right: 0;
+					}
 				}
 			}
+		}
+		.request-time {
 			.request-time-urgent {
 				li {
 					border-left: 2px solid $smoke;
@@ -684,6 +789,60 @@ section {
 					}
 				}
 			}
+			.request-time-needed, .request-time-avail {
+				border-left: 2px solid $smoke;
+				border-right: 2px solid $smoke;
+				h2 {
+					font-weight: 600;
+				}
+			}
+			.request-time-needed {
+				ul {
+					border-top: 1px solid $smoke;
+					border-bottom: 1px solid $smoke;
+					li {
+						position: relative;
+						border: 1px solid $smoke;
+						&:first-child {
+							border-left: 0;
+						}
+						&:last-child {
+							border-right: 0;
+						}
+						input {
+							position: absolute;
+							z-index: 9;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+						}
+						div {
+							padding: 5px 0;
+							font-size: 12px;
+							font-weight: 600;
+							line-height: 1.2;
+							text-align: center;
+							text-transform: uppercase;
+							h1 {
+								font-size: 24px;
+								font-weight: 400;
+							}
+						}
+						input:not(:checked) + div {
+							color: rgba($slate, .5);
+						}
+						input:checked + div {
+							background: $lake;
+							color: white;
+							font-weight: 700;
+							h1 {
+								font-weight: 600;
+							}
+						}
+					}
+				}
+			}
 		}
 		.request-desc {
 			textarea {
@@ -693,15 +852,25 @@ section {
 				width: 100%;
 			}
 		}
-		.switch {
-			border: 2px solid $smoke;
-			border-top: 0;
-			border-bottom: 0;
-			input:checked + label .checked {
-				font-weight: 600;
-			}
-			input:not(:checked) + label .unchecked {
-				font-weight: 600;
+		.picker {
+			border-top: 2px solid $smoke;
+		}
+	}
+}
+
+@media screen and (min-width:375px) {
+	.request-modal {
+		.request-content {
+			.request-time {
+				.request-time-needed {
+					ul {
+						li {
+							div {
+								padding: 10px 0;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -919,7 +1088,7 @@ section {
 		font-size: inherit;
 		height: 50px;
 		span {
-			color: $azure;
+			color: $lake;
 			font-size: 18px;
 			text-transform: none!important;
 		}
@@ -1132,7 +1301,7 @@ section {
 				@include flex-center;
 				width: 70px;
 				height: 70px;
-				background: $cerise;
+				background: $orange;
 			}
 			b {
 				display: block;
@@ -1179,7 +1348,7 @@ section {
 	.onboarding-search {
 		box-sizing: border-box;
 		input {
-			width: calc(100% - 20px);
+			width: calc(100% - 25px);
 		}
 	}
 	progress, .progress {

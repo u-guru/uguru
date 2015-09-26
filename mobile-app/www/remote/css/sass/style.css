@@ -592,6 +592,8 @@ section {
   padding-bottom: 64px;
   overflow: auto;
   font-weight: 300; }
+  .request-modal .request-content input:not([type="text"]) {
+    cursor: pointer; }
   .request-modal .request-content input[type="text"], .request-modal .request-content textarea {
     display: block;
     width: 100%;
@@ -626,12 +628,106 @@ section {
   .request-modal .request-content .request-course input {
     font-size: 24px;
     font-weight: 600; }
-  .request-modal .request-content .request-time .request-time-needed, .request-modal .request-content .request-time .request-time-avail {
-    border: 2px solid #F1F1F1;
-    border-top: 0;
-    border-bottom: 0; }
-    .request-modal .request-content .request-time .request-time-needed h2, .request-modal .request-content .request-time .request-time-avail h2 {
-      font-weight: 600; }
+  .request-modal .request-content .request-loc ul {
+    border-left: 1px solid #F1F1F1;
+    border-right: 1px solid #F1F1F1; }
+    .request-modal .request-content .request-loc ul li {
+      position: relative;
+      border-left: 1px solid #F1F1F1;
+      border-right: 1px solid #F1F1F1; }
+      .request-modal .request-content .request-loc ul li input[type="radio"] {
+        position: absolute;
+        z-index: 9;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; }
+      .request-modal .request-content .request-loc ul li div {
+        width: 100%; }
+      .request-modal .request-content .request-loc ul li label {
+        display: block;
+        width: 100%;
+        line-height: 46px; }
+      .request-modal .request-content .request-loc ul li input:not(:checked) + div label {
+        color: rgba(64, 72, 75, 0.5);
+        font-weight: 400; }
+      .request-modal .request-content .request-loc ul li input:checked + div label {
+        background: #50A5DD;
+        color: white;
+        font-weight: 600; }
+      .request-modal .request-content .request-loc ul li .request-loc-address, .request-modal .request-content .request-loc ul li .request-loc-geo {
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        display: none;
+        width: calc(200% + 2px); }
+      .request-modal .request-content .request-loc ul li .request-loc-address {
+        border-top: 1px solid #F1F1F1;
+        border-bottom: 1px solid #F1F1F1; }
+        .request-modal .request-content .request-loc ul li .request-loc-address input {
+          border-left: 0;
+          border-right: 0;
+          border-top: 1px solid #F1F1F1;
+          border-bottom: 1px solid #F1F1F1;
+          font-weight: 600; }
+        .request-modal .request-content .request-loc ul li .request-loc-address .request-loc-state, .request-modal .request-content .request-loc ul li .request-loc-address .request-loc-zip {
+          width: 50%; }
+        .request-modal .request-content .request-loc ul li .request-loc-address .request-loc-state {
+          border-right: 1px solid #F1F1F1; }
+        .request-modal .request-content .request-loc ul li .request-loc-address .request-loc-zip {
+          border-left: 1px solid #F1F1F1; }
+      .request-modal .request-content .request-loc ul li .request-loc-geo {
+        padding: 15px;
+        background: white;
+        border-top: 2px solid #F1F1F1;
+        border-bottom: 2px solid #F1F1F1; }
+        .request-modal .request-content .request-loc ul li .request-loc-geo > span {
+          display: block;
+          width: 100%;
+          border: 0;
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 1.2; }
+        .request-modal .request-content .request-loc ul li .request-loc-geo .request-geo-icon {
+          margin-top: -6px;
+          height: 40px; }
+          .request-modal .request-content .request-loc ul li .request-loc-geo .request-geo-icon svg {
+            width: auto;
+            height: 100%; }
+            .request-modal .request-content .request-loc ul li .request-loc-geo .request-geo-icon svg path {
+              fill: none;
+              stroke: #50A5DD;
+              stroke-width: 5px;
+              stroke-linecap: round;
+              stroke-linejoin: round; }
+      .request-modal .request-content .request-loc ul li .enter-address:checked + div {
+        padding-bottom: 167px; }
+      .request-modal .request-content .request-loc ul li .enter-address:checked + div .request-loc-address {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        position: absolute;
+        z-index: 9999;
+        top: 46px;
+        left: 0; }
+      .request-modal .request-content .request-loc ul li .use-location:checked + div {
+        padding-bottom: 110px; }
+      .request-modal .request-content .request-loc ul li .use-location:checked + div .request-loc-geo {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        position: absolute;
+        z-index: 9999;
+        top: 46px;
+        right: 0; }
   .request-modal .request-content .request-time .request-time-urgent li {
     border-left: 2px solid #F1F1F1;
     border-right: 2px solid #F1F1F1; }
@@ -648,19 +744,57 @@ section {
         background-size: 30px 30px; }
       .request-modal .request-content .request-time .request-time-urgent li > span input:not(:checked) + span {
         background-color: #f8f8f8; }
+  .request-modal .request-content .request-time .request-time-needed, .request-modal .request-content .request-time .request-time-avail {
+    border-left: 2px solid #F1F1F1;
+    border-right: 2px solid #F1F1F1; }
+    .request-modal .request-content .request-time .request-time-needed h2, .request-modal .request-content .request-time .request-time-avail h2 {
+      font-weight: 600; }
+  .request-modal .request-content .request-time .request-time-needed ul {
+    border-top: 1px solid #F1F1F1;
+    border-bottom: 1px solid #F1F1F1; }
+    .request-modal .request-content .request-time .request-time-needed ul li {
+      position: relative;
+      border: 1px solid #F1F1F1; }
+      .request-modal .request-content .request-time .request-time-needed ul li:first-child {
+        border-left: 0; }
+      .request-modal .request-content .request-time .request-time-needed ul li:last-child {
+        border-right: 0; }
+      .request-modal .request-content .request-time .request-time-needed ul li input {
+        position: absolute;
+        z-index: 9;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; }
+      .request-modal .request-content .request-time .request-time-needed ul li div {
+        padding: 5px 0;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.2;
+        text-align: center;
+        text-transform: uppercase; }
+        .request-modal .request-content .request-time .request-time-needed ul li div h1 {
+          font-size: 24px;
+          font-weight: 400; }
+      .request-modal .request-content .request-time .request-time-needed ul li input:not(:checked) + div {
+        color: rgba(64, 72, 75, 0.5); }
+      .request-modal .request-content .request-time .request-time-needed ul li input:checked + div {
+        background: #50A5DD;
+        color: white;
+        font-weight: 700; }
+        .request-modal .request-content .request-time .request-time-needed ul li input:checked + div h1 {
+          font-weight: 600; }
   .request-modal .request-content .request-desc textarea {
     font-weight: 600;
     border-bottom: 2px solid #F1F1F1;
     height: 150px;
     width: 100%; }
-  .request-modal .request-content .switch {
-    border: 2px solid #F1F1F1;
-    border-top: 0;
-    border-bottom: 0; }
-    .request-modal .request-content .switch input:checked + label .checked {
-      font-weight: 600; }
-    .request-modal .request-content .switch input:not(:checked) + label .unchecked {
-      font-weight: 600; }
+  .request-modal .request-content .picker {
+    border-top: 2px solid #F1F1F1; }
+
+@media screen and (min-width: 375px) {
+  .request-modal .request-content .request-time .request-time-needed ul li div {
+    padding: 10px 0; } }
 
 /* ---------- SIDEBAR & MENUS */
 #side-menu-left-overlay.active {
@@ -834,7 +968,7 @@ section {
     font-size: inherit;
     height: 50px; }
     .action-sheet-wrapper.action-sheet-up .action-sheet-title span {
-      color: #55A4B7;
+      color: #50A5DD;
       font-size: 18px;
       text-transform: none !important; }
   .action-sheet-wrapper.action-sheet-up .action-sheet-group {
@@ -1056,7 +1190,7 @@ section {
       justify-content: center;
       width: 70px;
       height: 70px;
-      background: #DB1988; }
+      background: #E5753C; }
     .home-view #request-message #request-button b {
       display: block;
       width: 100%;
@@ -1078,7 +1212,7 @@ section {
 .onboarding .onboarding-search {
   box-sizing: border-box; }
   .onboarding .onboarding-search input {
-    width: calc(100% - 20px); }
+    width: calc(100% - 25px); }
 
 .onboarding progress, .onboarding .progress {
   position: absolute;

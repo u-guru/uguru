@@ -17,35 +17,94 @@
 		</div>
 		<div class="request-loc">
 			<h1 class="section-header-light">Location</h1>
-			<div class="switch">
-				<input type="checkbox" checked/>
-				<label>
-					<span class="checked">Enter address</span>
-					<span class="unchecked">Use my location</span>
-				</label>
-			</div>
+			<ul class="ugrid-2 text-center">
+				<li>
+					<input type="radio" name="loc" class="enter-address"/>
+					<div>
+						<label>Enter address</label>
+						<div class="request-loc-address">
+							<input type="text" class="request-loc-st p15xy" placeholder="Street" />
+							<input type="text" class="request-loc-city p15xy" placeholder="City" />
+							<input type="text" class="request-loc-state p15xy" placeholder="State" />
+							<input type="text" class="request-loc-zip p15xy" placeholder="Zip" />
+						</div>
+					</div>
+				</li>
+				<li>
+					<input type="radio" name="loc" class="use-location" checked/>
+					<div>
+						<label>Use my location</label>
+						<div class="request-loc-geo">
+							<span class="request-geo-icon">
+								<svg viewBox="0 0 100 100">
+									<path d="M24.2857143,39.7142857 C24.2085714,25.5128 35.7985143,14 50,14 C64.2014857,14 75.7914286,25.5128 75.7142857,39.7142857 C75.6001143,60.8658286 50,86 50,86 C50,86 24.4009143,60.8658286 24.2857143,39.7142857 Z M50,50 C55.6806431,50 60.2857143,45.3949289 60.2857143,39.7142857 C60.2857143,34.0336426 55.6806431,29.4285714 50,29.4285714 C44.3193569,29.4285714 39.7142857,34.0336426 39.7142857,39.7142857 C39.7142857,45.3949289 44.3193569,50 50,50 Z"></path>
+								</svg>
+							</span>
+							<span class="request-geo-st">55 Spear Street</span>
+							<span>
+								<span class="request-geo-city">San Francisco</span>,
+								<span class="request-geo-state">CA</span>
+								<span class="request-geo-zip">94105</span>
+							</span>
+						</div>
+					</div>
+				</li>
+			</ul>
 		</div>
 		<div class="request-time">
 			<h1 class="section-header-light">Time</h1>
             <ul class="request-time-urgent checklist-orange">
                 <li>
                     <span>
-                        <label>Urgent?</label>
+                        <label>Is this session urgent?</label>
                         <input type="checkbox"/><span></span>
                     </span>
                 </li>
             </ul>
 			<div class="request-time-needed">
-				<div class="ugrid-2 p15xy">
-					<h2>Time Needed</h2>
-					<div class="picker-state">
-						<span></span>
-					</div>
+				<div class="p15xy">
+					<h2>How much time do you need?</h2>
 				</div>
+				<ul class="ugrid-5">
+					<li>
+						<input type="radio" name="hours" value="1" checked/>
+						<div>
+							<h1>1</h1>
+							<span>hour</span>
+						</div>
+					</li>
+					<li>
+						<input type="radio" name="hours" value="2"/>
+						<div>
+							<h1>2</h1>
+							<span>hours</span>
+						</div>
+					</li>
+					<li>
+						<input type="radio" name="hours" value="3"/>
+						<div>
+							<h1>3</h1>
+							<span>hours</span>
+						</div>
+					</li>
+					<li>
+						<input type="radio" name="hours" value="4"/>
+						<div>
+							<h1>4</h1>
+							<span>hours</span>
+						</div>
+					</li>
+					<li>
+						<input type="radio" name="hours" value="5"/>
+						<div>
+							<h1>5</h1>
+							<span>hours</span>
+						</div>
+					</li>
+				</ul>
+				<!--
 				<div class="picker">
-					<ul class="picker-hours">
-						<li>&nbsp;</li>
-						<li>&nbsp;</li>
+					<ul class="picker-time">
 						<li>&nbsp;</li>
 						<li>&nbsp;</li>
 						<li class="inactive">1</li>
@@ -55,17 +114,64 @@
 						<li class="inactive">5</li>
 						<li>&nbsp;</li>
 						<li>&nbsp;</li>
-						<li>&nbsp;</li>
-						<li>&nbsp;</li>
 					</ul>
 				</div>
+				-->
 			</div>
 			<div class="request-time-avail">
-				<div class="ugrid-2 p15xy">
-					<h2>Availability</h2>
-					<div class="picker-state">
-						<span></span>
-					</div>
+				<div class="p15xy">
+					<h2>When are you available?</h2>
+				</div>
+				<div class="picker picker-date">
+					<ul class="picker-day">
+						<li class="inactive-2">Sep 24</li>
+						<li class="inactive-1">Sep 25</li>
+						<li class="active">Today</li>
+						<li class="inactive-1">Sep 26</li>
+						<li class="inactive-2">Sep 27</li>
+						<li class="inactive-3">Sep 28</li>
+						<li class="inactive-4">Sep 29</li>
+					</ul>
+					<ul class="picker-at">
+						<li class="inactive">&nbsp;</li>
+						<li class="inactive">&nbsp;</li>
+						<li class="active">at</li>
+						<li class="inactive">&nbsp;</li>
+						<li class="inactive">&nbsp;</li>
+					</ul>
+					<ul class="picker-hours">
+						<li class="inactive-2">07</li>
+						<li class="inactive-1">08</li>
+						<li class="active">09</li>
+						<li class="inactive-1">10</li>
+						<li class="inactive-2">11</li>
+						<li class="inactive-3">12</li>
+						<li class="inactive-4">01</li>
+					</ul>
+					<ul class="picker-colon">
+						<li class="inactive">&nbsp;</li>
+						<li class="inactive">&nbsp;</li>
+						<li class="active">:</li>
+						<li class="inactive">&nbsp;</li>
+						<li class="inactive">&nbsp;</li>
+					</ul>
+					<ul class="picker-minutes">
+						<li class="inactive-2">05</li>
+						<li class="inactive-1">10</li>
+						<li class="active">15</li>
+						<li class="inactive-1">20</li>
+						<li class="inactive-2">25</li>
+						<li class="inactive-3">30</li>
+						<li class="inactive-4">35</li>
+					</ul>
+					<ul class="picker-ampm">
+						<li class="inactive">&nbsp;</li>
+						<li class="inactive">&nbsp;</li>
+						<li class="active">AM</li>
+						<li class="inactive-1">PM</li>
+						<li class="inactive">&nbsp;</li>
+						<li class="inactive">&nbsp;</li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -74,7 +180,7 @@
 			<textarea class='p15xy' placeholder="Describe your problem" />
 		</div>
 	</div>
-	<button class="absolute bottom-0 full-x bg-orange">Submit</button>
+	<button class="absolute bottom-0 full-x bg-orange semibold">Submit</button>
 </section>
 
 

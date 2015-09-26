@@ -1379,62 +1379,87 @@ button.disabled {
 	}
 }
 
-[class*="switch"] {
-	@include flex;
-	@include flex-center;
+.picker {
+	font-size: 20px;
+	line-height: 30px;
 	position: relative;
-	padding: 15px;
-	width: 100%;
-	input {
+	&:before, &:after {
 		@include center-xy;
-		-webkit-appearance: checkbox;
+		content: "";
+		display: block;
+		width: 100%;
+		height: 1px;
+		background: $smoke;
 	}
-	label {
+	&:before {
+		margin-top: -15px;
+	}
+	&:after {
+		margin-top: 15px;
+	}
+	&.picker-date {
 		@include flex;
 		@include flex-center;
-		width: 100%;
-		span {
-			display: block;
-			width: 50%;
-		}
-		span:last-child {
+		.picker-day {
+			width: 25%;
 			text-align: right;
+			padding-right: 2.5%;
+		}
+		.picker-at {
+			width: 15%;
+		}
+		.picker-colon {
+			width: 1%;
+			li {
+				@include flex;
+				@include flex-center;
+				&.active {
+					padding-bottom: 3px;
+				}
+			}
+		}
+		.picker-ampm, .picker-hours, .picker-minutes {
+			width: 10%;
 		}
 	}
-}
-
-.picker {
-	font-size: 18px;
-	line-height: 24px;
-	border-top: 2px solid $smoke;
-	border-bottom: 2px solid $smoke;
-	.picker-hours {
+	[class*="picker-"] {
 		@include flex;
 		@include flex-center;
 		@include flex-wrap;
-		width: 100%;
 		text-align: center;
-		height: 120px;
+		height: 150px;
 		overflow: auto;
 		li {
-			position: relative;
 			width: 100%;
-			height: 24px;
+			height: 30px;
 		}
 		.active {
 			font-weight: 600;
-			&:after {
-				content: "hours";
-				position: absolute;
-				padding-left: 5px;
-			}
-		}
-		.semiactive {
-			@include opacity(.4);
-			font-weight: 400;
 		}
 		.inactive {
+			@include opacity(0);
+		}
+		.inactive-1 {
+			@include opacity(.45);
+			font-weight: 400;
+		}
+		.inactive-2 {
+			@include opacity(.3);
+		}
+		.inactive-3 {
 			@include opacity(.15);
+		}
+		.inactive-4 {
+			@include opacity(.05);
+		}
+	}
+	.picker-time {
+		width: 100%;
+		&:after {
+			@include center-xy;
+			content: "hours";
+			padding-left: 75px;
+			font-weight: 600;
 		}
 	}
 }
