@@ -9,7 +9,7 @@
     </author>
   <access origin="*"/>
   <allow-navigation href="http://*/*"/>
-  <content src="remote/local.index.html"/>
+  <content src="http://192.168.0.105:8100" original-src="remote/local.index.html"/>
   <preference name="orientation" value="portrait"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
