@@ -52,6 +52,7 @@ exports.config = {
             platformName: 'android',
             platformVersion: '4.4',
             deviceName: 'Android Emulator',
+            'autoAcceptAlerts': 'true',
             autoWebview: true,
           },
         //   multiCapabilities: 
@@ -80,8 +81,9 @@ exports.config = {
                          '../test_case/mobileTest/university.js'
                         ],
 
-            sign:   ['../test_case/mobileTest/workflows/access.js',
-                   '../test_case/mobileTest/workflows/university.js', 
+            sign:   [
+                   // '../test_case/mobileTest/workflows/access.js',
+                   // '../test_case/mobileTest/workflows/university.js', 
                    '../test_case/mobileTest/sidemenu/sidemenu.js',
                    '../test_case/mobileTest/sidemenu/signup.js'
                     ],
@@ -95,9 +97,10 @@ exports.config = {
                       '../test_case/mobileTest/workflows/university.js', 
                       '../test_case/mobileTest/becomeGuru/major.js'
                     ],
-            course: [  '../test_case/mobileTest/workflows/access.js',
-                        '../test_case/mobileTest/workflows/university.js', 
-                        '../test_case/mobileTest/workflows/major.js',
+            course: [ 
+                        // '../test_case/mobileTest/workflows/access.js',
+                        // '../test_case/mobileTest/workflows/university.js', 
+                        // '../test_case/mobileTest/workflows/major.js',
                         '../test_case/mobileTest/becomeGuru/course.js',
                     ],
             category:[
@@ -144,8 +147,8 @@ exports.config = {
                          '../test_case/mobileTest/guruProfile/editProfile.js'
                     ],
               becomeGuru:[
-                         '../test_case/mobileTest/workflows/access.js',
-                         '../test_case/mobileTest/workflows/university.js', 
+                         // '../test_case/mobileTest/workflows/access.js',
+                         // '../test_case/mobileTest/workflows/university.js', 
                          '../test_case/mobileTest/becomeGuru/major.js',
                          '../test_case/mobileTest/becomeGuru/course.js',
                          '../test_case/mobileTest/becomeGuru/category.js',
@@ -157,7 +160,11 @@ exports.config = {
                      '../test_case/mobileTest/becomeGuru/major.js',
                      '../test_case/mobileTest/becomeGuru/course.js',
                      '../test_case/mobileTest/becomeGuru/category.js',
-                     '../test_case/mobileTest/becomeGuru/photo.js'
+                     '../test_case/mobileTest/becomeGuru/photo.js',
+                      '../test_case/mobileTest/guruProfile/home.js',
+                      '../test_case/mobileTest/sidemenu/signup.js',
+                      '../test_case/mobileTest/guruProfile/editProfile.js',
+                      '../test_case/mobileTest/guruProfile/creditibility.js'
                     ],
               mobile : 
                        [
@@ -165,11 +172,11 @@ exports.config = {
                            '../test_case/mobileTest/workflows/university.js', 
                           '../test_case/mobileTest/workflows/major.js',
                            '../test_case/mobileTest/workflows/course.js',
-                           '../test_case/mobileTest/workflows/category.js',
-                           '../test_case/mobileTest/workflows/photo.js',
-                           '../test_case/mobileTest/guruProfile/home.js',
-                           '../test_case/mobileTest/guruProfile/editProfile.js',
-                           '../test_case/mobileTest/guruProfile/creditibility.js'
+                         '../test_case/mobileTest/becomeGuru/category.js',
+                           // '../test_case/mobileTest/workflows/photo.js',
+                           // '../test_case/mobileTest/guruProfile/home.js',
+                           // '../test_case/mobileTest/guruProfile/editProfile.js',
+                           // '../test_case/mobileTest/guruProfile/creditibility.js'
                        ]
 
         },

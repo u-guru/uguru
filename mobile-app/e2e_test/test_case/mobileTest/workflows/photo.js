@@ -12,7 +12,8 @@ describe('@Photo test', function () {
 		});
 	it('Next page',function()
 	{
-			nextStep.click();
+		expect(nextStep.getText()).toBe("FINISH");
+		nextStep.click();
 	});
 		
 });

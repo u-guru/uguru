@@ -1,6 +1,30 @@
 var CategoryName = ['Academic Courses','Freelancing','Baking','Photography','Household','Technology & IT','Sports & Muscle','On-demand Delivery']
+var nextStep = element.all(by.css('[ng-click="nextSlide()"]'));
+
 describe('Category Test', function () {
-	
+	beforeAll(function()
+	{
+		if(browser.getCurrentUrl() != "http://"+localhost+":8100/#/home")
+		{
+
+			browser.get("http://"+localhost+":8100/#/become-guru");
+		}
+	});
+	it("skip to Category",function()
+	{
+		nextStep.then(function(items)
+		{
+			console.log("LEngth : " + items.length)
+			items[0].click();
+		});
+	});
+	it("skip to Category",function()
+	{
+		nextStep.then(function(items)
+		{
+			items[1].click();
+		});
+	});
 	for (var i = 0 ; i< 8 ; ++i)
 	{
         (function(index,title) {
@@ -73,9 +97,15 @@ describe('Category Test', function () {
 			});
         })(i,CategoryName[i]);
 	}
+
 	it('Slide to Next Page',function()
 	{
-		doc.slideView(4,'left');
+		//doc.slideView(2,'left');
+		nextStep.then(function(items)
+		{
+			expect(items[2].getText()).toBe("PHOTO");
+			items[2].click();
+		});
 	});
 
 });

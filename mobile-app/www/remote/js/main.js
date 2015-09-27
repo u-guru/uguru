@@ -1,10 +1,12 @@
-var LOCAL = true; //local to the 8100 codebasebirbirscd
+var LOCAL = _local;
 
+_startpage = 'access';
+var FIRST_PAGE = '^.' + _startpage;
+var img_base = '';
 
-
-var FIRST_PAGE='^.university';
-img_base = '';
-
+console.log("_local: " + _local);
+console.log("_startpage: " + _startpage);
+console.log("_startpage: " + _ipaddress);
 
 // isAdmin = true;
 // LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
@@ -23,20 +25,10 @@ var REST_URL = 'https://www.uguru.me'
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  BASE_URL = 'http://192.168.0.105:8100';
- // REST_URL = 'http://localhost:5000';
-  //REST_URL = 'https://uguru-rest.herokuapp.com'
+  BASE_URL = _ipaddress;
 
-  //BASE_URL = 'http://192.168.42.124:8100';
-
-
-  //REST_URL = "http://localhost:5000"
-
-  // BASE_URL = 'http://192.168.1.43:8100';
-
-  //BASE_URL = 'http://192.168.43.155:8100';
-
-
+  // console.log("_ipaddress: " + _ipaddress);
+  // REST_URL = 'http://192.168.42.78:5000'
 
 
 } else {
@@ -312,7 +304,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
 
 
-  $urlRouterProvider.otherwise('/university');
+  $urlRouterProvider.otherwise('/' + _startpage);
 
 
 });

@@ -6,18 +6,18 @@ describe('Guru Creditability] Test', function () {
 		browser.get("http://"+localhost+":8100/#/guru-credibility");
 		browser.sleep(2000)
 	});
-	describe("Welcome Pop Up",function()
-	{
-		it('Check Pop up ',function()
-		{
-			expect(element(by.css('.content-wrapper')).isDisplayed()).toBe(true);
-		});
-		it('Close Welcome',function()
-		{
-			//element(by.id('home-uguru-popup')).click();
-			element(by.css('[ng-click="closeWelcomePopup()"]')).click();
-		});
-	});
+	// describe("Welcome Pop Up",function()
+	// {
+	// 	it('Check Pop up ',function()
+	// 	{
+	// 		expect(element(by.css('.content-wrapper')).isDisplayed()).toBe(true);
+	// 	});
+	// 	it('Close Welcome',function()
+	// 	{
+	// 		//element(by.id('home-uguru-popup')).click();
+	// 		element(by.css('[ng-click="closeWelcomePopup()"]')).click();
+	// 	});
+	// });
 	// This Test Should be at Guru Home Page
 	// describe("Check Button",function()
 	// {
@@ -66,7 +66,7 @@ describe('Guru Creditability] Test', function () {
 		// beforeEach(function()
 		// {
 		// });
-		for(var i = 4; i < 5 ; ++ i)
+		for(var i = 2; i < 5 ; ++ i)
 		{
 			(function(index,title,buttonName)
 			{
@@ -169,10 +169,10 @@ describe('Guru Creditability] Test', function () {
 	  	           		  		    	});
 	  	           		  		    	it('Enter Number : 123456789',function()
 	  	           		  		    	{
-	  	           		  		    		expect(true).toBe(false,"Not Completed Yet,Alert Message");
+	  	           		  		    		// expect(true).toBe(false,"Not Completed Yet,Alert Message");
 
-											 // doc.openWrapper('123456789')
-											 // doc.checkMsg('Saved!');
+											 doc.openWrapper('123456789')
+											 doc.checkMsg('Saved!');
 
 	  	           		  		    	});
 	  	           		  		    });

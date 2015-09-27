@@ -15,6 +15,10 @@ describe('Guru Home Test', function () {
 	{
 		expect(browser.getCurrentUrl()).toContain("/#/guru");
 	});
+	it("log in active",function()
+	{
+		element(by.id('btn-edit-profile')).click();
+	});
 	// describe("Welcome Pop Up",function()
 	// {
 	// 	it('Check Pop up ',function()

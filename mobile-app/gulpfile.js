@@ -22,10 +22,8 @@ var rename = require('gulp-rename');
 var gutil = require('gulp-util');
 var karma = require('karma').server;
 var preprocess = require('gulp-preprocess');
-
-// var replace = require('gulp-replace-task');
-// var fs = require('fs');
-
+var replace = require('gulp-replace-task');
+var fs = require('fs');
 /**
  * Parse arguments
  */
@@ -39,39 +37,35 @@ var build = args.build;
 var uld = args.uld;
 var targetDir = path.resolve('dest');
 
-  
+gulp.task('replace', function() {
 
-// gulp.task('replace', function() {
-//   // Get the environment from the command line
-//   var env = args.env || 'localdev';
-//   var start = args.page || 'university';
-//   var ip = args.ip
-
-//   // Read the settings from the right file
-//   var filename = env + '.json';
-//   var settings = JSON.parse(fs.readFileSync('./config/' + filename, 'utf8'));
-
-//   gulp.src('./www/js/constants.js')
-//     .pipe(replace({
-//       patterns: [
-//         {
-//           match: 'local',
-//           replacement: settings.local
-//         },
-//         {
-//           match: 'startpage',
-//           replacement: start
-//         },
-//         {
-//           match: 'ipaddress',
-//           replacement: ip
-//         }
-//       ]
-//     }))
-//     .pipe(gulp.dest('./www/remote/js/'));
-// });
+    var env = args.env || 'localdev';
+    var start = args.page || 'university';
+    var ip = args.ip
 
 
+    var filename = env + '.json';
+    var settings = JSON.parse(fs.readFileSync('./config/' + filename, 'utf8'));
+
+    gulp.src('./www/js/constants.js/')
+      .pipe(replace({
+        patterns: [
+          {
+            match: 'local',
+            replacement: settings.local
+          },
+          {
+            match: 'startpage',
+            replacement: start
+          },
+          {
+            match: 'ipaddress',
+            replacement: ip
+          }
+        ]
+      }))
+      .pipe(gulp.dest('./www/remote/js/'));
+});
 
 
 gulp.task('express', function() {

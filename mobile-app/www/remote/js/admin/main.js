@@ -32,7 +32,7 @@ mixpanel = window.mixpanel || null;
 
  //if (mixpanel) mixpanel.track("App Launch");
 
-angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular', 
+angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
@@ -47,15 +47,15 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   var openKeyboard = null;
 
   DeviceService.readyDevice();
-  
+
   // console.log("Firing event start to GA");
 
   // ga('create', 'UA-67802516-1', 'auto');
   // ga('send', 'event', 'App Start', 'action');
   // ga('send', 'pageview');
 
-  
-  
+
+
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
@@ -91,7 +91,7 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
   // RestangularProvider.setBaseUrl('http://10.193.138.226:5000/api/v1');
   //Client-side router
-  
+
 
 //abstract
   // .state('admin', {

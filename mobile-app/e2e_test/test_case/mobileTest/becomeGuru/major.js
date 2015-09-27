@@ -3,33 +3,42 @@ describe('Major Test', function () {
 	var nextStep = element(by.css('[ng-click="nextSlide()"]'));
 	var backStep = element(by.css('[ng-click="goBackToStudentHome()"]'));
 	var ele = element.all(by.tagName("ion-slide"));
+	var model = "search_text";
 
-	// afterEach(function()
-	// {
-	// 	doc.checkLists("major-list","major.name")
-	// });
-	describe('Welcome uguru Pop',function()
+	beforeAll(function()
 	{
-		it('Check Pop up ',function()
-		{
-			browser.wait(EC.visibilityOf(element(by.id('home-uguru-popup'))),3000);
-			// expect(element(by.id('home-uguru-popup')).isDisplayed()).toBe(true);
-		});
-		it('Close Welcome',function()
-		{
-			//element(by.id('home-uguru-popup')).click();
-			element(by.css('[ng-click="closeWelcomePopup()"]')).click();
-		});	
-		it ('Start Become Guru Process',function()
-		{
-			guruButton.click();
-
-		});
+		if(browser.getCurrentUrl() != "http://"+localhost+":8100/#/home");
+			browser.get("http://"+localhost+":8100/#/home");
 	});
-	
+	// describe('Welcome uguru Pop',function()
+	// {
+	// 	it('Check Pop up ',function()
+	// 	{
+	// 		browser.wait(EC.visibilityOf(element(by.id('home-uguru-popup'))),3000);
+	// 		// expect(element(by.id('home-uguru-popup')).isDisplayed()).toBe(true);
+	// 	});
+	// 	it('Close Welcome',function()
+	// 	{
+	// 		//element(by.id('home-uguru-popup')).click();
+	// 		element(by.css('[ng-click="closeWelcomePopup()"]')).click();
+	// 	});	
+	// 	it ('Start Become Guru Process',function()
+	// 	{
+	// 		guruButton.click();
+						// var closeButton = element.all(by.css('.modal-backdrop.active .header-down')).last();
+
+	// 	});
+	// });
+	it ('Start Become Guru Process',function()
+		{
+			var closeButton = element.all(by.css('.modal-backdrop.active .header-down')).last();
+			browser.wait(EC.visibilityOf(closeButton),3000);
+			closeButton.click();
+			guruButton.click();
+		});
 	it('Current Page Title: Major',function()
 	{
-		expect(element(by.css('#major .third')).getText()).toContain("SELECT YOUR MAJOR")
+		expect(element(by.css('#major .third.flex-center-wrap')).getText()).toContain("SELECT YOUR MAJOR")
 	});
 
 	it('check Data repeating',function()
@@ -80,7 +89,7 @@ describe('Major Test', function () {
 		{
 			it('send a key : b',function()
 			{
-		    	doc.setInput('b',2);
+		    	doc.setInput('b',0,model);
 
 			});
 			it('Check the Search result is not empty',function()
@@ -97,10 +106,7 @@ describe('Major Test', function () {
 
 			it('clear a key',function()
 			{
-				element.all(by.tagName("input")).then(function(inputs)
-		      	{
-		      		inputs[2].clear();
-		      	});
+		    	doc.setInput('',0,model);
 			});
 		});
 		
@@ -108,7 +114,7 @@ describe('Major Test', function () {
 		{
 			it('send a key : Computer',function()
 			{
-		    	doc.setInput('computer',2);
+		    	doc.setInput('computer',0,model);
 			});
 
 			it("Check list is right",function()
@@ -132,7 +138,7 @@ describe('Major Test', function () {
 				});
 				it ("Check Search Input Has Been Clear",function()
 				{
-			    	doc.setInput('',2,true);
+			    	doc.setInput('',0,model,true);
 				});
 				it('Search-list is back to default-list',function()
 				{
@@ -150,7 +156,7 @@ describe('Major Test', function () {
 				});
 				it ('Re Enter "Computer Science",and see it has been taken off from the #major-list.',function()
 				{
-			    	doc.setInput('Computer Science',2);
+			    	doc.setInput('Computer Science',0,model);
 	    			element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
 	    	    		expect(items.length).toBe(2,"Computer Science is still in the #major-list");
 	    	    	});
@@ -176,14 +182,22 @@ describe('Major Test', function () {
 				// 	//element(by.id('home-uguru-popup')).click();
 				// 	element(by.css('[ng-click="closeWelcomePopup()"]')).click();
 				// });
+				it('check Side Bar is Hidding',function()
+				{
+					expect(element(by.css('.menu.menu-right')).isDisplayed()).toBe(false,"side bar should be hidden");
+					// browser.get("http://"+localhost+":8100/#/become-guru");
+				});
 				it (' Start Become Guru Process',function()
 				{
+					var closeButton = element.all(by.css('.modal-backdrop.active .header-down')).last();
+					browser.wait(EC.visibilityOf(closeButton),3000);
+					closeButton.click();
 					guruButton.click();
 				});
 
 				it ('Check Evything is back to default',function()
 				{
-			    	doc.setInput('',2,true);
+			    	doc.setInput('',0,model,true);
 		    		expect(element(by.repeater('major in user.majors')).isPresent()).toBe(false,"Selected-List[ {{user.majors}} ] doesn't clear out")
 		    		element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
 			    		expect(items.length >= 10).toBe(true,"#major-List does not return to default");
@@ -192,11 +206,13 @@ describe('Major Test', function () {
 				//Skip Bug
 				it('Reset Value[Skip Bug]',function()
 				{		
-			    	doc.setInput('a',2,true);
-					element.all(by.tagName("input")).then(function(inputs)
-			      	{
-			      		inputs[2].clear();
-			      	});
+			    	doc.setInput('a',0,model,true);
+			    	doc.setInput('',0,model);
+
+					// element.all(by.tagName("input")).then(function(inputs)
+			  //     	{
+			  //     		inputs[0].clear();
+			  //     	});
 				});
 
 			});
@@ -209,7 +225,7 @@ describe('Major Test', function () {
 		var MajorName = null;
 		it('send a key : Computer Science and Engineering',function()
 		{
-	    	doc.setInput('Computer Science and Engineering',2);
+	    	doc.setInput('Computer Science and Engineering',0,model);
 		});
 
 		it('Choose Computer Science and Engineering Major ',function()
@@ -233,10 +249,10 @@ describe('Major Test', function () {
 			//Skip Bug
 		it('Reset',function()
 		{		
-	    	doc.setInput('a',2,true);
+	    	doc.setInput('a',0,model,true);
 			element.all(by.tagName("input")).then(function(inputs)
 	      	{
-	      		inputs[2].clear();
+	      		inputs[0].clear();
 	      	});
 		})
 
@@ -278,7 +294,7 @@ describe('Major Test', function () {
 
 		it('Search "Computer Science and Engineering" and Find ',function()
 		{
-	    	doc.setInput('Computer Science and Engineering',2);
+	    	doc.setInput('Computer Science and Engineering',0,model);
 			element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
 				if(items.length == 0)
 	    			expect(items.length).not.toBe(1,"Computer Science and Engineering is not return to list");
@@ -301,10 +317,10 @@ describe('Major Test', function () {
 		});
 		it('Reset',function()
 		{		
-	    	doc.setInput('a',2,true);
+	    	doc.setInput('a',0,model,true);
 			element.all(by.tagName("input")).then(function(inputs)
 	      	{
-	      		inputs[2].clear();
+	      		inputs[0].clear();
 	      	});
 		})
 	});

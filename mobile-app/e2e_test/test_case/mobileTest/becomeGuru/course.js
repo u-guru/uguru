@@ -1,6 +1,13 @@
 describe('Course Test', function () {
 	var nextStep = element(by.css('[ng-click="nextSlide()"]'));
 	var backStep = element(by.css('[ng-click="goBackToStudentHome()"]'));
+	var model = "course_search_text";
+	beforeAll(function()
+	{
+		if(browser.getCurrentUrl() != "http://"+localhost+":8100/#/home");
+			browser.get("http://"+localhost+":8100/#/become-guru");
+		nextStep.click();
+	});
 	// afterEach(function()
 	// {
 	// 	doc.checkLists("courses-list","course.short_name")
@@ -73,7 +80,7 @@ describe('Course Test', function () {
 	{
 		it('send a key : s',function()
 		{
-	    	doc.setInput('s',3);
+	    	doc.setInput('s',0,model);
 		});
 		it('Search result is not empty',function()
 		{
@@ -88,18 +95,14 @@ describe('Course Test', function () {
 		// });
 		it('clear a key',function()
 		{	
-			element.all(by.tagName("input")).then(function(inputs)
-	      	{
-	      		inputs[3].clear();
-	      	});
-
+			doc.setInput('',0,model);
 		});
 
 		describe("Send A Key : art, and see result is right",function()
 		{
 			it('send a key : art',function()
 			{
-		    	doc.setInput('art',3);
+		    	doc.setInput('art',0,model);
 			});
 
 			it("Check list is right",function()
@@ -123,7 +126,7 @@ describe('Course Test', function () {
 			
 			it ("Enter ART HIS C117D",function()
 			{
-		    	doc.setInput('ART HIS C117D',3,true);
+		    	doc.setInput('ART HIS C117D',0,model,true);
 			});
 			it('Choose the search result',function()
 			{
@@ -140,7 +143,7 @@ describe('Course Test', function () {
 			});
 			it ("Search Bar is clear",function()
 			{
-		    	doc.setInput('',3);
+				doc.setInput('',0,model);
 			});
 		
 			it ('Course : "ART HIS C117D" Has been Added',function()
@@ -154,7 +157,7 @@ describe('Course Test', function () {
 
 			it ('Re type "ART HIS C117D",and see it has taken off from the list.',function()
 			{
-				doc.setInput('ART HIS C117D',3);
+				doc.setInput('ART HIS C117D',3,model);
 
     			element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
     	    		expect(items.length).toBe(0,"Choosen Result is still in the list");
@@ -163,8 +166,8 @@ describe('Course Test', function () {
 			//Skip Bug
 			it('Reset [Skip bug]',function()
 			{		
-		    	doc.setInput('a',3,true);
-		    	doc.setInput('',3,true);
+		    	doc.setInput('a',0,model,true);
+		    	doc.setInput('',0,model,true);
 
 			})
 		});
@@ -182,7 +185,9 @@ describe('Course Test', function () {
 				if(items.length  == 1)
 				{
 					items[0].click();
-					doc.switchAlert();
+					browser.sleep(5000);
+                    wdBrowser.switchTo().alert().accept();
+//					doc.switchAlert();
 				}
 		    });	
 		    doc.newPickList('courses-list',0);

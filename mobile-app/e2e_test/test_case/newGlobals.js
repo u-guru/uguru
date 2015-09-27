@@ -40,11 +40,11 @@ var global = function() {
     ele.then(function(items)
     {
         console.log("slides :"+ items.length)
-        browser.wait(EC.visibilityOf(items[index]),1000);
+        browser.wait(EC.visibilityOf(items[index]),3000);
         browser.actions().
         dragAndDrop(items[index], {x: xV, y: yV}).
         perform();
-        browser.wait(EC.visibilityOf(items[index+num]),1000);
+        browser.wait(EC.visibilityOf(items[index+num]),3000);
     }); 
   }
   /***********************************************************
@@ -271,7 +271,7 @@ var global = function() {
   *desc: enter character 
   *      and check the result is the same or not
   ***********************************************/
-  this.setInput = function(str,index,clear)
+  this.setInput = function(str,index,model,clear)
   {
     var i = 0;
     var check = true
@@ -280,9 +280,10 @@ var global = function() {
     if (index != null)
       i = index;
 
-    element.all(by.tagName("input")).then(function(inputs)
+    element.all(by.model(model)).then(function(inputs)
+    // element.all(by.tagName("input")).then(function(inputs)
       {
-         //console.log(inputs.length);
+         console.log(inputs.length);
         if (check == true)
          {
            inputs[i].getAttribute('value').then(function(result)
@@ -374,8 +375,8 @@ var global = function() {
   ****************************************************************/
   this.switchAlert = function()
   {
-     browser.wait(EC.alertIsPresent(), 4000);
-     var alertDialog = browser.switchTo().alert();
+     browser.wait(EC.alertIsPresent(browser.switchTo().alert()), 4000);
+     // var alertDialog = browser.switchTo().alert();
      browser.switchTo().alert().accept();  // Use to accept (simulate clicking ok)
   }
   /***************************************************************

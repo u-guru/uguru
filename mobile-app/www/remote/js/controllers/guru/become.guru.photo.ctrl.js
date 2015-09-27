@@ -47,7 +47,7 @@ angular.module('uguru.guru.controllers')
       }
 
      // Show the action sheet
-     var closeAttachActionSheet = $ionicActionSheet.show({
+     $scope.closeAttachActionSheet = $ionicActionSheet.show({
        buttons: options,
        cancelText: 'Cancel',
        cancel: function() {
@@ -55,6 +55,7 @@ angular.module('uguru.guru.controllers')
        buttonClicked: function(index) {
           takePhoto(index);
           $timeout(function() {
+            $scope.closeAttachActionSheet();
             return true;
           }, 500);
        }
