@@ -231,20 +231,20 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   $scope.universitySelected = function(university, $event) {
 
-    var searchResponseTime = listResponseTime - startTime;
-    console.log("searchResponseTime: " + searchResponseTime);
+    // var searchResponseTime = listResponseTime - startTime;
+    // console.log("searchResponseTime: " + searchResponseTime);
 
-    var listRenderTime = listEndTime - appStartTime;
-    console.log("listRenderTime: " + listRenderTime);
+    // var listRenderTime = listEndTime - appStartTime;
+    // console.log("listRenderTime: " + listRenderTime);
 
 
-    mixpanel.track("Changed University", {
-      "$University": university.name,
-      "$Search_Input": $scope.input.search_text
-    });
-    mixpanel.people.set({
-      "$University": university.name,
-    });
+    // mixpanel.track("Changed University", {
+    //   "$University": university.name,
+    //   "$Search_Input": $scope.input.search_text
+    // });
+    // mixpanel.people.set({
+    //   "$University": university.name,
+    // });
     $scope.loader.show();
     $scope.user.university_id = university.id;
     $scope.user.university = university;
