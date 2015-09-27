@@ -1377,6 +1377,32 @@ button.disabled {
 .highlight-campus li input:checked + label {
   background-color: #8A9EA3; }
 
+.breadcrumbs ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin: 0 auto; }
+  .breadcrumbs ul li {
+    padding: 3px; }
+    .breadcrumbs ul li a {
+      border-radius: 1000px;
+      display: block;
+      width: 14px;
+      height: 14px;
+      border: 2px solid white; }
+      .breadcrumbs ul li a.active {
+        background: white; }
+
 progress, [class*="progress"] {
   -webkit-transition: all 0.15s ease-in-out;
   -o-transition: all 0.15s ease-in-out;
@@ -1744,17 +1770,149 @@ input[type=range]:focus::-ms-fill-upper {
       filter: alpha(opacity=100);
       opacity: 1; }
 
-.section-header {
-  background: rgba(255, 255, 255, 0.05);
-  color: white;
-  padding: 10px;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 2px;
-  text-align: center;
-  text-transform: uppercase;
-  color: white; }
+.loader {
+  fill: none;
+  stroke: white;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-linejoin: round; }
+  .loader div {
+    font-weight: 600;
+    text-transform: uppercase; }
 
+#checkmark line {
+  -webkit-animation-delay: 0.25s;
+  -moz-animation-delay: 0.25s;
+  -ms-animation-delay: 0.25s;
+  -o-animation-delay: 0.25s;
+  animation-delay: 0.25s;
+  -webkit-animation-duration: 0.75s;
+  -moz-animation-duration: 0.75s;
+  -ms-animation-duration: 0.75s;
+  -o-animation-duration: 0.75s;
+  animation-duration: 0.75s;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -ms-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1; }
+  #checkmark line:first-child {
+    opacity: 1;
+    -webkit-animation-name: checkmark-one;
+    -moz-animation-name: checkmark-one;
+    -ms-animation-name: checkmark-one;
+    -o-animation-name: checkmark-one;
+    animation-name: checkmark-one;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    stroke-dasharray: 20.8, 20.8; }
+  #checkmark line:last-child {
+    opacity: 1;
+    -webkit-animation-name: checkmark-two;
+    -moz-animation-name: checkmark-two;
+    -ms-animation-name: checkmark-two;
+    -o-animation-name: checkmark-two;
+    animation-name: checkmark-two;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    stroke-dasharray: 49.91, 49.91; }
+
+@-webkit-keyframes checkmark-one {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; }
+  from {
+    stroke-dashoffset: 20.8; }
+  to {
+    stroke-dashoffset: 0; } }
+@-webkit-keyframes checkmark-two {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; }
+  from {
+    stroke-dashoffset: 49.91; }
+  to {
+    stroke-dashoffset: 0; } }
+@-moz-keyframes checkmark-one {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; }
+  from {
+    stroke-dashoffset: 20.8; }
+  to {
+    stroke-dashoffset: 0; } }
+@-moz-keyframes checkmark-two {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; }
+  from {
+    stroke-dashoffset: 49.91; }
+  to {
+    stroke-dashoffset: 0; } }
+@-ms-keyframes checkmark-one {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; }
+  from {
+    stroke-dashoffset: 20.8; }
+  to {
+    stroke-dashoffset: 0; } }
+@-ms-keyframes checkmark-two {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; }
+  from {
+    stroke-dashoffset: 49.91; }
+  to {
+    stroke-dashoffset: 0; } }
+@-o-keyframes checkmark-one {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; }
+  from {
+    stroke-dashoffset: 20.8; }
+  to {
+    stroke-dashoffset: 0; } }
+@-o-keyframes checkmark-two {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; }
+  from {
+    stroke-dashoffset: 49.91; }
+  to {
+    stroke-dashoffset: 0; } }
+@keyframes checkmark-one {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; }
+  from {
+    stroke-dashoffset: 20.8; }
+  to {
+    stroke-dashoffset: 0; } }
+@keyframes checkmark-two {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; }
+  from {
+    stroke-dashoffset: 49.91; }
+  to {
+    stroke-dashoffset: 0; } }
 * {
   box-sizing: border-box;
   -webkit-backface-visibility: hidden;
