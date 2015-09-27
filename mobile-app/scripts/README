@@ -1,0 +1,13 @@
+### Setup
+
+First Time Setup
+1. Set all permissions to bash scripts
+    ``` sudo chmod 755 scripts/* ```
+2. Add all git remotes
+    - origin
+    - staging
+    - production
+3. Add all bash_profile shortcuts
+    - pp --> push production
+    - ps --> push staging
+    - ts --> test staging
