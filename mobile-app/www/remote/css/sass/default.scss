@@ -1379,6 +1379,7 @@ button.disabled {
 	}
 }
 
+// DATE PICKER
 .picker {
 	font-size: 20px;
 	line-height: 30px;
@@ -1464,6 +1465,7 @@ button.disabled {
 	}
 }
 
+// CHECKLISTS
 [class*="checklist"] {
 	li {
 		> span {
@@ -1596,6 +1598,7 @@ button.disabled {
 	}
 }
 
+// HIGHLIGHT CHECKLIST (used for courses)
 [class*="highlight"] {
 	@include flex;
 	@include flex-wrap;
@@ -1690,6 +1693,28 @@ button.disabled {
 	li {
 		input:checked + label {
 		    background-color: $campus;
+		}
+	}
+}
+
+// BREADCRUMBS
+.breadcrumbs {
+	ul {
+		@include flex;
+		@include flex-center;
+		margin: 0 auto;
+		li {
+			padding: 3px;
+			a {
+				@include round;
+				display: block;
+				width: 14px;
+				height: 14px;
+				border: 2px solid white;
+				&.active {
+					background: white;
+				}
+			}
 		}
 	}
 }
@@ -2143,17 +2168,82 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 }
 
+// LOADER SVG
+.loader {
+	fill: none;
+	stroke: white;
+	stroke-width: 8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
 
-.section-header {
-	background: rgba(white,.05);
-	color: white;
-	padding: 10px;
-	font-size: 14px;
-	font-weight: 400;
-	letter-spacing: 2px;
-	text-align: center;
-	text-transform: uppercase;
-	color: white;
+#checkmark line {
+	-webkit-animation-duration: .5s;
+	-moz-animation-duration: .5s;
+	-ms-animation-duration: .5s;
+	-o-animation-duration: .5s;
+	animation-duration: .5s;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-iteration-count: infinite;
+	-ms-animation-iteration-count: infinite;
+	-o-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+	&:first-child {
+		-webkit-animation-name: checkmark-one;
+		-moz-animation-name: checkmark-one;
+		-ms-animation-name: checkmark-one;
+		-o-animation-name: checkmark-one;
+		animation-name: checkmark-one;
+		stroke-dasharray: 20.8, 20.8;
+	}
+	&:last-child {
+		-webkit-animation-name: checkmark-two;
+		-moz-animation-name: checkmark-two;
+		-ms-animation-name: checkmark-two;
+		-o-animation-name: checkmark-two;
+		animation-name: checkmark-two;
+		stroke-dasharray: 49.91, 49.91;
+	}
+}
+@-webkit-keyframes checkmark-one {
+	from { stroke-dashoffset: 20.8; }
+	to { stroke-dashoffset: 0; }
+}
+@-webkit-keyframes checkmark-two {
+	from { stroke-dashoffset: 49.91; }
+	to { stroke-dashoffset: 0; }
+}
+@-moz-keyframes checkmark-one {
+	from { stroke-dashoffset: 20.8; }
+	to { stroke-dashoffset: 0; }
+}
+@-moz-keyframes checkmark-two {
+	from { stroke-dashoffset: 49.91; }
+	to { stroke-dashoffset: 0; }
+}
+@-ms-keyframes checkmark-one {
+	from { stroke-dashoffset: 20.8; }
+	to { stroke-dashoffset: 0; }
+}
+@-ms-keyframes checkmark-two {
+	from { stroke-dashoffset: 49.91; }
+	to { stroke-dashoffset: 0; }
+}
+@-o-keyframes checkmark-one {
+	from { stroke-dashoffset: 20.8; }
+	to { stroke-dashoffset: 0; }
+}
+@-o-keyframes checkmark-two {
+	from { stroke-dashoffset: 49.91; }
+	to { stroke-dashoffset: 0; }
+}
+@keyframes checkmark-one {
+	from { stroke-dashoffset: 20.8; }
+	to { stroke-dashoffset: 0; }
+}
+@keyframes checkmark-two {
+	from { stroke-dashoffset: 49.91; }
+	to { stroke-dashoffset: 0; }
 }
 
 // .chart {

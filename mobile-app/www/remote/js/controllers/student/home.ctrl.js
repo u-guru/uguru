@@ -409,9 +409,6 @@ angular.module('uguru.student.controllers', [])
 
         }
 
-
-
-
         $scope.closeContactingModal = function() {
             $scope.contactingModal.hide();
             if (!$scope.user.push_notifications) {
@@ -476,12 +473,12 @@ angular.module('uguru.student.controllers', [])
             // }, 250)
 
             //welcome to student mode screen
-            // $timeout(function() {
-            //     checkOnboardingStatus()
-            // }, 1000);
             $timeout(function() {
-                $scope.launchRequestModal();
+                checkOnboardingStatus()
             }, 1000);
+            // $timeout(function() {
+            //     $scope.launchRequestModal();
+            // }, 1000);
         });
 
         $scope.user.university = {

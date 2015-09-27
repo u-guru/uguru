@@ -1,6 +1,5 @@
 var LOCAL = _local;
 
-_startpage = 'guru-credibility';
 var FIRST_PAGE = '^.' + _startpage;
 var img_base = '';
 
