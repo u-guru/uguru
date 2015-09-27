@@ -1064,6 +1064,13 @@ button.disabled {
 
 .input-search-ghost {
   position: relative; }
+  .input-search-ghost .clear-search-input {
+    position: absolute;
+    right: 0;
+    top: 20px;
+    right: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0px; }
   .input-search-ghost input {
     -webkit-appearance: none;
     -moz-appearance: none;

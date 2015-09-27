@@ -1204,19 +1204,27 @@ section {
 						url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat;
 		}
 		.geolocation-icon {
-			@include opacity(.5);
+			@include opacity(1);
 			@include center-y;
-			right: 10px;
+			right: 12px;
 			z-index: 0;
-			height: 18px;
+			height: 60px;
+			width:25%;
+			top:55%;
 			.ion-navigate {
 				@include opacity(.6);
-				color: white!important;
-				font-size: 18px!important;
+				font-size: 20px!important;
+				position: absolute;
+    			right: 0;
+    			top: 33%;
 			}
 			.ion-navigate.active,
 			.ion-navigate.activated {
 				@include opacity(1);
+			}
+			.ion-navigate.location-active {
+				color: $lake;
+				opacity:1;
 			}
 		}
 	}
@@ -1268,6 +1276,10 @@ section {
 						}
 						.school-distance {
 							float: right;
+						    bottom: 0;
+						    font-size:12px;
+						    padding-top: 5px;
+						    font-weight: 500;
 						}
 					}
 				}
