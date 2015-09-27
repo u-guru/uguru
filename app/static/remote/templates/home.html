@@ -1,7 +1,7 @@
 <ion-view class='uguru-view home-view'>
   <a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'></a>
-  <section id="request-empty" class="request full-xy student-home bg-slate">
-    <header class="bg-charcoal">
+  <section id="request-empty" class="request full-xy student-home bg-white">
+    <header class="bg-lake">
        <div class='header-nav'>
         <a class="header-menu" ng-click='toggleRightSideMenu()'>
         	<svg viewBox="0 0 100 100">
@@ -15,7 +15,6 @@
     <div id="request-content">
       <div id="request-message">
         <div>
-          <div ng-include="img_base + 'templates/white.guru.svg.html'"></div>
           <h2>Aww, you haven't made any requests yet.<br/>Need anything?</h2>
           <div><span id='home-content-header'></span></div>
         <div>
@@ -30,7 +29,7 @@
         </a>
       </div>
     </div>
-    <button class="home-footer-button btn-caps-fixed-bold left-0 bottom-0 bg-azure" ng-click='goToBecomeGuru()'>Become a Guru</button>
+    <button class="home-footer-button btn-caps-fixed-bold left-0 bottom-0 bg-slate" ng-click='goToBecomeGuru()'>Become a Guru</button>
   </section>
 
   <!-- Make this into a directive -->

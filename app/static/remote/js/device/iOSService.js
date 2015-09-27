@@ -8,6 +8,7 @@ angular
 	'Geolocation',
 	'Settings',
 	'Popup',
+
 	iOSService
 	]);
 
@@ -21,24 +22,21 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 	}
 
 	function ready() {
-	    if(window.StatusBar) {
-			StatusBar.styleLightContent();
-			StatusBar.hide();
-		}
+
+		showStatusBar();
+
 		if(cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 			cordova.plugins.Keyboard.disableScroll(true);
 		}
-		if(StatusBar) {
-			StatusBar.styleDefault();
-			StatusBar.overlaysWebView(true);
-		}
+
 	}
 
 	function showStatusBar() {
 		if(window.StatusBar) {
+			StatusBar.overlaysWebView(false);
 			StatusBar.styleLightContent();
-			StatusBar.show();
+			StatusBar.hide();
 		}
 	}
 
