@@ -2,30 +2,31 @@ var CategoryName = ['Academic Courses','Freelancing','Baking','Photography','Hou
 var nextStep = element.all(by.css('[ng-click="nextSlide()"]'));
 
 describe('Category Test', function () {
-	beforeAll(function()
-	{
-		if(browser.getCurrentUrl() != "http://"+localhost+":8100/#/home")
-		{
+	// beforeAll(function()
+	// {
+	// 	if(browser.getCurrentUrl() != "http://"+localhost+":8100/#/home")
+	// 	{
 
-			browser.get("http://"+localhost+":8100/#/become-guru");
-		}
-	});
-	it("skip to Category",function()
-	{
-		nextStep.then(function(items)
-		{
-			console.log("LEngth : " + items.length)
-			items[0].click();
-		});
-	});
-	it("skip to Category",function()
-	{
-		nextStep.then(function(items)
-		{
-			items[1].click();
-		});
-	});
-	for (var i = 0 ; i< 8 ; ++i)
+	// 		browser.get("http://"+localhost+":8100/#/become-guru");
+	// 	}
+	// });
+	// it("skip to Category",function()
+	// {
+	// 	nextStep.then(function(items)
+	// 	{
+	// 		console.log("LEngth : " + items.length)
+	// 		items[0].click();
+	// 	});
+	// });
+	// it("skip to Category",function()
+	// {
+	// 	nextStep.then(function(items)
+	// 	{
+	// 		items[1].click();
+	// 	});
+	// });
+	//don't wanna delete course
+	for (var i = 1 ; i< 8 ; ++i)
 	{
         (function(index,title) {
 	        describe('Click the Category #'+index,function()

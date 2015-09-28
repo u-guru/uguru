@@ -7,13 +7,21 @@ describe('Guru Edit Profile Test', function () {
 	var profileAdd = element.all(by.css('#profile-info .default'));
 
 	var ele = element.all(by.tagName("ion-slide"));
-	beforeAll(function()
+	// beforeAll(function()
+	// {
+	// 	// browser.get("http://localhost:8100/#/guru-profile");
+	// 	browser.get("http://"+localhost+":8100/#/guru-profile");
+	// 	browser.getCurrentUrl().then(function(url)
+	// 	{
+	// 		if( url!= "http://"+localhost+":8100/#/guru-credibility")
+	// 			browser.get("http://"+localhost+":8100/#/guru-credibility");
+	// 	})
+	// 	browser.sleep(2000)
+	// });
+	it("Check It is right address",function()
 	{
-		// browser.get("http://localhost:8100/#/guru-profile");
-		browser.get("http://"+localhost+":8100/#/guru-profile");
-		browser.sleep(2000)
+		expect(browser.getCurrentUrl()).toContain("/#/guru-profile");
 	});
-	
 	describe('Check all elements is not clickalbe before Edit Mode',function()
 	{
 		var photoClick = element(by.css('#profile-icon a'))
@@ -299,5 +307,9 @@ describe('Guru Edit Profile Test', function () {
 		}
 	
 		
+	});
+	it('Click Edit Tab',function()
+	{
+		doc.tabBar('guru-tab-bar',1)
 	});
 });

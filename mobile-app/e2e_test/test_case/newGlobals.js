@@ -11,6 +11,7 @@ var global = function() {
 
     element.all(by.css(str)).then(function(items)
     {
+        browser.wait(EC.elementToBeClickable(items[index]),3000);
         items[index].click();
     });
   }

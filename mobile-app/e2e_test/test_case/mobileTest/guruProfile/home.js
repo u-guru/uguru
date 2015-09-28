@@ -5,20 +5,48 @@ describe('Guru Home Test', function () {
 
 
 	var ele = element.all(by.tagName("ion-slide"));
-	// beforeAll(function()
-	// {
-	// 	browser.get("http://localhost:8100/#/guru");
-	// 	browser.sleep(2000)
-	// });
+
 
 	it("check Curret Page",function()
 	{
 		expect(browser.getCurrentUrl()).toContain("/#/guru");
 	});
-	it("log in active",function()
+
+	describe("Check Tab Bar",function()
 	{
-		element(by.id('btn-edit-profile')).click();
+		var str = ['profile','credibility']
+		for(var i = 0 ; i < 2; ++i)
+			(function(index,title)
+				{
+					describe("Check Tab bar "+title,function()
+					{
+						it('Click ' + title+ ' Button',function()
+						{
+							doc.tabBar('guru-tab-bar',index+1)
+						});
+						it('Check Url',function()
+						{	
+							// expect(browser.getCurrentUrl()).toBe("http://localhost:8100/#/guru-profile");
+							expect(browser.getCurrentUrl()).toContain("/#/guru-"+title);
+
+						});
+						it("Check Side Meuns Hide",function()
+						{
+							expect(element(by.tagName('ion-side-menu')).isDisplayed()).toBe(false, "SideBar is showed");
+						});
+					})
+					
+				})(i,str[i]);
+		
 	});
+	// element(by.id('btn-edit-profile')).isDisplayed().then(function(value)
+	// {
+	// 	if( value == true)
+	// 		it("log in active",function()
+	// 		{
+	// 				element(by.id('btn-edit-profile')).click();
+	// 		});
+	// });
 	// describe("Welcome Pop Up",function()
 	// {
 	// 	it('Check Pop up ',function()

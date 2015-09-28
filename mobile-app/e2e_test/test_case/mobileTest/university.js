@@ -21,7 +21,7 @@ describe('university Test', function () {
 			for( i = 8; i < 40; i+=8)
 			{
 				(function(index) {
-		      		it ('Scroll Down ',function()
+		      		it ('Scroll Down to Index : ' + index,function()
 			 		{
 			 			element.all(by.css('#school-list li:not(.ng-hide)')).then(function (items) {
 				    		browser.executeScript('arguments[0].scrollIntoView()', items[index].getWebElement());
@@ -240,7 +240,7 @@ describe('university Test', function () {
 					 			for(var j = 8; j < 40; j+=8)
 					 			{
 					 				(function(ind) {
-					 		      		it ('Scroll Down ',function()
+					 		      		it ('Scroll Down to Index : ' + ind,function()
 					 			 		{
 					 			 			element.all(by.css('#school-list li:not(.ng-hide)')).then(function (items) {
 					 				    		browser.executeScript('arguments[0].scrollIntoView()', items[ind].getWebElement());
@@ -256,11 +256,15 @@ describe('university Test', function () {
 					 					
 					 					it('Check University has miles loaded',function()
 					 					{
-					 						if(index===0)
-					 							browser.wait(EC.visibilityOf(element.all(by.binding('university.miles | number')).first()),3000,"Miles is not Shown");
-					 						else
-						 						browser.wait(EC.invisibilityOf(element(by.binding('university.miles | number'))),3000,"Miles is not Be Hidden");
+					 						// if(index===0)
+					 						// 	browser.wait(EC.visibilityOf(element.all(by.binding('university.miles | number')).first()),3000,"Miles is not Shown");
+					 						// else
+						 					// 	browser.wait(EC.invisibilityOf(element(by.binding('university.miles | number'))),3000,"Miles is not Be Hidden");
 
+						 					element.all(by.binding('university.miles | number')).then(function(items)
+						 					{
+						 						browser.wait(EC.visibilityOf(items[ind]),3000,"Miles is not Shown");
+						 					});
 					 					});
 					 					it ('Scroll Back To Top',function()
 					 			 		{
@@ -315,7 +319,7 @@ describe('university Test', function () {
 			});
 			it("check the current position",function()
 			{
-				expect(browser.getCurrentUrl()).toBe("http://localhost:8100/#/home");
+				expect(browser.getCurrentUrl()).toBe("http://"+localhost+":8100/#/home");
 			});
 		});
 

@@ -1,10 +1,19 @@
 describe('Guru Creditability] Test', function () {
 
 	var ele = element.all(by.tagName("ion-slide"));
-	beforeAll(function()
+	// beforeAll(function()
+	// {
+	// 	//browser.get("http://"+localhost+":8100/#/guru-credibility");
+	// 	browser.getCurrentUrl().then(function(url)
+	// 	{
+	// 		if( url!= "http://"+localhost+":8100/#/guru-credibility")
+	// 			browser.get("http://"+localhost+":8100/#/guru-credibility");
+	// 	})
+	// 	browser.sleep(2000)
+	// });
+	it("Check It is right address",function()
 	{
-		browser.get("http://"+localhost+":8100/#/guru-credibility");
-		browser.sleep(2000)
+		expect(browser.getCurrentUrl()).toContain("/#/guru-profile");
 	});
 	// describe("Welcome Pop Up",function()
 	// {

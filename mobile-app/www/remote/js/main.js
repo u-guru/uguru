@@ -1,6 +1,6 @@
 var LOCAL = _local;
 
-_startpage = 'access';
+_startpage = 'university';
 var FIRST_PAGE = '^.' + _startpage;
 var img_base = '';
 

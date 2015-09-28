@@ -39,7 +39,9 @@ describe('Access Page Test', function () {
    		})
    		it('send key',function()
    		{
-			doc.setInput("cool",0,false);
+	       		// doc.setInput("cool",0,false);
+            doc.setInput('cool',0,'access.codeInput');
+
 
    		});
    		it('Press Enter Key',function()
@@ -68,7 +70,9 @@ describe('Access Page Test', function () {
 				// });
        it("Enter Access Code : "+ testSpec,function()
 				{
-					doc.setInput(testSpec,0,false);
+					//doc.setInput(testSpec,0,false);
+              doc.setInput(testSpec,0,'access.codeInput',false);
+
 				});
 	 
 

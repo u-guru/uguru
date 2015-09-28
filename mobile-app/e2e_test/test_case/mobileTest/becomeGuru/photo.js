@@ -33,41 +33,42 @@ describe('Photo test', function () {
 		expect(sampleMsg.isPresent()).toBe(true);
 
 	});
-	it ("Edit Photo",function()
-	{	
-		var path = require('path');
-	    var fileToUpload = '../small.jpg';
-		var absolutePath = path.resolve(__dirname, fileToUpload);
-	    element(by.id('file-input-web')).sendKeys(absolutePath);
+	// it ("Edit Photo",function()
+	// {	
+	// 	var path = require('path');
+	//     var fileToUpload = '../small.jpg';
+	// 	var absolutePath = path.resolve(__dirname, fileToUpload);
+	//     element(by.id('file-input-web')).sendKeys(absolutePath);
 
-	    doc.checkMsg("Saving...");
-	    doc.checkMsg("Awesome! You're all set.");
-	});
-
-	// describe("Edit Photo With Camera",function()
-	// {
-	// 	it("Open Action Sheet",function()
-	// 	{
-	// 		element(by.id('profile-icon')).click();
-	// 	});
-	// 	it("Open Camera",function()
-	// 	{
-	// 		element.all(by.repeater('b in buttons')).then(function(items)
-	// 			{
-	// 				items[1].click();
-	// 			});
-	// 	});
-	// 	it('waiting to received the msg',function()
-	// 	{
-	// 		var msg = "Awesome! You're all set."
-	// 		// browser.wait(EC.visibilityOf(element(by.id('user-instant-photo'))),1000000)
-	// 		var newMsg = element(by.css(".loading-container")).element(by.tagName('span'));
-	// 		browser.wait(EC.presenceOf(newMsg),10000, "Can't Find Message : "+msg);
-	// 		newMsg.getAttribute('value').then(function(value)
-	// 		{
-	// 		  expect(value).toContain(msg);
-	// 		}); 
-	// 	});
-
+	//     // doc.checkMsg("Saving...");
+	//     browser.sleep(4000);
+	//     doc.checkMsg("Awesome! You're all set.");
 	// });
+
+	describe("Edit Photo With Camera",function()
+	{
+		it("Open Action Sheet",function()
+		{
+			element(by.id('profile-icon')).click();
+		});
+		it("Open Camera",function()
+		{
+			element.all(by.repeater('b in buttons')).then(function(items)
+				{
+					items[1].click();
+				});
+		});
+		it('waiting to received the msg',function()
+		{
+			var msg = "Awesome! You're all set."
+			// browser.wait(EC.visibilityOf(element(by.id('user-instant-photo'))),1000000)
+			var newMsg = element(by.css(".loading-container")).element(by.tagName('span'));
+			browser.wait(EC.presenceOf(newMsg),10000, "Can't Find Message : "+msg);
+			newMsg.getAttribute('value').then(function(value)
+			{
+			  expect(value).toContain(msg);
+			}); 
+		});
+
+	});
 });
