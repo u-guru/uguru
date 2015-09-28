@@ -282,25 +282,51 @@ section {
     width: 100%;
     background: white;
     border-radius: 5px;
-    color: #40484B; }
+    color: #40484B;
+    height: 50%; }
     .uguru-popup .uguru-popup-content .content-wrapper {
       position: relative;
       padding: 60px 0 0;
-      text-align: center; }
+      text-align: center;
+      height: 100%; }
+      .uguru-popup .uguru-popup-content .content-wrapper .content-body {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        height: calc(100% - 64px); }
+        .uguru-popup .uguru-popup-content .content-wrapper .content-body h1, .uguru-popup .uguru-popup-content .content-wrapper .content-body h2, .uguru-popup .uguru-popup-content .content-wrapper .content-body h3 {
+          text-align: center; }
+        .uguru-popup .uguru-popup-content .content-wrapper .content-body p {
+          font-size: 18px;
+          opacity: 0.8; }
+      .uguru-popup .uguru-popup-content .content-wrapper .content-footer {
+        max-height: 64px; }
       .uguru-popup .uguru-popup-content .content-wrapper h2 {
         color: #40484B;
-        margin: 0 15px;
-        color: #2B3234;
         font-weight: 700;
+        opacity: 0.9;
         font-size: 20px;
         text-transform: uppercase; }
       .uguru-popup .uguru-popup-content .content-wrapper p {
-        color: #40484B;
+        color: #2B3234;
         font-weight: 400;
         font-size: 14px;
-        padding: 2px 15px 0; }
+        padding: 10px 20px 0;
+        margin: 0 auto;
+        line-height: 20px; }
       .uguru-popup .uguru-popup-content .content-wrapper button {
-        border-radius: 0 0 5px 5px; }
+        border-radius: 0 0 5px 5px;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0; }
   .uguru-popup .guru-logo-container {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -1120,6 +1146,18 @@ section {
 .home-view button.active, .home-view button.activated {
   filter: alpha(opacity=50);
   opacity: 0.5; }
+.home-view a.header-menu {
+  position: absolute;
+  width: 25% !important;
+  right: 0; }
+  .home-view a.header-menu svg {
+    padding: 0px;
+    width: 28px;
+    height: 28px;
+    margin: 0 8px;
+    position: absolute;
+    right: 0;
+    top: 11px; }
 .home-view #request-content {
   height: calc(100% - 50px - 64px); }
 .home-view #request-message {
@@ -1199,6 +1237,8 @@ section {
       font-weight: 600;
       text-align: center;
       text-transform: uppercase; }
+    .home-view #request-message #request-button.activated, .home-view #request-message #request-button.active {
+      opacity: 0.6; }
 
 @media screen and (min-width: 375px) {
   .home-view #request-message > div h2 {

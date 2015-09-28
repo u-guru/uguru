@@ -3,7 +3,8 @@
 First Time Setup
 1. Set all permissions to bash scripts
     ``` sudo chmod 755 scripts/* ```
-2. Add all git remotes
+2. Install all the iPhone emulators
+3. Add all git remotes
     - origin
     - staging
     - production
@@ -11,3 +12,4 @@ First Time Setup
     - pp --> push production
     - ps --> push staging
     - ts --> test staging
+    - id --> iPhone devices

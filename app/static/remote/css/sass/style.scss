@@ -278,26 +278,48 @@ section {
 		background: white;
 		border-radius: 5px;
 		color: $slate;
+		height:50%;
 		.content-wrapper {
 			position: relative;
 			padding: 60px 0 0;
 			text-align: center;
+			height:100%;
+			.content-body {
+				@include flex;
+				@include flex-wrap;
+				height:calc(100% - 64px); // account for button
+				h1,h2,h3 {
+					text-align: center;
+				}
+				p {
+					font-size:18px;
+					opacity:0.8;
+				}
+			}
+			.content-footer {
+				max-height:64px;
+			}
 			h2 {
 				color: $slate;
-				margin: 0 15px;
-				color: $charcoal;
 				font-weight: 700;
+				opacity:0.9;
 				font-size: 20px;
 				text-transform: uppercase;
 			}
 			p {
-				color: $slate;
+				color: $charcoal;
 				font-weight: 400;
 				font-size: 14px;
-				padding: 2px 15px 0;
+				padding:10px 20px 0;
+				margin: 0 auto;
+				line-height:20px;
 			}
 			button {
 				border-radius: 0 0 5px 5px;
+				position: absolute;
+			    width: 100%;
+			    left: 0;
+			    bottom: 0;
 			}
 		}
 
@@ -1300,6 +1322,20 @@ section {
 			@include opacity(.5);
 		}
 	}
+	a.header-menu {
+		position:absolute;
+	    width: 25% !important;
+	    right: 0;
+		svg {
+			padding:0px;
+			width: 28px;
+		    height: 28px;
+		    margin: 0 8px;
+		    position: absolute;
+		    right: 0;
+		    top: 11px;
+		}
+	}
 	#request-content {
 		height: calc(100% - 50px - 64px);
 	}
@@ -1348,6 +1384,9 @@ section {
 				font-weight: 600;
 				text-align: center;
 				text-transform: uppercase;
+			}
+			&.activated, &.active {
+				opacity:0.6;
 			}
 		}
 	}

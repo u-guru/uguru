@@ -15,8 +15,8 @@
 			<span class='student-profile-year' ng-if='user.id && user.year && user.university.name'>Sophomore</span>
 			<span ng-if='user.id && !user.year && user.university'>{{user.university.name || user.university.title}}</span>
 		</span>
-		<span class="list-item-detail" ng-if='!user.id && user.university.name'>
-			<h3 class='text-center'>{{user.university.name}}</h3>
+		<span class="list-item-detail" ng-if='!user.id || (!user.university.name && !user.university.title)'>
+			<h3 class='text-center'>{{user.university.name || user.university.title || 'SETTINGS'}}</h3>
 		</span>
 	</ion-item>
 	<ion-item class='list-item list-item-agenda'></ion-item>
