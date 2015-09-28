@@ -204,11 +204,8 @@ angular.module('uguru.util.controllers')
 
 
 
-          $scope.logoutUser = function(showAlert) {
-            if (showAlert || confirm('Are you sure you want to log out?')) {
-              if ($scope.settings && $scope.settings.icons) {
-                $scope.settings.icons.profile = false;
-              }
+          $scope.logoutUser = function(skipShowAlert) {
+            if (skipShowAlert || confirm('Are you sure you want to log out?')) {
               $scope.loader.show();
               $localstorage.setObject('user', []);
               $localstorage.setObject('appOnboarding', null);
@@ -217,18 +214,15 @@ angular.module('uguru.util.controllers')
               $ionicHistory.clearHistory();
               //toggle in the middle
               $timeout(function() {
-                $scope.loader.hide();
                 $scope.user = User.getLocal();
                 $scope.user.updateAttr = User.updateAttrUser;
                 $scope.user.createObj = User.createObj;
                 $scope.user.updateObj = User.updateObj;
                 $scope.root.vars.settings = {icons : {profile : true}};
-                $scope.success.show(500, 2000, 'You have been successfully logged out!');
-                $timeout(function(){
-                  $ionicSideMenuDelegate.toggleRight();
-                  $state.go('^.university');
-                }, 600)
-              }, 2000);
+                $scope.loader.showSuccess('You have been successfully logged out!', 2500);
+                $state.go('^.university');
+                $ionicSideMenuDelegate.toggleRight();
+              }, 1000);
 
 
             }
@@ -342,6 +336,9 @@ angular.module('uguru.util.controllers')
                     duration: duration || 1000
                 });
                 $scope.root.vars.loaderOn = true;
+            },
+            updateSuccessText: function(text) {
+                $scope.successLoaderText = text || 'loading'
             },
             hide: function() {
                 $ionicLoading.hide();

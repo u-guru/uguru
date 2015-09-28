@@ -154,7 +154,7 @@ angular.module('uguru.student.controllers', [])
 
             var appOnboardingObj = $localstorage.getObject('appOnboarding');
 
-            if (true ||!appOnboardingObj || appOnboardingObj === {} || !appOnboardingObj.studentWelcome) {
+            if (!appOnboardingObj || appOnboardingObj === {} || !appOnboardingObj.studentWelcome) {
                 appOnboardingObj = {
                     studentWelcome: true
                 }
@@ -167,16 +167,15 @@ angular.module('uguru.student.controllers', [])
 
         $scope.$on('$ionicView.loaded', function() {
 
-            $timeout(function() {
-                checkOnboardingStatus();
-            }, 1000);
-
             $scope.root.vars.guru_mode = false;
 
         })
 
         $scope.$on('$ionicView.enter', function() {
 
+            $timeout(function() {
+                checkOnboardingStatus();
+            }, 1000);
 
         });
 

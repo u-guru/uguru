@@ -2007,15 +2007,21 @@ class UserNewView(restful.Resource):
     def post(self):
 
         fb_user = email_user = None
-
+        print request.json
         if request.json.get('email'):
             email_user = User.query.filter_by(email=request.json.get('email')).first()
 
         if request.json.get('fb_id'):
             fb_user = User.query.filter_by(fb_id=request.json.get('fb_id')).first()
 
+        if email_user and not fb_user and request.json.get('fb_id'):
+            email_user.fb_id = request.json.get('fb_id')
+            db_session.commit()
 
-        if email_user and not fb_user:
+            return jsonify({'status': 201, 'user': email_user})
+
+        ## If they tried signing up w/ no account
+        elif email_user and not fb_user and not request.json.get('fb_id'):
             abort(409);
             # return json_response(400, errors=["Account already exists"])
 

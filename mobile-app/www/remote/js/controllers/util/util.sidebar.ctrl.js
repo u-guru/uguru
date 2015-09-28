@@ -685,13 +685,11 @@ angular.module('uguru.util.controllers')
         $scope.loader.show();
         User.clearAttr({}, $scope.user.id).then(function(user) {
           $scope.loader.hide();
-          $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
-          $scope.logoutUser(true);
-          console.log('cleared user', user.plain());
+          $scope.loader.showSuccess(0, 2000,'Admin Account Successfully cleared!');
+          $scope.logoutUser();
           $localstorage.setObject('user', user.plain());
           $scope.user = user.plain();
           $state.go('^.university');
-
         },
 
         function(err) {
