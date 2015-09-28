@@ -10,7 +10,7 @@ describe('@Workflow : access page', function () {
 		// });
 		it("Enter Access Code : cool ",function()
 		{
-			doc.setInput('cool',0,false);
+			doc.setInput('cool',0,'access.codeInput');
 
 		});
 

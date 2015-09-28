@@ -1,4 +1,6 @@
+var model = "input.search_text"
 describe('university Test', function () {
+
 
  	describe("University page have Default List and infinity scroll test",function()
 	{
@@ -52,7 +54,7 @@ describe('university Test', function () {
 		var back = element(by.css('[ng-click="goToAccess()"]'))
 		it("Type in O",function()
 			{
-				doc.setInput("O",1);
+				doc.setInput("O",0,model);
 			});
 		it("Back to Access Page [ng-click='goToAccess()']",function()
 		{
@@ -277,7 +279,7 @@ describe('university Test', function () {
 	{
 		it("Type in O",function()
 			{
-				doc.setInput("O",1);
+				doc.setInput("O",0,model);
 			});
 		it("Check list is right",function()
 		{
