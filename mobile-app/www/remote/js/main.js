@@ -41,14 +41,7 @@ if (LOCAL) {
 
  //if (mixpanel) mixpanel.track("App Launch");
 
- window._rAF = (function() {
-    return window.requestAnimationFrame ||
-           window.webkitRequestAnimationFrame ||
-           window.mozRequestAnimationFrame ||
-           function(callback) {
-             window.setTimeout(callback, 16);
-           };
-  })();
+var tracker = 'lo';
 
 
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
@@ -84,8 +77,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
 
   var openKeyboard = null;
-
-  uTracker.init('mp');
+  //var tracker = 'lo'
+  //uTracker.init(tracker);
+  uTracker.init(tracker);
 
 
 })

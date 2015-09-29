@@ -23,13 +23,13 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   DeviceService, uTracker, $q) {
 
   console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
-  uTracker.setUser('mp', 'sept28');
-  uTracker.sendDevice('mp');
+  uTracker.setUser(tracker, 'localyticsTest');
+  uTracker.sendDevice(tracker);
 
   document.addEventListener("pause", lastSearch, false);
   document.addEventListener("backbutton", lastSearch, false);
   function lastSearch() {
-    uTracker.track('mp', "Paused/Back", {
+    uTracker.track(tracker, "Paused/Back", {
       "$University_Input": $scope.universityInput.value
     });
   }
@@ -57,10 +57,10 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         var loadTime = time_s;
         appLoadTime = loadTime;
         console.log("appLoadTime: " + appLoadTime);
-        uTracker.track('mp', "App Launch", {
+        uTracker.track(tracker, "App Launch", {
           "$App_Load_Time": appLoadTime
         });
-        uTracker.set('mp', {
+        uTracker.set(tracker, {
           "$App_Load_Time": appLoadTime
         });
   }
@@ -94,11 +94,11 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         //var fpsValue = "meanFPS: " + meanFPS + "/ fpsArray: " + fpsArray.toString();
         //console.log("fpsValue: " + fpsValue);
 
-        uTracker.track('mp', "Entered Access Code", {
+        uTracker.track(tracker, "Entered Access Code", {
           "$Mean_FPS": meanFPS,
           "$FPS_Array": fpsArray.toString()
         });
-        uTracker.set('mp', {
+        uTracker.set(tracker, {
           "$Mean_FPS": meanFPS
         });
 
@@ -186,11 +186,11 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       var listRenderTime = listEndTime - appStartTime;
       console.log("listRenderTime: " + listRenderTime);
 
-      uTracker.track('mp', "University Selected", {
+      uTracker.track(tracker, "University Selected", {
           "$University": university.name,
           "$University_Input": $scope.universityInput.value
       });
-      uTracker.set('mp', {
+      uTracker.set(tracker, {
           "$University": university.name,
           "$Search_Response_Time": searchResponseTime,
           "$List_Render_Time": listRenderTime
@@ -203,11 +203,11 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       {
           return;
       }
-      uTracker.track('mp', "University Changed", {
+      uTracker.track(tracker, "University Changed", {
           "$University": university.name,
           "$University_Input": $scope.universityInput.value
       });
-      uTracker.set('mp', {
+      uTracker.set(tracker, {
           "$University": university.name,
       });
       $scope.loader.show();
