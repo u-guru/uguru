@@ -26,12 +26,13 @@ angular.module('uguru.util.controllers')
   '$ionicBackdrop',
   'UniversityMatcher',
   'AnimationService',
+  'uTracker',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
-  AnimationService) {
+  AnimationService, uTracker) {
 
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
@@ -162,6 +163,7 @@ angular.module('uguru.util.controllers')
             focusFirstInput: false,
     }).then(function(modal) {
         $scope.universityModal = modal;
+        uTracker.track('mp', 'University Modal');
     });
 
     // $scope.$on('modal.shown', function() {
@@ -174,6 +176,7 @@ angular.module('uguru.util.controllers')
     // });
 
     $scope.launchFAQModal = function() {
+      uTracker.track('mp', 'FAQ Modal');
       $scope.faqModal.show();
     }
 
@@ -198,6 +201,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.launchSupportModal = function() {
+      uTracker.track('mp', 'Support Modal');
       $scope.supportModal.show();
       $timeout(function() {
         initSupportChatEnterHandler()
@@ -206,10 +210,12 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.launchPrivacyModal = function() {
+      uTracker.track('mp', 'Privacy Modal');
       $scope.privacyModal.show();
     }
 
     $scope.launchSignupModal = function(loginMode) {
+      uTracker.track('mp', 'Signup Modal');
       if (loginMode)  {
         $scope.root.vars.loginMode = true;
       }

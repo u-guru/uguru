@@ -2,7 +2,6 @@ angular.module('uguru.student.controllers', [])
 
 //ALL student controllers
 .controller('HomeController', [
-
     //All imported packages go here
     '$scope',
     '$state',
@@ -83,6 +82,8 @@ angular.module('uguru.student.controllers', [])
 
         $scope.launchRequestModal = function(index, verb_index) {
 
+            uTracker.track('mp', 'Request Modal');
+
             $scope.loader.showAmbig();
 
             $scope.root.vars.last_verb_index_clicked = index;
@@ -124,6 +125,7 @@ angular.module('uguru.student.controllers', [])
         }
 
         $scope.goToBecomeGuru = function() {
+            uTracker('mp', 'Become Guru');
             $ionicViewSwitcher.nextDirection('forward');
             $state.go('^.become-guru');
         }
