@@ -50,9 +50,10 @@ function uTracker($localstorage, DeviceService) {
 					break;
 				case 'lo':
 					console.log("initializing localytics tracking: " + defaultTokens.lo);
-					localyticsSession = LocalyticsSession(token || defaultTokens.lo);
-					localyticsSession.open();
-					localyticsSession.upload();
+					ll('init', token || defaultTokens.lo);
+					// localyticsSession = LocalyticsSession(token || defaultTokens.lo);
+					// localyticsSession.open();
+					// localyticsSession.upload();
 					break;
 				case 'ga': break;
 				case 'hp': break;
@@ -72,7 +73,7 @@ function uTracker($localstorage, DeviceService) {
 					mixpanel.identify(userID);
 					break;
 				case 'lo': 
-					//localyticsSession.ll('setCustomerId', userID);
+					ll('setCustomerId', userID);
 					break;
 				case 'ga': break;
 				case 'hp': break;
@@ -98,7 +99,9 @@ function uTracker($localstorage, DeviceService) {
 						}
 					)
 					break;
-				case 'lo': break;
+				case 'lo': 
+					//ll('setCustomDimension', 0, )
+					break;
 				case 'ga': break;
 				case 'hp': break;
 				default: throw "Invalid tracker name. Refer to uTracker.js";
@@ -135,7 +138,8 @@ function uTracker($localstorage, DeviceService) {
 					mixpanel.track(event, data);
 					break;
 				case 'lo': 
-					localyticsSession.tagEvent(event, data);
+					ll('tagEvent', event, data);
+					//localyticsSession.tagEvent(event, data);
 					break;
 				case 'ga': break;
 				case 'hp': break;

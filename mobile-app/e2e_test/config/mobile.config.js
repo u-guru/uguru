@@ -10,6 +10,8 @@ exports.config = {
 //appium -U <uuid< --app <app_path>
 //0df70c3eacd748d8d92a882cbec7b26787fa0396
 //appium -U 0df70c3eacd748d8d92a882cbec7b26787fa0396
+
+//ios_webkit_debug_proxy -c 0df70c3eacd748d8d92a882cbec7b26787fa0396:27753 -d
           //ios settings
                  browserName: '',
                  'appium-version': '1.4.11',

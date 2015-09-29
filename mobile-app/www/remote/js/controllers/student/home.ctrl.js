@@ -17,10 +17,11 @@ angular.module('uguru.student.controllers', [])
     '$ionicViewSwitcher',
     '$ionicActionSheet',
     '$ionicPopover',
+    'uTracker',
     function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $ionicModal, $timeout, $q, University, $localstorage,
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
-        $ionicActionSheet, $ionicPopover) {
+        $ionicActionSheet, $ionicPopover, uTracker) {
 
 
         $ionicSideMenuDelegate.canDragContent(true);
