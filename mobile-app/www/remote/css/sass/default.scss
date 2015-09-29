@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 p {
-	line-height: 1.25;
+	line-height: 1.2!important;
 }
 input[type=search], input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=tel], input[type=color], textarea {
     height: initial;
@@ -370,11 +370,10 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 }
 
 .hide-opacity {
-    opacity:0;
+    @include opacity(0);
 }
-
 .show-opacity {
-	opacity:1;
+	@include opacity(1);
 }
 
 .absolute {
@@ -386,6 +385,7 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 [class*="fixed"] {
     position: fixed!important;
 }
+
 .top-0 {
 	top: 0!important;
 }
@@ -448,29 +448,25 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 }
 
 .flex-grow {
-	-webkit-flex-grow:1;
-	flex-grow:1;
+	-webkit-flex-grow: 1;
+	flex-grow: 1;
 }
-
 .flex-grow-pro {
-	-webkit-flex-grow:1;
-	flex-grow:1;
+	-webkit-flex-grow: 1;
+	flex-grow: 1;
 }
-
 .flex-align-self-center {
-	align-self:center;
-	-webkit-align-self:center;
+	align-self: center;
+	-webkit-align-self: center;
 }
 .flex-align-self-stretch {
-	align-self:stretch;
-	-webkit-align-self:stretch;
+	align-self: stretch;
+	-webkit-align-self: stretch;
 }
-
 .flex-column {
-	-webkit-flex-direction:column;
-	flex-direction:column;
+	-webkit-flex-direction: column;
+	flex-direction: column;
 }
-
 .flex-column-impt {
 	-webkit-flex-direction:column !important;
 	flex-direction:column !important;
@@ -1051,6 +1047,9 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 .bg-fb {
 	background: $facebook;
 }
+.bg-fb-light {
+	background: $facebook-light;
+}
 .bg-tw {
 	background: $twitter;
 }
@@ -1078,37 +1077,43 @@ header {
 		width: 100%;
 		z-index: 11;
 		a {
+			@include flex;
 			width: 50%;
+			height: 50px;
 			h1 {
 				width: 100%;
 				text-align: left;
-				padding: 15px 38px;
+				padding: 15px 0;
+			}
+			svg {
+				width: 28px;
+				height: 28px;
+				margin: 0 8px;
+				path {
+					fill: none;
+					stroke: white;
+					stroke-width: 7px;
+					stroke-linecap: round;
+					stroke-linejoin: round;
+				}
 			}
 		}
 		.header-nav-next {
 			h1 {
 				text-align: right;
 			}
-			svg {
-				left: auto;
-				right: 15px;
-			}
-		}
-		svg {
-			@include center-y;
-			left: 15px;
 		}
 	}
-	.header-close, .header-menu {
-		@include flex;
+	.header-nav-back, .header-down {
+		@include flex-left-center;
+	}
+	.header-close, .header-menu, .header-nav-next, .header-up {
 		@include flex-right-center;
+	}
+	.header-close, .header-menu, .header-down, .header-up {
 		width: 100%!important;
-		height: 50px;
 		svg {
-			@include reset-pos;
-			padding: 15px;
-			width: 50px;
-			height: 50px;
+			padding: 4px 0;
 		}
 	}
 	.header-close {
@@ -1136,7 +1141,7 @@ header {
 	}
 }
 
-.section-header {
+.section-header, .section-header-dark {
 	padding: 10px;
 	background: rgba(white,.05);
 	font-size: 14px;
@@ -1145,6 +1150,17 @@ header {
 	text-align: center;
 	text-transform: uppercase;
 	color: white;
+}
+
+.section-header-light {
+	padding: 10px;
+	background: $smoke;
+	font-size: 14px;
+	font-weight: 400;
+	letter-spacing: 2px;
+	text-align: center;
+	text-transform: uppercase;
+	color: $slate;
 }
 
 // BUTTONS & INPUT
@@ -1284,8 +1300,38 @@ button {
 	}
 }
 
+input[type=text] {
+	&.input-outline {
+		padding: 10px;
+		border: 0;
+		border: 1px solid rgba($charcoal, .1);
+		border-bottom-width: 5px;
+		border-radius: 0;
+		background: rgba($charcoal, .1);
+		color: white;
+		font-size: 24px;
+		font-weight: 300;
+	}
+	&.input-outline:active, &.input-outline:focus {
+		background: rgba(white, .1);
+		border-color: rgba(white, .2);
+	}
+}
+
+button.disabled {
+	@include opacity(.5);
+}
+
 .input-search-ghost {
 	position: relative;
+	.clear-search-input {
+		position: absolute;
+	    right: 0;
+	    top: 20px;
+	    right: 10px;
+	    color: rgba(255,255,255,0.7);
+	    padding: 0px;
+	}
 	input {
 		-webkit-appearance: none;
 		-moz-appearance: none;
@@ -1341,6 +1387,93 @@ button {
 	}
 }
 
+// DATE PICKER
+.picker {
+	font-size: 20px;
+	line-height: 30px;
+	position: relative;
+	&:before, &:after {
+		@include center-xy;
+		content: "";
+		display: block;
+		width: 100%;
+		height: 1px;
+		background: $smoke;
+	}
+	&:before {
+		margin-top: -15px;
+	}
+	&:after {
+		margin-top: 15px;
+	}
+	&.picker-date {
+		@include flex;
+		@include flex-center;
+		.picker-day {
+			width: 25%;
+			text-align: right;
+			padding-right: 2.5%;
+		}
+		.picker-at {
+			width: 15%;
+		}
+		.picker-colon {
+			width: 1%;
+			li {
+				@include flex;
+				@include flex-center;
+				&.active {
+					padding-bottom: 3px;
+				}
+			}
+		}
+		.picker-ampm, .picker-hours, .picker-minutes {
+			width: 10%;
+		}
+	}
+	[class*="picker-"] {
+		@include flex;
+		@include flex-center;
+		@include flex-wrap;
+		text-align: center;
+		height: 150px;
+		overflow: auto;
+		li {
+			width: 100%;
+			height: 30px;
+		}
+		.active {
+			font-weight: 600;
+		}
+		.inactive {
+			@include opacity(0);
+		}
+		.inactive-1 {
+			@include opacity(.45);
+			font-weight: 400;
+		}
+		.inactive-2 {
+			@include opacity(.3);
+		}
+		.inactive-3 {
+			@include opacity(.15);
+		}
+		.inactive-4 {
+			@include opacity(.05);
+		}
+	}
+	.picker-time {
+		width: 100%;
+		&:after {
+			@include center-xy;
+			content: "hours";
+			padding-left: 75px;
+			font-weight: 600;
+		}
+	}
+}
+
+// CHECKLISTS
 [class*="checklist"] {
 	li {
 		> span {
@@ -1381,7 +1514,8 @@ button {
 				width: 60px;
 				height: 60px;
 			    vertical-align:middle;
-			    background: $smoke center center no-repeat;
+			    background: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgPHBhdGggZD0iTTE0LDU0LjIzNTI5NDEgTDM1LjE3NjQ3MDYsNzUuNDExNzY0NyBMODYsMjQuNTg4MjM1MyIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSI+PC9wYXRoPjwvc3ZnPg==) no-repeat center center / 40px 40px;
+			    background-color: $smoke;
 			    cursor: pointer;
 			}
 			input:checked + span {
@@ -1472,6 +1606,7 @@ button {
 	}
 }
 
+// HIGHLIGHT CHECKLIST (used for courses)
 [class*="highlight"] {
 	@include flex;
 	@include flex-wrap;
@@ -1570,8 +1705,30 @@ button {
 	}
 }
 
+// BREADCRUMBS
+.breadcrumbs {
+	ul {
+		@include flex;
+		@include flex-center;
+		margin: 0 auto;
+		li {
+			padding: 3px;
+			a {
+				@include round;
+				display: block;
+				width: 14px;
+				height: 14px;
+				border: 2px solid white;
+				&.active {
+					background: white;
+				}
+			}
+		}
+	}
+}
+
 // PROGRESS BARS
-progress, [class*="progress"]:not(.progress-circle) {
+progress, [class*="progress"] {
 	@include transition(.15s ease-in-out);
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -1927,7 +2084,9 @@ input[type=range]:focus::-ms-fill-upper {
 			color: white;
 		}
 		#{$links} {
-			background: rgba(white,.2);
+			&.active, &.activated {
+				background: rgba(white,.2);
+			}
 		}
 	}
 }
@@ -2017,17 +2176,128 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 }
 
+// LOADER SVG
+.loader {
+	fill: none;
+	stroke: white;
+	stroke-width: 8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	div {
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+}
 
-.section-header {
-	background: rgba(white,.05);
-	color: white;
-	padding: 10px;
-	font-size: 14px;
-	font-weight: 400;
-	letter-spacing: 2px;
-	text-align: center;
-	text-transform: uppercase;
-	color: white;
+#checkmark line {
+	-webkit-animation-delay: 0.25s;
+	-moz-animation-delay: 0.25s;
+	-ms-animation-delay: 0.25s;
+	-o-animation-delay: 0.25s;
+	animation-delay: 0.25s;
+	-webkit-animation-duration: 0.75s;
+	-moz-animation-duration: 0.75s;
+	-ms-animation-duration: 0.75s;
+	-o-animation-duration: 0.75s;
+	animation-duration: 0.75s;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-iteration-count: 1;
+	-ms-animation-iteration-count: 1;
+	-o-animation-iteration-count: 1;
+	animation-iteration-count: 1;
+	&:first-child {
+		opacity:1;
+
+		-webkit-animation-name: checkmark-one;
+		-moz-animation-name: checkmark-one;
+		-ms-animation-name: checkmark-one;
+		-o-animation-name: checkmark-one;
+		animation-name: checkmark-one;
+
+		-webkit-animation-fill-mode: forwards;
+		-moz-animation-fill-mode: forwards;
+		-ms-animation-fill-mode: forwards;
+		-o-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+		stroke-dasharray: 20.8, 20.8;
+	}
+	&:last-child {
+		opacity:1;
+
+		-webkit-animation-name: checkmark-two;
+		-moz-animation-name: checkmark-two;
+		-ms-animation-name: checkmark-two;
+		-o-animation-name: checkmark-two;
+		animation-name: checkmark-two;
+
+		-webkit-animation-fill-mode: forwards;
+		-moz-animation-fill-mode: forwards;
+		-ms-animation-fill-mode: forwards;
+		-o-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+		stroke-dasharray: 49.91, 49.91;
+	}
+}
+
+@-webkit-keyframes checkmark-one {
+	0% {opacity:0};
+	100% {opacity:1};
+	from { stroke-dashoffset: 20.8;}
+	to { stroke-dashoffset: 0; }
+}
+@-webkit-keyframes checkmark-two {
+	0% {opacity:0};
+	100% {opacity:1};
+	from { stroke-dashoffset: 49.91; }
+	to { stroke-dashoffset: 0; }
+}
+@-moz-keyframes checkmark-one {
+	0% {opacity:0};
+	100% {opacity:1};
+	from { stroke-dashoffset: 20.8; }
+	to { stroke-dashoffset: 0; }
+}
+@-moz-keyframes checkmark-two {
+	0% {opacity:0};
+	100% {opacity:1};
+	from { stroke-dashoffset: 49.91; }
+	to { stroke-dashoffset: 0; }
+}
+@-ms-keyframes checkmark-one {
+	0% {opacity:0};
+	100% {opacity:1};
+	from { stroke-dashoffset: 20.8; }
+	to { stroke-dashoffset: 0; }
+}
+@-ms-keyframes checkmark-two {
+	0% {opacity:0};
+	100% {opacity:1};
+	from { stroke-dashoffset: 49.91; }
+	to { stroke-dashoffset: 0; }
+}
+@-o-keyframes checkmark-one {
+	0% {opacity:0};
+	100% {opacity:1};
+	from { stroke-dashoffset: 20.8; }
+	to { stroke-dashoffset: 0; }
+}
+@-o-keyframes checkmark-two {
+	0% {opacity:0};
+	100% {opacity:1};
+	from { stroke-dashoffset: 49.91; }
+	to { stroke-dashoffset: 0; }
+}
+@keyframes checkmark-one {
+	0% {opacity:0};
+	100% {opacity:1};
+	from { stroke-dashoffset: 20.8; }
+	to { stroke-dashoffset: 0; }
+}
+@keyframes checkmark-two {
+	0% {opacity:0};
+	100% {opacity:1};
+	from { stroke-dashoffset: 49.91; }
+	to { stroke-dashoffset: 0; }
 }
 
 // .chart {

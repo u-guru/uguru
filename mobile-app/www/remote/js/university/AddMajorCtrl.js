@@ -10,10 +10,17 @@ angular.module('uguru.util.controllers')
   'Major',
   '$ionicSideMenuDelegate',
   'Utilities',
+  '$localstorage',
+  'uTracker',
   function($scope, $state, $timeout,
-  $q, Major, $ionicSideMenuDelegate, Utilities) {
+  $q, Major, $ionicSideMenuDelegate, Utilities,
+  $localstorage, uTracker) {
 
-    $scope.search_text = '';
+
+
+    if (!$scope.user.majors) {
+      $scope.user.majors = [];
+    }
 
     $scope.backToStudentEditProfile = function(is_saved) {
 
@@ -57,12 +64,19 @@ angular.module('uguru.util.controllers')
         return;
       }
 
-      var removedMajor = $scope.user.majors.splice(index,index+1);
+      var removedMajor = $scope.user.majors.splice(index,1);
       $scope.majors.push(removedMajor);
 
       var confirmCallback = function() {
-        $scope.success.show(0, 800, major.name + ' successfully removed');
+        uTracker.track('mp', 'Major Removed', {
+          '$Major': major.name
+        });
+        $scope.success.show(0, 2000, major.name + ' successfully removed');
       }
+
+
+      $localstorage.setObject('user', $scope.user);
+
 
       $timeout(function() {
         $scope.user.updateAttr('remove_major', $scope.user, major, confirmCallback, $scope);
@@ -70,33 +84,45 @@ angular.module('uguru.util.controllers')
 
     }
 
+    // t == 2 --> update local regardless of server
 
-    $scope.majorSelected = function(major, $index) {
 
-      $scope.loader.show();
+    $scope.majorSelected = function(major, index) {
+
+
+
+      $timeout(function() {
+        $scope.loader.show();
+      }, 250)
 
       //t == 0
       $timeout(function() {
-        $scope.majors.splice($index, 1);
+        $scope.majors.splice(index, index + 1);
       }, 250)
 
 
-      //update the server
-      $scope.search_text = '';
-      $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
 
       // t == 1
       $timeout(function() {
         $scope.loader.hide();
-      }, 500)
+        $scope.search_text = '';
+      }, 1250);
 
-      // t == 2 --> update local regardless of server
-      if (!$scope.user.majors) {
-          $scope.user.majors = [];
+      if ($scope.majorInput && $scope.majorInput.value) {
+        $scope.majorInput.value = '';
       }
+
       $timeout(function() {
         $scope.user.majors.push(major);
-      }, 500)
+        $localstorage.setObject('user', $scope.user);
+      }, 750)
+
+      //update the server
+      uTracker.track('mp', 'Major Added', {
+        '$Major': major.name
+      });
+
+      $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
 
     }
 
@@ -125,15 +151,19 @@ angular.module('uguru.util.controllers')
       }
     }
 
+
+
+
     $scope.$on('$ionicView.enter', function() {
+
 
       $timeout(function() {
 
+        $scope.majorInput = document.getElementById('major-input');
         //add event listener
-        var majorInput = document.getElementById('major-input');
-        
+
         majorInput.addEventListener("keyup", function() {
-        
+
         }, 500);
 
 
@@ -147,6 +177,7 @@ angular.module('uguru.util.controllers')
         $scope.limit += 10;
       }
     }
+
 
     $scope.majors = Major.getGeneral();
     $scope.removeUserMajorsFromMaster();

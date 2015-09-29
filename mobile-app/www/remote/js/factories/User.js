@@ -1417,8 +1417,13 @@ angular.module('uguru.user', [])
 
         },
         updateAttrUser: function(arg, user, obj, success_callback, $scope, failure_callback) {
+
             if (!user.id && arg !== 'forgot_password') {
               console.log('user has not created an account yet.')
+
+              //save to local
+              $localstorage.setObject('user', user);
+              console.log('saved user to local storage');
 
               if (success_callback) {
                 success_callback();

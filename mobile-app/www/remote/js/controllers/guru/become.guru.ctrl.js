@@ -16,15 +16,17 @@ angular.module('uguru.guru.controllers')
   '$ionicViewSwitcher',
   '$window',
   'University',
+  'uTracker',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
-    $ionicViewSwitcher, $window, University) {
+    $ionicViewSwitcher, $window, University, uTracker) {
 
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
     $scope.majors = $scope.static.majors;
     $scope.courses = $scope.static.courses;
+    $scope.search_text = '';
 
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
       guruCategoryCourses = [];
@@ -44,8 +46,33 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.goBackToStudentHome = function() {
+      uTracker.track('mp', 'Student Home');
       $ionicViewSwitcher.nextDirection('back');
       $state.go('^.home');
+    }
+
+    $scope.removeUserGuruCoursesFromMasterCourses = function() {
+
+      var guruIndicesToSlice = [];
+      if ($scope.courses && $scope.user.guru_courses) {
+        for (var i = 0; i < $scope.courses.length; i ++) {
+          var indexCourse = $scope.courses[i];
+          for (var j = 0; j < $scope.user.guru_courses.length; j++) {
+            guru_course  = $scope.user.guru_courses[j];
+            if (index_course.id === guru_course.id)
+              guruIndicesToSlice.push(i);
+          }
+        }
+        // tricky plz ask;
+        var offset = 0;
+        for (var i = 0; i < guruIndicesToSlice.length; i++) {
+          $scope.guru_courses.splice(i - offset, i - offset + 1);
+          offset++;
+        }
+
+      }
+
+
     }
 
 
@@ -75,28 +102,47 @@ angular.module('uguru.guru.controllers')
         );
       }
 
+
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;
+
       if (index === 0) {
+        uTracker.track('mp', 'Become Guru: Majors');
         console.log('grabbing courses from server')
         $scope.getCoursesFromServer();
         $ionicSideMenuDelegate.canDragContent(false);
       }
+
+      if (index === 1) {
+        uTracker.track('mp', 'Become Guru: Courses');
+        $scope.guruCoursesInput = document.getElementById('course-input-1');
+        $scope.removeUserGuruCoursesFromMasterCourses()
+      }
+
       if (index === 2) {
+        uTracker.track('mp', 'Become Guru: Skills');
         $ionicSideMenuDelegate.canDragContent(true);
         $scope.static.categories[0].skills = mapGuruCoursesToCategoriesObj($scope.user.guru_courses);
         $scope.static.categories[0].active_skills_count = $scope.static.categories[0].skills.length;
         console.log('processing this shit', $scope.static.categories[0]);
-      } else {
+      }
+
+      if (index === 3) {
+        uTracker.track('mp', 'Become Guru: Photo');
+        $ionicSideMenuDelegate.canDragContent(true);
+      }
+       else {
         $ionicSideMenuDelegate.canDragContent(true);
       }
     }
 
     $scope.goToUniversity = function() {
+      uTracker.track('mp', 'University List');
       $state.go('^.university');
     }
 
     $scope.goToGuruMode = function() {
+      uTracker.track('mp', 'Guru Mode');
       $scope.root.vars.guru_mode = true;
       $state.go('^.guru');
     }
@@ -106,31 +152,7 @@ angular.module('uguru.guru.controllers')
 
     //
 
-    //handles status bar for light / dark screens
-    $ionicPlatform.ready(function() {
 
-        $scope.turnStatusBarWhite = function() {
-
-          if (window.StatusBar) {
-
-            StatusBar.styleLightContent();
-            StatusBar.overlaysWebView(true);
-          }
-
-        }
-
-        $scope.turnStatusBarBlack = function() {
-          if (window.StatusBar) {
-                      // console.log('Extra #1. Styling iOS status bar to black \n\n');
-
-            StatusBar.styleDefault();
-            StatusBar.overlaysWebView(true);
-          }
-        }
-
-        $scope.turnStatusBarWhite();
-
-    });
 
     var injectClassIntoElement = function(e) {
       element = e.target
@@ -180,7 +202,11 @@ angular.module('uguru.guru.controllers')
     }
 
 
+    $scope.$on('$ionicView.afterEnter', function() {
 
+      $scope.majorInput = document.getElementById('major-input-1');
+
+    })
 
 
   }

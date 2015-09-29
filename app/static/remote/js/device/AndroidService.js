@@ -13,7 +13,7 @@ angular
 	AndroidService
 	]);
 
-function AndroidService($rootScope, $state, $localstorage, $cordovaPush, 
+function AndroidService($rootScope, $state, $localstorage, $cordovaPush,
   Geolocation, University, Major, Skill, Profession) {
 
 	return {
@@ -41,9 +41,14 @@ function AndroidService($rootScope, $state, $localstorage, $cordovaPush,
             'push_notifications_enabled': true
           }
           $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
-
         }
       });
+
+      if(cordova.plugins.Keyboard) {
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        cordova.plugins.Keyboard.disableScroll(true);
+      }
+
       //grab geolocation super early for android devices
       // UNCOMMENT THIS
       // $rootScope.on_app_open_retrieve_objects($rootScope, $state, $localstorage, University, null, Geolocation,

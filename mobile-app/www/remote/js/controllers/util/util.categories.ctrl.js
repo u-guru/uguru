@@ -13,10 +13,10 @@ angular.module('uguru.util.controllers')
   '$ionicTabsDelegate',
   '$ionicSideMenuDelegate',
   '$ionicGesture',
-
+  'uTracker',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
-    $ionicSideMenuDelegate, $ionicGesture) {
+    $ionicSideMenuDelegate, $ionicGesture, uTracker) {
 
 
     if (!img_base || !img_base.length) {
@@ -47,6 +47,9 @@ angular.module('uguru.util.controllers')
         updateMainBackground(category.bg_url);  
       }
 
+      uTracker.track('mp', 'Category Modal', {
+        '$Category': category.name
+      });
       $scope.active_category.active = true;
       $scope.categorySkillsModal.show();
     }

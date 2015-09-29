@@ -88,8 +88,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         var initGuruRankProgress = function(selector) {
           var circle = new ProgressBar.Circle(selector, {
               color: "rgba(255,255,255,1)",
-              strokeWidth: 5,
-              trailWidth: 5,
+              strokeWidth: 8,
+              trailWidth: 8,
               trailColor:"rgba(255,255,255,0.3)",
               duration: 1000,
               text: {
@@ -134,8 +134,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
           var line = new ProgressBar.Line(selector, {
               color: "rgba(255,255,255,1)",
-              strokeWidth: 8,
-              trailWidth: 8,
+              strokeWidth: 10,
+              trailWidth: 10,
               trailColor:"rgba(255,255,255,0.3)",
               duration: 1000,
               text: {

@@ -14,14 +14,15 @@ angular.module('uguru.util.controllers')
   '$ionicSideMenuDelegate',
   'University',
   'Utilities',
+  'uTracker',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
-    $ionicSideMenuDelegate, University, Utilities) {
+    $ionicSideMenuDelegate, University, Utilities, uTracker) {
 
     $scope.courses = [];
 
     $scope.course_search_text = '';
-
+    $scope.alwaysTrue = true;
     $scope.shouldShowDelete = false;
     $scope.listCanSwipe = true;
     $ionicSideMenuDelegate.canDragContent(false);
@@ -79,6 +80,8 @@ angular.module('uguru.util.controllers')
       }
     }
 
+
+
     $scope.query = function(input) {
       $scope.courses = Utilities.nickMatcher(input, $scope.originalCourses);
     }
@@ -88,13 +91,7 @@ angular.module('uguru.util.controllers')
       console.log('show delete should be here');
     }
 
-    $scope.$on('$ionicView.beforeEnter', function() {
-       $ionicSideMenuDelegate.canDragContent(false);
-    });
 
-    $scope.$on('$ionicView.leave', function() {
-      $ionicSideMenuDelegate.canDragContent(true);
-    });
 
     $scope.updateProgress = function(input_text) {
 
@@ -110,21 +107,30 @@ angular.module('uguru.util.controllers')
 
     $scope.removeGuruCourseAndUpdate = function(course, index) {
 
-      if ($state.current.name === 'root.become-guru' && !confirm('Remove ' + course.name + '?')) {
+      if (!confirm('Remove ' + course.name + '?')) {
         return;
       }
 
 
       var removedCourse = $scope.user.guru_courses.splice(index, 1);
-      $scope.courses.push(removeCourse)
+      $scope.courses.push(removedCourse);
+
 
       var confirmCallback = function() {
-        $scope.loader.hide();
-        $scope.success.show(0, 1000, course.name + ' successfully removed');
+        $scope.success.show(0, 2000, course.name + ' successfully removed');
       }
-      $scope.loader.show();
 
-      $scope.user.updateAttr('remove_guru_course', $scope.user, course, confirmCallback, $scope);
+      //update local user object
+      $localstorage.setObject('user', $scope.user);
+
+      //update server user object
+      $timeout(function() {
+        $scope.user.updateAttr('remove_guru_course', $scope.user, course, confirmCallback, $scope);
+      }, 200);
+
+      uTracker.track('mp', 'Course Guru Removed', {
+        '$Course': course.name
+      });
     }
 
     $scope.addSelectedGuruSkill = function(skill, input_text, $index) {
@@ -158,13 +164,11 @@ angular.module('uguru.util.controllers')
 
       $scope.user.student_courses.push(course);
 
-      if ($scope.user.id) {
-        //adds to database for user
-        $scope.user.updateAttr('add_student_course', $scope.user, course, null, $scope);
-      } else {
-        //add to local cache so we can loop through it when it is time to update aduser
-        $scope.root.vars.remote_cache.push({'add_student_course': course});
-      }
+      $localstorage.setObject('user', $scope.user);
+
+      $scope.user.updateAttr('add_student_course', $scope.user, course, null, $scope);
+
+      $scope.root.vars.remote_cache.push({'add_student_course': course});
 
     }
 
@@ -196,6 +200,7 @@ angular.module('uguru.util.controllers')
       $timeout(function() {
 
           $scope.user.guru_courses.push(course);
+          $localstorage.setObject('user', $scope.user);
           //only if user has signed in
             if ($scope.user.id) {
               //adds to database for user
@@ -204,8 +209,9 @@ angular.module('uguru.util.controllers')
 
           }, 750)
 
-        // TODO WHAT IF THEY HAVE NO INTERNET?? Save to dictionary and continually try to update server
-        // A server cache ..
+      uTracker.track('mp', 'Course Guru Added', {
+        '$Course': course.name
+      });
 
     }
 

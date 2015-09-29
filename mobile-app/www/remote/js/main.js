@@ -1,4 +1,5 @@
 
+
 var LOCAL = _local; //local to the 8100 codebasebirbirs
 var FIRST_PAGE='^.' + _startpage;
 //var FIRST_PAGE='^.home';
@@ -7,7 +8,7 @@ console.log("_local: " + _local);
 console.log("_startpage: " + _startpage);
 console.log("_ipaddress: " + _ipaddress);
 
-img_base = '';
+var img_base = '';
 
 
 // isAdmin = true;

@@ -19,7 +19,7 @@ function uTracker($localstorage, DeviceService) {
 	// or even event properties do not count towards the data limit.  You can send up to
 	// 255 properties per event.
 
-	var dataLimit = $localstorage.get("dataLimit", 0);
+	//var dataLimit = $localstorage.get("dataLimit", 0);
 
 	var defaultTokens = {
 		mp: "cfe34825db9361e6c1d1a16a2b269b07"
@@ -31,7 +31,8 @@ function uTracker($localstorage, DeviceService) {
 		set: set,
 		track: track,
 		push: push,
-		get: get
+		get: get,
+		sendDevice: sendDevice
 	};
 
 	// This sets the API token for the analytics provider
@@ -40,6 +41,7 @@ function uTracker($localstorage, DeviceService) {
 		if(DeviceService.isMobile()) {
 			switch(tracker) {
 				case 'mp':
+					console.log("initializing mixpanel tracking: " + defaultTokens.mp);
 					mixpanel = window.mixpanel || null;
 					mixpanel.init(token || defaultTokens.mp);
 					break;
@@ -57,6 +59,8 @@ function uTracker($localstorage, DeviceService) {
 		if(DeviceService.isMobile()) {
 			switch(tracker) {
 				case 'mp':
+					//DeviceService.getUUID();
+					//var mixpanelID = deviceUUID.substring(0, 8);
 					mixpanel.identify(userID);
 					break;
 
@@ -65,6 +69,30 @@ function uTracker($localstorage, DeviceService) {
 				default: throw "Invalid tracker name. Refer to uTracker.js";
 			}
 		} else return;
+	}
+
+	function sendDevice(tracker) {
+		if(DeviceService.isMobile()) {
+			switch(tracker) {
+				case 'mp':
+					var deviceUUID = DeviceService.getUUID;
+					if (deviceUUID === null || deviceUUID === undefined) deviceUUID = 'undefined';
+					mixpanel.people.set(
+						{
+						    "$last_login": new Date(),
+						    '$Device_UUID': DeviceService.getUUID(),
+						    '$Device_Model': DeviceService.getModel(),
+						    '$Device_Platform': DeviceService.getPlatform(),
+						    '$Device_Version': DeviceService.getVersion(),
+						    '$Network_State': navigator.connection.type
+						}
+					)
+					break;
+				case 'ga': break;
+				case 'hp': break;
+				default: throw "Invalid tracker name. Refer to uTracker.js";
+			}
+		}
 	}
 
 	// This sets the user-level attributes

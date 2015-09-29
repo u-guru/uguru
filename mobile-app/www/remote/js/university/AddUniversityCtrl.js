@@ -1,5 +1,4 @@
 angular.module('uguru.util.controllers', ['sharedServices'])
-
 .controller('AddUniversityCtrl', [
 
   //All imported packages go here
@@ -15,7 +14,6 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'UniversityMatcher',
   '$ionicSlideBoxDelegate',
   'DeviceService',
-  '$ionicModal',
   'uTracker',
   '$q',
   'UniversityWorker',
@@ -23,45 +21,29 @@ angular.module('uguru.util.controllers', ['sharedServices'])
 
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher, $ionicSlideBoxDelegate,
-  DeviceService, $ionicModal, uTracker,$q, UniversityWorker) {
+  DeviceService, uTracker, $q, UniversityWorker) {
 
+  console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
+  uTracker.setUser('mp', 'sept28');
+  uTracker.sendDevice('mp');
 
-  //var networkState = navigator.connection.type;
-  var deviceUUID = DeviceService.getUUID();
-  var deviceModel =  DeviceService.getModel();
-  var devicePlatform =  DeviceService.getPlatform();
-  var deviceVersion = DeviceService.getVersion();
-  console.log("deviceUUID: " + deviceUUID);
-  if( deviceUUID===null || deviceUUID===undefined) deviceUUID = 'undefined';
-  var mixpanelID = deviceUUID.substring(0,8);
-  console.log("mixpanelID: " + mixpanelID);
-
-  //TODO: current implementation of deviceready() isn't optimal. isn't always ready to provide device info
-
-  uTracker.setUser('mp', 'uTrackerTester');
-  
   document.addEventListener("pause", lastSearch, false);
   document.addEventListener("backbutton", lastSearch, false);
   function lastSearch() {
-
-    //uTracker.track('mp')
-
     uTracker.track('mp', "Paused/Back", {
-      "$Search_Input": $scope.input.search_text
+      "$University_Input": $scope.universityInput.value
     });
   }
 
-  uTracker.set('mp',{
-      "$email": "testphone@gmail.com",
+  $scope.universities = University.getSorted();
+  $scope.isLocationActive = false;
+  $scope.isLocationGiven = null; // null if getGPS not called, false if not given, true if lat/lon
 
-      "$created": "2015-09-22 16:53:54",
-      "$last_login": new Date(),
-      '$Device_UUID': deviceUUID,
-      '$Device_Model': deviceModel,
-      '$Device_Platform': devicePlatform,
-      '$Device_Version': deviceVersion,
-      //'$network_state': networkState,
-  });
+  $scope.universityInput = {
+    value: ''
+  }
+
+
 
 
   var appLoadTime;
@@ -89,51 +71,50 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   var stopLoop = false;
   var stats = new Stats();
 
-    $scope.beforeEnter = function() {
-      stopLoop = false;
-      var fpsArray = [];
-      function update() {
-        stats.begin();
-        stats.end();
-        fpsArray.push(stats.getFPS());
-        //console.log("FPS: " + stats.getFPS());
-        if(!stopLoop) {
-          window._rAF(update);
-        } else {
-          var total = 0;
-          for(var i=0; i<fpsArray.length; i++) {
-            total += fpsArray[i];
-          }
-          //we are disregarding the first value since it's most likely 0 due to initial transition
-          fpsArray.shift();
-          var meanFPS = Math.round(total / (fpsArray.length));
-          //console.log("meanFPS: " + meanFPS);
-          //console.log("fpsArray: " + fpsArray);
-          //var fpsValue = "meanFPS: " + meanFPS + "/ fpsArray: " + fpsArray.toString();
-          //console.log("fpsValue: " + fpsValue);
+  $scope.beforeEnter = function() {
+    stopLoop = false;
+    var fpsArray = [];
 
-          uTracker.track('mp', "Entered Access Code", {
-              "$Mean_FPS": meanFPS,
-              "$FPS_Array": fpsArray.toString()
-          });
-          uTracker.set('mp', {
-            "$Mean_FPS": meanFPS
-          });
-
+    function update() {
+      stats.begin();
+      stats.end();
+      fpsArray.push(stats.getFPS());
+      console.log("FPS: " + stats.getFPS());
+      if (!stopLoop) {
+        Utilities.rAF(update);
+      } else {
+        var total = 0;
+        for (var i = 0; i < fpsArray.length; i++) {
+          total += fpsArray[i];
         }
+        //we are disregarding the first value since it's most likely 0 due to initial transition
+        fpsArray.shift();
+        var meanFPS = Math.round(total / (fpsArray.length));
+        console.log("meanFPS: " + meanFPS);
+        console.log("fpsArray: " + fpsArray);
+        //var fpsValue = "meanFPS: " + meanFPS + "/ fpsArray: " + fpsArray.toString();
+        //console.log("fpsValue: " + fpsValue);
+
+        uTracker.track('mp', "Entered Access Code", {
+          "$Mean_FPS": meanFPS,
+          "$FPS_Array": fpsArray.toString()
+        });
+        uTracker.set('mp', {
+          "$Mean_FPS": meanFPS
+        });
+
       }
 
-      window._rAF(update); 
+    }
+    Utilities.rAF(update);
+  };
 
-    };
 
-    $scope.afterEnter = function() {
-      stopLoop = true;
-      //$timeout(function() {stopLoop = true}, 300);
-      //console.log("called afterEnter");
-    };
-
-    console.log("passed deviceInfo: " + deviceInfo);
+  $scope.afterEnter = function() {
+    stopLoop = true;
+    //$timeout(function() {stopLoop = true}, 300);
+    //console.log("called afterEnter");
+  };
 
     var listResponseTime = 0;
     var active = true;
@@ -141,12 +122,12 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     $scope.$on('uniListFinished', function() {
 
       if(active) {
-        if($scope.input.search_text.length > 0) {
+        if($scope.universityInput.value.length > 0) {
           listResponseTime = Date.now();
           console.log("setting listResponseTime: " + listResponseTime);
           active = false;
         }
-        else if($scope.input.search_text.length === 0) {
+        else if($scope.universityInput.value.length === 0) {
           listEndTime = Date.now();
           console.log("listEndTime: " + listEndTime);
         }
@@ -154,95 +135,61 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     });
 
     var measureFPS = true;
-    var startTime = 0;
-    $scope.measureResponse = function() {
+    var inputStartTime = 0;
+    $scope.query = function() {
       if(measureFPS) {
         measureFPS = false;
-        startTime = Date.now();
-        console.log("setting startTime: " + startTime);
-
-        $scope.universities = UniversityMatcher.cachedMatch($scope.input.search_text);
-
+        inputStartTime = Date.now();
+        $scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
+      }
+      else if(!measureFPS) {
+        if($scope.universityInput.value.length===0){
+          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 500);          
+        }
+        else {      
+          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 16);        
+        }
       }
     }
-
-    var queryTimeout = false;
-    var emptyTimeout = false;
     
-    $scope.query = function(input, keyCode) {
-      console.log("event: " + keyCode);
-      if(!measureFPS) {
-
-        if(input.length===0){
-          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.input.search_text)}, 500);          
-        }
-        else
-
-        if(!queryTimeout) {
-          //queryTimeout = true;
-
-          // return UniversityWorker.startWorker(input).then(function(results) {
-          //   $scope.universities = results;
-          // });
-          
-          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.input.search_text)}, 16);
-        
-          //$timeout(function() {queryTimeout = false;}, 600);
-        }
-        // else if(input.length === 0) {
-        //   if(!emptyTimeout) {
-        //     emptyTimeout = true;
-        //     $scope.universities = UniversityMatcher.cachedMatch(input);
-        //     $timeout(function() {emptyTimeout = false;}, 600);
-        //   }
-        // }
-
-      }
-
-    }
-
-    $scope.input = {
-      search_text: ''
-    }
-    
-    $scope.universities = University.getTargetted();
-    sortByRank(University.getTargetted());
     $scope.limit = 10;
     $scope.increaseLimit = function() {
       if($scope.limit < $scope.universities.length) {
         $scope.limit += 10;
-        console.log('limit increased is being called', $scope.limit, $scope.universities.length);
+        //console.log('limit increased is being called', $scope.limit, $scope.universities.length);
       }
     }
 
-    //back button
-    $scope.goToAccess = function() {
-      $scope.input.search_text = '';
-      $ionicSlideBoxDelegate.previous();
+  //back button
+  $scope.goToAccess = function() {
+    $scope.universityInput.value = '';
+    $ionicSlideBoxDelegate.previous();
+  }
+
+  $scope.resetUniversities = function() {
+    $scope.universityInput.value = '';
+    if ($scope.isLocationActive) {
+      var userLat = $scope.user.last_position.latitude;
+      var userLong = $scope.user.last_position.longitude;
+      console.log("lat and long: " + userLat + ", " + userLong);
+      $scope.universities = Geolocation.sortByLocation(userLat, userLong, University.getTargetted());
+    } else {
+      $scope.universities = University.getSorted();
     }
+  };
 
-    function sortByRank(list) {
-      function compareRank(a, b) {
-        if (a.rank < b.rank)
-          return -1;
-        if (a.rank > b.rank)
-          return 1;
-        return 0;
-      }
-      return list.sort(compareRank);
-    }
 
-    $scope.universitySelected = function(university, $event) {
+  $scope.universitySelected = function(university) {
 
-      var searchResponseTime = listResponseTime - startTime;
+      var searchResponseTime = listResponseTime - inputStartTime;
       console.log("searchResponseTime: " + searchResponseTime);
 
       var listRenderTime = listEndTime - appStartTime;
       console.log("listRenderTime: " + listRenderTime);
 
-      uTracker.track('mp', "Selected University", {
+      uTracker.track('mp', "University Selected", {
           "$University": university.name,
-          "$Search_Input": $scope.input.search_text
+          "$University_Input": $scope.universityInput.value
       });
       uTracker.set('mp', {
           "$University": university.name,
@@ -257,9 +204,9 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       {
           return;
       }
-      uTracker.track('mp', "Changed University", {
+      uTracker.track('mp', "University Changed", {
           "$University": university.name,
-          "$Search_Input": $scope.input.search_text
+          "$University_Input": $scope.universityInput.value
       });
       uTracker.set('mp', {
           "$University": university.name,
@@ -267,7 +214,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       $scope.loader.show();
       $scope.user.university_id = university.id;
       $scope.user.university = university;
-      $scope.input.search_text = '';
+      $scope.universityInput.value = '';
 
       //update user to locat storage
       $scope.rootUser.updateLocal($scope.user);
@@ -276,75 +223,84 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         'university_id': $scope.user.university_id
       };
 
-      //save university
-      var postUniversitySelectedCallback = function() {
-          $timeout(function() {
-            $scope.loader.hide();
-            $ionicViewSwitcher.nextDirection('forward');
-            UniversityMatcher.clearCache();
-              $state.go('^.home')
-          }, 1000);
-      }
+    $scope.loader.show();
+    $scope.user.university_id = university.id;
+    $scope.user.university = university;
+    $scope.universityInput.value = '';
 
-      $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
+    //update user to locat storage
+    $scope.rootUser.updateLocal($scope.user);
 
+    var payload = {
+      'university_id': $scope.user.university_id
     };
 
-
-    var locationMode = Settings.get('locationMode');
-
-    $scope.location = {
-      mode: locationMode
+    //save university
+    var postUniversitySelectedCallback = function() {
+      $timeout(function() {
+        $scope.loader.hide();
+        $ionicViewSwitcher.nextDirection('forward');
+        UniversityMatcher.clearCache();
+        $state.go('^.home')
+      }, 1000);
     }
 
-    var isTimeout = false;
-    $scope.getGPSCoords = function() {
-      if(!isTimeout) {
-        isTimeout = true;
-        getGPS();
-        $timeout(function() { isTimeout = false;}, 4000);
-      } else {
-        console.log("still waiting for $timeout to clear, please try again shortly");
-      }
+    $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
+
+  };
+
+
+  var isTimeout = false;
+  $scope.toggleLocation = function() {
+    // set isLocationActive to true while calculating so user gets feedback that its been receivede
+
+    if (!isTimeout) {
+      isTimeout = true;
+      getGPS();
+      $timeout(function() {
+        isTimeout = false;
+      }, 4000);
+    } else {
+      console.log("still waiting for $timeout to clear, please try again shortly");
     }
-
-    function getGPS() {
-
-      var schoolList = document.querySelectorAll('#school-list')[0];
-
-      if($scope.location.mode) {
-        Settings.set('locationMode', false);
-        $scope.location.mode = false;
-        document.querySelector('header a.geolocation-icon .ion-navigate').style.color = 'white';
-
-      } 
-      else if(!$scope.location.mode) {
-
-        Geolocation.getLocation();
-        document.querySelector('header a.geolocation-icon .ion-navigate').style.color = '#46FF00';
-        $timeout(function() {
-            $scope.limit = 10;
-            schoolList.scrollTop = 0;
-            Settings.set('locationMode', true);
-            $scope.location.mode = true;
-            console.log("$scope.location.mode is now: " + $scope.location.mode);
-
-          }, 1500);
-      }
-
-    };
+  }
 
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.howItWorksModal = modal;
-    });
-
-    $scope.launchHowItWorksModal = function() {
-      $scope.howItWorksModal.show();
+  $scope.toggleLocationIconAppearance = function() {
+    // get GPS if we haven't attempted it
+    if ($scope.isLocationGiven === null) {
+      getGPS();
     }
+    else if ($scope.locationGiven === false) {
+      alert('Please enable GPS permissions from your settings.')
+      //reset to null & see if they will do it again
+      $scope.isLocationGiven = null;
+    } 
+    else if ($scope.isLocationGiven) {
+      $scope.isLocationActive = !$scope.isLocationActive;
+    } 
+    else {
+      $scope.locationGiven = false;
+      $scope.locationActive = false;
+    }
+  }
+
+
+  function getGPS() {
+    $scope.isLocationActive = true;
+    Geolocation.getLocation($scope);
+  };
+
+
+  $scope.$on('$ionicView.loaded', function() {
+    // android doesn't have a special prompt
+    if (DeviceService.getPlatform() === 'android') {
+      getGPS();
+    }
+  });
+
+
+
 
 
 }
