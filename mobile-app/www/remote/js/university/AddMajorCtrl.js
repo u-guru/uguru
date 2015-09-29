@@ -11,9 +11,10 @@ angular.module('uguru.util.controllers')
   '$ionicSideMenuDelegate',
   'Utilities',
   '$localstorage',
+  'uTracker',
   function($scope, $state, $timeout,
   $q, Major, $ionicSideMenuDelegate, Utilities,
-  $localstorage) {
+  $localstorage, uTracker) {
 
 
 
@@ -67,6 +68,9 @@ angular.module('uguru.util.controllers')
       $scope.majors.push(removedMajor);
 
       var confirmCallback = function() {
+        uTracker.track('mp', 'Major Removed', {
+          '$Major': major.name
+        });
         $scope.success.show(0, 2000, major.name + ' successfully removed');
       }
 
@@ -114,6 +118,9 @@ angular.module('uguru.util.controllers')
       }, 750)
 
       //update the server
+      uTracker.track('mp', 'Major Added', {
+        '$Major': major.name
+      });
 
       $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
 
@@ -164,6 +171,7 @@ angular.module('uguru.util.controllers')
 
     });
 
+    $scope.limit = 10;
     $scope.increaseLimit = function() {
       if($scope.majors && $scope.limit < $scope.majors.length) {
         $scope.limit += 10;

@@ -8,20 +8,19 @@ angular.module('uguru.guru.controllers')
   '$timeout',
   '$localstorage',
   '$ionicPlatform',
-  '$cordovaKeyboard',
   '$ionicModal',
   '$ionicTabsDelegate',
   '$ionicSideMenuDelegate',
   '$ionicPlatform',
-  '$cordovaStatusbar',
   '$ionicSlideBoxDelegate',
   '$ionicViewSwitcher',
   '$window',
   'University',
+  'uTracker',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
-    $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
-    $ionicPlatform, $cordovaStatusbar, $ionicSlideBoxDelegate,
-    $ionicViewSwitcher, $window, University) {
+    $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
+    $ionicPlatform, $ionicSlideBoxDelegate,
+    $ionicViewSwitcher, $window, University, uTracker) {
 
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
@@ -47,6 +46,7 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.goBackToStudentHome = function() {
+      uTracker.track('mp', 'Student Home');
       $ionicViewSwitcher.nextDirection('back');
       $state.go('^.home');
     }
@@ -107,31 +107,42 @@ angular.module('uguru.guru.controllers')
       $scope.activeSlideIndex = index;
 
       if (index === 0) {
+        uTracker.track('mp', 'Become Guru: Majors');
         console.log('grabbing courses from server')
         $scope.getCoursesFromServer();
         $ionicSideMenuDelegate.canDragContent(false);
       }
 
       if (index === 1) {
+        uTracker.track('mp', 'Become Guru: Courses');
         $scope.guruCoursesInput = document.getElementById('course-input-1');
         $scope.removeUserGuruCoursesFromMasterCourses()
       }
 
       if (index === 2) {
+        uTracker.track('mp', 'Become Guru: Skills');
         $ionicSideMenuDelegate.canDragContent(true);
         $scope.static.categories[0].skills = mapGuruCoursesToCategoriesObj($scope.user.guru_courses);
         $scope.static.categories[0].active_skills_count = $scope.static.categories[0].skills.length;
         console.log('processing this shit', $scope.static.categories[0]);
-      } else {
+      }
+
+      if (index === 3) {
+        uTracker.track('mp', 'Become Guru: Photo');
+        $ionicSideMenuDelegate.canDragContent(true);
+      }
+       else {
         $ionicSideMenuDelegate.canDragContent(true);
       }
     }
 
     $scope.goToUniversity = function() {
+      uTracker.track('mp', 'University List');
       $state.go('^.university');
     }
 
     $scope.goToGuruMode = function() {
+      uTracker.track('mp', 'Guru Mode');
       $scope.root.vars.guru_mode = true;
       $state.go('^.guru');
     }

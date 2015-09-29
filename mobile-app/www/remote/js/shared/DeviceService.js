@@ -1,7 +1,6 @@
 angular
 .module('sharedServices', ['ionic'])
 .factory("DeviceService", [
-
 	'$cordovaNgCardIO',
 	'AndroidService',
 	'iOSService',
@@ -70,7 +69,15 @@ function DeviceService( $cordovaNgCardIO,
   }
 
 	function readyDevice(callback) {
-		document.addEventListener("deviceready", onDeviceReady);
+    var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+    if(app) {
+      console.log("Running on mobile");
+      document.addEventListener("deviceready", onDeviceReady);  
+    } else {
+      console.log("Detected desktop browser");
+      //onDeviceReady();
+    }
+		
 	}
 
 	function onDeviceReady(callback) {
@@ -99,8 +106,6 @@ function DeviceService( $cordovaNgCardIO,
         }
 
 		if(isMobile()) {
-
-
       // SAMIR --> to refactor
       //show this until body is loaded
 
@@ -114,6 +119,15 @@ function DeviceService( $cordovaNgCardIO,
    // 			console.log("fileTransfer is ready: " + FileTransfer);
 
 
+      //  document.addEventListener("offline", onOffline, false);
+
+      //  function onOffline() {
+         
+      //  }
+
+      // if(navigator.splashscreen) {
+      //   navigator.splashscreen.hide();
+      // }
 
 	 		var mobileOS = getPlatform().toLowerCase();
 		  	switch(mobileOS) {
@@ -129,6 +143,7 @@ function DeviceService( $cordovaNgCardIO,
 		  	}
 
 		  	console.log("detected platform: " + getPlatform());
+
 		}
 		if(typeof callback === 'function') {
 			callback();
