@@ -47,7 +47,7 @@ angular.module('uguru.util.controllers')
         updateMainBackground(category.bg_url);  
       }
 
-      uTracker.track('mp', 'Category Modal', {
+      uTracker.track(tracker, 'Category Modal', {
         '$Category': category.name
       });
       $scope.active_category.active = true;

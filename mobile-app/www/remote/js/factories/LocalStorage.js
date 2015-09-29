@@ -44,10 +44,12 @@ angular.module('ionic.utils', [])
         var downloadSpeed = (totalSize/totalTime).toFixed(2);
         // console.log("downloadSpeed: " + totalSize + " / " + totalTime + " = " + downloadSpeed);
         // console.log("sending to mixpanel: " + JSON.stringify(downloadRecords));
-        mixpanel.people.set({
-          "$Download_Records": downloadRecords,
-          "$Download_Speed": downloadSpeed
-        });
+
+        //TODO: REDO THIS FOR UTRACKER/LOCALYTICS
+        // mixpanel.people.set({
+        //   "$Download_Records": downloadRecords,
+        //   "$Download_Speed": downloadSpeed
+        // });
         downloadPromise = null;
 
       }, 10000);
