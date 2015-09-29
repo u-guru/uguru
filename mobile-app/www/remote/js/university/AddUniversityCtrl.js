@@ -340,21 +340,21 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   };
 
-  // $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
-  //   scope: $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal) {
-  //   $scope.howItWorksModal = modal;
-  //   $scope.howItWorksModal.show();
-  // });
+  $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.howItWorksModal = modal;
+    $scope.howItWorksModal.show();
+  });
 
-  // $scope.launchHowItWorksModal = function() {
-  //   $scope.howItWorksModal.show();
-  // }
+  $scope.launchHowItWorksModal = function() {
+    $scope.howItWorksModal.show();
+  }
 
-  // $scope.$on('$ionicView.enter', function() {
-  //   $scope.launchHowItWorksModal();
-  // });
+  $scope.$on('$ionicView.enter', function() {
+    $scope.launchHowItWorksModal();
+  });
 
   // $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
   //   scope: $scope,
