@@ -38,18 +38,8 @@ if (LOCAL) {
 
  //if (mixpanel) mixpanel.track("App Launch");
 
-<<<<<<< HEAD
- window._rAF = (function() {
-    return window.requestAnimationFrame ||
-           window.webkitRequestAnimationFrame ||
-           window.mozRequestAnimationFrame ||
-           function(callback) {
-             window.setTimeout(callback, 16);
-           };
-  })();
-=======
+
 var tracker = 'lo';
->>>>>>> 86818a830ef2247f5d2fa25dedeb3325cbc2cef8
 
 
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
