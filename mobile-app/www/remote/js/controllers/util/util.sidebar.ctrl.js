@@ -163,7 +163,8 @@ angular.module('uguru.util.controllers')
             focusFirstInput: false,
     }).then(function(modal) {
         $scope.universityModal = modal;
-        uTracker.track('mp', 'University Modal');
+
+        uTracker.track(tracker, 'University Modal');
     });
 
     // $scope.$on('modal.shown', function() {
@@ -176,7 +177,8 @@ angular.module('uguru.util.controllers')
     // });
 
     $scope.launchFAQModal = function() {
-      uTracker.track('mp', 'FAQ Modal');
+
+      uTracker.track(tracker, 'FAQ Modal');
       $scope.faqModal.show();
     }
 
@@ -201,7 +203,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.launchSupportModal = function() {
-      uTracker.track('mp', 'Support Modal');
+
+      uTracker.track(tracker, 'Support Modal');
       $scope.supportModal.show();
       $timeout(function() {
         initSupportChatEnterHandler()
@@ -210,12 +213,14 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.launchPrivacyModal = function() {
-      uTracker.track('mp', 'Privacy Modal');
+
+
+      uTracker.track(tracker, 'Privacy Modal');
       $scope.privacyModal.show();
     }
 
     $scope.launchSignupModal = function(loginMode) {
-      uTracker.track('mp', 'Signup Modal');
+      uTracker.track(tracker, 'Signup Modal');
       if (loginMode)  {
         $scope.root.vars.loginMode = true;
       }
@@ -732,7 +737,7 @@ angular.module('uguru.util.controllers')
 
     $scope.goToStudent = function() {
 
-      //show the loader immediately
+
       $scope.loader.show();
       // AnimationService.flip();
 
@@ -751,12 +756,7 @@ angular.module('uguru.util.controllers')
       }, 500)
 
       $state.go('^.home');
-
     }
-
-
-
-
 
     $scope.showComingSoon = function() {
       $scope.progress_active = true;

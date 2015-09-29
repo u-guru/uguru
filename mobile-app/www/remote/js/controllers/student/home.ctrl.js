@@ -82,7 +82,8 @@ angular.module('uguru.student.controllers', [])
 
         $scope.launchRequestModal = function(index, verb_index) {
 
-            uTracker.track('mp', 'Request Modal');
+
+            uTracker.track(tracker, 'Request Modal');
 
             $scope.loader.showAmbig();
 
@@ -125,7 +126,9 @@ angular.module('uguru.student.controllers', [])
         }
 
         $scope.goToBecomeGuru = function() {
-            uTracker('mp', 'Become Guru');
+
+            uTracker(tracker, 'Become Guru');
+
             $ionicViewSwitcher.nextDirection('forward');
             $state.go('^.become-guru');
         }

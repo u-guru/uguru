@@ -23,13 +23,16 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   DeviceService, uTracker, $q) {
 
   console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
-  uTracker.setUser('mp', 'sept28');
-  uTracker.sendDevice('mp');
+
+  uTracker.setUser(tracker, 'localyticsTest');
+  uTracker.sendDevice(tracker);
+
 
   document.addEventListener("pause", lastSearch, false);
   document.addEventListener("backbutton", lastSearch, false);
   function lastSearch() {
-    uTracker.track('mp', "Paused/Back", {
+
+    uTracker.track(tracker, "Paused/Back", {
       "$University_Input": $scope.universityInput.value
     });
   }
@@ -57,10 +60,8 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         var loadTime = time_s;
         appLoadTime = loadTime;
         console.log("appLoadTime: " + appLoadTime);
-        uTracker.track('mp', "App Launch", {
-          "$App_Load_Time": appLoadTime
-        });
-        uTracker.set('mp', {
+
+        uTracker.track(tracker, "App Launch", {
           "$App_Load_Time": appLoadTime
         });
   }
@@ -94,12 +95,9 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         //var fpsValue = "meanFPS: " + meanFPS + "/ fpsArray: " + fpsArray.toString();
         //console.log("fpsValue: " + fpsValue);
 
-        uTracker.track('mp', "Entered Access Code", {
+        uTracker.track(tracker, "Entered Access Code", {
           "$Mean_FPS": meanFPS,
           "$FPS_Array": fpsArray.toString()
-        });
-        uTracker.set('mp', {
-          "$Mean_FPS": meanFPS
         });
 
       }
@@ -143,14 +141,14 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       }
       else if(!measureFPS) {
         if($scope.universityInput.value.length===0){
-          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 500);          
+          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 500);
         }
-        else {      
-          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 16);        
+        else {
+          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 16);
         }
       }
     }
-    
+
     $scope.limit = 10;
     $scope.increaseLimit = function() {
       if($scope.limit < $scope.universities.length) {
@@ -186,16 +184,18 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       var listRenderTime = listEndTime - appStartTime;
       console.log("listRenderTime: " + listRenderTime);
 
-      uTracker.track('mp', "University Selected", {
+
+      uTracker.track(tracker, "University Selected", {
           "$University": university.name,
           "$University_Input": $scope.universityInput.value
       });
-      uTracker.set('mp', {
+      uTracker.set(tracker, {
+
           "$University": university.name,
           "$Search_Response_Time": searchResponseTime,
           "$List_Render_Time": listRenderTime
       });
-      
+
       //if user is switching universities
       if ($scope.user.university_id
           && university.id !== $scope.user.university_id
@@ -203,11 +203,12 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       {
           return;
       }
-      uTracker.track('mp', "University Changed", {
+
+      uTracker.track(tracker, "University Changed", {
           "$University": university.name,
           "$University_Input": $scope.universityInput.value
       });
-      uTracker.set('mp', {
+      uTracker.set(tracker, {
           "$University": university.name,
       });
       $scope.loader.show();
@@ -274,10 +275,10 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       alert('Please enable GPS permissions from your settings.')
       //reset to null & see if they will do it again
       $scope.isLocationGiven = null;
-    } 
+    }
     else if ($scope.isLocationGiven) {
       $scope.isLocationActive = !$scope.isLocationActive;
-    } 
+    }
     else {
       $scope.locationGiven = false;
       $scope.locationActive = false;

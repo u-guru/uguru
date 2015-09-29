@@ -68,7 +68,8 @@ angular.module('uguru.util.controllers')
       $scope.majors.push(removedMajor);
 
       var confirmCallback = function() {
-        uTracker.track('mp', 'Major Removed', {
+
+        uTracker.track(tracker, 'Major Removed', {
           '$Major': major.name
         });
         $scope.success.show(0, 2000, major.name + ' successfully removed');
@@ -118,7 +119,8 @@ angular.module('uguru.util.controllers')
       }, 750)
 
       //update the server
-      uTracker.track('mp', 'Major Added', {
+
+      uTracker.track(tracker, 'Major Added', {
         '$Major': major.name
       });
 

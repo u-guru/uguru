@@ -74,10 +74,11 @@ function DeviceService( $cordovaNgCardIO,
     var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
     if(app) {
       console.log("Running on mobile");
+
       document.addEventListener("deviceready", onDeviceReady);
     } else {
       console.log("Detected desktop browser");
-      onDeviceReady();
+      //onDeviceReady();
     }
 
 	}
@@ -124,7 +125,6 @@ function DeviceService( $cordovaNgCardIO,
       //  document.addEventListener("offline", onOffline, false);
 
       //  function onOffline() {
-
       //  }
 
       // if(navigator.splashscreen) {

@@ -8,8 +8,10 @@ angular.module('sharedServices')
 // TODO: we'll need to find a way to hold/queue the current events and fire for later
 function uTracker($localstorage, DeviceService) {
 
-	var tracker = 	[
+	var mixpanel, localytics;
+	var trackers = 	[
 					'mp', // mixpanel
+					'lo', // localytics
 					'ga', // google analytics
 					'hp'  // heap analytics
 					]
@@ -22,7 +24,8 @@ function uTracker($localstorage, DeviceService) {
 	//var dataLimit = $localstorage.get("dataLimit", 0);
 
 	var defaultTokens = {
-		mp: "cfe34825db9361e6c1d1a16a2b269b07"
+		mp: "cfe34825db9361e6c1d1a16a2b269b07",
+		lo: "e5f4bf9fa4b0cfa312def57-c65b66fe-66bf-11e5-0c2c-00deb82fd81f"
 	}
 
 	return {
@@ -36,7 +39,7 @@ function uTracker($localstorage, DeviceService) {
 	};
 
 	// This sets the API token for the analytics provider
-	// Example: uTracker.init('mp', "cfe34825db9361e6c1d1a16a2b269b07" )
+
 	function init(tracker, token) {
 		if(DeviceService.isMobile()) {
 			switch(tracker) {
@@ -46,6 +49,12 @@ function uTracker($localstorage, DeviceService) {
 					mixpanel.init(token || defaultTokens.mp);
 					break;
 
+				case 'lo':
+					console.log("initializing localytics tracking: " + defaultTokens.lo);
+					localyticsSession = LocalyticsSession(token || defaultTokens.lo);
+					localyticsSession.open();
+					localyticsSession.upload();
+					break;
 				case 'ga': break;
 				case 'hp': break;
 				default: throw "Invalid tracker name. Refer to uTracker.js";
@@ -54,7 +63,7 @@ function uTracker($localstorage, DeviceService) {
 	}
 
 	// This sets the unique userID for the analytics provider
-	// Example: uTracker.setUser('mp', userID')
+
 	function setUser(tracker, userID) {
 		if(DeviceService.isMobile()) {
 			switch(tracker) {
@@ -64,6 +73,9 @@ function uTracker($localstorage, DeviceService) {
 					mixpanel.identify(userID);
 					break;
 
+				case 'lo':
+					//localyticsSession.ll('setCustomerId', userID);
+					break;
 				case 'ga': break;
 				case 'hp': break;
 				default: throw "Invalid tracker name. Refer to uTracker.js";
@@ -88,6 +100,8 @@ function uTracker($localstorage, DeviceService) {
 						}
 					)
 					break;
+
+				case 'lo': break;
 				case 'ga': break;
 				case 'hp': break;
 				default: throw "Invalid tracker name. Refer to uTracker.js";
@@ -100,13 +114,14 @@ function uTracker($localstorage, DeviceService) {
 	function set(tracker, data) {
 
 		if(DeviceService.isMobile()) {
-			switch(tracker) {	
+			switch(tracker) {
 				case 'mp':
 					if(typeof data === 'object') {
 						mixpanel.people.set(data);
 					}
 					break;
 
+				case 'lo': break;
 				case 'ga': break;
 				case 'hp': break;
 				default: throw "Invalid tracker name. Refer to uTracker.js";
@@ -116,14 +131,16 @@ function uTracker($localstorage, DeviceService) {
 
 	// This sets the events that will be fired for as the user navigates through the app
 	// Additional key-value pairs can be passed in as a data object
-	// Example: uTracker.track('mp', 'App Launch', {'App_Load_Time': })
+
 	function track(tracker, event, data) {
 		if(DeviceService.isMobile()) {
 			switch(tracker) {
 				case 'mp':
 					mixpanel.track(event, data);
 					break;
-
+				case 'lo':
+					localyticsSession.tagEvent(event, data);
+					break;
 				case 'ga': break;
 				case 'hp': break;
 				default: throw "Invalid tracker name. Refer to uTracker.js";

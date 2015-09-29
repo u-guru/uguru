@@ -128,7 +128,8 @@ angular.module('uguru.util.controllers')
         $scope.user.updateAttr('remove_guru_course', $scope.user, course, confirmCallback, $scope);
       }, 200);
 
-      uTracker.track('mp', 'Course Guru Removed', {
+
+      uTracker.track(tracker, 'Course Guru Removed', {
         '$Course': course.name
       });
     }
@@ -209,7 +210,8 @@ angular.module('uguru.util.controllers')
 
           }, 750)
 
-      uTracker.track('mp', 'Course Guru Added', {
+
+      uTracker.track(tracker, 'Course Guru Added', {
         '$Course': course.name
       });
 

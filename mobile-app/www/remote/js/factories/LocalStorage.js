@@ -1,9 +1,9 @@
 var logOb;
 angular.module('ionic.utils', [])
-  
-.factory('$localstorage', ['$window', '$timeout', 
+
+.factory('$localstorage', ['$window', '$timeout',
   function($window, $timeout) {
-  
+
   var downloadRecords = JSON.parse($window.localStorage['download_records'] || '{"files": []}');
   var downloadPromise = null;
   return {
@@ -26,7 +26,7 @@ angular.module('ionic.utils', [])
     // TODO: Seems like mixpanel allows up to 255 properties per object, so we'll need to create
     // additional logs to store as the count reaches the limit
     storeDownloadRecords: function(obj) {
-      
+
       downloadRecords.files.push(obj);
       if(downloadPromise) {
         //console.log("canceling downloadPromise");
@@ -42,42 +42,12 @@ angular.module('ionic.utils', [])
           totalTime += (downloadRecords.files[i].time_ms / 1000);
         }
         var downloadSpeed = (totalSize/totalTime).toFixed(2);
-        // console.log("downloadSpeed: " + totalSize + " / " + totalTime + " = " + downloadSpeed);
-        // console.log("sending to mixpanel: " + JSON.stringify(downloadRecords));
-        mixpanel.people.set({
-          "$Download_Records": downloadRecords,
-          "$Download_Speed": downloadSpeed
-        });
+
         downloadPromise = null;
 
       }, 10000);
     },
-    // updateDisk: function() {
-    //   console.log("UpdateDisk :"+JSON.stringify(cordova.file));
-    //   //console.log("Error List :"+ JSON.stringify($cordovaFileError));
-    
 
-    //   //JSON.stringify()
-    //    console.log("FreeDisk :"+JSON.stringify($cordovaFile.getFreeDiskSpace()));
-
-
-      /* $cordovaFile.getFreeDiskSpace().then(function (success){
-               // success in kilobytes
-               console.log("success");
-            }, function (error) {
-                // error
-               console.log("Error :" error);
-            });*/
-
-     /* 
-      $cordovaFile.listDir(fileDir + 'test').then( function(entries)
-      {
-        console.log('listDir: ', entries);
-      }, function(err)
-      {
-        console.error('listDir error: ', err);
-      });*/
-    // },
     init: function()
     {
 
@@ -91,9 +61,9 @@ angular.module('ionic.utils', [])
         var log = str + " [" + (new Date()) + "]\n";
         console.log("going to log "+log);
         logOb.createWriter(function(fileWriter) {
-          
+
           fileWriter.seek(fileWriter.length);
-          
+
           var blob = new Blob([log], {type:'text/plain'});
           fileWriter.write(blob);
           console.log("ok, in theory i worked");
@@ -107,9 +77,9 @@ angular.module('ionic.utils', [])
       var log = str + " [" + (new Date()) + "]\n";
       console.log("going to log "+log);
       logOb.createWriter(function(fileWriter) {
-        
+
         fileWriter.seek(fileWriter.length);
-        
+
         var blob = new Blob([log], {type:'text/plain'});
         fileWriter.write(blob);
         console.log("ok, in theory i worked");

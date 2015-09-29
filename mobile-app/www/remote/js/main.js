@@ -1,18 +1,27 @@
-var LOCAL = _local || false;
-var _startpage = _startpage || 'university';
 
-var FIRST_PAGE = '^.' + _startpage;
-var img_base = '';
+
+var LOCAL = _local; //local to the 8100 codebasebirbirs
+var FIRST_PAGE='^.' + _startpage;
+//var FIRST_PAGE='^.home';
 
 console.log("_local: " + _local);
 console.log("_startpage: " + _startpage);
-console.log("_startpage: " + _ipaddress);
+console.log("_ipaddress: " + _ipaddress);
+
+var img_base = '';
+
 
 // isAdmin = true;
 
 var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
 
+
+// ==============================
+// CONSOLE_SETTINGS: Toggle console logs. Comment to enable, uncomment to disable.
+// console.log("Disabling console logs. To enable: comment out CONSOLE_SETTINGS in main.js");
+// console.log = function() {};
+// ==============================
 
 var BASE = '';
 if (LOCAL) {
@@ -29,6 +38,7 @@ if (LOCAL) {
 
  //if (mixpanel) mixpanel.track("App Launch");
 
+<<<<<<< HEAD
  window._rAF = (function() {
     return window.requestAnimationFrame ||
            window.webkitRequestAnimationFrame ||
@@ -37,6 +47,9 @@ if (LOCAL) {
              window.setTimeout(callback, 16);
            };
   })();
+=======
+var tracker = 'lo';
+>>>>>>> 86818a830ef2247f5d2fa25dedeb3325cbc2cef8
 
 
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
@@ -72,6 +85,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
 
   var openKeyboard = null;
+  //var tracker = 'lo'
+  //uTracker.init(tracker);
+  uTracker.init(tracker);
+
 
   uTracker.init('mp');
 
