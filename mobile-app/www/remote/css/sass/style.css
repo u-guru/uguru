@@ -51,107 +51,6 @@ section {
   height: 20px; }
   .uguru-view h1.verified span svg path:first-child {
     fill: #50A5DD; }
-.uguru-view .start#how header {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  height: 64px; }
-  .uguru-view .start#how header h1 {
-    font-size: 32px;
-    font-weight: 600;
-    text-transform: uppercase; }
-.uguru-view .start#how button {
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.1); }
-.uguru-view .start#how button:active {
-  background: rgba(255, 255, 255, 0.4); }
-.uguru-view .start#how #how-cards {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  height: 375px;
-  overflow-y: hidden;
-  overflow-x: auto; }
-  .uguru-view .start#how #how-cards .how-card {
-    box-sizing: border-box;
-    width: 290px;
-    height: 375px;
-    min-width: -webkit-min-content; }
-    .uguru-view .start#how #how-cards .how-card .how-card-media, .uguru-view .start#how #how-cards .how-card .how-card-desc {
-      box-sizing: border-box;
-      margin: 0 15px;
-      width: 290px; }
-    .uguru-view .start#how #how-cards .how-card .how-card-media {
-      border-radius: 10px 10px 0 0;
-      background: #40484B;
-      height: 70%; }
-    .uguru-view .start#how #how-cards .how-card .how-card-desc {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      border-radius: 0 0 10px 10px;
-      padding: 15px;
-      background: white;
-      height: 30%;
-      color: #2B3234; }
-      .uguru-view .start#how #how-cards .how-card .how-card-desc p {
-        margin: 0;
-        font-size: 16px;
-        font-weight: 400;
-        text-align: center; }
-    .uguru-view .start#how #how-cards .how-card:first-child .how-card-media, .uguru-view .start#how #how-cards .how-card:first-child .how-card-desc {
-      margin-left: 30px; }
-    .uguru-view .start#how #how-cards .how-card:last-child .how-card-media, .uguru-view .start#how #how-cards .how-card:last-child .how-card-desc {
-      margin-right: 30px; }
-    .uguru-view .start#how #how-cards .how-card:nth-child(1) .how-card-media {
-      background: #DB1988; }
-    .uguru-view .start#how #how-cards .how-card:nth-child(2) .how-card-media {
-      background: #E5753C; }
-    .uguru-view .start#how #how-cards .how-card:nth-child(3) .how-card-media {
-      background: #F9D57B; }
-    .uguru-view .start#how #how-cards .how-card:nth-child(4) .how-card-media {
-      background: #81B566; }
-    .uguru-view .start#how #how-cards .how-card:nth-child(5) .how-card-media {
-      background: #69B3A5; }
-    .uguru-view .start#how #how-cards .how-card:nth-child(6) .how-card-media {
-      background: #50A5DD; }
-    .uguru-view .start#how #how-cards .how-card:nth-child(7) .how-card-media {
-      background: #9A5BC5; }
 .uguru-view .request#request header:before {
   background: url(../images/school.jpg) no-repeat center center/cover; }
 .uguru-view .request#request header .request-header h1 {
@@ -383,25 +282,51 @@ section {
     width: 100%;
     background: white;
     border-radius: 5px;
-    color: #40484B; }
+    color: #40484B;
+    height: 50%; }
     .uguru-popup .uguru-popup-content .content-wrapper {
       position: relative;
       padding: 60px 0 0;
-      text-align: center; }
+      text-align: center;
+      height: 100%; }
+      .uguru-popup .uguru-popup-content .content-wrapper .content-body {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        height: calc(100% - 64px); }
+        .uguru-popup .uguru-popup-content .content-wrapper .content-body h1, .uguru-popup .uguru-popup-content .content-wrapper .content-body h2, .uguru-popup .uguru-popup-content .content-wrapper .content-body h3 {
+          text-align: center; }
+        .uguru-popup .uguru-popup-content .content-wrapper .content-body p {
+          font-size: 18px;
+          opacity: 0.8; }
+      .uguru-popup .uguru-popup-content .content-wrapper .content-footer {
+        max-height: 64px; }
       .uguru-popup .uguru-popup-content .content-wrapper h2 {
         color: #40484B;
-        margin: 0 15px;
-        color: #2B3234;
         font-weight: 700;
+        opacity: 0.9;
         font-size: 20px;
         text-transform: uppercase; }
       .uguru-popup .uguru-popup-content .content-wrapper p {
-        color: #40484B;
+        color: #2B3234;
         font-weight: 400;
         font-size: 14px;
-        padding: 2px 15px 0; }
+        padding: 10px 20px 0;
+        margin: 0 auto;
+        line-height: 20px; }
       .uguru-popup .uguru-popup-content .content-wrapper button {
-        border-radius: 0 0 5px 5px; }
+        border-radius: 0 0 5px 5px;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0; }
   .uguru-popup .guru-logo-container {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -654,11 +579,15 @@ section {
         -ms-flex-flow: row wrap;
         -webkit-flex-flow: row wrap;
         flex-flow: row wrap;
-        display: none;
-        width: calc(200% + 2px); }
+        display: none; }
       .request-modal .request-content .request-loc ul li .request-loc-address {
+        position: absolute;
+        z-index: 9999;
+        top: 46px;
+        right: 0;
         border-top: 1px solid #F1F1F1;
-        border-bottom: 1px solid #F1F1F1; }
+        border-bottom: 1px solid #F1F1F1;
+        width: 200%; }
         .request-modal .request-content .request-loc ul li .request-loc-address input {
           border-left: 0;
           border-right: 0;
@@ -672,10 +601,15 @@ section {
         .request-modal .request-content .request-loc ul li .request-loc-address .request-loc-zip {
           border-left: 1px solid #F1F1F1; }
       .request-modal .request-content .request-loc ul li .request-loc-geo {
+        position: absolute;
+        z-index: 9999;
+        top: 46px;
+        left: 0;
         padding: 15px;
         background: white;
         border-top: 2px solid #F1F1F1;
-        border-bottom: 2px solid #F1F1F1; }
+        border-bottom: 2px solid #F1F1F1;
+        width: calc(200% + 2px); }
         .request-modal .request-content .request-loc ul li .request-loc-geo > span {
           display: block;
           width: 100%;
@@ -696,21 +630,10 @@ section {
               stroke-linecap: round;
               stroke-linejoin: round; }
       .request-modal .request-content .request-loc ul li .enter-address:checked + div {
-        padding-bottom: 167px; }
-      .request-modal .request-content .request-loc ul li .enter-address:checked + div .request-loc-address {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        position: absolute;
-        z-index: 9999;
-        top: 46px;
-        left: 0; }
+        padding-bottom: 165px; }
       .request-modal .request-content .request-loc ul li .use-location:checked + div {
-        padding-bottom: 110px; }
+        padding-bottom: 108px; }
+      .request-modal .request-content .request-loc ul li .enter-address:checked + div .request-loc-address,
       .request-modal .request-content .request-loc ul li .use-location:checked + div .request-loc-geo {
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -718,11 +641,7 @@ section {
         display: -ms-flexbox;
         display: -moz-flex;
         display: -webkit-flex;
-        display: flex;
-        position: absolute;
-        z-index: 9999;
-        top: 46px;
-        right: 0; }
+        display: flex; }
   .request-modal .request-content .request-time .request-time-urgent li {
     border-left: 2px solid #F1F1F1;
     border-right: 2px solid #F1F1F1; }
@@ -786,6 +705,9 @@ section {
     width: 100%; }
   .request-modal .request-content .picker {
     border-top: 2px solid #F1F1F1; }
+
+.availability-modal {
+  background: #40484B; }
 
 @media screen and (min-width: 375px) {
   .request-modal .request-content .request-time .request-time-needed ul li div {
@@ -1032,13 +954,126 @@ section {
   .access-view button:active {
     background: rgba(43, 50, 52, 0.3); }
 
+.how-it-works-view {
+  background: #2B3234;
+  height: 100%; }
+  .how-it-works-view header {
+    padding-top: 20px;
+    height: 50px; }
+  .how-it-works-view .header-up {
+    display: block;
+    margin: 0 auto;
+    height: 50px; }
+    .how-it-works-view .header-up svg {
+      height: 100%;
+      fill: none;
+      stroke: white;
+      stroke-width: 6px;
+      stroke-linecap: round;
+      stroke-linejoin: round; }
+  .how-it-works-view button {
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1); }
+  .how-it-works-view button:active {
+    background: rgba(255, 255, 255, 0.4); }
+  .how-it-works-view #how-cards-container {
+    height: calc(100% - 50px - 64px);
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto; }
+    .how-it-works-view #how-cards-container .breadcrumbs {
+      position: fixed;
+      width: 100%;
+      margin-top: 10%; }
+  .how-it-works-view #how-cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    padding-top: 15%;
+    box-sizing: content-box;
+    height: 70%;
+    width: 600%; }
+    .how-it-works-view #how-cards .how-card {
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%; }
+      .how-it-works-view #how-cards .how-card .how-card-media, .how-it-works-view #how-cards .how-card .how-card-desc {
+        box-sizing: border-box;
+        margin: 0 30px;
+        width: calc(100% - 60px); }
+      .how-it-works-view #how-cards .how-card .how-card-media {
+        position: relative;
+        border-radius: 10px 10px 0 0;
+        height: 70%; }
+        .how-it-works-view #how-cards .how-card .how-card-media h1 {
+          text-align: center;
+          font-size: 20px;
+          font-weight: 600;
+          line-height: 50px; }
+        .how-it-works-view #how-cards .how-card .how-card-media div {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          position: absolute;
+          width: 100%;
+          height: calc(100% - 50px);
+          padding: 15px; }
+          .how-it-works-view #how-cards .how-card .how-card-media div svg {
+            height: 100%;
+            width: auto; }
+          .how-it-works-view #how-cards .how-card .how-card-media div.bottom-0 {
+            padding-bottom: 25px; }
+          .how-it-works-view #how-cards .how-card .how-card-media div.top-0 {
+            padding-top: 25px; }
+      .how-it-works-view #how-cards .how-card .how-card-desc {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        border-radius: 0 0 10px 10px;
+        padding: 15px;
+        background: white;
+        height: 30%;
+        color: #2B3234; }
+        .how-it-works-view #how-cards .how-card .how-card-desc p {
+          margin: 0;
+          font-size: 16px;
+          font-weight: 400;
+          text-align: center; }
+
 .university-view {
   background: #2B3234; }
   .university-view header:before {
     background: url(../../img/onboarding/school.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat; }
   .university-view header .geolocation-icon {
-    filter: alpha(opacity=50);
-    opacity: 0.5;
+    filter: alpha(opacity=100);
+    opacity: 1;
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -1046,17 +1081,24 @@ section {
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
-    right: 10px;
+    right: 12px;
     z-index: 0;
-    height: 18px; }
+    height: 60px;
+    width: 25%;
+    top: 55%; }
     .university-view header .geolocation-icon .ion-navigate {
       filter: alpha(opacity=60);
       opacity: 0.6;
-      color: white !important;
-      font-size: 18px !important; }
+      font-size: 20px !important;
+      position: absolute;
+      right: 0;
+      top: 33%; }
     .university-view header .geolocation-icon .ion-navigate.active,
     .university-view header .geolocation-icon .ion-navigate.activated {
       filter: alpha(opacity=100);
+      opacity: 1; }
+    .university-view header .geolocation-icon .ion-navigate.location-active {
+      color: #50A5DD;
       opacity: 1; }
   .university-view #school-list ul li a, .university-view #school-list-modal ul li a {
     font-weight: 300; }
@@ -1093,13 +1135,29 @@ section {
       .university-view #school-list ul li a .school-name .school-state, .university-view #school-list-modal ul li a .school-name .school-state {
         text-transform: uppercase; }
       .university-view #school-list ul li a .school-name .school-distance, .university-view #school-list-modal ul li a .school-name .school-distance {
-        float: right; }
+        float: right;
+        bottom: 0;
+        font-size: 12px;
+        padding-top: 5px;
+        font-weight: 500; }
   .university-view #school-list ul li a:active.active, .university-view #school-list ul li a:active.activated, .university-view #school-list ul li a:focus.active, .university-view #school-list ul li a:focus.activated, .university-view #school-list ul li a:hover.active, .university-view #school-list ul li a:hover.activated, .university-view #school-list-modal ul li a:active.active, .university-view #school-list-modal ul li a:active.activated, .university-view #school-list-modal ul li a:focus.active, .university-view #school-list-modal ul li a:focus.activated, .university-view #school-list-modal ul li a:hover.active, .university-view #school-list-modal ul li a:hover.activated {
     background: rgba(255, 255, 255, 0.2); }
 
 .home-view button.active, .home-view button.activated {
   filter: alpha(opacity=50);
   opacity: 0.5; }
+.home-view a.header-menu {
+  position: absolute;
+  width: 25% !important;
+  right: 0; }
+  .home-view a.header-menu svg {
+    padding: 0px;
+    width: 28px;
+    height: 28px;
+    margin: 0 8px;
+    position: absolute;
+    right: 0;
+    top: 11px; }
 .home-view #request-content {
   height: calc(100% - 50px - 64px); }
 .home-view #request-message {
@@ -1179,6 +1237,8 @@ section {
       font-weight: 600;
       text-align: center;
       text-transform: uppercase; }
+    .home-view #request-message #request-button.activated, .home-view #request-message #request-button.active {
+      opacity: 0.6; }
 
 @media screen and (min-width: 375px) {
   .home-view #request-message > div h2 {

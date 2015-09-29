@@ -14,32 +14,33 @@ describe('Major Test', function () {
 	// 	})
 	
 	// });
-	// describe('Welcome uguru Pop',function()
-	// {
-	// 	it('Check Pop up ',function()
-	// 	{
-	// 		browser.wait(EC.visibilityOf(element(by.id('home-uguru-popup'))),3000);
-	// 		// expect(element(by.id('home-uguru-popup')).isDisplayed()).toBe(true);
-	// 	});
-	// 	it('Close Welcome',function()
-	// 	{
-	// 		//element(by.id('home-uguru-popup')).click();
-	// 		element(by.css('[ng-click="closeWelcomePopup()"]')).click();
-	// 	});	
-	// 	it ('Start Become Guru Process',function()
-	// 	{
-	// 		guruButton.click();
+	describe('Welcome uguru Pop',function()
+	{
+		it('Check Pop up ',function()
+		{
+			browser.wait(EC.visibilityOf(element(by.id('home-uguru-popup'))),3000);
+			// expect(element(by.id('home-uguru-popup')).isDisplayed()).toBe(true);
+		});
+		it('Close Welcome',function()
+		{
+			//element(by.id('home-uguru-popup')).click();
+			element(by.css('[ng-click="closeWelcomePopup()"]')).click();
+		});	
+		it ('Start Become Guru Process',function()
+		{
+			guruButton.click();
 						// var closeButton = element.all(by.css('.modal-backdrop.active .header-down')).last();
 
-	// 	});
-	// });
-	it ('Start Become Guru Process',function()
-		{
-			var closeButton = element.all(by.css('.modal-backdrop.active .header-down')).last();
-			browser.wait(EC.visibilityOf(closeButton),3000);
-			closeButton.click();
-			guruButton.click();
 		});
+	});
+	//for close the bug request
+	// it ('Start Become Guru Process',function()
+	// 	{
+	// 		var closeButton = element.all(by.css('.modal-backdrop.active .header-down')).last();
+	// 		browser.wait(EC.visibilityOf(closeButton),3000);
+	// 		closeButton.click();
+	// 		guruButton.click();
+	// 	});
 	it('Current Page Title: Major',function()
 	{
 		expect(element(by.css('#major .third.flex-center-wrap')).getText()).toContain("SELECT YOUR MAJOR")
@@ -168,58 +169,57 @@ describe('Major Test', function () {
 			});
 
 		
-	// Skip
-	// 		describe("Cancel Become Guru Process, and Check everything reset back to default",function()
-	// 		{
-	// 			it("Cancel Process of Become Guru",function()
-	// 			{
-	// 				backStep.click();
-	// 			});
+			describe("Cancel Become Guru Process, and Check everything reset back to default",function()
+			{
+				it("Cancel Process of Become Guru",function()
+				{
+					backStep.click();
+				});
 
-	// 			// it('Check Wrap Pop up ',function()
-	// 			// {
-	// 			// 	browser.wait(EC.visibilityOf(element(by.id('home-uguru-popup'))),3000);
-	// 			// 	// expect(element(by.id('home-uguru-popup')).isDisplayed()).toBe(true);
-	// 			// });
-	// 			// it('Close Welcome',function()
-	// 			// {
-	// 			// 	//element(by.id('home-uguru-popup')).click();
-	// 			// 	element(by.css('[ng-click="closeWelcomePopup()"]')).click();
-	// 			// });
-	// 			it('check Side Bar is Hidding',function()
-	// 			{
-	// 				expect(element(by.css('.menu.menu-right')).isDisplayed()).toBe(false,"side bar should be hidden");
-	// 				// browser.get("http://"+localhost+":8100/#/become-guru");
-	// 			});
-	// 			it (' Start Become Guru Process',function()
-	// 			{
-	// 				var closeButton = element.all(by.css('.modal-backdrop.active .header-down')).last();
-	// 				browser.wait(EC.visibilityOf(closeButton),3000);
-	// 				closeButton.click();
-	// 				guruButton.click();
-	// 			});
+				// it('Check Wrap Pop up ',function()
+				// {
+				// 	browser.wait(EC.visibilityOf(element(by.id('home-uguru-popup'))),3000);
+				// 	// expect(element(by.id('home-uguru-popup')).isDisplayed()).toBe(true);
+				// });
+				// it('Close Welcome',function()
+				// {
+				// 	//element(by.id('home-uguru-popup')).click();
+				// 	element(by.css('[ng-click="closeWelcomePopup()"]')).click();
+				// });
+				it('check Side Bar is Hidding',function()
+				{
+					expect(element(by.css('.menu.menu-right')).isDisplayed()).toBe(false,"side bar should be hidden");
+					// browser.get("http://"+localhost+":8100/#/become-guru");
+				});
+				it (' Start Become Guru Process',function()
+				{
+					// var closeButton = element.all(by.css('.modal-backdrop.active .header-down')).last();
+					// browser.wait(EC.visibilityOf(closeButton),3000);
+					// closeButton.click();
+					guruButton.click();
+				});
 
-	// 			it ('Check Evything is back to default',function()
-	// 			{
-	// 		    	doc.setInput('',0,model,true);
-	// 	    		expect(element(by.repeater('major in user.majors')).isPresent()).toBe(false,"Selected-List[ {{user.majors}} ] doesn't clear out")
-	// 	    		element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
-	// 		    		expect(items.length >= 10).toBe(true,"#major-List does not return to default");
-	// 		    	});
-	// 			});
-	// 			//Skip Bug
-	// 			it('Reset Value[Skip Bug]',function()
-	// 			{		
-	// 		    	doc.setInput('a',0,model,true);
-	// 		    	doc.setInput('',0,model);
+				it ('Check Evything is back to default',function()
+				{
+			    	doc.setInput('',0,model,true);
+		    		expect(element(by.repeater('major in user.majors')).isPresent()).toBe(false,"Selected-List[ {{user.majors}} ] doesn't clear out")
+		    		element.all(by.css('#major-list li:not(.ng-hide)')).then(function (items) {
+			    		expect(items.length >= 10).toBe(true,"#major-List does not return to default");
+			    	});
+				});
+				//Skip Bug
+				it('Reset Value[Skip Bug]',function()
+				{		
+			    	doc.setInput('a',0,model,true);
+			    	doc.setInput('',0,model,true);
 
-	// 				// element.all(by.tagName("input")).then(function(inputs)
-	// 		  //     	{
-	// 		  //     		inputs[0].clear();
-	// 		  //     	});
-	// 			});
+					// element.all(by.tagName("input")).then(function(inputs)
+			  //     	{
+			  //     		inputs[0].clear();
+			  //     	});
+				});
 
-	// 		});
+			});
 		});
 		// End of Search Test 
 	});

@@ -12,11 +12,11 @@ describe('Sign-up test', function () {
 	// 		element(by.id('btn-edit-profile')).click();
 	// 	}
 	// });
-	// beforeAll(function()
-	// {
-	// 	browser.get("http://"+localhost+":8100/#/guru");
-	// 	browser.sleep(2000)
-	// });
+	beforeAll(function()
+	{
+		browser.get("http://"+localhost+":8100/#/guru");
+		browser.sleep(2000)
+	});
 	it('Launch Profile',function()
 	{
 		browser.wait(EC.elementToBeClickable(element(by.id('btn-edit-profile'))),4000);

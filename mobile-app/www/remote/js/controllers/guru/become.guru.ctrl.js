@@ -113,7 +113,6 @@ angular.module('uguru.guru.controllers')
       if (index === 1) {
         $scope.guruCoursesInput = document.getElementById('course-input-1');
         $scope.removeUserGuruCoursesFromMasterCourses()
-
       }
 
       if (index === 2) {

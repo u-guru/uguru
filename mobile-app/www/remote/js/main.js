@@ -1,6 +1,6 @@
-var LOCAL = _local;
+var LOCAL = _local || false;
+var _startpage = _startpage || 'university';
 
-_startpage = 'university';
 var FIRST_PAGE = '^.' + _startpage;
 var img_base = '';
 

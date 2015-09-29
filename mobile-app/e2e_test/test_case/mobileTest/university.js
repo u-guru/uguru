@@ -30,7 +30,7 @@ describe('university Test', function () {
 					it('Check more items loaded',function()
 					{
 						element.all(by.css('#school-list li:not(.ng-hide)')).then(function (items) {
-				    		expect(items.length > 10).toBe(true,"No data is loading inside #school-list");
+				    		expect(items.length > 10+index).toBe(true,"No data is loading inside #school-list");
 				    	});
 
 					});
@@ -169,7 +169,7 @@ describe('university Test', function () {
    	});
 	describe("Feature : GPS Button ",function()
 	{
-		var gps = element(by.css('[ng-click="getGPSCoords()"]'));
+		var gps = element(by.css('[ng-click="toggleLocationIconAppearance()"]'));
 		var name = ["Enable GPS","Disable GPS"]
 		var show = ["Appear", "Disappear"]
 		for(var i =0 ; i < 2 ; ++i)
@@ -180,8 +180,15 @@ describe('university Test', function () {
 				{
 							it("Click GPS Button",function()
 							{
-								browser.wait(EC.visibilityOf(gps),3000,"Unable To Find GPS ([ng-click='getGPSCoords()']) Button");
-								gps.click();
+								browser.getCapabilities().then(function (caps) {
+						            var platformName = caps.caps_.platformName.toUpperCase();
+						          	if(platformName != 'ANDROID')
+						          	{
+						          		browser.wait(EC.visibilityOf(gps),3000,"Unable To Find GPS ([ng-click='getGPSCoords()']) Button");
+						          		gps.click();
+						          	}		
+						        });
+								
 							});
 
 							it ('[Incompelted] Check Color GPS icon is Changed ',function()
@@ -249,7 +256,7 @@ describe('university Test', function () {
 					 					it('Check more items loaded',function()
 					 					{
 					 						element.all(by.css('#school-list li:not(.ng-hide)')).then(function (items) {
-					 				    		expect(items.length > 10).toBe(true,"No data is loading inside #school-list");
+					 				    		expect(items.length > 10+ind).toBe(true,"No data is loading inside #school-list");
 					 				    	});
 
 					 					});

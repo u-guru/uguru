@@ -147,6 +147,8 @@ exports.config = {
                          // '../test_case/mobileTest/workflows/course.js',
                          // '../test_case/mobileTest/workflows/category.js',
                          // '../test_case/mobileTest/workflows/photo.js',
+                          '../test_case/mobileTest/sidemenu/signup.js',
+                         '../test_case/mobileTest/guruProfile/home.js',
                          '../test_case/mobileTest/guruProfile/editProfile.js'
                     ],
               becomeGuru:[

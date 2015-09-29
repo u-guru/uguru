@@ -77,111 +77,6 @@ section {
 			}
 		}
 	}
-	.start {
-		&#how {
-			header {
-				@include flex;
-				@include flex-center;
-				height: 64px;
-				h1 {
-					font-size: 32px;
-					font-weight: 600;
-					text-transform: uppercase;
-				}
-			}
-			button {
-				bottom: 0;
-				background: rgba(white,.1);
-			}
-			button:active {
-				background: rgba(white,.4);
-			}
-			#how-cards {
-				@include listless;
-				@include center-xy;
-				@include flex;
-				height: 375px;
-				overflow-y: hidden;
-				overflow-x: auto;
-				.how-card {
-					box-sizing: border-box;
-					width: 290px;
-					height: 375px;
-					min-width: -webkit-min-content;
-					.how-card-media, .how-card-desc {
-						box-sizing: border-box;
-						margin: 0 15px;
-						width: 290px;
-					}
-					.how-card-media {
-						border-radius: 10px 10px 0 0;
-						background: $slate;
-						height: 70%;
-					}
-					.how-card-desc {
-						@include flex;
-						@include flex-center;
-						border-radius: 0 0 10px 10px;
-						padding: 15px;
-						background: white;
-						height: 30%;
-						color: $charcoal;
-						p {
-							margin: 0;
-							font-size: 16px;
-							font-weight: 400;
-							text-align: center;
-						}
-					}
-					&:first-child {
-						.how-card-media, .how-card-desc {
-							margin-left: 30px;
-						}
-					}
-					&:last-child {
-						.how-card-media, .how-card-desc {
-							margin-right: 30px;
-						}
-					}
-					&:nth-child(1) {
-						.how-card-media {
-							background: $cerise;
-						}
-					}
-					&:nth-child(2) {
-						.how-card-media {
-							background: $orange;
-						}
-					}
-					&:nth-child(3) {
-						.how-card-media {
-							background: $gold;
-						}
-					}
-					&:nth-child(4) {
-						.how-card-media {
-							background: $moola;
-						}
-					}
-					&:nth-child(5) {
-						.how-card-media {
-							background: $shamrock;
-						}
-					}
-					&:nth-child(6) {
-						.how-card-media {
-							background: $lake;
-						}
-					}
-					&:nth-child(7) {
-						.how-card-media {
-							background: $eggplant;
-						}
-					}
-				}
-			}
-		}
-	}
 	.request {
 		&#request {
 			header {
@@ -383,26 +278,48 @@ section {
 		background: white;
 		border-radius: 5px;
 		color: $slate;
+		height:50%;
 		.content-wrapper {
 			position: relative;
 			padding: 60px 0 0;
 			text-align: center;
+			height:100%;
+			.content-body {
+				@include flex;
+				@include flex-wrap;
+				height:calc(100% - 64px); // account for button
+				h1,h2,h3 {
+					text-align: center;
+				}
+				p {
+					font-size:18px;
+					opacity:0.8;
+				}
+			}
+			.content-footer {
+				max-height:64px;
+			}
 			h2 {
 				color: $slate;
-				margin: 0 15px;
-				color: $charcoal;
 				font-weight: 700;
+				opacity:0.9;
 				font-size: 20px;
 				text-transform: uppercase;
 			}
 			p {
-				color: $slate;
+				color: $charcoal;
 				font-weight: 400;
 				font-size: 14px;
-				padding: 2px 15px 0;
+				padding:10px 20px 0;
+				margin: 0 auto;
+				line-height:20px;
 			}
 			button {
 				border-radius: 0 0 5px 5px;
+				position: absolute;
+			    width: 100%;
+			    left: 0;
+			    bottom: 0;
 			}
 		}
 
@@ -712,11 +629,15 @@ section {
 					.request-loc-address, .request-loc-geo {
 						@include flex-wrap;
 						display: none;
-						width: calc(200% + 2px);
 					}
 					.request-loc-address {
+						position: absolute;
+						z-index: 9999;
+						top: 46px;
+						right: 0;
 						border-top: 1px solid $smoke;
 						border-bottom: 1px solid $smoke;
+						width: 200%;
 						input {
 							border-left: 0;
 							border-right: 0;
@@ -735,10 +656,15 @@ section {
 						}
 					}
 					.request-loc-geo {
+						position: absolute;
+						z-index: 9999;
+						top: 46px;
+						left: 0;
 						padding: 15px;
 						background: white;
 						border-top: 2px solid $smoke;
 						border-bottom: 2px solid $smoke;
+						width: calc(200% + 2px);
 						> span {
 							display: block;
 							width: 100%;
@@ -764,24 +690,14 @@ section {
 						}
 					}
 					.enter-address:checked + div {
-						padding-bottom: 167px;
-					}
-					.enter-address:checked + div .request-loc-address {
-						@include flex;
-						position: absolute;
-						z-index: 9999;
-						top: 46px;
-						left: 0;
+						padding-bottom: 165px;
 					}
 					.use-location:checked + div {
-						padding-bottom: 110px;
+						padding-bottom: 108px;
 					}
+					.enter-address:checked + div .request-loc-address,
 					.use-location:checked + div .request-loc-geo {
 						@include flex;
-						position: absolute;
-						z-index: 9999;
-						top: 46px;
-						right: 0;
 					}
 				}
 			}
@@ -877,6 +793,11 @@ section {
 			border-top: 2px solid $smoke;
 		}
 	}
+}
+
+// AVAILABILITY MODAL
+.availability-modal {
+	background: $slate;
 }
 
 @media screen and (min-width:375px) {
@@ -1193,6 +1114,109 @@ section {
 	}
 }
 
+// HOW IT WORKS
+.how-it-works-view {
+	background: $charcoal;
+	height: 100%;
+	header {
+		padding-top: 20px;
+		height: 50px;
+	}
+	.header-up {
+		display: block;
+		margin: 0 auto;
+		height: 50px;
+		svg {
+			height: 100%;
+			fill: none;
+			stroke: white;
+			stroke-width: 6px;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
+	}
+	button {
+		bottom: 0;
+		background: rgba(white,.1);
+	}
+	button:active {
+		background: rgba(white,.4);
+	}
+	#how-cards-container {
+		height: calc(100% - 50px - 64px);
+		width: 100%;
+		overflow-y: hidden;
+		overflow-x: auto;
+		.breadcrumbs {
+			position: fixed;
+			width: 100%;
+			margin-top: 10%;
+		}
+	}
+	#how-cards {
+		@include listless;
+		@include flex;
+		padding-top: 15%;
+		box-sizing: content-box;
+		height: 70%;
+		width: 600%;
+		.how-card {
+			box-sizing: border-box;
+			width: 100%;
+			height: 100%;
+			.how-card-media, .how-card-desc {
+				box-sizing: border-box;
+				margin: 0 30px;
+				width: calc(100% - 60px);
+			}
+			.how-card-media {
+				position: relative;
+				border-radius: 10px 10px 0 0;
+				height: 70%;
+				h1 {
+					text-align: center;
+					font-size: 20px;
+					font-weight: 600;
+					line-height: 50px;
+				}
+				div {
+					@include flex;
+					@include flex-center;
+					position: absolute;
+					width: 100%;
+					height: calc(100% - 50px);
+					padding: 15px;
+					svg {
+						height: 100%;
+						width: auto;
+					}
+					&.bottom-0 {
+						padding-bottom: 25px;
+					}
+					&.top-0 {
+						padding-top: 25px;
+					}
+				}
+			}
+			.how-card-desc {
+				@include flex;
+				@include flex-center;
+				border-radius: 0 0 10px 10px;
+				padding: 15px;
+				background: white;
+				height: 30%;
+				color: $charcoal;
+				p {
+					margin: 0;
+					font-size: 16px;
+					font-weight: 400;
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+
 // UNIVERSITY
 .university-view {
 	background: $charcoal;
@@ -1202,19 +1226,27 @@ section {
 						url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat;
 		}
 		.geolocation-icon {
-			@include opacity(.5);
+			@include opacity(1);
 			@include center-y;
-			right: 10px;
+			right: 12px;
 			z-index: 0;
-			height: 18px;
+			height: 60px;
+			width:25%;
+			top:55%;
 			.ion-navigate {
 				@include opacity(.6);
-				color: white!important;
-				font-size: 18px!important;
+				font-size: 20px!important;
+				position: absolute;
+    			right: 0;
+    			top: 33%;
 			}
 			.ion-navigate.active,
 			.ion-navigate.activated {
 				@include opacity(1);
+			}
+			.ion-navigate.location-active {
+				color: $lake;
+				opacity:1;
 			}
 		}
 	}
@@ -1266,6 +1298,10 @@ section {
 						}
 						.school-distance {
 							float: right;
+						    bottom: 0;
+						    font-size:12px;
+						    padding-top: 5px;
+						    font-weight: 500;
 						}
 					}
 				}
@@ -1284,6 +1320,20 @@ section {
 	button {
 		&.active, &.activated {
 			@include opacity(.5);
+		}
+	}
+	a.header-menu {
+		position:absolute;
+	    width: 25% !important;
+	    right: 0;
+		svg {
+			padding:0px;
+			width: 28px;
+		    height: 28px;
+		    margin: 0 8px;
+		    position: absolute;
+		    right: 0;
+		    top: 11px;
 		}
 	}
 	#request-content {
@@ -1334,6 +1384,9 @@ section {
 				font-weight: 600;
 				text-align: center;
 				text-transform: uppercase;
+			}
+			&.activated, &.active {
+				opacity:0.6;
 			}
 		}
 	}
@@ -1678,7 +1731,7 @@ section {
 
 // SKILLS
 .skills-view {
-	background: #2B3234;
+	background: $charcoal;
 	header {
 		&:before {
 			background: url(../../img/onboarding/skills.jpg) no-repeat center center/cover,

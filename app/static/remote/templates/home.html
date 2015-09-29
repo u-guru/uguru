@@ -1,7 +1,7 @@
 <ion-view class='uguru-view home-view'>
   <a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'></a>
-  <section id="request-empty" class="request full-xy student-home bg-slate">
-    <header class="bg-charcoal">
+  <section id="request-empty" class="request full-xy student-home bg-white">
+    <header class="bg-lake">
        <div class='header-nav'>
         <a class="header-menu" ng-click='toggleRightSideMenu()'>
         	<svg viewBox="0 0 100 100">
@@ -15,22 +15,21 @@
     <div id="request-content">
       <div id="request-message">
         <div>
-          <div ng-include="img_base + 'templates/white.guru.svg.html'"></div>
           <h2>Aww, you haven't made any requests yet.<br/>Need anything?</h2>
           <div><span id='home-content-header'></span></div>
         <div>
 
-        <a id="request-button" ng-click='comingSoon()'>
+        <a id="request-button" ng-click='launchRequestModal(0)'>
           <span class="m10bottom">
-			<svg viewBox="0 0 100 100">
-			  <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
-			</svg>
+      			<svg viewBox="0 0 100 100">
+      			  <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+      			</svg>
           </span>
           <b>Request</b>
         </a>
       </div>
     </div>
-    <button class="home-footer-button btn-caps-fixed-bold left-0 bottom-0 bg-azure" ng-click='goToBecomeGuru()'>Become a Guru</button>
+    <button class="home-footer-button btn-caps-fixed-bold left-0 bottom-0 bg-slate" ng-click='goToBecomeGuru()'>Become a Guru</button>
   </section>
 
   <!-- Make this into a directive -->

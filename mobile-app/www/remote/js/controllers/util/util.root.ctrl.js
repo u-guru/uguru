@@ -320,8 +320,26 @@ angular.module('uguru.util.controllers')
         $scope.loader = {
             show: function() {
                 $ionicLoading.show({
-                    // template: '<div ng-include="' + $scope.img_base + 'templates/default.progress.spinner.html"></div>'
-                    template: 'Loading ...'
+
+                    templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html'
+                });
+                $scope.root.vars.loaderOn = true;
+            },
+            showAmbig: function() {
+                $ionicLoading.show({
+                    scope:$scope,
+                    templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html'
+                });
+                $scope.root.vars.loaderOn = true;
+            },
+            showSuccess: function(text, duration) {
+
+                $scope.successLoaderText = text || '';
+
+                $ionicLoading.show({
+                    scope: $scope,
+                    templateUrl: BASE + 'templates/u.loader.success.svg.html',
+                    duration: duration || 1000
                 });
                 $scope.root.vars.loaderOn = true;
             },

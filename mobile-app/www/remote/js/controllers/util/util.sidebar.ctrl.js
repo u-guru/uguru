@@ -122,12 +122,6 @@ angular.module('uguru.util.controllers')
       $state.go('admin.admin-home');
     }
 
-    // $scope.openAdmin = function() {
-    //   $ionicViewSwitcher.nextDirection('forward');
-    //   $ionicSideMenuDelegate.toggleRight();
-    //   $state.go('^.admin');
-    // }
-
 
     // pre-render these immediately
     $ionicModal.fromTemplateUrl(BASE + 'templates/faq.modal.html', {
@@ -724,7 +718,9 @@ angular.module('uguru.util.controllers')
 
         $timeout(function() {
           $scope.root.vars.guru_mode = true;
-          $ionicSideMenuDelegate.toggleRight();
+          if ($ionicSideMenuDelegate.isOpen()) {
+            $ionicSideMenuDelegate.toggleRight();
+          }
         }, 500)
 
         $state.go('^.guru');
@@ -745,7 +741,9 @@ angular.module('uguru.util.controllers')
 
       $timeout(function() {
         $scope.root.vars.guru_mode = false;
-        $ionicSideMenuDelegate.toggleRight();
+        if ($ionicSideMenuDelegate.isOpen()) {
+          $ionicSideMenuDelegate.toggleRight();
+        }
       }, 500)
 
       $state.go('^.home');

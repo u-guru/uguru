@@ -1,19 +1,17 @@
 <ion-modal-view  class='uguru-view bg-charcoal support-modal'>
-
 <section class="full-xy">
-
     <header class='text-center'>
         <div class="header-nav">
-            <a class="header-nav-back" ng-click="supportModal.hide()">
-                <i class='icon ion-chevron-down'>
-                </i>
-            </a>
+			<a class="header-down" ng-click="supportModal.hide()">
+				<svg viewBox="0 0 100 100">
+					<path d="M14,32 L50,68 L86,32"></path>
+				</svg>
+			</a>
         </div>
-        <h1 class="onboarding-message margin-auto inline-block">Support Q&A</h1>
+        <h1 class="text-center">Support Q &amp; A</h1>
     </header>
-
-  <ion-content class='white-bg has-header full-height' scroll='false'>
-    <div class='intercom-parent-container' ng-include="img_base + 'templates/intercom.default.html'"> </div>
-  </ion-content>
+	<ion-content class='bg-white full-height' scroll='false'>
+    	<div class='intercom-parent-container' ng-include="img_base + 'templates/intercom.default.html'"> </div>
+	</ion-content>
 </section>
 </ion-modal-view>

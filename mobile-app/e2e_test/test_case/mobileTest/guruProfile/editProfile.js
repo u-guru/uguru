@@ -24,12 +24,13 @@ describe('Guru Edit Profile Test', function () {
 	});
 	describe('Check all elements is not clickalbe before Edit Mode',function()
 	{
-		var photoClick = element(by.css('#profile-icon a'))
+		var photoClick = element(by.css('[ng-click="connectWithFacebook()"]'))
 	 	var str = ['Course','Major','Skills','Languages'];
 
 		it('Element : Photo',function()
 		{
-			expect(photoClick.getAttribute('ng-if')).toBe("TESTs","Not sure what value of NG-if should be");
+			//expect(photoClick.getAttribute('ng-if')).toBe("TESTs","Not sure what value of NG-if should be");
+			expect(photoClick.isPresent()).toBe(false,"Edit Photo Should be Hideden Before Edit Mode");
 		});
 		for(var j = 0 ; j <4 ; ++ j)
 		{
@@ -87,6 +88,7 @@ describe('Guru Edit Profile Test', function () {
 						var closeButton = element.all(by.css('.modal-backdrop.active .header-nav-back')).last();
 						var chooseList = element.all(by.repeater(title+' in user.'+title+'s'));
 
+
 						if(title =='course')
 						{
 							objList = element.all(by.css('#profile-'+title+'s li'));
@@ -119,11 +121,19 @@ describe('Guru Edit Profile Test', function () {
 						   				});
 									}
 									else
-									items[index].click();
+										items[index].click();
 								});
 							});
+							 if(title=='course')
+							 {
+						    	 pageSearch= element(by.model(title+'_search_text'));
+							 }
+						     else
+						     	pageSearch = element(by.model('search_text'));
+
 							it("check Page :"+ title,function()
 							{
+								browser.wait(EC.visibilityOf(pageTitle),3000);
 							    expect(pageTitle.getText()).toContain(title.toUpperCase());
 							});
 							it('[FIX BUGS] check Search Bar',function()
@@ -204,8 +214,23 @@ describe('Guru Edit Profile Test', function () {
 							{
 								it('Open Page',function()
 								{
-									browser.wait(EC.elementToBeClickable(addButton),2000);
-									addButton.click();
+									profileAdd.then(function(items)
+									{
+										browser.wait(EC.elementToBeClickable(items[index]),2000);
+										expect(items[index].isPresent()).toBe(true);
+										if(index >= 2)
+										{
+											doc.drag(element(by.id('profile')),0,1000);
+											// expect(items[index].getLocation()).toBe(0,"The Page is scrolling Down");
+											element(by.id('profile')).getLocation().then(function(result)
+							   				{
+									   			expect(result.y > 0).toBe(true,"The Page is not scrolling Down")
+							   					items[index].click();
+							   				});
+										}
+										else
+											items[index].click();
+									});
 								});
 
 								it('Delete Select Data',function()
