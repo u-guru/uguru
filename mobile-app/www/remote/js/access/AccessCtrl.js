@@ -49,12 +49,11 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
         $scope.redeemRecentlyPressed = false;
       }, 500)
     }
-
+    $scope.loader.showAmbig();
     if(AccessService.validate(code)){
-      $scope.loader.show();
+
       $scope.access.codeInput = '';
       //accessInput.removeEventListener('keyup', submitListener);
-
       $scope.redeemRecentlyPressed = false;
       if ($scope.platform.mobile) {
         cordova.plugins.Keyboard.close();
@@ -62,7 +61,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
       $timeout(function() {
         $scope.loader.hide();
-        LoadingService.show(0, 1500, 'Access Granted');
+        $scope.loader.showSuccess('Access Granted', 1500);
         $timeout(function() {
           $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
         }, 1000);
@@ -106,14 +105,16 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   };
 
   window.addEventListener('native.keyboardshow', keyboardShowHandler);
-// cordova.plugins.Keyboard.disableScroll(true);
-  window.addEventListener('native.keyboardhide', keyboardHideHandler);
+
+  // cordova.plugins.Keyboard.disableScroll(true);
+  // window.addEventListener('native.keyboardhide', keyboardHideHandler);
 
   var accessInput = document.getElementById('access-code-bar');
 
-  accessInput.addEventListener('keyup', submitListener);
+  accessInput.addEventListener('keyup', submitKeyupListener);
+  accessInput.addEventListener('keydown', submitKeydownListener);
 
-  function submitListener(e) {
+  function submitKeyupListener(e) {
 
     if($scope.access.codeInput.length > 0) {
       $scope.access.errorInputMsg = '';
@@ -123,31 +124,42 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     //if enter is pressed;
     if (key === 13) {
       $scope.checkAccessCode($scope.access.codeInput);
-      e.preventDefault();
+      // e.preventDefault();
     }
+
+
+
+  }
+
+  function submitKeydownListener(e) {
+
+
+    var key = e.keyCode || e.key || e.which;
+    //if enter is pressed;
+
+    if ((e.keyCode == 65 || e.keyCode == 88) && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        e.target.select();
+    }
+
+
 
   }
 
 
-  var redeemButton = document.getElementById('redeem-button')
-  function keyboardShowHandler(height) {
-    if(DeviceService.getPlatform() === 'android') {
-      redeemButton.style.visibility = 'hidden';
-    }
-  }
 
-  function keyboardHideHandler(e) {
-    if ($scope.keyboardExists && $scope.redeemRecentlyPressed) {
-      console.log('keyboardHideHandler prevented');
-      $timeout(function () {
-        accessInput.focus();
-      });
-      return;
-    }
-    accessInput.blur();
-    redeemButton.style.visibility = 'visible';
-    $scope.accessInputOnBlur();
-  }
+  // function keyboardHideHandler(e) {
+  //   if ($scope.keyboardExists && $scope.redeemRecentlyPressed) {
+  //     console.log('keyboardHideHandler prevented');
+  //     $timeout(function () {
+  //       accessInput.focus();
+  //     });
+  //     return;
+  //   }
+  //   accessInput.blur();
+  //   redeemButton.style.visibility = 'visible';
+  //   $scope.accessInputOnBlur();
+  // }
 
 
 

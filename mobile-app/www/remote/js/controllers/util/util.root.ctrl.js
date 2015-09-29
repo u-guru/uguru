@@ -159,6 +159,9 @@ angular.module('uguru.util.controllers')
         Version.getUpdatedVersionNum().then(
             //if user gets the right version
             function(response) {
+                if (LOCAL) {
+                    return;
+                }
                 var serverVersionNumber = parseFloat(JSON.parse(response).version);
                 $scope.root.vars.version = serverVersionNumber;
 
@@ -204,11 +207,8 @@ angular.module('uguru.util.controllers')
 
 
 
-          $scope.logoutUser = function(showAlert) {
-            if (showAlert || confirm('Are you sure you want to log out?')) {
-              if ($scope.settings && $scope.settings.icons) {
-                $scope.settings.icons.profile = false;
-              }
+          $scope.logoutUser = function(skipShowAlert) {
+            if (skipShowAlert || confirm('Are you sure you want to log out?')) {
               $scope.loader.show();
               $localstorage.setObject('user', []);
               $localstorage.setObject('appOnboarding', null);
@@ -217,18 +217,15 @@ angular.module('uguru.util.controllers')
               $ionicHistory.clearHistory();
               //toggle in the middle
               $timeout(function() {
-                $scope.loader.hide();
                 $scope.user = User.getLocal();
                 $scope.user.updateAttr = User.updateAttrUser;
                 $scope.user.createObj = User.createObj;
                 $scope.user.updateObj = User.updateObj;
                 $scope.root.vars.settings = {icons : {profile : true}};
-                $scope.success.show(500, 2000, 'You have been successfully logged out!');
-                $timeout(function(){
-                  $ionicSideMenuDelegate.toggleRight();
-                  $state.go('^.university');
-                }, 600)
-              }, 2000);
+                $scope.loader.showSuccess('You have been successfully logged out!', 2500);
+                $state.go('^.university');
+                $ionicSideMenuDelegate.toggleRight();
+              }, 1000);
 
 
             }
@@ -320,10 +317,31 @@ angular.module('uguru.util.controllers')
         $scope.loader = {
             show: function() {
                 $ionicLoading.show({
-                    // template: '<div ng-include="' + $scope.img_base + 'templates/default.progress.spinner.html"></div>'
-                    template: 'Loading ...'
+
+                    templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html'
                 });
                 $scope.root.vars.loaderOn = true;
+            },
+            showAmbig: function() {
+                $ionicLoading.show({
+                    scope:$scope,
+                    templateUrl: BASE + 'templates/u.loader.ambiguous.svg.html'
+                });
+                $scope.root.vars.loaderOn = true;
+            },
+            showSuccess: function(text, duration) {
+
+                $scope.successLoaderText = text || '';
+
+                $ionicLoading.show({
+                    scope: $scope,
+                    templateUrl: BASE + 'templates/u.loader.success.svg.html',
+                    duration: duration || 1000
+                });
+                $scope.root.vars.loaderOn = true;
+            },
+            updateSuccessText: function(text) {
+                $scope.successLoaderText = text || 'loading'
             },
             hide: function() {
                 $ionicLoading.hide();
@@ -608,7 +626,12 @@ angular.module('uguru.util.controllers')
 
         document.addEventListener("deviceready", function() {
 
+
             document.addEventListener("resume", function() {
+
+                if (LOCAL) {
+                    return;
+                }
 
                 // console.log('device is resuming....');
                 // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);

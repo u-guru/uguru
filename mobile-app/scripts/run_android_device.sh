@@ -1,15 +1,35 @@
-#### make sure the following ####
-##
-### 1. Local = is true, same as network ifconfig
-##
-### 2. rest_url = either network ip or local ip
-##
-### 3. Gulp build
+source ~/.bash_profile
+rm -rf "$(getconf DARWIN_USER_CACHE_DIR)/org.llvm.clang/ModuleCache"
+echo "Removing android"
+ionic platform rm android
+echo "Removingf facebook connect plugin"
+ionic plugin rm com.phonegap.plugins.facebookconnect
+echo
+echo "Remove cordova push plugin"
+# cordova plugin rm com.phonegap.plugins.PushPlugin
+# echo 'Creating local'
+echo
+echo "Adding Android platform"
+ionic platform add android
+echo "Re-adding facebook connect url"
+cordova -d plugin add ~/Git/packages/phonegap-facebook-plugin-master --variable APP_ID="1416375518604557" --variable APP_NAME="Uguru"
+echo
+echo "Adding extra support for android..."
+android update project --subprojects --path "platforms/android" --target android-19 --library "CordovaLib"
+android update project --subprojects --path "platforms/android" --target android-19 --library "com.phonegap.plugins.facebookconnect/Uguru-FacebookLib"
+echo
+cd platforms/android
+echo
+cp local.properties com.phonegap.plugins.facebookconnect/Uguru-FacebookLib
+# echo "Adding push plugin "
+echo ""
+# cordova plugin add https://github.com/phonegap-build/PushPlugin.git
+# echo
+mkdir com.phonegap.plugins.facebookconnect/Uguru-FacebookLib/ant-build
+cd com.phonegap.plugins.facebookconnect/Uguru-FacebookLib
+mkdir ant-build
+ant clean
+ant release
 
-echo 'running ios on local device...'
-echo 'minifying + compressing local assets..'
-gulp -b
-echo 'compiling all local assets..'
-cp dest/scripts/*.js www/remote/js/app.js && cp dest/styles/*.css www/remote/css/app_version.css
-echo 'running android'
-ionic run android -clr
+ionic build android
+ionic run android -clr --device

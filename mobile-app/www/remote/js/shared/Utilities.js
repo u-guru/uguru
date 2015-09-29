@@ -1,12 +1,11 @@
 angular
 .module('sharedServices')
 .factory("Utilities", [
-	'$cordovaSplashscreen',
 	'Settings',
 	Utilities
 	]);
 
-function Utilities($cordovaSplashscreen, Settings) {
+function Utilities(Settings) {
 
 	return {
 		getNetworkSpeed: getNetworkSpeed,
@@ -17,7 +16,8 @@ function Utilities($cordovaSplashscreen, Settings) {
 		getFileName: getFileName,
 		isElementInViewport: isElementInViewport,
 		transitionEndEventName: transitionEndEventName,
-		fireBeforeEnter: fireBeforeEnter
+		fireBeforeEnter: fireBeforeEnter,
+		rAF: rAF
 	}
 
 	function getNetworkSpeed() {
@@ -133,6 +133,16 @@ function Utilities($cordovaSplashscreen, Settings) {
 
 	function fireBeforeEnter() {
 		return BeforeEnterEvent;
+	}
+
+	function rAF() {
+	  return 
+	  	window.requestAnimationFrame ||
+	    window.webkitRequestAnimationFrame ||
+	    window.mozRequestAnimationFrame ||
+	    function(callback) {
+	      window.setTimeout(callback, 16);
+	    };
 	}
 
 	

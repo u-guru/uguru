@@ -24,6 +24,5 @@ ant release
 
 cd ../../../..
 
-cordova prepare android
 cordova build android
-# cordova run android -clr
+ionic run android -clr --device

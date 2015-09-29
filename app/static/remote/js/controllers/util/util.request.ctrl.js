@@ -71,10 +71,10 @@ angular.module('uguru.util.controllers')
       selected_price_option: null,
       current_price_options: $scope.selectedPriceTable,
       type: {
-        session: $scope.root.vars.last_verb_index_clicked === 0,
-        question: $scope.root.vars.last_verb_index_clicked === 1,
-        task: $scope.root.vars.last_verb_index_clicked === 2,
-        value: $scope.root.vars.last_verb_index_clicked
+        session: true,
+        question: false,
+        task: false,
+        value: false,
       },
       calendar: {
         weekday: "Today",
@@ -173,7 +173,7 @@ angular.module('uguru.util.controllers')
     if ($scope.request.type.task) {
       $scope.request.category = detailed_categories[$scope.root.vars.detailed_verbs_index_clicked];
     }
-    
+
 
     $scope.launchLocationModal = function() {
       !$scope.request.availability_edit || $scope.toggleAvailability();

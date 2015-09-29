@@ -26,12 +26,13 @@ angular.module('uguru.util.controllers')
   '$ionicBackdrop',
   'UniversityMatcher',
   'AnimationService',
+  'uTracker',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
-  AnimationService) {
+  AnimationService, uTracker) {
 
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
@@ -122,12 +123,6 @@ angular.module('uguru.util.controllers')
       $state.go('admin.admin-home');
     }
 
-    // $scope.openAdmin = function() {
-    //   $ionicViewSwitcher.nextDirection('forward');
-    //   $ionicSideMenuDelegate.toggleRight();
-    //   $state.go('^.admin');
-    // }
-
 
     // pre-render these immediately
     $ionicModal.fromTemplateUrl(BASE + 'templates/faq.modal.html', {
@@ -168,6 +163,8 @@ angular.module('uguru.util.controllers')
             focusFirstInput: false,
     }).then(function(modal) {
         $scope.universityModal = modal;
+
+        uTracker.track(tracker, 'University Modal');
     });
 
     // $scope.$on('modal.shown', function() {
@@ -180,6 +177,8 @@ angular.module('uguru.util.controllers')
     // });
 
     $scope.launchFAQModal = function() {
+
+      uTracker.track(tracker, 'FAQ Modal');
       $scope.faqModal.show();
     }
 
@@ -204,6 +203,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.launchSupportModal = function() {
+
+      uTracker.track(tracker, 'Support Modal');
       $scope.supportModal.show();
       $timeout(function() {
         initSupportChatEnterHandler()
@@ -212,10 +213,14 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.launchPrivacyModal = function() {
+
+
+      uTracker.track(tracker, 'Privacy Modal');
       $scope.privacyModal.show();
     }
 
     $scope.launchSignupModal = function(loginMode) {
+      uTracker.track(tracker, 'Signup Modal');
       if (loginMode)  {
         $scope.root.vars.loginMode = true;
       }
@@ -691,13 +696,11 @@ angular.module('uguru.util.controllers')
         $scope.loader.show();
         User.clearAttr({}, $scope.user.id).then(function(user) {
           $scope.loader.hide();
-          $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
-          $scope.logoutUser(true);
-          console.log('cleared user', user.plain());
+          $scope.loader.showSuccess(0, 2000,'Admin Account Successfully cleared!');
+          $scope.logoutUser();
           $localstorage.setObject('user', user.plain());
           $scope.user = user.plain();
           $state.go('^.university');
-
         },
 
         function(err) {
@@ -724,7 +727,9 @@ angular.module('uguru.util.controllers')
 
         $timeout(function() {
           $scope.root.vars.guru_mode = true;
-          $ionicSideMenuDelegate.toggleRight();
+          if ($ionicSideMenuDelegate.isOpen()) {
+            $ionicSideMenuDelegate.toggleRight();
+          }
         }, 500)
 
         $state.go('^.guru');
@@ -732,7 +737,7 @@ angular.module('uguru.util.controllers')
 
     $scope.goToStudent = function() {
 
-      //show the loader immediately
+
       $scope.loader.show();
       // AnimationService.flip();
 
@@ -745,16 +750,13 @@ angular.module('uguru.util.controllers')
 
       $timeout(function() {
         $scope.root.vars.guru_mode = false;
-        $ionicSideMenuDelegate.toggleRight();
+        if ($ionicSideMenuDelegate.isOpen()) {
+          $ionicSideMenuDelegate.toggleRight();
+        }
       }, 500)
 
       $state.go('^.home');
-
     }
-
-
-
-
 
     $scope.showComingSoon = function() {
       $scope.progress_active = true;

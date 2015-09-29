@@ -9,13 +9,10 @@
 	</div>
     <div class='content-wrapper'>
         <h2>Confirm phone number</h2>
-		<input class="input-ghost-dark m15xy" type='tel' placeholder='510-121-1242' id='phone-number-input'>{{user.phone_number}}</input>
-		<input class="input-ghost-dark m15xy" ng-if='user.phone_number_token' placeholder='confirm code' type='password' id='confirm-code-input'></input>
+		<input class="input-ghost-dark m15xy" type='tel' ng-model='user.phone_number' placeholder='510-121-1242' id='phone-number-input'></input>
+		<input class="input-ghost-dark m15xy" ng-show='user.phone_number_token' placeholder='confirm code' type='password' id='confirm-code-input'></input>
 		<button class='semibold bg-campus white-text' ng-if='!user.phone_number_token' id='send-confirm-code'>Send</button>
-		<div class='ugrid-2' ng-if='user.phone_number && user.phone_number_token'>
-			<div>
-				<button class='semibold bg-campus white-text' id='resend-confirm-code'>Resend</button>
-			</div>
+		<div class='ugrid' ng-if='user.phone_number && user.phone_number_token'>
 			<div>
 				<button class='semibold bg-campus white-text' id='verify-confirm-code'>Verify</button>
 			</div>

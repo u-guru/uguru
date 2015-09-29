@@ -29,13 +29,10 @@ body {
 
 body.platform-ios ul li.active, body.platform-ios ul li.activated {
   background: rgba(255, 255, 255, 0.2); }
-
 body.platform-ios ul li ::selection {
   background: rgba(255, 255, 255, 0.1); }
-
 body.platform-ios ul li a.active, body.platform-ios ul li a.activated {
   background: rgba(255, 255, 255, 0.2); }
-
 body.platform-ios ul li a:hover, body.platform-ios ul li .list .list-item a:hover {
   background: rgba(255, 255, 255, 0.1); }
 
@@ -48,23 +45,19 @@ section {
 /* ---------- MISCELLANEOUS */
 .uguru-view * {
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important; }
-
 .uguru-view h1.verified span svg {
   display: inline !important;
   width: 20px;
   height: 20px; }
   .uguru-view h1.verified span svg path:first-child {
     fill: #50A5DD; }
-
 .uguru-view .request#request header:before {
   background: url(../images/school.jpg) no-repeat center center/cover; }
-
 .uguru-view .request#request header .request-header h1 {
   padding-top: 20px;
   width: 100%;
   text-align: center;
   font-size: 24px; }
-
 .uguru-view .request#request header .request-header .request-icon {
   border-radius: 1000px;
   -ms-box-orient: horizontal;
@@ -105,10 +98,8 @@ section {
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg); }
-
 .uguru-view .request#request #request-content {
   height: calc(100% / 3 * 2); }
-
 .uguru-view .request#request #request-list {
   height: calc(100% - 64px);
   overflow: auto; }
@@ -129,7 +120,6 @@ section {
       width: 50px;
       height: 50px;
       background: #8A9EA3; }
-
 .uguru-view .request #request-tabs ul {
   list-style: none;
   margin: 0;
@@ -200,7 +190,6 @@ section {
       color: #2B3234;
       font-size: 12px;
       line-height: 20px; }
-
 @media screen and (max-width: 320px) {
   .uguru-view body, .uguru-view input, .uguru-view button {
     font-size: 20px; }
@@ -293,25 +282,51 @@ section {
     width: 100%;
     background: white;
     border-radius: 5px;
-    color: #40484B; }
+    color: #40484B;
+    height: 50%; }
     .uguru-popup .uguru-popup-content .content-wrapper {
       position: relative;
       padding: 60px 0 0;
-      text-align: center; }
+      text-align: center;
+      height: 100%; }
+      .uguru-popup .uguru-popup-content .content-wrapper .content-body {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        height: calc(100% - 64px); }
+        .uguru-popup .uguru-popup-content .content-wrapper .content-body h1, .uguru-popup .uguru-popup-content .content-wrapper .content-body h2, .uguru-popup .uguru-popup-content .content-wrapper .content-body h3 {
+          text-align: center; }
+        .uguru-popup .uguru-popup-content .content-wrapper .content-body p {
+          font-size: 18px;
+          opacity: 0.8; }
+      .uguru-popup .uguru-popup-content .content-wrapper .content-footer {
+        max-height: 64px; }
       .uguru-popup .uguru-popup-content .content-wrapper h2 {
         color: #40484B;
-        margin: 0 15px;
-        color: #2B3234;
         font-weight: 700;
+        opacity: 0.9;
         font-size: 20px;
         text-transform: uppercase; }
       .uguru-popup .uguru-popup-content .content-wrapper p {
-        color: #40484B;
+        color: #2B3234;
         font-weight: 400;
         font-size: 14px;
-        padding: 2px 15px 0; }
+        padding: 10px 20px 0;
+        margin: 0 auto;
+        line-height: 20px; }
       .uguru-popup .uguru-popup-content .content-wrapper button {
-        border-radius: 0 0 5px 5px; }
+        border-radius: 0 0 5px 5px;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0; }
   .uguru-popup .guru-logo-container {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -370,7 +385,6 @@ section {
 
 .terms-modal header h1, .faq-modal header h1, .support-modal header h1 {
   color: white; }
-
 .terms-modal ion-content, .faq-modal ion-content, .support-modal ion-content {
   height: calc(100% - 50px);
   margin-top: 50px; }
@@ -437,7 +451,6 @@ section {
   #experience-modal .main textarea {
     font-size: 20px;
     height: 100%; } }
-
 .signup-modal #account-form {
   box-sizing: border-box;
   padding: 15px; }
@@ -483,7 +496,6 @@ section {
 
 .faq-modal header.bg-charcoal {
   z-index: 1000 !important; }
-
 .faq-modal iframe {
   min-height: 100%;
   width: 100%; }
@@ -700,7 +712,6 @@ section {
 @media screen and (min-width: 375px) {
   .request-modal .request-content .request-time .request-time-needed ul li div {
     padding: 10px 0; } }
-
 /* ---------- SIDEBAR & MENUS */
 #side-menu-left-overlay.active {
   background: rgba(43, 50, 52, 0.8);
@@ -791,34 +802,26 @@ section {
       width: 100%;
       height: 100%;
       background: url(../../img/school.jpg) center center/cover; } }
-
 .menu-guru .list {
   background: #40484B; }
-
 .menu-guru .list-item.active, .menu-guru .list-item.activated {
   background: #8A9EA3; }
-
 .menu-guru .list-item .list-item-icon svg path, .menu-guru .list-item .list-item-icon svg circle {
   stroke: #fff; }
-
 .menu-guru .list-item-profile {
   background: rgba(138, 158, 163, 0.75); }
-
 .menu-guru .list-item-agenda {
   background: white;
   color: #2B3234; }
   .menu-guru .list-item-agenda.active, .menu-guru .list-item-agenda.activated {
     background: rgba(255, 255, 255, 0.9); }
-
 .menu-guru .list-item-guru {
   display: none; }
-
 .menu-guru .list-item-student {
   background: rgba(138, 158, 163, 0.75); }
 
 .menu-student .list {
   background: white; }
-
 .menu-student .list-item {
   color: #40484B; }
   .menu-student .list-item .list-item-icon svg path {
@@ -828,25 +831,21 @@ section {
     color: white; }
     .menu-student .list-item.activated svg path, .menu-student .list-item.active svg path {
       stroke: white; }
-
 .menu-student .list-item-profile {
   background: #50A5DD;
   color: white; }
   .menu-student .list-item-profile .list-item-icon svg circle {
     stroke: white; }
-
 .menu-student .list-item-agenda {
   background: #40484B;
   color: white; }
   .menu-student .list-item-agenda:active, .menu-student .list-item-agenda:hover {
     background: rgba(64, 72, 75, 0.9); }
-
 .menu-student .list-item-student {
   background: #40484B;
   color: white; }
   .menu-student .list-item-student svg path {
     stroke: white !important; }
-
 .menu-student .list-item-guru {
   background: #50A5DD;
   color: white; }
@@ -1073,8 +1072,8 @@ section {
   .university-view header:before {
     background: url(../../img/onboarding/school.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat; }
   .university-view header .geolocation-icon {
-    filter: alpha(opacity=50);
-    opacity: 0.5;
+    filter: alpha(opacity=100);
+    opacity: 1;
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -1082,17 +1081,24 @@ section {
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
-    right: 10px;
+    right: 12px;
     z-index: 0;
-    height: 18px; }
+    height: 60px;
+    width: 25%;
+    top: 55%; }
     .university-view header .geolocation-icon .ion-navigate {
       filter: alpha(opacity=60);
       opacity: 0.6;
-      color: white !important;
-      font-size: 18px !important; }
+      font-size: 20px !important;
+      position: absolute;
+      right: 0;
+      top: 33%; }
     .university-view header .geolocation-icon .ion-navigate.active,
     .university-view header .geolocation-icon .ion-navigate.activated {
       filter: alpha(opacity=100);
+      opacity: 1; }
+    .university-view header .geolocation-icon .ion-navigate.location-active {
+      color: #50A5DD;
       opacity: 1; }
   .university-view #school-list ul li a, .university-view #school-list-modal ul li a {
     font-weight: 300; }
@@ -1129,17 +1135,31 @@ section {
       .university-view #school-list ul li a .school-name .school-state, .university-view #school-list-modal ul li a .school-name .school-state {
         text-transform: uppercase; }
       .university-view #school-list ul li a .school-name .school-distance, .university-view #school-list-modal ul li a .school-name .school-distance {
-        float: right; }
+        float: right;
+        bottom: 0;
+        font-size: 12px;
+        padding-top: 5px;
+        font-weight: 500; }
   .university-view #school-list ul li a:active.active, .university-view #school-list ul li a:active.activated, .university-view #school-list ul li a:focus.active, .university-view #school-list ul li a:focus.activated, .university-view #school-list ul li a:hover.active, .university-view #school-list ul li a:hover.activated, .university-view #school-list-modal ul li a:active.active, .university-view #school-list-modal ul li a:active.activated, .university-view #school-list-modal ul li a:focus.active, .university-view #school-list-modal ul li a:focus.activated, .university-view #school-list-modal ul li a:hover.active, .university-view #school-list-modal ul li a:hover.activated {
     background: rgba(255, 255, 255, 0.2); }
 
 .home-view button.active, .home-view button.activated {
   filter: alpha(opacity=50);
   opacity: 0.5; }
-
+.home-view a.header-menu {
+  position: absolute;
+  width: 25% !important;
+  right: 0; }
+  .home-view a.header-menu svg {
+    padding: 0px;
+    width: 28px;
+    height: 28px;
+    margin: 0 8px;
+    position: absolute;
+    right: 0;
+    top: 11px; }
 .home-view #request-content {
   height: calc(100% - 50px - 64px); }
-
 .home-view #request-message {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1217,21 +1237,20 @@ section {
       font-weight: 600;
       text-align: center;
       text-transform: uppercase; }
+    .home-view #request-message #request-button.activated, .home-view #request-message #request-button.active {
+      opacity: 0.6; }
 
 @media screen and (min-width: 375px) {
   .home-view #request-message > div h2 {
     font-size: 20px; } }
-
 @media screen and (min-height: 600px) {
   .request#request-empty #request-message > div > div svg {
     max-height: 150px; } }
-
 /* ---------- GURU ONBOARDING */
 .onboarding .onboarding-search {
   box-sizing: border-box; }
   .onboarding .onboarding-search input {
     width: calc(100% - 25px); }
-
 .onboarding progress, .onboarding .progress {
   position: absolute;
   top: 0;
@@ -1250,24 +1269,18 @@ section {
     width: 95%; }
   .onboarding progress span[data-value="99"], .onboarding .progress span[data-value="99"] {
     width: 86%; }
-
 .onboarding header h1:not(header .header-nav a h1) {
   text-align: center; }
-
 .onboarding .onboarding-list {
   height: calc(100% / 3 * 2);
   overflow: auto; }
-
 .onboarding#demographic header:before {
   background: url(../images/school.jpg) no-repeat center center/cover; }
-
 .onboarding#demographic header h1 {
   font-size: 24px; }
-
 .onboarding#demographic #demographic-grid > ul > li:not(.active) {
   filter: alpha(opacity=30);
   opacity: 0.3; }
-
 .onboarding#demographic #demographic-grid ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1405,7 +1418,6 @@ section {
         border-color: rgba(80, 165, 221, 0.1); }
       .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:hover {
         background: rgba(80, 165, 221, 0.05); }
-
 .onboarding#start {
   background: #40484B; }
   .onboarding#start #start-container {
@@ -1998,7 +2010,6 @@ section {
 /* ---------- CREDIBILITY & RANKING */
 .credibility-view header {
   position: relative; }
-
 .credibility-view #credit-slider {
   position: absolute;
   bottom: 0;
@@ -2119,7 +2130,6 @@ section {
       color: #50A5DD; }
       .credibility-view #credit-slider ul #credit-email a:active .credit-icon, .credibility-view #credit-slider ul #credit-email a:focus .credit-icon, .credibility-view #credit-slider ul #credit-email a:hover .credit-icon {
         background: #50A5DD; }
-
 .credibility-view #credibility-content-wrapper {
   position: relative;
   background: #40484B;
@@ -2180,7 +2190,6 @@ section {
       .credibility-view #credit-slider ul li a .credit-icon {
         width: 60px;
         height: 60px; } }
-
 @media screen and (min-width: 414px) {
   .credibility-view #credit-slider ul li {
     font-size: 18px; }
@@ -2190,10 +2199,8 @@ section {
       .credibility-view #credit-slider ul li a .credit-icon {
         width: 70px;
         height: 70px; } }
-
 .guru-view header:before {
   background: url(../../img/onboarding/school.jpg) no-repeat center center/cover; }
-
 .guru-view #guru-ranking {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -2294,10 +2301,8 @@ section {
       margin-bottom: 7px; }
       .guru-view #guru-ranking #guru-stats .stats-bar svg {
         height: 10px; }
-
 .guru-view .tip-container h2 {
   font-size: 22px; }
-
 .guru-view .tip-container p {
   margin-top: 10px;
   font-size: 18px; }
@@ -2311,7 +2316,6 @@ section {
     transform: none; }
   .guru-view #guru-ranking #guru-stats .stats-bar {
     margin-bottom: 9px; } }
-
 @media screen and (min-width: 414px) {
   .guru-view #guru-ranking > div {
     -webkit-transform: scale(1.2);
@@ -2319,7 +2323,6 @@ section {
     -ms-transform: scale(1.2);
     -o-transform: scale(1.2);
     transform: scale(1.2); } }
-
 /* ---------- SAMIR */
 .smaller-list-font {
   font-size: 85%; }
@@ -2363,3 +2366,5 @@ section {
     position: absolute;
     top: 10px;
     left: 10px; }
+
+/*# sourceMappingURL=style.css.map */

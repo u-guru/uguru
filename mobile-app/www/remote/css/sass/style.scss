@@ -278,26 +278,48 @@ section {
 		background: white;
 		border-radius: 5px;
 		color: $slate;
+		height:50%;
 		.content-wrapper {
 			position: relative;
 			padding: 60px 0 0;
 			text-align: center;
+			height:100%;
+			.content-body {
+				@include flex;
+				@include flex-wrap;
+				height:calc(100% - 64px); // account for button
+				h1,h2,h3 {
+					text-align: center;
+				}
+				p {
+					font-size:18px;
+					opacity:0.8;
+				}
+			}
+			.content-footer {
+				max-height:64px;
+			}
 			h2 {
 				color: $slate;
-				margin: 0 15px;
-				color: $charcoal;
 				font-weight: 700;
+				opacity:0.9;
 				font-size: 20px;
 				text-transform: uppercase;
 			}
 			p {
-				color: $slate;
+				color: $charcoal;
 				font-weight: 400;
 				font-size: 14px;
-				padding: 2px 15px 0;
+				padding:10px 20px 0;
+				margin: 0 auto;
+				line-height:20px;
 			}
 			button {
 				border-radius: 0 0 5px 5px;
+				position: absolute;
+			    width: 100%;
+			    left: 0;
+			    bottom: 0;
 			}
 		}
 
@@ -1204,19 +1226,27 @@ section {
 						url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat;
 		}
 		.geolocation-icon {
-			@include opacity(.5);
+			@include opacity(1);
 			@include center-y;
-			right: 10px;
+			right: 12px;
 			z-index: 0;
-			height: 18px;
+			height: 60px;
+			width:25%;
+			top:55%;
 			.ion-navigate {
 				@include opacity(.6);
-				color: white!important;
-				font-size: 18px!important;
+				font-size: 20px!important;
+				position: absolute;
+    			right: 0;
+    			top: 33%;
 			}
 			.ion-navigate.active,
 			.ion-navigate.activated {
 				@include opacity(1);
+			}
+			.ion-navigate.location-active {
+				color: $lake;
+				opacity:1;
 			}
 		}
 	}
@@ -1268,6 +1298,10 @@ section {
 						}
 						.school-distance {
 							float: right;
+						    bottom: 0;
+						    font-size:12px;
+						    padding-top: 5px;
+						    font-weight: 500;
 						}
 					}
 				}
@@ -1286,6 +1320,20 @@ section {
 	button {
 		&.active, &.activated {
 			@include opacity(.5);
+		}
+	}
+	a.header-menu {
+		position:absolute;
+	    width: 25% !important;
+	    right: 0;
+		svg {
+			padding:0px;
+			width: 28px;
+		    height: 28px;
+		    margin: 0 8px;
+		    position: absolute;
+		    right: 0;
+		    top: 11px;
 		}
 	}
 	#request-content {
@@ -1336,6 +1384,9 @@ section {
 				font-weight: 600;
 				text-align: center;
 				text-transform: uppercase;
+			}
+			&.activated, &.active {
+				opacity:0.6;
 			}
 		}
 	}

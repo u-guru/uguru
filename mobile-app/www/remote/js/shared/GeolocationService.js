@@ -10,7 +10,7 @@ angular.module('uguru.root.services')
 
 function Geolocation($localstorage, $timeout, University,
   Utilities, Settings) {
-
+  var scope;
   var deviceGPS = {
     sortByLocation: sortByLocation,
     enableGPS: enableGPS,
@@ -28,38 +28,73 @@ function Geolocation($localstorage, $timeout, University,
     }
   }
 
-  function getLocation() {
+  function getLocation(scope) {
+    scope.loader.showAmbig();
+    scope = scope;
     var posOptions = {
-      timeout: 10000,
+      timeout: 3000,
       enableHighAccuracy: false, //may cause high errors if true
     }
     return navigator.geolocation.getCurrentPosition(geoSuccess, geoError, posOptions);
 
     function geoSuccess(position) {
       console.log('location found!', position.coords.latitude, position.coords.longitude);
+
       var nearestResults = [];
       nearestResults = sortByLocation( position.coords.latitude,
                                 position.coords.longitude,
                                 University.getTargetted());
-
+      if (scope) {
+        scope.nearestResults = nearestResults;
+        scope.user.last_position = position.coords;
+        scope.isLocationActive = true;
+        scope.isLocationGiven = true;
+        scope.loader.hide();
+      }
       return nearestResults;
       //$localstorage.setObject('nearest-universities', $scope.universities);
-    } 
+    }
     function geoError(error) {
-        alert('Sorry! Please check your privacy settings check your GPS signal.');
+        switch(error.code) {
+          case 1:
+            alert('Sorry! Please enable your GPS settings.');
+            break;
+          case 2:
+            alert('Sorry! Please check your GPS signal.');
+            break;
+          case 3:
+            alert('Sorry! Please check your GPS signal.');
+            break;
+        }
+
     }
   }
 
   function sortByLocation(userLat, userLong, list) {
+    var numberFormatter = new Intl.NumberFormat();
     for(var i=0; i<list.length; i++) {
-      list[i].miles = Math.round(Utilities.getDistanceInMiles(
+
+      list[i].rawMiles = Utilities.getDistanceInMiles(
                                     userLat, userLong, 
-                                    list[i].latitude, list[i].longitude));
+                                    list[i].latitude, list[i].longitude);
+
+      list[i].miles = numberFormatter.format(Math.round(list[i].rawMiles));
+
     }
+    // ASK HURSHAL ABOUT THIS
+    // for(var i=0; i<list.length; i++) {
+    //   var item = list[i];
+    //   item.rawMiles = Utilities.getDistanceInMiles(
+    //                                 userLat, userLong, 
+    //                                 item.latitude, item.longitude);
+
+    //   item.miles = numberFormatter.format(Math.round(item.rawMiles));
+    // }
+
     function compareDistance(a, b) {
-      if (a.miles < b.miles)
+      if (a.rawMiles < b.rawMiles)
         return -1;
-      if (a.miles > b.miles)
+      if (a.rawMiles > b.rawMiles)
         return 1;
       return 0;
     }
