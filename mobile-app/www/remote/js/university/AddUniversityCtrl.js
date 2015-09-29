@@ -16,12 +16,11 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'DeviceService',
   'uTracker',
   '$q',
-  'UniversityWorker',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher, $ionicSlideBoxDelegate,
-  DeviceService, uTracker, $q, UniversityWorker) {
+  DeviceService, uTracker, $q) {
 
   console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
   uTracker.setUser('mp', 'sept28');

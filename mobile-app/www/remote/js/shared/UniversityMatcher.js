@@ -1,5 +1,4 @@
-angular
-.module('sharedServices')
+angular.module('sharedServices')
 .factory("UniversityMatcher", [
 	'University',
 	'$q',
@@ -147,10 +146,12 @@ function UniversityMatcher(University, $q) {
 		return matchedList;
 	}
 	
-	onmessage = function(e) {
-		var input = e.data.input
-		var matches = cachedMatch(input);
-		postMessage(matches);
-	}
+	// onmessage = function(e) {
+	// 	var input = e.data.input
+	// 	var matches = cachedMatch(input);
+	// 	postMessage(matches);
+	// }
 
 }
+
+

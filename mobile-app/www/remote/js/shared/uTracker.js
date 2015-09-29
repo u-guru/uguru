@@ -83,8 +83,8 @@ function uTracker($localstorage, DeviceService) {
 						    '$Device_UUID': DeviceService.getUUID(),
 						    '$Device_Model': DeviceService.getModel(),
 						    '$Device_Platform': DeviceService.getPlatform(),
-						    '$Device_Version': DeviceService.getVersion(),
-						    '$Network_State': navigator.connection.type
+						    '$Device_Version': DeviceService.getVersion()
+						    //'$Network_State': navigator.connection.type || 'undefined'
 						}
 					)
 					break;
