@@ -18,10 +18,11 @@ angular.module('uguru.student.controllers', [])
     '$ionicActionSheet',
     '$ionicPopover',
     'uTracker',
+    'AnimationService',
     function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $ionicModal, $timeout, $q, University, $localstorage,
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
-        $ionicActionSheet, $ionicPopover, uTracker) {
+        $ionicActionSheet, $ionicPopover, uTracker, AnimationService) {
 
 
         $ionicSideMenuDelegate.canDragContent(true);
@@ -126,8 +127,10 @@ angular.module('uguru.student.controllers', [])
         }
 
         $scope.goToBecomeGuru = function() {
-            uTracker(tracker, 'Become Guru');
-            $ionicViewSwitcher.nextDirection('forward');
+
+            uTracker.track(tracker, 'Become Guru');
+            
+            $ionicViewSwitcher.nextDirection('none');
             $state.go('^.become-guru');
         }
 

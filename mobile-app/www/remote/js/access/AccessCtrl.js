@@ -40,7 +40,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     codeInput: '',
     errorInputMsg: null,
   };
-
+  
   $scope.checkAccessCode = function(code) {
 
     if ($scope.keyboardExists && !$scope.redeemRecentlyPressed) {

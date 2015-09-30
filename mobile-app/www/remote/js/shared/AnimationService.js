@@ -2,10 +2,11 @@ angular
 .module('sharedServices')
 .factory("AnimationService", [
 	'DeviceService',
+	'$timeout',
 	AnimationService
 		]);
 
-function AnimationService(DeviceService) {
+function AnimationService(DeviceService, $timeout) {
 
 	return {
 		flip: flip
@@ -37,11 +38,28 @@ function AnimationService(DeviceService) {
 		        function (msg) {alert("error: " + msg)} // called in case you pass in weird values
 	      	);	
 		} else if(!DeviceService.isMobile()) {
+			// var pane = document.querySelectorAll('body')[0];
+			// pane.style.transition = '3s';
+			// if(pane.style.transform!=='rotateY(360deg)'){
+			// 	pane.style.transform = 'rotateY(360deg)';
+			// } else pane.style.transform = 'rotateY(0deg)';
+
+
 			var pane = document.querySelectorAll('body')[0];
-			pane.style.transition = '3s';
-			if(pane.style.transform!=='rotateY(360deg)'){
-				pane.style.transform = 'rotateY(360deg)';
-			} else pane.style.transform = 'rotateY(0deg)';
+			
+				pane.style.transition = '1s';
+				pane.style.transform = 'rotateY(90deg)';
+
+				$timeout(function() {
+					pane.style.transition = '0s';
+					pane.style.transform = 'rotateY(-90deg)';
+
+					$timeout(function() {
+						pane.style.transition = '1s';
+						pane.style.transform = 'rotateY(0deg)';
+					}, 100);
+				}, 1100);
+
 		}
     	
 	}
