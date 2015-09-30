@@ -1,8 +1,8 @@
 var model = "input.search_text"
-describe('university Test', function () {
+describe('University test', function () {
 
 
- 	describe("University page have Default List and infinity scroll test",function()
+ 	describe("University page have Default List and albe to do infinity scroll",function()
 	{
 		it("Popular List is enable",function()
 			{

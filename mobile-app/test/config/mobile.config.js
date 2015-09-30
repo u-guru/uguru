@@ -77,8 +77,9 @@ exports.config = {
         {
             access: ['../test_case/mobileTest/access.js'],
             
-            university: ['../test_case/mobileTest/workflows/access.js',
-                         '../test_case/mobileTest/university.js'
+            university: [
+                         '../test_case/mobileTest/workflows/access.js',
+                         '../e2e/university/*Spec.js'
                         ],
 
             sign:   [
