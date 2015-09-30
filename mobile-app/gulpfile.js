@@ -66,6 +66,17 @@ gulp.task('replace', function() {
         ]
       }))
       .pipe(gulp.dest('./www/remote/js/'));
+
+    gulp.src('./platforms/android/AndroidManifest.xml')
+      .pipe(replace({
+        patterns: [
+        {
+          match: /adjustResize/g,
+          replacement: 'adjustPan'
+        }
+        ]
+      }))
+      .pipe(gulp.dest('./platforms/android/'));
 });
 
 
