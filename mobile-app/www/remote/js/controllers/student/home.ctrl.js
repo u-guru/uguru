@@ -17,10 +17,11 @@ angular.module('uguru.student.controllers', [])
     '$ionicViewSwitcher',
     '$ionicActionSheet',
     '$ionicPopover',
+    'uTracker',
     function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $ionicModal, $timeout, $q, University, $localstorage,
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
-        $ionicActionSheet, $ionicPopover) {
+        $ionicActionSheet, $ionicPopover, uTracker) {
 
 
         $ionicSideMenuDelegate.canDragContent(true);
@@ -92,7 +93,7 @@ angular.module('uguru.student.controllers', [])
                 $scope.root.vars.detailed_verbs_index_clicked = verb_index;
             }
 
-            $ionicModal.fromTemplateUrl(BASE + 'templates/request.modal.html', {
+            $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
                 scope: $scope,
                 animation: 'slide-in-up'
             }).then(function(modal) {
@@ -182,11 +183,11 @@ angular.module('uguru.student.controllers', [])
                 checkOnboardingStatus();
             }, 1000);
 
-/*
+
             $timeout(function() {
                 $scope.launchRequestModal();
             }, 1000);
-*/
+
 
         });
 
