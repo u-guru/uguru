@@ -20,6 +20,8 @@
   <preference name="StatusBarOverlaysWebView" value="true"/>
   <preference name="StatusBarStyle" value="lightcontent"/>
   <platform name="android">
+    <preference name="Fullscreen" value="false"/>
+    <preference name="android-windowSoftInputMode" value="stateVisible|adjustPan"/>
     <preference name="SplashScreen" value="screen"/>
     <preference name="SplashScreenDelay" value="10000"/>
     <preference name="SplashScreenBackgroundColor" value="#FFFFFF"/>
