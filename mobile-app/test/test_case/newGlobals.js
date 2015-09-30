@@ -286,6 +286,7 @@ var global = function() {
   {
     var i = 0;
     var check = true
+    
     if (clear != null)
       check = false
     if (index != null)

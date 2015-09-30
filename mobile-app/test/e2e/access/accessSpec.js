@@ -39,9 +39,9 @@ describe('Access Page Test', function () {
 	for( i = 0; i < ListOfCode.length; ++ i)
 	{
         (function(code) {
-        	describe('Test Random access code #'+i,function()
+        	describe('Test random access code #'+i,function()
     			 {
-              it("Enter Random access code : "+ code,function()
+              it("Enter random access code : "+ code,function()
       				{
       					//doc.setInput(testSpec,0,false);
                     // doc.setInput(testSpec,0,'access.codeInput',false);
@@ -49,7 +49,7 @@ describe('Access Page Test', function () {
       				});
       	 
 
-           		it("Check Message is shown Correct",function()
+           		it("Check message is shown correct",function()
       				{
       					// startButton.click();
                 access.RedeemClick();

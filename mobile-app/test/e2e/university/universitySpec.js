@@ -1,8 +1,10 @@
 
 var University = require('./universityPageObject.js');
-
+var Access = require('../access/accessPageObject.js');
 describe('University test', function () {
+
     var university = new University();
+    var access  = new Access();
 
  	describe("University page show a default List",function()
 	{
@@ -12,11 +14,12 @@ describe('University test', function () {
 		});
 		it('Check school list has repeating school name',function()
 		{
-			doc.checkLists("school-list","university.name");
+			// doc.checkLists("school-list","university.name");
+			university.checkRepeatingData();
 		});
 	});
 
-	describe("School list able to do infinity scroll",function()
+	describe("Infinity scroll test for school-list",function()
 	{
 		for(var i = 8; i < 40; i+=8)
 		{
@@ -27,7 +30,7 @@ describe('University test', function () {
 				});
 				it('Check school list is increased',function()
 				{
-					university.ChekSchoolListIsIncread(index);
+					university.ChekSchoolListIsIncrease(index);
 				});
 				it ('Scroll back to top',function()
 		 		{
@@ -59,20 +62,21 @@ describe('University test', function () {
 		it("Check input at access page is clear",function()
 		{
 			// need access pageobject
-			doc.setInput("",0,"access.codeInput");
+			// doc.setInput("",0,"access.codeInput");
+			access.chekAccessIsEmpty();
 		});
 
 		it("Enter access code : cool ",function()
 		{
 			// need access pageobject
-			doc.setInput("cool",0,"access.codeInput");
+			access.EnterAccessCode('cool');
+
 		});
 
 		it("Check message is shown : Access Granted",function()
 		{
-			// need  to write access pageobject
-			startButton.click();
-			doc.checkMsg("Access Granted");
+			access.RedeemClick()
+		   	access.CheckMessage('cool');
 		});	
 
 		it("Check university list is preload and show",function()
@@ -214,7 +218,7 @@ describe('University test', function () {
 		 								});
 		 								it('Check school list is increased',function()
 		 								{
-		 									university.ChekSchoolListIsIncread(index);
+		 									university.ChekSchoolListIsIncrease(index);
 		 								});
 					 					it('Check university mileage is '+isShown,function()
 					 					{	

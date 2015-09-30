@@ -18,7 +18,7 @@ var University = function() {
         });
     };
 
-    this.ChekSchoolListIsIncread = function(CompareIndex) {
+    this.ChekSchoolListIsIncrease = function(CompareIndex) {
         this.SchoolList.then(function (items) {
             expect(items.length > CompareIndex).toBe(true,"No data is loading inside #school-list");
         });
@@ -41,6 +41,10 @@ var University = function() {
       else
         doc.newPickList('school-list',specificIndex)
 
+    };
+    this.checkRepeatingData = function()
+    {
+      doc.checkLists("school-list","university.name");
     };
     this.ScrollSchoolList = function(index) {
        this.SchoolList.then(function (items) {

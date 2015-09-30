@@ -97,7 +97,7 @@ exports.config = {
                     ],
             major:  [ '../test_case/mobileTest/workflows/access.js',
                       '../test_case/mobileTest/workflows/university.js', 
-                      '../test_case/mobileTest/becomeGuru/major.js'
+                      '../e2e/becomeGuru/majorSpec.js'
                     ],
             course: [ 
                         // '../test_case/mobileTest/workflows/access.js',

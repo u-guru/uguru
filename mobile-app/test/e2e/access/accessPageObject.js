@@ -7,7 +7,10 @@ var Access = function()
 	 this.load= element(by.id('E2E-spinner'))
 	 this.back = element(by.css('[ng-click="goToAccess()"]'))
 	 this.listOfCase =  doc.generateRandomString(["","1"],5,"cool")
-
+	 this.chekAccessIsEmpty = function()
+	 {
+	 	doc.setInput("",0,this.InputModel);
+	 };
 	 this.EnterAccessCode = function(code)
 	 {
 	 	doc.setInput(code,0,this.InputModel,false);
