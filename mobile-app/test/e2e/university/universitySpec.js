@@ -4,14 +4,13 @@ var University = require('./universityPageObject.js');
 describe('University test', function () {
     var university = new University();
 
-
  	describe("University page show a default List",function()
 	{
 		it("The List is preload and show",function()
 		{
 			university.ChekSchoolListIsPresent();
 		});
-		it('Check school list has repeating school Name',function()
+		it('Check school list has repeating school name',function()
 		{
 			doc.checkLists("school-list","university.name");
 		});
@@ -159,7 +158,7 @@ describe('University test', function () {
 	describe("Feature : GPS button",function()
 	{
 		var name = ["Enable GPS","Disable GPS"]
-		var show = ["Appear", "Disappear"]
+		var show = ["appear", "disappear"]
 
 		for(var i =0 ; i < 2 ; ++i)
 		{

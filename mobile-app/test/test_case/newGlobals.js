@@ -118,7 +118,17 @@ var global = function() {
         expect(value.toLowerCase()).toBe(title);
       });
   };
-
+  /**********************************************************
+  *
+  *
+  *
+  **********************************************************/
+  this.waitLoading = function()
+  {
+    var spin = element(by.id("circle"));
+    browser.wait(EC.presenceOf(spin),3000, "No loading spin is shown");
+    browser.wait(EC.invisibilityOf(spin),3000, "Loading spin is not disappeared");
+  };
   /**********************************************************
   *checkMsg 
   *arg : msg - message you wanna check

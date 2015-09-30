@@ -75,7 +75,7 @@ exports.config = {
         ],
         suites:
         {
-            access: ['../test_case/mobileTest/access.js'],
+            access: ['../e2e/access/*Spec.js'],
             
             university: [
                          '../test_case/mobileTest/workflows/access.js',
