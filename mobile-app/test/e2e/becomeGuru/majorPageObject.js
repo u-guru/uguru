@@ -95,7 +95,7 @@ var Major = function()
 
 	 this.GoToCoursePage = function()
 	 {
-
+	 	nextStep.click();
 	 };
 	 this.CheckMajorContainNameByOrder = function(name,index) {
 	    doc.checkLists("major-list","major.name",name,index)

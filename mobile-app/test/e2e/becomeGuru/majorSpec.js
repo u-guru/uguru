@@ -182,17 +182,11 @@ describe('Major Test', function () {
 				});
 				it (' Start Become Guru Process',function()
 				{
-					// var closeButton = element.all(by.css('.modal-backdrop.active .header-down')).last();
-					// browser.wait(EC.visibilityOf(closeButton),3000);
-					// closeButton.click();
 					major.BeginBecomeGuru();
-
 				});
 
 				it ('Check Evything is back to default',function()
 				{
-
-			    	// doc.setInput('',0,model,true);
 			    	major.IsMajorSearchBarEmpty();
 			    	major.SelectMajorIsNotPresent();
 			    	major.CheckMajorListBackToDefault()
@@ -209,6 +203,8 @@ describe('Major Test', function () {
 		});
 		// End of Search Test 
 	});
+
+
 	// //Alert Problem
 	// // describe('Removed the selected major and see it back to list',function()
 	// // {
