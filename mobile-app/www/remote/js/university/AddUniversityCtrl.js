@@ -42,88 +42,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     value: ''
   };
 
-//=======Performance test area, delete this for prod============
-//Remember to change the ng-click of the resest button on university.html back to resetUniversities
-//Remember to remove ng-keydown as well
-
-
-
-
-
-  
-  // var startTimestamp, endTimestamp, totalDuration;
-  // var recordFirstBackspace = true;
-  // var backspacedAll = false;
-
-  // var stopLoop = false;
-  // var stats = new Stats();
-
-  // stopLoop = false;
-  // var fpsArray = [];
-
-  // // function recordBackspaceFPS() {
-  // //   stats.begin();
-  // //   stats.end();
-  // //   fpsArray.push(stats.getFPS());
-  // //   console.log("FPS: " + stats.getFPS());
-  // //   if (!stopLoop) {
-  // //     requestAnimationFrame(recordBackspaceFPS);
-  // //   } else {
-  // //     var total = 0;
-  // //     for (var i = 0; i < fpsArray.length; i++) {
-  // //       total += fpsArray[i];
-  // //     }
-  // //     //we are disregarding the first value since it's most likely 0 due to initial transition
-  // //     fpsArray.shift();
-  // //     var meanFPS = Math.round(total / (fpsArray.length));
-  // //     console.log("meanFPS: " + meanFPS);
-  // //     console.log("fpsArray: " + fpsArray);
-  // //     //var fpsValue = "meanFPS: " + meanFPS + "/ fpsArray: " + fpsArray.toString();
-  // //     //console.log("fpsValue: " + fpsValue);
-  // //   }
-
-  // // }
-
-  // $scope.onBackspaceDown = function(keycode) {
-    
-  //   if(keycode === 8) {
-      
-  //     if(recordFirstBackspace) {
-  //       console.log("record first backspace");
-  //       recordFirstBackspace = false;
-  //       startTimestamp = Date.now();
-  //       console.log("startTimestamp: " + startTimestamp);  
-  //     }
-  //     else if ( (!backspacedAll) && $scope.universityInput.value.length===0) {
-  //       backspacedAll = true;
-  //       endTimestamp = Date.now(); 
-  //       totalDuration = endTimestamp - startTimestamp;
-  //       console.log("endTimestamp: " + endTimestamp);
-  //       console.log("Finished backspacing, total time: " + totalDuration);
-  //     }
-      
-  //   }    
-  // };
-
-  // $scope.resetFlags = function() {
-  //   console.log("resetting flags");
-  //   recordFirstBackspace = true;
-  //   backspacedAll = false;
-  // }
-
-
-
-
-
-//=======Performance test area, delete this for prod============
-
-
-
-
-
-
-
-
   var appLoadTime;
   var appStartTime;
 
@@ -215,38 +133,73 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     var measureFPS = true;
     var inputStartTime = 0;
 
-    var queryPromise = null;
-    $scope.query = function(keyCode) {
-      //console.log("keyCode: " + keyCode);
-      if(keyCode === 8) {
-        //console.log("user hitting backspace");
-        if(queryPromise) {
-          $timeout.cancel(queryPromise);
-        }
-        queryPromise = $timeout(function() {
-          $scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
-          queryPromise = null;
-        }, 500);
-      }
+    // var queryPromise = null;
+    // var schoolList = angular.element(document.querySelector('#school-list'));
+    // $scope.$watch(
+    //   'universityInput.value',
+    //   function(newValue, oldValue) {
 
-      else if(measureFPS) {
-        //console.log("inside measureFPS catch");
-        measureFPS = false;
-        inputStartTime = Date.now();
-        $scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
-      }
-      else if(!measureFPS) {
-        //console.log("inside the original catch");
-        if($scope.universityInput.value.length===0){
-          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 500);          
-        }
-        else {      
-          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 16);        
-        }
-      }
+    //     if(newValue.length < oldValue.length) {
+    //       if(queryPromise) {
+    //         $timeout.cancel(queryPromise);
+    //       }
+    //       queryPromise = $timeout(function() {
+    //         $scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
+    //         queryPromise = null;
+    //       }, 100);
+    //     }
+    //     // else if(measureFPS) {
+    //     //   //console.log("inside measureFPS catch");
+    //     //   measureFPS = false;
+    //     //   inputStartTime = Date.now();
+    //     //   $scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
+    //     // }
+    //     else if(newValue.length === 1) {
+    //       schoolList.style.visibility = 'hidden';
+    //       $scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
+    //       $timeout(function() {schoolList.style.visibility = 'visible';}, 30);
+    //     }
+
+    //     else {
+
+    //       if(queryPromise) {
+    //         $timeout.cancel(queryPromise);
+    //       }
+    //       queryPromise = $timeout(function() {
+    //         $scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
+    //         queryPromise = null;
+    //       }, 30);
+
+    //       //console.log("inside the original catch");
+    //       // if($scope.universityInput.value.length===0){
+    //       //   $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 500);          
+    //       // }
+    //       // else {      
+    //       //   $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 16);        
+    //       // }
+    //     }
+    //   }
+
+    // );
 
 
-    }
+
+    // $scope.query = function() {
+    //   //console.log("keyCode: " + keyCode);
+    //   if(keyCode === 8) {
+    //     //console.log("user hitting backspace");
+        
+    //   }
+
+    //   else if(measureFPS) {
+
+    //   }
+    //   else if(!measureFPS) {
+
+    //   }
+
+
+    // }
     
     $scope.limit = 10;
     $scope.increaseLimit = function() {
@@ -395,8 +348,73 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     }
   });
 
-
-
-
-
 }
+
+angular.module('uguru.directives')
+.directive('bindList', function($timeout, UniversityMatcher) {
+
+  function link($scope, element, attributes) {
+    var queryPromise = null;
+    $scope.$watch(
+      'universityInput.value',
+      function(newValue, oldValue) {
+
+        if(newValue.length < oldValue.length) {
+          if(queryPromise) {
+            $timeout.cancel(queryPromise);
+          }
+          queryPromise = $timeout(function() {
+            $scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
+            queryPromise = null;
+          }, 100);
+        }
+
+        else if(newValue.length === 1) {
+          //angular.element(element).css('visibility', 'hidden');
+
+          if(queryPromise) {
+            $timeout.cancel(queryPromise);
+          }
+          queryPromise = $timeout(function() {
+            angular.element(element).css('visibility', 'hidden');
+            $scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
+            angular.element(element).css('visibility', 'visible');
+            queryPromise = null;
+          }, 50);
+          
+
+          // $scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
+          // angular.element(element).css('visibility', 'visible');
+        }
+
+        else {
+          if(queryPromise) {
+            $timeout.cancel(queryPromise);
+          }
+          queryPromise = $timeout(function() {
+            $scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
+            queryPromise = null;
+
+          }, 50);
+        }
+      }
+
+    );
+
+  }
+
+  return {
+    link: link,
+    restrict: 'A'
+  }
+
+
+});
+
+
+
+
+
+
+
+

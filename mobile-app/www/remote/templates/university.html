@@ -19,7 +19,6 @@
   	        <input type="search" id='university-input' class=''
   				placeholder="Search for my university"
   				ng-model="universityInput.value"
-  				ng-keyup="query($event.keyCode)"
   				ng-focus="universityInputFocused()"
   	        />
   	        <a ng-click='toggleLocationIconAppearance()' class='geolocation-icon' ng-if='universityInput.value.length === 0'>
@@ -30,7 +29,7 @@
   	        </a>
   		</div>
   	</header>
-  	<div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list">
+  	<div id="school-list" bind-list buffered-scroll='increaseLimit()' class="onboarding-list">
   		<ul class='list list-item-border'>
   			<li class="list-item" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
   				<a ng-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
