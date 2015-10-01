@@ -95,15 +95,16 @@ exports.config = {
                       // '../test_case/mobileTest/workflows/university.js', 
                       '../test_case/mobileTest/sidemenu/sidemenu.js'
                     ],
-            major:  [ '../test_case/mobileTest/workflows/access.js',
+            major:  [
+                      '../test_case/mobileTest/workflows/access.js',
                       '../test_case/mobileTest/workflows/university.js', 
                       '../e2e/becomeGuru/majorSpec.js'
                     ],
             course: [ 
-                        // '../test_case/mobileTest/workflows/access.js',
-                        // '../test_case/mobileTest/workflows/university.js', 
-                        // '../test_case/mobileTest/workflows/major.js',
-                        '../test_case/mobileTest/becomeGuru/course.js',
+                        '../test_case/mobileTest/workflows/access.js',
+                        '../test_case/mobileTest/workflows/university.js', 
+                        '../e2e/workflows/major.js',
+                        '../e2e/becomeGuru/courseSpec.js',
                     ],
             category:[
                         '../test_case/mobileTest/workflows/access.js',

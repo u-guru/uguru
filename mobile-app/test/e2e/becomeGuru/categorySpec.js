@@ -1,7 +1,8 @@
 var CategoryName = ['Academic Courses','Freelancing','Baking','Photography','Household','Technology & IT','Sports & Muscle','On-demand Delivery']
-var nextStep = element.all(by.css('[ng-click="nextSlide()"]'));
+var Course = require('./coursePageObject.js');
 
 describe('Category Test', function () {
+	var course = new Course();
 	// beforeAll(function()
 	// {
 	// 	if(browser.getCurrentUrl() != "http://"+localhost+":8100/#/home")
@@ -29,13 +30,12 @@ describe('Category Test', function () {
 	for (var i = 1 ; i< 8 ; ++i)
 	{
         (function(index,title) {
-	        describe('Click the Category #'+index,function()
+	        describe('Click the category #'+index,function()
 	        {
 	        	var count = 0;
-	        	it('Check a Category Title Back To DeFault',function()
+	        	it('Check category title back To DeFault Name',function()
 	        	{
-	        		browser.wait(EC.visibilityOf(element(by.binding('category.name'))),1000);
-	        		expect(element(by.binding('category.name')).getText()).toBe("SELECT CATEGORY")
+	        		category.CheckTitleIsMatch("SELECT CATEGORY")
 	        	});
         		it('Open a Category',function()
 				{

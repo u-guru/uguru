@@ -2,11 +2,7 @@
 var Major = require('./majorPageObject.js');
 
 describe('Major Test', function () {
-	var guruButton = element (by.css('[ng-click="goToBecomeGuru()"]'));
-	var nextStep = element(by.css('[ng-click="nextSlide()"]'));
-	var backStep = element(by.css('[ng-click="goBackToStudentHome()"]'));
 	var ele = element.all(by.tagName("ion-slide"));
-	var model = "search_text";
 
 	var major = new Major();
 	// beforeAll(function()
@@ -145,7 +141,7 @@ describe('Major Test', function () {
 				});
 				it ('Major : "Computer Science" has checkmark',function()
 				{
-					major.SelectMajorHasRightName(1,0);
+					major.SelectMajorHasRightName(1,0,'Computer Science');
 				});
 
 				it ('Re-search "computer science",and see it has been taken off from the #major-list.',function()
@@ -195,7 +191,7 @@ describe('Major Test', function () {
 				it('Reset Value[Skip Bug]',function()
 				{		
 					major.ClearSearchBar();
-					major.SearchMajorName('computer');
+					major.SearchMajorName('a');
 					major.ClearSearchBar();
 				});
 

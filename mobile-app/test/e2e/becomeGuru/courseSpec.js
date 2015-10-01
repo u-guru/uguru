@@ -1,7 +1,7 @@
+var Course = require('./coursePageObject.js');
+
 describe('Course Test', function () {
-	var nextStep = element.all(by.css('[ng-click="nextSlide()"]'));
-	var backStep = element(by.css('[ng-click="goBackToStudentHome()"]'));
-	var model = "course_search_text";
+	var course = new Course();
 	// For just testing
 	// beforeAll(function()
 	// {
@@ -42,93 +42,82 @@ describe('Course Test', function () {
 	// {
 	// 	//
 	// });
-	it('Current Page Title: Course',function()
+	it('Current page title: Course',function()
 	{
-		expect(element(by.css('#course .third')).getText()).toContain("ADD COURSES")
+		// expect(element(by.css('#course .third')).getText()).toContain("ADD COURSES")
+		course.CheckIsAtCoursePage();
 	});
 
-	it('check Data repeating',function()
+	it('Check Data repeating',function()
 	{
-		doc.checkLists('courses-list','course.name');
+		// doc.checkLists('courses-list','course.name');
+		course.CheckRepeatingData();
 	});
-	//Need to fix later
-	// describe("Infinite Scroll",function()
-	// {
-	// 	for( i = 16; i < 80; i+=16)
-	// 	{
-	// 		(function(index) {
-	//       		it ('Check scrollable ',function()
-	// 	 		{
-	// 	 			element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
-	// 		    		browser.executeScript('arguments[0].scrollIntoView()', items[index].getWebElement());
-	// 		    	});
-	// 			});
 
-	// 			it('Check more items loaded',function()
-	// 			{
-	// 				element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
-	// 		    		expect(items.length > 10).toBe(true,"no data is loading");
-	// 		    	});
-
-	// 			});
-	// 			// // Take out if take too much time
-	// 			// it('check Data repeating',function()
-	// 			// {
-	// 			// 	doc.checkLists('major-list','major.name');
-	// 			// });
-
-	// 			it ('scroll up ',function()
-	// 	 		{
-	// 	 			element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
-	// 		    		browser.executeScript('arguments[0].scrollIntoView()', items[0].getWebElement());
-	// 		    	});
-	// 			});
-	//         })(i);
-	// 	}
-	// });
-	describe('Search Testing',function()
+	// // Need to fix later
+	describe("Infinite scroll test",function()
 	{
-		it('send a key : s',function()
+		for( i = 16; i < 80; i+=16)
 		{
-	    	doc.setInput('s',0,model);
-		});
-		it('Search result is not empty',function()
+			(function(index) {
+	      		it ('Scroll down to #' + index+' Major',function()
+		 		{
+		 			course.ScrollCourseListTo(index);
+				});
+				it('Check more majors are load',function()
+				{
+					course.CheckMoreCourseIsLoad(index);
+				});
+				it ('Scroll back to top',function()
+		 		{
+		 			course.ScrollCourseListTo(0);
+				});
+	        })(i);
+		}
+	});
+
+	describe('Search testing',function()
+	{
+		describe("Check search result is shown after search",function()
 		{
-			element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
-	    		expect(items.length).not.toBe(0,"no Search result found");
-	    	});
-		});
-		// Take out if take too much time
-		// it('check Data repeating',function()
-		// {
-		// 	doc.checkLists('major-list','major.name');
-		// });
-		it('clear a key',function()
-		{	
-			doc.setInput('',0,model);
-		});
+			it('Send a key : s',function()
+			{
+		    	// doc.setInput('s',0,model);
+		    	course.SearchCourseName('s');
+			});
+			it('Search result is not empty',function()
+			{
+		    	course.CheckCourseListNotEmpty();
+			});
+			// Take out if take too much time
+			// it('check Data repeating',function()
+			// {
+			// 	doc.checkLists('major-list','major.name');
+			// });
+			it('Clear a key',function()
+			{	
+				course.ClearSearchBar();
+			});
+		})
+
 
 		describe("Send A Key : art, and see result is right",function()
 		{
-			it('send a key : art',function()
+			it('Send a key : art',function()
 			{
-		    	doc.setInput('art',0,model);
+		    	// doc.setInput('art',0,model);
+		    	course.SearchCourseName('art');
 			});
 
 			it("Check list is right",function()
 			{
-				element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
-					expect(items.length != 0).toBe(true,"Now List is shown , List Length : " + items.length );
-					for(var i = 0 ; i < items.length ; ++i)
-		    		expect(items[i].getText()).toContain("ART");
-		    	});
+				course.CheckListCourseContain('ART');
 			});
-			// it('Check Data only as  Computer Science, Computer Science and Engineering ,Linguistics and Computer Science',function()
-			// {
-			// 	doc.checkLists("courses-list","major.name",'Computer Science',0)
-			// 	doc.checkLists("courses-list","major.name",'Computer Science and Engineering',1)
-			// 	doc.checkLists("major-list","major.name",'Linguistics and Computer Science',2)
-			// });
+
+			it('Clear a key',function()
+			{	
+				course.ClearSearchBar();
+			});
 		});
 
 		describe('Choose a result and see the searchbar is clear and the chosen one has checkmark.',function()
@@ -136,48 +125,40 @@ describe('Course Test', function () {
 			
 			it ("Enter ART HIS C117D",function()
 			{
-		    	doc.setInput('ART HIS C117D',0,model,true);
+		    	// doc.setInput('ART HIS C117D',0,model,true);
+		    	course.SearchCourseName('ART HIS C117D');
 			});
 			it('Choose the search result',function()
 			{
-		 		doc.newPickList('courses-list',0);
+		 		// doc.newPickList('courses-list',0);
+		 		course.SelectCourse(0);
 			});
 
-			it('Search result is clear-out and the list return back',function()
+			it('Search result is clear-out and the default list return back',function()
 			{
-				element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
-					expect(items.length).not.toBe(0,"No List is showing");
-					for(var i = 1 ; i < items.length ; ++i)
-		    			expect(items[i].getText()).toContain("ECON");
-		    	});
+				course.CheckListCourseContain('ECON');
 			});
 			it ("Search Bar is clear",function()
 			{
-				doc.setInput('',0,model);
+				course.IsCourseSearchBarEmpty();
 			});
 		
-			it ('Course : "ART HIS C117D" Has been Added',function()
+			it ('Check course : "ART HIS C117D" has been Added',function()
 			{
-				element.all(by.repeater('course in user.guru_courses')).then(function (items) {
-			        expect(items.length).toBe(1);
-					expect(items[0].getText()).toBe("ART HIS C117D");			     	
-			    });		
-
+				course.SelectCourseHasRightName(1,0,'ART HIS C117D');
 			});
 
 			it ('Re type "ART HIS C117D",and see it has taken off from the list.',function()
 			{
-				doc.setInput('ART HIS C117D',3,model);
-
-    			element.all(by.css('#courses-list li:not(.ng-hide)')).then(function (items) {
-    	    		expect(items.length).toBe(0,"Choosen Result is still in the list");
-    	    	});		
+				course.SearchCourseName('ART HIS C117D');
+				course.CheckCourseListEmpty();
 			});
 			//Skip Bug
 			it('Reset [Skip bug]',function()
 			{		
-		    	doc.setInput('a',0,model,true);
-		    	doc.setInput('',0,model,true);
+		    	course.ClearSearchBar();
+		    	course.SearchCourseName('a');
+		    	course.ClearSearchBar();
 
 			})
 		});
@@ -313,15 +294,14 @@ describe('Course Test', function () {
 	// });
 	it('Next page',function()
 		{
-			nextStep.then(function(items)
-				{
-					items[1].click();
-				});
+			course.GoToNextPage();
 		});
-	it('Check Page title : Category',function()
-	{
-		expect(element(by.binding('category.name')).getText()).toBe("SELECT CATEGORY")
-		browser.sleep(1000)
-	});
+	
+	// this shouldn't use at here
+	// it('Check Page title : Category',function()
+	// {
+	// 	expect(element(by.binding('category.name')).getText()).toBe("SELECT CATEGORY")
+	// 	browser.sleep(1000)
+	// });
 	
 });

@@ -295,7 +295,7 @@ var global = function() {
     element.all(by.model(model)).then(function(inputs)
     // element.all(by.tagName("input")).then(function(inputs)
       {
-         console.log(inputs.length);
+         // console.log(inputs.length);
         if (check == true)
          {
            inputs[i].getAttribute('value').then(function(result)

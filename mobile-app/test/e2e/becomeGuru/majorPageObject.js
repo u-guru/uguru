@@ -72,11 +72,11 @@ var Major = function()
 	    	});
 	 };
 
-	 this.SelectMajorHasRightName = function(total,index)
+	 this.SelectMajorHasRightName = function(total,index,name)
 	 {
  		this.CheckMarkMajor.then(function (items) {
  	        expect(items.length).toBe(total);
- 			expect(items[index].getText()).toContain("Computer Science");
+ 			expect(items[index].getText()).toContain(name);
  			expect(items[index].element(by.css('.icon.ion-checkmark-round')).isDisplayed()).toBe(true);			     	
  	    });	
 	 };

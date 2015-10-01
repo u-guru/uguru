@@ -1,4 +1,4 @@
-var Major = require('./e2e/becomeGuru/majorPageObject.js');
+var Major = require('../becomeGuru/majorPageObject.js');
 
 describe('@Workflow : Major page', function () {
 	var major = new Major();
