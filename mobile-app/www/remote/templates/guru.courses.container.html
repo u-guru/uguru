@@ -9,7 +9,7 @@
                     <h1>Majors</h1>
                 </a>
                 <a class="header-nav-next" ng-click='nextSlide()'>
-                    <h1>Photo</h1>
+                    <h1>Skills</h1>
                     <svg viewBox="0 0 100 100">
 						<path d="M32,86 L68,50 L32,14"></path>
 					</svg>
@@ -23,11 +23,15 @@
 			</div>
       </header>
       <header ng-if='guruCoursesModal.isShown();' class='third flex-center'>
+		<div class="header-nav">
+			<a class="header-down" ng-click="guruCoursesModal.hide()">
+				<svg viewBox="0 0 100 100">
+					<path d="M14,32 L50,68 L86,32"></path>
+				</svg>
+			</a>
+		</div>
         <h1 class="text-center">Add Courses</h1>
-        <a class="header-nav-back left-0 absolute p10xy top-0" ng-click='guruCoursesModal.hide()'>
-          <i class='icon ion-chevron-down'> </i>
-        </a>
-         <div class="absolute bottom-0 full-x left-0 input-search-ghost">
+         <div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
             <div>
               <input type="search" id='course-input-2' placeholder="My courses are..."
                 ng-model="course_search_text"

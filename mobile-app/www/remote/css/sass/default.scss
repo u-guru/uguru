@@ -429,7 +429,7 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 }
 
 .half {
-	height: calc(100% / 2);
+	height: 50%;
 }
 
 .main-50 {
@@ -1109,11 +1109,22 @@ header {
 	}
 	.header-close, .header-menu, .header-nav-next, .header-up {
 		@include flex-right-center;
+		h1:only-child {
+			padding: 0 15px;
+		}
 	}
 	.header-close, .header-menu, .header-down, .header-up {
 		width: 100%!important;
+		&.half {
+			width: 50%!important;
+		}
 		svg {
 			padding: 4px 0;
+		}
+	}
+	.header-menu {
+		svg {
+			padding: 4px!important;
 		}
 	}
 	.header-close {
@@ -2190,114 +2201,75 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 #checkmark line {
-	-webkit-animation-delay: 0.25s;
-	-moz-animation-delay: 0.25s;
-	-ms-animation-delay: 0.25s;
-	-o-animation-delay: 0.25s;
-	animation-delay: 0.25s;
-	-webkit-animation-duration: 0.75s;
-	-moz-animation-duration: 0.75s;
-	-ms-animation-duration: 0.75s;
-	-o-animation-duration: 0.75s;
-	animation-duration: 0.75s;
+	-webkit-animation-duration: 0.5s;
+	-moz-animation-duration: 0.5s;
+	-ms-animation-duration: 0.5s;
+	-o-animation-duration: 0.5s;
+	animation-duration: 0.5s;
 	-webkit-animation-iteration-count: 1;
 	-moz-animation-iteration-count: 1;
 	-ms-animation-iteration-count: 1;
 	-o-animation-iteration-count: 1;
 	animation-iteration-count: 1;
 	&:first-child {
-		opacity:1;
-
 		-webkit-animation-name: checkmark-one;
 		-moz-animation-name: checkmark-one;
 		-ms-animation-name: checkmark-one;
 		-o-animation-name: checkmark-one;
 		animation-name: checkmark-one;
-
-		-webkit-animation-fill-mode: forwards;
-		-moz-animation-fill-mode: forwards;
-		-ms-animation-fill-mode: forwards;
-		-o-animation-fill-mode: forwards;
-		animation-fill-mode: forwards;
 		stroke-dasharray: 20.8, 20.8;
+		stroke-dashoffset: 20.8;
 	}
 	&:last-child {
-		opacity:1;
-
 		-webkit-animation-name: checkmark-two;
 		-moz-animation-name: checkmark-two;
 		-ms-animation-name: checkmark-two;
 		-o-animation-name: checkmark-two;
 		animation-name: checkmark-two;
-
-		-webkit-animation-fill-mode: forwards;
-		-moz-animation-fill-mode: forwards;
-		-ms-animation-fill-mode: forwards;
-		-o-animation-fill-mode: forwards;
-		animation-fill-mode: forwards;
 		stroke-dasharray: 49.91, 49.91;
+		stroke-dashoffset: 20.8;
 	}
 }
 
 @-webkit-keyframes checkmark-one {
-	0% {opacity:0};
-	100% {opacity:1};
-	from { stroke-dashoffset: 20.8;}
-	to { stroke-dashoffset: 0; }
+	0% { stroke-dashoffset: 20.8; }
+	100% { stroke-dashoffset: 0; }
 }
 @-webkit-keyframes checkmark-two {
-	0% {opacity:0};
-	100% {opacity:1};
-	from { stroke-dashoffset: 49.91; }
-	to { stroke-dashoffset: 0; }
+	0% { stroke-dashoffset: 49.91; }
+	100% { stroke-dashoffset: 0; }
 }
 @-moz-keyframes checkmark-one {
-	0% {opacity:0};
-	100% {opacity:1};
-	from { stroke-dashoffset: 20.8; }
-	to { stroke-dashoffset: 0; }
+	0% { stroke-dashoffset: 20.8; }
+	100% { stroke-dashoffset: 0; }
 }
 @-moz-keyframes checkmark-two {
-	0% {opacity:0};
-	100% {opacity:1};
-	from { stroke-dashoffset: 49.91; }
-	to { stroke-dashoffset: 0; }
+	0% { stroke-dashoffset: 49.91; }
+	100% { stroke-dashoffset: 0; }
 }
 @-ms-keyframes checkmark-one {
-	0% {opacity:0};
-	100% {opacity:1};
-	from { stroke-dashoffset: 20.8; }
-	to { stroke-dashoffset: 0; }
+	0% { stroke-dashoffset: 20.8; }
+	100% { stroke-dashoffset: 0; }
 }
 @-ms-keyframes checkmark-two {
-	0% {opacity:0};
-	100% {opacity:1};
-	from { stroke-dashoffset: 49.91; }
-	to { stroke-dashoffset: 0; }
+	0% { stroke-dashoffset: 49.91; }
+	100% { stroke-dashoffset: 0; }
 }
 @-o-keyframes checkmark-one {
-	0% {opacity:0};
-	100% {opacity:1};
-	from { stroke-dashoffset: 20.8; }
-	to { stroke-dashoffset: 0; }
+	0% { stroke-dashoffset: 20.8; }
+	100% { stroke-dashoffset: 0; }
 }
 @-o-keyframes checkmark-two {
-	0% {opacity:0};
-	100% {opacity:1};
-	from { stroke-dashoffset: 49.91; }
-	to { stroke-dashoffset: 0; }
+	0% { stroke-dashoffset: 49.91; }
+	100% { stroke-dashoffset: 0; }
 }
 @keyframes checkmark-one {
-	0% {opacity:0};
-	100% {opacity:1};
-	from { stroke-dashoffset: 20.8; }
-	to { stroke-dashoffset: 0; }
+	0% { stroke-dashoffset: 20.8; }
+	100% { stroke-dashoffset: 0; }
 }
 @keyframes checkmark-two {
-	0% {opacity:0};
-	100% {opacity:1};
-	from { stroke-dashoffset: 49.91; }
-	to { stroke-dashoffset: 0; }
+	0% { stroke-dashoffset: 49.91; }
+	100% { stroke-dashoffset: 0; }
 }
 
 // .chart {
@@ -2322,17 +2294,17 @@ input[type=range]:focus::-ms-fill-upper {
 // }
 
 // .chart-percent {
-// 	@for $j from 1 through 100 {
+// 	@for $j 0% 1 through 100 {
 // 		circle:nth-child(#{$j}) {
 // 			@include rotate((360/100*$j));
 // 		}
 // 	}
 // }
 
-// @for $p from 1 through 100 {
+// @for $p 0% 1 through 100 {
 // 	.chart[data-value="#{$p}"] {
 // 		.chart-percent {
-// 			@for $j from 1 through $p {
+// 			@for $j 0% 1 through $p {
 // 				circle:nth-child(#{$j}) {
 // 					@include opacity(1);
 // 				}
