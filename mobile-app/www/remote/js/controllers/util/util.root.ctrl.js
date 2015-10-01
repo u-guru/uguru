@@ -624,89 +624,89 @@ angular.module('uguru.util.controllers')
         });
 
 
-        document.addEventListener("deviceready", function() {
+        // document.addEventListener("deviceready", function() {
 
-            document.addEventListener("resume", function() {
+        //     document.addEventListener("resume", function() {
 
-                // console.log('device is resuming....');
-                // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-                // console.log('device resumed');
-                local_version = $localstorage.getObject('version');
-                Version.getUpdatedVersionNum().then(
-                    //if user gets the right version
-                    function(response) {
-                        var serverVersionNumber = parseFloat(JSON.parse(response).version);
-                        $scope.root.vars.version = serverVersionNumber;
-
-
-                        console.log('server', serverVersionNumber, typeof(serverVersionNumber));
-                        console.log('local', local_version, typeof(local_version));
-
-                        if (local_version !== serverVersionNumber) {
-
-                            if (navigator && navigator.splashscreen && navigator.splashscreen.show) {
-                                navigator.splashscreen.show();
-                            }
-
-                            $ionicHistory.clearCache();
-                            $ionicHistory.clearHistory();
-                            $templateCache.removeAll();
-
-                            Version.setVersion(serverVersionNumber);
-                            $localstorage.set('recently_updated', true);
-
-                            // window.localStorage.clear();
-                            //remove all angular templates
-
-                            $localstorage.setObject('version', $scope.root.vars.version);
-                            console.log('updating version to', serverVersionNumber, '...');
-
-                            //if windows
-                            if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i) || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT' || WINDOWS) {
-                                window.location.replace(BASE_URL);
-                            } else {
-                                window.location = BASE_URL;
-                                window.location.reload(true);
-                            }
-
-                        } else {
-                            User.getUserFromServer($scope, null, $state);
-                        }
+        //         // console.log('device is resuming....');
+        //         // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+        //         // console.log('device resumed');
+        //         local_version = $localstorage.getObject('version');
+        //         Version.getUpdatedVersionNum().then(
+        //             //if user gets the right version
+        //             function(response) {
+        //                 var serverVersionNumber = parseFloat(JSON.parse(response).version);
+        //                 $scope.root.vars.version = serverVersionNumber;
 
 
+        //                 console.log('server', serverVersionNumber, typeof(serverVersionNumber));
+        //                 console.log('local', local_version, typeof(local_version));
 
-                        $localstorage.setObject('version', $scope.root.vars.version);
+        //                 if (local_version !== serverVersionNumber) {
 
-                    },
-                    function(err) {
-                        console.log(err);
-                    })
+        //                     if (navigator && navigator.splashscreen && navigator.splashscreen.show) {
+        //                         navigator.splashscreen.show();
+        //                     }
 
-            }, false);
+        //                     $ionicHistory.clearCache();
+        //                     $ionicHistory.clearHistory();
+        //                     $templateCache.removeAll();
 
-            document.addEventListener("online", function() {
+        //                     Version.setVersion(serverVersionNumber);
+        //                     $localstorage.set('recently_updated', true);
 
-                // console.log('device is online...');
-                // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-                // console.log('Getting user from server');
-                User.getUserFromServer($scope, null, $state);
+        //                     // window.localStorage.clear();
+        //                     //remove all angular templates
 
-            }, false);
+        //                     $localstorage.setObject('version', $scope.root.vars.version);
+        //                     console.log('updating version to', serverVersionNumber, '...');
 
-            document.addEventListener("offline", function() {
+        //                     //if windows
+        //                     if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i) || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT' || WINDOWS) {
+        //                         window.location.replace(BASE_URL);
+        //                     } else {
+        //                         window.location = BASE_URL;
+        //                         window.location.reload(true);
+        //                     }
 
-                // console.log('device is offline...');
-                // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-                // console.log('getting updated user from server...');
-                // User.getUserFromServer($scope);
+        //                 } else {
+        //                     User.getUserFromServer($scope, null, $state);
+        //                 }
 
-            }, false);
 
-            document.addEventListener("pause", function() {
-                // console.log('device is paused...');
-                // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
-            }, false);
-        });
+
+        //                 $localstorage.setObject('version', $scope.root.vars.version);
+
+        //             },
+        //             function(err) {
+        //                 console.log(err);
+        //             })
+
+        //     }, false);
+
+        //     document.addEventListener("online", function() {
+
+        //         // console.log('device is online...');
+        //         // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+        //         // console.log('Getting user from server');
+        //         User.getUserFromServer($scope, null, $state);
+
+        //     }, false);
+
+        //     document.addEventListener("offline", function() {
+
+        //         // console.log('device is offline...');
+        //         // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+        //         // console.log('getting updated user from server...');
+        //         // User.getUserFromServer($scope);
+
+        //     }, false);
+
+        //     document.addEventListener("pause", function() {
+        //         // console.log('device is paused...');
+        //         // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
+        //     }, false);
+        // });
 
 
 
