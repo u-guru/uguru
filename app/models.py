@@ -1961,7 +1961,7 @@ class Course(Base):
     department_id = Column(Integer, ForeignKey('department.id'))
     department = relationship("Department",
         primaryjoin = "Department.id == Course.department_id",
-        backref = 'courses'
+        backref = 'department'
         )
 
     university_id = Column(Integer, ForeignKey('university.id'))

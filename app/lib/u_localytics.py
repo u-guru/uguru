@@ -3,8 +3,8 @@ API_TOKEN = '59adef668e495fa0217dfbf-adb6bf7e-66bf-11e5-beb4-0013a62af900'
 
 
 API_URL = 'https://api.localytics.com/v1/'
-API_KEY = '59adef668e495fa0217dfbf-adb6bf7e-66bf-11e5-beb4-0013a62af900'
-API_SECRET = '32aeecef7c6af8e30c01d10-adb6c3b0-66bf-11e5-beb4-0013a62af900'
+API_KEY = 'd88c6235e74ab08cf52d91e-21462be2-6787-11e5-bed1-0013a62af900'
+API_SECRET = 'b9b5f374e7ed1fe6f9a2e25-21463abc-6787-11e5-bed1-0013a62af900'
 APP_ID = 'e5f4bf9fa4b0cfa312def57-c65b66fe-66bf-11e5-0c2c-00deb82fd81f'
 
 
@@ -25,16 +25,32 @@ APP_ID = 'e5f4bf9fa4b0cfa312def57-c65b66fe-66bf-11e5-0c2c-00deb82fd81f'
 # except Exception as e:
 #     print e
 
-urls = API_URL + 'profiles'
-params = {
-    'api_key': API_KEY,
-    'api_secret': API_SECRET,
-    'app_id': APP_ID,
-    'metrics': 'profiles',
-    'dimensions':'profile_attribute_key'
-}
-headers = {'Content-type': 'application/json'}
-print requests.get(url=urls, params=params, headers=headers)
+
+
+
+def queryUserEvents(options=None, past_days=30, limit=50000):
+    if not options:
+        options = {'dimensions':'event_name', 'metrics': 'users'}
+
+    urls = API_URL + 'query'
+    params = {
+        'api_key': API_KEY,
+        'api_secret': API_SECRET,
+        'app_id': APP_ID,
+    }
+
+    params = dict(params.items() + options.items())
+
+    headers = {'Content-type': 'application/json'}
+    response = requests.get(url=urls, params=params, headers=headers)
+    return response
+
+def convertResponseTo(response, _type):
+    if _type == 'json':
+        return response.json()
+    if _type == 'csv':
+        return convertResponseToCsv(response)
+    return response.text
 
 # print result.text
 

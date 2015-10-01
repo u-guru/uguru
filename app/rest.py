@@ -2599,6 +2599,12 @@ class AdminViewUserList(restful.Resource):
 
         return user, 200
 
+class AdminViewUserAnalytics(restful.Resource):
+
+    def get(self):
+        from app.lib.u_localytics import *
+
+        return queryUserEvents().json()['results']
 
 
 class AdminViewGithubLabels(restful.Resource):
@@ -3105,12 +3111,12 @@ api.add_resource(AdminViewEmailsList, '/api/admin/<string:auth_token>/emails')
 api.add_resource(AdminViewUsersList, '/api/admin/<string:apiuth_token>/users')
 api.add_resource(AdminViewUniversitiesList, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminViewUserList, '/api/admin/<string:auth_token>/user/<int:_id>')
+api.add_resource(AdminViewUserAnalytics, '/api/admin/analytics/user')
 
 # Admin views github
 
 api.add_resource(AdminViewGithubIssues, '/api/admin/<string:auth_token>/github/issues')
 api.add_resource(AdminViewGithubLabels, '/api/admin/<string:auth_token>/github/labels')
-
 
 
 
