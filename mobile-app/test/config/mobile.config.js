@@ -109,18 +109,17 @@ exports.config = {
             category:[
                         '../test_case/mobileTest/workflows/access.js',
                         '../test_case/mobileTest/workflows/university.js', 
-                        '../test_case/mobileTest/workflows/major.js',
-                        '../test_case/mobileTest/workflows/course.js',
-                        '../test_case/mobileTest/becomeGuru/category.js'
+                        '../e2e/workflows/major.js',
+                        '../e2e/workflows/course.js',
+                        '../e2e/becomeGuru/categorySpec.js'
                      ],
              photo:[
                           '../test_case/mobileTest/workflows/access.js',
                           '../test_case/mobileTest/workflows/university.js', 
-                         // '../test_case/mobileTest/workflows/major.js',
-                         // '../test_case/mobileTest/workflows/course.js',
-                         // '../test_case/mobileTest/workflows/category.js',
-                         '../test_case/mobileTest/workflows/lazy.js',
-                         '../test_case/mobileTest/becomeGuru/photo.js'
+                          '../e2e/workflows/major.js',
+                          '../e2e/workflows/course.js',
+                          '../e2e/workflows/category.js',
+                          '../test_case/mobileTest/becomeGuru/photo.js'
                     ],
               guruHome:[
                           // '../test_case/mobileTest/workflows/access.js',

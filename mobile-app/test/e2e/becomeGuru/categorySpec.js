@@ -1,8 +1,8 @@
 var CategoryName = ['Academic Courses','Freelancing','Baking','Photography','Household','Technology & IT','Sports & Muscle','On-demand Delivery']
-var Course = require('./coursePageObject.js');
+var Category = require('./categoryPageObject.js');
 
 describe('Category Test', function () {
-	var course = new Course();
+	var category = new Category();
 	// beforeAll(function()
 	// {
 	// 	if(browser.getCurrentUrl() != "http://"+localhost+":8100/#/home")
@@ -39,61 +39,32 @@ describe('Category Test', function () {
 	        	});
         		it('Open a Category',function()
 				{
-					doc.newPickList('skills-list',index);
+					category.SelectSkill(index);
 				});
         		it('Check Category Title : '+title ,function()
         		{
-        			expect(element(by.binding('category.name')).getText()).toBe(title.toUpperCase());
-
+        			category.CheckTitleIsMatch(title.toUpperCase());
         		})
 
 				it('Check element exist',function()
 				{
-					expect(element.all(by.repeater('skill in active_category.skills')).first().isDisplayed()).toBe(true);
-
+					category.SkillIsExist();
 				});
-				it('click element ',function()
+				it('click all the skills ',function()
 				{
-			        	element.all(by.repeater('skill in active_category.skills')).then(function (items)
-			        	{
-			        		for (var i = 0 ; i<items.length ; ++i)
-			        		{
-								if(index != 0)
-									{
-					        			items[i].click();
-					        			if (index===0)
-					        			{
-		        							doc.switchAlert();	
-					        			}
-									}
-				        			
-			        			++ count
-			        		}
-			        	});	
-
+			        category.EnableAllSKills(index);
+			        ++count;
 				});
 
         		it('close a Category',function()
         		{
-        			var ele = element(by.css(".modal-backdrop.active"));
-        			var clickCanvas = function (toRight, toBottom) { 
-					    browser.actions()
-					      .mouseMove(ele, {x: toRight, y: toBottom})
-					      .click()
-					      .perform();
-					};
-					clickCanvas (100,50)
+					category.clickCanvas (100,50)
         		})
         		// check which index
         		it('check select',function()
         		{
 			     // element.all(by.css(str)).then(function (items) {
-
-        			element.all(by.binding('category.active_skills_count')).then(function(items)
-        			{
-	        			expect(items[index*2].getText()).toContain(count);
-
-        			});
+			     	category.CountSelectSKill(count,index);
         		});
 			});
         })(i,CategoryName[i]);
@@ -101,12 +72,7 @@ describe('Category Test', function () {
 
 	it('Slide to Next Page',function()
 	{
-		//doc.slideView(2,'left');
-		nextStep.then(function(items)
-		{
-			expect(items[2].getText()).toBe("PHOTO");
-			items[2].click();
-		});
+		category.GoToPhotoPage();
 	});
 
 });

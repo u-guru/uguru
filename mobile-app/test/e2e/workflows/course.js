@@ -1,6 +1,8 @@
+var Course = require('../becomeGuru/coursePageObject.js');
+
 describe('@Workflow : Course page', function () {
-	var nextStep = element.all(by.css('[ng-click="nextSlide()"]'));
-	var guruButton = element (by.css('[ng-click="goToBecomeGuru()"]'));
+	var course = new Course();
+
 	
 
 	// describe('Check Search Results',function()
@@ -42,10 +44,7 @@ describe('@Workflow : Course page', function () {
 		// });
 		it('Next page',function()
 		{
-			nextStep.then(function(items)
-				{
-					items[1].click();
-				});
+			course.GoToNextPage();
 		});
 	});
 	
