@@ -40,7 +40,86 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
   $scope.universityInput = {
     value: ''
-  }
+  };
+
+//=======Performance test area, delete this for prod============
+//Remember to change the ng-click of the resest button on university.html back to resetUniversities
+//Remember to remove ng-keydown as well
+
+
+
+
+
+  
+  // var startTimestamp, endTimestamp, totalDuration;
+  // var recordFirstBackspace = true;
+  // var backspacedAll = false;
+
+  // var stopLoop = false;
+  // var stats = new Stats();
+
+  // stopLoop = false;
+  // var fpsArray = [];
+
+  // // function recordBackspaceFPS() {
+  // //   stats.begin();
+  // //   stats.end();
+  // //   fpsArray.push(stats.getFPS());
+  // //   console.log("FPS: " + stats.getFPS());
+  // //   if (!stopLoop) {
+  // //     requestAnimationFrame(recordBackspaceFPS);
+  // //   } else {
+  // //     var total = 0;
+  // //     for (var i = 0; i < fpsArray.length; i++) {
+  // //       total += fpsArray[i];
+  // //     }
+  // //     //we are disregarding the first value since it's most likely 0 due to initial transition
+  // //     fpsArray.shift();
+  // //     var meanFPS = Math.round(total / (fpsArray.length));
+  // //     console.log("meanFPS: " + meanFPS);
+  // //     console.log("fpsArray: " + fpsArray);
+  // //     //var fpsValue = "meanFPS: " + meanFPS + "/ fpsArray: " + fpsArray.toString();
+  // //     //console.log("fpsValue: " + fpsValue);
+  // //   }
+
+  // // }
+
+  // $scope.onBackspaceDown = function(keycode) {
+    
+  //   if(keycode === 8) {
+      
+  //     if(recordFirstBackspace) {
+  //       console.log("record first backspace");
+  //       recordFirstBackspace = false;
+  //       startTimestamp = Date.now();
+  //       console.log("startTimestamp: " + startTimestamp);  
+  //     }
+  //     else if ( (!backspacedAll) && $scope.universityInput.value.length===0) {
+  //       backspacedAll = true;
+  //       endTimestamp = Date.now(); 
+  //       totalDuration = endTimestamp - startTimestamp;
+  //       console.log("endTimestamp: " + endTimestamp);
+  //       console.log("Finished backspacing, total time: " + totalDuration);
+  //     }
+      
+  //   }    
+  // };
+
+  // $scope.resetFlags = function() {
+  //   console.log("resetting flags");
+  //   recordFirstBackspace = true;
+  //   backspacedAll = false;
+  // }
+
+
+
+
+
+//=======Performance test area, delete this for prod============
+
+
+
+
 
 
 
@@ -63,7 +142,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         uTracker.set(tracker, {
           "$App_Load_Time": appLoadTime
         });
-  }
+  };
 
 
 
@@ -135,13 +214,29 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
     var measureFPS = true;
     var inputStartTime = 0;
-    $scope.query = function() {
-      if(measureFPS) {
+
+    var queryPromise = null;
+    $scope.query = function(keyCode) {
+      //console.log("keyCode: " + keyCode);
+      if(keyCode === 8) {
+        //console.log("user hitting backspace");
+        if(queryPromise) {
+          $timeout.cancel(queryPromise);
+        }
+        queryPromise = $timeout(function() {
+          $scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
+          queryPromise = null;
+        }, 500);
+      }
+
+      else if(measureFPS) {
+        //console.log("inside measureFPS catch");
         measureFPS = false;
         inputStartTime = Date.now();
         $scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
       }
       else if(!measureFPS) {
+        //console.log("inside the original catch");
         if($scope.universityInput.value.length===0){
           $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 500);          
         }
@@ -149,6 +244,8 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 16);        
         }
       }
+
+
     }
     
     $scope.limit = 10;

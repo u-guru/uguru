@@ -68,6 +68,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       }, 1500)
 
     } else {
+      $scope.loader.hide();
       Velocity(document.getElementById('input-error-text'), {opacity:1});
       $scope.access.errorInputMsg = 'Incorrect access code';
       Velocity(accessInput, "callout.shake", function() {

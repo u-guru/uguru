@@ -59,7 +59,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   $log.getInstance = function(context) {
     return {
-      log: enhanceLogging($log.log, contect),
+      log: enhanceLogging($log.log, context),
       info: enhanceLogging($log.info, context),
       warn: enhanceLogging($log.warn, context),
       debug: enhanceLogging($log.debug, context),
