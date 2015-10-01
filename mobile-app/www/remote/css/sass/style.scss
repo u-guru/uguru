@@ -32,8 +32,6 @@ body {
 }
 
 body.platform-ios {
-
-
 	ul li {
 		&.active, &.activated {
 			background: rgba(white,.2);
@@ -103,11 +101,6 @@ section {
 							@include rotate(45);
 							width: 30px;
 							height: 30px;
-							-webkit-transform: rotate(45deg);
-							-moz-transform: rotate(45deg);
-							-ms-transform: rotate(45deg);
-							-o-transform: rotate(45deg);
-							transform: rotate(45deg);
 						}
 					}
 				}
@@ -545,7 +538,14 @@ section {
 			cursor: pointer;
 		}
 		input[type="text"], textarea {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			-ms-appearance: none;
+			-o-appearance: none;
+			appearance: none;
 			display: block;
+			border-radius: 0;
+			background: white;
 			width: 100%;
 			border: 2px solid $smoke;
 			border-top: 0;
@@ -602,12 +602,14 @@ section {
 					border-left: 1px solid $smoke;
 					border-right: 1px solid $smoke;
 					input[type="radio"] {
+						@include opacity(0);
 						position: absolute;
 						z-index: 9;
 						top: 0;
 						left: 0;
 						width: 100%;
 						height: 100%;
+						border-radius: 0;
 					}
 					div {
 						width: 100%;
@@ -619,6 +621,7 @@ section {
 					}
 					input:not(:checked) + div label {
 						color: rgba($slate, .5);
+						background: white;
 						font-weight: 400;
 					}
 					input:checked + div label {
@@ -747,12 +750,14 @@ section {
 							border-right: 0;
 						}
 						input {
+							@include opacity(0);
 							position: absolute;
 							z-index: 9;
 							top: 0;
 							left: 0;
 							width: 100%;
 							height: 100%;
+							border-radius: 0!important;
 						}
 						div {
 							padding: 5px 0;
@@ -801,28 +806,137 @@ section {
 	section {
 		position: relative;
 		height: calc(100% - 50px);
+		> div {
+			height: 100%;
+			width: 100%;
+			&:after {
+				content: "";
+				position: fixed;
+				z-index: 10;
+				border-right: 2px solid rgba(white,.1);
+				left: 0;
+				top: 50px;
+				width: calc(10% + 6px);
+				height: 35px;
+				background: $slate;
+			}
+		}
 	}
 	.avail-times {
 		position: fixed;
-		width: 10%;
-		height: calc(100% - 60px);
-		li {
-			@include flex;
-			@include flex-center-vertical;
-			height: calc(100% / 19);
-			font-size: 12px;
-			span {
-				display: block;
+		z-index: 9;
+		width: calc(10% + 6px);
+		height: calc(100% - 50px);
+		padding-top: 36px;
+		overflow-y: auto;
+		ul {
+			display: table;
+			width: 100%;
+			height: calc(100% / 12);
+			li {
+				display: table-cell;
+				border: 1px solid rgba(white,.1);
+				border-right: 2px solid rgba(white,.1);
+				background: $slate;
+				border-left: 0;
+				font-size: 12px;
 				width: 100%;
-				text-align: right;
+				height: 100%;
+				span {
+					@include flex;
+					@include flex-center;
+					width: 100%;
+					height: 100%;
+					text-align: right;
+					background: rgba(white,.05);
+				}
+			}
+		}
+		ul:last-child {
+			li {
+				border-bottom: 2px solid rgba(white,.1);
 			}
 		}
 	}
 	.avail-days {
-		li {
-			font-size: 14px;
-			font-weight: 400;
-			text-transform: uppercase;
+		position: fixed;
+		z-index: 9;
+		padding-left: calc(10% + 5px);
+		width: 100%;
+		height: 37px;
+		background: $slate;
+		overflow-x: auto;
+		border-bottom: 2px solid rgba(white,.1);
+		ul {
+			display: table;
+			height: 37px;
+			li {
+				display: table-cell;
+				width: 100%;
+				height: 100%;
+				border-left: 1px solid rgba(white,.1);
+				border-right: 1px solid rgba(white,.1);
+				font-size: 14px;
+				font-weight: 600;
+				text-transform: uppercase;
+				span {
+					@include flex;
+					@include flex-center;
+					width: 80px;
+					height: 100%;
+					text-align: center;
+					background: rgba(white,.05);
+				}
+			}
+			li:last-child {
+				border-right: 2px solid rgba(white,.1);
+			}
+		}
+	}
+	.avail-hours {
+		position: fixed;
+		margin-left: calc(10% + 5px);
+		height: calc(100% - 50px);
+		padding-top: 36px;
+		width: calc(90% - 5px);
+		overflow-x: auto;
+		ul {
+			display: table;
+			height: calc(100% / 12);
+			li {
+				display: table-cell;
+				position: relative;
+				border: 1px solid rgba(white,.1);
+				width: 100%;
+				height: 100%;
+				input {
+					position: absolute;
+					z-index: 11;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					cursor: pointer;
+				}
+				input:checked + span {
+					background: $campus;
+				}
+				span {
+					@include flex;
+					@include flex-center;
+					text-align: center;
+					width: 80px;
+					height: 100%;
+				}
+			}
+			li:last-child {
+				border-right: 2px solid rgba(white,.1);
+			}
+		}
+		ul:last-child {
+			li {
+				border-bottom: 2px solid rgba(white,.1);
+			}
 		}
 	}
 }
@@ -1743,7 +1857,6 @@ section {
 					top: 0;
 					left: 0;
 					margin: 0;
-					-webkit-appearance: none;
 					width: 100%;
 					height: 44px;
 					cursor: pointer;
