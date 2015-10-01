@@ -181,7 +181,7 @@ angular.module('uguru.util.controllers')
     }
 
 
-    $scope.majors = Major.getGeneral();
+    $scope.majors = $scope.data.majors || Major.getGeneral();
     $scope.removeUserMajorsFromMaster();
 
   }

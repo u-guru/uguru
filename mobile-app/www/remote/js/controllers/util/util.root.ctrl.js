@@ -62,6 +62,7 @@ angular.module('uguru.util.controllers')
         $scope.user.createObj = User.createObj;
         $scope.user.updateObj = User.updateObj;
         $scope.popupScope = {};
+        $scope.data = {};
 
         if ($scope.user && $scope.user.id) {
             User.getUserFromServer($scope, null, $state);
@@ -72,6 +73,30 @@ angular.module('uguru.util.controllers')
             $scope.img_base = 'remote/'
         } else {
             $scope.img_base = '';
+        }
+
+        $scope.getMajorsForUniversityId = function(uni_id) {
+            University.getMajors(uni_id).then(function(majors){
+                $scope.data.majors = majors.plain();
+                //NICKTODO --> set this localstorage or static file?
+                $localstorage.setObject('universityMajors', majors.plain())
+                console.log(majors.plain().length, 'majors retrieved for university_id', uni_id)
+            },
+            function() {
+                console.log('Universities NOT successfully loaded');
+            })
+        }
+
+        $scope.getCoursesForUniversityId = function(uni_id) {
+            University.getCourses(uni_id).then(function(courses){
+                $scope.data.courses = courses.plain();
+                //NICKTODO --> set this localstorage or static file?
+                $localstorage.setObject('universityCourses', courses.plain())
+                console.log(courses.plain().length, 'courses retrieved for university_id', uni_id)
+            },
+            function() {
+                console.log('Universities NOT successfully loaded');
+            })
         }
 
         $rootScope.on_app_open_retrieve_objects = function($scope, $state, $localstorage,
@@ -231,26 +256,6 @@ angular.module('uguru.util.controllers')
             }
         }
 
-
-
-
-        //check if local courses exists
-        if (!$scope.root.vars.courses) {
-            University.getCourses(2732).then(
-                function(courses) {
-                    $localstorage.setObject('courses', courses);
-                    $scope.root.vars.courses = courses;
-                    $scope.root.vars.popular_courses = $scope.root.vars.courses.slice(0, 16);
-                    $scope.static.courses = $scope.root.vars.courses;
-                    $scope.static.popular_courses = $scope.root.vars.popular_courses;
-
-                },
-                function(error) {
-                    console.log('Courses NOT successfully loaded');
-                    console.log(error);
-                }
-            );
-        }
 
         $scope.toggleRightSideMenu = function() {
             console.log('this is called');

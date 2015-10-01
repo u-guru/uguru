@@ -94,26 +94,27 @@ class UniversityListView(restful.Resource):
         return json.dumps(universities_arr), 200
 
 class UniversityMajorsView(restful.Resource):
-    @marshal_with(MajorSerializer)
-    def get(self, id):
-        majors = Major.query.all()
-
-        return majors, 200
+    @marshal_with(DepartmentSerializer)
+    def get(self, _id):
+        u = University.query.get(_id)
+        departments = u.departments
+        return departments, 200
 
 class UniversityCoursesView(restful.Resource):
     @marshal_with(CourseSerializer)
-    def get(self, id):
+    def get(self, _id):
         # from static.data.universities_courses_efficient import uni_courses_dict
 
 
         # courses = uni_courses_dict[str(id)].get("courses")s
-        u = University.query.get(id)
-        if not u.courses:
+        u = University.query.get(_id)
+        university_courses = u.courses
+        if not university_courses:
             #just grab ucla courses
             u = University.query.get(2752)
             return u.courses, 200
         else:
-            return u.courses, 200
+            return university_courses, 200
 
 
         # from static.data.berkeley_courses import courses
@@ -3082,8 +3083,8 @@ api.add_resource(SupportView, '/api/v1/support')
 api.add_resource(SessionView, '/api/v1/sessions')
 api.add_resource(RankingsView, '/api/v1/rankings')
 api.add_resource(UniversityListView, '/api/v1/universities')
-api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:id>/majors')
-api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:id>/courses')
+api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:_id>/departments')
+api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:_id>/courses')
 api.add_resource(MajorListView, '/api/v1/majors')
 api.add_resource(CourseListView, '/api/v1/courses')
 api.add_resource(SkillListView, '/api/v1/skills')

@@ -33,6 +33,7 @@ angular.module('uguru.util.controllers')
     }).then(function(modal) {
         $scope.categorySkillsModal = modal;
     });
+
     $scope.onSwipeDown = function() {
       alert('user swiped down')
     }

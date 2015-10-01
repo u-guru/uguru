@@ -228,6 +228,10 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     $scope.user.university = university;
     $scope.universityInput.value = '';
 
+    //start fetching majors right now
+    $scope.getMajorsForUniversityId(university.id);
+    $scope.getCoursesForUniversityId(university.id);
+
     //update user to locat storage
     $scope.rootUser.updateLocal($scope.user);
 

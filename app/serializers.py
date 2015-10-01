@@ -490,3 +490,11 @@ TagSerializer = {
     'name': fields.String,
     'is_profession': fields.Boolean
 }
+
+DepartmentSerializer = {
+    'id': fields.Integer,
+    'name': fields.String,
+    'abbr': fields.String,
+    'title': fields.String,
+    'is_popular': fields.Boolean
+}
