@@ -9,6 +9,7 @@ angular.module('uguru.directives', []);
         link: function(scope, element, attr) {
           if(scope.$first || scope.$last) {
             $timeout(function() {
+
               scope.$emit(attr.onFinishedRender);
             })
           }

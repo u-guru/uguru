@@ -17,14 +17,18 @@ angular.module('uguru.guru.controllers')
   '$ionicViewSwitcher',
   '$ionicActionSheet',
   'Camera',
+  'uTracker',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $cordovaStatusbar, $ionicViewSwitcher,
-    $ionicActionSheet, Camera) {
+    $ionicActionSheet, Camera, uTracker) {
 
 
     function takePhotoCallbackSuccess($scope) {
 
+      uTracker.track(tracker, 'Guru Mode', {
+        '$Photo_Method': 'Camera'
+      });
       $scope.success.show(0, 2000, "Awesome! You're all set.");
       $ionicViewSwitcher.nextDirection('forward');
       $timeout(function() {
@@ -34,6 +38,10 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.uploadPhotoAndFinish = function() {
+
+      uTracker.track(tracker, 'Guru Mode', {
+        '$Photo_Method': 'Library'
+      });
       $scope.success.show(0, 2000, "Awesome! You're all set.");
       $ionicViewSwitcher.nextDirection('forward');
       $state.go('^.guru');

@@ -14,9 +14,10 @@ angular.module('uguru.util.controllers')
   '$ionicSideMenuDelegate',
   'University',
   'Utilities',
+  'uTracker',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
-    $ionicSideMenuDelegate, University, Utilities) {
+    $ionicSideMenuDelegate, University, Utilities, uTracker) {
 
     $scope.courses = [];
 
@@ -126,6 +127,11 @@ angular.module('uguru.util.controllers')
       $timeout(function() {
         $scope.user.updateAttr('remove_guru_course', $scope.user, course, confirmCallback, $scope);
       }, 200);
+
+
+      uTracker.track(tracker, 'Course Guru Removed', {
+        '$Course': course.name
+      });
     }
 
     $scope.addSelectedGuruSkill = function(skill, input_text, $index) {
@@ -203,6 +209,11 @@ angular.module('uguru.util.controllers')
             } //
 
           }, 750)
+
+
+      uTracker.track(tracker, 'Course Guru Added', {
+        '$Course': course.name
+      });
 
     }
 

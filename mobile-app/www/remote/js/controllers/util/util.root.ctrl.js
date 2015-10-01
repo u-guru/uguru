@@ -159,6 +159,9 @@ angular.module('uguru.util.controllers')
         Version.getUpdatedVersionNum().then(
             //if user gets the right version
             function(response) {
+                if (LOCAL) {
+                    return;
+                }
                 var serverVersionNumber = parseFloat(JSON.parse(response).version);
                 $scope.root.vars.version = serverVersionNumber;
 
@@ -623,7 +626,12 @@ angular.module('uguru.util.controllers')
 
         document.addEventListener("deviceready", function() {
 
+
             document.addEventListener("resume", function() {
+
+                if (LOCAL) {
+                    return;
+                }
 
                 // console.log('device is resuming....');
                 // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);

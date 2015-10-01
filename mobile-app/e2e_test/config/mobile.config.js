@@ -6,25 +6,36 @@ exports.config = {
 
          capabilities: {
 
+//brew install ideviceinstaller
+//appium -U <uuid< --app <app_path>
+//0df70c3eacd748d8d92a882cbec7b26787fa0396
 
-          //ios settings
-                 'browserName': '',
+                 browserName: '',
                  'appium-version': '1.4.11',
-                 app: '/Users/nlmac/Git/uguru/mobile-app/platforms/ios/build/emulator/uguru.app',
-                 platformName: 'ios',
-                  platformVersion: '8.4',
-                   deviceName: 'iPhone 6'
+                 app: '/Users/nlmac/Git/uguru/mobile-app/platforms/ios/build/device/uguru.app',
+                 platformName: 'iOS',
+                  bundleId: 'com.beta.college.Uguru',
+                  udid: '0df70c3eacd748d8d92a882cbec7b26787fa0396',
+                  platformVersion: '7.12',
+                   deviceName: 'TwFoB Work’s iPhone (7.1.2) [0df70c3eacd748d8d92a882cbec7b26787fa0396]',
+                   autoWebview: 'true'
 
          // //android settings
-         //        'browserName': 'chrome',
-         //        'appium-version': '1.4.11',
-         //        platformName: 'android',
-         //         platformVersion: '5.1',
-         //          deviceName: 'Google Nexus 5'
-           
-         },
+                // browserName: '',
+                // 'appium-version': '1.4.11',
+                // app: '/Users/nlmac/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
+                // platformName: 'android',
+                //  platformVersion: '4.4',
+                //   deviceName: 'S5',
+                //   autoWebview: 'true'
 
-         //0800695a006a24a8
+         },
+         // comment this out if running for IOS
+         //baseUrl: 'http://10.0.2.2:8000',
+
+
+         // this is for ios
+        baseUrl: 'http://localhost:8100',
 
         //   multiCapabilities: [
         //   {'browserName': 'chrome'},
@@ -32,16 +43,14 @@ exports.config = {
         //   {'browserName': 'phantomjs'}
         // ],
         specs:
-        [
+        ['../test_case/workflows/workflow_1.js'],
+        // suites:
+        // {
+        //     workflow: ['../test_case/workflows/workflow_1.js'],
 
-        ],
-        suites:
-        {
-            workflow: ['../test_case/workflows/workflow_1.js'],
-
-        },
+        // },
         // resultJsonOutputFile: 'www/remote/tests/e2e/result.json',
-        rootElement: "[ng-app]" ,
+        //rootElement: "[ng-app]" ,
        // rootElement: 'uguru' ,
         jasmineNodeOpts: {
                           showColors: true,
@@ -80,12 +89,17 @@ exports.config = {
                 }));
             protractor.get = require('../test_case/globals.js').globals;
             protractor.run = require('../test_case/globals.js').run;
-            browser.driver.manage().window().setSize(414, 736);
-             browser.driver.get("http://localhost:8100/#/");
-             browser.sleep(1000);
+            // browser.driver.manage().window().setSize(414, 736);
+
+            //may need to uncomment this for IOS. but for sure comment out when on android
+
+               // browser.driver.get("http://localhost:8100/#/");
+
+               //browser.driver.get("http://localhost:8100/#/");
+              // browser.sleep(1000);
 
 
 
         }
-        
+
 };
