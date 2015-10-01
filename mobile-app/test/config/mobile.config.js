@@ -119,7 +119,7 @@ exports.config = {
                           '../e2e/workflows/major.js',
                           '../e2e/workflows/course.js',
                           '../e2e/workflows/category.js',
-                          '../test_case/mobileTest/becomeGuru/photo.js'
+                          '../e2e/becomeGuru/photoSpec.js'
                     ],
               guruHome:[
                           // '../test_case/mobileTest/workflows/access.js',
@@ -161,12 +161,12 @@ exports.config = {
                          '../test_case/mobileTest/becomeGuru/photo.js'
                          ],
               all : [
-                      '../test_case/mobileTest/access.js',
-                     '../test_case/mobileTest/university.js',
-                     '../test_case/mobileTest/becomeGuru/major.js',
-                     '../test_case/mobileTest/becomeGuru/course.js',
-                     '../test_case/mobileTest/becomeGuru/category.js',
-                     '../test_case/mobileTest/becomeGuru/photo.js',
+                      '../e2e/access/*Spec.js',
+                      '../e2e/university/*Spec.js',
+                      '../e2e/becomeGuru/major.js',
+                      '../e2e/becomeGuru/course.js',
+                      '../e2e/becomeGuru/category.js',
+                      '../e2e/becomeGuru/photo.js',
                       '../test_case/mobileTest/guruProfile/home.js',
                       '../test_case/mobileTest/sidemenu/signup.js',
                       '../test_case/mobileTest/guruProfile/editProfile.js',
@@ -174,12 +174,12 @@ exports.config = {
                     ],
               mobile : 
                        [
-                           '../test_case/mobileTest/workflows/access.js',
-                           '../test_case/mobileTest/university.js', 
-                           '../test_case/mobileTest/becomeGuru/major.js',
-                           '../test_case/mobileTest/becomeGuru/course.js',
-                           '../test_case/mobileTest/becomeGuru/category.js',
-                           '../test_case/mobileTest/becomeGuru/photo.js',
+                           '../e2e/access/*Spec.js',
+                           '../e2e/university/*Spec.js',
+                           '../e2e/becomeGuru/major.js',
+                           '../e2e/becomeGuru/course.js',
+                           '../e2e/becomeGuru/category.js',
+                           '../e2e/becomeGuru/photo.js',,
                            '../test_case/mobileTest/sidemenu/signup.js',
                            '../test_case/mobileTest/guruProfile/home.js',
                            '../test_case/mobileTest/guruProfile/editProfile.js',

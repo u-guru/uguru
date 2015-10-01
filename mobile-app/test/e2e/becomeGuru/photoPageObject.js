@@ -22,7 +22,7 @@ var Photo = function()
 	};
 	this.TakePicture = function()
 	{
-		ActionSheetButtons.then(function(items)
+		this.ActionSheetButtons.then(function(items)
 		{
 			items[0].click();
 		});

@@ -1,7 +1,7 @@
-var Category = require('./categoryPageObject.js');
+var Photo = require('./photoPageObject.js');
 
 describe('Photo test', function () {
-	var category = new Category();
+	var photo = new Photo();
 
 	// describe("Check Drag Left is disabled",function()
 	// {
@@ -27,7 +27,7 @@ describe('Photo test', function () {
 	
 	it ("Check sample msg",function()
 	{
-		photo.CheckSampleMessageExist
+		photo.CheckSampleMessageExist();
 	});
 	// it ("Edit Photo",function()
 	// {	
