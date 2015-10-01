@@ -100,6 +100,10 @@ exports.config = {
                       '../test_case/mobileTest/workflows/university.js', 
                       '../e2e/becomeGuru/majorSpec.js'
                     ],
+            alert:  [
+        
+                      '../e2e/alertTest.js'
+                    ],
             course: [ 
                         '../test_case/mobileTest/workflows/access.js',
                         '../test_case/mobileTest/workflows/university.js', 
@@ -208,6 +212,8 @@ exports.config = {
                    wdBridge.initFromProtractor(exports.config);
 
             var SpecReporter = require('jasmine-spec-reporter');
+            var webdriver = require('selenium-webdriver');
+
             // add jasmine spec reporter
             jasmine.getEnv().addReporter(new SpecReporter(
                 {
@@ -238,7 +244,7 @@ exports.config = {
             protractor.run = require('../test_case/globals.js').run;
             global.doc =require('../test_case/newGlobals.js');
             global.EC  = protractor.ExpectedConditions;
-            global.localhost = '192.168.0.105'
+            global.localhost = '192.168.0.109'
             // console.log( "W : "+ browser.params.screenSize.w+ " H :"+browser.params.screenSize.h)
             // browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);
              // browser.get("http://localhost:8100/#/")
