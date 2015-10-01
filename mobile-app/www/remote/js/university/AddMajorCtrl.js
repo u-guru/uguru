@@ -16,8 +16,6 @@ angular.module('uguru.util.controllers')
   $q, Major, $ionicSideMenuDelegate, Utilities,
   $localstorage, uTracker) {
 
-
-
     if (!$scope.user.majors) {
       $scope.user.majors = [];
     }
@@ -50,8 +48,13 @@ angular.module('uguru.util.controllers')
 
     $scope.keyboard_force_off = false;
 
+    $scope.search_text = {
+      major: ''
+    };
+
+
     function setMajorFocus(target) {
-      if ($scope.search_text.length === 0 && !$scope.keyboard_force_off) {
+      if ($scope.search_text.major.length === 0 && !$scope.keyboard_force_off) {
         document.getElementById("major-input").focus();
       }
     };
@@ -105,7 +108,7 @@ angular.module('uguru.util.controllers')
       // t == 1
       $timeout(function() {
         $scope.loader.hide();
-        $scope.search_text = '';
+        $scope.search_text.major = '';
       }, 1250);
 
       if ($scope.majorInput && $scope.majorInput.value) {
@@ -126,9 +129,9 @@ angular.module('uguru.util.controllers')
 
     }
 
-    $scope.query = function(input) {
-      $scope.majors = Utilities.nickMatcher(input, Major.getGeneral());
-    }
+    // $scope.query = function(input) {
+    //   $scope.majors = Utilities.nickMatcher(input, Major.getGeneral());
+    // }
 
     $scope.removeUserMajorsFromMaster = function() {
       var majorIndicesToSlice = [];
@@ -152,24 +155,22 @@ angular.module('uguru.util.controllers')
     }
 
 
+    // $scope.$on('$ionicView.enter', function() {
 
 
-    $scope.$on('$ionicView.enter', function() {
+    //   $timeout(function() {
+
+    //     $scope.majorInput = document.getElementById('major-input');
+    //     //add event listener
+
+    //     majorInput.addEventListener("keyup", function() {
+
+    //     }, 500);
 
 
-      $timeout(function() {
+    //   }, 1000);
 
-        $scope.majorInput = document.getElementById('major-input');
-        //add event listener
-
-        majorInput.addEventListener("keyup", function() {
-
-        }, 500);
-
-
-      }, 1000);
-
-    });
+    // });
 
     $scope.limit = 10;
     $scope.increaseLimit = function() {
@@ -178,7 +179,6 @@ angular.module('uguru.util.controllers')
       }
     }
 
-
     $scope.majors = Major.getGeneral();
     $scope.removeUserMajorsFromMaster();
 
@@ -186,4 +186,8 @@ angular.module('uguru.util.controllers')
 
 
 ])
+
+
+
+
 

@@ -1,6 +1,6 @@
 angular.module('uguru.util.controllers')
 
-.controller('SidebarController', [
+.controller('SideMenuController', [
 
   //All imported packages go here
   '$scope',

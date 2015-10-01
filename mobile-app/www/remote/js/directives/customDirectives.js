@@ -7,11 +7,17 @@ angular.module('uguru.directives', []);
       return {
         restrict: 'A',
         link: function(scope, element, attr) {
-          if(scope.$first || scope.$last) {
-            $timeout(function() {
 
-              scope.$emit(attr.onFinishedRender);
-            })
+          var startTime = Date.now();
+
+          if(scope.$last) {
+            $timeout(function() {
+              var endTime = Date.now();
+              var duration = endTime - startTime;
+
+              console.log(attr.onFinishedRender + " duration: " + duration);
+              //scope.$emit(attr.onFinishedRender);
+            }, 0);
           }
         }
       }
