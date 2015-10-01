@@ -93,7 +93,7 @@ angular.module('uguru.student.controllers', [])
                 $scope.root.vars.detailed_verbs_index_clicked = verb_index;
             }
 
-            $ionicModal.fromTemplateUrl(BASE + 'templates/request.modal.html', {
+            $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
                 scope: $scope,
                 animation: 'slide-in-up'
             }).then(function(modal) {
@@ -184,9 +184,9 @@ angular.module('uguru.student.controllers', [])
             }, 1000);
 
 
-            // $timeout(function() {
-            //     $scope.launchRequestModal();
-            // }, 1000);
+            $timeout(function() {
+                $scope.launchRequestModal();
+            }, 1000);
 
 
         });
