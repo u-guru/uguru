@@ -79,8 +79,9 @@ function Utilities(Settings) {
 		}
 		var inputLowerCase = input.toLowerCase();
 		for(var i=0; i<list.length; i++) {
-
-			var nameLowerCase = list[i].name.toLowerCase();
+			var elem = list[i];
+			var elemName = elem.name || elem.abbr || elem.title;
+			var nameLowerCase = elemName.toLowerCase();
 
 			var inputLowerCase = input.toLowerCase();
 
@@ -136,7 +137,7 @@ function Utilities(Settings) {
 	}
 
 	function rAF() {
-	  return 
+	  return
 	  	window.requestAnimationFrame ||
 	    window.webkitRequestAnimationFrame ||
 	    window.mozRequestAnimationFrame ||
@@ -145,7 +146,7 @@ function Utilities(Settings) {
 	    };
 	}
 
-	
+
 
 
 }

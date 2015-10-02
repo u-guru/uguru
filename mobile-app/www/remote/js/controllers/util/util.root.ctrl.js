@@ -64,10 +64,12 @@ angular.module('uguru.util.controllers')
         $scope.popupScope = {};
         $scope.data = {};
 
+        University.majors = $localstorage.getObject('universityMajors');
+        University.courses = $localstorage.getObject('universityCourses');
+
         if ($scope.user && $scope.user.id) {
             User.getUserFromServer($scope, null, $state);
         }
-
 
         if (LOCAL) {
             $scope.img_base = 'remote/'
@@ -75,17 +77,38 @@ angular.module('uguru.util.controllers')
             $scope.img_base = '';
         }
 
-        $scope.getMajorsForUniversityId = function(uni_id) {
+        $scope.getMajorsForUniversityId = function(uni_id, callback) {
             University.getMajors(uni_id).then(function(majors){
-                $scope.data.majors = majors.plain();
-                //NICKTODO --> set this localstorage or static file?
+
+                majors = majors.plain()
+
+                $scope.data.majors = majors;
+                University.majors = majors;
+
                 $localstorage.setObject('universityMajors', majors.plain())
-                console.log(majors);
-                console.log(majors.plain().length, 'majors retrieved')
+                console.log(majors.plain().length, 'recently majors retrieved')
+
+                if (callback) {
+                    callback(majors.plain());
+                }
             },
             function() {
                 console.log('Universities NOT successfully loaded');
             })
+        }
+
+        if ($scope.user.university_id && !University.majors) {
+            console.log('University majors not local, requesting now..');
+            $scope.getMajorsForUniversityId($scope.user.university_id);
+        } else {
+            console.log(University.majors.length, 'majors loaded');
+        }
+
+        if ($scope.user.university_id && !University.majors) {
+            console.log('University courses not local, requesting now..');
+            $scope.getMajorsForUniversityId($scope.user.university_id);
+        } else {
+            console.log(University.courses.length, 'courses loaded');
         }
 
         $scope.getCoursesForUniversityId = function(uni_id) {
@@ -283,18 +306,6 @@ angular.module('uguru.util.controllers')
             }
         }
 
-        var local_majors = $localstorage.getObject('majors');
-        var local_popular_majors = $localstorage.getObject('popular_majors');
-        if (!local_majors || local_majors.length === 0 || !local_popular_majors || local_popular_majors.length === 0) {
-            console.log('getting majors');
-            $scope.on_app_open_retrieve_objects($scope, $state, $localstorage, University, null, Geolocation,
-                Major, Skill, Profession);
-        } else {
-            $scope.root.vars.majors = local_majors;
-            $scope.static.majors = local_majors;
-            $scope.static.popular_majors = local_popular_majors;
-            console.log(local_majors.length, 'majors already loaded');
-        }
 
         var local_skills = $localstorage.getObject('skills');
         var local_popular_skills = $localstorage.getObject('local_popular_skills');

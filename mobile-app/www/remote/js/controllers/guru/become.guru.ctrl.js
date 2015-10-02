@@ -110,6 +110,9 @@ angular.module('uguru.guru.controllers')
       if (index === 0) {
 
         uTracker.track(tracker, 'Become Guru: Majors');
+        if ($scope.data.majors) {
+          $scope.majors = $scope.data.majors;
+        }
         console.log('grabbing courses from server')
         $scope.getCoursesFromServer();
         $ionicSideMenuDelegate.canDragContent(false);
@@ -210,13 +213,13 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.$on('$ionicView.beforeEnter', function() {
-      if (!$scope.data.majors) {
+      // if (!$scope.data.majors) {
 
-        $scope.getMajorsForUniversityId($scope.user.university.id);
-        $scope.getCoursesForUniversityId($scope.user.university.id);
+      //   $scope.getMajorsForUniversityId($scope.user.university.id);
+      //   $scope.getCoursesForUniversityId($scope.user.university.id);
 
 
-      }
+      // }
     })
     $scope.$on('$ionicView.afterEnter', function() {
 
