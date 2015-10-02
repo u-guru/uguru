@@ -1,7 +1,7 @@
+
 angular
 .module('sharedServices', ['ionic'])
 .factory("DeviceService", [
-
 	'$cordovaNgCardIO',
 	'AndroidService',
 	'iOSService',
@@ -69,20 +69,28 @@ function DeviceService( $cordovaNgCardIO,
     return info;
   }
 
+
+  //doesn't work for emulators!
 	function readyDevice(callback) {
     var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
     if(app) {
       console.log("Running on mobile");
-      document.addEventListener("deviceready", onDeviceReady);  
+
+      document.addEventListener("deviceready", onDeviceReady);
     } else {
       console.log("Detected desktop browser");
-      //onDeviceReady();
+      if (LOCAL && isMobile()) {
+        onDeviceReady();
+      }
+
     }
-		
+
 	}
 
 	function onDeviceReady(callback) {
 		//checkUpdates();
+
+
 
         //Ugh --> they overroad the native js OnDOMContentLoaded ...
         ionic.DomUtil.ready(function(){
@@ -105,22 +113,6 @@ function DeviceService( $cordovaNgCardIO,
         }
 
 		if(isMobile()) {
-
-
-
-      // SAMIR --> to refactor
-      //show this until body is loaded
-
-			// console.log("DeviceService detects mobile");
-   //    console.log("device.cordova is ready " + device.cordova);
-	  // 		console.log("navigator.geolocation works well");
-			// console.log("window.open works well");
-			// console.log("navigator.camera works well " + navigator.camera);
-   // 			console.log("cardIO: " + $cordovaNgCardIO);
-   // 			console.log("cordova.file is ready: " + cordova.file);
-   // 			console.log("fileTransfer is ready: " + FileTransfer);
-
-
 
 	 		var mobileOS = getPlatform().toLowerCase();
 		  	switch(mobileOS) {
@@ -189,8 +181,6 @@ function DeviceService( $cordovaNgCardIO,
                     window.location = BASE_URL;
                     window.location.reload(true);
                   }
-
-
 
            	  }
           },

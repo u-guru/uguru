@@ -1,69 +1,69 @@
 <u-slide-box id='access-uni-slide' disable-scroll='true' delegate-handle='access-university-slide-box' performance="access-university" performance-beacon="remote/img/beacon.png">
-<u-slide>
-	<div ng-include="img_base + BASE + 'templates/access.html'"></div>
-</u-slide>
-<u-slide u-before-enter='beforeEnter()' u-after-enter='afterEnter()'>
-<ion-view class='uguru-view university-view' >
-<section id="school" class="onboarding" >
-	<header class="third flex-center">
-		<h1>Find Your Community</h1>
-		<div class="header-nav">
-	        <a class="header-nav-back" ng-click='goToAccess()'>
-		        <svg viewBox="0 0 100 100">
-					<path d="M68,86 L32,50 L68,14"></path>
-				</svg>
-				<h1>&nbsp;</h1>
-			</a>
-		</div>
-		<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
-	        <input type="search" id='university-input' class=''
-				placeholder="Search for my university"
-				ng-model="input.search_text"
-				ng-keyup="query(input.search_text)"
-				ng-keydown="measureResponse()"
-				ng-focus="universityInputFocused()"
-	        />
-	        <a ng-click='toggleLocationIconAppearance()' class='geolocation-icon' ng-if='input.search_text.length === 0'>
-				<i class='icon ion-navigate ng-class:{"location-active":isLocationActive}'></i>
-	        </a>
-	        <a class='clear-search-input p10xy' ng-click='resetUniversities()' ng-if='input.search_text.length'>
-				<i class='icon ion-close-circled text-slate'></i>
-	        </a>
-		</div>
-	</header>
-	<div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list">
-		<ul class='list list-item-border'>
-			<li class="list-item" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
-				<a ng-click='universitySelected(university, $event)' style='border-color:{{university.school_color_one}}'>
-					<span class="school-icon list-icon-left">
-						<img ng-if='platform.mobile' image-saver ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
-						<img ng-if='platform.web' ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}'/>
-					</span>
-					<span ng-if='!isLocationActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
-						<b>
-							<span class="school-title">{{university.name}}</span>
-							<i>
-								<span class="school-city">{{university.city}},</span>
-								<span class="school-state">{{university.state}}</span>
-							</i>
-						</b>
-					</span>
-					<span ng-if='isLocationActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
-			            <b>
-			            	<span class="school-title">{{university.name}}</span>
-			            	<i class='university-subheader'>
-			            		<span class="school-city">{{university.city}},</span>
-			            		<span class="school-state">{{university.state}}</span>
-			            		<span class='school-distance txt-lake' ng-if='university.miles <= 300'>{{university.miles | number}} mi</span>
-			            		<span class='school-distance txt-lake' ng-if='university.miles > 300'>hella far</span>
-			            	</i>
-			            </b>
-					</span>
-				</a>
-			</li>
-		</ul>
-	</div>
-</section>
-</ion-view>
-</u-slide>
+  <u-slide>
+  	<div ng-include="img_base + BASE + 'templates/access.html'"></div>
+  </u-slide>
+  <u-slide u-before-enter='beforeEnter()' u-after-enter='afterEnter()'>
+  <ion-view class='uguru-view university-view' >
+  <section id="school" class="onboarding" >
+  	<header class="third flex-center">
+  		<h1>Find Your Community</h1>
+  		<div class="header-nav">
+  	        <a class="header-nav-back" ng-click='goToAccess()'>
+  		        <svg viewBox="0 0 100 100">
+  					<path d="M68,86 L32,50 L68,14"></path>
+  				</svg>
+  				<h1>&nbsp;</h1>
+  			</a>
+  		</div>
+  		<div class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p10xy">
+  	        <input type="search" id='university-input' class=''
+  				placeholder="Search for my university"
+  				ng-model="universityInput.value"
+  				ng-keyup="query()"
+  				ng-keydown="query()"
+  				ng-focus="universityInputFocused()"
+  	        />
+  	        <a ng-click='toggleLocationIconAppearance()' class='geolocation-icon' ng-if='universityInput.value.length === 0'>
+  				<i class='icon ion-navigate ng-class:{"location-active":isLocationActive}'></i>
+  	        </a>
+  	        <a class='clear-search-input p10xy' ng-click='resetUniversities()' ng-if='universityInput.value.length'>
+  				<i class='icon ion-close-circled text-slate'></i>
+  	        </a>
+  		</div>
+  	</header>
+  	<div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list">
+  		<ul class='list list-item-border'>
+  			<li class="list-item" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
+  				<a ng-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
+  					<span class="school-icon list-icon-left">
+  						<img ng-if='platform.mobile' image-saver ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}' alt=""/>
+  						<img ng-if='platform.web' ng-src="{{ university.seal_url || university.forbes_url}}" style='border:2px solid {{university.school_color_one}}'/>
+  					</span>
+  					<span ng-if='!isLocationActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
+  						<b>
+  							<span class="school-title">{{university.name}}</span>
+  							<i>
+  								<span class="school-city">{{university.city}},</span>
+  								<span class="school-state">{{university.state}}</span>
+  							</i>
+  						</b>
+  					</span>
+  					<span ng-if='isLocationActive' class="school-name ng-class:{'smaller-list-font':university.title.length >=20 }">
+  			            <b>
+  			            	<span class="school-title">{{university.name}}</span>
+  			            	<i class='university-subheader'>
+  			            		<span class="school-city">{{university.city}},</span>
+  			            		<span class="school-state">{{university.state}}</span>
+  			            		<span class='school-distance txt-lake' ng-if='university.miles <= 300'>{{university.miles}} mi</span>
+  			            		<span class='school-distance txt-lake' ng-if='university.miles > 300'>hella far</span>
+  			            	</i>
+  			            </b>
+  					</span>
+  				</a>
+  			</li>
+  		</ul>
+  	</div>
+  </section>
+  </ion-view>
+  </u-slide>
 </u-slide-box>

@@ -1,5 +1,4 @@
 angular.module('uguru.util.controllers', ['sharedServices'])
-
 .controller('AddUniversityCtrl', [
 
   //All imported packages go here
@@ -15,111 +14,61 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'UniversityMatcher',
   '$ionicSlideBoxDelegate',
   'DeviceService',
-  '$ionicModal',
-  AddUniversityCtrl
-]);
+  'uTracker',
+  '$q',
+  AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Settings, Utilities, deviceInfo, UniversityMatcher, $ionicSlideBoxDelegate,
-  DeviceService, $ionicModal, uTracker) {
+  DeviceService, uTracker, $q) {
 
+  console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
 
-  //var networkState = navigator.connection.type;
-  var deviceUUID = DeviceService.getUUID();
-  var deviceModel = DeviceService.getModel();
-  var devicePlatform = DeviceService.getPlatform();
-  var deviceVersion = DeviceService.getVersion();
-  var measure = true;
-  var startTime = 0;
-  console.log("deviceUUID: " + deviceUUID);
-  if (deviceUUID === null || deviceUUID === undefined) deviceUUID = 'undefined';
-  var mixpanelID = deviceUUID.substring(0, 8);
-
-  $scope.universities = University.getTargetted();
-  $scope.alreadyFocused = false;
-  $scope.isLocationActive = false;
-  $scope.isLocationGiven = null; // null if getGPS not called, false if not given, true if lat/lon
-  sortByRank(University.getTargetted());
-  $scope.limit = 10;
-
-  $scope.input = {
-    search_text: ''
-  }
+  uTracker.setUser(tracker, 'localyticsTest');
+  uTracker.sendDevice(tracker);
 
 
   document.addEventListener("pause", lastSearch, false);
   document.addEventListener("backbutton", lastSearch, false);
+  function lastSearch() {
 
-  $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.howItWorksModal = modal;
-  });
-
-  $scope.launchHowItWorksModal = function() {
-    $scope.howItWorksModal.show();
+    uTracker.track(tracker, "Paused/Back", {
+      "$University_Input": $scope.universityInput.value
+    });
   }
 
-  $scope.universityInputFocused = function() {
-    if ($scope.alreadyFocused) {
+  $scope.universities = University.getSorted();
+  $scope.isLocationActive = false;
+  $scope.isLocationGiven = null; // null if getGPS not called, false if not given, true if lat/lon
 
-    }
+  $scope.universityInput = {
+    value: ''
   }
 
 
-
-  $scope.toggleLocationIconAppearance = function() {
-    // get GPS if we haven't attempted it
-    if ($scope.isLocationGiven === null) {
-      getGPS();
-    }
-    else if ($scope.locationGiven === false) {
-      alert('Please enable GPS permissions from your settings.')
-      //reset to null & see if they will do it again
-      $scope.isLocationGiven = null;
-    } else if ($scope.isLocationGiven){
-      $scope.isLocationActive = !$scope.isLocationActive;
-    } else {
-      $scope.locationGiven = false;
-      $scope.locationActive = false;
-    }
-  }
 
 
   var appLoadTime;
   var appStartTime;
 
   $scope.getLoadTime = function() {
+        appStartTime = Date.now();
+        console.log("appStartTime: " + appStartTime);
+        var time_ms = appStartTime - start_dom_time;
+        var time_s = (time_ms / 1000.0).toPrecision(3)
+        var loadTime = time_s;
+        appLoadTime = loadTime;
+        console.log("appLoadTime: " + appLoadTime);
 
-    appStartTime = Date.now();
-    console.log("appStartTime: " + appStartTime);
-    var time_ms = appStartTime - start_dom_time;
-    var time_s = (time_ms / 1000.0).toPrecision(3)
-    var loadTime = time_s;
-    appLoadTime = loadTime;
-    console.log("appLoadTime: " + appLoadTime);
-    mixpanel.track("App Launch", {
-      "$App_Load_Time": appLoadTime
-    });
-    mixpanel.people.set({
-      "$App_Load_Time": appLoadTime
-    });
+        uTracker.track(tracker, "App Launch", {
+          "$App_Load_Time": appLoadTime
+        });
   }
 
 
 
   var stopLoop = false;
   var stats = new Stats();
-
-  window._rAF = (function() {
-    return window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      function(callback) {
-        window.setTimeout(callback, 16);
-      };
-  })();
 
   $scope.beforeEnter = function() {
     stopLoop = false;
@@ -131,7 +80,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       fpsArray.push(stats.getFPS());
       console.log("FPS: " + stats.getFPS());
       if (!stopLoop) {
-        window._rAF(update);
+        Utilities.rAF(update);
       } else {
         var total = 0;
         for (var i = 0; i < fpsArray.length; i++) {
@@ -145,18 +94,14 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         //var fpsValue = "meanFPS: " + meanFPS + "/ fpsArray: " + fpsArray.toString();
         //console.log("fpsValue: " + fpsValue);
 
-        mixpanel.track("Entered Access Code", {
+        uTracker.track(tracker, "Entered Access Code", {
           "$Mean_FPS": meanFPS,
           "$FPS_Array": fpsArray.toString()
-        });
-        mixpanel.people.set({
-          "$Mean_FPS": meanFPS
         });
 
       }
     }
-    window._rAF(update);
-    //console.log('called beforeEnter');
+    Utilities.rAF(update);
   };
 
   $scope.afterEnter = function() {
@@ -165,90 +110,123 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     //console.log("called afterEnter");
   };
 
+    var listResponseTime = 0;
+    var active = true;
+    var listEndTime = 0;
+    $scope.$on('uniListFinished', function() {
 
-
-
-  var queryTimeout = false;
-  var emptyTimeout = false;
-  $scope.limit = 10;
-  $scope.query = function(input) {
-    if (!measure) {
-
-      if (!queryTimeout) {
-
-        $scope.universities = UniversityMatcher.cachedMatch(input);
-
-      } else if (input.length === 0) {
-        if (!emptyTimeout) {
-          emptyTimeout = true;
-          $scope.universities = UniversityMatcher.cachedMatch(input);
-          $timeout(function() {
-            emptyTimeout = false;
-          }, 600);
+      if(active) {
+        if($scope.universityInput.value.length > 0) {
+          listResponseTime = Date.now();
+          console.log("setting listResponseTime: " + listResponseTime);
+          active = false;
+        }
+        else if($scope.universityInput.value.length === 0) {
+          listEndTime = Date.now();
+          console.log("listEndTime: " + listEndTime);
         }
       }
+    });
 
+    var measureFPS = true;
+    var inputStartTime = 0;
+    $scope.query = function() {
+      if(measureFPS) {
+        measureFPS = false;
+        inputStartTime = Date.now();
+        $scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
+      }
+      else if(!measureFPS) {
+        if($scope.universityInput.value.length===0){
+          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 500);
+        }
+        else {
+          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 16);
+        }
+      }
     }
 
-
-  }
-
-  $scope.increaseLimit = function() {
-    if ($scope.limit < $scope.universities.length) {
-      $scope.limit += 10;
-      console.log('limit increased is being called', $scope.limit, $scope.universities.length);
+    $scope.limit = 10;
+    $scope.increaseLimit = function() {
+      if($scope.limit < $scope.universities.length) {
+        $scope.limit += 10;
+        //console.log('limit increased is being called', $scope.limit, $scope.universities.length);
+      }
     }
-  }
 
   //back button
   $scope.goToAccess = function() {
-    $scope.input.search_text = '';
+    $scope.universityInput.value = '';
     $ionicSlideBoxDelegate.previous();
   }
 
-  function sortByRank(list) {
-    function compareRank(a, b) {
-      if (a.rank < b.rank)
-        return -1;
-      if (a.rank > b.rank)
-        return 1;
-      return 0;
-    }
-    return list.sort(compareRank);
-  }
-
   $scope.resetUniversities = function() {
-    $scope.input.search_text ="";
+    $scope.universityInput.value = '';
     if ($scope.isLocationActive) {
       var userLat = $scope.user.last_position.latitude;
       var userLong = $scope.user.last_position.longitude;
-      $scope.nearestResults = Geolocation.sortByLocation(userLat, userLong, $scope.universities);
+      console.log("lat and long: " + userLat + ", " + userLong);
+      $scope.universities = Geolocation.sortByLocation(userLat, userLong, University.getTargetted());
     } else {
-      $scope.universities = University.getTargetted();
+      $scope.universities = University.getSorted();
     }
-  }
+  };
 
 
-  $scope.universitySelected = function(university, $event) {
+  $scope.universitySelected = function(university) {
 
-    // var searchResponseTime = listResponseTime - startTime;
-    // console.log("searchResponseTime: " + searchResponseTime);
+      var searchResponseTime = listResponseTime - inputStartTime;
+      console.log("searchResponseTime: " + searchResponseTime);
 
-    // var listRenderTime = listEndTime - appStartTime;
-    // console.log("listRenderTime: " + listRenderTime);
+      var listRenderTime = listEndTime - appStartTime;
+      console.log("listRenderTime: " + listRenderTime);
 
 
-    // mixpanel.track("Changed University", {
-    //   "$University": university.name,
-    //   "$Search_Input": $scope.input.search_text
-    // });
-    // mixpanel.people.set({
-    //   "$University": university.name,
-    // });
+      uTracker.track(tracker, "University Selected", {
+          "$University": university.name,
+          "$University_Input": $scope.universityInput.value
+      });
+      uTracker.set(tracker, {
+
+          "$University": university.name,
+          "$Search_Response_Time": searchResponseTime,
+          "$List_Render_Time": listRenderTime
+      });
+
+      //if user is switching universities
+      if ($scope.user.university_id
+          && university.id !== $scope.user.university_id
+          && !confirm('Are you sure? Your current courses will be deactivated'))
+      {
+          return;
+      }
+
+      uTracker.track(tracker, "University Changed", {
+          "$University": university.name,
+          "$University_Input": $scope.universityInput.value
+      });
+      uTracker.set(tracker, {
+          "$University": university.name,
+      });
+      $scope.loader.show();
+      $scope.user.university_id = university.id;
+      $scope.user.university = university;
+      $scope.universityInput.value = '';
+
+      //update user to locat storage
+      $scope.rootUser.updateLocal($scope.user);
+
+      var payload = {
+        'university_id': $scope.user.university_id
+      };
     $scope.loader.show();
     $scope.user.university_id = university.id;
     $scope.user.university = university;
-    $scope.input.search_text = '';
+    $scope.universityInput.value = '';
+
+    //start fetching majors right now
+    $scope.getMajorsForUniversityId(university.id);
+    $scope.getCoursesForUniversityId(university.id);
 
     //update user to locat storage
     $scope.rootUser.updateLocal($scope.user);
@@ -259,18 +237,20 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
     //save university
     var postUniversitySelectedCallback = function() {
+
       $timeout(function() {
+
         $scope.loader.hide();
-        $ionicViewSwitcher.nextDirection('forward');
-        UniversityMatcher.clearCache();
-        $state.go('^.home')
+
+          $ionicViewSwitcher.nextDirection('forward');
+          UniversityMatcher.clearCache();
+          $state.go('^.home')
       }, 1000);
     }
 
     $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
 
   };
-  console.log("$scope.location is currently: " + $scope.location);
 
   var isTimeout = false;
   $scope.toggleLocation = function() {
@@ -287,105 +267,41 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     }
   }
 
-  function getGPS() {
 
+  $scope.toggleLocationIconAppearance = function() {
+    // get GPS if we haven't attempted it
+    if ($scope.isLocationGiven === null) {
+      getGPS();
+    }
+    else if ($scope.locationGiven === false) {
+      alert('Please enable GPS permissions from your settings.')
+      //reset to null & see if they will do it again
+      $scope.isLocationGiven = null;
+    }
+    else if ($scope.isLocationGiven) {
+      $scope.isLocationActive = !$scope.isLocationActive;
+    }
+    else {
+      $scope.locationGiven = false;
+      $scope.locationActive = false;
+    }
+  }
+
+
+  function getGPS() {
     $scope.isLocationActive = true;
     Geolocation.getLocation($scope);
   };
 
-  function lastSearch() {
-    mixpanel.track("Paused/Back", {
-      "$Search_Input": $scope.input.search_text
-    });
-  }
 
   $scope.$on('$ionicView.loaded', function() {
     // android doesn't have a special prompt
-    $scope.measureResponse();
-
-    if (devicePlatform === 'android') {
+    if (DeviceService.getPlatform() === 'android') {
       getGPS();
     }
   });
 
-  // TODO : Show android location by default
 
-
-  // $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
-  //   scope: $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal) {
-  //   $scope.availabilityModal = modal;
-  //   $scope.availabilityModal.show();
-  // });
-
-  // $scope.launchAvailabilityModal = function() {
-  //   $scope.availabilityModal.show();
-  // }
-
-  // $scope.$on('$ionicView.enter', function() {
-  //   $scope.launchAvailabilityModal();
-  // });
-
-// var listResponseTime = 0;
-  // var active = true;
-  // var listEndTime = 0;
-  // $scope.$on('uniListFinished', function() {
-
-  //   if (active) {
-  //     if ($scope.input.search_text.length > 0) {
-  //       listResponseTime = Date.now();
-  //       console.log("setting listResponseTime: " + listResponseTime);
-  //       active = false;
-  //     } else if ($scope.input.search_text.length === 0) {
-  //       listEndTime = Date.now();
-  //       console.log("listEndTime: " + listEndTime);
-  //     }
-  //   }
-  // });
-
-  // mixpanel.track("Selected University", {
-  //       "$University": university.name,
-  //       "$Search_Input": $scope.input.search_text
-  //     });
-  //     mixpanel.people.set({
-  //       "$University": university.name,
-  //       "$Search_Response_Time": searchResponseTime,
-  //       "$List_Render_Time": listRenderTime
-  //     });
-  //     ga('send', 'event', 'Selected University', 'action', university.name);
-  // mixpanel.people.set({
-  //   "$email": "testphone@gmail.com",
-
-  //   "$created": "2015-09-22 16:53:54",
-  //   "$last_login": new Date(),
-  //   '$Device_UUID': deviceUUID,
-  //   '$Device_Model': deviceModel,
-  //   '$Device_Platform': devicePlatform,
-  //   '$Device_Version': deviceVersion,
-  //   //'$network_state': networkState,
-  // });
-  //TODO: current implementation of deviceready() isn't optimal. isn't always ready to provide device info
-  // mixpanel.identify('test123');
-
-  $scope.measureResponse = function() {
-    if (measure) {
-      measure = false;
-      startTime = Date.now();
-      console.log("setting startTime: " + startTime);
-      // while(listResponseTime === null) {
-      $scope.universities = UniversityMatcher.cachedMatch($scope.input.search_text);
-      //console.log("empty loop");
-      // }
-      // $timeout(function() {
-      //   var endTime = Date.now();
-      //   var responseTime = endTime - startTime;
-      //   console.log("responseTime: " + responseTime);
-      //   console.log("listResponseTime in measureResponse: " + (listResponseTime - startTime));
-      // });
-
-    }
-  }
 
 
 

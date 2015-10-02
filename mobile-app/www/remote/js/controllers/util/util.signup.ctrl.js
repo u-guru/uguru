@@ -522,22 +522,7 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    $scope.resetAccount = function() {
-      if (confirm('Are you sure you want to reset your admin account?')) {
 
-        $scope.loader.show();
-        $timeout(function() {
-          $scope.loader.hide();
-        }, 1000);
-        $scope.user.university_id = null;
-        $scope.user.university = null;
-        $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
-
-        $scope.logoutUser();
-        $localstorage.setObject('user', $scope.user);
-        $scope.goToBeginning();
-      }
-    }
 
     $scope.goToEditUniversity = function() {
       $ionicSideMenuDelegate.toggleRight();
@@ -936,11 +921,17 @@ angular.module('uguru.util.controllers')
                 $scope.loader.show();
                 var successCallback = function(success) {
                   var postSuccessCallback = function() {
-                    $scope.loader.hide();
-                    $scope.success.show(0, 1000, 'Login Successful!');
-                    if ($scope.signupModal && $scope.signupModal.isShown()) {
-                      $scope.signupModal.hide();
-                    }
+                    $scope.fbLoginSuccessAlreadyShown = true;
+                    $scope.loader.showSuccess('Login Successful!', 10000);
+                    $scope.ionicSideMenuDelegate.toggleRight();
+                    $timeout(function() {
+                      $scope.loader.setSuccessText('Syncing profile info...');
+                    }, 2500);
+                    $timeout(function(){
+                      if ($scope.signupModal && $scope.signupModal.isShown()) {
+                        $scope.signupModal.hide();
+                      }
+                    }, 500)
                   }
                   $scope.postFbGraphApiSuccess(success, postSuccessCallback)
                 }
@@ -969,16 +960,20 @@ angular.module('uguru.util.controllers')
     var facebookAuthSuccessCallback = function (success) {
         // $cordovaFacebook.login(["user_education_history", "friends_education_history"]).then(function (success) {
           $scope.facebookResponseReceived = true;
-        $scope.loginInfo = success;
+          $scope.loginInfo = success;
 
         var successCallback = function() {
             $scope.loader.hide();
-            $scope.loader.hide();
-            $scope.success.show(0, 1500, 'Login Successful!');
+            $scope.loader.showSuccess('Login Successful!', 10000);
+            $scope.fbLoginSuccessAlreadyShown = true;
+            $timeout(function() {
+              $scope.loader.updateSuccessText('Syncing profile info...');
+            }, 2500);
             if ($scope.signupModal && $scope.signupModal.isShown()) {
               $scope.signupModal.hide();
             }
         }
+
         $scope.facebookApiGetDetails(successCallback);
         console.log('Getting Facebook information...');
     }
@@ -1061,13 +1056,13 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.postFbGraphApiSuccess = function(success, callback) {
-        console.log(success);
+
         $scope.user.first_name = success.first_name;
         $scope.user.last_name = success.last_name;
         $scope.user.name = success.name;
         $scope.user.email = success.email;
         $scope.user.fb_id = success.id;
-        console.log($scope.user.profile_url);
+
 
         $scope.signupForm.email = success.email;
         $scope.signupForm.first_name = $scope.user.first_name;
@@ -1087,23 +1082,13 @@ angular.module('uguru.util.controllers')
      $scope.facebookApiGetDetails = function (callback) {
       var successCallback = function(success) {
         $scope.postFbGraphApiSuccess(success, callback)
+        console.log('Facebook is success');
       }
       $cordovaFacebook.api("/me", null).then(successCallback, function (error) {
         $scope.error = error;
         console.log(error);
       });
     };
-
-    $scope.fbConnect = function () {
-      console.log('Attempting to login through facebook...');
-      $scope.login();
-    };
-
-    $scope.signupFacebook = function() {
-      console.log('printing user', JSON.stringify($scope.user));
-      $scope.login();
-    }
-
 
 
     $scope.validateLoginForm = function() {
@@ -1286,7 +1271,7 @@ angular.module('uguru.util.controllers')
               $scope.ionicSideMenuDelegate.toggleRight();
             }
           }, 500)
-          $scope.success.show(0, 1250, 'Login Successful!');
+          $scope.loader.showSuccess('Login Successful!', 2500);
 
           if ($scope.signupModal.isShown()) {
             $scope.signupModal.hide();
@@ -1327,52 +1312,23 @@ angular.module('uguru.util.controllers')
       $scope.signupForm.guru_mode = false;
       $scope.loader.show();
       User.create($scope.signupForm).then(function(user) {
-
           var processed_user = User.process_results(user.plain());
           User.assign_properties_to_root_scope($scope, processed_user);
           $scope.user.guru_mode = false;
           $localstorage.setObject('user', $scope.user);
-
-          $scope.success.show(0, 1500, 'Account Successfully Created')
-          if ($scope.signupModal.isShown()) {
-            $timeout(function() {
-              $scope.signupModal.hide();
-            }, 750)
+          if (!$scope.fbLoginSuccessAlreadyShown) {
+            $scope.loader.showSuccess('Account Successfully Created', 2500);
           }
-          //if we are about to create a request
-          if ($state.current.name === 'root.student-request') {
-                var callRequestHelp = function() {
-                  $scope.requestHelp();
-                  $scope.loader.hide();
-                }
 
-                $scope.closeSignupModal(callRequestHelp);
-            }
+          if ($scope.signupModal.isShown()) {
+              $scope.signupModal.hide();
+          }
 
-            User.getUserFromServer($scope, null, $state)
-
-            if ($scope.root.vars.pending_request)  {
-
-              $scope.root.vars.pending_request = false;
-
-              $ionicModal.fromTemplateUrl(BASE + 'templates/contacting.modal.html', {
-                      scope: $scope,
-                      animation: 'slide-in-up'
-                  }).then(function(modal) {
-                      $scope.contactingModal = modal;
-                      $scope.contactingModal.show();
-              });
-
-              $state.go('^.home');
-
-              $scope.user.createObj($scope.user, 'requests', $scope.root.vars.request, $scope);
-
-              $timeout(function() {
-                $scope.contactingModal.hide();
-                console.log('saved request', $scope.root.vars.request);
-              }, 5000);
-
-            }
+          //let them see their profile information is synced
+          $timeout(function(){
+            $ionicSideMenuDelegate.toggleRight();
+            $scope.loader.hide();
+          }, 1000)
 
       },
       function(err){
@@ -1396,12 +1352,6 @@ angular.module('uguru.util.controllers')
           }, 1000);
     }
 
-    //if price modal
-    if ($scope.root.vars.show_price_fields) {
-      $scope.root.vars.show_profile_fields = false;
-      $scope.hide_defaults = true;
-
-    }
 
 
     if ($localstorage.get('mobile-web-auth')) {
@@ -1411,8 +1361,11 @@ angular.module('uguru.util.controllers')
         $scope.loader.show();
         var successCallback = function(success) {
           var postSuccessCallback = function() {
-            $scope.loader.hide();
-            $scope.success.show(0, 2500, 'Login Successful!');
+            $scope.loader.showSuccess('Login Successful!', 10000);
+            $timeout(function() {
+              $scope.loader.updateSuccessText('Syncing profile info...');
+            }, 2000)
+            $scope.fbLoginSuccessAlreadyShown = true;
             $ionicSideMenuDelegate.toggleRight();
           }
           $scope.postFbGraphApiSuccess(success, postSuccessCallback)

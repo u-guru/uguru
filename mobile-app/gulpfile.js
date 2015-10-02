@@ -43,7 +43,6 @@ gulp.task('replace', function() {
     var start = args.page || 'university';
     var ip = args.ip
 
-
     var filename = env + '.json';
     var settings = JSON.parse(fs.readFileSync('./config/' + filename, 'utf8'));
 

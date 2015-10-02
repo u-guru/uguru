@@ -14,21 +14,21 @@ describe('Major Test', function () {
 	// 	})
 	
 	// });
-	describe('Welcome uguru logo pop',function()
-	{
-		it('Check welcome logo pop up ',function()
-		{
-			major.CheckPopUpIsShown()
-		});
-		it('Close welcome logo',function()
-		{
-			major.CloseThePopUp();
-		});	
-		it ('Start becomeGuru process',function()
-		{
-			major.BeginBecomeGuru();
-		});
-	});
+	// describe('Welcome uguru logo pop',function()
+	// {
+	// 	it('Check welcome logo pop up ',function()
+	// 	{
+	// 		major.CheckPopUpIsShown()
+	// 	});
+	// 	it('Close welcome logo',function()
+	// 	{
+	// 		major.CloseThePopUp();
+	// 	});	
+	// 	it ('Start becomeGuru process',function()
+	// 	{
+	// 		major.BeginBecomeGuru();
+	// 	});
+	// });
 	//for close the bug request
 	// it ('Start Become Guru Process',function()
 	// 	{

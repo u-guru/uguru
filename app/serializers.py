@@ -383,9 +383,7 @@ SessionSerializer = {
 }
 
 CourseSerializer = {
-    # 'short_name': fields.String,
     'title': fields.String(attribute='full_name'),
-    'code': fields.String(attribute='code'),
     'name': fields.String(attribute='short_name'),
     'id': fields.Integer
 }
@@ -489,4 +487,12 @@ TagSerializer = {
     'id': fields.Integer,
     'name': fields.String,
     'is_profession': fields.Boolean
+}
+
+DepartmentSerializer = {
+    'id': fields.Integer,
+    'name': fields.String,
+    'abbr': fields.String,
+    'title': fields.String,
+    'is_popular': fields.Boolean
 }

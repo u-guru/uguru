@@ -94,26 +94,27 @@ class UniversityListView(restful.Resource):
         return json.dumps(universities_arr), 200
 
 class UniversityMajorsView(restful.Resource):
-    @marshal_with(MajorSerializer)
-    def get(self, id):
-        majors = Major.query.all()
-
-        return majors, 200
+    @marshal_with(DepartmentSerializer)
+    def get(self, _id):
+        u = University.query.get(_id)
+        departments = u.departments
+        return departments, 200
 
 class UniversityCoursesView(restful.Resource):
     @marshal_with(CourseSerializer)
-    def get(self, id):
+    def get(self, _id):
         # from static.data.universities_courses_efficient import uni_courses_dict
 
 
         # courses = uni_courses_dict[str(id)].get("courses")s
-        u = University.query.get(id)
-        if not u.courses:
+        u = University.query.get(_id)
+        university_courses = u.courses
+        if not university_courses:
             #just grab ucla courses
             u = University.query.get(2752)
             return u.courses, 200
         else:
-            return u.courses, 200
+            return university_courses, 200
 
 
         # from static.data.berkeley_courses import courses
@@ -2007,15 +2008,21 @@ class UserNewView(restful.Resource):
     def post(self):
 
         fb_user = email_user = None
-
+        print request.json
         if request.json.get('email'):
             email_user = User.query.filter_by(email=request.json.get('email')).first()
 
         if request.json.get('fb_id'):
             fb_user = User.query.filter_by(fb_id=request.json.get('fb_id')).first()
 
+        if email_user and not fb_user and request.json.get('fb_id'):
+            email_user.fb_id = request.json.get('fb_id')
+            db_session.commit()
 
-        if email_user and not fb_user:
+            return jsonify({'status': 201, 'user': email_user})
+
+        ## If they tried signing up w/ no account
+        elif email_user and not fb_user and not request.json.get('fb_id'):
             abort(409);
             # return json_response(400, errors=["Account already exists"])
 
@@ -2593,6 +2600,12 @@ class AdminViewUserList(restful.Resource):
 
         return user, 200
 
+class AdminViewUserAnalytics(restful.Resource):
+
+    def get(self):
+        from app.lib.u_localytics import *
+
+        return queryUserEvents().json()['results']
 
 
 class AdminViewGithubLabels(restful.Resource):
@@ -3070,8 +3083,8 @@ api.add_resource(SupportView, '/api/v1/support')
 api.add_resource(SessionView, '/api/v1/sessions')
 api.add_resource(RankingsView, '/api/v1/rankings')
 api.add_resource(UniversityListView, '/api/v1/universities')
-api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:id>/majors')
-api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:id>/courses')
+api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:_id>/departments')
+api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:_id>/courses')
 api.add_resource(MajorListView, '/api/v1/majors')
 api.add_resource(CourseListView, '/api/v1/courses')
 api.add_resource(SkillListView, '/api/v1/skills')
@@ -3099,12 +3112,12 @@ api.add_resource(AdminViewEmailsList, '/api/admin/<string:auth_token>/emails')
 api.add_resource(AdminViewUsersList, '/api/admin/<string:apiuth_token>/users')
 api.add_resource(AdminViewUniversitiesList, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminViewUserList, '/api/admin/<string:auth_token>/user/<int:_id>')
+api.add_resource(AdminViewUserAnalytics, '/api/admin/analytics/user')
 
 # Admin views github
 
 api.add_resource(AdminViewGithubIssues, '/api/admin/<string:auth_token>/github/issues')
 api.add_resource(AdminViewGithubLabels, '/api/admin/<string:auth_token>/github/labels')
-
 
 
 
