@@ -48,11 +48,11 @@ exports.config = {
            capabilities: {
             browserName: '',
             app : '/home/twfob/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
-            'appium-version':'1.4.11',
+            'appium-version':'1.4.10',
             platformName: 'android',
             platformVersion: '4.4',
             deviceName: 'Android Emulator',
-            'autoAcceptAlerts': 'true',
+            // 'autoAcceptAlerts': 'true',
             autoWebview: true,
           },
         //   multiCapabilities: 
@@ -95,6 +95,13 @@ exports.config = {
                       // '../test_case/mobileTest/workflows/university.js', 
                       '../test_case/mobileTest/sidemenu/sidemenu.js'
                     ],
+
+         side_editUni : [
+                        '../test_case/mobileTest/workflows/access.js',
+                        '../test_case/mobileTest/workflows/university.js', 
+                        '../test_case/mobileTest/sidemenu/sidemenuSpec.js'
+                    ],
+
             major:  [
                       '../test_case/mobileTest/workflows/access.js',
                       '../test_case/mobileTest/workflows/university.js', 
@@ -212,7 +219,7 @@ exports.config = {
                    wdBridge.initFromProtractor(exports.config);
 
             var SpecReporter = require('jasmine-spec-reporter');
-            var webdriver = require('selenium-webdriver');
+            // var webdriver = require('selenium-webdriver');
 
             // add jasmine spec reporter
             jasmine.getEnv().addReporter(new SpecReporter(
@@ -238,6 +245,13 @@ exports.config = {
                 }));
 
 
+// var webdriver = require('selenium-webdriver'),
+//     By = require('selenium-webdriver').By,
+//     until = require('selenium-webdriver').until;
+
+// var driver = new webdriver.Builder()
+//     .forBrowser('chrome')
+//     .build();
 
     
             protractor.get = require('../test_case/globals.js').globals;

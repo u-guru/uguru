@@ -1,14 +1,29 @@
+
+
+
+
+
 describe('Guru Creditability] Test', function () {
 
 	var ele = element.all(by.tagName("ion-slide"));
 	beforeAll(function()
 	{
-		browser.get("http://"+localhost+":8100/#/guru-credibility");
-
+		browser.get("http://"+localhost+":8100/#/guru-credibility")
+		// console.log("contexts : ", JSON.stringify(browser.driver.contexts()));
 	});
 	it("Check It is right address",function()
 	{
-		expect(browser.getCurrentUrl()).toContain("/#/guru-profile");
+		expect(browser.getCurrentUrl()).toContain("/#/guru-credibility");
+
+
+
+	});
+	it('should be able to use wdBrowser ', function (done) {
+
+	  wdBrowser.title().then(function (title) {
+	    expect(title).toEqual('AngularJS — Superheroic JavaScript MVW Framework');
+
+	  }).nodeify(done);
 	});
 
 	describe("Check all Creditability Page",function()
@@ -236,27 +251,53 @@ describe('Guru Creditability] Test', function () {
    		    // var alertDialog = browser.switchTo().alert();
    		    expect(alertDialog).toBeDefined();
    		    expect(alertDialog.getText()).toBe("HI");
+   		    // console.log('Object alertDialog : ' , Object.keys(alertDialog));
+   		    // console.log('alertDialog : ', alertDialog);
    		    // alertDialog.cancel(); 
    		    // alertDialog.cancel(); 
    		    // alertDialog.cancel(); 	
+   		    // alertDialog.sendKeys(protractor.Key.ENTER);
 
 
 		});
-		it("test1",function()
+		it("test2-1",function()
 		{
-	 		browser.driver.get("google.com");
+			  driver.switchTo().alert().accept();
 		});
-		it("test3",function()
+		it("test2-2",function()
 		{
 			
+			    var alertDialog = browser.switchTo().alert();	
+			    alertDialog.sendKeys(protractor.Key.ENTER);
+
+		});
+		it("test2-3",function()
+		{
+			// expect(browser.touchActions).toBeDefined();
+			// browser.touchActions
+			// 		.tap_and_hold(,)
+			// 		.perform();
+			var alert = wdBrowser.switchTo().alert();
+			console.log('Object Switch : ' , Object.keys(alert));
+			console.log('Switch : ', alert);
+			alert.accept();
+		});
+	
+		it("test3",function()
+		{
+   		    browser.sleep(10000);
+
    		    var alertDialog = browser.switchTo().alert();
    		    // var alertDialog = browser.switchTo().alert();
    		    expect(alertDialog).toBeDefined();
+   		    
    		    alertDialog.then(function(alert) {
+   		      // console.log(JSON.stringify(alert));
+  			   console.log('Object alertDialog : ' , Object.keys(alert));
+   		       console.log('alertDialog : ', alert);
+
    		      return alert.accept();
    		    });
-
-   		  	browser.sleep(100000);
 		});
 	});
 });
