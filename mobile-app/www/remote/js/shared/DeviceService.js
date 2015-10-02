@@ -184,8 +184,6 @@ function DeviceService( $cordovaNgCardIO,
                     window.location.reload(true);
                   }
 
-
-
            	  }
           },
            //connectivity issues

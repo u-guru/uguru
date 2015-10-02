@@ -131,6 +131,7 @@ def get_all_university_progress():
         results_arr = sorted(results_arr, key=lambda r:r['count'], reverse=True)
         print '# of universities with emails:', len(results_arr), '\n'
         print '# of universities with emails:', len(no_results_arr), '\n'
+
         # index = 1
         # for result in results_arr:
             # print '#%d. %s has %d students' % (index, result['name'], result['count'])
@@ -168,8 +169,12 @@ def set_university_scraper_value(university_name, scraper_value):
 
 
 if __name__ == "__main__":
-    # get_all_university_progress()
-    set_university_scraper_value('Princeton University', True)
+    results, no_results = get_all_university_progress()
+    import json
+    from pprint import pprint
+    with open('mailgun.json', 'wb') as fp:
+        json.dump(results, fp, indent = 4)
+    # set_university_scraper_value('Princeton University', True)
 
 
 

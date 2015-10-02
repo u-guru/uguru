@@ -95,18 +95,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         libraries: 'places'
     });
 
-  // $provide.decorator("$exceptionHandler", function($delegate, $injector) {
-  //   return function(exception, cause) {
-  //     $delegate(exception, cause);
-  //   };
-  // });
-
-  // if (!window.cordova) {
-  //     var appID = 1416375518604557;
-  //     var fbVersion = "v2.2"; // or leave blank and default is v2.0
-  //     $cordovaFacebookProvider.browserInit(appID, fbVersion);
-  // }
-
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
