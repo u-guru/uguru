@@ -80,7 +80,8 @@ angular.module('uguru.util.controllers')
                 $scope.data.majors = majors.plain();
                 //NICKTODO --> set this localstorage or static file?
                 $localstorage.setObject('universityMajors', majors.plain())
-                console.log(majors.plain().length, 'majors retrieved for university_id', uni_id)
+                console.log(majors);
+                console.log(majors.plain().length, 'majors retrieved')
             },
             function() {
                 console.log('Universities NOT successfully loaded');
@@ -127,7 +128,6 @@ angular.module('uguru.util.controllers')
                 function(majors) {
                     console.log('Majors successfully loaded');
                     majors = JSON.parse(majors)["majors"];
-
                     $scope.static.majors = majors;
                     $localstorage.setObject('majors', majors);
                     $scope.static.popular_majors = majors.slice(0, 16);

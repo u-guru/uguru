@@ -300,8 +300,10 @@ angular.module('uguru.util.controllers')
     $scope.guruCourseInput = document.getElementById('guru-course-input');
     $scope.studentCourseInput = document.getElementById('student-course-input');
 
+    $scope.courses = $scope.data.courses;
+
     $timeout(function() {
-      initializeCourses();
+      !$scope.courses || initializeCourses();
     }, 500)
 
   }

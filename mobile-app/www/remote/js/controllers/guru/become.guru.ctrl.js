@@ -24,8 +24,8 @@ angular.module('uguru.guru.controllers')
 
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
-    $scope.majors = $scope.static.majors;
-    $scope.courses = $scope.static.courses;
+    // $scope.majors = $scope.static.majors;
+    // $scope.courses = $scope.static.courses;
     $scope.search_text = '';
 
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
@@ -209,7 +209,15 @@ angular.module('uguru.guru.controllers')
       progressBarTag.style.width = width + 'px';
     }
 
+    $scope.$on('$ionicView.beforeEnter', function() {
+      if (!$scope.data.majors) {
 
+        $scope.getMajorsForUniversityId($scope.user.university.id);
+        $scope.getCoursesForUniversityId($scope.user.university.id);
+
+
+      }
+    })
     $scope.$on('$ionicView.afterEnter', function() {
 
       $scope.majorInput = document.getElementById('major-input-1');

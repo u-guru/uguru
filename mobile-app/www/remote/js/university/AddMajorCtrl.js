@@ -180,8 +180,32 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    $scope.repeatUntilMajorsExists = function(attempts) {
+
+      if (attempts = 0) {
+        return
+      }
+
+      var areMajorsLoadedFromServer = $scope.data.majors;
+      console.log('results check 1', areMajorsLoadedFromServer);
+      $scope.getMajorsForUniversityId;
+      if (areMajorsLoadedFromServer) {
+        console.log('are majros loaded from server')
+        $scope.majors = $scope.data.majors;
+        return;
+      } else {
+        setTimeout(function() {
+          console.log('attempt to get majors');
+          if (!$scope.data.majors) {
+            repeatUntilMajorsExists(attempts - 1)
+          }
+        }, 1000)
+      }
+
+    }
 
     $scope.majors = $scope.data.majors || Major.getGeneral();
+    $scope.repeatUntilMajorsExists(5);
     $scope.removeUserMajorsFromMaster();
 
   }
