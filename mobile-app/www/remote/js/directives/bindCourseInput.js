@@ -1,5 +1,5 @@
 angular.module('uguru.directives')
-.directive('bindCourseInput', function($timeout, Utilities, Course) {
+.directive('bindCourseInput', function($timeout, Utilities) {
 
 	function link($scope, elem, attr) {
 		var queryPromise = null;
