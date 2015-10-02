@@ -1114,35 +1114,56 @@ button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:f
               align-items: center;
               -webkit-justify-content: center;
               justify-content: center;
+              position: relative;
               width: 50%;
               height: calc(100% / 6);
               box-sizing: border-box;
-              background: #40484B;
+              background: white;
               color: white;
               font-size: 18px;
               font-weight: 400; }
-            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(1) {
-              background: #69B3A5; }
-            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(2) {
-              background: #907D9E; }
-            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(3) {
-              background: #C56E9C; }
-            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(4) {
-              background: #7DA7B2; }
-            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(5) {
-              background: #92AC84; }
-            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(6) {
-              background: #D99675; }
-            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(7) {
-              background: #6F98B5; }
-            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(8) {
-              background: #C56E9C; }
-            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(9) {
-              background: #907D9E; }
-            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(10) {
-              background: #69B3A5; }
-            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(11) {
-              background: #D99675; }
+              #main #search .search-results .search-results-bottom .search-results-courses ul li .course {
+                position: relative;
+                z-index: 9; }
+              #main #search .search-results .search-results-bottom .search-results-courses ul li .color {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%; }
+            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(1) .color {
+              filter: alpha(opacity=60);
+              opacity: 0.6; }
+            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(2) .color {
+              filter: alpha(opacity=30);
+              opacity: 0.3; }
+            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(3) .color {
+              filter: alpha(opacity=40);
+              opacity: 0.4; }
+            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(4) .color {
+              filter: alpha(opacity=80);
+              opacity: 0.8; }
+            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(5) .color {
+              filter: alpha(opacity=70);
+              opacity: 0.7; }
+            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(6) .color {
+              filter: alpha(opacity=60);
+              opacity: 0.6; }
+            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(7) .color {
+              filter: alpha(opacity=90);
+              opacity: 0.9; }
+            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(8) .color {
+              filter: alpha(opacity=40);
+              opacity: 0.4; }
+            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(9) .color {
+              filter: alpha(opacity=30);
+              opacity: 0.3; }
+            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(10) .color {
+              filter: alpha(opacity=70);
+              opacity: 0.7; }
+            #main #search .search-results .search-results-bottom .search-results-courses ul li:nth-child(11) .color {
+              filter: alpha(opacity=50);
+              opacity: 0.5; }
       #main #search .search-results .back {
         transform: rotateY(0deg);
         backface-visibility: hidden;

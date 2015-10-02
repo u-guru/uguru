@@ -106,14 +106,20 @@ angular.module('uguru.util.controllers')
         skill.active = false;
         category.active_skills_count += skill.active ? 1 : -1;
         return;
-      }
+    } else {
       category.active_skills_count += skill.active ? 1 : -1;
+      $scope.user.categories[category.db_name][skill.name] = skill.active;
+      $localstorage.setObject('user', $scope.user);
     }
+  }
+
+
 
 
     $scope.static.categories = [
       {
         name: 'Academic Courses',
+        db_name: 'academic',
         _class: 'bg-cerise',
         active:true,
         active_skills_count:0,
@@ -123,6 +129,7 @@ angular.module('uguru.util.controllers')
       },
       {
         name: 'Freelancing',
+        db_name: 'freelancing',
         _class: 'bg-orange',
         active: false,
         active_skills_count:0,
@@ -135,6 +142,7 @@ angular.module('uguru.util.controllers')
       {
         name: 'Baking',
         _class: 'bg-gold',
+        db_name:'baking',
         active: false,
         active_skills_count:0,
         skills: ['Brownies', 'Flan','Pie'],
@@ -143,6 +151,7 @@ angular.module('uguru.util.controllers')
       },
       {
         name: 'Photography',
+        db_name:'photography',
         _class: 'bg-moola',
         active: false,
         active_skills_count:0,
@@ -153,6 +162,7 @@ angular.module('uguru.util.controllers')
       {
         name: 'Household',
         _class: 'bg-shamrock',
+        db_name:'household',
         active: false,
         active_skills_count:0,
         skills: ['Laundry', 'Build Furniture (Ikea)', 'I have a Vacuum', 'Dirty Dishes',
@@ -162,6 +172,7 @@ angular.module('uguru.util.controllers')
       },
       {
         name: 'Technology & IT',
+        db_name:'tech',
         _class: 'bg-azure',
         active: false,
         active_skills_count:0,
@@ -172,6 +183,7 @@ angular.module('uguru.util.controllers')
       },
       {
         name: 'Sports & Muscle',
+        db_name:'sports',
         _class: 'bg-lake',
         active: false,
         active_skills_count:0,
@@ -182,6 +194,7 @@ angular.module('uguru.util.controllers')
       },
       {
         name: 'On-demand Delivery',
+        db_name:'delivery',
         _class: 'bg-eggplant',
         active: false,
         active_skills_count:0,

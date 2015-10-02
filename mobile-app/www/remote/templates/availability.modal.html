@@ -1,16 +1,324 @@
-<ion-modal-view  class='availability-modal' ng-controller='AvailabilityController'>
+<ion-modal-view  class='availability-modal full-xy' ng-controller='AvailabilityController'>
 	<header class="bg-charcoal">
 		<div class="header-nav">
-			<a class="header-down" ng-click="closeAvailabilityModal.hide()">
+			<a class="header-down half" ng-click="closeAvailabilityModal()">
 				<svg viewBox="0 0 100 100">
 					<path d="M14,32 L50,68 L86,32"></path>
 				</svg>
+			</a>
+			<a class="header-nav-next" ng-click="closeAvailabilityModal()">
+				<h1>Save</h1>
 			</a>
 		</div>
 		<h1 class="text-center">Availability</h1>
 	</header>
 
 	<section>
+		<div class="flex full-x">
+			<div class="avail-days">
+				<ul>
+					<li><span>Sun</span></li>
+					<li><span>Mon</span></li>
+					<li><span>Tue</span></li>
+					<li><span>Wed</span></li>
+					<li><span>Thu</span></li>
+					<li><span>Fri</span></li>
+					<li><span>Sat</span></li>
+				</ul>
+			</div>
+			<div class="avail-times">
+				<ul>
+					<li><span>12AM</span></li>
+				</ul>
+				<ul>
+					<li><span>1AM</span></li>
+				</ul>
+				<ul>
+					<li><span>2AM</span></li>
+				</ul>
+				<ul>
+					<li><span>3AM</span></li>
+				</ul>
+				<ul>
+					<li><span>4AM</span></li>
+				</ul>
+				<ul>
+					<li><span>5AM</span></li>
+				</ul>
+				<ul>
+					<li><span>6AM</span></li>
+				</ul>
+				<ul>
+					<li><span>7AM</span></li>
+				</ul>
+				<ul>
+					<li><span>8AM</span></li>
+				</ul>
+				<ul>
+					<li><span>9AM</span></li>
+				</ul>
+				<ul>
+					<li><span>10AM</span></li>
+				</ul>
+				<ul>
+					<li><span>11AM</span></li>
+				</ul>
+				<ul>
+					<li><span>12PM</span></li>
+				</ul>
+				<ul>
+					<li><span>1PM</span></li>
+				</ul>
+				<ul>
+					<li><span>2PM</span></li>
+				</ul>
+				<ul>
+					<li><span>3PM</span></li>
+				</ul>
+				<ul>
+					<li><span>4PM</span></li>
+				</ul>
+				<ul>
+					<li><span>5PM</span></li>
+				</ul>
+				<ul>
+					<li><span>6PM</span></li>
+				</ul>
+				<ul>
+					<li><span>7PM</span></li>
+				</ul>
+				<ul>
+					<li><span>8PM</span></li>
+				</ul>
+				<ul>
+					<li><span>9PM</span></li>
+				</ul>
+				<ul>
+					<li><span>10PM</span></li>
+				</ul>
+				<ul>
+					<li><span>11PM</span></li>
+				</ul>
+			</div>
+			<div class="avail-hours">
+				<ul class="12am">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="1am">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="2am">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="3am">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="4am">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="5am">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="6am">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="7am">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="8am">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="9am">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="10am">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="11am">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="12pm">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="1pm">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="2pm">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="3pm">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="4pm">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="5pm">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="6pm">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="7pm">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="8pm">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="9pm">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="10pm">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+				<ul class="11pm">
+					<li><input type="checkbox" value="1"/><span></span></li>
+					<li><input type="checkbox" value="2"/><span></span></li>
+					<li><input type="checkbox" value="3"/><span></span></li>
+					<li><input type="checkbox" value="4"/><span></span></li>
+					<li><input type="checkbox" value="5"/><span></span></li>
+					<li><input type="checkbox" value="6"/><span></span></li>
+					<li><input type="checkbox" value="7"/><span></span></li>
+				</ul>
+			</div>
+		</div>
 	</section>
 </ion-modal-view>
 

@@ -61,6 +61,7 @@ angular.module('uguru.util.controllers')
         $scope.user.updateAttr = User.updateAttrUser;
         $scope.user.createObj = User.createObj;
         $scope.user.updateObj = User.updateObj;
+        $scope.user.categories = {academic:{}, freelancing:{}, baking:{},photography:{},household:{}, tech:{}, sports:{}, delivery:{}};
         $scope.popupScope = {};
         $scope.data = {};
 
