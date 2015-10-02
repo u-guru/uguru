@@ -227,12 +227,7 @@ section {
     font-size: 18px !important;
     font-weight: 400 !important; }
   .uguru-view #loading svg {
-    max-width: 200px; }
-  .uguru-view #account-form {
-    padding-top: 0 !important; }
-    .uguru-view #account-form input {
-      margin-top: 20px !important;
-      font-size: 18px !important; } }
+    max-width: 200px; } }
 
 /* ---------- MODALS & POPUPS */
 .close-popup-link {
@@ -459,7 +454,11 @@ section {
     font-size: 20px;
     height: 100%; } }
 
+.signup-modal h1 + h1 {
+  margin-top: 0; }
+
 .signup-modal #account-form {
+  height: calc(100% - 50px);
   box-sizing: border-box;
   padding: 15px; }
   .signup-modal #account-form input {
@@ -480,6 +479,13 @@ section {
   .signup-modal #account-form #social-login {
     margin-top: 30px;
     margin-bottom: 20px; }
+
+@media screen and (max-width: 320px) {
+  #account-form {
+    padding-top: 0 !important; }
+    #account-form input {
+      margin-top: 20px !important;
+      font-size: 18px !important; } }
 
 .terms-modal {
   color: #2B3234; }

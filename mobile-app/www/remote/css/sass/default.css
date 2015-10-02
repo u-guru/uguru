@@ -1863,11 +1863,11 @@ input[type=range]:focus::-ms-fill-upper {
     text-transform: uppercase; }
 
 #checkmark line {
-  -webkit-animation-duration: 0.5s;
-  -moz-animation-duration: 0.5s;
-  -ms-animation-duration: 0.5s;
-  -o-animation-duration: 0.5s;
-  animation-duration: 0.5s;
+  -webkit-animation-duration: 0.75s;
+  -moz-animation-duration: 0.75s;
+  -ms-animation-duration: 0.75s;
+  -o-animation-duration: 0.75s;
+  animation-duration: 0.75s;
   -webkit-animation-iteration-count: 1;
   -moz-animation-iteration-count: 1;
   -ms-animation-iteration-count: 1;
@@ -1880,7 +1880,7 @@ input[type=range]:focus::-ms-fill-upper {
     -o-animation-name: checkmark-one;
     animation-name: checkmark-one;
     stroke-dasharray: 20.8, 20.8;
-    stroke-dashoffset: 20.8; }
+    stroke-dashoffset: 0; }
   #checkmark line:last-child {
     -webkit-animation-name: checkmark-two;
     -moz-animation-name: checkmark-two;
@@ -1888,64 +1888,134 @@ input[type=range]:focus::-ms-fill-upper {
     -o-animation-name: checkmark-two;
     animation-name: checkmark-two;
     stroke-dasharray: 49.91, 49.91;
-    stroke-dashoffset: 20.8; }
+    stroke-dashoffset: 0; }
 
 @-webkit-keyframes checkmark-one {
   0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
     stroke-dashoffset: 20.8; }
-  100% {
-    stroke-dashoffset: 0; } }
-
-@-webkit-keyframes checkmark-two {
-  0% {
-    stroke-dashoffset: 49.91; }
+  5% {
+    filter: alpha(opacity=100);
+    opacity: 1; }
+  95% {
+    stroke-dashoffset: 0; }
   100% {
     stroke-dashoffset: 0; } }
 
 @-moz-keyframes checkmark-one {
   0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
     stroke-dashoffset: 20.8; }
-  100% {
-    stroke-dashoffset: 0; } }
-
-@-moz-keyframes checkmark-two {
-  0% {
-    stroke-dashoffset: 49.91; }
+  5% {
+    filter: alpha(opacity=100);
+    opacity: 1; }
+  95% {
+    stroke-dashoffset: 0; }
   100% {
     stroke-dashoffset: 0; } }
 
 @-ms-keyframes checkmark-one {
   0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
     stroke-dashoffset: 20.8; }
-  100% {
-    stroke-dashoffset: 0; } }
-
-@-ms-keyframes checkmark-two {
-  0% {
-    stroke-dashoffset: 49.91; }
+  5% {
+    filter: alpha(opacity=100);
+    opacity: 1; }
+  95% {
+    stroke-dashoffset: 0; }
   100% {
     stroke-dashoffset: 0; } }
 
 @-o-keyframes checkmark-one {
   0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
     stroke-dashoffset: 20.8; }
-  100% {
-    stroke-dashoffset: 0; } }
-
-@-o-keyframes checkmark-two {
-  0% {
-    stroke-dashoffset: 49.91; }
+  5% {
+    filter: alpha(opacity=100);
+    opacity: 1; }
+  95% {
+    stroke-dashoffset: 0; }
   100% {
     stroke-dashoffset: 0; } }
 
 @keyframes checkmark-one {
   0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
     stroke-dashoffset: 20.8; }
+  5% {
+    filter: alpha(opacity=100);
+    opacity: 1; }
+  95% {
+    stroke-dashoffset: 0; }
+  100% {
+    stroke-dashoffset: 0; } }
+
+@-webkit-keyframes checkmark-two {
+  0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    stroke-dashoffset: 49.91; }
+  5% {
+    filter: alpha(opacity=100);
+    opacity: 1; }
+  95% {
+    stroke-dashoffset: 0; }
+  100% {
+    stroke-dashoffset: 0; } }
+
+@-moz-keyframes checkmark-two {
+  0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    stroke-dashoffset: 49.91; }
+  5% {
+    filter: alpha(opacity=100);
+    opacity: 1; }
+  95% {
+    stroke-dashoffset: 0; }
+  100% {
+    stroke-dashoffset: 0; } }
+
+@-ms-keyframes checkmark-two {
+  0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    stroke-dashoffset: 49.91; }
+  5% {
+    filter: alpha(opacity=100);
+    opacity: 1; }
+  95% {
+    stroke-dashoffset: 0; }
+  100% {
+    stroke-dashoffset: 0; } }
+
+@-o-keyframes checkmark-two {
+  0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    stroke-dashoffset: 49.91; }
+  5% {
+    filter: alpha(opacity=100);
+    opacity: 1; }
+  95% {
+    stroke-dashoffset: 0; }
   100% {
     stroke-dashoffset: 0; } }
 
 @keyframes checkmark-two {
   0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
     stroke-dashoffset: 49.91; }
+  5% {
+    filter: alpha(opacity=100);
+    opacity: 1; }
+  95% {
+    stroke-dashoffset: 0; }
   100% {
     stroke-dashoffset: 0; } }
