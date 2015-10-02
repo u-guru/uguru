@@ -71,25 +71,39 @@ function Utilities(Settings) {
 		}
 	}
 
-	function nickMatcher(input, list) {
-		var matchedList = [];
-		// if empty just return the general list back
-		if (!input) {
-			return list;
-		}
-		var inputLowerCase = input.toLowerCase();
-		for(var i=0; i<list.length; i++) {
+	// Pass in an optional ID parameter for specific case handling
+	function nickMatcher(input, list, property, id) {
 
-			var nameLowerCase = list[i].name.toLowerCase();
+		var matcher = new FastMatcher(list, {
+			selector: property,
+			caseInsensitive: true,
+			preserveOrder: true,
+			anyWord: true,
+			limit: 25
+		});
 
-			var inputLowerCase = input.toLowerCase();
+		if(id === 'university') matcher.preserveOrder = false;
 
-			if(nameLowerCase.indexOf(inputLowerCase) !== -1) {
+		return matcher.getMatches(input);
 
-				matchedList.push(list[i]);
-			};
-		}
-		return matchedList;
+		// var matchedList = [];
+		// // if empty just return the general list back
+		// if (!input) {
+		// 	return list;
+		// }
+		// var inputLowerCase = input.toLowerCase();
+		// for(var i=0; i<list.length; i++) {
+
+		// 	var nameLowerCase = list[i].name.toLowerCase();
+
+		// 	var inputLowerCase = input.toLowerCase();
+
+		// 	if(nameLowerCase.indexOf(inputLowerCase) !== -1) {
+
+		// 		matchedList.push(list[i]);
+		// 	};
+		// }
+		// return matchedList;
 	}
 
 
@@ -145,7 +159,7 @@ function Utilities(Settings) {
 	    };
 	}
 
-	
+
 
 
 }

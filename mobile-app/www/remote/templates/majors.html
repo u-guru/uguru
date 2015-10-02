@@ -34,7 +34,7 @@
             />
           </div>
       </header>
-      <div id="major-list" bind-major-input buffered-scroll='increaseLimit()' class="onboarding-list" >
+      <div id="major-list" bind-input='majors' buffered-scroll='increaseLimit()' class="onboarding-list" >
         <ul class="list list-item-border no-icon">
           <li ng-if="search_text.major.length === 0 && user.majors.length > 0" class="major-item selected" ng-repeat='major in user.majors'>
             <a ng-click='removeMajor(major, $index)'>{{major.name}}</a>

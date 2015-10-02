@@ -34,7 +34,7 @@
             </div>
           </div>
       </header>
-      <div id="courses-list" class="onboarding-list" bind-course-input buffered-scroll='increaseLimit()' ng-init='limit = 20'>
+      <div id="courses-list" class="onboarding-list" bind-input='courses' buffered-scroll='increaseLimit()' ng-init='limit = 20'>
         <ul class='list'>
           <li ng-show='guruCoursesInput.value.length === 0' ng-repeat='course in user.guru_courses' ng-click='removeGuruCourseAndUpdate(course, $index)'>
               <input type="checkbox" checked ng-change='alwaysTrue = true;' ng-model='alwaysTrue'>

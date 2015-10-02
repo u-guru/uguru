@@ -12,7 +12,7 @@ angular.module('uguru.directives')
 		      $timeout.cancel(queryPromise);
 		    }
 		    queryPromise = $timeout(function() {
-		      $scope.courses = Utilities.nickMatcher(newValue, $scope.originalCourses);
+		      $scope.courses = Utilities.nickMatcher(newValue, $scope.originalCourses, 'name');
 		      queryPromise = null;
 		    }, 90);
 		  }
@@ -23,7 +23,7 @@ angular.module('uguru.directives')
 		      $timeout.cancel(queryPromise);
 		    }
 		    queryPromise = $timeout(function() {
-		      $scope.courses = Utilities.nickMatcher(newValue, $scope.originalCourses);
+		      $scope.courses = Utilities.nickMatcher(newValue, $scope.originalCourses, 'name');
 		      queryPromise = null;
 		    }, 50);
 		  }
@@ -33,7 +33,7 @@ angular.module('uguru.directives')
 		      $timeout.cancel(queryPromise);
 		    }
 		    queryPromise = $timeout(function() {
-		      $scope.courses = Utilities.nickMatcher(newValue, $scope.originalCourses);
+		      $scope.courses = Utilities.nickMatcher(newValue, $scope.originalCourses, 'name');
 		      queryPromise = null;
 
 		    }, 50);

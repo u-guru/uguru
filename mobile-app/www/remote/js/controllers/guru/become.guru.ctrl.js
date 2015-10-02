@@ -17,10 +17,11 @@ angular.module('uguru.guru.controllers')
   '$window',
   'University',
   'uTracker',
+  'AnimationService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
-    $ionicViewSwitcher, $window, University, uTracker) {
+    $ionicViewSwitcher, $window, University, uTracker, AnimationService) {
 
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
@@ -47,8 +48,9 @@ angular.module('uguru.guru.controllers')
 
     $scope.goBackToStudentHome = function() {
       uTracker.track(tracker, 'Student Home');
-      $ionicViewSwitcher.nextDirection('back');
+      //$ionicViewSwitcher.nextDirection('back');
       $state.go('^.home');
+      AnimationService.slide('right');
     }
 
     $scope.removeUserGuruCoursesFromMasterCourses = function() {

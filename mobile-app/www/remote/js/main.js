@@ -107,6 +107,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   // }
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
+  
+  $ionicConfigProvider.views.transition('none');
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
   $ionicConfigProvider.views.forwardCache(true);
@@ -161,6 +163,12 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         },
         controller: 'AddUniversityCtrl'
   }).
+
+  state('privacy', {
+        url:'/privacy',
+        templateUrl: BASE + 'templates/privacy-terms.modal.html'    
+  }).
+
   state('root.university-container', {
         url: '/university-container',
         templateUrl: BASE + 'templates/university.container.html',

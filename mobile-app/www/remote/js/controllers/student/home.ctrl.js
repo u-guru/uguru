@@ -132,6 +132,7 @@ angular.module('uguru.student.controllers', [])
             
             $ionicViewSwitcher.nextDirection('none');
             $state.go('^.become-guru');
+            AnimationService.slide('left');
         }
 
 

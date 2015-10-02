@@ -153,6 +153,7 @@ function DeviceService( $cordovaNgCardIO,
 
     // don't update on local
     if (LOCAL) {
+      console.log("running local: skipping over checkUpdates");
       return;
     }
 

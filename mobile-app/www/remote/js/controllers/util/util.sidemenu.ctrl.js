@@ -133,6 +133,8 @@ angular.module('uguru.util.controllers')
             $scope.faqModal = modal;
     });
 
+
+
     $ionicModal.fromTemplateUrl(BASE + 'templates/support.modal.html', {
             scope: $scope,
             animation: 'slide-in-up',
@@ -140,6 +142,10 @@ angular.module('uguru.util.controllers')
     }).then(function(modal) {
         $scope.supportModal = modal;
     });
+
+
+
+
 
     $ionicModal.fromTemplateUrl(BASE + 'templates/privacy-terms.modal.html', {
             scope: $scope,
@@ -211,8 +217,35 @@ angular.module('uguru.util.controllers')
 
     $scope.launchPrivacyModal = function() {
       uTracker.track(tracker, 'Privacy Modal');
-      $scope.privacyModal.show();
+
+      var options = {
+        "direction"        : "up", // 'left|right|up|down', default 'left' (which is like 'next')
+        "duration"         :  400, // in milliseconds (ms), default 400
+        "slowdownfactor"   :   1000, // overlap views (higher number is more) or no overlap (1), default 4
+        "iosdelay"         :  60, // ms to wait for the iOS webview to update before animation kicks in, default 60
+        "androiddelay"     :  70, // same as above but for Android, default 70
+        "winphonedelay"    :  200, // same as above but for Windows Phone, default 200,
+        "fixedPixelsTop"   :   0, // the number of pixels of your fixed header, default 0 (iOS and Android)
+        "fixedPixelsBottom":   0 // the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
+      };
+      
+      $state.go('privacy');
+      window.plugins.nativepagetransitions.slide(
+              options,
+              function (msg) {console.log("success: " + msg)}, // called when the animation has finished
+              function (msg) {alert("error: " + msg)} // called in case you pass in weird values
+            );
+
+      //$scope.privacyModal.show();
     }
+
+    $scope.closeModal = function(modal) {
+      switch(modal) {
+        case 'privacy':
+          Animation.z
+      }
+    }
+
 
     $scope.launchSignupModal = function(loginMode) {
       uTracker.track(tracker, 'Signup Modal');
