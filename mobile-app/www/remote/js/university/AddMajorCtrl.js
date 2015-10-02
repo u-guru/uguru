@@ -174,7 +174,7 @@ angular.module('uguru.util.controllers')
         $scope.limit += 10;
       }
     }
-
+    console.log(University.majors);
 
     var getMajorsBecomeGuru = function() {
       University.getMajors($scope.user.university_id).then(function(majors) {

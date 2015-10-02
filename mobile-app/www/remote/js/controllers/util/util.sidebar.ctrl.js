@@ -94,6 +94,10 @@ angular.module('uguru.util.controllers')
           return;
       }
 
+      //start fetching majors right now
+      $scope.getMajorsForUniversityId(university.id);
+      $scope.getCoursesForUniversityId(university.id);
+
       $scope.loader.show();
       $scope.user.university_id = university.id;
       $scope.user.university = university;
@@ -109,9 +113,18 @@ angular.module('uguru.util.controllers')
       //save university
       var postUniversitySelectedCallback = function() {
           $timeout(function() {
-            $scope.loader.hide();
-            $scope.success.show(0, 1000, 'Saved!');
+
             UniversityMatcher.clearCache();
+            $scope.loader.hide();
+
+
+            if ($scope.universityModal && $scope.universityModal.isShown()) {
+              $scope.loader.showSuccess('University Saved', 1500);
+              $timeout(function() {
+                $scope.removeLaunchUniversityModal();
+              }, 500);
+
+            }
           }, 1000);
       }
 
@@ -157,24 +170,21 @@ angular.module('uguru.util.controllers')
         $scope.signupModal = modal;
     });
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
+    $scope.initUniversityModal = function() {
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
             scope: $scope,
             animation: 'slide-in-up',
             focusFirstInput: false,
-    }).then(function(modal) {
-        $scope.universityModal = modal;
+      }).then(function(modal) {
+          $scope.universityModal = modal;
 
-        uTracker.track(tracker, 'University Modal');
-    });
+          uTracker.track(tracker, 'University Modal');
+      });
 
-    // $scope.$on('modal.shown', function() {
-    //   if ($scope.universityModal.isShown()) {
-    //     $timeout(function() {
-    //       var universityInput = document.querySelector('#university-input')
-    //       universityInput.select();
-    //     }, 100);
-    //   }
-    // });
+    }
+
+    $scope.initUniversityModal();
 
     $scope.launchFAQModal = function() {
 
@@ -184,6 +194,14 @@ angular.module('uguru.util.controllers')
 
     $scope.launchUniversityModal = function() {
       $scope.universityModal.show();
+    }
+
+    $scope.removeLaunchUniversityModal = function() {
+      $scope.universityModal.remove();
+      $timeout(function() {
+        $scope.initUniversityModal();
+      }, 500)
+      //immediately instantiate after ;)
     }
 
     $scope.onTextClick = function ($event) {

@@ -82,14 +82,13 @@ angular.module('uguru.util.controllers')
 
                 majors = majors.plain()
 
-                $scope.data.majors = majors;
                 University.majors = majors;
 
-                $localstorage.setObject('universityMajors', majors.plain())
-                console.log(majors.plain().length, 'recently majors retrieved')
+                $localstorage.setObject('universityMajors', majors)
+                console.log(majors.length, 'recently majors retrieved')
 
                 if (callback) {
-                    callback(majors.plain());
+                    callback(majors);
                 }
             },
             function() {
