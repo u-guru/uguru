@@ -3,16 +3,8 @@ var Major = require('../becomeGuru/majorPageObject.js');
 describe('@Workflow : Major page', function () {
 	var major = new Major();
 
-	describe('Welcome uguru logo pop',function()
+	describe('BecomeGuru',function()
 	{
-		it('Check welcome logo pop up ',function()
-		{
-			major.CheckPopUpIsShown()
-		});
-		it('Close welcome logo',function()
-		{
-			major.CloseThePopUp();
-		});	
 		it ('Start becomeGuru process',function()
 		{
 			major.BeginBecomeGuru();

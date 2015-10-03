@@ -49,7 +49,7 @@ exports.config = {
             browserName: '',
             app : '/home/twfob/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
             'appium-version':'1.4.10',
-            platformName: 'android',
+            platformName: 'Android',
             platformVersion: '4.4',
             deviceName: 'Android Emulator',
             // 'autoAcceptAlerts': 'true',
@@ -81,7 +81,12 @@ exports.config = {
                          '../test_case/mobileTest/workflows/access.js',
                          '../e2e/university/universitySpec.js'
                         ],
-
+            home : 
+                  [
+                    '../test_case/mobileTest/workflows/access.js',
+                    '../test_case/mobileTest/workflows/university.js', 
+                    '../e2e/workflows/home.js',
+                  ],
             sign:   [
                    '../test_case/mobileTest/workflows/access.js',
                    '../test_case/mobileTest/workflows/university.js', 
@@ -94,14 +99,6 @@ exports.config = {
                       // '../test_case/mobileTest/workflows/access.js',
                       // '../test_case/mobileTest/workflows/university.js', 
                       '../test_case/mobileTest/sidemenu/sidemenu.js'
-                    ],
-
-side_editUniversity : [
-                        '../test_case/mobileTest/workflows/access.js',
-                        '../test_case/mobileTest/workflows/university.js', 
-                        '../e2e/workflows/home.js',
-                        '../e2e/workflows/side.js',
-                        '../e2e/workflows/editUniversity.js',
                     ],
 
             major:  [
@@ -166,9 +163,6 @@ side_editUniversity : [
                          '../test_case/mobileTest/guruProfile/editProfile.js'
                     ],
               becomeGuru:[
-                         '../test_case/mobileTest/workflows/access.js',
-                         '../test_case/mobileTest/workflows/university.js', 
-                         '../e2e/workflows/home.js',
                          '../e2e/becomeGuru/majorSpec.js',
                          '../e2e/becomeGuru/courseSpec.js',
                          '../e2e/becomeGuru/categorySpec.js',
@@ -199,7 +193,71 @@ side_editUniversity : [
                            '../test_case/mobileTest/guruProfile/home.js',
                            '../test_case/mobileTest/guruProfile/editProfile.js',
                            '../test_case/mobileTest/guruProfile/creditibility.js'
-                       ]
+                       ],
+               work_A : [
+                           '../test_case/mobileTest/workflows/access.js',
+                           '../test_case/mobileTest/workflows/university.js', 
+                           '../e2e/workflows/home.js',
+                           '../e2e/workflows/side.js',
+                           '../e2e/workflows/editUniversity.js',
+                           // '../e2e/becomeGuru/majorSpec.js',
+                           // '../e2e/becomeGuru/courseSpec.js',
+                           // '../e2e/becomeGuru/categorySpec.js',
+                           // '../e2e/becomeGuru/photoSpec.js'
+                       ],
+                work_C_sign : [
+                           '../e2e/workflows/access.js',
+                           '../test_case/mobileTest/workflows/university.js', 
+                           '../e2e/workflows/home.js',
+                           '../e2e/workflows/side.js',
+                           '../e2e/workflows/SignAtSidebar.js',
+                           '../e2e/workflows/major.js',
+                           '../e2e/workflows/course.js',
+                           '../e2e/workflows/category.js',
+                           '../e2e/becomeGuru/photoSpec.js',
+                           '../e2e/side/switchStudentSpec.js',
+                           // '../e2e/becomeGuru/majorSpec.js',
+                           // '../e2e/becomeGuru/courseSpec.js',
+                           // '../e2e/becomeGuru/categorySpec.js',
+                           // '../e2e/becomeGuru/photoSpec.js',
+                           // '../e2e/workflows/side.js'
+                       ],
+                 work_C_log : [
+                            '../e2e/workflows/access.js',
+                            '../test_case/mobileTest/workflows/university.js', 
+                            '../e2e/workflows/home.js',
+                            '../e2e/workflows/side.js',
+                            '../e2e/workflows/LoginAtSidebar.js',
+                            '../e2e/workflows/major.js',
+                            '../e2e/workflows/course.js',
+                            '../e2e/workflows/category.js',
+                            '../e2e/becomeGuru/photoSpec.js',
+                            '../e2e/side/switchStudentSpec.js',
+                            // '../e2e/becomeGuru/majorSpec.js',
+                            // '../e2e/becomeGuru/courseSpec.js',
+                            // '../e2e/becomeGuru/categorySpec.js',
+                            // '../e2e/becomeGuru/photoSpec.js',
+                            // '../e2e/workflows/side.js'
+                        ],
+                 work_D : [
+                            '../e2e/workflows/access.js',
+                            '../test_case/mobileTest/workflows/university.js', 
+                            '../e2e/workflows/home.js',
+                            '../e2e/workflows/side.js',
+                            '../e2e/workflows/SignAtSidebar.js',
+                            '../e2e/workflows/major.js',
+                            '../e2e/workflows/course.js',
+                            '../e2e/workflows/category.js',
+                            '../e2e/becomeGuru/photoSpec.js',
+                            '../e2e/workflows/side.js',
+                            '../e2e/side/switchStudentSpec.js',
+                            // '../e2e/becomeGuru/majorSpec.js',
+                            // '../e2e/becomeGuru/courseSpec.js',
+                            // '../e2e/becomeGuru/categorySpec.js',
+                            // '../e2e/becomeGuru/photoSpec.js',
+                            // '../e2e/workflows/side.js'
+                        ],
+
 
         },
         rootElement: "[ng-app]" ,

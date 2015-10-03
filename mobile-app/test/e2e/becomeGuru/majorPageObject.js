@@ -19,13 +19,20 @@ var Major = function()
 	 {
 		browser.wait(EC.visibilityOf(element(by.id('home-uguru-popup'))),3000);
 	 };
+
 	 this.CloseThePopUp = function ()
 	 {
 	 	this.CloseButtonOfPopUp.click();
 	 };
+
 	 this.BeginBecomeGuru = function ()
 	 {
 	 	this.guruButton.click();
+	 };
+
+	 this.CheckBecomeGuruNoDisplayed = function()
+	 {
+	 	expect(this.guruButton.isDisplayed).toBe(false,"Become A Guru button is still shown");
 	 };
 
 	 this.CheckTitleIsCorrect = function()

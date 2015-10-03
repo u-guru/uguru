@@ -15,10 +15,12 @@ describe('@Workflow : EditUniversity page', function () {
 	{
 		sidebar.CheckModalTitle('University');
 	});	
-	it('Close page & And Back Home',function()
+	it("Close Modal",function()
 	{
 		sidebar.CloseModal();
-		sidebar.ToggleSideM1enu('off');
-		browser.sleep(10000);
+	})
+	it('Close sidemenu',function()
+	{
+		sidebar.ToggleSideMenu('off');
 	});	
 });

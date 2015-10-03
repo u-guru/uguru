@@ -40,6 +40,10 @@ describe('Major Test', function () {
 
 	describe('Check Current page is correct & data is preload',function()
 	{
+		it('Start Become Guru',function()
+		{
+			major.BeginBecomeGuru();
+		});
 		it('Current Page Title: Major',function()
 		{
 			major.CheckTitleIsCorrect();

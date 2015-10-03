@@ -4,7 +4,7 @@ var Sidebar = function() {
 	this.sideMenuList = element(by.css('.side-menu-list.with-icon'))
 	this.UguruPopup = element(by.id('home-uguru-popup'))
 	this.CloseButtonOfPopUp = element.all(by.css('[ng-click="closeWelcomePopup()"]')).first()
-	this.CloseSideMenu = element(by.id('side-menu-left-overlay'));
+	this.CloseSideMenu = element(by.css('[ng-click="toggleRightSideMenu()"]'));
 
 	//Modal
 	this.Modal = element(by.css('.modal-backdrop.active'));
@@ -45,6 +45,16 @@ var Sidebar = function() {
 	 {
 	 	doc.checkItemDisplay("ADD UNIVERSITY",true,'click');
 	 };
+	 this.OpenSignUpModal = function()
+	 {
+	 	doc.checkItemDisplay("SIGN UP",true,'click');
+
+	 }
+
+	 this.OpenLoginModal = function()
+	 {
+	 	doc.checkItemDisplay("LOGIN",true,'click');
+	 };
 
 	 this.OpenFAQModal = function()
 	 {
@@ -63,7 +73,7 @@ var Sidebar = function() {
 
 	 this.CloseModal = function()
 	 {
-
+	 	// expect(this.CloseModalButton.isPresent()).toBe(true,"No Close Can Found");
  		this.CloseModalButton.click();
 	 };
 	 
