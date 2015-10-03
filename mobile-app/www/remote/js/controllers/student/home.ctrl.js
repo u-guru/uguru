@@ -23,7 +23,6 @@ angular.module('uguru.student.controllers', [])
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
         $ionicActionSheet, $ionicPopover, uTracker) {
 
-
         $ionicSideMenuDelegate.canDragContent(true);
 
         $ionicModal.fromTemplateUrl(BASE + 'templates/verb.home.modal.html', {
@@ -182,6 +181,12 @@ angular.module('uguru.student.controllers', [])
             // $timeout(function() {
             //     checkOnboardingStatus();
             // }, 1000);
+
+
+            // $timeout(function() {
+            //     $scope.launchRequestModal();
+            // }, 1000);
+
 
 
             // $timeout(function() {

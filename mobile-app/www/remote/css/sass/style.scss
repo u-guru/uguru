@@ -221,13 +221,6 @@ section {
 		#loading svg {
 			max-width: 200px;
 		}
-		#account-form {
-			padding-top: 0!important;
-			input {
-				margin-top: 20px!important;
-				font-size: 18px!important;
-			}
-		}
 	}
 }
 
@@ -252,6 +245,7 @@ section {
 	@include opacity(0);
 	@include flex;
 	@include flex-center;
+	@include transition(250ms ease);
 	position: fixed;
 	z-index: 100;
 	visibility: hidden;
@@ -259,9 +253,8 @@ section {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba($charcoal, .8);
+	background: rgba($charcoal, .9);
 	pointer-events: none;
-	transition: 250ms ease;
 	.uguru-popup-content {
 		@include transition(250ms ease);
 		position: relative;
@@ -271,74 +264,83 @@ section {
 		background: white;
 		border-radius: 5px;
 		color: $slate;
-		height:50%;
+		.guru-logo-container {
+			@include flex;
+			@include flex-center;
+			position: absolute;
+			top: -60px;
+			z-index: 5;
+			width: 100%;
+			height: auto;
+			margin: 0 auto;
+			.svg-logo-wrapper {
+				@include round;
+				width: 120px;
+				height: 120px;
+				background: white;
+				svg {
+					@include round;
+					display: block;
+					max-width: 120px;
+					max-height: 120px;
+					padding: 20px;
+					z-index: 3;
+					border: 3px solid white;
+				}
+			}
+			.svg-logo-wrapper:not(.tour-guru) {
+				svg {
+					background: $shamrock;
+					path {
+						fill: white;
+					}
+				}
+			}
+			.tour-guru {
+				svg {
+					background: rgba($shamrock,.3);
+					padding: 15px;
+					*[fill="#1D0E02"] {
+						fill: $charcoal!important;
+					}
+				}
+			}
+		}
 		.content-wrapper {
 			position: relative;
-			padding: 60px 0 0;
+			padding: 70px 0 0;
 			text-align: center;
-			height:100%;
 			.content-body {
 				@include flex;
 				@include flex-wrap;
-				height:calc(100% - 64px); // account for button
-				h1,h2,h3 {
+				padding: 0 15px 15px;
+				h2 {
+					@include opacity(.9);
+					width: 100%;
+					margin-bottom: 10px;
+					color: $slate;
+					font-weight: 700;
+					font-size: 20px;
 					text-align: center;
+					text-transform: uppercase;
 				}
 				p {
-					font-size:18px;
-					opacity:0.8;
+					@include opacity(.8);
+					color: $charcoal;
+					font-weight: 400;
+					font-size: 16px;
+					margin: 0 auto;
 				}
 			}
 			.content-footer {
-				max-height:64px;
-			}
-			h2 {
-				color: $slate;
-				font-weight: 700;
-				opacity:0.9;
-				font-size: 20px;
-				text-transform: uppercase;
-			}
-			p {
-				color: $charcoal;
-				font-weight: 400;
-				font-size: 14px;
-				padding:10px 20px 0;
-				margin: 0 auto;
-				line-height:20px;
-			}
-			button {
-				border-radius: 0 0 5px 5px;
-				position: absolute;
-			    width: 100%;
-			    left: 0;
-			    bottom: 0;
-			}
-		}
-
-	}
-	.guru-logo-container {
-		@include flex;
-		@include flex-center;
-		position: absolute;
-		top: -50px;
-		z-index: 5;
-		width: 100%;
-		height: auto;
-		margin: 0 auto;
-		div.svg-logo-wrapper {
-			width: 100%;
-			height: auto;
-			text-align: center;
-			svg {
-				@include round;
-				max-width: 100px;
-				max-height: 100px;
-				background: $azure;
-				padding: 15px;
-				z-index: 3;
-				path {
-					fill: white;
+				height: 64px;
+				button {
+					background: $shamrock!important;
+					border-radius: 0 0 5px 5px;
+					position: absolute;
+				    width: 100%;
+				    left: 0;
+				    bottom: 0;
 				}
 			}
 		}
@@ -355,13 +357,47 @@ section {
 		width: calc(100% - 30px);
 	}
 }
+.guru-mode {
+	background: rgba(white, .9);
+	.close-popup-link {
+		svg {
+			path {
+				stroke: $charcoal;
+			}
+		}
+	}
+	.uguru-popup-content {
+		background: $slate;
+		color: white;
+		.guru-logo-container {
+			.svg-logo-wrapper {
+				background: $slate;
+				svg {
+					border: 3px solid $slate;
+				}
+			}
+			.tour-guru {
+				svg {
+					background: white;
+				}
+			}
+		}
+		.content-wrapper {
+			.content-body {
+				h2, p {
+					color: white;
+				}
+			}
+		}
+	}
+}
 #confirm-phone-uguru-popup {
-	.svg-logo-wrapper svg {
-		background: $campus!important;
+	.svg-logo-wrapper svg, button {
+		background: $eggplant!important;
 	}
 }
 #confirm-email-uguru-popup {
-	.svg-logo-wrapper svg {
+	.svg-logo-wrapper svg, button {
 		background: $lake!important;
 	}
 }
@@ -443,8 +479,11 @@ section {
 
 // ACCOUNT MODAL
 .signup-modal {
+	h1 + h1 {
+		margin-top: 0;
+	}
 	#account-form {
-		box-sizing: border-box;
+		height: calc(100% - 50px);
 		padding: 15px;
 		input {
 			margin: 30px 0 15px;
@@ -467,6 +506,16 @@ section {
 		#social-login {
 			margin-top: 30px;
 			margin-bottom:20px;
+		}
+	}
+}
+
+@media screen and (max-width:320px) {
+	#account-form {
+		padding-top: 0!important;
+		input {
+			margin-top: 20px!important;
+			font-size: 18px!important;
 		}
 	}
 }
@@ -520,9 +569,8 @@ section {
 // UNIVERSITY MODAL
 .university-modal {
 	.onboarding-search {
-		box-sizing: border-box;
 		input {
-			width: calc(100% - 20px);
+			width: calc(100% - 25px);
 		}
 	}
 }
@@ -538,11 +586,7 @@ section {
 			cursor: pointer;
 		}
 		input[type="text"], textarea {
-			-webkit-appearance: none;
-			-moz-appearance: none;
-			-ms-appearance: none;
-			-o-appearance: none;
-			appearance: none;
+			@include appearance;
 			display: block;
 			border-radius: 0;
 			background: white;
@@ -619,88 +663,49 @@ section {
 						width: 100%;
 						line-height: 46px;
 					}
-					input:not(:checked) + div label {
+					input:not(:checked) + label {
 						color: rgba($slate, .5);
 						background: white;
 						font-weight: 400;
 					}
-					input:checked + div label {
+					input:checked + label {
 						background: $lake;
 						color: white;
 						font-weight: 600;
 					}
-					.request-loc-address, .request-loc-geo {
+					.request-loc-geo {
 						@include flex-wrap;
 						display: none;
 					}
-					.request-loc-address {
-						position: absolute;
-						z-index: 9999;
-						top: 46px;
-						right: 0;
-						border-top: 1px solid $smoke;
-						border-bottom: 1px solid $smoke;
-						width: 200%;
-						input {
-							border-left: 0;
-							border-right: 0;
-							border-top: 1px solid $smoke;
-							border-bottom: 1px solid $smoke;
-							font-weight: 600;
+				}
+			}
+			.request-address {
+				padding: 15px;
+				background: white;
+				border: 2px solid $smoke;
+				border-bottom: 0;
+				> span {
+					display: block;
+					width: 100%;
+					border: 0;
+					font-size: 18px;
+					font-weight: 600;
+					line-height: 1.2;
+					text-align: center;
+				}
+				.request-address-icon {
+					margin-top: -6px;
+					height: 40px;
+					svg {
+						width: auto;
+						height: 100%;
+						path {
+							fill: none;
+							stroke: $lake;
+							stroke-width: 5px;
+							stroke-linecap: round;
+							stroke-linejoin: round;
 						}
-						.request-loc-state, .request-loc-zip {
-							width: 50%;
-						}
-						.request-loc-state {
-							border-right: 1px solid $smoke;
-						}
-						.request-loc-zip {
-							border-left: 1px solid $smoke;
-						}
-					}
-					.request-loc-geo {
-						position: absolute;
-						z-index: 9999;
-						top: 46px;
-						left: 0;
-						padding: 15px;
-						background: white;
-						border-top: 2px solid $smoke;
-						border-bottom: 2px solid $smoke;
-						width: calc(200% + 2px);
-						> span {
-							display: block;
-							width: 100%;
-							border: 0;
-							font-size: 18px;
-							font-weight: 600;
-							line-height: 1.2;
-						}
-						.request-geo-icon {
-							margin-top: -6px;
-							height: 40px;
-							svg {
-								width: auto;
-								height: 100%;
-								path {
-									fill: none;
-									stroke: $lake;
-									stroke-width: 5px;
-									stroke-linecap: round;
-									stroke-linejoin: round;
-								}
-							}
-						}
-					}
-					.enter-address:checked + div {
-						padding-bottom: 165px;
-					}
-					.use-location:checked + div {
-						padding-bottom: 108px;
-					}
-					.enter-address:checked + div .request-loc-address,
-					.use-location:checked + div .request-loc-geo {
-						@include flex;
 					}
 				}
 			}
@@ -1007,14 +1012,6 @@ section {
 		}
 		.list-item-detail {
 			padding: 0;
-			span {
-				white-space: nowrap;
-				overflow-x: hidden;
-				text-overflow: ellipsis;
-			}
-			.student-profile-name {
-				font-weight: 700;
-			}
 		}
 	}
 	.list-item-profile {
@@ -1024,13 +1021,23 @@ section {
 		.list-item-detail {
 			span {
 				display: block;
-				padding: 1px 0;
+			}
+			.student-profile-name {
+				font-weight: 700;
+				padding-bottom: 2px;
+			}
+			.student-profile-school {
+				line-height: 1.2;
 			}
 			span:first-child {
 				font-size: 20px!important;
 			}
 			span:last-child {
 				font-size: 14px!important;
+			}
+			h3 {
+				font-size: 16px!important;
+				line-height: 1.2;
 			}
 		}
 	}
@@ -1063,7 +1070,7 @@ section {
 }
 
 // SIDEBAR GURU MODE
-.menu-guru {
+.guru-mode {
 	.list {
 		background: $slate;
 	}
@@ -1089,16 +1096,13 @@ section {
 			background: rgba(white, .9);
 		}
 	}
-	.list-item-guru {
-		display: none;
-	}
-	.list-item-student {
+	.list-item-mode {
 		background: rgba($campus, .75);
 	}
 }
 
 // SIDEBAR STUDENT MODE
-.menu-student {
+.student-mode {
 	.list {
 		background: white;
 	}
@@ -1139,17 +1143,7 @@ section {
 			background: rgba($slate, .9);
 		}
 	}
-	.list-item-student {
-		background: $slate;
-		color: white;
-		svg {
-			path {
-				stroke: white!important;
-			}
-		}
-	}
-
-	.list-item-guru {
+	.list-item-mode {
 		background: $lake;
 		color: white;
 		.list-item-icon {
@@ -1303,11 +1297,9 @@ section {
 		height: 70%;
 		width: 600%;
 		.how-card {
-			box-sizing: border-box;
 			width: 100%;
 			height: 100%;
 			.how-card-media, .how-card-desc {
-				box-sizing: border-box;
 				margin: 0 30px;
 				width: calc(100% - 60px);
 			}
@@ -1368,27 +1360,20 @@ section {
 						url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat;
 		}
 		.geolocation-icon {
+			margin-top: 3px;
+		}
+		.side-icon {
 			@include opacity(1);
 			@include center-y;
 			right: 12px;
 			z-index: 0;
-			height: 60px;
-			width:25%;
-			top:55%;
 			.ion-navigate {
 				@include opacity(.6);
-				font-size: 20px!important;
-				position: absolute;
-    			right: 0;
-    			top: 33%;
 			}
 			.ion-navigate.active,
-			.ion-navigate.activated {
-				@include opacity(1);
-			}
+			.ion-navigate.activated,
 			.ion-navigate.location-active {
-				color: $lake;
-				opacity:1;
+				@include opacity(1);
 			}
 		}
 	}
@@ -1564,7 +1549,6 @@ section {
 // ONBOARDING
 .onboarding {
 	.onboarding-search {
-		box-sizing: border-box;
 		input {
 			width: calc(100% - 25px);
 		}
@@ -1792,9 +1776,9 @@ section {
 			margin-top: 1px;
 			li {
 				a {
-					border-color: $lake;
+					border-color: $campus;
 					margin-bottom: 1px;
-					font-weight: 300;
+					font-weight: 400;
 					font-size: 20px;
 					line-height: 1.2;
 				}
@@ -1809,6 +1793,7 @@ section {
 						border-color: white!important;
 						color: inherit!important;
 						font-weight: 600;
+						background: $campus;
 					}
 					svg {
 						@include center-y;
@@ -1834,22 +1819,31 @@ section {
 	}
 	#courses-list {
 		ul {
-			@include flex;
-			@include flex-wrap;
 			margin: 1px 1px 0;
 			li {
 				position: relative;
-				width: 50%;
 				border: 1px solid transparent;
 				label {
 					display: block;
 					width: 100%;
-					padding: 10px;
+					padding: 15px 20px;
 					background: rgba(white,.1);
+					border-color: $campus;
 					font-size: 18px;
 					font-weight: 400;
 					line-height: 24px;
-					text-align: center;
+					text-align: left;
+					span {
+						display: block;
+						width: 100%;
+						overflow: hidden;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						&:first-child {
+							font-size: 14px;
+							line-height: 1.2;
+						}
+					}
 				}
 				input {
 					@include opacity(0);
@@ -1859,11 +1853,14 @@ section {
 					left: 0;
 					margin: 0;
 					width: 100%;
-					height: 44px;
+					height: 100%;
 					cursor: pointer;
 				}
 				input:checked + label {
-					background: $azure;
+					background: $campus;
+					border-color: white!important;
+					color: inherit!important;
+					font-weight: 600;
 				}
 			}
 		}
@@ -1893,7 +1890,6 @@ section {
 					position: relative;
 					margin-bottom: 0;
 					background-color: rgba($charcoal,.5);
-					box-sizing: border-box;
 					height: 100%;
 					font-size: 18px;
 					font-weight: 400;
@@ -1972,7 +1968,6 @@ section {
 		}
 		li {
 			padding: 1px;
-			box-sizing: border-box;
 			img {
 				display: block;
 				max-width: 100%;
@@ -2028,23 +2023,28 @@ section {
 		@include flex;
 		@include flex-center;
 		margin: 5px auto;
-		width: 50px;
-		height: 50px;
+		width: auto;
+		height: auto;
+		padding: 5px 10px;
 		font-size: 14px;
 		font-weight: 600;
 		text-transform: uppercase;
-		line-height: 1.2;
-		background: $cerise;
+		line-height: 18px;
+		background: $campus;
 		svg {
-			width: 30px;
-			height: 30px;
+			width: 19px;
+			height: 18px;
+			padding-right: 5px;
 			path {
 				stroke: white;
-				stroke-width: 6;
+				stroke-width: 10;
 				stroke-linecap: round;
 				stroke-linejoin: round;
 				fill: none;
 			}
+		}
+		span {
+			line-height: 18px;
 		}
 	}
 	#profile-fixed {
@@ -2447,10 +2447,10 @@ section {
 				}
 				&#credit-phone {
 					a {
-						border-bottom: 5px solid $campus;
-						color: $campus;
+						border-bottom: 5px solid $eggplant;
+						color: $eggplant;
 						.credit-icon {
-							background: $campus;
+							background: $eggplant;
 						}
 					}
 				}
@@ -2493,10 +2493,10 @@ section {
 			}
 			#credit-phone {
 				#{$links} {
-					border-bottom: 5px solid $campus;
-					color: $campus;
+					border-bottom: 5px solid $eggplant;
+					color: $eggplant;
 					.credit-icon {
-						background: $campus;
+						background: $eggplant;
 					}
 				}
 			}
@@ -2803,4 +2803,11 @@ section {
         top:10px;
         left:10px;
     }
+}
+
+/*Resume samir hacks*/
+.major-input-close {
+	position: absolute;
+    right: 10px;
+    top: 34%;
 }

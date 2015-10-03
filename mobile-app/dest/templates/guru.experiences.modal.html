@@ -1,0 +1,84 @@
+<ion-modal-view ng-controller='ExperiencesController' class='bg-charcoal'>
+  <section id="experience-modal" class='full-xy'>
+    <header>
+       <div class='header-nav'>
+         <a class="header-close" ng-click="guruExperiencesModal.hide()">
+            <svg viewBox="0 0 100 100">
+			    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+			</svg>
+          </a>
+        </div>
+        <h1 class="text-center">Guru Experience</h1>
+    </header>
+    <div class='main'>
+      <div class='p15xy bg-campus-50p'>
+        <input class='input-outline full-x' id='experience-name-input' type="text" ng-model='experience.name' placeholder="Role Title"></input>
+      </div>
+
+      <div class='exp-years bg-charcoal'>
+        <label>
+          <h1 class="section-header">Years of Experience</h1>
+        </label>
+        <input type="range" class='full-x p15x-p20y' name="volume" min="0" max="10" value="5" ng-model='experience.years'>
+        <ul class="ugrid-3 exp-years-label">
+	        <li>&lsaquo; 1</li>
+	        <li>5</li>
+	        <li>10 +</li>
+        </ul>
+      </div>
+
+      <div id="exp-input" class='p15xy bg-campus-50p'>
+        <textarea class='input-outline full-x' placeholder='Role Description'  ng-model='experience.description' >{{experience.description}}</textarea>
+      </div>
+    </div>
+	  <div class='absolute bottom-0 full-x semibold'>
+	    <button class='bg-shamrock' ng-click='saveGuruExperience()'>Save</button>
+	  </div>
+    <!-- <div class='block flex-center top-0 p15xy'>
+      <div class='ugrid block'>
+          <span class="input-label">Role Title</span>
+          <input id='experience-name-input' type="text" ng-model='experience.name' placeholder="Role Title">
+      </div>
+      <div class='ugrid block'>
+          <span class="input-label white-text opacity-3-5">Role Title</span>
+          <input id='experience-name-input' type="text" ng-model='experience.name' placeholder="Role Title">
+      </div>
+      <div class='ugrid block'>
+          0
+          <input type="range" name="volume" min="0" max="10" value="5" ng-model='experience.years' class='dark-bg'>
+          10
+      </div>
+      <div class='ugrid block'>
+        <input style='font-size:120%;' class='white-text' type="text" ng-model='experience.description' placeholder="Short description">
+      </div>
+    </div> -->
+  </section>
+
+
+  <!-- <ion-content scroll='false' class='dark-bg'>
+    <div class='pure-g-c flex-column flex-space-between'>
+      <div class='flex-item-c pure-g j-start'>
+        <div class='pure-u-1 full-width'>
+          <ion-list class='standard-bg flex-item-c pure-g j-start bg-transparent'>
+            <label class="item item-input item-floating-label">
+              <span class="input-label white-text opacity-3-5">Role Title</span>
+              <input style='font-size:120%;' id='experience-name-input' type="text" ng-model='experience.name' placeholder="Role Title" class='white-text'>
+            </label>
+            <label class="item item-input item-floating-label">
+              <span class="input-label white-text opacity-3-5">Years of Experience - <strong>{{experience.years}} year<span ng-show='experience.years && experience.years > 1'>s</span></strong></span>
+              <div class="item range range-positive dark-bg white-text" style='border-width:0px;'>
+                0
+                <input type="range" name="volume" min="0" max="10" value="5" ng-model='experience.years' class='dark-bg'>
+                10
+              </div>
+            </label>
+            <label class="item item-input item-floating-label">
+              <span class="input-label white-text opacity-3-5">Short Description</span>
+              <input style='font-size:120%;' class='white-text' type="text" ng-model='experience.description' placeholder="Short description">
+            </label>
+          </ion-list>
+        </div>
+      </div>
+    </div>
+  </ion-content> -->
+</ion-modal-view>

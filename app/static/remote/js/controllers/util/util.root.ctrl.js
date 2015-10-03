@@ -86,7 +86,6 @@ angular.module('uguru.util.controllers')
                 University.majors = majors;
 
                 $localstorage.setObject('universityMajors', majors)
-                console.log(majors.length, 'recently majors retrieved')
 
                 if (callback) {
                     callback(majors);
@@ -147,19 +146,7 @@ angular.module('uguru.util.controllers')
                 }
             );
 
-            Major.get().then(
-                function(majors) {
-                    console.log('Majors successfully loaded');
-                    majors = JSON.parse(majors)["majors"];
-                    $scope.static.majors = majors;
-                    $localstorage.setObject('majors', majors);
-                    $scope.static.popular_majors = majors.slice(0, 16);
-                    $localstorage.setObject('popular_majors', $scope.static.popular_majors);
-                },
-                function() {
-                    console.log('Majors NOT successfully loaded');
-                }
-            );
+
 
             Skill.get().then(function(skills) {
                     var skills = skills.plain();
@@ -736,8 +723,8 @@ angular.module('uguru.util.controllers')
           if ($scope.user && $scope.user.guru_mode) {
 
             $scope.loader.show();
-
-            $state.go('^.' + _startpage)
+            $ionicViewSwitcher.nextDirection('enter');
+            $state.go('^.guru')
 
             $timeout(function() {
                 $scope.loader.hide();
@@ -746,7 +733,7 @@ angular.module('uguru.util.controllers')
         } else if ($scope.user && $scope.user.university_id) {
             $scope.loader.show();
             $ionicViewSwitcher.nextDirection('enter');
-            $state.go('^.' + _startpage);
+            $state.go('^.home');
             $timeout(function() {
                 $scope.loader.hide();
             }, 1000);

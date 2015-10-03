@@ -1,3 +1,14 @@
+
+// iOS DEVICE ONLY
+// 0. PREREQS
+// --- Make sure Xcode is turned off
+// 1. Live reload device functioning
+// 2. Inside of this file, make sure UUIDs are the one on the phone
+// 3. Appium on the terminal 
+//    --> In Terminal: appium -U UUID
+// 4. [SKIP ANDROID] ios_webkit_debug_proxy -c 06108c5ea66a640ffdd5e9902c036a26d6af4c0f:27753 -d
+// 5. [SKIP ANDROID] Turn on instruments & press record
+
 exports.config = {
     framework: 'jasmine2',
     //appium port has to be 4723
@@ -12,12 +23,12 @@ exports.config = {
 
                  browserName: '',
                  'appium-version': '1.4.11',
-                 app: '/Users/nlmac/Git/uguru/mobile-app/platforms/ios/build/device/uguru.app',
+                 app: '/Users/Samir/Git/uguru/mobile-app/platforms/ios/build/device/uguru.app',
                  platformName: 'iOS',
                   bundleId: 'com.beta.college.Uguru',
-                  udid: '0df70c3eacd748d8d92a882cbec7b26787fa0396',
-                  platformVersion: '7.12',
-                   deviceName: 'TwFoB Work’s iPhone (7.1.2) [0df70c3eacd748d8d92a882cbec7b26787fa0396]',
+                  udid: '06108c5ea66a640ffdd5e9902c036a26d6af4c0f',
+                  platformVersion: '8.1.2',
+                   deviceName: 'TwFoB Work’s iPhone (8.1.2) [06108c5ea66a640ffdd5e9902c036a26d6af4c0f]',
                    autoWebview: 'true'
 
          // //android settings

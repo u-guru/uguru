@@ -1,8 +1,6 @@
-
-
-var LOCAL = _local; //local to the 8100 codebasebirbirs
-var FIRST_PAGE='^.' + (_startpage || 'university');
-//var FIRST_PAGE='^.home';
+var LOCAL = _local || false; //local to the 8100 codebasebirbirs
+_startpage = _startpage || 'university';
+var FIRST_PAGE='^.' + _startpage;
 
 console.log("_local: " + _local);
 console.log("_startpage: " + _startpage);
@@ -27,6 +25,7 @@ var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
+
   BASE_URL = _ipaddress;
   LOCAL_URL = 'http://192.168.42.78:5000'
 
