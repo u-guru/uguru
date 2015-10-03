@@ -11,9 +11,9 @@ angular.module('uguru.directives')
 		 	//console.log("Current ngSrc value: " + assetURL);
 			
 			var directory = cordova.file.dataDirectory;
-			if(attrs.imageSaver === 'cache' || !Utilities.checkFreeSpace() ) {
-				directory = cordova.file.cacheDirectory;
-			}
+			// if(attrs.imageSaver === 'cache' || !Utilities.checkFreeSpace() ) {
+			// 	directory = cordova.file.cacheDirectory;
+			// }
 			var fileName = Utilities.getFileName(assetURL);
 			//console.log("fileName: " + fileName);
 			var filePath = directory + fileName;

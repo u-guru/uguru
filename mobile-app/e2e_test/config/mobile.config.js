@@ -9,8 +9,9 @@ exports.config = {
 //brew install ideviceinstaller
 //appium -U <uuid< --app <app_path>
 //0df70c3eacd748d8d92a882cbec7b26787fa0396
-//appium -U 0df70c3eacd748d8d92a882cbec7b26787fa0396
 
+//iphone 4 device
+//appium -U 0df70c3eacd748d8d92a882cbec7b26787fa0396
 //ios_webkit_debug_proxy -c 0df70c3eacd748d8d92a882cbec7b26787fa0396:27753 -d
           //ios settings
                  browserName: '',
