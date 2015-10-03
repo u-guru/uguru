@@ -9,7 +9,11 @@ angular.module('uguru.directives')
 			}
 			var assetURL = attrs.ngSrc.toString();
 		 	//console.log("Current ngSrc value: " + assetURL);
+			
 			var directory = cordova.file.dataDirectory;
+			if(attrs.imageSaver === 'cache' || !Utilities.checkFreeSpace() ) {
+				directory = cordova.file.cacheDirectory;
+			}
 			var fileName = Utilities.getFileName(assetURL);
 			//console.log("fileName: " + fileName);
 			var filePath = directory + fileName;
@@ -29,8 +33,13 @@ angular.module('uguru.directives')
 				var fileTransfer = new FileTransfer();
 				//console.log("About to start file download");
 				var downloadURL = encodeURI(assetURL);
-
 				var startTime = Date.now();
+
+				fileTransfer.onprogress = function(progressEvent) {
+					if(progressEvent.lengthComputable) {
+						console.log("size of file " + filePath + " is approximately " + progressEvent.total);
+					}
+				}
 
 				//console.log("downloadURL: " + downloadURL);
 				fileTransfer.download(downloadURL, filePath,

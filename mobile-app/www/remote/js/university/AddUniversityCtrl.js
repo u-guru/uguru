@@ -21,6 +21,13 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   Geolocation, Utilities, UniversityMatcher, $ionicSlideBoxDelegate,
   DeviceService, uTracker, $q, AnimationService) {
 
+
+  // cordova.exec(function(result) {
+  //     console.log("Free Disk Space: " + result);
+  // }, function(error) {
+  //     console.log("Error: " + error);
+  // }, "File", "getFreeDiskSpace", []);
+
   console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
   uTracker.setUser(tracker, 'localyticsTest');
   uTracker.sendDevice(tracker);

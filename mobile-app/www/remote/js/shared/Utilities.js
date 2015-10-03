@@ -17,7 +17,9 @@ function Utilities(Settings) {
 		isElementInViewport: isElementInViewport,
 		transitionEndEventName: transitionEndEventName,
 		fireBeforeEnter: fireBeforeEnter,
-		rAF: rAF
+		rAF: rAF,
+		checkFreeSpace: checkFreeSpace,
+		getFreeSpace: getFreeSpace
 	}
 
 	function getNetworkSpeed() {
@@ -79,7 +81,7 @@ function Utilities(Settings) {
 			caseInsensitive: true,
 			preserveOrder: true,
 			anyWord: true,
-			limit: 25
+			limit: 1000
 		});
 
 		if(id === 'university') matcher.preserveOrder = false;
@@ -157,6 +159,41 @@ function Utilities(Settings) {
 	    function(callback) {
 	      window.setTimeout(callback, 16);
 	    };
+	}
+
+	function checkFreeSpace(size) {
+		var size_b = size
+		if(size_b === undefined) size_b = 300,000,000;
+		var free = getFreeSpace(size_b);
+		if (free === false) {
+			console.log("No space available.");
+		}
+		return free;
+	}
+
+	function getFreeSpace(size_b) {
+
+		var size_mb = size_b/1000/1000;
+		cordova.exec(function(result) {
+			var space_mb = result/1000;
+		    //console.log("Free Disk Space: " + space_mb + "mb");
+		    if(space_mb > size_mb) {
+		    	return true;
+		    } else {
+		    	console.log("low on space: " + space_mb + 'mb');
+		    	uTracker.track('Low Disk Space', {
+		    		'$Free_Space': space_mb,
+		    		'$File_Size': size_mb
+		    	});
+		    	return false;
+		    }
+		}, function(error) {
+		    console.log("Error: " + error);
+		    uTracker.track('Callback Error', {
+		    	'$Message': error
+		    });
+		    return false;
+		}, "File", "getFreeDiskSpace", []);
 	}
 
 
