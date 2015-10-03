@@ -65,12 +65,12 @@ echo
 echo 'pushing to git, to the staging branch'
 echo
 echo
-git push origin {$branch}:staging
+git push origin $branch:staging
 echo
 echo 'pushing to staging servers, to the master branch'
 echo
 echo
-git push staging {$branch}:master
+git push staging $branch:master
 echo
 echo
 echo 'last part: restarting servers & updating database'
