@@ -23,16 +23,16 @@
   				ng-keydown="query()"
   				ng-focus="universityInputFocused()"
   	        />
-  	        <a ng-click='toggleLocationIconAppearance()' class='geolocation-icon' ng-if='universityInput.value.length === 0'>
+  	        <a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='universityInput.value.length === 0'>
   				<i class='icon ion-navigate ng-class:{"location-active":isLocationActive}'></i>
   	        </a>
-  	        <a class='clear-search-input p10xy' ng-click='resetUniversities()' ng-if='universityInput.value.length'>
-  				<i class='icon ion-close-circled text-slate'></i>
+  	        <a class='side-icon' ng-click='resetUniversities()' ng-if='universityInput.value.length'>
+  				<i class='icon ion-close-circled text-white'></i>
   	        </a>
   		</div>
   	</header>
   	<div id="school-list" buffered-scroll='increaseLimit()' class="onboarding-list">
-  		<ul class='list list-item-border'>
+  		<ul class='list list-half list-item-border'>
   			<li class="list-item" ng-repeat='university in universities | limitTo: limit' on-finished-render='uniListFinished'>
   				<a ng-click='universitySelected(university)' style='border-color:{{university.school_color_one}}'>
   					<span class="school-icon list-icon-left">
