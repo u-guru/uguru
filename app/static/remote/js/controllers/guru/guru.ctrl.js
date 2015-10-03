@@ -168,7 +168,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           var guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar');
           animateProgressCircle(guruRankingCircle, $scope.user.guru_ranking);
 
-
           var guruCredibilityLine = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
           animateProgressLine(guruCredibilityLine, $scope.user.current_credibility_percent || 60);
 
@@ -195,6 +194,15 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             }
 
         });
+
+        // $scope.$on('$ionicView.enter', function() {
+
+        //     $timeout(function() {
+        //         $scope.launchWelcomeGuruPopup();
+        //     }, 1000);
+
+
+        // });
 
 
 

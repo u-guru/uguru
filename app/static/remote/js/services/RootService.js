@@ -1,16 +1,13 @@
 angular.module('uguru.root.services', [])
 .service('RootService',
     [
-    '$cordovaKeyboard',
     '$localstorage',
     '$timeout',
-    '$cordovaProgress',
-    '$cordovaDialogs',
     '$ionicHistory',
     '$ionicViewSwitcher',
     '$state',
     '$ionicPlatform',
-    function($cordovaKeyboard, $localstorage, $timeout, $cordovaProgress, $cordovaDialogs, $ionicHistory, $ionicViewSwitcher, $state, $ionicPlatform) {
+    function($localstorage, $timeout, $ionicHistory, $ionicViewSwitcher, $state, $ionicPlatform) {
 
     this.util = {
         objectFindByKey: function(array, key, value) {
@@ -125,11 +122,11 @@ angular.module('uguru.root.services', [])
     this.keyboard =  {
         close: function(bool) {
           if (window.cordova && window.cordova.plugins.Keyboard) {
-              $cordovaKeyboard.close();
+              window.cordova.plugins.Keyboard.close();
           }
         },
         isVisible: function() {
-            return $cordovaKeyboard.isVisible();
+            return window.cordova.plugins.Keyboard.isVisible();
         },
         show: function(target, delay) {
           var delay_seconds = delay || 0.1;
@@ -233,7 +230,7 @@ angular.module('uguru.root.services', [])
         //IMPORTANT: WEB-ONLY QUIRK: Confirm does not have a button index if canceled
 
         alert: function(msg, title, button_name, callback) {
-          $cordovaDialogs.alert(msg, title, button_name).then(function() {
+          alert(msg, title, button_name).then(function() {
             if (callback) {
               callback();
             }
@@ -241,7 +238,7 @@ angular.module('uguru.root.services', [])
         },
 
         confirm: function(msg, title, button_array, arr_callback, $scope) {
-          $cordovaDialogs.confirm(msg, title, button_array).then(function(button_index) {
+          confirm(msg, title, button_array).then(function(button_index) {
             if (button_index === 1) {
                 if (arr_callback[0]) {
                     arr_callback[0]();
