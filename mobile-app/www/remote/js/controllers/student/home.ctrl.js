@@ -17,10 +17,11 @@ angular.module('uguru.student.controllers', [])
     '$ionicViewSwitcher',
     '$ionicActionSheet',
     '$ionicPopover',
+    'uTracker',
     function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         $ionicModal, $timeout, $q, University, $localstorage,
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
-        $ionicActionSheet, $ionicPopover) {
+        $ionicActionSheet, $ionicPopover, uTracker) {
 
 
         $ionicSideMenuDelegate.canDragContent(true);
@@ -83,7 +84,7 @@ angular.module('uguru.student.controllers', [])
         $scope.launchRequestModal = function(index, verb_index) {
 
 
-            uTracker.track(tracker, 'Request Modal');
+            uTracker(tracker, 'Request Modal');
 
             $scope.loader.showAmbig();
 
@@ -92,28 +93,28 @@ angular.module('uguru.student.controllers', [])
                 $scope.root.vars.detailed_verbs_index_clicked = verb_index;
             }
 
-            $ionicModal.fromTemplateUrl(BASE + 'templates/request.modal.html', {
+            $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
                 scope: $scope,
                 animation: 'slide-in-up'
             }).then(function(modal) {
                 $scope.requestModal = modal;
-                $scope.requestModal.show();
+                // $scope.requestModal.show();
 
-                if ($scope.verbModal.isShown()) {
-                    $timeout(function() {
-                        $scope.verbModal.hide();
-                    }, 2000);
-                }
+                // if ($scope.verbModal.isShown()) {
+                //     $timeout(function() {
+                //         $scope.verbModal.hide();
+                //     }, 2000);
+                // }
 
-                if ($scope.taskVerbModal.isShown()) {
-                    $timeout(function() {
-                        $scope.taskVerbModal.hide();
-                    }, 2000);
-                }
+                // if ($scope.taskVerbModal.isShown()) {
+                //     $timeout(function() {
+                //         $scope.taskVerbModal.hide();
+                //     }, 2000);
+                // }
 
-                $timeout(function() {
-                    $scope.loader.hide();
-                }, 1500);
+                // $timeout(function() {
+                //     $scope.loader.hide();
+                // }, 1500);
 
             });
 
@@ -127,7 +128,7 @@ angular.module('uguru.student.controllers', [])
 
         $scope.goToBecomeGuru = function() {
 
-            uTracker(tracker, 'Become Guru');
+            uTracker.track('Become Guru');
 
             $ionicViewSwitcher.nextDirection('forward');
             $state.go('^.become-guru');
@@ -177,10 +178,16 @@ angular.module('uguru.student.controllers', [])
         })
 
         $scope.$on('$ionicView.enter', function() {
+            $scope.loader.hide();
+            // $timeout(function() {
+            //     checkOnboardingStatus();
+            // }, 1000);
 
-            $timeout(function() {
-                checkOnboardingStatus();
-            }, 1000);
+
+            // $timeout(function() {
+            //     $scope.launchRequestModal();
+            // }, 1000);
+
 
         });
 

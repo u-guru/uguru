@@ -1026,46 +1026,80 @@ button, a[class*=btn] {
 							li {
 								@include flex;
 								@include flex-center;
+								position: relative;
 								width: 50%;
 								height: calc(100% / 6);
 								box-sizing: border-box;
-								background: $slate;
+								background: white;
 								color: white;
 								font-size: 18px;
 								font-weight: 400;
+								.course {
+									position: relative;
+									z-index: 9;
+								}
+								.color {
+									position: absolute;
+									top: 0;
+									left: 0;
+									width: 100%;
+									height: 100%;
+								}
 							}
 							li:nth-child(1) {
-								background: $shamrock;
+								.color {
+									@include opacity(.6);
+								}
 							}
 							li:nth-child(2) {
-								background: $eggplant-mute;
+								.color {
+									@include opacity(.3);
+								}
 							}
 							li:nth-child(3) {
-								background: $cerise-mute;
+								.color {
+									@include opacity(.4);
+								}
 							}
 							li:nth-child(4) {
-								background: $azure-mute;
+								.color {
+									@include opacity(.8);
+								}
 							}
 							li:nth-child(5) {
-								background: $moola-mute;
+								.color {
+									@include opacity(.7);
+								}
 							}
 							li:nth-child(6) {
-								background: $orange-mute;
+								.color {
+									@include opacity(.6);
+								}
 							}
 							li:nth-child(7) {
-								background: $lake-mute;
+								.color {
+									@include opacity(.9);
+								}
 							}
 							li:nth-child(8) {
-								background: $cerise-mute;
+								.color {
+									@include opacity(.4);
+								}
 							}
 							li:nth-child(9) {
-								background: $eggplant-mute;
+								.color {
+									@include opacity(.3);
+								}
 							}
 							li:nth-child(10) {
-								background: $shamrock;
+								.color {
+									@include opacity(.7);
+								}
 							}
 							li:nth-child(11) {
-								background: $orange-mute;
+								.color {
+									@include opacity(.5);
+								}
 							}
 						}
 					}

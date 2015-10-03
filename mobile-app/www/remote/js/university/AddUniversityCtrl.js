@@ -228,6 +228,10 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     $scope.user.university = university;
     $scope.universityInput.value = '';
 
+    //start fetching majors right now
+    $scope.getMajorsForUniversityId(university.id);
+    $scope.getCoursesForUniversityId(university.id);
+
     //update user to locat storage
     $scope.rootUser.updateLocal($scope.user);
 
@@ -237,12 +241,16 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
     //save university
     var postUniversitySelectedCallback = function() {
+
       $timeout(function() {
+
         $scope.loader.hide();
-        $ionicViewSwitcher.nextDirection('forward');
-        UniversityMatcher.clearCache();
-        $state.go('^.home')
+
+          $ionicViewSwitcher.nextDirection('forward');
+          UniversityMatcher.clearCache();
+          $state.go('^.home')
       }, 1000);
+
     }
 
     $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
@@ -302,5 +310,36 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
 
 
+  // $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //   $scope.howItWorksModal = modal;
+  //   $scope.howItWorksModal.show();
+  // });
+
+  // $scope.launchHowItWorksModal = function() {
+  //   $scope.howItWorksModal.show();
+  // }
+
+  // $scope.$on('$ionicView.enter', function() {
+  //   $scope.launchHowItWorksModal();
+  // });
+
+  // $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //   $scope.availabilityModal = modal;
+  //   $scope.availabilityModal.show();
+  // });
+
+  // $scope.launchAvailabilityModal = function() {
+  //   $scope.availabilityModal.show();
+  // }
+
+  // $scope.$on('$ionicView.enter', function() {
+  //   $scope.launchAvailabilityModal();
+  // });
 
 }
