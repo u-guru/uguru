@@ -7,6 +7,7 @@ angular.module('sharedServices')
 
 // TODO: we'll need to find a way to hold/queue the current events and fire for later
 function uTracker($localstorage, DeviceService) {
+
 	var mixpanel, localytics;
 	var trackers = 	[
 					'mp', // mixpanel
@@ -32,14 +33,13 @@ function uTracker($localstorage, DeviceService) {
 		setUser: setUser,
 		set: set,
 		track: track,
-
 		push: push,
 		get: get,
 		sendDevice: sendDevice
 	};
 
 	// This sets the API token for the analytics provider
-	// Example: uTracker.init(tracker, "cfe34825db9361e6c1d1a16a2b269b07" )
+
 	function init(tracker, token) {
 		if(DeviceService.isMobile()) {
 			switch(tracker) {
@@ -48,6 +48,7 @@ function uTracker($localstorage, DeviceService) {
 					mixpanel = window.mixpanel || null;
 					mixpanel.init(token || defaultTokens.mp);
 					break;
+
 				case 'lo':
 					console.log("initializing localytics tracking: " + defaultTokens.lo);
 					localyticsSession = LocalyticsSession(token || defaultTokens.lo);
@@ -62,7 +63,7 @@ function uTracker($localstorage, DeviceService) {
 	}
 
 	// This sets the unique userID for the analytics provider
-	// Example: uTracker.setUser(tracker, userID')
+
 	function setUser(tracker, userID) {
 		if(DeviceService.isMobile()) {
 			switch(tracker) {
@@ -71,7 +72,8 @@ function uTracker($localstorage, DeviceService) {
 					//var mixpanelID = deviceUUID.substring(0, 8);
 					mixpanel.identify(userID);
 					break;
-				case 'lo': 
+
+				case 'lo':
 					//localyticsSession.ll('setCustomerId', userID);
 					break;
 				case 'ga': break;
@@ -98,6 +100,7 @@ function uTracker($localstorage, DeviceService) {
 						}
 					)
 					break;
+
 				case 'lo': break;
 				case 'ga': break;
 				case 'hp': break;
@@ -111,12 +114,13 @@ function uTracker($localstorage, DeviceService) {
 	function set(tracker, data) {
 
 		if(DeviceService.isMobile()) {
-			switch(tracker) {	
+			switch(tracker) {
 				case 'mp':
 					if(typeof data === 'object') {
 						mixpanel.people.set(data);
 					}
 					break;
+
 				case 'lo': break;
 				case 'ga': break;
 				case 'hp': break;
@@ -127,14 +131,14 @@ function uTracker($localstorage, DeviceService) {
 
 	// This sets the events that will be fired for as the user navigates through the app
 	// Additional key-value pairs can be passed in as a data object
-	// Example: uTracker.track(tracker, 'App Launch', {'App_Load_Time': })
+
 	function track(tracker, event, data) {
 		if(DeviceService.isMobile()) {
 			switch(tracker) {
 				case 'mp':
 					mixpanel.track(event, data);
 					break;
-				case 'lo': 
+				case 'lo':
 					localyticsSession.tagEvent(event, data);
 					break;
 				case 'ga': break;

@@ -112,7 +112,7 @@
           <div class="credit-body">
 	          <p>Connect now to see <br/>which Gurus you know!</p>
           </div>
-          <button class="semibold" style="background: #6279B1;" ng-click='connectWithFacebook()'>Connect with Facebook</button>
+          <button class="semibold bg-fb-light" ng-click='connectWithFacebook()'>Connect with Facebook</button>
         </div>
          <div ng-if='user.fb_id'>
           <h1 class="section-header">Your Facebook is connected</h1>
@@ -136,7 +136,7 @@
                     </a>
                 </div>
           </div>
-          <button class="semibold bg-campus" id='launch-phone-confirm-popup' ng-if='!user.phone_number' ng-click='confirmPhonePopup()'>Add my number</button>
+          <button class="semibold bg-eggplant" id='launch-phone-confirm-popup' ng-if='!user.phone_number' ng-click='confirmPhonePopup()'>Add my number</button>
           <button class="semibold bg-campus" id='launch-phone-confirm-popup' ng-if='user.phone_number && user.phone_number_token' ng-click='confirmPhonePopup()'>Verify Code</button>
         </div>
         <div ng-if='user.phone_number_confirmed'>

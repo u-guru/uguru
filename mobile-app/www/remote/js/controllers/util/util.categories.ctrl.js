@@ -33,6 +33,7 @@ angular.module('uguru.util.controllers')
     }).then(function(modal) {
         $scope.categorySkillsModal = modal;
     });
+
     $scope.onSwipeDown = function() {
       alert('user swiped down')
     }
@@ -44,8 +45,9 @@ angular.module('uguru.util.controllers')
 
       if($scope.active_category!==category){
         $scope.active_category = category;
-        updateMainBackground(category.bg_url);  
+        updateMainBackground(category.bg_url);
       }
+
 
       uTracker.track(tracker, 'Category Modal', {
         '$Category': category.name

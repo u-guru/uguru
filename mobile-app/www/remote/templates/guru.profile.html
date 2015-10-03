@@ -60,6 +60,7 @@
 						<svg viewBox="0 0 100 100">
 						    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 						</svg>
+						<span>Add a course</span>
 					</button></li>
 				</ul>
 			</div>
@@ -82,6 +83,7 @@
 								<svg viewBox="0 0 100 100">
 								    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 								</svg>
+								<span>Add a major</span>
 							</button></li>
 						</ul>
 					</div>
@@ -113,6 +115,7 @@
 								<svg viewBox="0 0 100 100">
 								    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 								</svg>
+								<span>Add a skill</span>
 							</button></li>
 						</ul>
 					</div>
@@ -135,6 +138,7 @@
 								<svg viewBox="0 0 100 100">
 								    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 								</svg>
+								<span>Add a language</span>
 							</button></li>
 						</ul>
 					</div>
@@ -143,9 +147,7 @@
 		</div>
 	</div>
 	<button id="btn-edit-profile" class="btn-caps-fixed semibold bottom-0 left-0 bg-shamrock-90p" ng-if='!profile.edit_mode' ng-click='profile.edit_mode = true;'>Edit</button>
-	<div id="btn-save-profile" class='fixed bottom-0 left-0 ng-class:{"relative":profile.edit_mode}'>
-		<button class="caps semibold save-button bg-cerise" ng-click='saveGuruProfile()'ng-if='profile.edit_mode'>Save</button>
-	</div>
+	<button id="btn-save-profile" class="btn-caps-fixed semibold bottom-0 left-0 save-button bg-cerise-90p ng-class:{"relative":profile.edit_mode}" ng-click='saveGuruProfile()'ng-if='profile.edit_mode'>Save</button>
 
 </section>
 <input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed(this)" style='display:none'/>

@@ -23,12 +23,15 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   DeviceService, uTracker, $q) {
 
   console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
+
   uTracker.setUser(tracker, 'localyticsTest');
   uTracker.sendDevice(tracker);
+
 
   document.addEventListener("pause", lastSearch, false);
   document.addEventListener("backbutton", lastSearch, false);
   function lastSearch() {
+
     uTracker.track(tracker, "Paused/Back", {
       "$University_Input": $scope.universityInput.value
     });
@@ -57,10 +60,8 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         var loadTime = time_s;
         appLoadTime = loadTime;
         console.log("appLoadTime: " + appLoadTime);
+
         uTracker.track(tracker, "App Launch", {
-          "$App_Load_Time": appLoadTime
-        });
-        uTracker.set(tracker, {
           "$App_Load_Time": appLoadTime
         });
   }
@@ -97,9 +98,6 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         uTracker.track(tracker, "Entered Access Code", {
           "$Mean_FPS": meanFPS,
           "$FPS_Array": fpsArray.toString()
-        });
-        uTracker.set(tracker, {
-          "$Mean_FPS": meanFPS
         });
 
       }
@@ -143,14 +141,14 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       }
       else if(!measureFPS) {
         if($scope.universityInput.value.length===0){
-          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 500);          
+          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 500);
         }
-        else {      
-          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 16);        
+        else {
+          $timeout(function(){$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value)}, 16);
         }
       }
     }
-    
+
     $scope.limit = 10;
     $scope.increaseLimit = function() {
       if($scope.limit < $scope.universities.length) {
@@ -186,16 +184,18 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       var listRenderTime = listEndTime - appStartTime;
       console.log("listRenderTime: " + listRenderTime);
 
+
       uTracker.track(tracker, "University Selected", {
           "$University": university.name,
           "$University_Input": $scope.universityInput.value
       });
       uTracker.set(tracker, {
+
           "$University": university.name,
           "$Search_Response_Time": searchResponseTime,
           "$List_Render_Time": listRenderTime
       });
-      
+
       //if user is switching universities
       if ($scope.user.university_id
           && university.id !== $scope.user.university_id
@@ -203,6 +203,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       {
           return;
       }
+
       uTracker.track(tracker, "University Changed", {
           "$University": university.name,
           "$University_Input": $scope.universityInput.value
@@ -227,6 +228,10 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     $scope.user.university = university;
     $scope.universityInput.value = '';
 
+    //start fetching majors right now
+    $scope.getMajorsForUniversityId(university.id);
+    $scope.getCoursesForUniversityId(university.id);
+
     //update user to locat storage
     $scope.rootUser.updateLocal($scope.user);
 
@@ -236,12 +241,16 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
     //save university
     var postUniversitySelectedCallback = function() {
+
       $timeout(function() {
+
         $scope.loader.hide();
-        $ionicViewSwitcher.nextDirection('forward');
-        UniversityMatcher.clearCache();
-        $state.go('^.home')
+
+          $ionicViewSwitcher.nextDirection('forward');
+          UniversityMatcher.clearCache();
+          $state.go('^.home')
       }, 1000);
+
     }
 
     $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
@@ -274,10 +283,10 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       alert('Please enable GPS permissions from your settings.')
       //reset to null & see if they will do it again
       $scope.isLocationGiven = null;
-    } 
+    }
     else if ($scope.isLocationGiven) {
       $scope.isLocationActive = !$scope.isLocationActive;
-    } 
+    }
     else {
       $scope.locationGiven = false;
       $scope.locationActive = false;
@@ -301,5 +310,36 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
 
 
+  // $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //   $scope.howItWorksModal = modal;
+  //   $scope.howItWorksModal.show();
+  // });
+
+  // $scope.launchHowItWorksModal = function() {
+  //   $scope.howItWorksModal.show();
+  // }
+
+  // $scope.$on('$ionicView.enter', function() {
+  //   $scope.launchHowItWorksModal();
+  // });
+
+  // $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //   $scope.availabilityModal = modal;
+  //   $scope.availabilityModal.show();
+  // });
+
+  // $scope.launchAvailabilityModal = function() {
+  //   $scope.availabilityModal.show();
+  // }
+
+  // $scope.$on('$ionicView.enter', function() {
+  //   $scope.launchAvailabilityModal();
+  // });
 
 }
