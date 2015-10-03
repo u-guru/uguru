@@ -183,8 +183,6 @@ angular.module('uguru.student.controllers', [])
                  labelClass:'student-home-map-label'
             }
 
-            // defaultMapStyles[0]['stylers'][0].color = $scope.user.university.school_color_one;
-
             var mapOptions = {
                 "latitude": $scope.user.university.latitude,
                 "longitude": $scope.user.university.longitude,
@@ -196,7 +194,7 @@ angular.module('uguru.student.controllers', [])
                 "scrollwheel":false,
                 "icons": [icon],
                 "title": "Student Home Map",
-                "styles": defaultMapStyles //see lib/angular-google-maps/default-map-styles.js
+                styles: defaultMapStyles //see lib/angular-google-maps/default-map-styles.js
             }
 
             MapService.initMap(mapOptions);

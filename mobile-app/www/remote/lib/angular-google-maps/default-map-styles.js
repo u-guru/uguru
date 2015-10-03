@@ -1,12 +1,4 @@
-
 var defaultMapStyles = [
-    {
-        "featureType": "administrative",
-        "elementType": "labels.text",
-        "stylers": [
-            {}
-        ]
-    },
     {
         "featureType": "water",
         "elementType": "geometry.fill",
@@ -180,7 +172,6 @@ var defaultMapStyles = [
             }
         ]
     },
-    {},
     {
         "featureType": "poi",
         "elementType": "geometry.fill",
