@@ -154,7 +154,7 @@ gulp.task('styles', function() {
   var cssStream4 = gulp.src('www/remote/css/sass/views/modals.css');
   // var cssStream5 = gulp.src('www/remote/css/sass/views/guru-profile.css');
   var cssStream6 = gulp.src('www/remote/css/sass/ios.css');
-  var cssStream7 = gulp.src('www/remote/css/sass/components/maps.css');
+  var cssStream7 = gulp.src('www/remote/css/sass/components/map.css');
 
 
 
