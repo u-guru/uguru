@@ -43,6 +43,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   
   $scope.checkAccessCode = function(code) {
 
+<<<<<<< HEAD
     confirm("Can you click on me? ;)");
 
 
@@ -84,6 +85,50 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     //   //
 
     // }
+=======
+    if ($scope.keyboardExists && !$scope.redeemRecentlyPressed) {
+      $scope.redeemRecentlyPressed = true;
+      $timeout(function() {
+        $scope.redeemRecentlyPressed = false;
+      }, 500)
+    }
+    $scope.loader.showAmbig();
+    if(AccessService.validate(code)){
+
+      $scope.access.codeInput = '';
+      //accessInput.removeEventListener('keyup', submitListener);
+      $scope.redeemRecentlyPressed = false;
+      if ($scope.platform.mobile) {
+        cordova.plugins.Keyboard.close();
+      }
+
+      $timeout(function() {
+        $scope.loader.hide();
+        $scope.loader.showSuccess('Access Granted', 1500);
+        $timeout(function() {
+          $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
+        }, 1000);
+      }, 1500)
+
+    } else {
+      $scope.loader.hide();
+      var errorTextElem = document.getElementById('input-error-text')
+      errorTextElem.style.opacity = 1;
+      errorTextElem.innerHTML = 'Incorrect access code';
+      accessInput.value = '';
+      
+      //fadeout after 500 seconds
+      var postShakeCallback = function() {
+            setTimeout(function() {
+              AnimationService.fadeOutElem(errorTextElem, 1000);
+            }, 1500);
+      }
+
+       
+      AnimationService.shakeElem(errorTextElem, 500, postShakeCallback);
+
+    }
+>>>>>>> 88e7276995827bf92143f7295401df2d25aa98e7
   };
 
   $scope.accessInputOnFocus = function() {
@@ -110,8 +155,9 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   };
 
   window.addEventListener('native.keyboardshow', keyboardShowHandler);
-// cordova.plugins.Keyboard.disableScroll(true);
-  window.addEventListener('native.keyboardhide', keyboardHideHandler);
+
+  // cordova.plugins.Keyboard.disableScroll(true);
+  // window.addEventListener('native.keyboardhide', keyboardHideHandler);
 
   var accessInput = document.getElementById('access-code-bar');
 
@@ -151,25 +197,19 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   }
 
 
-  var redeemButton = document.getElementById('redeem-button')
-  function keyboardShowHandler(height) {
-    if(DeviceService.getPlatform() === 'android') {
-      redeemButton.style.visibility = 'hidden';
-    }
-  }
 
-  function keyboardHideHandler(e) {
-    if ($scope.keyboardExists && $scope.redeemRecentlyPressed) {
-      console.log('keyboardHideHandler prevented');
-      $timeout(function () {
-        accessInput.focus();
-      });
-      return;
-    }
-    accessInput.blur();
-    redeemButton.style.visibility = 'visible';
-    $scope.accessInputOnBlur();
-  }
+  // function keyboardHideHandler(e) {
+  //   if ($scope.keyboardExists && $scope.redeemRecentlyPressed) {
+  //     console.log('keyboardHideHandler prevented');
+  //     $timeout(function () {
+  //       accessInput.focus();
+  //     });
+  //     return;
+  //   }
+  //   accessInput.blur();
+  //   redeemButton.style.visibility = 'visible';
+  //   $scope.accessInputOnBlur();
+  // }
 
 
 

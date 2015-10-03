@@ -21,7 +21,19 @@ function AnimationService(DeviceService, $timeout) {
 
 	return {
 		slide: slide,
-		flip: flip
+		flip: flip,
+		shakeElem: shakeElem,
+		fadeOutElem: fadeOutElem
+	}
+
+	function shakeElem(elem, duration, callback) {
+			
+	    Velocity(elem, "transition.expandIn", {duration:duration});
+	    callback && callback();
+	}
+
+	function fadeOutElem(elem, duration) {
+		Velocity(elem, "fadeOut", {duration:duration});
 	}
 
 	function slide(direction, slowdownFactor) {

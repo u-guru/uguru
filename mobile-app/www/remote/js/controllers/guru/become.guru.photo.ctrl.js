@@ -25,6 +25,7 @@ angular.module('uguru.guru.controllers')
 
 
     function takePhotoCallbackSuccess($scope) {
+
       uTracker.track(tracker, 'Guru Mode', {
         '$Photo_Method': 'Camera'
       });
@@ -37,6 +38,7 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.uploadPhotoAndFinish = function() {
+
       uTracker.track(tracker, 'Guru Mode', {
         '$Photo_Method': 'Library'
       });

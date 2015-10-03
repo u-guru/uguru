@@ -21,11 +21,11 @@
   				ng-model="universityInput.value"
   				ng-focus="universityInputFocused()"
   	        />
-  	        <a ng-click='toggleLocationIconAppearance()' class='geolocation-icon' ng-if='universityInput.value.length === 0'>
+  	        <a ng-click='toggleLocationIconAppearance()' class='side-icon geolocation-icon' ng-if='universityInput.value.length === 0'>
   				<i class='icon ion-navigate ng-class:{"location-active":isLocationActive}'></i>
   	        </a>
-  	        <a class='clear-search-input p10xy' ng-click='resetUniversities()' ng-if='universityInput.value.length'>
-  				<i class='icon ion-close-circled text-slate'></i>
+  	        <a class='side-icon' ng-click='resetUniversities()' ng-if='universityInput.value.length'>
+  				<i class='icon ion-close-circled text-white'></i>
   	        </a>
   		</div>
   	</header>

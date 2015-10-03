@@ -29,6 +29,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   // }, "File", "getFreeDiskSpace", []);
 
   console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
+
   uTracker.setUser(tracker, 'localyticsTest');
   uTracker.sendDevice(tracker);
 
@@ -50,10 +51,12 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         var time_s = (time_ms / 1000.0).toPrecision(3)
         appLoadTime = time_s;
         console.log("appLoadTime: " + appLoadTime);
+
         uTracker.track(tracker, "App Launch", {
           "$App_Load_Time": appLoadTime
         });
   };
+
 
   // Measure FPS of access page -> university list transition
   var stopLoop = false;
@@ -96,6 +99,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     //$timeout(function() {stopLoop = true}, 300);
     //console.log("called afterEnter");
   };
+
 
 
   $scope.limit = 10;
@@ -193,10 +197,10 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       alert('Please enable GPS permissions from your settings.')
       //reset to null & see if they will do it again
       $scope.isLocationGiven = null;
-    } 
+    }
     else if ($scope.isLocationGiven) {
       $scope.isLocationActive = !$scope.isLocationActive;
-    } 
+    }
     else {
       $scope.locationGiven = false;
       $scope.locationActive = false;
@@ -291,4 +295,35 @@ angular.module('uguru.directives')
 
 
 
+  // $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //   $scope.howItWorksModal = modal;
+  //   $scope.howItWorksModal.show();
+  // });
+
+  // $scope.launchHowItWorksModal = function() {
+  //   $scope.howItWorksModal.show();
+  // }
+
+  // $scope.$on('$ionicView.enter', function() {
+  //   $scope.launchHowItWorksModal();
+  // });
+
+  // $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //   $scope.availabilityModal = modal;
+  //   $scope.availabilityModal.show();
+  // });
+
+  // $scope.launchAvailabilityModal = function() {
+  //   $scope.availabilityModal.show();
+  // }
+
+  // $scope.$on('$ionicView.enter', function() {
+  //   $scope.launchAvailabilityModal();
+  // });
 

@@ -12,7 +12,7 @@ var img_base = '';
 
 
 // isAdmin = true;
-// LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
+
 var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
 
@@ -29,9 +29,7 @@ if (LOCAL) {
   BASE = 'remote/';
 
   BASE_URL = _ipaddress;
-
-  //REST_URL = "http://localhost:5000"
-  //REST_URL = 'http://192.168.42.78:5000'
+  LOCAL_URL = 'http://192.168.42.78:5000'
 
 } else {
   img_base = '/static/'
@@ -40,6 +38,7 @@ if (LOCAL) {
 // mixpanel = window.mixpanel || null;
 
  //if (mixpanel) mixpanel.track("App Launch");
+
 
 var tracker = 'lo';
 
@@ -82,6 +81,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   uTracker.init(tracker);
 
 
+  uTracker.init('mp');
+
+
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
@@ -93,18 +95,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         v: '3.17',
         libraries: 'places'
     });
-
-  // $provide.decorator("$exceptionHandler", function($delegate, $injector) {
-  //   return function(exception, cause) {
-  //     $delegate(exception, cause);
-  //   };
-  // });
-
-  // if (!window.cordova) {
-  //     var appID = 1416375518604557;
-  //     var fbVersion = "v2.2"; // or leave blank and default is v2.0
-  //     $cordovaFacebookProvider.browserInit(appID, fbVersion);
-  // }
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
   

@@ -67,7 +67,7 @@ def get_all_university_progress():
         uni_population = str(description_parsed[2].split(':')[1])
         # percentage = int(count / (uni_population * 1.0) * 100)
         if count > 0:
-            results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
+            results_arr.append({'id':uni_id, 'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
         else:
             no_results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
         # print uni_name, ' || ', str(int(count)) + ' out of ' + str(int(uni_population)) + ' students',' || ', str(percentage) + '% complete'
@@ -94,7 +94,7 @@ def get_all_university_progress():
         uni_population = str(description_parsed[2].split(':')[1])
         # percentage = int(count / (uni_population * 1.0) * 100)
         if count > 0:
-            results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
+            results_arr.append({'id':uni_id, 'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
         else:
             no_results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
         # print uni_name, ' || ', str(int(count)) + ' out of ' + str(int(uni_population)) + ' students',' || ', str(percentage) + '% complete'
@@ -122,20 +122,21 @@ def get_all_university_progress():
         uni_population = str(description_parsed[2].split(':')[1])
         # percentage = int(count / (uni_population * 1.0) * 100)
         if count > 0:
-            results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
+            results_arr.append({'id':uni_id, 'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
         else:
-            no_results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
+            no_results_arr.append({'id':uni_id,'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
         # print uni_name, ' || ', str(int(count)) + ' out of ' + str(int(uni_population)) + ' students',' || ', str(percentage) + '% complete'
 
     if results_arr:
         results_arr = sorted(results_arr, key=lambda r:r['count'], reverse=True)
         print '# of universities with emails:', len(results_arr), '\n'
         print '# of universities with emails:', len(no_results_arr), '\n'
+
         # index = 1
         # for result in results_arr:
             # print '#%d. %s has %d students' % (index, result['name'], result['count'])
             # index+=1
-    return results_arr, no_results_arr
+        return results_arr
 
 
 def get_university_progress(university_name):
@@ -168,8 +169,9 @@ def set_university_scraper_value(university_name, scraper_value):
 
 
 if __name__ == "__main__":
-    # get_all_university_progress()
-    set_university_scraper_value('Princeton University', True)
+    results = get_all_university_progress()
+    from pprint import pprint
+    pprint(results)
 
 
 

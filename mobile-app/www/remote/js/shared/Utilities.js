@@ -152,7 +152,7 @@ function Utilities(Settings) {
 	}
 
 	function rAF() {
-	  return 
+	  return
 	  	window.requestAnimationFrame ||
 	    window.webkitRequestAnimationFrame ||
 	    window.mozRequestAnimationFrame ||
@@ -160,6 +160,7 @@ function Utilities(Settings) {
 	      window.setTimeout(callback, 16);
 	    };
 	}
+
 
 	function checkFreeSpace(size) {
 		var size_b = size
@@ -204,3 +205,5 @@ function Utilities(Settings) {
 
 
 
+
+}

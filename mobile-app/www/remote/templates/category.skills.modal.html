@@ -7,7 +7,7 @@
                         <span>
                             <label>{{skill.name}}</label>
                             <input type="checkbox" ng-model='skill.active'ng-change='updateCategoryCount(active_category, skill, $index)'>
-                            <span></span>
+                            <span class='{{active_category._class}}'></span>
                         </span>
                     </li>
                 </ul>
