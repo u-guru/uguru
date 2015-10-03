@@ -21,6 +21,12 @@ guru_courses_table = Table('guru-course_assoc',
     Column('course_id', Integer, ForeignKey('course.id'))
     )
 
+user_department_table = Table('user-department_assoc',
+    Base.metadata,
+    Column('department_id', Integer, ForeignKey('department.id')),
+    Column('user_id', Integer, ForeignKey('user.id'))
+    )
+
 student_courses_table = Table('student-course_assoc',
     Base.metadata,
     Column('user_id', Integer, ForeignKey('user.id')),
@@ -194,6 +200,10 @@ class User(Base):
         secondary = user_major_table,
         backref = "users"
         )
+
+    departments = relationship("Department",
+        secondary = user_department_table,
+        backref="users")
 
     campaigns = relationship("Campaign",
         secondary = user_campaign_table,

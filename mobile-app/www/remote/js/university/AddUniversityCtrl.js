@@ -196,13 +196,13 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           "$List_Render_Time": listRenderTime
       });
 
-      //if user is switching universities
-      if ($scope.user.university_id
-          && university.id !== $scope.user.university_id
-          && !confirm('Are you sure? Your current courses will be deactivated'))
-      {
-          return;
-      }
+      // //if user is switching universities
+      // if ($scope.user.university_id
+      //     && university.id !== $scope.user.university_id
+      //     && !confirm('Are you sure? Your current courses will be deactivated'))
+      // {
+      //     return;
+      // }
 
       uTracker.track(tracker, "University Changed", {
           "$University": university.name,

@@ -1460,7 +1460,7 @@ button.disabled {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $cerise;
+			    background-color: $cerise !important;
 			}
 		}
 	}
@@ -1469,7 +1469,7 @@ button.disabled {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $orange;
+			    background-color: $orange !important;
 			}
 		}
 	}
@@ -1487,7 +1487,7 @@ button.disabled {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $moola;
+			    background-color: $moola !important;
 			}
 		}
 	}
@@ -1496,7 +1496,7 @@ button.disabled {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $shamrock;
+			    background-color: $shamrock !important;
 			}
 		}
 	}
@@ -1505,7 +1505,7 @@ button.disabled {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $azure;
+			    background-color: $azure !important;
 			}
 		}
 	}
@@ -1514,7 +1514,7 @@ button.disabled {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $lake;
+			    background-color: $lake !important;
 			}
 		}
 	}
@@ -1523,7 +1523,7 @@ button.disabled {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $eggplant;
+			    background-color: $eggplant !important;
 			}
 		}
 	}
@@ -1532,7 +1532,7 @@ button.disabled {
 	li {
 		> span {
 			input:checked + span {
-			    background-color: $campus;
+			    background-color: $campus !important;
 			}
 		}
 	}

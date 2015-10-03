@@ -61,6 +61,7 @@ angular.module('uguru.util.controllers')
         $scope.user.updateAttr = User.updateAttrUser;
         $scope.user.createObj = User.createObj;
         $scope.user.updateObj = User.updateObj;
+        $scope.user.categories = {academic:{}, freelancing:{}, baking:{},photography:{},household:{}, tech:{}, sports:{}, delivery:{}};
         $scope.popupScope = {};
         $scope.data = {};
 
@@ -85,7 +86,6 @@ angular.module('uguru.util.controllers')
                 University.majors = majors;
 
                 $localstorage.setObject('universityMajors', majors)
-                console.log(majors.length, 'recently majors retrieved')
 
                 if (callback) {
                     callback(majors);
@@ -146,19 +146,7 @@ angular.module('uguru.util.controllers')
                 }
             );
 
-            Major.get().then(
-                function(majors) {
-                    console.log('Majors successfully loaded');
-                    majors = JSON.parse(majors)["majors"];
-                    $scope.static.majors = majors;
-                    $localstorage.setObject('majors', majors);
-                    $scope.static.popular_majors = majors.slice(0, 16);
-                    $localstorage.setObject('popular_majors', $scope.static.popular_majors);
-                },
-                function() {
-                    console.log('Majors NOT successfully loaded');
-                }
-            );
+           
 
             Skill.get().then(function(skills) {
                     var skills = skills.plain();

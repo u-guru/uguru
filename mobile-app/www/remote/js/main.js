@@ -27,17 +27,9 @@ var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-<<<<<<< HEAD
 
-  BASE_URL = _ipaddress;
-
-
-  //REST_URL = "http://localhost:5000"
-  //REST_URL = 'http://192.168.42.78:5000'
-=======
   BASE_URL = _ipaddress;
   LOCAL_URL = 'http://192.168.42.78:5000'
->>>>>>> bbd3e568d84b05453084995a25dfb946bff67e5b
 
 } else {
   img_base = '/static/'

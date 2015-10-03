@@ -1,14 +1,10 @@
 <ion-view ng-controller='SidebarController'>
-<ion-list class='side-menu-list with-icon student-mode'>
+<ion-list class='side-menu-list with-icon ng-class:{"student-mode":!root.vars.guru_mode, "guru_mode":root.vars.guru_mode}'>
 	<!-- Toggle between guru-mode and student-mode to switch color modes -->
 	<ion-item class='list-item list-item-profile'>
 		<span class="list-item-icon" ng-if='user.id'>
 			<img class='sidebar-img-source' id='sidebar-img-photo' src='{{user.profile_url}}'/>
-			<!-- <svg viewBox="0 0 100 100">
-				<g fill="none" fill-rule="evenodd">
-					<circle cx="50" cy="50" r="50"></circle>
-				</g>
-			</svg> -->
+
 		</span>
 		<span class="list-item-detail" ng-if='user.id' id='student-sidebar-profile'>
 			<span class='student-profile-name'>{{user.name.split(' ')[0]}} {{user.name.split(' ')[1][0].toUpperCase()}}.</span>
