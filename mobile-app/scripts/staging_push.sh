@@ -76,10 +76,6 @@ echo
 echo 'last part: restarting servers & updating database'
 echo
 echo
-honcho run python manage.py update
-heroku run honcho run python manage.py update --app uguru-rest
-echo
-echo
 # heroku run honcho run python manage.py init_test_devices --app uguru-rest
 # heroku restart --app uguru-rest
 # heroku run honcho run python manage.py init_admin --app uguru-rest
