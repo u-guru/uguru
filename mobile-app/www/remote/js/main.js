@@ -1,8 +1,8 @@
 
 
 var LOCAL = _local; //local to the 8100 codebasebirbirs
-//var FIRST_PAGE='^.' + _startpage;
-var FIRST_PAGE='^.home';
+var FIRST_PAGE='^.' + _startpage;
+
 
 console.log("_local: " + _local);
 console.log("_startpage: " + _startpage);

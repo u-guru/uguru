@@ -43,49 +43,6 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   
   $scope.checkAccessCode = function(code) {
 
-<<<<<<< HEAD
-    confirm("Can you click on me? ;)");
-
-
-
-    // if ($scope.keyboardExists && !$scope.redeemRecentlyPressed) {
-    //   $scope.redeemRecentlyPressed = true;
-    //   $timeout(function() {
-    //     $scope.redeemRecentlyPressed = false;
-    //   }, 500)
-    // }
-    // $scope.loader.showAmbig();
-    // if(AccessService.validate(code)){
-
-    //   $scope.access.codeInput = '';
-    //   //accessInput.removeEventListener('keyup', submitListener);
-    //   $scope.redeemRecentlyPressed = false;
-    //   if ($scope.platform.mobile) {
-    //     cordova.plugins.Keyboard.close();
-    //   }
-
-    //   $timeout(function() {
-    //     $scope.loader.hide();
-    //     $scope.loader.showSuccess('Access Granted', 1500);
-    //     $timeout(function() {
-    //       $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();
-    //     }, 1000);
-    //   }, 1500)
-
-    // } else {
-    //   $scope.loader.hide();
-    //   Velocity(document.getElementById('input-error-text'), {opacity:1});
-    //   $scope.access.errorInputMsg = 'Incorrect access code';
-    //   Velocity(accessInput, "callout.shake", function() {
-    //     accessInput.value = '';
-    //     setTimeout(function() {
-    //       Velocity(document.getElementById('input-error-text'), "fadeOut", {duration:1000});
-    //     }, 500)
-    //   });
-    //   //
-
-    // }
-=======
     if ($scope.keyboardExists && !$scope.redeemRecentlyPressed) {
       $scope.redeemRecentlyPressed = true;
       $timeout(function() {
@@ -120,6 +77,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       //fadeout after 500 seconds
       var postShakeCallback = function() {
             setTimeout(function() {
+              $scope.loader.hide();
               AnimationService.fadeOutElem(errorTextElem, 1000);
             }, 1500);
       }
@@ -128,7 +86,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       AnimationService.shakeElem(errorTextElem, 500, postShakeCallback);
 
     }
->>>>>>> 88e7276995827bf92143f7295401df2d25aa98e7
+
   };
 
   $scope.accessInputOnFocus = function() {

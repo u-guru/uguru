@@ -33,7 +33,8 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
   uTracker.setUser(tracker, 'localyticsTest');
   uTracker.sendDevice(tracker);
 
-  $scope.universities = University.getSorted();
+  $scope.universitiesSorted = University.getSorted().slice();
+  $scope.universities = $scope.universitiesSorted;
   $scope.isLocationActive = false;
   $scope.isLocationGiven = null; // null if getGPS not called, false if not given, true if lat/lon
 
@@ -238,7 +239,8 @@ angular.module('uguru.directives')
           }
           queryPromise = $timeout(function() {
             //$scope.universities = UniversityMatcher.cachedMatch($scope.universityInput.value);
-            $scope.universities = Utilities.nickMatcher($scope.universityInput.value, University.getSorted(), 'name');
+
+            $scope.universities = Utilities.nickMatcher($scope.universityInput.value, $scope.universitiesSorted, 'name');
             queryPromise = null;
           }, 90);
         }
@@ -249,7 +251,7 @@ angular.module('uguru.directives')
             $timeout.cancel(queryPromise);
           }
           queryPromise = $timeout(function() {
-            $scope.universities = Utilities.nickMatcher($scope.universityInput.value, University.getTargetted(), 'name');
+            $scope.universities = Utilities.nickMatcher($scope.universityInput.value, $scope.universitiesSorted, 'name');
             queryPromise = null;
           }, 75);
         }
@@ -260,7 +262,7 @@ angular.module('uguru.directives')
             $timeout.cancel(queryPromise);
           }
           queryPromise = $timeout(function() {
-            $scope.universities = Utilities.nickMatcher($scope.universityInput.value, University.getSorted(), 'name');
+            $scope.universities = Utilities.nickMatcher($scope.universityInput.value, $scope.universitiesSorted, 'name');
             queryPromise = null;
           }, 50);
         }
@@ -270,7 +272,7 @@ angular.module('uguru.directives')
             $timeout.cancel(queryPromise);
           }
           queryPromise = $timeout(function() {
-            $scope.universities = Utilities.nickMatcher($scope.universityInput.value, University.getTargetted(), 'name');
+            $scope.universities = Utilities.nickMatcher($scope.universityInput.value, $scope.universitiesSorted, 'name');
             queryPromise = null;
 
           }, 50);
