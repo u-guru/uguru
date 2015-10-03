@@ -169,6 +169,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/privacy-terms.modal.html'    
   }).
 
+
+
+
   state('root.university-container', {
         url: '/university-container',
         templateUrl: BASE + 'templates/university.container.html',
@@ -234,6 +237,14 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/become.guru.html',
         controller: 'BecomeGuruController'
   }).
+  state('root.become-guru.photography', {
+        url:'/photography',
+        templateUrl: BASE + 'templates/category.skills.modal.html'    
+  }).
+
+
+
+
   state('root.courses', {
         url: '/courses',
         templateUrl: BASE + 'templates/courses.html',

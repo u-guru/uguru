@@ -242,7 +242,7 @@ angular.module('uguru.util.controllers')
     $scope.closeModal = function(modal) {
       switch(modal) {
         case 'privacy':
-          Animation.z
+          //Animation.
       }
     }
 
