@@ -8,7 +8,19 @@ angular
 function AnimationService(DeviceService) {
 
 	return {
-		flip: flip
+		flip: flip,
+		shakeElem: shakeElem,
+		fadeOutElem: fadeOutElem
+	}
+
+	function shakeElem(elem, duration, callback) {
+			
+	    Velocity(elem, "transition.expandIn", {duration:duration});
+	    callback && callback();
+	}
+
+	function fadeOutElem(elem, duration) {
+		Velocity(elem, "fadeOut", {duration:duration});
 	}
 
 	//customOptions is optional, if none are set then default options will be used

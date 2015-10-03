@@ -24,8 +24,8 @@ angular.module('uguru.guru.controllers')
 
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
-    $scope.majors = $scope.static.majors;
-    $scope.courses = $scope.static.courses;
+    // $scope.majors = $scope.static.majors;
+    // $scope.courses = $scope.static.courses;
     $scope.search_text = '';
 
     var mapGuruCoursesToCategoriesObj = function(guru_courses) {
@@ -110,6 +110,9 @@ angular.module('uguru.guru.controllers')
       if (index === 0) {
 
         uTracker.track(tracker, 'Become Guru: Majors');
+        if ($scope.data.majors) {
+          $scope.majors = $scope.data.majors;
+        }
         console.log('grabbing courses from server')
         $scope.getCoursesFromServer();
         $ionicSideMenuDelegate.canDragContent(false);
@@ -152,6 +155,7 @@ angular.module('uguru.guru.controllers')
 
       uTracker.track(tracker, 'Guru Mode');
       $scope.root.vars.guru_mode = true;
+      $ionicViewSwitcher.nextDirection('forward');
       $state.go('^.guru');
     }
 
@@ -209,7 +213,15 @@ angular.module('uguru.guru.controllers')
       progressBarTag.style.width = width + 'px';
     }
 
+    $scope.$on('$ionicView.beforeEnter', function() {
+      // if (!$scope.data.majors) {
 
+      //   $scope.getMajorsForUniversityId($scope.user.university.id);
+      //   $scope.getCoursesForUniversityId($scope.user.university.id);
+
+
+      // }
+    })
     $scope.$on('$ionicView.afterEnter', function() {
 
       $scope.majorInput = document.getElementById('major-input-1');

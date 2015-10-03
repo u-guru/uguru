@@ -8,7 +8,7 @@ angular.module('uguru.rest', [])
         },
         getMajors: function(uni_id) {
             return Restangular
-                .one('universities', uni_id).customGET('majors');
+                .one('universities', uni_id).customGET('departments');
         },
         getCourses: function(uni_id) {
             return Restangular

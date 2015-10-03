@@ -12,15 +12,10 @@ angular.module('uguru.util.controllers')
   'Utilities',
   '$localstorage',
   'uTracker',
+  'University',
   function($scope, $state, $timeout,
   $q, Major, $ionicSideMenuDelegate, Utilities,
-  $localstorage, uTracker) {
-
-
-
-    if (!$scope.user.majors) {
-      $scope.user.majors = [];
-    }
+  $localstorage, uTracker, University) {
 
     $scope.backToStudentEditProfile = function(is_saved) {
 
@@ -129,7 +124,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.query = function(input) {
-      $scope.majors = Utilities.nickMatcher(input, Major.getGeneral());
+      $scope.majors = Utilities.nickMatcher(input, University.majors || Major.getGeneral());
     }
 
     $scope.removeUserMajorsFromMaster = function() {
@@ -180,10 +175,30 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    $scope.clearSearchInput = function() {
+      $scope.search_text = '';
+      $scope.query('');
+    }
 
-    $scope.majors = Major.getGeneral();
-    $scope.removeUserMajorsFromMaster();
+    var getMajorsBecomeGuru = function() {
+      University.getMajors($scope.user.university_id).then(function(majors) {
 
+        majors = majors.plain();
+
+        $scope.majors = majors;
+        University.majors = majors;
+        $localstorage.setObject('universityMajors', majors.plain())
+
+
+      },function(err) {
+
+        alert('Something went wrong... Please contact support!');
+
+      });
+    }
+
+
+    $scope.majors = University.majors || getMajorsForUniversityId();
   }
 
 

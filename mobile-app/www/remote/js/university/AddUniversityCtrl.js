@@ -196,13 +196,13 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           "$List_Render_Time": listRenderTime
       });
 
-      //if user is switching universities
-      if ($scope.user.university_id
-          && university.id !== $scope.user.university_id
-          && !confirm('Are you sure? Your current courses will be deactivated'))
-      {
-          return;
-      }
+      // //if user is switching universities
+      // if ($scope.user.university_id
+      //     && university.id !== $scope.user.university_id
+      //     && !confirm('Are you sure? Your current courses will be deactivated'))
+      // {
+      //     return;
+      // }
 
       uTracker.track(tracker, "University Changed", {
           "$University": university.name,
@@ -228,6 +228,10 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     $scope.user.university = university;
     $scope.universityInput.value = '';
 
+    //start fetching majors right now
+    $scope.getMajorsForUniversityId(university.id);
+    $scope.getCoursesForUniversityId(university.id);
+
     //update user to locat storage
     $scope.rootUser.updateLocal($scope.user);
 
@@ -237,12 +241,16 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
     //save university
     var postUniversitySelectedCallback = function() {
+
       $timeout(function() {
+
         $scope.loader.hide();
-        $ionicViewSwitcher.nextDirection('forward');
-        UniversityMatcher.clearCache();
-        $state.go('^.home')
+
+          $ionicViewSwitcher.nextDirection('forward');
+          UniversityMatcher.clearCache();
+          $state.go('^.home')
       }, 1000);
+
     }
 
     $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);

@@ -27,6 +27,7 @@ var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
+
   BASE_URL = _ipaddress;
   LOCAL_URL = 'http://192.168.42.78:5000'
 
@@ -94,18 +95,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         v: '3.17',
         libraries: 'places'
     });
-
-  // $provide.decorator("$exceptionHandler", function($delegate, $injector) {
-  //   return function(exception, cause) {
-  //     $delegate(exception, cause);
-  //   };
-  // });
-
-  // if (!window.cordova) {
-  //     var appID = 1416375518604557;
-  //     var fbVersion = "v2.2"; // or leave blank and default is v2.0
-  //     $cordovaFacebookProvider.browserInit(appID, fbVersion);
-  // }
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
   $ionicConfigProvider.tabs.position("bottom");

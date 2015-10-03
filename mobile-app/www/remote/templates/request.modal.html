@@ -20,36 +20,26 @@
 			<ul class="ugrid-2 text-center">
 				<li>
 					<input type="radio" name="loc" class="use-location" checked/>
-					<div>
-						<label>Use my location</label>
-						<div class="request-loc-geo">
-							<span class="request-geo-icon">
-								<svg viewBox="0 0 100 100">
-									<path d="M24.2857143,39.7142857 C24.2085714,25.5128 35.7985143,14 50,14 C64.2014857,14 75.7914286,25.5128 75.7142857,39.7142857 C75.6001143,60.8658286 50,86 50,86 C50,86 24.4009143,60.8658286 24.2857143,39.7142857 Z M50,50 C55.6806431,50 60.2857143,45.3949289 60.2857143,39.7142857 C60.2857143,34.0336426 55.6806431,29.4285714 50,29.4285714 C44.3193569,29.4285714 39.7142857,34.0336426 39.7142857,39.7142857 C39.7142857,45.3949289 44.3193569,50 50,50 Z"></path>
-								</svg>
-							</span>
-							<span class="request-geo-st">55 Spear Street</span>
-							<span>
-								<span class="request-geo-city">San Francisco</span>,
-								<span class="request-geo-state">CA</span>
-								<span class="request-geo-zip">94105</span>
-							</span>
-						</div>
-					</div>
+					<label>Use my location</label>
 				</li>
 				<li>
 					<input type="radio" name="loc" class="enter-address"/>
-					<div>
-						<label>Enter address</label>
-						<div class="request-loc-address">
-							<input type="text" class="request-loc-st p15xy" placeholder="Street" />
-							<input type="text" class="request-loc-city p15xy" placeholder="City" />
-							<input type="text" class="request-loc-state p15xy" placeholder="State" />
-							<input type="text" class="request-loc-zip p15xy" placeholder="Zip" />
-						</div>
-					</div>
+					<label>Enter address</label>
 				</li>
 			</ul>
+			<div class="request-address">
+				<span class="request-address-icon">
+					<svg viewBox="0 0 100 100">
+						<path d="M24.2857143,39.7142857 C24.2085714,25.5128 35.7985143,14 50,14 C64.2014857,14 75.7914286,25.5128 75.7142857,39.7142857 C75.6001143,60.8658286 50,86 50,86 C50,86 24.4009143,60.8658286 24.2857143,39.7142857 Z M50,50 C55.6806431,50 60.2857143,45.3949289 60.2857143,39.7142857 C60.2857143,34.0336426 55.6806431,29.4285714 50,29.4285714 C44.3193569,29.4285714 39.7142857,34.0336426 39.7142857,39.7142857 C39.7142857,45.3949289 44.3193569,50 50,50 Z"></path>
+					</svg>
+				</span>
+				<span class="request-address-st">55 Spear Street</span>
+				<span>
+					<span class="request-address-city">San Francisco</span>,
+					<span class="request-address-state">CA</span>
+					<span class="request-address-zip">94105</span>
+				</span>
+			</div>
 		</div>
 		<div class="request-time">
 			<h1 class="section-header-light">Time</h1>
