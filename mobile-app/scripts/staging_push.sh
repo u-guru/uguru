@@ -25,7 +25,8 @@ echo '>>>'
 echo
 read msg
 echo
-echo msg1 'What branch are you on?'
+echo 'What branch are you on?'
+read branch
 echo 'saving.....'
 echo
 echo 'saving....'
@@ -64,12 +65,12 @@ echo
 echo 'pushing to git, to the staging branch'
 echo
 echo
-git push origin {$msg}:staging
+git push origin {$branch}:staging
 echo
 echo 'pushing to staging servers, to the master branch'
 echo
 echo
-git push staging {$msg}:master
+git push staging {$branch}:master
 echo
 echo
 echo 'last part: restarting servers & updating database'
