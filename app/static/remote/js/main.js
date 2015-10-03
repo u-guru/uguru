@@ -1,55 +1,92 @@
-var LOCAL = _local || false;
-var _startpage = _startpage || 'university';
 
-var FIRST_PAGE = '^.' + _startpage;
-var img_base = '';
+
+var LOCAL = _local; //local to the 8100 codebasebirbirs
+var FIRST_PAGE='^.' + (_startpage || 'university');
+//var FIRST_PAGE='^.home';
 
 console.log("_local: " + _local);
 console.log("_startpage: " + _startpage);
-console.log("_startpage: " + _ipaddress);
+console.log("_ipaddress: " + _ipaddress);
+
+var img_base = '';
+
 
 // isAdmin = true;
-// LOCAL_URL = 'http://192.168.42.78:5000/app/local/'
+
 var BASE_URL = 'https://www.uguru.me/production/app/';
 var REST_URL = 'https://www.uguru.me'
 
+
+// ==============================
+// CONSOLE_SETTINGS: Toggle console logs. Comment to enable, uncomment to disable.
+// console.log("Disabling console logs. To enable: comment out CONSOLE_SETTINGS in main.js");
+// console.log = function() {};
+// ==============================
 
 var BASE = '';
 if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = _ipaddress;
-
-  // console.log("_ipaddress: " + _ipaddress);
-  // REST_URL = 'http://192.168.42.78:5000'
-
+  LOCAL_URL = 'http://192.168.42.78:5000'
 
 } else {
   img_base = '/static/'
 }
 
-mixpanel = window.mixpanel || null;
+// mixpanel = window.mixpanel || null;
 
  //if (mixpanel) mixpanel.track("App Launch");
 
-angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
+
+var tracker = 'lo';
+
+
+angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate', 'angular-velocity', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers','uguru.rest', 'uguru.user', 'uguru.root.services', 'uiGmapgoogle-maps',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives'])
 
 
 .run(function($ionicPlatform, $localstorage,
-  $cordovaNetwork, $state, $cordovaAppVersion,$ionicHistory,
-  $cordovaDialogs, Version, $rootScope, $cordovaSplashscreen,
-  $templateCache, Device, User, $cordovaLocalNotification,
-  $cordovaGeolocation, $cordovaDevice, DeviceService) {
+  $state, $ionicHistory,
+   Version, $rootScope,
+  $templateCache, Device, User,
+  DeviceService, uTracker, $log) {
+
+
+  $log.getInstance = function(context) {
+    return {
+      log: enhanceLogging($log.log, contect),
+      info: enhanceLogging($log.info, context),
+      warn: enhanceLogging($log.warn, context),
+      debug: enhanceLogging($log.debug, context),
+      error: enhanceLogging($log.error, context)
+    };
+  };
+
+  function enhanceLogging(loggingFunc, context) {
+    return function() {
+      var modifiedArguments = [].slice.call(arguments);
+      modifiedArguments[0] = [moment().format("dddd h:mm:ss a") + '::[' + context + ']> '] + modifiedArguments[0];
+      loggingFunc.apply(null, modifiedArguments);
+    };
+  }
+
 
   var openKeyboard = null;
+  //var tracker = 'lo'
+  //uTracker.init(tracker);
+  uTracker.init(tracker);
+
+
+  uTracker.init('mp');
+
 
 })
 
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
-  $cordovaFacebookProvider, $ionicConfigProvider, $compileProvider, uiGmapGoogleMapApiProvider,
+  $ionicConfigProvider, $compileProvider, uiGmapGoogleMapApiProvider,
   $provide) {
 
   uiGmapGoogleMapApiProvider.configure({
@@ -57,18 +94,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         v: '3.17',
         libraries: 'places'
     });
-
-  // $provide.decorator("$exceptionHandler", function($delegate, $injector) {
-  //   return function(exception, cause) {
-  //     $delegate(exception, cause);
-  //   };
-  // });
-
-  if (!window.cordova) {
-      var appID = 1416375518604557;
-      var fbVersion = "v2.2"; // or leave blank and default is v2.0
-      $cordovaFacebookProvider.browserInit(appID, fbVersion);
-  }
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
   $ionicConfigProvider.tabs.position("bottom");
@@ -116,9 +141,9 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         url: '/university',
         templateUrl: BASE + 'templates/university.html',
         resolve: {
-          loadCache: function($templateCache) {
-            $templateCache.get(BASE + 'templates/university.html');
-          },
+          // loadCache: function($templateCache) {
+          //   $templateCache.get(BASE + 'templates/university.html');
+          // },
           deviceInfo: function(DeviceService) {
             return DeviceService.getPlatform();
           }
@@ -266,11 +291,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
           throw "Test error";
         }
   }).
-  state('root.access', {
-        url: '/access',
-        templateUrl: BASE + 'templates/access.html',
-        controller: 'AccessController'
-  }).
+  // state('root.access', {
+  //       url: '/access',
+  //       templateUrl: BASE + 'templates/access.html',
+  //       controller: 'AccessController'
+  // }).
   state('root.guru-conversations', {
         url: '/guru-conversations',
         templateUrl: BASE + 'templates/guru.conversations.html'

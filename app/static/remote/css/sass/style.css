@@ -29,10 +29,13 @@ body {
 
 body.platform-ios ul li.active, body.platform-ios ul li.activated {
   background: rgba(255, 255, 255, 0.2); }
+
 body.platform-ios ul li ::selection {
   background: rgba(255, 255, 255, 0.1); }
+
 body.platform-ios ul li a.active, body.platform-ios ul li a.activated {
   background: rgba(255, 255, 255, 0.2); }
+
 body.platform-ios ul li a:hover, body.platform-ios ul li .list .list-item a:hover {
   background: rgba(255, 255, 255, 0.1); }
 
@@ -45,19 +48,23 @@ section {
 /* ---------- MISCELLANEOUS */
 .uguru-view * {
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important; }
+
 .uguru-view h1.verified span svg {
   display: inline !important;
   width: 20px;
   height: 20px; }
   .uguru-view h1.verified span svg path:first-child {
     fill: #50A5DD; }
+
 .uguru-view .request#request header:before {
-  background: url(../images/school.jpg) no-repeat center center/cover; }
+  background: url(../images/schools.jpg) no-repeat center center/cover; }
+
 .uguru-view .request#request header .request-header h1 {
   padding-top: 20px;
   width: 100%;
   text-align: center;
   font-size: 24px; }
+
 .uguru-view .request#request header .request-header .request-icon {
   border-radius: 1000px;
   -ms-box-orient: horizontal;
@@ -92,14 +99,11 @@ section {
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
     width: 30px;
-    height: 30px;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg); }
+    height: 30px; }
+
 .uguru-view .request#request #request-content {
   height: calc(100% / 3 * 2); }
+
 .uguru-view .request#request #request-list {
   height: calc(100% - 64px);
   overflow: auto; }
@@ -120,6 +124,7 @@ section {
       width: 50px;
       height: 50px;
       background: #8A9EA3; }
+
 .uguru-view .request #request-tabs ul {
   list-style: none;
   margin: 0;
@@ -190,6 +195,7 @@ section {
       color: #2B3234;
       font-size: 12px;
       line-height: 20px; }
+
 @media screen and (max-width: 320px) {
   .uguru-view body, .uguru-view input, .uguru-view button {
     font-size: 20px; }
@@ -385,6 +391,7 @@ section {
 
 .terms-modal header h1, .faq-modal header h1, .support-modal header h1 {
   color: white; }
+
 .terms-modal ion-content, .faq-modal ion-content, .support-modal ion-content {
   height: calc(100% - 50px);
   margin-top: 50px; }
@@ -451,6 +458,7 @@ section {
   #experience-modal .main textarea {
     font-size: 20px;
     height: 100%; } }
+
 .signup-modal #account-form {
   box-sizing: border-box;
   padding: 15px; }
@@ -496,6 +504,7 @@ section {
 
 .faq-modal header.bg-charcoal {
   z-index: 1000 !important; }
+
 .faq-modal iframe {
   min-height: 100%;
   width: 100%; }
@@ -515,7 +524,14 @@ section {
   .request-modal .request-content input:not([type="text"]) {
     cursor: pointer; }
   .request-modal .request-content input[type="text"], .request-modal .request-content textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
     display: block;
+    border-radius: 0;
+    background: white;
     width: 100%;
     border: 2px solid #F1F1F1;
     border-top: 0;
@@ -556,12 +572,15 @@ section {
       border-left: 1px solid #F1F1F1;
       border-right: 1px solid #F1F1F1; }
       .request-modal .request-content .request-loc ul li input[type="radio"] {
+        filter: alpha(opacity=0);
+        opacity: 0;
         position: absolute;
         z-index: 9;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%; }
+        height: 100%;
+        border-radius: 0; }
       .request-modal .request-content .request-loc ul li div {
         width: 100%; }
       .request-modal .request-content .request-loc ul li label {
@@ -570,6 +589,7 @@ section {
         line-height: 46px; }
       .request-modal .request-content .request-loc ul li input:not(:checked) + div label {
         color: rgba(64, 72, 75, 0.5);
+        background: white;
         font-weight: 400; }
       .request-modal .request-content .request-loc ul li input:checked + div label {
         background: #50A5DD;
@@ -674,12 +694,15 @@ section {
       .request-modal .request-content .request-time .request-time-needed ul li:last-child {
         border-right: 0; }
       .request-modal .request-content .request-time .request-time-needed ul li input {
+        filter: alpha(opacity=0);
+        opacity: 0;
         position: absolute;
         z-index: 9;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%; }
+        height: 100%;
+        border-radius: 0 !important; }
       .request-modal .request-content .request-time .request-time-needed ul li div {
         padding: 5px 0;
         font-size: 12px;
@@ -708,10 +731,157 @@ section {
 
 .availability-modal {
   background: #40484B; }
+  .availability-modal section {
+    height: calc(100% - 50px); }
+    .availability-modal section > div {
+      height: 100%;
+      width: 100%; }
+      .availability-modal section > div:after {
+        content: "";
+        position: fixed;
+        z-index: 10;
+        border-right: 2px solid rgba(255, 255, 255, 0.1);
+        left: 0;
+        top: 50px;
+        width: calc(10% + 6px);
+        height: 35px;
+        background: #40484B; }
+  .availability-modal .avail-times {
+    position: fixed;
+    z-index: 9;
+    width: calc(10% + 6px);
+    height: calc(100% - 50px);
+    padding-top: 36px;
+    overflow-y: auto; }
+    .availability-modal .avail-times ul {
+      display: table;
+      width: 100%;
+      height: calc(100% / 12); }
+      .availability-modal .avail-times ul li {
+        display: table-cell;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-right: 2px solid rgba(255, 255, 255, 0.1);
+        background: #40484B;
+        border-left: 0;
+        font-size: 12px;
+        width: 100%;
+        height: 100%; }
+        .availability-modal .avail-times ul li span {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          text-align: right;
+          background: rgba(255, 255, 255, 0.05); }
+    .availability-modal .avail-times ul:last-child li {
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1); }
+  .availability-modal .avail-days {
+    position: fixed;
+    z-index: 9;
+    padding-left: calc(10% + 5px);
+    width: 100%;
+    height: 37px;
+    background: #40484B;
+    overflow-x: auto;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1); }
+    .availability-modal .avail-days ul {
+      display: table;
+      height: 37px; }
+      .availability-modal .avail-days ul li {
+        display: table-cell;
+        width: 100%;
+        height: 100%;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase; }
+        .availability-modal .avail-days ul li span {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          width: 80px;
+          height: 100%;
+          text-align: center;
+          background: rgba(255, 255, 255, 0.05); }
+      .availability-modal .avail-days ul li:last-child {
+        border-right: 2px solid rgba(255, 255, 255, 0.1); }
+  .availability-modal .avail-hours {
+    position: fixed;
+    margin-left: calc(10% + 5px);
+    height: calc(100% - 50px);
+    padding-top: 36px;
+    width: calc(90% - 5px);
+    overflow-x: auto; }
+    .availability-modal .avail-hours ul {
+      display: table;
+      height: calc(100% / 12); }
+      .availability-modal .avail-hours ul li {
+        display: table-cell;
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+        height: 100%; }
+        .availability-modal .avail-hours ul li input {
+          filter: alpha(opacity=0);
+          opacity: 0;
+          border-radius: 0;
+          position: absolute;
+          z-index: 11;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          cursor: pointer; }
+        .availability-modal .avail-hours ul li input:checked + span {
+          background: #8A9EA3; }
+        .availability-modal .avail-hours ul li span {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          text-align: center;
+          width: 80px;
+          height: 100%; }
+      .availability-modal .avail-hours ul li:last-child {
+        border-right: 2px solid rgba(255, 255, 255, 0.1); }
+    .availability-modal .avail-hours ul:last-child li {
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1); }
 
 @media screen and (min-width: 375px) {
   .request-modal .request-content .request-time .request-time-needed ul li div {
     padding: 10px 0; } }
+
 /* ---------- SIDEBAR & MENUS */
 #side-menu-left-overlay.active {
   background: rgba(43, 50, 52, 0.8);
@@ -801,27 +971,35 @@ section {
       left: 0;
       width: 100%;
       height: 100%;
-      background: url(../../img/school.jpg) center center/cover; } }
+      background: url(../../img/schools.jpg) center center/cover; } }
+
 .menu-guru .list {
   background: #40484B; }
+
 .menu-guru .list-item.active, .menu-guru .list-item.activated {
   background: #8A9EA3; }
+
 .menu-guru .list-item .list-item-icon svg path, .menu-guru .list-item .list-item-icon svg circle {
   stroke: #fff; }
+
 .menu-guru .list-item-profile {
   background: rgba(138, 158, 163, 0.75); }
+
 .menu-guru .list-item-agenda {
   background: white;
   color: #2B3234; }
   .menu-guru .list-item-agenda.active, .menu-guru .list-item-agenda.activated {
     background: rgba(255, 255, 255, 0.9); }
+
 .menu-guru .list-item-guru {
   display: none; }
+
 .menu-guru .list-item-student {
   background: rgba(138, 158, 163, 0.75); }
 
 .menu-student .list {
   background: white; }
+
 .menu-student .list-item {
   color: #40484B; }
   .menu-student .list-item .list-item-icon svg path {
@@ -831,21 +1009,25 @@ section {
     color: white; }
     .menu-student .list-item.activated svg path, .menu-student .list-item.active svg path {
       stroke: white; }
+
 .menu-student .list-item-profile {
   background: #50A5DD;
   color: white; }
   .menu-student .list-item-profile .list-item-icon svg circle {
     stroke: white; }
+
 .menu-student .list-item-agenda {
   background: #40484B;
   color: white; }
   .menu-student .list-item-agenda:active, .menu-student .list-item-agenda:hover {
     background: rgba(64, 72, 75, 0.9); }
+
 .menu-student .list-item-student {
   background: #40484B;
   color: white; }
   .menu-student .list-item-student svg path {
     stroke: white !important; }
+
 .menu-student .list-item-guru {
   background: #50A5DD;
   color: white; }
@@ -1070,7 +1252,7 @@ section {
 .university-view {
   background: #2B3234; }
   .university-view header:before {
-    background: url(../../img/onboarding/school.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/school.jpg) center/cover no-repeat; }
+    background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat; }
   .university-view header .geolocation-icon {
     filter: alpha(opacity=100);
     opacity: 1;
@@ -1146,6 +1328,7 @@ section {
 .home-view button.active, .home-view button.activated {
   filter: alpha(opacity=50);
   opacity: 0.5; }
+
 .home-view a.header-menu {
   position: absolute;
   width: 25% !important;
@@ -1158,8 +1341,10 @@ section {
     position: absolute;
     right: 0;
     top: 11px; }
+
 .home-view #request-content {
   height: calc(100% - 50px - 64px); }
+
 .home-view #request-message {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1243,14 +1428,17 @@ section {
 @media screen and (min-width: 375px) {
   .home-view #request-message > div h2 {
     font-size: 20px; } }
+
 @media screen and (min-height: 600px) {
   .request#request-empty #request-message > div > div svg {
     max-height: 150px; } }
+
 /* ---------- GURU ONBOARDING */
 .onboarding .onboarding-search {
   box-sizing: border-box; }
   .onboarding .onboarding-search input {
     width: calc(100% - 25px); }
+
 .onboarding progress, .onboarding .progress {
   position: absolute;
   top: 0;
@@ -1269,18 +1457,24 @@ section {
     width: 95%; }
   .onboarding progress span[data-value="99"], .onboarding .progress span[data-value="99"] {
     width: 86%; }
+
 .onboarding header h1:not(header .header-nav a h1) {
   text-align: center; }
+
 .onboarding .onboarding-list {
   height: calc(100% / 3 * 2);
   overflow: auto; }
+
 .onboarding#demographic header:before {
-  background: url(../images/school.jpg) no-repeat center center/cover; }
+  background: url(../images/schools.jpg) no-repeat center center/cover; }
+
 .onboarding#demographic header h1 {
   font-size: 24px; }
+
 .onboarding#demographic #demographic-grid > ul > li:not(.active) {
   filter: alpha(opacity=30);
   opacity: 0.3; }
+
 .onboarding#demographic #demographic-grid ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1418,6 +1612,7 @@ section {
         border-color: rgba(80, 165, 221, 0.1); }
       .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:hover {
         background: rgba(80, 165, 221, 0.05); }
+
 .onboarding#start {
   background: #40484B; }
   .onboarding#start #start-container {
@@ -1503,7 +1698,6 @@ section {
         top: 0;
         left: 0;
         margin: 0;
-        -webkit-appearance: none;
         width: 100%;
         height: 44px;
         cursor: pointer; }
@@ -2010,6 +2204,7 @@ section {
 /* ---------- CREDIBILITY & RANKING */
 .credibility-view header {
   position: relative; }
+
 .credibility-view #credit-slider {
   position: absolute;
   bottom: 0;
@@ -2130,6 +2325,7 @@ section {
       color: #50A5DD; }
       .credibility-view #credit-slider ul #credit-email a:active .credit-icon, .credibility-view #credit-slider ul #credit-email a:focus .credit-icon, .credibility-view #credit-slider ul #credit-email a:hover .credit-icon {
         background: #50A5DD; }
+
 .credibility-view #credibility-content-wrapper {
   position: relative;
   background: #40484B;
@@ -2189,7 +2385,10 @@ section {
       width: 108px; }
       .credibility-view #credit-slider ul li a .credit-icon {
         width: 60px;
-        height: 60px; } }
+        height: 60px; }
+  .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body p {
+    font-size: 22px; } }
+
 @media screen and (min-width: 414px) {
   .credibility-view #credit-slider ul li {
     font-size: 18px; }
@@ -2199,8 +2398,10 @@ section {
       .credibility-view #credit-slider ul li a .credit-icon {
         width: 70px;
         height: 70px; } }
+
 .guru-view header:before {
-  background: url(../../img/onboarding/school.jpg) no-repeat center center/cover; }
+  background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover; }
+
 .guru-view #guru-ranking {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -2301,8 +2502,10 @@ section {
       margin-bottom: 7px; }
       .guru-view #guru-ranking #guru-stats .stats-bar svg {
         height: 10px; }
+
 .guru-view .tip-container h2 {
   font-size: 22px; }
+
 .guru-view .tip-container p {
   margin-top: 10px;
   font-size: 18px; }
@@ -2316,6 +2519,7 @@ section {
     transform: none; }
   .guru-view #guru-ranking #guru-stats .stats-bar {
     margin-bottom: 9px; } }
+
 @media screen and (min-width: 414px) {
   .guru-view #guru-ranking > div {
     -webkit-transform: scale(1.2);
@@ -2323,6 +2527,7 @@ section {
     -ms-transform: scale(1.2);
     -o-transform: scale(1.2);
     transform: scale(1.2); } }
+
 /* ---------- SAMIR */
 .smaller-list-font {
   font-size: 85%; }
@@ -2366,5 +2571,3 @@ section {
     position: absolute;
     top: 10px;
     left: 10px; }
-
-/*# sourceMappingURL=style.css.map */
