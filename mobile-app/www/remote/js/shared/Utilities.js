@@ -1,11 +1,12 @@
 angular
 .module('sharedServices')
 .factory("Utilities", [
+	'$rootScope',
 	'Settings',
 	Utilities
 	]);
 
-function Utilities(Settings) {
+function Utilities($rootScope, Settings) {
 
 	return {
 		getNetworkSpeed: getNetworkSpeed,
@@ -19,7 +20,8 @@ function Utilities(Settings) {
 		fireBeforeEnter: fireBeforeEnter,
 		rAF: rAF,
 		checkFreeSpace: checkFreeSpace,
-		getFreeSpace: getFreeSpace
+		getFreeSpace: getFreeSpace,
+		clearLoader: clearLoader
 	}
 
 	function getNetworkSpeed() {
@@ -75,7 +77,7 @@ function Utilities(Settings) {
 
 	// Pass in an optional ID parameter for specific case handling
 	function nickMatcher(input, list, property, id) {
-
+		//console.log("list: " + list + " property: " + property + " id: " + id);
 		var matcher = new FastMatcher(list, {
 			selector: property,
 			caseInsensitive: true,
@@ -197,6 +199,10 @@ function Utilities(Settings) {
 		}, "File", "getFreeDiskSpace", []);
 	}
 
+
+	function clearLoader() {
+		$rootScope.loader.hide();
+	}
 
 
 

@@ -126,13 +126,20 @@ angular.module('uguru.student.controllers', [])
             $scope.verbModal.hide();
         }
 
+        $timeout(function() {
+            AnimationService.initSlide();
+        }, 500);
         $scope.goToBecomeGuru = function() {
 
-            uTracker.track(tracker, 'Become Guru');
+            //uTracker.track(tracker, 'Become Guru');
             
-            $ionicViewSwitcher.nextDirection('none');
-            $state.go('^.become-guru');
-            AnimationService.slide('left');
+            //$ionicViewSwitcher.nextDirection('none');
+
+            $timeout(function() {
+                $state.go('^.become-guru');
+                AnimationService.slide('left');
+            }, 0);
+            
         }
 
 

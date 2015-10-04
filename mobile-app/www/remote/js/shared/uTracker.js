@@ -1,12 +1,11 @@
 angular.module('sharedServices')
 .factory('uTracker', [
-	'$localstorage',
 	'DeviceService',
 	uTracker
 	]);
 
 // TODO: we'll need to find a way to hold/queue the current events and fire for later
-function uTracker($localstorage, DeviceService) {
+function uTracker(DeviceService) {
 
 	var mixpanel, localytics;
 	var trackers = 	[

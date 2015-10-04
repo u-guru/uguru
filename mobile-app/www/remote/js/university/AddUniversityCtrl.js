@@ -15,19 +15,15 @@ angular.module('uguru.util.controllers', ['sharedServices'])
   'uTracker',
   '$q',
   'AnimationService',
+  'PerformanceService',
+  '$templateCache',
   AddUniversityCtrl]);
 
 function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Utilities, UniversityMatcher, $ionicSlideBoxDelegate,
-  DeviceService, uTracker, $q, AnimationService) {
-
-
-  // cordova.exec(function(result) {
-  //     console.log("Free Disk Space: " + result);
-  // }, function(error) {
-  //     console.log("Error: " + error);
-  // }, "File", "getFreeDiskSpace", []);
-
+  DeviceService, uTracker, $q, AnimationService, PerformanceService, $templateCache) {
+  console.log("preloading slide transitions");
+  AnimationService.initSlide();
   console.log("DeviceService.isMobile(): " + DeviceService.isMobile());
 
   uTracker.setUser(tracker, 'localyticsTest');
@@ -42,26 +38,37 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     value: ''
   };
 
+  // $timeout(function(), {
+  //   $templateCache.get(BASE + 'templates/home.html');
+  //   $templateCache.get(BASE + 'templates/become.guru.html');
+  //   $templateCache.get(BASE + 'templates/majors.html');
+  //   $templateCache.get(BASE + 'templates/become.guru.courses.html');
+  //   $templateCache.get(BASE + 'templates/become.guru.skills.html');
+  //   $templateCache.get(BASE + 'templates/become.guru.photo.html');
+  // }, 500);
+  
+
   // Measure app load times
   var appLoadTime;
   var appStartTime;
   $scope.getLoadTime = function() {
         appStartTime = Date.now();
-        console.log("appStartTime: " + appStartTime);
+        //console.log("appStartTime: " + appStartTime);
         var time_ms = appStartTime - start_dom_time;
-        var time_s = (time_ms / 1000.0).toPrecision(3)
-        appLoadTime = time_s;
+        appLoadTime = (time_ms / 1000.0).toPrecision(3)
         console.log("appLoadTime: " + appLoadTime);
-
+        var performance = 'pass';
+        if (appLoadTime > 5) performance = 'fail';
         uTracker.track(tracker, "App Launch", {
-          "$App_Load_Time": appLoadTime
+          "$App_Load_Time": appLoadTime,
+          "$Performance": performance
         });
   };
 
 
   // Measure FPS of access page -> university list transition
   var stopLoop = false;
-  var stats = new Stats();
+  //var stats = new Stats();
 
   $scope.beforeEnter = function() {
     stopLoop = false;
@@ -71,9 +78,9 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       stats.begin();
       stats.end();
       fpsArray.push(stats.getFPS());
-      console.log("FPS: " + stats.getFPS());
+      //console.log("FPS: " + stats.getFPS());
       if (!stopLoop) {
-        Utilities.rAF(update);
+        requestAnimationFrame(update);
       } else {
         var total = 0;
         for (var i = 0; i < fpsArray.length; i++) {
@@ -83,16 +90,17 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
         fpsArray.shift();
         var meanFPS = Math.round(total / (fpsArray.length));
         console.log("meanFPS: " + meanFPS);
-        console.log("fpsArray: " + fpsArray);
-        //var fpsValue = "meanFPS: " + meanFPS + "/ fpsArray: " + fpsArray.toString();
-        //console.log("fpsValue: " + fpsValue);
+        //console.log("fpsArray: " + fpsArray);
+        var performance = 'pass';
+        if(meanFPS < 10) performance = 'fail';
         uTracker.track(tracker, "Entered Access Code", {
           "$Mean_FPS": meanFPS,
-          "$FPS_Array": fpsArray.toString()
+          "$FPS_Array": fpsArray.toString(),
+          "$Performance": performance
         });
       }
     }
-    Utilities.rAF(update);
+    requestAnimationFrame(update);
   };
 
   $scope.afterEnter = function() {
@@ -129,7 +137,14 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
     }
   };
 
+
+
+  $timeout(function() {
+      AnimationService.initSlide();
+  }, 500);
   $scope.universitySelected = function(university) {
+
+      PerformanceService.sendListResponseTime('University_List');
 
       //if user is switching universities
       if ($scope.user.university_id && university.id !== $scope.user.university_id) {
@@ -150,19 +165,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           "$University": university.name,
       });
 
-      $scope.loader.show();
-      $scope.user.university_id = university.id;
-      $scope.user.university = university;
-      $scope.universityInput.value = '';
-
-      //update user to locat storage
-      $scope.rootUser.updateLocal($scope.user);
-
-      var payload = {
-        'university_id': $scope.user.university_id
-      };
-
-      $scope.loader.show();
+     // $scope.loader.show();
       $scope.user.university_id = university.id;
       $scope.user.university = university;
       $scope.universityInput.value = '';
@@ -176,13 +179,31 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
       //save university
       var postUniversitySelectedCallback = function() {
+        //AnimationService.initSlide();
+        UniversityMatcher.clearCache();
         $timeout(function() {
-          $scope.loader.hide();
+          // $scope.loader.hide();
           //$ionicViewSwitcher.nextDirection('forward');
-          UniversityMatcher.clearCache();
-          $state.go('^.home')
-          AnimationService.slide('left');
-        }, 1000);
+          
+          // var start = null;
+           $state.go('^.home');
+           AnimationService.slide('left', 'Student Home');
+          // function step(timestamp) {
+          //   stats.begin();
+          //   if (!start) start = timestamp;
+          //   var progress = timestamp - start;
+          //   AnimationService.slide('left');
+          //   //fpsArray.push(stats.getFPS());
+          //   console.log("FPS: " + stats.getFPS());
+          //   if(progress < 300) {
+          //     requestAnimationFrame(step);
+          //   }
+          //   stats.end();
+          // }
+          // requestAnimationFrame(step);
+            
+        
+        }, 0);
       }
 
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);

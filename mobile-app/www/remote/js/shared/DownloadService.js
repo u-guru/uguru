@@ -1,13 +1,14 @@
 angular.module('sharedServices')
 .factory("DownloadService", [
 	'Utilities',
+	'uTracker',
 	DownloadService
 	]);
 
-function DownloadService(Utilities) {
+function DownloadService(Utilities, uTracker) {
 
 	return {
-		downloadFile: downloadFile
+		downloadFile: downloadFile,
 	}
 
 	function downloadFile(URL) {
@@ -40,7 +41,22 @@ function DownloadService(Utilities) {
 					var file = Utilities.getFileName(downloadURL);
 					console.log("downloading " + file + " took " + downloadTime + " ms");
 					var downloadLog = "downloading " + file + " took " + downloadTime + " ms";
-					$localstorage.storeDownloadLog(downloadLog);
+					
+					entry.file(function(fileObj) {
+						var file = Utilities.getFileName(downloadURL);
+						var size = ( (fileObj.size/1000) );						
+						var time_s = downloadTime/1000;
+						var downloadSpeed = size/time_s;
+						console.log(file + " took " + time_s + " seconds to download " + size + "kb");
+						uTracker.track(tracker, "DownloadFile", {
+							"$File_Name": file,
+							"$Size_kb": size,
+							"$Time_s": time_s,
+							"$Download_Speed": downloadSpeed,
+							"$Network_Type": navigator.connection.type
+						});
+					});
+					
 				},
 				function(error) {
 					console.log("Error downloading file. Code: " + error.code);

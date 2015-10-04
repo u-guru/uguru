@@ -19,6 +19,8 @@ angular.module('uguru.util.controllers')
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate,
     $ionicSideMenuDelegate, University, Utilities, uTracker) {
 
+    $scope.generalCourses = University.getTargetted()[0].popular_courses.slice();
+    console.log("$scope.generalCourses: " + $scope.generalCourses);
     $scope.courses = [];
 
     $scope.search_text = {

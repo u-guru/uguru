@@ -14,16 +14,18 @@ angular.module('uguru.util.controllers')
   'DownloadService',
   'UniversityMatcher',
   '$ionicSlideBoxDelegate',
+  'PerformanceService',
   AccessController
   ]);
 
 function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   DeviceService, LoadingService, AccessService, AnimationService,
   $templateCache, $ionicSideMenuDelegate, DeviceService, DownloadService, UniversityMatcher,
-  $ionicSlideBoxDelegate) {
+  $ionicSlideBoxDelegate, PerformanceService) {
 
   DeviceService.readyDevice();
 
+  PerformanceService.testNetworkSpeed();
 
   // var list = UniversityMatcher.list;
   // for (var i=0; i<10; i++) {
