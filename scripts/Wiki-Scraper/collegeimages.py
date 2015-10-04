@@ -42,6 +42,7 @@ for college_url in SHCHOOL_ARRAY:
 						if row.th.text == "Chancellor":
 							Chancellorz = []
 							a = row.td.findAll('a')
+                            
 							for chance in a:
 								try:
 									href = chance['title']
@@ -51,7 +52,8 @@ for college_url in SHCHOOL_ARRAY:
 							school['Chancellor'] = Chancellorz
 
 			  
-						if row.th.text == "Location":
+						if row.th.text == "Location
+                        ":
 							longitude_latitude = {}
 							location = []
 							college_location = soup.find('span', attrs = {'class':'plainlinks nourlexpansion'})

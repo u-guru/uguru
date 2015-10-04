@@ -39,6 +39,7 @@ def updateMailgunJsonWithFreshData(num=1000):
     saveObjToJson(results, 'mailgun')
     print 'Most recent results saved to mailgun.json\n'
     print 'Number of universities with emails %s' % numWithEmails
+    return filtered_results
 
 def sortArrayObjByKey(array, keyString, reverse=True):
     return sorted(array, key=lambda k:k[keyString], reverse=reverse)
@@ -138,6 +139,8 @@ def benchmarkCurrentUniversities():
     print '#Missing Dept ONLY: %i out of %i' % (len(missingDepts) , totalCount)
     print '#Missing Both ONLY: %i out of %i' % (len(missingBoth) , totalCount)
 
+
+
 def cleanDepartments():
     from app.models import University
     import json
@@ -184,6 +187,7 @@ def cleanDepartmentsCode():
                 count += 1
     print 'num codes', count
 
+
 # progress so far
 def benchmarkCoursesForAllUniversities(email_only=False):
     pass
@@ -199,19 +203,74 @@ def is_number(s):
 def benchmarckCoursesForAllUniversities():
     pass
 
+def getRequiredKeys():
+    universities = loadJsonArrayFromFile('fa15_all.json')
+    return universities[0].keys() + ['emails_only', 'departments', 'courses']
+
+def getAllUsNewsUniversityNames():
+    import json
+    universities = loadJsonArrayFromFile('fa15_targetted.json')
+    universityNames = [university['name'] for university in universities]
+    return universityNames
+
+def getTodayDayMonth():
+    from datetime import datetime
+    today = datetime.now().day
+    month = datetime.now().month 
+    return today, month
+
+def isUniversityReady(uni_id, uni_data, has_emails=False):
+
+    ## Case #1
+    if not has_emails:
+        return False
+
+    requiredKeys = getRequiredKeys()
+
+    ## Case #2
+
+
+    ## Case #2
+    ## Are departments as
+    if not has_emails:
+        return False
+
+    return False
+
 
 if __name__ == '__main__':
     import sys
     args = sys.argv
 
-
-
     if args[1] in ['targetted', '-t']:
         countTargetted()
 
     # Create a new fa15_targetted-APPROVAL.json file with limited targetted universities
-    if args[1] in ['update-mailgun', '-um']:
-        updateMasterWithMailgunEmails()
+    if args[1] in ['universities-ready', '-ur']:
+        
+        mailgunUniversities = updateMailgunJsonWithFreshData(number)
+
+        finalUniversities = []
+        for university in mailgunUniversities:
+            if isUniversityReady:
+                finalUniversities.append(university)
+        
+        
+
+        filename = 'fa15_targetted_%s_%s.json' % getTodayDayMonth()
+        saveObjToJson(finalUniversities, filename)
+
+        print len(finalUniversities), 'total universities ready'
+
+        ## Open fa15_all.json --> 200 
+        ## 1. Filter it so it only contains the ones with emails > 1000
+        ## 2. Are departments sanitized?
+        ## 3. Are courses sanitizated?
+        ## 4. Filter it so it only containes the ones with required keys
+
+        # updateMasterWithMailgunEmails()
+
+        ## Emails -->
 
     # Will print #of universities that have at least X emails
     if args[1] in ['print-mailgun', '-pm']:
@@ -219,3 +278,7 @@ if __name__ == '__main__':
         if len(args) > 2 and is_number(args[2]):
             number = int(args[2])
         updateMailgunJsonWithFreshData(number)
+    
+    if args[1] in ['university-list','-ul']:
+        universityNames = getAllUsNewsUniversityNames()
+        for name in universityNames: print name
