@@ -17,7 +17,7 @@ def create_mailing_list(university):
 def add_students_to_mailing_list(university_name, student_objs):
     import json
     university_list_address = format_university_name_for_mandrill(university_name)
-    standard_keys = ['name', 'email', 'gender', 'year', 'type', 'phone', 'major']
+    standard_keys = ['name', 'email', 'gender', 'year', 'type', 'phone', 'major', 'first_name','last_name']
     # validate dictionary
     mailgun_formatted_arr = []
     for student_obj in student_objs:

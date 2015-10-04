@@ -36,8 +36,8 @@ for state_abbr in abbr_arr:
    					tutor_dict['university'] = school_name.text.replace('\n','').strip()	
    					profile_url = tutor_profile_url.findAll('a')
    					for profile_url_href in profile_url:
-   						tutor_dict['profile_url'] = "http://www.cardinalscholars.com" + profile_url_href['href'].replace('\n','').strip()	
-   		tutors.append(tutor_dict)
+   						   tutor_dict['profile_url'] = "http://www.cardinalscholars.com" + profile_url_href['href'].replace('\n','').strip()	
+                        tutors.append(tutor_dict)
 
 
 	   	with open('card_school_json','wb') as outfile:

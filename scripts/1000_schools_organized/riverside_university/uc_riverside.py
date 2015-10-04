@@ -8,24 +8,25 @@ output = 'uc_riverside_directory.json'
 for name in names_arr:
 	url = 'http://www.ucr.edu/find_people.php?term='+name+'&sa=Go&type=student'
 	time.sleep(5)
-	try:
-		soup = BeautifulSoup(tor_client.get(url).text)
+
+	soup = BeautifulSoup(tor_client.get(url).text)
+	
+	main_wrapper = soup.findAll('table', attrs = {'class':'data2'})
+	
+	for wrapper in main_wrapper:
 		
-		main_wrapper = soup.findAll('table', attrs = {'class':'data2'})
-		
-		for wrapper in main_wrapper:
+		name_wrapper = wrapper.findAll('span', attrs = {'class':'fn'})
+		email = wrapper.findAll('a')
+		for first_wrapper,second_wrapper in zip(name_wrapper,email):
+			dictionary = {}
+			dictionary['name'] = first_wrapper.text
+			name = first_wrapper.text
+
 			
-			name_wrapper = wrapper.findAll('span', attrs = {'class':'fn'})
-			email = wrapper.findAll('a')
-			for first_wrapper,second_wrapper in zip(name_wrapper,email):
-				dictionary = {}
-				dictionary['name'] = first_wrapper.text
-				# dictionary['first_name'] = first_wrapper.text.split(' ')[0]
-				# dictionary['last_name'] = first_wrapper.text.split(' ')[-1]
-				dictionary['email'] = second_wrapper['href'].replace('mailto:','')
-				huge_arr.append(dictionary)
-			with open(output,'wb') as outfile:
-				json.dump(huge_arr,outfile,indent =4 )
-				add_students_to_mailing_list('University of Riverside',huge_arr)	
-	except ConnectionError:
-		continue
+			dictionary['first_name'] = name.split(' ')[0]
+			dictionary['last_name'] = name.split(' ')[-1]
+			dictionary['email'] = second_wrapper['href'].replace('mailto:','')
+			huge_arr.append(dictionary)
+		with open(output,'wb') as outfile:
+			json.dump(huge_arr,outfile,indent =4 )
+			add_students_to_mailing_list('University of Riverside',huge_arr)	

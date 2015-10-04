@@ -17,7 +17,7 @@ def create_mailing_list(university):
 def add_students_to_mailing_list(university_name, student_objs):
     import json
     university_list_address = format_university_name_for_mandrill(university_name)
-    standard_keys = ['name', 'email', 'gender', 'year', 'type', 'phone', 'major']
+    standard_keys = ['name', 'email', 'gender', 'year', 'type', 'phone', 'major', 'first_name','last_name']
     # validate dictionary
     mailgun_formatted_arr = []
     for student_obj in student_objs:
@@ -50,8 +50,8 @@ def get_all_university_progress():
         description_parsed = description.split('|')
         uni_name = description_parsed[0].split(':')[1]
         uni_id = description_parsed[1].split(':')[1]
-        uni_population = float(description_parsed[2].split(':')[1])
-        percentage = int(count / (uni_population * 1.0) * 100)
+       # uni_population = float(description_parsed[2].split(':')[1])
+       # percentage = int(count / (uni_population * 1.0) * 100)
         if count > 0: results_arr.append({'name': uni_name,'count': count})
         # print uni_name, ' || ', str(int(count)) + ' out of ' + str(int(uni_population)) + ' students',' || ', str(percentage) + '% complete'
     response = requests.get(
@@ -67,8 +67,8 @@ def get_all_university_progress():
         description_parsed = description.split('|')
         uni_name = description_parsed[0].split(':')[1]
         uni_id = description_parsed[1].split(':')[1]
-        uni_population = float(description_parsed[2].split(':')[1])
-        percentage = int(count / (uni_population * 1.0) * 100)
+       # uni_population = float(description_parsed[2].split(':')[1])
+        #percentage = int(count / (uni_population * 1.0) * 100)
         if count > 0: results_arr.append({'name': uni_name,'count': count})
         # print uni_name, ' || ', str(int(count)) + ' out of ' + str(int(uni_population)) + ' students',' || ', str(percentage) + '% complete'
     response = requests.get(
@@ -84,8 +84,8 @@ def get_all_university_progress():
         description_parsed = description.split('|')
         uni_name = description_parsed[0].split(':')[1]
         uni_id = description_parsed[1].split(':')[1]
-        uni_population = float(description_parsed[2].split(':')[1])
-        percentage = int(count / (uni_population * 1.0) * 100)
+        #uni_population = float(description_parsed[2].split(':')[1])
+       # percentage = int(count / (uni_population * 1.0) * 100)
         if count > 0: results_arr.append({'name': uni_name,'count': count})
         # print uni_name, ' || ', str(int(count)) + ' out of ' + str(int(uni_population)) + ' students',' || ', str(percentage) + '% complete'
     if results_arr:

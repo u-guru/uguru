@@ -6,14 +6,21 @@ names_arr = ["Michael", "Christopher", "Matthew", "Joshua", "Tyler", "Brandon", 
 for names in names_arr:
 	time.sleep(5)
 	url = 'http://129.98.216.138/search/directory.asp?fLname=&fFname='+names+'&fDept=&fType=1'
+	print url
 	soup = BeautifulSoup(tor_client.get(url).text)
-	main_wrapper = soup.findAll('table', attrs = {'width':'100%'})
-	for wrapper in main_wrapper:
-		email = wrapper.findAll('a')
-		for email_text in email:
-			dictionary = {}
-			dictionary['email'] = email_text.text
-			huge_arr.append(dictionary)
-		with open('yeshiva_college_data.json','wb') as outfile:
-			json.dump(huge_arr,outfile,indent=4)
-	add_students_to_mailing_list('Yeshiva University',huge_arr)	
+	each_wrapper = soup.findAll('tr', attrs = {'valign':'top'})[1::]
+	for wrapper in each_wrapper:
+		try:
+			tutor_info_dict = {}
+			tutor_info_dict['name'] = wrapper.findAll('td', attrs = {'class':'bodyCopy'})[1].text.strip()
+			tutor_info_dict['student_type'] = wrapper.findAll('td', attrs = {'class':'bodyCopy'})[2].text.strip()
+			tutor_info_dict['school_campus'] = wrapper.findAll('td', attrs = {'class':'bodyCopy'})[3].text.strip()
+			tutor_info_dict['year'] = wrapper.findAll('td', attrs = {'class':'bodyCopy'})[4].text.strip()
+			tutor_info_dict['email'] = wrapper.findAll('td', attrs = {'class':'bodyCopy'})[-1].text.strip()
+			tutor_info_dict['first_name'] = tutor_info_dict['name'].split(',')[-1]
+			tutor_info_dict['last_name'] = tutor_info_dict['name'].split(',')[0]
+			huge_arr.append(tutor_info_dict)
+		except IndexError:
+			continue
+	with open('yeshiva_school_data.json','wb') as outfile:
+		json.dump(huge_arr,outfile,indent=4)	
