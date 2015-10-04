@@ -25,6 +25,11 @@ course_fields['id'] = fields.Integer(attribute='id')
 course_fields['name'] = fields.String(attribute='short_name')
 course_fields['title'] = fields.String(attribute='full_name')
 
+department_fields = {}
+department_fields['id'] = fields.Integer(attribute='id')
+department_fields['abbr'] = fields.String(attribute='abbr')
+department_fields['title'] = fields.String(attribute='title')
+
 position_fields = {}
 position_fields['id'] = fields.Integer(attribute='id')
 position_fields['latitude'] = fields.Float(attribute='latitude')
@@ -349,7 +354,8 @@ UserSerializer = {
     'summer_15': fields.Boolean,
     'outside_university': fields.Boolean,
     'balance': fields.Float,
-    'total_earned': fields.Float
+    'total_earned': fields.Float,
+    'departments': fields.List(fields.Nested(department_fields))
 
 }
 

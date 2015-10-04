@@ -82,45 +82,22 @@ angular.module('uguru.student.controllers', [])
         $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
 
 
+        $ionicModal.fromTemplateUrl(BASE + 'templates/request.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.requestModal = modal;
+        });
+
         $scope.launchRequestModal = function(index, verb_index) {
 
-
             uTracker.track(tracker, 'Request Modal');
-
-            $scope.loader.showAmbig();
-
-            $scope.root.vars.last_verb_index_clicked = index;
-            if (verb_index) {
-                $scope.root.vars.detailed_verbs_index_clicked = verb_index;
-            }
-
-            $ionicModal.fromTemplateUrl(BASE + 'templates/request.modal.html', {
-                scope: $scope,
-                animation: 'slide-in-up'
-            }).then(function(modal) {
-                $scope.requestModal = modal;
-                $scope.requestModal.show();
-
-                if ($scope.verbModal.isShown()) {
-                    $timeout(function() {
-                        $scope.verbModal.hide();
-                    }, 2000);
-                }
-
-                if ($scope.taskVerbModal.isShown()) {
-                    $timeout(function() {
-                        $scope.taskVerbModal.hide();
-                    }, 2000);
-                }
-
-                $timeout(function() {
-                    $scope.loader.hide();
-                }, 1500);
-
-            });
-
+            $scope.requestModal.show();
         }
 
+        $scope.closeRequestModal = function() {
+            $scope.requestModal.hide();
+        }
 
 
         $scope.closeVerbModal = function() {
@@ -129,7 +106,7 @@ angular.module('uguru.student.controllers', [])
 
         $scope.goToBecomeGuru = function() {
 
-            uTracker(tracker, 'Become Guru');
+            uTracker.track(tracker, 'Become Guru');
 
             $ionicViewSwitcher.nextDirection('forward');
             $state.go('^.become-guru');

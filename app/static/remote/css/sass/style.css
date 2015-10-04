@@ -29,10 +29,13 @@ body {
 
 body.platform-ios ul li.active, body.platform-ios ul li.activated {
   background: rgba(255, 255, 255, 0.2); }
+
 body.platform-ios ul li ::selection {
   background: rgba(255, 255, 255, 0.1); }
+
 body.platform-ios ul li a.active, body.platform-ios ul li a.activated {
   background: rgba(255, 255, 255, 0.2); }
+
 body.platform-ios ul li a:hover, body.platform-ios ul li .list .list-item a:hover {
   background: rgba(255, 255, 255, 0.1); }
 
@@ -45,19 +48,23 @@ section {
 /* ---------- MISCELLANEOUS */
 .uguru-view * {
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important; }
+
 .uguru-view h1.verified span svg {
   display: inline !important;
   width: 20px;
   height: 20px; }
   .uguru-view h1.verified span svg path:first-child {
     fill: #50A5DD; }
+
 .uguru-view .request#request header:before {
   background: url(../images/schools.jpg) no-repeat center center/cover; }
+
 .uguru-view .request#request header .request-header h1 {
   padding-top: 20px;
   width: 100%;
   text-align: center;
   font-size: 24px; }
+
 .uguru-view .request#request header .request-header .request-icon {
   border-radius: 1000px;
   -ms-box-orient: horizontal;
@@ -93,8 +100,10 @@ section {
     transform: rotate(45deg);
     width: 30px;
     height: 30px; }
+
 .uguru-view .request#request #request-content {
   height: calc(100% / 3 * 2); }
+
 .uguru-view .request#request #request-list {
   height: calc(100% - 64px);
   overflow: auto; }
@@ -115,6 +124,7 @@ section {
       width: 50px;
       height: 50px;
       background: #8A9EA3; }
+
 .uguru-view .request #request-tabs ul {
   list-style: none;
   margin: 0;
@@ -185,6 +195,7 @@ section {
       color: #2B3234;
       font-size: 12px;
       line-height: 20px; }
+
 @media screen and (max-width: 320px) {
   .uguru-view body, .uguru-view input, .uguru-view button {
     font-size: 20px; }
@@ -402,6 +413,7 @@ section {
 
 .terms-modal header h1, .faq-modal header h1, .support-modal header h1 {
   color: white; }
+
 .terms-modal ion-content, .faq-modal ion-content, .support-modal ion-content {
   height: calc(100% - 50px);
   margin-top: 50px; }
@@ -468,8 +480,10 @@ section {
   #experience-modal .main textarea {
     font-size: 20px;
     height: 100%; } }
+
 .signup-modal h1 + h1 {
   margin-top: 0; }
+
 .signup-modal #account-form {
   height: calc(100% - 50px);
   padding: 15px; }
@@ -498,6 +512,7 @@ section {
     #account-form input {
       margin-top: 20px !important;
       font-size: 18px !important; } }
+
 .terms-modal {
   color: #2B3234; }
   .terms-modal h3 {
@@ -521,6 +536,7 @@ section {
 
 .faq-modal header.bg-charcoal {
   z-index: 1000 !important; }
+
 .faq-modal iframe {
   min-height: 100%;
   width: 100%; }
@@ -529,6 +545,208 @@ section {
 
 .university-modal .onboarding-search input {
   width: calc(100% - 25px); }
+
+.request-modal #request-categories {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  height: calc(100% - 50px); }
+  .request-modal #request-categories li {
+    position: relative;
+    width: 50%;
+    height: 25%; }
+    .request-modal #request-categories li:first-child {
+      width: 100%; }
+    .request-modal #request-categories li .select-category {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase; }
+      .request-modal #request-categories li .select-category > span span {
+        display: block;
+        text-align: center; }
+        .request-modal #request-categories li .select-category > span span:first-child {
+          margin: -15px auto 0;
+          width: 60px;
+          height: 60px; }
+          .request-modal #request-categories li .select-category > span span:first-child svg path {
+            stroke: white;
+            stroke-width: 2.5px;
+            stroke-linecap: round;
+            stroke-linejoin: round; }
+        @media screen and (min-height: 568px) {
+          .request-modal #request-categories li .select-category > span span:first-child {
+            width: 75px;
+            height: 75px; } }
+        .request-modal #request-categories li .select-category > span span:last-child {
+          margin: 10px auto 0; }
+    .request-modal #request-categories li .follow-category {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 34px;
+      height: 34px;
+      border-bottom-left-radius: 1000px; }
+      .request-modal #request-categories li .follow-category svg {
+        display: block;
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        width: 20px;
+        height: 20px; }
+        .request-modal #request-categories li .follow-category svg path {
+          stroke: white;
+          stroke-width: 9px;
+          stroke-linecap: round;
+          stroke-linejoin: round; }
+
+.request-modal #request-subcategories {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  height: calc(100% - 50px); }
+  .request-modal #request-subcategories .request-category {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    height: calc(100% / 3);
+    width: 100%;
+    font-size: 20px; }
+    .request-modal #request-subcategories .request-category > span span {
+      display: block;
+      text-align: center; }
+      .request-modal #request-subcategories .request-category > span span:nth-child(1) {
+        margin: -15px auto 0;
+        width: 50px;
+        height: 50px; }
+        .request-modal #request-subcategories .request-category > span span:nth-child(1) svg path {
+          stroke: white;
+          stroke-width: 2.5px;
+          stroke-linecap: round;
+          stroke-linejoin: round; }
+      @media screen and (min-height: 568px) {
+        .request-modal #request-subcategories .request-category > span span:nth-child(1) {
+          width: 60px;
+          height: 60px; } }
+      .request-modal #request-subcategories .request-category > span span:nth-child(2) {
+        margin: 10px auto 0;
+        font-weight: 600;
+        text-transform: uppercase; }
+    .request-modal #request-subcategories .request-category > span p {
+      margin: 5px 0 0;
+      padding: 0 15px;
+      font-weight: 400;
+      font-size: 14px;
+      text-align: center; }
+  .request-modal #request-subcategories .request-subcategories {
+    height: calc(100% / 3 * 2);
+    width: 100%;
+    overflow: auto; }
+    .request-modal #request-subcategories .request-subcategories li {
+      position: relative;
+      height: 40%;
+      width: 100%;
+      padding: 15px 15px 0; }
+      .request-modal #request-subcategories .request-subcategories li:nth-child(1) .select-subcategory {
+        background: url(../../img/subcategories/session.png) center center/cover, url(/static/remote/img/subcategories/session.png) center center/cover; }
+      .request-modal #request-subcategories .request-subcategories li:nth-child(2) .select-subcategory {
+        background: url(../../img/subcategories/question.png) center center/cover, url(/static/remote/img/subcategories/question.png) center center/cover; }
+      .request-modal #request-subcategories .request-subcategories li:nth-child(3) .select-subcategory {
+        background: url(../../img/subcategories/homework.png) center center/cover, url(/static/remote/img/subcategories/homework.png) center center/cover; }
+      .request-modal #request-subcategories .request-subcategories li:nth-child(4) {
+        padding-bottom: 15px; }
+        .request-modal #request-subcategories .request-subcategories li:nth-child(4) .select-subcategory {
+          background: url(../../img/subcategories/study.png) center center/cover, url(/static/remote/img/subcategories/study.png) center center/cover; }
+      .request-modal #request-subcategories .request-subcategories li .select-subcategory {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%; }
+        .request-modal #request-subcategories .request-subcategories li .select-subcategory > span {
+          display: block;
+          font-size: 20px;
+          font-weight: 600;
+          text-align: center; }
+      .request-modal #request-subcategories .request-subcategories li .follow-subcategory {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 34px;
+        height: 34px;
+        border-bottom-left-radius: 1000px;
+        background: rgba(255, 255, 255, 0.2); }
+        .request-modal #request-subcategories .request-subcategories li .follow-subcategory svg {
+          display: block;
+          position: absolute;
+          top: 4px;
+          right: 4px;
+          width: 20px;
+          height: 20px; }
+          .request-modal #request-subcategories .request-subcategories li .follow-subcategory svg path {
+            stroke: white;
+            stroke-width: 9px;
+            stroke-linecap: round;
+            stroke-linejoin: round; }
 
 .request-modal .request-content {
   height: calc(100% - 50px);
@@ -607,16 +825,33 @@ section {
         background: #50A5DD;
         color: white;
         font-weight: 600; }
-      .request-modal .request-content .request-loc ul li .request-loc-geo {
-        -ms-flex-flow: row wrap;
-        -webkit-flex-flow: row wrap;
-        flex-flow: row wrap;
-        display: none; }
   .request-modal .request-content .request-loc .request-address {
+    position: relative;
     padding: 15px;
-    background: white;
     border: 2px solid #F1F1F1;
     border-bottom: 0; }
+    .request-modal .request-content .request-loc .request-address:after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      filter: alpha(opacity=15);
+      opacity: 0.15;
+      -webkit-filter: grayscale(1);
+      filter: grayscale(1);
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: url(../../img/map.png) center center/cover, url(/static/remote/img/map.png) center center/cover; }
     .request-modal .request-content .request-loc .request-address > span {
       display: block;
       width: 100%;
@@ -856,6 +1091,7 @@ section {
 @media screen and (min-width: 375px) {
   .request-modal .request-content .request-time .request-time-needed ul li div {
     padding: 10px 0; } }
+
 /* ---------- SIDEBAR & MENUS */
 #side-menu-left-overlay.active {
   background: rgba(43, 50, 52, 0.8);
@@ -947,24 +1183,31 @@ section {
       width: 100%;
       height: 100%;
       background: url(../../img/schools.jpg) center center/cover; } }
+
 .guru-mode .list {
   background: #40484B; }
+
 .guru-mode .list-item.active, .guru-mode .list-item.activated {
   background: #8A9EA3; }
+
 .guru-mode .list-item .list-item-icon svg path, .guru-mode .list-item .list-item-icon svg circle {
   stroke: #fff; }
+
 .guru-mode .list-item-profile {
   background: rgba(138, 158, 163, 0.75); }
+
 .guru-mode .list-item-agenda {
   background: white;
   color: #2B3234; }
   .guru-mode .list-item-agenda.active, .guru-mode .list-item-agenda.activated {
     background: rgba(255, 255, 255, 0.9); }
+
 .guru-mode .list-item-mode {
   background: rgba(138, 158, 163, 0.75); }
 
 .student-mode .list {
   background: white; }
+
 .student-mode .list-item {
   color: #40484B; }
   .student-mode .list-item .list-item-icon svg path {
@@ -974,16 +1217,19 @@ section {
     color: white; }
     .student-mode .list-item.activated svg path, .student-mode .list-item.active svg path {
       stroke: white; }
+
 .student-mode .list-item-profile {
   background: #50A5DD;
   color: white; }
   .student-mode .list-item-profile .list-item-icon svg circle {
     stroke: white; }
+
 .student-mode .list-item-agenda {
   background: #40484B;
   color: white; }
   .student-mode .list-item-agenda:active, .student-mode .list-item-agenda:hover {
     background: rgba(64, 72, 75, 0.9); }
+
 .student-mode .list-item-mode {
   background: #50A5DD;
   color: white; }
@@ -1292,6 +1538,21 @@ section {
     color: #40484B; }
     .home-view #student-home header svg path {
       stroke: #40484B !important; }
+  .home-view #student-home #student-home-map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -1;
+    width: 100%;
+    height: 100%; }
+    .home-view #student-home #student-home-map-container div {
+      top: -10%;
+      left: -10%;
+      width: 120% !important;
+      height: 120% !important; }
+      .home-view #student-home #student-home-map-container div .student-home-map-label {
+        display: none !important; }
   .home-view #student-home #home-content {
     position: absolute;
     top: 50%;
@@ -1317,6 +1578,7 @@ section {
     align-items: center;
     -webkit-justify-content: center;
     justify-content: center;
+    z-index: 2;
     height: calc(100% - 150px); }
     .home-view #student-home #home-content div {
       width: 100%; }
@@ -1329,24 +1591,11 @@ section {
         font-weight: 600;
         line-height: 1.2;
         text-transform: uppercase; }
-  .home-view #student-home:after {
-    filter: alpha(opacity=30);
-    opacity: 0.3;
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
-    content: "";
-    display: block;
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url(../../img/map.png) center center/cover, url(/static/remote/img/map.png) center center/cover; }
 
 /* ---------- GURU ONBOARDING */
 .onboarding .onboarding-search input {
   width: calc(100% - 25px); }
+
 .onboarding progress, .onboarding .progress {
   position: absolute;
   top: 0;
@@ -1365,18 +1614,24 @@ section {
     width: 95%; }
   .onboarding progress span[data-value="99"], .onboarding .progress span[data-value="99"] {
     width: 86%; }
+
 .onboarding header h1:not(header .header-nav a h1) {
   text-align: center; }
+
 .onboarding .onboarding-list {
   height: calc(100% / 3 * 2);
   overflow: auto; }
+
 .onboarding#demographic header:before {
   background: url(../images/schools.jpg) no-repeat center center/cover; }
+
 .onboarding#demographic header h1 {
   font-size: 24px; }
+
 .onboarding#demographic #demographic-grid > ul > li:not(.active) {
   filter: alpha(opacity=30);
   opacity: 0.3; }
+
 .onboarding#demographic #demographic-grid ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1514,6 +1769,7 @@ section {
         border-color: rgba(80, 165, 221, 0.1); }
       .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:active, .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:focus, .onboarding#demographic #demographic-grid ul li.bg-lake .demographic-popup li a:hover {
         background: rgba(80, 165, 221, 0.05); }
+
 .onboarding#start {
   background: #40484B; }
   .onboarding#start #start-container {
@@ -2114,6 +2370,7 @@ section {
 /* ---------- CREDIBILITY & RANKING */
 .credibility-view header {
   position: relative; }
+
 .credibility-view #credit-slider {
   position: absolute;
   bottom: 0;
@@ -2234,6 +2491,7 @@ section {
       color: #50A5DD; }
       .credibility-view #credit-slider ul #credit-email a:active .credit-icon, .credibility-view #credit-slider ul #credit-email a:focus .credit-icon, .credibility-view #credit-slider ul #credit-email a:hover .credit-icon {
         background: #50A5DD; }
+
 .credibility-view #credibility-content-wrapper {
   position: relative;
   background: #40484B;
@@ -2296,6 +2554,7 @@ section {
         height: 60px; }
   .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body p {
     font-size: 22px; } }
+
 @media screen and (min-width: 414px) {
   .credibility-view #credit-slider ul li {
     font-size: 18px; }
@@ -2305,8 +2564,10 @@ section {
       .credibility-view #credit-slider ul li a .credit-icon {
         width: 70px;
         height: 70px; } }
+
 .guru-view header:before {
   background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover; }
+
 .guru-view #guru-ranking {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -2407,8 +2668,10 @@ section {
       margin-bottom: 7px; }
       .guru-view #guru-ranking #guru-stats .stats-bar svg {
         height: 10px; }
+
 .guru-view .tip-container h2 {
   font-size: 22px; }
+
 .guru-view .tip-container p {
   margin-top: 10px;
   font-size: 18px; }
@@ -2422,6 +2685,7 @@ section {
     transform: none; }
   .guru-view #guru-ranking #guru-stats .stats-bar {
     margin-bottom: 9px; } }
+
 @media screen and (min-width: 414px) {
   .guru-view #guru-ranking > div {
     -webkit-transform: scale(1.2);
@@ -2429,6 +2693,7 @@ section {
     -ms-transform: scale(1.2);
     -o-transform: scale(1.2);
     transform: scale(1.2); } }
+
 /* ---------- SAMIR */
 .smaller-list-font {
   font-size: 85%; }
@@ -2478,5 +2743,3 @@ section {
   position: absolute;
   right: 10px;
   top: 34%; }
-
-/*# sourceMappingURL=style.css.map */

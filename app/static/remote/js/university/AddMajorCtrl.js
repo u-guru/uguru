@@ -54,7 +54,7 @@ angular.module('uguru.util.controllers')
     // $scope.majors = $scope.static.majors || GetMajorsList();
 
     $scope.removeMajor = function(major, index) {
-
+      alert('this was clicked')
       if (!confirm('Remove ' + major.name + '?')) {
         return;
       }
@@ -199,6 +199,7 @@ angular.module('uguru.util.controllers')
 
 
     $scope.majors = University.majors || getMajorsForUniversityId();
+    $scope.removeUserMajorsFromMaster();
   }
 
 

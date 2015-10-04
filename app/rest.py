@@ -650,7 +650,8 @@ class UserOneView(restful.Resource):
                     user.guru_languages.append(language_obj)
                     db_session.commit()
 
-
+        ## Quick department fix
+        print user.departments
         if request.json.get('add_user_major'):
             major = request.json.get('major')
             major_id = major.get('id')
@@ -658,8 +659,8 @@ class UserOneView(restful.Resource):
             if not major_id:
                 abort(404)
             else:
-                major_obj = Major.query.get(int(major_id))
-                user.majors.append(major_obj)
+                major_obj = Department.query.get(int(major_id))
+                user.departments.append(major_obj)
                 db_session.commit()
                 # create major case
 
@@ -740,9 +741,9 @@ class UserOneView(restful.Resource):
             major = request.json.get('major')
             print major
             major_id = major.get('id')
-            m = Major.query.get(int(major_id))
-            if m in user.majors:
-                user.majors.remove(m)
+            m = Department.query.get(int(major_id))
+            if m in user.department:
+                user.department.remove(m)
             db_session.commit()
 
         if request.json.get('remove_language'):

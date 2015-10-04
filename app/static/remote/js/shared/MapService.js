@@ -31,6 +31,8 @@ function MapService() {
 			    zoomControl:false
 			  };
 
+			svgLocation = new google.maps.LatLng(options.icons[0].latitude, options.icons[0].longitude);
+
 			// Should be a map of current location; if not, then map of chosen school
 			// Remove most labels unless school-related (don't need them)
 			// Remove all controls (zoom, move, etc)
@@ -44,36 +46,24 @@ function MapService() {
 		      	content: options.infoWindowHtml
 		  	});
 
-		  	for (var i = 0; i < options.icons.length; i++) {
-		  		var icon = options.icons[i];
-			    var svgLocation = new google.maps.LatLng(icon.latitude, icon.longitude);
-			    
-			  //   markerIcon = {
+			var icon = {
+			    path: options.icons[0].path,
+			    fillColor: options.icons[0].fillColor,
+			    fillOpacity: options.icons[0].opacity,
+			    anchor: new google.maps.Point(0,0),
+			    strokeWeight: options.icons[0].strokeWeight,
+			    scale: options.icons[0].scale,
+				labelClass: options.icons[0].labelClass
+			  }
 
-				 //    path: icon.path,
-				 //    fillColor: icon.fillColor,
-				 //    fillOpacity: icon.opacity,
-				 //    anchor: new google.maps.Point(i,0),
-				 //    strokeWeight: icon.strokeWeight,
-				 //    scale: icon.scale,
-					// labelClass: icon.labelClass
-
-			  //   }
-
-			    var marker = new MarkerWithLabel({
-			    	position: svgLocation,
-			      	map: map,
-			      	draggable: false,
-			      	icon: icon,
-			      	title: icon.title,
-			      	labelClass: icon.labelClass
-		  		});
-
-		  	}
-
-			
-
-		  	
+		  	var marker = new MarkerWithLabel({
+		    	position: svgLocation,
+		      	map: map,
+		      	draggable: false,
+		      	icon: options.icons[0],
+		      	title: options.icons[0].title,
+		      	labelClass: options.icons[0].labelClass
+		  	});
 
 		  	map.mapTypes.set('custom_style', customMapType);
 
