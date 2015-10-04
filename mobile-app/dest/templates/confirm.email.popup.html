@@ -8,9 +8,13 @@
 		<div class='svg-logo-wrapper' ng-include="img_base + 'templates/green-guru-svg.html'"> </div>
 	</div>
     <div class='content-wrapper'>
-        <h2>Edit Your Email</h2>
-        <input class="input-ghost-dark m15xy" type='email' id='user-edit-email-input'></input>
-        <button ng-if='!user.school_email_token' class='bg-lake white-text semibold' id='confirm-email-save-popup-link'>Send Confirmation</button>
-		<button ng-if='user.school_email_token' class='bg-lake white-text semibold' id='confirm-email-save-popup-link'>Resend Confirmation</button>
+	    <div class="content-body">
+	        <h2>Edit Your Email</h2>
+	        <input class="input-ghost-dark full-x m15top" type='email' id='user-edit-email-input'/>
+	    </div>
+	    <div class="content-footer">
+	        <button ng-if='!user.school_email_token' class='bg-lake white-text semibold' id='confirm-email-save-popup-link'>Send Confirmation</button>
+			<button ng-if='user.school_email_token' class='bg-lake white-text semibold' id='confirm-email-save-popup-link'>Resend Confirmation</button>
+	    </div>
     </div>
 </div>

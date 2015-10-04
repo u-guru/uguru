@@ -751,6 +751,14 @@ class Department(Base):
         primaryjoin = "(Course.department_id==Department.id) & "\
                         "(Course.is_popular==True)")
 
+    def __repr__(self):
+        if self.title:
+            return "<Department'%r', '%r'>" %\
+              (self.id, self.title)
+        if self.abbr:
+            return "<Department'%r', '%r'>" %\
+              (self.id, self.abbr)
+
 
 class Campaign(Base):
     __tablename__ = 'campaign'

@@ -68,6 +68,23 @@ angular.module('uguru.guru.controllers')
       }, 500);
     }
 
+    $scope.removeMajor = function(major, index) {
+      if (!confirm('Remove ' + major.name + '?')) {
+        return;
+      }
+
+      var removedMajor = $scope.user.majors.splice(index,1);
+      $scope.majors.push(removedMajor);
+
+      var confirmCallback = function() {
+
+        uTracker.track(tracker, 'Major Removed', {
+          '$Major': major.name
+        });
+        $scope.success.show(0, 2000, major.name + ' successfully removed');
+      }
+    }
+
     $scope.initLateNightOptions = function() {
       $scope.lateNightMappingOptions = [{id:0, name:'before 10pm'}, {id:1, name:'10pm'}, {id: 2, name:'11pm'}, {id:3, name:'12am'}, {id:4, name:'1am'}, {id:5, name:'2am'}, {id:6, name:'3am'}, {id:7, name:'4am'}, {id:8, name:'24/7'}];
       if (!$scope.user.guru_latest_time) {

@@ -1,8 +1,8 @@
 angular.module('uguru.user', [])
 .factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory', 'RootService',
-    '$ionicSideMenuDelegate', '$cordovaNetwork',
+    '$ionicSideMenuDelegate',
     function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService,
-        $ionicSideMenuDelegate, $cordovaNetwork) {
+        $ionicSideMenuDelegate) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -460,7 +460,8 @@ angular.module('uguru.user', [])
         $scope.user.recent_latitude = user.recent_latitude;
         $scope.user.recent_longitude = user.recent_longitude;
         $scope.user.location_services_enabled = user.location_services_enabled;
-        $scope.user.majors = user.majors
+        console.log(user.departments);
+        $scope.user.majors = user.departments;
         $scope.user.guru_courses = user.guru_courses;
 
         $scope.user.student_courses = user.student_courses;
@@ -1252,7 +1253,7 @@ angular.module('uguru.user', [])
                             $scope.user.current_device.body_load_time = bodyLoadTime;
                         }
 
-                        if ($cordovaNetwork && Utilities.getNetworkSpeed) {
+                        if (Utilities.getNetworkSpeed) {
                             $scope.user.current_device.network_speed = Utilities.getNetworkSpeed();
                         }
 

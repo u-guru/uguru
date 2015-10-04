@@ -4,7 +4,7 @@ angular.module('uguru.rest')
     Major = {
         get: function() {
             return Restangular
-                .one('majors').get();
+                .one('departments').get();
         },
         getGeneral: function() {
             return generalMajors;

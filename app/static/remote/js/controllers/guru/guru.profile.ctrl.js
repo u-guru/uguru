@@ -16,9 +16,10 @@ angular.module('uguru.guru.controllers')
   '$ionicSideMenuDelegate',
   '$ionicActionSheet',
   '$cordovaFacebook',
+  'uTracker',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
-  $ionicActionSheet, $cordovaFacebook) {
+  $ionicActionSheet, $cordovaFacebook, uTracker) {
 
     $scope.profile = {edit_mode:false, showCredibility:false};
     $scope.root.vars.guru_mode = true;
@@ -26,8 +27,9 @@ angular.module('uguru.guru.controllers')
     // credibility only variable
     $scope.activeTabIndex = 0;
 
-    $scope.user_skills = [{name: "CSS3"}, {name: "Javascript"}, {name: "Photoshop"}, {name: "HTML5"}];
-    $scope.user.languages = $scope.user.languages || [{name:"English"}, {name:"Chinese"}];
+
+
+    // $scope.user.languages = $scope.user.languages || [{name:"English"}, {name:"Chinese"}];
 
     if (!$scope.root.vars.profile) {
       $scope.root.vars.profile = false;
@@ -64,6 +66,23 @@ angular.module('uguru.guru.controllers')
         $scope.loader.hide();
         $scope.success.show(250, 1000, 'Saved!');
       }, 500);
+    }
+
+    $scope.removeMajor = function(major, index) {
+      if (!confirm('Remove ' + major.name + '?')) {
+        return;
+      }
+
+      var removedMajor = $scope.user.majors.splice(index,1);
+      $scope.majors.push(removedMajor);
+
+      var confirmCallback = function() {
+
+        uTracker.track(tracker, 'Major Removed', {
+          '$Major': major.name
+        });
+        $scope.success.show(0, 2000, major.name + ' successfully removed');
+      }
     }
 
     $scope.initLateNightOptions = function() {
@@ -139,10 +158,6 @@ angular.module('uguru.guru.controllers')
 
     $scope.transitionToGuruExperiences = function() {
       $state.go('^.guru-experiences');
-    }
-
-    $scope.transitionToGuruLanguages = function() {
-      $state.go('^.guru-languages');
     }
 
     $scope.transitionToGuruCourses = function() {
@@ -230,6 +245,20 @@ angular.module('uguru.guru.controllers')
             $scope.guruSkillsModal = modal;
     })
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.skills.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.guruSkillsModal = modal;
+    })
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.languages.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.guruLanguagesModal = modal;
+    })
+
     $scope.launchGuruSkillsModal = function() {
       $scope.guruSkillsModal.show();
     }
@@ -242,6 +271,9 @@ angular.module('uguru.guru.controllers')
       $scope.guruMajorModal.show();
     }
 
+    $scope.launchGuruLanguagesModal = function() {
+      $scope.guruLanguagesModal.show();
+    }
 
     $scope.connectWithFacebook = function() {
       $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
@@ -543,7 +575,26 @@ angular.module('uguru.guru.controllers')
       }
       /** End phone number confirmation **/
 
+    $scope.removeGuruCourseAndUpdate = function(course, index) {
 
+      var removedCourse = $scope.user.guru_courses.splice(index, 1);
+
+      $scope.loader.show();
+      $timeout(function() {
+        $scope.loader.hide();
+        $scope.loader.showSuccess(course.name + ' successfully removed', 2000);
+      }, 700)
+
+      //update local user object
+      $localstorage.setObject('user', $scope.user);
+
+      //update server user object
+      $scope.loader.show();
+      $timeout(function() {
+        $scope.user.updateAttr('remove_guru_course', $scope.user, course, confirmCallback, $scope);
+      }, 200);
+
+    }
 
     $scope.resendPhoneConfirmation = function() {
 

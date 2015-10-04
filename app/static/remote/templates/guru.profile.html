@@ -18,7 +18,7 @@
 						<h1>
 							<span class="inline">{{user.name}}</span>
 							<span class="inline">
-								<span ng-include="img_base 'templates/credibility.verified.svg.html'"> </span>
+								<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
 							</span>
 						</h1>
 					</li>
@@ -46,42 +46,50 @@
 				<div class='edit-button' hidden> </div>
 				<h1>Courses you can tutor</h1>
 				<ul class='courses'>
-					<li ng-repeat='course in user.guru_courses'>
+					<li ng-repeat='course in user.guru_courses track by $index'>
 						<span>{{course.name}}</span>
-						<a ng-click='removeGuruCourse(course)' ng-if='profile.edit_mode'>
+						<a ng-click='removeGuruCourseAndUpdate(course, $index)' ng-if='profile.edit_mode'>
 							<svg viewBox="0 0 100 100">
 							    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 							</svg>
 						</a>
 					</li>
 				</ul>
-				<ul class='default' ng-if='!user.guru_courses.length || profile.edit_mode'>
+				<ul class="empty" ng-if="!user.guru_courses.length && !profile.edit_mode">
+					<li><span><em>No courses added</em></span></li>
+				</ul>
+				<ul class='default' ng-if='profile.edit_mode'>
 					<li><button class="round" ng-click='launchGuruCoursesModal()'>
 						<svg viewBox="0 0 100 100">
 						    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 						</svg>
+						<span>Add a course</span>
 					</button></li>
 				</ul>
 			</div>
 			<div id="profile-other">
 				<div id="profile-major">
-					<h1>Major</h1>
+					<h1>My Majors</h1>
 					<div>
 						<ul class='majors' ng-if='user.majors && user.majors.length > 0'>
 							<li ng-repeat='major in user.majors'>
-								<span>{{major.name}}</span>
-								<a ng-click='removeGuruMajor(major)' ng-if='profile.edit_mode'>
+								<span>{{major.name || major.abbr || major.title}}</span>
+								<a ng-click='removeMajor(major, $index)' ng-if='profile.edit_mode'>
 									<svg viewBox="0 0 100 100">
 									    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 									</svg>
 								</a>
 							</li>
 						</ul>
-						<ul class='default' ng-if='!user.majors.length || profile.edit_mode'>
+						<ul class="empty" ng-if="!user.majors.length && !profile.edit_mode">
+							<li><span><em>No majors added</em></span></li>
+						</ul>
+						<ul class='default' ng-if='profile.edit_mode'>
 							<li><button class="round" ng-click='launchGuruMajorsModal()'>
 								<svg viewBox="0 0 100 100">
 								    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 								</svg>
+								<span>Add a major</span>
 							</button></li>
 						</ul>
 					</div>
@@ -108,11 +116,15 @@
 								</a>
 							</li>
 						</ul>
-						<ul class='default' ng-if='!user.guru_skills.length || profile.edit_mode'>
+						<ul class="empty" ng-if="!user.categories.length && !profile.edit_mode">
+							<li><span><em>No skills added</em></span></li>
+						</ul>
+						<ul class='default' ng-if='profile.edit_mode'>
 							<li><button class="round" ng-click='launchGuruSkillsModal()'>
 								<svg viewBox="0 0 100 100">
 								    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 								</svg>
+								<span>Add a skill</span>
 							</button></li>
 						</ul>
 					</div>
@@ -130,11 +142,15 @@
 								</a>
 							</li>
 						</ul>
-						<ul class='default' ng-if='!user.guru_skills.length || profile.edit_mode'>
-							<li><button class="round" ng-click='launchEditLanguagesModal()' ng-if='!user.guru_languages.length'>
+						<ul class="empty" ng-if="!user.languages.length && !profile.edit_mode">
+							<li><span><em>No languages added</em></span></li>
+						</ul>
+						<ul class='default' ng-if='profile.edit_mode'>
+							<li><button class="round" ng-click='launchGuruLanguagesModal()' ng-if='!user.guru_languages.length|| prof'>
 								<svg viewBox="0 0 100 100">
 								    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 								</svg>
+								<span>Add a language</span>
 							</button></li>
 						</ul>
 					</div>
@@ -143,9 +159,7 @@
 		</div>
 	</div>
 	<button id="btn-edit-profile" class="btn-caps-fixed semibold bottom-0 left-0 bg-shamrock-90p" ng-if='!profile.edit_mode' ng-click='profile.edit_mode = true;'>Edit</button>
-	<div id="btn-save-profile" class='fixed bottom-0 left-0 ng-class:{"relative":profile.edit_mode}'>
-		<button class="caps semibold save-button bg-cerise" ng-click='saveGuruProfile()'ng-if='profile.edit_mode'>Save</button>
-	</div>
+	<button id="btn-save-profile" class="btn-caps-fixed semibold bottom-0 left-0 save-button bg-cerise-90p ng-class:{'relative':profile.edit_mode}" ng-click='saveGuruProfile()'ng-if='profile.edit_mode'>Save</button>
 
 </section>
 <input type='file' id='file-input-guru-edit-profile' onchange="angular.element(this).scope().file_changed(this)" style='display:none'/>

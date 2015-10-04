@@ -45,7 +45,7 @@
                 </svg>
             </li>
             <li class="major-item major-business" ng-show='search_text.length === 0' ng-repeat='major in majors | limitTo: limit'>
-                <a ng-click='majorSelected(major, $index)'>{{major.name || major.abbr || major.title}}</a>
+                <a ng-click='majorSelected(major, $index)'>{{major.title || major.name || major.abbr }}</a>
             </li>
         </ul>
     </div>
