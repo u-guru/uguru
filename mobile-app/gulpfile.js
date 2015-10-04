@@ -154,7 +154,7 @@ gulp.task('styles', function() {
   var cssStream4 = gulp.src('www/remote/css/sass/views/modals.css');
   // var cssStream5 = gulp.src('www/remote/css/sass/views/guru-profile.css');
   var cssStream6 = gulp.src('www/remote/css/sass/ios.css');
-  var cssStream7 = gulp.src('www/remote/css/sass/hacks.css');
+  var cssStream7 = gulp.src('www/remote/css/sass/components/map.css');
 
 
 
@@ -225,6 +225,8 @@ gulp.task('scripts', function() {
       'lib/stripe/stripe.js',
       'lib/cta/cta*.js',
       'lib/angular-google-maps/angular-google-maps.min.js',
+      'http://maps.google.com/maps/api/js?sensor=false',
+      'lib/angular-google-maps/google-marker-with-labels.js',
       'lib/restangular/dist/restangular.js',
       'lib/angular-strap/angular-strap.min.js',
       'lib/angular-strap/angular-strap.tpl.min.js',

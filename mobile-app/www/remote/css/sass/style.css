@@ -1538,6 +1538,21 @@ section {
     color: #40484B; }
     .home-view #student-home header svg path {
       stroke: #40484B !important; }
+  .home-view #student-home #student-home-map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -1;
+    width: 100%;
+    height: 100%; }
+    .home-view #student-home #student-home-map-container div {
+      top: -10%;
+      left: -10%;
+      width: 120% !important;
+      height: 120% !important; }
+      .home-view #student-home #student-home-map-container div .student-home-map-label {
+        display: none !important; }
   .home-view #student-home #home-content {
     position: absolute;
     top: 50%;
@@ -1563,6 +1578,7 @@ section {
     align-items: center;
     -webkit-justify-content: center;
     justify-content: center;
+    z-index: 2;
     height: calc(100% - 150px); }
     .home-view #student-home #home-content div {
       width: 100%; }
@@ -1575,20 +1591,6 @@ section {
         font-weight: 600;
         line-height: 1.2;
         text-transform: uppercase; }
-  .home-view #student-home:after {
-    filter: alpha(opacity=30);
-    opacity: 0.3;
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
-    content: "";
-    display: block;
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url(../../img/map.png) center center/cover, url(/static/remote/img/map.png) center center/cover; }
 
 /* ---------- GURU ONBOARDING */
 .onboarding .onboarding-search input {
