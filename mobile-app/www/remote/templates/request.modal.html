@@ -1,3 +1,4 @@
+<!-- FORM -->
 <ion-modal-view class='request-modal bg-white' ng-controller="RequestController">
 <section id='request-modal' class='full-xy absolute'>
 	<header class="bg-lake">
@@ -8,7 +9,7 @@
 				</svg>
 			</a>
 		</div>
-		<h1 class="text-center">Make a Request</h1>
+		<h1 class="text-center">Request</h1>
 	</header>
 	<div class="request-content txt-slate">
 		<div class="request-course">
@@ -92,21 +93,6 @@
 						</div>
 					</li>
 				</ul>
-				<!--
-				<div class="picker">
-					<ul class="picker-time">
-						<li>&nbsp;</li>
-						<li>&nbsp;</li>
-						<li class="inactive">1</li>
-						<li class="semiactive">2</li>
-						<li class="active">3</li>
-						<li class="semiactive">4</li>
-						<li class="inactive">5</li>
-						<li>&nbsp;</li>
-						<li>&nbsp;</li>
-					</ul>
-				</div>
-				-->
 			</div>
 			<div class="request-time-avail">
 				<div class="p15xy">
@@ -172,8 +158,191 @@
 	</div>
 	<button class="absolute bottom-0 full-x bg-orange semibold">Submit</button>
 </section>
+</ion-modal-view>
 
+<!-- SUBCATEGORIES -->
+<!--
+<ion-modal-view class='request-modal bg-white' ng-controller="RequestController">
+<section id='request-modal' class='full-xy absolute'>
+	<header class="bg-white">
+		<div class="header-nav">
+			<a class="header-nav-back" ng-click="closeRequestModal()">
+  		        <svg viewBox="0 0 100 100">
+  					<path d="M68,86 L32,50 L68,14"></path>
+  				</svg>
+  				<h1>&nbsp;</h1>
+			</a>
+		</div>
+		<h1 class="text-center">Request</h1>
+	</header>
+	<div id="request-subcategories">
+		<div class="request-category bg-cerise">
+			<span>
+				<span ng-include="img_base + 'templates/svg/academic.html'"></span>
+				<span>Academic</span>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+			</span>
+		</div>
+		<ul class="request-subcategories">
+			<li>
+				<a class="select-subcategory" href="#">
+					<span>Session</span>
+				</a>
+				<a class="follow-subcategory" href="#">
+					<svg viewBox="0 0 100 100">
+					    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+					</svg>
+				</a>
+			</li>
+			<li>
+				<a class="select-subcategory" href="#">
+					<span>Question</span>
+				</a>
+				<a class="follow-subcategory" href="#">
+					<svg viewBox="0 0 100 100">
+					    <path d="M14,50 L86,50"></path>
+					</svg>
+				</a>
+			</li>
+			<li>
+				<a class="select-subcategory" href="#">
+					<span>Homework</span>
+				</a>
+				<a class="follow-subcategory" href="#">
+					<svg viewBox="0 0 100 100">
+					    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+					</svg>
+				</a>
+			</li>
+			<li>
+				<a class="select-subcategory" href="#">
+					<span>Study Group</span>
+				</a>
+				<a class="follow-subcategory" href="#">
+					<svg viewBox="0 0 100 100">
+					    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+					</svg>
+				</a>
+			</li>
+		</ul>
+	</div>
+</section>
+</ion-modal-view>
+-->
 
+<!-- CATEGORIES -->
+<!--
+<ion-modal-view class='request-modal bg-white' ng-controller="RequestController">
+<section id='request-modal' class='full-xy absolute'>
+	<header class="bg-white">
+		<div class="header-nav">
+			<a class="header-nav-back" ng-click="closeRequestModal()">
+  		        <svg viewBox="0 0 100 100">
+  					<path d="M68,86 L32,50 L68,14"></path>
+  				</svg>
+  				<h1>&nbsp;</h1>
+			</a>
+		</div>
+		<h1 class="text-center">Request</h1>
+	</header>
+	<ul id="request-categories">
+		<li class="bg-cerise-80p">
+			<a class="select-category" href="#">
+				<span>
+					<span ng-include="img_base + 'templates/svg/academic.html'"></span>
+					<span>Academic</span>
+				</span>
+			</a>
+			<a class="follow-category bg-cerise" href="#">
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</li>
+		<li class="bg-campus-80p">
+			<a class="select-category" href="#">
+				<span>
+					<span ng-include="img_base + 'templates/svg/delivery.html'"></span>
+					<span>Delivery</span>
+				</span>
+			</a>
+			<a class="follow-category bg-campus" href="#">
+				<svg viewBox="0 0 100 100">
+				    <path d="M14,50 L86,50"></path>
+				</svg>
+			</a>
+		</li>
+		<li class="bg-shamrock-80p">
+			<a class="select-category" href="#">
+				<span>
+					<span ng-include="img_base + 'templates/svg/household.html'"></span>
+					<span>Household</span>
+				</span>
+			</a>
+			<a class="follow-category bg-shamrock" href="#">
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</li>
+		<li class="bg-gold-80p">
+			<a class="select-category" href="#">
+				<span>
+					<span ng-include="img_base + 'templates/svg/food.html'"></span>
+					<span>Food</span>
+				</span>
+			</a>
+			<a class="follow-category bg-gold" href="#">
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</li>
+		<li class="bg-orange-80p">
+			<a class="select-category" href="#">
+				<span>
+					<span ng-include="img_base + 'templates/svg/freelancing.html'"></span>
+					<span>Freelancing</span>
+				</span>
+			</a>
+			<a class="follow-category bg-orange" href="#">
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</li>
+		<li class="bg-eggplant-80p">
+			<a class="select-category" href="#">
+				<span>
+					<span ng-include="img_base + 'templates/svg/athletic.html'"></span>
+					<span>Athletic</span>
+				</span>
+			</a>
+			<a class="follow-category bg-eggplant" href="#">
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</li>
+		<li class="bg-lake-80p">
+			<a class="select-category" href="#">
+				<span>
+					<span ng-include="img_base + 'templates/svg/tech.html'"></span>
+					<span>Tech</span>
+				</span>
+			</a>
+			<a class="follow-category bg-lake" href="#">
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</li>
+	</ul>
+</section>
+</ion-modal-view>
+-->
+
+<!-- ORIGINAL -->
 <!--
 <ion-modal-view class='request-modal' ng-controller="RequestController">
 

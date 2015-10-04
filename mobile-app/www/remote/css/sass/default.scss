@@ -1161,6 +1161,14 @@ header {
 		width: 100%;
 		height: 100%;
 	}
+	&[class*="bg-white"] {
+		color: $slate;
+		svg {
+			path {
+				stroke: $slate!important;
+			}
+		}
+	}
 }
 
 .section-header, .section-header-dark {
