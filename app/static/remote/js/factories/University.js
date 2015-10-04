@@ -8,7 +8,7 @@ angular.module('uguru.rest', [])
         },
         getMajors: function(uni_id) {
             return Restangular
-                .one('universities', uni_id).customGET('majors');
+                .one('universities', uni_id).customGET('departments');
         },
         getCourses: function(uni_id) {
             return Restangular
@@ -16,11 +16,26 @@ angular.module('uguru.rest', [])
         },
         getTargetted: function() {
             return targettedUniversities;
+        },
+        getSorted: function() {
+            return sortByRank(targettedUniversities);
         }
 
     };
     return University;
 }]);
+
+function sortByRank(list) {
+  function compareRank(a, b) {
+    if (a.rank < b.rank)
+      return -1;
+    if (a.rank > b.rank)
+      return 1;
+    return 0;
+  }
+  return list.sort(compareRank);
+}
+
 var targettedUniversities = [
     {
         "website": "www.georgetown.edu",

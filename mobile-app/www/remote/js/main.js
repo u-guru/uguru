@@ -1,8 +1,6 @@
-
-
-var LOCAL = _local; //local to the 8100 codebasebirbirs
+var LOCAL = _local || false; //local to the 8100 codebasebirbirs
+_startpage = _startpage || 'university';
 var FIRST_PAGE='^.' + _startpage;
-//var FIRST_PAGE='^.home';
 
 console.log("_local: " + _local);
 console.log("_startpage: " + _startpage);

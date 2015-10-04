@@ -25,6 +25,8 @@ echo '>>>'
 echo
 read msg
 echo
+echo 'What branch are you on?'
+read branch
 echo 'saving.....'
 echo
 echo 'saving....'
@@ -63,19 +65,15 @@ echo
 echo 'pushing to git, to the staging branch'
 echo
 echo
-git push origin staging
+git push origin $branch:staging
 echo
 echo 'pushing to staging servers, to the master branch'
 echo
 echo
-git push staging staging:master
+git push staging $branch:master
 echo
 echo
 echo 'last part: restarting servers & updating database'
-echo
-echo
-honcho run python manage.py update
-heroku run honcho run python manage.py update --app uguru-rest
 echo
 echo
 # heroku run honcho run python manage.py init_test_devices --app uguru-rest

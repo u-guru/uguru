@@ -4,7 +4,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
     <script type="text/javascript">
-      var start_dom_time = (new Date()).getTime();
+      var start_dom_time = Date.now();
       var deviceReadyLoadTime;
       var bodyLoadTime;
       var calcTimeSinceInit = function() {
@@ -96,10 +96,13 @@
 
    <script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
      for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="remote/lib/mixpanel/mixpanel.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
-
-
-        mixpanel.init("cfe34825db9361e6c1d1a16a2b269b07");
    </script>
+
+
+ <script type="text/javascript">
+   window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var n=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(n?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var o=document.getElementsByTagName("script")[0];o.parentNode.insertBefore(a,o);for(var r=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=r(p[c])};
+   heap.load("849016067");
+ </script>
 
 
 
@@ -134,6 +137,9 @@
     <script src="remote/lib/d3/d3.min.js"></script>
     <script src="remote/lib/mixpanel/mixpanel.js"></script>
     <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
+
+    <script src="remote/lib/localytics/localytics.js"></script>
+
     <!-- <script src="remote/lib/rAF.js"></script> -->
 
     <script src="remote/lib/card/card.js"></script>
@@ -174,9 +180,11 @@
     <script id="templates/root.html" type="text/ng-template">
 
     </script>
+
     <script src="remote/js/constants.js"></script>
     <!-- uguru app main js -->
     <script src="remote/js/main.js"></script>
+
 
     <!-- uguru app directives -->
     <script type="text/javascript" src="remote/js/directives/angularFastMatcher.js"></script>
@@ -269,6 +277,8 @@
     <script type="text/javascript" src="remote/js/shared/DownloadService.js"></script>
     <script type="text/javascript" src="remote/js/shared/InAppBrowser.js"></script>
     <script type="text/javascript" src="remote/js/shared/UniversityMatcher.js"></script>
+    <!-- <script type="text/javascript" src="remote/js/shared/UniversityWorker.js"></script> -->
+    <script type="text/javascript" src="remote/js/shared/uTracker.js"></script>
 
     <!-- Specific Device Services, still under SharedService module -->
     <script type="text/javascript" src="remote/js/device/AndroidService.js"></script>
