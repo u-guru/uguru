@@ -650,7 +650,7 @@ class UserOneView(restful.Resource):
                     db_session.commit()
 
         ## Quick department fix
-        print user.departments
+        
         if request.json.get('add_user_major'):
             major = request.json.get('major')
             major_id = major.get('id')

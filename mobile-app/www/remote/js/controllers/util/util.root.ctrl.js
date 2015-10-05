@@ -64,7 +64,6 @@ angular.module('uguru.util.controllers')
         $scope.user.categories = {academic:{}, freelancing:{}, baking:{},photography:{},household:{}, tech:{}, sports:{}, delivery:{}};
         $scope.popupScope = {};
         $scope.data = {};
-
         University.majors = $localstorage.getObject('universityMajors');
         University.courses = $localstorage.getObject('universityCourses');
 
@@ -80,7 +79,7 @@ angular.module('uguru.util.controllers')
 
         $scope.getMajorsForUniversityId = function(uni_id, callback) {
             University.getMajors(uni_id).then(function(majors){
-
+                console.log(majors.length, 'found', uni_id);
                 majors = majors.plain()
 
                 University.majors = majors;
@@ -96,7 +95,7 @@ angular.module('uguru.util.controllers')
             })
         }
 
-        if ($scope.user.university_id && !University.majors) {
+        if ($scope.user.university_id && !(University.majors && University.majors.length)) {
             console.log('University majors not local, requesting now..');
             $scope.getMajorsForUniversityId($scope.user.university_id);
         } else {
