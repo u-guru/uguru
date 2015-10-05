@@ -294,6 +294,7 @@ UserSerializer = {
     'is_a_guru': fields.Boolean,
     'files': fields.List(fields.Nested(file_fields)),
     'transcript_file': fields.Nested(file_fields),
+    'transcript_verified_by_admin': fields.Boolean,
     'is_admin': fields.Boolean,
     'is_support_admin': fields.Boolean,
     'guru_deposit': fields.Boolean,
