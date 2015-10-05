@@ -776,10 +776,15 @@ class Department(Base):
     def __repr__(self):
         if self.title:
             return "<Department'%r', '%r'>" %\
-              (self.id, self.title)
+              (str(self.id), str(self.title))
         if self.abbr:
             return "<Department'%r', '%r'>" %\
-              (self.id, self.abbr)
+              (str(self.id), str(self.abbr))
+        if self.name:
+            return "<Department'%r', '%r'>" %\
+              (str(self.id), str(self.name))
+        return "MALFORMED MAJOR", str(self.id)
+
 
 
 class Campaign(Base):

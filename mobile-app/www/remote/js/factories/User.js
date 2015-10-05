@@ -462,6 +462,7 @@ angular.module('uguru.user', [])
         $scope.user.location_services_enabled = user.location_services_enabled;
         
         $scope.user.majors = user.departments;
+
         $scope.user.guru_categories = user.guru_categories;
         $scope.user.guru_subcategories = user.guru_subcategories;
         
