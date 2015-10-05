@@ -57,6 +57,18 @@ user_campaign_table = Table('user-campaign_assoc',
     Column('campaign_id', Integer, ForeignKey('campaign.id'))
     )
 
+guru_category_table = Table('user-category_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('category_id', Integer, ForeignKey('category.id'))
+    )
+
+guru_subcategory_table = Table('user-subcategory_assoc',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('user.id')),
+    Column('subcategory_id', Integer, ForeignKey('subcategory.id'))
+    )
+
 queue_guru_table = Table('guru-queue_assoc',
     Base.metadata,
     Column('user_id', Integer, ForeignKey('user.id')),
@@ -167,6 +179,16 @@ class User(Base):
 
     guru_languages = relationship("Language",
         secondary = guru_languages_table,
+        backref= backref('gurus', lazy='dynamic')
+    )
+
+    guru_categories = relationship("Category",
+        secondary = guru_category_table,
+        backref= backref('gurus', lazy='dynamic')
+    )
+
+    guru_subcategories = relationship("Subcategory",
+        secondary = guru_subcategory_table,
         backref= backref('gurus', lazy='dynamic')
     )
 
@@ -1944,6 +1966,22 @@ class Skill(Base):
         return "<Skill '%r', '%r'>" %\
               (self.id, self.name)
 
+
+class Category(Base):
+    __tablename__ = 'category'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+
+class Subcategory(Base):
+    __tablename__ = 'subcategory'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+
+    category_id = Column(Integer, ForeignKey('category.id'))
+    category = relationship("Category",
+        primaryjoin = "Category.id == Subcategory.category_id",
+        backref = 'subcategories'
+        )
 
 class Course(Base):
     __tablename__ = 'course'

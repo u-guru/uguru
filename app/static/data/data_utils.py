@@ -219,7 +219,7 @@ def getTodayDayMonth():
     month = datetime.now().month 
     return today, month
 
-def isUniversityReady(uni_id, uni_data, has_emails=False):
+def isUniversityReady(uni_data, has_emails=False):
 
     ## Case #1
     if not has_emails:
@@ -228,7 +228,11 @@ def isUniversityReady(uni_id, uni_data, has_emails=False):
     requiredKeys = getRequiredKeys()
 
     ## Case #2
+    ## CHeck if any of the required keys are going to be null
 
+    ## Case #3
+    ## Query Uguru Admin API for departments
+    ## Loop through all ugu
 
     ## Case #2
     ## Are departments as
@@ -251,11 +255,10 @@ if __name__ == '__main__':
         mailgunUniversities = updateMailgunJsonWithFreshData(number)
 
         finalUniversities = []
-        for university in mailgunUniversities:
-            if isUniversityReady:
+        for university_dict in mailgunUniversities:
+            if isUniversityReady(university_dict):
                 finalUniversities.append(university)
-        
-        
+    
 
         filename = 'fa15_targetted_%s_%s.json' % getTodayDayMonth()
         saveObjToJson(finalUniversities, filename)

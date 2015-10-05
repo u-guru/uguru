@@ -522,6 +522,33 @@ if arg =='init_test_devices':
                 db_session.commit()
     print 'test devices initiated'
 
+if arg == 'print_skills':
+    categories_dict = {}
+    for skill in Skill.query.all():
+        if skill.category in categories_dict:
+            categories_dict[skill.category] += [skill.name]
+        else:
+            categories_dict[skill.category] = [skill.name]
+
+    for key in categories_dict:
+        print "#############"
+        print key
+        print "#############"
+        
+        for skill in categories_dict[key]:
+            print skill
+        print
+
+if arg == 'remove_skill':
+    from app.models import guru_skill_table
+    for skill in Skill.query.all():
+        for u in User.query.all():
+            if skill in u.guru_skills:
+                db_session.execute(guru_skill_table.delete(guru_skill_table.c.user_id == u.id and guru_courses_table.c.skill_id == c.id))
+        
+    for skill in Skill.query.all():
+        db_session.delete(skill)
+        db_session.commit()
 
 
 if arg =='init_skills':
@@ -534,7 +561,6 @@ if arg =='init_skills':
         ('vacuuming', 'specialized'), ('house cleaning', 'chores'), ('dirty dishes', 'chores'), ('ironing', 'chores'),
         ('laundry', 'chores'), ('ikea assembly', 'labor'), ('moving assistance', 'labor'), ('i have a truck', 'labor'),
         ('painting', 'labor'), ('interior design', 'labor')]
-
 
     for skill_string, category_string in skills:
         skill = Skill()
