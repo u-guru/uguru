@@ -139,9 +139,9 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
 
 
-  $timeout(function() {
-      AnimationService.initSlide();
-  }, 500);
+  // $timeout(function() {
+  //     AnimationService.initSlide();
+  // }, 500);
   $scope.universitySelected = function(university) {
 
       PerformanceService.sendListResponseTime('University_List');
@@ -181,13 +181,13 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
       var postUniversitySelectedCallback = function() {
         //AnimationService.initSlide();
         UniversityMatcher.clearCache();
-        $timeout(function() {
+        //$timeout(function() {
           // $scope.loader.hide();
           //$ionicViewSwitcher.nextDirection('forward');
           
           // var start = null;
            $state.go('^.home');
-           AnimationService.slide('left', 'Student Home');
+           //AnimationService.slide('left', 'Student Home');
           // function step(timestamp) {
           //   stats.begin();
           //   if (!start) start = timestamp;
@@ -203,7 +203,7 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           // requestAnimationFrame(step);
             
         
-        }, 0);
+        //}, 0);
       }
 
       $scope.user.updateAttr('university_id', $scope.user, payload, postUniversitySelectedCallback, $scope);
