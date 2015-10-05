@@ -247,6 +247,7 @@ gulp.task('scripts', function() {
       "js/factories/*.js",
       "!js/shared/*LogService.js",
       "js/shared/DeviceService.js",
+      "js/shared/uTracker.js",
       "js/device/*.js",
       "js/services/RootService.js",
       "js/shared/Settings.js",

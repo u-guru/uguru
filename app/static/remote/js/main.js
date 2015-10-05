@@ -75,12 +75,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
 
   var openKeyboard = null;
-  //var tracker = 'lo'
-  //uTracker.init(tracker);
+  var tracker = 'lo'
+  
   uTracker.init(tracker);
-
-
-  uTracker.init('mp');
+  // uTracker.init('mp');
 
 
 })
