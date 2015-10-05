@@ -136,46 +136,6 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
   window.addEventListener('native.keyboardshow', keyboardShowHandler);
 
-  // cordova.plugins.Keyboard.disableScroll(true);
-  // window.addEventListener('native.keyboardhide', keyboardHideHandler);
-
-  var accessInput = document.getElementById('access-code-bar');
-
-  accessInput.addEventListener('keyup', submitKeyupListener);
-  accessInput.addEventListener('keydown', submitKeydownListener);
-
-  function submitKeyupListener(e) {
-
-    if($scope.access.codeInput.length > 0) {
-      $scope.access.errorInputMsg = '';
-    }
-
-    var key = e.keyCode || e.key || e.which;
-    //if enter is pressed;
-    if (key === 13) {
-      $scope.checkAccessCode($scope.access.codeInput);
-      // e.preventDefault();
-    }
-
-
-
-  }
-
-  function submitKeydownListener(e) {
-
-
-    var key = e.keyCode || e.key || e.which;
-    //if enter is pressed;
-
-    if ((e.keyCode == 65 || e.keyCode == 88) && (e.ctrlKey || e.metaKey)) {
-        e.preventDefault();
-        e.target.select();
-    }
-
-
-
-  }
-
 
   function keyboardShowHandler(e){
       if (DeviceService.isMobile() && !$scope.redeemRecentlyPressed) {

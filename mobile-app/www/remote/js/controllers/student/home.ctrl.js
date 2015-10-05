@@ -125,7 +125,7 @@ angular.module('uguru.student.controllers', [])
 
         $scope.launchWelcomeStudentPopup = function() {
 
-            var homeCenterComponent = document.getElementById('home-content-header');
+            var homeCenterComponent = document.getElementById('home-content');
             var uguruPopup = document.getElementById('home-uguru-popup');
             $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {
                     duration: 1
