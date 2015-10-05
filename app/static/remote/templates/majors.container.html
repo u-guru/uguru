@@ -1,5 +1,5 @@
 <section id="major" class="onboarding charcoal-bg full-xy">
-    <header class="third flex-center-wrap" ng-if='!guruMajorModal.isShown();'>
+    <header class="third flex-center-wrap" ng-if='!guruMajorModal.isShown() && !(profile && profile.edit_mode);'>
         <h1 class="text-center">Select your major</h1>
         <div class="header-nav">
             <a class="header-nav-back" ng-click='goBackToStudentHome()'>

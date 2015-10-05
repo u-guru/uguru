@@ -21,7 +21,6 @@ angular.module('uguru.guru.controllers')
     $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $ionicPlatform, $ionicSlideBoxDelegate,
     $ionicViewSwitcher, $window, University, uTracker) {
-
     $scope.activeSlideIndex = 0;
     $scope.injectAnimated = false;
     // $scope.majors = $scope.static.majors;
