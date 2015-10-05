@@ -1468,26 +1468,6 @@ section {
     background: url(../../img/onboarding/schools.jpg) no-repeat center center/cover, url(/static/remote/img/onboarding/schools.jpg) center/cover no-repeat; }
   .university-view header .geolocation-icon {
     margin-top: 3px; }
-  .university-view header .side-icon {
-    filter: alpha(opacity=100);
-    opacity: 1;
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-    right: 12px;
-    z-index: 0; }
-    .university-view header .side-icon .ion-navigate {
-      filter: alpha(opacity=60);
-      opacity: 0.6; }
-    .university-view header .side-icon .ion-navigate.active,
-    .university-view header .side-icon .ion-navigate.activated,
-    .university-view header .side-icon .ion-navigate.location-active {
-      filter: alpha(opacity=100);
-      opacity: 1; }
   .university-view #school-list ul li a, .university-view #school-list-modal ul li a {
     font-weight: 300; }
     .university-view #school-list ul li a .school-icon img, .university-view #school-list-modal ul li a .school-icon img {

@@ -1332,6 +1332,20 @@ button.disabled {
 		width: 18px;
 		height: 18px;
 	}
+	.side-icon {
+		@include opacity(1);
+		@include center-y;
+		right: 12px;
+		z-index: 0;
+		.ion-navigate {
+			@include opacity(.6);
+		}
+		.ion-navigate.active,
+		.ion-navigate.activated,
+		.ion-navigate.location-active {
+			@include opacity(1);
+		}
+	}
 }
 
 // DATE PICKER
