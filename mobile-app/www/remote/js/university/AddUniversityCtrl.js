@@ -193,13 +193,13 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           "$List_Render_Time": listRenderTime
       });
 
-      //if user is switching universities
-      if ($scope.user.university_id
-          && university.id !== $scope.user.university_id
-          && !confirm('Are you sure? Your current courses will be deactivated'))
-      {
-          return;
-      }
+      // //if user is switching universities
+      // if ($scope.user.university_id
+      //     && university.id !== $scope.user.university_id
+      //     && !confirm('Are you sure? Your current courses will be deactivated'))
+      // {
+      //     return;
+      // }
 
       uTracker.track(tracker, "University Changed", {
           "$University": university.name,
@@ -304,5 +304,36 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
 
 
 
+  // $ionicModal.fromTemplateUrl(BASE + 'templates/how-it-works.modal.html', {
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //   $scope.howItWorksModal = modal;
+  //   $scope.howItWorksModal.show();
+  // });
+
+  // $scope.launchHowItWorksModal = function() {
+  //   $scope.howItWorksModal.show();
+  // }
+
+  // $scope.$on('$ionicView.enter', function() {
+  //   $scope.launchHowItWorksModal();
+  // });
+
+  // $ionicModal.fromTemplateUrl(BASE + 'templates/availability.modal.html', {
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) {
+  //   $scope.availabilityModal = modal;
+  //   $scope.availabilityModal.show();
+  // });
+
+  // $scope.launchAvailabilityModal = function() {
+  //   $scope.availabilityModal.show();
+  // }
+
+  // $scope.$on('$ionicView.enter', function() {
+  //   $scope.launchAvailabilityModal();
+  // });
 
 }

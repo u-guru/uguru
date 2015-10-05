@@ -2,7 +2,7 @@ import time, dryscrape, json, math
 
 # The username and password combination
 USERNAME = "raisethehell_biplov@yahoo.com"
-PASSWORD = "thispasswordistoogoodforme"
+PASSWORD = ""
 
 # The file to output the data to
 OUTPUT_PATH = "output.json"
@@ -89,6 +89,7 @@ if __name__ == "__main__":
 	session = initialise_dryscrape_session()
 
 	# Submit the login form
+	
 	submit_login_form(session)
 
 	# Click the "see all" button

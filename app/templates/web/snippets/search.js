@@ -35,8 +35,8 @@ $("#search-box").slideDown();
     $('#search-box').on("mouseover", function(e) {
         //check if mouse is still over the bar after 500 seconds
         setTimeout(function(){
-            if ($('#search-box').is(':hover') 
-                //&& !$('#search-bar').val().length 
+            if ($('#search-box').is(':hover')
+                //&& !$('#search-bar').val().length
                 )
             {
                 $('#search-bar').focus();
@@ -85,11 +85,11 @@ $("#search-box").slideDown();
 
             for (var i = 0 ; i < popularCourses.length; i ++) {
                 var courseNode = document.createElement("li");
-                courseNode.innerHTML = popularCourses[i];
+                courseNode.innerHTML = "<span class='course'>" + popularCourses[i] + "</span><span class='color' style='background: " + color + "'></span>";
                 popularCoursesParent.appendChild(courseNode);
             }
             var courseNode = document.createElement("li");
-            courseNode.innerHTML = 'and more';
+            courseNode.innerHTML = '<span class="course">and more</span><span class="color" style="background: ' + color + '"></span>';
             popularCoursesParent.appendChild(courseNode);
 
             var successCallback = function() {

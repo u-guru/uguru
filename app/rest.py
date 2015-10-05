@@ -377,7 +377,7 @@ class UserOneView(restful.Resource):
 
             msg_args = (user.name.split(' ')[0], link)
             msg = """Hi %s,<br><br>Please click this <a href="%s">link</a> to confirm your email <br><br>Best,<br> The Uguru Team""" % msg_args
-            send_transactional_email("[Uguru] Please Authenticate Your School Email", msg, user, "school-email-auth", user.school_email)
+            print send_transactional_email("[Uguru] Please Authenticate Your School Email", msg, user, "school-email-auth", user.school_email)
 
 
 
@@ -402,7 +402,6 @@ class UserOneView(restful.Resource):
             print message
             db_session.commit()
 
-        print request.json
         if request.json.get('phone_number_check_token'):
             print 'this works'
             phone_number_token = request.json.get('phone_number_check_token')
@@ -650,7 +649,8 @@ class UserOneView(restful.Resource):
                     user.guru_languages.append(language_obj)
                     db_session.commit()
 
-
+        ## Quick department fix
+        print user.departments
         if request.json.get('add_user_major'):
             major = request.json.get('major')
             major_id = major.get('id')
@@ -658,8 +658,8 @@ class UserOneView(restful.Resource):
             if not major_id:
                 abort(404)
             else:
-                major_obj = Major.query.get(int(major_id))
-                user.majors.append(major_obj)
+                major_obj = Department.query.get(int(major_id))
+                user.departments.append(major_obj)
                 db_session.commit()
                 # create major case
 
@@ -676,6 +676,36 @@ class UserOneView(restful.Resource):
                     user.guru_skills.append(skill)
                     db_session.commit()
                     print 'length of user skills', len(user.guru_skills)
+
+        if request.json.get('add_guru_subcategory'):
+            subcategory_json = request.json.get('subcategory')
+            subcategory_id = category_json.get('id')
+            subcategory = Subcategory.query.get(subcategory_id)
+            if subcategory:
+                user.guru_subcategories.append(subcategory)
+
+                if subcategory.category not in user.guru_categories:
+                    user.guru_categories.append(subcategory.category)
+
+                db_session.commit()
+
+        if request.json.get('remove_guru_subcategory'):
+            subcategory_json = request.json.get('subcategory')
+            subcategory_id = category_json.get('id')
+            subcategory = Subcategory.query.get(subcategory_id)
+
+            if subcategory:
+
+                # Remove from their list
+                if subcategory in user.guru_subcategories:
+                    user.guru_subcategories.remove(subcategory)
+
+                # IF they no longer have any with that category, remove from their categories
+                if subcategory.category not in [subcategory.category for subcategory in user.guru_subcategories]:
+                    user.guru_categories.remove(subcategory.category)
+
+                db_session.commit()
+
 
 
         if request.json.get('add_guru_course'):
@@ -722,8 +752,13 @@ class UserOneView(restful.Resource):
             course = request.json.get('course')
             course_id = course.get('id')
             print course, course_id
-            c = Course.query.get(int(course_id))
-            print "not working yet!"
+            course = Course.query.get(int(course_id))
+            user.guru_courses.remove(course)
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                raise
             # if user in c.gurus:
             #     # c.gurus.remove(user)
             #     from app.models import guru_courses_table
@@ -740,9 +775,9 @@ class UserOneView(restful.Resource):
             major = request.json.get('major')
             print major
             major_id = major.get('id')
-            m = Major.query.get(int(major_id))
-            if m in user.majors:
-                user.majors.remove(m)
+            m = Department.query.get(int(major_id))
+            if m in user.department:
+                user.department.remove(m)
             db_session.commit()
 
         if request.json.get('remove_language'):

@@ -26,12 +26,13 @@ angular.module('uguru.util.controllers')
   '$ionicBackdrop',
   'UniversityMatcher',
   'AnimationService',
+  'uTracker',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $cordovaProgress, $cordovaFacebook, User,
   $rootScope, $controller, $ionicSideMenuDelegate, $cordovaPush,
   $ionicViewSwitcher, $ionicHistory, $ionicActionSheet, $ionicPopup,
   Camera, Support, University, $ionicPlatform, $ionicBackdrop, UniversityMatcher,
-  AnimationService) {
+  AnimationService, uTracker) {
 
     $scope.root.vars.show_account_fields = false;
     $scope.root.vars.loginMode = false;
@@ -93,6 +94,10 @@ angular.module('uguru.util.controllers')
           return;
       }
 
+      //start fetching majors right now
+      $scope.getMajorsForUniversityId(university.id);
+      $scope.getCoursesForUniversityId(university.id);
+
       $scope.loader.show();
       $scope.user.university_id = university.id;
       $scope.user.university = university;
@@ -108,9 +113,18 @@ angular.module('uguru.util.controllers')
       //save university
       var postUniversitySelectedCallback = function() {
           $timeout(function() {
-            $scope.loader.hide();
-            $scope.success.show(0, 1000, 'Saved!');
+
             UniversityMatcher.clearCache();
+            $scope.loader.hide();
+
+
+            if ($scope.universityModal && $scope.universityModal.isShown()) {
+              $scope.loader.showSuccess('University Saved', 1500);
+              $timeout(function() {
+                $scope.removeLaunchUniversityModal();
+              }, 500);
+
+            }
           }, 1000);
       }
 
@@ -156,29 +170,38 @@ angular.module('uguru.util.controllers')
         $scope.signupModal = modal;
     });
 
-    $ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
+    $scope.initUniversityModal = function() {
+
+      $ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', {
             scope: $scope,
             animation: 'slide-in-up',
             focusFirstInput: false,
-    }).then(function(modal) {
-        $scope.universityModal = modal;
-    });
+      }).then(function(modal) {
+          $scope.universityModal = modal;
 
-    // $scope.$on('modal.shown', function() {
-    //   if ($scope.universityModal.isShown()) {
-    //     $timeout(function() {
-    //       var universityInput = document.querySelector('#university-input')
-    //       universityInput.select();
-    //     }, 100);
-    //   }
-    // });
+          uTracker.track(tracker, 'University Modal');
+      });
+
+    }
+
+    $scope.initUniversityModal();
 
     $scope.launchFAQModal = function() {
+
+      uTracker.track(tracker, 'FAQ Modal');
       $scope.faqModal.show();
     }
 
     $scope.launchUniversityModal = function() {
       $scope.universityModal.show();
+    }
+
+    $scope.removeLaunchUniversityModal = function() {
+      $scope.universityModal.remove();
+      $timeout(function() {
+        $scope.initUniversityModal();
+      }, 500)
+      //immediately instantiate after ;)
     }
 
     $scope.onTextClick = function ($event) {
@@ -198,6 +221,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.launchSupportModal = function() {
+
+      uTracker.track(tracker, 'Support Modal');
       $scope.supportModal.show();
       $timeout(function() {
         initSupportChatEnterHandler()
@@ -206,10 +231,14 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.launchPrivacyModal = function() {
+
+
+      uTracker.track(tracker, 'Privacy Modal');
       $scope.privacyModal.show();
     }
 
     $scope.launchSignupModal = function(loginMode) {
+      uTracker.track(tracker, 'Signup Modal');
       if (loginMode)  {
         $scope.root.vars.loginMode = true;
       }
@@ -685,13 +714,11 @@ angular.module('uguru.util.controllers')
         $scope.loader.show();
         User.clearAttr({}, $scope.user.id).then(function(user) {
           $scope.loader.hide();
-          $scope.success.show(0, 2000,'Admin Account Successfully cleared!');
-          $scope.logoutUser(true);
-          console.log('cleared user', user.plain());
+          $scope.loader.showSuccess(0, 2000,'Admin Account Successfully cleared!');
+          $scope.logoutUser();
           $localstorage.setObject('user', user.plain());
           $scope.user = user.plain();
           $state.go('^.university');
-
         },
 
         function(err) {
@@ -728,7 +755,7 @@ angular.module('uguru.util.controllers')
 
     $scope.goToStudent = function() {
 
-      //show the loader immediately
+
       $scope.loader.show();
       // AnimationService.flip();
 
@@ -747,12 +774,7 @@ angular.module('uguru.util.controllers')
       }, 500)
 
       $state.go('^.home');
-
     }
-
-
-
-
 
     $scope.showComingSoon = function() {
       $scope.progress_active = true;

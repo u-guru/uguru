@@ -16,21 +16,62 @@ angular.module('uguru.guru.controllers')
   '$ionicSideMenuDelegate',
   '$ionicActionSheet',
   '$cordovaFacebook',
+  'uTracker',
   function($scope, $state, $ionicPopup, $timeout, $localstorage,
  	$ionicModal, $stateParams, $ionicHistory, Camera, $ionicSideMenuDelegate,
-  $ionicActionSheet, $cordovaFacebook) {
+  $ionicActionSheet, $cordovaFacebook, uTracker) {
 
     $scope.profile = {edit_mode:false, showCredibility:false};
     $scope.root.vars.guru_mode = true;
 
     // credibility only variable
     $scope.activeTabIndex = 0;
+    $scope.profile.edit_mode = true;
 
-    $scope.user_skills = [{name: "CSS3"}, {name: "Javascript"}, {name: "Photoshop"}, {name: "HTML5"}];
-    $scope.user.languages = $scope.user.languages || [{name:"English"}, {name:"Chinese"}];
+
+    // $scope.user.languages = $scope.user.languages || [{name:"English"}, {name:"Chinese"}];
 
     if (!$scope.root.vars.profile) {
       $scope.root.vars.profile = false;
+    }
+
+    function validateEmail(email) {
+                  var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+                  return re.test(email);
+    }
+
+    var validateEmailAndSend = function() {
+
+      var editEmailInput = document.getElementById('user-confirm-email-input')
+
+      if (!editEmailInput.value) {
+        alert('Please enter a valid email');
+        return;
+      }
+
+      var uguruPopup = document.getElementById('confirm-email-uguru-popup');
+      uguruPopup.classList.remove('show');
+
+      $scope.user.school_email = editEmailInput.value;
+      $scope.user.updateAttr('confirm_school_email', $scope.user, editEmailInput.value, null, $scope);
+      $scope.loader.showSuccess('Email sent to ' + editEmailInput.value, 1500);
+    }
+
+    $scope.checkStatus = function() {
+      $scope.doRefresh();
+      $scope.loader.showAmbig();
+      $timeout(function() {
+        if ($scope.user.school_email_confirmed) {
+          $scope.loader.showSuccess($scope.user.school_email + ' confirmed', 1500);
+        } else {
+          if (confirm('Resend email to ' + $scope.user.school_email + '?')) {
+            var successCallback = function() {
+              $scope.loader.showSuccess('Email successfully sent to' + $scope.user.school_email, 2000);
+            }
+            $scope.user.updateAttr('confirm_school_email', $scope.user, editEmailInput.value, successCallback, $scope);
+          }
+        }
+      }, 1500);
     }
 
     $scope.initHourlyMax = function() {
@@ -64,6 +105,23 @@ angular.module('uguru.guru.controllers')
         $scope.loader.hide();
         $scope.success.show(250, 1000, 'Saved!');
       }, 500);
+    }
+
+    $scope.removeMajor = function(major, index) {
+      if (!confirm('Remove ' + major.name + '?')) {
+        return;
+      }
+
+      var removedMajor = $scope.user.majors.splice(index,1);
+      $scope.majors.push(removedMajor);
+
+      var confirmCallback = function() {
+
+        uTracker.track(tracker, 'Major Removed', {
+          '$Major': major.name
+        });
+        $scope.success.show(0, 2000, major.name + ' successfully removed');
+      }
     }
 
     $scope.initLateNightOptions = function() {
@@ -139,10 +197,6 @@ angular.module('uguru.guru.controllers')
 
     $scope.transitionToGuruExperiences = function() {
       $state.go('^.guru-experiences');
-    }
-
-    $scope.transitionToGuruLanguages = function() {
-      $state.go('^.guru-languages');
     }
 
     $scope.transitionToGuruCourses = function() {
@@ -230,27 +284,46 @@ angular.module('uguru.guru.controllers')
             $scope.guruSkillsModal = modal;
     })
 
+    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.skills.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.guruSkillsModal = modal;
+    })
+
+    $ionicModal.fromTemplateUrl(BASE + 'templates/guru.languages.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.guruLanguagesModal = modal;
+    })
+
     $scope.launchGuruSkillsModal = function() {
       $scope.guruSkillsModal.show();
     }
 
     $scope.launchGuruCoursesModal = function() {
       $scope.guruCoursesModal.show();
+      $timeout(function() {
+        $scope.guruCoursesInput = document.querySelector('#course-input-2');
+      }, 250)
     }
 
     $scope.launchGuruMajorsModal = function() {
       $scope.guruMajorModal.show();
     }
 
+    $scope.launchGuruLanguagesModal = function() {
+      $scope.guruLanguagesModal.show();
+    }
 
     $scope.connectWithFacebook = function() {
+      $scope.loader.show();
       $cordovaFacebook.login(["email","public_profile","user_friends"]).then(function (success) {
-
-        $scope.loader.show();
-
+        alert('is successful');
         var successCallback = function() {
           $scope.loader.hide();
-          $scope.success.show(0, 1000, 'FB Account Saved');
+          $scope.loader.showSuccess('FB Account Saved', 2000);
         }
         var failureCallback = function(err) {
           $scope.loader.hide();
@@ -440,6 +513,7 @@ angular.module('uguru.guru.controllers')
 
     // start confirm email popup
     $scope.launchConfirmEmailPopup = function() {
+
         var launchConfirmEmailPopupButton = document.getElementById('launch-email-confirm-popup');
         var uguruPopup = document.getElementById('confirm-email-uguru-popup');
 
@@ -451,28 +525,20 @@ angular.module('uguru.guru.controllers')
             modal.classList.add('show');
           }
         );
+        $timeout(function() {
 
-        uguruPopupCloseLink.addEventListener("click", function(event) {
-          var uguruPopup = document.getElementById('confirm-email-uguru-popup');
-          uguruPopup.classList.remove('show');
-        })
-
-        uguruPopupSaveLink.addEventListener("click", function(event) {
-          var editEmailInput = document.getElementById('user-confirm-email-input')
-            if (!editEmailInput.value) {
-              alert('Please enter a valid email');
-              return;
-            }
-
-
+          uguruPopupCloseLink.addEventListener("click", function(event) {
             var uguruPopup = document.getElementById('confirm-email-uguru-popup');
             uguruPopup.classList.remove('show');
+          })
 
-            $scope.user.school_email = editEmailInput.value;
-            $scope.user.updateAttr('confirm_school_email', $scope.user, editEmailInput.value, null, $scope);
-            $scope.success.show(0, 1500, 'Email sent to ' + editEmailInput.value);
+          uguruPopupSaveLink.addEventListener("click", function(event) {
 
-        })
+              validateEmailAndSend()
+
+          })
+
+        }, 1000);
 
       }
     /** end confirm email popup **/
@@ -543,7 +609,26 @@ angular.module('uguru.guru.controllers')
       }
       /** End phone number confirmation **/
 
+    $scope.removeGuruCourseAndUpdate = function(course, index) {
 
+      var removedCourse = $scope.user.guru_courses.splice(index, 1);
+
+      $scope.loader.show();
+      $timeout(function() {
+        $scope.loader.hide();
+        $scope.loader.showSuccess(course.name + ' successfully removed', 2000);
+      }, 700)
+
+      //update local user object
+      $localstorage.setObject('user', $scope.user);
+
+      //update server user object
+      $scope.loader.show();
+      $timeout(function() {
+        $scope.user.updateAttr('remove_guru_course', $scope.user, course, null, $scope);
+      }, 200);
+
+    }
 
     $scope.resendPhoneConfirmation = function() {
 
