@@ -1,11 +1,12 @@
 angular.module('sharedServices')
 .factory('PerformanceService', [
 	"uTracker",
+	"DeviceService",
 	"DownloadService",
 	PerformanceService
 	]);
 
-function PerformanceService(uTracker, DownloadService) {
+function PerformanceService(uTracker, DeviceService, DownloadService) {
 
 	var appStartTime, appLoadTime;
 
@@ -71,18 +72,18 @@ function PerformanceService(uTracker, DownloadService) {
 
 
 	function sendNetworkInfo() {
-		
-		$timeout(function() {
-			var downloadRecords = JSON.parse($window.localStorage['download_records'] || '{"files": []}');
+		if(DeviceService.isMobile()) {
+			$timeout(function() {
+				var downloadRecords = JSON.parse($window.localStorage['download_records'] || '{"files": []}');
 
-
-			uTracker.track(tracker, "Network Info", {
-				"$Download_Speed": downloadRecords.downloadSpeed,
-				"$Connection_Type": navigator.connection.type
-			});
-		}, 5000);
+				uTracker.track(tracker, "Network Info", {
+					"$Download_Speed": downloadRecords.downloadSpeed,
+					"$Connection_Type": navigator.connection.type
+				});
+			}, 5000);
+		}
+			
 	}
-
 
 	function testNetworkSpeed() {
 

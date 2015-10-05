@@ -4,10 +4,11 @@ angular
 	'DeviceService',
 	'$timeout',
 	'uTracker',
+	'$state',
 	AnimationService
 		]);
 
-function AnimationService(DeviceService, $timeout, uTracker) {
+function AnimationService(DeviceService, $timeout, uTracker, $state) {
 
 	var slideOptions = {
 	  "direction"        : "right", // 'left|right|up|down', default 'left' (which is like 'next')
@@ -29,13 +30,16 @@ function AnimationService(DeviceService, $timeout, uTracker) {
 	}
 
 	function initSlide() {
-		window.plugins.nativepagetransitions.slide({
-			"direction": "right",
-			"duration" : 10,
-			"slowdownfactor": 1,
-			"iosdelay": 10,
-			"androiddelay": 10
-		}, successMsg, errorMsg);
+		if(DeviceService.isMobile()) {
+			window.plugins.nativepagetransitions.slide({
+				"direction": "right",
+				"duration" : 10,
+				"slowdownfactor": 1,
+				"iosdelay": 10,
+				"androiddelay": 10
+			}, successMsg, errorMsg);	
+		}
+		
 	}
 
 	function shakeElem(elem, duration, callback) {
@@ -49,53 +53,56 @@ function AnimationService(DeviceService, $timeout, uTracker) {
 	}
 
 	function slide(direction, target, slowdownFactor) {
-		if(direction !== undefined) slideOptions.direction = direction;
-		if(slowdownFactor !== undefined) slideOptions.slowdownFactor = slowdownFactor;
 		if(DeviceService.isMobile()) {
-			
-			window.plugins.nativepagetransitions.slide(slideOptions, successMsg, errorMsg);
-			var start = null;
-			var fpsArray = [];
-			function step(timestamp) {
-			  stats.begin();
-			  stats.end();
-			  if (!start) start = timestamp;
-			  var progress = timestamp - start;
-			  fpsArray.push(stats.getFPS());
-			  //console.log("FPS: " + stats.getFPS());
-			  if(progress < 200) {
-			    requestAnimationFrame(step);
-			  } else {
-			  	var total = 0;
-			  	for (var i = 0; i < fpsArray.length; i++) {
-			  	  total += fpsArray[i];
-			  	}
-			  	//we are disregarding the first value since it's most likely 0 due to initial transition
-			  	fpsArray.shift();
-			  	var meanFPS = Math.round(total / (fpsArray.length));
-			  	console.log("meanFPS: " + meanFPS);
-			  	//console.log("fpsArray: " + fpsArray);
-			  	
-		  		if(target !== undefined) {
-		  			var performance = 'pass';
-		  			if(meanFPS < 10) performance = 'fail';
-		  			uTracker.track(tracker, target, {
-		  			  "$Mean_FPS": meanFPS,
-		  			  "$FPS_Array": fpsArray.toString(),
-		  			  "$Performance": performance
-		  			});	
-		  		}
-			  	
-			  }
-			  
+			if(direction !== undefined) slideOptions.direction = direction;
+			if(slowdownFactor !== undefined) slideOptions.slowdownFactor = slowdownFactor;
+			if(DeviceService.isMobile()) {
+				
+				window.plugins.nativepagetransitions.slide(slideOptions, successMsg, errorMsg);
+				var start = null;
+				var fpsArray = [];
+				function step(timestamp) {
+				  stats.begin();
+				  stats.end();
+				  if (!start) start = timestamp;
+				  var progress = timestamp - start;
+				  fpsArray.push(stats.getFPS());
+				  //console.log("FPS: " + stats.getFPS());
+				  if(progress < 200) {
+				    requestAnimationFrame(step);
+				  } else {
+				  	var total = 0;
+				  	for (var i = 0; i < fpsArray.length; i++) {
+				  	  total += fpsArray[i];
+				  	}
+				  	//we are disregarding the first value since it's most likely 0 due to initial transition
+				  	fpsArray.shift();
+				  	var meanFPS = Math.round(total / (fpsArray.length));
+				  	console.log("meanFPS: " + meanFPS);
+				  	//console.log("fpsArray: " + fpsArray);
+				  	
+			  		if(target !== undefined) {
+			  			var performance = 'pass';
+			  			if(meanFPS < 10) performance = 'fail';
+			  			uTracker.track(tracker, target, {
+			  			  "$Mean_FPS": meanFPS,
+			  			  "$FPS_Array": fpsArray.toString(),
+			  			  "$Performance": performance
+			  			});	
+			  		}
+				  	
+				  }
+				  
+				}
+				requestAnimationFrame(step);
+				//window.plugins.nativepagetransitions.slide(slideOptions, successMsg, errorMsg);
 			}
-			requestAnimationFrame(step);
-			//window.plugins.nativepagetransitions.slide(slideOptions, successMsg, errorMsg);
 		}
+	
 	}
 
 	//customOptions is optional, if none are set then default options will be used
-	function flip(customOptions) {
+	function flip(target, customOptions) {
 
 		if(DeviceService.isMobile()) {
 	    	var flipOptions = {
@@ -113,7 +120,7 @@ function AnimationService(DeviceService, $timeout, uTracker) {
 		    	flipOptions.androiddelay = customOptions.androiddelay;
 		    	flipOptions.winphonedelay = customOptions.winphonedelay;
 		    }
-	      
+	      	$state.go(target);
 	  		window.plugins.nativepagetransitions.flip(flipOptions, successMsg, errorMsg);
 		        
 		} else if(!DeviceService.isMobile()) {
@@ -126,18 +133,18 @@ function AnimationService(DeviceService, $timeout, uTracker) {
 
 			var pane = document.querySelectorAll('body')[0];
 			
-				pane.style.transition = '1s';
+				pane.style.transition = '.5s';
 				pane.style.transform = 'rotateY(90deg)';
 
 				$timeout(function() {
 					pane.style.transition = '0s';
 					pane.style.transform = 'rotateY(-90deg)';
-
+					$state.go(target);
 					$timeout(function() {
-						pane.style.transition = '1s';
+						pane.style.transition = '.5s';
 						pane.style.transform = 'rotateY(0deg)';
-					}, 100);
-				}, 1100);
+					}, 50);
+				}, 550);
 
 		}
 	}

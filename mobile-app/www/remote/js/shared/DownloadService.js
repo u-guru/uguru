@@ -2,23 +2,27 @@ angular.module('sharedServices')
 .factory("DownloadService", [
 	'Utilities',
 	'uTracker',
+	'DeviceService',
 	DownloadService
 	]);
 
-function DownloadService(Utilities, uTracker) {
+function DownloadService(Utilities, uTracker, DeviceService) {
 
 	return {
 		downloadFile: downloadFile,
 	}
 
 	function downloadFile(URL) {
-		var fileURL = URL.toString();
-		console.log("fileURL: " + fileURL);
-		var directory = cordova.file.dataDirectory;
-		var fileName = Utilities.getFileName(fileURL);
-		console.log("fileName: " + fileName);
-		var filePath = directory + fileName;
-		window.resolveLocalFileSystemURL(filePath, fileSuccess, downloadAsset);
+		if(DeviceService.isMobile()) {
+			var fileURL = URL.toString();
+			console.log("fileURL: " + fileURL);
+			var directory = cordova.file.dataDirectory;
+			var fileName = Utilities.getFileName(fileURL);
+			console.log("fileName: " + fileName);
+			var filePath = directory + fileName;
+			window.resolveLocalFileSystemURL(filePath, fileSuccess, downloadAsset);	
+		}
+		
 
 		function fileSuccess() {
 			console.log("File is already saved on device: " + filePath);

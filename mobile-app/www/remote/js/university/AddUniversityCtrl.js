@@ -186,7 +186,8 @@ function AddUniversityCtrl($scope, $state, $timeout, University, $ionicViewSwitc
           //$ionicViewSwitcher.nextDirection('forward');
           
           // var start = null;
-           $state.go('^.home');
+           //$state.go('^.home');
+           AnimationService.flip('^.home');
            //AnimationService.slide('left', 'Student Home');
           // function step(timestamp) {
           //   stats.begin();

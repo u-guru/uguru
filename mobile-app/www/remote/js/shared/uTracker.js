@@ -40,7 +40,7 @@ function uTracker(DeviceService) {
 	// This sets the API token for the analytics provider
 
 	function init(tracker, token) {
-		if(DeviceService.isMobile()) {
+		if(DeviceService.isMobile() && !LOCAL) {
 			switch(tracker) {
 				case 'mp':
 					console.log("initializing mixpanel tracking: " + defaultTokens.mp);
@@ -65,7 +65,7 @@ function uTracker(DeviceService) {
 	// This sets the unique userID for the analytics provider
 
 	function setUser(tracker, userID) {
-		if(DeviceService.isMobile()) {
+		if(DeviceService.isMobile() && !LOCAL) {
 			switch(tracker) {
 				case 'mp':
 					//DeviceService.getUUID();
@@ -83,7 +83,7 @@ function uTracker(DeviceService) {
 	}
 
 	function sendDevice(tracker) {
-		if(DeviceService.isMobile()) {
+		if(DeviceService.isMobile() && !LOCAL) {
 			switch(tracker) {
 				case 'mp':
 					var deviceUUID = DeviceService.getUUID;
@@ -113,7 +113,7 @@ function uTracker(DeviceService) {
 	// Can be pass in either a key-value pair, or an entire object
 	function set(tracker, data) {
 
-		if(DeviceService.isMobile()) {
+		if(DeviceService.isMobile() && !LOCAL) {
 			switch(tracker) {
 				case 'mp':
 					if(typeof data === 'object') {
@@ -133,7 +133,7 @@ function uTracker(DeviceService) {
 	// Additional key-value pairs can be passed in as a data object
 
 	function track(tracker, event, data) {
-		if(DeviceService.isMobile()) {
+		if(DeviceService.isMobile() && !LOCAL) {
 			switch(tracker) {
 				case 'mp':
 					mixpanel.track(event, data);

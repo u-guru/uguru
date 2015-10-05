@@ -15,13 +15,14 @@ angular.module('uguru.util.controllers')
   'UniversityMatcher',
   '$ionicSlideBoxDelegate',
   'PerformanceService',
+  'ThrottleService',
   AccessController
   ]);
 
 function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   DeviceService, LoadingService, AccessService, AnimationService,
   $templateCache, $ionicSideMenuDelegate, DeviceService, DownloadService, UniversityMatcher,
-  $ionicSlideBoxDelegate, PerformanceService) {
+  $ionicSlideBoxDelegate, PerformanceService, ThrottleService) {
 
   DeviceService.readyDevice();
 
@@ -43,6 +44,15 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     errorInputMsg: null,
   };
   
+
+  $scope.testing = ThrottleService(function() {
+    console.log("throttling!!")
+  }, 2000);
+
+  $scope.testDir = function() {
+    console.log("throttling by directive!");
+  }
+
   $scope.checkAccessCode = function(code) {
 
     if ($scope.keyboardExists && !$scope.redeemRecentlyPressed) {

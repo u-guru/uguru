@@ -26,34 +26,41 @@ exports.config = {
 //appium -U 0df70c3eacd748d8d92a882cbec7b26787fa0396
 //ios_webkit_debug_proxy -c 0df70c3eacd748d8d92a882cbec7b26787fa0396:27753 -d
 
+//iphone 5s device
+//appium -U 06108c5ea66a640ffdd5e9902c036a26d6af4c0f
+//ios_webkit_debug_proxy -c 06108c5ea66a640ffdd5e9902c036a26d6af4c0f:27753 -d
 
-          //ios settings
-                 browserName: '',
-                 'appium-version': '1.4.11',
-                 app: '/Users/Samir/Git/uguru/mobile-app/platforms/ios/build/device/uguru.app',
-                 platformName: 'iOS',
-                  bundleId: 'com.beta.college.Uguru',
-                  udid: '06108c5ea66a640ffdd5e9902c036a26d6af4c0f',
-                  platformVersion: '8.1.2',
-                   deviceName: 'TwFoB Work’s iPhone (8.1.2) [06108c5ea66a640ffdd5e9902c036a26d6af4c0f]',
-                   autoWebview: 'true'
+//nick motog device
+//appium -U TA96516CU0
 
-         // //android settings
-                // browserName: '',
-                // 'appium-version': '1.4.11',
-                // app: '/Users/nlmac/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
-                // platformName: 'android',
-                //  platformVersion: '4.4',
-                //   deviceName: 'S5',
-                //   autoWebview: 'true'
+
+          //iphone 5s randy settings
+                 // browserName: '',
+                 // 'appium-version': '1.4.11',
+                 // app: '/Users/nlmac/Git/uguru/mobile-app/platforms/ios/build/device/uguru.app',
+                 // platformName: 'iOS',
+                 //  bundleId: 'com.beta.college.Uguru',
+                 //  udid: '06108c5ea66a640ffdd5e9902c036a26d6af4c0f',
+                 //  platformVersion: '8.1.2',
+                 //   deviceName: 'Randys iPhone (8.1.2) [06108c5ea66a640ffdd5e9902c036a26d6af4c0f]',
+                 //   autoWebview: 'true'
+
+         // //nick motog android settings
+                browserName: '',
+                'appium-version': '1.4.11',
+                app: '/Users/nlmac/Git/uguru/mobile-app/platforms/android/build/outputs/apk/android-armv7-debug-unaligned.apk',
+                platformName: 'android',
+                 platformVersion: '4.4',
+                //udid: 'TA96516CU0',
+                  deviceName: 'Nick Moto G',
+                  autoWebview: 'true'
 
          },
          // comment this out if running for IOS
-         //baseUrl: 'http://10.0.2.2:8000',
-
+         baseUrl: 'http://10.0.2.2:5000',
 
          // this is for ios
-        baseUrl: 'http://localhost:8100',
+        //baseUrl: 'http://localhost:8100',
 
         //   multiCapabilities: [
         //   {'browserName': 'chrome'},
