@@ -15,6 +15,14 @@ major_fields = {}
 major_fields['id'] = fields.Integer(attribute='id')
 major_fields['name'] = fields.String(attribute='name')
 
+subcategory_fields = {}
+subcategory_fields['id'] = fields.Integer(attribute='id')
+subcategory_fields['name'] = fields.Integer(attribute='name')
+
+category_fields = {}
+category_fields['id'] = fields.Integer(attribute='id')
+category_fields['name'] = fields.Integer(attribute='name')
+
 tag_fields = {}
 tag_fields['id'] = fields.Integer(attribute='id')
 tag_fields['name'] = fields.String(attribute='name')
@@ -355,8 +363,9 @@ UserSerializer = {
     'outside_university': fields.Boolean,
     'balance': fields.Float,
     'total_earned': fields.Float,
-    'departments': fields.List(fields.Nested(department_fields))
-
+    'departments': fields.List(fields.Nested(department_fields)),
+    'guru_categories': fields.List(fields.Nested(category_fields)),
+    'guru_subcategories': fields.List(fields.Nested(subcategory_fields)),
 }
 
 DeviceSerializer = {

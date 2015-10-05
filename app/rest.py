@@ -678,6 +678,36 @@ class UserOneView(restful.Resource):
                     db_session.commit()
                     print 'length of user skills', len(user.guru_skills)
 
+        if request.json.get('add_guru_subcategory'):
+            subcategory_json = request.json.get('subcategory')
+            subcategory_id = category_json.get('id')
+            subcategory = Subcategory.query.get(subcategory_id)
+            if subcategory:
+                user.guru_subcategories.append(subcategory)
+
+                if subcategory.category not in user.guru_categories:
+                    user.guru_categories.append(subcategory.category)
+
+                db_session.commit()
+
+        if request.json.get('remove_guru_subcategory'):
+            subcategory_json = request.json.get('subcategory')
+            subcategory_id = category_json.get('id')
+            subcategory = Subcategory.query.get(subcategory_id)
+            
+            if subcategory:
+                
+                # Remove from their list 
+                if subcategory in user.guru_subcategories:
+                    user.guru_subcategories.remove(subcategory)
+
+                # IF they no longer have any with that category, remove from their categories
+                if subcategory.category not in [subcategory.category for subcategory in user.guru_subcategories]:
+                    user.guru_categories.remove(subcategory.category)
+
+                db_session.commit()
+
+
 
         if request.json.get('add_guru_course'):
             course = request.json.get('course')

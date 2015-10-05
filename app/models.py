@@ -1971,6 +1971,68 @@ class Category(Base):
     __tablename__ = 'category'
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    background_url = Column(String)
+    icon_url = Column(String)
+    description = Column(String)
+    is_active = Column(Boolean, default=True)
+    is_approved = Column(Boolean, default=True)
+
+    @staticmethod
+    def create(name, icon_url=None, background_url='',
+        description='', is_active=False, is_approved=False):
+
+        category_arr = Category.query.filter_by(name=name).all()
+        if category_arr:
+            print 'category', name, 'already exists!'
+            return category_arr[0]
+        
+        category = Category()
+        category.icon_url = icon_url
+        category.name = name
+        category.background_url = background_url
+        category.description = description
+        category.is_active = is_active
+        category.is_approved = is_approved
+        
+        db_session.add(category)
+        
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        return category
+
+    def active_subcategories(self):
+        return [subcategory for subcategory in self.subcategories if subcategory.is_active]
+
+    def inactive_subcategories(self):
+        return [subcategory for subcategory in self.subcategories if not subcategory.is_active]
+
+    def set_inactive(self):
+        self.is_active = False
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def set_active(self):
+        self.is_active = True
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+                
+    def approve(self):
+        self.is_approved = True
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
 
 class Subcategory(Base):
     __tablename__ = 'subcategory'
@@ -1982,6 +2044,67 @@ class Subcategory(Base):
         primaryjoin = "Category.id == Subcategory.category_id",
         backref = 'subcategories'
         )
+    icon_url = Column(String)
+    description = Column(String)
+    is_active = Column(Boolean, default=True)
+    is_approved = Column(Boolean, default=False)
+
+    @staticmethod
+    def create(name, category_id, icon_url=None, 
+        description='', is_active=False, is_approved=False):
+
+        subcategory_arr = Subcategory.query.filter_by(name=name).all()
+        if subcategory_arr:
+            print 'category', name, 'already exists!'
+            return subcategory_arr[0]
+
+        if not name or not category_id:
+            raise
+        
+        subcategory = Subcategory()
+        subcategory.category_id = category_id
+        subcategory.icon_url = icon_url
+        subcategory.name = name
+        subcategory.description = description
+        subcategory.is_active = is_active
+        subcategory.is_approved = is_approved
+        
+        db_session.add(subcategory)
+        
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+        return subcategory
+
+    
+    def set_inactive(self):
+        self.is_active = False
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+    def set_active(self):
+        self.is_active = True
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+                
+    def approve(self):
+        self.is_approved = True
+        try:
+            db_session.commit()
+        except:
+            db_session.rollback()
+            raise
+
+
 
 class Course(Base):
     __tablename__ = 'course'
