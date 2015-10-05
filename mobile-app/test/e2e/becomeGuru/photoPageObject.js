@@ -5,7 +5,12 @@ var Photo = function()
 	this.SampleMsg = element(by.css('#photo-list div'));
 	this.ProfileIcon = element(by.id('profile-icon'));
 	this.ActionSheetButtons = element.all(by.repeater('b in buttons'));
+	this.FinishStep = element(by.css('[ng-click="goToGuruMode()"]'));
 
+	this.NextPage =function()
+	{
+		this.FinishStep.click();
+	};
 	this.CheckSamplePhotoExist =function()
 	{
 		expect(this.SamplePic.isPresent()).toBe(true);	

@@ -9,12 +9,16 @@ var Major = function()
 	 this.MajorList  = element.all(by.css('#major-list li:not(.ng-hide)'));
 	 this.CheckMarkMajor = element.all(by.repeater('major in user.majors'));
 	 this.backStep = element(by.css('[ng-click="goBackToStudentHome()"]'));
-
+	 this.MajorCloseIcon = element(by.css('major-input-close side-icon'));
 
 	 var nextStep = element(by.css('[ng-click="nextSlide()"]'));
 	 //var backStep = element(by.css('[ng-click="goBackToStudentHome()"]'));
 	 var ele = element.all(by.tagName("ion-slide"));
 
+	 this.MajorInputClearIconClick= function()
+	 {
+	 	MajorCloseIcon.click();
+	 };
 	 this.CheckPopUpIsShown = function()
 	 {
 		browser.wait(EC.visibilityOf(element(by.id('home-uguru-popup'))),3000);

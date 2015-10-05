@@ -2,7 +2,7 @@
 var University = function() {
 
     //Elements
-    this.InputModel = "input.search_text";
+    this.InputModel = "universityInput.value";
     this.SchoolList = element.all(by.css('#school-list li:not(.ng-hide)'));
     this.AccessInput = element(by.id("access-code-bar"));
     this.RedeemButton = element(by.id("access-start"));
@@ -88,7 +88,7 @@ var University = function() {
             expect(results).toContain("(70, 255, 0)","Color(icon ion-navigate) doesn't changed to [Green]")
         })
     };
-    this.checkMileage = function(toggle)
+    this.checkMileage = function(toggle,start)
     {
       if(toggle === 0)
                 {
@@ -96,13 +96,18 @@ var University = function() {
                     function()
                     {
                       element.all(by.css('#school-list li:not(.ng-hide)')).then(function(items){
-                          for(var i = 0 ; i < items.length; i++)
-                            expect(items[i].element(by.binding('university.miles | number')).isDisplayed()).toBe(true,"No Miles Is Showing");
+                          if (start === null)
+                            for(var i = 0 ; i < items.length; i++)
+                              expect(items[i].element(by.binding('university.miles | number')).isDisplayed()).toBe(true,"No Miles Is Showing at index : " + i);
+                          else
+                            for(var i = 0 ; i < start; i++)
+                              expect(items[i].element(by.binding('university.miles | number')).isDisplayed()).toBe(true,"No Miles Is Showing at index : " + i);
+                          
                       });
                     }, function(){
                         //code to want to execute on failure.
                         // console.log("failure");
-                          doc.checkMsg("Unable to Find the Location, did you enable share Location");
+                          doc.checkMsg("Unable to Find the Location at #"+index +", did you enable share Location");
                     });
                 }
         else

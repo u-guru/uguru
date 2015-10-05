@@ -257,7 +257,16 @@ exports.config = {
                             // '../e2e/becomeGuru/photoSpec.js',
                             // '../e2e/workflows/side.js'
                         ],
+                  bugs : [
+                            // '../e2e/bugs/error_universitylist.js',
+                            // '../e2e/bugs/error_universityScroll.js',
+                            // '../e2e/bugs/error_gps.js',
+                            // '../e2e/bugs/error_majorScroll.js',
+                            // '../e2e/bugs/error_majorSearch.js',
+                            // '../e2e/bugs/error_courseList.js',
+                            '../e2e/bugs/error_profileEditTest.js',
 
+                          ]
 
         },
         rootElement: "[ng-app]" ,
