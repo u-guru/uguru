@@ -1156,7 +1156,7 @@ angular.module('uguru.util.controllers')
 
       if (!formDict.full_name) {
         $scope.success.show(0,2000,'Please fill in all fields!');
-        document.getElementsByName('signup-first-name')[0].focus();
+        document.getElementsByName('signup-name')[0].focus();
 
         var shake = document.getElementById('input_first')
         shake.classList.add('animated', 'shake');

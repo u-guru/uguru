@@ -1,5 +1,5 @@
 <section id="course" class="onboarding charcoal-bg">
-      <header class="third flex-center" ng-if='!guruCoursesModal.isShown();'>
+      <header class="third flex-center" ng-if='!guruCoursesModal.isShown() && !(profile && profile.edit_mode);'>
             <h1 class="text-center">Add Courses</h1>
             <div class="header-nav">
                 <a class="header-nav-back" ng-click='previousSlide()'>
@@ -22,7 +22,7 @@
                     >
 			</div>
       </header>
-      <header ng-if='guruCoursesModal.isShown();' class='third flex-center'>
+      <header ng-if='guruCoursesModal.isShown() || (profile && profile.edit_mode);' class='third flex-center'>
 		<div class="header-nav">
 			<a class="header-down" ng-click="guruCoursesModal.hide()">
 				<svg viewBox="0 0 100 100">

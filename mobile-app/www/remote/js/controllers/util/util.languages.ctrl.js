@@ -23,29 +23,7 @@ angular.module('uguru.util.controllers')
     $scope.listCanSwipe = true;
     $ionicSideMenuDelegate.canDragContent(false);
 
-    $scope.backToEditProfile = function(is_saved) {
-
-      if (is_saved) {
-        $scope.success.show(0, 1500);
-      } else {
-        $scope.loader.show();
-      }
-
-      $state.go('^.guru-profile');
-
-      $timeout(function() {
-        $scope.loader.hide();
-
-      }, 500);
-    }
-
-
     $scope.removeGuruLanguageAndUpdate = function(language, index) {
-      alert('coming soon!');
-      return
-      if ($state.current.name === 'root.become-guru' && !confirm('Remove ' + language.name + '?')) {
-        return;
-      }
 
       $scope.user.guru_languages.splice(index, 1);
 
