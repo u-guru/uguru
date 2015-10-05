@@ -48,6 +48,21 @@ angular.module('uguru.util.controllers')
             universities: []
         }
 
+        $ionicPlatform.registerBackButtonAction(function(e) {
+            var popup = document.querySelectorAll('.uguru-popup.show')[0];
+            if(popup !== null && popup !== undefined) {
+                console.log("found popup");
+                popup.className = 'uguru-popup';
+                e.stopPropagation();
+
+                e.preventDefault();
+                return false;
+            } else {
+                console.log("no popup found");
+                $ionicHistory.goBack(-1);
+            }
+        }, 101);
+
         $scope.isLocalServer = LOCAL || false;
 
         $scope.network_speed = null;
