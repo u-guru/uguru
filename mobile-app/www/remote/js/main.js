@@ -24,7 +24,8 @@ var REST_URL = 'https://www.uguru.me'
 var BASE = '';
 if (LOCAL) {
   BASE = 'remote/';
-  BASE_URL = _ipaddress;  LOCAL_URL = 'http://192.168.42.78:5000'
+  BASE_URL = _ipaddress; 
+  LOCAL_URL = 'http://192.168.42.78:5000'
 
 } else {
   img_base = '/static/'
@@ -73,7 +74,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   var openKeyboard = null;
   var tracker = 'lo'
-  
+
   uTracker.init(tracker);
   // uTracker.init('mp');
 
