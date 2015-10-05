@@ -78,6 +78,8 @@ def init_mailgun_lists():
         if u.is_targetted and u.population:
             print create_mailing_list(u)
 
+
+
 def init_university_dates(name):
     req = urllib2.Request("https://drive.google.com/uc?export=download&id=0By5VIgFdqFHddHdBT1U4YWZ2VkE", None)
     opener = urllib2.build_opener()
@@ -238,60 +240,98 @@ def seed_db():
 
         print len(new_course_file), "courses added to " + university
 
+def generate_categories_json():
+    import json
+    pass
 
-        #if major has departments
-        # if university.get('departments'):
-        #     uni_majors = []
-        #     for dept in university.get('departments'):
-        #         m = Major.admin_create(dept["name"], dept["id"])
-        #         uni_majors.append(m)
-        #         major_count += 1
+def delete_categories():
+    import json
+    from app.models import Category, Subcategory
+    for c in Category.query.all():
+        db_session.delete(c)
+    for s in Subcategory.query.all():
+        db_session.delete(s)
+    db_session.commit()
 
-        #         if major_count % 10000 == 0:
-        #             print major_count, 'majors processed'
-        #             print
+def print_categories():
+    import json
+    from app.models import Category
+    categories = Category.query.all()
+    print len(categories), 'found!\n'
+    for category in categories:
+        print category.name +',', len(category.subcategories), 'skills'
+        for subcategory in category.subcategories:
+            print '    >>', subcategory.name
+        print
+        
 
-        #     db_session.add_all(uni_majors)
-            # print len(uni_majors), 'majors added to ', university['title']
-            # print major_count, 'processed out of', total_majors
+def generate_categories_json():
+    from app.models import Category
+    result_dict = {}
+    filename = 'categories.json'
+    for category in Category.query.all():
+        subcategories = category.subcategories
+        category_dict = {
+            'id': category.id, 
+            'num_subcategories':len(subcategories),
+            'num_gurus': len(category.gurus.all()),
+            'subcategories': [],
+            'background_url': category.background_url,
+            'icon_url': category.icon_url,
+            'is_approved': category.is_approved,
+            'is_active': category.is_active,
+            'description': category.description
+        }
+        result_dict[category.name] = category_dict
+        for subcategory in subcategories:
+            subcategory_info = {
+                'id': subcategory.id,
+                'num_gurus': len(subcategory.gurus.all()),
+                'name': subcategory.name,
+                'is_approved': subcategory.is_approved,
+                'is_active': subcategory.is_active,
+                'icon_url': subcategory.icon_url,
+                'description': category.description
+            }
 
-    # db_session.commit()
-
-    # print major_count, "major objects created..."
-    # for university in universities_arr:
-    #     if university.get('courses'):
-    #         uni_courses = []
-    #         for course in university.get('courses'):
-    #             if course.get('dept_short'):
-    #                 c = Course.admin_create(str(course["dept_short"] + " " + course["code"]), course["id"])
-    #                 course_count += 1
-    #                 uni_courses.append(c)
-
-    #                 if course_count % 10000 == 0:
-    #                     print course_count, 'courses processed'
-    #                     print
-
-    #         db_session.add_all(uni_courses)
-            # print len(uni_courses), 'courses added to ', university['title']
-            # print course_count, 'processed out of', total_courses
-            # print
-
-    # print course_count, "course objects created..."
-
-    # db_session.commit()
-
-    # #save these majors
-    # db_session.add_all(session_majors)
+            result_dict[category.name]['subcategories'].append(subcategory_info)
+    with open('app/static/data/categories.json', 'wb') as fp:
+        json.dump(result_dict, fp, sort_keys = True, indent = 4)
 
 
-    # print len(University.query.all()),'universities added'
 
-    # print len(Major.query.all()),'majors added'
 
-    # print len(Course.query.all()),'courses added'
+
+def init_categories():
+    import json
+    from app.models import Category, Subcategory
+    categories_dict = json.load(open('app/static/data/categories.json'))
+    categories = categories_dict.keys()
+    for category_name in categories:
+        print 'creating', category_name
+        category = Category.create(category_name)
+
+        for subcategory_name in categories_dict[category_name]:
+            print '  >> creating', subcategory_name
+            Subcategory.create(subcategory_name, category.id)
+        print
+
+    print 
 
 if arg == 'initialize':
     init()
+
+if arg in ['init_categories', '-ic']:
+    init_categories()
+
+if arg in ['print_categories', '-pc']:
+    print_categories()
+
+if arg in ['delete_categories', '-dc']:
+    delete_categories()
+
+if arg in ['generate_categories_json', '-gc']:
+    generate_categories_json()
 
 if arg =='update_us_news':
     update_us_news()
@@ -522,19 +562,41 @@ if arg =='init_test_devices':
                 db_session.commit()
     print 'test devices initiated'
 
+if arg == 'print_skills':
+    categories_dict = {}
+    for skill in Skill.query.all():
+        if skill.category in categories_dict:
+            categories_dict[skill.category] += [skill.name]
+        else:
+            categories_dict[skill.category] = [skill.name]
+
+    for key in categories_dict:
+        print "#############"
+        print key
+        print "#############"
+    
+
+if arg == 'remove_skill':
+    from app.models import guru_skill_table
+    for skill in Skill.query.all():
+        for u in User.query.all():
+            if skill in u.guru_skills:
+                db_session.execute(guru_skill_table.delete(guru_skill_table.c.user_id == u.id and guru_courses_table.c.skill_id == c.id))
+        
+    for skill in Skill.query.all():
+        db_session.delete(skill)
+        db_session.commit()
 
 
 if arg =='init_skills':
-    from app.models import *
-    from app.database import *
-
-    skills = [('resume', 'professional'), ('writing', 'professional'), ('interviews', 'professional'),
-        ('public speaking', 'professional'), ('drinking', 'professional'), ('iPhone Repair', 'specialized'),
-        ('internet setup', 'specialized'), ('baked goods', 'specialized'), ('photography', 'specialized'),
-        ('vacuuming', 'specialized'), ('house cleaning', 'chores'), ('dirty dishes', 'chores'), ('ironing', 'chores'),
-        ('laundry', 'chores'), ('ikea assembly', 'labor'), ('moving assistance', 'labor'), ('i have a truck', 'labor'),
-        ('painting', 'labor'), ('interior design', 'labor')]
-
+    
+    {
+        'Photography':['Professional', 'Outdoor', 'Headshot'],
+        'Freelancing':['Resume Editing','Interview Prep', 'Build a Website'],
+        'Bakery': ['Brownies', 'Flan', 'Pie'],
+        'Household': ['Laundry', 'Build Furniture (Ikea)', 'I have a Vacuum'],
+        'Tech / IT': ['']
+    }
 
     for skill_string, category_string in skills:
         skill = Skill()

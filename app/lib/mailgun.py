@@ -38,7 +38,6 @@ def add_students_to_mailing_list(university_name, student_objs):
                 'vars': student_obj
             })
 
-    print 'adding', len(mailgun_formatted_arr), 'to', university_name
     return requests.post(
         "https://api.mailgun.net/v2/lists/%s/members.json" % university_list_address,
         auth=('api', 'key-bfe01b1e2cb76d45e086c2fa5e813781'),
@@ -70,7 +69,6 @@ def get_all_university_progress():
             results_arr.append({'id':uni_id, 'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
         else:
             no_results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
-        # print uni_name, ' || ', str(int(count)) + ' out of ' + str(int(uni_population)) + ' students',' || ', str(percentage) + '% complete'
 
     response = requests.get(
         "https://api.mailgun.net/v2/lists",
@@ -79,8 +77,6 @@ def get_all_university_progress():
         )
 
     arr = json.loads(response.text)
-    # print '\nretrieving ... ...\n'
-    # print len(arr['items'])
     for list_info in arr['items']:
         count = float(list_info['members_count'])
         description = list_info['description']
@@ -97,7 +93,6 @@ def get_all_university_progress():
             results_arr.append({'id':uni_id, 'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
         else:
             no_results_arr.append({'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
-        # print uni_name, ' || ', str(int(count)) + ' out of ' + str(int(uni_population)) + ' students',' || ', str(percentage) + '% complete'
 
 
     response = requests.get(
@@ -107,8 +102,6 @@ def get_all_university_progress():
         )
 
     arr = json.loads(response.text)
-    print '\nretrieving ... ... ...\n\n'
-    print len(arr['items'])
     for list_info in arr['items']:
         count = float(list_info['members_count'])
         description = list_info['description']
@@ -125,16 +118,12 @@ def get_all_university_progress():
             results_arr.append({'id':uni_id, 'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
         else:
             no_results_arr.append({'id':uni_id,'name': uni_name,'count': count, 'rank': list_info['rank'], 'population':uni_population})
-        # print uni_name, ' || ', str(int(count)) + ' out of ' + str(int(uni_population)) + ' students',' || ', str(percentage) + '% complete'
 
     if results_arr:
         results_arr = sorted(results_arr, key=lambda r:r['count'], reverse=True)
-        print '# of universities with emails:', len(results_arr), '\n'
-        print '# of universities with emails:', len(no_results_arr), '\n'
 
         # index = 1
         # for result in results_arr:
-            # print '#%d. %s has %d students' % (index, result['name'], result['count'])
             # index+=1
         return results_arr
 
@@ -142,13 +131,11 @@ def get_all_university_progress():
 def get_university_progress(university_name):
     university_list_address = format_university_name_for_mandrill(university_name)
     response = get_mailgun_list_info(university_list_address)
-    print response
 
 def set_university_scraper_value(university_name, scraper_value):
     ## get the most upto-date mailgun description for this university
 
     mailing_address = university_name.replace(' ', '_').lower() + '@nationalacademicresearch.org'
-    print mailing_address
     mailgunUniversityObj = requests.get(
         "https://api.mailgun.net/v2/lists/%s" % mailing_address,
         auth=('api', 'key-bfe01b1e2cb76d45e086c2fa5e813781')
@@ -158,20 +145,17 @@ def set_university_scraper_value(university_name, scraper_value):
     newDescriptionSplit = universityDict['list']['description'].split(':')
     newDescriptionSplit[-1] = str(scraper_value).lower()
     newDescriptionString = ":".join(newDescriptionSplit)
-    print newDescriptionString
     response = requests.put(
         "https://api.mailgun.net/v2/lists/%s" % mailing_address,
         auth=('api', 'key-bfe01b1e2cb76d45e086c2fa5e813781'),
         data={'description':newDescriptionString}
         )
-    print response.text
 
 
 
 if __name__ == "__main__":
     results = get_all_university_progress()
-    from pprint import pprint
-    pprint(results)
+    
 
 
 

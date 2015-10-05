@@ -25,7 +25,7 @@
       <header ng-if='guruMajorModal.isShown();' class='third flex-center'>
 =======
 <section id="major" class="onboarding charcoal-bg full-xy">
-    <header class="third flex-center-wrap" ng-if='!guruMajorModal.isShown();'>
+    <header class="third flex-center-wrap" ng-if='!guruMajorModal.isShown() && !(profile && profile.edit_mode);'>
         <h1 class="text-center">Select your major</h1>
         <div class="header-nav">
             <a class="header-nav-back" ng-click='goBackToStudentHome()'>
@@ -85,7 +85,7 @@
                 </svg>
             </li>
             <li class="major-item major-business" ng-show='search_text.length === 0' ng-repeat='major in majors | limitTo: limit'>
-                <a ng-click='majorSelected(major, $index)'>{{major.name || major.abbr || major.title}}</a>
+                <a ng-click='majorSelected(major, $index)'>{{major.title || major.name || major.abbr }}</a>
             </li>
         </ul>
 <<<<<<< HEAD

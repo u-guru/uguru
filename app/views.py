@@ -30,7 +30,7 @@ mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 
 @app.route('/admin/staging/')
 def admin_statistics_staging():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return redirect(url_for('new_home_page'))
 
@@ -44,7 +44,7 @@ def admin_login():
         from app.lib.admin import admin_info
         print email, password
         if check_admin_password(email, password):
-            session['user'] = admin_info[email]
+            session['admin'] = admin_info[email]
 
             if 'investors.uguru.me' in request.url:
                 return redirect(url_for('admin_investor_stats'))
@@ -58,7 +58,7 @@ def admin_login():
         error = 'incorrect username & password'
         session.pop('error')
 
-    if session.get('user'):
+    if session.get('admin'):
         return redirect(url_for('admin_team_calendar'))
 
     return render_template("admin/login.html", error=error)
@@ -69,14 +69,14 @@ def internal_test():
 
 @app.route('/admin/statistics/')
 def admin_statistics():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     stats = Stats.query.get(1)
     return render_template("admin/admin.statistics.html", stats=stats)
 
 @app.route('/admin/stats/devices/')
 def admin_devices():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     test_devices = sorted(Device.getTestDevices(), key=lambda d:d.last_accessed, reverse=True)
     regular_devices = sorted(Device.getNonTestDevices(), key=lambda d:d.last_accessed, reverse=True)
@@ -132,7 +132,7 @@ def profile_page():
 def admin_stats_campaigns():
     ### all logic
     import requests, json
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
 
     from lib.mailgun import get_all_university_progress
@@ -153,7 +153,7 @@ def admin_stats_campaigns():
 
 @app.route('/admin/stats/universities/')
 def admin_statistics_universities():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     # test_devices = sorted(Device.getTestDevices(), key=lambda d:d.last_accessed, reverse=True)
     # regular_devices = sorted(Device.getNonTestDevices(), key=lambda d:d.last_accessed, reverse=True)
@@ -205,25 +205,25 @@ def admin_statistics_universities():
 
 @app.route('/admin/i/stats/')
 def admin_investor_stats():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.investors.statistics.html")
 
 @app.route('/admin/i/product/')
 def admin_view_campaigns_product():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.investors.product.html")
 
 @app.route('/admin/i/competition/')
 def admin_investors_competition():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.investors.competition.html")
 
 @app.route('/admin/i/biz-model/')
 def admin_investors_biz_model():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.investors.business-model.html")
 
@@ -237,37 +237,37 @@ def uguru_style_guide():
 
 @app.route('/admin/campaigns/')
 def admin_view_campaigns():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/campaigns.html")
 
 @app.route('/admin/campaigns/create/')
 def admin_create():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/create-campaign.html")
 
 @app.route('/admin/design/style/')
 def admin_style_guide():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("style/index.html")
 
 @app.route('/admin/design/inspired/')
 def admin_components_inspired():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin-coming-soon.html")
 
 @app.route('/admin/design/moodboards/')
 def admin_components():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin-coming-soon.html")
 
 @app.route('/admin/users/<_id>/')
 def admin_users(_id):
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     from app.models import User
     user = User.query.get(_id)
@@ -277,7 +277,7 @@ def admin_users(_id):
 
 @app.route('/admin/requests/')
 def admin_requests():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     from app.models import *
 
@@ -292,43 +292,51 @@ def admin_requests():
 
 @app.route('/admin/campaigns/scheduled/')
 def admin_scheduled():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/scheduled-campaigns.html")
 
 @app.route('/admin/campaigns/<campaign_name>/')
 def admin_one_campaign(campaign_name):
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/one_campaign.html", tag_name=campaign_name)
 
 @app.route('/admin/coming-soon/')
 def admin_coming_soon():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin-coming-soon.html")
 
+@app.route('/admin/product/categories/')
+def admin_product_skills():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+    return render_template("admin/admin.product.categories.html")
+
+
+
 @app.route('/admin/product/releases/')
 def admin_product_releases():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.product.releases.html")
 
 @app.route('/admin/product/practices/')
 def admin_best_practices_product():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.product.practices.html")
 
 @app.route('/admin/i/statistics/')
 def admin_best_practices():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.investors.statistics.html")
 
 @app.route('/admin/support/tickets/')
 def admin_testing():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     from app.models import Support
     support_tickets = Support.query.all()
@@ -338,14 +346,14 @@ def admin_testing():
 @app.route('/admin/team/members/')
 def admin_members():
     from app.lib.admin import admin_info
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.team-members.html", team=admin_info)
 
 @app.route('/admin/team/routine/')
 def admin_routine():
     from app.lib.admin import admin_info
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.team-routine.html", team=admin_info)
 
@@ -353,19 +361,19 @@ def admin_routine():
 
 @app.route('/admin/expectations/')
 def admin_expectations():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.team-expectations.html", team=[])
 
 @app.route('/admin/team/project/')
 def admin_team():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/team-project-items.html", team=[])
 
 # @app.route('/admin/team/action/')
 # def admin_team():
-#     if not session.get('user'):
+#     if not session.get('admin'):
 #         return redirect(url_for('admin_login'))
 #     return render_template("admin/team-action-items.html", team=[])
 
@@ -373,19 +381,19 @@ def admin_team():
 
 @app.route('/admin/design/guidelines/')
 def admin_design_guidelines():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/design-guidelines.html", team=[])
 
 @app.route('/admin/development/guidelines/')
 def admin_dev_guidelines():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/development-guidelines.html", team=[])
 
 @app.route('/admin/development/api/')
 def admin_dev_api():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/admin.development.api.html")
 
@@ -393,32 +401,32 @@ def admin_dev_api():
 @app.route('/admin/team/')
 @app.route('/admin/team/calendar/')
 def admin_team_calendar():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/team-calendar.html")
 
 @app.route('/lte/')
 def lte_theme():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return redirect("/static/admin/index2.html")
 
 
 @app.route('/admin/bugs/')
 def admin_bugs():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/bugs.admin.html", team=[])
 
 @app.route('/admin/bugs/view/')
 def admin_bugs_view():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/bugs.view.admin.html", team=[])
 
 @app.route('/admin/development/style/')
 def admin_development_style():
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     return render_template("admin/style.development.admin.html", team=[])
 
@@ -426,30 +434,8 @@ def admin_development_style():
 def admin_logout():
     if session.get('user'):
         session.pop('user')
+        session.pop('admin')
     return redirect(url_for('admin_login'))
-
-
-
-@app.route('/admin/milestones/sept/1')
-def admin_milestones_sept():
-
-    ### all logic
-    import requests, json
-    if not session.get('user'):
-        return redirect(url_for('admin_login'))
-
-    from lib.mailgun import get_all_university_progress
-    results_arr, no_results_arr = get_all_university_progress()
-
-    stats = {
-        'completed_data': len(json.load(open('app/static/data/fa15_all.json'))),
-        'pending_data': len(json.load(open('app/static/data/fa15_targetted.json'))),
-        'completed_emails': len(results_arr),
-        'pending_emails': len(no_results_arr),
-    }
-
-
-    return render_template('new_admin/admin.milestones.sept.html', stats=stats)
 
 
 @app.route('/admin/universities/flickr/')
@@ -466,7 +452,7 @@ def flicker_targetted_universities():
 
 @app.route('/admin/flickr/<university_id>')
 def flicker_university_process(university_id):
-    if not session.get('user'):
+    if not session.get('admin'):
         return redirect(url_for('admin_login'))
     try:
         u = University.query.get(university_id)

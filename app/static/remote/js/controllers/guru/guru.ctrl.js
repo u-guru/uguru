@@ -85,19 +85,42 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
           }
         }
 
-        var initGuruRankProgress = function(selector) {
+        $scope.launchGuruRankingPopup = function() {
+
+          var homeCenterComponent = document.getElementById('guru-home');
+          var uguruPopup = document.getElementById('guru-ranking-popup');
+          $scope.reverseAnimatePopup = cta(homeCenterComponent, uguruPopup, {duration:1},
+            function (modal){
+              modal.classList.add('show');
+            }
+          );
+          $scope.closeWelcomePopup = function() {
+            if ($scope.reverseAnimatePopup) {
+              $scope.reverseAnimatePopup();
+            }
+            var uguruPopup = document.getElementById('guru-ranking-popup');
+            uguruPopup.classList.remove('show');
+
+          }
+        }
+
+        var initGuruRankProgress = function(selector, color, fillColor, setValue) {
           var circle = new ProgressBar.Circle(selector, {
-              color: "rgba(255,255,255,1)",
+              color: color || "rgba(255,255,255,1)",
               strokeWidth: 8,
               trailWidth: 8,
-              trailColor:"rgba(255,255,255,0.3)",
+              trailColor:fillColor || "rgba(255,255,255,0.3)",
               duration: 1000,
               text: {
                   value: '0'
               },
               step: function(state, bar) {
                   var val = (bar.value() * 100).toFixed(0);
-                  bar.setText(val);
+                  if (setValue) {
+                    bar.setText(val);
+                  } else {
+                    bar.setText('');
+                  }
               }
           });
           circle.text = document.getElementById('percentile-ranking');
@@ -166,8 +189,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
         $scope.initializeProgressBars = function() {
           var guruRankingCircle = initGuruRankProgress('#guru-ranking-progress-bar');
-          animateProgressCircle(guruRankingCircle, $scope.user.guru_ranking);
-
+          animateProgressCircle(guruRankingCircle, $scope.user.guru_ranking, true);
 
           var guruCredibilityLine = initGuruHorizontalProgress('#guru-credibility-progress-bar', 'credibility-percent')
           animateProgressLine(guruCredibilityLine, $scope.user.current_credibility_percent || 60);
@@ -177,6 +199,10 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
           var guruHourlyLine = initGuruHorizontalProgress('#guru-hourly-progress-bar', 'hourly-rate');
           animateProgressLine(guruHourlyLine, $scope.user.current_hourly || 80);
+        }
+
+        var initGuruRankingCircleProgress = function() {
+
         }
 
         var haveProgressBarsBeenInitialized = function() {
@@ -195,6 +221,21 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             }
 
         });
+
+        // GABRIELLE UN COMMENT THE SECTION BELOW
+        // $scope.$on('$ionicView.enter', function() {
+        //   $timeout(function() {
+        //       $scope.launchGuruRankingPopup();
+
+        //       $timeout(function() {
+        //         var guruRankingPopupCircle = initGuruRankProgress('#guru-ranking-popup-progress-bar', '#2B3234','#69B3A5');
+
+        //         animateProgressCircle(guruRankingPopupCircle, 75);
+        //       }, 1000 )
+
+        //   }, 1000)
+        // }, 1000)
+
 
 
 

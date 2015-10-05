@@ -45,24 +45,29 @@
 			<div id="profile-courses">
 				<div class='edit-button' hidden> </div>
 				<h1>Courses you can tutor</h1>
-				<ul class='courses'>
-					<li ng-repeat='course in user.guru_courses track by $index'>
-						<span>{{course.name}}</span>
-						<a ng-click='removeGuruCourseAndUpdate(course, $index)' ng-if='profile.edit_mode'>
-							<svg viewBox="0 0 100 100">
-							    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-							</svg>
-						</a>
-					</li>
-				</ul>
-				<ul class='default' ng-if='!user.guru_courses.length || profile.edit_mode'>
-					<li><button class="round" ng-click='launchGuruCoursesModal()'>
-						<svg viewBox="0 0 100 100">
-						    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-						</svg>
-						<span>Add a course</span>
-					</button></li>
-				</ul>
+				<div>
+                    <ul class='courses'>
+    					<li ng-repeat='course in user.guru_courses track by $index'>
+    						<span>{{course.name}}</span>
+    						<a ng-click='removeGuruCourseAndUpdate(course, $index)' ng-if='profile.edit_mode'>
+    							<svg viewBox="0 0 100 100">
+    							    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+    							</svg>
+    						</a>
+    					</li>
+    				</ul>
+                    <ul class="empty" ng-if="!user.guru_courses.length && !profile.edit_mode">
+                        <li style='padding:10px 15px;'class='text-center weight-300 p10x15y'><span><em>No courses added</em></span></li>
+                    </ul>
+    				<ul class='default' ng-if='profile.edit_mode'>
+    					<li><button class="round" ng-click='launchGuruCoursesModal()'>
+    						<svg viewBox="0 0 100 100">
+    						    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+    						</svg>
+    						<span>Add a course</span>
+    					</button></li>
+    				</ul>
+                </div>
 			</div>
 			<div id="profile-other">
 				<div id="profile-major">
@@ -70,15 +75,18 @@
 					<div>
 						<ul class='majors' ng-if='user.majors && user.majors.length > 0'>
 							<li ng-repeat='major in user.majors'>
-								<span>{{major.name || major.abbr || major.title}}</span>
-								<a ng-click='removeGuruMajor(major)' ng-if='profile.edit_mode'>
+								<span>{{major.title || major.abbr || major.name}}</span>
+								<a ng-click='removeMajor(major, $index)' ng-if='profile.edit_mode'>
 									<svg viewBox="0 0 100 100">
 									    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 									</svg>
 								</a>
 							</li>
 						</ul>
-						<ul class='default' ng-if='!user.majors.length || profile.edit_mode'>
+						<ul class="empty" ng-if="!user.majors.length && !profile.edit_mode">
+							<li><span><em>No majors added</em></span></li>
+						</ul>
+						<ul class='default' ng-if='profile.edit_mode'>
 							<li><button class="round" ng-click='launchGuruMajorsModal()'>
 								<svg viewBox="0 0 100 100">
 								    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
@@ -88,15 +96,6 @@
 						</ul>
 					</div>
 				</div>
-				<!-- Void for now -->
-				<!-- <div id="profile-job">
-					<h1>Dream Job</h1>
-					<div>
-						<ul>
-							<li>UI Designer for Uguru</li>
-						</ul>
-					</div>
-				</div> -->
 				<div id="profile-skills">
 					<h1>Skills</h1>
 					<div>
@@ -110,7 +109,10 @@
 								</a>
 							</li>
 						</ul>
-						<ul class='default' ng-if='!user.categories.length || profile.edit_mode'>
+						<ul class="empty" ng-if="!user.categories.length && !profile.edit_mode">
+							<li><span><em>No skills added</em></span></li>
+						</ul>
+						<ul class='default' ng-if='profile.edit_mode'>
 							<li><button class="round" ng-click='launchGuruSkillsModal()'>
 								<svg viewBox="0 0 100 100">
 								    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
@@ -133,7 +135,10 @@
 								</a>
 							</li>
 						</ul>
-						<ul class='default' ng-if='!user.guru_skills.length || profile.edit_mode'>
+						<ul class="empty" ng-if="!user.languages.length && !profile.edit_mode">
+							<li><span><em>No languages added</em></span></li>
+						</ul>
+						<ul class='default' ng-if='profile.edit_mode'>
 							<li><button class="round" ng-click='launchGuruLanguagesModal()' ng-if='!user.guru_languages.length|| prof'>
 								<svg viewBox="0 0 100 100">
 								    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>

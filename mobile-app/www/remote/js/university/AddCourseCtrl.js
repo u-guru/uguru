@@ -256,6 +256,7 @@ angular.module('uguru.util.controllers')
 
 
     $scope.courses = University.courses || getCoursesBecomeGuru();
+    console.log($scope.courses.slice(0, 10));
 
   }
 

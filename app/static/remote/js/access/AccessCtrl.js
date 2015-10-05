@@ -68,15 +68,21 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
       }, 1500)
 
     } else {
-      Velocity(document.getElementById('input-error-text'), {opacity:1});
-      $scope.access.errorInputMsg = 'Incorrect access code';
-      Velocity(accessInput, "callout.shake", function() {
-        accessInput.value = '';
-        setTimeout(function() {
-          Velocity(document.getElementById('input-error-text'), "fadeOut", {duration:1000});
-        }, 500)
-      });
-      //
+      $scope.loader.hide();
+      var errorTextElem = document.getElementById('input-error-text')
+      errorTextElem.style.opacity = 1;
+      errorTextElem.innerHTML = 'Incorrect access code';
+      accessInput.value = '';
+
+      //fadeout after 500 seconds
+      var postShakeCallback = function() {
+            setTimeout(function() {
+              AnimationService.fadeOutElem(errorTextElem, 1000);
+            }, 1500);
+      }
+
+
+      AnimationService.shakeElem(errorTextElem, 500, postShakeCallback);
 
     }
   };
@@ -86,9 +92,19 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
     if (DeviceService.isMobile() && !$scope.redeemRecentlyPressed) {
       // cordova.plugins.Keyboard.disableScroll(false);
       Velocity(
-        document.querySelector('#access-logo svg'),
+        document.querySelector('#access-logo'),
         {
           scale:0.5,
+          translateY:"-55%"
+        },
+        {duration:400},
+        "easeInSine"
+      );
+
+      Velocity(
+        document.querySelector('#access-title'),
+        {
+          scale:0.8,
           translateY:"-55%"
         },
         {duration:400},
@@ -105,8 +121,9 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   };
 
   window.addEventListener('native.keyboardshow', keyboardShowHandler);
-// cordova.plugins.Keyboard.disableScroll(true);
-  window.addEventListener('native.keyboardhide', keyboardHideHandler);
+
+  // cordova.plugins.Keyboard.disableScroll(true);
+  // window.addEventListener('native.keyboardhide', keyboardHideHandler);
 
   var accessInput = document.getElementById('access-code-bar');
 
@@ -144,28 +161,6 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
 
   }
-
-
-  var redeemButton = document.getElementById('redeem-button')
-  function keyboardShowHandler(height) {
-    if(DeviceService.getPlatform() === 'android') {
-      redeemButton.style.visibility = 'hidden';
-    }
-  }
-
-  function keyboardHideHandler(e) {
-    if ($scope.keyboardExists && $scope.redeemRecentlyPressed) {
-      console.log('keyboardHideHandler prevented');
-      $timeout(function () {
-        accessInput.focus();
-      });
-      return;
-    }
-    accessInput.blur();
-    redeemButton.style.visibility = 'visible';
-    $scope.accessInputOnBlur();
-  }
-
 
 
   function keyboardShowHandler(e){
