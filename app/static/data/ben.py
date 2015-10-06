@@ -1,4 +1,5 @@
 import requests, json
+from time import sleep
 
 def uguruAPI(arg='', _json=None, _type='get'):
 	if arg: arg = '/' + arg 
@@ -27,10 +28,20 @@ def getUniversity(uni_id):
 	return university
 
 def updateUniversity(uni_dict):
-	
 	university = uguruAPI(str(uni_dict['id']), uni_dict, 'put')
 	print university
 	return university
+
+def updateEmailsForMailgun():
+	from data_utils import updateMailgunJsonWithFreshData
+	mailgun_universities = updateMailgunJsonWithFreshData(1000)
+	for university in mailgun_universities:
+		payload = {
+			'id':university.get('id'),
+			'num_emails' : university.get('count')
+			}
+		updateUniversity(payload)
+		sleep(1)
 
 
 if __name__ == '__main__':
@@ -48,5 +59,8 @@ if __name__ == '__main__':
 
     if args[1] in ['update-one', '-uo']:
     	updateUniversity({'id':2732, 'num_emails':10 })
+
+    if args[1] in ['update-emails', '-ue']:
+		updateEmailsForMailgun()    	
 
 
