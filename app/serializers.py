@@ -485,7 +485,8 @@ AdminUniversitySerializer = {
     'population': fields.Integer,
     'num_emails': fields.Integer,
     'departments_sanitized': fields.Boolean,
-    'courses_sanitized': fields.Boolean
+    'courses_sanitized': fields.Boolean,
+    'school_color_one': fields.String
 }
 
 AdminUniversityDeptSerializer = {
