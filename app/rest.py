@@ -2584,7 +2584,7 @@ class AdminViewUniversitiesListAll(restful.Resource):
     def get(self, auth_token):
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED"
-        universities = University.query.filter(University.us_news_ranking != None).all()
+        universities = University.query.filter(University.us_news_ranking != None, University.us_news_ranking < 220).all()
         return universities, 200
 
 class AdminViewUniversitiesListPrepared(restful.Resource):
@@ -2986,6 +2986,19 @@ class AdminOneUniversityView(restful.Resource):
                 if type(is_public) != bool:
                     abort(401)
                 u.is_public = is_public
+
+            if 'num_emails' in request.json:
+                u.num_emails = request.get('num_emails')
+
+            if 'num_depts' in request.json:
+                u.num_emails = request.get('num_depts')
+
+            if 'departments_sanitized' in request.json:
+                u.departments_sanitized = University.sanitizeDepartments()
+
+            if 'courses_sanitized' in request.json:
+                u.courses_sanitized = University.sanitizeCourses()
+
 
             db_session.commit()
 
