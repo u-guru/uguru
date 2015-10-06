@@ -3000,10 +3000,10 @@ class AdminOneUniversityView(restful.Resource):
                 u.is_public = is_public
 
             if 'num_emails' in request.json:
-                u.num_emails = request.get('num_emails')
+                u.num_emails = request.json.get('num_emails')
 
             if 'num_depts' in request.json:
-                u.num_emails = request.get('num_depts')
+                u.num_emails = request.json.get('num_depts')
 
             if 'departments_sanitized' in request.json:
                 u.departments_sanitized = University.sanitizeDepartments()
