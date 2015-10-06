@@ -301,14 +301,32 @@ def generate_categories_json():
 
 def update_categories():
     from app.models import Category, Subcategory
+    from app.database import db_session
     categories_dict = json.load(open('app/static/data/categories.json'))
     for key in categories_dict.keys():
         category_id = categories_dict[key]['id']
-        print category_id, categories_dict[key]['name']
+        category = Category.query.get(category_id)
+        category.hex_color = categories_dict[key]['hex_color']
+        category.num_subcategories = len(categories_dict[key]['subcategories'])
+        category.background_url = categories_dict[key]['background_url']
+        category.icon_url = categories_dict[key]['icon_url']
+        category.is_approved = True
+        # category.is_approved = categories_dict[key]['is_approved']
+        # category.is_active = categories_dict[key]['is_active']
+        category.is_active = True
+        category.num_gurus = len(category.gurus.all())
+        category.description = categories_dict[key]['description']
+
+        print category.id, category.name
         for subcategory in categories_dict[key]['subcategories']:
             subcategory_id = subcategory['id']
-            subcategory_name = subcategory['name']
-            print subcategory_id, subcategory_name
+            subcategory = Subcategory.query.get(subcategory_id)
+            print '   >>', subcategory.id, subcategory.name
+        print
+    db_session.commit()
+    generate_categories_json()
+    print 'categories successfully updated && json is generated'
+
 
 
 def generate_init_categories():
@@ -359,7 +377,7 @@ if arg in ['delete_categories', '-dc']:
     delete_categories()
 
 if arg in ['update_categories', '-uc']:
-    delete_categories()
+    update_categories()
 
 if arg in ['generate_categories_json', '-gc']:
     generate_categories_json()
