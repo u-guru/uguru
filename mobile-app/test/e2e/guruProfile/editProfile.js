@@ -1,3 +1,4 @@
+
 describe('Guru Edit Profile Test', function () {
 	var photo = element(by.id('profile-icon'));
 	var course = element(by.css('#profile-courses li'))
@@ -22,6 +23,7 @@ describe('Guru Edit Profile Test', function () {
 	{
 		expect(browser.getCurrentUrl()).toContain("/#/guru-profile");
 	});
+
 	describe('Check all elements is not clickalbe before Edit Mode',function()
 	{
 		var photoClick = element(by.css('[ng-click="connectWithFacebook()"]'))
@@ -55,20 +57,24 @@ describe('Guru Edit Profile Test', function () {
 		// });
 		it('Edit Button',function()
 		{
-			element(by.id('btn-edit-profile')).click();
+			// element(by.id('btn-edit-profile')).click();
+			guruprofile.ActiveEditMode();
 		});
 		describe("Photo",function()
 		{
 			
 			it("Upload Small photo",function()
 			{
-			   doc.uploadPhoto('file-input-guru-edit-profile','small');
+			   // doc.uploadPhoto('file-input-guru-edit-profile','small');
+			   guruprofile.UploadPhoto('small');
 			});
 
 			it("Upload Large photo",function()
 			{
 			   //doc.uploadPhoto('file-input-guru-edit-profile');
-			   doc.uploadPhoto('file-input-guru-edit-profile','large');
+			   //doc.uploadPhoto('file-input-guru-edit-profile','large');
+			   guruprofile.UploadPhoto('large');
+
 			});
 			
 		});	

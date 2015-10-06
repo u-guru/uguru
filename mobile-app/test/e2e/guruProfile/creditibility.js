@@ -11,10 +11,24 @@ describe('Guru Creditability] Test', function () {
 	// 	})
 	// 	browser.sleep(2000)
 	// });
+	beforeAll(function()
+	{
+		browser.get("http://"+localhost+":8100/#/guru-credibility");
+		browser.sleep(2000)
+	});
+	
+	it("Open Creditability page",function()
+	{
+		credibility.OpenCredibility();
+	});
+
 	it("Check It is right address",function()
 	{
-		expect(browser.getCurrentUrl()).toContain("/#/guru-profile");
+		// expect(browser.getCurrentUrl()).toContain("/#/guru-profile");
+		credibility.CheckCredibilityUrl();
 	});
+
+
 	// describe("Welcome Pop Up",function()
 	// {
 	// 	it('Check Pop up ',function()
@@ -75,7 +89,7 @@ describe('Guru Creditability] Test', function () {
 		// beforeEach(function()
 		// {
 		// });
-		for(var i = 2; i < 5 ; ++ i)
+		for(var i = 0; i < 5 ; ++ i)
 		{
 			(function(index,title,buttonName)
 			{
@@ -83,32 +97,35 @@ describe('Guru Creditability] Test', function () {
 				{
 					it('Click : '+ title,function()
 					{
-						doc.newPickList('credit-slider',index);
-
+						// doc.newPickList('credit-slider',index);
+						credibility.OpenCredibilityOptions(index);
 					});
 					
 					it('Check Title : '+title,function()
 					{
-				   		  element.all(by.css('#credibility-content-wrapper h1')).then(function (items) {
-				   		  	expect(items[index].getText()).toContain(title);
-				   		  });
+				   		  // element.all(by.css('#credibility-content-wrapper h1')).then(function (items) {
+				   		  // 	expect(items[index].getText()).toContain(title);
+				   		  // });
+				   		  credibility.CheckCredibilityOptionTitle(title);
 
 					});
 					it('Check button Name : '+buttonName,function()
 					{
-				   		  element.all(by.css('#credibility-content-wrapper button')).then(function (items) {
-				   		  	expect(items[index].getText()).toContain(buttonName);
-						 });
+				   // 		  element.all(by.css('#credibility-content-wrapper button')).then(function (items) {
+				   // 		  	expect(items[index].getText()).toContain(buttonName);
+						 // });
+				   		  credibility.CheckCredibilityOptiotButtonTitle();
 					});
 					describe('[ Incompleted ] Check Feattures functional : Add '+ buttonName,function()
 					{
 							it('click Button',function()
 							{
-								element.all(by.css('#credibility-content-wrapper button')).then(function (items) {
-									expect(items[index].getText()).toContain(buttonName);
-									if (index != 0 )
-									items[index].click();
-								});
+								// element.all(by.css('#credibility-content-wrapper button')).then(function (items) {
+								// 	expect(items[index].getText()).toContain(buttonName);
+								// 	if (index != 0 )
+								// 		items[index].click();
+								// });
+								credibility.OpenOptionsButton();
 							});
 				   		
 			   		  		switch(index) 

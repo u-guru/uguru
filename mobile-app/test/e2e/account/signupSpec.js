@@ -77,7 +77,7 @@ describe('Sign-up test', function () {
 						if(index=== 0)
 							account.enterName('jason');
 						else if (index === 1)
-							account.enterEmail();
+							account.enterEmail('d');
 						else if (index === 2)
 							account.enterPassword('test');
 					});
@@ -90,11 +90,11 @@ describe('Sign-up test', function () {
 					it('Clear word',function()
 					{
 						if(index=== 0)
-							account.clearName('jason');
+							account.clearName();
 						else if (index === 1)
 							account.clearEmail();
 						else if (index === 2)
-							account.clearPassword('test');
+							account.clearPassword();
 					});
 
 					it('Check Facebook is back and showed',function()
@@ -223,17 +223,21 @@ describe('Sign-up test', function () {
 
 	});
 	
-	describe('close tab',function()
+	describe('close tab 1 ',function()
 	{
 		it('SideBar closed',function()
 		{
-			var settingsLink = element(by.css('ion-view'));
-			browser.wait(EC.elementToBeClickable(settingsLink), 5000); //wait for the element to become clickable
-			settingsLink.click();
-			browser.sleep(10000);		
+			var settingsLink = element.all(by.css('ion-view'));
+			settingsLink.then(function(items)
+			{
+				browser.wait(EC.elementToBeClickable(items[1]), 5000); //wait for the element to become clickable
+				items[1].click();
+			})
+			
 		});
-
+		browser.sleep(100000)
 	});
+	
 	
 
 	

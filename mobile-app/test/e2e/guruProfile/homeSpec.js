@@ -9,36 +9,47 @@ describe('Guru Home Test', function () {
 
 	it("check Curret Page",function()
 	{
-		expect(browser.getCurrentUrl()).toContain("/#/guru");
+		//expect(browser.getCurrentUrl()).toContain("/#/guru");
+		guru.CheckPageCorrect();
 	});
-
-	describe("Check Tab Bar",function()
+	it("Check launch my profile button is not present",function()
 	{
-		var str = ['profile','credibility']
-		for(var i = 0 ; i < 2; ++i)
-			(function(index,title)
-				{
-					describe("Check Tab bar "+title,function()
-					{
-						it('Click ' + title+ ' Button',function()
-						{
-							doc.tabBar('guru-tab-bar',index+1)
-						});
-						it('Check Url',function()
-						{	
-							// expect(browser.getCurrentUrl()).toBe("http://localhost:8100/#/guru-profile");
-							expect(browser.getCurrentUrl()).toContain("/#/guru-"+title);
-
-						});
-						it("Check Side Meuns Hide",function()
-						{
-							expect(element(by.tagName('ion-side-menu')).isDisplayed()).toBe(false, "SideBar is showed");
-						});
-					})
-					
-				})(i,str[i]);
-		
+		guru.CheckLaunchProfileButton(false);
 	});
+
+	// describe("Check Tab Bar",function()
+	// {
+	// 	var str = ['profile','credibility']
+	// 	for(var i = 0 ; i < 2; ++i)
+	// 		(function(index,title)
+	// 			{
+	// 				describe("Check Tab bar "+title,function()
+	// 				{
+	// 					it('Click ' + title+ ' Button',function()
+	// 					{
+	// 						//doc.tabBar('guru-tab-bar',index+1)
+	// 						guru.switchBar(title);
+	// 					});
+	// 					it('Check Url',function()
+	// 					{	
+	// 						// expect(browser.getCurrentUrl()).toBe("http://localhost:8100/#/guru-profile");
+	// 						// Need to polish
+	// 						expect(browser.getCurrentUrl()).toContain("/#/guru-"+title);
+
+	// 					});
+	// 					it("Check Side Meuns Hide",function()
+	// 					{
+	// 						// Need to polish
+	// 						expect(element(by.tagName('ion-side-menu')).isDisplayed()).toBe(false, "SideBar is showed");
+	// 					});
+	// 				})
+					
+	// 			})(i,str[i]);
+		
+	// });
+
+
+	
 	// element(by.id('btn-edit-profile')).isDisplayed().then(function(value)
 	// {
 	// 	if( value == true)

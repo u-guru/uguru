@@ -14,6 +14,7 @@ var Account = function()
 	this.SignUpPage = element(by.id('account'));
 	this.TermButton = element(by.id('tos'));
 	this.FacebookButton = element(by.css('[ng-click="connectWithFacebook()"]'));
+	
 	this.LaunchSignUpAtGuru = function()
 	{
 		browser.wait(EC.elementToBeClickable(this.SignUpButtonGuru),4000);
@@ -52,6 +53,22 @@ var Account = function()
 	{
 		doc.setInput(str,0,	this.passwordModel,true);
 	};
+
+	this.clearName = function()
+	{
+		doc.setInput('',0,this.nameModel,true);
+	};
+
+	this.clearEmail = function()
+	{
+		doc.setInput('',0, this.emailModel,true);
+	};
+
+	this.clearPassword = function()
+	{
+		doc.setInput('',0,	this.passwordModel,true);
+	};
+
 
 	this.CreateAccount = function()
 	{

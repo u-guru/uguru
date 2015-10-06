@@ -258,10 +258,13 @@ var global = function() {
             items[temp].click();
     });
   }
-  this.newPickList = function(id,random)
+  this.newPickList = function(name,random)
   {
     var length;
-     str = '#'+id+' li:not(.ng-hide)';
+    var str ;
+
+
+     str = name+' li:not(.ng-hide)';
 
      element.all(by.css(str)).then(function (items) {
       if (random != null)      

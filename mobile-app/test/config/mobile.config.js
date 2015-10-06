@@ -140,6 +140,8 @@ exports.config = {
                           //  '../e2e/workflows/category.js',
                           //  '../e2e/becomeGuru/photoSpec.js',
                            '../e2e/account/signupSpec.js',
+                           // '../e2e/guruProfile/homeSpec.js',
+
                           // '../test_case/mobileTest/guruProfile/home.js'
                      ],
              credit:[
@@ -330,8 +332,11 @@ exports.config = {
 
             global.doc =require('../test_case/newGlobals.js');
             global.account = require('../e2e/account/accountPageObject.js');
-            global.EC  = protractor.ExpectedConditions;
+            global.credibility = require('../e2e/guruProfile/creditibilityPageObject.js');
+            global.guruprofile = require('../e2e/guruProfile/GuruProfilePageObject.js');
+            global.guru = require('../e2e/guruProfile/guruPageObject.js');
 
+            global.EC  = protractor.ExpectedConditions;
             global.localhost = '192.168.0.109'
             // console.log( "W : "+ browser.params.screenSize.w+ " H :"+browser.params.screenSize.h)
             // browser.driver.manage().window().setSize(browser.params.screenSize.w, browser.params.screenSize.h);
