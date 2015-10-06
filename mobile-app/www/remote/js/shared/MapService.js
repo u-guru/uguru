@@ -5,16 +5,16 @@ angular
 		]);
 
 function MapService() {
-
+	var studentHomeMap;
 	return {
-		initMap: initMap
+		initMap: initMap,
+		studentHomeMap: studentHomeMap
 	}
 
 
 	function initMap(options) {
 
 		function initialize() {
-			var map;
 
 			var featureOpts = options.styles;
 
@@ -67,14 +67,14 @@ function MapService() {
 
 		  	map.mapTypes.set('custom_style', customMapType);
 
+		  	return map;
 
 		}
 
 	  	// google.maps.event.addDomListener(window, 'load', );
-	  	initialize();
+	  	studentHomeMap = initialize();
 
 		google.maps.event.addDomListener(window, "resize", function() {
-
 				var center = map.getCenter();
 				google.maps.event.trigger(map, "resize");
 			 	map.setCenter(center);

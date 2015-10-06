@@ -776,10 +776,15 @@ class Department(Base):
     def __repr__(self):
         if self.title:
             return "<Department'%r', '%r'>" %\
-              (self.id, self.title)
+              (str(self.id), str(self.title))
         if self.abbr:
             return "<Department'%r', '%r'>" %\
-              (self.id, self.abbr)
+              (str(self.id), str(self.abbr))
+        if self.name:
+            return "<Department'%r', '%r'>" %\
+              (str(self.id), str(self.name))
+        return "MALFORMED MAJOR", str(self.id)
+
 
 
 class Campaign(Base):
@@ -1976,6 +1981,7 @@ class Category(Base):
     description = Column(String)
     is_active = Column(Boolean, default=True)
     is_approved = Column(Boolean, default=True)
+    hex_color = Column(String)
 
     @staticmethod
     def create(name, icon_url=None, background_url='',
@@ -1985,7 +1991,7 @@ class Category(Base):
         if category_arr:
             print 'category', name, 'already exists!'
             return category_arr[0]
-        
+
         category = Category()
         category.icon_url = icon_url
         category.name = name
@@ -1993,9 +1999,9 @@ class Category(Base):
         category.description = description
         category.is_active = is_active
         category.is_approved = is_approved
-        
+
         db_session.add(category)
-        
+
         try:
             db_session.commit()
         except:
@@ -2025,7 +2031,7 @@ class Category(Base):
         except:
             db_session.rollback()
             raise
-                
+
     def approve(self):
         self.is_approved = True
         try:
@@ -2050,7 +2056,7 @@ class Subcategory(Base):
     is_approved = Column(Boolean, default=False)
 
     @staticmethod
-    def create(name, category_id, icon_url=None, 
+    def create(name, category_id, icon_url=None,
         description='', is_active=False, is_approved=False):
 
         subcategory_arr = Subcategory.query.filter_by(name=name).all()
@@ -2060,7 +2066,7 @@ class Subcategory(Base):
 
         if not name or not category_id:
             raise
-        
+
         subcategory = Subcategory()
         subcategory.category_id = category_id
         subcategory.icon_url = icon_url
@@ -2068,9 +2074,9 @@ class Subcategory(Base):
         subcategory.description = description
         subcategory.is_active = is_active
         subcategory.is_approved = is_approved
-        
+
         db_session.add(subcategory)
-        
+
         try:
             db_session.commit()
         except:
@@ -2079,7 +2085,7 @@ class Subcategory(Base):
 
         return subcategory
 
-    
+
     def set_inactive(self):
         self.is_active = False
         try:
@@ -2095,7 +2101,7 @@ class Subcategory(Base):
         except:
             db_session.rollback()
             raise
-                
+
     def approve(self):
         self.is_approved = True
         try:

@@ -63,7 +63,6 @@ angular.module('uguru.util.controllers')
     // $scope.majors = $scope.static.majors || GetMajorsList();
 
     $scope.removeMajor = function(major, index) {
-      alert('this was clicked')
       if (!confirm('Remove ' + major.name + '?')) {
         return;
       }
@@ -117,11 +116,6 @@ angular.module('uguru.util.controllers')
         $scope.majorInput.value = '';
       }
 
-      $timeout(function() {
-        $scope.user.majors.push(major);
-        $localstorage.setObject('user', $scope.user);
-      }, 750)
-
       //update the server
 
       uTracker.track(tracker, 'Major Added', {
@@ -131,11 +125,6 @@ angular.module('uguru.util.controllers')
       $scope.user.updateAttr('add_user_major', $scope.user, major, null, $scope);
 
     }
-
-
-    // $scope.query = function(input) {
-    //   $scope.majors = Utilities.nickMatcher(input, Major.getGeneral());
-    // }
 
     $scope.removeUserMajorsFromMaster = function() {
       var majorIndicesToSlice = [];
@@ -157,6 +146,30 @@ angular.module('uguru.util.controllers')
 
       }
     }
+
+    $scope.removeEmptyMajors = function() {
+      var majorIndicesToSlice = [];
+      if ($scope.majors && $scope.majors.length) {
+        for (var i = 0; i < $scope.majors.length; i ++) {
+            var indexMajor = $scope.majors[i];
+            if ((!indexMajor.name) && (!indexMajor.title) && (!indexMajor.abbr)) {
+              console.log('adding', i, indexMajor);
+              majorIndicesToSlice.push(i);
+            }
+          }
+        }
+        console.log('emptyMajors', majorIndicesToSlice.length, $scope.majors.length)
+        // tricky plz ask;
+        var offset = 0;
+        for (var j = 0; j < majorIndicesToSlice.length; j++) {
+          indexToRemove = majorIndicesToSlice[j]
+          // console.log(indexToRemove, $scope.majors[indexToRemove])
+          $scope.majors.splice(indexToRemove - offset, 1);
+          offset++;
+        }
+        console.log('new length', $scope.majors.length)
+
+      }
 
 
     // $scope.$on('$ionicView.enter', function() {
@@ -209,8 +222,12 @@ angular.module('uguru.util.controllers')
 
 
 
-    $scope.majors = University.majors || getMajorsForUniversityId();
+    $scope.majors = University.majors || getMajorsBecomeGuru();
+
     $scope.removeUserMajorsFromMaster();
+
+    // $timeout(function() {$scope.removeEmptyMajors();}, 1000)
+
   }
 
 

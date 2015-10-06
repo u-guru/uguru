@@ -256,9 +256,6 @@ angular.module('uguru.guru.controllers')
             animation: 'slide-in-up'
         }).then(function(modal) {
             $scope.majorModal = modal;
-            $timeout(function() {
-              $scope.loader.hide();
-            }, 500)
             $scope.majorModal.show();
       });
     }
@@ -311,10 +308,16 @@ angular.module('uguru.guru.controllers')
 
     $scope.launchGuruMajorsModal = function() {
       $scope.guruMajorModal.show();
+      $timeout(function() {
+        $scope.majorInput = document.querySelector('#major-input-2');
+      }, 250)
     }
 
     $scope.launchGuruLanguagesModal = function() {
       $scope.guruLanguagesModal.show();
+      $timeout(function() {
+        $scope.languageInput = document.querySelector('#language-input')
+      }, 250)
     }
 
     $scope.connectWithFacebook = function() {

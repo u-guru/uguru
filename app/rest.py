@@ -86,6 +86,12 @@ class ProfessionListView(restful.Resource):
 
         return professions, 200
 
+class CategoryListView(restful.Resource):
+    @marshal_with(CategorySerializer)
+    def get(self):
+
+        return Category.query.all(), 200
+
 class UniversityListView(restful.Resource):
     def get(self):
 
@@ -650,7 +656,7 @@ class UserOneView(restful.Resource):
                     db_session.commit()
 
         ## Quick department fix
-        print user.departments
+
         if request.json.get('add_user_major'):
             major = request.json.get('major')
             major_id = major.get('id')
@@ -678,8 +684,9 @@ class UserOneView(restful.Resource):
                     print 'length of user skills', len(user.guru_skills)
 
         if request.json.get('add_guru_subcategory'):
+            print request.json
             subcategory_json = request.json.get('subcategory')
-            subcategory_id = category_json.get('id')
+            subcategory_id = subcategory_json.get('id')
             subcategory = Subcategory.query.get(subcategory_id)
             if subcategory:
                 user.guru_subcategories.append(subcategory)
@@ -691,7 +698,7 @@ class UserOneView(restful.Resource):
 
         if request.json.get('remove_guru_subcategory'):
             subcategory_json = request.json.get('subcategory')
-            subcategory_id = category_json.get('id')
+            subcategory_id = subcategory_json.get('id')
             subcategory = Subcategory.query.get(subcategory_id)
 
             if subcategory:
@@ -776,8 +783,8 @@ class UserOneView(restful.Resource):
             print major
             major_id = major.get('id')
             m = Department.query.get(int(major_id))
-            if m in user.department:
-                user.department.remove(m)
+            if m in user.departments:
+                user.departments.remove(m)
             db_session.commit()
 
         if request.json.get('remove_language'):
@@ -3118,6 +3125,7 @@ api.add_resource(SupportView, '/api/v1/support')
 api.add_resource(SessionView, '/api/v1/sessions')
 api.add_resource(RankingsView, '/api/v1/rankings')
 api.add_resource(UniversityListView, '/api/v1/universities')
+api.add_resource(CategoryListView, '/api/v1/categories')
 api.add_resource(UniversityMajorsView, '/api/v1/universities/<int:_id>/departments')
 api.add_resource(UniversityCoursesView, '/api/v1/universities/<int:_id>/courses')
 api.add_resource(MajorListView, '/api/v1/majors')
