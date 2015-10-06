@@ -17,7 +17,20 @@ function Utilities(Settings) {
 		isElementInViewport: isElementInViewport,
 		transitionEndEventName: transitionEndEventName,
 		fireBeforeEnter: fireBeforeEnter,
-		rAF: rAF
+		rAF: rAF,
+		sortArrObjByKey: sortArrObjByKey
+	}
+
+	function sortArrObjByKey(arr, key) {
+		function compare(a,b) {
+		  if (a[key] < b[key])
+		    return -1;
+		  if (a[key] > b[key])
+		    return 1;
+		  return 0;
+		}
+		arr.sort(compare);
+		return arr
 	}
 
 	function getNetworkSpeed() {

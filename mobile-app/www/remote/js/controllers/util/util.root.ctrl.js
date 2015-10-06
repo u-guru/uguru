@@ -32,12 +32,14 @@ angular.module('uguru.util.controllers')
     '$cordovaNgCardIO',
     'DeviceService',
     'Utilities',
+    'Category',
     function($ionicPlatform, $scope, $state, $localstorage, User,
         RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         CordovaPushWrapper, $cordovaPush, University, $cordovaStatusbar,
         $cordovaSplashscreen, $timeout, Geolocation, $cordovaPush,
         $ionicSideMenuDelegate, $ionicViewSwitcher, $cordovaGeolocation, Major,
-        Skill, Profession, $cordovaDevice, $cordovaNetwork, $cordovaNgCardIO, DeviceService, Utilities) {
+        Skill, Profession, $cordovaDevice, $cordovaNetwork, $cordovaNgCardIO, DeviceService,
+         Utilities, Category) {
 
         // console.log('1. checking for app updates\n');
         // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage)
@@ -66,6 +68,7 @@ angular.module('uguru.util.controllers')
         $scope.data = {};
         University.majors = $localstorage.getObject('universityMajors');
         University.courses = $localstorage.getObject('universityCourses');
+        Category.categories = $localstorage.getObject('categories');
 
         if ($scope.user && $scope.user.id) {
             User.getUserFromServer($scope, null, $state);
@@ -95,6 +98,23 @@ angular.module('uguru.util.controllers')
             })
         }
 
+        console.log(Category.categories);
+        Category.mapActiveToSubcategories(Category.categories, $scope.user);
+        $localstorage.setObject('categories', Category.categories);
+
+        $scope.getCategories = function() {
+            Category.get().then(function(categories) {
+                Category.categories = categories.plain();
+                Category.mapActiveToSubcategories(Category.categories, $scope.user);
+                $localstorage.setObject('categories', Category.categories);
+                console.log('categories loaded', Category.categories);
+
+            },
+            function() {
+                console.log("Categories NOT successfully loaded");
+            })
+        }
+
         if ($scope.user.university_id && !(University.majors && University.majors.length)) {
             console.log('University majors not local, requesting now..');
             $scope.getMajorsForUniversityId($scope.user.university_id);
@@ -107,6 +127,13 @@ angular.module('uguru.util.controllers')
             $scope.getMajorsForUniversityId($scope.user.university_id);
         } else {
             console.log(University.courses.length, 'courses loaded');
+        }
+
+        if (!Category.categories || Category.categories.length === 0) {
+            console.log('Categories not local, loading now..')
+            $scope.getCategories();
+        } else {
+            console.log(Category.categories.length, 'categories loaded');
         }
 
         $scope.getCoursesForUniversityId = function(uni_id) {
