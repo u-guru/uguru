@@ -511,9 +511,9 @@ angular.module('uguru.util.controllers')
             ios: false
         }
 
-        DeviceService.readyDevice();
-
         document.addEventListener("deviceready", function() {
+
+            DeviceService.readyDevice();
 
             $scope.platform.mobile = DeviceService.isMobile();
             $scope.platform.web = DeviceService.isWeb();
