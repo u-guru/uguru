@@ -97,7 +97,11 @@
 			<div ng-if='user.transcript_file && user.transcript_file.url'>
 				<h1 class="section-header">Transcript Submitted</h1>
 				<div class="credit-body">
-					<p>Thank you for uploading your transcript. We're in the process of verifying.</p>
+                    <p ng-if='user.transcript_verified_by_admin'>Your transcript has been <strong> verified</strong> and <strong>approved</strong>!</p>
+					<p ng-if='!user.transcript_verified_by_admin'>Thank you for uploading your transcript. We're in the process of verifying.</p>
+                    <div ng-if='!transcript_verified_by_admin' class='text-center block top-0 full-x semibold bg-cerise p20xy'>
+                            AWAITING APPROVAL
+                    </div>
 				</div>
 				<button ng-click='showActionSheetTranscriptPhoto()' class="semibold bg-moola">Edit your transcript</button>
 			</div>

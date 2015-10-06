@@ -315,6 +315,9 @@ angular.module('uguru.guru.controllers')
 
     $scope.launchGuruLanguagesModal = function() {
       $scope.guruLanguagesModal.show();
+      $timeout(function() {
+        $scope.languageInput = document.querySelector('#language-input')
+      }, 250)
     }
 
     $scope.connectWithFacebook = function() {

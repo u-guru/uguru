@@ -263,7 +263,7 @@ def print_categories():
         for subcategory in category.subcategories:
             print '    >>', subcategory.name
         print
-        
+
 
 def generate_categories_json():
     from app.models import Category
@@ -272,7 +272,7 @@ def generate_categories_json():
     for category in Category.query.all():
         subcategories = category.subcategories
         category_dict = {
-            'id': category.id, 
+            'id': category.id,
             'num_subcategories':len(subcategories),
             'num_gurus': len(category.gurus.all()),
             'subcategories': [],
@@ -300,12 +300,25 @@ def generate_categories_json():
 
 
 
+def generate_init_categories():
+    from app.models import Category, Subcategory
+    categories_dict = json.load(open('app/static/data/categories.json'))
+    result_dict = {}
+    for key in categories_dict.keys():
+        result_dict[key] = []
+        for subcategory in categories_dict[key]['subcategories']:
+            result_dict[key].append(subcategory['name'])
+            print subcategory['name']
+
+    with open('app/static/data/categories_init.json', 'wb') as fp:
+        json.dump(result_dict, fp, sort_keys = True, indent = 4)
+    print 'categories init file generated'
 
 
 def init_categories():
     import json
     from app.models import Category, Subcategory
-    categories_dict = json.load(open('app/static/data/categories.json'))
+    categories_dict = json.load(open('app/static/data/categories_init.json'))
     categories = categories_dict.keys()
     for category_name in categories:
         print 'creating', category_name
@@ -315,8 +328,12 @@ def init_categories():
             print '  >> creating', subcategory_name
             Subcategory.create(subcategory_name, category.id)
         print
+    print
 
-    print 
+
+
+if arg in ['generate_init_categories', '-gic']:
+    generate_init_categories()
 
 if arg == 'initialize':
     init()
@@ -574,7 +591,7 @@ if arg == 'print_skills':
         print "#############"
         print key
         print "#############"
-    
+
 
 if arg == 'remove_skill':
     from app.models import guru_skill_table
@@ -582,14 +599,14 @@ if arg == 'remove_skill':
         for u in User.query.all():
             if skill in u.guru_skills:
                 db_session.execute(guru_skill_table.delete(guru_skill_table.c.user_id == u.id and guru_courses_table.c.skill_id == c.id))
-        
+
     for skill in Skill.query.all():
         db_session.delete(skill)
         db_session.commit()
 
 
 if arg =='init_skills':
-    
+
     {
         'Photography':['Professional', 'Outdoor', 'Headshot'],
         'Freelancing':['Resume Editing','Interview Prep', 'Build a Website'],

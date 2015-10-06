@@ -220,7 +220,7 @@ angular.module('uguru.util.controllers')
     $scope.removeUserMajorsFromMaster();
 
     // $timeout(function() {$scope.removeEmptyMajors();}, 1000)
-    
+
   }
 
 
