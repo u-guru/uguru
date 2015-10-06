@@ -460,11 +460,12 @@ angular.module('uguru.user', [])
         $scope.user.recent_latitude = user.recent_latitude;
         $scope.user.recent_longitude = user.recent_longitude;
         $scope.user.location_services_enabled = user.location_services_enabled;
-        
+
         $scope.user.majors = user.departments;
+
         $scope.user.guru_categories = user.guru_categories;
         $scope.user.guru_subcategories = user.guru_subcategories;
-        
+        $scope.user.transcript_verified_by_admin = user.transcript_verified_by_admin;
         $scope.user.guru_courses = user.guru_courses;
         $scope.user.student_courses = user.student_courses;
         $scope.user.student_sessions = user.student_sessions;

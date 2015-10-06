@@ -1948,7 +1948,7 @@ section {
 }
 
 // MAJOR
-.major-view {
+.major-view, .language-view {
 	background: $charcoal;
 	header {
 		&:before {
@@ -1956,7 +1956,7 @@ section {
 						url(/static/remote/img/onboarding/major.jpg) center/cover no-repeat;
 		}
 	}
-	#major-list {
+	#major-list, #language-list {
 		ul {
 			margin-top: 1px;
 			li {

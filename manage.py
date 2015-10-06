@@ -280,7 +280,8 @@ def generate_categories_json():
             'icon_url': category.icon_url,
             'is_approved': category.is_approved,
             'is_active': category.is_active,
-            'description': category.description
+            'description': category.description,
+            'hex_color': category.hex_color
         }
         result_dict[category.name] = category_dict
         for subcategory in subcategories:
@@ -297,6 +298,34 @@ def generate_categories_json():
             result_dict[category.name]['subcategories'].append(subcategory_info)
     with open('app/static/data/categories.json', 'wb') as fp:
         json.dump(result_dict, fp, sort_keys = True, indent = 4)
+
+def update_categories():
+    from app.models import Category, Subcategory
+    from app.database import db_session
+    categories_dict = json.load(open('app/static/data/categories.json'))
+    for key in categories_dict.keys():
+        category_id = categories_dict[key]['id']
+        category = Category.query.get(category_id)
+        category.hex_color = categories_dict[key]['hex_color']
+        category.num_subcategories = len(categories_dict[key]['subcategories'])
+        category.background_url = categories_dict[key]['background_url']
+        category.icon_url = categories_dict[key]['icon_url']
+        category.is_approved = True
+        # category.is_approved = categories_dict[key]['is_approved']
+        # category.is_active = categories_dict[key]['is_active']
+        category.is_active = True
+        category.num_gurus = len(category.gurus.all())
+        category.description = categories_dict[key]['description']
+
+        print category.id, category.name
+        for subcategory in categories_dict[key]['subcategories']:
+            subcategory_id = subcategory['id']
+            subcategory = Subcategory.query.get(subcategory_id)
+            print '   >>', subcategory.id, subcategory.name
+        print
+    db_session.commit()
+    generate_categories_json()
+    print 'categories successfully updated && json is generated'
 
 
 
@@ -346,6 +375,9 @@ if arg in ['print_categories', '-pc']:
 
 if arg in ['delete_categories', '-dc']:
     delete_categories()
+
+if arg in ['update_categories', '-uc']:
+    update_categories()
 
 if arg in ['generate_categories_json', '-gc']:
     generate_categories_json()
