@@ -2587,6 +2587,27 @@ class AdminViewUniversitiesListAll(restful.Resource):
         universities = University.query.filter(University.us_news_ranking != None, University.us_news_ranking < 220).all()
         return universities, 200
 
+class AdminViewUniversitiesListAllDistribution(restful.Resource):
+    def get(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED"
+        universities = University.query.filter(University.us_news_ranking != None, University.us_news_ranking < 220).all()
+        keys = ['total','banner_url', 'courses_sanitized', 'departments_sanitized',\
+        'logo_url', 'school_color_one', 'population', 'num_emails']
+        result_dict = {}
+        for key in keys:
+            result_dict[key] = 0
+        result_dict['total'] = len(universities)
+        for uni in universities:
+            if uni.departments_sanitized: result_dict['departments_sanitized'] += 1
+            if uni.courses_sanitized: result_dict['courses_sanitized'] += 1
+            if uni.logo_url: result_dict['logo_url'] += 1
+            if uni.population: result_dict['population'] += 1
+            if uni.school_color_one: result_dict['school_color_one'] += 1
+            if uni.num_emails: result_dict['num_emails'] += 1
+
+        return json.dumps(result_dict, indent=4, sort_keys=True), 200
+
 class AdminViewUniversitiesListPrepared(restful.Resource):
     @marshal_with(AdminUniversitySerializer)
     def get(self, auth_token):
@@ -3200,6 +3221,7 @@ api.add_resource(AdminViewUsersList, '/api/admin/<string:auth_token>/users')
 api.add_resource(AdminViewUniversitiesList, '/api/admin/<string:auth_token>/universities')
 api.add_resource(AdminViewUniversitiesListPrepared, '/api/admin/<string:auth_token>/universities/prepared')
 api.add_resource(AdminViewUniversitiesListAll, '/api/admin/<string:auth_token>/universities/us_news')
+api.add_resource(AdminViewUniversitiesListAllDistribution, '/api/admin/<string:auth_token>/universities/distribution')
 api.add_resource(AdminViewUserList, '/api/admin/<string:auth_token>/user/<int:_id>')
 api.add_resource(AdminViewUserAnalytics, '/api/admin/analytics/user')
 
